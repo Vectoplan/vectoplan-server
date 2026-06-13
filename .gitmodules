@@ -1,0 +1,31 @@
+[submodule "services/app/packages/cad-viewer"]
+	path = services/app/packages/cad-viewer
+	url = https://github.com/mlight-lee/cad-viewer
+	branch = main
+[submodule "services/vectoplan-editor"]
+	path = services/vectoplan-editor
+	url = https://github.com/Vectoplan/vectoplan-editor.git
+[submodule "services/vectoplan-chunk"]
+	path = services/vectoplan-chunk
+	url = https://github.com/Vectoplan/vectoplan-chunk.git
+[submodule "services/vectoplan-library"]
+	path = services/vectoplan-library
+	url = https://github.com/Vectoplan/vectoplan-library.git
+[submodule "services/vectoplan-openLayer"]
+	path = services/vectoplan-openLayer
+	url = https://github.com/Vectoplan/vectoplan-openLayer.git
+[submodule "services/vectoplan-geoserver-orchestrator"]
+	path = services/vectoplan-geoserver-orchestrator
+	url = https://github.com/Vectoplan/vectoplan-geoserver-orchestrator.git
+[submodule "services/vectoplan-core"]
+	path = services/vectoplan-core
+	url = https://github.com/Vectoplan/vectoplan-core.git
+[submodule "services/vectoplan-app"]
+	path = services/vectoplan-app
+	url = https://github.com/Vectoplan/vectoplan-app.git
+[submodule "services/vectoplan-language"]
+	path = services/vectoplan-language
+	url = https://github.com/Vectoplan/vectoplan-language.git
+[submodule "services/vectoplan-converter"]
+	path = services/vectoplan-converter
+	url = https://github.com/Vectoplan/vectoplan-converter.git

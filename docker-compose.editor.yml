@@ -1,0 +1,763 @@
+# ./docker-compose.editor.yml
+
+# ------------------------------------------------------------------------------
+# VECTOPLAN Editor Stack
+# ------------------------------------------------------------------------------
+# Start aus dem Repo-Root:
+#   docker compose -f docker-compose.editor.yml up -d --build
+#
+# Zweck:
+#   Enger Entwicklungsstack für den Minecraft-/Hytale-artigen 3D-Editor.
+#
+# Enthalten:
+# - vectoplan-editor
+# - vectoplan-library-db
+# - vectoplan-library
+# - vectoplan-chunk-db
+# - vectoplan-chunk
+#
+# Nicht enthalten:
+# - vectoplan-openLayer
+# - GeoServer
+# - PostGIS für Geodaten
+# - vectoplan-core
+# - vectoplan-converter
+# - vectoplan-language
+# - vectoplan-app
+#
+# Wichtig für vectoplan-library:
+#
+#   Creative-Library-Quelle:
+#     services/vectoplan-library/src/library/source
+#
+#   Containerpfad:
+#     /opt/vectoplan/services/vectoplan-library/src/library/source
+#
+#   PostgreSQL:
+#     vectoplan-library-db:5432/vectoplan_library
+#
+#   DB-Bootstrap:
+#     entrypoint.sh wartet auf PostgreSQL und führt optional aus:
+#       flask db init
+#       flask db migrate
+#       flask db upgrade
+#
+#   Testroute:
+#     GET http://localhost:5001/api/v1/vplib/library/blocks
+#
+#   Detailroute:
+#     GET http://localhost:5001/api/v1/vplib/library/blocks/vp.hochbau.bloecke.basic_stone_block
+#
+#   Variantenroute:
+#     GET http://localhost:5001/api/v1/vplib/library/blocks/vp.hochbau.bloecke.basic_stone_block/variants
+#
+#   Tree:
+#     GET http://localhost:5001/api/v1/vplib/library/tree
+#
+#   Create:
+#     GET  http://localhost:5001/create
+#     GET  http://localhost:5001/api/v1/vplib/create/options
+#     POST http://localhost:5001/api/v1/vplib/create/validate
+#     POST http://localhost:5001/api/v1/vplib/create/package-plan
+#     POST http://localhost:5001/api/v1/vplib/create/download
+#     POST http://localhost:5001/api/v1/vplib/create/save
+# ------------------------------------------------------------------------------
+
+name: vectoplan-editor-stack
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame Python-Defaults
+# ------------------------------------------------------------------------------
+
+x-vectoplan-python-environment: &vectoplan-python-environment
+  PYTHONDONTWRITEBYTECODE: "1"
+  PYTHONUNBUFFERED: "1"
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame PostgreSQL-Defaults für den Library-Service
+# ------------------------------------------------------------------------------
+
+x-vectoplan-library-postgres-environment: &vectoplan-library-postgres-environment
+  POSTGRES_DB: "${VECTOPLAN_LIBRARY_POSTGRES_DB:-vectoplan_library}"
+  POSTGRES_USER: "${VECTOPLAN_LIBRARY_POSTGRES_USER:-vectoplan}"
+  POSTGRES_PASSWORD: "${VECTOPLAN_LIBRARY_POSTGRES_PASSWORD:-vectoplan}"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame PostgreSQL-Defaults für den Chunk-Service
+# ------------------------------------------------------------------------------
+
+x-vectoplan-chunk-postgres-environment: &vectoplan-chunk-postgres-environment
+  POSTGRES_DB: "${VECTOPLAN_CHUNK_POSTGRES_DB:-vectoplan_chunk}"
+  POSTGRES_USER: "${VECTOPLAN_CHUNK_POSTGRES_USER:-vectoplan_chunk}"
+  POSTGRES_PASSWORD: "${VECTOPLAN_CHUNK_POSTGRES_PASSWORD:-vectoplan_chunk}"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame Environment-Defaults für den Editor-Service
+# ------------------------------------------------------------------------------
+
+x-vectoplan-editor-environment: &vectoplan-editor-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-editor"
+  APP_NAME: "vectoplan-editor"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-editor"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-editor"
+
+  VECTOPLAN_EDITOR_CONFIG: "${VECTOPLAN_EDITOR_CONFIG:-development}"
+  VECTOPLAN_EDITOR_DEBUG: "${VECTOPLAN_EDITOR_DEBUG:-true}"
+  VECTOPLAN_EDITOR_HOST: "0.0.0.0"
+  VECTOPLAN_EDITOR_PORT: "5000"
+
+  VECTOPLAN_EDITOR_STARTUP_MODULE: "${VECTOPLAN_EDITOR_STARTUP_MODULE:-src.bootstrap.startup}"
+  VECTOPLAN_EDITOR_PRESTART_CHECK: "${VECTOPLAN_EDITOR_PRESTART_CHECK:-true}"
+  VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY:-true}"
+  VECTOPLAN_EDITOR_STARTUP_STRICT: "${VECTOPLAN_EDITOR_STARTUP_STRICT:-false}"
+  VECTOPLAN_EDITOR_STRICT_ASSET_CHECKS: "${VECTOPLAN_EDITOR_STRICT_ASSET_CHECKS:-false}"
+
+  VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED: "${VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED:-true}"
+  VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS: "${VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS:-true}"
+  VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY: "${VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY:-./static/editor/js/main.js}"
+
+  VECTOPLAN_EDITOR_WORLD_MODE: "${VECTOPLAN_EDITOR_WORLD_MODE:-chunk_service}"
+  VECTOPLAN_EDITOR_WORLD_SOURCE_KIND: "${VECTOPLAN_EDITOR_WORLD_SOURCE_KIND:-chunk-service}"
+
+  VECTOPLAN_EDITOR_CHUNK_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_ENABLED:-true}"
+  VECTOPLAN_EDITOR_CHUNK_MODE: "${VECTOPLAN_EDITOR_CHUNK_MODE:-remote}"
+  VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND: "${VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND:-chunk-service}"
+
+  VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL:-http://vectoplan-chunk:5000}"
+  VECTOPLAN_EDITOR_CHUNK_API_PREFIX: "${VECTOPLAN_EDITOR_CHUNK_API_PREFIX:-/editor/api/chunk}"
+  VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL: "${VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL:-/editor/api/chunk}"
+
+  VECTOPLAN_EDITOR_DEFAULT_PROJECT_ID: "${VECTOPLAN_EDITOR_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_EDITOR_DEFAULT_WORLD_ID: "${VECTOPLAN_EDITOR_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_EDITOR_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_EDITOR_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_EDITOR_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_EDITOR_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+
+  VECTOPLAN_EDITOR_CHUNK_REQUEST_TIMEOUT: "${VECTOPLAN_EDITOR_CHUNK_REQUEST_TIMEOUT:-10}"
+  VECTOPLAN_EDITOR_CHUNK_COMMAND_TIMEOUT: "${VECTOPLAN_EDITOR_CHUNK_COMMAND_TIMEOUT:-15}"
+  VECTOPLAN_EDITOR_CHUNK_BATCH_TIMEOUT: "${VECTOPLAN_EDITOR_CHUNK_BATCH_TIMEOUT:-20}"
+  VECTOPLAN_EDITOR_CHUNK_STATUS_TIMEOUT: "${VECTOPLAN_EDITOR_CHUNK_STATUS_TIMEOUT:-5}"
+  VECTOPLAN_EDITOR_CHUNK_MAX_RESPONSE_BYTES: "${VECTOPLAN_EDITOR_CHUNK_MAX_RESPONSE_BYTES:-20971520}"
+  VECTOPLAN_EDITOR_CHUNK_STATUS_PATHS: "${VECTOPLAN_EDITOR_CHUNK_STATUS_PATHS:-/projects/_status,/chunks/_status,/commands/_status,/}"
+
+  VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS:-true}"
+
+  VECTOPLAN_EDITOR_INVENTORY_SOURCE: "${VECTOPLAN_EDITOR_INVENTORY_SOURCE:-chunk-service}"
+  VECTOPLAN_EDITOR_INVENTORY_ICON_MODE: "${VECTOPLAN_EDITOR_INVENTORY_ICON_MODE:-icon-only}"
+  VECTOPLAN_EDITOR_INVENTORY_HOTBAR_SIZE: "${VECTOPLAN_EDITOR_INVENTORY_HOTBAR_SIZE:-9}"
+  VECTOPLAN_EDITOR_INVENTORY_DEFAULT_SELECTED_SLOT: "${VECTOPLAN_EDITOR_INVENTORY_DEFAULT_SELECTED_SLOT:-0}"
+  VECTOPLAN_EDITOR_INVENTORY_SCROLL_WRAP: "${VECTOPLAN_EDITOR_INVENTORY_SCROLL_WRAP:-true}"
+  VECTOPLAN_EDITOR_INVENTORY_ALLOW_PLACE_ACTION: "${VECTOPLAN_EDITOR_INVENTORY_ALLOW_PLACE_ACTION:-true}"
+  VECTOPLAN_EDITOR_INVENTORY_ALLOW_BREAK_ACTION: "${VECTOPLAN_EDITOR_INVENTORY_ALLOW_BREAK_ACTION:-true}"
+
+  VECTOPLAN_EDITOR_CHUNKS_ENABLED: "${VECTOPLAN_EDITOR_CHUNKS_ENABLED:-true}"
+  VECTOPLAN_EDITOR_CHUNKS_EMPTY_WORLD: "${VECTOPLAN_EDITOR_CHUNKS_EMPTY_WORLD:-false}"
+  VECTOPLAN_EDITOR_CHUNKS_CHUNK_SIZE: "${VECTOPLAN_EDITOR_CHUNKS_CHUNK_SIZE:-16}"
+  VECTOPLAN_EDITOR_CHUNKS_VIEW_DISTANCE: "${VECTOPLAN_EDITOR_CHUNKS_VIEW_DISTANCE:-4}"
+  VECTOPLAN_EDITOR_CHUNKS_PRELOAD_RADIUS: "${VECTOPLAN_EDITOR_CHUNKS_PRELOAD_RADIUS:-1}"
+  VECTOPLAN_EDITOR_CHUNKS_UNLOAD_DISTANCE: "${VECTOPLAN_EDITOR_CHUNKS_UNLOAD_DISTANCE:-6}"
+  VECTOPLAN_EDITOR_CHUNKS_MAX_LOADED_CHUNKS: "${VECTOPLAN_EDITOR_CHUNKS_MAX_LOADED_CHUNKS:-196}"
+  VECTOPLAN_EDITOR_CHUNKS_LOAD_AROUND_PLAYER: "${VECTOPLAN_EDITOR_CHUNKS_LOAD_AROUND_PLAYER:-true}"
+  VECTOPLAN_EDITOR_CHUNKS_DEBUG_DRAW_CHUNK_BOUNDS: "${VECTOPLAN_EDITOR_CHUNKS_DEBUG_DRAW_CHUNK_BOUNDS:-true}"
+  VECTOPLAN_EDITOR_CHUNKS_PREFER_BATCH_LOAD: "${VECTOPLAN_EDITOR_CHUNKS_PREFER_BATCH_LOAD:-true}"
+  VECTOPLAN_EDITOR_CHUNKS_RELOAD_DIRTY_AFTER_COMMAND: "${VECTOPLAN_EDITOR_CHUNKS_RELOAD_DIRTY_AFTER_COMMAND:-true}"
+
+  VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_EDITOR_RUN_MODE:-gunicorn}"
+
+  GUNICORN_WORKERS: "${VECTOPLAN_EDITOR_GUNICORN_WORKERS:-2}"
+  GUNICORN_THREADS: "${VECTOPLAN_EDITOR_GUNICORN_THREADS:-2}"
+  GUNICORN_TIMEOUT: "${VECTOPLAN_EDITOR_GUNICORN_TIMEOUT:-120}"
+  GUNICORN_KEEPALIVE: "${VECTOPLAN_EDITOR_GUNICORN_KEEPALIVE:-5}"
+  GUNICORN_LOG_LEVEL: "${VECTOPLAN_EDITOR_GUNICORN_LOG_LEVEL:-info}"
+  GUNICORN_ACCESSLOG: "${VECTOPLAN_EDITOR_GUNICORN_ACCESSLOG:--}"
+  GUNICORN_ERRORLOG: "${VECTOPLAN_EDITOR_GUNICORN_ERRORLOG:--}"
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame Environment-Defaults für den Library-Service
+# ------------------------------------------------------------------------------
+
+x-vectoplan-library-environment: &vectoplan-library-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-library"
+  APP_NAME: "vectoplan-library"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-library"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-library"
+
+  VECTOPLAN_LIBRARY_CONFIG: "${VECTOPLAN_LIBRARY_CONFIG:-development}"
+  VECTOPLAN_LIBRARY_DEBUG: "${VECTOPLAN_LIBRARY_DEBUG:-true}"
+  VECTOPLAN_LIBRARY_HOST: "0.0.0.0"
+  VECTOPLAN_LIBRARY_PORT: "5000"
+
+  VECTOPLAN_LIBRARY_STARTUP_MODULE: "${VECTOPLAN_LIBRARY_STARTUP_MODULE:-src.bootstrap.startup}"
+  VECTOPLAN_LIBRARY_PRESTART_CHECK: "${VECTOPLAN_LIBRARY_PRESTART_CHECK:-true}"
+  VECTOPLAN_LIBRARY_PRESTART_CREATE_APP: "${VECTOPLAN_LIBRARY_PRESTART_CREATE_APP:-false}"
+  VECTOPLAN_LIBRARY_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_LIBRARY_PRINT_STARTUP_SUMMARY:-true}"
+  VECTOPLAN_LIBRARY_STARTUP_STRICT: "${VECTOPLAN_LIBRARY_STARTUP_STRICT:-false}"
+  VECTOPLAN_LIBRARY_STRICT_TEMPLATE_CHECKS: "${VECTOPLAN_LIBRARY_STRICT_TEMPLATE_CHECKS:-false}"
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL / SQLAlchemy / Flask-Migrate
+  # ---------------------------------------------------------------------------
+  # SQLAlchemy liest primär SQLALCHEMY_DATABASE_URI.
+  # Zusätzliche Aliase bleiben gesetzt, damit ältere und neue Config-Schichten
+  # dieselbe Verbindung nutzen.
+  #
+  # Für lokale Entwicklung sind Auto-Init, Auto-Migrate und Auto-Upgrade aktiv.
+  # Später in produktiveren Umgebungen:
+  #   VECTOPLAN_LIBRARY_DB_AUTO_INIT=false
+  #   VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE=false
+  #   VECTOPLAN_LIBRARY_DB_AUTO_UPGRADE=true
+  # ---------------------------------------------------------------------------
+
+  FLASK_APP: "${VECTOPLAN_LIBRARY_FLASK_APP:-wsgi:app}"
+  FLASK_ENV: "${VECTOPLAN_LIBRARY_FLASK_ENV:-development}"
+
+  VECTOPLAN_LIBRARY_DATABASE_DRIVER: "${VECTOPLAN_LIBRARY_DATABASE_DRIVER:-postgresql+psycopg}"
+  VECTOPLAN_LIBRARY_DB_HOST: "${VECTOPLAN_LIBRARY_DB_HOST:-vectoplan-library-db}"
+  VECTOPLAN_LIBRARY_DB_PORT: "${VECTOPLAN_LIBRARY_DB_PORT:-5432}"
+  VECTOPLAN_LIBRARY_DB_NAME: "${VECTOPLAN_LIBRARY_DB_NAME:-vectoplan_library}"
+  VECTOPLAN_LIBRARY_DB_USER: "${VECTOPLAN_LIBRARY_DB_USER:-vectoplan}"
+  VECTOPLAN_LIBRARY_DB_PASSWORD: "${VECTOPLAN_LIBRARY_DB_PASSWORD:-vectoplan}"
+
+  VECTOPLAN_LIBRARY_DATABASE_URI: "${VECTOPLAN_LIBRARY_DATABASE_URI:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
+  VECTOPLAN_LIBRARY_DATABASE_URL: "${VECTOPLAN_LIBRARY_DATABASE_URL:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
+  VPLIB_DATABASE_URL: "${VPLIB_DATABASE_URL:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
+  SQLALCHEMY_DATABASE_URI: "${SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
+  DATABASE_URL: "${DATABASE_URL:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
+
+  SQLALCHEMY_TRACK_MODIFICATIONS: "${VECTOPLAN_LIBRARY_SQLALCHEMY_TRACK_MODIFICATIONS:-false}"
+  SQLALCHEMY_ECHO: "${VECTOPLAN_LIBRARY_SQLALCHEMY_ECHO:-false}"
+  SQLALCHEMY_RECORD_QUERIES: "${VECTOPLAN_LIBRARY_SQLALCHEMY_RECORD_QUERIES:-false}"
+
+  VECTOPLAN_LIBRARY_DATABASE_REQUIRED: "${VECTOPLAN_LIBRARY_DATABASE_REQUIRED:-true}"
+  VECTOPLAN_LIBRARY_DB_HEALTH_CHECK: "${VECTOPLAN_LIBRARY_DB_HEALTH_CHECK:-false}"
+
+  VECTOPLAN_LIBRARY_DB_POOL_PRE_PING: "${VECTOPLAN_LIBRARY_DB_POOL_PRE_PING:-true}"
+  VECTOPLAN_LIBRARY_DB_POOL_RECYCLE_SECONDS: "${VECTOPLAN_LIBRARY_DB_POOL_RECYCLE_SECONDS:-1800}"
+  VECTOPLAN_LIBRARY_DB_POOL_SIZE: "${VECTOPLAN_LIBRARY_DB_POOL_SIZE:-5}"
+  VECTOPLAN_LIBRARY_DB_MAX_OVERFLOW: "${VECTOPLAN_LIBRARY_DB_MAX_OVERFLOW:-10}"
+  VECTOPLAN_LIBRARY_DB_POOL_TIMEOUT_SECONDS: "${VECTOPLAN_LIBRARY_DB_POOL_TIMEOUT_SECONDS:-30}"
+  VECTOPLAN_LIBRARY_DATABASE_CONNECT_TIMEOUT: "${VECTOPLAN_LIBRARY_DATABASE_CONNECT_TIMEOUT:-15}"
+
+  VECTOPLAN_LIBRARY_MIGRATIONS_DIRECTORY: "${VECTOPLAN_LIBRARY_MIGRATIONS_DIRECTORY:-migrations}"
+  ALEMBIC_MIGRATIONS_DIRECTORY: "${ALEMBIC_MIGRATIONS_DIRECTORY:-migrations}"
+  MIGRATIONS_DIRECTORY: "${MIGRATIONS_DIRECTORY:-migrations}"
+
+  VECTOPLAN_LIBRARY_DB_WAIT_FOR_READY: "${VECTOPLAN_LIBRARY_DB_WAIT_FOR_READY:-true}"
+  VECTOPLAN_LIBRARY_DB_WAIT_TIMEOUT: "${VECTOPLAN_LIBRARY_DB_WAIT_TIMEOUT:-60}"
+  VECTOPLAN_LIBRARY_DB_WAIT_INTERVAL: "${VECTOPLAN_LIBRARY_DB_WAIT_INTERVAL:-2}"
+
+  VECTOPLAN_LIBRARY_DB_BOOTSTRAP_ENABLED: "${VECTOPLAN_LIBRARY_DB_BOOTSTRAP_ENABLED:-true}"
+  VECTOPLAN_LIBRARY_DB_AUTO_INIT: "${VECTOPLAN_LIBRARY_DB_AUTO_INIT:-true}"
+  VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE: "${VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE:-true}"
+  VECTOPLAN_LIBRARY_DB_AUTO_UPGRADE: "${VECTOPLAN_LIBRARY_DB_AUTO_UPGRADE:-true}"
+  VECTOPLAN_LIBRARY_DB_MIGRATION_STRICT: "${VECTOPLAN_LIBRARY_DB_MIGRATION_STRICT:-true}"
+  VECTOPLAN_LIBRARY_DB_RECREATE_INCOMPLETE_MIGRATIONS: "${VECTOPLAN_LIBRARY_DB_RECREATE_INCOMPLETE_MIGRATIONS:-true}"
+  VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE_MESSAGE: "${VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE_MESSAGE:-auto creative library migration}"
+
+  # Legacy-/Startup-Schalter bleiben vorhanden, aber die neue App-Factory führt
+  # keine automatische Tabellenanlage beim Import aus.
+  VECTOPLAN_LIBRARY_DB_AUTO_CREATE: "${VECTOPLAN_LIBRARY_DB_AUTO_CREATE:-false}"
+  VECTOPLAN_LIBRARY_DB_AUTO_SEED: "${VECTOPLAN_LIBRARY_DB_AUTO_SEED:-false}"
+  VECTOPLAN_LIBRARY_DB_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_LIBRARY_DB_SEED_ON_EMPTY_ONLY:-true}"
+  VECTOPLAN_LIBRARY_DB_DROP_ALL_ON_BOOT: "${VECTOPLAN_LIBRARY_DB_DROP_ALL_ON_BOOT:-false}"
+  VECTOPLAN_LIBRARY_DB_REQUIRE_READY: "${VECTOPLAN_LIBRARY_DB_REQUIRE_READY:-true}"
+  VECTOPLAN_LIBRARY_DB_ENABLE_SQLITE_FOREIGN_KEYS: "${VECTOPLAN_LIBRARY_DB_ENABLE_SQLITE_FOREIGN_KEYS:-true}"
+  VECTOPLAN_LIBRARY_DB_DEFAULT_SLOT_COUNT: "${VECTOPLAN_LIBRARY_DB_DEFAULT_SLOT_COUNT:-9}"
+  VECTOPLAN_LIBRARY_DB_SEED_MODULE: "${VECTOPLAN_LIBRARY_DB_SEED_MODULE:-services.database_seed_service}"
+
+  # ---------------------------------------------------------------------------
+  # VPLIB Kern-API
+  # ---------------------------------------------------------------------------
+
+  VPLIB_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
+  VPLIB_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
+  VPLIB_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/sources"
+  VPLIB_LIBRARY_CATALOG_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
+  VPLIB_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/vplib"
+  VPLIB_ARCHIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/archives"
+  VPLIB_TEST_OUTPUT_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/vplib_test"
+  VPLIB_ROUTE_PREFIX: "/api/v1/vplib"
+  VPLIB_DRY_RUN_DEFAULT: "${VPLIB_DRY_RUN_DEFAULT:-true}"
+  VPLIB_TEST_ROUTE_ENABLED: "${VPLIB_TEST_ROUTE_ENABLED:-true}"
+  VPLIB_CREATE_ROUTE_ENABLED: "${VPLIB_CREATE_ROUTE_ENABLED:-true}"
+  VPLIB_CREATE_WRITE_ENABLED: "${VPLIB_CREATE_WRITE_ENABLED:-true}"
+  VPLIB_CREATE_OVERWRITE_ENABLED: "${VPLIB_CREATE_OVERWRITE_ENABLED:-false}"
+  VPLIB_DEFAULT_WRITE_MODE: "${VPLIB_DEFAULT_WRITE_MODE:-fail}"
+  VPLIB_DEFAULT_VALIDATION_MODE: "${VPLIB_DEFAULT_VALIDATION_MODE:-strict}"
+
+  # ---------------------------------------------------------------------------
+  # Dateibasierte Creative-Library-Schicht
+  # ---------------------------------------------------------------------------
+
+  VECTOPLAN_LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
+  VECTOPLAN_LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
+  VECTOPLAN_LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
+  VECTOPLAN_LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
+  VECTOPLAN_LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
+  VECTOPLAN_LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
+  VECTOPLAN_LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"
+
+  LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
+  LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
+  LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
+  LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
+  LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
+  LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
+  LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"
+
+  VECTOPLAN_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
+  VPLIB_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
+  LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
+
+  VECTOPLAN_LIBRARY_SCAN_RECURSIVE: "${VECTOPLAN_LIBRARY_SCAN_RECURSIVE:-true}"
+  VECTOPLAN_LIBRARY_SCAN_MAX_DEPTH: "${VECTOPLAN_LIBRARY_SCAN_MAX_DEPTH:-12}"
+  VECTOPLAN_LIBRARY_SCAN_FOLLOW_SYMLINKS: "${VECTOPLAN_LIBRARY_SCAN_FOLLOW_SYMLINKS:-false}"
+  VECTOPLAN_LIBRARY_INCLUDE_INVALID_IN_SCAN: "${VECTOPLAN_LIBRARY_INCLUDE_INVALID_IN_SCAN:-true}"
+  VECTOPLAN_LIBRARY_AUTO_SCAN_ON_REQUEST: "${VECTOPLAN_LIBRARY_AUTO_SCAN_ON_REQUEST:-true}"
+  VECTOPLAN_LIBRARY_FAIL_ON_DUPLICATE_IDS: "${VECTOPLAN_LIBRARY_FAIL_ON_DUPLICATE_IDS:-true}"
+  VECTOPLAN_LIBRARY_TREAT_MISSING_SOURCE_ROOT_AS_EMPTY: "${VECTOPLAN_LIBRARY_TREAT_MISSING_SOURCE_ROOT_AS_EMPTY:-true}"
+
+  VECTOPLAN_LIBRARY_LIST_INCLUDE_INVALID: "${VECTOPLAN_LIBRARY_LIST_INCLUDE_INVALID:-false}"
+  VECTOPLAN_LIBRARY_DETAIL_INCLUDE_RAW_DOCUMENTS: "${VECTOPLAN_LIBRARY_DETAIL_INCLUDE_RAW_DOCUMENTS:-true}"
+  VECTOPLAN_LIBRARY_DETAIL_INCLUDE_VALIDATION_REPORT: "${VECTOPLAN_LIBRARY_DETAIL_INCLUDE_VALIDATION_REPORT:-true}"
+
+  VECTOPLAN_LIBRARY_CACHE_ENABLED: "${VECTOPLAN_LIBRARY_CACHE_ENABLED:-false}"
+  VECTOPLAN_LIBRARY_CACHE_TTL_SECONDS: "${VECTOPLAN_LIBRARY_CACHE_TTL_SECONDS:-5}"
+
+  VECTOPLAN_LIBRARY_ALLOWED_MANIFEST_FILENAMES: "${VECTOPLAN_LIBRARY_ALLOWED_MANIFEST_FILENAMES:-vplib.manifest.json}"
+  VECTOPLAN_LIBRARY_IGNORED_DIRECTORY_NAMES: "${VECTOPLAN_LIBRARY_IGNORED_DIRECTORY_NAMES:-__pycache__,.git,.hg,.svn,.idea,.vscode,.pytest_cache,.mypy_cache,.ruff_cache,node_modules,venv,.venv,dist,build}"
+  VECTOPLAN_LIBRARY_IGNORED_FILE_SUFFIXES: "${VECTOPLAN_LIBRARY_IGNORED_FILE_SUFFIXES:-.pyc,.pyo,.tmp,.temp,.bak,.swp}"
+
+  # ---------------------------------------------------------------------------
+  # Bestehende Admin-/API-Defaults
+  # ---------------------------------------------------------------------------
+
+  VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH: "${VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH:-/admin}"
+  VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH:-/health}"
+  VECTOPLAN_LIBRARY_HEALTH_LIVE_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_LIVE_ROUTE_PATH:-/health/live}"
+  VECTOPLAN_LIBRARY_HEALTH_READY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_READY_ROUTE_PATH:-/health/ready}"
+  VECTOPLAN_LIBRARY_ROOT_REDIRECT_TARGET: "${VECTOPLAN_LIBRARY_ROOT_REDIRECT_TARGET:-/admin}"
+
+  VECTOPLAN_LIBRARY_API_ROUTE_PREFIX: "${VECTOPLAN_LIBRARY_API_ROUTE_PREFIX:-/api}"
+  VECTOPLAN_LIBRARY_API_LIBRARY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_API_LIBRARY_ROUTE_PATH:-/api/library}"
+  VECTOPLAN_LIBRARY_API_INVENTORY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_API_INVENTORY_ROUTE_PATH:-/api/inventory}"
+
+  VECTOPLAN_LIBRARY_PRESTART_LIBRARY_API_ROUTE_PATH: "${VECTOPLAN_LIBRARY_PRESTART_LIBRARY_API_ROUTE_PATH:-/api/library/overview}"
+  VECTOPLAN_LIBRARY_PRESTART_INVENTORY_API_ROUTE_PATH: "${VECTOPLAN_LIBRARY_PRESTART_INVENTORY_API_ROUTE_PATH:-/api/inventory/slots}"
+
+  VECTOPLAN_LIBRARY_ADMIN_TEMPLATE_NAME: "${VECTOPLAN_LIBRARY_ADMIN_TEMPLATE_NAME:-library_admin/main.html}"
+  VECTOPLAN_LIBRARY_ADMIN_PAGE_TITLE: "${VECTOPLAN_LIBRARY_ADMIN_PAGE_TITLE:-VECTOPLAN Library Admin}"
+  VECTOPLAN_LIBRARY_ADMIN_BRAND_NAME: "${VECTOPLAN_LIBRARY_ADMIN_BRAND_NAME:-VECTOPLAN Library}"
+  VECTOPLAN_LIBRARY_ADMIN_USE_INLINE_ASSETS: "${VECTOPLAN_LIBRARY_ADMIN_USE_INLINE_ASSETS:-true}"
+  VECTOPLAN_LIBRARY_ADMIN_DEFAULT_FAMILY_LIMIT: "${VECTOPLAN_LIBRARY_ADMIN_DEFAULT_FAMILY_LIMIT:-60}"
+
+  VECTOPLAN_LIBRARY_RUN_MODE: "${VECTOPLAN_LIBRARY_RUN_MODE:-gunicorn}"
+
+  GUNICORN_WORKERS: "${VECTOPLAN_LIBRARY_GUNICORN_WORKERS:-2}"
+  GUNICORN_THREADS: "${VECTOPLAN_LIBRARY_GUNICORN_THREADS:-2}"
+  GUNICORN_TIMEOUT: "${VECTOPLAN_LIBRARY_GUNICORN_TIMEOUT:-120}"
+  GUNICORN_KEEPALIVE: "${VECTOPLAN_LIBRARY_GUNICORN_KEEPALIVE:-5}"
+  GUNICORN_LOG_LEVEL: "${VECTOPLAN_LIBRARY_GUNICORN_LOG_LEVEL:-info}"
+  GUNICORN_ACCESSLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ACCESSLOG:--}"
+  GUNICORN_ERRORLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ERRORLOG:--}"
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame Environment-Defaults für den Chunk-Service
+# ------------------------------------------------------------------------------
+
+x-vectoplan-chunk-environment: &vectoplan-chunk-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-chunk"
+  APP_NAME: "vectoplan-chunk"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-chunk"
+  VECTOPLAN_EXTENSION_NAMESPACE: "vectoplan_chunk"
+  SERVICE_EXTENSION_NAMESPACE: "vectoplan_chunk"
+  ROUTES_EXTENSION_NAMESPACE: "vectoplan_chunk"
+
+  VECTOPLAN_CHUNK_CONFIG: "${VECTOPLAN_CHUNK_CONFIG:-development}"
+  VECTOPLAN_CHUNK_DEBUG: "${VECTOPLAN_CHUNK_DEBUG:-true}"
+  VECTOPLAN_CHUNK_HOST: "0.0.0.0"
+  VECTOPLAN_CHUNK_PORT: "5000"
+  VECTOPLAN_CHUNK_SECRET_KEY: "${VECTOPLAN_CHUNK_SECRET_KEY:-dev-secret-key-change-me}"
+
+  VECTOPLAN_CHUNK_DATABASE_DRIVER: "${VECTOPLAN_CHUNK_DATABASE_DRIVER:-postgresql+psycopg}"
+  VECTOPLAN_CHUNK_DB_HOST: "${VECTOPLAN_CHUNK_DB_HOST:-vectoplan-chunk-db}"
+  VECTOPLAN_CHUNK_DB_PORT: "${VECTOPLAN_CHUNK_DB_PORT:-5432}"
+  VECTOPLAN_CHUNK_DB_NAME: "${VECTOPLAN_CHUNK_DB_NAME:-vectoplan_chunk}"
+  VECTOPLAN_CHUNK_DB_USER: "${VECTOPLAN_CHUNK_DB_USER:-vectoplan_chunk}"
+  VECTOPLAN_CHUNK_DB_PASSWORD: "${VECTOPLAN_CHUNK_DB_PASSWORD:-vectoplan_chunk}"
+
+  VECTOPLAN_CHUNK_DATABASE_URI: "${VECTOPLAN_CHUNK_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
+  VECTOPLAN_CHUNK_DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
+  SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
+  DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
+
+  SQLALCHEMY_TRACK_MODIFICATIONS: "${VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS:-false}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS: "${VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS:-false}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_ECHO: "${VECTOPLAN_CHUNK_SQLALCHEMY_ECHO:-false}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_RECORD_QUERIES: "${VECTOPLAN_CHUNK_SQLALCHEMY_RECORD_QUERIES:-false}"
+
+  VECTOPLAN_CHUNK_DB_POOL_PRE_PING: "${VECTOPLAN_CHUNK_DB_POOL_PRE_PING:-true}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_PRE_PING: "${VECTOPLAN_CHUNK_SQLALCHEMY_POOL_PRE_PING:-true}"
+  VECTOPLAN_CHUNK_DB_POOL_RECYCLE: "${VECTOPLAN_CHUNK_DB_POOL_RECYCLE:-1800}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_RECYCLE: "${VECTOPLAN_CHUNK_DB_POOL_RECYCLE:-1800}"
+  VECTOPLAN_CHUNK_DB_POOL_SIZE: "${VECTOPLAN_CHUNK_DB_POOL_SIZE:-5}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_SIZE: "${VECTOPLAN_CHUNK_DB_POOL_SIZE:-5}"
+  VECTOPLAN_CHUNK_DB_MAX_OVERFLOW: "${VECTOPLAN_CHUNK_DB_MAX_OVERFLOW:-10}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_MAX_OVERFLOW: "${VECTOPLAN_CHUNK_DB_MAX_OVERFLOW:-10}"
+  VECTOPLAN_CHUNK_DB_POOL_TIMEOUT: "${VECTOPLAN_CHUNK_DB_POOL_TIMEOUT:-30}"
+  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_TIMEOUT: "${VECTOPLAN_CHUNK_DB_POOL_TIMEOUT:-30}"
+  VECTOPLAN_CHUNK_DB_CONNECT_TIMEOUT: "${VECTOPLAN_CHUNK_DB_CONNECT_TIMEOUT:-15}"
+
+  VECTOPLAN_CHUNK_DB_WAIT_FOR_READY: "${VECTOPLAN_CHUNK_DB_WAIT_FOR_READY:-true}"
+  VECTOPLAN_CHUNK_DB_WAIT_TIMEOUT: "${VECTOPLAN_CHUNK_DB_WAIT_TIMEOUT:-60}"
+  VECTOPLAN_CHUNK_DB_WAIT_INTERVAL: "${VECTOPLAN_CHUNK_DB_WAIT_INTERVAL:-2}"
+  VECTOPLAN_CHUNK_DB_REQUIRE_READY: "${VECTOPLAN_CHUNK_DB_REQUIRE_READY:-true}"
+
+  VECTOPLAN_CHUNK_DB_CHECK_ON_STARTUP: "${VECTOPLAN_CHUNK_DB_CHECK_ON_STARTUP:-true}"
+  VECTOPLAN_CHUNK_DB_REQUIRE_ON_STARTUP: "${VECTOPLAN_CHUNK_DB_REQUIRE_ON_STARTUP:-true}"
+  VECTOPLAN_CHUNK_REQUIRE_MIGRATIONS: "${VECTOPLAN_CHUNK_REQUIRE_MIGRATIONS:-false}"
+
+  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "${VECTOPLAN_CHUNK_AUTO_CREATE_ALL:-true}"
+  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_SEED_DEV_PROJECT:-true}"
+  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY:-true}"
+
+  VECTOPLAN_CHUNK_STARTUP_MODULE: "${VECTOPLAN_CHUNK_STARTUP_MODULE:-src.bootstrap.startup}"
+  VECTOPLAN_CHUNK_RUN_STARTUP_HOOKS: "${VECTOPLAN_CHUNK_RUN_STARTUP_HOOKS:-true}"
+  VECTOPLAN_CHUNK_PRESTART_CHECK: "${VECTOPLAN_CHUNK_PRESTART_CHECK:-false}"
+  VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY:-true}"
+  VECTOPLAN_CHUNK_STARTUP_STRICT: "${VECTOPLAN_CHUNK_STARTUP_STRICT:-false}"
+  VECTOPLAN_CHUNK_STRICT_TEMPLATE_CHECKS: "${VECTOPLAN_CHUNK_STRICT_TEMPLATE_CHECKS:-false}"
+  VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS: "${VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS:-false}"
+
+  VECTOPLAN_CHUNK_ENABLE_DEV_ROUTES: "${VECTOPLAN_CHUNK_ENABLE_DEV_ROUTES:-true}"
+  VECTOPLAN_CHUNK_ENABLE_LEGACY_ROUTES: "${VECTOPLAN_CHUNK_ENABLE_LEGACY_ROUTES:-true}"
+  VECTOPLAN_CHUNK_ROUTE_DEBUG_ERRORS: "${VECTOPLAN_CHUNK_ROUTE_DEBUG_ERRORS:-true}"
+  VECTOPLAN_CHUNK_API_PREFIX: "${VECTOPLAN_CHUNK_API_PREFIX:-}"
+  VECTOPLAN_CHUNK_ROUTE_MAX_BATCH_CHUNKS: "${VECTOPLAN_CHUNK_ROUTE_MAX_BATCH_CHUNKS:-256}"
+  VECTOPLAN_CHUNK_MAX_BATCH_CHUNKS: "${VECTOPLAN_CHUNK_MAX_BATCH_CHUNKS:-256}"
+  VECTOPLAN_CHUNK_MAX_COMMAND_AFFECTED_CELLS: "${VECTOPLAN_CHUNK_MAX_COMMAND_AFFECTED_CELLS:-65536}"
+
+  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_X: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_X:-256}"
+  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Y: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Y:-256}"
+  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Z: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Z:-256}"
+
+  VECTOPLAN_CHUNK_WORLD_TEST_ENABLED: "${VECTOPLAN_CHUNK_WORLD_TEST_ENABLED:-true}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-flat}"
+
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_SLUG:-dev-project}"
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_NAME: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_NAME:-Dev Project}"
+
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_SLUG:-dev-universe}"
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_NAME: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_NAME:-Dev Universe}"
+
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_SLUG:-spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_NAME: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_NAME:-Flat Spawn World}"
+
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_ID:-flat}"
+
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_TYPE:-runtime-world}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ROLE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ROLE:-default_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_SCOPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_SCOPE:-project}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_OWNER_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_OWNER_TYPE:-project}"
+
+  VECTOPLAN_CHUNK_DEFAULT_GENERATOR_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_GENERATOR_TYPE:-flat-world}"
+  VECTOPLAN_CHUNK_DEFAULT_GENERATOR_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_GENERATOR_VERSION:-1}"
+  VECTOPLAN_CHUNK_DEFAULT_PROJECTION_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_PROJECTION_TYPE:-flat-local-v1}"
+  VECTOPLAN_CHUNK_DEFAULT_TOPOLOGY_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_TOPOLOGY_TYPE:-flat-unbounded-v1}"
+  VECTOPLAN_CHUNK_DEFAULT_COORDINATE_SYSTEM: "${VECTOPLAN_CHUNK_DEFAULT_COORDINATE_SYSTEM:-vectoplan-world-y-up-v1}"
+
+  VECTOPLAN_CHUNK_DEFAULT_CHUNK_SIZE: "${VECTOPLAN_CHUNK_DEFAULT_CHUNK_SIZE:-16}"
+  VECTOPLAN_CHUNK_DEFAULT_CELL_SIZE: "${VECTOPLAN_CHUNK_DEFAULT_CELL_SIZE:-1}"
+  VECTOPLAN_CHUNK_DEFAULT_SURFACE_Y: "${VECTOPLAN_CHUNK_DEFAULT_SURFACE_Y:-0}"
+  VECTOPLAN_CHUNK_DEFAULT_MIN_Y: "${VECTOPLAN_CHUNK_DEFAULT_MIN_Y:--8}"
+  VECTOPLAN_CHUNK_DEFAULT_MAX_Y: "${VECTOPLAN_CHUNK_DEFAULT_MAX_Y:-64}"
+  VECTOPLAN_CHUNK_DEFAULT_SEED: "${VECTOPLAN_CHUNK_DEFAULT_SEED:-dev-seed}"
+
+  VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID:-debug-blocks}"
+  VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION:-1}"
+
+  VECTOPLAN_CHUNK_DEFAULT_SPAWN_X: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_X:-0}"
+  VECTOPLAN_CHUNK_DEFAULT_SPAWN_Y: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_Y:-2}"
+  VECTOPLAN_CHUNK_DEFAULT_SPAWN_Z: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_Z:-0}"
+  VECTOPLAN_CHUNK_DEFAULT_SPAWN_YAW: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_YAW:-0}"
+  VECTOPLAN_CHUNK_DEFAULT_SPAWN_PITCH: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_PITCH:-0}"
+
+  VECTOPLAN_CHUNK_BOOTSTRAP_ALLOW_DEFAULT_PROJECT: "${VECTOPLAN_CHUNK_BOOTSTRAP_ALLOW_DEFAULT_PROJECT:-false}"
+  VECTOPLAN_CHUNK_BOOTSTRAP_INCLUDE_PROVIDER_CHECKS: "${VECTOPLAN_CHUNK_BOOTSTRAP_INCLUDE_PROVIDER_CHECKS:-false}"
+  VECTOPLAN_CHUNK_BOOTSTRAP_REQUIRE_PROVIDER_WORLDS: "${VECTOPLAN_CHUNK_BOOTSTRAP_REQUIRE_PROVIDER_WORLDS:-false}"
+  VECTOPLAN_CHUNK_DISABLE_PROVIDER_ENRICHMENT: "${VECTOPLAN_CHUNK_DISABLE_PROVIDER_ENRICHMENT:-false}"
+
+  VECTOPLAN_CHUNK_HEALTHCHECK_PATH: "${VECTOPLAN_CHUNK_HEALTHCHECK_PATH:-/projects/_status}"
+
+  VECTOPLAN_CHUNK_RUN_MODE: "${VECTOPLAN_CHUNK_RUN_MODE:-gunicorn}"
+
+  GUNICORN_APP: "${VECTOPLAN_CHUNK_GUNICORN_APP:-wsgi:app}"
+  GUNICORN_WORKERS: "${VECTOPLAN_CHUNK_GUNICORN_WORKERS:-2}"
+  GUNICORN_THREADS: "${VECTOPLAN_CHUNK_GUNICORN_THREADS:-2}"
+  GUNICORN_TIMEOUT: "${VECTOPLAN_CHUNK_GUNICORN_TIMEOUT:-120}"
+  GUNICORN_KEEPALIVE: "${VECTOPLAN_CHUNK_GUNICORN_KEEPALIVE:-5}"
+  GUNICORN_LOG_LEVEL: "${VECTOPLAN_CHUNK_GUNICORN_LOG_LEVEL:-info}"
+  GUNICORN_ACCESSLOG: "${VECTOPLAN_CHUNK_GUNICORN_ACCESSLOG:--}"
+  GUNICORN_ERRORLOG: "${VECTOPLAN_CHUNK_GUNICORN_ERRORLOG:--}"
+
+  VECTOPLAN_EDITOR_CONFIG: "${VECTOPLAN_CHUNK_CONFIG:-development}"
+  VECTOPLAN_EDITOR_DEBUG: "${VECTOPLAN_CHUNK_DEBUG:-true}"
+  VECTOPLAN_EDITOR_HOST: "0.0.0.0"
+  VECTOPLAN_EDITOR_PORT: "5000"
+  VECTOPLAN_EDITOR_APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
+  VECTOPLAN_EDITOR_SERVICE_NAME: "vectoplan-chunk"
+  VECTOPLAN_EDITOR_PRESTART_CHECK: "${VECTOPLAN_CHUNK_PRESTART_CHECK:-false}"
+  VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY:-true}"
+  VECTOPLAN_EDITOR_STARTUP_STRICT: "${VECTOPLAN_CHUNK_STARTUP_STRICT:-false}"
+  VECTOPLAN_EDITOR_STRICT_ASSET_CHECKS: "${VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS:-false}"
+  VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED: "false"
+  VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS: "false"
+  VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_CHUNK_RUN_MODE:-gunicorn}"
+
+
+services:
+  vectoplan-editor:
+    container_name: vectoplan-editor
+
+    build:
+      context: ./services/vectoplan-editor
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: /opt/vectoplan/services/vectoplan-editor
+        APP_USER: vectoplan
+        APP_UID: "${VECTOPLAN_EDITOR_UID:-10001}"
+        APP_GID: "${VECTOPLAN_EDITOR_GID:-10001}"
+
+    init: true
+    restart: unless-stopped
+    working_dir: /opt/vectoplan/services/vectoplan-editor
+    stop_signal: SIGTERM
+    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-editor-environment
+
+    depends_on:
+      vectoplan-chunk:
+        condition: service_healthy
+
+    ports:
+      - "${VECTOPLAN_EDITOR_PUBLIC_PORT:-5000}:5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import sys, urllib.request; resp = urllib.request.urlopen('http://127.0.0.1:5000/editor', timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+    networks:
+      - vectoplan-net
+
+    # volumes:
+    #   - ./services/vectoplan-editor:/opt/vectoplan/services/vectoplan-editor:rw
+
+  vectoplan-library-db:
+    container_name: vectoplan-library-db
+    image: postgres:16-alpine
+    init: true
+    restart: unless-stopped
+    stop_signal: SIGTERM
+    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-library-postgres-environment
+
+    ports:
+      - "${VECTOPLAN_LIBRARY_POSTGRES_PUBLIC_PORT:-5432}:5432"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+    volumes:
+      - vectoplan-library-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      - vectoplan-net
+
+  vectoplan-library:
+    container_name: vectoplan-library
+
+    build:
+      context: ./services/vectoplan-library
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: /opt/vectoplan/services/vectoplan-library
+        APP_USER: vectoplan
+        APP_UID: "${VECTOPLAN_LIBRARY_UID:-10002}"
+        APP_GID: "${VECTOPLAN_LIBRARY_GID:-10002}"
+
+    init: true
+    restart: unless-stopped
+    working_dir: /opt/vectoplan/services/vectoplan-library
+    stop_signal: SIGTERM
+    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-library-environment
+
+    depends_on:
+      vectoplan-library-db:
+        condition: service_healthy
+
+    ports:
+      - "${VECTOPLAN_LIBRARY_PUBLIC_PORT:-5001}:5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import sys, urllib.request; resp = urllib.request.urlopen('http://127.0.0.1:5000/health/ready', timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 10
+      start_period: 90s
+    volumes:
+      - ./services/vectoplan-library:/opt/vectoplan/services/vectoplan-library
+    networks:
+      - vectoplan-net
+
+    # Für lokale Entwicklung optional aktivieren.
+    # Achtung:
+    # Wenn du migrations/ im Host persistieren willst, den zweiten Mount
+    # ebenfalls aktivieren. Sonst werden automatisch erzeugte Migrationen nur
+    # im Container-Dateisystem gehalten.
+    #
+    # volumes:
+    #   - ./services/vectoplan-library:/opt/vectoplan/services/vectoplan-library:rw
+    #   - ./services/vectoplan-library/migrations:/opt/vectoplan/services/vectoplan-library/migrations:rw
+
+  vectoplan-chunk-db:
+    container_name: vectoplan-chunk-db
+    image: postgres:16-alpine
+    init: true
+    restart: unless-stopped
+    stop_signal: SIGTERM
+    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-chunk-postgres-environment
+
+    ports:
+      - "${VECTOPLAN_CHUNK_POSTGRES_PUBLIC_PORT:-5433}:5432"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+    volumes:
+      - vectoplan-chunk-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      - vectoplan-net
+
+  vectoplan-chunk:
+    container_name: vectoplan-chunk
+
+    build:
+      context: ./services/vectoplan-chunk
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: /opt/vectoplan/services/vectoplan-chunk
+        APP_USER: vectoplan
+        APP_UID: "${VECTOPLAN_CHUNK_UID:-10003}"
+        APP_GID: "${VECTOPLAN_CHUNK_GID:-10003}"
+
+    init: true
+    restart: unless-stopped
+    working_dir: /opt/vectoplan/services/vectoplan-chunk
+    stop_signal: SIGTERM
+    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-chunk-environment
+
+    depends_on:
+      vectoplan-chunk-db:
+        condition: service_healthy
+
+    ports:
+      - "${VECTOPLAN_CHUNK_PUBLIC_PORT:-5002}:5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import os, sys, urllib.request; path = os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_PATH', '/projects/_status'); resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
+        ]
+      interval: 20s
+      timeout: 5s
+      retries: 8
+      start_period: 45s
+
+    networks:
+      - vectoplan-net
+
+    # volumes:
+    #   - ./services/vectoplan-chunk:/opt/vectoplan/services/vectoplan-chunk:rw
+
+
+volumes:
+  vectoplan-library-postgres-data:
+    name: vectoplan-library-postgres-data
+
+  vectoplan-chunk-postgres-data:
+    name: vectoplan-chunk-postgres-data
+
+
+networks:
+  vectoplan-net:
+    name: vectoplan-net
+    driver: bridge

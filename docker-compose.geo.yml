@@ -1,0 +1,558 @@
+# ./docker-compose.geo.yml
+
+# ------------------------------------------------------------------------------
+# VECTOPLAN Geo Stack
+# ------------------------------------------------------------------------------
+# Start aus dem Repo-Root:
+#   docker compose -f docker-compose.geo.yml up -d --build
+#
+# Zweck:
+#   Enger Entwicklungsstack für Geodaten, OpenLayer und GeoServer-Orchestrierung.
+#
+# Enthalten:
+# - db
+# - db-postgis-init
+# - geoserver
+# - geoserver-orchestrator-db-init
+# - geoserver-orchestrator-sync-init
+# - geoserver-orchestrator
+# - openlayer
+#
+# Nicht enthalten:
+# - vectoplan-editor
+# - vectoplan-chunk
+# - vectoplan-library
+# - vectoplan-core
+# - vectoplan-converter
+# - vectoplan-language
+# - vectoplan-app
+#
+# Ports:
+# - OpenLayer:    http://localhost:8090
+# - Orchestrator: http://localhost:8010
+# - GeoServer:    http://localhost:8082/geoserver
+# - PostGIS:      localhost:5434
+# ------------------------------------------------------------------------------
+
+name: vectoplan-geo-stack
+
+
+# ------------------------------------------------------------------------------
+# Gemeinsame Werte
+# ------------------------------------------------------------------------------
+
+x-geoserver-orchestrator-db-url: &geoserver_orchestrator_db_url "postgresql+psycopg2://${GEOSERVER_ORCH_DB_USER:-geo_orch}:${GEOSERVER_ORCH_DB_PASSWORD:-geo_orch}@${GEOSERVER_ORCH_DB_HOST:-db}:${GEOSERVER_ORCH_DB_PORT:-5432}/${GEOSERVER_ORCH_DB_NAME:-geoserver_orchestrator_db}"
+
+x-geoserver-orchestrator-build: &geoserver_orchestrator_build
+  context: ./services/vectoplan-geoserver-orchestrator
+  dockerfile: Dockerfile
+
+x-geoserver-orchestrator-volumes: &geoserver_orchestrator_volumes
+  - ./services/vectoplan-geoserver-orchestrator/upload:/app/upload
+  - geoserver_orchestrator_tmp_data:/app/tmp
+  - geoserver_orchestrator_logs:/app/logs
+
+
+# ------------------------------------------------------------------------------
+# Orchestrator Common Environment
+# ------------------------------------------------------------------------------
+
+x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_environment
+  SECRET_KEY: "${SECRET_KEY:-dev-secret-key-change-me}"
+
+  APP_ENV: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  FLASK_ENV: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  WSGI_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  GEOSERVER_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+
+  HOST: "0.0.0.0"
+  PORT: "8010"
+  LOG_LEVEL: "${GEOSERVER_ORCHESTRATOR_LOG_LEVEL:-DEBUG}"
+
+  GEOSERVER_ORCH_DB_DRIVER: "${GEOSERVER_ORCH_DB_DRIVER:-postgresql+psycopg2}"
+  GEOSERVER_ORCH_DB_HOST: "${GEOSERVER_ORCH_DB_HOST:-db}"
+  GEOSERVER_ORCH_DB_PORT: "${GEOSERVER_ORCH_DB_PORT:-5432}"
+  GEOSERVER_ORCH_DB_NAME: "${GEOSERVER_ORCH_DB_NAME:-geoserver_orchestrator_db}"
+  GEOSERVER_ORCH_DB_USER: "${GEOSERVER_ORCH_DB_USER:-geo_orch}"
+  GEOSERVER_ORCH_DB_PASSWORD: "${GEOSERVER_ORCH_DB_PASSWORD:-geo_orch}"
+  GEOSERVER_ORCH_DB_OWNER: "${GEOSERVER_ORCH_DB_OWNER:-geo_orch}"
+
+  SQLALCHEMY_DATABASE_URI: *geoserver_orchestrator_db_url
+  GEOSERVER_ORCH_DATABASE_URL: *geoserver_orchestrator_db_url
+  DATABASE_URL: *geoserver_orchestrator_db_url
+
+  META_SCHEMA_NAME: "${META_SCHEMA_NAME:-meta}"
+  MODEL_SCHEMA_NAME: "${MODEL_SCHEMA_NAME:-meta}"
+  CATALOG_SCHEMA_NAME: "${CATALOG_SCHEMA_NAME:-meta}"
+  RAW_SCHEMA_NAME: "${RAW_SCHEMA_NAME:-raw}"
+  PUBLISH_SCHEMA_NAME: "${PUBLISH_SCHEMA_NAME:-pub}"
+  EDITABLE_SCHEMA_NAME: "${EDITABLE_SCHEMA_NAME:-edit}"
+  GEOSERVER_ORCH_SCHEMAS: "${GEOSERVER_ORCH_SCHEMAS:-meta,raw,pub,edit}"
+
+  EXPECTED_CORE_MODEL_TABLES: "${EXPECTED_CORE_MODEL_TABLES:-datasets,dataset_sources,import_runs,publish_states,editable_layers}"
+  BOOTSTRAP_EXPECTED_CORE_TABLES: "${BOOTSTRAP_EXPECTED_CORE_TABLES:-datasets,dataset_sources,import_runs,publish_states,editable_layers}"
+
+  ENABLE_PERSISTED_CATALOGS: "${ENABLE_PERSISTED_CATALOGS:-true}"
+  REQUIRE_DATASET_CATALOG_ASSIGNMENT: "${REQUIRE_DATASET_CATALOG_ASSIGNMENT:-true}"
+
+  DEFAULT_CATALOG_KEY: "${GEODATA_DEFAULT_CATALOG_KEY:-default}"
+  DEFAULT_CATALOG_NAME: "${GEODATA_DEFAULT_CATALOG_NAME:-Default Catalog}"
+  DEFAULT_CATALOG_DESCRIPTION: "${GEODATA_DEFAULT_CATALOG_DESCRIPTION:-Standard-Katalog für GeoServer-Orchestrator-Geodaten.}"
+
+  GEODATA_DEFAULT_CATALOG_KEY: "${GEODATA_DEFAULT_CATALOG_KEY:-default}"
+  GEODATA_DEFAULT_CATALOG_NAME: "${GEODATA_DEFAULT_CATALOG_NAME:-Default Catalog}"
+  GEODATA_DEFAULT_CATALOG_DESCRIPTION: "${GEODATA_DEFAULT_CATALOG_DESCRIPTION:-Standard-Katalog für GeoServer-Orchestrator-Geodaten.}"
+  GEODATA_DEFAULT_CATALOG_IS_ACTIVE: "${GEODATA_DEFAULT_CATALOG_IS_ACTIVE:-true}"
+  GEODATA_DEFAULT_CATALOG_IS_DEFAULT: "${GEODATA_DEFAULT_CATALOG_IS_DEFAULT:-true}"
+
+  SERVICE_PUBLIC_SCHEME: "${SERVICE_PUBLIC_SCHEME:-http}"
+  SERVICE_PUBLIC_HOST: "${SERVICE_PUBLIC_HOST:-localhost}"
+  SERVICE_PUBLIC_PORT: "${SERVICE_PUBLIC_PORT:-8010}"
+  SERVICE_PUBLIC_BASE_URL: "${SERVICE_PUBLIC_BASE_URL:-http://localhost:8010}"
+
+  GEOSERVER_CONTEXT_PATH: "${GEOSERVER_CONTEXT_PATH:-/geoserver}"
+
+  GEOSERVER_INTERNAL_SCHEME: "${GEOSERVER_INTERNAL_SCHEME:-http}"
+  GEOSERVER_INTERNAL_HOST: "${GEOSERVER_INTERNAL_HOST:-geoserver}"
+  GEOSERVER_INTERNAL_PORT: "${GEOSERVER_INTERNAL_PORT:-8080}"
+  GEOSERVER_INTERNAL_BASE_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
+
+  GEOSERVER_PUBLIC_SCHEME: "${GEOSERVER_PUBLIC_SCHEME:-http}"
+  GEOSERVER_PUBLIC_HOST: "${GEOSERVER_PUBLIC_HOST:-localhost}"
+  GEOSERVER_PUBLIC_PORT: "${GEOSERVER_PUBLIC_PORT:-8082}"
+  GEOSERVER_PUBLIC_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:8082/geoserver}"
+
+  GEOSERVER_REST_BASE_URL: "${GEOSERVER_REST_BASE_URL:-http://geoserver:8080/geoserver/rest}"
+  GEOSERVER_USERNAME: "${GEOSERVER_ADMIN_USER:-admin}"
+  GEOSERVER_PASSWORD: "${GEOSERVER_ADMIN_PASSWORD:-geoserver}"
+  GEOSERVER_SKIP_DEMO_DATA: "true"
+
+  GEOSERVER_DEFAULT_WORKSPACE: "${GEOSERVER_DEFAULT_WORKSPACE:-public}"
+  GEOSERVER_DEFAULT_DATASTORE_NAME: "${GEOSERVER_DEFAULT_DATASTORE_NAME:-postgis_main}"
+  GEOSERVER_DEFAULT_WFS_VERSION: "${GEOSERVER_DEFAULT_WFS_VERSION:-2.0.0}"
+  GEOSERVER_DEFAULT_OUTPUT_FORMAT: "${GEOSERVER_DEFAULT_OUTPUT_FORMAT:-application/json}"
+  GEOSERVER_DEFAULT_PROJECTION_POLICY: "${GEOSERVER_DEFAULT_PROJECTION_POLICY:-FORCE_DECLARED}"
+  OGR2OGR_COMMAND_TIMEOUT_SECONDS: "${OGR2OGR_COMMAND_TIMEOUT_SECONDS:-7200}"
+  OGR_PG_USE_COPY: "${OGR_PG_USE_COPY:-true}"
+
+  DB_HEALTHCHECK_ON_STARTUP: "false"
+  GEOSERVER_HEALTHCHECK_ON_STARTUP: "false"
+  AUTO_CREATE_TABLES_ON_STARTUP: "false"
+  AUTO_SYNC_ON_STARTUP: "false"
+  ALLOW_INPROCESS_AUTO_CREATE_TABLES: "false"
+  ALLOW_INPROCESS_AUTO_SYNC: "false"
+
+  GEOSERVER_ORCHESTRATOR_VALIDATE_CONFIG_ON_STARTUP: "true"
+  GEOSERVER_ORCHESTRATOR_VALIDATE_STARTUP_POLICY_ON_STARTUP: "true"
+  GEOSERVER_ORCHESTRATOR_ENSURE_RUNTIME_DIRS_ON_STARTUP: "true"
+  GEOSERVER_ORCHESTRATOR_PRINT_CONFIG_SUMMARY: "true"
+  GEOSERVER_ORCHESTRATOR_PRINT_STARTUP_SUMMARY: "true"
+  GEOSERVER_ORCHESTRATOR_VALIDATE_BINARIES_ON_STARTUP: "true"
+
+  GEOSERVER_ORCHESTRATOR_WAIT_FOR_DB: "true"
+  GEOSERVER_ORCHESTRATOR_DB_WAIT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_TIMEOUT_SECONDS:-120}"
+  GEOSERVER_ORCHESTRATOR_DB_WAIT_INTERVAL_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_INTERVAL_SECONDS:-2}"
+  GEOSERVER_ORCHESTRATOR_DB_WAIT_CONNECT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_CONNECT_TIMEOUT_SECONDS:-5}"
+  GEOSERVER_ORCHESTRATOR_DB_WAIT_FAIL_FAST_ON_AUTH: "true"
+
+  GEOSERVER_ORCHESTRATOR_WAIT_FOR_GEOSERVER: "true"
+  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_TIMEOUT_SECONDS:-180}"
+  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_INTERVAL_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_INTERVAL_SECONDS:-3}"
+  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_REQUEST_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_REQUEST_TIMEOUT_SECONDS:-10}"
+  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_USE_REST_FALLBACK: "true"
+
+
+# ------------------------------------------------------------------------------
+# DB-Init-Umgebung
+# ------------------------------------------------------------------------------
+
+x-geoserver-orchestrator-db-init-environment: &geoserver_orchestrator_db_init_environment
+  <<: *geoserver_orchestrator_common_environment
+
+  APP_STARTUP_MODE: "db_init"
+  WSGI_STARTUP_MODE: "db_init"
+  SERVICE_STARTUP_MODE: "db_init"
+  STARTUP_MODE: "db_init"
+
+  BOOTSTRAP_LOG_LEVEL: "${GEOSERVER_ORCHESTRATOR_LOG_LEVEL:-DEBUG}"
+  BOOTSTRAP_FLASK_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  BOOTSTRAP_STRICT_STARTUP_MODE: "true"
+
+  PG_ADMIN_HOST: "${PG_ADMIN_HOST:-db}"
+  PG_ADMIN_PORT: "${PG_ADMIN_PORT:-5432}"
+  PG_ADMIN_DB: "${PG_ADMIN_DB:-postgres}"
+  PG_ADMIN_USER: "${PG_ADMIN_USER:-postgres}"
+  PG_ADMIN_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+
+  BOOTSTRAP_ENSURE_ROLE_IF_MISSING: "${BOOTSTRAP_ENSURE_ROLE_IF_MISSING:-true}"
+  BOOTSTRAP_UPDATE_ROLE_PASSWORD_IF_EXISTS: "${BOOTSTRAP_UPDATE_ROLE_PASSWORD_IF_EXISTS:-true}"
+  BOOTSTRAP_ENSURE_DATABASE_IF_MISSING: "${BOOTSTRAP_ENSURE_DATABASE_IF_MISSING:-true}"
+  BOOTSTRAP_ALTER_DATABASE_OWNER_IF_NEEDED: "${BOOTSTRAP_ALTER_DATABASE_OWNER_IF_NEEDED:-true}"
+  BOOTSTRAP_ENSURE_POSTGIS_EXTENSION: "${BOOTSTRAP_ENSURE_POSTGIS_EXTENSION:-true}"
+  BOOTSTRAP_ENSURE_SCHEMAS: "${BOOTSTRAP_ENSURE_SCHEMAS:-true}"
+  BOOTSTRAP_ENSURE_SCHEMA_OWNERSHIP: "${BOOTSTRAP_ENSURE_SCHEMA_OWNERSHIP:-true}"
+  BOOTSTRAP_GRANT_SCHEMA_PRIVILEGES: "${BOOTSTRAP_GRANT_SCHEMA_PRIVILEGES:-true}"
+  BOOTSTRAP_VERIFY_TARGET_CONNECTION: "${BOOTSTRAP_VERIFY_TARGET_CONNECTION:-true}"
+  BOOTSTRAP_CREATE_MODEL_TABLES: "${BOOTSTRAP_CREATE_MODEL_TABLES:-true}"
+  BOOTSTRAP_VERIFY_MODEL_TABLES: "${BOOTSTRAP_VERIFY_MODEL_TABLES:-true}"
+  BOOTSTRAP_ENSURE_DEFAULT_CATALOG: "${BOOTSTRAP_ENSURE_DEFAULT_CATALOG:-true}"
+
+  BOOTSTRAP_CONNECT_MAX_ATTEMPTS: "${BOOTSTRAP_CONNECT_MAX_ATTEMPTS:-20}"
+  BOOTSTRAP_CONNECT_RETRY_SECONDS: "${BOOTSTRAP_CONNECT_RETRY_SECONDS:-2}"
+  BOOTSTRAP_CONNECT_TIMEOUT_SECONDS: "${BOOTSTRAP_CONNECT_TIMEOUT_SECONDS:-10}"
+
+  GEOSERVER_ORCHESTRATOR_WAIT_FOR_GEOSERVER: "false"
+
+  DB_INIT_FLASK_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  DB_INIT_STARTUP_MODE: "db_init"
+  DB_INIT_VALIDATE_CONFIG: "true"
+  DB_INIT_VALIDATE_STARTUP_POLICY: "true"
+  DB_INIT_CLEAR_KNOWN_CACHES_BEFORE_RUN: "true"
+  DB_INIT_BOOTSTRAP_USE_CACHE: "false"
+  DB_INIT_FORCE_RELOAD_MODULES: "false"
+  DB_INIT_BUILD_APP_SANITY_CHECK: "true"
+  DB_INIT_APP_USE_CACHE: "false"
+  DB_INIT_REGISTER_DEFAULT_ROUTES: "false"
+  DB_INIT_RUN_APP_STARTUP_TASKS: "false"
+  DB_INIT_CREATE_ON_IMPORT: "false"
+  DB_INIT_STRICT_STARTUP_MODE: "true"
+  DB_INIT_FAIL_ON_APP_BOOTSTRAP_NOT_OK: "true"
+  DB_INIT_FAIL_ON_DATABASE_PROBE_NOT_OK: "true"
+
+
+# ------------------------------------------------------------------------------
+# Startup-Sync-Umgebung
+# ------------------------------------------------------------------------------
+
+x-geoserver-orchestrator-sync-init-environment: &geoserver_orchestrator_sync_init_environment
+  <<: *geoserver_orchestrator_common_environment
+
+  APP_STARTUP_MODE: "startup_sync"
+  WSGI_STARTUP_MODE: "startup_sync"
+  SERVICE_STARTUP_MODE: "startup_sync"
+  STARTUP_MODE: "startup_sync"
+
+  STARTUP_SYNC_FLASK_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
+  STARTUP_SYNC_STARTUP_MODE: "startup_sync"
+  STARTUP_SYNC_ENABLED: "true"
+  STARTUP_SYNC_REGISTER_DEFAULT_ROUTES: "false"
+  STARTUP_SYNC_RUN_APP_STARTUP_TASKS: "false"
+  STARTUP_SYNC_USE_APP_CACHE: "false"
+  STARTUP_SYNC_CREATE_ON_IMPORT: "false"
+  STARTUP_SYNC_CLEAR_APP_CACHES_BEFORE_BUILD: "true"
+
+  STARTUP_SYNC_CONTINUE_ON_ERROR: "${STARTUP_SYNC_CONTINUE_ON_ERROR:-false}"
+  STARTUP_SYNC_FAIL_ON_ANY_FAILURE: "${STARTUP_SYNC_FAIL_ON_ANY_FAILURE:-true}"
+  STARTUP_SYNC_INCLUDE_INVALID: "${STARTUP_SYNC_INCLUDE_INVALID:-true}"
+  STARTUP_SYNC_VALIDATE_ONLY: "${STARTUP_SYNC_VALIDATE_ONLY:-false}"
+  STARTUP_SYNC_WRITE_STATE: "${STARTUP_SYNC_WRITE_STATE:-true}"
+  STARTUP_SYNC_WRITE_SYNC_LOG: "${STARTUP_SYNC_WRITE_SYNC_LOG:-true}"
+  STARTUP_SYNC_INCLUDE_CATALOG: "${STARTUP_SYNC_INCLUDE_CATALOG:-true}"
+  STARTUP_SYNC_ENRICH_CATALOG_WITH_DB: "${STARTUP_SYNC_ENRICH_CATALOG_WITH_DB:-true}"
+  STARTUP_SYNC_EXPORT_SNAPSHOT: "${STARTUP_SYNC_EXPORT_SNAPSHOT:-true}"
+  STARTUP_SYNC_FORCE_SOURCE_IMPORT: "${STARTUP_SYNC_FORCE_SOURCE_IMPORT:-false}"
+  STARTUP_SYNC_DATASET_IDS: "${STARTUP_SYNC_DATASET_IDS:-}"
+
+
+# ------------------------------------------------------------------------------
+# Runtime-Umgebung
+# ------------------------------------------------------------------------------
+
+x-geoserver-orchestrator-runtime-environment: &geoserver_orchestrator_runtime_environment
+  <<: *geoserver_orchestrator_common_environment
+
+  APP_STARTUP_MODE: "runtime"
+  WSGI_STARTUP_MODE: "runtime"
+  SERVICE_STARTUP_MODE: "runtime"
+  STARTUP_MODE: "runtime"
+
+  DB_HEALTHCHECK_ON_STARTUP: "true"
+  GEOSERVER_HEALTHCHECK_ON_STARTUP: "true"
+
+  APP_CREATE_ON_IMPORT: "false"
+  APP_USE_CACHE: "true"
+  APP_REGISTER_DEFAULT_ROUTES: "true"
+  APP_RUN_STARTUP_TASKS: "false"
+
+  WSGI_USE_APP_CACHE: "true"
+  WSGI_REGISTER_DEFAULT_ROUTES: "true"
+  WSGI_RUN_STARTUP_TASKS: "false"
+  WSGI_FORCE_REBUILD: "false"
+
+
+# ------------------------------------------------------------------------------
+# Services
+# ------------------------------------------------------------------------------
+
+services:
+  db:
+    container_name: vectoplan-geo-db
+    image: postgis/postgis:16-3.5
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: "${PG_ADMIN_DB:-postgres}"
+      POSTGRES_USER: "${PG_ADMIN_USER:-postgres}"
+      POSTGRES_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+    ports:
+      - "${VECTOPLAN_GEO_POSTGRES_PUBLIC_PORT:-5434}:5432"
+
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+    networks:
+      - backend
+
+
+  db-postgis-init:
+    container_name: vectoplan-geo-db-postgis-init
+    image: postgis/postgis:16-3.5
+    restart: "no"
+
+    environment:
+      POSTGRES_DB: "${PG_ADMIN_DB:-postgres}"
+      POSTGRES_USER: "${PG_ADMIN_USER:-postgres}"
+      POSTGRES_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    entrypoint:
+      - /bin/sh
+      - -lc
+
+    command: |
+      export PGPASSWORD="$${POSTGRES_PASSWORD}"
+
+      until pg_isready -h db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"; do
+        echo "Warte auf PostgreSQL..."
+        sleep 2
+      done
+
+      psql -h db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" -v ON_ERROR_STOP=1 <<'SQL'
+      CREATE EXTENSION IF NOT EXISTS postgis;
+      CREATE SCHEMA IF NOT EXISTS raw;
+      CREATE SCHEMA IF NOT EXISTS pub;
+      CREATE SCHEMA IF NOT EXISTS edit;
+      CREATE SCHEMA IF NOT EXISTS meta;
+      SQL
+
+      echo "PostGIS und Schemas wurden sichergestellt."
+
+    networks:
+      - backend
+
+
+  geoserver:
+    container_name: vectoplan-geoserver
+    image: docker.osgeo.org/geoserver:2.28.3
+    restart: unless-stopped
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+    environment:
+      SKIP_DEMO_DATA: "true"
+      WEBAPP_CONTEXT: "geoserver"
+      ROOT_WEBAPP_REDIRECT: "true"
+      PROXY_BASE_URL: "http://localhost:8082/geoserver"
+
+      GEOSERVER_ADMIN_USER: "${GEOSERVER_ADMIN_USER:-admin}"
+      GEOSERVER_ADMIN_PASSWORD: "${GEOSERVER_ADMIN_PASSWORD:-geoserver}"
+
+      RUN_UNPRIVILEGED: "true"
+      RUN_WITH_USER_UID: "10001"
+      RUN_WITH_USER_GID: "10001"
+      CHANGE_OWNERSHIP_ON_FOLDERS: "/opt /opt/geoserver_data"
+
+      EXTRA_JAVA_OPTS: "${GEOSERVER_EXTRA_JAVA_OPTS:--Xms512m -Xmx1024m}"
+      HEALTHCHECK_URL: "http://127.0.0.1:8080/geoserver/rest/about/version.json"
+
+    volumes:
+      - geoserver_data:/opt/geoserver_data
+
+    ports:
+      - "${GEOSERVER_PUBLIC_PORT:-8082}:8080"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl -fsS -u "$$GEOSERVER_ADMIN_USER:$$GEOSERVER_ADMIN_PASSWORD"
+          -H "Accept: application/json"
+          "$$HEALTHCHECK_URL"
+          >/dev/null 2>&1 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+    networks:
+      - backend
+
+
+  geoserver-orchestrator-db-init:
+    container_name: vectoplan-geoserver-orchestrator-db-init
+    build: *geoserver_orchestrator_build
+    restart: "no"
+
+    depends_on:
+      db:
+        condition: service_healthy
+      db-postgis-init:
+        condition: service_completed_successfully
+
+    environment: *geoserver_orchestrator_db_init_environment
+    volumes: *geoserver_orchestrator_volumes
+
+    networks:
+      - backend
+
+
+  geoserver-orchestrator-sync-init:
+    container_name: vectoplan-geoserver-orchestrator-sync-init
+    build: *geoserver_orchestrator_build
+    restart: "no"
+
+    depends_on:
+      db:
+        condition: service_healthy
+      geoserver:
+        condition: service_healthy
+      geoserver-orchestrator-db-init:
+        condition: service_completed_successfully
+
+    environment: *geoserver_orchestrator_sync_init_environment
+    volumes: *geoserver_orchestrator_volumes
+
+    networks:
+      - backend
+
+
+  geoserver-orchestrator:
+    container_name: vectoplan-geoserver-orchestrator
+    build: *geoserver_orchestrator_build
+    restart: unless-stopped
+
+    depends_on:
+      db:
+        condition: service_healthy
+      geoserver:
+        condition: service_healthy
+      geoserver-orchestrator-db-init:
+        condition: service_completed_successfully
+      geoserver-orchestrator-sync-init:
+        condition: service_completed_successfully
+
+    environment: *geoserver_orchestrator_runtime_environment
+    volumes: *geoserver_orchestrator_volumes
+
+    ports:
+      - "${GEOSERVER_ORCHESTRATOR_PUBLIC_PORT:-8010}:8010"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl -fsS "http://127.0.0.1:8010/health/ready" >/dev/null 2>&1 ||
+          curl -fsS "http://127.0.0.1:8010/health/live" >/dev/null 2>&1 ||
+          curl -fsS "http://127.0.0.1:8010/health" >/dev/null 2>&1 ||
+          exit 1
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+    networks:
+      - backend
+
+
+  openlayer:
+    container_name: vectoplan-openlayer
+
+    build:
+      context: ./services/vectoplan-openLayer
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+
+    environment:
+      HOST: "0.0.0.0"
+      OPENLAYER_PORT: "8090"
+      LOG_LEVEL: "${OPENLAYER_LOG_LEVEL:-INFO}"
+
+      GEOSERVER_ORCHESTRATOR_URL: "http://geoserver-orchestrator:8010"
+      GEOSERVER_INTERNAL_URL: "http://geoserver:8080/geoserver"
+      GEOSERVER_PUBLIC_URL: "http://localhost:8082/geoserver"
+
+      MAPBOX_ACCESS_TOKEN: "${MAPBOX_ACCESS_TOKEN:-}"
+      MAPBOX_STYLE_URL: "${MAPBOX_STYLE_URL:-}"
+
+    depends_on:
+      geoserver-orchestrator:
+        condition: service_healthy
+
+    ports:
+      - "${OPENLAYER_PUBLIC_PORT:-8090}:8090"
+
+    expose:
+      - "8090"
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          curl -fsS "http://127.0.0.1:8090/ready" >/dev/null 2>&1 ||
+          curl -fsS "http://127.0.0.1:8090/health" >/dev/null 2>&1 ||
+          curl -fsS "http://127.0.0.1:8090/" >/dev/null 2>&1 ||
+          exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+    networks:
+      - backend
+
+
+# ------------------------------------------------------------------------------
+# Volumes
+# ------------------------------------------------------------------------------
+
+volumes:
+  db_data:
+    name: vectoplan-geo-db-data
+
+  geoserver_data:
+    name: vectoplan-geoserver-data
+
+  geoserver_orchestrator_upload_data:
+    name: vectoplan-geoserver-orchestrator-upload-data
+
+  geoserver_orchestrator_tmp_data:
+    name: vectoplan-geoserver-orchestrator-tmp-data
+
+  geoserver_orchestrator_logs:
+    name: vectoplan-geoserver-orchestrator-logs
+
+
+# ------------------------------------------------------------------------------
+# Networks
+# ------------------------------------------------------------------------------
+
+networks:
+  backend:
+    name: vectoplan-geo-net
+    driver: bridge

@@ -1,0 +1,2 @@
+*.gpkg filter=lfs diff=lfs merge=lfs -text
+services/DataLoader/templates_repo/osm/osm_streets.gpkg filter=lfs diff=lfs merge=lfs -text
