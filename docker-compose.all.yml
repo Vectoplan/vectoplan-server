@@ -1,4 +1,4 @@
-# /vectoplan-website/services/vectoplan-server/docker-compose.all.yml
+# services/vectoplan-server/docker-compose.all.yml
 
 # ------------------------------------------------------------------------------
 # VECTOPLAN Server Stack
@@ -8,16 +8,28 @@
 # - *_INTERNAL_URL ist nur für Container-zu-Container-Kommunikation.
 # - *_PUBLIC_URL ist für Browser, iframe, Redirects und "extern öffnen".
 #
-# Konkreter Fehler, den diese Datei verhindert:
-# - Browser darf für OpenLayer nicht auf http://localhost:8090 zeigen.
-# - Browser muss auf http://localhost:5190/map zeigen.
-# - Browser darf für Editor nicht auf http://localhost:5100/ zeigen.
-# - Browser muss auf http://localhost:5100/editor zeigen.
+# Architekturentscheidung für vectoplan-chunk:
+# - vectoplan-chunk-db hält die PostgreSQL-Datenbank.
+# - vectoplan-chunk-init führt explizit den DB-Bootstrap aus.
+# - vectoplan-chunk startet danach als read-only Runtime.
 #
-# Die eigentliche iframe-Erlaubnis wird später in den Services ergänzt:
-# - vectoplan-editor: /editor?embed=1 darf von http://localhost:5103 geframed werden.
-# - vectoplan-openLayer: /map?embed=1 darf von http://localhost:5103 geframed werden.
-# - vectoplan-app: frame-src muss Editor und OpenLayer erlauben.
+# Warum:
+# - db.create_all() und Default-Seeding dürfen nicht im normalen Gunicorn-Worker-
+#   Startup laufen.
+# - Runtime-Startup bleibt stabil und erzeugt keine Tabellen.
+# - Schema-/Seed-Erstellung läuft einmalig, kontrolliert und retry-fähig.
+#
+# App-zu-Chunk-Ziel:
+# - vectoplan-app erstellt App-Projekte.
+# - vectoplan-app ruft später serverseitig vectoplan-chunk über
+#   VECTOPLAN_CHUNK_INTERNAL_URL auf.
+# - vectoplan-chunk erzeugt dazu ein eigenes Chunk-Projekt mit Universe/World.
+# - vectoplan-app speichert danach nur chunk_project_id/chunk_world_id und
+#   ProjectServiceLink-Referenzen.
+#
+# Browser-Regel:
+# - Browser / iframe / redirect  → PUBLIC_URL
+# - Backend / server-to-server   → INTERNAL_URL
 
 name: ${VECTOPLAN_SERVER_PROJECT_NAME:-vectoplan-server}
 
@@ -44,6 +56,8 @@ x-vectoplan-init-service-defaults: &vectoplan-init-service-defaults
   init: true
   restart: "no"
   logging: *vectoplan-logging
+  stop_signal: SIGTERM
+  stop_grace_period: 30s
 
 x-vectoplan-library-postgres-environment: &vectoplan-library-postgres-environment
   POSTGRES_DB: "${VECTOPLAN_LIBRARY_POSTGRES_DB:-vectoplan_library}"
@@ -76,8 +90,6 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_HOST: "0.0.0.0"
   VECTOPLAN_EDITOR_PORT: "5000"
 
-  # Public Browser-/iframe-Kontext.
-  # Diese Werte werden nicht für Container-zu-Container-Requests verwendet.
   VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
@@ -307,7 +319,46 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
 
+  # Runtime bleibt hart read-only.
+  # Diese Werte verwenden absichtlich keine globalen VECTOPLAN_CHUNK_AUTO_* Overrides,
+  # damit alte .env-Werte die Runtime nicht wieder in einen mutierenden Modus versetzen.
+  VECTOPLAN_CHUNK_STARTUP_MODE: "runtime"
+  VECTOPLAN_CHUNK_RUNTIME_MODE: "runtime"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_ENABLED: "false"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "false"
+  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "true"
+  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "false"
+  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "false"
+  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "false"
+  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_CREATE_ALL: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEFAULTS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEBUG_BLOCKS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEV_PROJECT: "false"
+  VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_FAIL_ON_ERROR: "false"
+  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "true"
+
+  # Eindeutige Welt-Semantik:
+  # - world_spawn ist die konkrete editierbare WorldInstance.
+  # - flat ist Template/Provider, aber niemals die konkrete Default-World-ID.
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID:-debug-blocks}"
+  VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION:-1}"
+
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED:-true}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT:-true}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE:-vectoplan-app}"
+
   VECTOPLAN_CHUNK_HEALTHCHECK_PATH: "${VECTOPLAN_CHUNK_HEALTHCHECK_PATH:-/projects/_status}"
+  VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK: "${VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK:-true}"
 
   VECTOPLAN_CHUNK_RUN_MODE: "${VECTOPLAN_CHUNK_RUN_MODE:-gunicorn}"
   GUNICORN_APP: "${VECTOPLAN_CHUNK_GUNICORN_APP:-wsgi:app}"
@@ -318,6 +369,53 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   GUNICORN_LOG_LEVEL: "${VECTOPLAN_CHUNK_GUNICORN_LOG_LEVEL:-info}"
   GUNICORN_ACCESSLOG: "${VECTOPLAN_CHUNK_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_CHUNK_GUNICORN_ERRORLOG:--}"
+
+x-vectoplan-chunk-init-environment: &vectoplan-chunk-init-environment
+  <<: *vectoplan-chunk-environment
+
+  SERVICE_NAME: "vectoplan-chunk-init"
+  APP_NAME: "vectoplan-chunk-init"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-chunk-init"
+
+  VECTOPLAN_CHUNK_STARTUP_MODE: "db-bootstrap"
+  VECTOPLAN_CHUNK_RUNTIME_MODE: "db-bootstrap"
+  VECTOPLAN_CHUNK_RUN_MODE: "db-bootstrap"
+
+  # Nur der Init-Service darf DB-Struktur, Schema-Repair und Defaults erzeugen.
+  # Diese Werte sind absichtlich init-spezifisch und werden nicht von Runtime-
+  # AUTO_* Werten beeinflusst.
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_ENABLED: "${VECTOPLAN_CHUNK_INIT_DB_BOOTSTRAP_ENABLED:-true}"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "true"
+  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "false"
+  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "${VECTOPLAN_CHUNK_INIT_CREATE_ALL:-true}"
+  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_INIT_SEED_DEFAULTS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_INIT_SEED_DEBUG_BLOCKS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_INIT_SEED_DEV_PROJECT:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_CREATE_ALL: "${VECTOPLAN_CHUNK_INIT_CREATE_ALL:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_INIT_SEED_DEFAULTS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_INIT_SEED_DEBUG_BLOCKS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_INIT_SEED_DEV_PROJECT:-true}"
+  VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS: "${VECTOPLAN_CHUNK_INIT_REPAIR_MISSING_COLUMNS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_FAIL_ON_ERROR: "${VECTOPLAN_CHUNK_INIT_FAIL_ON_ERROR:-true}"
+  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_CHUNK_INIT_SEED_ON_EMPTY_ONLY:-true}"
+
+  # Init verwendet dieselben IDs wie Runtime, aber erzwingt zusätzlich die
+  # konkrete editierbare Default-Welt world_spawn.
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+
+  # Retry-/Diagnosewerte für den Shell-Bootstrap.
+  VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS: "${VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS:-5}"
+  VECTOPLAN_CHUNK_INIT_RETRY_SECONDS: "${VECTOPLAN_CHUNK_INIT_RETRY_SECONDS:-3}"
+  VECTOPLAN_CHUNK_INIT_CONNECT_TIMEOUT_SECONDS: "${VECTOPLAN_CHUNK_INIT_CONNECT_TIMEOUT_SECONDS:-10}"
+  VECTOPLAN_CHUNK_INIT_FAIL_FAST: "${VECTOPLAN_CHUNK_INIT_FAIL_FAST:-true}"
+  VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY: "${VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY:-true}"
 
 x-vectoplan-app-environment: &vectoplan-app-environment
   <<: *vectoplan-python-environment
@@ -332,12 +430,9 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   MEDIA_ROOT: "${VECTOPLAN_APP_MEDIA_ROOT:-/app/media}"
   SECRET_KEY: "${VECTOPLAN_APP_SECRET_KEY:-dev-vectoplan-app-secret-change-me}"
 
-  # Public URL der Shell. Diese Origin ist der erlaubte iframe-Parent.
   VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
   VECTOPLAN_APP_PUBLIC_BASE_URL: "${VECTOPLAN_APP_PUBLIC_BASE_URL:-http://localhost:5103}"
 
-  # Parent-CSP-Vorbereitung für die App.
-  # Die App selbst muss später in app.py/config.py daraus frame-src erzeugen.
   VECTOPLAN_APP_ALLOWED_FRAME_SRC: "${VECTOPLAN_APP_ALLOWED_FRAME_SRC:-self http://localhost:5100 http://127.0.0.1:5100 http://localhost:5190 http://127.0.0.1:5190}"
   VECTOPLAN_ALLOWED_FRAME_PARENTS: "${VECTOPLAN_ALLOWED_FRAME_PARENTS:-http://localhost:5103 http://127.0.0.1:5103}"
 
@@ -356,29 +451,34 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   IDENTITY_INTERNAL_URL: "${IDENTITY_INTERNAL_URL:-http://identity:9000}"
   REGISTRY_INTERNAL_URL: "${REGISTRY_INTERNAL_URL:-http://registry:8000}"
 
-  # Editor-Integration.
-  # PUBLIC_URL wird für Browser-Redirects/iframes verwendet.
-  # INTERNAL_URL bleibt für Server-zu-Server-Diagnostik und Healthchecks.
   VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_INTERNAL_URL: "${VECTOPLAN_EDITOR_INTERNAL_URL:-http://vectoplan-editor:5000}"
   VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
   VECTOPLAN_EDITOR_EMBED_ENABLED: "${VECTOPLAN_EDITOR_EMBED_ENABLED:-true}"
 
-  # Library-/Chunk-Kontext.
   VECTOPLAN_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
   VECTOPLAN_LIBRARY_INTERNAL_URL: "${VECTOPLAN_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
-  VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
-  VECTOPLAN_CHUNK_INTERNAL_URL: "${VECTOPLAN_CHUNK_INTERNAL_URL:-http://vectoplan-chunk:5000}"
 
-  # Geo-/OpenLayer-Kontext.
+  VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
+  VECTOPLAN_CHUNK_PUBLIC_BASE_URL: "${VECTOPLAN_CHUNK_PUBLIC_BASE_URL:-http://localhost:5102}"
+  VECTOPLAN_CHUNK_INTERNAL_URL: "${VECTOPLAN_CHUNK_INTERNAL_URL:-http://vectoplan-chunk:5000}"
+  VECTOPLAN_CHUNK_INTERNAL_BASE_URL: "${VECTOPLAN_CHUNK_INTERNAL_BASE_URL:-http://vectoplan-chunk:5000}"
+
+  VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE: "${VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE:-true}"
+  VECTOPLAN_CHUNK_PROVISION_REQUIRED: "${VECTOPLAN_CHUNK_PROVISION_REQUIRED:-false}"
+  VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS:-10}"
+  VECTOPLAN_CHUNK_PROVISION_RETRIES: "${VECTOPLAN_CHUNK_PROVISION_RETRIES:-2}"
+  VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS:-1}"
+  VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE: "${VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE:-true}"
+
   GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
   GEOSERVER_ORCHESTRATOR_INTERNAL_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
   GEOSERVER_INTERNAL_BASE_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
   GEOSERVER_PUBLIC_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
 
-  # OpenLayer-Integration.
-  # WICHTIG: Browser-/iframe-Ziel ist localhost:5190, nicht localhost:8090.
   OPENLAYER_PUBLIC_URL: "${OPENLAYER_PUBLIC_URL:-http://localhost:5190}"
   OPENLAYER_PUBLIC_BASE_URL: "${OPENLAYER_PUBLIC_BASE_URL:-http://localhost:5190}"
   OPENLAYER_INTERNAL_URL: "${OPENLAYER_INTERNAL_URL:-http://openlayer:8090}"
@@ -654,6 +754,115 @@ services:
           - vectoplan-chunk-db
           - chunk-db
 
+  vectoplan-chunk-init:
+    <<: *vectoplan-init-service-defaults
+    build:
+      context: ./services/vectoplan-chunk
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
+        APP_USER: "vectoplan"
+        APP_UID: "${VECTOPLAN_CHUNK_UID:-10003}"
+        APP_GID: "${VECTOPLAN_CHUNK_GID:-10003}"
+
+    working_dir: /opt/vectoplan/services/vectoplan-chunk
+
+    environment:
+      <<: *vectoplan-chunk-init-environment
+
+    depends_on:
+      vectoplan-chunk-db:
+        condition: service_healthy
+
+    entrypoint:
+      - /bin/sh
+      - -ec
+
+    command:
+      - |
+        set -eu
+
+        SERVICE_TAG="[vectoplan-chunk-init]"
+        cd /opt/vectoplan/services/vectoplan-chunk
+
+        on_error() {
+          code="$?"
+          echo "$${SERVICE_TAG} ERROR: DB-Bootstrap ist fehlgeschlagen. Exit-Code: $${code}" >&2
+          echo "$${SERVICE_TAG} PWD: $(pwd)" >&2
+          echo "$${SERVICE_TAG} Inhalt des Arbeitsverzeichnisses:" >&2
+          ls -la >&2 || true
+          exit "$${code}"
+        }
+
+        trap on_error INT TERM HUP
+
+        echo "$${SERVICE_TAG} Starte expliziten Chunk-DB-Bootstrap."
+
+        if [ "$${VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY:-true}" = "true" ]; then
+          echo "$${SERVICE_TAG} DB host=$${VECTOPLAN_CHUNK_DB_HOST:-vectoplan-chunk-db}"
+          echo "$${SERVICE_TAG} DB port=$${VECTOPLAN_CHUNK_DB_PORT:-5432}"
+          echo "$${SERVICE_TAG} DB name=$${VECTOPLAN_CHUNK_DB_NAME:-vectoplan_chunk}"
+          echo "$${SERVICE_TAG} default_project=$${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+          echo "$${SERVICE_TAG} default_universe=$${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+          echo "$${SERVICE_TAG} default_world=$${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+          echo "$${SERVICE_TAG} default_instance_world=$${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+          echo "$${SERVICE_TAG} default_template=$${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
+          echo "$${SERVICE_TAG} default_provider_world=$${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+          echo "$${SERVICE_TAG} create_all=$${VECTOPLAN_CHUNK_AUTO_CREATE_ALL:-true}"
+          echo "$${SERVICE_TAG} seed_defaults=$${VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS:-true}"
+          echo "$${SERVICE_TAG} repair_missing_columns=$${VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS:-true}"
+        fi
+
+        if [ ! -f ./scripts/bootstrap_db.py ]; then
+          echo "$${SERVICE_TAG} ERROR: ./scripts/bootstrap_db.py wurde nicht gefunden." >&2
+          echo "$${SERVICE_TAG} Erwartet unter: /opt/vectoplan/services/vectoplan-chunk/scripts/bootstrap_db.py" >&2
+          exit 1
+        fi
+
+        max_attempts="$${VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS:-5}"
+        retry_seconds="$${VECTOPLAN_CHUNK_INIT_RETRY_SECONDS:-3}"
+        attempt="1"
+
+        while [ "$${attempt}" -le "$${max_attempts}" ]; do
+          echo "$${SERVICE_TAG} Bootstrap-Versuch $${attempt}/$${max_attempts} ..."
+
+          set +e
+          python ./scripts/bootstrap_db.py \
+            --config "$${VECTOPLAN_CHUNK_CONFIG:-development}" \
+            --create-all \
+            --repair-missing-columns \
+            --seed \
+            --json
+          code="$?"
+          set -e
+
+          if [ "$${code}" -eq 0 ]; then
+            echo "$${SERVICE_TAG} Chunk-DB-Bootstrap erfolgreich abgeschlossen."
+            exit 0
+          fi
+
+          echo "$${SERVICE_TAG} Bootstrap-Versuch $${attempt} ist fehlgeschlagen. Exit-Code: $${code}" >&2
+
+          if [ "$${attempt}" -ge "$${max_attempts}" ]; then
+            echo "$${SERVICE_TAG} ERROR: Max. Bootstrap-Versuche erreicht." >&2
+            exit "$${code}"
+          fi
+
+          echo "$${SERVICE_TAG} Warte $${retry_seconds}s vor erneutem Versuch ..."
+          sleep "$${retry_seconds}"
+          attempt="$((attempt + 1))"
+        done
+
+        echo "$${SERVICE_TAG} ERROR: Unerwartetes Ende des Bootstrap-Loops." >&2
+        exit 1
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-chunk-init
+          - chunk-init
+
   vectoplan-chunk:
     <<: *vectoplan-service-defaults
     build:
@@ -674,6 +883,8 @@ services:
     depends_on:
       vectoplan-chunk-db:
         condition: service_healthy
+      vectoplan-chunk-init:
+        condition: service_completed_successfully
 
     ports:
       - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CHUNK_PUBLIC_PORT:-5102}:5000"
@@ -685,7 +896,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "python - <<'PY'\nimport os, sys, urllib.request\npaths = [p.strip() for p in os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_PATH', '/projects/_status').split(',') if p.strip()]\npaths.extend(['/projects/_status', '/chunks/_status', '/commands/_status', '/'])\nseen = []\nfor path in paths:\n    if path in seen:\n        continue\n    seen.append(path)\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        if 200 <= status < 500:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
+          "python - <<'PY'\nimport json\nimport os\nimport sys\nimport urllib.request\npaths = [p.strip() for p in os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_PATH', '/projects/_status').split(',') if p.strip()]\npaths.extend(['/projects/_status', '/chunks/_status', '/commands/_status', '/'])\nrequire_ok = os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK', 'true').strip().lower() not in {'0', 'false', 'no', 'off'}\nseen = []\nfor path in paths:\n    if path in seen:\n        continue\n    seen.append(path)\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        body = resp.read(1024 * 1024).decode('utf-8', 'replace')\n        if not (200 <= status < 400):\n            continue\n        if not require_ok:\n            sys.exit(0)\n        try:\n            payload = json.loads(body or '{}')\n        except Exception:\n            if path == '/':\n                sys.exit(0)\n            continue\n        if payload.get('ok') is True:\n            sys.exit(0)\n        if payload.get('status') in {'ready', 'ok', 'healthy'} and payload.get('ok') is not False:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
         ]
       interval: "${VECTOPLAN_CHUNK_HEALTH_INTERVAL:-20s}"
       timeout: "${VECTOPLAN_CHUNK_HEALTH_TIMEOUT:-5s}"
@@ -797,11 +1008,6 @@ services:
     environment:
       <<: *vectoplan-app-environment
 
-    # Bewusst weich gehalten:
-    # - Die App ist Portal-/Shell-Service.
-    # - Editor/OpenLayer werden per Browser-iframe geladen.
-    # - Wenn Editor oder Map kurz nicht erreichbar sind, soll die App trotzdem starten.
-    # - Die Workspace-Routen zeigen dann später einen Fallback statt die App hart zu blockieren.
     depends_on:
       vectoplan-app-db:
         condition: service_healthy
@@ -1087,8 +1293,6 @@ services:
       OPENLAYER_PORT: "8090"
       LOG_LEVEL: "${OPENLAYER_LOG_LEVEL:-INFO}"
 
-      # Public Browser-/iframe-Kontext.
-      # WICHTIG: Der Browser sieht localhost:5190, nicht den Container-Port 8090.
       OPENLAYER_PUBLIC_URL: "${OPENLAYER_PUBLIC_URL:-http://localhost:5190}"
       OPENLAYER_PUBLIC_BASE_URL: "${OPENLAYER_PUBLIC_BASE_URL:-http://localhost:5190}"
       OPENLAYER_ROUTE: "${OPENLAYER_ROUTE:-/map}"
