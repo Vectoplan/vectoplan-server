@@ -1,63 +1,63 @@
-# ./docker-compose.all.yml
+# services/vectoplan-server/docker-compose.all.yml
 
 # ------------------------------------------------------------------------------
-# VECTOPLAN All Stack
+# VECTOPLAN Server Stack
 # ------------------------------------------------------------------------------
-# Start aus dem Repo-Root:
-#   docker compose -f docker-compose.all.yml up -d --build
 #
-# Zweck:
-#   Gemeinsamer Entwicklungsstack für Editor, Chunk, Library, OpenLayer,
-#   GeoServer und GeoServer-Orchestrator.
+# Wichtige Regel für diesen Stack:
+# - *_INTERNAL_URL ist nur für Container-zu-Container-Kommunikation.
+# - *_PUBLIC_URL ist für Browser, iframe, Redirects und "extern öffnen".
 #
-# Enthalten:
-# - vectoplan-editor
-# - vectoplan-library-db
-# - vectoplan-library
-# - vectoplan-chunk-db
-# - vectoplan-chunk
-# - vectoplan-geo-db
-# - db-postgis-init
-# - geoserver
-# - geoserver-orchestrator-db-init
-# - geoserver-orchestrator
-# - openlayer
+# Architekturentscheidung für vectoplan-chunk:
+# - vectoplan-chunk-db hält die PostgreSQL-Datenbank.
+# - vectoplan-chunk-init führt explizit den DB-Bootstrap aus.
+# - vectoplan-chunk startet danach als read-only Runtime.
 #
-# Optional:
-# - geoserver-orchestrator-sync-init
+# Warum:
+# - db.create_all() und Default-Seeding dürfen nicht im normalen Gunicorn-Worker-
+#   Startup laufen.
+# - Runtime-Startup bleibt stabil und erzeugt keine Tabellen.
+# - Schema-/Seed-Erstellung läuft einmalig, kontrolliert und retry-fähig.
 #
-# Der Startup-Sync liegt absichtlich im Profil `geo-sync`, damit ein großer
-# GeoPackage-Import nicht den gesamten Stack blockiert.
+# App-zu-Chunk-Ziel:
+# - vectoplan-app erstellt App-Projekte.
+# - vectoplan-app ruft später serverseitig vectoplan-chunk über
+#   VECTOPLAN_CHUNK_INTERNAL_URL auf.
+# - vectoplan-chunk erzeugt dazu ein eigenes Chunk-Projekt mit Universe/World.
+# - vectoplan-app speichert danach nur chunk_project_id/chunk_world_id und
+#   ProjectServiceLink-Referenzen.
 #
-# Optionalen Geo-Sync ausführen:
-#   docker compose -f docker-compose.all.yml --profile geo-sync up geoserver-orchestrator-sync-init
-#
-# Ports:
-# - Editor:       http://localhost:5000/editor
-# - Library:      http://localhost:5001
-# - Chunk:        http://localhost:5002
-# - OpenLayer:    http://localhost:8090
-# - Orchestrator: http://localhost:8010
-# - GeoServer:    http://localhost:8082/geoserver
-# - Library DB:   localhost:5432
-# - Chunk DB:     localhost:5433
-# - Geo DB:       localhost:5434
-# ------------------------------------------------------------------------------
+# Browser-Regel:
+# - Browser / iframe / redirect  → PUBLIC_URL
+# - Backend / server-to-server   → INTERNAL_URL
 
-name: vectoplan-all-stack
+name: ${VECTOPLAN_SERVER_PROJECT_NAME:-vectoplan-server}
 
-# ------------------------------------------------------------------------------
-# Gemeinsame Python-Defaults
-# ------------------------------------------------------------------------------
+x-vectoplan-logging: &vectoplan-logging
+  driver: json-file
+  options:
+    max-size: "${VECTOPLAN_LOG_MAX_SIZE:-10m}"
+    max-file: "${VECTOPLAN_LOG_MAX_FILE:-3}"
 
 x-vectoplan-python-environment: &vectoplan-python-environment
   PYTHONDONTWRITEBYTECODE: "1"
   PYTHONUNBUFFERED: "1"
+  TZ: "${TZ:-Europe/Berlin}"
+  LOG_LEVEL: "${LOG_LEVEL:-INFO}"
 
+x-vectoplan-service-defaults: &vectoplan-service-defaults
+  init: true
+  restart: unless-stopped
+  logging: *vectoplan-logging
+  stop_signal: SIGTERM
+  stop_grace_period: 30s
 
-# ------------------------------------------------------------------------------
-# Gemeinsame PostgreSQL-Defaults für den Library-Service
-# ------------------------------------------------------------------------------
+x-vectoplan-init-service-defaults: &vectoplan-init-service-defaults
+  init: true
+  restart: "no"
+  logging: *vectoplan-logging
+  stop_signal: SIGTERM
+  stop_grace_period: 30s
 
 x-vectoplan-library-postgres-environment: &vectoplan-library-postgres-environment
   POSTGRES_DB: "${VECTOPLAN_LIBRARY_POSTGRES_DB:-vectoplan_library}"
@@ -65,21 +65,17 @@ x-vectoplan-library-postgres-environment: &vectoplan-library-postgres-environmen
   POSTGRES_PASSWORD: "${VECTOPLAN_LIBRARY_POSTGRES_PASSWORD:-vectoplan}"
   PGDATA: "/var/lib/postgresql/data/pgdata"
 
-
-# ------------------------------------------------------------------------------
-# Gemeinsame PostgreSQL-Defaults für den Chunk-Service
-# ------------------------------------------------------------------------------
-
 x-vectoplan-chunk-postgres-environment: &vectoplan-chunk-postgres-environment
   POSTGRES_DB: "${VECTOPLAN_CHUNK_POSTGRES_DB:-vectoplan_chunk}"
   POSTGRES_USER: "${VECTOPLAN_CHUNK_POSTGRES_USER:-vectoplan_chunk}"
   POSTGRES_PASSWORD: "${VECTOPLAN_CHUNK_POSTGRES_PASSWORD:-vectoplan_chunk}"
   PGDATA: "/var/lib/postgresql/data/pgdata"
 
-
-# ------------------------------------------------------------------------------
-# Gemeinsame Environment-Defaults für den Editor-Service
-# ------------------------------------------------------------------------------
+x-vectoplan-app-postgres-environment: &vectoplan-app-postgres-environment
+  POSTGRES_DB: "${VECTOPLAN_APP_POSTGRES_DB:-vectoplan_app}"
+  POSTGRES_USER: "${VECTOPLAN_APP_POSTGRES_USER:-vectoplan_app}"
+  POSTGRES_PASSWORD: "${VECTOPLAN_APP_POSTGRES_PASSWORD:-vectoplan_app}"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
 
 x-vectoplan-editor-environment: &vectoplan-editor-environment
   <<: *vectoplan-python-environment
@@ -94,6 +90,14 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_HOST: "0.0.0.0"
   VECTOPLAN_EDITOR_PORT: "5000"
 
+  VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
+  VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
+  VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
+  VECTOPLAN_EDITOR_EMBED_ENABLED: "${VECTOPLAN_EDITOR_EMBED_ENABLED:-true}"
+  VECTOPLAN_EDITOR_FRAME_ANCESTORS: "${VECTOPLAN_EDITOR_FRAME_ANCESTORS:-http://localhost:5103 http://127.0.0.1:5103}"
+  VECTOPLAN_ALLOWED_FRAME_PARENTS: "${VECTOPLAN_ALLOWED_FRAME_PARENTS:-http://localhost:5103 http://127.0.0.1:5103}"
+  VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+
   VECTOPLAN_EDITOR_STARTUP_MODULE: "${VECTOPLAN_EDITOR_STARTUP_MODULE:-src.bootstrap.startup}"
   VECTOPLAN_EDITOR_PRESTART_CHECK: "${VECTOPLAN_EDITOR_PRESTART_CHECK:-true}"
   VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY:-true}"
@@ -102,16 +106,20 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
 
   VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED: "${VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED:-true}"
   VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS: "${VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS:-true}"
-  VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY: "${VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY:-./static/editor/js/main.js}"
+  VECTOPLAN_EDITOR_FRONTEND_SOURCE_CHECKS: "${VECTOPLAN_EDITOR_FRONTEND_SOURCE_CHECKS:-false}"
+  VECTOPLAN_EDITOR_STATIC_EDITOR_DIR: "${VECTOPLAN_EDITOR_STATIC_EDITOR_DIR:-./static/editor}"
+  VECTOPLAN_EDITOR_STATIC_MANIFEST_NAME: "${VECTOPLAN_EDITOR_STATIC_MANIFEST_NAME:-manifest.json}"
+  VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY: "${VECTOPLAN_EDITOR_FRONTEND_EXPECTED_ENTRY:-./static/editor/manifest.json}"
 
   VECTOPLAN_EDITOR_WORLD_MODE: "${VECTOPLAN_EDITOR_WORLD_MODE:-chunk_service}"
   VECTOPLAN_EDITOR_WORLD_SOURCE_KIND: "${VECTOPLAN_EDITOR_WORLD_SOURCE_KIND:-chunk-service}"
 
+  VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL:-http://vectoplan-library:5000}"
+  VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL:-http://vectoplan-chunk:5000}"
+
   VECTOPLAN_EDITOR_CHUNK_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_ENABLED:-true}"
   VECTOPLAN_EDITOR_CHUNK_MODE: "${VECTOPLAN_EDITOR_CHUNK_MODE:-remote}"
   VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND: "${VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND:-chunk-service}"
-
-  VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL:-http://vectoplan-chunk:5000}"
   VECTOPLAN_EDITOR_CHUNK_API_PREFIX: "${VECTOPLAN_EDITOR_CHUNK_API_PREFIX:-/editor/api/chunk}"
   VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL: "${VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL:-/editor/api/chunk}"
 
@@ -126,12 +134,11 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_CHUNK_STATUS_TIMEOUT: "${VECTOPLAN_EDITOR_CHUNK_STATUS_TIMEOUT:-5}"
   VECTOPLAN_EDITOR_CHUNK_MAX_RESPONSE_BYTES: "${VECTOPLAN_EDITOR_CHUNK_MAX_RESPONSE_BYTES:-20971520}"
   VECTOPLAN_EDITOR_CHUNK_STATUS_PATHS: "${VECTOPLAN_EDITOR_CHUNK_STATUS_PATHS:-/projects/_status,/chunks/_status,/commands/_status,/}"
-
   VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED:-true}"
   VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS:-true}"
   VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS:-true}"
 
-  VECTOPLAN_EDITOR_INVENTORY_SOURCE: "${VECTOPLAN_EDITOR_INVENTORY_SOURCE:-chunk-service}"
+  VECTOPLAN_EDITOR_INVENTORY_SOURCE: "${VECTOPLAN_EDITOR_INVENTORY_SOURCE:-editor-inventory}"
   VECTOPLAN_EDITOR_INVENTORY_ICON_MODE: "${VECTOPLAN_EDITOR_INVENTORY_ICON_MODE:-icon-only}"
   VECTOPLAN_EDITOR_INVENTORY_HOTBAR_SIZE: "${VECTOPLAN_EDITOR_INVENTORY_HOTBAR_SIZE:-9}"
   VECTOPLAN_EDITOR_INVENTORY_DEFAULT_SELECTED_SLOT: "${VECTOPLAN_EDITOR_INVENTORY_DEFAULT_SELECTED_SLOT:-0}"
@@ -151,8 +158,11 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_CHUNKS_PREFER_BATCH_LOAD: "${VECTOPLAN_EDITOR_CHUNKS_PREFER_BATCH_LOAD:-true}"
   VECTOPLAN_EDITOR_CHUNKS_RELOAD_DIRTY_AFTER_COMMAND: "${VECTOPLAN_EDITOR_CHUNKS_RELOAD_DIRTY_AFTER_COMMAND:-true}"
 
-  VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_EDITOR_RUN_MODE:-gunicorn}"
+  IDENTITY_INTERNAL_URL: "${IDENTITY_INTERNAL_URL:-http://identity:9000}"
+  REGISTRY_INTERNAL_URL: "${REGISTRY_INTERNAL_URL:-http://registry:8000}"
 
+  VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_EDITOR_RUN_MODE:-gunicorn}"
+  GUNICORN_APP: "${VECTOPLAN_EDITOR_GUNICORN_APP:-wsgi:app}"
   GUNICORN_WORKERS: "${VECTOPLAN_EDITOR_GUNICORN_WORKERS:-2}"
   GUNICORN_THREADS: "${VECTOPLAN_EDITOR_GUNICORN_THREADS:-2}"
   GUNICORN_TIMEOUT: "${VECTOPLAN_EDITOR_GUNICORN_TIMEOUT:-120}"
@@ -160,11 +170,6 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   GUNICORN_LOG_LEVEL: "${VECTOPLAN_EDITOR_GUNICORN_LOG_LEVEL:-info}"
   GUNICORN_ACCESSLOG: "${VECTOPLAN_EDITOR_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_EDITOR_GUNICORN_ERRORLOG:--}"
-
-
-# ------------------------------------------------------------------------------
-# Gemeinsame Environment-Defaults für den Library-Service
-# ------------------------------------------------------------------------------
 
 x-vectoplan-library-environment: &vectoplan-library-environment
   <<: *vectoplan-python-environment
@@ -179,26 +184,15 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_HOST: "0.0.0.0"
   VECTOPLAN_LIBRARY_PORT: "5000"
 
+  VECTOPLAN_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
+  VECTOPLAN_LIBRARY_PUBLIC_BASE_URL: "${VECTOPLAN_LIBRARY_PUBLIC_BASE_URL:-http://localhost:5101}"
+
   VECTOPLAN_LIBRARY_STARTUP_MODULE: "${VECTOPLAN_LIBRARY_STARTUP_MODULE:-src.bootstrap.startup}"
   VECTOPLAN_LIBRARY_PRESTART_CHECK: "${VECTOPLAN_LIBRARY_PRESTART_CHECK:-true}"
   VECTOPLAN_LIBRARY_PRESTART_CREATE_APP: "${VECTOPLAN_LIBRARY_PRESTART_CREATE_APP:-false}"
   VECTOPLAN_LIBRARY_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_LIBRARY_PRINT_STARTUP_SUMMARY:-true}"
   VECTOPLAN_LIBRARY_STARTUP_STRICT: "${VECTOPLAN_LIBRARY_STARTUP_STRICT:-false}"
   VECTOPLAN_LIBRARY_STRICT_TEMPLATE_CHECKS: "${VECTOPLAN_LIBRARY_STRICT_TEMPLATE_CHECKS:-false}"
-
-  # ---------------------------------------------------------------------------
-  # PostgreSQL / SQLAlchemy / Flask-Migrate
-  # ---------------------------------------------------------------------------
-  # SQLAlchemy liest primär SQLALCHEMY_DATABASE_URI.
-  # Zusätzliche Aliase bleiben gesetzt, damit ältere und neue Config-Schichten
-  # dieselbe Verbindung nutzen.
-  #
-  # Für lokale Entwicklung sind Auto-Init, Auto-Migrate und Auto-Upgrade aktiv.
-  # Später in produktiveren Umgebungen:
-  #   VECTOPLAN_LIBRARY_DB_AUTO_INIT=false
-  #   VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE=false
-  #   VECTOPLAN_LIBRARY_DB_AUTO_UPGRADE=true
-  # ---------------------------------------------------------------------------
 
   FLASK_APP: "${VECTOPLAN_LIBRARY_FLASK_APP:-wsgi:app}"
   FLASK_ENV: "${VECTOPLAN_LIBRARY_FLASK_ENV:-development}"
@@ -209,7 +203,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_DB_NAME: "${VECTOPLAN_LIBRARY_DB_NAME:-vectoplan_library}"
   VECTOPLAN_LIBRARY_DB_USER: "${VECTOPLAN_LIBRARY_DB_USER:-vectoplan}"
   VECTOPLAN_LIBRARY_DB_PASSWORD: "${VECTOPLAN_LIBRARY_DB_PASSWORD:-vectoplan}"
-
   VECTOPLAN_LIBRARY_DATABASE_URI: "${VECTOPLAN_LIBRARY_DATABASE_URI:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
   VECTOPLAN_LIBRARY_DATABASE_URL: "${VECTOPLAN_LIBRARY_DATABASE_URL:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
   VPLIB_DATABASE_URL: "${VPLIB_DATABASE_URL:-postgresql+psycopg://vectoplan:vectoplan@vectoplan-library-db:5432/vectoplan_library}"
@@ -222,7 +215,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
 
   VECTOPLAN_LIBRARY_DATABASE_REQUIRED: "${VECTOPLAN_LIBRARY_DATABASE_REQUIRED:-true}"
   VECTOPLAN_LIBRARY_DB_HEALTH_CHECK: "${VECTOPLAN_LIBRARY_DB_HEALTH_CHECK:-false}"
-
   VECTOPLAN_LIBRARY_DB_POOL_PRE_PING: "${VECTOPLAN_LIBRARY_DB_POOL_PRE_PING:-true}"
   VECTOPLAN_LIBRARY_DB_POOL_RECYCLE_SECONDS: "${VECTOPLAN_LIBRARY_DB_POOL_RECYCLE_SECONDS:-1800}"
   VECTOPLAN_LIBRARY_DB_POOL_SIZE: "${VECTOPLAN_LIBRARY_DB_POOL_SIZE:-5}"
@@ -237,7 +229,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_DB_WAIT_FOR_READY: "${VECTOPLAN_LIBRARY_DB_WAIT_FOR_READY:-true}"
   VECTOPLAN_LIBRARY_DB_WAIT_TIMEOUT: "${VECTOPLAN_LIBRARY_DB_WAIT_TIMEOUT:-60}"
   VECTOPLAN_LIBRARY_DB_WAIT_INTERVAL: "${VECTOPLAN_LIBRARY_DB_WAIT_INTERVAL:-2}"
-
   VECTOPLAN_LIBRARY_DB_BOOTSTRAP_ENABLED: "${VECTOPLAN_LIBRARY_DB_BOOTSTRAP_ENABLED:-true}"
   VECTOPLAN_LIBRARY_DB_AUTO_INIT: "${VECTOPLAN_LIBRARY_DB_AUTO_INIT:-true}"
   VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE: "${VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE:-true}"
@@ -245,9 +236,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_DB_MIGRATION_STRICT: "${VECTOPLAN_LIBRARY_DB_MIGRATION_STRICT:-true}"
   VECTOPLAN_LIBRARY_DB_RECREATE_INCOMPLETE_MIGRATIONS: "${VECTOPLAN_LIBRARY_DB_RECREATE_INCOMPLETE_MIGRATIONS:-true}"
   VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE_MESSAGE: "${VECTOPLAN_LIBRARY_DB_AUTO_MIGRATE_MESSAGE:-auto creative library migration}"
-
-  # Legacy-/Startup-Schalter bleiben vorhanden, aber die neue App-Factory führt
-  # keine automatische Tabellenanlage beim Import aus.
   VECTOPLAN_LIBRARY_DB_AUTO_CREATE: "${VECTOPLAN_LIBRARY_DB_AUTO_CREATE:-false}"
   VECTOPLAN_LIBRARY_DB_AUTO_SEED: "${VECTOPLAN_LIBRARY_DB_AUTO_SEED:-false}"
   VECTOPLAN_LIBRARY_DB_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_LIBRARY_DB_SEED_ON_EMPTY_ONLY:-true}"
@@ -257,10 +245,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_DB_DEFAULT_SLOT_COUNT: "${VECTOPLAN_LIBRARY_DB_DEFAULT_SLOT_COUNT:-9}"
   VECTOPLAN_LIBRARY_DB_SEED_MODULE: "${VECTOPLAN_LIBRARY_DB_SEED_MODULE:-services.database_seed_service}"
 
-  # ---------------------------------------------------------------------------
-  # VPLIB Kern-API
-  # ---------------------------------------------------------------------------
-
   VPLIB_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
   VPLIB_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
   VPLIB_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/sources"
@@ -268,6 +252,7 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VPLIB_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/vplib"
   VPLIB_ARCHIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/archives"
   VPLIB_TEST_OUTPUT_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/vplib_test"
+
   VPLIB_ROUTE_PREFIX: "/api/v1/vplib"
   VPLIB_DRY_RUN_DEFAULT: "${VPLIB_DRY_RUN_DEFAULT:-true}"
   VPLIB_TEST_ROUTE_ENABLED: "${VPLIB_TEST_ROUTE_ENABLED:-true}"
@@ -277,74 +262,21 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VPLIB_DEFAULT_WRITE_MODE: "${VPLIB_DEFAULT_WRITE_MODE:-fail}"
   VPLIB_DEFAULT_VALIDATION_MODE: "${VPLIB_DEFAULT_VALIDATION_MODE:-strict}"
 
-  # ---------------------------------------------------------------------------
-  # Dateibasierte Creative-Library-Schicht
-  # ---------------------------------------------------------------------------
-
-  VECTOPLAN_LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
-  VECTOPLAN_LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
-  VECTOPLAN_LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
-  VECTOPLAN_LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
-  VECTOPLAN_LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
-  VECTOPLAN_LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
-  VECTOPLAN_LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"
-
-  LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
-  LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
-  LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
-  LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
-  LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
-  LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
-  LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"
-
   VECTOPLAN_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
   VPLIB_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
   LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
-
-  VECTOPLAN_LIBRARY_SCAN_RECURSIVE: "${VECTOPLAN_LIBRARY_SCAN_RECURSIVE:-true}"
-  VECTOPLAN_LIBRARY_SCAN_MAX_DEPTH: "${VECTOPLAN_LIBRARY_SCAN_MAX_DEPTH:-12}"
-  VECTOPLAN_LIBRARY_SCAN_FOLLOW_SYMLINKS: "${VECTOPLAN_LIBRARY_SCAN_FOLLOW_SYMLINKS:-false}"
-  VECTOPLAN_LIBRARY_INCLUDE_INVALID_IN_SCAN: "${VECTOPLAN_LIBRARY_INCLUDE_INVALID_IN_SCAN:-true}"
-  VECTOPLAN_LIBRARY_AUTO_SCAN_ON_REQUEST: "${VECTOPLAN_LIBRARY_AUTO_SCAN_ON_REQUEST:-true}"
-  VECTOPLAN_LIBRARY_FAIL_ON_DUPLICATE_IDS: "${VECTOPLAN_LIBRARY_FAIL_ON_DUPLICATE_IDS:-true}"
-  VECTOPLAN_LIBRARY_TREAT_MISSING_SOURCE_ROOT_AS_EMPTY: "${VECTOPLAN_LIBRARY_TREAT_MISSING_SOURCE_ROOT_AS_EMPTY:-true}"
-
-  VECTOPLAN_LIBRARY_LIST_INCLUDE_INVALID: "${VECTOPLAN_LIBRARY_LIST_INCLUDE_INVALID:-false}"
-  VECTOPLAN_LIBRARY_DETAIL_INCLUDE_RAW_DOCUMENTS: "${VECTOPLAN_LIBRARY_DETAIL_INCLUDE_RAW_DOCUMENTS:-true}"
-  VECTOPLAN_LIBRARY_DETAIL_INCLUDE_VALIDATION_REPORT: "${VECTOPLAN_LIBRARY_DETAIL_INCLUDE_VALIDATION_REPORT:-true}"
-
-  VECTOPLAN_LIBRARY_CACHE_ENABLED: "${VECTOPLAN_LIBRARY_CACHE_ENABLED:-false}"
-  VECTOPLAN_LIBRARY_CACHE_TTL_SECONDS: "${VECTOPLAN_LIBRARY_CACHE_TTL_SECONDS:-5}"
-
-  VECTOPLAN_LIBRARY_ALLOWED_MANIFEST_FILENAMES: "${VECTOPLAN_LIBRARY_ALLOWED_MANIFEST_FILENAMES:-vplib.manifest.json}"
-  VECTOPLAN_LIBRARY_IGNORED_DIRECTORY_NAMES: "${VECTOPLAN_LIBRARY_IGNORED_DIRECTORY_NAMES:-__pycache__,.git,.hg,.svn,.idea,.vscode,.pytest_cache,.mypy_cache,.ruff_cache,node_modules,venv,.venv,dist,build}"
-  VECTOPLAN_LIBRARY_IGNORED_FILE_SUFFIXES: "${VECTOPLAN_LIBRARY_IGNORED_FILE_SUFFIXES:-.pyc,.pyo,.tmp,.temp,.bak,.swp}"
-
-  # ---------------------------------------------------------------------------
-  # Bestehende Admin-/API-Defaults
-  # ---------------------------------------------------------------------------
 
   VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH: "${VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH:-/admin}"
   VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH:-/health}"
   VECTOPLAN_LIBRARY_HEALTH_LIVE_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_LIVE_ROUTE_PATH:-/health/live}"
   VECTOPLAN_LIBRARY_HEALTH_READY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_READY_ROUTE_PATH:-/health/ready}"
   VECTOPLAN_LIBRARY_ROOT_REDIRECT_TARGET: "${VECTOPLAN_LIBRARY_ROOT_REDIRECT_TARGET:-/admin}"
-
   VECTOPLAN_LIBRARY_API_ROUTE_PREFIX: "${VECTOPLAN_LIBRARY_API_ROUTE_PREFIX:-/api}"
   VECTOPLAN_LIBRARY_API_LIBRARY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_API_LIBRARY_ROUTE_PATH:-/api/library}"
   VECTOPLAN_LIBRARY_API_INVENTORY_ROUTE_PATH: "${VECTOPLAN_LIBRARY_API_INVENTORY_ROUTE_PATH:-/api/inventory}"
 
-  VECTOPLAN_LIBRARY_PRESTART_LIBRARY_API_ROUTE_PATH: "${VECTOPLAN_LIBRARY_PRESTART_LIBRARY_API_ROUTE_PATH:-/api/library/overview}"
-  VECTOPLAN_LIBRARY_PRESTART_INVENTORY_API_ROUTE_PATH: "${VECTOPLAN_LIBRARY_PRESTART_INVENTORY_API_ROUTE_PATH:-/api/inventory/slots}"
-
-  VECTOPLAN_LIBRARY_ADMIN_TEMPLATE_NAME: "${VECTOPLAN_LIBRARY_ADMIN_TEMPLATE_NAME:-library_admin/main.html}"
-  VECTOPLAN_LIBRARY_ADMIN_PAGE_TITLE: "${VECTOPLAN_LIBRARY_ADMIN_PAGE_TITLE:-VECTOPLAN Library Admin}"
-  VECTOPLAN_LIBRARY_ADMIN_BRAND_NAME: "${VECTOPLAN_LIBRARY_ADMIN_BRAND_NAME:-VECTOPLAN Library}"
-  VECTOPLAN_LIBRARY_ADMIN_USE_INLINE_ASSETS: "${VECTOPLAN_LIBRARY_ADMIN_USE_INLINE_ASSETS:-true}"
-  VECTOPLAN_LIBRARY_ADMIN_DEFAULT_FAMILY_LIMIT: "${VECTOPLAN_LIBRARY_ADMIN_DEFAULT_FAMILY_LIMIT:-60}"
-
   VECTOPLAN_LIBRARY_RUN_MODE: "${VECTOPLAN_LIBRARY_RUN_MODE:-gunicorn}"
-
+  GUNICORN_APP: "${VECTOPLAN_LIBRARY_GUNICORN_APP:-wsgi:app}"
   GUNICORN_WORKERS: "${VECTOPLAN_LIBRARY_GUNICORN_WORKERS:-2}"
   GUNICORN_THREADS: "${VECTOPLAN_LIBRARY_GUNICORN_THREADS:-2}"
   GUNICORN_TIMEOUT: "${VECTOPLAN_LIBRARY_GUNICORN_TIMEOUT:-120}"
@@ -353,11 +285,6 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   GUNICORN_ACCESSLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ERRORLOG:--}"
 
-
-# ------------------------------------------------------------------------------
-# Gemeinsame Environment-Defaults für den Chunk-Service
-# ------------------------------------------------------------------------------
-
 x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   <<: *vectoplan-python-environment
 
@@ -365,6 +292,7 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   APP_NAME: "vectoplan-chunk"
   APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
   VECTOPLAN_SERVICE_NAME: "vectoplan-chunk"
+
   VECTOPLAN_EXTENSION_NAMESPACE: "vectoplan_chunk"
   SERVICE_EXTENSION_NAMESPACE: "vectoplan_chunk"
   ROUTES_EXTENSION_NAMESPACE: "vectoplan_chunk"
@@ -373,6 +301,10 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   VECTOPLAN_CHUNK_DEBUG: "${VECTOPLAN_CHUNK_DEBUG:-true}"
   VECTOPLAN_CHUNK_HOST: "0.0.0.0"
   VECTOPLAN_CHUNK_PORT: "5000"
+
+  VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
+  VECTOPLAN_CHUNK_PUBLIC_BASE_URL: "${VECTOPLAN_CHUNK_PUBLIC_BASE_URL:-http://localhost:5102}"
+
   VECTOPLAN_CHUNK_SECRET_KEY: "${VECTOPLAN_CHUNK_SECRET_KEY:-dev-secret-key-change-me}"
 
   VECTOPLAN_CHUNK_DATABASE_DRIVER: "${VECTOPLAN_CHUNK_DATABASE_DRIVER:-postgresql+psycopg}"
@@ -381,120 +313,54 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   VECTOPLAN_CHUNK_DB_NAME: "${VECTOPLAN_CHUNK_DB_NAME:-vectoplan_chunk}"
   VECTOPLAN_CHUNK_DB_USER: "${VECTOPLAN_CHUNK_DB_USER:-vectoplan_chunk}"
   VECTOPLAN_CHUNK_DB_PASSWORD: "${VECTOPLAN_CHUNK_DB_PASSWORD:-vectoplan_chunk}"
-
   VECTOPLAN_CHUNK_DATABASE_URI: "${VECTOPLAN_CHUNK_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   VECTOPLAN_CHUNK_DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
 
-  SQLALCHEMY_TRACK_MODIFICATIONS: "${VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS:-false}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS: "${VECTOPLAN_CHUNK_SQLALCHEMY_TRACK_MODIFICATIONS:-false}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_ECHO: "${VECTOPLAN_CHUNK_SQLALCHEMY_ECHO:-false}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_RECORD_QUERIES: "${VECTOPLAN_CHUNK_SQLALCHEMY_RECORD_QUERIES:-false}"
+  # Runtime bleibt hart read-only.
+  # Diese Werte verwenden absichtlich keine globalen VECTOPLAN_CHUNK_AUTO_* Overrides,
+  # damit alte .env-Werte die Runtime nicht wieder in einen mutierenden Modus versetzen.
+  VECTOPLAN_CHUNK_STARTUP_MODE: "runtime"
+  VECTOPLAN_CHUNK_RUNTIME_MODE: "runtime"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_ENABLED: "false"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "false"
+  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "true"
+  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "false"
+  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "false"
+  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "false"
+  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_CREATE_ALL: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEFAULTS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEBUG_BLOCKS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEV_PROJECT: "false"
+  VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS: "false"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_FAIL_ON_ERROR: "false"
+  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "true"
 
-  VECTOPLAN_CHUNK_DB_POOL_PRE_PING: "${VECTOPLAN_CHUNK_DB_POOL_PRE_PING:-true}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_PRE_PING: "${VECTOPLAN_CHUNK_SQLALCHEMY_POOL_PRE_PING:-true}"
-  VECTOPLAN_CHUNK_DB_POOL_RECYCLE: "${VECTOPLAN_CHUNK_DB_POOL_RECYCLE:-1800}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_RECYCLE: "${VECTOPLAN_CHUNK_DB_POOL_RECYCLE:-1800}"
-  VECTOPLAN_CHUNK_DB_POOL_SIZE: "${VECTOPLAN_CHUNK_DB_POOL_SIZE:-5}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_SIZE: "${VECTOPLAN_CHUNK_DB_POOL_SIZE:-5}"
-  VECTOPLAN_CHUNK_DB_MAX_OVERFLOW: "${VECTOPLAN_CHUNK_DB_MAX_OVERFLOW:-10}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_MAX_OVERFLOW: "${VECTOPLAN_CHUNK_DB_MAX_OVERFLOW:-10}"
-  VECTOPLAN_CHUNK_DB_POOL_TIMEOUT: "${VECTOPLAN_CHUNK_DB_POOL_TIMEOUT:-30}"
-  VECTOPLAN_CHUNK_SQLALCHEMY_POOL_TIMEOUT: "${VECTOPLAN_CHUNK_DB_POOL_TIMEOUT:-30}"
-  VECTOPLAN_CHUNK_DB_CONNECT_TIMEOUT: "${VECTOPLAN_CHUNK_DB_CONNECT_TIMEOUT:-15}"
-
-  VECTOPLAN_CHUNK_DB_WAIT_FOR_READY: "${VECTOPLAN_CHUNK_DB_WAIT_FOR_READY:-true}"
-  VECTOPLAN_CHUNK_DB_WAIT_TIMEOUT: "${VECTOPLAN_CHUNK_DB_WAIT_TIMEOUT:-60}"
-  VECTOPLAN_CHUNK_DB_WAIT_INTERVAL: "${VECTOPLAN_CHUNK_DB_WAIT_INTERVAL:-2}"
-  VECTOPLAN_CHUNK_DB_REQUIRE_READY: "${VECTOPLAN_CHUNK_DB_REQUIRE_READY:-true}"
-
-  VECTOPLAN_CHUNK_DB_CHECK_ON_STARTUP: "${VECTOPLAN_CHUNK_DB_CHECK_ON_STARTUP:-true}"
-  VECTOPLAN_CHUNK_DB_REQUIRE_ON_STARTUP: "${VECTOPLAN_CHUNK_DB_REQUIRE_ON_STARTUP:-true}"
-  VECTOPLAN_CHUNK_REQUIRE_MIGRATIONS: "${VECTOPLAN_CHUNK_REQUIRE_MIGRATIONS:-false}"
-
-  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "${VECTOPLAN_CHUNK_AUTO_CREATE_ALL:-true}"
-  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS:-true}"
-  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS:-true}"
-  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_SEED_DEV_PROJECT:-true}"
-  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY:-true}"
-
-  VECTOPLAN_CHUNK_STARTUP_MODULE: "${VECTOPLAN_CHUNK_STARTUP_MODULE:-src.bootstrap.startup}"
-  VECTOPLAN_CHUNK_RUN_STARTUP_HOOKS: "${VECTOPLAN_CHUNK_RUN_STARTUP_HOOKS:-true}"
-  VECTOPLAN_CHUNK_PRESTART_CHECK: "${VECTOPLAN_CHUNK_PRESTART_CHECK:-false}"
-  VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY:-true}"
-  VECTOPLAN_CHUNK_STARTUP_STRICT: "${VECTOPLAN_CHUNK_STARTUP_STRICT:-false}"
-  VECTOPLAN_CHUNK_STRICT_TEMPLATE_CHECKS: "${VECTOPLAN_CHUNK_STRICT_TEMPLATE_CHECKS:-false}"
-  VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS: "${VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS:-false}"
-
-  VECTOPLAN_CHUNK_ENABLE_DEV_ROUTES: "${VECTOPLAN_CHUNK_ENABLE_DEV_ROUTES:-true}"
-  VECTOPLAN_CHUNK_ENABLE_LEGACY_ROUTES: "${VECTOPLAN_CHUNK_ENABLE_LEGACY_ROUTES:-true}"
-  VECTOPLAN_CHUNK_ROUTE_DEBUG_ERRORS: "${VECTOPLAN_CHUNK_ROUTE_DEBUG_ERRORS:-true}"
-  VECTOPLAN_CHUNK_API_PREFIX: "${VECTOPLAN_CHUNK_API_PREFIX:-}"
-  VECTOPLAN_CHUNK_ROUTE_MAX_BATCH_CHUNKS: "${VECTOPLAN_CHUNK_ROUTE_MAX_BATCH_CHUNKS:-256}"
-  VECTOPLAN_CHUNK_MAX_BATCH_CHUNKS: "${VECTOPLAN_CHUNK_MAX_BATCH_CHUNKS:-256}"
-  VECTOPLAN_CHUNK_MAX_COMMAND_AFFECTED_CELLS: "${VECTOPLAN_CHUNK_MAX_COMMAND_AFFECTED_CELLS:-65536}"
-
-  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_X: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_X:-256}"
-  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Y: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Y:-256}"
-  VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Z: "${VECTOPLAN_CHUNK_MAX_OBJECT_SIZE_Z:-256}"
-
-  VECTOPLAN_CHUNK_WORLD_TEST_ENABLED: "${VECTOPLAN_CHUNK_WORLD_TEST_ENABLED:-true}"
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-flat}"
-
+  # Eindeutige Welt-Semantik:
+  # - world_spawn ist die konkrete editierbare WorldInstance.
+  # - flat ist Template/Provider, aber niemals die konkrete Default-World-ID.
   VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
-  VECTOPLAN_CHUNK_DEFAULT_PROJECT_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_SLUG:-dev-project}"
-  VECTOPLAN_CHUNK_DEFAULT_PROJECT_NAME: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_NAME:-Dev Project}"
-
   VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
-  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_SLUG:-dev-universe}"
-  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_NAME: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_NAME:-Dev Universe}"
-
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
   VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
-  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_SLUG: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_SLUG:-spawn}"
-  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_NAME: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_NAME:-Flat Spawn World}"
-
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
   VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
-  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_ID:-flat}"
-
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_TYPE:-runtime-world}"
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_ROLE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ROLE:-default_spawn}"
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_SCOPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_SCOPE:-project}"
-  VECTOPLAN_CHUNK_DEFAULT_WORLD_OWNER_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_OWNER_TYPE:-project}"
-
-  VECTOPLAN_CHUNK_DEFAULT_GENERATOR_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_GENERATOR_TYPE:-flat-world}"
-  VECTOPLAN_CHUNK_DEFAULT_GENERATOR_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_GENERATOR_VERSION:-1}"
-  VECTOPLAN_CHUNK_DEFAULT_PROJECTION_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_PROJECTION_TYPE:-flat-local-v1}"
-  VECTOPLAN_CHUNK_DEFAULT_TOPOLOGY_TYPE: "${VECTOPLAN_CHUNK_DEFAULT_TOPOLOGY_TYPE:-flat-unbounded-v1}"
-  VECTOPLAN_CHUNK_DEFAULT_COORDINATE_SYSTEM: "${VECTOPLAN_CHUNK_DEFAULT_COORDINATE_SYSTEM:-vectoplan-world-y-up-v1}"
-
-  VECTOPLAN_CHUNK_DEFAULT_CHUNK_SIZE: "${VECTOPLAN_CHUNK_DEFAULT_CHUNK_SIZE:-16}"
-  VECTOPLAN_CHUNK_DEFAULT_CELL_SIZE: "${VECTOPLAN_CHUNK_DEFAULT_CELL_SIZE:-1}"
-  VECTOPLAN_CHUNK_DEFAULT_SURFACE_Y: "${VECTOPLAN_CHUNK_DEFAULT_SURFACE_Y:-0}"
-  VECTOPLAN_CHUNK_DEFAULT_MIN_Y: "${VECTOPLAN_CHUNK_DEFAULT_MIN_Y:--8}"
-  VECTOPLAN_CHUNK_DEFAULT_MAX_Y: "${VECTOPLAN_CHUNK_DEFAULT_MAX_Y:-64}"
-  VECTOPLAN_CHUNK_DEFAULT_SEED: "${VECTOPLAN_CHUNK_DEFAULT_SEED:-dev-seed}"
-
   VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID:-debug-blocks}"
   VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION:-1}"
 
-  VECTOPLAN_CHUNK_DEFAULT_SPAWN_X: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_X:-0}"
-  VECTOPLAN_CHUNK_DEFAULT_SPAWN_Y: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_Y:-2}"
-  VECTOPLAN_CHUNK_DEFAULT_SPAWN_Z: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_Z:-0}"
-  VECTOPLAN_CHUNK_DEFAULT_SPAWN_YAW: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_YAW:-0}"
-  VECTOPLAN_CHUNK_DEFAULT_SPAWN_PITCH: "${VECTOPLAN_CHUNK_DEFAULT_SPAWN_PITCH:-0}"
-
-  VECTOPLAN_CHUNK_BOOTSTRAP_ALLOW_DEFAULT_PROJECT: "${VECTOPLAN_CHUNK_BOOTSTRAP_ALLOW_DEFAULT_PROJECT:-false}"
-  VECTOPLAN_CHUNK_BOOTSTRAP_INCLUDE_PROVIDER_CHECKS: "${VECTOPLAN_CHUNK_BOOTSTRAP_INCLUDE_PROVIDER_CHECKS:-false}"
-  VECTOPLAN_CHUNK_BOOTSTRAP_REQUIRE_PROVIDER_WORLDS: "${VECTOPLAN_CHUNK_BOOTSTRAP_REQUIRE_PROVIDER_WORLDS:-false}"
-  VECTOPLAN_CHUNK_DISABLE_PROVIDER_ENRICHMENT: "${VECTOPLAN_CHUNK_DISABLE_PROVIDER_ENRICHMENT:-false}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED:-true}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT:-true}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE:-vectoplan-app}"
 
   VECTOPLAN_CHUNK_HEALTHCHECK_PATH: "${VECTOPLAN_CHUNK_HEALTHCHECK_PATH:-/projects/_status}"
+  VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK: "${VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK:-true}"
 
   VECTOPLAN_CHUNK_RUN_MODE: "${VECTOPLAN_CHUNK_RUN_MODE:-gunicorn}"
-
   GUNICORN_APP: "${VECTOPLAN_CHUNK_GUNICORN_APP:-wsgi:app}"
   GUNICORN_WORKERS: "${VECTOPLAN_CHUNK_GUNICORN_WORKERS:-2}"
   GUNICORN_THREADS: "${VECTOPLAN_CHUNK_GUNICORN_THREADS:-2}"
@@ -504,23 +370,128 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   GUNICORN_ACCESSLOG: "${VECTOPLAN_CHUNK_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_CHUNK_GUNICORN_ERRORLOG:--}"
 
-  VECTOPLAN_EDITOR_CONFIG: "${VECTOPLAN_CHUNK_CONFIG:-development}"
-  VECTOPLAN_EDITOR_DEBUG: "${VECTOPLAN_CHUNK_DEBUG:-true}"
-  VECTOPLAN_EDITOR_HOST: "0.0.0.0"
-  VECTOPLAN_EDITOR_PORT: "5000"
-  VECTOPLAN_EDITOR_APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
-  VECTOPLAN_EDITOR_SERVICE_NAME: "vectoplan-chunk"
-  VECTOPLAN_EDITOR_PRESTART_CHECK: "${VECTOPLAN_CHUNK_PRESTART_CHECK:-false}"
-  VECTOPLAN_EDITOR_PRINT_STARTUP_SUMMARY: "${VECTOPLAN_CHUNK_PRINT_STARTUP_SUMMARY:-true}"
-  VECTOPLAN_EDITOR_STARTUP_STRICT: "${VECTOPLAN_CHUNK_STARTUP_STRICT:-false}"
-  VECTOPLAN_EDITOR_STRICT_ASSET_CHECKS: "${VECTOPLAN_CHUNK_STRICT_ASSET_CHECKS:-false}"
-  VECTOPLAN_EDITOR_FRONTEND_BUILD_REQUIRED: "false"
-  VECTOPLAN_EDITOR_FRONTEND_STRICT_CHECKS: "false"
-  VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_CHUNK_RUN_MODE:-gunicorn}"
+x-vectoplan-chunk-init-environment: &vectoplan-chunk-init-environment
+  <<: *vectoplan-chunk-environment
 
-# ------------------------------------------------------------------------------
-# Gemeinsame Werte
-# ------------------------------------------------------------------------------
+  SERVICE_NAME: "vectoplan-chunk-init"
+  APP_NAME: "vectoplan-chunk-init"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-chunk-init"
+
+  VECTOPLAN_CHUNK_STARTUP_MODE: "db-bootstrap"
+  VECTOPLAN_CHUNK_RUNTIME_MODE: "db-bootstrap"
+  VECTOPLAN_CHUNK_RUN_MODE: "db-bootstrap"
+
+  # Nur der Init-Service darf DB-Struktur, Schema-Repair und Defaults erzeugen.
+  # Diese Werte sind absichtlich init-spezifisch und werden nicht von Runtime-
+  # AUTO_* Werten beeinflusst.
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_ENABLED: "${VECTOPLAN_CHUNK_INIT_DB_BOOTSTRAP_ENABLED:-true}"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "true"
+  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "false"
+  VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "${VECTOPLAN_CHUNK_INIT_CREATE_ALL:-true}"
+  VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_INIT_SEED_DEFAULTS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_INIT_SEED_DEBUG_BLOCKS:-true}"
+  VECTOPLAN_CHUNK_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_INIT_SEED_DEV_PROJECT:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_CREATE_ALL: "${VECTOPLAN_CHUNK_INIT_CREATE_ALL:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEFAULTS: "${VECTOPLAN_CHUNK_INIT_SEED_DEFAULTS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEBUG_BLOCKS: "${VECTOPLAN_CHUNK_INIT_SEED_DEBUG_BLOCKS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_SEED_DEV_PROJECT: "${VECTOPLAN_CHUNK_INIT_SEED_DEV_PROJECT:-true}"
+  VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS: "${VECTOPLAN_CHUNK_INIT_REPAIR_MISSING_COLUMNS:-true}"
+  VECTOPLAN_CHUNK_DB_BOOTSTRAP_FAIL_ON_ERROR: "${VECTOPLAN_CHUNK_INIT_FAIL_ON_ERROR:-true}"
+  VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_CHUNK_INIT_SEED_ON_EMPTY_ONLY:-true}"
+
+  # Init verwendet dieselben IDs wie Runtime, aber erzwingt zusätzlich die
+  # konkrete editierbare Default-Welt world_spawn.
+  VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+  VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+  VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+
+  # Retry-/Diagnosewerte für den Shell-Bootstrap.
+  VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS: "${VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS:-5}"
+  VECTOPLAN_CHUNK_INIT_RETRY_SECONDS: "${VECTOPLAN_CHUNK_INIT_RETRY_SECONDS:-3}"
+  VECTOPLAN_CHUNK_INIT_CONNECT_TIMEOUT_SECONDS: "${VECTOPLAN_CHUNK_INIT_CONNECT_TIMEOUT_SECONDS:-10}"
+  VECTOPLAN_CHUNK_INIT_FAIL_FAST: "${VECTOPLAN_CHUNK_INIT_FAIL_FAST:-true}"
+  VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY: "${VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY:-true}"
+
+x-vectoplan-app-environment: &vectoplan-app-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-app"
+  APP_NAME: "vectoplan-app"
+  APP_HOME: "/app"
+
+  FLASK_ENV: "${VECTOPLAN_APP_FLASK_ENV:-development}"
+  HOST: "0.0.0.0"
+  PORT: "${VECTOPLAN_APP_INTERNAL_PORT:-8000}"
+  MEDIA_ROOT: "${VECTOPLAN_APP_MEDIA_ROOT:-/app/media}"
+  SECRET_KEY: "${VECTOPLAN_APP_SECRET_KEY:-dev-vectoplan-app-secret-change-me}"
+
+  VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+  VECTOPLAN_APP_PUBLIC_BASE_URL: "${VECTOPLAN_APP_PUBLIC_BASE_URL:-http://localhost:5103}"
+
+  VECTOPLAN_APP_ALLOWED_FRAME_SRC: "${VECTOPLAN_APP_ALLOWED_FRAME_SRC:-self http://localhost:5100 http://127.0.0.1:5100 http://localhost:5190 http://127.0.0.1:5190}"
+  VECTOPLAN_ALLOWED_FRAME_PARENTS: "${VECTOPLAN_ALLOWED_FRAME_PARENTS:-http://localhost:5103 http://127.0.0.1:5103}"
+
+  VECTOPLAN_APP_POSTGRES_DB: "${VECTOPLAN_APP_POSTGRES_DB:-vectoplan_app}"
+  VECTOPLAN_APP_POSTGRES_USER: "${VECTOPLAN_APP_POSTGRES_USER:-vectoplan_app}"
+  VECTOPLAN_APP_POSTGRES_PASSWORD: "${VECTOPLAN_APP_POSTGRES_PASSWORD:-vectoplan_app}"
+  VECTOPLAN_APP_DB_HOST: "${VECTOPLAN_APP_DB_HOST:-vectoplan-app-db}"
+  VECTOPLAN_APP_DB_PORT: "${VECTOPLAN_APP_DB_PORT:-5432}"
+  VECTOPLAN_APP_DB_NAME: "${VECTOPLAN_APP_DB_NAME:-vectoplan_app}"
+  VECTOPLAN_APP_DB_USER: "${VECTOPLAN_APP_DB_USER:-vectoplan_app}"
+  VECTOPLAN_APP_DB_PASSWORD: "${VECTOPLAN_APP_DB_PASSWORD:-vectoplan_app}"
+
+  DATABASE_URL: "${VECTOPLAN_APP_DATABASE_URL:-postgresql+psycopg://vectoplan_app:vectoplan_app@vectoplan-app-db:5432/vectoplan_app}"
+  SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_APP_DATABASE_URL:-postgresql+psycopg://vectoplan_app:vectoplan_app@vectoplan-app-db:5432/vectoplan_app}"
+
+  IDENTITY_INTERNAL_URL: "${IDENTITY_INTERNAL_URL:-http://identity:9000}"
+  REGISTRY_INTERNAL_URL: "${REGISTRY_INTERNAL_URL:-http://registry:8000}"
+
+  VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
+  VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
+  VECTOPLAN_EDITOR_INTERNAL_URL: "${VECTOPLAN_EDITOR_INTERNAL_URL:-http://vectoplan-editor:5000}"
+  VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
+  VECTOPLAN_EDITOR_EMBED_ENABLED: "${VECTOPLAN_EDITOR_EMBED_ENABLED:-true}"
+
+  VECTOPLAN_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
+  VECTOPLAN_LIBRARY_INTERNAL_URL: "${VECTOPLAN_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
+
+  VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
+  VECTOPLAN_CHUNK_PUBLIC_BASE_URL: "${VECTOPLAN_CHUNK_PUBLIC_BASE_URL:-http://localhost:5102}"
+  VECTOPLAN_CHUNK_INTERNAL_URL: "${VECTOPLAN_CHUNK_INTERNAL_URL:-http://vectoplan-chunk:5000}"
+  VECTOPLAN_CHUNK_INTERNAL_BASE_URL: "${VECTOPLAN_CHUNK_INTERNAL_BASE_URL:-http://vectoplan-chunk:5000}"
+
+  VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE: "${VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE:-true}"
+  VECTOPLAN_CHUNK_PROVISION_REQUIRED: "${VECTOPLAN_CHUNK_PROVISION_REQUIRED:-false}"
+  VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS:-10}"
+  VECTOPLAN_CHUNK_PROVISION_RETRIES: "${VECTOPLAN_CHUNK_PROVISION_RETRIES:-2}"
+  VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS:-1}"
+  VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE: "${VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE:-true}"
+
+  GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
+  GEOSERVER_ORCHESTRATOR_INTERNAL_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
+  GEOSERVER_INTERNAL_BASE_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
+  GEOSERVER_PUBLIC_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
+
+  OPENLAYER_PUBLIC_URL: "${OPENLAYER_PUBLIC_URL:-http://localhost:5190}"
+  OPENLAYER_PUBLIC_BASE_URL: "${OPENLAYER_PUBLIC_BASE_URL:-http://localhost:5190}"
+  OPENLAYER_INTERNAL_URL: "${OPENLAYER_INTERNAL_URL:-http://openlayer:8090}"
+  OPENLAYER_ROUTE: "${OPENLAYER_ROUTE:-/map}"
+  OPENLAYER_EMBED_ENABLED: "${OPENLAYER_EMBED_ENABLED:-true}"
+
+  GUNICORN_WORKERS: "${VECTOPLAN_APP_GUNICORN_WORKERS:-2}"
+  GUNICORN_THREADS: "${VECTOPLAN_APP_GUNICORN_THREADS:-4}"
+  GUNICORN_TIMEOUT: "${VECTOPLAN_APP_GUNICORN_TIMEOUT:-120}"
+  GUNICORN_KEEPALIVE: "${VECTOPLAN_APP_GUNICORN_KEEPALIVE:-5}"
+  GUNICORN_LOG_LEVEL: "${VECTOPLAN_APP_GUNICORN_LOG_LEVEL:-info}"
+  GUNICORN_ACCESSLOG: "${VECTOPLAN_APP_GUNICORN_ACCESSLOG:--}"
+  GUNICORN_ERRORLOG: "${VECTOPLAN_APP_GUNICORN_ERRORLOG:--}"
 
 x-geoserver-orchestrator-db-url: &geoserver_orchestrator_db_url "postgresql+psycopg2://${GEOSERVER_ORCH_DB_USER:-geo_orch}:${GEOSERVER_ORCH_DB_PASSWORD:-geo_orch}@${GEOSERVER_ORCH_DB_HOST:-vectoplan-geo-db}:${GEOSERVER_ORCH_DB_PORT:-5432}/${GEOSERVER_ORCH_DB_NAME:-geoserver_orchestrator_db}"
 
@@ -530,17 +501,13 @@ x-geoserver-orchestrator-build: &geoserver_orchestrator_build
 
 x-geoserver-orchestrator-volumes: &geoserver_orchestrator_volumes
   - ./services/vectoplan-geoserver-orchestrator/upload:/app/upload
-  - geoserver_orchestrator_tmp_data:/app/tmp
-  - geoserver_orchestrator_logs:/app/logs
-
-
-# ------------------------------------------------------------------------------
-# Orchestrator Common Environment
-# ------------------------------------------------------------------------------
+  - geoserver-orchestrator-tmp-data:/app/tmp
+  - geoserver-orchestrator-logs:/app/logs
 
 x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_environment
-  SECRET_KEY: "${SECRET_KEY:-dev-secret-key-change-me}"
+  <<: *vectoplan-python-environment
 
+  SECRET_KEY: "${SECRET_KEY:-dev-secret-key-change-me}"
   APP_ENV: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
   FLASK_ENV: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
   WSGI_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
@@ -570,82 +537,21 @@ x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_envi
   EDITABLE_SCHEMA_NAME: "${EDITABLE_SCHEMA_NAME:-edit}"
   GEOSERVER_ORCH_SCHEMAS: "${GEOSERVER_ORCH_SCHEMAS:-meta,raw,pub,edit}"
 
-  EXPECTED_CORE_MODEL_TABLES: "${EXPECTED_CORE_MODEL_TABLES:-datasets,dataset_sources,import_runs,publish_states,editable_layers}"
-  BOOTSTRAP_EXPECTED_CORE_TABLES: "${BOOTSTRAP_EXPECTED_CORE_TABLES:-datasets,dataset_sources,import_runs,publish_states,editable_layers}"
-
-  ENABLE_PERSISTED_CATALOGS: "${ENABLE_PERSISTED_CATALOGS:-true}"
-  REQUIRE_DATASET_CATALOG_ASSIGNMENT: "${REQUIRE_DATASET_CATALOG_ASSIGNMENT:-true}"
-
-  DEFAULT_CATALOG_KEY: "${GEODATA_DEFAULT_CATALOG_KEY:-default}"
-  DEFAULT_CATALOG_NAME: "${GEODATA_DEFAULT_CATALOG_NAME:-Default Catalog}"
-  DEFAULT_CATALOG_DESCRIPTION: "${GEODATA_DEFAULT_CATALOG_DESCRIPTION:-Standard-Katalog für GeoServer-Orchestrator-Geodaten.}"
-
-  GEODATA_DEFAULT_CATALOG_KEY: "${GEODATA_DEFAULT_CATALOG_KEY:-default}"
-  GEODATA_DEFAULT_CATALOG_NAME: "${GEODATA_DEFAULT_CATALOG_NAME:-Default Catalog}"
-  GEODATA_DEFAULT_CATALOG_DESCRIPTION: "${GEODATA_DEFAULT_CATALOG_DESCRIPTION:-Standard-Katalog für GeoServer-Orchestrator-Geodaten.}"
-  GEODATA_DEFAULT_CATALOG_IS_ACTIVE: "${GEODATA_DEFAULT_CATALOG_IS_ACTIVE:-true}"
-  GEODATA_DEFAULT_CATALOG_IS_DEFAULT: "${GEODATA_DEFAULT_CATALOG_IS_DEFAULT:-true}"
-
   SERVICE_PUBLIC_SCHEME: "${SERVICE_PUBLIC_SCHEME:-http}"
   SERVICE_PUBLIC_HOST: "${SERVICE_PUBLIC_HOST:-localhost}"
-  SERVICE_PUBLIC_PORT: "${SERVICE_PUBLIC_PORT:-8010}"
-  SERVICE_PUBLIC_BASE_URL: "${SERVICE_PUBLIC_BASE_URL:-http://localhost:8010}"
+  SERVICE_PUBLIC_PORT: "${SERVICE_PUBLIC_PORT:-5110}"
+  SERVICE_PUBLIC_BASE_URL: "${SERVICE_PUBLIC_BASE_URL:-http://localhost:5110}"
 
   GEOSERVER_CONTEXT_PATH: "${GEOSERVER_CONTEXT_PATH:-/geoserver}"
-
-  GEOSERVER_INTERNAL_SCHEME: "${GEOSERVER_INTERNAL_SCHEME:-http}"
-  GEOSERVER_INTERNAL_HOST: "${GEOSERVER_INTERNAL_HOST:-geoserver}"
-  GEOSERVER_INTERNAL_PORT: "${GEOSERVER_INTERNAL_PORT:-8080}"
   GEOSERVER_INTERNAL_BASE_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
-
-  GEOSERVER_PUBLIC_SCHEME: "${GEOSERVER_PUBLIC_SCHEME:-http}"
-  GEOSERVER_PUBLIC_HOST: "${GEOSERVER_PUBLIC_HOST:-localhost}"
-  GEOSERVER_PUBLIC_PORT: "${GEOSERVER_PUBLIC_PORT:-8082}"
-  GEOSERVER_PUBLIC_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:8082/geoserver}"
-
+  GEOSERVER_PUBLIC_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
   GEOSERVER_REST_BASE_URL: "${GEOSERVER_REST_BASE_URL:-http://geoserver:8080/geoserver/rest}"
+
   GEOSERVER_USERNAME: "${GEOSERVER_ADMIN_USER:-admin}"
   GEOSERVER_PASSWORD: "${GEOSERVER_ADMIN_PASSWORD:-geoserver}"
   GEOSERVER_SKIP_DEMO_DATA: "true"
-
-  GEOSERVER_DEFAULT_WORKSPACE: "${GEOSERVER_DEFAULT_WORKSPACE:-public}"
-  GEOSERVER_DEFAULT_DATASTORE_NAME: "${GEOSERVER_DEFAULT_DATASTORE_NAME:-postgis_main}"
-  GEOSERVER_DEFAULT_WFS_VERSION: "${GEOSERVER_DEFAULT_WFS_VERSION:-2.0.0}"
-  GEOSERVER_DEFAULT_OUTPUT_FORMAT: "${GEOSERVER_DEFAULT_OUTPUT_FORMAT:-application/json}"
-  GEOSERVER_DEFAULT_PROJECTION_POLICY: "${GEOSERVER_DEFAULT_PROJECTION_POLICY:-FORCE_DECLARED}"
-  OGR2OGR_COMMAND_TIMEOUT_SECONDS: "${OGR2OGR_COMMAND_TIMEOUT_SECONDS:-7200}"
-  OGR_PG_USE_COPY: "${OGR_PG_USE_COPY:-true}"
-
-  DB_HEALTHCHECK_ON_STARTUP: "false"
-  GEOSERVER_HEALTHCHECK_ON_STARTUP: "false"
-  AUTO_CREATE_TABLES_ON_STARTUP: "false"
-  AUTO_SYNC_ON_STARTUP: "false"
-  ALLOW_INPROCESS_AUTO_CREATE_TABLES: "false"
-  ALLOW_INPROCESS_AUTO_SYNC: "false"
-
-  GEOSERVER_ORCHESTRATOR_VALIDATE_CONFIG_ON_STARTUP: "true"
-  GEOSERVER_ORCHESTRATOR_VALIDATE_STARTUP_POLICY_ON_STARTUP: "true"
-  GEOSERVER_ORCHESTRATOR_ENSURE_RUNTIME_DIRS_ON_STARTUP: "true"
-  GEOSERVER_ORCHESTRATOR_PRINT_CONFIG_SUMMARY: "true"
-  GEOSERVER_ORCHESTRATOR_PRINT_STARTUP_SUMMARY: "true"
-  GEOSERVER_ORCHESTRATOR_VALIDATE_BINARIES_ON_STARTUP: "true"
-
   GEOSERVER_ORCHESTRATOR_WAIT_FOR_DB: "true"
-  GEOSERVER_ORCHESTRATOR_DB_WAIT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_TIMEOUT_SECONDS:-120}"
-  GEOSERVER_ORCHESTRATOR_DB_WAIT_INTERVAL_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_INTERVAL_SECONDS:-2}"
-  GEOSERVER_ORCHESTRATOR_DB_WAIT_CONNECT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_DB_WAIT_CONNECT_TIMEOUT_SECONDS:-5}"
-  GEOSERVER_ORCHESTRATOR_DB_WAIT_FAIL_FAST_ON_AUTH: "true"
-
   GEOSERVER_ORCHESTRATOR_WAIT_FOR_GEOSERVER: "true"
-  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_TIMEOUT_SECONDS:-180}"
-  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_INTERVAL_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_INTERVAL_SECONDS:-3}"
-  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_REQUEST_TIMEOUT_SECONDS: "${GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_REQUEST_TIMEOUT_SECONDS:-10}"
-  GEOSERVER_ORCHESTRATOR_GEOSERVER_WAIT_USE_REST_FALLBACK: "true"
-
-
-# ------------------------------------------------------------------------------
-# DB-Init-Umgebung
-# ------------------------------------------------------------------------------
 
 x-geoserver-orchestrator-db-init-environment: &geoserver_orchestrator_db_init_environment
   <<: *geoserver_orchestrator_common_environment
@@ -700,11 +606,6 @@ x-geoserver-orchestrator-db-init-environment: &geoserver_orchestrator_db_init_en
   DB_INIT_FAIL_ON_APP_BOOTSTRAP_NOT_OK: "true"
   DB_INIT_FAIL_ON_DATABASE_PROBE_NOT_OK: "true"
 
-
-# ------------------------------------------------------------------------------
-# Startup-Sync-Umgebung
-# ------------------------------------------------------------------------------
-
 x-geoserver-orchestrator-sync-init-environment: &geoserver_orchestrator_sync_init_environment
   <<: *geoserver_orchestrator_common_environment
 
@@ -712,32 +613,7 @@ x-geoserver-orchestrator-sync-init-environment: &geoserver_orchestrator_sync_ini
   WSGI_STARTUP_MODE: "startup_sync"
   SERVICE_STARTUP_MODE: "startup_sync"
   STARTUP_MODE: "startup_sync"
-
-  STARTUP_SYNC_FLASK_CONFIG_NAME: "${GEOSERVER_ORCHESTRATOR_ENV:-development}"
-  STARTUP_SYNC_STARTUP_MODE: "startup_sync"
   STARTUP_SYNC_ENABLED: "${STARTUP_SYNC_ENABLED:-false}"
-  STARTUP_SYNC_REGISTER_DEFAULT_ROUTES: "false"
-  STARTUP_SYNC_RUN_APP_STARTUP_TASKS: "false"
-  STARTUP_SYNC_USE_APP_CACHE: "false"
-  STARTUP_SYNC_CREATE_ON_IMPORT: "false"
-  STARTUP_SYNC_CLEAR_APP_CACHES_BEFORE_BUILD: "true"
-
-  STARTUP_SYNC_CONTINUE_ON_ERROR: "${STARTUP_SYNC_CONTINUE_ON_ERROR:-true}"
-  STARTUP_SYNC_FAIL_ON_ANY_FAILURE: "${STARTUP_SYNC_FAIL_ON_ANY_FAILURE:-false}"
-  STARTUP_SYNC_INCLUDE_INVALID: "${STARTUP_SYNC_INCLUDE_INVALID:-true}"
-  STARTUP_SYNC_VALIDATE_ONLY: "${STARTUP_SYNC_VALIDATE_ONLY:-false}"
-  STARTUP_SYNC_WRITE_STATE: "${STARTUP_SYNC_WRITE_STATE:-true}"
-  STARTUP_SYNC_WRITE_SYNC_LOG: "${STARTUP_SYNC_WRITE_SYNC_LOG:-true}"
-  STARTUP_SYNC_INCLUDE_CATALOG: "${STARTUP_SYNC_INCLUDE_CATALOG:-true}"
-  STARTUP_SYNC_ENRICH_CATALOG_WITH_DB: "${STARTUP_SYNC_ENRICH_CATALOG_WITH_DB:-true}"
-  STARTUP_SYNC_EXPORT_SNAPSHOT: "${STARTUP_SYNC_EXPORT_SNAPSHOT:-true}"
-  STARTUP_SYNC_FORCE_SOURCE_IMPORT: "${STARTUP_SYNC_FORCE_SOURCE_IMPORT:-false}"
-  STARTUP_SYNC_DATASET_IDS: "${STARTUP_SYNC_DATASET_IDS:-}"
-
-
-# ------------------------------------------------------------------------------
-# Runtime-Umgebung
-# ------------------------------------------------------------------------------
 
 x-geoserver-orchestrator-runtime-environment: &geoserver_orchestrator_runtime_environment
   <<: *geoserver_orchestrator_common_environment
@@ -746,126 +622,50 @@ x-geoserver-orchestrator-runtime-environment: &geoserver_orchestrator_runtime_en
   WSGI_STARTUP_MODE: "runtime"
   SERVICE_STARTUP_MODE: "runtime"
   STARTUP_MODE: "runtime"
-
   DB_HEALTHCHECK_ON_STARTUP: "true"
   GEOSERVER_HEALTHCHECK_ON_STARTUP: "true"
 
-  APP_CREATE_ON_IMPORT: "false"
-  APP_USE_CACHE: "true"
-  APP_REGISTER_DEFAULT_ROUTES: "true"
-  APP_RUN_STARTUP_TASKS: "false"
-
-  WSGI_USE_APP_CACHE: "true"
-  WSGI_REGISTER_DEFAULT_ROUTES: "true"
-  WSGI_RUN_STARTUP_TASKS: "false"
-  WSGI_FORCE_REBUILD: "false"
-
-
-# ------------------------------------------------------------------------------
-# Services
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Services
-# ------------------------------------------------------------------------------
-
 services:
-
-  vectoplan-editor:
-    container_name: vectoplan-editor
-
-    build:
-      context: ./services/vectoplan-editor
-      dockerfile: Dockerfile
-      target: runtime
-      args:
-        APP_HOME: /opt/vectoplan/services/vectoplan-editor
-        APP_USER: vectoplan
-        APP_UID: "${VECTOPLAN_EDITOR_UID:-10001}"
-        APP_GID: "${VECTOPLAN_EDITOR_GID:-10001}"
-
-    init: true
-    restart: unless-stopped
-    working_dir: /opt/vectoplan/services/vectoplan-editor
-    stop_signal: SIGTERM
-    stop_grace_period: 30s
-
-    environment:
-      <<: *vectoplan-editor-environment
-
-    depends_on:
-      vectoplan-chunk:
-        condition: service_healthy
-
-    ports:
-      - "${VECTOPLAN_EDITOR_PUBLIC_PORT:-5000}:5000"
-
-    healthcheck:
-      test:
-        [
-          "CMD-SHELL",
-          "python -c \"import sys, urllib.request; resp = urllib.request.urlopen('http://127.0.0.1:5000/editor', timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
-        ]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 20s
-
-    networks:
-      - vectoplan-net
-
-    # volumes:
-    #   - ./services/vectoplan-editor:/opt/vectoplan/services/vectoplan-editor:rw
-
   vectoplan-library-db:
-    container_name: vectoplan-library-db
+    <<: *vectoplan-service-defaults
     image: postgres:16-alpine
-    init: true
-    restart: unless-stopped
-    stop_signal: SIGTERM
-    stop_grace_period: 30s
-
     environment:
       <<: *vectoplan-library-postgres-environment
-
     ports:
-      - "${VECTOPLAN_LIBRARY_POSTGRES_PUBLIC_PORT:-5432}:5432"
-
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_LIBRARY_POSTGRES_PUBLIC_PORT:-15432}:5432"
+    expose:
+      - "5432"
     healthcheck:
       test:
         [
           "CMD-SHELL",
           "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
         ]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
-
+      interval: "${VECTOPLAN_LIBRARY_DB_HEALTH_INTERVAL:-10s}"
+      timeout: "${VECTOPLAN_LIBRARY_DB_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_LIBRARY_DB_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_LIBRARY_DB_HEALTH_START_PERIOD:-10s}"
     volumes:
       - vectoplan-library-postgres-data:/var/lib/postgresql/data
-
     networks:
-      - vectoplan-net
+      vectoplan-net:
+        aliases:
+          - vectoplan-library-db
+          - library-db
 
   vectoplan-library:
-    container_name: vectoplan-library
-
+    <<: *vectoplan-service-defaults
     build:
       context: ./services/vectoplan-library
       dockerfile: Dockerfile
       target: runtime
       args:
-        APP_HOME: /opt/vectoplan/services/vectoplan-library
-        APP_USER: vectoplan
+        APP_HOME: "/opt/vectoplan/services/vectoplan-library"
+        APP_USER: "vectoplan"
         APP_UID: "${VECTOPLAN_LIBRARY_UID:-10002}"
         APP_GID: "${VECTOPLAN_LIBRARY_GID:-10002}"
 
-    init: true
-    restart: unless-stopped
     working_dir: /opt/vectoplan/services/vectoplan-library
-    stop_signal: SIGTERM
-    stop_grace_period: 30s
 
     environment:
       <<: *vectoplan-library-environment
@@ -874,83 +674,208 @@ services:
       vectoplan-library-db:
         condition: service_healthy
 
+    entrypoint:
+      - /bin/sh
+      - -ec
+
+    command:
+      - |
+        set -eu
+
+        cd /opt/vectoplan/services/vectoplan-library
+
+        if [ ! -f ./entrypoint.sh ]; then
+          echo "[vectoplan-library] ERROR: ./entrypoint.sh wurde im Arbeitsverzeichnis nicht gefunden." >&2
+          echo "[vectoplan-library] PWD: $(pwd)" >&2
+          echo "[vectoplan-library] Inhalt:" >&2
+          ls -la >&2 || true
+          exit 1
+        fi
+
+        sed -i 's/\r$//' ./entrypoint.sh 2>/dev/null || true
+        chmod +x ./entrypoint.sh 2>/dev/null || true
+
+        exec /bin/sh ./entrypoint.sh
+
     ports:
-      - "${VECTOPLAN_LIBRARY_PUBLIC_PORT:-5001}:5000"
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_LIBRARY_PUBLIC_PORT:-5101}:5000"
+
+    expose:
+      - "5000"
 
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "python -c \"import sys, urllib.request; resp = urllib.request.urlopen('http://127.0.0.1:5000/health/ready', timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
+          "python - <<'PY'\nimport sys, urllib.request\nfor path in ('/health/ready', '/health/live', '/health', '/'):\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        if 200 <= status < 500:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
         ]
-      interval: 20s
-      timeout: 5s
-      retries: 10
-      start_period: 90s
-    volumes:
-      - ./services/vectoplan-library:/opt/vectoplan/services/vectoplan-library
-    networks:
-      - vectoplan-net
+      interval: "${VECTOPLAN_LIBRARY_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_LIBRARY_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_LIBRARY_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_LIBRARY_HEALTH_START_PERIOD:-90s}"
 
-    # Für lokale Entwicklung optional aktivieren.
-    # Achtung:
-    # Wenn du migrations/ im Host persistieren willst, den zweiten Mount
-    # ebenfalls aktivieren. Sonst werden automatisch erzeugte Migrationen nur
-    # im Container-Dateisystem gehalten.
-    #
-    # volumes:
-    #   - ./services/vectoplan-library:/opt/vectoplan/services/vectoplan-library:rw
-    #   - ./services/vectoplan-library/migrations:/opt/vectoplan/services/vectoplan-library/migrations:rw
+    volumes:
+      - ./services/vectoplan-library:/opt/vectoplan/services/vectoplan-library:rw
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-library
+          - library
+      vectoplan-shared:
+        aliases:
+          - vectoplan-library
+          - server-library
 
   vectoplan-chunk-db:
-    container_name: vectoplan-chunk-db
+    <<: *vectoplan-service-defaults
     image: postgres:16-alpine
-    init: true
-    restart: unless-stopped
-    stop_signal: SIGTERM
-    stop_grace_period: 30s
-
     environment:
       <<: *vectoplan-chunk-postgres-environment
-
     ports:
-      - "${VECTOPLAN_CHUNK_POSTGRES_PUBLIC_PORT:-5433}:5432"
-
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CHUNK_POSTGRES_PUBLIC_PORT:-15433}:5432"
+    expose:
+      - "5432"
     healthcheck:
       test:
         [
           "CMD-SHELL",
           "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
         ]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
-
+      interval: "${VECTOPLAN_CHUNK_DB_HEALTH_INTERVAL:-10s}"
+      timeout: "${VECTOPLAN_CHUNK_DB_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_CHUNK_DB_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_CHUNK_DB_HEALTH_START_PERIOD:-10s}"
     volumes:
       - vectoplan-chunk-postgres-data:/var/lib/postgresql/data
-
     networks:
-      - vectoplan-net
+      vectoplan-net:
+        aliases:
+          - vectoplan-chunk-db
+          - chunk-db
 
-  vectoplan-chunk:
-    container_name: vectoplan-chunk
-
+  vectoplan-chunk-init:
+    <<: *vectoplan-init-service-defaults
     build:
       context: ./services/vectoplan-chunk
       dockerfile: Dockerfile
       target: runtime
       args:
-        APP_HOME: /opt/vectoplan/services/vectoplan-chunk
-        APP_USER: vectoplan
+        APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
+        APP_USER: "vectoplan"
         APP_UID: "${VECTOPLAN_CHUNK_UID:-10003}"
         APP_GID: "${VECTOPLAN_CHUNK_GID:-10003}"
 
-    init: true
-    restart: unless-stopped
     working_dir: /opt/vectoplan/services/vectoplan-chunk
-    stop_signal: SIGTERM
-    stop_grace_period: 30s
+
+    environment:
+      <<: *vectoplan-chunk-init-environment
+
+    depends_on:
+      vectoplan-chunk-db:
+        condition: service_healthy
+
+    entrypoint:
+      - /bin/sh
+      - -ec
+
+    command:
+      - |
+        set -eu
+
+        SERVICE_TAG="[vectoplan-chunk-init]"
+        cd /opt/vectoplan/services/vectoplan-chunk
+
+        on_error() {
+          code="$?"
+          echo "$${SERVICE_TAG} ERROR: DB-Bootstrap ist fehlgeschlagen. Exit-Code: $${code}" >&2
+          echo "$${SERVICE_TAG} PWD: $(pwd)" >&2
+          echo "$${SERVICE_TAG} Inhalt des Arbeitsverzeichnisses:" >&2
+          ls -la >&2 || true
+          exit "$${code}"
+        }
+
+        trap on_error INT TERM HUP
+
+        echo "$${SERVICE_TAG} Starte expliziten Chunk-DB-Bootstrap."
+
+        if [ "$${VECTOPLAN_CHUNK_INIT_PRINT_ENV_SUMMARY:-true}" = "true" ]; then
+          echo "$${SERVICE_TAG} DB host=$${VECTOPLAN_CHUNK_DB_HOST:-vectoplan-chunk-db}"
+          echo "$${SERVICE_TAG} DB port=$${VECTOPLAN_CHUNK_DB_PORT:-5432}"
+          echo "$${SERVICE_TAG} DB name=$${VECTOPLAN_CHUNK_DB_NAME:-vectoplan_chunk}"
+          echo "$${SERVICE_TAG} default_project=$${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
+          echo "$${SERVICE_TAG} default_universe=$${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
+          echo "$${SERVICE_TAG} default_world=$${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
+          echo "$${SERVICE_TAG} default_instance_world=$${VECTOPLAN_CHUNK_DEFAULT_INSTANCE_WORLD_ID:-world_spawn}"
+          echo "$${SERVICE_TAG} default_template=$${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
+          echo "$${SERVICE_TAG} default_provider_world=$${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
+          echo "$${SERVICE_TAG} create_all=$${VECTOPLAN_CHUNK_AUTO_CREATE_ALL:-true}"
+          echo "$${SERVICE_TAG} seed_defaults=$${VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS:-true}"
+          echo "$${SERVICE_TAG} repair_missing_columns=$${VECTOPLAN_CHUNK_BOOTSTRAP_REPAIR_MISSING_COLUMNS:-true}"
+        fi
+
+        if [ ! -f ./scripts/bootstrap_db.py ]; then
+          echo "$${SERVICE_TAG} ERROR: ./scripts/bootstrap_db.py wurde nicht gefunden." >&2
+          echo "$${SERVICE_TAG} Erwartet unter: /opt/vectoplan/services/vectoplan-chunk/scripts/bootstrap_db.py" >&2
+          exit 1
+        fi
+
+        max_attempts="$${VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS:-5}"
+        retry_seconds="$${VECTOPLAN_CHUNK_INIT_RETRY_SECONDS:-3}"
+        attempt="1"
+
+        while [ "$${attempt}" -le "$${max_attempts}" ]; do
+          echo "$${SERVICE_TAG} Bootstrap-Versuch $${attempt}/$${max_attempts} ..."
+
+          set +e
+          python ./scripts/bootstrap_db.py \
+            --config "$${VECTOPLAN_CHUNK_CONFIG:-development}" \
+            --create-all \
+            --repair-missing-columns \
+            --seed \
+            --json
+          code="$?"
+          set -e
+
+          if [ "$${code}" -eq 0 ]; then
+            echo "$${SERVICE_TAG} Chunk-DB-Bootstrap erfolgreich abgeschlossen."
+            exit 0
+          fi
+
+          echo "$${SERVICE_TAG} Bootstrap-Versuch $${attempt} ist fehlgeschlagen. Exit-Code: $${code}" >&2
+
+          if [ "$${attempt}" -ge "$${max_attempts}" ]; then
+            echo "$${SERVICE_TAG} ERROR: Max. Bootstrap-Versuche erreicht." >&2
+            exit "$${code}"
+          fi
+
+          echo "$${SERVICE_TAG} Warte $${retry_seconds}s vor erneutem Versuch ..."
+          sleep "$${retry_seconds}"
+          attempt="$((attempt + 1))"
+        done
+
+        echo "$${SERVICE_TAG} ERROR: Unerwartetes Ende des Bootstrap-Loops." >&2
+        exit 1
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-chunk-init
+          - chunk-init
+
+  vectoplan-chunk:
+    <<: *vectoplan-service-defaults
+    build:
+      context: ./services/vectoplan-chunk
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: "/opt/vectoplan/services/vectoplan-chunk"
+        APP_USER: "vectoplan"
+        APP_UID: "${VECTOPLAN_CHUNK_UID:-10003}"
+        APP_GID: "${VECTOPLAN_CHUNK_GID:-10003}"
+
+    working_dir: /opt/vectoplan/services/vectoplan-chunk
 
     environment:
       <<: *vectoplan-chunk-environment
@@ -958,70 +883,238 @@ services:
     depends_on:
       vectoplan-chunk-db:
         condition: service_healthy
+      vectoplan-chunk-init:
+        condition: service_completed_successfully
 
     ports:
-      - "${VECTOPLAN_CHUNK_PUBLIC_PORT:-5002}:5000"
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CHUNK_PUBLIC_PORT:-5102}:5000"
+
+    expose:
+      - "5000"
 
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "python -c \"import os, sys, urllib.request; path = os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_PATH', '/projects/_status'); resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3); sys.exit(0 if 200 <= getattr(resp, 'status', 200) < 400 else 1)\""
+          "python - <<'PY'\nimport json\nimport os\nimport sys\nimport urllib.request\npaths = [p.strip() for p in os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_PATH', '/projects/_status').split(',') if p.strip()]\npaths.extend(['/projects/_status', '/chunks/_status', '/commands/_status', '/'])\nrequire_ok = os.environ.get('VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK', 'true').strip().lower() not in {'0', 'false', 'no', 'off'}\nseen = []\nfor path in paths:\n    if path in seen:\n        continue\n    seen.append(path)\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        body = resp.read(1024 * 1024).decode('utf-8', 'replace')\n        if not (200 <= status < 400):\n            continue\n        if not require_ok:\n            sys.exit(0)\n        try:\n            payload = json.loads(body or '{}')\n        except Exception:\n            if path == '/':\n                sys.exit(0)\n            continue\n        if payload.get('ok') is True:\n            sys.exit(0)\n        if payload.get('status') in {'ready', 'ok', 'healthy'} and payload.get('ok') is not False:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
         ]
-      interval: 20s
-      timeout: 5s
-      retries: 8
-      start_period: 45s
+      interval: "${VECTOPLAN_CHUNK_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_CHUNK_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_CHUNK_HEALTH_RETRIES:-8}
+      start_period: "${VECTOPLAN_CHUNK_HEALTH_START_PERIOD:-45s}"
 
     networks:
-      - vectoplan-net
+      vectoplan-net:
+        aliases:
+          - vectoplan-chunk
+          - chunk
+      vectoplan-shared:
+        aliases:
+          - vectoplan-chunk
+          - server-chunk
 
-    # volumes:
-    #   - ./services/vectoplan-chunk:/opt/vectoplan/services/vectoplan-chunk:rw
+  vectoplan-editor:
+    <<: *vectoplan-service-defaults
+    build:
+      context: ./services/vectoplan-editor
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: "/opt/vectoplan/services/vectoplan-editor"
+        APP_USER: "vectoplan"
+        APP_UID: "${VECTOPLAN_EDITOR_UID:-10001}"
+        APP_GID: "${VECTOPLAN_EDITOR_GID:-10001}"
 
-
-  # --------------------------------------------------------------------------
-  # Geo Stack
-  # --------------------------------------------------------------------------
-
-  vectoplan-geo-db:
-    container_name: vectoplan-geo-db
-    image: postgis/postgis:16-3.5
-    restart: unless-stopped
+    working_dir: /opt/vectoplan/services/vectoplan-editor
 
     environment:
-      POSTGRES_DB: "${PG_ADMIN_DB:-postgres}"
-      POSTGRES_USER: "${PG_ADMIN_USER:-postgres}"
-      POSTGRES_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+      <<: *vectoplan-editor-environment
+
+    depends_on:
+      vectoplan-library:
+        condition: service_healthy
+      vectoplan-chunk:
+        condition: service_healthy
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_EDITOR_PUBLIC_PORT:-5100}:5000"
+
+    expose:
+      - "5000"
 
     healthcheck:
       test:
-        - CMD-SHELL
-        - >-
-          pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
-      interval: 5s
-      timeout: 5s
-      retries: 10
-
-    ports:
-      - "${VECTOPLAN_GEO_POSTGRES_PUBLIC_PORT:-5434}:5432"
-
-    volumes:
-      - db_data:/var/lib/postgresql/data
+        [
+          "CMD-SHELL",
+          "python - <<'PY'\nimport sys, urllib.request\nfor path in ('/editor', '/editor?embed=1', '/'):\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:5000' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        if 200 <= status < 500:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
+        ]
+      interval: "${VECTOPLAN_EDITOR_HEALTH_INTERVAL:-30s}"
+      timeout: "${VECTOPLAN_EDITOR_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_EDITOR_HEALTH_RETRIES:-5}
+      start_period: "${VECTOPLAN_EDITOR_HEALTH_START_PERIOD:-30s}"
 
     networks:
-      - vectoplan-net
+      vectoplan-net:
+        aliases:
+          - vectoplan-editor
+          - editor
+      vectoplan-shared:
+        aliases:
+          - vectoplan-editor
+          - server-editor
 
+  vectoplan-app-db:
+    <<: *vectoplan-service-defaults
+    image: postgres:16-alpine
 
-  db-postgis-init:
-    container_name: vectoplan-geo-db-postgis-init
+    environment:
+      <<: *vectoplan-app-postgres-environment
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_APP_POSTGRES_PUBLIC_PORT:-15435}:5432"
+
+    expose:
+      - "5432"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
+        ]
+      interval: "${VECTOPLAN_APP_DB_HEALTH_INTERVAL:-10s}"
+      timeout: "${VECTOPLAN_APP_DB_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_APP_DB_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_APP_DB_HEALTH_START_PERIOD:-10s}"
+
+    volumes:
+      - vectoplan-app-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-app-db
+          - app-db
+
+  vectoplan-app:
+    <<: *vectoplan-service-defaults
+
+    build:
+      context: ./services/vectoplan-app
+      dockerfile: Dockerfile
+
+    working_dir: /app
+
+    environment:
+      <<: *vectoplan-app-environment
+
+    depends_on:
+      vectoplan-app-db:
+        condition: service_healthy
+      vectoplan-library:
+        condition: service_healthy
+      vectoplan-chunk:
+        condition: service_healthy
+
+    entrypoint:
+      - /bin/sh
+      - -ec
+
+    command:
+      - |
+        set -eu
+
+        cd /app
+
+        if [ ! -f ./entrypoint.sh ]; then
+          echo "[vectoplan-app] ERROR: ./entrypoint.sh wurde im Arbeitsverzeichnis nicht gefunden." >&2
+          echo "[vectoplan-app] PWD: $(pwd)" >&2
+          echo "[vectoplan-app] Inhalt:" >&2
+          ls -la >&2 || true
+          exit 1
+        fi
+
+        sed -i 's/\r$//' ./entrypoint.sh 2>/dev/null || true
+        chmod +x ./entrypoint.sh 2>/dev/null || true
+
+        exec /bin/bash ./entrypoint.sh
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_APP_PUBLIC_PORT:-5103}:${VECTOPLAN_APP_INTERNAL_PORT:-8000}"
+
+    expose:
+      - "${VECTOPLAN_APP_INTERNAL_PORT:-8000}"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python - <<'PY'\nimport os, socket, sys, urllib.request\nport = int(os.getenv('PORT', '8000'))\nbase = f'http://127.0.0.1:{port}'\nfor path in ('/ready', '/health/ready', '/healthz', '/ui', '/'):\n    try:\n        resp = urllib.request.urlopen(base + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        if 200 <= status < 500:\n            sys.exit(0)\n    except Exception:\n        pass\ntry:\n    s = socket.create_connection(('127.0.0.1', port), 3)\n    s.close()\n    sys.exit(0)\nexcept Exception:\n    sys.exit(1)\nPY"
+        ]
+      interval: "${VECTOPLAN_APP_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_APP_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_APP_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_APP_HEALTH_START_PERIOD:-30s}"
+
+    volumes:
+      - ./services/vectoplan-app:/app:rw
+      - vectoplan-app-media:/app/media
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-app
+          - app
+      vectoplan-shared:
+        aliases:
+          - vectoplan-app
+          - server-app
+
+  vectoplan-geo-db:
+    <<: *vectoplan-service-defaults
     image: postgis/postgis:16-3.5
-    restart: "no"
 
     environment:
       POSTGRES_DB: "${PG_ADMIN_DB:-postgres}"
       POSTGRES_USER: "${PG_ADMIN_USER:-postgres}"
       POSTGRES_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_GEO_POSTGRES_PUBLIC_PORT:-15434}:5432"
+
+    expose:
+      - "5432"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
+        ]
+      interval: "${VECTOPLAN_GEO_DB_HEALTH_INTERVAL:-5s}"
+      timeout: "${VECTOPLAN_GEO_DB_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_GEO_DB_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_GEO_DB_HEALTH_START_PERIOD:-10s}"
+
+    volumes:
+      - vectoplan-geo-postgres-data:/var/lib/postgresql/data
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-geo-db
+          - geo-db
+
+  db-postgis-init:
+    <<: *vectoplan-init-service-defaults
+    image: postgis/postgis:16-3.5
+
+    environment:
+      POSTGRES_DB: "${PG_ADMIN_DB:-postgres}"
+      POSTGRES_USER: "${PG_ADMIN_USER:-postgres}"
+      POSTGRES_PASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
+      PGPASSWORD: "${PG_ADMIN_PASSWORD:-postgres}"
 
     depends_on:
       vectoplan-geo-db:
@@ -1029,83 +1122,85 @@ services:
 
     entrypoint:
       - /bin/sh
-      - -lc
+      - -ec
 
-    command: |
-      export PGPASSWORD="$${POSTGRES_PASSWORD}"
+    command:
+      - |
+        set -eu
 
-      until pg_isready -h vectoplan-geo-db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"; do
-        echo "Warte auf PostgreSQL..."
-        sleep 2
-      done
+        until pg_isready -h vectoplan-geo-db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" >/dev/null 2>&1; do
+          echo "[db-postgis-init] Warte auf PostgreSQL..."
+          sleep 2
+        done
 
-      psql -h vectoplan-geo-db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" -v ON_ERROR_STOP=1 <<'SQL'
-      CREATE EXTENSION IF NOT EXISTS postgis;
-      CREATE SCHEMA IF NOT EXISTS raw;
-      CREATE SCHEMA IF NOT EXISTS pub;
-      CREATE SCHEMA IF NOT EXISTS edit;
-      CREATE SCHEMA IF NOT EXISTS meta;
-      SQL
+        psql -h vectoplan-geo-db -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}" -v ON_ERROR_STOP=1 <<'SQL'
+        CREATE EXTENSION IF NOT EXISTS postgis;
+        CREATE SCHEMA IF NOT EXISTS raw;
+        CREATE SCHEMA IF NOT EXISTS pub;
+        CREATE SCHEMA IF NOT EXISTS edit;
+        CREATE SCHEMA IF NOT EXISTS meta;
+        SQL
 
-      echo "PostGIS und Schemas wurden sichergestellt."
+        echo "[db-postgis-init] PostGIS und Schemas wurden sichergestellt."
 
     networks:
-      - vectoplan-net
-
+      vectoplan-net:
+        aliases:
+          - db-postgis-init
 
   geoserver:
-    container_name: vectoplan-geoserver
+    <<: *vectoplan-service-defaults
     image: docker.osgeo.org/geoserver:2.28.3
-    restart: unless-stopped
 
     depends_on:
       vectoplan-geo-db:
         condition: service_healthy
+      db-postgis-init:
+        condition: service_completed_successfully
 
     environment:
       SKIP_DEMO_DATA: "true"
       WEBAPP_CONTEXT: "geoserver"
       ROOT_WEBAPP_REDIRECT: "true"
-      PROXY_BASE_URL: "http://localhost:8082/geoserver"
-
+      PROXY_BASE_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
       GEOSERVER_ADMIN_USER: "${GEOSERVER_ADMIN_USER:-admin}"
       GEOSERVER_ADMIN_PASSWORD: "${GEOSERVER_ADMIN_PASSWORD:-geoserver}"
-
       RUN_UNPRIVILEGED: "true"
-      RUN_WITH_USER_UID: "10001"
-      RUN_WITH_USER_GID: "10001"
+      RUN_WITH_USER_UID: "${GEOSERVER_RUN_UID:-10001}"
+      RUN_WITH_USER_GID: "${GEOSERVER_RUN_GID:-10001}"
       CHANGE_OWNERSHIP_ON_FOLDERS: "/opt /opt/geoserver_data"
-
       EXTRA_JAVA_OPTS: "${GEOSERVER_EXTRA_JAVA_OPTS:--Xms512m -Xmx1024m}"
       HEALTHCHECK_URL: "http://127.0.0.1:8080/geoserver/rest/about/version.json"
 
     volumes:
-      - geoserver_data:/opt/geoserver_data
+      - geoserver-data:/opt/geoserver_data
 
     ports:
-      - "${GEOSERVER_PUBLIC_PORT:-8082}:8080"
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${GEOSERVER_PUBLIC_PORT:-5182}:8080"
+
+    expose:
+      - "8080"
 
     healthcheck:
       test:
-        - CMD-SHELL
-        - >-
-          curl -fsS -u "$$GEOSERVER_ADMIN_USER:$$GEOSERVER_ADMIN_PASSWORD"
-          -H "Accept: application/json"
-          "$$HEALTHCHECK_URL"
-          >/dev/null 2>&1 || exit 1
-      interval: 30s
-      timeout: 10s
-      retries: 10
-      start_period: 60s
+        [
+          "CMD-SHELL",
+          "curl -fsS -u \"$${GEOSERVER_ADMIN_USER}:$${GEOSERVER_ADMIN_PASSWORD}\" -H \"Accept: application/json\" \"$${HEALTHCHECK_URL}\" >/dev/null 2>&1 || exit 1"
+        ]
+      interval: "${GEOSERVER_HEALTH_INTERVAL:-30s}"
+      timeout: "${GEOSERVER_HEALTH_TIMEOUT:-10s}"
+      retries: ${GEOSERVER_HEALTH_RETRIES:-10}
+      start_period: "${GEOSERVER_HEALTH_START_PERIOD:-60s}"
 
     networks:
-      - vectoplan-net
-
+      vectoplan-net:
+        aliases:
+          - geoserver
+          - vectoplan-geoserver
 
   geoserver-orchestrator-db-init:
-    container_name: vectoplan-geoserver-orchestrator-db-init
+    <<: *vectoplan-init-service-defaults
     build: *geoserver_orchestrator_build
-    restart: "no"
 
     depends_on:
       vectoplan-geo-db:
@@ -1117,15 +1212,16 @@ services:
     volumes: *geoserver_orchestrator_volumes
 
     networks:
-      - vectoplan-net
-
+      vectoplan-net:
+        aliases:
+          - geoserver-orchestrator-db-init
 
   geoserver-orchestrator-sync-init:
-    container_name: vectoplan-geoserver-orchestrator-sync-init
+    <<: *vectoplan-init-service-defaults
     profiles:
       - geo-sync
+
     build: *geoserver_orchestrator_build
-    restart: "no"
 
     depends_on:
       vectoplan-geo-db:
@@ -1139,13 +1235,13 @@ services:
     volumes: *geoserver_orchestrator_volumes
 
     networks:
-      - vectoplan-net
-
+      vectoplan-net:
+        aliases:
+          - geoserver-orchestrator-sync-init
 
   geoserver-orchestrator:
-    container_name: vectoplan-geoserver-orchestrator
+    <<: *vectoplan-service-defaults
     build: *geoserver_orchestrator_build
-    restart: unless-stopped
 
     depends_on:
       vectoplan-geo-db:
@@ -1159,42 +1255,56 @@ services:
     volumes: *geoserver_orchestrator_volumes
 
     ports:
-      - "${GEOSERVER_ORCHESTRATOR_PUBLIC_PORT:-8010}:8010"
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${GEOSERVER_ORCHESTRATOR_PUBLIC_PORT:-5110}:8010"
+
+    expose:
+      - "8010"
 
     healthcheck:
       test:
-        - CMD-SHELL
-        - >-
-          curl -fsS "http://127.0.0.1:8010/health/ready" >/dev/null 2>&1 ||
-          curl -fsS "http://127.0.0.1:8010/health/live" >/dev/null 2>&1 ||
-          curl -fsS "http://127.0.0.1:8010/health" >/dev/null 2>&1 ||
-          exit 1
-      interval: 30s
-      timeout: 5s
-      retries: 5
-      start_period: 20s
+        [
+          "CMD-SHELL",
+          "curl -fsS \"http://127.0.0.1:8010/health/ready\" >/dev/null 2>&1 || curl -fsS \"http://127.0.0.1:8010/health/live\" >/dev/null 2>&1 || curl -fsS \"http://127.0.0.1:8010/health\" >/dev/null 2>&1 || exit 1"
+        ]
+      interval: "${GEOSERVER_ORCHESTRATOR_HEALTH_INTERVAL:-30s}"
+      timeout: "${GEOSERVER_ORCHESTRATOR_HEALTH_TIMEOUT:-5s}"
+      retries: ${GEOSERVER_ORCHESTRATOR_HEALTH_RETRIES:-5}
+      start_period: "${GEOSERVER_ORCHESTRATOR_HEALTH_START_PERIOD:-20s}"
 
     networks:
-      - vectoplan-net
-
+      vectoplan-net:
+        aliases:
+          - geoserver-orchestrator
+          - orchestrator
+      vectoplan-shared:
+        aliases:
+          - geoserver-orchestrator
+          - server-geoserver-orchestrator
 
   openlayer:
-    container_name: vectoplan-openlayer
+    <<: *vectoplan-service-defaults
 
     build:
       context: ./services/vectoplan-openLayer
       dockerfile: Dockerfile
-
-    restart: unless-stopped
 
     environment:
       HOST: "0.0.0.0"
       OPENLAYER_PORT: "8090"
       LOG_LEVEL: "${OPENLAYER_LOG_LEVEL:-INFO}"
 
-      GEOSERVER_ORCHESTRATOR_URL: "http://geoserver-orchestrator:8010"
-      GEOSERVER_INTERNAL_URL: "http://geoserver:8080/geoserver"
-      GEOSERVER_PUBLIC_URL: "http://localhost:8082/geoserver"
+      OPENLAYER_PUBLIC_URL: "${OPENLAYER_PUBLIC_URL:-http://localhost:5190}"
+      OPENLAYER_PUBLIC_BASE_URL: "${OPENLAYER_PUBLIC_BASE_URL:-http://localhost:5190}"
+      OPENLAYER_ROUTE: "${OPENLAYER_ROUTE:-/map}"
+      OPENLAYER_EMBED_ENABLED: "${OPENLAYER_EMBED_ENABLED:-true}"
+      OPENLAYER_FRAME_ANCESTORS: "${OPENLAYER_FRAME_ANCESTORS:-http://localhost:5103 http://127.0.0.1:5103}"
+      OPENLAYER_ALLOWED_FRAME_PARENTS: "${OPENLAYER_ALLOWED_FRAME_PARENTS:-http://localhost:5103 http://127.0.0.1:5103}"
+      VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+
+      GEOSERVER_ORCHESTRATOR_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
+      GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
+      GEOSERVER_INTERNAL_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
+      GEOSERVER_PUBLIC_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
 
       MAPBOX_ACCESS_TOKEN: "${MAPBOX_ACCESS_TOKEN:-}"
       MAPBOX_STYLE_URL: "${MAPBOX_STYLE_URL:-}"
@@ -1204,66 +1314,46 @@ services:
         condition: service_healthy
 
     ports:
-      - "${OPENLAYER_PUBLIC_PORT:-8090}:8090"
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${OPENLAYER_PUBLIC_PORT:-5190}:8090"
 
     expose:
       - "8090"
 
     healthcheck:
       test:
-        - CMD-SHELL
-        - >-
-          curl -fsS "http://127.0.0.1:8090/ready" >/dev/null 2>&1 ||
-          curl -fsS "http://127.0.0.1:8090/health" >/dev/null 2>&1 ||
-          curl -fsS "http://127.0.0.1:8090/" >/dev/null 2>&1 ||
-          exit 1
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 15s
+        [
+          "CMD-SHELL",
+          "python - <<'PY'\nimport sys, urllib.request\nfor path in ('/ready', '/health', '/map', '/'):\n    try:\n        resp = urllib.request.urlopen('http://127.0.0.1:8090' + path, timeout=3)\n        status = getattr(resp, 'status', 200)\n        if 200 <= status < 500:\n            sys.exit(0)\n    except Exception:\n        pass\nsys.exit(1)\nPY"
+        ]
+      interval: "${OPENLAYER_HEALTH_INTERVAL:-10s}"
+      timeout: "${OPENLAYER_HEALTH_TIMEOUT:-5s}"
+      retries: ${OPENLAYER_HEALTH_RETRIES:-5}
+      start_period: "${OPENLAYER_HEALTH_START_PERIOD:-15s}"
 
     networks:
-      - vectoplan-net
-
-
-# ------------------------------------------------------------------------------
-# Volumes
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Volumes
-# ------------------------------------------------------------------------------
+      vectoplan-net:
+        aliases:
+          - openlayer
+          - vectoplan-openlayer
+      vectoplan-shared:
+        aliases:
+          - openlayer
+          - server-openlayer
 
 volumes:
-
   vectoplan-library-postgres-data:
-    name: vectoplan-library-postgres-data
-
   vectoplan-chunk-postgres-data:
-    name: vectoplan-chunk-postgres-data
-
-  db_data:
-    name: vectoplan-geo-db-data
-
-  geoserver_data:
-    name: vectoplan-geoserver-data
-
-  geoserver_orchestrator_tmp_data:
-    name: vectoplan-geoserver-orchestrator-tmp-data
-
-  geoserver_orchestrator_logs:
-    name: vectoplan-geoserver-orchestrator-logs
-
-
-# ------------------------------------------------------------------------------
-# Networks
-# ------------------------------------------------------------------------------
-
-# ------------------------------------------------------------------------------
-# Networks
-# ------------------------------------------------------------------------------
+  vectoplan-app-postgres-data:
+  vectoplan-app-media:
+  vectoplan-geo-postgres-data:
+  geoserver-data:
+  geoserver-orchestrator-tmp-data:
+  geoserver-orchestrator-logs:
 
 networks:
   vectoplan-net:
-    name: vectoplan-net
     driver: bridge
+
+  vectoplan-shared:
+    name: "${VECTOPLAN_SHARED_NETWORK:-vectoplan-shared-net}"
+    external: true
