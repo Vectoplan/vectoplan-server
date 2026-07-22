@@ -10,22 +10,27 @@
 #
 # Architekturentscheidung für vectoplan-chunk:
 # - vectoplan-chunk-db hält die PostgreSQL-Datenbank.
-# - vectoplan-chunk-init führt explizit den DB-Bootstrap aus.
-# - vectoplan-chunk startet danach als read-only Runtime.
+# - vectoplan-chunk-init führt ausschließlich Schema-Bootstrap, Migration/Repair
+#   und optionale globale Entwicklungs-Seeds aus.
+# - vectoplan-chunk startet danach ohne Schema- oder Seed-Mutationen.
+# - Die Runtime darf weiterhin autorisierte fachliche Mutationen ausführen:
+#   Projekt-Provisionierung, Access-Projektion, Commands, Blocks und Chunks.
 #
 # Warum:
-# - db.create_all() und Default-Seeding dürfen nicht im normalen Gunicorn-Worker-
-#   Startup laufen.
+# - db.create_all(), Schema-Repair und Default-Seeding dürfen nicht im normalen
+#   Gunicorn-Worker-Startup laufen.
 # - Runtime-Startup bleibt stabil und erzeugt keine Tabellen.
-# - Schema-/Seed-Erstellung läuft einmalig, kontrolliert und retry-fähig.
+# - Fachliche API-Mutationen werden getrennt von Schema-Mutationen autorisiert.
 #
-# App-zu-Chunk-Ziel:
-# - vectoplan-app erstellt App-Projekte.
-# - vectoplan-app ruft später serverseitig vectoplan-chunk über
-#   VECTOPLAN_CHUNK_INTERNAL_URL auf.
-# - vectoplan-chunk erzeugt dazu ein eigenes Chunk-Projekt mit Universe/World.
-# - vectoplan-app speichert danach nur chunk_project_id/chunk_world_id und
-#   ProjectServiceLink-Referenzen.
+# App-zu-Chunk-Vertrag:
+# - vectoplan-app persistiert das App-Projekt zuerst.
+# - Danach provisioniert vectoplan-app idempotent ein Chunk-Projekt mit
+#   Universe/World über VECTOPLAN_CHUNK_INTERNAL_URL.
+# - App-Projekte fordern standardmäßig Earth an; Flat ist nur ein kontrollierter
+#   Fallback für bekannte Earth-Referenz-/Precondition-Fehler.
+# - vectoplan-app ist die Wahrheit für Projektrollen und synchronisiert
+#   owner/admin/editor/viewer als direkte Access-Projektion zu vectoplan-chunk.
+# - vectoplan-app speichert nur Chunk-Referenzen und Synchronisationszustände.
 #
 # Browser-Regel:
 # - Browser / iframe / redirect  → PUBLIC_URL
@@ -118,6 +123,13 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL:-http://vectoplan-library:5000}"
   VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL:-http://vectoplan-chunk:5000}"
 
+  # Editor -> Chunk uses a service identity. Browser identities are never used
+  # as service credentials and are not appended to URLs.
+  VECTOPLAN_EDITOR_CHUNK_SERVICE_ID: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_ID:-vectoplan-editor}"
+  VECTOPLAN_EDITOR_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_EDITOR_CHUNK_INTERNAL_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_AUTH_INTERNAL_URL: "${VECTOPLAN_AUTH_INTERNAL_URL:-http://host.docker.internal:5000}"
+
   VECTOPLAN_EDITOR_CHUNK_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_ENABLED:-true}"
   VECTOPLAN_EDITOR_CHUNK_MODE: "${VECTOPLAN_EDITOR_CHUNK_MODE:-remote}"
   VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND: "${VECTOPLAN_EDITOR_CHUNK_SOURCE_KIND:-chunk-service}"
@@ -138,6 +150,16 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_PROXY_DIAGNOSTICS_ENABLED:-true}"
   VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PROJECT_MUTATIONS:-true}"
   VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_WORLD_MUTATIONS:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ENFORCE_PROJECT_ACCESS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ENFORCE_PROJECT_ACCESS:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_REQUIRE_CANONICAL_AUTH_USER_ID: "${VECTOPLAN_EDITOR_CHUNK_PROXY_REQUIRE_CANONICAL_AUTH_USER_ID:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_VIEWER_READ_ONLY: "${VECTOPLAN_EDITOR_CHUNK_PROXY_VIEWER_READ_ONLY:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_PUBLIC_VIEWER_READ_ONLY: "${VECTOPLAN_EDITOR_CHUNK_PROXY_PUBLIC_VIEWER_READ_ONLY:-true}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_VIEWER_COMMANDS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_VIEWER_COMMANDS:-false}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PUBLIC_VIEWER_COMMANDS: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_PUBLIC_VIEWER_COMMANDS:-false}"
+  VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_CLIENT_IDENTITY_OVERRIDE: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_CLIENT_IDENTITY_OVERRIDE:-false}"
+  VECTOPLAN_EDITOR_ALLOW_DEFAULT_PROJECT_FALLBACK: "${VECTOPLAN_EDITOR_ALLOW_DEFAULT_PROJECT_FALLBACK:-false}"
+  VECTOPLAN_EDITOR_ALLOW_DEFAULT_WORLD_FALLBACK: "${VECTOPLAN_EDITOR_ALLOW_DEFAULT_WORLD_FALLBACK:-false}"
+  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-false}"
 
   VECTOPLAN_EDITOR_INVENTORY_SOURCE: "${VECTOPLAN_EDITOR_INVENTORY_SOURCE:-editor-inventory}"
   VECTOPLAN_EDITOR_INVENTORY_ICON_MODE: "${VECTOPLAN_EDITOR_INVENTORY_ICON_MODE:-icon-only}"
@@ -308,6 +330,24 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
 
   VECTOPLAN_CHUNK_SECRET_KEY: "${VECTOPLAN_CHUNK_SECRET_KEY:-dev-secret-key-change-me}"
 
+  # Service-to-service authentication. The same secret is injected into
+  # vectoplan-app and vectoplan-editor but is never exposed to browsers.
+  VECTOPLAN_CHUNK_SERVICE_AUTH_REQUIRED: "${VECTOPLAN_CHUNK_SERVICE_AUTH_REQUIRED:-true}"
+  VECTOPLAN_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_INTERNAL_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_API_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_ALLOWED_SERVICE_IDS: "${VECTOPLAN_CHUNK_ALLOWED_SERVICE_IDS:-vectoplan-app,vectoplan-editor,vectoplan-chunk-init}"
+  VECTOPLAN_CHUNK_SERVICE_ID_HEADER: "${VECTOPLAN_CHUNK_SERVICE_ID_HEADER:-X-VECTOPLAN-Service-ID}"
+  VECTOPLAN_CHUNK_SERVICE_ID_HEADERS: "${VECTOPLAN_CHUNK_SERVICE_ID_HEADERS:-X-VECTOPLAN-Service-ID,X-VECTOPLAN-Service}"
+  VECTOPLAN_CHUNK_SERVICE_API_KEY_HEADER: "${VECTOPLAN_CHUNK_SERVICE_API_KEY_HEADER:-X-API-Key}"
+  VECTOPLAN_CHUNK_SERVICE_API_KEY_HEADERS: "${VECTOPLAN_CHUNK_SERVICE_API_KEY_HEADERS:-Authorization,X-API-Key,X-Vectoplan-Internal-Token}"
+  VECTOPLAN_CHUNK_SERVICE_AUTH_EXEMPT_PATHS: "${VECTOPLAN_CHUNK_SERVICE_AUTH_EXEMPT_PATHS:-/,/health,/health/live,/health/ready,/projects/_status,/chunks/_status,/commands/_status}"
+  VECTOPLAN_CHUNK_IDEMPOTENCY_KEY_HEADER: "${VECTOPLAN_CHUNK_IDEMPOTENCY_KEY_HEADER:-Idempotency-Key}"
+  VECTOPLAN_CHUNK_REQUEST_ID_HEADER: "${VECTOPLAN_CHUNK_REQUEST_ID_HEADER:-X-Request-ID}"
+  VECTOPLAN_CHUNK_CORRELATION_ID_HEADER: "${VECTOPLAN_CHUNK_CORRELATION_ID_HEADER:-X-Correlation-ID}"
+  VECTOPLAN_AUTH_INTERNAL_URL: "${VECTOPLAN_AUTH_INTERNAL_URL:-http://host.docker.internal:5000}"
+  VECTOPLAN_AUTH_SERVICE_NAME: "${VECTOPLAN_AUTH_SERVICE_NAME:-vectoplan-auth}"
+
   VECTOPLAN_CHUNK_DATABASE_DRIVER: "${VECTOPLAN_CHUNK_DATABASE_DRIVER:-postgresql+psycopg}"
   VECTOPLAN_CHUNK_DB_HOST: "${VECTOPLAN_CHUNK_DB_HOST:-vectoplan-chunk-db}"
   VECTOPLAN_CHUNK_DB_PORT: "${VECTOPLAN_CHUNK_DB_PORT:-5432}"
@@ -320,14 +360,18 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   SQLALCHEMY_DATABASE_URI: "${VECTOPLAN_CHUNK_SQLALCHEMY_DATABASE_URI:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
   DATABASE_URL: "${VECTOPLAN_CHUNK_DATABASE_URL:-postgresql+psycopg://vectoplan_chunk:vectoplan_chunk@vectoplan-chunk-db:5432/vectoplan_chunk}"
 
-  # Runtime bleibt hart read-only.
-  # Diese Werte verwenden absichtlich keine globalen VECTOPLAN_CHUNK_AUTO_* Overrides,
-  # damit alte .env-Werte die Runtime nicht wieder in einen mutierenden Modus versetzen.
+  # Runtime führt keine Schema-/Seed-Mutationen aus. Autorisierte fachliche
+  # API-Mutationen bleiben jedoch aktiv; sonst wären Provisionierung, Access-Sync
+  # und Editor-Commands trotz erfolgreichem Init unmöglich.
+  # Diese Werte verwenden absichtlich keine globalen VECTOPLAN_CHUNK_AUTO_* Overrides.
   VECTOPLAN_CHUNK_STARTUP_MODE: "runtime"
   VECTOPLAN_CHUNK_RUNTIME_MODE: "runtime"
   VECTOPLAN_CHUNK_DB_BOOTSTRAP_ENABLED: "false"
-  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "false"
-  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "true"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_DB_MUTATIONS: "true"
+  VECTOPLAN_CHUNK_RUNTIME_IS_READ_ONLY: "false"
+  VECTOPLAN_CHUNK_ALLOW_RUNTIME_SCHEMA_MUTATIONS: "false"
+  VECTOPLAN_CHUNK_RUNTIME_SCHEMA_IS_READ_ONLY: "true"
+  VECTOPLAN_CHUNK_RUNTIME_BUSINESS_MUTATIONS_ENABLED: "true"
   VECTOPLAN_CHUNK_AUTO_CREATE_ALL: "false"
   VECTOPLAN_CHUNK_AUTO_SEED_DEFAULTS: "false"
   VECTOPLAN_CHUNK_SEED_DEBUG_BLOCKS: "false"
@@ -352,11 +396,35 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_ID:-debug-blocks}"
   VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION: "${VECTOPLAN_CHUNK_DEFAULT_BLOCK_REGISTRY_VERSION:-1}"
 
+  # Global/bootstrap default remains Flat. App-project provisioning requests
+  # Earth explicitly and may fall back to Flat only for the listed business codes.
   VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ENABLED:-true}"
   VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_IDEMPOTENT:-true}"
-  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-earth}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ALLOW_FALLBACK: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ALLOW_FALLBACK:-true}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ALLOW_TEMPLATE_CHANGE: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_ALLOW_TEMPLATE_CHANGE:-false}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_ERROR_CODES: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_ERROR_CODES:-coordinates_unavailable,earth_reference_missing,earth_reference_required,earth_reference_incomplete,earth_reference_invalid,earth_reference_not_available,invalid_earth_reference,project_coordinates_unavailable,unsupported_coordinate_reference}"
   VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
   VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_SOURCE_SERVICE:-vectoplan-app}"
+  VECTOPLAN_CHUNK_EARTH_CRS_ID: "${VECTOPLAN_CHUNK_EARTH_CRS_ID:-EPSG:4979}"
+  VECTOPLAN_CHUNK_DEFAULT_EARTH_HEIGHT: "${VECTOPLAN_CHUNK_DEFAULT_EARTH_HEIGHT:-0.0}"
+
+  # App is the source of truth for project membership. Chunk stores and enforces
+  # only the synchronized direct access projection.
+  VECTOPLAN_CHUNK_ACCESS_CONTROL_ENABLED: "${VECTOPLAN_CHUNK_ACCESS_CONTROL_ENABLED:-true}"
+  VECTOPLAN_CHUNK_ACCESS_DEFAULT_DENY: "${VECTOPLAN_CHUNK_ACCESS_DEFAULT_DENY:-true}"
+  VECTOPLAN_CHUNK_ACCESS_STRICT_CANONICAL_USER_IDS: "${VECTOPLAN_CHUNK_ACCESS_STRICT_CANONICAL_USER_IDS:-true}"
+  VECTOPLAN_CHUNK_ACCESS_ALLOWED_ROLES: "${VECTOPLAN_CHUNK_ACCESS_ALLOWED_ROLES:-owner,admin,editor,viewer}"
+  VECTOPLAN_CHUNK_ACCESS_VIEWER_READ_ONLY: "${VECTOPLAN_CHUNK_ACCESS_VIEWER_READ_ONLY:-true}"
+  VECTOPLAN_CHUNK_ACCESS_ALLOW_PUBLIC_MUTATIONS: "${VECTOPLAN_CHUNK_ACCESS_ALLOW_PUBLIC_MUTATIONS:-false}"
+  VECTOPLAN_CHUNK_ACCESS_ALLOW_IDENTITY_OVERRIDE: "${VECTOPLAN_CHUNK_ACCESS_ALLOW_IDENTITY_OVERRIDE:-false}"
+  VECTOPLAN_CHUNK_ACCESS_PRUNE_STALE_DIRECT_ASSIGNMENTS: "${VECTOPLAN_CHUNK_ACCESS_PRUNE_STALE_DIRECT_ASSIGNMENTS:-true}"
+  VECTOPLAN_CHUNK_ACCESS_VERIFY_AFTER_SYNC: "${VECTOPLAN_CHUNK_ACCESS_VERIFY_AFTER_SYNC:-true}"
+  VECTOPLAN_CHUNK_ACCESS_API_PATH: "/projects/{chunk_project_id}/access"
+  VECTOPLAN_CHUNK_ACCESS_INITIALIZE_API_PATH: "/projects/{chunk_project_id}/access/initialize"
+  VECTOPLAN_CHUNK_ASSIGNMENTS_API_PATH: "/projects/{chunk_project_id}/assignments"
+  VECTOPLAN_CHUNK_TRANSFER_OWNER_API_PATH: "/projects/{chunk_project_id}/access/transfer-owner"
 
   VECTOPLAN_CHUNK_HEALTHCHECK_PATH: "${VECTOPLAN_CHUNK_HEALTHCHECK_PATH:-/projects/_status}"
   VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK: "${VECTOPLAN_CHUNK_HEALTHCHECK_REQUIRE_OK:-true}"
@@ -400,8 +468,8 @@ x-vectoplan-chunk-init-environment: &vectoplan-chunk-init-environment
   VECTOPLAN_CHUNK_DB_BOOTSTRAP_FAIL_ON_ERROR: "${VECTOPLAN_CHUNK_INIT_FAIL_ON_ERROR:-true}"
   VECTOPLAN_CHUNK_SEED_ON_EMPTY_ONLY: "${VECTOPLAN_CHUNK_INIT_SEED_ON_EMPTY_ONLY:-true}"
 
-  # Init verwendet dieselben IDs wie Runtime, aber erzwingt zusätzlich die
-  # konkrete editierbare Default-Welt world_spawn.
+  # Init verwendet dieselben globalen Entwicklungs-IDs wie Runtime. Diese
+  # Flat-Seed-Welt ist unabhängig vom Earth-Standard neuer App-Projekte.
   VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROJECT_ID:-dev-project}"
   VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID: "${VECTOPLAN_CHUNK_DEFAULT_UNIVERSE_ID:-dev-universe}"
   VECTOPLAN_CHUNK_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_WORLD_ID:-world_spawn}"
@@ -409,7 +477,8 @@ x-vectoplan-chunk-init-environment: &vectoplan-chunk-init-environment
   VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_DEFAULT_TEMPLATE_ID:-flat}"
   VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID: "${VECTOPLAN_CHUNK_DEFAULT_PROVIDER_WORLD_ID:-flat}"
   VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_WORLD_ID:-world_spawn}"
-  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_DEFAULT_TEMPLATE_ID:-earth}"
+  VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROJECT_PROVISIONING_FALLBACK_TEMPLATE_ID:-flat}"
 
   # Retry-/Diagnosewerte für den Shell-Bootstrap.
   VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS: "${VECTOPLAN_CHUNK_INIT_MAX_ATTEMPTS:-5}"
@@ -458,6 +527,8 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_AUTH_BASE_URL: "${VECTOPLAN_AUTH_BASE_URL:-http://host.docker.internal:5000}"
   AUTH_IDENTITY_INTERNAL_URL: "${AUTH_IDENTITY_INTERNAL_URL:-http://host.docker.internal:5000}"
   VECTOPLAN_AUTH_PUBLIC_URL: "${VECTOPLAN_AUTH_PUBLIC_URL:-http://localhost:5000}"
+  VECTOPLAN_AUTH_SERVICE_NAME: "${VECTOPLAN_AUTH_SERVICE_NAME:-vectoplan-auth}"
+  VECTOPLAN_AUTH_TRUSTED_GATEWAY_SECRET: "${VECTOPLAN_AUTH_TRUSTED_GATEWAY_SECRET:-dev-vectoplan-auth-gateway-secret-change-me}"
 
   VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
@@ -473,14 +544,74 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_CHUNK_INTERNAL_URL: "${VECTOPLAN_CHUNK_INTERNAL_URL:-http://vectoplan-chunk:5000}"
   VECTOPLAN_CHUNK_INTERNAL_BASE_URL: "${VECTOPLAN_CHUNK_INTERNAL_BASE_URL:-http://vectoplan-chunk:5000}"
 
+  # App -> Chunk service identity.
+  VECTOPLAN_APP_CHUNK_SERVICE_ID: "${VECTOPLAN_APP_CHUNK_SERVICE_ID:-vectoplan-app}"
+  VECTOPLAN_APP_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_SERVICE_ID: "${VECTOPLAN_APP_CHUNK_SERVICE_ID:-vectoplan-app}"
+  VECTOPLAN_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_INTERNAL_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CHUNK_API_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+
+  # App projects request Earth. Flat is a server-controlled fallback only for
+  # known Earth-reference/precondition errors; transport/auth/5xx failures do not
+  # trigger fallback.
+  VECTOPLAN_APP_DEFAULT_WORLD_TEMPLATE: "${VECTOPLAN_APP_DEFAULT_WORLD_TEMPLATE:-earth}"
+  VECTOPLAN_APP_FALLBACK_WORLD_TEMPLATE: "${VECTOPLAN_APP_FALLBACK_WORLD_TEMPLATE:-flat}"
+  VECTOPLAN_APP_ALLOW_WORLD_FALLBACK: "${VECTOPLAN_APP_ALLOW_WORLD_FALLBACK:-true}"
+  VECTOPLAN_APP_ALLOW_WORLD_TEMPLATE_CHANGE: "${VECTOPLAN_APP_ALLOW_WORLD_TEMPLATE_CHANGE:-false}"
+  VECTOPLAN_APP_CLIENT_SIDE_WORLD_FALLBACK: "${VECTOPLAN_APP_CLIENT_SIDE_WORLD_FALLBACK:-true}"
+  VECTOPLAN_APP_EARTH_CRS_ID: "${VECTOPLAN_APP_EARTH_CRS_ID:-EPSG:4979}"
+  VECTOPLAN_APP_DEFAULT_EARTH_HEIGHT: "${VECTOPLAN_APP_DEFAULT_EARTH_HEIGHT:-0.0}"
+  VECTOPLAN_APP_CHUNK_FALLBACK_ERROR_CODES: "${VECTOPLAN_APP_CHUNK_FALLBACK_ERROR_CODES:-coordinates_unavailable,earth_reference_missing,earth_reference_required,earth_reference_incomplete,earth_reference_invalid,earth_reference_not_available,invalid_earth_reference,project_coordinates_unavailable,unsupported_coordinate_reference}"
+
+  VECTOPLAN_APP_CHUNK_PROVISION_ON_PROJECT_CREATE: "${VECTOPLAN_APP_CHUNK_PROVISION_ON_PROJECT_CREATE:-true}"
+  VECTOPLAN_APP_CHUNK_PROVISIONING_REQUIRED: "${VECTOPLAN_APP_CHUNK_PROVISIONING_REQUIRED:-true}"
   VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE: "${VECTOPLAN_CHUNK_PROVISION_ON_PROJECT_CREATE:-true}"
-  VECTOPLAN_CHUNK_PROVISION_REQUIRED: "${VECTOPLAN_CHUNK_PROVISION_REQUIRED:-false}"
+  VECTOPLAN_CHUNK_PROVISION_REQUIRED: "${VECTOPLAN_CHUNK_PROVISION_REQUIRED:-true}"
   VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_TIMEOUT_SECONDS:-10}"
   VECTOPLAN_CHUNK_PROVISION_RETRIES: "${VECTOPLAN_CHUNK_PROVISION_RETRIES:-2}"
   VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS: "${VECTOPLAN_CHUNK_PROVISION_RETRY_SECONDS:-1}"
-  VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID:-flat}"
+  VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_TEMPLATE_ID:-earth}"
+  VECTOPLAN_CHUNK_PROVISION_FALLBACK_TEMPLATE_ID: "${VECTOPLAN_CHUNK_PROVISION_FALLBACK_TEMPLATE_ID:-flat}"
   VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID: "${VECTOPLAN_CHUNK_PROVISION_DEFAULT_WORLD_ID:-world_spawn}"
+  VECTOPLAN_CHUNK_PROVISION_API_PATH_ENSURE_BY_APP: "/projects/by-app/{app_project_public_id}"
+  VECTOPLAN_CHUNK_PROVISION_API_PATH_ENSURE: "${VECTOPLAN_CHUNK_PROVISION_API_PATH_ENSURE:-/projects/ensure}"
+  VECTOPLAN_CHUNK_PROVISION_API_PATH_PREVIEW_BY_APP: "/projects/preview/by-app/{app_project_public_id}"
+  VECTOPLAN_CHUNK_STATUS_API_PATH: "${VECTOPLAN_CHUNK_STATUS_API_PATH:-/projects/_status}"
   VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE: "${VECTOPLAN_CHUNK_SERVICE_LINK_AUTO_CREATE:-true}"
+  VECTOPLAN_APP_PERSIST_CHUNK_FAILURE_STATE: "${VECTOPLAN_APP_PERSIST_CHUNK_FAILURE_STATE:-true}"
+
+  # Full App-membership -> Chunk direct-assignment reconciliation.
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ENABLED: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ENABLED:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_REQUIRED: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_REQUIRED:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_PROJECT_CREATE: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_PROJECT_CREATE:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_MEMBERSHIP_CHANGE: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_MEMBERSHIP_CHANGE:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_INVITATION_ACCEPT: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_INVITATION_ACCEPT:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_OWNER_TRANSFER: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_ON_OWNER_TRANSFER:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_STRICT_IDENTITIES: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_STRICT_IDENTITIES:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_PRUNE_STALE_DIRECT_ASSIGNMENTS: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_PRUNE_STALE_DIRECT_ASSIGNMENTS:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_VERIFY_AFTER_SYNC: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_VERIFY_AFTER_SYNC:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_FAIL_ON_PARTIAL_ERROR: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_FAIL_ON_PARTIAL_ERROR:-true}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_FORWARD_PERMISSION_OVERRIDES: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_FORWARD_PERMISSION_OVERRIDES:-false}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_TIMEOUT_SECONDS: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_TIMEOUT_SECONDS:-10}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRIES: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRIES:-2}"
+  VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRY_SECONDS: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRY_SECONDS:-1}"
+  VECTOPLAN_CHUNK_ACCESS_API_PATH: "/projects/{chunk_project_id}/access"
+  VECTOPLAN_CHUNK_ACCESS_INITIALIZE_API_PATH: "/projects/{chunk_project_id}/access/initialize"
+  VECTOPLAN_CHUNK_ASSIGNMENTS_API_PATH: "/projects/{chunk_project_id}/assignments"
+  VECTOPLAN_CHUNK_TRANSFER_OWNER_API_PATH: "/projects/{chunk_project_id}/access/transfer-owner"
+
+  # Georeference is deterministic/local by default. No external geocoder is
+  # discovered unless explicitly enabled.
+  VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED: "${VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED:-false}"
+  VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER: "${VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER:-false}"
+  VECTOPLAN_APP_GEOREFERENCE_ALLOW_COORDINATE_SWAP: "${VECTOPLAN_APP_GEOREFERENCE_ALLOW_COORDINATE_SWAP:-false}"
+  VECTOPLAN_APP_PERSIST_DERIVED_GEOREFERENCE: "${VECTOPLAN_APP_PERSIST_DERIVED_GEOREFERENCE:-true}"
+
+  # Embed URLs use configured origins only. Request Host is not trusted.
+  VECTOPLAN_EMBED_PREFER_REQUEST_HOST: "${VECTOPLAN_EMBED_PREFER_REQUEST_HOST:-false}"
+  VECTOPLAN_EMBED_ALLOWED_APP_ORIGINS: "${VECTOPLAN_EMBED_ALLOWED_APP_ORIGINS:-http://localhost:5103,http://127.0.0.1:5103}"
+  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-false}"
 
   GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
   GEOSERVER_ORCHESTRATOR_INTERNAL_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
@@ -776,6 +907,9 @@ services:
 
     working_dir: /opt/vectoplan/services/vectoplan-chunk
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     environment:
       <<: *vectoplan-chunk-init-environment
 
@@ -885,6 +1019,9 @@ services:
 
     working_dir: /opt/vectoplan/services/vectoplan-chunk
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     environment:
       <<: *vectoplan-chunk-environment
 
@@ -934,6 +1071,9 @@ services:
         APP_GID: "${VECTOPLAN_EDITOR_GID:-10001}"
 
     working_dir: /opt/vectoplan/services/vectoplan-editor
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
     environment:
       <<: *vectoplan-editor-environment
@@ -1013,6 +1153,9 @@ services:
 
     working_dir: /app
 
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
     environment:
       <<: *vectoplan-app-environment
 
@@ -1021,8 +1164,10 @@ services:
         condition: service_healthy
       vectoplan-library:
         condition: service_healthy
+      # App remains available when Chunk is unhealthy. Provisioning/access-sync
+      # failures are persisted and reconciled later instead of blocking startup.
       vectoplan-chunk:
-        condition: service_healthy
+        condition: service_started
 
     entrypoint:
       - /bin/sh
@@ -1077,6 +1222,51 @@ services:
         aliases:
           - vectoplan-app
           - server-app
+
+  vectoplan-app-reconcile-chunk:
+    <<: *vectoplan-init-service-defaults
+    profiles:
+      - maintenance
+
+    build:
+      context: ./services/vectoplan-app
+      dockerfile: Dockerfile
+
+    working_dir: /app
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    environment:
+      <<: *vectoplan-app-environment
+
+    depends_on:
+      vectoplan-app-db:
+        condition: service_healthy
+      vectoplan-chunk:
+        condition: service_healthy
+
+    entrypoint:
+      - python
+      - ./src/scripts/reconcile_chunk_projects.py
+
+    # Safe default. Operators can override arguments with:
+    # docker compose run --rm vectoplan-app-reconcile-chunk --force --only both
+    command:
+      - --dry-run
+      - --json-lines
+
+    volumes:
+      - ./services/vectoplan-app:/app:rw
+      - vectoplan-app-media:/app/media
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-app-reconcile-chunk
+      vectoplan-shared:
+        aliases:
+          - server-app-reconcile-chunk
 
   vectoplan-geo-db:
     <<: *vectoplan-service-defaults
