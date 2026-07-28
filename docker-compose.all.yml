@@ -102,6 +102,11 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_FRAME_ANCESTORS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
   VECTOPLAN_ALLOWED_FRAME_PARENTS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
   VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+  VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET: "${VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET:-dev-vectoplan-editor-access-ticket-secret-change-me}"
+  VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS: "${VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS:-300}"
+  VECTOPLAN_EDITOR_ACCESS_SESSION_TTL_SECONDS: "${VECTOPLAN_EDITOR_ACCESS_SESSION_TTL_SECONDS:-28800}"
+  VECTOPLAN_EDITOR_ACCESS_COOKIE_SECURE: "${VECTOPLAN_EDITOR_ACCESS_COOKIE_SECURE:-false}"
+
 
 
   VECTOPLAN_EDITOR_STARTUP_MODULE: "${VECTOPLAN_EDITOR_STARTUP_MODULE:-src.bootstrap.startup}"
@@ -159,7 +164,7 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_CLIENT_IDENTITY_OVERRIDE: "${VECTOPLAN_EDITOR_CHUNK_PROXY_ALLOW_CLIENT_IDENTITY_OVERRIDE:-false}"
   VECTOPLAN_EDITOR_ALLOW_DEFAULT_PROJECT_FALLBACK: "${VECTOPLAN_EDITOR_ALLOW_DEFAULT_PROJECT_FALLBACK:-false}"
   VECTOPLAN_EDITOR_ALLOW_DEFAULT_WORLD_FALLBACK: "${VECTOPLAN_EDITOR_ALLOW_DEFAULT_WORLD_FALLBACK:-false}"
-  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-false}"
+  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-true}"
 
   VECTOPLAN_EDITOR_INVENTORY_SOURCE: "${VECTOPLAN_EDITOR_INVENTORY_SOURCE:-editor-inventory}"
   VECTOPLAN_EDITOR_INVENTORY_ICON_MODE: "${VECTOPLAN_EDITOR_INVENTORY_ICON_MODE:-icon-only}"
@@ -186,13 +191,35 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
 
   VECTOPLAN_EDITOR_RUN_MODE: "${VECTOPLAN_EDITOR_RUN_MODE:-gunicorn}"
   GUNICORN_APP: "${VECTOPLAN_EDITOR_GUNICORN_APP:-wsgi:app}"
-  GUNICORN_WORKERS: "${VECTOPLAN_EDITOR_GUNICORN_WORKERS:-2}"
+  GUNICORN_WORKERS: "${VECTOPLAN_EDITOR_GUNICORN_WORKERS:-1}"
   GUNICORN_THREADS: "${VECTOPLAN_EDITOR_GUNICORN_THREADS:-2}"
   GUNICORN_TIMEOUT: "${VECTOPLAN_EDITOR_GUNICORN_TIMEOUT:-120}"
   GUNICORN_KEEPALIVE: "${VECTOPLAN_EDITOR_GUNICORN_KEEPALIVE:-5}"
   GUNICORN_LOG_LEVEL: "${VECTOPLAN_EDITOR_GUNICORN_LOG_LEVEL:-info}"
   GUNICORN_ACCESSLOG: "${VECTOPLAN_EDITOR_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_EDITOR_GUNICORN_ERRORLOG:--}"
+
+x-vectoplan-cad-environment: &vectoplan-cad-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-cad"
+  APP_NAME: "vectoplan-cad"
+  APP_HOME: "/opt/vectoplan/vectoplan-cad"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-cad"
+
+  VECTOPLAN_CAD_CONFIG: "${VECTOPLAN_CAD_CONFIG:-development}"
+  VECTOPLAN_CAD_HOST: "0.0.0.0"
+  VECTOPLAN_CAD_PORT: "5000"
+  VECTOPLAN_CAD_ROUTE_PREFIX: "${VECTOPLAN_CAD_ROUTE_PREFIX:-/api/v1/cad}"
+  VECTOPLAN_CAD_PUBLIC_URL: "${VECTOPLAN_CAD_PUBLIC_URL:-http://localhost:5104}"
+  VECTOPLAN_CAD_MOCK_MODE: "${VECTOPLAN_CAD_MOCK_MODE:-true}"
+  VECTOPLAN_CAD_STRICT_STARTUP: "${VECTOPLAN_CAD_STRICT_STARTUP:-false}"
+  VECTOPLAN_CAD_CORE_INTERNAL_URL: "${VECTOPLAN_CAD_CORE_INTERNAL_URL:-}"
+  VECTOPLAN_CAD_CORE_PUBLIC_URL: "${VECTOPLAN_CAD_CORE_PUBLIC_URL:-}"
+  VECTOPLAN_CAD_LOG_LEVEL: "${VECTOPLAN_CAD_LOG_LEVEL:-INFO}"
+  VECTOPLAN_CAD_WORKERS: "${VECTOPLAN_CAD_WORKERS:-2}"
+  VECTOPLAN_CAD_THREADS: "${VECTOPLAN_CAD_THREADS:-2}"
+  VECTOPLAN_CAD_TIMEOUT: "${VECTOPLAN_CAD_TIMEOUT:-120}"
 
 x-vectoplan-library-environment: &vectoplan-library-environment
   <<: *vectoplan-python-environment
@@ -414,6 +441,7 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   # only the synchronized direct access projection.
   VECTOPLAN_CHUNK_ACCESS_CONTROL_ENABLED: "${VECTOPLAN_CHUNK_ACCESS_CONTROL_ENABLED:-true}"
   VECTOPLAN_CHUNK_ACCESS_DEFAULT_DENY: "${VECTOPLAN_CHUNK_ACCESS_DEFAULT_DENY:-true}"
+  VECTOPLAN_CHUNK_PROJECT_ACCESS_AUTHZ_ENFORCED: "${VECTOPLAN_CHUNK_PROJECT_ACCESS_AUTHZ_ENFORCED:-true}"
   VECTOPLAN_CHUNK_ACCESS_STRICT_CANONICAL_USER_IDS: "${VECTOPLAN_CHUNK_ACCESS_STRICT_CANONICAL_USER_IDS:-true}"
   VECTOPLAN_CHUNK_ACCESS_ALLOWED_ROLES: "${VECTOPLAN_CHUNK_ACCESS_ALLOWED_ROLES:-owner,admin,editor,viewer}"
   VECTOPLAN_CHUNK_ACCESS_VIEWER_READ_ONLY: "${VECTOPLAN_CHUNK_ACCESS_VIEWER_READ_ONLY:-true}"
@@ -423,6 +451,7 @@ x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   VECTOPLAN_CHUNK_ACCESS_VERIFY_AFTER_SYNC: "${VECTOPLAN_CHUNK_ACCESS_VERIFY_AFTER_SYNC:-true}"
   VECTOPLAN_CHUNK_ACCESS_API_PATH: "/projects/{chunk_project_id}/access"
   VECTOPLAN_CHUNK_ACCESS_INITIALIZE_API_PATH: "/projects/{chunk_project_id}/access/initialize"
+  VECTOPLAN_CHUNK_ACCESS_PROJECTION_API_PATH: "/projects/{chunk_project_id}/access/projection"
   VECTOPLAN_CHUNK_ASSIGNMENTS_API_PATH: "/projects/{chunk_project_id}/assignments"
   VECTOPLAN_CHUNK_TRANSFER_OWNER_API_PATH: "/projects/{chunk_project_id}/access/transfer-owner"
 
@@ -501,6 +530,9 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   SECRET_KEY: "${VECTOPLAN_APP_SECRET_KEY:-dev-vectoplan-app-secret-change-me}"
 
   VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+  VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET: "${VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET:-dev-vectoplan-editor-access-ticket-secret-change-me}"
+  VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS: "${VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS:-300}"
+
   VECTOPLAN_APP_PUBLIC_BASE_URL: "${VECTOPLAN_APP_PUBLIC_BASE_URL:-http://localhost:5103}"
 
   VECTOPLAN_APP_ALLOWED_FRAME_SRC: "${VECTOPLAN_APP_ALLOWED_FRAME_SRC:-self http://localhost:5100 http://127.0.0.1:5100 http://localhost:5190 http://127.0.0.1:5190}"
@@ -598,6 +630,7 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRY_SECONDS: "${VECTOPLAN_APP_CHUNK_ACCESS_SYNC_RETRY_SECONDS:-1}"
   VECTOPLAN_CHUNK_ACCESS_API_PATH: "/projects/{chunk_project_id}/access"
   VECTOPLAN_CHUNK_ACCESS_INITIALIZE_API_PATH: "/projects/{chunk_project_id}/access/initialize"
+  VECTOPLAN_CHUNK_ACCESS_PROJECTION_API_PATH: "/projects/{chunk_project_id}/access/projection"
   VECTOPLAN_CHUNK_ASSIGNMENTS_API_PATH: "/projects/{chunk_project_id}/assignments"
   VECTOPLAN_CHUNK_TRANSFER_OWNER_API_PATH: "/projects/{chunk_project_id}/access/transfer-owner"
 
@@ -610,8 +643,11 @@ x-vectoplan-app-environment: &vectoplan-app-environment
 
   # Embed URLs use configured origins only. Request Host is not trusted.
   VECTOPLAN_EMBED_PREFER_REQUEST_HOST: "${VECTOPLAN_EMBED_PREFER_REQUEST_HOST:-false}"
+  # Localhost and 127.0.0.1 are matched only within a strict loopback
+  # allowlist so the App -> Editor cookie exchange stays same-site.
+  VECTOPLAN_EMBED_MATCH_LOOPBACK_HOST: "${VECTOPLAN_EMBED_MATCH_LOOPBACK_HOST:-true}"
   VECTOPLAN_EMBED_ALLOWED_APP_ORIGINS: "${VECTOPLAN_EMBED_ALLOWED_APP_ORIGINS:-http://localhost:5103,http://127.0.0.1:5103}"
-  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-false}"
+  VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED: "${VECTOPLAN_EDITOR_PUBLIC_VIEWER_EMBED_ENABLED:-true}"
 
   GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
   GEOSERVER_ORCHESTRATOR_INTERNAL_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
@@ -1111,6 +1147,44 @@ services:
           - vectoplan-editor
           - server-editor
 
+  vectoplan-cad:
+    <<: *vectoplan-service-defaults
+
+    build:
+      context: ./services/vectoplan-cad
+      dockerfile: Dockerfile
+
+    working_dir: /opt/vectoplan/vectoplan-cad
+
+    environment:
+      <<: *vectoplan-cad-environment
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CAD_PUBLIC_PORT:-5104}:5000"
+
+    expose:
+      - "5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import json, urllib.request; response = urllib.request.urlopen('http://127.0.0.1:5000/health/ready', timeout=3); payload = json.load(response); raise SystemExit(0 if response.status == 200 and payload.get('ok') is True else 1)\""
+        ]
+      interval: "${VECTOPLAN_CAD_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_CAD_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_CAD_HEALTH_RETRIES:-5}
+      start_period: "${VECTOPLAN_CAD_HEALTH_START_PERIOD:-15s}"
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-cad
+          - cad
+      vectoplan-shared:
+        aliases:
+          - vectoplan-cad
+          - server-cad
   vectoplan-app-db:
     <<: *vectoplan-service-defaults
     image: postgres:16-alpine
