@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/cad_command.schema.json",
+  "title": "CadCommand",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "command",
+    "document_ref",
+    "sheet_ref",
+    "viewport_ref",
+    "base_revision_ref",
+    "client_command_id",
+    "geometry"
+  ],
+  "properties": {
+    "contract_version": {"const": "cad-command/0.1"},
+    "command": {
+      "enum": ["create_wall", "create_line", "create_dimension", "create_section_marker"]
+    },
+    "document_ref": {"type": "string", "minLength": 1},
+    "sheet_ref": {"type": "string", "minLength": 1},
+    "viewport_ref": {"type": "string", "minLength": 1},
+    "base_revision_ref": {"type": "string", "minLength": 1},
+    "client_command_id": {"type": "string", "minLength": 1},
+    "geometry": {
+      "type": "object",
+      "required": ["start_mm", "end_mm"],
+      "properties": {
+        "start_mm": {"$ref": "#/$defs/point"},
+        "end_mm": {"$ref": "#/$defs/point"}
+      },
+      "additionalProperties": true
+    },
+    "parameters": {"type": "object"},
+    "family_ref": {"type": "string"},
+    "variant_ref": {"type": "string"}
+  },
+  "$defs": {
+    "point": {
+      "type": "array",
+      "prefixItems": [{"type": "number"}, {"type": "number"}],
+      "minItems": 2,
+      "maxItems": 2
+    }
+  },
+  "additionalProperties": true
+}

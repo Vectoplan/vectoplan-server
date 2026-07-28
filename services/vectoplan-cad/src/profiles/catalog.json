@@ -1,0 +1,41 @@
+{
+  "contract_version": "cad-plan-profiles/0.1",
+  "profiles": [
+    {
+      "id": "hochbau.wohngebaeude.entwurf.grundriss.v1",
+      "label": "Wohngebäude – Entwurf – Grundriss",
+      "domain": "hochbau",
+      "asset_kind": "wohngebaeude",
+      "phase": "entwurf",
+      "plan_kind": "grundriss",
+      "default_scale": "1:100"
+    },
+    {
+      "id": "hochbau.wohngebaeude.ausfuehrung.grundriss.v1",
+      "label": "Wohngebäude – Ausführung – Grundriss",
+      "domain": "hochbau",
+      "asset_kind": "wohngebaeude",
+      "phase": "ausfuehrung",
+      "plan_kind": "grundriss",
+      "default_scale": "1:50"
+    },
+    {
+      "id": "ingenieurbau.bruecke.entwurf.lageplan.v1",
+      "label": "Brücke – Entwurf – Lageplan",
+      "domain": "ingenieurbau",
+      "asset_kind": "bruecke",
+      "phase": "entwurf",
+      "plan_kind": "lageplan",
+      "default_scale": "1:200"
+    },
+    {
+      "id": "tiefbau.rohrleitung.ausfuehrung.laengsschnitt.v1",
+      "label": "Rohrleitung – Ausführung – Längsschnitt",
+      "domain": "tiefbau",
+      "asset_kind": "rohrleitung",
+      "phase": "ausfuehrung",
+      "plan_kind": "laengsschnitt",
+      "default_scale": "1:100"
+    }
+  ]
+}

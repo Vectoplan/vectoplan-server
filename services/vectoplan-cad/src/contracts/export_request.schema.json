@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/export_request.schema.json",
+  "title": "ExportRequest",
+  "type": "object",
+  "required": ["contract_version", "format", "document_ref", "source_revision_ref"],
+  "properties": {
+    "contract_version": {"const": "cad-export/0.1"},
+    "format": {"enum": ["pdf", "dxf", "dwg", "svg"]},
+    "document_ref": {"type": "string", "minLength": 1},
+    "sheet_ref": {"type": "string", "minLength": 1},
+    "source_revision_ref": {"type": "string", "minLength": 1},
+    "layout_profile": {"type": "string"},
+    "layer_refs": {"type": "array", "items": {"type": "string"}},
+    "options": {"type": "object"}
+  },
+  "additionalProperties": true
+}

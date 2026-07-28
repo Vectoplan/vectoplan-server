@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <title>CAD · Erdgeschoss</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}">
+</head>
+<body>
+  <main class="cad-app" data-route-prefix="{{ route_prefix }}">
+    <header class="topbar">
+      <div class="toolbar-group history-tools" aria-label="Verlauf">
+        <button type="button" data-action="undo" disabled title="Rückgängig (Strg+Z)" aria-label="Rückgängig">↶</button>
+        <button type="button" data-action="redo" disabled title="Wiederholen (Strg+Y)" aria-label="Wiederholen">↷</button>
+      </div>
+
+      <div class="toolbar-group tools" role="toolbar" aria-label="CAD-Werkzeuge">
+        <button type="button" data-tool="select" class="is-active" aria-pressed="true"><span class="tool-icon">↖</span>Auswahl</button>
+        <button type="button" data-tool="wall" aria-pressed="false"><span class="tool-icon">▰</span>Wand</button>
+        <button type="button" data-tool="line" aria-pressed="false"><span class="tool-icon">╱</span>Linie</button>
+        <button type="button" data-tool="dimension" aria-pressed="false"><span class="tool-icon">↔</span>Maß</button>
+        <button type="button" data-tool="section" aria-pressed="false"><span class="tool-icon">A</span>Schnitt</button>
+      </div>
+
+      <div class="toolbar-group exports" aria-label="Export">
+        <button type="button" data-export="pdf">PDF</button>
+        <button type="button" data-export="dxf">DXF</button>
+        <button type="button" data-export="dwg">DWG</button>
+      </div>
+    </header>
+
+    <aside class="left-panel panel">
+      <div class="panel-header">
+        <div>
+          <span class="eyebrow">Navigator</span>
+          <strong>Projektstruktur</strong>
+        </div>
+        <button type="button" data-action="load-test" class="icon-button" title="Testprojektion neu laden" aria-label="Testprojektion neu laden">↻</button>
+      </div>
+      <section>
+        <div class="section-heading">
+          <h2>Planblätter</h2>
+          <span id="sheet-count" class="count-badge">0</span>
+        </div>
+        <div id="sheet-tree" class="tree"></div>
+      </section>
+      <section>
+        <div class="section-heading">
+          <h2>Layer</h2>
+          <button type="button" data-action="show-all-layers" class="text-button">Alle</button>
+        </div>
+        <div id="layer-list" class="layer-list"></div>
+      </section>
+      <section>
+        <h2>Planprofil</h2>
+        <select id="plan-profile" aria-label="Planprofil"></select>
+      </section>
+    </aside>
+
+    <section class="workspace" aria-label="CAD-Arbeitsfläche Erdgeschoss">
+      <div class="workspace-toolbar" aria-label="Grundrisssteuerung">
+        <span class="floor-chip">EG</span>
+        <strong>Erdgeschoss</strong>
+        <span class="workspace-separator"></span>
+        <button type="button" data-action="zoom-fit">Einpassen</button>
+        <span id="draft-indicator" class="draft-indicator" hidden>Lokaler Entwurf</span>
+      </div>
+      <div class="workspace-canvas" id="workspace-canvas">
+        <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
+      </div>
+      <div class="navigation-hint">Mausrad: Zoom · Shift + Mausrad: horizontal · Mittlere Maustaste: verschieben</div>
+      <div id="workspace-message" class="workspace-message" role="status" aria-live="polite" hidden></div>
+    </section>
+
+    <aside class="right-panel panel">
+      <div class="panel-header">
+        <div>
+          <span class="eyebrow">Inspector</span>
+          <strong>Eigenschaften</strong>
+        </div>
+        <span id="selection-badge" class="selection-badge">0</span>
+      </div>
+
+      <div id="inspector-empty" class="empty-state">
+        <span class="empty-icon">⌖</span>
+        <strong>Element auswählen</strong>
+        <p>Wähle ein Element im Grundriss, um seine semantischen Referenzen zu prüfen.</p>
+      </div>
+      <div id="inspector" hidden>
+        <div class="property-title">
+          <span id="prop-kind-badge" class="kind-badge">–</span>
+          <strong id="prop-label">–</strong>
+          <span id="prop-draft" class="draft-badge" hidden>Entwurf</span>
+        </div>
+        <dl>
+          <dt>ID</dt><dd id="prop-id">–</dd>
+          <dt>Typ</dt><dd id="prop-kind">–</dd>
+          <dt>Layer</dt><dd id="prop-layer">–</dd>
+          <dt>Family</dt><dd id="prop-family">–</dd>
+          <dt>Variant</dt><dd id="prop-variant">–</dd>
+          <dt>Quelle</dt><dd id="prop-source">–</dd>
+        </dl>
+      </div>
+
+      <section id="tool-options">
+        <div class="section-heading">
+          <h2>Werkzeugoptionen</h2>
+          <span id="active-tool-label" class="count-badge">Auswahl</span>
+        </div>
+        <label class="field" id="wall-thickness-field">
+          <span>Wandstärke</span>
+          <div class="input-unit"><input id="wall-thickness" type="number" min="50" max="1000" step="5" value="240"><span>mm</span></div>
+        </label>
+        <label class="check-field">
+          <input id="snap-enabled" type="checkbox" checked>
+          <span>Fangraster</span>
+        </label>
+        <label class="field inline-field">
+          <span>Rasterweite</span>
+          <select id="snap-size">
+            <option value="50">50 mm</option>
+            <option value="100" selected>100 mm</option>
+            <option value="250">250 mm</option>
+            <option value="500">500 mm</option>
+          </select>
+        </label>
+        <p id="tool-hint" class="tool-hint">Element anklicken, um es auszuwählen.</p>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Lokale Commands</h2>
+          <span id="command-count" class="count-badge">0</span>
+        </div>
+        <div id="command-log" class="command-log">
+          <p class="muted">Noch keine Commands in diesem Browser-Tab.</p>
+        </div>
+      </section>
+
+      <section class="system-status">
+        <h2>Verbindung</h2>
+        <div class="status-row"><span class="status-dot is-warning"></span><span>Core nicht verbunden</span></div>
+        <div class="status-row"><span class="status-dot is-ok"></span><span>Scene-Graph aktiv</span></div>
+        <div class="status-row"><span class="status-dot is-ok"></span><span>Keine Projektpersistenz</span></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="{{ url_for('static', filename='cad/js/main.js') }}" defer></script>
+</body>
+</html>
