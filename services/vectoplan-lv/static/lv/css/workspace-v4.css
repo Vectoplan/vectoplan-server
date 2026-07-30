@@ -1,0 +1,249 @@
+@import url("./workspace-v3.css");
+
+/* Fourth editor iteration: clearer hierarchy and a spreadsheet workspace. */
+
+.position-row,
+.text-row {
+  background: #fff;
+}
+
+.position-row:hover,
+.text-row:hover {
+  background: #f8faff;
+}
+
+.position-row.selected-row {
+  background: #eef4ff;
+}
+
+.position-row .editable-cell,
+.text-row .editable-cell {
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.position-row .editable-cell:hover,
+.position-row .editable-cell:focus,
+.text-row .editable-cell:hover,
+.text-row .editable-cell:focus {
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px #7ea6f8;
+}
+
+.item-copy {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.hierarchy-depth-1 .item-copy {
+  padding-left: 58px;
+}
+
+.hierarchy-depth-2 .item-copy {
+  padding-left: 88px;
+}
+
+.hierarchy-depth-1 .item-copy::before,
+.hierarchy-depth-2 .item-copy::before {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  width: 14px;
+  border-bottom: 1px solid #aebdcb;
+  border-left: 1px solid #aebdcb;
+  border-radius: 0 0 0 5px;
+  content: "";
+}
+
+.hierarchy-depth-1 .item-copy::before {
+  left: 34px;
+}
+
+.hierarchy-depth-2 .item-copy::before {
+  left: 64px;
+}
+
+.hierarchy-depth-2 .item-copy::after {
+  position: absolute;
+  top: -10px;
+  bottom: 50%;
+  left: 46px;
+  border-left: 1px solid #d0dae4;
+  content: "";
+}
+
+.title-row .editable-value,
+.section-row .editable-value {
+  box-shadow: none;
+}
+
+.title-row .editable-value {
+  background: rgb(255 255 255 / 82%);
+}
+
+.section-row .editable-value {
+  background: rgb(255 255 255 / 70%);
+}
+
+.calculation-panel {
+  height: calc(100vh - 255px);
+  min-height: 610px;
+  overflow: hidden;
+  background: #f5f7fa;
+}
+
+#calculation-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 18px 20px;
+  overflow: hidden;
+}
+
+.calculation-heading {
+  flex: 0 0 auto;
+  margin-bottom: 12px;
+  padding-bottom: 11px;
+}
+
+.calculation-meta {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #d6dee7;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.calculation-meta > label {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.calculation-meta > label > span {
+  color: #405161;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.calculation-meta .calculation-upload {
+  order: -2;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.calculation-meta .calculation-attachment-list {
+  order: -1;
+  margin: -2px 0 2px;
+}
+
+.calculation-meta .calculation-attachment-list:empty {
+  display: none;
+}
+
+.calculation-upload input[type="file"] {
+  min-height: 40px;
+  padding: 6px;
+  border: 1px solid #cbd6e1;
+  border-radius: 6px;
+  background: #f8fafc;
+}
+
+.calculation-upload small {
+  margin-top: 2px;
+}
+
+.calculation-sheet {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 220px;
+  margin-top: 13px;
+  overflow: hidden;
+}
+
+.calculation-sheet .calculation-list-heading {
+  flex: 0 0 auto;
+  margin: 0 0 8px;
+}
+
+.calculation-sheet .calculation-grid-header {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+.calculation-sheet .calculation-rows {
+  flex: 1 1 auto;
+  min-height: 112px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
+}
+
+.calculation-sheet .calculation-total {
+  flex: 0 0 auto;
+  margin-top: 10px;
+}
+
+.calculation-row:focus-within {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid #76a0fa;
+  outline-offset: -2px;
+}
+
+.calculation-row .calc-expression:focus,
+.calculation-row .calc-note:focus {
+  position: relative;
+  z-index: 2;
+  outline: 2px solid #1e63f3;
+  outline-offset: -2px;
+  background: #f8fbff;
+}
+
+.calculation-row .calc-remove {
+  color: #8a3540;
+  background: #fff;
+}
+
+.calculation-actions {
+  position: relative;
+  z-index: 3;
+  flex: 0 0 auto;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #d6dee7;
+  background: #f5f7fa;
+}
+
+.calculation-actions .primary {
+  min-height: 44px;
+  font-weight: 700;
+}
+
+@media (max-height: 850px) {
+  .calculation-panel {
+    min-height: 540px;
+  }
+
+  #calculation-form {
+    padding-block: 14px;
+  }
+
+  .calculation-meta {
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .calculation-meta textarea {
+    min-height: 38px;
+    max-height: 52px;
+  }
+}

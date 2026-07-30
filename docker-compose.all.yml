@@ -76,6 +76,12 @@ x-vectoplan-chunk-postgres-environment: &vectoplan-chunk-postgres-environment
   POSTGRES_PASSWORD: "${VECTOPLAN_CHUNK_POSTGRES_PASSWORD:-vectoplan_chunk}"
   PGDATA: "/var/lib/postgresql/data/pgdata"
 
+x-vectoplan-lv-postgres-environment: &vectoplan-lv-postgres-environment
+  POSTGRES_DB: "${VECTOPLAN_LV_POSTGRES_DB:-vectoplan_lv}"
+  POSTGRES_USER: "${VECTOPLAN_LV_POSTGRES_USER:-vectoplan_lv}"
+  POSTGRES_PASSWORD: "${VECTOPLAN_LV_POSTGRES_PASSWORD:-vectoplan_lv}"
+  PGDATA: "/var/lib/postgresql/data/pgdata"
+
 x-vectoplan-app-postgres-environment: &vectoplan-app-postgres-environment
   POSTGRES_DB: "${VECTOPLAN_APP_POSTGRES_DB:-vectoplan_app}"
   POSTGRES_USER: "${VECTOPLAN_APP_POSTGRES_USER:-vectoplan_app}"
@@ -336,6 +342,46 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   GUNICORN_ACCESSLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ACCESSLOG:--}"
   GUNICORN_ERRORLOG: "${VECTOPLAN_LIBRARY_GUNICORN_ERRORLOG:--}"
 
+x-vectoplan-lv-environment: &vectoplan-lv-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-lv"
+  APP_NAME: "vectoplan-lv"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-lv"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-lv"
+
+  VECTOPLAN_LV_CONFIG: "${VECTOPLAN_LV_CONFIG:-development}"
+  VECTOPLAN_LV_ENV: "${VECTOPLAN_LV_ENV:-development}"
+  VECTOPLAN_LV_HOST: "0.0.0.0"
+  VECTOPLAN_LV_PORT: "5000"
+  VECTOPLAN_LV_LOG_LEVEL: "${VECTOPLAN_LV_LOG_LEVEL:-INFO}"
+  VECTOPLAN_LV_SECRET_KEY: "${VECTOPLAN_LV_SECRET_KEY:-dev-vectoplan-lv-secret-change-me}"
+
+  VECTOPLAN_LV_PUBLIC_URL: "${VECTOPLAN_LV_PUBLIC_URL:-http://localhost:5105}"
+  VECTOPLAN_LV_INTERNAL_URL: "${VECTOPLAN_LV_INTERNAL_URL:-http://vectoplan-lv:5000}"
+  VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
+
+  VECTOPLAN_LV_FRAME_ANCESTORS: "${VECTOPLAN_LV_FRAME_ANCESTORS:-http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200}"
+
+  VECTOPLAN_LV_DATABASE_URL: "${VECTOPLAN_LV_DATABASE_URL:-postgresql+psycopg://vectoplan_lv:vectoplan_lv@vectoplan-lv-db:5432/vectoplan_lv}"
+
+  VECTOPLAN_LV_STORAGE_PROVIDER: "${VECTOPLAN_LV_STORAGE_PROVIDER:-local}"
+  VECTOPLAN_LV_STORAGE_ROOT: "${VECTOPLAN_LV_STORAGE_ROOT:-/data/vectoplan-lv}"
+  VECTOPLAN_LV_MAX_UPLOAD_MB: "${VECTOPLAN_LV_MAX_UPLOAD_MB:-100}"
+  VECTOPLAN_LV_MAX_GAEB_EMBEDDED_ATTACHMENT_MB: "${VECTOPLAN_LV_MAX_GAEB_EMBEDDED_ATTACHMENT_MB:-50}"
+  VECTOPLAN_LV_GAEB_DEFAULT_VERSION: "${VECTOPLAN_LV_GAEB_DEFAULT_VERSION:-3.3}"
+
+  VECTOPLAN_LV_LIBRARY_ENABLED: "${VECTOPLAN_LV_LIBRARY_ENABLED:-false}"
+  VECTOPLAN_LV_DOCUMENT_ANALYSIS_ENABLED: "${VECTOPLAN_LV_DOCUMENT_ANALYSIS_ENABLED:-false}"
+  VECTOPLAN_LV_NEXTCLOUD_ENABLED: "${VECTOPLAN_LV_NEXTCLOUD_ENABLED:-false}"
+
+  VECTOPLAN_LV_STARTUP_CHECKS_ENABLED: "${VECTOPLAN_LV_STARTUP_CHECKS_ENABLED:-true}"
+  VECTOPLAN_LV_STARTUP_STRICT: "${VECTOPLAN_LV_STARTUP_STRICT:-true}"
+  VECTOPLAN_LV_READINESS_CHECK_DATABASE: "${VECTOPLAN_LV_READINESS_CHECK_DATABASE:-true}"
+  VECTOPLAN_LV_READINESS_CHECK_STORAGE: "${VECTOPLAN_LV_READINESS_CHECK_STORAGE:-true}"
+
+  FLASK_APP: "app:create_app"
+
 x-vectoplan-chunk-environment: &vectoplan-chunk-environment
   <<: *vectoplan-python-environment
 
@@ -536,7 +582,7 @@ x-vectoplan-app-environment: &vectoplan-app-environment
 
   VECTOPLAN_APP_PUBLIC_BASE_URL: "${VECTOPLAN_APP_PUBLIC_BASE_URL:-http://localhost:5103}"
 
-  VECTOPLAN_APP_ALLOWED_FRAME_SRC: "${VECTOPLAN_APP_ALLOWED_FRAME_SRC:-self http://localhost:5100 http://127.0.0.1:5100 http://localhost:5190 http://127.0.0.1:5190}"
+  VECTOPLAN_APP_ALLOWED_FRAME_SRC: "${VECTOPLAN_APP_ALLOWED_FRAME_SRC:-self http://localhost:5100 http://127.0.0.1:5100 http://localhost:5104 http://127.0.0.1:5104 http://localhost:5105 http://127.0.0.1:5105 http://localhost:5190 http://127.0.0.1:5190}"
   VECTOPLAN_ALLOWED_FRAME_PARENTS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
   VECTOPLAN_EDITOR_FRAME_ANCESTORS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
   APP_FRAME_ANCESTORS: "'self' http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
@@ -569,8 +615,18 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
   VECTOPLAN_EDITOR_EMBED_ENABLED: "${VECTOPLAN_EDITOR_EMBED_ENABLED:-true}"
 
+  VECTOPLAN_CAD_PUBLIC_URL: "${VECTOPLAN_CAD_PUBLIC_URL:-http://localhost:5104}"
+  VECTOPLAN_CAD_INTERNAL_URL: "${VECTOPLAN_CAD_INTERNAL_URL:-http://vectoplan-cad:5000}"
+  VECTOPLAN_CAD_ROUTE: "${VECTOPLAN_CAD_ROUTE:-/cad}"
+  VECTOPLAN_CAD_EMBED_ENABLED: "${VECTOPLAN_CAD_EMBED_ENABLED:-true}"
+
   VECTOPLAN_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
   VECTOPLAN_LIBRARY_INTERNAL_URL: "${VECTOPLAN_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
+
+  VECTOPLAN_LV_PUBLIC_URL: "${VECTOPLAN_LV_PUBLIC_URL:-http://localhost:5105}"
+  VECTOPLAN_LV_INTERNAL_URL: "${VECTOPLAN_LV_INTERNAL_URL:-http://vectoplan-lv:5000}"
+  VECTOPLAN_LV_ROUTE: "${VECTOPLAN_LV_ROUTE:-/lv}"
+  VECTOPLAN_LV_EMBED_ENABLED: "${VECTOPLAN_LV_EMBED_ENABLED:-true}"
 
   VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
   VECTOPLAN_CHUNK_PUBLIC_BASE_URL: "${VECTOPLAN_CHUNK_PUBLIC_BASE_URL:-http://localhost:5102}"
@@ -635,10 +691,17 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_CHUNK_ASSIGNMENTS_API_PATH: "/projects/{chunk_project_id}/assignments"
   VECTOPLAN_CHUNK_TRANSFER_OWNER_API_PATH: "/projects/{chunk_project_id}/access/transfer-owner"
 
-  # Georeference is deterministic/local by default. No external geocoder is
-  # discovered unless explicitly enabled.
-  VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED: "${VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED:-false}"
-  VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER: "${VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER:-false}"
+  # Mapbox remains server-side. Autocomplete is temporary; coordinates stored
+  # with projects are resolved through permanent Geocoding v6 requests.
+  MAPBOX_ACCESS_TOKEN: "${MAPBOX_ACCESS_TOKEN:-}"
+  VECTOPLAN_APP_MAPBOX_GEOCODING_ENABLED: "${VECTOPLAN_APP_MAPBOX_GEOCODING_ENABLED:-true}"
+  VECTOPLAN_APP_MAPBOX_GEOCODING_ENDPOINT: "${VECTOPLAN_APP_MAPBOX_GEOCODING_ENDPOINT:-https://api.mapbox.com/search/geocode/v6/forward}"
+  VECTOPLAN_APP_MAPBOX_LANGUAGE: "${VECTOPLAN_APP_MAPBOX_LANGUAGE:-de}"
+  VECTOPLAN_APP_MAPBOX_COUNTRIES: "${VECTOPLAN_APP_MAPBOX_COUNTRIES:-de}"
+  VECTOPLAN_APP_MAPBOX_TIMEOUT_SECONDS: "${VECTOPLAN_APP_MAPBOX_TIMEOUT_SECONDS:-4}"
+  VECTOPLAN_APP_MAPBOX_PERMANENT_GEOCODING: "${VECTOPLAN_APP_MAPBOX_PERMANENT_GEOCODING:-true}"
+  VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED: "${VECTOPLAN_APP_GEOREFERENCE_GEOCODER_ENABLED:-true}"
+  VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER: "${VECTOPLAN_APP_GEOREFERENCE_DISCOVER_GEOCODER:-true}"
   VECTOPLAN_APP_GEOREFERENCE_ALLOW_COORDINATE_SWAP: "${VECTOPLAN_APP_GEOREFERENCE_ALLOW_COORDINATE_SWAP:-false}"
   VECTOPLAN_APP_PERSIST_DERIVED_GEOREFERENCE: "${VECTOPLAN_APP_PERSIST_DERIVED_GEOREFERENCE:-true}"
 
@@ -660,6 +723,7 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   OPENLAYER_INTERNAL_URL: "${OPENLAYER_INTERNAL_URL:-http://openlayer:8090}"
   OPENLAYER_ROUTE: "${OPENLAYER_ROUTE:-/map}"
   OPENLAYER_EMBED_ENABLED: "${OPENLAYER_EMBED_ENABLED:-true}"
+  MAP_PROJECT_ZOOM: "${MAP_PROJECT_ZOOM:-17}"
 
   GUNICORN_WORKERS: "${VECTOPLAN_APP_GUNICORN_WORKERS:-2}"
   GUNICORN_THREADS: "${VECTOPLAN_APP_GUNICORN_THREADS:-4}"
@@ -692,6 +756,8 @@ x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_envi
   HOST: "0.0.0.0"
   PORT: "8010"
   LOG_LEVEL: "${GEOSERVER_ORCHESTRATOR_LOG_LEVEL:-DEBUG}"
+  OPENLAYER_ORCHESTRATOR_TOKEN: "${OPENLAYER_ORCHESTRATOR_TOKEN:-change-me-openlayer-internal}"
+  INGESTION_WORKER_CONCURRENCY: "${INGESTION_WORKER_CONCURRENCY:-3}"
 
   GEOSERVER_ORCH_DB_DRIVER: "${GEOSERVER_ORCH_DB_DRIVER:-postgresql+psycopg2}"
   GEOSERVER_ORCH_DB_HOST: "${GEOSERVER_ORCH_DB_HOST:-vectoplan-geo-db}"
@@ -902,6 +968,126 @@ services:
         aliases:
           - vectoplan-library
           - server-library
+
+  vectoplan-lv-db:
+    <<: *vectoplan-service-defaults
+    image: postgres:16-alpine
+    environment:
+      <<: *vectoplan-lv-postgres-environment
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_LV_POSTGRES_PUBLIC_PORT:-15436}:5432"
+    expose:
+      - "5432"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\" -h 127.0.0.1 -p 5432"
+        ]
+      interval: "${VECTOPLAN_LV_DB_HEALTH_INTERVAL:-10s}"
+      timeout: "${VECTOPLAN_LV_DB_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_LV_DB_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_LV_DB_HEALTH_START_PERIOD:-10s}"
+    volumes:
+      - vectoplan-lv-postgres-data:/var/lib/postgresql/data
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-lv-db
+          - lv-db
+
+  vectoplan-lv-init:
+    <<: *vectoplan-init-service-defaults
+    build:
+      context: ./services/vectoplan-lv
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: "/opt/vectoplan/services/vectoplan-lv"
+        APP_USER: "vectoplan"
+
+    working_dir: /opt/vectoplan/services/vectoplan-lv
+
+    environment:
+      <<: *vectoplan-lv-environment
+
+    depends_on:
+      vectoplan-lv-db:
+        condition: service_healthy
+
+    entrypoint:
+      - /bin/sh
+      - -ec
+
+    command:
+      - |
+        set -eu
+        cd /opt/vectoplan/services/vectoplan-lv
+        echo "[vectoplan-lv-init] Wende Alembic-Migrationen an."
+        python -m flask --app app:create_app db upgrade
+        echo "[vectoplan-lv-init] Migrationen erfolgreich abgeschlossen."
+
+    volumes:
+      - ./services/vectoplan-lv:/opt/vectoplan/services/vectoplan-lv:rw
+      - vectoplan-lv-storage:/data/vectoplan-lv
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-lv-init
+          - lv-init
+
+  vectoplan-lv:
+    <<: *vectoplan-service-defaults
+    build:
+      context: ./services/vectoplan-lv
+      dockerfile: Dockerfile
+      target: runtime
+      args:
+        APP_HOME: "/opt/vectoplan/services/vectoplan-lv"
+        APP_USER: "vectoplan"
+
+    working_dir: /opt/vectoplan/services/vectoplan-lv
+
+    environment:
+      <<: *vectoplan-lv-environment
+
+    depends_on:
+      vectoplan-lv-db:
+        condition: service_healthy
+      vectoplan-lv-init:
+        condition: service_completed_successfully
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_LV_PUBLIC_PORT:-5105}:5000"
+
+    expose:
+      - "5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python - <<'PY'\nimport json\nimport sys\nimport urllib.request\ntry:\n    response = urllib.request.urlopen('http://127.0.0.1:5000/ready', timeout=3)\n    payload = json.loads(response.read().decode('utf-8'))\n    if response.status == 200 and payload.get('status') == 'ok':\n        sys.exit(0)\nexcept Exception:\n    pass\nsys.exit(1)\nPY"
+        ]
+      interval: "${VECTOPLAN_LV_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_LV_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_LV_HEALTH_RETRIES:-10}
+      start_period: "${VECTOPLAN_LV_HEALTH_START_PERIOD:-30s}"
+
+    volumes:
+      - ./services/vectoplan-lv:/opt/vectoplan/services/vectoplan-lv:rw
+      - vectoplan-lv-storage:/data/vectoplan-lv
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-lv
+          - lv
+      vectoplan-shared:
+        aliases:
+          - vectoplan-lv
+          - server-lv
 
   vectoplan-chunk-db:
     <<: *vectoplan-service-defaults
@@ -1243,6 +1429,10 @@ services:
       # failures are persisted and reconciled later instead of blocking startup.
       vectoplan-chunk:
         condition: service_started
+      vectoplan-lv:
+        condition: service_started
+      vectoplan-cad:
+        condition: service_started
 
     entrypoint:
       - /bin/sh
@@ -1576,11 +1766,15 @@ services:
 
       GEOSERVER_ORCHESTRATOR_URL: "${GEOSERVER_ORCHESTRATOR_INTERNAL_URL:-http://geoserver-orchestrator:8010}"
       GEOSERVER_ORCHESTRATOR_PUBLIC_URL: "${GEOSERVER_ORCHESTRATOR_PUBLIC_URL:-http://localhost:5110}"
+      OPENLAYER_ORCHESTRATOR_TOKEN: "${OPENLAYER_ORCHESTRATOR_TOKEN:-change-me-openlayer-internal}"
       GEOSERVER_INTERNAL_URL: "${GEOSERVER_INTERNAL_BASE_URL:-http://geoserver:8080/geoserver}"
       GEOSERVER_PUBLIC_URL: "${GEOSERVER_PUBLIC_BASE_URL:-http://localhost:5182/geoserver}"
 
       MAPBOX_ACCESS_TOKEN: "${MAPBOX_ACCESS_TOKEN:-}"
       MAPBOX_STYLE_URL: "${MAPBOX_STYLE_URL:-}"
+      MAPBOX_DEFAULT_STYLE: "${OPENLAYER_MAP_STYLE:-mapbox/light-v11}"
+      ENABLE_WHEEL_ZOOM: "${OPENLAYER_ENABLE_WHEEL_ZOOM:-true}"
+      DISABLE_SCROLL: "${OPENLAYER_DISABLE_SCROLL:-false}"
 
     depends_on:
       geoserver-orchestrator:
@@ -1616,6 +1810,8 @@ services:
 volumes:
   vectoplan-library-postgres-data:
   vectoplan-chunk-postgres-data:
+  vectoplan-lv-postgres-data:
+  vectoplan-lv-storage:
   vectoplan-app-postgres-data:
   vectoplan-app-media:
   vectoplan-geo-postgres-data:
