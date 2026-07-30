@@ -24,6 +24,8 @@
     camera: null,
     baseCameraWidth: null,
     pan: null,
+    touchPoints: new Map(),
+    pinch: null,
     spacePressed: false,
     renderScheduled: false,
   };
@@ -299,7 +301,7 @@
     if (state.selectedPrimitive?.primitive_ref === primitive.primitive_ref) node.classList.add("is-selected");
     node.addEventListener("pointerdown", (event) => {
       if (event.button !== 0 || state.activeTool !== "select" || state.spacePressed) return;
-      event.stopPropagation();
+      if (event.pointerType !== "touch") event.stopPropagation();
       state.selectedPrimitive = primitive;
       renderPlan();
       renderInspector();
@@ -479,7 +481,7 @@
   }
 
   function updatePan(event) {
-    if (!state.pan || state.pan.pointerId !== event.pointerId) return false;
+    if (!state.pan || state.pan.pointerId !== event.pointerId || state.pinch) return false;
     const dx = event.clientX - state.pan.clientX;
     const dy = event.clientY - state.pan.clientY;
     const start = state.pan.camera;
@@ -489,15 +491,73 @@
     return true;
   }
 
-  function endPan(event) {
-    if (!state.pan || state.pan.pointerId !== event.pointerId) return false;
+  function beginPinch() {
+    const points = [...state.touchPoints.values()];
+    if (!state.camera || points.length < 2) return;
+    const [first, second] = points;
+    const rect = svg.getBoundingClientRect();
+    const centerX = (first.clientX + second.clientX) / 2;
+    const centerY = (first.clientY + second.clientY) / 2;
+    const camera = {...state.camera};
+    state.pan = null;
+    state.pinch = {
+      distance: Math.max(1, Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY)),
+      camera,
+      anchor: {
+        x: camera.x + (centerX - rect.left) / Math.max(rect.width, 1) * camera.width,
+        y: camera.y + (centerY - rect.top) / Math.max(rect.height, 1) * camera.height,
+      },
+      rect: {left: rect.left, top: rect.top, width: Math.max(rect.width, 1), height: Math.max(rect.height, 1)},
+    };
+    svg.classList.add("is-panning");
+  }
+
+  function updatePinch() {
+    const points = [...state.touchPoints.values()];
+    if (!state.pinch || points.length < 2) return false;
+    const [first, second] = points;
+    const distance = Math.max(1, Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY));
+    const centerX = (first.clientX + second.clientX) / 2;
+    const centerY = (first.clientY + second.clientY) / 2;
+    const start = state.pinch.camera;
+    const baseWidth = state.baseCameraWidth || start.width;
+    const minWidth = Math.max(1200, baseWidth * 0.08);
+    const maxWidth = baseWidth * 40;
+    const nextWidth = Math.max(minWidth, Math.min(maxWidth, start.width * state.pinch.distance / distance));
+    const factor = nextWidth / start.width;
+    const nextHeight = start.height * factor;
+    const rect = state.pinch.rect;
+    state.camera.x = state.pinch.anchor.x - (centerX - rect.left) / rect.width * nextWidth;
+    state.camera.y = state.pinch.anchor.y - (centerY - rect.top) / rect.height * nextHeight;
+    state.camera.width = nextWidth;
+    state.camera.height = nextHeight;
+    schedulePlanRender();
+    return true;
+  }
+
+  function endPointer(event) {
+    if (event.pointerType === "touch") state.touchPoints.delete(event.pointerId);
     if (svg.hasPointerCapture?.(event.pointerId)) svg.releasePointerCapture(event.pointerId);
+    if (state.pinch) {
+      if (state.touchPoints.size < 2) {
+        state.pinch = null;
+        state.pan = null;
+        svg.classList.remove("is-panning");
+      }
+      return true;
+    }
+    if (!state.pan || state.pan.pointerId !== event.pointerId) return false;
     state.pan = null;
     svg.classList.remove("is-panning");
     return true;
   }
+
   function handlePointerMove(event) {
     if (!state.scene) return;
+    if (event.pointerType === "touch" && state.touchPoints.has(event.pointerId)) {
+      state.touchPoints.set(event.pointerId, {clientX: event.clientX, clientY: event.clientY});
+      if (updatePinch()) return;
+    }
     if (updatePan(event)) return;
     if (!state.drawStart) return;
     const point = pointFromEvent(event);
@@ -508,6 +568,23 @@
 
   function handlePointerDown(event) {
     if (!state.scene) return;
+    if (event.pointerType === "touch") {
+      state.touchPoints.set(event.pointerId, {clientX: event.clientX, clientY: event.clientY});
+      svg.setPointerCapture?.(event.pointerId);
+      if (state.touchPoints.size === 2) {
+        event.preventDefault();
+        beginPinch();
+        return;
+      }
+      if (state.touchPoints.size > 2) return;
+      if (state.activeTool === "select" && !event.target.closest?.(".primitive")) {
+        state.selectedPrimitive = null;
+        renderPlan();
+        renderInspector();
+        beginPan(event);
+        return;
+      }
+    }
     if (event.button === 1 || (event.button === 0 && state.spacePressed)) {
       beginPan(event);
       return;
@@ -657,7 +734,42 @@
     return target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement;
   }
 
+  function syncPanelButtons() {
+    const navigatorOpen = app.classList.contains("is-left-open");
+    const inspectorOpen = app.classList.contains("is-right-open");
+    const compactLayout = window.matchMedia("(max-width: 1020px)").matches;
+    const leftPanel = document.getElementById("left-panel");
+    const rightPanel = document.getElementById("right-panel");
+    const backdrop = document.querySelector(".panel-backdrop");
+    document.querySelector('[data-action="toggle-navigator"]').setAttribute("aria-expanded", String(navigatorOpen));
+    document.querySelector('[data-action="toggle-inspector"]').setAttribute("aria-expanded", String(inspectorOpen));
+    leftPanel.inert = compactLayout && !navigatorOpen;
+    rightPanel.inert = compactLayout && !inspectorOpen;
+    if (compactLayout) {
+      leftPanel.setAttribute("aria-hidden", String(!navigatorOpen));
+      rightPanel.setAttribute("aria-hidden", String(!inspectorOpen));
+    } else {
+      leftPanel.removeAttribute("aria-hidden");
+      rightPanel.removeAttribute("aria-hidden");
+    }
+    backdrop.tabIndex = navigatorOpen || inspectorOpen ? 0 : -1;
+  }
+
+  function closePanels() {
+    app.classList.remove("is-left-open", "is-right-open");
+    syncPanelButtons();
+  }
+
+  function togglePanel(side) {
+    const targetClass = side === "left" ? "is-left-open" : "is-right-open";
+    const willOpen = !app.classList.contains(targetClass);
+    app.classList.remove("is-left-open", "is-right-open");
+    if (willOpen) app.classList.add(targetClass);
+    syncPanelButtons();
+  }
+
   function handleResize() {
+    if (window.innerWidth > 1020) closePanels();
     if (!state.camera) return;
     const centerY = state.camera.y + state.camera.height / 2;
     const aspect = Math.max(svg.clientWidth, 1) / Math.max(svg.clientHeight, 1);
@@ -669,8 +781,8 @@
   function bindEvents() {
     svg.addEventListener("pointermove", handlePointerMove);
     svg.addEventListener("pointerdown", handlePointerDown);
-    svg.addEventListener("pointerup", endPan);
-    svg.addEventListener("pointercancel", endPan);
+    svg.addEventListener("pointerup", endPointer);
+    svg.addEventListener("pointercancel", endPointer);
     svg.addEventListener("wheel", handleWheel, {passive: false});
     svg.addEventListener("auxclick", (event) => {
       if (event.button === 1) event.preventDefault();
@@ -680,6 +792,10 @@
       event.preventDefault();
       cancelDrawing();
     });
+    document.querySelector('[data-action="toggle-navigator"]').addEventListener("click", () => togglePanel("left"));
+    document.querySelector('[data-action="toggle-inspector"]').addEventListener("click", () => togglePanel("right"));
+    document.querySelectorAll('[data-action="close-panels"]').forEach((button) => button.addEventListener("click", closePanels));
+    syncPanelButtons();
     document.querySelector('[data-action="load-test"]').addEventListener("click", () => loadTestInput().catch(handleError));
     document.querySelector('[data-action="undo"]').addEventListener("click", () => undo().catch(handleError));
     document.querySelector('[data-action="redo"]').addEventListener("click", () => redo().catch(handleError));
@@ -701,7 +817,10 @@
         state.spacePressed = true;
         svg.classList.add("is-pan-ready");
       }
-      if (event.key === "Escape") cancelDrawing();
+      if (event.key === "Escape") {
+        cancelDrawing();
+        closePanels();
+      }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") {
         event.preventDefault();
         if (event.shiftKey) redo().catch(handleError);
@@ -721,6 +840,8 @@
     window.addEventListener("blur", () => {
       state.spacePressed = false;
       state.pan = null;
+      state.pinch = null;
+      state.touchPoints.clear();
       svg.classList.remove("is-pan-ready", "is-panning");
     });
   }

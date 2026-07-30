@@ -2,25 +2,29 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10151d">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f8fafc">
   <title>CAD · Erdgeschoss</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}">
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
     <header class="topbar">
+      <button type="button" class="mobile-panel-toggle navigator-toggle" data-action="toggle-navigator" aria-controls="left-panel" aria-expanded="false" aria-label="Projektbereich öffnen oder schließen">
+        <span aria-hidden="true">☰</span><span class="toggle-label">Projekt</span>
+      </button>
+
       <div class="toolbar-group history-tools" aria-label="Verlauf">
         <button type="button" data-action="undo" disabled title="Rückgängig (Strg+Z)" aria-label="Rückgängig">↶</button>
         <button type="button" data-action="redo" disabled title="Wiederholen (Strg+Y)" aria-label="Wiederholen">↷</button>
       </div>
 
       <div class="toolbar-group tools" role="toolbar" aria-label="CAD-Werkzeuge">
-        <button type="button" data-tool="select" class="is-active" aria-pressed="true"><span class="tool-icon">↖</span>Auswahl</button>
-        <button type="button" data-tool="wall" aria-pressed="false"><span class="tool-icon">▰</span>Wand</button>
-        <button type="button" data-tool="line" aria-pressed="false"><span class="tool-icon">╱</span>Linie</button>
-        <button type="button" data-tool="dimension" aria-pressed="false"><span class="tool-icon">↔</span>Maß</button>
-        <button type="button" data-tool="section" aria-pressed="false"><span class="tool-icon">A</span>Schnitt</button>
+        <button type="button" data-tool="select" class="is-active" aria-pressed="true"><span class="tool-icon">↖</span><span>Auswahl</span></button>
+        <button type="button" data-tool="wall" aria-pressed="false"><span class="tool-icon">▰</span><span>Wand</span></button>
+        <button type="button" data-tool="line" aria-pressed="false"><span class="tool-icon">╱</span><span>Linie</span></button>
+        <button type="button" data-tool="dimension" aria-pressed="false"><span class="tool-icon">↔</span><span>Maß</span></button>
+        <button type="button" data-tool="section" aria-pressed="false"><span class="tool-icon">A</span><span>Schnitt</span></button>
       </div>
 
       <div class="toolbar-group exports" aria-label="Export">
@@ -28,15 +32,22 @@
         <button type="button" data-export="dxf">DXF</button>
         <button type="button" data-export="dwg">DWG</button>
       </div>
+
+      <button type="button" class="mobile-panel-toggle inspector-toggle" data-action="toggle-inspector" aria-controls="right-panel" aria-expanded="false" aria-label="Eigenschaften öffnen oder schließen">
+        <span aria-hidden="true">☷</span><span class="toggle-label">Details</span>
+      </button>
     </header>
 
-    <aside class="left-panel panel">
+    <aside id="left-panel" class="left-panel panel" aria-label="Projektstruktur">
       <div class="panel-header">
         <div>
-          <span class="eyebrow">Navigator</span>
-          <strong>Projektstruktur</strong>
+          <span class="eyebrow">Projekt</span>
+          <strong>Navigator</strong>
         </div>
-        <button type="button" data-action="load-test" class="icon-button" title="Testprojektion neu laden" aria-label="Testprojektion neu laden">↻</button>
+        <div class="panel-header-actions">
+          <button type="button" data-action="load-test" class="icon-button" title="Testprojektion neu laden" aria-label="Testprojektion neu laden">↻</button>
+          <button type="button" data-action="close-panels" class="icon-button panel-close" aria-label="Navigator schließen">×</button>
+        </div>
       </div>
       <section>
         <div class="section-heading">
@@ -48,7 +59,7 @@
       <section>
         <div class="section-heading">
           <h2>Layer</h2>
-          <button type="button" data-action="show-all-layers" class="text-button">Alle</button>
+          <button type="button" data-action="show-all-layers" class="text-button">Alle anzeigen</button>
         </div>
         <div id="layer-list" class="layer-list"></div>
       </section>
@@ -69,17 +80,23 @@
       <div class="workspace-canvas" id="workspace-canvas">
         <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
       </div>
-      <div class="navigation-hint">Mausrad: Zoom · Shift + Mausrad: horizontal · Mittlere Maustaste: verschieben</div>
+      <div class="navigation-hint">
+        <span class="desktop-hint">Mausrad: Zoom · Shift + Mausrad: horizontal · Mittlere Maustaste: verschieben</span>
+        <span class="touch-hint">Ziehen: verschieben · Zwei Finger: zoomen</span>
+      </div>
       <div id="workspace-message" class="workspace-message" role="status" aria-live="polite" hidden></div>
     </section>
 
-    <aside class="right-panel panel">
+    <aside id="right-panel" class="right-panel panel" aria-label="Eigenschaften und Werkzeuge">
       <div class="panel-header">
         <div>
-          <span class="eyebrow">Inspector</span>
+          <span class="eyebrow">Auswahl</span>
           <strong>Eigenschaften</strong>
         </div>
-        <span id="selection-badge" class="selection-badge">0</span>
+        <div class="panel-header-actions">
+          <span id="selection-badge" class="selection-badge">0</span>
+          <button type="button" data-action="close-panels" class="icon-button panel-close" aria-label="Eigenschaften schließen">×</button>
+        </div>
       </div>
 
       <div id="inspector-empty" class="empty-state">
@@ -145,6 +162,8 @@
         <div class="status-row"><span class="status-dot is-ok"></span><span>Keine Projektpersistenz</span></div>
       </section>
     </aside>
+
+    <button type="button" class="panel-backdrop" data-action="close-panels" aria-label="Seitenbereich schließen"></button>
   </main>
 
   <script src="{{ url_for('static', filename='cad/js/main.js') }}" defer></script>

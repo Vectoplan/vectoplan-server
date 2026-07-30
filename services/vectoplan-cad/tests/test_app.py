@@ -42,6 +42,10 @@ def test_cad_template():
     assert b"plan-svg" in response.data
     assert b"wall-thickness" in response.data
     assert b"navigation-hint" in response.data
+    assert b"toggle-navigator" in response.data
+    assert b"toggle-inspector" in response.data
+    assert b"touch-hint" in response.data
+    assert b"panel-backdrop" in response.data
     assert b"viewport-list" not in response.data
     assert b"statusbar" not in response.data
     assert b"brand-mark" not in response.data
