@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
     <title>VECTOPLAN LV</title>
-    <!-- workspace-v4.css extends and imports workspace-v3.css -->
+    <!-- workspace-v8.css imports workspace-v7.css, workspace-v6.css, workspace-v5.css, workspace-v4.css and workspace-v3.css -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='lv/css/workspace-v5.css') }}"
+      href="{{ url_for('static', filename='lv/css/workspace-v8.css') }}"
     >
   </head>
   <body>
@@ -30,6 +30,9 @@
           <button class="mode active" type="button" data-mode="lv" aria-pressed="true">
             LV &amp; Kalkulation
           </button>
+          <button class="mode" type="button" data-mode="procurement" aria-pressed="false">
+            Anfragen
+          </button>
           <button class="mode" type="button" data-mode="billing" aria-pressed="false">
             Aufmaß &amp; Abrechnung
           </button>
@@ -42,23 +45,76 @@
 
       <main>
         <section class="toolbar" aria-label="Werkzeuge">
-          <label class="lv-picker">
+          <label class="lv-picker" hidden aria-hidden="true">
             <span class="sr-only">Leistungsverzeichnis auswählen</span>
             <select id="lv-select" aria-label="Leistungsverzeichnis auswählen">
               <option value="">Noch kein LV</option>
             </select>
           </label>
-          <button type="button" class="primary" id="new-lv">Neues LV</button>
-          <span class="toolbar-divider lv-only" aria-hidden="true"></span>
-          <button type="button" id="add-title" class="lv-only" disabled>+ Titel</button>
-          <button type="button" id="add-section" class="lv-only" disabled>+ Teilbereich</button>
-          <button type="button" id="add-position" class="lv-only" disabled>+ Position</button>
-          <button type="button" id="add-text" class="lv-only" disabled>+ Text</button>
-          <button type="button" id="gaeb-import" class="lv-only" disabled>
-            GAEB 3.3 importieren
+          <button
+            type="button"
+            class="primary"
+            id="new-lv"
+            hidden
+            aria-hidden="true"
+          >Neues LV</button>
+          <details class="toolbar-menu lv-only">
+            <summary
+              class="toolbar-icon-action"
+              aria-label="Hinzufügen"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14M5 12h14"></path>
+              </svg>
+              <span class="toolbar-action-tooltip" role="tooltip">Hinzufügen</span>
+            </summary>
+            <div class="toolbar-popover">
+              <button type="button" id="add-title" class="lv-only" disabled>+ Titel</button>
+              <button type="button" id="add-section" class="lv-only" disabled>+ Teilbereich</button>
+              <button type="button" id="add-position" class="lv-only" disabled>+ Position</button>
+              <button type="button" id="add-text" class="lv-only" disabled>+ Text</button>
+            </div>
+          </details>
+          <button
+            type="button"
+            id="open-inquiry-workspace"
+            class="lv-only inquiry-launch toolbar-icon-action"
+            aria-label="Position(en) anfragen"
+            disabled
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+            <span class="toolbar-action-tooltip" role="tooltip">Position(en) anfragen</span>
           </button>
-          <button type="button" id="gaeb-export" class="lv-only" disabled>
-            GAEB X84 exportieren
+          <button
+            type="button"
+            id="gaeb-import"
+            class="lv-only toolbar-icon-action"
+            aria-label="GAEB 3.3 importieren"
+            disabled
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 16V4"></path>
+              <path d="m7 9 5-5 5 5"></path>
+              <path d="M5 15v4h14v-4"></path>
+            </svg>
+            <span class="toolbar-action-tooltip" role="tooltip">GAEB 3.3 importieren</span>
+          </button>
+          <button
+            type="button"
+            id="gaeb-export"
+            class="lv-only toolbar-icon-action"
+            aria-label="GAEB X84 herunterladen"
+            disabled
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 4v12"></path>
+              <path d="m7 11 5 5 5-5"></path>
+              <path d="M5 19h14"></path>
+            </svg>
+            <span class="toolbar-action-tooltip" role="tooltip">GAEB X84 herunterladen</span>
           </button>
           <input
             type="file"
@@ -67,7 +123,7 @@
             hidden
           >
           <span class="toolbar-spacer"></span>
-          <label class="search">
+          <label class="search" hidden aria-hidden="true">
             <span class="sr-only">Positionen durchsuchen</span>
             <input id="item-search" type="search" placeholder="OZ oder Text suchen" disabled>
           </label>
@@ -78,7 +134,7 @@
             <div>
               <span class="eyebrow" id="workspace-eyebrow">Bearbeitbarer Stand</span>
               <h1 id="workspace-title">LV &amp; Kalkulation</h1>
-              <p id="selected-lv-meta">Lege ein LV an, um zu beginnen.</p>
+              <p id="selected-lv-meta">Noch keine LV-Daten für dieses Projekt verfügbar.</p>
             </div>
             <div class="heading-tools">
               <span class="interaction-hint" id="interaction-hint">
@@ -110,8 +166,8 @@
                   <tbody id="item-table-body">
                     <tr>
                       <td colspan="9" class="empty-state">
-                        <strong>Noch kein Leistungsverzeichnis vorhanden.</strong>
-                        <span>Lege ein LV an, um Titel und Positionen zu erfassen.</span>
+                        <strong>Noch keine LV-Daten für dieses Projekt verfügbar.</strong>
+                        <span>Sobald das Projekt-LV bereitsteht, erscheint es automatisch hier.</span>
                       </td>
                     </tr>
                   </tbody>
@@ -201,6 +257,47 @@
                 </div>
               </form>
             </aside>
+          </div>
+
+          <div class="procurement-view" id="procurement-view" hidden>
+            <section class="inquiry-position-pane" aria-labelledby="inquiry-position-heading">
+              <div class="procurement-pane-heading">
+                <div>
+                  <h2 id="inquiry-position-heading">Positionen auswählen</h2>
+                  <p>Eine oder mehrere Leistungen gemeinsam anfragen.</p>
+                </div>
+                <div class="selection-actions">
+                  <button type="button" id="select-all-inquiry-positions">Alle</button>
+                  <button type="button" id="clear-inquiry-positions" disabled>Auswahl löschen</button>
+                </div>
+              </div>
+              <div class="inquiry-selection-bar">
+                <span class="counter" id="inquiry-selected-count">0 Positionen ausgewählt</span>
+                <button type="button" class="primary" id="create-inquiry" disabled>
+                  Anfrage senden
+                </button>
+              </div>
+              <div class="inquiry-position-list" id="inquiry-position-list"></div>
+            </section>
+
+            <section class="inquiry-history-pane" aria-labelledby="inquiry-history-heading">
+              <div class="procurement-pane-heading">
+                <div>
+                  <h2 id="inquiry-history-heading">Anfragen &amp; Angebote</h2>
+                  <p>Empfänger, Antworten und spätere KI-Einschätzung auf einen Blick.</p>
+                </div>
+                <div class="history-actions">
+                  <span class="counter" id="inquiry-history-count">0 Anfragen</span>
+                  <button type="button" id="refresh-inquiries">Aktualisieren</button>
+                </div>
+              </div>
+              <div class="inquiry-list" id="inquiry-list">
+                <div class="procurement-empty">
+                  <strong>Noch keine Anfrage</strong>
+                  <span>Wähle links Positionen aus, um zu beginnen.</span>
+                </div>
+              </div>
+            </section>
           </div>
         </section>
       </main>
@@ -343,6 +440,119 @@
       </form>
     </dialog>
 
+    <dialog id="inquiry-dialog" class="wide-dialog">
+      <form id="inquiry-form">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">Anfrage vorbereiten</span>
+            <h2>Positionen gemeinsam anfragen</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            data-close="inquiry-dialog"
+            aria-label="Schließen"
+          >×</button>
+        </div>
+
+        <div class="selection-summary" id="inquiry-selection-summary"></div>
+        <div class="form-grid">
+          <label class="full-field">
+            <span>Betreff</span>
+            <input name="title" maxlength="250" required>
+          </label>
+          <label>
+            <span>Angebotsfrist</span>
+            <input name="due_date" type="date">
+          </label>
+          <label class="full-field">
+            <span>Nachricht</span>
+            <textarea name="message" rows="4" maxlength="50000"></textarea>
+          </label>
+        </div>
+
+        <div class="integration-note">
+          <span class="llm-mark" aria-hidden="true">AUTO</span>
+          <span id="inquiry-suggestion-status">
+            Automatische Unternehmensvorschläge werden geprüft …
+          </span>
+        </div>
+
+        <div class="recipient-form-heading">
+          <strong>Empfänger</strong>
+          <button type="button" id="add-inquiry-recipient">+ Empfänger</button>
+        </div>
+        <div class="recipient-form-list" id="inquiry-recipient-list"></div>
+        <small class="form-help">
+          Die georeferenzierte Firmenliste kann später dieselben Empfängerfelder automatisch befüllen.
+        </small>
+
+        <div class="dialog-actions">
+          <span class="form-help">
+            Bis zur E-Mail-Anbindung wird der Versand nachvollziehbar vorgemerkt.
+          </span>
+          <button type="button" data-close="inquiry-dialog">Abbrechen</button>
+          <button type="submit" class="primary">Anfrage senden</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="inquiry-response-dialog">
+      <form id="inquiry-response-form">
+        <input type="hidden" name="inquiry_public_id">
+        <input type="hidden" name="recipient_public_id">
+        <div class="dialog-heading">
+          <div>
+            <span class="eyebrow">Rückmeldung</span>
+            <h2>Antwort erfassen</h2>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            data-close="inquiry-response-dialog"
+            aria-label="Schließen"
+          >×</button>
+        </div>
+        <p class="response-company" id="response-company"></p>
+        <div class="form-grid">
+          <label class="full-field">
+            <span>Antwort</span>
+            <select name="response_type">
+              <option value="offer">Angebot erhalten</option>
+              <option value="declined">Kein Angebot / abgesagt</option>
+            </select>
+          </label>
+          <label class="offer-response-field">
+            <span>Angebotssumme netto</span>
+            <input name="total_amount" inputmode="decimal" placeholder="0,00">
+          </label>
+          <label class="offer-response-field">
+            <span>Ausführung / Lieferung in Tagen</span>
+            <input name="delivery_days" type="number" min="0" max="100000">
+          </label>
+          <label class="offer-response-field">
+            <span>Angebot gültig bis</span>
+            <input name="valid_until" type="date">
+          </label>
+          <label class="full-field">
+            <span>Nachricht / Hinweise</span>
+            <textarea name="message" rows="4" maxlength="50000"></textarea>
+          </label>
+        </div>
+        <div class="integration-note">
+          <span class="llm-mark" aria-hidden="true">KI</span>
+          <span>
+            Nach dem Speichern erscheint „Analyse ausstehend“. Die automatische
+            Einordnung wird ergänzt, sobald das LLM angeschlossen ist.
+          </span>
+        </div>
+        <div class="dialog-actions">
+          <button type="button" data-close="inquiry-response-dialog">Abbrechen</button>
+          <button type="submit" class="primary">Antwort speichern</button>
+        </div>
+      </form>
+    </dialog>
+
     <script
       src="{{ url_for('static', filename='lv/js/workspace-v2.js') }}"
       defer
@@ -357,6 +567,14 @@
     ></script>
     <script
       src="{{ url_for('static', filename='lv/js/workspace-v5-enhancements.js') }}"
+      defer
+    ></script>
+    <script
+      src="{{ url_for('static', filename='lv/js/workspace-v6-procurement.js') }}"
+      defer
+    ></script>
+    <script
+      src="{{ url_for('static', filename='lv/js/workspace-v7-simplification.js') }}"
       defer
     ></script>
   </body>

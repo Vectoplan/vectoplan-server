@@ -55,11 +55,15 @@ def get_context():
                 "manual_items": "ready",
                 "gaeb_3_3": "foundation",
                 "measurements_and_billing": "ready",
+                "procurement_inquiries": "ready",
                 "attachments": "metadata_only",
                 "integrations": "standalone",
                 "library": "not_connected",
                 "document_analysis": "not_connected",
                 "nextcloud": "not_connected",
+                "company_directory": "not_connected",
+                "email_delivery": "not_connected",
+                "offer_llm_assessment": "not_connected",
             },
         }
     )

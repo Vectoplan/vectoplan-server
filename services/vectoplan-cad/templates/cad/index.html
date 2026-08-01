@@ -9,73 +9,17 @@
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
-    <header class="topbar">
-      <button type="button" class="mobile-panel-toggle navigator-toggle" data-action="toggle-navigator" aria-controls="left-panel" aria-expanded="false" aria-label="Projektbereich öffnen oder schließen">
-        <span aria-hidden="true">☰</span><span class="toggle-label">Projekt</span>
-      </button>
-
-      <div class="toolbar-group history-tools" aria-label="Verlauf">
-        <button type="button" data-action="undo" disabled title="Rückgängig (Strg+Z)" aria-label="Rückgängig">↶</button>
-        <button type="button" data-action="redo" disabled title="Wiederholen (Strg+Y)" aria-label="Wiederholen">↷</button>
-      </div>
-
-      <div class="toolbar-group tools" role="toolbar" aria-label="CAD-Werkzeuge">
-        <button type="button" data-tool="select" class="is-active" aria-pressed="true"><span class="tool-icon">↖</span><span>Auswahl</span></button>
-        <button type="button" data-tool="wall" aria-pressed="false"><span class="tool-icon">▰</span><span>Wand</span></button>
-        <button type="button" data-tool="line" aria-pressed="false"><span class="tool-icon">╱</span><span>Linie</span></button>
-        <button type="button" data-tool="dimension" aria-pressed="false"><span class="tool-icon">↔</span><span>Maß</span></button>
-        <button type="button" data-tool="section" aria-pressed="false"><span class="tool-icon">A</span><span>Schnitt</span></button>
-      </div>
-
-      <div class="toolbar-group exports" aria-label="Export">
-        <button type="button" data-export="pdf">PDF</button>
-        <button type="button" data-export="dxf">DXF</button>
-        <button type="button" data-export="dwg">DWG</button>
-      </div>
-
-      <button type="button" class="mobile-panel-toggle inspector-toggle" data-action="toggle-inspector" aria-controls="right-panel" aria-expanded="false" aria-label="Eigenschaften öffnen oder schließen">
-        <span aria-hidden="true">☷</span><span class="toggle-label">Details</span>
-      </button>
-    </header>
-
-    <aside id="left-panel" class="left-panel panel" aria-label="Projektstruktur">
-      <div class="panel-header">
-        <div>
-          <span class="eyebrow">Projekt</span>
-          <strong>Navigator</strong>
-        </div>
-        <div class="panel-header-actions">
-          <button type="button" data-action="load-test" class="icon-button" title="Testprojektion neu laden" aria-label="Testprojektion neu laden">↻</button>
-          <button type="button" data-action="close-panels" class="icon-button panel-close" aria-label="Navigator schließen">×</button>
-        </div>
-      </div>
-      <section>
-        <div class="section-heading">
-          <h2>Planblätter</h2>
-          <span id="sheet-count" class="count-badge">0</span>
-        </div>
-        <div id="sheet-tree" class="tree"></div>
-      </section>
-      <section>
-        <div class="section-heading">
-          <h2>Layer</h2>
-          <button type="button" data-action="show-all-layers" class="text-button">Alle anzeigen</button>
-        </div>
-        <div id="layer-list" class="layer-list"></div>
-      </section>
-      <section>
-        <h2>Planprofil</h2>
-        <select id="plan-profile" aria-label="Planprofil"></select>
-      </section>
-    </aside>
-
     <section class="workspace" aria-label="CAD-Arbeitsfläche Erdgeschoss">
-      <div class="workspace-toolbar" aria-label="Grundrisssteuerung">
-        <span class="floor-chip">EG</span>
-        <strong>Erdgeschoss</strong>
-        <span class="workspace-separator"></span>
-        <button type="button" data-action="zoom-fit">Einpassen</button>
-        <span id="draft-indicator" class="draft-indicator" hidden>Lokaler Entwurf</span>
+
+      <div class="workspace-actions">
+        <div class="toolbar-group history-tools" aria-label="Verlauf">
+          <button type="button" data-action="undo" disabled title="Rückgängig (Strg+Z)" aria-label="Rückgängig">↶</button>
+          <button type="button" data-action="redo" disabled title="Wiederholen (Strg+Y)" aria-label="Wiederholen">↷</button>
+        </div>
+
+        <button type="button" class="mobile-panel-toggle inspector-toggle" data-action="toggle-inspector" aria-controls="right-panel" aria-expanded="false" aria-label="Eigenschaften öffnen oder schließen">
+          <span aria-hidden="true">☷</span><span class="toggle-label">Details</span>
+        </button>
       </div>
       <div class="workspace-canvas" id="workspace-canvas">
         <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
