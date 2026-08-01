@@ -813,11 +813,11 @@ function renderItems() {
     const title = document.createElement("strong");
     title.textContent = state.selectedLvId
       ? "Dieses LV enthält noch keine Elemente."
-      : "Noch kein Leistungsverzeichnis vorhanden.";
+      : "Noch keine LV-Daten für dieses Projekt verfügbar.";
     const hint = document.createElement("span");
     hint.textContent = state.selectedLvId
       ? "Lege zuerst einen Titel an oder öffne das Kontextmenü mit Rechtsklick."
-      : "Lege ein LV an, um Titel und Positionen zu erfassen.";
+      : "Sobald das Projekt-LV bereitsteht, erscheint es automatisch hier.";
     empty.append(title, hint);
     row.append(empty);
     tableBody.append(row);
@@ -912,7 +912,7 @@ function renderLvSelection() {
   const current = selectedLv();
   selectedLvMeta.textContent = current
     ? `${current.name} · ${current.currency} · bearbeitbarer Entwurf`
-    : "Lege ein LV an, um zu beginnen.";
+    : "Noch keine LV-Daten für dieses Projekt verfügbar.";
 }
 
 async function loadItems() {

@@ -10,6 +10,7 @@ from routes.gaeb import gaeb_bp
 from routes.health import health_bp
 from routes.items import items_bp
 from routes.lvs import lvs_bp
+from routes.procurement import procurement_bp
 from routes.ui import ui_bp
 
 
@@ -20,6 +21,7 @@ BLUEPRINTS = (
     items_bp,
     billing_bp,
     gaeb_bp,
+    procurement_bp,
     ui_bp,
 )
 

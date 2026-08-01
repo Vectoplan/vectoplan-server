@@ -1,0 +1,124 @@
+@import url("./workspace-v7.css");
+
+/* Eighth editor iteration: portal-centered controls with rail-safe 50/50 panes. */
+
+:root {
+  --portal-workspace-rail-clearance: 64px;
+}
+
+.topbar {
+  padding-inline: 16px;
+}
+
+.modes {
+  justify-content: center;
+}
+
+main {
+  padding: 10px 16px 14px;
+}
+
+.toolbar {
+  justify-content: center;
+}
+
+.toolbar button.toolbar-icon-action,
+.toolbar-menu > summary.toolbar-icon-action {
+  position: relative;
+  display: inline-grid;
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  place-items: center;
+}
+
+.toolbar-icon-action svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.toolbar-menu > summary.toolbar-icon-action::after {
+  display: none;
+}
+
+.toolbar-action-tooltip {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  z-index: 10;
+  width: max-content;
+  max-width: 190px;
+  padding: 5px 7px;
+  border-radius: 4px;
+  color: #fff;
+  background: #253240;
+  box-shadow: 0 4px 12px rgb(23 32 42 / 16%);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -3px);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+  white-space: nowrap;
+}
+
+.toolbar-icon-action:hover > .toolbar-action-tooltip,
+.toolbar-icon-action:focus-visible > .toolbar-action-tooltip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.toolbar-menu[open] > .toolbar-icon-action {
+  border-color: #9fb3ca;
+  background: #f7f9fb;
+}
+
+.inquiry-launch.toolbar-icon-action {
+  color: #553aa9;
+}
+
+.lv-picker,
+#new-lv,
+.search,
+.toolbar-spacer {
+  display: none !important;
+}
+
+#lv-app:not([data-workspace-mode="lv"]) .toolbar {
+  display: none;
+}
+
+.editor-shell,
+.editor-shell.with-calculation,
+.procurement-view {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.drag-column {
+  width: calc(42px + var(--portal-workspace-rail-clearance));
+  min-width: calc(42px + var(--portal-workspace-rail-clearance));
+  padding-right: 5px;
+  text-align: right;
+}
+
+@media (max-width: 1250px) {
+  :root {
+    --portal-workspace-rail-clearance: 60px;
+  }
+}
+
+@media (max-height: 820px) {
+  main {
+    padding: 8px 16px 10px;
+  }
+}

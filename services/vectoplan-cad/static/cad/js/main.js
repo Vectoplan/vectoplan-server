@@ -91,18 +91,6 @@
     state.bootstrap = await fetchJson(`${routePrefix}/bootstrap`);
   }
 
-  async function loadProfiles() {
-    const data = await fetchJson(`${routePrefix}/plan-profiles`);
-    const select = document.getElementById("plan-profile");
-    select.replaceChildren();
-    data.profiles.forEach((profile) => {
-      const option = document.createElement("option");
-      option.value = profile.id;
-      option.textContent = profile.label;
-      select.append(option);
-    });
-  }
-
   async function loadTestInput() {
     const input = await fetchJson(`${routePrefix}/test-input`);
     state.input = input;
@@ -117,7 +105,6 @@
     state.knownLayers.clear();
     cancelDrawing(false);
     await refreshProjection();
-    syncProfileSelection();
     showMessage("Erdgeschoss geladen. Änderungen bleiben lokal in diesem Browser-Tab.");
   }
 
@@ -147,81 +134,11 @@
     });
   }
 
-  function syncProfileSelection() {
-    const profileId = state.input?.document?.plan_profile?.id;
-    const select = document.getElementById("plan-profile");
-    if (profileId && [...select.options].some((option) => option.value === profileId)) select.value = profileId;
-  }
-
   function renderAll() {
-    renderTree();
-    renderLayerControls();
     renderPlan();
     renderInspector();
     renderCommandLog();
     syncHistoryButtons();
-  }
-
-  function renderTree() {
-    const sheetTree = document.getElementById("sheet-tree");
-    sheetTree.replaceChildren();
-    const sheets = state.scene?.sheets || [];
-    document.getElementById("sheet-count").textContent = String(sheets.length);
-    sheets.forEach((sheet) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.classList.toggle("is-active", sheet.sheet_ref === state.activeSheetRef);
-      const title = document.createElement("span");
-      title.textContent = `${sheet.sheet_number || sheet.sheet_ref} · Erdgeschoss`;
-      const meta = document.createElement("small");
-      meta.textContent = "Unbegrenzter Modellbereich";
-      button.append(title, meta);
-      button.addEventListener("click", () => activateSheet(sheet.sheet_ref));
-      sheetTree.append(button);
-    });
-  }
-
-  function activateSheet(sheetRef) {
-    state.activeSheetRef = sheetRef;
-    state.activeViewportRef = groundFloorViewport()?.viewport_ref || null;
-    state.selectedPrimitive = null;
-    state.camera = null;
-    state.baseCameraWidth = null;
-    cancelDrawing(false);
-    fitGroundFloor(false);
-    renderAll();
-  }
-
-  function renderLayerControls() {
-    const container = document.getElementById("layer-list");
-    container.replaceChildren();
-    const sheet = currentSceneSheet();
-    const viewport = currentViewport();
-    if (!sheet || !viewport) return;
-    const usedLayers = new Set((viewport.primitives || []).map((primitive) => primitive.layer_ref));
-    (sheet.layers || []).filter((layer) => usedLayers.has(layer.layer_ref)).forEach((layer) => {
-      const row = document.createElement("label");
-      row.className = "layer-row";
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = state.visibleLayers.has(layer.layer_ref);
-      checkbox.dataset.layer = layer.layer_ref;
-      checkbox.addEventListener("change", () => {
-        if (checkbox.checked) state.visibleLayers.add(layer.layer_ref);
-        else state.visibleLayers.delete(layer.layer_ref);
-        renderPlan();
-      });
-      const swatch = document.createElement("span");
-      swatch.className = "layer-swatch";
-      swatch.dataset.layer = layer.layer_ref;
-      const label = document.createElement("span");
-      label.textContent = layer.label;
-      const count = document.createElement("span");
-      count.className = "layer-count";
-      count.textContent = String((viewport.primitives || []).filter((primitive) => primitive.layer_ref === layer.layer_ref).length);
-      row.append(checkbox, swatch, label, count);
-      container.append(row);
-    });
   }
 
   function viewportCamera(viewport) {
@@ -277,7 +194,6 @@
     }
     (viewport.primitives || []).forEach((primitive) => svg.append(renderPrimitive(primitive)));
     renderDraft();
-    document.getElementById("draft-indicator").hidden = state.commands.length === 0;
   }
   function renderPrimitive(primitive) {
     const geometry = primitive.geometry;
@@ -709,65 +625,31 @@
     document.querySelector('[data-action="redo"]').disabled = state.redoCommands.length === 0;
   }
 
-  async function requestExport(format) {
-    if (!state.input) return;
-    const documentData = state.input.document;
-    const payload = {
-      contract_version: "cad-export/0.1",
-      format,
-      document_ref: documentData.document_ref,
-      sheet_ref: state.activeSheetRef,
-      source_revision_ref: documentData.source_revision_ref,
-      layout_profile: "sheet_as_displayed",
-      layer_refs: [...state.visibleLayers],
-      options: {include_local_drafts: false},
-    };
-    const response = await fetchJson(`${routePrefix}/exports`, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(payload),
-    });
-    showMessage(response.message);
-  }
-
   function isEditableTarget(target) {
     return target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement;
   }
 
   function syncPanelButtons() {
-    const navigatorOpen = app.classList.contains("is-left-open");
     const inspectorOpen = app.classList.contains("is-right-open");
     const compactLayout = window.matchMedia("(max-width: 1020px)").matches;
-    const leftPanel = document.getElementById("left-panel");
     const rightPanel = document.getElementById("right-panel");
     const backdrop = document.querySelector(".panel-backdrop");
-    document.querySelector('[data-action="toggle-navigator"]').setAttribute("aria-expanded", String(navigatorOpen));
     document.querySelector('[data-action="toggle-inspector"]').setAttribute("aria-expanded", String(inspectorOpen));
-    leftPanel.inert = compactLayout && !navigatorOpen;
     rightPanel.inert = compactLayout && !inspectorOpen;
-    if (compactLayout) {
-      leftPanel.setAttribute("aria-hidden", String(!navigatorOpen));
-      rightPanel.setAttribute("aria-hidden", String(!inspectorOpen));
-    } else {
-      leftPanel.removeAttribute("aria-hidden");
-      rightPanel.removeAttribute("aria-hidden");
-    }
-    backdrop.tabIndex = navigatorOpen || inspectorOpen ? 0 : -1;
+    if (compactLayout) rightPanel.setAttribute("aria-hidden", String(!inspectorOpen));
+    else rightPanel.removeAttribute("aria-hidden");
+    backdrop.tabIndex = inspectorOpen ? 0 : -1;
   }
 
   function closePanels() {
-    app.classList.remove("is-left-open", "is-right-open");
+    app.classList.remove("is-right-open");
     syncPanelButtons();
   }
 
-  function togglePanel(side) {
-    const targetClass = side === "left" ? "is-left-open" : "is-right-open";
-    const willOpen = !app.classList.contains(targetClass);
-    app.classList.remove("is-left-open", "is-right-open");
-    if (willOpen) app.classList.add(targetClass);
+  function toggleInspector() {
+    app.classList.toggle("is-right-open");
     syncPanelButtons();
   }
-
   function handleResize() {
     if (window.innerWidth > 1020) closePanels();
     if (!state.camera) return;
@@ -792,24 +674,11 @@
       event.preventDefault();
       cancelDrawing();
     });
-    document.querySelector('[data-action="toggle-navigator"]').addEventListener("click", () => togglePanel("left"));
-    document.querySelector('[data-action="toggle-inspector"]').addEventListener("click", () => togglePanel("right"));
+    document.querySelector('[data-action="toggle-inspector"]').addEventListener("click", toggleInspector);
     document.querySelectorAll('[data-action="close-panels"]').forEach((button) => button.addEventListener("click", closePanels));
     syncPanelButtons();
-    document.querySelector('[data-action="load-test"]').addEventListener("click", () => loadTestInput().catch(handleError));
     document.querySelector('[data-action="undo"]').addEventListener("click", () => undo().catch(handleError));
     document.querySelector('[data-action="redo"]').addEventListener("click", () => redo().catch(handleError));
-    document.querySelector('[data-action="zoom-fit"]').addEventListener("click", () => fitGroundFloor());
-    document.querySelectorAll("[data-tool]").forEach((button) => button.addEventListener("click", () => selectTool(button.dataset.tool)));
-    document.querySelectorAll("[data-export]").forEach((button) => button.addEventListener("click", () => requestExport(button.dataset.export).catch(handleError)));
-    document.querySelector('[data-action="show-all-layers"]').addEventListener("click", () => {
-      state.knownLayers.forEach((layer) => state.visibleLayers.add(layer));
-      renderLayerControls();
-      renderPlan();
-    });
-    document.getElementById("plan-profile").addEventListener("change", (event) => {
-      showMessage(`Planprofil ${event.target.selectedOptions[0]?.textContent || event.target.value} gewählt. Eine Neuprojektion erfordert später vectoplan-core.`);
-    });
     window.addEventListener("resize", handleResize);
     window.addEventListener("keydown", (event) => {
       if (event.code === "Space" && !isEditableTarget(event.target)) {
@@ -854,7 +723,7 @@
   async function init() {
     bindEvents();
     selectTool("select");
-    await Promise.all([loadBootstrap(), loadProfiles()]);
+    await loadBootstrap();
     await loadTestInput();
   }
 
