@@ -746,6 +746,7 @@ x-geoserver-orchestrator-volumes: &geoserver_orchestrator_volumes
   - ./services/vectoplan-geoserver-orchestrator/upload:/app/upload
   - geoserver-orchestrator-tmp-data:/app/tmp
   - geoserver-orchestrator-logs:/app/logs
+  - geoserver-raster-data:/app/raster-data
 
 x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_environment
   <<: *vectoplan-python-environment
@@ -761,6 +762,9 @@ x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_envi
   LOG_LEVEL: "${GEOSERVER_ORCHESTRATOR_LOG_LEVEL:-DEBUG}"
   OPENLAYER_ORCHESTRATOR_TOKEN: "${OPENLAYER_ORCHESTRATOR_TOKEN:-change-me-openlayer-internal}"
   INGESTION_WORKER_CONCURRENCY: "${INGESTION_WORKER_CONCURRENCY:-3}"
+  PRODUCTION_PUBLICATION_SERVICE_TOKEN: "${VECTOPLAN_PRODUCTION_PUBLICATION_SERVICE_TOKEN:?Set VECTOPLAN_PRODUCTION_PUBLICATION_SERVICE_TOKEN in .env}"
+  SCRAPER_DASHBOARD_INTERNAL_URL: "${SCRAPER_DASHBOARD_INTERNAL_URL:-http://dashboard:8080}"
+  PRODUCTION_PUBLICATION_ALLOWED_SOURCE_HOSTS: "${PRODUCTION_PUBLICATION_ALLOWED_SOURCE_HOSTS:-dashboard,host.docker.internal,127.0.0.1,localhost}"
 
   GEOSERVER_ORCH_DB_DRIVER: "${GEOSERVER_ORCH_DB_DRIVER:-postgresql+psycopg2}"
   GEOSERVER_ORCH_DB_HOST: "${GEOSERVER_ORCH_DB_HOST:-vectoplan-geo-db}"
@@ -1639,6 +1643,7 @@ services:
       HEALTHCHECK_URL: "http://127.0.0.1:8080/geoserver/rest/about/version.json"
 
     volumes:
+      - geoserver-raster-data:/opt/geoserver_data/data/vectoplan-raster
       - geoserver-data:/opt/geoserver_data
 
     ports:
@@ -1746,6 +1751,10 @@ services:
         aliases:
           - geoserver-orchestrator
           - server-geoserver-orchestrator
+      vectoplan-scraper:
+        aliases:
+          - geoserver-orchestrator
+          - server-geoserver-orchestrator
 
   openlayer:
     <<: *vectoplan-service-defaults
@@ -1818,9 +1827,20 @@ volumes:
   vectoplan-app-postgres-data:
   vectoplan-app-media:
   vectoplan-geo-postgres-data:
+    name: vectoplan-geo-db-data
+    external: true
   geoserver-data:
+    name: vectoplan-geoserver-data
+    external: true
   geoserver-orchestrator-tmp-data:
+    name: vectoplan-geoserver-orchestrator-tmp-data
+    external: true
   geoserver-orchestrator-logs:
+    name: vectoplan-geoserver-orchestrator-logs
+    external: true
+  geoserver-raster-data:
+    name: vectoplan-geoserver-raster-data
+
 
 networks:
   vectoplan-net:
@@ -1828,4 +1848,8 @@ networks:
 
   vectoplan-shared:
     name: "${VECTOPLAN_SHARED_NETWORK:-vectoplan-shared-net}"
+    external: true
+
+  vectoplan-scraper:
+    name: "vectoplan-scraper-network"
     external: true
