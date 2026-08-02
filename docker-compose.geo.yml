@@ -29,7 +29,7 @@
 #
 # Ports:
 # - OpenLayer:    http://localhost:8090
-# - Orchestrator: http://localhost:8010
+# - Orchestrator: http://localhost:5110
 # - GeoServer:    http://localhost:8082/geoserver
 # - PostGIS:      localhost:5434
 # ------------------------------------------------------------------------------
@@ -107,8 +107,10 @@ x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_envi
 
   SERVICE_PUBLIC_SCHEME: "${SERVICE_PUBLIC_SCHEME:-http}"
   SERVICE_PUBLIC_HOST: "${SERVICE_PUBLIC_HOST:-localhost}"
-  SERVICE_PUBLIC_PORT: "${SERVICE_PUBLIC_PORT:-8010}"
-  SERVICE_PUBLIC_BASE_URL: "${SERVICE_PUBLIC_BASE_URL:-http://localhost:8010}"
+  SERVICE_PUBLIC_PORT: "${SERVICE_PUBLIC_PORT:-5110}"
+  SERVICE_PUBLIC_BASE_URL: "${SERVICE_PUBLIC_BASE_URL:-http://localhost:5110}"
+  PRODUCTION_PUBLICATION_SERVICE_TOKEN: "${VECTOPLAN_PRODUCTION_PUBLICATION_SERVICE_TOKEN:?Set VECTOPLAN_PRODUCTION_PUBLICATION_SERVICE_TOKEN in .env}"
+  PRODUCTION_PUBLICATION_ALLOWED_SOURCE_HOSTS: "${PRODUCTION_PUBLICATION_ALLOWED_SOURCE_HOSTS:-dashboard,host.docker.internal,127.0.0.1,localhost}"
 
   GEOSERVER_CONTEXT_PATH: "${GEOSERVER_CONTEXT_PATH:-/geoserver}"
 
@@ -460,7 +462,7 @@ services:
     volumes: *geoserver_orchestrator_volumes
 
     ports:
-      - "${GEOSERVER_ORCHESTRATOR_PUBLIC_PORT:-8010}:8010"
+      - "127.0.0.1:${GEOSERVER_ORCHESTRATOR_PUBLIC_PORT:-5110}:8010"
 
     healthcheck:
       test:
@@ -477,6 +479,7 @@ services:
 
     networks:
       - backend
+      - scraper
 
 
   openlayer:
@@ -553,6 +556,10 @@ volumes:
 # ------------------------------------------------------------------------------
 
 networks:
+
+  scraper:
+    external: true
+    name: vectoplan-scraper-network
   backend:
     name: vectoplan-geo-net
     driver: bridge
