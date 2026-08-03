@@ -1,0 +1,49 @@
+{
+  "_environment_system-vh3Zd42u.js": {
+    "file": "assets/chunks/environment_system-vh3Zd42u.js",
+    "name": "environment_system",
+    "imports": [
+      "_three-XZE9Igie.js"
+    ]
+  },
+  "_three-XZE9Igie.js": {
+    "file": "assets/chunks/three-XZE9Igie.js",
+    "name": "three"
+  },
+  "assets/models/vectoplan-human.glb": {
+    "file": "assets/vectoplan-human-CNkOLTHg.glb",
+    "src": "assets/models/vectoplan-human.glb"
+  },
+  "generator_preview/generator_preview_runtime.ts": {
+    "file": "assets/chunks/generator_preview_runtime-BLavT04o.js",
+    "name": "generator_preview_runtime",
+    "src": "generator_preview/generator_preview_runtime.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_three-XZE9Igie.js",
+      "_environment_system-vh3Zd42u.js"
+    ],
+    "css": [
+      "assets/generator_preview_runtime-s7_S7I01.css"
+    ]
+  },
+  "main.ts": {
+    "file": "assets/main-BtfxVqLC.js",
+    "name": "main",
+    "src": "main.ts",
+    "isEntry": true,
+    "imports": [
+      "_three-XZE9Igie.js",
+      "_environment_system-vh3Zd42u.js"
+    ],
+    "dynamicImports": [
+      "generator_preview/generator_preview_runtime.ts"
+    ],
+    "css": [
+      "assets/main-C89SEw92.css"
+    ],
+    "assets": [
+      "assets/vectoplan-human-CNkOLTHg.glb"
+    ]
+  }
+}

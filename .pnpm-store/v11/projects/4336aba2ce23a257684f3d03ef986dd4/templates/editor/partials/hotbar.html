@@ -1,0 +1,233 @@
+<!-- services/vectoplan-editor/templates/editor/partials/hotbar.html -->
+{#
+  Hotbar-/Inventar-Partial für den VECTOPLAN Editor.
+
+  Zweck:
+  - rendert nur das Hotbar-Grundgerüst
+  - rendert keine serverseitige Block-Wahrheit
+  - alle Slots starten leer
+  - TypeScript füllt die Slots später aus Chunk-Service-/Placeable-Block-Daten
+  - bleibt kompatibel mit der neuen Runtime unter services/vectoplan-editor/src/frontend
+
+  Aktuelle Architekturentscheidung:
+  - operative Block-/Chunk-Wahrheit liegt in vectoplan-chunk
+  - Browser nutzt nur den Editor-Proxy unter /editor/api/chunk
+  - primäre Hotbar-Quelle in Phase 1:
+      /editor/api/chunk/placeable-blocks
+  - projektgescopte Blockliste bleibt zusätzlich verfügbar:
+      /editor/api/chunk/projects/<projectId>/worlds/<worldId>/blocks
+
+  Wichtig:
+  - keine Business-Logik
+  - keine Fetch-Aufrufe
+  - keine Commands
+  - keine lokale BlockWorld-Wahrheit
+  - keine sichtbaren serverseitigen Item-Texte
+  - nur stabile DOM-Anker und data-* Attribute
+#}
+
+{% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+{% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+{% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+{% set inventory_value = runtime_value.inventory|default({}, true) %}
+{% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+{% set route_hints_value = chunk_value.routeHints|default(chunk_route_hints|default({}, true), true) %}
+{% set fallback_value = bootstrap_value.fallback|default({}, true) %}
+
+{% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+{% set chunk_mode_value = chunk_value.mode|default(chunk_mode|default('editor-proxy', true), true) %}
+{% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+{% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+{% set chunk_browser_base_url_value = chunk_value.browserBaseUrl|default(chunk_browser_base_url|default(chunk_api_base_url_value, true), true) %}
+{% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+{% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+{% set chunk_registry_id_value = chunk_value.registryId|default('debug-blocks', true) %}
+{% set chunk_registry_version_value = chunk_value.registryVersion|default('1', true) %}
+
+{% set chunk_status_url_value = route_hints_value.status|default(chunk_api_base_url_value ~ '/_status', true) %}
+{% set chunk_test_connection_url_value = route_hints_value.testConnection|default(chunk_api_base_url_value ~ '/_test/connection', true) %}
+{% set chunk_placeable_blocks_url_value = route_hints_value.placeableBlocks|default(chunk_api_base_url_value ~ '/placeable-blocks', true) %}
+{% set chunk_blocks_url_value = route_hints_value.blocks|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/blocks', true) %}
+{% set chunk_commands_url_value = route_hints_value.commands|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/commands', true) %}
+
+{% set inventory_enabled_value = inventory_value.enabled|default(inventory_enabled|default(true, true), true) %}
+{% set inventory_source_value = inventory_value.source|default(inventory_source|default('chunk-service', true), true) %}
+{% set inventory_icon_mode_value = inventory_value.iconMode|default(inventory_icon_mode|default('icon-only', true), true) %}
+{% set inventory_hotbar_size_value = inventory_value.hotbarSize|default(inventory_hotbar_size|default(9, true), true)|int %}
+{% set inventory_selected_slot_value = inventory_value.selectedSlot|default(inventory_value.defaultSelectedSlot|default(inventory_default_selected_slot|default(0, true), true), true)|int %}
+{% set inventory_default_block_type_id_value = inventory_value.defaultBlockTypeId|default('debug_grass', true) %}
+{% set inventory_scroll_wrap_value = inventory_value.scrollWrap|default(inventory_scroll_wrap|default(true, true), true) %}
+{% set inventory_allow_place_action_value = inventory_value.allowPlaceAction|default(inventory_allow_place_action|default(true, true), true) %}
+{% set inventory_allow_break_action_value = inventory_value.allowBreakAction|default(inventory_allow_break_action|default(true, true), true) %}
+{% set inventory_items_value = inventory_value.items|default(inventory_value.defaultPalette|default(inventory_default_palette|default([], true), true), true) %}
+{% set inventory_placeable_blocks_value = inventory_value.placeableBlocks|default(placeable_blocks|default([], true), true) %}
+
+{% set feature_hotbar_enabled_value = feature_flags_value.hotbarEnabled|default(true, true) %}
+{% set feature_chunk_service_enabled_value = feature_flags_value.chunkServiceEnabled|default(chunk_enabled_value, true) %}
+{% set feature_local_world_fallback_value = feature_flags_value.localWorldFallbackEnabled|default(false, true) %}
+{% set feature_legacy_frontend_value = feature_flags_value.legacyFrontendEnabled|default(false, true) %}
+
+{% set fallback_active_value = fallback_value.active|default(fallback_active|default(false, true), true) %}
+{% set fallback_reason_value = fallback_value.reason|default(fallback_reason|default('', true), true) %}
+
+{% if inventory_hotbar_size_value < 1 %}
+  {% set inventory_hotbar_size_value = 9 %}
+{% endif %}
+{% if inventory_hotbar_size_value > 64 %}
+  {% set inventory_hotbar_size_value = 64 %}
+{% endif %}
+
+{% if inventory_selected_slot_value < 0 %}
+  {% set inventory_selected_slot_value = 0 %}
+{% endif %}
+{% if inventory_selected_slot_value >= inventory_hotbar_size_value %}
+  {% set inventory_selected_slot_value = 0 %}
+{% endif %}
+
+{% set hotbar_visible_value = inventory_enabled_value and feature_hotbar_enabled_value %}
+
+<footer
+  class="vectoplan-editor-hotbar-shell editor-hotbar editor-hotbar--block-builder{% if not hotbar_visible_value %} editor-hotbar--disabled{% endif %}{% if fallback_active_value %} editor-hotbar--fallback{% endif %}"
+  data-editor-hotbar="true"
+  data-hotbar-root="true"
+  data-inventory-root="true"
+  data-enabled="{{ 'true' if inventory_enabled_value else 'false' }}"
+  data-visible="{{ 'true' if hotbar_visible_value else 'false' }}"
+  data-hotbar-enabled="{{ 'true' if feature_hotbar_enabled_value else 'false' }}"
+  data-inventory-source="{{ inventory_source_value }}"
+  data-inventory-api-url="{{ chunk_placeable_blocks_url_value }}"
+  data-inventory-placeable-blocks-url="{{ chunk_placeable_blocks_url_value }}"
+  data-inventory-blocks-url="{{ chunk_blocks_url_value }}"
+  data-inventory-commands-url="{{ chunk_commands_url_value }}"
+  data-inventory-load-state="idle"
+  data-inventory-icon-mode="{{ inventory_icon_mode_value }}"
+  data-inventory-hotbar-size="{{ inventory_hotbar_size_value }}"
+  data-inventory-selected-slot="{{ inventory_selected_slot_value }}"
+  data-inventory-default-selected-slot="{{ inventory_selected_slot_value }}"
+  data-inventory-default-block-type-id="{{ inventory_default_block_type_id_value }}"
+  data-inventory-scroll-wrap="{{ 'true' if inventory_scroll_wrap_value else 'false' }}"
+  data-inventory-allow-place-action="{{ 'true' if inventory_allow_place_action_value else 'false' }}"
+  data-inventory-allow-break-action="{{ 'true' if inventory_allow_break_action_value else 'false' }}"
+  data-inventory-default-palette-json="{{ inventory_items_value | tojson | forceescape }}"
+  data-inventory-placeable-blocks-json="{{ inventory_placeable_blocks_value | tojson | forceescape }}"
+  data-hotbar-size="{{ inventory_hotbar_size_value }}"
+  data-selected-slot="{{ inventory_selected_slot_value }}"
+  data-default-selected-slot="{{ inventory_selected_slot_value }}"
+  data-default-block-type-id="{{ inventory_default_block_type_id_value }}"
+  data-scroll-wrap="{{ 'true' if inventory_scroll_wrap_value else 'false' }}"
+  data-allow-place-action="{{ 'true' if inventory_allow_place_action_value else 'false' }}"
+  data-allow-break-action="{{ 'true' if inventory_allow_break_action_value else 'false' }}"
+  data-chunk-service-enabled="{{ 'true' if feature_chunk_service_enabled_value else 'false' }}"
+  data-chunk-enabled="{{ 'true' if chunk_enabled_value else 'false' }}"
+  data-chunk-mode="{{ chunk_mode_value }}"
+  data-chunk-source-kind="{{ chunk_source_kind_value }}"
+  data-chunk-api-base-url="{{ chunk_api_base_url_value }}"
+  data-chunk-browser-base-url="{{ chunk_browser_base_url_value }}"
+  data-chunk-project-id="{{ chunk_project_id_value }}"
+  data-chunk-world-id="{{ chunk_world_id_value }}"
+  data-chunk-registry-id="{{ chunk_registry_id_value }}"
+  data-chunk-registry-version="{{ chunk_registry_version_value }}"
+  data-chunk-status-url="{{ chunk_status_url_value }}"
+  data-chunk-test-connection-url="{{ chunk_test_connection_url_value }}"
+  data-chunk-placeable-blocks-url="{{ chunk_placeable_blocks_url_value }}"
+  data-chunk-blocks-url="{{ chunk_blocks_url_value }}"
+  data-chunk-commands-url="{{ chunk_commands_url_value }}"
+  data-chunk-route-hints-json="{{ route_hints_value | tojson | forceescape }}"
+  data-local-world-fallback-enabled="{{ 'true' if feature_local_world_fallback_value else 'false' }}"
+  data-legacy-frontend-enabled="{{ 'true' if feature_legacy_frontend_value else 'false' }}"
+  data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
+  data-fallback-reason="{{ fallback_reason_value }}"
+  aria-label="Block-Hotbar"
+>
+  <div class="editor-hotbar__backplate" aria-hidden="true"></div>
+
+  <div
+    class="vectoplan-editor-hotbar-slots editor-hotbar__list"
+    data-editor-hotbar-slots="true"
+    data-hotbar-list="true"
+    data-inventory-slots="true"
+    data-hotbar-size="{{ inventory_hotbar_size_value }}"
+    data-selected-slot="{{ inventory_selected_slot_value }}"
+    role="toolbar"
+    aria-label="Blockauswahl"
+  >
+    {% for slot_index in range(inventory_hotbar_size_value) %}
+      {% set is_selected_slot = slot_index == inventory_selected_slot_value %}
+
+      <button
+        type="button"
+        class="editor-hotbar-slot editor-hotbar-slot--empty{% if is_selected_slot %} editor-hotbar-slot--selected is-selected{% endif %}"
+        data-editor-hotbar-slot="true"
+        data-hotbar-slot="true"
+        data-inventory-slot="true"
+        data-hotbar-slot-index="{{ slot_index }}"
+        data-slot-index="{{ slot_index }}"
+        data-slot-key="hotbar-{{ slot_index }}"
+        data-slot-state="empty"
+        data-item-id=""
+        data-item-kind="empty"
+        data-block-type-id=""
+        data-block-id=""
+        data-icon-key=""
+        data-icon-kind=""
+        data-icon-url=""
+        data-slot-enabled="true"
+        data-placeable="false"
+        data-breakable="false"
+        data-selected="{{ 'true' if is_selected_slot else 'false' }}"
+        data-empty="true"
+        aria-label="Inventar-Slot {{ slot_index + 1 }} leer"
+        aria-pressed="{{ 'true' if is_selected_slot else 'false' }}"
+        tabindex="{% if is_selected_slot %}0{% else %}-1{% endif %}"
+        role="button"
+      >
+        <span class="editor-hotbar-slot__frame" aria-hidden="true">
+          <span class="editor-hotbar-slot__shine" aria-hidden="true"></span>
+          <span class="editor-hotbar-slot__inner" aria-hidden="true">
+            <span
+              class="editor-hotbar-slot__icon-shell"
+              data-hotbar-icon-shell="true"
+              aria-hidden="true"
+            >
+              <span
+                class="editor-hotbar-slot__icon"
+                data-hotbar-icon="true"
+                data-icon-key=""
+                data-icon-kind=""
+                aria-hidden="true"
+              ></span>
+            </span>
+          </span>
+        </span>
+
+        <span
+          class="editor-hotbar-slot__index"
+          data-hotbar-slot-index-label="true"
+          aria-hidden="true"
+        >
+          {{ slot_index + 1 }}
+        </span>
+
+        <span
+          class="editor-hotbar-slot__sr-label visually-hidden"
+          data-hotbar-item-label="true"
+        >
+          Inventar-Slot {{ slot_index + 1 }} leer
+        </span>
+      </button>
+    {% endfor %}
+  </div>
+
+  <div
+    class="editor-hotbar__status visually-hidden"
+    data-hotbar-status="true"
+    data-inventory-status="true"
+    aria-live="polite"
+  >
+    {% if hotbar_visible_value %}
+      Inventar wartet auf Chunk-Service-Daten.
+    {% else %}
+      Inventar deaktiviert.
+    {% endif %}
+  </div>
+</footer>

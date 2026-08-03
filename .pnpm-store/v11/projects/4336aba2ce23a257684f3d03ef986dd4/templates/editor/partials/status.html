@@ -1,0 +1,253 @@
+<!-- services/vectoplan-editor/templates/editor/partials/status.html -->
+{#
+  Status-Partial für den VECTOPLAN Editor.
+
+  Zweck:
+  - rendert eine kleine, robuste Statusleiste für die Editor-Shell
+  - zeigt Runtime-, Chunk-Service-, Projekt-/World- und Asset-Status
+  - liefert stabile DOM-Anker für TypeScript-Statusupdates
+  - enthält keine Runtime-Logik und keine Fetch-Aufrufe
+
+  Aktuelle Architekturentscheidung:
+  - der Editor rendert und interagiert
+  - vectoplan-chunk besitzt die operative Chunk-Wahrheit
+  - Browser-Zugriff erfolgt nur über /editor/api/chunk
+  - dieses Partial zeigt nur Zustand an, es erzeugt keine Wahrheit
+
+  Erwartete Einbindung:
+    {% include "editor/partials/status.html" %}
+
+  Wichtige DOM-Anker:
+  - data-editor-status-bar
+  - data-editor-source-status
+  - data-editor-source-status-label
+  - data-editor-project-label
+  - data-editor-world-status
+  - data-editor-runtime-status
+  - data-editor-build-label
+#}
+
+{% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+{% set service_value = bootstrap_value.service|default({}, true) %}
+{% set build_value = bootstrap_value.build|default({}, true) %}
+{% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+{% set ui_value = runtime_value.ui|default({}, true) %}
+{% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+{% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+{% set fallback_value = bootstrap_value.fallback|default({}, true) %}
+{% set editor_assets_value = editor_assets|default({}, true) %}
+
+{% set brand_name_value = bootstrap_value.brandName|default(ui_value.brandName|default(brand_name|default('VECTOPLAN Editor', true), true), true) %}
+{% set app_name_value = service_value.name|default(app_name|default('vectoplan-editor', true), true) %}
+{% set app_display_name_value = service_value.displayName|default(app_display_name|default('VECTOPLAN Editor', true), true) %}
+{% set service_version_value = service_value.version|default(service_version|default('0.1.0', true), true) %}
+{% set build_mode_value = build_value.mode|default(build_mode|default('development', true), true) %}
+{% set build_version_value = build_value.version|default(build_version|default('dev', true), true) %}
+
+{% set runtime_mode_value = runtime_value.mode|default(runtime_mode|default('remote_chunk_service', true), true) %}
+{% set world_mode_value = runtime_value.worldMode|default(world_mode|default('chunk_service', true), true) %}
+{% set source_mode_value = runtime_value.sourceMode|default(source_mode|default('chunk-service', true), true) %}
+
+{% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+{% set chunk_mode_value = chunk_value.mode|default(chunk_mode|default('editor-proxy', true), true) %}
+{% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+{% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+{% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+{% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+{% set chunk_registry_id_value = chunk_value.registryId|default('debug-blocks', true) %}
+{% set chunk_registry_version_value = chunk_value.registryVersion|default('1', true) %}
+
+{% set feature_chunk_service_enabled_value = feature_flags_value.chunkServiceEnabled|default(chunk_enabled_value, true) %}
+{% set feature_local_world_fallback_value = feature_flags_value.localWorldFallbackEnabled|default(false, true) %}
+{% set feature_legacy_frontend_value = feature_flags_value.legacyFrontendEnabled|default(false, true) %}
+{% set feature_debug_overlay_value = feature_flags_value.debugOverlayEnabled|default(true, true) %}
+{% set feature_hotbar_value = feature_flags_value.hotbarEnabled|default(true, true) %}
+
+{% set fallback_active_value = fallback_value.active|default(fallback_active|default(false, true), true) %}
+{% set fallback_reason_value = fallback_value.reason|default(fallback_reason|default('', true), true) %}
+
+{% set asset_source_value = editor_assets_value.source|default('unknown', true) %}
+{% set asset_ok_value = editor_assets_value.ok|default(false, true) %}
+{% set asset_fallback_used_value = editor_assets_value.fallback_used|default(editor_assets_value.fallbackUsed|default(false, true), true) %}
+{% set asset_js_count_value = editor_assets_value.js|default([], true)|length %}
+{% set asset_css_count_value = editor_assets_value.css|default([], true)|length %}
+
+{% set source_status_value = 'bootstrapping' %}
+{% if not feature_chunk_service_enabled_value %}
+  {% set source_status_value = 'disabled' %}
+{% endif %}
+{% if fallback_active_value %}
+  {% set source_status_value = 'fallback' %}
+{% endif %}
+
+<header
+  class="vectoplan-editor-statusbar vectoplan-editor-topbar"
+  data-editor-status-bar="true"
+  data-editor-topbar="true"
+  data-app-name="{{ app_name_value }}"
+  data-app-display-name="{{ app_display_name_value }}"
+  data-service-version="{{ service_version_value }}"
+  data-build-mode="{{ build_mode_value }}"
+  data-build-version="{{ build_version_value }}"
+  data-runtime-mode="{{ runtime_mode_value }}"
+  data-world-mode="{{ world_mode_value }}"
+  data-source-mode="{{ source_mode_value }}"
+  data-chunk-enabled="{{ 'true' if chunk_enabled_value else 'false' }}"
+  data-chunk-service-enabled="{{ 'true' if feature_chunk_service_enabled_value else 'false' }}"
+  data-chunk-mode="{{ chunk_mode_value }}"
+  data-chunk-source-kind="{{ chunk_source_kind_value }}"
+  data-chunk-api-base-url="{{ chunk_api_base_url_value }}"
+  data-chunk-project-id="{{ chunk_project_id_value }}"
+  data-chunk-world-id="{{ chunk_world_id_value }}"
+  data-chunk-registry-id="{{ chunk_registry_id_value }}"
+  data-chunk-registry-version="{{ chunk_registry_version_value }}"
+  data-assets-source="{{ asset_source_value }}"
+  data-assets-ok="{{ 'true' if asset_ok_value else 'false' }}"
+  data-assets-fallback-used="{{ 'true' if asset_fallback_used_value else 'false' }}"
+  data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
+  data-fallback-reason="{{ fallback_reason_value }}"
+  role="banner"
+>
+  <div
+    class="vectoplan-editor-brand"
+    data-editor-brand="true"
+  >
+    <strong
+      class="vectoplan-editor-brand__label"
+      data-editor-brand-label="true"
+    >
+      {{ brand_name_value }}
+    </strong>
+
+    <span
+      class="vectoplan-editor-brand__service"
+      data-editor-service-label="true"
+    >
+      {{ service_version_value }}
+    </span>
+
+    <span
+      class="vectoplan-editor-brand__build"
+      data-editor-build-label="true"
+    >
+      {{ build_mode_value }} · {{ build_version_value }}
+    </span>
+  </div>
+
+  <div
+    class="vectoplan-editor-statusbar__group vectoplan-editor-statusbar__group--source"
+    data-editor-source-status="{{ source_status_value }}"
+    data-editor-world-status="{{ world_mode_value }}"
+    data-editor-runtime-status="bootstrapping"
+  >
+    <span
+      class="vectoplan-editor-statusbar__dot"
+      data-editor-source-status-dot="true"
+      aria-hidden="true"
+    ></span>
+
+    <span
+      class="vectoplan-editor-statusbar__label"
+      data-editor-source-status-label="true"
+    >
+      {% if fallback_active_value %}
+        Fallback aktiv
+      {% elif feature_chunk_service_enabled_value %}
+        Chunk-Service wird vorbereitet
+      {% else %}
+        Chunk-Service deaktiviert
+      {% endif %}
+    </span>
+  </div>
+
+  <div
+    class="vectoplan-editor-statusbar__group vectoplan-editor-statusbar__group--project"
+    data-editor-project-status="active"
+  >
+    <span
+      class="vectoplan-editor-statusbar__label"
+      data-editor-project-label="true"
+    >
+      {{ chunk_project_id_value }} / {{ chunk_world_id_value }}
+    </span>
+
+    <span
+      class="vectoplan-editor-statusbar__muted"
+      data-editor-registry-label="true"
+    >
+      {{ chunk_registry_id_value }}:{{ chunk_registry_version_value }}
+    </span>
+  </div>
+
+  <div
+    class="vectoplan-editor-statusbar__group vectoplan-editor-statusbar__group--runtime"
+    data-editor-runtime-meta="true"
+  >
+    <span
+      class="vectoplan-editor-statusbar__muted"
+      data-editor-runtime-mode-label="true"
+    >
+      {{ runtime_mode_value }}
+    </span>
+
+    <span
+      class="vectoplan-editor-statusbar__muted"
+      data-editor-source-mode-label="true"
+    >
+      {{ source_mode_value }}
+    </span>
+  </div>
+
+  {% if feature_debug_overlay_value %}
+    <details
+      class="vectoplan-editor-statusbar__details"
+      data-editor-status-details="true"
+    >
+      <summary data-editor-status-details-summary="true">Status</summary>
+
+      <dl class="vectoplan-editor-statusbar__details-list">
+        <div>
+          <dt>Chunk API</dt>
+          <dd data-editor-status-chunk-api>{{ chunk_api_base_url_value }}</dd>
+        </div>
+
+        <div>
+          <dt>Chunk Source</dt>
+          <dd>{{ chunk_source_kind_value }}</dd>
+        </div>
+
+        <div>
+          <dt>Assets</dt>
+          <dd>
+            {{ asset_source_value }}
+            · JS {{ asset_js_count_value }}
+            · CSS {{ asset_css_count_value }}
+            {% if asset_fallback_used_value %}· Fallback{% endif %}
+          </dd>
+        </div>
+
+        <div>
+          <dt>Local Fallback</dt>
+          <dd>{{ 'an' if feature_local_world_fallback_value else 'aus' }}</dd>
+        </div>
+
+        <div>
+          <dt>Legacy Frontend</dt>
+          <dd>{{ 'an' if feature_legacy_frontend_value else 'aus' }}</dd>
+        </div>
+
+        <div>
+          <dt>Hotbar</dt>
+          <dd>{{ 'an' if feature_hotbar_value else 'aus' }}</dd>
+        </div>
+
+        {% if fallback_active_value %}
+          <div>
+            <dt>Fallback-Grund</dt>
+            <dd>{{ fallback_reason_value or 'unbekannt' }}</dd>
+          </div>
+        {% endif %}
+      </dl>
+    </details>
+  {% endif %}
+</header>

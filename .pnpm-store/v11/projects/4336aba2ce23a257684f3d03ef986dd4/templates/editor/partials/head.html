@@ -1,0 +1,110 @@
+<!-- services/vectoplan-editor/templates/editor/partials/head.html -->
+{#
+  Head-Partial für den VECTOPLAN Editor.
+
+  Zweck:
+  - liefert nur Meta-, Title- und Browser-Hinweise
+  - erzeugt keinen eigenen <head>-Tag
+  - lädt keine Vite-JS-Module direkt
+  - lädt CSS nur als optionalen Fallback, wenn keine editor_assets.css-Liste existiert
+  - überlässt produktive Vite-Assets dem Haupttemplate über editor_assets
+  - bleibt kompatibel mit Bootstrap-Werten aus src.bootstrap.context / payload.py
+
+  Wichtig:
+  - Das eigentliche Modul-Bundle wird in index.html nach bootstrap_scripts.html geladen.
+  - Dadurch existieren Window-Globals vor dem Start von main.ts.
+#}
+
+{% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+{% set service_value = bootstrap_value.service|default({}, true) %}
+{% set build_value = bootstrap_value.build|default({}, true) %}
+{% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+{% set ui_value = runtime_value.ui|default({}, true) %}
+{% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+{% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+{% set fallback_value = bootstrap_value.fallback|default({}, true) %}
+{% set editor_assets_value = editor_assets|default({}, true) %}
+
+{% set page_title_value = bootstrap_value.pageTitle|default(ui_value.pageTitle|default(page_title|default('VECTOPLAN Editor', true), true), true) %}
+{% set brand_name_value = bootstrap_value.brandName|default(ui_value.brandName|default(brand_name|default('VECTOPLAN Editor', true), true), true) %}
+{% set app_name_value = service_value.name|default(app_name|default('vectoplan-editor', true), true) %}
+{% set app_display_name_value = service_value.displayName|default(app_display_name|default('VECTOPLAN Editor', true), true) %}
+{% set service_version_value = service_value.version|default(service_version|default('0.1.0', true), true) %}
+{% set build_mode_value = build_value.mode|default(build_mode|default('development', true), true) %}
+{% set build_version_value = build_value.version|default(build_version|default('dev', true), true) %}
+
+{% set runtime_mode_value = runtime_value.mode|default(runtime_mode|default('remote_chunk_service', true), true) %}
+{% set world_mode_value = runtime_value.worldMode|default(world_mode|default('chunk_service', true), true) %}
+{% set source_mode_value = runtime_value.sourceMode|default(source_mode|default('chunk-service', true), true) %}
+
+{% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+{% set chunk_mode_value = chunk_value.mode|default(chunk_mode|default('editor-proxy', true), true) %}
+{% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+{% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+{% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+{% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+{% set chunk_registry_id_value = chunk_value.registryId|default('debug-blocks', true) %}
+{% set chunk_registry_version_value = chunk_value.registryVersion|default('1', true) %}
+
+{% set feature_chunk_service_enabled_value = feature_flags_value.chunkServiceEnabled|default(chunk_enabled_value, true) %}
+{% set feature_local_world_fallback_value = feature_flags_value.localWorldFallbackEnabled|default(false, true) %}
+{% set feature_legacy_frontend_value = feature_flags_value.legacyFrontendEnabled|default(false, true) %}
+{% set fallback_active_value = fallback_value.active|default(fallback_active|default(false, true), true) %}
+{% set fallback_reason_value = fallback_value.reason|default(fallback_reason|default('', true), true) %}
+
+{% set asset_css_list = editor_assets_value.css|default([], true) %}
+{% set asset_preload_list = editor_assets_value.preload|default([], true) %}
+{% set asset_source_value = editor_assets_value.source|default('unknown', true) %}
+{% set asset_ok_value = editor_assets_value.ok|default(false, true) %}
+{% set fallback_css_url_value = editor_css_url|default('', true) %}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta
+  name="description"
+  content="VECTOPLAN Editor – browserbasierter 3D-Builder-Viewport für räumliches Authoring."
+/>
+<meta name="robots" content="noindex, nofollow" />
+<meta name="color-scheme" content="dark" />
+<meta name="application-name" content="{{ app_name_value }}" />
+<meta name="theme-color" content="#05070a" />
+
+<meta name="vectoplan-editor-app-name" content="{{ app_name_value }}" />
+<meta name="vectoplan-editor-display-name" content="{{ app_display_name_value }}" />
+<meta name="vectoplan-editor-service-version" content="{{ service_version_value }}" />
+<meta name="vectoplan-editor-build-mode" content="{{ build_mode_value }}" />
+<meta name="vectoplan-editor-build-version" content="{{ build_version_value }}" />
+<meta name="vectoplan-editor-runtime-mode" content="{{ runtime_mode_value }}" />
+<meta name="vectoplan-editor-world-mode" content="{{ world_mode_value }}" />
+<meta name="vectoplan-editor-source-mode" content="{{ source_mode_value }}" />
+<meta name="vectoplan-editor-brand" content="{{ brand_name_value }}" />
+
+<meta name="vectoplan-editor-chunk-enabled" content="{{ 'true' if feature_chunk_service_enabled_value else 'false' }}" />
+<meta name="vectoplan-editor-chunk-mode" content="{{ chunk_mode_value }}" />
+<meta name="vectoplan-editor-chunk-source-kind" content="{{ chunk_source_kind_value }}" />
+<meta name="vectoplan-editor-chunk-api-base-url" content="{{ chunk_api_base_url_value }}" />
+<meta name="vectoplan-editor-chunk-project-id" content="{{ chunk_project_id_value }}" />
+<meta name="vectoplan-editor-chunk-world-id" content="{{ chunk_world_id_value }}" />
+<meta name="vectoplan-editor-chunk-registry-id" content="{{ chunk_registry_id_value }}" />
+<meta name="vectoplan-editor-chunk-registry-version" content="{{ chunk_registry_version_value }}" />
+
+<meta name="vectoplan-editor-local-world-fallback-enabled" content="{{ 'true' if feature_local_world_fallback_value else 'false' }}" />
+<meta name="vectoplan-editor-legacy-frontend-enabled" content="{{ 'true' if feature_legacy_frontend_value else 'false' }}" />
+<meta name="vectoplan-editor-fallback-active" content="{{ 'true' if fallback_active_value else 'false' }}" />
+<meta name="vectoplan-editor-fallback-reason" content="{{ fallback_reason_value }}" />
+<meta name="vectoplan-editor-assets-source" content="{{ asset_source_value }}" />
+<meta name="vectoplan-editor-assets-ok" content="{{ 'true' if asset_ok_value else 'false' }}" />
+
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<title>{{ page_title_value }}</title>
+
+{% for preload_href in asset_preload_list %}
+  <link rel="modulepreload" href="{{ preload_href }}" />
+{% endfor %}
+
+{% if not asset_css_list and fallback_css_url_value %}
+  <link rel="stylesheet" href="{{ fallback_css_url_value }}" data-editor-fallback-css="true" />
+{% endif %}

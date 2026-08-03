@@ -1,0 +1,28 @@
+{
+  "name": "vectoplan-editor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontend build and runtime source setup for the VECTOPLAN editor.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0 <21 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite --config src/frontend/vite.config.ts --host 0.0.0.0 --port 5173",
+    "build": "vite build --config src/frontend/vite.config.ts",
+    "build:watch": "vite build --watch --config src/frontend/vite.config.ts",
+    "preview": "vite preview --config src/frontend/vite.config.ts --host 0.0.0.0 --port 4173",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "check": "npm run typecheck && npm run build"
+  },
+  "dependencies": {
+    "three": "0.183.2"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "esbuild": "0.28.0",
+    "typescript": "6.0.2",
+    "vite": "8.0.8"
+  }
+}

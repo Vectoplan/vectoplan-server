@@ -1,0 +1,169 @@
+# services/vectoplan-editor/.dockerignore
+
+# -----------------------------------------------------------------------------
+# VECTOPLAN Editor - Docker Build Context Ignore Rules
+# -----------------------------------------------------------------------------
+# Ziel dieser Datei:
+# - den Docker-Build-Kontext klein, sauber und reproduzierbar halten
+# - lokale Entwicklungsartefakte, Caches und IDE-Dateien nicht in den Build geben
+# - Secrets / lokale .env-Dateien nicht versehentlich in Images kopieren
+# - spätere Python- und Frontend-Builds stabil unterstützen
+#
+# Wichtig:
+# - Diese Datei ignoriert bewusst NICHT:
+#   - package.json
+#   - tsconfig.json
+#   - vite.config.ts
+#   - frontend/src/
+#   - templates/
+#   - static/editor/css/
+#   - static/editor/js/
+#   - Dockerfile
+#   - entrypoint.sh
+#
+# Grund:
+# Diese Dateien sind aktuell oder in der nächsten Ausbaustufe Teil des Builds.
+# -----------------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------------
+# Git / Repository-Metadaten
+# -----------------------------------------------------------------------------
+.git
+.gitignore
+.gitattributes
+
+
+# -----------------------------------------------------------------------------
+# Python / virtuelle Umgebungen / Bytecode / Tooling-Caches
+# -----------------------------------------------------------------------------
+.venv
+.venv/
+venv
+venv/
+env
+env/
+ENV
+ENV/
+.python-version
+.Python
+
+__pycache__
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+
+.pytest_cache
+.pytest_cache/
+.mypy_cache
+.mypy_cache/
+.ruff_cache
+.ruff_cache/
+.pyre
+.pyre/
+.hypothesis
+.hypothesis/
+.tox
+.tox/
+.nox
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov
+htmlcov/
+
+
+# -----------------------------------------------------------------------------
+# Node / Frontend / Bundler / Package Manager Caches
+# -----------------------------------------------------------------------------
+node_modules
+node_modules/
+.npm
+.npm/
+.pnpm-store
+.pnpm-store/
+.yarn
+.yarn/
+.yarn-cache
+.yarn-cache/
+.parcel-cache
+.parcel-cache/
+.vite
+.vite/
+.eslintcache
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# -----------------------------------------------------------------------------
+# Build- und Artefaktverzeichnisse, die nicht als Quellinput dienen sollen
+# -----------------------------------------------------------------------------
+dist
+dist/
+build
+build/
+tmp
+tmp/
+temp
+temp/
+.cache
+.cache/
+
+
+# -----------------------------------------------------------------------------
+# Betriebssystem-/Dateisystem-Artefakte
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# -----------------------------------------------------------------------------
+# IDE / Editor / lokale Projektdateien
+# -----------------------------------------------------------------------------
+.idea
+.idea/
+.vscode
+.vscode/
+*.iml
+
+
+# -----------------------------------------------------------------------------
+# Lokale Logs / Dumps / Debug-Artefakte
+# -----------------------------------------------------------------------------
+*.log
+logs
+logs/
+*.pid
+*.seed
+*.out
+*.err
+*.stackdump
+
+
+# -----------------------------------------------------------------------------
+# Lokale Umgebungsdateien / Secrets
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+
+# -----------------------------------------------------------------------------
+# Docker / Compose Override-Dateien für rein lokale Experimente
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+
+
+# -----------------------------------------------------------------------------
+# Sonstige lokale Test- und Medienartefakte
+# -----------------------------------------------------------------------------
+*.swp
+*.swo
+*~

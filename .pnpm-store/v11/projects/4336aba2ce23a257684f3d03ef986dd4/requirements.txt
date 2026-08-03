@@ -1,0 +1,43 @@
+# services/vectoplan-editor/requirements.txt
+# -----------------------------------------------------------------------------
+# VECTOPLAN Editor - Python-Abhängigkeiten
+#
+# Ziel dieser ersten Minimalstufe:
+# - Flask-App starten
+# - genau eine Route /editor ausliefern
+# - Template + Static Files rendern
+# - lokal per WSGI-Server laufen
+# - ersten Integrationstest ausführen
+#
+# Grundsatz:
+# - bewusst kleine Dependency-Oberfläche
+# - robuste Versionsgrenzen
+# - keine unnötigen Pakete in Stufe 1
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# Runtime / Web Application
+# -----------------------------------------------------------------------------
+
+# Flask ist das Web-Framework für App-Factory, Routing, Templates und Static Files.
+Flask>=3.1,<4.0
+
+# WebSocket support for multiplayer presence and world invalidation.
+flask-sock>=0.7,<1.0
+simple-websocket>=1.1,<2.0
+
+# Gunicorn ist der WSGI-Server für lokalen/staging/produktiven Betrieb.
+# Breite Obergrenze bleibt unter einem potenziell inkompatiblen nächsten Major.
+gunicorn>=22.0,<26.0
+
+# Lädt optionale Umgebungsvariablen aus einer .env-Datei.
+# Hilfreich, sobald wir config.py und lokale Startkonfiguration erweitern.
+python-dotenv>=1.0,<2.0
+
+
+# -----------------------------------------------------------------------------
+# Testing
+# -----------------------------------------------------------------------------
+
+# pytest für den ersten Integrationstest der Route /editor.
+pytest>=9.0,<10.0

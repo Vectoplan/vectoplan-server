@@ -1,0 +1,222 @@
+<!-- services/vectoplan-editor/templates/editor/partials/viewport.html -->
+{#
+  Viewport-Partial für den VECTOPLAN Editor.
+
+  Zweck:
+  - stellt nur die zentrale 3D-Viewport-Shell bereit
+  - enthält Canvas-Host, Crosshair, Loading Overlay, Error Overlay und Debug Overlay
+  - bleibt kompatibel mit der neuen Runtime unter services/vectoplan-editor/src/frontend
+  - liefert stabile DOM-Anker für dom_refs.ts, scene_runtime.ts und main.ts
+
+  Wichtig:
+  - keine Business-Logik
+  - keine Chunk-Fachlogik
+  - keine Inventar-Wahrheit
+  - keine Hotbar
+  - keine lokalen BlockWorld-Mutationen
+  - keine Fetch-Aufrufe
+  - keine Commands
+  - Browser-Zugriff auf Chunks erfolgt später ausschließlich über /editor/api/chunk
+#}
+
+{% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+{% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+{% set ui_value = runtime_value.ui|default({}, true) %}
+{% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+{% set chunks_value = runtime_value.chunks|default({}, true) %}
+{% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+{% set block_world_value = runtime_value.blockWorld|default({}, true) %}
+{% set fallback_value = bootstrap_value.fallback|default({}, true) %}
+
+{% set viewport_placeholder_value = bootstrap_value.viewportPlaceholder|default(ui_value.viewportPlaceholder|default(viewport_placeholder|default('3D-Viewport wird aufgebaut.', true), true), true) %}
+{% set pointer_lock_title_value = ui_value.pointerLockTitle|default(pointer_lock_title|default('First-Person-Modus', true), true) %}
+{% set pointer_lock_message_value = ui_value.pointerLockMessage|default(pointer_lock_message|default('Klicke in den Viewport, um die Maus zu sperren und dich im Raum zu bewegen.', true), true) %}
+{% set pointer_lock_hint_value = ui_value.pointerLockHint|default(pointer_lock_hint|default('W A S D bewegen · Maus schauen · Linksklick setzen · Rechtsklick entfernen · ESC löst den Mausfang.', true), true) %}
+
+{% set runtime_mode_value = runtime_value.mode|default(runtime_mode|default('remote_chunk_service', true), true) %}
+{% set world_mode_value = runtime_value.worldMode|default(world_mode|default('chunk_service', true), true) %}
+{% set source_mode_value = runtime_value.sourceMode|default(source_mode|default('chunk-service', true), true) %}
+
+{% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+{% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+{% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+{% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+{% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+
+{% set chunks_enabled_value = chunks_value.enabled|default(chunks_enabled|default(true, true), true) %}
+{% set chunks_chunk_size_value = chunks_value.chunkSize|default(chunks_chunk_size|default(16, true), true) %}
+{% set chunks_view_distance_value = chunks_value.viewDistance|default(chunks_view_distance|default(7, true), true) %}
+{% set chunks_debug_draw_chunk_bounds_value = chunks_value.debugDrawChunkBounds|default(chunks_debug_draw_chunk_bounds|default(false, true), true) %}
+
+{% set feature_pointer_lock_value = feature_flags_value.pointerLockEnabled|default(true, true) %}
+{% set feature_first_person_value = feature_flags_value.firstPersonEnabled|default(true, true) %}
+{% set feature_debug_overlay_value = feature_flags_value.debugOverlayEnabled|default(true, true) %}
+{% set feature_crosshair_value = feature_flags_value.crosshairEnabled|default(true, true) %}
+{% set feature_loading_overlay_value = feature_flags_value.loadingOverlayEnabled|default(true, true) %}
+{% set feature_error_panel_value = feature_flags_value.errorPanelEnabled|default(true, true) %}
+
+{% set fallback_active_value = fallback_value.active|default(fallback_active|default(false, true), true) %}
+{% set fallback_reason_value = fallback_value.reason|default(fallback_reason|default('', true), true) %}
+
+<section
+  id="editor-viewport"
+  class="vectoplan-editor-viewport editor-viewport editor-viewport--remote-chunk-service{% if fallback_active_value %} editor-viewport--fallback{% endif %}"
+  data-editor-viewport="true"
+  data-editor-builder-viewport="true"
+  data-runtime-state="bootstrapping"
+  data-runtime-mode="{{ runtime_mode_value }}"
+  data-world-mode="{{ world_mode_value }}"
+  data-source-mode="{{ source_mode_value }}"
+  data-world-source-kind="{{ source_mode_value }}"
+  data-chunk-enabled="{{ 'true' if chunk_enabled_value else 'false' }}"
+  data-chunk-source-kind="{{ chunk_source_kind_value }}"
+  data-chunk-api-base-url="{{ chunk_api_base_url_value }}"
+  data-chunk-project-id="{{ chunk_project_id_value }}"
+  data-chunk-world-id="{{ chunk_world_id_value }}"
+  data-chunks-enabled="{{ 'true' if chunks_enabled_value else 'false' }}"
+  data-chunks-chunk-size="{{ chunks_chunk_size_value }}"
+  data-chunks-view-distance="{{ chunks_view_distance_value }}"
+  data-chunks-debug-draw-chunk-bounds="{{ 'true' if chunks_debug_draw_chunk_bounds_value else 'false' }}"
+  data-first-person-enabled="{{ 'true' if feature_first_person_value else 'false' }}"
+  data-pointer-lock-enabled="{{ 'true' if feature_pointer_lock_value else 'false' }}"
+  data-crosshair-enabled="{{ 'true' if feature_crosshair_value else 'false' }}"
+  data-debug-overlay-enabled="{{ 'true' if feature_debug_overlay_value else 'false' }}"
+  data-loading-overlay-enabled="{{ 'true' if feature_loading_overlay_value else 'false' }}"
+  data-error-panel-enabled="{{ 'true' if feature_error_panel_value else 'false' }}"
+  data-block-world-enabled="{{ 'true' if block_world_value.enabled|default(false, true) else 'false' }}"
+  data-block-world-legacy="{{ 'true' if block_world_value.legacy|default(true, true) else 'false' }}"
+  data-block-world-truth-owner="{{ block_world_value.truthOwner|default('vectoplan-chunk', true) }}"
+  data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
+  data-fallback-reason="{{ fallback_reason_value }}"
+  aria-label="VECTOPLAN 3D Editor Viewport"
+>
+  <div
+    class="vectoplan-editor-viewport-background editor-world-layer editor-world-layer--background"
+    data-editor-viewport-background="true"
+    aria-hidden="true"
+  >
+    <div class="editor-world-sky-glow" aria-hidden="true"></div>
+    <div class="editor-world-vignette" aria-hidden="true"></div>
+    <div class="editor-grid-hint" aria-hidden="true"></div>
+  </div>
+
+  <div
+    class="vectoplan-editor-canvas-host editor-canvas-host"
+    data-editor-canvas-host="true"
+    data-canvas-host="true"
+    tabindex="0"
+    role="presentation"
+    aria-label="3D Viewport Canvas Host"
+  ></div>
+
+  <div
+    class="vectoplan-editor-viewport-placeholder editor-viewport-placeholder"
+    data-editor-viewport-placeholder="true"
+    data-viewport-placeholder="true"
+    data-placeholder-state="visible"
+    role="status"
+    aria-live="polite"
+  >
+    <div
+      class="editor-viewport-placeholder__content"
+      data-viewport-placeholder-content="true"
+    >
+      {{ viewport_placeholder_value }}
+    </div>
+  </div>
+
+  {% if feature_crosshair_value %}
+    <div
+      class="vectoplan-editor-crosshair editor-crosshair editor-crosshair--builder"
+      data-editor-crosshair="true"
+      data-crosshair="true"
+      data-crosshair-state="idle"
+      aria-hidden="true"
+    >
+      <span class="editor-crosshair__line editor-crosshair__line--horizontal" aria-hidden="true"></span>
+      <span class="editor-crosshair__line editor-crosshair__line--vertical" aria-hidden="true"></span>
+      <span class="editor-crosshair__dot" aria-hidden="true"></span>
+    </div>
+  {% endif %}
+
+  {% if feature_loading_overlay_value %}
+    <div
+      class="vectoplan-editor-loading-overlay editor-loading-overlay"
+      data-editor-loading-overlay="true"
+      data-loading-overlay="true"
+      data-loading-state="visible"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="vectoplan-editor-loading-card editor-loading-card">
+        <strong data-editor-loading-title="true">Editor wird geladen</strong>
+        <span data-editor-loading-message="true">
+          Runtime, Chunk-Service und Viewport werden initialisiert.
+        </span>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if feature_error_panel_value %}
+    <div
+      class="vectoplan-editor-error-overlay editor-error-overlay"
+      data-editor-error-overlay="true"
+      data-editor-error-panel="true"
+      data-error-overlay="true"
+      role="alert"
+      aria-live="assertive"
+      hidden
+    >
+      <div class="vectoplan-editor-error-card editor-error-card">
+        <strong data-editor-error-title="true">Editor konnte nicht gestartet werden</strong>
+        <p data-editor-error-message="true">
+          Ein Fehler ist beim Start der Editor-Runtime aufgetreten.
+        </p>
+        <pre data-editor-error-details="true" hidden></pre>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if feature_pointer_lock_value %}
+    <div
+      class="vectoplan-editor-pointer-lock-overlay editor-pointer-lock-overlay"
+      data-editor-pointer-lock-overlay="true"
+      data-pointer-lock-overlay="true"
+      data-pointer-lock-state="idle"
+    >
+      <h2 class="editor-overlay__title">{{ pointer_lock_title_value }}</h2>
+      <p class="editor-overlay__text">{{ pointer_lock_message_value }}</p>
+      <p class="editor-overlay__text">{{ pointer_lock_hint_value }}</p>
+    </div>
+  {% endif %}
+
+  {% if feature_debug_overlay_value %}
+    <aside
+      class="vectoplan-editor-debug-overlay editor-debug-overlay"
+      data-editor-debug-overlay="true"
+      data-runtime-meta-overlay="true"
+      hidden
+    >
+      <h2 class="editor-overlay__title">Runtime</h2>
+      <p class="editor-overlay__text">Mode: {{ runtime_mode_value }}</p>
+      <p class="editor-overlay__text">World: {{ world_mode_value }}</p>
+      <p class="editor-overlay__text">Source: {{ source_mode_value }}</p>
+      <p class="editor-overlay__text">Chunk API: {{ chunk_api_base_url_value }}</p>
+      <p class="editor-overlay__text">Project: {{ chunk_project_id_value }}</p>
+      <p class="editor-overlay__text">World ID: {{ chunk_world_id_value }}</p>
+      <p class="editor-overlay__text">Chunk Size: {{ chunks_chunk_size_value }}</p>
+      <p class="editor-overlay__text">View Distance: {{ chunks_view_distance_value }}</p>
+    </aside>
+  {% endif %}
+
+  {% if fallback_active_value %}
+    <div
+      class="vectoplan-editor-fallback-note editor-fallback-note"
+      data-editor-fallback-note="true"
+      role="status"
+      aria-live="polite"
+    >
+      Fallback aktiv{% if fallback_reason_value %}: {{ fallback_reason_value }}{% endif %}
+    </div>
+  {% endif %}
+</section>
