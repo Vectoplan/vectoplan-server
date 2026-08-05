@@ -1,0 +1,1090 @@
+<!-- services/vectoplan-editor/templates/editor/partials/bootstrap_scripts.html -->
+{#
+  Bootstrap-Script-Partial für den VECTOPLAN Editor.
+
+  Zweck:
+  - eingebettetes Bootstrap-JSON bereitstellen
+  - globale Window-Werte für die TypeScript-Runtime setzen
+  - Root-Dataset defensiv mit Bootstrap-Daten synchronisieren
+  - Chunk-Service-Konfiguration für /editor/api/chunk exportieren
+  - Library-Service-/Inventory-Konfiguration für /editor/api/inventory exportieren
+  - Hotbar-/Inventory-Grundwerte aus der Library-Inventory-Route exportieren
+  - Shell-Zustand vor dem Start von main.ts auf "bootstrapping" setzen
+
+  Wichtig:
+  - dieses Partial startet keine 3D-Runtime
+  - dieses Partial lädt keine Chunks
+  - dieses Partial lädt kein Inventory aktiv vor
+  - dieses Partial sendet keine ChunkCommands
+  - dieses Partial lädt kein Vite-/TypeScript-Bundle
+  - das Bundle wird in index.html nach diesem Partial geladen
+  - Browser spricht für Chunks nur über /editor/api/chunk
+  - Browser spricht für Inventory nur über /editor/api/inventory
+  - Browser spricht nie direkt mit http://vectoplan-chunk:5000
+  - Browser spricht nie direkt mit http://vectoplan-library:5000
+  - /editor/api/chunk/placeable-blocks ist nur noch Debug-/Legacy-Fallback
+  - fachliche Inventory-Wahrheit ist /editor/api/inventory
+#}
+
+{% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+{% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+{% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+{% set library_value = bootstrap_value.library|default(runtime_value.library|default(library|default(library_config|default({}, true), true), true), true) %}
+{% set inventory_value = bootstrap_value.inventory|default(runtime_value.inventory|default(inventory|default(inventory_config|default({}, true), true), true), true) %}
+{% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+{% set chunk_route_hints_value = chunk_value.routeHints|default(chunk_route_hints|default({}, true), true) %}
+{% set library_route_hints_value = library_value.routeHints|default(library_route_hints|default({}, true), true) %}
+{% set root_dataset_values_value = root_dataset_values|default({}, true) %}
+
+{% set editor_bootstrap_json_value = editor_bootstrap_json|default(editor_bootstrap_payload_json|default(bootstrap_payload_json|default(bootstrap_value|tojson, true), true), true) %}
+
+<script id="vectoplan-editor-bootstrap" type="application/json">{{ editor_bootstrap_json_value | safe }}</script>
+
+<script>
+  (function () {
+    "use strict";
+
+    var DEFAULT_CHUNK_API_BASE_URL = "/editor/api/chunk";
+    var DEFAULT_LIBRARY_BROWSER_BASE_URL = "/editor/api/library";
+    var DEFAULT_INVENTORY_API_URL = "/editor/api/inventory";
+    var DEFAULT_PROJECT_ID = "dev-project";
+    var DEFAULT_WORLD_ID = "world_spawn";
+    var DEFAULT_HOTBAR_SIZE = 9;
+    var DEFAULT_SELECTED_SLOT = 0;
+
+    function getWindow() {
+      try {
+        return window;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function getDocument() {
+      try {
+        return document;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function safeString(value, fallback) {
+      if (typeof value === "string") {
+        var trimmed = value.trim();
+        return trimmed || fallback;
+      }
+
+      if (value === null || value === undefined) {
+        return fallback;
+      }
+
+      try {
+        var converted = String(value).trim();
+        return converted || fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function safeBoolean(value, fallback) {
+      if (typeof value === "boolean") {
+        return value;
+      }
+
+      if (typeof value === "number") {
+        return Boolean(value);
+      }
+
+      if (typeof value === "string") {
+        var normalized = value.trim().toLowerCase();
+
+        if (["1", "true", "t", "yes", "y", "on", "enabled"].indexOf(normalized) >= 0) {
+          return true;
+        }
+
+        if (["0", "false", "f", "no", "n", "off", "disabled"].indexOf(normalized) >= 0) {
+          return false;
+        }
+      }
+
+      return fallback;
+    }
+
+    function safeInteger(value, fallback, minimum, maximum) {
+      var parsed = fallback;
+
+      try {
+        if (typeof value === "number" && isFinite(value)) {
+          parsed = Math.floor(value);
+        } else if (typeof value === "string" && value.trim()) {
+          parsed = Math.floor(Number(value.trim()));
+        } else if (value !== null && value !== undefined) {
+          parsed = Math.floor(Number(value));
+        }
+      } catch (error) {
+        parsed = fallback;
+      }
+
+      if (!isFinite(parsed)) {
+        parsed = fallback;
+      }
+
+      if (typeof minimum === "number" && parsed < minimum) {
+        parsed = minimum;
+      }
+
+      if (typeof maximum === "number" && parsed > maximum) {
+        parsed = maximum;
+      }
+
+      return parsed;
+    }
+
+    function safeNumber(value, fallback, minimum, maximum) {
+      var parsed = fallback;
+
+      try {
+        if (typeof value === "number" && isFinite(value)) {
+          parsed = value;
+        } else if (typeof value === "string" && value.trim()) {
+          parsed = Number(value.trim());
+        } else if (value !== null && value !== undefined) {
+          parsed = Number(value);
+        }
+      } catch (error) {
+        parsed = fallback;
+      }
+
+      if (!isFinite(parsed)) {
+        parsed = fallback;
+      }
+
+      if (typeof minimum === "number" && parsed < minimum) {
+        parsed = minimum;
+      }
+
+      if (typeof maximum === "number" && parsed > maximum) {
+        parsed = maximum;
+      }
+
+      return parsed;
+    }
+
+    function safeRecord(value) {
+      if (!value || typeof value !== "object" || Array.isArray(value)) {
+        return {};
+      }
+
+      return value;
+    }
+
+    function safeArray(value) {
+      return Array.isArray(value) ? value : [];
+    }
+
+    function safeConsole(method) {
+      var win = getWindow();
+      var consoleRef = null;
+      var args = [];
+      var index = 1;
+
+      try {
+        consoleRef = win && win.console ? win.console : null;
+      } catch (error) {
+        consoleRef = null;
+      }
+
+      if (!consoleRef) {
+        return;
+      }
+
+      for (; index < arguments.length; index += 1) {
+        args.push(arguments[index]);
+      }
+
+      try {
+        if (typeof consoleRef[method] === "function") {
+          consoleRef[method].apply(consoleRef, args);
+        } else if (typeof consoleRef.log === "function") {
+          consoleRef.log.apply(consoleRef, args);
+        }
+      } catch (error) {
+        /* bewusst still */
+      }
+    }
+
+    function parseJsonText(value, fallback) {
+      if (typeof value !== "string" || !value.trim()) {
+        return fallback;
+      }
+
+      try {
+        return JSON.parse(value);
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function parseBootstrapData() {
+      var doc = getDocument();
+
+      if (!doc) {
+        return {};
+      }
+
+      try {
+        var bootstrapElement = doc.getElementById("vectoplan-editor-bootstrap");
+        if (!bootstrapElement || !bootstrapElement.textContent) {
+          return {};
+        }
+
+        return safeRecord(JSON.parse(bootstrapElement.textContent));
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: Bootstrap-JSON konnte nicht geparst werden.", error);
+        return {};
+      }
+    }
+
+    function getRootElement(doc) {
+      if (!doc) {
+        return null;
+      }
+
+      try {
+        return (
+          doc.getElementById("vectoplan-editor-root") ||
+          doc.querySelector("[data-vectoplan-editor-root]") ||
+          doc.querySelector("[data-editor-root]") ||
+          doc.querySelector("[data-editor-app]") ||
+          doc.getElementById("editor-app")
+        );
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function setRuntimeStateClass(rootElement, runtimeState) {
+      if (!rootElement || !rootElement.classList) {
+        return;
+      }
+
+      try {
+        rootElement.classList.remove(
+          "editor-runtime-state--idle",
+          "editor-runtime-state--bootstrapping",
+          "editor-runtime-state--running",
+          "editor-runtime-state--error",
+          "editor-runtime-state--stopped"
+        );
+
+        if (runtimeState) {
+          rootElement.classList.add("editor-runtime-state--" + runtimeState);
+        }
+      } catch (error) {
+        /* bewusst still */
+      }
+    }
+
+    function mergeRecords(base, override) {
+      var result = {};
+      var key;
+
+      base = safeRecord(base);
+      override = safeRecord(override);
+
+      for (key in base) {
+        if (Object.prototype.hasOwnProperty.call(base, key)) {
+          result[key] = base[key];
+        }
+      }
+
+      for (key in override) {
+        if (Object.prototype.hasOwnProperty.call(override, key)) {
+          if (
+            result[key] &&
+            typeof result[key] === "object" &&
+            !Array.isArray(result[key]) &&
+            override[key] &&
+            typeof override[key] === "object" &&
+            !Array.isArray(override[key])
+          ) {
+            result[key] = mergeRecords(result[key], override[key]);
+          } else {
+            result[key] = override[key];
+          }
+        }
+      }
+
+      return result;
+    }
+
+    function trimTrailingSlash(value) {
+      return safeString(value, "").replace(/\/+$/, "");
+    }
+
+    function buildDefaultChunkRouteHints(apiBaseUrl, projectId, worldId) {
+      var prefix = trimTrailingSlash(safeString(apiBaseUrl, DEFAULT_CHUNK_API_BASE_URL));
+      var safeProjectId = encodeURIComponent(safeString(projectId, DEFAULT_PROJECT_ID));
+      var safeWorldId = encodeURIComponent(safeString(worldId, DEFAULT_WORLD_ID));
+      var projectBase = prefix + "/projects/" + safeProjectId;
+      var worldBase = projectBase + "/worlds/" + safeWorldId;
+
+      return {
+        apiBaseUrl: prefix,
+        status: prefix + "/_status",
+        testConnection: prefix + "/_test/connection",
+        placeableBlocks: prefix + "/placeable-blocks",
+        projects: prefix + "/projects",
+        project: projectBase,
+        projectBootstrap: projectBase + "/bootstrap",
+        bootstrap: projectBase + "/bootstrap",
+        worlds: projectBase + "/worlds",
+        world: worldBase,
+        blocks: worldBase + "/blocks",
+        chunk: worldBase + "/chunks",
+        chunks: worldBase + "/chunks",
+        chunksBatch: worldBase + "/chunks/batch",
+        commands: worldBase + "/commands",
+        defaultBlocks: prefix + "/blocks",
+        defaultChunk: prefix + "/chunks",
+        defaultChunksBatch: prefix + "/chunks/batch",
+        defaultCommands: prefix + "/commands"
+      };
+    }
+
+    function buildDefaultLibraryRouteHints(browserBaseUrl, inventoryRoute) {
+      var base = trimTrailingSlash(safeString(browserBaseUrl, DEFAULT_LIBRARY_BROWSER_BASE_URL));
+      var inventory = safeString(inventoryRoute, DEFAULT_INVENTORY_API_URL);
+
+      return {
+        browserBaseUrl: base,
+        inventory: inventory,
+        status: base + "/_status",
+        health: base + "/health",
+        dbHealth: base + "/db/health",
+        publicationStatus: base + "/publication-status",
+        blocks: base + "/blocks",
+        tree: base + "/tree"
+      };
+    }
+
+    function getDatasetChunkRouteHints(rootElement) {
+      if (!rootElement) {
+        return {};
+      }
+
+      return {
+        status: safeString(rootElement.getAttribute("data-chunk-status-url"), ""),
+        testConnection: safeString(rootElement.getAttribute("data-chunk-test-connection-url"), ""),
+        placeableBlocks: safeString(rootElement.getAttribute("data-chunk-placeable-blocks-url"), ""),
+        projects: safeString(rootElement.getAttribute("data-chunk-projects-url"), ""),
+        project: safeString(rootElement.getAttribute("data-chunk-project-url"), ""),
+        bootstrap: safeString(rootElement.getAttribute("data-chunk-bootstrap-url"), ""),
+        projectBootstrap: safeString(rootElement.getAttribute("data-chunk-bootstrap-url"), ""),
+        worlds: safeString(rootElement.getAttribute("data-chunk-worlds-url"), ""),
+        world: safeString(rootElement.getAttribute("data-chunk-world-url"), ""),
+        blocks: safeString(rootElement.getAttribute("data-chunk-blocks-url"), ""),
+        chunk: safeString(rootElement.getAttribute("data-chunk-url"), ""),
+        chunks: safeString(rootElement.getAttribute("data-chunks-url"), ""),
+        chunksBatch: safeString(rootElement.getAttribute("data-chunks-batch-url"), ""),
+        commands: safeString(rootElement.getAttribute("data-chunk-commands-url"), ""),
+        defaultBlocks: safeString(rootElement.getAttribute("data-chunk-default-blocks-url"), ""),
+        defaultChunk: safeString(rootElement.getAttribute("data-chunk-default-chunk-url"), ""),
+        defaultChunksBatch: safeString(rootElement.getAttribute("data-chunk-default-chunks-batch-url"), ""),
+        defaultCommands: safeString(rootElement.getAttribute("data-chunk-default-commands-url"), "")
+      };
+    }
+
+    function getDatasetLibraryRouteHints(rootElement) {
+      if (!rootElement) {
+        return {};
+      }
+
+      return {
+        browserBaseUrl: safeString(rootElement.getAttribute("data-library-browser-base-url"), ""),
+        inventory: safeString(
+          rootElement.getAttribute("data-library-inventory-route") ||
+            rootElement.getAttribute("data-inventory-route") ||
+            rootElement.getAttribute("data-inventory-api-url") ||
+            rootElement.getAttribute("data-inventory-url"),
+          ""
+        ),
+        status: safeString(rootElement.getAttribute("data-library-status-url"), ""),
+        health: safeString(rootElement.getAttribute("data-library-health-url"), ""),
+        dbHealth: safeString(rootElement.getAttribute("data-library-db-health-url"), ""),
+        publicationStatus: safeString(rootElement.getAttribute("data-library-publication-status-url"), ""),
+        blocks: safeString(rootElement.getAttribute("data-library-blocks-url"), ""),
+        tree: safeString(rootElement.getAttribute("data-library-tree-url"), "")
+      };
+    }
+
+    function cleanEmptyRouteHints(routeHints) {
+      var result = {};
+      var key;
+
+      routeHints = safeRecord(routeHints);
+
+      for (key in routeHints) {
+        if (Object.prototype.hasOwnProperty.call(routeHints, key)) {
+          if (safeString(routeHints[key], "")) {
+            result[key] = safeString(routeHints[key], "");
+          }
+        }
+      }
+
+      return result;
+    }
+
+    function resolveChunkData(bootstrapData, rootElement) {
+      var runtimeData = safeRecord(bootstrapData.runtime);
+      var bootstrapChunk = safeRecord(bootstrapData.chunk);
+      var runtimeChunk = safeRecord(runtimeData.chunk);
+      var chunkData = mergeRecords(runtimeChunk, bootstrapChunk);
+
+      var datasetApiBaseUrl = rootElement ? safeString(rootElement.getAttribute("data-chunk-service-api-base-url") || rootElement.getAttribute("data-chunk-api-base-url"), "") : "";
+      var datasetBrowserBaseUrl = rootElement ? safeString(rootElement.getAttribute("data-chunk-service-browser-base-url") || rootElement.getAttribute("data-chunk-browser-base-url"), "") : "";
+      var datasetProjectId = rootElement ? safeString(rootElement.getAttribute("data-chunk-service-project-id") || rootElement.getAttribute("data-chunk-project-id"), "") : "";
+      var datasetWorldId = rootElement ? safeString(rootElement.getAttribute("data-chunk-service-world-id") || rootElement.getAttribute("data-chunk-world-id"), "") : "";
+
+      chunkData.enabled = safeBoolean(
+        chunkData.enabled,
+        rootElement ? rootElement.getAttribute("data-chunk-service-enabled") !== "false" : true
+      );
+      chunkData.mode = safeString(
+        chunkData.mode,
+        rootElement ? safeString(rootElement.getAttribute("data-chunk-service-mode") || rootElement.getAttribute("data-chunk-mode"), "editor-proxy") : "editor-proxy"
+      );
+      chunkData.sourceKind = safeString(
+        chunkData.sourceKind,
+        rootElement ? safeString(rootElement.getAttribute("data-chunk-service-source-kind") || rootElement.getAttribute("data-chunk-source-kind"), "vectoplan-chunk") : "vectoplan-chunk"
+      );
+      chunkData.apiBaseUrl = safeString(chunkData.apiBaseUrl, datasetApiBaseUrl || DEFAULT_CHUNK_API_BASE_URL);
+      chunkData.browserBaseUrl = safeString(chunkData.browserBaseUrl, datasetBrowserBaseUrl || chunkData.apiBaseUrl);
+      chunkData.projectId = safeString(chunkData.projectId, datasetProjectId || DEFAULT_PROJECT_ID);
+      chunkData.worldId = safeString(chunkData.worldId, datasetWorldId || DEFAULT_WORLD_ID);
+      chunkData.registryId = safeString(chunkData.registryId, rootElement ? rootElement.getAttribute("data-chunk-service-registry-id") || "debug-blocks" : "debug-blocks");
+      chunkData.registryVersion = safeString(chunkData.registryVersion, rootElement ? rootElement.getAttribute("data-chunk-service-registry-version") || "1" : "1");
+
+      chunkData.requestTimeoutMs = safeInteger(
+        chunkData.requestTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-chunk-request-timeout-ms") : 10000,
+        100,
+        300000
+      );
+      chunkData.commandTimeoutMs = safeInteger(
+        chunkData.commandTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-chunk-command-timeout-ms") : 15000,
+        100,
+        300000
+      );
+      chunkData.batchTimeoutMs = safeInteger(
+        chunkData.batchTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-chunk-batch-timeout-ms") : 20000,
+        100,
+        300000
+      );
+      chunkData.statusTimeoutMs = safeInteger(
+        chunkData.statusTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-chunk-status-timeout-ms") : 5000,
+        100,
+        300000
+      );
+
+      chunkData.preferBatchLoad = safeBoolean(
+        chunkData.preferBatchLoad,
+        rootElement ? rootElement.getAttribute("data-chunk-prefer-batch-load") !== "false" : true
+      );
+      chunkData.reloadDirtyChunksAfterCommand = safeBoolean(
+        chunkData.reloadDirtyChunksAfterCommand,
+        rootElement ? rootElement.getAttribute("data-chunk-reload-dirty-after-command") !== "false" : true
+      );
+      chunkData.maxBatchChunks = safeInteger(
+        chunkData.maxBatchChunks,
+        rootElement ? rootElement.getAttribute("data-chunk-max-batch-chunks") : 256,
+        1,
+        10000
+      );
+
+      var defaultHints = buildDefaultChunkRouteHints(chunkData.apiBaseUrl, chunkData.projectId, chunkData.worldId);
+      var datasetHints = cleanEmptyRouteHints(getDatasetChunkRouteHints(rootElement));
+      var bootstrapHints = cleanEmptyRouteHints(chunkData.routeHints);
+      chunkData.routeHints = mergeRecords(mergeRecords(defaultHints, datasetHints), bootstrapHints);
+
+      chunkData.commands = mergeRecords(
+        {
+          enabled: true,
+          url: chunkData.routeHints.commands,
+          reloadDirtyChunksAfterCommand: chunkData.reloadDirtyChunksAfterCommand
+        },
+        safeRecord(chunkData.commands)
+      );
+
+      chunkData.diagnostics = mergeRecords(
+        {
+          enabled: true,
+          statusUrl: chunkData.routeHints.status,
+          testConnectionUrl: chunkData.routeHints.testConnection
+        },
+        safeRecord(chunkData.diagnostics)
+      );
+
+      return chunkData;
+    }
+
+    function resolveLibraryData(bootstrapData, rootElement) {
+      var runtimeData = safeRecord(bootstrapData.runtime);
+      var bootstrapLibrary = safeRecord(bootstrapData.library);
+      var runtimeLibrary = safeRecord(runtimeData.library);
+      var libraryData = mergeRecords(runtimeLibrary, bootstrapLibrary);
+
+      var datasetBrowserBaseUrl = rootElement ? safeString(rootElement.getAttribute("data-library-browser-base-url"), "") : "";
+      var datasetInventoryRoute = rootElement ? safeString(rootElement.getAttribute("data-library-inventory-route") || rootElement.getAttribute("data-inventory-route") || rootElement.getAttribute("data-inventory-api-url"), "") : "";
+
+      libraryData.enabled = safeBoolean(
+        libraryData.enabled,
+        rootElement ? rootElement.getAttribute("data-library-service-enabled") !== "false" : true
+      );
+      libraryData.source = safeString(
+        libraryData.source,
+        rootElement ? rootElement.getAttribute("data-library-source") || "db" : "db"
+      );
+      libraryData.browserBaseUrl = safeString(
+        libraryData.browserBaseUrl,
+        datasetBrowserBaseUrl || DEFAULT_LIBRARY_BROWSER_BASE_URL
+      );
+      libraryData.inventoryRoute = safeString(
+        libraryData.inventoryRoute,
+        datasetInventoryRoute || DEFAULT_INVENTORY_API_URL
+      );
+
+      libraryData.requestTimeoutMs = safeInteger(
+        libraryData.requestTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-library-request-timeout-ms") : 5000,
+        100,
+        300000
+      );
+      libraryData.statusTimeoutMs = safeInteger(
+        libraryData.statusTimeoutMs,
+        rootElement ? rootElement.getAttribute("data-library-status-timeout-ms") : 3000,
+        100,
+        300000
+      );
+      libraryData.cacheTtlSeconds = safeNumber(libraryData.cacheTtlSeconds, 5, 0, 3600);
+      libraryData.staleCacheTtlSeconds = safeNumber(libraryData.staleCacheTtlSeconds, 60, 0, 86400);
+      libraryData.allowStaleCache = safeBoolean(libraryData.allowStaleCache, true);
+
+      var defaultHints = buildDefaultLibraryRouteHints(libraryData.browserBaseUrl, libraryData.inventoryRoute);
+      var datasetHints = cleanEmptyRouteHints(getDatasetLibraryRouteHints(rootElement));
+      var bootstrapHints = cleanEmptyRouteHints(libraryData.routeHints);
+      libraryData.routeHints = mergeRecords(mergeRecords(defaultHints, datasetHints), bootstrapHints);
+      libraryData.inventoryRoute = safeString(libraryData.inventoryRoute, libraryData.routeHints.inventory || DEFAULT_INVENTORY_API_URL);
+
+      return libraryData;
+    }
+
+    function resolveFeatureFlags(bootstrapData, rootElement, chunkData, libraryData) {
+      var runtimeData = safeRecord(bootstrapData.runtime);
+      var flags = mergeRecords(
+        safeRecord(runtimeData.featureFlags),
+        safeRecord(bootstrapData.featureFlags)
+      );
+
+      flags.chunkServiceEnabled = safeBoolean(flags.chunkServiceEnabled, chunkData.enabled);
+      flags.libraryServiceEnabled = safeBoolean(flags.libraryServiceEnabled, libraryData.enabled);
+      flags.inventoryEnabled = safeBoolean(
+        flags.inventoryEnabled,
+        rootElement ? rootElement.getAttribute("data-inventory-enabled") !== "false" : true
+      );
+      flags.libraryInventoryEnabled = safeBoolean(
+        flags.libraryInventoryEnabled,
+        rootElement ? rootElement.getAttribute("data-inventory-source") !== "chunk-service" : true
+      );
+      flags.chunkPlaceableFallbackEnabled = safeBoolean(
+        flags.chunkPlaceableFallbackEnabled,
+        rootElement ? rootElement.getAttribute("data-inventory-allow-chunk-placeable-fallback") === "true" : false
+      );
+      flags.onlyLibraryItemsPlaceable = safeBoolean(
+        flags.onlyLibraryItemsPlaceable,
+        rootElement ? rootElement.getAttribute("data-inventory-only-library-items-placeable") !== "false" : true
+      );
+      flags.debugBlocksAllowedInInventory = safeBoolean(
+        flags.debugBlocksAllowedInInventory,
+        rootElement ? rootElement.getAttribute("data-inventory-debug-grass-dirt-allowed") === "true" : false
+      );
+      flags.localWorldFallbackEnabled = safeBoolean(
+        flags.localWorldFallbackEnabled,
+        rootElement ? rootElement.getAttribute("data-local-world-fallback-enabled") === "true" : false
+      );
+      flags.legacyFrontendEnabled = safeBoolean(
+        flags.legacyFrontendEnabled,
+        rootElement ? rootElement.getAttribute("data-legacy-frontend-enabled") === "true" : false
+      );
+      flags.pointerLockEnabled = safeBoolean(
+        flags.pointerLockEnabled,
+        rootElement ? rootElement.getAttribute("data-pointer-lock-enabled") !== "false" : true
+      );
+      flags.firstPersonEnabled = safeBoolean(
+        flags.firstPersonEnabled,
+        rootElement ? rootElement.getAttribute("data-first-person-enabled") !== "false" : true
+      );
+      flags.debugOverlayEnabled = safeBoolean(
+        flags.debugOverlayEnabled,
+        rootElement ? rootElement.getAttribute("data-debug-overlay-enabled") !== "false" : true
+      );
+      flags.crosshairEnabled = safeBoolean(
+        flags.crosshairEnabled,
+        rootElement ? rootElement.getAttribute("data-crosshair-enabled") !== "false" : true
+      );
+      flags.hotbarEnabled = safeBoolean(
+        flags.hotbarEnabled,
+        rootElement ? rootElement.getAttribute("data-hotbar-enabled") !== "false" : true
+      );
+      flags.statusBarEnabled = safeBoolean(
+        flags.statusBarEnabled,
+        rootElement ? rootElement.getAttribute("data-status-bar-enabled") !== "false" : true
+      );
+      flags.loadingOverlayEnabled = safeBoolean(
+        flags.loadingOverlayEnabled,
+        rootElement ? rootElement.getAttribute("data-loading-overlay-enabled") !== "false" : true
+      );
+      flags.errorPanelEnabled = safeBoolean(
+        flags.errorPanelEnabled,
+        rootElement ? rootElement.getAttribute("data-error-panel-enabled") !== "false" : true
+      );
+
+      return flags;
+    }
+
+    function resolveInventoryData(bootstrapData, rootElement, chunkData, libraryData, flags) {
+      var runtimeData = safeRecord(bootstrapData.runtime);
+      var bootstrapInventory = safeRecord(bootstrapData.inventory);
+      var runtimeInventory = safeRecord(runtimeData.inventory);
+      var inventoryData = mergeRecords(runtimeInventory, bootstrapInventory);
+
+      var datasetRoute = rootElement ? safeString(rootElement.getAttribute("data-inventory-route") || rootElement.getAttribute("data-inventory-api-url") || rootElement.getAttribute("data-inventory-url"), "") : "";
+      var datasetSource = rootElement ? safeString(rootElement.getAttribute("data-inventory-source"), "") : "";
+
+      inventoryData.enabled = safeBoolean(
+        inventoryData.enabled,
+        rootElement ? rootElement.getAttribute("data-inventory-enabled") !== "false" : flags.hotbarEnabled
+      );
+      inventoryData.source = safeString(
+        inventoryData.source,
+        datasetSource || "library"
+      );
+      inventoryData.route = safeString(
+        inventoryData.route,
+        datasetRoute || libraryData.inventoryRoute || DEFAULT_INVENTORY_API_URL
+      );
+      inventoryData.apiUrl = safeString(
+        inventoryData.apiUrl,
+        inventoryData.route || DEFAULT_INVENTORY_API_URL
+      );
+      inventoryData.inventoryUrl = inventoryData.apiUrl;
+
+      inventoryData.hotbarSize = safeInteger(
+        inventoryData.hotbarSize,
+        rootElement ? rootElement.getAttribute("data-inventory-hotbar-size") : DEFAULT_HOTBAR_SIZE,
+        1,
+        64
+      );
+      inventoryData.selectedSlot = safeInteger(
+        inventoryData.selectedSlot,
+        rootElement ? rootElement.getAttribute("data-inventory-selected-slot") : DEFAULT_SELECTED_SLOT,
+        0,
+        Math.max(0, inventoryData.hotbarSize - 1)
+      );
+      inventoryData.defaultSelectedSlot = safeInteger(
+        inventoryData.defaultSelectedSlot,
+        rootElement ? rootElement.getAttribute("data-inventory-default-selected-slot") : inventoryData.selectedSlot,
+        0,
+        Math.max(0, inventoryData.hotbarSize - 1)
+      );
+
+      inventoryData.defaultBlockTypeId = safeString(
+        inventoryData.defaultBlockTypeId,
+        rootElement ? rootElement.getAttribute("data-inventory-default-block-type-id") || "" : ""
+      );
+
+      inventoryData.iconOnly = safeBoolean(
+        inventoryData.iconOnly,
+        rootElement ? rootElement.getAttribute("data-inventory-icon-only") === "true" : false
+      );
+      inventoryData.scrollWrap = safeBoolean(
+        inventoryData.scrollWrap,
+        rootElement ? rootElement.getAttribute("data-inventory-scroll-wrap") !== "false" : true
+      );
+      inventoryData.allowPlaceAction = safeBoolean(
+        inventoryData.allowPlaceAction,
+        rootElement ? rootElement.getAttribute("data-inventory-allow-place-action") !== "false" : true
+      );
+      inventoryData.allowBreakAction = safeBoolean(
+        inventoryData.allowBreakAction,
+        rootElement ? rootElement.getAttribute("data-inventory-allow-break-action") !== "false" : true
+      );
+      inventoryData.forceRefreshOnBoot = safeBoolean(
+        inventoryData.forceRefreshOnBoot,
+        rootElement ? rootElement.getAttribute("data-inventory-force-refresh-on-boot") === "true" : false
+      );
+      inventoryData.allowEmptyFallback = safeBoolean(
+        inventoryData.allowEmptyFallback,
+        rootElement ? rootElement.getAttribute("data-inventory-allow-empty-fallback") !== "false" : true
+      );
+      inventoryData.allowChunkPlaceableFallback = safeBoolean(
+        inventoryData.allowChunkPlaceableFallback,
+        rootElement ? rootElement.getAttribute("data-inventory-allow-chunk-placeable-fallback") === "true" : false
+      );
+      inventoryData.onlyLibraryItemsPlaceable = safeBoolean(
+        inventoryData.onlyLibraryItemsPlaceable,
+        rootElement ? rootElement.getAttribute("data-inventory-only-library-items-placeable") !== "false" : true
+      );
+      inventoryData.debugGrassDirtAllowed = safeBoolean(
+        inventoryData.debugGrassDirtAllowed,
+        rootElement ? rootElement.getAttribute("data-inventory-debug-grass-dirt-allowed") === "true" : false
+      );
+      inventoryData.truthOwner = safeString(
+        inventoryData.truthOwner,
+        rootElement ? rootElement.getAttribute("data-inventory-truth-owner") || "vectoplan-library" : "vectoplan-library"
+      );
+      inventoryData.kind = safeString(
+        inventoryData.kind,
+        rootElement ? rootElement.getAttribute("data-inventory-kind") || "vplib" : "vplib"
+      );
+
+      inventoryData.items = safeArray(inventoryData.items);
+      inventoryData.slots = safeArray(inventoryData.slots);
+      inventoryData.defaultPalette = safeArray(inventoryData.defaultPalette);
+      inventoryData.placeableBlocks = inventoryData.allowChunkPlaceableFallback ? safeArray(inventoryData.placeableBlocks) : [];
+
+      inventoryData.blocksUrl = safeString(inventoryData.blocksUrl, libraryData.routeHints.blocks || "");
+      inventoryData.libraryBlocksUrl = safeString(inventoryData.libraryBlocksUrl, libraryData.routeHints.blocks || "");
+      inventoryData.libraryTreeUrl = safeString(inventoryData.libraryTreeUrl, libraryData.routeHints.tree || "");
+      inventoryData.placeableBlocksUrl = inventoryData.allowChunkPlaceableFallback
+        ? safeString(inventoryData.placeableBlocksUrl, chunkData.routeHints.placeableBlocks || "")
+        : "";
+
+      inventoryData.routeHints = mergeRecords(
+        {
+          inventory: inventoryData.apiUrl,
+          blocks: inventoryData.libraryBlocksUrl,
+          tree: inventoryData.libraryTreeUrl
+        },
+        safeRecord(inventoryData.routeHints)
+      );
+
+      return inventoryData;
+    }
+
+    function applyRootDataset(rootElement, bootstrapData, chunkData, libraryData, flags, inventoryData) {
+      if (!rootElement) {
+        return;
+      }
+
+      try {
+        rootElement.setAttribute("data-runtime-state", "bootstrapping");
+        rootElement.setAttribute("data-runtime-started", "false");
+        rootElement.setAttribute("data-runtime-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.mode, "remote_chunk_service"));
+        rootElement.setAttribute("data-editor-runtime-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.mode, "remote_chunk_service"));
+        rootElement.setAttribute("data-world-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.worldMode, "chunk_service"));
+        rootElement.setAttribute("data-editor-world-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.worldMode, "chunk_service"));
+        rootElement.setAttribute("data-source-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.sourceMode, "chunk-service"));
+        rootElement.setAttribute("data-editor-source-mode", safeString(bootstrapData.runtime && bootstrapData.runtime.sourceMode, "chunk-service"));
+
+        rootElement.setAttribute("data-chunk-service-enabled", chunkData.enabled ? "true" : "false");
+        rootElement.setAttribute("data-chunk-service-api-base-url", safeString(chunkData.apiBaseUrl, DEFAULT_CHUNK_API_BASE_URL));
+        rootElement.setAttribute("data-chunk-service-browser-base-url", safeString(chunkData.browserBaseUrl, chunkData.apiBaseUrl || DEFAULT_CHUNK_API_BASE_URL));
+        rootElement.setAttribute("data-chunk-service-project-id", safeString(chunkData.projectId, DEFAULT_PROJECT_ID));
+        rootElement.setAttribute("data-chunk-service-world-id", safeString(chunkData.worldId, DEFAULT_WORLD_ID));
+        rootElement.setAttribute("data-chunk-service-source-kind", safeString(chunkData.sourceKind, "vectoplan-chunk"));
+        rootElement.setAttribute("data-chunk-service-mode", safeString(chunkData.mode, "editor-proxy"));
+        rootElement.setAttribute("data-chunk-service-registry-id", safeString(chunkData.registryId, "debug-blocks"));
+        rootElement.setAttribute("data-chunk-service-registry-version", safeString(chunkData.registryVersion, "1"));
+
+        rootElement.setAttribute("data-chunk-api-base-url", safeString(chunkData.apiBaseUrl, DEFAULT_CHUNK_API_BASE_URL));
+        rootElement.setAttribute("data-chunk-browser-base-url", safeString(chunkData.browserBaseUrl, chunkData.apiBaseUrl || DEFAULT_CHUNK_API_BASE_URL));
+        rootElement.setAttribute("data-chunk-project-id", safeString(chunkData.projectId, DEFAULT_PROJECT_ID));
+        rootElement.setAttribute("data-chunk-world-id", safeString(chunkData.worldId, DEFAULT_WORLD_ID));
+        rootElement.setAttribute("data-chunk-status-url", safeString(chunkData.routeHints.status, DEFAULT_CHUNK_API_BASE_URL + "/_status"));
+        rootElement.setAttribute("data-chunk-test-connection-url", safeString(chunkData.routeHints.testConnection, DEFAULT_CHUNK_API_BASE_URL + "/_test/connection"));
+        rootElement.setAttribute("data-chunk-placeable-blocks-url", safeString(chunkData.routeHints.placeableBlocks, DEFAULT_CHUNK_API_BASE_URL + "/placeable-blocks"));
+        rootElement.setAttribute("data-chunk-placeable-blocks-debug-only", "true");
+        rootElement.setAttribute("data-chunk-placeable-blocks-inventory-source", inventoryData.allowChunkPlaceableFallback ? "true" : "false");
+        rootElement.setAttribute("data-chunk-blocks-url", safeString(chunkData.routeHints.blocks, ""));
+        rootElement.setAttribute("data-chunk-url", safeString(chunkData.routeHints.chunk, ""));
+        rootElement.setAttribute("data-chunks-url", safeString(chunkData.routeHints.chunks || chunkData.routeHints.chunk, ""));
+        rootElement.setAttribute("data-chunks-batch-url", safeString(chunkData.routeHints.chunksBatch, ""));
+        rootElement.setAttribute("data-chunk-commands-url", safeString(chunkData.routeHints.commands, ""));
+        rootElement.setAttribute("data-chunk-route-hints-json", JSON.stringify(chunkData.routeHints));
+
+        rootElement.setAttribute("data-chunk-request-timeout-ms", String(chunkData.requestTimeoutMs));
+        rootElement.setAttribute("data-chunk-command-timeout-ms", String(chunkData.commandTimeoutMs));
+        rootElement.setAttribute("data-chunk-batch-timeout-ms", String(chunkData.batchTimeoutMs));
+        rootElement.setAttribute("data-chunk-status-timeout-ms", String(chunkData.statusTimeoutMs));
+        rootElement.setAttribute("data-chunk-prefer-batch-load", chunkData.preferBatchLoad ? "true" : "false");
+        rootElement.setAttribute("data-chunk-reload-dirty-after-command", chunkData.reloadDirtyChunksAfterCommand ? "true" : "false");
+        rootElement.setAttribute("data-chunk-max-batch-chunks", String(chunkData.maxBatchChunks));
+
+        rootElement.setAttribute("data-library-service-enabled", libraryData.enabled ? "true" : "false");
+        rootElement.setAttribute("data-library-source", safeString(libraryData.source, "db"));
+        rootElement.setAttribute("data-library-browser-base-url", safeString(libraryData.browserBaseUrl, DEFAULT_LIBRARY_BROWSER_BASE_URL));
+        rootElement.setAttribute("data-library-inventory-route", safeString(libraryData.inventoryRoute, DEFAULT_INVENTORY_API_URL));
+        rootElement.setAttribute("data-library-blocks-url", safeString(libraryData.routeHints.blocks, ""));
+        rootElement.setAttribute("data-library-tree-url", safeString(libraryData.routeHints.tree, ""));
+        rootElement.setAttribute("data-library-status-url", safeString(libraryData.routeHints.status, ""));
+        rootElement.setAttribute("data-library-health-url", safeString(libraryData.routeHints.health, ""));
+        rootElement.setAttribute("data-library-db-health-url", safeString(libraryData.routeHints.dbHealth, ""));
+        rootElement.setAttribute("data-library-publication-status-url", safeString(libraryData.routeHints.publicationStatus, ""));
+        rootElement.setAttribute("data-library-request-timeout-ms", String(libraryData.requestTimeoutMs));
+        rootElement.setAttribute("data-library-status-timeout-ms", String(libraryData.statusTimeoutMs));
+        rootElement.setAttribute("data-library-route-hints-json", JSON.stringify(libraryData.routeHints));
+
+        rootElement.setAttribute("data-local-world-fallback-enabled", flags.localWorldFallbackEnabled ? "true" : "false");
+        rootElement.setAttribute("data-legacy-frontend-enabled", flags.legacyFrontendEnabled ? "true" : "false");
+        rootElement.setAttribute("data-pointer-lock-enabled", flags.pointerLockEnabled ? "true" : "false");
+        rootElement.setAttribute("data-first-person-enabled", flags.firstPersonEnabled ? "true" : "false");
+        rootElement.setAttribute("data-debug-overlay-enabled", flags.debugOverlayEnabled ? "true" : "false");
+        rootElement.setAttribute("data-crosshair-enabled", flags.crosshairEnabled ? "true" : "false");
+        rootElement.setAttribute("data-hotbar-enabled", flags.hotbarEnabled ? "true" : "false");
+
+        rootElement.setAttribute("data-inventory-enabled", inventoryData.enabled ? "true" : "false");
+        rootElement.setAttribute("data-inventory-source", safeString(inventoryData.source, "library"));
+        rootElement.setAttribute("data-inventory-route", safeString(inventoryData.route, DEFAULT_INVENTORY_API_URL));
+        rootElement.setAttribute("data-inventory-url", safeString(inventoryData.apiUrl, DEFAULT_INVENTORY_API_URL));
+        rootElement.setAttribute("data-inventory-api-url", safeString(inventoryData.apiUrl, DEFAULT_INVENTORY_API_URL));
+        rootElement.setAttribute("data-inventory-hotbar-size", String(inventoryData.hotbarSize));
+        rootElement.setAttribute("data-inventory-selected-slot", String(inventoryData.selectedSlot));
+        rootElement.setAttribute("data-inventory-default-selected-slot", String(inventoryData.defaultSelectedSlot));
+        rootElement.setAttribute("data-inventory-default-block-type-id", safeString(inventoryData.defaultBlockTypeId, ""));
+        rootElement.setAttribute("data-inventory-icon-only", inventoryData.iconOnly ? "true" : "false");
+        rootElement.setAttribute("data-inventory-scroll-wrap", inventoryData.scrollWrap ? "true" : "false");
+        rootElement.setAttribute("data-inventory-allow-place-action", inventoryData.allowPlaceAction ? "true" : "false");
+        rootElement.setAttribute("data-inventory-allow-break-action", inventoryData.allowBreakAction ? "true" : "false");
+        rootElement.setAttribute("data-inventory-force-refresh-on-boot", inventoryData.forceRefreshOnBoot ? "true" : "false");
+        rootElement.setAttribute("data-inventory-allow-empty-fallback", inventoryData.allowEmptyFallback ? "true" : "false");
+        rootElement.setAttribute("data-inventory-allow-chunk-placeable-fallback", inventoryData.allowChunkPlaceableFallback ? "true" : "false");
+        rootElement.setAttribute("data-inventory-only-library-items-placeable", inventoryData.onlyLibraryItemsPlaceable ? "true" : "false");
+        rootElement.setAttribute("data-inventory-debug-grass-dirt-allowed", inventoryData.debugGrassDirtAllowed ? "true" : "false");
+        rootElement.setAttribute("data-inventory-kind", safeString(inventoryData.kind, "vplib"));
+        rootElement.setAttribute("data-inventory-truth-owner", safeString(inventoryData.truthOwner, "vectoplan-library"));
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: Root-Dataset konnte nicht initialisiert werden.", error);
+      }
+    }
+
+    function applyShellState(doc, rootElement, bootstrapData, chunkData, libraryData, flags, inventoryData) {
+      try {
+        if (doc.documentElement && doc.documentElement.classList) {
+          doc.documentElement.classList.add("vectoplan-editor-shell-ready");
+        }
+      } catch (error) {
+        /* bewusst still */
+      }
+
+      try {
+        doc.title = safeString(bootstrapData.pageTitle || (bootstrapData.runtime && bootstrapData.runtime.ui && bootstrapData.runtime.ui.pageTitle), "VECTOPLAN Editor");
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: Dokumenttitel konnte nicht gesetzt werden.", error);
+      }
+
+      if (rootElement) {
+        setRuntimeStateClass(rootElement, "bootstrapping");
+      }
+
+      try {
+        var sourceStatus = doc.querySelector("[data-editor-source-status]");
+        if (sourceStatus) {
+          sourceStatus.setAttribute("data-editor-source-status", "bootstrapping");
+          sourceStatus.setAttribute("data-editor-inventory-status", "bootstrapping");
+        }
+
+        var sourceStatusLabel = doc.querySelector("[data-editor-source-status-label]");
+        if (sourceStatusLabel) {
+          if (!chunkData.enabled && !libraryData.enabled) {
+            sourceStatusLabel.textContent = "Chunk-Service und Library-Inventar deaktiviert";
+          } else if (!libraryData.enabled) {
+            sourceStatusLabel.textContent = "Chunk-Service aktiv · Library-Inventar deaktiviert";
+          } else if (!chunkData.enabled) {
+            sourceStatusLabel.textContent = "Library-Inventar wird vorbereitet · Chunk-Service deaktiviert";
+          } else {
+            sourceStatusLabel.textContent = "Chunk-Service und Library-Inventar werden vorbereitet";
+          }
+        }
+
+        var projectLabel = doc.querySelector("[data-editor-project-label]");
+        if (projectLabel) {
+          projectLabel.textContent = safeString(chunkData.projectId, DEFAULT_PROJECT_ID) + " / " + safeString(chunkData.worldId, DEFAULT_WORLD_ID);
+        }
+      } catch (error) {
+        /* bewusst still */
+      }
+
+      try {
+        var hotbarRoot = doc.querySelector("[data-editor-hotbar]");
+        if (hotbarRoot) {
+          hotbarRoot.setAttribute("data-enabled", flags.hotbarEnabled && inventoryData.enabled ? "true" : "false");
+          hotbarRoot.setAttribute("data-visible", flags.hotbarEnabled && inventoryData.enabled ? "true" : "false");
+          hotbarRoot.setAttribute("data-selected-slot", String(inventoryData.selectedSlot));
+          hotbarRoot.setAttribute("data-hotbar-size", String(inventoryData.hotbarSize));
+          hotbarRoot.setAttribute("data-inventory-source", safeString(inventoryData.source, "library"));
+          hotbarRoot.setAttribute("data-inventory-api-url", safeString(inventoryData.apiUrl, DEFAULT_INVENTORY_API_URL));
+          hotbarRoot.setAttribute("data-inventory-route", safeString(inventoryData.route, DEFAULT_INVENTORY_API_URL));
+          hotbarRoot.setAttribute("data-inventory-load-state", "idle");
+          hotbarRoot.setAttribute("data-hotbar-kind", safeString(inventoryData.kind, "vplib"));
+          hotbarRoot.setAttribute("data-hotbar-only-library-items-placeable", inventoryData.onlyLibraryItemsPlaceable ? "true" : "false");
+          hotbarRoot.setAttribute("data-hotbar-debug-grass-dirt-allowed", inventoryData.debugGrassDirtAllowed ? "true" : "false");
+        }
+
+        var hotbarSlots = doc.querySelector("[data-editor-hotbar-slots]");
+        if (hotbarSlots) {
+          hotbarSlots.setAttribute("data-hotbar-size", String(inventoryData.hotbarSize));
+          hotbarSlots.setAttribute("data-selected-slot", String(inventoryData.selectedSlot));
+          hotbarSlots.setAttribute("data-hotbar-slots-source", safeString(inventoryData.source, "library"));
+        }
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: Hotbar-Shell konnte nicht initialisiert werden.", error);
+      }
+
+      try {
+        var loadingOverlay = doc.querySelector("[data-editor-loading-overlay]");
+        if (loadingOverlay) {
+          loadingOverlay.removeAttribute("hidden");
+        }
+
+        var errorOverlay = doc.querySelector("[data-editor-error-overlay]");
+        if (errorOverlay) {
+          errorOverlay.setAttribute("hidden", "hidden");
+        }
+      } catch (error) {
+        /* bewusst still */
+      }
+    }
+
+    function exportWindowGlobals(win, bootstrapData, chunkData, libraryData, flags, inventoryData) {
+      if (!win) {
+        return;
+      }
+
+      try {
+        bootstrapData.runtime = safeRecord(bootstrapData.runtime);
+        bootstrapData.runtime.chunk = chunkData;
+        bootstrapData.runtime.library = libraryData;
+        bootstrapData.runtime.inventory = inventoryData;
+        bootstrapData.runtime.featureFlags = flags;
+        bootstrapData.chunk = chunkData;
+        bootstrapData.library = libraryData;
+        bootstrapData.inventory = inventoryData;
+        bootstrapData.featureFlags = flags;
+      } catch (error) {
+        /* bewusst still */
+      }
+
+      try {
+        win.__VECTOPLAN_EDITOR_BOOTSTRAP__ = bootstrapData;
+        win.__VECTOPLAN_EDITOR_RUNTIME_STARTED__ = false;
+        win.__VECTOPLAN_EDITOR_TEMPLATE_MODE__ = safeString(bootstrapData.runtime.mode, "remote_chunk_service");
+        win.__VECTOPLAN_EDITOR_RUNTIME_MODE__ = safeString(bootstrapData.runtime.mode, "remote_chunk_service");
+        win.__VECTOPLAN_EDITOR_WORLD_MODE__ = safeString(bootstrapData.runtime.worldMode, "chunk_service");
+        win.__VECTOPLAN_EDITOR_SOURCE_MODE__ = safeString(bootstrapData.runtime.sourceMode, "chunk-service");
+
+        win.__VECTOPLAN_EDITOR_CHUNK__ = chunkData;
+        win.__VECTOPLAN_EDITOR_CHUNK_CONFIG__ = chunkData;
+        win.__VECTOPLAN_EDITOR_CHUNK_API_BASE_URL__ = safeString(chunkData.apiBaseUrl, DEFAULT_CHUNK_API_BASE_URL);
+        win.__VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL__ = safeString(chunkData.browserBaseUrl, chunkData.apiBaseUrl || DEFAULT_CHUNK_API_BASE_URL);
+        win.__VECTOPLAN_EDITOR_CHUNK_PROJECT_ID__ = safeString(chunkData.projectId, DEFAULT_PROJECT_ID);
+        win.__VECTOPLAN_EDITOR_CHUNK_WORLD_ID__ = safeString(chunkData.worldId, DEFAULT_WORLD_ID);
+        win.__VECTOPLAN_EDITOR_CHUNK_ROUTE_HINTS__ = safeRecord(chunkData.routeHints);
+        win.__VECTOPLAN_EDITOR_CHUNK_SERVICE_CONFIG__ = chunkData;
+
+        win.__VECTOPLAN_EDITOR_LIBRARY__ = libraryData;
+        win.__VECTOPLAN_EDITOR_LIBRARY_CONFIG__ = libraryData;
+        win.__VECTOPLAN_EDITOR_LIBRARY_BROWSER_BASE_URL__ = safeString(libraryData.browserBaseUrl, DEFAULT_LIBRARY_BROWSER_BASE_URL);
+        win.__VECTOPLAN_EDITOR_LIBRARY_ROUTE_HINTS__ = safeRecord(libraryData.routeHints);
+
+        win.__VECTOPLAN_EDITOR_FEATURE_FLAGS__ = flags;
+        win.__VECTOPLAN_EDITOR_INVENTORY__ = inventoryData;
+        win.__VECTOPLAN_EDITOR_INVENTORY_CONFIG__ = inventoryData;
+        win.__VECTOPLAN_EDITOR_INVENTORY_API_URL__ = safeString(inventoryData.apiUrl, DEFAULT_INVENTORY_API_URL);
+        win.__VECTOPLAN_EDITOR_INVENTORY_ROUTE__ = safeString(inventoryData.route, DEFAULT_INVENTORY_API_URL);
+        win.__VECTOPLAN_EDITOR_INVENTORY_SOURCE__ = safeString(inventoryData.source, "library");
+        win.__VECTOPLAN_EDITOR_ONLY_LIBRARY_ITEMS_PLACEABLE__ = Boolean(inventoryData.onlyLibraryItemsPlaceable);
+        win.__VECTOPLAN_EDITOR_DEBUG_BLOCKS_ALLOWED_IN_INVENTORY__ = Boolean(inventoryData.debugGrassDirtAllowed);
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: Window-Bootstrap konnte nicht vollständig exportiert werden.", error);
+      }
+    }
+
+    function setInitialShellState() {
+      var doc = getDocument();
+      var win = getWindow();
+
+      if (!doc || !win) {
+        return;
+      }
+
+      var bootstrapData = parseBootstrapData();
+      var rootElement = getRootElement(doc);
+      var chunkData = resolveChunkData(bootstrapData, rootElement);
+      var libraryData = resolveLibraryData(bootstrapData, rootElement);
+      var flags = resolveFeatureFlags(bootstrapData, rootElement, chunkData, libraryData);
+      var inventoryData = resolveInventoryData(bootstrapData, rootElement, chunkData, libraryData, flags);
+
+      applyRootDataset(rootElement, bootstrapData, chunkData, libraryData, flags, inventoryData);
+      applyShellState(doc, rootElement, bootstrapData, chunkData, libraryData, flags, inventoryData);
+      exportWindowGlobals(win, bootstrapData, chunkData, libraryData, flags, inventoryData);
+    }
+
+    function onReady(callback) {
+      var doc = getDocument();
+
+      if (!doc) {
+        try {
+          callback();
+        } catch (error) {
+          safeConsole("error", "VECTOPLAN Editor: Ready-Callback ohne Dokument fehlgeschlagen.", error);
+        }
+        return;
+      }
+
+      try {
+        if (doc.readyState === "interactive" || doc.readyState === "complete") {
+          callback();
+          return;
+        }
+
+        doc.addEventListener("DOMContentLoaded", callback, { once: true });
+      } catch (error) {
+        safeConsole("warn", "VECTOPLAN Editor: DOMContentLoaded konnte nicht registriert werden.", error);
+
+        try {
+          callback();
+        } catch (callbackError) {
+          safeConsole("error", "VECTOPLAN Editor: Fallback-Ready-Callback fehlgeschlagen.", callbackError);
+        }
+      }
+    }
+
+    onReady(function () {
+      try {
+        setInitialShellState();
+      } catch (error) {
+        safeConsole("error", "VECTOPLAN Editor: Initialer Template-Bootstrap fehlgeschlagen.", error);
+
+        try {
+          var doc = getDocument();
+          var statusElement = doc && doc.querySelector("[data-editor-source-status-label]");
+          if (statusElement) {
+            statusElement.textContent = "Template-Bootstrap fehlgeschlagen";
+          }
+
+          var rootElement = doc && getRootElement(doc);
+          if (rootElement) {
+            setRuntimeStateClass(rootElement, "error");
+            rootElement.setAttribute("data-runtime-state", "error");
+          }
+        } catch (statusError) {
+          /* bewusst still */
+        }
+      }
+    });
+  })();
+</script>

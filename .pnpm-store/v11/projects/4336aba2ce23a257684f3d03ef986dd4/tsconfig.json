@@ -1,0 +1,88 @@
+﻿// services/vectoplan-server/services/vectoplan-editor/tsconfig.json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
+
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    "jsx": "preserve",
+
+    "strict": false,
+    "alwaysStrict": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "noImplicitOverride": false,
+    "noImplicitReturns": false,
+    "noImplicitThis": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    "useUnknownInCatchVariables": false,
+    "forceConsistentCasingInFileNames": true,
+
+    "allowJs": false,
+    "checkJs": false,
+    "noEmit": true,
+    "skipLibCheck": true,
+
+    "ignoreDeprecations": "6.0",
+
+    "baseUrl": "./src/frontend",
+    "paths": {
+      "@/*": ["./*"],
+      "@api/*": ["./api/*"],
+      "@bootstrap/*": ["./bootstrap/*"],
+      "@camera/*": ["./camera/*"],
+      "@config/*": ["./config/*"],
+      "@dom/*": ["./dom/*"],
+      "@input/*": ["./input/*"],
+      "@inventory/*": ["./inventory/*"],
+      "@render/*": ["./render/*"],
+      "@runtime/*": ["./runtime/*"],
+      "@scene/*": ["./scene/*", "./runtime/scene/*"],
+      "@runtime-scene/*": ["./runtime/scene/*"],
+      "@state/*": ["./state/*"],
+      "@targeting/*": ["./targeting/*"],
+      "@ui/*": ["./ui/*"],
+      "@utils/*": ["./utils/*"],
+      "@world/*": ["./runtime/world/*"]
+    },
+
+    "types": [
+      "vite/client",
+      "node"
+    ]
+  },
+
+  "include": [
+    "src/frontend/**/*.ts",
+    "src/frontend/**/*.tsx",
+    "vite.config.ts"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "coverage",
+    ".vite",
+    ".cache",
+    ".venv",
+    "__pycache__",
+    "static/editor",
+    "static/editor/**/*"
+  ]
+}

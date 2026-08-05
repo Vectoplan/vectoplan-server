@@ -1,0 +1,1010 @@
+<!-- services/vectoplan-editor/templates/editor/index.html -->
+<!DOCTYPE html>
+<html
+  lang="de"
+  class="vectoplan-editor-document vectoplan-editor-document--fullscreen"
+  data-editor-document="true"
+  data-editor-fullscreen-document="true"
+>
+  <head>
+    {% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+    {% set service_value = bootstrap_value.service|default({}, true) %}
+    {% set build_value = bootstrap_value.build|default({}, true) %}
+    {% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+    {% set ui_value = runtime_value.ui|default({}, true) %}
+
+    {% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+    {% set library_value = bootstrap_value.library|default(runtime_value.library|default(library|default(library_config|default({}, true), true), true), true) %}
+    {% set inventory_value = bootstrap_value.inventory|default(runtime_value.inventory|default(inventory|default(inventory_config|default({}, true), true), true), true) %}
+
+    {% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+    {% set camera_value = runtime_value.camera|default({}, true) %}
+    {% set spawn_value = camera_value.spawn|default(runtime_value.spawn|default({}, true), true) %}
+    {% set chunks_value = runtime_value.chunks|default({}, true) %}
+    {% set block_world_value = runtime_value.blockWorld|default({}, true) %}
+    {% set fallback_payload_value = bootstrap_value.fallback|default({}, true) %}
+
+    {% set chunk_route_hints_value = chunk_value.routeHints|default(chunk_route_hints|default({}, true), true) %}
+    {% set library_route_hints_value = library_value.routeHints|default(library_route_hints|default({}, true), true) %}
+    {% set assets_value = editor_assets|default({}, true) %}
+
+    {% set page_title_value = bootstrap_value.pageTitle|default(ui_value.pageTitle|default(page_title|default('VECTOPLAN Editor', true), true), true) %}
+    {% set brand_name_value = bootstrap_value.brandName|default(ui_value.brandName|default(brand_name|default('VECTOPLAN Editor', true), true), true) %}
+    {% set app_name_value = service_value.name|default(app_name|default('vectoplan-editor', true), true) %}
+    {% set app_display_name_value = service_value.displayName|default(app_display_name|default('VECTOPLAN Editor', true), true) %}
+    {% set service_version_value = service_value.version|default(service_version|default('0.1.0', true), true) %}
+    {% set build_mode_value = build_value.mode|default(build_mode|default('development', true), true) %}
+    {% set build_version_value = build_value.version|default(build_version|default('dev', true), true) %}
+
+    {% set runtime_mode_value = runtime_value.mode|default(runtime_mode|default('remote_chunk_service', true), true) %}
+    {% set world_mode_value = runtime_value.worldMode|default(world_mode|default('chunk_service', true), true) %}
+    {% set source_mode_value = runtime_value.sourceMode|default(source_mode|default('chunk-service', true), true) %}
+
+    {% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+    {% set chunk_mode_value = chunk_value.mode|default(chunk_mode|default('editor-proxy', true), true) %}
+    {% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+    {% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+    {% set chunk_browser_base_url_value = chunk_value.browserBaseUrl|default(chunk_browser_base_url|default(chunk_api_base_url_value, true), true) %}
+    {% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+    {% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+    {% set chunk_registry_id_value = chunk_value.registryId|default('debug-blocks', true) %}
+    {% set chunk_registry_version_value = chunk_value.registryVersion|default('1', true) %}
+
+    {% set chunk_status_url_value = chunk_route_hints_value.status|default(chunk_api_base_url_value ~ '/_status', true) %}
+    {% set chunk_test_connection_url_value = chunk_route_hints_value.testConnection|default(chunk_api_base_url_value ~ '/_test/connection', true) %}
+    {% set chunk_placeable_blocks_url_value = chunk_route_hints_value.placeableBlocks|default(chunk_api_base_url_value ~ '/placeable-blocks', true) %}
+    {% set chunk_blocks_url_value = chunk_route_hints_value.blocks|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/blocks', true) %}
+    {% set chunk_chunk_url_value = chunk_route_hints_value.chunk|default(chunk_route_hints_value.chunks|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/chunks', true), true) %}
+    {% set chunk_chunks_batch_url_value = chunk_route_hints_value.chunksBatch|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/chunks/batch', true) %}
+    {% set chunk_commands_url_value = chunk_route_hints_value.commands|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/commands', true) %}
+
+    {% set request_timeout_ms_value = chunk_value.requestTimeoutMs|default(10000, true) %}
+    {% set command_timeout_ms_value = chunk_value.commandTimeoutMs|default(15000, true) %}
+    {% set batch_timeout_ms_value = chunk_value.batchTimeoutMs|default(20000, true) %}
+    {% set status_timeout_ms_value = chunk_value.statusTimeoutMs|default(5000, true) %}
+    {% set prefer_batch_load_value = chunk_value.preferBatchLoad|default(true, true) %}
+    {% set reload_dirty_after_command_value = chunk_value.reloadDirtyChunksAfterCommand|default(true, true) %}
+    {% set max_batch_chunks_value = chunk_value.maxBatchChunks|default(256, true) %}
+
+    {% set library_enabled_value = library_value.enabled|default(true, true) %}
+    {% set library_source_value = library_value.source|default('db', true) %}
+    {% set library_browser_base_url_value = library_value.browserBaseUrl|default('/editor/api/library', true) %}
+    {% set library_inventory_route_value = library_value.inventoryRoute|default(library_route_hints_value.inventory|default(inventory_route|default('/editor/api/inventory', true), true), true) %}
+    {% set creative_inventory_url_value = library_value.creativeInventoryUrl|default('http://127.0.0.1:5101/creative-inventar', true) %}
+    {% set user_inventory_url_value = library_value.userInventoryUrl|default('http://127.0.0.1:5101/user-inventar', true) %}
+    {% set library_blocks_url_value = library_route_hints_value.blocks|default(library_browser_base_url_value ~ '/blocks', true) %}
+    {% set library_tree_url_value = library_route_hints_value.tree|default(library_browser_base_url_value ~ '/tree', true) %}
+    {% set library_status_url_value = library_route_hints_value.status|default(library_browser_base_url_value ~ '/_status', true) %}
+    {% set library_health_url_value = library_route_hints_value.health|default(library_browser_base_url_value ~ '/health', true) %}
+    {% set library_db_health_url_value = library_route_hints_value.dbHealth|default(library_browser_base_url_value ~ '/db/health', true) %}
+    {% set library_publication_status_url_value = library_route_hints_value.publicationStatus|default(library_browser_base_url_value ~ '/publication-status', true) %}
+    {% set library_request_timeout_ms_value = library_value.requestTimeoutMs|default(5000, true) %}
+    {% set library_status_timeout_ms_value = library_value.statusTimeoutMs|default(3000, true) %}
+
+    {% set feature_chunk_service_enabled_value = feature_flags_value.chunkServiceEnabled|default(chunk_enabled_value, true) %}
+    {% set feature_library_service_enabled_value = feature_flags_value.libraryServiceEnabled|default(library_enabled_value, true) %}
+    {% set feature_inventory_enabled_value = feature_flags_value.inventoryEnabled|default(inventory_value.enabled|default(true, true), true) %}
+    {% set feature_library_inventory_enabled_value = feature_flags_value.libraryInventoryEnabled|default(true, true) %}
+    {% set feature_chunk_placeable_fallback_value = feature_flags_value.chunkPlaceableFallbackEnabled|default(inventory_value.allowChunkPlaceableFallback|default(false, true), true) %}
+    {% set feature_only_library_items_placeable_value = feature_flags_value.onlyLibraryItemsPlaceable|default(true, true) %}
+    {% set feature_debug_blocks_allowed_inventory_value = feature_flags_value.debugBlocksAllowedInInventory|default(false, true) %}
+    {% set feature_local_world_fallback_value = feature_flags_value.localWorldFallbackEnabled|default(false, true) %}
+    {% set feature_legacy_frontend_value = feature_flags_value.legacyFrontendEnabled|default(false, true) %}
+    {% set feature_pointer_lock_value = feature_flags_value.pointerLockEnabled|default(true, true) %}
+    {% set feature_first_person_value = feature_flags_value.firstPersonEnabled|default(true, true) %}
+    {% set feature_debug_overlay_value = feature_flags_value.debugOverlayEnabled|default(false, true) %}
+    {% set feature_crosshair_value = feature_flags_value.crosshairEnabled|default(true, true) %}
+    {% set feature_hotbar_value = feature_flags_value.hotbarEnabled|default(true, true) %}
+    {% set feature_status_bar_value = feature_flags_value.statusBarEnabled|default(true, true) %}
+    {% set feature_loading_overlay_value = feature_flags_value.loadingOverlayEnabled|default(true, true) %}
+    {% set feature_error_panel_value = feature_flags_value.errorPanelEnabled|default(true, true) %}
+
+    {% set inventory_enabled_value = inventory_value.enabled|default(feature_inventory_enabled_value, true) %}
+    {% set inventory_source_value = inventory_value.source|default(inventory_source|default('library', true), true) %}
+    {% set inventory_route_value = inventory_value.route|default(library_inventory_route_value, true) %}
+    {% set inventory_hotbar_size_value = inventory_value.hotbarSize|default(inventory_hotbar_size|default(9, true), true)|int %}
+    {% if inventory_hotbar_size_value < 1 %}
+      {% set inventory_hotbar_size_value = 9 %}
+    {% endif %}
+    {% if inventory_hotbar_size_value > 64 %}
+      {% set inventory_hotbar_size_value = 64 %}
+    {% endif %}
+    {% set inventory_selected_slot_value = inventory_value.selectedSlot|default(inventory_value.defaultSelectedSlot|default(inventory_default_selected_slot|default(0, true), true), true)|int %}
+    {% if inventory_selected_slot_value < 0 or inventory_selected_slot_value >= inventory_hotbar_size_value %}
+      {% set inventory_selected_slot_value = 0 %}
+    {% endif %}
+    {% set inventory_icon_only_value = inventory_value.iconOnly|default(false, true) %}
+    {% set inventory_allow_empty_fallback_value = inventory_value.allowEmptyFallback|default(true, true) %}
+    {% set inventory_allow_place_action_value = inventory_value.allowPlaceAction|default(true, true) %}
+    {% set inventory_allow_break_action_value = inventory_value.allowBreakAction|default(true, true) %}
+    {% set inventory_scroll_wrap_value = inventory_value.scrollWrap|default(true, true) %}
+    {% set inventory_force_refresh_on_boot_value = inventory_value.forceRefreshOnBoot|default(false, true) %}
+    {% set inventory_default_block_type_id_value = inventory_value.defaultBlockTypeId|default('', true) %}
+
+    {% set spawn_x_value = spawn_value.x|default(8, true) %}
+    {% set spawn_y_value = spawn_value.y|default(8, true) %}
+    {% set spawn_z_value = spawn_value.z|default(18, true) %}
+    {% set camera_yaw_value = camera_value.yaw|default(0, true) %}
+    {% set camera_pitch_value = camera_value.pitch|default(0, true) %}
+    {% set camera_move_speed_value = camera_value.moveSpeed|default(5.5, true) %}
+    {% set camera_sprint_multiplier_value = camera_value.sprintMultiplier|default(2.4, true) %}
+    {% set camera_look_sensitivity_value = camera_value.lookSensitivity|default(0.0025, true) %}
+    {% set camera_player_height_value = camera_value.playerHeight|default(1.8, true) %}
+
+    {% set chunks_chunk_size_value = chunks_value.chunkSize|default(16, true) %}
+    {% set chunks_view_distance_value = chunks_value.viewDistance|default(7, true) %}
+    {% set chunks_preload_radius_value = chunks_value.preloadRadius|default(1, true) %}
+    {% set chunks_unload_distance_value = chunks_value.unloadDistance|default(9, true) %}
+    {% set chunks_max_loaded_value = chunks_value.maxLoadedChunks|default(384, true) %}
+    {% set chunks_load_around_player_value = chunks_value.loadAroundPlayer|default(true, true) %}
+    {% set chunks_debug_bounds_value = chunks_value.debugDrawChunkBounds|default(false, true) %}
+
+    {% set fallback_active_value = fallback_payload_value.active|default(fallback_active|default(false, true), true) %}
+    {% set fallback_reason_value = fallback_payload_value.reason|default(fallback_reason|default('', true), true) %}
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="application-name" content="{{ app_name_value }}" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="description" content="{{ app_display_name_value }} Remote Chunk Runtime" />
+    <title>{{ page_title_value }}</title>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --vp-bg: #020617;
+        --vp-text: #e5e7eb;
+        --vp-muted: #94a3b8;
+        --vp-danger: #f87171;
+        --vp-accent: #38bdf8;
+        --vp-library: #a78bfa;
+        --vp-overlay-bg: rgba(2, 6, 23, 0.84);
+        --vp-card-bg: rgba(15, 23, 42, 0.94);
+        --vp-border: rgba(148, 163, 184, 0.28);
+        --vp-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+        --vp-hotbar-bg: rgba(8, 12, 18, 0.64);
+        --vp-hotbar-slot-bg: rgba(15, 23, 42, 0.76);
+        --vp-hotbar-slot-selected-bg: rgba(255, 255, 255, 0.18);
+        --vp-hotbar-border: rgba(255, 255, 255, 0.2);
+        --vp-hotbar-selected-border: rgba(255, 255, 255, 0.72);
+        --vp-crosshair-color: rgba(255, 255, 255, 0.86);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        overscroll-behavior: none;
+        background: var(--vp-bg);
+        color: var(--vp-text);
+      }
+
+      body {
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        width: 100dvw;
+        height: 100vh;
+        height: 100dvh;
+        touch-action: none;
+        user-select: none;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      .vectoplan-editor-root {
+        position: fixed;
+        inset: 0;
+        display: block;
+        width: 100vw;
+        width: 100dvw;
+        height: 100vh;
+        height: 100dvh;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background: var(--vp-bg);
+      }
+
+      .vectoplan-editor-main,
+      .vectoplan-editor-viewport-shell,
+      .vectoplan-editor-canvas-host {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        outline: 0;
+        background: var(--vp-bg);
+      }
+
+      .vectoplan-editor-canvas-host {
+        z-index: 1;
+      }
+
+      .vectoplan-editor-canvas-host canvas,
+      canvas[data-editor-canvas],
+      canvas[data-vectoplan-editor-canvas],
+      canvas[data-vectoplan-canvas] {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        outline: none !important;
+        background: var(--vp-bg);
+      }
+
+      .vectoplan-editor-canvas-host:focus,
+      .vectoplan-editor-canvas-host:focus-visible,
+      .vectoplan-editor-canvas-host canvas:focus,
+      .vectoplan-editor-canvas-host canvas:focus-visible {
+        outline: none !important;
+      }
+
+      .vectoplan-editor-viewport-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .vectoplan-editor-topbar {
+        position: fixed !important;
+        width: 1px !important;
+        height: 1px !important;
+        min-width: 1px !important;
+        min-height: 1px !important;
+        max-width: 1px !important;
+        max-height: 1px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        clip: rect(0 0 0 0) !important;
+        clip-path: inset(50%) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .vectoplan-editor-brand,
+      .vectoplan-editor-status {
+        pointer-events: none !important;
+      }
+
+      .vectoplan-editor-crosshair {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 70;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translate(-50%, -50%);
+        color: var(--vp-crosshair-color);
+        pointer-events: none;
+        user-select: none;
+        opacity: 0.88;
+        visibility: visible;
+        contain: layout style paint;
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-visible="false"],
+      .vectoplan-editor-crosshair[hidden] {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      /* Hytale-style aim marker: a clear central dot without decorative arms. */
+      .vectoplan-editor-crosshair__line {
+        display: none !important;
+      }
+
+      .vectoplan-editor-crosshair__center {
+        width: 7px !important;
+        height: 7px !important;
+      }
+
+      .vectoplan-editor-crosshair__center,
+      .vectoplan-editor-crosshair__line {
+        position: absolute;
+        display: block;
+        background: currentColor;
+        border-radius: 999px;
+        box-shadow:
+          0 0 2px rgba(0, 0, 0, 0.95),
+          0 0 5px rgba(0, 0, 0, 0.55);
+      }
+
+      .vectoplan-editor-crosshair__center {
+        left: 50%;
+        top: 50%;
+        width: 4px;
+        height: 4px;
+        transform: translate(-50%, -50%);
+      }
+
+      .vectoplan-editor-crosshair__line--top {
+        left: 50%;
+        top: 50%;
+        width: 2px;
+        height: 8px;
+        transform: translate(-50%, -155%);
+      }
+
+      .vectoplan-editor-crosshair__line--right {
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 2px;
+        transform: translate(60%, -50%);
+      }
+
+      .vectoplan-editor-crosshair__line--bottom {
+        left: 50%;
+        top: 50%;
+        width: 2px;
+        height: 8px;
+        transform: translate(-50%, 60%);
+      }
+
+      .vectoplan-editor-crosshair__line--left {
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 2px;
+        transform: translate(-160%, -50%);
+      }
+
+      .vectoplan-editor-crosshair__label {
+        position: absolute;
+        left: 50%;
+        top: calc(50% + 24px);
+        max-width: 240px;
+        overflow: hidden;
+        color: currentColor;
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.2;
+        letter-spacing: 0.02em;
+        text-overflow: ellipsis;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+        transform: translateX(-50%);
+        white-space: nowrap;
+        opacity: 0;
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-variant="place"] {
+        color: rgba(120, 255, 160, 0.95);
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-variant="library"],
+      .vectoplan-editor-crosshair[data-crosshair-variant="vplib"] {
+        color: rgba(167, 139, 250, 0.96);
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-variant="remove"] {
+        color: rgba(255, 210, 95, 0.95);
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-variant="blocked"],
+      .vectoplan-editor-crosshair[data-crosshair-variant="error"],
+      .vectoplan-editor-crosshair[data-crosshair-variant="no-library-item"] {
+        color: rgba(255, 85, 85, 0.98);
+      }
+
+      .vectoplan-editor-crosshair[data-crosshair-variant="blocked"] .vectoplan-editor-crosshair__label,
+      .vectoplan-editor-crosshair[data-crosshair-variant="error"] .vectoplan-editor-crosshair__label,
+      .vectoplan-editor-crosshair[data-crosshair-variant="no-library-item"] .vectoplan-editor-crosshair__label {
+        opacity: 1;
+      }
+
+      .vectoplan-editor-hotbar-shell {
+        position: fixed;
+        left: 50%;
+        bottom: max(18px, env(safe-area-inset-bottom));
+        z-index: 80;
+        display: block;
+        width: auto;
+        max-width: min(calc(100vw - 32px), 920px);
+        padding: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        background: var(--vp-hotbar-bg);
+        box-shadow:
+          0 12px 48px rgba(0, 0, 0, 0.36),
+          inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        transform: translateX(-50%);
+        pointer-events: none;
+        user-select: none;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .vectoplan-editor-hotbar-shell[data-hotbar-visible="false"],
+      .vectoplan-editor-hotbar-shell[hidden] {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .vectoplan-editor-hotbar-slots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        pointer-events: auto;
+      }
+
+      .vp-hotbar-slot {
+        position: relative;
+        width: 56px;
+        height: 56px;
+        padding: 4px;
+        border: 1px solid var(--vp-hotbar-border);
+        border-radius: 12px;
+        background: var(--vp-hotbar-slot-bg);
+        color: rgba(255, 255, 255, 0.92);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.06),
+          0 6px 20px rgba(0, 0, 0, 0.24);
+        cursor: default;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        outline: none;
+        transition:
+          transform 100ms ease,
+          border-color 100ms ease,
+          background 100ms ease,
+          box-shadow 100ms ease;
+      }
+
+      .vp-hotbar-slot[data-source="library"],
+      .vp-hotbar-slot[data-item-kind="vplib"] {
+        border-color: rgba(167, 139, 250, 0.38);
+      }
+
+      .vp-hotbar-slot[data-empty="true"] {
+        opacity: 0.62;
+      }
+
+      .vp-hotbar-slot[data-selected="true"],
+      .vp-hotbar-slot[aria-current="true"] {
+        border-color: var(--vp-hotbar-selected-border);
+        background: var(--vp-hotbar-slot-selected-bg);
+        box-shadow:
+          0 0 0 2px rgba(255, 255, 255, 0.24),
+          0 10px 28px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+        transform: translateY(-4px) scale(1.05);
+      }
+
+      .vp-hotbar-slot[data-selected="true"][data-source="library"],
+      .vp-hotbar-slot[aria-current="true"][data-source="library"],
+      .vp-hotbar-slot[data-selected="true"][data-item-kind="vplib"],
+      .vp-hotbar-slot[aria-current="true"][data-item-kind="vplib"] {
+        border-color: rgba(196, 181, 253, 0.9);
+        box-shadow:
+          0 0 0 2px rgba(167, 139, 250, 0.28),
+          0 10px 28px rgba(0, 0, 0, 0.34),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      }
+
+      .vp-hotbar-slot:focus-visible {
+        border-color: rgba(56, 189, 248, 0.9);
+        box-shadow:
+          0 0 0 3px rgba(56, 189, 248, 0.3),
+          0 10px 28px rgba(0, 0, 0, 0.34);
+      }
+
+      .vp-hotbar-slot span {
+        min-width: 0;
+      }
+
+      .editor-hotbar-slot-icon--library-item,
+      .editor-hotbar-slot-icon--vplib,
+      [class*="editor-hotbar-slot-icon--vplib"] {
+        color: var(--vp-library);
+      }
+
+      .vectoplan-editor-hotbar-bridge {
+        display: none !important;
+      }
+
+      .vectoplan-user-inventory-frame {
+        position: fixed;
+        left: 50%;
+        bottom: 6px;
+        z-index: 100;
+        display: block;
+        width: 812px;
+        min-width: 812px;
+        max-width: none;
+        height: 112px;
+        border: 0;
+        background: transparent;
+        transform: translateX(-50%);
+        pointer-events: auto;
+        color-scheme: light;
+      }
+
+      .vectoplan-user-inventory-frame[hidden] {
+        display: none;
+      }
+
+      .vectoplan-editor-debug-overlay {
+        display: none !important;
+      }
+
+      .vectoplan-editor-live-region,
+      .vp-visually-hidden {
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .vectoplan-editor-loading-overlay,
+      .vectoplan-editor-error-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        width: 100vw;
+        width: 100dvw;
+        height: 100vh;
+        height: 100dvh;
+        padding: 24px;
+        background: var(--vp-overlay-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+
+      .vectoplan-editor-loading-card,
+      .vectoplan-editor-error-card {
+        width: min(560px, calc(100vw - 32px));
+        padding: 18px;
+        border: 1px solid var(--vp-border);
+        border-radius: 18px;
+        background: var(--vp-card-bg);
+        box-shadow: var(--vp-shadow);
+      }
+
+      .vectoplan-editor-loading-card strong,
+      .vectoplan-editor-error-card strong {
+        display: block;
+        margin: 0 0 8px;
+        font-size: 16px;
+        line-height: 1.25;
+      }
+
+      .vectoplan-editor-loading-card span,
+      .vectoplan-editor-error-card p,
+      .vectoplan-editor-error-card pre {
+        margin: 0;
+        color: var(--vp-muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .vectoplan-editor-error-card {
+        border-color: rgba(248, 113, 113, 0.45);
+      }
+
+      .vectoplan-editor-error-card strong {
+        color: var(--vp-danger);
+      }
+
+      .noscript-notice {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 200;
+        padding: 12px 14px;
+        border: 1px solid rgba(248, 113, 113, 0.45);
+        border-radius: 12px;
+        background: #2b1111;
+        color: #fecaca;
+        font: 14px/1.45 system-ui, sans-serif;
+      }
+
+      @media (max-width: 720px) {
+        .vectoplan-editor-hotbar-shell {
+          bottom: max(12px, env(safe-area-inset-bottom));
+          max-width: calc(100vw - 16px);
+          padding: 6px;
+          border-radius: 14px;
+        }
+
+        .vectoplan-editor-hotbar-slots {
+          gap: 4px;
+        }
+
+        .vp-hotbar-slot {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+
+    {% for preload_href in assets_value.preload|default([], true) %}
+      <link rel="modulepreload" href="{{ preload_href }}">
+    {% endfor %}
+
+    {% for css_href in assets_value.css|default([], true) %}
+      <link rel="stylesheet" href="{{ css_href }}">
+    {% endfor %}
+  </head>
+
+  <body
+    class="vectoplan-editor-body vectoplan-editor-body--fullscreen{% if fallback_active_value %} vectoplan-editor-body--fallback{% endif %}"
+    data-editor-body="true"
+    data-editor-fullscreen-body="true"
+    data-runtime-mode="{{ runtime_mode_value }}"
+    data-world-mode="{{ world_mode_value }}"
+    data-source-mode="{{ source_mode_value }}"
+  >
+    <div
+      id="vectoplan-editor-root"
+      class="vectoplan-editor-root editor-app editor-app--fullscreen editor-app--remote-chunk-service editor-runtime-state--bootstrapping{% if fallback_active_value %} editor-app--fallback{% endif %}"
+      role="application"
+      aria-label="{{ app_display_name_value }}"
+      data-editor-root="true"
+      data-vectoplan-editor-root="true"
+      data-editor-app="true"
+      data-editor-fullscreen-root="true"
+      data-app-name="{{ app_name_value }}"
+      data-app-display-name="{{ app_display_name_value }}"
+      data-service-version="{{ service_version_value }}"
+      data-build-mode="{{ build_mode_value }}"
+      data-build-version="{{ build_version_value }}"
+      data-route="/editor"
+      data-page-title="{{ page_title_value }}"
+      data-brand-name="{{ brand_name_value }}"
+      data-bootstrap-source="window-and-dataset"
+      data-runtime-state="bootstrapping"
+      data-runtime-started="false"
+      data-runtime-mode="{{ runtime_mode_value }}"
+      data-editor-runtime-mode="{{ runtime_mode_value }}"
+      data-world-mode="{{ world_mode_value }}"
+      data-editor-world-mode="{{ world_mode_value }}"
+      data-source-mode="{{ source_mode_value }}"
+      data-editor-source-mode="{{ source_mode_value }}"
+
+      data-chunk-service-enabled="{{ 'true' if feature_chunk_service_enabled_value else 'false' }}"
+      data-chunk-service-api-base-url="{{ chunk_api_base_url_value }}"
+      data-chunk-service-browser-base-url="{{ chunk_browser_base_url_value }}"
+      data-chunk-service-project-id="{{ chunk_project_id_value }}"
+      data-chunk-service-world-id="{{ chunk_world_id_value }}"
+      data-chunk-service-source-kind="{{ chunk_source_kind_value }}"
+      data-chunk-service-mode="{{ chunk_mode_value }}"
+      data-chunk-service-registry-id="{{ chunk_registry_id_value }}"
+      data-chunk-service-registry-version="{{ chunk_registry_version_value }}"
+      data-chunk-api-base-url="{{ chunk_api_base_url_value }}"
+      data-chunk-browser-base-url="{{ chunk_browser_base_url_value }}"
+      data-chunk-project-id="{{ chunk_project_id_value }}"
+      data-chunk-world-id="{{ chunk_world_id_value }}"
+      data-chunk-status-url="{{ chunk_status_url_value }}"
+      data-chunk-test-connection-url="{{ chunk_test_connection_url_value }}"
+      data-chunk-placeable-blocks-url="{{ chunk_placeable_blocks_url_value }}"
+      data-chunk-placeable-blocks-debug-only="true"
+      data-chunk-placeable-blocks-inventory-source="false"
+      data-chunk-blocks-url="{{ chunk_blocks_url_value }}"
+      data-chunk-url="{{ chunk_chunk_url_value }}"
+      data-chunks-url="{{ chunk_chunk_url_value }}"
+      data-chunks-batch-url="{{ chunk_chunks_batch_url_value }}"
+      data-chunk-commands-url="{{ chunk_commands_url_value }}"
+      data-chunk-route-hints-json="{{ chunk_route_hints_value | tojson | forceescape }}"
+      data-chunk-request-timeout-ms="{{ request_timeout_ms_value }}"
+      data-chunk-command-timeout-ms="{{ command_timeout_ms_value }}"
+      data-chunk-batch-timeout-ms="{{ batch_timeout_ms_value }}"
+      data-chunk-status-timeout-ms="{{ status_timeout_ms_value }}"
+      data-chunk-prefer-batch-load="{{ 'true' if prefer_batch_load_value else 'false' }}"
+      data-chunk-reload-dirty-after-command="{{ 'true' if reload_dirty_after_command_value else 'false' }}"
+      data-chunk-max-batch-chunks="{{ max_batch_chunks_value }}"
+
+      data-library-service-enabled="{{ 'true' if feature_library_service_enabled_value else 'false' }}"
+      data-library-source="{{ library_source_value }}"
+      data-library-browser-base-url="{{ library_browser_base_url_value }}"
+      data-library-inventory-route="{{ library_inventory_route_value }}"
+      data-creative-inventory-url="{{ creative_inventory_url_value }}"
+      data-user-inventory-url="{{ user_inventory_url_value }}"
+      data-library-blocks-url="{{ library_blocks_url_value }}"
+      data-library-tree-url="{{ library_tree_url_value }}"
+      data-library-status-url="{{ library_status_url_value }}"
+      data-library-health-url="{{ library_health_url_value }}"
+      data-library-db-health-url="{{ library_db_health_url_value }}"
+      data-library-publication-status-url="{{ library_publication_status_url_value }}"
+      data-library-request-timeout-ms="{{ library_request_timeout_ms_value }}"
+      data-library-status-timeout-ms="{{ library_status_timeout_ms_value }}"
+      data-library-route-hints-json="{{ library_route_hints_value | tojson | forceescape }}"
+
+      data-inventory-enabled="{{ 'true' if inventory_enabled_value else 'false' }}"
+      data-inventory-source="{{ inventory_source_value }}"
+      data-inventory-route="{{ inventory_route_value }}"
+      data-inventory-url="{{ inventory_route_value }}"
+      data-inventory-api-url="{{ inventory_route_value }}"
+      data-inventory-hotbar-size="{{ inventory_hotbar_size_value }}"
+      data-inventory-selected-slot="{{ inventory_selected_slot_value }}"
+      data-inventory-default-selected-slot="{{ inventory_selected_slot_value }}"
+      data-inventory-default-block-type-id="{{ inventory_default_block_type_id_value }}"
+      data-inventory-icon-only="{{ 'true' if inventory_icon_only_value else 'false' }}"
+      data-inventory-scroll-wrap="{{ 'true' if inventory_scroll_wrap_value else 'false' }}"
+      data-inventory-allow-place-action="{{ 'true' if inventory_allow_place_action_value else 'false' }}"
+      data-inventory-allow-break-action="{{ 'true' if inventory_allow_break_action_value else 'false' }}"
+      data-inventory-force-refresh-on-boot="{{ 'true' if inventory_force_refresh_on_boot_value else 'false' }}"
+      data-inventory-allow-empty-fallback="{{ 'true' if inventory_allow_empty_fallback_value else 'false' }}"
+      data-inventory-allow-chunk-placeable-fallback="{{ 'true' if feature_chunk_placeable_fallback_value else 'false' }}"
+      data-inventory-only-library-items-placeable="{{ 'true' if feature_only_library_items_placeable_value else 'false' }}"
+      data-inventory-debug-grass-dirt-allowed="{{ 'true' if feature_debug_blocks_allowed_inventory_value else 'false' }}"
+      data-inventory-kind="vplib"
+      data-inventory-truth-owner="vectoplan-library"
+
+      data-local-world-fallback-enabled="{{ 'true' if feature_local_world_fallback_value else 'false' }}"
+      data-legacy-frontend-enabled="{{ 'true' if feature_legacy_frontend_value else 'false' }}"
+      data-pointer-lock-enabled="{{ 'true' if feature_pointer_lock_value else 'false' }}"
+      data-first-person-enabled="{{ 'true' if feature_first_person_value else 'false' }}"
+      data-debug-overlay-enabled="{{ 'true' if feature_debug_overlay_value else 'false' }}"
+      data-crosshair-enabled="{{ 'true' if feature_crosshair_value else 'false' }}"
+      data-hotbar-enabled="{{ 'true' if feature_hotbar_value else 'false' }}"
+      data-status-bar-enabled="{{ 'true' if feature_status_bar_value else 'false' }}"
+      data-loading-overlay-enabled="{{ 'true' if feature_loading_overlay_value else 'false' }}"
+      data-error-panel-enabled="{{ 'true' if feature_error_panel_value else 'false' }}"
+
+      data-camera-spawn-x="{{ spawn_x_value }}"
+      data-camera-spawn-y="{{ spawn_y_value }}"
+      data-camera-spawn-z="{{ spawn_z_value }}"
+      data-camera-yaw="{{ camera_yaw_value }}"
+      data-camera-pitch="{{ camera_pitch_value }}"
+      data-camera-move-speed="{{ camera_move_speed_value }}"
+      data-camera-sprint-multiplier="{{ camera_sprint_multiplier_value }}"
+      data-camera-look-sensitivity="{{ camera_look_sensitivity_value }}"
+      data-camera-player-height="{{ camera_player_height_value }}"
+
+      data-chunks-chunk-size="{{ chunks_chunk_size_value }}"
+      data-chunks-view-distance="{{ chunks_view_distance_value }}"
+      data-chunks-preload-radius="{{ chunks_preload_radius_value }}"
+      data-chunks-unload-distance="{{ chunks_unload_distance_value }}"
+      data-chunks-max-loaded-chunks="{{ chunks_max_loaded_value }}"
+      data-chunks-load-around-player="{{ 'true' if chunks_load_around_player_value else 'false' }}"
+      data-chunks-debug-draw-chunk-bounds="{{ 'true' if chunks_debug_bounds_value else 'false' }}"
+
+      data-block-world-enabled="{{ 'true' if block_world_value.enabled|default(false, true) else 'false' }}"
+      data-block-world-legacy="{{ 'true' if block_world_value.legacy|default(true, true) else 'false' }}"
+      data-block-world-truth-owner="{{ block_world_value.truthOwner|default('vectoplan-chunk', true) }}"
+
+      data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
+      data-fallback-reason="{{ fallback_reason_value }}"
+    >
+      <header
+        class="vectoplan-editor-topbar"
+        data-editor-topbar="true"
+        data-editor-status-bar="true"
+        aria-hidden="true"
+      >
+        <div class="vectoplan-editor-brand" data-editor-brand="true">
+          <strong data-editor-brand-label>{{ brand_name_value }}</strong>
+          <span class="vectoplan-editor-build-label" data-editor-build-label>
+            {{ build_mode_value }} · {{ build_version_value }}
+          </span>
+        </div>
+
+        <div
+          class="vectoplan-editor-status"
+          data-editor-source-status="bootstrapping"
+          data-editor-world-status="bootstrapping"
+          data-editor-inventory-status="bootstrapping"
+        >
+          <span
+            class="vectoplan-editor-status-dot"
+            data-editor-source-status-dot="true"
+            aria-hidden="true"
+          ></span>
+          <span data-editor-source-status-label>
+            Chunk-Service und Library-Inventar werden vorbereitet
+          </span>
+          <span class="vectoplan-editor-project-label" data-editor-project-label>
+            {{ chunk_project_id_value }} / {{ chunk_world_id_value }}
+          </span>
+        </div>
+      </header>
+
+      <main
+        class="vectoplan-editor-main"
+        data-editor-main="true"
+      >
+        <section
+          class="vectoplan-editor-viewport-shell"
+          data-editor-viewport-shell="true"
+          aria-label="3D Editor Viewport"
+        >
+          <div
+            class="vectoplan-editor-canvas-host"
+            data-editor-canvas-host="true"
+            tabindex="0"
+            aria-label="3D Viewport"
+          ></div>
+
+          <div
+            class="vectoplan-editor-viewport-overlay"
+            data-editor-viewport-overlay="true"
+            data-editor-overlay="viewport"
+            aria-hidden="true"
+          >
+            <div
+              class="vectoplan-editor-crosshair"
+              data-editor-crosshair="true"
+              data-crosshair-visible="{{ 'true' if feature_crosshair_value else 'false' }}"
+              data-crosshair-enabled="{{ 'true' if feature_crosshair_value else 'false' }}"
+              data-crosshair-variant="neutral"
+              data-crosshair-requires-library-item="true"
+              aria-hidden="true"
+              {% if not feature_crosshair_value %}hidden{% endif %}
+            >
+              <span class="vectoplan-editor-crosshair__center"></span>
+              <span class="vectoplan-editor-crosshair__line vectoplan-editor-crosshair__line--top"></span>
+              <span class="vectoplan-editor-crosshair__line vectoplan-editor-crosshair__line--right"></span>
+              <span class="vectoplan-editor-crosshair__line vectoplan-editor-crosshair__line--bottom"></span>
+              <span class="vectoplan-editor-crosshair__line vectoplan-editor-crosshair__line--left"></span>
+              <span class="vectoplan-editor-crosshair__label"></span>
+            </div>
+          </div>
+
+          <div
+            class="vectoplan-editor-loading-overlay"
+            data-editor-loading-overlay="true"
+            role="status"
+            aria-live="polite"
+          >
+            <div class="vectoplan-editor-loading-card">
+              <strong data-editor-loading-title>Editor wird geladen</strong>
+              <span data-editor-loading-message data-editor-loading-text>
+                Runtime, Chunk-Service, Library-Inventar und Viewport werden initialisiert.
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="vectoplan-editor-error-overlay"
+            data-editor-error-overlay="true"
+            data-editor-error-panel="true"
+            role="alert"
+            aria-live="assertive"
+            tabindex="-1"
+            hidden
+          >
+            <div class="vectoplan-editor-error-card">
+              <strong data-editor-error-title>Editor konnte nicht gestartet werden</strong>
+              <p data-editor-error-message data-editor-error-text>
+                Ein Fehler ist beim Start der Editor-Runtime aufgetreten.
+              </p>
+              <pre data-editor-error-details hidden></pre>
+            </div>
+          </div>
+
+          <div
+            class="vectoplan-editor-debug-overlay"
+            data-editor-debug-overlay="true"
+            hidden
+          ></div>
+        </section>
+      </main>
+
+      <footer
+        class="vectoplan-editor-hotbar-bridge"
+        data-editor-hotbar="true"
+        data-hotbar-source="{{ inventory_source_value }}"
+        data-hotbar-route="{{ inventory_route_value }}"
+        aria-hidden="true"
+        hidden
+      >
+        <div
+          data-editor-hotbar-slots="true"
+          data-hotbar-slots-source="{{ inventory_source_value }}"
+        ></div>
+      </footer>
+
+      <iframe
+        class="vectoplan-user-inventory-frame"
+        data-user-inventory-frame="true"
+        data-editor-ui-interactive="true"
+        src="{{ user_inventory_url_value }}"
+        title="VECTOPLAN User-Inventar"
+        loading="eager"
+        allowtransparency="true"
+        referrerpolicy="strict-origin-when-cross-origin"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        {% if not feature_hotbar_value %}hidden{% endif %}
+      ></iframe>
+
+      <div
+        class="vectoplan-editor-live-region"
+        data-editor-live-region="true"
+        aria-live="polite"
+        aria-atomic="true"
+      ></div>
+    </div>
+
+    <noscript>
+      <div class="noscript-notice" role="alert">
+        JavaScript ist deaktiviert. Die Editor-Seite wurde geladen, aber die
+        Client-Runtime für den 3D-Viewport kann nicht gestartet werden.
+      </div>
+    </noscript>
+
+    {% include "editor/partials/bootstrap_scripts.html" ignore missing %}
+
+    {% for js_src in assets_value.js|default([], true) %}
+      <script type="module" src="{{ js_src }}"></script>
+    {% endfor %}
+  </body>
+</html>

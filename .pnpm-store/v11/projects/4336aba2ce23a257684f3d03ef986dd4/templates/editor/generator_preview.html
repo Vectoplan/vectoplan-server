@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de" data-vectoplan-generator-preview-document="true">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="color-scheme" content="dark" />
+  <title>{{ page_title|default('VECTOPLAN Editor · Generator-Vorschau', true) }}</title>
+
+  {% set assets = editor_assets|default({}, true) %}
+  {% for href in assets.preload|default([], true) %}
+    <link rel="modulepreload" href="{{ href }}" />
+  {% endfor %}
+  {% for href in assets.css|default([], true) %}
+    <link rel="stylesheet" href="{{ href }}" />
+  {% endfor %}
+</head>
+<body>
+  <main
+    class="generator-preview"
+    data-editor-generator-preview
+    data-generator-preview-contract="{{ generator_preview.contract }}"
+    data-generator-preview-parent-origin="{{ generator_preview.parentOrigin }}"
+    data-generator-preview-chunk-enabled="false"
+    data-generator-preview-inventory-enabled="false"
+    data-generator-preview-realtime-enabled="false"
+  >
+    <canvas
+      class="generator-preview__canvas"
+      data-generator-preview-canvas
+      aria-label="Interaktive 3D-Vorschau des Library-Bausteins"
+    ></canvas>
+
+    <div class="generator-preview__topbar">
+      <div class="generator-preview__identity">
+        <span class="generator-preview__eyebrow">EDITOR TEST-GENERATOR</span>
+        <strong data-generator-preview-title>Library-Baustein</strong>
+        <span data-generator-preview-details>1 × 1 × 1 m</span>
+      </div>
+      <div class="generator-preview__actions">
+        <button type="button" data-generator-preview-reset>Kamera zurücksetzen</button>
+        <button type="button" data-generator-preview-fullscreen>Vollbild</button>
+      </div>
+    </div>
+
+    <div data-generator-preview-environment-controls></div>
+    <div class="generator-preview__crosshair" aria-hidden="true"></div>
+
+    <div class="generator-preview__status" data-generator-preview-status data-status="loading">
+      Editor-Vorschau wird gestartet …
+    </div>
+    <div class="generator-preview__help">
+      Klicken zum Umsehen · WASD laufen · Shift sprinten · Leertaste springen · Esc lösen
+    </div>
+
+    <script type="application/json" data-generator-preview-bootstrap>
+      {{ generator_preview|tojson }}
+    </script>
+  </main>
+
+  {% for src in assets.js|default([], true) %}
+    <script type="module" src="{{ src }}"></script>
+  {% endfor %}
+</body>
+</html>

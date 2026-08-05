@@ -1,0 +1,219 @@
+:root {
+  color-scheme: dark;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #020617;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #020617;
+}
+
+button {
+  font: inherit;
+}
+
+.generator-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  overflow: hidden;
+  background: #020617;
+  isolation: isolate;
+}
+
+.generator-preview__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  cursor: crosshair;
+}
+
+.generator-preview[data-pointer-locked="true"] .generator-preview__canvas {
+  cursor: none;
+}
+
+.generator-preview__topbar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.86), transparent);
+}
+
+.generator-preview__identity {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+  color: #f8fafc;
+  text-shadow: 0 1px 8px rgba(2, 6, 23, 0.85);
+}
+
+.generator-preview__identity strong {
+  max-width: min(58vw, 28rem);
+  overflow: hidden;
+  font-size: clamp(0.84rem, 2.4vw, 1rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.generator-preview__identity > span:last-child {
+  color: #bfdbfe;
+  font-size: 0.72rem;
+}
+
+.generator-preview__eyebrow {
+  color: #60a5fa;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.generator-preview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  pointer-events: auto;
+}
+
+.generator-preview__actions button {
+  min-height: 2rem;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 0.55rem;
+  background: rgba(15, 23, 42, 0.82);
+  color: #e2e8f0;
+  font-size: 0.67rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.generator-preview__actions button:hover {
+  border-color: rgba(96, 165, 250, 0.8);
+  background: rgba(30, 64, 175, 0.72);
+}
+
+[data-generator-preview-environment-controls] {
+  position: absolute;
+  top: 4.5rem;
+  right: 0.75rem;
+  z-index: 5;
+  width: min(15rem, calc(100% - 1.5rem));
+  pointer-events: auto;
+}
+
+[data-generator-preview-environment-controls] .editor-environment-controls {
+  position: static;
+  width: 100%;
+  font-size: 0.68rem;
+}
+
+.generator-preview__crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 4;
+  width: 0.9rem;
+  height: 0.9rem;
+  margin: -0.45rem;
+  pointer-events: none;
+  opacity: 0.82;
+}
+
+.generator-preview__crosshair::before,
+.generator-preview__crosshair::after {
+  content: "";
+  position: absolute;
+  background: #f8fafc;
+  border-radius: 999px;
+  box-shadow: 0 0 0.25rem rgba(2, 6, 23, 0.9);
+}
+
+.generator-preview__crosshair::before {
+  top: calc(50% - 1px);
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+.generator-preview__crosshair::after {
+  top: 0;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 100%;
+}
+
+.generator-preview__status,
+.generator-preview__help {
+  position: absolute;
+  z-index: 5;
+  right: 0.75rem;
+  left: 0.75rem;
+  width: fit-content;
+  max-width: calc(100% - 1.5rem);
+  padding: 0.38rem 0.56rem;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 0.55rem;
+  background: rgba(2, 6, 23, 0.74);
+  color: #cbd5e1;
+  font-size: 0.67rem;
+  line-height: 1.35;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+}
+
+.generator-preview__status {
+  bottom: 2.9rem;
+  color: #bfdbfe;
+}
+
+.generator-preview__status[data-status="error"] {
+  border-color: rgba(248, 113, 113, 0.5);
+  color: #fecaca;
+}
+
+.generator-preview__status[data-status="ready"] {
+  border-color: rgba(52, 211, 153, 0.35);
+  color: #a7f3d0;
+}
+
+.generator-preview__help {
+  bottom: 0.75rem;
+}
+
+@media (max-width: 520px) {
+  .generator-preview__topbar {
+    display: grid;
+  }
+
+  .generator-preview__actions {
+    justify-content: flex-start;
+  }
+
+  [data-generator-preview-environment-controls] {
+    top: 7.5rem;
+  }
+
+  .generator-preview__help {
+    font-size: 0.6rem;
+  }
+}

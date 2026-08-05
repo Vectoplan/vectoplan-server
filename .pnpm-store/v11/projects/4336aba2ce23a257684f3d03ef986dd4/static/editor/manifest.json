@@ -1,0 +1,41 @@
+{
+  "_three-ByG-KSzV.js": {
+    "file": "assets/chunks/three-ByG-KSzV.js",
+    "name": "three"
+  },
+  "assets/models/vectoplan-human.glb": {
+    "file": "assets/vectoplan-human-CNkOLTHg.glb",
+    "src": "assets/models/vectoplan-human.glb"
+  },
+  "generator_preview/generator_preview_runtime.ts": {
+    "file": "assets/chunks/generator_preview_runtime-CZPl7ILU.js",
+    "name": "generator_preview_runtime",
+    "src": "generator_preview/generator_preview_runtime.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_three-ByG-KSzV.js",
+      "main.ts"
+    ],
+    "css": [
+      "assets/generator_preview_runtime-B94iRKg4.css"
+    ]
+  },
+  "main.ts": {
+    "file": "assets/main-ChjTWdcD.js",
+    "name": "main",
+    "src": "main.ts",
+    "isEntry": true,
+    "imports": [
+      "_three-ByG-KSzV.js"
+    ],
+    "dynamicImports": [
+      "generator_preview/generator_preview_runtime.ts"
+    ],
+    "css": [
+      "assets/main-9j9q0M3Y.css"
+    ],
+    "assets": [
+      "assets/vectoplan-human-CNkOLTHg.glb"
+    ]
+  }
+}

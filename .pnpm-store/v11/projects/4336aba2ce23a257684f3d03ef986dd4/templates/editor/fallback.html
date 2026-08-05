@@ -1,0 +1,936 @@
+<!-- services/vectoplan-editor/templates/editor/fallback.html -->
+<!DOCTYPE html>
+<html
+  lang="de"
+  class="vectoplan-editor-document vectoplan-editor-document--fallback"
+  data-editor-document="true"
+  data-editor-fallback-document="true"
+>
+  <head>
+    {% set bootstrap_value = editor_bootstrap_payload|default(bootstrap_payload|default({}, true), true) %}
+    {% set service_value = bootstrap_value.service|default({}, true) %}
+    {% set build_value = bootstrap_value.build|default({}, true) %}
+    {% set runtime_value = bootstrap_value.runtime|default({}, true) %}
+    {% set ui_value = runtime_value.ui|default({}, true) %}
+    {% set chunk_value = bootstrap_value.chunk|default(runtime_value.chunk|default(chunk|default(chunk_config|default({}, true), true), true), true) %}
+    {% set feature_flags_value = bootstrap_value.featureFlags|default(runtime_value.featureFlags|default(feature_flags|default({}, true), true), true) %}
+    {% set inventory_value = runtime_value.inventory|default({}, true) %}
+    {% set chunks_value = runtime_value.chunks|default({}, true) %}
+    {% set fallback_value = bootstrap_value.fallback|default({}, true) %}
+    {% set editor_assets_value = editor_assets|default({}, true) %}
+    {% set route_hints_value = chunk_value.routeHints|default(chunk_route_hints|default({}, true), true) %}
+
+    {% set page_title_value = bootstrap_value.pageTitle|default(ui_value.pageTitle|default(page_title|default('VECTOPLAN Editor', true), true), true) %}
+    {% set brand_name_value = bootstrap_value.brandName|default(ui_value.brandName|default(brand_name|default('VECTOPLAN Editor', true), true), true) %}
+    {% set app_name_value = service_value.name|default(app_name|default('vectoplan-editor', true), true) %}
+    {% set app_display_name_value = service_value.displayName|default(app_display_name|default('VECTOPLAN Editor', true), true) %}
+    {% set service_version_value = service_value.version|default(service_version|default('0.1.0', true), true) %}
+    {% set build_mode_value = build_value.mode|default(build_mode|default('development', true), true) %}
+    {% set build_version_value = build_value.version|default(build_version|default('dev', true), true) %}
+
+    {% set runtime_mode_value = runtime_value.mode|default(runtime_mode|default('remote_chunk_service', true), true) %}
+    {% set world_mode_value = runtime_value.worldMode|default(world_mode|default('chunk_service', true), true) %}
+    {% set source_mode_value = runtime_value.sourceMode|default(source_mode|default('chunk-service', true), true) %}
+
+    {% set chunk_enabled_value = chunk_value.enabled|default(chunk_enabled|default(true, true), true) %}
+    {% set chunk_mode_value = chunk_value.mode|default(chunk_mode|default('editor-proxy', true), true) %}
+    {% set chunk_source_kind_value = chunk_value.sourceKind|default(chunk_source_kind|default('vectoplan-chunk', true), true) %}
+    {% set chunk_api_base_url_value = chunk_value.apiBaseUrl|default(chunk_api_base_url|default('/editor/api/chunk', true), true) %}
+    {% set chunk_project_id_value = chunk_value.projectId|default(chunk_project_id|default('dev-project', true), true) %}
+    {% set chunk_world_id_value = chunk_value.worldId|default(chunk_world_id|default('world_spawn', true), true) %}
+    {% set chunk_registry_id_value = chunk_value.registryId|default('debug-blocks', true) %}
+    {% set chunk_registry_version_value = chunk_value.registryVersion|default('1', true) %}
+
+    {% set chunk_status_url_value = route_hints_value.status|default(chunk_api_base_url_value ~ '/_status', true) %}
+    {% set chunk_test_connection_url_value = route_hints_value.testConnection|default(chunk_api_base_url_value ~ '/_test/connection', true) %}
+    {% set chunk_placeable_blocks_url_value = route_hints_value.placeableBlocks|default(chunk_api_base_url_value ~ '/placeable-blocks', true) %}
+    {% set chunk_blocks_url_value = route_hints_value.blocks|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/blocks', true) %}
+    {% set chunk_commands_url_value = route_hints_value.commands|default(chunk_api_base_url_value ~ '/projects/' ~ chunk_project_id_value ~ '/worlds/' ~ chunk_world_id_value ~ '/commands', true) %}
+
+    {% set feature_chunk_service_enabled_value = feature_flags_value.chunkServiceEnabled|default(chunk_enabled_value, true) %}
+    {% set feature_local_world_fallback_value = feature_flags_value.localWorldFallbackEnabled|default(false, true) %}
+    {% set feature_legacy_frontend_value = feature_flags_value.legacyFrontendEnabled|default(false, true) %}
+
+    {% set inventory_enabled_value = inventory_value.enabled|default(inventory_enabled|default(true, true), true) %}
+    {% set inventory_source_value = inventory_value.source|default(inventory_source|default('chunk-service', true), true) %}
+    {% set inventory_hotbar_size_value = inventory_value.hotbarSize|default(inventory_hotbar_size|default(9, true), true)|int %}
+    {% set inventory_selected_slot_value = inventory_value.selectedSlot|default(inventory_value.defaultSelectedSlot|default(inventory_default_selected_slot|default(0, true), true), true)|int %}
+    {% set inventory_default_block_type_id_value = inventory_value.defaultBlockTypeId|default('debug_grass', true) %}
+    {% set inventory_items_value = inventory_value.items|default(inventory_value.defaultPalette|default(inventory_default_palette|default([], true), true), true) %}
+    {% set inventory_placeable_blocks_value = inventory_value.placeableBlocks|default(placeable_blocks|default([], true), true) %}
+
+    {% set chunks_enabled_value = chunks_value.enabled|default(chunks_enabled|default(true, true), true) %}
+    {% set chunks_chunk_size_value = chunks_value.chunkSize|default(chunks_chunk_size|default(16, true), true) %}
+    {% set chunks_view_distance_value = chunks_value.viewDistance|default(chunks_view_distance|default(7, true), true) %}
+
+    {% set fallback_active_value = fallback_value.active|default(fallback_active|default(true, true), true) %}
+    {% set fallback_reason_value = fallback_value.reason|default(fallback_reason|default('template-fallback', true), true) %}
+    {% set editor_bootstrap_json_value = editor_bootstrap_json|default(editor_bootstrap_payload_json|default(bootstrap_payload_json|default(bootstrap_value|tojson, true), true), true) %}
+
+    {% set asset_source_value = editor_assets_value.source|default('unknown', true) %}
+    {% set asset_ok_value = editor_assets_value.ok|default(false, true) %}
+    {% set asset_fallback_used_value = editor_assets_value.fallback_used|default(editor_assets_value.fallbackUsed|default(false, true), true) %}
+    {% set asset_js_count_value = editor_assets_value.js|default([], true)|length %}
+    {% set asset_css_count_value = editor_assets_value.css|default([], true)|length %}
+
+    {% if inventory_hotbar_size_value < 1 %}
+      {% set inventory_hotbar_size_value = 9 %}
+    {% endif %}
+    {% if inventory_hotbar_size_value > 64 %}
+      {% set inventory_hotbar_size_value = 64 %}
+    {% endif %}
+    {% if inventory_selected_slot_value < 0 or inventory_selected_slot_value >= inventory_hotbar_size_value %}
+      {% set inventory_selected_slot_value = 0 %}
+    {% endif %}
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="VECTOPLAN Editor Fallback – robuste Diagnose-Shell für Bootstrap-, Template- und Asset-Fehler."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="application-name" content="{{ app_name_value }}" />
+    <meta name="theme-color" content="#05070a" />
+
+    <meta name="vectoplan-editor-fallback-active" content="true" />
+    <meta name="vectoplan-editor-fallback-reason" content="{{ fallback_reason_value }}" />
+    <meta name="vectoplan-editor-runtime-mode" content="{{ runtime_mode_value }}" />
+    <meta name="vectoplan-editor-world-mode" content="{{ world_mode_value }}" />
+    <meta name="vectoplan-editor-source-mode" content="{{ source_mode_value }}" />
+    <meta name="vectoplan-editor-chunk-api-base-url" content="{{ chunk_api_base_url_value }}" />
+    <meta name="vectoplan-editor-chunk-project-id" content="{{ chunk_project_id_value }}" />
+    <meta name="vectoplan-editor-chunk-world-id" content="{{ chunk_world_id_value }}" />
+
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>{{ page_title_value }} · Fallback</title>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --vp-bg: #05070a;
+        --vp-panel: rgba(15, 23, 42, 0.78);
+        --vp-panel-strong: rgba(15, 23, 42, 0.92);
+        --vp-border: rgba(148, 163, 184, 0.18);
+        --vp-text: #f8fafc;
+        --vp-muted: #94a3b8;
+        --vp-soft: #cbd5e1;
+        --vp-warn: #f59e0b;
+        --vp-ok: #22c55e;
+        --vp-danger: #ef4444;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-width: 100%;
+        min-height: 100%;
+        background: var(--vp-bg);
+        color: var(--vp-text);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      .fallback-shell {
+        position: relative;
+        width: 100vw;
+        width: 100dvw;
+        height: 100vh;
+        height: 100dvh;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.16), transparent 34%),
+          radial-gradient(circle at 88% 18%, rgba(245, 158, 11, 0.14), transparent 28%),
+          linear-gradient(180deg, rgba(255,255,255,0.035), rgba(0,0,0,0.2)),
+          #05070a;
+      }
+
+      .fallback-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.12;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: radial-gradient(circle at center, black 20%, transparent 86%);
+        -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 86%);
+      }
+
+      .fallback-layout {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(320px, 520px) minmax(320px, 1fr);
+        gap: 18px;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+      }
+
+      .fallback-panel {
+        border: 1px solid var(--vp-border);
+        border-radius: 18px;
+        background: var(--vp-panel);
+        box-shadow: 0 24px 72px rgba(0,0,0,0.34);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        overflow: hidden;
+      }
+
+      .fallback-summary {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 0;
+      }
+
+      .fallback-summary__body {
+        padding: 22px;
+      }
+
+      .fallback-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(245,158,11,0.22);
+        background: rgba(245,158,11,0.1);
+        color: #fde68a;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .fallback-kicker::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--vp-warn);
+      }
+
+      .fallback-title {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 52px);
+        line-height: 0.96;
+        letter-spacing: -0.05em;
+      }
+
+      .fallback-text {
+        margin: 14px 0 0;
+        color: var(--vp-soft);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .fallback-meta {
+        display: grid;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .fallback-meta__row {
+        display: grid;
+        grid-template-columns: 142px minmax(0, 1fr);
+        gap: 10px;
+        align-items: baseline;
+        color: var(--vp-soft);
+        font-size: 13px;
+      }
+
+      .fallback-meta__row dt {
+        color: var(--vp-muted);
+      }
+
+      .fallback-meta__row dd {
+        margin: 0;
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .fallback-summary__footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 16px 22px 22px;
+      }
+
+      .fallback-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid var(--vp-border);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.04);
+        color: var(--vp-soft);
+        font-size: 12px;
+      }
+
+      .fallback-badge--ok {
+        border-color: rgba(34,197,94,0.26);
+        color: #bbf7d0;
+        background: rgba(34,197,94,0.08);
+      }
+
+      .fallback-badge--warn {
+        border-color: rgba(245,158,11,0.26);
+        color: #fde68a;
+        background: rgba(245,158,11,0.08);
+      }
+
+      .fallback-badge--off {
+        border-color: rgba(239,68,68,0.24);
+        color: #fecaca;
+        background: rgba(239,68,68,0.08);
+      }
+
+      .fallback-diagnostics {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        min-height: 0;
+      }
+
+      .fallback-diagnostics__header {
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--vp-border);
+        background: rgba(255,255,255,0.025);
+      }
+
+      .fallback-diagnostics__header h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .fallback-diagnostics__header p {
+        margin: 6px 0 0;
+        color: var(--vp-muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .fallback-diagnostics__body {
+        min-height: 0;
+        overflow: auto;
+        padding: 18px 20px;
+      }
+
+      .fallback-section {
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(148,163,184,0.12);
+      }
+
+      .fallback-section:first-child {
+        padding-top: 0;
+      }
+
+      .fallback-section:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .fallback-section h3 {
+        margin: 0 0 10px;
+        color: var(--vp-text);
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .fallback-kv {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 8px 12px;
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .fallback-kv dt {
+        color: var(--vp-muted);
+      }
+
+      .fallback-kv dd {
+        margin: 0;
+        color: var(--vp-soft);
+        overflow-wrap: anywhere;
+      }
+
+      .fallback-code {
+        display: block;
+        max-height: 240px;
+        margin: 0;
+        padding: 12px;
+        overflow: auto;
+        border: 1px solid rgba(148,163,184,0.14);
+        border-radius: 12px;
+        background: rgba(2,6,23,0.72);
+        color: #dbeafe;
+        font-family:
+          ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          Monaco,
+          Consolas,
+          "Liberation Mono",
+          monospace;
+        font-size: 12px;
+        line-height: 1.45;
+        white-space: pre-wrap;
+      }
+
+      .fallback-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .fallback-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border: 1px solid var(--vp-border);
+        border-radius: 12px;
+        background: rgba(255,255,255,0.04);
+        color: var(--vp-text);
+        font: inherit;
+        font-size: 13px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .fallback-action:hover {
+        background: rgba(255,255,255,0.08);
+      }
+
+      .noscript-notice {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 20;
+        padding: 12px 14px;
+        border: 1px solid #653c12;
+        border-radius: 12px;
+        background: #2b1d10;
+        color: #f2d1a8;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 980px) {
+        body {
+          overflow: auto;
+        }
+
+        .fallback-shell {
+          min-height: 100vh;
+          height: auto;
+          overflow: visible;
+        }
+
+        .fallback-layout {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          min-height: 100vh;
+        }
+
+        .fallback-diagnostics {
+          min-height: 520px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .fallback-layout {
+          padding: 12px;
+        }
+
+        .fallback-meta__row,
+        .fallback-kv {
+          grid-template-columns: 1fr;
+          gap: 3px;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    data-editor-body="true"
+    data-editor-fallback-body="true"
+    data-runtime-mode="{{ runtime_mode_value }}"
+    data-world-mode="{{ world_mode_value }}"
+    data-source-mode="{{ source_mode_value }}"
+  >
+    <div
+      id="vectoplan-editor-root"
+      class="fallback-shell editor-runtime-state--bootstrapping"
+      data-editor-root="true"
+      data-vectoplan-editor-root="true"
+      data-editor-app="true"
+      data-editor-fallback-root="true"
+      data-runtime-state="bootstrapping"
+      data-runtime-started="false"
+      data-runtime-mode="{{ runtime_mode_value }}"
+      data-world-mode="{{ world_mode_value }}"
+      data-source-mode="{{ source_mode_value }}"
+      data-chunk-service-enabled="{{ 'true' if feature_chunk_service_enabled_value else 'false' }}"
+      data-chunk-service-api-base-url="{{ chunk_api_base_url_value }}"
+      data-chunk-service-project-id="{{ chunk_project_id_value }}"
+      data-chunk-service-world-id="{{ chunk_world_id_value }}"
+      data-chunk-service-source-kind="{{ chunk_source_kind_value }}"
+      data-chunk-service-mode="{{ chunk_mode_value }}"
+      data-inventory-source="{{ inventory_source_value }}"
+      data-inventory-hotbar-size="{{ inventory_hotbar_size_value }}"
+      data-inventory-selected-slot="{{ inventory_selected_slot_value }}"
+      data-inventory-default-block-type-id="{{ inventory_default_block_type_id_value }}"
+      data-fallback-active="true"
+      data-fallback-reason="{{ fallback_reason_value }}"
+    >
+      <div class="fallback-grid" aria-hidden="true"></div>
+
+      <main class="fallback-layout" data-editor-fallback-layout="true">
+        <section class="fallback-panel fallback-summary" aria-labelledby="fallback-title">
+          <div class="fallback-summary__body">
+            <div class="fallback-kicker">Fallback-Shell</div>
+
+            <h1 id="fallback-title" class="fallback-title">
+              {{ brand_name_value }}
+            </h1>
+
+            <p class="fallback-text">
+              Die primäre Editor-Shell konnte nicht vollständig gerendert werden.
+              Diese Diagnose-Shell liefert Bootstrap-, Asset- und Chunk-Service-Werte,
+              ohne die TypeScript-Runtime automatisch zu starten.
+            </p>
+
+            <dl class="fallback-meta">
+              <div class="fallback-meta__row">
+                <dt>Grund</dt>
+                <dd>{{ fallback_reason_value or 'template-fallback' }}</dd>
+              </div>
+
+              <div class="fallback-meta__row">
+                <dt>Runtime</dt>
+                <dd>{{ runtime_mode_value }}</dd>
+              </div>
+
+              <div class="fallback-meta__row">
+                <dt>World</dt>
+                <dd>{{ world_mode_value }} · {{ source_mode_value }}</dd>
+              </div>
+
+              <div class="fallback-meta__row">
+                <dt>Chunk API</dt>
+                <dd>{{ chunk_api_base_url_value }}</dd>
+              </div>
+
+              <div class="fallback-meta__row">
+                <dt>Projekt/Welt</dt>
+                <dd>{{ chunk_project_id_value }} / {{ chunk_world_id_value }}</dd>
+              </div>
+
+              <div class="fallback-meta__row">
+                <dt>Build</dt>
+                <dd>{{ build_mode_value }} · {{ build_version_value }}</dd>
+              </div>
+            </dl>
+
+            <div class="fallback-actions">
+              <a class="fallback-action" href="/editor">Editor erneut öffnen</a>
+              <a class="fallback-action" href="{{ chunk_status_url_value }}">Chunk-Proxy Status</a>
+              <a class="fallback-action" href="{{ chunk_test_connection_url_value }}">Chunk-Verbindung testen</a>
+              <a class="fallback-action" href="{{ chunk_placeable_blocks_url_value }}">Placeable Blocks</a>
+            </div>
+          </div>
+
+          <div class="fallback-summary__footer">
+            <span class="fallback-badge {% if feature_chunk_service_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}">
+              Chunk-Service {{ 'an' if feature_chunk_service_enabled_value else 'aus' }}
+            </span>
+
+            <span class="fallback-badge {% if inventory_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}">
+              Hotbar {{ 'an' if inventory_enabled_value else 'aus' }}
+            </span>
+
+            <span class="fallback-badge {% if feature_local_world_fallback_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}">
+              Local Fallback {{ 'an' if feature_local_world_fallback_value else 'aus' }}
+            </span>
+
+            <span class="fallback-badge {% if feature_legacy_frontend_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}">
+              Legacy Frontend {{ 'an' if feature_legacy_frontend_value else 'aus' }}
+            </span>
+
+            <span class="fallback-badge {% if asset_ok_value %}fallback-badge--ok{% else %}fallback-badge--warn{% endif %}">
+              Assets {{ asset_source_value }}
+            </span>
+          </div>
+        </section>
+
+        <section class="fallback-panel fallback-diagnostics" aria-labelledby="fallback-diagnostics-title">
+          <header class="fallback-diagnostics__header">
+            <h2 id="fallback-diagnostics-title">Diagnose</h2>
+            <p>
+              Diese Werte stammen aus dem serverseitigen Bootstrap-Kontext.
+              Interne Docker-URLs werden nicht als Browser-Ziel verwendet.
+            </p>
+          </header>
+
+          <div class="fallback-diagnostics__body">
+            <section class="fallback-section">
+              <h3>Chunk-Service</h3>
+              <dl class="fallback-kv">
+                <dt>enabled</dt>
+                <dd>{{ 'true' if chunk_enabled_value else 'false' }}</dd>
+
+                <dt>mode</dt>
+                <dd>{{ chunk_mode_value }}</dd>
+
+                <dt>sourceKind</dt>
+                <dd>{{ chunk_source_kind_value }}</dd>
+
+                <dt>apiBaseUrl</dt>
+                <dd>{{ chunk_api_base_url_value }}</dd>
+
+                <dt>projectId</dt>
+                <dd>{{ chunk_project_id_value }}</dd>
+
+                <dt>worldId</dt>
+                <dd>{{ chunk_world_id_value }}</dd>
+
+                <dt>registry</dt>
+                <dd>{{ chunk_registry_id_value }}:{{ chunk_registry_version_value }}</dd>
+
+                <dt>blocks</dt>
+                <dd>{{ chunk_blocks_url_value }}</dd>
+
+                <dt>commands</dt>
+                <dd>{{ chunk_commands_url_value }}</dd>
+              </dl>
+            </section>
+
+            <section class="fallback-section">
+              <h3>Runtime</h3>
+              <dl class="fallback-kv">
+                <dt>runtimeMode</dt>
+                <dd>{{ runtime_mode_value }}</dd>
+
+                <dt>worldMode</dt>
+                <dd>{{ world_mode_value }}</dd>
+
+                <dt>sourceMode</dt>
+                <dd>{{ source_mode_value }}</dd>
+
+                <dt>chunks</dt>
+                <dd>
+                  {{ 'enabled' if chunks_enabled_value else 'disabled' }}
+                  · size {{ chunks_chunk_size_value }}
+                  · view {{ chunks_view_distance_value }}
+                </dd>
+              </dl>
+            </section>
+
+            <section class="fallback-section">
+              <h3>Inventory</h3>
+              <dl class="fallback-kv">
+                <dt>enabled</dt>
+                <dd>{{ 'true' if inventory_enabled_value else 'false' }}</dd>
+
+                <dt>source</dt>
+                <dd>{{ inventory_source_value }}</dd>
+
+                <dt>hotbarSize</dt>
+                <dd>{{ inventory_hotbar_size_value }}</dd>
+
+                <dt>selectedSlot</dt>
+                <dd>{{ inventory_selected_slot_value }}</dd>
+
+                <dt>defaultBlockTypeId</dt>
+                <dd>{{ inventory_default_block_type_id_value }}</dd>
+
+                <dt>items</dt>
+                <dd>{{ inventory_items_value|length }}</dd>
+
+                <dt>placeableBlocks</dt>
+                <dd>{{ inventory_placeable_blocks_value|length }}</dd>
+              </dl>
+            </section>
+
+            <section class="fallback-section">
+              <h3>Assets</h3>
+              <dl class="fallback-kv">
+                <dt>source</dt>
+                <dd>{{ asset_source_value }}</dd>
+
+                <dt>ok</dt>
+                <dd>{{ 'true' if asset_ok_value else 'false' }}</dd>
+
+                <dt>fallbackUsed</dt>
+                <dd>{{ 'true' if asset_fallback_used_value else 'false' }}</dd>
+
+                <dt>JS</dt>
+                <dd>{{ asset_js_count_value }}</dd>
+
+                <dt>CSS</dt>
+                <dd>{{ asset_css_count_value }}</dd>
+              </dl>
+            </section>
+
+            <section class="fallback-section">
+              <h3>Bootstrap JSON</h3>
+              <pre class="fallback-code" data-editor-bootstrap-preview>{{ editor_bootstrap_json_value }}</pre>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <noscript>
+      <div class="noscript-notice" role="alert">
+        JavaScript ist deaktiviert. Die Fallback-Shell wurde ausgeliefert, aber
+        globale Bootstrap-Werte können nicht gesetzt werden.
+      </div>
+    </noscript>
+
+    <script id="vectoplan-editor-bootstrap" type="application/json">{{ editor_bootstrap_json_value | safe }}</script>
+
+    <script>
+      (function () {
+        "use strict";
+
+        function getWindow() {
+          try {
+            return window;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function getDocument() {
+          try {
+            return document;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function safeRecord(value) {
+          if (!value || typeof value !== "object" || Array.isArray(value)) {
+            return {};
+          }
+          return value;
+        }
+
+        function safeString(value, fallback) {
+          if (typeof value === "string") {
+            var trimmed = value.trim();
+            return trimmed || fallback;
+          }
+
+          if (value === null || value === undefined) {
+            return fallback;
+          }
+
+          try {
+            var converted = String(value).trim();
+            return converted || fallback;
+          } catch (error) {
+            return fallback;
+          }
+        }
+
+        function safeConsole(method) {
+          var win = getWindow();
+          var consoleRef = null;
+          var args = [];
+          var index = 1;
+
+          try {
+            consoleRef = win && win.console ? win.console : null;
+          } catch (error) {
+            consoleRef = null;
+          }
+
+          if (!consoleRef) {
+            return;
+          }
+
+          for (; index < arguments.length; index += 1) {
+            args.push(arguments[index]);
+          }
+
+          try {
+            if (typeof consoleRef[method] === "function") {
+              consoleRef[method].apply(consoleRef, args);
+            } else if (typeof consoleRef.log === "function") {
+              consoleRef.log.apply(consoleRef, args);
+            }
+          } catch (error) {
+            /* bewusst still */
+          }
+        }
+
+        function parseBootstrapData() {
+          var doc = getDocument();
+
+          if (!doc) {
+            return {};
+          }
+
+          try {
+            var node = doc.getElementById("vectoplan-editor-bootstrap");
+            if (!node || !node.textContent) {
+              return {};
+            }
+
+            return safeRecord(JSON.parse(node.textContent));
+          } catch (error) {
+            safeConsole("warn", "VECTOPLAN Editor Fallback: Bootstrap-JSON konnte nicht geparst werden.", error);
+            return {};
+          }
+        }
+
+        function setRuntimeStateClass(rootElement, runtimeState) {
+          if (!rootElement || !rootElement.classList) {
+            return;
+          }
+
+          try {
+            rootElement.classList.remove(
+              "editor-runtime-state--idle",
+              "editor-runtime-state--bootstrapping",
+              "editor-runtime-state--running",
+              "editor-runtime-state--error",
+              "editor-runtime-state--stopped"
+            );
+
+            if (runtimeState) {
+              rootElement.classList.add("editor-runtime-state--" + runtimeState);
+            }
+          } catch (error) {
+            /* bewusst still */
+          }
+        }
+
+        function onReady(callback) {
+          var doc = getDocument();
+
+          if (!doc) {
+            try {
+              callback();
+            } catch (error) {
+              safeConsole("error", "VECTOPLAN Editor Fallback: Ready-Callback ohne Dokument fehlgeschlagen.", error);
+            }
+            return;
+          }
+
+          try {
+            if (doc.readyState === "interactive" || doc.readyState === "complete") {
+              callback();
+              return;
+            }
+
+            doc.addEventListener("DOMContentLoaded", callback, { once: true });
+          } catch (error) {
+            safeConsole("warn", "VECTOPLAN Editor Fallback: DOMContentLoaded konnte nicht registriert werden.", error);
+
+            try {
+              callback();
+            } catch (callbackError) {
+              safeConsole("error", "VECTOPLAN Editor Fallback: Fallback-Ready-Callback fehlgeschlagen.", callbackError);
+            }
+          }
+        }
+
+        onReady(function () {
+          var win = getWindow();
+          var doc = getDocument();
+          var bootstrapData = parseBootstrapData();
+          var runtimeData = safeRecord(bootstrapData.runtime);
+          var chunkData = safeRecord(bootstrapData.chunk || runtimeData.chunk);
+          var inventoryData = safeRecord(runtimeData.inventory);
+          var root = doc ? (
+            doc.getElementById("vectoplan-editor-root") ||
+            doc.querySelector("[data-editor-root]")
+          ) : null;
+
+          try {
+            if (doc && doc.documentElement) {
+              doc.documentElement.classList.add("vectoplan-editor-shell-ready");
+              doc.documentElement.classList.add("vectoplan-editor-fallback-shell");
+            }
+          } catch (error) {
+            /* bewusst still */
+          }
+
+          try {
+            if (root) {
+              setRuntimeStateClass(root, "bootstrapping");
+              root.setAttribute("data-runtime-state", "bootstrapping");
+              root.setAttribute("data-runtime-started", "false");
+              root.setAttribute("data-fallback-active", "true");
+            }
+          } catch (error) {
+            /* bewusst still */
+          }
+
+          if (!win) {
+            return;
+          }
+
+          try {
+            win.__VECTOPLAN_EDITOR_BOOTSTRAP__ = bootstrapData;
+            win.__VECTOPLAN_EDITOR_RUNTIME_STARTED__ = false;
+            win.__VECTOPLAN_EDITOR_FALLBACK__ = {
+              active: true,
+              reason: safeString(bootstrapData.fallback && bootstrapData.fallback.reason, "template-fallback")
+            };
+
+            win.__VECTOPLAN_EDITOR_RUNTIME_MODE__ = safeString(runtimeData.mode, "remote_chunk_service");
+            win.__VECTOPLAN_EDITOR_WORLD_MODE__ = safeString(runtimeData.worldMode, "chunk_service");
+            win.__VECTOPLAN_EDITOR_SOURCE_MODE__ = safeString(runtimeData.sourceMode, "chunk-service");
+
+            win.__VECTOPLAN_EDITOR_CHUNK__ = chunkData;
+            win.__VECTOPLAN_EDITOR_CHUNK_CONFIG__ = chunkData;
+            win.__VECTOPLAN_EDITOR_CHUNK_API_BASE_URL__ = safeString(chunkData.apiBaseUrl, "/editor/api/chunk");
+            win.__VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL__ = safeString(chunkData.browserBaseUrl, chunkData.apiBaseUrl || "/editor/api/chunk");
+            win.__VECTOPLAN_EDITOR_CHUNK_PROJECT_ID__ = safeString(chunkData.projectId, "dev-project");
+            win.__VECTOPLAN_EDITOR_CHUNK_WORLD_ID__ = safeString(chunkData.worldId, "world_spawn");
+            win.__VECTOPLAN_EDITOR_CHUNK_ROUTE_HINTS__ = safeRecord(chunkData.routeHints);
+            win.__VECTOPLAN_EDITOR_CHUNK_SERVICE_CONFIG__ = chunkData;
+
+            win.__VECTOPLAN_EDITOR_INVENTORY__ = inventoryData;
+            win.__VECTOPLAN_EDITOR_INVENTORY_SOURCE__ = safeString(inventoryData.source, "chunk-service");
+            win.__VECTOPLAN_EDITOR_INVENTORY_API_URL__ = safeString(inventoryData.apiUrl, "/editor/api/chunk/placeable-blocks");
+          } catch (error) {
+            safeConsole("warn", "VECTOPLAN Editor Fallback: Window-Globals konnten nicht vollständig gesetzt werden.", error);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

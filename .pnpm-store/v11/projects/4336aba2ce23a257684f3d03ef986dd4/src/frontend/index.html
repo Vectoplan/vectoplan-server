@@ -1,0 +1,721 @@
+<!-- services/vectoplan-editor/src/frontend/index.html -->
+<!doctype html>
+<html lang="de" data-vectoplan-editor-document="true">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="application-name" content="VECTOPLAN Editor" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="description" content="VECTOPLAN Editor Remote Chunk Runtime" />
+
+    <title>VECTOPLAN Editor</title>
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --vp-bg: #070a12;
+        --vp-bg-hard: #020617;
+        --vp-surface: rgba(17, 24, 39, 0.92);
+        --vp-surface-soft: rgba(31, 41, 55, 0.72);
+        --vp-surface-glass: rgba(15, 23, 42, 0.68);
+        --vp-border: rgba(148, 163, 184, 0.24);
+        --vp-border-strong: rgba(148, 163, 184, 0.4);
+        --vp-text: #e5e7eb;
+        --vp-text-muted: #94a3b8;
+        --vp-text-soft: #cbd5e1;
+        --vp-accent: #38bdf8;
+        --vp-danger: #f87171;
+        --vp-warning: #facc15;
+        --vp-success: #34d399;
+        --vp-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        --vp-radius: 16px;
+        --vp-topbar-height: 48px;
+        --vp-hotbar-height: 72px;
+        --vp-panel-width: 320px;
+        --vp-font:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        min-width: 320px;
+        margin: 0;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.12), transparent 28%),
+          radial-gradient(circle at 80% 0%, rgba(52, 211, 153, 0.1), transparent 32%),
+          var(--vp-bg);
+        color: var(--vp-text);
+        font-family: var(--vp-font);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        color: inherit;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+      }
+
+      #vectoplan-editor-root {
+        width: 100vw;
+        height: 100vh;
+        min-width: 320px;
+        min-height: 320px;
+        overflow: hidden;
+      }
+
+      .vp-editor-shell {
+        position: relative;
+        display: grid;
+        grid-template-rows: var(--vp-topbar-height) 1fr var(--vp-hotbar-height);
+        width: 100%;
+        height: 100%;
+        background: #05070d;
+      }
+
+      .vp-editor-topbar {
+        z-index: 20;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 16px;
+        height: var(--vp-topbar-height);
+        padding: 0 16px;
+        border-bottom: 1px solid var(--vp-border);
+        background: var(--vp-surface);
+        box-shadow: 0 2px 18px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+      }
+
+      .vp-editor-title {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        font-weight: 650;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      .vp-editor-title-mark {
+        width: 10px;
+        height: 10px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        background: var(--vp-accent);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.85);
+      }
+
+      .vp-editor-subtitle {
+        overflow: hidden;
+        color: var(--vp-text-muted);
+        font-size: 12px;
+        font-weight: 500;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .vp-editor-status-row {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        gap: 8px;
+        color: var(--vp-text-muted);
+        font-size: 12px;
+      }
+
+      .vp-status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 26px;
+        max-width: 280px;
+        padding: 4px 9px;
+        overflow: hidden;
+        border: 1px solid var(--vp-border);
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.78);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .vp-status-dot {
+        width: 7px;
+        height: 7px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        background: var(--vp-warning);
+        box-shadow: 0 0 14px rgba(250, 204, 21, 0.55);
+      }
+
+      [data-source-status="ready"] .vp-status-dot,
+      .vp-status-dot[data-source-status="ready"] {
+        background: var(--vp-success);
+        box-shadow: 0 0 14px rgba(52, 211, 153, 0.55);
+      }
+
+      [data-source-status="failed"] .vp-status-dot,
+      [data-source-status="offline"] .vp-status-dot,
+      .vp-status-dot[data-source-status="failed"],
+      .vp-status-dot[data-source-status="offline"] {
+        background: var(--vp-danger);
+        box-shadow: 0 0 14px rgba(248, 113, 113, 0.55);
+      }
+
+      .vp-editor-main {
+        position: relative;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .vp-canvas-host {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background:
+          linear-gradient(180deg, rgba(15, 23, 42, 0.85), rgba(2, 6, 23, 0.96)),
+          var(--vp-bg-hard);
+      }
+
+      .vp-canvas-host canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        outline: none;
+      }
+
+      .vp-canvas-host canvas:focus-visible {
+        outline: 2px solid rgba(56, 189, 248, 0.7);
+        outline-offset: -2px;
+      }
+
+      .vp-crosshair {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 10;
+        width: 18px;
+        height: 18px;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        opacity: 0.7;
+      }
+
+      .vp-crosshair::before,
+      .vp-crosshair::after {
+        position: absolute;
+        background: rgba(226, 232, 240, 0.85);
+        content: "";
+      }
+
+      .vp-crosshair::before {
+        top: 8px;
+        left: 0;
+        width: 18px;
+        height: 2px;
+      }
+
+      .vp-crosshair::after {
+        top: 0;
+        left: 8px;
+        width: 2px;
+        height: 18px;
+      }
+
+      .vp-left-panel,
+      .vp-right-panel {
+        position: absolute;
+        top: 16px;
+        bottom: 16px;
+        z-index: 14;
+        width: min(var(--vp-panel-width), calc(100vw - 40px));
+        overflow: hidden;
+        border: 1px solid var(--vp-border);
+        border-radius: var(--vp-radius);
+        background: var(--vp-surface-glass);
+        box-shadow: var(--vp-shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .vp-left-panel {
+        left: 16px;
+      }
+
+      .vp-right-panel {
+        right: 16px;
+      }
+
+      .vp-panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+        padding: 0 12px;
+        border-bottom: 1px solid var(--vp-border);
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .vp-panel-body {
+        padding: 12px;
+        color: var(--vp-text-muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .vp-editor-hotbar {
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--vp-hotbar-height);
+        padding: 10px 16px;
+        border-top: 1px solid var(--vp-border);
+        background: var(--vp-surface);
+        box-shadow: 0 -2px 18px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(14px);
+      }
+
+      .vp-hotbar-slots {
+        display: grid;
+        grid-template-columns: repeat(9, minmax(42px, 54px));
+        gap: 8px;
+        width: min-content;
+        max-width: calc(100vw - 32px);
+      }
+
+      .vp-hotbar-slot {
+        display: grid;
+        min-width: 42px;
+        min-height: 42px;
+        place-items: center;
+        border: 1px solid var(--vp-border);
+        border-radius: 12px;
+        background: var(--vp-surface-soft);
+        color: var(--vp-text-muted);
+        font-size: 11px;
+        user-select: none;
+      }
+
+      .vp-hotbar-slot[data-selected="true"] {
+        border-color: rgba(56, 189, 248, 0.75);
+        background: rgba(14, 165, 233, 0.18);
+        color: var(--vp-text);
+        box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.18);
+      }
+
+      .vp-loading-overlay,
+      .vp-error-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 40;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(56, 189, 248, 0.12), transparent 32%),
+          rgba(2, 6, 23, 0.82);
+        backdrop-filter: blur(10px);
+      }
+
+      .vp-loading-card,
+      .vp-error-card {
+        width: min(560px, calc(100vw - 32px));
+        padding: 18px;
+        border: 1px solid var(--vp-border);
+        border-radius: 20px;
+        background: rgba(15, 23, 42, 0.92);
+        box-shadow: var(--vp-shadow);
+      }
+
+      .vp-loading-title,
+      .vp-error-title {
+        margin: 0 0 8px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .vp-loading-text,
+      .vp-error-text {
+        margin: 0;
+        color: var(--vp-text-muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .vp-error-card {
+        border-color: rgba(248, 113, 113, 0.45);
+      }
+
+      .vp-error-title {
+        color: var(--vp-danger);
+      }
+
+      .vp-visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      [hidden],
+      [data-editor-loading-overlay][hidden],
+      [data-editor-error-overlay][hidden],
+      [data-editor-left-panel][hidden],
+      [data-editor-right-panel][hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 960px) {
+        .vp-editor-topbar {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 4px;
+          align-content: center;
+        }
+
+        .vp-editor-status-row {
+          display: none;
+        }
+
+        .vp-left-panel,
+        .vp-right-panel {
+          display: none;
+        }
+
+        .vp-hotbar-slots {
+          grid-template-columns: repeat(9, minmax(34px, 42px));
+          gap: 6px;
+        }
+
+        .vp-hotbar-slot {
+          min-height: 38px;
+          border-radius: 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+        }
+      }
+    </style>
+
+    <script>
+      (() => {
+        try {
+          const apiBaseUrl = "/editor/api/chunk";
+          const projectId = "dev-project";
+          const worldId = "world_spawn";
+          const projectBase = `${apiBaseUrl}/projects/${encodeURIComponent(projectId)}`;
+          const worldBase = `${projectBase}/worlds/${encodeURIComponent(worldId)}`;
+
+          const routeHints = {
+            status: `${apiBaseUrl}/_status`,
+            connectionTest: `${apiBaseUrl}/_test/connection`,
+            projects: `${apiBaseUrl}/projects`,
+            project: projectBase,
+            projectBootstrap: `${projectBase}/bootstrap`,
+            worlds: `${projectBase}/worlds`,
+            world: worldBase,
+            blocks: `${worldBase}/blocks`,
+            placeableBlocks: `${apiBaseUrl}/placeable-blocks`,
+            chunk: `${worldBase}/chunks`,
+            chunksBatch: `${worldBase}/chunks/batch`,
+            commands: `${worldBase}/commands`
+          };
+
+          const serviceConfig = {
+            enabled: true,
+            mode: "editor-proxy",
+            sourceKind: "vectoplan-chunk",
+            apiBaseUrl,
+            browserBaseUrl: apiBaseUrl,
+            projectId,
+            worldId,
+            preferBatchLoad: true,
+            reloadDirtyChunksAfterCommand: true,
+            maxBatchChunks: 256,
+            routeHints,
+            timeouts: {
+              statusMs: 5000,
+              requestMs: 10000,
+              blocksMs: 10000,
+              chunkMs: 15000,
+              batchMs: 20000,
+              commandMs: 15000
+            }
+          };
+
+          window.__VECTOPLAN_EDITOR_HTML_READY__ = true;
+
+          window.__VECTOPLAN_EDITOR_CHUNK_API_BASE_URL__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_API_BASE_URL__ || apiBaseUrl;
+          window.__VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_BROWSER_BASE_URL__ || apiBaseUrl;
+          window.__VECTOPLAN_EDITOR_CHUNK_PROJECT_ID__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_PROJECT_ID__ || projectId;
+          window.__VECTOPLAN_EDITOR_CHUNK_WORLD_ID__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_WORLD_ID__ || worldId;
+          window.__VECTOPLAN_EDITOR_CHUNK_ROUTE_HINTS__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_ROUTE_HINTS__ || routeHints;
+          window.__VECTOPLAN_EDITOR_CHUNK_SERVICE_CONFIG__ =
+            window.__VECTOPLAN_EDITOR_CHUNK_SERVICE_CONFIG__ || serviceConfig;
+
+          window.__VECTOPLAN_EDITOR_BOOTSTRAP__ =
+            window.__VECTOPLAN_EDITOR_BOOTSTRAP__ || {
+              schemaVersion: "vectoplan-editor-bootstrap.v1",
+              app: {
+                name: "vectoplan-editor",
+                mode: "development",
+                buildMode: "development",
+                buildVersion: "0.1.0",
+                templateMode: "vite-index",
+                runtimeMode: "remote_chunk_service",
+                serviceVersion: "0.1.0"
+              },
+              project: {
+                projectId,
+                worldId,
+                universeId: "dev-universe",
+                templateId: "dev-template",
+                providerId: "vectoplan-chunk",
+                providerWorldId: worldId
+              },
+              runtime: {
+                mode: "remote_chunk_service",
+                worldMode: "chunk_service",
+                sourceMode: "chunk-service",
+                localWorldFallbackEnabled: false,
+                legacyFrontendEnabled: false,
+                chunk: serviceConfig
+              },
+              featureFlags: {
+                chunkServiceEnabled: true,
+                localWorldFallbackEnabled: false,
+                legacyFrontendEnabled: false,
+                chunkServiceInventoryEnabled: true,
+                chunkPaletteInventoryFallbackEnabled: true,
+                remoteCommandsEnabled: true,
+                dirtyChunkReloadEnabled: true,
+                debugOverlayEnabled: true
+              },
+              ui: {
+                language: "de",
+                title: "VECTOPLAN Editor",
+                subtitle: "Remote Chunk Runtime",
+                showLeftPanel: false,
+                showRightPanel: false,
+                showDebugOverlay: true,
+                showHotbar: true
+              },
+              input: {
+                pointerLockEnabled: true,
+                keyboardEnabled: true,
+                mouseEnabled: true,
+                wheelEnabled: true,
+                invertY: false,
+                sensitivity: 0.0022
+              },
+              camera: {
+                mode: "first-person",
+                fov: 65,
+                near: 0.05,
+                far: 1000,
+                spawn: {
+                  x: 8,
+                  y: 2,
+                  z: 8
+                },
+                rotation: {
+                  pitch: 0,
+                  yaw: Math.PI,
+                  roll: 0
+                },
+                moveSpeed: 5.5,
+                sprintMultiplier: 2.4
+              },
+              render: {
+                antialias: true,
+                alpha: false,
+                pixelRatioMax: 2,
+                clearColor: "#020617",
+                chunkWireframe: false,
+                showPreview: true,
+                showTargetHighlight: true
+              },
+              inventory: {
+                source: "vectoplan-user-inventory",
+                defaultBlockTypeId: "",
+                fallbackBlockTypeIds: [],
+                slotCount: 9
+              }
+            };
+        } catch (error) {
+          console.error("[vectoplan-editor:index] Bootstrap fallback setup failed.", error);
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <div style="padding: 24px; font-family: system-ui, sans-serif; color: #111827;">
+        VECTOPLAN Editor benötigt JavaScript.
+      </div>
+    </noscript>
+
+    <div
+      id="vectoplan-editor-root"
+      data-editor-root
+      data-vectoplan-editor-root
+      data-runtime-mode="remote_chunk_service"
+      data-world-mode="chunk_service"
+      data-world-source-kind="chunk-service"
+      data-local-world-fallback-enabled="false"
+      data-legacy-frontend-enabled="false"
+      data-chunk-service-enabled="true"
+      data-chunk-service-mode="editor-proxy"
+      data-chunk-service-source-kind="vectoplan-chunk"
+      data-chunk-service-api-base-url="/editor/api/chunk"
+      data-chunk-service-browser-base-url="/editor/api/chunk"
+      data-chunk-service-project-id="dev-project"
+      data-chunk-service-world-id="world_spawn"
+      data-chunk-service-prefer-batch-load="true"
+      data-chunk-service-reload-dirty-chunks-after-command="true"
+      data-chunk-service-max-batch-chunks="256"
+      data-debug-overlay-enabled="true"
+      data-hotbar-enabled="true"
+      data-pointer-lock-enabled="true"
+      data-chunk-route-hints-json='{"status":"/editor/api/chunk/_status","connectionTest":"/editor/api/chunk/_test/connection","projects":"/editor/api/chunk/projects","project":"/editor/api/chunk/projects/dev-project","projectBootstrap":"/editor/api/chunk/projects/dev-project/bootstrap","worlds":"/editor/api/chunk/projects/dev-project/worlds","world":"/editor/api/chunk/projects/dev-project/worlds/world_spawn","blocks":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/blocks","placeableBlocks":"/editor/api/chunk/placeable-blocks","chunk":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/chunks","chunksBatch":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/chunks/batch","commands":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/commands"}'
+      data-chunk-service-config-json='{"enabled":true,"mode":"editor-proxy","sourceKind":"vectoplan-chunk","apiBaseUrl":"/editor/api/chunk","browserBaseUrl":"/editor/api/chunk","projectId":"dev-project","worldId":"world_spawn","preferBatchLoad":true,"reloadDirtyChunksAfterCommand":true,"maxBatchChunks":256,"routeHints":{"status":"/editor/api/chunk/_status","connectionTest":"/editor/api/chunk/_test/connection","projects":"/editor/api/chunk/projects","project":"/editor/api/chunk/projects/dev-project","projectBootstrap":"/editor/api/chunk/projects/dev-project/bootstrap","worlds":"/editor/api/chunk/projects/dev-project/worlds","world":"/editor/api/chunk/projects/dev-project/worlds/world_spawn","blocks":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/blocks","placeableBlocks":"/editor/api/chunk/placeable-blocks","chunk":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/chunks","chunksBatch":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/chunks/batch","commands":"/editor/api/chunk/projects/dev-project/worlds/world_spawn/commands"},"timeouts":{"statusMs":5000,"requestMs":10000,"blocksMs":10000,"chunkMs":15000,"batchMs":20000,"commandMs":15000}}'
+    >
+      <div class="vp-editor-shell" data-editor-shell>
+        <header class="vp-editor-topbar" data-editor-topbar>
+          <div class="vp-editor-title">
+            <span class="vp-editor-title-mark" aria-hidden="true"></span>
+            <span>VECTOPLAN Editor</span>
+            <span class="vp-editor-subtitle" data-editor-subtitle>
+              Remote Chunk Runtime
+            </span>
+          </div>
+
+          <div class="vp-editor-status-row" data-editor-status-row>
+            <span class="vp-status-pill" data-editor-source-status>
+              <span class="vp-status-dot" data-editor-source-status-dot></span>
+              <span data-editor-source-status-label>Chunk-Service wird vorbereitet</span>
+            </span>
+            <span class="vp-status-pill" data-editor-project-label>dev-project / world_spawn</span>
+          </div>
+        </header>
+
+        <main class="vp-editor-main" data-editor-main>
+          <section
+            class="vp-canvas-host"
+            data-editor-canvas-host
+            data-canvas-host
+            aria-label="3D-Editor-Viewport"
+          >
+            <div class="vp-crosshair" data-editor-crosshair aria-hidden="true"></div>
+          </section>
+
+          <aside class="vp-left-panel" data-editor-left-panel hidden>
+            <div class="vp-panel-header">
+              <span>Inventar</span>
+              <span data-editor-inventory-status>Chunk</span>
+            </div>
+            <div class="vp-panel-body" data-editor-inventory-panel>
+              Blocktypen werden aus dem Chunk-Service geladen.
+            </div>
+          </aside>
+
+          <aside class="vp-right-panel" data-editor-right-panel hidden>
+            <div class="vp-panel-header">
+              <span>Inspector</span>
+              <span data-editor-inspector-status>Remote</span>
+            </div>
+            <div class="vp-panel-body" data-editor-inspector-panel>
+              Noch keine Auswahl.
+            </div>
+          </aside>
+
+          <section class="vp-loading-overlay" data-editor-loading-overlay role="status" aria-live="polite">
+            <div class="vp-loading-card">
+              <h1 class="vp-loading-title">Editor wird gestartet</h1>
+              <p class="vp-loading-text" data-editor-loading-text>
+                Bootstrap wird gelesen, Chunk-Service wird verbunden und Runtime wird initialisiert.
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="vp-error-overlay"
+            data-editor-error-overlay
+            role="alert"
+            aria-live="assertive"
+            tabindex="-1"
+            hidden
+          >
+            <div class="vp-error-card">
+              <h1 class="vp-error-title" data-editor-error-title>
+                Editor konnte nicht gestartet werden
+              </h1>
+              <p class="vp-error-text" data-editor-error-text>
+                Unbekannter Fehler.
+              </p>
+            </div>
+          </section>
+        </main>
+
+        <footer class="vp-editor-hotbar" data-editor-hotbar>
+          <div class="vp-hotbar-slots" data-editor-hotbar-slots aria-label="Editor-Hotbar">
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="0" data-selected="true">1</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="1">2</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="2">3</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="3">4</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="4">5</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="5">6</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="6">7</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="7">8</button>
+            <button class="vp-hotbar-slot" type="button" data-hotbar-slot="8">9</button>
+          </div>
+        </footer>
+      </div>
+
+      <div class="vp-visually-hidden" aria-live="polite" data-editor-live-region>
+        VECTOPLAN Editor wird geladen.
+      </div>
+    </div>
+
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>
