@@ -22,6 +22,7 @@ import type { RuntimeChunkContent } from "./chunk_content";
 import {
   createChunkSourceFailedResult,
   type ChunkSource,
+  type ChunkSourceLoadChunksResult,
 } from "./chunk_source";
 
 export type ChunkLoaderStatus =
@@ -146,6 +147,12 @@ export interface ChunkLoaderSnapshot {
   readonly loadCount: number;
   readonly failureCount: number;
   readonly pendingLoadCount: number;
+  readonly hardBatchSizeLimit: number;
+  readonly maxParallelBatchRequests: number;
+  readonly activeBatchRequestCount: number;
+  readonly queuedBatchRequestCount: number;
+  readonly droppedBatchRequestCount: number;
+  readonly batchQueueHighWaterMark: number;
 }
 
 export interface ChunkLoaderHandle {
@@ -197,8 +204,50 @@ const CHUNK_LOADER_KIND = "vectoplan-editor-chunk-loader.v1" as const;
 const CHUNK_LOADER_SNAPSHOT_KIND = "chunk-loader-snapshot.v1" as const;
 const DEFAULT_VISIBLE_RADIUS = 7;
 const DEFAULT_MAX_RADIUS = 8;
-const DEFAULT_STREAMING_BATCH_SIZE = 24;
+const DEFAULT_STREAMING_BATCH_SIZE = 12;
 const DEFAULT_MAX_CHUNKS_PER_LOAD = 256;
+const HARD_MAX_STREAMING_BATCH_SIZE = 12;
+const MAX_PARALLEL_CHUNK_BATCH_REQUESTS = 1;
+const MAX_QUEUED_CHUNK_BATCH_REQUESTS = 6;
+
+type ChunkBatchSourceResult = ChunkSourceLoadChunksResult | ChunkApiFailedResult;
+
+interface QueuedChunkBatchRequest {
+  readonly sequence: number;
+  readonly reason: ChunkLoaderLoadReason;
+  readonly priority: number;
+  readonly shouldContinue?: () => boolean;
+  readonly execute: () => Promise<ChunkBatchSourceResult>;
+  readonly resolve: (result: ChunkBatchSourceResult) => void;
+  readonly reject: (error: unknown) => void;
+}
+
+function chunkBatchPriority(reason: ChunkLoaderLoadReason): number {
+  const normalized = String(reason).toLowerCase();
+  if (normalized.includes("dirty") || normalized.includes("command") || normalized.includes("realtime")) {
+    return 100;
+  }
+  if (
+    normalized.includes("camera")
+    || normalized.includes("visibility")
+    || normalized.includes("initial")
+    || normalized.includes("terrain-surface")
+  ) {
+    return 80;
+  }
+  if (normalized.includes("edge-prefetch")) return 25;
+  if (normalized.includes("prefetch")) return 10;
+  return 50;
+}
+
+function skippedChunkBatchResult(): ChunkSourceLoadChunksResult {
+  return {
+    chunks: [],
+    result: null,
+    failed: [],
+    fromCacheCount: 0,
+  };
+}
 
 function now(): string {
   try {
@@ -678,6 +727,93 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
   let loadCount = 0;
   let failureCount = 0;
   let pendingLoadCount = 0;
+  let activeChunkBatchRequestCount = 0;
+  let queuedChunkBatchSequence = 0;
+  let droppedChunkBatchRequestCount = 0;
+  let chunkBatchQueueHighWaterMark = 0;
+  const chunkBatchQueue: QueuedChunkBatchRequest[] = [];
+
+  function pumpChunkBatchQueue(): void {
+    if (destroyed) {
+      while (chunkBatchQueue.length > 0) {
+        const queued = chunkBatchQueue.shift();
+        queued?.resolve(skippedChunkBatchResult());
+      }
+      return;
+    }
+
+    chunkBatchQueue.sort((left, right) => (
+      right.priority - left.priority || left.sequence - right.sequence
+    ));
+
+    while (
+      activeChunkBatchRequestCount < MAX_PARALLEL_CHUNK_BATCH_REQUESTS
+      && chunkBatchQueue.length > 0
+    ) {
+      const queued = chunkBatchQueue.shift();
+      if (!queued) break;
+      if (queued.shouldContinue?.() === false) {
+        droppedChunkBatchRequestCount += 1;
+        queued.resolve(skippedChunkBatchResult());
+        continue;
+      }
+
+      activeChunkBatchRequestCount += 1;
+      void queued.execute()
+        .then(queued.resolve, queued.reject)
+        .finally(() => {
+          activeChunkBatchRequestCount = Math.max(0, activeChunkBatchRequestCount - 1);
+          pumpChunkBatchQueue();
+        });
+    }
+  }
+
+  function scheduleChunkBatchRequest(
+    reason: ChunkLoaderLoadReason,
+    execute: () => Promise<ChunkBatchSourceResult>,
+    shouldContinue?: () => boolean,
+  ): Promise<ChunkBatchSourceResult> {
+    if (destroyed || shouldContinue?.() === false) {
+      droppedChunkBatchRequestCount += 1;
+      return Promise.resolve(skippedChunkBatchResult());
+    }
+
+    return new Promise<ChunkBatchSourceResult>((resolve, reject) => {
+      const queued: QueuedChunkBatchRequest = {
+        sequence: queuedChunkBatchSequence,
+        reason,
+        priority: chunkBatchPriority(reason),
+        shouldContinue,
+        execute,
+        resolve,
+        reject,
+      };
+      queuedChunkBatchSequence += 1;
+
+      if (chunkBatchQueue.length >= MAX_QUEUED_CHUNK_BATCH_REQUESTS) {
+        chunkBatchQueue.sort((left, right) => (
+          right.priority - left.priority || left.sequence - right.sequence
+        ));
+        const lowestPriority = chunkBatchQueue.at(-1);
+        if (lowestPriority && lowestPriority.priority < queued.priority) {
+          chunkBatchQueue.pop();
+          droppedChunkBatchRequestCount += 1;
+          lowestPriority.resolve(skippedChunkBatchResult());
+        } else {
+          droppedChunkBatchRequestCount += 1;
+          resolve(skippedChunkBatchResult());
+          return;
+        }
+      }
+
+      chunkBatchQueue.push(queued);
+      chunkBatchQueueHighWaterMark = Math.max(
+        chunkBatchQueueHighWaterMark,
+        chunkBatchQueue.length,
+      );
+      pumpChunkBatchQueue();
+    });
+  }
 
   function assertAlive(action: string): ChunkApiFailedResult | null {
     if (destroyed || status === "destroyed") {
@@ -800,7 +936,10 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
         : [];
       const batchSize = safeInteger(loadOptions?.batchSize, DEFAULT_STREAMING_BATCH_SIZE, {
         min: 1,
-        max: Math.max(1, maxChunksPerLoad),
+        max: Math.max(
+          1,
+          Math.min(maxChunksPerLoad, HARD_MAX_STREAMING_BATCH_SIZE),
+        ),
       });
       const visibilityBatchSize = Math.min(12, batchSize);
       const batches: ChunkCoordinates[][] = [];
@@ -882,17 +1021,21 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
 
         const batch = batches[batchIndex] ?? [];
         const batchRequestedChunkKeys = batch.map((coordinate) => coordinatesToKey(coordinate));
-        const result = await source.loadChunks(
-          batch.map((coordinate) => coordinatesToRequest(coordinate)),
-          {
-            ...requestOptionsFromLoaderOptions({
-              ...loadOptions,
-              maxChunks: batch.length,
-              preferBatch: loadOptions?.preferBatch ?? preferBatch,
-              markVisible: false,
-              reason: normalizedReason,
-            }),
-          },
+        const result = await scheduleChunkBatchRequest(
+          normalizedReason,
+          () => source.loadChunks(
+            batch.map((coordinate) => coordinatesToRequest(coordinate)),
+            {
+              ...requestOptionsFromLoaderOptions({
+                ...loadOptions,
+                maxChunks: batch.length,
+                preferBatch: loadOptions?.preferBatch ?? preferBatch,
+                markVisible: false,
+                reason: normalizedReason,
+              }),
+            },
+          ),
+          loadOptions?.shouldContinue,
         );
 
         if (isChunkApiFailedResult(result)) {
@@ -1326,6 +1469,12 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
         loadCount,
         failureCount,
         pendingLoadCount,
+        hardBatchSizeLimit: HARD_MAX_STREAMING_BATCH_SIZE,
+        maxParallelBatchRequests: MAX_PARALLEL_CHUNK_BATCH_REQUESTS,
+        activeBatchRequestCount: activeChunkBatchRequestCount,
+        queuedBatchRequestCount: chunkBatchQueue.length,
+        droppedBatchRequestCount: droppedChunkBatchRequestCount,
+        batchQueueHighWaterMark: chunkBatchQueueHighWaterMark,
       };
     },
 
@@ -1337,6 +1486,7 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
       destroyed = true;
       destroyedAt = now();
       setStatus("destroyed");
+      pumpChunkBatchQueue();
 
       logInfo(logger, "Chunk loader destroyed.", {
         id,
@@ -1353,6 +1503,9 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
     maxRadius,
     maxChunksPerLoad,
     preferBatch,
+    hardBatchSizeLimit: HARD_MAX_STREAMING_BATCH_SIZE,
+    maxParallelBatchRequests: MAX_PARALLEL_CHUNK_BATCH_REQUESTS,
+    maxQueuedBatchRequests: MAX_QUEUED_CHUNK_BATCH_REQUESTS,
   });
 
   return handle;

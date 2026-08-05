@@ -30,6 +30,10 @@ import {
   selectSelectedInventorySlot,
   selectSelectedSlot,
 } from "@state/state_selectors";
+import {
+  fallbackMaterialAppearance,
+  getMaterialAppearance,
+} from "@render/material_appearance_registry";
 
 export type HotbarViewStatus =
   | "created"
@@ -85,6 +89,7 @@ export interface HotbarViewModelSlot {
   readonly sourceKind: string | null;
   readonly itemKind: string | null;
   readonly color: string | null;
+  readonly textureUrl: string | null;
   readonly enabled: boolean;
   readonly keyBinding: string;
   readonly item: EditorInventoryItem | null;
@@ -576,6 +581,7 @@ function emptySlotViewModel(slot: number, selectedSlot: number, reason = "leer")
     sourceKind: "empty",
     itemKind: "empty",
     color: null,
+    textureUrl: null,
     enabled: false,
     keyBinding: String(slot + 1),
     item: null,
@@ -627,6 +633,8 @@ function createSlotViewModel(input: {
     const itemKind = itemKindFrom(primary) ?? (isLibraryPlaceable(primary) ? "vplib" : "block");
     const libraryRef = libraryRefFrom(primary);
     const placementCommand = placementCommandFrom(primary);
+    const appearance = getMaterialAppearance(runtimeBlockTypeId)
+      ?? fallbackMaterialAppearance(runtimeBlockTypeId);
 
     const label = truncateLabel(
       readAny(hotbarSlot, ["label", "shortLabel", "short_label"])
@@ -676,6 +684,7 @@ function createSlotViewModel(input: {
       sourceKind,
       itemKind,
       color: nullableString(readAny(hotbarSlot, ["color"]) ?? readAny(item, ["color"])),
+      textureUrl: appearance?.textureUrl ?? null,
       enabled,
       keyBinding: safeString(readAny(hotbarSlot, ["keyBinding", "key_binding"]), String(input.slot + 1)),
       item,
@@ -799,6 +808,8 @@ function viewModelToRenderSlots(viewModel: HotbarViewModel): readonly HotbarSlot
       label: slot.label,
       blockTypeId: slot.runtimeBlockTypeId ?? slot.blockTypeId,
       color: slot.color,
+      iconValue: slot.textureUrl,
+      iconKind: slot.textureUrl ? "asset-url" : null,
       selected: slot.selected,
       sourceKind: slot.sourceKind,
       itemKind: slot.itemKind,

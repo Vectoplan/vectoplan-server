@@ -46,6 +46,7 @@ import {
   type EditorInventoryContractLoadStatus,
   type EditorInventoryContractSourceKind,
 } from "../contracts/editor_inventory_contract";
+import { registerMaterialAppearance } from "../render/material_appearance_registry";
 
 export type InventorySourceKind = EditorInventoryContractSourceKind;
 
@@ -1190,6 +1191,8 @@ export function createInventoryLibraryItemFromSlot(
   const revisionHash = safeNullableString(slot.revisionHash ?? slot.revision_hash ?? libraryRef.revisionHash, null);
   const objectKind = safeNullableString(slot.objectKind ?? slot.object_kind ?? libraryRef.objectKind, null);
   const placementRef = libraryPlacementRef(slot, libraryRef, placementCommand);
+
+  registerMaterialAppearance(runtimeBlockTypeId, slot);
 
   return {
     kind: "library-item",

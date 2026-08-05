@@ -3,6 +3,10 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { clone as cloneSkeleton } from "three/addons/utils/SkeletonUtils.js";
 import type { RealtimeHeldItem } from "./realtime_client";
+import {
+  applyMaterialAppearance,
+  type MaterialAppearance,
+} from "../render/material_appearance_registry";
 
 export type HeldItemVisualMode = "first-person" | "avatar";
 
@@ -53,10 +57,31 @@ function safeModelUrl(value: unknown): string | null {
 
 function itemSignature(item: RealtimeHeldItem | null | undefined): string {
   if (!item) return "";
-  return [item.id, item.kind, item.color, item.modelUrl ?? ""].join("\u001f");
+  return [
+    item.id,
+    item.kind,
+    item.color,
+    item.modelUrl ?? "",
+    item.textureKey ?? item.textureUrl ?? "",
+    item.roughness,
+    item.metalness,
+  ].join("\u001f");
 }
 
-function configureMaterial(material: THREE.Material, mode: HeldItemVisualMode): THREE.Material {
+function appearanceFromHeldItem(item: RealtimeHeldItem): MaterialAppearance {
+  return {
+    textureUrl: item.textureUrl,
+    textureKey: item.textureKey,
+    color: item.color,
+    materialType: null,
+    roughness: item.roughness,
+    metalness: item.metalness,
+    anisotropy: 4,
+    generateMipmaps: true,
+  };
+}
+
+function configureMaterial<T extends THREE.Material>(material: T, mode: HeldItemVisualMode): T {
   material.transparent = false;
   material.depthTest = mode !== "first-person";
   material.depthWrite = mode !== "first-person";
@@ -98,6 +123,9 @@ function createBlockContent(
     emissive: color.clone().multiplyScalar(0.05),
     emissiveIntensity: mode === "first-person" ? 0.35 : 0.1,
   }), mode);
+  const appearance = appearanceFromHeldItem(item);
+  applyMaterialAppearance(mainMaterial, appearance);
+  applyMaterialAppearance(topMaterial, appearance);
   const edgeMaterial = configureMaterial(new THREE.LineBasicMaterial({
     color: color.clone().lerp(new THREE.Color(0x08141f), 0.42),
     transparent: mode === "first-person",
@@ -121,6 +149,8 @@ function createBlockContent(
       geometry.dispose();
       topGeometry.dispose();
       edgeGeometry.dispose();
+      mainMaterial.userData.vectoplanDisposed = true;
+      topMaterial.userData.vectoplanDisposed = true;
       mainMaterial.dispose();
       topMaterial.dispose();
       edgeMaterial.dispose();

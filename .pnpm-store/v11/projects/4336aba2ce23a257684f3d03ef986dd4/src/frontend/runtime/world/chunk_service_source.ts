@@ -76,6 +76,7 @@ import {
   createChunkRegistry,
   type ChunkRegistryHandle,
 } from "./chunk_registry";
+import type { RuntimeChunkContent } from "./chunk_content";
 import {
   createChunkEditSession,
   type ChunkEditLibraryPlacementInput,
@@ -201,6 +202,7 @@ type PreparedLibraryPlacementResult =
 
 const CHUNK_SERVICE_SOURCE_KIND = "vectoplan-editor-chunk-service-source.v1" as const;
 const CHUNK_SERVICE_SOURCE_LABEL = "VECTOPLAN Chunk Service Source" as const;
+const HARD_MAX_SOURCE_BATCH_SIZE = 12;
 const DEFAULT_PROJECT_ID = "dev-project" as const;
 const DEFAULT_UNIVERSE_ID = "default-universe" as const;
 const DEFAULT_WORLD_ID = "world_spawn" as const;
@@ -1710,6 +1712,7 @@ export function createChunkServiceSource(
   let loadCount = 0;
   let errorCount = 0;
   let commandRequestTail: Promise<void> = Promise.resolve();
+  let chunkBatchRequestTail: Promise<void> = Promise.resolve();
   let scheduledDirtyReloadPromise: Promise<void> | null = null;
   let scheduledDirtyReloadFirstAt = 0;
   let scheduledDirtyReloadDueAt = 0;
@@ -1726,6 +1729,20 @@ export function createChunkServiceSource(
       () => invokeClientMethod(client, methodName, candidates),
     );
     commandRequestTail = operation.then(
+      () => undefined,
+      () => undefined,
+    );
+    return operation;
+  }
+
+  function invokeQueuedChunkBatchClient(
+    candidates: readonly (readonly unknown[])[],
+  ): Promise<unknown> {
+    const operation = chunkBatchRequestTail.then(
+      () => invokeClientMethod(client, "loadChunksBatch", candidates),
+      () => invokeClientMethod(client, "loadChunksBatch", candidates),
+    );
+    chunkBatchRequestTail = operation.then(
       () => undefined,
       () => undefined,
     );
@@ -1921,8 +1938,49 @@ export function createChunkServiceSource(
       const loadOptionsRecord = asRecord(loadOptions);
       const force = loadOptionsRecord.force === true;
       const requestList = asArray(requests);
-      const normalizedRequests = requestList
-        .map((request) => normalizeCoordinates(request))
+      const normalizedCandidates = requestList
+        .map((request) => normalizeCoordinates(request)) as readonly ChunkApiBatchChunkRequest[];
+
+      if (normalizedCandidates.length > HARD_MAX_SOURCE_BATCH_SIZE) {
+        const chunks: RuntimeChunkContent[] = [];
+        const failed: ChunkApiFailedResult[] = [];
+        let fromCacheCount = 0;
+        let lastBatchResult: ChunkApiBatchResult | null = null;
+        let firstFailure: ChunkApiFailedResult | null = null;
+
+        for (
+          let offset = 0;
+          offset < normalizedCandidates.length;
+          offset += HARD_MAX_SOURCE_BATCH_SIZE
+        ) {
+          const part = normalizedCandidates.slice(
+            offset,
+            offset + HARD_MAX_SOURCE_BATCH_SIZE,
+          );
+          const partResult = await loadChunks(part, loadOptions);
+          if (isFailedResult(partResult)) {
+            firstFailure ??= partResult;
+            failed.push(partResult);
+            continue;
+          }
+          chunks.push(...partResult.chunks);
+          failed.push(...partResult.failed);
+          fromCacheCount += partResult.fromCacheCount;
+          lastBatchResult = partResult.result ?? lastBatchResult;
+        }
+
+        if (chunks.length === 0 && firstFailure) {
+          return firstFailure as unknown as ChunkSourceLoadChunksResult;
+        }
+        return {
+          chunks,
+          result: lastBatchResult,
+          failed,
+          fromCacheCount,
+        };
+      }
+
+      const normalizedRequests = normalizedCandidates
         .filter((coordinates) => {
           const key = chunkKeyFromCoordinates(
             coordinates.chunkX,
@@ -1965,7 +2023,7 @@ export function createChunkServiceSource(
         return emptyResult;
       }
 
-      const batchResult = await invokeClientMethod(client, "loadChunksBatch", [
+      const batchResult = await invokeQueuedChunkBatchClient([
         [projectId, worldId, normalizedRequests, overrides],
         [{ projectId, worldId, chunks: normalizedRequests, requests: normalizedRequests, signal }],
         [normalizedRequests, { projectId, worldId, signal }],

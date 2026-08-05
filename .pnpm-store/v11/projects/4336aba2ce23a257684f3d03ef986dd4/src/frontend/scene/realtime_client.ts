@@ -20,6 +20,10 @@ export interface RealtimeHeldItem {
   readonly kind: "block" | "vplib" | "library-item" | "asset";
   readonly color: string;
   readonly modelUrl: string | null;
+  readonly textureUrl: string | null;
+  readonly textureKey: string | null;
+  readonly roughness: number;
+  readonly metalness: number;
 }
 
 export interface RealtimePresenceState {

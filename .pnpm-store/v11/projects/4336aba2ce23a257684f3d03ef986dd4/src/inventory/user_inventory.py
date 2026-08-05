@@ -68,15 +68,17 @@ def _base_url(source: Any) -> str:
         default=DEFAULT_LIBRARY_BASE_URL,
     ), DEFAULT_LIBRARY_BASE_URL).rstrip("/")
 
-def get_creative_inventory_public_url(config_source: Any = None) -> str:
-    base = _text(_config(
-        config_source,
+def _public_base_url(source: Any) -> str:
+    return _text(_config(
+        source,
         "VECTOPLAN_LIBRARY_PUBLIC_BASE_URL",
         "VECTOPLAN_LIBRARY_BROWSER_BASE_URL",
         "VECTOPLAN_EDITOR_LIBRARY_PUBLIC_BASE_URL",
         default=DEFAULT_PUBLIC_BASE_URL,
     ), DEFAULT_PUBLIC_BASE_URL).rstrip("/")
-    return f"{base}/creative-inventar"
+
+def get_creative_inventory_public_url(config_source: Any = None) -> str:
+    return f"{_public_base_url(config_source)}/creative-inventar"
 
 def _request_json(
     *, source: Any, method: str, path: str,
@@ -125,12 +127,46 @@ def _nested(record: Mapping[str, Any], *keys: str) -> Any:
                 return source[key]
     return None
 
-def _editor_slot(slot: Mapping[str, Any], fallback: int) -> dict[str, Any]:
+def _public_asset_url(value: Any, public_base_url: str) -> str | None:
+    raw = _text(value)
+    if not raw:
+        return None
+    lowered = raw.lower()
+    if lowered.startswith("http://") or lowered.startswith("https://"):
+        return raw
+    if raw.startswith("/"):
+        return f"{public_base_url}{raw}"
+    return f"{public_base_url}/{raw.lstrip('/')}"
+
+def _public_asset_items(slot: Mapping[str, Any], public_base_url: str) -> list[dict[str, Any]]:
+    result: list[dict[str, Any]] = []
+    for source in _maps(slot.get("assets")):
+        asset = dict(source)
+        for key in ("uri", "url", "preview_url", "previewUrl"):
+            if asset.get(key) not in (None, ""):
+                asset[key] = _public_asset_url(asset[key], public_base_url)
+        result.append(asset)
+    return result
+
+def _public_preview(slot: Mapping[str, Any], public_base_url: str) -> dict[str, Any]:
+    preview = _map(slot.get("preview"))
+    for key in ("url", "uri", "src"):
+        if preview.get(key) not in (None, ""):
+            preview[key] = _public_asset_url(preview[key], public_base_url)
+    return preview
+
+def _editor_slot(
+    slot: Mapping[str, Any],
+    fallback: int,
+    public_base_url: str,
+) -> dict[str, Any]:
     index = _int(slot.get("slot_index", slot.get("slotIndex", fallback + 1)), fallback + 1, 1, HOTBAR_SIZE) - 1
     family = _text(_nested(slot, "familyId", "family_id"))
     uid = _text(_nested(slot, "vplibUid", "vplib_uid", "uid"))
     package = _text(_nested(slot, "packageId", "package_id"))
     variant = _text(_nested(slot, "variantId", "variant_id"), "default")
+    assets = _public_asset_items(slot, public_base_url)
+    preview = _public_preview(slot, public_base_url)
     runtime_id = _text(_nested(
         slot, "runtimeBlockTypeId", "runtime_block_type_id", "blockTypeId", "block_type_id"
     )) or family or (f"vplib:{uid}:{variant}" if uid else "")
@@ -145,7 +181,7 @@ def _editor_slot(slot: Mapping[str, Any], fallback: int) -> dict[str, Any]:
         return {**common, "empty": True, "sourceKind": "empty", "placeable": False}
     item_id = _text(_nested(slot, "itemId", "item_id", "item_db_id", "id"), family or uid or runtime_id)
     return {
-        **dict(slot), **common,
+        **dict(slot), **common, "assets": assets, "preview": preview,
         "empty": False, "sourceKind": "vplib", "itemId": item_id,
         "itemKind": "vplib", "kind": "vplib",
         "familyId": family or None, "packageId": package or None,
@@ -186,6 +222,27 @@ def _empty_payload(selected: int, route: str, error: Any) -> dict[str, Any]:
         "diagnostics": {"upstreamPath": USER_INVENTORY_API_PATH, "error": _text(error)},
     }
 
+def _hydrate_items_from_slots(inventory: Mapping[str, Any]) -> dict[str, Any]:
+    result = dict(inventory)
+    slots = _maps(result.get("slots"))
+    slots_by_item_id = {
+        _text(slot.get("itemId") or slot.get("item_id")): slot
+        for slot in slots
+        if _text(slot.get("itemId") or slot.get("item_id"))
+    }
+    items: list[dict[str, Any]] = []
+    for source in _maps(result.get("items")):
+        item = dict(source)
+        slot = slots_by_item_id.get(_text(item.get("itemId") or item.get("item_id")))
+        if slot:
+            if not item.get("assets") and slot.get("assets"):
+                item["assets"] = slot["assets"]
+            if not item.get("metadata") and slot.get("metadata"):
+                item["metadata"] = slot["metadata"]
+        items.append(item)
+    result["items"] = items
+    return result
+
 def build_editor_user_inventory_payload(
     *, config_source: Any = None, request_args: Any = None,
     include_empty_slots: bool = True, route_path: str = "/editor/api/inventory", **_: Any,
@@ -204,7 +261,11 @@ def build_editor_user_inventory_payload(
             state.get("active_slot_index", state.get("last_selected_slot_index", selected_fallback + 1)),
             selected_fallback + 1, 1, HOTBAR_SIZE,
         ) - 1
-        slots = [_editor_slot(slot, index) for index, slot in enumerate(_maps(state.get("slots"))[:HOTBAR_SIZE])]
+        public_base_url = _public_base_url(config_source)
+        slots = [
+            _editor_slot(slot, index, public_base_url)
+            for index, slot in enumerate(_maps(state.get("slots"))[:HOTBAR_SIZE])
+        ]
         from src.library_inventory.normalizer import normalize_library_inventory
         payload = normalize_library_inventory(
             raw_slots=slots, hotbar_size=HOTBAR_SIZE, selected_slot=selected,
@@ -213,7 +274,7 @@ def build_editor_user_inventory_payload(
             diagnostics={"upstreamPath": USER_INVENTORY_API_PATH, "userId": user_id,
                          "inventoryKey": inventory_key, "slotIndexConvention": "zero/one"},
         )
-        inventory = _map(payload.get("inventory"))
+        inventory = _hydrate_items_from_slots(_map(payload.get("inventory")))
         inventory.update({
             "source": "vectoplan-user-inventory", "hotbarSize": HOTBAR_SIZE,
             "defaultSelectedSlot": selected, "selectedSlot": selected,

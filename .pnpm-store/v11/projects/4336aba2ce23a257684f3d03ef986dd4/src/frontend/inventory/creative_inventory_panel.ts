@@ -19,6 +19,9 @@ const CREATIVE_INVENTORY_MESSAGE_CLOSE = "vectoplan:creative-inventory-close";
 const CREATIVE_INVENTORY_MESSAGE_TOGGLE = "vectoplan:creative-inventory-toggle";
 const CREATIVE_DRAG_MESSAGE_START = "vectoplan:creative-drag-start";
 const CREATIVE_DRAG_MESSAGE_END = "vectoplan:creative-drag-end";
+const CREATIVE_POINTER_DRAG_START = "vectoplan:creative-pointer-drag-start";
+const CREATIVE_POINTER_DRAG_MOVE = "vectoplan:creative-pointer-drag-move";
+const CREATIVE_POINTER_DRAG_END = "vectoplan:creative-pointer-drag-end";
 
 function resolveUrl(options: CreativeInventoryPanelOptions): string {
   const configured = options.creativeInventoryUrl
@@ -67,8 +70,110 @@ export function mountCreativeInventoryPanel(
   const frame = panel.querySelector<HTMLIFrameElement>("[data-editor-inventory-frame]");
   if (frame) frame.src = url;
   const closeButton = panel.querySelector<HTMLButtonElement>("[data-editor-inventory-close]");
-  const userInventoryFrame = options.root.querySelector<HTMLIFrameElement>("[data-user-inventory-frame]");
   let destroyed = false;
+  let pointerDragGhost: HTMLDivElement | null = null;
+
+  function asRecord(value: unknown): Record<string, unknown> {
+    return value && typeof value === "object" && !Array.isArray(value)
+      ? value as Record<string, unknown>
+      : {};
+  }
+
+  function userInventoryFrame(): HTMLIFrameElement | null {
+    return options.root.querySelector<HTMLIFrameElement>("[data-user-inventory-frame]");
+  }
+
+  function removePointerDragGhost(): void {
+    pointerDragGhost?.remove();
+    pointerDragGhost = null;
+  }
+
+  function updatePointerDragGhost(itemValue: unknown, x: number, y: number): void {
+    const item = asRecord(itemValue);
+    if (!pointerDragGhost) {
+      const ghost = document.createElement("div");
+      ghost.dataset.editorCreativeDragGhost = "true";
+      ghost.setAttribute("aria-hidden", "true");
+      Object.assign(ghost.style, {
+        position: "fixed",
+        left: "0",
+        top: "0",
+        width: "58px",
+        height: "58px",
+        border: "2px solid rgba(43, 89, 255, 0.9)",
+        borderRadius: "12px",
+        backgroundColor: "#eef3ff",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        boxShadow: "0 14px 32px rgba(18, 42, 95, 0.32)",
+        color: "#163a98",
+        display: "grid",
+        placeItems: "center",
+        font: "800 13px/1 system-ui, sans-serif",
+        pointerEvents: "none",
+        zIndex: "2147483000",
+        transform: "translate(-50%, -50%) scale(0.92)",
+        willChange: "transform, left, top",
+      });
+      const preview = asRecord(item.preview);
+      const appearance = asRecord(item.appearance);
+      const textureUrl = [preview.url, preview.src, appearance.textureUrl, appearance.texture_url]
+        .find((value) => typeof value === "string" && value.trim().length > 0);
+      if (typeof textureUrl === "string") {
+        try { ghost.style.backgroundImage = `url("${new URL(textureUrl, window.location.href).href}")`; } catch { /* text fallback */ }
+      }
+      if (!ghost.style.backgroundImage) {
+        const label = String(item.label ?? item.title ?? item.object_kind ?? "IT").trim();
+        ghost.textContent = label.replace(/[^a-zA-Z0-9]/g, "").slice(0, 2).toUpperCase() || "IT";
+      }
+      document.body.append(ghost);
+      pointerDragGhost = ghost;
+    }
+    pointerDragGhost.style.left = `${x}px`;
+    pointerDragGhost.style.top = `${y}px`;
+  }
+
+  function relayPointerDrag(messageType: string, messageValue: unknown): void {
+    const message = asRecord(messageValue);
+    const detail = asRecord(message.detail);
+    const pointer = asRecord(detail.pointer);
+    const localX = Number(pointer.clientX);
+    const localY = Number(pointer.clientY);
+    if (!frame || !Number.isFinite(localX) || !Number.isFinite(localY)) return;
+
+    const creativeRect = frame.getBoundingClientRect();
+    const parentX = creativeRect.left + localX;
+    const parentY = creativeRect.top + localY;
+    updatePointerDragGhost(detail.item, parentX, parentY);
+
+    const targetFrame = userInventoryFrame();
+    const targetRect = targetFrame?.getBoundingClientRect();
+    const inside = Boolean(
+      targetRect
+      && parentX >= targetRect.left
+      && parentX <= targetRect.right
+      && parentY >= targetRect.top
+      && parentY <= targetRect.bottom
+    );
+    targetFrame?.contentWindow?.postMessage({
+      ...message,
+      source: "vectoplan-editor",
+      detail: {
+        ...detail,
+        pointer: {
+          ...pointer,
+          clientX: targetRect ? parentX - targetRect.left : -1,
+          clientY: targetRect ? parentY - targetRect.top : -1,
+          parentClientX: parentX,
+          parentClientY: parentY,
+          inside,
+        },
+      },
+    }, "*");
+
+    if (messageType === CREATIVE_POINTER_DRAG_END) removePointerDragGhost();
+  }
 
   function isEditableTarget(target: EventTarget | null): boolean {
     if (!(target instanceof HTMLElement)) return false;
@@ -124,8 +229,9 @@ export function mountCreativeInventoryPanel(
   }
 
   function handleMessage(event: MessageEvent): void {
+    const currentUserInventoryFrame = userInventoryFrame();
     const fromCreativeFrame = Boolean(frame && event.source === frame.contentWindow);
-    const fromHotbarFrame = Boolean(userInventoryFrame && event.source === userInventoryFrame.contentWindow);
+    const fromHotbarFrame = Boolean(currentUserInventoryFrame && event.source === currentUserInventoryFrame.contentWindow);
     if (!fromCreativeFrame && !fromHotbarFrame) return;
 
     const messageType = event.data && typeof event.data === "object"
@@ -138,9 +244,18 @@ export function mountCreativeInventoryPanel(
       panel.hidden ? open() : close();
     } else if (
       fromCreativeFrame
+      && (
+        messageType === CREATIVE_POINTER_DRAG_START
+        || messageType === CREATIVE_POINTER_DRAG_MOVE
+        || messageType === CREATIVE_POINTER_DRAG_END
+      )
+    ) {
+      relayPointerDrag(messageType, event.data);
+    } else if (
+      fromCreativeFrame
       && (messageType === CREATIVE_DRAG_MESSAGE_START || messageType === CREATIVE_DRAG_MESSAGE_END)
     ) {
-      userInventoryFrame?.contentWindow?.postMessage(
+      currentUserInventoryFrame?.contentWindow?.postMessage(
         {
           ...(event.data as Record<string, unknown>),
           source: "vectoplan-editor",
@@ -164,6 +279,7 @@ export function mountCreativeInventoryPanel(
       closeButton?.removeEventListener("click", close);
       document.removeEventListener("keydown", handleKeyDown, true);
       window.removeEventListener("message", handleMessage);
+      removePointerDragGhost();
       panel.remove();
       delete options.root.dataset.creativeInventoryOpen;
     },

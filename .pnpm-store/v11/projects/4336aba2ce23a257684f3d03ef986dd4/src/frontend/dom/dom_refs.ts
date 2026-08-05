@@ -892,6 +892,32 @@ function setHotbarSlotDataset(element: HTMLElement, slot: NormalizedHotbarSlotRe
   setDatasetValue(element, "disabledReason", slot.disabledReason);
 }
 
+function fallbackHotbarTextureUrl(slot: NormalizedHotbarSlotRenderInput): string | null {
+  const identity = [slot.familyId, slot.runtimeBlockTypeId, slot.blockTypeId]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  const filename = identity.includes("brettsperrholz") || identity.includes("_holz")
+    ? "timber.webp"
+    : identity.includes("stahlbeton") || identity.includes("kalksandstein") || identity.includes("porenbeton")
+      ? "concrete.webp"
+      : identity.includes("stahlverbund") || identity.includes("wand_stahl")
+        ? "steel.webp"
+        : identity.includes("mauerwerk")
+          ? "masonry.webp"
+          : null;
+  if (!filename) return null;
+  try {
+    const root = document.querySelector<HTMLElement>(
+      "[data-editor-root], [data-vectoplan-editor-root], #vectoplan-editor-root",
+    );
+    const baseUrl = root?.dataset.creativeInventoryUrl ?? root?.dataset.userInventoryUrl;
+    return baseUrl ? new URL(`/static/textures/materials/${filename}`, baseUrl).href : null;
+  } catch {
+    return null;
+  }
+}
+
 function createHotbarSlotButton(slot: NormalizedHotbarSlotRenderInput): HTMLButtonElement {
   const element = document.createElement("button");
   element.type = "button";
@@ -945,6 +971,8 @@ function createHotbarSlotButton(slot: NormalizedHotbarSlotRenderInput): HTMLButt
     element.style.placeItems = "center";
     element.style.padding = "4px";
     element.style.opacity = slot.enabled ? "1" : "0.58";
+    element.style.position = "relative";
+    element.style.overflow = "hidden";
   } catch {
     // Slot fallback style is best-effort.
   }
@@ -987,9 +1015,45 @@ function createHotbarSlotButton(slot: NormalizedHotbarSlotRenderInput): HTMLButt
   wrapper.style.display = "grid";
   wrapper.style.placeItems = "center";
   wrapper.style.gap = "2px";
+  wrapper.style.position = "relative";
+  wrapper.style.zIndex = "1";
   wrapper.appendChild(numberElement);
   wrapper.appendChild(labelElement);
   wrapper.appendChild(metaElement);
+
+  const renderedTextureUrl = slot.iconValue ?? fallbackHotbarTextureUrl(slot);
+  if (renderedTextureUrl) {
+    try {
+      const textureUrl = new URL(renderedTextureUrl, window.location.href);
+      setDatasetValue(element, "iconKind", "asset-url");
+      setDatasetValue(element, "iconValue", textureUrl.href);
+      if (textureUrl.protocol === "http:" || textureUrl.protocol === "https:") {
+        const image = document.createElement("img");
+        image.src = textureUrl.href;
+        image.alt = "";
+        image.setAttribute("aria-hidden", "true");
+        image.decoding = "async";
+        image.loading = "lazy";
+        image.style.position = "absolute";
+        image.style.inset = "3px";
+        image.style.width = "calc(100% - 6px)";
+        image.style.height = "calc(100% - 6px)";
+        image.style.objectFit = "cover";
+        image.style.borderRadius = "8px";
+        image.style.pointerEvents = "none";
+        element.appendChild(image);
+        labelElement.style.visibility = "hidden";
+        metaElement.style.visibility = "hidden";
+        numberElement.style.padding = "1px 4px";
+        numberElement.style.borderRadius = "999px";
+        numberElement.style.background = "rgba(5, 10, 16, 0.62)";
+        numberElement.style.color = "#fff";
+        numberElement.style.textShadow = "0 1px 2px rgba(0,0,0,0.9)";
+      }
+    } catch {
+      // The text fallback remains visible for invalid asset URLs.
+    }
+  }
 
   element.appendChild(wrapper);
 

@@ -112,6 +112,11 @@ import type {
 } from "@runtime/world/chunk_content";
 import { forEachNonAirCellSpan } from "@api/chunk_cell_storage";
 import {
+  fallbackMaterialAppearance,
+  getMaterialAppearance,
+  normalizeMaterialAppearance,
+} from "@render/material_appearance_registry";
+import {
   chunkCoordinatesFromKey,
   createChunkCellAddress,
   localCoordinatesFromCellIndex,
@@ -175,6 +180,8 @@ export interface SceneRuntimeSnapshot {
   readonly renderCount: number;
   readonly meshCount: number;
   readonly materialCount: number;
+  readonly pendingChunkMeshCount: number;
+  readonly chunkMeshQueueHighWaterMark: number;
   readonly renderedChunkKeys: readonly string[];
   readonly lastRenderedAt: string | null;
   readonly lastTargetSignature: string | null;
@@ -224,6 +231,13 @@ interface ChunkMeshRecord {
   readonly geometry: THREE.BufferGeometry;
   readonly cellRecords: readonly MeshCellRecord[];
 }
+
+interface SceneIdleDeadline {
+  readonly didTimeout: boolean;
+  timeRemaining(): number;
+}
+
+type SceneIdleWindow = Window;
 
 interface MeshCellRecord {
   readonly chunkKey: string;
@@ -293,6 +307,17 @@ const DEFAULT_CLEAR_COLOR = "#020617";
 const DEFAULT_CAMERA_SENSITIVITY = 0.0022;
 const DEFAULT_TARGET_MAX_DISTANCE = 9;
 const DEFAULT_MAX_MESH_CELLS_PER_CHUNK = 4096;
+const MAX_CHUNK_MESHES_PER_IDLE_SLICE = 1;
+const MIN_CHUNK_MESH_IDLE_BUDGET_MS = 4;
+const CHUNK_MESH_IDLE_TIMEOUT_MS = 250;
+const RENDER_STORE_SYNC_INTERVAL_MS = 250;
+const PHYSICS_STORE_SYNC_INTERVAL_MS = 100;
+const CAMERA_STORE_SYNC_INTERVAL_MS = 50;
+const NAVIGATION_COMPASS_UPDATE_INTERVAL_MS = 50;
+const TARGETING_UPDATE_INTERVAL_MS = 34;
+const CHUNK_STREAM_POLL_INTERVAL_MS = 100;
+const HELD_ITEM_REFRESH_INTERVAL_MS = 80;
+const REALTIME_PRESENCE_PUBLISH_INTERVAL_MS = 84;
 const DEFAULT_INVENTORY_API_URL = PRODUCTIVE_EDITOR_INVENTORY_ROUTE;
 const DEFAULT_HOTBAR_SLOT_COUNT: number = Number(DEFAULT_EDITOR_INVENTORY_SLOT_COUNT) || 9;
 
@@ -1296,6 +1321,22 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let blockedPlaceIntentCount = 0;
   let removeIntentCount = 0;
   let commandChunkRenderScheduled = false;
+  let lastRenderStoreSyncAtMs = 0;
+  let lastPhysicsStoreSyncAtMs = 0;
+  let lastCameraStoreSyncAtMs = 0;
+  let lastNavigationCompassUpdateAtMs = 0;
+  let lastTargetingUpdateAtMs = 0;
+  let lastChunkStreamPollAtMs = 0;
+  let lastHeldItemRefreshAtMs = 0;
+  let lastRealtimePresencePublishAtMs = 0;
+  let cachedSelectedHeldItem: RealtimeHeldItem | null = null;
+  let chunkMeshQueueHighWaterMark = 0;
+  let chunkMeshIdleCallbackId: number | null = null;
+  let chunkMeshFallbackTimerId: number | null = null;
+  let wantedChunkMeshKeys = new Set<string>();
+  let lastChunkMeshQueueReason = "scene-runtime.chunk-mesh-queue";
+  const pendingChunkMeshKeys: string[] = [];
+  const pendingChunkMeshKeySet = new Set<string>();
 
   let renderer: THREE.WebGLRenderer | null = null;
   let scene: THREE.Scene | null = null;
@@ -1389,6 +1430,13 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   }
 
   function renderStoreFrame(frameMs: number | null): void {
+    const currentTimeMs = nowMs();
+    if (
+      frameMs !== null
+      && currentTimeMs - lastRenderStoreSyncAtMs < RENDER_STORE_SYNC_INTERVAL_MS
+    ) return;
+    lastRenderStoreSyncAtMs = currentTimeMs;
+
     setStoreAction(
       store,
       {
@@ -1408,6 +1456,19 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
   function clearChunkMeshes(): void {
     try {
+      const idleWindow = window as SceneIdleWindow;
+      if (chunkMeshIdleCallbackId !== null) {
+        idleWindow.cancelIdleCallback?.(chunkMeshIdleCallbackId);
+        chunkMeshIdleCallbackId = null;
+      }
+      if (chunkMeshFallbackTimerId !== null) {
+        window.clearTimeout(chunkMeshFallbackTimerId);
+        chunkMeshFallbackTimerId = null;
+      }
+      pendingChunkMeshKeys.length = 0;
+      pendingChunkMeshKeySet.clear();
+      wantedChunkMeshKeys = new Set<string>();
+
       if (!chunksRoot) {
         return;
       }
@@ -1445,92 +1506,209 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     chunkMeshes.set(chunk.chunkKey, record);
   }
 
+  function enqueueChunkMeshKey(chunkKey: string, highPriority = false): void {
+    if (!chunkKey) return;
+    if (pendingChunkMeshKeySet.has(chunkKey)) {
+      if (highPriority) {
+        const existingIndex = pendingChunkMeshKeys.indexOf(chunkKey);
+        if (existingIndex > 0) {
+          pendingChunkMeshKeys.splice(existingIndex, 1);
+          pendingChunkMeshKeys.unshift(chunkKey);
+        }
+      }
+      return;
+    }
+
+    pendingChunkMeshKeySet.add(chunkKey);
+    if (highPriority) pendingChunkMeshKeys.unshift(chunkKey);
+    else pendingChunkMeshKeys.push(chunkKey);
+    chunkMeshQueueHighWaterMark = Math.max(
+      chunkMeshQueueHighWaterMark,
+      pendingChunkMeshKeys.length,
+    );
+  }
+
+  function commitChunkMeshProgress(reason: string): void {
+    meshCount = [...chunkMeshes.values()].reduce(
+      (sum, record) => sum + record.meshes.length,
+      0,
+    );
+    materialCount = [...chunkMeshes.values()].reduce(
+      (sum, record) => sum + record.materials.length,
+      0,
+    );
+    refs.root.dataset.sceneRuntimeRenderedChunkCount = String(chunkMeshes.size);
+    refs.root.dataset.sceneRuntimeMeshCount = String(meshCount);
+    refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(pendingChunkMeshKeys.length);
+    refs.root.dataset.sceneRuntimeChunkMeshQueueHighWaterMark = String(chunkMeshQueueHighWaterMark);
+    refs.root.dataset.sceneRuntimeChunkMeshingMode = "idle-budgeted";
+    refs.root.dataset.earthTerrainSpawnPrepared = String(earthTerrainSpawnPrepared);
+    refs.root.dataset.earthTerrainSurfaceY = earthTerrainSurfaceY === null
+      ? ""
+      : String(earthTerrainSurfaceY);
+    refs.root.dataset.earthTerrainStreamingChunkY = earthStreamingChunkY === null
+      ? ""
+      : String(earthStreamingChunkY);
+    lastRenderedAt = now();
+    renderCount += 1;
+
+    setStoreAction(
+      store,
+      {
+        kind: "render/chunks",
+        renderedChunkKeys: [...chunkMeshes.keys()],
+        meshCount,
+        drawCallCount: meshCount,
+        source: reason,
+        createdAt: lastRenderedAt,
+      },
+      {
+        notify: true,
+        captureHistory: false,
+      },
+    );
+
+    logDebug(logger, "Scene chunk mesh progress committed.", {
+      reason,
+      chunkCount: chunkMeshes.size,
+      pendingChunkMeshCount: pendingChunkMeshKeys.length,
+      meshCount,
+      materialCount,
+    });
+    startPhysicsWhenWorldReady(reason);
+  }
+
+  function processChunkMeshQueue(deadline?: SceneIdleDeadline): void {
+    if (destroyed || !chunksRoot || pendingChunkMeshKeys.length === 0) return;
+
+    const registry = worldRuntime.getRegistry();
+    let processedCount = 0;
+    let changed = false;
+
+    while (
+      pendingChunkMeshKeys.length > 0
+      && processedCount < MAX_CHUNK_MESHES_PER_IDLE_SLICE
+    ) {
+      if (
+        deadline
+        && !deadline.didTimeout
+        && deadline.timeRemaining() < MIN_CHUNK_MESH_IDLE_BUDGET_MS
+      ) {
+        break;
+      }
+
+      const key = pendingChunkMeshKeys.shift();
+      if (!key) break;
+      pendingChunkMeshKeySet.delete(key);
+
+      const chunk = registry.getChunk(key);
+      const existing = chunkMeshes.get(key);
+      const wanted = wantedChunkMeshKeys.has(key);
+
+      if (!wanted || !chunk) {
+        if (existing) {
+          chunksRoot.remove(existing.group);
+          disposeObject3D(existing.group);
+          chunkMeshes.delete(key);
+          changed = true;
+        }
+        processedCount += 1;
+        continue;
+      }
+
+      const existingRevision = existing?.group.userData.chunkRevision;
+      const nextRevision = chunk.chunkRevision ?? chunk.chunkVersion ?? chunk.loadedAt;
+      if (existing && existingRevision === nextRevision) {
+        existing.group.visible = true;
+        processedCount += 1;
+        continue;
+      }
+
+      upsertChunkMesh(chunk);
+      const record = chunkMeshes.get(key);
+      if (record) {
+        record.group.userData.chunkRevision = nextRevision;
+        record.group.visible = true;
+        changed = true;
+      }
+      processedCount += 1;
+    }
+
+    refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(pendingChunkMeshKeys.length);
+    if (changed) {
+      commitChunkMeshProgress(lastChunkMeshQueueReason);
+      if (!running) renderOnce("scene-runtime.chunk-mesh-idle-progress");
+    }
+  }
+
+  function scheduleChunkMeshProcessing(): void {
+    if (
+      destroyed
+      || pendingChunkMeshKeys.length === 0
+      || chunkMeshIdleCallbackId !== null
+      || chunkMeshFallbackTimerId !== null
+    ) return;
+
+    const idleWindow = window as SceneIdleWindow;
+    if (typeof idleWindow.requestIdleCallback === "function") {
+      chunkMeshIdleCallbackId = idleWindow.requestIdleCallback((deadline) => {
+        chunkMeshIdleCallbackId = null;
+        processChunkMeshQueue(deadline);
+        if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
+      }, { timeout: CHUNK_MESH_IDLE_TIMEOUT_MS });
+      return;
+    }
+
+    chunkMeshFallbackTimerId = window.setTimeout(() => {
+      chunkMeshFallbackTimerId = null;
+      processChunkMeshQueue({
+        didTimeout: true,
+        timeRemaining: () => 0,
+      });
+      if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
+    }, 16);
+  }
+
   function renderChunksFromRegistry(reason: string): void {
     try {
       const registry = worldRuntime.getRegistry();
       const visibleKeys = registry.getVisibleChunkKeys();
       const loadedKeys = registry.getChunkKeys();
       const keys = visibleKeys.length > 0 ? visibleKeys : loadedKeys;
-
       const wanted = new Set(keys);
+      const highPriority = /dirty|command|realtime|place|remove/i.test(reason);
+      wantedChunkMeshKeys = wanted;
+      lastChunkMeshQueueReason = reason;
 
-      for (const existingKey of [...chunkMeshes.keys()]) {
-        if (!wanted.has(existingKey)) {
-          const record = chunkMeshes.get(existingKey);
-          if (record && chunksRoot) {
-            chunksRoot.remove(record.group);
-            disposeObject3D(record.group);
-          }
-          chunkMeshes.delete(existingKey);
+      for (const existingKey of chunkMeshes.keys()) {
+        const record = chunkMeshes.get(existingKey);
+        if (wanted.has(existingKey)) {
+          if (record) record.group.visible = true;
+          continue;
         }
+        if (record) record.group.visible = false;
+        enqueueChunkMeshKey(existingKey, true);
       }
 
       for (const key of keys) {
         const chunk = registry.getChunk(key);
-
-        if (!chunk) {
-          continue;
-        }
+        if (!chunk) continue;
 
         const existing = chunkMeshes.get(key);
         const existingRevision = existing?.group.userData.chunkRevision;
         const nextRevision = chunk.chunkRevision ?? chunk.chunkVersion ?? chunk.loadedAt;
-
         if (existing && existingRevision === nextRevision) {
+          existing.group.visible = true;
           continue;
         }
-
-        upsertChunkMesh(chunk);
-        const record = chunkMeshes.get(key);
-
-        if (record) {
-          record.group.userData.chunkRevision = nextRevision;
-        }
+        enqueueChunkMeshKey(key, highPriority);
       }
 
-      meshCount = [...chunkMeshes.values()].reduce(
-        (sum, record) => sum + record.meshes.length,
-        0,
-      );
-      materialCount = [...chunkMeshes.values()].reduce(
-        (sum, record) => sum + record.materials.length,
-        0,
-      );
-      refs.root.dataset.sceneRuntimeRenderedChunkCount = String(chunkMeshes.size);
-      refs.root.dataset.sceneRuntimeMeshCount = String(meshCount);
-      refs.root.dataset.earthTerrainSpawnPrepared = String(earthTerrainSpawnPrepared);
-      refs.root.dataset.earthTerrainSurfaceY = earthTerrainSurfaceY === null
-        ? ""
-        : String(earthTerrainSurfaceY);
-      refs.root.dataset.earthTerrainStreamingChunkY = earthStreamingChunkY === null
-        ? ""
-        : String(earthStreamingChunkY);
-      lastRenderedAt = now();
-      renderCount += 1;
-
-      setStoreAction(
-        store,
-        {
-          kind: "render/chunks",
-          renderedChunkKeys: [...chunkMeshes.keys()],
-          meshCount,
-          drawCallCount: meshCount,
-          source: reason,
-          createdAt: lastRenderedAt,
-        },
-        {
-          notify: true,
-          captureHistory: false,
-        },
-      );
-
-      logDebug(logger, "Scene chunks rendered.", {
-        reason,
-        chunkCount: chunkMeshes.size,
-        meshCount,
-        materialCount,
-      });
-      startPhysicsWhenWorldReady(reason);
+      refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(pendingChunkMeshKeys.length);
+      refs.root.dataset.sceneRuntimeChunkMeshQueueHighWaterMark = String(chunkMeshQueueHighWaterMark);
+      refs.root.dataset.sceneRuntimeChunkMeshingMode = "idle-budgeted";
+      scheduleChunkMeshProcessing();
+      if (pendingChunkMeshKeys.length === 0) startPhysicsWhenWorldReady(reason);
     } catch (error) {
       setError(error, "scene-runtime.renderChunksFromRegistry");
     }
@@ -1551,6 +1729,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     if (!camera) {
       return;
     }
+    const currentTimeMs = nowMs();
+    if (
+      !notify
+      && currentTimeMs - lastCameraStoreSyncAtMs < CAMERA_STORE_SYNC_INTERVAL_MS
+    ) return;
+    lastCameraStoreSyncAtMs = currentTimeMs;
 
     setStoreAction(
       store,
@@ -1581,6 +1765,14 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     reason: string,
   ): void {
     try {
+      const currentTimeMs = nowMs();
+      const urgent = Boolean(frame.error) || frame.warnings.length > 0;
+      if (
+        !urgent
+        && currentTimeMs - lastPhysicsStoreSyncAtMs < PHYSICS_STORE_SYNC_INTERVAL_MS
+      ) return;
+      lastPhysicsStoreSyncAtMs = currentTimeMs;
+
       setStoreAction(
         store,
         {
@@ -1613,6 +1805,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   function dispatchPhysicsSnapshotToStore(reason: string): void {
     try {
       const snapshot = physicsRuntime?.snapshot();
+      lastPhysicsStoreSyncAtMs = nowMs();
 
       if (!snapshot) {
         return;
@@ -1796,6 +1989,22 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       asRecord(record.metadata).color,
       asRecord(selectedSlotRecord.metadata).color,
     );
+    const appearanceIdentity = firstDefined(
+      record.runtimeBlockTypeId,
+      record.runtime_block_type_id,
+      record.blockTypeId,
+      record.block_type_id,
+      selectedSlotRecord.runtimeBlockTypeId,
+      selectedSlotRecord.runtime_block_type_id,
+      selectedSlotRecord.blockTypeId,
+      selectedSlotRecord.block_type_id,
+    );
+    const appearance = getMaterialAppearance(appearanceIdentity)
+      ?? normalizeMaterialAppearance(rawItem)
+      ?? normalizeMaterialAppearance(raw)
+      ?? normalizeMaterialAppearance(record)
+      ?? normalizeMaterialAppearance(selectedSlotRecord)
+      ?? fallbackMaterialAppearance(appearanceIdentity);
 
     return {
       id,
@@ -1804,10 +2013,18 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       color: normalizeOptionalText(colorValue)
         ?? (kind === "asset" ? "#38bdf8" : "#68a38a"),
       modelUrl,
+      textureUrl: appearance?.textureUrl ?? null,
+      textureKey: appearance?.textureKey ?? null,
+      roughness: appearance?.roughness ?? 0.88,
+      metalness: appearance?.metalness ?? 0.02,
     };
   }
   function createLocalPresenceState(clientTimeMs = Date.now()): RealtimePresenceState | null {
     if (!camera) return null;
+    if (clientTimeMs - lastHeldItemRefreshAtMs >= HELD_ITEM_REFRESH_INTERVAL_MS) {
+      cachedSelectedHeldItem = selectedHeldItem();
+      lastHeldItemRefreshAtMs = clientTimeMs;
+    }
     const player = physicsRuntime?.getPlayerState() ?? null;
     const member = localRealtimeMember;
     const position = player?.position ?? manualPlayerPosition;
@@ -1826,7 +2043,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       movementMode: player?.movementMode ?? "flying",
       grounded: player?.grounded ?? false,
       flying: player?.flying ?? true,
-      heldItem: selectedHeldItem(),
+      heldItem: cachedSelectedHeldItem,
     };
   }
 
@@ -1841,10 +2058,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     const velocity = state?.velocity;
     const speed = velocity ? Math.hypot(velocity.x, velocity.z) : 0;
     firstPersonHeldItemVisual?.update(deltaSeconds, timestampMs, speed);
-    refs.root.dataset.heldItemId = item?.id ?? "";
-    refs.root.dataset.heldItemKind = item?.kind ?? "none";
-    refs.root.dataset.heldItemVisible = String(Boolean(item));
-    refs.root.dataset.heldItemView = thirdPersonEnabled ? "third-person" : "first-person";
+    const heldItemId = item?.id ?? "";
+    const heldItemKind = item?.kind ?? "none";
+    const heldItemVisible = String(Boolean(item));
+    const heldItemView = thirdPersonEnabled ? "third-person" : "first-person";
+    if (refs.root.dataset.heldItemId !== heldItemId) refs.root.dataset.heldItemId = heldItemId;
+    if (refs.root.dataset.heldItemKind !== heldItemKind) refs.root.dataset.heldItemKind = heldItemKind;
+    if (refs.root.dataset.heldItemVisible !== heldItemVisible) {
+      refs.root.dataset.heldItemVisible = heldItemVisible;
+    }
+    if (refs.root.dataset.heldItemView !== heldItemView) refs.root.dataset.heldItemView = heldItemView;
   }
 
   function syncLocalAvatar(state: RealtimePresenceState, deltaSeconds: number, timestampMs: number): void {
@@ -1881,7 +2104,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   }
 
   function updateChunkMap(state: RealtimePresenceState | null, timestampMs: number): void {
-    chunkMapOverlay?.update({
+    if (!chunkMapOverlay?.isOpen()) return;
+    chunkMapOverlay.update({
       localPlayer: state ? mapPlayerFromPresence(state) : null,
       remotePlayers: (remoteAvatarScene?.getPlayers() ?? []).map((player) => ({
         sessionId: player.sessionId,
@@ -1894,8 +2118,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     }, timestampMs);
   }
 
-  function updateNavigationCompass(state: RealtimePresenceState | null): void {
+  function updateNavigationCompass(
+    state: RealtimePresenceState | null,
+    timestampMs: number,
+  ): void {
     if (!navigationCompass || !state) return;
+    if (
+      timestampMs - lastNavigationCompassUpdateAtMs
+      < NAVIGATION_COMPASS_UPDATE_INTERVAL_MS
+    ) return;
+    lastNavigationCompassUpdateAtMs = timestampMs;
 
     const markers: NavigationCompassMarker[] = [
       {
@@ -2299,7 +2531,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         max: 4096,
       }),
       priorityDirection,
-      batchSize: 48,
+      batchSize: 12,
       shouldContinue: () => (
         !destroyed
         && lastCameraChunkKey === targetChunkKey
@@ -2447,7 +2679,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       )
     );
     const prefetchBatchLimit = Math.min(
-      mode === "edge" ? 16 : 24,
+      12,
       safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
         min: 1,
         max: 4096,
@@ -2659,7 +2891,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           preferBatch: true,
           contentProfile: earthTerrainStreaming ? "surface-shell.v1" : undefined,
           priorityDirection,
-          batchSize: 48,
+          batchSize: 12,
           shouldContinue: () => !destroyed && lastCameraChunkKey === targetChunkKey,
           onBatchLoaded: () => {
             if (!destroyed) {
@@ -2865,8 +3097,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     }
   }
 
-  function publishLocalPresence(state: RealtimePresenceState | null): void {
+  function publishLocalPresence(
+    state: RealtimePresenceState | null,
+    timestampMs: number,
+  ): void {
     if (!realtimeClient || !state) return;
+    if (
+      timestampMs - lastRealtimePresencePublishAtMs
+      < REALTIME_PRESENCE_PUBLISH_INTERVAL_MS
+    ) return;
+    lastRealtimePresencePublishAtMs = timestampMs;
     realtimeClient.publishPresence({
       position: state.position,
       velocity: state.velocity,
@@ -2983,23 +3223,33 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
     try {
       updateCameraFromInput(frameMs);
-      updateTargeting();
+      if (timestampMs - lastTargetingUpdateAtMs >= TARGETING_UPDATE_INTERVAL_MS) {
+        lastTargetingUpdateAtMs = timestampMs;
+        updateTargeting();
+      }
       const deltaSeconds = Math.min(0.1, frameMs / 1_000);
       environmentSystem?.update(deltaSeconds);
       remoteAvatarScene?.update(deltaSeconds, timestampMs);
       const localPresence = createLocalPresenceState(Date.now());
-      if (localPresence) syncLocalAvatar(localPresence, deltaSeconds, timestampMs);
+      if (localPresence && thirdPersonEnabled) {
+        syncLocalAvatar(localPresence, deltaSeconds, timestampMs);
+      } else {
+        localAvatarScene?.setVisible(false);
+      }
       updateFirstPersonHeldItem(localPresence, deltaSeconds, timestampMs);
-      publishLocalPresence(localPresence);
+      publishLocalPresence(localPresence, timestampMs);
       updateChunkMap(localPresence, timestampMs);
-      updateNavigationCompass(localPresence);
+      updateNavigationCompass(localPresence, timestampMs);
 
       renderer.render(scene, camera);
 
       frameCount += 1;
       renderStoreFrame(frameMs);
 
-      void maybeLoadChunksAroundCamera();
+      if (timestampMs - lastChunkStreamPollAtMs >= CHUNK_STREAM_POLL_INTERVAL_MS) {
+        lastChunkStreamPollAtMs = timestampMs;
+        void maybeLoadChunksAroundCamera();
+      }
     } catch (error) {
       setError(error, "scene-runtime.renderFrame");
     }
@@ -4386,6 +4636,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         renderCount,
         meshCount,
         materialCount,
+        pendingChunkMeshCount: pendingChunkMeshKeys.length,
+        chunkMeshQueueHighWaterMark,
         renderedChunkKeys: [...chunkMeshes.keys()],
         lastRenderedAt,
         lastTargetSignature,

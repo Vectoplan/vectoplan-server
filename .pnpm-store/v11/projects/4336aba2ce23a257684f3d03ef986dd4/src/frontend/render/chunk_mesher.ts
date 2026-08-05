@@ -17,6 +17,11 @@ import {
   normalizeChunkSize,
   type LocalCellCoordinates,
 } from "@runtime/world/chunk_coordinates";
+import {
+  applyMaterialAppearance,
+  getMaterialAppearance,
+  subscribeMaterialAppearance,
+} from "./material_appearance_registry";
 
 export type ChunkMesherStatus =
   | "created"
@@ -239,7 +244,11 @@ function fallbackColorForPaletteIndex(index: number): string {
 
 function colorForPaletteEntry(entry: RuntimeChunkPaletteEntry): string {
   try {
-    return safeColor(entry.color, fallbackColorForPaletteIndex(entry.paletteIndex));
+    const appearance = getMaterialAppearance(entry.blockTypeId);
+    return safeColor(
+      entry.color ?? appearance?.color,
+      fallbackColorForPaletteIndex(entry.paletteIndex),
+    );
   } catch {
     return DEFAULT_MATERIAL_COLOR;
   }
@@ -253,11 +262,15 @@ function materialKeyForEntry(
   },
 ): string {
   try {
+    const appearance = getMaterialAppearance(entry.blockTypeId);
     return [
       entry.registryId,
       entry.registryVersion,
       entry.blockTypeId,
       colorForPaletteEntry(entry),
+      appearance?.textureKey ?? appearance?.textureUrl ?? "no-texture",
+      appearance?.roughness.toFixed(3) ?? "default-roughness",
+      appearance?.metalness.toFixed(3) ?? "default-metalness",
       options.wireframe ? "wire" : "solid",
       options.opacity < 1 ? `alpha_${options.opacity.toFixed(3)}` : "opaque",
     ].join("|");
@@ -275,6 +288,7 @@ function createMaterial(
 ): THREE.MeshStandardMaterial {
   const color = new THREE.Color(colorForPaletteEntry(entry));
   const transparent = options.opacity < 1;
+  const appearance = getMaterialAppearance(entry.blockTypeId);
 
   const material = new THREE.MeshStandardMaterial({
     color,
@@ -286,6 +300,8 @@ function createMaterial(
   });
 
   material.name = `mat_${entry.blockTypeId}`;
+  material.userData.vectoplanBlockTypeId = entry.blockTypeId;
+  applyMaterialAppearance(material, appearance);
   return material;
 }
 
@@ -527,6 +543,13 @@ export function createChunkMesher(options?: ChunkMesherOptions): ChunkMesherHand
   let lastError: Record<string, unknown> | null = null;
 
   const materialCache = new Map<string, THREE.MeshStandardMaterial>();
+  const unsubscribeAppearance = subscribeMaterialAppearance((blockTypeId, appearance) => {
+    for (const material of materialCache.values()) {
+      if (material.userData.vectoplanBlockTypeId === blockTypeId) {
+        applyMaterialAppearance(material, appearance);
+      }
+    }
+  });
   const sharedBoxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
   function setStatus(nextStatus: ChunkMesherStatus): void {
@@ -816,6 +839,7 @@ export function createChunkMesher(options?: ChunkMesherOptions): ChunkMesherHand
 
       for (const material of materialCache.values()) {
         try {
+          material.userData.vectoplanDisposed = true;
           material.dispose();
         } catch {
           // Ignore.
@@ -823,6 +847,7 @@ export function createChunkMesher(options?: ChunkMesherOptions): ChunkMesherHand
       }
 
       materialCache.clear();
+      unsubscribeAppearance();
       setStatus("disposed");
 
       logDebug(logger, "Chunk mesher disposed.", {
