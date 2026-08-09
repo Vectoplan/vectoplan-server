@@ -133,9 +133,9 @@
 
     {% set chunks_chunk_size_value = chunks_value.chunkSize|default(16, true) %}
     {% set chunks_view_distance_value = chunks_value.viewDistance|default(7, true) %}
-    {% set chunks_preload_radius_value = chunks_value.preloadRadius|default(1, true) %}
-    {% set chunks_unload_distance_value = chunks_value.unloadDistance|default(9, true) %}
-    {% set chunks_max_loaded_value = chunks_value.maxLoadedChunks|default(384, true) %}
+    {% set chunks_preload_radius_value = chunks_value.preloadRadius|default(3, true) %}
+    {% set chunks_unload_distance_value = chunks_value.unloadDistance|default(18, true) %}
+    {% set chunks_max_loaded_value = chunks_value.maxLoadedChunks|default(1024, true) %}
     {% set chunks_load_around_player_value = chunks_value.loadAroundPlayer|default(true, true) %}
     {% set chunks_debug_bounds_value = chunks_value.debugDrawChunkBounds|default(false, true) %}
 
@@ -569,7 +569,7 @@
         width: 812px;
         min-width: 812px;
         max-width: none;
-        height: 112px;
+        height: 150px;
         border: 0;
         background: transparent;
         transform: translateX(-50%);
@@ -641,6 +641,57 @@
         color: var(--vp-muted);
         font-size: 13px;
         line-height: 1.5;
+      }
+
+      .vectoplan-editor-loading-overlay {
+        color: #172033;
+        background:
+          radial-gradient(circle at 50% 34%, rgba(219, 234, 254, 0.72), transparent 34%),
+          #f8fafc;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .vectoplan-editor-loading-card {
+        position: relative;
+        overflow: hidden;
+        padding: 26px 28px 30px;
+        border-color: rgba(148, 163, 184, 0.3);
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 24px 70px rgba(51, 65, 85, 0.15);
+      }
+
+      .vectoplan-editor-loading-card::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 38%;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #2563eb, #38bdf8);
+        animation: vp-editor-loading-progress 1.35s ease-in-out infinite alternate;
+      }
+
+      .vectoplan-editor-loading-card strong {
+        color: #172033;
+        font-size: 18px;
+      }
+
+      .vectoplan-editor-loading-card span {
+        color: #64748b;
+      }
+
+      @keyframes vp-editor-loading-progress {
+        from { transform: translateX(-15%); }
+        to { transform: translateX(180%); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .vectoplan-editor-loading-card::after {
+          width: 100%;
+          animation: none;
+        }
       }
 
       .vectoplan-editor-error-card {
@@ -731,6 +782,7 @@
       data-page-title="{{ page_title_value }}"
       data-brand-name="{{ brand_name_value }}"
       data-bootstrap-source="window-and-dataset"
+      data-editor-boot-gate="locked"
       data-runtime-state="bootstrapping"
       data-runtime-started="false"
       data-runtime-mode="{{ runtime_mode_value }}"

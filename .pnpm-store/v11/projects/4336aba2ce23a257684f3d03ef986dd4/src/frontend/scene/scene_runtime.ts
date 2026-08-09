@@ -5,6 +5,18 @@ import {
   type EnvironmentSystem,
 } from "@render/environment_system";
 import {
+  createChunkMeshWorkerClient,
+  type ChunkMeshWorkerClient,
+} from "@render/chunk_mesh_worker_client";
+import type {
+  ChunkMeshBoundaryMasks,
+  ChunkMeshWorkerResult,
+} from "@render/chunk_mesh_worker_models";
+import {
+  createPerformanceRecorder,
+  type PerformanceRecorderHandle,
+} from "../performance/performance_recorder";
+import {
   createEditorRealtimeClient,
   type EditorRealtimeClient,
   type EditorRealtimeEvent,
@@ -79,6 +91,7 @@ import {
 } from "@utils/safe";
 import { nowIsoString } from "@utils/time";
 import type { EditorStore } from "@state/editor_store";
+import type { EditorStateChunkCellPosition } from "@state/editor_state";
 import { applyEditorAction } from "@state/state_actions";
 import {
   selectActiveLibraryRef,
@@ -96,6 +109,7 @@ import {
   selectSelectedVplibUid,
 } from "@state/state_selectors";
 import type { WorldRuntimeHandle } from "@runtime/world/world_runtime";
+import { isChunkLoaderFailureResult } from "@runtime/world/chunk_loader";
 import {
   createPhysicsRuntime,
   type PhysicsRuntime,
@@ -110,16 +124,22 @@ import type {
   RuntimeChunkContent,
   RuntimeChunkPaletteEntry,
 } from "@runtime/world/chunk_content";
-import { forEachNonAirCellSpan } from "@api/chunk_cell_storage";
 import {
+  applyOptimisticBlockEdit,
+  applyOptimisticCellValue,
+  type OptimisticBlockEditResult,
+} from "@runtime/world/optimistic_block_edit";
+import {
+  applyMaterialAppearance,
   fallbackMaterialAppearance,
   getMaterialAppearance,
+  loadMaterialTexture,
   normalizeMaterialAppearance,
 } from "@render/material_appearance_registry";
+import { raycastFromOriginDirection } from "@targeting/raycast";
 import {
   chunkCoordinatesFromKey,
   createChunkCellAddress,
-  localCoordinatesFromCellIndex,
   worldToChunkCoordinates,
   visibleChunkCoordinatesAround,
   type ChunkCoordinates,
@@ -226,10 +246,17 @@ export interface SceneRuntimeHandle {
 interface ChunkMeshRecord {
   readonly chunkKey: string;
   readonly group: THREE.Group;
-  readonly meshes: readonly THREE.InstancedMesh[];
+  readonly meshes: readonly THREE.Mesh[];
   readonly materials: readonly THREE.Material[];
-  readonly geometry: THREE.BufferGeometry;
-  readonly cellRecords: readonly MeshCellRecord[];
+  readonly geometries: readonly THREE.BufferGeometry[];
+  readonly quadCount: number;
+  readonly triangleCount: number;
+}
+
+interface OptimisticBlockOverlay {
+  readonly cellKey: string;
+  readonly chunkKey: string;
+  readonly mesh: THREE.Mesh;
 }
 
 interface SceneIdleDeadline {
@@ -239,19 +266,22 @@ interface SceneIdleDeadline {
 
 type SceneIdleWindow = Window;
 
-interface MeshCellRecord {
-  readonly chunkKey: string;
-  readonly chunkX: number;
-  readonly chunkY: number;
-  readonly chunkZ: number;
-  readonly localX: number;
-  readonly localY: number;
-  readonly localZ: number;
-  readonly worldX: number;
-  readonly worldY: number;
-  readonly worldZ: number;
-  readonly cellValue: number;
-  readonly blockTypeId: string | null;
+type MeshAxis = 0 | 1 | 2;
+
+interface GreedyFaceDirection {
+  readonly axis: MeshAxis;
+  readonly sign: -1 | 1;
+  readonly uAxis: MeshAxis;
+  readonly vAxis: MeshAxis;
+  readonly normal: readonly [number, number, number];
+}
+
+interface GreedyMaterialBuffers {
+  readonly positions: number[];
+  readonly normals: number[];
+  readonly uvs: number[];
+  readonly indices: number[];
+  quadCount: number;
 }
 
 interface SceneInventoryBootstrapConfig {
@@ -282,6 +312,7 @@ interface ActiveLibraryPlacement {
   readonly label: string | null;
   readonly libraryRef: EditorInventoryLibraryRef | null;
   readonly placementCommand: EditorInventoryPlacementCommand | null;
+  readonly semanticProfile: Record<string, unknown> | null;
   readonly commandMetadata: Record<string, unknown>;
 }
 
@@ -300,6 +331,34 @@ interface SceneRemoveBlockSource {
   ): Promise<unknown>;
 }
 
+interface PendingOptimisticBlockEdit {
+  readonly sequence: number;
+  readonly position: ChunkWorldPosition;
+  readonly blockTypeId: string | null;
+  readonly previousCellValue: number;
+  readonly nextCellValue: number;
+  readonly cellKey: string;
+  readonly chunkKey: string;
+  readonly affectedMeshChunkKeys: readonly string[];
+  readonly label: string | null;
+  readonly color: string | null;
+}
+
+interface SceneCameraFrameTelemetry {
+  readonly lookDeltaX: number;
+  readonly lookDeltaY: number;
+  readonly lookDeltaMagnitude: number;
+  readonly pointerLocked: boolean;
+  readonly movementActive: boolean;
+  readonly sprinting: boolean;
+  readonly inputReadMs: number;
+  readonly physicsSimulationMs: number;
+  readonly physicsStoreMs: number;
+  readonly cameraFinalizeMs: number;
+  readonly cameraStoreMs: number;
+  readonly physicsSubSteps: number;
+}
+
 const SCENE_RUNTIME_KIND = "vectoplan-editor-scene-runtime.v1" as const;
 const SCENE_RUNTIME_SNAPSHOT_KIND = "scene-runtime-snapshot.v1" as const;
 
@@ -310,6 +369,11 @@ const DEFAULT_MAX_MESH_CELLS_PER_CHUNK = 4096;
 const MAX_CHUNK_MESHES_PER_IDLE_SLICE = 1;
 const MIN_CHUNK_MESH_IDLE_BUDGET_MS = 4;
 const CHUNK_MESH_IDLE_TIMEOUT_MS = 250;
+const CHUNK_MESH_PROGRESS_COMMIT_INTERVAL_MS = 120;
+const MIN_DIRECTIONAL_PRELOAD_RADIUS = 3;
+const MIN_CHUNK_UNLOAD_RESERVE = 4;
+const INITIAL_WARMUP_EXTRA_RADIUS = 2;
+const MAX_PREFETCH_MESH_WARMUP_CHUNKS = 48;
 const RENDER_STORE_SYNC_INTERVAL_MS = 250;
 const PHYSICS_STORE_SYNC_INTERVAL_MS = 100;
 const CAMERA_STORE_SYNC_INTERVAL_MS = 50;
@@ -318,6 +382,13 @@ const TARGETING_UPDATE_INTERVAL_MS = 34;
 const CHUNK_STREAM_POLL_INTERVAL_MS = 100;
 const HELD_ITEM_REFRESH_INTERVAL_MS = 80;
 const REALTIME_PRESENCE_PUBLISH_INTERVAL_MS = 84;
+const TERRAIN_SHADOW_CAST_DISTANCE = 48;
+const TERRAIN_SHADOW_CAMERA_MOVE_DISTANCE = 12;
+const FRAME_DIAGNOSTIC_WINDOW_SIZE = 120;
+const FRAME_DIAGNOSTIC_UPDATE_INTERVAL_MS = 500;
+const GAMEPLAY_PIXEL_RATIO_MAX = 1.25;
+const BLOCK_RECONCILE_QUIET_MS = 700;
+const BLOCK_EDIT_MESH_QUIET_MS = 90;
 const DEFAULT_INVENTORY_API_URL = PRODUCTIVE_EDITOR_INVENTORY_ROUTE;
 const DEFAULT_HOTBAR_SLOT_COUNT: number = Number(DEFAULT_EDITOR_INVENTORY_SLOT_COUNT) || 9;
 
@@ -363,6 +434,15 @@ function nowMs(): number {
       : Date.now();
   } catch {
     return Date.now();
+  }
+}
+
+function isCameraDragTestRequested(): boolean {
+  try {
+    const query = new URL(window.location.href).searchParams;
+    return query.get("camera_input_test")?.trim().toLowerCase() === "drag";
+  } catch {
+    return false;
   }
 }
 
@@ -458,6 +538,96 @@ function firstDefined(...values: readonly unknown[]): unknown {
   }
 
   return undefined;
+}
+
+function compactDefinitionValues(value: unknown): Record<string, string | number | boolean | null> {
+  const record = asRecord(value);
+  const result: Record<string, string | number | boolean | null> = {};
+
+  for (const [key, item] of Object.entries(record).slice(0, 256)) {
+    if (item === null) {
+      result[key] = null;
+    } else if (typeof item === "string") {
+      result[key] = item;
+    } else if (typeof item === "number") {
+      result[key] = item;
+    } else if (typeof item === "boolean") {
+      result[key] = item;
+    }
+  }
+
+  return result;
+}
+
+function librarySemanticProfileFromSources(
+  ...sources: readonly unknown[]
+): Record<string, unknown> | null {
+  try {
+    const definitionPaths: readonly (readonly string[])[] = [
+      ["semanticProfile", "variables"],
+      ["semantic_profile", "variables"],
+      ["metadata", "definition_values"],
+      ["metadata", "definitionValues"],
+      ["variant", "definition_values"],
+      ["variant", "definitionValues"],
+      ["payload", "metadata", "definition_values"],
+      ["payload", "metadata", "definitionValues"],
+      ["raw", "payload", "metadata", "definition_values"],
+      ["raw", "payload", "metadata", "definitionValues"],
+      ["rawSlot", "metadata", "definition_values"],
+      ["rawSlot", "metadata", "definitionValues"],
+      ["rawSlot", "raw", "payload", "metadata", "definition_values"],
+      ["rawItem", "metadata", "definition_values"],
+      ["rawItem", "metadata", "definitionValues"],
+    ];
+    let variables: Record<string, string | number | boolean | null> = {};
+
+    for (const source of sources) {
+      for (const path of definitionPaths) {
+        const candidate = compactDefinitionValues(readNestedValue(source, path));
+        if (Object.keys(candidate).length > 0) {
+          variables = candidate;
+          break;
+        }
+      }
+      if (Object.keys(variables).length > 0) {
+        break;
+      }
+    }
+
+    if (Object.keys(variables).length === 0) {
+      return null;
+    }
+
+    const revisionPaths: readonly (readonly string[])[] = [
+      ["semanticProfile", "revisionHash"],
+      ["variant", "revision_hash"],
+      ["variant", "revisionHash"],
+      ["rawSlot", "variant", "revision_hash"],
+      ["rawSlot", "raw", "extra", "variant", "revision_hash"],
+      ["rawSlot", "raw", "payload", "revision_hash"],
+    ];
+    let revisionHash: string | null = null;
+    for (const source of sources) {
+      for (const path of revisionPaths) {
+        revisionHash = normalizeOptionalContractText(readNestedValue(source, path));
+        if (revisionHash) {
+          break;
+        }
+      }
+      if (revisionHash) {
+        break;
+      }
+    }
+
+    return {
+      schemaVersion: "library-semantic-profile-snapshot/0.1",
+      revisionHash,
+      variables,
+    };
+  } catch {
+    return null;
+  }
 }
 
 function normalizeOptionalText(value: unknown): string | null {
@@ -634,39 +804,6 @@ function commandResultFromUnknown(value: unknown): ChunkApiCommandResult | null 
   }
 }
 
-function reloadedChunkCountFromUnknown(value: unknown): number {
-  try {
-    const record = asRecord(value);
-    const direct =
-      record.reloadedChunks ??
-      record.loadedChunks ??
-      record.chunks ??
-      record.dirtyChunks ??
-      readNestedValue(record, ["result", "reloadedChunks"]);
-
-    return asArray(direct).length;
-  } catch {
-    return 0;
-  }
-}
-
-function dirtyChunkKeysFromUnknown(value: unknown): readonly string[] {
-  try {
-    const record = asRecord(value);
-    const direct =
-      record.dirtyChunkKeys ??
-      record.dirtyChunks ??
-      record.reloadedChunkKeys ??
-      readNestedValue(record, ["result", "dirtyChunkKeys"]);
-
-    return asArray(direct)
-      .map((item) => safeString(item, ""))
-      .filter((item) => item.length > 0);
-  } catch {
-    return [];
-  }
-}
-
 function disposeObject3D(object: THREE.Object3D): void {
   try {
     object.traverse((child) => {
@@ -717,12 +854,15 @@ function createMaterial(
   entry: RuntimeChunkPaletteEntry | null,
 ): THREE.MeshStandardMaterial {
   const color = paletteColor(entry);
-
-  return new THREE.MeshStandardMaterial({
+  const material = new THREE.MeshStandardMaterial({
     color,
     roughness: 0.88,
     metalness: 0.02,
   });
+  const appearance = getMaterialAppearance(entry?.blockTypeId)
+    ?? fallbackMaterialAppearance(entry?.blockTypeId);
+  applyMaterialAppearance(material, appearance);
+  return material;
 }
 
 function normalizeCameraPosition(position: unknown): THREE.Vector3 {
@@ -750,60 +890,6 @@ function chunkKeyFromCoordinatesLocal(coordinates: ChunkCoordinates): string {
   return `${safeInteger(coordinates.chunkX, 0)}:${safeInteger(coordinates.chunkY, 0)}:${safeInteger(coordinates.chunkZ, 0)}`;
 }
 
-function createCellRecord(
-  chunk: RuntimeChunkContent,
-  cellIndex: number,
-  cellValue: number,
-  entry: RuntimeChunkPaletteEntry | null,
-): MeshCellRecord {
-  const local = localCoordinatesFromCellIndex(cellIndex, chunk.chunkSize);
-
-  return {
-    chunkKey: chunk.chunkKey,
-    chunkX: chunk.chunkX,
-    chunkY: chunk.chunkY,
-    chunkZ: chunk.chunkZ,
-    localX: local.localX,
-    localY: local.localY,
-    localZ: local.localZ,
-    worldX: (chunk.chunkX * chunk.chunkSize) + local.localX,
-    worldY: (chunk.chunkY * chunk.chunkSize) + local.localY,
-    worldZ: (chunk.chunkZ * chunk.chunkSize) + local.localZ,
-    cellValue,
-    blockTypeId: entry?.blockTypeId ?? null,
-  };
-}
-
-function createEditorCellFromRecord(record: MeshCellRecord): {
-  readonly chunkKey: string;
-  readonly chunkX: number;
-  readonly chunkY: number;
-  readonly chunkZ: number;
-  readonly localX: number;
-  readonly localY: number;
-  readonly localZ: number;
-  readonly worldX: number;
-  readonly worldY: number;
-  readonly worldZ: number;
-  readonly cellValue: number;
-  readonly blockTypeId: string | null;
-} {
-  return {
-    chunkKey: record.chunkKey,
-    chunkX: record.chunkX,
-    chunkY: record.chunkY,
-    chunkZ: record.chunkZ,
-    localX: record.localX,
-    localY: record.localY,
-    localZ: record.localZ,
-    worldX: record.worldX,
-    worldY: record.worldY,
-    worldZ: record.worldZ,
-    cellValue: record.cellValue,
-    blockTypeId: record.blockTypeId,
-  };
-}
-
 function materialKeyForCellValue(cellValue: number): string {
   return `cell_${cellValue}`;
 }
@@ -821,36 +907,88 @@ function isNonAirOccluder(value: unknown): boolean {
   }
 }
 
-function isCellFullyOccluded(
-  chunk: RuntimeChunkContent,
-  cellIndex: number,
-): boolean {
-  const local = localCoordinatesFromCellIndex(cellIndex, chunk.chunkSize);
-  const last = chunk.chunkSize - 1;
-  if (
-    local.localX <= 0
-    || local.localX >= last
-    || local.localY <= 0
-    || local.localY >= last
-    || local.localZ <= 0
-    || local.localZ >= last
-  ) {
-    return false;
-  }
+const GREEDY_FACE_DIRECTIONS: readonly GreedyFaceDirection[] = [
+  { axis: 0, sign: 1, uAxis: 1, vAxis: 2, normal: [1, 0, 0] },
+  { axis: 0, sign: -1, uAxis: 2, vAxis: 1, normal: [-1, 0, 0] },
+  { axis: 1, sign: 1, uAxis: 2, vAxis: 0, normal: [0, 1, 0] },
+  { axis: 1, sign: -1, uAxis: 0, vAxis: 2, normal: [0, -1, 0] },
+  { axis: 2, sign: 1, uAxis: 0, vAxis: 1, normal: [0, 0, 1] },
+  { axis: 2, sign: -1, uAxis: 1, vAxis: 0, normal: [0, 0, -1] },
+] as const;
 
-  const yStride = chunk.chunkSize;
-  const zStride = chunk.chunkSize * chunk.chunkSize;
-  return [
-    cellIndex - 1,
-    cellIndex + 1,
-    cellIndex - yStride,
-    cellIndex + yStride,
-    cellIndex - zStride,
-    cellIndex + zStride,
-  ].every((neighborIndex) => isNonAirOccluder(chunk.cells[neighborIndex]));
+function localCellIndex(x: number, y: number, z: number, chunkSize: number): number {
+  return x + (chunkSize * (y + (chunkSize * z)));
 }
 
-function createChunkMeshRecord(chunk: RuntimeChunkContent): ChunkMeshRecord {
+function createGreedyMaterialBuffers(): GreedyMaterialBuffers {
+  return {
+    positions: [],
+    normals: [],
+    uvs: [],
+    indices: [],
+    quadCount: 0,
+  };
+}
+
+function appendGreedyQuad(
+  buffers: GreedyMaterialBuffers,
+  chunk: RuntimeChunkContent,
+  direction: GreedyFaceDirection,
+  slice: number,
+  u: number,
+  v: number,
+  width: number,
+  height: number,
+  cellSize: number,
+): void {
+  const origin = [0, 0, 0];
+  const du = [0, 0, 0];
+  const dv = [0, 0, 0];
+  origin[direction.axis] = slice + (direction.sign > 0 ? 1 : 0);
+  origin[direction.uAxis] = u;
+  origin[direction.vAxis] = v;
+  du[direction.uAxis] = width;
+  dv[direction.vAxis] = height;
+
+  const worldOffset = [
+    chunk.chunkX * chunk.chunkSize,
+    chunk.chunkY * chunk.chunkSize,
+    chunk.chunkZ * chunk.chunkSize,
+  ];
+  const corners = [
+    origin,
+    origin.map((value, axis) => value + du[axis]),
+    origin.map((value, axis) => value + du[axis] + dv[axis]),
+    origin.map((value, axis) => value + dv[axis]),
+  ];
+  const vertexOffset = buffers.positions.length / 3;
+
+  for (const corner of corners) {
+    buffers.positions.push(
+      (worldOffset[0] + corner[0]) * cellSize,
+      (worldOffset[1] + corner[1]) * cellSize,
+      (worldOffset[2] + corner[2]) * cellSize,
+    );
+    buffers.normals.push(...direction.normal);
+  }
+  // Textures use RepeatWrapping, so a merged rectangle still shows one tile
+  // per voxel instead of stretching a single block texture over the surface.
+  buffers.uvs.push(0, 0, width, 0, width, height, 0, height);
+  buffers.indices.push(
+    vertexOffset,
+    vertexOffset + 1,
+    vertexOffset + 2,
+    vertexOffset,
+    vertexOffset + 2,
+    vertexOffset + 3,
+  );
+  buffers.quadCount += 1;
+}
+
+function createChunkMeshRecord(
+  chunk: RuntimeChunkContent,
+  isWorldCellOccluder?: (worldX: number, worldY: number, worldZ: number) => boolean,
+): ChunkMeshRecord {
   const group = new THREE.Group();
   group.name = `chunk:${chunk.chunkKey}`;
   group.userData.chunkKey = chunk.chunkKey;
@@ -859,85 +997,197 @@ function createChunkMeshRecord(chunk: RuntimeChunkContent): ChunkMeshRecord {
     min: 0.000001,
     max: 1_000,
   });
-  const geometry = new THREE.BoxGeometry(cellSize, cellSize, cellSize);
-  const byCellValue = new Map<number, MeshCellRecord[]>();
   const maxCells = Math.min(chunk.cells.length, DEFAULT_MAX_MESH_CELLS_PER_CHUNK);
+  const chunkSize = chunk.chunkSize;
+  const byCellValue = new Map<number, GreedyMaterialBuffers>();
 
-  forEachNonAirCellSpan(chunk.cells, (start, end, rawCellValue) => {
-    const cellValue = safeInteger(rawCellValue, 0, {
-      min: 0,
-      max: Number.MAX_SAFE_INTEGER,
-    });
-
-    if (cellValue <= 0) {
-      return;
+  function cellValueAt(x: number, y: number, z: number): number {
+    if (
+      x >= 0 && x < chunkSize
+      && y >= 0 && y < chunkSize
+      && z >= 0 && z < chunkSize
+    ) {
+      const index = localCellIndex(x, y, z, chunkSize);
+      if (index >= maxCells) return 0;
+      return safeInteger(chunk.cells[index], 0, {
+        min: 0,
+        max: Number.MAX_SAFE_INTEGER,
+      });
     }
 
-    for (let cellIndex = start; cellIndex < end && cellIndex < maxCells; cellIndex += 1) {
-      if (isCellFullyOccluded(chunk, cellIndex)) {
-        continue;
+    if (!isWorldCellOccluder) return 0;
+    const worldX = (chunk.chunkX * chunkSize) + x;
+    const worldY = (chunk.chunkY * chunkSize) + y;
+    const worldZ = (chunk.chunkZ * chunkSize) + z;
+    return isWorldCellOccluder(worldX, worldY, worldZ) ? 1 : 0;
+  }
+
+  for (const direction of GREEDY_FACE_DIRECTIONS) {
+    for (let slice = 0; slice < chunkSize; slice += 1) {
+      const mask = new Int32Array(chunkSize * chunkSize);
+
+      for (let v = 0; v < chunkSize; v += 1) {
+        for (let u = 0; u < chunkSize; u += 1) {
+          const local = [0, 0, 0];
+          local[direction.axis] = slice;
+          local[direction.uAxis] = u;
+          local[direction.vAxis] = v;
+          const cellValue = cellValueAt(local[0], local[1], local[2]);
+          if (!isNonAirOccluder(cellValue)) continue;
+
+          const neighbor = [...local];
+          neighbor[direction.axis] += direction.sign;
+          if (isNonAirOccluder(cellValueAt(neighbor[0], neighbor[1], neighbor[2]))) continue;
+          mask[u + (v * chunkSize)] = cellValue;
+        }
       }
 
-      const entry = chunk.paletteByCellValue.get(cellValue) ?? null;
-      const record = createCellRecord(chunk, cellIndex, cellValue, entry);
+      for (let v = 0; v < chunkSize; v += 1) {
+        for (let u = 0; u < chunkSize;) {
+          const cellValue = mask[u + (v * chunkSize)];
+          if (cellValue <= 0) {
+            u += 1;
+            continue;
+          }
 
-      const existing = byCellValue.get(cellValue) ?? [];
-      existing.push(record);
-      byCellValue.set(cellValue, existing);
+          let width = 1;
+          while (
+            u + width < chunkSize
+            && mask[u + width + (v * chunkSize)] === cellValue
+          ) width += 1;
+
+          let height = 1;
+          heightLoop: while (v + height < chunkSize) {
+            for (let offset = 0; offset < width; offset += 1) {
+              if (mask[u + offset + ((v + height) * chunkSize)] !== cellValue) {
+                break heightLoop;
+              }
+            }
+            height += 1;
+          }
+
+          let buffers = byCellValue.get(cellValue);
+          if (!buffers) {
+            buffers = createGreedyMaterialBuffers();
+            byCellValue.set(cellValue, buffers);
+          }
+          appendGreedyQuad(
+            buffers,
+            chunk,
+            direction,
+            slice,
+            u,
+            v,
+            width,
+            height,
+            cellSize,
+          );
+
+          for (let clearV = 0; clearV < height; clearV += 1) {
+            for (let clearU = 0; clearU < width; clearU += 1) {
+              mask[u + clearU + ((v + clearV) * chunkSize)] = 0;
+            }
+          }
+          u += width;
+        }
+      }
     }
-  });
+  }
 
-  const meshes: THREE.InstancedMesh[] = [];
+  const meshes: THREE.Mesh[] = [];
   const materials: THREE.Material[] = [];
-  const allCellRecords: MeshCellRecord[] = [];
-  const matrix = new THREE.Matrix4();
+  const geometries: THREE.BufferGeometry[] = [];
+  let quadCount = 0;
 
-  for (const [cellValue, records] of byCellValue.entries()) {
+  for (const [cellValue, buffers] of byCellValue.entries()) {
     const entry = chunk.paletteByCellValue.get(cellValue) ?? null;
     const material = createMaterial(entry);
     material.name = materialKeyForCellValue(cellValue);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.Float32BufferAttribute(buffers.positions, 3));
+    geometry.setAttribute("normal", new THREE.Float32BufferAttribute(buffers.normals, 3));
+    geometry.setAttribute("uv", new THREE.Float32BufferAttribute(buffers.uvs, 2));
+    geometry.setIndex(buffers.indices);
+    geometry.computeBoundingBox();
+    geometry.computeBoundingSphere();
 
-    const mesh = new THREE.InstancedMesh(
-      geometry,
-      material,
-      Math.max(1, records.length),
-    );
+    const mesh = new THREE.Mesh(geometry, material);
     mesh.name = `chunk:${chunk.chunkKey}:cell:${cellValue}`;
     mesh.frustumCulled = true;
-    mesh.castShadow = true;
+    mesh.castShadow = false;
     mesh.receiveShadow = true;
     mesh.userData.chunkKey = chunk.chunkKey;
     mesh.userData.cellValue = cellValue;
-    mesh.userData.cells = records;
-
-    records.forEach((record, index) => {
-      matrix.makeTranslation(
-        (record.worldX * cellSize) + (cellSize / 2),
-        (record.worldY * cellSize) + (cellSize / 2),
-        (record.worldZ * cellSize) + (cellSize / 2),
-      );
-      mesh.setMatrixAt(index, matrix);
-      allCellRecords.push(record);
-    });
-
-    mesh.instanceMatrix.needsUpdate = true;
-    // Instanced terrain blocks carry world-space translations. Recompute the
-    // aggregate bounds after all instance matrices are written so Three.js
-    // cannot frustum-cull a whole terrain chunk using the unit cube at origin.
-    mesh.computeBoundingBox();
-    mesh.computeBoundingSphere();
+    mesh.userData.quadCount = buffers.quadCount;
     group.add(mesh);
     meshes.push(mesh);
     materials.push(material);
+    geometries.push(geometry);
+    quadCount += buffers.quadCount;
   }
+
+  group.userData.quadCount = quadCount;
+  group.userData.triangleCount = quadCount * 2;
 
   return {
     chunkKey: chunk.chunkKey,
     group,
     meshes,
     materials,
-    geometry,
-    cellRecords: allCellRecords,
+    geometries,
+    quadCount,
+    triangleCount: quadCount * 2,
+  };
+}
+
+function createChunkMeshRecordFromWorkerResult(
+  chunk: RuntimeChunkContent,
+  result: ChunkMeshWorkerResult,
+): ChunkMeshRecord {
+  const group = new THREE.Group();
+  group.name = `chunk:${chunk.chunkKey}`;
+  group.userData.chunkKey = chunk.chunkKey;
+  group.userData.chunkMeshWorkerBuildMs = result.buildMs;
+  const meshes: THREE.Mesh[] = [];
+  const materials: THREE.Material[] = [];
+  const geometries: THREE.BufferGeometry[] = [];
+
+  for (const buffers of result.buffers) {
+    const entry = chunk.paletteByCellValue.get(buffers.cellValue) ?? null;
+    const material = createMaterial(entry);
+    material.name = materialKeyForCellValue(buffers.cellValue);
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute("position", new THREE.BufferAttribute(buffers.positions, 3));
+    geometry.setAttribute("normal", new THREE.BufferAttribute(buffers.normals, 3));
+    geometry.setAttribute("uv", new THREE.BufferAttribute(buffers.uvs, 2));
+    geometry.setIndex(new THREE.BufferAttribute(buffers.indices, 1));
+    geometry.computeBoundingBox();
+    geometry.computeBoundingSphere();
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.name = `chunk:${chunk.chunkKey}:cell:${buffers.cellValue}`;
+    mesh.frustumCulled = true;
+    mesh.castShadow = false;
+    mesh.receiveShadow = true;
+    mesh.userData.chunkKey = chunk.chunkKey;
+    mesh.userData.cellValue = buffers.cellValue;
+    mesh.userData.quadCount = buffers.quadCount;
+    group.add(mesh);
+    meshes.push(mesh);
+    materials.push(material);
+    geometries.push(geometry);
+  }
+
+  group.userData.quadCount = result.quadCount;
+  group.userData.triangleCount = result.triangleCount;
+  return {
+    chunkKey: chunk.chunkKey,
+    group,
+    meshes,
+    materials,
+    geometries,
+    quadCount: result.quadCount,
+    triangleCount: result.triangleCount,
   };
 }
 
@@ -947,7 +1197,10 @@ function createRenderer(
 ): THREE.WebGLRenderer {
   const renderer = new THREE.WebGLRenderer({
     canvas,
-    antialias: safeBoolean(bootstrap.render.antialias, true),
+    // Native MSAA multiplies the cost of every full-resolution terrain and
+    // shadow pass. Crisp voxel edges remain readable without it and this keeps
+    // the interactive viewport inside its frame budget on integrated GPUs.
+    antialias: false,
     alpha: safeBoolean(bootstrap.render.alpha, false),
     powerPreference: "high-performance",
   });
@@ -1287,6 +1540,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   const worldRuntime = options.worldRuntime;
   const logger = options.logger;
   const createdAt = now();
+  // Browser automation environments commonly reject Pointer Lock even for a
+  // trusted click. This opt-in diagnostic keeps the production path unchanged
+  // while allowing the same accumulator/camera/render loop to be exercised by
+  // a held-button drag: ?camera_input_test=drag
+  const cameraDragTestEnabled = isCameraDragTestRequested();
+  const pointerLockEnabled = bootstrap.input.pointerLockEnabled && !cameraDragTestEnabled;
 
   let status: SceneRuntimeStatus = "created";
   let updatedAt = createdAt;
@@ -1298,10 +1557,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let lastFrameAtMs: number | null = null;
   let frameCount = 0;
   let renderCount = 0;
+  let lastFrameDiagnosticAtMs = 0;
+  let cameraInputFrameCount = 0;
+  let lastCameraInputMagnitude = 0;
+  const frameTimeSamplesMs: number[] = [];
   let meshCount = 0;
   let materialCount = 0;
   let lastRenderedAt: string | null = null;
   let lastTargetSignature: string | null = null;
+  let latestSourceCell: EditorStateChunkCellPosition | null = null;
+  let latestPlacementCell: EditorStateChunkCellPosition | null = null;
   let lastCameraChunk: ChunkCoordinates | null = null;
   let earthStreamingChunkY: number | null = null;
   let earthTerrainSpawnPrepared = false;
@@ -1321,27 +1586,58 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let blockedPlaceIntentCount = 0;
   let removeIntentCount = 0;
   let commandChunkRenderScheduled = false;
+  let optimisticBlockEditSequence = 0;
+  let blockCommandsInFlight = 0;
+  let blockReconcileTimerId: number | null = null;
+  let blockReconcileInFlight = false;
+  let blockReconcileQueued = false;
+  let blockShadowRefreshTimerId: number | null = null;
+  let optimisticMeshTimerId: number | null = null;
+  const pendingOptimisticBlockEdits = new Map<string, PendingOptimisticBlockEdit>();
+  const pendingOptimisticMeshChunkKeys = new Set<string>();
+  const optimisticBlockOverlays = new Map<string, OptimisticBlockOverlay>();
+  const optimisticOverlayMaterials = new Map<string, THREE.MeshStandardMaterial>();
+  const blockReconcileChunkKeys = new Set<string>();
   let lastRenderStoreSyncAtMs = 0;
   let lastPhysicsStoreSyncAtMs = 0;
   let lastCameraStoreSyncAtMs = 0;
+  let lastPhysicsStoreSignature: string | null = null;
   let lastNavigationCompassUpdateAtMs = 0;
   let lastTargetingUpdateAtMs = 0;
   let lastChunkStreamPollAtMs = 0;
   let lastHeldItemRefreshAtMs = 0;
   let lastRealtimePresencePublishAtMs = 0;
+  let lastTerrainShadowCasterUpdateAtMs = -Infinity;
+  let terrainShadowCastersDirty = true;
+  let terrainShadowScanCount = 0;
+  let terrainShadowChangeCount = 0;
+  let terrainShadowCasterMeshCount = 0;
   let cachedSelectedHeldItem: RealtimeHeldItem | null = null;
   let chunkMeshQueueHighWaterMark = 0;
+  let lastChunkMeshProgressCommitAtMs = 0;
   let chunkMeshIdleCallbackId: number | null = null;
   let chunkMeshFallbackTimerId: number | null = null;
+  let chunkMeshWorkerClient: ChunkMeshWorkerClient | null = null;
+  let chunkMeshBuildInFlight = false;
+  let chunkMeshBuildGeneration = 0;
   let wantedChunkMeshKeys = new Set<string>();
+  let visibleChunkMeshKeys = new Set<string>();
+  const warmedChunkMeshKeys = new Set<string>();
+  const optimisticChunkMeshKeys = new Set<string>();
   let lastChunkMeshQueueReason = "scene-runtime.chunk-mesh-queue";
   const pendingChunkMeshKeys: string[] = [];
   const pendingChunkMeshKeySet = new Set<string>();
+  const chunkBoundaryRevisionCache = new WeakMap<RuntimeChunkContent, readonly string[]>();
+
+  refs.root.dataset.sceneRuntimeCameraInputTest = cameraDragTestEnabled ? "drag" : "pointer-lock";
+  refs.root.dataset.sceneRuntimePointerLockEnabled = String(pointerLockEnabled);
 
   let renderer: THREE.WebGLRenderer | null = null;
   let scene: THREE.Scene | null = null;
   let camera: THREE.PerspectiveCamera | null = null;
   let chunksRoot: THREE.Group | null = null;
+  let optimisticOverlayRoot: THREE.Group | null = null;
+  let optimisticOverlayGeometry: THREE.BoxGeometry | null = null;
   let resizeObserver: EditorResizeObserverHandle | null = null;
   let inputController: EditorInputControllerHandle | null = null;
   let physicsRuntime: PhysicsRuntime | null = null;
@@ -1353,7 +1649,6 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
   const chunkMeshes = new Map<string, ChunkMeshRecord>();
   const depthChunkLoadsInFlight = new Map<string, Promise<void>>();
-  const raycaster = new THREE.Raycaster();
   let realtimeClient: EditorRealtimeClient | null = null;
   let realtimeUnsubscribe: (() => void) | null = null;
   let remoteAvatarScene: RemoteAvatarScene | null = null;
@@ -1362,6 +1657,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let localRealtimeMember: RealtimeMember | null = null;
   let localAvatarSessionId: string | null = null;
   let environmentSystem: EnvironmentSystem | null = null;
+  let performanceRecorder: PerformanceRecorderHandle | null = null;
   let realtimeReloadTimer: number | null = null;
   let realtimeReloadQueued = false;
   let realtimeReloadFirstAt = 0;
@@ -1381,9 +1677,9 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     bootstrap.camera.spawn.z,
   );
   const thirdPersonCameraPosition = new THREE.Vector3();
+  const terrainShadowCameraPosition = new THREE.Vector3(Number.POSITIVE_INFINITY, 0, 0);
+  const performanceDrawingBufferSize = new THREE.Vector2();
   let thirdPersonCameraInitialized = false;
-  raycaster.far = DEFAULT_TARGET_MAX_DISTANCE;
-
   function setStatus(nextStatus: SceneRuntimeStatus): void {
     status = nextStatus;
     updatedAt = now();
@@ -1430,6 +1726,11 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   }
 
   function renderStoreFrame(frameMs: number | null): void {
+    // Per-frame render state is diagnostic-only. Even with notifications
+    // disabled, rebuilding the large immutable editor state cost ~30 ms in a
+    // real project capture. Initial/explicit renders may still seed the store;
+    // live frame metrics are exposed through the root dataset and recorder.
+    if (frameMs !== null) return;
     const currentTimeMs = nowMs();
     if (
       frameMs !== null
@@ -1454,8 +1755,70 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     );
   }
 
+  function removeOptimisticBlockOverlay(cellKey: string): void {
+    const overlay = optimisticBlockOverlays.get(cellKey);
+    if (!overlay) return;
+    optimisticOverlayRoot?.remove(overlay.mesh);
+    optimisticBlockOverlays.delete(cellKey);
+  }
+
+  function removeOptimisticBlockOverlaysForChunk(chunkKey: string): void {
+    for (const overlay of [...optimisticBlockOverlays.values()]) {
+      if (overlay.chunkKey === chunkKey) removeOptimisticBlockOverlay(overlay.cellKey);
+    }
+  }
+
+  function clearOptimisticBlockOverlays(): void {
+    for (const cellKey of [...optimisticBlockOverlays.keys()]) {
+      removeOptimisticBlockOverlay(cellKey);
+    }
+    for (const material of optimisticOverlayMaterials.values()) material.dispose();
+    optimisticOverlayMaterials.clear();
+    optimisticOverlayGeometry?.dispose();
+    optimisticOverlayGeometry = null;
+  }
+
+  function showOptimisticBlockOverlay(edit: PendingOptimisticBlockEdit): void {
+    if (!edit.blockTypeId || !optimisticOverlayRoot) return;
+    removeOptimisticBlockOverlay(edit.cellKey);
+    const registry = worldRuntime.getRegistry();
+    const chunk = registry.getChunk(edit.chunkKey);
+    const cellSize = safeNumber(chunk?.cellSize, 1, { min: 0.000001, max: 1_000 });
+    optimisticOverlayGeometry ??= new THREE.BoxGeometry(1, 1, 1);
+    let material = optimisticOverlayMaterials.get(edit.blockTypeId);
+    if (!material) {
+      const appearance = getMaterialAppearance(edit.blockTypeId)
+        ?? fallbackMaterialAppearance(edit.blockTypeId);
+      material = new THREE.MeshStandardMaterial({
+        color: appearance?.color ?? edit.color ?? "#64748b",
+        roughness: appearance?.roughness ?? 0.88,
+        metalness: appearance?.metalness ?? 0.02,
+      });
+      applyMaterialAppearance(material, appearance);
+      optimisticOverlayMaterials.set(edit.blockTypeId, material);
+    }
+    const mesh = new THREE.Mesh(optimisticOverlayGeometry, material);
+    mesh.name = `optimistic-block:${edit.cellKey}`;
+    mesh.position.set(
+      (edit.position.x + 0.5) * cellSize,
+      (edit.position.y + 0.5) * cellSize,
+      (edit.position.z + 0.5) * cellSize,
+    );
+    mesh.scale.setScalar(cellSize * 0.998);
+    mesh.castShadow = false;
+    mesh.receiveShadow = true;
+    mesh.frustumCulled = true;
+    optimisticOverlayRoot.add(mesh);
+    optimisticBlockOverlays.set(edit.cellKey, {
+      cellKey: edit.cellKey,
+      chunkKey: edit.chunkKey,
+      mesh,
+    });
+  }
+
   function clearChunkMeshes(): void {
     try {
+      chunkMeshBuildGeneration += 1;
       const idleWindow = window as SceneIdleWindow;
       if (chunkMeshIdleCallbackId !== null) {
         idleWindow.cancelIdleCallback?.(chunkMeshIdleCallbackId);
@@ -1468,6 +1831,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       pendingChunkMeshKeys.length = 0;
       pendingChunkMeshKeySet.clear();
       wantedChunkMeshKeys = new Set<string>();
+      visibleChunkMeshKeys = new Set<string>();
+      warmedChunkMeshKeys.clear();
+      optimisticChunkMeshKeys.clear();
+      pendingOptimisticMeshChunkKeys.clear();
+      if (optimisticMeshTimerId !== null) {
+        window.clearTimeout(optimisticMeshTimerId);
+        optimisticMeshTimerId = null;
+      }
+      clearOptimisticBlockOverlays();
+      lastChunkMeshProgressCommitAtMs = 0;
 
       if (!chunksRoot) {
         return;
@@ -1481,6 +1854,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       chunkMeshes.clear();
       meshCount = 0;
       materialCount = 0;
+      terrainShadowCastersDirty = true;
     } catch (error) {
       logWarn(logger, "Chunk mesh cleanup failed.", {
         error: normalizeUnknownError(error),
@@ -1488,22 +1862,177 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     }
   }
 
-  function upsertChunkMesh(chunk: RuntimeChunkContent): void {
-    if (!chunksRoot) {
-      return;
+  function chunkBoundaryRevisionTokens(chunk: RuntimeChunkContent): readonly string[] {
+    const cached = chunkBoundaryRevisionCache.get(chunk);
+    if (cached) return cached;
+    const size = chunk.chunkSize;
+    const tokens: string[] = [];
+    const faces = [
+      [0, false], [0, true],
+      [1, false], [1, true],
+      [2, false], [2, true],
+    ] as const;
+    for (const [axis, positive] of faces) {
+      const fixed = positive ? size - 1 : 0;
+      let hash = 2166136261;
+      for (let v = 0; v < size; v += 1) {
+        for (let u = 0; u < size; u += 1) {
+          const x = axis === 0 ? fixed : u;
+          const y = axis === 1 ? fixed : axis === 0 ? u : v;
+          const z = axis === 2 ? fixed : axis === 0 ? v : axis === 1 ? v : u;
+          const solid = Number(chunk.cells[localCellIndex(x, y, z, size)] ?? 0) > 0 ? 1 : 0;
+          hash = Math.imul(hash ^ solid, 16777619);
+        }
+      }
+      tokens.push((hash >>> 0).toString(36));
+    }
+    chunkBoundaryRevisionCache.set(chunk, tokens);
+    return tokens;
+  }
+
+  function chunkMeshRevisionToken(chunk: RuntimeChunkContent): string {
+    const registry = worldRuntime.getRegistry();
+    const selfRevision = `${chunk.chunkRevision ?? chunk.chunkVersion ?? "unversioned"}:${chunk.loadedAt}`;
+    const neighborFaces = [
+      [-1, 0, 0, 1], [1, 0, 0, 0],
+      [0, -1, 0, 3], [0, 1, 0, 2],
+      [0, 0, -1, 5], [0, 0, 1, 4],
+    ] as const;
+    const neighborRevisions = neighborFaces.map(([offsetX, offsetY, offsetZ, faceIndex]) => {
+      const neighbor = registry.getChunk(chunkKeyFromCoordinatesLocal({
+        chunkX: chunk.chunkX + offsetX,
+        chunkY: chunk.chunkY + offsetY,
+        chunkZ: chunk.chunkZ + offsetZ,
+      }));
+      return neighbor
+        ? chunkBoundaryRevisionTokens(neighbor)[faceIndex]
+        : "missing";
+    });
+    return [selfRevision, ...neighborRevisions].join("|");
+  }
+
+  function createChunkBoundaryMasks(chunk: RuntimeChunkContent): ChunkMeshBoundaryMasks {
+    const size = chunk.chunkSize;
+    const registry = worldRuntime.getRegistry();
+
+    function face(
+      offsetX: number,
+      offsetY: number,
+      offsetZ: number,
+      axis: 0 | 1 | 2,
+      positive: boolean,
+    ): Uint8Array {
+      const mask = new Uint8Array(size * size);
+      const neighbor = registry.getChunk(chunkKeyFromCoordinatesLocal({
+        chunkX: chunk.chunkX + offsetX,
+        chunkY: chunk.chunkY + offsetY,
+        chunkZ: chunk.chunkZ + offsetZ,
+      }));
+      if (!neighbor || neighbor.chunkSize !== size) return mask;
+      const fixed = positive ? 0 : size - 1;
+      for (let v = 0; v < size; v += 1) {
+        for (let u = 0; u < size; u += 1) {
+          const x = axis === 0 ? fixed : u;
+          const y = axis === 1 ? fixed : axis === 0 ? u : v;
+          const z = axis === 2 ? fixed : axis === 0 ? v : axis === 1 ? v : u;
+          const value = Number(neighbor.cells[localCellIndex(x, y, z, size)] ?? 0);
+          mask[u + v * size] = value > 0 ? 1 : 0;
+        }
+      }
+      return mask;
     }
 
-    const existing = chunkMeshes.get(chunk.chunkKey);
+    return {
+      negativeX: face(-1, 0, 0, 0, false),
+      positiveX: face(1, 0, 0, 0, true),
+      negativeY: face(0, -1, 0, 1, false),
+      positiveY: face(0, 1, 0, 1, true),
+      negativeZ: face(0, 0, -1, 2, false),
+      positiveZ: face(0, 0, 1, 2, true),
+    };
+  }
 
+  async function buildChunkMeshRecord(chunk: RuntimeChunkContent): Promise<ChunkMeshRecord> {
+    if (!chunkMeshWorkerClient) {
+      return createChunkMeshRecord(chunk, (worldX, worldY, worldZ) => {
+        const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
+        return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
+      });
+    }
+
+    try {
+      const result = await chunkMeshWorkerClient.build({
+        chunkKey: chunk.chunkKey,
+        chunkX: chunk.chunkX,
+        chunkY: chunk.chunkY,
+        chunkZ: chunk.chunkZ,
+        chunkSize: chunk.chunkSize,
+        cellSize: safeNumber(chunk.cellSize, 1, { min: 0.000001, max: 1_000 }),
+        cells: Int32Array.from(chunk.cells),
+        boundaries: createChunkBoundaryMasks(chunk),
+      });
+      refs.root.dataset.sceneRuntimeLastChunkWorkerBuildMs = result.buildMs.toFixed(2);
+      const conversionStartedAtMs = nowMs();
+      const record = createChunkMeshRecordFromWorkerResult(chunk, result);
+      performanceRecorder?.recordEvent(
+        "chunk-mesh",
+        "worker-result-convert",
+        nowMs() - conversionStartedAtMs,
+        {
+          chunkKey: chunk.chunkKey,
+          workerBuildMs: result.buildMs,
+          bufferCount: result.buffers.length,
+          quadCount: result.quadCount,
+        },
+      );
+      return record;
+    } catch (error) {
+      if (destroyed) throw error;
+      refs.root.dataset.sceneRuntimeChunkMeshingThread = "main-thread-fallback";
+      logWarn(logger, "Chunk mesh worker build failed; using synchronous fallback.", {
+        chunkKey: chunk.chunkKey,
+        error: normalizeUnknownError(error),
+      });
+      chunkMeshWorkerClient?.destroy();
+      chunkMeshWorkerClient = null;
+      return createChunkMeshRecord(chunk, (worldX, worldY, worldZ) => {
+        const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
+        return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
+      });
+    }
+  }
+
+  function installChunkMeshRecord(chunk: RuntimeChunkContent, record: ChunkMeshRecord): void {
+    if (!chunksRoot) {
+      disposeObject3D(record.group);
+      return;
+    }
+    const existing = chunkMeshes.get(chunk.chunkKey);
+    const optimisticEdit = optimisticChunkMeshKeys.delete(chunk.chunkKey);
+    const deferShadowRefresh = running || optimisticEdit;
+    let keepCastingShadow = existing?.meshes.some((mesh) => mesh.castShadow) ?? false;
+    if (deferShadowRefresh && camera) {
+      const cellSize = safeNumber(chunk.cellSize, 1, { min: 0.000001, max: 1_000 });
+      const centerX = (chunk.chunkX * chunk.chunkSize + (chunk.chunkSize / 2)) * cellSize;
+      const centerZ = (chunk.chunkZ * chunk.chunkSize + (chunk.chunkSize / 2)) * cellSize;
+      const distanceX = centerX - camera.position.x;
+      const distanceZ = centerZ - camera.position.z;
+      keepCastingShadow = (distanceX * distanceX) + (distanceZ * distanceZ)
+        <= TERRAIN_SHADOW_CAST_DISTANCE ** 2;
+    }
+    if (deferShadowRefresh) {
+      for (const mesh of record.meshes) mesh.castShadow = keepCastingShadow;
+    }
     if (existing) {
       chunksRoot.remove(existing.group);
       disposeObject3D(existing.group);
       chunkMeshes.delete(chunk.chunkKey);
     }
-
-    const record = createChunkMeshRecord(chunk);
     chunksRoot.add(record.group);
     chunkMeshes.set(chunk.chunkKey, record);
+    removeOptimisticBlockOverlaysForChunk(chunk.chunkKey);
+    if (deferShadowRefresh) scheduleBlockShadowRefresh();
+    else terrainShadowCastersDirty = true;
   }
 
   function enqueueChunkMeshKey(chunkKey: string, highPriority = false): void {
@@ -1529,6 +2058,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   }
 
   function commitChunkMeshProgress(reason: string): void {
+    if (running || /optimistic-block-edit/i.test(reason)) scheduleBlockShadowRefresh();
+    else terrainShadowCastersDirty = true;
     meshCount = [...chunkMeshes.values()].reduce(
       (sum, record) => sum + record.meshes.length,
       0,
@@ -1537,8 +2068,18 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       (sum, record) => sum + record.materials.length,
       0,
     );
+    const quadCount = [...chunkMeshes.values()].reduce(
+      (sum, record) => sum + record.quadCount,
+      0,
+    );
+    const triangleCount = [...chunkMeshes.values()].reduce(
+      (sum, record) => sum + record.triangleCount,
+      0,
+    );
     refs.root.dataset.sceneRuntimeRenderedChunkCount = String(chunkMeshes.size);
     refs.root.dataset.sceneRuntimeMeshCount = String(meshCount);
+    refs.root.dataset.sceneRuntimeQuadCount = String(quadCount);
+    refs.root.dataset.sceneRuntimeTriangleCount = String(triangleCount);
     refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(pendingChunkMeshKeys.length);
     refs.root.dataset.sceneRuntimeChunkMeshQueueHighWaterMark = String(chunkMeshQueueHighWaterMark);
     refs.root.dataset.sceneRuntimeChunkMeshingMode = "idle-budgeted";
@@ -1552,21 +2093,23 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     lastRenderedAt = now();
     renderCount += 1;
 
-    setStoreAction(
-      store,
-      {
-        kind: "render/chunks",
-        renderedChunkKeys: [...chunkMeshes.keys()],
-        meshCount,
-        drawCallCount: meshCount,
-        source: reason,
-        createdAt: lastRenderedAt,
-      },
-      {
-        notify: true,
-        captureHistory: false,
-      },
-    );
+    if (!running) {
+      setStoreAction(
+        store,
+        {
+          kind: "render/chunks",
+          renderedChunkKeys: [...chunkMeshes.keys()],
+          meshCount,
+          drawCallCount: meshCount,
+          source: reason,
+          createdAt: lastRenderedAt,
+        },
+        {
+          notify: false,
+          captureHistory: false,
+        },
+      );
+    }
 
     logDebug(logger, "Scene chunk mesh progress committed.", {
       reason,
@@ -1574,16 +2117,71 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       pendingChunkMeshCount: pendingChunkMeshKeys.length,
       meshCount,
       materialCount,
+      quadCount,
+      triangleCount,
     });
     startPhysicsWhenWorldReady(reason);
   }
 
-  function processChunkMeshQueue(deadline?: SceneIdleDeadline): void {
-    if (destroyed || !chunksRoot || pendingChunkMeshKeys.length === 0) return;
+  function updateTerrainShadowCasters(timestampMs: number, force = false): void {
+    if (!camera || !renderer) return;
+    const cameraMoved = !Number.isFinite(terrainShadowCameraPosition.x)
+      || terrainShadowCameraPosition.distanceToSquared(camera.position)
+        >= TERRAIN_SHADOW_CAMERA_MOVE_DISTANCE ** 2;
+    if (
+      !force
+      && !cameraMoved
+      && !terrainShadowCastersDirty
+    ) return;
+
+    const registry = worldRuntime.getRegistry();
+    const maximumDistanceSquared = TERRAIN_SHADOW_CAST_DISTANCE ** 2;
+    let casterMeshCount = 0;
+    let changed = false;
+
+    for (const [chunkKey, record] of chunkMeshes.entries()) {
+      const chunk = registry.getChunk(chunkKey);
+      const cellSize = safeNumber(chunk?.cellSize, 1, { min: 0.000001, max: 1_000 });
+      const chunkSize = safeInteger(chunk?.chunkSize, 16, { min: 1, max: 256 });
+      const centerX = ((chunk?.chunkX ?? 0) * chunkSize + (chunkSize / 2)) * cellSize;
+      const centerZ = ((chunk?.chunkZ ?? 0) * chunkSize + (chunkSize / 2)) * cellSize;
+      const distanceX = centerX - camera.position.x;
+      const distanceZ = centerZ - camera.position.z;
+      const shouldCast = record.group.visible
+        && ((distanceX * distanceX) + (distanceZ * distanceZ) <= maximumDistanceSquared);
+
+      for (const mesh of record.meshes) {
+        if (mesh.castShadow !== shouldCast) {
+          mesh.castShadow = shouldCast;
+          changed = true;
+        }
+        if (shouldCast) casterMeshCount += 1;
+      }
+    }
+
+    if (changed) renderer.shadowMap.needsUpdate = true;
+    terrainShadowCameraPosition.copy(camera.position);
+    lastTerrainShadowCasterUpdateAtMs = timestampMs;
+    terrainShadowCastersDirty = false;
+    terrainShadowScanCount += 1;
+    if (changed) terrainShadowChangeCount += 1;
+    terrainShadowCasterMeshCount = casterMeshCount;
+    refs.root.dataset.sceneRuntimeShadowCasterMeshCount = String(casterMeshCount);
+    refs.root.dataset.sceneRuntimeShadowCastDistance = String(TERRAIN_SHADOW_CAST_DISTANCE);
+  }
+
+  async function processChunkMeshQueue(deadline?: SceneIdleDeadline): Promise<void> {
+    if (
+      destroyed
+      || !chunksRoot
+      || pendingChunkMeshKeys.length === 0
+      || chunkMeshBuildInFlight
+    ) return;
 
     const registry = worldRuntime.getRegistry();
     let processedCount = 0;
     let changed = false;
+    const buildGeneration = chunkMeshBuildGeneration;
 
     while (
       pendingChunkMeshKeys.length > 0
@@ -1604,8 +2202,10 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const chunk = registry.getChunk(key);
       const existing = chunkMeshes.get(key);
       const wanted = wantedChunkMeshKeys.has(key);
+      const visible = visibleChunkMeshKeys.has(key);
 
-      if (!wanted || !chunk) {
+      if (!chunk) {
+        warmedChunkMeshKeys.delete(key);
         if (existing) {
           chunksRoot.remove(existing.group);
           disposeObject3D(existing.group);
@@ -1616,35 +2216,115 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         continue;
       }
 
-      const existingRevision = existing?.group.userData.chunkRevision;
-      const nextRevision = chunk.chunkRevision ?? chunk.chunkVersion ?? chunk.loadedAt;
-      if (existing && existingRevision === nextRevision) {
-        existing.group.visible = true;
+      // Loaded chunks keep their prepared GPU mesh while they are outside the
+      // current view. Re-entering a cached area must only toggle visibility,
+      // not rebuild thousands of instances again.
+      if (!wanted) {
+        if (existing) existing.group.visible = false;
         processedCount += 1;
         continue;
       }
 
-      upsertChunkMesh(chunk);
-      const record = chunkMeshes.get(key);
-      if (record) {
-        record.group.userData.chunkRevision = nextRevision;
-        record.group.visible = true;
-        changed = true;
+      const existingRevision = existing?.group.userData.chunkRevision;
+      const nextRevision = chunkMeshRevisionToken(chunk);
+      if (existing && existingRevision === nextRevision) {
+        existing.group.visible = visible;
+        processedCount += 1;
+        continue;
       }
+
+      chunkMeshBuildInFlight = true;
+      refs.root.dataset.sceneRuntimeChunkMeshWorkerBusy = "true";
+      let builtRecord: ChunkMeshRecord | null = null;
+      try {
+        builtRecord = await buildChunkMeshRecord(chunk);
+      } catch (error) {
+        if (!destroyed) {
+          logWarn(logger, "Chunk mesh build failed.", {
+            chunkKey: key,
+            error: normalizeUnknownError(error),
+          });
+        }
+        return;
+      } finally {
+        chunkMeshBuildInFlight = false;
+        refs.root.dataset.sceneRuntimeChunkMeshWorkerBusy = "false";
+      }
+      if (
+        !builtRecord
+        || destroyed
+        || buildGeneration !== chunkMeshBuildGeneration
+        || !chunksRoot
+      ) {
+        if (builtRecord) disposeObject3D(builtRecord.group);
+        return;
+      }
+      const latestChunk = registry.getChunk(key);
+      if (!latestChunk || chunkMeshRevisionToken(latestChunk) !== nextRevision) {
+        disposeObject3D(builtRecord.group);
+        enqueueChunkMeshKey(key, true);
+        processedCount += 1;
+        continue;
+      }
+      const installStartedAtMs = nowMs();
+      const optimisticInstall = optimisticChunkMeshKeys.has(chunk.chunkKey);
+      installChunkMeshRecord(chunk, builtRecord);
+      performanceRecorder?.recordEvent(
+        "chunk-mesh",
+        "install",
+        nowMs() - installStartedAtMs,
+        {
+          chunkKey: chunk.chunkKey,
+          meshCount: builtRecord.meshes.length,
+          quadCount: builtRecord.quadCount,
+          optimistic: optimisticInstall,
+        },
+      );
+      builtRecord.group.userData.chunkRevision = nextRevision;
+      builtRecord.group.visible = visibleChunkMeshKeys.has(key);
+      changed = true;
       processedCount += 1;
     }
 
     refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(pendingChunkMeshKeys.length);
     if (changed) {
-      commitChunkMeshProgress(lastChunkMeshQueueReason);
-      if (!running) renderOnce("scene-runtime.chunk-mesh-idle-progress");
+      const currentTimeMs = nowMs();
+      const shouldCommitProgress = pendingChunkMeshKeys.length === 0
+        || currentTimeMs - lastChunkMeshProgressCommitAtMs >= CHUNK_MESH_PROGRESS_COMMIT_INTERVAL_MS;
+      if (shouldCommitProgress) {
+        lastChunkMeshProgressCommitAtMs = currentTimeMs;
+        commitChunkMeshProgress(lastChunkMeshQueueReason);
+      }
+      // During boot the overlay is the only useful visual. Rendering the full
+      // scene once per newly meshed chunk caused the very startup freeze the
+      // warmup is meant to hide.
+      if (!running && pendingChunkMeshKeys.length === 0) {
+        renderOnce("scene-runtime.chunk-mesh-queue-complete");
+      }
     }
+  }
+
+  function scheduleBlockShadowRefresh(): void {
+    if (destroyed) return;
+    if (blockShadowRefreshTimerId !== null) {
+      window.clearTimeout(blockShadowRefreshTimerId);
+    }
+    // Rebuilding the shadow map on every click creates a visible GPU hitch.
+    // Keep the geometry immediate and refresh its shadow once the click burst
+    // has been quiet for a moment.
+    blockShadowRefreshTimerId = window.setTimeout(() => {
+      blockShadowRefreshTimerId = null;
+      if (destroyed) return;
+      terrainShadowCastersDirty = true;
+      if (renderer) renderer.shadowMap.needsUpdate = true;
+    }, 120);
   }
 
   function scheduleChunkMeshProcessing(): void {
     if (
       destroyed
       || pendingChunkMeshKeys.length === 0
+      || chunkMeshBuildInFlight
       || chunkMeshIdleCallbackId !== null
       || chunkMeshFallbackTimerId !== null
     ) return;
@@ -1653,41 +2333,95 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     if (typeof idleWindow.requestIdleCallback === "function") {
       chunkMeshIdleCallbackId = idleWindow.requestIdleCallback((deadline) => {
         chunkMeshIdleCallbackId = null;
-        processChunkMeshQueue(deadline);
-        if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
+        void processChunkMeshQueue(deadline).finally(() => {
+          if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
+        });
       }, { timeout: CHUNK_MESH_IDLE_TIMEOUT_MS });
       return;
     }
 
     chunkMeshFallbackTimerId = window.setTimeout(() => {
       chunkMeshFallbackTimerId = null;
-      processChunkMeshQueue({
+      void processChunkMeshQueue({
         didTimeout: true,
         timeRemaining: () => 0,
+      }).finally(() => {
+        if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
       });
-      if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
     }, 16);
+  }
+
+  function scheduleOptimisticBlockMesh(
+    edit: OptimisticBlockEditResult,
+    reason: string,
+  ): void {
+    if (!edit.changed || destroyed) return;
+    lastChunkMeshQueueReason = reason;
+    for (const key of edit.affectedMeshChunkKeys) {
+      if (!worldRuntime.getRegistry().hasChunk(key)) continue;
+      optimisticChunkMeshKeys.add(key);
+      pendingOptimisticMeshChunkKeys.add(key);
+    }
+    refs.root.dataset.sceneRuntimeChunkMeshQueueDepth = String(
+      pendingChunkMeshKeys.length + pendingOptimisticMeshChunkKeys.size,
+    );
+    if (optimisticMeshTimerId !== null) window.clearTimeout(optimisticMeshTimerId);
+    optimisticMeshTimerId = window.setTimeout(() => {
+      optimisticMeshTimerId = null;
+      if (destroyed) return;
+      const batchKeys = [...pendingOptimisticMeshChunkKeys];
+      pendingOptimisticMeshChunkKeys.clear();
+      for (const key of batchKeys) enqueueChunkMeshKey(key, true);
+      performanceRecorder?.recordEvent(
+        "block-mesh-batch",
+        "flush",
+        0,
+        { chunkCount: batchKeys.length, reason },
+      );
+      if (chunkMeshBuildInFlight) return;
+      const idleWindow = window as SceneIdleWindow;
+      if (chunkMeshIdleCallbackId !== null) {
+        idleWindow.cancelIdleCallback?.(chunkMeshIdleCallbackId);
+        chunkMeshIdleCallbackId = null;
+      }
+      if (chunkMeshFallbackTimerId !== null) {
+        window.clearTimeout(chunkMeshFallbackTimerId);
+        chunkMeshFallbackTimerId = null;
+      }
+      void processChunkMeshQueue({ didTimeout: true, timeRemaining: () => 16 })
+        .finally(() => {
+          if (pendingChunkMeshKeys.length > 0) scheduleChunkMeshProcessing();
+        });
+    }, BLOCK_EDIT_MESH_QUIET_MS);
   }
 
   function renderChunksFromRegistry(reason: string): void {
     try {
+      terrainShadowCastersDirty = true;
       const registry = worldRuntime.getRegistry();
       const visibleKeys = registry.getVisibleChunkKeys();
       const loadedKeys = registry.getChunkKeys();
       const keys = visibleKeys.length > 0 ? visibleKeys : loadedKeys;
-      const wanted = new Set(keys);
+      const visible = new Set(keys);
+      for (const key of warmedChunkMeshKeys) {
+        if (!registry.hasChunk(key)) warmedChunkMeshKeys.delete(key);
+      }
+      const wanted = new Set([...keys, ...warmedChunkMeshKeys]);
       const highPriority = /dirty|command|realtime|place|remove/i.test(reason);
       wantedChunkMeshKeys = wanted;
+      visibleChunkMeshKeys = visible;
       lastChunkMeshQueueReason = reason;
 
       for (const existingKey of chunkMeshes.keys()) {
         const record = chunkMeshes.get(existingKey);
         if (wanted.has(existingKey)) {
-          if (record) record.group.visible = true;
+          if (record) record.group.visible = visible.has(existingKey);
           continue;
         }
         if (record) record.group.visible = false;
-        enqueueChunkMeshKey(existingKey, true);
+        // A registry eviction is the only reason to dispose a cached mesh.
+        // Merely leaving the visible ring keeps it ready for backtracking.
+        if (!registry.hasChunk(existingKey)) enqueueChunkMeshKey(existingKey, true);
       }
 
       for (const key of keys) {
@@ -1696,9 +2430,9 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
         const existing = chunkMeshes.get(key);
         const existingRevision = existing?.group.userData.chunkRevision;
-        const nextRevision = chunk.chunkRevision ?? chunk.chunkVersion ?? chunk.loadedAt;
+        const nextRevision = chunkMeshRevisionToken(chunk);
         if (existing && existingRevision === nextRevision) {
-          existing.group.visible = true;
+          existing.group.visible = visible.has(key);
           continue;
         }
         enqueueChunkMeshKey(key, highPriority);
@@ -1713,6 +2447,102 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       setError(error, "scene-runtime.renderChunksFromRegistry");
     }
   }
+
+  async function preloadVisibleMaterialTextures(): Promise<void> {
+    const registry = worldRuntime.getRegistry();
+    const visibleKeys = registry.getVisibleChunkKeys();
+    const pendingByKey = new Map<string, Promise<THREE.Texture>>();
+
+    for (const key of visibleKeys) {
+      const chunk = registry.getChunk(key);
+      if (!chunk) continue;
+
+      for (const entry of chunk.palette) {
+        const appearance = getMaterialAppearance(entry.blockTypeId)
+          ?? fallbackMaterialAppearance(entry.blockTypeId);
+        if (!appearance?.textureUrl) continue;
+
+        const textureKey = appearance.textureKey ?? appearance.textureUrl;
+        if (pendingByKey.has(textureKey)) continue;
+        const pending = loadMaterialTexture(
+          appearance.textureUrl,
+          textureKey,
+          {
+            anisotropy: appearance.anisotropy,
+            generateMipmaps: appearance.generateMipmaps,
+          },
+        );
+        if (pending) pendingByKey.set(textureKey, pending);
+      }
+    }
+
+    // Inventory-only blocks may not occur in the spawn chunks yet. Loading
+    // and uploading their textures behind the initial loading screen avoids a
+    // decode/GPU upload pause on the first mouse-wheel selection.
+    for (const item of store.peekState().inventory.items) {
+      const blockTypeId = item.runtimeBlockTypeId ?? item.blockTypeId;
+      if (!blockTypeId) continue;
+      const appearance = getMaterialAppearance(blockTypeId)
+        ?? fallbackMaterialAppearance(blockTypeId);
+      if (!appearance?.textureUrl) continue;
+      const textureKey = appearance.textureKey ?? appearance.textureUrl;
+      if (pendingByKey.has(textureKey)) continue;
+      const pending = loadMaterialTexture(
+        appearance.textureUrl,
+        textureKey,
+        {
+          anisotropy: appearance.anisotropy,
+          generateMipmaps: appearance.generateMipmaps,
+        },
+      );
+      if (pending) pendingByKey.set(textureKey, pending);
+    }
+
+    if (pendingByKey.size === 0) return;
+    setDomBootMessage(refs, `Blocktexturen werden vorbereitet (${pendingByKey.size}).`);
+    const loadedTextures = await Promise.allSettled(pendingByKey.values());
+    if (renderer) {
+      for (const result of loadedTextures) {
+        if (result.status !== "fulfilled") continue;
+        try {
+          renderer.initTexture(result.value);
+        } catch {
+          // CPU-side preload still prevents a later image decode pause.
+        }
+      }
+    }
+  }
+
+  async function drainInitialChunkMeshQueue(): Promise<void> {
+    const startedAtMs = nowMs();
+    refs.root.dataset.initialChunkWarmup = "meshing";
+
+    while (
+      !destroyed
+      && (pendingChunkMeshKeys.length > 0 || chunkMeshBuildInFlight)
+    ) {
+      const total = Math.max(chunkMeshQueueHighWaterMark, pendingChunkMeshKeys.length);
+      const completed = Math.max(0, total - pendingChunkMeshKeys.length);
+      setDomBootMessage(
+        refs,
+        `Welt wird für flüssige Bewegung vorbereitet (${completed}/${total} Chunks).`,
+      );
+
+      // The expensive greedy scan runs in a worker. The main thread only
+      // installs the finished typed buffers while the loading screen is shown.
+      if (!chunkMeshBuildInFlight) {
+        void processChunkMeshQueue({ didTimeout: true, timeRemaining: () => 16 });
+      }
+      await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()));
+    }
+
+    refs.root.dataset.initialChunkWarmup = pendingChunkMeshKeys.length === 0
+      ? "ready"
+      : "cancelled";
+    refs.root.dataset.initialChunkWarmupElapsedMs = String(
+      Math.max(0, Math.round(nowMs() - startedAtMs)),
+    );
+  }
   function scheduleCommandChunkRender(reason: string): void {
     if (destroyed || commandChunkRenderScheduled) return;
     commandChunkRenderScheduled = true;
@@ -1724,11 +2554,195 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     });
   }
 
+  function registerOptimisticBlockEdit(
+    position: ChunkWorldPosition,
+    blockTypeId: string | null,
+    label: string | null = null,
+  ): PendingOptimisticBlockEdit | null {
+    optimisticBlockEditSequence += 1;
+    const appearance = blockTypeId
+      ? getMaterialAppearance(blockTypeId) ?? fallbackMaterialAppearance(blockTypeId)
+      : null;
+    const result = applyOptimisticBlockEdit({
+      registry: worldRuntime.getRegistry(),
+      position,
+      blockTypeId,
+      revision: optimisticBlockEditSequence,
+      label,
+      color: appearance?.color ?? null,
+    });
+    if (!result.changed) return null;
+
+    const edit: PendingOptimisticBlockEdit = {
+      sequence: optimisticBlockEditSequence,
+      position,
+      blockTypeId,
+      previousCellValue: result.previousCellValue,
+      nextCellValue: result.nextCellValue,
+      cellKey: result.cellKey,
+      chunkKey: result.chunkKey,
+      affectedMeshChunkKeys: result.affectedMeshChunkKeys,
+      label,
+      color: appearance?.color ?? null,
+    };
+    pendingOptimisticBlockEdits.set(edit.cellKey, edit);
+    blockReconcileChunkKeys.add(edit.chunkKey);
+    showOptimisticBlockOverlay(edit);
+    scheduleOptimisticBlockMesh(result, "scene-runtime.optimistic-block-edit");
+    refs.root.dataset.sceneRuntimeLastBlockEditAppliedAt = now();
+    refs.root.dataset.sceneRuntimePendingBlockCommands = String(blockCommandsInFlight + 1);
+    return edit;
+  }
+
+  function rollbackOptimisticBlockEdit(edit: PendingOptimisticBlockEdit): void {
+    const current = pendingOptimisticBlockEdits.get(edit.cellKey);
+    if (!current || current.sequence !== edit.sequence) return;
+    pendingOptimisticBlockEdits.delete(edit.cellKey);
+    removeOptimisticBlockOverlay(edit.cellKey);
+    optimisticBlockEditSequence += 1;
+    const rollback = applyOptimisticCellValue({
+      registry: worldRuntime.getRegistry(),
+      position: edit.position,
+      cellValue: edit.previousCellValue,
+      revision: optimisticBlockEditSequence,
+    });
+    scheduleOptimisticBlockMesh(rollback, "scene-runtime.optimistic-block-edit-rollback");
+    worldRuntime.getSource().markChunkDirty(
+      edit.chunkKey,
+      "scene-runtime.optimistic-block-edit-rollback",
+    );
+  }
+
+  function confirmOptimisticBlockEdit(edit: PendingOptimisticBlockEdit): void {
+    const current = pendingOptimisticBlockEdits.get(edit.cellKey);
+    if (current?.sequence === edit.sequence) {
+      pendingOptimisticBlockEdits.delete(edit.cellKey);
+    }
+  }
+
+  function reapplyPendingOptimisticBlockEdits(): void {
+    const edits = [...pendingOptimisticBlockEdits.values()]
+      .sort((left, right) => left.sequence - right.sequence);
+    for (const edit of edits) {
+      const result = applyOptimisticBlockEdit({
+        registry: worldRuntime.getRegistry(),
+        position: edit.position,
+        blockTypeId: edit.blockTypeId,
+        revision: edit.sequence,
+        label: edit.label,
+        color: edit.color,
+      });
+      if (result.changed) scheduleOptimisticBlockMesh(result, "scene-runtime.optimistic-block-edit-reapply");
+    }
+  }
+
+  async function flushBlockCommandReconcile(reason: string): Promise<void> {
+    if (destroyed || blockReconcileInFlight || blockCommandsInFlight > 0) return;
+    blockReconcileQueued = false;
+    blockReconcileInFlight = true;
+    refs.root.dataset.sceneRuntimeBlockReconcileStatus = "loading";
+    try {
+      const source = worldRuntime.getSource();
+      const reconcileKeys = [...blockReconcileChunkKeys];
+      blockReconcileChunkKeys.clear();
+      if (reconcileKeys.length > 0) {
+        const loadResult = await worldRuntime.getLoader().loadCoordinates(
+          reconcileKeys.map((key) => chunkCoordinatesFromKey(key)),
+          {
+            reason,
+            force: true,
+            // Reconciliation refreshes data for chunks that are already part
+            // of the streamed world. `markVisible: true` makes the loader
+            // replace the complete visibility set with only these edited
+            // chunks once the request completes, which visually unloads the
+            // rest of the world after a block command.
+            markVisible: false,
+            contentProfile: "full",
+            preferBatch: true,
+            maxChunks: reconcileKeys.length,
+            batchSize: Math.min(16, Math.max(1, reconcileKeys.length)),
+          },
+        );
+        if (isChunkLoaderFailureResult(loadResult)) {
+          reconcileKeys.forEach((key) => blockReconcileChunkKeys.add(key));
+          throw loadResult.error;
+        }
+        // Neighbor keys are invalidated server-side for mesh seams, but their
+        // cell payload did not change. The local boundary-aware mesher has
+        // already updated the only neighbors that can be visually affected.
+        source.clearDirtyChunks(
+          source.getDirtyChunkKeys(),
+          "scene-runtime.block-command-targeted-reconcile",
+        );
+      }
+      if (destroyed) {
+        return;
+      }
+      if (blockReconcileChunkKeys.size > 0) {
+        blockReconcileQueued = true;
+      }
+      if (reconcileKeys.length === 0 && source.getDirtyChunkKeys().length > 0) {
+        logDebug(logger, "Block reconciliation skipped unrelated dirty chunks.", {
+          reason,
+          dirtyChunkCount: source.getDirtyChunkKeys().length,
+        });
+      }
+      // A reload can overlap the next click. Reapply commands that are not yet
+      // confirmed so a stale snapshot never makes a fresh local edit flash away.
+      reapplyPendingOptimisticBlockEdits();
+      scheduleCommandChunkRender("scene-runtime.block-command-reconcile");
+      refs.root.dataset.sceneRuntimeBlockReconcileStatus = "ready";
+    } catch (error) {
+      refs.root.dataset.sceneRuntimeBlockReconcileStatus = "failed";
+      logWarn(logger, "Block edit reconciliation failed.", {
+        reason,
+        error: normalizeUnknownError(error),
+      });
+    } finally {
+      blockReconcileInFlight = false;
+      if (blockReconcileQueued && blockCommandsInFlight === 0) {
+        scheduleBlockCommandReconcile("scene-runtime.block-command-reconcile-queued");
+      }
+    }
+  }
+
+  function scheduleBlockCommandReconcile(reason: string): void {
+    if (destroyed) return;
+    blockReconcileQueued = true;
+    if (blockReconcileTimerId !== null) {
+      window.clearTimeout(blockReconcileTimerId);
+      blockReconcileTimerId = null;
+    }
+    if (blockCommandsInFlight > 0 || blockReconcileInFlight) return;
+    blockReconcileTimerId = window.setTimeout(() => {
+      blockReconcileTimerId = null;
+      void flushBlockCommandReconcile(reason);
+    }, BLOCK_RECONCILE_QUIET_MS);
+  }
+
+  function finishBlockCommand(
+    edit: PendingOptimisticBlockEdit | null,
+    success: boolean,
+    reason: string,
+  ): void {
+    if (edit) {
+      if (success) confirmOptimisticBlockEdit(edit);
+      else rollbackOptimisticBlockEdit(edit);
+    }
+    blockCommandsInFlight = Math.max(0, blockCommandsInFlight - 1);
+    refs.root.dataset.sceneRuntimePendingBlockCommands = String(blockCommandsInFlight);
+    scheduleBlockCommandReconcile(reason);
+  }
+
 
   function syncCameraToStore(source: string, notify = false): void {
     if (!camera) {
       return;
     }
+    // Camera transforms are consumed directly by the scene, targeting and
+    // recorder. Mirroring every mouse frame into the application store caused
+    // another ~29 ms immutable-state rebuild without affecting rendering.
+    if (!notify) return;
     const currentTimeMs = nowMs();
     if (
       !notify
@@ -1765,13 +2779,22 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     reason: string,
   ): void {
     try {
-      const currentTimeMs = nowMs();
-      const urgent = Boolean(frame.error) || frame.warnings.length > 0;
-      if (
-        !urgent
-        && currentTimeMs - lastPhysicsStoreSyncAtMs < PHYSICS_STORE_SYNC_INTERVAL_MS
-      ) return;
-      lastPhysicsStoreSyncAtMs = currentTimeMs;
+      refs.root.dataset.physicsFrameWarnings = String(frame.warnings.length);
+      refs.root.dataset.physicsFrameSubSteps = String(frame.subStepCount);
+      refs.root.dataset.physicsFramePhase = frame.phase;
+      const signature = [
+        frame.player.movementMode,
+        frame.player.grounded ? "grounded" : "not-grounded",
+        frame.player.flying ? "flying" : "not-flying",
+        frame.error?.code ?? "ok",
+      ].join("|");
+      // Store synchronization is only needed when the semantic player state
+      // changes. Treating accumulator-clamp warnings as urgent previously
+      // forced a full notified store/UI update every slow frame (~231 ms),
+      // which made the low-FPS condition self-reinforcing.
+      if (!frame.error && signature === lastPhysicsStoreSignature) return;
+      lastPhysicsStoreSignature = signature;
+      lastPhysicsStoreSyncAtMs = nowMs();
 
       setStoreAction(
         store,
@@ -1790,7 +2813,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           source: reason,
         },
         {
-          notify: true,
+          notify: Boolean(frame.error),
           captureHistory: false,
         },
       );
@@ -2224,6 +3247,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       return;
     }
     if (isEditableViewShortcutTarget(event.target)) return;
+    if (code === "F8" || event.key === "F8") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      performanceRecorder?.toggle("keyboard-f8");
+      return;
+    }
     if (refs.root.dataset.creativeInventoryOpen === "true") return;
     if (code === "KeyV" || event.key.toLowerCase() === "v") {
       event.preventDefault();
@@ -2238,15 +3267,72 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     }
   }
 
-  function updateCameraFromInput(deltaMs: number): void {
-    if (!camera || !inputController) {
+  function updateFrameDiagnostics(timestampMs: number, frameMs: number): void {
+    if (Number.isFinite(frameMs) && frameMs > 0 && frameMs < 1_000) {
+      frameTimeSamplesMs.push(frameMs);
+      if (frameTimeSamplesMs.length > FRAME_DIAGNOSTIC_WINDOW_SIZE) {
+        frameTimeSamplesMs.splice(0, frameTimeSamplesMs.length - FRAME_DIAGNOSTIC_WINDOW_SIZE);
+      }
+    }
+
+    if (
+      frameTimeSamplesMs.length === 0
+      || timestampMs - lastFrameDiagnosticAtMs < FRAME_DIAGNOSTIC_UPDATE_INTERVAL_MS
+    ) {
       return;
     }
 
+    lastFrameDiagnosticAtMs = timestampMs;
+    const sorted = [...frameTimeSamplesMs].sort((left, right) => left - right);
+    const sum = frameTimeSamplesMs.reduce((total, value) => total + value, 0);
+    const averageMs = sum / frameTimeSamplesMs.length;
+    const percentileIndex = Math.min(
+      sorted.length - 1,
+      Math.max(0, Math.ceil(sorted.length * 0.95) - 1),
+    );
+
+    refs.root.dataset.sceneRuntimeFps = (1_000 / Math.max(averageMs, 0.001)).toFixed(1);
+    refs.root.dataset.sceneRuntimeFrameAverageMs = averageMs.toFixed(2);
+    refs.root.dataset.sceneRuntimeFrameP95Ms = sorted[percentileIndex].toFixed(2);
+    refs.root.dataset.sceneRuntimeFrameMaxMs = sorted[sorted.length - 1].toFixed(2);
+    refs.root.dataset.sceneRuntimeFrameHitches25Ms = String(
+      frameTimeSamplesMs.filter((value) => value > 25).length,
+    );
+    refs.root.dataset.sceneRuntimeFrameHitches50Ms = String(
+      frameTimeSamplesMs.filter((value) => value > 50).length,
+    );
+    refs.root.dataset.sceneRuntimeFrameSampleCount = String(frameTimeSamplesMs.length);
+    refs.root.dataset.sceneRuntimeCameraInputFrames = String(cameraInputFrameCount);
+    refs.root.dataset.sceneRuntimeLastCameraInputMagnitude = lastCameraInputMagnitude.toFixed(2);
+  }
+
+  function updateCameraFromInput(deltaMs: number): SceneCameraFrameTelemetry {
+    if (!camera || !inputController) {
+      return {
+        lookDeltaX: 0,
+        lookDeltaY: 0,
+        lookDeltaMagnitude: 0,
+        pointerLocked: false,
+        movementActive: false,
+        sprinting: false,
+        inputReadMs: 0,
+        physicsSimulationMs: 0,
+        physicsStoreMs: 0,
+        cameraFinalizeMs: 0,
+        cameraStoreMs: 0,
+        physicsSubSteps: 0,
+      };
+    }
+
     try {
+      const cameraUpdateStartedAtMs = nowMs();
       const inputState = inputController.getInputState();
       const snapshot = inputState.getSnapshot();
-      const pointerDelta = snapshot.pointer.delta;
+      // Pointer devices can emit many native events between two rendered
+      // frames. Consuming only the last event loses most of that movement on a
+      // busy frame and makes the camera feel delayed. The input state owns a
+      // frame accumulator which is cleared exactly after this consumption.
+      const pointerDelta = snapshot.pointer.accumulatedLookDelta;
       const sensitivity = safeNumber(
         bootstrap.input.sensitivity,
         DEFAULT_CAMERA_SENSITIVITY,
@@ -2256,8 +3342,17 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         },
       );
       const seconds = Math.max(0, Math.min(0.1, deltaMs / 1000));
+      const hasPointerDelta = pointerDelta.x !== 0 || pointerDelta.y !== 0;
 
-      if (snapshot.pointer.pointerLocked || snapshot.pointer.pressedButtons.length > 0) {
+      if (
+        snapshot.pointer.pointerLocked
+        || snapshot.pointer.pressedButtons.length > 0
+        || (cameraDragTestEnabled && hasPointerDelta)
+      ) {
+        if (hasPointerDelta) {
+          cameraInputFrameCount += 1;
+          lastCameraInputMagnitude = Math.hypot(pointerDelta.x, pointerDelta.y);
+        }
         lookYaw -= pointerDelta.x * sensitivity;
         lookPitch -= pointerDelta.y * sensitivity;
         lookPitch = Math.max(
@@ -2268,8 +3363,13 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       camera.rotation.set(lookPitch, lookYaw, 0, "YXZ");
 
       const movementIntent = inputController.getMovementIntent();
+      const inputReadMs = nowMs() - cameraUpdateStartedAtMs;
+      let physicsSimulationMs = 0;
+      let physicsStoreMs = 0;
+      let physicsSubSteps = 0;
 
       if (physicsRuntime && physicsRuntimeEnabled) {
+        const physicsSimulationStartedAtMs = nowMs();
         const physicsFrame = physicsRuntime.stepFrame({
           nowMs: nowMs(),
           deltaSeconds: seconds,
@@ -2277,8 +3377,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           lookAngles: { yaw: lookYaw, pitch: lookPitch, roll: 0 },
           query: worldRuntime.getBlockCollisionQuery(),
         });
+        physicsSimulationMs = nowMs() - physicsSimulationStartedAtMs;
+        physicsSubSteps = physicsFrame.subStepCount;
 
+        const physicsStoreStartedAtMs = nowMs();
         dispatchPhysicsFrameToStore(physicsFrame, "scene-runtime.physics-frame");
+        physicsStoreMs = nowMs() - physicsStoreStartedAtMs;
 
         if (cameraShouldFollowPhysics) {
           applyPhysicsCameraBindingToThreeCamera(camera, physicsFrame.camera);
@@ -2298,22 +3402,54 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         );
       }
 
+      const cameraFinalizeStartedAtMs = nowMs();
       if (thirdPersonEnabled) {
         applyThirdPersonCamera(seconds);
       } else {
         camera.rotation.set(lookPitch, lookYaw, 0, "YXZ");
         camera.updateMatrixWorld(true);
       }
+      const cameraFinalizeMs = nowMs() - cameraFinalizeStartedAtMs;
 
+      const cameraStoreStartedAtMs = nowMs();
       inputState.resetDeltas();
       syncCameraToStore(
         physicsRuntimeEnabled ? "scene-runtime.physics-camera" : "scene-runtime.camera",
         false,
       );
+      const cameraStoreMs = nowMs() - cameraStoreStartedAtMs;
+      return {
+        lookDeltaX: pointerDelta.x,
+        lookDeltaY: pointerDelta.y,
+        lookDeltaMagnitude: Math.hypot(pointerDelta.x, pointerDelta.y),
+        pointerLocked: snapshot.pointer.pointerLocked,
+        movementActive: movementIntent.active,
+        sprinting: movementIntent.sprint,
+        inputReadMs,
+        physicsSimulationMs,
+        physicsStoreMs,
+        cameraFinalizeMs,
+        cameraStoreMs,
+        physicsSubSteps,
+      };
     } catch (error) {
       logWarn(logger, "Camera/physics input update failed.", {
         error: normalizeUnknownError(error),
       });
+      return {
+        lookDeltaX: 0,
+        lookDeltaY: 0,
+        lookDeltaMagnitude: 0,
+        pointerLocked: false,
+        movementActive: false,
+        sprinting: false,
+        inputReadMs: 0,
+        physicsSimulationMs: 0,
+        physicsStoreMs: 0,
+        cameraFinalizeMs: 0,
+        cameraStoreMs: 0,
+        physicsSubSteps: 0,
+      };
     }
   }
   function isEarthTerrainWorld(): boolean {
@@ -2509,6 +3645,57 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     scene.fog.near = Math.max(32, far - 48);
   }
 
+  function configuredPreloadRadius(): number {
+    return Math.max(
+      MIN_DIRECTIONAL_PRELOAD_RADIUS,
+      safeInteger(refs.root.dataset.chunksPreloadRadius, MIN_DIRECTIONAL_PRELOAD_RADIUS, {
+        min: 1,
+        max: 8,
+      }),
+    );
+  }
+
+  function configuredUnloadDistance(visibleRadius: number): number {
+    const minimum = visibleRadius + configuredPreloadRadius() + MIN_CHUNK_UNLOAD_RESERVE;
+    return Math.max(
+      minimum,
+      safeInteger(refs.root.dataset.chunksUnloadDistance, minimum, {
+        min: visibleRadius + 1,
+        max: 96,
+      }),
+    );
+  }
+
+  function warmLoadedChunkMeshes(
+    coordinates: readonly ChunkCoordinates[],
+    center: ChunkCoordinates,
+    limit: number,
+    reason: string,
+  ): void {
+    const registry = worldRuntime.getRegistry();
+    const candidates = coordinates
+      .filter((coordinate) => registry.hasChunk(chunkKeyFromCoordinatesLocal(coordinate)))
+      .sort((left, right) => {
+        const leftDistance = (
+          (left.chunkX - center.chunkX) ** 2
+          + (left.chunkZ - center.chunkZ) ** 2
+        );
+        const rightDistance = (
+          (right.chunkX - center.chunkX) ** 2
+          + (right.chunkZ - center.chunkZ) ** 2
+        );
+        return leftDistance - rightDistance;
+      })
+      .slice(0, Math.max(1, limit));
+
+    for (const coordinate of candidates) {
+      warmedChunkMeshKeys.add(chunkKeyFromCoordinatesLocal(coordinate));
+    }
+
+    refs.root.dataset.prefetchedChunkMeshCount = String(warmedChunkMeshKeys.size);
+    if (candidates.length > 0) renderChunksFromRegistry(reason);
+  }
+
   async function loadTerrainSurfaceLayers(
     center: ChunkCoordinates,
     radius: number,
@@ -2526,10 +3713,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       markVisible: false,
       contentProfile: "surface-shell.v1",
       preferBatch: true,
-      maxChunks: safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
-        min: 1,
-        max: 4096,
-      }),
+      maxChunks: Math.min(
+        4096,
+        Math.max(
+          coordinates.length,
+          safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
+            min: 1,
+            max: 4096,
+          }),
+        ),
+      ),
       priorityDirection,
       batchSize: 12,
       shouldContinue: () => (
@@ -2563,6 +3756,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     const visibleKeys = new Set(registry.getVisibleChunkKeys());
     const dirtyKeys = new Set(registry.getDirtyChunkKeys());
     const maximumDistanceSquared = unloadDistance * unloadDistance;
+    let evicted = false;
     for (const key of registry.getChunkKeys()) {
       if (visibleKeys.has(key) || dirtyKeys.has(key)) continue;
       const coordinate = chunkCoordinatesFromKey(key);
@@ -2570,8 +3764,11 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const offsetZ = coordinate.chunkZ - center.chunkZ;
       if (offsetX * offsetX + offsetZ * offsetZ > maximumDistanceSquared) {
         registry.deleteChunk(key, "scene-runtime.distance-eviction");
+        warmedChunkMeshKeys.delete(key);
+        evicted = true;
       }
     }
+    if (evicted) renderChunksFromRegistry("scene-runtime.distance-eviction");
   }
 
   function prefetchChunksAroundMovement(
@@ -2584,14 +3781,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       return;
     }
 
-    const preloadRadius = safeInteger(refs.root.dataset.chunksPreloadRadius, 2, {
-      min: 1,
-      max: 8,
-    });
-    const unloadDistance = safeInteger(refs.root.dataset.chunksUnloadDistance, 14, {
-      min: visibleRadius + 1,
-      max: 96,
-    });
+    const preloadRadius = configuredPreloadRadius();
+    const unloadDistance = configuredUnloadDistance(visibleRadius);
     const loadedKeys = new Set(worldRuntime.getRegistry().getChunkKeys());
     const candidates = new Map<string, ChunkCoordinates>();
 
@@ -2629,8 +3820,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     const predictionSteps = Math.max(
       1,
       Math.min(
-        mode === "edge" ? 2 : 4,
-        preloadRadius + 2,
+        mode === "edge" ? 3 : 6,
+        preloadRadius + (mode === "edge" ? 1 : 3),
         unloadDistance - visibleRadius - 1,
       ),
     );
@@ -2678,12 +3869,15 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           : lastCameraChunkKey === centerKey && !queuedCameraChunk
       )
     );
-    const prefetchBatchLimit = Math.min(
-      12,
+    const prefetchChunkLimit = Math.min(
       safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
         min: 1,
         max: 4096,
       }),
+      Math.max(
+        mode === "edge" ? 36 : 72,
+        visibleRadius * (mode === "edge" ? 5 : 10),
+      ),
     );
     const loadPromise = (async () => {
       await worldRuntime.getLoader().loadCoordinates(coordinates, {
@@ -2694,11 +3888,23 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         markVisible: false,
         contentProfile: "surface-shell.v1",
         preferBatch: true,
-        maxChunks: prefetchBatchLimit,
+        maxChunks: prefetchChunkLimit,
         priorityDirection: effectivePriorityDirection,
-        batchSize: prefetchBatchLimit,
+        batchSize: 12,
         shouldContinue: prefetchShouldContinue,
       });
+
+      warmLoadedChunkMeshes(
+        coordinates,
+        center,
+        Math.min(
+          MAX_PREFETCH_MESH_WARMUP_CHUNKS,
+          mode === "edge" ? Math.max(18, visibleRadius * 3) : Math.max(30, visibleRadius * 5),
+        ),
+        mode === "edge"
+          ? "scene-runtime.edge-prefetch-mesh-warmup"
+          : "scene-runtime.directional-prefetch-mesh-warmup",
+      );
 
       if (!prefetchShouldContinue()) return;
       const registry = worldRuntime.getRegistry();
@@ -2715,11 +3921,19 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           markVisible: false,
           contentProfile: "surface-shell.v1",
           preferBatch: true,
-          maxChunks: prefetchBatchLimit,
+          maxChunks: prefetchChunkLimit,
           priorityDirection: effectivePriorityDirection,
-          batchSize: prefetchBatchLimit,
+          batchSize: 12,
           shouldContinue: prefetchShouldContinue,
         });
+        warmLoadedChunkMeshes(
+          surfaceCoordinates,
+          center,
+          MAX_PREFETCH_MESH_WARMUP_CHUNKS,
+          mode === "edge"
+            ? "scene-runtime.edge-surface-mesh-warmup"
+            : "scene-runtime.directional-surface-mesh-warmup",
+        );
       }
 
       lastPrefetchCenter = { ...center };
@@ -2860,10 +4074,6 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
       visibilityLoadInFlight = true;
 
-      if (prefetchLoadPromise) {
-        await prefetchLoadPromise;
-      }
-
       while (!destroyed && queuedCameraChunk) {
         const targetCenter = queuedCameraChunk;
         const targetChunkKey = chunkKeyFromCoordinatesLocal(targetCenter);
@@ -2911,11 +4121,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         renderChunksFromRegistry("scene-runtime.camera-chunk-change");
 
         if (lastCameraChunkKey === targetChunkKey && !queuedCameraChunk) {
-          const unloadDistance = safeInteger(
-            refs.root.dataset.chunksUnloadDistance,
-            14,
-            { min: visibleRadius + 1, max: 96 },
-          );
+          const unloadDistance = configuredUnloadDistance(visibleRadius);
           evictDistantChunks(targetCenter, unloadDistance);
           prefetchChunksAroundMovement(targetCenter, visibleRadius, priorityDirection);
         }
@@ -2929,81 +4135,72 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     }
   }
 
-  function resolveIntersectionCell(intersection: THREE.Intersection): MeshCellRecord | null {
-    try {
-      const object = intersection.object as THREE.Object3D & {
-        readonly userData: {
-          readonly cells?: readonly MeshCellRecord[];
-        };
-      };
-
-      const instanceId = intersection.instanceId;
-
-      if (typeof instanceId !== "number") {
-        return null;
-      }
-
-      return object.userData.cells?.[instanceId] ?? null;
-    } catch {
-      return null;
-    }
-  }
-
   function updateTargeting(): void {
-    if (!camera || !scene) {
+    if (!camera) {
       return;
     }
 
     try {
-      raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+      const registry = worldRuntime.getRegistry();
+      const chunkSize = registry.getChunk(registry.getChunkKeys()[0] ?? "")?.chunkSize ?? 16;
+      const forward = new THREE.Vector3();
+      camera.getWorldDirection(forward);
+      const hit = raycastFromOriginDirection({
+        origin: {
+          x: camera.position.x,
+          y: camera.position.y,
+          z: camera.position.z,
+        },
+        direction: {
+          x: forward.x,
+          y: forward.y,
+          z: forward.z,
+        },
+        sampler: (position) => worldRuntime.sampleCell(position),
+        options: {
+          maxDistance: DEFAULT_TARGET_MAX_DISTANCE,
+          maxSteps: 32,
+          stepSize: 1,
+          includeAir: false,
+          source: "raycast",
+        },
+        chunkSize,
+      });
 
-      const meshObjects: THREE.Object3D[] = [];
-
-      for (const record of chunkMeshes.values()) {
-        meshObjects.push(...record.meshes);
-      }
-
-      const intersections = raycaster.intersectObjects(meshObjects, false);
-      const hit = intersections[0];
-
-      if (!hit) {
-        if (lastTargetSignature !== "none") {
-          lastTargetSignature = "none";
-          setStoreAction(
-            store,
-            {
-              kind: "targeting/clear",
-              reason: "no-hit",
-              source: "scene-runtime.targeting",
-              createdAt: now(),
-            },
-            {
-              notify: true,
-              captureHistory: false,
-            },
-          );
-        }
+      if (!hit.hit || !hit.sourceCell || !hit.sample) {
+        latestSourceCell = null;
+        latestPlacementCell = null;
+        lastTargetSignature = "none";
+        refs.root.dataset.sceneRuntimeTargetSignature = "none";
 
         return;
       }
 
-      const record = resolveIntersectionCell(hit);
-
-      if (!record) {
-        return;
-      }
-
-      const normal = hit.face?.normal ?? new THREE.Vector3(0, 1, 0);
+      const normal = hit.normal ?? { x: 0, y: 1, z: 0 };
       const nx = Math.round(normal.x);
       const ny = Math.round(normal.y);
       const nz = Math.round(normal.z);
 
-      const sourceCell = createEditorCellFromRecord(record);
-      const placementAddress = createChunkCellAddress({
-        worldX: record.worldX + nx,
-        worldY: record.worldY + ny,
-        worldZ: record.worldZ + nz,
-        chunkSize: worldRuntime.getRegistry().getEntry(record.chunkKey)?.chunk.chunkSize ?? 16,
+      const sourceAddress = hit.sourceCell;
+      const sourceCell = {
+        chunkKey: sourceAddress.chunkKey,
+        chunkX: sourceAddress.chunkX,
+        chunkY: sourceAddress.chunkY,
+        chunkZ: sourceAddress.chunkZ,
+        localX: sourceAddress.localX,
+        localY: sourceAddress.localY,
+        localZ: sourceAddress.localZ,
+        worldX: sourceAddress.worldX,
+        worldY: sourceAddress.worldY,
+        worldZ: sourceAddress.worldZ,
+        cellValue: hit.sample.cellValue,
+        blockTypeId: hit.sample.blockTypeId,
+      };
+      const placementAddress = hit.previousCell ?? createChunkCellAddress({
+        worldX: sourceAddress.worldX + nx,
+        worldY: sourceAddress.worldY + ny,
+        worldZ: sourceAddress.worldZ + nz,
+        chunkSize,
       });
 
       const placementSample = worldRuntime.sampleCell({
@@ -3026,6 +4223,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         cellValue: placementSample.cellValue,
         blockTypeId: placementSample.blockTypeId,
       };
+      latestSourceCell = sourceCell;
+      latestPlacementCell = placementCell;
 
       const status =
         !placementSample.chunkLoaded
@@ -3035,37 +4234,9 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             : "blocked";
 
       const signature = targetSignatureFromCells(sourceCell, placementCell, status);
-
-      if (signature === lastTargetSignature) {
-        return;
-      }
-
       lastTargetSignature = signature;
-
-      setStoreAction(
-        store,
-        {
-          kind: "targeting/update",
-          targetKind: "block-face",
-          status,
-          reason: status === "valid" ? null : status,
-          distance: hit.distance,
-          chunkKey: sourceCell.chunkKey,
-          sourceCell,
-          placementCell,
-          normal: {
-            x: nx,
-            y: ny,
-            z: nz,
-          },
-          source: "scene-runtime.targeting",
-          createdAt: now(),
-        },
-        {
-          notify: true,
-          captureHistory: false,
-        },
-      );
+      refs.root.dataset.sceneRuntimeTargetSignature = signature;
+      refs.root.dataset.sceneRuntimeTargetStatus = status;
     } catch (error) {
       logWarn(logger, "Targeting update failed.", {
         error: normalizeUnknownError(error),
@@ -3145,6 +4316,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         reason: "scene-runtime.realtime-invalidation",
         force: true,
       }).then(() => {
+        reapplyPendingOptimisticBlockEdits();
         scheduleCommandChunkRender("scene-runtime.realtime-invalidation");
       }).catch((error) => {
         logWarn(logger, "Realtime chunk reload failed.", {
@@ -3222,13 +4394,25 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     lastFrameAtMs = timestampMs;
 
     try {
-      updateCameraFromInput(frameMs);
+      const frameCpuStartedAtMs = nowMs();
+      let phaseStartedAtMs = frameCpuStartedAtMs;
+      const cameraTelemetry = updateCameraFromInput(frameMs);
+      const cameraPhysicsMs = nowMs() - phaseStartedAtMs;
+
+      phaseStartedAtMs = nowMs();
       if (timestampMs - lastTargetingUpdateAtMs >= TARGETING_UPDATE_INTERVAL_MS) {
         lastTargetingUpdateAtMs = timestampMs;
         updateTargeting();
       }
+      const targetingMs = nowMs() - phaseStartedAtMs;
+
+      phaseStartedAtMs = nowMs();
       const deltaSeconds = Math.min(0.1, frameMs / 1_000);
       environmentSystem?.update(deltaSeconds);
+      updateTerrainShadowCasters(timestampMs);
+      const environmentMs = nowMs() - phaseStartedAtMs;
+
+      phaseStartedAtMs = nowMs();
       remoteAvatarScene?.update(deltaSeconds, timestampMs);
       const localPresence = createLocalPresenceState(Date.now());
       if (localPresence && thirdPersonEnabled) {
@@ -3240,15 +4424,77 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       publishLocalPresence(localPresence, timestampMs);
       updateChunkMap(localPresence, timestampMs);
       updateNavigationCompass(localPresence, timestampMs);
+      const avatarsHudMs = nowMs() - phaseStartedAtMs;
 
+      phaseStartedAtMs = nowMs();
       renderer.render(scene, camera);
+      const renderSubmitMs = nowMs() - phaseStartedAtMs;
 
+      phaseStartedAtMs = nowMs();
       frameCount += 1;
+      updateFrameDiagnostics(timestampMs, frameMs);
       renderStoreFrame(frameMs);
 
       if (timestampMs - lastChunkStreamPollAtMs >= CHUNK_STREAM_POLL_INTERVAL_MS) {
         lastChunkStreamPollAtMs = timestampMs;
         void maybeLoadChunksAroundCamera();
+      }
+      const storeStreamMs = nowMs() - phaseStartedAtMs;
+      const cpuTotalMs = nowMs() - frameCpuStartedAtMs;
+
+      if (performanceRecorder?.isRecording()) {
+        renderer.getDrawingBufferSize(performanceDrawingBufferSize);
+        const environmentSnapshot = environmentSystem?.getSnapshot();
+        performanceRecorder.recordFrame({
+          atMs: timestampMs,
+          frameMs,
+          phases: {
+            cameraPhysicsMs,
+            targetingMs,
+            environmentMs,
+            avatarsHudMs,
+            renderSubmitMs,
+            storeStreamMs,
+            cpuTotalMs,
+          },
+          input: cameraTelemetry,
+          camera: {
+            x: camera.position.x,
+            y: camera.position.y,
+            z: camera.position.z,
+            yaw: lookYaw,
+            pitch: lookPitch,
+          },
+          renderer: {
+            drawCalls: renderer.info.render.calls,
+            triangles: renderer.info.render.triangles,
+            geometries: renderer.info.memory.geometries,
+            textures: renderer.info.memory.textures,
+            pixelRatio: renderer.getPixelRatio(),
+            drawingBufferWidth: performanceDrawingBufferSize.x,
+            drawingBufferHeight: performanceDrawingBufferSize.y,
+          },
+          world: {
+            loadedChunks: worldRuntime.getRegistry().getChunkKeys().length,
+            renderedChunks: chunkMeshes.size,
+            meshes: meshCount,
+            pendingChunkMeshes: pendingChunkMeshKeys.length,
+            shadowCasters: terrainShadowCasterMeshCount,
+          },
+          edits: {
+            placeIntents: placeIntentCount,
+            removeIntents: removeIntentCount,
+            pendingCommands: blockCommandsInFlight,
+            pendingOverlays: optimisticBlockOverlays.size,
+            pendingMeshBatchChunks: pendingOptimisticMeshChunkKeys.size,
+          },
+          shadows: {
+            environmentRefreshCount: environmentSnapshot?.shadowRefreshCount ?? 0,
+            environmentRefreshReason: environmentSnapshot?.lastShadowRefreshReason ?? "unknown",
+            terrainScanCount: terrainShadowScanCount,
+            terrainChangeCount: terrainShadowChangeCount,
+          },
+        });
       }
     } catch (error) {
       setError(error, "scene-runtime.renderFrame");
@@ -3369,12 +4615,19 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           const commandResult = payload.result?.result;
 
           if (commandResult) {
-            setStoreAction(store, {
-              kind: "command/result",
-              result: commandResult,
-              source: "scene-runtime.source-command-result",
-              createdAt: now(),
-            });
+            setStoreAction(
+              store,
+              {
+                kind: "command/result",
+                result: commandResult,
+                source: "scene-runtime.source-command-result",
+                createdAt: now(),
+              },
+              {
+                notify: false,
+                captureHistory: false,
+              },
+            );
             if (commandResult.changed) {
               realtimeClient?.publishWorldInvalidation({
                 commandType: commandResult.commandType,
@@ -3402,6 +4655,14 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const selectedItem = selectSelectedInventoryItem(state);
       const inputPlacement = intent?.libraryPlacement ?? null;
       const hotbarPlaceable = hotbarController?.getSelectedRuntimePlaceable() ?? null;
+      const semanticProfile = librarySemanticProfileFromSources(
+        inputPlacement,
+        hotbarPlaceable,
+        hotbarPlaceable?.rawSlot,
+        hotbarPlaceable?.rawItem,
+        selectedItem?.raw,
+        selectedItem,
+      );
 
       const runtimeBlockTypeId = normalizeRuntimeBlockTypeId(
         firstDefined(
@@ -3487,6 +4748,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           selectSelectedRevisionHash(state),
           selectedItem?.revisionHash,
           libraryRef?.revisionHash,
+          semanticProfile?.revisionHash,
         ),
       );
       const inventorySlotIndex = safeInteger(
@@ -3576,6 +4838,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         label,
         libraryRef,
         placementCommand,
+        semanticProfile,
         commandMetadata: {
           ...placementIntentMetadata(intent),
           selectedLabel: label,
@@ -3602,6 +4865,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           placementCommandSource: commandField(placementCommand, "source"),
           productiveInventoryRoute: PRODUCTIVE_EDITOR_INVENTORY_ROUTE,
           browserCallsVectoplanLibraryDirectly: BROWSER_CALLS_VECTOPLAN_LIBRARY_DIRECTLY,
+          semanticProfile,
         },
       };
     } catch (error) {
@@ -3626,6 +4890,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         label: null,
         libraryRef: null,
         placementCommand: null,
+        semanticProfile: null,
         commandMetadata: {},
       };
     }
@@ -3680,6 +4945,10 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
   async function placeBlock(intent: EditorInputBlockIntent): Promise<void> {
     placeIntentCount += 1;
+    const placeStartedAtMs = nowMs();
+    let optimisticEdit: PendingOptimisticBlockEdit | null = null;
+    let commandStarted = false;
+    let commandFinished = false;
 
     try {
       const placement = getActiveLibraryPlacement(intent);
@@ -3689,13 +4958,6 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         blockPlacement(placement, intent.trigger);
         return;
       }
-
-      setStoreAction(store, {
-        kind: "ui/live-message",
-        message: `Library-/VPLIB-Item wird gesetzt: ${placement.label ?? placement.runtimeBlockTypeId}`,
-        source: intent.trigger,
-        createdAt: now(),
-      });
 
       const source = worldRuntime.getSource();
 
@@ -3731,6 +4993,31 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         return;
       }
 
+      optimisticEdit = registerOptimisticBlockEdit(
+        intent.position,
+        placement.runtimeBlockTypeId,
+        placement.label,
+      );
+      performanceRecorder?.recordEvent(
+        "block-place",
+        "optimistic-applied",
+        nowMs() - placeStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          cellKey: optimisticEdit?.cellKey ?? null,
+          blockTypeId: placement.runtimeBlockTypeId,
+          pendingCommands: blockCommandsInFlight,
+        },
+      );
+      blockCommandsInFlight += 1;
+      commandStarted = true;
+      refs.root.dataset.sceneRuntimePendingBlockCommands = String(blockCommandsInFlight);
+      setDomLiveMessage(
+        refs,
+        `Block gesetzt: ${placement.label ?? placement.runtimeBlockTypeId}`,
+      );
+
+      const requestStartedAtMs = nowMs();
       const result = await source.placeLibraryItem(
         intent.position,
         {
@@ -3755,7 +5042,9 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         },
         {
           reason: intent.trigger,
-          reloadDirtyChunks: true,
+          // The local registry/mesh changes immediately. Server chunks are
+          // reconciled once after the click burst instead of once per command.
+          reloadDirtyChunks: false,
           runtimeBlockTypeId: placement.runtimeBlockTypeId,
           blockTypeId: placement.runtimeBlockTypeId,
           libraryItemId: placement.libraryItemId,
@@ -3771,11 +5060,29 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           placementCommand: placement.placementCommand,
           commandMetadata: placement.commandMetadata,
           requireLibraryIdentity: true,
-          includeLibraryMetadataInCommand: false,
+          // The Chunk service uses this authenticated Library/VPLIB context to
+          // register a previously unseen runtime block type on first use.
+          includeLibraryMetadataInCommand: true,
+        },
+      );
+      performanceRecorder?.recordEvent(
+        "block-place",
+        "server-result",
+        nowMs() - requestStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          failed: isChunkApiFailedResult(result),
+          pendingCommands: blockCommandsInFlight,
         },
       );
 
       if (isChunkApiFailedResult(result)) {
+        finishBlockCommand(
+          optimisticEdit,
+          false,
+          "scene-runtime.placeLibraryItem.failed",
+        );
+        commandFinished = true;
         setStoreAction(store, {
           kind: "command/failed",
           error: result,
@@ -3788,26 +5095,42 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const commandResult = commandResultFromUnknown(result);
 
       if (commandResult) {
-        setStoreAction(store, {
-          kind: "command/result",
-          result: commandResult,
-          source: intent.trigger,
-          createdAt: now(),
-        });
+        refs.root.dataset.sceneRuntimeLastBlockCommandAt = now();
+        refs.root.dataset.sceneRuntimeLastBlockCommandType = commandResult.commandType;
+        if (commandResult.changed) {
+          realtimeClient?.publishWorldInvalidation({
+            commandType: commandResult.commandType,
+            eventIds: commandResult.eventIds,
+            changedChunks: commandResult.changedChunks,
+            dirtyChunks: commandResult.dirtyChunks,
+            chunkVersions: commandResult.chunkVersions,
+          });
+        }
       }
 
-      if (
-        reloadedChunkCountFromUnknown(result) > 0 ||
-        dirtyChunkKeysFromUnknown(result).length > 0
-      ) {
-        scheduleCommandChunkRender("scene-runtime.placeLibraryItem");
-      }
-
-      setDomLiveMessage(
-        refs,
-        `Library-/VPLIB-Item gesetzt: ${placement.label ?? placement.runtimeBlockTypeId}`,
+      finishBlockCommand(
+        optimisticEdit,
+        true,
+        "scene-runtime.placeLibraryItem.ready",
+      );
+      commandFinished = true;
+      performanceRecorder?.recordEvent(
+        "block-place",
+        "complete",
+        nowMs() - placeStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          pendingCommands: blockCommandsInFlight,
+        },
       );
     } catch (error) {
+      if (commandStarted && !commandFinished) {
+        finishBlockCommand(
+          optimisticEdit,
+          false,
+          "scene-runtime.placeLibraryItem.exception",
+        );
+      }
       setStoreAction(store, {
         kind: "command/failed",
         error,
@@ -3891,15 +5214,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     readonly trigger: string;
   }): Promise<void> {
     removeIntentCount += 1;
+    const removeStartedAtMs = nowMs();
+    let optimisticEdit: PendingOptimisticBlockEdit | null = null;
+    let commandStarted = false;
+    let commandFinished = false;
 
     try {
-      setStoreAction(store, {
-        kind: "ui/live-message",
-        message: "Block wird entfernt.",
-        source: intent.trigger,
-        createdAt: now(),
-      });
-
       const source = worldRuntime.getSource();
 
       if (!sourceSupportsRemoveBlock(source)) {
@@ -3933,18 +5253,48 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         return;
       }
 
-      const depthChunkPromise = prepareNextDepthChunk(intent.position);
+      optimisticEdit = registerOptimisticBlockEdit(intent.position, null);
+      performanceRecorder?.recordEvent(
+        "block-remove",
+        "optimistic-applied",
+        nowMs() - removeStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          cellKey: optimisticEdit?.cellKey ?? null,
+          pendingCommands: blockCommandsInFlight,
+        },
+      );
+      blockCommandsInFlight += 1;
+      commandStarted = true;
+      refs.root.dataset.sceneRuntimePendingBlockCommands = String(blockCommandsInFlight);
+      setDomLiveMessage(refs, "Block entfernt.");
+      void prepareNextDepthChunk(intent.position);
+      const requestStartedAtMs = nowMs();
       const result = await source.removeBlock(
         intent.position,
         {
           reason: intent.trigger,
-          reloadDirtyChunks: true,
+          reloadDirtyChunks: false,
+        },
+      );
+      performanceRecorder?.recordEvent(
+        "block-remove",
+        "server-result",
+        nowMs() - requestStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          failed: isChunkApiFailedResult(result),
+          pendingCommands: blockCommandsInFlight,
         },
       );
 
-      await depthChunkPromise;
-
       if (isChunkApiFailedResult(result)) {
+        finishBlockCommand(
+          optimisticEdit,
+          false,
+          "scene-runtime.removeBlock.failed",
+        );
+        commandFinished = true;
         setStoreAction(store, {
           kind: "command/failed",
           error: result,
@@ -3957,23 +5307,48 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const commandResult = commandResultFromUnknown(result);
 
       if (commandResult) {
-        setStoreAction(store, {
-          kind: "command/result",
-          result: commandResult,
-          source: intent.trigger,
-          createdAt: now(),
-        });
+        refs.root.dataset.sceneRuntimeLastBlockCommandAt = now();
+        refs.root.dataset.sceneRuntimeLastBlockCommandType = commandResult.commandType;
+        if (commandResult.changed) {
+          realtimeClient?.publishWorldInvalidation({
+            commandType: commandResult.commandType,
+            eventIds: commandResult.eventIds,
+            changedChunks: commandResult.changedChunks,
+            dirtyChunks: commandResult.dirtyChunks,
+            chunkVersions: commandResult.chunkVersions,
+          });
+        }
       }
 
-      if (
-        reloadedChunkCountFromUnknown(result) > 0 ||
-        dirtyChunkKeysFromUnknown(result).length > 0
-      ) {
-        scheduleCommandChunkRender("scene-runtime.removeBlock");
-      }
-
-      setDomLiveMessage(refs, "Block entfernt.");
+      finishBlockCommand(
+        optimisticEdit,
+        true,
+        "scene-runtime.removeBlock.ready",
+      );
+      commandFinished = true;
+      performanceRecorder?.recordEvent(
+        "block-remove",
+        "complete",
+        nowMs() - removeStartedAtMs,
+        {
+          chunkKey: optimisticEdit?.chunkKey ?? null,
+          pendingCommands: blockCommandsInFlight,
+        },
+      );
     } catch (error) {
+      if (commandStarted && !commandFinished) {
+        finishBlockCommand(
+          optimisticEdit,
+          false,
+          "scene-runtime.removeBlock.exception",
+        );
+      }
+      performanceRecorder?.recordEvent(
+        "block-remove",
+        "exception",
+        nowMs() - removeStartedAtMs,
+        { pendingCommands: blockCommandsInFlight },
+      );
       setStoreAction(store, {
         kind: "command/failed",
         error,
@@ -4040,6 +5415,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             readonly detail?: {
               readonly active_slot_index?: unknown;
               readonly slot_index?: unknown;
+              readonly operation?: unknown;
+              readonly source?: unknown;
+              readonly selection_started_at_epoch_ms?: unknown;
+              readonly selection_before_dispatch_ms?: unknown;
+              readonly selection_state_ms?: unknown;
+              readonly selection_render_ms?: unknown;
             };
           } | null;
           if (
@@ -4072,17 +5453,83 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             },
           );
           const zeroBasedSlot = oneBasedSlot - 1;
-          source.selectSlot(zeroBasedSlot, "library-user-inventory-frame");
+          // The frame event is either an acknowledgement of an editor-owned
+          // wheel/keyboard selection or a direct click inside the iframe. The
+          // old path called HotbarController.selectSlot here, which rebuilt and
+          // cloned the complete raw Library catalog. Real F8 captures measured
+          // 0.84-1.98 s of main-thread work per acknowledgement. The editor
+          // store is the runtime selection truth, so only apply the tiny slot
+          // action when the iframe initiated a genuinely new selection.
+          const selectionAlreadyApplied =
+            store.peekState().inventory.selectedSlotIndex === zeroBasedSlot;
+          const syncStartedAtMs = nowMs();
+          if (!selectionAlreadyApplied) {
+            setStoreAction(
+              store,
+              {
+                kind: "inventory/select-slot",
+                slot: zeroBasedSlot,
+                source: "library-user-inventory-frame",
+                createdAt: now(),
+              },
+              {
+                notify: false,
+                captureHistory: false,
+              },
+            );
+          }
+          performanceRecorder?.recordEvent(
+            "hotbar-frame-sync",
+            selectionAlreadyApplied ? "ack-skipped" : "slot-only",
+            nowMs() - syncStartedAtMs,
+            { zeroBasedSlot, eventType },
+          );
+          if (eventType === "vectoplan:user-inventory-selection-change") {
+            const selectionStartedAtEpochMs = Number(
+              message.detail?.selection_started_at_epoch_ms,
+            );
+            const selectionObservedMs = Number.isFinite(selectionStartedAtEpochMs)
+              && selectionStartedAtEpochMs > 0
+              ? Math.max(0, Date.now() - selectionStartedAtEpochMs)
+              : 0;
+            performanceRecorder?.recordEvent(
+              "hotbar-library-selection",
+              "message-received",
+              selectionObservedMs,
+              {
+                zeroBasedSlot,
+                source: safeString(message.detail?.source, "unknown"),
+                beforeDispatchMs: Number(message.detail?.selection_before_dispatch_ms) || 0,
+                stateUpdateMs: Number(message.detail?.selection_state_ms) || 0,
+                renderMs: Number(message.detail?.selection_render_ms) || 0,
+              },
+            );
+          }
 
-          if (
-            eventType === "vectoplan:user-inventory-save"
-            || eventType === "vectoplan:user-inventory-load"
-          ) {
-            void source.reload({
-              force: true,
-              selectedSlot: zeroBasedSlot,
-              selectedSlotIndex: zeroBasedSlot,
-              reason: "library-user-inventory-frame-sync",
+          const inventoryOperation = safeString(
+            message.detail?.operation,
+            "",
+          );
+          const requiresCatalogReload =
+            eventType === "vectoplan:user-inventory-load"
+            || (
+              eventType === "vectoplan:user-inventory-save"
+              && inventoryOperation !== "select-slot"
+            );
+          if (requiresCatalogReload) {
+            const reloadPromise = hotbarController
+              ? hotbarController.reload("library-user-inventory-frame-sync")
+              : source.reload({
+                force: true,
+                selectedSlot: zeroBasedSlot,
+                selectedSlotIndex: zeroBasedSlot,
+                reason: "library-user-inventory-frame-sync",
+              });
+            void reloadPromise.then(() => {
+              hotbarController?.selectSlot(
+                zeroBasedSlot,
+                "library-user-inventory-frame-sync-ready",
+              );
             }).catch((error) => {
               logWarn(logger, "User inventory frame sync failed.", {
                 error: normalizeUnknownError(error),
@@ -4111,6 +5558,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         onlyLibraryItemsPlaceable: ONLY_LIBRARY_ITEMS_PLACEABLE,
         allowEmptyFallback: true,
         destroyInventorySourceOnDestroy: false,
+        renderToDom: false,
       });
 
       const result = await hotbarController.initialize();
@@ -4180,6 +5628,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       refs.root.dataset.sceneRuntimeBrowserCallsLibraryDirectly = String(BROWSER_CALLS_VECTOPLAN_LIBRARY_DIRECTLY);
 
       renderer = createRenderer(canvas, bootstrap);
+      try {
+        chunkMeshWorkerClient = createChunkMeshWorkerClient();
+        refs.root.dataset.sceneRuntimeChunkMeshingThread = "worker";
+      } catch (error) {
+        chunkMeshWorkerClient = null;
+        refs.root.dataset.sceneRuntimeChunkMeshingThread = "main-thread-fallback";
+        logWarn(logger, "Chunk mesh worker could not be created.", {
+          error: normalizeUnknownError(error),
+        });
+      }
       scene = createScene(bootstrap);
       camera = createCamera(bootstrap);
       scene.add(camera);
@@ -4194,6 +5652,9 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       chunksRoot = new THREE.Group();
       chunksRoot.name = "vectoplan-editor-chunks";
       scene.add(chunksRoot);
+      optimisticOverlayRoot = new THREE.Group();
+      optimisticOverlayRoot.name = "vectoplan-editor-optimistic-blocks";
+      scene.add(optimisticOverlayRoot);
       realtimeIndicator = document.createElement("div");
       realtimeIndicator.className = "editor-realtime-indicator";
       realtimeIndicator.setAttribute("role", "status");
@@ -4207,6 +5668,14 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         controlsHost: refs.viewportOverlay ?? refs.canvasHost,
         bootstrap,
       });
+      performanceRecorder = createPerformanceRecorder({
+        root: refs.root,
+        host: refs.viewportOverlay ?? refs.canvasHost,
+        projectId: bootstrap.runtime.chunk.projectId,
+        worldId: bootstrap.runtime.chunk.worldId,
+      });
+      refs.root.dataset.sceneRuntimeRenderProfile = "gameplay-performance";
+      refs.root.dataset.sceneRuntimeAntialias = "false";
       remoteAvatarScene = createRemoteAvatarScene(scene);
       localAvatarScene = createRemoteAvatarScene(scene);
       localAvatarScene.setVisible(false);
@@ -4225,7 +5694,13 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         logger: logger?.child?.("resize") ?? logger,
         signal: options.signal,
         updateCanvasBackingStore: true,
-        maxDevicePixelRatio: bootstrap.render.pixelRatioMax,
+        maxDevicePixelRatio: Math.min(
+          safeNumber(bootstrap.render.pixelRatioMax, GAMEPLAY_PIXEL_RATIO_MAX, {
+            min: 0.5,
+            max: 4,
+          }),
+          GAMEPLAY_PIXEL_RATIO_MAX,
+        ),
         onResize: (snapshot) => {
           try {
             renderer?.setPixelRatio(snapshot.devicePixelRatio);
@@ -4255,6 +5730,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         autoMount: true,
         autoRender: true,
         updateLiveRegions: true,
+        hotbarEnabled: false,
       });
 
       inputController = createEditorInputController({
@@ -4267,10 +5743,25 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         keyboardEnabled: bootstrap.input.keyboardEnabled,
         mouseEnabled: bootstrap.input.mouseEnabled,
         wheelEnabled: bootstrap.input.wheelEnabled,
-        pointerLockEnabled: bootstrap.input.pointerLockEnabled,
-        requestPointerLockOnClick: bootstrap.input.pointerLockEnabled,
+        pointerLockEnabled,
+        requestPointerLockOnClick: pointerLockEnabled,
         preventDefault: true,
-        dispatchToStore: true,
+        // The scene consumes the accumulator directly. Mirroring every native
+        // mouse event into the immutable app store adds work between rAF
+        // callbacks and makes fast pointer motion feel delayed.
+        dispatchToStore: false,
+        onPerformanceEvent: (event) => {
+          performanceRecorder?.recordEvent(
+            event.type,
+            event.phase,
+            event.durationMs,
+            event.detail,
+          );
+        },
+        getTargetCells: () => ({
+          sourceCell: latestSourceCell,
+          placementCell: latestPlacementCell,
+        }),
         onPlaceBlock: async (intent) => {
           await placeBlock(intent);
         },
@@ -4369,14 +5860,123 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
       attachSourceSubscription();
 
-      setDomBootMessage(refs, "Chunk-Welt wird geladen.");
-      await worldRuntime.initialize();
+      setDomBootMessage(refs, "Welt und Blockbibliothek werden geladen.");
+      const inventoryInitialization = initializeLibraryInventory();
+      await Promise.all([
+        worldRuntime.initialize(),
+        inventoryInitialization,
+      ]);
 
       prepareEarthTerrainSpawn("initial-world-ready");
-      chunkRenderingSuspended = false;
-      renderChunksFromRegistry("scene-runtime.initialize");
+      const initialChunkSize = worldRuntime.getRegistry().getChunk(
+        worldRuntime.getRegistry().getChunkKeys()[0] ?? "",
+      )?.chunkSize ?? 16;
+      const initialCameraCenter = worldToChunkCoordinates(
+        {
+          x: Math.floor(camera.position.x),
+          y: Math.floor(camera.position.y),
+          z: Math.floor(camera.position.z),
+        },
+        initialChunkSize,
+      );
+      const initialCenter = isEarthTerrainWorld()
+        ? {
+            ...initialCameraCenter,
+            chunkY: earthStreamingChunkY ?? initialCameraCenter.chunkY,
+          }
+        : initialCameraCenter;
+      const initialCenterKey = chunkKeyFromCoordinatesLocal(initialCenter);
+      const initialVisibleRadius = safeInteger(bootstrap.render.visibleChunkRadius, 7, {
+        min: 0,
+        max: 16,
+      });
+      const initialPreloadRadius = configuredPreloadRadius();
+      const initialWarmupRadius = Math.min(
+        16,
+        initialVisibleRadius + Math.max(INITIAL_WARMUP_EXTRA_RADIUS, initialPreloadRadius),
+      );
+      const initialWarmupMaxChunks = Math.min(
+        4096,
+        Math.max(
+          safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
+            min: 1,
+            max: 4096,
+          }),
+          ((initialWarmupRadius * 2 + 1) ** 2) + 64,
+        ),
+      );
+      lastCameraChunk = initialCenter;
+      lastCameraChunkKey = initialCenterKey;
+      queuedCameraChunk = null;
+      refs.root.dataset.initialVisibleChunkRadius = String(initialVisibleRadius);
+      refs.root.dataset.initialWarmupChunkRadius = String(initialWarmupRadius);
+      refs.root.dataset.initialWarmupMaxChunks = String(initialWarmupMaxChunks);
 
-      await initializeLibraryInventory();
+      setDomBootMessage(
+        refs,
+        `Startgebiet wird vorgeladen (Radius ${initialWarmupRadius} Chunks).`,
+      );
+      await worldRuntime.loadAroundChunk(initialCenter, {
+        radius: initialWarmupRadius,
+        reason: "scene-runtime.initial-reserve-warmup",
+        force: false,
+        markVisible: true,
+        preferBatch: true,
+        contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
+        maxChunks: initialWarmupMaxChunks,
+        batchSize: 12,
+        shouldContinue: () => !destroyed && lastCameraChunkKey === initialCenterKey,
+        onBatchLoaded: (progress) => {
+          if (destroyed) return;
+          setDomBootMessage(
+            refs,
+            `Startgebiet wird vorgeladen (${Math.min(progress.batchIndex + 1, progress.batchCount)}/${progress.batchCount} Pakete).`,
+          );
+          renderChunksFromRegistry("scene-runtime.initial-visible-progress");
+        },
+      });
+
+      if (isEarthTerrainWorld()) {
+        await loadTerrainSurfaceLayers(
+          initialCenter,
+          initialWarmupRadius,
+          initialCenterKey,
+          { chunkX: 0, chunkY: 0, chunkZ: 0 },
+        );
+      }
+
+      await preloadVisibleMaterialTextures();
+      chunkRenderingSuspended = false;
+      renderChunksFromRegistry("scene-runtime.initialize-warmed");
+      await drainInitialChunkMeshQueue();
+
+      // Keep the fully prepared reserve in RAM/GPU, but expose only the normal
+      // view radius. Crossing the first chunks therefore needs no request and
+      // no remesh; the directional loader can refill the reserve in the back.
+      setDomBootMessage(refs, "Sichtbereich wird aktiviert.");
+      await worldRuntime.loadAroundChunk(initialCenter, {
+        radius: initialVisibleRadius,
+        reason: "scene-runtime.initial-visible-activation",
+        force: false,
+        markVisible: true,
+        preferBatch: true,
+        contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
+        maxChunks: initialWarmupMaxChunks,
+        batchSize: 12,
+        shouldContinue: () => !destroyed && lastCameraChunkKey === initialCenterKey,
+      });
+      if (isEarthTerrainWorld()) {
+        await loadTerrainSurfaceLayers(
+          initialCenter,
+          initialVisibleRadius,
+          initialCenterKey,
+          { chunkX: 0, chunkY: 0, chunkZ: 0 },
+        );
+      }
+      renderChunksFromRegistry("scene-runtime.initial-visible-activated");
+      await drainInitialChunkMeshQueue();
+      updateStreamingFog(initialVisibleRadius);
+      setDomBootMessage(refs, "Editor ist bereit.");
 
       setStoreAction(store, {
         kind: "render/initialized",
@@ -4476,6 +6076,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       window.clearTimeout(realtimeReloadTimer);
       realtimeReloadTimer = null;
     }
+      if (blockReconcileTimerId !== null) {
+        window.clearTimeout(blockReconcileTimerId);
+        blockReconcileTimerId = null;
+      }
+      if (blockShadowRefreshTimerId !== null) {
+        window.clearTimeout(blockShadowRefreshTimerId);
+        blockShadowRefreshTimerId = null;
+      }
+      pendingOptimisticBlockEdits.clear();
+      blockReconcileChunkKeys.clear();
 
       realtimeUnsubscribe?.();
       realtimeUnsubscribe = null;
@@ -4495,6 +6105,10 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         document.removeEventListener("keydown", viewKeyListener, true);
         viewKeyListener = null;
       }
+      performanceRecorder?.destroy();
+      performanceRecorder = null;
+      chunkMeshWorkerClient?.destroy();
+      chunkMeshWorkerClient = null;
       environmentSystem?.destroy();
       environmentSystem = null;
       realtimeIndicator?.remove();
@@ -4569,6 +6183,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     scene = null;
     camera = null;
     chunksRoot = null;
+    optimisticOverlayRoot = null;
 
     destroyedAt = now();
     setDomCanvasAriaActive(refs, false);

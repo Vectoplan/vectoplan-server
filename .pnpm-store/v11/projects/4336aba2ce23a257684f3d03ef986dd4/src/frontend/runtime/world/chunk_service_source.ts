@@ -207,7 +207,7 @@ const DEFAULT_PROJECT_ID = "dev-project" as const;
 const DEFAULT_UNIVERSE_ID = "default-universe" as const;
 const DEFAULT_WORLD_ID = "world_spawn" as const;
 const DEFAULT_API_BASE_URL = "/editor/api/chunk" as const;
-const DEFAULT_MAX_CHUNKS = 512;
+const DEFAULT_MAX_CHUNKS = 1024;
 const DEFAULT_SOURCE_MODE = "remote-chunk-service" as const;
 
 const MAX_CHUNK_SERVICE_SOURCE_CACHE_ENTRIES = 512;
@@ -806,11 +806,14 @@ function deriveMaxChunks(options: CreateChunkServiceSourceOptions): number {
   try {
     const chunk = bootstrapChunkRecord(options.bootstrap);
 
-    return normalizeContractInteger(
-      options.maxChunks ?? chunk.maxChunks ?? chunk.maxLoadedChunks,
+    return Math.max(
       DEFAULT_MAX_CHUNKS,
-      1,
-      100_000,
+      normalizeContractInteger(
+        options.maxChunks ?? chunk.maxChunks ?? chunk.maxLoadedChunks,
+        DEFAULT_MAX_CHUNKS,
+        1,
+        100_000,
+      ),
     );
   } catch {
     return DEFAULT_MAX_CHUNKS;
@@ -1442,6 +1445,8 @@ function createSetBlockPayload(
     kind: "SetBlock",
     type: "SetBlock",
     command: "SetBlock",
+    userId: options?.userId,
+    sessionId: options?.sessionId,
     position,
     blockTypeId: runtimeBlockTypeId,
     runtimeBlockTypeId,
@@ -1474,6 +1479,8 @@ function createRemoveBlockPayload(
     kind: "RemoveBlock",
     type: "RemoveBlock",
     command: "RemoveBlock",
+    userId: options?.userId,
+    sessionId: options?.sessionId,
     position,
     metadata: mergeContractMetadata(options?.commandMetadata, {
       contract: editorInventoryContractDiagnostics({
@@ -1692,6 +1699,22 @@ export function createChunkServiceSource(
   const sourceKind = normalizeText(options.sourceKind, "chunk-service");
   const id = normalizeText(options.id, createSourceId(projectId, worldId));
   const label = normalizeText(options.label, CHUNK_SERVICE_SOURCE_LABEL);
+  const commandUserId = normalizeText(options.userId, "editor_user");
+  const commandSessionId = normalizeText(
+    options.sessionId,
+    `editor_session_${Date.now()}`,
+  );
+
+  function withCommandIdentity(
+    commandOptions?: ChunkSourceCommandOptions | null,
+  ): ChunkSourceCommandOptions {
+    const record = asRecord(commandOptions);
+    return {
+      ...(record as ChunkSourceCommandOptions),
+      userId: normalizeText(record.userId, commandUserId),
+      sessionId: normalizeText(record.sessionId, commandSessionId),
+    };
+  }
 
   const client = options.client;
   const logger = options.logger;
@@ -2304,11 +2327,11 @@ export function createChunkServiceSource(
         );
       }
 
-      const options = normalizeCommandOptions({
+      const options = normalizeCommandOptions(withCommandIdentity({
         ...(asRecord(commandOptions) as ChunkSourceCommandOptions),
         runtimeBlockTypeId,
         blockTypeId: runtimeBlockTypeId,
-      });
+      }));
 
       const signal = mergeAbortSignal(
         sourceSignal,
@@ -2316,7 +2339,11 @@ export function createChunkServiceSource(
           ? (asRecord(commandOptions).signal as AbortSignal)
           : undefined,
       );
-      const overrides = requestOverridesFromSignal(signal);
+      const overrides = {
+        ...requestOverridesFromSignal(signal),
+        userId: options.userId,
+        sessionId: options.sessionId,
+      };
 
       updateLifecycle("commanding");
       emit("command:set-block:start", {
@@ -2334,6 +2361,8 @@ export function createChunkServiceSource(
             position: normalizedPosition,
             blockTypeId: runtimeBlockTypeId,
             runtimeBlockTypeId,
+            userId: options.userId,
+            sessionId: options.sessionId,
             signal,
           },
         ],
@@ -2402,7 +2431,7 @@ export function createChunkServiceSource(
   ): Promise<ChunkSourceCommandResult | ChunkApiFailedResult> {
     try {
       const normalizedPosition = normalizeWorldPosition(position);
-      const options = normalizeCommandOptions(commandOptions);
+      const options = normalizeCommandOptions(withCommandIdentity(commandOptions));
 
       const signal = mergeAbortSignal(
         sourceSignal,
@@ -2410,7 +2439,11 @@ export function createChunkServiceSource(
           ? (asRecord(commandOptions).signal as AbortSignal)
           : undefined,
       );
-      const overrides = requestOverridesFromSignal(signal);
+      const overrides = {
+        ...requestOverridesFromSignal(signal),
+        userId: options.userId,
+        sessionId: options.sessionId,
+      };
 
       updateLifecycle("commanding");
       emit("command:remove-block:start", {
@@ -2425,6 +2458,8 @@ export function createChunkServiceSource(
             projectId,
             worldId,
             position: normalizedPosition,
+            userId: options.userId,
+            sessionId: options.sessionId,
             signal,
           },
         ],
@@ -2491,7 +2526,10 @@ export function createChunkServiceSource(
   ): Promise<ChunkSourceCommandResult | ChunkApiFailedResult> {
     try {
       const normalizedPosition = normalizeWorldPosition(position);
-      const prepared = prepareLibraryPlacement(placement, commandOptions);
+      const prepared = prepareLibraryPlacement(
+        placement,
+        withCommandIdentity(commandOptions),
+      );
 
       if (isPreparedPlacementFailure(prepared)) {
         const failed = prepared.failed;

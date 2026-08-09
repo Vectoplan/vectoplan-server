@@ -52,3 +52,73 @@ def test_projection_rejects_invalid_wall_geometry():
     payload["sheets"][0]["elements"][0]["geometry"]["thickness_mm"] = 0
     errors = validate_projection_input(payload)
     assert any("thickness_mm" in error for error in errors)
+
+
+def test_semantic_polyline_is_one_selectable_thick_path():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    sheet["elements"] = [
+        {
+            "element_ref": "semantic-wall-path",
+            "label": "Zusammenhängende Wand",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "view_refs": ["vp_ground_floor"],
+            "form": "polyline",
+            "source_cell_count": 5,
+            "geometry": {
+                "form": "polyline",
+                "path_mm": [[500, 500], [1500, 500], [1500, 1500]],
+                "closed": False,
+                "thickness_mm": 365,
+            },
+        }
+    ]
+
+    assert validate_projection_input(payload) == []
+    scene = build_preview(payload)["scene"]
+    primitive = scene["sheets"][0]["viewports"][0]["primitives"][0]
+    assert primitive["primitive_type"] == "thick_path"
+    assert primitive["metadata"]["source_cell_count"] == 5
+    assert primitive["metadata"]["thickness_mm"] == 365
+
+
+def test_semantic_network_preserves_explicit_joint_nodes():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    sheet["elements"] = [
+        {
+            "element_ref": "semantic-wall-network",
+            "label": "Verzweigte Wand",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "view_refs": ["vp_ground_floor"],
+            "form": "network",
+            "geometry": {
+                "form": "network",
+                "segments_mm": [
+                    [[500, 500], [1500, 500]],
+                    [[1500, 500], [2500, 500]],
+                    [[1500, 500], [1500, 1500]],
+                ],
+                "paths_mm": [
+                    [[500, 500], [1500, 500], [2500, 500]],
+                    [[1500, 1500], [1500, 500]],
+                ],
+                "nodes_mm": [
+                    {"point_mm": [500, 500], "degree": 1},
+                    {"point_mm": [1500, 500], "degree": 3},
+                    {"point_mm": [2500, 500], "degree": 1},
+                    {"point_mm": [1500, 1500], "degree": 1},
+                ],
+                "thickness_mm": 365,
+            },
+        }
+    ]
+
+    assert validate_projection_input(payload) == []
+    scene = build_preview(payload)["scene"]
+    primitive = scene["sheets"][0]["viewports"][0]["primitives"][0]
+    assert primitive["primitive_type"] == "thick_segments"
+    assert sorted(len(path) for path in primitive["geometry"]["paths_mm"]) == [2, 3]
+    assert len(primitive["geometry"]["nodes_mm"]) == 4

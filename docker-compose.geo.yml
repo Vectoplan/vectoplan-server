@@ -48,9 +48,8 @@ x-geoserver-orchestrator-build: &geoserver_orchestrator_build
   dockerfile: Dockerfile
 
 x-geoserver-orchestrator-volumes: &geoserver_orchestrator_volumes
-  - ./services/vectoplan-geoserver-orchestrator/upload:/app/upload
-  - geoserver_orchestrator_tmp_data:/app/tmp
-  - geoserver_orchestrator_logs:/app/logs
+  - geoserver-orchestrator-tmp-data:/app/tmp
+  - geoserver-orchestrator-logs:/app/logs
 
 
 # ------------------------------------------------------------------------------
@@ -68,6 +67,9 @@ x-geoserver-orchestrator-common-environment: &geoserver_orchestrator_common_envi
   HOST: "0.0.0.0"
   PORT: "8010"
   LOG_LEVEL: "${GEOSERVER_ORCHESTRATOR_LOG_LEVEL:-DEBUG}"
+  UPLOAD_ROOT_DIR: "${GEOSERVER_ORCHESTRATOR_STAGING_ROOT_DIR:-/app/tmp/ingestion}"
+  INGESTION_DASHBOARD_TERMINAL_JOB_SECONDS: "${INGESTION_DASHBOARD_TERMINAL_JOB_SECONDS:-900}"
+  EXPORT_AFTER_SUCCESSFUL_SYNC: "${EXPORT_AFTER_SUCCESSFUL_SYNC:-false}"
 
   GEOSERVER_ORCH_DB_DRIVER: "${GEOSERVER_ORCH_DB_DRIVER:-postgresql+psycopg2}"
   GEOSERVER_ORCH_DB_HOST: "${GEOSERVER_ORCH_DB_HOST:-db}"
@@ -310,7 +312,7 @@ services:
       - "${VECTOPLAN_GEO_POSTGRES_PUBLIC_PORT:-5434}:5432"
 
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - vectoplan-geo-postgres-data:/var/lib/postgresql/data
 
     networks:
       - backend
@@ -383,7 +385,7 @@ services:
       HEALTHCHECK_URL: "http://127.0.0.1:8080/geoserver/rest/about/version.json"
 
     volumes:
-      - geoserver_data:/opt/geoserver_data
+      - geoserver-data:/opt/geoserver_data
 
     ports:
       - "${GEOSERVER_PUBLIC_PORT:-8082}:8080"
@@ -479,7 +481,7 @@ services:
 
     networks:
       - backend
-      - scraper
+      - vectoplan
 
 
   openlayer:
@@ -535,19 +537,19 @@ services:
 # ------------------------------------------------------------------------------
 
 volumes:
-  db_data:
+  vectoplan-geo-postgres-data:
     name: vectoplan-geo-db-data
 
-  geoserver_data:
+  geoserver-data:
     name: vectoplan-geoserver-data
 
   geoserver_orchestrator_upload_data:
     name: vectoplan-geoserver-orchestrator-upload-data
 
-  geoserver_orchestrator_tmp_data:
+  geoserver-orchestrator-tmp-data:
     name: vectoplan-geoserver-orchestrator-tmp-data
 
-  geoserver_orchestrator_logs:
+  geoserver-orchestrator-logs:
     name: vectoplan-geoserver-orchestrator-logs
 
 
@@ -557,9 +559,11 @@ volumes:
 
 networks:
 
-  scraper:
+  # Gemeinsames, vom Root-/Client-Start bereitgestelltes Netz. Der Webscraper
+  # selbst muss nicht laufen.
+  vectoplan:
+    name: "${VECTOPLAN_SCRAPER_NETWORK:-vectoplan-scraper-network}"
     external: true
-    name: vectoplan-scraper-network
   backend:
     name: vectoplan-geo-net
     driver: bridge

@@ -1,9 +1,0 @@
-Single-database Alembic configuration for vectoplan-lv.
-
-Use the Flask application context for all migration commands:
-
-    flask --app app:create_app db revision --autogenerate -m "description"
-    flask --app app:create_app db upgrade
-
-The first revisions establish the runnable LV document/version aggregate.
-Further models from README_vectoplan-lv.md section 30 follow incrementally.

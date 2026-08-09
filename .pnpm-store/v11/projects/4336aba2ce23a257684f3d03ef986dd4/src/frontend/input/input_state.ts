@@ -884,10 +884,19 @@ function pointerDeltaFromEvent(
   try {
     const hasMovementX = typeof event.movementX === "number" && Number.isFinite(event.movementX);
     const hasMovementY = typeof event.movementY === "number" && Number.isFinite(event.movementY);
+    const positionDeltaX = position.x - previousPosition.x;
+    const positionDeltaY = position.y - previousPosition.y;
+    const movementX = hasMovementX ? safeNumber(event.movementX, 0) : positionDeltaX;
+    const movementY = hasMovementY ? safeNumber(event.movementY, 0) : positionDeltaY;
 
     return {
-      x: hasMovementX ? safeNumber(event.movementX, 0) : position.x - previousPosition.x,
-      y: hasMovementY ? safeNumber(event.movementY, 0) : position.y - previousPosition.y,
+      // Some browsers and automation surfaces expose finite movementX/Y but
+      // keep them at zero outside Pointer Lock. In that case the canvas-space
+      // position delta is the only truthful drag signal. Pointer Lock itself
+      // keeps client coordinates stationary, so its real movement values keep
+      // winning whenever they are non-zero.
+      x: movementX !== 0 || positionDeltaX === 0 ? movementX : positionDeltaX,
+      y: movementY !== 0 || positionDeltaY === 0 ? movementY : positionDeltaY,
     };
   } catch {
     return createZeroDelta();
@@ -1031,10 +1040,13 @@ export function createInputState(options?: CreateInputStateOptions): InputStateH
         ...pointer,
         delta: createZeroDelta(),
         lookDelta: createZeroDelta(),
+        accumulatedDelta: createZeroDelta(),
+        accumulatedLookDelta: createZeroDelta(),
       };
       wheelState = {
         ...wheelState,
         delta: createZeroWheelDelta(),
+        accumulatedDelta: createZeroWheelDelta(),
       };
       keyboard = clearKeyboardEdges(keyboard);
       updatedAt = now();

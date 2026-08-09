@@ -2516,13 +2516,57 @@ export function withSelectedInventorySlot(
   slot: number,
 ): EditorState {
   const selectedSlot = normalizeSlot(slot, state.inventory.slotCount);
-  const inventory = deriveInventoryStateFromItems(state, state.inventory.items, {
-    selectedSlot,
-    source: state.inventory.source,
-    usedPaletteFallback: state.inventory.usedPaletteFallback,
-    error: state.inventory.lastError,
-    allowEmptySelection: true,
+  if (
+    selectedSlot === state.inventory.selectedSlotIndex
+    && selectedSlot === state.inventory.selectedSlot
+  ) {
+    return state;
+  }
+
+  const requestedItem = selectedItemForSlot(state.inventory.items, selectedSlot);
+  const selectedItem = isPlaceableLibraryInventoryItem(requestedItem)
+    ? requestedItem
+    : null;
+  const selectedRuntimeBlockTypeId = selectedItem?.runtimeBlockTypeId
+    ?? selectedItem?.blockTypeId
+    ?? null;
+  const selectedPlacementRef = selectedItem?.placementRef ?? null;
+  const hotbarSlots = state.inventory.hotbarSlots.map((hotbarSlot) => {
+    const selected = hotbarSlot.slot === selectedSlot;
+    const status = hotbarSlot.enabled
+      ? selected
+        ? "selected" as const
+        : "available" as const
+      : hotbarSlot.status;
+    if (hotbarSlot.selected === selected && hotbarSlot.status === status) {
+      return hotbarSlot;
+    }
+    return {
+      ...hotbarSlot,
+      selected,
+      status,
+    };
   });
+  const inventory: EditorInventoryState = {
+    ...state.inventory,
+    selectedSlot,
+    selectedSlotIndex: selectedSlot,
+    selectedItem,
+    selectedBlockTypeId: selectedRuntimeBlockTypeId,
+    selectedRuntimeBlockTypeId,
+    selectedCellValue: selectedItem?.cellValue ?? null,
+    selectedPlacementRef,
+    selectedLibraryItemId: selectedItem?.libraryItemId ?? selectedPlacementRef?.libraryItemId ?? null,
+    selectedFamilyId: selectedItem?.familyId ?? selectedPlacementRef?.familyId ?? null,
+    selectedPackageId: selectedItem?.packageId ?? selectedPlacementRef?.packageId ?? null,
+    selectedVplibUid: selectedItem?.vplibUid ?? selectedPlacementRef?.vplibUid ?? null,
+    selectedVariantId: selectedItem?.variantId ?? selectedPlacementRef?.variantId ?? null,
+    selectedRevisionHash: selectedItem?.revisionHash ?? selectedPlacementRef?.revisionHash ?? null,
+    selectedObjectKind: selectedItem?.objectKind ?? selectedPlacementRef?.objectKind ?? null,
+    selectedLibraryRef: selectedItem?.libraryRef ?? selectedPlacementRef?.libraryRef ?? null,
+    selectedPlacementCommand: selectedItem?.placementCommand ?? selectedPlacementRef?.placementCommand ?? null,
+    hotbarSlots,
+  };
 
   return {
     ...state,

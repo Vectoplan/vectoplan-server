@@ -1163,7 +1163,11 @@ export class LibraryInventorySource implements LibraryInventorySourceHandle {
   }
 
   private persistSelection(slotIndex: number, reason?: string): void {
-    if (reason === "load-options-selection" || typeof window === "undefined") {
+    if (
+      reason === "load-options-selection"
+      || reason?.startsWith("library-user-inventory-frame")
+      || typeof window === "undefined"
+    ) {
       return;
     }
 

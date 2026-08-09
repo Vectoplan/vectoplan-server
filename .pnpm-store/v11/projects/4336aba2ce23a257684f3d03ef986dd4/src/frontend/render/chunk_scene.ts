@@ -568,6 +568,11 @@ export function createChunkScene(options: ChunkSceneOptions): ChunkSceneHandle {
 
         synced.push(setChunk(chunk, {
           ...syncOptions,
+          // A registry sync is primarily a visibility/data reconciliation. Rebuilding
+          // an unchanged InstancedMesh here made every progressive chunk event remesh
+          // the complete visible world. Dirty/revision changes are still detected by
+          // entryNeedsRemesh(), while explicit dirty remeshes pass replaceExisting=true.
+          replaceExisting: syncOptions?.replaceExisting ?? false,
           visible: snapshot.visibleChunkKeys.includes(key),
           reason: syncOptions?.reason ?? "syncFromRegistry",
         }));

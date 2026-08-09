@@ -1677,6 +1677,7 @@ export class PlayerPhysicsController {
   private readonly collisionSolver: VoxelCollisionSolver;
   private lastStep: PlayerPhysicsControllerStepResult | null;
   private revision: number;
+  private lastGroundedCollisionCheckAtMs: number;
 
   public constructor(options: {
     readonly initialState?: PlayerPhysicsState | null;
@@ -1696,6 +1697,7 @@ export class PlayerPhysicsController {
     this.collisionSolver = createVoxelCollisionSolver(this.config.collision);
     this.lastStep = null;
     this.revision = 0;
+    this.lastGroundedCollisionCheckAtMs = -Infinity;
   }
 
   public getState(): PlayerPhysicsState {
@@ -1709,6 +1711,7 @@ export class PlayerPhysicsController {
   public setState(state: PlayerPhysicsState): PlayerPhysicsState {
     try {
       this.state = state;
+      this.lastGroundedCollisionCheckAtMs = -Infinity;
       this.revision += 1;
       return this.state;
     } catch {
@@ -1719,6 +1722,7 @@ export class PlayerPhysicsController {
   public patchState(patch: Parameters<typeof patchAndNormalizePlayerPhysicsState>[1]): PlayerPhysicsState {
     try {
       this.state = patchAndNormalizePlayerPhysicsState(this.state, patch);
+      this.lastGroundedCollisionCheckAtMs = -Infinity;
       this.revision += 1;
       return this.state;
     } catch {
@@ -1757,6 +1761,7 @@ export class PlayerPhysicsController {
   public setFlying(flying: boolean, nowMs: PhysicsTimestampMs | null = null): PlayerPhysicsState {
     try {
       this.state = setPlayerFlying(this.state, flying, nowMs);
+      this.lastGroundedCollisionCheckAtMs = -Infinity;
       this.revision += 1;
       return this.state;
     } catch {
@@ -1768,6 +1773,7 @@ export class PlayerPhysicsController {
     try {
       this.state = state;
       this.lastStep = null;
+      this.lastGroundedCollisionCheckAtMs = -Infinity;
       this.collisionSolver.reset();
       this.revision += 1;
       return this.state;
@@ -1984,6 +1990,44 @@ export class PlayerPhysicsController {
 
       const delta = createDeltaFromVelocity(velocityResult.velocity, deltaSeconds);
       const intentActive = isPlayerMovementIntentActive(intent);
+
+      const canReuseGroundedState = (
+        previousState.grounded
+        && stateBeforeCollision.grounded
+        && !stateBeforeCollision.flying
+        && !intentActive
+        && Math.abs(velocityResult.velocity.x) < 0.0001
+        && Math.abs(velocityResult.velocity.z) < 0.0001
+        && velocityResult.velocity.y <= 0
+        && nowMs - this.lastGroundedCollisionCheckAtMs < 100
+      );
+      if (canReuseGroundedState) {
+        const nextState = patchAndNormalizePlayerPhysicsState(stateBeforeCollision, {
+          velocity: { x: 0, y: 0, z: 0 },
+          movementMode: "grounded",
+          grounded: true,
+          flying: false,
+          collisionFlags: previousState.collisionFlags,
+        });
+        this.state = nextState;
+        this.revision += 1;
+        const camera = createPhysicsCameraBinding(nextState, angles);
+        const result: PlayerPhysicsControllerStepResult = {
+          ok: true,
+          phase: "idle",
+          previousState,
+          nextState,
+          camera,
+          collisionResult: null,
+          modeBefore,
+          modeAfter: nextState.movementMode,
+          warnings: velocityResult.warnings,
+        };
+        this.lastStep = result;
+        return result;
+      }
+
+      this.lastGroundedCollisionCheckAtMs = nowMs;
 
       const collisionConfig: VoxelCollisionSolverConfigPatch = {
         ...this.config.collision,

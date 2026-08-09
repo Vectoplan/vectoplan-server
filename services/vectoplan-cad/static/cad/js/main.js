@@ -5,6 +5,13 @@
   const routePrefix = app.dataset.routePrefix || "/api/v1/cad";
   const svg = document.getElementById("plan-svg");
   const ns = "http://www.w3.org/2000/svg";
+  const query = new URLSearchParams(window.location.search);
+  const projectContext = {
+    coreProjectId: query.get("core_project_id") || "",
+    projectPublicId: query.get("project_public_id") || query.get("app_project_public_id") || "",
+    readOnly: ["1", "true", "yes", "on"].includes((query.get("read_only") || "").toLowerCase()),
+    sampleRequested: query.get("sample") === "1",
+  };
 
   const state = {
     input: null,
@@ -91,8 +98,24 @@
     state.bootstrap = await fetchJson(`${routePrefix}/bootstrap`);
   }
 
-  async function loadTestInput() {
-    const input = await fetchJson(`${routePrefix}/test-input`);
+  function updateConnectionStatus({coreConnected, projectConnected, projectText}) {
+    const coreRow = document.getElementById("core-status-row");
+    const coreText = document.getElementById("core-status-text");
+    const projectRow = document.getElementById("project-status-row");
+    const projectStatusText = document.getElementById("project-status-text");
+
+    coreRow?.querySelector(".status-dot")?.classList.toggle("is-ok", coreConnected);
+    coreRow?.querySelector(".status-dot")?.classList.toggle("is-warning", !coreConnected);
+    projectRow?.querySelector(".status-dot")?.classList.toggle("is-ok", projectConnected);
+    projectRow?.querySelector(".status-dot")?.classList.toggle("is-warning", !projectConnected);
+    if (coreText) coreText.textContent = coreConnected ? "Core verbunden" : "Core nicht verbunden";
+    if (projectStatusText) projectStatusText.textContent = projectText;
+  }
+
+  async function activateProjection(input, message) {
+    if (!input || !Array.isArray(input.sheets)) {
+      throw new Error("Core hat keine gültige CAD-Projektion geliefert.");
+    }
     state.input = input;
     state.activeSheetRef = input.sheets[0]?.sheet_ref || null;
     state.activeViewportRef = input.sheets[0]?.viewports?.find((viewport) => viewport.kind === "floor_plan")?.viewport_ref || null;
@@ -105,7 +128,62 @@
     state.knownLayers.clear();
     cancelDrawing(false);
     await refreshProjection();
-    showMessage("Erdgeschoss geladen. Änderungen bleiben lokal in diesem Browser-Tab.");
+    showMessage(message);
+  }
+
+  async function loadTestInput() {
+    const input = await fetchJson(`${routePrefix}/test-input`);
+    await activateProjection(input, "Musterprojekt geladen. Änderungen bleiben lokal in diesem Browser-Tab.");
+    updateConnectionStatus({
+      coreConnected: false,
+      projectConnected: false,
+      projectText: "Expliziter Musterbetrieb",
+    });
+  }
+
+  async function loadProjectInput() {
+    const result = await fetchJson(
+      `${routePrefix}/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection`,
+      {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          projectionKey: "semantic-floor-plan-v1",
+          options: {
+            viewKind: "floor_plan",
+            representationMode: "semantic-construction",
+          },
+        }),
+      },
+    );
+    const input = result?.snapshot?.projection;
+    const statistics = result?.snapshot?.statistics || {};
+    const userPlacementMode = statistics.sourceMode === "current-user-authored-cells"
+      || statistics.discoveryMode === "current-user-authored-cells";
+    const semanticMode = statistics.sourceMode === "semantic-construction-model";
+    const userPlacementCount = Number(statistics.userPlacementCount ?? statistics.placementCount ?? 0);
+    const constructionElementCount = Number(statistics.constructionElementCount ?? statistics.elementCount ?? 0);
+    const projectLabel = projectContext.projectPublicId || projectContext.coreProjectId;
+    const loadedMessage = userPlacementMode && userPlacementCount === 0
+      ? "Keine serverseitig gesetzten Benutzerblöcke vorhanden. Systemgelände ist ausgeblendet."
+      : semanticMode
+        ? `${userPlacementCount} gesetzte Benutzerblöcke wurden zu ${constructionElementCount} Bauwerksobjekten zusammengefasst.`
+        : userPlacementMode
+        ? `${userPlacementCount} gesetzte Benutzerblöcke für Projekt ${projectLabel} geladen.`
+        : `Projekt ${projectLabel} aus Chunk-Daten geladen.`;
+    await activateProjection(
+      input,
+      loadedMessage,
+    );
+    updateConnectionStatus({
+      coreConnected: true,
+      projectConnected: true,
+      projectText: semanticMode
+        ? `Projekt ${projectLabel} verbunden · ${constructionElementCount} Bauwerksobjekte aus ${userPlacementCount} Benutzerblöcken`
+        : userPlacementMode
+        ? `Projekt ${projectLabel} verbunden · ${userPlacementCount} Benutzerblöcke`
+        : `Projekt ${projectLabel} verbunden`,
+    });
   }
 
   async function refreshProjection() {
@@ -141,8 +219,84 @@
     syncHistoryButtons();
   }
 
+  function primitiveModelBounds(primitive) {
+    const geometry = primitive?.geometry || {};
+    let points = [];
+    let padding = Number(geometry.thickness_mm) / 2 || 0;
+    if (primitive.primitive_type === "rect") {
+      return {
+        x: geometry.x_mm,
+        y: geometry.y_mm,
+        width: geometry.width_mm,
+        height: geometry.height_mm,
+      };
+    }
+    if (primitive.primitive_type === "polygon") points = geometry.points_mm || [];
+    else if (primitive.primitive_type === "thick_path") points = geometry.path_mm || [];
+    else if (primitive.primitive_type === "thick_segments") points = (geometry.segments_mm || []).flat();
+    else if (primitive.primitive_type === "thick_arc") {
+      const [cx, cy] = geometry.center_mm || [0, 0];
+      const radius = Number(geometry.radius_mm) || 0;
+      return {x: cx - radius - padding, y: cy - radius - padding, width: (radius + padding) * 2, height: (radius + padding) * 2};
+    } else if (["line", "dimension"].includes(primitive.primitive_type)) {
+      points = [geometry.start_mm, geometry.end_mm];
+    }
+    points = points.filter((point) => Array.isArray(point) && Number.isFinite(point[0]) && Number.isFinite(point[1]));
+    if (!points.length) return null;
+    const xs = points.map((point) => point[0]);
+    const ys = points.map((point) => point[1]);
+    const minX = Math.min(...xs) - padding;
+    const maxX = Math.max(...xs) + padding;
+    const minY = Math.min(...ys) - padding;
+    const maxY = Math.max(...ys) + padding;
+    return {x: minX, y: minY, width: Math.max(1, maxX - minX), height: Math.max(1, maxY - minY)};
+  }
+
+  function focusedProjectionBounds(viewport) {
+    const assetKind = state.input?.document?.plan_profile?.asset_kind;
+    if (!["user_authored_cells", "semantic_construction_model"].includes(assetKind)) return null;
+    const rectangles = (viewport?.primitives || []).map(primitiveModelBounds).filter(Boolean);
+    if (rectangles.length < 12) return null;
+
+    const xCenters = rectangles
+      .map((geometry) => geometry.x + geometry.width / 2)
+      .sort((left, right) => left - right);
+    const yCenters = rectangles
+      .map((geometry) => geometry.y + geometry.height / 2)
+      .sort((left, right) => left - right);
+    const trimRatio = assetKind === "semantic_construction_model" ? 0.08 : 0.05;
+    const trim = Math.max(1, Math.floor(rectangles.length * trimRatio));
+    const minCellWidth = Math.min(...rectangles.map((geometry) => geometry.width));
+    const minCellHeight = Math.min(...rectangles.map((geometry) => geometry.height));
+    let minX = xCenters[trim] - minCellWidth / 2;
+    let maxX = xCenters[xCenters.length - trim - 1] + minCellWidth / 2;
+    let minY = yCenters[trim] - minCellHeight / 2;
+    let maxY = yCenters[yCenters.length - trim - 1] + minCellHeight / 2;
+    const minimumSpan = Math.max(12000, Math.max(minCellWidth, minCellHeight) * 12);
+    if (maxX - minX < minimumSpan) {
+      const centerX = (minX + maxX) / 2;
+      minX = centerX - minimumSpan / 2;
+      maxX = centerX + minimumSpan / 2;
+    }
+    if (maxY - minY < minimumSpan) {
+      const centerY = (minY + maxY) / 2;
+      minY = centerY - minimumSpan / 2;
+      maxY = centerY + minimumSpan / 2;
+    }
+
+    const completeBounds = viewport?.model_view_box_mm;
+    const focusedWidth = maxX - minX;
+    const focusedHeight = maxY - minY;
+    if (completeBounds
+      && completeBounds.width <= focusedWidth * 1.8
+      && completeBounds.height <= focusedHeight * 1.8) {
+      return null;
+    }
+    return {x: minX, y: minY, width: focusedWidth, height: focusedHeight};
+  }
+
   function viewportCamera(viewport) {
-    const bounds = viewport?.model_view_box_mm;
+    const bounds = focusedProjectionBounds(viewport) || viewport?.model_view_box_mm;
     if (!bounds) return {x: -1000, y: -1000, width: 16000, height: 12000};
     const paddedWidth = bounds.width * 1.2;
     const paddedHeight = bounds.height * 1.2;
@@ -200,6 +354,12 @@
     let node;
     if (primitive.primitive_type === "polygon") {
       node = svgEl("polygon", {points: geometry.points_mm.map((point) => point.join(",")).join(" ")});
+    } else if (primitive.primitive_type === "thick_path") {
+      node = renderThickPathPrimitive(primitive);
+    } else if (primitive.primitive_type === "thick_segments") {
+      node = renderThickSegmentsPrimitive(primitive);
+    } else if (primitive.primitive_type === "thick_arc") {
+      node = renderThickArcPrimitive(primitive);
     } else if (primitive.primitive_type === "rect") {
       node = svgEl("rect", {x: geometry.x_mm, y: geometry.y_mm, width: geometry.width_mm, height: geometry.height_mm});
     } else if (primitive.primitive_type === "line") {
@@ -223,6 +383,173 @@
       renderInspector();
     });
     return node;
+  }
+
+  function semanticStrokePair(thickness) {
+    const border = Math.max(24, thickness * 0.035);
+    return {
+      group: svgEl("g"),
+      outlineWidth: thickness + border * 2,
+      fillWidth: thickness,
+    };
+  }
+
+  function semanticStrokeNode(name, attrs, className, width, linecap = "square", linejoin = "miter") {
+    return svgEl(name, {
+      ...attrs,
+      class: className,
+      "stroke-width": width,
+      "stroke-linejoin": linejoin,
+      "stroke-linecap": linecap,
+      "stroke-miterlimit": 4,
+      fill: "none",
+    });
+  }
+
+  function renderThickPathPrimitive(primitive) {
+    const geometry = primitive.geometry;
+    const thickness = Number(geometry.thickness_mm) || 1;
+    const points = (geometry.path_mm || []).map((point) => point.join(",")).join(" ");
+    const pair = semanticStrokePair(thickness);
+    pair.group.append(
+      semanticStrokeNode("polyline", {points}, "semantic-outline", pair.outlineWidth),
+      semanticStrokeNode("polyline", {points}, "semantic-fill", pair.fillWidth),
+    );
+    return pair.group;
+  }
+
+  function renderThickSegmentsPrimitive(primitive) {
+    const geometry = primitive.geometry;
+    const thickness = Number(geometry.thickness_mm) || 1;
+    const pair = semanticStrokePair(thickness);
+    const outlines = svgEl("g");
+    const fills = svgEl("g");
+    const paths = (geometry.paths_mm?.length ? geometry.paths_mm : deriveNetworkPaths(geometry.segments_mm || []))
+      .slice()
+      .sort((left, right) => networkPathLength(left) - networkPathLength(right));
+    paths.forEach((path) => {
+      const attrs = {points: path.map((point) => point.join(",")).join(" ")};
+      outlines.append(semanticStrokeNode("polyline", attrs, "semantic-outline", pair.outlineWidth));
+      fills.append(semanticStrokeNode("polyline", attrs, "semantic-fill", pair.fillWidth));
+    });
+    pair.group.append(outlines, fills);
+    return pair.group;
+  }
+
+  function networkPathLength(path) {
+    return path.slice(1).reduce((total, point, index) => {
+      const previous = path[index];
+      return total + Math.hypot(point[0] - previous[0], point[1] - previous[1]);
+    }, 0);
+  }
+
+  function deriveNetworkPaths(segments) {
+    const pointByKey = new Map();
+    const neighbors = new Map();
+    const pointKey = (point) => `${point[0]}:${point[1]}`;
+    const edgeKey = (first, second) => [first, second].sort().join("|");
+    segments.forEach(([start, end]) => {
+      const startKey = pointKey(start);
+      const endKey = pointKey(end);
+      pointByKey.set(startKey, start);
+      pointByKey.set(endKey, end);
+      if (!neighbors.has(startKey)) neighbors.set(startKey, new Set());
+      if (!neighbors.has(endKey)) neighbors.set(endKey, new Set());
+      neighbors.get(startKey).add(endKey);
+      neighbors.get(endKey).add(startKey);
+    });
+    const continuations = new Map();
+    neighbors.forEach((neighborSet, nodeKey) => {
+      const node = pointByKey.get(nodeKey);
+      const remaining = new Set(neighborSet);
+      const paired = new Map();
+      while (remaining.size >= 2) {
+        const candidates = [];
+        const values = [...remaining].sort();
+        values.forEach((firstKey, firstIndex) => {
+          const first = pointByKey.get(firstKey);
+          const firstLength = Math.hypot(first[0] - node[0], first[1] - node[1]) || 1;
+          values.slice(firstIndex + 1).forEach((secondKey) => {
+            const second = pointByKey.get(secondKey);
+            const secondLength = Math.hypot(second[0] - node[0], second[1] - node[1]) || 1;
+            const dot = ((first[0] - node[0]) * (second[0] - node[0])
+              + (first[1] - node[1]) * (second[1] - node[1])) / (firstLength * secondLength);
+            candidates.push({dot, firstKey, secondKey});
+          });
+        });
+        candidates.sort((left, right) => left.dot - right.dot
+          || left.firstKey.localeCompare(right.firstKey)
+          || left.secondKey.localeCompare(right.secondKey));
+        const best = candidates[0];
+        if (!best) break;
+        paired.set(best.firstKey, best.secondKey);
+        paired.set(best.secondKey, best.firstKey);
+        remaining.delete(best.firstKey);
+        remaining.delete(best.secondKey);
+      }
+      continuations.set(nodeKey, paired);
+    });
+
+    const used = new Set();
+    const trace = (startKey, followingKey) => {
+      const path = [pointByKey.get(startKey)];
+      let previousKey = startKey;
+      let currentKey = followingKey;
+      while (!used.has(edgeKey(previousKey, currentKey))) {
+        used.add(edgeKey(previousKey, currentKey));
+        path.push(pointByKey.get(currentKey));
+        const nextKey = continuations.get(currentKey)?.get(previousKey);
+        if (!nextKey || used.has(edgeKey(currentKey, nextKey))) break;
+        previousKey = currentKey;
+        currentKey = nextKey;
+      }
+      return path;
+    };
+    const paths = [];
+    const starts = [];
+    neighbors.forEach((neighborSet, nodeKey) => {
+      neighborSet.forEach((neighborKey) => {
+        if (!continuations.get(nodeKey)?.has(neighborKey)) starts.push([nodeKey, neighborKey]);
+      });
+    });
+    starts.sort((left, right) => left.join("|").localeCompare(right.join("|"))).forEach(([startKey, followingKey]) => {
+      if (!used.has(edgeKey(startKey, followingKey))) paths.push(trace(startKey, followingKey));
+    });
+    segments.forEach(([start, end]) => {
+      const startKey = pointKey(start);
+      const endKey = pointKey(end);
+      if (!used.has(edgeKey(startKey, endKey))) paths.push(trace(startKey, endKey));
+    });
+    return paths;
+  }
+
+  function arcPath(geometry) {
+    const [cx, cy] = geometry.center_mm;
+    const radius = Number(geometry.radius_mm) || 1;
+    const start = Number(geometry.start_angle_deg) || 0;
+    const sweep = Number(geometry.sweep_angle_deg) || 0;
+    if (Math.abs(sweep) >= 359.999) {
+      return `M ${cx + radius} ${cy} A ${radius} ${radius} 0 1 1 ${cx - radius} ${cy} A ${radius} ${radius} 0 1 1 ${cx + radius} ${cy}`;
+    }
+    const radians = (start * Math.PI) / 180;
+    const endRadians = ((start + sweep) * Math.PI) / 180;
+    const startPoint = [cx + Math.cos(radians) * radius, cy + Math.sin(radians) * radius];
+    const endPoint = [cx + Math.cos(endRadians) * radius, cy + Math.sin(endRadians) * radius];
+    const largeArc = Math.abs(sweep) > 180 ? 1 : 0;
+    const sweepFlag = sweep >= 0 ? 1 : 0;
+    return `M ${startPoint[0]} ${startPoint[1]} A ${radius} ${radius} 0 ${largeArc} ${sweepFlag} ${endPoint[0]} ${endPoint[1]}`;
+  }
+
+  function renderThickArcPrimitive(primitive) {
+    const geometry = primitive.geometry;
+    const thickness = Number(geometry.thickness_mm) || 1;
+    const pair = semanticStrokePair(thickness);
+    const d = arcPath(geometry);
+    pair.group.append(
+      semanticStrokeNode("path", {d}, "semantic-outline", pair.outlineWidth),
+      semanticStrokeNode("path", {d}, "semantic-fill", pair.fillWidth),
+    );
+    return pair.group;
   }
 
   function renderLinePrimitive(primitive) {
@@ -295,8 +622,28 @@
     document.getElementById("prop-layer").textContent = item.layer || "–";
     document.getElementById("prop-family").textContent = item.family_ref || "–";
     document.getElementById("prop-variant").textContent = item.variant_ref || "–";
-    document.getElementById("prop-source").textContent = item.source || "–";
+    document.getElementById("prop-form").textContent = item.form || "–";
+    document.getElementById("prop-thickness").textContent = Number.isFinite(Number(item.thickness_mm))
+      ? `${Number(item.thickness_mm).toLocaleString("de-DE")} mm`
+      : "–";
+    document.getElementById("prop-source-cells").textContent = Number.isFinite(Number(item.source_cell_count))
+      ? String(item.source_cell_count)
+      : "–";
+    document.getElementById("prop-source").textContent = formatSource(item.source);
     document.getElementById("prop-draft").hidden = !item.local_draft;
+  }
+
+  function formatSource(source) {
+    if (!source) return "–";
+    if (typeof source === "string") return source;
+    if (typeof source !== "object") return String(source);
+    const role = source.semanticRole ? ` · ${source.semanticRole}` : "";
+    const dimensionSource = source.dimensionsSource === "library-variant-snapshot"
+      ? " · VectoPlan Library"
+      : source.dimensionsSource === "cell-size-fallback"
+        ? " · 1-m-Fallback"
+        : "";
+    return `${source.kind || "Core"}${role}${dimensionSource}`;
   }
 
   function renderCommandLog() {
@@ -724,7 +1071,15 @@
     bindEvents();
     selectTool("select");
     await loadBootstrap();
-    await loadTestInput();
+    if (projectContext.coreProjectId) {
+      await loadProjectInput();
+      return;
+    }
+    if (projectContext.sampleRequested && state.bootstrap?.mock_mode) {
+      await loadTestInput();
+      return;
+    }
+    throw new Error("Kein Core-Projekt übergeben. Öffne CAD über ein VectoPlan-Projekt oder nutze ?sample=1 für das Muster.");
   }
 
   init().catch(handleError);

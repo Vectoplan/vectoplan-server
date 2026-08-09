@@ -207,7 +207,10 @@ const DEFAULT_MAX_RADIUS = 8;
 const DEFAULT_STREAMING_BATCH_SIZE = 12;
 const DEFAULT_MAX_CHUNKS_PER_LOAD = 256;
 const HARD_MAX_STREAMING_BATCH_SIZE = 12;
-const MAX_PARALLEL_CHUNK_BATCH_REQUESTS = 1;
+// Keep a second lane available for camera-critical visibility work. With one
+// request, a speculative prefetch that was already in flight could delay the
+// next visible ring even though the queue correctly prioritized camera loads.
+const MAX_PARALLEL_CHUNK_BATCH_REQUESTS = 2;
 const MAX_QUEUED_CHUNK_BATCH_REQUESTS = 6;
 
 type ChunkBatchSourceResult = ChunkSourceLoadChunksResult | ChunkApiFailedResult;

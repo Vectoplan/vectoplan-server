@@ -34,6 +34,8 @@ class BaseConfig:
 
     CORE_INTERNAL_URL = os.getenv("VECTOPLAN_CAD_CORE_INTERNAL_URL", "")
     CORE_PUBLIC_URL = os.getenv("VECTOPLAN_CAD_CORE_PUBLIC_URL", "")
+    CORE_SERVICE_API_KEY = os.getenv("VECTOPLAN_CAD_CORE_SERVICE_API_KEY", "")
+    CORE_TIMEOUT_SECONDS = _int("VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS", 30)
 
     TEST_INPUT_PATH = ROOT / "static" / "cad" / "examples" / "test_input.json"
     PLAN_PROFILE_PATH = ROOT / "src" / "profiles" / "catalog.json"

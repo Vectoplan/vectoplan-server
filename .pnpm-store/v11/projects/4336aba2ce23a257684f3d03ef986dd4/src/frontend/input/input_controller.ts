@@ -181,6 +181,16 @@ export interface EditorInputControllerOptions {
   readonly preventDefault?: boolean;
   readonly dispatchToStore?: boolean;
 
+  /**
+   * The 3D scene keeps targeting in a lightweight frame-local cache. Reading
+   * it here avoids rebuilding the full editor store just so a click can use
+   * the newest raycast result.
+   */
+  readonly getTargetCells?: () => {
+    readonly sourceCell: EditorStateChunkCellPosition | null;
+    readonly placementCell: EditorStateChunkCellPosition | null;
+  };
+
   readonly onPlaceBlock?: (intent: EditorInputBlockIntent) => void | Promise<void>;
   readonly onRemoveBlock?: (intent: EditorInputBlockIntent) => void | Promise<void>;
   readonly onInspect?: (intent: {
@@ -194,6 +204,12 @@ export interface EditorInputControllerOptions {
     intent: EditorInputMovementIntent,
     snapshot: InputStateSnapshot,
   ) => void;
+  readonly onPerformanceEvent?: (event: {
+    readonly type: string;
+    readonly phase: string;
+    readonly durationMs: number;
+    readonly detail?: Readonly<Record<string, unknown>>;
+  }) => void;
 }
 
 export interface EditorInputControllerSnapshot {
@@ -259,7 +275,7 @@ export interface EditorInputControllerHandle {
 
 const INPUT_CONTROLLER_KIND = "vectoplan-editor-input-controller.v1" as const;
 const INPUT_CONTROLLER_SNAPSHOT_KIND = "editor-input-controller-snapshot.v1" as const;
-const POINTER_ACTION_DUPLICATE_GUARD_MS = 12;
+const POINTER_ACTION_DUPLICATE_GUARD_MS = 40;
 const POINTER_LOCK_ACTIVATION_SUPPRESS_MS = 220;
 const PRODUCTIVE_INVENTORY_ROUTE = PRODUCTIVE_EDITOR_INVENTORY_ROUTE;
 
@@ -1173,55 +1189,6 @@ function setPlacementDataset(
   }
 }
 
-function isMouseButtonEvent(event: Event): event is MouseEvent {
-  try {
-    return "button" in event && typeof (event as MouseEvent).button === "number";
-  } catch {
-    return false;
-  }
-}
-
-function pointerActionFromButton(button: number): PointerActionKind | null {
-  try {
-    if (button === 0) {
-      return "place";
-    }
-
-    if (button === 2) {
-      return "remove";
-    }
-
-    if (button === 1) {
-      return "inspect";
-    }
-
-    return null;
-  } catch {
-    return null;
-  }
-}
-
-function addEventTargetListener(
-  target: EventTarget,
-  type: string,
-  listener: EventListener,
-  options: AddEventListenerOptions,
-): () => void {
-  try {
-    target.addEventListener(type, listener, options);
-
-    return () => {
-      try {
-        target.removeEventListener(type, listener, options);
-      } catch {
-        // Ignore cleanup failure.
-      }
-    };
-  } catch {
-    return () => undefined;
-  }
-}
-
 function selectedItemKind(selectedItem: EditorInventoryItem | null): string | null {
   try {
     return selectedItem?.kind ?? null;
@@ -1415,11 +1382,8 @@ export function createEditorInputController(
   });
 
   let pointerLock: PointerLockHandle | null = null;
-  let directPointerFallbackAttached = false;
   let lastPointerActionKey: string | null = null;
   let lastPointerActionAtMs = 0;
-
-  const directPointerFallbackCleanupCallbacks: Array<() => void> = [];
 
   function setStatus(nextStatus: EditorInputControllerStatus): void {
     try {
@@ -1777,9 +1741,10 @@ export function createEditorInputController(
         createdAt: now(),
       });
 
+      const directTarget = options.getTargetCells?.() ?? null;
       await options.onInspect?.({
-        sourceCell: selectSourceCell(state),
-        placementCell: selectPlacementCell(state),
+        sourceCell: directTarget ? directTarget.sourceCell : selectSourceCell(state),
+        placementCell: directTarget ? directTarget.placementCell : selectPlacementCell(state),
         trigger,
         createdAt: now(),
       });
@@ -1824,8 +1789,9 @@ export function createEditorInputController(
 
     try {
       const state = store.peekState();
-      const placementCell = selectPlacementCell(state);
-      const sourceCell = selectSourceCell(state);
+      const directTarget = options.getTargetCells?.() ?? null;
+      const placementCell = directTarget ? directTarget.placementCell : selectPlacementCell(state);
+      const sourceCell = directTarget ? directTarget.sourceCell : selectSourceCell(state);
       const libraryPlacement = createLibraryPlacementContext(state);
       const position = positionFromOptionalCell(placementCell);
 
@@ -1898,8 +1864,9 @@ export function createEditorInputController(
 
     try {
       const state = store.peekState();
-      const sourceCell = selectSourceCell(state);
-      const placementCell = selectPlacementCell(state);
+      const directTarget = options.getTargetCells?.() ?? null;
+      const sourceCell = directTarget ? directTarget.sourceCell : selectSourceCell(state);
+      const placementCell = directTarget ? directTarget.placementCell : selectPlacementCell(state);
 
       if (!sourceCell) {
         blockedRemoveIntentCount += 1;
@@ -1949,13 +1916,32 @@ export function createEditorInputController(
   }
 
   function executePointerAction(action: PointerActionKind, trigger: string): void {
+    const actionStartedAtMs = monotonicNowMs();
     if (!assertAlive(`executePointerAction:${action}`)) {
       return;
     }
 
     if (shouldSkipPointerAction(action, trigger)) {
+      options.onPerformanceEvent?.({
+        type: "pointer-action",
+        phase: "deduplicated",
+        durationMs: Math.max(0, monotonicNowMs() - actionStartedAtMs),
+        detail: { action, trigger, dedupedPointerActionCount },
+      });
       return;
     }
+
+    options.onPerformanceEvent?.({
+      type: "pointer-action",
+      phase: "accepted",
+      durationMs: Math.max(0, monotonicNowMs() - actionStartedAtMs),
+      detail: {
+        action,
+        trigger,
+        placeIntentCount,
+        removeIntentCount,
+      },
+    });
 
     if (action === "place") {
       void executePlace(trigger);
@@ -1970,124 +1956,8 @@ export function createEditorInputController(
     void executeInspect(trigger);
   }
 
-  function handleDirectPointerDown(event: Event): void {
-    try {
-      if (!enabled || destroyed || !isMouseButtonEvent(event)) {
-        return;
-      }
-
-      const action = pointerActionFromButton(event.button);
-
-      if (!action) {
-        return;
-      }
-
-      if (action === "remove" || action === "place") {
-        try {
-          event.preventDefault();
-        } catch {
-          // Ignore.
-        }
-      }
-
-      executePointerAction(action, `direct-pointer-fallback:${action}`);
-    } catch (error) {
-      setError(error);
-    }
-  }
-
-  function handleDirectContextMenu(event: Event): void {
-    try {
-      if (!enabled || destroyed) {
-        return;
-      }
-
-      try {
-        event.preventDefault();
-      } catch {
-        // Ignore.
-      }
-
-    } catch (error) {
-      setError(error);
-    }
-  }
-
-  function attachDirectPointerFallbackListeners(): void {
-    if (directPointerFallbackAttached) {
-      return;
-    }
-
-    try {
-      const listenerOptions: AddEventListenerOptions = {
-        capture: true,
-        passive: false,
-      };
-
-      const targets: EventTarget[] = [];
-
-      if (refs.canvasHost) {
-        targets.push(refs.canvasHost);
-      }
-
-      if (refs.canvas && refs.canvas !== refs.canvasHost) {
-        targets.push(refs.canvas);
-      }
-
-      for (const target of targets) {
-        directPointerFallbackCleanupCallbacks.push(
-          addEventTargetListener(
-            target,
-            "pointerdown",
-            handleDirectPointerDown,
-            listenerOptions,
-          ),
-        );
-        directPointerFallbackCleanupCallbacks.push(
-          addEventTargetListener(
-            target,
-            "mousedown",
-            handleDirectPointerDown,
-            listenerOptions,
-          ),
-        );
-        directPointerFallbackCleanupCallbacks.push(
-          addEventTargetListener(
-            target,
-            "contextmenu",
-            handleDirectContextMenu,
-            listenerOptions,
-          ),
-        );
-      }
-
-      directPointerFallbackAttached = true;
-
-      logDebug(logger, "Direct pointer fallback listeners attached.", {
-        targetCount: targets.length,
-      });
-    } catch (error) {
-      setError(error);
-    }
-  }
-
-  function detachDirectPointerFallbackListeners(): void {
-    try {
-      for (const cleanup of directPointerFallbackCleanupCallbacks.splice(0)) {
-        try {
-          cleanup();
-        } catch {
-          // Continue cleanup chain.
-        }
-      }
-
-      directPointerFallbackAttached = false;
-    } catch {
-      directPointerFallbackAttached = false;
-    }
-  }
-
   function selectHotbarSlot(slot: number, trigger: string): void {
+    const selectionStartedAtMs = monotonicNowMs();
     if (!assertAlive("selectHotbarSlot")) {
       return;
     }
@@ -2100,6 +1970,7 @@ export function createEditorInputController(
       hotbarSelectCount += 1;
       lastTrigger = trigger;
 
+      const storeUpdateStartedAtMs = monotonicNowMs();
       store.setState(
         (previous) =>
           applyEditorAction(previous, {
@@ -2110,23 +1981,55 @@ export function createEditorInputController(
           }),
         {
           action: "input-controller.hotbar-slot",
-          notify: true,
+          // Selection is consumed directly by placement/held-item polling and
+          // rendered by the inventory iframe. Notifying every editor UI view
+          // here adds work without a visible consumer.
+          notify: false,
           captureHistory: false,
         },
       );
+      const storeUpdateMs = monotonicNowMs() - storeUpdateStartedAtMs;
 
+      const frameSyncStartedAtMs = monotonicNowMs();
       postHotbarSelectionToInventoryFrame(refs, normalizedSlot, trigger);
+      const frameSyncMs = monotonicNowMs() - frameSyncStartedAtMs;
 
+      const labelReadStartedAtMs = monotonicNowMs();
       const nextState = store.peekState();
       const label = readSelectedInventoryLabel(nextState, normalizedSlot);
+      const labelReadMs = monotonicNowMs() - labelReadStartedAtMs;
 
+      const domUpdateStartedAtMs = monotonicNowMs();
       setRootInputDataset(refs, "inputLastSelectedHotbarSlot", normalizedSlot);
       setRootInputDataset(refs, "inputLastSelectedHotbarAt", now());
 
       setDomLiveMessage(refs, label);
-      dispatchLiveMessage(store, label, trigger);
+      // The embedded inventory renders the transient selected-item label.
+      // Dispatching the same label through the global live-message store made
+      // keyboard selection rebuild the surrounding UI (85-138 ms in F8),
+      // while providing no additional visible information.
       setStatus(attached && enabled ? "active" : status);
+      const domUpdateMs = monotonicNowMs() - domUpdateStartedAtMs;
+      options.onPerformanceEvent?.({
+        type: "hotbar-selection",
+        phase: "complete",
+        durationMs: Math.max(0, monotonicNowMs() - selectionStartedAtMs),
+        detail: {
+          trigger,
+          normalizedSlot,
+          storeUpdateMs,
+          frameSyncMs,
+          labelReadMs,
+          domUpdateMs,
+        },
+      });
     } catch (error) {
+      options.onPerformanceEvent?.({
+        type: "hotbar-selection",
+        phase: "exception",
+        durationMs: Math.max(0, monotonicNowMs() - selectionStartedAtMs),
+        detail: { trigger, slot },
+      });
       setError(error);
     }
   }
@@ -2140,6 +2043,7 @@ export function createEditorInputController(
       return;
     }
 
+    const startedAtMs = monotonicNowMs();
     try {
       if (!(options.wheelEnabled ?? true)) {
         return;
@@ -2163,6 +2067,16 @@ export function createEditorInputController(
 
       wheelHotbarSelectCount += 1;
       selectHotbarSlot(nextSlot, trigger);
+      options.onPerformanceEvent?.({
+        type: "hotbar-wheel",
+        phase: "selection-complete",
+        durationMs: Math.max(0, monotonicNowMs() - startedAtMs),
+        detail: {
+          currentSlot,
+          nextSlot,
+          direction,
+        },
+      });
     } catch (error) {
       setError(error);
     }
@@ -2283,7 +2197,6 @@ export function createEditorInputController(
     },
     onWheel: (snapshot, event) => {
       selectHotbarByWheel(snapshot, event, "mouse:wheel");
-      refreshMovementIntent("mouse:wheel");
     },
   });
 
@@ -2303,7 +2216,6 @@ export function createEditorInputController(
         pointerLock?.attach();
         keyboardInput.attach();
         mouseInput.attach();
-        attachDirectPointerFallbackListeners();
 
         attached = true;
         attachCount += 1;
@@ -2314,7 +2226,7 @@ export function createEditorInputController(
           pointerLockEnabled: Boolean(pointerLock),
           pointerLockActivation: pointerLock ? "mouse.pointerdown" : "disabled",
           wheelSelection: options.wheelEnabled ?? true,
-          directPointerFallbackAttached,
+          pointerActionPath: "mouse-input-only",
           libraryPlacementContextEnabled: true,
           inventoryTruth: PRODUCTIVE_INVENTORY_ROUTE,
           duplicateGuardMs: POINTER_ACTION_DUPLICATE_GUARD_MS,
@@ -2331,7 +2243,6 @@ export function createEditorInputController(
       }
 
       try {
-        detachDirectPointerFallbackListeners();
         mouseInput.detach(reason);
         keyboardInput.detach(reason);
         pointerLock?.detach(reason);
@@ -2524,12 +2435,6 @@ export function createEditorInputController(
       destroyedAt = now();
       pendingFlightToggleRequested = false;
       pendingJumpRequested = false;
-
-      try {
-        detachDirectPointerFallbackListeners();
-      } catch {
-        // Continue destroy chain.
-      }
 
       try {
         mouseInput.destroy(reason ?? "input-controller.destroy");
