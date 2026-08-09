@@ -2,7 +2,7 @@
 
 `vectoplan-cad` ist die browserbasierte 2D-/CAD-Arbeitsfläche von VECTOPLAN.
 
-Der Service ist **kein eigenständiger Projekt- oder Modelldatenspeicher**. Er lädt einen vom späteren `vectoplan-core` bereitgestellten Projektionszustand, stellt daraus Planblätter und CAD-Ansichten dar, nimmt Benutzeraktionen entgegen und gibt diese als deklarative Commands beziehungsweise Exportaufträge zurück.
+Der Service ist **kein eigenständiger Projekt- oder Modelldatenspeicher**. Er lädt einen von `vectoplan-core` bereitgestellten Projektionszustand, stellt daraus Planblätter und CAD-Ansichten dar, nimmt Benutzeraktionen entgegen und gibt diese als deklarative Commands beziehungsweise Exportaufträge zurück.
 
 Der erste Entwicklungsstand ist bewusst ein **lauffähiges, zustandsloses Flask-/Python-Grundgerüst** mit Vollbild-Template, Platzhalterwerkzeugen, Testinput und einer einfachen SVG-Projektion.
 
@@ -29,7 +29,7 @@ vectoplan-converter
   BIM-/Austauschformate und weitere Konvertierungen
 ```
 
-`vectoplan-core` wird später die verbindliche Schnittstelle zwischen Chunk, Library, Converter und CAD. `vectoplan-cad` kommuniziert nicht direkt mit den fachlichen Datenbanken dieser Services.
+`vectoplan-core` ist die verbindliche Schnittstelle zwischen Chunk und CAD; Library- und Converter-Auflösung werden dort schrittweise ergänzt. `vectoplan-cad` kommuniziert nicht direkt mit den fachlichen Datenbanken dieser Services.
 
 ---
 
@@ -42,7 +42,7 @@ Daraus folgen vier Regeln:
 1. Der Browserzustand ist kein kanonisches Projektmodell.
 2. Gerenderte SVG-Linien sind keine Datenquelle.
 3. Benutzeraktionen werden als semantische Commands beschrieben.
-4. Persistenz, Revisionsbildung und serviceübergreifende Auflösung gehören später in `vectoplan-core`.
+4. Persistenz, Revisionsbildung und serviceübergreifende Auflösung gehören in `vectoplan-core`.
 
 ---
 
@@ -197,16 +197,19 @@ Im ersten Entwicklungsstand speichert der Service **keine Projektdaten**. Testda
 
 ### `vectoplan-core`
 
-Soll später besitzen:
+Besitzt in der ersten Ausbaustufe:
 
 - kanonische Projektinstanzen
 - serviceübergreifende IDs und Revisionen
 - Auflösung von Chunk-Elementen zu Library-Families und Varianten
 - Umrechnung von Editorabstraktion zu realen Maßen
 - Validierung und Konfliktbehandlung
-- Verarbeitung von CAD-Commands
-- Erzeugung neuer Projektionszustände
-- Koordination von Converter- und Exportprozessen
+- gecachte Chunk→2D-Projektionen mit Fingerprint, Revision und ETag
+- trockene 2D→Chunk-Mutationspläne ohne Ausführung
+- persistente DXF-/DWG-Quellen und normalisierte CAD-Overlays
+
+CAD-Command-Ausführung sowie Converter- und Export-Orchestrierung folgen nach der
+separaten Spezifikation der Bearbeitungswerkzeuge.
 
 ### `vectoplan-cad`
 
@@ -253,9 +256,10 @@ Soll besitzen:
 
 ```text
 Browser
-  -> GET /api/v1/cad/projection
+  -> POST /api/v1/cad/core/projects/<core_project_id>/projection
   -> vectoplan-cad Adapter
-  -> später vectoplan-core
+  -> vectoplan-core
+  -> vectoplan-chunk Batch-Read
   -> CadProjectionInput
   -> lokaler Scene Graph
   -> SVG/WebGL Renderer
@@ -267,9 +271,8 @@ Browser
 Benutzeraktion
   -> CadCommand
   -> POST /api/v1/cad/commands
-  -> später vectoplan-core
-  -> Validierung / Revision / Projektion
-  -> neuer CadProjectionInput
+  -> derzeit nur validierter lokaler Entwurf
+  -> spätere Core-Command-Spezifikation
 ```
 
 ### 6.3 Export
@@ -557,7 +560,7 @@ Im vollständigen Server-Stack kann nur der CAD-Service gebaut und gestartet wer
 
 ```powershell
 cd services/vectoplan-server
-docker compose -f docker-compose.all.yml up -d --build vectoplan-cad
+docker compose -f docker-compose.yml up -d --build vectoplan-cad
 ```
 
 Danach ist die Arbeitsfläche erreichbar unter:
@@ -571,8 +574,8 @@ http://localhost:5104/health/ready
 Logs und Stop:
 
 ```powershell
-docker compose -f docker-compose.all.yml logs -f vectoplan-cad
-docker compose -f docker-compose.all.yml stop vectoplan-cad
+docker compose -f docker-compose.yml logs -f vectoplan-cad
+docker compose -f docker-compose.yml stop vectoplan-cad
 ```
 
 ---
@@ -586,8 +589,10 @@ VECTOPLAN_CAD_PORT=5000
 VECTOPLAN_CAD_ROUTE_PREFIX=/api/v1/cad
 VECTOPLAN_CAD_MOCK_MODE=true
 VECTOPLAN_CAD_STRICT_STARTUP=false
-VECTOPLAN_CAD_CORE_INTERNAL_URL=
-VECTOPLAN_CAD_CORE_PUBLIC_URL=
+VECTOPLAN_CAD_CORE_INTERNAL_URL=http://vectoplan-core:5000
+VECTOPLAN_CAD_CORE_PUBLIC_URL=http://localhost:5106
+VECTOPLAN_CAD_CORE_SERVICE_API_KEY=
+VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS=30
 ```
 
 ---
@@ -612,11 +617,11 @@ VECTOPLAN_CAD_CORE_PUBLIC_URL=
 - Maße und Texte
 - Auswahl und Hover
 
-### Stufe 3 – Core-Anbindung
+### Stufe 3 – Core-Anbindung (lesender Adapter umgesetzt)
 
 - Projection Adapter
 - Revisionen
-- Commands
+- Commands (Dry-Run-Übersetzung vorhanden, Ausführung bewusst ausstehend)
 - Fehler- und Konfliktantworten
 - Reconnect und Reload
 
@@ -688,7 +693,7 @@ Vor der produktiven Core-Anbindung müssen insbesondere entschieden werden:
 ## 20. Merksätze
 
 - `vectoplan-cad` ist eine Arbeitsfläche, keine Projektdatenbank.
-- `vectoplan-core` wird die kanonische Integrations- und Revisionsschicht.
+- `vectoplan-core` ist die kanonische Integrations- und Revisionsschicht.
 - Teilbilder sind Viewports auf einem vollständigen Planblatt.
 - CAD-Werkzeuge erzeugen Commands, nicht unkontrollierte Linienzustände.
 - SVG ist die erste Darstellung, nicht die fachliche Wahrheit.

@@ -32,7 +32,9 @@ import {
 
 export const PHYSICS_DEFAULT_FIXED_TIME_STEP_SECONDS: PhysicsDeltaSeconds = 1 / 60;
 export const PHYSICS_DEFAULT_MAX_FRAME_DELTA_SECONDS: PhysicsDeltaSeconds = 0.25;
-export const PHYSICS_DEFAULT_MAX_SUB_STEPS = 8;
+// Four catch-up steps cover a 15 FPS hitch without allowing collision work to
+// monopolize the next render frame and amplify the hitch further.
+export const PHYSICS_DEFAULT_MAX_SUB_STEPS = 4;
 
 export const PHYSICS_DEFAULT_WALK_SPEED = 4.25;
 export const PHYSICS_DEFAULT_SPRINT_SPEED = 9.5;

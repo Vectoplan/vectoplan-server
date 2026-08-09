@@ -29,3 +29,9 @@
 [submodule "services/vectoplan-converter"]
 	path = services/vectoplan-converter
 	url = https://github.com/Vectoplan/vectoplan-converter.git
+[submodule "services/vectoplan-lv"]
+	path = services/vectoplan-lv
+	url = https://github.com/Vectoplan/vectoplan-lv.git
+[submodule "services/vectoplan-filecloud"]
+	path = services/vectoplan-filecloud
+	url = https://github.com/Vectoplan/vectoplan-filecloud.git

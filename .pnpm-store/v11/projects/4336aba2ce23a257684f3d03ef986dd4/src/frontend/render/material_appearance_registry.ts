@@ -189,7 +189,10 @@ function normalizeMaterialAppearanceUncached(input: unknown): MaterialAppearance
     appearance.textureUrl
       ?? appearance.texture_url
       ?? firstAssetValue("textureUrl", "texture_url", "previewUrl", "preview_url", "uri", "url")
-      ?? firstSourceValue("iconUrl", "icon_url"),
+      ?? firstSourceValue("textureUrl", "texture_url", "previewUrl", "preview_url", "iconUrl", "icon_url")
+      ?? asRecord(firstSourceValue("preview")).url
+      ?? asRecord(firstSourceValue("icon")).url
+      ?? asRecord(firstSourceValue("icon")).value,
   ) ?? fallbackFamilyTextureUrl(sources);
 
   if (!textureUrl && Object.keys(appearance).length === 0) return null;

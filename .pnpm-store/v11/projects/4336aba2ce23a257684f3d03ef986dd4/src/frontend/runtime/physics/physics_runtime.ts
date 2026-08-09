@@ -14,6 +14,7 @@ import type {
 } from "./physics_models";
 
 import {
+  createEyePosition,
   createPhysicsCameraBinding,
   createPhysicsError,
   EMPTY_PLAYER_MOVEMENT_INTENT,
@@ -412,6 +413,7 @@ export class PhysicsRuntime {
   private warnings: string[];
   private frameRevision: number;
   private subStepCount: number;
+  private previousSimulationState: PlayerPhysicsState;
   private destroyed: boolean;
 
   public constructor(options: {
@@ -464,6 +466,7 @@ export class PhysicsRuntime {
     this.warnings = [];
     this.frameRevision = 0;
     this.subStepCount = 0;
+    this.previousSimulationState = initialState;
     this.destroyed = false;
   }
 
@@ -591,6 +594,7 @@ export class PhysicsRuntime {
         );
 
       this.controller.reset(nextState);
+      this.previousSimulationState = nextState;
 
       if (sanitizePhysicsBoolean(options.clearAccumulator, true)) {
         this.accumulatorSeconds = 0;
@@ -688,6 +692,7 @@ export class PhysicsRuntime {
   public setPlayerState(state: PlayerPhysicsState): PlayerPhysicsState {
     try {
       const next = this.controller.setState(state);
+      this.previousSimulationState = next;
       this.frameRevision += 1;
 
       safeCallWithValue(this.callbacks.onStateChanged, next, (error) => {
@@ -716,6 +721,7 @@ export class PhysicsRuntime {
   public setFlying(flying: boolean, nowMs: PhysicsTimestampMs | null = null): PlayerPhysicsState {
     try {
       const next = this.controller.setFlying(flying, nowMs);
+      this.previousSimulationState = next;
       this.frameRevision += 1;
 
       safeCallWithValue(this.callbacks.onStateChanged, next, (error) => {
@@ -867,6 +873,7 @@ export class PhysicsRuntime {
           );
         });
 
+        const stateBeforeStep = this.controller.getState();
         lastControllerStep = this.controller.step({
           nowMs,
           deltaSeconds: fixedTimeStepSeconds,
@@ -874,6 +881,7 @@ export class PhysicsRuntime {
           lookAngles,
           query: input.query,
         });
+        this.previousSimulationState = stateBeforeStep;
 
         safeCallWithValue(this.callbacks.onAfterStep, lastControllerStep, (error) => {
           this.raiseError(
@@ -908,7 +916,25 @@ export class PhysicsRuntime {
       this.frameRevision += 1;
 
       const nextPlayer = this.getPlayerState();
-      const nextCamera = this.getCameraBinding(lookAngles);
+      const interpolationAlpha = Math.max(
+        0,
+        Math.min(1, this.accumulatorSeconds / fixedTimeStepSeconds),
+      );
+      const interpolatedBodyPosition = {
+        x: this.previousSimulationState.position.x
+          + ((nextPlayer.position.x - this.previousSimulationState.position.x) * interpolationAlpha),
+        y: this.previousSimulationState.position.y
+          + ((nextPlayer.position.y - this.previousSimulationState.position.y) * interpolationAlpha),
+        z: this.previousSimulationState.position.z
+          + ((nextPlayer.position.z - this.previousSimulationState.position.z) * interpolationAlpha),
+      };
+      const nextCamera: PhysicsCameraBinding = {
+        bodyPosition: interpolatedBodyPosition,
+        eyePosition: createEyePosition(interpolatedBodyPosition, nextPlayer.collider),
+        // Rotation remains immediate; only the fixed-step body translation is
+        // interpolated so mouse look never gains artificial latency.
+        angles: lookAngles,
+      };
 
       safeCallWithValue(this.callbacks.onStateChanged, nextPlayer, (error) => {
         this.raiseError(

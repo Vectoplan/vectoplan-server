@@ -168,6 +168,8 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
             "commands": f"{config['ROUTE_PREFIX']}/commands",
             "exports": f"{config['ROUTE_PREFIX']}/exports",
             "plan_profiles": f"{config['ROUTE_PREFIX']}/plan-profiles",
+            "core_projection": f"{config['ROUTE_PREFIX']}/core/projects/<core_project_id>/projection",
+            "core_import_projection": f"{config['ROUTE_PREFIX']}/core/projects/<core_project_id>/imports/<document_id>/projection",
         },
         "capabilities": {
             "plan_sheet": True,
@@ -181,7 +183,7 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
             "cad_tools": ["select", "create_wall", "create_line", "create_dimension"],
             "commands": "validated_stateless_draft",
             "exports": ["pdf", "dxf", "dwg", "svg"],
-            "core_connection": False,
+            "core_connection": bool(config.get("CORE_INTERNAL_URL")),
             "persistence": False,
         },
     }
@@ -223,6 +225,10 @@ def _validate_geometry(kind: str | None, value: Any, path: str, errors: list[str
     if not isinstance(value, dict):
         errors.append(f"{path} must be an object")
         return
+    form = value.get("form")
+    if isinstance(form, str):
+        _validate_semantic_geometry(form, value, path, errors)
+        return
     if kind in {"wall", "line", "dimension"}:
         _validate_point(value.get("start_mm"), f"{path}.start_mm", errors)
         _validate_point(value.get("end_mm"), f"{path}.end_mm", errors)
@@ -239,6 +245,82 @@ def _validate_geometry(kind: str | None, value: Any, path: str, errors: list[str
         for key in ("x_mm", "y_mm"):
             if not _is_number(value.get(key)):
                 errors.append(f"{path}.{key} must be a number")
+
+
+def _validate_semantic_geometry(
+    form: str, value: dict[str, Any], path: str, errors: list[str]
+) -> None:
+    if form == "line_segment":
+        _validate_point(value.get("start_mm"), f"{path}.start_mm", errors)
+        _validate_point(value.get("end_mm"), f"{path}.end_mm", errors)
+        _require_positive_number(value, "thickness_mm", path, errors)
+        return
+    if form in {"polyline", "closed_polyline", "rectangle"}:
+        _validate_points(value.get("path_mm"), f"{path}.path_mm", errors, minimum=2)
+        _require_positive_number(value, "thickness_mm", path, errors)
+        return
+    if form == "network":
+        segments = value.get("segments_mm")
+        if not isinstance(segments, list) or not segments:
+            errors.append(f"{path}.segments_mm must be a non-empty array")
+        else:
+            for index, segment in enumerate(segments):
+                _validate_points(segment, f"{path}.segments_mm[{index}]", errors, minimum=2, exact=2)
+        paths = value.get("paths_mm")
+        if paths is not None and not isinstance(paths, list):
+            errors.append(f"{path}.paths_mm must be an array when provided")
+        elif isinstance(paths, list):
+            for index, network_path in enumerate(paths):
+                _validate_points(network_path, f"{path}.paths_mm[{index}]", errors, minimum=2)
+        nodes = value.get("nodes_mm")
+        if nodes is not None and (not isinstance(nodes, list) or not nodes):
+            errors.append(f"{path}.nodes_mm must be a non-empty array when provided")
+        elif isinstance(nodes, list):
+            for index, node in enumerate(nodes):
+                node_path = f"{path}.nodes_mm[{index}]"
+                if not isinstance(node, dict):
+                    errors.append(f"{node_path} must be an object")
+                    continue
+                _validate_point(node.get("point_mm"), f"{node_path}.point_mm", errors)
+                if not isinstance(node.get("degree"), int) or node["degree"] < 0:
+                    errors.append(f"{node_path}.degree must be a non-negative integer")
+        _require_positive_number(value, "thickness_mm", path, errors)
+        return
+    if form in {"arc", "circle"}:
+        _validate_point(value.get("center_mm"), f"{path}.center_mm", errors)
+        for key in ("radius_mm", "thickness_mm"):
+            _require_positive_number(value, key, path, errors)
+        for key in ("start_angle_deg", "sweep_angle_deg"):
+            if not _is_number(value.get(key)):
+                errors.append(f"{path}.{key} must be a number")
+        return
+    if form == "region":
+        _validate_points(value.get("outer_ring_mm"), f"{path}.outer_ring_mm", errors, minimum=3)
+        return
+    if form == "discrete":
+        for key in ("x_mm", "y_mm"):
+            if not _is_number(value.get(key)):
+                errors.append(f"{path}.{key} must be a number")
+        for key in ("width_mm", "height_mm"):
+            _require_positive_number(value, key, path, errors)
+        return
+    errors.append(f"{path}.form '{form}' is not supported")
+
+
+def _validate_points(
+    value: Any,
+    path: str,
+    errors: list[str],
+    *,
+    minimum: int,
+    exact: int | None = None,
+) -> None:
+    if not isinstance(value, list) or (exact is not None and len(value) != exact) or len(value) < minimum:
+        expected = f"exactly {exact}" if exact is not None else f"at least {minimum}"
+        errors.append(f"{path} must contain {expected} points")
+        return
+    for index, point in enumerate(value):
+        _validate_point(point, f"{path}[{index}]", errors)
 
 
 def _validate_point(value: Any, path: str, errors: list[str]) -> None:

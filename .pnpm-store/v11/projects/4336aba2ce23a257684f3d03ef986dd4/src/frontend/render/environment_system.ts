@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { Sky } from "three/addons/objects/Sky.js";
 import type { EditorBootstrap } from "@bootstrap/bootstrap_models";
 
 export interface EnvironmentSnapshot {
@@ -10,6 +9,10 @@ export interface EnvironmentSnapshot {
   readonly sunAzimuthDegrees: number;
   readonly running: boolean;
   readonly timeScale: number;
+  readonly renderMode: "lightweight-sky";
+  readonly shadowRefreshCount: number;
+  readonly lastShadowRefreshAtMs: number;
+  readonly lastShadowRefreshReason: string;
 }
 
 export interface EnvironmentSystem {
@@ -39,6 +42,7 @@ const STATIC_SUN_HOUR = 16;
 const STATIC_SUN_MINUTE = 48;
 const DEFAULT_LATITUDE = 51.1657;
 const DEFAULT_LONGITUDE = 10.4515;
+const SHADOW_ANCHOR_MOVE_DISTANCE = 12;
 const CLOUD_VERTEX_SHADER = `
   varying vec3 vCloudDirection;
 
@@ -287,33 +291,24 @@ export function createEnvironmentSystem(options: EnvironmentSystemOptions): Envi
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-  const sky = new Sky();
-  sky.name = "vectoplan-physical-sky";
-  const atmosphereRadius = Math.max(4, camera.far * 0.94);
-  sky.scale.setScalar(atmosphereRadius);
-  sky.frustumCulled = false;
-  sky.renderOrder = -1_000;
-  sky.material.uniforms.turbidity.value = 2.0;
-  sky.material.uniforms.rayleigh.value = 4.0;
-  sky.material.uniforms.mieCoefficient.value = 0.002;
-  sky.material.uniforms.mieDirectionalG.value = 0.72;
-  const clouds = createCloudLayer(atmosphereRadius * 0.82);
-  const atmosphereTint = createAtmosphereTintLayer(atmosphereRadius * 0.88);
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  // A static daylight setup does not need to submit the complete shadow scene
+  // for every camera-only frame. Refresh it on meaningful movement or at a
+  // low cadence for dynamic actors instead.
+  renderer.shadowMap.autoUpdate = false;
 
   const hemisphere = new THREE.HemisphereLight(0xc8e4ff, 0x4a4033, 0.7);
   hemisphere.name = "vectoplan-sky-fill-light";
   const sun = new THREE.DirectionalLight(0xfff1cf, 3.4);
   sun.name = "vectoplan-sun-light";
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(1024, 1024);
   sun.shadow.camera.near = 1;
-  sun.shadow.camera.far = 260;
-  sun.shadow.camera.left = -72;
-  sun.shadow.camera.right = 72;
-  sun.shadow.camera.top = 72;
-  sun.shadow.camera.bottom = -72;
+  sun.shadow.camera.far = 180;
+  sun.shadow.camera.left = -48;
+  sun.shadow.camera.right = 48;
+  sun.shadow.camera.top = 48;
+  sun.shadow.camera.bottom = -48;
   sun.shadow.bias = -0.0002;
   sun.shadow.normalBias = 0.025;
   sun.target.name = "vectoplan-sun-target";
@@ -322,17 +317,45 @@ export function createEnvironmentSystem(options: EnvironmentSystemOptions): Envi
   const physicalFog = new THREE.FogExp2(0x8fc7e8, 0.00055);
   scene.background = physicalBackground;
   scene.fog = physicalFog;
-  scene.add(sky, atmosphereTint.mesh, clouds.mesh, hemisphere, sun, sun.target);
+  // A color background plus fog gives the current clear-sky appearance with a
+  // single clear operation. The former Sky + tint + procedural cloud spheres
+  // submitted three full-screen fragment passes (including ten FBM noise
+  // octaves per cloud pixel) on every frame.
+  scene.add(hemisphere, sun, sun.target);
   // The viewport overlay also owns the crosshair and editor HUD. Environment
   // controls must never clear or hide that shared host.
   options.controlsHost.hidden = false;
   options.controlsHost.removeAttribute("hidden");
-  options.controlsHost.dataset.environmentMode = "physical-sky-clouds";
+  options.controlsHost.dataset.environmentMode = "lightweight-sky";
   options.controlsHost.dataset.environmentTime = "07-28T16:48";
   const direction = new THREE.Vector3();
   const center = new THREE.Vector3();
+  const shadowAnchor = new THREE.Vector3(Number.POSITIVE_INFINITY, 0, 0);
+  let lastShadowRefreshAtMs = -Infinity;
+  let shadowRefreshCount = 0;
+  let lastShadowRefreshReason = "never";
   const nightFog = new THREE.Color(0x111827);
   const dayFog = new THREE.Color(0x8fc7e8);
+
+  function updateShadowAnchor(nowMs: number, force: boolean): void {
+    center.set(camera.position.x, camera.position.y - 1.6, camera.position.z);
+    const movedFarEnough = !Number.isFinite(shadowAnchor.x)
+      || shadowAnchor.distanceToSquared(center) >= SHADOW_ANCHOR_MOVE_DISTANCE ** 2;
+    // Camera rotation does not invalidate a directional-light shadow map. A
+    // time-based refresh made low FPS self-reinforcing: once a frame exceeded
+    // 250 ms, every following frame rebuilt all shadow casters. Only move the
+    // shadow anchor when the player actually crosses a meaningful distance.
+    if (!force && !movedFarEnough) return;
+
+    shadowAnchor.copy(center);
+    sun.position.copy(shadowAnchor).addScaledVector(direction, 130);
+    sun.target.position.copy(shadowAnchor);
+    sun.target.updateMatrixWorld();
+    renderer.shadowMap.needsUpdate = true;
+    lastShadowRefreshAtMs = nowMs;
+    shadowRefreshCount += 1;
+    lastShadowRefreshReason = force ? "solar-or-initial" : "camera-anchor-moved";
+  }
 
   function updateSolar(nowMs: number): void {
     const date = new Date(simulatedTimeMs);
@@ -344,21 +367,15 @@ export function createEnvironmentSystem(options: EnvironmentSystemOptions): Envi
       Math.sin(solar.elevation),
       Math.cos(azimuth) * radius,
     ).normalize();
-    sky.material.uniforms.sunPosition.value.copy(direction);
-
     const daylight = THREE.MathUtils.smoothstep(solar.elevation * RAD_TO_DEG, -6, 8);
     sun.intensity = daylight * 3.4;
     hemisphere.intensity = 0.1 + daylight * 0.64;
     renderer.toneMappingExposure = 0.5 + daylight * 0.44;
-    clouds.material.uniforms.uDaylight.value = daylight;
     if (scene.fog instanceof THREE.FogExp2) {
       scene.fog.color.copy(nightFog).lerp(dayFog, daylight);
     }
 
-    center.set(camera.position.x, camera.position.y - 1.6, camera.position.z);
-    sun.position.copy(center).addScaledVector(direction, 130);
-    sun.target.position.copy(center);
-    sun.target.updateMatrixWorld();
+    updateShadowAnchor(nowMs, true);
 
     lastUpdateAt = nowMs;
     dirty = false;
@@ -371,19 +388,13 @@ export function createEnvironmentSystem(options: EnvironmentSystemOptions): Envi
         return;
       }
       const safeDelta = THREE.MathUtils.clamp(deltaSeconds, 0, 0.1);
-      clouds.material.uniforms.uTime.value += safeDelta * 0.012;
-      sky.position.copy(camera.position);
-      clouds.mesh.position.copy(camera.position);
-      atmosphereTint.mesh.position.copy(camera.position);
+      void safeDelta;
 
       const nowMs = performance.now();
-      if (dirty || nowMs - lastUpdateAt >= 200) {
+      if (dirty || (running && nowMs - lastUpdateAt >= 200)) {
         updateSolar(nowMs);
       } else {
-        center.set(camera.position.x, camera.position.y - 1.6, camera.position.z);
-        sun.position.copy(center).addScaledVector(direction, 130);
-        sun.target.position.copy(center);
-        sun.target.updateMatrixWorld();
+        updateShadowAnchor(nowMs, false);
       }
     },
     getSnapshot: () => ({
@@ -394,25 +405,23 @@ export function createEnvironmentSystem(options: EnvironmentSystemOptions): Envi
       sunAzimuthDegrees: solar.azimuth * RAD_TO_DEG,
       running,
       timeScale,
+      renderMode: "lightweight-sky" as const,
+      shadowRefreshCount,
+      lastShadowRefreshAtMs,
+      lastShadowRefreshReason,
     }),
     destroy(): void {
       if (destroyed) {
         return;
       }
       destroyed = true;
-      scene.remove(sky, atmosphereTint.mesh, clouds.mesh, hemisphere, sun, sun.target);
+      scene.remove(hemisphere, sun, sun.target);
       if (scene.background === physicalBackground) {
         scene.background = previousBackground;
       }
       if (scene.fog === physicalFog) {
         scene.fog = previousFog;
       }
-      sky.geometry.dispose();
-      sky.material.dispose();
-      clouds.mesh.geometry.dispose();
-      atmosphereTint.mesh.geometry.dispose();
-      atmosphereTint.material.dispose();
-      clouds.material.dispose();
       sun.shadow.map?.dispose();
     },
   };

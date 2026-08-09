@@ -640,6 +640,10 @@ function dispatchPointerDeltaToStore(
   store: EditorStore | undefined,
   snapshot: InputStateSnapshot,
   source: string,
+  deltaOverride?: {
+    readonly x: number;
+    readonly y: number;
+  },
 ): void {
   try {
     if (!store) {
@@ -649,8 +653,8 @@ function dispatchPointerDeltaToStore(
     store.setState(
       (previous) => applyEditorAction(previous, {
         kind: "input/pointer-delta",
-        mouseDeltaX: snapshot.pointer.lookDelta.x,
-        mouseDeltaY: snapshot.pointer.lookDelta.y,
+        mouseDeltaX: deltaOverride?.x ?? snapshot.pointer.lookDelta.x,
+        mouseDeltaY: deltaOverride?.y ?? snapshot.pointer.lookDelta.y,
         wheelDelta: snapshot.wheel.delta.y,
         createdAt: now(),
         source,
@@ -799,6 +803,7 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
     0,
     safeNumber(options.suppressClickAfterActivationMs, 450),
   );
+  const pointerStoreSyncIntervalMs = 50;
 
   const defaultListenerOptions: AddEventListenerOptions = {
     capture: false,
@@ -831,6 +836,12 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
   let pointerLockActivationCount = 0;
   let lastButton: EditorPointerButton | null = null;
   let lastError: Record<string, unknown> | null = null;
+  let pendingPointerStoreSnapshot: InputStateSnapshot | null = null;
+  let pendingPointerStoreSource = "mouse.pointer-move";
+  let pendingPointerStoreDeltaX = 0;
+  let pendingPointerStoreDeltaY = 0;
+  let pointerStoreTimerId: number | null = null;
+  let lastPointerStoreDispatchAtMs = -Infinity;
 
   let suppressActivationUntilMs = 0;
   let suppressedActivationButton: EditorPointerButton | null = null;
@@ -855,6 +866,56 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
     } catch {
       status = "failed";
     }
+  }
+
+  function cancelPendingPointerStoreDispatch(): void {
+    if (pointerStoreTimerId !== null) {
+      window.clearTimeout(pointerStoreTimerId);
+      pointerStoreTimerId = null;
+    }
+    pendingPointerStoreSnapshot = null;
+    pendingPointerStoreDeltaX = 0;
+    pendingPointerStoreDeltaY = 0;
+  }
+
+  function flushPointerStoreDispatch(): void {
+    pointerStoreTimerId = null;
+    const snapshot = pendingPointerStoreSnapshot;
+    const deltaX = pendingPointerStoreDeltaX;
+    const deltaY = pendingPointerStoreDeltaY;
+    pendingPointerStoreSnapshot = null;
+    pendingPointerStoreDeltaX = 0;
+    pendingPointerStoreDeltaY = 0;
+
+    if (!snapshot || destroyed || !dispatchToStore) {
+      return;
+    }
+
+    lastPointerStoreDispatchAtMs = monotonicNowMs();
+    dispatchPointerDeltaToStore(
+      store,
+      snapshot,
+      pendingPointerStoreSource,
+      { x: deltaX, y: deltaY },
+    );
+  }
+
+  function schedulePointerStoreDispatch(
+    snapshot: InputStateSnapshot,
+    source: string,
+  ): void {
+    pendingPointerStoreSnapshot = snapshot;
+    pendingPointerStoreSource = source;
+    pendingPointerStoreDeltaX += snapshot.pointer.lookDelta.x;
+    pendingPointerStoreDeltaY += snapshot.pointer.lookDelta.y;
+
+    if (pointerStoreTimerId !== null) {
+      return;
+    }
+
+    const elapsedMs = monotonicNowMs() - lastPointerStoreDispatchAtMs;
+    const delayMs = Math.max(0, pointerStoreSyncIntervalMs - elapsedMs);
+    pointerStoreTimerId = window.setTimeout(flushPointerStoreDispatch, delayMs);
   }
 
   function assertAlive(action: string): boolean {
@@ -950,7 +1011,7 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
       }
 
       if (dispatchToStore && phase === "move") {
-        dispatchPointerDeltaToStore(store, snapshot, source);
+        schedulePointerStoreDispatch(snapshot, source);
       }
     } catch (error) {
       setError(error);
@@ -1447,10 +1508,12 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
       }
 
       detachListeners();
+      cancelPendingPointerStoreDispatch();
 
       try {
         inputState.clearPointerButtons();
         inputState.resetDeltas();
+        cancelPendingPointerStoreDispatch();
 
         if (dispatchToStore) {
           dispatchResetDeltasToStore(store, "mouse.detach");
@@ -1500,6 +1563,7 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
         });
         inputState.clearPointerButtons();
         inputState.resetDeltas();
+        cancelPendingPointerStoreDispatch();
 
         suppressActivationUntilMs = 0;
         suppressedActivationButton = null;
@@ -1534,6 +1598,7 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
       try {
         inputState.clearPointerButtons();
         inputState.resetDeltas();
+        cancelPendingPointerStoreDispatch();
 
         suppressActivationUntilMs = 0;
         suppressedActivationButton = null;
@@ -1615,6 +1680,7 @@ export function createMouseInput(options: MouseInputOptions): MouseInputHandle {
       destroyedAt = now();
 
       detachListeners();
+      cancelPendingPointerStoreDispatch();
 
       try {
         inputState.clearPointerButtons();

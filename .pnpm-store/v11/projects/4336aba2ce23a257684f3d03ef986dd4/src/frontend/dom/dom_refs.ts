@@ -1244,8 +1244,16 @@ export function setDomLiveMessage(refs: EditorDomRefs, message: string | null): 
 }
 
 export function hideDomLoadingOverlay(refs: EditorDomRefs): void {
+  if (refs.root.dataset.editorBootGate !== "released") {
+    setHidden(refs.loadingOverlay, false);
+    setDatasetValue(refs.root, "loading", "true");
+    setDatasetValue(refs.root, "loadingHideDeferred", "true");
+    return;
+  }
+
   setHidden(refs.loadingOverlay, true);
   setDatasetValue(refs.root, "loading", "false");
+  setDatasetValue(refs.root, "loadingHideDeferred", null);
   setDatasetValue(refs.root, "loadingHiddenAt", now());
 }
 

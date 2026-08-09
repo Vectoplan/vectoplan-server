@@ -19,7 +19,7 @@ from pathlib import Path, PurePosixPath
 
 
 REQUIRED_FILES = (
-    Path("docker-compose.all.yml"),
+    Path("docker-compose.yml"),
     Path(".env.example"),
     Path(".gitmodules"),
 )

@@ -1431,7 +1431,7 @@ function createMinimalFallbackBootstrap(defaults: EditorBootstrapDefaults): Unkn
         reloadDirtyChunksAfterCommand: true,
         maxBatchChunks: 256,
         routeHints: {
-        maxLoadedChunks: 384,
+        maxLoadedChunks: 1024,
           status: `${apiBaseUrl}/_status`,
           connectionTest: `${apiBaseUrl}/_test/connection`,
           projects: `${apiBaseUrl}/projects`,

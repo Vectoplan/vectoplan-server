@@ -6,8 +6,10 @@ import importlib
 import inspect
 import json
 import re
+import threading
 import time
 import uuid
+from collections import deque
 from collections.abc import Callable, Mapping
 from functools import lru_cache
 from http import HTTPStatus
@@ -28,6 +30,7 @@ EDITOR_ROUTE_PATH: Final[str] = "/editor"
 EDITOR_ROUTE_PATH_SLASH: Final[str] = "/editor/"
 EDITOR_GENERATOR_PREVIEW_ROUTE_PATH: Final[str] = "/editor/test-generator"
 EDITOR_GENERATOR_PREVIEW_ALIAS_PATH: Final[str] = "/editor/generator-preview"
+EDITOR_PERFORMANCE_CAPTURES_ROUTE_PATH: Final[str] = "/editor/api/performance-captures"
 
 editor_bp = Blueprint(EDITOR_BLUEPRINT_NAME, __name__)
 
@@ -67,6 +70,11 @@ DEFAULT_CHUNK_UNIVERSE_ID: Final[str] = "dev-universe"
 DEFAULT_CHUNK_WORLD_ID: Final[str] = "world_spawn"
 
 _SAFE_ID_RE: Final[re.Pattern[str]] = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,179}$")
+_PERFORMANCE_CAPTURE_CONTRACT: Final[str] = "vectoplan-editor-performance-capture.v1"
+_PERFORMANCE_CAPTURE_MAX_BODY_BYTES: Final[int] = 2 * 1024 * 1024
+_PERFORMANCE_CAPTURE_MAX_FRAMES: Final[int] = 1_800
+_PERFORMANCE_CAPTURES: deque[dict[str, Any]] = deque(maxlen=8)
+_PERFORMANCE_CAPTURES_LOCK = threading.Lock()
 
 _TRUE_VALUES: Final[set[str]] = {
     "1",
@@ -2241,6 +2249,104 @@ def _build_generator_preview_context() -> dict[str, Any]:
     }
 
 
+def _performance_capture_json_response(
+    payload: Mapping[str, Any],
+    status: HTTPStatus = HTTPStatus.OK,
+) -> Response:
+    response = make_response(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":")),
+        status,
+    )
+    response.headers["Content-Type"] = "application/json; charset=utf-8"
+    response.headers["Cache-Control"] = "no-store"
+    return response
+
+
+def _performance_captures_enabled() -> bool:
+    configured = current_app.config.get("EDITOR_PERFORMANCE_CAPTURE_ENABLED")
+    if configured is None:
+        configured = current_app.config.get("VECTOPLAN_EDITOR_PERFORMANCE_CAPTURE_ENABLED")
+    return _coerce_bool(configured, bool(current_app.debug))
+
+
+@editor_bp.route(EDITOR_PERFORMANCE_CAPTURES_ROUTE_PATH, methods=["GET", "POST"])
+def editor_performance_captures() -> Response:
+    """Keep a small, local-only ring buffer of real browser frame captures."""
+    if not _performance_captures_enabled():
+        return _performance_capture_json_response(
+            {"ok": False, "error": "performance-captures-disabled"},
+            HTTPStatus.NOT_FOUND,
+        )
+
+    if request.method == "GET":
+        with _PERFORMANCE_CAPTURES_LOCK:
+            captures = list(_PERFORMANCE_CAPTURES)
+
+        requested_id = _normalize_text(request.args.get("id"))
+        if requested_id:
+            capture = next(
+                (item for item in reversed(captures) if item.get("captureId") == requested_id),
+                None,
+            )
+        else:
+            capture = captures[-1] if captures else None
+
+        if capture is None:
+            return _performance_capture_json_response(
+                {"ok": False, "error": "performance-capture-not-found"},
+                HTTPStatus.NOT_FOUND,
+            )
+        return _performance_capture_json_response({"ok": True, "capture": capture})
+
+    content_length = request.content_length
+    if content_length is not None and content_length > _PERFORMANCE_CAPTURE_MAX_BODY_BYTES:
+        return _performance_capture_json_response(
+            {"ok": False, "error": "performance-capture-too-large"},
+            HTTPStatus.REQUEST_ENTITY_TOO_LARGE,
+        )
+
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, Mapping):
+        return _performance_capture_json_response(
+            {"ok": False, "error": "invalid-json-payload"},
+            HTTPStatus.BAD_REQUEST,
+        )
+    if payload.get("contract") != _PERFORMANCE_CAPTURE_CONTRACT:
+        return _performance_capture_json_response(
+            {"ok": False, "error": "invalid-performance-capture-contract"},
+            HTTPStatus.BAD_REQUEST,
+        )
+
+    frames = payload.get("frames")
+    if not isinstance(frames, list) or not frames or len(frames) > _PERFORMANCE_CAPTURE_MAX_FRAMES:
+        return _performance_capture_json_response(
+            {"ok": False, "error": "invalid-performance-capture-frames"},
+            HTTPStatus.BAD_REQUEST,
+        )
+
+    capture_id = f"perf_{uuid.uuid4().hex[:16]}"
+    capture = {
+        "captureId": capture_id,
+        "receivedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "remoteAddress": request.remote_addr,
+        "payload": copy.deepcopy(dict(payload)),
+    }
+    with _PERFORMANCE_CAPTURES_LOCK:
+        _PERFORMANCE_CAPTURES.append(capture)
+
+    current_app.logger.info(
+        "Editor performance capture stored: id=%s frames=%s average_fps=%s",
+        capture_id,
+        len(frames),
+        payload.get("summary", {}).get("averageFps")
+        if isinstance(payload.get("summary"), Mapping) else None,
+    )
+    return _performance_capture_json_response(
+        {"ok": True, "captureId": capture_id, "frameCount": len(frames)},
+        HTTPStatus.CREATED,
+    )
+
+
 @editor_bp.route(EDITOR_GENERATOR_PREVIEW_ROUTE_PATH, methods=["GET", "HEAD"])
 @editor_bp.route(EDITOR_GENERATOR_PREVIEW_ALIAS_PATH, methods=["GET", "HEAD"])
 def editor_generator_preview() -> Response:
@@ -2445,10 +2551,12 @@ __all__ = [
     "EDITOR_ROUTE_PATH_SLASH",
     "EDITOR_GENERATOR_PREVIEW_ROUTE_PATH",
     "EDITOR_GENERATOR_PREVIEW_ALIAS_PATH",
+    "EDITOR_PERFORMANCE_CAPTURES_ROUTE_PATH",
     "EDITOR_ROUTE_MODULE_VERSION",
     "editor_bp",
     "editor_index",
     "editor_generator_preview",
+    "editor_performance_captures",
     "get_editor_route_module_metadata",
     "clear_editor_route_caches",
 ]

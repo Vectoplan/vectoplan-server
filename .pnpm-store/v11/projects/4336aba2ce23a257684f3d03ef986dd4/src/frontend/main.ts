@@ -930,6 +930,7 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
     await destroyExistingRuntime(logger, `new-boot:${trigger}`);
 
     const rootElement = resolveRootElement();
+    rootElement.dataset.editorBootGate = "locked";
     const runtimeConfig = readRuntimeConfig({
       rootElement,
     });
@@ -1092,6 +1093,7 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
       bootAttemptCount,
     });
 
+    domRefs.root.dataset.editorBootGate = "released";
     hideDomLoadingOverlay(domRefs);
     setDomSourceStatus(domRefs, {
       status: "ready",

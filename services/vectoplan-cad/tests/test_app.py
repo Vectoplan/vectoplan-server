@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from unittest.mock import patch
+
 from app import create_app
 
 
@@ -58,6 +60,21 @@ def test_cad_template():
     assert b"brand-mark" not in response.data
     assert b"document-title" not in response.data
     assert b"Keine Auswahl" not in response.data
+    assert b"core-status-row" in response.data
+    assert b"project-status-row" in response.data
+
+
+def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
+    response = client().get("/static/cad/js/main.js")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    assert 'query.get("core_project_id")' in source
+    assert '/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection' in source
+    assert 'query.get("sample") === "1"' in source
+    assert "await loadProjectInput()" in source
+    assert "Kein Core-Projekt übergeben" in source
+    assert "Systemgelände ist ausgeblendet" in source
+    assert "Benutzerblöcke" in source
 
 
 def test_bootstrap_describes_interactive_capabilities():
@@ -138,3 +155,15 @@ def test_export_request_is_validated_but_not_dispatched():
     assert payload["processable"] is True
     assert payload["accepted"] is False
     assert payload["dispatch"] == "export_worker_unavailable"
+
+
+def test_core_projection_adapter_is_project_scoped():
+    expected = {"ok": True, "snapshot": {"projection": {"contract_version": "cad-projection/0.1"}}}
+    with patch("routes.cad.project_chunks_to_projection", return_value=expected) as adapter:
+        response = client().post(
+            "/api/v1/cad/core/projects/core-project-1/projection",
+            json={"chunks": [{"chunkX": 0, "chunkY": 0, "chunkZ": 0}]},
+        )
+    assert response.status_code == 200
+    assert response.get_json() == expected
+    assert adapter.call_args.args[1] == "core-project-1"

@@ -71,10 +71,23 @@ def _build_layers(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
     kind = element["kind"]
     geometry = element["geometry"]
+    form = geometry.get("form")
     primitive_type = kind
     primitive_geometry = geometry
 
-    if kind == "wall":
+    if form == "line_segment":
+        primitive_type = "polygon"
+        primitive_geometry = {"points_mm": _wall_polygon(geometry)}
+    elif form in {"polyline", "closed_polyline", "rectangle"}:
+        primitive_type = "thick_path"
+    elif form == "network":
+        primitive_type = "thick_segments"
+    elif form in {"arc", "circle"}:
+        primitive_type = "thick_arc"
+    elif form == "region":
+        primitive_type = "polygon"
+        primitive_geometry = {"points_mm": geometry.get("outer_ring_mm", [])}
+    elif kind == "wall":
         primitive_type = "polygon"
         primitive_geometry = {"points_mm": _wall_polygon(geometry)}
     elif kind in {"opening", "structure"}:
@@ -100,6 +113,12 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
             "family_ref": element.get("family_ref"),
             "variant_ref": element.get("variant_ref"),
             "local_draft": bool(element.get("local_draft", False)),
+            "semantic_role": element.get("semantic_role"),
+            "form": element.get("form") or form,
+            "thickness_mm": geometry.get("thickness_mm"),
+            "source_cell_count": element.get("source_cell_count"),
+            "dimensions_source": element.get("dimensions_source"),
+            "warnings": element.get("warnings") or [],
         },
     }
 

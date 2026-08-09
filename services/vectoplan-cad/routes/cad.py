@@ -3,6 +3,7 @@ from __future__ import annotations
 from flask import Blueprint, current_app, jsonify, render_template, request
 
 from src.commands.service import build_command_receipt, validate_cad_command
+from src.core.client import CoreClientError, get_import_projection, project_chunks_to_projection
 from src.exports.service import build_export_receipt, validate_export_request
 from src.projection.service import (
     build_bootstrap_payload,
@@ -39,7 +40,7 @@ def status():
                 "export": "cad-export/0.1",
             },
             "mock_mode": current_app.config["MOCK_MODE"],
-            "core_connection": False,
+            "core_connection": bool(current_app.config["CORE_INTERNAL_URL"]),
             "stateful_storage": False,
         }
     )
@@ -67,6 +68,25 @@ def preview():
     if errors:
         return jsonify({"ok": False, "error": "invalid_projection", "errors": errors}), 400
     return jsonify(build_preview(payload))
+
+
+@cad_api_bp.post("/core/projects/<core_project_id>/projection")
+def core_projection(core_project_id: str):
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, dict):
+        return jsonify({"ok": False, "error": "invalid_core_projection_request"}), 400
+    try:
+        return jsonify(project_chunks_to_projection(current_app.config, core_project_id, payload))
+    except CoreClientError as exc:
+        return jsonify({"ok": False, "error": "core_unavailable", "message": str(exc)}), 503
+
+
+@cad_api_bp.get("/core/projects/<core_project_id>/imports/<document_id>/projection")
+def core_import_projection(core_project_id: str, document_id: str):
+    try:
+        return jsonify(get_import_projection(current_app.config, core_project_id, document_id))
+    except CoreClientError as exc:
+        return jsonify({"ok": False, "error": "core_unavailable", "message": str(exc)}), 503
 
 
 @cad_api_bp.post("/commands")

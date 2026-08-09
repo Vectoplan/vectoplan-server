@@ -33,6 +33,7 @@ import {
 import {
   fallbackMaterialAppearance,
   getMaterialAppearance,
+  normalizeMaterialAppearance,
 } from "@render/material_appearance_registry";
 
 export type HotbarViewStatus =
@@ -633,7 +634,13 @@ function createSlotViewModel(input: {
     const itemKind = itemKindFrom(primary) ?? (isLibraryPlaceable(primary) ? "vplib" : "block");
     const libraryRef = libraryRefFrom(primary);
     const placementCommand = placementCommandFrom(primary);
-    const appearance = getMaterialAppearance(runtimeBlockTypeId)
+    // Prefer the concrete slot/item payload. The inventory contract commonly
+    // transports previews as preview.url, icon.url or assets.previewUrl; using
+    // only the block-type registry reduced valid items to their initials.
+    const appearance = normalizeMaterialAppearance(primary)
+      ?? normalizeMaterialAppearance(item)
+      ?? normalizeMaterialAppearance(hotbarSlot)
+      ?? getMaterialAppearance(runtimeBlockTypeId)
       ?? fallbackMaterialAppearance(runtimeBlockTypeId);
 
     const label = truncateLabel(
@@ -945,8 +952,12 @@ function viewModelsEqual(left: HotbarViewModel | null, right: HotbarViewModel): 
         || leftSlot.runtimeBlockTypeId !== rightSlot.runtimeBlockTypeId
         || leftSlot.libraryItemId !== rightSlot.libraryItemId
         || leftSlot.familyId !== rightSlot.familyId
+        || leftSlot.packageId !== rightSlot.packageId
         || leftSlot.vplibUid !== rightSlot.vplibUid
+        || leftSlot.variantId !== rightSlot.variantId
+        || leftSlot.revisionHash !== rightSlot.revisionHash
         || leftSlot.color !== rightSlot.color
+        || leftSlot.textureUrl !== rightSlot.textureUrl
         || leftSlot.enabled !== rightSlot.enabled
       ) {
         return false;

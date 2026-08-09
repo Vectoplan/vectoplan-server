@@ -92,6 +92,36 @@
   background: #ef4444;
   box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
 }
+.editor-performance-recorder {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  z-index: 112;
+  transform: translateX(-50%);
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 12px 34px rgba(3, 8, 18, 0.3);
+  backdrop-filter: blur(10px);
+  font-size: 0.76rem;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+}
+.editor-performance-recorder[data-state="recording"] {
+  border-color: rgba(248, 113, 113, 0.74);
+  background: rgba(127, 29, 29, 0.9);
+}
+.editor-performance-recorder[data-state="saved"] {
+  border-color: rgba(74, 222, 128, 0.65);
+  background: rgba(20, 83, 45, 0.92);
+}
+.editor-performance-recorder[data-state="failed"] {
+  border-color: rgba(251, 191, 36, 0.72);
+  background: rgba(120, 53, 15, 0.92);
+}
 @media (max-width: 720px) {
   .editor-environment-controls {
     top: 58px;
@@ -102,7 +132,8 @@
 }
 @media print {
   .editor-environment-controls,
-  .editor-realtime-indicator { display: none !important; }
+  .editor-realtime-indicator,
+  .editor-performance-recorder { display: none !important; }
 }
 .editor-inventory-launcher {
   position: absolute;

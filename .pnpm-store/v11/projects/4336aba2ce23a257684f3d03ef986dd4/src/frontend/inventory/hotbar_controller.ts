@@ -110,6 +110,7 @@ export interface HotbarControllerOptions {
   readonly enableWheelSelection?: boolean;
   readonly enableSlotClickSelection?: boolean;
   readonly defaultSelectedSlot?: number;
+  readonly renderToDom?: boolean;
 
   /**
    * Legacy-Name. Wird weiterhin akzeptiert, aber nicht mehr auf debug_grass
@@ -150,6 +151,11 @@ export interface HotbarControllerOptions {
    * eine destroy-Methode besitzt.
    */
   readonly destroyInventorySourceOnDestroy?: boolean;
+}
+
+export interface HotbarSelectionApplyOptions {
+  readonly dispatch?: boolean;
+  readonly render?: boolean;
 }
 
 export interface HotbarControllerSnapshot {
@@ -206,7 +212,11 @@ export interface HotbarControllerHandle {
   reload(reason?: string): Promise<InventoryCatalog | ChunkApiFailedResult>;
   refresh(reason?: string): Promise<InventoryCatalog | ChunkApiFailedResult>;
 
-  selectSlot(slot: number, reason?: string): InventoryCatalog | null;
+  selectSlot(
+    slot: number,
+    reason?: string,
+    options?: HotbarSelectionApplyOptions,
+  ): InventoryCatalog | null;
 
   /**
    * Legacy-Name. Wählt jetzt primär nach runtimeBlockTypeId.
@@ -1022,6 +1032,9 @@ function renderCatalogToDom(
     const selected = catalog.selection.selectedItem;
     const runtimeBlockTypeId = selectedRuntimeBlockTypeId(catalog);
     const libraryItem = selectedLibraryItem(catalog);
+    refs.root.dataset.inventorySelectedSlot = String(
+      catalog.selection.selectedSlotIndex ?? catalog.selection.selectedSlot ?? 0,
+    );
     const sourceLabel = isLibraryInventoryCatalog(catalog)
       ? "Library"
       : catalog.sourceKind;
@@ -1241,11 +1254,15 @@ function makeLoadOptions(
     readonly signal?: AbortSignal;
   },
 ): EditorInventorySourceLoadOptions {
+  // On the first load the productive /editor/api/inventory payload owns the
+  // persisted selection. Supplying the bootstrap fallback slot here used to
+  // overwrite that server selection with slot 0 before the catalog was built.
+  const selectedSlot = catalog?.selection.selectedSlotIndex;
   return normalizeInventorySourceLoadOptions({
     force: input.force,
     forceRefresh: input.force,
-    selectedSlot: catalog?.selection.selectedSlotIndex ?? input.selectedSlot,
-    selectedSlotIndex: catalog?.selection.selectedSlotIndex ?? input.selectedSlot,
+    selectedSlot,
+    selectedSlotIndex: selectedSlot,
     blockTypeId:
       catalog?.selection.selectedRuntimeBlockTypeId ??
       catalog?.selection.selectedBlockTypeId ??
@@ -1271,6 +1288,24 @@ function makeLoadOptions(
     allowStaticFallback: false,
     reason: input.reason ?? "hotbar-load",
   });
+}
+
+function selectedSlotIndexFromInventorySource(
+  inventorySource: HotbarInventorySourceHandle,
+  fallback: number,
+  slotCount: number,
+): number {
+  try {
+    const source = inventorySource as HotbarInventorySourceHandle & {
+      readonly getSelectedSlotIndex?: () => number;
+    };
+    if (typeof source.getSelectedSlotIndex === "function") {
+      return normalizeSlot(source.getSelectedSlotIndex(), slotCount);
+    }
+  } catch {
+    // Fall back to the configured slot for legacy inventory sources.
+  }
+  return normalizeSlot(fallback, slotCount);
 }
 
 function catalogFromUnknownSelectionResult(
@@ -1401,6 +1436,7 @@ export function createHotbarController(
   const enableSlotClickSelection = options.enableSlotClickSelection ?? true;
   const destroyInventorySourceOnDestroy =
     options.destroyInventorySourceOnDestroy ?? true;
+  const renderToDom = options.renderToDom ?? true;
   const defaultSelectedSlot = normalizeSlot(options.defaultSelectedSlot, slotCount);
 
   const defaultRuntimeBlockTypeId = normalizeSelectedRuntimeBlockTypeId(
@@ -1470,6 +1506,7 @@ export function createHotbarController(
       readonly live?: boolean;
       readonly usedFallback?: boolean;
       readonly dispatch?: boolean;
+      readonly render?: boolean;
     },
   ): InventoryCatalog {
     const selectedSlot = normalizeSlot(
@@ -1501,7 +1538,9 @@ export function createHotbarController(
       dispatchInventoryCatalog(store, nextCatalog, `hotbar.${reason}`);
     }
 
-    renderCatalogToDom(domRefs, nextCatalog, applyOptions?.live ?? true);
+    if (renderToDom && applyOptions?.render !== false) {
+      renderCatalogToDom(domRefs, nextCatalog, applyOptions?.live ?? true);
+    }
 
     return nextCatalog;
   }
@@ -1599,9 +1638,15 @@ export function createHotbarController(
         return rawResult;
       }
 
+      const loadedSelectedSlot = catalog?.selection.selectedSlotIndex
+        ?? selectedSlotIndexFromInventorySource(
+          inventorySource,
+          defaultSelectedSlot,
+          slotCount,
+        );
       const factoryResult = factoryResultFromUnknownInventory(rawResult, {
         slotCount,
-        selectedSlot: catalog?.selection.selectedSlotIndex ?? defaultSelectedSlot,
+        selectedSlot: loadedSelectedSlot,
         defaultRuntimeBlockTypeId,
         defaultLibraryItemId,
         defaultFamilyId,
@@ -1642,7 +1687,7 @@ export function createHotbarController(
           allowLegacyChunkInventory,
           onlyLibraryItemsPlaceable,
           slotCount,
-          selectedSlot: defaultSelectedSlot,
+          selectedSlot: loadedSelectedSlot,
         }),
         reason,
         {
@@ -1696,6 +1741,7 @@ export function createHotbarController(
   function select(
     selection: InventorySelectionOptions,
     reason: string,
+    selectOptions?: HotbarSelectionApplyOptions,
   ): InventoryCatalog | null {
     const aliveFailure = assertAlive();
 
@@ -1794,6 +1840,8 @@ export function createHotbarController(
       selectionCount += 1;
       applyCatalog(nextCatalog, reason, {
         live: true,
+        dispatch: selectOptions?.dispatch,
+        render: selectOptions?.render,
       });
 
       logDebug(logger, "Hotbar selection changed.", {
@@ -2105,13 +2153,18 @@ export function createHotbarController(
       });
     },
 
-    selectSlot(slot: number, reason?: string): InventoryCatalog | null {
+    selectSlot(
+      slot: number,
+      reason?: string,
+      selectOptions?: HotbarSelectionApplyOptions,
+    ): InventoryCatalog | null {
       return select(
         {
           selectedSlot: slot,
           selectedSlotIndex: slot,
         },
         reason ?? "select-slot",
+        selectOptions,
       );
     },
 

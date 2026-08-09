@@ -174,7 +174,7 @@ export interface ChunkRegistryHandle {
 
 const CHUNK_REGISTRY_KIND = "vectoplan-editor-chunk-registry.v1" as const;
 const CHUNK_REGISTRY_SNAPSHOT_KIND = "chunk-registry-snapshot.v1" as const;
-const DEFAULT_MAX_CHUNKS = 512;
+const DEFAULT_MAX_CHUNKS = 1024;
 const DEFAULT_CHUNK_SIZE = 16;
 
 function logDebug(

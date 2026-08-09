@@ -224,6 +224,10 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-annotation { fill: #26313c; font-size: 170px; cursor: pointer; }
 .primitive-room-label { fill: #26313c; font-size: 190px; text-anchor: middle; cursor: pointer; }
 .primitive-dimension { fill: none; stroke: #435261; stroke-width: .45; cursor: pointer; }
+.semantic-outline { stroke: #56616d; pointer-events: stroke; }
+.semantic-fill { stroke: #c8ced5; pointer-events: stroke; }
+.primitive:hover .semantic-fill, .primitive.is-selected .semantic-fill { stroke: rgba(20, 99, 214, .45); }
+.primitive:hover .semantic-outline, .primitive.is-selected .semantic-outline { stroke: var(--accent); }
 .dimension-text { fill: #394754; font-size: 145px; text-anchor: middle; }
 .primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: 1.7; }
 .primitive text { pointer-events: none; }

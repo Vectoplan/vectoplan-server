@@ -23,6 +23,14 @@ const MODEL_LOADER = new GLTFLoader();
 const MODEL_TEMPLATES = new Map<string, Promise<THREE.Group>>();
 const FIRST_PERSON_BASE_POSITION = new THREE.Vector3(0.58, -0.5, -0.95);
 const FIRST_PERSON_BASE_ROTATION = new THREE.Euler(-0.18, -0.64, 0.1, "YXZ");
+const HELD_BLOCK_GEOMETRY = new THREE.BoxGeometry(0.78, 0.78, 0.78);
+const HELD_BLOCK_TOP_GEOMETRY = new THREE.BoxGeometry(0.6, 0.025, 0.6);
+const HELD_BLOCK_EDGE_GEOMETRY = (() => {
+  const source = new THREE.BoxGeometry(0.79, 0.79, 0.79);
+  const edges = new THREE.EdgesGeometry(source, 28);
+  source.dispose();
+  return edges;
+})();
 
 function safeText(value: unknown, fallback: string, maximum = 180): string {
   try {
@@ -131,24 +139,18 @@ function createBlockContent(
     transparent: mode === "first-person",
     opacity: mode === "first-person" ? 0.78 : 0.62,
   }), mode);
-  const geometry = new THREE.BoxGeometry(0.78, 0.78, 0.78);
-  const cube = new THREE.Mesh(geometry, mainMaterial);
+  const cube = new THREE.Mesh(HELD_BLOCK_GEOMETRY, mainMaterial);
   cube.name = "vectoplan-held-block";
-  const topGeometry = new THREE.BoxGeometry(0.6, 0.025, 0.6);
-  const top = new THREE.Mesh(topGeometry, topMaterial);
+  const top = new THREE.Mesh(HELD_BLOCK_TOP_GEOMETRY, topMaterial);
   top.name = "vectoplan-held-block-top";
   top.position.y = 0.397;
-  const edgeGeometry = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.79, 0.79, 0.79), 28);
-  const edges = new THREE.LineSegments(edgeGeometry, edgeMaterial);
+  const edges = new THREE.LineSegments(HELD_BLOCK_EDGE_GEOMETRY, edgeMaterial);
   edges.name = "vectoplan-held-block-edges";
   group.add(cube, top, edges);
   configureObject(group, mode);
   return {
     object: group,
     dispose: () => {
-      geometry.dispose();
-      topGeometry.dispose();
-      edgeGeometry.dispose();
       mainMaterial.userData.vectoplanDisposed = true;
       topMaterial.userData.vectoplanDisposed = true;
       mainMaterial.dispose();
@@ -223,7 +225,10 @@ export function createHeldItemVisual(
   let currentItem: RealtimeHeldItem | null = null;
   let currentSignature = "";
   let currentContent: THREE.Object3D | null = null;
-  let disposeContent: (() => void) | null = null;
+  const contentCache = new Map<
+    string,
+    { readonly object: THREE.Group; readonly dispose: () => void }
+  >();
   let visible = true;
   let destroyed = false;
   let bobPhase = 0;
@@ -231,14 +236,15 @@ export function createHeldItemVisual(
   function clearContent(): void {
     if (currentContent) root.remove(currentContent);
     currentContent = null;
-    disposeContent?.();
-    disposeContent = null;
   }
 
-  function installContent(content: { readonly object: THREE.Group; readonly dispose: () => void }): void {
+  function installContent(
+    signature: string,
+    content: { readonly object: THREE.Group; readonly dispose: () => void },
+  ): void {
     clearContent();
+    contentCache.set(signature, content);
     currentContent = content.object;
-    disposeContent = content.dispose;
     root.add(content.object);
     root.visible = visible && Boolean(currentItem);
   }
@@ -254,12 +260,29 @@ export function createHeldItemVisual(
     root.visible = false;
     if (!next) return;
 
-    installContent(createBlockContent(next, mode));
+    const cachedContent = contentCache.get(signature);
+    if (cachedContent) {
+      installContent(signature, cachedContent);
+    } else {
+      installContent(signature, createBlockContent(next, mode));
+    }
     const modelUrl = safeModelUrl(next.modelUrl);
     if (!modelUrl) return;
     void loadModelTemplate(modelUrl).then((template) => {
-      if (destroyed || currentSignature !== signature) return;
-      installContent(createModelContent(template, mode));
+      const modelContent = createModelContent(template, mode);
+      if (destroyed) {
+        modelContent.dispose();
+        return;
+      }
+      const previousContent = contentCache.get(signature);
+      if (currentSignature === signature) {
+        clearContent();
+        previousContent?.dispose();
+        installContent(signature, modelContent);
+      } else {
+        previousContent?.dispose();
+        contentCache.set(signature, modelContent);
+      }
     }).catch(() => {
       // The immediately visible block representation remains the reliable fallback.
     });
@@ -296,6 +319,8 @@ export function createHeldItemVisual(
       if (destroyed) return;
       destroyed = true;
       clearContent();
+      for (const content of new Set(contentCache.values())) content.dispose();
+      contentCache.clear();
       parent.remove(root);
       currentItem = null;
       currentSignature = "";
