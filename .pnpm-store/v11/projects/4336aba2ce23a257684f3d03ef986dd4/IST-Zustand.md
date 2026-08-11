@@ -8,8 +8,8 @@
 Ordner: services/vectoplan-editor
 Datei: IST-Zustand.md
 Pfad: services/vectoplan-editor/IST-Zustand.md
-Stand: 2026-06-26
-Status: Remote-Chunk-Service-Editor mit App-Embed-Pfad, korrigierter App-/Chunk-ID-Trennung, Editor-Chunk-Proxy, laufender Fullscreen-Runtime, Mouse-Look, nachgewiesenem WASD-Input, bestätigtem chunks/batch über chunk_project_id/world_spawn, repariertem ChunkServiceSource→ChunkRegistry-Pfad, Physics-Diagnose und temporär aktiviertem Player-NoClip. Der normale Player-Collision-Solver blockiert aktuell horizontale Bewegung fälschlich und ist der nächste fachliche Fix.
+Stand: 2026-08-10
+Status: Remote-Chunk-Service-Editor mit synchronisierter Flurstücksauswahl, WorldEdit, festem Grundstücksraster v7, semantischen Polygon-/MultiPolygon-Footprints und persistenter PlaceObject-Migration. Ältere Diagnoseabschnitte bleiben als Reparaturhistorie erhalten; bei Widersprüchen gilt die Aktualisierung 0.0 und die verlinkte Fachdokumentation.
 ```
 
 Dieses Dokument beschreibt den aktuellen technischen IST-Zustand des Services:
@@ -35,6 +35,44 @@ services/vectoplan-editor/src/frontend/runtime/scene/scene_runtime.ts
 ```
 
 Die Datei unter `src/frontend/runtime/scene/scene_runtime.ts` kann noch existieren, ist aber nicht die aktuell im Browser genutzte Runtime. Die aktive Runtime mit Renderer, Kamera, UI, WorldRuntime und Physics-Anbindung liegt unter `src/frontend/scene/scene_runtime.ts`.
+
+
+## 0.0 Aktualisierung 2026-08-10: Grundstücksraster v7 und persistente Geometrie
+
+Die verbindliche Detaildokumentation liegt unter
+[`docs/PARCEL_GRID_AND_WORLDEDIT.md`](docs/PARCEL_GRID_AND_WORLDEDIT.md).
+
+Aktueller produktiver Platzierungspfad:
+
+```text
+normale Rasterzelle
+  -> SetBlock
+
+gültige schräge Grundstücksrasterzelle
+  -> Polygonüberlappung und exakter Trefferpunkt gegen die gerenderten v7-Zellen
+  -> PlaceObject(objectKind=semantic_footprint)
+  -> WorldObjectInstance + WorldObjectChunkRef
+  -> ChunkSnapshot.objectRefs + ChunkEvent
+  -> Form bleibt nach Reload erhalten
+```
+
+Der alte Befund „Library-Placement wird immer als SetBlock adaptiert“ ist damit
+nur noch für normale Voxel und Legacy-Pfade gültig. Bereits gespeicherte
+SetBlock-Benutzerzellen im Grundstücksraster werden in der aktiven
+`src/frontend/scene/scene_runtime.ts` sofort semantisch gerendert und im
+Leerlauf in Batches von maximal 24 Einträgen zu `PlaceObject` migriert.
+
+Das rote Raster und die ausgewählten Grundstücksflächen verwenden eine feste
+horizontale Ebene. Terrain- oder Benutzerblöcke verändern diese Ebene nicht.
+Der Standard besteht aus 0–3 m Schrägzone, einem lückenlos auf die benachbarten
+logischen Blöcke verteilten Übergang und geradem Innenraster. Zusammengesetzte
+Blöcke werden als MultiPolygon gespeichert. Rasterkonfigurationen bleiben über
+Abwahl, erneute Auswahl und Reload pro Flurstück erhalten.
+
+Die Abschnitte ab Kapitel 1 dokumentieren zusätzlich historische Debug- und
+Reparaturstände. Aussagen zu offenem Reload-Nachweis, ausschließlich
+rechteckigem SetBlock-Placement oder fehlenden WorldEdit-Werkzeugen sind durch
+diese Aktualisierung überholt.
 
 
 ## 0.1 Aktualisierung 2026-07-28: Multiplayer und realistisches Umgebungslicht
@@ -114,7 +152,10 @@ Aktuell nicht als final abgeschlossen betrachten:
 - voxel_collision_solver.ts / BlockCollisionQuery / Player-AABB müssen als nächstes repariert werden.
 - Temporärer NoClip ist kein Zielzustand, sondern nur eine Entwicklungsüberbrückung.
 - Hotbar/Library/Place/Remove nach der NoClip-Änderung erneut manuell prüfen.
-- Reload-Persistenz nach SetBlock/RemoveBlock ist weiterhin offen.
+- Historischer Prüfpunkt: Reload-Persistenz war für SetBlock/RemoveBlock offen;
+  normale Voxel und semantische Grundstücksraster-`PlaceObject`-Footprints sind
+  im aktuellen Stand persistent. Ein vollständiger manueller Nachweis der
+  automatischen Legacy-Migration benötigt weiterhin ein angemeldetes Projekt.
 - Chunk-Mesh-/Renderer-Pfad muss nach endgültiger Collision-Reparatur erneut validiert werden.
 ```
 

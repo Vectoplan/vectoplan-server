@@ -22,6 +22,35 @@ const CREATIVE_DRAG_MESSAGE_END = "vectoplan:creative-drag-end";
 const CREATIVE_POINTER_DRAG_START = "vectoplan:creative-pointer-drag-start";
 const CREATIVE_POINTER_DRAG_MOVE = "vectoplan:creative-pointer-drag-move";
 const CREATIVE_POINTER_DRAG_END = "vectoplan:creative-pointer-drag-end";
+const CREATIVE_WORLD_EDIT_ACTIVATE = "vectoplan:worldedit-tool-activate";
+const CREATIVE_WORLD_EDIT_SETTINGS_CHANGE = "vectoplan:worldedit-settings-change";
+const CREATIVE_WORLD_EDIT_ACTION = "vectoplan:worldedit-action";
+const CREATIVE_WORLD_EDIT_STATE = "vectoplan:worldedit-state";
+const CREATIVE_WORLD_EDIT_STATE_REQUEST = "vectoplan:creative-inventory-request-user-inventory-state";
+const EDITOR_WORLD_EDIT_ACTIVATE = "vectoplan-editor:worldedit-tool-activate";
+const EDITOR_WORLD_EDIT_SETTINGS_CHANGE = "vectoplan-editor:worldedit-settings-change";
+const EDITOR_WORLD_EDIT_ACTION = "vectoplan-editor:worldedit-action";
+const EDITOR_WORLD_EDIT_STATE = "vectoplan-editor:worldedit-state";
+const EDITOR_WORLD_EDIT_STATE_REQUEST = "vectoplan-editor:worldedit-state-request";
+const EDITOR_WORLD_EDIT_SYNC_REQUEST = "vectoplan-editor:worldedit-inventory-sync-request";
+const EDITOR_WORLD_EDIT_SELECTION = "vectoplan:worldedit-inventory-selection";
+const USER_INVENTORY_REQUEST_STATE = "vectoplan:user-inventory-request-state";
+const USER_INVENTORY_SELECTION_MESSAGES = new Set([
+  "vectoplan:user-inventory-selection-change",
+  "vectoplan:user-inventory-load",
+  "vectoplan:user-inventory-state",
+]);
+const READY_WORLD_EDIT_TOOLS = new Set([
+  "selection",
+  "paint",
+  "sculpt",
+  "parcel",
+  "parcel-grid",
+  "ruler-laser",
+  "copy-transform",
+]);
+const CREATIVE_INVENTORY_OPENED_EVENT = "vectoplan-editor:creative-inventory-opened";
+const CREATIVE_INVENTORY_CLOSED_EVENT = "vectoplan-editor:creative-inventory-closed";
 
 function resolveUrl(options: CreativeInventoryPanelOptions): string {
   const configured = options.creativeInventoryUrl
@@ -72,11 +101,137 @@ export function mountCreativeInventoryPanel(
   const closeButton = panel.querySelector<HTMLButtonElement>("[data-editor-inventory-close]");
   let destroyed = false;
   let pointerDragGhost: HTMLDivElement | null = null;
+  let activeWorldEditToolId: string | null = null;
 
   function asRecord(value: unknown): Record<string, unknown> {
     return value && typeof value === "object" && !Array.isArray(value)
       ? value as Record<string, unknown>
       : {};
+  }
+
+  function asText(value: unknown): string {
+    return typeof value === "string" ? value.trim() : "";
+  }
+
+  function firstText(...values: unknown[]): string {
+    for (const value of values) {
+      const text = asText(value);
+      if (text) return text;
+    }
+    return "";
+  }
+
+  function worldEditToolIdFromSlot(slotValue: unknown): string | null {
+    const slot = asRecord(slotValue);
+    const payload = asRecord(slot.payload);
+    const metadata = asRecord(slot.metadata ?? payload.metadata);
+    const placement = asRecord(slot.placement ?? payload.placement);
+    const explicitToolId = firstText(
+      slot.world_edit_tool,
+      slot.worldEditTool,
+      payload.world_edit_tool,
+      payload.worldEditTool,
+      metadata.world_edit_tool,
+      metadata.worldEditTool,
+      placement.world_edit_tool,
+      placement.worldEditTool,
+      placement.toolId,
+    ).toLowerCase().replaceAll("_", "-");
+    if (READY_WORLD_EDIT_TOOLS.has(explicitToolId)) return explicitToolId;
+    const objectKind = firstText(
+      slot.object_kind,
+      slot.objectKind,
+      payload.object_kind,
+      payload.objectKind,
+    ).toLowerCase().replaceAll("-", "_");
+    const domain = firstText(slot.domain, payload.domain).toLowerCase().replaceAll("_", "-");
+    const familyId = firstText(slot.family_id, slot.familyId, payload.family_id, payload.familyId).toLowerCase();
+    const vplibUid = firstText(slot.vplib_uid, slot.vplibUid, payload.vplib_uid, payload.vplibUid).toLowerCase();
+    const packageId = firstText(slot.package_id, slot.packageId, payload.package_id, payload.packageId).toLowerCase();
+    const isWorldEdit = objectKind === "world_edit_tool"
+      || domain === "world-edit"
+      || familyId.startsWith("world-edit.")
+      || vplibUid.startsWith("vectoplan.world-edit.")
+      || packageId === "vectoplan.world-edit";
+    if (!isWorldEdit) return null;
+
+    const candidates = [
+      slot.world_edit_tool,
+      slot.worldEditTool,
+      payload.world_edit_tool,
+      payload.worldEditTool,
+      metadata.world_edit_tool,
+      metadata.worldEditTool,
+      placement.world_edit_tool,
+      placement.worldEditTool,
+      placement.toolId,
+      slot.variant_id,
+      slot.variantId,
+      payload.variant_id,
+      payload.variantId,
+      familyId,
+      vplibUid,
+    ];
+    for (const value of candidates) {
+      let candidate = asText(value).toLowerCase().replaceAll("_", "-");
+      for (const prefix of ["vectoplan.world-edit.", "world-edit.", "world-edit-"]) {
+        if (!candidate.startsWith(prefix)) continue;
+        candidate = candidate.slice(prefix.length);
+        break;
+      }
+      if (READY_WORLD_EDIT_TOOLS.has(candidate)) return candidate;
+    }
+    return null;
+  }
+
+  function postWorldEditSelection(toolId: string | null): void {
+    activeWorldEditToolId = toolId;
+    frame?.contentWindow?.postMessage({
+      type: EDITOR_WORLD_EDIT_SELECTION,
+      source: "vectoplan-editor",
+      detail: {
+        active: Boolean(toolId),
+        tool: toolId,
+        toolId,
+      },
+    }, "*");
+  }
+
+  function syncWorldEditFromUserInventory(messageValue: unknown): void {
+    const message = asRecord(messageValue);
+    const detail = asRecord(message.detail);
+    const selection = asRecord(detail.selection);
+    const slots = Array.isArray(detail.slots) ? detail.slots : [];
+    const activeSlotIndex = Number(
+      detail.active_slot_index
+      ?? detail.activeSlotIndex
+      ?? selection.active_slot_index
+      ?? selection.activeSlotIndex,
+    );
+    const selectedSlot = detail.selected_slot
+      ?? detail.selectedSlot
+      ?? detail.slot
+      ?? selection.selected_slot
+      ?? selection.selectedSlot
+      ?? slots.find((entry) => {
+        const slot = asRecord(entry);
+        return Number(slot.slot_index ?? slot.slotIndex ?? slot.slot ?? slot.index) === activeSlotIndex;
+      });
+    const toolId = worldEditToolIdFromSlot(selectedSlot);
+    postWorldEditSelection(toolId);
+    window.dispatchEvent(new CustomEvent(EDITOR_WORLD_EDIT_ACTIVATE, {
+      detail: toolId
+        ? { active: true, tool: toolId, toolId, source: "user-inventory" }
+        : { active: false, tool: null, toolId: null, source: "user-inventory" },
+    }));
+  }
+
+  function forwardUserInventorySelection(messageValue: unknown): void {
+    const message = asRecord(messageValue);
+    frame?.contentWindow?.postMessage({
+      ...message,
+      source: "vectoplan-editor",
+    }, "*");
   }
 
   function userInventoryFrame(): HTMLIFrameElement | null {
@@ -189,6 +344,7 @@ export function mountCreativeInventoryPanel(
     }
     panel.hidden = false;
     options.root.dataset.creativeInventoryOpen = "true";
+    window.dispatchEvent(new CustomEvent(CREATIVE_INVENTORY_OPENED_EVENT));
     void options.onOpen?.();
     frame?.focus({ preventScroll: true });
   }
@@ -197,6 +353,7 @@ export function mountCreativeInventoryPanel(
     if (destroyed || panel.hidden) return;
     panel.hidden = true;
     options.root.dataset.creativeInventoryOpen = "false";
+    window.dispatchEvent(new CustomEvent(CREATIVE_INVENTORY_CLOSED_EVENT));
     const focusTarget = options.root.querySelector<HTMLElement>(
       "[data-editor-canvas-host], canvas",
     );
@@ -238,7 +395,30 @@ export function mountCreativeInventoryPanel(
       ? String((event.data as { type?: unknown }).type ?? "")
       : "";
 
+    if (fromHotbarFrame && USER_INVENTORY_SELECTION_MESSAGES.has(messageType)) {
+      forwardUserInventorySelection(event.data);
+      syncWorldEditFromUserInventory(event.data);
+      return;
+    }
+
     if (messageType === CREATIVE_INVENTORY_MESSAGE_CLOSE && fromCreativeFrame) {
+      close();
+    } else if (messageType === CREATIVE_WORLD_EDIT_STATE_REQUEST && fromCreativeFrame) {
+      handleWorldEditSyncRequest();
+    } else if (messageType === CREATIVE_WORLD_EDIT_SETTINGS_CHANGE && fromCreativeFrame) {
+      const message = asRecord(event.data);
+      window.dispatchEvent(new CustomEvent(EDITOR_WORLD_EDIT_SETTINGS_CHANGE, {
+        detail: asRecord(message.detail),
+      }));
+    } else if (messageType === CREATIVE_WORLD_EDIT_ACTION && fromCreativeFrame) {
+      const message = asRecord(event.data);
+      window.dispatchEvent(new CustomEvent(EDITOR_WORLD_EDIT_ACTION, {
+        detail: asRecord(message.detail),
+      }));
+    } else if (messageType === CREATIVE_WORLD_EDIT_ACTIVATE && fromCreativeFrame) {
+      const message = asRecord(event.data);
+      const detail = asRecord(message.detail);
+      window.dispatchEvent(new CustomEvent(EDITOR_WORLD_EDIT_ACTIVATE, { detail }));
       close();
     } else if (messageType === CREATIVE_INVENTORY_MESSAGE_TOGGLE) {
       panel.hidden ? open() : close();
@@ -265,9 +445,32 @@ export function mountCreativeInventoryPanel(
     }
   }
 
+  function handleWorldEditSyncRequest(): void {
+    postWorldEditSelection(activeWorldEditToolId);
+    userInventoryFrame()?.contentWindow?.postMessage({
+      type: USER_INVENTORY_REQUEST_STATE,
+      source: "vectoplan-editor",
+      detail: { source: "world-edit-inventory-sync" },
+    }, "*");
+    window.dispatchEvent(new CustomEvent(EDITOR_WORLD_EDIT_STATE_REQUEST));
+  }
+
+  function forwardWorldEditState(event: Event): void {
+    frame?.contentWindow?.postMessage({
+      type: CREATIVE_WORLD_EDIT_STATE,
+      source: "vectoplan-editor",
+      detail: asRecord((event as CustomEvent).detail),
+    }, "*");
+  }
+
   closeButton?.addEventListener("click", close);
   document.addEventListener("keydown", handleKeyDown, true);
   window.addEventListener("message", handleMessage);
+  window.addEventListener(EDITOR_WORLD_EDIT_SYNC_REQUEST, handleWorldEditSyncRequest);
+  window.addEventListener(EDITOR_WORLD_EDIT_STATE, forwardWorldEditState);
+  const inventoryFrameForSync = userInventoryFrame();
+  inventoryFrameForSync?.addEventListener("load", handleWorldEditSyncRequest);
+  frame?.addEventListener("load", handleWorldEditSyncRequest);
 
   const handle: CreativeInventoryPanelHandle = {
     element: panel,
@@ -279,6 +482,10 @@ export function mountCreativeInventoryPanel(
       closeButton?.removeEventListener("click", close);
       document.removeEventListener("keydown", handleKeyDown, true);
       window.removeEventListener("message", handleMessage);
+      window.removeEventListener(EDITOR_WORLD_EDIT_SYNC_REQUEST, handleWorldEditSyncRequest);
+      window.removeEventListener(EDITOR_WORLD_EDIT_STATE, forwardWorldEditState);
+      inventoryFrameForSync?.removeEventListener("load", handleWorldEditSyncRequest);
+      frame?.removeEventListener("load", handleWorldEditSyncRequest);
       removePointerDragGhost();
       panel.remove();
       delete options.root.dataset.creativeInventoryOpen;

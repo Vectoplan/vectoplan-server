@@ -135,6 +135,13 @@ export interface ChunkServiceSourceLibraryPlacementInput
   readonly libraryRef?: EditorInventoryLibraryRef | null;
   readonly placementCommand?: EditorInventoryPlacementCommand | null;
   readonly commandMetadata?: Record<string, unknown> | null;
+  readonly semanticPlacement?: Readonly<{
+    readonly kind: "parcel-grid-prism.v1";
+    readonly footprint: Readonly<Record<string, unknown>>;
+    readonly occupiedCells: readonly ChunkApiWorldPosition[];
+    readonly mergeKey: string;
+    readonly anchorPosition?: ChunkApiWorldPosition;
+  }> | null;
 }
 
 export interface ChunkServiceSource extends ChunkSource {
@@ -144,9 +151,9 @@ export interface ChunkServiceSource extends ChunkSource {
   /**
    * Semantischer Library-/VPLIB-Placement-Pfad.
    *
-   * Der Chunk-Service erhält weiterhin einen kompatiblen SetBlock-Command mit
-   * `blockTypeId = runtimeBlockTypeId`. Die Library-Identität bleibt in
-   * EditSession/Metadata/Events erhalten.
+   * Der Chunk-Service erhält für normale Zellen `SetBlock`, für ein
+   * Grundstücksraster-Prisma dagegen `PlaceObject` samt Polygon-Grundriss.
+   * Die Library-Identität bleibt in EditSession/Metadata/Events erhalten.
    */
   placeLibraryItem(
     position: ChunkApiWorldPosition,
@@ -2571,11 +2578,30 @@ export function createChunkServiceSource(
         libraryContext: prepared.context,
       });
 
-      const payload = createSetBlockPayload(
-        normalizedPosition,
-        prepared.runtimeBlockTypeId,
-        prepared.options,
-      );
+      const semanticPlacement = placement.semanticPlacement;
+      const payload: ChunkApiCommandPayload = semanticPlacement?.kind === "parcel-grid-prism.v1"
+        ? {
+            type: "PlaceObject",
+            userId: normalizeText(prepared.options.userId, commandUserId),
+            sessionId: normalizeText(prepared.options.sessionId, commandSessionId),
+            position: normalizedPosition,
+            blockTypeId: prepared.runtimeBlockTypeId,
+            objectTypeId: "parcel_grid_body",
+            objectKind: "semantic_footprint",
+            dimensions: { x: 1, y: 1, z: 1 },
+            footprint: semanticPlacement.footprint,
+            occupiedCells: semanticPlacement.occupiedCells,
+            metadata: {
+              schemaVersion: "vectoplan-parcel-grid-body.v1",
+              mergeKey: semanticPlacement.mergeKey,
+              libraryPlacementContext: prepared.context,
+            },
+          }
+        : createSetBlockPayload(
+            normalizedPosition,
+            prepared.runtimeBlockTypeId,
+            prepared.options,
+          );
 
       const result = await sendCommandPayload(payload, prepared.options);
 

@@ -1,6 +1,7 @@
 // services/vectoplan-editor/src/frontend/main.ts
 import { createChunkApiClient } from "@api/chunk_api_client";
 import "./styles/realtime_environment.css";
+import "./styles/world_edit.css";
 import type { ChunkApiClient } from "@api/chunk_api_models";
 import type { EditorBootstrap, EditorBootstrapDefaults } from "@bootstrap/bootstrap_models";
 import { normalizeEditorBootstrap } from "@bootstrap/normalize_bootstrap";
@@ -29,6 +30,7 @@ import { createWorldRuntime, type WorldRuntimeHandle } from "@runtime/world/worl
 import { createLogger, type EditorLogger } from "@utils/logger";
 import { getErrorMessage, normalizeUnknownError } from "@utils/safe";
 import { nowIsoString } from "@utils/time";
+import { createWorldEditController } from "./world_edit/world_edit_controller";
 
 declare const __VECTOPLAN_EDITOR_BUILD_MODE__: string;
 declare const __VECTOPLAN_EDITOR_BUILD_VERSION__: string;
@@ -1087,6 +1089,15 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
     setDomBootMessage(domRefs, "Scene-Runtime wird initialisiert. Library-/VPLIB-Inventar wird geladen.");
 
     await initializeRuntime(runtime);
+
+    createWorldEditController({
+      root: rootElement,
+      bootstrap,
+      sceneRuntime,
+      worldRuntime,
+      logger,
+      signal: abortController.signal,
+    });
 
     updateStoreLifecycle(store, "ready", {
       reason: "boot-ready",

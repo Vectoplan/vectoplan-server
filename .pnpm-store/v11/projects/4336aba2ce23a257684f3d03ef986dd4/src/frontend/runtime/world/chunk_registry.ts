@@ -514,6 +514,7 @@ function createFailedPlaceholderEntry(input: {
       blockCellValueRule: "paletteIndex + 1",
     },
     cellIndexOrder: "x-fastest-y-then-z",
+    objectRefs: [],
     metadata: {},
     raw: null,
   };

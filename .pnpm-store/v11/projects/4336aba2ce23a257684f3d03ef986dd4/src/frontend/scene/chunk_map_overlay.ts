@@ -18,6 +18,7 @@ export interface ChunkMapOverlayOptions {
   readonly projectId: string;
   readonly worldId: string;
   readonly terrainRegionUrl?: string;
+  readonly getEarthGridFrame?: () => unknown;
   readonly onOpen?: () => void | Promise<void>;
   readonly onClose?: () => void | Promise<void>;
 }
@@ -66,11 +67,42 @@ interface MapTransform {
   readonly offsetY: number;
 }
 
+interface MapParcelFeature {
+  readonly parcelId: string;
+  readonly geometry: Readonly<Record<string, unknown>>;
+  readonly selected: boolean;
+  readonly adjacent: boolean;
+}
+
+interface EarthGridFrameContract {
+  readonly schemaVersion: "vectoplan-earth-grid-frame.v1";
+  readonly horizontalMapping: "vectoplan-periodic-equirectangular";
+  readonly mappingVersion: "1";
+  readonly axisConvention: "x-east-y-up-z-north";
+  readonly worldWidthCells: number;
+  readonly worldHeightCells: number;
+  readonly metersPerCell: number;
+  readonly centralMeridianDegrees: number;
+  readonly storageOrigin: Readonly<{ x: number; y: number; z: number }>;
+}
+
+interface MapParcelOverlayState {
+  readonly features: readonly MapParcelFeature[];
+  readonly projectCoordinate: { readonly longitude: number; readonly latitude: number } | null;
+  readonly revision: number;
+}
+
 const MAP_UPDATE_INTERVAL_MS = 100;
 const MAP_MIN_ZOOM = 1;
 const MAP_MAX_ZOOM = 5;
 const MAP_ZOOM_STEP = 1.18;
 const FALLBACK_BLOCK_COLOR = "#7b8798";
+
+const PARCEL_OVERLAY_SYNC = "vectoplan-editor:parcel-overlay-sync";
+const PARCEL_SELECTION_SYNC = "vectoplan-app:parcel-selection-sync";
+const MAP_PARCEL_CHANGED = "vectoplan-map:parcel-selection-changed";
+const EDITOR_PARCEL_CHANGED = "vectoplan-editor:parcel-selection-changed";
+const EARTH_GRID_READY = "vectoplan-editor:earth-grid-frame-ready";
 
 function clean(value: unknown, fallback = ""): string {
   try {
@@ -79,6 +111,139 @@ function clean(value: unknown, fallback = ""): string {
   } catch {
     return fallback;
   }
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
+function asArray(value: unknown): readonly unknown[] {
+  return Array.isArray(value) ? value : [];
+}
+
+function centered(value: number, width: number): number {
+  return ((value + width / 2) % width + width) % width - width / 2;
+}
+
+function normalizeLongitude(value: number): number {
+  return centered(value, 360);
+}
+
+function normalizeEarthGrid(value: unknown): EarthGridFrameContract | null {
+  const record = asRecord(value);
+  const storageOrigin = asRecord(record.storageOrigin);
+  const worldWidthCells = Number(record.worldWidthCells);
+  const worldHeightCells = Number(record.worldHeightCells);
+  const metersPerCell = Number(record.metersPerCell);
+  const centralMeridianDegrees = Number(record.centralMeridianDegrees);
+  const originX = Number(storageOrigin.x);
+  const originY = Number(storageOrigin.y);
+  const originZ = Number(storageOrigin.z);
+  if (
+    clean(record.schemaVersion) !== "vectoplan-earth-grid-frame.v1"
+    || clean(record.horizontalMapping) !== "vectoplan-periodic-equirectangular"
+    || clean(record.mappingVersion) !== "1"
+    || clean(record.axisConvention) !== "x-east-y-up-z-north"
+    || !Number.isFinite(worldWidthCells) || worldWidthCells <= 0
+    || !Number.isFinite(worldHeightCells) || worldHeightCells <= 0
+    || !Number.isFinite(metersPerCell) || metersPerCell <= 0
+    || !Number.isFinite(centralMeridianDegrees)
+    || !Number.isFinite(originX) || !Number.isFinite(originY) || !Number.isFinite(originZ)
+  ) return null;
+  return {
+    schemaVersion: "vectoplan-earth-grid-frame.v1",
+    horizontalMapping: "vectoplan-periodic-equirectangular",
+    mappingVersion: "1",
+    axisConvention: "x-east-y-up-z-north",
+    worldWidthCells,
+    worldHeightCells,
+    metersPerCell,
+    centralMeridianDegrees,
+    storageOrigin: { x: originX, y: originY, z: originZ },
+  };
+}
+
+function fallbackEarthGrid(
+  coordinate: MapParcelOverlayState["projectCoordinate"],
+): EarthGridFrameContract | null {
+  if (!coordinate) return null;
+  const worldWidthCells = 40_000_000;
+  const worldHeightCells = 20_000_000;
+  const chunkSize = 16;
+  const gridX = normalizeLongitude(coordinate.longitude) / 360 * worldWidthCells;
+  const gridZ = coordinate.latitude / 180 * worldHeightCells;
+  return {
+    schemaVersion: "vectoplan-earth-grid-frame.v1",
+    horizontalMapping: "vectoplan-periodic-equirectangular",
+    mappingVersion: "1",
+    axisConvention: "x-east-y-up-z-north",
+    worldWidthCells,
+    worldHeightCells,
+    metersPerCell: 1,
+    centralMeridianDegrees: 0,
+    storageOrigin: {
+      x: Math.floor(gridX / chunkSize) * chunkSize,
+      y: 0,
+      z: Math.floor(gridZ / chunkSize) * chunkSize,
+    },
+  };
+}
+
+function lonLatToWorld(
+  longitude: number,
+  latitude: number,
+  frame: EarthGridFrameContract | null,
+): readonly [number, number] | null {
+  if (!frame || !Number.isFinite(longitude) || !Number.isFinite(latitude)) return null;
+  const longitudeDelta = centered(
+    normalizeLongitude(longitude) - frame.centralMeridianDegrees,
+    360,
+  );
+  const gridX = longitudeDelta / 360 * frame.worldWidthCells;
+  const gridZ = latitude / 180 * frame.worldHeightCells;
+  return [
+    centered(gridX - frame.storageOrigin.x, frame.worldWidthCells),
+    gridZ - frame.storageOrigin.z,
+  ];
+}
+
+function parcelFeatures(value: unknown): MapParcelOverlayState {
+  const root = asRecord(value);
+  const selection = asRecord(root.selection ?? root.parcelSelection ?? root.last_map_selection ?? root);
+  const selectedValues = asArray(selection.parcels ?? selection.features);
+  const selectedIds = new Set(selectedValues.map((item) => clean(asRecord(item).parcelId ?? asRecord(item).parcel_id ?? asRecord(item).id)));
+  const adjacentValues = asArray(selection.adjacentParcels ?? selection.adjacent_parcels);
+  const adjacentIds = new Set(adjacentValues.map((item) => clean(asRecord(item).parcelId ?? asRecord(item).parcel_id ?? asRecord(item).id)));
+  const byId = new Map<string, MapParcelFeature>();
+  for (const item of [...asArray(selection.availableParcels ?? selection.available_parcels), ...adjacentValues, ...selectedValues]) {
+    const record = asRecord(item);
+    const parcelId = clean(record.parcelId ?? record.parcel_id ?? record.featureId ?? record.id);
+    const geometry = asRecord(record.geometry);
+    if (!parcelId || !clean(geometry.type)) continue;
+    byId.set(parcelId, {
+      parcelId,
+      geometry,
+      selected: selectedIds.has(parcelId),
+      adjacent: adjacentIds.has(parcelId),
+    });
+  }
+  const coordinate = asRecord(selection.projectCoordinate ?? selection.project_coordinate);
+  const longitude = Number(coordinate.longitude ?? coordinate.lon ?? coordinate.lng);
+  const latitude = Number(coordinate.latitude ?? coordinate.lat);
+  return {
+    features: [...byId.values()].slice(0, 768),
+    projectCoordinate: Number.isFinite(longitude) && Number.isFinite(latitude)
+      ? { longitude, latitude }
+      : null,
+    revision: Number.isFinite(Number(selection.revision)) ? Number(selection.revision) : 0,
+  };
+}
+
+function geometryPolygons(geometry: Readonly<Record<string, unknown>>): readonly unknown[] {
+  const coordinates = asArray(geometry.coordinates);
+  return clean(geometry.type) === "Polygon" ? [coordinates] : coordinates;
 }
 
 function clamp(value: number, minimum: number, maximum: number): number {
@@ -278,6 +443,12 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   let zoom = 1;
   let viewCenterX: number | null = null;
   let viewCenterZ: number | null = null;
+  let earthGridFrame: EarthGridFrameContract | null = normalizeEarthGrid(options.getEarthGridFrame?.());
+  let parcels: MapParcelOverlayState = {
+    features: [],
+    projectCoordinate: null,
+    revision: 0,
+  };
   let lastInput: ChunkMapOverlayUpdate = {
     localPlayer: null,
     remotePlayers: [],
@@ -399,8 +570,55 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     backgroundContext.fillRect(0, 0, width, height);
   }
 
+  function drawParcelBoundaries(): void {
+    if (!context || !transform || parcels.features.length === 0) return;
+    earthGridFrame = normalizeEarthGrid(options.getEarthGridFrame?.()) ?? earthGridFrame;
+    const frame = earthGridFrame ?? fallbackEarthGrid(parcels.projectCoordinate);
+    if (!frame) return;
+    const features = [...parcels.features].sort((first, second) => Number(first.selected) - Number(second.selected));
+    const dpr = clamp(window.devicePixelRatio || 1, 1, 2);
+    for (const feature of features) {
+      for (const polygonValue of geometryPolygons(feature.geometry)) {
+        const rings = asArray(polygonValue);
+        context.beginPath();
+        let traced = false;
+        for (const ringValue of rings) {
+          const ring = asArray(ringValue)
+            .map((coordinate) => {
+              const point = asArray(coordinate);
+              return lonLatToWorld(Number(point[0]), Number(point[1]), frame);
+            })
+            .filter((point): point is readonly [number, number] => point !== null);
+          if (ring.length < 3) continue;
+          ring.forEach(([worldX, worldZ], index) => {
+            const x = transform!.offsetX + (worldX - transform!.minX) * transform!.scale;
+            const y = transform!.offsetY + (worldZ - transform!.minZ) * transform!.scale;
+            if (index === 0) context.moveTo(x, y);
+            else context.lineTo(x, y);
+          });
+          context.closePath();
+          traced = true;
+        }
+        if (!traced) continue;
+        if (feature.selected) {
+          context.fillStyle = "rgba(37, 99, 235, 0.24)";
+          context.fill("evenodd");
+        }
+        context.strokeStyle = feature.selected
+          ? "rgba(29, 78, 216, 1)"
+          : feature.adjacent
+            ? "rgba(59, 130, 246, 0.72)"
+            : "rgba(96, 165, 250, 0.46)";
+        context.lineWidth = (feature.selected ? 3 : feature.adjacent ? 1.7 : 1.1) * dpr;
+        context.setLineDash(feature.selected ? [] : [4 * dpr, 3 * dpr]);
+        context.stroke();
+      }
+    }
+    context.setLineDash([]);
+  }
+
   function scheduleTerrainRegionRefresh(delayMs: number): void {
-    if (destroyed || !options.terrainRegionUrl || terrainRegionPoll !== null) return;
+    if (destroyed || overlay.hidden || !options.terrainRegionUrl || terrainRegionPoll !== null) return;
 
     terrainRegionPoll = window.setTimeout(() => {
       terrainRegionPoll = null;
@@ -409,7 +627,7 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   }
 
   async function refreshTerrainRegion(): Promise<void> {
-    if (destroyed || !options.terrainRegionUrl || terrainRegion?.status === "ready") return;
+    if (destroyed || overlay.hidden || !options.terrainRegionUrl || terrainRegion?.status === "ready") return;
     try {
       const response = await fetch(options.terrainRegionUrl, {
         method: "GET",
@@ -528,6 +746,7 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     }
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(backgroundCanvas, 0, 0);
+    drawParcelBoundaries();
     input.remotePlayers.forEach(drawPlayer);
     if (input.localPlayer) drawPlayer(input.localPlayer);
     renderPlayersList(input);
@@ -617,6 +836,7 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     viewCenterZ = null;
     updateZoomControls();
     void options.onOpen?.();
+    void refreshTerrainRegion();
     canvas.focus({ preventScroll: true });
     render(lastInput);
   }
@@ -624,6 +844,10 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   function close(): void {
     if (destroyed || overlay.hidden) return;
     overlay.hidden = true;
+    if (terrainRegionPoll !== null) {
+      window.clearTimeout(terrainRegionPoll);
+      terrainRegionPoll = null;
+    }
     options.root.dataset.chunkMapOpen = "false";
     void options.onClose?.();
   }
@@ -635,6 +859,30 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     event.preventDefault();
     event.stopImmediatePropagation();
     close();
+  }
+
+  function applyParcelOverlay(value: unknown): void {
+    const next = parcelFeatures(value);
+    parcels = next;
+    earthGridFrame = normalizeEarthGrid(options.getEarthGridFrame?.()) ?? earthGridFrame;
+    lastChunkSignature = "";
+    if (!overlay.hidden) render(lastInput);
+  }
+
+  function handleParcelMessage(event: MessageEvent): void {
+    const message = asRecord(event.data);
+    const type = clean(message.type ?? message.kind);
+    if (![PARCEL_SELECTION_SYNC, MAP_PARCEL_CHANGED, EDITOR_PARCEL_CHANGED].includes(type)) return;
+    applyParcelOverlay(message.detail ?? message.selection ?? message);
+  }
+
+  function handleParcelOverlayEvent(event: Event): void {
+    applyParcelOverlay((event as CustomEvent).detail);
+  }
+
+  function handleEarthGridReady(event: Event): void {
+    earthGridFrame = normalizeEarthGrid((event as CustomEvent).detail) ?? earthGridFrame;
+    if (!overlay.hidden) render(lastInput);
   }
 
   const handle: ChunkMapOverlayHandle = {
@@ -659,6 +907,9 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
       zoomInButton.removeEventListener("click", handleZoomIn);
       zoomResetButton.removeEventListener("click", handleZoomReset);
       document.removeEventListener("keydown", handleMapShortcut, true);
+      window.removeEventListener("message", handleParcelMessage);
+      window.removeEventListener(PARCEL_OVERLAY_SYNC, handleParcelOverlayEvent);
+      window.removeEventListener(EARTH_GRID_READY, handleEarthGridReady);
       overlay.remove();
       delete options.root.dataset.chunkMapOpen;
     },
@@ -669,7 +920,9 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   zoomInButton.addEventListener("click", handleZoomIn);
   zoomResetButton.addEventListener("click", handleZoomReset);
   document.addEventListener("keydown", handleMapShortcut, true);
+  window.addEventListener("message", handleParcelMessage);
+  window.addEventListener(PARCEL_OVERLAY_SYNC, handleParcelOverlayEvent);
+  window.addEventListener(EARTH_GRID_READY, handleEarthGridReady);
   updateZoomControls();
-  void refreshTerrainRegion();
   return handle;
 }

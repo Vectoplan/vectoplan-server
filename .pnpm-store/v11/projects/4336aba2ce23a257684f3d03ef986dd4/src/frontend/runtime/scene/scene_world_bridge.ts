@@ -15,6 +15,10 @@ import type {
   ChunkSceneSnapshot,
   ChunkSceneStats,
 } from "@render/chunk_scene";
+import type {
+  GeodataOverlaySceneHandle,
+  GeodataOverlaySceneSnapshot,
+} from "@render/geodata_overlay_scene";
 
 export type SceneWorldBridgeStatus =
   | "created"
@@ -43,6 +47,7 @@ export type SceneWorldBridgeSyncReason =
 export interface SceneWorldBridgeOptions {
   readonly worldRuntime: WorldRuntimeHandle;
   readonly chunkScene: ChunkSceneHandle;
+  readonly geodataOverlayScene?: GeodataOverlaySceneHandle;
   readonly store?: EditorStore;
   readonly logger?: EditorLogger;
   readonly signal?: AbortSignal;
@@ -106,6 +111,7 @@ export interface SceneWorldBridgeSnapshot {
   readonly sourceSubscribed: boolean;
   readonly chunkScene: ChunkSceneSnapshot;
   readonly chunkSceneStats: ChunkSceneStats;
+  readonly geodataOverlayScene: GeodataOverlaySceneSnapshot | null;
 }
 
 export interface SceneWorldBridgeHandle {
@@ -460,6 +466,7 @@ export function createSceneWorldBridge(options: SceneWorldBridgeOptions): SceneW
   });
   const worldRuntime = options.worldRuntime;
   const chunkScene = options.chunkScene;
+  const geodataOverlayScene = options.geodataOverlayScene;
   const store = options.store;
   const logger = options.logger;
   const debounceSyncMs = normalizeDebounceMs(options.debounceSyncMs);
@@ -555,6 +562,7 @@ export function createSceneWorldBridge(options: SceneWorldBridgeOptions): SceneW
         clearMissing: syncOptions?.clearMissing ?? clearMissingChunksOnSync,
         reason,
       });
+      geodataOverlayScene?.syncFromRegistry(registry, `world-bridge.${reason}`);
 
       const stats = chunkScene.getStats();
       const renderedChunkKeys = chunkScene.getVisibleChunkKeys();
@@ -630,6 +638,7 @@ export function createSceneWorldBridge(options: SceneWorldBridgeOptions): SceneW
       lastDirtyChunkKeys = dirtyChunkKeys;
 
       if (dirtyChunkKeys.length === 0) {
+        geodataOverlayScene?.syncFromRegistry(registry, `world-bridge.${reason}`);
         const emptyResult = buildSuccessResult({
           reason,
           syncedChunkKeys: [],
@@ -647,6 +656,7 @@ export function createSceneWorldBridge(options: SceneWorldBridgeOptions): SceneW
         replaceExisting: true,
         reason,
       });
+      geodataOverlayScene?.syncFromRegistry(registry, `world-bridge.${reason}`);
 
       const stats = chunkScene.getStats();
 
@@ -941,6 +951,7 @@ export function createSceneWorldBridge(options: SceneWorldBridgeOptions): SceneW
       sourceSubscribed: sourceUnsubscribe !== null,
       chunkScene: chunkScene.getSnapshot(),
       chunkSceneStats: chunkScene.getStats(),
+      geodataOverlayScene: geodataOverlayScene?.getSnapshot() ?? null,
     };
   }
 

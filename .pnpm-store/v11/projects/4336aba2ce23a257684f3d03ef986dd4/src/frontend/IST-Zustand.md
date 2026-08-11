@@ -7,6 +7,31 @@ Dieses Dokument beschreibt den aktuellen Aufbau, die Ordner- und Dateistruktur, 
 
 ---
 
+## Aktualisierung 2026-08-10: WorldEdit und Grundstücksraster v7
+
+Die aktuelle Fachdokumentation liegt in
+[`../../docs/PARCEL_GRID_AND_WORLDEDIT.md`](../../docs/PARCEL_GRID_AND_WORLDEDIT.md).
+
+Die aktive Runtime unter `scene/scene_runtime.ts` verwendet inzwischen:
+
+- `world_edit/world_edit_controller.ts` für Selection, Paint, Sculpt,
+  Flurstück, Grundstücksraster, Messwerkzeug und Copy/Cut/Paste,
+- `vectoplan-parcel-grid-guide.v7` für das feste horizontale 0–3-m-Raster mit
+  lückenlos auf Nachbarblöcke verteiltem Übergang,
+- `vectoplan-parcel-grid-state.v1` für die projektweite Wiederherstellung der
+  Rasterkonfiguration pro Flurstück,
+- `runtime/world/chunk_service_source.ts` für normale `SetBlock`- und schräge
+  semantische `PlaceObject`-Placements,
+- eine idle-gesteuerte Legacy-Migration in Batches von maximal 24 Objekten,
+  damit Polygon-Footprints nach einem Reload aus Snapshot-`objectRefs` geladen
+  werden.
+
+Ältere Abschnitte dieser Datei, die den aktiven Placement-Pfad ausschließlich
+als `SetBlock(runtimeBlockTypeId)` beschreiben, sind damit historische
+Zwischenstände.
+
+---
+
 ## Aktualisierung 2026-07-28: Realtime-Avatare und Environment-System
 
 Die aktive Runtime `scene/scene_runtime.ts` integriert jetzt zusätzlich:

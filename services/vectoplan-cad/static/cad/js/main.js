@@ -35,6 +35,11 @@
     pinch: null,
     spacePressed: false,
     renderScheduled: false,
+    parcelSelection: null,
+    projectInputLoaded: false,
+    projectionLoadSequence: 0,
+    lastProjectionParcelSignature: "",
+    parcelReloadTimer: 0,
   };
 
   const toolConfig = {
@@ -52,6 +57,217 @@
     });
     if (text !== null) node.textContent = text;
     return node;
+  }
+
+  function normalizeGridRotation(value) {
+    let result = Number.isFinite(Number(value)) ? Number(value) : 0;
+    while (result >= 90) result -= 180;
+    while (result < -90) result += 180;
+    return Math.abs(result) < 1e-8 ? 0 : result;
+  }
+
+  function normalizeParcelList(value, maximum = 64) {
+    return (Array.isArray(value) ? value : []).slice(0, maximum).map((entry) => {
+      const item = entry && typeof entry === "object" ? entry : {};
+      const geometry = item.geometry && typeof item.geometry === "object" ? item.geometry : {};
+      const parcelId = String(item.parcelId || item.parcel_id || item.id || "").trim();
+      if (!parcelId || !["Polygon", "MultiPolygon"].includes(String(geometry.type || ""))) return null;
+      return {
+        parcelId,
+        datasetId: String(item.datasetId || item.dataset_id || "flurstuecke"),
+        geometry,
+        properties: item.properties && typeof item.properties === "object" ? item.properties : {},
+      };
+    }).filter(Boolean);
+  }
+
+  function normalizeParcelSelection(value) {
+    const root = value && typeof value === "object" ? value : {};
+    const source = root.detail || root.selection || root.last_map_selection || root;
+    const coordinate = source.projectCoordinate || source.project_coordinate || {};
+    const longitude = Number(coordinate.longitude ?? coordinate.lon ?? coordinate.lng);
+    const latitude = Number(coordinate.latitude ?? coordinate.lat);
+    const incomingProjectId = String(source.projectPublicId || source.project_public_id || "").trim();
+    if (projectContext.projectPublicId && incomingProjectId && incomingProjectId !== projectContext.projectPublicId) return null;
+    return {
+      projectPublicId: projectContext.projectPublicId || incomingProjectId,
+      coordinateSpace: "wgs84",
+      coveragePolicy: "cell-contained",
+      revision: Number.isFinite(Number(source.revision)) ? Number(source.revision) : 0,
+      projectCoordinate: Number.isFinite(longitude) && Number.isFinite(latitude)
+        ? {longitude, latitude}
+        : null,
+      gridRotationDegrees: normalizeGridRotation(source.gridRotationDegrees ?? source.grid_rotation_degrees),
+      parcels: normalizeParcelList(source.parcels || source.features, 64),
+      adjacentParcels: normalizeParcelList(source.adjacentParcels || source.adjacent_parcels, 128),
+    };
+  }
+
+  function parcelSelectionSignature(selection = state.parcelSelection) {
+    if (!selection) return "none";
+    return JSON.stringify({
+      projectPublicId: selection.projectPublicId,
+      revision: selection.revision,
+      coordinate: selection.projectCoordinate,
+      gridRotationDegrees: selection.gridRotationDegrees,
+      parcels: selection.parcels.map((parcel) => parcel.parcelId).sort(),
+    });
+  }
+
+  function parcelPolygons(parcel) {
+    const geometry = parcel?.geometry || {};
+    if (geometry.type === "Polygon") return [geometry.coordinates || []];
+    return geometry.type === "MultiPolygon" && Array.isArray(geometry.coordinates)
+      ? geometry.coordinates
+      : [];
+  }
+
+  function exactCoordinateFrame() {
+    const frame = state.input?.coordinate_frame || state.input?.coordinateFrame;
+    const origin = frame?.storageOrigin;
+    const width = Number(frame?.worldWidthCells);
+    const height = Number(frame?.worldHeightCells);
+    const centralMeridian = Number(frame?.centralMeridianDegrees);
+    const originX = Number(origin?.x);
+    const originZ = Number(origin?.z);
+    const cellSizeMm = Number(frame?.modelCellSizeMm || (Number(frame?.metersPerCell) * 1000));
+    if (frame?.schemaVersion !== "vectoplan-earth-grid-frame.v1"
+      || frame?.horizontalMapping !== "vectoplan-periodic-equirectangular"
+      || !Number.isFinite(width) || width <= 0
+      || !Number.isFinite(height) || height <= 0
+      || !Number.isFinite(centralMeridian)
+      || !Number.isFinite(originX) || !Number.isFinite(originZ)
+      || !Number.isFinite(cellSizeMm) || cellSizeMm <= 0) return null;
+    return {width, height, centralMeridian, originX, originZ, cellSizeMm};
+  }
+
+  function centeredPeriodic(value, width) {
+    return ((((value + width / 2) % width) + width) % width) - width / 2;
+  }
+
+  function lonLatToExactWorldModelMm(longitude, latitude) {
+    const frame = exactCoordinateFrame();
+    const lon = Number(longitude);
+    const lat = Number(latitude);
+    if (!frame || !Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+    const longitudeDelta = centeredPeriodic(lon - frame.centralMeridian, 360);
+    const gridX = longitudeDelta / 360 * frame.width;
+    const gridZ = lat / 180 * frame.height;
+    const localX = centeredPeriodic(gridX - frame.originX, frame.width);
+    const localZ = gridZ - frame.originZ;
+    return [localX * frame.cellSizeMm, localZ * frame.cellSizeMm];
+  }
+
+  function lonLatToModelMm(longitude, latitude) {
+    const exact = lonLatToExactWorldModelMm(longitude, latitude);
+    if (exact) return [exact[0], -exact[1]];
+    const selection = state.parcelSelection;
+    const origin = selection?.projectCoordinate;
+    if (!origin || !Number.isFinite(Number(longitude)) || !Number.isFinite(Number(latitude))) return null;
+    const metresPerDegreeLat = 111320;
+    const metresPerDegreeLon = Math.max(1, metresPerDegreeLat * Math.cos(origin.latitude * Math.PI / 180));
+    const east = (Number(longitude) - origin.longitude) * metresPerDegreeLon;
+    const north = (Number(latitude) - origin.latitude) * metresPerDegreeLat;
+    return [east * 1000, -north * 1000];
+  }
+
+  function lonLatToWorldModelMm(longitude, latitude) {
+    const exact = lonLatToExactWorldModelMm(longitude, latitude);
+    if (exact) return exact;
+    const selection = state.parcelSelection;
+    const origin = selection?.projectCoordinate;
+    if (!origin || !Number.isFinite(Number(longitude)) || !Number.isFinite(Number(latitude))) return null;
+    const metresPerDegreeLat = 111320;
+    const metresPerDegreeLon = Math.max(1, metresPerDegreeLat * Math.cos(origin.latitude * Math.PI / 180));
+    const east = (Number(longitude) - origin.longitude) * metresPerDegreeLon;
+    const north = (Number(latitude) - origin.latitude) * metresPerDegreeLat;
+    return [east * 1000, north * 1000];
+  }
+
+  function parcelModelPolygons(parcel) {
+    return parcelPolygons(parcel).map((polygon) => (Array.isArray(polygon) ? polygon : [])
+      .map((ring) => (Array.isArray(ring) ? ring : [])
+        .map((coordinate) => lonLatToModelMm(coordinate?.[0], coordinate?.[1]))
+        .filter(Boolean))
+      .filter((ring) => ring.length >= 3))
+      .filter((polygon) => polygon.length > 0);
+  }
+
+  function parcelWorldModelPolygons(parcel) {
+    return parcelPolygons(parcel).map((polygon) => (Array.isArray(polygon) ? polygon : [])
+      .map((ring) => (Array.isArray(ring) ? ring : [])
+        .map((coordinate) => lonLatToWorldModelMm(coordinate?.[0], coordinate?.[1]))
+        .filter(Boolean))
+      .filter((ring) => ring.length >= 3))
+      .filter((polygon) => polygon.length > 0);
+  }
+
+  function pointInRing(point, ring) {
+    let inside = false;
+    let previous = ring[ring.length - 1];
+    for (const current of ring) {
+      if ((current[1] > point[1]) !== (previous[1] > point[1])) {
+        const crossing = ((previous[0] - current[0]) * (point[1] - current[1])
+          / (previous[1] - current[1])) + current[0];
+        if (point[0] < crossing) inside = !inside;
+      }
+      previous = current;
+    }
+    return inside;
+  }
+
+  function pointInParcelModel(point, parcel) {
+    return parcelWorldModelPolygons(parcel).some((polygon) => pointInRing(point, polygon[0])
+      && !polygon.slice(1).some((hole) => pointInRing(point, hole)));
+  }
+
+  function visibleViewportPrimitives(viewport) {
+    const primitives = viewport?.primitives || [];
+    const selected = state.parcelSelection?.parcels || [];
+    if (!selected.length || !state.parcelSelection?.projectCoordinate) return primitives;
+    return primitives.filter((primitive) => {
+      const bounds = primitiveModelBounds(primitive);
+      if (!bounds) return true;
+      const centre = [bounds.x + bounds.width / 2, bounds.y + bounds.height / 2];
+      return selected.some((parcel) => pointInParcelModel(centre, parcel));
+    });
+  }
+
+  function parcelContextBounds() {
+    const parcels = [
+      ...(state.parcelSelection?.parcels || []),
+      ...(state.parcelSelection?.adjacentParcels || []),
+    ];
+    const points = parcels.flatMap((parcel) => parcelModelPolygons(parcel).flat(2));
+    if (!points.length) return null;
+    const xs = points.map((point) => point[0]);
+    const ys = points.map((point) => point[1]);
+    return {
+      x: Math.min(...xs), y: Math.min(...ys),
+      width: Math.max(1, Math.max(...xs) - Math.min(...xs)),
+      height: Math.max(1, Math.max(...ys) - Math.min(...ys)),
+    };
+  }
+
+  function parcelPathData(parcel) {
+    return parcelModelPolygons(parcel).map((polygon) => polygon.map((ring) => ring
+      .map((point, index) => `${index === 0 ? "M" : "L"} ${point[0]} ${point[1]}`)
+      .join(" ") + " Z").join(" ")).join(" ");
+  }
+
+  function renderParcelContext() {
+    const selection = state.parcelSelection;
+    if (!selection?.projectCoordinate) return;
+    const group = svgEl("g", {class: "parcel-context", "aria-label": "Flurstuecksgrenzen"});
+    selection.adjacentParcels.forEach((parcel) => {
+      const d = parcelPathData(parcel);
+      if (d) group.append(svgEl("path", {d, class: "parcel-boundary parcel-boundary-adjacent", "fill-rule": "evenodd"}));
+    });
+    selection.parcels.forEach((parcel) => {
+      const d = parcelPathData(parcel);
+      if (d) group.append(svgEl("path", {d, class: "parcel-boundary parcel-boundary-selected", "fill-rule": "evenodd"}));
+    });
+    if (group.childNodes.length) svg.append(group);
   }
 
   function showMessage(message, timeout = 3400) {
@@ -142,6 +358,8 @@
   }
 
   async function loadProjectInput() {
+    const loadSequence = ++state.projectionLoadSequence;
+    const requestedParcelSignature = parcelSelectionSignature();
     const result = await fetchJson(
       `${routePrefix}/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection`,
       {
@@ -153,9 +371,11 @@
             viewKind: "floor_plan",
             representationMode: "semantic-construction",
           },
+          parcelSelection: state.parcelSelection,
         }),
       },
     );
+    if (loadSequence !== state.projectionLoadSequence) return;
     const input = result?.snapshot?.projection;
     const statistics = result?.snapshot?.statistics || {};
     const userPlacementMode = statistics.sourceMode === "current-user-authored-cells"
@@ -175,6 +395,8 @@
       input,
       loadedMessage,
     );
+    state.projectInputLoaded = true;
+    state.lastProjectionParcelSignature = requestedParcelSignature;
     updateConnectionStatus({
       coreConnected: true,
       projectConnected: true,
@@ -184,6 +406,16 @@
         ? `Projekt ${projectLabel} verbunden · ${userPlacementCount} Benutzerblöcke`
         : `Projekt ${projectLabel} verbunden`,
     });
+    if (parcelSelectionSignature() !== requestedParcelSignature) scheduleParcelProjectionReload();
+  }
+
+  function scheduleParcelProjectionReload() {
+    if (!projectContext.coreProjectId || !state.projectInputLoaded) return;
+    window.clearTimeout(state.parcelReloadTimer);
+    state.parcelReloadTimer = window.setTimeout(() => {
+      if (state.lastProjectionParcelSignature === parcelSelectionSignature()) return;
+      loadProjectInput().catch(handleError);
+    }, 180);
   }
 
   async function refreshProjection() {
@@ -217,6 +449,71 @@
     renderInspector();
     renderCommandLog();
     syncHistoryButtons();
+  }
+
+  function modelPointToNorthUp(point) {
+    if (!Array.isArray(point) || !Number.isFinite(Number(point[0])) || !Number.isFinite(Number(point[1]))) return [0, 0];
+    if (!state.parcelSelection?.projectCoordinate) return [Number(point[0]), Number(point[1])];
+    const x = Number(point[0]);
+    const z = Number(point[1]);
+    return [x, -z];
+  }
+
+  function northUpPointToModel(point) {
+    if (!state.parcelSelection?.projectCoordinate) return [Number(point[0]) || 0, Number(point[1]) || 0];
+    const east = Number(point[0]) || 0;
+    const north = -(Number(point[1]) || 0);
+    return [east, north];
+  }
+
+  function northUpPrimitive(primitive) {
+    const source = primitive?.geometry || {};
+    const geometry = {...source};
+    let primitiveType = primitive.primitive_type;
+    if (primitiveType === "rect") {
+      const x = Number(source.x_mm) || 0;
+      const y = Number(source.y_mm) || 0;
+      const width = Number(source.width_mm) || 0;
+      const height = Number(source.height_mm) || 0;
+      primitiveType = "polygon";
+      geometry.points_mm = [
+        [x, y], [x + width, y], [x + width, y + height], [x, y + height],
+      ].map(modelPointToNorthUp);
+    } else if (primitiveType === "polygon") {
+      geometry.points_mm = (source.points_mm || []).map(modelPointToNorthUp);
+    } else if (primitiveType === "thick_path") {
+      geometry.path_mm = (source.path_mm || []).map(modelPointToNorthUp);
+    } else if (primitiveType === "thick_segments") {
+      geometry.segments_mm = (source.segments_mm || []).map((segment) => segment.map(modelPointToNorthUp));
+      geometry.paths_mm = (source.paths_mm || []).map((path) => path.map(modelPointToNorthUp));
+    } else if (primitiveType === "thick_arc") {
+      geometry.center_mm = modelPointToNorthUp(source.center_mm || [0, 0]);
+      geometry.start_angle_deg = -(Number(source.start_angle_deg) || 0);
+      geometry.sweep_angle_deg = -(Number(source.sweep_angle_deg) || 0);
+    } else if (["line", "dimension"].includes(primitiveType)) {
+      geometry.start_mm = modelPointToNorthUp(source.start_mm || [0, 0]);
+      geometry.end_mm = modelPointToNorthUp(source.end_mm || [0, 0]);
+    } else if (Number.isFinite(Number(source.x_mm)) && Number.isFinite(Number(source.y_mm))) {
+      [geometry.x_mm, geometry.y_mm] = modelPointToNorthUp([source.x_mm, source.y_mm]);
+    }
+    return {...primitive, primitive_type: primitiveType, geometry};
+  }
+
+  function northUpBounds(bounds) {
+    if (!bounds) return null;
+    const points = [
+      [bounds.x, bounds.y],
+      [bounds.x + bounds.width, bounds.y],
+      [bounds.x + bounds.width, bounds.y + bounds.height],
+      [bounds.x, bounds.y + bounds.height],
+    ].map(modelPointToNorthUp);
+    const xs = points.map((point) => point[0]);
+    const ys = points.map((point) => point[1]);
+    return {
+      x: Math.min(...xs), y: Math.min(...ys),
+      width: Math.max(1, Math.max(...xs) - Math.min(...xs)),
+      height: Math.max(1, Math.max(...ys) - Math.min(...ys)),
+    };
   }
 
   function primitiveModelBounds(primitive) {
@@ -255,7 +552,7 @@
   function focusedProjectionBounds(viewport) {
     const assetKind = state.input?.document?.plan_profile?.asset_kind;
     if (!["user_authored_cells", "semantic_construction_model"].includes(assetKind)) return null;
-    const rectangles = (viewport?.primitives || []).map(primitiveModelBounds).filter(Boolean);
+    const rectangles = visibleViewportPrimitives(viewport).map(northUpPrimitive).map(primitiveModelBounds).filter(Boolean);
     if (rectangles.length < 12) return null;
 
     const xCenters = rectangles
@@ -284,7 +581,7 @@
       maxY = centerY + minimumSpan / 2;
     }
 
-    const completeBounds = viewport?.model_view_box_mm;
+    const completeBounds = northUpBounds(viewport?.model_view_box_mm);
     const focusedWidth = maxX - minX;
     const focusedHeight = maxY - minY;
     if (completeBounds
@@ -296,7 +593,17 @@
   }
 
   function viewportCamera(viewport) {
-    const bounds = focusedProjectionBounds(viewport) || viewport?.model_view_box_mm;
+    let bounds = focusedProjectionBounds(viewport) || northUpBounds(viewport?.model_view_box_mm);
+    const parcelBounds = parcelContextBounds();
+    if (parcelBounds && bounds) {
+      const minX = Math.min(bounds.x, parcelBounds.x);
+      const minY = Math.min(bounds.y, parcelBounds.y);
+      const maxX = Math.max(bounds.x + bounds.width, parcelBounds.x + parcelBounds.width);
+      const maxY = Math.max(bounds.y + bounds.height, parcelBounds.y + parcelBounds.height);
+      bounds = {x: minX, y: minY, width: maxX - minX, height: maxY - minY};
+    } else if (parcelBounds) {
+      bounds = parcelBounds;
+    }
     if (!bounds) return {x: -1000, y: -1000, width: 16000, height: 12000};
     const paddedWidth = bounds.width * 1.2;
     const paddedHeight = bounds.height * 1.2;
@@ -340,13 +647,21 @@
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, class: "workspace-plane"}));
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, fill: "url(#workspace-grid-minor)"}));
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, fill: "url(#workspace-grid-major)"}));
+    renderParcelContext();
 
     const bounds = viewport.model_view_box_mm;
     if (bounds) {
-      svg.append(svgEl("rect", {x: bounds.x, y: bounds.y, width: bounds.width, height: bounds.height, class: "model-frame"}));
-      svg.append(svgEl("text", {x: bounds.x + 120, y: bounds.y - 220, class: "model-frame-label"}, "ERDGESCHOSS · MODELLBEREICH"));
+      const framePoints = [
+        [bounds.x, bounds.y],
+        [bounds.x + bounds.width, bounds.y],
+        [bounds.x + bounds.width, bounds.y + bounds.height],
+        [bounds.x, bounds.y + bounds.height],
+      ].map(modelPointToNorthUp);
+      const displayBounds = northUpBounds(bounds);
+      svg.append(svgEl("polygon", {points: framePoints.map((point) => point.join(",")).join(" "), class: "model-frame"}));
+      svg.append(svgEl("text", {x: displayBounds.x + 120, y: displayBounds.y - 220, class: "model-frame-label"}, "ERDGESCHOSS · MODELLBEREICH"));
     }
-    (viewport.primitives || []).forEach((primitive) => svg.append(renderPrimitive(primitive)));
+    visibleViewportPrimitives(viewport).map(northUpPrimitive).forEach((primitive) => svg.append(renderPrimitive(primitive)));
     renderDraft();
   }
   function renderPrimitive(primitive) {
@@ -912,6 +1227,8 @@
   async function submitDrawCommand(start, end) {
     const config = toolConfig[state.activeTool];
     const documentData = state.input.document;
+    const modelStart = northUpPointToModel(start.model);
+    const modelEnd = northUpPointToModel(end);
     state.commandSequence += 1;
     const payload = {
       contract_version: "cad-command/0.1",
@@ -921,7 +1238,7 @@
       viewport_ref: start.viewportRef,
       base_revision_ref: documentData.source_revision_ref,
       client_command_id: `local_${Date.now().toString(36)}_${state.commandSequence}`,
-      geometry: {start_mm: start.model, end_mm: end},
+      geometry: {start_mm: modelStart, end_mm: modelEnd},
       parameters: {},
       user_context: {source: "vectoplan-cad-browser", mode: "stateless_draft"},
     };
@@ -1027,6 +1344,18 @@
     document.querySelector('[data-action="undo"]').addEventListener("click", () => undo().catch(handleError));
     document.querySelector('[data-action="redo"]').addEventListener("click", () => redo().catch(handleError));
     window.addEventListener("resize", handleResize);
+    window.addEventListener("message", (event) => {
+      if (event.source !== window.parent) return;
+      const data = event.data && typeof event.data === "object" ? event.data : {};
+      if (String(data.type || data.kind || "") !== "vectoplan-app:parcel-selection-sync") return;
+      const selection = normalizeParcelSelection(data.detail || data);
+      if (!selection) return;
+      const previousSignature = parcelSelectionSignature();
+      state.parcelSelection = selection;
+      state.camera = null;
+      if (state.scene) renderPlan();
+      if (previousSignature !== parcelSelectionSignature()) scheduleParcelProjectionReload();
+    });
     window.addEventListener("keydown", (event) => {
       if (event.code === "Space" && !isEditableTarget(event.target)) {
         event.preventDefault();
@@ -1069,6 +1398,14 @@
 
   async function init() {
     bindEvents();
+    try {
+      window.parent?.postMessage({
+        type: "vectoplan-cad:parcel-selection-request",
+        kind: "vectoplan-cad:parcel-selection-request",
+        source: "vectoplan-cad",
+        detail: {projectPublicId: projectContext.projectPublicId},
+      }, "*");
+    } catch (_error) {}
     selectTool("select");
     await loadBootstrap();
     if (projectContext.coreProjectId) {

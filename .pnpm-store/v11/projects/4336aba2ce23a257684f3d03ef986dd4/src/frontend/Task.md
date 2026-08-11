@@ -1,5 +1,11 @@
 # Task.md – `services/vectoplan-editor/src/frontend`
 
+> Status 2026-08-10: Der in dieser Datei geplante Library-/Inventory-Grundpfad
+> ist umgesetzt und um WorldEdit sowie semantische Grundstücksraster-
+> `PlaceObject`-Footprints erweitert. Diese Datei bleibt als historische
+> Umbauplanung erhalten. Für den aktiven Vertrag gilt
+> [`../../docs/PARCEL_GRID_AND_WORLDEDIT.md`](../../docs/PARCEL_GRID_AND_WORLDEDIT.md).
+
 ## Ziel dieses Dokuments
 
 Diese Datei beschreibt die offenen Aufgaben für den Umbau des aktuellen `src/frontend` in Richtung **Library-/VPLIB-basierter Editor-Inventory- und Placement-Flow**.
