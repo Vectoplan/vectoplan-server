@@ -409,7 +409,7 @@ Panels dürfen eingeklappt werden. Das Planblatt bleibt der zentrale Arbeitsgege
 
 ## 11. Aktueller Entwicklungsstand
 
-### Version 0.2 – Scene Graph und lokale Command-Entwürfe
+### Version 0.3 – Core-Projektion und Grundstückskontext
 
 Der Service enthält weiterhin das zustandslose Fundament aus Stufe 1 und zusätzlich eine erste zusammenhängende Ausbaustufe für professionelles CAD-Arbeiten:
 
@@ -426,10 +426,26 @@ Der Service enthält weiterhin das zustandslose Fundament aus Stufe 1 und zusät
 - auswählbare Scene-Primitives mit semantischem Inspector
 - validierte Exportaufträge für PDF, DXF, DWG und SVG
 - responsive Vollbild-Arbeitsfläche mit Zoom um die Mausposition, horizontalem Scrollen, mittlerer Maustasten-Navigation und Layersteuerung
+- lesender Core-Adapter für die Chunk-zu-2D-Projektion
+- synchronisierter Flurstückszustand aus dem Projekt-Workspace
+- kräftige Darstellung ausgewählter und gestrichelte Darstellung angrenzender
+  Flurstücke
+- nordenorientierte Darstellung von Projektions- und Grundstücksgeometrie
+- Begrenzung der darauf basierenden Grundrissauswertung auf die ausgewählte
+  Grundstücksvereinigung
 
 Wichtig: `accepted: false` in Command- und Exportantworten bedeutet weiterhin, dass ohne Core beziehungsweise Export-Worker nichts persistiert und kein Exportartefakt erzeugt wurde. `processable: true` zeigt an, dass der Auftrag fachlich gültig und für die spätere Weiterleitung vorbereitet ist.
 
-Der aktuelle Stand besitzt weiterhin keine Verbindung zu Core, Chunk, Library oder Converter und speichert keine Projektdaten.
+Der Service besitzt jetzt eine lesende Verbindung zu Core über
+`POST /api/v1/cad/core/projects/<core_project_id>/projection` und kann eine
+Importprojektion laden. Er kommuniziert weiterhin nicht direkt mit Chunk,
+Library oder Converter und speichert selbst keine Projektdaten. Ist Core nicht
+erreichbar, liefert die Route `projection_unavailable`; die UI darf diesen
+Zustand nicht als leere, erfolgreiche Projektion behandeln.
+
+Der gemeinsame Grundstücks- und Polygonvertrag ist in
+[`../vectoplan-editor/docs/PARCEL_GRID_AND_WORLDEDIT.md`](../vectoplan-editor/docs/PARCEL_GRID_AND_WORLDEDIT.md)
+beschrieben.
 
 ---
 
@@ -460,11 +476,16 @@ GET  /api/v1/cad/bootstrap
 GET  /api/v1/cad/plan-profiles
 GET  /api/v1/cad/test-input
 POST /api/v1/cad/preview
+POST /api/v1/cad/core/projects/<core_project_id>/projection
+GET  /api/v1/cad/core/projects/<core_project_id>/imports/<document_id>/projection
 POST /api/v1/cad/commands
 POST /api/v1/cad/exports
 ```
 
-`commands` und `exports` validieren ihre Verträge und liefern zustandslose Receipts. Sie speichern nichts und dispatchen ohne Core beziehungsweise Export-Worker keine Aufträge.
+Die beiden `core/projects`-Routen sind lesende Adapter zu `vectoplan-core`.
+`commands` und `exports` validieren ihre Verträge und liefern zustandslose
+Receipts. Sie speichern nichts und dispatchen ohne Core beziehungsweise
+Export-Worker keine Aufträge.
 
 ---
 

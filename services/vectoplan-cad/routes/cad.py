@@ -78,7 +78,7 @@ def core_projection(core_project_id: str):
     try:
         return jsonify(project_chunks_to_projection(current_app.config, core_project_id, payload))
     except CoreClientError as exc:
-        return jsonify({"ok": False, "error": "core_unavailable", "message": str(exc)}), 503
+        return jsonify({"ok": False, "error": "projection_unavailable", "message": str(exc)}), 502
 
 
 @cad_api_bp.get("/core/projects/<core_project_id>/imports/<document_id>/projection")
@@ -86,7 +86,7 @@ def core_import_projection(core_project_id: str, document_id: str):
     try:
         return jsonify(get_import_projection(current_app.config, core_project_id, document_id))
     except CoreClientError as exc:
-        return jsonify({"ok": False, "error": "core_unavailable", "message": str(exc)}), 503
+        return jsonify({"ok": False, "error": "projection_unavailable", "message": str(exc)}), 502
 
 
 @cad_api_bp.post("/commands")

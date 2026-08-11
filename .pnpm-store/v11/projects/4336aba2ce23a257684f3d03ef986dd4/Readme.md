@@ -13,6 +13,33 @@ Kurz gesagt:
 
 Die implementierte Earth-Geländepipeline vom Webscraper-Release bis zur begehbaren Three.js-Oberfläche ist serviceübergreifend in [`../vectoplan-chunk/docs/EARTH_DGM_PIPELINE.md`](../vectoplan-chunk/docs/EARTH_DGM_PIPELINE.md) dokumentiert. Dort stehen auch Batch-Umschlag, RLE-Dekodierung, Karten-/Sichtweitenvertrag, Spawn-Ausrichtung und die Diagnose für „Karte sichtbar, aber keine 3D-Oberfläche“.
 
+Der aktuelle Vertrag für synchronisierte Flurstücksauswahl, das schräge
+0–3-m-Grundstücksraster, Übergangs- und Sperrzellen, WorldEdit sowie die
+persistente `PlaceObject`-Migration liegt in
+[`docs/PARCEL_GRID_AND_WORLDEDIT.md`](docs/PARCEL_GRID_AND_WORLDEDIT.md).
+
+---
+
+## Aktueller Funktionsstand: Grundstücksraster und WorldEdit (2026-08-10)
+
+- Map, 3D und 2D verwenden denselben revisionsgebundenen Flurstückszustand.
+- Ausgewählte Grundstücke erhalten eine transparente Fläche und eine blaue
+  Grenzlinie; das rote Raster liegt auf einer festen horizontalen Ebene.
+- Die ersten drei Meter folgen in 1-m-Bändern der lokalen Grenzkante. Zwischen
+  3 und 4 m führen dreieckige Übergänge in das gerade Innenraster.
+- Abgeschnittene Übergangszellen werden rot markiert und sind nicht bebaubar.
+- Schräge Zellen werden über ihre tatsächliche Polygonüberlappung aufgelöst und
+  als `PlaceObject` mit `parcel-grid-prism.v1` persistiert.
+- Bereits vorhandene Benutzerblöcke werden zunächst semantisch gerendert und im
+  Leerlauf in Batches von höchstens 24 Einträgen dauerhaft migriert.
+- WorldEdit enthält Selection, Paint, Sculpt, Flurstück, Grundstücksraster,
+  Messwerkzeug und Copy/Cut/Paste. Die Werkzeugoptionen erscheinen nur im
+  geöffneten Creative-Inventar.
+
+Normale, nicht schräge Zellen verwenden weiterhin `SetBlock`. Der Chunk-Service
+bleibt die operative Weltwahrheit; die Darstellung im Editor ist kein eigener
+Persistenzspeicher.
+
 ---
 
 ## Aktueller Funktionsstand: Earth-DGM, Multiplayer und Tageslicht (2026-08-03)

@@ -33,6 +33,20 @@ def _request(
     try:
         with urllib.request.urlopen(request, timeout=timeout) as response:
             payload = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        message = f"Core returned HTTP {exc.code}"
+        try:
+            error_payload = json.loads(exc.read().decode("utf-8"))
+            error = error_payload.get("error") if isinstance(error_payload, Mapping) else None
+            if isinstance(error, Mapping):
+                message = str(error.get("message") or error.get("code") or message)
+            elif error:
+                message = str(error)
+            elif isinstance(error_payload, Mapping) and error_payload.get("message"):
+                message = str(error_payload["message"])
+        except (UnicodeDecodeError, json.JSONDecodeError, AttributeError):
+            pass
+        raise CoreClientError(message) from exc
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         raise CoreClientError(f"Core request failed: {exc}") from exc
     if not isinstance(payload, dict) or payload.get("ok") is False:
@@ -64,4 +78,3 @@ def get_import_projection(
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
         timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
     )
-

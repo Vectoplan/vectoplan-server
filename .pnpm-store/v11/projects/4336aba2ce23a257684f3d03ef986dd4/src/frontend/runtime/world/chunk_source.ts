@@ -147,6 +147,13 @@ export interface ChunkSourceLibraryPlacementInput extends EditorLibraryPlacement
   readonly libraryRef?: EditorInventoryLibraryRef | null;
   readonly placementCommand?: EditorInventoryPlacementCommand | null;
   readonly commandMetadata?: Record<string, unknown> | null;
+  readonly semanticPlacement?: Readonly<{
+    readonly kind: "parcel-grid-prism.v1";
+    readonly footprint: Readonly<Record<string, unknown>>;
+    readonly occupiedCells: readonly ChunkApiWorldPosition[];
+    readonly mergeKey: string;
+    readonly anchorPosition?: ChunkApiWorldPosition;
+  }> | null;
 }
 
 export interface ChunkSourceLifecycleState {
@@ -227,9 +234,9 @@ export interface ChunkSourceCommandOptions {
   /**
    * Library-/VPLIB-aware command context.
    *
-   * The chunk service currently still receives `SetBlock`. For Library/VPLIB
-   * placement, `runtimeBlockTypeId` is sent as the technical `blockTypeId`;
-   * the semantic library identity remains here as context.
+   * Ordinary placements use `SetBlock`; raster-adapted parcel bodies use
+   * `PlaceObject` with a polygon footprint. In both cases
+   * `runtimeBlockTypeId` remains the technical `blockTypeId`.
    */
   readonly runtimeBlockTypeId?: string | null;
   readonly blockTypeId?: string | null;
@@ -442,8 +449,8 @@ export interface ChunkSource {
   /**
    * Semantic Library/VPLIB placement path.
    *
-   * Implementations may internally still send `SetBlock` while the chunk
-   * service only understands runtime block types.
+   * Implementations send `SetBlock` for a normal voxel or `PlaceObject` when
+   * `semanticPlacement` supplies a parcel-grid polygon.
    */
   placeLibraryItem(
     position: ChunkApiWorldPosition,

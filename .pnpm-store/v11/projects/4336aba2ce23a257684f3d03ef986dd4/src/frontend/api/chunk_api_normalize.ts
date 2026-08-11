@@ -1052,6 +1052,16 @@ function normalizeRuntimeChunkContent(
     ),
     cellEncoding: CHUNK_API_CELL_ENCODING,
     cellIndexOrder: CHUNK_API_CELL_INDEX_ORDER,
+    objectRefs: readArray(
+      readFirst([
+        chunkRecord.objectRefs,
+        readPath(chunkRecord, ["content", "objectRefs"]),
+        responseRecord.objectRefs,
+        readPath(responseRecord, ["chunk", "objectRefs"]),
+        readPath(responseRecord, ["content", "objectRefs"]),
+        readPath(responseRecord, ["snapshot", "objectRefs"]),
+      ]),
+    ),
     metadata: readRecord(
       readFirst([
         chunkRecord.metadata,
@@ -1138,7 +1148,14 @@ function normalizeChunkVersions(raw: unknown): Readonly<Record<string, string>> 
 function normalizeCommandType(value: unknown): ChunkApiCommandType {
   const normalized = readString(value, "SetBlock");
 
-  if (normalized === "SetBlock" || normalized === "RemoveBlock" || normalized === "ReplaceBlock") {
+  if (
+    normalized === "SetBlock"
+    || normalized === "RemoveBlock"
+    || normalized === "ReplaceBlock"
+    || normalized === "WorldEdit"
+    || normalized === "PlaceObject"
+    || normalized === "RemoveObject"
+  ) {
     return normalized;
   }
 

@@ -1,0 +1,2901 @@
+import * as THREE from "three";
+import {
+  isChunkApiFailedResult,
+  type ChunkApiWorldEditCommandPayload,
+  type ChunkApiWorldPosition,
+} from "@api/chunk_api_models";
+import type { EditorBootstrap } from "@bootstrap/bootstrap_models";
+import type { EditorInputWorldEditIntent } from "@input/input_controller";
+import type {
+  ActiveLibraryPlacement,
+  SceneRuntimeHandle,
+} from "@scene/scene_runtime";
+import type { WorldRuntimeHandle } from "@runtime/world/world_runtime";
+import type { EditorLogger } from "@utils/logger";
+import { normalizeUnknownError, safeString } from "@utils/safe";
+import {
+  buildParcelGridPartition,
+  mergeParcelGridCoverage,
+  normalizeParcelGridPolygon,
+  parcelGridPolygonArea,
+  type ParcelGridPoint,
+} from "./parcel_grid_geometry";
+
+const ACTIVATE_EVENT = "vectoplan-editor:worldedit-tool-activate";
+const SETTINGS_EVENT = "vectoplan-editor:worldedit-settings-change";
+const INVENTORY_ACTION_EVENT = "vectoplan-editor:worldedit-action";
+const INVENTORY_STATE_EVENT = "vectoplan-editor:worldedit-state";
+const INVENTORY_STATE_REQUEST_EVENT = "vectoplan-editor:worldedit-state-request";
+const INVENTORY_SYNC_REQUEST = "vectoplan-editor:worldedit-inventory-sync-request";
+const PARCEL_REQUEST = "vectoplan-editor:parcel-selection-request";
+const PARCEL_SYNC = "vectoplan-app:parcel-selection-sync";
+const PARCEL_CHANGED = "vectoplan-editor:parcel-selection-changed";
+const MAP_PARCEL_CHANGED = "vectoplan-map:parcel-selection-changed";
+const MAP_PARCEL_CATALOG_CHANGED = "vectoplan-map:parcel-catalog-changed";
+const PARCEL_OVERLAY_SYNC = "vectoplan-editor:parcel-overlay-sync";
+const LOCAL_PARCEL_SYNC = "vectoplan-editor:parcel-selection-sync";
+const CREATIVE_INVENTORY_OPENED_EVENT = "vectoplan-editor:creative-inventory-opened";
+const CREATIVE_INVENTORY_CLOSED_EVENT = "vectoplan-editor:creative-inventory-closed";
+const EARTH_GRID_READY_EVENT = "vectoplan-editor:earth-grid-frame-ready";
+
+type WorldEditTool = "selection" | "paint" | "sculpt" | "parcel" | "parcel-grid" | "ruler" | "clipboard";
+type WorldEditOperation = "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
+
+interface ParcelSelectionItem {
+  readonly parcelId: string;
+  readonly datasetId: string;
+  readonly geometry: Readonly<Record<string, unknown>>;
+  readonly properties?: Readonly<Record<string, unknown>>;
+}
+
+interface ParcelSelection {
+  projectPublicId: string;
+  revision: number;
+  projectCoordinate: { longitude: number; latitude: number } | null;
+  gridRotationDegrees: number;
+  parcels: ParcelSelectionItem[];
+  adjacentParcels: ParcelSelectionItem[];
+  availableParcels: ParcelSelectionItem[];
+  parcelGridState: PersistedParcelGridState | null;
+}
+
+interface SelectionBounds {
+  first: ChunkApiWorldPosition | null;
+  second: ChunkApiWorldPosition | null;
+}
+
+interface EarthGridFrameContract {
+  readonly schemaVersion: "vectoplan-earth-grid-frame.v1";
+  readonly horizontalMapping: "vectoplan-periodic-equirectangular";
+  readonly mappingVersion: "1";
+  readonly axisConvention: "x-east-y-up-z-north";
+  readonly worldWidthCells: number;
+  readonly worldHeightCells: number;
+  readonly metersPerCell: number;
+  readonly centralMeridianDegrees: number;
+  readonly storageOrigin: Readonly<{ x: number; y: number; z: number }>;
+}
+
+interface HandleDescriptor {
+  readonly axis: "x" | "y" | "z";
+  readonly sign: -1 | 1;
+  readonly mesh: THREE.Mesh;
+}
+
+interface ParcelGridGuide {
+  readonly parcelId: string;
+  readonly start: readonly [number, number];
+  readonly end: readonly [number, number];
+  readonly inward: readonly [number, number];
+  readonly depthMeters: number;
+}
+
+interface PersistedParcelGridGuide {
+  readonly parcelId: string;
+  readonly startLonLat: readonly [number, number];
+  readonly endLonLat: readonly [number, number];
+  readonly depthMeters: number;
+}
+
+interface PersistedParcelGridState {
+  readonly schemaVersion: "vectoplan-parcel-grid-state.v1";
+  readonly mode: "boundary" | "setback";
+  readonly setbackMeters: number;
+  readonly influenceMeters: number;
+  readonly activeParcelId: string | null;
+  readonly guides: readonly PersistedParcelGridGuide[];
+}
+
+type ParcelGridZone = `slanted-${number}-${number}` | "transition-triangle" | "straight" | "straight-clipped";
+
+interface ParcelGridZoneCell {
+  readonly parcelId: string;
+  readonly zone: ParcelGridZone;
+  readonly polygon: readonly (readonly [number, number])[];
+  readonly sourceCell?: Readonly<{ x: number; z: number }>;
+  readonly logicalCellId?: string;
+  readonly boundarySegmentId?: string;
+  readonly boundaryRow?: number;
+  readonly boundaryColumn?: number;
+  readonly wallAxisDegrees?: number;
+}
+
+type ParcelGridSemanticPlacement = Readonly<{
+  kind: "parcel-grid-prism.v1";
+  footprint: Readonly<Record<string, unknown>>;
+  occupiedCells: readonly ChunkApiWorldPosition[];
+  mergeKey: string;
+  anchorPosition?: ChunkApiWorldPosition;
+}>;
+
+type ParcelGridPlacementResolver = (
+  position: ChunkApiWorldPosition,
+  options?: Readonly<{
+    targetPoint?: readonly [number, number] | null;
+    preferredLogicalCellId?: string | null;
+  }>,
+) => ParcelGridSemanticPlacement | null;
+
+function convexHull(points: readonly (readonly [number, number])[]): readonly (readonly [number, number])[] {
+  const unique = [...new Map(points.map((point) => [`${point[0].toFixed(6)}:${point[1].toFixed(6)}`, point])).values()]
+    .sort((first, second) => first[0] - second[0] || first[1] - second[1]);
+  if (unique.length <= 3) return unique;
+  const cross = (origin: readonly [number, number], first: readonly [number, number], second: readonly [number, number]): number => (
+    (first[0] - origin[0]) * (second[1] - origin[1])
+    - (first[1] - origin[1]) * (second[0] - origin[0])
+  );
+  const lower: Array<readonly [number, number]> = [];
+  for (const point of unique) {
+    while (lower.length >= 2 && cross(lower[lower.length - 2]!, lower[lower.length - 1]!, point) <= 1e-8) lower.pop();
+    lower.push(point);
+  }
+  const upper: Array<readonly [number, number]> = [];
+  for (const point of [...unique].reverse()) {
+    while (upper.length >= 2 && cross(upper[upper.length - 2]!, upper[upper.length - 1]!, point) <= 1e-8) upper.pop();
+    upper.push(point);
+  }
+  lower.pop();
+  upper.pop();
+  return [...lower, ...upper];
+}
+
+function polygonArea(points: readonly (readonly [number, number])[]): number {
+  if (points.length < 3) return 0;
+  let doubledArea = 0;
+  for (let index = 0; index < points.length; index += 1) {
+    const current = points[index]!;
+    const next = points[(index + 1) % points.length]!;
+    doubledArea += current[0] * next[1] - next[0] * current[1];
+  }
+  return Math.abs(doubledArea) * 0.5;
+}
+
+function clipPolygonToCell(
+  polygon: readonly (readonly [number, number])[],
+  x: number,
+  z: number,
+): readonly (readonly [number, number])[] {
+  type Point = readonly [number, number];
+  let output: readonly Point[] = [...polygon];
+  const boundaries: readonly Readonly<{
+    inside(point: Point): boolean;
+    intersect(start: Point, end: Point): Point;
+  }>[] = [
+    {
+      inside: (point) => point[0] >= x - 1e-7,
+      intersect: (start, end) => {
+        const factor = (x - start[0]) / (end[0] - start[0]);
+        return [x, start[1] + (end[1] - start[1]) * factor];
+      },
+    },
+    {
+      inside: (point) => point[0] <= x + 1 + 1e-7,
+      intersect: (start, end) => {
+        const boundary = x + 1;
+        const factor = (boundary - start[0]) / (end[0] - start[0]);
+        return [boundary, start[1] + (end[1] - start[1]) * factor];
+      },
+    },
+    {
+      inside: (point) => point[1] >= z - 1e-7,
+      intersect: (start, end) => {
+        const factor = (z - start[1]) / (end[1] - start[1]);
+        return [start[0] + (end[0] - start[0]) * factor, z];
+      },
+    },
+    {
+      inside: (point) => point[1] <= z + 1 + 1e-7,
+      intersect: (start, end) => {
+        const boundary = z + 1;
+        const factor = (boundary - start[1]) / (end[1] - start[1]);
+        return [start[0] + (end[0] - start[0]) * factor, boundary];
+      },
+    },
+  ];
+  for (const boundary of boundaries) {
+    if (output.length === 0) break;
+    const input = output;
+    const clipped: Point[] = [];
+    for (let index = 0; index < input.length; index += 1) {
+      const start = input[index]!;
+      const end = input[(index + 1) % input.length]!;
+      const startInside = boundary.inside(start);
+      const endInside = boundary.inside(end);
+      if (startInside && endInside) clipped.push(end);
+      else if (startInside) clipped.push(boundary.intersect(start, end));
+      else if (endInside) clipped.push(boundary.intersect(start, end), end);
+    }
+    output = clipped;
+  }
+  return output;
+}
+
+function polygonCellOverlapArea(
+  polygon: readonly (readonly [number, number])[],
+  x: number,
+  z: number,
+): number {
+  return polygonArea(clipPolygonToCell(polygon, x, z));
+}
+
+export interface WorldEditControllerOptions {
+  readonly root: HTMLElement;
+  readonly bootstrap: EditorBootstrap;
+  readonly sceneRuntime: SceneRuntimeHandle;
+  readonly worldRuntime: WorldRuntimeHandle;
+  readonly logger?: EditorLogger;
+  readonly signal?: AbortSignal;
+}
+
+export interface WorldEditControllerHandle {
+  readonly element: HTMLElement;
+  activate(tool: WorldEditTool, operation?: WorldEditOperation): void;
+  deactivate(reason?: string): void;
+  destroy(): void;
+}
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
+function asArray(value: unknown): readonly unknown[] {
+  return Array.isArray(value) ? value : [];
+}
+
+function worldPosition(value: unknown): ChunkApiWorldPosition | null {
+  const record = asRecord(value);
+  const x = Number(record.x);
+  const y = Number(record.y);
+  const z = Number(record.z);
+  return Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(z)
+    ? { x: Math.floor(x), y: Math.floor(y), z: Math.floor(z) }
+    : null;
+}
+
+function normalizedParcelSelection(value: unknown): ParcelSelection {
+  const root = asRecord(value);
+  const selection = asRecord(root.selection ?? root.parcelSelection ?? root.last_map_selection ?? root);
+  const parcels = asArray(selection.parcels ?? selection.features)
+    .map((item): ParcelSelectionItem | null => {
+      const record = asRecord(item);
+      const parcelId = safeString(
+        record.parcelId ?? record.parcel_id ?? record.featureId ?? record.id,
+        "",
+      );
+      const geometry = asRecord(record.geometry);
+      if (!parcelId || !safeString(geometry.type, "")) return null;
+      return {
+        parcelId,
+        datasetId: safeString(record.datasetId ?? record.dataset_id, "flurstuecke"),
+        geometry,
+        properties: asRecord(record.properties),
+      };
+    })
+    .filter((item): item is ParcelSelectionItem => item !== null)
+    .slice(0, 64);
+  const availableParcels = asArray(selection.availableParcels ?? selection.available_parcels)
+    .map((item): ParcelSelectionItem | null => {
+      const record = asRecord(item);
+      const parcelId = safeString(record.parcelId ?? record.parcel_id ?? record.id, "");
+      const geometry = asRecord(record.geometry);
+      if (!parcelId || !safeString(geometry.type, "")) return null;
+      return {
+        parcelId,
+        datasetId: safeString(record.datasetId ?? record.dataset_id, "flurstuecke"),
+        geometry,
+        properties: asRecord(record.properties),
+      };
+    })
+    .filter((item): item is ParcelSelectionItem => item !== null)
+    .slice(0, 512);
+  const adjacentParcels = asArray(selection.adjacentParcels ?? selection.adjacent_parcels)
+    .map((item): ParcelSelectionItem | null => {
+      const record = asRecord(item);
+      const parcelId = safeString(record.parcelId ?? record.parcel_id ?? record.id, "");
+      const geometry = asRecord(record.geometry);
+      if (!parcelId || !safeString(geometry.type, "")) return null;
+      return {
+        parcelId,
+        datasetId: safeString(record.datasetId ?? record.dataset_id, "flurstuecke"),
+        geometry,
+        properties: asRecord(record.properties),
+      };
+    })
+    .filter((item): item is ParcelSelectionItem => item !== null)
+    .slice(0, 128);
+  const coordinate = asRecord(selection.projectCoordinate ?? selection.project_coordinate);
+  const longitude = Number(coordinate.longitude ?? coordinate.lon ?? coordinate.lng);
+  const latitude = Number(coordinate.latitude ?? coordinate.lat);
+  const requestedRotation = Number(selection.gridRotationDegrees ?? selection.grid_rotation_degrees);
+  const rawGridState = asRecord(selection.parcelGridState ?? selection.parcel_grid_state);
+  const rawGridGuides = asArray(rawGridState.guides);
+  const parcelGridState = safeString(rawGridState.schemaVersion ?? rawGridState.schema_version, "")
+    === "vectoplan-parcel-grid-state.v1"
+    ? {
+        schemaVersion: "vectoplan-parcel-grid-state.v1" as const,
+        mode: safeString(rawGridState.mode, "boundary") === "setback" ? "setback" as const : "boundary" as const,
+        setbackMeters: Math.max(0, Math.min(20, Number(rawGridState.setbackMeters ?? rawGridState.setback_meters) || 0)),
+        influenceMeters: Math.max(1, Math.min(6, Math.round(Number(rawGridState.influenceMeters ?? rawGridState.influence_meters) || 3))),
+        activeParcelId: safeString(rawGridState.activeParcelId ?? rawGridState.active_parcel_id, "") || null,
+        guides: rawGridGuides.map((value): PersistedParcelGridGuide | null => {
+          const guide = asRecord(value);
+          const start = asArray(guide.startLonLat ?? guide.start_lon_lat);
+          const end = asArray(guide.endLonLat ?? guide.end_lon_lat);
+          const parcelId = safeString(guide.parcelId ?? guide.parcel_id, "");
+          const startLon = Number(start[0]);
+          const startLat = Number(start[1]);
+          const endLon = Number(end[0]);
+          const endLat = Number(end[1]);
+          if (!parcelId || ![startLon, startLat, endLon, endLat].every(Number.isFinite)) return null;
+          return {
+            parcelId,
+            startLonLat: [startLon, startLat],
+            endLonLat: [endLon, endLat],
+            depthMeters: Math.max(1, Math.min(6, Math.round(Number(guide.depthMeters ?? guide.depth_meters) || 3))),
+          };
+        }).filter((guide): guide is PersistedParcelGridGuide => guide !== null).slice(0, 64),
+      }
+    : null;
+  return {
+    projectPublicId: safeString(
+      selection.projectPublicId ?? selection.project_public_id,
+      "",
+    ),
+    revision: Number.isFinite(Number(selection.revision)) ? Number(selection.revision) : 0,
+    projectCoordinate: Number.isFinite(longitude) && Number.isFinite(latitude)
+      ? { longitude, latitude }
+      : null,
+    gridRotationDegrees: Number.isFinite(requestedRotation)
+      ? normalizeGridRotation(requestedRotation)
+      : dominantGridRotationDegrees(parcels, Number.isFinite(latitude) ? latitude : 0),
+    parcels,
+    adjacentParcels,
+    availableParcels,
+    parcelGridState,
+  };
+}
+
+function operationNeedsMaterial(operation: WorldEditOperation): boolean {
+  return !["clear", "copy", "cut", "paste"].includes(operation);
+}
+
+function positionLabel(value: ChunkApiWorldPosition | null): string {
+  return value ? `${value.x} / ${value.y} / ${value.z}` : "–";
+}
+
+function commandErrorMessage(value: unknown): string {
+  const record = asRecord(value);
+  const error = asRecord(record.error);
+  return safeString(error.message ?? record.message, "WorldEdit konnte nicht ausgeführt werden.");
+}
+
+function cellPosition(value: unknown): ChunkApiWorldPosition | null {
+  return worldPosition(value);
+}
+
+function measurementMetres(bounds: SelectionBounds): number | null {
+  if (!bounds.first || !bounds.second) return null;
+  return Math.hypot(
+    bounds.second.x - bounds.first.x,
+    bounds.second.y - bounds.first.y,
+    bounds.second.z - bounds.first.z,
+  );
+}
+
+function pointOnSegment(
+  point: readonly [number, number],
+  first: readonly [number, number],
+  second: readonly [number, number],
+): boolean {
+  const cross = ((point[0] - first[0]) * (second[1] - first[1]))
+    - ((point[1] - first[1]) * (second[0] - first[0]));
+  if (Math.abs(cross) > 1e-10) return false;
+  return point[0] >= Math.min(first[0], second[0]) - 1e-10
+    && point[0] <= Math.max(first[0], second[0]) + 1e-10
+    && point[1] >= Math.min(first[1], second[1]) - 1e-10
+    && point[1] <= Math.max(first[1], second[1]) + 1e-10;
+}
+
+function pointInRing(point: readonly [number, number], ringValue: unknown): boolean {
+  const ring = asArray(ringValue)
+    .map((entry) => asArray(entry))
+    .filter((entry) => Number.isFinite(Number(entry[0])) && Number.isFinite(Number(entry[1])))
+    .map((entry): [number, number] => [Number(entry[0]), Number(entry[1])]);
+  if (ring.length < 3) return false;
+  let inside = false;
+  let previous = ring[ring.length - 1];
+  for (const current of ring) {
+    if (pointOnSegment(point, previous, current)) return true;
+    if ((current[1] > point[1]) !== (previous[1] > point[1])) {
+      const crossing = ((previous[0] - current[0]) * (point[1] - current[1])
+        / (previous[1] - current[1])) + current[0];
+      if (point[0] < crossing) inside = !inside;
+    }
+    previous = current;
+  }
+  return inside;
+}
+
+function pointInPolygon(point: readonly [number, number], ringsValue: unknown): boolean {
+  const rings = asArray(ringsValue);
+  return rings.length > 0
+    && pointInRing(point, rings[0])
+    && !rings.slice(1).some((ring) => pointInRing(point, ring));
+}
+
+function parcelContainsLonLat(parcel: ParcelSelectionItem, point: readonly [number, number]): boolean {
+  const geometry = asRecord(parcel.geometry);
+  const coordinates = asArray(geometry.coordinates);
+  const type = safeString(geometry.type, "");
+  if (type === "Polygon") return pointInPolygon(point, coordinates);
+  if (type === "MultiPolygon") return coordinates.some((polygon) => pointInPolygon(point, polygon));
+  return false;
+}
+
+function normalizeGridRotation(value: number): number {
+  let result = Number.isFinite(value) ? value : 0;
+  while (result >= 90) result -= 180;
+  while (result < -90) result += 180;
+  return Math.abs(result) < 1e-8 ? 0 : result;
+}
+
+function parcelPolygons(parcel: ParcelSelectionItem): readonly unknown[] {
+  const geometry = asRecord(parcel.geometry);
+  const coordinates = asArray(geometry.coordinates);
+  return safeString(geometry.type, "") === "Polygon" ? [coordinates] : coordinates;
+}
+
+function dominantGridRotationDegrees(
+  parcels: readonly ParcelSelectionItem[],
+  referenceLatitude: number,
+): number {
+  const metresPerDegreeLat = 111_320;
+  const metresPerDegreeLon = Math.max(
+    1,
+    metresPerDegreeLat * Math.cos(referenceLatitude * Math.PI / 180),
+  );
+  let longestSquared = 0;
+  let angle = 0;
+  for (const parcel of parcels) {
+    for (const polygonValue of parcelPolygons(parcel)) {
+      const exterior = asArray(asArray(polygonValue)[0]);
+      for (let index = 1; index < exterior.length; index += 1) {
+        const first = asArray(exterior[index - 1]);
+        const second = asArray(exterior[index]);
+        const east = (Number(second[0]) - Number(first[0])) * metresPerDegreeLon;
+        const north = (Number(second[1]) - Number(first[1])) * metresPerDegreeLat;
+        const lengthSquared = (east * east) + (north * north);
+        if (!Number.isFinite(lengthSquared) || lengthSquared <= longestSquared) continue;
+        longestSquared = lengthSquared;
+        angle = Math.atan2(north, east) * 180 / Math.PI;
+      }
+    }
+  }
+  return normalizeGridRotation(angle);
+}
+
+function centered(value: number, width: number): number {
+  return ((value + (width / 2)) % width + width) % width - (width / 2);
+}
+
+function normalizeLongitude(value: number): number {
+  return centered(value, 360);
+}
+
+function normalizedEarthGrid(value: unknown): EarthGridFrameContract | null {
+  const record = asRecord(value);
+  const storageOrigin = asRecord(record.storageOrigin);
+  const worldWidthCells = Number(record.worldWidthCells);
+  const worldHeightCells = Number(record.worldHeightCells);
+  const metersPerCell = Number(record.metersPerCell);
+  const centralMeridianDegrees = Number(record.centralMeridianDegrees);
+  const originX = Number(storageOrigin.x);
+  const originY = Number(storageOrigin.y);
+  const originZ = Number(storageOrigin.z);
+  if (
+    safeString(record.schemaVersion, "") !== "vectoplan-earth-grid-frame.v1"
+    || safeString(record.horizontalMapping, "") !== "vectoplan-periodic-equirectangular"
+    || safeString(record.mappingVersion, "") !== "1"
+    || safeString(record.axisConvention, "") !== "x-east-y-up-z-north"
+    || !Number.isFinite(worldWidthCells) || worldWidthCells <= 0
+    || !Number.isFinite(worldHeightCells) || worldHeightCells <= 0
+    || !Number.isFinite(metersPerCell) || metersPerCell <= 0
+    || !Number.isFinite(centralMeridianDegrees)
+    || !Number.isFinite(originX) || !Number.isFinite(originY) || !Number.isFinite(originZ)
+  ) return null;
+  return {
+    schemaVersion: "vectoplan-earth-grid-frame.v1",
+    horizontalMapping: "vectoplan-periodic-equirectangular",
+    mappingVersion: "1",
+    axisConvention: "x-east-y-up-z-north",
+    worldWidthCells,
+    worldHeightCells,
+    metersPerCell,
+    centralMeridianDegrees,
+    storageOrigin: { x: originX, y: originY, z: originZ },
+  };
+}
+
+function fallbackEarthGrid(
+  origin: { longitude: number; latitude: number } | null,
+): EarthGridFrameContract | null {
+  if (!origin) return null;
+  const worldWidthCells = 40_000_000;
+  const worldHeightCells = 20_000_000;
+  const chunkSize = 16;
+  const gridX = normalizeLongitude(origin.longitude) / 360 * worldWidthCells;
+  const gridZ = origin.latitude / 180 * worldHeightCells;
+  return {
+    schemaVersion: "vectoplan-earth-grid-frame.v1",
+    horizontalMapping: "vectoplan-periodic-equirectangular",
+    mappingVersion: "1",
+    axisConvention: "x-east-y-up-z-north",
+    worldWidthCells,
+    worldHeightCells,
+    metersPerCell: 1,
+    centralMeridianDegrees: 0,
+    storageOrigin: {
+      x: Math.floor(gridX / chunkSize) * chunkSize,
+      y: 0,
+      z: Math.floor(gridZ / chunkSize) * chunkSize,
+    },
+  };
+}
+
+function worldToLonLat(
+  position: ChunkApiWorldPosition,
+  earthGrid: EarthGridFrameContract | null,
+): [number, number] | null {
+  return worldPointToLonLat(position.x + 0.5, position.z + 0.5, earthGrid);
+}
+
+function worldPointToLonLat(
+  worldX: number,
+  worldZ: number,
+  earthGrid: EarthGridFrameContract | null,
+): [number, number] | null {
+  if (!earthGrid) return null;
+  const gridX = earthGrid.storageOrigin.x + worldX;
+  const gridZ = earthGrid.storageOrigin.z + worldZ;
+  return [
+    normalizeLongitude(
+      earthGrid.centralMeridianDegrees + (gridX / earthGrid.worldWidthCells * 360),
+    ),
+    gridZ / earthGrid.worldHeightCells * 180,
+  ];
+}
+
+function lonLatToWorld(
+  longitude: number,
+  latitude: number,
+  earthGrid: EarthGridFrameContract | null,
+): [number, number] | null {
+  if (!earthGrid || !Number.isFinite(longitude) || !Number.isFinite(latitude)) return null;
+  const longitudeDelta = centered(
+    normalizeLongitude(longitude) - earthGrid.centralMeridianDegrees,
+    360,
+  );
+  const gridX = longitudeDelta / 360 * earthGrid.worldWidthCells;
+  const gridZ = latitude / 180 * earthGrid.worldHeightCells;
+  return [
+    centered(gridX - earthGrid.storageOrigin.x, earthGrid.worldWidthCells),
+    gridZ - earthGrid.storageOrigin.z,
+  ];
+}
+
+export function createWorldEditController(
+  options: WorldEditControllerOptions,
+): WorldEditControllerHandle {
+  let destroyed = false;
+  let activeTool: WorldEditTool | null = null;
+  let operation: WorldEditOperation = "set";
+  let selection: SelectionBounds = { first: null, second: null };
+  let selectionDragging = false;
+  let selectionDragFrame = 0;
+  let selectionHandleDrag: Pick<HandleDescriptor, "axis" | "sign"> | null = null;
+  let brushTarget: ChunkApiWorldPosition | null = null;
+  let parcelSelection: ParcelSelection = {
+    projectPublicId: "",
+    revision: 0,
+    projectCoordinate: null,
+    gridRotationDegrees: 0,
+    parcels: [],
+    adjacentParcels: [],
+    availableParcels: [],
+    parcelGridState: null,
+  };
+  let earthGrid: EarthGridFrameContract | null = null;
+  let clipboard: readonly Record<string, unknown>[] = [];
+  let busy = false;
+  let selectionGroup: THREE.Group | null = null;
+  let parcelGroup: THREE.Group | null = null;
+  let parcelGridGroup: THREE.Group | null = null;
+  let parcelGridGuide: ParcelGridGuide | null = null;
+  let parcelGridMode: "boundary" | "setback" = "boundary";
+  let parcelGridSetback = 0;
+  let parcelGridInfluence = 3;
+  let activeParcelGridParcelId: string | null = null;
+  const persistedParcelGridGuides = new Map<string, PersistedParcelGridGuide>();
+  let parcelGridZoneCells: readonly ParcelGridZoneCell[] = [];
+  let parcelGridZoneCellIndex = new Map<string, readonly ParcelGridZoneCell[]>();
+  let parcelGridPlacementResolver: ParcelGridPlacementResolver | null = null;
+  let parcelGridPlaneY: number | null = null;
+  let parcelGridGeometrySignature = "";
+  let selectionHandles: HandleDescriptor[] = [];
+
+  function serializedParcelGridState(): PersistedParcelGridState {
+    return {
+      schemaVersion: "vectoplan-parcel-grid-state.v1",
+      mode: parcelGridMode,
+      setbackMeters: parcelGridSetback,
+      influenceMeters: parcelGridInfluence,
+      activeParcelId: activeParcelGridParcelId,
+      guides: [...persistedParcelGridGuides.values()]
+        .sort((first, second) => first.parcelId.localeCompare(second.parcelId))
+        .slice(0, 64),
+    };
+  }
+
+  function applyPersistedParcelGridState(state: PersistedParcelGridState | null): void {
+    if (!state) return;
+    parcelGridMode = state.mode;
+    parcelGridSetback = state.setbackMeters;
+    parcelGridInfluence = state.influenceMeters;
+    activeParcelGridParcelId = state.activeParcelId;
+    persistedParcelGridGuides.clear();
+    for (const guide of state.guides) persistedParcelGridGuides.set(guide.parcelId, guide);
+  }
+
+  function rememberParcelGridGuide(frameValue?: EarthGridFrameContract | null): void {
+    if (!parcelGridGuide) return;
+    const frame = frameValue ?? earthGrid ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    const startLonLat = worldPointToLonLat(parcelGridGuide.start[0], parcelGridGuide.start[1], frame);
+    const endLonLat = worldPointToLonLat(parcelGridGuide.end[0], parcelGridGuide.end[1], frame);
+    if (!startLonLat || !endLonLat) return;
+    activeParcelGridParcelId = parcelGridGuide.parcelId;
+    persistedParcelGridGuides.set(parcelGridGuide.parcelId, {
+      parcelId: parcelGridGuide.parcelId,
+      startLonLat,
+      endLonLat,
+      depthMeters: parcelGridGuide.depthMeters,
+    });
+  }
+
+  function restoreParcelGridGuide(frame: EarthGridFrameContract): void {
+    if (parcelGridGuide || parcelSelection.parcels.length === 0 || persistedParcelGridGuides.size === 0) return;
+    const orderedParcelIds = [
+      activeParcelGridParcelId,
+      ...parcelSelection.parcels.map((parcel) => parcel.parcelId),
+    ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
+    for (const parcelId of orderedParcelIds) {
+      const parcel = parcelSelection.parcels.find((candidate) => candidate.parcelId === parcelId);
+      const saved = persistedParcelGridGuides.get(parcelId);
+      if (!parcel || !saved) continue;
+      const desiredStart = lonLatToWorld(saved.startLonLat[0], saved.startLonLat[1], frame);
+      const desiredEnd = lonLatToWorld(saved.endLonLat[0], saved.endLonLat[1], frame);
+      if (!desiredStart || !desiredEnd) continue;
+      let best: Readonly<{ start: [number, number]; end: [number, number]; score: number }> | null = null;
+      for (const polygonValue of parcelPolygons(parcel)) {
+        for (const ringValue of asArray(polygonValue)) {
+          const ring = asArray(ringValue)
+            .map((coordinate) => {
+              const point = asArray(coordinate);
+              return lonLatToWorld(Number(point[0]), Number(point[1]), frame);
+            })
+            .filter((point): point is [number, number] => point !== null);
+          for (let index = 1; index < ring.length; index += 1) {
+            const start = ring[index - 1]!;
+            const end = ring[index]!;
+            const direct = Math.hypot(start[0] - desiredStart[0], start[1] - desiredStart[1])
+              + Math.hypot(end[0] - desiredEnd[0], end[1] - desiredEnd[1]);
+            const reversed = Math.hypot(start[0] - desiredEnd[0], start[1] - desiredEnd[1])
+              + Math.hypot(end[0] - desiredStart[0], end[1] - desiredStart[1]);
+            const score = Math.min(direct, reversed);
+            if (!best || score < best.score) best = { start, end, score };
+          }
+        }
+      }
+      if (!best || best.score > 0.75) continue;
+      const dx = best.end[0] - best.start[0];
+      const dz = best.end[1] - best.start[1];
+      const length = Math.hypot(dx, dz);
+      if (length <= 1e-8) continue;
+      let inward: [number, number] = [-dz / length, dx / length];
+      const midpoint: [number, number] = [
+        (best.start[0] + best.end[0]) * 0.5,
+        (best.start[1] + best.end[1]) * 0.5,
+      ];
+      const probe = worldPointToLonLat(midpoint[0] + inward[0] * 0.2, midpoint[1] + inward[1] * 0.2, frame);
+      if (!probe || !parcelContainsLonLat(parcel, probe)) inward = [-inward[0], -inward[1]];
+      parcelGridGuide = {
+        parcelId,
+        start: best.start,
+        end: best.end,
+        inward,
+        depthMeters: saved.depthMeters,
+      };
+      activeParcelGridParcelId = parcelId;
+      return;
+    }
+  }
+
+  const panel = document.createElement("section");
+  panel.className = "editor-world-edit";
+  panel.dataset.editorWorldEdit = "true";
+  panel.dataset.editorUiInteractive = "true";
+  panel.hidden = true;
+  panel.innerHTML = `
+    <header class="editor-world-edit__header">
+      <div><span>WorldEdit</span><strong data-world-edit-title>Auswahlwerkzeug</strong></div>
+      <button type="button" data-world-edit-close aria-label="WorldEdit schließen">×</button>
+    </header>
+    <div class="editor-world-edit__body">
+      <div class="editor-world-edit__status" data-world-edit-status>Werkzeug auswählen</div>
+      <label class="editor-world-edit__field" data-selection-operation>
+        <span>Operation</span>
+        <select data-world-edit-operation>
+          <option value="set">Setzen</option><option value="wall">Wände</option>
+          <option value="fill">Nur Luft füllen</option><option value="replace">Ersetzen</option>
+          <option value="clear">Leeren</option>
+        </select>
+      </label>
+      <div class="editor-world-edit__coordinates" data-selection-coordinates>
+        <span>Punkt A <output data-selection-first>–</output></span>
+        <span>Punkt B <output data-selection-second>–</output></span>
+      </div>
+      <div class="editor-world-edit__coordinates" data-ruler-result hidden>
+        <span>Distanz <output data-ruler-distance>–</output></span>
+        <span>Einheit <output>Meter</output></span>
+      </div>
+      <div class="editor-world-edit__brush" data-brush-settings hidden>
+        <label><span>Form</span><select data-brush-shape><option value="sphere">Kugel</option><option value="box">Quader</option><option value="cylinder">Zylinder</option></select></label>
+        <label><span>Radius</span><input data-brush-radius type="range" min="1" max="12" value="2"><output data-brush-radius-output>2</output></label>
+        <label><span>Dichte</span><input data-brush-density type="range" min="10" max="100" value="100"><output data-brush-density-output>100%</output></label>
+        <label><span>Wandstärke</span><input data-brush-wall type="range" min="0" max="6" value="0"><output data-brush-wall-output>0</output></label>
+      </div>
+      <div class="editor-world-edit__material"><span>Material</span><strong data-world-edit-material>Hotbar auswählen</strong></div>
+      <label class="editor-world-edit__mask"><input type="checkbox" data-parcel-mask checked><span>Auf ausgewählte Grundstücke begrenzen</span></label>
+      <div class="editor-world-edit__parcels"><span data-parcel-count>0 Grundstücke</span><small>Vollzellen-Regel · gemeinsame Maske</small></div>
+      <div class="editor-world-edit__parcels" data-clipboard-status hidden><span data-clipboard-count>0 Zellen</span><small>Projektlokale Zwischenablage</small></div>
+      <div class="editor-world-edit__hint" data-world-edit-hint></div>
+      <div class="editor-world-edit__actions">
+        <button type="button" data-world-edit-reset>Auswahl löschen</button>
+        <button type="button" class="is-primary" data-world-edit-execute>Ausführen</button>
+      </div>
+    </div>
+  `;
+  options.root.append(panel);
+
+  function syncPanelVisibility(): void {
+    // The Creative Library owns the one visible settings panel.  This legacy
+    // element remains as a headless controller for command state only.
+    panel.hidden = true;
+  }
+
+  function constrainManualPlacement(
+    position: ChunkApiWorldPosition,
+    purpose: "new-placement" | "existing-block" = "new-placement",
+    context?: Readonly<{
+      targetPoint?: Readonly<{ x: number; y: number; z: number }> | null;
+      currentFootprint?: Readonly<Record<string, unknown>> | null;
+    }>,
+  ): {
+    allowed: boolean;
+    message?: string;
+    code?: string;
+    semanticPlacement?: ParcelGridSemanticPlacement;
+  } {
+    if (parcelSelection.parcels.length === 0) return { allowed: true };
+    // Keep generated ground voxels untouched. The threshold comes from the
+    // fixed parcel plane, not from the current top-most terrain surface, so a
+    // user-placed terrain block above the plane still follows the slanted grid.
+    if (purpose === "existing-block" && parcelGridPlaneY !== null) {
+      const baseTerrainY = Math.floor(parcelGridPlaneY - 0.038 + 1e-6);
+      if (position.y < baseTerrainY) return { allowed: true };
+    }
+    const frame = earthGrid ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    if (!frame) return { allowed: true };
+    // The boundary resolver is also the renderer's authoritative grid model.
+    // Resolve it before polygon containment and transition diagnostics so the
+    // per-frame targeting path stays O(boundary segments), not O(all cells).
+    const resolvedPlacement = parcelGridPlacementResolver?.(position, {
+      targetPoint: context?.targetPoint ? [context.targetPoint.x, context.targetPoint.z] : null,
+      preferredLogicalCellId: safeString(context?.currentFootprint?.logicalGridCellId, "") || null,
+    }) ?? null;
+    if (resolvedPlacement) {
+      return {
+        allowed: true,
+        code: "parcel-grid-semantic-footprint",
+        semanticPlacement: resolvedPlacement,
+      };
+    }
+    const corners = [
+      [position.x, position.z],
+      [position.x + 1, position.z],
+      [position.x + 1, position.z + 1],
+      [position.x, position.z + 1],
+    ] as const;
+    const centre = worldPointToLonLat(position.x + 0.5, position.z + 0.5, frame);
+    if (!centre) return { allowed: true };
+    const centreInside = parcelSelection.parcels.some((parcel) => parcelContainsLonLat(parcel, centre));
+    const cornerInside = corners.map(([x, z]) => {
+      const point = worldPointToLonLat(x, z, frame);
+      return Boolean(point && parcelSelection.parcels.some((parcel) => parcelContainsLonLat(parcel, point)));
+    });
+    const zoneOverlaps = (parcelGridZoneCellIndex.get(`${position.x}:${position.z}`) ?? [])
+      .map((cell) => ({ cell, area: polygonCellOverlapArea(cell.polygon, position.x, position.z) }))
+      .filter((entry) => entry.area > 1e-7)
+      .sort((first, second) => second.area - first.area);
+    const slantedOverlaps = zoneOverlaps.filter(({ cell }) => cell.zone.startsWith("slanted-"));
+    const fullStraightCell = zoneOverlaps.some(({ cell, area }) => (
+      cell.zone === "straight"
+      && cell.sourceCell?.x === position.x
+      && cell.sourceCell?.z === position.z
+      && area >= 0.999
+    ));
+    const contained = fullStraightCell || cornerInside.every(Boolean);
+    // The rendered partition is authoritative and also catches narrow or
+    // concave parcel intersections that a centre/corner sample can miss.
+    const intersectsSelectedParcel = zoneOverlaps.length > 0 || centreInside || cornerInside.some(Boolean);
+    const blockedCell = zoneOverlaps.find(({ cell }) => (
+      cell.zone === "straight-clipped"
+      && (cell.sourceCell?.x === position.x && cell.sourceCell?.z === position.z)
+    ));
+    if (blockedCell && slantedOverlaps.length === 0) {
+      return {
+        allowed: false,
+        code: "parcel-grid-cut-cell-not-buildable",
+        message: "Block nicht gesetzt: Diese rot markierte Rasterzelle wird am Übergang abgeschnitten und ist nicht bebaubar.",
+      };
+    }
+
+    // A cell may never straddle the selected parcel union, independent of the
+    // direction from which it was placed.  This is the same full-cell rule
+    // used by transactional WorldEdit commands and by the CAD projection.
+    if (intersectsSelectedParcel && !contained) {
+      return {
+        allowed: false,
+        code: "selected-parcel-full-cell-required",
+        message: "Block nicht gesetzt: Er würde über die Grenze des ausgewählten Grundstücks ragen. Nutze das Grundstücksraster für die Grenzausrichtung.",
+      };
+    }
+
+    if (parcelGridGuide) {
+      const dx = parcelGridGuide.end[0] - parcelGridGuide.start[0];
+      const dz = parcelGridGuide.end[1] - parcelGridGuide.start[1];
+      const lengthSquared = dx * dx + dz * dz;
+      if (lengthSquared > 1e-8) {
+        const centreX = position.x + 0.5;
+        const centreZ = position.z + 0.5;
+        const along = ((centreX - parcelGridGuide.start[0]) * dx
+          + (centreZ - parcelGridGuide.start[1]) * dz) / lengthSquared;
+        if (along >= -0.02 && along <= 1.02) {
+          const signedDistances = corners.map(([x, z]) => (
+            (x - parcelGridGuide!.start[0]) * parcelGridGuide!.inward[0]
+            + (z - parcelGridGuide!.start[1]) * parcelGridGuide!.inward[1]
+          ));
+          const minimumDistance = Math.min(...signedDistances);
+          const maximumDistance = Math.max(...signedDistances);
+          const buildOffset = parcelGridMode === "setback" ? parcelGridSetback : 0;
+          const insideActiveStrip = maximumDistance > -parcelGridInfluence
+            && minimumDistance < buildOffset;
+          if (insideActiveStrip) {
+            return {
+              allowed: false,
+              code: "parcel-grid-build-axis-required",
+              message: parcelGridMode === "setback"
+                ? `Block nicht gesetzt: Die aktive Bauachse hält ${parcelGridSetback.toFixed(1)} m Abstand zur Grundstücksgrenze.`
+                : "Block nicht gesetzt: Die aktive schräge Grundstücksgrenze darf nicht überbaut werden.",
+            };
+          }
+        }
+      }
+    }
+
+    if (!centreInside) {
+      // Building on non-selected land remains possible, but it is deliberately
+      // outside the protected/authoritative construction mask.  An active
+      // parcel-grid guide narrows this exception in its configured strip.
+      return { allowed: true };
+    }
+    return contained
+      ? { allowed: true }
+      : {
+          allowed: false,
+          code: "selected-parcel-full-cell-required",
+          message: "Block nicht gesetzt: Er würde über die Grenze des ausgewählten Grundstücks ragen. Nutze das Grundstücksraster für die Grenzausrichtung.",
+        };
+  }
+
+  const closeButton = panel.querySelector<HTMLButtonElement>("[data-world-edit-close]");
+  const executeButton = panel.querySelector<HTMLButtonElement>("[data-world-edit-execute]");
+  const resetButton = panel.querySelector<HTMLButtonElement>("[data-world-edit-reset]");
+  const operationSelect = panel.querySelector<HTMLSelectElement>("[data-world-edit-operation]");
+  const parcelMaskInput = panel.querySelector<HTMLInputElement>("[data-parcel-mask]");
+  const brushRadius = panel.querySelector<HTMLInputElement>("[data-brush-radius]");
+  const brushDensity = panel.querySelector<HTMLInputElement>("[data-brush-density]");
+  const brushWall = panel.querySelector<HTMLInputElement>("[data-brush-wall]");
+  const brushShape = panel.querySelector<HTMLSelectElement>("[data-brush-shape]");
+
+  function setStatus(message: string, kind = "info"): void {
+    const status = panel.querySelector<HTMLElement>("[data-world-edit-status]");
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.kind = kind;
+    publishInventoryState();
+  }
+
+  function selectedPlacement(): ActiveLibraryPlacement {
+    return options.sceneRuntime.getSelectedLibraryPlacement();
+  }
+
+  function inventoryToolId(): string {
+    if (activeTool === "ruler") return "ruler-laser";
+    if (activeTool === "clipboard") return "copy-transform";
+    if (activeTool === "parcel-grid") return "parcel-grid";
+    return activeTool ?? "";
+  }
+
+  function publishInventoryState(): void {
+    const status = panel.querySelector<HTMLElement>("[data-world-edit-status]");
+    const canExecute = activeTool === "selection"
+      ? Boolean(selection.first && selection.second)
+      : activeTool === "clipboard"
+        ? operation === "paste" ? clipboard.length > 0 : Boolean(selection.first && selection.second)
+        : true;
+    window.dispatchEvent(new CustomEvent(INVENTORY_STATE_EVENT, {
+      detail: {
+        active: Boolean(activeTool),
+        toolId: inventoryToolId(),
+        operation,
+        first: positionLabel(selection.first),
+        second: positionLabel(selection.second),
+        status: status?.textContent ?? "",
+        statusKind: status?.dataset.kind ?? "info",
+        parcelCount: parcelSelection.parcels.length,
+        parcelGridInfluence: parcelGridGuide?.depthMeters ?? parcelGridInfluence,
+        busy,
+        canExecute,
+      },
+    }));
+  }
+
+  function disposeSelectionGroup(): void {
+    if (!selectionGroup) return;
+    selectionGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    selectionGroup.parent?.remove(selectionGroup);
+    selectionGroup = null;
+    selectionHandles = [];
+  }
+
+  function disposeParcelGroup(): void {
+    if (!parcelGroup) return;
+    parcelGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    parcelGroup.parent?.remove(parcelGroup);
+    parcelGroup = null;
+  }
+
+  function disposeParcelGridGroup(): void {
+    delete options.root.dataset.parcelGridZoneCells;
+    delete options.root.dataset.parcelGridSlantedCells;
+    delete options.root.dataset.parcelGridTransitionTriangles;
+    delete options.root.dataset.parcelGridBlockedCells;
+    delete options.root.dataset.parcelGridCoveredArea;
+    delete options.root.dataset.parcelGridSlantedArea;
+    delete options.root.dataset.parcelGridStraightArea;
+    delete options.root.dataset.parcelGridBlockedArea;
+    parcelGridZoneCells = [];
+    parcelGridZoneCellIndex = new Map();
+    parcelGridPlacementResolver = null;
+    if (!parcelGridGroup) return;
+    parcelGridGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    parcelGridGroup.parent?.remove(parcelGridGroup);
+    parcelGridGroup = null;
+  }
+
+  function resolveParcelGridPlaneY(surface: ReadonlyMap<string, number> | null): number {
+    if (parcelGridPlaneY !== null) return parcelGridPlaneY;
+    const counts = new Map<number, number>();
+    for (const rawValue of surface?.values() ?? []) {
+      if (!Number.isFinite(rawValue)) continue;
+      const level = Math.round(rawValue);
+      counts.set(level, (counts.get(level) ?? 0) + 1);
+    }
+    const dominantLevel = [...counts.entries()]
+      .sort((first, second) => second[1] - first[1] || first[0] - second[0])[0]?.[0] ?? 0;
+    parcelGridPlaneY = dominantLevel + 0.038;
+    options.root.dataset.parcelGridPlaneY = parcelGridPlaneY.toFixed(3);
+    return parcelGridPlaneY;
+  }
+
+  function commitParcelGridGeometrySignature(nextSignature: string, reason: string): void {
+    if (nextSignature === parcelGridGeometrySignature) return;
+    parcelGridGeometrySignature = nextSignature;
+    options.sceneRuntime.refreshPlacementGeometry(reason);
+  }
+
+  function rebuildParcelGridScene(): void {
+    disposeParcelGridGroup();
+    const refreshClearedPlacementGeometry = (): void => {
+      commitParcelGridGeometrySignature("", "world-edit.parcel-grid-cleared");
+    };
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) {
+      refreshClearedPlacementGeometry();
+      return;
+    }
+    const overlay = scene.getObjectByName("vectoplan_geodata_overlay_scene_group");
+    const surface = overlay?.userData.surfaceCellY instanceof Map
+      ? overlay.userData.surfaceCellY as ReadonlyMap<string, number>
+      : null;
+    const frame = earthGrid
+      ?? normalizedEarthGrid(overlay?.userData.earthGrid)
+      ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    if (!frame || parcelSelection.parcels.length === 0) {
+      refreshClearedPlacementGeometry();
+      return;
+    }
+    earthGrid = frame;
+    const fixedPlaneY = resolveParcelGridPlaneY(surface);
+    const sampleY = (_x: number, _z: number): number => fixedPlaneY;
+    type GridPoint = readonly [number, number];
+    type GridSegment = readonly [GridPoint, GridPoint];
+    interface WorldParcel {
+      readonly parcelId: string;
+      readonly rings: readonly (readonly GridPoint[])[];
+    }
+    interface BoundarySegment {
+      readonly parcelId: string;
+      readonly start: GridPoint;
+      readonly end: GridPoint;
+      readonly inward: GridPoint;
+      readonly length: number;
+    }
+
+    const worldParcels: WorldParcel[] = [];
+    for (const parcel of parcelSelection.parcels) {
+      for (const polygonValue of parcelPolygons(parcel)) {
+        const rings = asArray(polygonValue)
+          .map((ringValue) => asArray(ringValue)
+            .map((coordinate) => {
+              const point = asArray(coordinate);
+              return lonLatToWorld(Number(point[0]), Number(point[1]), frame);
+            })
+            .filter((point): point is [number, number] => point !== null))
+          .filter((ring) => ring.length >= 3);
+        if (rings.length > 0) worldParcels.push({ parcelId: parcel.parcelId, rings });
+      }
+    }
+    if (worldParcels.length === 0) {
+      refreshClearedPlacementGeometry();
+      return;
+    }
+
+    // Earcut (via Three.js ShapeUtils) turns arbitrary parcel polygons,
+    // including concave exteriors and holes, into convex coverage triangles.
+    // Every visible grid cell is clipped to this coverage below; no midpoint
+    // approximation is allowed to create geometry outside the parcel union.
+    const parcelCoverageTriangles: Array<readonly GridPoint[]> = [];
+    for (const parcel of worldParcels) {
+      const normalizedRings = parcel.rings
+        .map((ring) => normalizeParcelGridPolygon(ring))
+        .filter((ring) => ring.length >= 3);
+      const exterior = normalizedRings[0];
+      if (!exterior) continue;
+      const contour = exterior.map((point) => new THREE.Vector2(point[0], point[1]));
+      const holes = normalizedRings.slice(1).map((ring) => (
+        ring.map((point) => new THREE.Vector2(point[0], point[1]))
+      ));
+      const faces = THREE.ShapeUtils.triangulateShape(contour, holes);
+      const vertices = [...contour, ...holes.flat()];
+      for (const face of faces) {
+        const triangle = face.map((index): GridPoint => {
+          const point = vertices[index]!;
+          return [point.x, point.y];
+        });
+        if (parcelGridPolygonArea(triangle) > 1e-8) parcelCoverageTriangles.push(triangle);
+      }
+    }
+    if (parcelCoverageTriangles.length === 0) {
+      refreshClearedPlacementGeometry();
+      return;
+    }
+
+    const pointInsideParcel = (parcel: WorldParcel, point: GridPoint): boolean => pointInPolygon(point, parcel.rings);
+    const pointInsideUnion = (point: GridPoint): boolean => worldParcels.some((parcel) => pointInsideParcel(parcel, point));
+    const rawSegments: Array<Omit<BoundarySegment, "inward"> & { readonly parcel: WorldParcel }> = [];
+    for (const parcel of worldParcels) {
+      for (const ring of parcel.rings) {
+        for (let index = 0; index < ring.length; index += 1) {
+          const start = ring[index]!;
+          const end = ring[(index + 1) % ring.length]!;
+          const dx = end[0] - start[0];
+          const dz = end[1] - start[1];
+          const length = Math.hypot(dx, dz);
+          if (length < 0.05) continue;
+          rawSegments.push({ parcelId: parcel.parcelId, parcel, start, end, length });
+        }
+      }
+    }
+    const boundarySegments: BoundarySegment[] = [];
+    for (const segment of rawSegments) {
+      const dx = segment.end[0] - segment.start[0];
+      const dz = segment.end[1] - segment.start[1];
+      const midpoint: GridPoint = [
+        (segment.start[0] + segment.end[0]) * 0.5,
+        (segment.start[1] + segment.end[1]) * 0.5,
+      ];
+      let inward: GridPoint = [-dz / segment.length, dx / segment.length];
+      if (!pointInsideParcel(segment.parcel, [midpoint[0] + inward[0] * 0.2, midpoint[1] + inward[1] * 0.2])) {
+        inward = [-inward[0], -inward[1]];
+      }
+      // A shared edge between two selected parcels belongs to the common
+      // build mask and must not create an artificial 3 m strip.
+      const outwardProbe: GridPoint = [midpoint[0] - inward[0] * 0.2, midpoint[1] - inward[1] * 0.2];
+      const sharedInside = worldParcels.some((parcel) => parcel !== segment.parcel && pointInsideParcel(parcel, outwardProbe));
+      if (!sharedInside) boundarySegments.push({
+        parcelId: segment.parcelId,
+        start: segment.start,
+        end: segment.end,
+        inward,
+        length: segment.length,
+      });
+    }
+    if (boundarySegments.length === 0) {
+      refreshClearedPlacementGeometry();
+      return;
+    }
+
+    const distanceToSegment = (point: GridPoint, segment: BoundarySegment): number => {
+      const dx = segment.end[0] - segment.start[0];
+      const dz = segment.end[1] - segment.start[1];
+      const squared = dx * dx + dz * dz;
+      const factor = squared <= 1e-9 ? 0 : Math.max(0, Math.min(1,
+        ((point[0] - segment.start[0]) * dx + (point[1] - segment.start[1]) * dz) / squared,
+      ));
+      return Math.hypot(
+        point[0] - (segment.start[0] + dx * factor),
+        point[1] - (segment.start[1] + dz * factor),
+      );
+    };
+    const segmentMatchesGuide = (segment: BoundarySegment): boolean => {
+      if (!parcelGridGuide || parcelGridGuide.parcelId !== segment.parcelId) return false;
+      const endpointDistance = (first: GridPoint, second: GridPoint): number => Math.hypot(
+        first[0] - second[0],
+        first[1] - second[1],
+      );
+      return (endpointDistance(segment.start, parcelGridGuide.start) < 0.04
+          && endpointDistance(segment.end, parcelGridGuide.end) < 0.04)
+        || (endpointDistance(segment.start, parcelGridGuide.end) < 0.04
+          && endpointDistance(segment.end, parcelGridGuide.start) < 0.04);
+    };
+    const defaultSlantedDepth = Math.max(1, Math.min(6, Math.round(parcelGridInfluence)));
+    const depthForSegment = (segment: BoundarySegment): number => segmentMatchesGuide(segment)
+      ? Math.max(1, Math.min(6, Math.round(parcelGridGuide!.depthMeters)))
+      : defaultSlantedDepth;
+    const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...boundarySegments.map(depthForSegment));
+
+    // Placement and drawing must use the very same world-space boundary
+    // model.  Resolving directly from the nearest selected boundary avoids
+    // the old failure where a visibly slanted cell was looked up through an
+    // unrelated axis-aligned overlap and silently fell back to SetBlock.
+    const boundaryPlacementResolver = (position: ChunkApiWorldPosition): ParcelGridSemanticPlacement | null => {
+      const centre: GridPoint = [position.x + 0.5, position.z + 0.5];
+      const sourceCorners: readonly GridPoint[] = [
+        [position.x, position.z],
+        [position.x + 1, position.z],
+        [position.x + 1, position.z + 1],
+        [position.x, position.z + 1],
+      ];
+      if (!pointInsideUnion(centre) && !sourceCorners.some(pointInsideUnion)) return null;
+
+      let best: Readonly<{
+        segment: BoundarySegment;
+        segmentIndex: number;
+        along: number;
+        signedDepth: number;
+        score: number;
+      }> | null = null;
+      for (let segmentIndex = 0; segmentIndex < boundarySegments.length; segmentIndex += 1) {
+        const segment = boundarySegments[segmentIndex]!;
+        const tangentX = (segment.end[0] - segment.start[0]) / segment.length;
+        const tangentZ = (segment.end[1] - segment.start[1]) / segment.length;
+        const deltaX = centre[0] - segment.start[0];
+        const deltaZ = centre[1] - segment.start[1];
+        const along = deltaX * tangentX + deltaZ * tangentZ;
+        const signedDepth = deltaX * segment.inward[0] + deltaZ * segment.inward[1];
+        const depth = depthForSegment(segment);
+        if (along < -0.55 || along > segment.length + 0.55) continue;
+        if (signedDepth < -0.55 || signedDepth >= depth - 1e-6) continue;
+        const endpointPenalty = along < 0 ? -along : along > segment.length ? along - segment.length : 0;
+        const score = Math.max(0, signedDepth) + endpointPenalty * 1.5;
+        if (!best || score < best.score - 1e-7) {
+          best = { segment, segmentIndex, along, signedDepth, score };
+        }
+      }
+      if (!best) return null;
+
+      const segment = best.segment;
+      const tangentX = (segment.end[0] - segment.start[0]) / segment.length;
+      const tangentZ = (segment.end[1] - segment.start[1]) / segment.length;
+      const divisions = Math.max(1, Math.ceil(segment.length));
+      const columnWidth = segment.length / divisions;
+      const column = Math.max(0, Math.min(divisions - 1, Math.floor(
+        Math.max(0, Math.min(segment.length - 1e-7, best.along)) / columnWidth,
+      )));
+      const depthLimit = depthForSegment(segment);
+      const row = Math.max(0, Math.min(depthLimit - 1, Math.floor(Math.max(0, best.signedDepth))));
+      const alongStart = column * columnWidth;
+      const alongEnd = Math.min(segment.length, (column + 1) * columnWidth);
+      const depthStart = row;
+      const depthEnd = Math.min(depthLimit, row + 1);
+      const at = (along: number, depth: number): GridPoint => [
+        segment.start[0] + tangentX * along + segment.inward[0] * depth,
+        segment.start[1] + tangentZ * along + segment.inward[1] * depth,
+      ];
+      const footprint: readonly GridPoint[] = [
+        at(alongStart, depthStart),
+        at(alongEnd, depthStart),
+        at(alongEnd, depthEnd),
+        at(alongStart, depthEnd),
+      ];
+      if (!pointInsideUnion(centroid(footprint))) return null;
+      const wallAxisDegrees = ((Math.atan2(tangentZ, tangentX) * 180 / Math.PI) + 180) % 180;
+      const edgeKey = [segment.start, segment.end]
+        .map((point) => `${point[0].toFixed(3)}:${point[1].toFixed(3)}`)
+        .sort()
+        .join("|");
+      return {
+        kind: "parcel-grid-prism.v1",
+        footprint: {
+          type: "Polygon",
+          coordinateSpace: "world-cell-xz",
+          coordinates: [[...footprint, footprint[0]!]],
+          baseY: position.y,
+          height: 1,
+          gridSchemaVersion: "vectoplan-parcel-grid-guide.v7",
+          sourceCell: { x: position.x, z: position.z },
+          boundaryEdge: edgeKey,
+          boundaryRow: row,
+          boundaryColumn: column,
+        },
+        occupiedCells: [position],
+        mergeKey: `parcel-grid:${segment.parcelId}:${position.y}:${edgeKey}:${row}:${wallAxisDegrees.toFixed(2)}`,
+      };
+    };
+    const centroid = (polygon: readonly GridPoint[]): GridPoint => [
+      polygon.reduce((sum, point) => sum + point[0], 0) / Math.max(1, polygon.length),
+      polygon.reduce((sum, point) => sum + point[1], 0) / Math.max(1, polygon.length),
+    ];
+    const signedDepthToSegment = (point: GridPoint, segment: BoundarySegment): number => (
+      (point[0] - segment.start[0]) * segment.inward[0]
+      + (point[1] - segment.start[1]) * segment.inward[1]
+    );
+    const alongSegment = (point: GridPoint, segment: BoundarySegment): number => (
+      (point[0] - segment.start[0]) * ((segment.end[0] - segment.start[0]) / segment.length)
+      + (point[1] - segment.start[1]) * ((segment.end[1] - segment.start[1]) / segment.length)
+    );
+    const clipToStraightSide = (
+      input: readonly GridPoint[],
+      segment: BoundarySegment,
+      minimumDepth: number,
+    ): GridPoint[] => {
+      if (input.length < 3) return [];
+      const output: GridPoint[] = [];
+      for (let index = 0; index < input.length; index += 1) {
+        const current = input[index]!;
+        const next = input[(index + 1) % input.length]!;
+        const currentDistance = signedDepthToSegment(current, segment) - minimumDepth;
+        const nextDistance = signedDepthToSegment(next, segment) - minimumDepth;
+        const currentInside = currentDistance >= -1e-7;
+        const nextInside = nextDistance >= -1e-7;
+        if (currentInside) output.push(current);
+        if (currentInside === nextInside) continue;
+        const denominator = currentDistance - nextDistance;
+        if (Math.abs(denominator) < 1e-9) continue;
+        const factor = Math.max(0, Math.min(1, currentDistance / denominator));
+        output.push([
+          current[0] + (next[0] - current[0]) * factor,
+          current[1] + (next[1] - current[1]) * factor,
+        ]);
+      }
+      return [...new Map(output.map((point) => [
+        `${point[0].toFixed(6)}:${point[1].toFixed(6)}`,
+        point,
+      ])).values()];
+    };
+
+    const group = new THREE.Group();
+    group.name = "vectoplan_parcel_grid_guide";
+    const blueSegments: GridSegment[] = [];
+    const slantedSegments: GridSegment[] = [];
+    const straightSegments: GridSegment[] = [];
+    const transitionSegments: GridSegment[] = [];
+    const activeAxisSegments: GridSegment[] = [];
+    const innerAxisSegments: GridSegment[] = [];
+    const zoneCells: ParcelGridZoneCell[] = [];
+    const transitionTriangles: ParcelGridZoneCell[] = [];
+    const slantedFill: number[] = [];
+    const transitionFill: number[] = [];
+    const blockedFill: number[] = [];
+    const seenByBucket = new Map<GridSegment[], Set<string>>();
+    const addSegment = (bucket: GridSegment[], start: GridPoint, end: GridPoint): void => {
+      if (Math.hypot(end[0] - start[0], end[1] - start[1]) < 1e-5) return;
+      const first = `${start[0].toFixed(4)}:${start[1].toFixed(4)}`;
+      const second = `${end[0].toFixed(4)}:${end[1].toFixed(4)}`;
+      const key = first < second ? `${first}|${second}` : `${second}|${first}`;
+      const seen = seenByBucket.get(bucket) ?? new Set<string>();
+      if (seen.has(key)) return;
+      seen.add(key);
+      seenByBucket.set(bucket, seen);
+      bucket.push([start, end]);
+    };
+    const addFillPolygon = (positions: number[], polygon: readonly GridPoint[]): void => {
+      if (polygon.length < 3) return;
+      for (let index = 1; index < polygon.length - 1; index += 1) {
+        for (const point of [polygon[0]!, polygon[index]!, polygon[index + 1]!]) {
+          positions.push(point[0], sampleY(point[0], point[1]) + 0.003, point[1]);
+        }
+      }
+    };
+
+    const allPoints = worldParcels.flatMap((parcel) => parcel.rings.flatMap((ring) => [...ring]));
+    let minimumX = Math.floor(Math.min(...allPoints.map((point) => point[0])));
+    let maximumX = Math.ceil(Math.max(...allPoints.map((point) => point[0])));
+    let minimumZ = Math.floor(Math.min(...allPoints.map((point) => point[1])));
+    let maximumZ = Math.ceil(Math.max(...allPoints.map((point) => point[1])));
+    const requestedCells = Math.max(0, maximumX - minimumX) * Math.max(0, maximumZ - minimumZ);
+    // Do not keep tens of thousands of one-metre cells resident for a large
+    // parcel. The visible/loaded terrain window is sufficient while flying
+    // and avoids a large transparent line workload on every frame.
+    if (requestedCells > 12_000 && surface && surface.size > 0) {
+      const visible = [...surface.keys()].map((key) => key.split(":").map(Number)).filter((value) => value.length === 2);
+      if (visible.length > 0) {
+        minimumX = Math.max(minimumX, Math.floor(Math.min(...visible.map((value) => value[0]!))) - 8);
+        maximumX = Math.min(maximumX, Math.ceil(Math.max(...visible.map((value) => value[0]!))) + 8);
+        minimumZ = Math.max(minimumZ, Math.floor(Math.min(...visible.map((value) => value[1]!))) - 8);
+        maximumZ = Math.min(maximumZ, Math.ceil(Math.max(...visible.map((value) => value[1]!))) + 8);
+      }
+    }
+    const partition = buildParcelGridPartition({
+      boundarySegments: boundarySegments.map((segment) => {
+        const segmentId = [segment.start, segment.end]
+          .map((point) => `${point[0].toFixed(6)}:${point[1].toFixed(6)}`)
+          .sort()
+          .join("|");
+        return {
+          id: segmentId,
+          parcelId: segment.parcelId,
+          start: segment.start,
+          end: segment.end,
+          inward: segment.inward,
+          length: segment.length,
+          depth: depthForSegment(segment),
+        };
+      }),
+      coverageTriangles: parcelCoverageTriangles,
+      bounds: { minimumX, maximumX, minimumZ, maximumZ },
+      minimumArea: 1e-6,
+    });
+    for (const segment of boundarySegments) addSegment(blueSegments, segment.start, segment.end);
+    const logicalSlantedCells = new Map<string, ParcelGridZoneCell[]>();
+    for (const partitionCell of partition.cells) {
+      const cell: ParcelGridZoneCell = { ...partitionCell };
+      zoneCells.push(cell);
+      const polygon = cell.polygon;
+      const lineBucket = cell.zone === "straight"
+          ? straightSegments
+          : transitionSegments;
+      if (cell.zone.startsWith("slanted-")) {
+        if (cell.logicalCellId) {
+          const fragments = logicalSlantedCells.get(cell.logicalCellId) ?? [];
+          fragments.push(cell);
+          logicalSlantedCells.set(cell.logicalCellId, fragments);
+        }
+        addFillPolygon(slantedFill, polygon);
+      } else {
+        for (let edge = 0; edge < polygon.length; edge += 1) {
+          addSegment(lineBucket, polygon[edge]!, polygon[(edge + 1) % polygon.length]!);
+        }
+      }
+      if (cell.zone === "straight-clipped") {
+        addFillPolygon(blockedFill, polygon);
+        if (polygon.length === 3) {
+          transitionTriangles.push({ ...cell, zone: "transition-triangle" });
+          addFillPolygon(transitionFill, polygon);
+        }
+      }
+    }
+    for (const cells of logicalSlantedCells.values()) {
+      for (const polygon of mergeParcelGridCoverage(cells.map((cell) => cell.polygon))) {
+        for (let edge = 0; edge < polygon.length; edge += 1) {
+          addSegment(slantedSegments, polygon[edge]!, polygon[(edge + 1) % polygon.length]!);
+        }
+      }
+    }
+    // The inner limit of the slanted raster is a first-class adjustable guide,
+    // not just an incidental row edge. Draw it for every parcel boundary and
+    // use the selected edge's persisted custom depth where applicable.
+    for (const segment of boundarySegments) {
+      const depth = depthForSegment(segment);
+      addSegment(innerAxisSegments,
+        [segment.start[0] + segment.inward[0] * depth, segment.start[1] + segment.inward[1] * depth],
+        [segment.end[0] + segment.inward[0] * depth, segment.end[1] + segment.inward[1] * depth],
+      );
+    }
+    options.root.dataset.parcelGridCoveredArea = partition.coveredArea.toFixed(3);
+    options.root.dataset.parcelGridSlantedArea = partition.slantedArea.toFixed(3);
+    options.root.dataset.parcelGridStraightArea = partition.straightArea.toFixed(3);
+    options.root.dataset.parcelGridBlockedArea = partition.blockedArea.toFixed(3);
+
+    if (parcelGridGuide) {
+      addSegment(activeAxisSegments, parcelGridGuide.start, parcelGridGuide.end);
+      if (parcelGridMode === "setback" && parcelGridSetback > 0) {
+        addSegment(activeAxisSegments,
+          [parcelGridGuide.start[0] + parcelGridGuide.inward[0] * parcelGridSetback, parcelGridGuide.start[1] + parcelGridGuide.inward[1] * parcelGridSetback],
+          [parcelGridGuide.end[0] + parcelGridGuide.inward[0] * parcelGridSetback, parcelGridGuide.end[1] + parcelGridGuide.inward[1] * parcelGridSetback],
+        );
+      }
+    }
+
+    const addLineBatch = (name: string, segments: readonly GridSegment[], color: number, opacity: number, order: number): void => {
+      if (segments.length === 0) return;
+      const positions: number[] = [];
+      for (const [start, end] of segments) {
+        positions.push(start[0], sampleY(start[0], start[1]), start[1]);
+        positions.push(end[0], sampleY(end[0], end[1]), end[1]);
+      }
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      const lines = new THREE.LineSegments(geometry, new THREE.LineBasicMaterial({
+        color,
+        transparent: true,
+        opacity,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false,
+      }));
+      lines.name = name;
+      lines.renderOrder = order;
+      group.add(lines);
+    };
+    const addFillBatch = (name: string, positions: readonly number[], color: number, opacity: number, order: number): void => {
+      if (positions.length === 0) return;
+      const geometry = new THREE.BufferGeometry();
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+      const mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+        color,
+        transparent: true,
+        opacity,
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }));
+      mesh.name = name;
+      mesh.renderOrder = order;
+      group.add(mesh);
+    };
+    addFillBatch("parcel_grid_slanted_zone_fill", slantedFill, 0xff234d, 0.075, 111);
+    addFillBatch("parcel_grid_transition_fill", transitionFill, 0xff234d, 0.045, 112);
+    addFillBatch("parcel_grid_blocked_cut_cells", blockedFill, 0xff102f, 0.28, 115);
+    addLineBatch("parcel_grid_straight_cells", straightSegments, 0xc7193f, 0.52, 116);
+    addLineBatch("parcel_grid_slanted_cells", slantedSegments, 0xff143f, 0.98, 118);
+    addLineBatch("parcel_grid_transition_triangles", transitionSegments, 0xff143f, 1, 119);
+    addLineBatch("parcel_grid_boundary", blueSegments, 0x1265e5, 1, 120);
+    addLineBatch("parcel_grid_active_axis", activeAxisSegments, 0xffa200, 1, 121);
+    addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
+
+    group.userData = {
+      kind: "parcel-grid-guide",
+      schemaVersion: "vectoplan-parcel-grid-guide.v7",
+      mode: parcelGridMode,
+      setbackMeters: parcelGridSetback,
+      legalBandsMeters: Array.from({ length: maximumSlantedDepth + 2 }, (_, index) => index),
+      slantedBandMeters: defaultSlantedDepth,
+      selectedEdgeSlantedBandMeters: parcelGridGuide?.depthMeters ?? null,
+      transitionBandMeters: [defaultSlantedDepth, defaultSlantedDepth + 1],
+      transitionShape: "right-triangle-with-straight-grid",
+      zoneCells,
+      transitionTriangles,
+      blockedCells: zoneCells.filter((cell) => cell.zone === "straight-clipped"),
+    };
+    parcelGridZoneCells = zoneCells;
+    const zoneCellIndex = new Map<string, ParcelGridZoneCell[]>();
+    for (const cell of zoneCells) {
+      const minimumCellX = Math.floor(Math.min(...cell.polygon.map((point) => point[0])) + 1e-7);
+      const maximumCellX = Math.ceil(Math.max(...cell.polygon.map((point) => point[0])) - 1e-7);
+      const minimumCellZ = Math.floor(Math.min(...cell.polygon.map((point) => point[1])) + 1e-7);
+      const maximumCellZ = Math.ceil(Math.max(...cell.polygon.map((point) => point[1])) - 1e-7);
+      for (let x = minimumCellX; x < maximumCellX; x += 1) {
+        for (let z = minimumCellZ; z < maximumCellZ; z += 1) {
+          const key = `${x}:${z}`;
+          const entries = zoneCellIndex.get(key) ?? [];
+          entries.push(cell);
+          zoneCellIndex.set(key, entries);
+        }
+      }
+    }
+    parcelGridZoneCellIndex = zoneCellIndex;
+    parcelGridPlacementResolver = (position, resolverOptions): ParcelGridSemanticPlacement | null => {
+      // One authoritative logical grid cell wins the source voxel. Combining
+      // comparable cells from two corner edges with a convex hull used to
+      // bridge the parcel corner and produced the oversized bodies in the
+      // screenshots. Fragments only share an id when they came from the same
+      // already-clipped one-metre boundary cell.
+      const groups = new Map<string, { cells: ParcelGridZoneCell[]; area: number }>();
+      const targetCell = resolverOptions?.targetPoint
+        ? { x: Math.floor(resolverOptions.targetPoint[0]), z: Math.floor(resolverOptions.targetPoint[1]) }
+        : null;
+      const lookupCells = [
+        { x: position.x, z: position.z },
+        targetCell,
+      ].filter((value, index, values): value is { x: number; z: number } => Boolean(value)
+        && values.findIndex((candidate) => candidate?.x === value?.x && candidate?.z === value?.z) === index);
+      const indexedCells = new Set<ParcelGridZoneCell>();
+      for (const lookup of lookupCells) {
+        for (const cell of zoneCellIndex.get(`${lookup.x}:${lookup.z}`) ?? []) indexedCells.add(cell);
+      }
+      for (const cell of indexedCells) {
+        if (!cell.zone.startsWith("slanted-")) continue;
+        const overlap = Math.max(...lookupCells.map((lookup) => (
+          polygonCellOverlapArea(cell.polygon, lookup.x, lookup.z)
+        )));
+        if (overlap <= 1e-7) continue;
+        const key = cell.logicalCellId ?? `${cell.parcelId}:${cell.zone}:${cell.boundarySegmentId ?? "edge"}`;
+        const group = groups.get(key) ?? { cells: [], area: 0 };
+        group.cells.push(cell);
+        group.area += overlap;
+        groups.set(key, group);
+      }
+      const preferredGroup = resolverOptions?.preferredLogicalCellId
+        ? groups.get(resolverOptions.preferredLogicalCellId)
+        : null;
+      const pointedGroup = resolverOptions?.targetPoint
+        ? [...groups.entries()]
+            .filter(([, group]) => group.cells.some((cell) => pointInRing(resolverOptions.targetPoint!, cell.polygon)))
+            .sort((first, second) => second[1].area - first[1].area || first[0].localeCompare(second[0]))[0]
+        : null;
+      const selectedGroup = preferredGroup && resolverOptions?.preferredLogicalCellId
+        ? [resolverOptions.preferredLogicalCellId, preferredGroup] as const
+        : pointedGroup
+          ?? [...groups.entries()]
+            .sort((first, second) => second[1].area - first[1].area || first[0].localeCompare(second[0]))[0];
+      if (!selectedGroup) return null;
+      // Triangulation and corner subtraction may split one logical grid cell
+      // into several convex fragments. Reassemble all fragments of the chosen
+      // cell before persisting it; never mix fragments from another edge.
+      const cells = logicalSlantedCells.get(selectedGroup[0]) ?? selectedGroup[1].cells;
+      const originalOverlap = cells.reduce((sum, cell) => (
+        sum + polygonCellOverlapArea(cell.polygon, position.x, position.z)
+      ), 0);
+      const targetOverlap = targetCell ? cells.reduce((sum, cell) => (
+        sum + polygonCellOverlapArea(cell.polygon, targetCell.x, targetCell.z)
+      ), 0) : 0;
+      const anchorPosition: ChunkApiWorldPosition = originalOverlap > 1e-7 || !targetCell || targetOverlap <= 1e-7
+        ? position
+        : { x: targetCell.x, y: position.y, z: targetCell.z };
+      const merged = mergeParcelGridCoverage(cells.map((cell) => cell.polygon));
+      const footprints = [...merged]
+        .filter((polygon) => polygon.length >= 3 && polygonArea(polygon) >= 1e-7)
+        .sort((first, second) => (
+          polygonCellOverlapArea(second, anchorPosition.x, anchorPosition.z)
+          - polygonCellOverlapArea(first, anchorPosition.x, anchorPosition.z)
+        ));
+      if (footprints.length === 0) return null;
+      const closedFootprints = footprints.map((polygon) => [...polygon, polygon[0]!]);
+      const primary = [...cells].sort((first, second) => (
+        polygonCellOverlapArea(second.polygon, anchorPosition.x, anchorPosition.z)
+        - polygonCellOverlapArea(first.polygon, anchorPosition.x, anchorPosition.z)
+      ))[0]!;
+      let longestEdge: readonly [GridPoint, GridPoint] = [primary.polygon[0]!, primary.polygon[1]!];
+      for (let index = 0; index < primary.polygon.length; index += 1) {
+        const candidate: readonly [GridPoint, GridPoint] = [
+          primary.polygon[index]!,
+          primary.polygon[(index + 1) % primary.polygon.length]!,
+        ];
+        if (Math.hypot(
+          candidate[1][0] - candidate[0][0],
+          candidate[1][1] - candidate[0][1],
+        ) > Math.hypot(
+          longestEdge[1][0] - longestEdge[0][0],
+          longestEdge[1][1] - longestEdge[0][1],
+        )) longestEdge = candidate;
+      }
+      const wallAxisDegrees = primary.wallAxisDegrees ?? ((Math.atan2(
+        longestEdge[1][1] - longestEdge[0][1],
+        longestEdge[1][0] - longestEdge[0][0],
+      ) * 180 / Math.PI) + 180) % 180;
+      const parcelIds = [...new Set(cells.map((cell) => cell.parcelId))].sort();
+      const boundarySegmentId = primary.boundarySegmentId ?? "clipped-edge";
+      const boundaryRow = primary.boundaryRow ?? 0;
+      return {
+        kind: "parcel-grid-prism.v1",
+        footprint: {
+          type: closedFootprints.length === 1 ? "Polygon" : "MultiPolygon",
+          coordinateSpace: "world-cell-xz",
+          coordinates: closedFootprints.length === 1
+            ? [closedFootprints[0]]
+            : closedFootprints.map((ring) => [ring]),
+          baseY: anchorPosition.y,
+          height: 1,
+          gridSchemaVersion: "vectoplan-parcel-grid-guide.v7",
+          sourceCell: { x: anchorPosition.x, z: anchorPosition.z },
+          logicalGridCellId: selectedGroup[0],
+          boundarySegmentId,
+          boundaryRow,
+          boundaryColumn: primary.boundaryColumn ?? null,
+          resolvedFrom: "clipped-grid-partition",
+        },
+        occupiedCells: [anchorPosition],
+        mergeKey: `parcel-grid:${parcelIds.join("+")}:${anchorPosition.y}:${boundarySegmentId}:${boundaryRow}:${wallAxisDegrees.toFixed(2)}`,
+        anchorPosition,
+      };
+    };
+    options.root.dataset.parcelGridTransitionMeters = (maximumSlantedDepth + 1).toFixed(3);
+    options.root.dataset.parcelGridZoneCells = String(zoneCells.length);
+    options.root.dataset.parcelGridSlantedCells = String(zoneCells.filter((cell) => cell.zone.startsWith("slanted-")).length);
+    options.root.dataset.parcelGridTransitionTriangles = String(transitionTriangles.length);
+    options.root.dataset.parcelGridBlockedCells = String(zoneCells.filter((cell) => cell.zone === "straight-clipped").length);
+    scene.add(group);
+    parcelGridGroup = group;
+    const guideSignature = parcelGridGuide
+      ? `${parcelGridGuide.parcelId}:${parcelGridGuide.start.join(":")}:${parcelGridGuide.end.join(":")}:${parcelGridGuide.depthMeters}`
+      : "default";
+    const geometrySignature = [
+      parcelSelection.parcels.map((parcel) => parcel.parcelId).sort().join("|"),
+      frame.storageOrigin.x,
+      frame.storageOrigin.z,
+      fixedPlaneY.toFixed(3),
+      parcelGridInfluence,
+      parcelGridMode,
+      parcelGridSetback,
+      guideSignature,
+    ].join(";");
+    commitParcelGridGeometrySignature(geometrySignature, "world-edit.parcel-grid-rebuilt");
+  }
+
+  function rebuildParcelScene(): void {
+    disposeParcelGroup();
+    publishParcelOverlay();
+    if (parcelGridGuide && !parcelSelection.parcels.some((parcel) => parcel.parcelId === parcelGridGuide?.parcelId)) {
+      parcelGridGuide = null;
+    }
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+
+    const geodataOverlay = scene.getObjectByName("vectoplan_geodata_overlay_scene_group");
+    const surfaceCellY = geodataOverlay?.userData.surfaceCellY instanceof Map
+      ? geodataOverlay.userData.surfaceCellY as ReadonlyMap<string, number>
+      : null;
+    const fixedPlaneY = resolveParcelGridPlaneY(surfaceCellY);
+    const surfaceY = (_x: number, _z: number): number => fixedPlaneY - 0.018;
+    const drapedRingPoints = (ring: readonly [number, number][]): THREE.Vector3[] => {
+      const result = ring.map(([x, z]) => new THREE.Vector3(x, fixedPlaneY, z));
+      if (result.length > 0) result.push(result[0].clone());
+      return result;
+    };
+    earthGrid = normalizedEarthGrid(geodataOverlay?.userData.earthGrid)
+      ?? earthGrid
+      ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    options.root.dataset.parcelGridRotationDegrees = parcelSelection.gridRotationDegrees.toFixed(6);
+    if (!earthGrid || parcelSelection.parcels.length === 0) {
+      disposeParcelGridGroup();
+      commitParcelGridGeometrySignature("", "world-edit.parcel-grid-no-selection");
+      return;
+    }
+    restoreParcelGridGuide(earthGrid);
+
+    const group = new THREE.Group();
+    group.name = "vectoplan_selected_parcel_surfaces";
+    group.userData = {
+      kind: "selected-parcel-surfaces",
+      affectsVoxelState: false,
+      affectsCollision: false,
+      earthGridSchemaVersion: earthGrid.schemaVersion,
+    };
+    for (const parcel of parcelSelection.parcels) {
+      for (const polygonValue of parcelPolygons(parcel)) {
+        const rings = asArray(polygonValue);
+        const localRings = rings.map((ringValue) => asArray(ringValue)
+          .map((coordinate) => {
+            const point = asArray(coordinate);
+            return lonLatToWorld(
+              Number(point[0]),
+              Number(point[1]),
+              earthGrid,
+            );
+          })
+          .filter((point): point is [number, number] => point !== null));
+        const exterior = localRings[0] ?? [];
+        if (exterior.length < 3) continue;
+
+        const shape = new THREE.Shape();
+        exterior.forEach((point, index) => {
+          if (index === 0) shape.moveTo(point[0], -point[1]);
+          else shape.lineTo(point[0], -point[1]);
+        });
+        for (const hole of localRings.slice(1)) {
+          if (hole.length < 3) continue;
+          const path = new THREE.Path();
+          hole.forEach((point, index) => {
+            if (index === 0) path.moveTo(point[0], -point[1]);
+            else path.lineTo(point[0], -point[1]);
+          });
+          shape.holes.push(path);
+        }
+        const fillGeometry = new THREE.ShapeGeometry(shape);
+        const fillPositions = fillGeometry.getAttribute("position") as THREE.BufferAttribute;
+        for (let vertex = 0; vertex < fillPositions.count; vertex += 1) {
+          const x = fillPositions.getX(vertex);
+          const worldZ = -fillPositions.getY(vertex);
+          fillPositions.setZ(vertex, surfaceY(x, worldZ) + 0.012);
+        }
+        fillPositions.needsUpdate = true;
+        fillGeometry.computeBoundingBox();
+        fillGeometry.computeBoundingSphere();
+        const mesh = new THREE.Mesh(
+          fillGeometry,
+          new THREE.MeshBasicMaterial({
+            color: 0x1687ff,
+            transparent: true,
+            opacity: 0.2,
+            depthTest: false,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+            toneMapped: false,
+          }),
+        );
+        mesh.rotation.x = -Math.PI / 2;
+        mesh.renderOrder = 46;
+        mesh.userData = { kind: "selected-parcel-fill", parcelId: parcel.parcelId };
+        group.add(mesh);
+
+        for (const ring of localRings) {
+          if (ring.length < 2) continue;
+          const points = drapedRingPoints(ring);
+          if (points.length < 2) continue;
+          const outline = new THREE.Line(
+            new THREE.BufferGeometry().setFromPoints(points),
+            new THREE.LineBasicMaterial({
+              color: 0x1265e5,
+              transparent: true,
+              opacity: 0.96,
+              depthTest: false,
+              depthWrite: false,
+              toneMapped: false,
+            }),
+          );
+          outline.renderOrder = 47;
+          outline.userData = { kind: "selected-parcel-outline", parcelId: parcel.parcelId };
+          group.add(outline);
+        }
+      }
+    }
+    if (group.children.length > 0) {
+      scene.add(group);
+      parcelGroup = group;
+    }
+    rebuildParcelGridScene();
+  }
+
+  function rebuildSelectionScene(): void {
+    disposeSelectionGroup();
+    if (!selection.first || !selection.second) return;
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+    if (activeTool === "ruler") {
+      const first = new THREE.Vector3(selection.first.x + 0.5, selection.first.y + 0.5, selection.first.z + 0.5);
+      const second = new THREE.Vector3(selection.second.x + 0.5, selection.second.y + 0.5, selection.second.z + 0.5);
+      const group = new THREE.Group();
+      group.name = "vectoplan_world_edit_ruler";
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([first, second]),
+        new THREE.LineBasicMaterial({ color: 0x38bdf8, depthTest: false }),
+      );
+      line.renderOrder = 91;
+      group.add(line);
+      for (const point of [first, second]) {
+        const marker = new THREE.Mesh(
+          new THREE.SphereGeometry(0.14, 12, 8),
+          new THREE.MeshBasicMaterial({ color: 0xf8fafc, depthTest: false }),
+        );
+        marker.position.copy(point);
+        marker.renderOrder = 92;
+        group.add(marker);
+      }
+      scene.add(group);
+      selectionGroup = group;
+      return;
+    }
+    const min = {
+      x: Math.min(selection.first.x, selection.second.x),
+      y: Math.min(selection.first.y, selection.second.y),
+      z: Math.min(selection.first.z, selection.second.z),
+    };
+    const max = {
+      x: Math.max(selection.first.x, selection.second.x),
+      y: Math.max(selection.first.y, selection.second.y),
+      z: Math.max(selection.first.z, selection.second.z),
+    };
+    const size = new THREE.Vector3(max.x - min.x + 1, max.y - min.y + 1, max.z - min.z + 1);
+    const center = new THREE.Vector3(min.x + (size.x / 2), min.y + (size.y / 2), min.z + (size.z / 2));
+    const group = new THREE.Group();
+    group.name = "vectoplan_world_edit_selection";
+    const boxGeometry = new THREE.BoxGeometry(size.x, size.y, size.z);
+    const fill = new THREE.Mesh(boxGeometry, new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.08,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+    }));
+    fill.position.copy(center);
+    fill.renderOrder = 70;
+    group.add(fill);
+    const edges = new THREE.LineSegments(
+      new THREE.EdgesGeometry(boxGeometry),
+      new THREE.LineBasicMaterial({ color: 0x7dd3fc, transparent: true, opacity: 0.95 }),
+    );
+    edges.position.copy(center);
+    edges.renderOrder = 71;
+    group.add(edges);
+
+    const descriptors: Array<{ axis: "x" | "y" | "z"; sign: -1 | 1 }> = [
+      { axis: "x", sign: -1 }, { axis: "x", sign: 1 },
+      { axis: "y", sign: -1 }, { axis: "y", sign: 1 },
+      { axis: "z", sign: -1 }, { axis: "z", sign: 1 },
+    ];
+    const panelSize = (value: number): number => Math.min(3.2, Math.max(0.9, value * 0.55));
+    for (const descriptor of descriptors) {
+      const dimensions = descriptor.axis === "x"
+        ? new THREE.Vector3(0.1, panelSize(size.y), panelSize(size.z))
+        : descriptor.axis === "y"
+          ? new THREE.Vector3(panelSize(size.x), 0.1, panelSize(size.z))
+          : new THREE.Vector3(panelSize(size.x), panelSize(size.y), 0.1);
+      const handleGeometry = new THREE.BoxGeometry(dimensions.x, dimensions.y, dimensions.z);
+      const mesh = new THREE.Mesh(
+        handleGeometry,
+        new THREE.MeshBasicMaterial({
+          color: 0x2563eb,
+          transparent: true,
+          opacity: 0.78,
+          depthTest: false,
+          depthWrite: false,
+          side: THREE.DoubleSide,
+          toneMapped: false,
+        }),
+      );
+      mesh.position.copy(center);
+      mesh.position[descriptor.axis] += descriptor.sign * (size[descriptor.axis] / 2 + 0.42);
+      mesh.renderOrder = 90;
+      mesh.userData = { worldEditHandle: true, axis: descriptor.axis, sign: descriptor.sign };
+      const handleEdges = new THREE.LineSegments(
+        new THREE.EdgesGeometry(handleGeometry),
+        new THREE.LineBasicMaterial({
+          color: 0x93c5fd,
+          transparent: true,
+          opacity: 0.96,
+          depthTest: false,
+          depthWrite: false,
+        }),
+      );
+      handleEdges.renderOrder = 91;
+      mesh.add(handleEdges);
+      group.add(mesh);
+      selectionHandles.push({ axis: descriptor.axis, sign: descriptor.sign, mesh });
+    }
+    scene.add(group);
+    selectionGroup = group;
+  }
+
+  function refreshHud(): void {
+    const title = panel.querySelector<HTMLElement>("[data-world-edit-title]");
+    const first = panel.querySelector<HTMLOutputElement>("[data-selection-first]");
+    const second = panel.querySelector<HTMLOutputElement>("[data-selection-second]");
+    const material = panel.querySelector<HTMLElement>("[data-world-edit-material]");
+    const parcelCount = panel.querySelector<HTMLElement>("[data-parcel-count]");
+    const brushSettings = panel.querySelector<HTMLElement>("[data-brush-settings]");
+    const coordinates = panel.querySelector<HTMLElement>("[data-selection-coordinates]");
+    const rulerResult = panel.querySelector<HTMLElement>("[data-ruler-result]");
+    const rulerDistance = panel.querySelector<HTMLOutputElement>("[data-ruler-distance]");
+    const operationField = panel.querySelector<HTMLElement>("[data-selection-operation]");
+    const materialField = panel.querySelector<HTMLElement>(".editor-world-edit__material");
+    const maskField = panel.querySelector<HTMLElement>(".editor-world-edit__mask");
+    const clipboardStatus = panel.querySelector<HTMLElement>("[data-clipboard-status]");
+    const clipboardCount = panel.querySelector<HTMLElement>("[data-clipboard-count]");
+    const hint = panel.querySelector<HTMLElement>("[data-world-edit-hint]");
+    const placement = selectedPlacement();
+    const titles: Record<WorldEditTool, string> = {
+      selection: "Selection Tool",
+      paint: "Paint Brush",
+      sculpt: "Sculpt Brush",
+      parcel: "Flurstück Tool",
+      "parcel-grid": "Grundstücksraster",
+      ruler: "Messwerkzeug",
+      clipboard: "Copy / Cut / Paste",
+    };
+    if (title) title.textContent = activeTool ? titles[activeTool] : "WorldEdit";
+    if (first) first.textContent = positionLabel(selection.first);
+    if (second) second.textContent = positionLabel(selection.second);
+    if (material) material.textContent = operation === "clear" ? "Luft / entfernen" : placement.label ?? placement.runtimeBlockTypeId ?? "Hotbar auswählen";
+    if (parcelCount) parcelCount.textContent = `${parcelSelection.parcels.length} Grundstück${parcelSelection.parcels.length === 1 ? "" : "e"}`;
+    if (brushSettings) brushSettings.hidden = activeTool !== "paint" && activeTool !== "sculpt";
+    if (coordinates) coordinates.hidden = !["selection", "ruler", "clipboard"].includes(activeTool ?? "");
+    if (rulerResult) rulerResult.hidden = activeTool !== "ruler";
+    const distance = measurementMetres(selection);
+    if (rulerDistance) rulerDistance.textContent = distance === null ? "–" : `${distance.toFixed(2)} m`;
+    if (operationField) operationField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler";
+    if (materialField) materialField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || ["copy", "cut", "paste"].includes(operation);
+    if (maskField) maskField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler";
+    if (executeButton) executeButton.hidden = activeTool !== "selection" && activeTool !== "clipboard";
+    if (resetButton) resetButton.textContent = activeTool === "parcel"
+      ? "Grundstücke leeren"
+      : activeTool === "ruler"
+        ? "Messung löschen"
+        : activeTool === "selection" || activeTool === "clipboard"
+          ? "Auswahl löschen"
+          : "Ziel löschen";
+    if (clipboardStatus) clipboardStatus.hidden = activeTool !== "clipboard";
+    if (clipboardCount) clipboardCount.textContent = `${clipboard.length} Zelle${clipboard.length === 1 ? "" : "n"}`;
+    if (operationSelect) operationSelect.value = operation;
+    if (hint) {
+      hint.textContent = activeTool === "selection"
+        ? "Linksklick halten und mit der Kamera den Auswahlquader live aufziehen. Danach eine der sechs blauen Flächen mittig vor den Seiten greifen, um X/Y/Z anzupassen."
+        : activeTool === "parcel"
+          ? "Ein Flurstück anvisieren und anklicken, um es projektweit auszuwählen oder abzuwählen."
+          : activeTool === "parcel-grid"
+            ? "Eine Grenze anvisieren und anklicken. Gelb markiert die Flurstücksgrenze, Cyan die Bauachse und die zweite gestrichelte Linie den Wirkbereich."
+          : activeTool === "ruler"
+            ? "Linksklick halten und mit der Kamera bis zum zweiten Messpunkt ziehen."
+            : activeTool === "clipboard"
+              ? "Copy/Cut verwendet den markierten Bereich. Paste setzt die Zwischenablage am anvisierten Ziel ein."
+              : "Linksklick wendet den Pinsel an; Rechtsklick entfernt mit derselben Form.";
+    }
+    const radiusOutput = panel.querySelector<HTMLOutputElement>("[data-brush-radius-output]");
+    const densityOutput = panel.querySelector<HTMLOutputElement>("[data-brush-density-output]");
+    const wallOutput = panel.querySelector<HTMLOutputElement>("[data-brush-wall-output]");
+    if (radiusOutput && brushRadius) radiusOutput.textContent = brushRadius.value;
+    if (densityOutput && brushDensity) densityOutput.textContent = `${brushDensity.value}%`;
+    if (wallOutput && brushWall) wallOutput.textContent = brushWall.value;
+    panel.dataset.tool = activeTool ?? "none";
+    publishInventoryState();
+  }
+
+  function adjustSelectionHandle(action: "primary" | "secondary"): boolean {
+    if (!selection.first || !selection.second || selectionHandles.length === 0) return false;
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return false;
+    const raycaster = new THREE.Raycaster();
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.intersectObjects(selectionHandles.map((item) => item.mesh), false)[0];
+    if (!hit) return false;
+    const handle = selectionHandles.find((item) => item.mesh === hit.object);
+    if (!handle) return false;
+    if (action === "primary") {
+      stopSelectionDrag();
+      selectionHandleDrag = { axis: handle.axis, sign: handle.sign };
+      selectionDragging = true;
+      selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
+      setStatus(`Die ${handle.axis.toUpperCase()}-FlÃ¤che folgt jetzt dem Fadenkreuz. Linksklick zum AbschlieÃŸen loslassen.`, "ready");
+      return true;
+    }
+    const min = {
+      x: Math.min(selection.first.x, selection.second.x),
+      y: Math.min(selection.first.y, selection.second.y),
+      z: Math.min(selection.first.z, selection.second.z),
+    };
+    const max = {
+      x: Math.max(selection.first.x, selection.second.x),
+      y: Math.max(selection.first.y, selection.second.y),
+      z: Math.max(selection.first.z, selection.second.z),
+    };
+    const delta = -handle.sign;
+    if (handle.sign < 0) min[handle.axis] = Math.min(max[handle.axis], min[handle.axis] + delta);
+    else max[handle.axis] = Math.max(min[handle.axis], max[handle.axis] + delta);
+    selection = { first: min, second: max };
+    rebuildSelectionScene();
+    refreshHud();
+    setStatus("Auswahl über Flächenpunkt angepasst.", "ready");
+    return true;
+  }
+
+  function configureOperationSelect(tool: WorldEditTool): void {
+    if (!operationSelect) return;
+    const clipboardMode = tool === "clipboard";
+    const desiredMode = clipboardMode ? "clipboard" : "world";
+    if (operationSelect.dataset.mode !== desiredMode) {
+      operationSelect.innerHTML = clipboardMode
+        ? '<option value="copy">Kopieren</option><option value="cut">Ausschneiden</option><option value="paste">Einfügen</option>'
+        : '<option value="set">Setzen</option><option value="wall">Wände</option><option value="fill">Nur Luft füllen</option><option value="replace">Ersetzen</option><option value="clear">Leeren</option>';
+      operationSelect.dataset.mode = desiredMode;
+    }
+    if (clipboardMode && !["copy", "cut", "paste"].includes(operation)) operation = "copy";
+    if (!clipboardMode && !["set", "wall", "fill", "replace", "clear"].includes(operation)) operation = "set";
+    operationSelect.value = operation;
+  }
+
+  function stopSelectionDrag(): void {
+    selectionDragging = false;
+    selectionHandleDrag = null;
+    if (selectionDragFrame) cancelAnimationFrame(selectionDragFrame);
+    selectionDragFrame = 0;
+  }
+
+  function applySelectionHandleTarget(target: ChunkApiWorldPosition): void {
+    if (!selectionHandleDrag || !selection.first || !selection.second) return;
+    const min = {
+      x: Math.min(selection.first.x, selection.second.x),
+      y: Math.min(selection.first.y, selection.second.y),
+      z: Math.min(selection.first.z, selection.second.z),
+    };
+    const max = {
+      x: Math.max(selection.first.x, selection.second.x),
+      y: Math.max(selection.first.y, selection.second.y),
+      z: Math.max(selection.first.z, selection.second.z),
+    };
+    const { axis, sign } = selectionHandleDrag;
+    if (sign < 0) min[axis] = Math.min(max[axis], target[axis]);
+    else max[axis] = Math.max(min[axis], target[axis]);
+    selection = { first: min, second: max };
+  }
+
+  function trackSelectionDrag(): void {
+    if (!selectionDragging) return;
+    const latest = cellPosition(options.sceneRuntime.getTargetCells().placementCell);
+    if (latest && selection.first) {
+      if (selectionHandleDrag) applySelectionHandleTarget(latest);
+      else selection = { first: selection.first, second: latest };
+      rebuildSelectionScene();
+      refreshHud();
+    }
+    selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
+  }
+
+  function startSelectionDrag(position: ChunkApiWorldPosition): void {
+    stopSelectionDrag();
+    selection = { first: position, second: position };
+    selectionDragging = true;
+    rebuildSelectionScene();
+    refreshHud();
+    selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
+  }
+
+  function parcelMaskPayload(): Record<string, unknown> {
+    return {
+      enabled: parcelMaskInput?.checked === true,
+      coordinateSpace: "wgs84",
+      coveragePolicy: "cell-contained",
+      projectPublicId: parcelSelection.projectPublicId,
+      projectCoordinate: parcelSelection.projectCoordinate,
+      gridRotationDegrees: parcelSelection.gridRotationDegrees,
+      parcels: parcelSelection.parcels,
+    };
+  }
+
+  function broadcastParcelSelection(): void {
+    parcelSelection.parcelGridState = serializedParcelGridState();
+    try {
+      window.parent?.postMessage({
+        type: PARCEL_CHANGED,
+        kind: PARCEL_CHANGED,
+        source: "vectoplan-editor",
+        detail: {
+          projectPublicId: parcelSelection.projectPublicId,
+          coordinateSpace: "wgs84",
+          coveragePolicy: "cell-contained",
+          revision: parcelSelection.revision,
+          projectCoordinate: parcelSelection.projectCoordinate,
+          gridRotationDegrees: parcelSelection.gridRotationDegrees,
+          parcels: parcelSelection.parcels,
+          parcelGridState: parcelSelection.parcelGridState,
+        },
+      }, "*");
+    } catch { /* bridge is best effort */ }
+  }
+
+  function postParcelSelection(): void {
+    parcelSelection.revision += 1;
+    parcelSelection.gridRotationDegrees = dominantGridRotationDegrees(
+      parcelSelection.parcels,
+      parcelSelection.projectCoordinate?.latitude ?? 0,
+    );
+    rebuildParcelScene();
+    broadcastParcelSelection();
+  }
+
+  function persistParcelGridState(): void {
+    parcelSelection.revision += 1;
+    broadcastParcelSelection();
+  }
+
+  function publishParcelOverlay(): void {
+    try {
+      window.dispatchEvent(new CustomEvent(PARCEL_OVERLAY_SYNC, {
+        detail: {
+          projectPublicId: parcelSelection.projectPublicId,
+          revision: parcelSelection.revision,
+          projectCoordinate: parcelSelection.projectCoordinate,
+          gridRotationDegrees: parcelSelection.gridRotationDegrees,
+          parcels: parcelSelection.parcels,
+          adjacentParcels: parcelSelection.adjacentParcels,
+          availableParcels: parcelSelection.availableParcels,
+          parcelGridState: parcelSelection.parcelGridState,
+        },
+      }));
+    } catch { /* internal map overlay remains optional */ }
+  }
+
+  function toggleParcelAt(
+    position: ChunkApiWorldPosition,
+    targetPoint?: Readonly<{ x: number; z: number }> | null,
+  ): boolean {
+    const frame = earthGrid ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    const lonLat = targetPoint
+      ? worldPointToLonLat(targetPoint.x, targetPoint.z, frame)
+      : worldToLonLat(position, frame);
+    if (!lonLat) {
+      setStatus("Die Projektkoordinate ist noch nicht mit dem Editor synchronisiert.", "warning");
+      return false;
+    }
+    const hit = parcelSelection.availableParcels.find((parcel) => parcelContainsLonLat(parcel, lonLat))
+      ?? parcelSelection.adjacentParcels.find((parcel) => parcelContainsLonLat(parcel, lonLat))
+      ?? parcelSelection.parcels.find((parcel) => parcelContainsLonLat(parcel, lonLat));
+    if (hit) {
+      const selected = parcelSelection.parcels.some((parcel) => parcel.parcelId === hit.parcelId);
+      parcelSelection.parcels = selected
+        ? parcelSelection.parcels.filter((parcel) => parcel.parcelId !== hit.parcelId)
+        : [...parcelSelection.parcels, hit].slice(0, 64);
+      postParcelSelection();
+      refreshHud();
+      setStatus(selected ? "Flurstück abgewählt." : "Flurstück ausgewählt.", "ready");
+      return true;
+    }
+    setStatus("An diesem Ziel ist noch kein synchronisiertes Flurstück verfügbar. Bitte zuerst in Map auswählen.", "warning");
+    return false;
+  }
+
+  function selectParcelGridAt(
+    position: ChunkApiWorldPosition,
+    exactTarget?: Readonly<{ x: number; y: number; z: number }> | null,
+  ): boolean {
+    const frame = earthGrid ?? fallbackEarthGrid(parcelSelection.projectCoordinate);
+    if (!frame || parcelSelection.parcels.length === 0) {
+      setStatus("Bitte zuerst mindestens ein Grundstück auswählen.", "warning");
+      return false;
+    }
+    const target: readonly [number, number] = exactTarget
+      ? [exactTarget.x, exactTarget.z]
+      : [position.x + 0.5, position.z + 0.5];
+    let best: { parcel: ParcelSelectionItem; start: [number, number]; end: [number, number]; distance: number } | null = null;
+    for (const parcel of parcelSelection.parcels) {
+      for (const polygonValue of parcelPolygons(parcel)) {
+        for (const ringValue of asArray(polygonValue)) {
+          const ring = asArray(ringValue)
+            .map((coordinate) => {
+              const point = asArray(coordinate);
+              return lonLatToWorld(Number(point[0]), Number(point[1]), frame);
+            })
+            .filter((point): point is [number, number] => point !== null);
+          for (let index = 1; index < ring.length; index += 1) {
+            const start = ring[index - 1];
+            const end = ring[index];
+            const dx = end[0] - start[0];
+            const dz = end[1] - start[1];
+            const lengthSquared = dx * dx + dz * dz;
+            if (lengthSquared < 1e-8) continue;
+            const factor = Math.max(0, Math.min(1,
+              ((target[0] - start[0]) * dx + (target[1] - start[1]) * dz) / lengthSquared,
+            ));
+            const nearestX = start[0] + dx * factor;
+            const nearestZ = start[1] + dz * factor;
+            const distance = Math.hypot(target[0] - nearestX, target[1] - nearestZ);
+            if (!best || distance < best.distance) best = { parcel, start, end, distance };
+          }
+        }
+      }
+    }
+    if (!best) {
+      setStatus("Keine verwertbare Grundstückskante gefunden.", "warning");
+      return false;
+    }
+    const dx = best.end[0] - best.start[0];
+    const dz = best.end[1] - best.start[1];
+    const length = Math.hypot(dx, dz);
+    let inward: [number, number] = [-dz / length, dx / length];
+    const midpoint: [number, number] = [
+      (best.start[0] + best.end[0]) / 2,
+      (best.start[1] + best.end[1]) / 2,
+    ];
+    const probe = worldPointToLonLat(midpoint[0] + inward[0] * 0.2, midpoint[1] + inward[1] * 0.2, frame);
+    if (!probe || !parcelContainsLonLat(best.parcel, probe)) inward = [-inward[0], -inward[1]];
+    const endpointDistance = (first: readonly [number, number], second: readonly [number, number]): number => Math.hypot(
+      first[0] - second[0],
+      first[1] - second[1],
+    );
+    const sameSelectedEdge = Boolean(parcelGridGuide
+      && parcelGridGuide.parcelId === best.parcel.parcelId
+      && ((endpointDistance(parcelGridGuide.start, best.start) < 0.04
+          && endpointDistance(parcelGridGuide.end, best.end) < 0.04)
+        || (endpointDistance(parcelGridGuide.start, best.end) < 0.04
+          && endpointDistance(parcelGridGuide.end, best.start) < 0.04)));
+    const depthMeters = sameSelectedEdge
+      ? Math.min(6, Math.max(1, Math.round(parcelGridGuide!.depthMeters) + 1))
+      : Math.max(1, Math.min(6, Math.round(parcelGridInfluence)));
+    parcelGridGuide = {
+      parcelId: best.parcel.parcelId,
+      start: best.start,
+      end: best.end,
+      inward,
+      depthMeters,
+    };
+    rememberParcelGridGuide(frame);
+    rebuildParcelGridScene();
+    persistParcelGridState();
+    const angle = normalizeGridRotation(Math.atan2(dz, dx) * 180 / Math.PI);
+    setStatus(
+      sameSelectedEdge
+        ? `Innere Schräglinie auf ${depthMeters} m nach innen verschoben. Rechtsklick verschiebt sie wieder nach außen.`
+        : `Bauachse gewählt: ${angle.toFixed(1)}° · Schrägzone ${depthMeters} m tief. Erneuter Linksklick verschiebt nach innen, Rechtsklick nach außen.`,
+      "ready",
+    );
+    return true;
+  }
+
+  function moveParcelGridInnerLineOutward(): boolean {
+    if (!parcelGridGuide) {
+      setStatus("Bitte zuerst mit Linksklick eine Grundstückskante auswählen.", "warning");
+      return false;
+    }
+    const depthMeters = Math.max(1, Math.round(parcelGridGuide.depthMeters) - 1);
+    parcelGridGuide = { ...parcelGridGuide, depthMeters };
+    rememberParcelGridGuide();
+    rebuildParcelGridScene();
+    persistParcelGridState();
+    refreshHud();
+    setStatus(`Innere Schräglinie auf ${depthMeters} m nach außen verschoben.`, "ready");
+    return true;
+  }
+
+  async function executeAt(target?: ChunkApiWorldPosition | null, forcedOperation?: WorldEditOperation): Promise<void> {
+    if (!activeTool || busy) return;
+    if (!["selection", "paint", "sculpt"].includes(activeTool)) return;
+    const commandTool = activeTool as "selection" | "paint" | "sculpt";
+    const effectiveOperation = forcedOperation ?? operation;
+    const placement = selectedPlacement();
+    const targetCells = options.sceneRuntime.getTargetCells();
+    const replaceBlockTypeId = targetCells.sourceCell?.blockTypeId ?? null;
+    if (parcelMaskInput?.checked && parcelSelection.parcels.length === 0) {
+      setStatus("Bitte zuerst in der Karte mindestens ein Grundstück auswählen.", "warning");
+      return;
+    }
+    if (operationNeedsMaterial(effectiveOperation) && (!placement.valid || !placement.runtimeBlockTypeId)) {
+      setStatus("Bitte zuerst einen platzierbaren Block in der Hotbar auswählen.", "warning");
+      return;
+    }
+    if (effectiveOperation === "replace" && !replaceBlockTypeId) {
+      setStatus("Fuer Ersetzen bitte mit dem Fadenkreuz auf den Quellblock zielen.", "warning");
+      return;
+    }
+    const anchor = target ?? selection.first;
+    if (!anchor) {
+      setStatus("Es fehlt ein Ziel oder eine vollständige Auswahl.", "warning");
+      return;
+    }
+    if (activeTool === "selection" && (!selection.first || !selection.second)) {
+      setStatus("Bitte Punkt A und Punkt B setzen.", "warning");
+      return;
+    }
+
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus("WorldEdit wird transaktional ausgeführt …", "busy");
+    try {
+      const payload: ChunkApiWorldEditCommandPayload = {
+        type: "WorldEdit",
+        userId: "editor_user",
+        sessionId: `world_edit_${Date.now()}`,
+        position: anchor,
+        tool: commandTool,
+        operation: effectiveOperation,
+        ...(placement.runtimeBlockTypeId ? { blockTypeId: placement.runtimeBlockTypeId } : {}),
+        ...(effectiveOperation === "replace" && replaceBlockTypeId ? { replaceBlockTypeId } : {}),
+        ...(commandTool === "selection" ? {
+          bounds: { min: selection.first, max: selection.second },
+        } : {
+          brush: {
+            shape: brushShape?.value ?? "sphere",
+            radius: Number(brushRadius?.value ?? 2),
+            density: Number(brushDensity?.value ?? 100),
+            wallThickness: Number(brushWall?.value ?? 0),
+          },
+        }),
+        parcelMask: parcelMaskPayload(),
+        commandSource: "vectoplan-editor.world-edit",
+        libraryItemId: placement.libraryItemId,
+        inventoryItemId: placement.inventoryItemId,
+        inventorySlotIndex: placement.inventorySlotIndex,
+        familyId: placement.familyId,
+        packageId: placement.packageId,
+        vplibUid: placement.vplibUid,
+        variantId: placement.variantId,
+        revisionHash: placement.revisionHash,
+        objectKind: placement.objectKind,
+        libraryRef: placement.libraryRef,
+        placementCommand: placement.placementCommand,
+        commandMetadata: {
+          ...placement.commandMetadata,
+          source: "world-edit-controller",
+          projectPublicId: parcelSelection.projectPublicId,
+        },
+        metadata: {
+          ...placement.commandMetadata,
+          source: "world-edit-controller",
+          projectPublicId: parcelSelection.projectPublicId,
+        },
+        libraryContext: {
+          libraryItemId: placement.libraryItemId,
+          familyId: placement.familyId,
+          packageId: placement.packageId,
+          vplibUid: placement.vplibUid,
+          variantId: placement.variantId,
+          revisionHash: placement.revisionHash,
+          objectKind: placement.objectKind,
+          inventorySlotIndex: placement.inventorySlotIndex,
+          libraryRef: placement.libraryRef,
+          placementCommand: placement.placementCommand,
+        },
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: `world-edit:${activeTool}:${effectiveOperation}`,
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      await options.sceneRuntime.reloadDirtyChunks("world-edit-command");
+      setStatus(result.result.changed ? "WorldEdit abgeschlossen." : "Keine Zellen mussten geändert werden.", "ready");
+    } catch (error) {
+      options.logger?.warn?.("WorldEdit command failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
+  async function executeClipboard(target?: ChunkApiWorldPosition | null): Promise<void> {
+    if (activeTool !== "clipboard" || busy) return;
+    const clipboardOperation = ["copy", "cut", "paste"].includes(operation) ? operation : "copy";
+    if (clipboardOperation !== "paste" && (!selection.first || !selection.second)) {
+      setStatus("Bitte zuerst mit dem Selection Tool einen Bereich markieren.", "warning");
+      return;
+    }
+    if (clipboardOperation === "paste" && clipboard.length === 0) {
+      setStatus("Die Zwischenablage ist leer. Bitte zuerst Copy oder Cut ausführen.", "warning");
+      return;
+    }
+    const anchor = clipboardOperation === "paste"
+      ? target ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell)
+      : selection.first;
+    if (!anchor) {
+      setStatus("Kein gültiges Einfügeziel unter dem Fadenkreuz.", "warning");
+      return;
+    }
+    if (parcelMaskInput?.checked && parcelSelection.parcels.length === 0) {
+      setStatus("Bitte zuerst mindestens ein Flurstück auswählen oder die Grundstücksmaske deaktivieren.", "warning");
+      return;
+    }
+
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus(`${clipboardOperation === "copy" ? "Kopieren" : clipboardOperation === "cut" ? "Ausschneiden" : "Einfügen"} wird ausgeführt …`, "busy");
+    try {
+      const payload: ChunkApiWorldEditCommandPayload = {
+        type: "WorldEdit",
+        userId: "editor_user",
+        sessionId: `world_edit_clipboard_${Date.now()}`,
+        position: anchor,
+        tool: "clipboard",
+        operation: clipboardOperation,
+        ...(clipboardOperation !== "paste" ? { bounds: { min: selection.first, max: selection.second } } : {}),
+        ...(clipboardOperation === "paste" ? { clipboard } : {}),
+        parcelMask: parcelMaskPayload(),
+        commandSource: "vectoplan-editor.world-edit.clipboard",
+        commandMetadata: {
+          source: "world-edit-controller",
+          projectPublicId: parcelSelection.projectPublicId,
+        },
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: `world-edit:clipboard:${clipboardOperation}`,
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      const raw = asRecord(result.result.raw);
+      const rawClipboard = asArray(raw.clipboard ?? asRecord(raw.worldEdit).clipboard);
+      if (clipboardOperation === "copy" || clipboardOperation === "cut") {
+        clipboard = rawClipboard.map((entry) => asRecord(entry));
+      }
+      if (result.result.changed) await options.sceneRuntime.reloadDirtyChunks(`world-edit-${clipboardOperation}`);
+      setStatus(
+        clipboardOperation === "copy"
+          ? `${clipboard.length} Zellen kopiert.`
+          : clipboardOperation === "cut"
+            ? `${clipboard.length} Zellen ausgeschnitten.`
+            : "Zwischenablage eingefügt.",
+        "ready",
+      );
+    } catch (error) {
+      options.logger?.warn?.("WorldEdit clipboard command failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
+  async function handleWorldEditIntent(intent: EditorInputWorldEditIntent): Promise<boolean> {
+    if (!activeTool) return false;
+    if (activeTool === "selection") {
+      if (intent.action === "primary-release") {
+        if (selectionDragging) {
+          const finalPosition = intent.position ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell);
+          if (finalPosition && selection.first) {
+            if (selectionHandleDrag) applySelectionHandleTarget(finalPosition);
+            else selection = { first: selection.first, second: finalPosition };
+          }
+          stopSelectionDrag();
+          rebuildSelectionScene();
+          refreshHud();
+          setStatus("Auswahl bereit. Über die farbigen Flächenpunkte kann X/Y/Z nachjustiert werden.", "ready");
+        }
+        return true;
+      }
+      if (intent.action === "secondary-release") return true;
+      if (adjustSelectionHandle(intent.action)) return true;
+      if (intent.action === "secondary") {
+        stopSelectionDrag();
+        if (selection.second) selection = { first: selection.first, second: null };
+        else selection = { first: null, second: null };
+        rebuildSelectionScene();
+        refreshHud();
+        setStatus("Letzten Auswahlpunkt entfernt.", "info");
+        return true;
+      }
+      if (!intent.position) {
+        setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
+        return true;
+      }
+      startSelectionDrag(intent.position);
+      setStatus("Linksklick halten und mit der Kamera den Bereich aufziehen.", "ready");
+      return true;
+    }
+    if (activeTool === "ruler") {
+      if (intent.action === "primary-release") {
+        if (selectionDragging) {
+          const finalPosition = intent.position ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell);
+          if (finalPosition && selection.first) selection = { first: selection.first, second: finalPosition };
+          stopSelectionDrag();
+          rebuildSelectionScene();
+          refreshHud();
+          const distance = measurementMetres(selection);
+          setStatus(distance === null ? "Messung unvollständig." : `Distanz: ${distance.toFixed(2)} Meter`, distance === null ? "warning" : "ready");
+        }
+        return true;
+      }
+      if (intent.action === "secondary" || intent.action === "secondary-release") {
+        if (intent.action === "secondary") {
+          stopSelectionDrag();
+          selection = { first: null, second: null };
+          rebuildSelectionScene();
+          refreshHud();
+        }
+        return true;
+      }
+      if (!intent.position) {
+        setStatus("Kein gültiger Messpunkt unter dem Fadenkreuz.", "warning");
+        return true;
+      }
+      startSelectionDrag(intent.position);
+      setStatus("Bis zum zweiten Messpunkt ziehen und Linksklick loslassen.", "ready");
+      return true;
+    }
+    if (activeTool === "parcel") {
+      if (intent.action.includes("release")) return true;
+      const parcelTarget = intent.sourceCell
+        ? { x: intent.sourceCell.worldX, y: intent.sourceCell.worldY, z: intent.sourceCell.worldZ }
+        : intent.position;
+      if (intent.action === "primary" && parcelTarget) toggleParcelAt(parcelTarget, intent.targetPoint);
+      else if (!parcelTarget) setStatus("Kein gültiges Flurstücksziel.", "warning");
+      return true;
+    }
+    if (activeTool === "parcel-grid") {
+      if (intent.action.includes("release")) return true;
+      if (intent.action === "secondary") moveParcelGridInnerLineOutward();
+      else if (intent.action === "primary") {
+        const gridTarget = intent.position ?? (intent.targetPoint ? {
+          x: Math.floor(intent.targetPoint.x),
+          y: Math.floor(intent.targetPoint.y),
+          z: Math.floor(intent.targetPoint.z),
+        } : null);
+        if (gridTarget) selectParcelGridAt(gridTarget, intent.targetPoint);
+        else setStatus("Kein gültiges Ziel für das Grundstücksraster.", "warning");
+      }
+      return true;
+    }
+    if (activeTool === "clipboard") {
+      if (intent.action.includes("release")) return true;
+      if (intent.action === "primary" && operation === "paste") await executeClipboard(intent.position);
+      return true;
+    }
+    if (intent.action.includes("release")) return true;
+    const target = intent.position;
+    if (!target) {
+      setStatus("Kein gültiges Pinselziel unter dem Fadenkreuz.", "warning");
+      return true;
+    }
+    brushTarget = target;
+    refreshHud();
+    await executeAt(target, intent.action === "secondary" ? "clear" : operation);
+    return true;
+  }
+
+  function activate(tool: WorldEditTool, nextOperation: WorldEditOperation = "set"): void {
+    if (destroyed) return;
+    activeTool = tool;
+    operation = nextOperation;
+    configureOperationSelect(tool);
+    syncPanelVisibility();
+    options.root.dataset.worldEditActive = "true";
+    options.root.dataset.worldEditTool = tool;
+    const maxDistance = tool === "selection" || tool === "parcel" || tool === "parcel-grid" || tool === "ruler"
+      ? 60
+      : tool === "clipboard"
+        ? 40
+        : 16;
+    options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance });
+    setStatus(
+      tool === "selection"
+        ? "Linksklick halten und den Auswahlbereich mit der Kamera aufziehen."
+        : tool === "ruler"
+          ? "Ersten Messpunkt mit gedrücktem Linksklick setzen."
+          : tool === "parcel"
+            ? "Flurstück anvisieren und per Linksklick umschalten."
+            : tool === "parcel-grid"
+              ? "Grundstückskante anvisieren und als Bauachse übernehmen."
+            : tool === "clipboard"
+              ? "Copy, Cut oder Paste auswählen."
+              : "Pinsel mit Linksklick anwenden.",
+      "ready",
+    );
+    refreshHud();
+    try { void options.sceneRuntime.getInputController()?.requestPointerLock("world-edit-activate"); } catch { /* best effort */ }
+  }
+
+  function deactivate(reason = "deactivate"): void {
+    if (destroyed) return;
+    activeTool = null;
+    stopSelectionDrag();
+    panel.hidden = true;
+    selection = { first: null, second: null };
+    brushTarget = null;
+    disposeSelectionGroup();
+    options.sceneRuntime.setWorldEditIntentHandler(null);
+    delete options.root.dataset.worldEditActive;
+    delete options.root.dataset.worldEditTool;
+    options.logger?.debug?.("WorldEdit controller deactivated.", { reason });
+  }
+
+  function toolFromValue(value: unknown): WorldEditTool {
+    const normalized = safeString(value, "selection").toLowerCase().replaceAll("_", "-");
+    if (normalized.includes("paint")) return "paint";
+    if (normalized.includes("sculpt")) return "sculpt";
+    if (normalized.includes("parcel-grid") || normalized.includes("grundst")) return "parcel-grid";
+    if (normalized.includes("parcel") || normalized.includes("flurst")) return "parcel";
+    if (normalized.includes("ruler") || normalized.includes("measure")) return "ruler";
+    if (normalized.includes("copy") || normalized.includes("clipboard") || normalized.includes("paste")) return "clipboard";
+    return "selection";
+  }
+
+  function handleActivateEvent(event: Event): void {
+    const detail = asRecord((event as CustomEvent).detail);
+    if (detail.active === false) {
+      deactivate("user-inventory-selection");
+      return;
+    }
+    const tool = toolFromValue(detail.tool ?? detail.toolId);
+    const requestedOperation = safeString(detail.operation, "").toLowerCase();
+    const nextOperation: WorldEditOperation = ["set", "wall", "fill", "replace", "clear", "copy", "cut", "paste"].includes(requestedOperation)
+      ? requestedOperation as WorldEditOperation
+      : operation;
+    activate(tool, nextOperation);
+  }
+
+  function setNumericInput(input: HTMLInputElement | null, value: unknown): void {
+    if (!input) return;
+    const numericValue = Number(value);
+    if (!Number.isFinite(numericValue)) return;
+    const minimum = Number(input.min || Number.NEGATIVE_INFINITY);
+    const maximum = Number(input.max || Number.POSITIVE_INFINITY);
+    input.value = String(Math.min(maximum, Math.max(minimum, Math.round(numericValue))));
+  }
+
+  function handleSettingsEvent(event: Event): void {
+    const detail = asRecord((event as CustomEvent).detail);
+    const requestedTool = safeString(detail.toolId ?? detail.tool, "");
+    if (requestedTool && activeTool && toolFromValue(requestedTool) !== activeTool) return;
+
+    const requestedOperation = safeString(detail.operation, "").toLowerCase();
+    if (["set", "wall", "fill", "replace", "clear", "copy", "cut", "paste"].includes(requestedOperation)) {
+      operation = requestedOperation as WorldEditOperation;
+    }
+    const requestedShape = safeString(detail.shape, "").toLowerCase();
+    if (brushShape && ["sphere", "box", "cylinder"].includes(requestedShape)) {
+      brushShape.value = requestedShape;
+    }
+    setNumericInput(brushRadius, detail.radius);
+    setNumericInput(brushDensity, detail.density);
+    setNumericInput(brushWall, detail.wallThickness ?? detail.wall);
+    if (parcelMaskInput && typeof detail.parcelMask === "boolean") {
+      parcelMaskInput.checked = detail.parcelMask;
+    }
+    let gridGeometryChanged = false;
+    const requestedGridMode = safeString(detail.parcelGridMode, "").toLowerCase();
+    if (requestedGridMode === "boundary" || requestedGridMode === "setback") {
+      if (parcelGridMode !== requestedGridMode) {
+        parcelGridMode = requestedGridMode;
+        gridGeometryChanged = true;
+      }
+    }
+    const requestedSetback = Number(detail.parcelGridSetback);
+    if (Number.isFinite(requestedSetback)) {
+      const nextSetback = Math.max(0, Math.min(20, requestedSetback));
+      if (nextSetback !== parcelGridSetback) {
+        parcelGridSetback = nextSetback;
+        gridGeometryChanged = true;
+      }
+    }
+    const requestedInfluence = Number(detail.parcelGridInfluence);
+    if (Number.isFinite(requestedInfluence)) {
+      const nextInfluence = Math.max(1, Math.min(6, Math.round(requestedInfluence)));
+      if (nextInfluence !== parcelGridInfluence) {
+        parcelGridInfluence = nextInfluence;
+        if (parcelGridGuide) parcelGridGuide = { ...parcelGridGuide, depthMeters: parcelGridInfluence };
+        gridGeometryChanged = true;
+      }
+    }
+    if (gridGeometryChanged) {
+      rememberParcelGridGuide();
+      rebuildParcelGridScene();
+      persistParcelGridState();
+    }
+    refreshHud();
+  }
+
+  function handleParentMessage(event: MessageEvent): void {
+    const data = asRecord(event.data);
+    const type = safeString(data.type ?? data.kind, "");
+    if (type === MAP_PARCEL_CATALOG_CHANGED) {
+      const detail = asRecord(data.detail ?? data);
+      const catalog = normalizedParcelSelection({
+        ...detail,
+        parcels: parcelSelection.parcels,
+        adjacentParcels: parcelSelection.adjacentParcels,
+      });
+      parcelSelection.availableParcels = catalog.availableParcels;
+      publishParcelOverlay();
+      refreshHud();
+      return;
+    }
+    if (type !== PARCEL_SYNC && type !== MAP_PARCEL_CHANGED) return;
+    parcelGridPlaneY = null;
+    parcelGridGeometrySignature = "";
+    const nextSelection = normalizedParcelSelection(data.detail ?? data.selection ?? data);
+    applyPersistedParcelGridState(nextSelection.parcelGridState);
+    parcelSelection = nextSelection;
+    rebuildParcelScene();
+    refreshHud();
+    setStatus(
+      parcelSelection.parcels.length
+        ? `${parcelSelection.parcels.length} Grundstück(e) als gemeinsame Baumaske geladen.`
+        : "Noch kein Grundstück ausgewählt.",
+      parcelSelection.parcels.length ? "ready" : "warning",
+    );
+    if (type === MAP_PARCEL_CHANGED) postParcelSelection();
+  }
+
+  function handleLocalParcelSync(event: Event): void {
+    parcelGridPlaneY = null;
+    parcelGridGeometrySignature = "";
+    const nextSelection = normalizedParcelSelection((event as CustomEvent).detail);
+    applyPersistedParcelGridState(nextSelection.parcelGridState);
+    parcelSelection = nextSelection;
+    rebuildParcelScene();
+    refreshHud();
+  }
+
+  function handleCreativeInventoryOpened(): void {
+    syncPanelVisibility();
+  }
+
+  function handleCreativeInventoryClosed(): void {
+    syncPanelVisibility();
+  }
+
+  function handleEarthGridReady(event: Event): void {
+    const next = normalizedEarthGrid((event as CustomEvent).detail);
+    if (!next) return;
+    earthGrid = next;
+    rebuildParcelScene();
+  }
+
+  function resetActiveTool(): void {
+    stopSelectionDrag();
+    if (activeTool === "parcel") {
+      parcelSelection.parcels = [];
+      postParcelSelection();
+    }
+    if (activeTool === "parcel-grid") {
+      if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.parcelId);
+      activeParcelGridParcelId = null;
+      parcelGridGuide = null;
+      rebuildParcelGridScene();
+      persistParcelGridState();
+    }
+    selection = { first: null, second: null };
+    brushTarget = null;
+    rebuildSelectionScene();
+    refreshHud();
+    setStatus("Auswahl zurÃ¼ckgesetzt.", "info");
+  }
+
+  function handleInventoryAction(event: Event): void {
+    const detail = asRecord((event as CustomEvent).detail);
+    const requestedTool = safeString(detail.toolId ?? detail.tool, "");
+    if (requestedTool && requestedTool !== inventoryToolId()) return;
+    const action = safeString(detail.action, "").toLowerCase();
+    if (action === "reset") resetActiveTool();
+    else if (action === "execute") {
+      if (activeTool === "clipboard") void executeClipboard();
+      else void executeAt();
+    }
+  }
+
+  function requestParcelSelection(): void {
+    try {
+      window.parent?.postMessage({
+        type: PARCEL_REQUEST,
+        kind: PARCEL_REQUEST,
+        source: "vectoplan-editor",
+        detail: {
+          projectId: options.bootstrap.runtime.chunk.projectId,
+          worldId: options.bootstrap.runtime.chunk.worldId,
+        },
+      }, "*");
+    } catch { /* bridge is best effort */ }
+  }
+
+  closeButton?.addEventListener("click", () => deactivate("close-button"));
+  executeButton?.addEventListener("click", () => {
+    if (activeTool === "clipboard") void executeClipboard();
+    else void executeAt();
+  });
+  resetButton?.addEventListener("click", () => {
+    stopSelectionDrag();
+    if (activeTool === "parcel") {
+      parcelSelection.parcels = [];
+      postParcelSelection();
+    }
+    selection = { first: null, second: null };
+    brushTarget = null;
+    rebuildSelectionScene();
+    refreshHud();
+    setStatus("Auswahl zurückgesetzt.", "info");
+  });
+  operationSelect?.addEventListener("change", () => {
+    operation = operationSelect.value as WorldEditOperation;
+    refreshHud();
+  });
+  [brushRadius, brushDensity, brushWall].forEach((input) => input?.addEventListener("input", refreshHud));
+  window.addEventListener(ACTIVATE_EVENT, handleActivateEvent);
+  window.addEventListener(SETTINGS_EVENT, handleSettingsEvent);
+  window.addEventListener(INVENTORY_ACTION_EVENT, handleInventoryAction);
+  window.addEventListener(INVENTORY_STATE_REQUEST_EVENT, publishInventoryState);
+  window.addEventListener(CREATIVE_INVENTORY_OPENED_EVENT, handleCreativeInventoryOpened);
+  window.addEventListener(CREATIVE_INVENTORY_CLOSED_EVENT, handleCreativeInventoryClosed);
+  window.addEventListener(EARTH_GRID_READY_EVENT, handleEarthGridReady);
+  window.addEventListener(LOCAL_PARCEL_SYNC, handleLocalParcelSync);
+  window.addEventListener("message", handleParentMessage);
+  options.sceneRuntime.setPlacementConstraintHandler((position, context) => (
+    constrainManualPlacement(position, "new-placement", context)
+  ));
+  options.sceneRuntime.setPlacementGeometryHandler((position, context) => (
+    constrainManualPlacement(position, "existing-block", context).semanticPlacement ?? null
+  ));
+  window.dispatchEvent(new CustomEvent(INVENTORY_SYNC_REQUEST));
+  requestParcelSelection();
+  refreshHud();
+
+  const handle: WorldEditControllerHandle = {
+    element: panel,
+    activate,
+    deactivate,
+    destroy(): void {
+      if (destroyed) return;
+      deactivate("destroy");
+      destroyed = true;
+      window.removeEventListener(ACTIVATE_EVENT, handleActivateEvent);
+      window.removeEventListener(SETTINGS_EVENT, handleSettingsEvent);
+      window.removeEventListener(INVENTORY_ACTION_EVENT, handleInventoryAction);
+      window.removeEventListener(INVENTORY_STATE_REQUEST_EVENT, publishInventoryState);
+      window.removeEventListener(CREATIVE_INVENTORY_OPENED_EVENT, handleCreativeInventoryOpened);
+      window.removeEventListener(CREATIVE_INVENTORY_CLOSED_EVENT, handleCreativeInventoryClosed);
+      window.removeEventListener(EARTH_GRID_READY_EVENT, handleEarthGridReady);
+      window.removeEventListener(LOCAL_PARCEL_SYNC, handleLocalParcelSync);
+      window.removeEventListener("message", handleParentMessage);
+      disposeParcelGroup();
+      disposeParcelGridGroup();
+      options.sceneRuntime.setPlacementConstraintHandler(null);
+      options.sceneRuntime.setPlacementGeometryHandler(null);
+      delete options.root.dataset.parcelGridRotationDegrees;
+      delete options.root.dataset.parcelGridTransitionMeters;
+      delete options.root.dataset.parcelGridPlaneY;
+      panel.remove();
+    },
+  };
+  options.signal?.addEventListener("abort", () => handle.destroy(), { once: true });
+  return handle;
+}

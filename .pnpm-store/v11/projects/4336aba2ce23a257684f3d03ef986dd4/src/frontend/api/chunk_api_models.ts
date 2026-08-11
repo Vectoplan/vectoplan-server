@@ -70,7 +70,10 @@ export type ChunkApiCreativeLibraryRouteKind =
 export type ChunkApiCommandType =
   | "SetBlock"
   | "RemoveBlock"
-  | "ReplaceBlock";
+  | "ReplaceBlock"
+  | "WorldEdit"
+  | "PlaceObject"
+  | "RemoveObject";
 
 export type ChunkApiCommandStatus =
   | "pending"
@@ -441,6 +444,12 @@ export interface ChunkApiRuntimeChunkContent {
   readonly runtimeContentVersion: string | null;
   readonly cellEncoding: ChunkApiCellEncoding;
   readonly cellIndexOrder: ChunkApiCellIndexOrder;
+  /**
+   * Persisted objects whose geometry belongs to this chunk. This is normalized
+   * explicitly because semantic parcel-grid bodies are rendered from these
+   * references instead of from the voxel cell array.
+   */
+  readonly objectRefs: readonly unknown[];
   readonly metadata: ChunkApiUnknownRecord;
   readonly raw: unknown;
 }
@@ -534,10 +543,42 @@ export interface ChunkApiReplaceBlockCommandPayload extends ChunkApiCommandPaylo
   readonly blockTypeId: string;
 }
 
+export interface ChunkApiWorldEditCommandPayload extends ChunkApiCommandPayloadBase {
+  readonly type: "WorldEdit";
+  readonly tool: "selection" | "paint" | "sculpt" | "clipboard";
+  readonly operation: "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
+  readonly blockTypeId?: string;
+  readonly replaceBlockTypeId?: string;
+  readonly bounds?: Readonly<Record<string, unknown>>;
+  readonly brush?: Readonly<Record<string, unknown>>;
+  readonly parcelMask?: Readonly<Record<string, unknown>>;
+  readonly [key: string]: unknown;
+}
+
+export interface ChunkApiPlaceObjectCommandPayload extends ChunkApiCommandPayloadBase {
+  readonly type: "PlaceObject";
+  readonly blockTypeId: string;
+  readonly objectTypeId: string;
+  readonly objectKind: string;
+  readonly objectInstanceId?: string;
+  readonly dimensions: Readonly<{ x: number; y: number; z: number }>;
+  readonly footprint: Readonly<Record<string, unknown>>;
+  readonly occupiedCells: readonly ChunkApiWorldPosition[];
+  readonly metadata?: Readonly<Record<string, unknown>>;
+}
+
+export interface ChunkApiRemoveObjectCommandPayload extends ChunkApiCommandPayloadBase {
+  readonly type: "RemoveObject";
+  readonly objectInstanceId: string;
+}
+
 export type ChunkApiCommandPayload =
   | ChunkApiSetBlockCommandPayload
   | ChunkApiRemoveBlockCommandPayload
-  | ChunkApiReplaceBlockCommandPayload;
+  | ChunkApiReplaceBlockCommandPayload
+  | ChunkApiWorldEditCommandPayload
+  | ChunkApiPlaceObjectCommandPayload
+  | ChunkApiRemoveObjectCommandPayload;
 
 export interface ChunkApiCommandResult extends ChunkApiResultBase {
   readonly ok: true;

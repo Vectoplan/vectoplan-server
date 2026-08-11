@@ -50,6 +50,10 @@ import {
 } from "@inventory/hotbar_controller";
 import { createDebugOverlay, type DebugOverlayHandle } from "@render/debug_overlay";
 import { createChunkScene, type ChunkSceneHandle } from "@render/chunk_scene";
+import {
+  createGeodataOverlayScene,
+  type GeodataOverlaySceneHandle,
+} from "@render/geodata_overlay_scene";
 import { createPreviewRenderer, type PreviewRendererHandle } from "@render/preview_renderer";
 import { createThreeContext, type ThreeContextHandle } from "@render/three_context";
 import type { EditorStore } from "@state/editor_store";
@@ -145,6 +149,7 @@ export interface SceneRuntimeSnapshot {
   readonly resize: ReturnType<EditorResizeObserverHandle["getSnapshot"]> | null;
   readonly three: ReturnType<ThreeContextHandle["getSnapshot"]> | null;
   readonly chunkScene: ReturnType<ChunkSceneHandle["getSnapshot"]> | null;
+  readonly geodataOverlayScene: ReturnType<GeodataOverlaySceneHandle["getSnapshot"]> | null;
   readonly worldBridge: ReturnType<SceneWorldBridgeHandle["getSnapshot"]> | null;
   readonly inputController: ReturnType<EditorInputControllerHandle["getSnapshot"]> | null;
   readonly input: ReturnType<InputStateHandle["getSnapshot"]> | null;
@@ -185,6 +190,7 @@ export interface SceneRuntimeHandle {
   getThreeContext(): ThreeContextHandle | null;
   getWorldRuntime(): WorldRuntimeHandle;
   getChunkScene(): ChunkSceneHandle | null;
+  getGeodataOverlayScene(): GeodataOverlaySceneHandle | null;
   getWorldBridge(): SceneWorldBridgeHandle | null;
   getTargeting(): ChunkTargetingHandle | null;
   getChunkTools(): SceneChunkToolsHandle | null;
@@ -848,6 +854,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let firstPersonCamera: FirstPersonCameraControllerHandle | null = null;
   let physicsRuntime: PhysicsRuntime | null = null;
   let chunkScene: ChunkSceneHandle | null = null;
+  let geodataOverlayScene: GeodataOverlaySceneHandle | null = null;
   let worldBridge: SceneWorldBridgeHandle | null = null;
   let targeting: ChunkTargetingHandle | null = null;
   let chunkTools: SceneChunkToolsHandle | null = null;
@@ -1376,6 +1383,18 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             critical: false,
           });
 
+          geodataOverlayScene = createGeodataOverlayScene({
+            three,
+            autoAttachToThreeChunkGroup: true,
+            ...(sceneLogger ? { logger: sceneLogger.child?.("geodata_overlays") ?? sceneLogger } : {}),
+          });
+          lifecycle.registerDisposable({
+            label: "geodata-overlay-scene",
+            disposable: geodataOverlayScene,
+            method: "dispose",
+            critical: false,
+          });
+
           preview = createPreviewRenderer({
             three,
             showPlacementPreview: bootstrap.render.showPreview,
@@ -1597,6 +1616,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           worldBridge = createSceneWorldBridge({
             worldRuntime,
             chunkScene,
+            ...(geodataOverlayScene ? { geodataOverlayScene } : {}),
             store,
             syncOnSourceEvents: true,
             autoInitialize: false,
@@ -2196,6 +2216,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       resize: snapshotOrNull(() => resizeObserver?.getSnapshot() ?? null),
       three: snapshotOrNull(() => three?.getSnapshot() ?? null),
       chunkScene: snapshotOrNull(() => chunkScene?.getSnapshot() ?? null),
+      geodataOverlayScene: snapshotOrNull(() => geodataOverlayScene?.getSnapshot() ?? null),
       worldBridge: snapshotOrNull(() => worldBridge?.getSnapshot() ?? null),
       inputController: snapshotOrNull(() => inputController?.getSnapshot() ?? null),
       input: snapshotOrNull(() => inputController?.getInputState().getSnapshot() ?? null),
@@ -2262,6 +2283,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       await safeDestroyHandle("debug-overlay", debugOverlay, sceneLogger, destroyReason);
       await safeDestroyHandle("scene-world-bridge", worldBridge, sceneLogger, destroyReason);
       await safeDestroyHandle("preview-renderer", preview, sceneLogger, destroyReason);
+      await safeDestroyHandle("geodata-overlay-scene", geodataOverlayScene, sceneLogger, destroyReason);
       await safeDestroyHandle("chunk-scene", chunkScene, sceneLogger, destroyReason);
       await safeDestroyHandle("resize-observer", resizeObserver, sceneLogger, destroyReason);
       await safeDestroyHandle("first-person-camera-controller", firstPersonCamera, sceneLogger, destroyReason);
@@ -2341,6 +2363,10 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
     getChunkScene(): ChunkSceneHandle | null {
       return chunkScene;
+    },
+
+    getGeodataOverlayScene(): GeodataOverlaySceneHandle | null {
+      return geodataOverlayScene;
     },
 
     getWorldBridge(): SceneWorldBridgeHandle | null {

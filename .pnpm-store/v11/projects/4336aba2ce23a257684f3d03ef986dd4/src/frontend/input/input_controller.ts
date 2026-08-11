@@ -157,6 +157,17 @@ export interface EditorInputBlockIntent {
 
   readonly sourceCell: EditorStateChunkCellPosition | null;
   readonly placementCell: EditorStateChunkCellPosition | null;
+  readonly targetPoint: Readonly<{ x: number; y: number; z: number }> | null;
+  readonly createdAt: string;
+}
+
+export interface EditorInputWorldEditIntent {
+  readonly action: "primary" | "secondary" | "primary-release" | "secondary-release";
+  readonly trigger: string;
+  readonly position: ChunkApiWorldPosition | null;
+  readonly sourceCell: EditorStateChunkCellPosition | null;
+  readonly placementCell: EditorStateChunkCellPosition | null;
+  readonly targetPoint: Readonly<{ x: number; y: number; z: number }> | null;
   readonly createdAt: string;
 }
 
@@ -189,10 +200,14 @@ export interface EditorInputControllerOptions {
   readonly getTargetCells?: () => {
     readonly sourceCell: EditorStateChunkCellPosition | null;
     readonly placementCell: EditorStateChunkCellPosition | null;
+    readonly targetPoint: Readonly<{ x: number; y: number; z: number }> | null;
   };
 
   readonly onPlaceBlock?: (intent: EditorInputBlockIntent) => void | Promise<void>;
   readonly onRemoveBlock?: (intent: EditorInputBlockIntent) => void | Promise<void>;
+  readonly onWorldEditAction?: (
+    intent: EditorInputWorldEditIntent,
+  ) => boolean | Promise<boolean>;
   readonly onInspect?: (intent: {
     readonly sourceCell: EditorStateChunkCellPosition | null;
     readonly placementCell: EditorStateChunkCellPosition | null;
@@ -1797,6 +1812,19 @@ export function createEditorInputController(
 
       lastPlacementContext = libraryPlacement;
 
+      if (options.onWorldEditAction) {
+        const handled = await options.onWorldEditAction({
+          action: "primary",
+          trigger,
+          position: placementCell ? position : null,
+          sourceCell,
+          placementCell,
+          targetPoint: directTarget?.targetPoint ?? null,
+          createdAt: now(),
+        });
+        if (handled) return;
+      }
+
       if (!placementCell) {
         blockedPlaceIntentCount += 1;
         blockAction(
@@ -1847,6 +1875,7 @@ export function createEditorInputController(
         libraryPlacement,
         sourceCell,
         placementCell,
+        targetPoint: directTarget?.targetPoint ?? null,
         createdAt: now(),
       });
     } catch (error) {
@@ -1867,6 +1896,19 @@ export function createEditorInputController(
       const directTarget = options.getTargetCells?.() ?? null;
       const sourceCell = directTarget ? directTarget.sourceCell : selectSourceCell(state);
       const placementCell = directTarget ? directTarget.placementCell : selectPlacementCell(state);
+
+      if (options.onWorldEditAction) {
+        const handled = await options.onWorldEditAction({
+          action: "secondary",
+          trigger,
+          position: sourceCell ? worldPositionFromCell(sourceCell) : null,
+          sourceCell,
+          placementCell,
+          targetPoint: directTarget?.targetPoint ?? null,
+          createdAt: now(),
+        });
+        if (handled) return;
+      }
 
       if (!sourceCell) {
         blockedRemoveIntentCount += 1;
@@ -1908,6 +1950,32 @@ export function createEditorInputController(
         libraryPlacement: null,
         sourceCell,
         placementCell,
+        targetPoint: directTarget?.targetPoint ?? null,
+        createdAt: now(),
+      });
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  async function executeWorldEditRelease(
+    action: "primary-release" | "secondary-release",
+    trigger: string,
+  ): Promise<void> {
+    if (!assertAlive("executeWorldEditRelease") || !options.onWorldEditAction) return;
+    try {
+      const state = store.peekState();
+      const directTarget = options.getTargetCells?.() ?? null;
+      const sourceCell = directTarget ? directTarget.sourceCell : selectSourceCell(state);
+      const placementCell = directTarget ? directTarget.placementCell : selectPlacementCell(state);
+      const targetCell = action === "primary-release" ? placementCell : sourceCell;
+      await options.onWorldEditAction({
+        action,
+        trigger,
+        position: targetCell ? worldPositionFromCell(targetCell) : null,
+        sourceCell,
+        placementCell,
+        targetPoint: directTarget?.targetPoint ?? null,
         createdAt: now(),
       });
     } catch (error) {
@@ -2186,8 +2254,14 @@ export function createEditorInputController(
     onPrimaryDown: () => {
       executePointerAction("place", "mouse:primary-down");
     },
+    onPrimaryUp: () => {
+      void executeWorldEditRelease("primary-release", "mouse:primary-up");
+    },
     onSecondaryDown: () => {
       executePointerAction("remove", "mouse:secondary-down");
+    },
+    onSecondaryUp: () => {
+      void executeWorldEditRelease("secondary-release", "mouse:secondary-up");
     },
     onMiddleDown: () => {
       executePointerAction("inspect", "mouse:middle-down");

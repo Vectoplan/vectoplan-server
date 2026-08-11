@@ -216,6 +216,10 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .workspace-grid-major { fill: none; stroke: #d9e0e7; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .model-frame { fill: none; stroke: #aeb9c4; stroke-width: 1.1; stroke-dasharray: 7 5; vector-effect: non-scaling-stroke; pointer-events: none; }
 .model-frame-label { fill: #6f7d8d; font-size: 150px; font-weight: 700; letter-spacing: .04em; pointer-events: none; }
+.parcel-context { pointer-events: none; }
+.parcel-boundary { vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.parcel-boundary-adjacent { fill: none; stroke: rgba(37, 99, 235, .48); stroke-width: 1.05; stroke-dasharray: 5 3; }
+.parcel-boundary-selected { fill: rgba(37, 99, 235, .13); stroke: #1d4ed8; stroke-width: 1.8; }
 .primitive { vector-effect: non-scaling-stroke; }
 .primitive-wall-cut { fill: #d7dce1; stroke: #27313b; stroke-width: 1.15; cursor: pointer; }
 .primitive-opening { fill: #fff; stroke: #27313b; stroke-width: .7; cursor: pointer; }

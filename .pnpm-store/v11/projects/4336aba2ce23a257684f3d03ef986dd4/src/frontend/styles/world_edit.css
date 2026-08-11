@@ -1,0 +1,88 @@
+.editor-world-edit {
+  display: none !important;
+  position: absolute;
+  top: 74px;
+  right: 18px;
+  z-index: 740;
+  width: min(326px, calc(100% - 36px));
+  border: 1px solid rgba(125, 211, 252, 0.34);
+  border-radius: 16px;
+  color: #e8f5ff;
+  background: linear-gradient(180deg, rgba(17, 44, 70, 0.97), rgba(7, 20, 35, 0.96));
+  box-shadow: 0 22px 60px rgba(2, 8, 23, 0.42);
+  font: 600 13px/1.35 Inter, ui-sans-serif, system-ui, sans-serif;
+  backdrop-filter: blur(16px);
+}
+
+.editor-world-edit[hidden] { display: none !important; }
+[data-creative-inventory-open]:not([data-creative-inventory-open="true"]) .editor-world-edit {
+  display: none !important;
+}
+
+.editor-world-edit__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 14px;
+  border-bottom: 1px solid rgba(148, 197, 229, 0.16);
+}
+
+.editor-world-edit__header div { display: grid; gap: 2px; }
+.editor-world-edit__header span { color: #7dd3fc; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+.editor-world-edit__header strong { font-size: 15px; }
+.editor-world-edit__header button {
+  width: 30px; height: 30px; border: 1px solid rgba(148, 197, 229, .24); border-radius: 9px;
+  color: #dff5ff; background: rgba(255,255,255,.05); font-size: 20px; cursor: pointer;
+}
+
+.editor-world-edit__body { display: grid; gap: 10px; padding: 12px 14px 14px; }
+.editor-world-edit__status { padding: 9px 10px; border-radius: 10px; color: #bae6fd; background: rgba(14, 165, 233, .12); }
+.editor-world-edit__status[data-kind="warning"] { color: #fde68a; background: rgba(245, 158, 11, .14); }
+.editor-world-edit__status[data-kind="error"] { color: #fecaca; background: rgba(239, 68, 68, .14); }
+.editor-world-edit__status[data-kind="ready"] { color: #bbf7d0; background: rgba(34, 197, 94, .13); }
+
+.editor-world-edit__field,
+.editor-world-edit__brush label,
+.editor-world-edit__material,
+.editor-world-edit__mask,
+.editor-world-edit__parcels {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+
+.editor-world-edit select,
+.editor-world-edit input[type="range"] { accent-color: #38bdf8; }
+.editor-world-edit select {
+  min-width: 138px; padding: 7px 9px; border: 1px solid rgba(148, 197, 229, .2); border-radius: 8px;
+  color: #e8f5ff; background: #102a42;
+}
+
+.editor-world-edit__coordinates { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.editor-world-edit__coordinates span,
+.editor-world-edit__parcels,
+.editor-world-edit__material {
+  padding: 9px; border: 1px solid rgba(148, 197, 229, .14); border-radius: 10px; background: rgba(255,255,255,.035);
+}
+.editor-world-edit__coordinates span { display: grid; gap: 3px; color: #9fc3da; font-size: 11px; }
+.editor-world-edit__coordinates output { color: #fff; font: 700 12px/1.2 ui-monospace, monospace; }
+.editor-world-edit__brush { display: grid; gap: 8px; padding: 10px; border: 1px solid rgba(148, 197, 229, .14); border-radius: 10px; }
+.editor-world-edit__brush label > span { color: #b8d6e8; }
+.editor-world-edit__brush output { width: 38px; text-align: right; color: #7dd3fc; }
+.editor-world-edit__material span { color: #9fc3da; }
+.editor-world-edit__material strong { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.editor-world-edit__mask { justify-content: flex-start; color: #d5e9f5; }
+.editor-world-edit__mask input { width: 17px; height: 17px; accent-color: #0ea5e9; }
+.editor-world-edit__parcels { align-items: flex-start; flex-direction: column; gap: 2px; }
+.editor-world-edit__parcels small { color: #80a9c2; font-size: 10px; }
+.editor-world-edit__hint { color: #8fb8cf; font-size: 11px; }
+.editor-world-edit__actions { display: grid; grid-template-columns: 1fr 1.2fr; gap: 8px; }
+.editor-world-edit__actions button {
+  min-height: 38px; border: 1px solid rgba(148, 197, 229, .22); border-radius: 10px;
+  color: #dff5ff; background: rgba(255,255,255,.06); font-weight: 750; cursor: pointer;
+}
+.editor-world-edit__actions button.is-primary { border-color: #38bdf8; color: #062337; background: linear-gradient(135deg, #7dd3fc, #38bdf8); }
+.editor-world-edit__actions button:disabled { opacity: .5; cursor: wait; }
+
+@media (max-width: 720px) {
+  .editor-world-edit { top: 62px; right: 8px; width: min(306px, calc(100% - 16px)); }
+}
