@@ -17,9 +17,21 @@ import {
   buildParcelGridPartition,
   mergeParcelGridCoverage,
   normalizeParcelGridPolygon,
+  parcelGridGuideIdentity,
   parcelGridPolygonArea,
+  resolveParcelGridGuidePreview,
+  resolveParcelGridHandleScale,
+  resolveParcelGridMaximumDepth,
+  resolveParcelGridRenderBounds,
+  snapParcelGridDragDepth,
   type ParcelGridPoint,
 } from "./parcel_grid_geometry";
+import {
+  resolveWorldEditSelectionBounds,
+  snapWorldEditSelectionHandle,
+  type WorldEditSelectionAxis,
+  type WorldEditSelectionBounds,
+} from "./selection_geometry";
 
 const ACTIVATE_EVENT = "vectoplan-editor:worldedit-tool-activate";
 const SETTINGS_EVENT = "vectoplan-editor:worldedit-settings-change";
@@ -37,6 +49,11 @@ const LOCAL_PARCEL_SYNC = "vectoplan-editor:parcel-selection-sync";
 const CREATIVE_INVENTORY_OPENED_EVENT = "vectoplan-editor:creative-inventory-opened";
 const CREATIVE_INVENTORY_CLOSED_EVENT = "vectoplan-editor:creative-inventory-closed";
 const EARTH_GRID_READY_EVENT = "vectoplan-editor:earth-grid-frame-ready";
+const PARCEL_GRID_FULL_RENDER_CELL_LIMIT = 100_000;
+const PARCEL_GRID_VISIBLE_MARGIN_CELLS = 64;
+const PARCEL_GRID_MIN_DRAG_DEPTH_CELLS = 64;
+const PARCEL_GRID_MAX_DRAG_DEPTH_CELLS = 512;
+const PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS = 8;
 
 type WorldEditTool = "selection" | "paint" | "sculpt" | "parcel" | "parcel-grid" | "ruler" | "clipboard";
 type WorldEditOperation = "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
@@ -77,17 +94,54 @@ interface EarthGridFrameContract {
 }
 
 interface HandleDescriptor {
-  readonly axis: "x" | "y" | "z";
+  readonly axis: WorldEditSelectionAxis;
   readonly sign: -1 | 1;
   readonly mesh: THREE.Mesh;
 }
 
+interface SelectionBoxRuntime {
+  readonly fill: THREE.Mesh;
+  readonly edges: THREE.LineSegments;
+}
+
+interface SelectionHandleDragState {
+  readonly axis: WorldEditSelectionAxis;
+  readonly sign: -1 | 1;
+  readonly initialBounds: WorldEditSelectionBounds;
+  readonly initialPointerCoordinate: number;
+  readonly dragPlaneNormal: readonly [number, number, number];
+  readonly dragPlanePoint: readonly [number, number, number];
+}
+
 interface ParcelGridGuide {
+  readonly guideKey: string;
   readonly parcelId: string;
   readonly start: readonly [number, number];
   readonly end: readonly [number, number];
   readonly inward: readonly [number, number];
   readonly depthMeters: number;
+}
+
+interface ParcelGridDragState {
+  readonly guideKey: string;
+  readonly initialDepthMeters: number;
+  readonly initialPointerDepthMeters: number;
+  readonly maximumDepthMeters: number;
+}
+
+interface ParcelGridHandleRuntime {
+  readonly guideKey: string;
+  readonly parcelId: string;
+  readonly group: THREE.Group;
+  readonly linePositions: THREE.BufferAttribute;
+  readonly lineVertexOffset: number;
+  readonly start: readonly [number, number];
+  readonly end: readonly [number, number];
+  readonly inward: readonly [number, number];
+  readonly along: number;
+  readonly planeY: number;
+  readonly maximumDepthMeters: number;
+  currentDepthMeters: number;
 }
 
 interface PersistedParcelGridGuide {
@@ -103,6 +157,7 @@ interface PersistedParcelGridState {
   readonly setbackMeters: number;
   readonly influenceMeters: number;
   readonly activeParcelId: string | null;
+  readonly activeGuideKey?: string | null;
   readonly guides: readonly PersistedParcelGridGuide[];
 }
 
@@ -337,8 +392,9 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
         schemaVersion: "vectoplan-parcel-grid-state.v1" as const,
         mode: safeString(rawGridState.mode, "boundary") === "setback" ? "setback" as const : "boundary" as const,
         setbackMeters: Math.max(0, Math.min(20, Number(rawGridState.setbackMeters ?? rawGridState.setback_meters) || 0)),
-        influenceMeters: Math.max(1, Math.min(6, Math.round(Number(rawGridState.influenceMeters ?? rawGridState.influence_meters) || 3))),
+        influenceMeters: Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(Number(rawGridState.influenceMeters ?? rawGridState.influence_meters) || 3))),
         activeParcelId: safeString(rawGridState.activeParcelId ?? rawGridState.active_parcel_id, "") || null,
+        activeGuideKey: safeString(rawGridState.activeGuideKey ?? rawGridState.active_guide_key, "") || null,
         guides: rawGridGuides.map((value): PersistedParcelGridGuide | null => {
           const guide = asRecord(value);
           const start = asArray(guide.startLonLat ?? guide.start_lon_lat);
@@ -353,9 +409,9 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
             parcelId,
             startLonLat: [startLon, startLat],
             endLonLat: [endLon, endLat],
-            depthMeters: Math.max(1, Math.min(6, Math.round(Number(guide.depthMeters ?? guide.depth_meters) || 3))),
+            depthMeters: Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(Number(guide.depthMeters ?? guide.depth_meters) || 3))),
           };
-        }).filter((guide): guide is PersistedParcelGridGuide => guide !== null).slice(0, 64),
+        }).filter((guide): guide is PersistedParcelGridGuide => guide !== null).slice(0, 256),
       }
     : null;
   return {
@@ -605,6 +661,43 @@ function lonLatToWorld(
   ];
 }
 
+function parcelGridGuideKey(
+  parcelId: string,
+  startLonLat: readonly [number, number],
+  endLonLat: readonly [number, number],
+): string {
+  return parcelGridGuideIdentity(parcelId, startLonLat, endLonLat);
+}
+
+function parcelGridWorldGuideKey(
+  parcelId: string,
+  start: readonly [number, number],
+  end: readonly [number, number],
+  frame: EarthGridFrameContract | null,
+): string {
+  const startLonLat = worldPointToLonLat(start[0], start[1], frame);
+  const endLonLat = worldPointToLonLat(end[0], end[1], frame);
+  if (startLonLat && endLonLat) return parcelGridGuideKey(parcelId, startLonLat, endLonLat);
+  return parcelGridGuideIdentity(`${parcelId}:world`, start, end, 5);
+}
+
+function parcelWorldGridPoints(
+  parcel: ParcelSelectionItem,
+  frame: EarthGridFrameContract,
+): readonly [number, number][] {
+  const points: Array<[number, number]> = [];
+  for (const polygonValue of parcelPolygons(parcel)) {
+    for (const ringValue of asArray(polygonValue)) {
+      for (const coordinate of asArray(ringValue)) {
+        const point = asArray(coordinate);
+        const world = lonLatToWorld(Number(point[0]), Number(point[1]), frame);
+        if (world) points.push(world);
+      }
+    }
+  }
+  return points;
+}
+
 export function createWorldEditController(
   options: WorldEditControllerOptions,
 ): WorldEditControllerHandle {
@@ -614,7 +707,10 @@ export function createWorldEditController(
   let selection: SelectionBounds = { first: null, second: null };
   let selectionDragging = false;
   let selectionDragFrame = 0;
-  let selectionHandleDrag: Pick<HandleDescriptor, "axis" | "sign"> | null = null;
+  let selectionHandleDrag: SelectionHandleDragState | null = null;
+  let selectionDragPlaneY: number | null = null;
+  let selectionDragSignature = "";
+  let selectionBoxRuntime: SelectionBoxRuntime | null = null;
   let brushTarget: ChunkApiWorldPosition | null = null;
   let parcelSelection: ParcelSelection = {
     projectPublicId: "",
@@ -637,13 +733,45 @@ export function createWorldEditController(
   let parcelGridSetback = 0;
   let parcelGridInfluence = 3;
   let activeParcelGridParcelId: string | null = null;
+  let activeParcelGridGuideKey: string | null = null;
   const persistedParcelGridGuides = new Map<string, PersistedParcelGridGuide>();
   let parcelGridZoneCells: readonly ParcelGridZoneCell[] = [];
   let parcelGridZoneCellIndex = new Map<string, readonly ParcelGridZoneCell[]>();
   let parcelGridPlacementResolver: ParcelGridPlacementResolver | null = null;
   let parcelGridPlaneY: number | null = null;
   let parcelGridGeometrySignature = "";
+  let parcelGridHandleAlong = 0.5;
+  let parcelGridHandleTargets: THREE.Object3D[] = [];
+  const parcelGridHandleRuntimes = new Map<string, ParcelGridHandleRuntime>();
+  let parcelGridDragging = false;
+  let parcelGridDragFrame = 0;
+  let parcelGridDragState: ParcelGridDragState | null = null;
   let selectionHandles: HandleDescriptor[] = [];
+
+  function cameraPointAtPlaneY(planeY: number, maximumDistance = 180): THREE.Vector3 | null {
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || !Number.isFinite(planeY)) return null;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    if (Math.abs(direction.y) < 1e-5) return null;
+    const distance = (planeY - camera.position.y) / direction.y;
+    if (!Number.isFinite(distance) || distance <= 0 || distance > maximumDistance) return null;
+    return camera.position.clone().addScaledVector(direction, distance);
+  }
+
+  function worldPositionAtCameraPlane(
+    planeY: number,
+    fallback: ChunkApiWorldPosition | null = null,
+    maximumDistance = 180,
+  ): ChunkApiWorldPosition | null {
+    const point = cameraPointAtPlaneY(planeY, maximumDistance);
+    if (!point) return fallback;
+    return {
+      x: Math.floor(point.x),
+      y: Math.floor(planeY),
+      z: Math.floor(point.z),
+    };
+  }
 
   function serializedParcelGridState(): PersistedParcelGridState {
     return {
@@ -652,9 +780,13 @@ export function createWorldEditController(
       setbackMeters: parcelGridSetback,
       influenceMeters: parcelGridInfluence,
       activeParcelId: activeParcelGridParcelId,
+      activeGuideKey: activeParcelGridGuideKey,
       guides: [...persistedParcelGridGuides.values()]
-        .sort((first, second) => first.parcelId.localeCompare(second.parcelId))
-        .slice(0, 64),
+        .sort((first, second) => (
+          parcelGridGuideKey(first.parcelId, first.startLonLat, first.endLonLat)
+            .localeCompare(parcelGridGuideKey(second.parcelId, second.startLonLat, second.endLonLat))
+        ))
+        .slice(0, 256),
     };
   }
 
@@ -664,8 +796,14 @@ export function createWorldEditController(
     parcelGridSetback = state.setbackMeters;
     parcelGridInfluence = state.influenceMeters;
     activeParcelGridParcelId = state.activeParcelId;
+    activeParcelGridGuideKey = state.activeGuideKey ?? null;
     persistedParcelGridGuides.clear();
-    for (const guide of state.guides) persistedParcelGridGuides.set(guide.parcelId, guide);
+    for (const guide of state.guides) {
+      persistedParcelGridGuides.set(
+        parcelGridGuideKey(guide.parcelId, guide.startLonLat, guide.endLonLat),
+        guide,
+      );
+    }
   }
 
   function rememberParcelGridGuide(frameValue?: EarthGridFrameContract | null): void {
@@ -675,7 +813,9 @@ export function createWorldEditController(
     const endLonLat = worldPointToLonLat(parcelGridGuide.end[0], parcelGridGuide.end[1], frame);
     if (!startLonLat || !endLonLat) return;
     activeParcelGridParcelId = parcelGridGuide.parcelId;
-    persistedParcelGridGuides.set(parcelGridGuide.parcelId, {
+    const guideKey = parcelGridGuideKey(parcelGridGuide.parcelId, startLonLat, endLonLat);
+    activeParcelGridGuideKey = guideKey;
+    persistedParcelGridGuides.set(guideKey, {
       parcelId: parcelGridGuide.parcelId,
       startLonLat,
       endLonLat,
@@ -685,13 +825,18 @@ export function createWorldEditController(
 
   function restoreParcelGridGuide(frame: EarthGridFrameContract): void {
     if (parcelGridGuide || parcelSelection.parcels.length === 0 || persistedParcelGridGuides.size === 0) return;
-    const orderedParcelIds = [
-      activeParcelGridParcelId,
-      ...parcelSelection.parcels.map((parcel) => parcel.parcelId),
-    ].filter((value, index, values): value is string => Boolean(value) && values.indexOf(value) === index);
-    for (const parcelId of orderedParcelIds) {
+    const orderedSavedGuides = [...persistedParcelGridGuides.entries()].sort(([firstKey, first], [secondKey, second]) => {
+      const firstRank = firstKey === activeParcelGridGuideKey
+        ? 0
+        : first.parcelId === activeParcelGridParcelId ? 1 : 2;
+      const secondRank = secondKey === activeParcelGridGuideKey
+        ? 0
+        : second.parcelId === activeParcelGridParcelId ? 1 : 2;
+      return firstRank - secondRank || firstKey.localeCompare(secondKey);
+    });
+    for (const [savedGuideKey, saved] of orderedSavedGuides) {
+      const parcelId = saved.parcelId;
       const parcel = parcelSelection.parcels.find((candidate) => candidate.parcelId === parcelId);
-      const saved = persistedParcelGridGuides.get(parcelId);
       if (!parcel || !saved) continue;
       const desiredStart = lonLatToWorld(saved.startLonLat[0], saved.startLonLat[1], frame);
       const desiredEnd = lonLatToWorld(saved.endLonLat[0], saved.endLonLat[1], frame);
@@ -729,14 +874,24 @@ export function createWorldEditController(
       ];
       const probe = worldPointToLonLat(midpoint[0] + inward[0] * 0.2, midpoint[1] + inward[1] * 0.2, frame);
       if (!probe || !parcelContainsLonLat(parcel, probe)) inward = [-inward[0], -inward[1]];
+      const maximumDepth = resolveParcelGridMaximumDepth({
+        points: parcelWorldGridPoints(parcel, frame),
+        start: best.start,
+        inward,
+        minimumDepth: PARCEL_GRID_MIN_DRAG_DEPTH_CELLS,
+        maximumDepth: PARCEL_GRID_MAX_DRAG_DEPTH_CELLS,
+        paddingCells: PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS,
+      });
       parcelGridGuide = {
+        guideKey: savedGuideKey,
         parcelId,
         start: best.start,
         end: best.end,
         inward,
-        depthMeters: saved.depthMeters,
+        depthMeters: Math.max(1, Math.min(maximumDepth, saved.depthMeters)),
       };
       activeParcelGridParcelId = parcelId;
+      activeParcelGridGuideKey = savedGuideKey;
       return;
     }
   }
@@ -983,6 +1138,10 @@ export function createWorldEditController(
   }
 
   function disposeSelectionGroup(): void {
+    selectionBoxRuntime = null;
+    selectionHandles = [];
+    delete options.root.dataset.selectionLiveBounds;
+    delete options.root.dataset.selectionPreviewMode;
     if (!selectionGroup) return;
     selectionGroup.traverse((object) => {
       const drawable = object as THREE.Object3D & {
@@ -995,7 +1154,6 @@ export function createWorldEditController(
     });
     selectionGroup.parent?.remove(selectionGroup);
     selectionGroup = null;
-    selectionHandles = [];
   }
 
   function disposeParcelGroup(): void {
@@ -1022,9 +1180,15 @@ export function createWorldEditController(
     delete options.root.dataset.parcelGridSlantedArea;
     delete options.root.dataset.parcelGridStraightArea;
     delete options.root.dataset.parcelGridBlockedArea;
+    delete options.root.dataset.parcelGridRequestedCells;
+    delete options.root.dataset.parcelGridRenderedWindowCells;
+    delete options.root.dataset.parcelGridHandleCount;
+    delete options.root.dataset.parcelGridLiveDepth;
     parcelGridZoneCells = [];
     parcelGridZoneCellIndex = new Map();
     parcelGridPlacementResolver = null;
+    parcelGridHandleTargets = [];
+    parcelGridHandleRuntimes.clear();
     if (!parcelGridGroup) return;
     parcelGridGroup.traverse((object) => {
       const drawable = object as THREE.Object3D & {
@@ -1091,11 +1255,13 @@ export function createWorldEditController(
       readonly rings: readonly (readonly GridPoint[])[];
     }
     interface BoundarySegment {
+      readonly guideKey: string;
       readonly parcelId: string;
       readonly start: GridPoint;
       readonly end: GridPoint;
       readonly inward: GridPoint;
       readonly length: number;
+      readonly maximumDepth: number;
     }
 
     const worldParcels: WorldParcel[] = [];
@@ -1149,7 +1315,7 @@ export function createWorldEditController(
 
     const pointInsideParcel = (parcel: WorldParcel, point: GridPoint): boolean => pointInPolygon(point, parcel.rings);
     const pointInsideUnion = (point: GridPoint): boolean => worldParcels.some((parcel) => pointInsideParcel(parcel, point));
-    const rawSegments: Array<Omit<BoundarySegment, "inward"> & { readonly parcel: WorldParcel }> = [];
+    const rawSegments: Array<Omit<BoundarySegment, "guideKey" | "inward" | "maximumDepth"> & { readonly parcel: WorldParcel }> = [];
     for (const parcel of worldParcels) {
       for (const ring of parcel.rings) {
         for (let index = 0; index < ring.length; index += 1) {
@@ -1180,11 +1346,20 @@ export function createWorldEditController(
       const outwardProbe: GridPoint = [midpoint[0] - inward[0] * 0.2, midpoint[1] - inward[1] * 0.2];
       const sharedInside = worldParcels.some((parcel) => parcel !== segment.parcel && pointInsideParcel(parcel, outwardProbe));
       if (!sharedInside) boundarySegments.push({
+        guideKey: parcelGridWorldGuideKey(segment.parcelId, segment.start, segment.end, frame),
         parcelId: segment.parcelId,
         start: segment.start,
         end: segment.end,
         inward,
         length: segment.length,
+        maximumDepth: resolveParcelGridMaximumDepth({
+          points: segment.parcel.rings.flatMap((ring) => [...ring]),
+          start: segment.start,
+          inward,
+          minimumDepth: PARCEL_GRID_MIN_DRAG_DEPTH_CELLS,
+          maximumDepth: PARCEL_GRID_MAX_DRAG_DEPTH_CELLS,
+          paddingCells: PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS,
+        }),
       });
     }
     if (boundarySegments.length === 0) {
@@ -1205,20 +1380,14 @@ export function createWorldEditController(
       );
     };
     const segmentMatchesGuide = (segment: BoundarySegment): boolean => {
-      if (!parcelGridGuide || parcelGridGuide.parcelId !== segment.parcelId) return false;
-      const endpointDistance = (first: GridPoint, second: GridPoint): number => Math.hypot(
-        first[0] - second[0],
-        first[1] - second[1],
-      );
-      return (endpointDistance(segment.start, parcelGridGuide.start) < 0.04
-          && endpointDistance(segment.end, parcelGridGuide.end) < 0.04)
-        || (endpointDistance(segment.start, parcelGridGuide.end) < 0.04
-          && endpointDistance(segment.end, parcelGridGuide.start) < 0.04);
+      return Boolean(parcelGridGuide && parcelGridGuide.guideKey === segment.guideKey);
     };
-    const defaultSlantedDepth = Math.max(1, Math.min(6, Math.round(parcelGridInfluence)));
-    const depthForSegment = (segment: BoundarySegment): number => segmentMatchesGuide(segment)
-      ? Math.max(1, Math.min(6, Math.round(parcelGridGuide!.depthMeters)))
-      : defaultSlantedDepth;
+    const defaultSlantedDepth = Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(parcelGridInfluence)));
+    const depthForSegment = (segment: BoundarySegment): number => {
+      const savedDepth = persistedParcelGridGuides.get(segment.guideKey)?.depthMeters;
+      const depth = segmentMatchesGuide(segment) ? parcelGridGuide!.depthMeters : savedDepth;
+      return Math.max(1, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
+    };
     const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...boundarySegments.map(depthForSegment));
 
     // Placement and drawing must use the very same world-space boundary
@@ -1359,6 +1528,7 @@ export function createWorldEditController(
     const transitionSegments: GridSegment[] = [];
     const activeAxisSegments: GridSegment[] = [];
     const innerAxisSegments: GridSegment[] = [];
+    const innerAxisGuideKeys: string[] = [];
     const zoneCells: ParcelGridZoneCell[] = [];
     const transitionTriangles: ParcelGridZoneCell[] = [];
     const slantedFill: number[] = [];
@@ -1386,23 +1556,22 @@ export function createWorldEditController(
     };
 
     const allPoints = worldParcels.flatMap((parcel) => parcel.rings.flatMap((ring) => [...ring]));
-    let minimumX = Math.floor(Math.min(...allPoints.map((point) => point[0])));
-    let maximumX = Math.ceil(Math.max(...allPoints.map((point) => point[0])));
-    let minimumZ = Math.floor(Math.min(...allPoints.map((point) => point[1])));
-    let maximumZ = Math.ceil(Math.max(...allPoints.map((point) => point[1])));
-    const requestedCells = Math.max(0, maximumX - minimumX) * Math.max(0, maximumZ - minimumZ);
-    // Do not keep tens of thousands of one-metre cells resident for a large
-    // parcel. The visible/loaded terrain window is sufficient while flying
-    // and avoids a large transparent line workload on every frame.
-    if (requestedCells > 12_000 && surface && surface.size > 0) {
-      const visible = [...surface.keys()].map((key) => key.split(":").map(Number)).filter((value) => value.length === 2);
-      if (visible.length > 0) {
-        minimumX = Math.max(minimumX, Math.floor(Math.min(...visible.map((value) => value[0]!))) - 8);
-        maximumX = Math.min(maximumX, Math.ceil(Math.max(...visible.map((value) => value[0]!))) + 8);
-        minimumZ = Math.max(minimumZ, Math.floor(Math.min(...visible.map((value) => value[1]!))) - 8);
-        maximumZ = Math.min(maximumZ, Math.ceil(Math.max(...visible.map((value) => value[1]!))) + 8);
-      }
+    const renderBounds = resolveParcelGridRenderBounds({
+      points: allPoints,
+      visibleSurfacePoints: surface
+        ? [...surface.keys()].map((key) => key.split(":").map(Number))
+          .filter((value): value is [number, number] => value.length === 2 && value.every(Number.isFinite))
+        : [],
+      fullRenderCellLimit: PARCEL_GRID_FULL_RENDER_CELL_LIMIT,
+      visibleMarginCells: PARCEL_GRID_VISIBLE_MARGIN_CELLS,
+    });
+    if (!renderBounds) {
+      refreshClearedPlacementGeometry();
+      return;
     }
+    const { minimumX, maximumX, minimumZ, maximumZ } = renderBounds;
+    options.root.dataset.parcelGridRequestedCells = String(renderBounds.requestedCells);
+    options.root.dataset.parcelGridRenderedWindowCells = String(renderBounds.renderedCells);
     const partition = buildParcelGridPartition({
       boundarySegments: boundarySegments.map((segment) => {
         const segmentId = [segment.start, segment.end]
@@ -1464,10 +1633,11 @@ export function createWorldEditController(
     // use the selected edge's persisted custom depth where applicable.
     for (const segment of boundarySegments) {
       const depth = depthForSegment(segment);
-      addSegment(innerAxisSegments,
+      innerAxisSegments.push([
         [segment.start[0] + segment.inward[0] * depth, segment.start[1] + segment.inward[1] * depth],
         [segment.end[0] + segment.inward[0] * depth, segment.end[1] + segment.inward[1] * depth],
-      );
+      ]);
+      innerAxisGuideKeys.push(segment.guideKey);
     }
     options.root.dataset.parcelGridCoveredArea = partition.coveredArea.toFixed(3);
     options.root.dataset.parcelGridSlantedArea = partition.slantedArea.toFixed(3);
@@ -1484,8 +1654,14 @@ export function createWorldEditController(
       }
     }
 
-    const addLineBatch = (name: string, segments: readonly GridSegment[], color: number, opacity: number, order: number): void => {
-      if (segments.length === 0) return;
+    const addLineBatch = (
+      name: string,
+      segments: readonly GridSegment[],
+      color: number,
+      opacity: number,
+      order: number,
+    ): THREE.LineSegments | null => {
+      if (segments.length === 0) return null;
       const positions: number[] = [];
       for (const [start, end] of segments) {
         positions.push(start[0], sampleY(start[0], start[1]), start[1]);
@@ -1504,6 +1680,7 @@ export function createWorldEditController(
       lines.name = name;
       lines.renderOrder = order;
       group.add(lines);
+      return lines;
     };
     const addFillBatch = (name: string, positions: readonly number[], color: number, opacity: number, order: number): void => {
       if (positions.length === 0) return;
@@ -1530,7 +1707,112 @@ export function createWorldEditController(
     addLineBatch("parcel_grid_transition_triangles", transitionSegments, 0xff143f, 1, 119);
     addLineBatch("parcel_grid_boundary", blueSegments, 0x1265e5, 1, 120);
     addLineBatch("parcel_grid_active_axis", activeAxisSegments, 0xffa200, 1, 121);
-    addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
+    const innerAxisLines = addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
+
+    if (innerAxisLines && activeTool === "parcel-grid") {
+      innerAxisLines.frustumCulled = false;
+      const linePositions = innerAxisLines.geometry.getAttribute("position") as THREE.BufferAttribute;
+      linePositions.setUsage(THREE.DynamicDrawUsage);
+      const camera = options.sceneRuntime.getCamera();
+      const renderer = options.sceneRuntime.getRenderer();
+      for (let index = 0; index < boundarySegments.length; index += 1) {
+        const segment = boundarySegments[index]!;
+        const guideKey = innerAxisGuideKeys[index]!;
+        const depthMeters = depthForSegment(segment);
+        const along = segmentMatchesGuide(segment)
+          ? Math.max(0.04, Math.min(0.96, parcelGridHandleAlong))
+          : 0.5;
+        const axisX = segment.start[0]
+          + (segment.end[0] - segment.start[0]) * along
+          + segment.inward[0] * depthMeters;
+        const axisZ = segment.start[1]
+          + (segment.end[1] - segment.start[1]) * along
+          + segment.inward[1] * depthMeters;
+        const origin = new THREE.Vector3(axisX, sampleY(axisX, axisZ) + 0.22, axisZ);
+        const inward = new THREE.Vector3(segment.inward[0], 0, segment.inward[1]).normalize();
+        const handleGroup = new THREE.Group();
+        handleGroup.name = "parcel_grid_inner_axis_drag_handle";
+        handleGroup.position.copy(origin);
+        handleGroup.renderOrder = 132;
+
+        for (const direction of [inward, inward.clone().multiplyScalar(-1)]) {
+          const arrow = new THREE.ArrowHelper(direction, new THREE.Vector3(), 1.15, 0xffffff, 0.34, 0.24);
+          arrow.name = "parcel_grid_inner_axis_drag_arrow";
+          arrow.renderOrder = 132;
+          arrow.line.renderOrder = 132;
+          arrow.cone.renderOrder = 133;
+          arrow.line.material.depthTest = false;
+          arrow.line.material.depthWrite = false;
+          arrow.line.material.transparent = true;
+          arrow.line.material.opacity = 1;
+          arrow.cone.material.depthTest = false;
+          arrow.cone.material.depthWrite = false;
+          arrow.cone.material.transparent = true;
+          arrow.cone.material.opacity = 1;
+          handleGroup.add(arrow);
+        }
+
+        const grip = new THREE.Mesh(
+          new THREE.SphereGeometry(0.38, 16, 10),
+          new THREE.MeshBasicMaterial({
+            color: segmentMatchesGuide(segment) ? 0xffd35c : 0x00d9ff,
+            depthTest: false,
+            depthWrite: false,
+            toneMapped: false,
+          }),
+        );
+        grip.name = "parcel_grid_inner_axis_drag_grip";
+        grip.renderOrder = 134;
+        handleGroup.add(grip);
+
+        // A transparent, screen-size-stable pick sphere makes every handle
+        // reliably clickable even when the parcel is far away.
+        const pickTarget = new THREE.Mesh(
+          new THREE.SphereGeometry(0.72, 10, 8),
+          new THREE.MeshBasicMaterial({
+            transparent: true,
+            opacity: 0.001,
+            depthTest: false,
+            depthWrite: false,
+            toneMapped: false,
+          }),
+        );
+        pickTarget.name = "parcel_grid_inner_axis_drag_pick_target";
+        pickTarget.renderOrder = 131;
+        pickTarget.userData = { parcelGridDragHandle: true, parcelGridGuideKey: guideKey };
+        handleGroup.add(pickTarget);
+        parcelGridHandleTargets.push(pickTarget);
+
+        grip.onBeforeRender = () => {
+          if (!camera) return;
+          const viewportHeight = Math.max(1, renderer?.domElement.clientHeight ?? window.innerHeight ?? 1);
+          const distance = camera.position.distanceTo(handleGroup.position);
+          const scale = resolveParcelGridHandleScale({
+            distance,
+            verticalFieldOfViewDegrees: camera.fov,
+            viewportHeightPixels: viewportHeight,
+          });
+          handleGroup.scale.setScalar(scale);
+        };
+
+        parcelGridHandleRuntimes.set(guideKey, {
+          guideKey,
+          parcelId: segment.parcelId,
+          group: handleGroup,
+          linePositions,
+          lineVertexOffset: index * 2,
+          start: segment.start,
+          end: segment.end,
+          inward: segment.inward,
+          along,
+          planeY: fixedPlaneY,
+          maximumDepthMeters: segment.maximumDepth,
+          currentDepthMeters: depthMeters,
+        });
+        group.add(handleGroup);
+      }
+    }
+    options.root.dataset.parcelGridHandleCount = String(parcelGridHandleRuntimes.size);
 
     group.userData = {
       kind: "parcel-grid-guide",
@@ -1697,6 +1979,10 @@ export function createWorldEditController(
       parcelGridMode,
       parcelGridSetback,
       guideSignature,
+      minimumX,
+      maximumX,
+      minimumZ,
+      maximumZ,
     ].join(";");
     commitParcelGridGeometrySignature(geometrySignature, "world-edit.parcel-grid-rebuilt");
   }
@@ -1854,21 +2140,9 @@ export function createWorldEditController(
       selectionGroup = group;
       return;
     }
-    const min = {
-      x: Math.min(selection.first.x, selection.second.x),
-      y: Math.min(selection.first.y, selection.second.y),
-      z: Math.min(selection.first.z, selection.second.z),
-    };
-    const max = {
-      x: Math.max(selection.first.x, selection.second.x),
-      y: Math.max(selection.first.y, selection.second.y),
-      z: Math.max(selection.first.z, selection.second.z),
-    };
-    const size = new THREE.Vector3(max.x - min.x + 1, max.y - min.y + 1, max.z - min.z + 1);
-    const center = new THREE.Vector3(min.x + (size.x / 2), min.y + (size.y / 2), min.z + (size.z / 2));
     const group = new THREE.Group();
     group.name = "vectoplan_world_edit_selection";
-    const boxGeometry = new THREE.BoxGeometry(size.x, size.y, size.z);
+    const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
     const fill = new THREE.Mesh(boxGeometry, new THREE.MeshBasicMaterial({
       color: 0x38bdf8,
       transparent: true,
@@ -1876,30 +2150,22 @@ export function createWorldEditController(
       depthWrite: false,
       side: THREE.DoubleSide,
     }));
-    fill.position.copy(center);
     fill.renderOrder = 70;
     group.add(fill);
     const edges = new THREE.LineSegments(
       new THREE.EdgesGeometry(boxGeometry),
       new THREE.LineBasicMaterial({ color: 0x7dd3fc, transparent: true, opacity: 0.95 }),
     );
-    edges.position.copy(center);
     edges.renderOrder = 71;
     group.add(edges);
 
-    const descriptors: Array<{ axis: "x" | "y" | "z"; sign: -1 | 1 }> = [
+    const descriptors: Array<{ axis: WorldEditSelectionAxis; sign: -1 | 1 }> = [
       { axis: "x", sign: -1 }, { axis: "x", sign: 1 },
       { axis: "y", sign: -1 }, { axis: "y", sign: 1 },
       { axis: "z", sign: -1 }, { axis: "z", sign: 1 },
     ];
-    const panelSize = (value: number): number => Math.min(3.2, Math.max(0.9, value * 0.55));
     for (const descriptor of descriptors) {
-      const dimensions = descriptor.axis === "x"
-        ? new THREE.Vector3(0.1, panelSize(size.y), panelSize(size.z))
-        : descriptor.axis === "y"
-          ? new THREE.Vector3(panelSize(size.x), 0.1, panelSize(size.z))
-          : new THREE.Vector3(panelSize(size.x), panelSize(size.y), 0.1);
-      const handleGeometry = new THREE.BoxGeometry(dimensions.x, dimensions.y, dimensions.z);
+      const handleGeometry = new THREE.BoxGeometry(1, 1, 1);
       const mesh = new THREE.Mesh(
         handleGeometry,
         new THREE.MeshBasicMaterial({
@@ -1912,8 +2178,6 @@ export function createWorldEditController(
           toneMapped: false,
         }),
       );
-      mesh.position.copy(center);
-      mesh.position[descriptor.axis] += descriptor.sign * (size[descriptor.axis] / 2 + 0.42);
       mesh.renderOrder = 90;
       mesh.userData = { worldEditHandle: true, axis: descriptor.axis, sign: descriptor.sign };
       const handleEdges = new THREE.LineSegments(
@@ -1933,6 +2197,39 @@ export function createWorldEditController(
     }
     scene.add(group);
     selectionGroup = group;
+    selectionBoxRuntime = { fill, edges };
+    updateSelectionScenePreview();
+  }
+
+  function updateSelectionScenePreview(): boolean {
+    if (!selection.first || !selection.second || !selectionBoxRuntime || activeTool !== "selection") return false;
+    const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
+    const size = new THREE.Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
+    const center = new THREE.Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
+    selectionBoxRuntime.fill.position.copy(center);
+    selectionBoxRuntime.fill.scale.copy(size);
+    selectionBoxRuntime.edges.position.copy(center);
+    selectionBoxRuntime.edges.scale.copy(size);
+
+    const panelSize = (value: number): number => Math.min(3.2, Math.max(0.9, value * 0.55));
+    for (const handle of selectionHandles) {
+      const dimensions = handle.axis === "x"
+        ? new THREE.Vector3(0.1, panelSize(size.y), panelSize(size.z))
+        : handle.axis === "y"
+          ? new THREE.Vector3(panelSize(size.x), 0.1, panelSize(size.z))
+          : new THREE.Vector3(panelSize(size.x), panelSize(size.y), 0.1);
+      handle.mesh.scale.copy(dimensions);
+      handle.mesh.position.copy(center);
+      handle.mesh.position[handle.axis] += handle.sign * (size[handle.axis] / 2 + 0.42);
+      handle.mesh.updateMatrixWorld();
+    }
+    options.root.dataset.selectionPreviewMode = "transform-only";
+    options.root.dataset.selectionLiveBounds = [
+      bounds.minimum.x, bounds.minimum.y, bounds.minimum.z,
+      bounds.maximum.x, bounds.maximum.y, bounds.maximum.z,
+    ].join(":");
+    options.sceneRuntime.renderOnce("world-edit.selection-drag-preview");
+    return true;
   }
 
   function refreshHud(): void {
@@ -1987,11 +2284,11 @@ export function createWorldEditController(
     if (operationSelect) operationSelect.value = operation;
     if (hint) {
       hint.textContent = activeTool === "selection"
-        ? "Linksklick halten und mit der Kamera den Auswahlquader live aufziehen. Danach eine der sechs blauen Flächen mittig vor den Seiten greifen, um X/Y/Z anzupassen."
+        ? "Linksklick halten und den Auswahlquader blockweise live aufziehen. Danach eine der sechs blauen Flächen greifen und X/Y/Z mit demselben Live-Ziehen anpassen."
         : activeTool === "parcel"
           ? "Ein Flurstück anvisieren und anklicken, um es projektweit auszuwählen oder abzuwählen."
           : activeTool === "parcel-grid"
-            ? "Eine Grenze anvisieren und anklicken. Gelb markiert die Flurstücksgrenze, Cyan die Bauachse und die zweite gestrichelte Linie den Wirkbereich."
+            ? "Eine Grenze anklicken, dann den Doppelpfeil an der cyanfarbenen Linie greifen und bei gehaltenem Linksklick blockweise ziehen."
           : activeTool === "ruler"
             ? "Linksklick halten und mit der Kamera bis zum zweiten Messpunkt ziehen."
             : activeTool === "clipboard"
@@ -2008,6 +2305,19 @@ export function createWorldEditController(
     publishInventoryState();
   }
 
+  function selectionHandlePointerCoordinate(state: SelectionHandleDragState): number | null {
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return null;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    const normal = new THREE.Vector3(...state.dragPlaneNormal);
+    const planePoint = new THREE.Vector3(...state.dragPlanePoint);
+    const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(normal, planePoint);
+    const hitPoint = new THREE.Ray(camera.position.clone(), direction).intersectPlane(plane, new THREE.Vector3());
+    const coordinate = hitPoint?.[state.axis];
+    return Number.isFinite(coordinate) ? coordinate! : null;
+  }
+
   function adjustSelectionHandle(action: "primary" | "secondary"): boolean {
     if (!selection.first || !selection.second || selectionHandles.length === 0) return false;
     const camera = options.sceneRuntime.getCamera();
@@ -2020,22 +2330,41 @@ export function createWorldEditController(
     if (!handle) return false;
     if (action === "primary") {
       stopSelectionDrag();
-      selectionHandleDrag = { axis: handle.axis, sign: handle.sign };
+      const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
+      const axisVector = new THREE.Vector3(
+        handle.axis === "x" ? 1 : 0,
+        handle.axis === "y" ? 1 : 0,
+        handle.axis === "z" ? 1 : 0,
+      );
+      const direction = new THREE.Vector3();
+      camera.getWorldDirection(direction);
+      const dragPlaneNormal = camera.position.clone().sub(hit.point)
+        .addScaledVector(axisVector, -camera.position.clone().sub(hit.point).dot(axisVector));
+      if (dragPlaneNormal.lengthSq() <= 1e-8) {
+        dragPlaneNormal.copy(direction).addScaledVector(axisVector, -direction.dot(axisVector));
+      }
+      if (dragPlaneNormal.lengthSq() <= 1e-8) {
+        dragPlaneNormal.set(handle.axis === "x" ? 0 : 1, handle.axis === "y" ? 0 : 1, 0);
+      }
+      dragPlaneNormal.normalize();
+      selectionHandleDrag = {
+        axis: handle.axis,
+        sign: handle.sign,
+        initialBounds: bounds,
+        initialPointerCoordinate: hit.point[handle.axis],
+        dragPlaneNormal: [dragPlaneNormal.x, dragPlaneNormal.y, dragPlaneNormal.z],
+        dragPlanePoint: [hit.point.x, hit.point.y, hit.point.z],
+      };
       selectionDragging = true;
+      selectionDragPlaneY = bounds.center.y;
+      selectionDragSignature = "";
       selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
-      setStatus(`Die ${handle.axis.toUpperCase()}-FlÃ¤che folgt jetzt dem Fadenkreuz. Linksklick zum AbschlieÃŸen loslassen.`, "ready");
+      setStatus(`Die ${handle.axis.toUpperCase()}-Fläche folgt dem Fadenkreuz jetzt blockweise und live. Linksklick zum Abschließen loslassen.`, "ready");
       return true;
     }
-    const min = {
-      x: Math.min(selection.first.x, selection.second.x),
-      y: Math.min(selection.first.y, selection.second.y),
-      z: Math.min(selection.first.z, selection.second.z),
-    };
-    const max = {
-      x: Math.max(selection.first.x, selection.second.x),
-      y: Math.max(selection.first.y, selection.second.y),
-      z: Math.max(selection.first.z, selection.second.z),
-    };
+    const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
+    const min = { ...bounds.minimum };
+    const max = { ...bounds.maximum };
     const delta = -handle.sign;
     if (handle.sign < 0) min[handle.axis] = Math.min(max[handle.axis], min[handle.axis] + delta);
     else max[handle.axis] = Math.max(min[handle.axis], max[handle.axis] + delta);
@@ -2064,37 +2393,61 @@ export function createWorldEditController(
   function stopSelectionDrag(): void {
     selectionDragging = false;
     selectionHandleDrag = null;
+    selectionDragPlaneY = null;
+    selectionDragSignature = "";
     if (selectionDragFrame) cancelAnimationFrame(selectionDragFrame);
     selectionDragFrame = 0;
   }
 
-  function applySelectionHandleTarget(target: ChunkApiWorldPosition): void {
-    if (!selectionHandleDrag || !selection.first || !selection.second) return;
-    const min = {
-      x: Math.min(selection.first.x, selection.second.x),
-      y: Math.min(selection.first.y, selection.second.y),
-      z: Math.min(selection.first.z, selection.second.z),
+  function applySelectionHandlePointer(): boolean {
+    if (!selectionHandleDrag) return false;
+    const pointerCoordinate = selectionHandlePointerCoordinate(selectionHandleDrag);
+    if (pointerCoordinate === null) return false;
+    const next = snapWorldEditSelectionHandle({
+      initialBounds: selectionHandleDrag.initialBounds,
+      axis: selectionHandleDrag.axis,
+      sign: selectionHandleDrag.sign,
+      initialPointerCoordinate: selectionHandleDrag.initialPointerCoordinate,
+      pointerCoordinate,
+    });
+    selection = { first: next.minimum, second: next.maximum };
+    return true;
+  }
+
+  function currentSelectionDragTarget(): ChunkApiWorldPosition | null {
+    if (!selection.first) return null;
+    const latest = cellPosition(options.sceneRuntime.getTargetCells().placementCell);
+    const planeY = selectionDragPlaneY ?? selection.first.y + 0.5;
+    const projected = worldPositionAtCameraPlane(planeY, latest, 1_200);
+    if (!projected) return latest ?? selection.second;
+    return {
+      x: projected.x,
+      y: latest?.y ?? selection.second?.y ?? selection.first.y,
+      z: projected.z,
     };
-    const max = {
-      x: Math.max(selection.first.x, selection.second.x),
-      y: Math.max(selection.first.y, selection.second.y),
-      z: Math.max(selection.first.z, selection.second.z),
-    };
-    const { axis, sign } = selectionHandleDrag;
-    if (sign < 0) min[axis] = Math.min(max[axis], target[axis]);
-    else max[axis] = Math.max(min[axis], target[axis]);
-    selection = { first: min, second: max };
+  }
+
+  function updateSelectionDrag(): void {
+    if (!selectionDragging || !selection.first) return;
+    if (selectionHandleDrag) {
+      if (!applySelectionHandlePointer()) return;
+    } else {
+      const latest = currentSelectionDragTarget();
+      if (!latest) return;
+      selection = { first: selection.first, second: latest };
+    }
+    const signature = selection.first && selection.second
+      ? `${selection.first.x}:${selection.first.y}:${selection.first.z}:${selection.second.x}:${selection.second.y}:${selection.second.z}`
+      : "";
+    if (signature === selectionDragSignature) return;
+    selectionDragSignature = signature;
+    if (!updateSelectionScenePreview()) rebuildSelectionScene();
+    refreshHud();
   }
 
   function trackSelectionDrag(): void {
     if (!selectionDragging) return;
-    const latest = cellPosition(options.sceneRuntime.getTargetCells().placementCell);
-    if (latest && selection.first) {
-      if (selectionHandleDrag) applySelectionHandleTarget(latest);
-      else selection = { first: selection.first, second: latest };
-      rebuildSelectionScene();
-      refreshHud();
-    }
+    updateSelectionDrag();
     selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
   }
 
@@ -2102,6 +2455,8 @@ export function createWorldEditController(
     stopSelectionDrag();
     selection = { first: position, second: position };
     selectionDragging = true;
+    selectionDragPlaneY = position.y + 0.5;
+    selectionDragSignature = "";
     rebuildSelectionScene();
     refreshHud();
     selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
@@ -2213,7 +2568,13 @@ export function createWorldEditController(
     const target: readonly [number, number] = exactTarget
       ? [exactTarget.x, exactTarget.z]
       : [position.x + 0.5, position.z + 0.5];
-    let best: { parcel: ParcelSelectionItem; start: [number, number]; end: [number, number]; distance: number } | null = null;
+    let best: {
+      parcel: ParcelSelectionItem;
+      start: [number, number];
+      end: [number, number];
+      distance: number;
+      factor: number;
+    } | null = null;
     for (const parcel of parcelSelection.parcels) {
       for (const polygonValue of parcelPolygons(parcel)) {
         for (const ringValue of asArray(polygonValue)) {
@@ -2236,7 +2597,7 @@ export function createWorldEditController(
             const nearestX = start[0] + dx * factor;
             const nearestZ = start[1] + dz * factor;
             const distance = Math.hypot(target[0] - nearestX, target[1] - nearestZ);
-            if (!best || distance < best.distance) best = { parcel, start, end, distance };
+            if (!best || distance < best.distance) best = { parcel, start, end, distance, factor };
           }
         }
       }
@@ -2255,36 +2616,158 @@ export function createWorldEditController(
     ];
     const probe = worldPointToLonLat(midpoint[0] + inward[0] * 0.2, midpoint[1] + inward[1] * 0.2, frame);
     if (!probe || !parcelContainsLonLat(best.parcel, probe)) inward = [-inward[0], -inward[1]];
-    const endpointDistance = (first: readonly [number, number], second: readonly [number, number]): number => Math.hypot(
-      first[0] - second[0],
-      first[1] - second[1],
-    );
-    const sameSelectedEdge = Boolean(parcelGridGuide
-      && parcelGridGuide.parcelId === best.parcel.parcelId
-      && ((endpointDistance(parcelGridGuide.start, best.start) < 0.04
-          && endpointDistance(parcelGridGuide.end, best.end) < 0.04)
-        || (endpointDistance(parcelGridGuide.start, best.end) < 0.04
-          && endpointDistance(parcelGridGuide.end, best.start) < 0.04)));
-    const depthMeters = sameSelectedEdge
-      ? Math.min(6, Math.max(1, Math.round(parcelGridGuide!.depthMeters) + 1))
-      : Math.max(1, Math.min(6, Math.round(parcelGridInfluence)));
+    const guideKey = parcelGridWorldGuideKey(best.parcel.parcelId, best.start, best.end, frame);
+    const sameSelectedEdge = parcelGridGuide?.guideKey === guideKey;
+    const maximumDepth = resolveParcelGridMaximumDepth({
+      points: parcelWorldGridPoints(best.parcel, frame),
+      start: best.start,
+      inward,
+      minimumDepth: PARCEL_GRID_MIN_DRAG_DEPTH_CELLS,
+      maximumDepth: PARCEL_GRID_MAX_DRAG_DEPTH_CELLS,
+      paddingCells: PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS,
+    });
+    const requestedDepth = sameSelectedEdge
+      ? parcelGridGuide!.depthMeters
+      : persistedParcelGridGuides.get(guideKey)?.depthMeters
+        ?? Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(parcelGridInfluence)));
+    const depthMeters = Math.max(1, Math.min(maximumDepth, requestedDepth));
+    parcelGridHandleAlong = Math.max(0.04, Math.min(0.96, best.factor));
     parcelGridGuide = {
+      guideKey,
       parcelId: best.parcel.parcelId,
       start: best.start,
       end: best.end,
       inward,
       depthMeters,
     };
+    activeParcelGridGuideKey = guideKey;
     rememberParcelGridGuide(frame);
     rebuildParcelGridScene();
     persistParcelGridState();
     const angle = normalizeGridRotation(Math.atan2(dz, dx) * 180 / Math.PI);
     setStatus(
-      sameSelectedEdge
-        ? `Innere Schräglinie auf ${depthMeters} m nach innen verschoben. Rechtsklick verschiebt sie wieder nach außen.`
-        : `Bauachse gewählt: ${angle.toFixed(1)}° · Schrägzone ${depthMeters} m tief. Erneuter Linksklick verschiebt nach innen, Rechtsklick nach außen.`,
+      `Bauachse gewählt: ${angle.toFixed(1)}° · Schrägzone ${depthMeters} Blöcke tief. Den Doppelpfeil anvisieren, Linksklick halten und ziehen.`,
       "ready",
     );
+    return true;
+  }
+
+  function parcelGridPointerDepth(): number | null {
+    if (!parcelGridGuide) return null;
+    const point = cameraPointAtPlaneY(resolveParcelGridPlaneY(null), 1_200);
+    if (!point) return null;
+    return (point.x - parcelGridGuide.start[0]) * parcelGridGuide.inward[0]
+      + (point.z - parcelGridGuide.start[1]) * parcelGridGuide.inward[1];
+  }
+
+  function updateParcelGridDragPreview(guide: ParcelGridGuide): void {
+    const runtime = parcelGridHandleRuntimes.get(guide.guideKey);
+    if (!runtime) return;
+    const depth = guide.depthMeters;
+    const preview = resolveParcelGridGuidePreview({
+      start: runtime.start,
+      end: runtime.end,
+      inward: runtime.inward,
+      depth,
+      handleAlong: runtime.along,
+    });
+    runtime.linePositions.setXYZ(
+      runtime.lineVertexOffset,
+      preview.lineStart[0],
+      runtime.planeY,
+      preview.lineStart[1],
+    );
+    runtime.linePositions.setXYZ(
+      runtime.lineVertexOffset + 1,
+      preview.lineEnd[0],
+      runtime.planeY,
+      preview.lineEnd[1],
+    );
+    runtime.linePositions.clearUpdateRanges();
+    runtime.linePositions.addUpdateRange(runtime.lineVertexOffset * 3, 6);
+    runtime.linePositions.needsUpdate = true;
+    runtime.group.position.set(preview.handle[0], runtime.planeY + 0.22, preview.handle[1]);
+    runtime.currentDepthMeters = depth;
+    options.root.dataset.parcelGridLiveDepth = String(depth);
+    options.sceneRuntime.renderOnce("world-edit.parcel-grid-drag-preview");
+  }
+
+  function stopParcelGridDrag(commit: boolean): void {
+    if (!parcelGridDragging) return;
+    const dragState = parcelGridDragState;
+    parcelGridDragging = false;
+    parcelGridDragState = null;
+    if (parcelGridDragFrame) cancelAnimationFrame(parcelGridDragFrame);
+    parcelGridDragFrame = 0;
+    delete options.root.dataset.parcelGridLiveDepth;
+    if (commit && parcelGridGuide) {
+      rememberParcelGridGuide();
+      persistParcelGridState();
+      rebuildParcelGridScene();
+      refreshHud();
+      setStatus(`Innere Schräglinie auf ${parcelGridGuide.depthMeters} Blockschritte gesetzt.`, "ready");
+    } else if (dragState && parcelGridGuide) {
+      parcelGridGuide = { ...parcelGridGuide, depthMeters: dragState.initialDepthMeters };
+      updateParcelGridDragPreview(parcelGridGuide);
+      delete options.root.dataset.parcelGridLiveDepth;
+    }
+  }
+
+  function updateParcelGridDrag(): void {
+    if (!parcelGridDragging || !parcelGridGuide || !parcelGridDragState) return;
+    const pointerDepth = parcelGridPointerDepth();
+    if (pointerDepth !== null) {
+      const nextDepth = snapParcelGridDragDepth({
+        initialDepth: parcelGridDragState.initialDepthMeters,
+        initialPointerDepth: parcelGridDragState.initialPointerDepthMeters,
+        pointerDepth,
+        minimumDepth: 1,
+        maximumDepth: parcelGridDragState.maximumDepthMeters,
+      });
+      if (nextDepth !== parcelGridGuide.depthMeters) {
+        parcelGridGuide = { ...parcelGridGuide, depthMeters: nextDepth };
+        updateParcelGridDragPreview(parcelGridGuide);
+        setStatus(`Schrägzone: ${nextDepth} Blöcke · beim Ziehen live aktualisiert`, "ready");
+      }
+    }
+    parcelGridDragFrame = requestAnimationFrame(updateParcelGridDrag);
+  }
+
+  function startParcelGridDrag(): boolean {
+    if (parcelGridHandleTargets.length === 0) return false;
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return false;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.intersectObjects(parcelGridHandleTargets, false)[0];
+    if (!hit) return false;
+    const guideKey = safeString(hit.object.userData.parcelGridGuideKey, "");
+    const runtime = parcelGridHandleRuntimes.get(guideKey);
+    if (!runtime) return false;
+    parcelGridHandleAlong = runtime.along;
+    parcelGridGuide = {
+      guideKey,
+      parcelId: runtime.parcelId,
+      start: runtime.start,
+      end: runtime.end,
+      inward: runtime.inward,
+      depthMeters: runtime.currentDepthMeters,
+    };
+    activeParcelGridParcelId = runtime.parcelId;
+    activeParcelGridGuideKey = guideKey;
+    const pointerDepth = parcelGridPointerDepth();
+    if (pointerDepth === null) return false;
+    stopParcelGridDrag(false);
+    parcelGridDragState = {
+      guideKey,
+      initialDepthMeters: parcelGridGuide.depthMeters,
+      initialPointerDepthMeters: pointerDepth,
+      maximumDepthMeters: runtime.maximumDepthMeters,
+    };
+    parcelGridDragging = true;
+    parcelGridDragFrame = requestAnimationFrame(updateParcelGridDrag);
+    setStatus(`Doppelpfeil gegriffen. Blockweise ziehen; für diese Kante sind bis zu ${runtime.maximumDepthMeters} Blöcke möglich.`, "ready");
     return true;
   }
 
@@ -2492,15 +2975,11 @@ export function createWorldEditController(
     if (activeTool === "selection") {
       if (intent.action === "primary-release") {
         if (selectionDragging) {
-          const finalPosition = intent.position ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell);
-          if (finalPosition && selection.first) {
-            if (selectionHandleDrag) applySelectionHandleTarget(finalPosition);
-            else selection = { first: selection.first, second: finalPosition };
-          }
+          updateSelectionDrag();
           stopSelectionDrag();
-          rebuildSelectionScene();
+          if (!updateSelectionScenePreview()) rebuildSelectionScene();
           refreshHud();
-          setStatus("Auswahl bereit. Über die farbigen Flächenpunkte kann X/Y/Z nachjustiert werden.", "ready");
+          setStatus("Auswahl bereit. Die sechs Flächengriffe passen X/Y/Z blockweise und live an.", "ready");
         }
         return true;
       }
@@ -2515,19 +2994,20 @@ export function createWorldEditController(
         setStatus("Letzten Auswahlpunkt entfernt.", "info");
         return true;
       }
-      if (!intent.position) {
+      const selectionTarget = intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200);
+      if (!selectionTarget) {
         setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
         return true;
       }
-      startSelectionDrag(intent.position);
-      setStatus("Linksklick halten und mit der Kamera den Bereich aufziehen.", "ready");
+      startSelectionDrag(selectionTarget);
+      setStatus("Linksklick halten und den Bereich blockweise live aufziehen.", "ready");
       return true;
     }
     if (activeTool === "ruler") {
       if (intent.action === "primary-release") {
         if (selectionDragging) {
-          const finalPosition = intent.position ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell);
-          if (finalPosition && selection.first) selection = { first: selection.first, second: finalPosition };
+          updateSelectionDrag();
           stopSelectionDrag();
           rebuildSelectionScene();
           refreshHud();
@@ -2545,33 +3025,52 @@ export function createWorldEditController(
         }
         return true;
       }
-      if (!intent.position) {
+      const rulerTarget = intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null));
+      if (!rulerTarget) {
         setStatus("Kein gültiger Messpunkt unter dem Fadenkreuz.", "warning");
         return true;
       }
-      startSelectionDrag(intent.position);
+      startSelectionDrag(rulerTarget);
       setStatus("Bis zum zweiten Messpunkt ziehen und Linksklick loslassen.", "ready");
       return true;
     }
     if (activeTool === "parcel") {
       if (intent.action.includes("release")) return true;
-      const parcelTarget = intent.sourceCell
-        ? { x: intent.sourceCell.worldX, y: intent.sourceCell.worldY, z: intent.sourceCell.worldZ }
-        : intent.position;
-      if (intent.action === "primary" && parcelTarget) toggleParcelAt(parcelTarget, intent.targetPoint);
+      const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
+      const exactTarget = cameraTarget
+        ? { x: cameraTarget.x, z: cameraTarget.z }
+        : intent.targetPoint;
+      const parcelTarget = exactTarget
+        ? { x: Math.floor(exactTarget.x), y: Math.floor(resolveParcelGridPlaneY(null)), z: Math.floor(exactTarget.z) }
+        : intent.position ?? (intent.sourceCell
+          ? { x: intent.sourceCell.worldX, y: intent.sourceCell.worldY, z: intent.sourceCell.worldZ }
+          : null);
+      if (intent.action === "primary" && parcelTarget) toggleParcelAt(parcelTarget, exactTarget);
       else if (!parcelTarget) setStatus("Kein gültiges Flurstücksziel.", "warning");
       return true;
     }
     if (activeTool === "parcel-grid") {
-      if (intent.action.includes("release")) return true;
+      if (intent.action === "primary-release") {
+        if (parcelGridDragging) {
+          updateParcelGridDrag();
+          stopParcelGridDrag(true);
+          refreshHud();
+        }
+        return true;
+      }
+      if (intent.action === "secondary-release") return true;
       if (intent.action === "secondary") moveParcelGridInnerLineOutward();
       else if (intent.action === "primary") {
-        const gridTarget = intent.position ?? (intent.targetPoint ? {
-          x: Math.floor(intent.targetPoint.x),
-          y: Math.floor(intent.targetPoint.y),
-          z: Math.floor(intent.targetPoint.z),
-        } : null);
-        if (gridTarget) selectParcelGridAt(gridTarget, intent.targetPoint);
+        if (startParcelGridDrag()) return true;
+        const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
+        const exactTarget = cameraTarget ?? intent.targetPoint;
+        const gridTarget = exactTarget ? {
+          x: Math.floor(exactTarget.x),
+          y: Math.floor(exactTarget.y),
+          z: Math.floor(exactTarget.z),
+        } : intent.position;
+        if (gridTarget) selectParcelGridAt(gridTarget, exactTarget);
         else setStatus("Kein gültiges Ziel für das Grundstücksraster.", "warning");
       }
       return true;
@@ -2595,6 +3094,9 @@ export function createWorldEditController(
 
   function activate(tool: WorldEditTool, nextOperation: WorldEditOperation = "set"): void {
     if (destroyed) return;
+    const previousTool = activeTool;
+    stopSelectionDrag();
+    stopParcelGridDrag(false);
     activeTool = tool;
     operation = nextOperation;
     configureOperationSelect(tool);
@@ -2607,15 +3109,16 @@ export function createWorldEditController(
         ? 40
         : 16;
     options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance });
+    if (previousTool === "parcel-grid" || tool === "parcel-grid") rebuildParcelGridScene();
     setStatus(
       tool === "selection"
-        ? "Linksklick halten und den Auswahlbereich mit der Kamera aufziehen."
+        ? "Linksklick halten und den Auswahlbereich blockweise live aufziehen; die sechs Flächengriffe funktionieren genauso."
         : tool === "ruler"
           ? "Ersten Messpunkt mit gedrücktem Linksklick setzen."
           : tool === "parcel"
             ? "Flurstück anvisieren und per Linksklick umschalten."
             : tool === "parcel-grid"
-              ? "Grundstückskante anvisieren und als Bauachse übernehmen."
+              ? "Jede innere Rasterlinie hat einen Griff: Punkt oder Doppelpfeil anvisieren, Linksklick halten und blockweise ziehen."
             : tool === "clipboard"
               ? "Copy, Cut oder Paste auswählen."
               : "Pinsel mit Linksklick anwenden.",
@@ -2627,13 +3130,16 @@ export function createWorldEditController(
 
   function deactivate(reason = "deactivate"): void {
     if (destroyed) return;
+    const previousTool = activeTool;
     activeTool = null;
     stopSelectionDrag();
+    stopParcelGridDrag(false);
     panel.hidden = true;
     selection = { first: null, second: null };
     brushTarget = null;
     disposeSelectionGroup();
     options.sceneRuntime.setWorldEditIntentHandler(null);
+    if (previousTool === "parcel-grid") rebuildParcelGridScene();
     delete options.root.dataset.worldEditActive;
     delete options.root.dataset.worldEditTool;
     options.logger?.debug?.("WorldEdit controller deactivated.", { reason });
@@ -2710,7 +3216,7 @@ export function createWorldEditController(
     }
     const requestedInfluence = Number(detail.parcelGridInfluence);
     if (Number.isFinite(requestedInfluence)) {
-      const nextInfluence = Math.max(1, Math.min(6, Math.round(requestedInfluence)));
+      const nextInfluence = Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(requestedInfluence)));
       if (nextInfluence !== parcelGridInfluence) {
         parcelGridInfluence = nextInfluence;
         if (parcelGridGuide) parcelGridGuide = { ...parcelGridGuide, depthMeters: parcelGridInfluence };
@@ -2784,13 +3290,15 @@ export function createWorldEditController(
 
   function resetActiveTool(): void {
     stopSelectionDrag();
+    stopParcelGridDrag(false);
     if (activeTool === "parcel") {
       parcelSelection.parcels = [];
       postParcelSelection();
     }
     if (activeTool === "parcel-grid") {
-      if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.parcelId);
+      if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.guideKey);
       activeParcelGridParcelId = null;
+      activeParcelGridGuideKey = null;
       parcelGridGuide = null;
       rebuildParcelGridScene();
       persistParcelGridState();
@@ -2835,6 +3343,7 @@ export function createWorldEditController(
   });
   resetButton?.addEventListener("click", () => {
     stopSelectionDrag();
+    stopParcelGridDrag(false);
     if (activeTool === "parcel") {
       parcelSelection.parcels = [];
       postParcelSelection();

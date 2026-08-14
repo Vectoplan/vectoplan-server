@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#111827" />
     <meta name="description" content="VECTOPLAN Editor Remote Chunk Runtime" />
 
-    <title>VECTOPLAN Editor</title>
+    <title data-i18n="vectoplan.server.editor.frontend.index.title.vectoplan_editor.962b10c9">VECTOPLAN Editor</title>
 
     <style>
       :root {
@@ -589,7 +589,7 @@
 
   <body>
     <noscript>
-      <div style="padding: 24px; font-family: system-ui, sans-serif; color: #111827;">
+      <div style="padding: 24px; font-family: system-ui, sans-serif; color: #111827;" data-i18n="vectoplan.server.editor.frontend.index.div.vectoplan_editor_ben_tigt_javascript.7dd537be">
         VECTOPLAN Editor benötigt JavaScript.
       </div>
     </noscript>
@@ -623,8 +623,8 @@
         <header class="vp-editor-topbar" data-editor-topbar>
           <div class="vp-editor-title">
             <span class="vp-editor-title-mark" aria-hidden="true"></span>
-            <span>VECTOPLAN Editor</span>
-            <span class="vp-editor-subtitle" data-editor-subtitle>
+            <span data-i18n="vectoplan.server.editor.frontend.index.span.vectoplan_editor.d9daf0b0">VECTOPLAN Editor</span>
+            <span class="vp-editor-subtitle" data-editor-subtitle data-i18n="vectoplan.server.editor.frontend.index.span.remote_chunk_runtime.10320366">
               Remote Chunk Runtime
             </span>
           </div>
@@ -632,9 +632,9 @@
           <div class="vp-editor-status-row" data-editor-status-row>
             <span class="vp-status-pill" data-editor-source-status>
               <span class="vp-status-dot" data-editor-source-status-dot></span>
-              <span data-editor-source-status-label>Chunk-Service wird vorbereitet</span>
+              <span data-editor-source-status-label data-i18n="vectoplan.server.editor.frontend.index.span.chunk_service_wird_vorbereitet.8f33bff3">Chunk-Service wird vorbereitet</span>
             </span>
-            <span class="vp-status-pill" data-editor-project-label>dev-project / world_spawn</span>
+            <span class="vp-status-pill" data-editor-project-label data-i18n="vectoplan.server.editor.frontend.index.span.dev_project_world_spawn.54f4ffe7">dev-project / world_spawn</span>
           </div>
         </header>
 
@@ -644,34 +644,34 @@
             data-editor-canvas-host
             data-canvas-host
             aria-label="3D-Editor-Viewport"
-          >
+           data-i18n-aria-label="server.editor.frontend.index.section_aria-label.3d_editor_viewport.30a1521a">
             <div class="vp-crosshair" data-editor-crosshair aria-hidden="true"></div>
           </section>
 
           <aside class="vp-left-panel" data-editor-left-panel hidden>
             <div class="vp-panel-header">
-              <span>Inventar</span>
-              <span data-editor-inventory-status>Chunk</span>
+              <span data-i18n="vectoplan.server.editor.frontend.index.span.inventar.827e7e2f">Inventar</span>
+              <span data-editor-inventory-status data-i18n="vectoplan.server.editor.frontend.index.span.chunk.77863998">Chunk</span>
             </div>
-            <div class="vp-panel-body" data-editor-inventory-panel>
+            <div class="vp-panel-body" data-editor-inventory-panel data-i18n="vectoplan.server.editor.frontend.index.div.blocktypen_werden_aus_dem_chunk_servic.33bb89dd">
               Blocktypen werden aus dem Chunk-Service geladen.
             </div>
           </aside>
 
           <aside class="vp-right-panel" data-editor-right-panel hidden>
             <div class="vp-panel-header">
-              <span>Inspector</span>
-              <span data-editor-inspector-status>Remote</span>
+              <span data-i18n="vectoplan.server.editor.frontend.index.span.inspector.b8655f80">Inspector</span>
+              <span data-editor-inspector-status data-i18n="vectoplan.server.editor.frontend.index.span.remote.dd3058a3">Remote</span>
             </div>
-            <div class="vp-panel-body" data-editor-inspector-panel>
+            <div class="vp-panel-body" data-editor-inspector-panel data-i18n="vectoplan.server.editor.frontend.index.div.noch_keine_auswahl.2a2c545a">
               Noch keine Auswahl.
             </div>
           </aside>
 
           <section class="vp-loading-overlay" data-editor-loading-overlay role="status" aria-live="polite">
             <div class="vp-loading-card">
-              <h1 class="vp-loading-title">Editor wird gestartet</h1>
-              <p class="vp-loading-text" data-editor-loading-text>
+              <h1 class="vp-loading-title" data-i18n="vectoplan.server.editor.frontend.index.h1.editor_wird_gestartet.50ceb920">Editor wird gestartet</h1>
+              <p class="vp-loading-text" data-editor-loading-text data-i18n="vectoplan.server.editor.frontend.index.p.bootstrap_wird_gelesen_chunk_service_w.a67637bd">
                 Bootstrap wird gelesen, Chunk-Service wird verbunden und Runtime wird initialisiert.
               </p>
             </div>
@@ -686,10 +686,10 @@
             hidden
           >
             <div class="vp-error-card">
-              <h1 class="vp-error-title" data-editor-error-title>
+              <h1 class="vp-error-title" data-editor-error-title data-i18n="vectoplan.server.editor.frontend.index.h1.editor_konnte_nicht_gestartet_werden.e1796e12">
                 Editor konnte nicht gestartet werden
               </h1>
-              <p class="vp-error-text" data-editor-error-text>
+              <p class="vp-error-text" data-editor-error-text data-i18n="vectoplan.server.editor.frontend.index.p.unbekannter_fehler.e14a39d4">
                 Unbekannter Fehler.
               </p>
             </div>
@@ -697,7 +697,7 @@
         </main>
 
         <footer class="vp-editor-hotbar" data-editor-hotbar>
-          <div class="vp-hotbar-slots" data-editor-hotbar-slots aria-label="Editor-Hotbar">
+          <div class="vp-hotbar-slots" data-editor-hotbar-slots aria-label="Editor-Hotbar" data-i18n-aria-label="server.editor.frontend.index.div_aria-label.editor_hotbar.9513336c">
             <button class="vp-hotbar-slot" type="button" data-hotbar-slot="0" data-selected="true">1</button>
             <button class="vp-hotbar-slot" type="button" data-hotbar-slot="1">2</button>
             <button class="vp-hotbar-slot" type="button" data-hotbar-slot="2">3</button>
@@ -711,7 +711,7 @@
         </footer>
       </div>
 
-      <div class="vp-visually-hidden" aria-live="polite" data-editor-live-region>
+      <div class="vp-visually-hidden" aria-live="polite" data-editor-live-region data-i18n="vectoplan.server.editor.frontend.index.div.vectoplan_editor_wird_geladen.11a5d613">
         VECTOPLAN Editor wird geladen.
       </div>
     </div>

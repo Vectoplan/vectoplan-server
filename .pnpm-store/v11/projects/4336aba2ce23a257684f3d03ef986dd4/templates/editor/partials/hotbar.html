@@ -138,7 +138,7 @@
   data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
   data-fallback-reason="{{ fallback_reason_value }}"
   aria-label="Block-Hotbar"
->
+ data-i18n-aria-label="server.editor.editor.partials.hotbar.footer_aria-label.block_hotbar.a38311be">
   <div class="editor-hotbar__backplate" aria-hidden="true"></div>
 
   <div
@@ -150,7 +150,7 @@
     data-selected-slot="{{ inventory_selected_slot_value }}"
     role="toolbar"
     aria-label="Blockauswahl"
-  >
+   data-i18n-aria-label="server.editor.editor.partials.hotbar.div_aria-label.blockauswahl.6aeaaaf2">
     {% for slot_index in range(inventory_hotbar_size_value) %}
       {% set is_selected_slot = slot_index == inventory_selected_slot_value %}
 
@@ -180,7 +180,7 @@
         aria-pressed="{{ 'true' if is_selected_slot else 'false' }}"
         tabindex="{% if is_selected_slot %}0{% else %}-1{% endif %}"
         role="button"
-      >
+       data-i18n-aria-label="server.editor.editor.partials.hotbar.button_aria-label.inventar_slot_leer.efbb9a97">
         <span class="editor-hotbar-slot__frame" aria-hidden="true">
           <span class="editor-hotbar-slot__shine" aria-hidden="true"></span>
           <span class="editor-hotbar-slot__inner" aria-hidden="true">
@@ -211,9 +211,9 @@
         <span
           class="editor-hotbar-slot__sr-label visually-hidden"
           data-hotbar-item-label="true"
-        >
-          Inventar-Slot {{ slot_index + 1 }} leer
-        </span>
+        ><span data-i18n="vectoplan.server.editor.editor.partials.hotbar.span.inventar_slot.d0c2728b">
+          Inventar-Slot </span>{{ slot_index + 1 }}<span data-i18n="vectoplan.server.editor.editor.partials.hotbar.span.leer.5d487416"> leer
+        </span></span>
       </button>
     {% endfor %}
   </div>
@@ -224,10 +224,10 @@
     data-inventory-status="true"
     aria-live="polite"
   >
-    {% if hotbar_visible_value %}
+    {% if hotbar_visible_value %}<span data-i18n="vectoplan.server.editor.editor.partials.hotbar.span.inventar_wartet_auf_chunk_service_date.99d2e292">
       Inventar wartet auf Chunk-Service-Daten.
-    {% else %}
+    </span>{% else %}<span data-i18n="vectoplan.server.editor.editor.partials.hotbar.span.inventar_deaktiviert.cb82ec70">
       Inventar deaktiviert.
-    {% endif %}
+    </span>{% endif %}
   </div>
 </footer>

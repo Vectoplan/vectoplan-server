@@ -2160,7 +2160,13 @@ export function createChunkApiClient(options: CreateChunkApiClientOptions): Chun
       const result = await requestRaw({
         kind: "command",
         method: "POST",
-        url: config.routeHints.commands,
+        // The editor already keeps the command payload locally and only needs
+        // the compact mutation result.  Returning the persisted command log
+        // duplicates the request/result JSON and made every block click move
+        // roughly 20 KiB through both proxy hops.
+        url: appendQuery(config.routeHints.commands, {
+          includeCommandLog: false,
+        }),
         body: command,
         timeoutMs: config.timeouts.commandMs,
         requestOverrides,

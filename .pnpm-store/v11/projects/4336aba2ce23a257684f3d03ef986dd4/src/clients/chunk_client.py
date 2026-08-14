@@ -1166,9 +1166,16 @@ class ChunkClient:
         project_id: str,
         world_id: str,
         command: Mapping[str, Any],
+        *,
+        include_command_log: bool | None = None,
     ) -> ChunkClientResponse:
         return self.post(
             f"/projects/{_segment(project_id)}/worlds/{_segment(world_id)}/commands",
+            query=(
+                {"includeCommandLog": include_command_log}
+                if include_command_log is not None
+                else None
+            ),
             json_body=dict(command),
             timeout_seconds=self.config.command_timeout_seconds,
         )

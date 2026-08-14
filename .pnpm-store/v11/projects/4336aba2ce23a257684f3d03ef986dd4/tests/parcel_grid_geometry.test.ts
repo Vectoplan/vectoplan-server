@@ -6,12 +6,184 @@ import {
   buildParcelGridPartition,
   intersectConvexParcelGridPolygons,
   mergeParcelGridCoverage,
+  parcelGridGuideIdentity,
   parcelGridPolygonArea,
   parcelGridPolygonSignedArea,
+  resolveParcelGridGuidePreview,
+  resolveParcelGridHandleScale,
+  resolveParcelGridMaximumDepth,
+  resolveParcelGridRenderBounds,
+  snapParcelGridDragDepth,
   type ParcelGridBoundarySegmentInput,
   type ParcelGridPoint,
   type ParcelGridPartitionCell,
 } from "../src/frontend/world_edit/parcel_grid_geometry";
+import {
+  resolveWorldEditSelectionBounds,
+  snapWorldEditSelectionHandle,
+} from "../src/frontend/world_edit/selection_geometry";
+
+test("a normal 16k-cell parcel is no longer cut to the loaded terrain window", () => {
+  const bounds = resolveParcelGridRenderBounds({
+    points: [[-70, -45], [90, -45], [90, 55], [-70, 55]],
+    visibleSurfacePoints: [[20, -20], [75, 35]],
+    fullRenderCellLimit: 100_000,
+    visibleMarginCells: 64,
+  });
+
+  assert.deepEqual(bounds, {
+    minimumX: -70,
+    maximumX: 90,
+    minimumZ: -45,
+    maximumZ: 55,
+    requestedCells: 16_000,
+    renderedCells: 16_000,
+    streamed: false,
+  });
+});
+
+test("only exceptionally huge parcels use a padded streaming window", () => {
+  const bounds = resolveParcelGridRenderBounds({
+    points: [[-500, -500], [500, -500], [500, 500], [-500, 500]],
+    visibleSurfacePoints: [[10, 20], [42, 68]],
+    fullRenderCellLimit: 100_000,
+    visibleMarginCells: 64,
+  });
+
+  assert.equal(bounds?.streamed, true);
+  assert.deepEqual(bounds && {
+    minimumX: bounds.minimumX,
+    maximumX: bounds.maximumX,
+    minimumZ: bounds.minimumZ,
+    maximumZ: bounds.maximumZ,
+  }, { minimumX: -54, maximumX: 106, minimumZ: -44, maximumZ: 132 });
+});
+
+test("grid guide dragging snaps and clamps to whole block steps", () => {
+  assert.equal(snapParcelGridDragDepth({
+    initialDepth: 3,
+    initialPointerDepth: 2.2,
+    pointerDepth: 3.69,
+    minimumDepth: 1,
+    maximumDepth: 6,
+  }), 4);
+  assert.equal(snapParcelGridDragDepth({
+    initialDepth: 3,
+    initialPointerDepth: 2,
+    pointerDepth: -20,
+    minimumDepth: 1,
+    maximumDepth: 6,
+  }), 1);
+  assert.equal(snapParcelGridDragDepth({
+    initialDepth: 3,
+    initialPointerDepth: 2,
+    pointerDepth: 20,
+    minimumDepth: 1,
+    maximumDepth: 6,
+  }), 6);
+  assert.equal(snapParcelGridDragDepth({
+    initialDepth: 3,
+    initialPointerDepth: 2,
+    pointerDepth: 44.4,
+    minimumDepth: 1,
+    maximumDepth: 128,
+  }), 45, "dragging is no longer capped at six blocks");
+});
+
+test("parcel grid depth grows with the parcel while retaining a generous minimum", () => {
+  assert.equal(resolveParcelGridMaximumDepth({
+    points: [[0, 0], [12, 0], [12, 18], [0, 18]],
+    start: [0, 0],
+    inward: [0, 1],
+  }), 64);
+  assert.equal(resolveParcelGridMaximumDepth({
+    points: [[0, 0], [180, 0], [180, 120], [0, 120]],
+    start: [0, 0],
+    inward: [0, 1],
+  }), 128);
+});
+
+test("each snapped drag step moves the full guide and its handle by exactly one block", () => {
+  const atThree = resolveParcelGridGuidePreview({
+    start: [2, 4],
+    end: [10, 4],
+    inward: [0, 1],
+    depth: 3,
+    handleAlong: 0.25,
+  });
+  const atFour = resolveParcelGridGuidePreview({
+    start: [2, 4],
+    end: [10, 4],
+    inward: [0, 1],
+    depth: 4,
+    handleAlong: 0.25,
+  });
+
+  assert.deepEqual(atThree, {
+    lineStart: [2, 7],
+    lineEnd: [10, 7],
+    handle: [4, 7],
+  });
+  assert.deepEqual(atFour, {
+    lineStart: [2, 8],
+    lineEnd: [10, 8],
+    handle: [4, 8],
+  });
+});
+
+test("every parcel edge keeps a stable, direction-independent guide identity", () => {
+  const first = parcelGridGuideIdentity("parcel-a", [13.4, 52.5], [13.5, 52.6]);
+  const reversed = parcelGridGuideIdentity("parcel-a", [13.5, 52.6], [13.4, 52.5]);
+  const neighbouringEdge = parcelGridGuideIdentity("parcel-a", [13.5, 52.6], [13.6, 52.7]);
+
+  assert.equal(first, reversed);
+  assert.notEqual(first, neighbouringEdge);
+});
+
+test("parcel grid handles retain a useful screen size over long distances", () => {
+  const nearScale = resolveParcelGridHandleScale({
+    distance: 10,
+    verticalFieldOfViewDegrees: 50,
+    viewportHeightPixels: 1080,
+  });
+  const farScale = resolveParcelGridHandleScale({
+    distance: 180,
+    verticalFieldOfViewDegrees: 50,
+    viewportHeightPixels: 1080,
+  });
+
+  assert.equal(nearScale, 0.65, "near handles should not shrink below the readable minimum");
+  assert.ok(farScale > nearScale * 5, "far handles should grow in world space to remain clickable");
+  assert.ok(farScale <= 14);
+});
+
+test("selection handles snap every axis to whole blocks from their drag origin", () => {
+  const initialBounds = resolveWorldEditSelectionBounds(
+    { x: 2, y: 4, z: 8 },
+    { x: 7, y: 9, z: 12 },
+  );
+  assert.deepEqual(initialBounds.size, { x: 6, y: 6, z: 5 });
+  assert.deepEqual(initialBounds.center, { x: 5, y: 7, z: 10.5 });
+  const expanded = snapWorldEditSelectionHandle({
+    initialBounds,
+    axis: "x",
+    sign: 1,
+    initialPointerCoordinate: 10.2,
+    pointerCoordinate: 15.7,
+  });
+  const lowered = snapWorldEditSelectionHandle({
+    initialBounds,
+    axis: "y",
+    sign: -1,
+    initialPointerCoordinate: 5,
+    pointerCoordinate: 2.2,
+  });
+
+  assert.equal(expanded.maximum.x, 13);
+  assert.deepEqual(expanded.minimum, initialBounds.minimum);
+  assert.equal(lowered.minimum.y, 1);
+  assert.deepEqual(lowered.maximum, initialBounds.maximum);
+});
 
 test("logical fragments merge into one exact outline without their internal diagonal", () => {
   const fragments: readonly (readonly ParcelGridPoint[])[] = [
