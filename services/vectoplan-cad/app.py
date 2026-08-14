@@ -50,6 +50,8 @@ def create_app(config_name: str | None = None) -> Flask:
         return response
 
     run_startup_checks(app, service_root=SERVICE_ROOT)
+    from vectoplan_i18n import init_app as init_i18n
+    init_i18n(app)
     return app
 
 

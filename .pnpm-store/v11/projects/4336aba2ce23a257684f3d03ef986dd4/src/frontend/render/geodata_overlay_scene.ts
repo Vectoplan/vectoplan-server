@@ -41,6 +41,15 @@ interface OverlayTile {
   readonly lines: readonly SourceLine[];
 }
 
+interface ChunkSurfaceCacheEntry {
+  readonly revision: string;
+  readonly size: number;
+  readonly originX: number;
+  readonly originZ: number;
+  readonly fallbackTops: Float64Array;
+  readonly terrainTops: Float64Array;
+}
+
 export interface EarthGridFrameContract {
   readonly schemaVersion: typeof EARTH_GRID_SCHEMA_VERSION;
   readonly horizontalMapping: "vectoplan-periodic-equirectangular";
@@ -239,6 +248,16 @@ function horizontalCellKey(x: number, z: number): string {
   return `${Math.floor(x)}:${Math.floor(z)}`;
 }
 
+function chunkSurfaceRevision(chunk: RuntimeChunkContent): string {
+  return [
+    chunk.loadedAt,
+    chunk.chunkRevision ?? "",
+    chunk.chunkVersion ?? "",
+    chunk.cells.length,
+    chunk.palette.length,
+  ].join(":");
+}
+
 function isTerrainCellValue(cellValue: number, chunk: RuntimeChunkContent): boolean {
   const entry = chunk.paletteByCellValue.get(cellValue);
   if (!entry) return false;
@@ -250,37 +269,73 @@ function isTerrainCellValue(cellValue: number, chunk: RuntimeChunkContent): bool
     || category === "terrain";
 }
 
+function buildChunkSurfaceCacheEntry(chunk: RuntimeChunkContent): ChunkSurfaceCacheEntry {
+  const size = chunk.chunkSize;
+  const originX = chunk.chunkX * size;
+  const originY = chunk.chunkY * size;
+  const originZ = chunk.chunkZ * size;
+  const columnCount = size * size;
+  const fallbackTops = new Float64Array(columnCount);
+  const terrainTops = new Float64Array(columnCount);
+  fallbackTops.fill(Number.NEGATIVE_INFINITY);
+  terrainTops.fill(Number.NEGATIVE_INFINITY);
+
+  for (let localZ = 0; localZ < size; localZ += 1) {
+    for (let localX = 0; localX < size; localX += 1) {
+      const columnIndex = (localZ * size) + localX;
+      for (let localY = size - 1; localY >= 0; localY -= 1) {
+        const cellIndex = cellIndexFromLocalCoordinates({ localX, localY, localZ }, size);
+        const cellValue = getChunkCellValue(chunk.cells, cellIndex);
+        if (!isSolidCellValue(cellValue, chunk)) continue;
+        const topY = originY + localY + 1;
+        if (!Number.isFinite(fallbackTops[columnIndex])) fallbackTops[columnIndex] = topY;
+        if (isTerrainCellValue(cellValue, chunk)) {
+          terrainTops[columnIndex] = topY;
+          break;
+        }
+      }
+    }
+  }
+
+  return {
+    revision: chunkSurfaceRevision(chunk),
+    size,
+    originX,
+    originZ,
+    fallbackTops,
+    terrainTops,
+  };
+}
+
 function buildVisibleSurfaceMap(
   registry: ChunkRegistryHandle,
+  visibleChunkKeys: readonly string[],
+  chunkSurfaceCache: Map<string, ChunkSurfaceCacheEntry>,
 ): ReadonlyMap<string, number> {
   const terrainSurface = new Map<string, number>();
   const fallbackSurface = new Map<string, number>();
-  for (const chunkKey of registry.getVisibleChunkKeys()) {
+  for (const cachedChunkKey of chunkSurfaceCache.keys()) {
+    if (!registry.hasChunk(cachedChunkKey)) chunkSurfaceCache.delete(cachedChunkKey);
+  }
+
+  for (const chunkKey of visibleChunkKeys) {
     const chunk = registry.getChunk(chunkKey);
     if (!chunk) continue;
-    const size = chunk.chunkSize;
-    const originX = chunk.chunkX * size;
-    const originY = chunk.chunkY * size;
-    const originZ = chunk.chunkZ * size;
+    const revision = chunkSurfaceRevision(chunk);
+    let cached = chunkSurfaceCache.get(chunkKey);
+    if (!cached || cached.revision !== revision) {
+      cached = buildChunkSurfaceCacheEntry(chunk);
+      chunkSurfaceCache.set(chunkKey, cached);
+    }
 
-    for (let localZ = 0; localZ < size; localZ += 1) {
-      for (let localX = 0; localX < size; localX += 1) {
-        const key = `${originX + localX}:${originZ + localZ}`;
+    for (let localZ = 0; localZ < cached.size; localZ += 1) {
+      for (let localX = 0; localX < cached.size; localX += 1) {
+        const columnIndex = (localZ * cached.size) + localX;
+        const key = `${cached.originX + localX}:${cached.originZ + localZ}`;
         const currentFallback = fallbackSurface.get(key) ?? Number.NEGATIVE_INFINITY;
         const currentTerrain = terrainSurface.get(key) ?? Number.NEGATIVE_INFINITY;
-        let fallbackTop = Number.NEGATIVE_INFINITY;
-        let terrainTop = Number.NEGATIVE_INFINITY;
-        for (let localY = size - 1; localY >= 0; localY -= 1) {
-          const cellIndex = cellIndexFromLocalCoordinates({ localX, localY, localZ }, size);
-          const cellValue = getChunkCellValue(chunk.cells, cellIndex);
-          if (!isSolidCellValue(cellValue, chunk)) continue;
-          const topY = originY + localY + 1;
-          if (!Number.isFinite(fallbackTop)) fallbackTop = topY;
-          if (isTerrainCellValue(cellValue, chunk)) {
-            terrainTop = topY;
-            break;
-          }
-        }
+        const fallbackTop = cached.fallbackTops[columnIndex] ?? Number.NEGATIVE_INFINITY;
+        const terrainTop = cached.terrainTops[columnIndex] ?? Number.NEGATIVE_INFINITY;
         if (fallbackTop > currentFallback) fallbackSurface.set(key, fallbackTop);
         if (terrainTop > currentTerrain) terrainSurface.set(key, terrainTop);
       }
@@ -389,6 +444,8 @@ export function createGeodataOverlayScene(
   let status: GeodataOverlaySceneSnapshot["status"] = "created";
   let lastError: Record<string, unknown> | null = null;
   let earthGridSignature = "";
+  let registrySignature = "";
+  const chunkSurfaceCache = new Map<string, ChunkSurfaceCacheEntry>();
   let stats: GeodataOverlaySceneStats = {
     overlayCount: 0,
     tileCount: 0,
@@ -412,16 +469,28 @@ export function createGeodataOverlayScene(
     reason = "registry-sync",
   ): GeodataOverlaySceneStats {
     if (status === "disposed") return stats;
+    const visibleChunkKeys = registry.getVisibleChunkKeys();
+    const nextRegistrySignature = visibleChunkKeys.map((chunkKey) => {
+      const chunk = registry.getChunk(chunkKey);
+      return `${chunkKey}@${chunk ? chunkSurfaceRevision(chunk) : "missing"}`;
+    }).join("|");
+    if (nextRegistrySignature === registrySignature && group.userData.surfaceCellY instanceof Map) {
+      logDebug(logger, "Geodata overlay sync skipped because visible chunk content is unchanged.", {
+        reason,
+        visibleChunkCount: visibleChunkKeys.length,
+      });
+      return stats;
+    }
     status = "syncing";
     try {
-      const surface = buildVisibleSurfaceMap(registry);
+      const surface = buildVisibleSurfaceMap(registry, visibleChunkKeys, chunkSurfaceCache);
       // Shared, read-only draping truth for parcel selections and any future
       // plan guides.  Keeping it on the overlay group prevents another terrain
       // sampler from slowly diverging from the yellow cadastral lines.
       group.userData.surfaceCellY = surface;
       const tilesByIdentity = new Map<string, OverlayTile>();
       let earthGrid: EarthGridFrameContract | null = null;
-      for (const chunkKey of registry.getVisibleChunkKeys()) {
+      for (const chunkKey of visibleChunkKeys) {
         const chunk = registry.getChunk(chunkKey);
         if (!chunk) continue;
         earthGrid ??= earthGridFromChunk(chunk);
@@ -522,6 +591,7 @@ export function createGeodataOverlayScene(
       };
       updatedAt = now();
       lastError = null;
+      registrySignature = nextRegistrySignature;
       status = "ready";
       logDebug(logger, "Geodata overlays synced to visible voxel surface.", {
         reason,
@@ -557,6 +627,8 @@ export function createGeodataOverlayScene(
     dispose(reason?: string): void {
       if (status === "disposed") return;
       clearGroup(group);
+      chunkSurfaceCache.clear();
+      registrySignature = "";
       delete group.userData.surfaceCellY;
       group.parent?.remove(group);
       disposedAt = now();

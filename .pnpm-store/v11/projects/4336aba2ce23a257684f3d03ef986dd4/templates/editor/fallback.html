@@ -107,7 +107,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <title>{{ page_title_value }} · Fallback</title>
+    <title>{{ page_title_value }}{{ t('vectoplan.server.editor.fallback.title_suffix', fallback=' · Fallback') }}</title>
 
     <style>
       :root {
@@ -516,13 +516,13 @@
       <main class="fallback-layout" data-editor-fallback-layout="true">
         <section class="fallback-panel fallback-summary" aria-labelledby="fallback-title">
           <div class="fallback-summary__body">
-            <div class="fallback-kicker">Fallback-Shell</div>
+            <div class="fallback-kicker" data-i18n="vectoplan.server.editor.editor.fallback.div.fallback_shell.feed676a">Fallback-Shell</div>
 
             <h1 id="fallback-title" class="fallback-title">
               {{ brand_name_value }}
             </h1>
 
-            <p class="fallback-text">
+            <p class="fallback-text" data-i18n="vectoplan.server.editor.editor.fallback.p.die_prim_re_editor_shell_konnte_nicht_.144961ef">
               Die primäre Editor-Shell konnte nicht vollständig gerendert werden.
               Diese Diagnose-Shell liefert Bootstrap-, Asset- und Chunk-Service-Werte,
               ohne die TypeScript-Runtime automatisch zu starten.
@@ -530,71 +530,71 @@
 
             <dl class="fallback-meta">
               <div class="fallback-meta__row">
-                <dt>Grund</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.grund.269d5f7f">Grund</dt>
                 <dd>{{ fallback_reason_value or 'template-fallback' }}</dd>
               </div>
 
               <div class="fallback-meta__row">
-                <dt>Runtime</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.runtime.c2d9c542">Runtime</dt>
                 <dd>{{ runtime_mode_value }}</dd>
               </div>
 
               <div class="fallback-meta__row">
-                <dt>World</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.world.bb6ec11d">World</dt>
                 <dd>{{ world_mode_value }} · {{ source_mode_value }}</dd>
               </div>
 
               <div class="fallback-meta__row">
-                <dt>Chunk API</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.chunk_api.5e9fa764">Chunk API</dt>
                 <dd>{{ chunk_api_base_url_value }}</dd>
               </div>
 
               <div class="fallback-meta__row">
-                <dt>Projekt/Welt</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.projekt_welt.5078b15a">Projekt/Welt</dt>
                 <dd>{{ chunk_project_id_value }} / {{ chunk_world_id_value }}</dd>
               </div>
 
               <div class="fallback-meta__row">
-                <dt>Build</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.build.bdd4f59f">Build</dt>
                 <dd>{{ build_mode_value }} · {{ build_version_value }}</dd>
               </div>
             </dl>
 
             <div class="fallback-actions">
-              <a class="fallback-action" href="/editor">Editor erneut öffnen</a>
-              <a class="fallback-action" href="{{ chunk_status_url_value }}">Chunk-Proxy Status</a>
-              <a class="fallback-action" href="{{ chunk_test_connection_url_value }}">Chunk-Verbindung testen</a>
-              <a class="fallback-action" href="{{ chunk_placeable_blocks_url_value }}">Placeable Blocks</a>
+              <a class="fallback-action" href="/editor" data-i18n="vectoplan.server.editor.editor.fallback.a.editor_erneut_ffnen.52bdd761">Editor erneut öffnen</a>
+              <a class="fallback-action" href="{{ chunk_status_url_value }}" data-i18n="vectoplan.server.editor.editor.fallback.a.chunk_proxy_status.21691c85">Chunk-Proxy Status</a>
+              <a class="fallback-action" href="{{ chunk_test_connection_url_value }}" data-i18n="vectoplan.server.editor.editor.fallback.a.chunk_verbindung_testen.b182a0fb">Chunk-Verbindung testen</a>
+              <a class="fallback-action" href="{{ chunk_placeable_blocks_url_value }}" data-i18n="vectoplan.server.editor.editor.fallback.a.placeable_blocks.8ff846a4">Placeable Blocks</a>
             </div>
           </div>
 
           <div class="fallback-summary__footer">
-            <span class="fallback-badge {% if feature_chunk_service_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}">
-              Chunk-Service {{ 'an' if feature_chunk_service_enabled_value else 'aus' }}
+            <span class="fallback-badge {% if feature_chunk_service_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}"><span data-i18n="vectoplan.server.editor.editor.fallback.span.chunk_service.276fcaca">
+              Chunk-Service </span>{{ 'an' if feature_chunk_service_enabled_value else 'aus' }}
             </span>
 
-            <span class="fallback-badge {% if inventory_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}">
-              Hotbar {{ 'an' if inventory_enabled_value else 'aus' }}
+            <span class="fallback-badge {% if inventory_enabled_value %}fallback-badge--ok{% else %}fallback-badge--off{% endif %}"><span data-i18n="vectoplan.server.editor.editor.fallback.span.hotbar.5d606575">
+              Hotbar </span>{{ 'an' if inventory_enabled_value else 'aus' }}
             </span>
 
-            <span class="fallback-badge {% if feature_local_world_fallback_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}">
-              Local Fallback {{ 'an' if feature_local_world_fallback_value else 'aus' }}
+            <span class="fallback-badge {% if feature_local_world_fallback_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}"><span data-i18n="vectoplan.server.editor.editor.fallback.span.local_fallback.459cca96">
+              Local Fallback </span>{{ 'an' if feature_local_world_fallback_value else 'aus' }}
             </span>
 
-            <span class="fallback-badge {% if feature_legacy_frontend_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}">
-              Legacy Frontend {{ 'an' if feature_legacy_frontend_value else 'aus' }}
+            <span class="fallback-badge {% if feature_legacy_frontend_value %}fallback-badge--warn{% else %}fallback-badge--ok{% endif %}"><span data-i18n="vectoplan.server.editor.editor.fallback.span.legacy_frontend.33a18ec1">
+              Legacy Frontend </span>{{ 'an' if feature_legacy_frontend_value else 'aus' }}
             </span>
 
-            <span class="fallback-badge {% if asset_ok_value %}fallback-badge--ok{% else %}fallback-badge--warn{% endif %}">
-              Assets {{ asset_source_value }}
+            <span class="fallback-badge {% if asset_ok_value %}fallback-badge--ok{% else %}fallback-badge--warn{% endif %}"><span data-i18n="vectoplan.server.editor.editor.fallback.span.assets.6124b346">
+              Assets </span>{{ asset_source_value }}
             </span>
           </div>
         </section>
 
         <section class="fallback-panel fallback-diagnostics" aria-labelledby="fallback-diagnostics-title">
           <header class="fallback-diagnostics__header">
-            <h2 id="fallback-diagnostics-title">Diagnose</h2>
-            <p>
+            <h2 id="fallback-diagnostics-title" data-i18n="vectoplan.server.editor.editor.fallback.h2.diagnose.b9bc7a9e">Diagnose</h2>
+            <p data-i18n="vectoplan.server.editor.editor.fallback.p.diese_werte_stammen_aus_dem_serverseit.1847c03f">
               Diese Werte stammen aus dem serverseitigen Bootstrap-Kontext.
               Interne Docker-URLs werden nicht als Browser-Ziel verwendet.
             </p>
@@ -602,106 +602,106 @@
 
           <div class="fallback-diagnostics__body">
             <section class="fallback-section">
-              <h3>Chunk-Service</h3>
+              <h3 data-i18n="vectoplan.server.editor.editor.fallback.h3.chunk_service.0e7778bb">Chunk-Service</h3>
               <dl class="fallback-kv">
-                <dt>enabled</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.enabled.206bc57d">enabled</dt>
                 <dd>{{ 'true' if chunk_enabled_value else 'false' }}</dd>
 
-                <dt>mode</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.mode.ed53980a">mode</dt>
                 <dd>{{ chunk_mode_value }}</dd>
 
-                <dt>sourceKind</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.sourcekind.41b9d2bc">sourceKind</dt>
                 <dd>{{ chunk_source_kind_value }}</dd>
 
-                <dt>apiBaseUrl</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.apibaseurl.e73d4e17">apiBaseUrl</dt>
                 <dd>{{ chunk_api_base_url_value }}</dd>
 
-                <dt>projectId</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.projectid.5408ef60">projectId</dt>
                 <dd>{{ chunk_project_id_value }}</dd>
 
-                <dt>worldId</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.worldid.89eedd0d">worldId</dt>
                 <dd>{{ chunk_world_id_value }}</dd>
 
-                <dt>registry</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.registry.c8aa7c41">registry</dt>
                 <dd>{{ chunk_registry_id_value }}:{{ chunk_registry_version_value }}</dd>
 
-                <dt>blocks</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.blocks.fd9f1b6a">blocks</dt>
                 <dd>{{ chunk_blocks_url_value }}</dd>
 
-                <dt>commands</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.commands.6b28603f">commands</dt>
                 <dd>{{ chunk_commands_url_value }}</dd>
               </dl>
             </section>
 
             <section class="fallback-section">
-              <h3>Runtime</h3>
+              <h3 data-i18n="vectoplan.server.editor.editor.fallback.h3.runtime.517862d7">Runtime</h3>
               <dl class="fallback-kv">
-                <dt>runtimeMode</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.runtimemode.4732ac43">runtimeMode</dt>
                 <dd>{{ runtime_mode_value }}</dd>
 
-                <dt>worldMode</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.worldmode.874b84dc">worldMode</dt>
                 <dd>{{ world_mode_value }}</dd>
 
-                <dt>sourceMode</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.sourcemode.9407219d">sourceMode</dt>
                 <dd>{{ source_mode_value }}</dd>
 
-                <dt>chunks</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.chunks.cecec471">chunks</dt>
                 <dd>
-                  {{ 'enabled' if chunks_enabled_value else 'disabled' }}
-                  · size {{ chunks_chunk_size_value }}
-                  · view {{ chunks_view_distance_value }}
+                  {{ 'enabled' if chunks_enabled_value else 'disabled' }}<span data-i18n="vectoplan.server.editor.editor.fallback.span.size.5376ed96">
+                  · size </span>{{ chunks_chunk_size_value }}<span data-i18n="vectoplan.server.editor.editor.fallback.span.view.988efdea">
+                  · view </span>{{ chunks_view_distance_value }}
                 </dd>
               </dl>
             </section>
 
             <section class="fallback-section">
-              <h3>Inventory</h3>
+              <h3 data-i18n="vectoplan.server.editor.editor.fallback.h3.inventory.ba47aca6">Inventory</h3>
               <dl class="fallback-kv">
-                <dt>enabled</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.enabled.f45f9f91">enabled</dt>
                 <dd>{{ 'true' if inventory_enabled_value else 'false' }}</dd>
 
-                <dt>source</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.source.69a11e44">source</dt>
                 <dd>{{ inventory_source_value }}</dd>
 
-                <dt>hotbarSize</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.hotbarsize.1803752a">hotbarSize</dt>
                 <dd>{{ inventory_hotbar_size_value }}</dd>
 
-                <dt>selectedSlot</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.selectedslot.ce4d3a6b">selectedSlot</dt>
                 <dd>{{ inventory_selected_slot_value }}</dd>
 
-                <dt>defaultBlockTypeId</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.defaultblocktypeid.b88954cc">defaultBlockTypeId</dt>
                 <dd>{{ inventory_default_block_type_id_value }}</dd>
 
-                <dt>items</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.items.71286a5d">items</dt>
                 <dd>{{ inventory_items_value|length }}</dd>
 
-                <dt>placeableBlocks</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.placeableblocks.9b5d277d">placeableBlocks</dt>
                 <dd>{{ inventory_placeable_blocks_value|length }}</dd>
               </dl>
             </section>
 
             <section class="fallback-section">
-              <h3>Assets</h3>
+              <h3 data-i18n="vectoplan.server.editor.editor.fallback.h3.assets.33a7b65a">Assets</h3>
               <dl class="fallback-kv">
-                <dt>source</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.source.0d712f2a">source</dt>
                 <dd>{{ asset_source_value }}</dd>
 
-                <dt>ok</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.ok.673580a1">ok</dt>
                 <dd>{{ 'true' if asset_ok_value else 'false' }}</dd>
 
-                <dt>fallbackUsed</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.fallbackused.42207e2b">fallbackUsed</dt>
                 <dd>{{ 'true' if asset_fallback_used_value else 'false' }}</dd>
 
-                <dt>JS</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.js.6bdf227d">JS</dt>
                 <dd>{{ asset_js_count_value }}</dd>
 
-                <dt>CSS</dt>
+                <dt data-i18n="vectoplan.server.editor.editor.fallback.dt.css.626c7375">CSS</dt>
                 <dd>{{ asset_css_count_value }}</dd>
               </dl>
             </section>
 
             <section class="fallback-section">
-              <h3>Bootstrap JSON</h3>
+              <h3 data-i18n="vectoplan.server.editor.editor.fallback.h3.bootstrap_json.3c8d8ba2">Bootstrap JSON</h3>
               <pre class="fallback-code" data-editor-bootstrap-preview>{{ editor_bootstrap_json_value }}</pre>
             </section>
           </div>
@@ -710,7 +710,7 @@
     </div>
 
     <noscript>
-      <div class="noscript-notice" role="alert">
+      <div class="noscript-notice" role="alert" data-i18n="vectoplan.server.editor.editor.fallback.div.javascript_ist_deaktiviert_die_fallbac.2787a34a">
         JavaScript ist deaktiviert. Die Fallback-Shell wurde ausgeliefert, aber
         globale Bootstrap-Werte können nicht gesetzt werden.
       </div>

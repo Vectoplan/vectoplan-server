@@ -2933,9 +2933,21 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
   function syncGeodataOverlays(reason: string): void {
     if (destroyed || !geodataOverlayScene) return;
+    const syncStartedAtMs = nowMs();
     const stats = geodataOverlayScene.syncFromRegistry(
       worldRuntime.getRegistry(),
       reason,
+    );
+    performanceRecorder?.recordEvent(
+      "geodata-overlay",
+      "sync",
+      nowMs() - syncStartedAtMs,
+      {
+        reason,
+        overlayCount: stats.overlayCount,
+        surfaceCellCount: stats.surfaceCellCount,
+        renderedSegmentCount: stats.renderedSegmentCount,
+      },
     );
     refs.root.dataset.sceneRuntimeGeodataOverlayCount = String(stats.overlayCount);
     refs.root.dataset.sceneRuntimeGeodataOverlayTileCount = String(stats.tileCount);

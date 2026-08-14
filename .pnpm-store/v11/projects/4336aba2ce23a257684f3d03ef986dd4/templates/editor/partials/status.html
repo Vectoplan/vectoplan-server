@@ -150,13 +150,13 @@
       class="vectoplan-editor-statusbar__label"
       data-editor-source-status-label="true"
     >
-      {% if fallback_active_value %}
+      {% if fallback_active_value %}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.fallback_aktiv.8e029d4b">
         Fallback aktiv
-      {% elif feature_chunk_service_enabled_value %}
+      </span>{% elif feature_chunk_service_enabled_value %}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.chunk_service_wird_vorbereitet.55208660">
         Chunk-Service wird vorbereitet
-      {% else %}
+      </span>{% else %}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.chunk_service_deaktiviert.23b07cec">
         Chunk-Service deaktiviert
-      {% endif %}
+      </span>{% endif %}
     </span>
   </div>
 
@@ -203,47 +203,47 @@
       class="vectoplan-editor-statusbar__details"
       data-editor-status-details="true"
     >
-      <summary data-editor-status-details-summary="true">Status</summary>
+      <summary data-editor-status-details-summary="true" data-i18n="vectoplan.server.editor.editor.partials.status.summary.status.c6d07e57">Status</summary>
 
       <dl class="vectoplan-editor-statusbar__details-list">
         <div>
-          <dt>Chunk API</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.chunk_api.c92f28c4">Chunk API</dt>
           <dd data-editor-status-chunk-api>{{ chunk_api_base_url_value }}</dd>
         </div>
 
         <div>
-          <dt>Chunk Source</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.chunk_source.c2a7f6b4">Chunk Source</dt>
           <dd>{{ chunk_source_kind_value }}</dd>
         </div>
 
         <div>
-          <dt>Assets</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.assets.b714e64c">Assets</dt>
           <dd>
-            {{ asset_source_value }}
-            · JS {{ asset_js_count_value }}
-            · CSS {{ asset_css_count_value }}
-            {% if asset_fallback_used_value %}· Fallback{% endif %}
+            {{ asset_source_value }}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.js.5e83a80b">
+            · JS </span>{{ asset_js_count_value }}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.css.a1f25594">
+            · CSS </span>{{ asset_css_count_value }}
+            {% if asset_fallback_used_value %}<span data-i18n="vectoplan.server.editor.editor.partials.status.span.fallback.774bba98">· Fallback</span>{% endif %}
           </dd>
         </div>
 
         <div>
-          <dt>Local Fallback</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.local_fallback.8ccff2be">Local Fallback</dt>
           <dd>{{ 'an' if feature_local_world_fallback_value else 'aus' }}</dd>
         </div>
 
         <div>
-          <dt>Legacy Frontend</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.legacy_frontend.f2ea7250">Legacy Frontend</dt>
           <dd>{{ 'an' if feature_legacy_frontend_value else 'aus' }}</dd>
         </div>
 
         <div>
-          <dt>Hotbar</dt>
+          <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.hotbar.1f74904d">Hotbar</dt>
           <dd>{{ 'an' if feature_hotbar_value else 'aus' }}</dd>
         </div>
 
         {% if fallback_active_value %}
           <div>
-            <dt>Fallback-Grund</dt>
+            <dt data-i18n="vectoplan.server.editor.editor.partials.status.dt.fallback_grund.2ae0e585">Fallback-Grund</dt>
             <dd>{{ fallback_reason_value or 'unbekannt' }}</dd>
           </div>
         {% endif %}

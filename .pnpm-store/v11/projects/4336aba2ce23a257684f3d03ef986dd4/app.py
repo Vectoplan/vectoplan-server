@@ -1253,6 +1253,8 @@ def create_app(config_object: type[BaseConfig] | str | None = None) -> Flask:
         app.extensions.get("vectoplan_editor", {}).get("frame_ancestors"),
     )
 
+    from vectoplan_i18n import init_app as init_i18n
+    init_i18n(app)
     return app
 
 

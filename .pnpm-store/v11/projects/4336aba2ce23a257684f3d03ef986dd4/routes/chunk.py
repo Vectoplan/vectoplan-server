@@ -550,13 +550,21 @@ def send_command(project_id: str, world_id: str) -> Response:
             request_id=_request_id(),
         )
 
+    include_command_log = _optional_bool_arg("includeCommandLog")
+
     return _proxy_call(
-        lambda client: client.send_command(project_id, world_id, body),
+        lambda client: client.send_command(
+            project_id,
+            world_id,
+            body,
+            include_command_log=include_command_log,
+        ),
         operation="send_command",
         context={
             "projectId": project_id,
             "worldId": world_id,
             "commandType": command_type,
+            "includeCommandLog": include_command_log,
         },
     )
 

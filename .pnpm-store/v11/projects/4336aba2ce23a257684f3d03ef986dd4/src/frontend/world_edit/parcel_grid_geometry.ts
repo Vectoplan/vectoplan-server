@@ -1,5 +1,140 @@
 export type ParcelGridPoint = readonly [number, number];
 
+export interface ParcelGridRenderBounds {
+  readonly minimumX: number;
+  readonly maximumX: number;
+  readonly minimumZ: number;
+  readonly maximumZ: number;
+  readonly requestedCells: number;
+  readonly renderedCells: number;
+  readonly streamed: boolean;
+}
+
+export function resolveParcelGridRenderBounds(options: Readonly<{
+  points: readonly ParcelGridPoint[];
+  visibleSurfacePoints?: readonly ParcelGridPoint[];
+  fullRenderCellLimit: number;
+  visibleMarginCells: number;
+}>): ParcelGridRenderBounds | null {
+  if (options.points.length === 0) return null;
+  let minimumX = Math.floor(Math.min(...options.points.map((point) => point[0])));
+  let maximumX = Math.ceil(Math.max(...options.points.map((point) => point[0])));
+  let minimumZ = Math.floor(Math.min(...options.points.map((point) => point[1])));
+  let maximumZ = Math.ceil(Math.max(...options.points.map((point) => point[1])));
+  const requestedCells = Math.max(0, maximumX - minimumX) * Math.max(0, maximumZ - minimumZ);
+  let streamed = false;
+  const visible = options.visibleSurfacePoints ?? [];
+  if (requestedCells > options.fullRenderCellLimit && visible.length > 0) {
+    const margin = Math.max(0, Math.floor(options.visibleMarginCells));
+    minimumX = Math.max(minimumX, Math.floor(Math.min(...visible.map((point) => point[0]))) - margin);
+    maximumX = Math.min(maximumX, Math.ceil(Math.max(...visible.map((point) => point[0]))) + margin);
+    minimumZ = Math.max(minimumZ, Math.floor(Math.min(...visible.map((point) => point[1]))) - margin);
+    maximumZ = Math.min(maximumZ, Math.ceil(Math.max(...visible.map((point) => point[1]))) + margin);
+    streamed = true;
+  }
+  return {
+    minimumX,
+    maximumX,
+    minimumZ,
+    maximumZ,
+    requestedCells,
+    renderedCells: Math.max(0, maximumX - minimumX) * Math.max(0, maximumZ - minimumZ),
+    streamed,
+  };
+}
+
+export function snapParcelGridDragDepth(options: Readonly<{
+  initialDepth: number;
+  initialPointerDepth: number;
+  pointerDepth: number;
+  minimumDepth: number;
+  maximumDepth: number;
+}>): number {
+  const minimum = Math.ceil(Math.min(options.minimumDepth, options.maximumDepth));
+  const maximum = Math.floor(Math.max(options.minimumDepth, options.maximumDepth));
+  const candidate = Math.round(
+    options.initialDepth + options.pointerDepth - options.initialPointerDepth,
+  );
+  return Math.max(minimum, Math.min(maximum, candidate));
+}
+
+export function resolveParcelGridMaximumDepth(options: Readonly<{
+  points: readonly ParcelGridPoint[];
+  start: ParcelGridPoint;
+  inward: ParcelGridPoint;
+  minimumDepth?: number;
+  maximumDepth?: number;
+  paddingCells?: number;
+}>): number {
+  const minimum = Math.max(1, Math.floor(options.minimumDepth ?? 64));
+  const maximum = Math.max(minimum, Math.floor(options.maximumDepth ?? 512));
+  const padding = Math.max(0, Math.floor(options.paddingCells ?? 8));
+  const inwardExtent = options.points.reduce((largest, point) => Math.max(
+    largest,
+    (point[0] - options.start[0]) * options.inward[0]
+      + (point[1] - options.start[1]) * options.inward[1],
+  ), 0);
+  return Math.max(minimum, Math.min(maximum, Math.ceil(inwardExtent) + padding));
+}
+
+export interface ParcelGridGuidePreview {
+  readonly lineStart: ParcelGridPoint;
+  readonly lineEnd: ParcelGridPoint;
+  readonly handle: ParcelGridPoint;
+}
+
+export function resolveParcelGridGuidePreview(options: Readonly<{
+  start: ParcelGridPoint;
+  end: ParcelGridPoint;
+  inward: ParcelGridPoint;
+  depth: number;
+  handleAlong: number;
+}>): ParcelGridGuidePreview {
+  const along = Math.max(0, Math.min(1, options.handleAlong));
+  const offsetX = options.inward[0] * options.depth;
+  const offsetZ = options.inward[1] * options.depth;
+  return {
+    lineStart: [options.start[0] + offsetX, options.start[1] + offsetZ],
+    lineEnd: [options.end[0] + offsetX, options.end[1] + offsetZ],
+    handle: [
+      options.start[0] + (options.end[0] - options.start[0]) * along + offsetX,
+      options.start[1] + (options.end[1] - options.start[1]) * along + offsetZ,
+    ],
+  };
+}
+
+export function parcelGridGuideIdentity(
+  parcelId: string,
+  start: ParcelGridPoint,
+  end: ParcelGridPoint,
+  precision = 8,
+): string {
+  const digits = Math.max(0, Math.min(12, Math.floor(precision)));
+  const endpoint = (point: ParcelGridPoint): string => (
+    `${point[0].toFixed(digits)}:${point[1].toFixed(digits)}`
+  );
+  const endpoints = [endpoint(start), endpoint(end)].sort();
+  return `${parcelId}:${endpoints[0]}|${endpoints[1]}`;
+}
+
+export function resolveParcelGridHandleScale(options: Readonly<{
+  distance: number;
+  verticalFieldOfViewDegrees: number;
+  viewportHeightPixels: number;
+  targetPixels?: number;
+  minimumScale?: number;
+  maximumScale?: number;
+}>): number {
+  const minimum = Math.max(0.01, options.minimumScale ?? 0.65);
+  const maximum = Math.max(minimum, options.maximumScale ?? 14);
+  const distance = Math.max(0, Number(options.distance) || 0);
+  const viewportHeight = Math.max(1, Number(options.viewportHeightPixels) || 1);
+  const fieldOfView = Math.max(1, Math.min(179, Number(options.verticalFieldOfViewDegrees) || 50));
+  const targetPixels = Math.max(1, Number(options.targetPixels) || 36);
+  const worldPerPixel = 2 * distance * Math.tan(fieldOfView * Math.PI / 360) / viewportHeight;
+  return Math.max(minimum, Math.min(maximum, worldPerPixel * targetPixels));
+}
+
 export interface ParcelGridBoundarySegmentInput {
   readonly id: string;
   readonly parcelId: string;
@@ -701,6 +836,25 @@ function boundaryColumnRange(
   return endColumn > firstColumn ? [firstColumn, endColumn] : null;
 }
 
+function boundaryRowRange(
+  segment: ParcelGridBoundarySegmentInput,
+  bounds: ParcelGridPartitionInput["bounds"],
+): readonly [number, number] | null {
+  const corners: readonly ParcelGridPoint[] = [
+    [bounds.minimumX, bounds.minimumZ],
+    [bounds.maximumX, bounds.minimumZ],
+    [bounds.maximumX, bounds.maximumZ],
+    [bounds.minimumX, bounds.maximumZ],
+  ];
+  const depths = corners.map((point) => (
+    (point[0] - segment.start[0]) * segment.inward[0]
+    + (point[1] - segment.start[1]) * segment.inward[1]
+  ));
+  const firstRow = Math.max(0, Math.floor(Math.min(...depths) + GEOMETRY_EPSILON));
+  const endRow = Math.min(Math.ceil(segment.depth), Math.ceil(Math.max(...depths) - GEOMETRY_EPSILON));
+  return endRow > firstRow ? [firstRow, endRow] : null;
+}
+
 export function buildParcelGridPartition(input: ParcelGridPartitionInput): ParcelGridPartitionResult {
   const minimumArea = Math.max(1e-8, input.minimumArea ?? 0.0005);
   const coverageTriangles = input.coverageTriangles
@@ -720,14 +874,15 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
     const divisions = Math.max(1, Math.ceil(segment.length));
     const columnWidth = segment.length / divisions;
     const columnRange = boundaryColumnRange(segment, divisions, input.bounds);
-    if (!columnRange) continue;
+    const rowRange = boundaryRowRange(segment, input.bounds);
+    if (!columnRange || !rowRange) continue;
     const wallAxisDegrees = ((Math.atan2(tangentZ, tangentX) * 180 / Math.PI) + 180) % 180;
     const at = (along: number, depth: number): ParcelGridPoint => [
       segment.start[0] + tangentX * along + segment.inward[0] * depth,
       segment.start[1] + tangentZ * along + segment.inward[1] * depth,
     ];
 
-    for (let row = 0; row < segment.depth; row += 1) {
+    for (let row = rowRange[0]; row < rowRange[1]; row += 1) {
       for (let column = columnRange[0]; column < columnRange[1]; column += 1) {
         const alongStart = column * columnWidth;
         const alongEnd = Math.min(segment.length, (column + 1) * columnWidth);

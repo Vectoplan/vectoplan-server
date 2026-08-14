@@ -89,7 +89,7 @@
   data-fallback-active="{{ 'true' if fallback_active_value else 'false' }}"
   data-fallback-reason="{{ fallback_reason_value }}"
   aria-label="VECTOPLAN 3D Editor Viewport"
->
+ data-i18n-aria-label="server.editor.editor.partials.viewport.section_aria-label.vectoplan_3d_editor_viewport.80ce6c79">
   <div
     class="vectoplan-editor-viewport-background editor-world-layer editor-world-layer--background"
     data-editor-viewport-background="true"
@@ -107,7 +107,7 @@
     tabindex="0"
     role="presentation"
     aria-label="3D Viewport Canvas Host"
-  ></div>
+   data-i18n-aria-label="server.editor.editor.partials.viewport.div_aria-label.3d_viewport_canvas_host.93f81bff"></div>
 
   <div
     class="vectoplan-editor-viewport-placeholder editor-viewport-placeholder"
@@ -149,8 +149,8 @@
       aria-live="polite"
     >
       <div class="vectoplan-editor-loading-card editor-loading-card">
-        <strong data-editor-loading-title="true">Editor wird geladen</strong>
-        <span data-editor-loading-message="true">
+        <strong data-editor-loading-title="true" data-i18n="vectoplan.server.editor.editor.partials.viewport.strong.editor_wird_geladen.42809faf">Editor wird geladen</strong>
+        <span data-editor-loading-message="true" data-i18n="vectoplan.server.editor.editor.partials.viewport.span.runtime_chunk_service_und_viewport_wer.835126b9">
           Runtime, Chunk-Service und Viewport werden initialisiert.
         </span>
       </div>
@@ -168,8 +168,8 @@
       hidden
     >
       <div class="vectoplan-editor-error-card editor-error-card">
-        <strong data-editor-error-title="true">Editor konnte nicht gestartet werden</strong>
-        <p data-editor-error-message="true">
+        <strong data-editor-error-title="true" data-i18n="vectoplan.server.editor.editor.partials.viewport.strong.editor_konnte_nicht_gestartet_werden.ae78b4d8">Editor konnte nicht gestartet werden</strong>
+        <p data-editor-error-message="true" data-i18n="vectoplan.server.editor.editor.partials.viewport.p.ein_fehler_ist_beim_start_der_editor_r.d5f1cdee">
           Ein Fehler ist beim Start der Editor-Runtime aufgetreten.
         </p>
         <pre data-editor-error-details="true" hidden></pre>
@@ -197,15 +197,15 @@
       data-runtime-meta-overlay="true"
       hidden
     >
-      <h2 class="editor-overlay__title">Runtime</h2>
-      <p class="editor-overlay__text">Mode: {{ runtime_mode_value }}</p>
-      <p class="editor-overlay__text">World: {{ world_mode_value }}</p>
-      <p class="editor-overlay__text">Source: {{ source_mode_value }}</p>
-      <p class="editor-overlay__text">Chunk API: {{ chunk_api_base_url_value }}</p>
-      <p class="editor-overlay__text">Project: {{ chunk_project_id_value }}</p>
-      <p class="editor-overlay__text">World ID: {{ chunk_world_id_value }}</p>
-      <p class="editor-overlay__text">Chunk Size: {{ chunks_chunk_size_value }}</p>
-      <p class="editor-overlay__text">View Distance: {{ chunks_view_distance_value }}</p>
+      <h2 class="editor-overlay__title" data-i18n="vectoplan.server.editor.editor.partials.viewport.h2.runtime.4342a38e">Runtime</h2>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.mode.ca9a8ce6">Mode: </span>{{ runtime_mode_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.world.82e56607">World: </span>{{ world_mode_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.source.82ae11de">Source: </span>{{ source_mode_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.chunk_api.80a9dc24">Chunk API: </span>{{ chunk_api_base_url_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.project.9ef938b3">Project: </span>{{ chunk_project_id_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.world_id.d593f3e4">World ID: </span>{{ chunk_world_id_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.chunk_size.ef4a06d3">Chunk Size: </span>{{ chunks_chunk_size_value }}</p>
+      <p class="editor-overlay__text"><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.view_distance.b812d490">View Distance: </span>{{ chunks_view_distance_value }}</p>
     </aside>
   {% endif %}
 
@@ -215,8 +215,8 @@
       data-editor-fallback-note="true"
       role="status"
       aria-live="polite"
-    >
-      Fallback aktiv{% if fallback_reason_value %}: {{ fallback_reason_value }}{% endif %}
+    ><span data-i18n="vectoplan.server.editor.editor.partials.viewport.span.fallback_aktiv.dcad7881">
+      Fallback aktiv</span>{% if fallback_reason_value %}: {{ fallback_reason_value }}{% endif %}
     </div>
   {% endif %}
 </section>

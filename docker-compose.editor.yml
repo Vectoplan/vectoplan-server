@@ -27,11 +27,11 @@
 #
 # Wichtig für vectoplan-library:
 #
-#   Creative-Library-Quelle:
-#     services/vectoplan-library/src/library/source
+#   Standard-Library-Quelle:
+#     services/vectoplan-library/standard_library/v1/packages
 #
 #   Containerpfad:
-#     /opt/vectoplan/services/vectoplan-library/src/library/source
+#     /opt/vectoplan/services/vectoplan-library/standard_library/v1/packages
 #
 #   PostgreSQL:
 #     vectoplan-library-db:5432/vectoplan_library
@@ -315,7 +315,9 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
   VECTOPLAN_LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
   VECTOPLAN_LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
-  VECTOPLAN_LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
+  VECTOPLAN_LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/standard_library/v1/packages"
+  VECTOPLAN_LIBRARY_LOAD_ON_STARTUP: "true"
+  VECTOPLAN_LIBRARY_DB_SYNC_ON_STARTUP: "true"
   VECTOPLAN_LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
   VECTOPLAN_LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
   VECTOPLAN_LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"
@@ -323,7 +325,7 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   LIBRARY_SERVICE_ROOT: "/opt/vectoplan/services/vectoplan-library"
   LIBRARY_SRC_ROOT: "/opt/vectoplan/services/vectoplan-library/src"
   LIBRARY_PACKAGE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library"
-  LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/src/library/source"
+  LIBRARY_SOURCE_ROOT: "/opt/vectoplan/services/vectoplan-library/standard_library/v1/packages"
   LIBRARY_CREATIVE_ROOT: "/opt/vectoplan/services/vectoplan-library/creative_library"
   LIBRARY_GENERATED_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library"
   LIBRARY_CACHE_ROOT: "/opt/vectoplan/services/vectoplan-library/generated/library_cache"

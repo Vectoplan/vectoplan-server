@@ -57,6 +57,15 @@ x-vectoplan-python-environment: &vectoplan-python-environment
   PYTHONUNBUFFERED: "1"
   TZ: "${TZ:-Europe/Berlin}"
   LOG_LEVEL: "${LOG_LEVEL:-INFO}"
+  APP_I18N_TRANSFORM_HTML: "${APP_I18N_TRANSFORM_HTML:-true}"
+  APP_I18N_LIVE_TRANSLATE: "${APP_I18N_LIVE_TRANSLATE:-true}"
+  APP_I18N_SOURCE_LANG: "${APP_I18N_SOURCE_LANG:-de}"
+  APP_I18N_LIVE_BATCH_CHARS: "${APP_I18N_LIVE_BATCH_CHARS:-8000}"
+  APP_DEFAULT_LANG: "${APP_DEFAULT_LANG:-de}"
+  APP_LANGS: "${APP_LANGS:-en,de}"
+  APP_LANG_COOKIE_NAME: "${APP_LANG_COOKIE_NAME:-vectoplan_language}"
+  TR_SVC_BASE_URL: "${TR_SVC_BASE_URL:-http://vectoplan-language:8000}"
+  TR_SVC_TIMEOUT_SEC: "${TR_SVC_TIMEOUT_SEC:-15}"
 
 x-vectoplan-service-defaults: &vectoplan-service-defaults
   init: true
@@ -409,6 +418,12 @@ x-vectoplan-library-environment: &vectoplan-library-environment
   VECTOPLAN_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
   VPLIB_LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
   LIBRARY_ROUTE_PREFIX: "/api/v1/vplib/library"
+  VECTOPLAN_LIBRARY_SOURCE_ROOT: "/opt/vectoplan-standard-library-v1"
+  VECTOPLAN_LIBRARY_LOAD_ON_STARTUP: "true"
+  VECTOPLAN_LIBRARY_DB_SYNC_ON_STARTUP: "true"
+  VECTOPLAN_LIBRARY_STAGE_SOURCE_ON_STARTUP: "false"
+  VPLIB_LIBRARY_SYNC_COMMIT_EACH_CANDIDATE: "true"
+  VPLIB_LIBRARY_SYNC_DIRECT_REPOSITORY_PUBLISH: "true"
 
   VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH: "${VECTOPLAN_LIBRARY_ADMIN_ROUTE_PATH:-/admin}"
   VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH: "${VECTOPLAN_LIBRARY_HEALTH_ROUTE_PATH:-/health}"
@@ -1005,6 +1020,69 @@ x-geoserver-orchestrator-runtime-environment: &geoserver_orchestrator_runtime_en
   GEOSERVER_HEALTHCHECK_ON_STARTUP: "true"
 
 services:
+  vectoplan-libretranslate:
+    <<: *vectoplan-service-defaults
+    image: libretranslate/libretranslate:latest
+    environment:
+      <<: *vectoplan-python-environment
+      XDG_DATA_HOME: "/data/share"
+      XDG_CACHE_HOME: "/data/cache"
+      LT_LOAD_ONLY: "${LIBRETRANSLATE_LOAD_ONLY:-en,de}"
+      LT_DISABLE_WEB_UI: "true"
+    volumes:
+      - vectoplan-language-data:/data
+    expose:
+      - "5000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:5000/languages"]
+      interval: "${LIBRETRANSLATE_HEALTH_INTERVAL:-15s}"
+      timeout: "${LIBRETRANSLATE_HEALTH_TIMEOUT:-10s}"
+      retries: ${LIBRETRANSLATE_HEALTH_RETRIES:-60}
+      start_period: "${LIBRETRANSLATE_HEALTH_START_PERIOD:-60s}"
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-libretranslate
+
+  vectoplan-language:
+    <<: *vectoplan-service-defaults
+    build:
+      context: ./services/vectoplan-language
+    environment:
+      <<: *vectoplan-python-environment
+      PORT: "8000"
+      SERVICE_NAME: "vectoplan-language"
+      LT_BASE_URL: "http://vectoplan-libretranslate:5000"
+      ALLOWED_LANGS: "${VECTOPLAN_LANGUAGE_ALLOWED:-en,de}"
+      READY_MIN_LANGS: "${VECTOPLAN_LANGUAGE_READY_MIN:-en,de}"
+      LT_INSTALL_LANGS: "${VECTOPLAN_LANGUAGE_INSTALL:-de}"
+      DEFAULT_TARGETS_SOURCE: "available"
+      WAIT_FOR_UPSTREAM: "true"
+      WAIT_UPSTREAM_URL: "http://vectoplan-libretranslate:5000/languages"
+      WAIT_UPSTREAM_TIMEOUT_SEC: "${VECTOPLAN_LANGUAGE_WAIT_SECONDS:-600}"
+      MAX_CHARS: "${VECTOPLAN_LANGUAGE_MAX_CHARS:-10000}"
+      MAX_TARGETS: "${VECTOPLAN_LANGUAGE_MAX_TARGETS:-5}"
+      CACHE_ENABLED: "true"
+      CACHE_TTL_SEC: "${VECTOPLAN_LANGUAGE_CACHE_TTL:-86400}"
+      CACHE_MAX_ITEMS: "${VECTOPLAN_LANGUAGE_CACHE_ITEMS:-50000}"
+      RATE_LIMIT_ENABLED: "false"
+      SELFTEST_ENABLED: "true"
+    depends_on:
+      vectoplan-libretranslate:
+        condition: service_healthy
+    expose:
+      - "8000"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8000/_ready"]
+      interval: "${VECTOPLAN_LANGUAGE_HEALTH_INTERVAL:-10s}"
+      timeout: "${VECTOPLAN_LANGUAGE_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_LANGUAGE_HEALTH_RETRIES:-30}
+      start_period: "${VECTOPLAN_LANGUAGE_HEALTH_START_PERIOD:-20s}"
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-language
+
   vectoplan-library-db:
     <<: *vectoplan-service-defaults
     image: postgres:16-alpine
@@ -2144,6 +2222,7 @@ services:
           - server-openlayer
 
 volumes:
+  vectoplan-language-data:
   vectoplan-library-postgres-data:
   vectoplan-filecloud-postgres-data:
   vectoplan-chunk-postgres-data:
