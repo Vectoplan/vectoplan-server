@@ -1,0 +1,3115 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1999-1-5 
+ICS 91.01 0.30; 91.080.10 
+Eurocode 9-
+Bemessung und Konstruktion von Aluminiumtragwerken­
+Tei11-5: Schalentragwerke; 
+Deutsche FassungEN 1999-1-5:2007 + AC:2009 
+Eurocode 9-
+Design of alumini um structures­
+Part 1-5: Shell structures; 
+GermanversionEN 1999-1-5:2007 + AC:2009 
+Eurocode 9-
+Calcul des structures en aluminium -
+Partie 1-5: Coques; 
+Versionallemande EN 1999-1-5:2007 + AC:2009 
+Mai 2010 
+DIN 
+Gesamtumfang 77 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung a.V. · Jade Art dar Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e.V., Ber1in, gestattet. 
+Alleinver1<auf der Normen durch Beuth Ver1ag GmbH, 1 0772 Ber1in 
+Preisgruppe 26 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+9843195
+
+===== PDF-SEITE 2 =====
+DIN EN 1999-1-5:2010-05 
+Nationales Vorwort 
+Dieses Dokument (EN 1999-1-5:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten wird, unter 
+deutscher Mitwirkung erarbeitet. 
+Im DIN Deutsches Institut für Normung e. V. ist hierfür der Arbeitsausschuss NA 005-08-07 AA Aluminium-
+konstruktionen unter vorwiegend ruhender Belastung (DIN 4113, Sp CEN/TC 250/SC 9 + CEN/TC 135/WG 11) 
+des Normenausschusses Bauwesen (NABau) zuständig. 
+Dieses Dokument enthält die Berichtigung EN 1999-1-5:2007/AC, die vom CEN am 4. November 2009 
+angenommen wurde. 
+Der Anfang und das Ende der Textstellen, die aufgrund der Berichtigung eingefügt bzw. gestrichen wurden, 
+sind durch   gekennzeichnet. 
+2
+
+===== PDF-SEITE 3 =====
+EN 1999-1-5 
+Februar 2007
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
++AC
+November 2009
+ICS 13.220.50; 91.010.30; 91.080.10
+Deutsche Fassung 
+ Eurocode 9: Bemessung und Konstruktion von 
+Aluminiumtragwerken  
+Teil 1-5: Schalentragwerke 
+Eurocode 9: Design of aluminium structures  
+Part 1-5: Shell structures 
+Eurocode 9: Calcul des structures en aluminium  
+Partie 1-5: Coques 
+Diese Europäische Norm wurde von CEN am 11. Oktober 2006 angenommen. 
+Die Berichtigung AC wurde vom CEN am 4. November 2009 angenommen. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter denen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Listen 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum oder bei jedem CEN-Mitglied auf Anfrage 
+erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sprache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, 
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich 
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: rue de Stassart, 36 B- 1050 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1999-1-5:2007 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+2 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang für EN 1999-1-5...................................................................................................................8
+1 Allgemeines................................................................................................................... .........................9
+1.1 Anwendungsbereich ........................................................................................................... ..................9
+1.1.1 Anwendungsbereich von EN 1999 ............................................................................................. ..........9
+1.1.2 Anwendungsbereich von EN 1999-1-5......................................................................................... ........9
+1.2 Normative Verweisungen...................................................................................................... ..............11
+1.3 Begriffe .................................................................................................................... .............................12
+1.3.1 Formen und Geometrie des Tragwerks........................................................................................ .....12
+1.3.2 Spezielle Definitionen für Beulberechnungen ............................................................................... ...13
+1.4 Formelzeichen............................................................................................................... .......................13
+1.5 Vorzeichenvereinbarungen.................................................................................................... .............17
+1.6 Koordinatensysteme .......................................................................................................... .................18
+2 Grundlagen für Entwurf, Berechnung und Bemessung ..................................................................19
+2.1 Allgemeines................................................................................................................. .........................19
+2.2 Zuverlässigkeitsklasse und Ausführungsklasse .............................................................................19
+3 Werkstoffe und Geometrie...................................................................................................... ............20
+3.1 Werkstoffeigenschaften ...................................................................................................... ................20
+3.2 Bemessungswerte für geometrische Daten...................................................................................... 20
+3.3 Geometrische Toleranzen und geometrische Imperfektionen........................................................20
+4 Dauerhaftigkeit............................................................................................................... ......................20
+5 Tragwerksberechnung ........................................................................................................... .............21
+5.1 Geometrie ................................................................................................................... ..........................21
+5.2 Randbedingungen ............................................................................................................. ..................21
+5.3 Einwirkungen und Einflüsse aus der Umgebung.............................................................................22
+5.4 Spannungsresultanten und Spannungen ......................................................................................... 23
+5.5 Berechnungsarten ............................................................................................................ ...................23
+6 Grenzzustand der Tragfähigkeit................................................................................................ .........25
+6.1 Beanspruchbarkeit des Querschnitts.......................................................................................... ......25
+6.1.1 Bemessungswerte für die Spannungen ........................................................................................ ....25
+6.1.2 Bemessungswerte für die Beanspruchbarkeit ................................................................................. 26
+6.1.3 Spannungsbegrenzung....................................................................................................... ................26
+6.1.4 Bemessung durch numerische Analyse ........................................................................................ ...26
+6.2 Knickfestigkeit (Beanspruchbarkeit durch Beulen; Beulsicherheitsnachweis) ...........................27
+6.2.1 Allgemeines............................................................................................................... ...........................27
+6.2.2 Geometrische Toleranzen, die für Beulen von Belang sind............................................................28
+6.2.3 Schale unter Druck- und Schubbeanspruchungen..........................................................................29
+6.2.4 Einfluss des Schweißens................................................................................................... .................32
+6.2.5 Bemessung durch numerische Analyse ........................................................................................ ...35
+7 Grenzzustände der Gebrauchstauglichkeit ......................................................................................3 5
+7.1 Allgemeines................................................................................................................. .........................35
+7.2 Durchbiegungen .............................................................................................................. ....................35
+Anhang A (normativ) Ausdrücke für Beuluntersuchungen in Schalenkonstruktionen............................36
+A.1 Unausgesteifte zylindrische Schalen mit konstanter Wanddicke ..................................................36
+A.1.1 Anmerkungen und Randbedingungen ........................................................................................... ...36
+A.1.2 (Axialer) Druck in Meridianrichtung....................................................................................... ............36
+A.1.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung)..........................................................39
+A.1.4 Schubbeanspruchung........................................................................................................ .................42
+A.1.5 (Axiale) Druckbeanspruchung in Meridianrichtung mit gleichzeitig vorhandener 
+Innendruckbeanspruchung ................................................................................................................44
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 5 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+3 
+Seite 
+A.1.6 Kombinationen von (axialer) Druckbeanspruchung in Meridianrichtung, 
+Druckbeanspruchung in Umfangsrichtung (Ringspannung) und Schubbeanspruchung ..........45
+A.2 Unausgesteifte Zylinderschalen mit gestufter Wanddicke .............................................................46
+A.2.1 Allgemeines ............................................................................................................... ..........................46
+A.2.2 Druckbeanspruchung in Meridianrichtung (Axialer Druck)............................................................47
+A.2.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) .........................................................47
+A.2.4 Schubbeanspruchung........................................................................................................ .................51
+A.3 Unausgesteifte Zylinderschalen mit Überlappstoß .........................................................................52
+A.3.1 Allgemeines ............................................................................................................... ..........................52
+A.3.2 Druckbeanspruchung in Meridianrichtung (Axialer Druck)............................................................52
+A.3.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) .........................................................52
+A.3.4 Schubbeanspruchung........................................................................................................ .................53
+A.4 Unausgesteifte Kegelschalen ................................................................................................. ...........53
+A.4.1 Allgemeines ............................................................................................................... ..........................53
+A.4.2 Bemessungswerte für Beulspannungen........................................................................................ ...54
+A.4.3 Nachweis der Beulfestigkeit............................................................................................... ................55
+A.5 Ausgesteifte Zylinderschalen mit konstanter Wanddicke ..............................................................56
+A.5.1 Allgemeines ............................................................................................................... ..........................56
+A.5.2 Isotrope Wände mit Steifen in Meridianrichtung ............................................................................ .56
+A.5.3 Isotrope Wände mit Steifen in Umfangsrichtung............................................................................. 57
+A.5.4 In Umfangsrichtung profilierte Wände mit Steifen in Meridianrichtung... .....................................58
+A.5.5 Axial profilierte Wände mit Ringsteifen ................................................................................... .........62
+A.5.6 Als orthotrope Schale behandelte ausgesteifte Wand ....................................................................62
+A.5.7 Äquivalente orthotrope Eigenschaften des Wellblechs..................................................................65
+A.6 Unausgesteifte kugelförmige Schalen unter gleichmäßigem Druck in Umfangsrichtung ..........67
+A.6.1 Bezeichnungen und Randbedingungen......................................................................................... ...67
+A.6.2 Kritische Beulspannungen.................................................................................................. ...............67
+A.6.3 Beulparameter in Umfangsrichtung .......................................................................................... ........68
+Anhang B (informativ) Beulberechnung torikonischer und torisphärischer Schalen ...............................69
+B.1 Allgemeines ................................................................................................................. ........................69
+B.2 Bezeichnungen und Randbedingungen........................................................................................... .69
+B.3 Außendruck.................................................................................................................. ........................70
+B.3.1 Kritischer Außendruck..................................................................................................... ...................70
+B.3.2 Gleichmäßiger Außendruck an der Quetschgrenze ........................................................................71
+B.3.3 Beulparameter unter Außendruck ............................................................................................ .........72
+B.4 Innendruck .................................................................................................................. .........................73
+B.4.1 Kritischer Innendruck ..................................................................................................... ....................73
+B.4.2 Gleichmäßiger Innendruck an der Quetschgrenze ..........................................................................74
+B.4.3 Beulparameter unter Innendruck............................................................................................ ...........74
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 6 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+4 
+Vorwort 
+Diese Europäische Norm (EN 1999-1-5:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 
+„Eurocodes für den konstruktiven Ingenieurbau, dessen Sekretariat vom BSI gehalten wird, erarbeitet. 
+Diese Europäische Norm muss entweder durch Veröffentlichung eines identischen Textes oder durch 
+Anerkennung bis spätestens August 2007 den Status einer nationalen Norm erhalten, und entgegenstehende 
+nationale Normen müssen bis spätestens März 2010 zurückgezogen werden. 
+Diese Europäische Norm ersetzt keine bestehende Europäische Norm. 
+CEN/TC 250 ist für die Erarbeitung aller Eurocodes für den konstruktiven Ingenieurbau zuständig. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 7 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+5 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Aktions-
+programm auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Pro-
+gramms war die Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer 
+Spezifikationen. 
+Im Rahmen dieses Aktionsprogramms leitete die Kommission die Bearbeitung von harmonisierten 
+technischen Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative 
+zu den in den Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das in den 80er Jahren des zwanzigsten Jahrhunderts zu der 
+ersten Eurocode-Generation führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine 
+Vereinbarung
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Richtlinien des Rates und mit den Kommissionsentscheidungen, die die Europäischen 
+Normen behandeln (z. B. die Richtlinie des Rates 89/106/EWG zu Bauprodukten (Bauproduktenrichtlinie), die 
+Richtlinien des Rates 93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und 
+Dienstleistungen und die entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeführt 
+wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und Beton
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauwerken
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumbauten
+Die EN-Eurocodes berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitgliedsländern und 
+haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte berücksichtigt, so dass diese 
+Werte von Land zu Land unterschiedlich bleiben können. 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaften und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 8 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+6 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und der EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung von Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie des Rates 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1: 
+Mechanische Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und die dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Erstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs). 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art 
+sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich aus den 
+Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel 
+sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und die Bemessung von kompletten 
+Tragwerken und Bauteilen, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle Bauweisen 
+und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für ungewöhnliche 
+Baulösungen und Entwurfsbedingungen. Für diese Fälle können zusätzliche Spezialkenntnisse für den 
+Bauplaner erforderlich sein. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Anforderungen in Grundlagendokumenten 
+zu konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die europäische Zulassung 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+ a) die wesentliche Anforderung zu konkretisieren, indem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ b) die Methode zur Verbindung dieser Klassen oder Anforderungshöhen mit technischen Spezifikationen 
+anzugeben, z. B. rechnerische oder Testverfahren, Entwurfsregeln usw., 
+ c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 9 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+7 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, möglicherweise mit einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem (informativen) Nationalen Anhang. 
+Der (informative) Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für 
+nationale Entscheidungen offen gelassen wurden. Diese so genannten national festzulegenden Parameter 
+(NDP) gelten für die Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt 
+werden. Sie umfassen: 
+ Zahlenwerte für die Teilsicherheitsbeiwerte und/oder Klassen, wo die Eurocodes Alternativen eröffnen, 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben, 
+ landesspezifische geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten, 
+ die Vorgehensweise, wenn die Eurocodes mehrere Verfahren zur Wahl anbieten, 
+ Hinweise zur Anwendung der Eurocodes, soweit diese die Euroc odes ergänzen und ihnen nicht 
+widersprechen. 
+Verbindung zwischen den Eurocodes und den harmonisierten technischen 
+Spezifikationen für Bauprodukte (ENs und ETAs) 
+Es besteht die Notwendigkeit, dass die harmonisierten Technischen Spezifikationen für Bauprodukte und die 
+technischen Regelungen für die Tragwerksplanung 4) konsistent sind. Insbesondere sollten alle Hinweise, die 
+mit der CE-Kennzeichnung von Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar 
+erkennen lassen, welche national festzulegenden Parameter (NDP) zugrunde liegen. 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie ebenso wie die Abschnitte 4.2, 4.3.1, 4.3.2 und 5.2 des 
+Grundlagendokumentes Nr. 1. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 10 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+8 
+Nationaler Anhang für EN 1999-1-5 
+Diese Norm enthält alternative Verfahren, Zahlenwerte und Empfehlungen für Klassen zusammen mit 
+Hinweisen, an welchen Stellen nationale Festlegungen möglicherweise getroffen werden müssen. Deshalb 
+sollte die jeweilige nationale Ausgabe von EN 1999-1-5 einen Nationalen Anhang mit allen national 
+festzulegenden Parametern enthalten, die für die Bemessung und Konstruktion von Aluminiumtragwerken, die 
+in dem Ausgabeland gebaut werden sollen, erforderlich sind. 
+Nationale Festlegungen sind in den folgenden Abschnitten von EN 1999-1-5 vorgesehen: 
+ 2.1(3) 
+ 2.1(4). 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 11 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+9 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+1.1.1 Anwendungsbereich von EN 1999 
+(1)P EN 1999 gilt für den Entwurf, die Berechnung und die Bemessung von Bauwerken und Tragwerken aus 
+Aluminium. Sie entspricht den Grundsätzen und Anforderungen an die Sicherheit und Gebrauchstauglichkeit 
+von Tragwerken sowie den Grundlagen für ihre Bemessung und Nachweise, die in EN 1990  Grundlagen 
+der Tragwerksplanung  enthalten sind. 
+(2)P EN 1999 behandelt ausschließlich Anforderungen an die Tragfähigkeit, die Gebrauchstauglichkeit, die 
+Dauerhaftigkeit und den Feuerwiderstand von Tragwerken aus Aluminium. Andere Anforderungen, wie z. B. 
+Wärmeschutz oder Schallschutz, werden nicht behandelt. 
+(3) EN 1999 gilt in Verbindung mit folgenden Regelwerken: 
+ EN 1990, Grundlagen der Tragwerksplanung
+ EN 1991, Einwirkungen auf Tragwerke
+Europäische Normen für Bauprodukte, die für Aluminiumtragwerke Verwendung finden: 
+ EN 1090-1, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 1: Allgemeine Liefer-
+bedingungen5)
+ EN 1090-3, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 3: Technische Regeln für 
+die Ausführung von Aluminiumtragwerken 5)
+(4) EN 1999 ist in fünf Teile gegliedert: 
+EN 1999-1-1, Bemessung und Konstruktion von Aluminiumtragwerken: Allgemeine Bemessungsregeln
+EN 1999-1-2, Bemessung und Konstruktion von Aluminiumtragwerken: Tragwerksbemessung für den 
+Brandfall
+EN 1999-1-3, Bemessung und Konstruktion von Aluminiumtragwerken: Ermüdungsbeanspruchte Tragwerke
+EN 1999-1-4, Bemessung und Konstruktion von Aluminiumtragwerken: Kaltgeformte Profiltafeln
+EN 1999-1-5, Bemessung und Konstruktion von Aluminiumtragwerken: Schalen
+1.1.2 Anwendungsbereich von EN 1999-1-5 
+(1)P EN 1999-1-5 gilt für die Bemessung von ausgesteiften und nicht ausgesteiften Aluminiumtragwerken, 
+die in Form einer Rotationsschale oder einer als Schale gestalteten kreisförmigen Platte vorliegen. 
+(2) Für spezifische Anwendungsregeln bei der Tragwerksbemessung sollten die jeweils zutreffenden Teile 
+von EN 1999 befolgt werden. 
+(3) Zusätzliche Informationen für bestimmte Arten von Schalen werden in EN 1993-1-6 und in den für 
+bestimmte Anwendungen zutreffenden Teilen angegeben, z. B.: 
+ Teil 3-1 für Türme und Maste; 
+5) In Vorbereitung. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 12 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+10 
+ Teil 3-2 für Schornsteine; 
+ Teil 4-1 für Silos; 
+ Teil 4-2 für Tankbauwerke; 
+ Teil 4-3 für Rohrleitungen. 
+(4) Die in EN 1999-1-5 erfassten Bestimmungen gelten für rotationssymmetrische Schalen (Zylinder, Kegel, 
+Kugeln) und die zugehörigen kreisförmigen oder ringförmigen Bleche sowie für Balkenprofilringe und 
+Längssteifen, die Teile des kompletten Tragwerks sind. 
+(5) EN 1999-1-5 beschäftigt sich nicht ausführlich mit einzelnen Platten für Schalenkonstruktionen 
+(zylindrisch, konisch oder kugelförmig). Die erfassten Bestimmungen können jedoch bei entsprechender 
+Berücksichtigung der jeweiligen Randbedingungen auch auf einzelne Platten anwendbar sein. 
+(6) In EN 1999-1-5 können folgende Arten von Schalenwänden erfasst werden, siehe Bild 1.1: 
+ Schalenwand aus flach gewalztem Blech, als isotrop bezeichnet; 
+ Schalenwand mit überlappten Verbindungen aneinandergrenzender Bleche, als überlappt 
+gestoßen bezeichnet; 
+ Schalenwand mit an der Außenseite angebrachten Steifen, die unabhängig vom Abstand der Steifen als 
+außen versteift bezeichnet werden; 
+ Schalenwand mit Profilierung in Meridianrichtung, als axial profiliert bezeichnet; 
+ Schalenwand aus profilierten Blechen (Wellblechen) mit Profilierung in Umfangsrichtung, als in 
+Umfangsrichtung profiliert bezeichnet. 
+Längsschnitt 
+Horizontalschnitt 
+isotrop 
+(unversteift) 
+überlappt 
+gestoßen 
+außen versteift axial profiliert in Umfangsrichtung 
+profiliert 
+Bild 1.1  Darstellung der Formen zylindrischer Schalen 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 13 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+11 
+(7) Die Bestimmungen von EN 1999-1-5 sind für einen Temperaturbereich vorgesehen, der in EN 1999-1-1 
+festgelegt wird. Die maximale Temperatur wird so beschränkt, dass der Einfluss des Kriechens vernachlässigt 
+werden kann. Für Tragwerke, die bei einem Brand erhöhten Temperaturen ausgesetzt sind, siehe 
+EN 1999-1-2. 
+(8) EN 1999-1-5 beschäftigt sich nicht mit Undichtheiten der Schale. 
+1.2 Normative Verweisungen 
+(1) Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+EN 1090-1, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 1: Konformitätsnachweis-
+verfahren für tragende Bauteile5)
+EN 1090-3, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 3: Technische Anforderungen 
+für Aluminiumtragwerken 5)
+EN 1990, Grundlagen der Tragwerksplanung
+EN 1991, Einwirkungen auf Tragwerke; alle Teile 
+EN 1993-1-6, Bemessung und Konstruktion von Stahlbauten  Teil 1-6: Allgemeine Bemessungsregeln  
+Ergänzende Regeln für Schalenkonstruktionen 
+EN 1993-3-2, Bemessung und Konstruktion von Stahlbauten  Teil 3-2: Türme, Maste und Schornsteine  
+Schornsteine 
+EN 1993-4-1, Bemessung und Konstruktion von Stahlbauten  Teil 4-1: Silos, Tankbauwerke und 
+Rohrleitungen  Silos 
+EN 1993-4-2, Bemessung und Konstruktion von Stahlbauten  Teil 4-2: Silos, Tankbauwerke und 
+Rohrleitungen  Tankbauwerke 
+EN 1993-4-3, Bemessung und Konstruktion von Stahlbauten  Teil 4-3: Silos, Tankbauwerke und Rohr-
+leitungen  Rohrleitungen 
+EN 1999-1-1, Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-1: Allgemeine Bemessungs-
+regeln 
+EN 1999-1-2, Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-2: Tragwerksbemessung für 
+den Brandfall 
+EN 1999-1-3, Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-3: Ermüdungsbeanspruchte 
+Tragwerke 
+EN 1999-1-4, Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-4: Kaltgeformte Bleche 
+5) In Vorbereitung. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 14 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+12 
+1.3 Begriffe 
+(1) Für die Anwendung dieses Dokuments gelten die Begriffe nach EN 1999-1-1 und die folgenden Begriffe. 
+1.3.1 Formen und Geometrie des Tragwerks 
+1.3.1.1 
+Schale 
+dünnwandiger Körper, der so geformt wird, dass eine gekrümmte Oberfläche entsteht, mit einer Dicke, die bei 
+einer Messung rechtwinklig zur Oberfläche gegenüber den in die anderen Richtungen ermittelten Maßen klein 
+ist. Eine Schale nimmt die Lasten hauptsächlich durch Membrankräfte auf. Die Mittelfläche darf an jedem 
+Punkt einen endlichen Krümmungsradius haben, oder sie darf in einer Richtung unendlich gekrümmt sein, 
+z. B. eine Zylinderschale 
+In EN 1999-1-5 ist eine Schale ein Tragwerk oder ein Teil des Tragwerks, das aus gekrümmten Blechen oder 
+Strangpressteilen gebildet wird. 
+1.3.1.2 
+Rotationsschale 
+Schale, die aus einer Anzahl von Teilen besteht, von denen jedes eine vollständige rotationssymmetrische 
+Schale ist 
+1.3.1.3 
+vollständige rotationssymmetrische Schale 
+Schale, deren Form durch die Rotation ihrer meridionalen Erzeugenden um eine zentrale Achse über 2 
+Radiant festgelegt wird. Die Schale kann eine beliebige Länge haben 
+1.3.1.4 
+Schalenabschnitt 
+Teil einer Rotationsschale mit festgelegter Schalengeometrie und konstanter Wanddicke in Form eines 
+Zylinders, Kegelstumpfes, Teils einer Kugel, Bodenrandblechs oder in einer anderen Form 
+1.3.1.5 
+Schalenplatte 
+unvollständige rotationssymmetrische Schale, deren Form durch die Rotation einer Erzeugenden um eine 
+Achse über weniger als 2 Radiant festgelegt wird 
+1.3.1.6 
+Mittelfläche 
+Fläche, die an allen Punkten der Schale in der Mitte zwischen der Schaleninnen- und -außenfläche liegt. Falls 
+eine Aussteifung der Schale auf nur einer Seite erfolgt, bleibt die Mittelfläche des gekrümmten Schalenblechs 
+weiter die Bezugsfläche für die Berechnung, die bei Änderungen der Dicke oder an Knotenlinien der Schale 
+diskontinuierlich sein kann, wodurch Exzentrizitäten entstehen, die für das Verhalten der Schale wesentlich 
+sind 
+1.3.1.7 
+Knotenlinie 
+Punkt, an dem zwei oder mehr Schalenabschnitte zusammentreffen; die Knotenlinie kann auch eine Steife 
+einschließen; die Anschlusslinie einer Ringsteife an eine Schale darf ebenfalls als Knotenlinie betrachtet 
+werden 
+1.3.1.8 
+Längssteife 
+örtliches Versteifungsbauteil, das einem Schalenmeridian folgt, welcher eine Erzeugende der Rotationsschale 
+darstellt. Eine Längssteife ist vorgesehen, um entweder die Stabilität zu verbessern oder bei der Einleitung 
+örtlicher Lasten mitzuwirken. Sie dient nicht primär dazu, die Biegetragfähigkeit für Querlasten zu erhöhen 
+1.3.1.9 
+Rippe 
+örtliches Bauteil, das eine primäre Biegelastabtragung längs eines Schalenmeridians ermöglicht, welcher eine 
+Erzeugende der Rotationsschale darstellt. Eine Rippe wird vorgesehen, um Querlasten mittels Biegung auf 
+das Tragwerk zu übertragen oder zu verteilen 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 15 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+13 
+1.3.1.10 
+Ringsteife 
+örtliches Versteifungsbauteil, das an einem bestimmten Punkt auf dem Meridian längs des Umfanges der 
+Rotationsschale verläuft. Es wird angenommen, dass die Ringsteife keine Steifigkeit in der Meridianebene der 
+Schale hat. Sie wird verwendet, um die Stabilität zu erhöhen oder um rotationssymmetrische Einzellasten 
+einzuleiten, die durch rotationssymmetrische Normalkräfte in der Ebene des Ringes wirken. Sie dient nicht 
+primär dazu, die Biegetragfähigkeit zu erhöhen 
+1.3.1.11 
+Basisring 
+Tragwerkselement, das der Umfangslinie an der Basis der Rotationsschale folgt und Möglichkeiten zur 
+Anbringung der Schale an einem Fundament oder einem anderen Teil bietet. Der Basisring wird benötigt, um 
+die angenommenen Randbedingungen praktisch sicherzustellen 
+1.3.2 Spezielle Definitionen für Beulberechnungen 
+1.3.2.1 
+ideale Verzweigungslast; Grenz-Beullast 
+die kleinste Verzweigungs- oder Grenzlast, die unter der Annahme bestimmt wird, dass ideale Bedingungen 
+für das elastische Verhalten des Werkstoffs, eine exakte Geometrie, eine exakte Lastaufbringung, eine exakte 
+Unterstützung, Materialisotropie und keine Restspannungen vorhanden sind (LBA-Analyse) 
+1.3.2.2 
+ideale Beulspannung; Grenz-Beulspannung 
+der Nennwert der Membranspannung, der einer idealen Verzweigungslast zuzuordnen ist 
+1.3.2.3 
+charakteristische Beulspannung 
+der Nennwert der Membranspannung, der einer Knickung (Beulenbildung) bei unelastischem Werkstoff-
+verhalten und bei Vorhandensein geometrischer und konstruktiver Imperfektionen zuzuordnen ist 
+1.3.2.4 
+Bemessungswert der Beulspannung 
+der Bemessungswert für die Beulspannung, der durch Dividieren der charakteristischen Beulspannung durch 
+den Teilsicherheitsbeiwert für die Beanspruchbarkeit ermittelt wird 
+1.3.2.5 
+Schlüsselwert der Spannung 
+in einem ungleichmäßigen Spannungsfeld der Spannungswert, der beim Grenzzustand des Beulens zur 
+Beschreibung der Größe der Spannung verwendet wird 
+1.3.2.6 
+Toleranzklasse 
+die Klasse für die Anforderungen, die bei Ausführung der Arbeiten an die geometrischen Toleranzen gestellt 
+werden 
+ANMERKUNG Diese geometrischen Toleranzen umfassen die Herstellungstoleranz der Bauteile und die Toleranz für 
+die Ausführung der Arbeiten mit den Bauteilen auf der Baustelle. 
+1.4 Formelzeichen 
+(1) Außer den in EN 1999-1-1 festgelegten werden folgende Formelzeichen angewendet. 
+(2) Koordinatensystem (siehe Bild 1.2): 
+r Radiale Koordinate, rechtwinklig zur Rotationsachse; 
+x Meridiankoordinate; 
+z axiale Koordinate; 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 16 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+14 
+Koordinate in Umfangsrichtung; 
+Medianneigung: Winkel zwischen Rotationsachse und der Senkrechten zum Schalenmeridian; 
+(3) Drücke: 
+pn Druck rechtwinklig zur Schale; 
+px Flächenlast in Meridianrichtung parallel zur Schale; 
+p Flächenlast in Umfangsrichtung parallel zur Schale 
+(4) Linienkräfte: 
+Pn Last je Umfangseinheit, rechtwinklig zur Schale; 
+Px Last je Umfangseinheit, in Meridianrichtung wirkend; 
+P Last je Umfangseinheit, in Umfangsrichtung auf die Schale wirkend; 
+(5) Membranspannungsresultanten (siehe Bild 1.3a): 
+nx Membranspannungsresultante in Meridianrichtung; 
+n Membranspannungsresultante in Umfangsrichtung; 
+nx Membranschubspannungsresultante; 
+(6) Biegespannungsresultanten (siehe Bild 1.3b): 
+mx Biegemoment je Längeneinheit in Meridianrichtung; 
+m Biegemoment je Längeneinheit in Umfangsrichtung; 
+mx Drillschermoment je Längeneinheit; 
+qxn Querkraft bei Biegung in Meridianrichtung; 
+q n Querkraft bei Biegung in Umfangsrichtung; 
+(7) Spannungen: 
+x Meridianspannung; 
+Umfangsspannung; 
+eq von-Mises-Ersatzspannung (kann unter zyklischen Belastungsbedingungen negativ sein); 
+, x Schubspannung in einer Ebene; 
+xn, n Querschubspannungen bei Biegung in Meridianrichtung, in Umfangsrichtung 
+(8) Verschiebungen: 
+u Verschiebung in Meridianrichtung; 
+v Verschiebung in Umfangsrichtung; 
+w Verschiebung rechtwinklig zur Oberfläche der Schale; 
+Rotation in Meridianrichtung (siehe 5.3.3); 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 17 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+15 
+(9) Abmessungen der Schale: 
+d Innendurchmesser der Schale; 
+L Gesamtlänge der Schale; 
+l Länge eines Schalenabschnitts; 
+lg Messlänge für die Messung der Imperfektionen; 
+lg Messlänge für die Messung der Imperfektionen in Umfangsrichtung; 
+lg,w Messlänge für die Messung der Imperfektionen über die Schweißnähte; 
+lR begrenzte Länge der Schale für den Beulsicherheitsnachweis; 
+r Radius der Mittelfläche, rechtwinklig zur Rotationsachse; 
+t Wanddicke der Schale; 
+tmax größte Wanddicke der Schale an einem Anschluss; 
+tmin kleinste Wanddicke der Schale an einem Anschluss; 
+tave mittlere Wanddicke der Schale an einem Anschluss; 
+halber Kegelspitzenwinkel; 
+1 2 3 
+4 5 6 
+Legende 
+1 Oberflächendrücke 
+2 Koordinaten 
+3 Membranspannungen 
+4 Richtungen: 
+in Umfangsrichtung 
+n rechtwinklig 
+x in Meridianrichtung 
+5 Verschiebungen 
+6 Schubspannungen in Querrichtung
+Bild 1.2  Formelzeichen für Rotationsschalen 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 18 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+16 
+a) Membranspannungsresultanten b) Biegespannungsresultanten 
+Bild 1.3  Spannungsresultierende in der Schalenwand 
+ (im Bild ist x die meridiale und y die Umfangsrichtung) 
+(10) Toleranzen (siehe 6.2.2): 
+e Exzentrizität zwischen den Mittelflächen der verbundenen Platten; 
+Ue Toleranzparameter für die unplanmäßige Exzentrizität; 
+Ur Toleranzparameter für die Rundheitsabweichung; 
+U0 Toleranzparameter für die Ausgangsbeule; 
+w0 Toleranz rechtwinklig zur Schalenoberfläche; 
+(11) Werkstoffeigenschaften: 
+feq von-Mises-Ersatzfestigkeit; 
+fu charakteristischer Wert für die Bruchfestigkeit; 
+fo charakteristischer Wert für die 0,2%-Dehngrenze; 
+(12) Parameter zur Festigkeitsbeurteilung: 
+C Beiwert für den Beulsicherheitsnachweis; 
+C Dehnsteifigkeit der Bleche in axialer Richtung; 
+C Dehnsteifigkeit der Bleche in Umfangsrichtung; 
+C Dehnsteifigkeit der Bleche bei Schubbeanspruchung der Membran; 
+D Biegesteifigkeit der Bleche in axialer Richtung; 
+D Biegesteifigkeit der Bleche in Umfangsrichtung; 
+D Drillbiegesteifigkeit der Bleche beim Verdrehen; 
+R errechnete Beanspruchbarkeit (mit Indizes zur Kennzeichnung des Bezugs verwendet); 
+Rpl plastische Bezugs-Beanspruchbarkeit (als Lastfaktor bei Bemessung der Lasten festgelegt); 
+Rcr ideale Verzweigungslast (als Lastfaktor bei Bemessung der Lasten festgelegt); 
+k Kalibrierfaktor für nichtlineare Berechnungen; 
+k(…) Potenz in den Ausdrücken für die Interaktion der Beulfestigkeit; 
+µ Härtungsparameter der Legierung in den Beul-Diagrammen für Schalen; 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 19 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+17 
+a(…) beim Beulsicherheitsnachweis der Abminderungsfaktor für Imperfektionen; 
+Bereich der Parameter bei Einbeziehung alternierender oder zyklischer Einwirkungen; 
+(13) Bemessungswerte für Spannungen und Spannungsresultanten: 
+x,Ed Bemessungswerte für die beulen-relevante Membranspannung in Meridianrichtung (positiv, wenn 
+Druck); 
+,Ed Bemessungswerte für die beulen-relevante Membranspannung (Ringspannung) in Umfangsrichtung 
+(positiv, wenn Druck); 
+ Ed Bemessungswerte für die beulen-relevante Membranschubspannung; 
+nx,Ed Bemessungswerte für die beulen-relevante Membranspannungsresultante in Meridianrichtung 
+(positiv, wenn Druck); 
+n ,Ed Bemessungswerte für die beulen-relevante Membranspannung (Ringspannung) in Umfangsrichtung 
+(positiv, wenn Druck); 
+nx ,Ed Bemessungswerte für die beulen-relevante Membranschubspannungsresultante; 
+(14) Kritische Beulspannungen und Widerstände gegen Beulspannungen: 
+x,cr kritische Beulspannung in Meridianrichtung; 
+,cr kritische Beulspannung in Umfangsrichtung; 
+ cr kritische Beulschubspannung; 
+x,Rd Bemessungswert für die Beanspruchbarkeit durch Beulspannungen in Meridianrichtung; 
+,Rd Bemessungswert für die Beanspruchbarkeit durch Beulspannungen in Umfangsrichtung; 
+Rd Bemessungswert für die Beanspruchbarkeit durch Beulschubspannungen. 
+(15) Weitere Formelzeichen werden bei ihrer Erstverwendung definiert. 
+1.5 Vorzeichenvereinbarungen 
+(1) Mit Ausnahme von (2) gelten im Allgemeinen folgende Vorzeichenvereinbarungen: 
+ nach außen gerichtet positiv; 
+ Innendruck positiv; 
+ Verschiebung nach außen positiv; 
+ Zugspannungen positiv; 
+ Schubspannungen wie in Bild 1.2 dargestellt. 
+(2) Zur Vereinfachung werden bei Beuluntersuchungen Druckspannungen als positiv angesetzt. In diesen 
+Fällen werden sowohl Außendrücke als auch Innendrücke als positiv angesetzt. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 20 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+18 
+1.6 Koordinatensysteme 
+(1) Im Allgemeinen wird für das globale Schalentragwerk ein zylindrisches Koordinatensystem wie folgt 
+verwendet (siehe Bild 1.4): 
+Koordinate längs der Mittelachse der Rotationsschale z
+Radiale Koordinate r
+Koordinate in Umfangsrichtung 
+Legende 
+(p) Pol 
+(m) Schalenmeridian 
+(c) Pol der Meridiankrümmung
+Bild 1.4  Koordinatensysteme für eine kreisförmige Schale 
+(2) Die Vereinbarung für Tragwerksteile, die mit der Tankwand verbunden sind (siehe Bild 1.5), ist für solche 
+in Meridianrichtung und solche in Umfangsrichtung unterschiedlich. 
+(3) Die Vereinbarung für gerade, mit der Tankwand verbundene Tragelemente in Meridianrichtung [siehe 
+Bild 1.5a)] ist: 
+Meridiankoordinate für Zylinder, Auslaufkegel und Dachanschluss x
+Starke Biegeachse (parallel zu den Flanschen: Achse für Biegung in Meridianrichtung) y
+Schwache Biegeachse (rechtwinklig zu den Flanschen) z
+(4) Die Vereinbarung für gekrümmte, mit der Tankwand verbundene Tragelemente in Umfangsrichtung 
+[siehe Bild 1.5b)] ist: 
+Achse der Umfangskoordinate (gekrümmt) 
+Radiale Achse (Biegeachse in der Meridianebene) r
+Meridianachse (Biegeachse für Umfangsbiegung) z 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 21 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+19 
+a) Meridiansteife b) Umfangssteife 
+Bild 1.5  Lokales Koordinatensystem für Meridiansteifen und Umfangssteifen bei einer Schale 
+2 Grundlagen für Entwurf, Berechnung und Bemessung 
+2.1 Allgemeines 
+(1)P Schalen müssen nach den in EN 1990 und EN 1999-1-1 angegebenen Regeln berechnet und 
+bemessen werden. 
+(2)P Für die Grenzzustände der Tragfähigkeit und der Gebrauchstauglichkeit müssen geeignete Teil-
+sicherheitsbeiwerte ausgewählt werden. 
+(3)P Für den rechnerischen Nachweis für die Grenzzustände der Tragfähigkeit muss der Teilsicherheits-
+beiwert M folgendermaßen festgelegt werden: 
+ Beanspruchbarkeit gegen Instabilität und Fließen: M1
+ Beanspruchbarkeit der unter Zug stehenden Platte bis zum Bruch: M2
+ Beanspruchbarkeit der Verbindungen: siehe EN 1999-1-1 
+ANMERKUNG Im Nationalen Anhang dürfen Werte der Teilsicherheitsbeiwerte Mi festgelegt werden. Folgende 
+Zahlenwerte werden empfohlen: 
+M1 1,10 
+M2 1,25 
+(4) Für Nachweise der Grenzzustände für die Gebrauchstauglichkeit sollte der Teilsicherheitsbeiwert M,ser
+verwendet werden. 
+ANMERKUNG Im Nationalen Anhang dürfen Werte für die Teilsicherheitsbeiwerte M,ser festgelegt werden. Folgender 
+Zahlenwert wird empfohlen: 
+M,ser 1,0 
+2.2 Zuverlässigkeitsklasse und Ausführungsklasse 
+(1) Die Auswahl der Zuverlässigkeitsklasse 1, 2 oder 3, siehe EN 1999-1-1, sollte vom Tragwerksplaner und 
+dem für die Bauarbeiten Verantwortlichen unter Berücksichtigung nationaler Festlegungen gemeinsam 
+getroffen werden. 
+(2) Die Ausführungsklasse, siehe EN 1999-1-1, sollte in der Ausführungsspezifikation festgelegt werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 22 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+20 
+3 Werkstoffe und Geometrie 
+3.1 Werkstoffeigenschaften 
+(1) EN 1999-1-5 gilt für die in den Tabellen 3.2a) und b) von EN 1999-1-1 aufgeführten Knetwerkstoffe 
+(Knetlegierungen und Zustände) und für kalt umgeformte Bleche in Tabelle 2.1 von EN 1999-1-4. 
+(2) Für Einsatztemperaturen zwischen 80 °C und 100 °C sollten die Werkstoffeigenschaften aus 
+EN 1999-1-1 entnommen werden. 
+(3) Bei einer umfassenden zahlenmäßigen Untersuchung sollte unter Anwendung der Nichtlinearität von 
+Werkstoffen das jeweils geeignete Spannungs-Dehnungs-Diagramm aus Anhang E von EN 1999-1-1 
+ausgewählt werden. 
+3.2 Bemessungswerte für geometrische Daten 
+(1) Die Dicke t der Schale sollte der in 1999-1-1 und in 1999-1-4 angegebenen Definition entsprechen. 
+(2) Die Mittelfläche der Schale sollte als Bezugsfläche für die Lasten angenommen werden. 
+(3) Der Radius r der Schale sollte als der rechtwinklig zur Rotationsachse gemessene Nennradius der 
+Mittelfläche der Schale angenommen werden. 
+3.3 Geometrische Toleranzen und geometrische Imperfektionen 
+(1) Folgende geometrische Abweichungen der Schalenoberfläche von der Nennform müssen berücksichtigt 
+werden: 
+ Rundheitsabweichung (Abweichung von der Kreisform); 
+ Exzentrizitäten (Abweichungen von einer kontinuierlichen Mittelfläche rechtwinklig zur Schale entlang der 
+Knotenlinien der Platten); 
+ örtlich auftretende Dellen (örtliche Normalabweichungen von der Nenn-Mittelfläche). 
+ANMERKUNG EN 1090-3 enthält Anforderungen an geometrische Toleranzen für Schalentragwerke aufzunehmen. 
+Anhang C. 
+(2) Geometrische Toleranz für Beulen siehe 6.2.2. 
+4 Dauerhaftigkeit 
+(1) Die grundlegenden Anforderungen sind aus Abschnitt 4 von EN 1999-1-1 zu entnehmen. 
+(2) Besonders zu beachten sind die Fälle, in denen ein Verbund unterschiedlicher Werkstoffe vorgesehen ist, 
+wenn durch elektrochemische Erscheinungen Bedingungen auftreten können, die Korrosion begünstigen. 
+ANMERKUNG Angaben zur Korrosionsbeständigkeit von Verbindungsmitteln für die umgebungsbedingten 
+Korrosivitätsklassen nach EN ISO 12944-2 sind aus EN 1999-1-4 zu entnehmen. 
+(3) Die ab dem Zeitpunkt der Herstellung sowie bei Transport und Lagerung auf der Baustelle auftretenden 
+Umgebungsbedingungen sollten berücksichtigt werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 23 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+21 
+5 Tragwerksberechnung 
+5.1 Geometrie 
+(1) Die Schale sollte durch ihre Mittelfläche repräsentiert werden. 
+(2) Der Krümmungsradius sollte als Nenn-Krümmungsradius angesehen werden. 
+(3) Für die Berechnung sollte eine aus mehreren Schalenabschnitten bestehende Baugruppe nur dann in 
+einzelne Abschnitte unterteilt werden, wenn die Randbedingungen für jeden Abschnitt so ausgewählt werden, 
+dass die Interaktionen zwischen ihnen auf herkömmliche Weise dargestellt werden. 
+(4) In das Berechnungsmodell sollte ein Basisring zur Ableitung der Stützkräfte in die Schale einbezogen 
+werden. 
+(5) Exzentrizitäten und Stufen in der Mittelfläche der Schale sollten im Berechnungsmodell berücksichtigt 
+werden, wenn sie bedingt durch den exzentrischen Verlauf der Membranspannungsresultanten signifikante 
+Biegeeinwirkungen einbringen. 
+(6) Im Berechnungsmodell sollten an den Knotenlinien zwischen den Schalenabschnitten alle Exzentrizitäten 
+auf den Mittelflächen der Schalenabschnitte berücksichtigt werden. 
+(7) Eine Ringsteife sollte als gesondertes Tragwerksteil der Schale angesehen werden, sofern die Abstände 
+zwischen den Ringen nicht kleiner als 
+rt51, sind. 
+(8) Eine Schale, an der diskrete Längssteifen angebracht sind, darf als gleichmäßig orthotrope Schale 
+angesehen werden, wenn die Längssteifen nicht weiter als rt5 voneinander entfernt sind. 
+(9) Eine (axial oder in Umfangsrichtung) profilierte Schale darf als gleichmäßig orthotrope Schale angesehen 
+werden, wenn die Wellenlänge der Profilierungen kleiner als rt50, ist (siehe A.5.7). 
+(10) Ein Loch in der Schale darf bei der Modellierung vernachlässigt werden, wenn das größte Lochmaß 
+kleiner als rt50, ist. 
+(11) Die Gesamtstabilität des vollständigen Tragwerks kann je nach Gültigkeit in Übereinstimmung mit 
+EN 1993, Teile 3-1, 3-2, 4-1, 4-2 oder 4-3 nachgewiesen werden. 
+5.2 Randbedingungen 
+(1) Bei den Berechnungen für die Grenzzustände sollten die geeigneten Randbedingungen nach Tabelle 5.1 
+angewendet werden. Die zur Berechnung der Beulsicherheit erforderlichen Sonderbedingungen sollten aus 
+6.2 entnommen werden. 
+(2) Beim Berechnungsmodell für den plastischen Grenzzustand dürfen Rotationsbehinderungen an den 
+Schalengrenzen unberücksichtigt bleiben. Für kurze Schalen (siehe Anhang A) sollte eine Behinderung der 
+Rotation in die Berechnung der Beulsicherheit einbezogen werden. 
+(3) Die Randbedingungen für die Abstützung sollten überprüft werden, um sicherzustellen, dass sie keine zu 
+große Ungleichmäßigkeit der übertragenen oder eingeleiteten Kräfte exzentrisch zur Schalenmittelfläche 
+veranlassen. 
+(4) Wenn eine umfassende zahlenmäßige Berechnung durchgeführt wird, sollte auch für die rechtwinklig zur 
+Schalenoberfläche erfolgende Verschiebung w die Randbedingung für die Umfangsverschiebung v ange-
+wendet werden, sofern dieses Vorgehen nicht durch besondere Umstände ungeeignet ist. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 24 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+22 
+Tabelle 5.1  Randbedingungen für Schalen 
+Beschreibung 
+Beul-
+klasse 
+Einfache 
+Befestigungs-
+bedingung Radial In Meridian-
+richtung Rotation 
+Ver-
+schiebungen 
+rechtwinklig 
+zur Oberfläche
+Verschie-
+bungen in 
+Meridian-
+richtung 
+Rotation in 
+Meridian-
+richtung 
+BC1r Eingespannt Behindert Behindert Behindert w 0 u 0 0 
+BC1f Behindert Behindert Frei w 0 u 0 0 
+BC2r Behindert Frei Behindert w 0 u 0 0 
+BC2f Gelenkig gelagert Behindert Frei Frei w 0 u 0 0 
+BC3 Freier Rand Frei Frei Frei w 0 u 0 0 
+ANMERKUNG Die Verschiebung in Umfangsrichtung v und die Verschiebung w rechtwinklig zur Oberfläche sind so 
+eng miteinander verknüpft, dass keine gesonderten Randbedingungen benötigt werden.
+5.3 Einwirkungen und Einflüsse aus der Umgebung 
+(1) Es sollte vorausgesetzt werden, dass die Einwirkungen auf die Mittelfläche erfolgen. Exzentrisch 
+wirkende Lasten müssen durch statische Ersatzkräfte und -momente auf die Mittelfläche der Schale 
+veranschaulicht werden. 
+(2) Sofern nicht anders angegeben, sollten örtliche Einwirkungen und örtliche Korrekturen der Einwirkung 
+nicht durch gleichmäßige Ersatzlasten dargestellt werden. 
+(3) Die Einwirkungen und die kombinierten Einwirkungen werden in EN 1991 und EN 1990 erfasst. 
+Außerdem sollten diejenigen der folgenden Einwirkungen, die für das Tragwerk von Bedeutung sind, bei der 
+Tragwerksberechnung berücksichtigt werden: 
+ lokale Setzung unter den Schalenwänden; 
+ lokale Setzung unter Einzelstützen; 
+ gleichmäßige Abstützung des Tragwerks; 
+ Temperaturunterschiede zwischen den verschiedenen Seiten des Tragwerks; 
+ Temperaturunterschiede zwischen Innen- und Außenseite des Tragwerks; 
+ Windeinwirkungen auf Öffnungen und Durchbrüche; 
+ Interaktion von Windwirkungen auf Gruppen der Tragwerke; 
+ Verbindungen mit anderen Tragwerken; 
+ Bedingungen während der Montage. 
+(4) Die Schalen können bedingt durch die Art der Einleitung der Lasten durch Membrankräfte empfindlich 
+gegenüber Änderungen der geometrischen Bedingungen sein, z. B. durch Dellen. Außer den bei der 
+Ausführung veranlassten unvermeidbaren geometrischen Abweichungen können Dellen durch unvorher-
+gesehene Einwirkungen während des Einsatzes entstehen. Die Empfindlichkeit steigt bei Anwendung relativ 
+dünner Bauteile. Falls Dellen eingebracht werden, deren Größe die in B.4 angegebenen Werte überschreitet, 
+sollten die Auswirkungen auf die Tragfähigkeit untersucht werden. Es wird empfohlen, ein Programm zur 
+regelmäßigen Überprüfung der geometrischen Bedingungen anzuwenden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 25 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+23 
+(5) Bei Auswahl des Konzeptes für Entwurf, Bemessung und Berechnung sollte die Möglichkeiten 
+berücksichtigt werden, durch die unzulässige Dellen zu vermeiden sind. Diese Möglichkeiten können z. B. 
+darin bestehen, dass größere als nach der Berechnung notwendige Dicken angewendet werden oder indem 
+für die Bereiche, in denen das Risiko als signifikant eingeschätzt wird, Schutzmaßnahmen vorgesehen 
+werden. 
+5.4 Spannungsresultanten und Spannungen 
+(1) Unter der Voraussetzung, dass das Verhältnis Radius/Dicke größer ist als ( r/t)min 25, darf die 
+Krümmung der Schale bei Berechnung der Spannungsresultanten aus den Spannungen in der Schalenwand 
+vernachlässigt werden. 
+5.5 Berechnungsarten 
+(1) Die Bemessung sollte in Abhängigkeit vom Grenzzustand und von anderen Erwägungen auf einer oder 
+mehreren der in Tabelle 5.2 angegebenen Berechnungsarten basieren. Die Berechnungsarten werden in 
+Tabelle 5.3 ausführlicher erläutert. Für weitere Einzelheiten wird auf EN 1993-1-6 verweisen. 
+Tabelle 5.2  Berechnungsarten für Schalentragwerke 
+Berechnungsart Schalentheorie Werkstoff-
+gesetz Schalengeometrie 
+Membrantheorie MTA Membrangleichgewicht Nicht 
+anwendbar Ohne Imperfektionena
+Linear elastische Analyse der 
+Schale LA Lineare Biegung und 
+Streckung Linear Ohne Imperfektionena
+Linear elastische 
+Verzweigungsanalyse LBA Lineare Biegung und 
+Streckung Linear Ohne Imperfektionena
+Geometrisch nichtlineare 
+elastische Analyse GNA Nichtlinear Linear Ohne Imperfektionena
+Materiell nichtlineare Analyse MNA Linear Nichtlinear Ohne Imperfektionen a
+Geometrisch und materiell 
+nichtlineare Analyse GMNA Nichtlinear Nichtlinear Ohne Imperfektionena
+Geometrisch nichtlineare 
+elastische Analyse mit 
+Imperfektionen 
+GNIA Nichtlinear Linear Mit Imperfektionen
+b
+Geometrisch und materiell 
+nichtlineare Analyse mit 
+Imperfektionen 
+GMNIA Nichtlinear Nichtlinear Mit Imperfektionenb
+a Geometrie ohne Imperfektionen bedeutet, dass bei diesem Berechnungsmodell die geometrischen Nennbedingungen ohne 
+Berücksichtigung der entsprechenden Abweichungen angewendet werden. 
+b Geometrie mit Imperfektionen bedeutet, dass bei diesem Berechnungsmodell die geometrischen Abweichungen von den 
+geometrischen Nennbedingungen (Toleranzen) berücksichtigt werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 26 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+24 
+Tabelle 5.3  Beschreibung der Berechnungsarten für Schalentragwerke 
+Membrantheorie (MTA) 
+Analyse eines durch Flächenlasten beanspruchten Schalentragwerks unter 
+Annahme einer Reihe von Membrankräften, die mit den äußeren Lasten im 
+Gleichgewicht stehen 
+Linear elastische 
+Analyse der Schale (LA) 
+Analyse auf Basis der kleinsten Abweichung der linearen elastischen 
+Biegetheorie unter Annahme geometrischer Bedingungen ohne Imperfektionen 
+Linear elastische Ver-
+zweigungsanalyse 
+(LBA) 
+Analyse, die den Eigenwert der linear elastischen Verzweigungen auf der Basis 
+kleiner Abweichungen unter Verwendung der linear elastischen Biegetheorie 
+errechnet, wobei geometrische Bedingungen ohne Imperfektionen vorausgesetzt 
+werden. Es ist anzumerken, dass sich der Eigenwert in diesem Zusammenhang 
+nicht auf die Schwingarten bezieht. 
+Geometrisch nichtline-
+are elastische Analyse 
+(GNA) 
+Analyse auf der Basis der Biegetheorie unter der Annahme geometrischer 
+Bedingungen ohne Imperfektionen mit Betrachtung der nichtlinearen großen 
+Abweichungstheorie und der linear elastischen Werkstoffeigenschaften 
+Materiell nichtlineare 
+Analyse (MNA) 
+Eine der (LA) entsprechende Analyse, bei der jedoch die nichtlinearen 
+Werkstoffeigenschaften berücksichtigt werden. Für Schweißkonstruktionen muss 
+der Werkstoff in der Wärmeeinflusszone modelliert werden. 
+Geometrisch und mate-
+riell nichtlineare Analyse 
+(GMNA) 
+Analyse mit Anwendung der Biegetheorie unter der Annahme geometrischer 
+Bedingungen ohne Imperfektionen und unter Berücksichtigung der nichtlinearen 
+großen Abweichungstheorie und der nichtlinearen Werkstoffeigenschaften 
+Geometrisch nichtline-
+are elastische Analyse 
+mit Imperfektionen 
+(GNIA)
+a
+Eine der (GNA) entsprechende Analyse, jedoch unter Berücksichtigung der 
+Imperfektionen 
+Geometrisch und ma-
+teriell nichtlineare Ana-
+lyse mit Imperfektionen 
+(GMNIA) 
+Ein der (GMNA) entsprechende Analyse, jedoch unter Berücksichtigung der 
+Imperfektionen 
+a Diese Art Analyse wird in dieser Norm nicht erfasst, ist jedoch hier aus Gründen einer vollständigen Darstellung aller Arten de r 
+Schalenanalyse aufgeführt. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 27 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+25 
+6 Grenzzustand der Tragfähigkeit 
+6.1 Beanspruchbarkeit des Querschnitts 
+6.1.1 Bemessungswerte für die Spannungen 
+(1) An allen Punkten des Tragwerks sollte der Bemessungswert der Spannung eq,Ed als die höchste Primär-
+spannung angenommen werden, die bei einer Tragwerksberechnung unter Berücksichtigung der Gesetze für 
+das Gleichgewicht zwischen den Bemessungswerten der Verkehrslasten und der Schnittkräfte und -momente 
+bestimmt wird. 
+(2) Die Primärspannung darf als Höchstwert der Spannungen angenommen werden, die für das Gleich-
+gewicht mit den an einem Punkt oder entlang einer Linie des Schalentragwerks aufgebrachten Lasten 
+erforderlich sind. 
+(3) Wenn eine Berechnung nach der Membrantheorie (MTA) durchgeführt wird, kann das sich ergebende 
+zweidimensionale Feld der Spannungsresultanten n
+x,Ed, n ,Ed, nx ,Ed durch den nach der folgenden Gleichung 
+errechneten Bemessungswert der Ersatzspannung eq,Ed dargestellt werden: 
+2
+Ed,xEd,Edx,
+2
+Ed,
+2
+Edx,Edeq, 31 nnnnnt
+ (6.1) 
+(4) Wenn eine linear elastische Analyse (LA) oder eine geometrisch nichtlineare elastische Analyse (GNA) 
+angewendet wird, kann das sich ergebende zweidimensionale Feld der Primärspannungen durch den 
+Bemessungswert für die von-Mises-Ersatzspannung dargestellt werden: 
+)(3 Ed,Ed,Ed,Ed,Ed,Ed,Ed,Edeq, 222
+x
+22
+nxnxx (6.2) 
+Hierbei sind 
+4
+1,
+4
+1
+2
+Ed,Ed,
+Ed,2
+Ed,Ed,
+Ed,
+t
+m
+t
+n
+t
+m
+t
+n xx
+x (6.3) 
+t
+q
+t
+q
+t
+m
+t
+n n
+n
+xn
+xn
+xx
+x
+Ed,
+Ed,
+Ed,
+Ed,2
+Ed,Ed,
+Ed, ,,
+4
+1 (6.4) 
+Dabei ist ein Korrekturfaktor für das unelastische Verhalten des Werkstoffs, der sowohl von den Merkmalen 
+des Härtens als auch von der Zähigkeit der Legierung abhängig ist. 
+ANMERKUNG 1 Die oben angegebenen Ausdrück liefern eine für Bemessungszwecke vereinfachte konservative 
+Ersatzspannung. 
+ANMERKUNG 2 Werte für sind in EN 1999-1-1, Anhang H in Abhängigkeit von den Legierungseigenschaften 
+angegeben. Für sollten Werte angesetzt werden, die einem geometrischen Formbeiwert 0 1,5 entsprechen. 
+ANMERKUNG 3 Die Werte für xn,Ed und xn,Ed sind im Allgemeinen sehr klein und haben keinen Einfluss auf die 
+Beanspruchbarkeit, so dass sie in der Regel vernachlässigt werden dürfen. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 28 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+26 
+6.1.2 Bemessungswerte für die Beanspruchbarkeit 
+(1) Der Bemessungswert für die von-Mises-Ersatzfestigkeit sollte nach folgender Gleichung errechnet 
+werden: 
+1M
+0
+Rdeq,
+ff außerhalb der WEZ (6.5) 
+M1
+0
+M2
+0,hazu,
+Rdeq, ,min fff im Bereich WEZ (6.6) 
+Hierbei ist 
+0 der charakteristische Wert für die 0,2%-Dehngrenze nach EN 1999-1-1; 
+fu der charakteristische Wert der Bruchfestigkeit nach EN 1999-1-1; 
+zhau, das Verhältnis zwischen der Bruchfestigkeit in der Wärmeeinflusszone (WEZ) und im Grund-
+werkstoff nach EN 1999-1-1; 
+M1 der in 2.1 (3) angegebene Teilsicherheitsbeiwert für die Beanspruchbarkeit; 
+M2 der in 2.1 (3) angegebene Teilsicherheitsbeiwert für die Beanspruchbarkeit. 
+(2) Der Einfluss der Löcher für Verbindungsmittel sollte nach EN 1999-1-1 berücksichtigt werden. 
+6.1.3 Spannungsbegrenzung 
+(1) Für diesen Grenzzustand sollten die Bemessungsspannungen bei allen Nachweisen die folgende 
+Bedingung erfüllen: 
+Eeq,Edeq, f (6.7) 
+6.1.4 Bemessung durch numerische Analyse 
+(1) Der Bemessungswert für die plastische Grenzbeanspruchbarkeit sollte als ein Lastverhältnis R bestimmt 
+werden, der auf die Bemessungswerte der kombinierten Einwirkungen für den jeweiligen Lastfall angewendet 
+wird. 
+(2) Die Bemessungswerte für die Einwirkungen FEd sollten nach 5.3 bestimmt werden. 
+(3) In einer materiell nichtlinearen Analyse (MNA) und einer geometrisch und materiell nichtlinearen Analyse 
+(GMNA) auf der Grundlage des Bemessungswertes für die Grenztragfähigkeit 0/ M sollte die Schale dem um 
+das Lastverhältnis R progressiv zunehmenden Bemessungswert der Lasten ausgesetzt werden, bis der 
+plastische Grenzzustand erreicht ist. 
+(4) Wenn eine materiell nichtlineare Analyse (MNA) angewendet wird, darf das Lastverhältnis RMNA als der 
+größte bei der Analyse ermittelte Wert angenommen werden. Der Einfluss der Kaltverfestigung darf unter der 
+Voraussetzung einbezogen werden, dass ein entsprechender Grenzwert für die zulässige Werkstoff-
+verformung berücksichtigt wird. Anleitungen zu den analytischen Modellen für den bei der MNA 
+anzuwendenden Zusammenhang Spannung-Dehnung werden in EN 1999-1-1 angegeben. 
+(5) Wenn eine geometrisch und materiell nichtlineare Analyse (GMNA) angewendet wird, sollte, sofern bei 
+der Analyse eine Höchstlast mit nachfolgender Lastverringerung vorhergesagt wird, der Höchstwert zur 
+Bestimmung des Lastverhältnisses RGMNA angewendet werden. Falls bei einer GMNA-Analyse keine 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 29 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+27 
+Höchstlast vorhergesagt wird, sondern ein progressiv ansteigendes Verhältnis Wirkung-Verschiebung (mit 
+oder ohne Kaltverfestigung des Werkstoffs) erhalten wird, sollte davon ausgegangen werden, dass das 
+Lastverhältnis R
+GMNA nicht größer als der Wert ist, bei dem der größte von-Mises-Ersatzwert für die bleibende 
+Dehnung im Tragwerk den im Abschnitt 3 von EN 1999-1-1 angegebenen Grenzwert für die Verformung der 
+Legierung erreicht. Für Bemessungszwecke kann in Abhängigkeit von den Merkmalen der Legierung ein Wert 
+für die Bruchdehnung von 5 ( f0/E) oder 10 ( f0/E) vorausgesetzt werden. Werte für die Bruchdehnung u, die 
+5 (f0/E) oder 10 (f0/E) entsprechen, werden in EN 1999-1-1, Anhang H angegeben. 
+ANMERKUNG Werte für die maximale Zugdehnung u für (5 ( f0/E) oder 10 ( f0/E) sind in EN 1999-1-1, Anhang H 
+angegeben. 
+(6) Die Berechnung sollte im Ergebnis folgende Bedingung erfüllen: 
+01
+dE
+dR ,F
+FR (6.8) 
+hierbei ist FEd der Bemessungswert für die Einwirkung. 
+6.2 Knickfestigkeit (Beanspruchbarkeit durch Beulen; Beulsicherheitsnachweis) 
+6.2.1 Allgemeines 
+(1) Alle relevanten Kombinationen von Einwirkungen, die in der Wand der Schale Druck- oder 
+Schub-Membranspannungen erzeugen, sollten berücksichtigt werden. 
+(2) Nach der Vorzeichenvereinbarung, die für die Berechnung der Beulen gilt, sollte Druck als positiv für die 
+Spannungen und Spannungsresultanten in Meridial- und Umfangsrichtung angesetzt werden. 
+(3) Besondere Aufmerksamkeit sollte den Randbedingungen gelten, die für die bedingt durch Beulen 
+zunehmenden Verschiebungen zutreffen (im Gegensatz zu Verschiebungen, die nicht durch Beulen 
+entstehen). Beispiele für entsprechende Randbedingungen werden in Bild 6.1 angegeben. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 30 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+28 
+Tank ohne Verankerung Silo ohne Verankerung Tank mit Verankerung 
+Oben offener Tank 
+mit Verankerung 
+Abschnitt eines langen Zylinders 
+mit Ringsteife 
+Legende 
+(a) Dach 
+(b) Bodenplatte 
+(c) Ohne Verankerung 
+(d) Ankerschrauben in dichtem Abstand 
+(e) Ohne Ringsteife 
+(f) Freier Rand 
+(g) Ringsteife
+Bild 6.1  Schematische Darstellung für Beispiele zu den Randbedingungen 
+für den durch Beulen bedingten Grenzzustand 
+6.2.2 Geometrische Toleranzen, die für Beulen von Belang sind 
+(1) Die in EN 1090-3 angegebenen Grenzen für die geometrischen Toleranzen sollten eingehalten werden, 
+falls Beulen einer der zu berücksichtigenden Grenzzustände für die Tragfähigkeit sind. 
+ANMERKUNG 1 Die hier bestimmten Bemessungswerte für Beulspannungen schließen Imperfektionen ein, die auf 
+geometrische Toleranzen zurückzuführen sind, mit deren Auftreten bei der Ausführung zu rechnen ist. 
+ANMERKUNG 2 Die in EN 1090-3 angegebenen geometrischen Toleranzen haben bekanntermaßen einen großen 
+Einfluss auf die Sicherheit des Tragwerks. 
+(2) Die Toleranzklasse (Klasse 1, Klasse 2, Klasse 3 oder Klasse 4) sollte nach den in EN 1090-3 ange-
+gebenen Definitionen sowohl für den Lastfall als auch für die Toleranz ausgewählt werden. Die Beschreibung 
+der Klassen bezieht sich nur auf die Bewertung der Festigkeit. 
+(3) Alle Imperfektionsarten sollten gesondert klassifiziert werden; für die gesamte Bemessung sollte die 
+niedrigste Klasse maßgebend sein. 
+(4) Die unterschiedlichen Toleranzarten können als u nabhängig voneinander behandelt werden, und im 
+Allgemeinen brauchen keine Interaktionen berücksichtigt zu werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 31 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+29 
+6.2.3 Schale unter Druck- und Schubbeanspruchungen 
+6.2.3.1 Bemessungswerte für die Spannungen 
+(1) Die Bemessungswerte für die Spannungen x,Ed, ,Ed und Ed sollten als die Schlüsselwerte für die 
+Druck- und Schub-Membranspannungen angenommen werden, die mit Hilfe der linearen Analyse der Schale
+(LA) ermittelt werden. Unter rein rotationssymmetrischen Bedingungen der Belastung und Abstützung und in 
+anderen einfachen Lastfällen darf allgemein die Membrantheorie angewendet werden. 
+(2) Sofern in Anhang A keine spezifischen Festlegungen getroffen werden, sollten als Schlüsselwerte der 
+Membranspannungen für jede Spannung bei der jeweils zutreffenden axialen Tragwerkskoordinate die 
+jeweiligen Größtwerte angewendet werden. 
+ANMERKUNG In einigen Fällen (z. B. bei abgestuften Wänden, die durch Druck in Umfangsrichtung beaufschlagt 
+werden, siehe A.2.3), sind die Schlüsselwerte der Membranspannungen fiktiv und größer als die tatsächlichen 
+Höchstwerte. 
+(3) Für die üblichen Belastungsfälle dürfen die Membranspannungen mit Hilfe der jeweils zutreffenden 
+Gleichungen errechnet werden. 
+6.2.3.2 Knick- bzw. Beulfestigkeit 
+(1) Die Bemessungswerte für Knickfestigkeit/Beanspruchbarkeit durch Beulen sollten nach folgenden 
+Gleichungen errechnet werden, 
+für nicht ausgesteifte Schalen 
+1M
+0
+perf,w,Rd,
+f
+xxxx (6.9) 
+1M
+0perf,w,Rd,
+f (6.10) 
+1M
+0perf,Rd
+3
+f
+w, (gilt auch für ausgesteifte Schalen) (6.11) 
+und für ausgesteifte und/oder profilierte Schalen 
+1M
+Rk,
+perf,Rd,
+x
+xn,xx
+nn (6.12) 
+1M
+Rk,
+perf,,Rd,
+npp pn (gilt auch für torikonische und torisphärische Schalen, siehe A.7) (6.13) 
+Hierbei ist 
+nx,Rk die axiale Quetschgrenze der ausgesteiften Schale; 
+pn,Rk der gleichmäßige Druck an der Quetschgrenze der ausgesteiften oder der torikonischen und der 
+torisphärischen Schale; 
+i der Abminderungsfaktor für die Imperfektion, der aus Anhang A zu entnehmen ist; 
+i,w der Abminderungsfaktor für die Wärmeeinflusszonen nach 6.2.4.4. Für Schalen ohne 
+Schweißnähte ist i,w 1; 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 32 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+30 
+i,perf der Abminderungsfaktor für die Beulen für eine perfekte Schale, angegeben unter (2); 
+M1 der Teilsicherheitsbeiwert für die Beanspruchbarkeit nach 2.1(3). 
+ANMERKUNG 1 Ausdruck (6.13) gilt auch für torikonische und torisphärische Schalen, siehe Anhang B. 
+ANMERKUNG 2 für torikonische und torisphärische Schalen, siehe Anhang B. i
+(2) Der Abminderungsfaktor für die Beulen für eine perfekte Schale wird nach folgender Gleichung errechnet: 
+22
+perf1,
+1
+iii
+ für i,perf 1,00 (6.14) 
+mit: 
+2
+015,0 ii,iii (6.15) 
+Hierbei ist 
+µi ein Parameter, der von der Legierung und vom Belastungsfall abhängig und aus Anhang A zu 
+entnehmen ist; 
+0i, die auf die Quetschgrenze bezogene Schlankheit, die aus Anhang A zu entnehmen ist; 
+i der Index, der in Abhängigkeit von der Belastungsart x, oder heißt. 
+(3) Die Schlankheitsparameter der Schale für unterschiedliche Spannungskomponenten sollten nach 
+folgenden Gleichungen bestimmt werden, 
+für nicht ausgesteifte Schalen: 
+cr,
+0
+x
+x
+f (6.16) 
+cr,
+0f (6.17) 
+cr
+0
+3
+f (gilt auch für ausgesteifte Schalen) (6.18) 
+und für ausgesteifte und/oder profilierte Schalen 
+cr,
+Rk,
+x
+x
+x
+n
+n
+ (6.19) 
+cr,
+Rk,
+n
+n
+p
+p (6.20) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 33 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+31 
+Hierbei ist 
+x,cr, ,cr und cr die in Anhang A angegebenen oder durch die lineare elastische Verzweigungs-Analyse 
+(Eigenwert-Analyse) (LBA) ermittelten kritischen Beulspannungen; 
+nx,cr, pn,cr die kritischen Beulspannungsresultanten für ausgesteifte oder torikonische und 
+torisphärische Schalen, die in Anhang A angegeben oder durch die lineare elastische 
+Verzweigungs-Analyse (Eigenwert-Analyse) (LBA) ermittelt werden. 
+ANMERKUNG 1 Die Ausdrücke (6.19) und (6.20) gelten auch für torikonische und torisphärische Schalen, siehe 
+Anhang B. 
+ANMERKUNG 2 für torikonische und torisphärische Schalen, siehe Anhang B. crn,
+6.2.3.3 Nachweis der Beulfestigkeit 
+(1) Obwohl Beulen kein nur durch Spannungen ausgelöstes Versagensphänomen darstellen, sollte der 
+Nachweis der Beulfestigkeit durch Begrenzung der Bemessungswerte für Membranspannungen oder 
+Spannungsresultanten geführt werden. Der Einfluss der Biegespannungen auf die Beulfestigkeit kann unter 
+der Voraussetzung vernachlässigt werden, dass die Spannungen als Folge von Kompatibilitätseinflüssen des 
+Randes entstehen. Biegespannungen aus lokalen Lasten oder aus Wärmegradienten sollten besonders 
+beachtet werden. 
+(2) In Abhängigkeit vom jeweiligen Belastungs- und Spannungsfall sollten eine oder mehrere der folgenden 
+Nachweise für die Schlüsselwerte der einzelnen Membranspannungskomponenten durchgeführt werden: 
+Rd,Ed, xx (6.21) 
+Rd,Ed, (6.22) 
+RdEd (6.23) 
+(3) Falls unter den betrachteten Einwirkungen mehr als eine der für Beulen wesentlichen Membran-
+spannungskomponenten vorhanden ist, sollte für den kombinierten Membranspannungszustand der folgende 
+Nachweis auf Interaktion durchgeführt werden: 
+00,1
+Rd
+Ed
+Rd,
+Ed,
+Rd,
+Ed,
+i
+Rd,
+Ed,
+Rd,
+Ed,
+k
+x
+x
+kk
+x
+x k
+x
+ (6.24) 
+Dabei sind x,Ed, ,Ed und Ed die für eine Interaktion relevanten Gruppen der signifikanten Druck- und 
+Schub-Membranspannungswerte in der Schale; die Werte für die Interaktionsparameter kx, k , k und ki sind 
+nach folgenden Gleichungen zu errechnen: 
+2i
+2
+2
+2
+)(
+5,05,1
+1
+1
+x
+xx
+k
+k
+k
+k
+ (6.25) 
+ANMERKUNG 1 Bei einem nicht ausgesteiften Zylinder, der durch axialen Druck und Druck in Umfangsrichtung und 
+durch Schub beansprucht wird, darf die in A.1.6 angegebene Gleichung für die Interaktionsparameter angewendet werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 34 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+32 
+ANMERKUNG 2 Die oben genannten Regeln können mitunter unzureichend sein, sie erfassen jedoch die beiden, für 
+viele Situationen sicheren Grenzfälle: a) in sehr dünnen Schalen ist die Interaktion zwischen x und linear, und b) in 
+sehr dicken Schalen für die Interaktion zwischen Spannungen gilt die von-Mises-Interaktion der äquivalenten Spannung 
+oder die der in EN 1999-1-1 angegebenen alternativen Interaktionsgleichung. 
+(4) Wenn x,Ed oder ,Ed eine Zugspannung ist, sollte ihr Wert in Gleichung (6.24) gleich null gesetzt 
+werden. 
+ANMERKUNG Für Zylinder, die durch axialen Innendruck beansprucht werden (wodurch in Umfangsrichtung eine 
+Zugspannung entsteht), gelten die in Anhang A angegebenen besonderen Festlegungen. Der für x,Rd ermittelte Wert 
+berücksichtigt sowohl die Verfestigungswirkung des Innendruckes auf die elastische Beulbeanspruchbarkeit als auch den 
+Schwächungseinfluss des elastisch-plastischen Elefantenfuß-Phänomens [Gleichung (A.22)]. Die Beulfestigkeit wird exakt 
+repräsentiert, wenn die Zugspannung ,Ed in Gleichung (6.24) gleich null gesetzt wird. 
+(5) Die Lagen und Werte für alle in Gleichung (6.24) kombiniert anzuwendenden beulen-relevanten 
+Membranspannungen werden in Anhang A festgelegt. 
+6.2.4 Einfluss des Schweißens 
+6.2.4.1 Allgemeines 
+(1) Bei der Bemessung von Schalenkonstruktionen aus Aluminium sollten die allgemeinen Kriterien und 
+Regeln für Schweißkonstruktionen nach EN 1999-1-1 eingehalten werden. 
+(2) Bei der Bemessung von geschweißten Schalenkonstruktionen aus kalt verfestigten oder aushärtbaren 
+Legierungen sollte die in der Nähe von Schweißnähten auftretende Verringerung der Festigkeitswerte 
+berücksichtigt werden. Dieser Bereich wird als Wärmeeinflusszone (WEZ) bezeichnet. Ausnahmen für diese 
+Regel werden in EN 1999-1-1 angegeben. 
+(3) Zu Bemessungszwecken wird angenommen, dass die Festigkeitswerte in der gesamten Wärmeinfluss-
+zone auf das gleiche Niveau verringert werden. 
+ANMERKUNG 1 Wenn auch diese Verringerung im Wesentlichen die 0,2%-Dehngrenze und die Zugfestigkeit des 
+Werkstoffs betrifft, kann es durchaus sein, dass die Einflüsse auf druckbeanspruchte Teile von Schalenkonstruktionen, die 
+in Abhängigkeit von der konstruktiven Schlankheit und den Eigenschaften der Legierung beulanfällig sind, signifikant sind. 
+ANMERKUNG 2 Der Einfluss der durch Schweißen bedingten Festigkeitsverringerung ist für Beulen im plastischen 
+Bereich signifikanter. Auch örtliche Schweißnähte in beulgefährdeten Bereichen können wegen der WEZ die 
+Beulbeanspruchbarkeit merklich verringern. Daher wird empfohlen, in großen, nicht ausgesteiften und durch Druck 
+beanspruchten Teilen Schweißungen zu vermeiden. 
+ANMERKUNG 3 Zu Zwecken der Bemessung kann eine Schweißung als Längsstreifen auf der Schalenoberfläche 
+angesehen werden, deren beeinflusster Bereich sich unmittelbar um die Schweißnaht ausbreitet. Außerhalb dieses 
+Bereichs werden rasch wieder die vollständigen ungeschweißten Festigkeitswerte erreicht. Entlang dieser Streifen können 
+Fließlinien auftreten, wenn sich Beulen in der Schale bilden. 
+ANMERKUNG 4 Manchmal ist es möglich, die Einflüsse der Festigkeitsverringerung in der WEZ durch Warmauslagern 
+nach dem Schweißen zu mildern, siehe EN 1999-1-1. 
+(4) Der Einfluss der schweißbedingten Festigkeitsverringerung auf die Beulbeanspruchbarkeit der Schale 
+sollte für alle Schweißnähte, die direkt oder indirekt einer Druckspannung ausgesetzt sind, nach den in 6.2.4.2 
+angegebenen Regeln überprüft werden. 
+6.2.4.2 Grad der Festigkeitsverringerung 
+(1) Der Grad der schweißbedingten Festigkeitsverringerung wird durch die Abminderungsfaktoren 
+o,haz und 
+u,haz angegeben, die aus den Quotienten des charakteristischen Wertes für die 0,2%-Dehngrenze o,haz
+(bzw. für die Zugfestigkeit u,haz) in der Wärmeeinflusszone und des charakteristischen Wertes für 0 (bzw. 
+u) im Grundwerkstoff bestimmt werden: 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 35 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+33 
+o
+hazo,
+hazo, f
+f und 
+u
+hazu,
+hazu, f
+f (6.26) 
+(2) Die charakteristischen Werte für die Festigkeiten o,haz und o,haz sowie die Werte für o,haz und o,haz
+werden in Tabelle 3.2a von EN 1999-1-1 für Aluminiumknetlegierungen in Form von Blechen, Bändern und 
+Platten und in Tabelle 3.2b für Strangpressteile angegeben. 
+(3) Die Erholungszeiten nach dem Schweißen sollten nach den in EN 1999-1-1 angegebenen Bestimmungen 
+bewertet werden. 
+6.2.4.3 Ausdehnung der Wärmeeinflusszone 
+(1) Die in EN 1999-1-1 angegebenen allgemeinen Hinweise auf die Ausdehnung der WEZ sollten beachtet 
+werden. 
+(2) Bei den Beulsicherheitsnachweisen wird davon ausgegangen, dass die WEZ in den Schalenblechen in 
+Bereichen mit Beulrisiko mit einem Abstand bhaz in jede Richtung verläuft, ausgehend von der Schweißnaht 
+und entsprechend der Darstellung in Bild 6.2 an ebenen Stumpfnähten rechtwinklig zur Mittellinie oder an 
+Kehlnähten rechtwinklig zur Schnittlinie der Schweißnahtoberflächen gemessen: 
+Bild 6.2  Ausdehnung der Schweißeinflusszonen (WEZ) im Schalenblech 
+6.2.4.4 Beulbeanspruchbarkeit unausgesteifter geschweißter Schalen 
+(1) Die Beulbeanspruchbarkeit unausgesteifter geschweißter Schalen sollte in allen Fällen bewertet werden, 
+in denen in der Schale Druckspannungsresultanten in seitlich nicht behinderten geschweißten Tafeln auftreten. 
+(2) Der Nachweis des Schweißeinflusses auf Beulen kann entfallen, wenn alle Schweißnähte in den Schalen 
+parallel zu den Druckspannungsresultanten gelegt werden, die im Tragwerk unter allen Lastbedingungen 
+wirksam werden, vorausgesetzt, der durch die WEZ bedingte Abminderungsfaktor o,haz ist nicht kleiner als 
+0,60. 
+(3) Der Einfluss des Schweißens auf die Beulbeanspruchbarkeit kann durch eine geometrisch und materiell 
+nichtlineare Analyse mit Imperfektionen (GMNIA) unter Berücksichtigung der tatsächlichen Eigenschaften 
+sowohl des Grundwerkstoffs als auch der Schweißeinflusszonen (WEZ) bewertet werden. 
+(4) Wenn keine exakte GMNIA-Analyse durchgeführt werden kann, ist eine Bewertung der Beul-
+beanspruchbarkeit der Schale auf vereinfachte Weise mit Hilfe des Abminderungsfaktors möglich, der durch 
+das Verhältnis i,w i,w/ i der Beulfaktoren einer geschweißten Konstruktion w,i und einer ungeschweißten 
+Konstruktion i bestimmt wird. 
+ANMERKUNG 1 Druckspannungsresultanten in Schalen können nicht nur durch direkten Druck entstehen, sondern 
+auch durch äußeren Druck, Schub und lokalisierte Lasten. Unabhängig von der Lastbedingung sind Abminderungs-
+faktoren w,i anzuwenden, wenn Schweißnähte orthogonal zu den Druckspannungsresultanten eine lokale plastische 
+Verformung veranlassen können. 
+ANMERKUNG 2 In den Absätzen (4) und (5) sollte in Abhängigkeit davon, ob sich die Abminderungsfaktoren und 
+auf axialen Druck, Druck in Umfangsrichtung bzw. Schub beziehen, „i „x, „  oder „  als Index eingesetzt werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 36 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+34 
+(5) Der Abminderungsfaktor zur Berücksichtigung der Festigkeitsverringerung in der WEZ von Schalen-
+konstruktionen wird nach der folgenden Gleichung bestimmt: 
+0,w
+0
+00,w )1(
+i,i
+i,i
+i mit i,w 1 und i,w > 0 (6.27) 
+Hierbei ist 
+1M
+2M
+hazu,
+0
+u
+u
+f
+f
+ aber 0 1( 6 . 2 8 ) 
+u,haz und o,haz die durch die Schweißeinflusszone bedingten Abminderungsfaktoren, die Tabelle 3.2a 
+oder Tabelle 3.2b in EN 1999-1-1 zu entnehmen sind; 
+0,i der relative Schlankheitsparameter für die Quetschgrenze für die zu betrachtenden 
+Lastfälle, die Anhang A zu entnehmen sind; 
+w,i der Grenzwert für den relativen Schlankheitsparameter, bei dessen Überschreitung der 
+Einfluss der Schweißnaht auf Beulen verschwindet und der durch folgende Gleichung 
+angegeben wird:
+))(1(39,1 ,0w,0,hazo,w, iii , aber w,0,w, ii , siehe Bild 6.3; 
+w,0,i die absolute Obergrenze der Schlankheit für den Einfluss der Schweißnaht in 
+Abhängigkeit von Lastfall, Baustoff und Toleranzklasse der Schale, die in Tabelle 6.5 
+angegeben wird. 
+Bild 6.3  Festlegung des durch die WEZ bedingten Abminderungsfaktors i,w
+Tabelle 6.5  ,w,0i -Werte für die in Anhang A berücksichtigten wesentlichen Lastfälle 
+Toleranz-
+klasse 
+Axialer Druck 
+w,0,x
+Druck in Umfangsrichtung
+w,0,
+Torsion und Schub 
+w,0,
+Werkstoff 
+Klasse A 
+Werkstoff 
+Klasse B 
+Werkstoff 
+Klasse A 
+Werkstoff 
+Klasse B 
+Werkstoff 
+Klasse A 
+Werkstoff 
+Klasse B 
+Klasse 1 0,8 0,7 1,2 1,1 1,4 1,3 
+Klasse 2 1,0 0,9 1,3 1,2 1,5 1,4 
+Klasse 3 1,2 1,1 1,4 1,3 1,6 1,5 
+Klasse 4 1,3 1,2     
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 37 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+35 
+6.2.4.5 Beulbeanspruchbarkeit ausgesteifter geschweißter Schalen 
+(1) Für ausgesteifte geschweißte Schalen braucht kein Nachweis für den Einfluss des Schweißens erbracht 
+zu werden, wenn die Steifen eine ausreichende seitliche Behinderung gegenüber den verschweißten Tafeln 
+haben. Ist das nicht der Fall, gelten die Bestimmungen in 6.2.4.4. 
+6.2.5 Bemessung durch numerische Analyse 
+(1) Die in 5.5 und 6.1.4 für die geometrisch und materiell nichtlineare Analyse mit Imperfektionen (GMNIA) 
+angegebenen Verfahren dürfen angewendet werden. Die GMNIA-Analyse darf, als Alternative zum Verfahren 
+nach 6.2.3, durchgeführt werden, indem die Größtwerte der in 6.2.2 angegebenen Toleranzen als anfängliche 
+geometrische Imperfektionen angenommen werden. 
+(2) Für geschweißte Konstruktionen sollte für den Werkstoff in der Wärmeeinflusszone ein Modell entwickelt 
+werden, siehe 6.2.4.2, 6.2.4.3 und 6.2.4.4. 
+7 Grenzzustände der Gebrauchstauglichkeit 
+7.1 Allgemeines 
+(1) Die in EN 1999-1-1 für Grenzzustände der Gebrauchstauglichkeit angegebenen Regeln sollten auch auf 
+Schalenkonstruktionen angewendet werden. 
+7.2 Durchbiegungen 
+(1) Die Durchbiegungen dürfen unter der Annahme elastischen Verhaltens errechnet werden. 
+(2) Die Grenzen für die Durchbiegungen sollten unter Bezug auf EN 1990, Anhang A, A.1.4, für jedes Projekt 
+festgelegt und mit dem für das Projekt Verantwortlichen vereinbart werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 38 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+36 
+Anhang A
+(normativ)
+Ausdrücke für Beuluntersuchungen in Schalenkonstruktionen 
+A.1 Unausgesteifte zylindrische Schalen mit konstanter Wanddicke 
+A.1.1 Anmerkungen und Randbedingungen 
+(1) Allgemeine Größen (Bild A.1) 
+l Länge des Zylinders zwischen oberer und unterer Begrenzung; 
+r Radius der Mittelfläche des Zylinders; 
+t Dicke der Schale: 
+Bild A.1  Geometrie, Membranspannungen und Spannungsresultanten am Zylinder 
+(3) Die Randbedingungen werden in 5.2 und 6.2.1 festgelegt. 
+A.1.2 (Axialer) Druck in Meridianrichtung 
+(1) Zylinder brauchen nicht auf Beulen in Meridianrichtung überprüft zu werden, wenn sie die folgende 
+Gleichung erfüllen: 
+0
+030 f
+E
+t
+r , (A.1) 
+A.1.2.1 Ideale Beulspannungen in Meridianrichtung 
+(1) Die folgenden Ausdrücke dürfen nur für Schalen mit den Randbedingungen BC 1 oder BC 2 an beiden 
+Rändern angewendet werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 39 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+37 
+(2) Die Länge des Schalenabschnitts wird durch den dimensionslosen Parameter gekennzeichnet: 
+rt
+l
+t
+r
+r
+l (A.2) 
+(3) Die kritische Beulspannung in Meridianrichtung sollte unter Anwendung der Werte für Cx aus Tabelle A.1 
+nach folgender Gleichung errechnet werden: 
+r
+tCE xx 605,0cr, (A.3) 
+Tabelle A.1  Faktor Cx für die kritische Beulspannung in Meridianrichtung 
+Zylinderschale rt
+l Faktor Cx
+Kurze Länge 1,7 2
+072831361 ,,,xC
+Mittlere Länge t
+r5071 ,, Cx = 1 
+Große Länge t
+r50, 12201
+b r
+t
+C
+,C
+x
+x , aber für Cx 0,6, 
+wobei Cxb in Tabelle A.2 angegeben wird 
+Tabelle A.2  Parameter Cxb für den Einfluss der Randbedingungen für lange Zylinder 
+Fall Zylinderende Randbedingung Cxb
+1 
+Ende 1 
+Ende 2 
+BC 1 
+BC 1 
+6 
+2 
+Ende 1 
+Ende 2 
+BC 1 
+BC 2 
+3 
+3 
+Ende 1 
+Ende 2 
+BC 2 
+BC 2 
+1 
+ANMERKUNG BC 1 schließt sowohl BC1f als auch BC1r ein. 
+(4) Für die in Tabelle A.1 definierten langen Zylinder, die weitere, nachfolgend angegebene Bedingungen 
+erfüllen: 
+150t
+r und 6r
+t und 0001500
+0f
+E (A.4) 
+darf der Faktor Cx auch nach folgender Gleichung ermittelt werden: 
+Ed,
+EdM,,
+Ed
+EdN,,
+N,
+x
+x
+x
+x
+xx CC
+,
+ (A.5) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 40 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+38 
+Hierbei ist 
+Cx,N der Parameter für einen langen Zylinder unter axialem Druck nach Tabelle A.1; 
+x,Ed der Bemessungswert für die Spannung in Meridianrichtung ( x,Ed = x,N,Ed + x,M,Ed); 
+x,N,Ed die Spannungskomponente aus dem axialen Druck (gleich bleibende Komponente in Umfangs-
+richtung); 
+x,M,Ed die Spannungskomponente aus der globalen Biegung rohrförmiger Elemente (Spitzenwert der 
+veränderlichen Komponente in Umfangsrichtung). 
+A.1.2.2 Beulparameter in Meridianrichtung 
+(1) Der elastische Imperfektionsfaktor in Meridianrichtung sollte nach folgender Gleichung errechnet werden: 
+44,1
+0,
+0
+6,0160,21
+1
+xx
+x
+f
+E
+Q
+a , aber mit ax 1,00 (A.6) 
+Hierbei ist 
+0,x der Schlankheitsparameter für die Quetschgrenze in Meridianrichtung; 
+Q der Toleranzparameter für den Druck in Meridianrichtung. 
+(2) Der Toleranzparameter Q sollte für die jeweils festgelegte Toleranzklasse aus Tabelle A.3 entnommen 
+werden. Für Toleranzklasse 4 hängt der Toleranzparameter Q auch von den in Tabelle 5.1 definierten 
+Randbedingungen ab. 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze in Meridianrichtung sollten 
+nach der in EN 1999-1-1 definierten Beulklasse des Werkstoffs aus Tabelle A.4 entnommen werden. 
+Tabelle A.3  Toleranzparameter Q
+Wert für Q für die Randbedingungen 
+Toleranzklasse 
+BC1r, BC2r BC1f, BC2f 
+Klasse 1 16 
+Klasse 2 25 
+Klasse 3 40 
+Klasse 4 60 50 
+Tabelle A.4  Werte für 0,x und µx für den Druck in Meridianrichtung 
+Beulklasse des Werkstoffs 0,x µx
+A 0,20 0,35 
+B 0,10 0,20 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 41 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+39 
+(4) Für lange Zylinder, die den Sonderbedingungen von A.1.2.1(4) entsprechen, darf der Schlankheits-
+parameter für die Quetschgrenze in Meridianrichtung nach folgender Gleichung errechnet werden: 
+Ed,
+EdM,,010 10,0
+x
+xx,,x, (A.7) 
+Dabei sollte 0x, aus Tabelle A.4 entnommen werden, während x,Ed und x,M,Ed in A.1.2.1(4) angegeben 
+werden. 
+A.1.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Zylinder brauchen nicht auf Beulen in Umfangsrichtung überprüft zu werden, wenn sie die folgende 
+Gleichung erfüllen: 
+0
+21,0 f
+E
+t
+r (A.8) 
+A.1.3.1 Kritische Beulspannungen in Umfangsrichtung 
+(1) Die folgenden Ausdrücke dürfen auf Schalen mit allen Randbedingungen angewendet werden. 
+(2) Die Länge des Schalenabschnitts wird durch den dimensionslosen Parameter gekennzeichnet: 
+rt
+l
+t
+r
+r
+l (A.9) 
+(3) Die kritische Beulspannung in Umfangsrichtung sollte unter Anwendung der Werte für C aus 
+Tabelle A.5 für Zylinder mit mittlerer Länge und aus Tabelle A.6 für kurze Zylinder nach folgender Gleichung 
+errechnet werden: 
+r
+tCE92,0cr, (A.10) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 42 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+40 
+Tabelle A.5  Außendruck-Beulfaktor C für Zylinder mit mittlerer Länge (20 /C 1,63 r/t)
+Fall Zylinderende Randbedingung Faktor C
+1 Ende 1 
+Ende 2 
+BC 1 
+BC 1 1,5 
+2 Ende 1 
+Ende 2 
+BC 1 
+BC 2 1,25 
+3 Ende 1 
+Ende 2 
+BC 2 
+BC 2 1,0 
+4 Ende 1 
+Ende 2 
+BC 1 
+BC 3 0,6 
+5 Ende 1 
+Ende 2 
+BC 2 
+BC 3 0 
+6 Ende 1 
+Ende 2 
+BC 3 
+BC 3 0 
+Tabelle A.6  Außendruck-Beulfaktor C für kurze Zylinder ( /C 20)
+Fall Zylinderende Randbedingung Faktor C
+1 Ende 1 
+Ende 2 
+BC 1 
+BC 1 32
+5105,1C
+2 Ende 1 
+Ende 2 
+BC 1 
+BC 2 32
+4825,1C
+3 Ende 1 
+Ende 2 
+BC 2 
+BC 2 35,1
+30,1C
+4 Ende 1 
+Ende 2 
+BC 1 
+BC 3 32
+3,016,0C
+ANMERKUNG In den Tabellen A.5 und A.6 steht BC 1 sowohl für BC1f als auch für BC1r. 
+(4) Für lange Zylinder ( /C 1,63 r/t) sollte die Beulspannung in Umfangsrichtung nach folgender 
+Gleichung errechnet werden: 
+42
+cr, 03,2275,0 t
+rC
+r
+tE (A.11) 
+A.1.3.2 Beulparameter in Umfangsrichtung 
+(1) Der elastische Imperfektionsfaktor in Umfangsrichtung sollte nach folgender Gleichung errechnet 
+werden: 
+ 2
+ref,0,ref, /))(1(2,01
+1 , aber 1,00 (A.12) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 43 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+41 
+(2) Der Bezugs-Imperfektionsfaktor ,ref in Umfangsrichtung sollte für die festgelegte Toleranzklasse aus 
+Tabelle 7 entnommen werden: 
+Tabelle A.7  Faktor ,ref in Abhängigkeit von der Toleranzklasse 
+Toleranzklasse Parameter ,ref
+Klasse 1 0,50 
+Klasse 2 0,65 
+Klassen 3 und 4 0,75 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze in Umfangsrichtung
+sollten entsprechend der in EN 1999-1-1 festgelegten Beulklasse des Werkstoffs aus Tabelle A.8 entnommen 
+werden. 
+Tabelle A.8  Werte für 
+,0 und µ für Druck in Umfangsrichtung 
+Beulklasse des Werkstoffs ,0 µ
+A 0,30 0,55 
+B 0,20 0,70 
+(4) Der aus der äußeren Windlast auf die Zylinder resultierte, ungleichmäßig verteilte Druck qeq (siehe 
+Bild A.1) darf im Rahmen des Beulsicherheitsnachweises für die Schale durch den folgenden äquivalenten 
+gleichmäßigen Außendruck ersetzt werden: 
+qeq kw qw,max (A.13) 
+Dabei ist qw,max der größte Winddruck, und kw sollte nach folgender Gleichung errechnet werden: 
+t
+rCk 1,0146,0w (A.14) 
+mit einem Wert für kw nicht außerhalb des Bereichs 0,65 kw 1,0 und mit C , das entsprechend den 
+Randbedingungen aus Tabelle A.5 entnommen wird. 
+(5) Der in 6.2.3.3 einzusetzende Bemessungswert für die Umfangsspannung wird nach folgender Gleichung 
+errechnet: 
+t
+rqq )( seqEd, (A.15) 
+Dabei ist qs der innere Saugzug, der durch Belüftung, inneres Teilvakuum oder andere Erscheinungen 
+verursacht wird. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 44 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+42 
+a) Winddruckverteilung am 
+Umfang der Schale 
+b) Äquivalente rotationssymmetrische 
+Druckverteilung 
+Bild A.2  Transformation einer typischen Wind-Außendruckverteilung 
+A.1.4 Schubbeanspruchung 
+(1) Zylinder brauchen nicht auf durch Schubspannungen erzeugte Beulen überprüft zu werden, wenn sie die 
+folgende Gleichung erfüllen: 
+67,0
+0
+16,0 f
+E
+t
+r (A.16) 
+A.1.4.1 Durch Schubbeanspruchung erzeugte kritische Beulspannungen 
+(1) Die folgenden Ausdrücke dürfen nur auf Schalen mit den Randbedingungen BC 1 oder BC 2 an beiden 
+Rändern angewendet werden. 
+(2) Die Länge des Schalenabschnitts wird durch den dimensionslosen Parameter gekennzeichnet: 
+rt
+l
+t
+r
+r
+l (A.17) 
+(3) Die durch Schub erzeugte kritische Beulspannung sollte unter Anwendung der Werte für C aus 
+Tabelle A.9 nach folgender Gleichung errechnet werden: 
+r
+tEC75,0cr (A.18) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 45 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+43 
+Tabelle A.9  Faktor C für die durch Schub erzeugte kritische Beulspannung 
+Zylinderschale rt
+l Faktor C
+Kurze Länge 10 3
+421C
+Mittlere Länge t
+r7,810 C 1 
+Große Länge t
+r7,8
+r
+tC 3
+1
+A.1.4.2 Schub-Beulparameter 
+(1) Der Schub-Imperfektionsfaktor sollte nach folgender Gleichung errechnet werden: 
+2
+ref,
+,0ref, )1(2,01
+1 , aber 1,00 (A.19) 
+(2) Der Bezugs-Schub-Imperfektionsfaktor ,ref sollte für die festgelegte Toleranzklasse aus Tabelle 10 ent-
+nommen werden: 
+Tabelle A.10  Faktor ,ref in Abhängigkeit von der Toleranzklasse 
+Toleranzklasse Parameter ,ref
+Klasse 1 0,50 
+Klasse 2 0,65 
+Klassen 3 und 4 0,75 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze in Schubrichtung
+sollten entsprechend der in EN 1999-1-1 festgelegten Beulklasse des Werkstoffs aus Tabelle A.11 ent-
+nommen werden. 
+Tabelle A.11  
+,0 - und µ -Werte für Schub 
+Beulklasse des Werkstoffs ,0 µ
+A 0,50 0,30 
+B 0,40 0,40 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 46 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+44 
+A.1.5 (Axiale) Druckbeanspruchung in Meridianrichtung mit gleichzeitig vorhandener 
+Innendruckbeanspruchung 
+A.1.5.1 Kritische Beulspannung in Meridianrichtung unter Innendruck 
+(1) Es darf davon ausgegangen werden, dass die kritische Beulspannung in Meridianrichtung x,cr durch das 
+Vorhandensein von Innendruck nicht beeinflusst wird; sie darf nach A.1.2.1 bestimmt werden. 
+A.1.5.2 Beulparameter in Meridianrichtung unter Innendruck 
+(1) Der Nachweis für die Beulfestigkeit in Meridianrichtung unter Innendruck sollte analog zu der 
+Beulfestigkeit in Meridianrichtung ohne Innendruck nach 6.2.3.3 und A.1.2.2 durchgeführt werden. Der 
+elastische Imperfektionsfaktor x ohne Innendruck darf jedoch durch den elastischen Imperfektionsfaktor x,p
+unter Innendruck ersetzt werden. 
+(2) Der kleinere der beiden folgenden Werte sollte als der elastische Imperfektionsfaktor x,p unter 
+Innendruck angesehen werden: 
+x,pe ein Faktor, der die druckinduzierte elastische Stabilisierung erfasst; 
+x,pp ein Faktor, der die druckinduzierte plastische Stabilisierung erfasst. 
+(3) Der Faktor x,pe sollte nach folgender Gleichung errechnet werden: 
+50pe,
+/3,0
+)1( ,
+x
+xxx
+p
+p (A.20) 
+cr,xt
+rpp (A.21) 
+Hierbei ist 
+p der kleinste Wert für den Innendruck an dem zu bewertendem Punkt, der garantiert gleichzeitig mit 
+dem Druck in Meridianrichtung auftritt; 
+x der elastische Imperfektionsfaktor in Meridianrichtung ohne Innendruck nach A.1.2.2; 
+x.cr die kritische elastische Beulspannung in Meridianrichtung nach A.1.2.1(3). 
+(4) Der Faktor x,pe sollte nicht auf Zylinder angewendet werden, die nach A.1.2.1(3), Tabelle A.1, als lang 
+eingestuft werden. Er sollte weiterhin nicht angewendet werden, wenn nicht 
+ der Zylinder eine mittlere Länge nach A.1.2.1(3), Tabelle A.1 hat; 
+ der Zylinder nach A.1.2.1(3), Tabelle A.1 kurz ist und Cx 1 in A.1.2.1(3) eingeführt wurde. 
+(5) Der Faktor x,pp sollte nach folgender Gleichung errechnet werden: 
+)1(
+21,1
+12,1
+111
+22
+5,14
+2
+pp, ss
+s
+s
+p x
+x
+x (A.22) 
+cr,xt
+prp (A.23) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 47 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+45 
+t
+rs 400 (A.24) 
+Hierbei ist 
+p der größte Wert für den Innendruck an dem zu bewertenden Punkt, der möglicherweise gleichzeitig 
+it dem Druck in Meridianrichtung auftritt; m
+x der dimensionslose Schlankheitsparameter der Schale nach 6.2.3.2(3); 
+die kritische elastische Beulspannung in Mex,cr ridianrichtung nach A.1.2.1(3). 
+A.1.6 Kombi chtung, 
+ubbeanspruchung 
+en Gleichungen 
+(A.25) 
+k 1,25 0,75 
+ki ( x )2
+wobei x, und die in 6.2.3.2 festgelegten Beul-Abminderungsfaktoren unter Anwendung der in A.1.2 bis 
+A.1. n Beulparameter sind. 
+ern des Zylinderabschnitts jeweils über die Länge ls reicht, darf der 
+nationen von (axialer) Druckbeanspruchung in Meridianri
+Druckbeanspruchung in Umfangsrichtung (Ringspannung) und Sch
+(1) Die in 6.2.3.3(3) anzuwendenden Beul-Interaktionsparameter dürfen nach folgend
+errechnet werden: 
+kx 1,25 0,75 x
+k 1,25 0,75 
+4 angegebene
+(2) Es sollte davon ausgegangen werden, dass die drei Membranspannungskomponenten an einem 
+beliebigen Punkt der Schale mit Ausnahme der Ränder in kombinierter Interaktion stehen. Für alle Punkte 
+innerhalb einer Zone, die von beiden Ränd
+Nachweis für eine Beul-Interaktion entfallen. Der Wert für l
+s ist der kleinere der Werte, die nach den beiden 
+folgenden Gleichungen bestimmt werden: 
+ls 0,1 L und trrl /16,0s (A.26) 
+(3) Falls es zu umständlich ist, die Beul-Interaktion für alle Punkten nachzuweisen, ist nach (4) und (5) eine 
+einfac ve Bewertu
+Mem en an den En
+s 
+tritt, d. h. außerhalb der Randzonen (siehe Bild A.3a) und wobei gilt: 
+(5) Für die in A.1.2.1(3) in Tabelle A.1 festgelegten langen Zylinder dürfen die für eine Interaktion relevanten 
+Grup ür den Nachweis der Interaktion angewendet werden, weiter als in (3) und (4) eingesc
+werd ungen, die als der für die Interaktion relevanten Gruppe zugehörig angesehen w
+en da
+here konservati ng möglich. Wenn der größte Wert einer der für Beulen relevanten 
+branspannung den einer Zylinderschale in einer der beiden Randzonen mit der Länge l
+auftritt, darf der Nachweis der Interaktion nach 6.2.3.3(3) unter Anwendung der in (4) definierten Werte 
+durchgeführt werden. 
+(4) Falls die unter (3) genannte Bedingung erfüllt wird, darf für den Nachweis der Interaktion nach 6.2.3.3(3) 
+der größte Wert für eine der für Beulen relevanten Membranspannungen angewendet werden, der innerhalb 
+der freien Länge l
+f auf
+lf L  2 ls (A.27) 
+pen, die f hränkt 
+en. Die Spann erden, 
+dürf nn auf einen beliebigen Abschnitt der Länge lint innerhalb der für den Interaktionsnachweis 
+verbleibenden freien Länge lf eingeschränkt werden (siehe Bild A.3b); dabei gilt: 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 48 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+46 
+trrl /3,1int (A.28) 
+(6) Falls in (3) bis (5) keine spezifischen Festlegungen zur Bestimmung der relativen Lagen oder zu 
+Aussonderungen von interaktions-relevanten Gruppen von Membranspannungskomponenten getroffen 
+werden und weiterhi eine einfache konservative Behandlung gefordert wird, darf für jede Membranspa
+der größte Wert unabhängig von der Lage in der Schale in Gleichung (6.24) eingesetzt werden. 
+n nnung 
+a) Kurzer Zylinder b) Langer Zylinder 
+Bild A.3  Beispiele für Gruppen von interaktions-relevanten Membranspannungskomponenten 
+A.2 Unausgesteifte Zylinderschalen mit gestufter Wanddicke 
+A.2.1 Allgemeines 
+t werden folgende Bezeichnungen angewendet: 
+ändern; 
+ Zylinderabschnitte mit konstanter Wanddicke 
+j s Zylinders; 
+j
+(2) e Randbedingungen BC 1 und BC 2 an beiden 
+Rän rn n kein Unterschied getroffen wird. 
+A.2.1 2 Geometrie und Absätzen an Verbindungen 
+vom oberen 
+Rand bis zum Boden zunimmt (siehe Bild A.4a), dürfen die in diesem Abschnitt angegebenen Verfahren 
+angewendet werden. Alternativ darf die linear elastische Verzweigungsanalyse (LBA) zur Berechnung der 
+kritischen Beulspannung in Umfangsrichtung ,cr,eff in A.2.3.1(7) angewendet werden. 
+A.2.1.1 Bezeichnungen und Randbedingungen 
+(1) In diesem Abschnit
+L Gesamtlänge des Zylinders zwischen den R
+r Radius der Mittelfläche des Zylinders; 
+j ganzzahliger Index zur Bezeichnung der einzelnen
+(von j 1 bis j n); 
+t konstante Wanddicke des Abschnitts j de
+l Länge des Abschnitts j des Zylinders. 
+Di folgenden Ausdrücke dürfen nur für Schalen mit den
+de (siehe 5.2) angewendet werden, wobei zwischen ihne
+.
+(1) Unter der Voraussetzung, dass die Wanddicke des Zylinders fortschreitend stufenweise 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 49 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+47 
+chbarter Abschnitte (siehe Bild A.4) dürfen als durch 
+die folgenden Ausdrücke erfasst angesehen werden, vorausgesetzt, der vorgesehene Wert e ist kleiner als 
+A.29) 
+tmin die Dicke der dünneren Platte an der Verbindung. 
+(3) Für Zylinder mit zulässigen planmäßigen Absätzen zwischen den Platten benachbarter Abschnitte nach 
+ Radius r als Mittelwert aus allen Abschnitten gebildet werden. 
+(4) y rlappstößen) sollten die Bestimmungen für 
+Kons en mit Überlappstößen nach A.3 angewendet werden. 
+(2) Planmäßige Absätze e0 zwischen den Platten bena
+0
+der zulässige Wert e0,p, der als der kleinere Wert nach einer beiden folgenden Gleichungen bestimmt werden 
+sollte: 
+)(5,0 und )5,0e (minmaxp0, tte minp0, t
+Hierbei ist 
+tmax die Dicke der dickeren Platte an der Verbindung; 
+(2) darf der
+Für Z linder mit überlappenden Verbindungen (Übe
+truktion
+Bild A.4  Planmäßiger Absatz e0 in einer Schale mit Stumpfstoß 
+A.2.2 Druckbeanspruchung in Meridianrichtung (Axialer Druck) 
+(1) Jeder Zylinderabschnitt j mit der Länge lj sollte als ein äquivalenter Zylinder mit der Gesamtlänge l L
+und gleichmäßiger Wanddicke t tj nach A.1.2 behandelt werd n. 
+(2) Für die nach A.1. Parameter Cxb
+tere Analyse ermittelter besserer 
+annung) 
+ewendet werden, siehe Bild A.5(II). 
+nte Wanddicke hat), sollte A.1 
+angewendet werden. 
+hen Wanddicken besteht, sollte das Verfahren 
+e
+2.1(3), Tabelle A.1 festgelegten langen äquivalenten Zylinder sollte der
+konservativ als Cxb 1 angenommen werden, sofern kein durch eine exak
+Wert verfügbar ist. 
+A.2.3 Druckbeanspruchung in Umfangsrichtung (Ringsp
+A.2.3.1 Kritische Beulspannungen in Umfangsrichtung 
+(1) Wenn der Zylinder aus zwei Abschnitten mit unterschiedlicher Wanddicke besteht, sollte das Verfahren 
+nach (4) bis (7) ang
+(2) Falls der Zylinder aus nur einem Abschnitt besteht (d. h. eine konsta
+(3) Wenn der Zylinder aus drei Abschnitten mit unterschiedlic
+nach (4) bis (7) angewendet werden, wobei zwei der drei fiktiven Abschnitte, a und b, als Abschnitte mit 
+gleicher Dicke angesehen werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 50 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+48 
+unächst durch einen äquivalenten Zylinder mit den drei Abschnitten a, b und c ersetzt 
+werden (siehe Bild A.5(II)). Die Länge seines oberen Abschnitts, l , sollte bis zum oberen Rand des ersten 
+ender Gleichung errechnet werden: 
+(4) Wenn der Zylinder aus mehr als drei Abschnitten mit unterschiedlichen Wanddicken besteht (siehe 
+Bild A.5(I)), sollte er z
+a
+Abschnitts reichen, dessen Wanddicke größer als die 1,5-fache kleinste Wanddicke tj ist; seine Länge sollte 
+jedoch nicht mehr als die Hälfte der Gesamtlänge L des Zylinders betragen. Die Länge der beiden anderen 
+Abschnitte, lb und lc, sollte nach folg
+lb la und lc L  2 la wenn gilt: la L/3 (A.30) 
+lb lc 0,5 (L  la) wenn gilt: L/3 la L /2 (A.31) 
+(I) Zylinder mit stufenweise 
+veränderlicher Wanddicke 
+(II) Äquivalenter Zylinder mit drei 
+Abschnitten 
+(III) Äquivalenter einziger Zylinder 
+mit gleichmäßiger Wanddicke 
+Bild A.5  Transformation eines gestuften Zylinders in einen äquivalenten Zylinder 
+(5) Die fiktiven Wanddicken ta, tb und tc der drei Abschnitte sollten als das gewichtete Mittel de anddicke 
+für jeden der drei fiktiven Abs hnitte bestimmt werden: 
+r W
+c
+aa
+a jjlt 1 tl (A.32)
+bb
+b
+1
+jjtllt (A.33) 
+cc
+c
+1
+jjtllt (A.34) 
+(6) Der Zylinder mit drei Abschnitten (d. h. der äquivalente bzw. der tatsächliche Zylinder) sollte durch
+einzigen äquivalenten Zylinder mit der effektiven Länge leff und mit gleichmäßiger Wanddicke t ta (si
+Bild A.5(III)) ersetzt werden. Die effektive Länge sollte nach folgender Gleichung errechnet werden: 
+ einen 
+ehe 
+a
+eff
+ll (A.35) 
+wobei ein dimensionsloser Faktor ist, der aus Bild A.6 zu entnehmen ist. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 51 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+49 
+die kritische Beulspannung in 
+Umfangsrichtung für jeden Zylinderabschnitt j des ursprünglichen Zylinders mit stufenweise veränderlicher 
+(7) Für Zylinderabschnitte mit mittlerer oder kurzer Länge sollte 
+Wanddicke nach folgender Gleichung errechnet werden: 
+effcr,,at
+cr,,
+j
+j t (A.36) 
+wobei ,cr,eff die kritische Beulspannung in Umfangsrichtung ist, die je nach Gültigkeit aus A.1.3.1(3), 
+A.1.3.1(5) oder A.1.3.1(7) für den äquivalenten einzigen Zylinder mit der Länge l nach (6) abgeleitet wird. 
+k
+Parameter j beschrieben: 
+eff
+Der Fa tor C sollte in diesen Ausdrücken den Wert C = 1,0 haben. 
+(8) Die Länge des Schalenabschnitts wird durch den dimensionslosen 
+j
+jj lrl
+j
+j
+trtr (A.37) 
+(9) Falls ein langer Zylinderabschnitt j vorliegt, sollte zusätzlich eine zweite Bewertung der Beulspannung 
+durchgeführt werden. Es sollte der kleinere der beiden aus (7) und (10) bestimmten Werte für den 
+gilt: 
+Beulsicherheitsnachweis des Zylinderabschnitts j verwendet werden. 
+(10) Der Zylinderabschnitt j sollte als lang angesehen werden, wenn 
+j
+j t
+r63,1 , (A.38) 
+und in diesem Fall sollte die kritische Beulspannung in Umfangsrichtung aus der folgenden Gleichung ermittelt 
+werden: 
+42
+cr,, 03,2275,0
+jj
+j
+j t
+rC
+r
+t
+E (A.39) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 52 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+50 
+Bild A.6  Faktor zur Bestimmung der effektiven Länge leff
+A.2.3.2 Nachweis der Beulfestigkeit bei Druckspannung in Umfangsrichtung 
+(1) Für alle Zylinderabschnitte j sollten die Bedingungen von 6.2.3 erfüllt werden, und eine Überprüfung des 
+folgenden Zusammenhanges sollte durchgeführt werden: 
+,Ed,j ,Rd,j (A.40) 
+Hierbei ist 
+,Ed,j der Schlüsselwert für die Membran-Druckspannung in Umfangsrichtung, auf die in den 
+folgenden Abschnitten ausführlich eingegangen wird; 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 53 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+51 
+,Rd,j der Bemessungswert für die Beulspannung in Umfangsrichtung, die aus der kritischen 
+Beulspannung in Umfangsrichtung nach A.1.3.2 abgeleitet wird. 
+(2) Unter der Voraussetzung, dass der Bemessungswert für die Spannungsresultante in Umfangs-
+richtung n ,Ed über die Länge L konstant ist, sollte der Schlüsselwert für die Membran-Druckspannung in 
+Umfangsrichtung im Abschnitt j nach folgender Gleichung bestimmt werden: 
+j
+Ed,
+jEd,,
+t
+n
+ (A.41) 
+(3) Wenn der Bemessungswert der Spannungsresultanten in Umfangsrichtung n ,Ed innerhalb der Länge L 
+schwankt, sollte als Schlüsselwert für die Membran-Druckspannung in Umfangsrichtung ein Ersatzwert 
+,Ed,j,mod angenommen werden, der bestimmt wird, indem der größte Wert der Spannungsresultanten in 
+Umfangsrichtung n ,Ed an einer beliebigen Stelle innerhalb der Länge L durch die örtliche Dicke tj (siehe 
+Bild A.7) dividiert wird: 
+j
+j t
+n )max( Ed,
+mod,Ed,, (A.42) 
+Bild A.7  Schlüsselwerte für die Membran-Druckspannung in Umfangsrichtung in den Fällen, 
+in denen n ,Ed über die Länge L schwankt 
+A.2.4 Schubbeanspruchung 
+A.2.4.1 Kritische, durch Schub erzeugte Beulspannung 
+(1) Wenn für die Bewertung eines äquivalenten einzigen Zylinders mit gleichmäßiger Wanddicke keine 
+spezielle Regel verfügbar ist, dürfen die Ausdrücke von A.2.3.1(1) bis (6) angewendet werden. 
+(2) Die weitere Bestimmung der kritischen, durch Schub erzeugten Beulspannungen darf grundsätzlich 
+entsprechend A.2.3.1(7) bis (10) durchgeführt werden, wobei jedoch die Ausdrücke für die Druckspannung in 
+Umfangsrichtung aus A.1.3.1 durch die jeweils zutreffenden Ausdrücke für die Schubspannung aus A.1.4.1 
+ersetzt werden. 
+A.2.4.2 Nachweis der Beulfestigkeit bei Schubbeanspruchung 
+(1) Die Regeln von A.2.3.2 dürfen angewendet werden, wobei allerdings die Ausdrücke für die Druck-
+spannung in Umfangsrichtung durch die jeweils zutreffenden Ausdrücke für die Schubspannung ersetzt 
+werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 54 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+52 
+A.3 Unausgesteifte Zylinderschalen mit Überlappstoß 
+A.3.1 Allgemeines 
+A.3.1.1 Definitionen 
+1. Überlappstoß in Umfangsrichtung 
+Stoß, der in Umfangsrichtung um die Schalenachse verläuft. 
+2. Überlappstoß in Meridianrichtung 
+Stoß, der parallel zur Schalenachse (in Meridianrichtung) verläuft. 
+A.3.1.2 Geometrie und Spannungsresultanten 
+(1) Falls eine zylindrische Schale unter Anwendung von Überlappstößen konstruiert wird (siehe Bild A.8), 
+dürfen anstelle der Bestimmungen in A.2 die folgenden Bestimmungen verwendet werden. 
+(2) Die folgenden Bestimmungen gelten sowohl für Überlappstöße mit zu- als auch mit abnehmendem 
+Mittelflächenradius der Schale. Wenn der Überlappstoß in Umfangsrichtung um die Schalenachse verläuft 
+(Umfangs-Überlappstoß), sollten für Druck in Meridianrichtung die Bestimmungen von A.3.2 angewendet 
+werden. Falls viele Überlappstöße in Umfangsrichtung um die Schalenachse verlaufen (Umfangs-Überlapp-
+stöße) und sich die Plattendicke über die Schale verändert, sollten die Bestimmungen von A.3.3 für Druck in 
+Umfangsrichtung angewendet werden. Wenn ein einziger Überlappstoß parallel zur Schalenachse (Meridian-
+Überlappstoß) verläuft, sollten die Bestimmung von A.3.3 für Druck in Umfangsrichtung angewendet werden. 
+In anderen Fällen brauchen keine besonderen Betrachtungen für den Einfluss der Überlappstöße auf die 
+Beulbeanspruchbarkeit angestellt zu werden. 
+Bild A.8  Schale mit Überlappstoß 
+A.3.2 Druckbeanspruchung in Meridianrichtung (Axialer Druck) 
+(1) Wenn ein Zylinder mit meridionalen Überlappstößen einer Druckspannung in Meridianrichtung ausgesetzt 
+wird, darf die Beulbeanspruchbarkeit je nach Gültigkeit wie für einen Zylinder mit gleichmäßiger oder gestufter 
+Wanddicke bewertet werden, wobei jedoch der Bemessungswert für die Beanspruchbarkeit um den 
+Faktor 0,70 verringert wird. 
+(2) Wenn eine Änderung der Plattendicke am Überlappstoß auftritt, darf als Bemessungswert der Beulbean-
+spruchung der gleiche Wert angenommen werden, der für die dünnere Platte nach (1) bestimmt wurde. 
+A.3.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Wenn ein Zylinder mit Überlappstößen einer Druckspannung in Umfangsrichtung quer zu den 
+meridionalen Überlappstößen ausgesetzt wird, darf der Bemessungswert für die Beulbeanspruchbarkeit je 
+nach Gültigkeit wie für einen Zylinder mit gleichmäßiger oder gestufter Wanddicke bewertet werden, wobei 
+jedoch ein Abminderungsfaktor von 0,90 angewendet wird. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 55 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+53 
+(2) Wenn ein Zylinder mit über die Schale hinab veränderlicher Plattendicke und mit vielen Überlappstößen 
+in Umfangsrichtung einem ebenfalls in Umfangsrichtung wirkenden Druck ausgesetzt wird, sollten das 
+Verfahren von A.2 ohne die geometrischen Einschränkungen der Stoßexzentritität und für den 
+Bemessungswert der Beulbeanspruchbarkeit ein Abminderungsfaktor von 0,90 angewendet werden. 
+(3) Wenn Überlappstöße in beiden Richtungen mit gegeneinander versetzt angeordneten, meridionalen 
+Überlappstößen in alternierenden Plattengängen oder Schüssen angewendet werden, sollte als 
+Bemessungswert für die Beulbeanspruchbarkeit der kleinere der nach (1) oder (2) ermittelten Werte ange-
+wendet werden. Eine weitere Abminderung für die Beanspruchbarkeit ist nicht nötig. 
+A.3.4 Schubbeanspruchung 
+(1) Wenn ein Zylinder mit Überlappstoß einer Membran-Schubspannung ausgesetzt wird, darf die Beulbean-
+spruchbarkeit je nach Gültigkeit wie für einen Zylinder mit gleichmäßiger oder gestufter Wanddicke festgelegt 
+werden. 
+A.4 Unausgesteifte Kegelschalen 
+A.4.1 Allgemeines 
+A.4.1.1 Bezeichnungen 
+(1) In diesem Abschnitt werden folgende Bezeichnungen angewendet: 
+h Länge des Kegelstumpfes in axialer Richtung (Höhe); 
+L Länge des Kegelstumpfes in Meridianrichtung; 
+r Radius der Mittelfläche des Kegels, rechtwinklig zur Rotationsachse linear über die Länge; 
+r1 Radius am kleineren Ende des Kegels; 
+r2 Radius am größeren Ende des Kegels; 
+ halber Kegelspitzenwinkel. 
+Bild A.9  Geometrie, Membranspannungen und Spannungsresultanten am Kegel 
+A.4.1.2 Randbedingungen 
+(1) Die folgenden Ausdrücke sollten nur auf Schalen mit den Randbedingungen BC 1 oder BC 2 an beiden 
+Rändern angewendet werden (siehe 5.2 und 6.2), wobei zwischen ihnen keine Unterscheidung getroffen wird. 
+Sie sollten nicht für eine Schale mit der Randbedingung BC 3 angewendet werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 56 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+54 
+(2) Die Regeln in diesem Abschnitt A.4.1 sollten nur auf die folgenden beiden Randbedingungen der 
+Behinderungen für die radiale Verschiebung an beiden Enden des Kegels angewendet werden: 
+„Zylinderbedingung 0; 
+„Ringbedingung u sin + cos 0 
+A.4.1.3 Geometrie 
+(1) Die folgenden Regeln gelten nur für Kegelstümpfe mit gleichmäßiger Wanddicke und mit einem halben 
+Kegelspitzenwinkel 65° (siehe Bild A.9). 
+A.4.2 Bemessungswerte für Beulspannungen 
+A.4.2.1 Äquivalenter Zylinder 
+(1) Die Bemessungswerte für die Beulspannungen, die für den Nachweis der Beulfestigkeit nach 6.2.3 
+benötigt werden, dürfen an einem äquivalenten Zylinder hergeleitet werden, dessen Länge le und dessen 
+Radius re von der Art der Spannung nach Tabelle A.12 abhängen. 
+Tabelle A.12  Länge und Radius des äquivalenten Zylinders 
+Belastung Länge des äquivalenten 
+Zylinders Radius des äquivalenten Zylinders 
+Druckspannung in 
+Meridianrichtung le L cose
+rr
+Druck in 
+Umfangsrichtung 
+(Ringspannung) 
+le L cos2
+21e
+rrr
+cos
+45,055,0 21e
+rrr falls le le,1 (kürzere Kegel) Gleichmäßiger 
+äußerer Druck q
+Randbedingungen: An 
+beiden Enden ent-
+weder BC 1 oder BC 2 
+le ist der kleinere der Werte: 
+le,1 L und 
+sin
+)125,053,0(2
+e,2
+rl
+( in Radiant, siehe Bild A.9) 
+cos
+1,0171,0 2e rr falls le le,2 (längere Kegel) 
+Schub le h cos11 1e rr mit 
+1
+21
+2r
+rr
+Gleichmäßige Torsion le L
+4,05,21e 1cosrr mit 
+2
+sin
+r
+L
+(2) Für Kegel unter einem gleichmäßigen Außendruck q sollte der Nachweis der Beulfestigkeit auf der 
+Membranspannung basieren: 
+,Ed q re/t (A.43) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 57 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+55 
+A.4.3 Nachweis der Beulfestigkeit 
+A.4.3.1 Druckspannung in Meridianrichtung 
+(1) Der Nachweis der Beulfestigkeit sollte an dem Punkt an der Kegelspitze durchgeführt werden, an dem die 
+Kombination der Bemessungswerte für die in Meridianrichtung wirkende Spannung und für die Beulspannung 
+nach A.3.2.2 am kritischsten ist. 
+(2) Bei Druck in Meridianrichtung, der durch eine konstante axiale Kraft auf einen Kegelstumpf verursacht 
+wird, sollten sowohl der kleine Radius r
+1 als auch der große Radius r2 als mögliche Lage der kritischsten 
+Position angesehen werden. 
+(3) Bei Druck in Meridianrichtung, der durch ein konstantes globales Biegemoment auf den Kegel verursacht 
+wird, sollte der kleine Radius r1 als am kritischsten angesehen werden. 
+(4) Der Bemessungswert der Beulspannung sollte für den äquivalenten Zylinder nach A.1.2 bestimmt werden. 
+A.4.3.2 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Wenn der Druck in Umfangsrichtung durch einen gleichmäßigen Außendruck verursacht wird, sollte der 
+Beulsicherheitsnachweis unter Anwendung des nach Gleichung (A.43) bestimmten, in Umfangsrichtung 
+wirkenden Bemessungswertes der Spannung ,Ed,env und des Bemessungswertes der Beulspannung nach 
+A.3.2.1 und A.3.2.3 durchgeführt werden. 
+(2) Wenn der Druck in Umfangsrichtung nicht durch einen gleichmäßigen Außendruck, sondern durch 
+andere Einwirkungen verursacht wird, sollte die errechnete Spannungsverteilung ,Ed(x) durch eine 
+Spannungsverteilung ,Ed,env(x) ersetzt werden, die den errechneten Wert zwar überall überschreitet, aber 
+aus einem fiktiven gleichmäßigen Außendruck abzuleiten sein würde. Der Beulsicherheitsnachweis sollte 
+dann wie in (1), aber unter Anwendung von ,Ed,env anstelle von ,Ed durchgeführt werden. 
+(3) Der Bemessungswert der Beulspannung sollte für den äquivalenten Zylinder nach A.1.3 bestimmt werden. 
+A.4.3.3 Schubbeanspruchung und gleichmäßige Torsionsbeanspruchung 
+(1) Für den Fall, dass die Schubspannung durch ein konstantes globales Drehmoment auf den Kegel 
+verursacht wird, sollte der Beulsicherheitsnachweis unter Anwendung des wirkenden Bemessungswertes der 
+Schubspannung Ed an dem Punkt, an dem r re cos ist, und des Bemessungswertes der Beul-
+spannung Rd nach A.3.2.1 und A.3.2.4 durchgeführt werden. 
+(2) Falls die Schubspannung nicht durch ein konstantes globales Drehmoment, sondern durch andere 
+Einwirkungen verursacht wird (z. B. durch Einwirkung einer globalen Scherkraft auf den Kegel), sollte die 
+errechnete Spannungsverteilung Ed(x) durch eine fiktive Spannungsverteilung Ed,env(x) ersetzt werden, die 
+den errechneten Wert zwar überall überschreitet, aber aus einem fiktiven globalen Drehmoment abzuleiten 
+sein würde. Der Beulsicherheitsnachweis sollte dann wie in (1), aber unter Anwendung von Ed,env anstelle 
+von Ed durchgeführt werden. 
+(3) Der Bemessungswert der Beulspannung Rd sollte für den äquivalenten Zylinder nach A.1.4 bestimmt 
+werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 58 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+56 
+A.5 Ausgesteifte Zylinderschalen mit konstanter Wanddicke 
+A.5.1 Allgemeines 
+(1) Ausgesteifte Zylinderschalen können bestehen aus 
+ Isotropen Wänden, die mit Steifen in Meridianrichtung und in Umfangsrichtung ausgesteift sind; 
+ profilierten Wänden, die mit Steifen in Meridianrichtung und in Umfangsrichtung ausgesteift sind. 
+(2) In beiden Fällen können Beulsicherheitsnachweise durchgeführt werden, indem angenommen wird, dass 
+die ausgesteifte Wand sich nach den in A.5.6 angegebenen Regeln wie eine äquivalente orthotrope Schale 
+verhält, sofern die in A.5.6 genannten Bedingungen erfüllt sind. 
+(3) Für in Umfangsrichtung gewelltes Blech ohne Steifen in Meridianrichtung kann die plastische 
+Beulbeanspruchbarkeit nach den in A.5.4.2(3), (4) und (5) angegebenen Regeln errechnet werden. 
+(4) Falls vorausgesetzt wird, dass das Wellblech in Umfangsrichtung keine axiale Last trägt, kann die 
+Beulbeanspruchbarkeit einer einzelnen Steife nach A.5.4.3 beurteilt werden. 
+A.5.2 Isotrope Wände mit Steifen in Meridianrichtung 
+A.5.2.1 Allgemeines 
+(1) Bei isotropen Wänden, die mit Steifen in Meridianrichtung (Längssteifen) versehen sind, sollte der 
+Zwängungseinfluss der Wandverkürzung infolge Innendruck bei der Ermittlung der Druckbeanspruchung in 
+Medianrichtung sowohl in der Wand als auch in den Steifen berücksichtigt werden. 
+(2) Die Bruchfestigkeit einer Naht in Meridianrichtung sollte wie für eine isotrope Schale bestimmt werden. 
+(3) Falls in einer konstruktiven Verbindung auch die Steife zur Übertragung von Umfangszugkräften beiträgt, 
+sollte der Einfluss dieser Zugkraft beim Nachweis von Kraft und Bruchanfälligkeit der Steife berücksichtigt 
+werden. 
+A.5.2.2 Druckbeanspruchung in Meridianrichtung (Axialer Druck) 
+(1) Die Wand sollte für die gleichen Beul-Kriterien unter axialem Druck wie die unausgesteifte Wand 
+bemessen werden, sofern nicht der größte horizontale Abstand zwischen den Steifen d
+s,max (Bild A.10) kleiner 
+ist als rt2 , wobei t die örtliche Wanddicke ist. 
+(2) Werden Steifen in Meridianrichtung in dichteren Abständen als rt2 angeordnet, sollte die Beul-
+beanspruchbarkeit der kompletten Wand nach dem in A.5.6 angegebenen Verfahren beurteilt werden. 
+(3) Die Beulfestigkeit der Steifen gegen axialen Druck sollte nach den Bestimmungen in EN 1999-1-1 
+bewertet werden. 
+(4) Die Exzentrizität der Steifen gegenüber der Schalenwand sollte, wenn zutreffend, berücksichtigt werden. 
+A.5.2.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Sofern keine genauere Berechnung erfolgt, ist der Beulsicherheitsnachweis wie für eine unausgesteifte 
+Wand zu führen. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 59 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+57 
+(2) Bei einer genaueren Berechnung dürfen die Steifen in Meridianrichtung „verschmiert  werden, damit eine 
+orthotrope Wand erhalten wird, und die Beulspannung kann nach A.5.6 unter der Annahme errechnet werden, 
+dass für die Dehnsteifigkeit C C Et und für die Schubsteifigkeit der Membran C 0,38 Et gilt. 
+A.5.2.4 Schubbeanspruchung 
+(1) Falls größere Teile der Schalenwand unter einer Schubbeanspruchung stehen (z. B. aus exzentrischem 
+Befüllen, aus Erdbebenbelastung usw.), sollte der Beulsicherheitsnachweis der Membran gegen Schub-
+beanspruchung wie für eine isotrope unausgesteifte Wand geführt werden (siehe A.1.4), möglicherweise 
+jedoch mit durch die Steifen erhöhter Beulbeanspruchbarkeit. Zu diesem Zweck darf als äquivalente 
+Schalenlänge l der schubbeanspruchten Schale der kleinere Wert aus der Höhe zwischen Versteifungsringen 
+oder gehaltenen Rändern und dem zweifachen meridionalen Abstand der Steifen in Meridianrichtung 
+eingesetzt werden, wobei vorausgesetzt wird, dass jede Steife für Meridianbiegung (um ihre Achse in 
+Umfangsrichtung) eine größere als die nach der folgenden Gleichung errechnete Biegesteifigkeit EI
+y hat: 
+lrEtEI y 3min, 1,0 (A.44) 
+wobei für l und t die gleichen Werte wie bei der kritischsten Beulform gelten. 
+(2) Endet eine diskrete Steife innerhalb der Schalenwand, sollte die Steifenkraft rechnerisch gleichmäßig 
+über eine Höhe von nicht mehr als rt4 in die Schale eingeleitet werden. 
+(3) Der Schubbeulwiderstand für die lokale Schubübertragung aus einer Steife in die Schale nach dem 
+vorstehenden Absatz sollte den in A.1.4 angegebenen Wert nicht überschreiten. 
+a) b) c) 
+Legende 
+w Schweißnaht 
+FSW Reibschweißen
+Bild A.10  Typische axial ausgesteifte Schalen aus (a) und (b) Strangpressteilen und (c) Platten 
+und Strangpressteilen 
+A.5.3 Isotrope Wände mit Steifen in Umfangsrichtung 
+(1) Für Beulsicherheitsnachweise gelten die in A.5.6 angegebenen Regeln unter der Annahme, dass sich die 
+ausgesteifte Wand wie eine orthotrope Schale verhält. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 60 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+58 
+A.5.4 In Umfangsrichtung profilierte Wände mit Steifen in Meridianrichtung 
+A.5.4.1 Allgemeines 
+(1) Die rechnerische Blechdicke ist ohne Überzüge und Beschichtungen (Kerndicke) und ohne geometrische 
+Toleranzen anzusetzen. 
+(2) Für Wände aus Wellblech sollte die kleinste Kerndicke 0,68 mm nicht überschreiten. 
+(3) In horizontal profilierten Zylinderwänden mit Meridiansteifen sollten der profilierten Wand rechnerisch 
+keine meridionalen Lasten zugewiesen werden, es sein denn, sie wird als orthotrope Schale nach A.5.6 
+behandelt. 
+(4) Besonders beachtet werden sollte, dass die Steifen in der Meridianebene rechtwinklig zur Wand konti-
+nuierlich ausgebildet sein müssen, weil diese Ausbildung der Steifen wesentlich für die Beulbeanspruch-
+barkeit ist. 
+(5) Falls die Wand mit Steifen in Meridianrichtung ausgesteift ist, sollten die Verbindungsmittel zwischen 
+Blechen und Steifen so dimensioniert werden, dass eine Einleitung der auf alle Teile der Wandbleche 
+verteilten Schubbeanspruchung in die Steifen sichergestellt ist. Die Blechdicke sollte so ausgewählt werden, 
+dass Bruchversagen an diesen Verbindungsmitteln verhindert wird, wobei auch die reduzierte Lochleibungs-
+tragfähigkeit an Verbindungen in Profilblechen zu berücksichtigen ist. 
+(6) Für die Bemessungswerte für Spannungsresultanten und Widerstände und für die Nachweise sollten die 
+Festlegungen in Abschnitt 5, 6.1 und A.1 gelten, aber mit den in den vorstehenden Absätzen (1) bis (5) 
+angegebenen zusätzlichen Regeln. 
+ANMERKUNG Beispiele für die Anordnung von Wandaussteifungen werden in Bild A.11 gezeigt. 
+(7) Schrauben an den Stößen zwischen Blechsegmenten sollten die Anforderungen von EN 1999-1-1 
+erfüllen. Als Schraubengröße sollte mindestens M8 ausgewählt werden. 
+(8) Die Stoßausbildung sollten auch den Anforderungen nach EN 1999-1-1 für geschraubte Scher-
+verbindungen entsprechen. 
+(9) Der Schraubenabstand in Umfangsrichtung sollte nicht größer sein als 3°. 
+(10) An Wanddurchbrüchen für Luken, Türen, Bohrer oder andere Vorrichtungen sollte an den betreffenden 
+Stellen ein dickeres Wellblech vorgesehen werden, damit nicht die durch Steifigkeitsabweichungen 
+verursachten Spannungserhöhungen zu örtlichen Rissen führen. 
+ANMERKUNG Ein typisches Schraubenbild für eine Wellblechtafel wird in Bild A.12 gezeigt. 
+Bild A.11  Beispiel für die Anordnung von Steifen in Meridianrichtung an in Umfangsrichtung 
+profilierten Schalen 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 61 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+59 
+Bild A.12  Typische Schraubenanordnung in einer Wellblechtafel 
+A.5.4.2 Axiale Druckbeanspruchung 
+(1) Der Bemessungswert für die Beanspruchbarkeit gegen axialen Druck sollte an jeder Stelle der Schale 
+ermittelt werden, und zwar unter Berücksichtigung der für die Ausführung festgelegten Toleranzklasse, der 
+Größe des garantiert gleichzeitig wirkenden Innendruckes p und der Ungleichmäßigkeit der Druckspannung in 
+Umfangsrichtung. Die Veränderlichkeit des Axialdruckes in Meridianrichtung darf nicht berücksichtigt werden, 
+es sei denn, dieser Teil enthält dazu spezielle Angaben. 
+(2) Für den Beulsicherheitsnachweis einer in Meridianrichtung ausgesteiften Wand sollte eines der beiden 
+alternativen Verfahren angewendet werden: 
+a) Beulen einer verschmiert-orthotropen Ersatzschale (nach A.5.6), sofern der meridionale Abstand 
+zwischen den Steifen der Bedingung A.5.6.1(3) entspricht; 
+b) Knicken der einzelnen Steifen (die profilierte Wand nimmt zwar voraussetzungsgemäß keine Axialkräfte 
+auf, stützt aber die Steifen) nach A.5.4.3, falls der horizontale Abstand zwischen den Steifen der 
+Bedingung in A.5.6.1(3) nicht entspricht. 
+(3) Für eine profilierte Schale ohne Steifen in Meridianrichtung sollte als charakteristischer Wert des lokalen 
+plastischen Beulwiderstandes der größere der beiden folgenden Werte bestimmt werden: 
+d
+ftnx 2
+02
+Rk, (A.45) 
+und 
+r
+ftrnx
+0
+Rk, (A.46) 
+Hierbei ist 
+t die Blechdicke; 
+d die Amplitude (Profilhöhe) von Wellental zu Wellenberg; 
+r der örtliche Radius der Profilierung (siehe Bild A.14); 
+r der Radius des Zylinders. 
+Der lokale plastische Beulwiderstand nx,Rk sollte als unabhängig vom Wert des Innendruckes pn angesetzt 
+werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 62 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+60 
+ANMERKUNG Der lokale plastische Beulwiderstand nx,Rk beschreibt den Widerstand der Profilierung gegen Kollaps 
+oder „Zusammenfallen. 
+(4) Der Bemessungswert des lokalen plastischen Beulwiderstandes sollte nach folgender Gleichung 
+bestimmt werden: 
+1M
+Rk,
+Rd,
+xx
+x
+nn , (A.47) 
+dabei ist: x 0,80 und M1 wie in 2.7.2 angegeben. 
+(5) An allen Stellen des Tragwerks sollten die Bemessungsspannungen die folgende Bedingung erfüllen: 
+nx,Ed nx,Rd (A.48) 
+A.5.4.3 Ausgesteifte Wand, als Reihe von Axialkraft tragenden Steifen behandelt 
+(1) Wird eine ausgesteifte Wellblechwand unter der Annahme berechnet, dass das Blech keine Axialkräfte 
+trägt (Verfahren (b) in A.5.4.3), darf davon ausgegangen werden, dass es alle Knickverformungen der Steifen 
+in der Wandebene verhindert, und der Knickwiderstand der Steifen sollte alternativ nach einem der beiden 
+folgenden Verfahren errechnet werden: 
+a) Die Stützwirkung des Bleches für Knickverformungen rechtwinklig zur Wand wird vernachlässigt; 
+b) die elastische Stützwirkung durch die Steifigkeit des Bleches für Knickverformungen rechtwinklig zur 
+Wand wird berücksichtigt. 
+(2) Bei Anwendung des Verfahrens (1)a) kann der Widerstand einer einzelnen Steife als der Widerstand 
+gegen zentrischen Druck auf die Steife angenommen werden. Der Bemessungswert für die Beul-
+beanspruchbarkeit N
+s,Rd sollte nach folgender Gleichung errechnet werden: 
+1M
+0eff
+Rds,
+fA
+N (A.49) 
+wobei Aeff die effektive Querschnittsfläche der Steife ist. 
+(3) Der Abminderungsfaktor sollte für Biegeknicken rechtwinklig zur Wand (um die Querschnittsachse in 
+Umfangsrichtung) in Abhängigkeit von der Art der Legierung aus EN 1999-1-1 und unabhängig von der 
+angewendeten Legierung nach Knickkurve 2 ( 0,32 und 0 0) bestimmt werden. Als effektive Knicklänge 
+zur Ermittlung des Abminderungsfaktors sollte der Abstand zwischen benachbarten Ringsteifen eingesetzt 
+werden. 
+(4) Wenn die elastische Stützwirkung durch die Wand für das Knicken der Steife in Anspruch genommen 
+wird, sollten die beiden folgenden Bedingungen erfüllt werden: 
+a) Als unterstützender Wandabschnitt sollte die Breite zwischen den beiden benachbarten Steifen an diesen 
+gelenkig gelagert angenommen werden (siehe Bild A.13). 
+b) Eine mögliche Unterstützung durch die Steifigkeit des Schüttgutes sollte nicht in Anspruch genommen 
+werden. 
+(5) Wenn keine genauere Berechnung durchgeführt wird, sollte die ideale elastische Verzweigungslast Ns,cr
+nach der folgenden Gleichung unter der Annahme eines konstanten zentrischen Druckes errechnet werden: 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 63 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+61 
+kEIN scrs, 2 (A.50) 
+Hierbei ist 
+EIs die Biegesteifigkeit der Steife für Biegung rechtwinklig zur Wand (Nmm 2); 
+k die Federsteifigkeit des Blechs (N/mm je Millimeter Wandhöhe) zwischen den in Meridianrichtung 
+benachbarten Steifen, siehe Bild A.13. 
+(6) Die Federsteifigkeit k des Wandbleches sollte unter der Annahme bestimmt werden, dass das Blech als 
+Einfeldplatte zwischen den auf jeder Seite meridional benachbarten Steifen gespannt und dort gelenkig 
+gelagert ist, siehe Bild A.13. Der Wert für k kann nach folgender Gleichung errechnet werden: 
+3s
+6
+d
+Dk (A.51) 
+Hierbei ist 
+D die Biegesteifigkeit des Blechs bei Biegung in Umfangsrichtung; 
+ds der Abstand der Steifen in Meridianrichtung. 
+(7) Für profilierte Bleche mit Bogen-Tangenten-Profil oder mit Sinusprofil darf der Wert für D aus A.7(6) 
+entnommen werden. Für ander e Profilierungen sollte die Biegesteifigkeit bei Biegung in Umfangsrichtung für 
+den tatsächlichen Querschnitt bestimmt werden. 
+(8) Für die Bemessungsspannungen der Steife sollte an allen Punkten die folgende Bedingung erfüllt 
+werden: 
+Ns,Ed Ns,Rd (A.52) 
+(9) Die Beanspruchbarkeit der Steifen gegen lokales Beulen und gegen Biegedrillknicken sollte nach 
+EN 1999-1-1 bestimmt werden. 
+A.5.4.4 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Für die Nachweise der Beulsicherheit gelten die in A.5.6.3 angegebenen Regeln unter der Annahme, 
+dass die ausgesteifte Wand sich wie eine orthotrope Schale verhält. 
+Bild A.13  Ermittlung der Stütz-Federsteifigkeit gegen Biegeknicken 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 64 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+62 
+A.5.5 Axial profilierte Wände mit Ringsteifen 
+A.5.5.1 Allgemeines 
+(1) In zylindrischen Wänden aus Profilblechen (Wellblechen) mit axial verlaufendem Profil sollten die beiden 
+folgenden Bedingungen eingehalten werden: 
+a) Der profilierten Wand dürfen rechnerisch keine meridionalen Kräfte zugewiesen werden; 
+b) das profilierte Wandblech sollte als durchlaufend von Ring zu Ring zwischen den Ringmitten spannend 
+angenommen werden. 
+(2) Die Blechstöße sollten so bemessen werden, dass die angenommene Biegekontinuität sichergestellt ist. 
+(3) Bei Ermittlung der axialen Druckkräfte in der Wand aus Wandreibung von Schüttgut sollten der gesamte 
+Umfang der Schale und die Profilgeometrie berücksichtigt werden. 
+(4) Wenn das Profilblech bis zum Boden reicht, sollte die örtliche Biegebeanspruchung aus der Randstörung 
+beachtet werden, wobei radial unverschiebliche Lagerung anzunehmen ist. 
+(5) Der profilierten Wand dürfen rechnerisch keine Umfangskräfte zugewiesen werden. 
+(6) Der Abstand der Ringsteifen ergibt sich aus einer Berechnung des Profilbleches als über die Ringe 
+durchlaufenden Biegeträger, wobei möglicherweise der Einfluss unterschiedlicher radialer Verformungen von 
+unterschiedlich großen Ringsteifen zu berücksichtigen ist. Die aus dieser Biegeberechnung resultierenden 
+Spannungen sollten beim Beulsicherheitsnachweis für Axialdruckbeanspruchung zu den Normalkraft-
+spannungen addiert werden. 
+ANMERKUNG Die Meridianbiegebeanspruchung des Profilbleches kann ermittelt werden, indem angenommen wird, 
+dass das Blech ein an den Ringen elastisch gestützter Durchlaufträger ist. Die Auflagerfedersteifigkeit ergibt sich dabei 
+aus der Steifigkeit des Ringes bei radialer Belastung. 
+(7) Die Ringsteifen sollten für die Aufnahme der meridionalen Belastung nach EN 1999-1-1 bemessen 
+werden. 
+A.5.5.2 Axiale Druckbeanspruchung 
+(1) Im Rahmen der Beulsicherheitsnachweise gelten die in A.5.6.2 angegebenen Regeln unter der Annahme, 
+dass die ausgesteifte Wand sich wie eine orthotrope Schale verhält. 
+A.5.5.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Im Rahmen der Beulsicherheitsnachweise gelten die in A.5.6.3 angegebenen Regeln unter der Annahme, 
+dass die ausgesteifte Wand sich wie eine orthotrope Schale verhält. 
+A.5.6 Als orthotrope Schale behandelte ausgesteifte Wand 
+A.5.6.1 Allgemeines 
+(1) Wenn die ausgesteifte, entweder isotrope oder profilierte Wand als orthotrope Schale angesehen wird, 
+sollte die resultierende verschmierte Steifigkeit als gleichmäßig verteilt angenommen werden. Bei profilierten 
+Wänden sollte die Steifigkeit des Blechs in unterschiedlichen Richtungen aus A.7 entnommen werden. 
+(2) Die Biege- und Dehneigenschaften der Ring- und Längssteifen und die Exzentrizitäten zwischen den 
+Steifenachsen und aller Schalenmittelflächen sowie der Steifenabstand d
+s sollten ebenfalls bestimmt werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 65 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+63 
+(3) Der meridionale Abstand zwischen den Steifen ds (Bild A.10) sollte ds,max nicht überschreiten, wobei der 
+maximale Abstand nach folgender Gleichung zu errechnen ist: 
+25,02
+maxs, 4,7
+y
+y
+C
+Dr
+d (A.53) 
+Hierbei ist 
+Dy die Biegesteifigkeit des Bleches je Längeneinheit in Umfangsrichtung (parallel zum Profil für in 
+Umfangsrichtung profiliertes Blech); 
+Cy die Dehnsteifigkeit des Bleches je Längeneinheit in Umfangsrichtung (parallel zum Profil für in 
+Umfangsrichtung profiliertes Blech). 
+A.5.6.2 Axiale Druckbeanspruchung 
+(1) Die kritische Beulspannungsresultante nx,cr je Umfangseinheit der orthotropen Schale sollte auf allen 
+Höhenkoten der Schale ermittelt werden, indem der folgende Ausdruck hinsichtlich der kritischen Umfangs-
+wellenzahl j und der Beulhöhe li minimiert wird: 
+3
+2122cr,
+2,1
+A
+AAjnx (A.54) 
+mit: 
+25222556645244441 2)(2 CjCCCCCjA (A.55) 
+214221233222222522233112
+14221225222331222
+))(())((
+))()((2
+CjCCCCjCCC
+CjCCjCCCA (A.56) 
+2331223322522331123 )())(( CCCCCCCA (A.57) 
+mit: 
+ss11 / dEACC rr22 / dEACC
+CCC12 CC33
+)/( sss14 rdEAeC )/( rrr25 rdEAeC
+ss244 /(1 dEIDrC rr255 /(1 dEIDrC
+DDrC 245 rtrsts266 //(5,01 dGIdGIDrC
+ilj
+r
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 66 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+64 
+Hierbei ist 
+li die Halbwellenlänge der potentiellen Beule in Meridianrichtung; 
+j Anzahl der Beulwellen in Umfangsrichtung; 
+As die Querschnittsfläche einer Längssteife;
+Is das Flächenmoment 2. Grades (Flächenträgheitsmoment) einer Längssteife um ihre Querschnitts-
+achse in Umfangsrichtung in der Schalenmittelfläche (Biegung in Meridianrichtung); 
+ds der Abstand zwischen den Längssteifen; 
+Its das St.Venantsche Torsionsträgheitsmoment einer Längssteife; 
+es die Exzentrizität einer Längssteife nach außen, bezogen auf die Schalenmittelfläche; 
+Ar die Querschnittsfläche einer Ringsteife; 
+Ir das Flächenmoment 2. Grades (Flächenträgheitsmoment) einer Ringsteife um ihre Querschnitts-
+achse in Meridianrichtung in der Schalenmittelfläche (Biegung in Umfangsrichtung); 
+dr der Abstand zwischen den Ringsteifen; 
+Itr das St.Venantsche Torsionsträgheitsmoment einer Ringsteife; 
+er die Exzentrizität einer Ringsteife nach außen, bezogen auf die Schalenmittelfläche; 
+C die Dehnsteifigkeit in axialer Richtung; 
+C die Dehnsteifigkeit in Umfangsrichtung; 
+C die in der Membran erzeugte Schubsteifigkeit; 
+D die Biegesteifigkeit in axialer Richtung; 
+D die Biegesteifigkeit in Umfangsrichtung; 
+D die Drillsteifigkeit bei Verdrehung; 
+r der Radius der Schale. 
+ANMERKUNG 1 Für Wellblech beziehen sich die oben für Steifen angegebenen Querschnittsgrößen ( As, Is, Its usw.) 
+nur auf den Querschnitt der Steife; eine Berücksichtigung von mittragenden Anteilen der Schalenwand ist nicht möglich. 
+ANMERKUNG 2 Dehnsteifigkeit und Biegesteifigkeit des Wellblechs, siehe A.5.7(5) und (6). 
+ANMERKUNG 3 Der untere Rand der Beule kann dort angenommen werden, wo sich entweder die Blechdicke oder 
+der Querschnitt der Steife ändert; bei jeder dieser Änderungen muss die Beulbeanspruchbarkeit unabhängig überprüft 
+werden. 
+(2) Der Bemessungswert für die Beulbeanspruchbarkeit nx,Rd für die orthotrope Schale sollte je nach 
+Güteklasse der Schale nach A.1.2 und 6.2.3.2 bestimmt werden. Die kritische Beulbeanspruchbarkeit nx,cr
+sollte aus (1) ermittelt werden. Für ausgesteifte Schale mit isotropen Wänden darf ein erhöhter Güte-
+faktor Qstiff 1,3 Q angewendet werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 67 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+65 
+A.5.6.3 Druckbeanspruchung in Umfangsrichtung (Ringspannung) 
+(1) Die kritische Beulspannung bei einem gleichmäßigen Außendruck pn,cr sollte bewertet werden, indem der 
+folgende Ausdruck hinsichtlich der kritischen Umfangswellenzahl j minimiert wird: 
+3
+2
+12cr,
+1
+A
+AA
+jr
+pn (A.58) 
+wobei A1, A2 und A3 den Angaben in A.5.1.2(3) entsprechen. 
+(2) Ist der Steifenquerschnitt oder die Blechdicke über die Wandhöhe veränderlich, sollten verschiedene 
+potentielle Beullängen li untersucht werden, um die kritischste Beullänge zu bestimmen, wenn von der 
+Annahme ausgegangen wird, dass stets das obere Ende der potentiellen Beule am oberen Rand des 
+dünnsten Blechschusses liegt. 
+ANMERKUNG Wenn oberhalb des dünnsten Blechschusses noch ein Bereich mit dickerem Blech liegt, kann das obere 
+Ende der potentiellen Beule nicht nur am oberen Rand des dünnsten Blechschusses liegen, sondern auch am oberen 
+Rand der Wand. 
+(3) Sofern keine genauere Berechnung durchgeführt wird, sollte bei der oben beschriebenen Berechnung als 
+Blechdicke stets die Dicke des dünnsten Blechschusses eingeführt werden. 
+(4) Für Schalen ohne Dach unter Windlast sollte der vorstehend errechnete Beuldruck um einen Faktor 0,6 
+verringert werden. 
+(5) Der Bemessungswert der Beulspannung für die Wand sollte in Abhängigkeit von der Güteklasse der 
+Schale nach 6.2.3.2 und A.1.3 bestimmt werden. Der kritische Beuldruck pn,cr sollte nach (1) ermittelt werden. 
+Für den in A.1.3.1 angegebenen Koeffizienten C sollte C 1 angewendet werden. 
+A.5.6.4 Schubbeanspruchung 
+(1) Es gelten die in A.5.2.4 angegebenen Regeln für isotrope Wände mit Steifen in Meridianrichtung. 
+A.5.7 Äquivalente orthotrope Eigenschaften des Wellblechs 
+(1) Profilbleche als Teile eines Schalentragwerkes dürfen bei der Berechnung durch gleichmäßig orthotrope 
+Platten bzw. Schalen ersetzt werden. 
+(2) Für Profilbleche mit Bogen-Tangenten-Profil oder mit Sinusprofil (Wellbleche) dürfen bei Spannungs- 
+und Beulberechnungen die nachfolgenden Eigenschaften verwendet werden. Für andere Profilierungen 
+sollten die entsprechenden Eigenschaften nach EN 1999-1-4 für den tatsächlichen Querschnitt errechnet 
+werden. 
+ (3) Die Eigenschaften eines Wellbleches sollten in einem x-y-Koordinatensystem definiert werden, wobei die 
+y-Achse parallel zur Profilierung verläuft (Geraden auf der Oberfläche) und die x-Achse rechtwinklig dazu 
+(Wellentäler und -berge). Die Profilgeometrie wird, unabhängig von der genauen Wellenprofilierung, durch 
+folgende Parameter beschrieben, siehe Bild A.14, wobei sind: 
+d das Maß zwischen zwei Wellenbergen; 
+l die Wellenlänge des Profils; 
+r
+der örtliche Radius am Wellenberg oder im Wellental. 
+(4) Alle Eigenschaften dürfen als eindimensional behandelt werden, d. h., es gibt keine Poisson-Effekte 
+zwischen den beiden Richtungen. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 68 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+66 
+(5) Für die Ersatzeigenschaften der Membran (Dehnsteifigkeit) darf angenommen werden: 
+2
+3
+3
+2
+d
+tEEtC xx (A.59) 
+2
+22
+4
+1
+l
+dEtEtC yy (A.60) 
+2
+22
+41
+2
+l
+d
+tGEtC xyxy (A.61) 
+Hierbei ist 
+tx die Ersatzdicke für verschmierte Membrankräfte rechtwinklig zu den Profilierungen; 
+ty die Ersatzdicke für verschmierte Membrankräfte parallel zu den Profilierungen; 
+txy die Ersatzdicke für verschmierte Membranschubkräfte. 
+(6) Für die Ersatzeigenschaften (Biegesteifigkeit), die nach der Richtung indiziert werden, in der das Moment 
+eine Biegung erzeugt (nicht nach der Biegeachse), darf angenommen werden: 
+2
+222
+3
+41
+1
+)1(12
+l
+d
+tEEID xx (A.62) 
+2130 Etd,EID yy (A.63) 
+2
+223
+4
+112 l
+dGtGID xyxy (A.64) 
+Hierbei ist 
+Ix das Ersatzflächenmoment 2. Grades (Ersatzträgheitsmoment) für verschmierte Biegung rechtwinklig 
+zur Profilierung; 
+Iy das Ersatzflächenmoment 2. Grades (Ersatzträgheitsmoment) für verschmierte Biegung parallel zur 
+Profilierung; 
+Ixy das Ersatzflächenmoment 2. Grades (Ersatzträgheitsmoment) für verschmierte Biegung für Drillung. 
+ANMERKUNG 1 Biegung parallel zur Profilierung aktiviert die Biegesteifigkeit des Profils und ist der eigentliche Grund 
+für den Einsatz von Profilblechen. 
+ANMERKUNG 2 Alternative Ausdrücke für die orthotropen Ersatzsteifigkeiten profilierter Bleche werden in den in 
+EN 1993-4-1 angegebenen Verweisungen genannt. 
+(7) In kreisförmigen Schalen mit in Umfangsrichtung verlaufender Profilierung sollten die Richtungen x und y
+in den vorstehenden Ausdrücken als axiale Koordinate bzw. als Umfangskoordinate genommen werden. 
+Verläuft die Profilierung in Meridianrichtung, sollten die Richtungen x und y als Umfangskoordinate bzw. als 
+axiale Koordinate genommen werden. 
+(8) Die Schubeigenschaften sollten als unabhängig von der Profilierungsrichtung angenommen werden. Für 
+G darf ein Wert von E/2,6 angewendet werden. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 69 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+67 
+Bild A.14  Wellblechprofil und geometrische Parameter 
+A.6 Unausgesteifte kugelförmige Schalen unter gleichmäßigem Druck in 
+Umfangsrichtung 
+A.6.1 Bezeichnungen und Randbedingungen 
+(1) Allgemeine Größen (Bild A.15): 
+r Radius der Mittelfläche der Kugel; 
+t Dicke der Schale: 
+Bild A.15  Geometrie der Kugel sowie Membranspannungen und Spannungsresultanten 
+(2) Die Randbedingungen werden in 5.2 und 6.2.2 festgelegt. 
+A.6.2 Kritische Beulspannungen 
+(1) Die folgenden Ausdrücke dürfen nur auf vollständige Kugeln oder Kugelkappen mit den Rand-
+bedingungen BC1r oder BC1f am unteren Rand angewendet werden. 
+(2) In Kugeln oder Kugelkappen entsteht ein gleichmäßiger Druck in Umfangsrichtung durch Einwirkung 
+eines gleichmäßigen Außendrucks, oder er kann auf kreisförmige Silos oder Tankdächer wirken, wenn bei 
+Auftreten einer Vertikallast (Falllast) eine Verblasungsaktion erfolgt. 
+(3) Für den Fall eines Druckes in Umfangsrichtung durch gleichmäßigen Außendruck p kann die 
+entsprechende Spannung nach folgender Gleichung errechnet werden: 
+t
+pr
+2 (A.65) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 70 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+68 
+(4) Die kritische Beulspannung unter gleichmäßigem Druck in Umfangsrichtung sollte nach folgender 
+Gleichung ermittelt werden: 
+r
+tE605,0cr,cr, (A.66) 
+A.6.3 Beulparameter in Umfangsrichtung 
+(1) Der elastische Imperfektionsfaktor sollte nach folgender Gleichung errechnet werden: 
+44,1
+0,
+0
+6,0160,21
+1
+f
+E
+Q
+ aber (A.67) 00,1
+Hierbei ist 
+0, der Schlankheitsparameter für die Quetschgrenze; 
+Q der Toleranzparameter. 
+(2) Der Toleranzparameter Q sollte für die jeweils festgelegte Toleranzklasse aus Tabelle A.13 entnommen 
+werden. 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze sollten entsprechend der in 
+EN 1999-1-1 festgelegten Beulklasse des Werkstoffs aus Tabelle A.14 entnommen werden. 
+Tabelle A.13  Toleranzparameter Q
+Toleranzklasse Q
+Klasse 1 16 
+Klasse 2 25 
+Klassen 3 und 4 40 
+Tabelle A.14  Werte für 0, und µ0 für gleichmäßigen Druck in Umfangsrichtung
+Beulklasse des Werkstoffs 0, µ0 
+A 0,20 0,35 
+B 0,10 0,20 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 71 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+69 
+Anhang B
+(informativ) 
+Beulberechnung torikonischer und torisphärischer Schalen 
+B.1 Allgemeines 
+(1) Für die konischen und kugelförmigen Enden von Zylinderschalen oder ähnlichen Konstruktionen, die mit 
+Hilfe eines Ringkörpers oder direkt ( rT 0) mit dem Zylinder verbunden sind, gelten die in diesem Abschnitt 
+angegebenen Regeln. 
+B.2 Bezeichnungen und Randbedingungen 
+(1) In diesem Abschnitt werden die folgenden Bezeichnungen angewendet, siehe Bild B.1: 
+r Radius der Mittelfläche der Zylinderschale; 
+rs Radius der Kugelschale; 
+ Winkel der Ringkörperschale oder halber Spitzenwinkel der Kegelschale; 
+rT Radius des Ringkörpers; 
+tT Dicke der Schale für Ringkörper, Kegel oder Kugel; 
+l Länge des anschließenden Zylinders; 
+tC Wanddicke des anschließenden Zylinders. 
+(2) Die Regeln gelten bei konstantem Außendruck, der orthogonal auf die Oberfläche der Schale wirkt. 
+(3) Der folgende Anwendungsbereich gilt: 
+tT tC (B.1) 
+35 r/tC 1 250 (B.2) 
+45° 75° (B.3) 
+0 rT/r 0,4 (B.4) 
+1,2 rs/r 3,0 (B.5) 
+1 1 000 f0/E 4,0 (B.6) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 72 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+70 
+a) Torikonische Form 
+b) Torisphärische Form 
+Bild B.1  Geometrie und Lasten an den Enden des Zylinders 
+B.3 Außendruck 
+B.3.1 Kritischer Außendruck 
+(1) Für eine torikonische Schale wird der kritische Außendruck (Beuldruck) nach einer der folgenden 
+Gleichungen errechnet: 
+5,2
+T5,1
+75,02cr, )(cossin
+1
+42,2
+r
+tEpn oder (B.7) 
+5,2
+T5,1cr, )(cossin60,2 r
+tEpn für = 0,3 
+Hierbei ist 
+sin)cos1( TTT trrrr mit rr
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 73 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+71 
+(2) Für eine torisphärische Schale wird der kritische Beul-Außendruck nach folge nder Gleichung errechnet: 
+2
+S
+Tkcr, 21,1 r
+tECpn (B.8) 
+mit: 
+1/7,02
+Sk S/ rrrrC
+wobei der größere der folgendermaßen bestimmten Werte ist: 
+19,0
+C105,0 r
+t und 
+23,0
+T088,0 r
+r
+B.3.2 Gleichmäßiger Außendruck an der Quetschgrenze 
+(1) Für torikonische und torisphärische Schalen darf der gleichmäßige Außendruck an der Quetschgrenze 
+aus der graphischen Darstellung in Bild B.2 entnommen oder für rT 0 nach Gleichung (B.10) oder nach 
+Gleichung (B.11) angenähert errechnet werden. 
+5,1
+2
+TTo
+oRkn,
+2
+cos13,7214505,14
+t
+rr
+r
+r
+r
+E
+ffp (B.9) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 74 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+72 
+Bild B.2  Bleibender Außendruck für torikonische und torisphärische Schalen 
+ Für eine torikonische Schale: 
+cos/4,4 T0TRk, r
+tfr
+tpn (B.10) 
+ Für eine torisphärische Schale: 
+S
+T0Rk, 4,4 r
+tfr
+tpn T (B.11) 
+B.3.3 Beulparameter unter Außendruck 
+(1) Der elastische Imperfektionsfaktor sollte nach folgender Gleichung errechnet werden: 
+44,1
+0,
+0
+6,0160,21
+1
+f
+E
+Q
+ aber (B.12) 00,1
+Hierbei ist 
+0, der Schlankheitsparameter für die Quetschgrenze; 
+Q der Toleranzparameter. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 75 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+73 
+(2) Der Toleranzparameter Q sollte für die jeweils festgelegte Toleranzklasse aus Tabelle B.1 entnommen 
+werden. 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze sollten entsprechend der in 
+EN 1999-1-1 festgelegten Beulklasse des Werkstoffs aus Tabelle B.2 entnommen werden. 
+Tabelle B.1  Toleranzparameter Q
+Toleranzklasse Q
+Klasse 1 16 
+Klasse 2 25 
+Klassen 3 und 4 40 
+Tabelle B.2  Werte für 0, und µ0 für Außendruck
+Beulklasse des Werkstoffs 0, µ0 
+A 0,20 0,35 
+B 0,10 0,20 
+B.4 Innendruck 
+B.4.1 Kritischer Innendruck 
+(1) Der kritische (Beul-)Inndruck für eine torikonische Schale ist 
+3
+5,2crn, 271,0300560001 r
+tEp wenn 02r
+rT (B.13) 
+3
+T
+crn, 22r0001 r
+trEp wenn 02r
+rT (B.14) 
+Wobei der Parameter aus Bild B.3 entnommen werden sollte. 
+Bild B.3  Parameter für Ausdruck (B.14) 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 76 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+74 
+(2) Der kritische Beulinnendruck für eine torisphärische Schale ist 
+45,2
+S
+T
+crn, 68,085,1100 r
+t
+r
+rEp (B.15) 
+B.4.2 Gleichmäßiger Innendruck an der Quetschgrenze 
+(1) Der gleichmäßige Innendruck an der Quetschgrenze für torikonische und torisphärische Schalen ist durch 
+den Ausdruck (B.16) gegeben oder kann dem Diagramm in Bild B.4 entnommen werden: 
+25,1
+2
+TTo
+oRkn,
+2
+cos679,311202,1
+t
+rr
+r
+r
+r
+E
+ffp (B.16) 
+Bild B.4  Bleibender Innendruck für torikonische und torisphärische Schalen 
+B.4.3 Beulparameter unter Innendruck 
+(1) Der Imperfektionsfaktor sollte nach folgender Gleichung ermittelt werden: 
+44,1
+0,
+o
+)(6,0160,21
+1
+f
+E
+Q
+ aber (B.17) 00,1
+Hierbei ist 
+0, der Schlankheitsparameter für die Quetschgrenze; 
+Q der Toleranzparameter. 
+DIN EN 1999-1-5:2010-05
+
+===== PDF-SEITE 77 =====
+EN 1999-1-5:2007 + AC:2009 (D) 
+(2) Der Toleranzparameter Q sollte für die jeweils festgelegte Toleranzklasse aus Tabelle B.3 entnommen 
+werden. 
+(3) Der Legierungsfaktor und der Schlankheitsparameter für die Quetschgrenze sollten entsprechend der in 
+EN 1999-1-1 festgelegten Beulklasse des Werkstoffes aus Tabelle B.4 entnommen werden. 
+Tabelle B.3  Toleranzparameter Q für Innendruck 
+Toleranzklasse Q
+Klasse 1 16 
+Klasse 2 25 
+Klassen 3 und 4 40 
+Tabelle B.4  Werte 0, und für Innendruck 
+Beulklasse des Werkstoffs 0,
+A 0,20 0,35 
+B 0,10 0,20 
+75 
+DIN EN 1999-1-5:2010-05

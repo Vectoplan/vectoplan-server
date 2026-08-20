@@ -1,0 +1,2532 @@
+{
+  "document_id": "EN_1993-3-1__base_standard__EC_3_Teil_3-1",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-3-1",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 3-1.pdf",
+  "relative_path": "EC 3/EC 3 Teil 3-1.pdf",
+  "sha256": "bb38dd4b7acc411ebca0d66af82ab31008ad658e3b71f454b9f560439dac3921",
+  "pages": 93,
+  "text_pages": 93,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 189,
+  "equation_candidate_count": 89,
+  "table_reference_count": 3,
+  "figure_reference_count": 9,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161132+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232654+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 3-1.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ...........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ....................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von Eurocode 3 ......................................................................................... .........10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von Eurocode 3  Teil 3.1 ................................................................................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ..................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... ............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln ...........................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... .................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen.............................................................................................................. ...........................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7",
+      "title": "Definition der Bauteilachsen ............................................................................................... ..................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für die Tragwerksplanung .......................................................................................... ......15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen.............................................................................................................. ..........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen ............................................................................................... ...............15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Sicherheitsklassen ....................................................................................................... ..........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundsätzliches zur Bemessung mit Grenzzuständen ......................................................................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Einwirkungen und Umgebungseinflüsse........................................................................................ .....15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Windeinwirkungen......................................................................................................... .........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Eislasten ..................................................................................................................................................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.3",
+      "title": "Temperatureinwirkungen................................................................................................... ....................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.4",
+      "title": "Eigengewicht............................................................................................................. ..............................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.5",
+      "title": "Vorspannung in Abspannseilen............................................................................................. ...............16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.6",
+      "title": "Veränderliche Lasten ..................................................................................................... ........................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.7",
+      "title": "Andere Einwirkungen...................................................................................................... .......................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.8",
+      "title": "Lastverteilung ........................................................................................................... ..............................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweise im Grenzzustand der Tragfähigkeit................................................................................ ...17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5",
+      "title": "Versuchsgestützte Bemessung ................................................................................................ ............17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6",
+      "title": "Dauerhaftigkeit............................................................................................................ ............................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe ................................................................................................................... ............................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Baustahl................................................................................................................... ................................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Verbindungsmittel .......................................................................................................... ........................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Abspannseile und Anschlussstücke........................................................................................... .........17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit.............................................................................................................. ..........................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Korrosionsschutz ........................................................................................................... ........................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Abspannseile ............................................................................................................... ...........................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung .......................................................................................................... .................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Berechnungsmodelle zur Bestimmung von Schnittgrößen...............................................................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Berechnungsmodelle für Verbindungen........................................................................................ ......19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Grundlagen.................................................................................................................... ..........................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Tragwerke aus Dreieckselementen (Gelenkfachwerke) .....................................................................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Tragwerke ohne Fachwerkwirkung (Balkentragwerke) ......................................................................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Fachwerke mit Berücksichtigung der Balkenwirkung zur Vermeidung kinematischer Ketten .....19",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit .............................................................................................. ...........19",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines ................................................................................................................ ............................19",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit von Querschnitten........................................................................................ ........20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Klassifizierung der Querschnitte......................................................................................... .................20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Bauteile von Gittermasten und Gittertürmen ............................................................................... .......20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Abspannseile und Zubehör................................................................................................. ..................20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Beanspruchbarkeit von Bauteilen ............................................................................................ ............20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Druckbeanspruchte Bauteile ............................................................................................... .................20",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Verbindungen ............................................................................................................... ..........................21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4.1",
+      "title": "Allgemeines .............................................................................................................. ..............................21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4.2",
+      "title": "Zugbeanspruchte Schrauben in Kopfplattenverbindungen (Flanschverbindungen) .....................21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4.3",
+      "title": "Ankerschrauben .....................................................................................................................................23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4.4",
+      "title": "Schweißverbindungen...................................................................................................... .....................23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5",
+      "title": "Sonderverbindungen für Maste............................................................................................... .............23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5.1",
+      "title": "Anschluss des Mastfußes .................................................................................................. ...................23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5.2",
+      "title": "Anschlüsse der Abspannseile .............................................................................................. ................24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit...................................................................................... ...25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Grundlagen ................................................................................................................. ............................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Auslenkungen und Verdrehungen .............................................................................................. .........25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Anforderungen ............................................................................................................ ...........................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Festlegung von Grenzwerten............................................................................................... .................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Schwingungen............................................................................................................... .........................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8",
+      "title": "Versuchsgestützte Bemessung.................................................................................................. ..........26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9",
+      "title": "Ermüdung ..................................................................................................................... ..........................26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.1",
+      "title": "Allgemeines ................................................................................................................ ............................26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.2",
+      "title": "Ermüdungsbelastung ......................................................................................................... ...................26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.2.1",
+      "title": "Schwingungen in Windrichtung ............................................................................................. ..............26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.2.2",
+      "title": "Wirbelerregte Querschwingungen ........................................................................................... ............27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.2.3",
+      "title": "Dynamische Antwort einzelner Bauteile.................................................................................... ..........27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.3",
+      "title": "Ermüdungsfestigkeit........................................................................................................ ......................27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.4",
+      "title": "Nachweis................................................................................................................... ..............................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.5",
+      "title": "Teilsicherheitsbeiwerte für den Ermüdungsnachweis.......................................................................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.6",
+      "title": "Ermüdung von Abspannseilen ................................................................................................. ............28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 8
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von Eurocode 3",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von Eurocode 3  Teil 3.1",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.7",
+      "title": "Definition der Bauteilachsen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für die Tragwerksplanung",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Sicherheitsklassen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundsätzliches zur Bemessung mit Grenzzuständen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3",
+      "title": "Einwirkungen und Umgebungseinflüsse",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Windeinwirkungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Eislasten",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.3",
+      "title": "Temperatureinwirkungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.4",
+      "title": "Eigengewicht",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.5",
+      "title": "Vorspannung in Abspannseilen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.3.6",
+      "title": "Veränderliche Lasten",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.3.7",
+      "title": "Andere Einwirkungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.3.8",
+      "title": "Lastverteilung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweise im Grenzzustand der Tragfähigkeit",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2.5",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2.6",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.1",
+      "title": "Baustahl",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.2",
+      "title": "Verbindungsmittel",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3",
+      "title": "Abspannseile und Anschlussstücke",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.1",
+      "title": "Korrosionsschutz",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.2",
+      "title": "Abspannseile",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.1",
+      "title": "Berechnungsmodelle zur Bestimmung von Schnittgrößen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.2",
+      "title": "Berechnungsmodelle für Verbindungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Grundlagen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Tragwerke aus Dreieckselementen (Gelenkfachwerke)",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Tragwerke ohne Fachwerkwirkung (Balkentragwerke)",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Fachwerke mit Berücksichtigung der Balkenwirkung zur Vermeidung kinematischer Ketten",
+      "pdf_page": 21
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 21
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines",
+      "pdf_page": 21
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit von Querschnitten",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Klassifizierung der Querschnitte",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Bauteile von Gittermasten und Gittertürmen",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Abspannseile und Zubehör",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.3",
+      "title": "Beanspruchbarkeit von Bauteilen",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Druckbeanspruchte Bauteile",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6.4",
+      "title": "Verbindungen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "6.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 23
+    },
+    {
+      "clause": "6.4.2",
+      "title": "Zugbeanspruchte Schrauben in Kopfplattenverbindungen (Flanschverbindungen)",
+      "pdf_page": 23
+    },
+    {
+      "clause": "6.4.3",
+      "title": "Ankerschrauben",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.4.4",
+      "title": "Schweißverbindungen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.5",
+      "title": "Sonderverbindungen für Maste",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.5.1",
+      "title": "Anschluss des Mastfußes",
+      "pdf_page": 25
+    },
+    {
+      "clause": "1",
+      "title": "Mastachse",
+      "pdf_page": 26
+    },
+    {
+      "clause": "2",
+      "title": "Druckfläche",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.5.2",
+      "title": "Anschlüsse der Abspannseile",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.1",
+      "title": "Grundlagen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2",
+      "title": "Auslenkungen und Verdrehungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Anforderungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Festlegung von Grenzwerten",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.3",
+      "title": "Schwingungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "8",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "9",
+      "title": "Ermüdung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "9.1",
+      "title": "Allgemeines",
+      "pdf_page": 28
+    },
+    {
+      "clause": "9.2",
+      "title": "Ermüdungsbelastung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "9.2.1",
+      "title": "Schwingungen in Windrichtung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "9.2.2",
+      "title": "Wirbelerregte Querschwingungen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "9.2.3",
+      "title": "Dynamische Antwort einzelner Bauteile",
+      "pdf_page": 29
+    },
+    {
+      "clause": "9.3",
+      "title": "Ermüdungsfestigkeit",
+      "pdf_page": 29
+    },
+    {
+      "clause": "9.4",
+      "title": "Nachweis",
+      "pdf_page": 30
+    },
+    {
+      "clause": "9.5",
+      "title": "Teilsicherheitsbeiwerte für den Ermüdungsnachweis",
+      "pdf_page": 30
+    },
+    {
+      "clause": "9.6",
+      "title": "Ermüdung von Abspannseilen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "2",
+      "title": "Alle Türme und Maste, die nicht zu Klasse 1 oder 3 gehören.",
+      "pdf_page": 31
+    },
+    {
+      "clause": "1",
+      "title": "Türme und Maste, die auf unbewohntem offenen Gelände stehen; Türme und Maste, durch",
+      "pdf_page": 31
+    },
+    {
+      "clause": "1",
+      "title": "Ansichtsfläche 1",
+      "pdf_page": 36
+    },
+    {
+      "clause": "2",
+      "title": "Ansichtsfläche 2",
+      "pdf_page": 36
+    },
+    {
+      "clause": "3",
+      "title": "Ansichtsfläche 3",
+      "pdf_page": 36
+    },
+    {
+      "clause": "4",
+      "title": "Ansichtsfläche 4",
+      "pdf_page": 36
+    },
+    {
+      "clause": "5",
+      "title": "Wind",
+      "pdf_page": 36
+    },
+    {
+      "clause": "6",
+      "title": "Außenanbauten (Projektion senkrecht zur Ansichtsfläche 1)",
+      "pdf_page": 36
+    },
+    {
+      "clause": "7",
+      "title": "Eckstiel (Projektion senkrecht zur Ansichtsfläche)",
+      "pdf_page": 36
+    },
+    {
+      "clause": "8",
+      "title": "Der Ansichtsfläche 2 zugeordnete Außenanbauten",
+      "pdf_page": 36
+    },
+    {
+      "clause": "9",
+      "title": "Außenanbauten inklusive Sprossenleitern, Schützbügel usw. (Projektion senkrecht zur Ansichtsfläche)",
+      "pdf_page": 36
+    },
+    {
+      "clause": "10",
+      "title": "Eckstiel (Projektion senkrecht zur Ansichtsfläche)",
+      "pdf_page": 36
+    },
+    {
+      "clause": "11",
+      "title": "Der Ansichtsfläche 2 zugeordnete Außenanbauten",
+      "pdf_page": 36
+    },
+    {
+      "clause": "12",
+      "title": "Mastabschnitt",
+      "pdf_page": 36
+    },
+    {
+      "clause": "13",
+      "title": "Außenanbauten in der Projektionsfläche A",
+      "pdf_page": 36
+    },
+    {
+      "clause": "14",
+      "title": "Tragende Bauteile in der Projektionsfläche AS",
+      "pdf_page": 36
+    },
+    {
+      "clause": "15",
+      "title": "Höhe des Moduls ( h)",
+      "pdf_page": 36
+    },
+    {
+      "clause": "1",
+      "title": "Wind",
+      "pdf_page": 39
+    },
+    {
+      "clause": "3",
+      "title": "Quadratische und dreieckige Gittermaste mit Wind auf eine Ansichtsfläche",
+      "pdf_page": 39
+    },
+    {
+      "clause": "4",
+      "title": "Dreieckige Gittermaste mit Wind parallel zu einer Ansichtsfläche",
+      "pdf_page": 39
+    },
+    {
+      "clause": "1",
+      "title": "Windanströmwinkel (im Grundriss) zur Normalen auf Ansichtsfläche 1.",
+      "pdf_page": 47
+    },
+    {
+      "clause": "1",
+      "title": "Kantige Profile",
+      "pdf_page": 48
+    },
+    {
+      "clause": "2",
+      "title": "Kreisförmige Profile (unterkritisch)",
+      "pdf_page": 48
+    },
+    {
+      "clause": "3",
+      "title": "Kreisförmige Profile (überkritisch)",
+      "pdf_page": 48
+    },
+    {
+      "clause": "1",
+      "title": "Modul A",
+      "pdf_page": 52
+    },
+    {
+      "clause": "2",
+      "title": "Verlängerung der Eckstiele des Moduls A",
+      "pdf_page": 52
+    },
+    {
+      "clause": "3",
+      "title": "Mittelwert",
+      "pdf_page": 52
+    },
+    {
+      "clause": "6",
+      "title": "Modul B",
+      "pdf_page": 52
+    },
+    {
+      "clause": "8",
+      "title": "Verlängerung der Eckstiele des Moduls B",
+      "pdf_page": 52
+    },
+    {
+      "clause": "3",
+      "title": "Kraft für die Schubausfachungen",
+      "pdf_page": 61
+    },
+    {
+      "clause": "1",
+      "title": "Seil 1",
+      "pdf_page": 72
+    },
+    {
+      "clause": "2",
+      "title": "Seil 2",
+      "pdf_page": 72
+    },
+    {
+      "clause": "3",
+      "title": "Seil 3",
+      "pdf_page": 72
+    },
+    {
+      "clause": "4",
+      "title": "Auslenkung",
+      "pdf_page": 72
+    },
+    {
+      "clause": "1",
+      "title": "Kurve 1: Seile 2 und 3",
+      "pdf_page": 73
+    },
+    {
+      "clause": "2",
+      "title": "Kurve 2: Mast ohne Seile 1, 2 und 3",
+      "pdf_page": 73
+    },
+    {
+      "clause": "1",
+      "title": "Eckstrebe (von untergeordneter Bedeutung, falls beide Füllstäbe druckbeansprucht sind)",
+      "pdf_page": 89
+    },
+    {
+      "clause": "2",
+      "title": "Walmausfachung",
+      "pdf_page": 89
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 18,
+      "equation_number": "2.1a",
+      "line": " veränderliche Lasten auf Plattformen: 2,0 kN/m 2; (2.1a)",
+      "context": "ANMERKUNG 1 Der Nationale Anhang darf Hinweise zu veränderlichen Lasten auf Plattformen und Geländern geben. | Es werden folgende charakteristische veränderliche Lasten empfohlen: |  veränderliche Lasten auf Plattformen: 2,0 kN/m 2; (2.1a) |  horizontale Lasten auf Geländer: 0,5 kN/m. (2.1b) | ANMERKUNG 2 Es darf angenommen werden, dass diese Lasten nicht gleichzeitig mit anderen klimatischen Lasten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 18,
+      "equation_number": "2.1b",
+      "line": " horizontale Lasten auf Geländer: 0,5 kN/m. (2.1b)",
+      "context": "Es werden folgende charakteristische veränderliche Lasten empfohlen: |  veränderliche Lasten auf Plattformen: 2,0 kN/m 2; (2.1a) |  horizontale Lasten auf Geländer: 0,5 kN/m. (2.1b) | ANMERKUNG 2 Es darf angenommen werden, dass diese Lasten nicht gleichzeitig mit anderen klimatischen Lasten | wirken.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "4",
+      "line": "(4)",
+      "context": "(3) Bei der Tragwerksberechnung dürfen die Querschnittseigenschaften des Bruttoquerschnitts angesetzt | werden. | (4) | (5) Entstehen aus der Tragwerksverformung nicht mehr vernachlässigbare Einflüsse (z. B. für Türme mit | hohen Kopflasten), sind Verfahren der Theorie II. Ordnung anzuwenden, siehe EN 1993-1-1.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "M0 = 1,00",
+      "context": "ANMERKUNG 1 Der nationale Anhang darf Hinweise zu den Teilsicherheitsbeiwerte M geben. Die folgenden Zahlen- | werte werden empfohlen; | M0 = 1,00 | M1 = 1,00 | M2 = 1,25",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "M1 = 1,00",
+      "context": "werte werden empfohlen; | M0 = 1,00 | M1 = 1,00 | M2 = 1,25 | Mg = 2,00",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "M2 = 1,25",
+      "context": "M0 = 1,00 | M1 = 1,00 | M2 = 1,25 | Mg = 2,00 | Mi = 2,50",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Mg = 2,00",
+      "context": "M1 = 1,00 | M2 = 1,25 | Mg = 2,00 | Mi = 2,50 | ANMERKUNG 2 Der Teilsicherheitsbeiwert Mg bezieht sich auf das Seil einschließlich Seilkopf (oder anderer",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Mi = 2,50",
+      "context": "M2 = 1,25 | Mg = 2,00 | Mi = 2,50 | ANMERKUNG 2 Der Teilsicherheitsbeiwert Mg bezieht sich auf das Seil einschließlich Seilkopf (oder anderer | Endverankerung). Die zugehörigen Bolzen, Verbinder und Bleche sind passend zu den Seilen und Seilköpfen zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 3 Zu k siehe EN 1993-1-5. Für einen Winkelschenkel unter Druck gilt k = 0,43.",
+      "context": "ANMERKUNG 2 Bei mit nur einem Schenkel angeschlossenen Winkeln bezieht sich der Abminderungsbeiwert nur | auf den angeschlossenen Schenkel. | ANMERKUNG 3 Zu k siehe EN 1993-1-5. Für einen Winkelschenkel unter Druck gilt k = 0,43. | (3) Drillknicken und Biegedrillknicken sollten wie folgt ebenfalls nachgewiesen werden: | a) Drillknicken von gleichschenkligen Winkel wird durch den Beulnachweis nach (2) erfasst;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "M = N (Db Di)/2",
+      "context": "b) die Beanspruchbarkeit des Flansches in dem Kreis, der durch die Schraubenlöcher geht, im Hinblick auf Biegung und | Schub. Das Biegemoment (M) darf mit | M = N (Db Di)/2 | angesetzt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "kp = 1,2 bei vorgespannten Schrauben;",
+      "context": "n die Anzahl der Schrauben; | kp der Faktor zu Berücksichtigung von Abstützkräften, anzusetzen mit | kp = 1,2 bei vorgespannten Schrauben; | kp = 1,8 bei nicht vorgespannten Schrauben. | Alle Schrauben sollten gegen Ermüdung vorgespannt sein, siehe EN 1993-1-8.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "kp = 1,8 bei nicht vorgespannten Schrauben.",
+      "context": "kp der Faktor zu Berücksichtigung von Abstützkräften, anzusetzen mit | kp = 1,2 bei vorgespannten Schrauben; | kp = 1,8 bei nicht vorgespannten Schrauben. | Alle Schrauben sollten gegen Ermüdung vorgespannt sein, siehe EN 1993-1-8. | 6.4.3 Ankerschrauben",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "6.1a",
+      "line": "eu = r1 sin 1 (6.1a)",
+      "context": "Mastachse durch Rollen über die Lageroberfläche bewegt. | Die Exzentrizitäten eu und eo (siehe Bild 6.2) sind dann: | eu = r1 sin 1 (6.1a) | eo = r2 (sin 1  sin ) (6.1b) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "6.1b",
+      "line": "eo = r2 (sin 1  sin ) (6.1b)",
+      "context": "Die Exzentrizitäten eu und eo (siehe Bild 6.2) sind dann: | eu = r1 sin 1 (6.1a) | eo = r2 (sin 1  sin ) (6.1b) | Dabei ist | r1 der Radius des konvexen Lagerteils;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "6.2a",
+      "line": "r (6.2a)",
+      "context": "12 | 21 rr | r (6.2a) | 2 = 1  (6.2b) | Bei ebener Fläche (r2 = ) gilt eo = r1 cos .",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "6.2b",
+      "line": "2 = 1  (6.2b)",
+      "context": "21 rr | r (6.2a) | 2 = 1  (6.2b) | Bei ebener Fläche (r2 = ) gilt eo = r1 cos . | Legende",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "Bei ebener Fläche (r2 = ) gilt eo = r1 cos .",
+      "context": "r (6.2a) | 2 = 1  (6.2b) | Bei ebener Fläche (r2 = ) gilt eo = r1 cos . | Legende | 1 Mastachse",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "M = 1,0 wird empfohlen.",
+      "context": "Bauteilen verursachen. | ANMERKUNG Der Nationale Anhang darf hinweise zu Begrenzungen und zugehörigen M-Werten geben. Der Wert | M = 1,0 wird empfohlen. | 7.2 Auslenkungen und Verdrehungen | 7.2.1 Anforderungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "G = ce(z) cscd 1",
+      "context": "normalverteilt mit einer Standardabweichung angenommen werden, die dem G/4-fachen der Spannung infolge der | mittleren Windgeschwindigkeit entspricht. Der Böenreaktionsfaktor G ist wie folgt definiert: | G = ce(z) cscd 1 | Dabei ist | ce(z) der aerodynamische Beiwert, siehe EN 1991-4;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "9.1",
+      "line": "Ni = 105 T/50 (9.1)",
+      "context": "Böenreaktionsfaktor) und der mittleren Spannung (aufgrund des 10-min-Mittels der Windgeschwindigkeit) angesetzt | werden. Die schadensäquivalente Anzahl Ni der Schwingspiele wird mit: | Ni = 105 T/50 (9.1) | angenommen. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "9.2",
+      "line": "E2 = E (9.2)",
+      "context": "9.4 Nachweis | (1) Der Ermüdungsnachweis ist in der Regel nach EN 1993-1-9, 8(2) wie folgt zu führen: | E2 = E (9.2) | Dabei ist | der Schadenäquivalenzbeiwert, um E auf Nc = 2 106 Schwingspiele umzurechnen;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "der Schadenäquivalenzbeiwert, um E auf Nc = 2 106 Schwingspiele umzurechnen;",
+      "context": "E2 = E (9.2) | Dabei ist | der Schadenäquivalenzbeiwert, um E auf Nc = 2 106 Schwingspiele umzurechnen; | E die Spannungsschwingbreite zugehörig zu N Schwingspielen (siehe 9.2), gegebenenfalls unter Be- | rücksichtigung von Spannungskonzentrationsfaktoren.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "9.3",
+      "line": "(9.3)",
+      "context": "1 | 6102 | (9.3) | Dabei ist m die Neigung der Wöhlerlinie. | 9.5 Teilsicherheitsbeiwerte für den Ermüdungsnachweis",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Nationale Anhang darf Zahlenwerte für Ff und Mf vorgeben. Es wird der Wert Ff = 1,00 empfohlen.",
+      "context": "(1) Die Teilsicherheitsbeiwerte für den Ermüdungsnachweis sind in der Regel nach EN 1993-1-9, 3(6), | 3.6(7) und 6.2(1) zu wählen. | ANMERKUNG Der Nationale Anhang darf Zahlenwerte für Ff und Mf vorgeben. Es wird der Wert Ff = 1,00 empfohlen. | Zu den Mf-Werten siehe EN 1993-1-9, Tabelle 3.1. | 9.6 Ermüdung von Abspannseilen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": " = cf,S cf,A (B.1) fc",
+      "context": "(1) Der gesamte Windkraftbeiwert  fc  in Windrichtung eines Bauwerksegmentes ist wie folgt | anzusetzen: |  = cf,S cf,A (B.1) fc | Dabei ist | cf,S der Windkraftbeiwert ohne Anbauten, ermittelt nach B.2.2 unter Verwendung des Völligkeitsgrades",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "K = 1,0 K1 K2 sin2 2 für quadratische Gittermaste (B.3a)",
+      "context": "Beispiel Eins), solange Aref als derselbe Wert angesetzt wird. | (2) Der Windrichtungsbeiwert K darf folgendermaßen angesetzt werden: | K = 1,0 K1 K2 sin2 2 für quadratische Gittermaste (B.3a) | 5,1sin1,01 2 | S",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "K2 = 0,2 für 0 0,2 und 0,8 1,0 (B.3d)",
+      "context": "A | AK (B.3c) | K2 = 0,2 für 0 0,2 und 0,8 1,0 (B.3d) | = für 0,2 < 0,5 (B.3e) | = 1 für 0,5 < < 0,8 (B.3f)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "= für 0,2 < 0,5 (B.3e)",
+      "context": "AK (B.3c) | K2 = 0,2 für 0 0,2 und 0,8 1,0 (B.3d) | = für 0,2 < 0,5 (B.3e) | = 1 für 0,5 < < 0,8 (B.3f) | Winkel des Windeinfalls (im Grundriss) senkrecht zur Ansichtsfläche 1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "= 1 für 0,5 < < 0,8 (B.3f)",
+      "context": "K2 = 0,2 für 0 0,2 und 0,8 1,0 (B.3d) | = für 0,2 < 0,5 (B.3e) | = 1 für 0,5 < < 0,8 (B.3f) | Winkel des Windeinfalls (im Grundriss) senkrecht zur Ansichtsfläche 1; | Völligkeitsgrad, siehe EN 1991-1-4, 7.11(2);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG AS = Af Ac Ac,sup",
+      "context": "h Höhe des betrachteten Abschnitts; | b gesamte Abschnittsbreite wie in Bild B.2.1. | ANMERKUNG AS = Af Ac Ac,sup | (3) Für übliche -Werte dürfen die K -Werte Bild B.2.2 entnommen werden. | (4) Für Bauteile mit kreisförmigem Querschnitt darf unterkritische Umströmung angenommen werden,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "2 Quadratische Gittermaste, Wind in der Diagonalen ( = 45°)",
+      "context": "Legende | 1 Wind | 2 Quadratische Gittermaste, Wind in der Diagonalen ( = 45°) | 3 Quadratische und dreieckige Gittermaste mit Wind auf eine Ansichtsfläche | 4 Dreieckige Gittermaste mit Wind parallel zu einer Ansichtsfläche",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "5 Dreieckige Gittermaste mit Wind auf eine Ecke ( = 180°)",
+      "context": "3 Quadratische und dreieckige Gittermaste mit Wind auf eine Ansichtsfläche | 4 Dreieckige Gittermaste mit Wind parallel zu einer Ansichtsfläche | 5 Dreieckige Gittermaste mit Wind auf eine Ecke ( = 180°) | Zu Formelzeichen siehe B.2.2.1 | Bild B.2.2  Windrichtungsbeiwert K",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "cf,0,f = 1,76 C1 [1 C2 2] (B.5a)",
+      "context": "kreisförmigen bzw. überkritischen kreisförmigen Profilen zusammengesetzt sind, | gemäß: | cf,0,f = 1,76 C1 [1 C2 2] (B.5a) | cf,0,c = C1 (1 C2 ) (C1 0,875) 2 (B.5b) | 1supc,f,0, 14,18,211,9 Cc (B.5c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "cf,0,c = C1 (1 C2 ) (C1 0,875) 2 (B.5b)",
+      "context": "gemäß: | cf,0,f = 1,76 C1 [1 C2 2] (B.5a) | cf,0,c = C1 (1 C2 ) (C1 0,875) 2 (B.5b) | 1supc,f,0, 14,18,211,9 Cc (B.5c) | mit:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "C1 = 2,25 für quadratische Gittermaste",
+      "context": "1supc,f,0, 14,18,211,9 Cc (B.5c) | mit: | C1 = 2,25 für quadratische Gittermaste | 1,9 für dreieckige Gittermaste | C2 = 1,5 für quadratische Gittermaste",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "C2 = 1,5 für quadratische Gittermaste",
+      "context": "C1 = 2,25 für quadratische Gittermaste | 1,9 für dreieckige Gittermaste | C2 = 1,5 für quadratische Gittermaste | 1,4 für dreieckige Gittermaste | wobei:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "B.2.3 (2) gelten; für diesen Fall gilt KA = 1,0;",
+      "context": "selbst: Näherungswerte für KA sind in Tabelle B.2.2 angegeben, außer für kreisförmige Profile im | superkritischen Strömungszustand und für Außenanbauten, für die nicht die Einschränkungen in | B.2.3 (2) gelten; für diesen Fall gilt KA = 1,0; |  AA die Fläche des bei Betrachtung in Windrichtung sichtbaren Teils, einschließlich Vereisung, sofern | zutreffend. Bei Zylindern mit Wendeln sollte der Wert von AA auf der Gesamtbreite einschließlich",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "cf,S = K cf,S,0 KA",
+      "context": "ANMERKUNG Wenn AA größer als AS ist, ist der Abminderungsbeiwert eher bei cf,S,0 zu berücksichtigen als bei cf,A. In | diesen Fällen gilt: | cf,S = K cf,S,0 KA | cf,A = cf,A,0 sin2 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "cf,A = cf,A,0 sin2",
+      "context": "diesen Fällen gilt: | cf,S = K cf,S,0 KA | cf,A = cf,A,0 sin2 | Dabei ist | der Winkel des Windeinfalls bezogen auf die Längsachse jedes geradlinigen Bauteils.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "cf,A = cf,A,0 KA (B.7)",
+      "context": "(1) Für alle einzelnen Außenanbauten, wie z. B. Parabolantennen, ist der Gesamtwindkraftbeiwert cf,A in | Windrichtung folgendermaßen anzusetzen: | cf,A = cf,A,0 KA (B.7) | Dabei ist | cf,A,0 der Kraftbeiwert für ein Anbauteil für die betrachtete Windrichtung und Windgeschwindigkeit; er ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "cf,G = cf,G,0 sin2 (B.8)",
+      "context": "(1) Der Windkraftbeiwerte cf,G senkrecht zu den Abspannseilen, bezogen auf die Ebene, die durch das Seil | und den Wind gebildet wird, ist wie folgt anzusetzen: | cf,G = cf,G,0 sin2 (B.8) | Dabei ist |  cf,G,0 der Reynoldszahl-abhängige Gesamtkraftbeiwert; Werte dafür sind in Tabelle B.2.1 sowohl",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "cf = c1e cos2 1 c2e sin2 1 (B.9)",
+      "context": "(2) Der Gesamtwindkraftbeiwert cf für ein Modul in Windrichtung kann folgendermaßen bestimmt werden: | Für quadratische und rechteckige Gittermaste: | cf = c1e cos2 1 c2e sin2 1 (B.9) | Für dreieckige Gittermaste: | 4",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "c1e = (c1 1 c3) K 1",
+      "context": "c1e der effektiver Windkraftbeiwert: | für quadratische und rechteckige Gittermaste: | c1e = (c1 1 c3) K 1 | für dreieckige Gittermaste: | 132111e 2 Kcccc",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "c2e = (c2 2 c4) K 2",
+      "context": "c2e der effektiver Windkraftbeiwert: | für quadratische und rechteckige Gittermaste: | c2e = (c2 2 c4) K 2 | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "c1 = cf,S1 AS1/ A cf,A1 AA1/ A;",
+      "context": "22e 2 Kcccc | c1 bis c4 sind Windkraftbeiwerte: | c1 = cf,S1 AS1/ A cf,A1 AA1/ A; | c2 = cf,S2 AS2/ A cf,A2 AA2/ A; | c3 = cf,S3 AS3/ A cf,A3 AA3/ A;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "c2 = cf,S2 AS2/ A cf,A2 AA2/ A;",
+      "context": "c1 bis c4 sind Windkraftbeiwerte: | c1 = cf,S1 AS1/ A cf,A1 AA1/ A; | c2 = cf,S2 AS2/ A cf,A2 AA2/ A; | c3 = cf,S3 AS3/ A cf,A3 AA3/ A; | c4 = cf,S4 AS4/ A cf,A4 AA4/ A;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "c3 = cf,S3 AS3/ A cf,A3 AA3/ A;",
+      "context": "c1 = cf,S1 AS1/ A cf,A1 AA1/ A; | c2 = cf,S2 AS2/ A cf,A2 AA2/ A; | c3 = cf,S3 AS3/ A cf,A3 AA3/ A; | c4 = cf,S4 AS4/ A cf,A4 AA4/ A; | AS1 bis AS4 Projektionsflächen der Elemente auf die Ansichtsflächen 1 bis 4, die wie tragende",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "c4 = cf,S4 AS4/ A cf,A4 AA4/ A;",
+      "context": "c2 = cf,S2 AS2/ A cf,A2 AA2/ A; | c3 = cf,S3 AS3/ A cf,A3 AA3/ A; | c4 = cf,S4 AS4/ A cf,A4 AA4/ A; | AS1 bis AS4 Projektionsflächen der Elemente auf die Ansichtsflächen 1 bis 4, die wie tragende | Bauteile innerhalb desselben Moduls, gegebenenfalls einschließlich Vereisung, betrachtet",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "B.2.4 ermittelt; KA = 1,0 in allen Fällen;",
+      "context": "cf,A1 bis cf,A4 Windkraftbeiwerte für Außenanbauten, die nicht als tragende Bauteile betrachtet werden, | für die Ansichtsflächen 1, 2, 3 bzw. 4; die Windkraftbeiwerte werden nach B.2.3 oder | B.2.4 ermittelt; KA = 1,0 in allen Fällen; |  als Aref nach EN 1991-1-4, 5.3(2) anzusetzen; es kann jeder angenommen Wert | angesetzt werden (zum Beispiel Eins), solange Aref als derselbe Wert angesetzt wird.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "e = f (Af 0,83 Ac 2,1 Ac,sup AA)/(As AA) jedoch nicht größer als 1,0;",
+      "context": "für dreieckige Gittermaste: 0,67 e | für rechteckige Gittermaste: e 0,15( 1)( 0,1) jedoch nicht größer als 1,0 | e = f (Af 0,83 Ac 2,1 Ac,sup AA)/(As AA) jedoch nicht größer als 1,0; | f = (1 )1,89 siehe auch Bild B.2.4; | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "f = (1 )1,89 siehe auch Bild B.2.4;",
+      "context": "für rechteckige Gittermaste: e 0,15( 1)( 0,1) jedoch nicht größer als 1,0 | e = f (Af 0,83 Ac 2,1 Ac,sup AA)/(As AA) jedoch nicht größer als 1,0; | f = (1 )1,89 siehe auch Bild B.2.4; | Dabei ist | Af, Ac, Ac,sup wie in B.2.2.1 angegeben; sie sind für die Ansichtsflächen 1 und 2 anwendbar;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "AS = Af Ac Ac,sup (siehe B.2.2.1(2))",
+      "context": "Dabei ist | Af, Ac, Ac,sup wie in B.2.2.1 angegeben; sie sind für die Ansichtsflächen 1 und 2 anwendbar; | AS = Af Ac Ac,sup (siehe B.2.2.1(2)) | AA die Projektionsfläche der Anbauteile, die nicht wie tragende Bauteile betrachtet werden; | sie ist für die Ansichtsflächen 1, 2, 3 und 4 anwendbar;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "cf,c = (0,6 0,4 2) cf,f",
+      "context": "1,58 2,625 ( - 0,6)2 für > 0,6; | Af, Ac, Ac,sup, AS und sind in B.2.7.1 definiert. | cf,c = (0,6 0,4 2) cf,f | cf,c,sup = (0,33 0,62 5/3) cf,f | (2) Näherungswerte für diese Kraftbeiwerte sind in Bild B.2.5 angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "cf,c,sup = (0,33 0,62 5/3) cf,f",
+      "context": "Af, Ac, Ac,sup, AS und sind in B.2.7.1 definiert. | cf,c = (0,6 0,4 2) cf,f | cf,c,sup = (0,33 0,62 5/3) cf,f | (2) Näherungswerte für diese Kraftbeiwerte sind in Bild B.2.5 angegeben. | Völligkeitsgrad",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben werden. Der Wert KX = 1,0 wird empfohlen.",
+      "context": "betrachtete Modul; |  siehe B.2.1.3(1). fc | ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben werden. Der Wert KX = 1,0 wird empfohlen. | ANMERKUNG 2 Die laterale Turbulenz bedeutet auch für symmetrisch ausgebildete Gittermaste schwankende Wind- | lasten quer zur Windrichtung; jedoch ist die Auswirkung dieser Lasten normalerweise nicht relevant für die maßgebend",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "KGi = 0,5NiAGiEGicos2 Gi/LGi (B.21b)",
+      "context": "53 | mit: | KGi = 0,5NiAGiEGicos2 Gi/LGi (B.21b) | Dabei ist | N die Anzahl der Abspannanschlussniveaus;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 57,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen.",
+      "context": "co(z) der Orographie-Beiwert nach EN 1991-1-4. | ANMERKUNG 1 Der Skalierungsfaktor ks berücksichtigt multi-modale Antworten des abgespannten Mastes. | ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen. | ANMERKUNG 3 | das obere Ende der feldweisen Belastung zur Ermittlung von Iv(z) und qp(z) benutzt wird.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "Windbelastung i = 1 2 3 4 5 6",
+      "context": "56 | Mittlere | Windbelastung i = 1 2 3 4 5 6 | Feldweise zusätzliche Belastungen | Bild B.4.1  Ansatz der feldweisen zusätzlichen Belastung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen.",
+      "context": "gebildet wird, bestimmt nach B.2. | ANMERKUNG 1 Der Skalierungsfaktor ks berücksichtigt multi-modale Antworten abgespannter Maste. | ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen. | (2) Vereinfachend darf eine einheitliche Belastung der betrachteten Abspannseile über die gesamte Höhe | durch Multiplikation der oben genannten Windlast mit dem Verhältnis zp/zG angegeben werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "3",
+      "line": "Abspannseil (3)",
+      "context": "Feldweise Zu- | satzlast auf das | Abspannseil (3) | (darf verschmiert | werden, siehe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "3",
+      "line": "seil (3)",
+      "context": "Windlast auf | das Abspann- | seil (3) | Bild B.4.2  Feldweise Zusatzlast auf den Abspannseilen | B.4.3.2.4 Bestimmung der Bauwerksantwort unter feldw eiser Zusatzlast",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "STM = SM Sp (B.27)",
+      "context": "(1) Die Auswirkung STM der Windlast auf die Bauteile des gesamten Mastes ist folgendermaßen zu | ermitteln: | STM = SM Sp (B.27) | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben sein. Empfohlen wird ein Wert von KX = 1,0.",
+      "context": "SPX die Beanspruchung infolge von zusätzlichen feldweisen Belastungen quer zur Windrichtung; | KX der Beiwert zur Berücksichtigung der Turbulenzintensität quer zur Windrichtung. | ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben sein. Empfohlen wird ein Wert von KX = 1,0. | ANMERKUNG 2 Turbulenz quer zur Windrichtung verursacht auch bei symmetrisch ausgebildeten Gittermasten | schwankende Windlasten quer zur Windrichtung; jedoch ist die Auswirkung dieser Lasten nicht relevant für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "angewendet wird. Für ks sollte ks = 2,95 angesetzt werden.",
+      "context": "Antwort. | (2) Der Hintergrundanteil darf bestimmt werden, indem die statische Vorgehensweise (siehe B.4.3.2) | angewendet wird. Für ks sollte ks = 2,95 angesetzt werden. | (3) Es sollten die in EN 1991-1-4 definierten meteorologischen Daten angesetzt und der Windwiderstand | nach B.2 ermittelt werden. Weiterhin sollten die in EN 1991-1-4, Anhang B definierten Parameter verwendet",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "W = 0,5 (C.3a)",
+      "context": "ANMERKUNG Der Nationale Anhang darf weitere Informationen zu Kombinationsfaktoren geben. Die Kombinations- | beiwerte werden wie folgt empfohlen: | W = 0,5 (C.3a) | ice = 0,5 (C.3b) | (2) Die Teilsicherheitsbeiwerte für Eigengewicht G, für Eislast ice und für Windlast W sind in",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "ice = 0,5 (C.3b)",
+      "context": "beiwerte werden wie folgt empfohlen: | W = 0,5 (C.3a) | ice = 0,5 (C.3b) | (2) Die Teilsicherheitsbeiwerte für Eigengewicht G, für Eislast ice und für Windlast W sind in | Anhang A angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 77,
+      "equation_number": "unvollständig",
+      "line": "= 0,8 bei einzelnen Winkelprofilen, die an beiden Bauteilenden mit nur einer Schraube befestigt sind;",
+      "context": "ANMERKUNG Der Abminderungsbeiwert darf im Nationalen Anhang festgelegt werden. Es werden folgende Werte | empfohlen: | = 0,8 bei einzelnen Winkelprofilen, die an beiden Bauteilenden mit nur einer Schraube befestigt sind; | = 0,9 bei einzelnen Winkelprofilen, die an einem Bauteilende mit nur einer Schraube befestigt und an dem anderen | Bauteilende durchlaufen oder biegesteif befestigt sind.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 77,
+      "equation_number": "unvollständig",
+      "line": "= 0,9 bei einzelnen Winkelprofilen, die an einem Bauteilende mit nur einer Schraube befestigt und an dem anderen",
+      "context": "empfohlen: | = 0,8 bei einzelnen Winkelprofilen, die an beiden Bauteilenden mit nur einer Schraube befestigt sind; | = 0,9 bei einzelnen Winkelprofilen, die an einem Bauteilende mit nur einer Schraube befestigt und an dem anderen | Bauteilende durchlaufen oder biegesteif befestigt sind. | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "1",
+      "line": "1,0 (1)",
+      "context": "108,0 | 0,9 | 1,0 (1) | Fall (c) | Sekundäre",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "2",
+      "line": "(2)",
+      "context": "und 1,0 | bezogen auf L2 | (2) | 108,0 | jedoch 0,9",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "1",
+      "line": "(1)",
+      "context": "bezogen auf | L1 | (1) | ANMERKUNG 1 Es darf ein durch weitergehende Untersuchungen belegter Abminderungsfaktor verwendet werden. | ANMERKUNG 2 Nur maßgebend, wenn ein stark ungleichschenkliges Winkelprofil verwendet wird.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "k = 1,0 anzunehmen, es sei denn, kleinere Werte werden durch Versuche bestätigt.",
+      "context": "ANMERKUNG 5 Die k-Werte gelten für Füllstäbe mit gleichen Anschlüssen an den Bauteilenden. Bei Bauteilen mit | zwischenliegenden sekundären Füllstäben können höhere k-Werte auftreten; es ist daher in der Regel | k = 1,0 anzunehmen, es sei denn, kleinere Werte werden durch Versuche bestätigt. | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 82,
+      "equation_number": "unvollständig",
+      "line": "teile druckbeansprucht sind) gilt k1 = 1,0.",
+      "context": "N | N -Verhältnisse (d. h., wenn beide Bau- | teile druckbeansprucht sind) gilt k1 = 1,0. | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 83,
+      "equation_number": "unvollständig",
+      "line": "(1) Die Schlankheit von Bauteile in Eckstielen sollte im Allgemeinen den Wert = 120 nicht übersteigen.",
+      "context": "beanspruchten Bauteilen in Türmen und Masten. | H.2 Bauteile in Eckstielen | (1) Die Schlankheit von Bauteile in Eckstielen sollte im Allgemeinen den Wert = 120 nicht übersteigen. | (2) Bei der Verwendung von einteiligen Winkelprofilen, Hohlprofilen oder Vollprofilen als druckbean- | spruchte Eckstützen, die in zwei orthogonalen Ebenen, bei dreieckigen Gittermasten in 60° zueinander",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 83,
+      "equation_number": "unvollständig",
+      "line": "(6) Ist der Spalt zwischen den Winkelprofilen größer als 1,5 t (mit t = Schenkeldicke), so darf bei Schraub-",
+      "context": "ANMERKUNG Der Nationale Anhang darf Hinweise zur Vorgehensweise geben, wenn die Abstände zwischen den | Schrauben größer sind als in EN 1993-1-1, 6.4.4 angegeben. | (6) Ist der Spalt zwischen den Winkelprofilen größer als 1,5 t (mit t = Schenkeldicke), so darf bei Schraub- | verbindungen mit Futter in der Regel nicht von einer vollen Verbundwirkung ausgegangen werden; in diesem | Fall sind die Querschnittseigenschaften in der Regel für die tatsächliche Konfiguration oder nur für einen Spalt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "(3) Die Schlankheit von primären Füllstäben sollte im Allgemeinen den Wert = 180 und vom sekundären",
+      "context": "i | L i konservativ sein. | (3) Die Schlankheit von primären Füllstäben sollte im Allgemeinen den Wert = 180 und vom sekundären | Füllstäben den Wert = 250 nicht überschreiten. Bei einer mehrfachen Vergitterung (siehe Bild H.1(V)) sollte | die Gesamtbauteilschlankheit kleiner als = 350 sein.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "Füllstäben den Wert = 250 nicht überschreiten. Bei einer mehrfachen Vergitterung (siehe Bild H.1(V)) sollte",
+      "context": "L i konservativ sein. | (3) Die Schlankheit von primären Füllstäben sollte im Allgemeinen den Wert = 180 und vom sekundären | Füllstäben den Wert = 250 nicht überschreiten. Bei einer mehrfachen Vergitterung (siehe Bild H.1(V)) sollte | die Gesamtbauteilschlankheit kleiner als = 350 sein. | ANMERKUNG Die Verwendung von Bauteilen mit größeren Schlankheiten kann zu Schwingungen und Schadensan-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "die Gesamtbauteilschlankheit kleiner als = 350 sein.",
+      "context": "(3) Die Schlankheit von primären Füllstäben sollte im Allgemeinen den Wert = 180 und vom sekundären | Füllstäben den Wert = 250 nicht überschreiten. Bei einer mehrfachen Vergitterung (siehe Bild H.1(V)) sollte | die Gesamtbauteilschlankheit kleiner als = 350 sein. | ANMERKUNG Die Verwendung von Bauteilen mit größeren Schlankheiten kann zu Schwingungen und Schadensan- | fälligkeit gegenüber Biegung infolge lokaler Lasteinwirkung führen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "Ldi = Ld1",
+      "context": "Bauteilen einfaches | Fachwerk | Ldi = Ld1 | Ldi = Ld1 | Ldi = Ld2 aus der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "Ldi = Ld1",
+      "context": "Fachwerk | Ldi = Ld1 | Ldi = Ld1 | Ldi = Ld2 aus der | Ebene",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "Ldi = Ld2 aus der",
+      "context": "Ldi = Ld1 | Ldi = Ld1 | Ldi = Ld2 aus der | Ebene | Ldi = Ld1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "Ldi = Ld1",
+      "context": "Ldi = Ld2 aus der | Ebene | Ldi = Ld1 | Bild H.1  Typische Anordnungen von Füllstäben | DIN EN 1993-3-1:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "= Lh2/ivv",
+      "context": "a) | b) | = Lh2/ivv | und ( = Lh/izz) | für",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "und ( = Lh/izz)",
+      "context": "b) | = Lh2/ivv | und ( = Lh/izz) | für | Winkelprofile",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "= Lh1/ivv",
+      "context": "für | Winkelprofile | = Lh1/ivv | und ( = Lh/izz) | für",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "und ( = Lh/izz)",
+      "context": "Winkelprofile | = Lh1/ivv | und ( = Lh/izz) | für | Winkelprofile",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "= Lh/iyy für Hohlprofile = Lh/iyy",
+      "context": "für | Winkelprofile | = Lh/iyy für Hohlprofile = Lh/iyy | für | Hohlprofile",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "p = 1,41 für",
+      "context": "prozentualer Anteil p der Normalkraft im Eckstiel, darf für verschiedene Schlankheiten des Eckstiels wie folgt | angenommen werden: | p = 1,41 für | < 30 (H.7a) | 50",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "p = 3,5 für > 135 (H.7c)",
+      "context": "50 | 40p für 30 135 (H.7b) | p = 3,5 für > 135 (H.7c) | (3) Ist in einem Modul mehr als ein zwischenliegender Knoten vorhanden, ist in der Regel für das | sekundäre Füllstabsystem ein separater Nachweis mit 2,5 % der Normalkraft des Eckstiels zu führen, die",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "5.2",
+      "pdf_page": 22,
+      "line": "ANMERKUNG Die c/t-Verhältnisse von Winkelprofilen nach EN 1993-1-1, Tabelle 5.2 dürfen mit den Werten ( h-2t)/t"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 23,
+      "line": "angegeben sein. Die Zahlenwerte in EN 1993-1-8, Tabelle 2.1 werden empfohlen."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 30,
+      "line": "Zu den Mf-Werten siehe EN 1993-1-9, Tabelle 3.1."
+    }
+  ],
+  "figures": [
+    {
+      "label": "1.1",
+      "pdf_page": 14,
+      "line": "Symmetrieachse ein Winkel vom 30° ergibt (siehe Bild 1.1)"
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 16,
+      "line": "(1) Es gilt die Definition der Bauteilachsen entsprechend Bild 1.1."
+    },
+    {
+      "label": "6.9",
+      "pdf_page": 16,
+      "line": "(2) Für mehrteilige Bauteile gilt die Definition der Bauteilachsen nach EN 1993-1-1, Bild 6.9."
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 16,
+      "line": "Bild 1.1  Abmessungen und Bauteilachsen"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 24,
+      "line": "Bild 6.1  Geschraubte Flanschverbindung"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 25,
+      "line": "Für den Nachweis, dass sich die Druckzone bei dem erwarteten Verdrehwinkel am Mastfuß (siehe Bild 6.2) in den"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 25,
+      "line": "Die Exzentrizitäten eu und eo (siehe Bild 6.2) sind dann:"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 26,
+      "line": "Bild 6.2  Exzentrizität infolge Mastdrehung am Fuß"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 51,
+      "line": "Mastspitze schneiden (siehe Bild 3.1a)), ist die maximale Beanspruchung in der Ausfachung oder die"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1051,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2207,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2189,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7142,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.2",
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.3.3",
+        "2.3.4",
+        "2.3.5",
+        "2.3.6",
+        "2.3.7",
+        "2.3.8",
+        "2.4",
+        "2.5",
+        "2.6",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4",
+        "4.1",
+        "4.2",
+        "5",
+        "5.1",
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 7861,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.4",
+        "6",
+        "6.1",
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.3",
+        "6.3.1",
+        "6.4",
+        "6.4.1",
+        "6.4.2",
+        "6.4.3",
+        "6.4.4",
+        "6.5",
+        "6.5.1",
+        "6.5.2",
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1",
+        "7.2.2",
+        "7.3",
+        "8",
+        "9",
+        "9.1",
+        "9.2",
+        "9.2.1",
+        "9.2.2",
+        "9.2.3",
+        "9.3",
+        "9.4",
+        "9.5",
+        "9.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 8073,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1530,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3212,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 3083,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2924,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2776,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2888,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1631,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2752,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1160,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 732,
+      "text_layer": "usable",
+      "clauses": [
+        "1.7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2063,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.2",
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.3.3",
+        "2.3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2678,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3.5",
+        "2.3.6",
+        "2.3.7",
+        "2.3.8"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1862,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4",
+        "2.5",
+        "2.6",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2305,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "5",
+        "5.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1736,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "6",
+        "6.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1990,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.3",
+        "6.3.1"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1460,
+      "text_layer": "usable",
+      "clauses": [
+        "6.4",
+        "6.4.1",
+        "6.4.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 24,
+      "characters": 797,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1699,
+      "text_layer": "usable",
+      "clauses": [
+        "6.4.3",
+        "6.4.4",
+        "6.5",
+        "6.5.1"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1453,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "6.5.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2024,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1",
+        "7.2.2",
+        "7.3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2408,
+      "text_layer": "usable",
+      "clauses": [
+        "8",
+        "9",
+        "9.1",
+        "9.2",
+        "9.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2333,
+      "text_layer": "usable",
+      "clauses": [
+        "9.2.2",
+        "9.2.3",
+        "9.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1012,
+      "text_layer": "usable",
+      "clauses": [
+        "9.4",
+        "9.5",
+        "9.6"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1863,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 518,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1453,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1104,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1974,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1108,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1784,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 38,
+      "characters": 978,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 39,
+      "characters": 416,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "3",
+        "4"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1147,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 41,
+      "characters": 459,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 2155,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1519,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 2051,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1742,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1995,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 47,
+      "characters": 1382,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1050,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 49,
+      "characters": 2546,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1569,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1749,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 1814,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "6",
+        "8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2131,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 54,
+      "characters": 2461,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1279,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 56,
+      "characters": 2432,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 1437,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1627,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 59,
+      "characters": 742,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1257,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1292,
+      "text_layer": "usable",
+      "clauses": [
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 1841,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 2844,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1889,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 3180,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 2401,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 1280,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 68,
+      "characters": 1736,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 2728,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 70,
+      "characters": 1266,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 1552,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 1813,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 73,
+      "characters": 1408,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 74,
+      "characters": 746,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 75,
+      "characters": 1671,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 76,
+      "characters": 2704,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 77,
+      "characters": 1827,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 78,
+      "characters": 1037,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 79,
+      "characters": 735,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 80,
+      "characters": 950,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 81,
+      "characters": 1012,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 82,
+      "characters": 380,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 83,
+      "characters": 2699,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 84,
+      "characters": 1759,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 85,
+      "characters": 311,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 86,
+      "characters": 3349,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 87,
+      "characters": 2933,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 88,
+      "characters": 1743,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 89,
+      "characters": 596,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 90,
+      "characters": 2099,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 91,
+      "characters": 1363,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 92,
+      "characters": 1739,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 93,
+      "characters": 1657,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

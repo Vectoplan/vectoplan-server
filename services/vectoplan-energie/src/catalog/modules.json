@@ -1,0 +1,54 @@
+{
+  "schema_version": "energy-module-catalog/0.1",
+  "groups": [
+    {
+      "id": "building",
+      "label": "Gebäudemodell",
+      "modules": [
+        {"id": "overview", "label": "Übersicht", "icon": "dashboard", "status": "available"},
+        {"id": "geometry", "label": "Gebäude & Zonen", "icon": "building", "status": "integrated"},
+        {"id": "envelope", "label": "Hülle & U-Werte", "icon": "layers", "status": "working"},
+        {"id": "thermal_bridges", "label": "Wärmebrücken", "icon": "bridge", "status": "working"},
+        {"id": "moisture", "label": "Feuchteschutz", "icon": "droplet", "status": "screening"}
+      ]
+    },
+    {
+      "id": "systems",
+      "label": "Anlagentechnik",
+      "modules": [
+        {"id": "heating", "label": "Heizung & Warmwasser", "icon": "heat", "status": "working"},
+        {"id": "heating_load", "label": "Heizlast", "icon": "heat", "status": "screening"},
+        {"id": "ventilation", "label": "Lüftung", "icon": "fan", "status": "screening"},
+        {"id": "cooling", "label": "Kühlung", "icon": "snow", "status": "planned"},
+        {"id": "renewables", "label": "PV & Solar", "icon": "sun", "status": "available"}
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "Bewertung & Nachweise",
+      "modules": [
+        {"id": "balance", "label": "Energiebilanz", "icon": "chart", "status": "working"},
+        {"id": "variants", "label": "Varianten & Sanierung", "icon": "compare", "status": "working"},
+        {"id": "certificate", "label": "Energieausweis", "icon": "certificate", "status": "locked"},
+        {"id": "funding", "label": "Fördercheck", "icon": "funding", "status": "planned"},
+        {"id": "summer_comfort", "label": "Sommerlicher Wärmeschutz", "icon": "temperature", "status": "screening"},
+        {"id": "lifecycle", "label": "Ökobilanz & QNG", "icon": "leaf", "status": "planned"}
+      ]
+    },
+    {
+      "id": "delivery",
+      "label": "Ausgabe",
+      "modules": [
+        {"id": "reports", "label": "Berichte", "icon": "document", "status": "working"},
+        {"id": "data_quality", "label": "Datenqualität", "icon": "check", "status": "working"}
+      ]
+    }
+  ],
+  "status_legend": {
+    "integrated": "Editor/CAD-Route und Auswahlvertrag eingebunden",
+    "working": "Reproduzierbare Facharbeitsberechnung implementiert",
+    "screening": "Fachliches Screening; noch kein normativer Nachweis",
+    "locked": "Offizielle Ausgabe bis zur normativen Validierung gesperrt",
+    "planned": "Fachmodul noch nicht implementiert"
+  }
+}

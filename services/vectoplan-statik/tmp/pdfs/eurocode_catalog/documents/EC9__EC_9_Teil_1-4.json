@@ -1,0 +1,2953 @@
+{
+  "document_id": "EN_1999-1-4__base_standard__EC_9_Teil_1-4",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-4",
+  "document_kind": "base_standard",
+  "file_name": "EC 9 Teil 1-4.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-4.pdf",
+  "sha256": "3262b6a606f4cb316157aca9b5f97abe9fb799e3bc364b5b81bb9fb462fd2a51",
+  "pages": 74,
+  "text_pages": 74,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 180,
+  "equation_candidate_count": 104,
+  "table_reference_count": 27,
+  "figure_reference_count": 83,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184335+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233932+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-4.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ...................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1999............................................................................................ ...........9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1999-1-4. ................................................................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ...............10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Allgemeines.............................................................................................................. ............................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.2",
+      "title": "Bemessung................................................................................................................ ...........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.3",
+      "title": "Werkstoffe und Werkstoffprüfung .......................................................................................... ...........10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.4",
+      "title": "Verbindungselemente ...................................................................................................... ...................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.5",
+      "title": "Sonstiges................................................................................................................ ..............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe ................................................................................................................... ..............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen.............................................................................................................. ........................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Geometrie und Festlegungen für Abmessungen .............................................................................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Querschnittsformen....................................................................................................... ......................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Aussteifungsformen ....................................................................................................... .....................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Abmessungen der Querschnitte ............................................................................................. ...........13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Festlegung der Bauteilachsen............................................................................................. ...............14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Bemessungsgrundlagen......................................................................................................... ............14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe ................................................................................................................... .........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Aluminiumlegierungen für Bauteile.......................................................................................... .........15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Materialeigenschaften .................................................................................................... .....................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Blechdicken und geometrische Toleranzen .................................................................................. ...17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Verbindungselemente ............................................................................................ .....17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit.............................................................................................................. .......................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Berechnungsmethoden.......................................................................................................... .............18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Einfluss ausgerundeter Ecken ............................................................................................... ............18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Geometrische Festlegungen .................................................................................................. ............19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessungsmodelle.......................................................................................................... .................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4",
+      "title": "Einwölbung der Gurte ....................................................................................................... ..................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5",
+      "title": "Örtliches Beulen und Gesamtfeldbeulen ...................................................................................... ....21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5.1",
+      "title": "Allgemeines.............................................................................................................. ............................21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5.2",
+      "title": "Unausgesteifte ebene Teilflächen......................................................................................... .............21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5.3",
+      "title": "Ebene Teilflächen mit Zwischensteifen.................................................................................... .........23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5.4",
+      "title": "Trapezprofiltafeln mit Zwischensteifen ................................................................................... ..........28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit.............................................................................................. .........34",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1",
+      "title": "Beanspruchbarkeit von Querschnitten ........................................................................................ .....34",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Allgemeines.............................................................................................................. ............................34",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Zentrischer Zug.......................................................................................................... ..........................35",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Zentrischer Druck ........................................................................................................ ........................35",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Biegemoment .............................................................................................................. .........................36",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.5",
+      "title": "Querkraft................................................................................................................ ...............................38",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.6",
+      "title": "Torsion.................................................................................................................. ................................40",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.7",
+      "title": "Örtliche Lasteinleitung.................................................................................................. ......................40",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.8",
+      "title": "Zugkraft und Biegung ..................................................................................................... ....................45",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.9",
+      "title": "Druckkraft und Biegung................................................................................................... ...................45",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.10",
+      "title": "Querkraft, zentrische Kraft und Biegung ................................................................................. .........46",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.11",
+      "title": "Biegemoment und örtliche Lasteinleitung oder Auflagerkraft .......................................................46",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit bezüglich Knicken ........................................................................................ .....47",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines .............................................................................................................. ...........................47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Zentrischer Druck........................................................................................................ ........................47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Biegung und zentrischer Druck ............................................................................................ .............48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Schubfelder................................................................................................................ ..........................49",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................49",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Scheibenwirkung.......................................................................................................... .......................49",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.3",
+      "title": "Voraussetzungen.......................................................................................................... .......................50",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.4",
+      "title": "Schubfelder aus Aluminium-Profiltafeln................................................................................... ........51",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Gelochte Profiltafeln mit Lochanordnung in Form gleichseitiger Dreiecke..................................52",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Gebrauchstauglichkeit........................................................................................................ ................53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines ................................................................................................................ .........................53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Plastische Verformungen .................................................................................................... ...............53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Durchbiegungen ............................................................................................................. .....................54",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8",
+      "title": "Verbindungen mit mechanischen Verbindungselementen.............................................................54",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.1",
+      "title": "Allgemeines ................................................................................................................ .........................54",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2",
+      "title": "Blindniete ................................................................................................................. ............................56",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2.1",
+      "title": "Allgemeines .............................................................................................................. ...........................56",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2.2",
+      "title": "Bemessungswerte für scherbeanspruchte Nietverbindungen.......................................................56",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2.3",
+      "title": "Bemessungswerte für zugbeanspruchte Nietverbindungen ..........................................................56",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3",
+      "title": "Gewindeformende Schrauben / Bohrschrauben..............................................................................57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3.2",
+      "title": "Bemessungswerte für scherbeanspruchte Schraubverbindungen ...............................................57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3.3",
+      "title": "Bemessungswerte für zugbeanspruchte Schraubverbindungen ..................................................58",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9",
+      "title": "Versuchsgestützte Bemessung .................................................................................................. .......60",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1999",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1999-1-4",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2.2",
+      "title": "Bemessung",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2.3",
+      "title": "Werkstoffe und Werkstoffprüfung",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2.4",
+      "title": "Verbindungselemente",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.2.5",
+      "title": "Sonstiges",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5",
+      "title": "Geometrie und Festlegungen für Abmessungen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Querschnittsformen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Aussteifungsformen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Abmessungen der Querschnitte",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Festlegung der Bauteilachsen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2",
+      "title": "Bemessungsgrundlagen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.2",
+      "title": "Aluminiumlegierungen für Bauteile",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Materialeigenschaften",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3003",
+      "title": "AlMn1Cu A",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3004",
+      "title": "AlMn1Mg1 A",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3103",
+      "title": "AlMn1 A H18 3 185 165 2",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3105",
+      "title": "AlMn0,5Mg0,5 A",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5005",
+      "title": "AlMg1(B) A H18 3 185 165 2",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5052",
+      "title": "AlMg2,5 A",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Blechdicken und geometrische Toleranzen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Verbindungselemente",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5",
+      "title": "Berechnungsmethoden",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.1",
+      "title": "Einfluss ausgerundeter Ecken",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.2",
+      "title": "Geometrische Festlegungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessungsmodelle",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.4",
+      "title": "Einwölbung der Gurte",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.5",
+      "title": "Örtliches Beulen und Gesamtfeldbeulen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.5.2",
+      "title": "Unausgesteifte ebene Teilflächen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.5.3",
+      "title": "Ebene Teilflächen mit Zwischensteifen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.5.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.5.3.2",
+      "title": "Voraussetzungen für das Bemessungsverfahren",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.5.3.3",
+      "title": "Berechnungsverfahren",
+      "pdf_page": 27
+    },
+    {
+      "clause": "5.5.4",
+      "title": "Trapezprofiltafeln mit Zwischensteifen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "5.5.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 30
+    },
+    {
+      "clause": "5.5.4.2",
+      "title": "Gurte mit Zwischensteifen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "5.5.4.3",
+      "title": "Stege mit bis zu zwei Steifen unter ungleichförmiger Spannung",
+      "pdf_page": 32
+    },
+    {
+      "clause": "5.5.4.4",
+      "title": "Profiltafeln mit Gurt- und Stegaussteifungen",
+      "pdf_page": 35
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 36
+    },
+    {
+      "clause": "6.1",
+      "title": "Beanspruchbarkeit von Querschnitten",
+      "pdf_page": 36
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 36
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Zentrischer Zug",
+      "pdf_page": 37
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Zentrischer Druck",
+      "pdf_page": 37
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Biegemoment",
+      "pdf_page": 38
+    },
+    {
+      "clause": "6.1.4.1",
+      "title": "Elastischer und plastischer Widerstand bei Erreichen der Dehngrenze im",
+      "pdf_page": 38
+    },
+    {
+      "clause": "6.1.4.2",
+      "title": "Elastischer und plastischer Widerstand bei Erreichen der Dehngrenze ausschließlich im",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.1.4.3",
+      "title": "Mittragende Breiten infolge Schubverzerrungen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.1.5",
+      "title": "Querkraft",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.1.6",
+      "title": "Torsion",
+      "pdf_page": 42
+    },
+    {
+      "clause": "6.1.7",
+      "title": "Örtliche Lasteinleitung",
+      "pdf_page": 42
+    },
+    {
+      "clause": "6.1.7.1",
+      "title": "Allgemeines",
+      "pdf_page": 42
+    },
+    {
+      "clause": "6.1.7.2",
+      "title": "Querschnitte mit unausgesteiften Stegen",
+      "pdf_page": 42
+    },
+    {
+      "clause": "6.1.7.3",
+      "title": "Querschnitte mit ausgesteiften Stegen",
+      "pdf_page": 46
+    },
+    {
+      "clause": "6.1.8",
+      "title": "Zugkraft und Biegung",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.1.9",
+      "title": "Druckkraft und Biegung",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.1.10",
+      "title": "Querkraft, zentrische Kraft und Biegung",
+      "pdf_page": 48
+    },
+    {
+      "clause": "6.1.11",
+      "title": "Biegemoment und örtliche Lasteinleitung oder Auflagerkraft",
+      "pdf_page": 48
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit bezüglich Knicken",
+      "pdf_page": 49
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 49
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Zentrischer Druck",
+      "pdf_page": 49
+    },
+    {
+      "clause": "6.2.2.1",
+      "title": "Beanspruchbarkeit bezüglich Knicken",
+      "pdf_page": 49
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Biegung und zentrischer Druck",
+      "pdf_page": 50
+    },
+    {
+      "clause": "6.3",
+      "title": "Schubfelder",
+      "pdf_page": 51
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 51
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Scheibenwirkung",
+      "pdf_page": 51
+    },
+    {
+      "clause": "6.3.3",
+      "title": "Voraussetzungen",
+      "pdf_page": 52
+    },
+    {
+      "clause": "6.3.4",
+      "title": "Schubfelder aus Aluminium-Profiltafeln",
+      "pdf_page": 53
+    },
+    {
+      "clause": "6.4",
+      "title": "Gelochte Profiltafeln mit Lochanordnung in Form gleichseitiger Dreiecke",
+      "pdf_page": 54
+    },
+    {
+      "clause": "7",
+      "title": "Gebrauchstauglichkeit",
+      "pdf_page": 55
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 55
+    },
+    {
+      "clause": "7.2",
+      "title": "Plastische Verformungen",
+      "pdf_page": 55
+    },
+    {
+      "clause": "7.3",
+      "title": "Durchbiegungen",
+      "pdf_page": 56
+    },
+    {
+      "clause": "8",
+      "title": "Verbindungen mit mechanischen Verbindungselementen",
+      "pdf_page": 56
+    },
+    {
+      "clause": "8.1",
+      "title": "Allgemeines",
+      "pdf_page": 56
+    },
+    {
+      "clause": "8.2",
+      "title": "Blindniete",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.2",
+      "title": "Bemessungswerte für scherbeanspruchte Nietverbindungen",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.2.1",
+      "title": "Beanspruchbarkeit bezüglich Lochleibung",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.2.2",
+      "title": "Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.2.3",
+      "title": "Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.3",
+      "title": "Bemessungswerte für zugbeanspruchte Nietverbindungen",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.3.1",
+      "title": "Beanspruchbarkeit bezüglich Durchknöpfen",
+      "pdf_page": 58
+    },
+    {
+      "clause": "8.2.3.2",
+      "title": "Beanspruchbarkeit bezüglich Ausreißen",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.2.3.3",
+      "title": "Beanspruchbarkeit bezüglich Zugbruch",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.3",
+      "title": "Gewindeformende Schrauben / Bohrschrauben",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.3.2",
+      "title": "Bemessungswerte für scherbeanspruchte Schraubverbindungen",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.3.2.1",
+      "title": "Beanspruchbarkeit bezüglich Lochleibung",
+      "pdf_page": 59
+    },
+    {
+      "clause": "8.3.2.2",
+      "title": "Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes",
+      "pdf_page": 60
+    },
+    {
+      "clause": "8.3.2.3",
+      "title": "Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes",
+      "pdf_page": 60
+    },
+    {
+      "clause": "8.3.3",
+      "title": "Bemessungswerte für zugbeanspruchte Schraubverbindungen",
+      "pdf_page": 60
+    },
+    {
+      "clause": "8.3.3.1",
+      "title": "Beanspruchbarkeit bezüglich Durchknöpfen",
+      "pdf_page": 60
+    },
+    {
+      "clause": "8.3.3.2",
+      "title": "Beanspruchbarkeit bezüglich Ausreißen",
+      "pdf_page": 62
+    },
+    {
+      "clause": "8.3.3.3",
+      "title": "Beanspruchbarkeit bezüglich Zugbruch",
+      "pdf_page": 62
+    },
+    {
+      "clause": "9",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 62
+    },
+    {
+      "clause": "1",
+      "title": "Querband",
+      "pdf_page": 66
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 19,
+      "equation_number": "3.1",
+      "line": "95/)100(nom devtt (3.1)",
+      "context": "(2) Die nominelle Blechdicke tnom ist in der Regel als Bemessungswert für die Blechdicke t zu verwenden, | sofern die Minustoleranz kleiner als 5 % ist. Andernfalls gilt | 95/)100(nom devtt (3.1) | Dabei ist | dev die Minustoleranz in %.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "5.1a",
+      "line": "1shg,g AA (5.1a)",
+      "context": "(4) Bei ausgerundeten Ecken kann die Berechnung von Querschnittswerten über eine Abminderung der | Querschnittswerte des scharfkantigen Querschnitts nach folgender Näherungsformel geschehen: | 1shg,g AA (5.1a) | 21shg,g II (5.1b) | mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "5.1b",
+      "line": "21shg,g II (5.1b)",
+      "context": "Querschnittswerte des scharfkantigen Querschnitts nach folgender Näherungsformel geschehen: | 1shg,g AA (5.1a) | 21shg,g II (5.1b) | mit | m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "5.1c",
+      "line": "90/43,0 (5.1c)",
+      "context": "p, | 1 | 90/43,0 (5.1c) | Dabei ist | gA die Gesamtquerschnittsfläche;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "(5) Die Abminderungen, die sich aus Formel (5.1) ergeben, dürfen auch bei der Bestimmung der wirksamen",
+      "context": "Stegen und Gurten; | rj der innere Biegeradius der gekrümmten Teilfläche j . | (5) Die Abminderungen, die sich aus Formel (5.1) ergeben, dürfen auch bei der Bestimmung der wirksamen | Querschnittswerte effA und effy,I zur Anwendung kommen, wenn für die Nennbreiten der ebenen Teilflächen | die Abstände zwischen den Schnittpunkten der Mittellinien angesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.1e",
+      "line": "a2 (5.1e)",
+      "context": "s | 2 | a2 (5.1e) | Für gebogene Profiltafeln: | rtE",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.1f",
+      "line": "sa2 (5.1f)",
+      "context": "bu 2 | 4 | sa2 (5.1f) | Dabei ist | u die Einwölbung des Gurtes in Richtung der neutralen Achse, siehe Bild 5.2;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.2a",
+      "line": "bei limp : 1,0 (5.2a)",
+      "context": "die Beanspruchbarkeit des Querschnittes erreicht ist. | (4) Ist com,Ed f0 / M1, gilt für den Abminderungsbeiwert der folgende Ansatz: | bei limp : 1,0 (5.2a) | bei limp : pp //0,221 (5.2b) | worin der bezogene Schlankheitsgrad p der ebenen Teilfläche (Platte) gegeben ist durch:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.2b",
+      "line": "bei limp : pp //0,221 (5.2b)",
+      "context": "(4) Ist com,Ed f0 / M1, gilt für den Abminderungsbeiwert der folgende Ansatz: | bei limp : 1,0 (5.2a) | bei limp : pp //0,221 (5.2b) | worin der bezogene Schlankheitsgrad p der ebenen Teilfläche (Platte) gegeben ist durch: | Ek",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.3",
+      "line": "p 052,1112 (5.3)",
+      "context": "cr | 0 | p 052,1112 (5.3) | k ist der von der Spannungsverteilung abhängige Beulwert nach Tabelle 5.3. Die Parameter lim und | können Tabelle 5.2 entnommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.4",
+      "line": "predp, /f (5.4)",
+      "context": "M10 | Edcom, | predp, /f (5.4) | (6) Bezüglich der wirksamen Steifigkeit beim Nachweis der Gebrauchstauglichkeit siehe 7.1(3). | (7) Zur Bestimmung der wirksamen Dicke einer Gurtteilfläche mit ungleichmäßiger Spannungsverteilung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.5",
+      "line": "u / (5.5)",
+      "context": "in Bild 5.3 dargestellt, angebracht wird. Die Federsteifigkeit k je Längeneinheit ergibt sich dann wie folgt: | k | u / (5.5) | worin die Verformung eines durch die Einheitslast u beanspruchten abgekanteten Plattenstreifens ist, und | die Einheitslast u in der Mittelebene ( 1b ) des wirksamen Teiles der Aussteifung angreift.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.6",
+      "line": "bub (5.6)",
+      "context": "v | bb | bub (5.6) | (5) Der Reduktionsfaktor d bezüglich Gesamtfeldbeulen bei einer Aussteifung (Biegeknicken bei einer | Zwischensteife) ist in Abhängigkeit der nach (5.7) zu ermittelnden bezogenen Schlankheit Tabelle 5.4 zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.7",
+      "line": "scr,0s /f (5.7)",
+      "context": "Zwischensteife) ist in Abhängigkeit der nach (5.7) zu ermittelnden bezogenen Schlankheit Tabelle 5.4 zu | entnehmen. | scr,0s /f (5.7) | Dabei ist | cr,s die elastische kritische Spannung nach 5.5.3.3 oder 5.5.4.2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "5.8",
+      "line": "As teff,1 bp,1 / 2 tb s teff,2 bp,2 / 2 (5.8)",
+      "context": "siehe Tabelle 5.1. | (4) Die wirksame Querschnittsfläche einer Zwischensteife As ergibt sich aus: | As teff,1 bp,1 / 2 tb s teff,2 bp,2 / 2 (5.8) | mit der Steifenbreite bs wie in Bild 5.4 dargestellt. | (5) Die kritische (elastische) Beulspannung cr,s einer Zwischensteife beträgt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "5.9",
+      "line": "2 (5.9)",
+      "context": "s | scr, | 2 (5.9) | Dabei ist | k die Federsteifigkeit je Längeneinheit, siehe 5.5.3.1(2);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "5.10",
+      "line": "p,red p d (5.10)",
+      "context": "(7) Ist d < 1, kann das Ergebnis durch Iteration weiter verbessert werden, indem ein modifizierter Wert | nach 5.5.2(4), ausgehend von com,Ed d fo / M1, berechnet wird, sodass gilt: | p,red p d (5.10) | (8) Wird d iterativ ermittelt, sollte die Iteration so lange durchgeführt werden, bis der aktuelle Wert von d | nahezu gleich dem vorangegangenen Wert ist, jedoch nicht größer.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "5.11",
+      "line": "M1o /f aber sreds, AA (5.11)",
+      "context": "As,red d As | Edcom, | M1o /f aber sreds, AA (5.11) | und worin Edcom, die mit dem wirksamen Querschnitt ermittelte Druckspannung an der Schwerelinie der | Steife ist.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "5.12",
+      "line": "2,4 (5.12)",
+      "context": "w | 324 | 2,4 (5.12) | Dabei ist | bp die Gesamtbreite der ebenen Teilstücke, wie in Bild 5.6 dargestellt;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "5",
+      "line": "w ein Beiwert, der die Drehbettung des ausgesteiften Gurtes durch die Stege berücksichtigt, siehe (5)",
+      "context": "bp die Gesamtbreite der ebenen Teilstücke, wie in Bild 5.6 dargestellt; | bs die (abgewickelte) Breite der Steife, siehe Bild 5.6(c); | w ein Beiwert, der die Drehbettung des ausgesteiften Gurtes durch die Stege berücksichtigt, siehe (5) | und (6); | As und Is wie 5.5.3.3 und Bild 5.6 definiert.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "5.13",
+      "line": "2,4 (5.13)",
+      "context": "w | 438 | 2,4 (5.13) | mit | be 2bp,1 bp,2 2bs",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "5.14a",
+      "line": "wenn lb / sw 2: w wo (5.14a)",
+      "context": "(4) Sind drei Zwischensteifen vorhanden, ist die mittlere nicht zu berücksichtigen. | (5) Der Beiwert w ergibt sich aus der Knicklänge lb des gedrückten Gurtes wie folgt: | wenn lb / sw 2: w wo (5.14a) | wenn lb / sw 2: w wo ( wo 1)[2lb / sw (lb / sw)2] (5.14b) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "5.14b",
+      "line": "wenn lb / sw 2: w wo ( wo 1)[2lb / sw (lb / sw)2] (5.14b)",
+      "context": "(5) Der Beiwert w ergibt sich aus der Knicklänge lb des gedrückten Gurtes wie folgt: | wenn lb / sw 2: w wo (5.14a) | wenn lb / sw 2: w wo ( wo 1)[2lb / sw (lb / sw)2] (5.14b) | Dabei ist | sw die geneigte Länge des Steges ist, siehe Bild 5.7(a).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "5.15",
+      "line": "s 3207,3 t/bbbI (5.15)",
+      "context": "lb 4 3spp | 2 | s 3207,3 t/bbbI (5.15) | wo | dw",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "5.16",
+      "line": "b+s (5.16)",
+      "context": "2 | b+s | b+s (5.16) | mit | bd 2bp bs",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "5.17",
+      "line": "s 4365,3 t/bbbI e (5.17)",
+      "context": "4 311 | 2 | s 4365,3 t/bbbI e (5.17) | wo | 1ew1e1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "5.18",
+      "line": "bbsb (5.18)",
+      "context": "432 | bb s+bbb | bbsb (5.18) | (8) Die hinsichtlich des Gesamtfeldbeulens (Biegeknicken einer Zwischensteife) reduzierte wirksame Quer- | schnittsfläche As,red der Steife ergibt sich zu:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "5.19",
+      "line": "M1o /f jedoch sreds, AA (5.19)",
+      "context": "As,red d As | Edcom, | M1o /f jedoch sreds, AA (5.19) | (9) Bei unausgesteiften Stegen ergibt sich der Abminderungsfaktor d unmittelbar aus cr,s nach der in | 5.5.3.1(5) angegebenen Berechnungsmethode.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "5.20a",
+      "line": "stststA , Bild 5.7(d1) (5.20a)",
+      "context": "a | aeff,sa | stststA , Bild 5.7(d1) (5.20a) | für die dem Druckgurt zugekehrte Steife bei Stegen mit zwei Steifen: | )22( b",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "5.20b",
+      "line": "stststA , Bild 5.7(d2) (5.20b)",
+      "context": "a | aeff,sa | stststA , Bild 5.7(d2) (5.20b) | für die zweite Steife | )32( nneff,sbbeff,sb",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "5.21",
+      "line": "stststA b , Bild 5.7(d3) (5.21)",
+      "context": "für die zweite Steife | )32( nneff,sbbeff,sb | stststA b , Bild 5.7(d3) (5.21) | wobei die Abmessungen sa, ssa, sb, ssb und sn Bild 5.7 zu entnehmen und teff,a, teff,b und teff,n nach (5) zu | ermitteln sind.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "5.22",
+      "line": "teff t (5.22)",
+      "context": "(5) Wenn die bezogene Schlankheit p des druckbeanspruchten Stegbereiches größer ist als lim (siehe | 5.5.2(4)), sollten die wirksamen Dicken tteff,a, tteff,b und tteff,n wie folgt ermittelt werden: | teff t (5.22) | wobei nach Gleichung (5.2) mit der Schlankheit p und dem Faktor für die Spannungsverteilung nach | Tabelle 5.5 zu bestimmen ist. ec und et sind hierbei die Abstände von der wirksamen Schwereachse zu den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "wobei nach Gleichung (5.2) mit der Schlankheit p und dem Faktor für die Spannungsverteilung nach",
+      "context": "5.5.2(4)), sollten die wirksamen Dicken tteff,a, tteff,b und tteff,n wie folgt ermittelt werden: | teff t (5.22) | wobei nach Gleichung (5.2) mit der Schlankheit p und dem Faktor für die Spannungsverteilung nach | Tabelle 5.5 zu bestimmen ist. ec und et sind hierbei die Abstände von der wirksamen Schwereachse zu den | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "5.23",
+      "line": "stIE (5.23)",
+      "context": "saf | cr,sa sssA | stIE (5.23) | worin s1 und s2 wie folgt definiert sind: | für eine einzelne Aussteifung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "5.24",
+      "line": ")(9,0 csaa1 ssss , saa12 5,0 ssss (5.24)",
+      "context": "worin s1 und s2 wie folgt definiert sind: | für eine einzelne Aussteifung: | )(9,0 csaa1 ssss , saa12 5,0 ssss (5.24) | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "5.25",
+      "line": ")(5,0 csbbsaa1 ssssss , saa12 5,0 ssss (5.25)",
+      "context": "im Falle von zwei Aussteifungen für die dem Druckgurt zugewandte Aussteifung, wenn sich die andere | Aussteifung im zugbeanspruchten Bereich befindet oder unmittelbar an der Schwerachse liegt: | )(5,0 csbbsaa1 ssssss , saa12 5,0 ssss (5.25) | Dabei ist | f ein Beiwert, der die Drehbettung des ausgesteiften Steges durch den Gurt berücksichtigt;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "5.26",
+      "line": "AA (5.26)",
+      "context": "e | hh | AA (5.26) | (10) Sind die Gurte ebenfalls ausgesteift, ist der Reduktionsfaktor d mit der in 5.5.4.4 angegebenen elas- | tischen kritischen Spannung cr,mod in Verbindung mit dem in 5.5.3.1(5) angegebenen Verfahren zu ermitteln.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "5.27",
+      "line": "(5.27)",
+      "context": "modcr, | 1 | (5.27) | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "6.1",
+      "line": "N wobei Nt,Rd Fnet,Rd (6.1)",
+      "context": "Rdt, | Af | N wobei Nt,Rd Fnet,Rd (6.1) | Dabei ist | Ag die Gesamtfläche des Querschnittes;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "6.2",
+      "line": "M1oeffRdc, /fAN (6.2)",
+      "context": "wenn die wirksame Fläche effA kleiner ist als die Gesamtfläche gA (Querschnitt mit Reduktion | hinsichtlich örtlichen Beulens und/oder Gesamtfeldbeulens): | M1oeffRdc, /fAN (6.2) | wenn die wirksame Fläche effA gleich ist wie die Gesamtfläche gA (Querschnitt ohne Reduktion | hinsichtlich örtlichen Beulens und/oder Gesamtfeldbeulens)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "6.3",
+      "line": "M1ogRdc, /fAN (6.3)",
+      "context": "wenn die wirksame Fläche effA gleich ist wie die Gesamtfläche gA (Querschnitt ohne Reduktion | hinsichtlich örtlichen Beulens und/oder Gesamtfeldbeulens) | M1ogRdc, /fAN (6.3) | Dabei ist | effA die wirksame Querschnittsfläche nach 5.5.2 unter der Annahme einer gleichförmigen Druck-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "6.4",
+      "line": "M1oeffRdc, /fWM (6.4)",
+      "context": "wenn das wirksame Widerstandsmoment effW kleiner ist als das Widerstandsmoment elW des Gesamt- | querschnittes: | M1oeffRdc, /fWM (6.4) | wenn das wirksame Widerstandsmoment effW gleich ist wie das Widerstandsmoment elW des Gesamt- | querschnittes:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "6.5",
+      "line": "M1elelpleloRdc, /)/1(4)( WWWfM , jedoch nicht größer als M1opl /fW (6.5)",
+      "context": "wenn das wirksame Widerstandsmoment effW gleich ist wie das Widerstandsmoment elW des Gesamt- | querschnittes: | M1elelpleloRdc, /)/1(4)( WWWfM , jedoch nicht größer als M1opl /fW (6.5) | Dabei ist | die Schlankheit jenes Querschnittsteiles, der den größten Wert für el/ ergibt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "6.6",
+      "line": "M1oelRdc, /fWM (6.6)",
+      "context": "Bild 6.5) 60° nicht übersteigt | (3) Ist Bedingung (2) nicht erfüllt, sollte folgende Bedingung benutzt werden: | M1oelRdc, /fWM (6.6) | (4) Das wirksame Widerstandsmoment Weff sollte auf den durch das Biegemoment bestimmten wirksamen | Querschnitt bezogen werden, wobei zur Berücksichtigung von Einflüssen aus örtlichem Beulen und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "6.7",
+      "line": "Vb,Rd (hw / sin ) tf bv / M1 (6.7)",
+      "context": "6.1.5 Querkraft | (1) Die Beanspruchbarkeit bezüglich Querkraft Vb,Rd sollte ermittelt werden aus: | Vb,Rd (hw / sin ) tf bv / M1 (6.7) | Dabei ist | fbv die Schubbeulspannung nach Tabelle 6.1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "6.8a",
+      "line": "fo (6.8a)",
+      "context": "sw | E | fo (6.8a) | bei Stegen mit Längsaussteifungen, siehe Bild 6.5: | w E",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "6.9",
+      "line": "t+ (6.9)",
+      "context": "s | I | t+ (6.9) | Dabei ist | Is das Flächenmoment 2. Ordnung der Längssteife bezüglich der Achse a  a, wie in Bild 6.5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "6.10",
+      "line": "FEd Rw,Rd (6.10)",
+      "context": "über die Gurte erfolgende Lasteinleitung beanspruchten Steg zu vermeiden, sollte die transversale Kraft FEd | der folgenden Bedingung genügen: | FEd Rw,Rd (6.10) | worin Rw,Rd die Beanspruchbarkeit des Steges unter örtlicher Lasteinleitung ist. | (2) Die örtliche Beanspruchbarkeit des Steges Rw,Rd wird wie folgt ermittelt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.11a",
+      "line": "r / t 10 (6.11a)",
+      "context": "41 | der Querschnitt genügt folgenden Bedingungen: | r / t 10 (6.11a) | hw / t 200 sin (6.11b) | 45 90 (6.11c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.11b",
+      "line": "hw / t 200 sin (6.11b)",
+      "context": "der Querschnitt genügt folgenden Bedingungen: | r / t 10 (6.11a) | hw / t 200 sin (6.11b) | 45 90 (6.11c) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.11c",
+      "line": "45 90 (6.11c)",
+      "context": "r / t 10 (6.11a) | hw / t 200 sin (6.11b) | 45 90 (6.11c) | Dabei ist | hw die zwischen den Mittellinien der Gurte gemessene Steghöhe;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.12",
+      "line": "Rdw, )90/(4,202,05,01,01 /+t/l+r/tEftR (6.12)",
+      "context": "ao | 2 | Rdw, )90/(4,202,05,01,01 /+t/l+r/tEftR (6.12) | Dabei ist | la die wirksame Auflagerbreite der zugehörigen Lagerungskategorie, siehe (4);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.13a",
+      "line": "la ss, jedoch la 40 mm (6.13a)",
+      "context": "(5) Der Wert für die wirksame Auflagerbreite la profilierter Bleche ist in der Regel folgt zu ermitteln: | a) für Kategorie 1: | la ss, jedoch la 40 mm (6.13a) | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "6.13b",
+      "line": "wenn v 0,2: la ss (6.13b)",
+      "context": "42 | b) für Kategorie 2: | wenn v 0,2: la ss (6.13b) | wenn v 0,3: la 10 mm (6.13c) | wenn 0,2 v 0,3: lineare Interpolation zwischen den Werten la für 0,2 und 0,3 mit:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "6.13c",
+      "line": "wenn v 0,3: la 10 mm (6.13c)",
+      "context": "b) für Kategorie 2: | wenn v 0,2: la ss (6.13b) | wenn v 0,3: la 10 mm (6.13c) | wenn 0,2 v 0,3: lineare Interpolation zwischen den Werten la für 0,2 und 0,3 mit: | ||||",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "6.14",
+      "line": "v (6.14)",
+      "context": "VV | VV | v (6.14) | worin |VEd,1| und |VEd,2| die Beträge der transversalen Kräfte auf jeder Seite der örtlichen Lasteinleitung | oder der Auflagerreaktionen sind, wobei |VEd,1| |VEd,2| und ss die tatsächliche Auflager- oder Lastein-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "6.15",
+      "line": "emax / t 12 (6.15)",
+      "context": "ist: | 2 | emax / t 12 (6.15) | Dabei ist | emax die größere Exzentrizität zwischen den Abkantungen und der Verbindungslinie.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "6.16",
+      "line": "a,s 1,45 0,05 emax / t, jedoch a,s 0,95 35 000 t2 emin / (bd2 sp) (6.16)",
+      "context": "die transversale Beanspruchbarkeit eines ausgesteiften Steges durch Multiplikation des entsprechenden | Wertes von 6.1.7.2 für einen vergleichbaren unausgesteiften Steg mit dem Faktor a,s: | a,s 1,45 0,05 emax / t, jedoch a,s 0,95 35 000 t2 emin / (bd2 sp) (6.16) | Dabei ist | bd die abgewickelte Länge des belasteten Gurtes, siehe Bild 6.8;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "6.17a",
+      "line": "N (6.17a)",
+      "context": "M | M+N | N (6.17a) | Dabei ist | Nt,Rd der Bemessungswert des Querschnittes bezüglich zentrischer Zugbeanspruchung ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "6.17b",
+      "line": "M (6.17b)",
+      "context": "N | M | M (6.17b) | 6.1.9 Druckkraft und Biegung | (1) Bei Querschnitten unter gleichzeitiger Beanspruchung durch zentrische Druckkraft NEd und Biegemoment",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "6.18a",
+      "line": "N (6.18a)",
+      "context": "M | M+M+N | N (6.18a) | worin Nc,Rd nach 6.1.3 und Mcy,Rd,com nach 6.1.8 definiert sind. | (2) Das sich aus dem Versatz der Schwerachsen ergebende Zusatzmoment My,Ed sollte ange-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "6.18b",
+      "line": "My,Ed NEd eN (6.18b)",
+      "context": "(2) Das sich aus dem Versatz der Schwerachsen ergebende Zusatzmoment My,Ed sollte ange- | nommen werden: | My,Ed NEd eN (6.18b) | worin eN die Verschiebung der y  y-Schwerachse infolge axialer Kräfte ist, siehe 6.1.3 (3). | (3) Ist comRd,cy,tenRd,cy, MM , sollte die folgende Bedingung ebenfalls erfüllt sein:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "6.19",
+      "line": "M+M (6.19)",
+      "context": "N | M | M+M (6.19) | worin Mcy,Rd,ten nach 6.1.8 definiert ist. | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.20",
+      "line": "N (6.20)",
+      "context": "M | M+N | N (6.20) | Dabei ist | NRd der Bemessungswert des Querschnittes bezüglich zentrischer Zug- oder Druckbean-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.21a",
+      "line": "M (6.21a)",
+      "context": "Ed | M | M (6.21a) | 1 | Rdw,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.21b",
+      "line": "F (6.21b)",
+      "context": "Ed | R | F (6.21b) | 194,0 | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.22",
+      "line": "M (6.22)",
+      "context": "F | M | M (6.22) | Dabei ist | Mc,Rd der Bemessungswert des Querschnittes bezüglich Biegung nach 6.1.4.1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "6.23",
+      "line": "Nb,Rd Aeff fo / M1 (6.23)",
+      "context": "(1) Der Bemessungswert der Beanspruchbarkeit bezüglich Knicken infolge einer zentrischen Druckkraft | Nb,Rd ergibt sich aus: | Nb,Rd Aeff fo / M1 (6.23) | Dabei ist | Aeff die nach Abschnitt 5 unter Voraussetzung einer konstanten Druckbeanspruchung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "6.24a",
+      "line": ", jedoch 1,0 (6.24a)",
+      "context": "1 | + | , jedoch 1,0 (6.24a) | mit: | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "6.24b",
+      "line": "0)(15,0 (6.24b)",
+      "context": "48 | 2 | 0)(15,0 (6.24b) | Dabei ist | der die Imperfektionen berücksichtigender Faktor;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "6.25",
+      "line": "l (6.25)",
+      "context": "of | i | l (6.25) | Dabei ist | l die Knicklänge bezüglich Knicken um die y  y-Achse ( ly);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "6.26",
+      "line": "(6.26)",
+      "context": "N | y | (6.26) | Dabei ist | Aeff die wirksame Fläche eines ausschließlich durch zentrischen Druck beanspruchten Quer-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "6.27",
+      "line": "x lx (6.27)",
+      "context": "1 | csyy | x lx (6.27) | Dabei ist | xs der Abstand des untersuchten Abschnittes zu einem gelenkigen Lager oder zu einem",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "6.28",
+      "line": "ta,eff )9,0(/118,1 adt (6.28)",
+      "context": "(2) Für den Fall, dass 0,2 d / a 0,9 ist, dürfen die Kennwerte des Gesamtquerschnittes nach 6.1.2 bis | 6.1.5 berechnet werden, wobei t durch ta,eff zu ersetzen ist, mit: | ta,eff )9,0(/118,1 adt (6.28) | Dabei ist | d der Durchmesser der Perforierung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "6.29",
+      "line": "tb,eff 3 118,1 d/at (6.29)",
+      "context": "(3) Für den Fall, dass 0,2 d / a 0,9 ist, dürfen die Kennwerte des Gesamtquerschnittes nach 5.5 | berechnet werden, wobei t durch tb,eff zu ersetzen ist, mit: | tb,eff 3 118,1 d/at (6.29) | DIN EN 1999-1-4:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "6.30",
+      "line": "1 (6.30)",
+      "context": "tc,eff s/sd/at wper | 2 2/3 | 1 (6.30) | Dabei ist | sper die schräge Länge der Perforation im Steg zentrisch in Steghöhe;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "7.1",
+      "line": "Ieff,ser Igr gr (Igr Ieff ) / fo (7.1)",
+      "context": "(3) Das Flächenträgheitsmoment darf durch Interpolation zwischen dem Gesamtquerschnitt und dem wirk- | samen Querschnitt mit Hilfe der nachfolgend aufgeführten Gleichung ermittelt werden: | Ieff,ser Igr gr (Igr Ieff ) / fo (7.1) | Dabei ist | Igr das Flächenträgheitsmoment des Gesamtquerschnittes;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "(2) Der Bemessungswert der Beanspruchbarkeit bezüglich Interaktion kann nach Gleichung (6.22) in 6.1.11",
+      "context": "moment und Auflagerkraft am Zwischenauflager den 0,9-fachen Bemessungswert der Beanspruchbarkeit | bezüglich Interaktion unter Verwendung von M,ser und Ieff,ser nach 7.1(3) nicht überschreiten. | (2) Der Bemessungswert der Beanspruchbarkeit bezüglich Interaktion kann nach Gleichung (6.22) in 6.1.11 | ermittelt werden, wobei jedoch der wirksame Querschnitt für den Grenzzustand der Gebrauchstauglichkeit | und M,ser zu verwenden sind.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 57,
+      "equation_number": "8.1",
+      "line": "F (8.1)",
+      "context": "F | FF | F (8.1) | (8) Die Verformung des Gesamtquerschnittes kann vernachlässigt werden, wenn die Bemessungswerte | nach 8.2.3 und 8.3.3 ermittelt werden, vorausgesetzt, die Befestigung erfolgt durch einen Gurt, der nicht",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "8.2a",
+      "line": "Fb,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.2a)",
+      "context": "8.2.2 Bemessungswerte für scherbeanspruchte Nietverbindungen | 8.2.2.1 Beanspruchbarkeit bezüglich Lochleibung | Fb,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.2a) | Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.2b) | 8.2.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "8.2b",
+      "line": "Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.2b)",
+      "context": "8.2.2.1 Beanspruchbarkeit bezüglich Lochleibung | Fb,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.2a) | Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.2b) | 8.2.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes | Fnet,Rd Anet fu / M3 (8.3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "8.3",
+      "line": "Fnet,Rd Anet fu / M3 (8.3)",
+      "context": "Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.2b) | 8.2.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes | Fnet,Rd Anet fu / M3 (8.3) | 8.2.2.3 Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes | Fv,Rd 38 d2 / M3 [N] mit d in mm (8.4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "8.4",
+      "line": "Fv,Rd 38 d2 / M3 [N] mit d in mm (8.4)",
+      "context": "Fnet,Rd Anet fu / M3 (8.3) | 8.2.2.3 Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes | Fv,Rd 38 d2 / M3 [N] mit d in mm (8.4) | Bedingungen bezüglich Lochleibung und Abscheren: | Werte von fu,min 260 N/mm2 sollten nicht angesetzt werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "8.5",
+      "line": "p,Rd 2,35 E tf o / M3 [N] mit t in mm und fo in N/mm2; E nach Tabelle 8.3 (8.5)",
+      "context": "8.2.3.1 Beanspruchbarkeit bezüglich Durchknöpfen | F | p,Rd 2,35 E tf o / M3 [N] mit t in mm und fo in N/mm2; E nach Tabelle 8.3 (8.5) | Bedingungen: | t 1,5 mm; dw 9,5 mm;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "8.6",
+      "line": "bei Unterkonstruktion aus Stahl: Fo,Rd 0,47 tsup df y / M3 (8.6)",
+      "context": "57 | 8.2.3.2 Beanspruchbarkeit bezüglich Ausreißen | bei Unterkonstruktion aus Stahl: Fo,Rd 0,47 tsup df y / M3 (8.6) | bei Unterkonstruktion aus Aluminium: Fo,Rd 0,20 tsup df o / M3 (8.7) | Bedingungen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "8.7",
+      "line": "bei Unterkonstruktion aus Aluminium: Fo,Rd 0,20 tsup df o / M3 (8.7)",
+      "context": "8.2.3.2 Beanspruchbarkeit bezüglich Ausreißen | bei Unterkonstruktion aus Stahl: Fo,Rd 0,47 tsup df y / M3 (8.6) | bei Unterkonstruktion aus Aluminium: Fo,Rd 0,20 tsup df o / M3 (8.7) | Bedingungen: | tsup 6 mm, fy 350 N/mm 2 und Werte von fo 220 N/mm 2 sollten nicht angesetzt werden (jeweils zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "8.8",
+      "line": "Ft,Rd 47 d2 / M3 N , worin d in mm einzusetzen ist. (8.8)",
+      "context": "Ausführung der Bohrlöcher nach den Angaben des Nietherstellers. | 8.2.3.3 Beanspruchbarkeit bezüglich Zugbruch | Ft,Rd 47 d2 / M3 N , worin d in mm einzusetzen ist. (8.8) | 8.3 Gewindeformende Schrauben / Bohrschrauben | 8.3.1 Allgemeines",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "8.9a",
+      "line": "b,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.9a)",
+      "context": "Aluminium zu: | F | b,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.9a) | Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.9b) | Für Blechdicken 1,0 tsup / t 2,5 kann die Beanspruchbarkeit bezüglich Lochleibung Fb,Rd durch lineare",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "8.9b",
+      "line": "Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.9b)",
+      "context": "F | b,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.9a) | Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.9b) | Für Blechdicken 1,0 tsup / t 2,5 kann die Beanspruchbarkeit bezüglich Lochleibung Fb,Rd durch lineare | Interpolation ermittelt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "8.10",
+      "line": "Fb,Rd 1,5 t d fu,min / M3 [N] (8.10)",
+      "context": "(2) Bei Unterkonstruktionen aus Holz ergibt sich die Beanspruchbarkeit von Aluminium-Profiltafeln bezüglich | Lochleibung: | Fb,Rd 1,5 t d fu,min / M3 [N] (8.10) | (3) Bezüglich der Beanspruchbarkeit der Unterkonstruktion aus Holz hinsichtlich Lochleibung siehe | EN 1995-1-1, Abschnitt 8, Stahl-Holz-Verbindung.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "8.11",
+      "line": "Fnet,Rd Anet fu / M3 (8.11)",
+      "context": "Rand- und Lochabstände im Bauteil aus Holz siehe EN 1995-1-1, Abschnitt 8. | 8.3.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes | Fnet,Rd Anet fu / M3 (8.11) | 8.3.2.3 Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes | Die Beanspruchbarkeit bezüglich Abscheren von Schrauben aus Stahl oder nichtrostendem Stahl ergibt sich",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "8.12",
+      "line": "Fv,Rd 380 As / M3 [N], mit As in mm2 (8.12)",
+      "context": "Die Beanspruchbarkeit bezüglich Abscheren von Schrauben aus Stahl oder nichtrostendem Stahl ergibt sich | zu: | Fv,Rd 380 As / M3 [N], mit As in mm2 (8.12) | 8.3.3 Bemessungswerte für zugbeanspruchte Schraubverbindungen | 8.3.3.1 Beanspruchbarkeit bezüglich Durchknöpfen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "8.13",
+      "line": "Fp,Rd 6,1 L E M tf u /22wd / M3 [N] (8.13)",
+      "context": "(1) Die Beanspruchbarkeit bezüglich Durchknöpfen von zugbeanspruchten Schraubverbindungen ergibt sich | zu: | Fp,Rd 6,1 L E M tf u /22wd / M3 [N] (8.13) | mit: | t und dw in mm und fu in N/ mm2 und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "8.14",
+      "line": "sup / M3 (8.14)",
+      "context": "oder nichtrostendem Stahl aus Unterkonstruktionen aus Stahl oder Aluminium ergibt sich zu: | Fo,Rd 0,95 fu,sup dt 3 | sup / M3 (8.14) | Bedingungen: | gewindeformende Schrauben oder Bohrschrauben aus Stahl oder nichtrostendem Stahl;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "8.15",
+      "line": "Ft,Rd 560 As / M3 N mit As in mm2 (8.15)",
+      "context": "(1) Die Beanspruchbarkeit bezüglich Zugbruch von Schrauben aus Stahl oder nichtrostendem Stahl ergibt | sich aus: | Ft,Rd 560 As / M3 N mit As in mm2 (8.15) | 9 Versuchsgestützte Bemessung | (1) Dieser Abschnitt 9 kann zur Anwendung der in EN 1990 aufgeführten Regeln zur versuchsgestützten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "A = Aluminium, unabhängig von der Oberflächenbehandlung",
+      "context": "S     X  | ANMERKUNG Verbindungselemente aus Stahl ohne Überzug können in Korrosivitätskategorie C1 eingesetzt werden. | A = Aluminium, unabhängig von der Oberflächenbehandlung | B = unbeschichtetes Stahlblech | C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "B = unbeschichtetes Stahlblech",
+      "context": "ANMERKUNG Verbindungselemente aus Stahl ohne Überzug können in Korrosivitätskategorie C1 eingesetzt werden. | A = Aluminium, unabhängig von der Oberflächenbehandlung | B = unbeschichtetes Stahlblech | C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150) | D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150)",
+      "context": "A = Aluminium, unabhängig von der Oberflächenbehandlung | B = unbeschichtetes Stahlblech | C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150) | D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech | E = Aluzink-beschichtetes Stahlblech (AZ185)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech",
+      "context": "B = unbeschichtetes Stahlblech | C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150) | D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech | E = Aluzink-beschichtetes Stahlblech (AZ185) | S = nichtrostender Stahl",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "E = Aluzink-beschichtetes Stahlblech (AZ185)",
+      "context": "C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150) | D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech | E = Aluzink-beschichtetes Stahlblech (AZ185) | S = nichtrostender Stahl | X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "S = nichtrostender Stahl",
+      "context": "D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech | E = Aluzink-beschichtetes Stahlblech (AZ185) | S = nichtrostender Stahl | X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff | (X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff",
+      "context": "E = Aluzink-beschichtetes Stahlblech (AZ185) | S = nichtrostender Stahl | X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff | (X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff |  = bezüglich Korrosionsbeständigkeit nicht empfohlener Werkstoff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "(X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff",
+      "context": "S = nichtrostender Stahl | X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff | (X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff |  = bezüglich Korrosionsbeständigkeit nicht empfohlener Werkstoff | a nur für Niete",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": " = bezüglich Korrosionsbeständigkeit nicht empfohlener Werkstoff",
+      "context": "X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff | (X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff |  = bezüglich Korrosionsbeständigkeit nicht empfohlener Werkstoff | a nur für Niete | b nur für Schrauben und Muttern",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.1",
+      "pdf_page": 17,
+      "line": "Tabelle 3.1 aufgeführten Legierungen in den dort angegebenen Zuständen angewendet werden."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 18,
+      "line": "Tabelle 3.1  Charakteristische Werte für die 0,2%-Dehngrenze fo, Zugfestigkeit fu"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 22,
+      "line": "(1) Für die Berechnung können Querschnittsteile wie in Tabelle 5.1 aufgeführt modelliert werden."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 22,
+      "line": "Tabelle 5.1  Bemessungsmodelle für Querschnittsteile"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 24,
+      "line": "k ist der von der Spannungsverteilung abhängige Beulwert nach Tabelle 5.3. Die Parameter lim und"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 24,
+      "line": "können Tabelle 5.2 entnommen werden."
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 24,
+      "line": "Tabelle 5.2  Parameter lim und"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 24,
+      "line": "dürfen die in Tabelle 5.3 benutzten Spannungsverhältnisse am Gesamtquerschnitt ermittelt werden."
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 24,
+      "line": "(8) Für die Bestimmung der wirksamen Dicken bei Stegteilflächen darf das in Tabelle 5.3 angegebene"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 25,
+      "line": "Tabelle 5.3  Beulwerte k für druckbeanspruchte Querschnittsteile"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 26,
+      "line": "Zwischensteife) ist in Abhängigkeit der nach (5.7) zu ermittelnden bezogenen Schlankheit Tabelle 5.4 zu"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 26,
+      "line": "Tabelle 5.4  Abminderungsfaktoren d bezüglich Gesamtfeldbeulen"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 28,
+      "line": "siehe Tabelle 5.1."
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 33,
+      "line": "Tabelle 5.5 zu bestimmen ist. ec und et sind hierbei die Abstände von der wirksamen Schwereachse zu den"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 34,
+      "line": "Tabelle 5.5  Bezogene Schlankheit p und Spannungsverhältnisse für ausgesteifte Stege"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 38,
+      "line": "Für zweiseitig gelagerte ebene Querschnittsteile ist p und limel mit lim nach Tabelle 5.2."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 40,
+      "line": "fbv die Schubbeulspannung nach Tabelle 6.1;"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 41,
+      "line": "Tabelle 6.1  Schubbeulfestigkeit fbv in Abhängigkeit der Stegschlankheit w"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 51,
+      "line": "lc KL die Knicklänge, siehe Tabelle 5.7 in EN 1999-1-1."
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 57,
+      "line": "Verbindungselementes auf 0,7 Fp,Rd abzumindern, siehe Tabelle 8.3."
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 58,
+      "line": "p,Rd 2,35 E tf o / M3 [N] mit t in mm und fo in N/mm2; E nach Tabelle 8.3 (8.5)"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 60,
+      "line": "angeschlossenen Profilgurt (Tabelle 8.1);"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 61,
+      "line": "M Korrekturfaktor zur Berücksichtigung des Werkstoffes der Dichtscheibe (Tabelle 8.2);"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 61,
+      "line": "E Korrekturfaktor zur Berücksichtigung der Anordnung der Verbindungselemente (Tabelle 8.3)."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 61,
+      "line": "Tabelle 8.1  Korrekturfaktor L zur Berücksichtigung des Einflusses"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 61,
+      "line": "Tabelle 8.2  Korrekturfaktor M zur Berücksichtigung des Werkstoffes"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 61,
+      "line": "Tabelle 8.3  Korrekturfaktor E zur Berücksichtigung der Anordnung der Verbindungselemente"
+    }
+  ],
+  "figures": [
+    {
+      "label": "1.1",
+      "pdf_page": 15,
+      "line": "(3) Typische Querschnittsformen von kaltgeformten Profiltafeln zeigt Bild 1.1."
+    },
+    {
+      "label": "1.2",
+      "pdf_page": 15,
+      "line": "(1) Typische Formen von Längsaussteifungen kaltgeformter Profiltafeln zeigt Bild 1.2."
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 15,
+      "line": "Bild 1.1  Beispiele kaltgeformter Profiltafeln"
+    },
+    {
+      "label": "1.2",
+      "pdf_page": 15,
+      "line": "Bild 1.2  Typische Zwischenaussteifungen"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 15,
+      "line": "Außenkontur gemessen, siehe Bild 5.1."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 20,
+      "line": "Abstand zwischen den angrenzenden Eckenmitten gemessen, siehe Bild 5.1."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 21,
+      "line": "Bild 5.1  Nennbreiten ebener Teilflächen bp bei ausgerundeten Ecken"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 22,
+      "line": "Bild 5.2  Einwölbung von Gurten"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 23,
+      "line": "Für Profiltafeln, die vor Belastung gerade sind, siehe Bild 5.2:"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 23,
+      "line": "u die Einwölbung des Gurtes in Richtung der neutralen Achse, siehe Bild 5.2;"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 25,
+      "line": "in Bild 5.3 dargestellt, angebracht wird. Die Federsteifigkeit k je Längeneinheit ergibt sich dann wie folgt:"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 26,
+      "line": "Bild 5.3  Modell zur Ermittlung der Federsteifigkeit"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 27,
+      "line": "Bild 5.4 dargestellt."
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 27,
+      "line": "Bild 5.4  Anfänglicher wirksamer Querschnitt As für Zwischensteifen in (a) Gurt und (b) Steg"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 27,
+      "line": "(2) Das in Bild 5.5 dargestellte Verfahren beinhaltet die nachfolgend aufgeführten Berechnungsschritte:"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 28,
+      "line": "(3) Die Eingangswerte für die wirksamen Dicken teff,1 und teff,2 sollten, wie in Bild 5.4 dargestellt, unter der"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 28,
+      "line": "mit der Steifenbreite bs wie in Bild 5.4 dargestellt."
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 28,
+      "line": "a  a des wirksamen Querschnittes, siehe Bild 5.6(a)."
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 29,
+      "line": "Bild 5.5  Modell zur Ermittlung der Druckbeanspruchbarkeit eines Gurtes mit einer Zwischensteife"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 30,
+      "line": "von teff besteht, welche an den Stegen aufgelagert sind, siehe Bild 5.5f."
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 30,
+      "line": "bp die Gesamtbreite der ebenen Teilstücke, wie in Bild 5.6 dargestellt;"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 30,
+      "line": "bs die (abgewickelte) Breite der Steife, siehe Bild 5.6(c);"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 30,
+      "line": "As und Is wie 5.5.3.3 und Bild 5.6 definiert."
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 30,
+      "line": "Bild 5.6  Wirksamer Querschnitt zur Ermittlung von Is und As für Druckgurte mit zwei Steifen bzw."
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 31,
+      "line": "bp,1 die Nennbreite einer äußeren ebenen Teilfläche, wie in Bild 5.6 dargestellt;"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 31,
+      "line": "bp,2 die Nennbreite der inneren ebenen Teilfläche, wie in Bild 5.6 dargestellt;"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 31,
+      "line": "bs die (abgewickelte) Breite der Steife, gemessen über den Umfang der Steife, siehe Bild 5.6(c)."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 31,
+      "line": "sw die geneigte Länge des Steges ist, siehe Bild 5.7(a)."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 32,
+      "line": "Gesamtquerschnittes reichenden Teilfläche zusammensetzt, siehe Bild 5.7. Stege unter konstanter"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 32,
+      "line": "(2) Der wirksame Querschnitt eines Steges besteht, wie in Bild 5.7 dargestellt, aus:"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 33,
+      "line": "Bild 5.7  Wirksame Querschnitte in Stegen kaltgeformter Profiltafeln"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 33,
+      "line": "stststA , Bild 5.7(d1) (5.20a)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 33,
+      "line": "stststA , Bild 5.7(d2) (5.20b)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 33,
+      "line": "stststA b , Bild 5.7(d3) (5.21)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 33,
+      "line": "wobei die Abmessungen sa, ssa, sb, ssb und sn Bild 5.7 zu entnehmen und teff,a, teff,b und teff,n nach (5) zu"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "Systemlinien des druck- bzw. zugbeanspruchten Gurtes, siehe Bild 5.7. Die Abmessungen ha, hb, hsa, hsb und"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "sn sowie sind Bild 5.7 zu entnehmen."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "Bild 5.7(d1) und (d3), und einen der Schwerachse zugekehrten Teil 2 sn / 3 aufzuteilen."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "Keine Aussteifungen, Bild 5.7 (a)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "Eine Aussteifung, Bild 5.7 (b)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 34,
+      "line": "Zwei Aussteifungen, Bild 5.7 (c)"
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 35,
+      "line": "verläuft, siehe Bild 5.7(e). Bei der Ermittlung darf eine mögliche Veränderung der Neigung der"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 35,
+      "line": "Druckgurt zugewandte Aussteifung ergibt sich die reduzierte Fläche Asa,red (Schritt 2 in Bild 5.5) zu:"
+    },
+    {
+      "label": "5.8",
+      "pdf_page": 35,
+      "line": "(1) Bei Profiltafeln mit Zwischensteifen in Gurten und Stegen, siehe Bild 5.8, ist die Interaktion zwischen dem"
+    },
+    {
+      "label": "5.8",
+      "pdf_page": 36,
+      "line": "Bild 5.8  Wirksamer Querschnitt von Profiltafeln mit Gurt- und Stegaussteifungen"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 37,
+      "line": "der Schwerachsen (siehe Bild 6.1) nach dem in 6.1.9 angegebenen Verfahren zu berücksichtigen."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 38,
+      "line": "Bild 6.1  Verschiebung der Schwerachse bei Querschnitten unter Druckbeanspruchung"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 38,
+      "line": "Querschnittsteiles ist in Bild 6.2 dargestellt."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 39,
+      "line": "Bild 6.2  Biegewiderstand in Abhängigkeit der Schlankheit"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 39,
+      "line": "Bild 6.5) 60° nicht übersteigt"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 39,
+      "line": "Bild 6.3."
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 39,
+      "line": "Bild 6.3  Wirksamer Querschnitt bezüglich Biegebeanspruchung"
+    },
+    {
+      "label": "6.4",
+      "pdf_page": 40,
+      "line": "ermittelt werden. ec ergibt sich hierin aus der abgeknickten Spannungsverteilung (siehe Bild 6.4)."
+    },
+    {
+      "label": "6.4",
+      "pdf_page": 40,
+      "line": "Bild 6.4  Maß ec zur Ermittlung wirksamer Dicken"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 40,
+      "line": "hw die Steghöhe, gemessen zwischen den Mittellinien der Gurte, siehe Bild 6.5;"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 41,
+      "line": "bei Stegen mit Längsaussteifungen, siehe Bild 6.5:"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 41,
+      "line": "Is das Flächenmoment 2. Ordnung der Längssteife bezüglich der Achse a  a, wie in Bild 6.5"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 41,
+      "line": "sd die Abwicklung der Steglänge, wie in Bild 6.5 dargestellt;"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 41,
+      "line": "sp die größte schräge Länge einer ebenen Teilfläche im Steg, siehe Bild 6.5;"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 41,
+      "line": "sw die schräge Länge der zwischen den Eckpunkten gemessenen Steghöhe, siehe Bild 6.5."
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 42,
+      "line": "Bild 6.5  Geometrie eines längsausgesteiften Steges und wirksamer Querschnitt einer Aussteifung"
+    },
+    {
+      "label": "6.6",
+      "pdf_page": 42,
+      "line": "Bild 6.6, ist in der Regel nach (2) zu ermitteln, vorausgesetzt, dass alle nachfolgend aufgeführten"
+    },
+    {
+      "label": "6.7",
+      "pdf_page": 42,
+      "line": "Trägerende beträgt mindestens 40 mm, siehe Bild 6.7;"
+    },
+    {
+      "label": "6.6",
+      "pdf_page": 43,
+      "line": "Bild 6.6  Beispiel eines Querschnittes mit zwei oder mehr Stegen"
+    },
+    {
+      "label": "6.7",
+      "pdf_page": 43,
+      "line": "(3) Werte für den Beiwert sind in Bild 6.7 aufgeführt."
+    },
+    {
+      "label": "6.7",
+      "pdf_page": 43,
+      "line": "Auflagers oder der örtlichen Lasteinleitung zum freien Trägerende, siehe Bild 6.7."
+    },
+    {
+      "label": "6.7",
+      "pdf_page": 45,
+      "line": "Bild 6.7  Örtliche Lasteinleitungen und Lagerungskategorien für Querschnitte mit"
+    },
+    {
+      "label": "6.8",
+      "pdf_page": 46,
+      "line": "von Gurten und der Stegen gedachten Verbindungslinie liegen, siehe Bild 6.8, und folgende Bedingung erfüllt"
+    },
+    {
+      "label": "6.8",
+      "pdf_page": 46,
+      "line": "bd die abgewickelte Länge des belasteten Gurtes, siehe Bild 6.8;"
+    },
+    {
+      "label": "6.8",
+      "pdf_page": 46,
+      "line": "emin die kleinere Exzentrizität zwischen den Abkantungen und der Verbindungslinie, siehe Bild 6.8;"
+    },
+    {
+      "label": "6.8",
+      "pdf_page": 46,
+      "line": "sp die schräge Länge des am belasteten Gurt anliegenden ebenen Steganteiles, siehe Bild 6.8."
+    },
+    {
+      "label": "6.8",
+      "pdf_page": 46,
+      "line": "Bild 6.8  Auflagerkräfte und Geometrie ausgesteifter Stege"
+    },
+    {
+      "label": "6.9",
+      "pdf_page": 49,
+      "line": "hieraus ergebenden Zusatzmomente (siehe Bild 6.9) nach dem in 6.2.3 angegebenen Verfahren berück-"
+    },
+    {
+      "label": "6.9",
+      "pdf_page": 49,
+      "line": "Bild 6.9  Verschobene Schwerachse im wirksamen Querschnitt"
+    },
+    {
+      "label": "6.10",
+      "pdf_page": 50,
+      "line": "schnittes; siehe Bild 6.10(a);"
+    },
+    {
+      "label": "6.10",
+      "pdf_page": 50,
+      "line": "Biegung um die Achse y  y, siehe Bild 6.10(b);"
+    },
+    {
+      "label": "6.10",
+      "pdf_page": 51,
+      "line": "Bild 6.10  Modell zur Ermittlung wirksamer Querschnittswerte"
+    },
+    {
+      "label": "5.9",
+      "pdf_page": 51,
+      "line": "Wendepunkt der Knicklinie infolge zentrischen Drucks, siehe Bild 5.9 in EN1999-1-1;"
+    },
+    {
+      "label": "6.11",
+      "pdf_page": 52,
+      "line": "Bild 6.11  Scheibenwirkung bei einem ebenen Dach"
+    },
+    {
+      "label": "6.12",
+      "pdf_page": 53,
+      "line": "Bild 6.12  Scheibenwirkung bei einem Satteldach"
+    },
+    {
+      "label": "6.13",
+      "pdf_page": 53,
+      "line": "(1) Bei einem Schubfeld aus Aluminium-Profiltafeln, siehe Bild 6.13, werden beide Enden der Profiltafeln auf"
+    },
+    {
+      "label": "6.13",
+      "pdf_page": 54,
+      "line": "Bild 6.13  Aufbau eines einzelnen Schubfeldes"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 57,
+      "line": "Bild 8.1  Rand- und Lochabstände von Verbindungselementen"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 979,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1057,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2093,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7650,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3",
+        "1.2.4",
+        "1.2.5",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "2",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.3",
+        "4",
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5",
+        "5.5.1",
+        "5.5.2",
+        "5.5.3",
+        "5.5.4",
+        "6",
+        "6.1",
+        "6.1.1",
+        "6.1.2",
+        "6.1.3",
+        "6.1.4",
+        "6.1.5",
+        "6.1.6",
+        "6.1.7",
+        "6.1.8",
+        "6.1.9",
+        "6.1.10",
+        "6.1.11",
+        "6.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 5876,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.3",
+        "6.3.1",
+        "6.3.2",
+        "6.3.3",
+        "6.3.4",
+        "6.4",
+        "7",
+        "7.1",
+        "7.2",
+        "7.3",
+        "8",
+        "8.1",
+        "8.2",
+        "8.2.1",
+        "8.2.2",
+        "8.2.3",
+        "8.3",
+        "8.3.1",
+        "8.3.2",
+        "8.3.3",
+        "9"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1396,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3039,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3592,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1080,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 697,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2404,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2295,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1636,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2.4",
+        "1.2.5",
+        "1.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1670,
+      "text_layer": "usable",
+      "clauses": [
+        "1.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1514,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1970,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5.4",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2325,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1707,
+      "text_layer": "usable",
+      "clauses": [
+        "3003",
+        "3004",
+        "3103",
+        "3105",
+        "5005",
+        "5052"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1973,
+      "text_layer": "usable",
+      "clauses": [
+        "3.2.2",
+        "3.3",
+        "4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1939,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1002,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1470,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "5.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2058,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5",
+        "5.5.1",
+        "5.5.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1851,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1055,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.3",
+        "5.5.3.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1525,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.3.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1247,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1882,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1115,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1500,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.4",
+        "5.5.4.1",
+        "5.5.4.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1256,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1900,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.4.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1213,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1617,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2454,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.4.4"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1451,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1",
+        "6.1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 2035,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.2",
+        "6.1.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1156,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.4",
+        "6.1.4.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1582,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1909,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.4.2",
+        "6.1.4.3",
+        "6.1.5"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1113,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1561,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.6",
+        "6.1.7",
+        "6.1.7.1",
+        "6.1.7.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1556,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 44,
+      "characters": 498,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 45,
+      "characters": 848,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1366,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.7.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 47,
+      "characters": 1444,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.8",
+        "6.1.9"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1895,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.10",
+        "6.1.11"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 49,
+      "characters": 1329,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.2.2.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1368,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1950,
+      "text_layer": "usable",
+      "clauses": [
+        "6.3",
+        "6.3.1",
+        "6.3.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 52,
+      "characters": 2071,
+      "text_layer": "usable",
+      "clauses": [
+        "6.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2859,
+      "text_layer": "usable",
+      "clauses": [
+        "6.3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 1253,
+      "text_layer": "usable",
+      "clauses": [
+        "6.4"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 55,
+      "characters": 2199,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1880,
+      "text_layer": "usable",
+      "clauses": [
+        "7.3",
+        "8",
+        "8.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 2022,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1453,
+      "text_layer": "usable",
+      "clauses": [
+        "8.2",
+        "8.2.1",
+        "8.2.2",
+        "8.2.2.1",
+        "8.2.2.2",
+        "8.2.2.3",
+        "8.2.3",
+        "8.2.3.1"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2001,
+      "text_layer": "usable",
+      "clauses": [
+        "8.2.3.2",
+        "8.2.3.3",
+        "8.3",
+        "8.3.1",
+        "8.3.2",
+        "8.3.2.1"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1641,
+      "text_layer": "usable",
+      "clauses": [
+        "8.3.2.2",
+        "8.3.2.3",
+        "8.3.3",
+        "8.3.3.1"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1428,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 2341,
+      "text_layer": "usable",
+      "clauses": [
+        "8.3.3.2",
+        "8.3.3.3",
+        "9"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 63,
+      "characters": 1857,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 64,
+      "characters": 2082,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1602,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 505,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 371,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 68,
+      "characters": 1833,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 1989,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 70,
+      "characters": 2364,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 1357,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 2045,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 73,
+      "characters": 1457,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 74,
+      "characters": 1423,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

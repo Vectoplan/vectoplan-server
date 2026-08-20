@@ -290,6 +290,10 @@ export function clearHotbarControllerCaches(): void {
   }
 }
 
+export function isSilentHotbarReloadReason(reason?: string): boolean {
+  return reason?.startsWith("library-user-inventory-frame") ?? false;
+}
+
 function now(): string {
   try {
     return nowIsoString();
@@ -2086,9 +2090,17 @@ export function createHotbarController(
     async reload(reason?: string): Promise<InventoryCatalog | ChunkApiFailedResult> {
       reloadCount += 1;
 
+      // The user-inventory iframe has already applied and persisted the slot
+      // update before it emits this synchronization event. Refresh the editor
+      // catalog in the background; changing the whole inventory state to
+      // "loading" would unnecessarily cover the 3D viewport for a single
+      // hotbar-slot change.
+      const silent = isSilentHotbarReloadReason(reason);
+
       return load({
         force: true,
         reason: reason ?? "hotbar-reload",
+        silent,
       });
     },
 

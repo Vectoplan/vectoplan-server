@@ -1,0 +1,266 @@
+{
+  "schema_version": "structural-pipeline-catalog/0.1",
+  "title": "VECTOPLAN Statik-Pipeline-Katalog",
+  "purpose": "Dauerhafte Ablaufmuster, die Rechenwege fuer Bauteile, Teilsysteme, Gesamttragwerke und besondere Bemessungssituationen zusammenstellen.",
+  "policy": {
+    "single_source": "Pipelines enthalten keine Formeln. Sie referenzieren ausschliesslich stabile Rechenweg-IDs; Rechenwege referenzieren stabile Formel-IDs.",
+    "selection": "Eine Pipeline wird aus expliziten Projektfakten gewaehlt. Bedingte Rechenwege werden nur aktiviert, wenn ihre eigenen Auswahlregeln erfuellt sind.",
+    "blocking": "Ein unvollstaendiger Rechenweg bleibt sichtbar, ist aber ein fachliches Freigabehindernis und wird nicht stillschweigend ausgefuehrt.",
+    "variables": "Der Eingabevertrag einer Pipeline wird aus den Variablen der referenzierten Formeln abgeleitet. Werte muessen aus Modell, Bibliothek, Projektprofil oder einem vorherigen Rechenschritt stammen.",
+    "approval": "Ein vollstaendig durchlaufener Ablauf ersetzt weder die unabhaengige Pruefung noch den Abgleich mit Landesrecht, Nationalem Anhang und lizenzierter Normfassung."
+  },
+  "categories": [
+    {"category_id": "01_component", "order": 1, "label": "Bauteil"},
+    {"category_id": "02_subsystem", "order": 2, "label": "Teilsystem"},
+    {"category_id": "03_structure", "order": 3, "label": "Gesamttragwerk"},
+    {"category_id": "04_scenario", "order": 4, "label": "Sonderbetrachtung"},
+    {"category_id": "05_governance", "order": 5, "label": "Pruefung & Freigabe"}
+  ],
+  "pipelines": [
+    {
+      "pipeline_id": "PIPE-COMP-BEAM-001",
+      "category_id": "01_component",
+      "level": "component",
+      "title": "Balken, Unterzug und Riegel",
+      "status": "implemented_bounded",
+      "description": "Vom Modell- und Lastcheck über Schnittgrößen bis zu materialabhängiger Bemessung, Stabilität und Gebrauchstauglichkeit.",
+      "selection": {"all": [{"fact": "calculation_scope", "operator": "equals", "value": "component"}], "any": [{"fact": "element_kind", "operator": "contains_any", "value": ["beam", "girder", "lintel"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "bridge", "generic"], "materials": ["reinforced_concrete", "prestressed_concrete", "steel", "timber", "aluminium"], "components": ["beam", "girder", "lintel"]},
+      "phases": [
+        {"phase_id": "model", "order": 1, "title": "Modell und Lastpfad", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": ["RW-ACTION-DEAD-001", "RW-ACTION-IMPOSED-001", "RW-ACTION-TRAFFIC-001", "RW-ACTION-CRANE-001"], "gate": "Geometrie, Lagerung und Einwirkungsherkunft bestaetigt"},
+        {"phase_id": "safety", "order": 2, "title": "Kombination", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-ACCIDENTAL-001"], "gate": "Bemessungssituationen und Nationaler Anhang bestaetigt"},
+        {"phase_id": "analysis", "order": 3, "title": "Schnittgroessen", "required_path_refs": ["RW-BEAM-001", "RW-SECTION-001"], "conditional_path_refs": ["RW-FRAME-001", "RW-NONLINEAR-001"], "gate": "Analysemodell innerhalb der dokumentierten Grenzen"},
+        {"phase_id": "design", "order": 4, "title": "Bemessung", "required_path_refs": [], "conditional_path_refs": ["RW-RC-001", "RW-STEEL-001", "RW-TIMBER-001", "RW-PRESTRESS-001", "RW-ALUMINIUM-001", "RW-STABILITY-001", "RW-STEEL-BUCKLING-001", "RW-STEEL-LTB-001", "RW-RC-CRACK-001", "RW-RC-DEFLECTION-001", "RW-VIBRATION-001", "RW-FATIGUE-001", "RW-FIRE-001"], "gate": "Werkstoff-, Querschnitts- und Nachweisparameter vollstaendig"}
+      ],
+      "outputs": ["Schnittgroessenhuelle", "Verformungen", "Ausnutzungen", "massgebender Nachweis", "pruefbares Rechenprotokoll"],
+      "review_gates": ["Modellpruefung", "Lastannahmen", "Materialprofil", "Grenzzustaende", "unabhaengige Fachpruefung"]
+    },
+    {
+      "pipeline_id": "PIPE-COMP-SLAB-001",
+      "category_id": "01_component",
+      "level": "component",
+      "title": "Decke, Bodenplatte und Brückenplatte",
+      "status": "implemented_bounded",
+      "description": "Flächentragwerk mit Lasten, Plattenanalyse, Durchstanzen, Rissbreite, Verformung und Dauerhaftigkeit.",
+      "selection": {"all": [{"fact": "calculation_scope", "operator": "equals", "value": "component"}], "any": [{"fact": "element_kind", "operator": "contains_any", "value": ["slab", "foundation_slab", "bridge_deck"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "bridge", "generic"], "materials": ["reinforced_concrete", "prestressed_concrete", "steel", "timber"], "components": ["slab", "foundation_slab", "bridge_deck"]},
+      "phases": [
+        {"phase_id": "model", "order": 1, "title": "Flaechenmodell", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": ["RW-ACTION-DEAD-001", "RW-ACTION-IMPOSED-001", "RW-ACTION-TRAFFIC-001", "RW-SNOW-001"], "gate": "Kontur, Oeffnungen, Lager und Lastflaechen geprueft"},
+        {"phase_id": "analysis", "order": 2, "title": "Flaechenanalyse", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-PLATE-NAVIER-001", "RW-PLATE-GRILLAGE-001", "RW-SHELL-001", "RW-NONLINEAR-001", "RW-CONTACT-001"], "gate": "Solver nennt abgedeckte und nicht abgedeckte Effekte"},
+        {"phase_id": "design", "order": 3, "title": "Bemessung und Gebrauch", "required_path_refs": [], "conditional_path_refs": ["RW-RC-001", "RW-RC-PUNCH-001", "RW-RC-CRACK-001", "RW-RC-DEFLECTION-001", "RW-DURABILITY-001", "RW-PRESTRESS-001", "RW-FATIGUE-001", "RW-VIBRATION-001"], "gate": "Bemessung an beiden Flaechenseiten und kritischen Stellen ausgewertet"}
+      ],
+      "outputs": ["Momenten- und Querkraftfelder", "Verformungsfeld", "Bewehrungsbedarf", "Durchstanzstellen", "Riss- und Gebrauchsnachweise"],
+      "review_gates": ["Netzkonvergenz", "Singularitaeten", "Lageridealisation", "Materialnichtlinearitaet", "Fachpruefung"]
+    },
+    {
+      "pipeline_id": "PIPE-COMP-VERTICAL-001",
+      "category_id": "01_component",
+      "level": "component",
+      "title": "Stützen, Wände und Kerne",
+      "status": "incomplete",
+      "description": "Vertikale Bauteile unter Normalkraft, Moment, Querkraft, Theorie II. Ordnung und materialabhängiger Tragfähigkeit.",
+      "selection": {"all": [{"fact": "calculation_scope", "operator": "equals", "value": "component"}], "any": [{"fact": "element_kind", "operator": "contains_any", "value": ["column", "wall", "core"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "bridge", "tower", "generic"], "materials": ["reinforced_concrete", "steel", "timber", "masonry"], "components": ["column", "wall", "core"]},
+      "phases": [
+        {"phase_id": "actions", "order": 1, "title": "Lastpfad", "required_path_refs": ["RW-BASIS-001", "RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-DEAD-001", "RW-WIND-001", "RW-ACTION-SEISMIC-001"], "gate": "Normalkraft-, Momenten- und Horizontallastpfad geschlossen"},
+        {"phase_id": "analysis", "order": 2, "title": "Systemanalyse", "required_path_refs": ["RW-STABILITY-001"], "conditional_path_refs": ["RW-FRAME-001", "RW-WALL-001", "RW-NONLINEAR-001"], "gate": "Imperfektionen und Zweitordnungsbedarf entschieden"},
+        {"phase_id": "design", "order": 3, "title": "Bauteilnachweise", "required_path_refs": [], "conditional_path_refs": ["RW-RC-COLUMN-001", "RW-RC-WALL-001", "RW-STEEL-BUCKLING-001", "RW-TIMBER-STABILITY-001", "RW-MASONRY-001", "RW-MASONRY-SHEAR-001", "RW-FIRE-001"], "gate": "Interaktion und konstruktive Regeln nachgewiesen"}
+      ],
+      "outputs": ["Stabilitaetsentscheidung", "Interaktionsnachweis", "Aussteifungsanteil", "Materialnachweis"],
+      "review_gates": ["effektive Laenge", "Imperfektion", "Steifigkeitsannahme", "Anschluss an Decken und Fundamente"]
+    },
+    {
+      "pipeline_id": "PIPE-COMP-FOUNDATION-001",
+      "category_id": "01_component",
+      "level": "component",
+      "title": "Fundament, Pfahl und Stützwand",
+      "status": "implemented_bounded",
+      "description": "Geotechnische und konstruktive Nachweiskette für Flachgründung, Pfahlgründung und erdberührte Bauteile.",
+      "selection": {"all": [{"fact": "calculation_scope", "operator": "equals", "value": "component"}], "any": [{"fact": "element_kind", "operator": "contains_any", "value": ["foundation", "pile", "retaining_wall"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "bridge", "retaining_structure", "generic"], "materials": ["reinforced_concrete", "soil"], "components": ["foundation", "pile", "retaining_wall"]},
+      "phases": [
+        {"phase_id": "ground", "order": 1, "title": "Baugrundmodell", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": ["RW-EARTH-001", "RW-SOIL-INTERACTION-001"], "gate": "Baugrundkennwerte und Bemessungssituation geotechnisch bestaetigt"},
+        {"phase_id": "resistance", "order": 2, "title": "Grenzzustaende", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-FOUNDATION-001", "RW-PILE-001", "RW-SLIDING-001", "RW-UPLIFT-001", "RW-SLOPE-001", "RW-SETTLEMENT-001"], "gate": "GEO, STR, UPL und HYD soweit relevant behandelt"},
+        {"phase_id": "structural", "order": 3, "title": "Konstruktive Bemessung", "required_path_refs": [], "conditional_path_refs": ["RW-RC-001", "RW-RC-PUNCH-001", "RW-RC-CRACK-001", "RW-DURABILITY-001"], "gate": "Bodenreaktionen in den Bauteilnachweis uebergeben"}
+      ],
+      "outputs": ["Bodenpressung", "Grundbruchsicherheit", "Gleit- und Auftriebssicherheit", "Setzung", "Bauteilbemessung"],
+      "review_gates": ["Baugrundgutachten", "Grundwasser", "Nachbarbebauung", "Bauzustand", "geotechnische Fachpruefung"]
+    },
+    {
+      "pipeline_id": "PIPE-SUB-FLOOR-001",
+      "category_id": "02_subsystem",
+      "level": "subsystem",
+      "title": "Geschoss und Lastabtrag",
+      "status": "implemented_bounded",
+      "description": "Zusammenhängende Betrachtung von Decken, Unterzügen, Wänden und Stützen eines Geschosses bis zur Übergabe an das darunterliegende System.",
+      "selection": {"all": [{"fact": "calculation_scope", "operator": "equals", "value": "subsystem"}], "any": [{"fact": "subsystem_kind", "operator": "contains_any", "value": ["floor", "storey", "load_transfer"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "generic"], "materials": ["reinforced_concrete", "steel", "timber", "masonry"], "components": ["slab", "beam", "wall", "column"]},
+      "phases": [
+        {"phase_id": "derive", "order": 1, "title": "Modell ableiten", "required_path_refs": ["RW-BASIS-001", "RW-ACTION-DEAD-001"], "conditional_path_refs": ["RW-ACTION-IMPOSED-001"], "gate": "Bauteilzuordnung und Lasteinzugsflaechen plausibel"},
+        {"phase_id": "analyse", "order": 2, "title": "Geschoss analysieren", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-PLATE-NAVIER-001", "RW-PLATE-GRILLAGE-001", "RW-BEAM-001", "RW-WALL-001", "RW-FRAME-001"], "gate": "Gleichgewicht der Geschossreaktionen"},
+        {"phase_id": "transfer", "order": 3, "title": "Reaktionen uebergeben", "required_path_refs": ["RW-SECTION-001"], "conditional_path_refs": ["RW-RC-001", "RW-RC-WALL-001", "RW-RC-COLUMN-001", "RW-STEEL-001", "RW-TIMBER-001", "RW-MASONRY-001"], "gate": "Reaktionen versioniert und dem Folgesystem zugeordnet"}
+      ],
+      "outputs": ["Geschosslasten", "Auflagerreaktionen", "Lastpfadgraph", "Bauteilausnutzungen"],
+      "review_gates": ["Lastabtragsgleichgewicht", "Verspruenge und Abfangungen", "Oeffnungen", "Steifigkeitsverteilung"]
+    },
+    {
+      "pipeline_id": "PIPE-SUB-ROOF-HALL-001",
+      "category_id": "02_subsystem",
+      "level": "subsystem",
+      "title": "Hallendach und Kranbahn",
+      "status": "incomplete",
+      "description": "Dachhaut, Pfetten, Binder, Verbandsystem, Stützen und optionale Kranbahn unter Schnee, Wind, Temperatur und Maschinenlasten.",
+      "selection": {"all": [{"fact": "structure_type", "operator": "equals", "value": "industrial_hall"}]},
+      "applicability": {"structure_types": ["industrial_hall"], "materials": ["steel", "timber", "reinforced_concrete", "aluminium"], "components": ["roof", "purlin", "truss", "frame", "bracing", "crane_runway"]},
+      "phases": [
+        {"phase_id": "actions", "order": 1, "title": "Dach- und Betriebslasten", "required_path_refs": ["RW-BASIS-001", "RW-ACTION-DEAD-001", "RW-COMB-001"], "conditional_path_refs": ["RW-SNOW-001", "RW-WIND-001", "RW-TEMP-001", "RW-ACTION-CRANE-001", "RW-ACTION-ICE-001"], "gate": "Lastbilder und lokale Anhaeufungen bestaetigt"},
+        {"phase_id": "system", "order": 2, "title": "Raumtragwerk", "required_path_refs": [], "conditional_path_refs": ["RW-TRUSS-001", "RW-FRAME-001", "RW-SHELL-001", "RW-MODAL-001", "RW-STABILITY-001"], "gate": "Aussteifung in beiden Hauptrichtungen geschlossen"},
+        {"phase_id": "design", "order": 3, "title": "Bauteile und Anschluesse", "required_path_refs": [], "conditional_path_refs": ["RW-STEEL-001", "RW-STEEL-BUCKLING-001", "RW-STEEL-LTB-001", "RW-STEEL-CONNECTION-001", "RW-TIMBER-001", "RW-TIMBER-CONNECTION-001", "RW-TIMBER-STABILITY-001", "RW-ALUMINIUM-001", "RW-FOUNDATION-001"], "gate": "Anschluesse und Lager entsprechen der Systemidealisation"}
+      ],
+      "outputs": ["Dachlasten", "Stabkraefte", "Stabilitaetsnachweise", "Anschlusskraefte", "Fundamentreaktionen"],
+      "review_gates": ["Dachverband", "Kranbahnermuedung", "Montagezustand", "Schneeverwehung", "Brandabschnitte"]
+    },
+    {
+      "pipeline_id": "PIPE-STRUCT-BUILDING-001",
+      "category_id": "03_structure",
+      "level": "structure",
+      "title": "Wohn- und Bürogebäude gesamt",
+      "status": "incomplete",
+      "description": "Gesamtprozess vom BIM-Tragmodell ueber vertikalen und horizontalen Lastabtrag bis Gruendung, Gebrauch, Robustheit und Bericht.",
+      "selection": {"any": [{"fact": "structure_type", "operator": "contains_any", "value": ["residential_building", "office_building"]}]},
+      "applicability": {"structure_types": ["residential_building", "office_building"], "materials": ["reinforced_concrete", "steel", "timber", "masonry"], "components": ["complete_building"]},
+      "phases": [
+        {"phase_id": "model", "order": 1, "title": "Tragmodell und Quellen", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": ["RW-SYSTEMS-001"], "gate": "Modellrevision, Einheiten, Geschosse und Bauteilrollen bestaetigt"},
+        {"phase_id": "actions", "order": 2, "title": "Einwirkungen und Kombination", "required_path_refs": ["RW-ACTION-DEAD-001", "RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-IMPOSED-001", "RW-SNOW-001", "RW-WIND-001", "RW-TEMP-001", "RW-ACTION-TIME-001", "RW-ACTION-ACCIDENTAL-001"], "gate": "Standort, Nutzung, Normprofil und Lastfaelle freigegeben"},
+        {"phase_id": "global", "order": 3, "title": "Globales Tragverhalten", "required_path_refs": [], "conditional_path_refs": ["RW-FRAME-001", "RW-WALL-001", "RW-PLATE-GRILLAGE-001", "RW-STABILITY-001", "RW-ACTION-SEISMIC-001", "RW-SPECTRUM-001", "RW-NONLINEAR-001"], "gate": "Lastpfade und Aussteifung geprueft"},
+        {"phase_id": "components", "order": 4, "title": "Bauteilbemessung", "required_path_refs": [], "conditional_path_refs": ["RW-BEAM-001", "RW-SECTION-001", "RW-RC-001", "RW-RC-COLUMN-001", "RW-RC-WALL-001", "RW-RC-PUNCH-001", "RW-RC-CRACK-001", "RW-RC-DEFLECTION-001", "RW-STEEL-001", "RW-TIMBER-001", "RW-MASONRY-001", "RW-DURABILITY-001"], "gate": "Alle tragenden Bauteile einer Nachweiskette zugeordnet"},
+        {"phase_id": "ground", "order": 5, "title": "Gruendung", "required_path_refs": [], "conditional_path_refs": ["RW-FOUNDATION-001", "RW-PILE-001", "RW-SETTLEMENT-001", "RW-SLIDING-001", "RW-UPLIFT-001", "RW-SOIL-INTERACTION-001"], "gate": "Reaktionen und Baugrundmodell konsistent"},
+        {"phase_id": "special", "order": 6, "title": "Sondernachweise", "required_path_refs": [], "conditional_path_refs": ["RW-FIRE-001", "RW-FIRE-ADVANCED-001", "RW-ROBUSTNESS-001", "RW-VIBRATION-001", "RW-STAGE-001"], "gate": "Erforderliche Sonderfaelle explizit entschieden"}
+      ],
+      "outputs": ["Gesamtmodellstatus", "Lastabtragsplan", "Bemessung je Position", "Gruendungsreaktionen", "Statikbericht und Austauschpaket"],
+      "review_gates": ["BIM-Fachmodell", "Tragwerkskonzept", "Einwirkungen", "Aussteifung", "Bauteile", "Gruendung", "Pruefingenieur"]
+    },
+    {
+      "pipeline_id": "PIPE-STRUCT-HALL-001",
+      "category_id": "03_structure",
+      "level": "structure",
+      "title": "Industrie- und Hallentragwerk gesamt",
+      "status": "incomplete",
+      "description": "Gesamtbetrachtung von Dach, Rahmen, Verbaenden, Kranbahn, Anschluessen und Gruendung einschliesslich Bau- und Brandzustaenden.",
+      "selection": {"all": [{"fact": "structure_type", "operator": "equals", "value": "industrial_hall"}]},
+      "applicability": {"structure_types": ["industrial_hall"], "materials": ["steel", "timber", "reinforced_concrete", "aluminium"], "components": ["complete_hall"]},
+      "phases": [
+        {"phase_id": "actions", "order": 1, "title": "Einwirkungen", "required_path_refs": ["RW-BASIS-001", "RW-ACTION-DEAD-001", "RW-COMB-001"], "conditional_path_refs": ["RW-SNOW-001", "RW-WIND-001", "RW-TEMP-001", "RW-ACTION-CRANE-001", "RW-ACTION-ICE-001", "RW-ACTION-ACCIDENTAL-001"], "gate": "Standort- und Betriebsparameter freigegeben"},
+        {"phase_id": "system", "order": 2, "title": "Globalanalyse", "required_path_refs": [], "conditional_path_refs": ["RW-FRAME-001", "RW-TRUSS-001", "RW-STABILITY-001", "RW-MODAL-001", "RW-NONLINEAR-001"], "gate": "Raumstabilitaet und Imperfektionen abgedeckt"},
+        {"phase_id": "design", "order": 3, "title": "Bemessung", "required_path_refs": [], "conditional_path_refs": ["RW-STEEL-001", "RW-STEEL-BUCKLING-001", "RW-STEEL-LTB-001", "RW-STEEL-CONNECTION-001", "RW-TIMBER-001", "RW-TIMBER-CONNECTION-001", "RW-TIMBER-STABILITY-001", "RW-ALUMINIUM-001", "RW-FATIGUE-001", "RW-VIBRATION-001"], "gate": "Staebe, Anschluesse und Ermuedungsdetails abgeschlossen"},
+        {"phase_id": "ground", "order": 4, "title": "Gruendung und Zustaende", "required_path_refs": [], "conditional_path_refs": ["RW-FOUNDATION-001", "RW-PILE-001", "RW-SETTLEMENT-001", "RW-STAGE-001", "RW-FIRE-001", "RW-ROBUSTNESS-001"], "gate": "Montage, Brand und Gruendung bewertet"}
+      ],
+      "outputs": ["Globalstatik", "Kranbahn- und Verbandskraefte", "Bauteil- und Anschlussnachweise", "Gruendung", "Montagekonzept"],
+      "review_gates": ["Betriebsanforderungen", "Raumstabilitaet", "Ermuedung", "Montage", "Brandschutz"]
+    },
+    {
+      "pipeline_id": "PIPE-STRUCT-BRIDGE-001",
+      "category_id": "03_structure",
+      "level": "structure",
+      "title": "Straßen-, Bahn- und Fußgängerbrücke",
+      "status": "incomplete",
+      "description": "Lebenszyklusorientierte Brueckenpipeline fuer Ueberbau, Unterbau, Lager, Gruendung, Dynamik, Ermuedung und Bauzustaende.",
+      "selection": {"all": [{"fact": "structure_type", "operator": "equals", "value": "bridge"}]},
+      "applicability": {"structure_types": ["bridge"], "materials": ["reinforced_concrete", "prestressed_concrete", "steel", "timber", "masonry"], "components": ["deck", "girder", "pier", "abutment", "bearing", "foundation"]},
+      "phases": [
+        {"phase_id": "basis", "order": 1, "title": "System und Einwirkungen", "required_path_refs": ["RW-BASIS-001", "RW-ACTION-DEAD-001", "RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-TRAFFIC-001", "RW-BRIDGE-LM1-001", "RW-WIND-001", "RW-TEMP-001", "RW-ACTION-SEISMIC-001", "RW-ACTION-ACCIDENTAL-001"], "gate": "Brueckenklasse, Verkehr, Standort und Zustaende bestaetigt"},
+        {"phase_id": "global", "order": 2, "title": "Ueberbauanalyse", "required_path_refs": [], "conditional_path_refs": ["RW-BEAM-001", "RW-FRAME-001", "RW-PLATE-GRILLAGE-001", "RW-SHELL-001", "RW-CABLE-001", "RW-ARCH-001", "RW-NONLINEAR-001", "RW-CONTACT-001"], "gate": "Modellwahl und lokale Effekte dokumentiert"},
+        {"phase_id": "design", "order": 3, "title": "Querschnitte und Details", "required_path_refs": ["RW-SECTION-001"], "conditional_path_refs": ["RW-RC-001", "RW-PRESTRESS-001", "RW-STEEL-001", "RW-STEEL-BUCKLING-001", "RW-STEEL-LTB-001", "RW-STEEL-CONNECTION-001", "RW-COMPOSITE-001", "RW-RC-CRACK-001", "RW-DURABILITY-001", "RW-BRIDGE-BEARING-001", "RW-BRIDGE-JOINT-001"], "gate": "Querschnitte, Lager und Uebergaenge bemessen"},
+        {"phase_id": "lifecycle", "order": 4, "title": "Dynamik, Ermuedung und Baufolge", "required_path_refs": [], "conditional_path_refs": ["RW-MODAL-001", "RW-BRIDGE-DYNAMIC-001", "RW-BRIDGE-FATIGUE-001", "RW-FATIGUE-001", "RW-STAGE-001", "RW-FIRE-ADVANCED-001", "RW-ROBUSTNESS-001"], "gate": "Nutzung, Baufolge und Lebensdauer behandelt"},
+        {"phase_id": "substructure", "order": 5, "title": "Unterbau und Gruendung", "required_path_refs": [], "conditional_path_refs": ["RW-RC-COLUMN-001", "RW-RC-WALL-001", "RW-EARTH-001", "RW-FOUNDATION-001", "RW-PILE-001", "RW-SOIL-INTERACTION-001", "RW-SETTLEMENT-001", "RW-SLIDING-001", "RW-UPLIFT-001", "RW-SLOPE-001"], "gate": "Ueberbaukraefte konsistent an Unterbau und Baugrund uebergeben"}
+      ],
+      "outputs": ["Brueckengesamtmodell", "Lastmodelle", "Ueberbau- und Unterbaunachweise", "Lager- und Fugenkonzept", "Lebensdauer- und Bauzustandsbericht"],
+      "review_gates": ["Verkehrsmodell", "Dynamik", "Ermuedung", "Lager und Fugen", "Bauphasen", "geotechnische Pruefung"]
+    },
+    {
+      "pipeline_id": "PIPE-STRUCT-SPECIAL-001",
+      "category_id": "03_structure",
+      "level": "structure",
+      "title": "Turm, Schale, Seil und Sondertragwerk",
+      "status": "incomplete",
+      "description": "Offene Systempipeline fuer Tragwerke, deren Verhalten eine raeumliche, dynamische oder nichtlineare Modellierung verlangt.",
+      "selection": {"any": [{"fact": "structure_type", "operator": "contains_any", "value": ["tower", "generic"]}, {"fact": "analysis_kind", "operator": "contains_any", "value": ["shell", "solid", "cable", "arch"]}]},
+      "applicability": {"structure_types": ["tower", "generic"], "materials": ["reinforced_concrete", "prestressed_concrete", "steel", "timber", "aluminium", "masonry"], "components": ["shell", "solid", "cable", "arch", "tower"]},
+      "phases": [
+        {"phase_id": "actions", "order": 1, "title": "Einwirkungen", "required_path_refs": ["RW-BASIS-001", "RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-DEAD-001", "RW-WIND-001", "RW-SNOW-001", "RW-TEMP-001", "RW-ACTION-SEISMIC-001", "RW-ACTION-ICE-001"], "gate": "Systemabhaengige Einwirkungen identifiziert"},
+        {"phase_id": "analysis", "order": 2, "title": "Erweiterte Analyse", "required_path_refs": [], "conditional_path_refs": ["RW-CABLE-001", "RW-ARCH-001", "RW-SHELL-001", "RW-SOLID-001", "RW-MODAL-001", "RW-SPECTRUM-001", "RW-NONLINEAR-001", "RW-CONTACT-001", "RW-STABILITY-001"], "gate": "Solver, Konvergenz, Imperfektionen und Randbedingungen validiert"},
+        {"phase_id": "verification", "order": 3, "title": "Nachweise", "required_path_refs": [], "conditional_path_refs": ["RW-RC-001", "RW-STEEL-001", "RW-TIMBER-001", "RW-MASONRY-001", "RW-ALUMINIUM-001", "RW-FIRE-ADVANCED-001", "RW-FATIGUE-001", "RW-VIBRATION-001", "RW-ROBUSTNESS-001"], "gate": "Lokale und globale Versagensformen abgedeckt"}
+      ],
+      "outputs": ["validiertes Rechenmodell", "Eigenformen", "nichtlineare Lastpfade", "lokale und globale Nachweise"],
+      "review_gates": ["Modellvalidierung", "Konvergenz", "Sensitivitaet", "Versuch oder Vergleichsrechnung", "Fachpruefung"]
+    },
+    {
+      "pipeline_id": "PIPE-SCENARIO-SEISMIC-001",
+      "category_id": "04_scenario",
+      "level": "scenario",
+      "title": "Erdbeben und dynamische Einwirkung",
+      "status": "incomplete",
+      "description": "Projektweite Erdbebenentscheidung von Standortparametern ueber Massen und Eigenformen bis Spektrum, Kombination und Detailanforderungen.",
+      "selection": {"any": [{"fact": "load_case_action_types", "operator": "contains", "value": "seismic"}, {"fact": "requested_capabilities", "operator": "contains", "value": "seismic"}]},
+      "applicability": {"structure_types": ["residential_building", "office_building", "industrial_hall", "bridge", "tower", "generic"], "materials": ["all"], "components": ["complete_structure"]},
+      "phases": [
+        {"phase_id": "hazard", "order": 1, "title": "Gefaehrdung und Massen", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": ["RW-ACTION-DEAD-001", "RW-ACTION-SEISMIC-001"], "gate": "Standort, Baugrund, Bedeutung und Massen bestaetigt"},
+        {"phase_id": "response", "order": 2, "title": "Dynamische Antwort", "required_path_refs": [], "conditional_path_refs": ["RW-MODAL-001", "RW-SPECTRUM-001", "RW-DYNAMIC-001", "RW-NONLINEAR-001"], "gate": "Massenbeteiligung, Modenkombination und Torsion geprueft"},
+        {"phase_id": "design", "order": 3, "title": "Kombination und Detail", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-RC-WALL-001", "RW-STEEL-CONNECTION-001", "RW-ROBUSTNESS-001", "RW-SOIL-INTERACTION-001"], "gate": "Duktilitaets- und Detailregeln materialabhaengig behandelt"}
+      ],
+      "outputs": ["Eigenformen", "Spektralantwort", "seismische Schnittgroessen", "Detail- und Robustheitsanforderungen"],
+      "review_gates": ["Erdbebengefaehrdung", "Baugrund", "Regelmaessigkeit", "Duktilitaet", "Modellvalidierung"]
+    },
+    {
+      "pipeline_id": "PIPE-SCENARIO-FIRE-001",
+      "category_id": "04_scenario",
+      "level": "scenario",
+      "title": "Brandbemessung",
+      "status": "implemented_bounded",
+      "description": "Von der aussergewoehnlichen Bemessungssituation zur vereinfachten oder thermisch-mechanischen Bauteil- und Systemantwort.",
+      "selection": {"any": [{"fact": "design_types", "operator": "contains", "value": "fire_resistance"}, {"fact": "requested_capabilities", "operator": "contains", "value": "fire"}]},
+      "applicability": {"structure_types": ["all"], "materials": ["reinforced_concrete", "steel", "timber", "masonry", "aluminium"], "components": ["component", "subsystem", "complete_structure"]},
+      "phases": [
+        {"phase_id": "scenario", "order": 1, "title": "Brandszenario", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": ["RW-ACTION-ACCIDENTAL-001"], "gate": "Brandabschnitt, Dauer und Schutzziel bestaetigt"},
+        {"phase_id": "resistance", "order": 2, "title": "Widerstand", "required_path_refs": [], "conditional_path_refs": ["RW-FIRE-001", "RW-FIRE-ADVANCED-001"], "gate": "Temperaturprofil und Materialreduktion nachvollziehbar"},
+        {"phase_id": "system", "order": 3, "title": "System und Robustheit", "required_path_refs": [], "conditional_path_refs": ["RW-NONLINEAR-001", "RW-ROBUSTNESS-001"], "gate": "Ausfall, Zwang und Umlagerung soweit erforderlich betrachtet"}
+      ],
+      "outputs": ["Brandkombination", "Temperatur- und Widerstandsannahmen", "Feuerwiderstand", "Systementscheidung"],
+      "review_gates": ["Brandschutzkonzept", "Bekleidung", "Anschluesse", "thermische Dehnung", "Systemausfall"]
+    },
+    {
+      "pipeline_id": "PIPE-SCENARIO-LIFECYCLE-001",
+      "category_id": "04_scenario",
+      "level": "scenario",
+      "title": "Bauzustand, Ermüdung und Lebensdauer",
+      "status": "implemented_bounded",
+      "description": "Zeit- und nutzungsabhaengige Nachweise fuer Herstellfolge, Vorspannung, Kriechen, Schwinden, Ermuedung und Dauerhaftigkeit.",
+      "selection": {"any": [{"fact": "design_types", "operator": "contains_any", "value": ["construction_stages", "fatigue", "prestress_tendon"]}, {"fact": "requested_capabilities", "operator": "contains_any", "value": ["construction_stages", "fatigue", "durability"]}]},
+      "applicability": {"structure_types": ["all"], "materials": ["reinforced_concrete", "prestressed_concrete", "steel", "timber"], "components": ["component", "subsystem", "complete_structure"]},
+      "phases": [
+        {"phase_id": "timeline", "order": 1, "title": "Zeitachse", "required_path_refs": ["RW-STAGE-001"], "conditional_path_refs": ["RW-ACTION-TIME-001", "RW-PRESTRESS-001"], "gate": "Herstell- und Belastungszeitpunkte festgelegt"},
+        {"phase_id": "cyclic", "order": 2, "title": "Zyklische Beanspruchung", "required_path_refs": [], "conditional_path_refs": ["RW-FATIGUE-001", "RW-BRIDGE-FATIGUE-001", "RW-ACTION-TRAFFIC-001", "RW-ACTION-CRANE-001"], "gate": "Lastkollektiv und Detailkategorie bestaetigt"},
+        {"phase_id": "service", "order": 3, "title": "Dauerhaftigkeit und Gebrauch", "required_path_refs": [], "conditional_path_refs": ["RW-DURABILITY-001", "RW-RC-CRACK-001", "RW-RC-DEFLECTION-001", "RW-SETTLEMENT-001"], "gate": "Lebensdauer, Exposition und Gebrauchskriterien freigegeben"}
+      ],
+      "outputs": ["Zustandsfolge", "zeitabhaengige Beanspruchung", "Ermuedungsausnutzung", "Dauerhaftigkeitsanforderungen"],
+      "review_gates": ["Bauablauf", "Vorspannzeitpunkt", "Lastkollektiv", "Exposition", "Instandhaltung"]
+    },
+    {
+      "pipeline_id": "PIPE-GOV-RELEASE-001",
+      "category_id": "05_governance",
+      "level": "governance",
+      "title": "Vollständigkeit, Prüfung und Freigabe",
+      "status": "implemented_bounded",
+      "description": "Querschnittliche Abschlusskette fuer Katalogabdeckung, Variablenherkunft, Reproduzierbarkeit, Bericht und Datenaustausch.",
+      "selection": {"all": []},
+      "applicability": {"structure_types": ["all"], "materials": ["all"], "components": ["all"]},
+      "phases": [
+        {"phase_id": "coverage", "order": 1, "title": "Methodenabdeckung", "required_path_refs": ["RW-BASIS-001"], "conditional_path_refs": [], "gate": "Jede verwendete Formel besitzt Rechenweg, Quelle, Status und Variablenvertrag"},
+        {"phase_id": "trace", "order": 2, "title": "Reproduzierbarkeit", "required_path_refs": ["RW-COMB-001"], "conditional_path_refs": [], "gate": "Eingaben, Revision, Normprofil, Auswahlentscheidungen und Ergebnisse eingefroren"},
+        {"phase_id": "release", "order": 3, "title": "Fachfreigabe", "required_path_refs": [], "conditional_path_refs": ["RW-ROBUSTNESS-001"], "gate": "Offene und gesperrte Nachweise explizit bewertet; unabhaengige Pruefung dokumentiert"}
+      ],
+      "outputs": ["Vollstaendigkeitsmatrix", "unveraenderliches Rechenprotokoll", "offene Punkte", "Freigabestatus", "Berichts- und Austauschpaket"],
+      "review_gates": ["Kataloggate", "Variablengate", "Solvergate", "Normgate", "Fachpruefung", "Freigabe"]
+    }
+  ]
+}

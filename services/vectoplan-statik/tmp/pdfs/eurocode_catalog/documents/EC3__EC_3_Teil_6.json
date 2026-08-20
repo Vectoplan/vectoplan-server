@@ -1,0 +1,2332 @@
+{
+  "document_id": "EN_1993-6__base_standard__EC_3_Teil_6",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-6",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 6.pdf",
+  "relative_path": "EC 3/EC 3 Teil 6.pdf",
+  "sha256": "c9be83764bf9242521c8712c291e77db84ec74b2a4732fcb8534c62fd6cc475a",
+  "pages": 47,
+  "text_pages": 47,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 235,
+  "equation_candidate_count": 34,
+  "table_reference_count": 27,
+  "figure_reference_count": 31,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161414+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232724+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 6.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ...................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... .................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... .........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... ..............................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Horizontale Kranlasten (en: crane surge) ...........................................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Elastomerunterlage (en: elastomeric bearing pad) .............................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Horizontalverbindungen (en: surge connector) ..................................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Horizontalträger (en: surge girder) ......................................................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Prellbock (en: structural end stop)........................................................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole .................................................................................................................... ............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Berechnung und Bemessung ..................................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen .............................................................................................................. .......................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen ............................................................................................... ............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Behandlung der Zuverlässigkeit ........................................................................................... .............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Nutzungsdauer, Dauerhaftigkeit und Robustheit............................................................................ .11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundsätzliches zur Bemessung mit Grenzzuständen ...................................................................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Grundlegende Kenngrößen .................................................................................................... ............12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Einwirkungen und Umgebungseinflüsse ...................................................................................... ....12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Werkstoff- und Produkteigenschaften...................................................................................... .........12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren mit Teilsicherheitsbeiwerten ............................................................................1 2",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5",
+      "title": "Versuchsgestützte Bemessung ................................................................................................ .........13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6",
+      "title": "Lichtraumprofil von Brückenlaufkranen ...................................................................................... .....13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.7",
+      "title": "Hängekrane und Unterflansch-Laufkatzen ..................................................................................... ..13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.8",
+      "title": "Kranprüfungen .............................................................................................................. .......................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe ................................................................................................................... .........................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Baustähle.................................................................................................................. ............................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Werkstoffeigenschaften ................................................................................................... ...................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Anforderungen an die Duktilität .......................................................................................... ...............13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.3",
+      "title": "Bruchzähigkeit ........................................................................................................... ..........................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.4",
+      "title": "Eigenschaften in Dickenrichtung.......................................................................................... .............14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.5",
+      "title": "Toleranzen ............................................................................................................... .............................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.6",
+      "title": "Bemessungswerte der Materialkonstanten ................................................................................... ...14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Nichtrostende Stähle....................................................................................................... ....................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Schrauben, Bolzen, Nieten und Schweißnähte ................................................................................1 4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Lager ...................................................................................................................... ...............................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6",
+      "title": "Weitere Produkte für Kranbahnen ............................................................................................ .........15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6.1",
+      "title": "Allgemeines.............................................................................................................. ............................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6.2",
+      "title": "Schienenstähle........................................................................................................... ..........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6.3",
+      "title": "Besondere Verbindungsmittel für Kranschienen............................................................................. 15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit.............................................................................................................. .......................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung .......................................................................................................... ..............16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Statisches System für Tragwerksberechnungen .............................................................................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Statisches System und grundlegende Annahmen...........................................................................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Berechnungsmodelle für Anschlüsse ........................................................................................ .......16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1.3",
+      "title": "Bauwerk-Boden Interaktion ................................................................................................ ................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Untersuchung von Gesamttragwerken.......................................................................................... ....16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Einflüsse der Tragwerksverformung ........................................................................................ .........16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Stabilität von Tragwerken ................................................................................................ ...................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Imperfektionen............................................................................................................. ........................16",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Grundlagen ............................................................................................................... ...........................16",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Imperfektionen für die Tragwerksberechnung............................................................................... ..16",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.3",
+      "title": "Imperfektionen zur Berechnung aussteifender Systeme................................................................16",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.4",
+      "title": "Bauteilimperfektionen.................................................................................................... .....................17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4",
+      "title": "Berechnungsmethoden ........................................................................................................ ..............17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Allgemeines .............................................................................................................. ...........................17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Elastische Tragwerksberechnung ........................................................................................... ..........17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4.3",
+      "title": "Plastische Tragwerksberechnung ........................................................................................... ..........17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5",
+      "title": "Klassifizierung von Querschnitten .......................................................................................... ..........17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.6",
+      "title": "Kranbahnträger............................................................................................................. .......................17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.6.1",
+      "title": "Beanspruchungen aus Kranlasten ........................................................................................... .........17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.6.2",
+      "title": "Tragsystem ............................................................................................................... ...........................17",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.7",
+      "title": "Lokale Spannungen im Steg infolge Radlasten auf dem Oberflansch ..........................................18",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.7.1",
+      "title": "Lokale vertikale Druckspannungen......................................................................................... ..........18",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.7.2",
+      "title": "Lokale Schubspannungen................................................................................................... ...............21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.7.3",
+      "title": "Lokale Biegespannungen im Steg infolge exzentrischer Radlasten .............................................21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.8",
+      "title": "Lokale Biegespannungen im Untergurt infolge Radlasten .............................................................22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.9",
+      "title": "Sekundäre Biegemomente in fachwerkartigen Bauteilen ...............................................................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit .............................................................................................. ........26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines ................................................................................................................ .........................26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit von Querschnitten ........................................................................................ .....27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Stabilitätsnachweise von Bauteilen ......................................................................................... .........27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Biegedrillknicken........................................................................................................ .........................27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Mehrteilige druckbeanspruchte Bauteile ..................................................................................... .....27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5",
+      "title": "Beanspruchbarkeit des Steges gegen Radlasten............................................................................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5.1",
+      "title": "Allgemeines .............................................................................................................. ...........................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.5.2",
+      "title": "Länge der starren Lasteinleitung......................................................................................... ..............28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.6",
+      "title": "Plattenbeulen .............................................................................................................. .........................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.7",
+      "title": "Beanspruchbarkeit des Unterflansches bei Radlasteinleitung ......................................................28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 32",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines ................................................................................................................ .........................32",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Berechnungsmodelle ......................................................................................................... .................32",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Begrenzung der Verformungen und Verschiebungen.....................................................................32",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4",
+      "title": "Begrenzung des Stegblechatmens............................................................................................. .......34",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.5",
+      "title": "Elastisches Verhalten ...................................................................................................... ...................35",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.6",
+      "title": "Schwingung des Unterflansches.............................................................................................. .........36",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8",
+      "title": "Verbindungen und Kranschienen................................................................................................ ......36",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.1",
+      "title": "Schrauben-, Niet- und Bolzenverbindungen ................................................................................... .36",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2",
+      "title": "Schweißverbindungen ........................................................................................................ ................36",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3",
+      "title": "Horizontalverbindungen ..................................................................................................... ................36",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4",
+      "title": "Kranschienen............................................................................................................... ........................37",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4.1",
+      "title": "Schienenmaterial......................................................................................................... ........................37",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4.2",
+      "title": "Nutzungsdauer ............................................................................................................ ........................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4.3",
+      "title": "Auswahl der Schienen ..................................................................................................... ...................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.5",
+      "title": "Schienenbefestigung ........................................................................................................ ..................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.5.1",
+      "title": "Allgemeines .............................................................................................................. ...........................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.5.2",
+      "title": "Starre Befestigungen ..................................................................................................... .....................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.5.3",
+      "title": "Bewegliche Befestigungen................................................................................................. ................39",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.6",
+      "title": "Schienenverbindungen....................................................................................................... ................39",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9",
+      "title": "Ermüdungsnachweis ............................................................................................................ ..............40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.1",
+      "title": "Anforderungen an den Ermüdungsnachweis...................................................................................40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.2",
+      "title": "Teilsicherheitsbeiwerte für Ermüdung....................................................................................... .......40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.3",
+      "title": "Spannungsspektren infolge Ermüdungsbelastung.........................................................................40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9.3.2",
+      "title": "Vereinfachte Ansätze ..................................................................................................... .....................41",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.3.3",
+      "title": "Lokale Spannungen infolge Radlasten am Obergurt.......................................................................41",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.3.4",
+      "title": "Lokale Spannungen infolge Hängekrane ..................................................................................... .....42",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.4",
+      "title": "Ermüdungsnachweis.......................................................................................................... .................42",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.4.1",
+      "title": "Allgemeines.............................................................................................................. ............................42",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.4.2",
+      "title": "Beanspruchung aus mehreren Kranen ........................................................................................ .....42",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9.5",
+      "title": "Ermüdungsfestigkeit ........................................................................................................ ...................43",
+      "pdf_page": 6
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerungskomitees mit Repräsentanten der",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Horizontale Kranlasten (en: crane surge)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Elastomerunterlage (en: elastomeric bearing pad)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Horizontalverbindungen (en: surge connector)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Horizontalträger (en: surge girder)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Prellbock (en: structural end stop)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Berechnung und Bemessung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Behandlung der Zuverlässigkeit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Nutzungsdauer, Dauerhaftigkeit und Robustheit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.3.2",
+      "title": "Nutzungsdauer",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.3.3",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundsätzliches zur Bemessung mit Grenzzuständen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.3",
+      "title": "Grundlegende Kenngrößen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Einwirkungen und Umgebungseinflüsse",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Werkstoff- und Produkteigenschaften",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren mit Teilsicherheitsbeiwerten",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.5",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.6",
+      "title": "Lichtraumprofil von Brückenlaufkranen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.7",
+      "title": "Hängekrane und Unterflansch-Laufkatzen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.8",
+      "title": "Kranprüfungen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.2",
+      "title": "Baustähle",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Werkstoffeigenschaften",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Anforderungen an die Duktilität",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.2.3",
+      "title": "Bruchzähigkeit",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3.2.4",
+      "title": "Eigenschaften in Dickenrichtung",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.2.5",
+      "title": "Toleranzen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.2.6",
+      "title": "Bemessungswerte der Materialkonstanten",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.3",
+      "title": "Nichtrostende Stähle",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.4",
+      "title": "Schrauben, Bolzen, Nieten und Schweißnähte",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.5",
+      "title": "Lager",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.6",
+      "title": "Weitere Produkte für Kranbahnen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.6.1",
+      "title": "Allgemeines",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.6.2",
+      "title": "Schienenstähle",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.6.3",
+      "title": "Besondere Verbindungsmittel für Kranschienen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 17
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.1",
+      "title": "Statisches System für Tragwerksberechnungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Statisches System und grundlegende Annahmen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Berechnungsmodelle für Anschlüsse",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.1.3",
+      "title": "Bauwerk-Boden Interaktion",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.2",
+      "title": "Untersuchung von Gesamttragwerken",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Einflüsse der Tragwerksverformung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Stabilität von Tragwerken",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.3",
+      "title": "Imperfektionen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Grundlagen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Imperfektionen für die Tragwerksberechnung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.3.3",
+      "title": "Imperfektionen zur Berechnung aussteifender Systeme",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5.3.4",
+      "title": "Bauteilimperfektionen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.4",
+      "title": "Berechnungsmethoden",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Elastische Tragwerksberechnung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.4.3",
+      "title": "Plastische Tragwerksberechnung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.5",
+      "title": "Klassifizierung von Querschnitten",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.6",
+      "title": "Kranbahnträger",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.6.1",
+      "title": "Beanspruchungen aus Kranlasten",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.6.2",
+      "title": "Tragsystem",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.7",
+      "title": "Lokale Spannungen im Steg infolge Radlasten auf dem Oberflansch",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.7.1",
+      "title": "Lokale vertikale Druckspannungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.7.2",
+      "title": "Lokale Schubspannungen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.7.3",
+      "title": "Lokale Biegespannungen im Steg infolge exzentrischer Radlasten",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.8",
+      "title": "Lokale Biegespannungen im Untergurt infolge Radlasten",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5.9",
+      "title": "Sekundäre Biegemomente in fachwerkartigen Bauteilen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.2",
+      "title": "Beanspruchbarkeit von Querschnitten",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3",
+      "title": "Stabilitätsnachweise von Bauteilen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Biegedrillknicken",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3.2.2",
+      "title": "Rechnerischer Ansatz der Radlasten beim Biegedrillknicknachweis",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.3.2.3",
+      "title": "Nachweisverfahren",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.4",
+      "title": "Mehrteilige druckbeanspruchte Bauteile",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.5",
+      "title": "Beanspruchbarkeit des Steges gegen Radlasten",
+      "pdf_page": 30
+    },
+    {
+      "clause": "6.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 30
+    },
+    {
+      "clause": "6.5.2",
+      "title": "Länge der starren Lasteinleitung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "6.6",
+      "title": "Plattenbeulen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "6.7",
+      "title": "Beanspruchbarkeit des Unterflansches bei Radlasteinleitung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 34
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 34
+    },
+    {
+      "clause": "7.2",
+      "title": "Berechnungsmodelle",
+      "pdf_page": 34
+    },
+    {
+      "clause": "7.3",
+      "title": "Begrenzung der Verformungen und Verschiebungen",
+      "pdf_page": 34
+    },
+    {
+      "clause": "7.4",
+      "title": "Begrenzung des Stegblechatmens",
+      "pdf_page": 36
+    },
+    {
+      "clause": "7.5",
+      "title": "Elastisches Verhalten",
+      "pdf_page": 37
+    },
+    {
+      "clause": "7.6",
+      "title": "Schwingung des Unterflansches",
+      "pdf_page": 38
+    },
+    {
+      "clause": "8",
+      "title": "Verbindungen und Kranschienen",
+      "pdf_page": 38
+    },
+    {
+      "clause": "8.1",
+      "title": "Schrauben-, Niet- und Bolzenverbindungen",
+      "pdf_page": 38
+    },
+    {
+      "clause": "8.2",
+      "title": "Schweißverbindungen",
+      "pdf_page": 38
+    },
+    {
+      "clause": "8.3",
+      "title": "Horizontalverbindungen",
+      "pdf_page": 38
+    },
+    {
+      "clause": "8.4",
+      "title": "Kranschienen",
+      "pdf_page": 39
+    },
+    {
+      "clause": "8.4.1",
+      "title": "Schienenmaterial",
+      "pdf_page": 39
+    },
+    {
+      "clause": "8.4.2",
+      "title": "Nutzungsdauer",
+      "pdf_page": 40
+    },
+    {
+      "clause": "8.4.3",
+      "title": "Auswahl der Schienen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "8.5",
+      "title": "Schienenbefestigung",
+      "pdf_page": 40
+    },
+    {
+      "clause": "8.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 40
+    },
+    {
+      "clause": "8.5.2",
+      "title": "Starre Befestigungen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "8.5.3",
+      "title": "Bewegliche Befestigungen",
+      "pdf_page": 41
+    },
+    {
+      "clause": "8.6",
+      "title": "Schienenverbindungen",
+      "pdf_page": 41
+    },
+    {
+      "clause": "9",
+      "title": "Ermüdungsnachweis",
+      "pdf_page": 42
+    },
+    {
+      "clause": "9.1",
+      "title": "Anforderungen an den Ermüdungsnachweis",
+      "pdf_page": 42
+    },
+    {
+      "clause": "9.2",
+      "title": "Teilsicherheitsbeiwerte für Ermüdung",
+      "pdf_page": 42
+    },
+    {
+      "clause": "9.3",
+      "title": "Spannungsspektren infolge Ermüdungsbelastung",
+      "pdf_page": 42
+    },
+    {
+      "clause": "9.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 42
+    },
+    {
+      "clause": "9.3.2",
+      "title": "Vereinfachte Ansätze",
+      "pdf_page": 43
+    },
+    {
+      "clause": "9.3.3",
+      "title": "Lokale Spannungen infolge Radlasten am Obergurt",
+      "pdf_page": 43
+    },
+    {
+      "clause": "9.3.4",
+      "title": "Lokale Spannungen infolge Hängekrane",
+      "pdf_page": 44
+    },
+    {
+      "clause": "9.4",
+      "title": "Ermüdungsnachweis",
+      "pdf_page": 44
+    },
+    {
+      "clause": "9.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 44
+    },
+    {
+      "clause": "9.4.2",
+      "title": "Beanspruchung aus mehreren Kranen",
+      "pdf_page": 44
+    },
+    {
+      "clause": "9.5",
+      "title": "Ermüdungsfestigkeit",
+      "pdf_page": 45
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 20,
+      "equation_number": "5.1",
+      "line": "(5.1)",
+      "context": "Edoz, tl | F | (5.1) | 18 | DIN EN 1993-6:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "befestigt leff = 3,25 [Irf / tw]",
+      "context": "Fall Beschreibung Effektive Lastausbreitungslänge leff | (a) Kranschiene schubstarr am Flansch | befestigt leff = 3,25 [Irf / tw] | (b) Kranschiene nicht schubstarr am | Flansch befestigt leff = 3,25 [(Ir + If,eff) / tw]",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Flansch befestigt leff = 3,25 [(Ir + If,eff) / tw]",
+      "context": "befestigt leff = 3,25 [Irf / tw] | (b) Kranschiene nicht schubstarr am | Flansch befestigt leff = 3,25 [(Ir + If,eff) / tw] | (c) | Kranschiene auf einer mind. 6mm",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "leff = 4,25 [(Ir + If,eff) / tw]",
+      "context": "dicken nachgiebigen Elastomer- | unterlage | leff = 4,25 [(Ir + If,eff) / tw] | If,eff Flächenmoment zweiten Grades um die horizontale Schwerlinie des Flansches mit der | effektiven Breite beff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "horizontalen Schnitten im Steg unterhalb z = 0,2 hw vernachlässigt werden, mit hw und z wie in 5.7.1(5)",
+      "context": "(2) Die lokale Schubspannung oxz,Ed sollte an allen Punkten zusätzlich zu der globalen Schubspannung aus | derselben Radlast berücksichtigt werden, siehe Bild 5.4. Die zusätzliche Schubspannung oxz,Ed darf in | horizontalen Schnitten im Steg unterhalb z = 0,2 hw vernachlässigt werden, mit hw und z wie in 5.7.1(5) | definiert. | Bild 5.4  Lokale und globale Schubspannungen infolge einer Radlast",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.2",
+      "line": "T (5.2)",
+      "context": "EdT, | wta | T (5.2) | mit: | 5,0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.3",
+      "line": "w (5.3)",
+      "context": "ta | t | w (5.3) | Dabei ist | a der Abstand der Quersteifen im Steg;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.4",
+      "line": "yEdz,Ed eFT (5.4)",
+      "context": "EN 1993-6:2007 + AC:2009 (D) | yEdz,Ed eFT (5.4) | Dabei ist | ey die Exzentrizität e der Radlast nach EN 1991-3, 2.5.2.1(2), wobei ey 0,5 tw;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.5",
+      "line": "Edz,xEdox, / ltFc (5.5)",
+      "context": "die Querbiegespannung oy,Ed im Unterflansch wie folgt ermittelt werden: | 2 | Edz,xEdox, / ltFc (5.5) | 2 | Edz,yEdoy, / ltFc (5.6)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.6",
+      "line": "Edz,yEdoy, / ltFc (5.6)",
+      "context": "Edz,xEdox, / ltFc (5.5) | 2 | Edz,yEdoy, / ltFc (5.6) | Dabei ist | F z,Ed die vertikale Radlast;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.7",
+      "line": "w/2 tbn (5.7)",
+      "context": "Dies erfolgt in Abhängigkeit davon, ob der Träger parallele oder geneigte Flansche hat, sowie von dem | Verhältniswert : | w/2 tbn (5.7) | Dabei ist | n der Abstand der Schwerlinie der Last zur äußeren Flanschkante;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.8",
+      "line": "F (5.8)",
+      "context": "Edz,)8,2225,36,5( | t | F (5.8) | Dabei ist tf die mittlere Nenndicke des Flansches. | (7) Alternativ darf angenommen werden, dass die lokale Biegespannung oy,end,Ed die Werte von ox,Ed und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "6.1",
+      "line": "feffs 2 tls (6.1)",
+      "context": "(1) Infolge einer Radlast, die über eine Schiene eingeleitet wird, kann die sich an der Oberkante des | Obergurtes ergebende Länge der starren Lasteinleitung ss, nach EN 1993-1-5, wie folgt bestimmt werden: | feffs 2 tls (6.1) | Dabei ist | leff die wirksame Lastausbreitungslänge an der Unterkante des Obergurtes nach Tabelle 5.1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "6.2",
+      "line": "F y (6.2)",
+      "context": "fm | ftl | F y (6.2) | 28 | DIN EN 1993-6:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.3",
+      "line": "nrtbm 8,05,0 w (6.3)",
+      "context": "(2) Der Hebelarm m von der Radlast zum Übergang Flansch-Steg sollte wie folgt bestimmt werden: | bei einem Walzprofil | nrtbm 8,05,0 w (6.3) | bei einem geschweißten Profil | natbm 28,05,0 w (6.4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.4",
+      "line": "natbm 28,05,0 w (6.4)",
+      "context": "nrtbm 8,05,0 w (6.3) | bei einem geschweißten Profil | natbm 28,05,0 w (6.4) | Dabei ist | a die Kehlnahtdicke;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "7.1",
+      "line": "kk (7.1)",
+      "context": "E | serEd,x, | kk (7.1) | Dabei ist | b die kleinere Seitenlänge des Stegbleches;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "7.2a",
+      "line": "serM,yserEd, /f (7.2a)",
+      "context": "des Einflusses von Schubverzerrungen und örtlichen Spannungen (z. B. infolge sekundärer | Anschlussmomente bei Fachwerkträgern), wie folgt begrenzt werden: | serM,yserEd, /f (7.2a) | serM, | y",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "7.2b",
+      "line": "(7.2b)",
+      "context": "3 | f | (7.2b) | serM,y | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "7.2c",
+      "line": "serEd,x, /3 f (7.2c)",
+      "context": "serEd, | 2 | serEd,x, /3 f (7.2c) | serM,y | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "7.2d",
+      "line": "serEd,x, /3 f (7.2d)",
+      "context": "serEd,y, | 2 | serEd,x, /3 f (7.2d) | serM,y | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "7.2e",
+      "line": "serEd,x, /3 f (7.2e)",
+      "context": "serEd,z, | 2 | serEd,x, /3 f (7.2e) | Dabei ist | x,Ed,ser die Normalspannung in Längsrichtung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "M,ser = 1,00.",
+      "context": "Ed,ser die zugehörige Schubspannung. | ANMERKUNG Der Zahlenwert für M,ser darf im Nationalen Anhang festgelegt werden. Der empfohlene Wert ist | M,ser = 1,00. | (2) Bei Kranbahnträgern mit aufgesetzten Brückenkranen sollten die lokale Normalspannung oz,Ed,ser im | Steg (siehe 5.7.1) sowie die globalen Spannungen x,Ed,ser und Ed,ser berücksichtigt werden. Die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Nationale Anhang darf den Wert für C0 festlegen. C0 = 104 wird empfohlen.",
+      "context": "(2) Bei Kranbahnen ist kein Ermüdungsnachweis erforderlich, sofern die Anzahl der Lastwechsel mit mehr | als 50 % der vollen Nutzlast C0 nicht übersteigt. | ANMERKUNG Der Nationale Anhang darf den Wert für C0 festlegen. C0 = 104 wird empfohlen. | (3) Ein Ermüdungsnachweis ist grundsätzlich nur für diejenigen Bauteile der Kranbahn erforderlich, die | Spannungsänderungen infolge vertikaler Radlasten ausgesetzt sind.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Nationale Anhang darf den Wert für Ff festlegen. Ff = 1,0 wird empfohlen.",
+      "context": "9.2 Teilsicherheitsbeiwerte für Ermüdung | (1)P Für Ermüdungslasten muss der Teilsicherheitsbeiwert Ff verwendet werden. | ANMERKUNG Der Nationale Anhang darf den Wert für Ff festlegen. Ff = 1,0 wird empfohlen. | (2)P Für die Ermüdungsfestigkeit muss der Teilsicherheitsbeiwert Mf verwendet werden. | ANMERKUNG Der Nationale Anhang darf Werte für Mf festlegen. Es wird empfohlen, EN 1993-1-9, Tabelle 3.1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Die in EN 1991-3 angegebenen vereinfachten Ermüdungslasten  Qe = fat · i · Qmax,i beziehen",
+      "context": "(1) Bei Anwendung der in EN 1991-3, 2.12.1(4) angegebenen vereinfachten Ermüdungslasten kann für die | Bemessung das nachfolgende Verfahren zur Ermittlung der Spannungsschwingbreiten angewendet werden. | ANMERKUNG Die in EN 1991-3 angegebenen vereinfachten Ermüdungslasten  Qe = fat · i · Qmax,i beziehen | sich bereits auf 2 × 106 Lastwechsel. | (2) Die maximalen Spannungen p,max und p,max und die minimalen Spannungen p,min und p,min infolge der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "9.1",
+      "line": "minp,maxp,E2 (9.1)",
+      "context": "(3) Die schädigungsäquivalenten Spannungsschwingbreiten bezogen auf 2 × 10 6 Lastwechsel E2 und E2 | können wie folgt bestimmt werden: | minp,maxp,E2 (9.1) | minp,maxp,E2 (9.2) | (4) Ist die Anzahl der Spannungswechsel größer als die Anzahl der Kranspiele (siehe Bild 9.1), so sollte die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "9.2",
+      "line": "minp,maxp,E2 (9.2)",
+      "context": "können wie folgt bestimmt werden: | minp,maxp,E2 (9.1) | minp,maxp,E2 (9.2) | (4) Ist die Anzahl der Spannungswechsel größer als die Anzahl der Kranspiele (siehe Bild 9.1), so sollte die | in EN 1991-3, 2.12.1(4) angegebene vereinfachte Ermüdungslast Last Qe entsprechend der höheren Anzahl",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "9.3",
+      "line": "i (9.3)",
+      "context": "1dupDD | i | i (9.3) | Dabei ist | Di die Schädigung infolge eines einzelnen unabhängig wirkenden Krans i;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "9.4",
+      "line": "iD (9.4)",
+      "context": "// | ii | iD (9.4) | Dabei ist | E2,i die schadensäquivalente Längsspannungsschwingbreite eines einzelnen Krans i;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "9.5",
+      "line": "D (9.5)",
+      "context": "dupE2,Ff | dup // f | D (9.5) | Dabei ist | 42",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "kw = ",
+      "context": "C mz der äquivalente Momentenbeiwert für Biegung um die Achse z-z, nach | EN 1993-1-1, Tablle B.3; | kw =  | M1Rk | Ed2,07,0 B",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "kzw =",
+      "context": "Ed2,07,0 B | B  | kzw = | M1z,Rk | z,Ed1 M",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "k =",
+      "context": "z,Ed1 M | M | k = | cry,y,Ed1 | 1",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.2",
+      "pdf_page": 10,
+      "line": "3.2.4(1) Tabelle 3.2 Sollwerte ZEd für Eigenschaften in Dickenrichtung"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 16,
+      "line": "Bauteile geben. Es wird empfohlen, in diesem Fall Tabelle 2.1 in EN 1993-1-10 für tfyEd 25,0 anzuwenden."
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 16,
+      "line": "zu den Qualitätsklassen der EN 10164 angeben. Für Kranbahnen wird eine Zuordnung nach Tabelle 3.2 empfohlen."
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 16,
+      "line": "Tabelle 3.2  Stahlgütewahl nach EN 10164"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 21,
+      "line": "einzelnen Radlast gleichmäßig verteilt angenommen werden darf, kann unter Verwendung der Tabelle 5.1"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 22,
+      "line": "Tabelle 5.1 Effektive Lastausbreitungslänge leff"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "spannungen an den drei in Bild 5.6 festgelegten Stellen 0, 1 und 2 mit Hilfe von Tabelle 5.2 bestimmt werden."
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "Tabelle 5.2  Koeffizienten cxi und cyi zur Bestimmung der Spannungen an den Stellen 0, 1 und 2"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 25,
+      "line": "(5) Alternativ dürfen bei Radlasten, die nahe der äußeren Flanschkante eingeleitet werden, die in Tabelle 5.3"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 26,
+      "line": "Tabelle 5.3  Koeffizienten zur Berechnung der Spannungen nahe der äußeren Flanschkante"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 27,
+      "line": "(2) Bei Stäben mit offenem Querschnitt dürfen die k1-Faktoren aus Tabelle 5.4 verwendet werden."
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 27,
+      "line": "Tabelle 5.4  Beiwerte k1 zur Berücksichtigung sekundärer Spannungen in Stäben mit offenem"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 28,
+      "line": "Beanspruchbarkeit im Teil 6 sind in Tabelle 6.1 aufgeführt."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 28,
+      "line": "Tabelle 6.1  Teilsicherheitsbeiwerte für die Beanspruchbarkeit"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 30,
+      "line": "leff die wirksame Lastausbreitungslänge an der Unterkante des Obergurtes nach Tabelle 5.1;"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 31,
+      "line": "Tabelle 6.2 bestimmt werden."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 32,
+      "line": "Tabelle 6.2  Effektive Länge leff"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 35,
+      "line": "Die Grenzwerte in Tabelle 7.1 werden für die Nachweise horizontaler Verformungen unter der charakteristischen"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 35,
+      "line": "Lastfallkombination empfohlen. Die Verwendung der Grenzwerte in Tabelle 7.2 wird für die Nachweise vertikaler"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 35,
+      "line": "Tabelle 7.1  Grenzwerte für horizontale Verformungen"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 36,
+      "line": "Tabelle 7.1 (fortgesetzt)"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 36,
+      "line": "Tabelle 7.2  Grenzwerte für vertikale Verformungen"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 42,
+      "line": "ANMERKUNG Der Nationale Anhang darf Werte für Mf festlegen. Es wird empfohlen, EN 1993-1-9, Tabelle 3.1"
+    },
+    {
+      "label": "2.11",
+      "pdf_page": 43,
+      "line": "der Spannungswechsel als Gesamtzahl der Kranspiele C nach EN 1991-3, Tabelle 2.11 angesetzt werden."
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 43,
+      "line": "Tabelle 8.10. "
+    },
+    {
+      "label": "2.12",
+      "pdf_page": 45,
+      "line": "EN 1991-3, Tabelle 2.12 für die Beanspruchungsgruppe Si wie folgt zu verwenden:"
+    },
+    {
+      "label": "6.7",
+      "pdf_page": 46,
+      "line": "bezüglich der Achsen y-y und z-z, nach EN 1993-1-1, Tabelle 6.7;"
+    }
+  ],
+  "figures": [
+    {
+      "label": "5.1",
+      "pdf_page": 20,
+      "line": "Nennhöhe der Kranschiene reduziert werden. Diese Abminderung sollte im Allgemeinen 25 % der in Bild 5.1"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 20,
+      "line": "Bild 5.1  Mindestdicke tr unterhalb der Abnutzungsfläche der Kranschiene"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 20,
+      "line": "(1) Die lokale vertikale Druckspannung oz,Ed im Steg infolge Radlasten auf dem Oberflansch, siehe Bild 5.2,"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 21,
+      "line": "Bild 5.2  Effektive Lastausbreitungslänge leff"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 21,
+      "line": "ein Lastausbreitungswinkel von 45° angenommen werden, siehe Bild 5.3. Wenn die gesamte"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 21,
+      "line": "der Abstand unterhalb der Unterkante des Oberflansches, siehe Bild 5.3."
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 22,
+      "line": "bfr die Breite des Schienenfußes, siehe Bild 5.2;"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 22,
+      "line": "hr die Schienenhöhe, siehe Bild 5.1;"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 22,
+      "line": "Bild 5.3  Ausbreitung der effektiven Lastausbreitungslänge leff unter 45°"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 23,
+      "line": "derselben Radlast berücksichtigt werden, siehe Bild 5.4. Die zusätzliche Schubspannung oxz,Ed darf in"
+    },
+    {
+      "label": "5.4",
+      "pdf_page": 23,
+      "line": "Bild 5.4  Lokale und globale Schubspannungen infolge einer Radlast"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 23,
+      "line": "(2) Das Torsionsmoment TEd infolge seitlicher Exzentrizität ey der Radlast Fz,Ed (siehe Bild 5.5) sollte wie folgt"
+    },
+    {
+      "label": "5.5",
+      "pdf_page": 24,
+      "line": "Bild 5.5  Torsion des Obergurtes"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 24,
+      "line": "können die Biegespannungen an den folgenden drei, in Bild 5.6 markierten Stellen ermittelt werden:"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 24,
+      "line": "Bild 5.6  Stellen zur Bestimmung der Spannungen infolge Radlasten"
+    },
+    {
+      "label": "5.6",
+      "pdf_page": 25,
+      "line": "spannungen an den drei in Bild 5.6 festgelegten Stellen 0, 1 und 2 mit Hilfe von Tabelle 5.2 bestimmt werden."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 26,
+      "line": "Trägerlängsrichtung mindestens über eine Länge b hinausreicht, siehe Bild 5.7."
+    },
+    {
+      "label": "5.7",
+      "pdf_page": 26,
+      "line": "Bild 5.7  Mögliche Verstärkung des Unterflansches am Trägerende"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 30,
+      "line": "Hängekran oder einer Unterflansch-Laufkatze sollte wie folgt ermittelt werden, siehe Bild 6.1:"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 32,
+      "line": "siehe Bild 6.2"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 33,
+      "line": "Bild 6.1  Biegung eines Unterflansches entfernt vom Trägerende und am ungestützten Flanschende"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 33,
+      "line": "Bild 6.2  Biegung des Unterflansches am gestützten Flanschende"
+    },
+    {
+      "label": "A1.1",
+      "pdf_page": 36,
+      "line": "analog zu max in EN 1990, Bild A1.1 bestimmt werden."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 38,
+      "line": "siehe Bild 8.1;"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 38,
+      "line": "Verschiebungen, siehe Bild 8.2;"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 39,
+      "line": "Bild 8.1  Endverdrehung von Kranbahnträgern"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 39,
+      "line": "Bild 8.2  Endverdrehung von Kranbahnträgern infolge Seitenlasten"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 41,
+      "line": "sollte wenigstens ein Schrägstoß mit überstehendem Schienenende verwendet werden (siehe Bild 8.3)."
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 41,
+      "line": "Bild 8.3  Schrägstoß bei Kranschienen"
+    },
+    {
+      "label": "9.1",
+      "pdf_page": 43,
+      "line": "(4) Ist die Anzahl der Spannungswechsel größer als die Anzahl der Kranspiele (siehe Bild 9.1), so sollte die"
+    },
+    {
+      "label": "9.1",
+      "pdf_page": 43,
+      "line": "Bild 9.1  Beispiel von zwei Spannungswechseln infolge eines Kranspiels"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1050,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2148,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2097,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7602,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.2",
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.4",
+        "2.5",
+        "2.6",
+        "2.7",
+        "2.8",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.2.3",
+        "3.2.4",
+        "3.2.5",
+        "3.2.6",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "3.6.1",
+        "3.6.2",
+        "3.6.3",
+        "4",
+        "5",
+        "5.1",
+        "5.1.1",
+        "5.1.2",
+        "5.1.3",
+        "5.2",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 8088,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.3.3",
+        "5.3.4",
+        "5.4",
+        "5.4.1",
+        "5.4.2",
+        "5.4.3",
+        "5.5",
+        "5.6",
+        "5.6.1",
+        "5.6.2",
+        "5.7",
+        "5.7.1",
+        "5.7.2",
+        "5.7.3",
+        "5.8",
+        "5.9",
+        "6",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.3.1",
+        "6.3.2",
+        "6.4",
+        "6.5",
+        "6.5.1",
+        "6.5.2",
+        "6.6",
+        "6.7",
+        "7",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5",
+        "7.6",
+        "8",
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4",
+        "8.4.1",
+        "8.4.2",
+        "8.4.3",
+        "8.5",
+        "8.5.1",
+        "8.5.2",
+        "8.5.3",
+        "8.6",
+        "9",
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1515,
+      "text_layer": "usable",
+      "clauses": [
+        "9.3.2",
+        "9.3.3",
+        "9.3.4",
+        "9.4",
+        "9.4.1",
+        "9.4.2",
+        "9.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3418,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3228,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2744,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1747,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2198,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2268,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1659,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.1.3.1",
+        "2.1.3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2594,
+      "text_layer": "usable",
+      "clauses": [
+        "2.1.3.3",
+        "2.2",
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1716,
+      "text_layer": "usable",
+      "clauses": [
+        "2.5",
+        "2.6",
+        "2.7",
+        "2.8",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1655,
+      "text_layer": "usable",
+      "clauses": [
+        "3.2.4",
+        "3.2.5",
+        "3.2.6",
+        "3.3",
+        "3.4",
+        "3.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2515,
+      "text_layer": "usable",
+      "clauses": [
+        "3.6",
+        "3.6.1",
+        "3.6.2",
+        "3.6.3",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1450,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.1.1",
+        "5.1.2",
+        "5.1.3",
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2035,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3.4",
+        "5.4",
+        "5.4.1",
+        "5.4.2",
+        "5.4.3",
+        "5.5",
+        "5.6",
+        "5.6.1",
+        "5.6.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2053,
+      "text_layer": "usable",
+      "clauses": [
+        "5.7",
+        "5.7.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1611,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1203,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1522,
+      "text_layer": "usable",
+      "clauses": [
+        "5.7.2",
+        "5.7.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 24,
+      "characters": 908,
+      "text_layer": "usable",
+      "clauses": [
+        "5.8"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2085,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1901,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2000,
+      "text_layer": "usable",
+      "clauses": [
+        "5.9"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1486,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2676,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.3",
+        "6.3.1",
+        "6.3.2",
+        "6.3.2.1",
+        "6.3.2.2",
+        "6.3.2.3",
+        "6.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 2312,
+      "text_layer": "usable",
+      "clauses": [
+        "6.5",
+        "6.5.1",
+        "6.5.2",
+        "6.6",
+        "6.7"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 31,
+      "characters": 793,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 743,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 217,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2538,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2",
+        "7.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1013,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1843,
+      "text_layer": "usable",
+      "clauses": [
+        "7.4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1797,
+      "text_layer": "usable",
+      "clauses": [
+        "7.5"
+      ],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 38,
+      "characters": 2261,
+      "text_layer": "usable",
+      "clauses": [
+        "7.6",
+        "8",
+        "8.1",
+        "8.2",
+        "8.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 733,
+      "text_layer": "usable",
+      "clauses": [
+        "8.4",
+        "8.4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1942,
+      "text_layer": "usable",
+      "clauses": [
+        "8.4.2",
+        "8.4.3",
+        "8.5",
+        "8.5.1",
+        "8.5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1556,
+      "text_layer": "usable",
+      "clauses": [
+        "8.5.3",
+        "8.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 2577,
+      "text_layer": "usable",
+      "clauses": [
+        "9",
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.3.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 43,
+      "characters": 2072,
+      "text_layer": "usable",
+      "clauses": [
+        "9.3.2",
+        "9.3.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 44,
+      "characters": 1708,
+      "text_layer": "usable",
+      "clauses": [
+        "9.3.4",
+        "9.4",
+        "9.4.1",
+        "9.4.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1193,
+      "text_layer": "usable",
+      "clauses": [
+        "9.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1737,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 47,
+      "characters": 449,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

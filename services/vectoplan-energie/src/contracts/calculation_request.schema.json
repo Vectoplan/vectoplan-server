@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vectoplan.local/energie/calculation_request.schema.json",
+  "title": "VECTOPLAN Energy Calculation Preview Request",
+  "type": "object",
+  "required": ["project_id", "building_type", "geometry", "envelope", "systems", "usage"],
+  "properties": {
+    "project_id": {"type": "string", "minLength": 1},
+    "building_type": {"enum": ["residential", "non_residential"]},
+    "geometry": {"type": "object"},
+    "envelope": {"type": "object"},
+    "systems": {"type": "object"},
+    "usage": {"type": "object"},
+    "provenance": {"type": "object"}
+  },
+  "additionalProperties": false
+}

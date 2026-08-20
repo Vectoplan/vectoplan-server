@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/structural-calculation-dossier.schema.json",
+  "title": "VECTOPLAN Structural Calculation Dossier",
+  "type": "object",
+  "required": ["contract_version", "document_control", "project", "summary", "load_path", "load_combinations", "checks", "calculation_steps", "standards", "chapters", "limitations"],
+  "properties": {
+    "contract_version": {"const": "structural-calculation-dossier/0.1"},
+    "document_control": {"type": "object"},
+    "project": {"type": "object"},
+    "summary": {"type": "object"},
+    "inputs": {"type": "array", "items": {"type": "object"}},
+    "load_path": {"type": "object"},
+    "load_combinations": {"type": "array", "items": {"type": "object"}},
+    "analysis_cases": {"type": "array", "items": {"type": "object"}},
+    "checks": {"type": "array", "items": {"type": "object"}},
+    "calculation_steps": {"type": "array", "items": {"type": "object"}},
+    "calculation_plan": {"type": "object"},
+    "standards": {"type": "array", "items": {"type": "object"}},
+    "decisions": {"type": "array", "items": {"type": "object"}},
+    "visualizations": {"type": "array", "items": {"type": "object"}},
+    "applicability_matrix": {"type": "array", "items": {"type": "object"}},
+    "chapters": {"type": "array", "items": {"type": "object"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "verification": {"type": "object"}
+  }
+}

@@ -1,0 +1,323 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten  
+Teil 1-6: Festigkeit und Stabilität von Schalen 
+National Annex  
+Nationally determined parameters  
+Eurocode 3: Design of steel structures  
+Part 1-6: Strength and stability of shell structures 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 3: Calcul des structures en acier  
+Partie 1-6: Résistance et stabilité des structures en coque
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-6/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde vom NA 005-08-16 AA Tragwerksbemessung“ erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1993-1-6:2010-12, Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 1-6 NA: Festigkeit und Stabilität von Schalen. 
+Die Europäische Norm EN 1992-1-6 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser Nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1993-1-6:2010-12 (en: non-
+contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1993-1-6:2010-12. 
+DIN EN 1993-1-6:2010-12 und dieser Nationale Anhang DIN EN 1993-1-6/NA:2010-12 ersetzen 
+DIN 18800-4:2008-11. 
+Änderungen 
+Gegenüber DIN 18800-4:2008-11 wurden folgende Änderungen vorgenommen: 
+a) nationale Festlegungen zu DIN EN 1993-1-6:2010-12 aufgenommen. 
+Frühere Ausgaben 
+DIN 18800-4: 1990-11, 2008-11 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-6/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen zu den Grundregeln für die Bemessung von 
+Stahlkonstruktionen, die die Form von Rotationsschalen haben, die bei der Anwendung von 
+DIN EN 1993-1-6:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1993-1-6:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1993-1-6:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1993-1-6:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP, en: Nationally determined parameters). 
+ 3.1(4) 
+ 4.1.4(3) 
+ 5.2.4(1) 
+ 6.3(5) 
+ 7.3.1(1) 
+ 7.3.2(1) 
+ 8.4.2(3) 
+ 8.4.3(2) 
+ 8.4.3(4) 
+ 8.4.4(4) 
+ 8.4.5(1) 
+ 8.5.2(2) 
+ 8.5.2(4) 
+ 8.7.2(7) 
+ 8.7.2(16) 
+ 8.7.2(18) 
+ 9.2.1(2)P 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1993-1-6:2010-12. Diese sind durch ein vorangestelltes "NCI" (en: non-contradictory complementary 
+information) gekennzeichnet. 
+ Lange Zylinder unter globaler Rohrbiegung oder globaler Rohrbiegung mit Normalkraft 
+ Lange Zylinder unter Außendruck 
+ Anhang NA.A (normativ) Kugelschalen unter konstantem Außendruck 
+ Literaturhinweise 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-6/NA:2010-12 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1993-1-6:2010-12. 
+NDP zu 3.1(4) Anmerkung 
+Die Werkstoffeigenschaften bei Temperaturen über 150 °C sind über einen bauaufsichtlichen 
+Verwendbarkeitsnachweis zu belegen. 
+NDP zu 4.1.4(3) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 5.2.4(1) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 6.3(5) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 7.3.1(1) Anmerkung 2 
+Verfeinerte Berechnungen sind hier nicht vorgesehen. 
+NDP zu 7.3.2(1) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.4.2(3) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.4.3(2) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.4.3(4) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.4.4(4) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.4.5(1) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.5.2(2) Anmerkung 
+Es gelten die Empfehlungen. 
+NDP zu 8.5.2(4) Anmerkung 1 
+Es gibt hier keine zusätzlichen Festlegungen zu den Parametern. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1993-1-6/NA:2010-12 
+NDP zu 8.7.2(7) Anmerkung 
+Alleine die Anforderungen an Funktion und Aussehen der Schale bestimmen die größte tolerierbare 
+Verformung. 
+NDP zu 8.7.2(16) Anmerkung 
+Bei der Festlegung geeigneter Imperfektionsformen rechtwinklig zur Schalenmittelfläche im Sinne von (11) 
+sind gegebenenfalls neben eigenformaffinen Formen nach (13) auch kollapsaffine oder nachbeulaffine 
+Formen in Erwägung zu ziehen. Darüber hinaus sind auch solche geometrischen Ersatzimperfektionen zu 
+bedenken, die nicht Abweichungen rechtwinklig zur Schalenmittelfläche, sondern parallel zur Schalenmittel-
+fläche beschreiben (z. B. Aufstandsimperfektionen bei stehenden Schalenbauten). 
+NDP zu 8.7.2(18) Anmerkung1 und Anmerkung 2 
+Es gelten die Empfehlungen. Darüber hinaus wird besonders auf (20) hingewiesen, womit solche Schalen-
+beulfälle abgedeckt werden sollen, bei denen zu groß angenommene Imperfektionen ein günstigeres 
+Ergebnis liefern als kleinere Imperfektionen. 
+NDP zu 9.2.1(2)P Anmerkung 
+Anstelle der Empfehlung gilt DIN EN 1993-1-9/NA. 
+NCI Lange Zylinder unter globaler Rohrbiegung oder globaler Rohrbiegung mit Normalkraft 
+Für lange Kreiszylinder mit 
+t
+r5,0 (NA.1) 
+darf der günstigere Faktor Cx nach D.1.2.1 (7) auch für Schalen mit E/fy,k 500 verwendet werden. Die beiden 
+anderen Anwendungsbedingungen in Gleichung (D.11) brauchen nicht beachtet zu werden. 
+ANMERKUNG In der nächsten Ausgabe von DIN EN 1993-1-6 wird dies aufgrund neuerer Erkenntnisse erfasst sein. 
+NCI Lange Zylinder unter Außendruck 
+Für lange Kreiszylinder mit 
+5,24 ; 100tr ; 57,1ky,
+E
+f
+t
+r (NA.2) 
+darf der elastische Imperfektions-Abminderungsfaktor für Umfangsbeulen nach D.1.3.2(1), Tabelle D.5, um 
+2Ring
+6001 , (NA.3) 
+erhöht werden. In Gleichung (NA.3) bedeuten: 
+ Grundwert nach D.1.3.2(1), Tabelle D.5, 
+ky,
+Ring
+257,01
+1
+f
+E
+r
+t
+ (NA.4) 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1993-1-6/NA:2010-12 
+NCI Anhang NA.A 
+(normativ) 
+Kugelschalen unter konstantem Außendruck 
+NCI NA.A.1 Allgemeines 
+Die angegebenen Regeln basieren sowohl auf umfangreichen numerischen Parameterstudien als auch auf 
+allen verfügbaren experimentellen Ergebnissen für Kugelschalen und Kugelkalotten unter konstantem 
+Außendruck (innerem Unterdruck) [1], [2]. Dabei sind sowohl die Beullasten als auch die axisymmetrischen 
+elasto-plastischen Traglasten berücksichtigt. In den in DIN EN 1993-1-6:2010-12, 5.3, Tabelle 5.2, 
+angegebenen Berechnungskonzepten sind die geometrisch und physikalisch nichtlinearen Berechnungen 
+unter Einschluss der Imperfektionen als GMNIA-Berechnung klassifiziert. Weitere Erläuterungen sind in 
+Abschnitt 15 der European Design Recommendations, 5th edition [3] zu finden. 
+NCI NA.A.2 Geometrie und beulrelevante geometrische Toleranzen 
+Legende 
+R Radius der Kugelmittelfläche 1 Breitenkreis
+t Schalendicke, 2 Kugelkalotte
+r0 Grundkreisradius der Kugelkalotte, 3 Grundkreis
+ Winkelkoordinate in der Meridianebene 4 Vollkugel
+Bild NA.A.1  Geometrie, Bezeichnungen 
+Für die beulrelevanten geometrischen Toleranzen gilt DIN EN 1993-1-6:2010-12, 8.4 sinngemäß, wobei 
+jeweils der Kugelradius R an die Stelle des Zylinderradius r und der Kugeldurchmesser 2 R an die Stelle des 
+Zylinderdurchmessers d tritt. Die Messung von Vorbeulen (siehe DIN EN 1993-1-6:2010-12, 8.4.4) sollte 
+sowohl in Meridianrichtung als auch in Umfangsrichtung jeweils mit lgx nach Gl. (8.6) und lgw nach Gl. (8.8) 
+aus DIN EN 1993-1-6:2010-12 durchgeführt werden. Eine Messung in Umfangsrichtung mit lg nach Gl. (8.7) 
+ist nicht erforderlich. Die gemessenen Formabweichungen müssen die Toleranzgrenzwerte der bei der 
+Bemessung gewählten Herstelltoleranz-Qualitätsklasse (siehe DIN EN 1993-1-6:2010-12, 4.3.5) einhalten. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1993-1-6/NA:2010-12 
+NCI NA.A.3 Anwendungsbereich 
+Die folgenden Regeln gelten für Kugelschalen und Kugelkalotten 
+ mit konstanter oder schwach veränderlicher Wanddicke, 
+ unter konstantem Außendruck oder konstantem innerem Unterdruck p
+oder 
+ unter Eigengewicht oder Schneebelastung (als konservative Näherung) 
+und 
+ unterschiedlicher Lagerung gemäß folgender Beschreibung: 
+ RBK 1: Vollkugel, nicht oder ringförmig tangential gelagert; 
+ RBK 2: Kugelkalotte mit eingespannt unverschieblichem Rand (BC1r in DIN EN 1993-1-6:2010-12, 
+Tabelle 5.1); 
+ RBK 3: Kugelkalotte mit gelenkig unverschieblichem Rand (BC1f in DIN EN 1993-1-6:2010-12, 
+Tabelle 5.1); 
+ RBK 4: Kugelkalotte mit normal zur Kugelmittelfläche radial verschieblichem Rand 
+(Membranlagerung) (w 0 / u = 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); 
+ RBK 5: Kugelkalotte mit in Grundkreisebene radial verschieblichem Rand ( u·sin w·cos = 0 / 
+u·cos + w·sin 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); 
+Bei einer Halbkugel ( = 900) stimmen die Randbedingungen RBK 4 und RBK 5 überein. In diesem Fall kann 
+RBK4 verwendet werden. 
+Bild NA.A.2  Darstellung der Randbedingungen 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1993-1-6/NA:2010-12 
+Bild NA.A.3  Lasten auf Kugelschalen und Kugelkalotten 
+ANMERKUNG Die Bemessungsregeln liegen für die Lastfälle Eigengewicht und Schneebelastung bezüglich 
+Stabilitätsversagen auf der sicheren Seite, wenn für den Druck p der Wert der größten Flächenlast rechtwinklig zur 
+Schalenmittelfläche eingesetzt wird. 
+Die folgenden Regeln sind nur anwendbar bei Kugelschalen, die die Bedingungen 
+0003t
+R (NA.A.1) 
+135 (Kugelkalotte), jedoch auch = 180° (Vollkugel) (NA.A.2) 
+erfüllen. 
+NCI NA.A.4 Abgrenzungskriterium 
+Für Kugelschalen, die die Bedingung 
+c
+ky
+Cf
+E
+t
+R
+,20 (NA.A.3) 
+und Kugelkalotten, die die Bedingung 
+t
+RR
+r 1,10 (NA.A.4) 
+erfüllen, braucht kein Beulsicherheitsnachweis geführt zu werden. 
+NCI NA.A.5 Idealer elastischer Beulwiderstand 
+Der ideale elastische Beulwiderstand pRcr wird bestimmt durch 
+2
+2 )1(3
+2
+R
+tEC
+v
+p cRcr (NA.A.5) 
+wobei der Beiwert Cc von den Randbedingungen abhängt und aus Tabelle NA.A.1 zu entnehmen ist. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1993-1-6/NA:2010-12 
+Tabelle NA.A.1  Beiwerte Cc
+RBK 1 2 3 4 5 
+Cc 1,0 0,8 0,7 0,4 0,1 
+Anwendbar für 135° 
+NCI NA.A.6 Imperfektions-Abminderungsfaktor (elastischer Bereich) 
+Für die Herstelltoleranz-Qualitätsklassen sollte eine der drei Klassen A, B oder C nach 
+DIN EN 1993-1-6:2010-12, Abschnitt 8 gewählt werden. 
+Der Imperfektions-Abminderungsfaktor für Kugelschalen im elastischen Bereich wird bestimmt durch 
+75,0
+90,11
+70,0
+t
+wk
+ (NA.A.6) 
+mit wk als charakterischer Imperfektionsamplitude 
+RtQwk
+1 (NA.A.7) 
+und dem Qualitätsparameter Q
+Qualitätsklasse Beschreibung Q 
+Klasse A exzellent 40 
+Klasse B hoch 25 
+Klasse C normal 16 
+NCI NA.A.7 Charakteristischer Beulwiderstand 
+Der charakteristische Beulwiderstand pRk wird bestimmt zu 
+RplRk pp (NA.A.8) 
+mit dem plastischen Bezugswiderstand 
+R
+tCfp plkyRpl
+2
+, (NA.A.9) 
+und Cpl nach Tabelle NA.A.2 in Abhängigkeit von den Randbedingungen sowie dem Beul-Abminderungsfaktor 
+0,1 für 0 (NA.A.10) 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1993-1-6/NA:2010-12 
+0
+00,1
+p
+für p0 (NA.A.11)
+2 für p (NA.A.12) 
+Rcr
+Rpl
+p
+p (NA.A.13) 
+0,1,70,0,20,00 (NA.A.14) 
+1p (NA.A.15) 
+Tabelle NA.A.2  Beiwerte Cpl
+RBK 1 2 3 4 5 
+Cpl 1,0 0,9 0,9 0,8 0,2 
+Anwendbar für 135° 
+NCI NA.A.8 Beulsicherheitsnachweis 
+Für den Bemessungswert des vorhandenen Druckes pEd muss gelten: 
+RdEd pp (NA.A.16) 
+wobei sich der Bemessungswert pRd des Beulwiderstandes aus 
+M
+RkRd
+pp (NA.A.17)
+ergibt. 
+Für den Teilsicherheitsbeiwert gilt DIN EN 1993-1-6/NA:2010-12, zu 8.5.2(2). M
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1993-1-6/NA:2010-12 
+NCI Literaturhinweise 
+[1] Albertin, U.: Bemessungskonzepte für Stabilitätsfälle imperfektionssensitiver Schalenstrukturen. Berichte 
+aus dem Konstr. Ingenieurbau 7/2000, TU München 2000. 
+[2] Wunderlich, W., Albertin, U.: Buckling behaviour of imperfect spherical shells. International Journal of 
+Nonlinear Mechanics 37 (2002), 589-604. 
+[3] ECCS: Buckling of Steel Shells  European Design Recommendations, 5 th Edition (Eds: J.M. Rotter / 
+H. Schmidt). ECCS-Publication No. 125, Brussels 2008. 
+[4] DASt-Richtlinie 020, Bemessung schlanker stählerner windbelasteter Kreiszylinderschalen. Stahlbau 
+Verlags- und Service GmbH, Düsseldorf. 
+11

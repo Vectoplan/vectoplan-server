@@ -1,0 +1,135 @@
+{
+  "document_id": "EN_1998-1__amendment__EC_8_Teil_1_A1",
+  "eurocode_family": "EC8",
+  "designation": "DIN EN 1998-1",
+  "document_kind": "amendment",
+  "file_name": "EC 8 Teil 1 A1.pdf",
+  "relative_path": "EC 8/EC 8 Teil 1 A1.pdf",
+  "sha256": "e24f7e5a5dce87ba283ca450f0668fdaa5931528931ad88d7e0e0a9fdfd6837f",
+  "pages": 6,
+  "text_pages": 6,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 10,
+  "equation_candidate_count": 0,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184052+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233408+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 8\\EC 8 Teil 1 A1.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Änderung zu „4.4.1 Allgemeines“ ............................................................................................. ...........4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Änderung zu „5.4.1.2.2 Stützen“ .............................................................................................. ..........4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Änderung zu „5.11.2.1.2 Überbemessene Verbindungen“ ..............................................................4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Änderung zu „5.11.3.2 Stützen“ ............................................................................................... ..........4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Änderung zu „5.11.3.5 Deckenscheiben“ ........................................................................................ ..4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1",
+      "title": "Änderung zu „4.4.1 Allgemeines“",
+      "pdf_page": 6
+    },
+    {
+      "clause": "2",
+      "title": "Änderung zu „5.4.1.2.2 Stützen“",
+      "pdf_page": 6
+    },
+    {
+      "clause": "3",
+      "title": "Änderung zu „5.11.2.1.2 Überbemessene Verbindungen“",
+      "pdf_page": 6
+    },
+    {
+      "clause": "4",
+      "title": "Änderung zu „5.11.3.2 Stützen“",
+      "pdf_page": 6
+    },
+    {
+      "clause": "5",
+      "title": "Änderung zu „5.11.3.5 Deckenscheiben“",
+      "pdf_page": 6
+    }
+  ],
+  "equation_candidates": [],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 2056,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 166,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 627,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 916,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 287,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1797,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "equation_candidates": 0
+    }
+  ]
+}

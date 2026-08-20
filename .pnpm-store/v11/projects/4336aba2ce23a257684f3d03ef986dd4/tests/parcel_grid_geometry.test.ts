@@ -20,7 +20,9 @@ import {
 } from "../src/frontend/world_edit/parcel_grid_geometry";
 import {
   resolveWorldEditSelectionBounds,
+  snapWorldEditRulerPoint,
   snapWorldEditSelectionHandle,
+  worldEditSelectionTopGridSegments,
 } from "../src/frontend/world_edit/selection_geometry";
 
 test("a normal 16k-cell parcel is no longer cut to the loaded terrain window", () => {
@@ -183,6 +185,34 @@ test("selection handles snap every axis to whole blocks from their drag origin",
   assert.deepEqual(expanded.minimum, initialBounds.minimum);
   assert.equal(lowered.minimum.y, 1);
   assert.deepEqual(lowered.maximum, initialBounds.maximum);
+});
+
+test("selection top grid outlines every selected block without leaving the box", () => {
+  const bounds = resolveWorldEditSelectionBounds(
+    { x: 2, y: 4, z: 8 },
+    { x: 4, y: 5, z: 9 },
+  );
+  const positions = worldEditSelectionTopGridSegments(bounds);
+
+  assert.equal(positions.length, ((bounds.size.x + 1) + (bounds.size.z + 1)) * 6);
+  assert.deepEqual(positions.slice(0, 6), [2, 6.008, 8, 2, 6.008, 10]);
+  assert.deepEqual(positions.slice(-6), [2, 6.008, 10, 5, 6.008, 10]);
+});
+
+test("ruler points snap near voxel corners and remain free at the face centre", () => {
+  const snapped = snapWorldEditRulerPoint({
+    targetPoint: { x: 10.06, y: 4, z: -1.08 },
+    sourceCell: { x: 10, y: 3, z: -2 },
+  });
+  const free = snapWorldEditRulerPoint({
+    targetPoint: { x: 10.5, y: 4, z: -1.5 },
+    sourceCell: { x: 10, y: 3, z: -2 },
+  });
+
+  assert.equal(snapped.snappedToCorner, true);
+  assert.deepEqual(snapped.point, { x: 10, y: 4, z: -1 });
+  assert.equal(free.snappedToCorner, false);
+  assert.deepEqual(free.point, { x: 10.5, y: 4, z: -1.5 });
 });
 
 test("logical fragments merge into one exact outline without their internal diagonal", () => {
@@ -394,7 +424,7 @@ test("rotated and skewed parcels preserve complete coverage at every tested angl
   }
 });
 
-test("reported Berlin project keeps red transition cells outside the buildable three-metre band", () => {
+test("reported Berlin project keeps blocked transition cells outside the buildable three-metre band", () => {
   const origin = { longitude: 13.395131, latitude: 52.517389 };
   const worldWidth = 40_000_000;
   const worldHeight = 20_000_000;
@@ -427,7 +457,7 @@ test("reported Berlin project keeps red transition cells outside the buildable t
     minimumArea: 1e-6,
   });
 
-  assert.ok(result.blockedCells.length > 0, "the intentional red transition area must remain visible and blocked");
+  assert.ok(result.blockedCells.length > 0, "the intentional blue transition area must remain visible and blocked");
   assert.ok(Math.abs(result.coveredArea - parcelGridPolygonArea(ring)) <= 0.02);
   const pointToSegmentDistance = (
     point: ParcelGridPoint,
@@ -457,7 +487,7 @@ test("reported Berlin project keeps red transition cells outside the buildable t
   }));
   assert.ok(
     minimumBlockedDistance >= 2.85,
-    `a red blocked cell leaked into the buildable three-metre strip (${minimumBlockedDistance.toFixed(3)} m)`,
+    `a blocked transition cell leaked into the buildable three-metre strip (${minimumBlockedDistance.toFixed(3)} m)`,
   );
   const logicalGroups = new Map<string, ParcelGridPartitionCell[]>();
   for (const cell of result.slantedCells) {

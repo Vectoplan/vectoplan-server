@@ -1,0 +1,435 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Dezember 2010 
+DIN EN 1992-1-2/NA DIN 
+ICS 13.220.50; 91.010.30; 91.080.40 
+Nationaler Anhang -
+National festgelegte Parameter-
+Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken-
+Tei11-2: Allgemeine Regeln - Tragwerksbemessung für den Brandfall 
+National Annex -
+Nationally determined parameters­
+Eurocode 2: Design of concrete structures -
+Part 1-2: General rules- Structural fire design 
+Annexe Nationale-
+Parametres determines au plan nationai­
+Eurocode 2: Calcul des structures en beton-
+Partie 1-2: Regles generales- Calcul du comportement au feu 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 16 Seiten 
+Preisgruppe 1 o 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1709623
+
+===== PDF-SEITE 2 =====
+DIN EN 1992-1-2/NA:2010-12 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................3
+NA.1 Anwendungsbereich .......................................................................................................... ...................4
+NA.2 Nationale Festlegungen zur Anwendung von DIN EN 1992-1-2:2010-12 .........................................4
+NA.2.1 Allgemeines.............................................................................................................. ..............................4
+NA.2.2 Nationale Festlegungen ........................................................................................................................4
+NCI Anhang AA (NCI) (normativ) Vereinfachtes Verfahren zum Nachweis der 
+Feuerwiderstandsklasse R 90 von Stahlbeton-Kragstützen aus Normalbeton ..............................9
+AA.1 Anwendungsgrenzen .......................................................................................................... ..................9
+AA.2 Allgemeines................................................................................................................ ............................9
+AA.3 Erweiterter Anwendungsbereich für die Diagramme in den Bildern AA.1 bis AA.4.....................13
+AA.4 Anwendung der Diagramme in den Bildern AA.1 bis AA.4 auf Stützen in horizontal 
+ausgesteiften Gebäuden .....................................................................................................................15
+NCI Literaturhinweise.....................................................................................................................................16
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1992-1-2/NA:2010-12 
+Vorwort 
+Diese Norm wurde vom Normenausschuss Bauwesen (NABau), Arbeitsausschuss NA 005-52-22 AA 
+Konstruktiver baulicher Brandschutz (Spiegelausschuss zu Teilbereichen von CEN/TC 250)  erarbeitet. 
+Diese Norm bildet den Nationalen Anhang zu DIN EN 1992-1-2:2010-12, Eurocode 2: Planung von 
+Stahlbeton- und Spannbetontragwerken  Teil 1-2: Allgemeine Regeln  Tragwerksbemessung für den 
+Brandfall. 
+Die Europäische Norm EN 1992-1-2:2004 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally Determined 
+Parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. 
+Eine Liste dieser Textstellen befindet sich im Unterabschnitt NA.2.1. 
+Darüber hinaus enthält dieser Nationale Anhang ergänzende nicht widersprechende Angaben und 
+Erläuterungen zur Anwendung von DIN EN 1992-1-2:2010-12 (en: Non-contradictory Complementary 
+Information, NCI), die nach dem Leitpapier L Anwendung der Eurocodes  der Europäischen Kommission 
+zulässig sind, sowie Festlegungen zur Anwendung der informativen Anhänge von DIN EN 1992-1-2. 
+Die in dieser Norm national getroffenen Festlegungen wurden auf der Grundlage von theoretischen 
+Untersuchungen und Vergleichen mit brandschutztechnischen Nachweisen nach DIN 4102-4 ermittelt und im 
+Hinblick auf die Aufrechterhaltung des erforderlichen nationalen Sicherheitsniveaus überprüft. 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1992-1-2:2010-12. 
+Der Anhang AA zu diesem Nationalen Anhang ist normativ. 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1992-1-2/NA:2010-12 
+NA.1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für die Bemessung und Konstruktion von Stahlbeton- 
+und Spannbetontragwerken für den Brandfall, die bei der Anwendung von DIN EN 1992-1-2:2010-12 in 
+Deutschland zu berücksichtigen sind. 
+Diese Norm gilt nur in Verbindung mit DIN EN 1992-1-2:2010-12. 
+NA.2 Nationale Festlegungen zur Anwendung von DIN EN 1992-1-2:2010-12 
+NA.2.1 Allgemeines 
+DIN EN 1992-1-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen 
+(en: Nationally Determined Parameters, NDP) aus: 
+ 2.1.3 (2) 5.3.2 (2) 
+ 2.3 (2)P 5.6.1 (1) 
+ 3.2.3 (5) 5.7.3 (2) 
+ 3.2.4 (2) 6.1 (5) 
+ 3.3.3 (1)P 6.2 (2) 
+ 4.1 (1)P 6.3 (1)P 
+ 4.5.1 (2) 6.4.2.1 (3) 
+ 5.2 (3) 6.4.2.2 (2) 
+Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1992-1-2:2010-12. Diese sind durch ein vorangestelltes NCI (en: Non-contradictory Complementary 
+Information) gekennzeichnet. 
+NA.2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1992-1-2:2010-12. 
+NCI zu 1.2 Normative Verweisungen 
+DIN 488-1, Betonstahl  Teil 1: Stahlsorten, Eigenschaften, Kennzeichnung
+DIN EN 206-1, Beton  Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität 
+DIN EN 1991-1-2/NA:201012, Nationaler Anhang  National festgelegte Parameter  Eurocode 1: 
+Einwirkungen auf Tragwerke  Teil 1-2: Allgemeine Einwirkungen  Brandeinwirkungen auf Tragwerke 
+E DIN EN 1992-1-1/NA:200809, Nationaler Anhang  National festgelegte Parameter  Eurocode 2: 
+Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken  Teil 1-1: Allgemeine 
+Bemessungsregeln und Regeln für den Hochbau
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1992-1-2/NA:2010-12 
+DIN EN 1992-1-1:200510, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken  Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau; Deutsche 
+Fassung EN 1992-1-1:2005 
+DIN EN 1992-1-2:2010-12, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbeton-
+tragwerken  Teil 1-2: Allgemeine Regeln  Tragwerksbemessung für den Brandfall; Deutsche Fassung 
+EN 1992-1-2:2004 + AC:2008 
+NDP zu 2.1.3 (2) Parameterabhängige Brandbeanspruchung 
+Zur ANMERKUNG Die Werte für 1 und 2, die in einem Land verwendet werden, können in dessen 
+Nationalen Anhang gefunden werden. Empfohlen werden die Werte 1 200 K und 2 240 K. 
+Es gilt die Empfehlung. 
+ANMERKUNG Diese Werte werden auch in den Nationalen Anhängen von DIN EN 1993-1-2/NA und 
+DIN EN 1994-1-2/NA festgelegt. 
+NDP zu 2.3 (2)P Bemessungswerte der thermischen Materialeigenschaften  
+Zur ANMERKUNG 1 Der Wert für M,fi 1,0, der in einem Land verwendet wird, kann in dessen 
+Nationalen Anhang gefunden werden. Der empfohlene Wert ist: 
+ für thermische Materialeigenschaften von Beton, Betonstahl und Spannstahl: M,fi 1,0; 
+ für mechanische Eigenschaften von Beton, Betonstahl und Spannstahl: M,fi 1,0. 
+Es gilt die Empfehlung. 
+NDP zu 3.2.3 (5) Betonstahl 
+Zur ANMERKUNG Die Entscheidung, ob Klasse N (Tabelle 3a) oder Klasse X (Tabelle 3b) in einem 
+Land verwendet wird, wird in seinem Nationalen Anhang geregelt. Grundsätzlich wird Klasse N empfohlen. 
+Klasse X wird nur empfohlen, wenn die Werte durch experimentelle Ergebnisse abgesichert sind.  
+Die Klassen N und X dürfen verwendet werden. 
+NDP zu 3.2.4 (2) Spannstahl 
+Zur ANMERKUNG Im Nationalen Anhang kann festgelegt sein, ob die Klasse A oder Klasse B in 
+einem Land zu verwenden ist. 
+Die Klassen A und B dürfen verwendet werden. 
+NDP zu 3.3.3 (1)P Thermische Leitfähigkeit 
+Zur ANMERKUNG 1 Der Wert für die thermische Leitfähigkeit im Bereich zwischen unterem und 
+oberem Grenzwert wird im Nationalen Anhang geregelt. 
+Es gilt die obere Grenzfunktion aus 3.3.3 (2). 
+NDP zu 4.1 (1) (P) Bemessungsverfahren  Allgemeines 
+Zur ANMERKUNG 3 Die Entscheidung, ob allgemeine Rechenverfahren in einem Land anwendbar sind, 
+kann im Nationalen Anhang angegeben sein. 
+Allgemeine Rechenverfahren dürfen angewendet werden. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1992-1-2/NA:2010-12 
+Sofern zur brandschutztechnischen Bewertung von Tragwerken oder Teiltragwerken mit allgemeinen 
+Rechenverfahren Rechenprogramme verwendet werden, wird davon ausgegangen, dass diese validiert sind. 
+Der Nationale Anhang DIN EN 1991-1-2/NA:2010-12, A nhang CC, gibt geeignete Beispiele für das 
+Validierungsverfahren. 
+NDP zu 4.5.1 (2) Explosive Betonabplatzungen 
+Zur ANMERKUNG Der Wert k, der in einem bestimmten Land angewendet wird, ist in dessen 
+Nationalem Anhang angegeben. Der empfohlene Wert ist 3. 
+Es gilt der Wert k
+ 4. 
+NDP zu 5.2 (3) Allgemeine Bemessungsregeln 
+Zur ANMERKUNG Wenn die Teilsicherheitsbeiwerte in den Nationalen Anhängen von EN 1990 von 
+den Werten in 2.4.2 abweichen, kann der oben genannte Wert fi 0,7 nicht gültig sein. In solchen Fällen 
+kann der Wert von fi im Nationalen Anhang des Landes festgelegt sein. 
+Für den Reduktionsfaktor gilt fi 0,7 (mit G 1,35, Q 1,5, GA 1,0, QA 1,0). 
+NDP zu 5.3.2 (2) Methode A 
+Zur ANMERKUNG 1 Der Wert von emax, in den Grenzen 0,15 h (oder b) emax 0,4 h (oder b), der in 
+einem bestimmten Land angewendet wird, ist in dessen Nationalem Anhang angegeben. Der empfohlene 
+Wert ist 0,15 h (oder b). 
+Die Begrenzung der Lastausmitte nach Theorie I. Ordnung auf emax entfällt. 
+NDP zu 5.6.1 (1) Balken  Allgemeines 
+Zur ANMERKUNG Die Entscheidung, ob Klasse WA, WB oder WC in einem Land verwendet wird, wird 
+in seinem Nationalen Anhang geregelt. 
+Es gilt die Stegdicke bw nach Klasse WC. 
+NDP zu 5.7.3 (2) Statisch unbestimmt gelagerte Platten (Durchlaufplatten)  
+Zur ANMERKUNG Zusätzliche Regeln zur Rotationsfähigkeit über den Auflagern können in den 
+Nationalen Anhängen gegeben werden. 
+Die Stützbewehrung ist gegenüber der nach DIN EN 1992-1-1 erforderlichen Länge aus der Zugkraftdeckung 
+beidseitig um 0,15 l weiter ins Feld zu führen, wobei l die Stützweite des angrenzenden größeren Feldes ist. 
+NDP zu 6.1 (5) Hochfester Beton  Allgemeines 
+Zur ANMERKUNG Die Werte fc, /fck für die Anwendung in einem bestimmten Land sind in dessen 
+Nationalem Anhang angegeben. Drei Klassen werden in Tabelle 6.1N angegeben. Jedoch beruhen die für 
+jede Klasse angegebenen Werte auf einer begrenzten Anzahl von Versuchsergebnissen. Die Auswahl und 
+Grenze dieser Klassen für bestimmte Festigkeitsklassen oder Betontypen für die Verwendung in einem 
+bestimmten Land sind in dessen Nationalem Anhang angegeben. Die empfohlene Klasse für Beton 
+C 55/67 und C 60/75 ist Klasse 1, für Beton C 70/85 und C 80/95 ist Klasse 2 und für Beton C 90/105 ist 
+Klasse 3. Siehe auch Bemerkung zu 6.4.2.1 (3) und 6.4.2.2 (2). 
+Tabelle 6.1N darf angewendet werden. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1992-1-2/NA:2010-12 
+NDP zu 6.2 (2) Betonabplatzungen 
+Zur ANMERKUNG Die Methoden, die in einem bestimmten Land anzuwenden sind, sind in dessen 
+Nationalem Anhang angegeben. 
+Die Methoden A, B, C und D dürfen angewendet werden. Bei Methode D ist der Anteil an Polypropylenfasern 
+auf den Wasserzementwert w/z zu beziehen. Für w/z 0,24 sind 4 kg/m 3 Polypropylenfasern und für 
+w/z 0,28 sind 2 kg/m 3 Polypropylenfasern in die Betonmischung zu geben. Zwischenwerte dürfen linear 
+interpoliert werden. 
+NDP zu 6.3 (1)P Thermische Eigenschaften 
+Zur ANMERKUNG 1 Der Wert der thermischen Leitfähigkeit für hochfesten Beton kann innerhalb der 
+Spannweite, die durch den oberen und unteren Grenzwert in 3.3.3 bestimmt wird, in jedem Land in dessen 
+Nationalem Anhang angegeben werden. 
+Es gilt die obere Grenzfunktion für die Wärmeleitfähigkeit aus 3.3.3 (2). 
+NDP zu 6.4.2.1 (3) Stützen und Wände 
+Zur ANMERKUNG k berücksichtigt die Übertragung von der 500 °C- auf die 460 °C-Isotherme für 
+Klasse 1 in Tabelle 6.1N beziehungsweise auf die 400 °C-Isotherme für die Klasse 2 in Tabelle 6.1N. Der 
+Wert k ist für jedes Land in dessen Nationalem Anhang angegeben. Der empfohlene Wert ist 1,1 für 
+Klasse 1 und 1,3 für Klasse 2. Für Klasse 3 werden genauere Methoden empfohlen.  
+Die Umrechnung der Querschnittsabmessungen mit dem Faktor k zur Berücksichtigung der Verschiebung von 
+der 500 °C-Isotherme auf die 460 °C-Isotherme darf für den Nachweis der Tragfähigkeit bei Stützen und 
+Wänden aus hochfestem Beton nicht angewendet werden. 
+Der Faktor k darf aber zur Vergrößerung der Mindestquerschnittsabmessungen und Achsabstände gegenüber 
+der Tabelle in Abschnitt 5 angewendet werden. 
+NDP zu 6.4.2.2 (2) Balken und Platten 
+Zur ANMERKUNG Der Wert von k
+m, der auf der in Tabelle 6.1 angegebenen reduzierten Festigkeit 
+beruht, ist für jedes Land in dessen Nationalem Anhang angegeben. Der empfohlene Wert ist in 
+Tabelle 6.2N angegeben. Für die Klasse 3 werden genauere Methoden empfohlen.  
+Der Reduktionsfaktor km zur Ermittlung der Momententragfähigkeit ist nicht anzuwenden. 
+NCI zu Anhang A Temperaturprofile 
+Temperaturprofile des Anhangs A dürfen angewendet werden. 
+NCI zu Anhang B Vereinfachte Berechnungsmethoden 
+Zu B.1 500 °C-Isothermen-Methode  
+Diese Methode darf nicht angewendet werden. 
+Zu B.2 Zonenmethode  
+Diese Methode darf für Bauteile, die auf Biegung mit oder ohne Normalkraft beansprucht werden, angewendet 
+werden. Für Druckglieder nach E DIN EN 1992-1-1/NA darf diese Methode nur mit zusätzlichen Annahmen 
+(siehe z. B. Literatur [2] und Literatur [3]) angewendet werden. 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1992-1-2/NA:2010-12 
+Zu B.3 Methode zur Beurteilung eines durch Biegemoment und Längskraft beanspruchten 
+Stahlbetonquerschnitts durch Abschätzung der Krümmung 
+Diese Methode darf nicht angewendet werden. 
+NCI zu Anhang C Knicken von Stützen unter Brandbedingungen 
+Die Tabellen C.1 bis C.9 des Anhangs C dürfen nicht angewendet werden. 
+Der Nachweis schlanker Stützen darf nach Anhang AA zu diesem Nationalen Anhang durchgeführt werden. 
+NCI zu Anhang D Berechnungsmethoden für Schub, Torsion und Verankerung der Bewehrung  
+Diese Berechnungsmethoden des Anhangs D dürfen nicht angewendet werden. 
+NCI zu Anhang E Vereinfachte Rechenverfahren für Balken und Platten 
+Die vereinfachten Rechenverfahren des Anhangs E dürfen angewendet werden. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1992-1-2/NA:2010-12 
+NCI 
+Anhang AA 
+(normativ) 
+Vereinfachtes Verfahren zum Nachweis der Feuerwiderstandsklasse R 90 
+von Stahlbeton-Kragstützen aus Normalbeton 
+AA.1 Anwendungsgrenzen 
+Das vereinfachte Nachweisverfahren gilt für Stahlbeton-Kragstützen mit ein-, drei- oder vierseitiger Brand-
+beanspruchung nach der Einheits-Temperaturzeitkurve. 
+Das Verfahren gilt für Stahlbeton-Kragstützen mit folgenden statisch-konstruktiven Randbedingungen: 
+ Normalbeton nach DIN EN 206-1 mit überwiegend quarzithaltiger Gesteinskörnung und Festigkeitsklasse 
+zwischen C20/25 und C50/60; 
+ einlagige Bewehrung aus warmgewalzten Betonstabstahl B500 nach DIN 488-1 und DIN EN 1992-1-2, 
+Tab. 3.2 a (Klasse N); 
+ bezogene Knicklänge 10 l0/h 50 (mit l0 nach DIN EN 1992-1-1:2005-10, 5.8.3.2); 
+ bezogene Lastausmitte 0 e1/h 1,5 (dabei ist e1 e0 ei mit ei nach DIN EN 1992-1-1:2005-10, 5.2); 
+ Mindestquerschnittsabmessung 300 mm hmin 800 mm; 
+ geometrischer Bewehrungsgrad 1% 8 %; 
+ bezogener Achsabstand der Längsbewehrung 0,05 a/h 0,15. 
+AA.2 Allgemeines 
+Für die Klassifizierung der Stahlbeton-Kragstützen in die Feuerwiderstandsklasse R 90 muss nachgewiesen 
+werden, dass der Bemessungswert der vorhandenen Normalkraft NE,fi,d nicht größer ist als der 
+Bemessungswert der Traglast nach 90 min Brandbeanspruchung NR,fi,d,90
+NE,fi,d NR,fi,d,90 (AA.1) 
+Der Nachweis erfolgt mit Hilfe der Diagramme in den Bildern AA.1 bis AA.4. Für die bezogene Lastausmitte 
+e1/h und die bezogene Ersatzlänge im Brandfall l0,fi/h kann in der rechten Diagrammhälfte der 
+Bemessungswert der bezogenen Stützentraglast abgelesen werden: 
+R,fi,d,90 NR,fi,d,90 / (Ac · fcd) (AA.2) 
+Für den Nachweis der Einspannung in der Unterkonstruktion oder im Stützenfundament kann in der linken 
+Diagrammhälfte das bezogene Gesamtmoment am Stützenfuß im Grenzzustand der Tragfähigkeit 
+entnommen werden: 
+tot,fi,d,90 Mtot,fi,d,90 / (Ac · h · fcd) (AA.3) 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1992-1-2/NA:2010-12 
+Dabei ist 
+Ac die Gesamtfläche des Betonquerschnitts; 
+h die Gesamthöhe des Betonquerschnitts; 
+fcd der Bemessungswert der einaxialen Druckfestigkeit des Betons bei Normaltemperatur nach 
+E DIN EN 1992-1-1/NA:2008-09, 3.1.6. 
+ANMERKUNG Die Diagramme in den Bildern AA.1 bis AA.4 wurden mit der Rohdichte 2 400 kg/m3 und der 
+Betonfeuchte k 3 % (Massenanteil) berechnet. Die Bewehrungsstäbe wurden auf Durchmesser 28 mm begrenzt. 
+Legende 
+1 Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd) 
+2 Querschnitt: h 300 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-
+verhältnis 2 % 
+X1 Gesamtmoment tot,fi,d,90
+X2 Längskraft R,fi,d,90 NR,fi,d,90 /(Ac · fcd) 
+Y Lastausmitte e1/h 
+Bild AA.1  Diagramm zur Ermittlung des Bemessungswerts der Stützentraglast NR,fi,d,90 und 
+des Gesamtmoments Mtot,fi,d,90 für einen Querschnitt mit h 300 mm 
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1992-1-2/NA:2010-12 
+Legende 
+1 Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd) 
+2 Querschnitt: h 450 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-
+verhältnis 2 % 
+X1 Gesamtmoment tot,fi,d,90
+X2 Längskraft R,fi,d,90 NR,fi,d,90 /(Ac · fcd) 
+Y Lastausmitte e1/h 
+Bild AA.2  Diagramm zur Ermittlung des Bemessungswerts der Stützentraglast NR,fi,d,90 und 
+des Gesamtmoments Mtot,fi,d,90 für einen Querschnitt mit h 450 mm 
+11
+
+===== PDF-SEITE 12 =====
+DIN EN 1992-1-2/NA:2010-12 
+Legende 
+1 Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd) 
+2 Querschnitt: h 600 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-
+verhältnis 2 % 
+X1 Gesamtmoment tot,fi,d,90
+X2 Längskraft R,fi,d,90 NR,fi,d,90 /(Ac · fcd) 
+Y Lastausmitte e1/h 
+Bild AA.3  Diagramm zur Ermittlung des Bemessungswerts der Stützentraglast NR,fi,d,90 und 
+des Gesamtmoments Mtot,fi,d,90 für einen Querschnitt mit h 600 mm 
+12
+
+===== PDF-SEITE 13 =====
+DIN EN 1992-1-2/NA:2010-12 
+Legende 
+1 Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd) 
+2 Querschnitt: h 800 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-
+verhältnis 2 % 
+X1 Gesamtmoment tot,fi,d,90
+X2 Längskraft R,fi,d,90 NR,fi,d,90 /(Ac · fcd) 
+Y Lastausmitte e1/h 
+Bild AA.4  Diagramm zur Ermittlung des Bemessungswerts der Stützentraglast NR,fi,d,90 und 
+des Gesamtmoments Mtot,fi,d,90 für einen Querschnitt mit h 800 mm 
+AA.3 Erweiterter Anwendungsbereich für die Diagramme in den Bildern AA.1 bis 
+AA.4 
+Die Diagramme in den Bildern AA.1 bis AA.4 gelten für 4-seitig brandbeanspruchte Stahlbeton-Kragstützen 
+mit Mindestquerschnittsabmessung h [300 mm, 450 mm, 600 mm und 800 mm], dem bezog enen 
+Achsabstand der Längsbewehrung a/h 0,10, der Betonfestigkeitsklasse C30/37 und dem geometrischen 
+Bewehrungsverhältnis 2 %. Für abweichende Brandbeanspruchung und Stützenparameter, die im 
+Anwendungsbereich nach AA.1 (2) liegen, dürfen die folgenden Regeln angewendet werden. 
+Für Zwischenwerte der Mindestquerschnittsabmessungen ist eine lineare Interpolation zwischen den Kurven 
+der Diagramme in den Bildern AA.1 bis AA.4 zulässig. Dabei ist eine konstante Schlankheit l0,fi und eine 
+konstante bezogene Lastausmitte e1/h anzusetzen. 
+13
+
+===== PDF-SEITE 14 =====
+DIN EN 1992-1-2/NA:2010-12 
+Bei 1- und 3-seitiger Brandbeanspruchung sowie für Zwischenwerte des bezogenen Achsabstandes der 
+Längsbewehrung, der Betonfestigkeitsklasse und des geometrischen Bewehrungsverhältnisses dürfen der 
+Bemessungswert der bezogenen Stützentraglast und das bezogene Gesamtmoment am Stützenfuß nach 
+folgenden Gleichungen ermittelt werden: 
+R,fi,d,90 kfi · ka · kC · k · XR90 (AA.4) 
+tot,fi,d,90 kfi · ka · kC · k · Xtot,90 (AA.5) 
+Dabei ist 
+kfi ein Beiwert zur Berücksichtigung der Brandbeanspruchung, siehe AA.2 (4); 
+ka ein Beiwert zur Berücksichtigung des Achsabstandes, siehe AA.2 (5); 
+kC ein Beiwert zur Berücksichtigung der Betonfestigkeitsklasse, siehe AA.2 (6); 
+k ein Beiwert zur Berücksichtigung des Bewehrungsverhältnisses, siehe AA.2 (7); 
+XR,90 R,fi,d,90 aus Diagramm in Bild AA.1 bis Bild AA.4; 
+Xtot,90 tot,fi,d,90 aus Diagramm in Bild AA.1 bis Bild AA.4. 
+Der Beiwert zur Berücksichtigung 1- oder 3-seitiger Brandbeanspruchung ist wie folgt festzulegen ( h in mm): 
+kfi min {e1/h; 1} · k1 h für 1-seitige Brandbeanspruchung (AA.6) 
+kfi min {0,6 0,2 · e1/h; 0,8} für 3-seitige Brandbeanspruchung (AA.7) 
+Dabei ist 
+h max {4  h/150; 0,7}; 
+k1 max {6  h/75; 0,3}. 
+Der Beiwert ka zur Berücksichtigung des Achsabstandes a/h 0,10 ist wie folgt festzulegen (h in mm): 
+ka (h  1)/0,05 · (a/h)  2 · h 3 für 0,10 a/h 0,15 (AA.8) 
+Dabei ist 
+h max {0,65 · (5  h/150)  k1; 1}; 
+k1 max {0,65 · (1  (e1/h)) · (3  h/150); 0]. 
+ka (1  h)/0,05 · (a/h) 2 · h  1 für 0,05 a/h 0,10 (AA.9) 
+Dabei ist 
+h 0,3 max {0,3 · (h  450)/350 k1; k1}; 
+k1 max {(1  (e1/h)) · k2; 0}; 
+k2 max {-0,1 · (h/150) 0,4; 0}. 
+14
+
+===== PDF-SEITE 15 =====
+DIN EN 1992-1-2/NA:2010-12 
+Der Beiwert kC zur Berücksichtigung der Betonfestigkeitsklasse ist wie folgt festzulegen: 
+kC (k1  1)/20 · fck  1,5 · k1 2,5 für 30 N/mm2 fck 50 N/mm2 (AA.10) 
+Dabei ist 
+k1 max {1,1  0,1 (e1/h); 1}. 
+kC (1  k1)/10 · fck 3 · k1  2 für 20 N/mm2 fck 30 N/mm2 (AA.11) 
+Dabei ist 
+k1 min {0,75 0,2 · (e1/h); 0,95}. 
+Der Beiwert k zur Berücksichtigung des Bewehrungsverhältnisses 2 % ist wie folgt festzulegen: 
+k min {1 (  2) · (e1/h); /2} für 2 % 8 % (AA.12) 
+k max {0,6  0,1 · ( 1) · (e1/h); /2} für 1 % 2 % (AA.13) 
+Für Stahlbeton-Kragstützen mit h 450 mm und gleichmäßig verteilter Bewehrung auf der zug- und 
+druckbeanspruchten Querschnittsseite (Eckbewehrung 0,5 · As,tot) dürfen die aus den Diagrammen der 
+Bilder AA.1 bis AA.4 ermittelten Werte für die Traglast R,fi,d,90 und für das Gesamtmoment am Stützenfuß 
+tot,fi,d,90 mit den Faktor 1,2 vergrößert werden. 
+Für Lastausmitten 1,5 e1/h 3,5 dürfen die bezogenen Stützentraglasten R,fi,d,90 (e1/h 3,5) aus Gleichung 
+(AA.14) und das bezogenen Gesamtmoment tot,fi,d,90 (e1/h 3,5) aus Gleichung (AA.15) ermittelt werden. 
+Zwischen der bezogenen Stützentraglast bei e1/h 1,5 und e1/h 3,5 darf linear interpoliert werden. 
+R,fi,d,90 (e1/h 3,5) 0,5 · R,fi,d,90 (e1/h 1,5) (AA.14) 
+tot,fi,d,90 (e1/h 3,5) 1,0 · tot,fi,d,90 (e1/h 1,5) (AA.15) 
+AA.4 Anwendung der Diagramme in den Bildern AA.1 bis AA.4 auf Stützen in 
+horizontal ausgesteiften Gebäuden 
+Die Diagramme der Bilder AA.1 bis AA.4 dürfen entsprechend den Angaben in AA.1 und AA.2 auch auf 
+Stahlbetonstützen in horizontal ausgesteiften Gebäuden angewendet werden, die am Stützenkopf entweder 
+unverschieblich und rotationsbehindert (Stützen in Regelgeschossen) oder unverschieblich, jedoch nicht 
+rotationsbehindert (Stützen im Dachgeschoss) gelagert sind. 
+Dabei ist die bezogene Knicklänge in AA.1 10 
+l0,fi / h 50. 
+Die bezogene Knicklänge im Brandfall l0,fi/h als Eingangswert für die Diagramme ergibt sich 
+ bei rotationsbehinderter Lagerung beider Stützenenden zu l0,fi 0,5 l; 
+ bei nicht rotationsbehinderter Lagerung eines Stützenendes zu l0,fi 0,7 l. 
+15
+
+===== PDF-SEITE 16 =====
+DIN EN 1992-1-2/NA:2010-12 
+16 
+NCI Literaturhinweise 
+DIN 4102-4, Brandverhalten von Baustoffen und Bauteilen  Zusammenstellung und Anwendung 
+klassifizierter Baustoffe, Bauteile und Sonderbauteile 
+DIN 4102-4/A1, Brandverhalten von Baustoffen und Bauteilen  Teil 4: Zusammenstellung und Anwendung 
+klassifizierter Baustoffe, Bauteile und Sonderbauteile; Änderung A1
+DIN EN 1993-1-2/NA, Nationaler Anhang  National festgelegte Parameter  Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 1-2: Allgemeine Regeln  Tragwerksbemessung für den Brandfall 
+DIN EN 1994-1-2/NA, Nationaler Anhang  National festgelegte Parameter  Eurocode 4: Bemessung und 
+Konstruktion von Verbundtragwerken aus Stahl und Beton  Teil 1-2: Allgemeine Regeln  
+Tragwerksbemessung für den Brandfall 
+[1] HOSSER, D.; RICHTER, E.: Überführung von EN 1992-1-2 in EN-Norm und Bestimmung der national 
+festzulegenden Parameter (NDP) im Nationalen Anhang zu EN 1992-1-2. Abschlussbericht zum 
+Forschungsvorhaben ZP 52-5-7.240-1132/04 im Auftrag des Deutschen Instituts für Bautechnik. Institut 
+für Baustoffe, Massivbau und Brandschutz, Technische Universität Braunschweig. Fraunhofer IRB 
+Verlag, 2007, ISBN 978-3-8167-7426-6. 
+[2] CYLLOK, M.; ACHENBACH, M.: Anwendung der Zonenmethode zur brandschutztechnischen 
+Bemessung von Stahlbetonstützen. Beton- und Stahlbetonbau 104 (2009), Heft 12, S. 813-822. 
+[3] ZILCH, K.; MÜLLER, A.; REITMAYER, C.: Erweiterte Zonenmethode zur brandschutztechnischen 
+Bemessung von Stahlbetonstützen, Bauingenieur Band 85, Juni 2010, S. 282-287.

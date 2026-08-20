@@ -1,0 +1,41 @@
+{
+  "schema_version": "structural-report-template-test-cases/0.1",
+  "cases": [
+    {
+      "case_id": "preview_residential_complex",
+      "label": "Komplexes Mehrfamilienhaus",
+      "template_id": "hochbau-mehrfamilienhaus",
+      "facts": {"has_basement": true, "has_transfer_storey": true, "has_balconies": true, "has_masonry": true, "has_plate_fe": true},
+      "preview": {"project_name": "Wohnquartier Lindenhof", "position_ref": "D.14", "position_title": "Abfangdecke über Erdgeschoss", "sample_values": {"geometry": "8,40 × 6,75 m · h = 28 cm", "material": "C30/37 · B500B", "support": "Flachdecke mit Wandscheiben", "gk": "gk = 8,7 kN/m²", "qk": "qk = 3,0 kN/m²", "result": "wmax = 18,4 mm"}, "check": {"label": "Verformung", "demand": "18,4 mm", "resistance": "28,0 mm", "utilization": 66}},
+      "expected_pipeline_ids": ["PIPE-STRUCT-RESIDENTIAL-MULTI-001"],
+      "expected_figure_kind": "building"
+    },
+    {
+      "case_id": "preview_highrise_core",
+      "label": "Hochhaus mit Aussteifungskern",
+      "template_id": "hochbau-hochhaus",
+      "facts": {"has_dynamic_analysis": true, "has_second_order": true, "has_construction_stages": true, "has_wind_comfort": true},
+      "preview": {"project_name": "Hochpunkt am Stadtpark", "position_ref": "K.01", "position_title": "Aussteifungskern · Gesamtmodell", "sample_values": {"geometry": "H = 92,0 m · 26 Geschosse", "material": "C50/60 · B500B", "support": "Kern-Wandscheiben-System", "gk": "164 MN", "qk": "31 MN", "result": "uH = 118 mm"}, "check": {"label": "Horizontale Verformung", "demand": "118 mm", "resistance": "184 mm", "utilization": 64}},
+      "expected_pipeline_ids": ["PIPE-STRUCT-HIGHRISE-001"],
+      "expected_figure_kind": "tower"
+    },
+    {
+      "case_id": "preview_road_bridge_complete",
+      "label": "Dreifeld-Straßenbrücke",
+      "template_id": "ingenieurbau-strassenbruecke",
+      "facts": {"has_prestress": true, "has_fatigue": true, "has_construction_stages": true, "has_bearings": true, "has_deep_foundation": true},
+      "preview": {"project_name": "Ersatzneubau Brücke über die Aue", "position_ref": "Ü.01", "position_title": "Spannbetonüberbau · Feld 2", "sample_values": {"geometry": "32,0 + 44,0 + 32,0 m", "material": "C45/55 · Y1860", "support": "Dreifeld-Durchlaufträger", "gk": "gk = 184 kN/m", "qk": "LM1 = 126 kN/m", "result": "MEd = 24,8 MNm"}, "check": {"label": "Biegung im Feld", "demand": "24,8 MNm", "resistance": "31,6 MNm", "utilization": 78}},
+      "expected_pipeline_ids": ["PIPE-STRUCT-BRIDGE-001", "PIPE-STRUCT-BRIDGE-ROAD-001", "PIPE-COMP-BRIDGE-ABUTMENT-001", "PIPE-COMP-BRIDGE-BEARING-001"],
+      "expected_figure_kind": "bridge"
+    },
+    {
+      "case_id": "preview_industrial_hall_crane",
+      "label": "Logistikhalle mit Kranbahn",
+      "template_id": "hochbau-industrie-logistikhalle",
+      "facts": {"has_crane": true, "has_large_span": true, "has_snow_drift": true, "has_fire_design": true},
+      "preview": {"project_name": "Logistikzentrum Nord", "position_ref": "R.03", "position_title": "Hallenrahmen Achse 3", "sample_values": {"geometry": "L = 32,0 m · H = 12,5 m", "material": "S355", "support": "Zweigelenkrahmen mit Verbänden", "gk": "gk = 18,2 kN/m", "qk": "Kran + Schnee + Wind", "result": "MEd = 1.482 kNm"}, "check": {"label": "Rahmenstiel", "demand": "1.482 kNm", "resistance": "1.835 kNm", "utilization": 81}},
+      "expected_pipeline_ids": ["PIPE-STRUCT-HALL-001", "PIPE-STRUCT-WAREHOUSE-001"],
+      "expected_figure_kind": "hall"
+    }
+  ]
+}

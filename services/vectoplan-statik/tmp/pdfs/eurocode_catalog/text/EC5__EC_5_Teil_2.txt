@@ -1,0 +1,1099 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1995-2 
+ICS 91.010.30; 91.080.20 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1995-2:2006-02; 
+teilweiser Ersatz für 
+DIN 1074:2006-09 
+Eurocode 5: Bemessung und Konstruktion von Holzbauten­
+Teil 2: Brücken; 
+Deutsche Fassung EN 1995-2:2004 
+Eurocode 5: Design of timber structures­
+Part 2: Bridges; 
+German version EN 1995-2:2004 
+Eurocode 5: Conception et calcul des structures en bois­
+Partie 2: Ponts; 
+Version allemande EN 1995-2:2004 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 34 Seiten 
+Preisgruppe 15 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723739
+
+===== PDF-SEITE 2 =====
+DIN EN 1995-2:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1995-2:2004) wurde vom Technischen Komitee CEN/TC 250 Eurocodes für den 
+konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten wird. 
+Auf nationaler Ebene ist im DIN Deutsches Institut für Normung e. V. der NABau-Arbeitsausschuss 
+NA 005-04-01 AA Holzbau zuständig. 
+Diese Europäische Norm wurde vom CEN am 26. August 2004 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im 
+Vorwort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Änderungen 
+Gegenüber DIN V ENV 1995-2:1999-08 wurden folgende Änderungen vorgenommen: 
+a) Vornorm-Charakter wurde aufgehoben; 
+b) die Stellungnahmen der nationalen Normungsinstitute sind eingearbeitet und der Text ist vollständig 
+überarbeitet worden; 
+c) sprachlich wurde weitgehend die Terminologie von DIN 1074 übernommen. 
+Gegenüber DIN EN 1995-2:2006-02 und DIN 1074:2006-09 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 1074: 1930-08, 1941x-08, 1991-05, 2006-09 
+DIN V ENV 1995-2: 1999-08 
+DIN EN 1995-2: 2006-02 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1995-2 
+ November 2004 
+ICS 91.010.30; 91.080.20; 93.040 Ersatz für ENV 1995-2:1997 
+Deutsche Fassung 
+ Eurocode 5: Bemessung und Konstruktion von Holzbauten  
+Teil 2: Brücken 
+Eurocode 5: Design of timber structures  
+Part 2: Bridges 
+Eurocode 5: Conception et calcul des structures bois 
+Partie 2: Ponts 
+Diese Europäische Norm wurde vom CEN am 26. August 2004 angenommen. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter denen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Listen 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum oder bei jedem CEN-Mitglied auf Anfrage 
+erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sprache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Griechenland, 
+Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, Schweden, der 
+Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: rue de Stassart, 36 B- 1050 Brüssel 
+© 2004 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1995-2:2004 D
+
+===== PDF-SEITE 4 =====
+EN 1995-2:2004 (D) 
+2 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................4
+Hintergrund des Eurocode-Programms ...........................................................................................................4
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................5
+Nationale Normen zur Umsetzung der Eurocodes..........................................................................................6
+Zusammenhang zwischen den Eurocodes und harmonisierten technischen Spezifikationen 
+(ENs und ETAs) für Bauprodukte......................................................................................................................6
+Zusätzliche besondere Hinweise zu EN 1995-2 ...............................................................................................6
+Nationaler Anhang für EN 1995-2......................................................................................................................7
+1 Allgemeines.................................................................................................................. ..........................8
+1.1 Anwendungsbereich .......................................................................................................... ...................8
+1.1.1 Anwendungsbereich der EN 1995-1-1 ........................................................................................ .........8
+1.1.2 Anwendungsbereich der EN 1995-2.......................................................................................... ...........8
+1.2 Normative Verweisungen..................................................................................................... .................9
+1.3 Annahmen ................................................................................................................... ...........................9
+1.4 Unterscheidung von Prinzipien und Anwendungsregeln .................................................................9
+1.5 Begriffe ................................................................................................................... ................................9
+1.5.1 Allgemeines.............................................................................................................. ..............................9
+1.5.2 Zusätzliche Begriffe in EN 1995-2 ........................................................................................ ................9
+1.6 Formelzeichen in EN 1995-2 ................................................................................................. ............. 12
+2 Grundlagen für die Bemessung und Konstruktion......................................................................... 14
+2.1 Allgemeines................................................................................................................ ......................... 14
+2.2 Grundsätze der Bemessung nach Grenzzuständen ....................................................................... 14
+2.3 Basisvariable.............................................................................................................. ......................... 15
+2.3.1 Einwirkungen und Umgebungseinflüsse ...................................................................................... ... 15
+2.4 Nachweis durch die Methode der Teilsicherheitsbeiwerte ............................................................ 15
+2.4.1 Bemessungswert der Baustoffeigenschaft................................................................................... ... 15
+3 Baustoffe .................................................................................................................... ......................... 16
+4 Dauerhaftigkeit.............................................................................................................. ...................... 16
+4.1 Holz ....................................................................................................................... ............................... 16
+4.2 Widerstand gegen Korrosion ................................................................................................. ........... 17
+4.3 Feuchteschutz von Holzplatten durch Versiegelung...................................................................... 17
+5 Grundlagen der Berechnung .................................................................................................... ......... 17
+5.1 Deckplatten aus Lamellen................................................................................................... ............... 17
+5.1.1 Allgemeines.............................................................................................................. ........................... 17
+5.1.2 Vertikale Einzellasten ................................................................................................... ...................... 18
+5.1.3 Vereinfachte Berechnung .................................................................................................. ................ 19
+5.2 Zusammengesetzte Bauteile .................................................................................................. ........... 19
+5.3 Holz-Beton-Verbundbauteile ................................................................................................. ............ 20
+6 Grenzzustände der Tragfähigkeit.............................................................................................. ........ 20
+6.1 Deckplatten................................................................................................................ .......................... 20
+6.1.1 Systemsteifigkeit ........................................................................................................ ........................ 20
+6.1.2 Deckplatten aus zusammengespannten Lamellen.......................................................................... 22
+6.2 Ermüdung................................................................................................................... ......................... 24
+7 Grenzzustände der Gebrauchstauglichkeit ..................................................................................... 2 4
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1995-2:2004 (D) 
+3 
+Seite 
+7.1 Allgemeines ................................................................................................................ .........................24
+7.2 Grenzwerte für Durchbiegungen .............................................................................................. .........24
+7.3 Schwingungen............................................................................................................... ......................25
+7.3.1 Durch Fußgänger verursachte Schwingungen ................................................................................2 5
+7.3.2 Durch Wind verursachte Schwingungen ...................................................................................... ....25
+8 Verbindungen ................................................................................................................. .....................25
+8.1 Allgemeines ................................................................................................................ .........................25
+8.2 Holz-Beton-Verbindungen in Verbundträgern.................................................................................. 25
+8.2.1 Querbelastete stiftförmige Verbindungsmittel............................................................................. ....25
+8.2.2 Kerbverbindungen......................................................................................................... ......................26
+9 Ausführung und Überwachung................................................................................................... .......26
+Anhang A (informativ) Ermüdungsnachweis .................................................................................................27
+A.1 Allgemeines ................................................................................................................ .........................27
+A.2 Ermüdungswirksame Einwirkungen ............................................................................................. ....28
+A.3 Ermüdungsnachweis .......................................................................................................... ................28
+Anhang B (informativ) Durch Fußgänger verursachte Schwingungen .......................................................30
+B.1 Allgemeines ................................................................................................................ .........................30
+B.2 Vertikale Schwingungen..................................................................................................... ................30
+B.3 Horizontale Schwingungen ................................................................................................... .............31
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1995-2:2004 (D) 
+4 
+Vorwort 
+Dieses Dokument (EN 1995-2:2004) wurde vom Technischen Komitee CEN/TC 250 Structural Euro-
+codes“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Mai 2005, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Diese Europäische Norm ersetzt die ENV 1995-2:1997. 
+CEN/TC 250 ist verantwortlich für alle Eurocodes des Konstruktiven Ingenieurbaues. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein 
+Programm auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des 
+Programms war die Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und schließlich diese ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Generation der Europäischen Normen in den 
+80er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes auf der Grundlage einer Vereinbarung
+1) zwischen 
+der Kommission und CEN über eine Reihe von Mandaten an CEN zu übertragen, damit diese den künftigen 
+Status von Europäischen Normen (EN) erhielten. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln 
+(z. B. die Ratsrichtlinie 89/106/EWG zu Bauprodukten  die Bauproduktenrichtlinie , die Ratsrichtlinien 
+93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die 
+entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+ EN 1990:2002 Eurocode: Grundlagen der Tragwerksplanung
+ EN 1991 Eurocode 1: Einwirkungen auf Tragwerke
+ EN 1992 Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten
+ EN 1993 Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaften und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89) 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1995-2:2004 (D) 
+5 
+ EN 1994 Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten
+ EN 1995 Eurocode 5: Bemessung und Konstruktion von Holzbauten
+ EN 1996 Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten
+ EN 1997 Eurocode 7: Bemessung und Konstruktion in der Geotechnik
+ EN 1998 Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+ EN 1999 Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen
+Die Europäischen Normen berücksichtigen die Verantwortung der Bauaufsichtsorgane der jeweiligen 
+Mitgliedsländer bei der nationalen Festlegung sicherheitsbezogener Werte, so dass diese Werte von Land zu 
+Land unterschiedlich sein können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und EFTA erkennen an, dass die Eurocodes als Bezugsdokumente für die 
+folgenden Zwecke dienen: 
+ als Mittel zum Nachweis der Übereinstimmung von Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1  
+Mechanischer Widerstand und Stabilität  und der wesentlichen Anforderung Nr. 2  Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs). 
+Die Eurocodes haben, soweit sie sich auf Bauwerke selbst beziehen, eine direkte Verbindung zu den 
+Grundlagendokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch 
+anderer Art als die harmonisierten Produktnormen sind3). Daher sind technische Gesichtspunkte, die sich aus 
+den Eurocodes ergeben, von den Technischen Komitees des CEN und/oder den Arbeitsgruppen der EOTA, 
+die an Produktnormen arbeiten, zu beachten, damit diese technischen Spezifikationen mit den Eurocodes 
+vollständig kompatibel sind. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Anforderungen in Grundlagendokumenten 
+zu konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter ENs und ETAGs/ETAs zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+ die wesentlichen Anforderungen zu konkretisieren, indem die Begriffe und, soweit erforderlich, die technischen 
+Grundlagen für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ Methoden zur Verbindung dieser Klassen oder Anforderungshöhen mit technischen Spezifikationen anzugeben, 
+z. B. rechnerische oder Testverfahren, Entwurfsregeln usw., 
+ als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1995-2:2004 (D) 
+6 
+Die Eurocodes liefern allgemeine Bemessungsregeln für den täglichen Gebrauch für die Berechnung und 
+Bemessung von ganzen Tragwerken und von Einzelbauteilen sowohl bewährter als auch neuartiger Art. 
+Außergewöhnliche Bauweisen oder Bemessungssituationen sind nicht speziell abgedeckt und bedürfen 
+gegebenenfalls einer zusätzlichen Fachbeurteilung durch den Tragwerksplaner, wofür es erforderlich ist, 
+Experten zu Rate zu ziehen. 
+Nationale Normen zur Umsetzung der Eurocodes 
+Die nationalen Normen, die die Eurocodes enthalten, umfassen den Gesamttext des Eurocodes 
+(einschließlich möglicher Anhänge), wie vom CEN veröffentlicht, dem eine nationale Titelseite und ein 
+nationales Vorwort vorangestellt und nationaler Anhang hinzugefügt sein dürfen. 
+Der nationale Anhang darf nur über solche Parameter Angaben enthalten, die im Eurocode für eine nationale 
+Wahl offen gelassen und als national festgelegte Parameter zur Anwendung bei der Berechnung und 
+Bemessung von Hochbauten und Ingenieurbauwerken gelten, die in dem betreffenden Land errichtet werden 
+sollen, wie z. B.: 
+ Werte und/oder Klassen, für die im Eurocode Alternativen vorgegeben sind; 
+ zu verwendende Werte, für die im Eurocode nur ein Formelzeichen angegeben ist; 
+ länderspezifische Angaben (geographisch, klimatisch usw.), z. B. Schneekarten 
+ die anzuwendenden Verfahren in Fällen, in denen im Eurocode Alternativen angegeben sind; 
+ Entscheidung über die Anwendung informativer Anhänge; 
+ Hinweise auf nicht widersprüchliche, zusätzliche Informationen zur Unterstützung des Tragwerkplaners 
+bei der Anwendung des Eurocodes. 
+Zusammenhang zwischen den Eurocodes und harmonisierten technischen 
+Spezifikationen (ENs und ETAs) für Bauprodukte 
+Harmonisierte technische Spezifikationen für Bauprodukte und technische Regeln für Bauwerke 4) müssen 
+miteinander vereinbar sein. Außerdem müssen alle zusätzlichen Angaben zur CE-Kennzeichnung der 
+Bauprodukte mit Bezug zu den Eurocodes deutlich erkennen lassen, welche auf nationaler Ebene 
+festgelegten Parameter in Betracht gezogen wurden. 
+Zusätzliche besondere Hinweise zu EN 1995-2 
+Die EN 1995 behandelt die Grundsätze und Anforderungen an die Sicherheit, die Gebrauchstauglichkeit und 
+die Dauerhaftigkeit von Holzbauwerken. Sie basiert auf dem Verfahren mit Grenzzuständen in Verbindung mit 
+dem Verfahren der Teilsicherheitsbeiwerte. 
+Für Entwurf, Berechnung und Bemessung von Neubauten soll EN 1995-2 zusammen mit EN 1995-1-1 und 
+EN 1990:2002 und den relevanten Teilen der EN 1991 unmittelbar angewendet werden. 
+Zahlenwerte für Teilsicherheitsbeiwerte und andere Zuverlässigkeitsparameter werden als Grundwerte 
+empfohlen, für die ein hinreichendes Zuverlässigkeitsniveau besteht. Sie wurden unter der Annahme gewählt, 
+dass ein hinreichendes Ausführungsniveau und Qualitätsmanagement gewährleistet sind. Wenn EN 1995-2 
+von anderen CEN/TCs als Grundlagendokument herangezogen wird, müssen die gleichen Werte benutzt 
+werden. 
+4) Siehe Artikel 3.3 und Artikel 12 der Bauproduktenrichtlinie sowie die Abschnitte 4.2, 4.3.1, 4.3.2 und 5.2 des 
+Interpretierenden Dokuments 1. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1995-2:2004 (D) 
+7 
+Nationaler Anhang für EN 1995-2 
+Diese Norm enthält alternative Verfahren, Werte und Empfehlungen mit Anmerkungen, für die eine nationale 
+Wahl getroffen werden darf. Daher sollte die Nationale Norm zur Erfüllung der EN 1995-2 einen nationalen 
+Anhang mit sämtlichen national festgelegten Parametern enthalten, die für den Entwurf, die Berechnung und 
+die Bemessung von Brücken in dem betreffenden Land einzuhalten sind. 
+Eine nationale Wahl in EN 1995-2 ist für die nachstehenden Abschnitte erlaubt: 
+2.3.1.2(1) Zuordnung von Einwirkungen zu Klassen der Lasteinwirkungsdauer 
+2.4.1 Teilsicherheitsbeiwerte für Baustoffeigenschaften 
+7.2 Grenzwerte für Durchbiegungen 
+7.3.1(2) Dämpfungskoeffizienten 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1995-2:2004 (D) 
+8 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+1.1.1 Anwendungsbereich der EN 1995-1-1 
+(1)P Die EN 1995-1-1 gilt für den Entwurf, die Berechnung und die Bemessung von Hochbauten und 
+Ingenieurbauwerken aus Holz (Vollholz, gesägt, gehobelt oder als Rundholz, Brettschichtholz oder 
+Bauprodukte aus Holz, wie z. B. Furnierschichtholz) oder Holzwerkstoffen, die mit Klebstoffen oder 
+mechanischen Verbindungsmitteln zusammengefügt sind. Sie erfüllt die Grundsätze und Anforderungen an 
+die Sicherheit und die Gebrauchstauglichkeit der Bauwerke und die Bemessungs- und Nachweisverfahren 
+hierfür nach EN 1990:2002. 
+(2)P Die EN 1995-1-1 behandelt nur die Anforderungen an die mechanische Festigkeit, die Gebrauchs-
+tauglichkeit, die Dauerhaftigkeit und den Feuerwiderstand von Holzbauten. Andere Anforderungen, z. B. 
+hinsichtlich des Wärme- und Schallschutzes, werden nicht behandelt. 
+(3) Die EN 1995-1-1 ist für die Anwendung in Verbindung mit den folgenden Normen vorgesehen: 
+EN 1990:2002 Grundlagen der Tragwerksplanung“, 
+EN 1991 Einwirkungen auf Tragwerke“, 
+ENs für Bauprodukte für Holzbauten, 
+EN 1998 Auslegung von Bauwerken gegen Erdbeben“, wenn die Bauten in Erdbebengebieten liegen. 
+(4) Der Eurocode 5 ist in mehrere Teile gegliedert: 
+EN 1995-1 Allgemeines“ 
+EN 1995-2 Brücken“ 
+(5) EN 1995-1 Allgemeines“ umfasst: 
+EN 1995-1-1 Allgemeine Regeln und Regeln für den Hochbau“ 
+EN 1995-1-2 Tragwerksbemessung für den Brandfall“ 
+1.1.2 Anwendungsbereich der EN 1995-2 
+(1) Die EN 1995-2 enthält allgemeine Grundlagen für die Bemessung und Konstruktion der Haupttrag-
+werksteile von Brücken, nämlich Tragwerksteile, die wichtig für die Zuverlässigkeit der ganzen Brücke sind. 
+Dabei sind die Haupttragwerksteile aus Holz, Holzwerkstoffen, Holz im Verbund mit Beton, Stahl oder 
+anderen Baustoffen hergestellt. 
+(2) Die folgenden Punkte werden in der EN 1995-2 behandelt: 
+ Abschnitt 1: Allgemeines 
+ Abschnitt 2: Grundlagen für die Bemessung und Konstruktion 
+ Abschnitt 3: Baustoffeigenschaften 
+ Abschnitt 4: Dauerhaftigkeit 
+ Abschnitt 5: Grundlagen der Berechnung 
+ Abschnitt 6: Grenzzustände der Tragfähigkeit 
+ Abschnitt 7: Grenzzustände der Gebrauchstauglichkeit 
+ Abschnitt 8: Verbindungen 
+ Abschnitt 9: Ausführung und Überwachung 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1995-2:2004 (D) 
+9 
+(3) Abschnitt 1 und Abschnitt 2 enthalten auch zusätzliche Abschnitte zu denen der EN 1990:2002 
+Eurocode: Grundlagen der Tragwerksplanung“. 
+(4) Wenn nicht anders angegeben, gilt EN 1995-1-1. 
+1.2 Normative Verweisungen 
+(1) Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+EN 1990:2002, Eurocode: Grundlagen der Tragwerksplanung
+EN 1990:2002/A1, Eurocode: Grundlagen der Tragwerksplanung/Zusatz 1  Anhang 2: Anwendung auf 
+Brücken
+EN 1991-1-4, Eurocode 1: Einwirkung auf Tragwerke  Teil 1-4: Windlasten
+EN 1991-2, Eurocode 1: Einwirkung auf Tragwerke  Teil 2: Verkehrslasten auf Brücken
+EN 1992-1-1, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken 
+Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau
+EN 1992-2, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken  Teil 2: 
+Brücken 
+EN 1993-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten Teil 2: Stahlbrücken
+EN 1995-1-1, Eurocode 5: Bemessung und Konstruktion von Holzbauten  Teil 1-1: Allgemeines  
+Allgemeine Regeln und Regeln für den Hochbau
+EN 10138-1, Spannstähle  Teil 1: Allgemeine Anforderungen
+EN 10138-4, Spannstähle  Teil 4: Stäbe
+1.3 Annahmen 
+(1) Zusätzliche Anforderungen für die Ausführung und Überwachung enthält Abschnitt 9. 
+1.4 Unterscheidung von Prinzipien und Anwendungsregeln 
+(1) Siehe EN 1995-1-1, 1.4(1). 
+1.5 Begriffe 
+1.5.1 Allgemeines 
+(1)P Es gelten die Begriffe in EN 1990:2002, 1.5 und EN 1995-1-1, 1.5. 
+1.5.2 Zusätzliche Begriffe in EN 1995-2 
+1.5.2.1 
+Kerbverbindung 
+Schubverbindung, bei der Teile des einen Bauteils in das andere eingebettet sind. Die verbundenen Teile 
+werden normalerweise durch mechanische Verbindungsmittel zusammengehalten 
+ANMERKUNG Ein Beispiel einer Kerbverbindung ist in Bild 1.1 dargestellt 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1995-2:2004 (D) 
+10 
+Legende 
+1 Holz 
+2 Beton 
+3 Verbindungsmittel 
+Bild 1.1  Beispiel einer Kerbverbindung 
+1.5.2.2 
+Deckplatten aus Lamellen 
+Deckplatten, gefertigt aus nebeneinander oder übereinander angeordneten Lamellen, zusammengehalten von 
+Nägeln oder Klebung, siehe Bilder 1.2 und 1.3 
+1.5.2.3 
+Deckplatten aus zusammengespannten Teilen, QS-Platte 
+Deckplatten aus nebeneinander angeordneten Teilen mit sägerauen oder gehobelten Oberflächen, die durch 
+Vorspannung und Kleben zusammengehalten werden, siehe Bild 1.2 b), c) und d) 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1995-2:2004 (D) 
+11 
+a) genagelte oder verschraubte Lamellen 
+b) zusammengespannt, aber nicht geklebt 
+c) geklebte und zusammengespannte Teile, Lamellen nebeneinander 
+d) geklebte und zusammengespannte Teile, Lamellen übereinander 
+Legende 
+1 Nagel oder Schraube 
+2 Stab oder Spannglied zur Vorspannung 
+3 Klebefuge zwischen geklebten Lamellen 
+4 Klebefuge zwischen Schichten geklebter Lamellen 
+Bild 1.2  Beispiele von Deckplatten aus nebeneinander angeordneten Lamellen 
+1.5.2.4 
+Deckplatten aus über Kreuz angeordneten Lamellen, Brettsperrholz 
+Deckplatten aus Lamellen in Schichten unterschiedlicher Faserrichtungen (quer oder mit anderen Winkeln). 
+Die Schichten sind durch Verklebung oder durch mechanische Verbindungsmittel miteinander verbunden, 
+siehe Bild 1.3 
+Bild 1.3  Beispiel einer Deckenplatte aus über Kreuz angeordneten Lamellen, Brettsperrholz 
+1.5.2.5 
+Vorspannung 
+eine ständige Wirkung aufgrund kontrollierter Kräfte und/oder Verformungen, die auf das Tragwerk 
+aufgebracht werden 
+ANMERKUNG Ein Beispiel ist die Vorspannung von Holzdeckplatten mit Stäben oder Spanngliedern, siehe Bild 1.2b) 
+bis 1.2d). 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1995-2:2004 (D) 
+12 
+1.6 Formelzeichen in EN 1995-2 
+Bei der Anwendung der EN 1995-2 gelten die folgenden Formelzeichen: 
+Große lateinische Buchstaben 
+A Fläche der Deckplatte der Brücke 
+E0,mean Mittelwert des Elastizitätsmoduls parallel zur Faser 
+E90,mean Mittelwert des Elastizitätsm oduls rechtwinklig zur Faser 
+F Kraft 
+Ft,Ed Bemessungswert der Zugkraft zwischen Holz und Beton 
+Fv,Ed Bemessungswert der Querkraft zwischen Holz und Beton 
+G0,mean Mittelwert des Schubmoduls für Gleitung in Ebenen, in denen die Fasern laufen 
+G90,mean Mittelwert des Schubmoduls für Gleitung in der Ebene rechtwinklig zur Faser (Rollschub) 
+M Gesamtmasse der Brücke 
+Mbeam Biegemoment eines Balkens, der eine Platte ersetzt 
+Mmax,beam maximales Biegemoment eines Balkens, der eine Platte ersetzt 
+Nobs Anzahl der jährlichen Spannungsspiele mit konstanter Amplitude 
+R Verhältnis der Spannungen 
+Kleine lateinische Buchstaben 
+a Abstand; Ermüdungsbeiwert 
+ahor,1 horizontale Beschleunigung, ausgelöst von einer die Brücke überquerenden Person 
+ahor,n horizontale Beschleunigung, ausgelöst von mehreren die Brücke überquerenden Personen 
+avert,1 vertikale Beschleunigung, ausgelöst von einer die Brücke überquerenden Person 
+avert,n vertikale Beschleunigung, ausgelöst von mehreren die Brücke überquerenden Personen 
+b Ermüdungsbeiwert; Breite 
+bef mitwirkende Breite 
+bef,c gesamte mitwirkende Breite der Betonplatte 
+bef,1; bef,2 mitwirkende Breiten der Betonplatte 
+blam Breite der Lamelle 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1995-2:2004 (D) 
+13 
+bw Aufstandsbreite der Last auf der Kontaktfläche 
+bw,middle Breite der Lastfläche, bezogen auf die Mittelfläche der Deckplatte 
+d Durchmesser; Außendurchmesser eines Stabes; Abstand 
+h Höhe des Balkens; Dicke der Platte 
+fc,90,d Bemessungswert der Druckfestigkeit rechtwinklig zur Faserrichtung 
+ffat,d Bemessungswert der Ermüdungsfestigkeit 
+fk charakteristische Festigkeit 
+fm,d,deck Bemessungswert der Biegefestigkeit der Deckplatte 
+fv,d,deck Bemessungswert der Scherfestigkeit der Deckplatte 
+fm,d,lam Bemessungswert der Biegefestigkeit der Lamellen 
+fv,d,lam Bemessungswert der Scherfestigkeit der Lamellen 
+fvert, fhor Eigenfrequenz der Schwingung in vertikaler und horizontaler Richtung 
+kc,90 Druckkraftbeiwert für Druckfestigkeit quer zur Faser 
+kfat Beiwert für die Festigkeitsminderung infolge der Anzahl der Belastungszyklen 
+khor Beiwert 
+kmod Modifikationsbeiwert 
+ksys Systemfestigkeitsbeiwert 
+kvert Beiwert 
+ Stützweite 
+1 Abstand 
+m Masse; Masse pro Flächeneinheit 
+mplate Biegemoment in einer Platte pro Flächeneinheit 
+mmax,plate maximales Biegemoment in einer Platte 
+n Anzahl der belasteten Lamellen; Anzahl der Fußgänger 
+nADT zu erwartender täglicher Verkehr im Jahresdurchschnitt über die Lebenszeit des Tragwerks 
+t Zeit; Dicke der Lamelle 
+tL Bemessungswert der Lebensdauer des Tragwerks in Jahren 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1995-2:2004 (D) 
+14 
+Kleine griechische Buchstaben 
+ erwarteter Prozentsatz von schweren, die Brücke überquerenden LKW 
+Beiwert für Schadensfolge; Verteilungswinkel 
+M Teilsicherheitsbeiwert für die Baustoffeigenschaften von Holz, unter Berücksichtigung von 
+Modellunsicherheiten und von geometrischen Abweichungen 
+M,c Teilsicherheitsbeiwert für die Baustoffeigen schaften von Beton, unter Berücksichtigung von 
+Modellunsicherheiten und von geometrischen Abweichungen 
+M,s Teilsicherheitsbeiwert für die Baustoffeigenschaften von Stahl, unter Berücksichtigung von 
+Modellunsicherheiten und von geometrischen Abweichungen 
+M,v Teilsicherheitsbeiwert für Schubverbinder, unter Berücksichtigung von Modellunsicherheiten und 
+von geometrischen Abweichungen 
+M,fat Teilsicherheitsbeiwert für den Ermüdungsnachweis von Baustoffen, unter Berücksichtigung von 
+Modellunsicherheiten und von geometrischen Abweichungen 
+Verhältnis für den Ermüdungsnachweis 
+mean mittlere Rohdichte 
+d Bemessungswert für den Reibungsbeiwert 
+d,max maximale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen 
+d,min minimale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen 
+p,min minimale verbleibende Langzeit-Querdruckspannung infolge Vorspannung 
+Dämpfungskoeffizient; Lehr’sches Dämpfungsmaß 
+2 Grundlagen für die Bemessung und Konstruktion 
+2.1 Allgemeines 
+(1)P Die Berechnung und Bemessung von Holzbrücken ist in Übereinstimmung mit EN 1990:2002 
+durchzuführen 
+2.2 Grundsätze der Bemessung nach Grenzzuständen 
+(1) Siehe EN 1995-1-1, 2.2. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1995-2:2004 (D) 
+15 
+2.3 Basisvariablen 
+2.3.1 Einwirkungen und Umgebungseinflüsse 
+2.3.1.1 Allgemeines 
+(1) Bei der Bemessung von Brücken zu berücksichtigende Einwirkungen werden aus den entsprechenden 
+Teilen der EN 1991 entnommen. 
+ANMERKUNG 1 Die entsprechenden Teile der EN 1991 für die Verwendung beim Nachweis umfassen: 
+ EN 1991-1-1 Wichten, Eigengewicht, Nutzlasten im Hochbau 
+ EN 1991-1-3 Schneelasten 
+ EN 1991-1-4 Windlasten 
+ EN 1991-1-5 Temperatureinwirkungen 
+ EN 1991-1-6 Einwirkungen während der Ausführung 
+ EN 1991-1-7 Außergewöhnliche Einwirkungen 
+EN 1991-2 Verkehrslasten auf Brücken.
+2.3.1.2 Klassen der Lasteinwirkungsdauer 
+(1) Veränderliche Einwirkungen infolge Fahrzeug- und Fußgängerverkehr sollten als Kurzzeiteinwirkungen 
+betrachtet werden. 
+ANMERKUNG Beispiele für die Zuweisung zur Klasse der Lasteinwirkungsdauer enthält EN 1995-1-1, 2.3.1. Die 
+empfohlene Klasse der Lasteinwirkungsdauer für Einwirkungen während der Montage ist Kurz“. Angaben bezüglich der 
+nationalen Wahl können im Nationalen Anhang enthalten sein. 
+(2) Aufgebrachte Vorspannkräfte rechtwinklig zur Faserrichtung sollten als Kurzzeiteinwirkung betrachtet 
+werden. 
+2.4 Nachweis durch die Methode der Teilsicherheitsbeiwerte 
+2.4.1 Bemessungswert der Baustoffeigenschaft 
+ANMERKUNG Tabelle 2.1 enthält die empfohlenen Teilsicherheitsbeiwerte für Baustoffeigenschaften ( M) für wesent-
+liche Kombinationen. Für außergewöhnliche Kombinationen ist der empfohlene Teilsicherheitsbeiwert M = 1,0. Angaben 
+bezüglich der nationalen Wahl können im Nationalen Anhang enthalten sein. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1995-2:2004 (D) 
+16 
+Tabelle 2.1  Empfohlene Teilsicherheitsbeiwerte M für Baustoffeigenschaften 
+1. Holz und Holzwerkstoffe 
+ normaler Nachweis
+ Vollholz M = 1,3 
+ Brettschichtholz M = 1,25 
+ LVL, Sperrholz, OSB M = 1,2 
+ Ermüdungsnachweis M,fat = 1,0 
+2. Verbindungen 
+ normaler Nachweis M = 1,3
+ Ermüdungsnachweis M,fat = 1,0
+3. Stahl in zusammengesetzten Tragwerken M,s = 1,15 
+4. Beton in Verbundteilen M,c = 1,5 
+5. Schubverbinder zwischen Holz und Beton in Verbundteilen 
+ normaler Nachweis M,v = 1,25 
+ Ermüdungsnachweis M,v,fat = 1,0 
+6. Stahlteile für Vorspannung M,s = 1,15 
+3 Baustoffe 
+(1)P Vorspannstähle müssen EN 10138-1 und EN 10138-4 entsprechen. 
+4 Dauerhaftigkeit 
+4.1 Holz 
+(1) Der Einfluss von Niederschlägen sowie von Wind und Sonneneinstrahlung sollte berücksichtigt werden. 
+ANMERKUNG 1 Der Einfluss von direkter Bewitterung durch Niederschläge von Holzbauteilen durch Regen oder 
+Sonneneinstrahlung kann durch konstruktive Schutzmaßnahmen, durch Verwendung von Holz mit hinreichender 
+natürlicher Dauerhaftigkeit oder durch Verwendung von mit Holzschutzmitteln gegen biologische Einflüsse behandeltes 
+Holz verringert werden. 
+ANMERKUNG 2 Wenn eine teilweise oder vollständige Abdeckung des Haupttragwerks nicht ausführbar ist, kann die 
+Dauerhaftigkeit durch eine oder mehrere der folgenden Maßnahmen verbessert werden: 
+ Verminderung von stehendem Wasser auf Holzteilen durch geeignete Oberflächenneigung; 
+ Vermeidung von Öffnungen, Schlitzen usw., wo sich Wasser ansammeln oder eindringen kann; 
+ Vermeidung der direkten Aufnahme von Wasser (z. B. kapillare Absorption bei Betonfundamenten) durch die 
+Verwendung von geeigneten Feuchtigkeitssperren; 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1995-2:2004 (D) 
+17 
+ Vermeidung von Rissbildung und Aufreißen von Klebefugen durch geeignete Abdichtung, vor allem in Bereichen, in 
+denen das Hirnholz ungeschützt ist; 
+ Beschränkung von Quellen und Schwinden durch Gewährleistung einer geeigneten Anfangsfeuchte und durch 
+Reduzierung von Feuchtigkeitsschwankungen durch geeigneten Oberflächenschutz; 
+Wahl einer Tragwerksgeometrie, die eine natürliche Belüftung aller Holzteile sicherstellt.
+ANMERKUNG 3 Das Risiko eines höheren Holzfeuchtegehaltes in Bodennähe, z. B. durch unzureichende Belüftung 
+aufgrund Vegetation zwischen Holz und Boden oder durch Spritzwasser, kann durch eine oder mehrere der folgenden 
+Maßnahmen verringert werden: 
+ Abdecken des Bodens mit einer Kiesschicht oder Ähnlichem, um die Vegetation zu verringern; 
+Wahl eines erhöhten Abstandes zwischen den Holzteilen und Geländeoberfläche.
+(2)P Für tragende Holzteile, die dem Abrieb durch Verkehr ausgesetzt sind, ist die Bemessungsdicke mit dem 
+vor der Auswechslung erlaubten Minimum anzusetzen. 
+4.2 Widerstand gegen Korrosion 
+(1) EN 1995-1-1, 4.2 gilt für Verbindungsmittel. EN 1993-2 gilt für alle Stahlteile, ausgenommen Verbindungs-
+mittel. 
+ANMERKUNG Ein Beispiel für besonders korrosive Umgebungsbedingungen ist eine Holzbrücke, an der die 
+Verwendung von korrosiven Enteisungsmitteln nicht ausgeschlossen werden kann. 
+(2)P Die Möglichkeit einer Spannungsrisskorrosion ist zu berücksichtigen. 
+(3) Stahleinlagen in Beton, wie Bewehrungsstäbe und Spannstähle, sollten nach den geltenden 
+Bestimmungen in EN 1992-1-1, 4.4.1 und EN 1992-2 geschützt werden. 
+(4) Der Einfluss einer chemischen Behandlung von Holz oder von Holz mit hohem Säuregehalt auf den 
+Korrosionsschutz von Verbindungsmitteln sollte in Betracht gezogen werden. 
+4.3 Feuchteschutz von Holzplatten durch Versiegelung 
+(1)P Es müssen Versiegelungsschichten mit einer ausreichenden Elastizität verwendet werden. 
+5 Grundlagen der Berechnung 
+5.1 Deckplatten aus Lamellen 
+5.1.1 Allgemeines 
+(1) Die Berechnung von Holzdeckplatten, die aus Lamellen zusammengesetzt sind, sollte auf einer der 
+folgenden Grundlagen erfolgen: 
+ der Theorie für orthotrope Platten; 
+ der Modellierung der Deckplatte als Trägerrost; 
+ einer vereinfachten Methode nach 5.1.3. 
+ANMERKUNG Bei einer genaueren Berechnung von Deckplatten aus Nadelholzlamellen sollten die Verhältnisse für die 
+Systemeigenschaften der Tabelle 5.1 entnommen werden. Die Querdehnzahl darf gleich null angenommen werden. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1995-2:2004 (D) 
+18 
+Tabelle 5.1  Systemeigenschaften von Deckplatten aus Lamellen 
+Art der Deckplatte E90,mean/E0,mean G0,mean/E0,mean G90,mean/G0,mean
+genagelte Lamellen 0 0,06 0,05 
+zusammengespannte Lamellen 
+ sägerau 0,015 0,06 0,08 
+ gehobelt 0,020 0,06 0,10 
+geleimte Lamellen 0,030 0,06 0,15 
+(2) Bei Deckplatten aus sich kreuzenden Lamellen (siehe Bild 1.3) sollten Schubverformungen berücksichtigt 
+werden. 
+5.1.2 Vertikale Einzellasten 
+(1) Lasten sollten auf die Mittelebene der Deckplatte bezogen werden. 
+(2) Für Einzellasten sollte eine wirksame Lastfläche, bezogen auf die Mittelebene der Deckplatte, 
+angenommen werden, siehe Bild 5.1, mit 
+b
+w Aufstandsbreite der Last auf der Kontaktfläche; 
+bw,middle Breite der Lastfläche, bezogen auf die Mittelebene der Deckplatte; 
+ Verteilungswinkel nach Tabelle 5.2. 
+Legende 
+1 Belag 
+2 Holzdeckplatte 
+3 Mittelebene der Deckplatte 
+Bild 5.1  Verteilung der Einzellasten mit der Aufstandsfläche b
+w
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1995-2:2004 (D) 
+19 
+Tabelle 5.2  Verteilungswinkel von Einzellasten für verschiedene Materialien 
+Belag (in Übereinstimmung mit EN 1991-2, 4.3.6) 45° 
+Bretter und Bohlen 45° 
+Holzdeckplatten aus Lamellen 
+ in Richtung der Lamellen 
+ 45° 
+ rechtwinklig zu den Lamellen 
+ 15° 
+Sperrholzdeckplatten und Deckplatten aus über Kreuz angeordneten 
+Lamellen 45° 
+5.1.3 Vereinfachte Berechnung 
+(1) In einer vereinfachten Berechnung dürfen die Deckenplatten durch einen oder mehrere Balken in 
+Richtung der Lamellen ersetzt werden, wobei sich die wirksame Breite bef wie folgt errechnet: 
+bef = bw,middle + a (5.1) 
+Dabei ist 
+bw,middle zu berechnen nach 5.1.2(2); 
+a zu entnehmen Tabelle 5.3, in m. 
+Tabelle 5.3  Breite a in m zur Ermittlung der wirksamen Breite des Balkens
+a
+Art der Deckplatte 
+m 
+genagelte Lamellen 0,1 
+zusammengespannte oder verklebte Lamellen 0,3 
+sich kreuzende Lamellen 0,5 
+Holz-Beton-Verbund 0,6 
+5.2 Zusammengesetzte Bauteile 
+(1)P Für die Verbundwirkung von Deckplatten-Systemen ist der Einfluss der Nachgiebigkeit der Verbindungs-
+mittel zu berücksichtigen. 
+ANMERKUNG Siehe 8.2. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1995-2:2004 (D) 
+20 
+5.3 Holz-Beton-Verbundbauteile 
+(1) Das Betonbauteil sollte gemäß EN 1992-2 bemessen werden. 
+(2) Die Verbindungsmittel aus Stahl sowie die Kerbverbindungen sollten so bemessen werden, dass sie alle 
+Kräfte aus Verbundwirkung übertragen. Reibung und Adhäsion zwischen Holz und Beton sollen nicht in 
+Rechnung gestellt werden, außer es wird eine spezielle Untersuchung durchgeführt. 
+(3) Die wirksame Breite der Betonplatte von Holzbalken/Betondecken-Verbundkonstruktionen errechnet sich 
+wie folgt: 
+b
+ef,c = b + bef,1, + bef,2 (5.2) 
+Dabei ist 
+b Breite des Holzbalkens; 
+bef,1, bef,2 wirksame Breiten der Betongurte, sollten wie für einen Beton-T-Querschnitt nach 
+EN 1992-1-1, 5.3.2.1 berechnet werden. 
+(4)P Für den Nachweis im Grenzzustand der Tragfähigkeit sind Risse in der Betonplatte zu berücksichtigen. 
+(5) Der Einfluss des Betons zwischen den Rissen darf berücksichtigt werden. Als einfache Näherung darf der 
+Wert der Steifigkeit des Betonquerschnitts in gerissenem Zustand als zu 40 % des Wertes der Steifigkeit in 
+ungerissenem Zustand angenommen werden. In solchen Bereichen sollte eine angemessene, rissverteilende 
+Bewehrung vorgesehen werden. 
+6 Grenzzustände der Tragfähigkeit 
+6.1 Deckplatten 
+6.1.1 Systemsteifigkeit 
+(1) Es gelten die relevanten Regeln der EN 1995-1-1, 6.7. 
+(2) Die Bemessungswerte der Biege- und Schubfestigkeiten der Deckplatte sollten wie folgt berechnet 
+werden: 
+m,d,deck sys m, d,lamff k (6.1) 
+v, d, deck sys v, d, lamff k (6.2) 
+Dabei ist 
+fm,d,lam Bemessungswert der Biegefestigkeit der Lamellen; 
+fv,d,lam Bemessungswert der Schubfestigkeit der Lamellen; 
+ksys Systembeiwert, siehe EN 1995-1-1. Für Deckplatten nach Bild 1.2 d) sollte EN 1995-1-1 
+Bild 6.14 Linie 1 verwendet werden. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1995-2:2004 (D) 
+21 
+Zur Berechnung von ksys sollte die Anzahl der belasteten Lamellen angenommen werden zu: 
+ef
+lam
+bn b (6.3) 
+Dabei ist 
+bef wirksame Breite; 
+blam Breite der Lamelle. 
+(3) Die wirksame Breite bef sollte angenommen werden zu (siehe Bild 6.1): 
+max, beam
+ef
+max,plate
+M
+b m (6.4) 
+Dabei ist 
+Mmax,beam maximales Biegemoment eines Balkens, der eine Platte ersetzt; 
+mmax,plate maximales Biegemoment in der Platte, errechnet mittels einer Plattenberechnung. 
+ANMERKUNG 5.1.3 enthält eine vereinfachte Methode zur Ermittlung der wirksamen Breite. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1995-2:2004 (D) 
+22 
+Bild 6.1  Beispiel der Biegemomentenverteilung in der Platte zur Ermittlung der wirksamen Breite 
+6.1.2 Deckplatten aus zusammengespannten Lamellen 
+(1)P Die Vorspannkräfte nach Abzug der Verluste müssen so groß sein, dass keine Verschiebungen 
+zwischen den Lamellen auftreten. 
+(2) Folgende Anforderung sollte erfüllt sein: 
+v, Ed d p, minFh (6.5) 
+Dabei ist 
+Fv,Ed Bemessungswert der Schubkraft pro Längeneinheit, verursacht durch horizontale und vertikale 
+Einwirkungen; 
+d Bemessungswert für den Reibungsbeiwert; 
+p,min minimale verbleibende Langzeit-Querdruckspannung infolge der Vorspannung; 
+h Dicke der Platte. 
+(3) Der Reibungskoeffizient sollte folgende Einflüsse in Betracht ziehen: 
+ Holzart; 
+ Rauigkeit der Kontaktflächen; 
+ Holzbehandlung; 
+ verbleibende Vorspannung zwischen den Lamellen. 
+(4) Sofern keine anderen Werte nachgewiesen wurden, sollten die Bemessungswerte für den 
+Reibungskoeffizienten d zwischen Nadelholzlamellen sowie zwischen Nadelholzlamellen und Beton der 
+Tabelle 6.1 entnommen werden. Für Feuchtegehalte zwischen 12 % und 16 % dürfen die Werte durch lineare 
+Interpolation ermittelt werden. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1995-2:2004 (D) 
+23 
+(5) In Flächen, die Einzellasten ausgesetzt sind, sollte die minimale verbleibende Langzeit-Querdruck-
+spannung p,min infolge Vorspannung zwischen Lamellen nicht weniger als 0,35 N/mm2 betragen. 
+ (6) Die verbleibende Langzeit-Vorspannkraft darf üblicherweise größer als 0,35 N/mm 2 angenommen 
+werden, vorausgesetzt dass: 
+ die anfängliche Vorspannkraft mindestens 1,0 N/mm 2 beträgt; 
+ der Feuchtegehalt der Lamellen zum Zeitpunkt des Vorspannens nicht mehr als 16 % beträgt; 
+ die Schwankungen des Feuchtegehaltes in der Deckplatte während der Gebrauchsdauer durch 
+angemessene Schutzmaßnahmen, z. B. eine Abdichtungsschicht, begrenzt werden. 
+Tabelle 6.1  Bemessungswerte für den Reibungskoeffizienten d
+Rechtwinklig zur Faser In Faserrichtung
+Oberflächenrauigkeit 
+der Lamelle Feuchtegehalt 
+ 12 % 
+Feuchtegehalt 
+ 16 % 
+Feuchtegehalt 
+ 12 % 
+Feuchtegehalt 
+ 16 % 
+sägerau-sägerau 0,30 0,45 0,23 0,35 
+gehobelt-gehobelt 0,20 0,40 0,17 0,30 
+sägerau-gehobelt 0,30 0,45 0,23 0,35 
+Holz-Beton 0,40 0,40 0,40 0,40 
+(7) Die resultierenden Vorspannkräfte sollten zentrisch auf den Holzquerschnitt wirken. 
+(8)P Die Druckspannung rechtwinklig zur Faser während des Vorspannens in der Kontaktfläche der 
+Verankerung ist nachzuweisen. 
+(9) Der Beiwert kc, 90 nach EN 1995-1-1 darf zu 1,3 angenommen werden. 
+(10) Die Anzahl der Stumpfstöße sollte auf einen in jeweils vier benachbarten Lamellen innerhalb einer 
+Länge 1 begrenzt werden mit 1: 
+m
+t
+d
+2,1
+30
+2
+min1 (6.6) 
+Dabei ist 
+d Abstand zwischen den Vorspannelementen; 
+t Dicke der Lamellen in Richtung der Vorspannung. 
+(11) Bei der Berechnung der (Längs-)Spannungen der vorgespannten Deckplatten aus Lamellen sollte der 
+Querschnitt entsprechend der Anzahl der Stumpfstöße innerhalb einer Länge entsprechend der vierfachen 
+Dicke der Lamellen in Richtung der Vorspannung vermindert werden. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1995-2:2004 (D) 
+24 
+Legende 
+1 Lamelle 
+2 Stumpfstoß 
+3 Vorspannelement 
+Bild 6.2  Stumpfstöße in vorgespannten Deckplatten aus Lamellen 
+6.2 Ermüdung 
+(1)P Für Tragwerke oder Tragwerksteile und Verbindungen, die häufigen Spannungsänderungen durch 
+Verkehr oder Wind ausgesetzt sind, ist nachzuweisen, dass kein Versagen oder größerer Schaden infolge 
+von Ermüdung auftritt. 
+ANMERKUNG 1 Für Fußgängerbrücken ist üblicherweise kein Ermüdungsnachweis erforderlich. 
+ANMERKUNG 2 Ein vereinfachtes Nachweisverfahren ist in Anhang A gegeben (informativ). 
+7 Grenzzustände der Gebrauchstauglichkeit 
+7.1 Allgemeines 
+(1) In den Berechnungen sollten die Mittelwerte der Rohdichten verwendet werden. 
+7.2 Grenzwerte für Durchbiegungen 
+ANMERKUNG Der empfohlene Grenzbereich der Durchbiegungen aus Verkehrslast für Balken, Platten oder 
+Fachwerke mit der Spannweite ist in Tabelle 7.1 angegeben. Die empfohlenen Werte sind unterstrichen. Angaben 
+bezüglich der nationalen Wahl können im Nationalen Anhang enthalten sein. 
+Tabelle 7.1  Grenzwerte der Durchbiegungen für Balken, Platten und Fachwerke 
+Einwirkung Grenzbereich für Durchbiegungen 
+charakteristische Verkehrslast /400 bis /500 
+Fußgängerlast und niedrige Verkehrslast /200 bis /400 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1995-2:2004 (D) 
+25 
+7.3 Schwingungen 
+7.3.1 Durch Fußgänger verursachte Schwingungen 
+(1) Kriterien für das Wohlbefinden gibt EN 1990:2002/A1 an. 
+(2) Sofern keine anderen Werte nachgewiesen wurden, sollte der Dämpfungskoeffizient angenommen 
+werden zu: 
+ = 0,010 für Haupttragwerke ohne mechanische Verbindungen; 
+ = 0,015 für Haupttragwerke mit mechanischen Verbindungen. 
+ANMERKUNG 1 Für bestimmte Haupttragwerke können alternative Dämpfungskoeffizienten im Nationalen Anhang 
+angegeben werden. 
+ANMERKUNG 2 Eine vereinfachte Methode für gelenkig gelagerte Einfeldträger und Fachwerke ist in Anhang B 
+gegeben. 
+7.3.2 Durch Wind verursachte Schwingungen 
+(1)P Es gilt EN 1991-1-4. 
+8 Verbindungen 
+8.1 Allgemeines 
+(1)P Nachfolgende Verbindungen dürfen in Brückentragwerken nicht verwendet werden: 
+ axial belastete Nägel; 
+ Klammern; 
+ Nagelplatten. 
+8.2 Holz-Beton-Verbindungen in Verbundträgern 
+8.2.1 Querbelastete stiftförmige Verbindungsmittel 
+(1) Der Einhängeeffekt sollte nicht berücksichtigt werden. 
+(2) Im Falle einer nicht tragenden Zwischenschicht zwischen Holz und Beton (z. B. für Schalung), siehe 
+Bild 8.1, sollten die Festigkeits- und Steifigkeitswerte durch besondere Berechnung oder durch Versuche 
+bestimmt werden. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1995-2:2004 (D) 
+26 
+Legende 
+1 Beton 
+2 nicht tragende Zwischenschicht 
+3 Holz 
+Bild 8.1  Zwischenschicht zwischen Beton und Holz 
+8.2.2 Kerbverbindungen 
+(1) Für Nutverbindungen, siehe Bild 1.1, sollten die Schubkräfte durch Druckkontakt zwischen Holz und dem 
+in die Nut eingreifenden Beton übertragen werden. 
+(2) Es sollte nachgewiesen werden, dass der Schubwiderstand des Beton- und des Holzteils der Verbindung 
+ausreichend ist. 
+(3)P Die Beton- und Holzteile sind so zusammenzuhalten, dass sie sich nicht trennen können. 
+(4) Die Verbindung zwischen Holz und Beton sollte auf eine Zugkraft bemessen werden mit der Größe: 
+t,Ed v,Ed01,FF (8.1) 
+Dabei ist 
+Ft,Ed Bemessungswert der Zugkraft zwischen Holz und Beton; 
+Fv,Ed Bemessungswert der Querkraft zwischen Holz und Beton. 
+9 Ausführung und Überwachung 
+(1)P Die relevanten Regeln der EN 1995-1-1, Abschnitt 10 gelten auch für Tragwerksteile von Brücken, mit 
+Ausnahme von 10.8 und 10.9. 
+(2) Vor dem Aufbringen einer Dichtungsschicht auf die Deckplatte sollte die Deckplatte trocken sein und die 
+Oberfläche sollte die Erfordernisse der Dichtungsschicht erfüllen. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1995-2:2004 (D) 
+27 
+Anhang A
+(informativ) 
+Ermüdungsnachweis 
+A.1 Allgemeines 
+(1) Dieser vereinfachte Nachweis basiert auf ermüdungswirksamen Einwirkungen mit gleich bleibender 
+Amplitude, welche gleichwertig die ermüdungswirksamen Einwirkungen des vollen Spektrums von 
+Belastungsfällen ersetzt. 
+ANMERKUNG Ein zutreffenderer Ermüdungsnachweis für veränderliche Spannungsamplituden kann auf der 
+Grundlage einer kumulativen linearen Schadenstheorie (Palmgren-Miner-Regel) erfolgen. 
+(2) Die Spannung sollte durch elastische Berechnung für die ermüdungswirksamen Einwirkungen bestimmt 
+werden. Die Spannungsberechnung sollte die Nachgiebigkeit von Verbindungen sowie Effekte 2. Ordnung 
+aus Formänderungen berücksichtigen. 
+(3) Ein Ermüdungsnachweis ist erforderlich, wenn das Verhältnis 
+, gegeben in Gleichung (A.1), größer ist 
+als: 
+ für Holzbauteile mit Druck parallel und senkrecht zur Faser: 0,6 
+ für Holzbauteile beansprucht auf Biegung und Zug: 0,2 
+ für Holzbauteile beansprucht auf Schub: 0,15 
+ für Stabdübelverbindungen: 0,4 
+ für Nagelverbindungen: 0,1 
+ für andere Verbindungen: 0,15 
+Dabei ist 
+d, max d,min
+k
+M, fat
+f (A.1) 
+d,max maximale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen; 
+d,min minimale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen; 
+fk charakteristische Festigkeit; 
+M,fat Teilsicherheitsbeiwert von Baustoffen für den Ermüdungsnachweis. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1995-2:2004 (D) 
+28 
+A.2 Ermüdungswirksame Einwirkungen 
+(1) In einem vereinfachten Modell für ermüdungswirksame Einwirkungen sollte mit reduzierten Lasten 
+(Einwirkungen) im Vergleich mit den statischen Lasten (Einwirkungen) gerechnet werden. Das Belastungs-
+modell sollte die maximalen und minimalen Spannungen der Tragwerksteile liefern. 
+(2) Die ermüdungswirksamen Einwirkungen aus Verkehr sollten aus den Projektvorgaben in Verbindung mit 
+EN 1991-2 erhalten werden. 
+(3) Die Anzahl der konstanten Spannungsspiele pro Jahr, Nobs, sollten entweder aus Tabelle 4.5 der 
+EN 1991-2 entnommen werden oder, wenn detailliertere Informationen über den wirklichen Verkehr erhältlich 
+sind, angenommen werden zu: 
+Nobs = 365 nADT (A.2) 
+Dabei ist 
+Nobs Anzahl der jährlichen Spannungsspiele mit konstanter Amplitude; 
+nADT zu erwartender täglicher Verkehr im Jahresdurchschnitt über die Lebenszeit des Tragwerks; der 
+Wert von nADT sollte nicht weniger als 1 000 betragen; 
+ erwarteter Prozentsatz von schweren, die Brücke überquerenden LKW, siehe EN 1991-2, 4.6 
+(z. B. = 0,1). 
+A.3 Ermüdungsnachweis 
+(1) Das Verhältnis sollte auf den in A.1(3) definierten Wert beschränkt sein. Wenn nicht, sind besondere 
+Untersuchungen notwendig oder es ist folgender Nachweis zu führen. 
+(2) Für Einwirkungen mit konstanter Amplitude ist das Kriterium des Ermüdungsnachweises: 
+d,max ffat,d (A.3) 
+Dabei ist 
+d,max maximale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen; 
+ffat,d Bemessungsbeiwert der Ermüdungsfestigkeit. 
+(3) Der Bemessungswert der Ermüdungsfestigkeit sollte angenommen werden zu: 
+k
+fat, d fat
+M, fat
+ff k (A.4) 
+Dabei ist 
+fk charakteristische Festigkeit für statische Belastung; 
+kfat Beiwert für die Festigkeitsminderung infolge der Anzahl der Belastungszyklen. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1995-2:2004 (D) 
+29 
+(4) Der Wert von kfat sollte angenommen werden zu: 
+0)(log)(
+11 Lobsfat tß NRba
+Rk (A.5) 
+Dabei ist 
+R = d,min / d,max mit 1 R 1 (A.6) 
+d,min minimale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen; 
+d,max maximale Bemessungsspannung infolge ermüdungsrelevanter Einwirkungen; 
+Nobs Anzahl der jährlichen Spannungsspiele mit konstanter Amplitude; 
+tL Bemessungsbeiwert der Lebensdauer des Tragwerks in Jahren, entsprechend EN 1990:2002 
+(z. B tL = 100 Jahre); 
+Beiwert zur Berücksichtigung der Auswirkungen eines Schadens des betrachteten 
+Tragwerkselements; 
+a, b Beiwerte zur Berücksichtigung der Art der Ermüdungseinwirkung nach Tabelle A.1. 
+Der Beiwert sollte angenommen werden zu: 
+ beträchtliche Konsequenzen: = 3; 
+ ohne beträchtliche Konsequenzen: = 1. 
+Tabelle A.1  Werte der Beiwerte a und b
+ab
+Holzbauteile beansprucht auf 
+ Druck, parallel oder senkrecht zur Feder 2,0 9,0 
+ Biegung und Zug 9,5 1,1 
+ Schub 6,7 1,3 
+Verbindung mit 
+ Dübeln und Passbolzen mit d 12 mma 6,0 2,0 
+ Nägeln 6,9 1,2 
+a Die Werte für Dübel und Passbolzen basieren größtenteils auf Tests an 12 mm dicken Passbolzen. Dübel und Passbolzen mit 
+deutlich größeren Durchmessern sowie Bolzen können weniger günstige Ermüdungseigenschaften haben. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1995-2:2004 (D) 
+30 
+Anhang B
+(informativ) 
+Durch Fußgänger verursachte Schwingungen 
+B.1 Allgemeines 
+(1) Die Regeln in diesem Anhang gelten für Holzbrücken mit frei aufgelagerten Einfeldträgern oder 
+Fachwerken, welche durch Fußgänger angeregt werden. 
+ANMERKUNG Entsprechende Regeln werden in zukünftigen Ausgaben der EN 1991-2 zu finden sein. 
+B.2 Vertikale Schwingungen 
+(1) Für eine die Brücke überquerende Person sollte die vertikale Beschleunigung der Brücke avert, 1 in m/s2
+angenommen werden zu: 
+für fvert 2,5 Hz 
+a 1
+200
+100vert,
+M
+M für 2,5 Hz < f
+vert 5,0 Hz 
+(B.1)
+Dabei ist 
+M Gesamtmasse der Brücke in kg, gegeben durch M = m ; 
+Spannweite der Brücke; 
+m Masse je Längeneinheit (Eigenmasse) der Brücke in kg/m; 
+Dämpfungskoeffizient; 
+fvert Eigenfrequenz der Schwingung der Brücke in vertikale Richtung. 
+(2) Für mehrere die Brücke überquerende Personen sollte die vertikale Beschleunigung der Brücke avert, n in 
+m/s2 berechnet werden zu: 
+avert,n = 0,23 avert,1 nk vert (B.2) 
+Dabei ist 
+n Anzahl der Fußgänger; 
+kvert Beiwert, zu entnehmen in Bild B.1; 
+avert,1 vertikale Beschleunigung für eine die Brücke überquerende Person, zu bestimmen nach 
+Ausdruck (B.1). 
+Die Anzahl n der Fußgänger sollte angenommen werden zu: 
+n = 13 für eine Gruppe von Fußgängern; 
+n = 0,6 A für einen ununterbrochenen Fußgängerstrom, wobei A die Fläche der Brückendeckenplatte 
+in m2 ist. 
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1995-2:2004 (D) 
+31 
+(3) Wenn laufende Personen berücksichtigt werden, sollte die vertikale Beschleunigung der Brücke avert, 1, in 
+m/s2, ausgelöst durch eine über die Brücke laufende Person angenommen werden zu: 
+,af M1
+600 25 35vert, vert für Hz Hz , (B.3) 
+B.3 Horizontale Schwingungen 
+(1) Für eine die Brücke überquerende Person sollte die horizontale Beschleunigung ahor, 1 in m/s2 berechnet 
+werden zu: 
+,af M1
+50 05 25hor, hor für Hz Hz , (B.4) 
+wobei fhor die Eigenfrequenz der Schwingung der Brücke in horizontaler Richtung ist. 
+(2) Für mehrere die Brücke überquerende Personen sollte die horizontale Beschleunigung der 
+Brücke ahor, n in m/s2 berechnet werden zu: 
+ahor,n = 0,18 ahor,1 nk hor (B.5) 
+Dabei ist 
+khor Beiwert, zu entnehmen Bild B.2. 
+Die Anzahl n der Fußgänger sollte angenommen werden zu: 
+n = 13 für eine Gruppe von Fußgängern; 
+n = 0,6 A für einen ununterbrochenen Fußgängerstrom, wobei A die Fläche der Brückendeckenplatte 
+in m2 ist. 
+Bild B.1  Beziehung zwischen der vertikalen Eigenfrequenzfvert und dem Koeffizienten kvert
+DIN EN 1995-2:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1995-2:2004 (D) 
+32 
+Bild B.2  Beziehung zwischen der horizontalen Eigenfrequenz fhor und dem Koeffizienten khor
+DIN EN 1995-2:2010-12

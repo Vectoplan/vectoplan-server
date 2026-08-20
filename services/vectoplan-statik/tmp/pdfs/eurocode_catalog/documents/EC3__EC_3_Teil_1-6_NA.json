@@ -1,0 +1,183 @@
+{
+  "document_id": "EN_1993-1-6_NA__national_annex__EC_3_Teil_1-6_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-6/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-6 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-6 NA.pdf",
+  "sha256": "4cbe6c61fb56328b1cc12f1803e21a52955fd2c7cef4322340bf093e0fc2c034",
+  "pages": 11,
+  "text_pages": 11,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 7,
+  "table_reference_count": 5,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160858+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111160858+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-6 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 5,
+      "equation_number": "11",
+      "line": "Bei der Festlegung geeigneter Imperfektionsformen rechtwinklig zur Schalenmittelfläche im Sinne von (11)",
+      "context": "Verformung. | NDP zu 8.7.2(16) Anmerkung | Bei der Festlegung geeigneter Imperfektionsformen rechtwinklig zur Schalenmittelfläche im Sinne von (11) | sind gegebenenfalls neben eigenformaffinen Formen nach (13) auch kollapsaffine oder nachbeulaffine | Formen in Erwägung zu ziehen. Darüber hinaus sind auch solche geometrischen Ersatzimperfektionen zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "8.8",
+      "line": "sowohl in Meridianrichtung als auch in Umfangsrichtung jeweils mit lgx nach Gl. (8.6) und lgw nach Gl. (8.8)",
+      "context": "jeweils der Kugelradius R an die Stelle des Zylinderradius r und der Kugeldurchmesser 2 R an die Stelle des | Zylinderdurchmessers d tritt. Die Messung von Vorbeulen (siehe DIN EN 1993-1-6:2010-12, 8.4.4) sollte | sowohl in Meridianrichtung als auch in Umfangsrichtung jeweils mit lgx nach Gl. (8.6) und lgw nach Gl. (8.8) | aus DIN EN 1993-1-6:2010-12 durchgeführt werden. Eine Messung in Umfangsrichtung mit lg nach Gl. (8.7) | ist nicht erforderlich. Die gemessenen Formabweichungen müssen die Toleranzgrenzwerte der bei der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "8.7",
+      "line": "aus DIN EN 1993-1-6:2010-12 durchgeführt werden. Eine Messung in Umfangsrichtung mit lg nach Gl. (8.7)",
+      "context": "Zylinderdurchmessers d tritt. Die Messung von Vorbeulen (siehe DIN EN 1993-1-6:2010-12, 8.4.4) sollte | sowohl in Meridianrichtung als auch in Umfangsrichtung jeweils mit lgx nach Gl. (8.6) und lgw nach Gl. (8.8) | aus DIN EN 1993-1-6:2010-12 durchgeführt werden. Eine Messung in Umfangsrichtung mit lg nach Gl. (8.7) | ist nicht erforderlich. Die gemessenen Formabweichungen müssen die Toleranzgrenzwerte der bei der | Bemessung gewählten Herstelltoleranz-Qualitätsklasse (siehe DIN EN 1993-1-6:2010-12, 4.3.5) einhalten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "(Membranlagerung) (w 0 / u = 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1);",
+      "context": "Tabelle 5.1); | RBK 4: Kugelkalotte mit normal zur Kugelmittelfläche radial verschieblichem Rand | (Membranlagerung) (w 0 / u = 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); | RBK 5: Kugelkalotte mit in Grundkreisebene radial verschieblichem Rand ( u·sin w·cos = 0 / | u·cos + w·sin 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "RBK 5: Kugelkalotte mit in Grundkreisebene radial verschieblichem Rand ( u·sin w·cos = 0 /",
+      "context": "RBK 4: Kugelkalotte mit normal zur Kugelmittelfläche radial verschieblichem Rand | (Membranlagerung) (w 0 / u = 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); | RBK 5: Kugelkalotte mit in Grundkreisebene radial verschieblichem Rand ( u·sin w·cos = 0 / | u·cos + w·sin 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); | Bei einer Halbkugel ( = 900) stimmen die Randbedingungen RBK 4 und RBK 5 überein. In diesem Fall kann",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "Bei einer Halbkugel ( = 900) stimmen die Randbedingungen RBK 4 und RBK 5 überein. In diesem Fall kann",
+      "context": "RBK 5: Kugelkalotte mit in Grundkreisebene radial verschieblichem Rand ( u·sin w·cos = 0 / | u·cos + w·sin 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1); | Bei einer Halbkugel ( = 900) stimmen die Randbedingungen RBK 4 und RBK 5 überein. In diesem Fall kann | RBK4 verwendet werden. | Bild NA.A.2  Darstellung der Randbedingungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "135 (Kugelkalotte), jedoch auch = 180° (Vollkugel) (NA.A.2)",
+      "context": "0003t | R (NA.A.1) | 135 (Kugelkalotte), jedoch auch = 180° (Vollkugel) (NA.A.2) | erfüllen. | NCI NA.A.4 Abgrenzungskriterium",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "5.2",
+      "pdf_page": 6,
+      "line": "elasto-plastischen Traglasten berücksichtigt. In den in DIN EN 1993-1-6:2010-12, 5.3, Tabelle 5.2,"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 7,
+      "line": "Tabelle 5.1);"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 7,
+      "line": "Tabelle 5.1);"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 7,
+      "line": "(Membranlagerung) (w 0 / u = 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1);"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 7,
+      "line": "u·cos + w·sin 0 / 0 in Anlehnung an DIN EN 1993-1-6:2010-12, Tabelle 5.1);"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 479,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1425,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1240,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1036,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1855,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1830,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1182,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 8,
+      "characters": 975,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 9,
+      "characters": 963,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 516,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 672,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

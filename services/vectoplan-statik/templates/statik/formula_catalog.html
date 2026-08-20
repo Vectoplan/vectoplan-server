@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VECTOPLAN Statik · Rechenmethoden und Implementierungen</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='statik/css/formula-catalog.css') }}">
+</head>
+<body data-api-root="{{ route_prefix }}" data-embedded="{{ 'true' if embedded else 'false' }}">
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">V</div>
+    <div class="title-block">
+      <span class="eyebrow">VECTOPLAN STATIK</span>
+      <h1>Rechenmethoden &amp; Implementierungen</h1>
+    </div>
+    <div class="topbar-meta">
+      <span class="catalog-version" id="catalogVersion">Katalog wird geladen …</span>
+      <a class="back-link" href="/statik/katalog?bereich=rechenwege">Rechenwege</a>
+      <a class="back-link" href="/statik/katalog?bereich=eurocodes">Eurocode-Formelkatalog</a>
+      <a class="back-link" href="/statik">Zur Statik</a>
+    </div>
+  </header>
+
+  <section class="norm-note" aria-label="Hinweis zum Normstand">
+    <span class="norm-note-icon">i</span>
+    <p><strong>Diese 154 Einträge sind keine normative Formelquelle.</strong> Sie beschreiben Mechanik, Herleitungen, Beispielrechnungen und ausführbare Backend-Funktionen. Maßgebend bleibt die im Rechenweg zugeordnete und später manuell bestätigte Eurocode-Regel.</p>
+  </section>
+
+  <main class="catalog-layout">
+    <aside class="filter-panel">
+      <label class="search-field" for="formulaSearch">
+        <span>Suche</span>
+        <input id="formulaSearch" type="search" placeholder="Methode, Bauteil, Literatur …" autocomplete="off">
+      </label>
+
+      <div class="filter-section">
+        <h2>Status</h2>
+        <div id="statusFilters" class="status-filters" role="group" aria-label="Nach Status filtern"></div>
+      </div>
+
+      <div class="filter-section category-section">
+        <div class="section-heading">
+          <h2>Kategorien</h2>
+          <button class="text-button" id="showAllCategories" type="button">Alle</button>
+        </div>
+        <nav id="categoryNavigation" class="category-navigation" aria-label="Methodenkategorien"></nav>
+      </div>
+
+      <div class="legend-box">
+        <h2>Lesart</h2>
+        <p><span class="source-dot literature"></span> Literatur / Herleitung</p>
+        <p><span class="source-dot historical"></span> historische Normquelle</p>
+        <p><span class="source-dot incomplete"></span> fehlende Angabe sichtbar</p>
+      </div>
+    </aside>
+
+    <section class="catalog-content" aria-labelledby="catalogHeading">
+      <div class="summary-row">
+        <div>
+          <span class="eyebrow">WERKZEUGREGISTER</span>
+          <h2 id="catalogHeading">Methoden und Rechenfunktionen</h2>
+          <p id="resultSummary">Daten werden geladen …</p>
+        </div>
+        <div id="catalogStats" class="catalog-stats" aria-label="Katalogstatistik"></div>
+      </div>
+
+      <div class="table-head" aria-hidden="true">
+        <span>Ansatz</span>
+        <span>Quelle & Norm</span>
+        <span>Status</span>
+      </div>
+      <div id="formulaList" class="formula-list" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        <strong>Keine passenden Ansätze</strong>
+        <span>Filter oder Suchbegriff ändern.</span>
+      </div>
+    </section>
+
+    <aside class="detail-panel" id="detailPanel" aria-label="Methodendetails">
+      <div class="detail-empty" id="detailEmpty">
+        <span class="detail-empty-icon">ƒ</span>
+        <strong>Ansatz auswählen</strong>
+        <p>Eine Zeile öffnet Quelle, Gültigkeit, Verarbeitung und Beispielrechnung.</p>
+      </div>
+      <article id="detailContent" hidden>
+        <div class="detail-toolbar">
+          <span id="detailCategory" class="eyebrow"></span>
+          <button id="closeDetail" class="icon-button" type="button" aria-label="Details schließen">×</button>
+        </div>
+        <div class="detail-title-row">
+          <div>
+            <span id="detailId" class="formula-id"></span>
+            <h2 id="detailTitle"></h2>
+          </div>
+          <span id="detailStatus" class="status-badge"></span>
+        </div>
+        <p id="detailDescription" class="detail-description"></p>
+        <div id="detailEquation" class="detail-equation"></div>
+
+        <section class="detail-section">
+          <h3>Quelle und Fundstelle</h3>
+          <dl class="source-facts">
+            <div><dt>Dokument</dt><dd id="sourceTitle"></dd></div>
+            <div><dt>Fundstelle</dt><dd id="sourceLocation"></dd></div>
+            <div><dt>Einordnung</dt><dd id="sourceState"></dd></div>
+            <div><dt>Aktueller Bezug</dt><dd id="sourceReplacement"></dd></div>
+          </dl>
+          <a id="officialSourceLink" class="official-link" target="_blank" rel="noreferrer" hidden>Offiziellen Normeintrag öffnen ↗</a>
+          <figure id="sourceExcerptFigure" class="source-excerpt" hidden>
+            <img id="sourceExcerpt" alt="Quellenausschnitt zur ausgewählten Rechenmethode">
+            <figcaption id="sourceCaption"></figcaption>
+          </figure>
+          <div id="sourceExcerptMissing" class="missing-note" hidden>Quellenausschnitt: unvollständig</div>
+        </section>
+
+        <section class="detail-section">
+          <h3>Normbezug</h3>
+          <div id="standardReferences" class="standard-references"></div>
+        </section>
+
+        <section class="detail-section">
+          <h3>So wird der Ansatz verarbeitet</h3>
+          <ol id="processingSteps" class="processing-steps"></ol>
+        </section>
+
+        <section class="detail-section example-section">
+          <div class="section-heading">
+            <h3>Beispielrechnung</h3>
+            <span class="example-label">nachvollziehbar, kein Code</span>
+          </div>
+          <div id="exampleInputs" class="example-inputs"></div>
+          <div id="exampleSteps" class="example-steps"></div>
+          <div id="exampleResult" class="example-result"></div>
+        </section>
+
+        <section class="detail-section">
+          <h3>Variablen und Grenzen</h3>
+          <div id="variableTable" class="variable-table"></div>
+          <ul id="assumptionList" class="assumption-list"></ul>
+        </section>
+
+        <section class="detail-section completeness-section">
+          <h3>Vollständigkeit</h3>
+          <p id="completenessText"></p>
+          <div id="missingFields" class="missing-fields"></div>
+        </section>
+      </article>
+    </aside>
+  </main>
+
+  <script src="{{ url_for('static', filename='statik/js/formula-catalog.js') }}" defer></script>
+</body>
+</html>

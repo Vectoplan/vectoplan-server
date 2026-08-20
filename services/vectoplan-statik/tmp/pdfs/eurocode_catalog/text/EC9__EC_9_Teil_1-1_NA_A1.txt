@@ -1,0 +1,91 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang – 
+National festgelegte Parameter – 
+Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken – 
+Teil 1-1: Allgemeine Bemessungsregeln; Änderung A1 
+National Annex – 
+Nationally determined parameters – 
+Eurocode 9: Design of aluminium structures – 
+Part 1-1: General rules; Amendment A1 
+Annexe Nationale – 
+Paramètres déterminés au plan national – 
+Eurocode 9: Calcul des structures en aluminium – 
+Partie 1-1: Regles générales: Amendement A1
+
+===== PDF-SEITE 2 =====
+E DIN EN 1999-1-1/NA/A1:2012-09 
+2 
+Inhalt Seite
+Vorwort ........................................................................................................................................................... 3
+1 Änderung zu NDP in 8.1.1 .................................................................................................... ............ 4
+2 Änderung zu NCI zu A.5 ...................................................................................................... ............. 4
+3 Änderung zu Abschnitt Ausführungsklasse EXC 4 ...................................................................... 5
+
+===== PDF-SEITE 3 =====
+E DIN EN 1999-1-1/NA/A1:2012-09 
+3 
+Vorwort 
+Dieses Dokument (E DIN EN 1999-1-1/NA/A1) wurde im NABau-Spiegelausschuss NA 005-08-07 AA 
+„Aluminiumkonstruktionen (SpA zu CEN/TC 250/SC 9 + CEN/TC 135)“ erstellt.
+Dieses Dokument enthält die vorgesehenen Änderungen zum Nationalen Anhang 
+DIN EN 1999-1-1/NA:2010-12, Nationaler Anhang — National festgelegte Parameter — Eurocode 9: 
+Bemessung und Konstruktion von Aluminiumtragwerken — Teil 1-1: Allgemeine Bemessungsregeln .
+
+===== PDF-SEITE 4 =====
+E DIN EN 1999-1-1/NA/A1:2012-09 
+4 
+1 Änderung zu NDP in 8.1.1
+Der folgende Punkt ist nach dem Abschnitt „NDP zu 8.1.1(2) Anmerkung“e i n z u f ü g e n :
+„
+NCI zu 8.6.3.3 
+Rechnerische Behandlung von überhöhten Kehlnähten (Wölbnähten)
+Bei Flankenkehlnähten, die ausschließlich durch Schubkräfte parallel zur Nahtrichtung beansprucht werden, 
+darf der erhöhte Tragwiderstand von überhöhten Kehlnähten (Wölbnähten) bei der Bemessung berücksichtigt 
+werden. In den entsprechenden Bemessungsformeln darf dann a durch a+w ersetzt werden, bzw. falls 
+DIN EN 1999-1-1:2012-05, 8.6.3.3(6) zutrifft, a durch a+w+apen. Das Maß w darf bei dieser Ausführung und 
+Bemessung rechnerisch mit maximal 0,43a ber ücksichtigt werden. Zur Definition von w siehe nachfolgende 
+Skizze. In den Ausführungsunterlagen ist das Maß w anzugeben. 
+Bild 1 — Überhöhte Kehlnähte
+“
+2 Änderung zu NCI zu A.5
+Der Abschnitt „Ausführungsklasse EXC 1“ ist durch den Folgenden zu ersetzen: 
+„
+Ausführungsklasse EXC 1
+In diese Ausführungsklasse fallen vorwiegend ruhend und, falls ungeschweißt, auch nicht vorwiegend ruhend 
+beanspruchte Bauteile oder Tragwerke aus den in DIN EN 1999-1-1:2010-05, Abschnitt 3 geregelten 
+Aluminiumlegierungen, für die mindestens einer der folgenden Punkte zutrifft: 
+1) Tragkonstruktionen mit 
+ max. zwei Geschossen aus Walzprofilen/Strangpressprofilen ohne biegesteife Kopfplattenstöße, 
+Stützen mit max. 3 m Knicklänge, 
+Biegeträgern mit max. 5 m Spannweite und Auskragungen bis 2 m, 
+charakteristischen veränderlichen Einwirkungen/Nutzlasten bis 2,5 kN/m 2 und charakteristischen 
+veränderlichen Einzelnutzlasten bis 2,0 kN;
+
+===== PDF-SEITE 5 =====
+E DIN EN 1999-1-1/NA/A1:2012-09 
+5 
+2) Tragkonstruktionen mit max. 30° geneigten Belastungsebenen (z. B. Rampen) mit Beanspruch ungen 
+durch charakteristische Achslasten von max. 63 kN oder charakteristische veränderliche, 
+gleichmäßig verteilte Einwirkungen/Nutzlasten von bis zu 17,5 kN/m 2 in einer Höhe von max. 1,25 m 
+über festem Boden wirkend;
+3) Treppen und Geländer in Wohngebäuden;
+4) Landwirtschaftliche Gebäude ohne regelmäßigen Personenverkehr (z. B. Scheunen, Gewächs-
+häuser);
+5) Wintergärten an Wohngebäuden;
+6) Einfamilienhäuser mit bis zu 4 Geschossen; 
+7) Gebäude, die selten von Personen betreten werden, wenn der Abstand zu anderen Gebäuden oder 
+Flächen mit häufiger Nutzung durch Personen mindestens das 1,5-fache der Gebäudehöhe beträgt.
+Die Ausführungsklasse EXC 1 gilt auch für andere vergleichbare Bauwerke, Tragwerke und Bauteile.
+“
+3 Änderung zu Abschnitt Ausführungsklasse EXC 4
+Der Abschnitt „Ausführungsklasse EXC 4“ ist durch den folgenden zu ersetzen: 
+„
+Ausführungsklasse EXC 4
+In diese Ausführungsklasse fallen alle Bauteile oder Tragwerke der Ausführungsklasse EXC 3 mit extremen 
+Versagensfolgen für Menschen und Umwelt, wie z. B.: 
+Straßenbrücken und Eisenbahnbrücken (siehe DIN EN 1991-1-7) über dicht besiedeltem Gebiet oder 
+über Industrieanlagen mit hohem Gefährdungspotential;
+ nicht vorwiegend ruhend beanspruchte Wehrverschlüsse bei extremen Abflussvolumen.
+“

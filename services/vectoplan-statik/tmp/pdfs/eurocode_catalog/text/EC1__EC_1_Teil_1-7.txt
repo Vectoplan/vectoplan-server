@@ -1,0 +1,2663 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1991-1-7 
+ICS 91.01 0.30 
+Eurocode 1: Einwirkungen auf Tragwerke­
+Tei11-7: Allgemeine Einwirkungen­
+Außergewöhnliche Einwirkungen; 
+Deutsche FassungEN 1991-1-7:2006 + AC:2010 
+Eurocode 1: Actions on structures -
+Part 1-7: General actions­
+Aceidental actions; 
+GermanversionEN 1991-1-7:2006 + AC:2010 
+Eurocode 1: Actions sur les structures-
+Partie 1-7: Actions generales-
+Actions accidentelles; 
+Versionallemande EN 1991-1-7:2006 + AC:2010 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1991-1-7:2007-02; 
+mit DIN EN 
+1991-1-7/NA:201 0-12 
+Ersatz far 
+DIN 1 055-9:2003-08 
+Gesamtumfang 67 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 23 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723954
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-1-7:2010-12 
+Nationales Vorwort 
+Dieses Dokument enthält die Deutsche Fassung der vom Technischen Komitee CEN/TC 250 Eurocodes für 
+den konstruktiven Ingenieurbau (Sekretariat: BSI, Vereinigtes Königreich) ausgearbeiteten EN 1991-1-7:2006 
++ AC:2010. 
+Die Arbeiten wurden auf nationaler Ebene vom Arbeitsausschuss NA 005-51-02 AA Einwirkungen auf 
+Bauten (Sp CEN/TC 250/SC 1) im Normenausschuss Bauwesen (NABau) begleitet. 
+Dieses Dokument enthält die Europäische Berichtigung, die vom CEN am 17. Februar 2010 angenommen 
+wurde. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen Gemein-
+schaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die verbindliche 
+Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im Vorwort 
+dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Anfang und Ende der durch die Berichtigung eingefügten oder geänderten Texte sind jeweils durch die 
+Textmarkierungen   angegeben.
+Änderungen 
+Gegenüber DIN V ENV 1991-2-7:2000-07 wurden folgende Änderungen vorgenommen: 
+a) Änderung der Normnummer von DIN V ENV 1991-2-7 in DIN EN 1991-1-7; 
+b) Vornormcharakter aufgehoben; 
+c) Stellungnahmen der nationalen Normungsinstitute eingearbeitet und den Text vollständig überarbeitet. 
+Gegenüber DIN EN 1991-1-7:2007-02 und DIN 1055-9:2003-08 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der europäischen Berichtigung EN 1991-1-7/AC:2010 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 1055-9: 2003-08 
+DIN V ENV 1991-2-7: 2000-07 
+DIN EN 1991-1-7: 2007-02 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1991-1-7 
+ Juli 2006 
+ +AC 
+ Februar 2010 
+ICS 91.010.30
+Deutsche Fassung 
+ Eurocode 1: Einwirkungen auf Tragwerke  
+Teil 1-7: Allgemeine Einwirkungen  
+Außergewöhnliche Einwirkungen 
+Eurocode 1: Actions on structures  
+Part 1-7: General actions  
+Accidental actions 
+ Eurocode 1: Actions sur les structures  
+Partie 1-7: Actions générales  
+Actions accidentelles 
+Diese Europäische Norm wurde vom CEN am 9. Januar 2006 angenommen. 
+Die Berichtigung tritt am 17. Februar 2010 in Kraft und wurde in EN 1991-1-7:2006 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Kroatien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, P olen,
+Portugal, Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigte n
+Königreich und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2010 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1991-1-7:2006 + AC:2010 D
+
+===== PDF-SEITE 4 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................4
+Hintergrund des Eurocode-Programms ...........................................................................................................4
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................5
+Nationale Fassungen der Eurocodes ...............................................................................................................6
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen 
+für Bauprodukte (EN und ETAZ) .......................................................................................................................6
+Zusätzliche Informationen zu EN 1991-1-7.......................................................................................................6
+Nationaler Anhang ..............................................................................................................................................7
+1 Allgemeines................................................................................................................... .........................9
+1.1 Anwendungsbereich ........................................................................................................... ..................9
+1.2 Normative Verweisungen...................................................................................................... ................9
+1.3 Annahmen .................................................................................................................... ........................10
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................10
+1.5 Begriffe .................................................................................................................... .............................10
+1.6 Symbole ..................................................................................................................... ...........................12
+2 Klassifizierung der Einwirkungen .............................................................................................. ........13
+3 Bemessungssituationen ......................................................................................................... ............14
+3.1 Allgemeines................................................................................................................. .........................14
+3.2 Außergewöhnliche Bemessungssituationen  Strategien bei identifizierten 
+außergewöhnlichen Einwirkungen ....................................................................................................15
+3.3 Außergewöhnliche Bemessungssituationen  Strategien zur Begrenzung lokalen 
+Versagens.............................................................................................................................................16
+3.4 Außergewöhnliche Bemessungssituationen  Anwendung der Versagensfolgeklassen..........16
+4 Anprall....................................................................................................................... ............................17
+4.1 Anwendungsbereich ........................................................................................................... ................17
+4.2 Darstellung der Einwirkungen................................................................................................ ............18
+4.3 Außergewöhnliche Einwirkungen aus dem Anprall von Straßenfahrzeugen ...............................19
+4.3.1 Anprall auf stützende Unterbauten ......................................................................................... ...........19
+4.3.2 Anprall auf Überbauungen.................................................................................................. ................20
+4.4 Außergewöhnliche Einwirkungen aus Gabelstaplern......................................................................22
+4.5 Außergewöhnliche Einwirkungen infolge Entgleisung von Eisenbahnfahrzeuen auf 
+Bauwerke neben oder über Gleisen...................................................................................................22
+4.5.1 Tragwerke neben oder über Gleisanlagen .................................................................................... ....22
+4.5.2 Bauwerke hinter dem Gleisende ............................................................................................. ...........24
+4.6 Außergewöhnliche Einwirkungen aus Schiffsverkehr.....................................................................25
+4.6.1 Allgemeines............................................................................................................... ...........................25
+4.6.2 Anprall von Binnenschiffen ................................................................................................ ................25
+4.6.3 Anprall von Seeschiffen................................................................................................... ...................26
+4.7 Außergewöhnliche Einwirkungen aus Helikoptern..........................................................................27
+5 Innenraumexplosionen .......................................................................................................... .............27
+5.1 Anwendungsbereich ........................................................................................................... ................27
+5.2 Darstellung der Einwirkung .................................................................................................. ..............28
+5.3 Entwurfsgrundsätze .......................................................................................................... ..................29
+Anhang A (informativ) Entwurf zur Begrenzung von Schadensfolgen lokalen Versagens 
+ aus unspezifizierte Ursache in Hochbauten ................................................................................30
+A.1 Anwendungsbereich ........................................................................................................... ................30
+A.2 Einleitung.................................................................................................................. ............................30
+A.3 Versagensfolgeklassen für Hochbauten ........................................................................................ ...30
+2 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Seite 
+A.4 Strategieempfehlungen....................................................................................................... ................31
+A.5 Wirksame horizontale Zugverankerungen....................................................................................... .33
+A.5.1 Rahmenbauweise ............................................................................................................ ....................33
+A.5.2 Tragende Wandbauweise ..................................................................................................... ..............34
+A.6 Wirksame vertikale Zugverankerungen ......................................................................................... ...36
+A.7 Nennquerschnitt einer tragenden Wand ........................................................................................ ...37
+A.8 Haupttragelemente ........................................................................................................... ...................37
+Anhang B (informativ) Hinweise zur Risikoanalyse ......................................................................................38
+B.1 Einleitung .................................................................................................................. ...........................38
+B.2 Begriffe .................................................................................................................... .............................39
+B.3 Beschreibung des Umfangs der Risikoanalyse ...............................................................................39
+B.4 Methoden der Risikoanalyse.................................................................................................. ............40
+B.4.1 Qualitative Risikoanalyse ................................................................................................. ..................40
+B.4.2 Quantitative Risikoanalyse................................................................................................ .................40
+B.5 Risikoakzeptanz und Schutzmaßnahmen......................................................................................... 42
+B.6 Maßnahme zur Risikominderung................................................................................................ .......44
+B.7 Veränderungen ............................................................................................................... .....................44
+B.8 Verständigung über die Resultate und Schlussfolgerungen..........................................................44
+B.9 Anwendung im Hochbau und bei Ingenieurbauwerken ..................................................................44
+B.9.1 Allgemeines ............................................................................................................... ..........................44
+B.9.2 Bauliche Risikoanalyse.................................................................................................... ...................46
+B.9.3 Modellierung der Risiken aus extremen Lastereignissen...............................................................47
+B.9.4 Hinweise zur Anwendung der Risikoanalyse auf den Anprall von Eisenbahnfahrzeugen..........50
+Anhang C (informativ) Dynamische Anprallberechnung ..............................................................................52
+C.1 Allgemeines ................................................................................................................. ........................52
+C.2 Stoßdynamik ................................................................................................................. .......................52
+C.2.1 Harter Stoß ............................................................................................................... ............................52
+C.2.2 Weicher Stoß.............................................................................................................. ..........................54
+C.3 Anprall von abirrenden Straßenfahrzeugen .................................................................................... .54
+C.4 Schiffsanprall.............................................................................................................. .........................57
+C.4.1 Schiffsanprall auf Binnenwasserstraßen.................................................................................... ......57
+C.4.2 Schiffsanprall auf Seewasserstraßen....................................................................................... .........58
+C.4.3 Weitergehende Anpralluntersuchung für Schiffe auf Binnenwasserstraßen ...............................58
+C.4.4 Weitergehende Anpralluntersuchung für Schiffe auf Seewasserstraßen .....................................61
+Anhang D (informativ) Innenraumexplosionen ..............................................................................................62
+D.1 Staubexplosionen in Innenräumen, Behältern und Bunkern..........................................................62
+D.2 Erdgasexplosionen ........................................................................................................... ..................64
+D.3 Explosionen in Straßen- und Eisenbahntunneln .............................................................................64
+3 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Vorwort 
+Dieses Dokument (EN 1991-1-7:2006 + AC:2010) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingeneiurbau“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+CEN/TC 250 ist für alle Eurocodes für den konstruktiven Ingenieurbau verantwortlich. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Januar 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1991-2-7:1998. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm auf der 
+Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Programms war die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und sie schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 80’er Jahren 
+führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu über-
+tragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine Vereinbarung
+1)
+zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den Regelungen der 
+Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln (z. B. die 
+Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie, die Ratsrichtlinien 93/37/EWG, 
+92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die entsprechenden 
+EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89).
+4 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung 
+EN 1991, Eurocode 1: Einwirkung auf Tragwerke 
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten 
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten 
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten 
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten 
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben 
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen 
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitglieds-
+ländern und haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte berücksichtigt, so 
+dass diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1: Mechani-
+scher Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs) 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art 
+sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich aus den 
+Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel 
+sind. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+selbst zu schaffen.
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+a) die wesentliche Anforderung zu konkretisieren, in dem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+b) die Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen anzugeben, 
+z. B. rechnerische oder Testverfahren, Entwurfsregeln, 
+c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2.
+5 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+Nationale Fassungen der Eurocodes 
+Die nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang. 
+Der Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die 
+Tragwerksplanung von Hochbauten und In genieurbauten in dem Land, in dem sie erstellt werden. Sie 
+umfassen: 
+ Zahlenwerte und/oder Klassen, für die die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, für die die Eurocodes nur Symbole angeben; 
+ Landesspezifische, geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ Vorgehensweise, wenn die Eurocodes mehrere zur Wahl anbieten; 
+Der Nationale Anhang darf auch enthalten: 
+ Festlegungen zur Anwendung informativer Anhänge; 
+ Verweise zur Anwendung des Eurocodes, soweit diese ergänzen und nicht widersprechen. 
+Verbindung zwischen den Eurocodes und den harmonisierten 
+Technischen Spezifikationen für Bauprodukte (EN und ETAZ) 
+Die harmonisierten Technischen Spezifikationen für Bauprodukte und die technischen Regelungen für die 
+Tragwerksplanung4) müssen konsistent sein. Insbesondere sollten die Hinweise, die mit den CE-Zeichen an 
+den Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar erkennen lassen, welche 
+national festzulegenden Parameter (NDP) zugrunde liegen. 
+Zusätzliche Informationen zu EN 1991-1-7 
+EN 1991-1-7 liefert Grundsätze und Anwendungsregeln für die Bestimmung von außergewöhnlichen 
+Einwirkungen für Hochbauten und Brücken und behandelt folgende Fälle 
+ Anpralllasten aus Straßenfahrzeugen, Schienen- und Schifffahrtsverkehr sowie Aufpralllasten von 
+Hubschraubern, 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie, ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagen-
+dokumentes Nr. 1.
+6 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ Innenraumexploxionen, 
+ Einwirkungen aus lokalem Versagen durch eine nicht spezifizierte Ursache. 
+EN 1991-1-7 richtet sich an 
+ Auftraggeber (z. B. zur Festlegung spezifischer Anforderungen an das Schutzniveau) 
+ Planer, 
+ Bauausführende und 
+ zuständige Behörden. 
+Die Anwendungen von EN 1991-1-7 erfolgt zusammen mit EN 1990, den anderen Teilen von EN 1991 und 
+mit EN 1992 bis EN 1999 für den Entwurf und die Berechnung von Tragwerken. 
+Nationaler Anhang 
+Die Norm bietet alternative Verfahren, Zahlenwerte und Empfehlungen für Klassen an, die mit 
+Öffnungsklauseln für Nationale Festlegungen versehen sind. Daher sollte die Nationale Fassung von 
+EN 1991-1-7 einen Nationalen Anhang haben, der alle diejenigen national festgelegten Parameter enthält, die 
+für den Entwurf und die Berechnung von Hochbauten und Ingenieurbauwerken, die auf dem Territorium des 
+jeweiligen Landes errichtet werden, zu beachten sind. 
+Nationale Festlegungen sind in EN 1991-1-7 durch folgende Öffnungsklauseln möglich:
+5)
+Abschnitt Punkt 
+2 (2) Klassifizierung außergewöhnlicher Einwirkungen 
+3.1(2) Ereignisse, die zu berücksichtigen sind 
+3.2(1) Risikoniveau 
+3.3(2) Festgelegte außergewöhnliche Einwirkung für Hochbauten 
+3.3(2) Begrenzung lokalen Versagens 
+3.3(2) Wahl der Sicherheitsstrategie 
+3.4(1) Schadensfolgeklassen 
+3.4(2) Bemessungsansätze 
+4.1(1) Außergewöhnliche Einwirkungen für Leichtbauten 
+4.1(1) Hinweise zur Übertragung von Anpralllasten auf Fundamente 
+4.3.1(1) Bemessungswerte fü r Fahrzeuganpralllasten 
+4.3.1(1) Anpralllasten abhängig vom Abstand zu den Fahrspuren 
+5) Es wird vorgeschlagen zu jedem Abschnitt dieser Liste anzugeben welche Wahl getroffen werden darf: Wertangaben, 
+Verfahren, Klassifizierungen. 
+7 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Abschnitt Punkt
+4.3.1(1) Tragwerke und Tragwerkteile für die keine Anpralllast berücksichtigt 
+werden muss 
+4.3.1(2) Alternative Regeln für Anpralllasten 
+4.3.1(3) Bedingungen für den Anprall infolge Straßenfahrzeugen 
+4.3.2(1) Durchfahrthöhen, Schutzmaßnahmen und Bemessungswerte für 
+Überbau 
+4.3.2(1) Abminderungsbeiwert rF für Anpralllast Überbau 
+4.3.2(1) Anpralllasten auf die Brückenunterseite 
+4.3.2(2) Anwendung von Fdy
+4.3.2(3) Abmessungen und Anordnung der Anprallfläche 
+4.4(1) Bemessungswert der Anpralllast aus Gabelstaplern 
+4.5(1) Art des Zugverkehrs 
+4.5.1.2(1) Klassifizierung von Tragwerken für Anpralllasten 
+4.5.1.2(1) Klassifizierung von temporären Bauwerken und Behelfskonstruktionen 
+4.5.1.4(1) Bemessungswerte für Anpralllasten aus Entgleisung 
+4.5.1.4(2) Abminderung der Anpralllasten 
+4.5.1.4(3) Angriffspunkt der Anpralllasten 
+4.5.1.4(4) Statische äquivalente Anpralllast 
+4.5.1.4(5) Anpralllasten bei Geschwindigkeiten größer als 120 km/h 
+4.5.1.5(1) Anforderungen an Tragwerke der Klasse B 
+4.5.2(1) Bereiche an Gleisenden 
+4.5.2(4) Bemessungswerte Anpralllasten auf Anprallwände 
+4.6.1(3) Klassifizierung von Seeschiffen 
+4.6.2(1) Bemessungswerte für Anpralllasten bei Binnenschiffen 
+4.6.2(2) Reibungsbeiwert 
+4.6.2(3) Angriffshöhe und Angriffsfläc he der Anpralllast von Binnenschiffen 
+4.6.2(4) Anpralllasten von Binnenschiffen auf Brückenüberbauten 
+4.6.3(1) Bemessungswerte für Anpralllasten von Seeschiffen 
+4.6.3(3) Reibungsbeiwert 
+4.6.3(4)P Größe und Lage von Anprallflächen bei Seeschiffen 
+4.6.3(5) Anpralllast von Seeschiffen auf Brückenüberbauten 
+5.3 (1)P Verfahren bei Innenraumexplosion 
+A.4(1) Einzelheiten für eine wirksame Verankerung 
+8 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1991-1-7 enthält Strategien und Regelungen für die Sicherung von Hochbauten und anderen 
+Ingenieurbauwerken gegen identifizierbare und nicht-identifizierbare außergewöhnliche Einwirkungen. 
+(2) EN 1991-1-7 liefert : 
+ Strategien bei identifizierten außergewöhnlichen Einwirkungen; 
+ Strategien für die Begrenzung lokalen Versagens. 
+(3) Die folgenden Punkte werden in dieser Norm behandelt; 
+ Begriffe und Bezeichnungen (Abschnitt 1); 
+ Klassifizierung der Einwirkungen (Abschnitt 2); 
+ Bemessungssituationen (Abschnitt 3); 
+ Anprall (Abschnitt 4); 
+ Explosion (Abschnitt 5); 
+ Robustheit im Hochbau  Bemessung für die Folgen lokalen Versagens ohne spezifizierte Ursache 
+(informativer Anhang A); 
+ Hinweise zu Risikoabschätzungen (informativer Anhang B); 
+ dynamische Bemessung für Anprall (informativer Anhang C); 
+ Explosionen in Gebäuden (informativer Anhang D). 
+(4) Regelungen zu Staubexplosionen in Silos sind in EN 1991-4 enthalten. 
+(5) Regelungen für Anpralllasten aus Fahrzeugen auf einer Brücke sind in EN 1991-2 zu finden. 
+(6) EN 1991-1-7 behandelt keine außergewöhnlichen Einwirkungen aus Explosionen außerhalb von 
+Gebäuden und aus Kriegs- und terroristischen Handlungen. Die Resttragfähigkeit von Hochbauten oder 
+anderen Ingenieurbauwerken, die durch seismische Einwirkungen oder Brand beschädigt wurden, wird 
+ebenfalls nicht behandelt usw.. 
+ANMERKUNG Siehe auch 3.1 
+1.2 Normative Verweisungen 
+(1) Diese Norm enthält durch datierte oder undatierte Verweisungen Festlegungen aus anderen 
+Publikationen. Diese normativen Verweisungen sind an den jeweiligen Stellen im Text zitiert, und die 
+Publikationen sind nachstehend aufgeführt. Bei datierten Verweisungen gehören spätere Änderungen oder 
+Überarbeitungen dieser Publikationen nur zu dieser Norm, falls sie durch Änderung oder Überarbeitung 
+eingearbeitet sind. Bei undatierten Verweisungen gilt die letzte Ausgabe der in Bezug genommenen 
+Publikation (einschließlich Änderung). 
+ANMERKUNG Die Eurocodes werden als EN-Normen veröffentlicht. Auf die folgenden Europäischen Normen, die 
+veröffentlicht sind oder sich in Vorbereitung befinden, wird im normativen Text oder in Anmerkungen zum normativen Text 
+verwiesen. 
+9 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+EN 1990 Eurocode: Grundlagen der Tragwerksplanung 
+EN 1991-1-1 Eurocode 1: Einwirkungen auf Tragwerke  Teil 1-1: Wichten, Eigengewicht, 
+Nutzlasten im Hochbau 
+EN 1991-1-6 Eurocode 1: Einwirkungen auf Tragwerke  Teil 1-6: Einwirkungen während der 
+Bauausführung 
+EN 1991-2 Eurocode 1: Einwirkungen auf Tragwerke  Teil 2: Verkehrslasten auf Brücken 
+EN 1991-4 Eurocode 1: Einwirkungen auf Tragwerke  Teil 4: Silos und Tankbauwerke 
+EN 1992 Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten 
+EN 1993 Eurocode 3 : Bemessung und Konstruktion von Stahlbauten 
+EN 1994 Eurocode 4 : Bemessung und Konstruktion von Stahl-Beton-Verbundbauten 
+EN 1995 Eurocode 5: Bemessung und Konstruktion von Holzbauten 
+EN 1996 Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten 
+EN 1997 Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+EN 1998 Eurocode 8: Auslegung von Bauwerken gegen Erdbeben 
+EN 1999 Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen 
+1.3 Annahmen 
+(1)P Die allgemeinen Annahmen in EN 1990, 1.3 gelten auch für diesen Teil der EN 1991. 
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln 
+(1) P Die Regelungen in EN 1990, 1.4 gelten auch für diesen Teil von EN 1991. 
+1.5 Begriffe 
+(1) Für die Anwendung dieser Europäischen Norm gelten die Begriffe nach EN 1990, 1.5 sowie die folgenden 
+Begriffe. 
+1.5.1 
+Verbrennungsgeschwindigkeit 
+Verhältnis der Flammausbreitgeschwindigkeit zur Geschwindigkeit des unverbrandten Staubs, Gases oder 
+Dampfes vor der Flamme 
+1.5.2 
+Schadensfolgeklasse 
+Klassifizierung nach Schadensfolgen bei Tragwerksversagen 
+1.5.3 
+Deflagration 
+Verbrennungswelle infolge einer Explosion, die sich im Unterschallbereich ausbreitet 
+1.5.4 
+Detonation 
+Verbrennungswelle infolge einer Explosion, die sich im Überschallbereich ausbreitet 
+1.5.5 
+dynamische Kraft 
+Kraft im Kraft-Zeitverlauf, der eine dynamische Bauwerksreaktion zur Folge haben kann. Bei Anprall ist die 
+dynamische Kraft mit einer Kontaktfläche an der Anprallstelle verbunden (siehe Bild 1.1). 
+10 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Legende
+a statisch äquivalente Kraft 
+b dynamische Kraft 
+c Bauwerksantwort 
+Bild 1.1 
+1.5.6 
+statisch äquivalente Kraft 
+Darstellung für eine dynamische Kraft, die die dynamische Bauwerksreaktion einschließt (siehe Bild 1.1) 
+1.5.7 
+Flammgeschwindigkeit 
+Geschwindigkeit der Flammenfront relativ zu einem festen Bezugspunkt 
+1.5.8 
+Entflammgrenze 
+Mindest- oder Höchstkonzentration brennbaren Materials in einem homogenen Gemisch mit gasförmigem 
+Oxidiermittel, das die Flamme vorantreibt 
+1.5.9 
+Anprallobjekt 
+Objekt, das Anprall verursacht (d. h. Fahrzeug, Schiff, usw.) 
+1.5.10 
+Haupttragelement 
+Bauelement, dessen Versagen das Versagen des Resttragwerkes verursacht 
+1.5.11 
+tragende Wandkonstruktion 
+Wandkonstruktion aus Mauerwerk ohne Ausfac hung, die hauptsächlich vertikale Lasten abträgt. Dazu 
+gehören auch Leichtbau  Paneelbauweisen aus vertikalen Ständern aus Holz oder Stahl mit Spanplatten, 
+Streckmetall- oder anderen Verschalungen 
+1.5.12 
+lokales Versagen 
+örtlich durch eine außergewöhnliche Einwirkung ausgefallenes oder schwer beeinträchtigtes Tragwerksteil 
+1.5.13 
+Risiko 
+Maß für das Zusammenwirken (üblicherweise als Produkt) von Auftretenswahrscheinlichkeit einer definierten 
+Gefährdung und der Größe der Schadensfolge 
+11 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+1.5.14 
+Robustheit 
+Eigenschaft eines Tragwerks, Ereignisse wie Brand, Explosion, Anprall oder Folgen menschlichen Versagens so 
+zu überstehen, dass keine Schäden entstehen, die in keinem Verhältnis zur Schadensursache stehen 
+1.5.15 
+Unterbau 
+Teil eines Bauwerks, der die Überbauung stützt. Bei Hochbauten üblicherweise die Gründung und weitere 
+Bauwerksteile, die sich unter dem Geländeniveau befinden. Bei Brücken die Gründungen, Widerlager, Pfeiler, 
+Stützen, usw. 
+1.5.16 
+Überbauung 
+Teil des Bauwerks, der von dem Unterbau getragen wird. Bei Hochbauten ist dies üblicherweise das Bauwerk 
+über Gelände. Bei Brücken ist dies normalerweise der Brückenüberbau. 
+1.5.17 
+Öffnungselement 
+nicht tragender Teil der Gebäudehülle (Wand, Boden oder Decken), der infolge begrenzter Beanspruchbarkeit 
+bei Druckentstehung infolge Deflagration nachgeben soll, um den Druck auf Tragwerksteile zu begrenzen 
+1.6 Symbole 
+(1) Für die Anwendung dieser Norm gelten die folgenden Symbole (siehe auch EN 1990). 
+Lateinische Großbuchstaben 
+F Anprallkraft 
+dxF Bemessungswert der horizontalen statisch äquivalenten oder dynamischen Kraft 
+an der Vorderseite des stützenden Unterbaus (Kraft in Verkehrsrichtung des 
+anprallenden Objekts)
+dyF Bemessungswert der horizontalen statisch äquivalenten oder dynamischen Kraft 
+an der Seite des stützenden Unterbaus (Kraft quer zur Verkehrsrichtung des 
+anprallenden Objekts)
+RF Reibungskraft 
+ gestrichener Text
+StK Deflagrationsindex einer Staubwolke 
+maxP maximaler Druck, der sich bei Deflagration unter Abschluss bei einem optimalen 
+Gemisch entwickelt 
+redP abgeminderter Druck, der sich bei Deflagration mit Öffnung entwickelt 
+statP statischer Aktivierungsdruck, der ein Öffnungselement öffnet, wenn der Druck 
+langsam gesteigert wird. 
+12 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Lateinische Kleinbuchstaben 
+a Höhe der Angriffsfläche einer Anpralllast 
+b Breite eines Hindernisses (z. B. Brückenpfeilers) 
+d Abstand des Bauteils von der Mittellinie der Verkehrsspur oder des Gleises 
+h  Durchfahrtshöhe gemessen zwischen Straßenoberkante bis Unterkante 
+Brückenkonstruktion, 
+ Höhe der Anprallkraft über der Fahrbahn 
+Schiffslänge 
+rF Abminderungsbeiwert 
+s Abstand des Bauteils von dem Punkt, an dem das Fahrzeug den Fahrstreifen 
+verlässt
+m Masse 
+vv Geschwindigkeit 
+Griechische Kleinbuchstaben
+ Reibungsbeiwert 
+2 Klassifizierung der Einwirkungen 
+(1)P Einwirkungen nach dem Anwendungsbereich dieser Norm sind als außergewöhnliche Einwirkungen im 
+Sinne von EN 1990, 4.1.1 einzustufen. 
+ANMERKUNG Tabelle 2.1 legt die maßgebenden Abschnitte in EN 1990 fest, die bei der Bemessung von Tragwerken 
+auf die außergewöhnlichen Einwirkungen wirken, zu berücksichtigen sind. 
+Tabelle 2.1  Abschnitte in EN 1990, die auf außergewöhnliche Einwirkungen hinweisen 
+Gegenstand Abschnitte 
+Begriffe 1.5.2.5, 1.5.3.5, 
+1.5.3.15
+Grundlegende Anforderungen 2.1(4), 2.1(5)
+Bemessungssituationen 3.2(2)P
+Klassifizierung von Einwirkungen 4.1.1(1)P, 4.1.1(2), 
+4.1.2(8)
+Andere repräsentative Werte veränderlicher Einwirkungen 4.1.3(1)P
+Lastkombination für außergewöhnliche Bemessungssituationen 6.4.3.3
+Bemessungswerte von Einwirkungen in außergewöhnlichen und 
+seismischen Bemessungssituationen 
+A1.3.2
+(2) Außergewöhnliche Einwirkungen auf Anprall sollten, soweit nicht anders geregelt, als freie Einwirkungen 
+behandelt werden. 
+ANMERKUNG Im Nationalen Anhang oder im Einzelfall dürfen Abweichungen von der Behandlung außergewöhnlicher 
+Einwirkungen als freie Einwirkungen festgelegt werden. 
+13 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+3 Bemessungssituationen 
+3.1 Allgemeines 
+(1)P Tragwerke sind für die maßgebenden außergewöhnlichen Bemessungssituatonen zu bemessen, die in 
+EN 1990, 3.2(2)P klassifiziert sind. 
+(2) Die Strategien, die in Betracht zu ziehen sind, gehen aus Bild 3.1 hervor. 
+AUSSERGEWÖHNLICHE 
+BEMESSUNGSSITUATIONEN 
+STRATEGIEN AUF DER GRUNDLAGE 
+IDENTIFIZIERTER 
+AUSSERGEWÖHNLICHER 
+EINWIRKUNGEN 
+z. B. Explosion oder Anprall 
+ STRATEGIEN AUF DER GRUNDLAGE DER 
+BEGRENZUNG LOKALER SCHÄDEN 
+TRAGWERKS-
+ENTWURF MIT 
+GENÜGENDER 
+MINDEST-
+ROBUSTHEIT 
+VERMEIDUNG 
+ODER MINDERUNG 
+DER EINWIRKUNG 
+z. B. durch 
+Schutzmaßnahmen
+BEMESSUNG DES 
+TRAGWERKS FÜR 
+DIE 
+SPEZIFIZIERTE 
+EINWIRKUNG 
+VERBESSERTE 
+REDUNDANZ 
+z. B. durch 
+alternative 
+Lastpfade 
+HAUPTTRAG-
+ELEMENTE 
+BEMESSEN FÜR EINE 
+ERSATZLAST FÜR DIE 
+AUSSERGEWÖHN-
+LICHE EINWIRKUNG 
+Ad
+KONSTRUK-
+TIVE REGELN 
+z. B. für 
+Zusammen-
+halt und 
+Duktilität 
+Bild 3.1  Strategien zur Behandlung außergewöhnlicher Bemessungssituationen 
+ANMERKUNG 1 Die erforderlichen Strategien und Regeln werden im Einzelfall mit dem Bauherrn und der zuständigen 
+Behörde abgestimmt. 
+ANMERKUNG 2 Außergewöhnliche Einwirkungen können identifizierte oder nicht identifizierte Einwirkungen sein. 
+ANMERKUNG 3 Strategien auf der Grundlage nicht identifizierter außergewöhnlicher Einwirkungen decken eine große 
+Anzahl möglicher Ereignisse ab. Sie zielen auf die Begrenzung lokaler Schäden hin. Die Strategien dürfen zu 
+ausreichender Robustheit auch für identifizierte außergewöhnliche Einwirkungen nach 1.1(6) oder für jede andere 
+Einwirkung ohne spezifizierte Ursache führen. Hinweise für Hochbauten sind im Anhang A enthalten. 
+ANMERKUNG 4 Ersatzlasten für identifizierte außergewöhnliche Einwirkungen in dieser Norm sind Vorschläge. Die 
+Werte dürfen im Nationalen Anhang oder im Einzelfall verändert und mit dem Bauherrn und der zuständigen Behörde 
+vereinbart werden. 
+ANMERKUNG 5 Für bestimmte Bauwerke (z. B. für Bauten, bei denen keine Personengefährdung besteht und 
+wirtschaftliche, soziale und Umweltfolgen vernachlässigbar sind) darf bei außergewöhnlichen Einwirkungen der Einsturz 
+des Tragwerks in Kauf genommen werden. Die Bedingungen dafür dürfen im Einzelfall mit dem Bauherrn und der 
+zuständigen Behörde vereinbart werden. 
+14 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+3.2 Außergewöhnliche Bemessungssituationen  Strategien bei identifizierten 
+außergewöhnlichen Einwirkungen 
+(1) Die Größen der außergewöhnlichen Einwirkungen hängen von Folgendem ab: 
+ Maßnahmen zur Vermeidung oder Minderung der Auswirkungen außergewöhnlicher Einwirkungen; 
+ Auftretenswahrscheinlichkeit der identifizierten außergewöhnlichen Einwirkungen; 
+ mögliche Schadensfolgen identifizierter außergewöhnlicher Einwirkungen; 
+ öffentliche Einschätzung; 
+ Größe des akzeptablen Risikos. 
+ANMERKUNG 1 Siehe auch EN 1990, 2.1(4)P, Anmerkung 1. 
+ANMERKUNG 2 In der Praxis kann die Auftretenswahrscheinlichkeit und die Schadensfolge außergewöhnlicher 
+Einwirkungen mit einem bestimmten Risikoniveau verknüpft werden. Wird dieses Niveau nicht akzeptiert, sind zusätzliche 
+Maßnahmen erforderlich. Ein Nullrisiko kann jedoch kaum erreicht werden; meistens muss ein bestimmtes Risikoniveau 
+akzeptiert werden. Solch ein Risikoniveau wird durch bestimmte Faktoren bestimmt, z. B. der möglichen Anzahl von 
+Unfallopfern, wirtschaftlichen Folgen, Kosten von Sicherheitsmaßnahmen usw. 
+ANMERKUNG 3 Das akzeptierbare Risikoniveau darf im Nationalen Anhang als nicht widersprüchliche ergänzende 
+Information enthalten sein. 
+(2) Lokales Versagen infolge außergewöhnlicher Einwirkungen darf akzeptiert werden, wenn die Stabilität des 
+Tragwerks nicht gefährdet wird, die Gesamttragfähigkeit erhalten bleibt und diese erlaubt, die notwendigen 
+Sicherungsmaßnahmen durchzuführen. 
+ANMERKUNG 1 Im Hochbau dürfen solche Sicherungsmaßnahmen die sichere Evakuierung der Personen vom 
+Grundstück und aus der Umgebung bedeuten. 
+ANMERKUNG 2 Im Brückenbau dürfen solche Sicherungsmaßnahmen das Sperren der Straßenstrecke oder 
+Eisenbahnlinie innerhalb eines bestimmten Zeitraumes bedeuten. 
+(3) Die Maßnahmen zur Risikominderung von außergewöhnlichen Einwirkungen sollten je nach Fall eine oder 
+mehrere folgender Strategien einschließen: 
+a) Vermeiden der Einwirkung (z. B. durch geeignete lichte Höhen zwischen Fahrzeug und Bauwerk bei 
+Brücken) oder Reduzierung der Auftretenswahrscheinlichkeit und/oder Größe der Einwirkung auf ein 
+akzeptables Niveau durch geeignete Konstruktionen (z. B. bei Gebäuden durch verlorene 
+Öffnungselemente mit geringer Masse und Festigkeit, die Explosionswirkungen reduzieren); 
+b) Schutz des Tragwerkes gegen Überbelastung durch Reduktion der außergewöhnlichen Einwirkung (z. B. 
+durch Poller oder Schutzplanken) ; 
+c) Vorsehen ausreichender Robustheit mittels folgender Maßnahmen : 
+1) Bemessung von bestimmten Bauwerksteilen, von denen die St abilität des Tragwerks abhängt, als 
+Haupttragelemente (siehe 1.5.10), um die Überlebenswahrscheinlichkeit nach außergewöhnlichen 
+Einwirkungen zu vergrößern. 
+2) Bemessung von Bauteilen und Auswahl von Materialien, um mit genügender Duktilität die Energie 
+aus der Einwirkung ohne Bruch absorbieren zu können. 
+3) Vorsehen ausreichender Tragwerksredundanzen, um im Falle außergewöhnlicher Ereignisse 
+alternative Lastpfade zu ermöglichen. 
+15 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG 1 Es ist möglich, dass ein Tragwerk durch Verminderung der Auswirkungen einer (außergewöhn-
+lichen) Einwirkung nicht zu schützen oder das Auftreten einer (außergewöhnlichen) Einwirkung nicht zu verhindern 
+ist. Die Einwirkungen können nämlich von Faktoren abhängen, die nicht notwendigerweise Teil der für die 
+Nutzungsdauer gedachten Bemessungsannahmen sind. Präventative Maßnahmen dürfen regelmäßige Inspektionen 
+und Unterhaltungsmaßnahmen während der Nutzungsdauer umfassen. 
+ANMERKUNG 2 Zum Entwurf von Bauteilen mit ausreichender Duktilität siehe Anhang A und C zusammen mit 
+EN 1992 bis EN 1999. 
+(4)P Die außergewöhnlichen Einwirkungen sind je nach Fall zusammen mit den gleichzeitig wirkenden 
+ständigen und veränderlichen Einwirkungen nach EN 1990, 6.4.3.3 anzusetzen. 
+ANMERKUNG Zu den - Werten, siehe EN 1990, Anhang A. 
+(5)P Auch die Sicherheit des Tragwerks unmittelbar nach Eintreffen der außergewöhnlichen Einwirkung ist zu 
+berücksichtigen. 
+ANMERKUNG Dies schließt die Möglichkeit progressiven Einsturzes (Reißverschlußeffekt) ein, siehe Anhang A. 
+3.3 Außergewöhnliche Bemessungssituationen  Strategien zur Begrenzung lokalen 
+Versagens 
+(1)P Beim Entwurf ist darauf zu achten, dass mögliches Versagen aus unspezifizierter Ursache klein bleibt. 
+(2) Dabei sollten folgende Strategien verwendet werden: 
+a) Bemessung der Haupttragelemente, von denen die Sicherheit des Tragwerks abhängt, für ein bestimmtes 
+Modell der außergewöhnlichen Einwirkungen A
+d; 
+ANMERKUNG 1 Der Nationale Anhang darf ein Modell für den Bemessungswert Ad als verteilte Last oder Einzellast . 
+angeben. Die Empfehlung für das Modell für Hochbauten ist eine gleichmäßig verteilte Ersatzbelastung aus einer 
+rechnerischen Druckwelle in jeder Richtung auf das Haupttragteil und die angeschlossenen Bauelemente (z. B. 
+Fassaden usw.) wirkend. Empfohlen wird im Hochbau eine gleichmäßig verteilte Belastung von 34 kN/m
+2. Siehe 
+A.8.
+b) Tragwerksentwurf mit erhöhter Redundanz, so dass bei lokalem Versagen (z. B. Einzelbauteilversagen) 
+kein Einsturz des Tragwerks oder eines wichtigen Tragwerkteils möglich ist ; 
+ANMERKUNG 2 Der Nationale Anhang darf den akzeptablen geometrischen Umfang des lokalen Versagens“ 
+angeben. Empfohlen wird im Hochbau eine Begrenzung auf nicht mehr als 100 m 2 oder 15 % der Deckenfläche von 
+zwei benachbarten Decken, die durch den Ausfall einer beliebigen Stütze, Pfeiler oder Wand entstanden sein kann. 
+Dies führt wahrscheinlich zu einem Tragwerk mit genügender Robustheit unabhängig davon, ob eine identifizierte 
+außergewöhnliche Einwirkung berücksichtigt wurde. 
+c) Anwendung von Bemessungs- und Konstruktions-Regeln, die eine annehmbare Robustheit des Trag-
+werks bewirken (z. B. Zugverankerungen in allen 3 Richtungen, um einen zusätzlichen Zusammenhalt zu 
+gewährleisten, oder ein Mindestmaß an Duktilität von Bauteilen, die von Anprall betroffen sind). 
+ANMERKUNG 3 Der Nationale Anhang darf für verschiedene Tragwerke die erforderlichen Strategien nach 3.3 
+festlegen. gestrichener Text
+3.4 Außergewöhnliche Bemessungssituationen  Anwendung der Schadensfolgeklassen 
+(1) Die Strategien für außergewöhnliche Bemessungssituationen dürfen folgende Schadensfolgeklassen, 
+die in EN 1990 aufgeführt sind, nutzen. 
+16 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ CC1 Geringe Versagensfolgen 
+ CC2 Mittlere Versagensfolgen 
+ CC3 Hohe Versagensfolgen 
+ANMERKUNG 1 EN 1990, Anhang B liefert weitere Informationen. 
+ANMERKUNG 2 Unter Umständen ist es zweckmäßig, verschiedene Teile des Tragwerks unterschiedlichen 
+Schadensfolgeklassen zuzuordnen, z. B. bei einem niedrig geschossigen Seitenflügel eines Hochhauses, der von den 
+Funktionen her weniger kritisch als das Hauptgebäude ist. 
+ANMERKUNG 3 Die Wirkung verhindernder oder schützender Maßnahmen liegt in der Beseitigung oder 
+Verminderung der Schadenswahrscheinlichkeit. Beim Entwurf führt dies manchmal zur Zuordnung in eine geringere 
+Schadensfolgeklasse. Zweckmäßiger erscheint eine Abminderung der Lasten auf das Tragwerk. 
+ANMERKUNG 4 Der Nationale Anhang darf eine Kategorisierung von Tragwerken in Schadensfolgeklassen nach 3.4 
+(1) enthalten. Ein Vorschlag für Schadensfolgeklassen für den Hochbau ist in Anhang A angegeben. 
+(2) Außergewöhnliche Bemessungssituationen dürfen für verschiedene Schadensfolgeklassen nach 3.4 (1) in 
+folgender Weise behandelt werden: 
+ CC1: Eine spezielle Berücksichtigung von außergewöhnlichen Einwirkungen über die Robustheit- und 
+Stabilitätsregeln in EN 1992 bis EN 1999 hinaus ist nicht erforderlich. 
+ CC2: Abhängig vom Einzelfall des Tragwerks darf eine vereinfachte Berechnung mit statisch 
+äquivalenten Ersatzlasten durchgeführt werden oder es dürfen Bemessung- bzw. Konstruktionsregeln 
+angewendet werden. 
+ CC3: Der Einzelfall sollte besonders untersucht werden, um das erforderliche Zuverlässigkeitsniveau und 
+die Tiefe der Tragwerksberechnung zu bestimmen. Das kann eine Risikoanalyse erfordern, ebenso die 
+Anwendung weitergehender Methoden wie eine dynamische Berechnung, nicht lineare Modelle und die 
+Berücksichtigung der Interaktion von Einwirkung und Tragwerk. 
+ANMERKUNG Der Nationale Anhang darf für höhere oder niedrigere Schadensfolgeklassen Hinweise zu geeigneten 
+Entwurfsmethoden als widerspruchsfreie, ergänzende Information liefern. 
+4 Anprall 
+4.1 Anwendungsbereich 
+(1) Dieser Abschnitt behandelt außergewöhnliche Einwirkungen für die folgenden Ereignisse: 
+ Anprall von Straßenfahrzeugen (ausgenommen Kollisionen mit Leichtbautragwerken) (siehe 4.3); 
+ Anprall von Gabelstaplern (siehe 4.4); 
+ Anprall von Eisenbahnfahrzeugen (ausgenommen Kollisionen mit Leichtbautragwerken) (siehe 4.5); 
+ Anprall von Schiffen (siehe 4.6); 
+ harte Landung von Helikoptern auf Dächern (siehe 4.7). 
+ANMERKUNG 1 Außergewöhnliche Einwirkungen auf Leichtbautragwerke (z. B. Gerüste, Beleuchtungsmasten, 
+Fußgängerbrücken) dürfen im Nationalen Anhang als widerspruchsfreie, zusätzliche Information in Bezug genommen 
+werden. 
+17 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG 2 Zu Anpralllasten auf Schrammborde oder Geländer, siehe EN 19912. 
+ANMERKUNG 3 Der Nationale Anhang darf als widerspruchsfreie, zusätzliche Information Hinweise zu der Übertragung 
+der Anpralllasten in die Tragwerksfundamente geben. Siehe EN 1990, 5.1.3 (4). 
+(2)P Im Hochbau sind Anpralllasten in folgenden Fällen anzusetzen: 
+ Parkhäuser; 
+ Bauwerke mit zugelassenem Verkehr von Fahrzeugen oder Gabelstaplern und 
+ Bauwerke, die an Straßenverkehr oder Schienenverkehr angrenzen. 
+(3) Bei Brücken sollten die Anpralllasten und die vorgesehenen Schutzmaßnahmen u.a. die Art des Verkehrs 
+auf und unter der Brücke und die Folgen des Anpralls berücksichtigen. 
+(4)P Anpralllasten aus Helicoptern sind bei Gebäuden mit Landeplattform auf dem Dach anzusetzen. 
+4.2 Darstellung der Einwirkungen 
+(1) Anpralllasten sind mit einer dynamischen Analyse zu ermitteln oder als äquivalente statische Kraft 
+festzulegen. 
+ANMERKUNG 1 Die Kräfte auf die Grenzflächen zwischen dem Anprallobjekt und dem Tragwerk hängen von dem 
+Zusammenwirken von Anprallobjekt und Tragwerk ab. 
+ANMERKUNG 2 Die Basisvariablen für eine Anprallanalyse sind die Geschwindigkeit des Anprallobjektes und die 
+Masseverteilung, das Verformungsverhalten und die Dämpfungscharakteristik des Anprallobjektes und des Tragwerks. 
+Auch die Berücksichtigung anderer Faktoren wie des Anprallwinkels, der Konstruktion des Anprallobjektes und der 
+Bewegung des Anprallobjektes nach der Kollision kann notwendig sein. 
+ANMERKUNG 3 Anhang C gibt weitere Informationen. 
+(2) Es darf angenommen werden, dass nur das Anprallobjekt die gesamte Energie absorbiert. 
+ANMERKUNG Diese Annahme liefert im Allgemeinen Ergebnisse auf der sicheren Seite. 
+(3) Für die Stoffeigenschaften des Anprallobjektes und des Tragwerks sollten , sofern maßgebend, untere und 
+obere charakteristische Werte verwendet werden. Wirkungen der Dehnungsgeschwindigkeit sind bei Bedarf 
+zu berücksichtigen. 
+(4) Für die Bemessung dürfen die Anpralllasten als äquivalente statische Kräfte aufgrund äquivalenter 
+Wirkungen auf das Tragwerk dargestellt werden. Dieses vereinfachte Modell darf für den Nachweis des 
+statischen Gleichgewichtes, die Festigkeitsnachweise und die Bestimmung der Verformungen des Tragwerks 
+unter Anprall verwendet werden. 
+(5) Werden Tragwerke für die Absorption der Anprallenergie durch elastisch-plastische Verformungen der 
+Bauteile (so genannter weicher Stoß) bemessen, dürfen die äquivalenten statischen Lasten mit der Annahme 
+plastischer Festigkeiten in Verbindung mit der Deformationskapazität der Bauteile ermittelt werden. 
+ANMERKUNG Für weitere Hinweise, siehe Anhang C. 
+(6) Bei Tragwerken, bei denen die Energieabsorption im Wesentlichen beim Anprallobjekt liegt (so genannter 
+harter Stoß) dürfen die dynamischen oder äquivalenten statischen Kräfte 4.3 bis 4.7 entnommen werden. 
+ANMERKUNG Hinweise zu Bemessungswerten für Massen und Geschwindigkeiten kollidierender Objekte für 
+dynamische Berechnungen gibt es im Anhang C. 
+18 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+4.3 Außergewöhnliche Einwirkungen aus dem Anprall von Straßenfahrzeugen 
+4.3.1 Anprall auf stützende Unterbauten 
+(1) Die Bemessungswerte von Anpralllasten auf stützende Unterbauten (z. B. Stützen und Wände von 
+Brücken oder Hochbauten) an Straßen unterschiedlicher Kategorie sind zu spezifizieren. 
+ANMERKUNG 1 Die Bemessungswerte für harten Stoß (siehe 4.2 (6)) aus Straßenverkehr dürfen im Nationalen Anhang 
+angegeben werden. 
+Anhaltswerte für äquivalente statische Anpralllasten dürfen der Tabelle 4.1 entnommen werden. Die Entscheidung für den 
+Bemessungswert darf von den Anprallfolgen, der Art und Stärke des Verkehrs und evtuelle Schutzmaßnahmen abhängig 
+gemacht werden, siehe EN 1991-2 und Anhang C. Hinweise zur Risikoanalyse sind in Anhang B enthalten. 
+Tabelle 4.1  Anhaltswerte für äquivalente statische Anprallkräfte aus Straßenverkehr auf 
+Stützkonstruktionen von Tragwerken an und über Straßenverkehrswegen 
+Kategorie 
+Kraft Fdx 
+a 
+kN 
+Kraft Fdy
+a 
+kN 
+Autobahnen und Bundesstraßen 1 000 500 
+Landstraßen außerhalb von Ortschaften 750 375 
+Innerstädtische Straßen 500 250 
+Privatstraßen und Parkgaragen für: 
+ Pkws
+ Lkws b
+50 
+150 
+25 
+75 
+a x = in Fahrtrichtung, y = quer zur Fahrtrichtung. 
+b Lkws mit Leergewicht größer als 3,5 t. 
+ ANMERKUNG 2 Der Nationale Anhang darf die Anprallkraft abhängig vom Abstand s des Bauteils von dem Punkt, 
+an dem das Fahrzeug den Fahrstreifen verlässt, und vom Abstand d des Bauteils von der Mittellinie der Verkehrsspur oder 
+des Gleises festlegen. Hinweise zur Wirkung des Abstandes s, sofern zutreffend, enthält Anhang C. 
+ANMERKUNG 3 Der Nationale Anhang darf angeben, unter welchen Bedingungen Fahrzeuganprall nicht berücksichtigt 
+zu werden braucht. 
+ANMERKUNG 4 Bei Anprallkräften aus Verkehr auf Brücken ist EN 1991-2 zu beachten. 
+ANMERKUNG 5 Hinweise zu außergewöhnlichen Einwirkungen aus Straßenverkehr an Eisenbahnbrücken liefert UIC-
+Merkblatt 777.1R. 
+(2) Die Anwendung der Kräfte Fdx und Fdy sollte spezifiziert werden. 
+ANMERKUNG Regeln für die Anwendung von Fdx und Fdy dürfen im Nationalen Anhang spezifiziert oder im Einzelfall 
+festgelegt werden. Es wird empfohlen, die Kräfte Fdx und Fdy nicht gleichzeitig wirkend anzusetzen. 
+(3) Bei Anprall auf tragende Bauteile sollte die Angriffsfläche der resultierende Anprall-Kraft F spezifiziert 
+werden. 
+19 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG Der Nationale Anhang darf die Bedingungen für den Anprall von Straßenfahrzeugen spezifizieren. 
+Empfohlen werden folgende Bedingungen (siehe Bild 4.1): 
+ Die Anprallkraft F von Lkws auf Stützkonstruktionen darf in einer Höhe h zwischen 0,5 m und 1,5 m über 
+Straßenoberkante angesetzt werden. Bei Schutzplanken gelten größere Werte. Die empfohlene Anprallfläche ist a = 
+0,5 m hoch und so breit wie das Bauteil, maximal 1,5 m breit. 
+ Die Anprallkraft F von Pkws darf in einer Höhe h = 0,5 m über Straßenoberkante angesetzt werden. Die empfohlene 
+Anprallfläche ist 0,25 m hoch und so breit wie das Bauteil, maximal 1,50 m breit. 
+Legende 
+a empfohlene Höhe der Anprallfläche; liegt zwischen 0,25 m (für Pkws) und 0,50 m (für Lkws) 
+h Angriffshöhe der Anprallkraft über Straßenoberkante; liegt zwischen 0,5 m (für Pkws) und 1,5 m (für Lkws) 
+x Mittellinie der Fahrspur 
+Bild 4.1  Anprallkraft auf Stützkonstruktion neben Fahrspuren 
+4.3.2 Anprall auf Überbauungen 
+(1) Anpralllasten auf Überbauungen aus dem Anprall von Lkws oder deren Ladegut sind zu spezifizieren, 
+wenn diese nicht durch ausreichende Durchfahrtshöhen oder wirksame Schutzmaßnahmen verhindert werden 
+können. 
+ANMERKUNG 1 Bemessungswerte für den Anprall in Verbindung mit Werten für eine ausreichende Durchfahrtshöhe 
+und geeigneten Schutzmaßnahmen dürfen im Nationalen Anhang spezifiziert werden. Empfohlen wird ein Wert für die 
+ausreichende Durchfahrtshöhe, unter Beachtung eventueller Straßendeckenerhöhungen für Straßenverkehr, unter einer 
+Brücke zwischen 5,0 m und 6,0 m. Anhaltswerte zu der äquivalenten statischen Anprallkraft sind in Tabelle 4.2 ange-
+geben. 
+Tabelle 4.2  Anhaltswerte für äquivalente statische Anprallkräfte auf Überbauten 
+Kategorie Äquivalente statische Ersatzkraft Fdx
+a 
+kN 
+Autobahnen und Bundesstraßen 500 
+Landstraßen außerhalb von Ortschaften 375 
+Innerstädtische Straßen 250 
+Privatstraßenund Parkgaragen 75 
+a x = in Fahrtrichtung 
+20 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG 2 Die Entscheidung für den Bemessungswert darf von den Anprallfolgen, der Art und erwartete Stärke 
+des Verkehrs und eventuellen Sicherungs- und Schutzmaßnahmen abhängig gemacht werden. 
+ANMERKUNG 3 Die Anpralllasten auf vertikale Flächen sind mit denen in Tabelle 4.2 identisch. Bei ho h h1 können 
+die Anpralllasten mit dem Abminderungsbeiwert rF abgemindert werden. Der Nationale Anhang darf Werte für rF, ho und h1
+festlegen. Empfehlungen zu den Werten rF, h0 und h1 sind Bild 4.2 zu entnehmen. 
+Legende 
+b Höhenunterschied zwischen h1 und h0 ; b = h1  h0. Der empfohlene Wert ist b = 1,0 m. Die Reduktion von F ist 
+möglich bei Werten b zwischen 0 m und 1 m; d. h. zwischen h0 und h1. 
+h  lichter Abstand zwischen der Straßenoberkante und der Brückenunterkante am Aufprallpunkt.
+h0  Mindestabstand zwischen der Straßenoberkante und der Brückenunterkante, unterhalb dessen der Anprall auf 
+den Überbau voll berücksichtigt werden muss: Der empfohlene Wert ist h0 = 5,0 m (+ Zuschläge für Gradienten, 
+Brückendurchbiegung und voraussichtliche Setzungen.
+h1  der Wert des lichten Abstandes zwischen der Straßenoberkante und der Brückenunterkante, von dem ab die 
+Anprallkraft nicht berücksichtigt werden muss. Der empfohlene Wert ist h1 = 6,0 m + Zuschläge für zukünftige 
+Fahrbahndecken-Erneuerungen, Gradienten, Brückendurchbiegung und voraussichtliche Setzungen.
+Bild 4.2  Empfehlungen für den Abminderungsbeiwert rF für Anpralllasten auf Überbauungen 
+von Straßen, abhängig von der Durchfahrtshöhe h
+ANMERKUNG 4 Auf der Unterseite der Brücke dürfen die gleichen Anpralllasten wie auf vertikalen Flächen in schräger 
+Richtung eingesetzt werden. Der Nationale Anhang darf die Bedingungen festlegen. Empfohlen wird eine Neigung der 
+Kräfte von 10°, siehe Bild 4.3. 
+Legende 
+x Fahrtrichtung 
+h Abstand der Straßenoberkante von der Unterkante der Brücke 
+Bild 4.3  Anpralllast auf Bauteile des Überbaus 
+21 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG 5 Bei der Bestimmung der Höhe h sollten zukünftige eventuelle Veränderungen z. B. durch 
+Deckenerhöhung der Straße berücksichtigt werden. 
+(2) Sofern notwendig sollten auch Anprallkräfte Fdy quer zur Fahrtrichtung berücksichtigt werden. 
+ANMERKUNG Die Anwendung von Fdy darf im Nationalen Anhang oder Im Einzelfall festgelegt werden. Es wird 
+empfohlen, Fdy nicht gleichzeitig mit Fdx anzusetzen. 
+(3) Die Anprallfläche für die Anprallkraft F auf Bauteile des Überbaus ist zu spezifizieren. 
+ANMERKUNG Der Nationale Anhang darf die Lage und die Abmessungen der Anprallfläche festlegen. Als 
+Anprallfläche wird ein Quadrat mit der Seitenlänge 0,25 m empfohlen. 
+4.4 Außergewöhnliche Einwirkungen aus Gabelstaplern 
+(1) Die Bemessungswerte für außergewöhnliche Einwirkungen aus Anprall von Gabelstaplern sind unter 
+Berücksichtigung des dynamischen Verhaltens von Gabelstapler und Tragwerk festzulegen. Die 
+Tragwerksantwort kann nichtlinear sein. Anstelle einer dynamischen Berechnung darf eine äquivalente 
+statische Kraft 
+F angesetzt werden. 
+ANMERKUNG Der Nationale Anhang darf den Wert für die äquivalente statische Ersatzlast F angeben. Es wird 
+empfohlen, den Wert F mit dem dynamischen Verfahren für weichen Stoß nach C.2.2 zu ermitteln. Alternativ wird 
+empfohlen, die Ersatzlast mit F = 5W anzusetzen, wobei W die Summe aus Leergewicht und Stapellast des Staplers ist 
+(siehe EN 1991-1, Tabelle 6.5); die Kraft greift in einer Höhe von 0,75 m über dem Fußboden an. In einigen Fällen dürften 
+größere oder kleinere Werte geeignet sein. 
+4.5 Außergewöhnliche Einwirkungen infolge Entgleisung von Eisenbahnfahrzeuen auf 
+Bauwerke neben oder über Gleisen 
+(1) Die außergewöhnlichen Einwirkungen infolge Zugverkehr sind zu spezifizieren. 
+ANMERKUNG Der Nationale Anhang darf die Art des Zugverkehrs festlegen, für die die Regeln in diesem Abschnitt 
+gelten. 
+4.5.1 Tragwerke neben oder über Gleisanlagen 
+4.5.1.1 Allgemeines 
+(1) Anprallkräfte auf Stützkonstruktionen (z. B. Stützen oder Pfeiler) bei Entgleisung von Zügen, die unter oder 
+neben Bauwerken verkehren, sollten festgelegt sein, siehe 4.5.1.2. Die Entwurfsplanung kann auch andere 
+Vorbeuge- oder Schutzmaßnahmen zur Verringerung der Anprallkräfte auf die Stützkonstruktionen enthalten. 
+Die gewählten Werte sollten von der Bauwerksklassifizierung abhängen. 
+ANMERKUNG 1 Lasten aus Entgleisungen, die auf einer Brücke stattfinden, sind in EN 1991-2 geregelt. 
+ANMERKUNG 2 Weiterführende Hinweise zu außergewöhnlichen Einwirkungen aus Zugverkehr sind im UIC-
+Merkblatt 777-2 zu finden. 
+4.5.1.2 Bauwerksklassifizierung 
+(1) Tragwerke, die aus Entgleisungen anprallgefährdet sind, sind nach Tabelle 4.3 zu klassifizieren.. 
+22 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Tabelle 4.3  Bauwerksklassifizierung für Anprallnachweise aus Entgleisung 
+Klasse A Bauwerke über oder neben Gleisanlagen, die dem ständigen Aufenthalt von 
+Menschen dienen oder in denen zeitweise Menschenansammlungen stattfinden 
+sowie mehrgeschossige Anlagen, die nicht dem ständigen Aufenthalt von Menschen 
+dienen. 
+Klasse B Massive Tragwerke über Gleisanlagen, wie Brücken mit Straßenverkehr oder 
+einstöckige Hochbauten, die nicht dem dauernden Aufenthalt von Menschen dienen. 
+ANMERKUNG 1 Die Zuordnung von Bauwerken in die Klasse A und B darf im Nationalen Anhang oder für das einzelne 
+Projekt erfolgen. 
+ANMERKUNG 2 Der Nationale Anhang darf auch ergänzende Hinweise zur Klassifizierung temporärer Bauwerke, wie 
+z. B. temporärer Fußgängerbrücken oder ähnlicher Anlagen für den öffentlichen Verkehr oder für Behelfskonstruktionen, 
+als widerspruchsfreie, zusätzliche Information liefern, siehe EN 1991-1-6. 
+ANMERKUNG 3 Zum Hintergrund und weiteren Hinweisen zur Bauwerksklassifizierung wird auf die entsprechenden UIC-
+Dokumente hingewiesen. 
+4.5.1.3 Außergewöhnliche Bemessungssituationen und Bauwerksklassen 
+(1) Entgleisungen unter oder neben einem Bauwerk, das in Klasse A oder B klassifiziert ist, sind als 
+außergewöhnliche Bemessungssituationen nach EN 1990, 3.2 zu behandeln. 
+(2) Aus Entgleisungen unter oder neben einem Bauwerk braucht in der Regel kein Anprall auf die 
+Überbauung berücksichtigt zu werden. 
+4.5.1.4 Bauwerke der Klasse A 
+(1) Für Bauwerke der Klasse A, bei denen Geschwindigkeiten 120 km/h nicht übersteigen, sind 
+Bemessungswerte für die statisch äquivalenten Kräfte auf Stützkonstruktionen (z. B. Pfeiler, Wände) zu 
+spezifizieren. 
+ANMERKUNG Die statisch äquivalenten Lasten und ihre Zuordnung dürfen im Nationalen Anhang angegeben werden. 
+Anhaltswerte sind in Tabelle 4.4 zu finden. 
+Tabelle 4.4  Anhaltswerte für horizontale statisch äquivalente Anprallkräfte auf Bauwerke 
+der Klasse A über oder neben Gleisanlagen 
+Abstand d des Hindernisses von der 
+Gleisachse des nächstliegenden Gleises 
+Kraft Fdx
+a Kraft Fdy
+a
+m kN kN 
+Im Einzelfall 
+zu spezifizieren. 
+Im Einzelfall 
+zu spezifizieren. 
+Bauelement: d < 3 m 
+Weitere Hinweise liefert 
+der Anhang B 
+Weitere Hinweise liefert 
+der Anhang B 
+Bei durchlaufenden Wänden und wandähnlichen 
+Konstruktionen: 3 m d 5 m 
+4 000 1 500 
+d > 5 m 0 0 
+a x = in Fahrtrichtung ; y = quer zur Fahrtrichtung. 
+23 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(2) Werden Stützen durch massive Sockel oder Bahnsteige geschützt, dürfen die Anpralllasten abgemindert 
+werden. 
+ANMERKUNG Abminderungen dürfen im Nationalen Anhang angegeben werden. 
+(3) Die Kräfte Fdx und Fdy sind in festgelegter Höhe über der Gleisebene anzusetzen, siehe Tabelle 4.4. Die 
+Kräfte sind unabhängig voneinander zu berücksichtigen. 
+ANMERKUNG Der Angriffspunkt der Kraft darf im Nationalen Anhang spezifiziert sein. Empfohlen wird der Wert 1,8 m. 
+(4) Beträgt die maximale Zuggeschwindigkeit nicht mehr als 50 km/h, dürfen die Kräfte der Tabelle 4.4 
+reduziert werden. 
+ANMERKUNG Die Reduzierung darf im Nationalen Anhang angegeben sein, die empfohlene Reduzierung ist 50 %. 
+Weitere Hinweise liefert das Merkblatt UIC 777-2. 
+(5) Liegt die maximale Zuggeschwindigkeit über 120 km/h, sollten die horizontalen statisch äquivalenten 
+Kräfte zusammen mit zusätzlichen Vorbeuge- oder Schutzmaßnahmen nach den Annahmen für die 
+Schadensfolgeklasse CC3 ermittelt werden, siehe 3.4 (1). 
+ANMERKUNG Die Kräfte Fdx und Fdy , dürfen ggf. unter Berücksichtigung zusätzlicher vorbeugender oder schützender 
+Maßnahmen, im Nationalen Anhang angegeben sein oder im Einzelfall bestimmt werden. 
+4.5.1.5 Bauwerke der Klasse B 
+(1) Bei Bauwerken der Klasse B sind besondere Anforderungen zu spezifizieren. 
+ANMERKUNG Hinweise dürfen im Nationalen Anhang angegeben sein oder im Einzelfall festgelegt werden. Die 
+besonderen Anforderungen dürfen auf der Grundlage einer Risikoabschätzung bestimmt werden. Hinweise zu den zu 
+berücksichtigenden Faktoren und Maßnahmen sind im Anhang B zu finden. 
+4.5.2 Bauwerke hinter dem Gleisende 
+(1) Das Überfahren eines Gleisendes (z. B. in Kopfbahnhöfen) ist nach EN 1990 als außergewöhnliche 
+Bemessungssituation zu berücksichtigen, wenn sich das Tragwerk oder die Stütze unmittelbar hinter dem 
+Gleisende befinden. 
+ANMERKUNG Der Bereich hinter dem Gleisende, der zu berücksichtigen ist, darf im Nationalen Anhang angegeben sein 
+oder im Einzelfall entschieden werden. 
+(2) Maßnahmen zur Begrenzung des Risikos sollten den Bereich hinter dem Gleisende einbeziehen und die 
+Wahrscheinlichkeit des Überfahrens der Gleisenden reduzieren. 
+(3) Stützen von Bauwerken sollten grundsätzlich nicht im Bereich hinter Gleisenden angeordnet werden. 
+(4) Müssen Stützen im Bereich der Gleisenden angeordnet werden, ist trotz eines Prellbocks zusätzlich eine 
+Anpralleinrichtung vorzusehen. Werte für statische Ersatzlasten infolge Anprall gegen eine Anprallvorrichtung 
+sollten für den jeweiligen Einzelfall festgelegt werden. 
+ANMERKUNG Besondere Maßnahmen und alternative Bemessungswerte für statisch äquivalente Anprallkräfte dürfen im 
+Nationalen Anhang oder im Einzelfall festgelegt werden. Empfohlen wird eine statisch äquivalente Anprallkraft 
+Fdx = 5 000 kN für Personenzüge und Fdx = 10 000 kN für Güterzüge. Diese Kräfte sind horizontal und in einer Höhe von 
+1,0 m über Gleisoberkante anzuordnen. 
+24 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+4.6 Außergewöhnliche Einwirkungen aus Schiffsverkehr 
+4.6.1 Allgemeines 
+(1) Die außergewöhnlichen Einwirkungen aus Schiffskollisionen sind unter Berücksichtigung u.a. folgender 
+Punkte zu bestimmen: 
+ Typ der Wasserstraße; 
+ Wasserstands- und Fließbedingungen; 
+ Schiffstiefgänge, Schiffstypen und deren Anprallverhalten; 
+ Tragwerkstyp und dessen Energiedissipationsverhalten. 
+(2) Die Schiffstypen auf Binnengewässern sollten für Schiffsanprall nach dem CEMT-Klassifizierungssystem 
+klassifiziert werden. 
+ANMERKUNG Das CEMT-Klassifizierungssystem ist in Tabelle C.3 im Anhang C angegeben. 
+(3) Bei Seeschiffen sind die Kennwerte der Schiffe für Schiffsanprall zu spezifizieren. 
+ANMERKUNG 1 Der Nationale Anhang darf die Klassifizierung von Schiffen auf Seewasserstraßen festlegen. 
+Anhaltswerte für Seeschiffe sind in Tabelle C.4 im Anhang C enthalten. 
+ANMERKUNG 2 Hinweise zur probabilistischen Modellbildung für Schiffskollisionen liefert Anhang B. 
+(4) Bei der Bestimmung der Lasten aus Schiffsstoß mit weitergehenden Methoden ist die mitwirkende 
+hydrodynamische Masse mit zu berücksichtigen. 
+(5) Der Schiffsstoß sollte durch zwei nicht gleichzeitig wirkende Kräfte bestimmt werden: 
+ eine frontal wirkende Kraft Fdx (in Fahrtrichtung, gewöhnlich quer zur Längsachse der Überbauung 
+(bzw. des Brücküberbaus); 
+ eine lateral wirkende Kraft mit der Komponente Fdy senkrecht zu Fdx und der Reibungskomponente FR in 
+Richtung von Fdx. 
+(6) Bauwerke, die einen Schiffsanlegestoß planmäßig aufnehmen müssen (z. B. Kaimauern und Dalben) 
+liegen außerhalb des Anwendungsbereichs dieses Teils von EN 1991. 
+4.6.2 Anprall von Binnenschiffen 
+(1) Frontale und laterale dynamische Anprallkräfte von Binnenschiffen sind, sofern erforderlich, festzulegen. 
+ANMERKUNG Frontale und laterale dynamische Anprallkräfte dürfen im Nationalen Anhang oder im Einzelfall festgelegt 
+werden. Angaben sind in Anhang C (Tabelle C.3) für eine Reihe von Standardfällen einschließlich mitwirkender 
+hydraulischer Masse und auch für Schiffe mit anderen Massen zu finden. 
+(2) Die Reibungskraft FR, die gleichzeitig mit der Anprallkraft Fdy wirkt, sollte aus Gleichung (4.1) bestimmt 
+werden: 
+dyR FF (4. 1) 
+Dabei ist 
+ der Reibungsbeiwert. 
+25 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ANMERKUNG Der Reibungsbeiwert darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4. 
+(3) Die Anpralllasten sollten abhängig vom Tiefgang des beladenen oder leeren Schiffes in einer bestimmten 
+Höhe über dem höchsten schiffbaren Wasserstand angesetzt werden. Die Angriffshöhe und die Angriffsfläche 
+b h der Anprallkraft sollten festgelegt werden. 
+ANMERKUNG 1 Die Angriffshöhe und die Angriffsfläche b h der Anpralllast dürfen im Nationalen Anhang oder im 
+Einzelfall festgelegt werden. Liegen keine genaueren Angaben vor, darf die Kraft in Höhe von 1,50 m über dem 
+maßgebenden Wasserstand angesetzt werden. Die Anprallflächen b h dürfen mit b = bPfeiler und h = 0,5 m für 
+Frontalstoß und mit b = 1,0 m und h = 0,5 m für den Seitenstoß angenommen werden. b Pfeiler ist die Breite des 
+Hindernisses in der Wasserstraße, z. B. des Brückenpfeilers. 
+ANMERKUNG 2 In bestimmten Fällen darf angenommen werden, dass das Schiff erst durch ein Widerlager oder einen 
+Gründungsblock so angehoben wird, dass es an Stützen anprallt. 
+(4) Sofern erforderlich, ist der Brückenüberbau für eine äquivalente statische Kraft aus Schiffsanprall zu 
+bemessen, die senkrecht zur Brückenlängsachse wirkt. 
+ANMERKUNG Der Wert der äquivalenten statischen Kraft darf im Nationalen Anhang oder im Einzelfall festgelegt 
+werden. Ein Anhaltswert ist 1 MN. 
+4.6.3 Anprall von Seeschiffen 
+(1) Frontal anzusetzende statisch äquivalente Anpralllasten aus Seeschiffen sollten festgelegt werden. 
+ANMERKUNG Zahlenwerte der frontal anzusetzenden dynamischen Anpralllasten dürfen im Nationalen Anhang oder im 
+Einzelfall festgelegt werden. Anhaltswerte sind in Tabelle C.4 enthalten. Interpolationen sind gestattet. Die Werte gelten 
+für typische Schifffahrtswege und dürfen außerhalb dieses Bereichs abgemindert werden. Für kleinere Schiffe dürfen die 
+Kräfte nach Anhang C.4 ermittelt werden. 
+(2) Der Anprall des Buges. Hecks und der Breitseite sollte, sofern notwendig, berücksichtigt werden. 
+Buganprall sollte in der Hauptfahrtrichtung mit einer Winkelabweichung von max. 30 o angesetzt werden. 
+(3) Die Reibungskraft FR, die gleichzeitig mit der seitlichen Anprallkraft wirkt, sollte nach Gleichung (4.2) 
+bestimmt werden : 
+dyR FF (4. 2) 
+Dabei ist 
+ der Reibungsbeiwert. 
+ANMERKUNG µ darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4. 
+(4)P Der Angriffspunkt und die Angriffsfläche der Anpralllast hängen von den Abmessungen des Tragwerks 
+und der Größe und Ausbildung des Schiffes (z. B. mit oder ohne Burgwulst), seinem Tiefgang und Trimm und 
+den Gezeiten ab. Der Bereich der Angriffshöhe sollte von ungünstigsten Annahmen für die Schiffsbewegung 
+ausgehen. 
+ANMERKUNG Der Bereich des Anpralls darf im Nationalen Anhang angegeben sein. Für die Höhe wird 0,05 und für 
+die Breite 0,1 empfohlen ( = Schiffslänge). Der Angriffspunkt kann im Bereich von 0,05 über und unter den 
+Bemessungswasserständen angesetzt werden, siehe Bild 4.4. 
+26 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Bild 4.4  Angaben zu Stoßflächen für Schiffsanprall 
+(5) Kräfte auf den Überbau sollten unter Berücksichtigung der Durchfahrtshöhe und des erwarteten 
+Schiffstyps festgelegt werden. Im Allgemeinen wird die Kraft auf den Überbau durch die plastische 
+Verformungen der Schiffsaufbauten beschränkt. 
+ANMERKUNG 1 Die Anpralllast darf im Nationalen Anhang oder im Einzelfall festgelegt werden. Die Größenordnung von 
+5 % bis 10 % der Buganpralllast kann als Anhalt dienen. 
+ANMERKUNG 2 Wenn nur der Mast an den Überbau anprallen kann, gilt eine Anpralllast von 1 MN als Anhaltswert. 
+4.7 Außergewöhnliche Einwirkungen aus Helikoptern 
+(1) Bei Gebäuden mit Hubschrauberlandeplatz auf dem Dach ist eine Kraft aus Notlandung anzusetzen. Die 
+vertikale äquivalente statische Kraft Fd sollte nach Gleichung (4.3) bestimmt werden. 
+mCFd (4.3) 
+Dabei ist 
+C 3 kN kg -0,5
+m die Masse des Helikopters, in kg. 
+(2) Die Anprallkraft sollte an jedem Punkt der Landefläche und auf dem Dach im Bereich von 7 m Abstand 
+vom Rand der Landefläche angesetzt werden. Die Stoßfläche sollte mit 2 m 2 m angenommen werden. 
+5 Innenraumexplosionen 
+5.1 Anwendungsbereich 
+(1)P Bei Gebäuden und Ingenieurbauwerken mit Gasanschluss oder Lagerung explosiver Stoffe wie 
+explosiver Gase, Flüssigkeiten (z. B. in chemischen Anlagen, Behältern, Bunkern, Abwasseranlagen, 
+Wohnungen, Energieleitungen, Straßen- und Eisenbahntunneln) sind Explosionen beim Entwurf zu 
+berücksichtigen. 
+(2) Die Wirkungen von Sprengstoffen sind in dieser Norm nicht geregelt. 
+27 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(3) Der Einfluss einer möglichen Kaskadenwirkung infolge mehrerer nebeneinander liegender, verbundener 
+Räume, die mit explosiven Stäuben, Gas oder Dämpfen gefüllt sind, auf die Höhe der Explosion wird in dieser 
+Norm nicht behandelt. 
+(4) In diesem Abschnitt werden Einwirkungen aus Innenraumexplosionen bestimmt. 
+5.2 Darstellung der Einwirkung 
+(1) Die Übertragung des Explosionsdrucks von nichttragenden Bauteilen auf die tragenden Bauteile ist zu 
+berücksichtigen. 
+ANMERKUNG 1 Als Explosion wird eine schnelle chemische Reaktion von Staub, Gas oder Dampf in der Luft 
+bezeichnet. Sie führt zu hohen Temperaturen und hohen Überdrücken. Explosionsdrücke breiten sich als Druckwellen 
+aus. 
+ANMERKUNG 2 Die bei einer Innenraumexplosion erzeugten Drücke hängen im wesentlichen ab von 
+ Typ des Staubs, Gases oder Dampfes, 
+ Anteil von Staub, Gas oder Dampf in der Luft, 
+ der Gleichförmigkeit des Staub-, Gas- oder Dampf-Luft-Gemisches, 
+ der Zündquelle, 
+ der Anwesenheit von Hindernissen im Raum, 
+ der Größe, Form und Festigkeit des Raumabschlusses, 
+ dem Umfang an verfügbaren Öffnungen und Druckablassen. 
+(2) Das wahrscheinliche Vorhandensein von Staub, Gas oder Dampf in verschiedenen Innenräumen oder 
+Gruppen von Innenräumen ist im gesamten Gebäude zu prüfen; die Öffnungswirkungen und die Geometrie 
+des Innenraums oder der Gruppe von Innenräumen sind zu berücksichtigen. 
+(3) Bei baulichen Anlagen, die den Versagensfolgeklassen CC1 (siehe Abschnitt 3) zugeordnet sind, 
+brauchen Explosionseffekte nicht besonders berücksichtigt zu werden; es genügt die Bemessung der 
+Anschlüsse und Verbindungen zwischen den Bauteilen nach EN 1992 bis EN 1999. 
+(4) Bei baulichen Anlagen, die den Versagensfolgeklasse CC2 oder CC3 zugeordnet sind, müssen 
+Haupttragteile so bemessen werden, dass sie den Einwirkungen genügen, entweder durch einen Nachweis 
+mit äquivalenten statischen Lastmodellen oder durch Anwendung von Bemessungs- und Konstruktionsregeln. 
+Zusätzlich ist bei Bauwerken mit der Klasse CC3 in der Regel eine dynamische Berechnung erforderlich. 
+ANMERKUNG 1 Die in den Anhängen A und D beschriebenen Methoden dürfen angewendet werden. 
+ANMERKUNG 2 Weitergehende Berechnungen für Explosionen dürfen folgendes enthalten: 
+ Explosionsdruckberechnungen unter Berücksichtigung von Raumabschlüssen und Öffnungsflächen; 
+ dynamische nichtlineare Modelle; 
+ Probabilistische Aspekte und Untersuchungen der Schadensfolgen; 
+ Wirtschaftliche Optimierung druckmindernder Maßnahmen. 
+28 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+5.3 Entwurfsgrundsätze 
+(1)P Tragwerke sind so zu entwerfen, dass progressiver Kollaps aus Innenraumexplosionen entsprechend 
+EN 1990, 2.1(4)P verhindert wird. 
+ANMERKUNG Der Nationale Anhang darf die notwendigen Verfahren für die verschiedene Innraumexplosionen angeben. 
+Hinweise zu folgenden Innraumexplosionen liefert der Anhang D: 
+ Staubexplosionen in Räumen, Behältern oder Bunkern; 
+ Naturgasexplosion in Räumen; 
+ Gas- und Dampf-Luftexplosionen (festgelegt in 5.1(1)P in Straßen- und Eisenbahntunneln. 
+(2) Der Entwurf darf das Versagen von Teiltragwerken unter der Voraussetzung zulassen, dass 
+Haupttragelemente, von denen die Stabilität des gesamten Tragwerk abhängt, nicht betroffen sind. 
+(3) Zur Begrenzung der Schadensfolgen von Explosionen dürfen die folgenden Maßnahmen einzeln oder in 
+Kombination genutzt werden: 
+ Bemessung des Tragwerks für den Explosionsspitzendruck; 
+ANMERKUNG Da Spitzendrücke höher sind als die mit den Methoden in Anhang D ermittelten Werte, sind 
+solche Spitzenwerte in Verbindung mit einer maximalen Einwirkungszeit von 0,2 s und dem plastischen duktilen 
+Verhalten des Baustoffs zu berücksichtigen. 
+ Nutzung von Öffnungselementen mit definiertem Öffnungsdruck; 
+ Abtrennung von Bauwerksbereichen, in denen explosive Stoffe lagern; 
+ Begrenzung der Bauwerksbereiche, die Explosionsrisiken ausgesetzt sind; 
+ Vorsehen von besonderen Schutzmaßnahmen zwischen benachbarten Bauwerken mit Explosionsrisiko, um 
+Druckausbreitung zu vermeiden. 
+(4) Der Explosionsdruck sollte als auf alle Raumabschlussteile gleichzeitig wirkend angesetzt werden. 
+(5) Öffnungselemente sollten in der Nähe möglicher Zündquellen oder hoher Drücke angeordnet werden. Ihre 
+Aktivierung sollte nicht zur Gefährdung von Personen oder zur Zündung von anderen Stoffen führen. Die 
+Öffnungselemente sollten zur Vermeidung von Geschosswirkungen befestigt werden. Die Bemessung sollte 
+mögliche Beeinträchtigungen der Umgebung durch Feuer und die Bildung weiterer Explosionen in 
+Nachbarräumen ausschließen. 
+(6) Öffnungsklappen sollten so leicht wie möglich und bei niedrigen Drücken öffenbar sein. 
+ANMERKUNG Bei Verwendung von Fenstern als Öffnungselemente wird empfohlen, die Gefährdung von Personen durch 
+Glassplitter oder andere Bauteile zu berücksichtigen. 
+(7)P Bei der Bestimmung der Öffnungskräfte für die Öffnungselemente ist auf ausreichende Dimensionierung 
+und Verankerung des Rahmens der Öffnungselemente zu achten. 
+(8) Nach der ersten Überdruckphase der Explosion schließt sich eine Unterdruckphase an. Darauf ist beim 
+Entwurf zu achten, sofern erforderlich. 
+ANMERKUNG Fachlicher Rat wird empfohlen. 
+29 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Anhang A
+(informativ) 
+Entwurf zur Begrenzung von Schadensfolgen lokalen Versagens 
+aus unspezifizierte Ursache in Hochbauten 
+A.1 Anwendungsbereich 
+(1) Dieser Anhang A liefert Regeln und Verfahren für den Entwurf von Hochbauten, so dass sie ein 
+bestimmtes lokales Versagen aus unspezifizierter Ursache ohne unverhältnismäßige Versagensfolge (z. B. 
+Einsturz) überstehen. Neben anderen geeigneten Methoden führt diese Strategie unter Berücksichtigung der 
+Schadensfolgeklasse (siehe 3.4) zu einer ausreichenden Robustheit im Hochbau, um einen begrenzten 
+Umfang an Schäden und Versagen ohne Einsturz aufzufangen. 
+A.2 Einleitung 
+(1) Mit Hilfe der Bemessung für ein bestimmtes lokales Versagen, das globale Versagen des gesamten 
+Gebäudes oder eines bedeutenden Teils davon zu verhindern, gehört zu den zulässigen Strategien nach 
+Abschnitt 3 dieser Norm. Dadurch verschafft man dem Gebäude genügend Robustheit, um einen 
+angemessenen Bereich von undefinierten außergewöhnlichen Einwirkungen zu überstehen. 
+(2) Der Mindestzeitraum, den das Gebäude nach einem außergewöhnlichen Ereignis überstehen muss, ist 
+die Zeit für die sichere Evakuierung und Rettung von Personen aus dem Gebäude und der Umgebung. 
+Längere Zeiträume dürfen für Bauwerke mit Gefahrgütern, wichtigen öffentlichen Aufgaben oder aus Gründen 
+öffentlicher Sicherheit erforderlich sein. 
+A.3 Schadensfolgeklassen für Hochbauten 
+(1) Tabelle A.1 liefert einen Zusammenhang zwischen Gebäudetyp und -Nutzung und der Schadensfolge-
+klasse. Dabei wird auf die niedrige, mittlere und hohe Schadensfolgeklasse nach 3.4 (1) Bezug genommen. 
+30 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Tabelle A.1  Zuordnung zu Schadensfolgeklassen 
+Schadens- 
+folgeklasse 
+Beispiel für Zusammenhang von Gebäudetyp und -Nutzung 
+1 Einfamilienhäuser mit bis zu 4 Stockwerken. 
+Landwirtschaftliche Gebäude. 
+Gebäude, die selten von Personen betreten werden, wenn der Abstand zu anderen 
+Gebäuden oder Flächen mit häufiger Nutzung durch Personen mindestens das 1,5-
+fache der Gebäudehöhe beträgt. 
+2a 
+Untere 
+Risiko- 
+Gruppe 
+5-stöckige Gebäude mit einheitlicher Nutzung. 
+Hotels mit bis 4 Stockwerken. 
+Wohn- und Apartmentgebäude mit bis 4 Stockwerken. 
+Bürogebäude mit bis 4 Stockwerken. 
+Industriebauten mit bis 3 Stockwerken. 
+Einzelhandelsgeschäfte mit bis 3 Stockwerken und bis 1 000 m
+2 Geschossfläche in 
+jedem Geschoss. 
+Einstöckige Schulgebäude 
+Alle Gebäude mit bis zu 3 Stockwerken mit Publikumsverkehr und Geschossflächen 
+bis 2 000 m
+2 in jedem Geschoss. 
+2b 
+Obere 
+Risiko- 
+Gruppe 
+Hotels, Wohn- und Apartmentgebäude mit mehr als 4 und bis 15 Stockwerken. 
+Schulgebäude mit mehr als einem und bis 15 Stockwerken. 
+Einzelhandelsgeschäfte mit mehr als 3 und bis 15 Stockwerken. 
+Krankenhäuser mit bis 3 Stockwerken. 
+Bürogebäude mit mehr als 4 und bis zu 15 Stockwerken. 
+Alle Gebäude mit Publikumsverkehr mit Geschossflächen von mehr als 2 000 m² 
+und bis 5 000 m2 in jedem Geschoss. 
+Parkhäuser mit bis 6 Stockwerken. 
+3 Alle Gebäude, die die Stockwerksanzahl und Flächengrenzen der Klasse 2 
+übersteigen. 
+Alle Gebäude mit starkem Publikumsverkehr. 
+Stadien mit mehr als 5 000 Zuschauern. 
+Gebäude mit lagernden Gefahrgütern oder gefährlichen Verfahren 
+ANMERKUNG 1 Bei Gebäuden mit Kenngrößen, die verschiedenen Schadensfolgeklassen zuzuordnen sind, gilt die 
+höchste Klasse. 
+ANMERKUNG 2 Bei der Bestimmung der Anzahl der Stockwerke dürfen die Untergeschosse vernachlässigt werden, 
+wenn die Untergeschosse die Bedingungen für die Schadensfolgeklasse 2b  Obere Risikogruppe  erfüllen. 
+ANMERKUNG 3 Tabelle A.1 ist nicht erschöpfend und kann ergänzt werden. 
+A.4 Strategieempfehlungen 
+(1) Die folgende Strategieempfehlung stellt die Errichtung eines Gebäudes mit akzeptabler Robustheit sicher, 
+das lokalem Versagen ohne unverhältnismäßige Einsturzfolgen widersteht. 
+a) für Hochbauten der Klasse 1: 
+Bei Bemessung und Ausführung nach den Regeln in EN 1990 bis EN 1999 für Tragfähigkeit unter normalen 
+Nutzungsbedingungen ist keine weitere Betrachtung außergewöhnlicher Einwirkungen aus unidentifzierter 
+Ursache erforderlich. 
+b) für Hochbauten der Klasse 2a (Untere Risikogruppe): 
+31 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Ergänzend zu der für die Schadensfolgeklasse 1 empfohlenen Vorgehensweisen sind wirksame horizontale 
+Zugverankerungen und wirksame vertikale Verankerungen abgehängter Decken an die Wände, bestimmt wie 
+in den Abschnitten A.5.1 für Rahmenbauweise und A.5.2 für die tragende Wandbauweise , vorzusehen. 
+ANMERKUNG 1 Einzelheiten einer wirksamen Verankerung dürfen im Nationalen Anhang genannt werden.
+c) für Hochbauten der Klasse 2b (Obere Risikogruppe): 
+Ergänzend zu der für die Klasse 1 empfohlenen Vorgehensweise sind: 
+ wirksame horizontale Zugverankerungen wie in A.5.1 für Rahmenbauweise und A.5.2 für die tragende 
+Wandbauweise definiert (siehe 1.5.11) sowie wirksame vertikale Verankerungen in allen Stützen und 
+Wänden nach A.6 vorzusehen, oder alternativ, 
+ das Gebäudetragwerk geschossweise daraufhin zu überprüfen, ob bei der rechnerischen Entfernung 
+jeder einzelnen Stütze und jedes Trägers, der eine Stütze trägt, oder jedes Abschnitts der lasttragenden 
+Wände, wie in A.7 definiert, das Gebäude standsicher bleibt und der lokale Schaden ein bestimmtes Maß 
+nicht überschreitet. 
+Wenn die rechnerische Entfernung der einzelnen Stützen und Wandabschnitte zu einer Überschreitung des 
+vereinbarten Schadensmaßes führt, dann sollten diese Elemente als Haupttragelemente bemessen werden, 
+siehe A.8. 
+Bei Gebäuden mit der tragenden Wandbauweise ist die Methode der rechnerischen Entfernung von jeweils 
+nur einem Wandabschnitt die praktischste Strategie für Robustheit. 
+d) für Hochbauten der Klasse 3: 
+Für das Gebäude ist eine systematische Risikoabschätzung unter Berücksichtigung vorhersehbarer und 
+unvorhersehbarer Gefährdungen erforderlich. 
+ANMERKUNG 2 Hinweise zur Durchführung einer Risikoanalyse sind in Anhang B enthalten. 
+ANMERKUNG 3 Die Grenze für zulässiges lokales Versagen darf von Bauwerkstyp zu Bauwerkstyp verschieden sein. 
+Empfohlen wird als Mindestwert 15 % der Geschossfläche, aber nicht mehr als 100 m 2 gleichzeitig in zwei benachbarten 
+Geschossen  nach 3.3.(1)P, siehe Bild A.1. 
+32 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Legende 
+(A) Lokaler Schaden unter 15 % der Geschossfläche, gleichzeitig in zwei angrenzenden Geschossen 
+(B) Stütze, die rechnerisch entfernt wird 
+a) Aufsicht 
+b) Ansicht mit Schnitt 
+Bild A.1  Empfohlene Begrenzung eines akzeptablen Schadens 
+A.5 Wirksame horizontale Zugverankerungen 
+A.5.1 Rahmenbauweise 
+(1) Um jede Geschossdecke und um die Dachebene sollten wirksame horizontale Zuganker angeordnet 
+werden; dazu kommen Zuganker in der Deckenebene in zwei Richtungen, um die Stützen und Wände sicher 
+an das Gebäudetragwerk anzubinden. Die Zuganker sollten durchlaufend sein und so nah wie möglich an den 
+Ränder der Decke und in den Achsen der Stützen und Wänden verlaufen. Mindestens 30 % der Zuganker 
+sollten in enger Nachbarschaft der Rasterlinien für Stützen und Wänden liegen. 
+ANMERKUNG Siehe Beispiel in Bild A.2. 
+(2) Wirksame horizontale Zuganker dürfen aus Walzprofilen, der Stahlbewehrung in Betonplatten oder 
+Mattenbewehrung und Profilblechen in Verbunddecken bestehen (wenn diese mit den Stahlträgern schubfest 
+verbunden sind). Die Zuganker dürfen aus einer Kombination dieser Bauteile bestehen. 
+(3) Jeder der durchlaufenden Zuganker, einschließlich der Endanschlüsse, sollten im Falle der internen 
+Zuganker für die Bemessungszugkraft T
+i“ und der Randzuganker für die Bemessungszugkraft Tp“ als 
+außergewöhnliche Einwirkung bemessen werden. Die Zugkräfte nehmen folgende Werte an: 
+Interne Zuganker oder 75 kN, wobei der größere Wert gilt. (A.1) sLqgT )(8,0 kki
+Randzuganker oder 75 kN, wobei der größere Wert gilt. (A.2) sLqgT )(4,0 kkp
+Dabei ist 
+s der Abstand der Anker; 
+L die Spannweite der Anker; 
+ der Kombinationsbeiwert in der Einwirkungskombination für außergewöhnliche Bemessungssituationen 
+(d. h. 1 oder 2 nach EN 1990, Gleichung (6.11b). 
+ANMERKUNG Siehe Beispiel in Bild A.2. 
+33 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 36 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Legende 
+(a) Träger mit 6 m Spannweite als interner Zuganker 
+(b) alle Träger als Zuganker bemessen 
+(c) Randzuganker 
+(d) Zuganker, der eine Stütze verankert 
+(e) Randstütze 
+BEISPIEL Berechnung der Zugankerkraft T
+i in einem Deckenträger mit 6 m Spannweite, siehe Bild A.2 (z. B. für ein 
+Stahlskelettgebäude) mit folgenden Lastannahmen: 
+Characteristische Belastung : gk = 3,0 kN/m2 and qk = 5,0 kN/m2
+Annahme für Kombinationsbeiwert 1 (d. h. = 0,5) in Gleichung (6.11a) 
+kN660,62
+23)00,55,000,3(8,0iT < 75 kN 
+Bild A.2  Beispiel für eine wirksame horizontale Verankerung für ein 6-geschossiges Bürogebäude 
+in Rahmenbauweise 
+(4) Es dürfen auch Bauteile, die andere Einwirkungen als außergewöhnliche Einwirkungen aufnehmen, für die 
+Zugverankerung eingesetzt werden. 
+A.5.2 Tragende Wandbauweise 
+(1) Für Hochbauten der Klasse 2a (Untere Risikogruppe), siehe Tabelle A.1: 
+Ausreichende Robustheit sollte durch eine Zellenbauweise vorgesehen werden, deren Bemessung das 
+Zusammenwirken aller Bauteile einschließlich geeigneter Verankerungen der Wände mit der Decke 
+beinhaltet. 
+(2) Für Hochbauten der Klasse 2b (Obere Risikogruppe) siehe Tabelle A.1: 
+34 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 37 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+In den Decken sollten durchlaufende horizontale Anker angeordnet werden. Diese bestehen aus einem 
+orthogonalen Netz von gleichmäßig verteilten internen Ankern und Randankern an den Rändern der Decke 
+innerhalb eines Randstreifens von 1,20 m. Die Bemessungs-Ankerzugkraft sollte wie folgt ermittelt werden : 
+Für interne Zuganker T
+i = kN/m55,7
+)(
+tt
+kkt FFzqgF
+ (A.3) 
+Für Randzuganker: Tp = Ft ( A . 4 ) 
+Dabei ist 
+Ft 60 kN/m oder 20 + 4 ns kN/m, der kleinere Wert gilt; 
+ns die Geschossanzahl; 
+z Faktor, der kleiner als die nachfolgende Bedingung ist: 
+ 5 H mit H = lichte Geschosshöhe oder 
+ der größte Achsabstand der Stützen oder der anderen vertikalen Tragelemente in Meter, in Richtung 
+der Zuganker; der Abstand kann durch: 
+ eine einzelne Platte, oder durch 
+ ein System aus Unterzügen und Platten 
+überspannt sein. 
+ANMERKUNG Werte H (m) und z (m) sind in Bild A.3 dargestellt. 
+35 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 38 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Legende 
+a) Aufsicht 
+b) Querschnitt mit Flachdecke 
+c) Querschnitt mit Decke und Unterzügen 
+Bild A.3  Darstellung der Werte H und z 
+A.6 Wirksame vertikale Zugverankerungen 
+(1) Jede Stütze oder Wand sollte von der Gründung bis zum Dach durchgehend zugverankert sein. 
+(2) Bei der Rahmenbauweise (Stahl- oder Stahlbetontragwerke) sollten die Stützen und Wände, die die 
+vertikalen Lasten tragen, in der Lage sein, eine außergewöhnliche Zugkraft in Höhe der größten von einem 
+Geschoss in die Stütze geleiteten Belastung aus ständigen und veränderlichen Einwirkungen zu tragen. Diese 
+außergewöhnliche Zugkraft braucht nicht mit den sonstigen Schnittgrößen überlagert zu werden. 
+(3) Bei der tragenden Wandbauweise, siehe 1.5.11, dürfen die vertikalen Zuganker unter folgenden 
+Bedingungen als wirksam angesehen werden: 
+a) Bei Mauerwerkswänden ist die Wanddicke mindestens 150 mm und die maximale Druckfestigkeit nach 
+EN 1996-1-1 beträgt 5 N/mm
+2.
+b) Die lichte Wandhöhe H in Meter, gemessen zwischen der Ober- und Unterfläche der Decken oder der 
+Decke und des Daches, ist nicht größer als 20t, wobei t die Wanddicke in Meter ist. 
+36 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 39 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+c) Sie werden für die vertikale Ankerzugkraft T : 
+kN/m100oderin8000
+34 2
+Nt
+HAT ( A . 5 ) 
+bemessen. 
+Dabei ist 
+A die Querschnittsfläche in mm
+2 der Wand im Grundriss ohne die nicht lasttragende Schale von 
+Hohlwänden. 
+d) Die vertikalen Zuganker sind maximal alle 5 m entlang der Wand gruppiert und haben vom freien Ende 
+der Wand einen Maximalabstand von 2,5 m. 
+A.7 Nennquerschnitt einer tragenden Wand 
+(1) Die Nennlänge der tragenden Wand nach  A.4.(1)c) sollte wie folgt bestimmt werden:
+ bei Stahlbetonwänden eine Länge 2,25H,
+ bei Außenmauerwerk oder Holz- oder Stahlständerbauweiseeine Länge L gemessen als Abstand 
+zwischen seitlichen Unterstützungen durch andere vertikale Bauelemente (z. B. Rahmenstützen oder 
+querlaufende Zwischenwände), 
+ bei Innenmauerwerk oder Holz- oder Stahlständerbauweise eine Länge 2,25H,
+Dabei ist 
+H die Stockwerkshöhe in Meter. 
+A.8 Haupttragelemente 
+(1) Entsprechend 3.3 (1)P sollte ein Haupttragelement“ eines Gebäudes nach A.4 (1)c in der Lage sein, eine 
+außergewöhnliche Einwirkung Ad abzutragen, die in horizontalen und vertikalen Richtungen (jeweils nur in 
+einer Richtung gleichzeitig) auf das Element selbst und angeschlossene Bauteile einwirkt, wobei die 
+Tragfähigkeit dieser Komponenten und ihrer Verbindungen zu berücksichtigen ist. Eine solche 
+außergewöhnliche Bemessungslast sollte nach EN 1990, Gleichung (6.11b) als Einzellast oder gleichmäßig 
+verteilte Last aufgebracht werden. 
+ANMERKUNG Der empfohlene Wert für Hochbauten ist Ad = 34 kN/m2. 
+37 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 40 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Anhang B
+(informativ) 
+Hinweise zur Risikoanalyse6)
+B.1 Einleitung 
+(1) Dieser Anhang B enthält Hinweise zur Planung und Durchführung von Risikoabschätzungen für 
+Hochbau und für Ingenieurbauwerke. Einen generellen Überblick zeigt Bild B.1. 
+Definition der Aufgabe und der 
+Abgrenzungen
+Qualitative Risikoanalyse 
+ Risikoverursachung 
+ Gefährdungsszenarien 
+ Beschreibung von Schadensfolgen 
+ Definition von Maßnahmen
+Überprüfungen
+Aufgabe und Abgrenzungen 
+ Maßnahmen zur Risikominderung
+Quantitative Risikoanalyse 
+ Inventar der Unsicherheiten 
+ Modellierung der Unsicherheiten 
+ Probabilistische Berechnungen 
+ Quantifizierung der Schadensfolge 
+ Risikoabschätzung
+Risikobewertung 
+Risikobehandlung
+Akzeptanz des Risikos 
+Verständigung
+Bild B.1  Überblick über die Risikoanalyse 
+__________ 
+6) Teile des Inhalts dieses Anhangs werden voraussichtlich in weiter entwickelter Form in eine spätere Ausgabe von 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung, überführt werden. 
+38 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 41 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+B.2 Begriffe 
+B.2.1 
+Schadensfolge 
+Ein mögliches Ergebnis eines (in der Risikoanalyse üblicherweise unerwünschten) Ereignisses. 
+Schadensfolgen können mit Worten oder mit Zahlen ausgedrückt werden; sie betreffen Tote und Verletzte, 
+wirtschaftliche Verluste, Umweltschäden, Nutzungsausfall für Benutzer und die Öffentlichkeit usw. Es werden 
+sowohl unmittelbare Folgen als auch solche, die sich mit der Zeiteinstellen, betrachtet. 
+B.2.2 
+Gefährdungsszenarium 
+eine kritische Situation zu einer bestimmten Zeit, die durch eine Leitgefahr zusammen mit einer oder 
+mehreren begleitenden Bedingungen bestimmt wird und das unerwünschte Ereignis bewirken kann (z. B. 
+vollständiger Einsturz eines Tragwerks) 
+B.2.3 
+Risiko 
+(siehe 1.5.13) 
+B.2.4 
+Risikoakzeptanzkriterien 
+Akzeptierbare Wahrscheinlichkeitsgrenzen für das Eintreten bestimmter Schadensfolgen eines unerwünsch-
+ten Ereignisses. Sie werden als Häufigkeiten je Jahr ausgedrückt. Diese Kriterien werden üblicherweise von 
+den Bauaufsichtsbehörden bestimmt, um das Risikoniveau wiederzugeben, das für Menschen einerseits und 
+die Gesellschaft andererseits akzeptabel ist. 
+B.2.5 
+Risikoanalyse 
+Eine systematische Vorgehensweise zur Beschreibung und Berechnung von Risiken. Die Risikoanalyse 
+umfasst die Identifizierung unerwünschter Ereignisse, Ursachen, Wahrscheinlichkeiten und Schadensfolgen 
+dieser Ereignisse (siehe Bild B.1). 
+B.2.6 
+Risikobewertung 
+ein Vergleich der Ergebnisse der Risikoanalyse mit den Risikoakzeptanzkriterien und anderen Entschei-
+dungskriterien 
+B.2.7 
+Risikomanagement 
+systematische Maßnahmen einer Organisation, mit denen ein Sicherheitsniveau erreicht oder erhalten wird, 
+das mit den definierten Zielsetzungen übereinstimmt 
+B.2.8 
+Unerwünschtes Ereignis 
+ein Ereignis oder ein Zustand, die die Verletzung von Personen oder Umweltschäden oder materielle Verluste 
+verursachen können 
+B.3 Beschreibung des Umfangs der Risikoanalyse 
+(1) Der Gegenstand, der Hintergrund und die Zielsetzung der Risikoanalyse müssen vollständig beschrieben 
+werden. 
+(2) Alle technischen, umweltbedingten, organisatorischen und personenbezogenen Umstände, die für die in 
+der Risikoanalyse behandelte Aktivität und das Problem wichtig sind, sollten in ausreichender Ausführlichkeit 
+festgehalten werden. 
+39 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 42 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(3) Alle Voraussetzungen, Annahmen und Vereinfachungen, die in Verbindung mit der Risikoanalyse gemacht 
+werden, sollten aufgeführt werden. 
+B.4 Methoden der Risikoanalyse 
+(1) Die Risikoanalyse hat einen beschreibenden (qualitativen) Teil und darf, wenn erforderlich und durch-
+führbar, auch einen rechnerischen (quantitativen) Teil haben. 
+B.4.1 Qualitative Risikoanalyse 
+(1) In dem qualitativen Teil der Risikoanalyse sollten alle Gefährdungen und zugehörigen Gefährdungs-
+szenarien identifiziert werden. Diese Identifizierung ist eine Hauptaufgabe der Risikoanalyse. Sie erfordert 
+eine eingehende Prüfung und ein genaues Verständnis des Systems. Zu diesem Zweck wurden eine Reihe 
+von Techniken entwickelt, die dem Ingenieur bei diesem Teil der Analyse zur Verfügung stehen (z. B. PHA, 
+HAZOP, Versagensbaum, Ereignisbaum, Entscheidungsbaum, Ursachennetzwerk, usw.). 
+In der baulichen Risikoanalyse können z. B. folgende Bedingungen Gefährdungen für ein Tragwerk darstellen: 
+ große Werte der gewöhnlichen Einwirkungen, 
+ geringe Werte der Beanspruchbarkeiten, möglicherweise infolge von Irrtümern oder unvorhergesehener 
+Verschleiß, 
+ baugrundbedingungen und Umwelteinflüsse, die nicht beim Entwurf zugrunde gelegt wurden; 
+ außergewöhnliche Einwirkungen wie Brand, Explosion, Überflutung (einschließlich Kolkung), Anprall oder 
+Erdbeben; 
+ nicht spezifizierte außergewöhnliche Einwirkungen. 
+Folgendes sollte bei der Definition von Gefährdungsszenarien berücksichtigt werden : 
+ die erwarteten oder bekannten veränderlichen Einwirkungen auf das Tragwerk; 
+ die Umgebungsbedingungen für das Tragwerk; 
+ das beabsichtigte oder bekannte Inspektionsprogramm für das Tragwerk; 
+ das bauliche Konzept, die konstruktive Gestaltung, verwendete Baustoffe und mögliche Schwachpunkte 
+für Schäden oder Verschleiß; 
+ die Folgen verschiedener Schäden und die Höhe der Schäden infolge der identifizierten Gefähr-
+dungsszenarien. 
+Die Hauptnutzung des Tragwerks sollte bekannt sein, um die Folgen für die Sicherheit ermitteln zu können, 
+wenn das Tragwerk bei dem Eintreten der Leitgefährdung zusammen mit wahrscheinlichen begleitenden 
+Einwirkungen versagt. 
+B.4.2 Quantitative Risikoanalyse 
+(1) Im quantitativen Teil der Risikoanalyse sollten für alle unerwünschten Ereignisse und deren Folgen 
+Wahrscheinlichkeiten abgeschätzt werden. Die Wahrscheinlichkeitswerte beruhen zumindest teilweise auf 
+Ingenieurabschätzungen und weichen deshalb wesentlich von wirklichen Versagenshäufigkeiten ab. Wenn 
+Versagen zahlenmäßig ausgedrückt werden kann, darf das Risiko als mathematische Erwartung der 
+Schadensfolgen eines unerwünschten Ereignisses ausgedrückt werden. Eine Möglichkeit, Risiken darzu-
+stellen, liefert  Bild B.2a. 
+40 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 43 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Zahlenunsicherheiten und Modellunsicherheiten sollten erschöpfend diskutiert werden. Die Risikoanalyse wird 
+abgeschlossen, wenn ein bestimmtes Niveau erreicht ist. Dabei wird berücksichtigt: 
+ die Zielsetzung der Risikoanalyse und die notwendigen Entscheidungen; 
+ die Grenzen, die in einem früheren Stadium der Analyse gezogen wurden; 
+ die Verfügbarkeit der wichtigen Daten oder genauer Daten; 
+ die Schadensfolgen unerwünschter Ereignisse. 
+Die ursprünglichen Annahmen sollten überprüft werden, wenn die Analyseergebnisse verfügbar sind. Die 
+Sensitivität der verwendeten Faktoren sollte quantifiziert werden. 
+Schwer X 
+Hoch X 
+Mittel X 
+Niedrig X 
+Sehr niedrig X 
+ Schadensfolge 
+Wahrscheinlichkeit 0,00001 0,0001 0.001 0,01 > 0,1 
+X stellt Beispiele für die größten akzeptablen Risiken dar 
+Klassifizierung: Die Schwere eines möglichen Versagens wird für jedes Gefährdungsszenarium bestimmt und 
+nach schwer, hoch, mittel, niedrig und sehr niedrig eingestuft. Die Schweregrade können wie folgt defîniert werden: 
+Schwer Ein plötzliches Versagen des Tragwerks mit großer Möglichkeit von Personenverlusten und 
+Personenschäden. 
+Hoch Versagen von Teilen des Tragwerks mit großer Möglichkeit eines Teileinsturzes mit Möglichkeiten von 
+Personenschäden und Nutzungsausfall für die Nutzer und die Öffentlichkeit. 
+Mittel Teilversagen des Tragwerks. Total- oder Teileinsturz des Tragwerks unwahrscheinlich. Geringe 
+Möglichkeit von Personenschäden und Nutzungsausfall für Nutzer und Öffentlichkeit. 
+Niedrig Lokaler Schaden 
+Sehr Niedrig Geringfügiger lokaler Schaden 
+Bild B.2a  Mögliche Darstellung des Ausgangs einer quantitativen Risikoanalyse 
+41 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 44 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+B.5 Risikoakzeptanz und Schutzmaßnahmen 
+(1) Nach Festlegung des Risikoniveaus sollte entschieden werden, ob Schutzmaßnahmen (baulicher oder 
+nicht baulicher Art) spezifiziert werden sollten. 
+(2) Bei der Risikoakzeptanz wird meistens das ALARP-Prinzip (as low as reasonably pratical/so niedrig wie 
+vernünftigerweise durchführbar) angewendet. Nach diesem Prinzip werden zwei Risikoniveaus spezifiziert: 
+Liegt das Risiko unter der unteren Grenze des allgemein tolerierbaren (ALARP)-Bereichs, brauchen keine 
+Maßnahmen ergriffen werden; liegt es oberhalb der oberen Grenze, wird das Risiko als nicht akzeptierbar 
+betrachtet. Liegt das Risiko zwischen der unteren und oberen Grenze, sollte eine wirtschaftlich optimale 
+Lösung gesucht werden. 
+(3) Bei der Risikobewertung für eine bestimmte Zeitspanne und für ein Versagensereignis mit der 
+Schadensfolge sollte eine Abzugsrate berücksichtigt werden. 
+(4) Die Niveaus für die Risikoakzeptanz sollten spezifiziert werden. Sie werden normalerweise mit den 
+folgenden zwei Akzeptanzkriterien formuliert: 
+ Das akzeptierbare Risikoniveau für das Individuum: Risiken für das Individuum werden gewöhnlich als 
+Rate von Unfällen mit Todesfolge ausgedrückt. Sie können als jährliche Todeswahrscheinlichkeit oder als 
+wahrscheinliche Zeitspanne für einen Todesfall ausgedrückt werden, wenn einer bestimmten Tätigkeit 
+nachgegangen wird. 
+ Das akzeptierbare Risikoniveau für die Gesellschaft: die gesellschaftliche Akzeptanz von Risiken für das 
+menschliche Leben, die sich mit der Zeit ändern kann, wird oft als F-N-Schaubild dargestellt, das die 
+maximale jährliche Wahrscheinlichkeit F für einen Unfall mit mehr als N Personenverlusten angibt. 
+Alternativ können auch Konzepte wie VPF (Value of prevented fatality/Geldwert von verhinderten tödlichen 
+Unfällen) oder  life quality index (LQI)/Index der Lebensqualität herangezogen werden. 
+ANMERKUNG Niveaus für die Risikoakzeptanz dürfen für den Einzelfall festgelegt werden. 
+Die Akzeptanzkriterien dürfen durch bestimmte nationale Bestimmungen oder Anforderungen, bestimmte 
+Normen und Standards oder durch Erfahrungen und/oder technische Vorkenntnisse , die als Grundlage für 
+Entscheidungen für akzeptable Risiken herangezogen werden können, festgelegt werden. Akzeptanzkriterien 
+dürfen qualitativ oder mit Zahlenwerten ausgedrückt werden. 
+(5) Im Falle qualitativer Risikoanalysen können folgende Kriterien gelten: 
+a) Allgemeines Ziel sollte die Minimierung des Risikos sein, ohne erhebliche Zusatzkosten zu verursachen. 
+b) Hinsichtlich der Auswirkungen nach der im Bild B.2b  angelegten senkrechten Fläche, kann das 
+mit dem Szenario verbundene Risiko üblicherweise akzeptiert werden. 
+c) Hinsichtlich der Auswirkungen nach des im Bild B.2b  diagonal angezeigten Bereichs, sollte eine 
+Entscheidung getroffen danach getroffen werden, ob das Risiko beim angenommen Szenario akzeptiert 
+werden kann oder ob die Risiko abschwächenden Maßnahmen im Rahmen annehmbarer Kosten 
+akzeptiert werden können. 
+d) Bei Auswirkungen die nicht akzeptiert werden können (dies sind solche, die in den horizontal angelegten 
+Bereich des Bildes Bild B.2b fallen) sollten geeignete Risiko abschwächende Maßnahmen (siehe 
+Bild B.6) vorgesehen werden. 
+42 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 45 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+
+
+Bild B.2b Mögliche Darstellung des Ausgangs einer quantitativen Risikoanalyse 
+43 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 46 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+B.6 Maßnahme zur Risikominderung 
+(1) Folgende Maßnahme zur Risikominderung dürfen gewählt werden: 
+a) Vermeidung oder Verminderung der Gefährdung z. B. durch eine angemessene Bemessung, 
+Veränderung des Entwurfskonzepts und durch Maßnahmen zur Bekämpfung der Gefährdung usw.. 
+b) Umgehung der Gefährdung durch Änderung des Tragwerkskonzepts oder der Nutzung, z. B. durch 
+Schutzmaßnahmen für das Tragwerk, Einbau von Sprinklern usw.. 
+c) Überwachung der Gefährdung z. B. durch kontrollierte Prüfungen, Frühwarnsysteme und Überwachungs-
+anlagen. 
+d) Überwindung der Gefährdung durch z. B. erhöhte Festigkeiten und Robustheit, Verfügbarkeit alternativer 
+Lastpfade durch Redundanzen oder Widerstand gegen Verschleiß usw.. 
+e) Zulassung eines kontrollierten Versagens des Tragwerks, wenn Gefährdungen für Leib und Leben klein 
+gehalten werden, z. B. bei Anprall auf Beleuchtungsmaste oder Schilder. 
+B.7 Veränderungen 
+(1) Der überarbeitete Umfang der Analyse, der Entwurf und die Annahmen sollten gegenüber den Szenarien 
+wiederholt bewertet werden, bis das Tragwerk mit den ausgewählten Risikominderungsmaßnahmen 
+akzeptiert werden kann. 
+B.8 Verständigung über die Resultate und Schlussfolgerungen 
+(1) Die Resultate der qualitativen und, falls verfügbar, der quantitativen Analyse sollten als Liste mit 
+Schadensfolgen und Wahrscheinlichkeiten dargestellt und der Grad der Akzeptanz sollte mit den betroffenen 
+Parteien kommuniziert werden. 
+(2) Alle Daten und ihre Quellen, die für die Risikoanalyse verwendet wurden, sollten einzeln angegeben 
+werden. 
+(3) Alle wesentlichen Annahmen, Voraussetzungen und Vereinfachungen sollten zusammengefasst werden, 
+so dass die Gültigkeit und die Grenzen der Risikoanalyse erkennbar sind. 
+(4) Empfehlungen für Risikominderungsmaßnahmen sollten aufgeführt und auf Schlussfolgerungen der 
+Risikoanalyse basieren. 
+B.9 Anwendung im Hochbau und bei Ingenieurbauwerken 
+B.9.1 Allgemeines 
+(1) Für die Risikominderung in Bezug auf extreme Ereignisse im Hochbau und bei Ingenieurbauwerken sollten 
+eine oder mehrere der folgenden Maßnahmen betrachtet werden: 
+ Bauliche Maßnahmen, wenn das Tragwerk und seine Bauteile so entworfen wurden, dass sie 
+Festigkeitsreserven oder alternative Lastpfade für den Fall lokalen Versagens aufweisen. 
+ Nicht bauliche Maßnahmen, die die Reduktion der 
+ Wahrscheinlichkeit für das Auftreten des Ereignisses, 
+44 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 47 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ Stärke der Einwirkung oder 
+ Versagensfolge 
+einschließen. 
+(2) Wahrscheinlichkeiten und Auswirkungen aller außergewöhnlicher und extremer Einwirkungen (z. B. Ein-
+wirkungen aus Brand, Erdbeben, Anprall, Explosion, extreme klimatische Einwirkungen) sollten für eine 
+geeignete Anzahl möglicher Gefährdungsszenarien betrachtet werden. Die Schadensfolgen sollten dann in 
+Form von der Anzahl von Opfern und wirtschaftlichen Verlusten abgeschätzt werden. Genauere Hinweise 
+liefern B.9.2 und B.9.3. 
+(3) Die Vorgehensweise in B.9.1(2) dürfte für unvorhersehbare Gefährdungen (Bemessungs- und 
+Ausführungsirrtümer, unerwarteter Verschleiß, usw.) weniger geeignet sein. Daher wurden mehr globale 
+Entwurfsstrategien für die Schadenstoleranz entwickelt (siehe Anhang A), z. B. die klassische Anforderung an 
+ausreichende Duktilität und an die Verankerung von Bauteilen. Eine spezielle Vorgehensweise in diesem 
+Zusammenhang ist die Betrachtung einer Situation, dass ein Bauteil (Träger, Stütze), woher auch immer, in 
+einem solchen Umfang geschädigt ist, in der ein Bauteil für die Tragwirkung als ausgefallen betrachtet wird. 
+Für den restlichen Teil des Tragwerks wird dann gefordert, dass es für eine relativ kurze Zeit (definiert als 
+Reparaturperiode T) den normalen“ Belastungen mit einer vorgegebenen Ziel-Zuverlässigkeit widerstehen 
+kann: 
+ P (R < E in T | ein Bauteil ausgefallen) < p
+Ziel ( B . 1 ) 
+Die Ziel-Zuverlässigkeit hängt von dem normalen Sicherheitsniveau für Gebäude, der Bezugs-Zeitspanne T
+(Stunden, Tage oder Monate) und der Wahrscheinlichkeit, dass das betrachtete Bauelement (aus nicht im 
+bisherigen Entwurf berücksichtigten Gründen) entfernt wird, ab. 
+(4) Bei konventionellen Tragwerken sollten alle maßgebenden Versagensmöglichkeiten beim Entwurf 
+berücksichtigt werden. Sofern diese gerechtfertigt ist, dürfen Versagensursachen, die nur eine sehr geringe 
+Auftretenswahrscheinlichkeit haben, vernachlässigt werden. Der Ansatz in B.9.1(2) sollte berücksichtigt 
+werden. In vielen Fällen und um komplizierte Analysen zu vermeiden, darf die Strategie nach B.9.1(3) 
+herangezogen werden. 
+(5) Bei unkonventionellen Tragwerken (z. B. sehr große Tragwerke, solche mit neuen Entwurfskonzepten oder 
+neuen Werkstoffen) sollte die Versagenswahrscheinlichkeit aus unspezifizierter Ursache als wesentlich 
+betrachtet werden. Eine Vorgehensweise mit Kombination der Methoden nach B.9.1(2) und B.9.1(3) sollte in 
+Betracht gezogen werden. 
+45 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 48 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Legende 
+Schritt 1: Identifizierung und Modellierung maßgebender außergewöhnlicher Gefährdungen. Abschätzung der 
+Auftretenswahrscheinlichkeit verschiedener Gefährdungen mit verschiedenen Intensitäten. 
+Schritt 2: Abschätzung des Schadenszustands des Tragwerks aus verschiedenen Gefährdungen. 
+Abschätzung der Wahrscheinlichkeit verschiedener Schadenszustände und der zugehörigen Folgen 
+für die gegebenen Gefährdungen. 
+Schritt 3: Abschätzung des Verhaltens des geschädigten Tragwerks. Abschätzung der Wahrscheinlichkeit 
+nicht ausreichenden Verhaltens und der zugehörigen Schadensfolge(n). 
+Bild B.3  Darstellung der Schritte in einer Risikoanalyse für Tragwerke 
+unter außergewöhnlichen Einwirkungen 
+B.9.2 Bauliche Risikoanalyse 
+(1) Risikoanalysen für Tragwerke mit außergewöhnlichen Einwirkungen dürfen mit den drei folgenden 
+Schritten, siehe Bild B.3, angegangen werden: 
+Schritt 1: Abschätzung der Auftretenswahrscheinlichkeit verschiedener Gefährdungen mit ihrer Intensitäten. 
+Schritt 2: Abschätzung der Wahrscheinlichkeit verschiedener Schadenszustände und der zugehörigen 
+Schadensfolgen für die gegebenen Gefährdungen. 
+Schritt 3: Abschätzung der Wahrscheinlichkeit für ungenügendes Verhalten des geschädigten Tragwerks 
+zusammen mit den zugehörigen Schadensfolgen. 
+(2) Das vollständige Risiko R kann ermittelt werden durch 
+
+)()()()(
+D SH
+11
+kjki
+N
+j
+N
+k
+j
+N
+i
+i SCDSpHDPHpR  ( B . 2 ) 
+Dabei wird unterstellt, dass das Tragwerk einer Anzahl NH verschiedener Gefährdungen ausgesetzt ist, dass 
+die Gefährdungen das Tragwerk auf ND verschiedene Arten schädigen können (von der betrachteten 
+Gefährdung abhängig) und dass das Verhalten des beschädigten Tragwerks in NS verschiedene Zustände SK
+mit zugehörigen Schadensfolgen C(Sk) ausgedrückt werden kann. P(Hi) ist die Auftretenswahrscheinlichkeit 
+der i-ten Gefährdung (innerhalb des Bezugszeitraumes). P(Dj|Hi) ist die bedingte Wahrscheinlichkeit für das 
+Auftreten des j-ten Schadenszustandes des Tragwerks für die i-te Gefährdung, und P(Sk|Dj|) ist die bedingte 
+Wahrscheinlichkeit für das Auftreten des k-ten nachteiligen Verhaltens S für den i-ten Schadenszustand. 
+ANMERKUNG 1 P(Sk|Dj) und C(Sk) können stark von der Zeit abhängig sein (z. B. im Fall von Brand mit Evakuierung) 
+und das Gesamtrisiko sollte abgeschätzt und mit dem akzeptierbaren Risikoniveau verglichen werden. 
+ANMERKUNG 2 Die Gleichung (B.2) kann nicht nur Grundlage für eine Risikoabschätzung für Tragwerke mit seltenen 
+und außergewöhnlichen Belastungen sein, sondern auch für Tragwerke mit gewöhnlichen Belastungen. 
+46 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 49 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(3) Im Rahmen der Risikoabschätzung müssen verschiedene mögliche Strategien für die Risikosteuerung und 
+Risikominderung aus Gründen der Wirtschaftlichkeit untersucht werden: 
+ Risiken dürfen durch Verringerung der Auftretenswahrscheinlichkeit für die Gefährdung, d. h. durch 
+Verringerung von P(H), reduziert werden. Z. B. kann die Gefährdung von Brückenpfeilern durch 
+Schiffsanprall durch den Bau künstlicher Inseln vor den Brückenpfeilern vermindert werden. Ebenso darf 
+das Explosionsrisiko in Gebäuden durch Auslagerung explosiver Stoffe aus den Gebäu den beseitigt 
+werden. 
+ Risiken dürfen durch Verringerung der Wahrscheinlichkeit bedeutender Schäden aus gegebenen 
+Gefährdungen, d. h. durch Verringerung von P(D|H) reduziert werden. Z. B. darf der Schaden, der als 
+Folge der Brandinitiierung entsteht, durch passive und aktive Feuerbekämpfungsmaßnahmen gemindert 
+werden (z. B. Brandschutzanstriche oder Sprinkler Systeme). 
+ Risiken dürfen durch Verringerung der Wahrscheinlichkeit ungenügenden Bauwerksverhaltens aufgrund 
+vorgegebener Schäden, d. h. durch Verringerung von P(S|D), reduziert werden. Das darf durch einen 
+Entwurf mit genügenden Redundanzen erreicht werden, mit denen alternative Lastpfäden entstehen, 
+wenn sich das statische System bedingt durch die Schäden ändert. 
+B.9.3 Modellierung der Risiken aus extremen Lastereignissen 
+Legende 
+S Tragwerk 
+H Gefährdungsereignis mit der Größe M zur Zeit t 
+Bild B.4  Komponenten für die Modellierung eines extremen Lastereignisses 
+B.9.3.1 Allgemeines Format 
+(1) Als Teil der Risikoanalyse sollten extreme Gefährdungen wie Erdbeben, Explosionen, Anprall usw. 
+untersucht werden. Das allgemeine Modell für ein solches Ereignis besteht aus den folgenden Komponenten 
+(Bild B.4): 
+ ein auslösendes Ereignis an einem bestimmten Ort zu einer gewissen Zeit; 
+ die Größe M einer mit dem Ereignis verbundenen Energie und möglicherweise weitere Parameter; 
+ die physikalische Interaktion zwischen dem Ereignis, der Umgebung und dem Tragwerk, die zu einer 
+Überschreitung von Grenzzuständen im Tragwerk führen kann. 
+(2) Das Auftreten des auszulösenden Ereignisses der Gefährdung H nach B.9.3.1(1) wird oft als Ereignis nach 
+dem Poisson-Prozess der Intensität (t,x) für eine Wegeinheit x und eine Zeiteinheit t modelliert, wobei t dabei 
+einen Zeitpunkt und x einen Ort im Raum ( x1, x2, x3) bezeichnet. Die Auftretenswahrscheinlichkeit für 
+47 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 50 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Versagen in einem Zeitraum bis zu der Zeit T ist dann (für Konstante und kleine Wahrscheinlichkeiten) 
+durch die Gleichung (B.3) beschrieben. 
+0
+Mf d)() mmfmMP(FN(T)P ( B . 3 ) 
+Dabei ist 
+N = T Gesamtzahl maßgebender auslösender Ereignisse in dem betrachteten Zeitabschnitt, 
+fM(m) Verteilungsdichte für die zufällige Größe M der Gefährdung, 
+H und f Versagensereignis bei einer gegebenen Größe M. 
+Die Abhängigkeit der Versagenswahrscheinlichkeit vom Abstand des Tragwerks von dem Ort des Ereignisses 
+ist zu beachten. Daher ist eine genaue Integration über die Fläche oder das Volumen, das interessiert, 
+erforderlich. 
+B.9.3.2 Anwendung auf Fahrzeuganprall 
+(1) In der Situation, die in Bild B.5 dargestellt ist, tritt Anprall auf, wenn ein Fahrzeug auf der Straße den 
+beabsichtigten Kurs an einer kritischen Stelle mit genügender Geschwindigkeit verlässt. Die 
+Anprallgeschwindigkeit hängt vom Abstand der Straße zu dem Tragwerk oder Tragwerkteil, dem Winkel des 
+Kollisionskurses, der Anfangsgeschwindigkeit und den topographischen Merkmalen des Terrains zwischen 
+Straße und Tragwerk ab. Manchmal gibt es Hindernisse oder Höhendifferenzen im Terrain. 
+Ein Fahrzeug verlässt den beabsichtigten Kurs am Punkt Q mit der Geschwindigkeit v 0 und unter dem Winkel . Ein 
+Tragwerk oder Tragwerksteil in der Nachbarschaft der Straße mit dem Abstand s wird mit der Geschwindigkeit vr
+getroffen. 
+Bild B.5  Fahrzeuganprall 
+48 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 51 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(2) Mit der allgemeinen Gleichung (B.3) lautet die Versagenswahrscheinlichkeit für diesen Fall, wie in 
+Gleichung (B.4) dargestellt. 
+ d)(sin][f fbRFPNP  ( B . 4 ) 
+Dabei ist 
+N = nT die Gesamtanzahl der auslösenden Ereignisse in dem betrachteten Zeitabschnitt; 
+n die Verkehrsdichte; 
+ die Versagensrate der Fahrzeuge (Anzahl von Vorkommnissen je Fahrzeugkilometer; 
+T der Zeitabschnitt; 
+b die Breite des Bauteils, aber nicht breiter als 2 mal die Breite des anprallenden Fahrzeuges; 
+ der Richtungswinkel; 
+f( ) die Verteilungsdichtefunktion; 
+R die Tragfähigkeit des Tragwerks; 
+F die Anpralllast. 
+Indem man ein einfaches Anprallmodell (siehe Anhang C) verwendet, lautet die Anprallkraft F: 
+ asvmkvmkF 22
+0
+2
+r  ( B . 5 ) 
+Dabei ist 
+m die Fahrzeugmasse; 
+k die Federsteifigkeit; 
+vo die Fahrzeuggeschwindigkeit bei Verlassen der Spur am Punkt-Q; 
+a konstante Verzögerung des Fahrzeugs nach Verlassen der Straße (siehe Bild B.5); 
+s = d/sin , ist der Abstand von Punkt Q bis zum Tragwerk. 
+B.9.3.3 Anwendung auf Schiffsanprall 
+(1) Für die Anwendung nach Bild B.6 darf die Gleichung (B.3) weiter zu Gleichung (B.6) entwickelt werden. 
+ ( B . 6 ) xRxFPNTP d})({=)( dynf
+Dabei ist 
+N = n T (1  pa) die Gesamtanzahl von Ereignissen in dem betrachteten Zeitabschnitt; 
+n die Anzahl der Schiffe in der Zeiteinheit (Verkehrsdichte); 
+ die Wahrscheinlichkeit für Versagen je Reisewegeinheit; 
+49 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 52 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+T die Bezugszeitraum (gewöhnlich 1 Jahr); 
+pa die Wahrscheinlichkeit, dass die Kollision durch menschliche Eingriffe vermieden werden kann; 
+x die Ortskoordinate des Punktes mit folgeschwerem Irrtum oder mechanischem Versagen; 
+Fdyn die Anpralllast auf das Tragwerk, aus der Anprallberechnung (siehe Anhang C),´; 
+R die Tragfähigkeit des Tragwerks; 
+Bei Bedarf darf die Verteilung der Anfangsposition des Schiffes in y-Richtung berücksichtigt werden, siehe 
+Bild B.6. 
+Legende 
+A Objekt 
+B Tragwerk 
+Bild B.6  Szenario für Schiffsanprall 
+B.9.4 Hinweise zur Anwendung der Risikoanalyse auf den Anprall von Eisenbahnfahrzeugen 
+(1) Die folgenden Faktoren sollten bei der Abschätzung des Risikos für Personen, das von der Entgleisung 
+von Eisenbahnfahrzeugen mit zulässigen Geschwindigkeiten von über 120 km/h im Bereich von Tragwerken 
+der Klasse A und allgemein im Bereich von Tragwerken der Klasse B ausgeht, berücksichtigt werden: 
+ die Wahrscheinlichkeit, dass Eisenbahnfahrzeuge in der Annäherung auf das Tragwerk entgleisen; 
+ die zulässige Geschwindigkeit der Eisenbahnfahrzeuge auf der Strecke; 
+ die abgeschätzte Verzögerung der entgleisten Eisenbahnfahrzeuge in der Annäherung auf das Tragwerk; 
+ der seitliche Weg, den ein entgleistes Eisenbahnfahrzeug voraussichtlich weiterfährt; 
+ ob eine eingleisige oder mehrgleisige Strecke vorliegt; 
+ der Zugtyp (Personenzug, Güterzug); 
+ die abgeschätzte Anzahl der Passagiere in dem passierenden Eisenbahnfahrzeug; 
+ die Häufigkeit von passierenden Eisenbahnfahrzeugen; 
+ das Vorhandensein von Weichen und Kreuzungen im Annäherungs-Bereich des Tragwerks; 
+ das statische System (Tragwerkskonzept) des Tragwerks und die Robustheit der Stützen; 
+ die Anordnung der Stütze in Relation zu den Gleisen;. 
+ die abgeschätzte Anzahl von Personen außerhalb des Eisenbahnfahrzeuges, die durch das entgleiste 
+Eisenbahnfahrzeug verletzt werden könnte. 
+50 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 53 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Die folgenden zusätzlichen Faktoren beeinträchtigen auch das Risiko aus entgleisten Eisenbahnfahrzeugen, 
+aber in geringerem Umfang: 
+ die Krümmung des Gleises in der Nähe des Tragwerks; 
+ die Anzahl der Gleise bei mehr als zwei Gleisen. 
+Die Wirkung, die von vorgesehenen präventiven oder schützenden Maßnahmen auf andere Teile oder andere 
+Nutzer der Infrastruktur ausgeht, sollte ebenfalls berücksichtigt werden. Dies schließt z. B. die Wirkung auf 
+Sichtabstände für Signale, Zugangserlaubnis und andere Sicherheitsbetrachtungen mit Bezug auf die 
+Führung des Gleises an. 
+ANMERKUNG Weitere Empfehlungen und Hinweise für Tragwerke der Klassen A und B (siehe 4.5.1.2) sind 
+dem UIC Code 777-2R (2002) Überbauten von Gleisanlagen“ (Bauliche Anforderungen im Gleisbereich) zu entnehmen. 
+Der UIC Code 777-2R enthält besondere Empfehlungen und Hinweise zu folgenden Punkten: 
+ Durchführung von Risikoabschätzungen für Tragwerke der Klasse B; 
+ zu beachtende Maßnahmen (einschließlich Konstruktionsregeln) für Tragwerke der Klasse A, wenn die Maximal-
+geschwindigkeit kleiner als 50 km/h ist; 
+ zu beachtende Maßnahme für Tragwerke der Klasse A bei Abständen von Stützenkonstruktionen von der Gleich-
+achse 3m. 
+(2) Die folgenden Faktoren, entweder einzeln oder in Kombination, sollten bei der Bestimmung des Risikos für 
+Personen, das von der Entgleisung von Eisenbahnfahrzeugen auf Tragwerke der Klasse B ausgeht, 
+berücksichtigt bzw. vorgesehen werden: 
+ Robustheit der Stützen des Tragwerks, um der Anprallbeanspruchung des entlanggleitenden entgleisten 
+Eisenbahnfahrzeuges zu widerstehen, und die Wahrscheinlichkeit eines Tragwerksversagens zu 
+reduzieren; 
+ Durchlaufwirkung der Überbauten, um die Wahrscheinlichkeit des Einsturzes als Folge des Anpralls auf 
+eine Stütze zu reduzieren; 
+ Maßnahmen zur Begrenzung des seitlichen Ausscherens des entgleisten Eisenbahnfahrzeuges aus der 
+Gleisachse, um die Wahrscheinlichkeit eines Anpralls zu reduzieren; 
+ größerer seitlicher Freiraum zu den Stützen des Tragwerks, um die Wahrscheinlichkeit des Anpralls 
+zureduzieren; 
+ Vermeidung von Stützen in der Flucht von Gleisen vor Weichen, um die Wahrscheinlichkeit der 
+Weiterfahrt eines entgleisten Eisenbahnfahrzeuges auf die Stützen zu reduzieren; 
+ Verwendung durchlaufender Wände oder wandartiger Stützen (letztlich zur Vermeidung getrennter 
+Einzelstützen), um die Wahrscheinlichkeit eines Versagens der Stützen nach dem Anprall zu reduzieren; 
+ wenn Einzelstützen sich praktisch nicht vermeiden lassen, sollten dennoch ausreichende Verbindungen 
+einzelner Stützen vorgesehen werden, so dass die Überbauung auch bei Ausfall einer Stütze stehen 
+bleibt; 
+ Vorsehen von Abweiseinrichtungen und Konstruktionen zur Energieaufnahme, um die Wahrscheinlichkeit 
+des Anpralls entgleister Eisenbahnfahrzeuge zu reduzieren. 
+51 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 54 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Anhang C
+(informativ) 
+Dynamische Anprallberechnung 
+C.1 Allgemeines 
+(1) Der Anprall ist ein Interaktionsphänomen zwischen einem bewegten Objekt und einem Tragwerk, bei dem 
+die kinetische Energie des Objektes plötzlich in Deformationsenergie umgewandelt wird. Um die dynamischen 
+Interaktionskräfte zu bestimmen, sollten die mechanischen Eigenschaften des Objektes und des Tragwerks 
+bestimmt werden. Bei der Bemessung werden gewöhnlich statisch äquivalente Kräfte verwendet.. 
+(2) Weitergehende Tragwerksberechnungen für den Anprallnachweis dürfen eine oder beide der folgenden 
+Aspekte enthalten: 
+ dynamische Wirkungen; 
+ nichtlineares Baustoffverhalten. 
+Nur die dynamischen Wirkungen werden in diesem Anhang behandelt. 
+ANMERKUNG Zu probabilistischen Aspekten und zur Untersuchung von Schadensfolgen, siehe Anhang B. 
+(3) Dieser Anhang liefert Hinweise für eine näherungsweise dynamische Berechnung von Tragwerken für 
+Anprall aus Straßenfahrzeugen, Eisenbahnfahrzeugen und Schiffen, auf der Basis vereinfachter oder 
+empirischer Modelle. 
+ANMERKUNG 1 Die Modelle im Anhang C lassen sich im Allgemeinen eher im Rahmen der Bemessung umsetzen als 
+die Modelle im Anhang B, die im Einzelfall zu einfach sein könnten. 
+ANMERKUNG 2 Analoge Einwirkungen können Anprall in Tunnels, auf Schutzplanken (siehe EN 1317) usw. sein. 
+Ähnliche Phänomene ergeben sich auch aus Explosionen (siehe Anhang D) und anderen dynamischen Einwirkungen. 
+C.2 Stoßdynamik 
+(1) Anprall wird als harter Stoß“ bezeichnet, wenn die Energie hauptsächlich durch das Anprallobjekt dis-
+sipiert wird, oder als weicher Stoß“, wenn sich das Tragwerk deformieren kann und Stoßenergie absorbiert. 
+C.2.1 Harter Stoß 
+(1) Bei hartem Stoß dürfen äquivalente statische Kräfte nach 4.3 bis 4.7 entnommen werden. Alternativ darf 
+eine dynamische Näherungsberechnung mit den vereinfachten Modellen in C.2.1(2) and (3) durchgeführt 
+werden. 
+(2) Bei hartem Stoß wird angenommen, dass das Tragwerk starr und unbeweglich ist und das Anprallobjekt 
+sich während des Anpralls linear verformt. Die maximale dynamische Interaktionskraft wird durch Gleichung 
+(C.1) ausgedrückt : 
+mkvF r (C.1) 
+52 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 55 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Dabei gilt 
+vr Geschwindigkeit des Objektes bei Anprall;
+k äquivalente elastische Steifigkeit des Anprallobjektes (d. h. Verhältnis der Kraft F zur Gesamt-
+verformung);
+m Masse des Anprallobjektes. 
+Der Anprallvorgang kann als Rechteckimpuls auf der Oberfläche des Tragwerks angesehen werden. Damit 
+folgt die Stoßdauer aus: 
+kmtodermvtF / ( C . 2 ) 
+Falls notwendig, kann eine definierte Anstiegszeit eingeführt werden (siehe Bild C.1). 
+Wird das Anprallobjekt als ein äquivalenter Körper mit gleichmäßigem Querschnitt modelliert (siehe Bild C.1), 
+dann können die Ausdrücke (C.3) und (C.4) benutzt werden: 
+k = EA/L (C.3) 
+m = AL (C.4) 
+Dabei ist 
+L die Länge des Anprallkörpers;
+A der Querschnittsfläche; 
+E das E-Modul; 
+ die Massendichte des Anprallkörpers. 
+Bild C.1  Anprall-Modell, F = dynamische Interaktionskraft 
+(3) Die Gleichung (C.1) liefert den Maximalwert der dynamischen Kraft auf die Anprallfläche des Tragwerks. 
+Die dynamischen Kräfte verursachen dynamische Tragwerksantworten. Eine obere Grenze dieser Antworten 
+kann mit der Annahme bestimmt werden, dass das Tragwerk elastisch ist und die Last als Schrittfunktion 
+(d. h. eine Funktion, die plötzlich auf ihren Endwert anwächst und dann konstant bleibt) definiert wird. In 
+diesem Fall ist der dynamische Vergrößerungsfaktor (d. h. das Verhältnis von dynamischer zu statischer 
+Antwort) 
+dyn = 2,0. Wenn die natürliche Impulsfunktion der Last (d. h. die kurze Zeit ihres Angriffs) berück-
+sichtigt werden sollte, liefern Berechnungen einen Vergrößerungsfaktor dyn zwischen 1,0 und 1,8 abhängig 
+von den dynamischen Kennwerten des Tragwerks und des Anprallobjekts. Eine direkte dynamische Analyse 
+zur Bestimmung von dyn mit den Lasten, die in diesem Anhang spezifiziert sind, wird empfohlen. 
+53 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 56 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+C.2.2 Weicher Stoß 
+(1) Wird das Tragwerk als elastisch und das Anprallobjekt als starr angenommen, gelten die Gleichungen in 
+Abschnitt C.2.1, indem für k die Steifigkeit des Tragwerks eingesetzt wird. 
+(2) Soll das Tragwerk die Anprallenergie mit plastischen Verformungen absorbieren, ist die Duktilität so 
+einzustellen, dass die gesamte kinetische Energie ½ mv 2
+r des Anprallobjektes absorbiert wird. 
+(3) Im Grenzfall starr-plastischer Bauwerksantwort wird die obige Anforderung durch die Bedingung in 
+Gleichung (C.5) erfasst. 
+½ mv Fo yo (C.5) 2
+r
+Dabei gilt 
+Fo die plastische Tragfähigkeit des Tragwerks, d. h. der Grenzwert der Kraft F unter statischer Belastung; 
+yo die Verformungskapazität, d. h. die Verschiebung am Angriffspunkt des Anpralls, die das Tragwerk 
+erreichen kann. 
+ANMERKUNG Analoge Überlegungen gelten für Bauteile oder andere Schutzkonstruktionen, die speziell entworfen 
+werden, um ein Tragwerk vor Anprall zu schützen (siehe z. B. EN 1317 Straßenbegrenzungssysteme“). 
+C.3 Anprall von abirrenden Straßenfahrzeugen 
+(1) Bei einem Lkw, der an ein Bauteil anprallt, sollte die Anprallgeschwindigkeit vr im Ausdruck (C. 1) mit der 
+Gleichung (C.6) berechnet werden. 
+vr = )2( 2
+0 sav = vo b/1 dd (mit d < db) (C.6) 
+Dabei ist (siehe auch Bild C.2) 
+v0 die Geschwindigkeit des Lkws beim Verlassen des Fahrstreifens; 
+a der mittlere Verzögerung des Lkws nach Verlassen des Fahrstreifens; 
+s der Abstand des Punktes, an dem der Lkw den Fahrstreifen verlässt, von dem Bauteil (siehe Bild C.2). 
+d der Abstand der Mittellinie des Fahrstreifens von dem Bauteil; 
+db der Bremsabstand db = (v /2a) sin , wobei der Winkel zwischen dem Fahrstreifen und de Kurs des 
+anprallenden Lkws ist. 
+2
+o
+(2) Probabilistische Informationen zu den Basisvariablen, die teils auf statistischen Daten und teils auf 
+Ingenieurabschätzungen beruhen, sind als Anhalt in Tabelle C.1 angegeben. 
+ANMERKUNG Siehe auch Anhang B. 
+54 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 57 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Table C.1  Anhaltswerte für probabilistische Berechnungen der Anpralllasten 
+Variable Bezeichnung Wahrscheinlich-
+keitsverteilung Mittelwert Standard-
+abweichung 
+vo Fahrzeuggeschwindigkeit 
+ Autobahn 
+ Stadtstraße 
+ Einfahrt 
+ Parkhaus 
+Lognormal 
+Lognormal 
+Lognormal 
+Lognormal 
+80 km/h 
+40 km/h 
+15 km/h 
+5 km/h 
+10 km/h 
+8 km/h 
+5 km/h 
+5 km/h 
+a Verzögerung Lognormal 4,0 m/s 2 1,3 m/s 2
+m Fahrzeugmasse  Lkw Normal 20 000 kg 12 000 kg 
+m Fahrzeugmasse  Pkw  1 500 kg  
+k Fahrzeugsteifigkeit Deterministisch 300 kN/m  
+Winkel Rayleigh 10 10
+(3) Mit Hilfe der Tabelle C.1 kann der folgende Näherungswert der dynamischen Interaktionskraft infolge 
+Anprall bestimmt werden, (C.7). 
+b0d /1 ddFF (C.7) 
+Dabei ist 
+F0 die Anprallkraft;
+d und db wie in Absatz (1).
+Anhaltswerte für F0 und db sind in Tabelle C.2 zusammen mit Bemessungswerten für m und v angegeben. 
+Alle diese Werte entsprechen näherungsweise den Mittelwerten zuzüglich oder abzüglich einer 
+Standardabweichung, wie in Tabelle C.1 angegeben. 
+Liegen in Sonderfällen genauere Informationen vor, dürfen andere Bemessungswerte gewählt werden, die 
+von der angestrebten Sicherheit, der Verkehrsdichte und der Unfallhäufigkeit abhängig gemacht werden. 
+ANMERKUNG 1 Das vorgestellte Modell ist eine grobe schematische Abschätzung und vernachlässigt viele 
+Detaileinflüsse, die eine bedeutende Rolle spielen können, wie z. B. den Einfluss von Schrammborden, Büschen, Zäunen 
+und der Ursache des Zwischenfalls. Es wird angenommen, dass die Streuung der Verzögerung zum Teil Wirkungen 
+dieser detaillierten Einflüsse enthält. 
+ANMERKUNG 2 Die Berechnung der dynamischen Anpralllast ( Fd) nach Gleichung (C.7) darf auf der Grundlage einer 
+Risikoanalyse verbessert werden. Dieses berücksichtigt die möglichen Folgen des Anpralls, die Verzögerungsrate, die 
+Tendenz des Fahrzeugs, aus der Fahrtrichtung auszuscheren, die Wahrscheinlichkeit, den Fahrstreifen zu verlassen und 
+die Wahrscheinlichkeit, das Bauteil zu treffen. 
+(4) Bei Fehlen dynamischer Berechnungen darf der dynamische Vergrößerungsfaktor für die elastische 
+Bauwerksantwort mit 1,4 angesetzt werden. 
+ANMERKUNG Die in diesem Anhang abgeleiteten Kräfte können für eine elastisch-plastische Bauwerksberechnung 
+verwendet werden. 
+55 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 58 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Tabelle C.2  Bemessungswerte für Fahrzeugmasse, Geschwindigkeit und 
+dynamische Anprallkraft F0 
+Straßentyp 
+Masse 
+m 
+Geschwin-
+digkeit 
+vo
+Verzögerung
+a 
+Anprallkraft F0
+berechnet 
+mit (C.1) 
+und 
+vr = v0
+Abstand 
+db
+a
+ kg km/h m/s 2 kN m 
+Autobahnen 30 000 90 3 2 400 20 
+Stadtstraßen b 30 000 50 3 1 300 10 
+Einfahrten 
+ nur Pkws 
+ alle Fahrzeuge 
+1 500 
+30 000 
+20 
+15 
+3 
+3 
+120 
+500 
+2 
+2 
+Parkhäuser 
+ nur Pkws 1 500 10 3 60 1 
+a Straßenbereiche mit Geschwindigkeitsbeschränkung auf 50 km/h. 
+b Der Wert db darf bei Böschungen mit 0,6 und bei Abhängen mit 1,6 multipliziert werden (siehe 
+Bild C.2).
+Bild C.2  Situationsskizze zu Fahrzeuganprall (Aufsicht und Querschnitte bei Böschung, 
+flachem Terrain und Abhang) 
+56 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 59 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+C.4 Schiffsanprall 
+C.4.1 Schiffsanprall auf Binnenwasserstraßen 
+(1) Schiffsanprall auf massive Bauwerke in Binnenwasserstraßen sind in der Regel als harter Stoß 
+anzusehen, bei dem die kinetische Energie durch elastische oder plastische Verformungen des Schiffes 
+selbst dissipiert wird. 
+(2) Werden schiffsdynamische Berechnungen nicht durchgeführt, liefert die Tabelle C.3 Anhaltswerte für 
+Kräfte aus Schiffsanprall auf Binnenwasserstraßen. 
+Table C.3  Anhaltswerte für dynamische Kräfte aus Schiffsanprall auf Binnenwasserstraßen 
+CEMTa
+Klasse
+Bezugtyp 
+des Schiffes
+Länge 
+m 
+Masse m
+t b
+Kraft Fdx 
+c 
+kN 
+Kraft Fd y
+c
+kN 
+I 30 bis 50 200 bis 400 2 000 1 000 
+II 50 bis 60 400 bis 650 3 000 1 500 
+III Gustav König“ 60 bis 80 650 bis 1 000 4 000 2 000 
+IV Europa“ Klasse 80 bis 90 1 000 bis 1 500 5 000 2 500 
+Va Großmotorschiff 90 bis 110 1 500 bis 3 000 8 000 3 500 
+Vb Schubschiff + 2 
+Leichter 
+110 bis 180 3 000 bis 6 000 10 000 4 000 
+Vla Schubschiff + 2 
+Leichter 
+110 bis 180 3 000 bis 6 000 10 000 4 000 
+Vlb Schubschiff + 4 
+Leichter 
+110 bis 190 6 000 bis 12 000 14 000 5 000 
+Vlc Schubschiff + 6 
+Leichter 
+190 bis 280 10 000 bis 18 000 17 000 8 000 
+VII Schubschiff + 9 
+Leichter 
+300 14 000 bis 27 000 20 000 10 000 
+a CEMT: Europäische Konferenz der Verkehrsminister, Klassifikationsvorschlag vom 19. Juni 
+1992, angenommen vom Rat der EU am 29. Oktober 1993. 
+b Die Masse m in t (1t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus 
+Schiffskonstruktion, Fracht und Treibstoff. Sie wird auch Verdrängungstonnage genannt. 
+c Die Kräfte Fdx und Fdy enthalten die Wirkung der hydrodynamische Masse. Sie beruhen auf 
+Hintergrunduntersuchungen unter Berücksichtigung der für alle Wasserstraßenklassen 
+erwarteten Bedingungen.
+(3) Die dynamischen Anhaltswerte in Tabelle C.3 dürfen abhängig von den Versagensfolgen eines 
+Schiffsanpralls angepasst werden. Es wird empfohlen, diese dynamischen Werte bei hohen Versagensfolgen 
+zu vergrößern und bei niedrigen zu reduzieren, siehe 3.4. 
+(4) Bei Fehlen dynamischer Berechnungen für das getroffene Bauwerk wird empfohlen, die dynamischen 
+Anhaltswerte in Tabelle C.3 mit einem geeigneten dynamischen Vergrößerungsfaktor zu versehen. Die Werte 
+in Tabelle C.3 enthalten die dynamischen Wirkungen des Anprallobjekts, aber nicht die des Tragwerks. 
+57 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 60 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Hinweise zu dynamischen Berechnungen liefert Abschnitt C.4.3. Anhaltswerte für den dynamischen 
+Vergrößerungsfaktor sind 1,3 für den Frontalstoß und 1,7 für den Lateralstoß. 
+(5) Im Hafenbereich dürfen die Kräfte in Tabelle C.3 mit dem Faktor 0,5 reduziert werden. 
+C.4.2 Schiffsanprall auf Seewasserstraßen 
+(1) Werden schiffsdynamische Berechnungen nicht durchgeführt, gibt Tabelle C.4 Anhaltswerte für Kräfte aus 
+Schiffsanprall auf Seewasserstraßen. 
+Tabelle C.4  Anhaltswerte für dynamische Interaktionskräfte aus Schiffsanprall auf 
+Seewasserstraßen 
+Schiffsklasse 
+Länge 
+m 
+Masse ma
+t 
+Kraft Fdx
+b,c
+kN 
+Kraft Fdy 
+b, c
+kN 
+Klein 50 3 000 30 000 15 000 
+Mittel 100 10 000 80 000 40 000 
+Groß 200 40 000 240 000 120 000 
+Sehr groß 300 100 000 460 000 230 000 
+a Die Masse (t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus Schiffskonstruktion, Fracht
+und Treibstoff. Sie wird auch Verdrängungstonnage genannt. 
+b Die angegebenen Kräfte berücksichtigen eine Geschwindigkeit von etwa 5,0 m/s. Sie enthalten 
+die Effekte aus mitwirkenden hydraulischen Massen. 
+c Gegebenenfalls sollten die Wirkungen des Wulst-Bugs berücksichtigt werden. 
+(2) Bei Fehlen dynamischer Berechnungen für das Tragwerk unter Stoßbelastung wird empfohlen, die 
+dynamischen Anhaltswerte in Tabelle C.4 mit einem geeigneten dynamischen Vergrößerungsfaktor zu 
+vergrößern. Die dynamischen Werte enthalten die dynamischen Wirkungen auf das Anprallobjekt, aber nicht 
+auf das Tragwerk. Hinweise zu dynamischen Berechnungen liefert C.4.3. Anhaltswerte für den dynamischen 
+Vergrößerungsfaktor sind 1,3 für den Frontalstoß und 1,7 für den Seitenstoß. 
+(3) Im Hafenbereich dürfen die Kräfte in Tabelle C.4 mit dem Faktor 0,5 reduziert werden. 
+(4) Für Lateral- und Heckanprall wird empfohlen, die Kräfte in Tabelle C.4 wegen der reduzierten 
+Geschwindigkeit mit dem Faktor 0,3 zu multiplizieren. Lateralanprall kann in engen Fahrrinnen maßgebend 
+werden, wenn Frontalstoß nicht möglich ist. 
+C.4.3 Weitergehende Anpralluntersuchung für Schiffe auf Binnenwasserstraßen 
+(1) Die dynamische Anprallkraft Fd darf mit den Gleichungen (C.8) bis (C.13) bestimmt werden. In diesem Fall 
+wird die Verwendung des Mittelwertes der Masse für die maßgebende Schiffsklasse nach Tabelle C.3 und 
+eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert um die Strömungsgeschwindigkeit, vorgeschlagen. 
+(2) Muss die hydrodynamische Masse berücksichtigt werden, werden dafür 10 % der verdrängten Wasser-
+masse für den Frontalstoß und 40 % für den Lateralstoß empfohlen. 
+(3) Bei elastischen Verformungen (bei Edef 0,21 MNm) darf die dynamische Anprallkraft mit Gleichung (C.8) 
+berechnet werden: 
+defeldyn, 95,10 EF [MN] (C.8) 
+58 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 61 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(4) Bei plastischen Verformungen (bei Edef > 0,21 MNm) darf die dynamische Anprallkraft mit Gleichung (C.9) 
+berechnet werden 
+defpldyn, 128,010,5 EF in MN (C.9) 
+Die Verformungsenergie Edef MNm entspricht der am Anprallort verfügbaren kinetischen Energie Ea bei 
+Frontalstoß, während im Fall von Lateralstoß mit einem Winkel < 45° ein Anprall mit Gleitreibung ange-
+nommen werden und die Verformungsenergie mit 
+ E def = Ea (1  cos ) (C.10) 
+angesetzt werden darf. 
+(5) Werden für die Bestimmung der Anprallkräfte probabilistische Methoden angewendet, können 
+Informationen zu probabilistischen Modellen der Basisvariablen benutzt werden, die die Verformungsenergie 
+oder das Anprallverhalten des Schiffs bestimmen. 
+(6) Wird eine dynamische Bauwerksanalyse durchgeführt, sollten die Anprallkräfte mit halbsinusförmigem 
+Zeitverlauf bei F
+dyn < 5 MN (elastischer Stoß) und mit trapezförmigem Zeitverlauf bei Fdyn > 5 MN (plastischer 
+Stoß); angesetzt werden. Die Belastungsdauer und andere Details sind in Bild C.3 dargestellt. 
+59 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 62 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+
+Legende 
+tr elastische Anstiegszeit, in s; 
+tp plastische Stoßzeit, in s; 
+te elastische Rückfederzeit, in s; 
+ta äquivalente Stoßdauer, in s; 
+ts gesamte Stoßzeit [s] für die plastische Stoßzeit; ts = tr + tp + te 
+c elastische Steifigkeit des Schiffes (= 60 MN/m); 
+F0 elastisch-plastische Grenzkraft = 5 MN; 
+xe elastisch Verformung ( 0,1 m); 
+vn a) die Anfahrgeschwindigkeit vr bei Frontalstoß; 
+ b) Geschwindigkeit des anprallenden Schiffes senkrecht zum Stoßpunkt, vn = vr sin bei Seitenstoß. 
+Bei Frontalstoß entspricht die zu berücksichtigende Masse m* der Gesamtmasse des anprallenden Schiffes; 
+bei Seitenstoß: m* = (m1 + mhydr)/3, wobei m1 die Masse des direkt am Stoß beteiligten Schiffes und mhyd die 
+hydrodynamische Zusatzmasse sind 
+Bild C.3  Last-Zeitfunktion für Schiffsanprall bei elastischer und plastischer Schiffsantwort 
+
+(7) Ist die Anprallkraft gegeben, z. B. aus Tabelle C.3, und ist die Sroßzeit gefragt, darf die Masse m* wie folgt 
+berechnet werden: 
+ bei Fdyn > 5 MN: mit Gleichsetzen von Edef, nach Gleichung (C.9), 
+zur kinetischen Energie Ea = 0,5 m* vn², 
+ bei Fdyn 5 MN: direkt mit m* = (Fdyn/vn)² * (1/c) MNs²/m 
+60 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 63 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+(8) Wenn keine genaueren Angaben vorliegen, wird eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert 
+um die Strömungsgeschwindigkeit, empfohlen; in Häfen darf die Geschwindigkeit mit 1,5 m/s angesetzt 
+werden. Der Winkel darf mit 20o angenommen werden. 
+C.4.4 Weitergehende Anpralluntersuchung für Schiffe auf Seewasserstraßen 
+gestrichener Text
+(1) Die dynamische Anprallkraft für seegängige Güterschiffe mit 500 DWT bis 300 000 DWT (Dead 
+Weight Tons) darf mit Gleichung (C.11) ermittelt werden. 
+6250
+o
+625061
+o
+bei242
+bei05
+.
+imp
+.
+imp
+.
+imp
+..
+imp
+bow
+.
+).(
+LELEF
+LELLELF
+F (C.11) 
+Dabei gilt 
+m275pp /LL
+MNm4251/impimp EE
+Eimp = 2
+rx
+2
+1 vm 
+und 
+Fbow maximale Buganpralllast, in MN; 
+Fo Bezugswert der Anpralllast = 210 MN; 
+Eimp Energie, die durch plastische Verformungen zu absorbieren ist; 
+Lpp Länge des Schiffes, in m; 
+mx Masse plus Zusatzmasse bei Längsbewegung, in 10 6 kg; 
+vr Anfangsgeschwindigkeit des Schiffes, vr = 5 m/s (in Häfen: 2,5 m/s)
+(2)Für die Bestimmung der Anpralllasten mit probabilistischen Methoden dürfen probabilistische 
+Modelle der Basisvariablen benutzt werden, die die Verformungsenergie oder das Anprallverhalten des 
+Schiffes bestimmen. 
+(3) Aus der Energiebilanz wird mit Hilfe von Gleichung (C.12) die größte Schiffsverformung s
+max
+bestimmt: 
+
+bow
+imp
+max
+2 F
+Es  (C.12) 
+(4) Die zugehörige Stoßzeit, 0, wird durch Gleichung (C.13) bestimmt. 
+
+r
+max
+o 67,1 v
+sT  (C.13) 
+(5) Wenn keine genaueren Angaben vorliegen, wird die Bemessungsgeschwindigkeit vrd = 5 m/s 
+vergrößert um die Strömungsgeschwindigkeit empfohlen; in Häfen kann die Geschwindigkeit mit 1,5 m/s 
+angesetzt werden. 
+61 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 64 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Anhang D
+(informativ) 
+Innenraumexplosionen 
+D.1 Staubexplosionen in Innenräumen, Behältern und Bunkern 
+(1) Die Staubart wird üblicherweise durch den Stoffparameter KSt beschrieben, der das Explosionsverhalten 
+unter Abschluss-Bedingungen angibt. KSt kann nach Standardprüfverfahren für jede Staubart experimentell 
+ermittelt werden. 
+Tabelle D.1  KSt-Werte für Stäube 
+Staubart 
+KSt 
+kN/m2 m/s 
+Braunkohle 18 000 
+Cellulose 27 000 
+Kaffee 9 000 
+Mais, auch gebrochen 12 000 
+Maisstärke 21 000 
+Getreide 13 000 
+Milchpuder 16 000 
+Steinkohle 13 000 
+Mischfutter 4 000 
+Papier 6 000 
+Erbsmehl 14 000 
+Pigment 29 000 
+Gummi 14 000 
+Roggenmehl, Weizenmehl 10 000 
+Sojamehl 12 000 
+Zucker 15 000 
+Waschpulver 27 000 
+Holz, Holzmehl 22 000 
+ANMERKUNG 1 Ein größerer Wert von KSt führt zu größeren Drücken und kürzeren Anstiegszeiten für 
+Innenraumexplosionsdrücke. Der Wert von KSt hängt von der chemischen Zusammensetzung, der Partikelgröße und dem 
+Feuchtigkeitsgehalt ab. Beispiele für KSt-Werte liefert Tabelle D.1. 
+ANMERKUNG 2 Bei Staubexplosionen erreichen die Drücke ihren maximalen Wert nach 20 ms bis 50 ms. Der Abfall 
+auf normale Werte hängt stark von dem Öffnungselement und der Geometrie des Raumes ab. 
+ANMERKUNG 3 Siehe auch ISO 1684-1 Explosionsschutzsysteme  Teil 1: Bestimmung der Explosionsindizes von 
+brennbaren Stäuben in der Luft. 
+(2) Die Öffnungsfläche kubischer und langer Behälter und Bunker für Staubexplosionen in einem Innenraum 
+darf nach Gleichung (D.1) bestimmt werden 
+A = [4,485 × 10-8 pmax KSt pred.max
+-0,569 + 0,027 (pstat  10) pred.max
+-0,5] V0,753 (D.1) 
+62 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 65 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+Dabei ist 
+A die Öffnungsfläche, in m 2; 
+pmax der maximaler Druck des Staubes, in kN/m 2; 
+KSt der Deflagrationsindex der Staubwolke, in kN/m 2 m s-1, siehe Tabelle D.1; 
+pred.max der angenommene reduzierte maximale Druck im geöffneten Behälter, in kN/m2; 
+pstat der statische Aktivierungsdruck aufgrund der Größe der Öffnungsflächen, in kN/m 2; 
+V das Volumen des Behälters oder Bunkers, in m 3. 
+Die Gleichung (D.1) gilt mit den folgenden Einschränkungen : 
+ 0,1 m 3 V 10 000 m3
+H/D 2, dabei ist H die Höhe und D der Durchmesser des langen Behälters 
+ 10 kN/m 2 pstat 100 kN/m 2, Bruch von Scheiben und Paneelen mit geringer Masse praktisch ohne 
+Massenträgheit 
+ 10 kN/m 2 pred.max 200 kN/m2
+ 500 kN/m 2 pmax 1 000 kN/m2 für 1 000 kN/m2 m s-1 KSt 30 000 kN/m2 m s-1
+bzw. 
+500 kN/m2 pmax 1 200 kN/m2 für 30 000 kN/m2 m s-1 KSt 80 000 kN/m2 m s-1
+(3) Die Öffnungsflächen rechteckiger Räume können mit Gleichung (D.2) bestimmt werden. 
+A = [4,485 x 10-8 pmax KSt pBem
+-0,569 + 0,027 (pstat  10) pBem.
+-0,5 ] V0,753 (D.2) 
+Dabei ist 
+A die Öffnungsfläche, in m 2; 
+pmax der maximaler Druck des Staubes, in kN/m 2; 
+KSt der Deflagrationsindex der Staubwolke, in kN/m 2 m s-1, siehe Tabelle D.1; 
+pBem der Druck entsprechend der Bemessungsfestigkeit des Tragwerks, in kN/m 2; 
+pstat der statische Aktivierungsdruck aufgrund der Größe der Öffnungsflächen, in kN/m 2; 
+V das Volumen der rechteckigen Räume, in m 3. 
+Die Gleichung (D. 2) gilt mit folgenden Einschränkungen : 
+ 0,1 m 3 V 10 000 m3
+L3/DE 2, dabei ist L3 die größte Abmessung des Raumes, DE = 2 × (L1 × L2/ )0,5 sowie L1 , L2 als den 
+anderen Raum-Abmessungen 
+ 10 kN/m 2 pstat 100 kN/m2, Bruch von Scheiben und Paneelen mit geringer Masse, also praktisch ohne 
+Massenträgheit 
+ 10 kN/m 2 pred.max 200 kN/m2
+63 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 66 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+ 500 kN/m 2 pmax 1 000 kN/m2 für 1 000 kN/m2 m s-1 KSt 30 000 kN/m2 m s-1 bzw. 
+ 500 kN/m 2 pmax 1 200 kN/m2 für 30 000 kN/m2 m s-1 KSt 80 000 kN/m2 m s-1
+(4) Bei langen Räumen mit L3/DE 2 sollte die folgende Vergrößerung der Öffnungsfläche berücksichtigt 
+werden. 
+AH = A (- 4,305 log pBem + 9,368) log L3/DE (D.3) 
+Dabei ist 
+AH die Vergrößerung der Öffnungsfläche, in m 2. 
+D.2 Erdgasexplosionen 
+(1) Bei Gebäuden mit geplanten Erdgasanschlüssen darf das Tragwerk für eine Innenraum-Erdgasexplosion 
+mit einem äquivalenten statischen Nenndruck nach den Gleichungen (D.4) und (D.5) bemessen werden. 
+pd = 3 + pstat ( D . 4 ) 
+oder 
+pd = 3 + pstat / 2 + 0,04 / (Av / V)² (D.5) 
+Der größere Wert ist maßgebend. 
+Dabei ist 
+p
+stat der gleichmäßig verteilte statische Druck, bei dem die Öffnungselemente versagen, in kN/m²; 
+Av die Fläche der Öffnungselemente, in m 2; 
+V das Volumen des rechteckigen Raumes, in m 3. 
+Die Gleichungen (D.4) und (D.5) gelten für Räume bis 1 000 m³ Volumen. 
+ANMERKUNG Der Deflagrationsdruck wirkt praktisch gleichzeitig auf alle Begrenzungsflächen des Raumes ein. 
+(2) Wenn Öffnungselemente mit verschiedenen pstat-Werten zur Öffnungsfläche beitragen, ist der größte Wert 
+pstat zu benutzen. Werte pd > 50 kN/m2 brauchen nicht berücksichtigt zu werden. 
+(3) Das Verhältnis der Öffnungsfläche zum Volumen ist nach Gleichung (D.6) begrenzt: 
+0,05 (1/m) Av/V 0,15 (D.6) 
+D.3 Explosionen in Straßen- und Eisenbahntunneln 
+(1) Für eine Detonation in Straßen oder Eisenbahntunneln darf die Druck-Zeit-Funktion nach den 
+Gleichungen (D.7) bis (D.9), siehe Bild D.1(a), verwendet werden: 
+0
+1
+0 /--exp, tc
+x
+tptxp bei 
+121
+- c
+x
+c
+x
+tc
+x
+ (D.7) 
+64 
+DIN EN 1991-1-7:2010-12
+
+===== PDF-SEITE 67 =====
+EN 1991-1-7:2006 + AC:2010 (D) 
+65 
+0
+12
+0 /2-exp, tc
+x
+c
+x
+ptxp bei 
+212 c
+x
+tc
+x
+c
+x
+ D.8) 
+ bei allen anderen Bedingungen (D.9) 0,txp
+Dabei ist 
+po der maßgebende Spitzendruck (= 2 000 kN/m 2 für einen typischen Treibstoff aus verflüssigtem Gas); 
+c1 die Ausbreitungsgeschwindigkeit der Schockwelle ( 1 800 m/s); 
+c2 die Schallausbreitungsgeschwindigkeit in heißen Gasen ( 800 m/s); 
+to die Zeitkonstante (= 0,01 s); 
+x Abstand zum Explosionskern; 
+t die Zeit, in s. 
+(2) Bei einer Deflagration in Straßen- oder Eisenbahntunneln darf die folgende Druck-Zeit-Charakteristik 
+berücksichtigt werden, siehe Bild D1(b): 
+)1(4)(
+00
+0 t
+t
+t
+tptp für 0 t t0 ( D . 1 0 ) 
+Dabei ist 
+po der maßgebende Spitzendruck (= 100 kN/m 2);
+to die Zeitkonstante (= 0,1 s); 
+t die Zeit, in s. 
+(3) Der Druck nach Gleichung (D.10) gilt für die gesamte innere Tunneloberfläche. 
+Bild D.1  Druck als eine Funktion der Zeit für Detonation (a) und Deflagration (b)
+DIN EN 1991-1-7:2010-12

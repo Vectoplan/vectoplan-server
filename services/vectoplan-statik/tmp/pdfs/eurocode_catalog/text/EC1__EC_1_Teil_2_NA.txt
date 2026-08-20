@@ -1,0 +1,779 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang – 
+National festgelegte Parameter –
+Eurocode 1: Einwirkungen auf Tragwerke – 
+Teil 2: Verkehrslasten auf Brücken
+National Annex –
+Nationally determined parameters –
+Eurocode 1: Actions on structures –
+Part 2: Traffic loads on bridges 
+Annexe Nationale –
+Paramètres détermines au plan national –
+Eurocode 1: Actions sur les structures –
+Partie 2: Actions sur les ponts, dues au trafic
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-2/NA:2012-08 
+2 
+Inhalt Seite
+Vorwort ................................................................................................................................................................3
+NA 1 Anwendungsbereich ...............................................................................................................................4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-2:2010-12 ..............................................4
+NA 2.1 Allgemeines ............................................................................................................................................4
+NA 2.2 Nationale Festlegungen ........................................................................................................................6
+1 Allgemeines ................................................................................................................. ...........................6
+2 Einleitung der Einwirkungen ................................................................................................. ...............6
+3 Bemessungssituationen ....................................................................................................... ................7
+4 Straßenverkehr und andere Einwirkungen, besonders für Straßenbrücken ..................................7
+5 Einwirkungen auf Fußgängerwege, Radwege und Fußgängerbrücken ........................................ 11
+6 Einwirkungen aus Eisenbahnverkehr und andere für Eisenbahnbrücken typische 
+Einwirkungen ...................................................................................................................................... 12
+
+===== PDF-SEITE 3 =====
+DIN EN 1991-2/NA:2012-08 
+3 
+Vorwort 
+Dieses Dokument wurde im NA 005-57-03 AA „Lastannahmen für Brücken“ (Sp CEN/TC 250/SC 1/WG 2) 
+erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1991-2 „ Eurocode 1: Einwirkungen auf Trag-
+werke — Teil 2: Verkehrslasten auf Brücken “.
+Die Europäische Norm EN 1991-2 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten Para-
+metern national festzulegen. Diese national festzulegenden Parameter (en: nationally determined parameters, 
+NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl von Klassen 
+aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der Europäischen Norm 
+durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste dieser Textstellen 
+befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser Nationale Anhang ergänzende nicht 
+widersprechende Angaben zur Anwendung von DIN EN 1991-2:2010-12 (en: non-contradictory 
+complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1991-2:2010-12.
+
+===== PDF-SEITE 4 =====
+DIN EN 1991-2/NA:2012-08 
+4 
+NA 1 Anwendungsbereich
+Dieser Nationale Anhang enthält Festlegungen zu „Nutzlasten auf Brücken in Verbindung mit Straßenverkehr, 
+Einwirkungen durch Fußgänger und Schienenverkehr“, die bei der Anwendung von DIN EN 1991-2 in 
+Deutschland berücksichtigt werden müssen.
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1991-2:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-2:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1991-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (NDPs) 
+aus. 
+1 Allgemeines
+1.1 (3) Ergänzende Regelungen für Stützwände, unterirdische Tragwerke und
+Tunnel
+2 Einteilung der Einwirkungen 
+2.2 (2) ANMERKUNG 2 Anwendung von nicht häufigen Werten für Lasten von Straßenbrücken 
+2.3 (1) Definition von geeigneten Schutzmaßnahmen gegen Anprall
+2.3 (4) Regelungen für Anpralllasten mit verschiedenen Ursachen
+3 Bemessungssituationen 
+3 (5) Regelungen für Brücken, die gleichzeitig durch Eisenbahn- und 
+Straßenverkehr beansprucht werden
+4 Straßenverkehr und andere Einwirkungen, besonders für Straßenbrücken
+4.1 (1) ANMERKUNG 2 Einwirkungen aus Straßenverkehr für Belastungslängen größer als 200 m
+4.1 (2) ANMERKUNG 1 Spezielle Lastmodelle für Brücken mit Begrenzung der Fahrzeuggewichte 
+4.2.1 (1) ANMERKUNG 2 Definition von ergänzenden Lastmodellen
+4.2.1 (2) Definition von Modellen für Sonderfahrzeuge
+4.2.3 (1) Übliche Höhe von Schrammborden
+4.3.1 (2) ANMERKUNG 2 Benutzung von LM2 
+4.3.2 (3) ANMERKUNG 1 u. 
+2 
+Werte für 
+-Faktoren
+4.3.2 (6) Benutzen von vereinfachten alternativen Lastmodellen
+4.3.3 (2) Werte für Faktoren
+4.3.3 (4) ANMERKUNG 2 Auswahl der Reifenkontaktfläche für LM2
+4.3.4 (1) Definition des Lastmodells 3 (Sonderfahrzeuge) 
+4.4.1 (2) ANMERKUNG 2 Obere Grenze für Bremskräfte auf Straßenbrücken
+4.4.1 (3) ANMERKUNG 3 Horizontalkräfte in Verbindung mit LM3
+4.4.1 (6) Bremskräfte übertragen durch Fahrbahnübergänge
+4.4.2 (4) Seitenkräfte auf Überbauten von Straßenbrücken
+4.5.1 — Tabelle 4.4a 
+ANMERKUNGEN a) u. b)
+Berücksichtigung von Horizontalkräften in gr1a
+4.5.2 ANMERKUNG 3 Benutzung von nicht häufigen Werten für veränderliche Einwirkungen
+4.6.1 (2) ANMERKUNGEN 2
+und 4
+Zur Benutzung der Ermüdungslastmodelle 
+4.6.1 (3) ANMERKUNG 1 Definition der Verkehrskategorien
+4.6.1 (6) Definition von zusätzlichen Vergrößerungsfaktoren (Ermüdung)
+4.6.4 (3) Anpassen des Ermüdungslastmodells 3 
+4.6.5 (1) ANMERKUNG 2 Eigenschaften des Straßenverkehrs für die Benutzung des Ermüdungs-
+lastmodells 4
+
+===== PDF-SEITE 5 =====
+DIN EN 1991-2/NA:2012-08 
+5 
+4.6.6 (1) Benutzung des Ermüdungslastmodells 5
+4.7.2.1 (1) Definition der Anprallkraft und Angriffshöhe der Anprallkraft
+4.7.2.2 (1) Definition der Anprallkraft am Überbau
+4.7.3.3 (1) ANMERKUNG 1 Definition der Anprallkräfte bei Fahrzeugrückhaltesystemen
+4.7.3.3 (1) ANMERKUNG 3 Definition der Vertikalkräfte, die gleichzeitig mit den Horizontalkräften 
+wirken 
+4.7.3.3 (2) Bemessungslast für die das Fahrzeugrückhaltesystem tragende Konstruk-
+tion 
+4.7.3.4 (1) Definition der Anprallkräfte von ungeschützten vertikalen Tragwerksteilen 
+4.8 (1) ANMERKUNG 2 Definition der Einwirkungen auf Geländer
+4.8 (3) Definition der Bemessungslasten für die das Geländer tragende Konstruk-
+tion 
+4.9.1 (1) ANMERKUNG 1 Definition des Lastmodells für Hinterfüllungen
+5 Einwirkungen auf Fußgängerwege Radwege und Fußgängerbrücken
+5.2.3 (2) Definition des Lastmodells für Dienstwege
+5.3.2.1 (1) Definition der charakteristischen Werte der gleichmäßig verteilten Last
+5.3.2.2 (1) Definition der charakteristischen Werte für die konzentrierte Last auf 
+Fußgängerbrücken
+5.3.2.3 (1)P ANMERKUNG 1 Definition der Dienstfahrzeuge auf Fußgängerbrücken 
+5.4 (2) Charakteristischer Wert der Horizontalkraft auf Fußgängerbrücken 
+5.6.1 (1) Definition von speziellen Anpralllasten 
+5.6.2.1 (1) Anpralllasten auf Pfeilern 
+5.6.2.2 (1) Anpralllasten auf Überbauten
+5.6.3 (2)ANMERKUNG 2 Definition des Lastmodells für das außergewöhnliche Vorhandensein eines 
+Fahrzeugs auf der Fußgängerbrücke
+5.7 (3) Definition von dynamischen Modellen für Fußgängerbrücken
+6 Einwirkungen aus Eisenbahnverkehr und andere für Eisenbahnbrücken typische Einwirkungen 
+6.1 (2) Verkehr außerhalb des Gültigkeitsbereichs von EN 1991-2, alternative
+Lastmodelle
+6.1 (3)P Andere Eisenbahntypen
+6.1 (7) Hilfsbrücken 
+6.3.2 (3)P Werte der -Faktoren 
+6.3.3 (4)P Wahl der Strecken für schweren Eisenbahnverkehr
+6.4.4 Alternative Anforderungen für eine dynamische Berechnung
+6.4.5.2 (3)P Wahl der dynamischen Beiwerte 
+6.4.5.3 (1) Alternative Werte für maßgebende Länge 
+6.4.5.3 Tabelle 6.2 Maßgebende Länge von Trägern
+6.4.6.1.1 (6) Zusätzliche Anforderungen für die Anwendung von HSLM
+6.4.6.1.1 (7) Belastung und Methode für dynamische Berechnungen
+6.4.6.1.2 (3) Tabelle 6.5 Zusätzliche Lastfälle in Abhängigkeit der Anzahl der Gleise
+6.4.6.3.1 (3) Tabelle 6.6 Dämpfungswerte
+6.4.6.3.2 (3) Alternative Werte für die Dichte von Materialien
+6.4.6.3.3 (3) 
+ANMERKUNG 1, 
+ANMERKUNG 2
+Verbesserter E-Modul, andere Materialeigenschaften
+6.4.6.4 (4) Verkleinerung der Spitzenwerte im Resonanzfall und zusätzliche alternative 
+Dämpfungswerte
+6.4.6.4 (5) Erlaubnis für Gleisfehler und Fahrzeugunregelmäßigkeiten 
+6.5.1 (2) Vergrößern der vertikalen Schwerpunktlage für Fliehkräfte
+
+===== PDF-SEITE 6 =====
+DIN EN 1991-2/NA:2012-08 
+6 
+6.5.3 (5) Einwirkungen durch Bremsen für Belastungslängen größer als 300 m 
+6.5.3 (9)P Alternative Anforderungen für die Verwendung der Anfahr- und Bremskräfte
+6.5.4.1 (5) Kombinierte Antwort von Tragwerk und Gleise, Anforderungen für Feste 
+Fahrbahn 
+6.5.4.3 (2) ANMERKUNG 1, 
+ANMERKUNG 2
+Alternative Anforderungen für die Anwendung von Temperaturdifferenzen
+6.5.4.4 (2) ANMERKUNG 1 Längsverschiebewiderstand zwischen den Gleisen und dem Brücken-
+überbau 
+6.5.4.5 Alternative Bemessungskriterien 
+6.5.4.5.1 (2) Kleinster Wert des Gleisradius
+6.5.4.5.1 (2) Grenzwert für Schienenspannung
+6.5.4.6 Alternative Berechnungsverfahren
+6.5.4.6.1 (1) Alternative Eigenschaften für vereinfachte Berechnungsverfahren
+6.5.4.6.1 (4) Längsverschiebewiderstand zwischen Gleis und Brückenüberbau 
+6.6.1 (3) Aerodynamische Einwirkungen, alternative Werte 
+6.7.1 (2)P Entgleisung des Schienenverkehrs, zusätzliche Anforderungen
+6.7.1 (8)P Entgleisung des Schienenverkehrs, Maßnahmen für tragende Elemente, 
+die oberhalb der Schienen angeordnet sind und Anforderungen zum 
+Zurückhalten des Zugs auf dem Tragwerk 
+6.7.3 (1)P Andere Einwirkungen 
+6.8.1 (11)P Tabelle 6.10 Anzahl der belasteten Gleise, bei Prüfung von Entwässerungsanlagen und 
+Lichtraumprofil
+6.8.2 (2) Tabelle 6.11 Untersuchung der Lastgruppen 
+6.8.3.1 (1) Häufige Werte von mehrkomponentigen Einwirkungen
+6.8.3.2 (1) Ständige Werte von mehrkomponentigen Einwirkungen
+6.9 (6) Ermüdungsmodelle, Lebensdauer des Tragwerks
+6.9 (7) Ermüdungsmodelle, Sonderverkehr
+Anhang C (3)P Dynamische Beiwerte 
+Anhang C (3)P Dynamische Berechnungsverfahren 
+Anhang D2 (2) Teilsicherheitsbeiwert für Ermüdungslasten
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht derjenigen von DIN EN 1991-2:2010-12. 
+1A l l g e m e i n e s
+NDP zu 1.1 (3) Anmerkung 1 
+Ergänzende Vorschriften oder ergänzende Bestimmungen siehe Regelungen der Baulastträger bzw. der 
+zuständigen Aufsichtsbehörde. 
+NCI zu 1.2 
+DIN EN 1990/NA/A1:2012-07, Nationaler Anhang – National festgelegte Parameter – Eurocode: Grundlagen 
+der Tragwerksplanung
+2 Einleitung der Einwirkungen 
+NDP zu 2.2 (2) Anmerkung 2 
+Der nicht-häufige Wert ist nicht vorgesehen.
+
+===== PDF-SEITE 7 =====
+DIN EN 1991-2/NA:2012-08 
+7 
+NDP zu 2.3 (1) Anmerkung 
+Weitere Vorschriften oder ergänzende Bestimmungen siehe Regelungen der Baulastträger bzw. der 
+zuständigen Aufsichtsbehörde. 
+Insbesondere gelten: 
+ Richtlinie für passiven Schutz an Straßen durch Fahrzeugrückhaltesystem (RPS); FGSV 343 1)
+ DIN EN 1317-1, Rückhaltesysteme an Straßen — Teil 1: Terminologie und allgemeine Kriterien für 
+Prüfverfahren
+(Eventuelle zusätzliche Anforderungen sind vom Baulastträger bzw. der zuständigen Regelungsbehörde 
+ggf. für das Einzelbauvorhaben festzulegen.)
+ DIN EN 1317-2, Rückhaltesysteme an Straßen — Teil 2: Leistungsklassen, Abnahmekriterien für Anprall-
+prüfungen und Prüfverfahren für Schutzeinrichtungen und Fahrzeugbrüstungen
+ E DIN EN 1317-6, Rückhaltesysteme an Straßen — Teil 6: Fußgängerrückhaltesysteme, Brücken-
+geländer
+Einzelheiten siehe Festlegungen zu 4.7.2.2 (1) dieses Nationalen Anhanges. 
+NDP zu 2.3 (4) Anmerkung 
+Es gelten die empfohlenen Regelungen. 
+3 Bemessungssituationen
+NDP zu 3 (5) Anmerkung 
+Im Nationalen Anhang werden keine Festlegungen getroffen. Die Anforderungen sind vom Baulastträger bzw. 
+der zuständigen Regelungsbehörde festzulegen.
+4 Straßenverkehr und andere Einwirkungen, besonders für Straßenbrücken
+NCI zu 4.1 (1) Anmerkung 1
+ANMERKUNG 1 erhält folgende Fassung:
+ANMERKUNG 1 200 m entspricht der maximalen Länge einer zusammenhängenden Einflusslinie gleichen 
+Vorzeichens, die bei der Anpassung des Lastmodells 1 (siehe 4.3.2) berücksichtigt wurde. Im Allgemeinen liegt die 
+Anwendung des Lastmodells 1 für Brücken mit Belastungslängen größer als 200 m auf der sicheren Seite.
+NDP zu 4.1 (1) Anmerkung 2 
+4.1 (1) ist bis 200 m Einzelstützweite anzuwenden. Bei größeren Einzelstützweiten sind die Anforderungen 
+vom Baulastträger bzw. der zuständigen Regelungsbehörde festzulegen.
+NDP zu 4.1 (2) Anmerkung 1 
+Besondere Modelle für gewichtsbeschränkend beschilderte Brücken sind hier nicht festgelegt.
+NDP zu 4.2.1 (1) Anmerkung 2 
+Ergänzende Lastmodelle sind hier nicht festgelegt. 
+NDP zu 4.2.1 (2) Anmerkung 
+Ergänzende Lastmodelle sind nicht definiert. Anhang A ist nicht anzuwenden. 
+1) Zu beziehen bei: FGSV Verlag GmbH, Wesselinger Str. 17, 50999 Köln.
+
+===== PDF-SEITE 8 =====
+DIN EN 1991-2/NA:2012-08 
+8 
+NDP zu 4.2.3 (1) Anmerkung 
+Der Kleinstwert für die Höhe von Schrammborden ist mit 75 mm festgelegt. 
+NDP zu 4.3.1 (2) Anmerkung 2 
+Lastmodell 2 ist nicht anzuwenden. 
+NDP zu 4.3.2 (3) Anmerkungen 1 und 2 
+Q1 0,1 
+Q2 0,1
+Q3 0,1 
+q1 331,
+q2 4,2 
+q3 2,1
+qgr 2,1 
+NDP zu 4.3.2 (6) Anmerkung 1 
+Vereinfachende alternative Regeln werden nicht festgelegt. 
+NDP zu 4.3.3 (2) Anmerkung 
+Lastmodell 2 ist nicht anzuwenden. 
+NDP zu 4.3.3 (4) Anmerkung 2 
+Lastmodell 2 ist nicht anzuwenden. 
+NDP zu 4.3.4 (1) Anmerkung 
+Sonderlastmodelle sind nicht anzuwenden. 
+NDP zu 4.4.1 (2) Anmerkung 2 
+Die obere Grenze wird mit 900 kN festgelegt. 
+Zu 4.4.1 (3) Anmerkung 
+Lastmodell 3 ist nicht anzuwenden. 
+NDP zu 4.4.1 (6) 
+Es gilt Gleichung (4.6a). 
+NDP zu 4.4.2 (4) Anmerkung 
+Eine Seitenkraft aus schrägem Bremsen oder Anfahren muss nicht berücksichtigt werden.
+NDP zu 4.5.1, Tabelle 4.4a, Fußnoten a) und b) 
+a) Bei Lastgruppe gr1a müssen Horizontallasten aus Verkehr nicht berücksichtigt werden.
+b) Der empfohlene Wert von 3 kN/m
+2 wird übernommen.
+
+===== PDF-SEITE 9 =====
+DIN EN 1991-2/NA:2012-08 
+9 
+NCI zu 4.5.1 
+(NA.2) In der Lastgruppe gr2 ist bei den Lasten aus dem LM1 der häufige Wert anzusetzen. In der 
+Lastgruppe gr4 sind die Fuß- und Radwege grundsätzlich mit dem charakteristischen Wert zu belasten. Dabei 
+dürfen jedoch für den jeweiligen Bemessungspunkt günstig wirkende Lasten nicht berücksichtigt werden.
+NDP zu 4.5.2 (1) Anmerkung 3 
+Der nicht-häufige Wert ist nicht vorgesehen. 
+NCI zu 4.5.1 (1) 
+Die Tabelle 4.4a ist durch Zeile Lastgruppe gr6 zu ergänzen. Für die vorübergehende Bemessungssituation 
+Lagertausch gilt Lastgruppe gr6. Weitere vorübergehende Bemessungssituationen sind ggf. für das 
+Einzelprojekt festzulegen. 
+Fahrbahn Fußweg oder 
+Radweg
+Belastungsart Vertikallasten Horizontallasten nur vertikale 
+Lasten 
+Verweise 4.3.2 4.3.3 4.3.4 4.3.5 4.4.1 4.4.2 5.3.2 (1) 
+Lastmodell 
+LM1 
+(TS und 
+UDL 
+System)
+LM2 
+(Einzel-
+achsen)
+LM3 
+(Sonder-
+fahrzeuge)
+LM4 
+(Men-
+schenan-
+samme-
+lungen)
+Kräfte aus 
+Anfahren 
+und 
+Bremsen 
+Flieh-
+kräfte und 
+Seiten-
+kräfte
+gleichmäßig 
+verteilte Last 
+Last-
+gruppen gr6 
+0,5-fach 
+charakte-
+ristischer 
+Wert 
+———
+0,5-fach 
+charakte-
+ristischer 
+Wert 
+0,5-fach 
+charakte-
+ristischer 
+Wert 
+charakteristi-
+scher Wertc
+c Siehe 5.3.2.1 (2). Es sollte nur ein Fußweg belastet werden, falls dies ungünstiger ist als der Ansatz von zwei belasteten 
+Fußwegen.
+NDP zu 4.6.1 (2) Anmerkung 2 
+c) Die Ermüdungslastmodelle 1 und 2 sind nicht anzuwenden.
+e) Eine Anwendung des Ermüdungslastmodells 4 ist nur in besonderen Fällen nach Abstimmung und 
+Zustimmung durch die zuständige Behörde möglich. 
+f) Das Ermüdungslastmodell 5 ist nicht anzuwenden.
+NDP zu 4.6.1 (3) Anmerkung 1 
+Die Tabelle 4.5 ist anzuwenden. 
+NDP zu 4.6.1 (6) Anmerkung 
+fat ist entsprechend Bild (4.7) anzusetzen. 
+ANMERKUNG Die Gleichung (4.7) ist nach Bild 4.7 wie folgt anzupassen: 
+160,301 fat;1 D
+NDP zu 4.6.4 (3) Anmerkung 
+Ein zweites Fahrzeug in derselben Spur ist nicht anzusetzen, wenn die Ermüdungsnachweise mit -Werten 
+nach den Eurocodes für Bemessung erfolgen.
+
+===== PDF-SEITE 10 =====
+DIN EN 1991-2/NA:2012-08 
+10 
+NDP zu 4.6.5 (1) Anmerkung 2 
+Das Ermüdungslastmodell 4 ist nicht anzuwenden.
+ANMERKUNG Eine Anwendung des Ermüdungslastmodells 4 ist in besonderen Fällen nach Abstimmung und 
+Zustimmung durch die zuständige Behörde möglich (vergleiche NDP zu 4.6.1 (2), Anmerkung 2).
+NDP zu 4.6.6 (1) Anmerkung 
+Das Ermüdungslastmodell 5 ist nicht anzuwenden. 
+NDP zu 4.7.2.1 (1) Anmerkung 
+Es gilt DIN EN 1991-1-7. 
+NDP zu 4.7.2.2 (1), Anmerkung 1 
+Anpralllasten aus Straßenverkehr unter Brücken nach DIN EN 1991-1-7:2010-12, 4.3.2, sind nur beim 
+Nachweis der Lagesicherheit des Überbaus zu berücksichtigen.
+ANMERKUNG Die Anprallasten dürfen dabei vereinfachend 20 cm oberhalb der Unterkante des Überbaus angesetzt 
+werden. 
+NDP zu 4.7.3.3 (1) Anmerkung 1
+Die Fahrzeugrückhaltesysteme und evtl. zugehörige Anwendungsbedingungen sind für das einzelne 
+Bauvorhaben durch den Baulastträger bzw. die zuständige Aufsichtsbehörde festzulegen. Im Folgenden 
+werden für die zu übertragenden Horizontalkräfte 4 Klassen mit Werten empfohlen. 
+Tabelle 4.9 – Empfohlene Werte für durch Fahrzeugrückhaltesysteme übertragene Horizontalkräfte
+Klasse Horizontalkraft
+kN 
+A 100 
+B 200 
+C 400 
+D 600 
+NDP zu 4.7.3.3 (1) Anmerkung 3 
+Die empfohlenen Werte sind anzuwenden und in Abhängigkeit vom verwendeten Fahrzeugrückhaltesystem 
+mit einem Faktor zu beaufschlagen. 
+NDP zu 4.7.3.3 (2) Anmerkung 
+Es gilt der empfohlene Mindestwert. 
+NDP zu 4.7.3.4 (1) Anmerkung 
+Es sind die in 4.7.2.1 (1) angegebenen Lasten zu berücksichtigen.
+NDP zu 4.8 (1) Anmerkung 2 
+Für Fuß-, Rad- und Dienstwege auf Brücken sowie für Geh- und Radwegbrücken ist eine Linienlast von 
+1,0 kN/m, die als veränderliche Kraft horizontal und vertikal an der Oberkante des Geländers wirkt, 
+anzunehmen. Es gilt der Teilsicherheitsbeiwert für Fußgängerverkehr nach DIN EN 1990/NA/A1:2012-07, 
+Tabelle NA.A.2.4 
+NDP zu 4.8 (3) Anmerkung 
+Es gilt die Empfehlung.
+
+===== PDF-SEITE 11 =====
+DIN EN 1991-2/NA:2012-08 
+11 
+NDP zu 4.9.1 (1) Anmerkung 1 
+Es gilt die Empfehlung. 
+NCI zu 4.9.1 (1) Anmerkung 2 
+Anmerkung 2 wird ersetzt durch folgenden Text: 
+Zur Lastausbreitung in Hinterfüllungen und im Erdkörper siehe DIN EN 1997. Wenn nicht besonders 
+vereinbart, darf für die Bestimmung von q
+eq ein Rechteck mit einer Breite von 3 m und einer Länge von 5 m 
+angenommen werden. 
+5 Einwirkungen auf Fußgängerwege, Radwege und Fußgängerbrücken
+NDP zu 5.2.3 (2) Anmerkung 
+Es gilt die Empfehlung. 
+NDP zu 5.3.2.1 (1) Anmerkung 
+Es gilt die Empfehlung. 
+NCI zu 5.3.2.1 (2) Anmerkung 
+Es gilt die Empfehlung. 
+NDP zu 5.3.2.2 (1) Anmerkung 
+Die empfohlenen Werte für Qfwk und die Seitenlänge der Aufstandsfläche werden übernommen. Wenn ein 
+Befahren der Brücke nicht möglich ist, kann in besonderen Fällen in Abstimmung mit dem Bauherrn auch eine 
+kleinere Last, jedoch nicht weniger als Qfwk 5 kN angesetzt werden. 
+NDP zu 5.3.2.3 (1)P Anmerkung 1 
+Als Dienstfahrzeug ist das Fahrzeug nach 5.6.3 anzusetzen. 
+NDP zu 5.4 (2) Anmerkung 
+Es gilt die Empfehlung. 
+NDP zu 5.6.1 (1) Anmerkung 
+Siehe 2.3. 
+NDP zu 5.6.2.1 (1) Anmerkung 
+Es gilt DIN EN 1991-1-7. 
+NDP zu 5.6.2.2 (1) 
+Anpralllasten aus Straßenverkehr unter Brücken nach DIN EN 1991-1-7:2010-12, 4.3.2, sind nur beim 
+Nachweis der Lagesicherheit des Überbaus zu berücksichtigen.
+ANMERKUNG Die Anprallasten dürfen dabei vereinfachend 20 cm oberhalb der Unterkante des Überbaus angesetzt 
+werden. 
+NDP zu 5.6.3 (2) Anmerkung 2 
+Es werden keine anderen Eigenschaften des Lastmodells festgelegt. 
+NDP zu 5.7 (3) 
+Der Nationale Anhang legt keine Komfortkriterien fest, diese können für ein bestimmtes Projekt definiert 
+werden.
+
+===== PDF-SEITE 12 =====
+DIN EN 1991-2/NA:2012-08 
+12 
+6 Einwirkungen aus Eisenbahnverkehr und andere für Eisenbahnbrücken typische 
+Einwirkungen 
+NDP zu 6.1 (2) Anmerkung
+Es werden keine alternativen Lastmodelle festgelegt. 
+NDP Zu 6.1 (3)P Anmerkung 
+Für Schmalspurbahnen und andere Bahnen sind die charakteristischen Einwirkungen in Abstimmung mit der 
+zuständigen Aufsichtsbehörde festzulegen. 
+NDP zu 6.1 (7) Anmerkung 
+Die Anforderungen für Hilfsbrücken bei den Eisenbahnen des Bundes sind DB Ril 804.4110, DB Ril 804.4111 
+und DB Ril 804.4120 2) zu entnehmen. 
+NDP zu 6.3.2 (3)P Anmerkung 
+Für Brückenbauwerke auf Strecken der Eisenbahnen des Bundes für Betriebszüge mit 25-t-Radsatzlasten ist 
+ein Beiwert = 1,21 zu verwenden. Das Lastmodell SW/2 braucht nicht zusätzlich angesetzt zu werden.
+Für geotechnische Bauwerke (Erdbauwerke, Stützbauwerke und Durchlässe mit einer lichten Weite < 2,0 m) 
+darf auch bei klassifizierten Lastmodellen mit = 1,0 gerechnet werden. Einflüsse von Baumaschinen müssen 
+ggf. gesondert berücksichtigt werden.
+Für die statische Berechnung ist ein Beiwert 1,0 anzusetzen. Der Beiwert kann nach den Grundsätzen 
+des § 8 EBO gewählt werden. Für artreinen S-Bahn-Verkehr kann 0,8 angesetzt werden. 
+Für Bauzustände sind alle unter 6.3.2 (3) aufgezählten Einwirkungen mit 1,0 zu multiplizieren, wenn 
+Schwerverkehr während der Bauphase ausgeschlossen ist.
+NDP zu 6.3.3 (4)P Anmerkung 
+Die Strecken werden durch das Eisenbahninfrastrukturunternehmen benannt. 
+NCI zu 6.3.6.3 (5) Anmerkung 
+Die Querverteilung der Verkehrslasten im Schotteroberbau darf nach Bild 6.6 bis 6.8 angenommen werden. 
+Für feste Fahrbahnen ist die Lastausbreitung mit 2 : 1 anzunehmen. 
+NCI zu 6.3.7 (4) 
+Der charakteristische Wert der Horizontalkraft auf Geländer von Dienstgehwegen ist mit 0,8 kN/m der 
+Teilsicherheitsbeiwert zu sup,Q = 1,5 anzunehmen. 
+NDP zu 6.4.4 (1) Anmerkung 
+Es gelten die Anforderungen nach DB Ril 804.3101 3)
+NDP zu 6.4.5.2 (3)P Anmerkung 
+In der Regel ist von einem sorgfältig instand gehaltenen Gleis auszugehen; hierfür ist 2 anzuwenden. 
+2) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste Logistikcenter, 
+Kriegsstraße 136, 76133 Karlsruhe, www.dbportal.db.de. 
+3) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste Logistikcenter, 
+Kriegsstraße 136, 76133 Karlsruhe, www.dbportal.db.de.
+
+===== PDF-SEITE 13 =====
+DIN EN 1991-2/NA:2012-08 
+13 
+NDP zu 6.4.5.3 (1) Anmerkung 
+(1) Tabelle 6.2 ist durch folgende Tabelle zu ersetzen. 
+Tabelle NA.6.2 — Maßgebende Längen L
+Fall Bauteil Maßgebende Länge L bzw. 
+Fahrbahnplatte aus Stahl: geschlossene Fahrbahn mit Schotterbett (orthotrope Platte), 
+(für Lokal- und Querbeanspruchungen) 
+Fahrbahnplatte mit Längsrippen und 
+Querträger
+1.1 Deckblech (in beiden Richtungen) 3-facher Abstand der Querträger
+1.2 Längsrippen (einschließlich kurzer 
+Kragarme bis 0,5 m Länge)a
+3-facher Abstand der Querträger
+1.3 Querträger doppelte Länge der Querträger
+1.4 Endquerträger wie 1.3 Querträger
+Fahrbahnplatte nur mit Querträgern 
+2.1.1 Deckblech (in beiden Richtungen) 2-facher Querträgerabstand 3 m 
+2.1.2 Querträger 2-facher Querträgerabstand 3 m 
+2.1.3 Endquerträger wie 2.1.2 Querträger
+Fahrbahnplatte ohne Längs- und Quer-
+rippen (Fahrbahnplatte aus dickem 
+Blech) 
+2.2.1 Tragwirkung rechtwinklig zu den 
+Hauptträgern 
+2-fache Plattenstützweite 
+Trägerrost aus Stahl: offene Fahrbahn ohne Schotterbettb
+(für Lokal- und Querbeanspruchungen) 
+3.1 Schienen-Längsträger
+— als Teil eines Trägerrostes 3-facher Querträgerabstand
+— als Einfeldträger Querträgerabstand 3 m 
+3.2 Schienen-Längsträgerkragarma 3 2,0 
+3.3 Querträger Doppelte Länge der Querträger
+3.4 Endquerträger 3 2,0 
+a Im Allgemeinen bedürfen alle durch Eisenbahnlasten beanspruchte Kragarme von mehr als 0,5 m Länge einer 
+gesonderten Untersuchung nach 6.4.6 und mit der Belastung aus dem Nationalen Anhang, die von der Aufsichtsbehörde 
+anerkannt wurde. 
+b Für offene Stahlfahrbahnen empfiehlt es sich, 3 anzuwenden.
+
+===== PDF-SEITE 14 =====
+DIN EN 1991-2/NA:2012-08 
+14 
+Tabelle NA.6.2 (fortgesetzt)
+Fall Bauteil Maßgebende Länge L bzw. 
+Fahrbahnplatte aus Beton mit Schotterbett
+(für Lokal- und Querbeanspruchungen)
+4.1 Fahrbahnplatte von Hohlkästen oder 
+Plattenbalken
+— Tragwirkung rechtwinklig zu den 
+Hauptträgern
+3-fache Plattenstützweite
+— Tragwirkung in Längsrichtung 3-fache Plattenstützweite
+— Querträger doppelte Länge der Querträger
+— Kragarme in Querrichtung, die 
+Eisenbahnlasten aufnehmen 
+— e 0,5 m: 3-facher Abstand der Stege 
+— e 0,5 m:a
+Bild 6.11 — Kragarm eines Querträgers mit
+Eisenbahnlasten
+4.2 Fahrbahnplatte durchlaufend über 
+Querträger (in Hauptträgerrichtung)
+2-facher Querträgerabstand 
+4.3 Fahrbahnplatte bei Trogbrücken
+— Tragwirkung rechtwinklig zu den 
+Hauptträgern 
+2-fache Plattenstützweite
+— Tragwirkung in Längsrichtung 2-fache Plattenstützweite
+4.4 Fahrbahnplatten mit Tragwirkung recht-
+winklig zu einbetonierten Stahlträgern 
+2 1,30 
+4.5 Kragarme der Fahrbahnplatte in Längs-
+richtung 
+— e 0,5 m: 2 1,67b
+— e 0,5 m:a
+4.6 Endquerträger oder Abschlussträger 2 1,67b
+a Durch Eisenbahnlasten beanspruchte Kragarme von mehr als 0,5 m Länge sind zu vermeiden. Andernfalls bedürfen sie 
+einer gesonderten Untersuchung nach 6.4.6 und mit der Belastung aus dem Nationalen Anhang, die von der 
+Aufsichtsbehörde anerkannt wurde. 
+b Bei normal instand gehaltenen Gleisen ist 3 2,0 anzuwenden.
+ANMERKUNG Für die Fälle 1.1 bis einschließlich 4.6 ist L ein Maximum der maßgebenden Länge der 
+Hauptträger.
+
+===== PDF-SEITE 15 =====
+DIN EN 1991-2/NA:2012-08 
+15 
+Tabelle NA.6.2 (fortgesetzt)
+Fall Bauteil Maßgebende Länge L bzw. 
+Hauptträger
+5.1 Einfeldträger und Platten (einschließlich 
+einbetonierter Stahlträger)
+Stützweite in Hauptträgerrichtung
+5.2 Durchlaufende Träger und Platten über 
+n Felder mit 
+L k · Lm (6.7)
+jedoch mindestens max Li (i 1, ... , n) 
+Lm 1/n (L1 L2 ... Ln)( 6 . 6 ) n 23 4 5
+k 1,2 1,3 1,4 1,5
+5.3 Halb- und Vollrahmen oder Hohlkästen
+— zweistielig Das System wird als Dreifeldträger angesehen 
+(verwende 5.2 mit den Längen der Stiele und des 
+Riegels). 
+— mehrstielig Das System wird als Mehrfeldträger angesehen 
+(verwende 5.2 mit den Längen der Endstiele und 
+der Riegel).
+5.4 Bogen, Versteifungsträger von Stab-
+bogenbrücken
+halbe Stützweite
+5.5 Gewölbe, Gewölbereihe mit Hinter-
+füllung
+2-fache lichte Weite jedes Einzelgewölbes 
+5.6 Hänger (in Verbindung mit 
+Versteifungsträger)
+4-facher Hängerabstand in Längsrichtung
+5.7 Ergänzende Regelung Für Tragwerke nach Ziffern 5.1 bis 5.5 gilt:
+Bei Untersuchungen mit den Lastgruppen 11 bis
+17 nach Tabelle 6.10 gelten die oben 
+aufgeführten Werte L ; bei Untersuchungen mit 
+den Lastgruppen 21 bis 31 dürfen sie verdoppelt 
+werden.
+Stützkonstruktionen
+6 Pfeiler, Stützrahmen, Lager, Gelenke, 
+Zuganker sowie für die Berechnung 
+von Pressungen unter Lagern
+maßgebende Länge der aufgelagerten Trag-
+elemente 
+(2) Kragarme mit einer Länge e nach Bild 6.11 von mehr als 0,5 m sind zu vermeiden. 
+NCI zu 6.4.5.3 (2) Anmerkung 
+Falls kein Wert für L in Tabelle NA.6.2 angegeben ist, ist als maßgebende Länge die Länge der Einflusslinie 
+für die Durchbiegung des betrachteten Bauteils heranzuziehen oder der Wert ist in Abstimmung mit der 
+zuständigen Aufsichtsbehörde vom Eisenbahninfrastrukturunternehmen festzulegen.
+NDP zu 6.4.6.1.1 (1)P 
+Wenn für das Einzelprojekt die charakteristischen Achslasten und Achsabstände der Hochgeschwindigkeits-
+züge nicht bekannt sind, darf die dynamische Berechnung für diese Hochgeschwindigkeitszüge mit dem 
+Lastmodell HSLM durchgeführt werden.
+
+===== PDF-SEITE 16 =====
+DIN EN 1991-2/NA:2012-08 
+16 
+NDP zu 6.4.6.1.1 (2)P 
+Bei TEN-Strecken ist bei allen Projekten das Lastmodell HSLM anzuwenden. 
+NDP zu 6.4.6.1.1 (6) 
+Tabelle 6.4, Anmerkung: Bei Durchlaufträgern oder komplexen Bauwerken ist nur HSLM-A anzuwenden. 
+NDP zu 6.4.6.1.1 (7) Anmerkung 
+Die dynamische Berechnung für Geschwindigkeiten unter 200 km/h ist unter Ansatz der Betriebszüge 
+durchzuführen. Falls keine Angaben zu den Betriebszügen vorliegen, sind die Zugtypen nach Anhang D in 
+Abstimmung mit der zuständigen Aufsichtsbehörde zu verwenden.
+NDP zu 6.4.6.1.2 (3), Tabelle 6.5, Fußnote a
+Zuständige Aufsichtsbehörde für die Eisenbahnen des Bundes ist das Eisenbahn-Bundesamt. 
+NCI zu 6.4.6.2 (1)P, Anmerkung 1 und 2 
+Anstatt der Empfehlung in Anmerkung 1 gelten die folgenden Festlegungen: 
+Die örtlich zulässige Geschwindigkeit ist durch das Eisenbahninfrastrukturunternehmen festzulegen. 
+Anstatt der Empfehlung in Anmerkung 2 gelten die folgenden Festlegungen: 
+Die für die einzelnen Züge maßgebenden Grenzen für die Geschwindigkeit in Abhängigkeit von den zu 
+führenden Nachweisen (Tragsicherheit, Gebrauchstauglichkeit) sind der DB Ril 804.3301 
+4) zu entnehmen. 
+NDP zu 6.4.6.3.1 (3), Tabelle 6.6 Anmerkung 
+Es gilt Tabelle 6.6. 
+NDP zu 6.4.6.3.2 (2)P 
+Es gilt die Empfehlung. 
+Für den oberen Schätzwert dürfen die Werte nach DIN EN 1991-1-1:2010-12, Tabelle A.6, angenommen 
+werden. 
+NDP zu 6.4.6.3.2 (3) Anmerkung 
+Es werden keine abweichenden Werte für die Betondichte festgelegt. Zuständige Aufsichtsbehörde für die 
+Eisenbahnen des Bundes ist das Eisenbahn-Bundesamt. 
+NDP zu 6.4.6.3.3 (3) Anmerkung 1 und Anmerkung 2 
+Es werden keine abweichenden Materialeigenschaften festgelegt. Zuständige Aufsichtsbehörde für die 
+Eisenbahnen des Bundes ist das Eisenbahn-Bundesamt. 
+NDP zu 6.4.6.4 (4) Anmerkung 
+Für Einfeld- und Durchlaufträger ist eine Erhöhung der Dämpfung nach Bild 6.15 vorzunehmen. Für die 
+übrigen Bauwerke kann eine Zusatzdämpfung nur nach Durchführung der Berechnung in Abstimmung mit 
+dem Eisenbahninfrastrukturunternehmen angesetzt werden. 
+NDP zu 6.4.6.4 (5) Anmerkung 
+In der Regel darf von einem sorgfältig unterhaltenen Gleis ausgegangen werden. 
+4) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste Logistikcenter, 
+Kriegsstraße 136, 76133 Karlsruhe, www.dbportal.db.de.
+
+===== PDF-SEITE 17 =====
+DIN EN 1991-2/NA:2012-08 
+17 
+NCl zu 6.4.6.6 (2)P: 
+Folgende Absätze sind unter (2) zu ergänzen:
+Die Voraussetzungen für den Verzicht auf zusätzliche Betrachtungen im Hinblick auf Ermüdung sind DB Ril 
+804.33015) zu entnehmen. 
+Wenn zusätzliche Ermüdungsnachweise erforderlich sind, sind für die Nutzungsdauer 100 Jahre 
+anzunehmen. Die anderen benötigten Parameter (Züge und Zughäufigkeit, Verkehrszusammensetzung, 
+häufig auftretende Betriebsgeschwindigkeit, Anzahl der Zugbegegnung) sind projektspezifisch festzulegen. 
+NDP zu 6.5.1 (2) Anmerkung 
+Der Ansatzpunkt ist, wenn im Einzelprojekt nichts anderes festgelegt ist, nach Bild 1.1 mit ht 1,80 m 
+anzunehmen. 
+NCI zu 6.5.1 (5)P Anmerkung 2 
+Anstatt der Empfehlung in Anmerkung 2 gilt die folgende Festlegung: 
+Für das Lastmodell SW/2 ist eine Höchstgeschwindigkeit von 80 km/h anzunehmen. 
+NCI zu 6.5.2 
+(NA.5) Die Last aus dem Seitenstoß darf bei durchgehendem Schotterbett in Gleisrichtung gleichmäßig auf 
+eine Länge von L 4,0 m verteilt werden. Bei Ermittlung der Erddrucklast darf der Seitenstoß auf eine Länge 
+von L 2a 4,0 m verteilt werden. Hierbei gibt das Maß a den lichten Abstand zwischen Schwellenkopf und 
+Wand an. Für besondere Bauarten des Oberbaus, z. B. schotterloser Oberbau oder feste Fahrbahn, sind 
+bauartenbezogene Überlegungen erforderlich.
+NDP zu 6.5.3 (5) Anmerkung 
+Für Lasteinleitungslängen größer als 300 m sind zusätzliche Annahmen für das Einzelprojekt vom 
+Eisenbahninfrastrukturunternehmen in Abstimmung mit der zuständigen Aufsichtsbehörde festzulegen.
+NDP zu 6.5.3 (9)P Anmerkung 
+Bei zwei- oder mehrgleisigen Brücken sind die Schienen- und Lagerlängskräfte immer auch für den Fall zu 
+ermitteln, dass zeitweise nur ein Gleis zur Ableitung der Einwirkungen aus Anfahren und Bremsen vorhanden 
+ist. 
+Bei zwei- oder mehrgleisigen Brücken darf zur Berücksichtigung der Auftretenswahrscheinlichkeit mehrerer 
+Einwirkungen ein Kombinationsbeiwert 0 0,5 verwendet werden, d. h. ein Gleis ist mit den vollen 
+Bremslasten und ein weiteres Gleis mit den um den Kombinationsbeiwert abgeminderten Bremslasten zu 
+belasten. 
+Damit ergeben sich zusätzlich zu den Lastfällen
+ Anfahren Bremsen und 
+ Anfahren SW/2 Bremsen (für Strecken mit Schwerverkehr)
+die Lastfälle
+ Bremsen 0
+ Anfahren 0
+5) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste Logistikcenter, 
+Kriegsstraße 136, 76133 Karlsruhe, www.dbportal.db.de.
+
+===== PDF-SEITE 18 =====
+DIN EN 1991-2/NA:2012-08 
+18 
+NDP zu 6.5.4.1 (5) Anmerkung 
+6.5.4 gilt mit Ausnahme 6.5.4.5.2 (1)P bis (3)P und 6.5.4.6.1 auch für Feste Fahrbahn. Zusätzlich sind die 
+Regeln des „Anforderungskatalog zum Bau der Festen Fahrbahn“ anzuwenden. 
+NDP zu 6.5.4.3 (2) Anmerkung 1 
+Alternative Werte werden nicht festgelegt. 
+NDP zu 6.5.4.3 (2) Anmerkung 2 
+TN 30 K für Beton- und Verbundbrücken TN 40 K für Stahlbrücken. 
+NDP zu 6.5.4.4 (2) Anmerkung 1 
+Die Werte sind wie folgt anzunehmen: 
+(3) u0 0,5 mm
+k 60 kN/m 
+(4) u0 2,0 mm 
+k 60 kN/m 
+(5) u0 0,5 mm 
+k 30 kN/m 
+(6) u0 2,0 mm 
+k 20 kN/m 
+NDP zu 6.5.4.5 Anmerkung 
+Alternativ darf DB Ril 804.34016) angewendet werden. 
+NDP zu 6.5.4.5.1 (2) 2. Anmerkung 
+Für die Feste Fahrbahn beträgt die zulässige zusätzliche Schienenspannung 92 N/mm² bei Druck- und 
+Zugbeanspruchung. 
+NDP zu 6.5.4.6 Anmerkung 
+(1) Die drei Berechnungsverfahren (vereinfachtes Verfahren nach Anhang G und nichtlineare Berechnung) 
+können angewendet werden. Die nichtlineare Berechnung wird empfohlen. 
+Alternativ zu diesen Berechnungsverfahren kann DB Ril 804.34016) angewendet werden. 
+(2) Für Überbauten mit LT 30 m ist eine Überprüfung der Schienenspannung generell nicht erforderlich. 
+NDP zu 6.5.4.6.1 (1) Anmerkung 
+Es sind keine alternativen Kriterien festgelegt. 
+NDP zu 6.5.4.6.1 (4) Anmerkung 
+Es sind keine alternativen Werte für k festgelegt. 
+NDP zu 6.6.1 (3) Anmerkung 
+Die zusätzlichen Anforderungen nach DB Ril 804.55016) sind zu berücksichtigen.
+6) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste Logistikcenter, 
+Kriegsstraße 136, 76133 Karlsruhe, www.dbportal.db.de.
+
+===== PDF-SEITE 19 =====
+DIN EN 1991-2/NA:2012-08 
+19 
+NDP zu 6.7.1 (2)P Anmerkung 
+Es sind keine zusätzlichen Anforderungen und alternative Belastungen festgelegt. 
+NDP zu 6.7.1 (8)P Anmerkung 1 und Anmerkung 2 
+Es gelten die Anforderungen nach DB Ril 804.53016). 
+NDP zu 6.7.3 (1)P Anmerkung 
+Es gelten zusätzlich die Anforderungen nach DB Ril 804.21016). 
+NDP zu 6.8.1 (11)P, Tabelle 6.10 Anmerkung 
+Es sind keine Anforderungen für die Anzahl der zu belastenden Gleise hinsichtlich der Entwässerung und der 
+lichten Weite festgelegt. 
+NDP zu 6.8.2 (2) Anmerkung 
+Tabelle 6.10 ("Nachweis der Lastgruppen für Eisenbahnverkehr (charakteristische Werte der mehrteiligen 
+Einwirkungen)") ist unverändert anzuwenden. 
+NDP zu 6.8.3.1 (1) Anmerkung 
+Die Regelungen des Absatzes sind anzuwenden. 
+NDP zu 6.8.3.2 (1) Anmerkung 
+Die Regelungen des Absatzes sind anzuwenden. 
+NDP zu 6.8.4 (1)P Anmerkung 
+Wenn keine projektspezifischen Festlegungen getroffen werden, gelten für vorübergehende Bemessungs-
+situationen die Lastmodelle nach Anhang H. 
+NCI zu 6.9 (2) Anmerkung 
+Wenn keine projektspezifischen Festlegungen getroffen werden, kann bei Personenverkehr und Mischverkehr 
+bis 22,5 t-Achslasten die Verkehrsmischung „Regelverkehr“ nach Tabelle D.1 verwendet werden. 
+NCI zu 6.9 (3) Anmerkung 
+Wenn keine projektspezifischen Festlegungen getroffen werden, kann für Strecken mit > 1 die 
+Verkehrsmischung „Schwerverkehr mit 25-t-Achslasten“ nach Tabelle D.2 verwendet werden. 
+NDP zu 6.9 (6) Anmerkung 
+Die Bemessungslebensdauer beträgt 100 Jahre.
+NDP zu 6.9 (7) Anmerkung 
+Eine besondere Verkehrszusammenstellung ist nicht festgelegt. 
+NDP zu Anhang C (3)P Anmerkung 1 
+Im Bereich der Eisenbahnen des Bundes ist in der Regel Gleichung (C.2) anzuwenden. 
+NDP zu Anhang C (3)P Anmerkung 2 
+Zuständige Aufsichtsbehörde für die Eisenbahnen des Bundes ist das Eisenbahn-Bundesamt. 
+NDP zu Anhang D.2 (2) Anmerkung 
+Es gilt Ff 1,00 für die Eisenbahnen des Bundes.

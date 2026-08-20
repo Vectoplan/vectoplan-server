@@ -1,0 +1,385 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang – 
+National festgelegte Parameter –
+Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken - 
+Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau,
+Berichtigung zu DIN EN 1992-1-1/NA:2011-01 
+National Annex –
+Nationally determined parameters –
+Eurocode 2: Design of concrete structures - 
+Part 1-1: General rules and rules for buildings, 
+Corrigendum to DIN EN 1992-1-1/NA:2011-01 
+Annexe Nationale –
+Paramètres déterminés au plan national –
+Eurocode 2: Calcul des structures en béton - 
+Partie 1-1: Règles générales et règles pour les bâtiments,
+Corrigendum à DIN EN 1992-1-1/NA:2011-01
+99
+a
+
+===== PDF-SEITE 2 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+2 
+In DIN EN 1992-1-1/NA:2011-01 sind folgende Korrekturen vorzunehmen: 
+1 Berichtigung zum Vorwort
+Zum Vorwort wird folgender Absatz ergänzt:
+Bei Bildern, Tabellen und Gleichungen, die national verändert werden, wird statt des „N“ ein „DE“ nachgestellt 
+(z. B. Gleichung 7.6DE statt 7.6N). 
+2 Berichtigung zu NA 2.1
+"J.1(3)" wird berichtigt in "J.1 (2)". 
+3 Berichtigung zu NCI zu 1.2.2
+DIN 1045-3 wird um das Ausgabedatum „2008-08“ ergänzt.
+Der Titel von DIN EN 1536 wird korrigiert in „Ausführung von Arbeiten im Spezialtiefbau — Bohrpfähle “
+Die Verweise auf E DIN EN 13670, DIN EN ISO 17660-1 und DIN EN ISO 15630-3 werden gestrichen, da 
+schon in den Verweisungen von DIN EN 1992-1-1 erfasst. 
+Ergänzt wird:
+NA DIN EN ISO 4063, Schweißen und verwandte Prozesse – Liste der Prozesse und Ordnungsnummern 
+4 Berichtigung zu NDP zu 2.4.2.4 (1)
+Die Bezeichnung der Tabelle NA.2.1 wird durchgehend ersetzt durch Tabelle 2.1DE. 
+Die Tabelle 2.1DE wird ergänzt durch eine Zeile für die Bemessungssituation der Ermüdung.
+Ermüdung C,fat = 1,5 S,fat = 1,15 
+5 Berichtigung zu NCI zu 2.6 (2) 
+Das Wort „verbindlich“ wird ersetzt durch „anzuwenden“.
+6 Berichtigung zu NCI zu 2.8 
+Im Abschnitt NA.2.8.2 wird Absatz (4)P ergänzt:
+(4)P Für Schalungs- und Traggerüste, für die eine statische Berechnung erforderlich ist, sind Zeichnungen 
+für die Baustelle anzufertigen; ebenso für Schalungen, die hohen seitlichen Druck des Frischbetons 
+aufnehmen müssen.
+7 Berichtigung zu NCI zu 3.1.1
+Der Satzanfang im Absatz (NA.3) wird ergänzt um „Die Abschnitte…“.
+8 Berichtigung zu NCI zu 3.1.3
+Der NCI bezieht sich auf NCI zu 3.1.2 (3). 
+Fußnote 3) Die analytischen Beziehungen der letzten 6 Zeilen der Tabelle 3.1 gelten für fck
+
+===== PDF-SEITE 3 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+3 
+9 Berichtigung zu NCI zu 3.1.4 (6) 
+In der ANMERKUNG wird der Begriff „Nennwerte“ durch „Grundwerte“ ersetzt.
+10 Berichtigung zu NCI zu 3.2.1 (3)P
+Einleitend wird ergänzt „Der Absatz wird ersetzt durch:“
+11 Berichtigung zu NCI zu 3.2.1 (4) 
+Die Anmerkung wird berichtigt in: 
+„ANMERKUNG Die Streckgrenze fyk (Re nach den Normen der Reihe DIN 488) und die Zugfestigkeit ftk (Rm
+nach den Normen der Reihe DIN 488) werden jeweils als charakteristische Werte definiert; sie ergeben sich 
+aus der Last bei Erreichen der Streckgrenze bzw. der Höchstlast, geteilt durch den Nennquerschnitt." 
+12 Berichtigung zu NCI zu 3.2.2 (1) 
+Vor den letzten beiden Sätzen (Anmerkung 1 und Anmerkung 2) wird eingefügt 
+„NCI Zu 3.2.2 (2)“
+13 Berichtigung zu NDP zu 3.2.7 (2) 
+Der Absatz a) in DIN EN 1992-1-1 wird ersetzt durch 
+a) ein ansteigender oberer Ast mit einer Dehnungsgrenze ud = 0,025. 
+Für Betonstahl B500A und B500B darf für ftk,cal = rechnerische Zugfestigkeit bei ud = 0,025) 
+angenommen werden. 
+14 Berichtigung zu NCI zu 3.2.7 (NA.5)
+Im Text wird „NCI zu 5.7“ ersetzt durch „NCI zu 5.7 (NA.10)“.
+15 Berichtigung zu NCI zu 3.2.7 (NA.5)
+In der Bildunterschrift von Bild NA.3.8.1 wird „Spannungs-Dehnungslinie“ durch „Spannungs-Dehnungs-Linie“ 
+ersetzt. 
+16 Berichtigung zu NCI zu 3.3.2 (4) 
+Die NCI zu 3.3.2 (4) wird berichtigt in: 
+„Für die Relaxationsklassen gelten die Festlegungen der Zulassungen.
+Diese NCI ersetzt die Abschnitte 3.3.2 (4) bis 3.3.2 (7).“
+17 Berichtigung zu NDP zu 3.3.6 (7)
+Die ersten beiden NDP-Absätze werden wie folgt geändert und ersetzen den ersten Listenpunkt in 
+DIN EN 1992-1-1: 
+ ein ansteigender Ast mit einer Dehnungsgrenze von ud = p
+(0) + 0,025 0,9 uk. (mit: p
+(0) als Vordehnung 
+des Spannstahls); oder 
+18 Berichtigung zu NCI zu 3.3.6 (NA.9)
+Im Text zu (NA.9) wird „NCI zu 5.7“ ersetzt durch „NCI zu 5.7 (NA.10)“.
+
+===== PDF-SEITE 4 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+4 
+In der Bildunterschrift von Bild NA.3.10.1 wird „Spannungs-Dehnungslinie“ durch „Spannungs-Dehnungs-
+Linie“ ersetzt.
+19 Berichtigung zu NCI zu 3.4.1
+Die Absatznummer „(1)P“ wird ersetzt durch „(NA.1)P“.
+20 Berichtigung zu NDP zu 4.4.1.2 (3)
+Der erste Satz wird ergänzt: Die Werte cmin,b für Hüllrohre von Spanngliedern sind:
+21 Berichtigung zu NDP zu 4.4.1.2 (5)
+Die Bezeichnungen der Tabellen NA.4.3, NA.4.4 und NA.4.5 werden durchgehend ersetzt durch 
+Tabellen 4.3DE, 4.4DE und 4.5DE. 
+22 Berichtigung zu NDP zu 4.4.1.2 (13) 
+Die ANMERKUNG wird in ANMERKUNG 2 umbenannt. 
+23 Berichtigung zu NCI zu 5.1.1 (3)
+Das Wort „verbindlich“ wird ersetzt durch „anzuwenden“.
+24 Berichtigung zu NCI zu 5.1.2 (1)P 
+Das Wort „verbindlich“ wird ersetzt durch „anzuwenden“.
+25 Berichtigung zu NCI zu 5.3.2.1 (2) 
+Diese NCI ersetzt die Anmerkung zu Bild 5.2; folgender Satz wird dabei ergänzt:
+"Die Länge des Kragarms l3 sollte kleiner als die halbe Länge des benachbarten Feldes sein."
+26 Berichtigung zu NDP zu 5.6.3 (4) 
+Bild NA.5.6 wird umbenannt in Bild 5.6DE. 
+27 Berichtigung zu NCI zu 5.7 (NA.10)
+In Gleichung (NA.5.12.7) wird „ “ ersetzt durch „ cc“.
+28 Berichtigung zu NDP zu 5.8.3.1 (1)
+Die Gleichungen (NA.5.13.a) und (NA.5.13.b) werden umbenannt in Gleichungen (5.13.aDE) und (5.13.bDE). 
+29 Berichtigung zu NCI zu 5.8.3.3 (1) 
+Gleichung (NA.5.18) wird umbenannt in Gleichung (5.18DE). 
+30 Berichtigung zu NDP zu 5.8.5 (1) 
+ANMERKUNG 1 Die vereinfachte Methode a) Verfahren auf Grundlage einer Nennsteifigkeit kann in Deutschland 
+entfallen.
+
+===== PDF-SEITE 5 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+5 
+31 Berichtigung zu NDP zu 5.8.6 (3)
+Vor „ CE = 1,5“ wird ergänzt: „Dabei ist“.
+Die Indizes der Teilsicherheitsbeiwerte werden berichtigt in C und CE. 
+32 Berichtigung zu NCI zu 5.8.8.2 (4)
+Neuer NCI zu 5.8.8.2 (4) 
+Der dritte Satz in der Anmerkung entfällt.
+33 Berichtigung zu NCI zu 5.8.9 (3) 
+Die Zusatzausmitte eaz wird umbenannt in eiz.
+34 Berichtigung zu NDP zu 5.10.1 (6)
+Der letzte Satz wird ersetzt durch: 
+ANMERKUNG Zum Verfahren E siehe auch DAfStb-Heft 600.
+35 Berichtigung zu NDP zu 5.10.9 (1)P 
+Bei beiden Anstrichen wird das Wort „- für“ vorangestellt.
+36 Berichtigung zu NCI zu 5.11 (2)P 
+Das Wort „verbindlich“ wird ersetzt durch „anzuwenden“.
+37 Berichtigung zu NCI zu 6.2.2 (1) 
+Die Gleichungen (NA.6.3a)) und (NA.6.3b)) werden umbenannt in (6.3aDE) und (6.3bDE). 
+38 Berichtigung zu NCI zu 6.2.2 (6) 
+NDP zu 6.2.2 (6) wird ergänzt: 
+ANMERKUNG Durch die o. a. Festlegung der einzelnen Abminderungsbeiwerte kann Gleichung (6.6N) entfallen. 
+39 Berichtigung zu NCI zu 6.2.2 (7) 
+NCI zu 6.2.2 (7) wird berichtigt: 
+Der Absatz 6.2.2 (7) wird ersetzt: 
+"(7) Träger mit auflagernahen Lasten dürfen alternativ auch mit Stabwerkmodellen bemessen werden. 
+Konsolen sind in der Regel mit Stabwerkmodellen zu bemessen. Siehe 6.5." 
+40 Berichtigung zu NDP zu 6.2.3 (2) 
+Die Gleichungen (NA.6.7a) und (NA.6.7b) werden umbenannt in Gleichungen (6.7aDE) und (6.7bDE); " cd" ist
+durch " cp" zu ersetzen. 
+41 Berichtigung zu NCI zu 6.2.3 (4) 
+NCI zu 6.2.3 (4) wird gestrichen.
+
+===== PDF-SEITE 6 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+6 
+42 Berichtigung zu NCI zu 6.2.5 (2)
+Vor „mit Hochdruckwasserstrahlen“ wird „z. B.“ ergänzt.
+43 Berichtigung zu NCI zu 6.2.5 (5)
+Einleitend wird ergänzt „Der Absatz wird ersetzt durch:“
+44 Berichtigung zu NCI zu 6.3.2 (1)
+Einleitend wird ergänzt: „Die Definition der effektiven Wanddicke 
+ wird ersetzt durch:“
+45 Berichtigung zu NCI zu 6.3.2 (3)
+Die Bezeichnung Asw wird ersetzt durch Asw /sw. 
+In Gleichung (NA.6.28.1) wird „tEd“ ersetzt durch „TEd“. 
+46 Berichtigung zu NCI zu 6.4.1 (2)P 
+In Bild NA.6.12.1 wird in der Gleichung für a1 der Term „2d“ ersetzt durch „2b“.
+47 Berichtigung zu NCI zu 6.4.3 (3)
+In Gleichung (NA.6.39.1) wird der Index „x“ durch den Index „z“ ersetzt. 
+48 Berichtigung zu NDP zu 6.4.3 (6) 
+Bild NA.6.21 wird umbenannt in Bild 6.21DE. 
+49 Berichtigung zu NCI zu 6.4.4 (2)
+Unter Gleichung (NA.6.51.1) wird ergänzt:
+ANMERKUNG Ein weiterer Ansatz zur Bestimmung des Lasterhöhungsfaktors in Gleichung (NA.6.51.1) ist in 
+DAfStb-Heft 600 enthalten. 
+50 Berichtigung zu NCI zu 6.4.4 (2)
+In Bild NA.6.21.1 wird in der Legende der Begriff „Fundamentlast“ ersetzt durch den Begriff 
+„Fundamenteigenlast“.
+51 Berichtigung zu NCI zu 6.4.5 (1)
+Im Absatz „Für aufgebogene Durchstanzbewehrung…“ wird die Klammer „(statt 0,67)“ gestrichen.
+Das Formelzeichen „a1“ wird durch „s0“ und das Formelzeichen „a2“ durch „(s0 + s1)“ ersetzt.
+52 Berichtigung zu NDP zu 6.4.5 (3) 
+Einleitend wird ergänzt „Der Absatz wird ersetzt durch:“
+Nach dem Begriff „Maximaltragfähigkeit“ wird „vRd,max“ ergänzt.
+Zum NDP wird ergänzt: „Bei Fundamenten ist der iterativ ermittelte kritische Rundschnitt u für u1 einzusetzen.“
+
+===== PDF-SEITE 7 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+7 
+53 Berichtigung zu NCI zu 6.4.5 (NA.6)
+In Gleichung (NA.6.54.1), in Bild NA.6.22.1 und in Tabelle NA.6.1.1 wird der Index „x“ durch den Index „z“
+ersetzt. 
+Die Legende in Bild NA.6.22.1 muss heißen: 1 – Rand „y“ und 2 – Rand „z“ 
+In Tabelle NA.6.1.1, Zeile 3, Spalte 2 wird der Wert von 0,124 auf 0,125 geändert.
+54 Berichtigung zu NDP zu 6.5.2 (2) 
+Die Gleichungen (NA.6.57a), (NA.6.57b) und (NA.6.57c) werden umbenannt in Gleichungen (6.57aDE), 
+(6.57bDE) und (6.57cDE). 
+55 Berichtigung zu NCI zu 6.5.3 (1) 
+Nach dem Term „fyd“ wird „nach 3.2 bzw.“ ergänzt: 
+56 Berichtigung zu NCI zu 6.7 (4)
+Der Begriff „der Spaltzugkräfte“ wird ersetzt durch den Begriff „dieser Querzugkräfte“.
+57 Berichtigung zu NCI zu 6.8.2 (2)P
+Einleitend wird ergänzt: „In der Definition des Verhältniswerts der Verbundfestigkeit 
+ werden der zweite und 
+der dritte Satz ersetzt durch:“
+58 Berichtigung zu NDP und NCI zu 6.8.4 (1) 
+Die Tabellen NA.6.3 und NA.6.4 werden umbenannt in Tabellen 6.3DE und 6.4DE. 
+59 Berichtigung zu NCI zu 6.8.7 (3) 
+Der zweite Satz in DIN EN 1992-1-1, 6.8.7 (3), wird ersetzt durch 
+„In diesem Fall ist in der Regel die Betondruckfestigkeit fcd,fat mit dem Festigkeitsabminderungsbeiwert 1 nach 
+NDP zu 6.2.3 (2) zu reduzieren“.
+60 Berichtigung zu NCI zu 7.3.1 (5) 
+Die Tabelle NA.7.1 wird umbenannt in Tabelle 7.1DE. 
+61 Berichtigung zu NDP zu 7.3.2 (4)
+Einleitend wird ergänzt: „Der Absatz wird ersetzt durch:“
+62 Berichtigung zu NCI zu 7.3.3 (2) 
+„NCI Zu 7.3.3 (2)“ wird berichtigt in „NDP Zu 7.3.3 (2)“
+Die Tabelle NA.7.2 wird umbenannt in Tabelle 7.2DE. 
+In der Gleichung zu Fußnote a) in Tabelle 7.2DE wird die Variable durch ersetzt. 
+In der Erläuterung zu Ac,eff wird der Term heff ersetzt durch hc,ef. 
+Die Gleichungen (NA.7.6), (NA.7.7) und (NA.7.7.1) werden umbenannt in Gleichungen (7.6DE), (7.7DE) und 
+(7.7.1DE).
+
+===== PDF-SEITE 8 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+8 
+63 Berichtigung zu NDP zu 8.3 (2)
+Tabelle NA.8.1 wird umbenannt in Tabelle 8.1DE. 
+64 Berichtigung zu NCI zu 8.5 und Bild NA.8.5 
+Bild NA.8.5 wird umbenannt in Bild 8.5DE. 
+65 Berichtigung zu NDP zu 8.6 (2)
+NDP zu 8.6 (2) wird ergänzt:
+Die Verankerungskraft Fbtd darf nicht angesetzt werden. 
+Gleichung (NA.8.8) wird umbenannt in Gleichung (8.8DE). 
+66 Berichtigung zu NCI zu 8.7.3 (1)
+Tabelle NA.8.3 wird umbenannt in Tabelle 8.3DE. 
+67 Berichtigung zu NCI zu 8.7.4.1 (3) 
+Präfix „NCI“ wird ergänzt.
+68 Berichtigung zu NCI zu 8.8 (NA.13)
+In Bild NA.8.11.1 werden ersetzt: 
+der Begriff „Querbewegung“ durch „Querbewehrung“,
+ das Formelzeichen Ash durch Ast und 
+ das Formelzeichen ai durch al. 
+69 Berichtigung zu NCI zu 8.8 (NA.20)P 
+In Bild NA.8.11.3 wird zu Asw 0,18 As/m ergänzt: „Steckbügel bei mehrlagiger Bewehrung“.
+70 Berichtigung zu NCI zu 8.10.2.2 (1)
+Nach dem Begriff „Querschnittsfläche“ wird das Formelzeichen „Ap
+“ ergänzt.
+71 Berichtigung zu NCI zu 8.10.2.3 (4) und NCI zu Bild 8.17
+Bild NA.8.17 wird umbenannt in Bild 8.17DE. 
+In der Legende zu Bild 8.17DE wird unter 2 der Begriff „Übertragung“ ersetzt durch „Übertragungslänge“.
+72 Berichtigung zu NDP zu 9.2.1.1 (3)
+Nach dem Begriff „Summe“ wird „der Querschnittsfläche“ ergänzt.
+73 Berichtigung zu NDP zu 9.2.1.2 (1)
+Es wird ergänzt: „ANMERKUNG 2 entfällt.“
+
+===== PDF-SEITE 9 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+9 
+74 Berichtigung zu NCI zu 9.2.1.4 (2)
+Gleichung (NA.9.3) wird umbenannt in Gleichung (9.3DE). 
+75 Berichtigung zu NDP zu 9.2.2 (4) 
+Bild NA.8.5 wird umbenannt in Bild 8.5DE. 
+76 Berichtigung zu NDP zu 9.2.2 (5) 
+Einleitend wird ergänzt „Der Mindestquerkraftbewehrungsgrad w,min beträgt:“
+Die Gleichungen (NA.9.5a) und (NA.9.5.b) werden umbenannt in Gleichungen (9.5aDE) und (9.5bDE).
+77 Berichtigung zu NDP zu 9.2.2 (7) 
+Die Gleichung (NA.9.7) wird umbenannt in Gleichung (9.7DE). 
+78 Berichtigung zu NCI zu 9.2.3 (1) 
+Bild NA.8.5 wird umbenannt in Bild 8.5DE. 
+79 Berichtigung zu NCI zu 9.3.1.1 (1)
+Die Anmerkung in DIN EN 1992-1-1 wird ersetzt durch: 
+ANMERKUNG Bei Platten mit geringem Risiko von Sprödbruch darf As,min alternativ mit dem 1,2-fachen derjenigen 
+Querschnittsfläche berechnet werden, die für den Nachweis im GZT benötigt wird.
+80 Berichtigung zu NCI zu 9.3.1.1 (2)
+Der Term „ quer,min“ wird ersetzt durch „min quer“.
+81 Berichtigung zu NDP zu 9.3.1.1 (3)
+Einleitend wird ergänzt „Es gilt:“
+82 Berichtigung zu NCI zu 9.3.1.2 (2)
+Einleitend wird ergänzt „Der letzte Satz wird ersetzt durch:“
+83 Berichtigung zu NCI zu 9.3.2 (4) 
+Einleitend wird ergänzt „Die Gleichungen (9.9) und (9.10) werden ersetzt durch:“
+84 Berichtigung zu NCI zu 9.3.2 (5) 
+Einleitend wird ergänzt „Der Absatz wird ersetzt durch:“
+Der Begriff „größte“ wird durch „maximale“ ersetzt.
+85 Berichtigung zu NCI zu 9.4.3 (2) 
+Gleichung (NA.9.11) wird umbenannt in Gleichung (9.11DE).
+
+===== PDF-SEITE 10 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+10 
+86 Berichtigung zu NCI zu 9.4.3 (4)
+Bild NA.9.10 wird umbenannt in Bild 9.10DE. 
+87 Berichtigung zu NDP zu 9.5.2 (2) 
+Gleichung (NA.9.12) wird umbenannt in Gleichung (9.12DE). 
+88 Berichtigung zu NCI zu 9.5.2 (4)
+Einleitend wird ergänzt „Der zweite Satz wird ersetzt durch:“
+89 Berichtigung zu NCI zu 9.5.3 (2)
+Bild NA.8.5 wird umbenannt in Bild 8.5DE. 
+90 Berichtigung zu NCI zu 9.6.1
+In Tabelle NA.9.3 ist die Zeilennummerierung in 2 und 3 zu berichtigen. 
+91 Berichtigung zu NDP zu 9.6.3 (1) 
+Der Begriff „lotrechten“ ist durch den Begriff „vertikalen“ zu ersetzen.
+92 Berichtigung zu NDP zu 9.6.3 (2) 
+„NDP Zu 9.6.3 (2)“ wird geändert in „NCI Zu 9.6.3 (2)“
+Einleitend wird ergänzt „Der Absatz wird ersetzt durch:“
+Der Begriff „waagerechten“ ist durch den Begriff „horizontalen“ zu ersetzen.
+93 Berichtigung zu NCI zu 9.6.4 (2) 
+Einleitend wird ergänzt „Die Anmerkung wird ersetzt durch:“
+94 Berichtigung zu NDP zu 9.7 (1)
+Es wird ergänzt:
+„Der größere Wert ist maßgebend.“
+95 Berichtigung zu NCI zu 9.10.2.2 (2)
+Das Formelzeichen „ls“ wird ersetzt durch das Formelzeichen „l0“.
+96 Berichtigung zu NCI zu 10.3.2.1 (1)
+Die Anmerkung 1 wird berichtigt: 
+„ANMERKUNG 1 Der Abschnitt gilt nicht im Zusammenhang mit den Gleichungen in Abschnitt 3.3.2 (7). Er 
+kann im Zusammenhang mit den allgemeinen bauaufsichtlichen Zulassungen angewendet werden, sofern in 
+diesen nichts anderes festgelegt wird.“
+
+===== PDF-SEITE 11 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+11 
+97 Berichtigung zu NCI zu 10.9.2 (2) 
+Bild NA.10.1 wird umbenannt in Bild 10.1DE und durch folgendes Bild ersetzt: 
+98 Berichtigung zu NCI zu 10.9.3 (4) 
+Bild NA.10.2 a) wird umbenannt in Bild 10.2aDE. 
+99 Berichtigung zu NCI zu 10.9.4.1 (3)P 
+Die NCI ersetzt den letzten Satz. 
+100 Berichtigung zu Bild 10.4 
+Die folgende NCI zu Bild 10.4 wird ergänzt:
+NCI Zu Bild 10.4 
+ANMERKUNG Das Bild zeigt nur die wesentlichen Merkmale des Stabmodells. 
+101 Berichtigung zu NCI NA.10.9.8 
+Absatz (4) wird berichtigt in: 
+„Die Mindestquerschnittsabmessungen nach NCI zu 9.5.1 (1) …“
+102 Berichtigung zu NCI zu 11.3.2 (1) 
+Der zweite Satz ist eine Anmerkung. 
+103 Berichtigung zu NDP zu 11.3.5 (1)P 
+Der Begriff „Spannungs-Dehnungslinie“ wird durch „Spannungs-Dehnungs-Linie“ ersetzt.
+104 Berichtigung zu NCI zu 11.6
+Diese NCI wird gestrichen.
+105 Berichtigung zu NDP zu 11.6.2 (1)
+v1 wird berichtigt in vl. 
+Es wird ergänzt: "ANMERKUNG 2 gilt nicht."
+
+===== PDF-SEITE 12 =====
+DIN EN 1992-1-1/NA Ber 1:2012-06 
+12 
+106 Berichtigung zu NCI zu 11.6.2 (NA.2) 
+Gleichungen (NA 6.7a) und (NA 6.7b) werden umbenannt in Gleichungen (6.7aDE) und (6.7bDE). 
+Der Begriff „max.“ wird gestrichen.
+107 Berichtigung zu NCI zu 11.6.2 (NA.3) 
+Das Formelzeichen „vRdi“ wird ersetzt durch das Formelzeichen vlRdi. 
+Die Gleichung (11.6.25) wird ersetzt durch: 
+vlRdi = c flctd + n + fyd (1,2 sin + cos ) 0,5 l fcd (NA.11.6.25) 
+mit l analog zu 11.6.2 (1). 
+108 Berichtigung zu NDP zu 11.6.4.1 (2) 
+"NDP Zu 11.6.4.1 (2)" wird berichtigt durch "NCI Zu 11.6.4.1 (2). 
+„NDP zu 6.4.4 (1)“ wird ersetzt durch „NCI zu 6.4.4 (2)“.
+109 Berichtigung zu NCI zu 11.6.4.2 (2) 
+"NCI Zu 11.6.4.2 (2)" wird ersetzt durch "NDP Zu 11.6.4.2 (2)". 
+Einleitend wird ergänzt: „Der Absatz wird ersetzt durch:“
+110 Berichtigung zu NCI zu 11.7
+„in 7.3.3 (2), Gleichung (7.1)“ wird berichtigt in „ in 7.3.2 (2), Gleichung (7.1)“.
+111 Berichtigung zu NCI zu 11.9 (NA.2)
+Gleichung (NA.9.5a) wird umbenannt in Gleichung (9.5aDE). 
+112 Berichtigung zu NCI zu 12.5 (2) 
+Die Absatznummer 5.7 (6) wird ersetzt durch 5.7 (NA.6). 
+113 Berichtigung zu NCI zu C.1 (1)
+„NCI Zu C.1 (1)“ wird geändert in „NDP Zu C.1 (1)“
+Tabelle NA.C.2 wird umbenannt in Tabelle C.2DE. 
+114 Berichtigung zu NDP zu E.1 (2) 
+Tabelle NA.E.1 wird umbenannt in Tabelle E.1DE. 
+In Fußnote a) in der Tabelle E.1DE wird Fußnote 2) ersetzt durch Fußnote b).

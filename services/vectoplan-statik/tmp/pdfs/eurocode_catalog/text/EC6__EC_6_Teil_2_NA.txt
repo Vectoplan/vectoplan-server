@@ -1,0 +1,407 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Januar 2012 
+DIN EN 1996-2/NA 
+ICS 91.010.30; 91.080.30 
+Nationaler Anhang -
+National festgelegte Parameter-
+Ersatzvermerk 
+siehe unten 
+DIN 
+Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten­
+Teil2: Planung, Auswahl der Baustoffe und Ausführung von Mauerwerk. 
+National Annex -
+Nationally determined parameters-
+Eurocode 6: Design of masonry structures- Part 2: Design considerations, selection of 
+materials and execution of masonry. 
+Annexe Nationale-
+Parametres determines au plan nationai-
+Eurocode 6: Calcul des ouvrages en mac;onnerie - Partie 2: Conception, choix de 
+materiaux et mise en oeuvre des mac;onneries. 
+Ersatzvermerk 
+Mit DIN EN 1996-1-1:2010-12, DIN EN 1996-1-1/NA:2012-01, DIN EN 1996-2:2010-12, 
+DIN EN 1996-3:2010-12 und DIN EN 1996-3/NA:2012-01 ErsatzfrlrDIN 1053-1:1996-11; 
+mit DIN EN 1996-1-1:2010-12, DIN EN 1996-1-1/NA:2012-01 und DIN EN 1996-2:2010-12 Ersatz für 
+DIN 1053-3:1990-02 
+Gesamtumfang 12 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jede Art der Vervielfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 8 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1855629
+
+===== PDF-SEITE 2 =====
+DIN EN 1996-2/NA:2012-01 
+2 
+Inhalt Seite
+Vorwort ........................................................................................................................................................... 3
+NA 1 Anwendungsbereich ......................................................................................................... ............... 4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1996-2:2010-12 ........................................ 4
+NA 2.1 Allgemeines ....................................................................................................................................... 4
+NA 2.2 Nationale Festlegungen ................................................................................................................... 4
+Zu 1 „Allgemeines“ ........................................................................................................................................ 4
+NCI zu 1.1 „Anwendungsbereich von Teil 2 des Eurocode 6“ .................................................................. 4
+NCI zu 1.2 „Normative Verweisungen“ ........................................................................................................ 4
+Zu 2 „Planungsgrundsätze“ ......................................................................................................................... 5
+NCI zu 2.2.1 „Allgemeines“ ........................................................................................................................... 5
+NCI zu 2.2.4 „Ergänzungsbauteile und Bewehrung“ ................................................................................. 5
+NDP zu 2.3.1 „Konstruktionsdetails“........................................................................................................... 5
+NCI zu 2.3.1 „Konstruktionsdetails“ ............................................................................................................ 5
+NCI zu 2.3.2 „Fugenausbildung“ .................................................................................................................. 6
+NDP zu 2.3.4.2 (2) „Abstände zwischen Dehnungsfugen“ ........................................................................ 6
+Zu 3 „Ausführung“ ......................................................................................................................................... 6
+NCI zu 3.1 „Allgemeines“.............................................................................................................................. 6
+NDP zu 3.4 (3) „Zulässige Abweichungen“ ................................................................................................. 6
+NDP zu 3.5.3.1 (1) „Nachträgliches Verfugen“ ............................................................................................ 6
+NCI zu 3.6.3 „Schutz gegen Frost-Tau-Wechsel“ ....................................................................................... 6
+NCI zu Anhang B „Bewährte Stein-/Mörtel-Kombinationen für dauerhaftes Mauerwerk unter 
+verschiedenen Umweltbedingungen“ ............................................................................................ 6
+NCI zu Anhang C „Festlegungen zur Auswahl der Werkstoffe und Korrosionsschutzsysteme 
+für Ergänzungsbauteile entsprechend der Expositionsklasse“ .................................................. 6
+NCI Anhang NA.D (informativ) Zweischaliges Mauerwerk ......................................................................... 7
+NA.D.1 Allgemeine Bestimmungen für die Ausführung ............................................................................ 7
+NA.D.2 Luftschicht ....................................................................................................................................... 10
+NA.D.3 Wärmedämmung ............................................................................................................................. 10
+NCI Anhang NA.E (informativ) Bestimmungen für die Ausführung von Kellerwänden ........................ 11
+NCI Anhang NA.F (informativ) Kontrollen und Prüfungen ....................................................................... 12
+NA.F.1 Mauersteine und Elemente ............................................................................................................. 12
+NA.F.2 Mauermörtel ..................................................................................................................................... 12
+
+===== PDF-SEITE 3 =====
+DIN EN 1996-2/NA:2012-01 
+3 
+Vorwort 
+Dieses Dokument wurde vom Arbeitsausschuss NA 005-06-01 AA „Mauerwerksbau“ des Normenaus-
+schusses Bauwesen (NABau) erarbeitet. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1996-2:2010-12, Eurocode 6: Bemessung und 
+Konstruktion von Mauerwerksbauten — Teil 2: Planung, Auswahl der Baustoffe und Ausführung von 
+Mauerwerk. 
+Die Europäische Norm EN 1996-2:2006 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters (NDP)) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich in NA 2.1. 
+Darüber hinaus enthält dieser nationale Anhang ergänzende nicht widersprechende Angaben zur Anwendung 
+von DIN EN 1996-2:2010-12 (en: non-contradictory complementary information (NCI)). 
+Nationale Absätze werden mit vorangestelltem „(NA.+lfd. Nr.)“ eingeführt.
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1996-2:2010-12. 
+Änderungen
+Gegenüber DIN 1053-1:1996-11 und DIN 1053-3:1990-02 wurden folgende Änderungen vorgenommen: 
+a) Restregelungen entnommen und als ergänzende nicht widersprechende Angaben (NCI) aufgenommen; 
+b) national festzulegende Parameter (NDP) entsprechend EN 1996-2 aufgenommen; 
+c) Ausführungsregeln für Kellerwände und zweischaliges Mauerwerk in separaten Anhängen zusammen-
+gestellt. 
+Frühere Ausgaben
+DIN 4156: 1943-05 
+DIN 1053: 1937x-02, 1952-12, 1962-11 
+DIN 1053-1: 1974-11, 1990-02, 1996-11 
+DIN 1053-2: 1984-07, 1996-11 
+DIN 1053-3: 1990-02
+
+===== PDF-SEITE 4 =====
+DIN EN 1996-2/NA:2012-01 
+4 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für „den Entwurf, die Berechnung und die 
+Bemessung von Hochbauten und Ingenieurbauwerken mit unbewehrtem und bewehrtem Mauerwerk, bei dem 
+die Bewehrung eingesetzt wird, um die Duktilität und die Festigkeit sicherzustellen oder die Dauerhaftigkeit zu 
+verbessern“, die bei der Anwendung von DIN EN 1996-2:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1996-2:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1996-2:2010-12 
+NA 2.1 Allgemeines 
+EN 1996-2:2006 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus (en: 
+Nationally determined parameters (NDP)): 
+ 2.3.4.2 (2) Abstände zwischen Dehnungsfugen; 
+ 3.5.3.1(1) Nachträgliches Verfugen.
+Zusätzlich zu allgemeinen Verweisungen auf ergänzende und nicht im Widerspruch stehende Informationen 
+können folgende Abschnitte spezielle Verweisungen enthalten: 
+ 1.1(2)P Anwendungsbereich von Teil 2 des Eurocodes 6; 
+ 2.3.1(1) Konstruktionsdetails; 
+ 3.4(3) Zulässige Abweichungen.
+Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1996-2:2010-12. Diese sind durch ein vorangestelltes „NCI“ (en: non-contradictory complementary 
+information) gekennzeichnet. 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1996-2:2010-12 bzw. ergänzt 
+diese. 
+Zu 1 „Allgemeines“
+NCI zu 1.1 „Anwendungsbereich von Teil 2 des Eurocode 6“
+Absatz (2) P ist wie folgt zu ergänzen:
+Bei der Wahl der Bauteile sind auch die Funktionen der Wände hinsichtlich des Wärme-, Schall-, Brand- und 
+Feuchteschutzes zu beachten. 
+NCI zu 1.2 „Normative Verweisungen“
+NA DIN 1054, Baugrund — Sicherheitsnachweise im Erd- und Grundbau — Ergänzende Regelungen zu 
+DIN EN 1997-1 
+NA DIN 4108-3, Wärmeschutz und Energie-Einsparung in Gebäuden — Teil 3: Klimabedingter 
+Feuchteschutz; Anforderungen, Berechnungsverfahren und Hinweise für Planung und Ausführung
+NA DIN 4108-10, Wärmeschutz und Energie-Einsparung in Gebäuden — Teil 10: Anwendungsbezogene 
+Anforderungen an Wärmedämmstoffe – Werkmäßig hergestellte Wärmedämmstoffe
+
+===== PDF-SEITE 5 =====
+DIN EN 1996-2/NA:2012-01 
+5 
+NA DIN 18195-2, Bauwerksabdichtungen — Teil 2: Stoffe
+NA DIN 18195-4, Bauwerksabdichtungen — Teil 4: Abdichtungen gegen Bodenfeuchte (Kapillarwasser, 
+Haftwasser) und nichtstauendes Sickerwasser an Bodenplatten und Wänden, Bemessung und Ausführung
+NA DIN 18202, Toleranzen im Hochbau – Bauwerke 
+NA DIN 18515 (alle Teile), Außenwandbekleidungen
+NA DIN V 106, Kalksandsteine mit besonderen Eigenschaften
+NA DIN V 18550 , Putz und Putzsysteme – Ausführung
+NA DIN V 18580:2007-03, Mauermörtel mit besonderen Eigenschaften
+NA DIN V 20000-202, Anwendung von Bauprodukten in Bauwerken — Teil 202: Anwendungsnorm für 
+Abdichtungsbahnen nach Europäischen Produktnormen zur Verwendung in Bauwerksabdichtungen
+NA DIN V 20000-412, Anwendung von Bauprodukten in Bauwerken — Teil 412: Regeln für die Verwendung 
+von Mauermörtel nach DIN EN 998-2:2003-09 
+NA DIN EN 998-1, Festlegungen für Mörtel im Mauerwerksbau — Teil 1: Putzmörtel
+NA DIN EN 13969, Abdichtungsbahnen — Bitumenbahnen für die Bauwerksabdichtung gegen Bodenfeuchte 
+und Wasser — Definitionen und Eigenschaften 
+Zu 2 „Planungsgrundsätze“
+NCI zu 2.2.1 „Allgemeines“
+(NA.4) Innerhalb eines Geschosses sollte zur Vereinfachung von Ausführung und Überwachung das 
+Wechseln von Steinarten und Mörtelgruppen eingeschränkt werden.
+(NA.5) Steine und Mörtel, die unmittelbar der Witterung ausgesetzt bleiben, müssen frostwiderstandsfähig 
+sein. Sieht die Produktnorm hinsichtlich der Frostwiderstandsfähigkeit unterschiedliche Klassen vor, so sind 
+bei Schornsteinköpfen, Kellereingangs-, Stütz- und Gartenmauern, stark strukturiertem Mauerwerk und 
+ähnlichen Anwendungsbereichen Steine mit der Klasse der höchsten Frostwiderstandsfähigkeit zu 
+verwenden. In Außenschalen dürfen Kalksandsteine mit Oberflächenbeschichtungen nur verwendet werden, 
+wenn deren Frostwiderstandsfähigkeit unter erhöhter Beanspruchung nach DIN EN 771-2 bzw. nach 
+DIN V 106 nachgewiesen wurde. 
+NCI zu 2.2.4 „Ergänzungsbauteile und Bewehrung“
+(NA.2) Anmerkung 1 und Anhang C gelten in Deutschland nicht. 
+NDP zu 2.3.1 „Konstruktionsdetails“
+Die Anhänge NA.D und NA.E enthalten zusätzliche Informationen.
+NCI zu 2.3.1 „Konstruktionsdetails“
+(NA.2) Unmittelbar der Witterung ausgesetzte, waagerechte und leicht geneigte Mauerwerksflächen, wie z. B. 
+Mauerkronen, Schornsteinköpfe oder Brüstungen, sind durch geeignete Maßnahmen (z. B. Abdeckung, 
+Tropfkante) so auszubilden, dass Wasser nicht eindringen kann.
+
+===== PDF-SEITE 6 =====
+DIN EN 1996-2/NA:2012-01 
+6 
+NCI zu 2.3.2 „Fugenausbildung“
+(NA.2) Bei Gewölben sind die Fugen so dünn wie möglich zu halten. Am Gewölberücken dürfen sie nicht 
+dicker als 20 mm werden. 
+Außenwände müssen so beschaffen sein, dass sie Schlagregenbeanspruchungen standhalten. DIN 4108-3 
+gibt dafür Hinweise. 
+NDP zu 2.3.4.2 (2) „Abstände zwischen Dehnungsfugen“
+Es gelten die empfohlenen Werte der Anmerkung 1. 
+Zu 3 „Ausführung“
+NCI zu 3.1 „Allgemeines“
+(NA.3) Anhang NA.F gibt Hinweise für die Kontrolle und Prüfung von Mauersteinen und Mörtel.
+NDP zu 3.4 (3) „Zulässige Abweichungen“
+Es gelten die empfohlenen Regelungen für die aus statischer Sicht zulässigen Abweichungen der Tabelle 3.1. 
+Weitergehende Regelungen, z. B. aus der DIN 18202, bleiben hiervon unberührt.
+NDP zu 3.5.3.1 (1) „Nachträgliches Verfugen“
+Die Mindestausfugungstiefe ist in NA.D.1, Absatz (4), d) angegeben. 
+NCI zu 3.6.3 „Schutz gegen Frost-Tau-Wechsel“
+(NA.3) Bei Frost darf Mauerwerk nur unter besonderen Schutzmaßnahmen (z. B. durch Einhausen) 
+ausgeführt werden.
+(NA.4) Frostschutzmittel sind nicht zulässig. Frisches Mauerwerk ist vor Frost zu schützen, z. B. durch 
+Abdecken. 
+(NA.5) Der Einsatz von Salzen zum Auftauen ist nicht zulässig.
+(NA.6) Teile von Mauerwerk, die durch Frost oder andere Einflüsse geschädigt sind, sind vor dem Weiterbau 
+abzutragen. 
+NCI zu Anhang B „Bewährte Stein-/Mörtel-Kombinationen für dauerhaftes Mauerwerk 
+unter verschiedenen Umweltbedingungen“
+Anhang B gilt in Deutschland nicht. 
+NCI zu Anhang C „Festlegungen zur Auswahl der Werkstoffe und Korrosions-
+schutzsysteme für Ergänzungsbauteile entsprechend der Expositionsklasse“
+Anhang C gilt in Deutschland nicht.
+
+===== PDF-SEITE 7 =====
+DIN EN 1996-2/NA:2012-01 
+7 
+NCI Anhang NA.D 
+(informativ) 
+Zweischaliges Mauerwerk 
+ANMERKUNG In diesem Anhang sind Festlegungen aus unterschiedlichen Teilen von DIN EN 1996 
+zusammengeführt, um eine übersichtliche Darstellung ohne neu zu treffende Festlegungen zu gewährleisten.
+NA.D.1 Allgemeine Bestimmungen für die Ausführung
+(1) Der Abstand zwischen den beiden Mauerwerkwänden – in der Regel tragende In nenwand (Innenschale) 
+und nichttragende Außenwand (Außenschale) – wird als Schalenzwischenraum bezeichnet. Dieser 
+Schalenzwischenraum kann ohne, ganz oder teilweise mit einer Wärmedämmschicht ausgeführt werden. Die 
+Wärmedämmschicht kann dabei aus einer oder mehreren Lagen Dämmstoff bestehen.
+(2) Wird keine Wärmedämmschicht im Schalenzwischenraum angeordnet, wird diese Konstruktion (oder 
+Wandaufbau) als zweischalige Wand mit Luftschicht bezeichnet. Die Dicke des Schalenzwischenraumes 
+entspricht somit der Dicke der Luftschicht. 
+(3) Wird der Schalenzwischenraum ganz oder teilweise mit einer Wärmedämmschicht ausgefüllt, so wird 
+diese Konstruktion als zweischalige Wand mit Wärmedämmung bezeichnet.
+(4) Bei Anordnung einer nichttragenden Außenschale (Verblendschale oder geputzte Vormauerschale) vor 
+einer tragenden Innenschale (Hintermauerschale) ist Folgendes zu beachten: 
+a) Bei der Bemessung ist als Wanddicke nur die Dicke der tragenden Innenschale anzunehmen. 
+b) Die Dicke der Außenschale beträgt mindestens 90 mm. Dünnere Außenschalen sind Bekleidungen, 
+deren Ausführung in DIN 18515 geregelt ist. Die Länge von gemauerten Pfeilern in der Außenschale, die 
+nur Lasten aus der Außenschale zu tragen haben, beträgt mindestens 240 mm. Die Außenschale muss 
+in der Regel über ihre ganze Länge und vollflächig aufgelagert sein. Bei unterbrochener Auflagerung 
+(z. B. auf Konsolen) müssen in der Abfangebene alle Steine beidseitig aufgelagert sein.
+c) Die Außenschale muss aus frostwiderstandsfähigen Mauersteinen oder aus nicht frostwiderstandsfähigen 
+Mauersteinen mit Außenputz, der die Anforderungen nach DIN EN 998-1 in Verbindung mit DIN V 18550 
+erfüllt, bestehen.
+d) Außenschalen von 115 mm Dicke sollten in Höhenabständen von etwa 12 m abgefangen werden. Sie 
+dürfen bis zu 25 mm über ihr Auflager vorstehen. Ist die 115 mm dicke Außenschale nicht höher als zwei 
+Geschosse oder wird sie alle zwei Geschosse abgefangen, dann darf sie bis zu 38 mm über ihr Auflager 
+vorstehen. Diese Überstände sind beim Nachweis der Auflagerpressung zu berücksichtigen. Bei 
+nachträglicher Verfugung müssen die Fugen der Sichtflächen mindestens 15 mm tief flankensauber 
+ausgekratzt und anschließend handwerksgerecht ausgefugt werden.
+e) Außenschalen mit Dicken von t
+ 105 mm und t < 115 mm dürfen nicht höher als 25 m über Gelände 
+geführt werden und sind in Höhenabständen von etwa 6 m abzufangen. Bei Gebäuden mit bis zu zwei 
+Vollgeschossen darf ein Giebeldreieck bis 4 m Höhe ohne zusätzliche Abfangung ausgeführt werden. 
+Diese Außenschalen dürfen höchstens 15 mm über ihr Auflager vorstehen. Die Ausführung der Fugen 
+erfolgt in der Regel im Fugenglattstrich. Bei nachträglicher Verfugung müssen die Fugen der Sichtflächen
+
+===== PDF-SEITE 8 =====
+DIN EN 1996-2/NA:2012-01 
+8 
+mindestens 15 mm tief flankensauber ausgekratzt und anschließend handwerksgerecht ausgefugt 
+werden. 
+f) Außenschalen mit Dicken von t 90 mm und t < 105 mm dürfen nicht höher als 20 m über Gelände 
+geführt werden und sind in Höhenabständen von etwa 6 m abzufangen. Bei Gebäuden bis zu zwei 
+Vollgeschossen darf ein Giebeldreieck bis 4 m Höhe ohne zusätzliche Abfangung ausgeführt werden. Die 
+Fugen der Sichtflächen von diesen Verblendschalen müssen im Fugenglattstrich ausgeführt werden.
+Diese Außenschalen dürfen höchstens 15 mm über ihr Auflager vorstehen.
+g) Die Mauerwerksschalen sind durch Anker nach allgemeiner bauaufsichtlicher Zulassung aus 
+nichtrostendem Stahl oder durch Anker nach DIN EN 845-1 aus nichtrostendem Stahl, deren 
+Verwendung in einer allgemeinen bauaufsichtlichen Zulassung geregelt ist, zu verbinden. Für Drahtanker, 
+die in Form und Maßen Bild NA.D.1 entsprechen, gilt: 
+vertikaler Abstand: höchstens 500 mm; 
+ horizontaler Abstand: höchstens 750 mm;
+lichter Abstand der Mauerwerksschalen: höchstens 150 mm; 
+ Durchmesser: 4 mm; 
+Normalmauermörtel mindestens der Gruppe IIa;
+ Mindestanzahl: siehe Tabelle NA.D.1; 
+sofern in einer Zulassung für die Drahtanker nichts anderes festgelegt ist. 
+Tabelle NA.D.1 — Mindestanzahl ntmin von Drahtankern je m2 Wandfläche (Windzonen nach 
+DIN EN 1991-1-4/NA) 
+Gebäudehöhe Windzonen 1 bis 3
+Windzone 4 Binnenland
+Windzone 4
+Küste der Nord- und Ostsee 
+und Inseln der Ostsee 
+Windzone 4
+Inseln der Nordsee
+h 7a 78
+10 m < h 7b 89
+18 m < h 78 c
+a in Windzone 1 und Windzone 2 Binnenland: 5 Anker/m²
+b in Windzone 1: 5 Anker/m²
+c ist eine Gebäudegrundrisslänge kleiner als h/4: 9 Anker/m²
+An allen freien Rändern (von Öffnungen, an Gebäudeecken, entlang von Dehnungsfugen und an den 
+oberen Enden der Außenschalen) sind zusätzlich zu Tabelle NA.D.1 drei Drahtanker je Meter Randlänge 
+anzuordnen.
+
+===== PDF-SEITE 9 =====
+DIN EN 1996-2/NA:2012-01 
+9 
+Maße in Millimeter 
+Legende 
+1 Kunststoffscheibe 
+Bild NA.D.1 — Drahtanker für zweischalige Außenwände
+Die Drahtanker sind unter Beachtung ihrer statischen Wirksamkeit so auszuführen, dass sie keine 
+Feuchte von der Außen- zur Innenschale leiten können (z. B. Aufschieben einer Kunststoffscheibe, siehe 
+Bild NA.D.1). 
+Bei nichtflächiger Verankerung der Außenschale, z. B. linienförmig oder nur in Höhe der Decken, ist ihre 
+Standsicherheit nachzuweisen. 
+Bei gekrümmten Mauerwerksschalen sind Art, Anordnung und Anzahl der Anker unter Berücksichtigung 
+der Verformung festzulegen. 
+h) Die Innenschalen und die Geschossdecken sind an den Fußpunkten des Schalenzwischenraums gegen 
+Feuchte zu schützen. DIN 18195-4 ist zu beachten. Dieses gilt auch bei Fenster- und Türstürzen sowie 
+im Bereich von Sohlbänken. Die Mauerwerksschalen sind an ihren Berührungspunkten (z. B. Fenster- 
+und Türanschlägen) gegen Feuchtigkeit abzudichten.
+Die Aufstandsfläche muss so beschaffen sein, dass ein Abrutschen der Außenschale auf ihr nicht eintritt. 
+Die erste Ankerlage ist so tief wie möglich anzuordnen. Die Querschnittsabdichtung und deren Lage 
+müssen DIN 18195-4 entsprechen. Andere Querschnittsabdichtungen sind zulässig, wenn deren Eignung 
+nach den bauaufsichtlichen Vorschriften nachgewiesen ist, z. B. durch eine allgemeine bauaufsichtliche 
+Zulassung. 
+i) Abfangkonstruktionen, die nach dem Einbau nicht mehr kontrolliert werden können, müssen aus 
+Materialien bestehen, die dauerhaft korrosionsbeständig sowie für die Anwendung genormt oder 
+bauaufsichtlich zugelassen sind. 
+j) In der Außenschale sollten vertikale Dehnungsfugen angeordnet werden. Ihre Abstände richten sich nach 
+der klimatischen Beanspruchung (Temperatur, Feuchte usw.), der Art der Baustoffe und der Farbe der 
+äußeren Wandfläche. Darüber hinaus muss die freie Beweglichkeit der Außenschale auch in vertikaler 
+Richtung sichergestellt sein. 
+Die unterschiedlichen Verformungen der Außen- und Innenschale sind insbes ondere bei Gebäuden mit 
+über mehrere Geschosse durchgehender Außenschale auch bei der Ausführung der Türen und Fenster 
+zu beachten.
+
+===== PDF-SEITE 10 =====
+DIN EN 1996-2/NA:2012-01 
+10 
+NA.D.2 Luftschicht 
+(1) Folgendes ist zu beachten: 
+a) Wird eine Luftschicht im Schalenzwischenraum angeordnet, muss diese mindestens 60 mm betragen. Die 
+Dicke der Luftschicht darf bis auf 40 mm vermindert werden, wenn der Mauermörtel mindestens an einer 
+Hohlraumseite abgestrichen wird. 
+b) Die Dicke der Luftschicht wird als Planungsmaß festgelegt. Abweichungen vom Planungsmaß sind in den 
+durch DIN 18202 bestimmten Grenzen zulässig.
+c) Die Außenschale darf oberhalb von Abdichtungen mit Entwässerungsöffnungen oder Lüftungsöffnungen 
+(z. B. offene Stoßfugen) versehen werden. Dies gilt auch für die Brüstungsbereiche der Außenschale.
+NA.D.3 Wärmedämmung
+(1) Es sind Wärmedämmstoffe des Anwendungstyps WZ nach DIN 4108-10 zu verwenden. 
+(2) Bei der Ausführung gilt insbesondere: 
+a) Platten- und mattenförmige Mineralfaserdämmstoffe sowie Platten aus Schaumkunststoffen und Schaum-
+glas sind an der Innenschale so zu befestigen, dass eine gleichmäßige Schichtdicke sichergestellt ist.
+b) Platten- und mattenförmige Mineralfaserdämmstoffe sind so dicht zu stoßen, Platten aus 
+Schaumkunststoffen so auszubilden und zu verlegen (Stufenfalz, Nut und Feder oder versetzte Lagen), 
+dass ein Wasserdurchtritt an den Stoßstellen dauerhaft verhindert wird.
+c) Bei lose eingebrachten Wärmedämmstoffen (z. B. Mineralfasergranulat, Polystyrolschaumstoff-Partikeln, 
+Blähperlit) ist darauf zu achten, dass der Dämmstoff den Hohlraum zwischen Außen- und Innenschale 
+vollständig ausfüllt.
+
+===== PDF-SEITE 11 =====
+DIN EN 1996-2/NA:2012-01 
+11 
+NCI Anhang NA.E 
+(informativ)
+Bestimmungen für die Ausführung von Kellerwänden 
+(1) Die Annahmen aus der statischen Berechnung sind bei der Ausführung zu beachten.
+(2) Die waagerechte Abdichtung in oder unter Wänden (Querschnittsabdichtung) muss aus 
+ besandeter Bitumendachbahn (z. B. R500 nach DIN EN 13969 in Verbindung mit DIN V 20000-202) 
+oder 
+mineralischer Dichtungsschlämme nach DIN 18195-2 oder 
+ Material mit mindestens gleichwertigem Reibungsverhalten 
+bestehen. 
+(3) Erfolgte der Nachweis der Kellerwand nach DIN EN 1996-3, ist sicherzustellen, dass bei der Verfüllung 
+und Verdichtung des Arbeitsraumes nur nichtbindiger Boden nach DIN 1054 und nur Rüttelplatten oder 
+Stampfer mit folgenden Eigenschaften zum Einsatz kommen: 
+; 
+; 
+Gewicht bis etwa 100 kg bzw. Zentrifugalkräfte bis max. 15 kN. 
+(4) Werden die Bedingungen nach (3) nicht eingehalten, sind entsprechende Maßnahmen zur Gewähr-
+leistung der Standsicherheit während des Einbaus der Verfüllmassen zu ergreifen oder es ist ein gesonderter 
+Nachweis unter Berücksichtigung höherer Verdichtungslasten zu führen.
+(5) Die Verfüllung des Arbeitsraums darf erst erfolgen, wenn sichergestellt ist, dass die in den rechnerischen 
+Nachweisen angesetzten Auflasten vorhanden sind.
+
+===== PDF-SEITE 12 =====
+DIN EN 1996-2/NA:2012-01 
+12 
+NCI Anhang NA.F 
+(informativ)
+Kontrollen und Prüfungen
+NA.F.1 Mauersteine und Elemente 
+(1) Der bauausführende Unternehmer hat zu kontrollieren, ob die Kennzeichnung und die Angaben auf dem 
+Lieferschein oder dem Beipackzettel mit den bautechnischen Unterlagen übereinstimmen.
+NA.F.2 Mauermörtel
+(1) Bei Verwendung von Baustellenmörtel mit einer Zusammensetzung nach DIN V 18580:2007-03, 
+Tabelle A.1 ist während der Bauausführung regelmäßig zu überprüfen, dass das Mischungsverhältnis 
+eingehalten ist. 
+(2) Bei Werkmörteln ist der Lieferschein oder der Verpackungsaufdruck daraufhin zu kontrollieren, ob die 
+Angaben über Mörtelart und Mörtelgruppe mit den bautechnischen Unterlagen sowie die Sortennummer und 
+das Lieferwerk mit der Bestellung übereinstimmen und die Kennzeichnung mit dem Übereinstimmungs-
+zeichen (Ü-Zeichen) und/oder dem Konformitätszeichen (CE-Zeichen) ausgewiesen ist. 
+(3) Bei Normalmauermörtel der Gruppe IIIa ist an jeweils drei Prismen aus drei verschiedenen Mischungen je 
+Geschoss, aber mindestens je 10 m
+3 Mörtel, die Mörteldruckfestigkeit nach DIN EN 1015-11 nachzuweisen; 
+sie muss dabei die Anforderungen an die Druckfestigkeit nach DIN EN 998-2 in Verbindung mit 
+DIN V 20000-412 bzw. DIN V 18580 erfüllen.
+(4) Bei Gebäuden mit mehr als sechs gemauerten Vollgeschossen ist die geschossweise Prüfung nach (3), 
+mindestens aber je 20 m
+3 Mörtel, auch bei Normalmauermörteln NM II, IIa und III und bei Leichtmauermörtel 
+sowie mindestens je 2 m 3 bei Dünnbettmörteln durchzuführen, wobei bei den obersten drei Geschossen 
+darauf verzichtet werden darf.

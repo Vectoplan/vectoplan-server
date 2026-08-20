@@ -1,0 +1,3300 @@
+
+
+===== SEITE 1 =====
+März 2005DEUTSCHE NORM 
+Normenausschuss Bauwesen (NABau) im DIN
+Preisgruppe 27DIN Deutsches Institut für Normung e.V.  Jede Art der Vervielfältigung, auch auszugsweise, nur mit 
+Genehmigung des DIN Deutsches Institut für Normung e. V., Berlin, gestattet.
+ICS 91.010.30
+B-h
+9603997
+www.din.de
+XDIN 1055-4
+Einwirkungen auf Tragwerke 
+Teil 4: Windlasten
+Action on structures 
+Part 4: Wind loads
+Action sur les structures 
+Partie 4: Actions du vent
+'
+Alleinverkauf der Normen durch Beuth Verlag GmbH, 10772 Berlin
+Ersatz für
+DIN 1055›4:1986›08 und
+DIN 1055›4/A1:1987›06
+www.beuth.de
+ 
+Gesamtumfang 101 Seiten
+
+===== SEITE 2 =====
+DIN 1055-4:2005-03
+2
+Inhalt
+Seite
+Vorwort ............................................................................................................................................................... 7
+Einleitung ........................................................................................................................................................... 8
+1 Anwendungsbereich ............................................................................................................. ............... 8
+2 Normative Verweisungen........................................................................................................ ............. 8
+3 Begriffe, Symbole und Abkürzungen ............................................................................................. .... 9
+3.1 Begriffe .................................................................................................................... .............................. 9
+3.2 Symbole und Abkürzungen ..................................................................................................... ............ 9
+4 Klassifizierung der Einwirkungen.............................................................................................. ....... 11
+5 Bemessungssituationen ......................................................................................................... ........... 11
+6 Erfassung der Einwirkungen.................................................................................................... ......... 12
+6.1 Allgemeine Festlegungen ..................................................................................................... ............. 12
+6.2 Beurteilung der Schwingungsanfälligkeit von Bauwerken bei böenerregten
+Schwingungen .................................................................................................................................... 12
+6.3 Weitergehende Untersuchungen ................................................................................................ ...... 13
+7 Windgeschwindigkeit und Geschwindigkeitsdruck........................................................................ 13
+7.1 Allgemeines ................................................................................................................. ....................... 13
+7.2 Abminderung des Geschwindigkeitsdruckes bei vorübergehenden Zuständen......................... 14
+8 Winddruck bei nicht schwingungsanfälligen Konstruktionen....................................................... 14
+9 Windkräfte bei nicht schwingungsanfälligen Konstruktionen....................................................... 16
+9.1 Windkräfte .................................................................................................................. ......................... 16
+9.2 Windkräfte infolge von Reibung .............................................................................................. ......... 16
+10 Böengeschwindigkeitsdruck für nicht schwingungsanfällige Bauwerke und Bauteile .............. 17
+10.1 Verfahren zur Ermittlung des Böengeschwindigkeitsdruckes ...................................................... 17
+10.2 Vereinfachte Annahmen für den Böengeschwindigkeitsdruck bei Bauwerken bis zu
+einer Höhe von 25 m über Grund...................................................................................................... 17
+10.3 Höhenabhängiger Böengeschwindigkeitsdruck im Regelfall ........................................................ 18
+11 Dynamische Windwirkungen..................................................................................................... ........ 19
+11.1 Böenerregte Schwingungen................................................................................................... ........... 19
+11.2 Wirbelerregte Querschwingungen und aeroelastische Phänomene............................................. 19
+12 Aerodynamische Beiwerte...................................................................................................... ........... 20
+12.1 Druckbeiwerte für Gebäude.................................................................................................. ............. 20
+12.1.1 Allgemeines .............................................................................................................. .......................... 20
+12.1.2 Vertikale Wände von Gebäuden mit rechteckigem Grundriss ....................................................... 20
+12.1.3 Flachdächer .............................................................................................................. .......................... 23
+12.1.4 Pultdächer ............................................................................................................... ............................ 25
+12.1.5 Sattel- und Trogdächer ................................................................................................... ................... 27
+12.1.6 Walmdächer ............................................................................................................... ......................... 30
+12.1.7 Druckbeiwerte für Sheddächer ............................................................................................. ............ 32
+12.1.8 Innendruck bei geschlossenen Baukörpern.................................................................................. .. 34
+12.1.9 Druckbeiwerte auf die innen liegenden Oberflächen seitlich offener Baukörper ........................ 35
+12.1.10 Resultierender Winddruck für Außenwandbekleidungen .............................................................. 36
+12.2 Druckbeiwerte für freistehende Dächer ...................................................................................... ..... 37
+12.3 Druckbeiwerte für freistehende Wände und Kraftbeiwerte für Anzeigetafeln .............................. 39
+12.3.1 Druckbeiwerte für freistehende Wände..................................................................................... ....... 39
+12.3.2 Abschattungsfaktoren für freistehende Wände .............................................................................. 40
+12.3.3 Kraftbeiwerte für Anzeigetafeln .......................................................................................... .............. 41
+12.4 Kraftbeiwerte für Bauteile mit rechteckigem Querschnitt .............................................................. 42
+
+===== SEITE 3 =====
+DIN 1055-4:2005-03
+3
+Seite
+12.5 Kraftbeiwerte für Bauteile mit kantigem Querschnitt ......................................................................44
+12.6 Kraftbeiwerte für Bauteile mit regelmäßigem polygonalem Querschnitt ......................................44
+12.7 Kreiszylinder.............................................................................................................. ..........................46
+12.7.1 Kraftbeiwerte ............................................................................................................ ...........................46
+12.7.2 Kraftbeiwerte für vertikale Zylinder in Reihenanordnung...............................................................47
+12.7.3 Druckbeiwerte............................................................................................................ ..........................48
+12.8 Kraftbeiwerte für Kugeln ................................................................................................... .................50
+12.9 Kraftbeiwerte für Fachwerke................................................................................................ ..............50
+12.10 Abminderung der Windkräfte auf hintereinander liegende gleiche Stäbe, Tafeln oder
+Fachwerke............................................................................................................................................54
+12.11 Kraftbeiwerte für Flaggen................................................................................................. ..................55
+12.12 Reibungsbeiwerte .......................................................................................................... .....................56
+12.13 Effektive Schlankheit und Abminderungsfaktor /G79/G6c zur Berücksichtigung der
+Schlankheit ..........................................................................................................................................56
+Anhang A (normativ) Windzonenkarte ...........................................................................................................59
+A.1 Allgemeines ................................................................................................................. ........................59
+A.2 Einfluss der Meereshöhe..................................................................................................... ...............59
+Anhang B (normativ) Einfluss von Geländerauigkeit und Topographie .....................................................60
+Anhang C (normativ) Verfahren zur Ermittlung des Böenreaktionsfaktors................................................65
+C.1 Allgemeines ................................................................................................................. ........................65
+C.2 Statische Ersatzlast ........................................................................................................ ....................67
+C.3 Böenreaktionsfaktor ......................................................................................................... ..................68
+C.4 Verformungen und Beschleunigungen........................................................................................... ..73
+C.5 Interferenzeffekte .......................................................................................................... ......................75
+C.6 Überschreitungshäufigkeit von niedrigen Niveaus der Böenreaktion...........................................76
+Anhang D (normativ) Wirbelerregte Schwingungen .....................................................................................78
+D.1 Allgemeines ................................................................................................................. ........................78
+D.2 Berechnungsverfahren für wirbelerregte Querschwingungen.......................................................78
+D.2.1 Kritische Windgeschwindigkeit ............................................................................................. ............78
+D.2.2 Strouhalzahl.............................................................................................................. ...........................78
+D.2.3 Einwirkung infolge wirbelerregter Querschwingungen...................................................................80
+D.2.4 Berechnung der Querschwingungsamplitude .................................................................................80
+D.2.5 Aerodynamischer Erregerkraftbeiwert....................................................................................... .......81
+D.2.6 Wirklänge ................................................................................................................. ............................82
+D.2.7 Wirklängenfaktor KW ...........................................................................................................................84
+D.2.8 Beiwert der Schwingungsform K.......................................................................................................86
+D.2.9 Anzahl N der Spannungsschwingspiele ...........................................................................................86
+D.2.10 Maßnahmen gegen wirbelerregte Querschwingungen....................................................................87
+D.2.11 Ovalisierende Schwingungen zylinderförmiger Schalen ................................................................87
+Anhang E (normativ) Aeroelastische Instabilitäten und Interferenzeffekte................................................88
+E.1 Galloping................................................................................................................... ...........................88
+E.1.1 Allgemeines ............................................................................................................... ..........................88
+E.1.2 Einsetzgeschwindigkeit.................................................................................................... ..................88
+E.2 lnterferenzeffekte bei Reihen- oder Gruppenanordnung für Schwingungen quer zur
+Windrichtung .......................................................................................................................................90
+E.2.1 Allgemeines ............................................................................................................... ..........................90
+E.2.2 Wirbelresonanz............................................................................................................ ........................90
+E.2.3 Interferenzgalloping...................................................................................................... ......................91
+E.2.4 Klassisches Galloping..................................................................................................... ...................91
+E.3 Divergenz und Flattern ...................................................................................................... .................94
+E.3.1 Allgemeines ............................................................................................................... ..........................94
+E.3.2 Allgemeine Bedingungen für plattenförmige Baukörper ................................................................94
+E.3.3 Divergenzgeschwindigkeit .................................................................................................. ...............94
+
+===== SEITE 4 =====
+DIN 1055-4:2005-03
+4
+Seite
+Anhang F (normativ) Dynamische Grundlagen ............................................................................................ 96
+F.1 Allgemeines ................................................................................................................. ....................... 96
+F.2 Grundbiegeeigenfrequenz ..................................................................................................... ............ 96
+F.3 Grundbiegeschwingungsform ................................................................................................... ....... 98
+F.4 Äquivalente Masse ........................................................................................................... .................. 99
+F.5 Logarithmisches Dämpfungsdekrement.......................................................................................... 99
+Bilder
+Bild 1 — Druck auf Bauwerksflächen............................................................................................. ............... 15
+Bild 2 — Außendruckbeiwert für Bauwerke in Abhängigkeit von der Lasteinzugsfläche A .................... 20
+Bild 3 — Bezugshöhe ze in Abhängigkeit von der Höhe h und der Breite b ............................................... 21
+Bild 4 — Einteilung der Wandflächen bei vertikalen Wänden..................................................................... 2 2
+Bild 5 — Einteilung der Dachflächen bei Flachdächern ........................................................................... ... 24
+Bild 6 — Einteilung der Dachflächen bei Pultdächern............................................................................ ..... 26
+Bild 7 — Einteilung der Dachflächen bei Sattel- und Trogdächern ............................................................ 28
+Bild 8 — Einteilung der Dachflächen bei Walmdächern............................................................................ .. 31
+Bild 9 — Einteilung der Dachflächen bei Sheddächern............................................................................ ... 33
+Bild 10 — Innendruckbeiwerte c
+pi bei durchlässigen Außenwänden.......................................................... 35
+Bild 11 — Druckbeiwerte auf die innen liegenden Oberflächen seitlich offener Baukörper.................... 36
+Bild 12 — Einteilung der Wandfläche und Anströmrichtung ...................................................................... 39
+Bild 13 — Abschattungsfaktor /G79 s für Winddrücke auf hintereinander liegende Wände .......................... 41
+Bild 14 — Abmessungen bei Anzeigetafeln........................................................................................ .......... 42
+Bild 15 — Grundkraftbeiwerte cf,0 von scharfkantigen Rechteckquerschnitten ........................................ 43
+Bild 16 — Abminderungsfaktor /G79 r für einen quadratischen Querschnitt
+ mit abgerundeten Ecken............................................................................................................... 43
+Bild 17 — Bauteilquerschnitte.................................................................................................. ...................... 44
+Bild 18 — Bauteil mit regelmäßigem polygonalen Querschnitt.................................................................. 45
+Bild 19 — Grundkraftbeiwert cf,0 von Zylindern mit unendlicher Schlankheit für verschiedene
+ bezogene äquivalente Rauigkeiten k/b ........................................................................................ 46
+Bild 20 — Druckverteilung über einen zylindrischen Querschnitt ............................................................. 49
+Bild 21 — Kraftbeiwert einer Kugel in Windrichtung ............................................................................. ...... 50
+Bild 22 — Grundkraftbeiwert cf,0 für ein ebenes Fachwerk aus abgewinkelten scharfkantigen
+ Profilen in Abhängigkeit vom Völligkeitsgrad f......................................................................... 51
+Bild 23 — Grundkraftbeiwert cf,0 für ein räumliches Fachwerk aus abgewinkelten und
+ scharfkantigen Profilen in Abhängigkeit vom Völligkeitsgrad f .............................................. 52
+Bild 24 — Grundkraftbeiwert cf,0 für ebenes und räumliches Fachwerk aus Profilen mit
+ kreisförmigem Querschnitt........................................................................................................... 53
+Bild 25 — Abminderungsfaktor /G68 für die Summe der Windkräfte auf hintereinander liegende
+ gleiche Baukörper in Anhängigkeit vom Verhältnis x/h und vom Völligkeitsgrad f 
+ (bei vollwandigen Baukörpern: f = 1) ......................................................................................... 55
+Bild 26 — Abminderungsfaktor /G79/G6c in Abhängigkeit von der effektiven Schlankheit /G6c und
+ für verschiedene Völligkeitsgrade f............................................................................................ 56
+Bild 27 — Definition des Völligkeitsgrades f ............................................................................................... 58
+
+===== SEITE 5 =====
+DIN 1055-4:2005-03
+5
+Seite
+Bild A.1 — Windzonenkarte für das Gebiet der Bundesrepublik Deutschland..........................................59
+Bild B.1 — Faktor s für Klippen und Geländesprünge..................................................................................63
+Bild B.2 — Faktor s für Kuppen und Hügelkämme........................................................................................64
+Bild C.1 — Effektive Höhe ze ............................................................................................................................66
+Bild C.2 — Spitzenfaktor g...............................................................................................................................68
+Bild C.3 — Integrallängenmaß Li(z) der Turbulenz ........................................................................................70
+Bild C.4 — Böengrundanteil 2
+0Q .....................................................................................................................71
+Bild C.5 — Dimensionslose spektrale Dichtefunktion RN .............................................................................72
+Bild C.6 — Aerodynamische Übertragungsfunktionen Rl (l = h bzw. b).......................................................73
+Bild C.7 — Näherung des Koeffizienten Kx nach Gleichung (C.20) .............................................................75
+Bild C.8 — Anzahl der Überschreitungen Ng des Niveaus Se(Ng) einer Böenreaktion S
+ innerhalb eines Zeitraums von 50 Jahren...................................................................................77
+Bild D.1 — Strouhalzahl St für scharfkantige rechteckige Querschnittsformen........................................80
+Bild D.2 — Grundwert des aerodynamischen Erregerkraftbeiwertes clat,0 für Kreiszylinder
+ in Abhängigkeit von der Reynoldszahl Re (vcrit) ..........................................................................82
+Bild D.3 — Beispiele für den Ort der anzusetzenden Wirklänge .................................................................83
+Bild E.1 — Reihen- und Gruppenanordnungen von zylindrischen Baukörpern ........................................90
+Bild E.2 — Bezeichnungen der geometrischen Parameter für Interferenzgalloping.................................91
+Bild E.3 — Ableitung des aerodynamischen Koeffizienten des Momentes cM
+ nach der Torsionsverdrehung /G71 in Abhängigkeit des Seitenverhältnisses b/d......................95
+Bild F.1 — Abmessungen bei Schornsteinen....................................................................................... .........97
+Bild F.2 — Grundbiegeschwingungsform für Gebäude, Türme und Schornsteine,
+ die als Kragbauwerke ausgeführt sind .......................................................................................98
+Tabellen
+Tabelle 1 — Abgeminderter Geschwindigkeitsdruck zur Untersuchung
+ vorübergehender Zustände.......................................................................................................14
+Tabelle 2 — Vereinfachte Geschwindigkeitsdrücke für Bauwerke bis 25 m Höhe ....................................18
+Tabelle 3 — Außendruckbeiwerte für vertikale Wände rechteckiger Gebäude..........................................23
+Tabelle 4 — Außendruckbeiwerte für Flachdächer................................................................................. ......25
+Tabelle 5 — Außendruckbeiwerte für Pultdächer .................................................................................. .......27
+Tabelle 6 — Außendruckbeiwerte für Sattel- und Trogdächer.....................................................................2 9
+Tabelle 7 — Außendruckbeiwerte für Walmdächer.................................................................................. .....32
+Tabelle 8 — Druckbeiwerte für freistehende Dächer .............................................................................. ......38
+Tabelle 9 — Beiwerte für den resultierenden Druck c
+p,net für freistehende Wände .....................................40
+Tabelle 10 — Grundkraftbeiwerte cf,0 für regelmäßige polygonale Querschnitte.......................................45
+Tabelle 11 — Äquivalente Rauigkeiten........................................................................................... ................47
+Tabelle 12 — Erhöhungsfaktor /G6b für die Grundkraftbeiwerte cf,0
+ von in Reihe angeordneten Kreiszylindern ...........................................................................48
+
+===== SEITE 6 =====
+DIN 1055-4:2005-03
+6
+Seite
+Tabelle 13 — Typische Werte für Re, /G61/G61/G61/G61min, cp,0,min, /G61/G61/G61/G61A und cp,0,h ..................................................................... 49
+Tabelle 14 — Bezugsfläche A und Kraftbeiwert cf für hintereinander liegende Baukörper...................... 54
+Tabelle 15 — Reibungsbeiwerte cfr ................................................................................................................ 56
+Tabelle 16 — Effektive Schlankheit /G6c für Zylinder-, Vieleck-, Brücken- und
+ Rechteckquerschnitte sowie für Anzeigetafeln, scharfkantige Bauteile
+ und Fachwerkkonstruktionen ................................................................................................. 57
+Tabelle B.1 — Geländekategorien................................................................................................ .................. 60
+Tabelle B.2 — Profile der mittleren Windgeschwindigkeit, der Turbulenzintensität,
+ des Böengeschwindigkeitsdrucks und der Böengeschwindigkeit
+ in ebenem Gelände für 4 Geländekategorien ...................................................................... 61
+Tabelle B.3 — Profile der mittleren Windgeschwindigkeit, der Turbulenzintensität und
+ der Böengeschwindigkeit in ebenem Gelände für die Regelfälle nach 10.3..................... 62
+Tabelle B.4 — Werte für die effektive Länge Le............................................................................................. 62
+Tabelle C.1 — Exponent /G65............................................................................................................................... 70
+Tabelle C.2 — Profilexponent /G61...................................................................................................................... 74
+Tabelle C.3 — Beispiele für Interferenzfaktoren Ki für hohe Bauwerke in Reihen-
+ oder Gruppenanordnung ....................................................................................................... 76
+Tabelle D.1 — Strouhalzahl St und Grundwert des aerodynamischen Erregerkraft-
+ beiwertes clat,0 für verschiedene Querschnittsformen ......................................................... 79
+Tabelle D.2 — Aerodynamischer Erregerkraftbeiwert clat in Abhängigkeit vom Verhältnis der
+ kritischen Windgeschwindigkeit zur mittleren Windgeschwindigkeit vcrit,i / vm,Lj .............. 81
+Tabelle D.3 — Wirklänge Lj in Abhängigkeit von der Schwingwegamplitude yF,j ...................................... 83
+Tabelle D.4 — Wirklängenfaktor KW und Beiwert der Schwingungsform .................................................. 85
+Tabelle E.1 — Stabilitätsbeiwert für Galloping aG ........................................................................................ 89
+Tabelle E.2 — Rechenwerte für die Abschätzung der Antwort quer zur Windrichtung
+ von gekoppelten Zylindern in Reihen- und Gruppenanordnung ....................................... 93
+Tabelle F.1 — Grundbiegeschwingungsform von gelenkig gelagerten oder
+ beidseitig eingespannten Einfeldträgern .............................................................................9 9
+Tabelle F.2 — Parameter a1, b1, und /G64min ...................................................................................................... 101
+
+===== SEITE 7 =====
+DIN 1055-4:2005-03
+7
+Vorwort
+Die Norm ist Teil einer neuen Reihe DIN 1055 „Einwirkungen auf Tragwerke“ die aus folgenden weiteren
+Teilen bestehen wird:
+/Gbe Teil 1: Wichte und Flächenlasten von Baustoffen, Bauteilen und Lagerstoffen
+/Gbe Teil 2: Bodenkenngrößen (zz. Entwurf)
+/Gbe Teil 3: Eigen- und Nutzlasten für Hochbauten
+/Gbe Teil 4: Windlasten
+/Gbe Teil 5: Schnee- und Eislasten (zz. Entwurf)
+/Gbe Teil 6: Einwirkungen auf Silos und Flüssigkeitsbehälter
+/Gbe Teil 7: Temperatureinwirkungen
+/Gbe Teil 8: Einwirkungen während der Bauausführung
+/Gbe Teil 9: Außergewöhnliche Einwirkungen
+/Gbe Teil 10: Einwirkungen infolge Krane und Maschinen
+/Gbe Teil 100: Grundlagen der Tragwerksplanung, Sicherheitskonzept und Bemessungsregeln
+Die vorliegende Norm wurde unter Verantwortung des Arbeitsausschusses NABau 00.02.00 auf der
+Grundlage von DIN V ENV 1991-2-4 erarbeitet.
+Die Neufassung der Normenreihe DIN 1055 erfolgt einerseits mit der Zielsetzung, offensichtlich überalterte
+Regelungen dem fortgeschrittenen anerkannten Stand der Technik anzupassen. Andererseits soll der
+Umsetzung der entsprechenden Europäischen Vornormen der Reihe ENV 1991 in die praktische Anwendung
+Vorschub geleistet werden. Eine direkte Übernahme der Europäischen Vornormen der Reihe ENV 1991
+erschien den zuständigen deutschen Fachkreisen nicht sinnvoll, da zu dieser Reihe Einsprüche verschiedener
+CEN-Mitglieder vorliegen, die bei der Überführung in Europäische Normen Änderungen und Ergänzungen
+erwarten lassen.
+Abweichungen der vorliegenden Norm von DIN ENV 1991-2-4:1998-12 entsprechen teilweise dem deutschen
+Einspruch und beinhalten darüber hinaus Änderungen und Ergänzungen, die nach Auffassung des
+zuständigen NABau-Arbeitsausschusses den Anforderungen der deutschen Bemessungspraxis genügen und
+die den allgemein anerkannten Stand der Technik wiedergeben.
+Änderungen
+Gegenüber DIN 1055-4:1986-08 und DIN 1055-4/A1:1987-06 wurden folgende Änderungen vorgenommen:
+a) vollständige Überarbeitung auf der Grundlage von DIN V ENV 1991-2-4 und unter Berücksichtigung der
+Arbeiten an der Fortschreibung dieser Vornorm;
+b) Übernahme des europäischen Konzepts zur Ermittlung von Windkarten auf der Grundlage von
+Windzonen;
+c) Regelungen für schwingungsanfällige Tragwerke;
+d) Erweiterung der Beispiele für aerodynamische Beiwerte;
+e) Regelungen für den Einfluss der Geländerauigkeit;
+f) Regelungen für wirbelerregte Querschwingungen.
+Frühere Ausgaben
+Bbl zu DIN 1055-4: 1939-06, 1941-02
+DIN 1055-4/A1: 1987-06
+DIN 1055-4: 1938xxx-06, 1977-05, 1986-08
+
+===== SEITE 8 =====
+DIN 1055-4:2005-03
+8
+Einleitung
+In dieser Norm wird in Abhängigkeit vom Charakter der einzelnen Regelungen zwischen Prinzipien und
+Anwendungsregeln unterschieden.
+Prinzipien enthalten:
+/Gbe allgemeine Festlegungen und Angaben, die in jedem Fall einzuhalten sind,
+/Gbe Anforderungen und Rechenmodelle, für die keine Abweichungen erlaubt sind, sofern dies nicht
+ausdrücklich angegeben ist.
+Anwendungsregeln sind allgemein anerkannte Regeln, die den Prinzipien folgen und deren Anforderungen
+erfüllen. Abweichungen von den Anwendungsregeln sind zulässig, wenn diese die maßgebenden Prinzipien
+erfüllen und hinsichtlich des Zuverlässigkeitsniveaus dieser Norm mindestens gleichwertig sind.
+Im Gegensatz zu Prinzipien sind Anwendungsregeln kursiv gedruckt.
+1 Anwendungsbereich
+(1) Diese Norm gibt die allgemeinen Vorgehensweisen und die Einwirkungen zur Ermittlung von Windlasten
+für die Bemessung von Hoch- und lngenieurbauwerken einschließlich einiger geotechnischer Aspekte an und
+ist in Verbindung mit den anderen Normen der Reihe DIN 1055 anwendbar.
+(2) Diese Norm enthält Regeln und Verfahren für die Berechnung von Windlasten auf Bauwerke bis zu einer
+Höhe von 300 m sowie auf deren einzelne Bauteile und Anbauten.
+(3) Diese Norm enthält auch Berechnungsverfahren für Schornsteine und andere vertikale Kragsysteme.
+Besondere Anforderungen für Gittermaste sind nicht enthalten.
+(4) Für abgespannte Maste wird auf ENV 1993-3-1 verwiesen.
+(5) Diese Norm behandelt weiterhin die Windlast für vorübergehende Zustände.
+(6) Diese Norm kann auch als Grundlage für eine Ermittlung von Windlasten für Bauwerke oder Bauteile
+herangezogen werden, die nicht ausdrücklich im Anwendungsbereich genannt sind.
+(7) Für die Anwendung der Norm bei der Ermittlung der Lasten für die Windsogsicherung von
+kleinformatigen, überlappend verlegten Bauteilen (z. B. Dachziegel oder Dachsteine) können abweichende
+Regelungen maßgebend sein.
+(8) Diese Norm gibt keine Regeln für die Windlasten auf Brücken. Sie sind den entsprechenden Fachnormen
+zu entnehmen.
+(9) Diese Norm enthält keine Regeln für Bauwerke mit besonderen Zuverlässigkeitsanforderungen wie zum
+Beispiel Bauwerke aus dem Bereich der Kerntechnik, für die besondere Bemessungsvorschriften anzu-
+wenden sind.
+2 Normative Verweisungen
+Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen).
+DIN 1055-100:2001-03, Einwirkungen auf Tragwerke — Teil 100: Grundlagen der Tragwerksplanung,
+Sicherheitskonzept und Bemessungsregeln
+ENV 1993-3-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten — Teil 3-1: Türme, Maste und
+Schornsteine — Türme und Maste
+
+===== SEITE 9 =====
+DIN 1055-4:2005-03
+9
+3 Begriffe, Symbole und Abkürzungen
+3.1 Begriffe
+Für die Anwendung dieser Norm gelten die in DIN 1055-100 angegebenen Begriffe.
+3.2 Symbole und Abkürzungen
+Lateinische Großbuchstaben
+Afr Summe der vom Wind überströmten Flächen (benetzte Fläche)
+Aref Bezugsfläche
+Ffr resultierende Reibungskraft
+Fw Gesamtwindkraft, die auf ein Gebäude einwirkt
+G Böenreaktionsfaktor
+Hs Meereshöhe, in m
+Sc Scrutonzahl
+St Strouhalzahl
+R
+h, Rb Übertragungsfunktionen
+RN dimensionslose spektrale Dichtefunktion
+Rx Resonanz-Antwortanteil
+Lateinische Kleinbuchstaben
+b Breite des Bauteils oder Bauwerks
+cf aerodynamischer Kraftbeiwert
+cfr aerodynamischer Reibungsbeiwert
+cpe aerodynamischer Beiwert für den Außendruck
+cpi aerodynamischer Beiwert für den Innendruck
+cp,net aerodynamischer Beiwert für den resultierenden Druck
+d Abmessung parallel zur Anströmrichtung
+e Ausmittigkeit einer Kraft quer zu einer Körperachse
+g Böenspitzenfaktor
+h Höhe des Bauwerks
+k äquivalente Rauigkeiten
+
+===== SEITE 10 =====
+DIN 1055-4:2005-03
+10
+k/G71 Torsionssteifigkeit
+m1,x äquivalente Masse für Schwingungen in Windrichtung
+n1,x Grundeigenfrequenz der Bauwerksschwingungen in Windrichtung
+q Geschwindigkeitsdruck, der einer Windgeschwindigkeit v zugeordnet ist
+qref zur zeitlich gemittelten Windgeschwindigkeit vref gehörender Geschwindigkeitsdruck
+v Windgeschwindigkeit
+vCG Einsetzgeschwindigkeit für Galloping
+vcrit kritische Windgeschwindigkeit
+vdiv kritische Windgeschwindigkeit für Divergenz
+vref zeitlich gemittelte Windgeschwindigkeit
+we Winddruck, der auf die Außenfläche eines Bauwerks wirkt
+wi Winddruck, der auf Oberfläche im Inneren eines Bauwerks wirkt
+xs Kopfpunktverschiebung eines Kragträgers unter Eigenlast in Windrichtung wirkend angenommen
+ze, zi Bezugshöhe für den Außendruck bzw. lnnendruck oder Kraftbeiwert
+z Höhe über Grund
+Griechische Großbuchstaben
+/G46._ Schwingungsform
+Griechische Kleinbuchstaben
+/G61 Dachneigungswinkel
+/G64 logarithmisches Dämpfungsdekrement nach Anhang F
+f Völligkeitsgrad
+/G6d Flächenparameter für die Durchlässigkeit von Wänden
+/G6e kinematische Zähigkeit
+/G72 Luftdichte
+/G79/G6c Abminderungsfaktor für den aerodynamischen Kraftbeiwert für Bauwerke und Bauteile mit endlicher
+Schlankheit
+/G79r Abminderungsfaktor für quadratische Querschnitte mit abgerundeten Ecken
+/G79s Abschattungsfaktor
+/G71 Anströmrichtung
+
+===== SEITE 11 =====
+DIN 1055-4:2005-03
+11
+Indizes
+e Außen; Standort
+fr Reibung
+i Innen-; Ordnung der Eigenfrequenz bzw. Eigenform
+j Nummer des Abschnittes oder eines Punktes eines Bauwerks oder Bauteils
+ref Bezug
+v Windgeschwindigkeit
+x in Windrichtung
+y quer zur Windrichtung
+z in vertikaler Richtung
+4 Klassifizierung der Einwirkungen
+(1) Windlasten werden als veränderliche, freie Einwirkungen eingestuft.
+(2) Die mit den Regeln dieser Norm ermittelten Geschwindigkeitsdrücke sind als charakteristische Größen
+mit einer jährlichen Überschreitungswahrscheinlichkeit von 0,02 aufzufassen.
+(3) Alle bei der Bemessung anzusetzenden Windlasten werden als unabhängige Einwirkungen betrachtet.
+(siehe DIN 1055-100:2001-03, A.1).
+5 Bemessungssituationen
+(1) Die Windlasten müssen für jeden belasteten Bereich ermittelt werden. Belastete Bereiche können sein:
+/Gbe das gesamte Bauwerk;
+/Gbe Teile des Bauwerks, das heißt Bauteile, Fassadenelemente und deren Befestigungsteile.
+(2) Die Folgen anderer Einwirkungen (z. B. Schnee, Verkehr, Eis), die sich auf die Bezugsfläche oder die
+aerodynamischen Beiwerte erheblich auswirken, sind zu berücksichtigen. Für Eisansatz dürfen die Windlasten
+nach 7.2 angesetzt werden
+(3) Sind Bauwerke durch massive Wände und Decken erfahrungsgemäß ausreichend ausgesteift, so
+braucht in der Regel die Windbeanspruchung der Gesamtkonstruktion nicht nachgewiesen zu werden.
+(4) Dynamisch beanspruchte Bauwerke oder Bauteile sind gegebenenfalls hinsichtlich ihrer Ermüdungs-
+beanspruchung zu untersuchen.
+
+===== SEITE 12 =====
+DIN 1055-4:2005-03
+12
+6 Erfassung der Einwirkungen
+6.1 Allgemeine Festlegungen
+(1) Die Windlasten werden in dieser Norm in Form von Winddrücken und Windkräften erfasst. Die Windlast
+ist unabhängig von der Himmelsrichtung mit dem vollen Rechenwert des Geschwindigkeitsdruckes wirkend zu
+berechnen. Eine genauere Berücksichtigung des Einflusses der Windrichtung ist zulässig, wenn ausreichend
+gesicherte statistische Erkenntnisse vorliegen.
+(2) Die Winddrücke wirken auf außen liegende Oberflächen von Baukörpern und infolge der Durchlässigkeit
+der äußeren Hülle auch auf innen liegende Oberflächen. Der Winddruck wirkt normal zur betrachteten
+Oberfläche. Wenn der Wind an größeren Flächen vorbeistreicht, kann es erforderlich werden, auch die
+parallel zur Fläche wirkenden Reibungskräfte zu berücksichtigen.
+(3) Bei ausreichend steifen, nicht schwingungsanfälligen Tragwerken oder Bauteilen genügt es, die
+Windwirkung durch den Ansatz einer statischen Ersatzlast nach den Abschnitten 8 bis 10 zu erfassen. Die
+Ersatzlasten werden auf der Grundlage von Böengeschwindigkeiten festgelegt.
+(4) Bei schwingungsanfälligen Konstruktionen wird die Beanspruchung infolge von böenerregten
+Schwingungen durch eine statische Ersatzlast nach Anhang C erfasst. Die Ersatzlast beruht auf der zeitlich
+gemittelten Windlast, die um den Böenreaktionsfaktor vergrößert wird.
+(5) Gegebenenfalls sind sonstige dynamische Windwirkungen und aeroelastische lnstabilitätseffekte zu
+untersuchen. Dazu zählen:
+/Gbe wirbelerregte Querschwingungen infolge periodischer Wirbelablösung an zylindrischen oder
+prismatischen Baukörpern. Die Bauwerksbeanspruchungen können mit Hilfe des in Abschnitt 11
+angegebenen Verfahrens bestimmt werden;
+/Gbe selbsterregte Schwingungen, wie z. B. Galloping und Flatterschwingungen. Die Bauwerksreaktionen
+können mit Hilfe der in Abschnitt 11 angegebenen Hilfen behandelt werden;
+/Gbe lnstabilitätseffekte, z. B. Divergenz (siehe Abschnitt 11);
+/Gbe lnterferenzschwingungen infolge Beeinflussung durch benachbarte Baukörper. Für derartige Fälle sind in
+Abschnitt 11 Hilfen gegeben;
+/Gbe stochastische Translationsschwingungen quer zur Windrichtung sowie stochastische
+Torsionsschwingungen;
+/Gbe Schwingungen von Hängern und Seilen, die durch die kombinierte Wirkung von Regen und Wind
+induziert werden können.
+6.2 Beurteilung der Schwingungsanfälligkeit von Bauwerken bei böenerregten
+Schwingungen
+(1) Bauwerke gelten als nicht schwingungsanfällig gegenüber der Böenwirkung, wenn die Verformungen
+unter Windeinwirkungen durch Böenresonanz um nicht mehr als 10 % vergrößert werden.
+
+===== SEITE 13 =====
+DIN 1055-4:2005-03
+13
+(2) Im Übrigen dürfen die Windlasten für Baukonstruktionen, die als Kragträger wirken, nach dem
+vereinfachten Verfahren des Abschnitts 10 ermittelt werden, wenn folgendes Kriterium eingehalten wird:
+m25mit
+1250
+2 /G3d
+/Gf7
+/Gf7
+/Gf8
+/Gf6
+/Ge7
+/Ge7
+/Ge8
+/Ge6
+/Gb4/G2b/G2b/Gb4
+/Ga3 ref
+ref
+ref
+s
+,
+h
+h
+h
+b
+bh
+h
+hh
+x /G64 (1)
+Dabei ist
+xs die Kopfpunktverschiebung unter Eigenlast in Windrichtung wirkend angenommen, in m;
+/G64 das logarithmische Dämpfungsdekrement nach Anhang F;
+b die Breite des Bauwerks, in m;
+h die Höhe des Bauwerks, in m.
+(3) Ohne besonderen Nachweis dürfen in der Regel Wohn-, Büro- und lndustriegebäude mit einer Höhe bis
+zu 25 m und ihnen in Form oder Konstruktion ähnliche Gebäude als nicht schwingungsanfällig im Sinne dieser
+Norm angenommen werden.
+6.3 Weitergehende Untersuchungen
+(1) Die Berücksichtigung weitergehender Untersuchungen, die dem Stande des Wissens entsprechen, ist
+zulässig.
+(2) Falls Windkanalversuche herangezogen werden, ist hierfür ein geeigneter Grenzschichtwindkanal (z. B.
+entsprechend dem WTG-Merkblatt „Windkanalversuche in der Gebäudeaerodynamik", Windtechnologische
+Gesellschaft WTG e. V.) zu verwenden, in dem die Profile der mittleren Windgeschwindigkeit und der
+Turbulenzintensität hinreichend genau modelliert werden. Die Messungen und deren Auswertung sind mit
+geeigneten Verfahren durchzuführen.
+7 Windgeschwindigkeit und Geschwindigkeitsdruck
+7.1 Allgemeines
+(1) Der Geschwindigkeitsdruck q, der einer Windgeschwindigkeit v zugeordnet ist, beträgt:
+2
+2 v/Gb4/G3d/G72q (2)
+(2) Die Luftdichte hängt von der Meereshöhe, der Lufttemperatur und dem Luftdruck ab. Sofern nicht anders
+geregelt, wird ein Wert von /G72 = 1,25 kg/m³ benutzt. Dieser Wert ergibt sich bei einem Luftdruck von 1 013 hPa
+und einer Temperatur von 10 °C in Meereshöhe. Hiermit wird:
+6001
+2v/G3dq (3)
+mit den Einheiten für q in kN/m², v in m/s.
+
+===== SEITE 14 =====
+DIN 1055-4:2005-03
+14
+(3) In der Windzonenkarte in Anhang A sind zeitlich gemittelte Windgeschwindigkeiten vref und zugehörige
+Geschwindigkeitsdrücke qref angegeben. Die charakteristischen Werte gelten für eine Mittelung über einen
+Zeitraum von 10 min mit einer Überschreitungswahrscheinlichkeit innerhalb eines Jahres von 0,02. Die
+Geschwindigkeit vref gilt für eine Höhe von 10 m über Grund in ebenem, offenen Gelände.
+(4) Die Geschwindigkeitsdrücke gelten für ebenes Gelände. Bei exponiertem Gebäudestandort kann eine
+Erhöhung nach Anhang B erforderlich werden.
+7.2 Abminderung des Geschwindigkeitsdruckes bei vorübergehenden Zuständen
+(1) Für Bauwerke, die nur zeitweilig bestehen, sowie für vorübergehende Zustände, z. B. für Bauwerke im
+Bauzustand, darf die Windlast abgemindert werden.
+(2) Die Größe der Abminderung hängt von der Dauer des Zustandes sowie von der Möglichkeit von
+Sicherungsmaßnahmen für den Fall aufkommenden Sturms ab.
+(3) Abminderungsfaktoren für den Geschwindigkeitsdruck zur Untersuchung solcher Zustände sind in
+Tabelle 1 angegeben. Deren Anwendung führt zu einer angemessenen Tragsicherheit für die Dauer des
+vorübergehenden Zustandes.
+(4) Die Reduzierung der rechnerischen Geschwindigkeitsdrücke nach Tabelle 1, Spalten 2 und 3, gilt für den
+Nachweis der ungesicherten Konstruktion. Ihre Anwendung setzt voraus, dass die Wetterlage ausreichend
+genau beobachtet wird, gegebenenfalls Sturmwarnungen durch einen qualifizierten Wetterdienst eingeholt
+werden und die Sicherungsmaßnahmen rechtzeitig vor aufkommenden Sturm abgeschlossen werden können.
+Tabelle 1 — Abgeminderter Geschwindigkeitsdruck zur Untersuchung vorübergehender Zustände
+Dauer des
+vorübergehenden
+Zustands
+Mit schützenden
+Sicherungsmaßnahmen
+a 
+Mit verstärkenden
+Sicherungsmaßnahmen
+Ohne
+Sicherungsmaßnahmen
+bis zu 3 Tagen 0,1 /Gb4 q 0,2 /Gb4 q 0,5 /Gb4 q
+bis zu 3 Monaten von
+Mai bis August
+0,2 /Gb4 q 0,3 /Gb4 q 0,5 /Gb4 q
+bis zu 12 Monaten 0,2 /Gb4 q 0,3 /Gb4 q 0,6 /Gb4 q
+bis zu 24 Monaten 0,2 /Gb4 q 0,4 /Gb4 q 0,7 /Gb4 q
+a Schützende Sicherungsmaßnahmen sind z. B.: Niederlegen von Bauteilen am Boden, Einhausung oder Einschub in Hallen.
+(5) Die im Falle aufkommenden Sturms durch verstärkende Sicherungsmaßnahmen ertüchtigte Konstruktion
+ist für einen Geschwindigkeitsdruck nach Tabelle 1, Spalte 4 zu bemessen.
+(6) Bei Bauten, die jederzeit errichtet und demontiert werden können, z. B. fliegende Bauten und Gerüste,
+darf die Abminderung nicht angewendet werden, es sei denn, dies wird in Fachnormen anders geregelt.
+8 Winddruck bei nicht schwingungsanfälligen Konstruktionen
+(1) Die Angaben zum Winddruck gelten für ausreichend steife Konstruktionen, bei denen die böenerregten
+Resonanzschwingungen vernachlässigbar sind.
+
+===== SEITE 15 =====
+DIN 1055-4:2005-03
+15
+(2) Der Winddruck, der auf eine Außenfläche eines Bauwerks wirkt, ist
+)( epee zqcw /Gb4/G3d (4)
+Dabei ist
+cpe der aerodynamische Beiwert für den Außendruck nach Abschnitt 12;
+ze die Bezugshöhe nach Abschnitt 12;
+q der Geschwindigkeitsdruck nach Abschnitt 10.
+(3) Der Winddruck, der auf eine Oberfläche im Inneren eines Bauwerks wirkt, ist
+)( ipii zqcw /Gb4/G3d (5)
+Dabei ist
+cpi der aerodynamische Beiwert für den Innendruck nach Abschnitt 12;
+zi die Bezugshöhe nach Abschnitt 12.
+(4) Der Innendruck in einem Gebäude hängt von Größe und Lage der Öffnungen in der Außenhaut ab. Er
+wirkt auf alle Raumabschlüsse eines Innenraumes gleichzeitig und mit gleichem Vorzeichen.
+(5) Die Belastung infolge von Winddruck ist die Resultierende von Außen- und Innendruck. Beispiele für die
+Überlagerung sind in Bild 1 angegeben. Sofern der Innendruck entlastend auf eine betrachtete
+Reaktionsgröße einwirkt, ist er zu null anzunehmen.
+(6) Die angegebenen Winddrücke wirken nicht notwendigerweise gleichzeitig auf allen Punkten der
+Oberfläche. Der entsprechende Einfluss auf eine betrachtete Reaktionsgröße ist gegebenenfalls zu
+untersuchen.
+(7) Dieses trifft insbesondere für weitgespannte Rahmen- und Bogentragwerke zu. Eine in der Regel
+konservative Abschätzung besteht darin, die günstig wirkenden Lastanteile zu null zu setzen.
+Bild 1 — Druck auf Bauwerksflächen
+
+===== SEITE 16 =====
+DIN 1055-4:2005-03
+16
+9 Windkräfte bei nicht schwingungsanfälligen Konstruktionen
+9.1 Windkräfte
+(1) Die Gesamtwindkraft, die auf ein Bauwerk oder ein Bauteil einwirkt, wird wie folgt berechnet:
+refefw )( AzqcF /Gb4/Gb4/G3d (6)
+Dabei ist
+cf der aerodynamische Kraftbeiwert nach Abschnitt 12;
+ze die Bezugshöhe nach Abschnitt 12;
+Aref die Bezugsfläche für den Kraftbeiwert nach Abschnitt 12;
+q der Geschwindigkeitsdruck nach Abschnitt 10.
+(2) Die Lage des Lastangriffspunktes der Gesamtwindkraft richtet sich nach Gestalt und Lage des
+Baukörpers. Sie ist in Abschnitt 12 angegeben.
+(3) Bei Baukörpern, deren Höhe bzw. Länge größer ist als das Zweifache der Breite quer zur Windrichtung,
+darf die Windkraft abschnittsweise berechnet werden. Auf den Körperabschnitt j wirkt die Windkraft Fwj:
+jejfjwj )( AzqcF /Gb4/Gb4/G3d (7)
+Dabei ist
+cfj der erodynamische Kraftbeiwert im Teilabschnitt j; Angaben finden sich in 12.3.3 sowie 12.4 bis 12.8;
+zej die Höhe der Oberkante des Abschnittes j über Grund;
+Aj die Bezugsfläche, auf die der Kraftbeiwert bezogen ist.
+(4) Für die Gesamtwindkräfte nach Gleichung (6) und die abschnittweisen Windkräfte nach Gleichung (7) ist
+eine Ausmitte von
+10bzw.10
+j
+j
+j
+j
+d
+e
+b
+e /G3d/G3d (8)
+anzusetzen, soweit in Abschnitt 12 nichts anderes geregelt ist.
+Dabei ist
+bj bzw. dj die Breite bzw. Tiefe des Baukörpers im Teilabschnitt j.
+9.2 Windkräfte infolge von Reibung
+(1) Reibungskräfte, die tangential an einer umströmten Fläche wirken, dürfen in der Regel gegenüber den
+Druckkräften vernachlässigt werden. Bei flächenartigen Baukörpem, die parallel angeströmt werden, wie z. B.
+freistehende Überdachungen geringer Konstruktionshöhe, werden die Reibungskräfte jedoch bedeutsam.
+
+===== SEITE 17 =====
+DIN 1055-4:2005-03
+17
+(2) Die Größe der Reibungskräfte wird wie folgt berechnet:
+frefrfr )( AzqcF /Gb4/Gb4/G3d (9)
+Dabei ist
+cfr der aerodynamische Reibungsbeiwert nach 12.11;
+ze die Bezugshöhe nach 12.11;
+Afr die Summe der umströmten Flächen (benetzte Flächen).
+10 Böengeschwindigkeitsdruck für nicht schwingungsanfällige Bauwerke und
+Bauteile
+10.1 Verfahren zur Ermittlung des Böengeschwindigkeitsdruckes
+(1) Den Regelungen für den Geschwindigkeitsdruck, der bei nicht schwingungsanfälligen Konstruktionen
+angewendet wird, liegt eine Böengeschwindigkeit zu Grunde, die über eine Böendauer von 2 s bis 4 s
+gemittelt ist.
+(2) Zur Bestimmung von Winddrücken nach Abschnitt 8 und Windkräften nach Abschnitt 9 wird der
+Geschwindigkeitsdruck nach einem der Verfahren nach 10.2 oder 10.3 ermittelt.
+(3) Für niedrige Bauwerke darf ein vereinfachter, über die Höhe konstanter Geschwindigkeitsdruck nach 10.2
+benutzt werden.
+(4) Das Anwachsen des Geschwindigkeitsdruckes mit der Höhe über Grund wird in der Regel nach 10.3
+erfasst.
+(5) Die Richtung der Windanströmung darf horizontal angenommen werden. Ein vertikaler Einfallwinkel der
+Windanströmung von /Gb1 10° ist anzusetzen, wenn die Windlast dadurch wesentlich ungünstiger wird.
+(6) Für die Bestimmung von Windkräften darf das Verfahren nach Anhang C für schwingungsanfällige
+Tragstrukturen auch bei nicht schwingungsanfälligem Tragverhalten benutzt werden.
+10.2 Vereinfachte Annahmen für den Böengeschwindigkeitsdruck bei Bauwerken bis zu
+einer Höhe von 25 m über Grund
+(1) Bei Bauwerken, die sich in Höhen bis 25 m über Grund erstrecken, darf der Geschwindigkeitsdruck zur
+Vereinfachung konstant über die gesamte Gebäudehöhe angenommen werden. Die entsprechenden
+Geschwindigkeitsdrücke sind in Tabelle 2 für die 4 Windzonen nach Anhang A angegeben.
+(2) Die Werte, die in Tabelle 2 für die Küste angegeben sind, gelten für küstennahe Gebiete in einem
+Streifen entlang der Küste mit 5 km Breite landeinwärts sowie auf den Inseln der Ostsee. Auf den Inseln der
+Nordsee ist das vereinfachte Verfahren nur bis zu einer Gebäudehöhe von 10 m zugelassen. Bei höheren
+Gebäuden ist nach 10.3 zu verfahren.
+
+===== SEITE 18 =====
+DIN 1055-4:2005-03
+18
+Tabelle 2 — Vereinfachte Geschwindigkeitsdrücke für Bauwerke bis 25 m Höhe
+Geschwindigkeitsdruck q in kN/m²
+bei einer Gebäudehöhe h in den Grenzen vonWindzone
+h /Ga3/Ga3/Ga3/Ga3 10 m 10 m < h /Ga3/Ga3/Ga3/Ga3 18 m 18 m < h /Ga3/Ga3/Ga3/Ga3 25 m
+1 Binnenland 0,50 0,65 0,75
+Binnenland 0,65 0,80 0,90
+2
+Küste und Inseln der Ostsee 0,85 1,00 1,10
+Binnenland 0,80 0,95 1,10
+3
+Küste und Inseln der Ostsee 1,05 1,20 1,30
+Binnenland 0,95 1,15 1,30
+Küste der Nord- und Ostsee und
+Inseln der Ostsee 1,25 1,40 1,554
+Inseln der Nordsee 1,40 – –
+10.3 Höhenabhängiger Böengeschwindigkeitsdruck im Regelfall
+(1) Die Bodenrauigkeit, die durch Bewuchs und Bebauung erzeugt wird, beeinflusst das Profil des
+Geschwindigkeitsdruckes. Für Bauwerke, die sich in größere Höhen als 25 m über Grund erstrecken, ist
+dieser Einfluss nach den Gleichungen (10) bis (17) bzw. nach Anhang B genauer zu erfassen.
+(2) In Anhang B sind Profile des Böengeschwindigkeitsdruckes für 4 Geländekategorien angegeben, mit
+denen der Einfluss der Bodenrauigkeit erfasst wird. Stromab von einem Rauigkeitswechsel nimmt das
+Windprofil in einer Übergangszone allmählich die Form an, die der neuen Rauigkeit entspricht. In dieser
+Übergangszone treten Mischprofile auf, die vom Abstand zum Rauigkeitswechsel abhängen. Da große
+Gebiete mit gleichförmiger Bodenrauigkeit in Deutschland selten vorkommen, treten in der Regel überwiegend
+Mischprofile auf.
+(3) Als Regelfall sind drei Profile des Böengeschwindigkeitsdruckes angegeben. Das erste gilt im
+Binnenland, das zweite in einem Streifen entlang der Küste mit 5 km Breite landeinwärts (küstennahe
+Gebiete) sowie auf den Ostseeinseln und das dritte auf den Inseln der Nordsee.
+(4) Diese sind wie folgt anzunehmen:
+a) im Binnenland (Mischprofil der Geländekategorien II und III):
+m7für51 /Ga3/Gb4/G3d zqzq ref,)( (10)
+m50m7für1071
+370
+/Ga3/G3c/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4/G3d zzqzq
+,
+ref,)( (11)
+m300m50für1012
+240
+/Ga3/G3c/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4/G3d zzqzq
+,
+ref,)( (12)
+b) in küstennahen Gebieten sowie auf den Inseln der Ostsee (Mischprofil der Geländekategorien I und II):
+m4für81 /Ga3/Gb4/G3d zqzq ref,)( (13)
+
+===== SEITE 19 =====
+DIN 1055-4:2005-03
+19
+m50m4für1032
+270
+/Ga3/G3c/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4/G3d zzqzq
+,
+ref,)( (14)
+m300m50für1062
+190
+/Ga3/G3c/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4/G3d zzqzq
+,
+ref,)( (15)
+c) auf den Inseln der Nordsee (Geländekategorie I):
+m2fürkN/m1,1)( 2 /Ga3/G3d zzq (16)
+m300m2fürkN/m1051 2
+190
+/Ga3/G3c/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4/G3d zzqzq
+,
+ref,)( (17)
+Der Geschwindigkeitsdruck qref der mittleren Referenzgeschwindigkeit vref ist in der Windzonenkarte in
+Bild A.1 des Anhangs A angegeben.
+(5) Der Einfluss der Bodenrauigkeit darf abweichend von den Gleichungen (10) bis (17) genauer nach
+Anhang B bewertet werden.
+(6) Ist der Gebäudestandort topografisch exportiert, so ist die Auswirkung auf die Windlast zu erfassen. Ein
+Untersuchungsverfahren wird in Anhang B angegeben. Das Gleiche gilt für Gebäudestandorte an
+ausgedehnten Binnengewässerflächen.
+11 Dynamische Windwirkungen
+11.1 Böenerregte Schwingungen
+(1) Resonanzüberhöhungen bei schwingungsanfälligen Bauwerken werden erfasst, indem die zeitlich
+gemittelten Windkräfte um den Böenreaktionsfaktor G vergrößert werden.
+(2) Der Böenreaktionsfaktor erfasst sowohl die dynamische Resonanzüberhöhung der Tragstruktur als auch
+die räumliche Mittelung der Erregung durch Windturbulenz über die Größe der Lasteinzugsfläche.
+(3) Der Böenreaktionsfaktor G wird nach Anhang C ermittelt.
+11.2 Wirbelerregte Querschwingungen und aeroelastische Phänomene
+Schlanke Baukörper müssen gegebenenfalls hinsichtlich folgender Schwingungserscheinungen und
+Instabilitätseffekte untersucht werden:
+/Gbe wirbelerregte Querschwingungen;
+/Gbe Galloping;
+/Gbe Flattern;
+/Gbe Divergenz;
+/Gbe Interferenzgalloping;
+/Gbe Regen-Wind-induzierte Schwingungen.
+Hinweise für die Untersuchung dieser Phänomene sind in den Anhängen D und E angegeben.
+
+===== SEITE 20 =====
+DIN 1055-4:2005-03
+20
+12 Aerodynamische Beiwerte
+12.1 Druckbeiwerte für Gebäude
+12.1.1 Allgemeines
+(1) Die Außendruckbeiwerte cpe für Bauwerke und Bauteile hängen von der Größe der Lasteinzugsfläche A
+ab. Sie werden in den maßgebenden Tabellen für die entsprechende Gebäudeform für Lasteinzugsflächen
+von 1 m² und von 10 m² als cpe,1 bzw. cpe,10 angegeben. Für andere Größen der Lasteinzugsfläche wird die
+Änderung der Werte aus Bild 2 erhalten.
+Die Außendruckbeiwerte gelten für nicht hinterlüftete Wand- und Dachflächen.
+cpe ist wie folgt festgelegt:
+2
+2
+2
+1
+m10
+m10m1
+m1
+fürg 2
+pe,10
+pe,1pe,10
+pe,1
+pepe
+/G3e
+/Ga3/G3c
+/Ga3
+/Gef
+/Gee
+/Gef
+/Ged
+/Gec
+/Gb4/G2d/G2b/G3d
+A
+A
+A
+c
+A)cc(
+c
+cc , l (18)
+Bild 2 — Außendruckbeiwert für Bauwerke in Abhängigkeit von der Lasteinzugsfläche A
+(2) Die Werte für Lasteinzugsflächen <10 m² sind ausschließlich für die Berechnung der Ankerkräfte von
+unmittelbar durch Windeinwirkungen belasteten Bauteilen, den Nachweis der Verankerungen und ihrer
+Unterkonstruktion zu verwenden.
+(3) Die Beiwerte cpe,1 und cpe,10 in den Tabellen 3 bis 7 werden für die orthogonalen Anströmrichtungen 0°,
+90° und 180° angegeben, geben jedoch den höchsten auftretenden Wert innerhalb des Bereichs von /Gb1 45°
+um die angegebene orthogonale Anströmrichtung wieder.
+(4) Bei Dachüberständen kann für den Unterseitendruck der Wert der anschließenden Wandfläche
+angenommen werden, auf der Oberseite der Druck der anschließenden Dachfläche.
+12.1.2 Vertikale Wände von Gebäuden mit rechteckigem Grundriss
+(1) Für Wände von Baukörpern mit rechteckigem Grundriss dürfen die Außendrücke über die Baukörperhöhe
+gestaffelt nach Bild 3 angesetzt werden. Dazu wird angenommen, dass der Druck in horizontalen Streifen
+nach Bild 3 über die Streifenhöhe konstant ist. Als Bezugshöhe ze für den Geschwindigkeitsdruck des
+jeweiligen Streifens ist die Höhe seiner Oberkante anzusetzen. Die Staffelung erfolgt in Abhängigkeit vom
+Verhältnis von Baukörperhöhe zu -breite, h/b, in folgender Weise:
+/Gbe Für Baukörper mit h /Ga3 b wird ein einziger Streifen der Höhe h angenommen.
+
+===== SEITE 21 =====
+DIN 1055-4:2005-03
+21
+/Gbe Für Baukörper mit b < h /Ga3 2 b wird ein unterer Streifen der Höhe b sowie ein oberer Streifen der Höhe
+(h – b) angenommen.
+/Gbe Für Baukörper mit h > 2 b wird ein unterer Streifen der Höhe b sowie ein oberer Streifen der Höhe b, der
+sich von ( h – b) bis h erstreckt, angenommen. Der Zwischenbereich wird in eine angemessene Anzahl
+von weiteren Streifen unterteilt.
+Bild 3 — Bezugshöhe ze in Abhängigkeit von der Höhe h und der Breite b
+(2) Die Außendruckbeiwerte cpe,1 und cpe,10 werden in Tabelle 3 für die Bereiche A bis E nach Bild 4 in
+Abhängigkeit vom Verhältnis h/d angegeben. Die windparallelen Wände werden dabei in maximal drei
+Bereiche nach Bild 4 eingeteilt.
+
+===== SEITE 22 =====
+DIN 1055-4:2005-03
+22
+Bild 4 — Einteilung der Wandflächen bei vertikalen Wänden
+
+===== SEITE 23 =====
+DIN 1055-4:2005-03
+23
+Tabelle 3 — Außendruckbeiwerte für vertikale Wände rechteckiger Gebäude
+Bereich A B C D E
+h/d cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+≥ 5 – 1,4 – 1,7 – 0,8 – 1,1 – 0,5 – 0,7 – 0,8 +1,0 – 0,5 – 0,7
+1 – 1,2 – 1,4 – 0,8 – 1,1 – 0,5 – 0,8 +1,0 – 0,5
+/Ga3 0,25 – 1,2 – 1,4 – 0,8 – 1,1 – 0,5 – 0,7 +1,0 – 0,3 – 0,5
+Für einzeln in offenem Gelände stehende Gebäude können im Sogbereich auch größere Sogkräfte
+auftreten.
+Zwischenwerte dürfen linear interpoliert werden.
+Für Gebäude mit h/d > 5 ist die Gesamtwindlast anhand der Kraftbeiwerte aus 12.4 bis 12.6 und 12.7.1 zu
+ermitteln.
+12.1.3 Flachdächer
+(1) Flachdächer sind Dächer, die weniger als ± 5° geneigt sind. Das Dach ist in Bereiche nach Bild 5 zu
+unterteilen. Die Bezugshöhe ze ist mit ze = h anzusetzen. Die Druckbeiwerte für jeden Bereich werden in
+Tabelle 4 angegeben.
+(2) Für sehr flache Baukörper mit h/d < 0,1 darf der Bereich F entfallen.
+
+===== SEITE 24 =====
+DIN 1055-4:2005-03
+24
+Legende
+e = b oder 2 h, der kleinere Wert ist maßgebend
+b: Abmessung quer zum Wind
+Bild 5 — Einteilung der Dachflächen bei Flachdächern
+
+===== SEITE 25 =====
+DIN 1055-4:2005-03
+25
+Tabelle 4 — Außendruckbeiwerte für Flachdächer
+Bereich
+FGH I
+cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+Scharfkantiger Traufbereich – 1,8 – 2,5 – 1,2 – 2,0 – 0,7 – 1,2 + 0,2
+– 0,6
+hp/h = 0,025 – 1,6 – 2,2 – 1,1 – 1,8 – 0,7 – 1,2 + 0,2
+– 0,6
+hp/h = 0,05 – 1,4 – 2,0 – 0,9 – 1,6 – 0,7 – 1,2 + 0,2
+– 0,6mit Attika
+hp/h = 0,10 – 1,2 – 1,8 – 0,8 – 1,4 – 0,7 – 1,2 + 0,2
+– 0,6
+r/h = 0,05 – 1,0 – 1,5 – 1,2 – 1,8 – 0,4 /Gb1 0,2
+r/h = 0,10 – 0,7 – 1,2 – 0,8 – 1,4 – 0,3 /Gb1 0,2Abgerundeter
+Traufbereich
+r/h = 0,20 – 0,5 – 0,8 – 0,5 – 0,8 – 0,3 /Gb1 0,2
+/G61 = 30° – 1,0 – 1,5 – 1,0 – 1,5 – 0,3 /Gb1 0,2
+/G61 = 45° – 1,2 – 1,8 – 1,3 – 1,9 – 0,4 /Gb1 0,2Abgeschrägter
+Traufbereich
+/G61 = 60° – 1,3 – 1,9 – 1,3 – 1,9 – 0,5 /Gb1 0,2
+Bei Flachdächern mit Attika oder abgerundetem Traufbereich darf für Zwischenwerte hp/h und r/h linear
+interpoliert werden.
+Bei Flachdächern mit mansarddachartigem Traufbereich darf für Zwischenwerte von /G61 zwischen /G61 = 30°,
+45° und 60° linear interpoliert werden. Für /G61 > 60° darf zwischen den Werten für /G61 = 60° und den Werten für
+Flachdächer mit rechtwinkligem Traufbereich interpoliert werden.
+Im Bereich I, für den positive und negative Werte angegeben werden, müssen beide Werte berücksichtigt
+werden.
+Für die Schräge des mansarddachartigen Traufbereichs selbst werden die Außendruckbeiwerte in Tabelle 6
+„Außendruckbeiwerte für Sattel- und Trogdächer“ Anströmrichtung /G71 = 0°, Bereiche F und G, in Abhängigkeit
+von dem Neigungswinkel des mansarddachartigen Traufenbereichs angegeben.
+Für den abgerundeten Traufbereich selbst werden die Außendruckbeiwerte entlang der Krümmung durch
+lineare lnterpolation entlang der Kurve zwischen dem Wert an der vertikalen Wand und auf dem Dach
+ermittelt.
+12.1.4 Pultdächer
+(1) Das Dach ist in Bereiche nach Bild 6 einzuteilen. Die Bezugshöhe ze ist mit ze = h anzusetzen. Die
+Außendruckbeiwerte für jeden Bereich werden in Tabelle 5 angegeben.
+
+===== SEITE 26 =====
+DIN 1055-4:2005-03
+26
+Legende
+e = b oder 2 h, der kleinere Wert ist maßgebend
+b: Abmessung quer zum Wind
+Bild 6 — Einteilung der Dachflächen bei Pultdächern
+
+===== SEITE 27 =====
+DIN 1055-4:2005-03
+27
+Tabelle 5 — Außendruckbeiwerte für Pultdächer
+Anströmrichtung /G71/G71/G71/G71 = 0° Anströmrichtung /G71/G71/G71/G71 = 180°
+Bereich Bereich
+FGHFGH
+Nei-
+gungs-
+winkel/G20/G61cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+5° – 1,7 – 2,5 – 1,2 – 2,0 – 0,6
++ 0,2 – 1,2 – 2,3 – 2,5 – 1,3 – 2,0 – 0,8 – 1,2
+10° – 1,3 – 2,2 – 1,0 – 1,7 – 0,4
++ 0,2 – 0,7 – 2,4 – 2,6 – 1,3 – 2,0 – 0,8 – 1,2
+– 0,9 – 2,0 – 0,8 – 1,5 – 0,3
+15°
++ 0,2 + 0,2 + 0,2
+– 2,5 – 2,8 – 1,3 – 2,0 – 0,8 – 1,2
+– 0,5 – 1,5 – 0,5 – 1,5 – 0,2
+30°
++ 0,7 + 0,7 + 0,4
+– 1,1 – 2,3 – 0,8 – 1,5 – 0,8
+45° + 0,7 + 0,7 + 0,6 – 0,6 – 1,3 – 0,5 – 0,7
+60° + 0,7 + 0,7 + 0,7 – 0,5 – 1,0 – 0,5 – 0,5
+75° + 0,8 + 0,8 + 0,8 – 0,5 – 1,0 – 0,5 – 0,5
+Tabelle 5 (fortgesetzt)
+Anströmrichtung /G71/G71/G71/G71 = 90°
+Bereich
+Fhoch Ftief GH I
+Nei-
+gungs-
+winkel/G20/G61cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+5° – 2,1 – 2,6 – 2,1 – 2,4 – 1,8 – 2,0 – 0,6 – 1,2 – 0,6 / + 0,2
+10° – 2,2 – 2,7 – 1,8 – 2,4 – 1,8 – 2,2 – 0,7 – 1,2 – 0,6 / + 0,2
+15° – 2,4 – 2,9 – 1,6 – 2,4 – 1,9 – 2,5 – 0,8 – 1,2 – 0,7 – 1,2
+30° – 2,1 – 2,9 – 1,3 – 2,0 – 1,5 – 2,0 – 1,0 – 1,3 – 0,8 – 1,2
+45° – 1,5 – 2,4 – 1,3 – 2,0 – 1,4 – 2,0 – 1,0 – 1,3 – 0,9 – 1,2
+60° – 1,2 – 2,0 – 1,2 – 2,0 – 1,2 – 2,0 – 1,0 – 1,3 – 0,7 – 1,2
+75° – 1,2 – 2,0 – 1,2 – 2,0 – 1,2 – 2,0 – 1,0 – 1,3 – 0,5
+(2) Für die Anströmrichtung /G71 = 0° und bei Neigungswinkeln von /G61 = +15° bis +30° ändert sich der Druck
+schnell zwischen positiven und negativen Werten, daher werden sowohl der positive als auch der negative
+Wert angegeben.
+(3) Für Dachneigungen zwischen den angegebenen Werten darf linear interpoliert werden, sofern nicht das
+Vorzeichen der Druckbeiwerte wechselt.
+12.1.5 Sattel- und Trogdächer
+(1) Das Dach ist in Bereiche nach Bild 7 einzuteilen. Die Bezugshöhe ze ist mit ze = h anzusetzen. Die
+Druckbeiwerte für jeden Bereich werden in Tabelle 6 angegeben.
+
+===== SEITE 28 =====
+DIN 1055-4:2005-03
+28
+Bild 7 — Einteilung der Dachflächen bei Sattel- und Trogdächern
+
+===== SEITE 29 =====
+DIN 1055-4:2005-03
+29
+Tabelle 6 — Außendruckbeiwerte für Sattel- und Trogdächer
+Anströmrichtung /G71/G71/G71/G71 = 0°
+Bereich
+FGH I J
+Nei-
+gungs-
+winkel/G20/G61cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+–45° – 0,6 – 0,6 – 0,8 – 0,7 – 1,0 – 1,5
+–30° – 1,1 – 2,0 – 0,8 – 1,5 – 0,8 – 0,6 – 0,8 – 1,4
+– 15° – 2,5 – 2,8 – 1,3 – 2,0 – 0,9 – 1,2 – 0,5 – 0,7 – 1,2
+–5° – 2,3 – 2,5 – 1,2 – 2,0 – 0,8 – 1,2 – 0,6 / + 0,2 – 0,6 / + 0,2
+5° – 1,7 – 2,5 – 1,2 – 2,0 – 0,6 – 1,2 – 0,6 / + 0,2 – 0,6 / + 0,2
+10° – 1,3 – 2,2 – 1,0 – 1,7 – 0,4 – 0,5 / + 0,2 – 0,8 + 0,2
+– 0,9 – 2,0 – 0,8 – 1,5 – 0,315°
++ 0,2 + 0,2 + 0,2
+– 0,4 – 1,0 – 1,5
+– 0,5 – 1,5 – 0,5 – 1,5 – 0,230°
++ 0,7 + 0,7 + 0,4
+– 0,4 – 0,5
+45° + 0,7 + 0,7 + 0,6 – 0,4 – 0,5
+60° + 0,7 + 0,7 + 0,7 – 0,4 – 0,5
+75° + 0,8 + 0,8 + 0,8 – 0,4 – 0,5
+Tabelle 6 (fortgesetzt)
+Anströmrichtung /G71/G71/G71/G71 = 90°
+Bereich
+FGH I
+Nei-
+gungs-
+winkel/G20/G61cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
+–45° – 1,4 – 2,0 – 1,2 – 2,0 – 1,0 – 1,3 – 0,9 – 1,2
+–30° – 1,5 – 2,1 – 1,2 – 2,0 – 1,0 – 1,3 – 0,9 – 1,2
+– 15° – 1,9 – 2,5 – 1,2 – 2,0 – 0,8 – 1,2 – 0,8 – 1,2
+–5° – 1,8 – 2,5 – 1,2 – 2,0 – 0,7 – 1,2 – 0,6 – 1,2
+5° – 1,6 – 2,2 – 1,3 – 2,0 – 0,7 – 1,2 – 0,6 / + 0,2
+10° – 1,4 – 2,1 – 1,3 – 2,0 – 0,6 – 1,2 – 0,6 / + 0,2
+15° – 1,3 – 2,0 – 1,3 – 2,0 – 0,6 – 1,2 – 0,5
+30° – 1,1 – 1,5 – 1,4 – 2,0 – 0,8 – 1,2 – 0,5
+45° – 1,1 – 1,5 – 1,4 – 2,0 – 0,9 – 1,2 – 0,5
+60° – 1,1 – 1,5 – 1,2 – 2,0 – 0,8 – 1,0 – 0,5
+75° – 1,1 – 1,5 – 1,2 – 2,0 – 0,8 – 1,0 – 0,5
+
+===== SEITE 30 =====
+DIN 1055-4:2005-03
+30
+(2) Für die Anströmrichtung /G71 = 0° und einen Neigungswinkel von /G61 = +15° bis +30° ändert sich der Druck
+schnell zwischen positiven und negativen Werten, daher werden sowohl der positive als auch der negative
+Wert angegeben.
+(3) Für Dachneigungen zwischen den angegebenen Werten darf linear interpoliert werden, sofern nicht das
+Vorzeichen der Druckbeiwerte wechselt.
+12.1.6 Walmdächer
+(1) Das Dach ist in Bereiche nach Bild 8 einzuteilen. Die Bezugshöhe ze ist mit ze = h anzusetzen. Die
+Druckbeiwerte für jeden Bereich werden in Tabelle 7 angegeben.
+
+===== SEITE 31 =====
+DIN 1055-4:2005-03
+31
+Legende
+e = b oder 2 h (der kleinere Wert ist maßgebend)
+b: Ausdehnung quer zur Windrichtung
+Bezugshöhe ze = h
+Bild 8 — Einteilung der Dachflächen bei Walmdächern
+
+===== SEITE 32 =====
+DIN 1055-4:2005-03
+32
+Tabelle 7 — Außendruckbeiwerte für Walmdächer
+Anströmrichtung /G71/G71/G71/G71 = 0° und /G71/G71/G71/G71 = 90°
+Bereich
+FGH I J KLM N
+Nei-
+gungs-
+winkel
+/G610 für
+/G71 = 0°
+/G6190 für
+/G71 = 90°
+cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1 cpe,10 cpe,1
++5° – 1,7 – 2,5 – 1,2 – 2,0 – 0,6 – 1,2 – 0,3 – 0,6 – 0,6 – 1,2 – 0,2 – 0,6 – 1,2 – 0,4
+– 0,9 – 2,0 – 0,8 – 1,5 – 0,3+15°
++ 0,2 + 0,2 + 0,2 – 0,5 – 1,0 –
+1,5 – 1,2 – 2,0 – 1,4 – 0,2 – 0,6 – 1,2 – 0,3
+– 0,5 – 1,5 – 0,5 – 1,5 – 0,2+30°
++ 0,5 + 0,7 + 0,4 – 0,4 – 0,7 –
+1,2 – 0,5 – 1,4 – 0,2 – 0,8 – 1,2 – 0,2
++45° + 0,7 + 0,7 + 0,6 – 0,3 – 0,6 – 0,3 – 1,3 – 0,2 – 0,8 – 1,2 – 0,2
++60° + 0,7 + 0,7 + 0,7 – 0,3 – 0,6 – 0,3 – 1,2 – 0,2 – 0,4 – 0,2
++75° + 0,8 + 0,8 + 0,8 – 0,3 – 0,6 – 0,3 – 1,2 – 0,2 – 0,4 – 0,2
+(2) Für die Anströmrichtung /G71 = 0° und Neigungswinkel von /G61 = +15° bis +30° ändert sich der Druck auf der
+Luvseite schnell zwischen positiven und negativen Werten, daher werden sowohl der positive als auch der
+negative Wert angegeben.
+(3) Für Werte der Dachneigung zwischen den angegebenen Werten darf linear interpoliert werden, sofern
+nicht das Vorzeichen der Druckbeiwerte wechselt.
+12.1.7 Druckbeiwerte für Sheddächer
+(1) Für Sheddächer werden die Druckbeiwerte aus den Werten für Pultdächer bzw. für Trogdächer abgeleitet
+und entsprechend der Lage der Dachflächen nach Bild 9 angepasst.
+(2) Für Sheddächer nach Bild 9 (a) und (b) werden die Druckbeiwerte für Pultdächer nach 12.1.4 benutzt.
+Bei einer Anströmrichtung parallel zu den Firsten gelten die Werte der Tabelle 5 für /G71 = 90° unverändert. Für
+die Anströmrichtungen /G71 = 0° und 180° werden die Werte der Tabelle 5 mit den Faktoren von Bild 9 (a) bzw.
+(b) abgemindert. Dabei sind die Bereiche F und G nur für die luvseitige Dachfläche zu benutzen. Für die
+übrigen Dachflächen ist der Bereich H zu benutzen.
+(3) Für Sheddächer nach Bild 9 (c) und (d) werden die Druckbeiwerte für Trogdächer nach 12.1.5 benutzt.
+Bei einer Anströmrichtung parallel zu den Firsten gelten die Werte der Tabelle 6 für /G71/G20= 90° unverändert. Für
+die Anströmrichtungen 0° und 180° werden die Werte der Tabelle 6 für /G71 = 0° mit den Faktoren von Bild 9 (c)
+bzw. (d) abgemindert. Dabei sind die Bereiche F und G nur für die erste, luvseitige Dachfläche zu benutzen.
+Für die übrigen Dachflächen sind die Bereiche H und I zu benutzen.
+(4) Die Bezugshöhe ze ist gleich h anzunehmen.
+
+===== SEITE 33 =====
+DIN 1055-4:2005-03
+33
+Bild 9 — Einteilung der Dachflächen bei Sheddächern
+ANMERKUNG 1 Für die Konfiguration b) müssen, abhängig vom Vorzeichen des Druckbeiwertes cpe der ersten
+Dachfläche, zwei Fälle untersucht werden.
+ANMERKUNG 2 Für die Konfigutation c) ist der erste cpe-Wert der Druckbeiwert eines Pultdaches, die folgenden sind
+die eines Trogdaches.
+
+===== SEITE 34 =====
+DIN 1055-4:2005-03
+34
+12.1.8 Innendruck bei geschlossenen Baukörpern
+(1) In Räumen mit durchlässigen Außenwänden ist der Innendruck zu berücksichtigen, wenn er ungünstig
+wirkt. Eine Wand, bei der ein Anteil der Wandfläche bis 30 % offen ist, gilt als durchlässige Wand. Fenster,
+Türen und Tore dürfen im Hinblick auf den Innendruck als geschlossen angesehen werden, sofern sie nicht
+betriebsbedingt bei Sturm geöffnet werden müssen, wie z. B. die Ausfahrtstore von Gebäuden für
+Rettungsdienste.
+(2) Innen- und Außendruck sind gleichzeitig wirkend anzunehmen. Dabei wirkt der Innendruck auf alle
+Raumabschlüsse eines Innenraumes gleichzeitig und mit gleichem Vorzeichen.
+(3) Der Nachweis des Innendrucks ist in der Regel nur bei Gebäuden mit nicht unterteiltem Grundriss wie
+z. B. Hallen erforderlich, jedoch nicht bei üblichen Büro- und Wohngebäuden. Bei Gebäuden, die überwiegend
+durch leichte Trennwände unterteilt sind, wird der Nachweis nach Absatz (7) empfohlen. Liegt der
+Öffnungsanteil der Außenwände unter 1 % und ist er über der Fläche annähernd gleichmäßig verteilt, ist der
+Nachweis ebenfalls nicht erforderlich.
+(4) Als Bezugshöhe z
+i ist die Bezugshöhe ze für den Außendruck der Wandfläche, in der sich die Öffnung
+befindet, anzusetzen.
+(5) Bei Räumen, die vollständig von Außenwänden umschlossen und nicht durch Innenwände unterteilt sind,
+wird der Druckbeiwert cpi für den Innendruck in Abhängigkeit des Flächenparameters /G6d in Bild 10 angegeben.
+Der Flächenparameter ist wie folgt definiert:
+ Wändealler Öffnungen der heGesamtfläc
+Flächen lelen windparalund nleeseitige den in Öffnungen der heGesamtfläc/G3d/G6d (19)
+ANMERKUNG Liegen die Öffnungen in Außenwänden in Zonen mit cpe-Werten < – 0,5, können auch niedrigere
+Innendruckbeiwerte cpi auftreten als in Bild 10 angegeben.
+(6) Für den Innendruck sind in einem Wertebereich des Flächenparameters /G6d von 0,47 bis 0,78
+Innendruckbeiwerte von cpi = + 0,2 oder cpi = – 0,3 anzusetzen. Der ungünstigere Wert ist maßgebend.
+(7) Bei Räumen, die von Außen- und Innenwänden umschlossen sind, wird der Innendruck mit Hilfe von
+Bild 10 ermittelt unter der Annahme, dass die Innenwände geschlossen sind. Für die resultierende Belastung
+der Innenwände infolge einer Druckdifferenz gegenüber den anschließenden Räumen ist mindestens ein
+Beiwert von cp,net = 0,5 anzunehmen.
+
+===== SEITE 35 =====
+DIN 1055-4:2005-03
+35
+Bild 10 — Innendruckbeiwerte cpi bei durchlässigen Außenwänden
+12.1.9 Druckbeiwerte auf die innen liegenden Oberflächen seitlich offener Baukörper
+(1) Eine Wand, bei der ein Anteil der Wandfläche von mehr als 30 % der Fläche offen ist, gilt als gänzlich
+offene Wand. Fenster, Türen und Tore dürfen dabei als geschlossen angesehen werden, sofern sie nicht
+betriebsbedingt bei Sturm geöffnet werden müssen, wie z. B. die Ausfahrtstore von Gebäuden für
+Rettungsdienste.
+(2) Die Druckbeiwerte für die innen liegenden Oberflächen sind Bild 11 zu entnehmen. Für die außen
+liegenden Oberflächen können, soweit nichts anderes angegeben ist, die Druckbeiwerte geschlossener
+Baukörper benutzt werden.
+(3) Als Bezugshöhe zi ist die Bezugshöhe zé für den Außendruck der Wandfläche, in der sich die Öffnung
+befindet, anzusetzen.
+
+===== SEITE 36 =====
+DIN 1055-4:2005-03
+36
+Bild 11 — Druckbeiwerte auf die innen liegenden Oberflächen seitlich offener Baukörper
+12.1.10 Resultierender Winddruck für Außenwandbekleidungen
+(1) Bei einer luftdichten Außenwandbekleidung ist der Winddruck wie bei einer einschaligen Wand
+anzusetzen.
+(2) Bei einer durchlässigen Außenwandbekleidung ist der Druck, der im Hinterlüftungsraum entsteht, zu
+berücksichtigen.
+(3) Der sich aus dem Innendruck im Hinterlüftungsraum und dem Außendruck ergebende resultierende
+Winddruck auf die durchlässige Außenwandbekleidung darf mit einem Beiwert
+50netp, ,c /Gb1/G3d (20)
+berechnet werden.
+Dabei gelten gleichzeitig folgende Anwendungsgrenzen:
+a) Entlang der vertikalen Gebäudekanten ist eine dauerhaft wirksame, vertikale Luftsperre angeordnet.
+
+===== SEITE 37 =====
+DIN 1055-4:2005-03
+37
+b) Für die Durchlässigkeit der Außenwandbekleidung gilt:
+%,750bekleidung Außenwandder Fläche
+ÖffnungenderFläche /Gb3 (21)
+Die Fläche der Öffnungen muss gleichmäßig über die Gesamtfläche der Außenwandbekleidung verteilt
+sein.
+c) Die lichte Dicke der Luftschicht im Hinterlüftungsraum muss kleiner als 100 mm sein.
+12.2 Druckbeiwerte für freistehende Dächer
+(1) Freistehende Dächer sind Dächer, an die sich nach unten keine durchgehenden Wände anschließen, wie
+z. B. Tankstellendächer oder Bahnsteigüberdachungen.
+(2) In Tabelle 8 sind die Druckbeiwerte für freistehende Sattel-, Trog- und Pultdächer zusammengefasst. Für
+die Bezugshöhe ze ist der höchste Punkt der Dachkonstruktion anzusetzen.
+(3) Für den Nachweis der Dachhaut ist umlaufend für einen Streifen von 1 m eine erhöhte Soglast mit einem
+Beiwert für den resultierenden Druck von cpe,res = – 2,5 anzusetzen.
+
+===== SEITE 38 =====
+DIN 1055-4:2005-03
+38
+Tabelle 8 — Druckbeiwerte für freistehende Dächer
+Form und Lage des Körpers Druckbeiwert cpLfd.
+Nr 12
+1 Freistehende Dächer a
+Grundriss:
+Abmessungsverhältnisse:
+a /Ga3 b /Ga3 5
+0,5 /Ga3 h/a /Ga3 1
+Querschnitthöhe der Dachscheibe
+/Ga3 0,03 a
+Typ 1 (Ansicht) b
+ /G71 = 0°
+2
+mit Versperrung
+ /G71 = 0°
+Typ 2 (Ansicht) b
+ /G71 = 0°
+3
+mit Versperrung: cp entsprechend lfd. Nr 2
+Typ 3 (Ansicht) b
+ /G71 = 0° /G71 = 180°
+4
+mit Versperrung: cp entsprechend lfd. Nr 2
+a Bei Anströmung in Richtung der Längsachse des Daches können die zum Dach tangentialen Windkräfte von
+Bedeutung sein.
+b Für Dachneigungen – 10° /Ga3 /G61 /Ga3 +10° darf zwischen den Druckbeiwerten für /G61 = – 10° und /G61 = + 10° linear inter-
+poliert werden; in den Beiwerten ist eine mögliche Versperrung der durchströmten Fläche unterhalb des Daches bis
+zu 15 % berücksichtigt.
+
+===== SEITE 39 =====
+DIN 1055-4:2005-03
+39
+12.3 Druckbeiwerte für freistehende Wände und Kraftbeiwerte für Anzeigetafeln
+12.3.1 Druckbeiwerte für freistehende Wände
+(1) Die Wand ist vom jeweiligen Wandende aus in Bereiche nach Bild 12 zu unterteilen.
+a) Unterteilung der Bereiche (ze = h)
+b) Definition der Anströmrichtung
+Bild 12 — Einteilung der Wandfläche und Anströmrichtung
+
+===== SEITE 40 =====
+DIN 1055-4:2005-03
+40
+(2) Beiwerte für den resultierenden Druck cp,net für freistehende Wände mit geradem oder abgewinkeltem
+Verlauf werden in Tabelle 9 für zwei Völligkeitsgrade angegeben. Ein Völligkeitsgrad von f = 1 gilt für
+vollkommen geschlossene Wände, f = 0,8 gilt für Wände, die zu 20 % offen sind. Die Bezugsfläche ist in
+beiden Fällen die Gesamtfläche der Wand.
+Tabelle 9 — Beiwerte für den resultierenden Druck cp,net für freistehende Wände
+Völligkeitsgrad Zone A B C D
+l/h /Ga3 3 2,3 1,4 1,2 1,2
+l/h = 5 2,9 1,8 1,4 1,2gerade Wand
+l/h /Gb3 10 3,4 2,1 1,7 1,2f = 1
+abgewinkelte Wand mit
+Schenkellänge /Gb3 h a,b /Gb1 2,1 /Gb1 1,8 /Gb1 1,4 /Gb1 1,2
+f = 0,8 /Gb1 1,2 /Gb1 1,2 /Gb1 1,2 /Gb1 1,2
+a Für Längen des abgewinkelten Wandstücks zwischen 0 und h darf linear interpoliert werden.
+b Das Mischen von positiven und negativen Werten ist nicht gestattet.
+(3) Für Völligkeitsgrade f zwischen 0,8 und 1,0 können die Beiwerte linear interpoliert werden. Für
+durchlässige Wände mit Völligkeitsgraden von weniger als 0,8 sind die Beiwerte wie für ebene Fachwerke
+nach 12.9 zu ermitteln.
+(4) Die Bezugshöhe ze ist mit ze = h anzusetzen.
+12.3.2 Abschattungsfaktoren für freistehende Wände
+(1) Falls der betrachteten Wand luvseitig andere Wände, die gleich groß oder größer sind, vorgelagert sind,
+kann bereichsweise ein zusätzlicher Abschattungsfaktor angewendet werden. Der Wert für den
+Abschattungsfaktor hängt vom Abstand der beiden Wände und vom Völligkeitsgrad f der luvseitigen,
+abschaltenden Wand ab. Die Werte sind in Bild 13 dargestellt.
+Der resultierende Druck auf die abgeschaltete Wand ergibt sich zu:
+netp,ssnet,p, cc /Gb4/G3d/G79 (22)
+Dabei ist /G79 s der Abschattungsfaktor und cp,net der aerodynamische Beiwert für den resultierenden Druck für
+freistehende Wände.
+
+===== SEITE 41 =====
+DIN 1055-4:2005-03
+41
+Legende
+x Abstand der Wände
+h Höhe der luvseitigen Wand
+Bild 13 — Abschattungsfaktor /G79 s für Winddrücke auf hintereinander liegende Wände
+(2) Die Endbereiche der abgeschalteten Wand sind auf einer Länge, die gleich der Höhe h ist, für die volle
+Windbelastung nachzuweisen.
+(3) Für Völligkeitsgrade f zwischen 0,8 und 1,0 können die Beiwerte linear interpoliert werden. Für f < 0,8
+sind die Wände wie Fachwerke zu behandeln und es gelten die Regeln aus 12.3.4.
+12.3.3 Kraftbeiwerte für Anzeigetafeln
+(1) Der Kraftbeiwert für Anzeigetafeln, deren Unterkante mindestens um h/4 von der Geländeoberkante
+entfernt ist (siehe Bild 14), beträgt:
+/G6c/G79/Gb4/G3d52,fc (23)
+Dabei ist
+/G79/G20/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+(2) Die resultierende Kraft senkrecht zu der Anzeigetafel ist in Höhe des Flächenschwerpunkts der Tafel
+anzusetzen mit einer horizontalen Ausmitte von:
+e = /Gb1 b/4 (24)
+
+===== SEITE 42 =====
+DIN 1055-4:2005-03
+42
+Bild 14 — Abmessungen bei Anzeigetafeln
+(3) Die Bezugsfläche ist Arel = b /Gb4 h.
+(4) Die Bezugshöhe ist ze = zg + h/2.
+(5) Bei einem Bodenabstand von zg < h/4 ist die Tafel wie eine freistehende Wand (siehe 12.3.1 (2) zu
+behandeln.
+12.4 Kraftbeiwerte für Bauteile mit rechteckigem Querschnitt
+(1) Der Kraftbeiwert cf von Bauteilen mit rechteckigem Querschnitt bei Anströmung senkrecht zu einer
+Querschnittsseite ist
+λr0f,f /G79/G79/Gb4/Gb4/G3dcc (25)
+Dabei ist
+cf,0 der Grundkraftbeiwert nach Bild 15 eines scharfkantigen Rechteckquerschnitts mit unendlicher
+Schlankheit /G6c;
+/G79 r der Abminderungsfaktor für quadratische Querschnitte mit abgerundeten Ecken nach Bild 16;
+/G79/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+
+===== SEITE 43 =====
+DIN 1055-4:2005-03
+43
+Kurvendefinitionen in den Abschnitten : A cf,0 = 0,319 3 /Gd7 In(d/b) + 2,5139
+B cf,0 = 0,712 1 /Gd7 In(d/b) + 2,1460
+C cf,0 = 0,144 3 /Gd7 In(d/b) + 1,2322
+Bild 15 — Grundkraftbeiwerte cf,0 von scharfkantigen Rechteckquerschnitten
+Bild 16 — Abminderungsfaktor /G79 r für einen quadratischen Querschnitt mit abgerundeten Ecken
+(2) Die Bezugsfläche Aref ist Aref = l /Gb4 b. Dabei ist l die Länge des betrachteten Abschnittes.
+
+===== SEITE 44 =====
+DIN 1055-4:2005-03
+44
+(3) Die Bezugshöhe ze ist gleich der Höhe der Unterkante des betrachteten Abschnitts zuzüglich dem
+0,6fachen der Abschnittshöhe.
+(4) Für scheibenartige Querschnitte ( d/b < 0,2) kann es bei bestimmten Anströmrichtungen zu einem Anstieg
+der cf-Werte um bis zu 25 % kommen (siehe z. B. 12.3.3 Anzeigetafeln).
+12.5 Kraftbeiwerte für Bauteile mit kantigem Querschnitt
+(1) Der Kraftbeiwert cf von Bauteilen mit kantigem Querschnitt wird für die Windkräfte in x- und y-Richtung
+wie folgt berechnet:
+/G6c/G79/Gb4/G3d0f,f cc (26)
+Dabei ist
+cf,0 der Grundkraftbeiwert für Bauteile nach Bild 17 mit unendlicher Schlankheit;
+/G79/G20/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+(2) Der Kraftbeiwert wird bei Querschnitten nach Bild 17 für alle Anströmrichtungen mit cf,0 = 2,0 angesetzt.
+Bild 17 — Bauteilquerschnitte
+(3) Die Bezugsflächen Aref sind für die Windkräfte:
+in x-Richtung: Aref,x = l /Gb4 b (27)
+in y-Richtung: Aref,y = l /Gb4 d
+Dabei ist
+l die Länge des betrachteten Abschnitts.
+(4) Die Bezugshöhe ze ist gleich der Höhe der Unterkante des betrachteten Abschnitts zuzüglich dem
+0,6fachen der Abschnittshöhe.
+12.6 Kraftbeiwerte für Bauteile mit regelmäßigem polygonalem Querschnitt
+(1) Der Kraftbeiwert cf von Bauteilen mit regelmäßigem polygonalen Querschnitt mit fünf oder mehr Seiten ist
+λ0f,f Ψcc /Gb4/G3d (28)
+Dabei ist
+cf,0 der Grundkraftbeiwert nach Tabelle 10 für Bauteile mit unendlicher Schlankheit;
+/G79/G20/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+
+===== SEITE 45 =====
+DIN 1055-4:2005-03
+45
+Für die Breite des Querschnittes ist dabei der Durchmesser des umschriebenen Kreises, siehe Bild 18,
+anzusetzen.
+Bild 18 — Bauteil mit regelmäßigem polygonalen Querschnitt
+Tabelle 10 — Grundkraftbeiwerte cf,0 für regelmäßige polygonale Querschnitte
+lfd. Nr. Querschnitt Grundkraftbeiwert cf,0
+1a gleichseitiges Dreieck 2,0 (Anströmung auf die Seite)
+1b gleichseitiges Dreieck 1,2 (Anströmung auf die Ecke)
+2 Fünfeck 1,8
+3 Sechseck 1,6
+4 Achteck 1,4
+5 Zehneck 1,3
+6 Zwölfeck 1,25
+7 Sechzehneck wie Zylinder, aber > 0,7
+8 Achtzehneck wie Zylinder, aber > 0,7
+(2) Die Bezugsfläche Aref ist
+Aref = l /Gb4 b (29)
+Dabei ist
+l die Länge des betrachteten Abschnitts.
+(3) Die Bezugshöhe ze ist gleich der Höhe der Unterkante des betrachteten Bauteilabschnitts zuzüglich dem
+0,6fachen der Abschnittshöhe.
+
+===== SEITE 46 =====
+DIN 1055-4:2005-03
+46
+12.7 Kreiszylinder
+12.7.1 Kraftbeiwerte
+(1) Der Kraftbeiwert cf eines endlichen Zylinders ist
+λ0f,f /G79/Gb4/G3dcc (30)
+Dabei ist
+cf,0 der Grundkraftbeiwert eines Zylinders mit unendlicher Schlankheit (siehe Bild 19);
+/G79/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+Der Grundkraftbeiwert ist in Abhängigkeit der äquivalenten Rauigkeit und der Reynoldszahl in Bild 19
+angegeben.
+Bild 19 — Grundkraftbeiwert cf,0 von Zylindern mit unendlicher Schlankheit für verschiedene bezogene
+äquivalente Rauigkeiten k/b
+(2) Die Reynoldszahl ist
+ν
+bRe /Gb4/G3dv (31)
+
+===== SEITE 47 =====
+DIN 1055-4:2005-03
+47
+mit
+ρ/q/Gb4/G3d2v (32)
+Dabei ist
+/G6edie kinematische Zähigkeit, /G6e = 15 /Gb4 10–6 m²/s;
+q der Geschwindigkeitsdruck nach Abschnitt 10;
+b der Durchmesser des Zylinders, in m;
+/G72 die Luftdichte, in kg/m³.
+Werte für äquivalente Rauigkeiten k werden in Tabelle 11 angegeben.
+(3) Für Drahtlitzenseile ist der Grundkraftbeiwert cf,0 unabhängig von der Reynoldszahl mit cf,0 = 1,2
+anzusetzen.
+Tabelle 11 — Äquivalente Rauigkeiten
+Art der Oberfläche
+Mauerwerk Beton
+glatt
+Beton
+rau Holz Stahl
+Stahl
+(einschließlich
+Schraubenköpfen usw.)
+k in mm 4 2 10 2 0,5 1
+(4) Für gerippte Oberflächen mit Rippenhöhe hR und Rippenabstand a, für die 2 /Gb4 hR /Ga3 a /Ga3 6 /Gb4 hR gilt, kann k
+mit der Rippenhöhe hR angesetzt werden. Für einzeln stehende Rippen mit einem Rippenabstand a > 6 /Gb4 hR
+ist die vorstehende Rauigkeitsdefinition nicht mehr anwendbar.
+(5) Die Bezugsfläche Aref ist nach Gleichung (29) zu bestimmen, wobei für b der Durchmesser des Zylinders
+anzusetzen ist.
+Dabei ist
+l die Länge des betrachteten Abschnitts;
+b der Durchmesser.
+(6) Die Bezugshöhe ze ist gleich der Höhenlage des betrachteten Bauteilabschnitts über der Gelände-
+oberkante.
+Bei Zylindern nahe einer ebenen Oberfläche mit einem relativen lichten Abstand zg/b < 1,5 vom Boden sind
+gesonderte Überlegungen erforderlich.
+12.7.2 Kraftbeiwerte für vertikale Zylinder in Reihenanordnung
+(1) Bei Anordnung von Zylindern in Reihe hängt der Grundkraftbeiwert cf,0 von der Windrichtung bezogen auf
+die Reihenachse und vom Verhältnis des gegenseitigen Abstandes a zum mittleren Durchmesser b ab (siehe
+Tabelle 12).
+(2) Sofern keine genaueren Werte belegt werden können, ist der Grundkraftbeiwert cf,0 für jeden einzelnen
+Zylinder mit dem in Tabelle 12 angegebenen Erhöhungsfaktor /G6b zu multiplizieren.
+
+===== SEITE 48 =====
+DIN 1055-4:2005-03
+48
+Tabelle 12 — Erhöhungsfaktor /G6b für die Grundkraftbeiwerte cf,0
+von in Reihe angeordneten Kreiszylindern
+a/b /G6b
+a/b /Ga3 3,5 1,15
+3,5 < a/b /Ga3 30
+180
+210 b
+a/G2d
+a/b > 30 1,00
+12.7.3 Druckbeiwerte
+(1) Der Außendruckbeiwert cpe für zylindrische Querschnitte ist:
+λα0p,pe /G79/Gb4/G3dcc (33)
+Dabei ist
+cp,0 der Außendruckbeiwert eines Zylinders mit unendlicher Schlankheit /G6c nach Bild 20 bzw. Gleichung
+(34);
+/G79/G20/G6c/G61 der Abminderungsfaktor zur Berücksichtigung der Schlankheit nach Gleichung (35) in Abhängig-
+keit des Umfangswinkels /G61.
+(2) In Bild 21 ist der Außendruckbeiwert cp,0 für verschiedene Reynoldszahlen in Abhängigkeit des Winkels /G61
+über den halben Umfang dargestellt. Der Außendruckbeiwert bei unendlicher Schlankheit ist:
+/G28/G29
+/Gb0/G3c/G3c/G3d
+/G3c/G3c/G2b/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6
+/G2d
+/G2d/G2d/G3d
+/G3c/G3c/Gb0/G2b/G2b/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/G2d/G3d
+180für
+für2cos
+0für2
+1cos2
+1
+Ah,0p,0p,
+Aminh,0p,
+minA
+min
+h,0p,min,0p,0p,
+min
+min,0p,
+min
+min,0p,
+0p,
+/G61/G61
+/G61/G61/G61/G70
+/G61/G61
+/G61/G61
+/G61/G61/G70/G61
+/G61
+cc
+cccc
+ccc
+(34)
+Dabei ist
+/G61min, cp,0,min die Lage des Druckminimums am Umfang und sein Druckbeiwert nach Tabelle 13;
+/G61A, cp,0,h die Lage der Strömungsablösung am Umfang und Druckbeiwert für den Heckdruck nach
+Tabelle 13.
+(3) Der Abminderungsfaktor zur Berücksichtigung der Schlankheit /G79/G6c/G61 wird nach Gleichung (35) berechnet:
+
+===== SEITE 49 =====
+DIN 1055-4:2005-03
+49
+/G28/G29
+/Gb0/G3c/Ga3/G3d
+/G3c/G3c/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6
+/G2d
+/G2d/Gb4/G2d/G2b/G3d
+/Ga3/Ga3/Gb0/G3d
+180für
+für2cos1
+0für1
+λλα
+A
+λλλα
+λα
+/G61/G61/G79/G79
+/G61/G61/G61/G61/G61
+/G61/G61/G79/G79/G79
+/G61/G61/G79
+A
+Amin
+min
+min
+min
+π (35)
+Dabei ist
+/G61A Lage der Ablöselinie (siehe Bild 20);
+/G79/G6c Abminderungsfaktor zur Berücksichtigung der Schlankheit nach 12.13.
+ANMERKUNG Das Bild basiert auf einer bezogenen äquivalenten Rauigkeit k/b kleiner 5 /Gb4 10–4. Typische Werte für die
+äquivalente Rauigkeit k sind in Tabelle 11 angegeben.
+Bild 20 — Druckverteilung über einen zylindrischen Querschnitt
+(4) Die Bezugshöhe ze ist gleich der Höhe über Geländeoberkante des betrachteten Bauteilabschnitts.
+Tabelle 13 — Typische Werte für Re, /G61/G61/G61/G61min, cp,0,min, /G61/G61/G61/G61A und cp,0,h
+Re /G61min cp,0,min /G61A cp,0,h
+5 /Gb4 105 85 – 2,2 135 – 0,4
+2 /Gb4 106 80 – 1,9 120 – 0,7
+107 75 – 1,5 105 – 0,8
+mit: /G61min Lage des minimalen Druckes in °;
+cp,0,min Wert des minimalen Druckbeiwertes;
+/G61A Lage der Ablöselinie in °;
+cp,0,h Heckdruckbeiwert.
+Zwischenwerte dürfen linear interpoliert werden.
+
+===== SEITE 50 =====
+DIN 1055-4:2005-03
+50
+12.8 Kraftbeiwerte f ür Kugeln
+(1) Der Kraftbeiwert cf von Kugeln wird in Bild 21 als eine Funktion der Reynoldszahl Re und der bezogenen
+Rauigkeit k/b (siehe 12.7.1) angegeben.
+Bild 21 — Kraftbeiwert einer Kugel in Windrichtung
+(2) Die Bezugsfläche Aref ist:
+42 /ref bA /G70/G3d (36)
+Dabei ist
+b der Durchmesser.
+(3) Die Bezugshöhe ist anzusetzen mit
+ze = zg + b / 2 (37)
+Dabei ist
+zg der lichte Abstand vom Boden.
+(4) Bei Kugeln nahe einer ebenen Oberfläche mit einem relativen lichten Abstand zg/b < 1,5 vom Boden sind
+gesonderte Überlegungen erforderlich.
+12.9 Kraftbeiwerte f ür Fachwerke
+(1) Der Kraftbeiwert cf von Fachwerken ist:
+λ0f,f Ψcc /Gb4/G3d (38)
+Dabei ist
+cf,0 der Grundkraftbeiwert für Fachwerke mit unendlicher Schlankheit. Er wird in den Bildern 22 bis 24
+als Funktion des Völligkeitsgrades f oder der Reynoldszahl Re angegeben;
+
+===== SEITE 51 =====
+DIN 1055-4:2005-03
+51
+Re die Reynoldszahl nach Gleichung (31), wobei hier an Stelle von b die Stabbreite des größten
+Gurtstabes einzusetzen ist;
+/G79/G6c der Abminderungsfaktor zur Berücksichtigung der Schlankheit (siehe 12.13).
+(2) Der Völligkeitsgrad f ist:
+f = A / Ac (39)
+Dabei ist
+A die Summe der projizierten Fläche der Stäbe und Knotenbleche der betrachteten Seite. Bei
+räumlichen Fachwerken ist die Luvseite zu betrachten;
+Ac die von den Umrandungen der betrachteten Seite eingeschlossene senkrechte Projektion der Fläche
+Ac = b l;
+l die Länge des Fachwerks;
+b die Breite des Fachwerks.
+(3) Die Bezugsfläche Aref ist definiert als:
+Aref = A (40)
+(4) Die Bezugshöhe ze ist gleich der Höhe der Unterkante des betrachteten Abschnitts zuzüglich des
+0,6fachen der Abschnittshöhe.
+Bild 22 — Grundkraftbeiwert cf,0 für ein ebenes Fachwerk aus abgewinkelten scharfkantigen Profilen
+in Abhängigkeit vom Völligkeitsgrad f
+
+===== SEITE 52 =====
+DIN 1055-4:2005-03
+52
+Bild 23 — Grundkraftbeiwert cf,0 für ein räumliches Fachwerk aus abgewinkelten und scharfkantigen
+Profilen in Abhängigkeit vom Völligkeitsgrad f
+
+===== SEITE 53 =====
+DIN 1055-4:2005-03
+53
+Bild 24 — Grundkraftbeiwert cf,0 für ebenes und räumliches Fachwerk aus Profilen
+mit kreisförmigem Querschnitt
+
+===== SEITE 54 =====
+DIN 1055-4:2005-03
+54
+12.10 Abminderung der Windkr äfte auf hintereinander liegende gleiche Stäbe, Tafeln
+oder Fachwerke
+(1) Die gesamte Windkraft, die auf hintereinander liegende Baukörper wirkt, ist geringer als die Summe der
+Einzelkräfte. Die Abminderung der Gesamtkraft wird erfasst, indem die Bezugsfläche A nach Tabelle 14
+vermindert wird. Der Abminderungsfaktor /G68 ist in Bild 25 angegeben.
+(2) Die Abminderung gilt für Queranströmung und für eine Schräganströmung bis 5°. Sie darf bei annähernd
+gleichen Einzelbaukörpern angewandt werden, wenn bei der Ermittlung der Bezugsfläche A für A1 die
+Bezugsfläche des größten Einzelbaukörpers zu Grunde gelegt wird.
+(3) Bei unterschiedlichen Abständen x der Einzelbaukörper darf näherungsweise der Größtabstand der
+Körper als einheitlicher Abstand zu Grunde gelegt werden.
+(4) Es wird vorausgesetzt, dass die Einzelbaukörper an den Enden gehalten sind und im Übrigen frei
+umströmt werden. Näherungsweise darf auch die Windlast auf hintereinander liegende Baukörper, die sich
+unter einer geschlossenen Decke befinden, nach diesem Abschnitt ermittelt werden.
+Tabelle 14 — Bezugsfläche A und Kraftbeiwert cf für hintereinander liegende Baukörper
+Form und Lage des Baukörpers Bezugsfl äche A Kraftbeiwert cf
+Für das Gesamtsystem aus n Baukörpern
+A = [1 + /G68 +(n – 2) /Gb4 /G68 2] /Gb4 A1
+mit
+A1 Bezugsfläche des Einzelbaukörpers;
+n die Anzahl der Einzelbaukörper;
+/G68Abminderungsfaktor nach Bild 25.
+cf eines Einzelbaukörpers
+
+===== SEITE 55 =====
+DIN 1055-4:2005-03
+55
+Bild 25 — Abminderungsfaktor /G68 für die Summe der Windkräfte auf hintereinander liegende gleiche
+Baukörper in Anhängigkeit vom Verhältnis x/h und vom Völligkeitsgrad f 
+(bei vollwandigen Baukörpern: f = 1)
+12.11 Kraftbeiwerte f ür Flaggen
+(1) Für allseitig befestigte Flaggen ist der Kraftbeiwert
+cf = 2,5 /Gb4 /G79/G6c (41)
+mit /G79/G6c nach 12.13.
+(2) Für frei flatternde Flaggen ist der Kraftbeiwert
+1,252
+0,70,02 /Gf7
+/Gf7
+/Gf8
+/Gf6
+/Ge7
+/Ge7
+/Ge8
+/Ge6
+/Gd7/G2b/G3d
+ref
+f A
+h
+hρ
+mc (42)
+Dabei ist
+m die Masse je Flächeneinheit der Flagge;
+/G72 die Luftdichte;
+h die Höhe der Flagge.
+Die Gleichung schließt die dynamischen Kräfte auf Grund des Flattereffektes ein.
+(3) Als Bezugsfläche ist bei rechteckigen Flaggen
+Aref = h /Gb4 l (43)
+anzusetzen, bei dreieckförmigen Flaggen
+Aref = 0,5 /Gb4 h /Gb4 l (44)
+
+===== SEITE 56 =====
+DIN 1055-4:2005-03
+56
+Dabei ist
+h die Höhe der Flagge;
+l die Länge der Flagge.
+(4) Die Bezugshöhe ze ist gleich der Höhe der Oberkante der Flagge über Geländeoberkante.
+12.12 Reibungsbeiwerte
+(1) Reibungsbeiwerte cfr für lange Wände und frei stehende Überdachungen werden in Tabelle 15
+angegeben.
+(2) Bezugshöhe ze ist bei frei stehenden Dächern die Dachhöhe, bei Wänden die Oberkante der Wand.
+(3) Die Reibungskraft bei einer frei stehenden Überdachung ist aus jeder beliebigen Richtung anzusetzen.
+Tabelle 15 — Reibungsbeiwerte cfr
+Oberfläche Reibungsbeiwert cfr
+glatt (z. B. Stahl, glatter Beton) 0,01
+rau (z. B. rauer Beton, geteerte Flächen) 0,02
+sehr rau (z. B. gewellt, gerippt, gefaltet) 0,04
+12.13 Effektive Schlankheit und Abminderungsfaktor /G79/G6c zur Berücksichtigung der
+Schlankheit
+(1) Der Abminderungsfaktor /G79/G6c zur Berücksichtigung der Schlankheit wird in Bild 26 in Abhängigkeit von der
+effektiven Schlankheit /G6c und für verschiedene Völligkeitsgrade f angegeben.
+(2) Die effektive Schlankheit /G6c wird in Tabelle 16 definiert.
+Bild 26 — Abminderungsfaktor /G79/G6c in Abhängigkeit von der effektiven Schlankheit /G6c und für
+verschiedene Völligkeitsgrade f
+
+===== SEITE 57 =====
+DIN 1055-4:2005-03
+57
+Tabelle 16 — Effektive Schlankheit /G6c für Zylinder-, Vieleck-, Brücken- und Rechteckquerschnitte
+sowie für Anzeigetafeln, scharfkantige Bauteile und Fachwerkkonstruktionen
+Lfd.
+Nr
+Lage des Baukörpers,
+Anströmung senkrecht zur Zeichenebene Effektive Schlankheit /G6c
+1
+für l /G3e b
+/G6c = l/b oder /G6c = 2,
+der größere Wert ist maßgebend
+2
+für b /Ga3 l
+3
+für b /Ga3 l
+4
+Für polygonale Querschnitte:
+für l /Gb3 50 m ist /G6c = 1,4 l/b oder /G6c = 70,
+der kleinere Wert ist maßgebend
+für l < 15 m ist /G6c = 2 l/b oder /G6c = 70,
+der kleinere Wert ist maßgebend
+Für Kreiszylinder:
+für l /Gb3 50 m ist /G6c = 0,7 l/b oder /G6c = 70,
+der kleinere Wert ist maßgebend
+für l < 15 m ist /G6c = l/b oder /G6c = 70,
+der kleinere Wert ist maßgebend
+Zwischenwerte dürfen linear interpoliert
+werden.
+5
+für l /Gb3 50 m ist /G6c = 0,7 l/b oder /G6c = 70,
+der größere Wert ist maßgebend
+für l < 15 m ist /G6c = l/b oder /G6c = 70,
+der größere Wert ist maßgebend
+Zwischenwerte dürfen linear interpoliert
+werden.
+
+===== SEITE 58 =====
+DIN 1055-4:2005-03
+58
+(3) Der Völligkeitsgrad f ist wie folgt definiert (siehe Bild 27):
+f = A / Ac (45)
+Dabei ist
+A die Summe der projizierten Flächen der einzelnen Teile;
+Ac die eingeschlossene Fläche Ac = l /Gb4 b.
+Bild 27 — Definition des Völligkeitsgrades f
+
+===== SEITE 59 =====
+DIN 1055-4:2005-03
+59
+Anhang A
+(normativ)
+Windzonenkarte
+A.1 Allgemeines
+(1) In der Windzonenkarte sind zeitlich gemittelte Windgeschwindigkeiten vref und zugehörige
+Geschwindigkeitsdrücke qref angegeben. Die Werte gelten für eine Mittelung über einen Zeitraum von 10 min
+mit einer Überschreitenswahrscheinlichkeit innerhalb eines Jahres von 0,02. Die Geschwindigkeit vref gilt für
+eine Höhe von 10 m über Grund in ebenem, offenen Gelände, das der Geländekategorie II nach Anhang B
+entspricht.
+Windzone vref qref
+WZ 1 22,5 m/s 0,32 kN/m²
+WZ 2 25,0 m/s 0,39 kN/m²
+WZ 3 27,5 m/s 0,47 kN/m²
+WZ 4 30,0 m/s 0,56 kN/m²
+Bild A.1 — Windzonenkarte für das Gebiet der Bundesrepublik Deutschland
+A.2 Einfluss der Meereshöhe
+(1) Der Geschwindigkeitsdruck ist zu erhöhen, wenn der Bauwerksstandort oberhalb einer Meereshöhe von
+800 m über NN liegt.
+(2) Der Erhöhungsfaktor beträgt (0,2 + Hs/1 000), wobei Hs die Meereshöhe in m bezeichnet.
+(3) Für Kamm- und Gipfellagen der Mittelgebirge sowie oberhalb Hs = 1 100 m sind besondere Überlegungen
+erforderlich.
+
+===== SEITE 60 =====
+DIN 1055-4:2005-03
+60
+Anhang B
+(normativ)
+Einfluss von Geländerauigkeit und Topographie
+(1) Die Profile der mittleren Windgeschwindigkeit und der zugehörigen Turbulenzintensität hängen von der
+Bodenrauigkeit und der Topographie in der Umgebung des Bauwerksstandortes ab.
+(2) Für baupraktische Zwecke ist es sinnvoll, die weite Spanne von in der Natur vorkommenden
+Bodenrauigkeiten in Geländekategorien zusammenzufassen. Es werden vier Geländekategorien nach
+Tabelle B.1 sowie 2 Mischprofile unterschieden. Das Mischprofil Küste beschreibt die Verhältnisse in einem
+Übergangsbereich zwischen der Geländekategorie I und II. Das Mischprofil Binnenland beschreibt die
+Verhältnisse in einem Übergangsbereich zwischen der Geländekategorie II und III.
+Tabelle B.1 — Geländekategorien
+Geländekategorie I
+Offene See; Seen mit mindestens 5 km freier Fläche in
+Windrichtung; glattes, flaches Land ohne Hindernisse
+z0 = 0,01 m
+Geländekategorie II
+Gelände mit Hecken, einzelnen Gehöften, Häusern oder Bäumen,
+z. B. landwirtschaftliches Gebiet
+z0 = 0,05 m
+Geländekategorie III
+Vorstädte, Industrie- oder Gewerbegebiete; Wälder
+z0 = 0,30 m
+Geländekategorie IV
+Stadtgebiete, bei denen mindestens 15 % der Fläche mit
+Gebäuden bebaut sind, deren mittlere Höhe 15 m überschreitet
+z0 = 1,00 m
+(3) In Tabelle B.2 finden sich die Profile der mittleren Geschwindigkeit, der Turbulenzintensität und des
+Böengeschwindigkeitsdruckes für die 4 Geländekategorien. Der Böengeschwindigkeitsdruck wird in der Regel
+für die Windlastermittlung bei nicht schwingungsanfälligen Konstruktionen benutzt.
+
+===== SEITE 61 =====
+DIN 1055-4:2005-03
+61
+(4) Auf der sicheren Seite liegend kann in den küstennahen Gebieten sowie auf den Nord- und Ostseeinseln
+die Geländekategorie I, im Binnenland die Geländekategorie II zu Grunde gelegt werden.
+(5) Soll der Einfluss der Bodenrauigkeit abweichend von Absatz (4) genauer erfasst werden, so gelten
+folgende Regelungen:
+/Gbe Die Verminderung der bodennahen Windgeschwindigkeiten durch Wälder darf nur mit
+Geländekategorie II bewertet werden. In einem starken Sturm ist nicht sichergestellt, dass die
+Bodenrauigkeit der Geländekategorie III wirksam bleibt, weil die Vegetation den Windkräften unter
+Umständen nicht standhält.
+/Gbe Die Veränderung, die der Windströmung stromab von einem Wechsel der Bodenrauigkeit aufgeprägt
+wird, muss berücksichtigt werden. Sie betrifft das Windprofil, die Turbulenzintensität und weitere
+Parameter, die gegebenenfalls benötigt werden. Dabei ist der Einfluss des Abstandes zwischen
+Rauigkeitswechsel und Bauwerksstandort zu beachten.
+/Gbe Die maßgebende Geländekategorie darf für die interessierenden Windrichtungssektoren stromauf vom
+Bauwerksstandort getrennt ermittelt werden.
+/Gbe In Zweifelsfällen ist die glattere Geländekategorie anzunehmen.
+(6) Der Einfluss wechselnder Bodenrauigkeiten darf ohne genauere Untersuchung wie folgt erfasst werden.
+Liegt der Bauwerksstandort näher als 1 km an einem Wechsel von glatterem zu rauerem Gelände, so ist die
+ungünstigere, glattere Geländekategorie zu benutzen. Ist der Gebäudestandort weiter als 3 km vom
+Rauigkeitswechsel entfernt, so darf die rauere Geländekategorie benutzt werden, wenn das Gebäude
+niedriger als 50 m ist. Für Bauwerke, die sich in größere Höhen als 50 m über Grund erstrecken, ist die
+glattere Geländekategorie anzunehmen.
+Tabelle B.2 — Profile der mittleren Windgeschwindigkeit, der Turbulenzintensität, des
+Böengeschwindigkeitsdrucks und der Böengeschwindigkeit in ebenem Gelände für
+4 Geländekategorien
+Geländekategorie I II III IV
+Mindesthöhe zmin 2,00 m 4,00 m 8,00 m 16,00 m
+Mittlere
+Windgeschwindig-
+keit 
+vm für z > zmin
+1,18 /Gb4 vref (z/10)0,12 1,00 /Gb4 vref (z/10)0,16 0,77 /Gb4 vref (z/10)0,22 0,56 /Gb4 vref (z/10)0,30
+vm / vref für z < zmin 0,97 0,86 0,73 0,64
+Turbulenzintensität
+Iv für z > zmin
+0,14 /Gb4 (z/10)– 0,12 0,19 /Gb4 (z/10)– 0,16 0,28 /Gb4 (z/10)– 0,22 0,43 /Gb4 (z/10)– 0,30
+Iv für z < zmin 0,20 0,22 0,29 0,37
+Böengeschwindig-
+keitsdruck q
+für z > zmin
+2,6 /Gb4 qref (z/10)0,19 2,1 /Gb4 qref (z/10)0,24 1,6 /Gb4 qref (z/10)0,31 1,1 /Gb4 qref (z/10)0,40
+q / qref für z < zmin 1,9 1,7 1,5 1,3
+Böengeschwindig-
+keit v
+für z > zmin
+1,61 /Gb4 vref (z/10)0,095 1,45 /Gb4 vref (z/10)0,120 1,27 /Gb4 vref (z/10)0,155 1,05 /Gb4 vref (z/10)0,200
+v / vref für z < zmin 1,38 1,30 1,23 1,15
+
+===== SEITE 62 =====
+DIN 1055-4:2005-03
+62
+(7) In 10.3 sind Mischprofile des Böengeschwindigkeitsdruckes für die Übergangszonen zwischen den
+Geländekategorien I und II sowie zwischen II und III angegeben. Tabelle B.3 enthält dazu die Profile der
+mittleren Windgeschwindigkeit und der Turbulenzintensität zur Verwendung in den Anhängen C bis F.
+Tabelle B.3 — Profile der mittleren Windgeschwindigkeit, der Turbulenzintensität und der
+Böengeschwindigkeit in ebenem Gelände für die Regelfälle nach 10.3
+Regelprofil im Binnenland Regelprofil in küstennahen
+Gebieten
+Mindesthöhe zmin 7,00 m 4,00 m
+Mittlere Windgeschwindigkeit
+vm für 50 m < z < 300 m 1,00 /Gb4 vref (z/10)0,16 1,18 /Gb4 vref (z/10)0,12
+vm / vref für zmin< z < 50 m 0,86 /Gb4 (z/10)0,25 1,10 /Gb4 (z/10)0,165
+vm / vref für z < zmin 0,79 0,95
+Turbulenzintensität
+Iv für 50 m < z < 300 m 0,19 /Gb4 (z/10)– 0,16 0,14 /Gb4 (z/10)– 0,12
+Iv für zmin< z < 50 m 0,22 /Gb4 (z/10)– 0,25 0,15 /Gb4 (z/10)– 0,165
+Iv für z < zmin 0,24 0,17
+Böengeschwindigkeit v
+für 50 m < z < 300 m 1,45 /Gb4 vref (z/10)0,120 1,61 /Gb4 vref (z/10)0,095
+v / vref für zmin < z < 50 m 1,31 /Gb4 (z/10)0,185 1,51 /Gb4 (z/10)0,135
+v / vref für z < zmin 1,23 1,33
+(8) Isolierte Hügel sowie Geländestufen beeinflussen insbesondere die mittlere Windgeschwindigkeit. Dieser
+Einfluss kann mit dem Topographiebeiwert ct erfasst werden. Er gilt nicht für hügeliges Gelände und Gebirgs-
+regionen.
+(9) Der Topographiebeiwert ct(z) wird auf die Windgeschwindigkeit am Fuß des Hügels oder des
+Geländesprungs bezogen. Er ist auf Bauwerke anzuwenden, die weniger als die halbe Länge des Abhangs
+oder weniger als das 1,5fache der Klippenhöhe vom Kamm entfernt sind. Der Topographiebeiwert ist definiert
+als:
+0,3für0,61
+0,30,05für21
+0,05für1
+/G3e/Gb4/G2b/G3d
+/Ga3/Ga3/Gb4/Gb4/G2b/G3d
+/G3c/G3d
+Φsc
+ΦΦsc
+Φc
+t
+t
+t
+(B.1)
+Dabei ist
+s der Faktor nach Bild B.1 oder B.2 bezogen auf die effektive Länge Le der luvseitigen Steigung;
+/G46._ die luvseitige Steigung wie in Tabelle B.4 angegeben.
+Tabelle B.4 — Werte für die effektive Länge Le
+Luvseitige Steigung /G46._ = H / Lu
+Flach (0,05 < /G46._ < 0,3)
+Le= Lu
+Steil (/G46._ /Gb3 0,3)
+Le = H /0,3
+
+===== SEITE 63 =====
+DIN 1055-4:2005-03
+63
+In den Tabellen B.3 und B.4 bedeuten
+Le die effektive Länge der luvseitigen Steigung nach Tabelle B.4;
+Lu die tatsächliche Länge der luvseitigen Steigung (Projektion auf die Horizontale);
+Ld die tatsächliche Länge der leeseitigen Steigung;
+H die effektive Höhe des Hügels oder des Geländesprungs;
+x der horizontale Abstand des Bauwerks vom Kamm der Erhebung;
+z der vertikale Abstand von der Geländeoberkante auf der Steigungsfläche.
+(10) Für Bauwerke in steilwandigen Tälern oder für Brücken, die solche Täler überspannen, sollte die
+Notwendigkeit von Windgeschwindigkeitserhöhungen sorgfältig geprüft werden.
+Bild B.1 — Faktor s für Klippen und Geländesprünge
+
+===== SEITE 64 =====
+DIN 1055-4:2005-03
+64
+Bild B.2 — Faktor s für Kuppen und Hügelkämme
+(11) Das Profil der mittleren Geschwindigkeit ergibt sich zu:
+)()()( mttm, zvzczv /Gb4/G3d (B.2)
+Dabei ist
+vm(z) das Profil der mittleren Geschwindigkeit in ebenem Gelände (nach Tabelle B.2 bzw. B.3).
+(12) Für das Profil der Turbulenzintensität gilt:
+)()()( v
+t
+tv, zIzczI /Gb4/G3d1 (B.3)
+Dabei ist
+Iv(z) das Profil der Turbulenzintensität in ebenem Gelände (nach Tabelle B.2 bzw. B.3).
+(13) Das Profil des Böengeschwindigkeitsdruckes ergibt sich aus den Gleichungen (B.2) und (B.3) zu:
+)]([)()( tv,tm, zIzvzq /Gb4/G2b/Gb4/Gb4/Gb4/G3d 612
+1 2/G72 (B.4)
+Dabei ist
+/G72 die Luftdichte, /G72 = 1,25 kg/m³.
+
+===== SEITE 65 =====
+DIN 1055-4:2005-03
+65
+Anhang C
+(normativ)
+Verfahren zur Ermittlung des Böenreaktionsfaktors
+C.1 Allgemeines
+(1) Beim genaueren Verfahren wird die in Windrichtung entstehende Böenwirkung einschließlich
+böenerregter Resonanzschwingungen durch eine statische Ersatzlast erfasst. Diese beruht auf der mittleren,
+statischen Windlast, die um einen dynamischen Faktor, den Böenreaktionsfaktor, vergrößert wird. Das
+Verfahren ist anwendbar für Gesamtwindkräfte sowie für abschnittsweise verteilte Windkräfte, nicht jedoch für
+Winddrücke.
+(2) Beanspruchungen quer zur Windrichtung sind nicht erfasst. Sie sind im Allgemeinen durch die Ersatzlast
+abgegolten, es sei denn, die Schwingungsanfälligkeit in Querrichtung ist größer als in Längsrichtung oder es
+liegt Wirbelresonanz nach Anhang D vor.
+(3) Das Verfahren zur Ermittlung des Böenreaktionsfaktors nach C.3 gilt für vertikale Kragsysteme unter
+Berücksichtigung der Grundschwingungsform. Es kann näherungsweise auch für horizontale Tragsysteme mit
+ähnlicher Schwingungsform (z. B. Einfeldträger) benutzt werden. Die Standardfälle sind in Bild C.1 dargestellt.
+Es gilt weiterhin unter der Voraussetzung, dass linear-elastisches Tragverhalten angenommen werden darf.
+(4) Das Verfahren ist nicht für durchlaufende Systeme sowie für abgespannte Masten, seilverspannte
+Brücken und Bogenbrücken anzuwenden.
+
+===== SEITE 66 =====
+DIN 1055-4:2005-03
+66
+Sich überwiegend vertikal erstreckende
+Baukörper
+(z. B. Gebäude, Schornsteine, Türme usw.)
+ze = 0,6 /Gb4 h
+/Gb3 zmin
+Sich überwiegend horizontal erstreckende
+Baukörper
+(z. B. Brücken, Freileitungen usw.)
+z
+e = zg + 0,5 /Gb4 h
+/Gb3 zmin
+Punktförmige Baukörper
+(z. B. Bogenlampen, Hochbehälter usw.)
+ze = zg + 0,5 /Gb4 h
+/Gb3 zmin
+zmin ist die minimale Höhe nach Tabelle B.2 bzw. B.3.
+Bild C.1 — Effektive Höhe ze
+
+===== SEITE 67 =====
+DIN 1055-4:2005-03
+67
+C.2 Statische Ersatzlast
+(1) Die statische Ersatzlast für die Gesamtvvindkraft ist
+Fw = G /Gb4 cf /Gb4 qm(ze) /Gb4 Aref (C.1)
+Dabei ist
+cf der aerodynamische Kraftbeiwert nach Abschnitt 12;
+G der Böenreaktionsfaktor nach C.3;
+qm(ze) der mittlere Geschwindigkeitsdruck in Höhe ze, über Gelände;
+ze die effektive Höhe nach Bild C.1;
+Aref die Bezugsfläche für den Kraftbeiwert nach Abschnitt 12.
+(2) Die statische Ersatzlast für eine Windkraft im Teilabschnitt j der Baukörperachse ist
+Fwj = G /Gb4 cfj /Gb4 qm(zj) /Gb4 Aj (C.2)
+Zusätzlich zu Gleichung (C.1) ist:
+zj die mittlere Höhe des Abschnittes j über Gelände;
+cfj der aerodynamische Kraftbeiwert für den Abschnitt j;
+Aj die Bezugsfläche des Abschnittes j.
+(3) Der mittlere Geschwindigkeitsdruck ergibt sich aus der mittleren Windgeschwindigkeit vm zu
+2
+2
+1
+mm vq /Gb4/G3d/G72 (C.3)
+Dabei ist
+vm die mittlere Windgeschwindigkeit nach Tabelle B.2 bzw. B.3;
+/G72 die Luftdichte, /G72 = 1,25 kg/m-³.
+(4) Die Turbulenzintensität und die mittlere Geschwindigkeit sind in Abhängigkeit der Höhe über Gelände in
+Tabelle B.3 angegeben. Dabei ist vref der Windzonenkarte in Anhang A zu entnehmen. Als Regelfall ist in
+Windzone IV Geländekategorie I zu verwenden, in den übrigen Windzonen Geländekategorie II.
+Die Werte gelten für ebenes Gelände. Einflüsse der Topographie können gegebenenfalls nach Anhang B
+erfasst werden.
+
+===== SEITE 68 =====
+DIN 1055-4:2005-03
+68
+C.3 Böenreaktionsfaktor
+(1) Der Böenreaktionsfaktor wird wie folgt berechnet:
+22
+021 xev )( RQzIgG /G2b/Gb4/Gb4/Gb4/G2b/G3d (C.4)
+Dabei ist
+Iv(ze) die Turbulenzintensität in der effektiven Höhe nach Tabelle B.2 bzw. B.3;
+g der Spitzenfaktor nach Absatz (2) dieses Abschnittes;
+Q0 der quasi-statische Anteil (Böengrundanteil) der Böenreaktion nach Absatz (5) dieses Abschnittes;
+Rx der Resonanzanteil der Antwort infolge der Böenreaktion nach Absatz (6) dieses Abschnittes.
+(2) Der Spitzenfaktor g ist in Bild C.2 dargestellt und wie folgt definiert:
+)ln(
+,)ln(
+E
+E
+tv
+tvg
+/Gb4/Gb4
+/G2b/Gb4/Gb4/G3d
+2
+602 (C.5)
+Dabei ist
+t der Mittelungszeitraum (t = 600 s = 10 min) für die Bezugsgeschwindigkeit vref;
+vE der Erwartungswert der Frequenz der Böenreaktion nach Gleichung (C.6).
+Bild C.2 — Spitzenfaktor g
+
+===== SEITE 69 =====
+DIN 1055-4:2005-03
+69
+(3) Der Erwartungswert der Frequenz der Böenreaktion vE ist definiert als:
+22
+0
+22
+1
+2
+0
+2
+0
+x
+xx,E,
+E
+RQ
+RnQv
+v
+/G2b
+/Gb4/G2b/Gb4
+/G3d (C.6)
+Dabei ist
+n1,x die erste Eigenfrequenz, in Hz, der Bauwerksschwingung in Windrichtung (x-Richtung).
+Näherungsformeln werden im Anhang F angegeben;
+vE,0 der Erwartungswert der Frequenz, in Hz, der Böenreaktion des Tragwerks bei Annahme quasi-
+statischen Tragverhaltens nach Gleichung (C.7).
+Dieser ist wie folgt festgelegt:
+61500
+111
+1
+,ei
+em
+E,
+,)(
+)(
+SzL
+zvv
+/Gb4
+/Gb4/G3d (C.7)
+Dabei ist
+S
+/Gfa
+/Gfa
+/Gfb
+/Gf9
+/Gea
+/Gea
+/Geb
+/Ge9/Gb4/Gb4/G2b/Gfa
+/Gfb
+/Gf9
+/Gea
+/Geb
+/Ge9/G2b/Gb4/G3d )(,)(,
+eiei zL
+hb
+zL
+hb 581460 (C.8)
+b, h die Breite, Höhe des Baukörpers nach Bild C.1;
+vm(ze) die mittlere Windgeschwindigkeit für z = ze nach Tabelle B.2 bzw. B.3;
+Li(ze) das Integrallängenmaß der Längskomponente der Turbulenz in Richtung des mittleren Windes für
+z = ze nach Gleichung (C.9).
+(4) Das Integrallängenmaß Li(z) der Turbulenz ist in Bild C.3 dargestellt und wie folgt definiert:
+Li(z) = 300 /Gb4 (z / 300)/G65 ( Li, z in m) für zmin /Ga3 z /Ga3 300 m
+Li(z) = 300 /Gb4 (zmin / 300)/G20/G65(Li, zmin in m) für z /Ga3 zmin (C.9)
+Dabei ist
+/G65 der Exponent nach Tabelle C.1;
+zmin nach Tabelle B.2 bzw. B.3.
+Auf der sicheren Seite liegend kann in den küstennahen Gebieten sowie auf den Nord- und Ostseeinseln die
+Geländekategorie I, im Binnenland die Geländekategorie II zu Grunde gelegt werden.
+
+===== SEITE 70 =====
+DIN 1055-4:2005-03
+70
+Tabelle C.1 — Exponent /G65
+Geländekategorie I II III IV Mischprofil
+Küste
+Mischprofil
+Binnenland
+0,13 0,26 0,37 0,46 150
+0002
+1
+,
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6
+z
+100
+0003
+1
+,
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6
+z
+Legende
+1 Geländekategorie I 4 Geländekategorie IV
+2 Geländekategorie II 5 Mischprofil Küste
+3 Geländekategorie III 6 Mischprofil Binnenland
+Bild C.3 — Integrallängenmaß L
+i(z) der Turbulenz
+
+===== SEITE 71 =====
+DIN 1055-4:2005-03
+71
+(5) Der quadrierte Böengrundanteil Q0 ist in Bild C.4 dargestellt und wie folgt definiert:
+630
+2
+0
+901
+1
+,
+ei )(, /Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/G2b/Gb4/G2b
+/G3d
+zL
+hb
+Q (C.10)
+Bild C.4 — Böengrundanteil 2
+0Q
+(6) Der quadrierte Resonanz-Antwortanteil 2
+xR der Böenreaktion ist wie folgt definiert:
+bhNx RRRR /Gb4/Gb4/Gb4/Gb4/G3d/G64
+/G70
+2
+22 (C.11)
+Dabei ist
+/G64 das logarithmische Dämpfungsdekrement für Schwingungen in Windrichtung. Werte für /G64 werden
+in Anhang F angegeben;
+RN die dimensionslose spektrale Dichtefunktion der Windgeschwindigkeit an der Resonanzstelle
+n = n1,x nach Gleichung (C.12);
+Rh, Rb die aerodynamische Übertragungsfunktion nach Gleichung (C.15) bzw. (C.16).
+(7) Die dimensionslose spektrale Dichtefunktion RN ist in Bild C.5 dargestellt und wie folgt definiert:
+35
+1
+1
+2
+11
+2101
+86
+/
+x,
+x,
+v
+x,vx,
+N
+),(
+,)(
+N
+NnSn
+R
+/Gb4/G2b
+/Gb4
+/G3d
+/Gb4
+/G3d
+/G73
+(C.12)
+Dabei ist
+)(
+)(1
+1
+em
+eix,
+x, z
+zLnN v
+/Gb4/G3d (C.13)
+
+===== SEITE 72 =====
+DIN 1055-4:2005-03
+72
+Bild C.5 — Dimensionslose spektrale Dichtefunktion RN
+(8) Die aerodynamischen Übertragungsfunktionen Rh und Rb werden für die Grundschwingungsform mit
+gleichsinnigem Vorzeichen (gleichgerichtete Verformung) angegeben. Sie werden ausgehend von Rl wie folgt
+berechnet:
+/G28/G29
+0für1
+0für1
+2
+11 2
+2
+/G3d/G3d
+/G3e/G2d/Gb4
+/Gb4
+/G2d/G3d /Gb4/G2d
+ηR
+ηe
+η
+R
+l
+l
+/G68
+/G68 (C.14)
+Es ist
+)(
+,
+ei
+x,
+lh zL
+hN
+RR
+/Gb4/Gb4
+/G3d/G3d 164
+mit /G68 (C.15)
+)(
+,
+ei
+x,
+lb zL
+bN
+RR
+/Gb4/Gb4
+/G3d/G3d 164
+mit /G68 (C.16)
+Rl ist in Bild C.6 dargestellt. Für Schwingungsformen mit zusätzlichen Schwingungsknoten sind genauere
+Untersuchungen erforderlich.
+
+===== SEITE 73 =====
+DIN 1055-4:2005-03
+73
+Bild C.6 — Aerodynamische Übertragungsfunktionen Rl (l = h bzw. b)
+C.4 Verformungen und Beschleunigungen
+(1) Dieser Abschnitt gibt Empfehlungen für die Bestimmung von Verformungen und Beschleunigungen von
+sich überwiegend vertikal erstreckenden Baukörpern im Grenzzustand der Gebrauchstauglichkeit unter
+Ansatz verschiedener Windgeschwindigkeiten im Hinblick auf verschiedene Überschreitenswahrschein-
+lichkeiten.
+(2) Die größte Verformung in Windrichtung max x(z) und die Standardabweichung der Beschleunigung in
+Windrichtung )(x z/G26/G26/G73 in der Höhe z ergeben sich zu:
+/G28/G29
+x
+x,x,
+emf
+x, KG
+nπm
+zcbρzΦzx /Gb4/Gb4
+/Gb4/Gb4/Gb4/Gb4
+/Gb4/Gb4/Gb4/Gb4/G3d 2
+11
+2
+1
+22
+)()()(max v
+(C.17)
+xxev
+x,
+emf
+x,x KRzIm
+zcbρzΦσ /Gb4/Gb4/Gb4/Gb4/Gb4/Gb4/Gb4/G3d )()()(
+1
+2
+1
+v
+/G26/G26 (C.18)
+Dabei ist
+/G46._1,x(z) die Grundschwingungsform in Windrichtung nach Anhang F;
+G der Böenreaktionsfaktor nach Gleichung (C.4);
+/G72 die Luftdichte /G72 = 1,25 kg/m-³;
+b die Breite des Baukörpers nach Bild C.1;
+cf der Kraftbeiwert in Windrichtung nach Abschnitt 12;
+vm(ze) die mittlere Windgeschwindigkeit vm(z) für z = ze nach Tabelle B.2 bzw. B.3;
+Iv(ze) die Turbulenzintensität Iv(z) in Windrichtung für z = ze nach Tabelle B.2 bzw. B.3;
+n1,x die Grundeigenfrequenz der Bauwerksschwingungen in Windrichtung (Näherungsformeln werden
+in Anhang F angegeben);
+
+===== SEITE 74 =====
+DIN 1055-4:2005-03
+74
+m1,x die äquivalente Masse für Schwingungen in Windrichtung nach Anhang F;
+Rx der Resonanz-Antwortanteil nach Gleichung (C.11);
+Kx der dimensionslose Koeffizient nach Gleichung (C.19).
+(3) Der Koeffizient Kx ist wie folgt definiert:
+/Gf2
+/Gf2
+/Gb4/Gb4
+/Gb4/Gb4
+/G3d h
+h
+zdzΦz
+zdzΦz
+K
+0
+xl,em
+0
+xl,m
+x
+)()(
+)()(
+22
+2
+v
+v
+(C.19)
+Dabei ist
+h die Höhe des Baukörpers (siehe Bild C.1).
+(4) Unter Ansatz von /G46._1,x(z) = (z/h)/G7a (siehe F.3) kann Gleichung (C.19) bei voll ausgebildeten Windprofilen
+nach Tabelle B.2 wie folgt angenähert werden:
+/G61/G7a
+/G7a/G61
+21
+21600 2
+/G2b/G2b
+/G2b/Gb4/G3d /G2d,xK (C.20)
+Dabei ist
+/G61 der Profilexponent in Abhängigkeit von der Geländekategorie nach Tabelle C.2;
+/G7a der Exponent der Grundbiegeschwingungsform (siehe F.3).
+Diese Näherung ist in Bild C.7 dargestellt.
+Tabelle C.2 — Profilexponent /G61
+Geländekategorie I II III IV
+Profilexponent /G61 0,12 0,16 0,22 0,30
+
+===== SEITE 75 =====
+DIN 1055-4:2005-03
+75
+Bild C.7 — Näherung des Koeffizienten Kx nach Gleichung (C.20)
+C.5 Interferenzeffekte
+(1) Bei Bauwerken in Reihen- oder Gruppenanordnung können die Windwirkungen durch den
+Strömungsnachlauf hinter luvseitig liegenden Bauwerken vergrößert werden.
+(2) In einfachen Fällen kann die Vergrößerung auf der sicheren Seite abgeschätzt werden, indem die
+Windkraft sowie die Beschleunigung eines freistellenden Gebäudes mit den lnterferenzfaktoren Ki nach
+Tabelle C.3 multipliziert werden.
+(3) Für andere Fälle sind Windkanalversuche bzw. Beratungen mit Fachleuten durchzuführen.
+
+===== SEITE 76 =====
+DIN 1055-4:2005-03
+76
+Tabelle C.3 — Beispiele für Interferenzfaktoren Ki für hohe Bauwerke in Reihen-
+oder Gruppenanordnung
+Bauwerksanordnung a/b y/b
+Verformung/
+Windkraft
+in Windrichtung
+Ki,x
+Beschleunigung
+in Windrichtung
+xi /G26/G26K
+/Ga3 15 1,5 3,0
+/Gb3 25
+1,2
+1,0 1,0
+/Ga3 15 1,3 2,5
+/Gb3 25
+0,3
+1,0 1,0
+/Ga3 15 y1/b = 1,5 1,4 3,0
+/Gb3 25 y2/b = 1 1,0 1,0
+Zwischenwerte dürfen linear interpoliert werden!
+C.6 Überschreitungshäufigkeit von niedrigen Niveaus der Böenreaktion
+(1) Ein Einwirkungseffekt Se, der durch die Böenbelastung hervorgerufen wird, erreicht oder überschreitet
+seinen charakteristischen Wert Sk im statistischen Mittel einmal in 50 Jahren.
+(2) Die entsprechende Anzahl der Überschreitungen Ng eines niedrigeren Niveaus Se(Ng) ist größer. Bild C.8
+zeigt den Zusammenhang zwischen Se(Ng) als Prozentsatz von Se,k und der Anzahl der Niveau-
+überschreitungen Ng.
+
+===== SEITE 77 =====
+DIN 1055-4:2005-03
+77
+Bild C.8 — Anzahl der Überschreitungen Ng des Niveaus Se(Ng) einer Böenreaktion S
+innerhalb eines Zeitraums von 50 Jahren
+Die Beziehung zwischen Se(Ng) / Se,k und Ng ist wie folgt definiert:
+10041770 2 /G2b/Gb4/G2d/Gb4/G3d )(lg,)]([lg,
+)(
+gg
+ke,
+ge NNS
+NS
+ (C.21)
+
+===== SEITE 78 =====
+DIN 1055-4:2005-03
+78
+Anhang D
+(normativ)
+Wirbelerregte Schwingungen
+D.1 Allgemeines
+Wirbelerregte Schwingungen rechtwinklig zur Windrichtung können bei schlanken, stabförmigen Bauwerken
+und Bauteilen auftreten. In D.2 wird ein Berechnungsverfahren für den Resonanzfall angegeben, bei dem die
+Wirbelablösefrequenz mit einer Eigenfrequenz der Struktur übereinstimmt.
+D.2 Berechnungsverfahren für wirbelerregte Querschwingungen
+D.2.1 Kritische Windgeschwindigkeit
+(1) Die kritische Windgeschwindigkeit vcrit,i, für die die Wirbelablösefrequenz gleich einer Eigenfrequenz des
+Bauteils ist, wird nach Gleichung (D.1) ermittelt.
+St
+yi,
+icrit,
+nb /Gb4/G3dv (D.1)
+Dabei ist
+b die maßgebende Breite des Querschnitts im Bereich der Wirbelerregung. Bei zylindrischen
+Querschnitten ist für b der Außendurchmesser anzusetzen;
+ni,y die Eigenfrequenz der i-ten Schwingungsform für Schwingungen quer zur Windrichtung.
+Näherungsformeln werden im Abschnitt F angegeben;
+St die Strouhalzahl nach Tabelle D.1 und Bild D.1.
+(2) Ein kritischer Resonanzfall kann nicht auftreten, wenn
+Ljm,icrit, 251 vv /Gb4/G3e, (D.2)
+Dabei ist
+vcrit,i siehe Gleichung (D.1);
+vm,Lj die mittlere Windgeschwindigkeit, wie in Tabelle B.2 bzw. B.3 definiert, ermittelt auf Höhe des
+Mittelpunktes der Wirklänge Lj, in der die Wirbelerregung auftritt. Anwendungsbeispiele werden in
+Bild D.3 gegeben.
+D.2.2 Strouhalzahl
+Die Strouhalzahl St für unterschiedliche Querschnittsformen kann Tabelle D.1 entnommen werden.
+
+===== SEITE 79 =====
+DIN 1055-4:2005-03
+79
+Tabelle D.1 — Strouhalzahl St und Grundwert des aerodynamischen Erregerkraftbeiwertes clat,0
+für verschiedene Querschnittsformen
+Querschnittsform St clat,0
+für alle Reynoldszahlen 
+0,18 aus Bild D.2
+0,5 /Ga3 d/b /Ga3 10 aus Bild D.1 1,1
+d/b = 1 0,11 0,8
+d/b = 1,5 0,10 1,2
+d/b = 2 0,14 0,3
+d/b = 1 0,13 1,6
+d/b = 2 0,08 2,3
+d/b = 1 0,16 1,4
+d/b = 2 0,12 1,1
+d/b = 1,3 0,11 0,8
+d/b = 2,0 0,07 1,0
+d/b /Ga3 5 0,15 0,12 d/b
+5 < d/b < 10 111
+1
+/G2b/Gb4b
+d,
+2
+111
+15
+/Gf7/Gf7
+/Gf7
+/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge7
+/Ge7
+/Ge8
+/Ge6
+/G2b/Gb4
+/Gb4/Gb4
+b
+db
+d
+,
+Brücken
+d/b /Gb3 10 0,083 0,035 d/b
+Zwischenwerte sind linear zu interpolieren.
+
+===== SEITE 80 =====
+DIN 1055-4:2005-03
+80
+Bild D.1 — Strouhalzahl St für scharfkantige rechteckige Querschnittsformen
+D.2.3 Einwirkung infolge wirbelerregter Querschwingungen
+Die Beanspruchungen infolge wirbelerregter Querschwingungen resultieren aus den Massenträgheitskräften
+des in Resonanz erregten Systems. Im Punkt j errechnen sich die Massenträgheitskräfte Fi(sj) senkrecht zur
+Windrichtung nach folgender Gleichung:
+/G28/G29 Fjyi,yi,jji ysnπMsF Φ max)(2)( 2 /Gb4/Gb4/Gb4/Gb4/Gb4/G3d (D.3)
+Dabei ist
+Mj die schwingende Masse im Punkt s = sj;
+ni,y die Eigenfrequenz der i-ten Schwingungsform quer zur Windrichtung (Näherungsgleichungen
+zur Berechnung der Eigenfrequenz ni,y finden sich in F.2);
+/G46._i,y(sj) die normierte Schwingungsform i quer zur Windrichtung als Verhältnis der Schwingweg-
+amplitude y im Punkt s = sj zur größten Schwingwegamplitude max yF (siehe Tabelle D.4);
+max yF die größte Schwingwegamplitude nach D.2.4;
+s die Laufkoordinate über die Struktur. Für sich vorwiegend vertikal erstreckende Bauwerke gilt
+s /Gba z.
+D.2.4 Berechnung der Querschwingungsamplitude
+(1) Die größte rechnerische Schwingwegamplitude max yF bei kritischer Windgeschwindigkeit vcrit,i ergibt
+sich zu:
+Sc
+1
+St
+1
+2 /Gb4/Gb4/Gb4/Gb4/G3d latW
+Fmax cKKb
+y (D.4)
+Dabei ist
+b die maßgebende Breite des Querschnittes im Bereich der Wirbelerregung. Bei zylindrischen
+Querschnitten ist b der Außendurchmesser;
+KW der Wirklängenfaktor (siehe D.2.7);
+K der Beiwert der Schwingungsform (siehe D.2.8);
+clat der aerodynamische Erregerkraftbeiwert (siehe D.2.5);
+St die Strouhalzahl nach Tabelle D.1 und Bild D.1;
+Sc die Scrutonzahl nach Gleichung (D.5).
+
+===== SEITE 81 =====
+DIN 1055-4:2005-03
+81
+(2) Die Scrutonzahl berechnet sich zu:
+2
+2
+Sc
+b
+m
+/Gb4
+/Gb4/Gb4
+/G3d
+/G72
+/G64yi, (D.5)
+Dabei ist
+/G72 die Luftdichte /G72 = 1,25 kg/m-³;
+mi,y die äquivalente Masse je Längeneinheit nach Gleichung (F.6);
+/G64 das logarithmische Dämpfungsdekrement nach Gleichung (F.7), jedoch ohne den aeroelastischen
+Dämpfungsanteil /G64a.
+(3) Die Gleichung (D.4) ist mit Hilfe der Gleichung (D.7) bzw. mit der Tabelle D.3 und Tabelle D.4 iterativ zu
+lösen.
+D.2.5 Aerodynamischer Erregerkraftbeiwert
+Der aerodynamische Erregerkraftbeiwert clat ist Tabelle D.2 zu entnehmen.
+Tabelle D.2 — Aerodynamischer Erregerkraftbeiwert clat in Abhängigkeit vom Verhältnis der kritischen
+Windgeschwindigkeit zur mittleren Windgeschwindigkeit vcrit,i / vm,Lj
+Kritisches Windgeschwindigkeitsverhältnis clat
+0,83/Ga3
+Ljm,
+icrit,
+v
+v
+clat = clat,0
+1,250,83 /Ga3/Ga3
+Ljm,
+icrit,
+v
+v
+02,43,0 lat,
+Ljm,
+icrit,
+lat cc /Gb4/Gf7
+/Gf7
+/Gf8
+/Gf6
+/Ge7
+/Ge7
+/Ge8
+/Ge6
+/Gb4/G2d/G3d v
+v
+Ljm,
+icrit,
+v
+v/Ga31,25 clat = 0
+Mit: clat,0 Grundwert des Erregerkraftbeiwertes clat nach Tabelle D.1 bzw. Bild D.2;
+vcrit,i kritische Windgeschwindigkeit nach Gleichung (D.1);
+vm,Lj mittlere Windgeschwindigkeit nach Tabelle B.2 bzw. B.3, die je Jahr mit einer
+Wahrscheinlichkeit von 0,02 überschritten wird, in der Mitte der Wirklänge nach D.2.6.
+In Bild D.2 ist die Reynoldszahl Re bei kritischer Windgeschwindigkeit zu benutzen:
+v
+bRe icrit,
+icrit,
+vv /Gb4/G3d)( (D.6)
+Dabei ist
+b die maßgebende Breite des Querschnittes; bei zylindrischen Querschnitten ist b der Außen-
+durchmesser;
+n die kinematische Zähigkeit der Luft, v = 1,5 /Gb4 10–5 m² /Gb7 s-1;
+vcrit,i die kritische Windgeschwindigkeit nach Gleichung (D.1).
+
+===== SEITE 82 =====
+DIN 1055-4:2005-03
+82
+Bild D.2 — Grundwert des aerodynamischen Erregerkraftbeiwertes clat,0 für Kreiszylinder in
+Abhängigkeit von der Reynoldszahl Re (vcrit)
+D.2.6 Wirkl änge
+(1) Die Wirklänge Lj ist im Bereich der Schwingungsbäuche anzusetzen. Beispiele werden in Bild D.3
+gegeben. Für abgespannte Maste und über mehrere Felder durchlaufende Brücken sind besondere
+Überlegungen erforderlich.
+(2) Das Verhältnis Lj/b ist nach Tabelle D.3 definiert, wobei yF,j die Schwingwegamplitude im Punkt ist. In den
+meisten Fällen ist die Schwingwegamplitude im Schwingungsbauch gleich der maximalen Amplitude max yF.
+
+===== SEITE 83 =====
+DIN 1055-4:2005-03
+83
+Bild D.3 — Beispiele für den Ort der anzusetzenden Wirklänge
+Tabelle D.3 — Wirklänge Lj in Abhängigkeit von der Schwingwegamplitude yF,j
+yF,j / bL j / b
+< 0,1 6
+0,1 . . . 0,6
+b
+y jF,, /Gb4/G2b1284
+> 0,6 12
+
+===== SEITE 84 =====
+DIN 1055-4:2005-03
+84
+D.2.7 Wirkl ängenfaktor KW
+(1) Der Wirklängenfaktor KW ist nach Gleichung (D.7) definiert:
+0,6
+)(
+)(
+1 j
+/Ga3/G3d
+/G3d
+l
+n
+j L
+sdsΦ
+sdsΦ
+K
+yi,
+yi,
+W (D.7)
+Dabei ist
+/G46._i,y normierte i-te Schwingungsform (siehe D.2.3);
+Lj Wirklänge (siehe D.2.6);
+n Anzahl der Bereiche, in denen Wirbelablösung gleichzeitig auftritt;
+l gesamte abgewickelte Stablänge. Für kragarmartige Bauwerke ist l gleich der Bauwerkshöhe.
+(2) Für einige einfache Strukturen, die in der Grundform schwingen und bei denen die Erregerkräfte wie in
+Tabelle D.4 angreifen, kann der Wirklängenfaktor KW näherungsweise mit den Gleichungen der Tabelle D.4
+ermittelt werden.
+
+===== SEITE 85 =====
+DIN 1055-4:2005-03
+85
+Tabelle D.4 — Wirklängenfaktor KW und Beiwert der Schwingungsform
+Bauwerk/Bauteil
+Schwingungsform
+/G46._i,y (s)
+KW K
+siehe F.3
+mit n = 1 und /G7a = 2,0 /Gfa
+/Gfa
+/Gfb
+/Gf9
+/Gea
+/Gea
+/Geb
+/Ge9
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/Gb4/G2b/G2d/Gb4/Gb4
+2
+3
+113 /G6c/G6c/G6c
+bLbLbL /// jjj
+0,13
+siehe Tabelle F.1
+mit n = 1 /Gfa
+/Gfa
+/Gfb
+/Gf9
+/Gea
+/Gea
+/Geb
+/Ge9
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/G2d/Gb4 /G6c
+/G70 bL /
+cos j12 0,10
+siehe Tabelle F.1
+mit n = 1 /Gfa
+/Gfa
+/Gfb
+/Gf9
+/Gea
+/Gea
+/Geb
+/Ge9
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/G2d/Gb4/Gb4/G2b /G6c/G70/G70/G6c
+bLbL /
+sin
+/ jj 11 0,11
+nach Modalanalyse
+mit n = 3
+/Gf2
+/Ge5/Gf2
+/G3d
+l
+n
+j L
+sdsΦ
+sdsΦ
+)(
+)(
+yi,
+1
+yi,
+j 0,10
+/G6c = l/b (Schlankheit);
+n Anzahl der Bereiche, in denen Wirbelablösung gleichzeitig auftritt.
+Die Schwingungsform /G46._1,y (s) kann nach F.3 ermittelt werden.
+
+===== SEITE 86 =====
+DIN 1055-4:2005-03
+86
+D.2.8 Beiwert der Schwingungsform K
+(1) Der Beiwert der Schwingungsform K ist definiert als:
+/G28/G29
+/G28/G29/Gd7
+/G3d
+l
+l
+sdsΦπ
+sdsΦ
+K
+24 yi,
+yi,
+(D.8)
+Dabei ist
+/G46._i,y(s) i-te normierte Schwingungsform für Querschwingungen (siehe F.3);
+l gesamte abgewickelte Stablänge.
+(2) Für einige einfache Strukturen, die in der Grundschwingungsform schwingen, ist der Beiwert in der
+Tabelle D.4 angegeben.
+D.2.9 Anzahl N der Spannungsschwingspiele
+(1) Die Anzahl N der Spannungsschwingspiele, die durch wirbelerregte Querschwingungen hervorgerufen
+werden, kann nach Gleichung (D.9) ermittelt werden.
+TevεnTN v /Gb4/Gb3/Gb4/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/Gb4/Gb4/Gb4/Gb4/Gb4/G3d
+/Gf7/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge8
+/Ge6/G2d
+200106,3
+2
+0
+2
+0
+0
+7
+icrit,
+icrit,
+yi,
+v
+v
+(D.9)
+Dabei ist
+ni,y die Eigenfrequenz in Hz der i-ten Querschwingungsform des Bauwerks; Näherungsverfahren sind
+in F.2 angegeben;
+vcrit,i die kritische Windgeschwindigkeit in m /Gb7 s der i-ten Querschwingungsform nach D.2.1;
+v0 nach Gleichung (D.10); v0 ist das 2 fache des häufigsten Wertes (Modalwert vmod) der
+Wahrscheinlichkeitsverteilung der mittleren Windgeschwindigkeit in m /Gb7 s–1;
+T die Entwurfslebensdauer in Jahren;
+/G650 der Bandbreitenfaktor der Wirbelresonanz; er kann zu /G650 = 0,3 angesetzt werden.
+(2) Soweit nicht im Anhang A anders definiert, kann der Wert v0 näherungsweise angesetzt werden zu:
+5
+1
+0 /Gb4/G3dLjm,vv (D.10)
+Dabei ist
+vm,Lj die mittlere Windgeschwindigkeit in m/s nach Tabelle B.2 bzw. B.3 am Ort der Mitte der Wirklänge
+Lj der betrachteten Schwingungsform (siehe Bild D.3).
+(3) Wirbelresonanzschwingungen von Zylindern in Reihen- oder Gruppenanordnung werden in E.2.2
+beschrieben.
+
+===== SEITE 87 =====
+DIN 1055-4:2005-03
+87
+D.2.10 Maßnahmen gegen wirbelerregte Querschwingungen
+(1) Wirbelresonanzamplituden können mit Hilfe aerodynamischer Maßnahmen unter bestimmten
+Voraussetzungen (z. B. für Scrutonzahlen Sc /Gb3 8) mit dämpfungserhöhenden Maßnahmen generell verringert
+werden.
+(2) Bei Anwendung aerodynamischer Maßnahmen ist zu berücksichtigen, dass der aerodynamische
+Kraftbeiwert bis zu einem Wert von cf = 1,4 anwachsen kann. Aerodynamische und dämpfungserhöhende
+Maßnahmen erfordern besondere Überlegungen. Hierzu wird auf die bauartspezifischen Regelungen
+verwiesen.
+D.2.11 Ovalisierende Schwingungen zylinderförmiger Schalen
+(1) Die kritische Windgeschwindigkeit für ovalisierende Schwingungen zylinderförmiger Schalen vcrit,o ergibt
+sich zu:
+St2 /Gb4
+/Gb4/G3d o
+ocrit,
+nbv (D.11)
+Dabei ist
+b der äußere Durchmesser der Schale m;
+St die Strouhalzahl nach D.2.2;
+no die Eigenfrequenz in Hz der Schalenschwingung, siehe Anhang F.
+(2) Ovalisierende Schwingungen können nicht auftreten, wenn:
+)(1,25 smocrit, vv /Gb4/G3e (D.12)
+Dabei ist
+vm(s) die mittlere Windgeschwindigkeit in m/s nach Tabelle B.2 bzw. B.3, ermittelt in der Höhe der
+größten Amplitude der Ovalisierungsschwingung.
+
+===== SEITE 88 =====
+DIN 1055-4:2005-03
+88
+Anhang E
+(normativ)
+Aeroelastische Instabilitäten und Interferenzeffekte
+E.1 Galloping
+E.1.1 Allgemeines
+(1) Galloping ist eine selbsterregte Schwingung eines elastischen Bauwerks oder Bauteils in einer
+Biegeschwingungsform. Nicht kreisförmige Querschnitte einschließlich I-, U-, L- und T-förmige Querschnitte
+können durch Galloping gefährdet sein. Eisansatz kann bewirken, dass ein gegenüber Galloping stabiler
+Querschnitt instabil wird.
+(2) Galloping-Schwingungen beginnen bei einer bestimmten Einsetzgeschwindigkeit 
+vCG; die Amplituden
+wachsen mit zunehmender Windgeschwindigkeit schnell an.
+E.1.2 Einsetzgeschwindigkeit
+(1) Die Einsetzgeschwindigkeit für Galloping vCG ist nach Gleichung (E.1) definiert:
+bn /Gb4/Gb4/Gb4/G3d y,
+G
+CG 1
+Sc2
+av (E.1)
+Dabei ist
+Sc die Scrutonzahl nach Gleichung (D.5);
+n1,y die Grundeigenfrequenz des Bauwerks für Querschwingungen; Näherungsgleichungen zur
+Ermittlung der Grundeigenfrequenz sind in Anhang F angegeben;
+b die maßgebende Breite des Querschnitts nach Tabelle E.1;
+aG der Stabilitätsbeiwert für Galloping (siehe Tabelle E.1). Wenn kein Wert bekannt ist, kann mit aG = 10
+gerechnet werden.
+(2) Es ist nachzuweisen, dass die Einsetzgeschwindigkeit für Galloping größer als der 1,25fache Wert der
+mittleren Windgeschwindigkeit ist (siehe Gleichung E.2):
+vCG > 1,25 /Gb4 vm (E.2)
+Dabei ist
+vm die mittlere Windgeschwindigkeit in m/s nach Tabelle B.2 bzw. B.3 ermittelt in der Höhe, in der die
+größten Galloping-Erregerkräfte erwartet werden; dieses ist im Allgemeinen der Ort, an dem die
+größten Schwingungsamplituden auftreten.
+(3) Falls die kritische Windgeschwindigkeit vcrit für wirbelerregte Querschwingungen der Einsetz-
+geschwindigkeit vCG für Galloping benachbart ist, das heißt innerhalb der in Gleichung (E.3) angegebenen
+Grenzwerte liegt, müssen Interaktionseffekte zwischen wirbelerregten Querschwingungen und Galloping
+berücksichtigt werden. In diesem Fall sind Windkanaluntersuchungen oder fachkundige Beratung erforderlich.
+1,50,7 /G3c/G3c
+crit
+CG
+v
+v
+ (E.3)
+
+===== SEITE 89 =====
+DIN 1055-4:2005-03
+89
+Tabelle E.1 — Stabilitätsbeiwert für Galloping aG
+Querschnitt Stabilitäts-
+beiwert aG
+Querschnitt Stabilitäts-
+beiwert aG
+Eis an
+Kabeln 1,0
+ 1,0
+d/b = 2,0 2,0
+ d/b = 2,0 0,7
+d/b = 1,5 1,7
+ d/b = 2,7 5,0
+d/b = 1,0 1,2
+ d/b = 5,0 7,0
+d/b = 2/3 1,0
+ d/b = 3,0 7,5
+d/b = 1/2 0,7
+ d/b = 3/4 3,2
+d/b = 1/3 0,4
+ d/b = 2,0 1,0
+
+===== SEITE 90 =====
+DIN 1055-4:2005-03
+90
+E.2 lnterferenzeffekte bei Reihen- oder Gruppenanordnung für Schwingungen
+quer zur Windrichtung
+E.2.1 Allgemeines
+Schlanke Bauwerke oder Bauteile wie Schornsteine oder Seile können in Reihe oder als Gruppe angeordnet
+sein. Sie können gekoppelt oder ungekoppelt sein. In Abhängigkeit vom Verhältnis des Achsabstands zum
+Durchmesser a / b (siehe Bild E.1) können die folgenden Schwingungserscheinungen auftreten:
+/Gbe wirbelerregte Querschwingungen (siehe E.2.2),
+/Gbe lnterfererenzgalloping (siehe E. 2.3),
+/Gbe klassisches Galloping (siehe E.2.4).
+Bild E.1 — Reihen- und Gruppenanordnungen von zylindrischen Baukörpern
+E.2.2 Wirbelresonanz
+Die größte rechnerische Schwingamplitude kann mit Hilfe der Gleichungen (D.1) und (D.4) berechnet werden.
+Dabei sind die folgenden Änderungen zu berücksichtigen:
+/Gbe für Reihenanordnung von Zylindern ohne Kopplung ist der Beiwert clat für das einzeln stehende Bauwerk
+nach D.2.5 zu erhöhen. Der Faktor beträgt:
+1,5 für 1 /Ga3 a / b /Ga3 10 (E.4)
+1,0 für a / b /Gb3 15
+Für 10 < a / b /Ga3 15 ist linear zu interpolieren. Für die Strouhalzahl ist anzusetzen:
+St = 0,1 + 0,085 /Gb4 lg(a / b) für 1 /Ga3 a / b /Ga3 9( E . 5 )
+St = 0,18 für a / b > 9
+Der Faktor 1,5 zur Erhöhung des clat-Wertes ist eine grobe Abschätzung, die als konservativ angesehen wird.
+/Gbe für gekoppelte Zylinder in Reihen- oder Gruppenanordnung ist der Beiwert clat für den Wertebereich des
+Verhältnisses a / b von 1,0 /Ga3 a / b /Ga3 3,0 um den lnterferenzfaktor Kiv nach Tabelle E.2 zu vergrößern. Die
+Strouhalzahl und die Scrutonzahl werden nach Tabelle E.2 berechnet. Für gekoppelte Zylinder mit
+a / b > 3,0 sind besondere Betrachtungen erforderlich.
+
+===== SEITE 91 =====
+DIN 1055-4:2005-03
+91
+E.2.3 Interferenzgalloping
+(1) Interferenzgalloping ist eine selbsterregte Schwingung, die auftreten kann, wenn zwei oder mehr Zylinder
+mit geringem Abstand voneinander angeordnet sind, ohne untereinander gekoppelt zu sein.
+(2) Wenn der Anströmwinkel im Bereich der kritischen Anströmrichtung /G62k liegt und für a / b < 3 (siehe
+Bild E.2), kann die Einsetzgeschwindigkeit nach Gleichung (E.6) ermittelt werden.
+IG
+y,IG a
+a Sc
+3,5 1
+/Gb4
+/Gb4/Gb4/Gb4/G3d bbnv (E.6)
+Dabei ist
+Sc die Scrutonzahl nach Gleichung (D.5);
+aIG der kombinierte Stabilitätsparameter; wenn kein anderer Wert vorliegt oder ermittelt wurde, kann
+mit aIG = 3,0 gerechnet werden;
+n1,y die Grundeigenfrequenz der Querschwingungsform; Näherungswerte sind in Anhang F ange-
+geben, in Hz;
+a, b der Achsabstand bzw. Durchmesser der Zylinder, in m.
+Bild E.2 — Bezeichnungen der geometrischen Parameter für Interferenzgalloping
+(3) Das Phänomen des Interferenzgallopings kann durch eine Kopplung der beiden Zylinder unterdrückt
+werden. Dann kann jedoch klassisches Galloping (siehe E.2.4) auftreten.
+(4) Es ist nachzuweisen, dass die Einsetzgeschwindigkeit für klassisches Galloping größer als der 1,25fache
+Wert der mittleren Windgeschwindigkeit ist:
+vIG > 1,25 vm(z) (E.7)
+Dabei ist
+vm(z) die mittlere Windgeschwindigkeit in m /Gb7 s-1 nach Tabelle B.2 bzw. B.3 an Stelle der maximalen
+Schwingamplitude.
+E.2.4 Klassisches Galloping
+(1) Bei gekoppelten Zylindern (siehe Bild E.1) kann klassisches Galloping auftreten.
+(2) Die Einsetzgeschwindigkeit vCG für klassisches Galloping gekoppelter Zylinder kann nach Gleichung (E.8)
+ermittelt werden:
+bn /Gb4/Gb4/Gb4/G3d yi,
+G
+IG a
+Sc2v (E.8)
+
+===== SEITE 92 =====
+DIN 1055-4:2005-03
+92
+worin die in Tabelle E.2 definierten Werte für Sc, aG und b einzusetzen sind und n1,y die Grundeigenfrequenz
+der Biegeschwingung ist.
+(3) Es ist nachzuweisen, dass die Einsetzgeschwindigkeit für klassisches Galloping größer als der 1,25fache
+Wert der mittleren Windgeschwindigkeit ist (siehe Gleichung (E.9)):
+vCG > 1,25 vm(z) (E.9)
+Dabei ist
+vm(z) die mittlere Windgeschwindigkeit in m/s nach Tabelle B.2 bzw. B.3, in Höhe der maximalen
+Schwingamplitude ermittelt.
+
+===== SEITE 93 =====
+DIN 1055-4:2005-03
+93
+Tabelle E.2 — Rechenwerte für die Abschätzung der Antwort quer zur Windrichtung von gekoppelten
+Zylindern in Reihen- und Gruppenanordnung
+Scrutonzahl Sc nach Gleichung (D.5)
+Gekoppelte Zylinder
+a/b = 1 a/b /Gb3 2 a/b /Ga3 1,5 a/b /Gb3 2,5
+Kiv = 1,5 Kiv = 1,5 aG = 1,5 aG = 3,0
+Kiv = 4,8 Kiv = 3,0 aG = 6,0 aG = 3,0
+Kiv = 4,8 Kiv = 3,0 aG = 1,0 aG = 2,0
+Zwischenwerte sind linear zu interpolieren
+
+===== SEITE 94 =====
+DIN 1055-4:2005-03
+94
+E.3 Divergenz und Flattern
+E.3.1 Allgemeines
+(1) Divergenz und Flattern sind Instabilitäten, die nur bei verformungsfähigen plattenähnlichen Bauwerken
+oder Bauteilen auftreten können, wie zum Beispiel bei Anzeigetafeln oder Hängebrücken.
+(2) Divergenz und Flattern müssen grundsätzlich ausgeschlossen sein.
+(3) Die im Folgenden angegebenen Berechnungsverfahren stellen Methoden zur Abschätzung der
+Empfindlichkeit eines Baukörpers gegenüber diesen Schwingungserscheinungen mit Hilfe geometrischer und
+dynamischer Bedingungen des Systems dar. Wenn diese Bedingungen nicht erfüllt sind, sind genaue
+rechnerische Untersuchungen oder Windkanalversuche durchzuführen. Für seilverspannte Brücken dürfen die
+Abschätzgleichungen der folgenden Abschnitte nicht benutzt werden.
+E.3.2 Allgemeine Bedingungen f ür plattenförmige Baukörper
+Um anfällig für Divergenz oder Flattern zu sein, muss ein Baukörper alle der drei folgenden Bedingungen
+erfüllen. Die Bedingungen sind in der gegebenen Reihenfolge zu prüfen. Wenn eine der Bedingungen nicht
+erfüllt ist, ist das Bauwerk oder das Bauteil nicht divergenz- oder flattergefährdet.
+a) Das Bauwerk oder ein wesentliches Teil von ihm muss einen langgestreckten Querschnitt aufweisen
+(ähnlich einer flachen Platte) mit einem Abmessungsverhältnis von d/b /Gb3 4 (siehe Bild E.3).
+b) Die Torsionsachse muss parallel zur Plattenebene und normal zur Windrichtung verlaufen; außerdem
+muss die Torsionsachse mindestens um das Maß d/4 leewärts von der luvseitigen Kante der Platte
+entfernt sein, wobei d die Breite der Platte in Windrichtung senkrecht zur Torsionsachse ist. Dieses
+schließt auch den Fall ein, dass die Torsionsachse im Flächenschwerpunkt liegt, wie zum Beispiel bei
+einer mittig gelagerten Anzeigetafel oder einem mittig gestützten, freistehenden Dach, und den Fall, dass
+die Torsionsachse mit der leeseitigen Kante identisch ist, wie zum Beispiel bei einem auskragenden,
+freistehenden Dach.
+c) Die niedrigste Eigenfrequenz muss zu einer Torsionsschwingung gehören oder eine
+Torsionseigenfrequenz muss weniger als das Doppelte der niedrigsten Eigenfrequenz der
+translatorischen Schwingung betragen.
+E.3.3 Divergenzgeschwindigkeit
+(1) Die kritische Windgeschwindigkeit für Divergenz beträgt
+2
+1
+2
+θ2
+/Gf7/Gf7
+/Gf7
+/Gf7
+/Gf8
+/Gf6
+/Ge7/Ge7
+/Ge7
+/Ge7
+/Ge8
+/Ge6
+/Gb4/Gb4
+/Gb4/G3d
+dθ
+dcdρ
+k
+M
+divv (E.10)
+Dabei ist
+k/G71 die Torsionssteifigkeit;
+dcM/d/G71 die Ableitung des aerodynamischen Koeffizienten für das Moment der Windkraft nach der
+Verdrehung um die Torsionsachse;
+/G72 die Luftdichte /G72 = 1,25 kg/m³;
+d die Breite des Baukörpers in Windrichtung (siehe Bild E.3).
+
+===== SEITE 95 =====
+DIN 1055-4:2005-03
+95
+(2) In Bild E.3 werden Werte für dcM/d/G71 von Rechteckquerschnitten angegeben. Das Torsionsmoment ist
+dabei auf den Flächenschwerpunkt des Querschnitts bezogen.
+(3) Es ist sicherzustellen, dass
+vdiv > 2 vm(ze) (E.11)
+Dabei ist
+vm(ze) die mittlere Windgeschwindigkeit nach Tabelle B.2 bzw. B.3 in der Höhe ze nach Bild C.1.
+Bild E.3 — Ableitung des aerodynamischen Koeffizienten des Momentes cM nach der
+Torsionsverdrehung /G71 in Abhängigkeit des Seitenverhältnisses b/d
+
+===== SEITE 96 =====
+DIN 1055-4:2005-03
+96
+Anhang F
+(normativ)
+Dynamische Grundlagen
+F.1 Allgemeines
+(1) Die in diesem Abschnitt angegebenen Berechnungsverfahren setzen voraus, dass die Bauwerke linear-
+elastisches Verhalten und übliche Schwingungsformen aufweisen. Die dynamischen Bauwerkseigenschaften
+werden dann beschrieben durch die
+/Gbe Eigenfrequenzen,
+/Gbe Schwingungsformen,
+/Gbe äquivalenten Massen,
+/Gbe logarithmischen Dämpfungsdekremente.
+(2) Bei Lastkombinationen (z. B. Wind und Schnee) ist die dynamische Berechnung unter Berücksichtigung
+der Zusatzmassen durchzuführen.
+(3) Für Bauwerke mit üblichen und einfachen Formen können die dynamischen Grunddaten mit Hilfe von
+Näherungsgleichungen, die aus einfachen Berechnungen oder Erfahrungswerten resultieren, ermittelt
+werden, sofern diese Gleichungen ausreichend verifiziert sind. Einige dieser Gleichungen werden in F.2 bis
+F.5 angegeben.
+F.2 Grundbiegeeigenfrequenz
+(1) Die Grundbiegeeigenfrequenz n1 in Hz eines Hochhauses kann abgeschätzt werden zu:
+n1 = 46 / h (F.1)
+Dabei ist
+h die Bauwerkshöhe, in m.
+Der gleiche Ausdruck kann einen Anhaltswert für Türme (ausgenommen abgespannte Maste) liefern.
+(2) Die Grundbiegeeigenfrequenz n1 in Hz von Schornsteinen kann abgeschätzt werden zu
+t
+s
+eff W
+W
+h
+bn /Gb4/Gb4/G3d2
+1
+1
+/G65 (F.2)
+Dabei ist
+heff = h1 + h2 / 3 (F.3)
+
+===== SEITE 97 =====
+DIN 1055-4:2005-03
+97
+Dabei ist
+b der obere Durchmesser des Schornsteins, in m;
+heff die effektive Höhe des Schornsteins, in m, h1 und h2 werden in Bild F.1 angegeben;
+Ws die Masse der Bauteile, die einen Beitrag zur Biegesteifigkeit des Schornsteins leisten;
+Wt die Gesamtmasse des Schornsteins;
+/G65 1 1 000 für Stahlschornsteine; 700 für Schornsteine in Massivbauweise (Stahlbeton oder Mauerwerk).
+ANMERKUNG h3 = h1/3; h3 wird in F.4 benötigt.
+Bild F.1 — Abmessungen bei Schornsteinen
+(3) Die Grundbiegeeigenfrequenz n1 in Hz für ovalisierende Schwingungen einer langen Zylinderschale ohne
+Aussteifungsringe kann wie folgt ermittelt werden:
+ 42
+3
+1
+1
+4920
+bm
+Etn
+/Gb4/G2d/Gb4
+/Gb4/Gb4/G3d
+)(
+,
+s /G6d
+(F.4)
+Dabei ist
+E der Elastizitätsmodul, in N/m²;
+t die Schalendicke, in m;
+/G6d die Querkontraktionszahl;
+ms die Masse der Schale pro Flächeneinheit kg/m²;
+b der Durchmesser der Schale, in m.
+Die Gleichung gibt die niedrigste Eigenfrequenz der Schalenschwingung an. Aussteifungsringe führen zu
+einer höheren Eigenfrequenz n1.
+
+===== SEITE 98 =====
+DIN 1055-4:2005-03
+98
+F.3 Grundbiegeschwingungsform
+(1) Die Grundbiegeschwingungsform /G46._1(s) von Gebäuden, Türmen und Schornsteinen als Kragbauwerke
+kann wie folgt abgeschätzt werden:
+/G7a
+/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/G3dh
+ssΦ )(1 (F.5)
+Dabei ist
+s die Koordinate /G7a in Längsachse des Bauwerks oder Bauteils.
+Für den Exponenten /G7a können folgende Werte benutzt werden:
+/G7a = 0,6 für schlanke Rahmenkonstruktionen mit nichttragender Verkleidung;
+/G7a = 1,0 für Gebäude mit aussteigendem Kern und äußeren Stützen oder mit größeren Stützen und
+versteifender Ausfachung;
+/G7a = 1,5 für schlanke auskragende Gebäude und Gebäude, die nur durch einen zentralen
+Stahlbetonkern getragen werden;
+/G7a = 2,0 für Türme und Masten;
+/G7a = 2,5 für Türme als stählerne Fachwerkkonstruktion.
+Bild F.2 — Grundbiegeschwingungsform für Gebäude, Türme und Schornsteine,
+die als Kragbauwerke ausgeführt sind
+
+===== SEITE 99 =====
+DIN 1055-4:2005-03
+99
+(2) Die Grundbiegeschwingungsform /G46._1(s) von Brücken kann näherungsweise nach Tabelle F.1 bestimmt
+werden.
+Tabelle F.1 — Grundbiegeschwingungsform von gelenkig gelagerten oder
+beidseitig eingespannten Einfeldträgern
+System Schwingungsform /G46._1(s)
+/Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6/Gb4l
+s/G70sin
+/Gfa/Gfb
+/Gf9
+/Gea/Geb
+/Ge9 /Gf7
+/Gf8
+/Gf6/Ge7
+/Ge8
+/Ge6 /Gb4/Gb4/G2d/Gb4 l
+s/G70212
+1 cos
+F.4 Äquivalente Masse
+(1) Die äquivalente Masse mi je Längeneinheit ist definiert als:
+/Gf2
+/Gf2/Gb4
+/G3dL
+L
+sdsΦ
+sdsΦm
+m
+0
+2
+i
+0
+2
+i
+i
+)(
+)(
+ (F.6)
+Dabei ist
+m die Masse je Längeneinheit;
+L die Höhe h oder Spannweite l des Bauwerks oder Bauteils.
+(2) Bei Bauwerken, die eine wenig veränderliche Massenverteilung aufweisen, kann in guter Näherung die
+mittlere Masse pro Längeneinheit in dem Drittel des Bauwerks, in dem die Schwingungsform /G46._1 ihr Maximum
+aufweist, als m1 angesetzt werden (siehe Tabelle F.1).
+F.5 Logarithmisches Dämpfungsdekrement
+(1) Das logarithmische Dämpfungsdekrement /G64 für die Grundbiegeschwingungsform kann wie folgt
+abgeschätzt werden:
+/G64 = /G64s + /G64a + /G64d (F.7)
+Dabei ist
+/G64s das logarithmische Dekrement der Strukturdämpfung;
+/G64a das logarithmische Dekrement der aerodynamischen Dämpfung;
+/G64d das logarithmische Dekrement der Dämpfung infolge besonderer Maßnahmen (zum Beispiel
+Schwingungsdämpfer).
+
+===== SEITE 100 =====
+DIN 1055-4:2005-03
+100
+(2) Das logarithmische Dekrement der Strukturdämpfung /G64s kann bestimmt werden zu:
+/G64s = a1 n1 + b1 /Gb3 /G64min (F.8)
+Dabei ist
+n1 die Grundbiegeschwingungsfrequenz, in Hz;
+a1, b1, /G64min Parameter nach Tabelle F.2 für verschiedene Bauwerkstypen; /G64min gilt für kleine
+Verformungen.
+(3) Das logarithmische Dekrement der aerodynamischen Dämpfung /G64a für Schwingungen in Windrichtung
+kann abgeschätzt werden zu:
+)(
+11
+em
+x,x,
+f
+a 2 zmn
+cb v/Gb4/Gb4
+/Gb4/Gb4/G3d/G72/G64 (F.9)
+Dabei ist
+/G72 die Luftdichte /G72 = 1,25 kg/m³;
+b die Breite der dem Wind ausgesetzten Bauwerksfläche, in m;
+cf der mittlere aerodynamische Kraftbeiwert in Windrichtung (siehe Abschnitt 12);
+vm(ze) die mittlere Windgeschwindigkeit vm(z) nach Tabelle B.2 bzw. B.3 für z = ze, in m/s;
+ze die Bezugshöhe (siehe Bild C.1), in m;
+m1,x die äquivalente Masse für die Grundschwingung in Windrichtung, in kg/m (siehe F.4);
+n1,x die Eigenfrequenz für die Grundschwingung in Windrichtung, in Hz (siehe F.2).
+Für die Berechnung von wirbelerregten Querschwingungen nach Anhang D darf eine aerodynamische
+Dämpfung nicht angesetzt werden.
+(4) Falls besondere Maßnahmen zur Dämpfungserhöhung angebracht werden, ist das zusätzliche
+Dämpfungsdekrement /G64d mit Hilfe geeigneter theoretischer oder experimenteller Verfahren zu ermitteln.
+
+===== SEITE 101 =====
+DIN 1055-4:2005-03
+101
+Tabelle F.2 — Parameter a1, b1, und /G64min
+Bauwerkstyp a1 b1 /G64min
+Gebäude in Massivbauweise 0,045 0,05 0,100
+Gebäude in Stahlbauweise 0,045 0 0,050
+Gebäude in gemischter Bauweise (Beton und Stahl) 0,080 0 0,080
+Türme in Stahlbetonbauweise 0,050 0 0,025
+Schornsteine in Massivbauweise 0,075 0 0,030
+Stahlschornsteine nach DIN 4133 – – –
+geschweißt 0 0,020 0
+vorgespannte Schrauben 0 0,030 0
+Stahlbrücken und
+Türme in
+Stahlfachwerk-
+bauweise rohe Schrauben 0 0,050 0
+Verbundbrücken 0 0,040 0
+vorgespannt ohne Risse 0 0,040 0Brücken in
+Massivbauweise mit Rissen 0 0,100 0
+Paralleldrahtbündel 0 0,006 0
+Seile
+spiralförmig angeordnete Drähte 0 0,020 0
+Die Tabellenwerte sind als Anhaltswerte zu verstehen. Sofern in Fachnormen anders geregelt, gelten die
+dort spezifizierten Werte.

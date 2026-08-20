@@ -1,0 +1,802 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Dezember 2010 
+DIN EN 1993-1-10 
+ICS 91.01 0.30; 91.080.10 Ersatzvermerk 
+siehe unten 
+DIN 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Tei11-10: Stahlsortenauswahl im Hinblick auf Bruchzähigkeit und 
+Eigenschaften in Dickenrichtung; 
+Deutsche FassungEN 1993-1-10:2005 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 1-10: Material toughness and through-thickness properties; 
+GermanversionEN 1993-1-10:2005 + AC:2009 
+Eurocode 3: Calcul des structures en acier-
+Parie 1-10: Choix des qualites d'acier vis a vis de Ia tenacite et des proprietes dans le 
+sens de l'epaisseur; 
+Versionallemande EN 1993-1-10:2005 + AC:2009 
+Ersatzvermerk 
+Ersatz für DIN EN 1993-1-10:2005-07; 
+mit DIN EN 1993-1-1:2010-12, DIN EN 1993-1-1/NA:2010-12, DIN EN 1993-1-3:2010-12, 
+DIN EN 1993-1-3/NA:2010-12, DIN EN 1993-1-5:2010-12, DIN EN 1993-1-5/NA:2010-12, 
+DIN EN 1993-1-8:2010-12, DIN EN 1993-1-8/NA:2010-12, DIN EN 1993-1-9:2010-12, 
+DIN EN 1993-1-9/NA:2010-12, DIN EN 1993-1-10/NA:2010-12, DIN EN 1993-1-11:2010-12 und 
+DIN EN 1993-1-11/NA:2010-12 Ersatz fOr DIN 18800-1:2008-11; 
+Ersatz für DIN EN 1993-1-10 Berichtigung 1:2010-05 
+Gesamtumfang 22 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 12 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1722661
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-10:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-1-10:2005 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Euro-
+codes für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses NA 005-08-16 AA 
+Tragwerksbemessung (Sp CEN/TC 250/SC 3) begleitet. 
+Diese Europäische Norm wurde vom CEN am 16. April 2005 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind 
+im Vorwort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-1-1:1993-04, DIN V ENV 1993-1-1/A1:2002-05 und 
+DIN V ENV 1993-1-1/A2:2002-05 wurden folgende Änderungen vorgenommen: 
+a) Vornorm-Charakter wurde angenommen; 
+b) in Teil 1-1, Teil 1-8, Teil 1-9 und Teil 1-10 aufgeteilt; 
+c) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet und der Text vollständig 
+überarbeitet und in einen eigenständigen Normteil überführt. 
+Gegenüber DIN EN 1993-1-10:2005-07, DIN EN 1993-1-10 Berichtigung 1:2010-05 und DIN 18800-1:2008-11 
+wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-10:2010-12 
+Frühere Ausgaben 
+DIN 1050: 1934-08, 1937xxxxx-07, 1946-10, 1957x-12, 1968-06 
+DIN 1073: 1928-04, 1931-09, 1941-01, 1974-07 
+DIN 1073 Beiblatt: 1974-07 
+DIN 1079: 1938-01, 1938-11, 1970-09 
+DIN 4100: 1931-05, 1933-07, 1934xxxx-08, 1956-12, 1968-12 
+DIN 4101: 1937xxx-07, 1974-07 
+DIN 18800-1: 1981-03, 1990-11, 2008-11 
+DIN 18800-1/A1: 1996-02 
+DIN V ENV 1993-1-1: 1993-04 
+DIN V ENV 1993-1-1/A1: 2002-05 
+DIN V ENV 1993-1-1/A2: 2002-05 
+DIN EN 1993-1-10: 2005-07 
+DIN EN 1993-1-10 Berichtigung 1: 2010-05 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-10:2010-12 
+ Leerseite  
+4
+
+===== PDF-SEITE 5 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-1-10 
+ Mai 2005 
+ +AC 
+ März 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-1-1:1992
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 1-10: Stahlsortenauswahl im Hinblick auf Bruchzähigkeit 
+und Eigenschaften in Dickenrichtung 
+Eurocode 3: Design of steel structures  
+Part 1-10: Material toughness and through-Thickness 
+properties 
+ Eurocode 3: Calcul des structures en acier  
+Partie 1-10: Choix des qualités d'acier vis à vis de la 
+ténacité et des propriétés dans le sens de l'épaisseur 
+Diese Europäische Norm wurde vom CEN am 23. April 2004 angenommen. 
+Die Berichtigung tritt am 25. März 2009 in Kraft und wurde in EN 1993-1-10:2005 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-1-10:2005 + AC:2009 D
+
+===== PDF-SEITE 6 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................3 
+Hintergrund des Eurocode-Programms ...........................................................................................................3 
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................4 
+Nationale Fassungen der Eurocodes ...............................................................................................................5 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (EN und ETAZ) .............................................................................................................................5 
+Nationaler Anhang zu EN 1993-1-10 .................................................................................................................5 
+1 Allgemeines.................................................................................................................. ..........................6 
+1.1 Anwendungsbereich .......................................................................................................... ...................6 
+1.2 Normative Verweisungen..................................................................................................... .................6 
+1.3 Begriffe ................................................................................................................... ................................7 
+1.4 Formelzeichen.............................................................................................................. ..........................8 
+2 Auswahl der Stahlsorten im Hinblick auf die Bruchzähigkeit...........................................................8 
+2.1 Allgemeines................................................................................................................ ............................8 
+2.2 Vorgehensweise............................................................................................................. ........................9 
+2.3 Zulässige Erzeugnisdicken.................................................................................................. .............. 11 
+2.3.1 Allgemeines.............................................................................................................. ........................... 11 
+2.3.2 Ermittlung der zulässigen Erzeugnisdicken ................................................................................ .... 12 
+2.4 Anwendung der Bruchmechanik................................................................................................ ....... 13 
+3 Auswahl der Stahlsorten im Hinblick auf Eigenschaften in Dickenrichtung................................ 14 
+3.1 Allgemeines................................................................................................................ ......................... 14 
+3.2 Vorgehensweise............................................................................................................. ..................... 15 
+2 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Vorwort 
+Dieses Dokument (EN 1993-1-10:2005 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 
+Eurocodes für den konstruktiven Ingenieurbau“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+CEN/TC 250 ist auch für alle anderen Eurocode-Teile verantwortlich. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis November 2005, und etwaige entgegenstehende 
+nationale Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-1-1. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Schweden, Schweiz, Slowakei, Slowenien, Spanien, Tschechische 
+Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm auf der 
+Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Programms war die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und sie schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 80’er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu über-
+tragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine Vereinbarung
+1)
+zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den Regelungen der 
+Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln (z. B. die 
+Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie, die Ratsrichtlinien 93/37/EWG, 
+92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die entsprechenden 
+EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung; 
+EN 1991, Eurocode 1: Einwirkung auf Tragwerke; 
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten; 
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten; 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten; 
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten; 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+3 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten; 
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik; 
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben; 
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen. 
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitglieds-
+ländern und haben deren Recht zur nationalen Festl egung sicherheitsbezogener Werte berücksichtigt, so 
+dass diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1: Mechani-
+scher Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(EN’s und ETA’s) 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art 
+sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich aus den 
+Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel 
+sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+ a) die wesentliche Anforderung zu konkretisieren, in dem die Begriffe und, soweit erforderlich, die technische 
+ Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ b) die Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen 
+ anzugeben, z. B. rechnerische oder Testverfahren, Entwurfsregeln, 
+ c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+ Zulassungen zu dienen. 
+Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+4 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang. 
+Der Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die Trag-
+werksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt werden. Sie umfassen: 
+ Zahlenwerte für -Faktoren und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische, geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ Vorgehensweise, wenn die Eurocodes mehrere zur Wahl anbieten; 
+ Verweise zur Anwendung des Eurocodes, soweit diese ergänzen und nicht widersprechen. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (EN und ETAZ) 
+Die harmonisierten Technischen Spezifikationen für Bauprodukte und die technischen Regelungen für die 
+Tragwerksplanung4) müssen konsistent sein. Insbesondere sollten die Hinweise, die mit den CE-Zeichen an 
+den Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar erkennen lassen, welche 
+national festzulegenden Parameter (NDP) zugrunde liegen. 
+Nationaler Anhang zu EN 1993-1-10 
+Diese Norm enthält alternative Methoden, Zahlenangaben und Empfehlungen in Verbindung mit Anmerkun-
+gen, die darauf hinweisen, wo Nationale Festlegungen getroffen werden können. EN 1993-1-10 wird bei der 
+nationalen Einführung einen Nationalen Anhang enthalten, der alle national festzulegenden Parameter enthält, 
+die für die Bemessung und Konstruktion von Stahlbauten im jeweiligen Land erforderlich sind. 
+Nationale Festlegungen werden in EN 1993-1-10 in folgenden Abschnitten ermöglicht: 
+ 2.2(5); 
+ 3.1(1). 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie, ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagendoku-
+mentes Nr. 1 
+5 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1993-1-10 enthält eine Anleitung für die Auswahl der Stahlsorten im Hinblick auf Bruchzähigkeit und 
+Eigenschaften in Dickenrichtung, wenn bei der Fertigung von Schweißkonstruktionen auf die Gefahr von 
+Terrassenbruch zu achten ist. 
+(2) Abschnitt 2 gilt für Stähle S235 bis S690. Abschnitt 3 gilt nur für Stähle S235 bis S460. 
+ANMERKUNG Der Anwendungsbereich von EN 1993-1-1 ist auf Stähle S235 bis S460 begrenzt. 
+(3) Die Regelungen und Hinweise in den Abschnitten 2 und 3 gelten nur, wenn die Ausführung der Stahl-
+konstruktion nach EN 1090 erfolgt. 
+1.2 Normative Verweisungen 
+(1) Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+ANMERKUNG In normativen Abschnitten wird auf die folgenden Europäischen Normen, die bereits veröffentlicht oder 
+in Vorbereitung sind, verwiesen: 
+EN 1011-2, Empfehlungen für das Schweißen von Metallen  Teil 2: Empfehlungen für das Lichtbogen-
+schweißen von ferritischen Stählen
+EN 1090, Anforderungen für die Ausführung von Stahlbauten
+EN 1990, Grundlagen der Tragwerksplanung
+EN 1991, Einwirkungen auf Tragwerke
+EN 1998, Auslegung von Bauwerken gegen Erdbeben
+EN 10002, Metallische Werkstoffe  Zugversuch
+EN 10025, Warmgewalzte Erzeugnisse aus unlegierten Baustählen. Technische Lieferbedingungen
+EN 10045-1, Metalle  Kerbschlagbiegeversuch nach Charpy  Teil 1: Prüfverfahren
+gestrichener Text
+EN 10160, Ultraschallprüfung von Flacherzeugnissen aus Stahl mit einer Dicke größer oder gleich 6 mm 
+(Reflexionsverfahren)
+EN 10164, Stahlerzeugnisse mit verbesserten Verformungseigenschaften senkrecht zur Erzeugnisober-
+fläche  Technische Lieferbedingungen
+EN 10210-1, Warmgefertigte Hohlprofile für den Stahlbau aus unlegierten Baustählen und aus Feinkorn-
+baustählen  Teil 1: Technische Lieferanforderungen
+EN 10219-1, Kaltgefertigte geschweißte Hohlprofile für den Stahlbau aus unlegierten Baustählen und aus 
+Feinkornbaustählen  Teil 1: Technische Lieferbedingungen
+6 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+1.3 Begriffe 
+1.3.1 
+ KV-Wert 
+der KV-Wert ist die Kerbschlagarbeit gestrichener Text in J, die für den Bruch einer Charpy V-
+Kerbschlagprobe bei einer bestimmten Prüftemperatur T benötigt wird; die Prüfanforderung in den Normen für 
+Stahlerzeugnisse spezifiziert im Allgemeinen, dass die Kerbschlagarbeit für eine festgelegte Prüftemperatur 
+nicht geringer als 27 J ist 
+1.3.2 
+Übergangstemperaturbereich 
+der Temperaturbereich im Zähigkeits-Temperaturdiagramm KV(T), in dem die Zähigkeit des 
+Werkstoffes mit der Temperatur abfällt und die Versagensart von zäh nach spröde wechselt; der in den 
+Produktnormen geforderte Zähigkeitswert T
+27J liegt in der Nähe der Tieflage des Übergangsbereichs 
+1.3.3 
+Hochlagenbereich 
+der Temperaturbereich im Zähigkeits-Temperaturdiagramm KV(T), in dem Stahlbauteile elastisch-plastisches 
+Verhalten mit duktilem Bruchverhalten zeigen; dabei können fertigungsbedingt kleine Werkstofffehler oder 
+Schweißnahtfehler vorhanden sein 
+Legende 
+1 Tieflagenbereich 
+2 Übergangstemperaturbereich 
+3 Hochlagenbereich
+Bild 1.1  Kerbschlagarbeit in Abhängigkeit von der Temperatur 
+1.3.4 
+T
+27J
+Temperatur, bei der in der Kerbschlagprüfung mit Charpy-V-Kerbschlagproben mindestens eine Kerbschlag-
+arbeit KV = 27J erreicht wird 
+1.3.5 
+Z-Wert 
+Prozentwert der Brucheinschnürung einer Zugprobe nach EN 10002, für die Duktilitätsprüfung in Dicken-
+richtung 
+1.3.6 
+K
+Ic
+Der kritische Wert des Spannungsintensitätsfaktors in N/mm3/2 als Maß für die Bruchzähigkeit für den ebenen 
+Dehnungsfall und für elastisches Werkstoffverhalten. 
+7 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+ANMERKUNG International werden für den Spannungsintensitätsfaktor K die Dimensionen N/mm 3/2 und MPa m (d. h. 
+MN/m3/2), wobei 1 N/mm3/2 = 0,032 MPa m, verwendet. 
+1.3.7 
+Kaltumformungsgrad 
+bleibende Dehnung aus Kaltumformung in Prozent 
+1.4 Formelzeichen 
+ KV(T) Kerbschlagarbeit in J bei der Prüfung einer V-Kerbschlagprobe bei der Temperatur T; 
+ZZ -Güte, in %; 
+T Temperatur in C°; 
+TEd Bezugstemperatur; 
+ Rissspitzenöffnung (CTOD) in mm, an einer Kleinprobe zur Bestimmung der elastisch-plastischen 
+Bruchzähigkeit gemessen; 
+J Maß für die elastisch-plastische Bruchzähigkeit ( J-Integral) in N/mm, als Integral über den Rand 
+eines Gebietes ermittelt, das die Rissfront von einem Rissufer zum anderen umfasst; 
+K Spannungsintensitätsfaktor; 
+KIc der kritische Wert des Spannungsintensitätsfaktors in N/mm3/2 als Maß für die Bruchzähigkeit für 
+den ebenen Dehnungsfall und für elastisches Werkstoffverhalten;
+cf Kaltumformungsgrad in Prozent; 
+Ed Bemessungswert der angelegten Spannungen, die zusammen mit der Bezugstemperatur TEd
+auftreten. 
+2 Auswahl der Stahlsorten im Hinblick auf die Bruchzähigkeit 
+2.1 Allgemeines 
+(1) Die Regelungen in Abschnitt 2 sind für die Auswahl der Stahlsorten bei Neukonstruktionen und nicht für 
+die Einschätzung der Eignung von eingebautem Stahl bestimmt. Die Regelungen eignen sich zur Auswahl der 
+Stahlsorte mit Bezug auf die Europäischen Normen für Stahlerzeugnisse, die in EN 1993-1-1 aufgeführt sind. 
+(2) Die Regelungen gelten für geschweißte und ungeschweißte Bauteile mit reiner oder teilweiser 
+Zugbeanspruchung und mit Ermüdungsbeanspruchung. 
+ANMERKUNG Die Regelungen können für Bauteile, die nicht den Bedingungen wie Zugbeanspruchung, Schweißung 
+und Ermüdung unterliegen, auf der sicheren Seite liegen. In diesen Fällen kann die Anwendung der Bruchmechanik 
+zweckmäßig sein, siehe 2.4. Für Bauteile, die nur auf Druck beansprucht werden, braucht keine Bruchzähigkeit spezifiziert 
+zu werden. 
+(3)P Die Regelungen gelten für Stahlsorten in ihren jeweiligen Gütegruppen nach den Normen für 
+Stahlerzeugnisse. Stahlsorten, die nach dieser Regelung nicht ausreichen, sollten nicht verwendet werden, 
+auch wenn Einzelprüfungen bestimmter Lieferungen ausreichende Zähigkeitskennwerte nachweisen. 
+8 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+2.2 Vorgehensweise 
+(1) Die Stahlsorte ist in der Regel unter Berücksichtigung folgender Gesichtspunkte auszuwählen. 
+(i) Eigenschaften des Stahlwerkstoffs: 
+ Streckgrenze fy(t) abhängig von der Erzeugnisdicke; 
+ Stahlgüte ausgedrückt durch die Zähigkeitswerte T27J oder T40J. 
+(ii) Bauteileigenschaften: 
+ Bauteilform und Detailgestaltung; 
+ Kerbeffekt entsprechend den Kerbfällen in EN 1993-1-9; 
+ Erzeugnisdicke ( t) ; 
+ Geeignete Annahmen zu rissähnlichen Fehlern (z. B. durchgehende Risse oder halbelliptische Ober-
+flächenrisse). 
+(iii) Bemessungssituation: 
+ Bemessungswert der niedrigsten Bauteiltemperatur; 
+ Maximale Spannungen aus ständigen und veränderlichen Einwirkungen, die zu der Bemessungssituation 
+nach (4) gehören; 
+ Geeignete Annahmen für Eigenspannungen; 
+ soweit zutreffend: Annahmen zum ermüdungsbedingten Risswachstum in dem Betriebszeitintervall 
+zwischen Bauwerksprüfungen; 
+ aus Stoßwirkungen in Sonderlastfällen; soweit zutreffend: Dehnungsgeschwindigkeit 
+ soweit zutreffend: Kaltumformungsgrad cf. 
+(2) Für den Sicherheitsnachweis bei der Auswahl der Stahlsorten gelten die Regelungen in 2.3 und Tabelle 
+2.1. 
+(3) Als Alternative zum Zähigkeitsnachweis mit Tabellenwerten können folgende Methoden angewendet 
+werden: 
+ die bruchmechanische Methode: 
+der Bemessungswert der Zähigkeitsanforderung liegt unterhalb des Bemessungswertes der Zähigkeits-
+eigenschaft; 
+ Versuchsnachweis: 
+dieser kann mit einem oder mehreren bauteilähnlichen Prüfkörpern durchgeführt werden. Aus Gründen 
+der Realitätsnähe werden die Prüfkörper in der Regel ähnlich wie die zu beurteilende Konstruktion 
+hergestellt und belastet. 
+(4) Folgende Bemessungssituation ist in der Regel zugrunde zu legen: 
+(i) Die Einwirkungen sind mit folgender Kombination anzusetzen: 
+9 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Ed = E {A[TEd] "+" Gk "+" 1 Qk1 "+" 2,i Qki} (2.1) 
+wobei die Leiteinwirkung A die Wirkung der Bezugstemperatur TEd ist, die in der Abminderung der 
+Werkstoffzähigkeit des betrachteten Bauteils besteht und sich auch in Spannungen aus Behinderung der 
+Temperaturbewegungen äußern kann. Gk sind die ständigen Einwirkungen, 1 Qk ist der häufig auftretende 
+Wert der veränderlichen Last und 2,i Qki sind die quasiständigen Anteile der veränderlichen Begleit-
+einwirkungen, die zusammen die Höhe der Spannungen im Werkstoff bestimmen. 
+(ii) Die Kombinationsbeiwerte 1 und 2,i sind entsprechend EN 1990 anzunehmen. 
+(iii) Die maximale angelegte Spannung Ed ist als Nennspannung an der Stelle der erwarteten 
+Rissentstehung für die Einwirkungskombinationen zu bestimmen. Die ständigen und veränderlichen 
+Einwirkungen sind in EN 1991 geregelt. 
+ANMERKUNG 1 Die zugrunde gelegte Einwirkungskombination entspricht einer außergewöhnlichen Bemessungs-
+situation, da gleichzeitig das Auftreten der niedrigsten Bauwerkstemperatur, ungünstiger Rissgrößen, Rissstelle und 
+Werkstoffeigenschaften angenommen wird. 
+ANMERKUNG 2 Ed kann Spannungen aus Behinderung von Bauteilbewegungen infolge Temperaturdifferenzen 
+enthalten. 
+ANMERKUNG 3 Da die Bezugstemperatur TEd die Leiteinwirkung darstellt, wird die maximal angelegte Spannung Ed
+75% der Streckgrenze im Allgemeinen nicht überschreiten. 
+(5) Die Bezugstemperatur TEd an der potenziellen Rissstelle wird in der Regel mit folgender Beziehung 
+ermittelt: 
+TEd = Tmd + Tr + T + TR + T . + T cf (2.2) 
+Dabei ist 
+Tmd die niedrigste Lufttemperatur mit spezifizierter Wiederkehrperiode, siehe EN 1991-1-5; 
+Tr die Temperaturverschiebung infolge von Strahlungsverlusten, siehe EN 1991-1-5; 
+T die Temperaturverschiebung infolge der Spannungen und der Streckgrenze des Werkstoffs, der 
+angenommenen rissähnlichen Imperfektionen, der Bauteilform und der Abmessungen, siehe 
+2.4(3); 
+TR der zusätzliche Sicherheitsterm zur Anpassung an andere Zuverlässigkeitsanforderungen als 
+zugrunde gelegt; 
+T . die Temperaturverschiebung für andere Dehnungsgeschwindigkeiten als der zugrunde gelegten 
+Geschwindigkeit 0 , siehe Gleichung (2.3); 
+T cf die Temperaturverschiebung infolge des Kaltumformungsgrades cf, siehe Gleichung (2.4). 
+ANMERKUNG 1 Der Sicherheitsterm TR, mit dem die Bezugstemperatur TEd an andere Zuverlässigkeitsanforde-
+rungen angepasst werden kann, darf im Nationalen Anhang festgelegt werden. Bei Anwendung der Tabellenwerte in 2.3 
+wird TR = 0 °C empfohlen. 
+ANMERKUNG 2 Zur Bestimmung der Tabellenwerte in 2.3 wurde für die Temperaturverschiebung T eine standardi-
+sierte Kurve benutzt, die die Bemessungswerte der Spannungsintensitätsfaktorfunktion K infolge angelegter 
+Spannungen Ed und Eigenspannungen einhüllt und die Wallin-Sanz-Korrelation zwischen der 
+Spannungsintensitätsfaktorfunktion K und der Temperatur T einschließt. Bei Anwendung der Tabellenwerte in 2.3 
+darf T = 0 °C angenommen werden. 
+10 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+ANMERKUNG 3 Der Nationale Anhang kann die Spanne zwischen der Bezugstemperatur TEd und der Prüftemperatur 
+begrenzen und die Spanne von Ed festlegen, mit welcher der Gültigkeitsbereich der zulässigen Blechdicken in Tabelle 2.1 
+eingeschränkt werden kann. 
+ANMERKUNG 4 Im Nationalen Anhang kann die Anwendung von Tabelle 2.1 auf Stähle bis S460 begrenzt werden. 
+(6) Die Bezugsspannung Ed ist in der Regel als Nennspannung mit Hilfe eines elastischen Tragwerkmodells 
+zu berechnen. Nebenspannungen aus Zwängungen sind dabei zu berücksichtigen. 
+2.3 Zulässige Erzeugnisdicken 
+2.3.1 Allgemeines 
+(1) Tabelle 2.1 liefert die größten zulässigen Erzeugnisdicken als Funktion der Stahlfestigkeit, der Zähigkeit 
+(KV-Wert), der Bezugsspannung Ed und der Bezugstemperatur TEd. 
+(2) Den Tabellenwerten liegen folgende Annahmen zugrunde: 
+ Es gelten die Zuverlässigkeitsanforderungen nach EN 1990 unter Zugrundelegung üblicher Lieferqualität; 
+ Als Dehnungsgeschwindigkeit wurde 0 = 4 104/s angesetzt. Dieser Wert deckt die dynamischen 
+Effekte ab, die in üblichen kurzzeitigen und langzeitigen Bemessungssituationen auftreten können. Bei 
+anderen Dehnungsgeschwindigkeiten (z. B. bei Stoßwirkungen) können die Tabellenwerte mit 
+Eingangswerten TEd benutzt werden, die um den Wert T zu tieferen Temperaturen hin verschoben 
+werden: 
+5,1
+0
+y ln550
+)(4401 tf
+T in °C (2.3) 
+ Es wurden Werkstoffe mit cf = 0 % ohne Kaltumformung zugrunde gelegt. Kaltumformungen können 
+berücksichtigt werden, indem die Werte TEd um den Wert T cf zu tieferen Temperaturen hin verschoben 
+werden: 
+T cf = 3 cf in °C (2.4) 
+ Als Zähigkeitskennwerte werden die Nennwerte T27J aus folgenden Produktnormen verwendet: EN 10025, 
+gestrichener Text EN 10210-1 und EN 10219-1. 
+Für andere Werte wurde folgende Umrechnung benutzt: 
+T40J = T27J + 10 in °C 
+(2.5) 
+T30J = T27J + 0 in °C 
+ Für ermüdungsbeanspruchte Bauteile sind alle Kerbfälle von EN 1993-1-9 abgedeckt. 
+ANMERKUNG Die Ermüdung wurde berücksichtigt, indem zusätzlich zu einem Anfangsriss an der Kerbstelle des 
+Bauteils ein Risswachstum aus einer Ermüdungsbelastung entsprechend einem Viertel des ertragbaren Ermüdungs-
+schadens entsprechend EN 1993-1-9 angesetzt wurde. Dieser Ansatz erlaubt, die Anzahl der sicheren 
+Betriebszeitintervalle“ zwischen den Hauptprüfungen zu bestimmen, wenn diese für ausreichende Schadenstoleranz 
+nach EN 1993-1-9 festzulegen sind. Die erforderliche Anzahl n von Hauptprüfungen hängt von den -Faktoren Ff und 
+Mf für den Ermüdungsnachweis nach EN 1993-1-9 nach folgender Beziehung ab 14
+mn )( MfFf
+, wobei m = 5 für 
+langlebige Bauwerke wie Brücken gilt. Das "sichere Betriebszeitintervall" zwischen Hauptprüfungen kann auch in der 
+vollen Nutzungszeit des Bauwerks bestehen. 
+11 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+2.3.2 Ermittlung der zulässigen Erzeugnisdicken 
+(1) Tabelle 2.1 gibt die größten zulässigen Erzeugnisdicken in Abhängigkeit von drei Spannungsstufen an, 
+die als Teile der Nennwerte der Streckgrenze fy(t) festgelegt sind: 
+a) Ed = 0,75 fy(t) in N/mm 2; 
+b) Ed = 0,50 fy(t) in N/mm 2; (2.6) 
+c) Ed = 0,25 fy(t) in N/mm 2. 
+Hierbei darf der Blechdickenabhängige charakteristische Wert der Streckgrenze fy(t) entweder aus 
+0t
+t in N/mm 2 fy(t) = fy,nom 0,25
+Dabei ist 
+t die Erzeugnisdicke, in mm; 
+t0 = 1 mm. 
+oder direkt als fy(t) = ReH-Werte aus den maßgebenden Werkstoffnormen bestimmt werden. 
+Die Tabellenwerte gelten für die Bezugstemperaturen: 
+ + 10 °C; 
+ 0 °C; 
+  10 °C; 
+  20 °C; 
+  30 °C; 
+  40 °C; 
+  50 °C. 
+12 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+13 
+Tabelle 2.1  Größte zulässige Erzeugnisdicken t in mm 
+Stahlsorte KV Bezugstemperatur TEd
+°C 
+10 0 10 20 30 40 50 10 0 10 20 30 40 50 10 0 10 20 30 40 50Stahl-
+sorte 
+Stahl-
+güte-
+gruppe 
+bei 
+T °C Jmin
+Ed = 0,75 fy(t) Ed = 0,50 fy(t) Ed = 0,25 fy(t) 
+JR 20 27 60 50 40 35 30 25 20 90 75 65 55 45 40 35 135 115 100 85 75 65 60 
+J0 0 27 90 75 60 50 40 35 30 125 105 90 75 65 55 45 175 155 135 115 100 85 75 S235 
+J2 20 27 125 105 90 75 60 50 40 170 145 125 105 90 75 65 200 200 175 155 135 115 100
+JR 20 27 55 45 35 30 25 20 15 80 70 55 50 40 35 30 125 110 95 80 70 60 55 
+J0 0 27 75 65 55 45 35 30 25 115 95 80 70 55 50 40 165 145 125 110 95 80 70 
+J2 20 27 110 95 75 65 55 45 35 155 130 115 95 80 70 55 200 190 165 145 125 110 95 
+M,N 20 40 135 110 95 75 65 55 45 180 155 130 115 95 80 70 200 200 190 165 145 125 110
+S275 
+ML,NL 50 27 185 160 135 110 95 75 65 200 200 180 155 130 115 95 230 200 200 200 190 165 145
+JR 20 27 40 35 25 20 15 15 10 65 55 45 40 30 25 25 110 95 80 70 60 55 45 
+J0 0 27 60 50 40 35 25 20 15 95 80 65 55 45 40 30 150 130 110 95 80 70 60 
+J2 20 27 90 75 60 50 40 35 25 135 110 95 80 65 55 45 200 175 150 130 110 95 80 
+K2,M,N 20 40 110 90 75 60 50 40 35 155 135 110 95 80 65 55 200 200 175 150 130 110 95 
+S355 
+ML,NL 50 27 155 130 110 90 75 60 50 200 180 155 135 110 95 80 210 200 200 200 175 150 130
+M,N 20 40 95 80 65 55 45 35 30 140 120 100 85 70 60 50 200 185 160 140 120 100 85 
+S420 
+ML,NL 50 27 135 115 95 80 65 55 45 190 165 140 120 100 85 70 200 200 200 185 160 140 120
+Q 20 30 70 60 50 40 30 25 20 110 95 75 65 55 45 35 175 155 130 115 95 80 70 
+M,N 20 40 90 70 60 50 40 30 25 130 110 95 75 65 55 45 200 175 155 130 115 95 80 
+QL 40 30 105 90 70 60 50 40 30 155 130 110 95 75 65 55 200 200 175 155 130 115 95 
+ML,NL 50 27 125 105 90 70 60 50 40 180 155 130 110 95 75 65 200 200 200 175 155 130 115
+S460 
+QL1 60 30 150 125 105 90 70 60 50 200 180 155 130 110 95 75 215 200 200 200 175 155 130
+Q 0 40 40 30 25 20 15 10 10 65 55 45 35 30 20 20 120 100 85 75 60 50 45 
+Q 20 30 50 40 30 25 20 15 10 80 65 55 45 35 30 20 140 120 100 85 75 60 50 
+QL 20 40 60 50 40 30 25 20 15 95 80 65 55 45 35 30 165 140 120 100 85 75 60 
+QL 40 30 75 60 50 40 30 25 20 115 95 80 65 55 45 35 190 165 140 120 100 85 75 
+QL1 40 40 90 75 60 50 40 30 25 135 115 95 80 65 55 45 200 190 165 140 120 100 85 
+S690 
+QL1 60 30 110 90 75 60 50 40 30 160 135 115 95 80 65 55 200 200 190 165 140 120 100
+ANMERKUNG 1 Bei Anwendung der Tabelle 2.1 darf linear interpoliert werden. Für die meisten Anwendungen liegen 
+die Ed-Werte zwischen Ed = 0,75 fy(t) und Ed = 0,50 fy(t). Die Werte für Ed = 0,25 fy(t) sind aus Interpolationsgründen 
+mit angegeben. Extrapolationen in Bereiche außerhalb der angegebenen Grenzen sind nicht zulässig. 
+ANMERKUNG 2 Bei Bestellung von Erzeugnissen aus S690 sind die TKV-Werte in der Regel anzugeben. 
+ANMERKUNG 3 Tabelle 2.1 liegen die nominellen KV-Werte in Walzrichtung zugrunde. 
+2.4 Anwendung der Bruchmechanik 
+(1) Bei Anwendung der Bruchmechanik können die Zähigkeitsanforderungen und die Bemessungswerte der 
+Zähigkeitseigenschaften des Werkstoffs mit CTOD-Werten, J-Integralwerten, KIc-Werten oder KV-
+Werten ausgedrückt werden. Die Nachweise müssen in der Regel auf bruchmechanischen Kennwerten 
+basieren. 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+(2) Folgende Bedingung ist einzuhalten: 
+TEd TRd (2.7) 
+Dabei ist 
+TRd die Temperatur, bei der ausreichend zuverlässig ein bestimmter Wert der Zähigkeitseigenschaft unter 
+den Nachweisbedingungen angenommen werden kann. 
+(3) Für die Bruchauslösung ist ein geeigneter rissähnlicher Fehler anzunehmen, der die bruchmechanische 
+Beanspruchung im Nettoquerschnitt erzeugt. Der rissähnliche Fehler muss in der Regel folgenden 
+Bedingungen genügen: 
+ er ist an einer Stelle und mit einer Form anzunehmen, die zu dem betrachteten Kerbfall passen. Die 
+Kerbfallskizzen in EN 1993-1-9 geben Hinweise zu geeigneten Rissstellen; 
+ bei Bauteilen, die nicht ermüdungsbelastet sind, ist der größte anzunehmende Fehler in der Regel so 
+anzunehmen, dass er mit den Prüfmethoden, die nach EN 1090 anzuwenden sind, ohne Reparatur im 
+Bauteil belassen worden wäre. Die Lage des Fehlers ist an der Stelle mit höchstem Kerbeffekt 
+anzusetzen; 
+ bei Bauteilen mit Ermüdungsbelastung ist die Fehlergröße aus einem Anfangsfehler und einem Zuwachs 
+aus ermüdungsbedingtem Risswachstum zusammenzusetzen. Die Größe des Anfangsfehlers ist dabei in 
+der Regel so zu wählen, dass er dem kleinsten mit den Prüfmethoden nach EN 1090 erkennbaren Fehler 
+entspricht. Die Berechnung des ermüdungsbedingten Risswachstums ist mit geeigneten bruch-
+mechanischen Verfahren durchzuführen. Für die Ermüdungslasten sind in der Regel die Betriebslasten 
+während eines Betriebszeitintervalls zwischen den Hauptprüfungen oder der gesamten Nutzungsdauer je 
+nach Voraussetzung anzunehmen. 
+(4) Wenn eine Bauteilausbildung den Kerbfällen in EN 1993-1-9 nicht zugeordnet werden kann, oder 
+weitergehende Methoden für genauere Ergebnisse als die in Tabelle 2.1 nötig sind, ist in der Regel ein 
+besonderer Einzelfallnachweis zu führen. Dieser Einzelfallnachweis kann mit Bruchversuchen an 
+bauteilähnlichen Großproben durchgeführt werden. 
+ANMERKUNG Die rechnerische Auswertung der Versuchsergebnisse kann mit den in EN 1990, Anhang D 
+angegebenen Methoden erfolgen. 
+3 Auswahl der Stahlsorten im Hinblick auf Eigenschaften in Dickenrichtung 
+3.1 Allgemeines 
+(1) Die Auswahl der Stahlsorten ist hinsichtlich der Folgen von Terrassenbrüchen in der Regel nach einer der 
+beiden Klassen nach Tabelle 3.1 zu treffen. 
+Tabelle 3.1  Auswahl der Stahlsorten 
+Klasse Auswahl der Anwendungsbereiche 
+Für alle Stahlerzeugnisse und alle Erzeugnisdicken 
+nach Europäischen Normen und für alle Anwendungen. 1 
+Für ausgewählte Stahlerzeugnisse und Erzeugnisdicken 
+nach Europäischen Normen und/oder für ausgewählte Anwendungen. 2 
+ANMERKUNG Die Wahl der Klasse kann im Nationalen Anhang erfolgen. Die Anwendung der Klasse 1 in Tabelle 3.1 
+wird empfohlen. 
+14 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+(2) Abhängig von der Wahl der Klasse nach Tabelle 3.1 können entweder 
+ Eigenschaften des Stahls in Dickenrichtung nach EN 10164 festgelegt werden (Klasse 1) oder 
+ Prüfungen im Fertigungsbetrieb zur Feststellung von Terrassenbrüchen durchgeführt werden (Klasse 2). 
+(3) Die folgenden Aspekte sind in der Regel bei der Prüfung der Terrassenbruch-Empfindlichkeit der 
+Ausbildung der Nähte oder Anschlüsse zu beachten: 
+ die Bedeutung des Anschlusses im Hinblick auf Zugkraftübertragung und Redundanz; 
+ die Dehnungsbeanspruchung des Blechs in Dickenrichtung nach dem Schweißen. Diese Dehnungs-
+beanspruchung entsteht durch Schrumpfverformungen beim Abkühlen. Sie nimmt zu, wenn zusätzlich die 
+Verformungsmöglichkeiten durch andere Bauteile behindert sind; 
+ die Lage und Anordnung der Anschlussteile insbesondere in Kreuzstößen, T- und Eck-Verbindungen. In 
+Bild 3.1 kann z. B. das horizontale Blech eine geringe Duktilität in Dickenrichtung haben. Die Wahrschein-
+lichkeit von Terrassenbrüchen steigt, wenn sich die Dehnungsbeanspruchung in der Schweißverbindung 
+in Dickenrichtung des Werkstoffs auswirkt. Dies liegt dann vor, wenn die Schmelzbadoberfläche in etwa 
+parallel zur Blechoberfläche und die entstehende Schrumpfdehnung rechtwinklig zur Walzrichtung im 
+Grundwerkstoff verlaufen. Je dicker die Naht, um so größer ist die Empfindlichkeit; 
+ die chemische Analyse des in Dickenrichtung beanspruchten Blechs. Insbesondere können hohe 
+Schwefelgehalte, auch wenn sie erheblich unter den Grenzwerten der Liefernormen liegen, die 
+Terrassenbruch-Empfindlichkeit erhöhen. 
+Bild 3.1  Terrassenbruch 
+(4) Die Empfindlichkeit von Stahlwerkstoffen wird nach EN 10164 geprüft. Dort werden Güteklassen in Form 
+von Z-Werten angegeben. 
+ANMERKUNG 1 Terrassenbruch ist eine schweißinduzierte Gefügetrennung, die im Allgemeinen mit Ultraschallunter-
+suchungen erkennbar wird. Das wesentliche Risiko für Terrassenbruch besteht bei Kreuz-, T- und Eckverbindungen und 
+bei voll durchgeschweißten Nähten. 
+ANMERKUNG 2 Anleitungen zur Vermeidung von Terrassenbruch beim Schweißen sind EN 1011-2 zu entnehmen. 
+3.2 Vorgehensweise 
+(1) Die Terrassenbruchgefahr darf vernachlässigt werden, wenn folgende Bedingung erfüllt ist: 
+ZEd ZRd (3.1) 
+15 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Dabei ist 
+ZEd der erforderliche Z-Wert, der sich aus der Größe der Dehnungsbeanspruchung des Grundwerkstoffs 
+infolge behinderter Schweißnahtschrumpfung ergibt; 
+ZRd der verfügbare Z-Wert des Werkstoffs nach EN 10164, d. h. Z15, Z25 oder Z35. 
+Der erforderliche Z-Wert ZEd kann ermittelt werden: 
+ZEd = Za + Zb + Zc + Zd + Ze (3.2) 
+Dabei sind die Anteile Za, Zb, Zc, Zd und Ze in Tabelle 3.2 angegeben. 
+16 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+ Tabelle 3.2  Einflüsse auf die Anforderung ZEd
+ Effektive 
+Schweißnahtdicke aeff, 
+siehe Bild 3.2
+ Nahtdicke bei Kehlnähten Zi
+a) 
+ a eff 17 mm a = 5 mm Za = 0 
+17 < aeff 10 mm a = 7 mm Za = 3 
+10 < aeff 20 mm a = 14 mm Za = 6 
+Schweißnaht-
+dicke, die für die 
+Dehnungsbean-
+spruchung durch 
+Schweiß-
+schrumpfung 
+verantwortlich ist 
+Z
+a = 9 20 < aeff 30 mm a = 21 mm 
+Za = 12 30 < aeff 40 mm a = 28 mm 
+Za = 15 40 < aeff 50 mm a = 35 mm 
+50 < aeff a > 35 mm Za = 15 
+Zb = 25 
+b) 
+Eckverbindungen 
+ Zb = 10 
+Nahtform und 
+Anordnung der 
+Naht in T-, 
+Kreuz- und 
+Eckverbindungen 
+Einlagige Kehlnahtdicke mit Z
+a = 0 oder 
+Kehlnähte mit Za > 1 mit Buttern mit 
+niedrigfestem Schweißgut 
+Zb = 5 
+Zb = 0 Mehrlagige Kehlnähte 
+mit geeigneter Schweißfolge, um 
+Schrumpfeffekte zu reduzieren 
+Voll durchge-
+schweißte und 
+nicht voll durchge-
+schweißte Nähte 
+Zb = 3 
+Voll durchgeschweißte und 
+nicht voll durchgeschweißte 
+Nähte 
+Zb = 5 
+Zb = 8 Eckverbindungen 
+ s 10 mm Zc = 2ac) 
+10 < s 20 mm Zc = 4a
+20 < s 30 mm Zc = 6a
+30 < s 40 mm Zc = 8a
+Auswirkung der 
+Werkstoffdicke s
+auf die lokale 
+Behinderung der 
+Schrumpfung 
+Zc = 10a40 < s 50 mm 
+Zc = 12a50 < s 60 mm 
+Zc = 15a60 < s 70 mm 
+Zc = 15a70 < s
+Schwache Behinderung: Freie Schrumpfung möglich 
+(z. B. T-Anschlüsse) Zd = 0 d) 
+Mittlere Behinderung: Freie Schrumpfung behindert 
+(z. B. Querschott in Kastenträgern) Zd = 3 
+Auswirkung der 
+großräumigen 
+Behinderung der 
+Schweiß-
+schrumpfung 
+durch andere 
+Bauteile 
+Starke Behinderung: Freie Schrumpfung verhindert 
+(z. B. Längsrippe in orthotroper Fahrbahnplatte) Z
+d = 5 
+Ze = 0 Ohne Vorwärmung e) Einfluss der 
+Vorwärmung Ze = 8 Vorwärmung 100°C 
+a Darf um 50 % reduziert werden, wenn der Werkstoff in Dickenrichtung vorherrschend statisch und nur durch Druckkräfte belastet 
+wird. 
+17 
+DIN EN 1993-1-10:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-1-10:2005 + AC:2009 (D) 
+Bild 3.2  Effektive Schweißnahtdicke aeff für den Schrumpfprozess 
+(3) Die erforderliche Güteklasse ZRd nach EN 10164 kann ermittelt werden, indem die Anforderungen ZEd
+klassifiziert und den Güteklassen ZRd gegenübergestellt werden. 
+ANMERKUNG Klassifikationen sind in EN 1993-1-1 sowie EN 1993-2 bis EN 1993-6 angegeben. 
+18 
+DIN EN 1993-1-10:2010-12

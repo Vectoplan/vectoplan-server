@@ -1,0 +1,88 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken 
+Teil 1-4: Kaltgeformte Profiltafeln 
+National Annex  
+Nationally determined parameters  
+Eurocode 9: Design of aluminium structures 
+Part 1-4: Supplementary rules for trapezoidal sheeting 
+Annexe national  
+Paramètres déterminés au plan national  
+Eurocode 9: Calcul des structures en aluminium  
+Partie 1-4: Les structures à plaques formés à froid
+4
+
+===== PDF-SEITE 2 =====
+DIN EN 1999-1-4/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde vom NA 005-08-07 AA Aluminiumkonstruktionen unter vorwiegend ruhender 
+Belastung (DIN 4113, Sp CEN/TC 250/SC 9 CEN/TC 135/WG 11)erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1999-1-4:2010-05, Eurocode 9: Bemessung und 
+Konstruktion von Aluminiumtragwerken  Teil 1-4: Kaltgeformte Profiltafeln. 
+Die Europäische Norm EN 1999-1-4 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten Para-
+metern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined parameters, 
+NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl von Klassen 
+aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der Europäischen Norm 
+durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste dieser Textstellen 
+befindet sich im Unterabschnitt NA 2.1. 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1999-1-4:2010-05. 
+DIN EN 1999-1-4:2010-05 und dieser Nationale Anhang DIN EN 1999-1-4/NA:2010-12 ersetzen nicht 
+vollständig DIN 18807-6:1995-09, DIN 18807-7:1995-09 und DIN 18807-8:1995-09. 
+Änderungen 
+Gegenüber DIN 18807-6:1995-09, DIN 18807-7:1995-09 und DIN 18807-8:1995-09 wurden folgende 
+Änderungen vorgenommen: 
+a) Bemessung umgestellt auf europäische Regelungen; 
+b) Einführung des semiprobabilistischen Teilsicherheitskonzeptes. 
+Frühere Ausgaben 
+DIN 18807-6: 1995-09 
+DIN 18807-7: 1995-09 
+DIN 18807-8: 1995-09 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1999-1-4/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für die Bemessung kaltgeformter Profiltafeln, die bei 
+der Anwendung von DIN EN 1999-1-4:2010-05 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1999-1-4:2010-05. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1999-1-4:2010-05 
+NA 2.1 Allgemeines 
+DIN EN 1999-1-4:2010-05 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP, en: Nationally determined parameters). 
+ 2(3) 
+ 2(4) 
+ 2(5) 
+ 3.1(3) 
+ 7.3(3) 
+ A.1(1) 
+ A.3.4(3) 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1999-1-4:2010-05. 
+NDP zu 2(3) Anmerkung 
+Es gelten die Empfehlungen für M1, M2 und M3. 
+NDP zu 2(4) Anmerkung 
+Es gelten die Empfehlungen für M,ser. 
+NDP zu 2(5) Anmerkung 1 
+Es werden keine Festlegungen getroffen. 
+NDP zu 3.1(3) Anmerkung 
+Es sind nur die in Tabelle 3.1 genannten Aluminiumlegierungen zulässig. 
+NDP zu 7.3(3) Anmerkung 
+Es werden keine Festlegungen getroffen. 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1999-1-4/NA:2010-12 
+4 
+NDP zu A.1(1) Anmerkung 2 
+Die in DIN EN 1999-1-4:2010-05, A.2 beschriebene Versuchsdurchführung gilt nur für Trapezprofile und Well-
+profile. Für die Versuchsdurchführung und Versuchsauswertung ist zusätzlich DIN 18807-7:1995-09 zu 
+berücksichtigen. 
+Die Verwendung von Versuchsergebnissen nach Anhang A bedarf eines entsprechenden bauaufsichtlichen 
+Verwendbarkeitsnachweises. 
+NDP zu A.1(1) Anmerkung 3 
+Es werden keine Festlegungen getroffen. 
+NDP zu A.3.4(3) Anmerkung 
+Die M- und sys-Werte sind im bauaufsichtlichen Verwendbarkeitsnachweis festzulegen.

@@ -1,0 +1,3323 @@
+{
+  "document_id": "EN_1993-5__base_standard__EC_3_Teil_5",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-5",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 5.pdf",
+  "relative_path": "EC 3/EC 3 Teil 5.pdf",
+  "sha256": "a3060cf86d17a038a70106d4784bb0b3c2188196906670c73696f4041d3dca54",
+  "pages": 94,
+  "text_pages": 94,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 176,
+  "equation_candidate_count": 130,
+  "table_reference_count": 38,
+  "figure_reference_count": 88,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161310+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232720+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 5.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ...................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ...............10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... .........................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... ..............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole .................................................................................................................... ............................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7",
+      "title": "Einheiten.................................................................................................................. .............................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.8",
+      "title": "Begriffsbestimmung......................................................................................................... ...................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.9",
+      "title": "Vereinbarung für die Spundbohlenachsen ..................................................................................... ..22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Bemessung und Konstruktion.................................................................22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines................................................................................................................ ..........................22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Kriterien für den Grenzzustand der Tragfähigkeit........................................................................... .23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Kriterien für den Grenzzustand der Gebrauchstauglichkeit ...........................................................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Baugrunderkundungen und Bodenparameter..................................................................................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5",
+      "title": "Statische Berechnung....................................................................................................... ..................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5.1",
+      "title": "Allgemeines.............................................................................................................. ............................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5.2",
+      "title": "Bestimmung der Einwirkungen.............................................................................................. ............25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5.3",
+      "title": "Tragwerksberechnung ...................................................................................................... ..................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6",
+      "title": "Versuchsgestützte Bemessung ................................................................................................ .........26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6.1",
+      "title": "Allgemeines.............................................................................................................. ............................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6.2",
+      "title": "Tragpfähle............................................................................................................... ..............................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6.3",
+      "title": "Stahlspundwände .......................................................................................................... ......................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6.4",
+      "title": "Verankerung .............................................................................................................. ...........................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.7",
+      "title": "Rammbarkeit ................................................................................................................ ........................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffeigenschaften ....................................................................................................... ...............27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Tragpfähle................................................................................................................. ............................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Warmgewalzte Stahlspundbohlen .............................................................................................. .......27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Kaltgeformte Stahlspundbohlen .............................................................................................. ..........28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Profile für Gurtungen und Aussteifungen.................................................................................... .....28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6",
+      "title": "Verbindungsmittel .......................................................................................................... .....................28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.7",
+      "title": "Stahlteile für Anker....................................................................................................... .......................28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.8",
+      "title": "Stahlteile für kombinierte Spundwände ...................................................................................... ......28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.9",
+      "title": "Bruchzähigkeit ............................................................................................................. ........................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit.............................................................................................................. .......................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines................................................................................................................ ..........................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Dauerhaftigkeitsanforderungen für Tragpfähle............................................................................... .31",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Dauerhaftigkeitsanforderungen an Spundwände ............................................................................31",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Korrosionsraten für die Bemessung .......................................................................................... .......32",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Grenzzustände der Tragfähigkeit .............................................................................................. ........33",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1",
+      "title": "Grundlagen ................................................................................................................. .........................33",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Allgemeines .............................................................................................................. ...........................33",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Bemessung ................................................................................................................ ..........................33",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1.3",
+      "title": "Ermüdung................................................................................................................. ............................34",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2",
+      "title": "Spundwände ................................................................................................................. .......................34",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Querschnittsklassifizierung .............................................................................................. .................34",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Spundwände bei Biegung und Querkraft..................................................................................... .....35",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Spundwände mit Biegung, Quer- und Normalkraft..........................................................................39",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Lokale Auswirkungen von Wasserdrücken.................................................................................... ..44",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2.5",
+      "title": "Flachprofile ............................................................................................................. .............................45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3",
+      "title": "Tragpfähle ................................................................................................................. ...........................48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Bemessungsverfahren und -hinweise........................................................................................ .......48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.3",
+      "title": "Stahlpfähle .............................................................................................................. .............................48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.4",
+      "title": "Betongefüllte Tragpfähle ................................................................................................. ...................50",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4",
+      "title": "Trägerpfahlwände........................................................................................................... .....................50",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5",
+      "title": "Kombinierte Wände.......................................................................................................... ...................50",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5.1",
+      "title": "Allgemeines .............................................................................................................. ...........................50",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5.2",
+      "title": "Füllelemente............................................................................................................. ............................51",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5.3",
+      "title": "Verbindungselemente ...................................................................................................... ...................52",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5.4",
+      "title": "Tragelemente ............................................................................................................. ..........................52",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.1",
+      "title": "Grundlagen ................................................................................................................. .........................53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2",
+      "title": "Verformungen von Stützwänden ............................................................................................... ........53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Verformungen von Tragpfählen............................................................................................... ..........53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Konstruktive Aspekte von Stahlspundwänden................................................................................53",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Anker, Gurtungen, Aussteifungen und Anschlüsse........................................................................55",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines ................................................................................................................ .........................55",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Verankerungen .............................................................................................................. ......................55",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Allgemeines .............................................................................................................. ...........................55",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Grundlegende Bemessungsbestimmungen .....................................................................................5 6",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.3",
+      "title": "Nachweis im Grenzzustand der Tragfähigkeit............................................................................... ...56",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.4",
+      "title": "Gebrauchstauglichkeitsnachweis ........................................................................................... ..........57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2.5",
+      "title": "Anforderungen an die Dauerhaftigkeit..................................................................................... .........57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Gurtungen und Aussteifungen ................................................................................................ ..........57",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4",
+      "title": "Verbindungen ............................................................................................................... .......................58",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.1",
+      "title": "Allgemeines .............................................................................................................. ...........................58",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.2",
+      "title": "Tragpfähle ............................................................................................................... .............................58",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.3",
+      "title": "Verankerung.............................................................................................................. ...........................60",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8",
+      "title": "Ausführung ................................................................................................................... .......................64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.1",
+      "title": "Allgemeines ................................................................................................................ .........................64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2",
+      "title": "Stahlspundwände............................................................................................................ ....................64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3",
+      "title": "Tragpfähle ................................................................................................................. ...........................64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4",
+      "title": "Verankerungen .............................................................................................................. ......................64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.5",
+      "title": "Gurtungen, Steifen und Verbindungen ........................................................................................ .....64",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.7",
+      "title": "Einheiten",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.8",
+      "title": "Begriffsbestimmung",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.9",
+      "title": "Vereinbarung für die Spundbohlenachsen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Bemessung und Konstruktion",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2.2",
+      "title": "Kriterien für den Grenzzustand der Tragfähigkeit",
+      "pdf_page": 25
+    },
+    {
+      "clause": "2.3",
+      "title": "Kriterien für den Grenzzustand der Gebrauchstauglichkeit",
+      "pdf_page": 26
+    },
+    {
+      "clause": "2.4",
+      "title": "Baugrunderkundungen und Bodenparameter",
+      "pdf_page": 26
+    },
+    {
+      "clause": "2.5",
+      "title": "Statische Berechnung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "2.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 26
+    },
+    {
+      "clause": "2.5.2",
+      "title": "Bestimmung der Einwirkungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "2.5.3",
+      "title": "Tragwerksberechnung",
+      "pdf_page": 27
+    },
+    {
+      "clause": "2.5.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 27
+    },
+    {
+      "clause": "2.5.3.2",
+      "title": "Grenzzustand der Tragfähigkeit",
+      "pdf_page": 27
+    },
+    {
+      "clause": "2.5.3.3",
+      "title": "Grenzzustand der Gebrauchstauglichkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.6",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.6.1",
+      "title": "Allgemeines",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.6.2",
+      "title": "Tragpfähle",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.6.3",
+      "title": "Stahlspundwände",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.6.4",
+      "title": "Verankerung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "2.7",
+      "title": "Rammbarkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffeigenschaften",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.2",
+      "title": "Tragpfähle",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.3",
+      "title": "Warmgewalzte Stahlspundbohlen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.4",
+      "title": "Kaltgeformte Stahlspundbohlen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.5",
+      "title": "Profile für Gurtungen und Aussteifungen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.6",
+      "title": "Verbindungsmittel",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.7",
+      "title": "Stahlteile für Anker",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.8",
+      "title": "Stahlteile für kombinierte Spundwände",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.9",
+      "title": "Bruchzähigkeit",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4.2",
+      "title": "Dauerhaftigkeitsanforderungen für Tragpfähle",
+      "pdf_page": 33
+    },
+    {
+      "clause": "4.3",
+      "title": "Dauerhaftigkeitsanforderungen an Spundwände",
+      "pdf_page": 33
+    },
+    {
+      "clause": "4.4",
+      "title": "Korrosionsraten für die Bemessung",
+      "pdf_page": 34
+    },
+    {
+      "clause": "5",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 35
+    },
+    {
+      "clause": "5.1",
+      "title": "Grundlagen",
+      "pdf_page": 35
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 35
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Bemessung",
+      "pdf_page": 35
+    },
+    {
+      "clause": "5.1.3",
+      "title": "Ermüdung",
+      "pdf_page": 36
+    },
+    {
+      "clause": "5.2",
+      "title": "Spundwände",
+      "pdf_page": 36
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Querschnittsklassifizierung",
+      "pdf_page": 36
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Spundwände bei Biegung und Querkraft",
+      "pdf_page": 37
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Spundwände mit Biegung, Quer- und Normalkraft",
+      "pdf_page": 41
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Lokale Auswirkungen von Wasserdrücken",
+      "pdf_page": 46
+    },
+    {
+      "clause": "5.2.5",
+      "title": "Flachprofile",
+      "pdf_page": 47
+    },
+    {
+      "clause": "5.3",
+      "title": "Tragpfähle",
+      "pdf_page": 50
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 50
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Bemessungsverfahren und -hinweise",
+      "pdf_page": 50
+    },
+    {
+      "clause": "5.3.3",
+      "title": "Stahlpfähle",
+      "pdf_page": 50
+    },
+    {
+      "clause": "5.3.4",
+      "title": "Betongefüllte Tragpfähle",
+      "pdf_page": 52
+    },
+    {
+      "clause": "5.4",
+      "title": "Trägerpfahlwände",
+      "pdf_page": 52
+    },
+    {
+      "clause": "5.5",
+      "title": "Kombinierte Wände",
+      "pdf_page": 52
+    },
+    {
+      "clause": "5.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 52
+    },
+    {
+      "clause": "5.5.2",
+      "title": "Füllelemente",
+      "pdf_page": 53
+    },
+    {
+      "clause": "5.5.3",
+      "title": "Verbindungselemente",
+      "pdf_page": 54
+    },
+    {
+      "clause": "5.5.4",
+      "title": "Tragelemente",
+      "pdf_page": 54
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 55
+    },
+    {
+      "clause": "6.1",
+      "title": "Grundlagen",
+      "pdf_page": 55
+    },
+    {
+      "clause": "6.2",
+      "title": "Verformungen von Stützwänden",
+      "pdf_page": 55
+    },
+    {
+      "clause": "6.3",
+      "title": "Verformungen von Tragpfählen",
+      "pdf_page": 55
+    },
+    {
+      "clause": "6.4",
+      "title": "Konstruktive Aspekte von Stahlspundwänden",
+      "pdf_page": 55
+    },
+    {
+      "clause": "7",
+      "title": "Anker, Gurtungen, Aussteifungen und Anschlüsse",
+      "pdf_page": 57
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 57
+    },
+    {
+      "clause": "7.2",
+      "title": "Verankerungen",
+      "pdf_page": 57
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 57
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Grundlegende Bemessungsbestimmungen",
+      "pdf_page": 58
+    },
+    {
+      "clause": "7.2.3",
+      "title": "Nachweis im Grenzzustand der Tragfähigkeit",
+      "pdf_page": 58
+    },
+    {
+      "clause": "7.2.4",
+      "title": "Gebrauchstauglichkeitsnachweis",
+      "pdf_page": 59
+    },
+    {
+      "clause": "7.2.5",
+      "title": "Anforderungen an die Dauerhaftigkeit",
+      "pdf_page": 59
+    },
+    {
+      "clause": "7.3",
+      "title": "Gurtungen und Aussteifungen",
+      "pdf_page": 59
+    },
+    {
+      "clause": "7.4",
+      "title": "Verbindungen",
+      "pdf_page": 60
+    },
+    {
+      "clause": "7.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 60
+    },
+    {
+      "clause": "7.4.2",
+      "title": "Tragpfähle",
+      "pdf_page": 60
+    },
+    {
+      "clause": "7.4.3",
+      "title": "Verankerung",
+      "pdf_page": 62
+    },
+    {
+      "clause": "8",
+      "title": "Ausführung",
+      "pdf_page": 66
+    },
+    {
+      "clause": "8.1",
+      "title": "Allgemeines",
+      "pdf_page": 66
+    },
+    {
+      "clause": "8.2",
+      "title": "Stahlspundwände",
+      "pdf_page": 66
+    },
+    {
+      "clause": "8.3",
+      "title": "Tragpfähle",
+      "pdf_page": 66
+    },
+    {
+      "clause": "8.4",
+      "title": "Verankerungen",
+      "pdf_page": 66
+    },
+    {
+      "clause": "8.5",
+      "title": "Gurtungen, Steifen und Verbindungen",
+      "pdf_page": 66
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 10,
+      "equation_number": "1",
+      "line": "3.7 (1)",
+      "context": "enthält, die für den Bau von Hochbauten und baulichen Anlagen in dem betreffenden Land gelten. | Nationale Festlegungen sind in den folgenden Abschnitten von EN 1993-5 vorgesehen: | 3.7 (1) | 3.9 (1)P | 4.4 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "1",
+      "line": "4.4 (1)",
+      "context": "3.7 (1) | 3.9 (1)P | 4.4 (1) | 5.1.1 (4) | 5.2.2 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "4",
+      "line": "5.1.1 (4)",
+      "context": "3.9 (1)P | 4.4 (1) | 5.1.1 (4) | 5.2.2 (2) | 5.2.2 (13)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "5.2.2 (2)",
+      "context": "4.4 (1) | 5.1.1 (4) | 5.2.2 (2) | 5.2.2 (13) | 5.2.5 (7)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "13",
+      "line": "5.2.2 (13)",
+      "context": "5.1.1 (4) | 5.2.2 (2) | 5.2.2 (13) | 5.2.5 (7) | 5.5.4 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "7",
+      "line": "5.2.5 (7)",
+      "context": "5.2.2 (2) | 5.2.2 (13) | 5.2.5 (7) | 5.5.4 (2) | 6.4 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "5.5.4 (2)",
+      "context": "5.2.2 (13) | 5.2.5 (7) | 5.5.4 (2) | 6.4 (3) | 7.1 (4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "3",
+      "line": "6.4 (3)",
+      "context": "5.2.5 (7) | 5.5.4 (2) | 6.4 (3) | 7.1 (4) | 7.2.3 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "4",
+      "line": "7.1 (4)",
+      "context": "5.5.4 (2) | 6.4 (3) | 7.1 (4) | 7.2.3 (2) | 7.4.2 (4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "7.2.3 (2)",
+      "context": "6.4 (3) | 7.1 (4) | 7.2.3 (2) | 7.4.2 (4) | A.3.1 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "4",
+      "line": "7.4.2 (4)",
+      "context": "7.1 (4) | 7.2.3 (2) | 7.4.2 (4) | A.3.1 (3) | B.5.4 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "3",
+      "line": "A.3.1 (3)",
+      "context": "7.2.3 (2) | 7.4.2 (4) | A.3.1 (3) | B.5.4 (1) | D.2.2 (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "1",
+      "line": "B.5.4 (1)",
+      "context": "7.4.2 (4) | A.3.1 (3) | B.5.4 (1) | D.2.2 (5) | 8",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "5",
+      "line": "D.2.2 (5)",
+      "context": "A.3.1 (3) | B.5.4 (1) | D.2.2 (5) | 8 | EN 1993-5:2007 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "fy,spec,max = 500 N/mm² wird empfohlen.",
+      "context": "höher als fy,spec,max sein sollte, sollte EN 1537 beachtet werden. | ANMERKUNG Der Zahlenwert für fy,spec,max darf im Nationalen Anhang angegeben sein. Der Wert | fy,spec,max = 500 N/mm² wird empfohlen. | (2) Zu Materialeigenschaften von Ankern aus nicht-hochfestem Stahl sollten EN 1993-1-1, 3.2.1, 3.2.2 und | EN 1993-5, 3.9 beachtet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "festgelegt werden. Die folgenden Werte werden empfohlen: M0 = 1,00; M1 = 1,10 und M2 = 1,25.",
+      "context": "(4) Zu Teilsicherheitsbeiwerten für die Widerstände M0, M1 und M2 siehe EN 1993-1-1. | ANMERKUNG Die Teilsicherheitsbeiwerte M0, M1 und M2 für Pfähle und Spundwände dürfen im Nationalen Anhang | festgelegt werden. Die folgenden Werte werden empfohlen: M0 = 1,00; M1 = 1,10 und M2 = 1,25. | 5.1.2 Bemessung | (1) Für Stützwände und Tragpfähle sind in der Regel nachzuweisen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "5.1",
+      "line": "MEd Mc,Rd (5.1)",
+      "context": "(1) Im Fall ohne Quer- und Normalkräfte gilt in der Regel für den Bemessungswert des einwirkenden | Biegemomentes MEd in jedem Querschnitt: | MEd Mc,Rd (5.1) | Dabei ist | MEd der Bemessungswert des Biegemomentes, rechnerisch bestimmt entsprechend dem relevanten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "5.2",
+      "line": "Mc,Rd = B Wpl fy / M0 (5.2)",
+      "context": "werden: | Klasse-1- oder Klasse-2-Querschnitte: | Mc,Rd = B Wpl fy / M0 (5.2) | 35 | EN 1993-5:2007 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "5.3",
+      "line": "Mc,Rd = B Wel fy / M0 (5.3)",
+      "context": "Klasse-3-Querschnitte: | Mc,Rd = B Wel fy / M0 (5.3) | Klasse-4-Querschnitte: siehe Anhang A. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "B = 1,0 für Z-Bohlen und Dreifach-U-Bohlen;",
+      "context": "B der Faktor, der die mögliche Verminderung der Schubkraftübertragung in den Schlössern | berücksichtigt. Er hat die folgenden Werte: | B = 1,0 für Z-Bohlen und Dreifach-U-Bohlen; | B 1,0 für Einzel- und Doppelbohlen. | ANMERKUNG 1 Der Grad der Schubkraftübertragung in den Schlössern von U-Bohlen ist maßgebend beeinflusst von:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "5.4",
+      "line": "VEd Vpl,Rd (5.4)",
+      "context": "(3) Die Spundwandstege sind in der Regel hinsichtlich des Schubkraftwiderstandes nachzuweisen. | (4) Für den Bemessungswert der Querkraft VEd sollte in jedem Querschnitt gelten: | VEd Vpl,Rd (5.4) | Dabei ist | Vpl,Rd Bemessungswert des plastischen Querkraftwiderstandes für einen einzelnen Steg, der durch",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "Vpl,Rd =",
+      "context": "Dabei ist | Vpl,Rd Bemessungswert des plastischen Querkraftwiderstandes für einen einzelnen Steg, der durch | Vpl,Rd = | 0M | yV",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "5.5",
+      "line": "definiert ist; (5.5)",
+      "context": "3 | fA | definiert ist; (5.5) | Av Schubfläche für einen einzelnen Steg, projiziert in die Richtung von VEd. | 36",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "5.6",
+      "line": ")( fwv thtA (5.6)",
+      "context": "(5) Die projizierte Schubfläche Av darf für die einzelnen Stege eines U-Profils und eines Z-Profils wie folgt | angenommen werden, siehe Bild 5-1: | )( fwv thtA (5.6) | Dabei ist | h die Gesamthöhe;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (5.6) als Mindestwert von tw,i angenommen werden, wobei die Schlösser ausgenommen",
+      "context": "tf die Flanschdicke; | tw die Stegdicke. Im Fall einer über die Steghöhe c veränderlichen Stegdicke tw,i sollte tw in | Gleichung (5.6) als Mindestwert von tw,i angenommen werden, wobei die Schlösser ausgenommen | werden sollten. | sin",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "5.7",
+      "line": ")( ftthV (5.7)",
+      "context": "bvwf | b,Rd | )( ftthV (5.7) | wobei fb,v die Schubbeulfestigkeit nach EN 1993-1-3, Tabelle 6-1 für ein unausgesteiftes Stegblech an der | Auflagerung ist. Dabei lautet die bezogene Schlankheit:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "5.8",
+      "line": "346,0 (5.8)",
+      "context": "c y | w | 346,0 (5.8) | (8) Wenn der Bemessungswert der Querkraft VEd 50 % des plastischen Bemessungswertes des | Querkraftwiderstands Vpl,Rd nicht überschreitet, ist keine Abminderung des Bemessungswertes des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "5.10",
+      "line": "= (2 VEd / Vpl,Rd  1)2 (5.10)",
+      "context": "AWM jedoch (5.9) c,RdV,Rd MM | mit | = (2 VEd / Vpl,Rd  1)2 (5.10) | Dabei ist | Av die Schubfläche nach (5.6);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert l darf im Nationalen Anhang angegeben werden. Ein Wert von l = 500 mm wird empfohlen.",
+      "context": "Bohlenende verschweißt werden, um eine Überbeanspruchung beim Einbringen zu vermeiden. Zur | Bemessung von Schweißnähten wird auf EN 1993-1-8 verwiesen. | ANMERKUNG Der Wert l darf im Nationalen Anhang angegeben werden. Ein Wert von l = 500 mm wird empfohlen. | (14)P Es ist nachzuweisen, dass die Verpresspunkte von Schlössern ausreichend sind, um die auftretenden | Schlossschubkräfte zu übertragen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "5.11",
+      "line": "N 0,04 (5.11)",
+      "context": "Ed | N | N 0,04 (5.11) | Dabei ist | NEd der Bemessungswert der Druckkraft;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "5.12",
+      "line": "Dcr /EIN (5.12)",
+      "context": "(2) Alternativ kann Ncr angenommen werden als: | 22 | Dcr /EIN (5.12) | Hierbei ist die Knicklänge, die für ein freies oder teilweise eingespanntes Erdlager nach Bild 5-2 oder für ein | eingespanntes Erdlager nach Bild 5-3 bestimmt wird, und D ein Abminderungsfaktor, siehe 6.4.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "5.13",
+      "line": "N (5.13)",
+      "context": "M | N | N (5.13) | Dabei ist | Npl,Rd der Bemessungswert des plastischen Querschnittswiderstandes ( A fy/ M0);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "Ncr die kritische elastische Last, die nach Gleichung (5.12) bestimmt werden kann;",
+      "context": "Dabei ist | Ncr die kritische elastische Last, die nach Gleichung (5.12) bestimmt werden kann; | A die Querschnittsfläche; | für Klasse-4-Querschnitte: siehe Anhang A.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "5.14",
+      "line": "dNF (5.14)",
+      "context": "nach Bild 5-4 aufgenommen werden kann. FQ,Ed ist gegeben durch: | 01,0EdQ,Ed | dNF (5.14) | Dabei ist d die maximale Relativverschiebung der Spundwand zwischen den Auflagern, berechnet nach | Theorie I. Ordnung. Wenn der Erdwiderstand ohne Reibung vollkommen ausgenutzt ist, kann die zusätzliche",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.15",
+      "line": "NEd Npl,Rd (5.15)",
+      "context": "(9) Bei Bauteilen, die einer Normalkraft ausgesetzt sind, sollte der Bemessungswert der Normalkraft NEd in | jedem Querschnitt Folgendes erfüllen: | NEd Npl,Rd (5.15) | wobei Npl,Rd der Bemessungswert des plastischen Querschnittswiderstandes ist, mit: | 0Mypl,Rd /fAN (5.16)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.16",
+      "line": "0Mypl,Rd /fAN (5.16)",
+      "context": "NEd Npl,Rd (5.15) | wobei Npl,Rd der Bemessungswert des plastischen Querschnittswiderstandes ist, mit: | 0Mypl,Rd /fAN (5.16) | (10) Die Auswirkung der Normalkraft auf den plastische Momentenwiderstand von Spundbohlen- | querschnitten der Klassen 1, 2 und 3 darf vernachlässigt werden, wenn:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.17",
+      "line": "N 0,1 (5.17)",
+      "context": "Ed | N | N 0,1 (5.17) | bei U-Bohlen der Klassen 1 und 2: | pl,Rd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.18",
+      "line": "N 0,25 (5.18)",
+      "context": "Ed | N | N 0,25 (5.18) | bei Klasse-3-Profilen: | pl,Rd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.19",
+      "line": "N 0,1 (5.19)",
+      "context": "Ed | N | N 0,1 (5.19) | (11) Wenn die Normalkraft die in Absatz (10) gegebenen Grenzwerte überschreitet, sollten bei Fehlen der | Querkraft folgende Kriterien erfüllt sein:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.20",
+      "line": "MN,Rd = 1,11 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.20)",
+      "context": "Klasse-1- und Klasse-2-Querschnitte: | bei Z-Bohlen: | MN,Rd = 1,11 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.20) | bei U-Bohlen: | MN,Rd = 1,33 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.21)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.21",
+      "line": "MN,Rd = 1,33 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.21)",
+      "context": "MN,Rd = 1,11 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.20) | bei U-Bohlen: | MN,Rd = 1,33 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.21) | Klasse-3-Querschnitte: | MN,Rd = Mc,Rd (1  NEd / Npl,Rd) (5.22)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "5.22",
+      "line": "MN,Rd = Mc,Rd (1  NEd / Npl,Rd) (5.22)",
+      "context": "MN,Rd = 1,33 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.21) | Klasse-3-Querschnitte: | MN,Rd = Mc,Rd (1  NEd / Npl,Rd) (5.22) | Klasse-4-Querschnitte: siehe Anhang A. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "Moment und Normalkraft mit der abgeminderten Streckgrenze fy,red = (1  ) fy für die Schubfläche",
+      "context": "Moment und Normalkraft nach dem Kriterium in Absatz (11) durchgeführt zu werden. | b) Ist VEd > 0,5 Vpl,Rd, sollte der Bemessungswert des Querschnittswiderstandes für die Kombination von | Moment und Normalkraft mit der abgeminderten Streckgrenze fy,red = (1  ) fy für die Schubfläche | ermittelt werden. Dabei gilt = (2 VEd / Vpl,Rd  1)2. | 5.2.4 Lokale Auswirkungen von Wasserdrücken",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "ermittelt werden. Dabei gilt = (2 VEd / Vpl,Rd  1)2.",
+      "context": "b) Ist VEd > 0,5 Vpl,Rd, sollte der Bemessungswert des Querschnittswiderstandes für die Kombination von | Moment und Normalkraft mit der abgeminderten Streckgrenze fy,red = (1  ) fy für die Schubfläche | ermittelt werden. Dabei gilt = (2 VEd / Vpl,Rd  1)2. | 5.2.4 Lokale Auswirkungen von Wasserdrücken | (1) Im Fall von unterschiedlichen Wasserdrücken, die bei Z-Bohlen 5 m und bei U-Bohlen 20 m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "fy,red = P fy",
+      "context": "die Auswirkung von unterschiedlichen Wasserdrücken kann durch eine reduzierte Streckgrenze ermittelt | werden: | fy,red = P fy | mit P nach Tabelle 5-2; | zur Bestimmung von P nach Tabelle 5-2 ist der Wasserdruckunterschied an der Stelle des maximalen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "w (b/tmin) = 20,0 ( b/tmin) = 30,0 ( b/tmin) = 40,0 ( b/tmin) = 50,0",
+      "context": "Moments zu berücksichtigen. | Tabelle 5-2  Abminderungsfaktor P für Z-Bohlen infolge unterschiedlicher Wasserdrücke | w (b/tmin) = 20,0 ( b/tmin) = 30,0 ( b/tmin) = 40,0 ( b/tmin) = 50,0 | 5,0 1,00 1,00 1,00 1,00 | 10,0 0,99 0,97 0,95 0,87",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 1 Wenn die Schlösser der Z-Bohle verschweißt sind, kann P = 1,0 angesetzt werden.",
+      "context": "235 | f ; fy ist die Fließgrenze in N/mm². | ANMERKUNG 1 Wenn die Schlösser der Z-Bohle verschweißt sind, kann P = 1,0 angesetzt werden. | ANMERKUNG 2 Zwischenwerte können linear interpoliert werden. | 44",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "5.23",
+      "line": "Fts,Rd = R Rk,s / M0 jedoch Fts,Rd tw fy / M0 (5.23)",
+      "context": "(7) Der Zugkraftwiderstand Fts,Rd der Flachbohle sollte (anders als bei Verbindungsbohlen) als der kleinere | Wert aus dem Schloss- und dem Stegwiderstand angenommen werden: | Fts,Rd = R Rk,s / M0 jedoch Fts,Rd tw fy / M0 (5.23) | Dabei ist | fy die Streckgrenze;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert R kann im Nationalen Anhang angegeben werden. Der Wert R = 0,8 wird empfohlen.",
+      "context": "tw die Stegdicke; | R der Abminderungsfaktor des Schlosswiderstands. | ANMERKUNG Der Wert R kann im Nationalen Anhang angegeben werden. Der Wert R = 0,8 wird empfohlen. | (8) Der charakteristische Schlosswiderstand Rk,s hängt vom Schlossquerschnitt und der verwendeten | Stahlgüte ab. Der charakteristische Schlosswiderstand Rk,s sollte durch Versuche nach 2.6 und EN 10248",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "5.24",
+      "line": "Ft,Ed Fts,Rd (5.24)",
+      "context": "bestimmt werden. | (9) Für Flachbohlen sollte der Nachweis wie folgt geführt werden: | Ft,Ed Fts,Rd (5.24) | Dabei ist | Fts,Rd der Bemessungswert des Zugwiderstandes nach Gleichung (5.23);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "Fts,Rd der Bemessungswert des Zugwiderstandes nach Gleichung (5.23);",
+      "context": "Ft,Ed Fts,Rd (5.24) | Dabei ist | Fts,Rd der Bemessungswert des Zugwiderstandes nach Gleichung (5.23); | Ft,Ed der Bemessungswert der Ringzugkraft. | (10) Wenn Bohlen verschiedener Größe im gleichen Wandsegment verwendet werden, ist in der Regel der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "5.25",
+      "line": " Ftm,Ed T Fts,Rd  (5.25)",
+      "context": "(14) Wenn die Schweißung nach dem gegebenen Verfahren in EN 12063 ausgeführt wird, darf die | Verbindungsbohle wie folgt nachgewiesen werden: |  Ftm,Ed T Fts,Rd  (5.25) | Dabei ist | Fts,Rd der Bemessungswert des Zugwiderstandes der Bohle nach Gleichung (5.23);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "Fts,Rd der Bemessungswert des Zugwiderstandes der Bohle nach Gleichung (5.23);",
+      "context": " Ftm,Ed T Fts,Rd  (5.25) | Dabei ist | Fts,Rd der Bemessungswert des Zugwiderstandes der Bohle nach Gleichung (5.23); |  Ftm,Ed der Bemessungswert der Zugkraft in der Hauptzelle, gegeben durch: |  Ftm,Ed = pm,Ed rm  (5.26)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "5.26",
+      "line": " Ftm,Ed = pm,Ed rm  (5.26)",
+      "context": "Fts,Rd der Bemessungswert des Zugwiderstandes der Bohle nach Gleichung (5.23); |  Ftm,Ed der Bemessungswert der Zugkraft in der Hauptzelle, gegeben durch: |  Ftm,Ed = pm,Ed rm  (5.26) | mit: | pm,Ed Bemessungswert des Innendrucks der Hauptzelle in der maßgebenden horizontalen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "5.27",
+      "line": " T = 0,9 (1,3  0,8 ra / rm) (1  0,3 tan k) (5.27)",
+      "context": "T Abminderungsfaktor, der das Verhalten der geschweißten Verbindungsbohle im Grenzzustand | der Tragfähigkeit berücksichtigt und wie folgt berechnet wird: |  T = 0,9 (1,3  0,8 ra / rm) (1  0,3 tan k) (5.27) | Darin sind ra und rm die Radien des Verbindungsbogens und der Hauptzelle nach Bild 5-7, und |  k ist der charakteristische Wert des inneren Reibungswinkels des Füllmaterials.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Obwohl Gleichung (5.27) für Zellenfangedämme mit Verbindungsbögen in einer Flucht, siehe Bild 5-7,",
+      "context": "die Rotationsanforderung (bis zu 20°), gerechnet mit einem Modell, das das Verhalten eines Fangedammes im | Grenzzustand der Tragfähigkeit erfasst. | ANMERKUNG 2 Obwohl Gleichung (5.27) für Zellenfangedämme mit Verbindungsbögen in einer Flucht, siehe Bild 5-7, | entwickelt wurde, liefert sie auch für andere Anordnungen brauchbare Ergebnisse. Wenn genauerer Werte gefordert | werden, können diese aus vergleichbaren Erfahrungen oder durch Versuche in Kombination mit einem geeigneten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "5.28",
+      "line": "Hklcr (5.28)",
+      "context": "Methode, Bettungsmodulverfahren) auf der Grundlage der Theorie II. Ordnung berücksichtigt werden. | (5) Die Knicklänge darf mit der folgenden Näherung abgeschätzt werden (siehe Bild 5-8): | Hklcr (5.28) | Der Wert k berücksichtigt die Verbindung zwischen dem Pfahlkopf und der Betondecke oder der | Stahlkonstruktion.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "4",
+      "line": "(6) Bei genauerer Bestimmung der Knicklänge, z. B. für Pfähle mit kleinem Durchmesser, sollte 5.3.3 (4)",
+      "context": "Der Wert k berücksichtigt die Verbindung zwischen dem Pfahlkopf und der Betondecke oder der | Stahlkonstruktion. | (6) Bei genauerer Bestimmung der Knicklänge, z. B. für Pfähle mit kleinem Durchmesser, sollte 5.3.3 (4) | beachtet werden. | (7)P Die Ausführung muss nach EN 12699 und EN 14199 erfolgen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "crit = k H mit k =",
+      "context": "D tragender Boden | l | crit = k H mit k = | 1,0 Anschluss B gegen Translationsbewegung gesichert, Rotationsbewegung | frei",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert h darf im Nationalen Anhang angegeben werden. Der Wert von h = 5 m wird empfohlen.",
+      "context": "Tragelemente wirkt und wenn auf die Füllelemente ein Wasserüberdruck von | h [m] wirkt. | ANMERKUNG Der Wert h darf im Nationalen Anhang angegeben werden. Der Wert von h = 5 m wird empfohlen. | (3) Wird keine genauere Methode verwendet, sollten für den Festigkeitsnachweis der Tragelemente die | nach 5.5.2 (3) ermittelten Auflagerkräfte der Füllelemente, die über die Verbindungen eingeleitet werden,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "6.1",
+      "line": ")()( Deff EIEI (6.1)",
+      "context": "unterschiedliche Grad der Schubkraftübertragung in den Schlössern, die nahe der Wandachse liegen, | berücksichtigt werden soll: | )()( Deff EIEI (6.1) | Dabei ist | I der Flächenträgheitsmoment der durchgehenden Wand;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "Gebrauchstauglichkeit übertragen wird, ist: Rser = 75 kN. Es muss durch Versuche nach EN 10248",
+      "context": "(4)P Verpresspunkte müssen die Übertragung der erforderlichen Schlossschubkräfte ermöglichen. Der | repräsentative Wert der Schubkraft Rser, die von einem Verpresspunkt im Grenzzustand der | Gebrauchstauglichkeit übertragen wird, ist: Rser = 75 kN. Es muss durch Versuche nach EN 10248 | nachgewiesen werden, dass die Verpresspunktsteifigkeit nicht geringer als 15 kN/mm ist. | ANMERKUNG 1 Diese Steifigkeitsanforderungen entsprechen einer Schubkraft von 75 kN bei einer Verschiebung von",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 57,
+      "equation_number": "unvollständig",
+      "line": "M2 = 1,25 und Mt,ser = 1,10 werden empfohlen.",
+      "context": "EN 1993-1-8. | ANMERKUNG Die Teilsicherheitsfaktoren Mb und Mt,ser dürfen im Nationalen Anhang festgelegt werden. Die Werte | M2 = 1,25 und Mt,ser = 1,10 werden empfohlen. | 7.2 Verankerungen | 7.2.1 Allgemeines",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "7.1",
+      "line": "AfkF (7.1)",
+      "context": "ttt,Rd | M | AfkF (7.1) | Dabei ist | As die Zugspannungsfläche im Gewinde;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "Biegemomente hier vermieden werden, kann als empfohlener Wert kt = 0,9 angesetzt werden.",
+      "context": "berücksichtigt Fälle, in denen eine mögliche Biegung im Anker infolge von Schnittgrößen nicht ausdrücklich zutage tritt. | Nur in Fällen, in denen die Stelle, an der der Ankerstab mit der Wand verbunden ist, so bemessen ist, dass | Biegemomente hier vermieden werden, kann als empfohlener Wert kt = 0,9 angesetzt werden. | ANMERKUNG 2 Konservativ kann die Nettofläche im Gewindebereich anstelle der Zugspannungsfläche verwendet | werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "7.2",
+      "line": "Ftg,Rd = Ag fy / M0 (7.2)",
+      "context": "werden. | (3) Der Zugwiderstand Ftg,Rd des Ankerschaftes sollte wie folgt bestimmt werden: | Ftg,Rd = Ag fy / M0 (7.2) | Dabei ist | Ag die Bruttoquerschnittsfläche des Ankerstabs.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "7.3",
+      "line": "F (7.3)",
+      "context": "sert, | Af | F (7.3) | Dabei ist | As die Zugspannungsfläche des Gewindestücks oder Bruttoquerschnittsfläche des Ankerstabes,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "1",
+      "line": "(1) Zu Anforderungen an die Dauerhaftigkeit von Ankern, die aus hochfestem Stahl entsprechend 3.7 (1)",
+      "context": "Mt,ser der Teilsicherheitsfaktor nach 7.1 (4). | 7.2.5 Anforderungen an die Dauerhaftigkeit | (1) Zu Anforderungen an die Dauerhaftigkeit von Ankern, die aus hochfestem Stahl entsprechend 3.7 (1) | hergestellt werden, sollte EN 1537 beachtet werden. | (2) Zu Ankern aus anderen Stahlgüten sollte 4.1 beachtet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "7.4",
+      "line": "Ed RVf,Rd (7.4)",
+      "context": "a) Schubwiderstand des Flansches: | F | Ed RVf,Rd (7.4) | Dabei ist | FEd der Bemessungswert der lokalen quergerichteten Kraft, die in den Flansch eingeleitet wird;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "7.5",
+      "line": "thbR (7.5)",
+      "context": ")(0,2 | f | thbR (7.5) | Dabei ist | ba die Ankerplattenbreite;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "7.6",
+      "line": "FEd Rtw,Rd (7.6)",
+      "context": "tf die Flanschdicke. | b) Zugwiderstand des Steges: | FEd Rtw,Rd (7.6) | Dabei ist | Rtw,Rd der Bemessungswert des Zugwiderstandes von 2 Stegen, definiert durch",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "7.7",
+      "line": "Rtw,Rd = 2,0 ha tw fy / M0 (7.7)",
+      "context": "Dabei ist | Rtw,Rd der Bemessungswert des Zugwiderstandes von 2 Stegen, definiert durch | Rtw,Rd = 2,0 ha tw fy / M0 (7.7) | mit | tw Stegdicke;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "7.8",
+      "line": "ba 0,8 b (7.8)",
+      "context": "tw Stegdicke; | c) Breite der Ankerplatte: | ba 0,8 b (7.8) | Dabei ist | ba die Breite der Ankerplatte;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "7.9",
+      "line": "F (7.9)",
+      "context": "M | R | F (7.9) | Dabei ist | FEd Bemessungswert der lokalen quergerichteten Kraft je Steg, die über die Gurtung eingeleitet wird;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "7.10",
+      "line": "wecSe,Rd /sin0,44 fttsseR (7.10)",
+      "context": "f | 2 | wecSe,Rd /sin0,44 fttsseR (7.10) | oder | 62",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.11",
+      "line": "Rp,Rd = Rpo / M0 (7.11)",
+      "context": "Rp,Rd = Rpo / M0 (7.11) | Dabei ist | = 0,147,006,0 (7.12)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.12",
+      "line": "= 0,147,006,0 (7.12)",
+      "context": "Rp,Rd = Rpo / M0 (7.11) | Dabei ist | = 0,147,006,0 (7.12) | = | cr",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.13",
+      "line": "(7.13)",
+      "context": "R | R | (7.13) | crR = sin42,5 | 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "crR = sin42,5",
+      "context": "R | (7.13) | crR = sin42,5 | 3 | w",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.14",
+      "line": "tE (7.14)",
+      "context": "w | c | tE (7.14) | 0pR = | w",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "0pR =",
+      "context": "c | tE (7.14) | 0pR = | w | fSwy",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.15",
+      "line": "btstf (7.15)",
+      "context": "fSwy | sin2sin2 t | btstf (7.15) | b die Flanschbreite, siehe Bild in Tabelle 5-1; | c die Steglänge, siehe Bild 5-1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.16",
+      "line": "tr , jedoch nicht weniger als 5 mm; (7.16)",
+      "context": "sin22tan w | 0 | tr , jedoch nicht weniger als 5 mm; (7.16) | fy die Streckgrenze der Spundbohle; | r0 der Außenradius der Ecke zwischen Flansch und Steg;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "7.17",
+      "line": "sec = 1800,2 0r mit in Grad; (7.17)",
+      "context": "fy die Streckgrenze der Spundbohle; | r0 der Außenradius der Ecke zwischen Flansch und Steg; | sec = 1800,2 0r mit in Grad; (7.17) | ss die Länge der Lasteinleitungsbreite, bestimmt nach EN 1993-1-5, 6.3. Wenn die Gurtung aus zwei | Teilen besteht, z. B. bei zwei U-Profilen, ist sS die Summe beider Teile zuzüglich des kleinsten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "Elastizitätsmodul: E = 210 000 N/mm 2;",
+      "context": "(6) Für die in diesem Anhang erfassten Stähle, sollten die weiteren Werkstoffeigenschaften für die | Bemessung wie folgt angenommen werden: | Elastizitätsmodul: E = 210 000 N/mm 2; | Schubmodul: G = E / [2(1 + )] N/mm2; | Querkontraktionszahl: = 0,3;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "Schubmodul: G = E / [2(1 + )] N/mm2;",
+      "context": "Bemessung wie folgt angenommen werden: | Elastizitätsmodul: E = 210 000 N/mm 2; | Schubmodul: G = E / [2(1 + )] N/mm2; | Querkontraktionszahl: = 0,3; | Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "Querkontraktionszahl: = 0,3;",
+      "context": "Elastizitätsmodul: E = 210 000 N/mm 2; | Schubmodul: G = E / [2(1 + )] N/mm2; | Querkontraktionszahl: = 0,3; | Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K; | Dichte: = 7 850 kg/m 3.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K;",
+      "context": "Schubmodul: G = E / [2(1 + )] N/mm2; | Querkontraktionszahl: = 0,3; | Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K; | Dichte: = 7 850 kg/m 3. | (7) Die Verfestigung infolge Kaltverformung darf anhand von Versuchen nach A.7 berücksichtigt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "Dichte: = 7 850 kg/m 3.",
+      "context": "Querkontraktionszahl: = 0,3; | Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K; | Dichte: = 7 850 kg/m 3. | (7) Die Verfestigung infolge Kaltverformung darf anhand von Versuchen nach A.7 berücksichtigt werden. | (8) Wenn in diesem Anhang oder in der EN 1993-1-3 die Streckgrenze mit dem Symbol fy bezeichnet wird,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "(6) EN 1993-1-3, Gleichung (5.9) darf für Spundbohlen, nämlich für Z-Bohlen nach Bild A.3 und Bild A.4,",
+      "context": "(5) Die Federsteifigkeit des Schlosses, das als Eckaussteifung wirkt, sollte nach EN 1993-1-3, Gleichung | (5.10) bestimmt werden. | (6) EN 1993-1-3, Gleichung (5.9) darf für Spundbohlen, nämlich für Z-Bohlen nach Bild A.3 und Bild A.4, | angewendet werden, indem für die Plattensteifigkeit ( E t³) / 12 / (1  2) angesetzt wird. Die Steifigkeit der | Drehfeder, die den Steg abbildet, siehe Bild A.4, darf bestimmt werden mit:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "EIw = ½ × 1 × 1 × sw (A.1)",
+      "context": "angewendet werden, indem für die Plattensteifigkeit ( E t³) / 12 / (1  2) angesetzt wird. Die Steifigkeit der | Drehfeder, die den Steg abbildet, siehe Bild A.4, darf bestimmt werden mit: | EIw = ½ × 1 × 1 × sw (A.1) | c | EIC w21 (A.2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "Somit lautet EN 1993-1-3, Gleichung (5.10):",
+      "context": "bu | (A.4) | Somit lautet EN 1993-1-3, Gleichung (5.10): | )23( | )1(2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 73,
+      "equation_number": "unvollständig",
+      "line": "z = 0 verwendet werden.",
+      "context": "werden. | (3) Die Regelungen in A.5 sollten nur bei einachsiger Biegung mit M | z = 0 verwendet werden. | (4) Es darf angenommen werden, dass eine der Hauptachsen der Spundbohle parallel zur Systemachse | der Stützwand verläuft.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "der Wert der effektiven Auflagerlänge la in EN 1993-1-3, Gleichung (6.18) sollte nach EN 1993-1-3,",
+      "context": "ANMERKUNG (2) gilt auch für Z-Bohlen, indem eine Doppelbohle aus zwei Z-Bohlen betrachtet wird. | (3) Für Gurtungen, die als Auflager wirken, gilt: | der Wert der effektiven Auflagerlänge la in EN 1993-1-3, Gleichung (6.18) sollte nach EN 1993-1-3, | 6.1.7.3 (4) bestimmt werden; | der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden:",
+      "context": "der Wert der effektiven Auflagerlänge la in EN 1993-1-3, Gleichung (6.18) sollte nach EN 1993-1-3, | 6.1.7.3 (4) bestimmt werden; | der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden: | für Kategorie 1: = 0,075; | für Kategorie 2: = 0,15.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "für Kategorie 1: = 0,075;",
+      "context": "6.1.7.3 (4) bestimmt werden; | der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden: | für Kategorie 1: = 0,075; | für Kategorie 2: = 0,15. | ANMERKUNG Die Kategorie 1 gilt, wenn der Abstand zwischen Gurtung und dem Bohlenende 1,5 hw ist, wobei hw",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "für Kategorie 2: = 0,15.",
+      "context": "der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden: | für Kategorie 1: = 0,075; | für Kategorie 2: = 0,15. | ANMERKUNG Die Kategorie 1 gilt, wenn der Abstand zwischen Gurtung und dem Bohlenende 1,5 hw ist, wobei hw | die Höhe des Profils ist. Sonst gilt Kategorie 2, siehe EN 1993-1-3, Bild 6-9.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (6.27) durchgeführt werden.",
+      "context": "A.5.5 Kombination aus Querkraft und Biegemoment | (1) Für die Kombinationen aus Querkraft und Biegemoment sollte der Nachweis nach EN 1993-1-3, | Gleichung (6.27) durchgeführt werden. | A.5.6 Kombination aus Biegemoment und lokalen quergerichteten Kräften | (1) Für die Kombination von Biegemoment und Lasteinleitung für lokale quergerichtete Kräfte sollte der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "die Effekte der Wasserdruckbelastung sollten durch eine reduzierte Plattendicke tred = P t mit P nach",
+      "context": "die Querschnittsnachweise brauchen nur an den Stellen mit dem maximalen Moment durchgeführt zu | werden, bei denen die Wasserdruckbelastung mehr als 1 m beträgt; | die Effekte der Wasserdruckbelastung sollten durch eine reduzierte Plattendicke tred = P t mit P nach | Tabelle A.3 berücksichtigt werden; | bei der Bestimmung von P nach Tabelle A-3 sollte die wirkende Wasserdruckbelastung an den Stellen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "w (b/tmin) = 40,0 ( b/tmin) = 60,0 ( b/tmin) = 80,0 ( b/tmin) = 100,0",
+      "context": "des maximalen Momentes berücksichtigt werden. | Tabelle A.3  Abminderungsfaktor P für Plattendicken bei Wasserdruckbelastung | w (b/tmin) = 40,0 ( b/tmin) = 60,0 ( b/tmin) = 80,0 ( b/tmin) = 100,0 | 1,0 0,99 0,98 0,96 0,94 | 2,5 0,98 0,94 0,88 0,78",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 82,
+      "equation_number": "unvollständig",
+      "line": "Rd = Rk / M / sys (B.1)",
+      "context": "(1) Der Bemessungswert Rd des Widerstandes sollte aus dem dazugehörigen charakteristischen Wert Rk | abgeleitet werden, unter Verwendung von: | Rd = Rk / M / sys (B.1) | 80 | EN 1993-5:2007 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 83,
+      "equation_number": "unvollständig",
+      "line": "standardisierten Versuchsverfahren in B.2, B.3 und B.4 wird ein Wert von sys = 1,0 empfohlen.",
+      "context": "sys der Faktor zur Erfassung des Unterschieds zwischen Test- und Einsatzbedingungen. | ANMERKUNG 1 Der Wert sys darf im Nationalen Anhang angegeben werden. Für die genau definierten | standardisierten Versuchsverfahren in B.2, B.3 und B.4 wird ein Wert von sys = 1,0 empfohlen. | ANMERKUNG 2 Der Wert für M kann durch statistische Auswertung einer Versuchsreihe mit mindestens vier | Versuchen bestimmt werden. Hierzu sollte EN 1990, Anhang D beachtet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "2",
+      "line": "(4) Bei U-Bohlen sollte eine mögliche verminderte Schubkraftübertragung im Schloss nach 5.2.2 (2)",
+      "context": "(3) Falls erforderlich, sollte nach Abschnitt 4 die Verminderung der Querschnittswiderstände infolge | Dickenverlust durch Korrosion berücksichtigt werden. | (4) Bei U-Bohlen sollte eine mögliche verminderte Schubkraftübertragung im Schloss nach 5.2.2 (2) | berücksichtigt werden. | (5) Wenn die Spundbohle Querbiegung infolge unterschiedlichen Wasserdrucks erfährt, sollten die Effekte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "des vollen plastischen Momentenwiderstandes abhängig vom Abminderungsfaktor C = 0,85 bis 0,95 erfolgt,",
+      "context": "Momentenwiderstandes in 5 %-Schritten angegeben ist. | (2) Wenn die Klassifizierung für einen Klasse-1- oder Klasse-2-Querschnitt mit einem reduziertem Niveau | des vollen plastischen Momentenwiderstandes abhängig vom Abminderungsfaktor C = 0,85 bis 0,95 erfolgt, | dann sollte der Bemessungswert des Querschnittswiderstandes mit der reduzierten Fließgrenze fy,red = C fy | bestimmt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 85,
+      "equation_number": "unvollständig",
+      "line": "dann sollte der Bemessungswert des Querschnittswiderstandes mit der reduzierten Fließgrenze fy,red = C fy",
+      "context": "(2) Wenn die Klassifizierung für einen Klasse-1- oder Klasse-2-Querschnitt mit einem reduziertem Niveau | des vollen plastischen Momentenwiderstandes abhängig vom Abminderungsfaktor C = 0,85 bis 0,95 erfolgt, | dann sollte der Bemessungswert des Querschnittswiderstandes mit der reduzierten Fließgrenze fy,red = C fy | bestimmt werden. | Tabelle C.1  Klassifizierung von Querschnitten für Biegung auf einem reduzierten Mpl,Rd-Niveau",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 86,
+      "equation_number": "unvollständig",
+      "line": "Ed =  (C.2) Edrot, Edpl,",
+      "context": "Ed ist der maximale Bemessungswinkel in einem der Fließgelenke; | b) alternativ mit dem Fließgelenkmodell und dem Fließzonenmodell: | Ed =  (C.2) Edrot, Edpl, | 84 | EN 1993-5:2007 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 87,
+      "equation_number": "unvollständig",
+      "line": "Ed =  (C.4) Edrot, Edpl,",
+      "context": "c) mit dem Fließgelenk- oder dem Fließzonenmodell werden die Rotationswinkel aus den berechneten | Wandverformungen, wie in Bild C.4 gezeigt, bestimmt: | Ed =  (C.4) Edrot, Edpl, | Dabei ist | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 89,
+      "equation_number": "unvollständig",
+      "line": "für h = 10 m : fy,red = 0,9 fy",
+      "context": "Die Querschnittsnachweise der Tragelemente sollten nach EN 1993-1-1, 6.2.9.2 und 6.2.10 mit einer | verminderten Fließgrenze durchgeführt werden: | für h = 10 m : fy,red = 0,9 fy | für h 4 m : fy,red = 1,0 fy | für 4 m < h < 10 m : lineare Interpolation",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 89,
+      "equation_number": "unvollständig",
+      "line": "für h 4 m : fy,red = 1,0 fy",
+      "context": "verminderten Fließgrenze durchgeführt werden: | für h = 10 m : fy,red = 0,9 fy | für h 4 m : fy,red = 1,0 fy | für 4 m < h < 10 m : lineare Interpolation | die lokale Plattenbiegung der Flansche wird nach Absatz (3) nachgewiesen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "MEd = mEd + wz,Ed d und NEd = wy,Ed (D.2)",
+      "context": "Dabei ist | MEd und NEd die Bemessungswerte der Schnittgrößen für die Plattenbiegung aus | MEd = mEd + wz,Ed d und NEd = wy,Ed (D.2) | MRd und NRd die Bemessungswerte des Widerstandes für die Plattenbiegung: | MRd = 0,2875 t2 fy / M0 und NRd = t fy / M0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "MRd = 0,2875 t2 fy / M0 und NRd = t fy / M0",
+      "context": "MEd = mEd + wz,Ed d und NEd = wy,Ed (D.2) | MRd und NRd die Bemessungswerte des Widerstandes für die Plattenbiegung: | MRd = 0,2875 t2 fy / M0 und NRd = t fy / M0 | t die Flanschdicke am Anfang der Ausrundung. | ANMERKUNG 1 MEd, NEd, MRd und NRd sind je laufenden Meter anzusetzen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 91,
+      "equation_number": "unvollständig",
+      "line": "o,I = 1  1,5 (e / r) (D.3)",
+      "context": "bezogen auf die Wandachse, siehe Bild D.2, darf mit dem folgenden Abminderungsfaktor abgeschätzt | werden: | o,I = 1  1,5 (e / r) (D.3) | ANMERKUNG Die Wirkung der Ovalisierung auf das Widerstandsmoment darf vernachlässigt werden. | (5) Die Ovalisierung e infolge lokaler Schalenbiegung, siehe Bild D.2 und Tabelle D.1, darf wie folgt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 91,
+      "equation_number": "unvollständig",
+      "line": "EI = E t3 /12;",
+      "context": "Dabei ist | EI die Biegesteifigkeit des Rohres, gegeben durch: | EI = E t3 /12; | r der Radius der Mittellinie der Rohrwandung; | wy,Ed die Lagerkraft je Längeneinheit nach 5.2.2 (3), siehe Bild 5-9.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "MA = 0,182 wy,Ed r",
+      "context": "Tabelle D.1  Lokale Schalenbiegung infolge der Anschlusskräfte aus den Füllelementen | MA = 0,182 wy,Ed r | NA = 0,5 wy,Ed | VA = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "NA = 0,5 wy,Ed",
+      "context": "Tabelle D.1  Lokale Schalenbiegung infolge der Anschlusskräfte aus den Füllelementen | MA = 0,182 wy,Ed r | NA = 0,5 wy,Ed | VA = 0 | MB = 0,318 wy,Ed r",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "VA = 0",
+      "context": "MA = 0,182 wy,Ed r | NA = 0,5 wy,Ed | VA = 0 | MB = 0,318 wy,Ed r | NB = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "MB = 0,318 wy,Ed r",
+      "context": "NA = 0,5 wy,Ed | VA = 0 | MB = 0,318 wy,Ed r | NB = 0 | VB = 0,5 wy,Ed",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "NB = 0",
+      "context": "VA = 0 | MB = 0,318 wy,Ed r | NB = 0 | VB = 0,5 wy,Ed | DBD = 0,148 8 wy,Ed r3 / EI",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "VB = 0,5 wy,Ed",
+      "context": "MB = 0,318 wy,Ed r | NB = 0 | VB = 0,5 wy,Ed | DBD = 0,148 8 wy,Ed r3 / EI | DAC = 0,136 8 wy,Ed r3 / EI",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "DBD = 0,148 8 wy,Ed r3 / EI",
+      "context": "NB = 0 | VB = 0,5 wy,Ed | DBD = 0,148 8 wy,Ed r3 / EI | DAC = 0,136 8 wy,Ed r3 / EI | MA = 0,137 mEd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "DAC = 0,136 8 wy,Ed r3 / EI",
+      "context": "VB = 0,5 wy,Ed | DBD = 0,148 8 wy,Ed r3 / EI | DAC = 0,136 8 wy,Ed r3 / EI | MA = 0,137 mEd | NA = 0,637 mEd / r",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "MA = 0,137 mEd",
+      "context": "DBD = 0,148 8 wy,Ed r3 / EI | DAC = 0,136 8 wy,Ed r3 / EI | MA = 0,137 mEd | NA = 0,637 mEd / r | VA = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "NA = 0,637 mEd / r",
+      "context": "DAC = 0,136 8 wy,Ed r3 / EI | MA = 0,137 mEd | NA = 0,637 mEd / r | VA = 0 | MB = 0,5 mEd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "VA = 0",
+      "context": "MA = 0,137 mEd | NA = 0,637 mEd / r | VA = 0 | MB = 0,5 mEd | NB = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "MB = 0,5 mEd",
+      "context": "NA = 0,637 mEd / r | VA = 0 | MB = 0,5 mEd | NB = 0 | VB = 0,637 mEd / r",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "NB = 0",
+      "context": "VA = 0 | MB = 0,5 mEd | NB = 0 | VB = 0,637 mEd / r | DBD = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "VB = 0,637 mEd / r",
+      "context": "MB = 0,5 mEd | NB = 0 | VB = 0,637 mEd / r | DBD = 0 | DAC = 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "DBD = 0",
+      "context": "NB = 0 | VB = 0,637 mEd / r | DBD = 0 | DAC = 0 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "DAC = 0",
+      "context": "VB = 0,637 mEd / r | DBD = 0 | DAC = 0 | Dabei ist | M, N und V die Schnittgrößen aus der Schalen-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "für Axialspannungen nach EN 1993-1-6, D.1.2.1 mit Cx = 1,0 auch für lange Zylinder;",
+      "context": "Erfahrungen im Nationalen Anhang angegeben werden. | (6) Die kritische Beulspannung sollte bestimmt werden: | für Axialspannungen nach EN 1993-1-6, D.1.2.1 mit Cx = 1,0 auch für lange Zylinder; | für Schubspannungen nach EN 1993-1-6, D.1.4.1; | für Umfangsdruckspannungen nach EN 1993-1-6, D.1.3.1 unter Verwendung der Randbedingungen in",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "Tabelle 1-1) verwendet werden. Die Tragfähigkeit wird durch den Spitzenwiderstand oder die Mantelreibung"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "und durchgängig oder abschnittsweise in Längsrichtung verschweißt sind (siehe Tabelle 1-1)"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "verschweißten Blechen hergestellt werden (siehe Tabelle 1-1)"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "in diesem Teil 5 behandelt werden, sind in Tabelle 1-2 aufgeführt: Z-förmige, U-förmige und Flachprofile."
+    },
+    {
+      "label": "1",
+      "pdf_page": 18,
+      "line": "Tabelle 1-1  Beispiele für Querschnitte von Tragpfählen aus Stahl"
+    },
+    {
+      "label": "1",
+      "pdf_page": 19,
+      "line": "Tabelle 1-2  Stahlspundwände"
+    },
+    {
+      "label": "3",
+      "pdf_page": 29,
+      "line": "Tabelle 3-1 entnommen werden. Diese entsprechen den Mindestwerten in EN 10248-1."
+    },
+    {
+      "label": "3",
+      "pdf_page": 29,
+      "line": "ANMERKUNG Die in Tabelle 3-1 aufgeführten Stahlsorten genügen diesen Anforderungen."
+    },
+    {
+      "label": "3",
+      "pdf_page": 29,
+      "line": "Tabelle 3-1  Nennwerte der Streckgrenze fy und der Zugfestigkeit fu für warmgewalzte"
+    },
+    {
+      "label": "3",
+      "pdf_page": 30,
+      "line": "Spundbohlen dürfen Tabelle 3-2 entnommen werden. Diese stimmen mit EN 10249-1 überein."
+    },
+    {
+      "label": "3",
+      "pdf_page": 30,
+      "line": "Tabelle 3-2  Nennwerte der Streckgrenze fyb des Grundmaterials und Zugfestigkeit fu für"
+    },
+    {
+      "label": "3",
+      "pdf_page": 31,
+      "line": "Tabelle 3-3 eingesetzt werden, vorausgesetzt, dass die niedrigste Betriebstemperatur nicht geringer"
+    },
+    {
+      "label": "3",
+      "pdf_page": 31,
+      "line": "Tabelle 3-3  Testtemperatur T27J für die Bruchzähigkeit von Spundbohlen"
+    },
+    {
+      "label": "4",
+      "pdf_page": 34,
+      "line": "regionale Bedingungen zu erfassen sind. Anhaltswerte sind in Tabelle 4-1 und Tabelle 4-2 angegeben."
+    },
+    {
+      "label": "4",
+      "pdf_page": 34,
+      "line": "regionale Bedingungen zu erfassen sind. Anhaltswerte sind in Tabelle 4-1 und Tabelle 4-2 angegeben."
+    },
+    {
+      "label": "4",
+      "pdf_page": 34,
+      "line": "Tabelle 4-1  Empfohlene Werte für den Dickenverlust in mm infolge Korrosion bei Pfählen und"
+    },
+    {
+      "label": "4",
+      "pdf_page": 35,
+      "line": "Tabelle 4-2  Empfohlene Werte für den Dickenverlust in mm infolge Korrosion bei Pfählen und"
+    },
+    {
+      "label": "5",
+      "pdf_page": 36,
+      "line": "Rotationskapazität geprüft werden, siehe Tabelle 5-1."
+    },
+    {
+      "label": "5",
+      "pdf_page": 36,
+      "line": "(4) Die Grenzabmaße von Spundbohlen für Querschnitte der Klassen 1, 2 und 3 dürfen der Tabelle 5-1"
+    },
+    {
+      "label": "5",
+      "pdf_page": 37,
+      "line": "Tabelle 5-1  Querschnittsklassifizierung"
+    },
+    {
+      "label": "6",
+      "pdf_page": 39,
+      "line": "wobei fb,v die Schubbeulfestigkeit nach EN 1993-1-3, Tabelle 6-1 für ein unausgesteiftes Stegblech an der"
+    },
+    {
+      "label": "5",
+      "pdf_page": 46,
+      "line": "mit P nach Tabelle 5-2;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 46,
+      "line": "zur Bestimmung von P nach Tabelle 5-2 ist der Wasserdruckunterschied an der Stelle des maximalen"
+    },
+    {
+      "label": "5",
+      "pdf_page": 46,
+      "line": "Tabelle 5-2  Abminderungsfaktor P für Z-Bohlen infolge unterschiedlicher Wasserdrücke"
+    },
+    {
+      "label": "3",
+      "pdf_page": 59,
+      "line": "Bp,Rd, aus EN 1993-1-8, Tabelle 3-4 bestimmt werden."
+    },
+    {
+      "label": "5",
+      "pdf_page": 64,
+      "line": "b die Flanschbreite, siehe Bild in Tabelle 5-1;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 65,
+      "line": "b die Flanschbreite, siehe Bild in Tabelle 5-1;"
+    },
+    {
+      "label": "2",
+      "pdf_page": 66,
+      "line": "Tabelle 2 entsprechen."
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "in Tabelle 3-1 oder Tabelle 3-2 entsprechen."
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "in Tabelle 3-1 oder Tabelle 3-2 entsprechen."
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "(4) Der Nennwert der Streckgrenze fyb des Grundmaterials in Tabelle 3-1 und Tabelle 3-2 sollte als"
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "(4) Der Nennwert der Streckgrenze fyb des Grundmaterials in Tabelle 3-1 und Tabelle 3-2 sollte als"
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "ist entweder die Streckgrenze des Grundwerkstoffes fyb nach Tabelle 3-2 oder die Streckgrenze nach"
+    },
+    {
+      "label": "3",
+      "pdf_page": 69,
+      "line": "Tabelle 3-1 zu verwenden."
+    },
+    {
+      "label": "6",
+      "pdf_page": 75,
+      "line": "(2) Die Schubbeulfestigkeit fbv sollte für Stege ohne Aussteifung am Auflager mit EN 1993-1-3, Tabelle 6-1"
+    },
+    {
+      "label": "5",
+      "pdf_page": 85,
+      "line": "Klassifizierung nach Tabelle 5-1: b/tf-Verhältnis für den vollen plastischen Momentenwiderstand."
+    },
+    {
+      "label": "5",
+      "pdf_page": 89,
+      "line": "1-, Klasse-2-oder Klasse-3-Querschnitten nach EN 1993-1-1, Tabelle 5-2 entsprechen, dürfen nach D.1.2"
+    },
+    {
+      "label": "5",
+      "pdf_page": 91,
+      "line": "Querschnitten nach EN 1993-1-1, Tabelle 5-2 entsprechen, dürfen wie folgt nachgewiesen werden."
+    }
+  ],
+  "figures": [
+    {
+      "label": "5",
+      "pdf_page": 14,
+      "line": "c Steglänge der Stahlspundwand, siehe Bild 5-1;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 14,
+      "line": "Stegwinkel, siehe Bild 5-1."
+    },
+    {
+      "label": "5",
+      "pdf_page": 14,
+      "line": "Av Projizierte Schubfläche, siehe Bild 5-1;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 14,
+      "line": "gilt, siehe Bild 5-4;"
+    },
+    {
+      "label": "1",
+      "pdf_page": 15,
+      "line": "ANMERKUNG Bild 1-1 bis Bild 1-10 sind nur Beispiele zum Verständnis der Begriffe. Die Beispiele sind keineswegs"
+    },
+    {
+      "label": "1",
+      "pdf_page": 15,
+      "line": "ANMERKUNG Bild 1-1 bis Bild 1-10 sind nur Beispiele zum Verständnis der Begriffe. Die Beispiele sind keineswegs"
+    },
+    {
+      "label": "1",
+      "pdf_page": 15,
+      "line": "Expansionsanker. Beispiele für Anschlüsse zwischen Anker und Spundwände sind in Bild 1-1 dargestellt."
+    },
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "gewöhnlich an Gurtungen angeschlossen sind (siehe Bild 1-2)"
+    },
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "Bild 1-3). Die Standsicherheit der Zellen wird durch das Eigengewicht der Füllung erreicht. Es gibt zwei Typen"
+    },
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "Kreisdurchmessern, die über Bögen mit kleinerem Durchmesser verbunden sind (siehe Bild 1-4a);"
+    },
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "Bild 1-4b)."
+    },
+    {
+      "label": "1",
+      "pdf_page": 16,
+      "line": "eingebaut und durch Schlösser mit diesen verbunden sind (siehe Bild 1-5)."
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "wird. Diese Elemente können aus geschweißten Profilen bestehen, siehe Bild 1-6, um ein hohes"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "trägheitsmomentes der Wand (siehe Beispiel in Bild 1-7) oder zur Erfüllung besonderer Anforderungen (siehe"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "Beispiel in Bild 1-8) winkelig zur Wandachse verlaufen"
+    },
+    {
+      "label": "1",
+      "pdf_page": 17,
+      "line": "Zwischenelementen (Tafeln, Bohlen oder Verschalung), siehe Bild 1-9. Die Pfähle können gewalzte oder"
+    },
+    {
+      "label": "1",
+      "pdf_page": 18,
+      "line": "Sonderelement, siehe Bild 1-10, das zwei Hauptzellen eines Fangedamms über Bögen mit kleineren"
+    },
+    {
+      "label": "1",
+      "pdf_page": 18,
+      "line": "Durchmessern miteinander verbindet, siehe Bild 1-3"
+    },
+    {
+      "label": "1",
+      "pdf_page": 19,
+      "line": "Bild 1-1  Beispiele für die Verbindung zwischen Ankern und Spundwänden"
+    },
+    {
+      "label": "1",
+      "pdf_page": 20,
+      "line": "Bild 1-2  Beispiel für eine Aussteifung"
+    },
+    {
+      "label": "1",
+      "pdf_page": 20,
+      "line": "Bild 1-3  Zellenfangedämme"
+    },
+    {
+      "label": "1",
+      "pdf_page": 21,
+      "line": "Bild 1-4  Beispiel für Zellenfangedämme"
+    },
+    {
+      "label": "1",
+      "pdf_page": 21,
+      "line": "Bild 1-5  Beispiele für kombinierte Spundwände 19"
+    },
+    {
+      "label": "1",
+      "pdf_page": 22,
+      "line": "Bild 1-6  Beispiele für Trägerpfahlwände"
+    },
+    {
+      "label": "1",
+      "pdf_page": 23,
+      "line": "Bild 1-7  Beispiel für Verbundwände in Winkelform aus U-Profilen"
+    },
+    {
+      "label": "1",
+      "pdf_page": 23,
+      "line": "Bild 1-8  Beispiel für eine Verbundwand in Winkelform aus Z-Profilen"
+    },
+    {
+      "label": "1",
+      "pdf_page": 23,
+      "line": "Bild 1-9  Beispiel für eine Trägerbohlwand (Berliner Verbau)"
+    },
+    {
+      "label": "1",
+      "pdf_page": 24,
+      "line": "Bild 1-10  Beispiele für T-Verbindungen"
+    },
+    {
+      "label": "4",
+      "pdf_page": 32,
+      "line": "erreichen, siehe Bild 4-1."
+    },
+    {
+      "label": "4",
+      "pdf_page": 33,
+      "line": "Bild 4-1  Beispiel der Verteilung der Korrosionsrate"
+    },
+    {
+      "label": "4",
+      "pdf_page": 35,
+      "line": "die ständig unter Wasser liegt, siehe Bild 4-1."
+    },
+    {
+      "label": "5",
+      "pdf_page": 39,
+      "line": "angenommen werden, siehe Bild 5-1:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 39,
+      "line": "Bild 5-1  Definition der Schubfläche"
+    },
+    {
+      "label": "5",
+      "pdf_page": 40,
+      "line": "der Stegwinkel nach Bild 5-1;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 41,
+      "line": "Hierbei ist die Knicklänge, die für ein freies oder teilweise eingespanntes Erdlager nach Bild 5-2 oder für ein"
+    },
+    {
+      "label": "5",
+      "pdf_page": 41,
+      "line": "eingespanntes Erdlager nach Bild 5-3 bestimmt wird, und D ein Abminderungsfaktor, siehe 6.4."
+    },
+    {
+      "label": "5",
+      "pdf_page": 42,
+      "line": "Bild 5-2;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 42,
+      "line": "horizontalem Auflager (Gurtung, Anker) angesetzt werden, siehe Bild 5-3."
+    },
+    {
+      "label": "5",
+      "pdf_page": 42,
+      "line": "nach Bild 5-4 aufgenommen werden kann. FQ,Ed ist gegeben durch:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 42,
+      "line": "Kraft FQ,Ed aufgenommen werden, indem eine zusätzliche Wandlänge h nach Bild 5-4 zur Verfügung gestellt"
+    },
+    {
+      "label": "5",
+      "pdf_page": 43,
+      "line": "Bild 5-2  Mögliche Bestimmung der Knicklänge , freies Erdauflager"
+    },
+    {
+      "label": "5",
+      "pdf_page": 44,
+      "line": "Bild 5-3  Mögliche Bestimmung der Knicklänge , eingespanntes Erdauflager"
+    },
+    {
+      "label": "5",
+      "pdf_page": 44,
+      "line": "Bild 5-4  Bestimmung der zusätzlichen Horizontalkraft FQ,Ed"
+    },
+    {
+      "label": "5",
+      "pdf_page": 48,
+      "line": "(13) Bei der Bemessung von Verbindungsbohlen nach Bild 5-5 und Bild 5-6 sind in der Regel die"
+    },
+    {
+      "label": "5",
+      "pdf_page": 48,
+      "line": "(13) Bei der Bemessung von Verbindungsbohlen nach Bild 5-5 und Bild 5-6 sind in der Regel die"
+    },
+    {
+      "label": "5",
+      "pdf_page": 48,
+      "line": "Bild 5-5  Geschweißte Verbindungsbohle"
+    },
+    {
+      "label": "5",
+      "pdf_page": 48,
+      "line": "Bild 5-6  Geschraubte T-Verbindung mit Unterlegplatte"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "rm Radius der Hauptzelle, siehe Bild 5-7;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "Darin sind ra und rm die Radien des Verbindungsbogens und der Hauptzelle nach Bild 5-7, und"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "ANMERKUNG 2 Obwohl Gleichung (5.27) für Zellenfangedämme mit Verbindungsbögen in einer Flucht, siehe Bild 5-7,"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "Bild 5-7  Geometrie einer Kreiszelle und eines in der Flucht angeordneten Verbindungsbogens"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "(16) Bei Verbindungsbohlen, die als geschraubte T-Verbindung nach Bild 5-6 ausgeführt sind, darf der"
+    },
+    {
+      "label": "5",
+      "pdf_page": 49,
+      "line": "(18) Die Verbindung sollte wie folgt nachgewiesen werden, siehe Bild 5-6:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 50,
+      "line": "erlauben, sollte der Bohlensteg 2 (siehe Bild 5-6) wie der Flansch des Ersatz-T-Stummels mit"
+    },
+    {
+      "label": "5",
+      "pdf_page": 51,
+      "line": "(5) Die Knicklänge darf mit der folgenden Näherung abgeschätzt werden (siehe Bild 5-8):"
+    },
+    {
+      "label": "5",
+      "pdf_page": 51,
+      "line": "Bild 5-8  Vereinfachte Abschätzung der Knicklänge von Tragpfählen"
+    },
+    {
+      "label": "1",
+      "pdf_page": 52,
+      "line": "besondere Geometrie der verwendeten Querschnitte ist zu berücksichtigen, siehe Bild 1-6, und lokale Effekte"
+    },
+    {
+      "label": "1",
+      "pdf_page": 52,
+      "line": "kombinierten Wänden angegeben, siehe Bild 1-5:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 53,
+      "line": "Bild 5-9, das eine Doppel-U-Bohle als Beispiel für ein Füllelement zeigt, berücksichtigt werden."
+    },
+    {
+      "label": "5",
+      "pdf_page": 53,
+      "line": "Bild 5-9  Vereinfachtes Modell für Füllelemente"
+    },
+    {
+      "label": "1",
+      "pdf_page": 56,
+      "line": "siehe Bild 1-7, durch ein H-Profil als Gurtung eingeleitet werden."
+    },
+    {
+      "label": "6",
+      "pdf_page": 56,
+      "line": "(5) Wenn der Abstand von Einfach- oder Doppelverpresspunkten nicht größer ist als 0,7 m (siehe Bild 6-1)"
+    },
+    {
+      "label": "6",
+      "pdf_page": 57,
+      "line": "Bild 6-1  Abstände von Doppelverpresspunkten"
+    },
+    {
+      "label": "7",
+      "pdf_page": 60,
+      "line": "sollten mit der gewählten Art der Lastübertragung übereinstimmen. Beispiele hierfür werden in Bild 7-1 und"
+    },
+    {
+      "label": "7",
+      "pdf_page": 60,
+      "line": "Bild 7-2 gezeigt, siehe auch EN 1994."
+    },
+    {
+      "label": "7",
+      "pdf_page": 60,
+      "line": "ANMERKUNG Eine direkte Verbindung eines Stahltragwerks mit Tragpfählen ist ebenfalls möglich, siehe Bild 7-3."
+    },
+    {
+      "label": "7",
+      "pdf_page": 60,
+      "line": "Bild 7-1  Rohr- und Kastenpfähle, Beispiele für die Verbindung mit dem Pfahlrost"
+    },
+    {
+      "label": "7",
+      "pdf_page": 61,
+      "line": "Bild 7-2  Beispiele für Tragpfahlanschlüsse an einen Betonträgerrost"
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "Bild 7-3  Beispiel für eine Verbindung des Tragpfahls an eine"
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "Ankerplatte nachzuweisen, wenn der Ankeranschluss über eine Gurtung hinter der Wand (siehe Bild 7-4) oder"
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "ohne Einsatz einer Gurtung (siehe Bild 7-5a) erfolgt."
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "Steg mittels Gurtung (siehe Bild 7-6) oder mittels Ankerplatte (siehe Bild 7-5b) nachzuweisen."
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "Steg mittels Gurtung (siehe Bild 7-6) oder mittels Ankerplatte (siehe Bild 7-5b) nachzuweisen."
+    },
+    {
+      "label": "7",
+      "pdf_page": 62,
+      "line": "Bild 7-4  Beispiel einer Verankerung mit Gurtung hinter der Spundwand"
+    },
+    {
+      "label": "7",
+      "pdf_page": 63,
+      "line": "Bild 7-5  Beispiel einer Verankerung ohne Gurtung"
+    },
+    {
+      "label": "7",
+      "pdf_page": 63,
+      "line": "Bild 7-6  Beispiel einer Gurtung vor der Spundwand"
+    },
+    {
+      "label": "7",
+      "pdf_page": 63,
+      "line": "(3) Der Widerstand der Spundwand mit einer Gurtung hinter der Wand (siehe Bild 7-4) oder ohne Gurtung"
+    },
+    {
+      "label": "7",
+      "pdf_page": 63,
+      "line": "(siehe Bild 7-5a) gegen die Ankerkraft, die über die Flansche durch eine Ankerplatte eingeleitet wird, darf wie"
+    },
+    {
+      "label": "7",
+      "pdf_page": 64,
+      "line": "Gurtung (siehe Bild 7-6) eingeleitet wird, darf wie folgt bestimmt werden:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 65,
+      "line": "c die Steglänge, siehe Bild 5-1;"
+    },
+    {
+      "label": "5",
+      "pdf_page": 65,
+      "line": "der Stegwinkel, siehe Bild 5-1;"
+    },
+    {
+      "label": "7",
+      "pdf_page": 65,
+      "line": "(5) Wenn eine Ankerplatte für die Einleitung einer Ankerkraft in die Stege nach Bild 7-5 b) verwendet wird,"
+    },
+    {
+      "label": "7",
+      "pdf_page": 75,
+      "line": "(1) Wenn sich die Gurtung auf der Aushubseite, siehe Bild 7-6, befindet, sollte der Nachweis nach A.5.4.2"
+    },
+    {
+      "label": "7",
+      "pdf_page": 75,
+      "line": "(2) Wenn sich die Gurtung auf der Landseite, siehe Bild 7-4, befindet, sollte der Nachweis nach A.5.4.3"
+    },
+    {
+      "label": "6",
+      "pdf_page": 75,
+      "line": "die Höhe des Profils ist. Sonst gilt Kategorie 2, siehe EN 1993-1-3, Bild 6-9."
+    },
+    {
+      "label": "1",
+      "pdf_page": 89,
+      "line": "(1) I-Profile, die als Tragelemente in kombinierten Wänden eingesetzt werden, siehe Bild 1-5, und Klasse-"
+    },
+    {
+      "label": "5",
+      "pdf_page": 91,
+      "line": "ANMERKUNG 1 Die vertikalen Lagerreaktionen in Bild 5-9 dürfen für die Bestimmung der lokalen Schalenbiege-"
+    },
+    {
+      "label": "5",
+      "pdf_page": 91,
+      "line": "wy,Ed die Lagerkraft je Längeneinheit nach 5.2.2 (3), siehe Bild 5-9."
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 879,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1927,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2079,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7074,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7",
+        "1.8",
+        "1.9",
+        "2",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.5.1",
+        "2.5.2",
+        "2.5.3",
+        "2.6",
+        "2.6.1",
+        "2.6.2",
+        "2.6.3",
+        "2.6.4",
+        "2.7",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "3.7",
+        "3.8",
+        "3.9",
+        "4",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 8061,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.1.1",
+        "5.1.2",
+        "5.1.3",
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "5.2.5",
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.3.3",
+        "5.3.4",
+        "5.4",
+        "5.5",
+        "5.5.1",
+        "5.5.2",
+        "5.5.3",
+        "5.5.4",
+        "6",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1",
+        "7.2.2",
+        "7.2.3",
+        "7.2.4",
+        "7.2.5",
+        "7.3",
+        "7.4",
+        "7.4.1",
+        "7.4.2",
+        "7.4.3",
+        "8",
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4",
+        "8.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 5801,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3399,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3316,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2377,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1437,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 14
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2480,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2882,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1851,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1843,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1814,
+      "text_layer": "usable",
+      "clauses": [
+        "1.7",
+        "1.8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2691,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2662,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1008,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 363,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 224,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 266,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 204,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 403,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1039,
+      "text_layer": "usable",
+      "clauses": [
+        "1.9",
+        "2",
+        "2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2370,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2398,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.5.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2797,
+      "text_layer": "usable",
+      "clauses": [
+        "2.5.2",
+        "2.5.3",
+        "2.5.3.1",
+        "2.5.3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2529,
+      "text_layer": "usable",
+      "clauses": [
+        "2.5.3.3",
+        "2.6",
+        "2.6.1",
+        "2.6.2",
+        "2.6.3",
+        "2.6.4",
+        "2.7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1861,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3.1",
+        "3.2",
+        "3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 2058,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4",
+        "3.5",
+        "3.6",
+        "3.7",
+        "3.8"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2567,
+      "text_layer": "usable",
+      "clauses": [
+        "3.9",
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1689,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1915,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "4.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2280,
+      "text_layer": "usable",
+      "clauses": [
+        "4.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2337,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.1.1",
+        "5.1.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 36,
+      "characters": 2329,
+      "text_layer": "usable",
+      "clauses": [
+        "5.1.3",
+        "5.2",
+        "5.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1529,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1786,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1171,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 40,
+      "characters": 2234,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1623,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1968,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 43,
+      "characters": 191,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 320,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1420,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 46,
+      "characters": 2098,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.4"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 47,
+      "characters": 2025,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.5"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1087,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 49,
+      "characters": 1868,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 50,
+      "characters": 3206,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1444,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 52,
+      "characters": 2289,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3.4",
+        "5.4",
+        "5.5",
+        "5.5.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2087,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 3235,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5.3",
+        "5.5.4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 55,
+      "characters": 2927,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1976,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 57,
+      "characters": 1537,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 58,
+      "characters": 2208,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2.2",
+        "7.2.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2980,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2.4",
+        "7.2.5",
+        "7.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1531,
+      "text_layer": "usable",
+      "clauses": [
+        "7.4",
+        "7.4.1",
+        "7.4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 61,
+      "characters": 482,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 959,
+      "text_layer": "usable",
+      "clauses": [
+        "7.4.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 959,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1366,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1403,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 66,
+      "characters": 1529,
+      "text_layer": "usable",
+      "clauses": [
+        "8",
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4",
+        "8.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 2283,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 68,
+      "characters": 927,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 2260,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 70,
+      "characters": 1930,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 752,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 1005,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 73,
+      "characters": 1015,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 74,
+      "characters": 2278,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 75,
+      "characters": 1904,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 76,
+      "characters": 2379,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 77,
+      "characters": 2782,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 78,
+      "characters": 1767,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 79,
+      "characters": 2119,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 80,
+      "characters": 1120,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 81,
+      "characters": 1162,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 82,
+      "characters": 843,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 83,
+      "characters": 584,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 84,
+      "characters": 2306,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 85,
+      "characters": 1805,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 86,
+      "characters": 601,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 87,
+      "characters": 1193,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 88,
+      "characters": 350,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 89,
+      "characters": 2265,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 90,
+      "characters": 709,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 91,
+      "characters": 1951,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 92,
+      "characters": 794,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 16
+    },
+    {
+      "pdf_page": 93,
+      "characters": 1933,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 94,
+      "characters": 2156,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

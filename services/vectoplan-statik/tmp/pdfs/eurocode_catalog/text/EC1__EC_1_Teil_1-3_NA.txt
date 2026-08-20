@@ -1,0 +1,275 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 1: Einwirkungen auf Tragwerke  
+Teil 1-3: Allgemeine Einwirkungen  Schneelasten 
+National Annex  
+Nationally determined parameters  
+Eurocode 1: Actions on structures  
+Part 1-3: General actions  Snow loads 
+Annexe national  
+Paramètres déterminés au plan national  
+Eurocode 1: Actions sur les structures  
+Partie 1-3: Actions générales  Charges de neige
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-1-3/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde im NA 005-51-02 AA Einwirkungen auf Bauten (Sp CEN/TC 250/SC 1)" erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1991-1-3:2010-12 Einwirkungen auf Trag-
+werke  Teil 1-3: Allgemeine Einwirkungen  Schneelasten. 
+Die Europäische Norm EN 1991-1-3 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser Nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1991-1-3:2010-12 (en: Non-
+contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1991-1-3:2010-12. 
+DIN EN 1991-1-3:2010-12 und dieser Nationale Anhang DIN EN 1991-1-3/NA:2010-12 ersetzen 
+DIN 1055-5:2005-07. 
+Änderungen 
+Gegenüber DIN 1055-5:2005-07 wurden folgende Änderungen vorgenommen: 
+a) Übernahme der Regelungen aus DIN 1055-5:2005-07 zur nationalen Anwendung von DIN EN 1991-1-3; 
+b) Abschnitt 5.3.6 (1) ist unter Berücksichtigung der ergänzenden nationalen Regeln zu DIN 1055-5 
+überarbeitet worden. 
+Frühere Ausgaben 
+DIN 1055-5: 1936xx-12, 1975-06, 2005-07 
+DIN 1055-5/A1: 1994-04 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1991-1-3/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für die Grundsätze zur Bestimmung der Werte von 
+Schneelasten für die Berechnung und Bemessung von Hoch- und Ingenieurbauten, die bei der Anwendung 
+von DIN EN 1991-1-3:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1991-1-3:2010-12 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-1-3:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1991-1-3:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (NDP) 
+aus. 
+ 1.1(2), 1.1(4) 
+ 2(3), 2(4) 
+ 3.3(1), 3.3(3) 
+ 4.1(1), 4.2(1), 4.3(1) 
+ 5.2(1), 5.2(4), 5.2(5), 5.2(6), 5.2(7), 5.2.(8), 5.3.3(4), 5.3.4(3), 5.3.4(4), 5.3.5(1), 5.3.5(3), 5.3.6(1), 5.3.6(3) 
+ 6.2(2), 6.3(1), 6.3(2) 
+ A(1) (in Tabelle A.1) 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1991-1-3:2010-12. Diese sind durch ein vorangestelltes NCI gekennzeichnet. 
+ 6.4(1) 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung und die Überschriften entsprechen denjenigen von DIN EN 1991-1-3:2010-
+12. 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+NDP zu 1.1(2) 
+Für Bauten in einer Höhenlage von mehr als 1 500 m müssen in jedem Einzelfall von der zuständigen 
+Behörde entsprechende Rechenwerte festgelegt werden. 
+NDP zu 1.1(4) 
+Anhang B ist in Deutschland nicht anzuwenden. 
+ANMERKUNG Der im Titel von Anhang B verwendete Begriff außergewöhnliche Schneeverwehungen  bezieht sich 
+nicht auf eine Bemessungssituation nach DIN EN 1990:2002-10, 4.1.1(2). 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1991-1-3/NA:2010-12 
+2 Klassifikation von Einwirkungen 
+NDP zu 2(3) 
+(siehe NDP zu 4.3(1)) 
+NDP zu 2(4) 
+Schneeverwehungen sind nach diesem Nationalen Anhang keine außergewöhnlichen Einwirkungen. Die 
+untere und obere Begrenzung von Schneeverwehungen bei außergewöhnlichen Schneelastansätzen nach 
+4.3 wird im NDP zu 5.3.6(1) behandelt. 
+3 Bemessungssituation 
+3.3 Außergewöhnliche Verhältnisse 
+NDP zu 3.3(1) 
+Wo die zuständigen Stellen örtlich außergewöhnliche Schneelasten festlegen (siehe nationale Regelung zu 
+4.3(1)), ist auch für die besonderen örtlichen Effekte nach Abschnitt 6 der Norm die Bemessungssituation 
+nach 3.3(1) (im Anhang A als Fall B1 bezeichnet) zugrunde zu legen. 
+NDP zu 3.3(3) 
+(siehe NDP zu 1.1.(4) und 5.3.6(1)). 
+4 Schneelast auf dem Boden 
+4.1 Charakteristische Werte 
+NDP zu 4.1(1) 
+Schneelast auf dem Boden. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1991-1-3/NA:2010-12 
+Bild NA.1  Schneelastzonenkarte 
+5 
+O zone 1 ~Zone 2 ~Zo n e 3 
+r···········l Zone 1a r::~..., Zone 2 a •............• 1~ •. ~~ 
+- ··- ··- Grenzlinie Norddeuts ches Tiefla nd
+
+===== PDF-SEITE 6 =====
+DIN EN 1991-1-3/NA:2010-12 
+Die genaue Zuordnung von Verwaltungseinheiten zu den Schneelastzonen in Bild NA.1, insbesondere im 
+Bereich von Schneelastzonengrenzen, ist bei den zuständigen Behörden zu erfragen. 
+In den Zonen 1 bis 3 sind die charakteristischen Werte der Schneelasten auf dem Boden in Abhängigkeit von 
+der Schneelastzone und der Geländehöhe über dem Meeresniveau nach Gleichungen (NA.1) bis (NA.3) zu 
+berechnen. 
+Die charakteristischen Werte in den Zonen 1a und 2a ergeben sich jeweils durch Erhöhung der Werte aus 
+den Zonen 1 und 2 mit dem Faktor 1,25. Die Sockelbeträge (siehe Bild NA.2) werden in gleicher Weise 
+angehoben. 
+Zone 1: 
+2
+k 760
+14091,019,0 As (NA.1) 
+Zone 2: 
+2
+k 760
+14091,125,0 As (NA.2) 
+Zone 3: 
+2
+k 760
+14091,231,0 As (NA.3) 
+Dabei ist 
+sk der charakteristische Wert der Schneelast auf dem Boden, in kN/m 2;
+A die Geländehöhe über Meeresniveau, in m. 
+Legende Sockelbeträge (Mindestwerte): 
+1 Zone 1 Zone 1 0,65 kN/m 2 (bis 400 m ü. d. M.) 
+2 Zone 2 Zone 2 0,85 kN/m 2 (bis 285 m ü. d. M.) 
+3 Zone 3 Zone 3 1,10 kN/m 2 (bis 255 m ü. d. M.) 
+Bild NA.2  Charakteristischer Wert der Schneelast sk auf dem Boden 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1991-1-3/NA:2010-12 
+Für bestimmte Lagen der Schneelastzone 3 können sich höhere Werte als nach Gleichung (NA.3) ergeben. 
+Informationen über die Schneelast in diesen Lagen sind von den örtlichen, zuständigen Stellen einzuholen. 
+Beispielhaft können folgende Gebiete benannt werden: 
+ Oberharz; 
+ Hochlagen des Fichtelgebirges; 
+ Reit im Winkel; 
+ Obernach (Walchensee). 
+4.2 Weitere repräsentative Werte 
+NDP zu 4.2(1) 
+Es gelten die empfohlenen Werte. 
+4.3 Behandlung von außergewöhnlichen Schneelasten auf dem Boden 
+NDP zu 4.3(1) 
+Im norddeutschen Tiefland wurden in seltenen Fällen Schneelasten bis zum mehrfachen der rechnerischen 
+Werte gemessen. Die zuständige Behörde kann in den betroffenen Regionen die Rechenwerte festlegen, die 
+dann zusätzlich nach DIN EN 1990 als außergewöhnliche Einwirkungen zu berücksichtigen sind. 
+5 Schneelast auf Dächern 
+5.2 Lastanordnung 
+NDP zu 5.2(1) 
+(siehe NDP zu 1.1(4)) 
+NDP zu 5.2(4) 
+(Keine weitergehenden nationalen Regelungen) 
+NDP zu 5.2(5) 
+(Keine weitergehenden nationalen Regelungen) 
+NDP zu 5.2(6) 
+(Keine weitergehenden nationalen Regelungen) 
+NDP zu 5.2(7) 
+Es gilt C
+e = 1,0 
+NDP zu 5.2(8) 
+Es gilt Ct = 1,0 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1991-1-3/NA:2010-12 
+5.3 Formbeiwerte für Dächer 
+5.3.3 Satteldächer 
+NDP zu 5.3.3 (4) 
+(Es gelten die Regelungen nach DIN EN 1991-1-3) 
+5.3.4 Scheddächer 
+NDP zu 5.3.4(3) 
+(siehe nationale Regelung zu 1.1 (4)) 
+NCI zu 5.3.4(4) 
+Die Formbeiwerte für gereihte Dächer sind je nach maßgebender Dachneigung Bild 5.1 bzw. Tabelle 5.1 der 
+Norm zu entnehmen; statt der Formbeiwerte nach DIN EN 1991-1-3:2010-12, Bild 5.4 sind jedoch die 
+Formbeiwerte nach Bild NA.3 anzuwenden. 
+Der Formbeiwert 2 (siehe Tabelle 5.1) darf auf 1
+ks
+h begrenzt werden. 
+Dabei ist 
+ die Wichte des Schnees, die für diese Berechnung zu 2 kN/m 3 angenommen werden kann; 
+h die Höhenlage des Firstes über der Traufe, in m; 
+sk die charakteristische Schneelast, in kN/m 2. 
+ANMERKUNG Die Schneelast auf steil stehende Fensterflächen oder auf angrenzende Bauteile kann 
+sinngemäß nach 6.4 ermittelt werden. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1991-1-3/NA:2010-12 
+Für die Innenfelder ist dabei der mittlere Neigungswinkel 215,0 maßgebend. 
+a) Fensterband geneigt 
+b) Fensterband lotrecht 
+Bild NA.3  Formbeiwerte für gereihte Satteldächer und Scheddächer 
+5.3.5 Tonnendächer 
+NDP zu 5.3.5(1), Anmerkung 1 
+Es gelten die empfohlenen Werte. 
+NDP zu 5.3.5(1), Anmerkung 2 
+Keine weitergehende nationale Festlegung. 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1991-1-3/NA:2010-12 
+5.3.6 Höhensprünge an Dächern 
+NDP zu 5.3.6(1), Anmerkung 1 
+w ist für Höhensprünge h > 0,5 m zu berücksichtigen und muss nicht größer angesetzt werden als 
+s
+k
+w s
+h (NA.4) 
+Für die Summe w + S gilt 
+4,28,0 sw (NA.5) 
+Bei seitlich offenen und für die Räumung zugänglichen Vordächern ( b2 3 m) gilt die Begrenzung 
+28,0 sw (NA.6) 
+Für die alpine Region nach DIN EN 1991-1-3:2010-12, Bild C.2 gilt für Schneelasten sk > 3,0 kN/m² die obere 
+Begrenzung 
+0,9
+k
+sw
+45,62,1
+s
+ (NA.7) 
+Im Falle der außergewöhnlichen Einwirkungen (Norddeutsches Tiefland) gilt generell 
+4sweslC (NA.8) 
+Bei Anordnung von Schneefanggittern oder vergleichbaren Einrichtungen darf auf den Ansatz von s
+verzichtet werden. 
+NDP zu 5.3.6(1), Anmerkung 2 
+Es gelten die empfohlenen Werte. 
+NDP zu 5.3.6(3) 
+(siehe NDP zu 1.1(4)) 
+6 Örtliche Effekte 
+6.2 Verwehungen an Wänden und Aufbauten 
+NDP zu 6.2(2) 
+(siehe NDP zu 1.1(4)) 
+6.3 Schneeüberhang an Dachtraufen 
+NDP zu 6.3(1) 
+Der Nachweis auskragender Dachteile für die Trauflast ist unabhängig von der Höhenlage des Bauortes zu 
+führen. 
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1991-1-3/NA:2010-12 
+11 
+NDP zu 6.3(2) 
+Der Beiwert k für die Form des Überhanges darf in Deutschland mit k = 0,4 abgemindert werden. Sofern über 
+die Dachfläche verteilt Schneefanggitter oder vergleichbare Einrichtungen angeordnet werden, die das 
+Abgleiten von Schnee wirksam verhindern und nach 6.4 bemessen sind kann auf den Ansatz der Linienlast 
+ganz verzichtet werden. 
+6.4 Schneelasten an Schneefanggittern und Dachaufbauten 
+NCI zu 6.4(1) 
+Erläuterung: Werden Schneefanggitter zur Reduzierung der Schneelast auf die Tragkonstruktion, z. B. Lasten 
+aus abgleitenden Schneemassen auf tiefer liegende Dachflächen bei Höhensprüngen (siehe 4.2.7), 
+angeordnet oder sind Dachaufbauten vorgesehen, die abgleitende Schneemassen anstauen, so ist eine 
+Schneelast (F
+s je m Länge) nach dem folgenden Bild NA.4 anzusetzen. 
+Bild NA.4  Schneelast auf Schneefanggitter 
+Anhang A 
+(informativ) 
+Bemessungssituationen und Lastverteilung für unterschiedliche örtliche 
+Gegebenheiten
+NDP zu Anhang A: 
+(siehe NDP zu 1.1(4) und 4.3(1)). 
+Nach den Nationalen Regelungen zu 1.1(4), 2(4) und 4.3(1) ist für außergewöhnliche Bedingungen 
+ausschließlich Fall B1 zutreffend. Für die Fälle B2 und B3 werden keine Regelungen getroffen.

@@ -7,6 +7,7 @@ from typing import Any
 DEFAULT_LAYER_STYLES = {
     "walls": {"label": "Wände", "style_ref": "cut-heavy", "order": 20},
     "openings": {"label": "Öffnungen", "style_ref": "opening", "order": 30},
+    "rooms": {"label": "Räume & Zonen", "style_ref": "room", "order": 10},
     "structure": {"label": "Tragwerk", "style_ref": "structure", "order": 40},
     "annotations": {"label": "Beschriftungen", "style_ref": "annotation", "order": 60},
     "dimensions": {"label": "Bemaßung", "style_ref": "dimension", "order": 70},
@@ -94,6 +95,8 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
         primitive_type = "rect"
     elif kind in {"room_label", "text"}:
         primitive_type = "text"
+    elif kind == "room":
+        primitive_type = "room"
 
     return {
         "primitive_ref": element["element_ref"],
@@ -119,6 +122,9 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
             "source_cell_count": element.get("source_cell_count"),
             "dimensions_source": element.get("dimensions_source"),
             "warnings": element.get("warnings") or [],
+            "room_type": element.get("room_type"),
+            "area_m2": geometry.get("area_m2"),
+            "library_context": element.get("library_context") or {},
         },
     }
 
@@ -135,6 +141,8 @@ def _style_for(element: dict[str, Any]) -> str:
         return "dimension"
     if kind == "room_label":
         return "room-label"
+    if kind == "room":
+        return "room"
     if kind == "text":
         return "annotation"
     return "line"

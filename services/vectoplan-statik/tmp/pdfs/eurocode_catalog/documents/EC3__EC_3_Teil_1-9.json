@@ -1,0 +1,1283 @@
+{
+  "document_id": "EN_1993-1-9__base_standard__EC_3_Teil_1-9",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-9",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 1-9.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-9.pdf",
+  "sha256": "476000df8715207c88fb98f49411fdadbf190dbf8ecf5271198365a974481e37",
+  "pages": 43,
+  "text_pages": 42,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 55,
+  "equation_candidate_count": 43,
+  "table_reference_count": 45,
+  "figure_reference_count": 15,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160946+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232559+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-9.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................6",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ...................6",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... .................6",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe ................................................................................................................... ................................7",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.3.1",
+      "title": "Allgemeines.............................................................................................................. ..............................7",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.3.2",
+      "title": "Parameter für die Ermüdungsbelastung ..................................................................................... ........7",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.3.3",
+      "title": "Ermüdungsfestigkeit ...................................................................................................... .......................9",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen.............................................................................................................. ..........................9",
+      "pdf_page": 6
+    },
+    {
+      "clause": "2",
+      "title": "Grundlegende Anforderungen und Verfahren................................................................................. 10",
+      "pdf_page": 6
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungskonzepte........................................................................................................... ............. 11",
+      "pdf_page": 6
+    },
+    {
+      "clause": "4",
+      "title": "Ermüdungsbeanspruchungen..................................................................................................... ...... 12",
+      "pdf_page": 6
+    },
+    {
+      "clause": "5",
+      "title": "Berechnung der Spannungen .................................................................................................... ....... 13",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6",
+      "title": "Berechnung der Spannungsschwingbreiten................................................................................... 14",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines................................................................................................................ ......................... 14",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6.2",
+      "title": "Bemessungswert der Spannungsschwingbreite der Nennspannungen ...................................... 15",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6.3",
+      "title": "Bemessungswert der Spannungsschwingbreite korrigierter Nennspannungen ........................ 15",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6.4",
+      "title": "Bemessungswert der Spannungsschwingbreite für geschweißte Hohlprofilknoten.................. 15",
+      "pdf_page": 6
+    },
+    {
+      "clause": "6.5",
+      "title": "Bemessungswert der Spannungsschwingbreite der Strukturspannungen",
+      "pdf_page": 6
+    },
+    {
+      "clause": "7",
+      "title": "Ermüdungsfestigkeit .......................................................................................................... ................ 17",
+      "pdf_page": 6
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines................................................................................................................ ......................... 17",
+      "pdf_page": 6
+    },
+    {
+      "clause": "7.2",
+      "title": "Modifizierung der Ermüdungsfestigkeit...................................................................................... ..... 20",
+      "pdf_page": 6
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Nicht geschweißte oder spannungsarm geglühte geschweißte Konstruktionen unter",
+      "pdf_page": 6
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Größenabhängigkeit....................................................................................................... .................... 21",
+      "pdf_page": 6
+    },
+    {
+      "clause": "8",
+      "title": "Ermüdungsnachweis............................................................................................................ .............. 21",
+      "pdf_page": 6
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3.2",
+      "title": "Parameter für die Ermüdungsbelastung",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3.3",
+      "title": "Ermüdungsfestigkeit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1",
+      "title": "Faktor für den häufig auftretenden Wert einer variablen Last;",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2",
+      "title": "Grundlegende Anforderungen und Verfahren",
+      "pdf_page": 14
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungskonzepte",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4",
+      "title": "Ermüdungsbeanspruchungen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "5",
+      "title": "Berechnung der Spannungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "6",
+      "title": "Berechnung der Spannungsschwingbreiten",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.2",
+      "title": "Bemessungswert der Spannungsschwingbreite der Nennspannungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "6.3",
+      "title": "Bemessungswert der Spannungsschwingbreite korrigierter Nennspannungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "6.4",
+      "title": "Bemessungswert der Spannungsschwingbreite für geschweißte Hohlprofilknoten",
+      "pdf_page": 19
+    },
+    {
+      "clause": "6.5",
+      "title": "Bemessungswert der Spannungsschwingbreite der Strukturspannungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "7",
+      "title": "Ermüdungsfestigkeit",
+      "pdf_page": 21
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 21
+    },
+    {
+      "clause": "1",
+      "title": "Kerbfall C",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2",
+      "title": "Dauerfestigkeit D",
+      "pdf_page": 22
+    },
+    {
+      "clause": "3",
+      "title": "Schwellenwert der Ermüdungsfestigkeit L",
+      "pdf_page": 22
+    },
+    {
+      "clause": "1",
+      "title": "Kerbfall C",
+      "pdf_page": 23
+    },
+    {
+      "clause": "2",
+      "title": "Schwellenwert der Ermüdungsfestigkeit L",
+      "pdf_page": 23
+    },
+    {
+      "clause": "7.2",
+      "title": "Modifizierung der Ermüdungsfestigkeit",
+      "pdf_page": 24
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Nicht geschweißte oder spannungsarm geglühte geschweißte Konstruktionen unter",
+      "pdf_page": 24
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Größenabhängigkeit",
+      "pdf_page": 25
+    },
+    {
+      "clause": "8",
+      "title": "Ermüdungsnachweis",
+      "pdf_page": 25
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "QE,2 bezogen auf n = 2 · 106 Lastwechsel.",
+      "context": "Qmax, nmax, standardisiertes Spektrum oder | QE,nmax bezogen auf nmax oder | QE,2 bezogen auf n = 2 · 106 Lastwechsel. | Dynamische Effekte sind, soweit nicht anders geregelt, in diesen Parametern enthalten. | 8",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "N = 2 × 106 Schwingspiele gehört",
+      "context": "konstante Spannungsschwingbreite | C oder C für einen bestimmten Kerbfall, die zu der Lebensdauer | N = 2 × 106 Schwingspiele gehört | 1.4 Formelzeichen | Spannungsschwingbreite (Längsspannungen);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "C, C Bezugswert für die Ermüdungsfestigkeit bei NC = 2 106 Schwingspielen;",
+      "context": "E, E schadensäquivalente konstante Spannungsschwingbreite bezogen auf nmax; | E,2, E,2 schadensäquivalente konstante Spannungsschwingbreite bezogen auf 2 106 Schwingspiele; | C, C Bezugswert für die Ermüdungsfestigkeit bei NC = 2 106 Schwingspielen; | D, D Dauerfestigkeit bei ND Schwingspielen; | 9",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 18,
+      "equation_number": "unvollständig",
+      "line": "die Schubspannungen wf längs der Nahtachse: wf = ||f ;",
+      "context": "die Längsspannungen wf quer zur Nahtachse: 22 | ffwf ; | die Schubspannungen wf längs der Nahtachse: wf = ||f ; | für die in der Regel zwei getrennte Nachweise zu führen sind. | ANMERKUNG Diese Vorgehensweise unterscheidet sich von den Tragsicherheitsnachweisen von Kehlnähten nach",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 18,
+      "equation_number": "unvollständig",
+      "line": "Regel durch die Spannungsschwingbreite Ff · E,2 bezogen auf NC = 2 106 Schwingspiele ausgedrückt.",
+      "context": "B angegeben. | (2) Der für den Ermüdungsnachweis maßgebende Bemessungswert der Spannungsschwingbreite wird in der | Regel durch die Spannungsschwingbreite Ff · E,2 bezogen auf NC = 2 106 Schwingspiele ausgedrückt. | 14 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "6.1",
+      "line": "Ff E,2 = 1 2 i · ... n ( Ff Qk) (6.1)",
+      "context": "(1) Der Bemessungswert der Spannungsschwingbreite für Nennspannungen Ff E,2 und Ff E,2 ist in der | Regel wie folgt zu bestimmen: | Ff E,2 = 1 2 i · ... n ( Ff Qk) (6.1) | Ff E,2 = 1 2 i ... n ( Ff Qk) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "Ff E,2 = 1 2 i ... n ( Ff Qk)",
+      "context": "Regel wie folgt zu bestimmen: | Ff E,2 = 1 2 i · ... n ( Ff Qk) (6.1) | Ff E,2 = 1 2 i ... n ( Ff Qk) | Dabei ist | ( Ff Qk), ( Ff Qk) die Spannungsschwingbreite aus den Ermüdungsbelastungen nach EN 1991;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "6.2",
+      "line": "Ff E,2 = kf 1 2 i ... n ( Ff Qk) (6.2)",
+      "context": "(1) Der Bemessungswert der Spannungsschwingbreite der korrigierten Nennspannungen Ff E,2 und | Ff E,2 ist in der Regel wie folgt zu bestimmen: | Ff E,2 = kf 1 2 i ... n ( Ff Qk) (6.2) | Ff E,2 = kf 1 2 i ... n ( Ff Qk) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "Ff E,2 = kf 1 2 i ... n ( Ff Qk)",
+      "context": "Ff E,2 ist in der Regel wie folgt zu bestimmen: | Ff E,2 = kf 1 2 i ... n ( Ff Qk) (6.2) | Ff E,2 = kf 1 2 i ... n ( Ff Qk) | Dabei ist | kf der Spannungskonzentrationsfaktor zur Berücksichtigung der lokalen Spannungserhöhung in Bezug",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "6.3",
+      "line": "Ff E,2 = k1 ( Ff *E,2) (6.3)",
+      "context": "(1) Wenn kein genauerer Nachweis geführt wird, sollte der Bemessungswert der Spannungsschwingbreite | für die korrigierten Nennspannungen Ff E,2 mit dem vereinfachten Verfahren in 4(2) bestimmt werden | Ff E,2 = k1 ( Ff *E,2) (6.3) | Dabei ist | Ff *E,2 der Bemessungswert der Spannungsschwingbreite, gerechnet mit dem vereinfachten Fach-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "6.4",
+      "line": "Ff E,2 = kf ( Ff *E,2) (6.4)",
+      "context": "(1) Der Bemessungswert der Spannungsschwingbreite von Strukturspannungen Ff E,2 wird in der Regel | ermittelt mit | Ff E,2 = kf ( Ff *E,2) (6.4) | Dabei ist | kf der Spannungskonzentrationsfaktor.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "R NR = m",
+      "context": "(2) Die Ermüdungsfestigkeitskurven für konstante Spannungsschwingbreiten sind definiert durch: | m | R NR = m | C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1 | m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1",
+      "context": "m | R NR = m | C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1 | m | R NR = m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "R NR = m",
+      "context": "C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1 | m | R NR = m | C 2 106 mit m = 5 für N 108, siehe Bild 7.2 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "C 2 106 mit m = 5 für N 108, siehe Bild 7.2",
+      "context": "m | R NR = m | C 2 106 mit m = 5 für N 108, siehe Bild 7.2 | Dabei ist | D =",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "D =",
+      "context": "C 2 106 mit m = 5 für N 108, siehe Bild 7.2 | Dabei ist | D = | 31 | 5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "C = 0,737 C die Dauerfestigkeit, siehe Bild 7.1;",
+      "context": "5 | 2 / | C = 0,737 C die Dauerfestigkeit, siehe Bild 7.1; | L = | 51",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "L =",
+      "context": "2 / | C = 0,737 C die Dauerfestigkeit, siehe Bild 7.1; | L = | 51 | 100",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "C = 0,457 C der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.2.",
+      "context": "100 | 2 / | C = 0,457 C der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.2. | (3) Bei Spannungsspektren mit Längsspannungsschwingbreiten oberhalb und unterhalb der Dauerfestigkeit | D ist in der Regel der Ermüdungsschaden mit den erweiterten Ermüdungsfestigkeitskurven zu ermitteln.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "R NR = m",
+      "context": "D ist in der Regel der Ermüdungsschaden mit den erweiterten Ermüdungsfestigkeitskurven zu ermitteln. | m | R NR = m | C 2 106 mit m = 3 für N 5 106 | m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "C 2 106 mit m = 3 für N 5 106",
+      "context": "m | R NR = m | C 2 106 mit m = 3 für N 5 106 | m | R NR = m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "R NR = m",
+      "context": "C 2 106 mit m = 3 für N 5 106 | m | R NR = m | D 5 106 mit m = 5 für 5 106 N 108 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "D 5 106 mit m = 5 für 5 106 N 108",
+      "context": "m | R NR = m | D 5 106 mit m = 5 für 5 106 N 108 | Dabei ist | L =",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "L =",
+      "context": "D 5 106 mit m = 5 für 5 106 N 108 | Dabei ist | L = | 51 | 100",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "D = 0,549 D der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.1.",
+      "context": "100 | 5 / | D = 0,549 D der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.1. | 17 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "diesen Fällen um eine Kategorie angehoben werden, wenn die S-N-Kurve mit m = 3 bis zur Dauerfestigkeit *C bei",
+      "context": "Bild 7.1 zuordnen. Die Kerbfallkategorien, die mit einem Stern gekennzeichnet sind, wurden eine Kategorie tiefer | eingestuft, um die Dauerfestigkeit D den Ergebnissen von Versuchen anzupassen. Die Kerbfallkategorien c dürfen in | diesen Fällen um eine Kategorie angehoben werden, wenn die S-N-Kurve mit m = 3 bis zur Dauerfestigkeit *C bei | N *D = 107 verlängert wird, siehe Bild 7.3. | 19",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "N *D = 107 verlängert wird, siehe Bild 7.3.",
+      "context": "eingestuft, um die Dauerfestigkeit D den Ergebnissen von Versuchen anzupassen. Die Kerbfallkategorien c dürfen in | diesen Fällen um eine Kategorie angehoben werden, wenn die S-N-Kurve mit m = 3 bis zur Dauerfestigkeit *C bei | N *D = 107 verlängert wird, siehe Bild 7.3. | 19 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "7.1",
+      "line": "C,red = ks C (7.1)",
+      "context": "(1) Die Größenabhängigkeit aus Effekten der Blechdicke oder anderer Abmessungen ist in der Regel | entsprechend Tabelle 8.1 bis Tabelle 8.10 zu berücksichtigen. Die Ermüdungsfestigkeit lautet dann: | C,red = ks C (7.1) | 8 Ermüdungsnachweis | (1) Die Spannungsschwingbreiten für Nennspannungen, korrigierte Nennspannungen oder Strukturspannun-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "8.1",
+      "line": "1,5 fy für Längsspannungen; (8.1)",
+      "context": "gen (Kerbspannungen) infolge der häufig auftretenden Lasten 1 Qk ,siehe EN 1990, sind in der Regel zu | begrenzen durch: | 1,5 fy für Längsspannungen; (8.1) | 1,5 fy/ 3 für Schubspannungen. | (2) Folgende Ermüdungsnachweise sind zu führen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "8.2",
+      "line": "und (8.2)",
+      "context": "012 ,/ MfC | EFf , | und (8.2) | 012 ,/ MfC | E,Ff .",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "8.3",
+      "line": "E,Ff (8.3)",
+      "context": "E,Ff | MfC | E,Ff (8.3) | falls nicht bei den Kerbfallkategorien in Tabelle 8.8 und Tabelle 8.9 ein anderes Nachweisformat angegeben | ist.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "ks=(30/ )0,25",
+      "context": "hängigkeit für | > 30 mm: | ks=(30/ )0,25 | 14) Schrauben und Gewindestan- | gen mit gerolltem oder geschnitte-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "m=5",
+      "context": "breite berücksichtigt werden. | 100 | m=5 | Schrauben in ein- oder zwei- | schnittigen Scher-Lochleibungs-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "s=(25/t)0,2",
+      "context": "t > 25 mm: | k | s=(25/t)0,2 | Ohne Schweißbadsicherung: | 1) Querstöße in Blechen und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "s=(25/t)0,2",
+      "context": "t > 25 mm: | k | s=(25/t)0,2 | 5) Querstöße von Blechen oder | Flachstählen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "ks=(25/t)0,2",
+      "context": "für | t > 25 mm: | ks=(25/t)0,2 | 8) Vollstöße von Walzprofilen mit | Stumpfnähten mit Freischnitten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "s=(25/t)0,2",
+      "context": "t > 25 mm: | k | s=(25/t)0,2 | 9) Querstöße in geschweißten | Blechträgern ohne Freischnitte.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "m=5",
+      "context": "entfernt sein. | 80 | m=5 | 9) Mit Kehlnähten geschweißte | Laschenverbindung.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": " Überlappung= ( q/p) 100 %",
+      "context": "Anschluss mit Überlappung: Kerbdetail 3): K-Knoten, Rechteck- oder Rundhohlprofile: Kerbfälle 3) und 4): |  30 % Überlappung 100 % |  Überlappung= ( q/p) 100 % |  Es sind getrennte Nachweise für | Gurte und Diagonalen zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "m = 5",
+      "context": "it | t | m = 5 | 32 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "mit den normierten Achsen n= 1,0 und = 1,0.",
+      "context": "festigkeit liegen. | (3) Spektren der Spannungsschwingbreiten können entsprechend ihrer Völligkeit standardisiert werden, z. B. | mit den normierten Achsen n= 1,0 und = 1,0. | 36 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "nmax = ni , oder in QE,2 mit NC = 2 × 106 Spannungsschwingspielen erfolgen.",
+      "context": "kann z. B. nach der Umwandlung in eine äquivalente konstante Spannungsschwingbreite eine weitere | Transformation in eine äquivalente Ermüdungslast Qe, abhängig von der Anzahl der Spannungsschwingspiele | nmax = ni , oder in QE,2 mit NC = 2 × 106 Spannungsschwingspielen erfolgen. | A.6 Nachweisformate | (1) In der Regel ist der Ermüdungsnachweis auf der Grundlage der Schadensakkumulation erbracht, wenn",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "Dabei ist m = 3.",
+      "context": "d2E,fF | m D (A.3) | Dabei ist m = 3. | 37 | DIN EN 1993-1-9:2010-12",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.1",
+      "pdf_page": 16,
+      "line": "werte für Mf dürfen im Nationalen Anhang geregelt werden. Empfohlene Mf-Werte sind in Tabelle 3.1 angegeben."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 16,
+      "line": "Tabelle 3.1  Empfehlungen für Mf-Faktoren für die Ermüdungsfestigkeit"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 16,
+      "line": "1-Faktoren nach 6.4 berücksichtigt werden, siehe Tabelle 4.1 für"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 16,
+      "line": "Kreisquerschnitte, Tabelle 4.2 für Rechteckquerschnitte; bei diesen Querschnitten sind die geometrischen"
+    },
+    {
+      "label": "8.7",
+      "pdf_page": 16,
+      "line": "Einschränkungen in Tabelle 8.7 zu beachten."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 16,
+      "line": "Tabelle 4.1  k1-Faktoren für Hohlprofile mit Kreisquerschnitten"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 17,
+      "line": "Tabelle 4.2  k1-Faktoren für Hohlprofile mit Recheckquerschnitt"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 18,
+      "line": "Nennspannungen für die Kerbfälle nach Tabelle 8.1 bis Tabelle 8.10;"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 18,
+      "line": "Nennspannungen für die Kerbfälle nach Tabelle 8.1 bis Tabelle 8.10;"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 18,
+      "line": "Rissentstehung, die nicht in den Tabellen 8.1 bis Tabelle 8.10 enthalten sind;"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 19,
+      "line": "k1 der Vergrößerungsfaktor nach Tabelle 4.1 und Tabelle 4.2."
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 19,
+      "line": "k1 der Vergrößerungsfaktor nach Tabelle 4.1 und Tabelle 4.2."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 24,
+      "line": "Tabelle 8.1 für ungeschweißte Bauteile und Anschlüsse mit mechanischen Verbindungsmitteln;"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 24,
+      "line": "Tabelle 8.2 für geschweißte zusammengesetzte Querschnitte;"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 24,
+      "line": "Tabelle 8.3 für quer laufende Stumpfnähte;"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 24,
+      "line": "Tabelle 8.4 für angeschweißte Anschlüsse und Steifen;"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 24,
+      "line": "Tabelle 8.5 für geschweißte Stöße;"
+    },
+    {
+      "label": "8.6",
+      "pdf_page": 24,
+      "line": "Tabelle 8.6 für Hohlprofile;"
+    },
+    {
+      "label": "8.7",
+      "pdf_page": 24,
+      "line": "Tabelle 8.7 für geschweißte Knoten von Fachwerkträgern;"
+    },
+    {
+      "label": "8.8",
+      "pdf_page": 24,
+      "line": "Tabelle 8.8 für orthotrope Platten mit Hohlrippen;"
+    },
+    {
+      "label": "8.9",
+      "pdf_page": 24,
+      "line": "Tabelle 8.9 für orthotrope Platten mit offenen Rippen;"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 24,
+      "line": "Tabelle 8.10 für die Obergurt-Stegblech Anschlüsse von Kranbahnträgern."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 24,
+      "line": "ANMERKUNG Kerbfallkategorien C und C für Kerbdetails, die nicht in Tabelle 8.1 bis Tabelle 8.10 und im"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 24,
+      "line": "ANMERKUNG Kerbfallkategorien C und C für Kerbdetails, die nicht in Tabelle 8.1 bis Tabelle 8.10 und im"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 25,
+      "line": "entsprechend Tabelle 8.1 bis Tabelle 8.10 zu berücksichtigen. Die Ermüdungsfestigkeit lautet dann:"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 25,
+      "line": "entsprechend Tabelle 8.1 bis Tabelle 8.10 zu berücksichtigen. Die Ermüdungsfestigkeit lautet dann:"
+    },
+    {
+      "label": "8.8",
+      "pdf_page": 26,
+      "line": "falls nicht bei den Kerbfallkategorien in Tabelle 8.8 und Tabelle 8.9 ein anderes Nachweisformat angegeben"
+    },
+    {
+      "label": "8.9",
+      "pdf_page": 26,
+      "line": "falls nicht bei den Kerbfallkategorien in Tabelle 8.8 und Tabelle 8.9 ein anderes Nachweisformat angegeben"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 27,
+      "line": "Tabelle 8.1  Ungeschweißte Bauteile und Anschlüsse mit mechanischen Verbindungsmitteln"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 28,
+      "line": "Tabelle 8.1 (fortgesetzt)"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 29,
+      "line": "Tabelle 8.2  Geschweißte zusammengesetzte Querschnitte"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 30,
+      "line": "Tabelle 8.3  Quer laufende Stumpfnähte"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 31,
+      "line": "Tabelle 8.3 (fortgesetzt)"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 31,
+      "line": "Tabelle 8.4, Kerbfall 4."
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 32,
+      "line": "Tabelle 8.4  Angeschweißte Anschlüsse und Steifen"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 32,
+      "line": "Tabelle 8.5, Kerbfall 5 oder 6."
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 33,
+      "line": "Tabelle 8.5  Geschweißte Stöße"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 34,
+      "line": "Tabelle 8.5 (fortgesetzt)"
+    },
+    {
+      "label": "8.6",
+      "pdf_page": 35,
+      "line": "Tabelle 8.6  Hohlprofile (t 12,5 mm)"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 35,
+      "line": "Tabelle 8.5, Kerbfall 8)"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 35,
+      "line": "Tabelle 8.4."
+    },
+    {
+      "label": "8.7",
+      "pdf_page": 36,
+      "line": "Tabelle 8.7  Geschweißte Knoten von Fachwerkträgern"
+    },
+    {
+      "label": "8.8",
+      "pdf_page": 37,
+      "line": "Tabelle 8.8  Orthotrope Platten mit Hohlrippen"
+    },
+    {
+      "label": "8.9",
+      "pdf_page": 38,
+      "line": "Tabelle 8.9  Orthotrope Platten mit offenen Rippen"
+    },
+    {
+      "label": "8.10",
+      "pdf_page": 39,
+      "line": "Tabelle 8.10  Obergurt-Stegblech Anschlüsse von Kranbahnträgern"
+    }
+  ],
+  "figures": [
+    {
+      "label": "5.1",
+      "pdf_page": 18,
+      "line": "(6) Die maßgebenden Spannungen in den Schweißnähten sind, siehe Bild 5.1:"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 18,
+      "line": "Bild 5.1  Maßgebende Spannungen in Kehlnähten"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 21,
+      "line": "C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 21,
+      "line": "C 2 106 mit m = 5 für N 108, siehe Bild 7.2"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 21,
+      "line": "C = 0,737 C die Dauerfestigkeit, siehe Bild 7.1;"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 21,
+      "line": "C = 0,457 C der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.2."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 21,
+      "line": "D = 0,549 D der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.1."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 22,
+      "line": "Bild 7.1  Ermüdungsfestigkeitskurve für Längsspannungsschwingbreiten"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 23,
+      "line": "Bild 7.2  Ermüdungsfestigkeitskurve für Schubspannungsschwingbreiten"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 23,
+      "line": "Bild 7.1 zuordnen. Die Kerbfallkategorien, die mit einem Stern gekennzeichnet sind, wurden eine Kategorie tiefer"
+    },
+    {
+      "label": "7.3",
+      "pdf_page": 23,
+      "line": "N *D = 107 verlängert wird, siehe Bild 7.3."
+    },
+    {
+      "label": "7.3",
+      "pdf_page": 24,
+      "line": "Bild 7.3  Alternative Ermüdungsfestigkeit C für Kerbfälle, die mit *C bezeichnet sind"
+    },
+    {
+      "label": "7.4",
+      "pdf_page": 25,
+      "line": "und 60 % des Druckanteils der Spannungsschwingbreite ermittelt werde, siehe Bild 7.4."
+    },
+    {
+      "label": "7.4",
+      "pdf_page": 25,
+      "line": "Bild 7.4  Modifizierte Spannungsschwingbreiten für nicht geschweißte und spannungsarm geglühte"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 27,
+      "line": "Bild 3.1"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1321,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2082,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 531,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 41,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2062,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 5948,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.3.1",
+        "1.3.2",
+        "1.3.3",
+        "1.4",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "6.1",
+        "6.2",
+        "6.3",
+        "6.4",
+        "6.5",
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1",
+        "7.2.2",
+        "8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3344,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3356,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2412,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2874,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2171,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.3.1",
+        "1.3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2156,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2307,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3.3",
+        "1.4"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1993,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 3276,
+      "text_layer": "usable",
+      "clauses": [
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2423,
+      "text_layer": "usable",
+      "clauses": [
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1707,
+      "text_layer": "usable",
+      "clauses": [
+        "5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1484,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1838,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.3",
+        "6.4"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 20,
+      "characters": 341,
+      "text_layer": "usable",
+      "clauses": [
+        "6.5"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1253,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1"
+      ],
+      "equation_candidates": 14
+    },
+    {
+      "pdf_page": 22,
+      "characters": 264,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1359,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1551,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2",
+        "7.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1200,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2.2",
+        "8"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 26,
+      "characters": 682,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1202,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 939,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 29,
+      "characters": 303,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 3011,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 31,
+      "characters": 328,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1262,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2103,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 34,
+      "characters": 172,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1733,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1387,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 37,
+      "characters": 822,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 702,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1438,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1914,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1412,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 42,
+      "characters": 452,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 2100,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

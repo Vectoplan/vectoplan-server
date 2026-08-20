@@ -1,0 +1,293 @@
+{
+  "schema_version": "structural-report-template-catalog/0.2",
+  "template_contract": "structural-report-template/0.2",
+  "rendering": {
+    "format": "html",
+    "pages": ["outline", "chapter", "position", "structure", "cover"],
+    "binding_attribute": "data-variable-slot",
+    "pipeline_attribute": "data-pipeline-slot"
+  },
+  "disciplines": [
+    {"discipline_id": "hochbau", "label": "Hochbau", "description": "Gebäude, Hallen und Bestand", "accent": "#155eef"},
+    {"discipline_id": "tiefbau", "label": "Tiefbau", "description": "Gründung, Baugruben und Wasserbau", "accent": "#b54708"},
+    {"discipline_id": "ingenieurbau", "label": "Ingenieurbau", "description": "Brücken, Tunnel und Verkehrsbauwerke", "accent": "#067647"},
+    {"discipline_id": "sonderbau", "label": "Sonderbau", "description": "Türme, Behälter und Spezialtragwerke", "accent": "#6941c6"}
+  ],
+  "chapter_profiles": {
+    "building": [
+      {"chapter_id": "cover", "number": "0", "title": "Deckblatt und Dokumentenstatus", "kind": "frontmatter", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "directory", "number": "1", "title": "Inhalts-, Positions- und Prüfverzeichnis", "kind": "frontmatter", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "basis", "number": "2", "title": "Berechnungsgrundlagen und Planungsunterlagen", "kind": "narrative", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "site", "number": "3", "title": "Standort, Baugrund und Umwelteinwirkungen", "kind": "narrative", "source": "project", "repeatable": false},
+      {"chapter_id": "system", "number": "4", "title": "Tragsystem, Aussteifung und Lastpfad", "kind": "calculation", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "actions", "number": "5", "title": "Einwirkungen, Lastfälle und Kombinationen", "kind": "calculation", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "positions", "number": "6", "title": "Positionsweise Berechnung und Nachweise", "kind": "calculation", "source": "pipeline", "repeatable": true}
+    ],
+    "geotechnics": [
+      {"chapter_id": "cover", "number": "0", "title": "Deckblatt und Dokumentenstatus", "kind": "frontmatter", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "directory", "number": "1", "title": "Inhalts-, Positions- und Prüfverzeichnis", "kind": "frontmatter", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "basis", "number": "2", "title": "Aufgabenstellung, Quellen und Regelwerke", "kind": "narrative", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "ground", "number": "3", "title": "Baugrundmodell, Schichten und Kennwerte", "kind": "calculation", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "water", "number": "4", "title": "Grundwasser, Erd- und Wasserdruck", "kind": "calculation", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "states", "number": "5", "title": "Bauzustände, Lastfälle und Kombinationen", "kind": "calculation", "source": "pipeline", "repeatable": true},
+      {"chapter_id": "positions", "number": "6", "title": "Positionsweise Berechnung und Nachweise", "kind": "calculation", "source": "pipeline", "repeatable": true}
+    ],
+    "bridge": [
+      {"chapter_id": "cover", "number": "0", "title": "Deckblatt und Dokumentenstatus", "kind": "frontmatter", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "directory", "number": "1", "title": "Inhalts-, Positions- und Prüfverzeichnis", "kind": "frontmatter", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "basis", "number": "2", "title": "Entwurfsgrundlagen, Regelwerke und Unterlagen", "kind": "narrative", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "geometry", "number": "3", "title": "Bauwerksgeometrie, Querschnitte und Bauverfahren", "kind": "calculation", "source": "model", "repeatable": false},
+      {"chapter_id": "system", "number": "4", "title": "Tragsystem, Lagerung und Gründung", "kind": "calculation", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "actions", "number": "5", "title": "Verkehr, Temperatur, Wind und Kombinationen", "kind": "calculation", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "positions", "number": "6", "title": "Überbau, Unterbauten und positionsweise Nachweise", "kind": "calculation", "source": "pipeline", "repeatable": true}
+    ],
+    "tunnel": [
+      {"chapter_id": "cover", "number": "0", "title": "Deckblatt und Dokumentenstatus", "kind": "frontmatter", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "directory", "number": "1", "title": "Inhalts-, Positions- und Prüfverzeichnis", "kind": "frontmatter", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "basis", "number": "2", "title": "Planungsgrundlagen, Querschnitt und Regelwerke", "kind": "narrative", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "ground", "number": "3", "title": "Baugrund, Gebirge, Grundwasser und Nachbarbebauung", "kind": "calculation", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "method", "number": "4", "title": "Bauverfahren, Sicherung und Interaktion", "kind": "calculation", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "states", "number": "5", "title": "Bauzustände, Lastfälle und Kombinationen", "kind": "calculation", "source": "pipeline", "repeatable": true},
+      {"chapter_id": "positions", "number": "6", "title": "Schale, Innenschale und Detailnachweise", "kind": "calculation", "source": "pipeline", "repeatable": true}
+    ],
+    "special": [
+      {"chapter_id": "cover", "number": "0", "title": "Deckblatt und Dokumentenstatus", "kind": "frontmatter", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "directory", "number": "1", "title": "Inhalts-, Positions- und Prüfverzeichnis", "kind": "frontmatter", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "basis", "number": "2", "title": "Aufgabenstellung, Betriebszustände und Regelwerke", "kind": "narrative", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "system", "number": "3", "title": "Tragsystem, Modellbildung und Randbedingungen", "kind": "calculation", "source": "hybrid", "repeatable": false},
+      {"chapter_id": "actions", "number": "4", "title": "Statische, dynamische und außergewöhnliche Einwirkungen", "kind": "calculation", "source": "pipeline", "repeatable": false},
+      {"chapter_id": "states", "number": "5", "title": "Betriebs-, Montage- und Bauzustände", "kind": "calculation", "source": "pipeline", "repeatable": true},
+      {"chapter_id": "positions", "number": "6", "title": "Positionsweise Berechnung und Nachweise", "kind": "calculation", "source": "pipeline", "repeatable": true}
+    ]
+  },
+  "closing_chapters": [
+    {"chapter_id": "foundation", "number": "8", "title": "Gründung, Anschlüsse und konstruktive Details", "kind": "calculation", "source": "hybrid", "repeatable": false},
+    {"chapter_id": "results", "number": "9", "title": "Ergebnis-, Ausnutzungs- und Offenpunktmatrix", "kind": "matrix", "source": "pipeline", "repeatable": false},
+    {"chapter_id": "appendix", "number": "A", "title": "Anhänge, Zulassungen und Quelldokumente", "kind": "appendix", "source": "hybrid", "repeatable": true}
+  ],
+  "common_variable_slots": [
+    {"slot_id": "project.name", "label": "Bauvorhaben", "json_pointer": "/project/name", "value_type": "string", "source": "project", "target": "[data-variable-slot='project.name']", "required": true},
+    {"slot_id": "project.number", "label": "Projektnummer", "json_pointer": "/project/number", "value_type": "string", "source": "project", "target": "[data-variable-slot='project.number']", "required": true},
+    {"slot_id": "project.location", "label": "Standort", "json_pointer": "/project/location", "value_type": "string", "source": "project", "target": "[data-variable-slot='project.location']", "required": true},
+    {"slot_id": "document.revision", "label": "Revision", "json_pointer": "/document_control/revision", "value_type": "string", "source": "project", "target": "[data-variable-slot='document.revision']", "required": true},
+    {"slot_id": "position.ref", "label": "Position", "json_pointer": "/positions/0/ref", "value_type": "string", "source": "pipeline", "target": "[data-variable-slot='position.ref']", "required": true},
+    {"slot_id": "position.title", "label": "Positionsbezeichnung", "json_pointer": "/positions/0/title", "value_type": "string", "source": "pipeline", "target": "[data-variable-slot='position.title']", "required": true},
+    {"slot_id": "verification.status", "label": "Prüfstatus", "json_pointer": "/verification/status", "value_type": "status", "source": "pipeline", "target": "[data-variable-slot='verification.status']", "required": true}
+  ],
+  "pipeline_profiles": {
+    "building-standard": {
+      "profile_id": "building-standard",
+      "label": "Gebäude · Standard-Lastpfad",
+      "stages": [
+        {"stage_id": "model", "label": "Modell", "source_path": "/model", "targets": ["system.figure", "geometry.values"]},
+        {"stage_id": "actions", "label": "Einwirkungen", "source_path": "/loads", "targets": ["loads.table", "load.origin"]},
+        {"stage_id": "combinations", "label": "Kombinationen", "source_path": "/load_combinations", "targets": ["combinations.table"]},
+        {"stage_id": "analysis", "label": "Schnittgrößen", "source_path": "/analysis_results", "targets": ["results.diagram", "results.values"]},
+        {"stage_id": "checks", "label": "Nachweise", "source_path": "/checks", "targets": ["checks.table", "utilization.matrix"]},
+        {"stage_id": "render", "label": "HTML-Akte", "source_path": "/dossier", "targets": ["chapters", "document.control"]}
+      ],
+      "variable_slots": [
+        {"slot_id": "geometry.span", "label": "Spannweite", "json_pointer": "/positions/0/geometry/span_m", "value_type": "number", "unit": "m", "source": "model", "target": "[data-variable-slot='geometry.span']", "required": true},
+        {"slot_id": "loads.gk", "label": "Ständige Last", "json_pointer": "/positions/0/loads/gk_kn_m2", "value_type": "number", "unit": "kN/m²", "source": "pipeline", "target": "[data-variable-slot='loads.gk']", "required": true},
+        {"slot_id": "loads.qk", "label": "Veränderliche Last", "json_pointer": "/positions/0/loads/qk_kn_m2", "value_type": "number", "unit": "kN/m²", "source": "pipeline", "target": "[data-variable-slot='loads.qk']", "required": true},
+        {"slot_id": "checks.utilization", "label": "Ausnutzung", "json_pointer": "/checks/0/utilization", "value_type": "number", "unit": "%", "source": "pipeline", "target": "[data-variable-slot='checks.utilization']", "required": true}
+      ]
+    },
+    "geotechnical-staged": {
+      "profile_id": "geotechnical-staged",
+      "label": "Geotechnik · Bauzustände",
+      "stages": [
+        {"stage_id": "site", "label": "Standortmodell", "source_path": "/site", "targets": ["site.plan", "water.level"]},
+        {"stage_id": "ground", "label": "Baugrund", "source_path": "/ground_model", "targets": ["ground.profile", "ground.parameters"]},
+        {"stage_id": "actions", "label": "Erd-/Wasserdruck", "source_path": "/geotechnical_actions", "targets": ["loads.diagram", "loads.table"]},
+        {"stage_id": "states", "label": "Bauzustände", "source_path": "/construction_stages", "targets": ["states.sequence", "combinations.table"]},
+        {"stage_id": "checks", "label": "GEO/STR/UPL", "source_path": "/checks", "targets": ["checks.table", "utilization.matrix"]},
+        {"stage_id": "render", "label": "HTML-Akte", "source_path": "/dossier", "targets": ["chapters", "document.control"]}
+      ],
+      "variable_slots": [
+        {"slot_id": "ground.phi", "label": "Reibungswinkel", "json_pointer": "/ground_model/layers/0/phi_deg", "value_type": "number", "unit": "°", "source": "model", "target": "[data-variable-slot='geometry.span']", "required": true},
+        {"slot_id": "loads.gk", "label": "Auflast", "json_pointer": "/geotechnical_actions/surcharge_kn_m2", "value_type": "number", "unit": "kN/m²", "source": "pipeline", "target": "[data-variable-slot='loads.gk']", "required": true},
+        {"slot_id": "loads.qk", "label": "Wasserdruck", "json_pointer": "/geotechnical_actions/water_pressure_kn_m2", "value_type": "number", "unit": "kN/m²", "source": "pipeline", "target": "[data-variable-slot='loads.qk']", "required": true},
+        {"slot_id": "checks.utilization", "label": "Ausnutzung", "json_pointer": "/checks/0/utilization", "value_type": "number", "unit": "%", "source": "pipeline", "target": "[data-variable-slot='checks.utilization']", "required": true}
+      ]
+    },
+    "bridge-staged": {
+      "profile_id": "bridge-staged",
+      "label": "Brücke · Verkehr und Bauzustände",
+      "stages": [
+        {"stage_id": "model", "label": "Bauwerksmodell", "source_path": "/bridge_model", "targets": ["system.figure", "cross_sections"]},
+        {"stage_id": "actions", "label": "LM/Temperatur", "source_path": "/traffic_actions", "targets": ["loads.diagram", "loads.table"]},
+        {"stage_id": "states", "label": "Bauzustände", "source_path": "/construction_stages", "targets": ["states.sequence", "combinations.table"]},
+        {"stage_id": "analysis", "label": "Globalanalyse", "source_path": "/analysis_results", "targets": ["results.diagram", "bearing.reactions"]},
+        {"stage_id": "checks", "label": "GZT/GZG/Ermüdung", "source_path": "/checks", "targets": ["checks.table", "utilization.matrix"]},
+        {"stage_id": "render", "label": "HTML-Akte", "source_path": "/dossier", "targets": ["chapters", "document.control"]}
+      ],
+      "variable_slots": [
+        {"slot_id": "geometry.span", "label": "Stützweite", "json_pointer": "/bridge_model/spans/0/length_m", "value_type": "number", "unit": "m", "source": "model", "target": "[data-variable-slot='geometry.span']", "required": true},
+        {"slot_id": "loads.gk", "label": "Ständige Einwirkung", "json_pointer": "/traffic_actions/permanent_kn_m", "value_type": "number", "unit": "kN/m", "source": "pipeline", "target": "[data-variable-slot='loads.gk']", "required": true},
+        {"slot_id": "loads.qk", "label": "Verkehrseinwirkung", "json_pointer": "/traffic_actions/variable_kn_m", "value_type": "number", "unit": "kN/m", "source": "pipeline", "target": "[data-variable-slot='loads.qk']", "required": true},
+        {"slot_id": "checks.utilization", "label": "Ausnutzung", "json_pointer": "/checks/0/utilization", "value_type": "number", "unit": "%", "source": "pipeline", "target": "[data-variable-slot='checks.utilization']", "required": true}
+      ]
+    },
+    "special-staged": {
+      "profile_id": "special-staged",
+      "label": "Sondertragwerk · Betriebszustände",
+      "stages": [
+        {"stage_id": "model", "label": "Systemmodell", "source_path": "/model", "targets": ["system.figure", "geometry.values"]},
+        {"stage_id": "actions", "label": "Einwirkungen", "source_path": "/actions", "targets": ["loads.diagram", "loads.table"]},
+        {"stage_id": "states", "label": "Betriebszustände", "source_path": "/operating_states", "targets": ["states.sequence", "combinations.table"]},
+        {"stage_id": "analysis", "label": "Analyse", "source_path": "/analysis_results", "targets": ["results.diagram", "results.values"]},
+        {"stage_id": "checks", "label": "Nachweise", "source_path": "/checks", "targets": ["checks.table", "utilization.matrix"]},
+        {"stage_id": "render", "label": "HTML-Akte", "source_path": "/dossier", "targets": ["chapters", "document.control"]}
+      ],
+      "variable_slots": [
+        {"slot_id": "geometry.span", "label": "Systemabmessung", "json_pointer": "/model/primary_dimension_m", "value_type": "number", "unit": "m", "source": "model", "target": "[data-variable-slot='geometry.span']", "required": true},
+        {"slot_id": "loads.gk", "label": "Ständige Einwirkung", "json_pointer": "/actions/permanent", "value_type": "number", "unit": "kN", "source": "pipeline", "target": "[data-variable-slot='loads.gk']", "required": true},
+        {"slot_id": "loads.qk", "label": "Betriebseinwirkung", "json_pointer": "/actions/operating", "value_type": "number", "unit": "kN", "source": "pipeline", "target": "[data-variable-slot='loads.qk']", "required": true},
+        {"slot_id": "checks.utilization", "label": "Ausnutzung", "json_pointer": "/checks/0/utilization", "value_type": "number", "unit": "%", "source": "pipeline", "target": "[data-variable-slot='checks.utilization']", "required": true}
+      ]
+    }
+  },
+  "templates": [
+    {
+      "template_id": "hochbau-einfamilienhaus", "discipline": "hochbau", "family": "Wohnbau", "title": "Einfamilienhaus", "short_title": "Einfamilienhaus", "summary": "Positionsstatik für Dach, Decken, Wände und Gründung mit klarer Lastweiterleitung.", "tags": ["Holz", "Mauerwerk", "Stahlbeton"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "roof", "number": "7.1", "title": "Dachtragwerk, Holzanschlüsse und Ringanker", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "slabs", "number": "7.2", "title": "Decken, Wände, Stürze und Fundamentplatte", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Neubau Wohnhaus am Mühlenweg", "position_ref": "D.01", "position_title": "Sparren über Wohntrakt", "sample_values": {"geometry": "4,65 m · 8/20 cm", "material": "C24", "support": "Einfeldträger mit Kragarm", "gk": "0,85 kN/m²", "qk": "0,68 kN/m²", "result": "Mᵧ,d = 5,44 kNm"}, "check": {"label": "Biegetragfähigkeit", "demand": "8,16 N/mm²", "resistance": "18,46 N/mm²", "utilization": 44}}
+    },
+    {
+      "template_id": "hochbau-mehrfamilienhaus", "discipline": "hochbau", "family": "Wohnbau", "title": "Mehrfamilienhaus", "short_title": "Mehrfamilienhaus", "summary": "Geschossweise Statik mit wiederholbaren Positionen, Aussteifung und vertikalem Lastpfad.", "tags": ["Stahlbeton", "Mauerwerk", "Geschosse"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "storeys", "number": "7.1", "title": "Geschossdecken, Unterzüge, Stützen und Wände", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "stability", "number": "7.2", "title": "Gebäudeaussteifung, Fugen und Robustheit", "kind": "calculation", "source": "pipeline", "repeatable": false}],
+      "preview": {"project_name": "Wohnquartier Lindenhof · Haus B", "position_ref": "2.14", "position_title": "Stahlbetondecke über 2. OG", "sample_values": {"geometry": "6,20 × 5,10 m · h = 22 cm", "material": "C30/37 · B500B", "support": "Durchlaufende Flachdecke", "gk": "7,10 kN/m²", "qk": "2,70 kN/m²", "result": "mₑd = 41,8 kNm/m"}, "check": {"label": "Biegung im Feld", "demand": "As,erf 7,42 cm²/m", "resistance": "As,vorh 8,05 cm²/m", "utilization": 92}}
+    },
+    {
+      "template_id": "hochbau-buero-verwaltung", "discipline": "hochbau", "family": "Nichtwohnbau", "title": "Büro- und Verwaltungsgebäude", "short_title": "Bürogebäude", "summary": "Flexible Geschossraster, Kernaussteifung, Fassaden- und Installationslasten.", "tags": ["Stahlbeton", "Verbund", "Fassade"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "cores", "number": "7.1", "title": "Kerne, Rahmen und horizontale Aussteifung", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "facade", "number": "7.2", "title": "Fassaden-, Ausbau- und Installationslasten", "kind": "calculation", "source": "hybrid", "repeatable": false}],
+      "preview": {"project_name": "Verwaltungscampus Nord", "position_ref": "R.07", "position_title": "Randunterzug Achse C", "sample_values": {"geometry": "8,10 m · 40/65 cm", "material": "C35/45 · B500B", "support": "Zweifeldträger", "gk": "48,2 kN/m", "qk": "25,6 kN/m", "result": "MEd = 486 kNm"}, "check": {"label": "Biegung am Innenauflager", "demand": "As,erf 24,8 cm²", "resistance": "As,vorh 28,1 cm²", "utilization": 88}}
+    },
+    {
+      "template_id": "hochbau-schule-kita", "discipline": "hochbau", "family": "Öffentliche Gebäude", "title": "Schule und Kindertagesstätte", "short_title": "Schule / Kita", "summary": "Weitgespannte Räume, Versammlungsbereiche, Anprall- und Gebrauchstauglichkeitsanforderungen.", "tags": ["Stahlbeton", "Holz", "Gebrauchstauglichkeit"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "assembly", "number": "7.1", "title": "Versammlungsräume, Flure und erhöhte Nutzlasten", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "robustness", "number": "7.2", "title": "Robustheit, Schwingungen und Geländersicherheit", "kind": "calculation", "source": "pipeline", "repeatable": false}],
+      "preview": {"project_name": "Erweiterung Grundschule West", "position_ref": "H.03", "position_title": "Holzrippendecke Mehrzweckraum", "sample_values": {"geometry": "9,60 m · h = 48 cm", "material": "GL28c / CLT", "support": "Einfeldplatte", "gk": "2,90 kN/m²", "qk": "5,00 kN/m²", "result": "wfin = 19,6 mm"}, "check": {"label": "Enddurchbiegung", "demand": "19,6 mm", "resistance": "24,0 mm", "utilization": 82}}
+    },
+    {
+      "template_id": "hochbau-krankenhaus", "discipline": "hochbau", "family": "Öffentliche Gebäude", "title": "Krankenhaus und Labor", "short_title": "Krankenhaus / Labor", "summary": "Hohe Installations- und Gerätelasten, Schwingungskriterien und robuste Tragstrukturen.", "tags": ["Stahlbeton", "Gerätelasten", "Schwingung"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "equipment", "number": "7.1", "title": "Geräte-, Installations- und Abschirmlasten", "kind": "calculation", "source": "hybrid", "repeatable": true}, {"chapter_id": "vibration", "number": "7.2", "title": "Schwingungen, Verformungen und Redundanz", "kind": "calculation", "source": "pipeline", "repeatable": false}],
+      "preview": {"project_name": "Klinikum Süd · Neubau Labor", "position_ref": "L.12", "position_title": "Deckenfeld unter MRT", "sample_values": {"geometry": "7,20 × 6,80 m · h = 30 cm", "material": "C35/45 · B500B", "support": "Flachdecke auf Stützen", "gk": "10,4 kN/m²", "qk": "12,5 kN/m²", "result": "f₁ = 9,4 Hz"}, "check": {"label": "Schwingungskomfort", "demand": "aRMS 0,31 %g", "resistance": "0,50 %g", "utilization": 62}}
+    },
+    {
+      "template_id": "hochbau-industrie-logistikhalle", "discipline": "hochbau", "family": "Industriebau", "title": "Industrie- und Logistikhalle", "short_title": "Industriehalle", "summary": "Rahmen, Verbände, Wind, Schnee, Kran- und Stützenfußnachweise mit Hallenraster.", "tags": ["Stahl", "Rahmen", "Kranbahn"], "system_figure": "hall", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "frames", "number": "7.1", "title": "Rahmen, Verbände und Theorie II. Ordnung", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "crane", "number": "7.2", "title": "Kranbahn, Anschlüsse und Stützenfüße", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Logistikzentrum Ost · Halle 3", "position_ref": "R.01", "position_title": "Portalrahmen Achse 4", "sample_values": {"geometry": "24,00 m · Traufe 9,50 m", "material": "S355", "support": "Zweigelenkrahmen", "gk": "0,62 kN/m²", "qk": "0,85 kN/m²", "result": "MEd = 612 kNm"}, "check": {"label": "Rahmenecke · Interaktion", "demand": "η = 0,78", "resistance": "ηlim = 1,00", "utilization": 78}}
+    },
+    {
+      "template_id": "hochbau-hochhaus", "discipline": "hochbau", "family": "Sondergebäude", "title": "Hochhaus", "short_title": "Hochhaus", "summary": "Globalstabilität, Windkomfort, Bauzustände, Robustheit und geschossweise Lastabtragung.", "tags": ["Kern", "Wind", "Bauzustände"], "system_figure": "tower", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "global", "number": "7.1", "title": "Globalstabilität, Imperfektionen und P-Delta", "kind": "calculation", "source": "pipeline", "repeatable": false}, {"chapter_id": "comfort", "number": "7.2", "title": "Windkomfort, Robustheit und Bauzustände", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Hochpunkt am Stadtpark", "position_ref": "K.01", "position_title": "Aussteifungskern · Gesamtmodell", "sample_values": {"geometry": "H = 92,0 m · 26 Geschosse", "material": "C50/60 · B500B", "support": "Kern-Wandscheiben-System", "gk": "164 MN", "qk": "31 MN", "result": "uH = 118 mm"}, "check": {"label": "Horizontale Verformung", "demand": "118 mm", "resistance": "184 mm", "utilization": 64}}
+    },
+    {
+      "template_id": "hochbau-bestand-umbau", "discipline": "hochbau", "family": "Bauen im Bestand", "title": "Bestand, Umbau und Aufstockung", "short_title": "Bestand / Umbau", "summary": "Bestandsaufnahme, Materialbewertung, Eingriffe, Bauzustände und Ertüchtigungsmaßnahmen.", "tags": ["Bestand", "Ertüchtigung", "Bauzustand"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "survey", "number": "7.1", "title": "Bestandserfassung, Schäden und Materialkennwerte", "kind": "narrative", "source": "hybrid", "repeatable": true}, {"chapter_id": "measures", "number": "7.2", "title": "Abbruch-, Abfang- und Ertüchtigungszustände", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Aufstockung Kontorhaus 1928", "position_ref": "B.17", "position_title": "Bestandsunterzug über EG", "sample_values": {"geometry": "5,85 m · IPE 300", "material": "Flussstahl · fy,k = 215 MPa", "support": "Einfeldträger im Bestand", "gk": "31,4 kN/m", "qk": "18,0 kN/m", "result": "MEd = 211 kNm"}, "check": {"label": "Biegetragfähigkeit Bestand", "demand": "211 kNm", "resistance": "247 kNm", "utilization": 85}}
+    },
+    {
+      "template_id": "hochbau-parkhaus", "discipline": "hochbau", "family": "Verkehrsbauten", "title": "Parkhaus und Tiefgarage", "short_title": "Parkhaus / Tiefgarage", "summary": "Fahrzeuglasten, Fugen, Dauerhaftigkeit, Anprall und wiederholbare Deckenfelder.", "tags": ["Stahlbeton", "Anprall", "Dauerhaftigkeit"], "system_figure": "building", "accent": "#155eef", "chapter_profile": "building", "pipeline_profile": "building-standard",
+      "object_chapters": [{"chapter_id": "traffic", "number": "7.1", "title": "Fahrzeug-, Anprall- und Rampenlasten", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "durability", "number": "7.2", "title": "Dauerhaftigkeit, Fugen und Entwässerung", "kind": "narrative", "source": "hybrid", "repeatable": false}],
+      "preview": {"project_name": "Mobilitätshaus Hauptbahnhof", "position_ref": "P.08", "position_title": "Parkdeck Regelstützenfeld", "sample_values": {"geometry": "8,10 × 8,10 m · h = 28 cm", "material": "C35/45 · B500B", "support": "Flachdecke", "gk": "9,20 kN/m²", "qk": "5,00 kN/m²", "result": "VEd = 438 kN"}, "check": {"label": "Durchstanzen", "demand": "vEd 0,62 MPa", "resistance": "vRd,c 0,74 MPa", "utilization": 84}}
+    },
+    {
+      "template_id": "tiefbau-flachgruendung", "discipline": "tiefbau", "family": "Gründung", "title": "Flachgründung und Fundamentplatte", "short_title": "Flachgründung", "summary": "Sohlpressung, Gleiten, Kippen, Setzung und Stahlbetonbemessung aus einem Lastpfad.", "tags": ["EC 7", "Fundament", "Setzung"], "system_figure": "foundation", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "bearing", "number": "7.1", "title": "Grundbruch, Gleiten, Kippen und Sohlpressung", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "settlement", "number": "7.2", "title": "Setzungen, Bettung und Fundamentbemessung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Produktionsgebäude · Fundament F12", "position_ref": "F.12", "position_title": "Einzelfundament Stütze S12", "sample_values": {"geometry": "3,20 × 3,20 × 0,75 m", "material": "C30/37 · B500B", "support": "Flachgründung auf Sand", "gk": "Nd = 2.140 kN", "qk": "HEd = 118 kN", "result": "σEd = 248 kN/m²"}, "check": {"label": "Sohlwiderstand", "demand": "248 kN/m²", "resistance": "310 kN/m²", "utilization": 80}}
+    },
+    {
+      "template_id": "tiefbau-pfahlgruendung", "discipline": "tiefbau", "family": "Gründung", "title": "Pfahlgründung und Pfahlrost", "short_title": "Pfahlgründung", "summary": "Pfahlwiderstände, Gruppenwirkung, Bettung, Pfahlkopfkräfte und Pfahlrostbemessung.", "tags": ["Pfähle", "Gruppenwirkung", "Setzung"], "system_figure": "foundation", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "piles", "number": "7.1", "title": "Pfahlwiderstände, Bettung und Gruppenwirkung", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "cap", "number": "7.2", "title": "Pfahlkopfkräfte, Pfahlrost und Anschlüsse", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Brückenneubau · Widerlager Ost", "position_ref": "G.04", "position_title": "Bohrpfahlgruppe Achse 20", "sample_values": {"geometry": "12 × Ø 1,20 m · L = 18 m", "material": "C30/37 · B500B", "support": "Pfahlgruppe in Mergel", "gk": "NEd = 31,8 MN", "qk": "HEd = 4,2 MN", "result": "max Np = 3,62 MN"}, "check": {"label": "Pfahltragfähigkeit", "demand": "3,62 MN", "resistance": "4,35 MN", "utilization": 83}}
+    },
+    {
+      "template_id": "tiefbau-baugrube-verbau", "discipline": "tiefbau", "family": "Baugrube", "title": "Baugrube und Verbau", "short_title": "Baugrube / Verbau", "summary": "Verbauwand, Anker oder Steifen, Wasserhaltung und explizite Bauzustandsfolge.", "tags": ["Verbau", "Anker", "Bauzustände"], "system_figure": "retaining", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "wall", "number": "7.1", "title": "Verbauwand, Anker, Gurte und Steifen", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "dewatering", "number": "7.2", "title": "Wasserhaltung, hydraulischer Grundbruch und Hebung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Innenstadtquartier · Baugrube Süd", "position_ref": "V.02", "position_title": "Rückverankerte Bohrpfahlwand", "sample_values": {"geometry": "H = 11,40 m · Ø 0,90 m", "material": "C30/37 · GEWI 63,5", "support": "2 Ankerlagen", "gk": "q = 25 kN/m²", "qk": "GW +6,20 m", "result": "MEd = 1.184 kNm/m"}, "check": {"label": "Biegung Verbauwand", "demand": "1.184 kNm/m", "resistance": "1.420 kNm/m", "utilization": 83}}
+    },
+    {
+      "template_id": "tiefbau-stuetzwand", "discipline": "tiefbau", "family": "Stützbauwerke", "title": "Stützwand und Widerlagerwand", "short_title": "Stützwand", "summary": "Erd- und Wasserdruck, Geländebruch, Gleiten, Kippen sowie Wand- und Sohlbemessung.", "tags": ["Erddruck", "Gleiten", "Stahlbeton"], "system_figure": "retaining", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "stability", "number": "7.1", "title": "Äußere Standsicherheit und Geländebruch", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "concrete", "number": "7.2", "title": "Wand-, Sporn-, Fersen- und Fugenbemessung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Kreisstraße K 18 · Stützwand", "position_ref": "SW.05", "position_title": "Winkelstützwand Abschnitt 5", "sample_values": {"geometry": "H = 6,20 m · B = 4,10 m", "material": "C30/37 · B500B", "support": "Flachgründung", "gk": "γ = 19 kN/m³", "qk": "q = 20 kN/m²", "result": "MEd = 286 kNm/m"}, "check": {"label": "Gleitsicherheit", "demand": "HEd 412 kN/m", "resistance": "HRd 548 kN/m", "utilization": 75}}
+    },
+    {
+      "template_id": "tiefbau-kanal-sammler", "discipline": "tiefbau", "family": "Leitungsbau", "title": "Kanal, Sammler und Schacht", "short_title": "Kanal / Schacht", "summary": "Erdlasten, Verkehr, Auftrieb, Rohr-Boden-Interaktion und Schachtbauwerke.", "tags": ["Auftrieb", "Verkehrslast", "Rohrstatik"], "system_figure": "tunnel", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "pipe", "number": "7.1", "title": "Rohr-Boden-Interaktion, Überschüttung und Verkehr", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "shaft", "number": "7.2", "title": "Schächte, Auftrieb und Baugrubenzustände", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Regenrückhaltung Gewerbepark", "position_ref": "K.03", "position_title": "Stauraumkanal DN 2200", "sample_values": {"geometry": "DN 2200 · Überdeckung 4,80 m", "material": "Stahlbetonrohr C40/50", "support": "Bettung Typ 1", "gk": "Erdlast 142 kN/m", "qk": "LM1 · 91 kN/m", "result": "MEd = 168 kNm/m"}, "check": {"label": "Ringbiegung", "demand": "168 kNm/m", "resistance": "214 kNm/m", "utilization": 79}}
+    },
+    {
+      "template_id": "tiefbau-wasserbau", "discipline": "tiefbau", "family": "Wasserbau", "title": "Wasserbauwerk und Schleuse", "short_title": "Wasserbauwerk", "summary": "Wasserstände, Auftrieb, Sickerströmung, Betriebszustände und massive Bauteile.", "tags": ["Wasserdruck", "Auftrieb", "Massivbau"], "system_figure": "water", "accent": "#b54708", "chapter_profile": "geotechnics", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "hydraulic", "number": "7.1", "title": "Wasserstände, Sickerströmung und hydraulische Einwirkungen", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "operations", "number": "7.2", "title": "Betriebsfälle, Verschlüsse und massive Bauteile", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Wehranlage Niederfeld", "position_ref": "W.06", "position_title": "Wehrsohle Block 2", "sample_values": {"geometry": "18,0 × 12,5 × 1,8 m", "material": "C30/37 · B500B", "support": "Sohle auf Pfählen", "gk": "GW normal +4,20 m", "qk": "HW100 +7,85 m", "result": "Uplift = 9,84 MN"}, "check": {"label": "Auftriebssicherheit", "demand": "9,84 MN", "resistance": "13,42 MN", "utilization": 73}}
+    },
+    {
+      "template_id": "ingenieurbau-strassenbruecke", "discipline": "ingenieurbau", "family": "Brückenbau", "title": "Straßenbrücke", "short_title": "Straßenbrücke", "summary": "Verkehrslastmodelle, Temperatur, Bauzustände, Überbau, Lager, Unterbauten und Gründung.", "tags": ["LM1", "Temperatur", "Ermüdung"], "system_figure": "bridge", "accent": "#067647", "chapter_profile": "bridge", "pipeline_profile": "bridge-staged",
+      "object_chapters": [{"chapter_id": "traffic", "number": "7.1", "title": "Lastmodelle, Einflusslinien und Ermüdung", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "bearings", "number": "7.2", "title": "Lager, Übergänge, Widerlager und Pfeiler", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Ersatzneubau Brücke über die Aue", "position_ref": "Ü.01", "position_title": "Spannbetonüberbau · Feld 2", "sample_values": {"geometry": "32,0 + 44,0 + 32,0 m", "material": "C45/55 · Y1860", "support": "Dreifeld-Durchlaufträger", "gk": "gk = 184 kN/m", "qk": "LM1 = 126 kN/m", "result": "MEd = 24,8 MNm"}, "check": {"label": "Biegung im Feld", "demand": "24,8 MNm", "resistance": "31,6 MNm", "utilization": 78}}
+    },
+    {
+      "template_id": "ingenieurbau-eisenbahnbruecke", "discipline": "ingenieurbau", "family": "Brückenbau", "title": "Eisenbahnbrücke", "short_title": "Eisenbahnbrücke", "summary": "LM71/SW, Dynamik, Ermüdung, Gleis-Tragwerk-Interaktion und eisenbahnspezifische Nachweise.", "tags": ["LM71", "Dynamik", "Ermüdung"], "system_figure": "bridge", "accent": "#067647", "chapter_profile": "bridge", "pipeline_profile": "bridge-staged",
+      "object_chapters": [{"chapter_id": "rail", "number": "7.1", "title": "Bahnlasten, Dynamik und Gleis-Tragwerk-Interaktion", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "fatigue", "number": "7.2", "title": "Ermüdung, Verformung und Schwingung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Bahnüberführung km 18,740", "position_ref": "Ü.03", "position_title": "Stahltrog · Hauptträger Nord", "sample_values": {"geometry": "L = 28,60 m · 2 Gleise", "material": "S355J2+N", "support": "Einfeldträger", "gk": "gk = 96 kN/m", "qk": "LM71 · α = 1,21", "result": "ΔσE,2 = 71 MPa"}, "check": {"label": "Ermüdung Hauptträger", "demand": "71 MPa", "resistance": "90 MPa", "utilization": 79}}
+    },
+    {
+      "template_id": "ingenieurbau-fuss-radwegbruecke", "discipline": "ingenieurbau", "family": "Brückenbau", "title": "Fuß- und Radwegbrücke", "short_title": "Fuß-/Radwegbrücke", "summary": "Schlanke Überbauten mit besonderem Fokus auf Dynamik, Komfort und Geländerlasten.", "tags": ["Dynamik", "Komfort", "Holz/Stahl"], "system_figure": "bridge", "accent": "#067647", "chapter_profile": "bridge", "pipeline_profile": "bridge-staged",
+      "object_chapters": [{"chapter_id": "comfort", "number": "7.1", "title": "Fußgängeranregung, Eigenfrequenzen und Komfort", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "details", "number": "7.2", "title": "Geländer, Anschlüsse und Dauerhaftigkeit", "kind": "calculation", "source": "hybrid", "repeatable": true}],
+      "preview": {"project_name": "Radwegbrücke am Hafen", "position_ref": "Ü.01", "position_title": "Stahlfachwerk · Gesamttragwerk", "sample_values": {"geometry": "L = 42,0 m · B = 4,5 m", "material": "S355 / GFK-Platte", "support": "Einfeld-Fachwerk", "gk": "gk = 28 kN/m", "qk": "qfk = 5,0 kN/m²", "result": "f₁ = 2,42 Hz"}, "check": {"label": "Vertikalkomfort", "demand": "amax 0,42 m/s²", "resistance": "0,70 m/s²", "utilization": 60}}
+    },
+    {
+      "template_id": "ingenieurbau-brueckenlager", "discipline": "ingenieurbau", "family": "Brückenausrüstung", "title": "Brückenlager und Lagerwechsel", "short_title": "Brückenlager", "summary": "Lagerkräfte und -wege, Temperatur, Austauschzustände, Pressen und lokale Lasteinleitung.", "tags": ["Lager", "Temperatur", "Bauzustand"], "system_figure": "bridge", "accent": "#067647", "chapter_profile": "bridge", "pipeline_profile": "bridge-staged",
+      "object_chapters": [{"chapter_id": "movement", "number": "7.1", "title": "Lagerkräfte, Lagerwege und Temperaturbewegungen", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "replacement", "number": "7.2", "title": "Pressenansatz, Austausch- und Sicherungszustände", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Talbrücke Nord · Lagerwechsel", "position_ref": "L.20", "position_title": "Kalottenlager Widerlager Ost", "sample_values": {"geometry": "800 × 900 mm · ±95 mm", "material": "S355 / PTFE", "support": "Allseits beweglich", "gk": "NEd = 18,6 MN", "qk": "VEd = 1,42 MN", "result": "Δx,d = 82 mm"}, "check": {"label": "Lagerweg x", "demand": "82 mm", "resistance": "95 mm", "utilization": 86}}
+    },
+    {
+      "template_id": "ingenieurbau-tunnel-offene-bauweise", "discipline": "ingenieurbau", "family": "Tunnelbau", "title": "Tunnel in offener Bauweise", "short_title": "Tunnel · offen", "summary": "Rahmen-/Trogquerschnitt, Grundwasser, Auftrieb, Baugrube, Bauzustände und Fugen.", "tags": ["Rahmen", "Auftrieb", "Bauzustände"], "system_figure": "tunnel", "accent": "#067647", "chapter_profile": "tunnel", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "frame", "number": "7.1", "title": "Rahmen-, Trog- und Deckelquerschnitte", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "joints", "number": "7.2", "title": "Auftrieb, Fugen, Dichtigkeit und Baugrube", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Stadtbahntunnel Abschnitt T4", "position_ref": "T.14", "position_title": "Rahmenquerschnitt Block 14", "sample_values": {"geometry": "B = 12,8 m · H = 8,4 m", "material": "C35/45 WU · B500B", "support": "Bodenfedernd gelagert", "gk": "γh = 21 kN/m³", "qk": "LM71 / Straßenverkehr", "result": "MEd = 1.420 kNm/m"}, "check": {"label": "Rahmenecke", "demand": "As,erf 31,2 cm²/m", "resistance": "As,vorh 36,8 cm²/m", "utilization": 85}}
+    },
+    {
+      "template_id": "ingenieurbau-tunnel-bergmaennisch", "discipline": "ingenieurbau", "family": "Tunnelbau", "title": "Tunnel in bergmännischer Bauweise", "short_title": "Tunnel · bergmännisch", "summary": "Gebirgsmodell, Ausbruchsklassen, Sicherungsmittel, Innenschale und Interaktionsnachweise.", "tags": ["Gebirge", "Spritzbeton", "Innenschale"], "system_figure": "tunnel", "accent": "#067647", "chapter_profile": "tunnel", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "excavation", "number": "7.1", "title": "Ausbruch, Sicherungsklassen und Ortsbrust", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "lining", "number": "7.2", "title": "Spritzbetonschale, Anker und Innenschale", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Straßentunnel Bergkamm · Röhre Ost", "position_ref": "Q.07", "position_title": "Regelquerschnitt Ausbruchsklasse 5", "sample_values": {"geometry": "A = 112 m² · Überdeckung 68 m", "material": "Spritzbeton C30/37 · Anker", "support": "Gebirgsbettung", "gk": "p0 = 1,8 MPa", "qk": "Δp = 0,42 MPa", "result": "Nθ,d = 2,84 MN/m"}, "check": {"label": "Spritzbetonschale", "demand": "2,84 MN/m", "resistance": "3,55 MN/m", "utilization": 80}}
+    },
+    {
+      "template_id": "ingenieurbau-durchlass", "discipline": "ingenieurbau", "family": "Verkehrsbauwerke", "title": "Durchlass und Rahmenbauwerk", "short_title": "Durchlass", "summary": "Erdüberschüttung, Verkehrslasten, Rahmenwirkung, Setzung und Bauzustände.", "tags": ["Rahmen", "Erddruck", "Verkehr"], "system_figure": "tunnel", "accent": "#067647", "chapter_profile": "tunnel", "pipeline_profile": "geotechnical-staged",
+      "object_chapters": [{"chapter_id": "frame", "number": "7.1", "title": "Rahmenwirkung, Überschüttung und Verkehrslasten", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "wingwalls", "number": "7.2", "title": "Flügelwände, Gründung und Setzungsfugen", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Ortsumgehung B 87 · Durchlass 3", "position_ref": "D.03", "position_title": "Stahlbetonrahmen", "sample_values": {"geometry": "LW 6,0 m · LH 3,5 m", "material": "C35/45 · B500B", "support": "Rahmen auf Sohlplatte", "gk": "hü = 2,4 m", "qk": "LM1", "result": "MEd = 392 kNm/m"}, "check": {"label": "Rahmendecke Feld", "demand": "392 kNm/m", "resistance": "468 kNm/m", "utilization": 84}}
+    },
+    {
+      "template_id": "ingenieurbau-laermschutzwand", "discipline": "ingenieurbau", "family": "Verkehrsbauwerke", "title": "Lärmschutzwand und Verkehrszeichenbrücke", "short_title": "Lärmschutz / VZB", "summary": "Wind, Ermüdung, Pfosten, Paneele, dynamische Effekte und Gründung neben Verkehrswegen.", "tags": ["Wind", "Ermüdung", "Pfosten"], "system_figure": "special", "accent": "#067647", "chapter_profile": "bridge", "pipeline_profile": "bridge-staged",
+      "object_chapters": [{"chapter_id": "wind", "number": "7.1", "title": "Wind, Zugvorbeifahrt und dynamische Einwirkungen", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "posts", "number": "7.2", "title": "Pfosten, Elemente, Anschlüsse und Gründung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "ABS 4 · Lärmschutzwand Ost", "position_ref": "L.08", "position_title": "Stahlpfosten Regelbereich", "sample_values": {"geometry": "H = 6,0 m · a = 5,0 m", "material": "S355 · HEA 300", "support": "Kragstütze", "gk": "gk = 4,2 kN/m", "qk": "we = 1,35 kN/m²", "result": "MEd = 126 kNm"}, "check": {"label": "Biegung Pfosten", "demand": "126 kNm", "resistance": "158 kNm", "utilization": 80}}
+    },
+    {
+      "template_id": "sonderbau-turm-mast", "discipline": "sonderbau", "family": "Türme und Maste", "title": "Turm, Mast und Antennentragwerk", "short_title": "Turm / Mast", "summary": "Windrichtungsfälle, Seil- oder Fachwerksysteme, Dynamik, Ermüdung und Abspannung.", "tags": ["Wind", "Dynamik", "Ermüdung"], "system_figure": "tower", "accent": "#6941c6", "chapter_profile": "special", "pipeline_profile": "special-staged",
+      "object_chapters": [{"chapter_id": "aero", "number": "7.1", "title": "Windrichtungsfälle, Böen und aeroelastische Effekte", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "connections", "number": "7.2", "title": "Stäbe, Seile, Abspannungen und Flansche", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Funkmast Höhenzug", "position_ref": "M.01", "position_title": "Gittermast · Gesamtmodell", "sample_values": {"geometry": "H = 68 m · 4 Abspannebenen", "material": "S355 / Seile", "support": "Abgespannter Mast", "gk": "Gk = 186 kN", "qk": "Windzone 3", "result": "uTop = 286 mm"}, "check": {"label": "Mastspitze Verformung", "demand": "286 mm", "resistance": "340 mm", "utilization": 84}}
+    },
+    {
+      "template_id": "sonderbau-behaelter-silo", "discipline": "sonderbau", "family": "Behälterbau", "title": "Behälter und Silo", "short_title": "Behälter / Silo", "summary": "Füll-, Entleer-, Temperatur-, Wind- und Imperfektionsfälle für Schalen und Trichter.", "tags": ["Schale", "Schüttgut", "Stabilität"], "system_figure": "special", "accent": "#6941c6", "chapter_profile": "special", "pipeline_profile": "special-staged",
+      "object_chapters": [{"chapter_id": "contents", "number": "7.1", "title": "Füllen, Entleeren, Druck- und Temperaturzustände", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "shell", "number": "7.2", "title": "Schale, Trichter, Ringträger und Stabilität", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Getreidesilo Hafen Nord", "position_ref": "S.03", "position_title": "Silozelle 3 · Zylinderschale", "sample_values": {"geometry": "Ø 12,0 m · H = 28 m", "material": "S355 · t = 10–18 mm", "support": "Ringträger", "gk": "γ = 8,0 kN/m³", "qk": "pₕ = 64 kN/m²", "result": "Nθ,Ed = 768 kN/m"}, "check": {"label": "Schalenbeulen", "demand": "768 kN/m", "resistance": "935 kN/m", "utilization": 82}}
+    },
+    {
+      "template_id": "sonderbau-maschinenfundament", "discipline": "sonderbau", "family": "Dynamische Systeme", "title": "Maschinenfundament", "short_title": "Maschinenfundament", "summary": "Unwucht, Frequenzbereiche, Bodenimpedanz, Schwingantwort und Verankerungen.", "tags": ["Dynamik", "Boden", "Verankerung"], "system_figure": "foundation", "accent": "#6941c6", "chapter_profile": "special", "pipeline_profile": "special-staged",
+      "object_chapters": [{"chapter_id": "machine", "number": "7.1", "title": "Maschinendaten, Unwucht und Frequenzbereiche", "kind": "calculation", "source": "hybrid", "repeatable": true}, {"chapter_id": "response", "number": "7.2", "title": "Bodenimpedanz, Schwingantwort und Verankerung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Verdichterstation Werk 2", "position_ref": "MF.02", "position_title": "Fundament Turboverdichter", "sample_values": {"geometry": "8,4 × 4,6 × 1,8 m", "material": "C35/45 · B500B", "support": "Dynamische Bodenfedern", "gk": "G = 1.420 kN", "qk": "Fdyn = 38 kN", "result": "vmax = 1,8 mm/s"}, "check": {"label": "Schwinggeschwindigkeit", "demand": "1,8 mm/s", "resistance": "2,8 mm/s", "utilization": 64}}
+    },
+    {
+      "template_id": "sonderbau-kranbahn", "discipline": "sonderbau", "family": "Industriebau", "title": "Kranbahn und Krantragwerk", "short_title": "Kranbahn", "summary": "Radlasten, Seitenstoß, Ermüdung, Schiene, Träger, Konsolen und Befestigungen.", "tags": ["Radlast", "Ermüdung", "Stahl"], "system_figure": "hall", "accent": "#6941c6", "chapter_profile": "special", "pipeline_profile": "special-staged",
+      "object_chapters": [{"chapter_id": "crane", "number": "7.1", "title": "Radlasten, Seitenstoß und Fahrzustände", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "fatigue", "number": "7.2", "title": "Kranbahnträger, Schiene, Konsolen und Ermüdung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Walzwerk · Kranbahn K2", "position_ref": "KB.04", "position_title": "Kranbahnträger Achse D", "sample_values": {"geometry": "L = 12,0 m · Schiene A100", "material": "S355J2", "support": "Einfeldträger", "gk": "Gk = 18 kN/m", "qk": "Qwheel = 420 kN", "result": "ΔσE,2 = 64 MPa"}, "check": {"label": "Ermüdung Obergurt", "demand": "64 MPa", "resistance": "80 MPa", "utilization": 80}}
+    },
+    {
+      "template_id": "sonderbau-temporaere-tragwerke", "discipline": "sonderbau", "family": "Temporäre Tragwerke", "title": "Traggerüst, Lehrgerüst und Montagezustand", "short_title": "Temporäre Tragwerke", "summary": "Montagefolge, temporäre Lasten, Stabilität, Setzungen, Rückbau und Freigabepunkte.", "tags": ["Bauzustand", "Stabilität", "Montage"], "system_figure": "special", "accent": "#6941c6", "chapter_profile": "special", "pipeline_profile": "special-staged",
+      "object_chapters": [{"chapter_id": "sequence", "number": "7.1", "title": "Montagefolge, Lastumlagerung und Freigabepunkte", "kind": "calculation", "source": "pipeline", "repeatable": true}, {"chapter_id": "temporary", "number": "7.2", "title": "Stabilität, Setzungen, Rückbau und Überwachung", "kind": "calculation", "source": "pipeline", "repeatable": true}],
+      "preview": {"project_name": "Taktschiebeverfahren Talquerung", "position_ref": "TG.06", "position_title": "Traggerüst Pfeiler P4", "sample_values": {"geometry": "H = 18 m · Raster 2,5 m", "material": "S355 · Systemstützen", "support": "Spindeln auf Lastverteilung", "gk": "Gk = 4,8 MN", "qk": "Montage = 0,9 MN", "result": "Ncr = 1.240 kN"}, "check": {"label": "Stützenstabilität", "demand": "NEd 912 kN", "resistance": "Nb,Rd 1.145 kN", "utilization": 80}}
+    }
+  ]
+}

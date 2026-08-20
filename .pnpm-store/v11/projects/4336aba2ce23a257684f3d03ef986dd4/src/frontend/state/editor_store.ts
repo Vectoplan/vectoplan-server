@@ -293,6 +293,12 @@ function safeActionName(action: unknown, fallback = "store.setState"): string {
 
 const HIGH_FREQUENCY_ACTIONS: ReadonlySet<string> = new Set([
   "mouse.pointer-move",
+  // Hotbar selection can fire for every mouse-wheel notch and again when the
+  // embedded user inventory acknowledges the selection. Running the complete
+  // invariant scan here recursively walks the large VPLIB raw payloads and
+  // showed up as 31-61 ms stalls in F8 captures.
+  "input-controller.hotbar-slot",
+  "inventory/select-slot",
 ]);
 
 function isHighFrequencyAction(action: string): boolean {

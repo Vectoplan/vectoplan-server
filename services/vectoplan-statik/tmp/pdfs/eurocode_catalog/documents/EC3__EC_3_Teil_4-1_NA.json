@@ -1,0 +1,94 @@
+{
+  "document_id": "EN_1993-4-1_NA__national_annex__EC_3_Teil_4-1_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-4-1/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 4-1 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 4-1 NA.pdf",
+  "sha256": "94a3ba83c8a36f06b446cac8449c20f77faf44ddbed9f4ea28e78ae3f73623da",
+  "pages": 8,
+  "text_pages": 8,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 1,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161406+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161406+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 4-1 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 4,
+      "equation_number": "1",
+      "line": "3.4 (1)",
+      "context": "2.2 (3); | 2.9.2.2 (3); | 3.4 (1) | 4.1.4 (2) und (4); | 4.2.2.3 (6);",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 474,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 771,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1166,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1285,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 5,
+      "characters": 726,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 722,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 639,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 635,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

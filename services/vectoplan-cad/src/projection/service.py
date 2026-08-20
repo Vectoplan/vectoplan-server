@@ -11,6 +11,7 @@ SUPPORTED_ELEMENT_KINDS = {
     "dimension",
     "line",
     "opening",
+    "room",
     "room_label",
     "structure",
     "text",
@@ -166,6 +167,7 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
             "test_input": f"{config['ROUTE_PREFIX']}/test-input",
             "preview": f"{config['ROUTE_PREFIX']}/preview",
             "commands": f"{config['ROUTE_PREFIX']}/commands",
+            "library_catalog": f"{config['ROUTE_PREFIX']}/library/catalog",
             "exports": f"{config['ROUTE_PREFIX']}/exports",
             "plan_profiles": f"{config['ROUTE_PREFIX']}/plan-profiles",
             "core_projection": f"{config['ROUTE_PREFIX']}/core/projects/<core_project_id>/projection",
@@ -180,11 +182,28 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
             "layers": True,
             "snap_grid": True,
             "local_undo_redo": True,
-            "cad_tools": ["select", "create_wall", "create_line", "create_dimension"],
-            "commands": "validated_stateless_draft",
+            "cad_tools": [
+                "select",
+                "world_selection",
+                "create_wall",
+                "create_opening",
+                "place_library_object",
+                "create_room",
+                "create_line",
+                "create_dimension",
+            ],
+            "library_only_placement": True,
+            "world_edit": "cad-worldedit/0.1",
+            "room_zones": "vectoplan-space-room/0.1",
+            "model_command_bridge": "vectoplan-model-command/0.1",
+            "commands": (
+                "core_chunk_persistent"
+                if bool(config.get("CORE_INTERNAL_URL"))
+                else "validated_stateless_draft"
+            ),
             "exports": ["pdf", "dxf", "dwg", "svg"],
             "core_connection": bool(config.get("CORE_INTERNAL_URL")),
-            "persistence": False,
+            "persistence": bool(config.get("CORE_INTERNAL_URL")),
         },
     }
 
@@ -245,6 +264,13 @@ def _validate_geometry(kind: str | None, value: Any, path: str, errors: list[str
         for key in ("x_mm", "y_mm"):
             if not _is_number(value.get(key)):
                 errors.append(f"{path}.{key} must be a number")
+    if kind == "room":
+        for key in ("x_mm", "y_mm"):
+            if not _is_number(value.get(key)):
+                errors.append(f"{path}.{key} must be a number")
+        for key in ("width_mm", "depth_mm", "height_mm"):
+            if not _is_number(value.get(key)) or value[key] <= 0:
+                errors.append(f"{path}.{key} must be a number greater than zero")
 
 
 def _validate_semantic_geometry(

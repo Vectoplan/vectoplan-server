@@ -2,6 +2,7 @@ import type { WorldRuntimeHandle } from "@runtime/world/world_runtime";
 import { localCoordinatesFromCellIndex } from "@runtime/world/chunk_coordinates";
 import type { RuntimeChunkContent } from "@runtime/world/chunk_content";
 import { forEachNonAirCellSpan } from "@api/chunk_cell_storage";
+import { earthGridLonLatToWorld } from "@utils/earth_grid_coordinates";
 
 export interface ChunkMapPlayer {
   readonly sessionId: string;
@@ -196,17 +197,8 @@ function lonLatToWorld(
   latitude: number,
   frame: EarthGridFrameContract | null,
 ): readonly [number, number] | null {
-  if (!frame || !Number.isFinite(longitude) || !Number.isFinite(latitude)) return null;
-  const longitudeDelta = centered(
-    normalizeLongitude(longitude) - frame.centralMeridianDegrees,
-    360,
-  );
-  const gridX = longitudeDelta / 360 * frame.worldWidthCells;
-  const gridZ = latitude / 180 * frame.worldHeightCells;
-  return [
-    centered(gridX - frame.storageOrigin.x, frame.worldWidthCells),
-    gridZ - frame.storageOrigin.z,
-  ];
+  if (!frame) return null;
+  return earthGridLonLatToWorld(longitude, latitude, frame);
 }
 
 function parcelFeatures(value: unknown): MapParcelOverlayState {

@@ -730,7 +730,7 @@ function splitTransitionAmongOwners(
     if (!owner.innerBoundary) return [];
     // Split exactly at the movable inner line: the part still inside the
     // slanted band belongs to its neighbour, the caller keeps the part beyond
-    // that line as the intentional red non-buildable transition cell.
+    // that line as the intentional blue non-buildable transition cell.
     const buildablePiece = clipToLinearHalfPlane(
       polygon,
       owner.innerBoundary.normalX,
@@ -988,7 +988,7 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
             ? [polygon]
             : [];
         for (const leftover of unassigned) {
-          // This is the deliberate red transition area beyond the movable
+          // This is the deliberate blue transition area beyond the movable
           // inner line (or a fail-closed malformed boundary remainder).
           blockedCells.push({
             parcelId: "selected-union",

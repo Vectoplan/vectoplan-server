@@ -1,0 +1,1732 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-4-3 
+ICS 65.040.20; 91.010.30; 91.080.10 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1993-4-3:2007-07 und 
+DIN EN 1993-4-3 
+Berichtigung 1 :2009-Q9 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Teil 4-3: Rohrleitungen; 
+Deutsche FassungEN 1993-4-3:2007 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 4-3: Pipelines; 
+GermanversionEN 1993-4-3:2007 + AC:2009 
+Eurocode 3: Calcul des structures en acier­
+Partie 4-3: Tuyauterie; 
+Version allemande EN 1993-4-3:2007 + AC:2009 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 43 Seiten 
+Preisgruppe 17 
+www.din.de 
+www.beuth.de 11111111111111 
+1723935
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-4-3:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-4-3:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau  erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten 
+wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-08-16 AA Tragwerksbemessung begleitet. 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im 
+Vorwort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die Text-
+markierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-4-3:2002-05 wurden folgende Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet. 
+Gegenüber DIN EN 1993-4-3:2007-07 und DIN EN 1993-4-3 Berichtigung 1:2009-09 wurden folgende 
+Änderungen vorgenommen: 
+a) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+b) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN V ENV 1993-4-3: 2002-05 
+DIN EN 1993-4-3: 2007-07 
+DIN EN 1993-4-3 Berichtigung 1: 2009-09 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-4-3 
+ Februar 2007 
+ +AC 
+ Juli 2009 
+ICS 23.040.01; 91.010.30; 91.080.10 Ersatz für ENV 1993-4-3:1999
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 4-3: Rohrleitungen 
+Eurocode 3: Design of steel structures  
+Part 4-3: Pipelines 
+Eurocode 3: Calcul des structures en acier  
+Partie 4-3: Tuyauterie 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Berichtigung tritt am 1. Juli 2009 in Kraft und wurde in EN 1993-4-3:2007 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied auf
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Spr ache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-4-3:2007 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Inhalt 
+ Seite 
+Vorwort ................................................................................................................................................................4
+1 Allgemeines.................................................................................................................. ..........................8
+1.1 Anwendungsbereich .......................................................................................................... ...................8
+1.2 Normative Verweisungen..................................................................................................... .................9
+1.3 Annahmen ................................................................................................................... .........................11
+1.4 Unterscheidung nach Prinzipien und Anwendungsregeln..............................................................11
+1.5 Begriffe ................................................................................................................... ..............................11
+1.6 SI-Einheiten ............................................................................................................... ...........................12
+1.7 Symbole .................................................................................................................... ............................12
+1.7.1 Lateinische Großbuchstaben ............................................................................................... ..............12
+1.7.2 Lateinische Kleinbuchstaben .............................................................................................. ...............13
+1.7.3 Griechische Buchstaben................................................................................................... ..................14
+1.8 Terminologie ............................................................................................................... .........................14
+2 Grundlagen der Bemessung..................................................................................................... ..........15
+2.1 Allgemeines................................................................................................................ ..........................15
+2.2 Grundlegende Anforderungen an Rohrleitungen.............................................................................15
+2.3 Differenzierung der Zuverlässigkeit........................................................................................ ...........16
+2.4 Rechenverfahren............................................................................................................ ......................16
+2.5 Grenzzustände der Tragfähigkeit............................................................................................ ...........16
+2.6 Grenzzustände der Gebrauchstauglichkeit .................................................................................... ..17
+3 Werkstoffeigenschaften ....................................................................................................... ...............17
+3.1 Allgemeines................................................................................................................ ..........................17
+3.2 Mechanische Eigenschaften von Stahl für Rohrleitungen..............................................................17
+3.3 Mechanische Eigenschaften von Schweißnähten............................................................................18
+3.4 Zähigkeitsanforderungen an Rohrwerkstoffe und die Schweißnähte............................................18
+3.5 Verbindungsmittel .......................................................................................................... .....................19
+3.6 Bodeneigenschaften ......................................................................................................... ..................19
+4 Einwirkungen ................................................................................................................. ......................19
+4.1 Zu berücksichtigende Einwirkungen.......................................................................................... .......19
+4.2 Teilsicherheitsbeiwerte für Einwirkungen ................................................................................... .....20
+4.3 Lastkombinationen für Grenzzustände der Tragfähigkeit...............................................................20
+4.4 Lastkombinationen für Grenzzustände der Gebrauchstauglichkeit ..............................................20
+5 Berechnung ................................................................................................................... .......................20
+5.1 Tragwerksmodelle ........................................................................................................... ....................20
+5.1.1 Vereinfachtes Bemessungsverfahren im Grenzzustand der Tragfähigkeit...................................20
+5.1.2 Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind ....................23
+5.2 Nachweise im Grenzzustand der Tragfähigkeit................................................................................ 24
+5.2.1 LS1: Bruch............................................................................................................... .............................24
+5.2.2 LS2: Plastische Dehngrenze............................................................................................... ................24
+5.2.3 LS3: Verformung .......................................................................................................... ........................24
+5.2.4 LS4: Ermüdung ............................................................................................................ ........................25
+5.2.5 LS5: Leckagen............................................................................................................ ..........................25
+5.3 Nachweise in den Grenzzuständen der Gebrauchstauglichkeit.....................................................26
+6 Gesichtspunkte für die Planung hinsichtlich Fertigung und Montage ..........................................26
+2 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ Seite 
+Anhang A (informativ) Berechnung von Widerständen, Verformungen, Spannungen und 
+Dehnungen unterirdischer Rohrleitungen........................................................................................2 7
+A.1 Berechnungsverfahren und Anwendungsbereich...........................................................................27
+A.2 Berechnung für gerade Rohre ................................................................................................ ...........28
+A.2.1 Definitionen von Schlüsselparametern..................................................................................... ........28
+A.2.2 Interaktion .............................................................................................................. ..............................28
+A.2.3 Momenten-Krümmungs-Diagramm .............................................................................................. .....32
+A.2.4 Berechnung der Ovalisierung .............................................................................................. ..............33
+A.2.5 Berechnung der Dehnungen ................................................................................................. .............36
+A.3 Berechnung von Rohrbögen................................................................................................... ...........37
+Anhang B (informativ) Hinweise zu nationalen Normen und Bemessungsrichtlinien ..............................38
+Anhang C (informativ) Literaturhinweise........................................................................................................39
+C.1 Allgemeine Literaturhinweise zu Rohrleitungen.............................................................................. 39
+C.2 Literaturhinweise zur Geotechnik........................................................................................... ...........41
+3 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Vorwort 
+Dieses Dokument EN 1993-4-3:2007, „Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-3: 
+Rohrleitungen wurde vom Technischen Komitee CEN/TC 250 „Eurocodes für den Konstruktiven 
+Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. CEN/TC 250 ist verantwortlich für alle 
+Eurocodes. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis August 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Diese Europäische Norm ersetzt ENV 1993-4-3:1999. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Bulgarien, Dänemark, Deutschland, 
+Estland, Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, 
+Niederlande, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, 
+Spanien, Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein 
+Aktionsprogramm auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des 
+Programms war die Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer 
+Spezifikationen. 
+Im Rahmen dieses Aktionsprogramms leitete die Kommission die Bearbeitung von harmonisierten 
+technischen Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative 
+zu den in den Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das in den 80er Jahren des zwanzigsten Jahrhunderts zu der 
+ersten Eurocode-Generation führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine 
+Vereinbarung
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Richtlinien des Rates und mit den Kommissionsentscheidungen, die die Europäischen 
+Normen behandeln (z. B. die Richtlinie des Rates 89/106/EWG zu Bauprodukten (Bauproduktenrichtlinie), die 
+Richtlinien des Rates 93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und 
+Dienstleistungen und die entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeführt 
+wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaften und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+4 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und Beton
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauwerken
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken
+Die Eurocodes berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitgliedsländern und 
+haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte berücksichtigt, so dass diese 
+Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und der EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung von Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie des Rates 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1, 
+Mechanische Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2, Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und die dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Erstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs). 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den 
+Grundlagendokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch 
+anderer Art sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich 
+aus den Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, 
+die an Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig 
+kompatibel sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und die Bemessung von kompletten 
+Tragwerken und Bauteilen, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle Bauweisen 
+und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für ungewöhnliche 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Anforderungen in Grundlagendokumenten 
+zu konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die europäische Zulassung selbst 
+zu schaffen.
+3) Nach Artikel 12 der Bauproduktenrichtlinie haben die Grundlagendokumente 
+a) die wesentlichen Anforderungen zu konkretisieren, indem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungsstufen vereinheitlicht werden, 
+b) Methoden zur Verbindung dieser Klassen oder Anforderungsstufen mit technischen Spezifikationen anzugeben, 
+z. B. Berechnungs- oder Nachweisverfahren, technische Entwurfsregeln usw., 
+c) als Bezugsdokumente für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+5 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Baulösungen und Entwurfsbedingungen. Für diese Fälle können zusätzliche Spezialkenntnisse für den 
+Bauplaner erforderlich sein. 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, möglicherweise mit einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem (informativen) Nationalen Anhang. 
+Der (informative) Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für 
+nationale Entscheidungen offen gelassen wurden. Diese so genannten national festzulegenden Parameter 
+(NDP) gelten für die Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt 
+werden. Sie umfassen: 
+ Zahlenwerte für die Teilsicherheitsbeiwerte und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ die Vorgehensweise, wenn die Eurocodes mehrere Verfahren zur Wahl anbieten; 
+ Vorschriften zur Verwendung der informativen Anhänge; 
+ Hinweise zur Anwendung der Eurocodes, soweit diese die Eurocodes ergänzen und ihnen nicht 
+widersprechen. 
+Verhältnis zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen 
+für Bauprodukte (ENs und ETAs) 
+Es besteht die Notwendigkeit, dass die harmonisierten Technischen Spezifikationen für Bauprodukte und die 
+technischen Regelungen für die Tragwerksplanung 4) ) konsistent sind. Insbesondere sollten alle Hinweise, die 
+mit der CE-Kennzeichnung von Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar 
+erkennen lassen, welche national festzulegenden Parameter (NDP) zugrunde liegen. 
+Besondere Hinweise zu EN 1993-4-3 
+EN 1993-4-3 enthält Festlegungen für die konstruktive Bemessung von unterirdischen Rohrleitun gen, 
+insbesondere für die Beurteilung der Festigkeit, der Steifigkeit und der Verformungseigenschaften. 
+Die Regeln für das Beulen in diesem Teil von EN 1993-4-3 stimmen mit denen in anderen Normen für 
+Rohrleitungen überein. Die kritischen Bemessungskurven nach EN 1993-4-3 sind höher als diejenigen, die 
+aus EN 1993-1-6 abgeleitet werden können. Hauptbegründungen liegen darin, dass die Bemessung von 
+unterirdischen Rohrleitungen über Verformungen erfolgt und die Folgen von Beulen weniger gravierend sind 
+als bei Bemessungen über Lasten. 
+Es ist bekannt, dass viele Normen sich mit unterschiedlichen Gesichtspunkten im Rohrleitungsbau befassen. 
+Als Beispiele sind Linienführung, Drucksicherheitssysteme, Korrosionsschutz und Schweißverbindungen, 
+Betrieb und Wartung angeführt. Für diese Aspekte, die über den Entwurf und die Bemessung der Rohrleitung 
+selbst hinausgehen, wird auf die in 1.2 aufgelisteten einschlägigen Europäischen Normen verwiesen. Dies 
+trifft ebenso auf Elemente wie Ventile, Armaturen, Isolierstücke, T-Stücke und Endböden zu. 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagen-
+dokumentes Nr. 1. 
+6 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Da es bisher in EN 1991 keine Regelungen für Einwirkungen (Lasten) auf Rohrleitungen gibt, wird auf die 
+einschlägigen Normen für Rohrleitungen z. B. EN 1594 für Gasversorgungssysteme und EN 14161 für Rohr-
+leitungstransportsysteme für die Erdöl- und Erdgasindustrie hingewiesen. 
+Nationaler Anhang für EN 1993-4-3 
+Diese Norm enthält alternative Verfahren, Zahlenwerte und Empfehlungen für Klassen zusammen mit 
+Hinweisen, an welchen Stellen nationale Festlegungen möglicherweise getroffen werden müssen. Deshalb 
+sollte die jeweilige nationale Ausgabe von EN 1993-4-3 einen Nationalen Anhang mit allen national 
+festzulegenden Parametern enthalten, die für die Bemessung und Konstruktion von Rohrleitungen, die in dem 
+Ausgabeland gebaut werden sollen, erforderlich sind. 
+Nationale Festlegungen sind in den folgenden Abschnitten von EN 1993-4-3 vorgesehen: 
+ 2.3 (2) 
+ 3.2 (1)P 
+3.2 (1)P, (2)P, (3), (4)
+ 3.3 (2), (3, (4) 
+ 3.4 (3) 
+ 4.2 (1)P 
+ 5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13) 
+ 5.2.3 (2) 
+ 5.2.4 (1) 
+7 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) Dieser Teil 4-3 der EN 1993 legt verbindliche Regeln und nicht verbindliche Regeln (Anwendungsregeln) 
+für die Konstruktion und die Bemessung von zylindrischen Rohrleitungen aus Stahl, die dem Transport von 
+Flüssigkeiten, Gasen oder Flüssigkeits-Gas-Gemischen bei Umgebungstemperatur dienen und die nicht in 
+anderen Europäischen Normen für bestimmte Anwendungen behandelt werden, fest. 
+(2) Zu diesen Zwecken sind Normen, die spezielle Anwendungen von Rohrleitungen behandeln, anzu-
+wenden, insbesondere: 
+ EN 805:2000 für Wasserversorgungssysteme (Trinkwasser); 
+ 
+ EN 1011, Schweißen  Empfehlungen zum Schweißen metallischer Werkstoffe; 
+ EN 1090-2, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 2: Technische Regeln für 
+die Ausführung von Stahltragwerken; 
+
+ EN 1295:1997 für unterirdische Rohrleitungen unter verschiedenen Lastzuständen (Abwasser); 
+ EN 1594:2000 für Gasversorgungssysteme mit Betriebsdrücken oberhalb 16 bar; 
+
+ EN 10208:1993, Stahlrohre für Rohrleitungen für brennbare Medien; 
+Teil 1: Rohre der Anforderungsklasse A; 
+Teil 2: Rohre der Anforderungsklasse B; 
+
+ EN 12007:2000 für Gasversorgungssysteme mit Betriebsdrücken bis zu und einschließlich 16 bar; 
+ EN 12732:2000 für Schweißnähte; 
+
+ EN 13445, Unbefeuerte Druckbehälter; 
+
+ EN 13491:2003 für vorisolierte verbundene Rohrleitungssysteme für die Fernwärme; 
+ EN 13480:2002 für Industrierohrleitungen; 
+ EN 14161:2004 für Rohrleitungssysteme für die Erdöl- und Erdgasindustrien. 
+(3) Regeln im Zusammenhang mit speziellen Anforderungen hinsichtlich der seismischen Bemessung sind 
+EN 1998-4 (Eurocode 8: Auslegung von Bauwerken gegen Erdbeben  Teil 4: Silos, Tankbauwerke und 
+Rohrleitungen) zu entnehmen, in welcher die Regeln des Eurocode 3 speziell für diesen Zweck ergänzt 
+worden sind. 
+8 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(4) Entsprechend dem Anwendungsbereich von Eurocode 8, Teil 4, ist diese Norm auf unterirdische 
+Rohrleitungen beschränkt. Sie zielt insbesondere auf die Behandlung von folgenden Rohrleitungen ab: 
+ unterirdische Rohrleitungen in Gebieten mit und ohne Setzung; 
+ unterirdische Rohrleitungen, die Deiche, Straßen, Eisenbahnen und Kanäle kreuzen. 
+(5) Bei der Konstruktion und der Bemessung von Rohrleitungen wirken viele unterschiedliche Aspekte mit. 
+Als Beispiele sind Linienführung, Drucksicherheitssysteme, Korrosionsschutz und Schweißverbindungen, 
+Betrieb und Wartung angeführt. Für diese Aspekte, die über den Entwurf und die Bemessung der Rohrleitung 
+selbst hinausgehen, wird auf die in 1.2 aufgelisteten einschlägigen Europäischen Normen verwiesen. Dies 
+trifft ebenso auf Elemente wie Ventile, Armaturen, Isolierverbindungen, T-Stücke und Endstücke zu. 
+(6) Rohrleitungen umfassen im Allgemeinen einige angeschlossene Einrichtungen wie Pumpstationen, 
+Betriebs- und Wartungsstationen usw., wobei dort jeweils unterschiedliche mechanische und elektrische 
+Ausstattungen untergebracht sind. Diese Einrichtungen üben einen beträchtlichen Einfluss auf den 
+reibungslosen Betrieb des Systems aus; daher muss ihnen eine angemessene Beachtung während des 
+Entwurfs- und Bemessungsprozesses zukommen, um die Betriebssicherheit insgesamt zu gewährleisten. In 
+dieser Norm sind diese Einrichtungen jedoch nicht explizit behandelt. 
+(7) Obwohl der Anwendungsbereich dieser Norm Rohrleitungen mit sehr großen Durchmessern umfasst, 
+sind die entsprechenden Bemessungskriterien nicht für scheinbar ähnliche Einrichtungen wie 
+Eisenbahntunnel oder große unterirdische Gasspeicher anzuwenden. 
+(8) Die Festlegungen dieser Norm sind für besondere Anwendungen gegebenenfalls nicht vollständig. Sollte 
+dies der Fall sein, sind zusätzlich besondere Festlegungen für solche Anwendungen anzusetzen. 
+(9) In dieser Norm werden Anforderungen an die Materialeigenschaften Festigkeit und Duktilität von Blechen 
+und Schweißnähten festgelegt. Für genauere Angaben und Anforderungen an die Werkstoffe und das 
+Schweißen ist auf die in 1.2 aufgelisteten einschlägigen Normen Bezug zu nehmen. 
+(10) Der Anwendungsbereich dieser Norm beschränkt sich auf Stahlsorten, deren Nennfestigkeit den Wert 
+700 N/mm
+2 nicht überschreitet. 
+1.2 Normative Verweisungen 
+Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+gestrichener Text
+gestrichener Text
+EN 1090-2, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 2: Technische Anforderungen 
+an die Ausführung von Tragwerken aus Stahl 
+gestrichener Text
+EN 1594, Gasversorgungssysteme  Rohrleitungen für einen maximal zulässigen Betriebsdruck über 
+16 bar  Funktionale Anforderungen 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung 
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke 
+EN 1993-1-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: Allgemeine Bemes-
+sungsregeln und Regeln für den Hochbau 
+9 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+EN 1993-1-3, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-3: Allgemeine Bemes-
+sungsregeln; Ergänzende Regeln für kaltgeformte dünnwandige Bauteile und Bleche 
+EN 1993-1-6, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-6: Allgemeine Bemes-
+sungsregeln; Ergänzende Regeln für Schalenkonstruktionen 
+EN 1993-1-7, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-7: Allgemeine Bemes-
+sungsregeln; Ergänzende Regeln zu ebenen Blechfeldern mit Querbelastung 
+EN 1993-1-8, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-8: Bemessung von 
+Anschlüssen 
+EN 1993-1-9, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-9: Ermüdung 
+EN 1993-1-10, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-10: Stahlsortenauswahl 
+im Hinblick auf Bruchzähigkeit und Eigenschaften in Dickenrichtung 
+EN 1993-1-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-12: Ergänzende Regeln 
+für die Erweiterung von EN 1993 um Stahlsorten bis zu S 700 
+EN 1993-4-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-1: Silos, Tankbauwerke 
+und Rohrleitungen; Silos 
+EN 1993-4-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-2: Silos, Tankbauwerke 
+und Rohrleitungen; Tankbauwerke 
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+EN 1998-4, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben  Teil 4: Silos, Tankbauwerke und 
+Rohrleitungen 
+gestrichener Text
+gestrichener Text
+EN 12732, Gasversorgungssysteme  Schweißen von Rohrleitungen aus Stahl  Funktionale 
+Anforderungen 
+gestrichener Text
+gestrichener Text
+gestrichener Text
+gestrichener Text
+EN 14870-1, Erdöl- und Erdgasindustrie  Im Induktionsverfahren gefertigte Rohrbögen, Fittings und 
+Flansche für Rohrleitungstransportsysteme  Teil 1: Im Induktionsverfahren gefertigte Rohrbögen 
+EN 14870-2, Erdöl- und Erdgasindustrie  Im Induktionsverfahren gefertigte Rohrbögen, Fittings und 
+Flansche für Rohrleitungstransportsysteme  Teil 2: Fittings 
+EN 14870-3, Erdöl- und Erdgasindustrie  Im Induktionsverfahren gefertigte Rohrbögen, Fittings und 
+Flansche für Rohrleitungstransportsysteme  Teil 3: Flansche 
+ISO 1000, SI-Einheiten und Festlegungen für die Anwendung ihrer Vielfachen und einiger anderer Einheiten 
+10 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ISO 3183-1, Petroleum and natural gas industries  Steel pipe for pipelines  Technical delivery conditions  
+Part 1: Pipes of requirement class A 
+ISO 3183-2, Petroleum and natural gas industries  Steel pipe for pipelines  Technical delivery conditions  
+Part 2: Pipes of requirements class B 
+ISO 3183-3, Petroleum and natural gas industries  Steel pipe for pipelines  Technical delivery conditions  
+Part 3: Pipes of requirement class C 
+ISO 13623, Petroleum and natural gas industries  Pipeline transportation systems 
+ISO 13847-1, Welding steel pipeline  Part 1: Field welding 
+ISO 13847-2, Welding steel pipeline  Part 2: Shop welding
+ANMERKUNG 1 EN 1295 zielt auf Abwasserentsorgung und Wasserversorgung ab: es geht hauptsächlich um verbind-
+liche Regeln, Gleichungen sind nur in einem Anhang aufgeführt. 
+ANMERKUNG 2 EN 1594 ist für neue Rohrleitungen mit einem maximalen Betriebsdruck oberhalb 16 bar für Über-
+Land-Gassysteme für aufbereitetes, nicht toxisches und nicht korrosives Erdgas entsprechend der ISO/DIS 13686 
+anzuwenden. Sie wird von der WG 3 „Gastransport der CEN/TC 234 „Gasversorgung erstellt. 
+ANMERKUNG 3 Für weitere Verweise zur Gasversorgung, Gastransport, Gasspeicherung usw., siehe EN 1594. 
+ANMERKUNG 4 EN 12007 wurde ebenso von der CEN/TC 234 erstellt. 
+ANMERKUNG 5 EN 13941 gilt für die Fernwärme und wurde von einem gemeinsamen Ausschuss der CEN/TC 107 
+und CEN/TC 267 erstellt. 
+ANMERKUNG 6 Die Norm ISO 13623 wird von der SC 2 „Pipelines Transportation for the Petroleum and Natural Gas 
+Industries, der ISO/TC 67 „Materials, Equipment and Offshore Structures for Petroleum and Natural Gas 
+Industries erstellt. 
+1.3 Annahmen 
+(1) Es gelten die allgemeinen Annahmen nach EN 1990. 
+1.4 Unterscheidung nach Prinzipien und Anwendungsregeln 
+(1) Es gelten die Regeln nach EN 1993-1-1, 1.4. 
+1.5 Begriffe 
+(1) In diesem Teil 4-3 von EN 1993 gelten die Begriffe, die in der EN 1991-1 für die Anwendung von allen 
+Eurocodes des konstruktiven Ingenieurbaus festgelegt wurden. 
+(2) Sofern nicht anders angegeben, gelten auch die Definitionen aus ISO 9830 in diesem Teil 4-3. 
+(3) Zusätzlich zum Teil 1 der EN 1993 gelten für die Anwendung dieses Teils 4-3 die folgenden Begriffe: 
+1.5.1 Druck: Der unter statischen Bedingungen gemessene Druck eines Gases oder einer Flüssigkeit innerhalb 
+des Systems. 
+1.5.2 Bemessungsdruck (DP): Druck, auf dem die Berechnungen bei der Bemessung basieren. 
+1.5.3 Betriebsdruck (OP): Druck, der innerhalb eines Systems unter normalen Betriebsbedingungen auftritt. 
+11 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+1.5.4 Maximaler Betriebsdruck (MOP): Maximaler Druck, bei dem ein System unter normalen Bedingungen 
+kontinuierlich betrieben werden kann. 
+ANMERKUNG Normale Bedingungen sind: Einwandfreies Funktionieren von allen Einheiten und Strömen. 
+1.5.5 Bemessungstemperatur (DT): Temperatur, auf der die Berechnungen bei der Bemessung basieren. 
+1.5.6 Betriebstemperatur (OT): Temperatur, die innerhalb eines Systems unter normalen Bedingungen 
+auftritt. 
+1.6 SI-Einheiten 
+(1)P SI-Einheiten sind entsprechend der Internationalen Norm ISO 1000 anzuwenden. 
+(2) Für Berechnungen werden die folgenden einheitlichen Einheiten empfohlen: 
+ Maße und Dicken : m mm 
+ Spezifisches Gewicht (Wichte) : kN/m3 N/mm 3
+ Kräfte und Lasten : kN N 
+ Streckenlasten : kN/m N/mm 
+ Drücke und Flächenlasten : kPa MPa 
+ Spezifische Masse (Dichte) : kg/m3 kg/mm 3
+ Beschleunigung : km/s2 m/s 2
+ Resultierende aus Membranspannungen : kN/m N/mm 
+ Resultierende aus Biegespannungen (Biegemoment): kNm/m Nmm/mm 
+ Spannungen und Elastizitätsmoduli : kPa MPa (= N/mm2) 
+(3) Umrechnungsfaktoren 
+1 mbar = 100 N/m2 = 0,1 kPa 
+1.7 Symbole 
+Es gelten die in EN 1990 und EN 1993-1 angegebenen Symbole. Weitere Symbole sind unten angegeben. 
+1.7.1 Lateinische Großbuchstaben 
+Für die Anwendungen in dieser Norm gelten die folgenden Symbole: 
+A Querschnittsfläche eines Rohres 
+C Krümmung infolge Biegung
+De äußerer Durchmesser
+D Durchmesser der Mittellinie der Rohrwandung
+E Elastizitätsmodul 
+F einwirkende Normalkraft in Längsrichtung des Rohres 
+12 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+M Biegemoment in der Rohrleitung, die als Balken betrachtet wird
+Mp plastisches Moment 
+Mt Torsionsmoment
+N Normalkraft in der Rohrleitung
+Q Erddruck 
+Qd direkt übertragener Erddruck 
+Qi indirekt übertragener Erddruck (Auflagerreaktion) 
+Qeq äquivalenter Erddruck, bei dem Qi zu einer Größe Qd, welche die gleichen mittleren 
+Schalenwandmomente in Umfangsrichtung verursacht wie Qi, umgeformt wird
+R Krümmungsradius ohne Lasteinwirkung 
+1.7.2 Lateinische Kleinbuchstaben 
+a Parameter für die Abweichung von der Kreisform unter ungleichförmigem Druck 
+fy,d Bemessungswert der Streckgrenze
+fy,nom Nennwert der Streckgrenze
+fu,nom Nennwert der Zugfestigkeit
+fy,min festgelegter Mindestwert der Streckgrenze
+fy,max Höchstwert der Streckgrenze
+fu,min festgelegter Mindestwert der Zugfestigkeit
+fu,max Höchstwert der Zugfestigkeit
+m Schalenwandmoment je Breiteneinheit 
+me Schalenwandmoment je Breiteneinheit an der Elastizitätsgrenze
+mp volles plastisches Schalenwandmoment je Breiteneinheit 
+mx, my Schalenwandmoment je Breiteneinheit in Längs- bzw. Umfangsrichtung 
+n Normalkraft in der Schalenwand je Breiteneinheit
+np volle plastische Normalkraft in der Schalenwand je Breiteneinheit 
+nx, ny Normalkraft je Breiteneinheit der Wandung in Längs- bzw. Umfangsrichtung
+pi Druck innerhalb des Rohres (nach außen gerichtet positiv) 
+pe Druck außerhalb des Rohres (nach innen gerichtet negativ)
+p effektiver Druck: p = pi  pe
+r Rohrradius: r= D / 2
+13 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+t Dicke der Rohrwandung
+tmin festgelegte Mindestwanddicke (Nenndicke abzüglich der zulässigen Maßabweichung)
+tr, tb Dicke der Rohrwandung im geraden bzw. gekrümmten Rohr
+1.7.3 Griechische Buchstaben 
+, , Last- und Auflagerwinkel für Qd bzw. Qi und Qeq
+ Poissonzahl 
+F Teilsicherheitsbeiwert für Einwirkungen 
+M Teilsicherheitsbeiwert für Materialwiderstände 
+ Umfangswinkel 
+ Längsspannung
+ Schubspannung 
+1.8 Terminologie 
+Ergänzend zum Teil 1 von EN 1993 (und Teil 4 von EN 1991) gilt für die Anwendung dieses Teils 4-3 die 
+folgende Terminologie: 
+1.8.1 Notfall: Situation, durch die der sichere Betrieb des Rohrleitungssystems und/oder die Sicherheit der 
+Umgebung beeinträchtigt wird, so dass dringende Maßnahmen gefordert sind. 
+1.8.2 Vorfall: Unerwartetes Vorkommnis, das zu einem Notfall führen könnte. Dies schließt Auslaufen von 
+Rohrinhalt ein. 
+1.8.3 Inspektion: Vorgang, bei dem durch Messen, Prüfen, Testen, Eichen oder auf sonstige Art der Zustand 
+von Rohrleitungs- oder Installationselementen ermittelt und mit den einzuhaltenden Anforderungen verglichen 
+wird. 
+1.8.4 Einbautemperatur: Temperatur, die sich durch die Umgebungstemperatur oder durch die 
+Einbaubedingungen während der Verlegung oder der Herstellung ergibt. 
+1.8.5 Wartung: Kombination aus allen technischen und damit zusammenhängenden Verwaltungsmaß-
+nahmen, die dazu dienen, ein Element in einem Zustand zu erhalten oder wiederherzustellen, so dass es 
+seine geforderten Funktionen erfüllen kann. 
+1.8.6 Molch: Gerät, das mit Hilfe einer strömenden Flüssigkeit durch eine Rohrleitung transportiert wird, um 
+je nach Typ verschiedene Maßnahmen im Rohrinneren vornehmen zu können, z. B. die Trennung von 
+Flüssigkeiten, Reinigung oder Inspektion der Rohrleitung. 
+1.8.7 Rohrleitung: System von Leitungen mit allen zugeordneten Einrichtungen und Stationen bis zur 
+Übergabestelle für das geförderte Gut. Die Leitungen sind hauptsächlich unterirdisch, schließen jedoch auch 
+oberirdische Teile ein. 
+1.8.8 Rohrleitungskomponenten: Elemente, aus denen die Rohrleitung hergestellt wird. Nachfolgend sind 
+unterschiedliche Rohrleitungselemente angegeben: 
+ Rohr (einschließlich kaltverformter Krümmungen); 
+14 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ Formstücke (Reduzierstücke, T-Stücke, Werkskrümmer und Bögen, Flansche, Endstücke, 
+Schweißstutzen, mechanische Verbindungen usw.); 
+ für die oben genannten Elemente angefertigte Konstruktionen (Sammelrohre, Fremdkörperfänge, Molch-
+Start-Empfangsstationen, Zähl- und Kontrolleinrichtungen usw.); 
+ Hilfseinrichtungen (Armaturen, Dehnstücke, Isolierstücke, Druckregler, Pumpen, Kompressoren usw.); 
+ Druckbehälter. 
+1.8.9 Rohrleitungsbetreiber: Private oder öffentliche Organisation, die befugt ist, ein Versorgungssystem zu 
+bemessen, herzustellen und/oder zu betreiben und zu warten. 
+1.8.10 Leitungen: System aus Rohren und Formstücken. 
+1.8.11 Druckkontrollsystem: Kombiniertes System einschließlich Druckregulierung, Drucksicherheit und, 
+falls angebracht, Druckaufzeichnung und Alarmsystemen. 
+2 Grundlagen der Bemessung 
+2.1 Allgemeines 
+(1)P Die Konstruktion und Bemessung von Rohrleitungen ist in Übereinstimmung mit den Festlegungen von 
+EN 1990 und EN 1991-1 vorzunehmen. 
+(2) Einwirkungen sollten EN 1991 und EN 1997 (Bemessung in der Geotechnik) entnommen werden. Da 
+EN 1991 und EN 1997 nicht alle für Rohrleitungen geltenden Einwirkungen erfassen, sollten diese, wenn 
+angebracht, auch dafür geltenden Normen entnommen werden. 
+2.2 Grundlegende Anforderungen an Rohrleitungen 
+ANMERKUNG Nachfolgend sind die für Rohrleitungen maßgebenden Anforderungen der EN 1991-1 erwähnt. 
+(1)P Rohrleitungen sind so zu bemessen und herzustellen, dass sie: 
+ unter Berücksichtigung der vorgesehenen Nutzungsdauer und ihrer Erstellungskosten mit annehmbarer 
+Wahrscheinlichkeit die geforderten Gebrauchseigenschaften behalten; 
+ mit angemessener Zuverlässigkeit den Einwirkungen und Einflüssen standhalten, die während ihrer 
+Ausführung und während ihrer Nutzung auftreten können, und eine angemessene Dauerhaftigkeit im 
+Verhältnis zu ihren Unterhaltungskosten aufweisen; 
+ durch Ereignisse wie Explosionen, Aufprall oder Folgen menschlichen Versagens nicht in einem 
+Ausmaße geschädigt werden, das in keinem Verhältnis zur Schadensursache steht. 
+(2)P Eine mögliche Schädigung muss durch die angemessene Wahl einer oder mehrerer der folgenden 
+Maßnahmen begrenzt oder vermieden werden: 
+ Vermeidung oder Minderung der Gefährdungen, denen das Tragwerk ausgesetzt ist; 
+ Wahl eines Tragsystems, das ei ne geringe Anfälligkeit gegen die zu berücksichtigenden Gefahren 
+aufweist. 
+ANMERKUNG Möglichkeiten, Schäden (z. B. durch Bagger und Bohrmaschinen) zu vermeiden, sind: Vergrößerung der 
+Wanddicke, Vergrößerung der darüber liegenden Bodenschichten, Aufstellen geeigneter oberirdischer Warnzeichen und 
+Einbau von Betonabdeckplatten. 
+15 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(3)P Die oben genannten Anforderungen sind durch die Wahl geeigneter Werkstoffe, eine angemessene 
+Planung und bauliche Durchbildung sowie durch die Festlegung von Überwachungsverfahren für die 
+Fertigung, die Verlegung und die Nutzung der jeweiligen Rohrleitung zu erreichen. 
+2.3 Differenzierung der Zuverlässigkeit 
+(1) Für verschiedene Typen von Rohrleitungen dürfen, je nach den wirtschaftlichen und gesellschaftlichen 
+Versagensfolgen, unterschiedliche Anforderungen an die Zuverlässigkeit zugrunde gelegt werden. 
+(2) Die Mindestanforderungen an die Sicherheit sollten zwischen Planer, Auftraggeber und der zuständigen 
+Aufsichtsbehörde vereinbart werden. 
+ANMERKUNG Der nationale Anhang darf Festlegungen für die Anforderungen an die Zuverlässigkeit für verschiedene 
+Arten von Rohrleitungen, enthalten. 
+(3) Die Zuverlässigkeit darf durch Faktoren bei der Bemessung und/oder durch Qualitätsanforderungen für 
+die Bauausführung ausgedrückt werden. Die in dieser Norm empfohlenen Werte zielen auf mittlere 
+Sicherheitsanforderungen ab. 
+ANMERKUNG Zur Differenzierung der Zuverlässigkeitsanforderungen wird auf die EN 1998-4 verwiesen. Darüber 
+hinaus können Hinweise den in 1.2 aufgelisteten Normen entnommen werden. 
+2.4 Rechenverfahren 
+(1)P Die Rechenverfahren für die Bemessung und Konstruktion von Rohrleitungen in dieser Norm sind an 
+den jeweils betrachteten Grenzzustand anzupassen. 
+2.5 Grenzzustände der Tragfähigkeit 
+(1)P Die maßgebenden Grenzzustände sind: 
+ Bruch der Rohrwandung; 
+ Versagen durch übermäßige Querschnittsabplattung; 
+ Verlust der Lagesicherheit oder der Stabilität der Rohrleitung oder derer Auflager; 
+ Leckagen aufgrund anderer Ursachen als Bruch der Rohrwand (z. B. infolge ungenügender Dichtheit in 
+den Verbindungselementen oder Korrosion, welche zu nicht annehmbaren Umwelt- oder 
+Sicherheitsrisiken führt). 
+(2)P Darüber hinaus sind weitere maßgebende Grenzzustände nach EN 1993 ebenfalls zu prüfen. 
+ANMERKUNG Ein Beispiel für einen weiteren maßgebenden Grenzzustand könnte das Versagen von Bolzen bei 
+Flanschverbindungen sein.
+(3) Die maßgebenden Grenzzustände der Tragfähigkeit können durch Abschätzung der nachfolgenden 
+Grenzzustände dargestellt werden: 
+LS1: Bruch: Grenzzustand, bei dem ein Bruch in der Rohrwandung auftritt. 
+LS2: Plastische Dehngrenze: Grenzzustand, bei dem die Grenzdehnung der Rohrwandung 
+überschritten wird. (Diese Grenzdehnung ist keine Materialeigenschaft, sondern ein Grenzwert, der von 
+den Verformungseigenschaften der Rohrwandung einschließlich der Schweißnähte abhängt.) 
+LS3: Verformung: Grenzzustand für übermäßige Verformung. Diese kann verschiedene Formen 
+annehmen (z. B. übermäßige Abplattung des Querschnitts, lokales Beulen, Implosion oder Biegeknicken 
+der Rohrleitung selbst). 
+16 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ ANMERKUNG In diesen Situationen können die Dehnungen unkontrollierbare Ausmaße annehmen und 
+möglicherweise zum Bruch der Rohrwandung führen. 
+LS4: Ermüdung: Grenzzustand für Bruch infolge zyklischer Beanspruchungen. 
+ ANMERKUNG Die zyklische Beanspruchung kann je nach erreichtem Grenzzustand in zwei Klassen eingeteilt 
+werden: niedrigzyklische Ermüdung und hochzyklische Ermüdung. 
+LS5: Leckage: Grenzzustand für Leckagen aufgrund anderer Ursachen als Bruch der Rohrwandung 
+(z. B. ungenügende Dichtheit der Verbindungen, infolge Korrosion oder durch Fremdeingriffe, falls solche 
+Leckagen zu unannehmbaren Folgen für die Sicherheit oder Gesundheit von Personen und/oder die 
+Umwelt führen). 
+(4) Bei der Festlegung der plastischen Dehngrenze ist in der Regel Folgendes zu berücksichtigen: 
+ Werkstoffimperfektionen im Grundmaterial und in den Anschlüssen (Schweißnähte); 
+ unterschiedliche mechanische Eigenschaften des Grundmaterials und der Schweißnahtzone. 
+2.6 Grenzzustände der Gebrauchstauglichkeit 
+(1) Die maßgebenden Kriterien für die Grenzzustände der Gebrauchstauglichkeit sollten wie folgt angesetzt 
+werden: 
+LS6: Verformungen , die den effektiven Gebrauch der Rohrleitung beeinträchtigen: Querschnittsver-
+formung und Verbiegung; 
+LS7: Schwingungen , die Unbehagen verursachen oder die Auflager oder andere Teile der Rohrleitung 
+beeinträchtigen; 
+LS8: Leckagen, ohne dass diese zu nicht annehmbaren Umwelt- oder Sicherheitsrisiken führt. 
+3 Werkstoffeigenschaften 
+3.1 Allgemeines 
+(1)P Für Rohrleitungen sind Stähle mit angemessenen mechanischen Eigenschaften und Schweißeignung zu 
+verwenden. 
+(2) Diese Norm legt die Anforderungen für die Werkstoffeigenschaften von Blechen und Schweißnähten nur 
+im Hinblick auf die mechanischen Eigenschaften fest. Für weitere detailliertere Richtlinien und Anforderungen 
+zu Werkstoffen und zum Schweißen wird auf die in 1.2 erwähnten maßgebenden Normen verwiesen. 
+(3) Die in dieser Norm angegebenen Werkstoffeigenschaften sind Nennwerte, die als charakteristische 
+Werte in die Bemessung eingehen. 
+3.2 Mechanische Eigenschaften von Stahl für Rohrleitungen 
+(1)P Der Nennwert der Streckgrenze fy,nom und der Nennwert der Zugfestigkeit fu,nom sind die in der in 1.2 
+aufgelisteten maßgebenden Norm festgelegten Mindestwerte für fy,min und fu,min. Die Bemessungswerte für 
+die Streckgrenze fy,d und die Zugfestigkeit fu,d sind wie folgt festgelegt: 
+fy,d = fy,nom / M (3.1) 
+fu,d = fu,nom / M (3.2) 
+17 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Dabei ist 
+M der Teilsicherheitsbeiwert. 
+ANMERKUNG Der Teilsicherheitsbeiwert M ist im Nationalen Anhang angegeben. Der Wert M = 1,00 wird empfohlen. 
+(2)P Die Höchstwerte der Streckgrenze fy,max und der Zugfestigkeit fu,max sind festzulegen; sie dürfen die 
+festgelegten Mindestwerte fy,min und fu,min um nicht mehr als f überschreiten. 
+ANMERKUNG Der Wert f für die Differenz zwischen diesen beiden Festigkeitswerten darf im Nationalen Anhang 
+festgelegt werden. Der Wert f = 50 MPa wird empfohlen. 
+(3) Um eine angemessene Duktilität sicherzustellen, sollte das Verhältnis von Zugfestigkeit zu Streckgrenze 
+fu,nom/ fy,nom des Stahls den Wert fu,min/ fy,min nicht unterschreiten. 
+ANMERKUNG Der Zahlenwert fu,min/ f y,min für das Verhältnis zwischen diesen beiden Festigkeitswerten darf im 
+Nationalen Anhang festgelegt werden. Der Wert fu,min/ fy,min = 1,1 wird empfohlen. 
+(4) Die Bruchdehnung u, bezogen auf eine Messlänge von 5,65 Ao (wobei Ao die ursprüngliche 
+Querschnittsfläche ist), darf nicht geringer als u,min sein. 
+ANMERKUNG Der Zahlenwert für u,min für die Bruchdehnung u darf im Nationalen Anhang festgelegt werden. Der Wert 
+u,min = 20 % wird empfohlen. 
+(5)P Der Werkstoff muss eine ausreichende Bruchzähigkeit aufweisen, um bei der niedrigsten 
+Betriebstemperatur während der geplanten Lebensdauer der Rohrleitung Sprödbruch auszuschließen. Es wird 
+auf EN 1993-1-10 und EN 1594 verwiesen. 
+3.3 Mechanische Eigenschaften von Schweißnähten 
+(1)P Es ist nachzuweisen, dass, wenn Fließen in der Rohrwandung auftritt, die plastischen Dehnungen im 
+Grundwerkstoff und nicht in der Schweißnahtzone auftreten. 
+(2) Wenn der Nennwert der Streckgrenze des eingebrachten Schweißguts mindestens x % höher als die 
+maximale Streckgrenze des Grundwerkstoffes des Blechs oder des Rohres ist, dann darf die oben genannte 
+Anforderung als erfüllt betrachtet werden. 
+ANMERKUNG Der Wert x darf im Nationalen Anhang festgelegt werden. Der Wert x = 15 % wird empfohlen. 
+(3) Die Duktilität des eingebrachten Schweißguts mit seinen Schweißnahtunregelmäßigkeiten in zulässigen 
+Grenzen sollte so hoch sein, dass die Schweißnahtzone eine Dehnung von mindestens % aufnehmen kann. 
+ANMERKUNG Der Wert der Dehnung darf im Nationalen Anhang festgelegt werden. Der Wert = 2 % wird empfohlen. 
+(4) Die Bruchfestigkeit des eingebrachten Schweißguts muss in der Regel mindestens y % höher als die 
+festgelegte maximale Bruchfestigkeit des Grundwerkstoffes des Blechs oder des Rohrmaterials sein. 
+ANMERKUNG Der Wert y darf im Nationalen Anhang festgelegt werden. Der Wert y = 15 % wird empfohlen. 
+3.4 Zähigkeitsanforderungen an Rohrwerkstoffe und die Schweißnähte 
+(1) Die in den vorangehenden Abschnitten definierten Duktilitätsanforderungen vor Bruch im Rohrwerkstoff 
+und in den Schweißnähten können mit geeigneten Methoden, die in der EN 1594 definiert sind, nachgewiesen 
+werden. 
+18 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ANMERKUNG Bis eine Europäische Norm mit Zähigkeitsanforderungen an Rohrleitungswerkstoffe mit geschweißten 
+Zonen und zulässigen Unregelmäßigkeiten vorliegt, dürfen die Norm BS 7910:1999 „Guide on methods for assessing the 
+acceptability of flaws in metallic structures , mit Änderungen vom Oktober 2000, der British Standards Institution (BSI) 
+oder andere nationale Normen zugrunde gelegt werden. 
+(2) Die Festlegungen dieser Norm gelten nur, wenn die Qualität des Rohrwerkstoffes und der Schweißnähte 
+die in EN 1594 bzw. EN 12732 festgelegten Anforderungen erfüllt. 
+(3) Die Zuggrenzdehnung (LS2) sollte folgendermaßen bestimmt werden: Rk,
+Rk, = z % ( 3 . 3 ) 
+ANMERKUNG Der Wert z darf im Nationalen Anhang festgelegt werden. Der Wert z = 0,5 % wird empfohlen. 
+3.5 Verbindungsmittel 
+(1) Verbindungsmittel sollten die Festlegungen von EN 1993-1-8 erfüllen. 
+3.6 Bodeneigenschaften 
+(1)P Bemessungswerte für Bodeneigenschaften (Bodenkenngrößen) sollten EN 1997 oder anderen dafür 
+geeigneten Normen entnommen werden. 
+4 Einwirkungen 
+4.1 Zu berücksichtigende Einwirkungen 
+(1) Die Normen EN 1990, EN 1991, EN 1997 und EN 1998 enthalten grundlegende Hinweise zu Einwir-
+kungen und Kombinationen von Einwirkungen einschließlich außergewöhnlicher und seismischer Bemes-
+sungssituationen. 
+(2) Folgende Einwirkungen sollten, sofern zutreffend, berücksichtigt werden: 
+ Innendruck; 
+ Außendruck; 
+ Eigengewicht der Rohrleitung; 
+ Eigengewicht des Inhalts der Rohrleitung (das Produkt, das transportiert wird, und gegebenenfalls 
+weitere Stoffe, z. B. Wasser, das für Wasserdruckprüfungen benutzt wird, oder Staub); 
+ Bodendrücke; 
+ Verkehrslasten; 
+ Temperaturänderungen; 
+ Lasten aus der Bauausführung; 
+ Aufgezwungene Verformungen aus Setzungsunterschieden, Bergsenkungen und Erdrutschen; 
+ Erdbebenlasten (es wird auf Eurocode 8 verwiesen). 
+19 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(3) Die charakteristischen Werte der zu berücksichtigenden Lasten sollten EN 1991-1 oder anderen dafür 
+geeigneten Normen, die in 1.1 und 1.2 aufgeführt sind, entnommen werden. 
+4.2 Teilsicherheitsbeiwerte für Einwirkungen 
+(1)P Die Teilsicherheitsbeiwerte müssen den Anforderungen an die Zuverlässigkeit nach 2.3 entsprechen. 
+ANMERKUNG Die Teilsicherheitsbeiwerte dürfen im Nationalen Anhang festgelegt werden. 
+4.3 Lastkombinationen für Grenzzustände der Tragfähigkeit 
+(1) Die folgenden Einwirkungskombinationen von Bemessungswerten für die Grenzzustände der 
+Tragfähigkeit sollten in Betracht gezogen werden: 
+a) Innendruck : Die Differenz zwischen dem größten Innendruck und dem kleinsten Außendruck. 
+ANMERKUNG Dieser Grenzzustand wird im Allgemeinen zur Ermittlung der Wanddicken benötigt. 
+b) Innendruck und weitere maßgebende Lasten : Zu den in (a) festgelegten Bedingungen für den Innen- 
+und Außendruck kommen die weiteren maßgebenden Bemessungslasten dazu. 
+ANMERKUNG Dieser Grenzzustand wird im Allgemeinen gebraucht, um die kritischen Dehnungen zu überprüfen. 
+c) Außendruck und weitere maßgebende Lasten : Die Differenz zwischen dem größten Außendruck und 
+dem kleinsten Innendruck, zusammen mit weiteren Bemessungslasten. 
+ANMERKUNG Dieser Grenzzustand wird im Allgemeinen gebraucht, um die Querschnittsverformung, kritische 
+Dehnungen, Beulen usw. zu überprüfen. 
+d) Zeitliche Änderungen des Drucks und weiterer maßgebender Bemessungslasten : Dieser Fall 
+berücksichtigt die zyklische Beanspruchung des Rohrs. 
+ANMERKUNG Dieser Grenzzustand wird im Allgemeinen gebraucht, um die Ermüdung zu überprüfen. 
+4.4 Lastkombinationen für Grenzzustände der Gebrauchstauglichkeit 
+(1) Die folgenden Kombinationen von Bemessungslasten für die Grenzzustände der Gebrauchstauglichkeit 
+sollten in Betracht gezogen werden: 
+a) Innendruck und weitere maßgebende Lasten : Die Differenz zwischen dem größten Innendruck und dem 
+kleinsten Außendruck, zusammen mit weiteren Bemessungslasten. 
+b) Außendruck und weitere maßgebende Lasten : Die Differenz zwischen dem größten Außendruck und 
+dem kleinsten Innendruck, zusammen mit weiteren Bemessungslasten. 
+5 Berechnung 
+5.1 Tragwerksmodelle 
+5.1.1 Vereinfachtes Bemessungsverfahren im Grenzzustand der Tragfähigkeit 
+ANMERKUNG Das nachstehende vereinfachte Bemessungsverfahren basiert auf den Ergebnissen umfangreicher, 
+genauerer Berechnungen. 
+(1) Unter der Voraussetzung, dass die Bedingungen in den Absätzen (2) bis (13) eingehalten werden, 
+braucht nur die Lastkombination (a) von 4.3 (1) berücksichtigt zu werden (lediglich Innendruck). 
+20 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(2) Die Teilsicherheitsbeiwerte sind anzunehmen mit: 
+F = F1 für Überland-Leitungen; 
+F = F2 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen ohne 
+Hochwasserschutz. 
+F = F3 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen mit 
+Hochwasserschutz. 
+ANMERKUNG 1 Die Zahlenwerte für F dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden 
+empfohlen: F1 = 1,39; F2 = 1,50; F3 = 1,82. 
+ANMERKUNG 2 In vielen Normen für Rohrleitungen werden die zulässigen Beanspruchungen mit 72 % der Streckgrenze 
+festgelegt (1,39 = 1/0,72). 
+(3) Abhängig von der Bemessungsstreckgrenze fy,d sollte das Verhältnis De/tmin folgende Bedingungen 
+erfüllen: 
+ für fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 1 ) 
+ für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 ) 
+ für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 ) 
+ für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 ) 
+ANMERKUNG Die Werte für De/tmin dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden 
+empfohlen: val240 = 70; val360 = 80; val415 = 92; val480 = 106.
+(4) Die Überdeckung der Oberseite der Rohrleitung sollte Dcover nicht überschreiten. Dieses Kriterium 
+braucht nicht angewendet zu werden, wenn nachgewiesen wird, dass die effektive Last an der Oberseite des 
+Rohrs Geff nicht überschreitet. 
+ANMERKUNG Die Werte für Dcover und Geff dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte 
+werden empfohlen: Dcover = 2,5 m und Geff = 65 kN/m². 
+(5) Die Wanddicke des Rohrs tspec sollte mindestens tspec,min mm betragen. 
+ANMERKUNG Der Wert für tspec,min darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: 
+tspec,min = 4,8 mm. 
+(6) Die ungleichmäßigen Setzungen infolge Konsolidierung sollten ds in mm nicht überschreiten. Sie sollten, 
+wie in Bild 5.1 dargestellt, über eine Strecke von mindestens in m von null allmählich auf den Größtwert 
+ansteigen und wieder zurück auf null gehen. 
+2
+ANMERKUNG Die Werte für ds und dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden 
+empfohlen: ds = 100 mm und = 20 m. 
+21 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Bild 5.1  Grenzwerte für die ungleichmäßigen Setzungen mit den empfohlenen Werten 
+(7) Die Setzung aus der Verlegung darf die im normalen Rohrleitungsbau ohne besondere Maßnahmen zu 
+erwartenden Setzungen nicht überschreiten. 
+(8) Die Rohrleitung sollte keine potentiellen Bruchflächen oder Gebiete mit Bergsenkungen kreuzen. 
+(9) Der betroffene gebogene Abschnitt der Rohrleitung sollte keinen Krümmungsradius unter x D
+e besitzen. 
+ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: x = 20. 
+(10) Die maximale Differenz zwischen der Einbautemperatur und der maximalen bzw. minimalen 
+Betriebstemperatur der Rohrleitung sollte T ºC nicht übersteigen. 
+ANMERKUNG Der Wert für T darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: 
+T = 35 °C.
+(11) Der gesamte Temperaturbereich sollte zwischen  T 1 ºC und T2 ºC  liegen. Im Falle von 
+Frosthebung wird auf die EN 1594 verwiesen. 
+ANMERKUNG Die Werte für  T1 und T2 dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte 
+werden empfohlen:  T1 =  40 ºC und T2 = + 60 °C.
+(12) Falls Bögen mit einem Radius kleiner als y De verwendet werden, sollten die folgenden Kriterien erfüllt 
+werden: 
+ Bei Rohrleitungen mit einem Durchmesser De, der D1 nicht übersteigt, sowie mit horizontalen 
+Bögen sollte die maximale Differenz zwischen  der Einbautemperatur und der maximalen bzw. 
+minimalen Betriebstemperatur der Rohrleitung höchstens T3 ºC  sein; 
+ Bei Rohrleitungen mit  De < D2, sollte der Abstand zwischen horizontalen Krümmungen größer als 
+ sein. 
+ANMERKUNG Die Werte für y, T3, D1 und dürfen im Nationalen Anhang festgelegt werden. Die folgenden 
+Werte werden empfohlen: y = 20;  T3 = 20 ºC; D1 = 300 mm; D2 = 450 mm und = 2,0 m. 
+(13) Bei Querungen, die mittels Bohrung oder Rohreinzug von Baugruben aus hergestellt und wenn Bögen 
+mit einem Radius kleiner als z De im Baugrubenbereich angeordnet werden, sollten die folgenden Kriterien 
+erfüllt werden: 
+ bei der Berechnung der Wanddicke von Bögen sollte ein Teilsicherheitsbeiwert F angesetzt werden (wie 
+bei den Kreuzungen). 
+ bei  D e < D2 mm  sollte der Bogen an der Innenseite des ausgehobenen Grabens angeordnet 
+werden. 
+22 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ Bei geraden Rohren sollte das Verhältnis De/tmin folgende Bedingungen erfüllen: 
+ bei fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 5 ) 
+ bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 ) 
+ bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 ) 
+ bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 ) 
+ANMERKUNG Die Zahlenwerte für z, F,  D2 und De/tmin dürfen im Nationalen Anhang festgelegt werden. Die 
+folgenden Werte werden empfohlen: z = 20; F = 1,82; D2 = 450 mm; val240 = 57; val360 = 61; val415 = 70; val480 
+= 81. 
+5.1.2 Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind 
+(1) Unterirdische Rohrleitungen sollten wie dreidimensional federnd gelagerte Balken behandelt werden. Im 
+Modell sollten die Federn die mechanischen Eigenschaften des Bodens abbilden, wie in Bild 5.2 verdeutlicht: 
+a) vertikale Bodenfederung 
+b) seitliche Bodenfederung 
+c) Längsbodenfederung (auch Torsionsfederung) bei Reibung 
+Bild 5.2  Schematische Ansicht einer elastisch gebetteten Rohrleitung 
+(2) Bei der Berechnung sollten die nichtlinearen Eigenschaften der unterschiedlichen Federn berücksichtigt 
+werden. 
+ANMERKUNG Im Allgemeinen ist für dieses System eine Finite-Elemente-Berechnung erforderlich. 
+(3) Als Eingabewerte für die Analyse sollten die Bodenkenngrößen, die Eigenschaften der Rohrleitung, die 
+aufgezwungenen Setzungen (Verschiebungen) und weitere Einwirkungen angesetzt werden. 
+ANMERKUNG Die erforderlichen Eigenschaften der Rohrleitung beziehen sich auf das Biegemomenten-Krümmungs-
+Diagramm, und dort, wo Torsion auftritt, das Torsionsmomenten-Verdrehungs-Diagramm. In Anhang A sind Gleichungen 
+angegeben, mit denen diese Diagramme berechnet werden können. 
+(4) Anhand der oben erläuterten dreidimensionalen Berechnung des federnd gelagerten Balkens sollten an 
+jedem Querschnitt der Rohrleitung die folgenden Werte ermittelt werden: 
+ Biegemoment und Krümmung; 
+ Torsionsmoment und Verdrehung; 
+ Normalkraft und Dehnung oder Stauchung; 
+23 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+ Schubspannung und Schubverformung; 
+ Erddruck und Verschiebungen; 
+ Bodenreibung und entsprechende Verschiebungen. 
+(5) Eine vollständige Ermittlung aller Verformungen kann durch eine umfassende elastisch-plastische 
+Querschnittsberechnung, wie in Anhang A dargestellt, erzielt werden. 
+ANMERKUNG Weitere Hinweise und Angaben zur Bemessung von unterirdischen Rohrleitungen nach 
+Grenzzuständen dürfen entweder dem Anhang A oder Gresnigt, A.M. „Plastic Design of Buried Pipelines in Settlement 
+Areas, HERON, Vol. 31, No 4, 1986 oder anderen Publikationen, die im Anhang C angegeben sind, entnommen werden. 
+5.2 Nachweise im Grenzzustand der Tragfähigkeit 
+5.2.1 LS1: Bruch 
+(1) Die aus der Berechnung resultierenden Spannungen sollten das Spannungskriterium nach von Mises 
+erfüllen: 
+dy,
+2
+xyyx
+2
+y
+2
+xEde, 3 f (5.9) 
+5.2.2 LS2: Plastische Dehngrenze 
+(1) Die maximale Dehnung max sollte die in 3.4 definierte Grenzdehnung nicht überschreiten. Rk,
+(2) Es sollte nachgewiesen werden, dass die Rohrwandung mit Schweißnähten und Diskontinuitäten im 
+zulässigen Bereich das in der statischen Berechnung geforderte Dehnvermögen (Grenzdehnung) besitzt. 
+5.2.3 LS3: Verformung 
+(1) Um ein Durchschlagen des Querschnitts infolge Beulen zu verhindern, sollte eine übermäßige 
+Querschnittsverformung in Form von Ovalisierung begrenzt werden. 
+(2) Der Parameter a, der die Ovalisierung kennzeichnet, ist definiert als: 
+4
+minmax DDa (5.10) 
+Er sollte auf den Wert amax begrenzt werden mit: 
+amax = x De
+ (5.11) 
+ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: 
+x = 0,05. 
+(3) Örtliches Beulen sollte mit Hilfe der kritischen Dehnung cr nachgewiesen werden. Für die Ermittlung von 
+cr sollte zunächst die Ovalisierung infolge von ungleichmäßigem Erddruck mit Hilfe des Parameters a
+ermittelt werden, dabei ist a die Hälfte der Durchmesseränderung infolge Erddruck. Danach sollte der Wert a
+benutzt werden, um den lokalen Radius der Krümmung ro an dem Teil des Umfangs, der am meisten 
+eingedrückt wird, zu berechnen, siehe Bild 5.3. Der Druck p sollte im Falle von Innendruck positiv, bei 
+Außendruck negativ angesetzt werden. 
+24 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(4) Die kritische Dehnung cr sollte mit den folgenden Gleichungen ermittelt werden: 
+p
+p
+Et
+pr
+r
+t 2o00035002,0o25,0cr für 60o
+t
+r (5.12) 
+p
+p
+Et
+pr
+r
+t 2o0003o10,0cr für 60o
+t
+r (5.13) 
+Dabei ist 
+r
+a
+rr 31
+o (5.14) 
+(5) Es sollte nachgewiesen werden, dass: 
+max cr
+ (5.15) 
+Bild 5.3  Definition von ro in einem Querschnitt mit Ovalisierung 
+(6) In Rohrleitungen unter Einwirkung von Außendruck sollte der mögliche Querschnittskollaps (Implosion) 
+mit Hilfe von EN 1993-1-6 untersucht werden. 
+(7) Falls die Gefahr des Biegeknickens der Rohrleitung besteht, sollte die Bemessung mit Hilfe von 
+EN 1993-1-1 beurteilt werden. 
+5.2.4 LS4: Ermüdung 
+(1) Die Bemessung sollte EN 1993-1-9 genügen. 
+ANMERKUNG Im National Anhang darf auf weitere maßgebende Normen zur Ermüdungsbelastung verwiesen werden. 
+5.2.5 LS5: Leckagen 
+(1) Bei der Bemessung sollten die Folgen einer möglichen Leckage aufgrund anderer Ursachen als Bruch 
+der Rohrwandung (z. B. infolge ungenügender Dichtheit in den Verbindungselementen, Korrosion oder 
+Fremdeinwirkungen) in Betracht gezogen werden. 
+(2) Auf die einschlägigen Normen sollte Bezug genommen werden. 
+25 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+5.3 Nachweise in den Grenzzuständen der Gebrauchstauglichkeit 
+(1) Die Nachweise für die Grenzzustände der Gebrauchstauglichkeit LS6, LS7 und LS8 sollten die 
+Gebrauchstauglichkeitskriterien zur Ovalisierung, zur Durchbiegung, zu Schwingungen und zur Leckage 
+erfüllen. 
+(2) Auf die einschlägigen Normen sollte Bezug genommen werden. 
+(3) Die Kriterien für die einzelnen Grenzzustände der Gebrauchstauglichkeit (z. B. in Hinblick darauf, ob 
+Anforderungen für den Einsatz eines Molches bestehen) sollten zwischen Planer und Auftraggeber vereinbart 
+werden. 
+(4) Abhängig von den Entwurfsbedingungen (z. B. Art der Rohrleitung, des Inhalts und der Umgebung) 
+können besondere Einschränkungen zur Leckage zwischen dem Planer, dem Auftraggeber und der 
+Aufsichtsbehörde vereinbart werden. 
+6 Gesichtspunkte für die Planung hinsichtlich Fertigung und Montage 
+(1) Die Anforderungen der maßgebenden Anwendungsnormen sollten erfüllt werden. 
+(2) Für Herstellung und Einbau gelten die maßgebenden Abschnitte von EN 1090-2. 
+26 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Anhang A
+(informativ) 
+Berechnung von Widerständen, Verformungen, Spannungen und 
+Dehnungen unterirdischer Rohrleitungen 
+A.1 Berechnungsverfahren und Anwendungsbereich 
+(1) Die Berechnung erfolgt im Allgemeinen aus den nachfolgend aufgeführten Phasen (2) bis (7). 
+(2) Erfassen von Bemessungsdaten
+Je nach Art und Größe des Rohrleitungssystems sind Eingangsdaten für den Entwurf und für die 
+Spannungsermittlung erforderlich. Diese Daten sind detailliert in den einschlägigen Normen beschrieben. 
+(3) Statisches System und Unterteilung der Rohrleitung in Abschnitte für die Berechnung
+Für die Berechnung wird die Rohrleitung einschließlich der einwirkenden Lasten durch statische Systeme 
+idealisiert und in Abschnitte unterteilt. 
+(4) Ermittlung der für die Berechnung maßgebenden Lasten und Lastkombinationen und der zugehörigen 
+Teilsicherheitsbeiwerte
+Vom Grundsatz her sollte jeder Abschnitt der Rohrleitung untersucht werden, um die Auswirkungen der in 
+Absatz (1) erwähnten Lasten zu ermitteln. Die für jeden Rohrleitungsabschnitt maßgebenden Lasten sollten 
+auf dieser Grundlage ermittelt werden. Die Berechnung basiert auf den Bemessungswerten der Lasten. Die 
+Werte für die anzusetzenden Teilsicherheitsbeiwerte sollten den maßgebenden Bezugsnormen entnommen 
+werden. 
+(5) Berechnung von Kräften, Momenten und Relativverschiebungen
+Es sollten die Verteilung und die Größe der Kräfte und Momente und, wo nötig, die Verformung der 
+Rohrleitung ermittelt werden, nicht nur als Funktion der Länge des vollständigen Leitungssystems, sondern, 
+falls angebracht, auch als Funktion der Zeit. Dies gilt ebenso für Kräfte, die von der Rohrleitung auf ihre 
+Umgebung ausgeübt werden (auf Boden, Lagerungen, Festpunkt- und Verkleidungskonstruktionen usw.). 
+(6) Berechnung von Spannungen, Dehnungen und Verformungen
+Es sollten die positiven und negativen Werte für Spannungen und Dehnungen, die in den Wänden der 
+Elemente des Rohrleitungssystems auftreten, ermittelt werden, wenn nötig einschließlich der Schwingbreiten 
+oder der Amplituden und Auftretenshäufigkeiten der Spannungen und/oder Dehnungen. 
+Dort, wo erhöhte Spannungen in Leitungselementen auftreten (z. B. in Krümmungen), sollten diese in der 
+Berechnung berücksichtigt werden. Unbedeutende Spannungen, Verformungen und Schwingbreiten 
+brauchen nicht in die Berechnung einbezogen zu werden. 
+(7) Nachweise
+Die Spannungen, Dehnungen, Verformungen und andere Werte, die für die Bemessungslasten berechnet 
+werden, sollten die Grenzwerte nicht überschreiten. 
+ANMERKUNG Weitere Informationen zu den Themen in diesem Anhang und Hinweise für die praktische Berechnung 
+können aus: Gresnigt, A.M. „Plastic Design of Buried Pipelines in Settlement Areas , HERON, Vol. 31, No. 4, 1986, und 
+anderen Publikationen, die im Anhang C angegeben sind, entnommen werden. 
+27 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+A.2 Berechnung für gerade Rohre 
+A.2.1 Definitionen von Schlüsselparametern 
+Mittlerer Durchmesser tDD e
+Ovalisierungsparameter 4/)( minmax DDa
+Mittlerer Radius eines Rohres 2/Dr
+Plastisches Moment im Rohrquerschnitt y
+2
+p 4 ftrM
+Elastisches Moment im Rohrquerschnitt y
+2
+e ftrM
+Krümmung infolge des elastischen Momentes im 
+Rohrquerschnitt Er
+f
+C y
+e
+Momententragfähigkeit der Rohrwand je Breiteneinheit an der 
+Grenze des elastischen Bereichs 6/y
+2
+e ftm
+Vollplastische Momententragfähigkeit der Rohrwand je 
+Breiteneinheit 4/y
+2
+p ftm
+Plastische Normalkraft der Rohrwand je Breiteneinheit 
+Dabei wird fy als fy,d angenommen. 
+yp ftn
+ANMERKUNG Der Einfachheit halber wurden die Indizes in diesem Anhang durch Weglassen der Indizes d, Rd und Ed
+abgekürzt. 
+A.2.2 Interaktion 
+(1) Bild A.1 zeigt den Einfluss verschiedener Einwirkungen wie z. B. Normalkraft, Querkraft, Innendruck und 
+Erddruck auf das Momenten-Krümmungs-Diagramm für ein gerades Rohr. 
+28 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(1) Ohne weitere Einwirkungen 
+(2) Mit weiteren Einwirkungen 
+wie z. B. Normalkraft, 
+Querkraft, Innendruck und 
+Erddruck, die zu kleineren 
+Werten für die 
+Biegemomente M
+p und Me
+(bzw. Mm und *
+eM ), sowie zu 
+einem kleineren Wert *
+eC für 
+die Krümmung Ce führen. 
+Bild A.1  Momenten-Krümmungs-Diagramm für ein gerades Rohr 
+(2) Bild A.2 stellt ein Beispiel für ein Momenten-Krümmungs-Diagramm für ein gerades Rohr dar, das mit 
+verschiedenen Einwirkungen, wie Normalkraft, Querkraft, Innendruck und Erddruck belastet ist. 
+Legende 
+deformation capacity = Verformungsvermögen 
+curvature = Krümmung 
+Bild A.2  Momenten-Krümmungs-Diagramm für ein gerades Rohr mit Angabe weiterer 
+Einwirkungen 
+(3) Bild A.3 zeigt den direkt übertragenen Erddruck Qd, den indirekt übertragenen Erddruck 
+(Auflagerreaktion) Qi und den äquivalenten Erddruck Qeq, bei dem Qi durch eine Größe Qd ersetzt wird, 
+welche die gleichen mittleren Rohrwandmomente in Umfangsrichtung verursacht wie Qi. 
+29 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Bild A.3  Erdlasten Qd, Qi und Qeq, die auf den Querschnitt der Rohrleitung einwirken 
+(4) Die vollplastische Biegemomententragfähigkeit Mm des Rohrquerschnitts eines geraden Rohrs bei gleich-
+zeitiger Einwirkung einer äußeren Längskraft F kann folgendermaßen ermittelt werden: 
+1
+71
+pdtr
+m
+pdtr
+m ,
+N
+N
+M
+M (A.1) 
+2m rpFN (A.2) 
+Dabei ist 
+Mm die maximale Biegemomententragfähigkeit bei voller Plastizierung; 
+Nm die maximale Normalkrafttragfähigkeit bei voller Plastizierung. 
+(5) Die Biegemomententragfähigkeit ergibt sich bei reiner Biegung durch: 
+2
+tpr
+t
+pr
+prpdtr 1 M
+M
+V
+VMM (A.3) 
+Dabei ist 
+pl.Rdpr MhgM (A.4) 
+36
+21 ccg (A.5) 
+r
+ah 3
+21 (A.6) 
+(6) Die Normalkrafttragfähigkeit ergibt sich bei reinem Längsdruck durch: 
+2
+tpr
+t
+pr
+prpdtr 1 M
+M
+V
+VNN (A.7) 
+Dabei ist 
+ppr NgN (A.8) 
+30 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+(7) Die Faktoren, zur Modifizierung der Basiswerte der Tragfähigkeit für Biegung oder Druck, sind: 
+tptpr MgM (A.9) 
+y2tp
+3
+2 ftrM (A.10) 
+y2p 4 ftrM (A.11) 
+yp 2 ftrN (A.12) 
+ppr VgV (A.13) 
+yp
+3
+4 ftrV (A.14) 
+p
+y
+2
+p
+y
+1 3234 m
+m
+n
+n
+c (A.15) 
+2
+p
+y
+2 34 n
+n
+c (A.16) 
+(8) Die plastische Normalkraft ny der Rohrwand je Breiteneinheit ergibt sich aus: 
+ypykyqy nnnn (A.17) 
+idyq 125,025,0 QQn (A.18) 
+r
+CMn m
+yk 20,0 (A.19) 
+rpnyp (A.20) 
+yp ftn (A.21) 
+(9) Das plastische Biegemoment my je Breiteneinheit der Rohrwand ergibt sich aus: 
+ypykyqy mmmm (A.22) 
+oCMm myk 071,0 (A.23) 
+arpmyp (A.24) 
+yqiyqdyq mmm (A.25) 
+odyqd 2sin2sin25,0125,0 rQm (A.26) 
+31 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+oiyqi 2sin25,05,025,0 rQm (A.27) 
+r
+a1o (A.28) 
+y
+2
+p 25,0 ftm (A.29) 
+(10) Die folgenden Gleichungen gelten: 
+2sin2sin4
+2sin2
+ieq QQ (A.30) 
+y
+2
+e ftrM (A.31) 
+y
+2
+e 6
+1 ftm (A.32) 
+A.2.3 Momenten-Krümmungs-Diagramm 
+(1) Der elastische Teil des in Bild A.2 dargestellten Momenten-Krümmungs-Diagramms kann mit den 
+folgenden Gleichungen konstruiert werden: 
+CEIM red (A.33) 
+Dabei ist 
+EIred die infolge Ovalisierung verringerte Biegesteifigkeit der Rohrleitung; 
+r
+atrEEI 5,113red (A.34) 
+a' die Ovalisierung bei C = Ce
+*
+(2) Der elastisch-plastische Teil des Momenten-Krümmungs-Diagramms in Bild A.2 darf mit den folgenden 
+Gleichungen konstruiert werden: 
+r
+aMM 5,11cos
+sin
+5,0m (A.35) 
+DC 2 (A.36) 
+Ef yy / (A.37) 
+y
+ (A.38) 
+)/1arcsin( mit ; dabei ist (A.39) 2/0 1
+32 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Dabei ist 
+M das Biegemoment bei der Krümmung C; 
+C die Krümmung der Rohrleitung; 
+ ein Parameter, der abhängig von den maximalen Dehnungen infolge Biegung in axialer Richtung ist; 
+ die maximale Dehnung infolge Biegung in axialer Richtung. 
+ANMERKUNG Der elastische Teil des Momenten-Krümmungs-Diagramms endet bei /2. Das Biegemoment und 
+die Krümmung an diesem Punkt ergeben sich dann zu (siehe auch die Bilder A.1 und A.2): 
+m4*e MM (A.40) 
+p
+my*
+e 2 M
+M
+DC (A.41) 
+A.2.4 Berechnung der Ovalisierung 
+(1) Bei geringeren Krümmungen als können die Ovalisierung und die Dehnungen in Umfangs- und in 
+axialer Richtung mit der Elastizitätstheorie ermittelt werden. 
+*
+eC
+(2) Bei größeren Krümmungen als sollten die Ovalisierung und die Dehnungen in Umfangs- und axialer 
+Richtung ermittelt werden, indem das Normalitätsprinzip für Verformungen verwendet wird. 
+*
+eC
+ANMERKUNG Näheres hierzu kann A.M. Gresnigt: „Plastic Design of Buried Pipelines , HERON, Vol. 31, No. 4, 1986, 
+und anderen Publikationen, die in Anhang C angegeben sind, entnommen werden. 
+ANMERKUNG In den folgenden Abschnitten wird ein Näherungsverfahren beschrieben, siehe auch NEN 3650.
+(3) Die Ovalisierung a wird in der Regel durch Erddruck verursacht; die Krümmung spielt jedoch auch eine 
+Rolle. Die Ovalisierung wird durch den inneren Druck verringert („Rückverformung ). 
+(4) Die Ovalisierung a enthält einen elastischen Anteil ael und einen plastischen Anteil apl. 
+plel aaa (A.42) 
+(5) Der elastische Anteil ael kann wie folgt berechnet werden: 
+el,cel,qiel,qdel aaaa
+Dabei ist 
+aqd,el die Ovalisierung, die durch den direkten Erddruck nach Bild A.2 und Bild A.3 verursacht wird. 
+Der Erddruck auf den Querschnittsscheitel ist gleich dem stützenden Erddruck auf die 
+Querschnittssohle; 
+rr
+w
+3
+d
+ydel,qd )31(5,0 fr
+a
+EI
+rQka (A.43) 
+aqi, el die Ovalisierung, die durch den indirekten Erddruck nach Bild A.2 und Bild A.3 verursacht wird, 
+z. B. Auflagerreaktionen infolge ungleichmäßiger Setzungen; 
+33 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 36 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+rr
+w
+3
+i
+yiel,qi )31(5,0 fr
+a
+EI
+rQka (A.44) 
+ac, el die durch Krümmung verursachte Ovalisierung 
+rrfr
+a
+d
+rCa )31(2
+52
+el,c (A.45) 
+Dabei ist 
+kyd der Durchbiegungskoeffizient, der von der Belastungsverteilung durch den direkten Erddruck 
+abhängt. Einige Werte sind in Tabelle A.1 angegeben. Siehe auch Bild A.2; 
+kyi der Koeffizient der Durchbiegung, der von der Belastung durch den indirekten Erddruck abhängt. 
+Einige Werte sind in Tabelle A.1 angegeben. Siehe auch Bild A.2; 
+frr ein Rückverformungsbeiwert 
+pp
+pf
+cr
+cr
+rr (A.46) 
+pcr der rechnerische Wert des Implosionsdrucks 
+3
+w
+cr
+3
+r
+EIp (A.47) 
+EIw die Biegesteifigkeit der Rohrwandung je Längeneinheit (Nmm²/mm) 
+)1(12 2
+3
+w
+EtEI (A.48) 
+C die Krümmung 
+drE
+M
+EI
+MC 3 (A.49) 
+(6) In den Gleichungen für die Ovalisierung können aqd-el und aqi-el so lange angewendet werden, bis das 
+maximale Biegemoment in der Rohrwandung in Richtung des Umfangs myq gleich mp ist. Die Gleichung für 
+ac-el gilt für Krümmungen bis . *
+eC
+(7) Wirken sowohl der direkte Erddruck als auch der indirekte Erdruck auf den Querschnitt, ergibt sich das 
+maximale Biegemoment aus folgender Gleichung: 
+rr)1(inmirr)1(dimdyq fr
+arQkfr
+arQkm (A.50) 
+34 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 37 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Tabelle A.1  Durchbiegungs- und Momentenkoeffizienten für den direkten und indirekten Erddruck 
+(siehe auch Bild A.2) 
+Durchbiegungskoeffizient kyd und 
+Momentenkoeffizient kmd für den direkten 
+Erddruck 
+Durchbiegungskoeffizient kyi und 
+Momentenkoeffizient kmi für den indirekten 
+Erddruck 
+(Grad) (Grad) 
+kyd kmd
+(Grad) (Grad) 
+kyi kmi
+180 
+180 
+180 
+180 
+180 
+180 
+180 
+0 
+30 
+60 
+90 
+120 
+150 
+180 
+0,116 
+0,113 
+0,105 
+0,096 
+0,089 
+0,085 
+0,083 
+0,294 
+0,235 
+0,189 
+0,157 
+0,138 
+0,128 
+0,125 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0 
+30 
+60 
+90 
+120 
+150 
+180 
+0,074 
+0,071 
+0,064 
+0,055 
+0,048 
+0,043 
+0,042 
+0,239 
+0,179 
+0,134 
+0,102 
+0,083 
+0,073 
+0,070 
+0 
+30 
+60 
+90 
+120 
+150 
+0 
+30 
+60 
+90 
+120 
+150 
+0,149 
+0,143 
+0,122 
+0,110 
+0,096 
+0,086 
+0,318 
+0,257 
+0,207 
+0,169 
+0,143 
+0,129 
+    
+(8) Der plastische Anteil apl kann wie folgt berechnet werden: 
+)31()pl,cpl,qipl,qd(pl r
+aaaaa (A.51) 
+Dabei ist 
+aqd, pl der plastische Anteil der durch den direkten Erddruck verursachten Ovalisierung einschließlich 
+Rückverformung; 
+aqi, pl der plastische Anteil der durch den indirekten Erddruck verursachten Ovalisierung einschließlich 
+Rückverformung; 
+ac, pl der plastische Anteil der durch die aufgebrachte Krümmung verursachten Ovalisierung 
+einschließlich Rückverformung. 
+(9) In den meisten Fällen sind die Erdlasten so, da ss die Beanspruchungen, die sich daraus ergeben, 
+unterhalb der Streckgrenze sind, so dass sowohl aqd, pl als auch aqi, pl gleich null sind. Sollte dies nicht der 
+Fall sein, ist eine plastische Querschnittsberechnung erforderlich, um aqd, pl und aqi, pl zu bestimmen. 
+ANMERKUNG Näheres hierzu kann A.M. Gresnigt: „Plastic Design of Buried Pipelines , HERON, Vol. 31, No. 4, 1986, 
+und anderen Publikationen, die in Anhang C angegeben sind, entnommen werden. 
+(10) Zur Ermittlung von ac, pl kann die folgende Näherungsgleichung angewendet werden: 
+35 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 38 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+)(2 *
+e
+3
+plc, CCt
+ra (A.52) 
+Dabei ist 
+2
+25,01 g
+c (A.53) 
+ANMERKUNG Da c2 und g von der Krümmung und der Ovalisierung abhängen, ist ein iteratives Verfahren erforderlich. 
+A.2.5 Berechnung der Dehnungen 
+(1) Die maximale Dehnung in Längsrichtung kann näherungsweise mit folgender Gleichung ermittelt werden: 
+xNxCx (A.54) 
+Dabei ist 
+rCxC (A.55) 
+AE
+N
+xN (A.56) 
+A die Querschnittsfläche. 
+(2) Der maximale Dehnung y,max in Richtung des Umfangs kann mit dem folgenden Näherungsverfahren 
+bestimmt werden: 
+ply,el,ymax,y (A.57) 
+(3) Für den elastischen Anteil ( y,el yield = fy/E): 
+tE
+rpa
+r
+t
+k
+ka
+r
+t
+k
+k
+2yi
+mi
+2yd
+md
+ely,max,y (A.58) 
+ANMERKUNG Die Ovalisierung bei yield wird als ayield bezeichnet. 
+(4) Für den plastischen Anteil ( y,pl > yield = fy/E): 
+tE
+rp
+a
+a
+yieldply,
+2
+yield
+ (A.59) 
+36 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 39 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+A.3 Berechnung von Rohrbögen 
+(1) Es wird auf die maßgebenden Bezugsnormen verwiesen, sowie auf: 
+ A.M. Gresnigt: „Plastic Design of Buried Pipelines in Settlement Areas , HERON, Vol. 31, No. 4, 1986; 
+ weitere Publikationen, die in Anhang C angegeben sind. 
+37 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 40 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Anhang B
+(informativ) 
+Hinweise zu nationalen Normen und Bemessungsrichtlinien 
+BS 8010 (1989-1993) Code of practice for pipelines. British Standards Institution. 
+Part 1: Pipelines on land: general. 
+Part 2: Pipelines on land: design, construction and installation. 
+Part 3: Pipelines subsea: design, construction and installation. 
+Part 4: Pipelines on land and subsea: operation and maintenance. 
+Gresnigt, A.M. (1986) „Plastic design of buried steel pipelines in settlement areas,  HERON, Vol 31, no 4, 
+Delft University of Technology. 
+ NEN 3650 (2003-2006) „Requirements for steel pipeline transportation systems 
+Part 1: General (NEN 3650-1:2003+A1:2006) 
+Part 2: Steel (NEN 3650-2:2003+A1:2006) 
+Herausgegeben vom NEN (erhältlich in Niederländisch und in Englisch). 
+BS 7910 (1999) „Guide on methods for assessing the acceptability of flaws in metallic structures, with 
+amendments of October 2000 , British Standards Institution. 
+API-5L : Specification for Line Pipe. 
+API-5LX : Specification for high-test Line Pipe. 
+API-5LS : Specification for spiral welded Line Pipe. 
+API-1104 : Specification for Field Welding of Pipelines. 
+API-1105 : Recommended Practice on Construction of steel Pipelines. 
+38 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 41 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Anhang C
+(informativ) 
+Literaturhinweise 
+C.1 Allgemeine Literaturhinweise zu Rohrleitungen 
+Chen, S.L., Li, S.F. (1994) „Study on the nonlinear buckling in thin-walled members with arbitrary initial 
+imperfection, Thin walled structures, Elsevier Science Limited, Vol. 19, pp 253 268. 
+Corona, E. and Kyriakides, S. (1988) „Collapse of pipelines under combined bending and external pressure , 
+BOSS, Trondheim, pp 953964. 
+Findlay, G.E., and Spence, J. (1979) „Stress analysis of smooth curved tubes with flanged end constraints , 
+International Journal of Pressure Vessels and Piping, Vol. 7, 83103. 
+Foeken, R.J. van, Gresnigt A.M. (1998) „Buckling and Collapse of UOE manufactured steel pipes . Offshore 
+and Onshore Supervisory Committee of PRC International, PR-238-9423, Arlington, USA. 
+Garwood, S.J., Willoughby, A.A. Rietjens, P. (1981) „The application of CTOD methods for safety assessment 
+in ductile pipeline steels , Conference on Fitness for Purpose Validation of Welded Constructions , 
+November, 1981, London. 
+Gresnigt, A.M. (1989) „Ultimate strength and deformation capacity of pipelines , Eighth International 
+Conference on Offshore Mechanics and Arctic Engineering, The Hague, March 19-23, pp 183 191. 
+Gresnigt, A.M., Foeken, R.J. van (1990) „Strength and deformation capacity of pipelines loaded by local loads 
+and bending, Pipeline Technology Conference, Oostende, Belgium, October 1990. 
+Gresnigt, A.M., Foeken, R.J. van (1995) „Strength and deformation capacity of bends in pipelines , 
+International Journal of Offshore and Polar Engineering (Transactions of The ISOPE) , Vol. 5, number 4, 
+December 1995, pp. 294 307. 
+Gresnigt, A.M. van Foeken, R.J. (1996) „Experiences with Strain Based Limit State Design in The 
+Netherlands, Proceedings ASPECT '96. Advances in Subsea Pipeline Engineering and Technology , 
+Aberdeen, 27-28 November 1996, pp. 111-134. 
+Gresnigt, A.M., Foeken, R.J. van, Chen, S. (2000). „Collapse of UOE Manufactured Steel Pipes . Proceedings 
+of the Tenth International Offshore and Polar Engineering Conference (ISOPE). Seattle. Vol. II. 
+pp. 170181. 
+Gresnigt, A.M., Foeken, R.J. van (2001). „Local Buckling of UOE and Seamless Steel Pipes . Proceedings of 
+the Eleventh International Offshore and Polar Engineering Conference (ISOPE). Stavanger, Vol. II. pp. 
+131142. 
+Gresnigt, A.M. (2002). „Elastic and Plastic Design of Mitred Bends . Proceedings of the Twelfth International 
+Offshore and Polar Engineering Conference (ISOPE). Kitakyushu, Japan. 
+Guijt, W., Vrouwenvelder, A.C.W.M., Gresnigt, A.M., Dijkstra, G.J. ( 2004). „Safety Concept in the New Dutch 
+Pipeline Standard NEN 3650 . Proceedings of the Fourteenth International Offshore and Polar Engineering 
+Conference (ISOPE), Toulon, France. 
+Kafka, P.G. and Dunn, M.B. (1956) „Stiffness of curved circular tubes with internal pressure , 
+Transactions of 
+the ASME, Vol. 78, 247254. 
+39 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 42 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+Karman, Th. von (1911) „Über die Formänderung dünnwandiger Rohre, insbesondere federnder 
+Ausgleichrohre, Zeitschrift des Vereines deutscher Ingenieure, Band 55, No.45, 1889 1895. 
+Karamanos S.P. and Tassoulas J.L. (1991) „Stability of inelastic tubes under external pressure and bending , 
+Journal of engineering mechanics, Vol. 17, No 12, 2845 2861. 
+Karamanos, S.A., Giakoumatos E., Gresnigt A.M. (2003). „Nonlinear Response and Failure of Steel Elbows 
+under in-Plane Bending and Pressure . ASME Journal of Pressure Vessel Technology. Vol. 125, 
+November 2003. 
+Karamanos, S.A., Tsouvalas, D., Gresnigt, A.M. (2005). „Ultimate Bending Capacity and Buckling of 
+Pressurized 90 Deg Steel Elbows . ASME Journal of Pressure Vessel Technology. Vol. 127, …… 2005. 
+Korol, R.M., (1979). „Critical buckling strains of round tubes in flexure , International Journal of Mechanical 
+Science, Vol. 21, pp. 719 730. 
+Kyriakides, S., Corona, E. (1991) „On the effect of the UOE manufacturing process on the collapse pressure 
+of long tubes, Offshore Technology Conference, OTC 6758. 
+Murphy, C., Langner, C. (1985). „Ultimate pipe strength under bending, collapse and fatigue , Proceedings of 
+the 4th International Conference on Offshore Mechanics and Arctic Engineering (OMAE) , Dallas, February 
+1985. 
+Rodabaugh, E.C., and George H.H. (1957) „Effect of internal pressure on flexibility and stress intensification 
+factors of curved pipe or welding elbows , Transactions of the ASME, Vol. 79. 
+Schaap, D., Van Foeken, R.J. and De Winter, P.E. (1988) „Deformation capacity of steel tubulars subjected 
+to internal or external pressure , BOSS, Trondheim, pp. 12711283. 
+Spiekhout, J. (1988) „Fitness-for-Purpose Assessment of Weld Flaws - Application of Various Fracture 
+Mechanics Codes , Welding Journal, September 1988. 
+Thomson, G., and Spence, J. (1983) „Maximum stresses and flexibility factors of smooth pipe bends with 
+tangent pipe terminations under in-plane bending , Journal of Pressure Vessel Technology , Vol. 105, 
+329335. 
+Vigness, I. (1943) „Elastic properties of curved tubes , Transactions of the ASME, 105120. 
+Walker A.C., Williams, K.A.J., (1996). „The safe use of strain based criteria for the design and assessment of 
+offshore pipelines , Proceedings Offshore Pipeline Technology (OPT '96-IBC Technical Services LTD 
+London), Amsterdam, February 15 16, 1996. 
+Whatham, J.F. (1986) Pipe bend analysis by thin shell theory, Journal of applied mechanics, Vol. 53, 153-180. 
+Yoosef-Ghodsi, N., Kulak, G.L., Murray, D.W. (1995), „Some test results for wrinkling of girth welded line pipe , 
+Proceedings of the 14th International Conference on Offshore Mechanics and Arctic Engineering (OMAE), 
+Vol. V-Pipeline Technology, Copenhagen, June 18-22, 1995, pp. 379 388. 
+Zimmerman, T.J.E., Stephens, M.J., DeGeer, D.D., Chen, Q. (1995), „Compressive strain limits for buried 
+pipelines, Proceedings of the 14th International Conference on Offshore Mechanics and Arctic 
+Engineering (OMAE), Vol. V - Pipeline Technology, Copenhagen, June 18-22, 1995, pp. 365 378. 
+40 
+DIN EN 1993-4-3:2010-12
+
+===== PDF-SEITE 43 =====
+EN 1993-4-3:2007 + AC:2009 (D) 
+41 
+C.2 Literaturhinweise zur Geotechnik 
+ASCE, (1984) „Guidelines for the seismic design of oil and gas pipelines , American Society of Civil Engineers, 
+New York. 
+Audibert, Nymann (1977) „Soil restraint against horizontal motion of pipes , Journal of the Geotechnical 
+Engineering Division, ASCE, Vol. 103, no. GT10, October 1977. 
+Brinch Hansen, J. (1961) „The ultimate resistance of rigid piles against transversal forces , Danish 
+Geotechnical Institute, Bulletin 12, Copenhagen. 
+Brinch Hansen, J. (1970) „A revised and extended formula for bearing capacity , Danish Geotechnical 
+Institute, Bulletin No. 28, Copenhagen, pp. 5-11. 
+Clarke, (1967) „Buried pipelines, McLaren and Sons, London. 
+Hergarden, H.J.A.M., Rol, A.H. (1984) „Grondonderzoek gedrag buisleiding in klei - onderzoek uitgevoerd te 
+Kesteren in 1984 - Behaviour of pipeline in clay-tests carried out in Kesteren 1984  (in Dutch), Delft 
+Geotechnics, report CO-272040/75. 
+Hergarden, H.J.A.M. (1992) „Enkele geotechnische aspecten bij de aanleg van leidingen - Some geotechnical 
+aspects of pipeline construction  (in Dutch), Delft Geotechnics, Report CO-322680/7, March 1992. 
+Matyas, Davis (1983) „Prediction of the vertical earth loads on rigid pipes , Journal of the Geotechnical 
+Engineering Division, ASCE, Vol. 109, No. 2, February 1983. 
+Spangler, M.G. (1951) „Soil Engineering, International Textbook Company, Scranton. 
+Terzaghi, K. (1944) „Theoretical soil mechanics , 2nd edition 1944, page 194-202. 
+Terzaghi, K. (1966) „Fundamentals of soil mechanics , John Wiley and Sons, New York. 
+Thomas (1978) „Discussion of soil restraint against horizontal motion of pipes , Journal of the Geotechnical 
+Engineering Division, ASCE, Vol. 104, No. GT9, September 1978. 
+Trautmann, O'Rourke (1985) „Lateral force-displacement response of buried pipe , Journal of Geotechnical 
+Engineering, Vol. 111, No 9, September 1985. 
+Winterkorn, H.F. and Hsai-Yang (1975) „Foundation Engineering Handbook , Van Nostrand Reinhold, New 
+York, London. 
+DIN EN 1993-4-3:2010-12

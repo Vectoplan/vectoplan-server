@@ -1,0 +1,1201 @@
+{
+  "document_id": "EN_1991-1-5__base_standard__EC_1_Teil_1-5",
+  "eurocode_family": "EC1",
+  "designation": "DIN EN 1991-1-5",
+  "document_kind": "base_standard",
+  "file_name": "EC 1 Teil 1-5.pdf",
+  "relative_path": "EC 1/EC 1 Teil 1-5.pdf",
+  "sha256": "e935bf7271dbe9e58a4666ba6f3cab35e1b4cab250ecd242fede7809208cd241",
+  "pages": 40,
+  "text_pages": 39,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 83,
+  "equation_candidate_count": 33,
+  "table_reference_count": 12,
+  "figure_reference_count": 16,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111123819+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117231945+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\5.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Geltungsbereich............................................................................................................ .........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... .................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... ...........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln........................................................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe und Definitionen.................................................................................................. ....................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole .................................................................................................................... ..............................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Klassifizierung der Einwirkungen ............................................................................................. .........11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituation .......................................................................................................... ...............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Beschreibung der Einwirkungen................................................................................................ ........12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Temperaturunterschiede in Gebäuden........................................................................................... ...13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines................................................................................................................ ..........................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Bestimmung der Temperatur.................................................................................................. ............13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Bestimmung von Temperaturprofilen.......................................................................................... ......14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Temperaturunterschiede bei Brücken ........................................................................................... ....16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1",
+      "title": "Brückenüberbauten .......................................................................................................... ...................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Arten von Brückenüberbauten .............................................................................................. .............16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Berücksichtigung von Temperatureinwirkungen.............................................................................1 6",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Konstanter Temperaturanteil.............................................................................................. ................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Veränderliche Temperaturanteile.......................................................................................... .............18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.5",
+      "title": "Gleichzeitige Berücksichtigung von konstanten und veränderlichen Temperaturanteilen ........24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.6",
+      "title": "Konstanter Temperaturunterschied zwischen verschiedenen Bauteilen......................................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2",
+      "title": "Brückenpfeiler............................................................................................................. .........................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Berücksichtigung der Temperatureinwirkungen.............................................................................. 24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Temperaturunterschiede................................................................................................... ..................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7",
+      "title": "Temperaturunterschiede in Industrieschornsteinen, Rohrleitungen, Silos, Tanks und",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines................................................................................................................ ..........................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.2",
+      "title": "Temperaturanteile.......................................................................................................... ......................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Außenlufttemperatur ...................................................................................................... .....................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Strömende Gase, warme Flüssigkeiten und warme Materialien.....................................................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.2.3",
+      "title": "Bauteiltemperatur ........................................................................................................ ........................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.3",
+      "title": "Berücksichtigung von Temperaturanteilen .................................................................................... ..26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.4",
+      "title": "Bestimmung der Temperaturanteile ........................................................................................... .......26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.5",
+      "title": "Werte für die Temperaturanteile (Anhaltswerte) ............................................................................. .26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.6",
+      "title": "Gleichzeitige Berücksichtigung der Temperaturanteile ..................................................................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.1",
+      "title": "Geltungsbereich",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe und Definitionen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2",
+      "title": "Klassifizierung der Einwirkungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituation",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4",
+      "title": "Beschreibung der Einwirkungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "5",
+      "title": "Temperaturunterschiede in Gebäuden",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5.2",
+      "title": "Bestimmung der Temperatur",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5.3",
+      "title": "Bestimmung von Temperaturprofilen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "6",
+      "title": "Temperaturunterschiede bei Brücken",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1",
+      "title": "Brückenüberbauten",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Arten von Brückenüberbauten",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Berücksichtigung von Temperatureinwirkungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Konstanter Temperaturanteil",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6.1.3.2",
+      "title": "Außenlufttemperatur",
+      "pdf_page": 20
+    },
+    {
+      "clause": "6.1.3.3",
+      "title": "Änderungen des konstanten Temperaturanteils bei Brücken",
+      "pdf_page": 20
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Veränderliche Temperaturanteile",
+      "pdf_page": 20
+    },
+    {
+      "clause": "6.1.4.1",
+      "title": "Vertikale linear veränderliche Anteile (Verfahren 1)",
+      "pdf_page": 21
+    },
+    {
+      "clause": "6.1.4.2",
+      "title": "Vertikale Temperaturanteile mit nicht linearen Einflüssen (Verfahren 2)",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2",
+      "title": "Tragwerkssystem",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3",
+      "title": "Temperaturunterschied",
+      "pdf_page": 24
+    },
+    {
+      "clause": "6",
+      "title": "Normales Verfahren",
+      "pdf_page": 24
+    },
+    {
+      "clause": "7",
+      "title": "Vereinfachtes Verfahren",
+      "pdf_page": 24
+    },
+    {
+      "clause": "8",
+      "title": "Typ 2. Betonkonstruktion auf Hohlkastenträger aus Stahl, Fachwerkträger oder Blechträger",
+      "pdf_page": 24
+    },
+    {
+      "clause": "6.1.4.3",
+      "title": "Horizontaler Anteil",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.1.4.4",
+      "title": "Temperaturunterschied innerhalb der Wände von Hohlkastenquerschnitten aus Beton",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.1.5",
+      "title": "Gleichzeitige Berücksichtigung von konstanten und veränderlichen Temperaturanteilen",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.1.6",
+      "title": "Konstanter Temperaturunterschied zwischen verschiedenen Bauteilen",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.2",
+      "title": "Brückenpfeiler",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Berücksichtigung der Temperatureinwirkungen",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Temperaturunterschiede",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7",
+      "title": "Temperaturunterschiede in Industrieschornsteinen, Rohrleitungen,",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2",
+      "title": "Temperaturanteile",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2.1",
+      "title": "Außenlufttemperatur",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.2.2",
+      "title": "Strömende Gase, warme Flüssigkeiten und warme Materialien",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.2.3",
+      "title": "Bauteiltemperatur",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.3",
+      "title": "Berücksichtigung von Temperaturanteilen",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.4",
+      "title": "Bestimmung der Temperaturanteile",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.5",
+      "title": "Werte für die Temperaturanteile (Anhaltswerte)",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.6",
+      "title": "Gleichzeitige Berücksichtigung der Temperaturanteile",
+      "pdf_page": 29
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 9,
+      "equation_number": "1",
+      "line": "6.1.1 (1)",
+      "context": "möglich ist. | 5.3(2) (Tabellen 5.1, 5.2 und 5.3) | 6.1.1 (1) | 6.1.2(2) | 6.1.3.1(4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "einer jährlichen Wahrscheinlichkeit von p = 0,02 abweichen",
+      "context": "h Höhe des Querschnitts | k1, k2, k3, k4 Koeffizienten zur Berechnung der maximalen (minimalen) Außenlufttemperaturen, die von | einer jährlichen Wahrscheinlichkeit von p = 0,02 abweichen | ksur Faktor zur Berücksichtigung der Oberbelagsdicke bei Bestimmung des linear veränderlichen | Temperaturanteils",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "5.1",
+      "line": "Tu = T  T0 (5.1)",
+      "context": "festgelegt werden, wobei die Lage des Gebäudes und des Konstruktionsdetails zu berücksichtigen ist. | (5) Der konstante Temperaturanteil eines tragenden Bauteils Tu wird festgelegt zu: | Tu = T  T0 (5.1) | Dabei ist | T ist die Durchschnittstemperatur des tragenden Bauteils infolge klimatischer Temperaturen im",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "(1) Die Temperatur T in Gleichung (5.1) sollte unter Verwendung eines Temperaturprofils als die",
+      "context": "nach 5.3 angewendet werden. | 5.3 Bestimmung von Temperaturprofilen | (1) Die Temperatur T in Gleichung (5.1) sollte unter Verwendung eines Temperaturprofils als die | Durchschnittstemperatur eines tragenden Bauteils im Winter oder Sommer bestimmt werden. Im Fall von | mehrschichtigen Bauteilen ist T die Durchschnittstemperatur einer einzelnen Schicht.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "verfügbar sind, werden die Werte T1 = 20 C und T2 = 25 C empfohlen.",
+      "context": "Winter T2 | ANMERKUNG Werte für T1 und T2 dürfen im Nationalen Anhang festgelegt werden. Wenn keine Daten | verfügbar sind, werden die Werte T1 = 20 C und T2 = 25 C empfohlen. | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "für Gebiete zwischen den Breitengraden 45oN und 55oN keine Werte vorliegen, werden die Werte T3 = 0 C, T4",
+      "context": "ANMERKUNG Die Werte für die maximale Außenlufttemperatur Tmax, die minimale Außenlufttemperatur | Tmin, sowie für die Sonneneinstrahlung T3, T4 und T5 dürfen im Nationalen Anhang festgelegt werden. Wenn | für Gebiete zwischen den Breitengraden 45oN und 55oN keine Werte vorliegen, werden die Werte T3 = 0 C, T4 | = 2 °C, und T5 = 4 °C empfohlen, für Bauteile in Richtung Nord-Ost T3 = 18 °C, T4 = 30 °C, und T5 = 42 °C für | Süd-West oder horizontal angeordnete Elemente.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "= 2 °C, und T5 = 4 °C empfohlen, für Bauteile in Richtung Nord-Ost T3 = 18 °C, T4 = 30 °C, und T5 = 42 °C für",
+      "context": "Tmin, sowie für die Sonneneinstrahlung T3, T4 und T5 dürfen im Nationalen Anhang festgelegt werden. Wenn | für Gebiete zwischen den Breitengraden 45oN und 55oN keine Werte vorliegen, werden die Werte T3 = 0 C, T4 | = 2 °C, und T5 = 4 °C empfohlen, für Bauteile in Richtung Nord-Ost T3 = 18 °C, T4 = 30 °C, und T5 = 42 °C für | Süd-West oder horizontal angeordnete Elemente. | Tabelle 5.3  Temperaturhinweise für unter der Erde liegende Gebäudeteile Tout",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "Daten für Gebiete zwischen den Breitengraden 45 oN und 55oN verfügbar sind, werden die Werte T6 = 8 °C,",
+      "context": "mehr als 1 m T9 | ANMERKUNG Die Werte T6, T7, T8, und T9 dürfen im Nationalen Anhang festgelegt werden. Falls keine | Daten für Gebiete zwischen den Breitengraden 45 oN und 55oN verfügbar sind, werden die Werte T6 = 8 °C, | T7 = 5 °C, T8 = 5 °C und T9 = 3 °C empfohlen. | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "T7 = 5 °C, T8 = 5 °C und T9 = 3 °C empfohlen.",
+      "context": "ANMERKUNG Die Werte T6, T7, T8, und T9 dürfen im Nationalen Anhang festgelegt werden. Falls keine | Daten für Gebiete zwischen den Breitengraden 45 oN und 55oN verfügbar sind, werden die Werte T6 = 8 °C, | T7 = 5 °C, T8 = 5 °C und T9 = 3 °C empfohlen. | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "6.1",
+      "line": "TN,con = T0  Te.min (6.1)",
+      "context": "(3) Daher sollte der charakteristische Wert der maximalen negativen Änderung (Verkürzung) des konstanten | Temperaturanteils der Brücke TN,con zu | TN,con = T0  Te.min (6.1) | angenommen werden und der charakteristische Wert der maximalen positiven Änderung (Ausdehnung) des | konstanten Temperaturanteils der Brücke TN,exp sollte zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "6.2",
+      "line": "TN,exp = Te .max  To (6.2)",
+      "context": "angenommen werden und der charakteristische Wert der maximalen positiven Änderung (Ausdehnung) des | konstanten Temperaturanteils der Brücke TN,exp sollte zu | TN,exp = Te .max  To (6.2) | angenommen werden. | ANMERKUNG 1 Die gesamte Schwankung des konstanten Temperaturanteils der Brücke ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "TN = Te.max  Te.min",
+      "context": "angenommen werden. | ANMERKUNG 1 Die gesamte Schwankung des konstanten Temperaturanteils der Brücke ist | TN = Te.max  Te.min | ANMERKUNG 2 Für Lager und Brückenübergänge darf der Nationale Anhang die maximale positive Änderung | (Ausdehnung) des konstanten Temperaturanteils der Brücke und die maximale negative Änderung (Verkürzung) des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "6.3",
+      "line": "TM,heat (oder TM,cool) + N TN,exp (oder TN,con) (6.3)",
+      "context": "Rahmentragwerke) darf der folgende Ausdruck verwendet werden (der als Lastkombination interpretiert | werden kann): | TM,heat (oder TM,cool) + N TN,exp (oder TN,con) (6.3) | oder | M TM,heat (oder TM,cool) + TN,exp (oder TN,con) (6.4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "6.4",
+      "line": "M TM,heat (oder TM,cool) + TN,exp (oder TN,con) (6.4)",
+      "context": "TM,heat (oder TM,cool) + N TN,exp (oder TN,con) (6.3) | oder | M TM,heat (oder TM,cool) + TN,exp (oder TN,con) (6.4) | wobei der Ausdruck mit der ungünstigsten Auswirkung gewählt werden sollte. | ANMERKUNG 1 Zahlenwerte für N und M dürfen im Nationalen Anhang festgelegt werden. Falls keine anderen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "N = 0,35",
+      "context": "ANMERKUNG 1 Zahlenwerte für N und M dürfen im Nationalen Anhang festgelegt werden. Falls keine anderen | Informationen verfügbar sind, werden die folgenden Werte für N und M empfohlen: | N = 0,35 | M = 0,75. | ANMERKUNG 2 Wenn beide lineare und nicht lineare vertikale Temperaturanteile verwendet werden (siehe 6.1.4.2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "M = 0,75.",
+      "context": "Informationen verfügbar sind, werden die folgenden Werte für N und M empfohlen: | N = 0,35 | M = 0,75. | ANMERKUNG 2 Wenn beide lineare und nicht lineare vertikale Temperaturanteile verwendet werden (siehe 6.1.4.2) | sollte TM durch T, das TM und TE einschließt, ersetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "für das Maximum: Tmax,p = Tmax {k1 k2 ln [ ln (1-p)] } ( A . 1 )",
+      "context": "(2) Im allgemeinen kann Tmax,p (oder Tmin,p) aus der folgenden Gleichung, die auf einer Extremwert- | verteilung des Typs I basiert, hergeleitet werden: | für das Maximum: Tmax,p = Tmax {k1 k2 ln [ ln (1-p)] } ( A . 1 ) | für das Minimum: Tmin,p = Tmin {k3 + k4 ln [ ln (1-p) ] } (A.2) | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "für das Minimum: Tmin,p = Tmin {k3 + k4 ln [ ln (1-p) ] } (A.2)",
+      "context": "verteilung des Typs I basiert, hergeleitet werden: | für das Maximum: Tmax,p = Tmax {k1 k2 ln [ ln (1-p)] } ( A . 1 ) | für das Minimum: Tmin,p = Tmin {k3 + k4 ln [ ln (1-p) ] } (A.2) | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k1 = (u,c) / { (u,c) + 3,902 } (A.3)",
+      "context": "Tmax (Tmin) ist der Wert der maximalen (minimalen) Außenlufttemperatur mit einer jährlichen | Überschreitenswahrscheinlichkeit von 0,02; | k1 = (u,c) / { (u,c) + 3,902 } (A.3) | k2 = 1 / { (u,c) + 3,902 } (A.4) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k2 = 1 / { (u,c) + 3,902 } (A.4)",
+      "context": "Überschreitenswahrscheinlichkeit von 0,02; | k1 = (u,c) / { (u,c) + 3,902 } (A.3) | k2 = 1 / { (u,c) + 3,902 } (A.4) | Dabei ist | u,c sind die Positions- und Skalierungsparameter der jährlichen maximalen Außenluft-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k3 = (u,c) / { (u,c)  3,902 } (A.5)",
+      "context": "u,c sind die Positions- und Skalierungsparameter der jährlichen maximalen Außenluft- | temperaturverteilung | k3 = (u,c) / { (u,c)  3,902 } (A.5) | k4 = 1 / { (uc)  3,902 } (A.6) | Die Parameter u und c sind abhängig vom Mittelwert m und der Standardverteilung der Extremwert-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k4 = 1 / { (uc)  3,902 } (A.6)",
+      "context": "temperaturverteilung | k3 = (u,c) / { (u,c)  3,902 } (A.5) | k4 = 1 / { (uc)  3,902 } (A.6) | Die Parameter u und c sind abhängig vom Mittelwert m und der Standardverteilung der Extremwert- | verteilung des Typs I:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "für das Maximum u = m  0,577 22 / c",
+      "context": "Die Parameter u und c sind abhängig vom Mittelwert m und der Standardverteilung der Extremwert- | verteilung des Typs I: | für das Maximum u = m  0,577 22 / c | c = 1,282 5 / (A.7) | für das Minimum u = m + 0,577 22 / c",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "c = 1,282 5 / (A.7)",
+      "context": "verteilung des Typs I: | für das Maximum u = m  0,577 22 / c | c = 1,282 5 / (A.7) | für das Minimum u = m + 0,577 22 / c | c = 1,282 5 / (A.8)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "für das Minimum u = m + 0,577 22 / c",
+      "context": "für das Maximum u = m  0,577 22 / c | c = 1,282 5 / (A.7) | für das Minimum u = m + 0,577 22 / c | c = 1,282 5 / (A.8) | Die Verhältnisse Tmax,p/Tmax und Tmin,p/Tmin können dann aus Bild A.1 entnommen werden, das auf den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "c = 1,282 5 / (A.8)",
+      "context": "c = 1,282 5 / (A.7) | für das Minimum u = m + 0,577 22 / c | c = 1,282 5 / (A.8) | Die Verhältnisse Tmax,p/Tmax und Tmin,p/Tmin können dann aus Bild A.1 entnommen werden, das auf den | empfohlenen Werten für k1  k4 nach ANMERKUNG 1 beruht.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k1 = 0,781;",
+      "context": "ANMERKUNG 1 Werte für die Koeffizienten k1, k2, k3 und k4 basierend auf den Werten für die Faktoren u und c dürfen | im Nationalen Anhang festlegen. Falls keine anderen Informationen vorliegen, werden die folgenden Werte empfohlen: | k1 = 0,781; | k2 = 0,056; | k3 = 0,393;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k2 = 0,056;",
+      "context": "im Nationalen Anhang festlegen. Falls keine anderen Informationen vorliegen, werden die folgenden Werte empfohlen: | k1 = 0,781; | k2 = 0,056; | k3 = 0,393; | k4 =  0,156.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k3 = 0,393;",
+      "context": "k1 = 0,781; | k2 = 0,056; | k3 = 0,393; | k4 =  0,156. | ANMERKUNG 2 Gleichung (A.2) und Bild A.1 kann nur verwendet werden, wenn Tmin negativ ist.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "k4 =  0,156.",
+      "context": "k2 = 0,056; | k3 = 0,393; | k4 =  0,156. | ANMERKUNG 2 Gleichung (A.2) und Bild A.1 kann nur verwendet werden, wenn Tmin negativ ist. | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Für Gebäude beträgt der Wärmeleitwiderstand Rin = 0,10 m2K/W bis 0,17 m 2K/W (abhängig von der",
+      "context": "nur Schichten (oder Teile der Schicht) von der Innenseite bis zum Punkt x (siehe Bild D.1) berücksichtigt | werden. | ANMERKUNG Für Gebäude beträgt der Wärmeleitwiderstand Rin = 0,10 m2K/W bis 0,17 m 2K/W (abhängig von der | Richtung des Wärmestroms), und Rout = 0,04 (für alle Richtungen). Die Wärmeleitfähigkeit i für Beton (mit Volumen- | gewichten von 21 kN/m3 bis 25 kN/m3) variiert von i = 1,16 W/(mK) bis 1,71 W/(mK).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "Richtung des Wärmestroms), und Rout = 0,04 (für alle Richtungen). Die Wärmeleitfähigkeit i für Beton (mit Volumen-",
+      "context": "werden. | ANMERKUNG Für Gebäude beträgt der Wärmeleitwiderstand Rin = 0,10 m2K/W bis 0,17 m 2K/W (abhängig von der | Richtung des Wärmestroms), und Rout = 0,04 (für alle Richtungen). Die Wärmeleitfähigkeit i für Beton (mit Volumen- | gewichten von 21 kN/m3 bis 25 kN/m3) variiert von i = 1,16 W/(mK) bis 1,71 W/(mK). | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "gewichten von 21 kN/m3 bis 25 kN/m3) variiert von i = 1,16 W/(mK) bis 1,71 W/(mK).",
+      "context": "ANMERKUNG Für Gebäude beträgt der Wärmeleitwiderstand Rin = 0,10 m2K/W bis 0,17 m 2K/W (abhängig von der | Richtung des Wärmestroms), und Rout = 0,04 (für alle Richtungen). Die Wärmeleitfähigkeit i für Beton (mit Volumen- | gewichten von 21 kN/m3 bis 25 kN/m3) variiert von i = 1,16 W/(mK) bis 1,71 W/(mK). | DIN EN 1991-1-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "5.1",
+      "pdf_page": 16,
+      "line": "(2) Die Temperatur der inneren Umgebung Tin sollte nach Tabelle 5.1 bestimmt werden. Die Temperatur der"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 16,
+      "line": "a) Tabelle 5.2 für Teile, die über der Erde angeordnet sind,"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 16,
+      "line": "b) Tabelle 5.3 für Teile, die unter der Erde angeordnet sind,"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 16,
+      "line": "ANMERKUNG Die für den Sommer in Tabelle 5.2 angegebenen Temperaturen Tout hängen von den Wärmeabsorp-"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 16,
+      "line": "Tabelle 5.1  Temperaturhinweise für die innere Umgebung Tin"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 17,
+      "line": "Tabelle 5.2  Temperaturhinweise für Gebäude über der Erde Tout"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 17,
+      "line": "Tabelle 5.3  Temperaturhinweise für unter der Erde liegende Gebäudeteile Tout"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 21,
+      "line": "Anhang gefunden werden. In Tabelle 6.1 werden Werte für TM,heat und TM,cool empfohlen."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 21,
+      "line": "Tabelle 6.1  Empfehlung von linear veränderlichen Temperaturanteilen für unterschiedliche"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 21,
+      "line": "sur multipliziert werden. Empfehlungen für die Werte des Faktors ksur enthält Tabelle 6.2."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 22,
+      "line": "Tabelle 6.2  Empfehlungen für die Werte von ksur zur Berücksichtigung"
+    },
+    {
+      "label": "C1",
+      "pdf_page": 37,
+      "line": "(1) Tabelle C1 sind für eine Auswahl von üblicherweise verwendeten Materialien die Zahlenwerte der"
+    }
+  ],
+  "figures": [
+    {
+      "label": "4.1",
+      "pdf_page": 14,
+      "line": "einzelnen Anteile aufgeteilt werden, wie in Bild 4.1 dargestellt:"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 14,
+      "line": "Bild 4.1  Diagramm zur Darstellung der einzelnen Anteile eines Temperaturprofils"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 18,
+      "line": "ANMERKUNG 1 Siehe auch Bild 6.2."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 19,
+      "line": "ANMERKUNG Der Nationale Anhang darf Te.min und Te.max festlegen. Das Bild 6.1 enthält empfohlene Werte."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 19,
+      "line": "ANMERKUNG 1 Die Werte in Bild 6.1 basieren auf täglichen Temperaturschwankungen von 10 °C. Dieser Bereich"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 19,
+      "line": "Bild 6.1  Korrelation zwischen minimaler/maximaler Außenlufttemperatur"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 23,
+      "line": "Bild 6.2a  Temperaturunterschiede für Brückenüberbauten  Typ 1: Stahlkonstruktion"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 24,
+      "line": "Bild 6.2b  Temperaturunterschiede für Brückenüberbauten  Typ 2: Verbundkonstruktionen"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 25,
+      "line": "Bild 6.2c  Temperaturunterschiede für Brückenüberbauten  Typ 3: Betonkonstruktion"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 28,
+      "line": "(1)P Für jede Schicht ist sowohl der Anteil der konstanten Temperaturverteilung (siehe Bild 4.1 (a)) als auch"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 28,
+      "line": "der Anteil der linear veränderlichen Temperaturverteilung (siehe Bild 4.1 (b)) zu berücksichtigen."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "a) konstanter Temperaturanteil (siehe 7.5 (2) und Bild 7.1 (a));"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "b) abgestufter Temperaturanteil (siehe 7.5 (4) und Bild 7.1 (b));"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "7.5 (3) und Bild 7.1 (c))."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 30,
+      "line": "Bild 7.1  Maßgebende Temperaturanteile für Rohrleitungen, Silos, Tanks und Kühltürme"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 34,
+      "line": "(1) Die in Bild 6.2a  6.2c angegebenen Temperaturprofile sind für eine Dicke des oberen Belags von 40 mm"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1084,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2056,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2224,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6623,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "3",
+        "4",
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "6",
+        "6.1",
+        "6.1.1",
+        "6.1.2",
+        "6.1.3",
+        "6.1.4",
+        "6.1.5",
+        "6.1.6",
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1",
+        "7.2.2",
+        "7.2.3",
+        "7.3",
+        "7.4",
+        "7.5",
+        "7.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 797,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3103,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2998,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1944,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 819,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2394,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2225,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5",
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 1895,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2424,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1834,
+      "text_layer": "usable",
+      "clauses": [
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 3045,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1893,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1320,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2065,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1",
+        "6.1.1",
+        "6.1.2",
+        "6.1.3",
+        "6.1.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1208,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 3253,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.3.2",
+        "6.1.3.3",
+        "6.1.4"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2051,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1933,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 144,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 937,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "3",
+        "6",
+        "7",
+        "8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1374,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.4.3",
+        "6.1.4.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2692,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.5",
+        "6.1.6",
+        "6.2",
+        "6.2.1",
+        "6.2.2"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2947,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2",
+        "7.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 3043,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2.2",
+        "7.2.3",
+        "7.3",
+        "7.4",
+        "7.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2240,
+      "text_layer": "usable",
+      "clauses": [
+        "7.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 146,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2735,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1239,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 12
+    },
+    {
+      "pdf_page": 33,
+      "characters": 113,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 791,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 509,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1874,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 2056,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1805,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 39,
+      "characters": 123,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 275,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

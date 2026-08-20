@@ -1,0 +1,697 @@
+
+
+===== PDF-SEITE 1 =====
+a
+DEUTSCHE NORM Januar 2012 
+DIN EN 1996-3/NA 
+ICS 91.010.30; 91.080.30 
+Nationaler Anhang -
+National festgelegte Parameter-
+Ersatzvermerk 
+siehe unten 
+DIN 
+Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten­
+Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte 
+Mauerwerksbauten 
+National Annex -
+Nationally determined parameters-
+Eurocode 6: Design of masonry structures - Part 3: Simplified calculation methods for 
+unreinforced masonry structures 
+Annexe Nationale-
+Parametres determines au plan nationai-
+Eurocode 6: Calcul des ouvrages en mat;onnerie - Partie 3: Methades de calcul 
+simplifiees pour les ouvrages en mayonnerie non armee 
+Ersatzvermerk 
+Mit DIN EN 1996-1-1:2010-12, DIN EN 1996-1-1/NA:2012-01, DIN EN 1996-2:2010-12, 
+DIN EN 1996-2/NA:2012-01 und DIN EN 1996-3:2010-12 ErsatzfrlrDIN 1053-1:1996-11; 
+mit DIN EN 1996-1-1:2010-12, DIN EN 1996-1-1/NA:2012-01 und DIN EN 1996-3:2010-12 Ersatz für 
+DIN 1053-100:2007-09 
+Gesamtumfang 18 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jede Art der Vervielfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 11 
+www.din.de 
+www.beuth.de 111111111111111 
+1855636
+
+===== PDF-SEITE 2 =====
+DIN EN 1996-3/NA:2012-01 
+2 
+Inhalt Seite
+Vorwort ........................................................................................................................................................... 3
+NA 1 Anwendungsbereich ......................................................................................................... ............... 4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1996-3:2010-12 ........................................ 4
+NA 2.1 Allgemeines ....................................................................................................................................... 4
+NA 2.2 Nationale Festlegungen ................................................................................................................... 4
+Zu 1 „Allgemeines“ ........................................................................................................................................ 4
+NCI zu 1.1 (6) „Anwendungsbereich von Teil 3 des Eurocodes 6“ .......................................................... 4
+NCI zu 1.2 „Normative Verweisungen“........................................................................................................ 4
+NCI zu 1.6 „Formelzeichen“ .......................................................................................................................... 5
+Zu 2 „Grundlagen für die Bemessung und Konstruktion“ ........................................................................ 5
+NDP zu 2.3 (2)P „Nachweis mit der Teilsicherheitsmethode“................................................................... 5
+Zu 4 „Bemessung und Konstruktion von unbewehrten Mauerwerkswänden mit vereinfachten 
+Berechnungsmethoden“ ............................................................................................................................... 6
+NCI zu 4.5 „Vereinfachte Berechnungsmethode für Kellerwände, die durch horizontalen 
+Erddruck beansprucht werden“ ................................................................................................................. 12
+NCI zu Anhang A „Vereinfachte Berechnungsmethode für unbewehrte Mauerwerkswände bei 
+Gebäuden mit höchstens drei Geschossen“ ............................................................................................ 12
+NCI zu Anhang B „Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte 
+Innenwände mit begrenzter horizontaler Belastung“ .............................................................................. 12
+NCI zu Anhang C „Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte Wände 
+mit gleichmäßig verteilter horizontaler Bemessungslast“ ...................................................................... 12
+Zu Anhang D „Vereinfachte Methode zur Bestimmung der charakteristischen Festigkeit von 
+Mauerwerk“ .................................................................................................................................................. 14
+
+===== PDF-SEITE 3 =====
+DIN EN 1996-3/NA:2012-01 
+3 
+Vorwort 
+Dieses Dokument wurde vom Arbeitsausschuss NA 005-06-01 AA „Mauerwerksbau“ des Normenaus-
+schusses Bauwesen (NABau) erarbeitet. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1996-3:2010-12, Eurocode 6: Bemessung und 
+Konstruktion von Mauerwerksbauten — Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte 
+Mauerwerksbauten. 
+Die Europäische Norm EN 1996-3:2006 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters (NDP)) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich in NA 2.1. 
+Darüber hinaus enthält dieser nationale Anhang ergänzende nicht widersprechende Angaben zur Anwendung 
+von DIN EN 1996-3:2010-12 (en: non-contradictory complementary information (NCI)). 
+Nationale Absätze werden mit vorangestelltem „(NA.+lfd. Nr.)“ eingeführt.
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1996-3:2010-12. 
+Änderungen
+Gegenüber DIN 1053-1:1996-11 und DIN 1053-100:2007-09 wurden folgende Änderungen vorgenommen: 
+a) das vereinfachte Bemessungsverfahren im Teil 3 zusammengefasst; 
+b) inhaltlich neu gegliedert; 
+c) Bezug auf charakteristische Werte der Festigkeiten genommen; 
+d) national festzulegende Parameter (NDP) entsprechend EN 1996-3 aufgenommen; 
+e) Restregelungen als ergänzende nicht widersprechende Angaben (NCI) aufgenommen; 
+Frühere Ausgaben
+DIN 4156: 1943-05 
+DIN 1053: 1937x-02, 1952-12, 1962-11
+DIN 1053-1: 1974-11, 1990-02, 1996-11 
+DIN 1053-2: 1984-07, 1996-11 
+DIN 1053-100: 2004-08, 2006-08, 2007-09
+
+===== PDF-SEITE 4 =====
+DIN EN 1996-3/NA:2012-01 
+4 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für „den Entwurf, die Berechnung und Bemessung 
+von Hochbauten und Ingenieurbauwerken mit unbewehrtem Mauerwerk“, die bei der Anwendung von 
+DIN EN 1996-3:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1996-3:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1996-3:2010-12 
+NA 2.1 Allgemeines 
+EN 1996-3:2006 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus (en: 
+nationally determined parameters (NDP)): 
+ 2.3(2)P Nachweis nach der Teilsicherheitsmethode; 
+ 4.1(1)P Nachweis der Gesamtstabilität eines Gebäudes; 
+ 4.2.1.1(1)P Allgemeine Anwendungsbedingungen; 
+ 4.2.2.3(1) Abminderungsbeiwert; 
+ D.1(1) Charakteristische Druckfestigkeit; 
+ D.2(1) Charakteristische Biegefestigkeiten; 
+ D.3(1) Charakteristische Haftscherfestigkeit. 
+Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1996-3:2010-12. Diese sind durch ein vorangestelltes „NCI“ (en: non-contradictory complementary 
+information) gekennzeichnet. 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1996-3:2010-12 bzw. ergänzt 
+diese. 
+Zu 1 „Allgemeines“
+NCI zu 1.1 (6) „Anwendungsbereich von Teil 3 des Eurocodes 6“
+(NA.7) Die in EN 1996-3 angegebenen vereinfachten Berechnungsmethoden gelten auch für die Bemessung 
+von außergewöhnlichen Einwirkungen, sofern Wind- oder Schneelasten als solche definiert sind. 
+NCI zu 1.2 „Normative Verweisungen“
+NA DIN EN 998-2, Festlegungen für Mörtel im Mauerwerksbau — Teil 1: Mauermörtel
+NA DIN V 18580, Mauermörtel mit besonderen Eigenschaften 
+NA DIN V 20000-412, Anwendung von Bauprodukten in Bauwerken — Teil 412: Regeln für die Verwendung 
+von Mauermörtel nach DIN EN 998-2:2003-09
+
+===== PDF-SEITE 5 =====
+DIN EN 1996-3/NA:2012-01 
+5 
+NCI zu 1.6 „Formelzeichen“
+Lateinische Buchstaben 
+NA hi Höhe der Ausfachungsfläche; 
+NA l i Länge der Ausfachungsfläche; 
+NA l f die Stützweite der angrenzenden Geschossdecke; 
+NA a Deckenauflagertiefe; 
+NA N od der Bemessungswert der vertikalen Lasten am Wandfuß des darüber liegenden Geschosses; 
+NA N Dd der Bemessungswert der Lasten aus Decken und Unterzügen. 
+Griechische Buchstaben 
+NA Dauerstandsfaktor. 
+Zu 2 „Grundlagen für die Bemessung und Konstruktion“
+NDP zu 2.3 (2)P „Nachweis mit der Teilsicherheitsmethode“
+Der Teilsicherheitsbeiwert für das Material 
+M ist für den Nachweis im Grenzzustand der Tragfähigkeit für 
+ständige und vorübergehende Bemessungssituationen sowie für außergewöhnlichen Bemessungssituationen 
+Tabelle NA.1 zu entnehmen. 
+Tabelle NA.1 — Teilsicherheitsbeiwert 
+M für das Material
+Material Mauerwerk aus 
+M
+Bemessungssituation
+ständig und 
+vorübergehend Außergewöhnlich
+A Steinen der Kategorie I und Mörtel nach 
+Eignungsprüfung a 1,5 1,3 
+B Steinen der Kategorie I und Rezeptmörtel b wie A wie A 
+C Steinen der Kategorie II Für tragendes Mauerwerk nicht 
+anwendbar.
+a Anforderungen an Mörtel nach Eignungsprüfung sind in DIN EN 998-2 in Verbindung mit DIN 20000-412 sowie DIN V 18580 
+gegeben. 
+b Gilt nur für Baustellenmörtel nach DIN V 18580.
+
+===== PDF-SEITE 6 =====
+DIN EN 1996-3/NA:2012-01 
+6 
+Zu 4 „Bemessung und Konstruktion von unbewehrten Mauerwerkswänden mit 
+vereinfachten Berechnungsmethoden“
+NDP zu 4.1(1)P „Allgemeines“
+Auf einen rechnerischen Nachweis der Aussteifung darf verzichtet werden, wenn die Geschossdecken als 
+steife Scheiben ausgebildet sind bzw. statisch nachgewiesene, ausreichend steife Ringbalken vorliegen und 
+wenn in Längs- und Querrichtung des Gebäudes eine offensichtlich ausreichende Anzahl von genügend 
+langen aussteifenden Wänden vorhanden ist, die ohne größere Schwächungen und ohne Versprünge bis auf 
+die Fundamente geführt sind.
+Bei Elementmauerwerk mit einem planmäßigen Überbindemaß l
+ol < 0,4 hu ist bei einem Verzicht auf einen 
+rechnerischen Nachweis der Aussteifung des Gebäudes die ggf. geringere Schubtragfähigkeit bei hohen 
+Auflasten zu berücksichtigen.
+Ist bei einem Bauwerk nicht von vornherein erkennbar, dass seine Aussteifung gesichert ist, so ist ein 
+rechnerischer Nachweis der Schubtragfähigkeit nach dem genaueren Verfahren nach DIN EN 1996-1-1:2010-12, 
+6.2, in Verbindung mit dem zugehörigen Nationalen Anhang zu führen.
+NCI zu 4.2.1.1 „Allgemeine Bedingungen“
+Abschnitt 4.2.1.1.ist wie folgt zu ergänzen:
+„(NA.2) Für Vollsteine und Lochsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5, dürfen die 
+vereinfachten Berechnungsmethoden angewendet werden, wenn die folgenden und die in Tabelle NA.2 
+enthaltenen Voraussetzungen erfüllt sind:
+Gebäudehöhe über Gelände nicht mehr als 20 m; als Gebäudehöhe darf bei geneigten Dächern das 
+Mittel von First- und Traufhöhe gelten; 
+Stützweite der aufliegenden Decken l 6,0 m, sofern nicht die Biegemomente aus dem Deckendreh-
+winkel durch konstruktive Maßnahmen, z. B. Zentrierleisten, begrenzt werden; bei zweiachsig 
+gespannten Decken ist für l die kürzere der beiden Stützweiten einzusetzen.
+
+===== PDF-SEITE 7 =====
+DIN EN 1996-3/NA:2012-01 
+7 
+Tabelle NA.2 — Voraussetzungen für die Anwendung des vereinfachten Nachweisverfahrens
+Bauteil
+Voraussetzungen 
+Wanddicke lichte
+Wandhöhe
+aufliegende Decke 
+Stützweite Nutzlast a
+t
+mm
+h
+m
+lf
+m 
+qk
+kN/m²
+1 tragende 
+Innenwände
+ 115 
+< 240 2,75 6,00 5 
+2 240 ---
+3
+tragende 
+Außenwände
+und 
+zweischalige 
+Haustrennwände
+ 115b
+< 150b
+ 2,75 6,00 
+ 3 
+4 150c
+< 175c
+5 175 
+< 240 5 
+6 240 12 t
+a Einschließlich Zuschlag für nicht tragende innere Trennwände.
+b Als einschalige Außenwand nur bei eingeschossigen Garagen und vergleichbaren Bauwerken, 
+die nicht zum dauernden Aufenthalt von Menschen vorgesehen sind. 
+Als Tragschale zweischaliger Außenwände und bei zweischaligen Haustrennwänden bis 
+maximal zwei Vollgeschosse zuzüglich ausgebautes Dachgeschoss; aussteifende Querwände 
+im Abstand 4,50 m bzw. Randabstand von einer Öffnung 2,0 m. 
+c Bei charakteristischen Mauerwerksdruckfestigkeiten fk < 1,8 N/mm² gilt zusätzlich Fußnote b.
+(NA.3) Bei den vereinfachten Berechnungsmethoden brauchen bestimmte Beanspruchungen, z. B. 
+Biegemomente aus Deckeneinspannungen oder Deckenauflagerungen, ungewollte Ausmitten beim 
+Knicknachweis, Wind auf tragende Wände nicht nachgewiesen zu werden, da sie im Sicherheitsabstand, der 
+dem Nachweisverfahren zugrunde liegt, oder durch konstruktive Regeln und Grenzen berücksichtigt sind. Es 
+ist vorausgesetzt, dass in halber Geschosshöhe der Wand nur Biegemomente aus der Deckeneinspannung 
+oder –auflagerung und aus Windlasten auftreten. 
+(NA.4) Greifen an tragenden Wänden abweichend von Absatz (NA.3) größere horizontale Lasten an, so ist 
+der Nachweis nach DIN EN 1996-1-1 zu führen. Ein Versatz der Wandachsen infolge einer Änderung der 
+Wanddicken gilt dann nicht als größere Ausmitte, wenn der Querschnitt der dickeren tragenden Wand den 
+Querschnitt der dünneren tragenden Wand umschreibt. Gleiches gilt für Lastausmitten aus nicht vollflächig 
+aufgelagerten Decken, wenn diese nach NCI zu 4.2.2.3 (1) berücksichtigt werden.
+(NA.5) Für den Nachweis von Kellerwänden gelten die Voraussetzungen nach DIN EN 1996-3:2010-12, 4.5. 
+(NA.6) Der Einfluss der Windlast senkrecht zur Wandebene von tragenden Wänden darf vernachlässigt 
+werden, wenn die Bedingungen zur Anwendung der vereinfachten Berechnungsmethoden eingehalten sind 
+und ausreichende horizontale Halterungen vorhanden sind. Als solche gelten z. B. Decken mit Scheiben-
+wirkung oder statisch nachgewiesene Ringbalken im Abstand der zulässigen Wandhöhen.
+(NA.7) Das planmäßige Überbindemaß l
+ol nach DIN EN 1996-1-1 muss mindestens 0,4 hu und mindestens 
+45 mm betragen. Nur bei Elementmauerwerk darf das planmäßige Überbindemaß lol auch mindestens 0,2 hu
+und mindestens 125 mm betragen. 
+(NA.8) Die Deckenauflagertiefe a muss mindestens die halbe Wanddicke (0,5 t), jedoch mehr als 100 mm 
+betragen. Bei einer Wanddicke von 365 mm darf die Mindestdeckenauflagertiefe auf 0,45 t reduziert werden. 
+(NA.9) Bei Mauerwerk aus Kalksand-Fasensteinen (nur zulässig als Einsteinmauerwerk) ist als rechnerische 
+Wanddicke die vermörtelbare Aufstandsbreite (Steinbreite abzüglich der Fasen) anzunehmen.
+(NA.10) Freistehende Wände sind nach DIN EN 1996-1-1 nachzuweisen.“
+
+===== PDF-SEITE 8 =====
+DIN EN 1996-3/NA:2012-01 
+8 
+NCI zu 4.2.1.2 „Zusätzliche Bedingungen“
+Der Abschnitt ist wie folgt zu ergänzen:
+„(NA.3) Für Vollsteine und Lochsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5 dürfen die 
+vereinfachten Berechnungsmethoden angewendet werden, wenn die Bedingungen nach NCI zu 4.2.1.1 
+eingehalten sind.“
+NCI zu 4.2.2.2 „Bemessungswert des vertikalen Tragwiderstands“
+Abschnitt (1) ist wie folgt zu ergänzen:
+„In Gleichung (4.4) ist für die belastete Bruttoquerschnittsfläche der Wand der maßgebende Wandabschnitt 
+(bezogen auf einen Meter Wandlänge) anzusetzen.“
+(NA.2) Bei Langzeitwirkungen ist der Bemessungswert der Druckfestigkeit des Mauerwerks f
+d über den 
+Dauerstandsfaktor abzumindern.
+als ein Faktor zur Berücksichtigung von Langzeiteinwirkungen und weiterer Einflüsse; für 
+eine dauernde Beanspruchung infolge von Eigengewicht, Schnee- und Verkehrslasten gilt 
+ = 0,85; für kurzzeitige Beanspruchungsarten darf = 1,0 gesetzt werden. 
+(NA.3) Bei Wand-Querschnittsflächen kleiner als 0,1 m² ist die Bemessungsdruckfestigkeit des Mauerwerks 
+mit dem Faktor 0,8 zu multiplizieren. 
+NDP zu 4.2.2.3 (1) „Abminderungsbeiwert“
+Eine Mitwirkung der Vorsatzschale darf in Deutschland nicht angesetzt werden ( tef = t). Die erforderliche 
+Anzahl der Anker ntmin ist in DIN EN 1996-1-1/NA:2012-01, NDP zu 8.5.2.2 (2), angegeben. 
+NCI zu 4.2.2.3 „Abminderungsbeiwert“
+(NA.2) Für Vollsteine und Lochsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5, gilt für die 
+Ermittlung der Abminderungsbeiwerte:
+Bei geschosshohen Wänden des üblichen Hochbaus und gleichzeitiger Einhaltung der Randbedingungen für 
+die vereinfachten Berechnungsmethoden darf die Traglastminderung infolge der Lastausmitte bei Endauf-
+lagern auf Außen- und Innenwänden abgeschätzt werden zu:
+talf /9,066,1:²mm/N8,1für f
+1k (NA.1) 
+talf /9,056,1:²mm/N8,1für f
+1k (NA.2) 
+Dabei ist 
+fk der charakteristische Wert der Druckfestigkeit von Mauerwerk; 
+lf die Stützweite der angrenzenden Geschossdecke in m, bei zweiachsig gespannten Decken 
+ist für lf die kürzere der beiden Stützweiten einzusetzen;
+a die Deckenauflagertiefe; 
+t die Dicke der Wand.
+
+===== PDF-SEITE 9 =====
+DIN EN 1996-3/NA:2012-01 
+9 
+Legende
+Nod der Bemessungswert der vertikalen Lasten am Wandfuß des darüber liegenden Geschosses
+NDd der Bemessungswert der Lasten aus Decken und Unterzügen
+a die Deckenauflagertiefe 
+t die Dicke der Wand 
+Bild NA.1 — Teilweise aufliegende Deckenplatte 
+(NA.3) Bei Decken über dem obersten Geschoss, insbesondere bei Dachdecken, gilt aufgrund geringer 
+Auflasten: 
+333,01 (NA.3) 
+(NA.4) Wird die Traglastminderung infolge Deckenverdrehung durch konstruktive Maßnahmen, z. B. 
+Zentrierleisten mittig unter dem Deckenauflager, vermieden, so gilt unabhängig von der Deckenstützweite
+1= 0,9·a/t bei teilweise aufliegender Deckenplatte (siehe Bild NA.1) und 1=0,9 bei vollaufliegender 
+Deckenplatte. 
+(NA.5) Zur Berücksichtigung der Traglastminderung bei Knickgefahr gilt: 
+2
+ef2 1001,085,0 t
+h
+t
+a (NA.4) 
+Dabei ist 
+hef die Knicklänge nach 4.2.2.4; 
+a die Deckenauflagertiefe; 
+t die Dicke der Wand. 
+(NA.6) Maßgebend für die Bemessung ist der kleinere der Werte 1 und 2.
+(NA.7) Es ist vorausgesetzt, dass in halber Geschosshöhe nur Biegemomente aus der Deckeneinspannung 
+und aus Windlasten auftreten.
+
+===== PDF-SEITE 10 =====
+DIN EN 1996-3/NA:2012-01 
+10 
+NCI zu 4.2.2.4 „Knicklänge von Wänden“
+(NA.3) Für Vollsteine und Lochsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5, gilt:
+Bei flächig aufgelagerten Decken, z. B. massiven Plattendecken oder Rippendecken mit lastverteilenden 
+Auflagerbalken, darf bei 2-seitig gehaltenen Wänden die Einspannung der Wand in den Decken durch die 
+folgende Abminderung der Knicklänge berücksichtigt werden. Es gilt:
+hh 2ef (NA.5) 
+Dabei ist 
+hef die Knicklänge;
+2 der Abminderungsfaktor der Knicklänge nach (NA.8) und (NA.9);
+h die lichte Geschosshöhe.
+(NA.4) Für die Berechnung der Knicklänge von mehrseitig gehaltenen Mauerwerkswänden gilt:
+Für 3-seitig gehaltene Wände:
+hh
+b
+h
+h 3,0
+´31
+1
+22
+23
+ef (NA.6) 
+Für 4-seitig gehaltene Wände:
+1
+1
+1
+422
+2
+4
+ef b
+h
+fürh
+b
+h
+h (NA.7) 
+12 44ef b
+h
+fürbh (NA.8) 
+Dabei ist 
+3, 4 die Anpassungsfaktoren nach Absatz (NA.5) und (NA.6);
+2 der Abminderungsfaktor der Knicklänge nach (NA.8) und (NA.9); 
+b, b´ der Abstand des freien Randes von der Mitte der haltenden Wand, bzw. Mittenabstand der 
+haltenden Wände nach Bild NA.2;
+hef die Knicklänge;
+h die lichte Geschosshöhe.
+(NA.5) Für Mauerwerk mit einem planmäßigen Überbindemaß lol/hu 0,4 sind die Anpassungsfaktoren 3 und 
+4 gleich 1,0 zu setzen. 
+(NA.6) Für Elementmauerwerk mit einem planmäßigen Überbindemaß 0,2 lol/hu < 0,4 sind die Anpassungs-
+faktoren Tabelle NA.3 zu entnehmen.
+
+===== PDF-SEITE 11 =====
+DIN EN 1996-3/NA:2012-01 
+11 
+Tabelle NA.3 — Anpassungsfaktoren 3, 4 zur Abschätzung der Knicklänge von 
+lol/hu < 0,4
+Steingeometrie hu/lu 0,5 0,625 1 2 
+3-seitige Lagerung 3 1,0 0,90 0,83 0,75 
+4-seitige Lagerung 4 1,0 0,75 0,67 0,60 
+(NA.7) Ist b > 30 t bei vierseitig gehaltenen Wänden, bzw. b > 15 t bei dreiseitig gehaltenen Wänden, so darf 
+keine seitliche Halterung angesetzt werden. Diese Wände sind wie zweiseitig gehaltene Wände zu 
+behandeln. Hierbei ist t die Dicke der gehaltenen Wand. Ist die Wand im Bereich des mittleren Drittels der 
+Wandhöhe durch vertikale Schlitze oder Aussparungen geschwächt, so ist für t die Restwanddicke 
+einzusetzen oder ein freier Rand anzunehmen. Unabhängig von der Lage eines vertikalen Schlitzes oder 
+einer Aussparung ist an ihrer Stelle ein freier Rand anzunehmen, wenn die Restwanddicke kleiner als die 
+halbe Wanddicke oder kleiner als 115 mm ist. 
+Legende 
+1 gehaltene Wand 
+2 aussteifende Wände 
+Bild NA.2 — Darstellung der Größen b' und b für drei- und vierseitig gehaltene Wände
+(NA.8) Sind die Voraussetzungen zur Anwendung des vereinfachten Nachweisverfahrens nach 4.2.1.1 
+eingehalten, gilt statt Absatz (2) vereinfacht: 
+2 = 0,75 für Wanddicken t 175 mm; 
+2 = 0,90 für Wanddicken 175 mm < t 250 mm; 
+2 = 1,00 für Wanddicken t > 250 mm. 
+(NA.9) Eine Abminderung der Knicklänge mit 2 < 1,0 ist jedoch nur zulässig, wenn folgende erforderliche 
+Auflagertiefen a gegeben sind: 
+t 240 mm a 175 mm;
+t < 240mm a = t. 
+NCI zu 4.3 „Vereinfachte Berechnungsmethode für Wände unter Einzellasten“ 
+(NA.2) Für Vollsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5, gilt DIN EN 1996-1-1:2010-12, 
+6.1.3, mit dem zugehörigen NA.
+
+===== PDF-SEITE 12 =====
+DIN EN 1996-3/NA:2012-01 
+12 
+NCI zu 4.4.2 „Bemessungswert der Schubtragfähigkeit“
+(NA.3) Es gilt NDP zu 4.1(1)P. 
+NCI zu 4.5 „Vereinfachte Berechnungsmethode für Kellerwände, die durch horizontalen Erddruck 
+beansprucht werden“
+Absatz (1) ist durch folgende Anmerkungen zu ergänzen:
+„ANMERKUNG 2 Der vereinfachten 1/3 zugrunde gelegt.
+ANMERKUNG 3 Wenn die Feuchtesperrschicht entsprechend DIN EN 1996-1-1/NA, NCI zu 3.8.1, ausgeführt ist, darf der 
+Einfluss der Feuchtesperrschichten vernachlässigt werden.“
+(NA.3) Den Gleichungen (4.11) und (4.12) liegt der Ansatz des aktiven Erddruckes zugrunde. Für die 
+Verfüllung und Verdichtung des Arbeitsraumes sind die Vorgaben aus DIN EN 1996-2/NA:2012-01, Anhang 
+NA.E (3)) einzuhalten. Wenn andere Verdichtungsarten oder Erdstoffe zum Einsatz kommen, wird auf 
+DIN EN 1996-1-1 verwiesen. 
+(NA.4) Die Anschütthöhe h
+e darf höchstens 1,15 h betragen. 
+(NA.5) In Gleichung (4.12) ist bei Elementmauerwerk mit einem planmäßigen Überbindemaß 
+0,2 hu lol < 0,4 hu generell = 20 einzusetzen. 
+(NA.6) DIN EN 1996-2/NA:2012-01, Anhang NA.E, regelt die Ausführung von Kellerwänden.
+NCI zu Anhang A „Vereinfachte Berechnungsmethode für unbewehrte 
+Mauerwerkswände bei Gebäuden mit höchstens drei Geschossen“
+Der informative Anhang A wird mit Ausnahme von A.3 als normativer Anhang übernommen. A.3 gilt in 
+Deutschland nicht. 
+Für eine teilaufliegende Decke ist für die Anwendung von Anhang A eine Mindestwanddicke von 30 cm 
+erforderlich und der Beiwert cA ist mit 0,45 anzusetzen. 
+Bei vollaufliegender Decke und hef/tef 10 darf der Beiwert cA = 0,7 angenommen werden. 
+NCI zu Anhang B „Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte 
+Innenwände mit begrenzter horizontaler Belastung“
+Der normative Anhang B wird unverändert als normativer Anhang übernommen und bezieht sich auf Bereiche 
+mit geringer Menschenansammlung, in denen eine horizontale Nutzlast von 0,5 kN/m nach 
+DIN EN 1991-1-1/NA:2010-12, Tabelle 6.12DE, Zeile 1 nicht überschritten wird, vorausgesetzt dass Vollsteine 
+und Lochsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, (NA.5), zur Anwendung kommen. 
+NCI zu Anhang C „Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte 
+Wände mit gleichmäßig verteilter horizontaler Bemessungslast“
+Anhang C ist durch den folgenden Anhang NA.C zu ersetzen:
+
+===== PDF-SEITE 13 =====
+DIN EN 1996-3/NA:2012-01 
+13 
+NCI Anhang NA.C
+(normativ) 
+Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte 
+Wände mit gleichmäßig verteilter horizontaler Bemessungslast
+(1) Bei vorwiegend windbelasteten, nichttragenden Ausfachungswänden ist kein gesonderter Nachweis 
+erforderlich, wenn 
+a) die Wände vierseitig gehalten sind (z.B. durch Verzahnung, Versatz oder Anker) und 
+b) die Größe der Ausfachungsflächen hi · li nach Tabelle NA.C.1 eingehalten ist, wobei hi die Höhe und li
+die Länge der Ausfachungsfläche ist.
+Tabelle NA.C.1 — Größte zulässige Werte der Ausfachungsfläche von nichttragenden Außenwänden 
+ohne rechnerischen Nachweis 
+1234 5 
+Wanddicke
+t 
+mm 
+Größte zulässige Wertea,b der Ausfachungsfläche in m² bei 
+einer Höhe über Gelände von
+0 m bis 8 m 8 m bis 20 m c
+hi/li =1,0
+hi/li 2,0 
+oder 
+hi/li 0,5
+hi/li =1,0
+hi/li 2,0 
+oder 
+hi/li 0,5
+115c,d 12 8 - - 
+150d 12 8 8 5 
+175 20 14 13 9 
+240 36 25 23 16 
+ 300 50 33 35 23 
+a Bei Seitenverhältnissen 0,5< hi/li <1,0 und 1,0< hi/li <2,0 dürfen die größten zulässigen 
+Werte der Ausfachungsflächen geradlinig interpoliert werden.
+b Die angegeben Werte gelten für Mauerwerk mindestens der Steindruckfestigkeitsklasse 4 
+mit Normalmauermörtel mindestens der Gruppe NM IIa und Dünnbettmörtel 
+c In Windlastzone 4 nur im Binnenland zulässig.
+d Bei Verwendung von Steinen der Festigkeitsklassen 12 dürfen die Werte dieser Zeile um 
+1/3 vergrößert werden.
+
+===== PDF-SEITE 14 =====
+DIN EN 1996-3/NA:2012-01 
+14 
+Zu Anhang D „Vereinfachte Methode zur Bestimmung der charakteristischen 
+Festigkeit von Mauerwerk“
+NDP zu Anhang D.1 „Charakteristische Druckfestigkeit“
+(1) Die charakteristische Druckfestigkeit fk von Mauerwerk ist in den Tabellen NA.D.1 bis NA.D.9 angegeben. 
+Tabelle NA.D.1 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Hochlochziegeln mit Lochung A (HLzA), Lochung B (HLzB), Mauertafelziegeln T1 sowie Kalksand-
+Loch- und Hohlblocksteinen mit Normalmauermörtel
+Steindruckfestig-
+keitsklasse 
+fk
+N/mm²
+NM II NM IIa NM III NM IIIa 
+4 2,1 2,4 2,9 3,3 
+6 2,7 3,1 3,7 4,2 
+8 3,1 3,9 4,4 4,9 
+10 3,5 4,5 5,0 5,6 
+12 3,9 5,0 5,6 6,3 
+16 4,6 5,9 6,6 7,4 
+20 5,3 6,7 7,5 8,4 
+28 5,3 6,7 9,2 10,3 
+36 5,3 6,7 10,2 11,9 
+48 5,3 6,7 12,2 14,1 
+60 5,3 6,7 14,3 16,0 
+Tabelle NA.D.2 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Hochlochziegeln mit Lochung W (HLzW), Mauertafelziegeln (T2, T3 und T4) sowie 
+Leichtlanglochziegeln (LLz) mit Normalmauermörtel
+Steindruckfestig-
+keitsklasse 
+fk
+N/mm²
+NM II NM IIa NM III NM IIIa 
+4 1,7 2,0 2,3 2,6 
+6 2,2 2,5 2,9 3,3 
+8 2,5 3,2 3,5 4,0 
+10 2,8 3,6 4,0 4,5 
+12 3,1 4,0 4,5 5,0 
+16 3,7 (3,1) 4,7 (4,0) 5,3 (4,5) 5,9 (5,0) 
+20 4,2 (3,1) 5,4 (4,0) 6,0 (4,5) 6,7 (5,0) 
+Werte in Klammern gelten für Mauerwerk aus Hochlochziegeln mit Lochung W (HLzW) und 
+Mauertafelziegeln T4.
+
+===== PDF-SEITE 15 =====
+DIN EN 1996-3/NA:2012-01 
+15 
+Tabelle NA.D.3 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Vollziegeln sowie Kalksand-Vollsteinen und Kalksand-Blocksteinen mit Normalmauermörtel
+Steindruckfes-
+tigkeitsklasse 
+fk
+N/mm²
+NM II NM IIa NM III NM IIIa 
+2 --- --- --- --- 
+4 2,8 3,2 3,5 4,0 
+6 3,6 4,0 4,5 5,0 
+8 4,2 4,7 5,3 5,9 
+10 4,8 5,4 6,0 6,8
+12 5,4 6,0 6,7 7,5 
+16 6,4 7,1 8,0 8,9 
+20 7,2 8,1 9,1 10,1 
+28 8,8 9,9 11,0 12,4 
+36 10,2 11,4 12,6 14,1 
+48 10,2 11,4 14,4 16,2 
+60 10,2 11,4 14,4 16,2 
+Tabelle NA.D.4 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Kalksand-Plansteinen und Kalksand-Planelementen mit Dünnbettmörtel
+Steindruck-
+festigkeitsklasse 
+fk
+N/mm²
+Planelemente Plansteine 
+KS XL KS XL-N, 
+KS XL-E KS P KS L-P 
+2 --- --- --- --- 
+4 4,7 2,9 2,9 2,9 
+6 6,0 4,0 4,0 3,7 
+8 7,3 5,0 5,0 4,4 
+10 8,3 6,0 6,0 5,0 
+12 9,4 7,0 7,0 5,6 
+16 11,2 8,8 8,8 6,6 
+20 12,9 10,5 10,5 7,6 
+28 16,0 13,8 13,8 7,6 
+36 16,0 13,8 16,8 7,6 
+48 16,0 13,8 16,8 7,6 
+60 16,0 13,8 16,8 7,6
+
+===== PDF-SEITE 16 =====
+DIN EN 1996-3/NA:2012-01 
+16 
+Tabelle NA.D.5 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Mauerziegeln und Kalksandsteinen mit Leichtmauermörtel
+Steindruck-
+festigkeitsklasse
+fk
+N/mm²
+LM 21 LM 36 
+21 , 21 , 3
+41 , 62 , 2
+62 , 22 , 9
+82 , 53 , 3
+10 2,8 3,3
+12 2,8 3,3
+16 2,8 3,3
+20 2,8 3,3
+28 2,8 3,3
+Tabelle NA.D.6 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Leichtbeton- und Betonsteinen mit Normalmauermörtel
+Leichtbeton-
+steine 
+Steindruck-
+festigkeits-
+klasse
+fk
+N/mm²
+Mörtelgruppe
+II IIa III und IIIa 
+Hbl, Hbn 2 1,4 1,5 1,7 
+4 2,2 2,4 2,6 
+6 2,9 3,1 3,3 
+8 2,9 3,7 4,0 
+10 2,9 4,3 4,6 
+12 2,9 4,8 5,1 
+V, Vbl 2 1,5 1,6 1,8 
+4 2,5 2,7 3,0 
+6 3,4 3,7 4,0 
+8 3,4 4,5 5,0 
+10 3,4 5,4 5,9 
+12 3,4 6,1 6,7 
+16 3,4 6,1 8,3 
+20 3,4 6,1 9,8 
+Vn, Vbn 
+Vm, Vmb
+4 2,8 3,2 3,5 
+6 3,6 4,0 4,5 
+8 3,6 4,7 5,3 
+10 3,6 5,4 6,0 
+12 3,6 6,0 6,7 
+16 3,6 6,0 8,0 
+20 3,6 6,0 9,1
+
+===== PDF-SEITE 17 =====
+DIN EN 1996-3/NA:2012-01 
+17 
+Tabelle NA.D.7 — Charakteristische Druckfestigkeit fk in N/mm² von Einsteinmauerwerk aus 
+Leichtbeton-Vollblöcken mit Schlitzen Vbl S, Vbl SW mit Normalmauermörtel
+Steindruck- 
+festigkeitsklasse
+fk
+N/mm²
+Mörtelgruppe
+II IIa III, IIIa
+2 1,4 1,6 1,9 
+4 2,1 2,4 2,9 
+6 2,7 3,1 3,7 
+8 2,7 3,9 4,4 
+10 2,7 4,5 5,0 
+12 2,7 5,0 5,6 
+Tabelle NA.D.8 — Charakteristische Druckfestigkeit fk in N/mm² von 
+Einsteinmauerwerk aus Voll- und Lochsteinen aus Leichtbeton mit Leichtmauermörtel
+Steindruckfestigkeits-
+klasse 
+fk
+N/mm²
+LM 21 und LM 36
+21 , 4 
+42 , 3 
+63 , 0 
+83 , 6 
+Tabelle NA.D.9 — Charakteristische Druckfestigkeit fk, in N/mm² von 
+Einsteinmauerwerk aus Porenbetonsteinen mit Dünnbettmörtel
+Steindruckfestigkeits-
+klasse 
+fk
+N/mm²
+21 , 8
+4 3,0
+64 , 1
+8 5,1
+ANMERKUNG DIN EN 998-2 gibt keine Begrenzung der Lagerfugendicke bei Verwendung von Dünnbettmörtel an. Die 
+Werte für Dünnbettmörtel gelten für eine Dicke von 1 mm bis 3 mm.
+Die charakteristische Festigkeit für Verbandsmauerwerk mit Normalmauermörtel ist durch Multiplikation des 
+Tabellenwertes mit 0,80 zu ermitteln. Verbandsmauerwerk ist Mauerwerk mit mehr als einem Stein in 
+Richtung der Wanddicke.
+
+===== PDF-SEITE 18 =====
+DIN EN 1996-3/NA:2012-01 
+18 
+NDP zu D.2 Charakteristische Biegefestigkeit 
+Die charakteristische Biegefestigkeit fxk,1,s wird nach DIN EN 1996-1-1/NA:2012-01, NDP zu 3.6.3, bestimmt. 
+Sofern eine Biegezugfestigkeit benötigt wird, ist diese DIN EN 1996-1-1 zu entnehmen. 
+NDP zu D.3 Charakteristische Haftscherfestigkeit 
+Die charakteristische Haftscherfestigkeit fvk0,s wird nach DIN EN 1996-1-1/NA:2012-01, NDP zu 3.6.2, 
+bestimmt.

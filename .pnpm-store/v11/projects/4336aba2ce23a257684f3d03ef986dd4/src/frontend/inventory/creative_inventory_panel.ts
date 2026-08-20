@@ -42,6 +42,7 @@ const USER_INVENTORY_SELECTION_MESSAGES = new Set([
 ]);
 const READY_WORLD_EDIT_TOOLS = new Set([
   "selection",
+  "room",
   "paint",
   "sculpt",
   "parcel",

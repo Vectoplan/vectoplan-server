@@ -1,0 +1,51 @@
+{
+  "document_id": "EN_1999-1-5_NA__national_annex__EC_9_Teil_1-5_NA",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-5/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 9 Teil 1-5 NA.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-5 NA.pdf",
+  "sha256": "f6f4bea56b8ab21d859f176d2c33ec16590822cf91237b95d1ed574c94a783b1",
+  "pages": 3,
+  "text_pages": 3,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 0,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184200+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111184200+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-5 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 404,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1001,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 949,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

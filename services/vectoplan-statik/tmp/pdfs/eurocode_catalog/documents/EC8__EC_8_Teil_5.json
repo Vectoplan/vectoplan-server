@@ -1,0 +1,1255 @@
+{
+  "document_id": "EN_1998-5__base_standard__EC_8_Teil_5",
+  "eurocode_family": "EC8",
+  "designation": "DIN EN 1998-5",
+  "document_kind": "base_standard",
+  "file_name": "EC 8 Teil 5.pdf",
+  "relative_path": "EC 8/EC 8 Teil 5.pdf",
+  "sha256": "85fcdc0f6b44a95bdcc2bc311cdfdb4a97fe6ea185bc2f96626e5a92a8ce08d0",
+  "pages": 41,
+  "text_pages": 41,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 109,
+  "equation_candidate_count": 31,
+  "table_reference_count": 8,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111183945+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233504+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 8\\EC 8 Teil 5.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Geltungsbereich............................................................................................................. ........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Allgemeine Bezugsnormen................................................................................................... ................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen .................................................................................................................... ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln........................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe und Definitionen................................................................................................... ...................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Einheitliche Begriffe für alle Eurocodes .................................................................................. ...........9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Zusätzliche, in der vorliegenden Norm verwendete Begriffe............................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen............................................................................................................... .........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7",
+      "title": "SI-Einheiten ................................................................................................................ ......................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Erdbebeneinwirkung ............................................................................................................ .............. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Definition der Erdbebeneinwirkung........................................................................................... ....... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Zeitverlaufsdarstellung ..................................................................................................... ................. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Baugrundeigenschaften......................................................................................................... ............ 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Festigkeitsparameter........................................................................................................ .................. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Steifigkeits- und Dämpfungsparameter ........................................................................................ ... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Anforderungen an den Standort und an den Baugrund................................................................. 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Standortwahl ................................................................................................................ ....................... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1.1",
+      "title": "Allgemeines............................................................................................................... .......................... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1.2",
+      "title": "Nähe zu seismisch aktiven Verwerfungen .................................................................................... ... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1.3",
+      "title": "Standsicherheit von Böschungen............................................................................................ ......... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1.4",
+      "title": "Potenziell verflüssigbare Böden ........................................................................................... ............ 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1.5",
+      "title": "Übermäßige Setzung von Böden unter zyklischer Beanspruchung ............................................. 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Baugrunderkundung und Baugrunduntersuchung ........................................................................ 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeine Kriterien...................................................................................................... ..................... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Bestimmung der Baugrundklasse zur Definition der Erdbebeneinwirkung................................. 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Gründung...................................................................................................................... ....................... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeine Anforderungen.................................................................................................... ............ 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Regeln für den konzeptionellen Entwurf...................................................................................... .... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessungswerte der Auswirkungen ............................................................................................ .1 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Abhängigkeit von der Tragwerksauslegung................................................................................... .1 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4",
+      "title": "Nachweise und Dimensionierungskriterien..................................................................................... 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Flachgründungen oder eingebettete Gründungen.......................................................................... 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Pfähle und Pfahlgründungen................................................................................................ ............. 22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Boden-Bauwerk-Wechselwirkung.................................................................................................. ... 23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7",
+      "title": "Stützbauwerke ................................................................................................................. ....................23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeine Anforderungen .................................................................................................... ............23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Wahl des Tragwerktyps und allgemeine Gesichtspunkte für die Auslegung...............................24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Berechnungsverfahren ........................................................................................................ ...............24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3.1",
+      "title": "Allgemeine Verfahren...................................................................................................... ....................24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3.2",
+      "title": "Vereinfachte Verfahren: pseudo-statische Berechnung.................................................................24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4",
+      "title": "Standsicherheits- und Festigkeitsnachweise.................................................................................. .27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.1",
+      "title": "Standsicherheit des Bodens der Gründung................................................................................... ..27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.2",
+      "title": "Verankerungen ............................................................................................................. .......................27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4.3",
+      "title": "Tragfähigkeit des Bauwerks................................................................................................ ...............27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.1",
+      "title": "Geltungsbereich",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Allgemeine Bezugsnormen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe und Definitionen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Einheitliche Begriffe für alle Eurocodes",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Zusätzliche, in der vorliegenden Norm verwendete Begriffe",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.7",
+      "title": "SI-Einheiten",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2",
+      "title": "Erdbebeneinwirkung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1",
+      "title": "Definition der Erdbebeneinwirkung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.2",
+      "title": "Zeitverlaufsdarstellung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3",
+      "title": "Baugrundeigenschaften",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.1",
+      "title": "Festigkeitsparameter",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.2",
+      "title": "Steifigkeits- und Dämpfungsparameter",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4",
+      "title": "Anforderungen an den Standort und an den Baugrund",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1",
+      "title": "Standortwahl",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.2",
+      "title": "Nähe zu seismisch aktiven Verwerfungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.3",
+      "title": "Standsicherheit von Böschungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.3.1",
+      "title": "Allgemeine Anforderungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.3.2",
+      "title": "Erdbebeneinwirkung",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1.3.3",
+      "title": "Berechnungsverfahren",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4.1.3.4",
+      "title": "Sicherheitsnachweis für das pseudo-statische Verfahren",
+      "pdf_page": 16
+    },
+    {
+      "clause": "4.1.4",
+      "title": "Potenziell verflüssigbare Böden",
+      "pdf_page": 16
+    },
+    {
+      "clause": "4.1.5",
+      "title": "Übermäßige Setzung von Böden unter zyklischer Beanspruchung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4.2",
+      "title": "Baugrunderkundung und Baugrunduntersuchung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeine Kriterien",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Bestimmung der Baugrundklasse zur Definition der Erdbebeneinwirkung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Abhängigkeit der Bodensteifigkeit und -dämpfung von der Größe der Verzerrung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5",
+      "title": "Gründung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeine Anforderungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.2",
+      "title": "Regeln für den konzeptionellen Entwurf",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessungswerte der Auswirkungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Abhängigkeit von der Tragwerksauslegung",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Die Übertragung der Auswirkungen in den Baugrund",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4",
+      "title": "Nachweise und Dimensionierungskriterien",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Flachgründungen oder eingebettete Gründungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.1.1",
+      "title": "Einzelfundamente (Bemessung im Grenzzustand der Tragfähigkeit)",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.4.1.2",
+      "title": "Horizontale Verbindungen zwischen Gründungskörpern",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.4.1.3",
+      "title": "Plattengründungen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5.4.1.4",
+      "title": "Kastenförmige Gründungen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Pfähle und Pfahlgründungen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "6",
+      "title": "Boden-Bauwerk-Wechselwirkung",
+      "pdf_page": 25
+    },
+    {
+      "clause": "7",
+      "title": "Stützbauwerke",
+      "pdf_page": 25
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeine Anforderungen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "7.2",
+      "title": "Wahl des Tragwerktyps und allgemeine Gesichtspunkte für die Auslegung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7.3",
+      "title": "Berechnungsverfahren",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7.3.1",
+      "title": "Allgemeine Verfahren",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7.3.2",
+      "title": "Vereinfachte Verfahren: pseudo-statische Berechnung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7.3.2.1",
+      "title": "Grundmodelle",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7.3.2.2",
+      "title": "Erdbebeneinwirkung",
+      "pdf_page": 27
+    },
+    {
+      "clause": "7.3.2.3",
+      "title": "Bemessungswerte für den Erddruck und den Wasserdruck",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.3.2.4",
+      "title": "Hydrodynamischer Druck auf die Wandaußenfläche",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.4",
+      "title": "Standsicherheits- und Festigkeitsnachweise",
+      "pdf_page": 29
+    },
+    {
+      "clause": "7.4.1",
+      "title": "Standsicherheit des Bodens der Gründung",
+      "pdf_page": 29
+    },
+    {
+      "clause": "7.4.2",
+      "title": "Verankerungen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "7.4.3",
+      "title": "Tragfähigkeit des Bauwerks",
+      "pdf_page": 29
+    },
+    {
+      "clause": "1",
+      "title": "EEHKkE (E.1)",
+      "pdf_page": 35
+    },
+    {
+      "clause": "7",
+      "title": "HkE (E.17)",
+      "pdf_page": 37
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "ag Bemessungswert der Bodenbeschleunigung für Baugrundklasse A (ag = I agR);",
+      "context": "VEd Bemessungswert der horizontalen Schubkraft; | W Gewicht der gleitenden Masse; | ag Bemessungswert der Bodenbeschleunigung für Baugrundklasse A (ag = I agR); | agR Referenz-Spitzenwert der Bodenbeschleunigung für Baugrundklasse A; | avg Bemessungswert der Bodenbeschleunigung in vertikaler Richtung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "Nationalen Anhang entnommen werden. Empfohlene Werte sind cu = 1,4, cy = 1,25, qu = 1,4 und = 1,25.",
+      "context": "qu bezeichnet und diejenigen für tan mit . | ANMERKUNG Die cu, cy, qu und zur Verwendung in einem Land zugewiesenen Werte können seinem | Nationalen Anhang entnommen werden. Empfohlene Werte sind cu = 1,4, cy = 1,25, qu = 1,4 und = 1,25. | 3.2 Steifigkeits- und Dämpfungsparameter | (1) Wegen seines Einflusses auf die Bemessungs-Erdbebeneinwirkung ist der Schubmodul G der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "3.1",
+      "line": "G = vs2 (3.1)",
+      "context": "(1) Wegen seines Einflusses auf die Bemessungs-Erdbebeneinwirkung ist der Schubmodul G der | Haupt-Steifigkeitsparameter des Baugrunds unter Erdbebenbeanspruchung. Er ist durch die Beziehung | G = vs2 (3.1) | gegeben, wobei die Dichte und vs die Scherwellengeschwindigkeit des Bodens darstellen. | DIN EN 1998-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "4.1",
+      "line": "FH = 0,5 S W (4.1)",
+      "context": "horizontaler bzw. vertikaler Richtung wirken, müssen für pseudo-statische Berechnungen wie folgt angesetzt | werden: | FH = 0,5 S W (4.1) | FV = 0,5 FH, wenn das Verhältnis avg/ag größer ist als 0,6 (4.2) | FV = 0,33 FH, wenn das Verhältnis avg/ag nicht größer ist als 0,6 (4.3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "4.2",
+      "line": "FV = 0,5 FH, wenn das Verhältnis avg/ag größer ist als 0,6 (4.2)",
+      "context": "werden: | FH = 0,5 S W (4.1) | FV = 0,5 FH, wenn das Verhältnis avg/ag größer ist als 0,6 (4.2) | FV = 0,33 FH, wenn das Verhältnis avg/ag nicht größer ist als 0,6 (4.3) | mit:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "4.3",
+      "line": "FV = 0,33 FH, wenn das Verhältnis avg/ag nicht größer ist als 0,6 (4.3)",
+      "context": "FH = 0,5 S W (4.1) | FV = 0,5 FH, wenn das Verhältnis avg/ag größer ist als 0,6 (4.2) | FV = 0,33 FH, wenn das Verhältnis avg/ag nicht größer ist als 0,6 (4.3) | mit: | Verhältnis des Bemessungswerts der Bodenbeschleunigung ag für Baugrundklasse A zur Erd-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "4.4",
+      "line": "e = 0,65 S vo (4.4)",
+      "context": "angegeben. Bei dieser Vorgehensweise darf die seismische Scherspannung | e nach der Näherungsformel | e = 0,65 S vo (4.4) | abgeschätzt werden, worin vo den totalen Überlagerungsdruck bedeutet und die anderen Variablen bereits in | den Gleichungen (4.1) bis (4.3) vorkamen. Diese Formel darf nicht angewendet werden bei Tiefen größer als",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "entnommen werden. Der empfohlene Wert beträgt = 0,8, entsprechend einem Sicherheitsfaktor von 1,25.",
+      "context": "dass sie in früheren Erdbeben eine Verflüssigung hervorgerufen hat. | ANMERKUNG Der zugewiesene Wert zur Verwendung in einem bestimmten Land kann seinem Nationalen Anhang | entnommen werden. Der empfohlene Wert beträgt = 0,8, entsprechend einem Sicherheitsfaktor von 1,25. | (12)P Wenn sich die Böden als empfindlich gegen Verflüssigung erweisen und die daraus folgenden | Auswirkungen als dazu in der Lage betrachtet werden, das Lastabtragungsvermögen oder die Standsicherheit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "Anhang entnommen werden. Der empfohlene Wert ist p = 0,65.",
+      "context": "oberfläche unterschreiten. | ANMERKUNG Der p zugewiesene Wert zur Verwendung innerhalb eines Landes darf seinem Nationalen | Anhang entnommen werden. Der empfohlene Wert ist p = 0,65. | 18 | DIN EN 1998-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "5.1",
+      "line": "tanNF (5.1)",
+      "context": "M | EdRd | tanNF (5.1) | Dabei ist | NEd die Bemessungsnormalkraft auf der horizontalen Sohlfläche;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "5.2",
+      "line": "VEd FRd + Epd (5.2)",
+      "context": "(6)P Um sicherzustellen, dass kein Versagen durch Gleiten auf einer waagerechten Sohlfläche stattfinden | kann, muss der nachstehende Ausdruck erfüllt sein | VEd FRd + Epd (5.2) | (7) Bei Gründungen oberhalb des Grundwasserspiegels darf ein begrenztes Maß an Gleitung zugelassen | werden, vorausgesetzt, die beiden folgenden Bedingungen sind erfüllt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "7.1",
+      "line": "Skh (7.1)",
+      "context": "Erdbebenbeiwerte, die alle Massen betreffen, wie folgt angenommen werden: | r | Skh (7.1) | kv = 0,5 kh, wenn avg/ag größer ist als 0,6 (7.2) | kv = 0,33 kh in allen anderen Fällen (7.3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "7.2",
+      "line": "kv = 0,5 kh, wenn avg/ag größer ist als 0,6 (7.2)",
+      "context": "r | Skh (7.1) | kv = 0,5 kh, wenn avg/ag größer ist als 0,6 (7.2) | kv = 0,33 kh in allen anderen Fällen (7.3) | Der Faktor r nimmt die in Tabelle 7.1 aufgelisteten Werte in Abhängigkeit von der Art des Stützbauwerks an.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "7.3",
+      "line": "kv = 0,33 kh in allen anderen Fällen (7.3)",
+      "context": "Skh (7.1) | kv = 0,5 kh, wenn avg/ag größer ist als 0,6 (7.2) | kv = 0,33 kh in allen anderen Fällen (7.3) | Der Faktor r nimmt die in Tabelle 7.1 aufgelisteten Werte in Abhängigkeit von der Art des Stützbauwerks an. | Für Stützwände nicht höher als 10 m muss der Erdbebenbeiwert als über die Höhe konstant angenommen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 300 S (mm) 2",
+      "context": "Tabelle 7.1  Werte des Faktors r für die Berechnung des horizontalen Erdbebenbeiwerts | Art des Stützbauwerks r | Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 300 S (mm) 2 | Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 200 S (mm) 1,5 | Biegebeanspruchte Stahlbetonwände, verankerte oder ausgesteifte Wände, auf vertikalen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 200 S (mm) 1,5",
+      "context": "Art des Stützbauwerks r | Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 300 S (mm) 2 | Freie Schwergewichtswände mit einer aufnehmbaren Verschiebung bis zu dr = 200 S (mm) 1,5 | Biegebeanspruchte Stahlbetonwände, verankerte oder ausgesteifte Wände, auf vertikalen | Pfählen stehende Stahlbetonwände, gehaltene Kellergeschosswände und Brückenwiderlager 1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "7.4",
+      "line": "e = Ls (1 + 1,5 S) (7.4)",
+      "context": "Formel ermittelt werden: | L | e = Ls (1 + 1,5 S) (7.4) | 7.4.3 Tragfähigkeit des Bauwerks | (1)P Es muss nachgewiesen werden, dass sich unter der Kombination der Erdbebeneinwirkung mit anderen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "7.5",
+      "line": "d > Ed (7.5)",
+      "context": "(3)P Bei allen tragenden Bauteilen muss die Einhaltung folgender Bedingung sichergestellt sein | R | d > Ed (7.5) | Dabei ist | Rd der Bemessungswert des Widerstands des Bauteils, der in der gleichen Art wie für den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "N1(60)-Werten für reine und schluffige Sande für Erdbeben mit MS = 7,5",
+      "context": "Kurve 3: < 5 % Feinkorngehalt | Bild B.1  Zusammenhang zwischen Spannungsverhältnissen, die Verflüssigung hervorrufen, und | N1(60)-Werten für reine und schluffige Sande für Erdbeben mit MS = 7,5 | 30 | DIN EN 1998-5:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "E = Es z/d",
+      "context": "Ed | K | E = Es z/d | 35,0 | s",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "E = Es dz /",
+      "context": "p17,0 E | E | E = Es dz / | 28,0 | s",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "E = Es",
+      "context": "p24,0 E | E | E = Es | 21,0 | s",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "Die Formel für passive Zustände sollte vorzugsweise für vertikale Wandflächen ( = 90°) verwendet werden.",
+      "context": "Wand, d. h. tantan 1d ; | ist der in E.5 bis E.7 definierte Winkel. | Die Formel für passive Zustände sollte vorzugsweise für vertikale Wandflächen ( = 90°) verwendet werden. | E.5 Der Grundwasserspiegel liegt unterhalb der Stützwand  Erddruckbeiwert. | Es gelten die folgenden Parameter:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "Ewd = 0 (E.7)",
+      "context": "1tan k | k (E.6) | Ewd = 0 (E.7) | Dabei ist | kh der horizontale Erdbebenbeiwert (siehe Formel 7.1).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "kh der horizontale Erdbebenbeiwert (siehe Formel 7.1).",
+      "context": "Ewd = 0 (E.7) | Dabei ist | kh der horizontale Erdbebenbeiwert (siehe Formel 7.1). | Alternativ dürfen Tabellen und Diagramme verwendet werden, die für den statischen Zustand (nur Gewichts- | kräfte) gelten, mit folgenden Änderungen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "*=  w (E.12)",
+      "context": "E.6 Dynamisch undurchlässiger Boden unterhalb des Grundwasserspiegels  Erddruckbeiwert. | Die folgenden Parameter werden angewendet: | *=  w (E.12) | v | h",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "Ewd = 0 (E.14)",
+      "context": "w 1tan k | k (E.13) | Ewd = 0 (E.14) | Dabei ist | die Wichte des wassergesättigten Bodens;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "*=  w (E.15)",
+      "context": "E.7 Dynamisch (hoch)durchlässiger Boden unterhalb des Grundwasserspiegels  Erddruckbeiwert. | Es gelten die folgenden Parameter: | *=  w (E.15) | v | h",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "kh der horizontale Erdbebenbeiwert mit r = 1 (siehe Formel 7.1);",
+      "context": "EN 1998-5:2004 (D) | Dabei ist | kh der horizontale Erdbebenbeiwert mit r = 1 (siehe Formel 7.1); | h die freie Wasserhöhe; | z die vom Wasserspiegel aus senkrecht nach unten gemessene Koordinate.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "Pd = S H2 (E.19)",
+      "context": "entstehen kann, und für eine vertikale Wand mit horizontaler Hinterfüllung darf die dynamische Kraft infolge | des Erddruckzuwachses angenommen werden zu | Pd = S H2 (E.19) | Dabei ist | H die Wandhöhe.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "ag der Bemessungswert der Bodenbeschleunigung für Baugrundklasse A ( ag = I agR);",
+      "context": "Dabei ist | die Dichte des Bodens; | ag der Bemessungswert der Bodenbeschleunigung für Baugrundklasse A ( ag = I agR); | agR der Referenz-Spitzenwert der Bodenbeschleunigung für Baugrundklasse A; | I der Bedeutungsbeiwert;",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "7.1",
+      "pdf_page": 12,
+      "line": "r Beiwert für die Berechnung des horizontalen Erdbebenbeiwerts (Tabelle 7.1);"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 19,
+      "line": "in Tabelle 4.1 angegebenen Abminderungsfaktoren für v"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 19,
+      "line": "Werte der inneren Dämpfung von Tabelle 4.1 verwendet werden, wenn besondere Messdaten fehlen."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 19,
+      "line": "Tabelle 4.1  Mittlere Bodendämpfungsverhältnisse und mittlere Abminderungsfaktoren"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 25,
+      "line": "Tabelle 4.1 definiert) unter 100 m/s, wie etwa bei den Böden der Baugrundklasse S1."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 27,
+      "line": "Der Faktor r nimmt die in Tabelle 7.1 aufgelisteten Werte in Abhängigkeit von der Art des Stützbauwerks an."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 27,
+      "line": "Tabelle 7.1  Werte des Faktors r für die Berechnung des horizontalen Erdbebenbeiwerts"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 27,
+      "line": "a) sollte der Faktor r von Tabelle 7.1 nicht größer als 1,0 angenommen werden;"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1018,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1764,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2107,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6300,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.2.1",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.6",
+        "1.7",
+        "2",
+        "2.1",
+        "2.2",
+        "3",
+        "3.1",
+        "3.2",
+        "4",
+        "4.1",
+        "4.1.1",
+        "4.1.2",
+        "4.1.3",
+        "4.1.4",
+        "4.1.5",
+        "4.2",
+        "4.2.1",
+        "4.2.2",
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.3.1",
+        "5.4",
+        "5.4.1",
+        "5.4.2",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2265,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.3.1",
+        "7.3.2",
+        "7.4",
+        "7.4.1",
+        "7.4.2",
+        "7.4.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3360,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3408,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2322,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1528,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2599,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2216,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 1777,
+      "text_layer": "usable",
+      "clauses": [
+        "1.7"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 13,
+      "characters": 3032,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2.1",
+        "2.2",
+        "3",
+        "3.1",
+        "3.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 14,
+      "characters": 3242,
+      "text_layer": "usable",
+      "clauses": [
+        "4",
+        "4.1",
+        "4.1.1",
+        "4.1.2",
+        "4.1.3",
+        "4.1.3.1",
+        "4.1.3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2621,
+      "text_layer": "usable",
+      "clauses": [
+        "4.1.3.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 16,
+      "characters": 3789,
+      "text_layer": "usable",
+      "clauses": [
+        "4.1.3.4",
+        "4.1.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 3963,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 18,
+      "characters": 3445,
+      "text_layer": "usable",
+      "clauses": [
+        "4.1.5",
+        "4.2",
+        "4.2.1",
+        "4.2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2856,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2862,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 3064,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.4",
+        "5.4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 3162,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4.1.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 23,
+      "characters": 3550,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2742,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4.1.3",
+        "5.4.1.4",
+        "5.4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2963,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "7",
+        "7.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 3113,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2",
+        "7.3",
+        "7.3.1",
+        "7.3.2",
+        "7.3.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2731,
+      "text_layer": "usable",
+      "clauses": [
+        "7.3.2.2"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 28,
+      "characters": 3139,
+      "text_layer": "usable",
+      "clauses": [
+        "7.3.2.3",
+        "7.3.2.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2548,
+      "text_layer": "usable",
+      "clauses": [
+        "7.4",
+        "7.4.1",
+        "7.4.2",
+        "7.4.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 30,
+      "characters": 2383,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 3046,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 999,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1113,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1583,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1475,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1197,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 37,
+      "characters": 944,
+      "text_layer": "usable",
+      "clauses": [
+        "7"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 38,
+      "characters": 719,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1535,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1452,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 41,
+      "characters": 876,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

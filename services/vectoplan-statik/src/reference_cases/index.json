@@ -1,0 +1,14 @@
+{
+  "catalog_version": "structural-reference-cases/0.2",
+  "cases": [
+    {"case_id": "single_span_rc", "label": "Einfeldträger Stahlbeton", "file": "single_span_rc.json", "category": "building"},
+    {"case_id": "two_span_steel", "label": "Zweifeldträger Stahl", "file": "two_span_steel.json", "category": "building"},
+    {"case_id": "residential_plate", "label": "Wohngebäudedecke als Fläche", "file": "residential_plate.json", "category": "building"},
+    {"case_id": "industrial_hall", "label": "Hallendachträger mit Schnee", "file": "industrial_hall.json", "category": "hall"},
+    {"case_id": "bridge_beam", "label": "Brückenträger - vorbereitender Liniennachweis", "file": "bridge_beam.json", "category": "bridge"},
+    {"case_id": "prestress_tendon", "label": "Spannglied mit unmittelbaren Verlusten", "file": "prestress_tendon.json", "category": "prestress"},
+    {"case_id": "masonry_wall", "label": "Tragende Mauerwerkswand", "file": "masonry_wall.json", "category": "wall"},
+    {"case_id": "pad_foundation", "label": "Einzelfundament", "file": "pad_foundation.json", "category": "foundation"},
+    {"case_id": "bridge_abutment", "label": "Brückenwiderlager mit Erd- und Wasserdruck", "file": "bridge_abutment.json", "category": "foundation"}
+  ]
+}

@@ -1,0 +1,348 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+Teil 1: Allgemeine Regeln 
+National Annex  
+Nationally determined parameters  
+Eurocode 7: Geotechnical design 
+Part 1: General rules 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 7: Calcul géotechnique 
+Partie 1: Règles générales
+
+===== PDF-SEITE 2 =====
+DIN EN 1997-1/NA:2010-12 
+Inhalt 
+Seite
+Vorwort ........................................................................................................................................................... 4
+NA 1 Anwendungsbereich ......................................................................................................... ............... 5
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1997-1:2009-09........................................ 5
+NA 2.1 Allgemeines............................................................................................................. .......................... 5
+NA 2.2 Nationale Festlegungen ................................................................................................................... 5
+Abschnitt 2 Grundlagen der geotechnischen Bemessung ....................................................................... 6
+NDP Zu 2.1 (8)P .............................................................................................................................................. 6
+NCI Zu 2.2 (1)P................................................................................................................................................ 6
+NDP Zu 2.4.6.1 (4)P ........................................................................................................................................ 6
+NDP Zu 2.4.6.2 (2)P ........................................................................................................................................ 6
+NDP Zu 2.4.7.1 (2)P ........................................................................................................................................ 6
+NDP Zu 2.4.7.1 (3)........................................................................................................................................... 6
+NDP Zu 2.4.7.1 (4)........................................................................................................................................... 6
+NDP Zu 2.4.7.1 (5)........................................................................................................................................... 6
+NDP Zu 2.4.7.1 (6)........................................................................................................................................... 6
+NDP Zu 2.4.7.2 (2)P ........................................................................................................................................ 6
+NDP Zu 2.4.7.3.2 (3)P ..................................................................................................................................... 7
+NDP Zu 2.4.7.3.3 (2)P ..................................................................................................................................... 7
+NDP Zu 2.4.7.3.4.1 (1)P .................................................................................................................................. 7
+NDP Zu 2.4.7.4 (3)P ........................................................................................................................................ 7
+NDP Zu 2.4.7.5 (2)P ........................................................................................................................................ 7
+NDP Zu 2.4.8 (2).............................................................................................................................................. 7
+NDP Zu 2.4.9 (1)P ........................................................................................................................................... 7
+NDP Zu 2.5 (1)................................................................................................................................................. 7
+Abschnitt 7 Pfahlgründungen ...................................................................................................................... 7
+NDP Zu 7.6.2.2 (8)P ........................................................................................................................................ 7
+NDP Zu 7.6.2.2 (14)P ...................................................................................................................................... 7
+NDP Zu 7.6.2.3 (3)P und (4)P......................................................................................................................... 7
+NDP Zu 7.6.2.3 (5)P ........................................................................................................................................ 8
+NDP Zu 7.6.2.3 (8)........................................................................................................................................... 8
+NDP Zu 7.6.2.4 (4)P ........................................................................................................................................ 8
+NDP Zu 7.6.3.2 (2)P ........................................................................................................................................ 8
+NDP Zu 7.6.3.2 (5)P ........................................................................................................................................ 8
+NDP Zu 7.6.3.3 (3)P ........................................................................................................................................ 8
+NDP Zu 7.6.3.3 (4)P ........................................................................................................................................ 8
+NDP Zu 7.6.3.3 (6)........................................................................................................................................... 8
+Abschnitt 8 Verankerungen .......................................................................................................................... 9
+NDP Zu 8.5.2 (2)P ........................................................................................................................................... 9
+NDP Zu 8.5.2 (3).............................................................................................................................................. 9
+NDP Zu 8.6 (4)................................................................................................................................................. 9
+Abschnitt 10 Hydraulisch verursachtes Versagen..................................................................................... 9
+NDP Zu 10.2 (3)............................................................................................................................................... 9
+Abschnitt 11 Geländebruchsicherheit ......................................................................................................... 9
+NDP Zu 11.5.1 (1)P ......................................................................................................................................... 9
+Anhänge.......................................................................................................................................................... 9
+NDP Zu Anhang A Teilsicherheitsbeiwerte und Streuungsfaktoren für Grenzzustände der 
+Tragfähigkeit und empfohlene Zahlenwerte .................................................................................. 9
+NDP Zu Anhang B Erläuterungen zu den Teilsicherheitsbeiwerten für die 
+Nachweisverfahren 1, 2, und 3 ........................................................................................................ 9
+NDP Zu Anhang C Beispiele zur Ermittlung der Erddruck-Grenzwerte ................................................... 9
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1997-1/NA:2010-12 
+Seite
+NDP Zu Anhang D Beispiele für eine analytische Ermittlung des Grundbruchwiderstands ...............10
+NDP Zu Anhang E Beispiel eines halbempirischen Verfahrens zur Abschätzung der 
+Tragfähigkeit einer Flächengründung...........................................................................................10
+NDP Zu Anhang F Beispiele für Verfahren zur Setzungsermittlung .......................................................10
+NDP Zu Anhang G Beispiel für ein Verfahren zur Ermittlung von Bemessungssohldrücken für 
+Flächenfundamente auf Fels..........................................................................................................10
+NDP Zu Anhang H Grenzwerte für Bauwerksverformungen und Fundamentbewegungen .................10
+NDP Zu Anhang J Kontrollliste für die Überwachung der Bauausführung und des fertigen 
+Bauwerks..........................................................................................................................................10
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1997-1/NA:2010-12 
+Vorwort 
+Dieses Dokument (DIN EN 1997-1/NA) wurde im Normenausschuss Bauwesen (NABau) im DIN Deutsches 
+Institut für Normung e. V. vom Arbeitsausschuss NA 005-05-01 AA Sicherheit im Erd- und Grundbau erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1997-1, Eurocode 7: Entwurf, Berechnung und 
+Bemessung in der Geotechnik  Teil 1: Allgemeine Regeln. 
+Die Europäische Norm EN 1997-1 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben von Teilsicherheitsbeiwerten. Die 
+entsprechenden Textstellen sind in der Europäischen Norm durch Hinweise auf die Möglichkeit nationaler 
+Festlegungen gekennzeichnet. Eine Liste dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber 
+hinaus enthält dieser nationale Anhang sowie DIN 1054:2010-12 ergänzende nicht widersprechende Angaben 
+zur Anwendung von DIN EN 1997-1:2009-09 (en: non-contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1997-1:2009-09. 
+DIN EN 1997-1:2009-09, dieser Nationale Anhang DIN EN 1997-1/NA:2010-12 und DIN 1054:2010-12 
+ersetzen zusammen DIN 1054:2005-01 einschließlich zugehöriger Änderung und Berichtigungen. 
+Änderungen 
+Gegenüber DIN 1054:2005-01, DIN 1054/A1:2009-07, DIN 1054 Berichtigung 1:2005-04, 
+DIN 1054 Berichtigung 2:2007-04, DIN 1054 Berichtigung 3:2008-01, DIN 1054 Berichtigung 4:2008-10 und 
+DIN 1054/A1:2009-07 wurden folgende Änderungen vorgenommen: 
+a) Norm inhaltlich und redaktionell überarbeitet; 
+b) ergänzende Festlegungen zur nationalen Anwendung von DIN EN 1997-1 aufgenommen. 
+Frühere Ausgaben 
+DIN 1054: 1934, 1940-08, 1953x-10, 1969-11, 2003-01, 2005-01 
+DIN 4014: 1960, 1969-11 
+DIN 4014-1: 1975-08 
+DIN 4014-2: 1977-09 
+DIN 4026: 1968-07, 1975-08 
+DIN 4125: 1990-11 
+DIN 4125-1: 1972-06, 1988-03 
+DIN 4125-2: 1976-02 
+DIN 4128: 1983-04 
+DIN 1054/A1: 2009-07 
+DIN 1054 Berichtigung 1: 2003-10, 2005-04 
+DIN 1054 Berichtigung 2: 2007-04 
+DIN 1054 Berichtigung 3: 2008-01 
+DIN 1054 Berichtigung 4: 2008-10 
+DIN 1054 Beiblatt: 1976-11 
+DIN V 1054-100: 1996-04 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1997-1/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält Anmerkungen und Verweise zu den national festgelegten Parametern, die 
+bei den Nachweisen der Standsicherheit und Gebrauchstauglichkeit von geotechnischen Bauwerken nach 
+DIN EN 1997-1:2009-09 in Deutschland benötigt werden. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1997-1:2009-09. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1997-1:2009-09 
+NA 2.1 Allgemeines 
+DIN EN 1997-1:2009-09 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP). 
+2.1 (8)P, 2.4.6.1 (4)P, 2.4.6.2 (2)P, 2.4.7.1 (2)P, 2.4.7.1 (3), 2.4.7.1 (4), 2.4.7.1 (5) 2.4.7.1 (6), 2.4.7.2 (2)P, 
+2.4.7.3.2 (3)P, 2.4.7.3.3 (2)P, 2.4.7.3.4.1 (1)P, 2.4.7.4 (3)P, 2.4.7.5 (2)P, 2.4.8 (2), 2.4.9 (1)P, 2.5 (1), 
+7.6.2.2 (8)P, 7.6.2.2 (14)P, 7.6.2.3 (4)P, 7.6.2.3 (5)P, 7.6.2.3 (8), 7.6.2.4 (4)P, 7.6.3.2 (2)P, 7.6.3.2 (5)P, 
+7.6.3.3 (3)P, 7.6.3.3 (4)P, 7.6.3.3 (6), 
+8.5.2 (2)P, 8.5.2 (3), 8.6 (4), 10.2 (3), 11.5.1 (1)P 
+und bei folgenden Anhängen: 
+A.2 
+A.3.1, A.3.2, A.3.3.1, A.3.3.2, A.3.3.3, A.3.3.4, A.3.3.5, A.3.3.6 
+A.4 
+A.5 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1997-1:2009-09 bzw. ergänzt 
+diese. 
+NCI Zu 1.2 Normative Verweisungen 
+NA DIN 1054:2010-12, Baugrund  Sicherheitsnachweise im Erd und Grundbau  Ergänzende 
+Regelungen zu DIN EN 1997-1 
+NA DIN 4017, Baugrund  Berechnung des Grundbruchwiderstands von Flachgründungen
+NA DIN 4019 (alle Teile), Baugrund; Setzungsberechnungen
+NA DIN 4084, Baugrund; Gelände- und Böschungsbruchberechnungen
+NA DIN 4085, Baugrund  Berechnung des Erddrucks
+NA DIN EN 1990:2010-12, Eurocode: Grundlagen der Tragwerksplanung; Deutsche Fassung 
+EN 1990:2002 + A1:2005/AC:2010
+NA DIN EN 1997-1:2009-09, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik  
+Teil 1: Allgemeine Regeln; Deutsche Fassung EN 1997-1:2004 + AC:2009
+NA EAB, Empfehlungen des Arbeitskreises Baugruben, herausgegeben von der Deutschen Gesellschaft 
+für Geotechnik e. V. (DGGT), 4. Auflage 20061)
+1) Zu beziehen bei: Verlag Ernst und Sohn, Verlag für Architektur und technische Wissenschaften GmbH & Co. KG, 
+Berlin 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1997-1/NA:2010-12 
+Abschnitt 2 Grundlagen der geotechnischen Bemessung 
+NDP Zu 2.1 (8)P 
+In Deutschland sind Geotechnische Kategorien zur Festlegung der Mindestanforderungen an Umfang und 
+Qualität von geotechnischen Untersuchungen, Berechnungen und der Bauüberwachung abhängig von der 
+Schwierigkeit einer baulicher Anlage und des Baugrunds anzuwenden. 
+NCI Zu 2.2 (1)P 
+NA ANMERKUNG zu 2.2 (1)P DIN EN 1990:2010-12, 3.2, definiert ständige, vorübergehende und außergewöhnliche 
+Situationen sowie Situationen infolge von Erdbeben. Sie werden in DIN 1054 bei geotechnischen Nachweisen für den 
+Grenzzustand der Tragfähigkeit als Bemessungssituationen BS-P, BS-T, BS-A und BS-E bezeichnet. Die Definitionen der 
+DIN EN 1990 werden für geotechnische Situationen ergänzt. Den genannten Bemessungssituationen sind unterschiedlich 
+große Teilsicherheitsbeiwerte und Kombinationsbeiwerte zugeordnet. In DIN 1054:2010-12 sind die Teilsicherheits-
+beiwerte für Einwirkungen und Beanspruchungen in Tabelle A 2.1, für geotechnische Kenngrößen in Tabelle A 2.2 und für 
+Widerstände in Tabelle A 2.3 zusammengestellt. 
+NDP Zu 2.4.6.1 (4)P 
+Die Zahlenwerte der Teilsicherheitswerte für Einwirkungen bzw. Beanspruchungen in den einzelnen 
+Grenzzuständen und Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.1, zu entnehmen. 
+NDP Zu 2.4.6.2 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für geotechnische Kenngrößen in den einzelnen Grenzzuständen 
+und Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.2, zu entnehmen. 
+NDP Zu 2.4.7.1 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen, Beanspruchungen, geotechnische Kenngrößen 
+und Widerstände in den einzelnen Grenzzuständen und Bemessungssituationen sind DIN 1054:2010-12, 
+Tabelle A 2.1 bis A 2.3, zu entnehmen. 
+NDP Zu 2.4.7.1 (3) 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen, Beanspruchungen, geotechnische Kenngrößen 
+und Widerstände in außerordentlichen Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.1 bis 
+A 2.3, zu entnehmen. 
+NDP Zu 2.4.7.1 (4) 
+Von dieser Möglichkeit wird in DIN 1054:2010-12, A 2.4.6.1.1 A (2b) durch die Einführung von zusätzlichen 
+Teilsicherheitsbeiwerten für die Einwirkungen bei der Bemessungssituation BS-A Gebrauch gemacht. 
+NDP Zu 2.4.7.1 (5) 
+Von dieser Möglichkeit wird in DIN 1054:2010-12, 2.2 A (4), durch die Einführung der Bemessungssituation 
+BS-T Gebrauch gemacht. 
+NDP Zu 2.4.7.1 (6) 
+Von dieser Möglichkeit wird in DIN 1054:2010-12, A 7.6.2.2 bis A 7.6.2.4, durch die Einführung von 
+Modellfaktoren Gebrauch gemacht 
+NDP Zu 2.4.7.2 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen bzw. Beanspruchungen im Grenzzustand des 
+Verlustes der Lagesicherheit sind DIN 1054:2010-12, Tabelle A 2.1, zu entnehmen. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1997-1/NA:2010-12 
+NDP Zu 2.4.7.3.2 (3)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen bzw. Beanspruchungen in den einzelnen 
+Grenzzuständen und Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.1, zu entnehmen. 
+NDP Zu 2.4.7.3.3 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Widerstände in den einzelnen Grenzzuständen und 
+Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. 
+NDP Zu 2.4.7.3.4.1 (1)P 
+In Deutschland werden die Nachweisverfahren 2 und 3 angewendet. Das Nachweisverfahren 1 ist in 
+Deutschland nicht anzuwenden. 
+NDP Zu 2.4.7.4 (3)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen bzw. Beanspruchungen in den einzelnen 
+Grenzzuständen und Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.1, zu entnehmen. 
+Ergänzende Regeln zum rechnerischen Nachweis der Sicherheit gegen Auftrieb sind in DIN 1054:2010-12, 
+A 10.2.1 bis A 10.2.4, angegeben. 
+NDP Zu 2.4.7.5 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Einwirkungen bzw. Beanspruchungen in den einzelnen 
+Grenzzuständen und Bemessungssituationen sind DIN 1054:2010-12, Tabelle A 2.1, zu entnehmen. 
+Ergänzende Regeln zum rechnerischen Nachweis der Sicherheit gegen Versagen durch hydraulischen 
+Grundbruch enthält DIN 1054:2010-12, A 10.3. 
+NDP Zu 2.4.8 (2) 
+Die Zahlenwerte der Teilsicherheitsbeiwerte für Grenzzustände der Gebrauchstauglichkeit sind gleich 1,0 zu 
+setzen. 
+NDP Zu 2.4.9 (1)P 
+Die zulässigen Fundamentbewegungen sind im Einzelfall festzulegen. 
+NDP Zu 2.5 (1) 
+Ergänzende Regeln sind in DIN 1054:2010-12, 2.5 A (3), angegeben. 
+Abschnitt 7 Pfahlgründungen 
+NDP Zu 7.6.2.2 (8)P
+Die Zahlenwerte der Streuungsfaktoren 1 und 2 für Pfahlgründungen zur Ableitung von charakteristischen 
+Pfahlwiderständen aus statischen Probebelastungen nach DIN EN 1997-1:2009-09, Gleichung (7.2), sind 
+DIN 1054:2010-12, Tabelle A 7.1, zu entnehmen. 
+NDP Zu 7.6.2.2 (14)P
+Die Zahlenwerte der Teilsicherheitsbeiwerte sind DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. 
+NDP Zu 7.6.2.3 (3)P und (4)P
+Die Zahlenwerte der Teilsicherheitsbeiwerte sind DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1997-1/NA:2010-12 
+NDP Zu 7.6.2.3 (5)P 
+Das Verfahren zur rechnerischen Bestimmung von Rc,k aus Rb,cal und Rs,cal bzw. Rc,cal nach 
+DIN EN 1997-1:2009-09, Gleichung (7.8), ist in Deutschland nicht der Regelfall. Anzuwenden ist das 
+Verfahren nach DIN EN 1997-1:2009-09, Gleichung (7.9). Sofern das Verfahren nach 
+DIN EN 1997-1:2009-09, 7.6.2.3, Gleichung (7.8), angewendet werden soll, ist DIN 1054:2010-12, 7.6.2.6 
+A(1), einzuhalten. 
+NDP Zu 7.6.2.3 (8) 
+ANMERKUNG Der Modellfaktor zur Korrektur der Teilsicherheitsbeiwerte b, s und t bei Anwendung der Festlegung 
+der charakteristischen Pfahlwiderstände auf der Grundlage von Erfahrungswerten nach DIN EN 1997-1:2009-09, 
+Gleichung (7.9), ist bereits in die Teilsicherheitsbeiwerte nach DIN 1054:2010-12, Tabelle A 2.3, mit E 1,3 
+eingerechnet. 
+NDP Zu 7.6.2.4 (4)P 
+Der Zahlenwert des Teilsicherheitsbeiwertes t für die Ermittlung der Pfahlwiderstände aus Stoßversuchen ist 
+DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. Die Zahlenwerte der Streuungsfaktoren zur Ableitung von 
+charakteristischen Pfahlwiderständen aus dynamischen Pfahlprobebelastungen nach 
+DIN EN 1997-1:2009-09, Gleichung (7.11), sind DIN 1054:2010-12, Tabelle A 7.2, zu entnehmen. 
+NDP Zu 7.6.3.2 (2)P 
+Der Zahlenwert des Teilsicherheitsbeiwertes s,t ist DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. 
+NDP Zu 7.6.3.2 (5)P 
+Die Zahlenwerte der Streuungsfaktoren 1 und 2 von Zugpfahlgründungen zur Ableitung von charakteris-
+tischen Pfahlwiderständen aus statischen Probebelastungen nach DIN EN 1997-1:2009-09, Gleichung (7.14), 
+sind DIN 1054:2010-12, Tabelle A 7.1, zu entnehmen. 
+NDP Zu 7.6.3.3 (3)P 
+Der Zahlenwert des Teilsicherheitsbeiwertes s,t für die Ermittlung der Pfahlwiderstände aus Erfahrungs-
+werten für Zugpfähle ist DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. Für verpresste Zugpfahlsysteme ist 
+DIN 1054:2010-12, 7.6.3.2 A (3c), analog anzuwenden. 
+NDP Zu 7.6.3.3 (4)P 
+Das Verfahren zur Bestimmung von Rt,k aus Rs,cal nach DIN EN 1997-1:2009-09, Gleichung (7.17), ist in 
+Deutschland nicht der Regelfall. Anzuwenden ist das Verfahren nach DIN EN 1997-1:2009-09, 
+Gleichung (7.18). DIN 1054:2010-12, 7.6.2.3 A (5), gilt sinngemäß. 
+NDP Zu 7.6.3.3 (6) 
+ANMERKUNG Der Modellfaktor zur Korrektur des Teilsicherheitsbeiwertes s,t bei Anwendung der Festlegung der 
+charakteristischen Pfahlwiderstände auf der Grundlage von Erfahrungswerten nach DIN EN 1997-1:2009-09, 
+Gleichung (7.18), ist bereits in den Teilsicherheitsbeiwerten nach DIN 1054:2010-12, Tabelle A 2.3, mit E 1,3 
+eingerechnet. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1997-1/NA:2010-12 
+Abschnitt 8 Verankerungen
+NDP Zu 8.5.2 (2)P 
+Die Zahlenwerte der Teilsicherheitsbeiwerte a sind DIN 1054:2010-12, Tabelle A 2.3, zu entnehmen. 
+NDP Zu 8.5.2 (3) 
+Streuungsfaktoren sind nicht anzuwenden, wenn Anker durch Eignungsprüfungen und durch Abnahme-
+prüfungen geprüft werden, siehe DIN 1054:2010-12, Tabelle A 8.1. 
+NDP Zu 8.6 (4) 
+Der Nachweis der Gebrauchstauglichkeit ist in DIN 1054:2010-12, 8.6 A (7) und A (10), geregelt. 
+Modellfaktoren sind nicht anzuwenden. 
+Abschnitt 10 Hydraulisch verursachtes Versagen 
+NDP Zu 10.2 (3) 
+Die Widerstände aus Reibung oder Ankerkräften sind als ständige stabilisierende vertikale Einwirkungen zu 
+behandeln. Die Teilsicherheitsbeiwerte sind DIN 1054:2010-12, Tabelle A 2.1 und A 2.2, zu entnehmen. 
+Abschnitt 11 Geländebruchsicherheit 
+NDP Zu 11.5.1 (1)P 
+Der Nachweis der Gesamtstandsicherheit ist nach DIN 4084 mit dem Nachweisverfahren 3 (GEO-3) nach 
+2.4.7.3.4.4 durchzuführen. Die Zahlenwerte der Teilsicherheitsbeiwerte für die Ermittlung der Gesamtstand-
+sicherheit sind DIN 1054:2010-12, Tabelle A 2.1 bis A 2.3, zu entnehmen. 
+Anhänge 
+NDP Zu Anhang A Teilsicherheitsbeiwerte und Streuungsfaktoren für Grenzzustände der Tragfähigkeit 
+und empfohlene Zahlenwerte 
+Die Zahlenwerte der Teilsicherheitsbeiwerte und Streuungsfaktoren für Einwirkungen, Beanspruchungen, 
+geotechnische Kenngrößen und Widerstände in den einzelnen Grenzzuständen und Bemessungssituationen 
+sind DIN 1054:2010-12, Tabelle A 2.1, Tabelle A 2.2, Tabelle A 2.3, Tabelle A 7.1 und Tabelle A 7.2, zu 
+entnehmen. Für den Nachweis der Sicherheit gegen Kippen (EQU) sind die Teilsicherheitsbeiwerte nach 
+DIN EN 1990:2010-12, Anhang A, Tabelle A.1.2(A), maßgebend. 
+NDP Zu Anhang B Erläuterungen zu den Teilsicherheitsbeiwerten für die Nachweisverfahren 1, 2, 
+und 3 
+In Deutschland werden die Nachweisverfahren 2 und 3 angewendet. Das Nachweisverfahren 1 ist nicht 
+anzuwenden. 
+NDP Zu Anhang C Beispiele zur Ermittlung der Erddruck-Grenzwerte 
+Der Anhang C darf als Ergänzung zu DIN 4085 und EAB (siehe DIN 1054:2010-12) angewendet werden. 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1997-1/NA:2010-12 
+10 
+NDP Zu Anhang D Beispiele für eine analytische Ermittlung des Grundbruchwiderstands 
+Der Grundbruchwiderstand ist nach DIN 4017 (siehe DIN 1054:2010-12) zu ermitteln. 
+NDP Zu Anhang E Beispiel eines halbempirischen Verfahrens zur Abschätzung der Tragfähigkeit einer 
+Flächengründung 
+Die Tragfähigkeit einer Flachgründung ist nach DIN 4017 (siehe DIN 1054:2010-12) zu ermitteln oder kann in 
+Regelfällen nach DIN 1054:2010-12, A 6.10, mit Hilfe von Tabellen bestimmt werden. 
+NDP Zu Anhang F Beispiele für Verfahren zur Setzungsermittlung 
+Die Setzungsermittlung ist nach DIN 4019 (alle Teile) (siehe DIN 1054:2010-12) durchzuführen. 
+NDP Zu Anhang G Beispiel für ein Verfahren zur Ermittlung von Bemessungssohldrücken für 
+Flächenfundamente auf Fels 
+Die Ermittlung der Bemessungswerte von Sohldruckspannungen für Flächenfundamente auf Fels kann nach 
+DIN 1054:2010-12, A 6.10.4, vorgenommen werden. 
+NDP Zu Anhang H Grenzwerte für Bauwerksverformungen und Fundamentbewegungen 
+Die im Anhang H genannten Angaben zu zulässigen Fundamentverformungen sind keine normativen 
+Vorgaben. Andere Literaturangaben, z. B. Grundbautaschenbuch 7. Auflage, Band 2 dürfen in Deutschland 
+gleichberechtigt angewendet werden. Im Einzelfall können Nachweise und spezielle Betrachtungen an der 
+Baukonstruktion erforderlich werden, um die zulässigen Verformungsgrößen festzulegen. 
+NDP Zu Anhang J Kontrollliste für die Überwachung der Bauausführung und des fertigen Bauwerks 
+Der Anhang J darf verwendet werden.

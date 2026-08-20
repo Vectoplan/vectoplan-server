@@ -1,0 +1,191 @@
+{
+  "document_id": "EN_1993-1-11_NA__national_annex__EC_3_Teil_1-11_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-11/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-11 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-11 NA.pdf",
+  "sha256": "6872d64ae708d9466e67af03d8bd666b77ff3012f42390bfac4cb221e14cb449",
+  "pages": 8,
+  "text_pages": 7,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 0,
+  "equation_candidate_count": 14,
+  "table_reference_count": 1,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161041+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161041+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-11 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Es gilt der empfohlene Wert P = 1,0.",
+      "context": "Es dürfen nur die Seilbauarten verwendet werden, für die Festlegungen in DIN EN 1993-2/NA bestehen. | NDP zu 5.2(3) Anmerkung: | Es gilt der empfohlene Wert P = 1,0. | 5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "R = 1,0.",
+      "context": "Hochbau | Es gilt grundsätzlich | R = 1,0. | Straßen- und Eisenbahnbrücken | Seilwinkeländerungen an den Verankerungen sind durch konstruktive Maßnahmen zu reduzieren. Der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Nachweis der Tragsicherheit ist mit R = 1,0 zu führen.",
+      "context": "Straßen- und Eisenbahnbrücken | Seilwinkeländerungen an den Verankerungen sind durch konstruktive Maßnahmen zu reduzieren. Der | Nachweis der Tragsicherheit ist mit R = 1,0 zu führen. | NDP zu 6.3.2(1) Anmerkung: | Es gilt der empfohlene Wert M,fr = 1,65.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Es gilt der empfohlene Wert M,fr = 1,65.",
+      "context": "Nachweis der Tragsicherheit ist mit R = 1,0 zu führen. | NDP zu 6.3.2(1) Anmerkung: | Es gilt der empfohlene Wert M,fr = 1,65. | NDP zu 6.3.4(1) Anmerkung: | Es gilt der empfohlene Wert k = 1,10.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Es gilt der empfohlene Wert k = 1,10.",
+      "context": "Es gilt der empfohlene Wert M,fr = 1,65. | NDP zu 6.3.4(1) Anmerkung: | Es gilt der empfohlene Wert k = 1,10. | NDP zu 6.4.1(1)P Anmerkung 1: | Es gilt der empfohlene Wert M,fr = 1,65.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Es gilt der empfohlene Wert M,fr = 1,65.",
+      "context": "Es gilt der empfohlene Wert k = 1,10. | NDP zu 6.4.1(1)P Anmerkung 1: | Es gilt der empfohlene Wert M,fr = 1,65. | NDP zu 7.2(2) Anmerkung 1: | Hochbau",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "fconst = fSLS = 0,45 uk.",
+      "context": "Hochbau | Sowohl während der Montage als auch unter Betriebsbedingungen gilt für die Spannungsbegrenzungen | fconst = fSLS = 0,45 uk. | Straßen- und Eisenbahnbrücken | Es gilt für die:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "const = 0,45 uk zu führen.",
+      "context": "1) Vollverschlossene Seile: Der Nachweis der Spannungsbegrenzung im Montagezustand ist mit | f | const = 0,45 uk zu führen. | 6",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "ohne Berücksichtigung von Biegeeffekten mit fconst = 0,55 uk zu führen.",
+      "context": "DIN EN 1993-1-11/NA:2010-12 | 2) Litzenbündelseile: Der Nachweis der Spannungsbegrenzung für kurzzeitige Montagezustände ist | ohne Berücksichtigung von Biegeeffekten mit fconst = 0,55 uk zu führen. | b) Betriebsbedingungen | Der Nachweis der Spannungsbegrenzung im Betriebszustand ist mit fSLS = 0,45 uk ohne",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "Der Nachweis der Spannungsbegrenzung im Betriebszustand ist mit fSLS = 0,45 uk ohne",
+      "context": "ohne Berücksichtigung von Biegeeffekten mit fconst = 0,55 uk zu führen. | b) Betriebsbedingungen | Der Nachweis der Spannungsbegrenzung im Betriebszustand ist mit fSLS = 0,45 uk ohne | Berücksichtigung von Biegeeffekten zu führen. | NCI zu 9.2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "c = 112 N/mm²",
+      "context": "Zur Minimierung der Biegespannungen an den Seilverankerungen sind in der Regel konstruktive | Schutzmaßnahmen erforderlich. Für den Nachweis sind die Seile in die Kerbfallgruppe | c = 112 N/mm² | einzuordnen. | b) Litzenbündelseile",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "Kerbgruppe c = 167 N/mm² zuzuordnen. Bei Seilwinkeländerungen an den Verankerungen infolge der",
+      "context": "b) Litzenbündelseile | Der Nachweis ist ohne Berücksichtigung von Biegespannungen zu führen. Die Seile sind dabei der | Kerbgruppe c = 167 N/mm² zuzuordnen. Bei Seilwinkeländerungen an den Verankerungen infolge der | Ermüdungslasten von mehr als 0,3° ist zusätzlich der Nachweis unter Berücksichtigung der Biegespannungen | zu führen. Die Seile sind dann der Kerbgruppe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "c = 194 N/mm² zuzuordnen.",
+      "context": "Ermüdungslasten von mehr als 0,3° ist zusätzlich der Nachweis unter Berücksichtigung der Biegespannungen | zu führen. Die Seile sind dann der Kerbgruppe | c = 194 N/mm² zuzuordnen. | NCI zu Anhang A.1 (3) | Es ist zu ergänzen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "3",
+      "line": "NCI zu Anhang A.1 (3)",
+      "context": "zu führen. Die Seile sind dann der Kerbgruppe | c = 194 N/mm² zuzuordnen. | NCI zu Anhang A.1 (3) | Es ist zu ergänzen: | - Gruppe B: offene Spiralseile, vollverschlossene Spiralseile, Rundlitzenseile;",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 7,
+      "line": "Seile von Straßen- und Eisenbahnbrücken sind der Klasse 5 gemäß DIN EN 1993-1-11:2010-12, Tabelle 2.1"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 517,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2110,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1102,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1786,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1371,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1656,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2017,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 8,
+      "characters": 109,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

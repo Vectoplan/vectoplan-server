@@ -1,0 +1,1565 @@
+{
+  "document_id": "EN_1991-1-7__base_standard__EC_1_Teil_1-7",
+  "eurocode_family": "EC1",
+  "designation": "DIN EN 1991-1-7",
+  "document_kind": "base_standard",
+  "file_name": "EC 1 Teil 1-7.pdf",
+  "relative_path": "EC 1/EC 1 Teil 1-7.pdf",
+  "sha256": "9977dd274dd7815c35208171271948ddcc1ebcfe2bcd7fad33adad65b0b386f3",
+  "pages": 67,
+  "text_pages": 67,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 73,
+  "equation_candidate_count": 66,
+  "table_reference_count": 14,
+  "figure_reference_count": 14,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111123858+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117231953+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\7.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich ........................................................................................................... ..................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen .................................................................................................................... ........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe .................................................................................................................... .............................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole ..................................................................................................................... ...........................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Klassifizierung der Einwirkungen .............................................................................................. ........13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituationen ......................................................................................................... ............14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................. .........................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Außergewöhnliche Bemessungssituationen  Strategien bei identifizierten",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Außergewöhnliche Bemessungssituationen  Strategien zur Begrenzung lokalen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Außergewöhnliche Bemessungssituationen  Anwendung der Versagensfolgeklassen..........16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Anprall....................................................................................................................... ............................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Anwendungsbereich ........................................................................................................... ................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Darstellung der Einwirkungen................................................................................................ ............18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Außergewöhnliche Einwirkungen aus dem Anprall von Straßenfahrzeugen ...............................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Anprall auf stützende Unterbauten ......................................................................................... ...........19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Anprall auf Überbauungen.................................................................................................. ................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Außergewöhnliche Einwirkungen aus Gabelstaplern......................................................................22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5",
+      "title": "Außergewöhnliche Einwirkungen infolge Entgleisung von Eisenbahnfahrzeuen auf",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5.1",
+      "title": "Tragwerke neben oder über Gleisanlagen .................................................................................... ....22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5.2",
+      "title": "Bauwerke hinter dem Gleisende ............................................................................................. ...........24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6",
+      "title": "Außergewöhnliche Einwirkungen aus Schiffsverkehr.....................................................................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6.1",
+      "title": "Allgemeines............................................................................................................... ...........................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6.2",
+      "title": "Anprall von Binnenschiffen ................................................................................................ ................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6.3",
+      "title": "Anprall von Seeschiffen................................................................................................... ...................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.7",
+      "title": "Außergewöhnliche Einwirkungen aus Helikoptern..........................................................................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Innenraumexplosionen .......................................................................................................... .............27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Anwendungsbereich ........................................................................................................... ................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Darstellung der Einwirkung .................................................................................................. ..............28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Entwurfsgrundsätze .......................................................................................................... ..................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2",
+      "title": "Klassifizierung der Einwirkungen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituationen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.2",
+      "title": "Außergewöhnliche Bemessungssituationen  Strategien bei identifizierten",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.3",
+      "title": "Außergewöhnliche Bemessungssituationen  Strategien zur Begrenzung lokalen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3.4",
+      "title": "Außergewöhnliche Bemessungssituationen  Anwendung der Schadensfolgeklassen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4",
+      "title": "Anprall",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.2",
+      "title": "Darstellung der Einwirkungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.3",
+      "title": "Außergewöhnliche Einwirkungen aus dem Anprall von Straßenfahrzeugen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Anprall auf stützende Unterbauten",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Anprall auf Überbauungen",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.4",
+      "title": "Außergewöhnliche Einwirkungen aus Gabelstaplern",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.5",
+      "title": "Außergewöhnliche Einwirkungen infolge Entgleisung von Eisenbahnfahrzeuen auf",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.5.1",
+      "title": "Tragwerke neben oder über Gleisanlagen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.5.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.5.1.2",
+      "title": "Bauwerksklassifizierung",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.5.1.3",
+      "title": "Außergewöhnliche Bemessungssituationen und Bauwerksklassen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "4.5.1.4",
+      "title": "Bauwerke der Klasse A",
+      "pdf_page": 25
+    },
+    {
+      "clause": "4.5.1.5",
+      "title": "Bauwerke der Klasse B",
+      "pdf_page": 26
+    },
+    {
+      "clause": "4.5.2",
+      "title": "Bauwerke hinter dem Gleisende",
+      "pdf_page": 26
+    },
+    {
+      "clause": "4.6",
+      "title": "Außergewöhnliche Einwirkungen aus Schiffsverkehr",
+      "pdf_page": 27
+    },
+    {
+      "clause": "4.6.1",
+      "title": "Allgemeines",
+      "pdf_page": 27
+    },
+    {
+      "clause": "4.6.2",
+      "title": "Anprall von Binnenschiffen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "4.6.3",
+      "title": "Anprall von Seeschiffen",
+      "pdf_page": 28
+    },
+    {
+      "clause": "4.7",
+      "title": "Außergewöhnliche Einwirkungen aus Helikoptern",
+      "pdf_page": 29
+    },
+    {
+      "clause": "5",
+      "title": "Innenraumexplosionen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "5.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 29
+    },
+    {
+      "clause": "5.2",
+      "title": "Darstellung der Einwirkung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "5.3",
+      "title": "Entwurfsgrundsätze",
+      "pdf_page": 31
+    },
+    {
+      "clause": "1",
+      "title": "Einfamilienhäuser mit bis zu 4 Stockwerken.",
+      "pdf_page": 33
+    },
+    {
+      "clause": "2",
+      "title": "Geschossfläche in",
+      "pdf_page": 33
+    },
+    {
+      "clause": "3",
+      "title": "Alle Gebäude, die die Stockwerksanzahl und Flächengrenzen der Klasse 2",
+      "pdf_page": 33
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "a x = in Fahrtrichtung, y = quer zur Fahrtrichtung.",
+      "context": "25 | 75 | a x = in Fahrtrichtung, y = quer zur Fahrtrichtung. | b Lkws mit Leergewicht größer als 3,5 t. |  ANMERKUNG 2 Der Nationale Anhang darf die Anprallkraft abhängig vom Abstand s des Bauteils von dem Punkt,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Straßenoberkante angesetzt werden. Bei Schutzplanken gelten größere Werte. Die empfohlene Anprallfläche ist a =",
+      "context": "Empfohlen werden folgende Bedingungen (siehe Bild 4.1): | Die Anprallkraft F von Lkws auf Stützkonstruktionen darf in einer Höhe h zwischen 0,5 m und 1,5 m über | Straßenoberkante angesetzt werden. Bei Schutzplanken gelten größere Werte. Die empfohlene Anprallfläche ist a = | 0,5 m hoch und so breit wie das Bauteil, maximal 1,5 m breit. | Die Anprallkraft F von Pkws darf in einer Höhe h = 0,5 m über Straßenoberkante angesetzt werden. Die empfohlene",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Die Anprallkraft F von Pkws darf in einer Höhe h = 0,5 m über Straßenoberkante angesetzt werden. Die empfohlene",
+      "context": "Straßenoberkante angesetzt werden. Bei Schutzplanken gelten größere Werte. Die empfohlene Anprallfläche ist a = | 0,5 m hoch und so breit wie das Bauteil, maximal 1,5 m breit. | Die Anprallkraft F von Pkws darf in einer Höhe h = 0,5 m über Straßenoberkante angesetzt werden. Die empfohlene | Anprallfläche ist 0,25 m hoch und so breit wie das Bauteil, maximal 1,50 m breit. | Legende",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "a x = in Fahrtrichtung",
+      "context": "Innerstädtische Straßen 250 | Privatstraßenund Parkgaragen 75 | a x = in Fahrtrichtung | 20 | DIN EN 1991-1-7:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "b Höhenunterschied zwischen h1 und h0 ; b = h1  h0. Der empfohlene Wert ist b = 1,0 m. Die Reduktion von F ist",
+      "context": "festlegen. Empfehlungen zu den Werten rF, h0 und h1 sind Bild 4.2 zu entnehmen. | Legende | b Höhenunterschied zwischen h1 und h0 ; b = h1  h0. Der empfohlene Wert ist b = 1,0 m. Die Reduktion von F ist | möglich bei Werten b zwischen 0 m und 1 m; d. h. zwischen h0 und h1. | h  lichter Abstand zwischen der Straßenoberkante und der Brückenunterkante am Aufprallpunkt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "den Überbau voll berücksichtigt werden muss: Der empfohlene Wert ist h0 = 5,0 m (+ Zuschläge für Gradienten,",
+      "context": "h  lichter Abstand zwischen der Straßenoberkante und der Brückenunterkante am Aufprallpunkt. | h0  Mindestabstand zwischen der Straßenoberkante und der Brückenunterkante, unterhalb dessen der Anprall auf | den Überbau voll berücksichtigt werden muss: Der empfohlene Wert ist h0 = 5,0 m (+ Zuschläge für Gradienten, | Brückendurchbiegung und voraussichtliche Setzungen. | h1  der Wert des lichten Abstandes zwischen der Straßenoberkante und der Brückenunterkante, von dem ab die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "Anprallkraft nicht berücksichtigt werden muss. Der empfohlene Wert ist h1 = 6,0 m + Zuschläge für zukünftige",
+      "context": "Brückendurchbiegung und voraussichtliche Setzungen. | h1  der Wert des lichten Abstandes zwischen der Straßenoberkante und der Brückenunterkante, von dem ab die | Anprallkraft nicht berücksichtigt werden muss. Der empfohlene Wert ist h1 = 6,0 m + Zuschläge für zukünftige | Fahrbahndecken-Erneuerungen, Gradienten, Brückendurchbiegung und voraussichtliche Setzungen. | Bild 4.2  Empfehlungen für den Abminderungsbeiwert rF für Anpralllasten auf Überbauungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "empfohlen, die Ersatzlast mit F = 5W anzusetzen, wobei W die Summe aus Leergewicht und Stapellast des Staplers ist",
+      "context": "ANMERKUNG Der Nationale Anhang darf den Wert für die äquivalente statische Ersatzlast F angeben. Es wird | empfohlen, den Wert F mit dem dynamischen Verfahren für weichen Stoß nach C.2.2 zu ermitteln. Alternativ wird | empfohlen, die Ersatzlast mit F = 5W anzusetzen, wobei W die Summe aus Leergewicht und Stapellast des Staplers ist | (siehe EN 1991-1, Tabelle 6.5); die Kraft greift in einer Höhe von 0,75 m über dem Fußboden an. In einigen Fällen dürften | größere oder kleinere Werte geeignet sein.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "a x = in Fahrtrichtung ; y = quer zur Fahrtrichtung.",
+      "context": "4 000 1 500 | d > 5 m 0 0 | a x = in Fahrtrichtung ; y = quer zur Fahrtrichtung. | 23 | DIN EN 1991-1-7:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "Fdx = 5 000 kN für Personenzüge und Fdx = 10 000 kN für Güterzüge. Diese Kräfte sind horizontal und in einer Höhe von",
+      "context": "ANMERKUNG Besondere Maßnahmen und alternative Bemessungswerte für statisch äquivalente Anprallkräfte dürfen im | Nationalen Anhang oder im Einzelfall festgelegt werden. Empfohlen wird eine statisch äquivalente Anprallkraft | Fdx = 5 000 kN für Personenzüge und Fdx = 10 000 kN für Güterzüge. Diese Kräfte sind horizontal und in einer Höhe von | 1,0 m über Gleisoberkante anzuordnen. | 24",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "(2) Die Reibungskraft FR, die gleichzeitig mit der Anprallkraft Fdy wirkt, sollte aus Gleichung (4.1) bestimmt",
+      "context": "werden. Angaben sind in Anhang C (Tabelle C.3) für eine Reihe von Standardfällen einschließlich mitwirkender | hydraulischer Masse und auch für Schiffe mit anderen Massen zu finden. | (2) Die Reibungskraft FR, die gleichzeitig mit der Anprallkraft Fdy wirkt, sollte aus Gleichung (4.1) bestimmt | werden: | dyR FF (4. 1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Reibungsbeiwert darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4.",
+      "context": "EN 1991-1-7:2006 + AC:2010 (D) | ANMERKUNG Der Reibungsbeiwert darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4. | (3) Die Anpralllasten sollten abhängig vom Tiefgang des beladenen oder leeren Schiffes in einer bestimmten | Höhe über dem höchsten schiffbaren Wasserstand angesetzt werden. Die Angriffshöhe und die Angriffsfläche",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "maßgebenden Wasserstand angesetzt werden. Die Anprallflächen b h dürfen mit b = bPfeiler und h = 0,5 m für",
+      "context": "ANMERKUNG 1 Die Angriffshöhe und die Angriffsfläche b h der Anpralllast dürfen im Nationalen Anhang oder im | Einzelfall festgelegt werden. Liegen keine genaueren Angaben vor, darf die Kraft in Höhe von 1,50 m über dem | maßgebenden Wasserstand angesetzt werden. Die Anprallflächen b h dürfen mit b = bPfeiler und h = 0,5 m für | Frontalstoß und mit b = 1,0 m und h = 0,5 m für den Seitenstoß angenommen werden. b Pfeiler ist die Breite des | Hindernisses in der Wasserstraße, z. B. des Brückenpfeilers.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "Frontalstoß und mit b = 1,0 m und h = 0,5 m für den Seitenstoß angenommen werden. b Pfeiler ist die Breite des",
+      "context": "Einzelfall festgelegt werden. Liegen keine genaueren Angaben vor, darf die Kraft in Höhe von 1,50 m über dem | maßgebenden Wasserstand angesetzt werden. Die Anprallflächen b h dürfen mit b = bPfeiler und h = 0,5 m für | Frontalstoß und mit b = 1,0 m und h = 0,5 m für den Seitenstoß angenommen werden. b Pfeiler ist die Breite des | Hindernisses in der Wasserstraße, z. B. des Brückenpfeilers. | ANMERKUNG 2 In bestimmten Fällen darf angenommen werden, dass das Schiff erst durch ein Widerlager oder einen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "4.2",
+      "line": "(3) Die Reibungskraft FR, die gleichzeitig mit der seitlichen Anprallkraft wirkt, sollte nach Gleichung (4.2)",
+      "context": "(2) Der Anprall des Buges. Hecks und der Breitseite sollte, sofern notwendig, berücksichtigt werden. | Buganprall sollte in der Hauptfahrtrichtung mit einer Winkelabweichung von max. 30 o angesetzt werden. | (3) Die Reibungskraft FR, die gleichzeitig mit der seitlichen Anprallkraft wirkt, sollte nach Gleichung (4.2) | bestimmt werden : | dyR FF (4. 2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG µ darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4.",
+      "context": "Dabei ist | der Reibungsbeiwert. | ANMERKUNG µ darf im Nationalen Anhang angegeben sein. Der empfohlene Wert ist µ = 0,4. | (4)P Der Angriffspunkt und die Angriffsfläche der Anpralllast hängen von den Abmessungen des Tragwerks | und der Größe und Ausbildung des Schiffes (z. B. mit oder ohne Burgwulst), seinem Tiefgang und Trimm und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "die Breite 0,1 empfohlen ( = Schiffslänge). Der Angriffspunkt kann im Bereich von 0,05 über und unter den",
+      "context": "ausgehen. | ANMERKUNG Der Bereich des Anpralls darf im Nationalen Anhang angegeben sein. Für die Höhe wird 0,05 und für | die Breite 0,1 empfohlen ( = Schiffslänge). Der Angriffspunkt kann im Bereich von 0,05 über und unter den | Bemessungswasserständen angesetzt werden, siehe Bild 4.4. | 26",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "vertikale äquivalente statische Kraft Fd sollte nach Gleichung (4.3) bestimmt werden.",
+      "context": "4.7 Außergewöhnliche Einwirkungen aus Helikoptern | (1) Bei Gebäuden mit Hubschrauberlandeplatz auf dem Dach ist eine Kraft aus Notlandung anzusetzen. Die | vertikale äquivalente statische Kraft Fd sollte nach Gleichung (4.3) bestimmt werden. | mCFd (4.3) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "4.3",
+      "line": "mCFd (4.3)",
+      "context": "(1) Bei Gebäuden mit Hubschrauberlandeplatz auf dem Dach ist eine Kraft aus Notlandung anzusetzen. Die | vertikale äquivalente statische Kraft Fd sollte nach Gleichung (4.3) bestimmt werden. | mCFd (4.3) | Dabei ist | C 3 kN kg -0,5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "(d. h. 1 oder 2 nach EN 1990, Gleichung (6.11b).",
+      "context": "L die Spannweite der Anker; | der Kombinationsbeiwert in der Einwirkungskombination für außergewöhnliche Bemessungssituationen | (d. h. 1 oder 2 nach EN 1990, Gleichung (6.11b). | ANMERKUNG Siehe Beispiel in Bild A.2. | 33",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "Characteristische Belastung : gk = 3,0 kN/m2 and qk = 5,0 kN/m2",
+      "context": "i in einem Deckenträger mit 6 m Spannweite, siehe Bild A.2 (z. B. für ein | Stahlskelettgebäude) mit folgenden Lastannahmen: | Characteristische Belastung : gk = 3,0 kN/m2 and qk = 5,0 kN/m2 | Annahme für Kombinationsbeiwert 1 (d. h. = 0,5) in Gleichung (6.11a) | kN660,62",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "6.11a",
+      "line": "Annahme für Kombinationsbeiwert 1 (d. h. = 0,5) in Gleichung (6.11a)",
+      "context": "Stahlskelettgebäude) mit folgenden Lastannahmen: | Characteristische Belastung : gk = 3,0 kN/m2 and qk = 5,0 kN/m2 | Annahme für Kombinationsbeiwert 1 (d. h. = 0,5) in Gleichung (6.11a) | kN660,62 | 23)00,55,000,3(8,0iT < 75 kN",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "i = kN/m55,7",
+      "context": "innerhalb eines Randstreifens von 1,20 m. Die Bemessungs-Ankerzugkraft sollte wie folgt ermittelt werden : | Für interne Zuganker T | i = kN/m55,7 | )( | tt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "Für Randzuganker: Tp = Ft ( A . 4 )",
+      "context": "kkt FFzqgF | (A.3) | Für Randzuganker: Tp = Ft ( A . 4 ) | Dabei ist | Ft 60 kN/m oder 20 + 4 ns kN/m, der kleinere Wert gilt;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "5 H mit H = lichte Geschosshöhe oder",
+      "context": "ns die Geschossanzahl; | z Faktor, der kleiner als die nachfolgende Bedingung ist: | 5 H mit H = lichte Geschosshöhe oder | der größte Achsabstand der Stützen oder der anderen vertikalen Tragelemente in Meter, in Richtung | der Zuganker; der Abstand kann durch:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "außergewöhnliche Bemessungslast sollte nach EN 1990, Gleichung (6.11b) als Einzellast oder gleichmäßig",
+      "context": "einer Richtung gleichzeitig) auf das Element selbst und angeschlossene Bauteile einwirkt, wobei die | Tragfähigkeit dieser Komponenten und ihrer Verbindungen zu berücksichtigen ist. Eine solche | außergewöhnliche Bemessungslast sollte nach EN 1990, Gleichung (6.11b) als Einzellast oder gleichmäßig | verteilte Last aufgebracht werden. | ANMERKUNG Der empfohlene Wert für Hochbauten ist Ad = 34 kN/m2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der empfohlene Wert für Hochbauten ist Ad = 34 kN/m2.",
+      "context": "außergewöhnliche Bemessungslast sollte nach EN 1990, Gleichung (6.11b) als Einzellast oder gleichmäßig | verteilte Last aufgebracht werden. | ANMERKUNG Der empfohlene Wert für Hochbauten ist Ad = 34 kN/m2. | 37 | DIN EN 1991-1-7:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "N = T Gesamtzahl maßgebender auslösender Ereignisse in dem betrachteten Zeitabschnitt,",
+      "context": "Mf d)() mmfmMP(FN(T)P ( B . 3 ) | Dabei ist | N = T Gesamtzahl maßgebender auslösender Ereignisse in dem betrachteten Zeitabschnitt, | fM(m) Verteilungsdichte für die zufällige Größe M der Gefährdung, | H und f Versagensereignis bei einer gegebenen Größe M.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "N = nT die Gesamtanzahl der auslösenden Ereignisse in dem betrachteten Zeitabschnitt;",
+      "context": " d)(sin][f fbRFPNP  ( B . 4 ) | Dabei ist | N = nT die Gesamtanzahl der auslösenden Ereignisse in dem betrachteten Zeitabschnitt; | n die Verkehrsdichte; | die Versagensrate der Fahrzeuge (Anzahl von Vorkommnissen je Fahrzeugkilometer;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "s = d/sin , ist der Abstand von Punkt Q bis zum Tragwerk.",
+      "context": "vo die Fahrzeuggeschwindigkeit bei Verlassen der Spur am Punkt-Q; | a konstante Verzögerung des Fahrzeugs nach Verlassen der Straße (siehe Bild B.5); | s = d/sin , ist der Abstand von Punkt Q bis zum Tragwerk. | B.9.3.3 Anwendung auf Schiffsanprall | (1) Für die Anwendung nach Bild B.6 darf die Gleichung (B.3) weiter zu Gleichung (B.6) entwickelt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "( B . 6 ) xRxFPNTP d})({=)( dynf",
+      "context": "B.9.3.3 Anwendung auf Schiffsanprall | (1) Für die Anwendung nach Bild B.6 darf die Gleichung (B.3) weiter zu Gleichung (B.6) entwickelt werden. | ( B . 6 ) xRxFPNTP d})({=)( dynf | Dabei ist | N = n T (1  pa) die Gesamtanzahl von Ereignissen in dem betrachteten Zeitabschnitt;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "N = n T (1  pa) die Gesamtanzahl von Ereignissen in dem betrachteten Zeitabschnitt;",
+      "context": "( B . 6 ) xRxFPNTP d})({=)( dynf | Dabei ist | N = n T (1  pa) die Gesamtanzahl von Ereignissen in dem betrachteten Zeitabschnitt; | n die Anzahl der Schiffe in der Zeiteinheit (Verkehrsdichte); | die Wahrscheinlichkeit für Versagen je Reisewegeinheit;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "k = EA/L (C.3)",
+      "context": "Wird das Anprallobjekt als ein äquivalenter Körper mit gleichmäßigem Querschnitt modelliert (siehe Bild C.1), | dann können die Ausdrücke (C.3) und (C.4) benutzt werden: | k = EA/L (C.3) | m = AL (C.4) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "m = AL (C.4)",
+      "context": "dann können die Ausdrücke (C.3) und (C.4) benutzt werden: | k = EA/L (C.3) | m = AL (C.4) | Dabei ist | L die Länge des Anprallkörpers;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "Bild C.1  Anprall-Modell, F = dynamische Interaktionskraft",
+      "context": "E das E-Modul; | die Massendichte des Anprallkörpers. | Bild C.1  Anprall-Modell, F = dynamische Interaktionskraft | (3) Die Gleichung (C.1) liefert den Maximalwert der dynamischen Kraft auf die Anprallfläche des Tragwerks. | Die dynamischen Kräfte verursachen dynamische Tragwerksantworten. Eine obere Grenze dieser Antworten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "dyn = 2,0. Wenn die natürliche Impulsfunktion der Last (d. h. die kurze Zeit ihres Angriffs) berück-",
+      "context": "diesem Fall ist der dynamische Vergrößerungsfaktor (d. h. das Verhältnis von dynamischer zu statischer | Antwort) | dyn = 2,0. Wenn die natürliche Impulsfunktion der Last (d. h. die kurze Zeit ihres Angriffs) berück- | sichtigt werden sollte, liefern Berechnungen einen Vergrößerungsfaktor dyn zwischen 1,0 und 1,8 abhängig | von den dynamischen Kennwerten des Tragwerks und des Anprallobjekts. Eine direkte dynamische Analyse",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "vr = )2( 2",
+      "context": "(1) Bei einem Lkw, der an ein Bauteil anprallt, sollte die Anprallgeschwindigkeit vr im Ausdruck (C. 1) mit der | Gleichung (C.6) berechnet werden. | vr = )2( 2 | 0 sav = vo b/1 dd (mit d < db) (C.6) | Dabei ist (siehe auch Bild C.2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "0 sav = vo b/1 dd (mit d < db) (C.6)",
+      "context": "Gleichung (C.6) berechnet werden. | vr = )2( 2 | 0 sav = vo b/1 dd (mit d < db) (C.6) | Dabei ist (siehe auch Bild C.2) | v0 die Geschwindigkeit des Lkws beim Verlassen des Fahrstreifens;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "db der Bremsabstand db = (v /2a) sin , wobei der Winkel zwischen dem Fahrstreifen und de Kurs des",
+      "context": "s der Abstand des Punktes, an dem der Lkw den Fahrstreifen verlässt, von dem Bauteil (siehe Bild C.2). | d der Abstand der Mittellinie des Fahrstreifens von dem Bauteil; | db der Bremsabstand db = (v /2a) sin , wobei der Winkel zwischen dem Fahrstreifen und de Kurs des | anprallenden Lkws ist. | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "vr = v0",
+      "context": "mit (C.1) | und | vr = v0 | Abstand | db",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "unvollständig",
+      "line": "b Die Masse m in t (1t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus",
+      "context": "a CEMT: Europäische Konferenz der Verkehrsminister, Klassifikationsvorschlag vom 19. Juni | 1992, angenommen vom Rat der EU am 29. Oktober 1993. | b Die Masse m in t (1t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus | Schiffskonstruktion, Fracht und Treibstoff. Sie wird auch Verdrängungstonnage genannt. | c Die Kräfte Fdx und Fdy enthalten die Wirkung der hydrodynamische Masse. Sie beruhen auf",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "a Die Masse (t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus Schiffskonstruktion, Fracht",
+      "context": "Groß 200 40 000 240 000 120 000 | Sehr groß 300 100 000 460 000 230 000 | a Die Masse (t = 1 000 kg) enthält die Gesamtmasse des Schiffes aus Schiffskonstruktion, Fracht | und Treibstoff. Sie wird auch Verdrängungstonnage genannt. | b Die angegebenen Kräfte berücksichtigen eine Geschwindigkeit von etwa 5,0 m/s. Sie enthalten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert um die Strömungsgeschwindigkeit, vorgeschlagen.",
+      "context": "(1) Die dynamische Anprallkraft Fd darf mit den Gleichungen (C.8) bis (C.13) bestimmt werden. In diesem Fall | wird die Verwendung des Mittelwertes der Masse für die maßgebende Schiffsklasse nach Tabelle C.3 und | eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert um die Strömungsgeschwindigkeit, vorgeschlagen. | (2) Muss die hydrodynamische Masse berücksichtigt werden, werden dafür 10 % der verdrängten Wasser- | masse für den Frontalstoß und 40 % für den Lateralstoß empfohlen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 61,
+      "equation_number": "unvollständig",
+      "line": "E def = Ea (1  cos ) (C.10)",
+      "context": "Frontalstoß, während im Fall von Lateralstoß mit einem Winkel < 45° ein Anprall mit Gleitreibung ange- | nommen werden und die Verformungsenergie mit | E def = Ea (1  cos ) (C.10) | angesetzt werden darf. | (5) Werden für die Bestimmung der Anprallkräfte probabilistische Methoden angewendet, können",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "ts gesamte Stoßzeit [s] für die plastische Stoßzeit; ts = tr + tp + te",
+      "context": "te elastische Rückfederzeit, in s; | ta äquivalente Stoßdauer, in s; | ts gesamte Stoßzeit [s] für die plastische Stoßzeit; ts = tr + tp + te | c elastische Steifigkeit des Schiffes (= 60 MN/m); | F0 elastisch-plastische Grenzkraft = 5 MN;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "c elastische Steifigkeit des Schiffes (= 60 MN/m);",
+      "context": "ta äquivalente Stoßdauer, in s; | ts gesamte Stoßzeit [s] für die plastische Stoßzeit; ts = tr + tp + te | c elastische Steifigkeit des Schiffes (= 60 MN/m); | F0 elastisch-plastische Grenzkraft = 5 MN; | xe elastisch Verformung ( 0,1 m);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "F0 elastisch-plastische Grenzkraft = 5 MN;",
+      "context": "ts gesamte Stoßzeit [s] für die plastische Stoßzeit; ts = tr + tp + te | c elastische Steifigkeit des Schiffes (= 60 MN/m); | F0 elastisch-plastische Grenzkraft = 5 MN; | xe elastisch Verformung ( 0,1 m); | vn a) die Anfahrgeschwindigkeit vr bei Frontalstoß;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "b) Geschwindigkeit des anprallenden Schiffes senkrecht zum Stoßpunkt, vn = vr sin bei Seitenstoß.",
+      "context": "xe elastisch Verformung ( 0,1 m); | vn a) die Anfahrgeschwindigkeit vr bei Frontalstoß; | b) Geschwindigkeit des anprallenden Schiffes senkrecht zum Stoßpunkt, vn = vr sin bei Seitenstoß. | Bei Frontalstoß entspricht die zu berücksichtigende Masse m* der Gesamtmasse des anprallenden Schiffes; | bei Seitenstoß: m* = (m1 + mhydr)/3, wobei m1 die Masse des direkt am Stoß beteiligten Schiffes und mhyd die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "bei Seitenstoß: m* = (m1 + mhydr)/3, wobei m1 die Masse des direkt am Stoß beteiligten Schiffes und mhyd die",
+      "context": "b) Geschwindigkeit des anprallenden Schiffes senkrecht zum Stoßpunkt, vn = vr sin bei Seitenstoß. | Bei Frontalstoß entspricht die zu berücksichtigende Masse m* der Gesamtmasse des anprallenden Schiffes; | bei Seitenstoß: m* = (m1 + mhydr)/3, wobei m1 die Masse des direkt am Stoß beteiligten Schiffes und mhyd die | hydrodynamische Zusatzmasse sind | Bild C.3  Last-Zeitfunktion für Schiffsanprall bei elastischer und plastischer Schiffsantwort",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "zur kinetischen Energie Ea = 0,5 m* vn²,",
+      "context": "berechnet werden: | bei Fdyn > 5 MN: mit Gleichsetzen von Edef, nach Gleichung (C.9), | zur kinetischen Energie Ea = 0,5 m* vn², | bei Fdyn 5 MN: direkt mit m* = (Fdyn/vn)² * (1/c) MNs²/m | 60",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "bei Fdyn 5 MN: direkt mit m* = (Fdyn/vn)² * (1/c) MNs²/m",
+      "context": "bei Fdyn > 5 MN: mit Gleichsetzen von Edef, nach Gleichung (C.9), | zur kinetischen Energie Ea = 0,5 m* vn², | bei Fdyn 5 MN: direkt mit m* = (Fdyn/vn)² * (1/c) MNs²/m | 60 | DIN EN 1991-1-7:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "(8) Wenn keine genaueren Angaben vorliegen, wird eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert",
+      "context": "EN 1991-1-7:2006 + AC:2010 (D) | (8) Wenn keine genaueren Angaben vorliegen, wird eine Bemessungsgeschwindigkeit vrd = 3 m/s, vergrößert | um die Strömungsgeschwindigkeit, empfohlen; in Häfen darf die Geschwindigkeit mit 1,5 m/s angesetzt | werden. Der Winkel darf mit 20o angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "Eimp = 2",
+      "context": "m275pp /LL | MNm4251/impimp EE | Eimp = 2 | rx | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "Fo Bezugswert der Anpralllast = 210 MN;",
+      "context": "und | Fbow maximale Buganpralllast, in MN; | Fo Bezugswert der Anpralllast = 210 MN; | Eimp Energie, die durch plastische Verformungen zu absorbieren ist; | Lpp Länge des Schiffes, in m;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "vr Anfangsgeschwindigkeit des Schiffes, vr = 5 m/s (in Häfen: 2,5 m/s)",
+      "context": "Lpp Länge des Schiffes, in m; | mx Masse plus Zusatzmasse bei Längsbewegung, in 10 6 kg; | vr Anfangsgeschwindigkeit des Schiffes, vr = 5 m/s (in Häfen: 2,5 m/s) | (2)Für die Bestimmung der Anpralllasten mit probabilistischen Methoden dürfen probabilistische | Modelle der Basisvariablen benutzt werden, die die Verformungsenergie oder das Anprallverhalten des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "(5) Wenn keine genaueren Angaben vorliegen, wird die Bemessungsgeschwindigkeit vrd = 5 m/s",
+      "context": "o 67,1 v | sT  (C.13) | (5) Wenn keine genaueren Angaben vorliegen, wird die Bemessungsgeschwindigkeit vrd = 5 m/s | vergrößert um die Strömungsgeschwindigkeit empfohlen; in Häfen kann die Geschwindigkeit mit 1,5 m/s | angesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "A = [4,485 × 10-8 pmax KSt pred.max",
+      "context": "(2) Die Öffnungsfläche kubischer und langer Behälter und Bunker für Staubexplosionen in einem Innenraum | darf nach Gleichung (D.1) bestimmt werden | A = [4,485 × 10-8 pmax KSt pred.max | -0,569 + 0,027 (pstat  10) pred.max | -0,5] V0,753 (D.1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "A = [4,485 x 10-8 pmax KSt pBem",
+      "context": "500 kN/m2 pmax 1 200 kN/m2 für 30 000 kN/m2 m s-1 KSt 80 000 kN/m2 m s-1 | (3) Die Öffnungsflächen rechteckiger Räume können mit Gleichung (D.2) bestimmt werden. | A = [4,485 x 10-8 pmax KSt pBem | -0,569 + 0,027 (pstat  10) pBem. | -0,5 ] V0,753 (D.2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "L3/DE 2, dabei ist L3 die größte Abmessung des Raumes, DE = 2 × (L1 × L2/ )0,5 sowie L1 , L2 als den",
+      "context": "Die Gleichung (D. 2) gilt mit folgenden Einschränkungen : | 0,1 m 3 V 10 000 m3 | L3/DE 2, dabei ist L3 die größte Abmessung des Raumes, DE = 2 × (L1 × L2/ )0,5 sowie L1 , L2 als den | anderen Raum-Abmessungen | 10 kN/m 2 pstat 100 kN/m2, Bruch von Scheiben und Paneelen mit geringer Masse, also praktisch ohne",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "equation_number": "unvollständig",
+      "line": "AH = A (- 4,305 log pBem + 9,368) log L3/DE (D.3)",
+      "context": "(4) Bei langen Räumen mit L3/DE 2 sollte die folgende Vergrößerung der Öffnungsfläche berücksichtigt | werden. | AH = A (- 4,305 log pBem + 9,368) log L3/DE (D.3) | Dabei ist | AH die Vergrößerung der Öffnungsfläche, in m 2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "equation_number": "unvollständig",
+      "line": "pd = 3 + pstat ( D . 4 )",
+      "context": "(1) Bei Gebäuden mit geplanten Erdgasanschlüssen darf das Tragwerk für eine Innenraum-Erdgasexplosion | mit einem äquivalenten statischen Nenndruck nach den Gleichungen (D.4) und (D.5) bemessen werden. | pd = 3 + pstat ( D . 4 ) | oder | pd = 3 + pstat / 2 + 0,04 / (Av / V)² (D.5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "equation_number": "unvollständig",
+      "line": "pd = 3 + pstat / 2 + 0,04 / (Av / V)² (D.5)",
+      "context": "pd = 3 + pstat ( D . 4 ) | oder | pd = 3 + pstat / 2 + 0,04 / (Av / V)² (D.5) | Der größere Wert ist maßgebend. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "po der maßgebende Spitzendruck (= 2 000 kN/m 2 für einen typischen Treibstoff aus verflüssigtem Gas);",
+      "context": "bei allen anderen Bedingungen (D.9) 0,txp | Dabei ist | po der maßgebende Spitzendruck (= 2 000 kN/m 2 für einen typischen Treibstoff aus verflüssigtem Gas); | c1 die Ausbreitungsgeschwindigkeit der Schockwelle ( 1 800 m/s); | c2 die Schallausbreitungsgeschwindigkeit in heißen Gasen ( 800 m/s);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "to die Zeitkonstante (= 0,01 s);",
+      "context": "c1 die Ausbreitungsgeschwindigkeit der Schockwelle ( 1 800 m/s); | c2 die Schallausbreitungsgeschwindigkeit in heißen Gasen ( 800 m/s); | to die Zeitkonstante (= 0,01 s); | x Abstand zum Explosionskern; | t die Zeit, in s.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "po der maßgebende Spitzendruck (= 100 kN/m 2);",
+      "context": "tptp für 0 t t0 ( D . 1 0 ) | Dabei ist | po der maßgebende Spitzendruck (= 100 kN/m 2); | to die Zeitkonstante (= 0,1 s); | t die Zeit, in s.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "to die Zeitkonstante (= 0,1 s);",
+      "context": "Dabei ist | po der maßgebende Spitzendruck (= 100 kN/m 2); | to die Zeitkonstante (= 0,1 s); | t die Zeit, in s. | (3) Der Druck nach Gleichung (D.10) gilt für die gesamte innere Tunneloberfläche.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 15,
+      "line": "ANMERKUNG Tabelle 2.1 legt die maßgebenden Abschnitte in EN 1990 fest, die bei der Bemessung von Tragwerken"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 15,
+      "line": "Tabelle 2.1  Abschnitte in EN 1990, die auf außergewöhnliche Einwirkungen hinweisen"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 21,
+      "line": "Anhaltswerte für äquivalente statische Anpralllasten dürfen der Tabelle 4.1 entnommen werden. Die Entscheidung für den"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 21,
+      "line": "Tabelle 4.1  Anhaltswerte für äquivalente statische Anprallkräfte aus Straßenverkehr auf"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 22,
+      "line": "Brücke zwischen 5,0 m und 6,0 m. Anhaltswerte zu der äquivalenten statischen Anprallkraft sind in Tabelle 4.2 ange-"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 22,
+      "line": "Tabelle 4.2  Anhaltswerte für äquivalente statische Anprallkräfte auf Überbauten"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 23,
+      "line": "ANMERKUNG 3 Die Anpralllasten auf vertikale Flächen sind mit denen in Tabelle 4.2 identisch. Bei ho h h1 können"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 24,
+      "line": "(siehe EN 1991-1, Tabelle 6.5); die Kraft greift in einer Höhe von 0,75 m über dem Fußboden an. In einigen Fällen dürften"
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 24,
+      "line": "(1) Tragwerke, die aus Entgleisungen anprallgefährdet sind, sind nach Tabelle 4.3 zu klassifizieren.."
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 25,
+      "line": "Tabelle 4.3  Bauwerksklassifizierung für Anprallnachweise aus Entgleisung"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 25,
+      "line": "Anhaltswerte sind in Tabelle 4.4 zu finden."
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 25,
+      "line": "Tabelle 4.4  Anhaltswerte für horizontale statisch äquivalente Anprallkräfte auf Bauwerke"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 26,
+      "line": "(3) Die Kräfte Fdx und Fdy sind in festgelegter Höhe über der Gleisebene anzusetzen, siehe Tabelle 4.4. Die"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 26,
+      "line": "(4) Beträgt die maximale Zuggeschwindigkeit nicht mehr als 50 km/h, dürfen die Kräfte der Tabelle 4.4"
+    }
+  ],
+  "figures": [
+    {
+      "label": "1.1",
+      "pdf_page": 12,
+      "line": "dynamische Kraft mit einer Kontaktfläche an der Anprallstelle verbunden (siehe Bild 1.1)."
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 13,
+      "line": "Bild 1.1"
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 13,
+      "line": "Darstellung für eine dynamische Kraft, die die dynamische Bauwerksreaktion einschließt (siehe Bild 1.1)"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 16,
+      "line": "(2) Die Strategien, die in Betracht zu ziehen sind, gehen aus Bild 3.1 hervor."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 16,
+      "line": "Bild 3.1  Strategien zur Behandlung außergewöhnlicher Bemessungssituationen"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 22,
+      "line": "Empfohlen werden folgende Bedingungen (siehe Bild 4.1):"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 22,
+      "line": "Bild 4.1  Anprallkraft auf Stützkonstruktion neben Fahrspuren"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 23,
+      "line": "festlegen. Empfehlungen zu den Werten rF, h0 und h1 sind Bild 4.2 zu entnehmen."
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 23,
+      "line": "Bild 4.2  Empfehlungen für den Abminderungsbeiwert rF für Anpralllasten auf Überbauungen"
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 23,
+      "line": "Kräfte von 10°, siehe Bild 4.3."
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 23,
+      "line": "Bild 4.3  Anpralllast auf Bauteile des Überbaus"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 28,
+      "line": "Bemessungswasserständen angesetzt werden, siehe Bild 4.4."
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 29,
+      "line": "Bild 4.4  Angaben zu Stoßflächen für Schiffsanprall"
+    },
+    {
+      "label": "D1",
+      "pdf_page": 67,
+      "line": "berücksichtigt werden, siehe Bild D1(b):"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 974,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2138,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2125,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6676,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "4",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.3.1",
+        "4.3.2",
+        "4.4",
+        "4.5",
+        "4.5.1",
+        "4.5.2",
+        "4.6",
+        "4.6.1",
+        "4.6.2",
+        "4.6.3",
+        "4.7",
+        "5",
+        "5.1",
+        "5.2",
+        "5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 5399,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 2967,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3348,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2491,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1782,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1747,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2296,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2102,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1310,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1839,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1767,
+      "text_layer": "usable",
+      "clauses": [
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2317,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 3064,
+      "text_layer": "usable",
+      "clauses": [
+        "3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 3317,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3",
+        "3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2728,
+      "text_layer": "usable",
+      "clauses": [
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 3056,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2390,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3",
+        "4.3.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2010,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1983,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2758,
+      "text_layer": "usable",
+      "clauses": [
+        "4.4",
+        "4.5",
+        "4.5.1",
+        "4.5.1.1",
+        "4.5.1.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2455,
+      "text_layer": "usable",
+      "clauses": [
+        "4.5.1.3",
+        "4.5.1.4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2994,
+      "text_layer": "usable",
+      "clauses": [
+        "4.5.1.5",
+        "4.5.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2283,
+      "text_layer": "usable",
+      "clauses": [
+        "4.6",
+        "4.6.1",
+        "4.6.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 28,
+      "characters": 3017,
+      "text_layer": "usable",
+      "clauses": [
+        "4.6.3"
+      ],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1583,
+      "text_layer": "usable",
+      "clauses": [
+        "4.7",
+        "5",
+        "5.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 30,
+      "characters": 2547,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2693,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1662,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2562,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2080,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1882,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1216,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 37,
+      "characters": 953,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1198,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1571,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1042,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 2337,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 2781,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1714,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 3299,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 143,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 2440,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 2514,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 2623,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 49,
+      "characters": 2467,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1482,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1459,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 52,
+      "characters": 1955,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2883,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 2211,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1826,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1987,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 57,
+      "characters": 2321,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 789,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2374,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 60,
+      "characters": 2746,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1090,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 62,
+      "characters": 1212,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 63,
+      "characters": 1710,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1654,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1827,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 66,
+      "characters": 1727,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 67,
+      "characters": 972,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    }
+  ]
+}

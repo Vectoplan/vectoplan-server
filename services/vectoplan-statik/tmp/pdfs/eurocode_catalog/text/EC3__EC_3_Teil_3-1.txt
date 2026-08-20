@@ -1,0 +1,3403 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-3-1 
+ICS 91.01 0.30; 91.060.40 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1993-3-1:2007-02 und 
+DIN EN 1993-3-1 
+Berichtigung 1 :2009-Q9; 
+teilweiser Ersatz far 
+DIN V 4131 :2008-Q9 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Teil 3-1: Türme, Maste und Schornsteine-
+Türme und Maste; 
+Deutsche FassungEN 1993-3-1:2006 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 3-1: Towers, masts and chimneys-
+Towers and masts; 
+German version EN 1993-3-1 :2006 + AC:2009 
+Eurocode 3: Calcul des structures en acier­
+Partie 3-1: Tours, mäts et cheminees­
+Pylönes et mäts haubannes; 
+Version allemande EN 1993-3-1 :2006 + AC:2009 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 93 Seiten 
+Preisgruppe 30 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723896
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-3-1:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-3-1:2006 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau  erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten 
+wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-08-18 AA Türme und Maste begleitet. 
+Diese Europäische Norm wurde vom CEN am 09. Januar 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen Gemein-
+schaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die verbindliche 
+Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind im Vorwort 
+dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die Text-
+markierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-3-1:2002-05 und DIN V ENV 1993-3-1 Berichtigung 1:2002-11 wurden folgende 
+Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet; 
+d) die Berichtigung wurde eingearbeitet. 
+Gegenüber DIN EN 1993-3-1:2007-02, DIN EN 1993-3-1 Berichtigung 1:2009-09 und DIN V 4131:2008-09 
+wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN V 4131: 1969-03, 1991-11, 2008-09 
+DIN V ENV 1993-3-1: 2002-05 
+DIN V ENV 1993-3-1 Berichtigung 1: 2002-11 
+DIN EN 1993-3-1: 2007-02 
+DIN EN 1993-3-1 Berichtigung 1: 2009-09 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-3-1 
+ Oktober 2006 
+ +AC 
+ Juli 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-3-1:1997
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 3-1: Türme, Maste und Schornsteine  
+Türme und Maste 
+Eurocode 3: Design of steel structures  
+Part 3-1: Towers, masts and chimneys  
+Towers and masts 
+Eurocode 3: Calcul des structures en acier  
+Partie 3-1: Tours, mâts et cheminées  
+Pylônes et mâts haubannés 
+Diese Europäische Norm wurde vom CEN am 09. Januar 2006 angenommen. 
+Die Berichtigung tritt am 1. Juli 2009 in Kraft und wurde in EN 1993-3-1:2006 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied auf
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreic h, 
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal,
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch 
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-3-1:2006 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+2 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................6
+Hintergrund des Eurocode-Programms ...........................................................................................................6
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................7
+Nationale Fassungen der Eurocodes ...............................................................................................................8
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (EN und ETA) ..................................................................................................................8
+Besondere Hinweise zu EN 1993-3-1 und EN 1993-3-2.............................................................................. .....8
+Nationaler Anhang zu EN 1993-3-1 ...................................................................................................................9
+1 Allgemeines.................................................................................................................. ...........................10
+1.1 Anwendungsbereich .......................................................................................................... ....................10
+1.1.1 Anwendungsbereich von Eurocode 3 ......................................................................................... .........10
+1.1.2 Anwendungsbereich von Eurocode 3  Teil 3.1 ................................................................................10
+1.2 Normative Verweisungen..................................................................................................... ..................10
+1.3 Annahmen ................................................................................................................... ............................11
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln ...........................................................11
+1.5 Begriffe ................................................................................................................... .................................11
+1.6 Formelzeichen.............................................................................................................. ...........................13
+1.7 Definition der Bauteilachsen ............................................................................................... ..................14
+2 Grundlagen für die Tragwerksplanung .......................................................................................... ......15
+2.1 Anforderungen.............................................................................................................. ..........................15
+2.1.1 Grundlegende Anforderungen ............................................................................................... ...............15
+2.1.2 Sicherheitsklassen ....................................................................................................... ..........................15
+2.2 Grundsätzliches zur Bemessung mit Grenzzuständen ......................................................................15
+2.3 Einwirkungen und Umgebungseinflüsse........................................................................................ .....15
+2.3.1 Windeinwirkungen......................................................................................................... .........................15
+2.3.2 Eislasten ..................................................................................................................................................15
+2.3.3 Temperatureinwirkungen................................................................................................... ....................15
+2.3.4 Eigengewicht............................................................................................................. ..............................15
+2.3.5 Vorspannung in Abspannseilen............................................................................................. ...............16
+2.3.6 Veränderliche Lasten ..................................................................................................... ........................16
+2.3.7 Andere Einwirkungen...................................................................................................... .......................16
+2.3.8 Lastverteilung ........................................................................................................... ..............................16
+2.4 Nachweise im Grenzzustand der Tragfähigkeit................................................................................ ...17
+2.5 Versuchsgestützte Bemessung ................................................................................................ ............17
+2.6 Dauerhaftigkeit............................................................................................................ ............................17
+3 Werkstoffe ................................................................................................................... ............................17
+3.1 Baustahl................................................................................................................... ................................17
+3.2 Verbindungsmittel .......................................................................................................... ........................17
+3.3 Abspannseile und Anschlussstücke........................................................................................... .........17
+4 Dauerhaftigkeit.............................................................................................................. ..........................17
+4.1 Korrosionsschutz ........................................................................................................... ........................17
+4.2 Abspannseile ............................................................................................................... ...........................18
+5 Tragwerksberechnung .......................................................................................................... .................18
+5.1 Berechnungsmodelle zur Bestimmung von Schnittgrößen...............................................................18
+5.2 Berechnungsmodelle für Verbindungen........................................................................................ ......19
+5.2.1 Grundlagen.................................................................................................................... ..........................19
+5.2.2 Tragwerke aus Dreieckselementen (Gelenkfachwerke) .....................................................................19
+5.2.3 Tragwerke ohne Fachwerkwirkung (Balkentragwerke) ......................................................................19
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+3 
+Seite
+5.2.4 Fachwerke mit Berücksichtigung der Balkenwirkung zur Vermeidung kinematischer Ketten .....19
+6 Grenzzustände der Tragfähigkeit .............................................................................................. ...........19
+6.1 Allgemeines ................................................................................................................ ............................19
+6.2 Beanspruchbarkeit von Querschnitten........................................................................................ ........20
+6.2.1 Klassifizierung der Querschnitte......................................................................................... .................20
+6.2.2 Bauteile von Gittermasten und Gittertürmen ............................................................................... .......20
+6.2.3 Abspannseile und Zubehör................................................................................................. ..................20
+6.3 Beanspruchbarkeit von Bauteilen ............................................................................................ ............20
+6.3.1 Druckbeanspruchte Bauteile ............................................................................................... .................20
+6.4 Verbindungen ............................................................................................................... ..........................21
+6.4.1 Allgemeines .............................................................................................................. ..............................21
+6.4.2 Zugbeanspruchte Schrauben in Kopfplattenverbindungen (Flanschverbindungen) .....................21
+6.4.3 Ankerschrauben .....................................................................................................................................23
+6.4.4 Schweißverbindungen...................................................................................................... .....................23
+6.5 Sonderverbindungen für Maste............................................................................................... .............23
+6.5.1 Anschluss des Mastfußes .................................................................................................. ...................23
+6.5.2 Anschlüsse der Abspannseile .............................................................................................. ................24
+7 Grenzzustände der Gebrauchstauglichkeit...................................................................................... ...25
+7.1 Grundlagen ................................................................................................................. ............................25
+7.2 Auslenkungen und Verdrehungen .............................................................................................. .........25
+7.2.1 Anforderungen ............................................................................................................ ...........................25
+7.2.2 Festlegung von Grenzwerten............................................................................................... .................25
+7.3 Schwingungen............................................................................................................... .........................25
+8 Versuchsgestützte Bemessung.................................................................................................. ..........26
+9 Ermüdung ..................................................................................................................... ..........................26
+9.1 Allgemeines ................................................................................................................ ............................26
+9.2 Ermüdungsbelastung ......................................................................................................... ...................26
+9.2.1 Schwingungen in Windrichtung ............................................................................................. ..............26
+9.2.2 Wirbelerregte Querschwingungen ........................................................................................... ............27
+9.2.3 Dynamische Antwort einzelner Bauteile.................................................................................... ..........27
+9.3 Ermüdungsfestigkeit........................................................................................................ ......................27
+9.4 Nachweis................................................................................................................... ..............................28
+9.5 Teilsicherheitsbeiwerte für den Ermüdungsnachweis.......................................................................28
+9.6 Ermüdung von Abspannseilen ................................................................................................. ............28
+Anhang A (normativ) Zuverlässigkeitsdifferenzierung und Teilsicherheitsbeiwerte für 
+Einwirkungen .......................................................................................................................................29
+A.1 Zuverlässigkeitsdifferenzierung für Türme und Maste ......................................................................29
+A.2 Teilsicherheitsbeiwerte für Einwirkungen................................................................................... ........29
+Anhang B (informativ) Berechnungsannahmen für Windeinwirkungen .....................................................31
+B.1 Allgemeines ................................................................................................................ ............................31
+B.1.1 Anwendungsbereich dieses Anhangs .................................................................................................31
+B.1.2 Formelzeichen ........................................................................................................................................31
+B.2 Windkraft..................................................................................................................... ............................32
+B.2.1 Allgemeines ............................................................................................................................................32
+B.2.2 Windkraftbeiwerte für Bauteile .............................................................................................................35
+B.2.3 Windkraftbeiwerte für langgestreckte Außenanbauten .....................................................................40
+B.2.4 Windkraftbeiwerte für einzelne kompakte Außenanbauten...............................................................42
+B.2.5 Windkraftbeiwerte für Abspannseile....................................................................................... .............42
+B.2.6 Windkraftbeiwerte bei Vereisung .........................................................................................................43
+B.2.7 Anleitung für Spezialfälle ......................................................................................................................43
+B.3 Tragwerksreaktion von Gittermasten......................................................................................... ..........47
+B.3.1 Bedingungen für die Anwendung statischer Verfahren.....................................................................47
+B.3.2 Statische Ersatzlast-Methode ...............................................................................................................47
+B.3.3 Spektralmethode ....................................................................................................................................52
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+4 
+Seite
+B.3.4 Wirbelerregte Schwingungen quer zur Windrichtung ........................................................................52
+B.4 Dynamische Antwort von abgespannten Masten ...............................................................................52
+B.4.1 Allgemeines.............................................................................................................................................52
+B.4.2 Bedingungen für statische Methoden ..................................................................................................52
+B.4.3 Statische Ersatzlast-Methode............................................................................................. ...................54
+B.4.4 Spektralverfahren ...................................................................................................................................61
+B.4.5 Wirbelerregte Querschwingungen........................................................................................... .............61
+B.4.6 Seilschwingungen ..................................................................................................................................62
+Anhang C (informativ) Eislast und kombinierte Einwirkung aus Eis und Wind .........................................63
+C.1 Allgemeines................................................................................................................ .............................63
+C.2 Eislast .................................................................................................................... ..................................63
+C.3 Eisgewicht ................................................................................................................. ..............................64
+C.4 Wind und Eis ............................................................................................................... ............................64
+C.5 Asymmetrische Eislast ...................................................................................................... ....................65
+C.6 Kombinationen von Eis und Wind ............................................................................................. ...........65
+Anhang D (normativ) Seile, Dämpfer, Isolatoren, Außenanbauten und Zusatzeinrichtungen..................66
+D.1 Seile ...................................................................................................................... ...................................66
+D.1.1 Stahlseile und stählerne Zugglieder...................................................................................... ...............66
+D.1.2 Nichtmetallische Seile................................................................................................... .........................66
+D.2 Dämpfer .................................................................................................................... ...............................66
+D.2.1 Dämpfer für das Tragwerk .....................................................................................................................66
+D.2.2 Seildämpfer .............................................................................................................................................66
+D.3 Isolatoren................................................................................................................. ................................67
+D.4 Außenanbauten und Zusatzeinrichtungen ...................................................................................... ....68
+D.4.1 Steigleitern, Bühnen usw................................................................................................. ......................68
+D.4.2 Blitzschutz.............................................................................................................. .................................68
+D.4.3 Flugsicherung .........................................................................................................................................68
+D.4.4 Schutz gegen Vandalismus................................................................................................. ..................68
+Anhang E (informativ) Seilbruch......................................................................................................................69
+E.1 Einleitung ................................................................................................................. ...............................69
+E.2 Vereinfachtes Berechnungsmodell ............................................................................................ ..........69
+E.3 Konservative Vorgehensweise................................................................................................ ..............71
+E.4 Berechnung für den Zustand nach einem Seilbruch..........................................................................72
+Anhang F (informativ) Ausführung..................................................................................................................73
+F.1 Allgemeines................................................................................................................ .............................73
+F.2 Schraubverbindungen ........................................................................................................ ...................73
+F.3 Schweißverbindungen ........................................................................................................ ...................73
+F.4 Toleranzen................................................................................................................. ..............................73
+F.4.1 Allgemeines.............................................................................................................. ...............................73
+F.4.2 Ausführungstoleranzen .................................................................................................... .....................73
+F.4.3 Beschränkungen für die Vorspannung ....................................................................................... .........74
+F.5 Vorstrecken der Seile.............................................................................................................................74
+Anhang G (informativ) Knicken druckbeanspruchter Bauteile in Türmen und Masten.............................75
+G.1 Beanspruchbarkeit von Druckstäben auf Biegeknicken....................................................................75
+G.2 Beiwert k für den effektiven Schlankheitsgrad....................................................................................76
+Anhang H (informativ) Knicklängen und Schlankheiten von druckbeanspruchten Bauteilen..................81
+H.1 Allgemeines................................................................................................................ .............................81
+H.2 Bauteile in Eckstielen..................................................................................................... ........................81
+H.3 Füllstäbe .................................................................................................................. ................................82
+H.3.1 Allgemeines.............................................................................................................................................82
+H.3.2 Einfaches Fachwerk ...............................................................................................................................82
+H.3.3 Kreuzweise Ausfachung ........................................................................................................................84
+H.3.4 Kreuzweise Ausfachung mit Zuggliedern.................................................................................... ........84
+H.3.5 Kreuzweise Ausfachung mit sekundären Füllstäben .........................................................................84
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+5 
+Seite
+H.3.6 Kreuzweise Ausfachung mit im Kreuzungspunkt unterbrochenen Füllstäben und 
+durchgehenden horizontalen Füllstäben ..........................................................................................84
+H.3.7 Kreuzweise Ausfachung mit diagonalen Eckstreben.........................................................................8 5
+H.3.8 Diagonalstäbe von K-Fachwerken........................................................................................................85
+H.3.9 Horizontale Füllstäbe in einer Fachwerkwand mit horizontaler Ausfachungsebene .....................85
+H.3.10 Horizontale Füllstäbe ohne horizontale Ausfachungsebene..........................................................88
+H.3.11 K -Fachwerke mit Abknickungen ........................................................................................................88
+H.3.12 Portalrahmenfachwerk.................................................................................................... ....................89
+H.3.13 Mehrfach vergitterte Fachwerke .......................................................................................... ..............89
+H.4 Sekundäre Füllstäbe ........................................................................................................ ......................90
+H.5 Schalentragwerke........................................................................................................... ........................91
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+6 
+Vorwort 
+Dieses Dokument (EN 1993-3-1:2006 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau  erarbeitet, dessen Sekretariat vom BSI gehalten wird. CEN/TC 250 ist 
+verantwortlich für alle Eurocode-Teile. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis April 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-3-1:1997. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm auf der 
+Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Programms war die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und sie schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 80er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine Vereinba-
+rung
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den Rege-
+lungen der Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln (z. B. 
+die Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie, die Ratsrichtlinien 93/37/EWG, 
+92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die entsprechenden 
+EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung; 
+EN 1991, Eurocode 1: Einwirkung auf Tragwerke; 
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten; 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+7 
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten; 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten; 
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten; 
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten; 
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik; 
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben; 
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen. 
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitgliedslän-
+dern und haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte berücksichtigt, so dass 
+diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr 1: Mecha-
+nischer Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(EN und ETA). 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art 
+sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich aus den 
+Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel 
+sind. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+a) die wesentliche Anforderung zu konkretisieren, indem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+b) die Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen anzugeben, 
+z. B. rechnerische oder Testverfahren, Entwurfsregeln, 
+c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr 1 und einen Teil der wesent-
+lichen Anforderung Nr 2. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+8 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+Nationale Fassungen der Eurocodes 
+Die nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang (informativ). 
+Der Nationale Anhang (informativ) darf nur Hinweise zu den Parametern geben, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die 
+Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt werden. Sie 
+umfassen: 
+ Zahlenwerte für -Faktoren und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische, geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ Vorgehensweise, wenn die Eurocodes mehrere zur Wahl anbieten; 
+ Verweise zur Anwendung des Eurocodes, soweit diese ergänzen und nicht widersprechen. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (EN und ETA) 
+Die harmonisierten Technischen Spezifikationen für Bauprodukte und die technischen Regelungen für die 
+Tragwerksplanung4) müssen konsistent sein. Insbesondere sollten die Hinweise, die mit den CE-Zeichen an 
+den Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar erkennen lassen, welche 
+national festzulegenden Parameter (NDP) zugrunde liegen. 
+Besondere Hinweise zu EN 1993-3-1 und EN 1993-3-2 
+EN 1993-3 gehört zu den sechs Teilen des Eurocode 3, Bemessung und Konstruktion von Stahlbauten , und 
+liefert Grundsätze und Anwendungsregeln für die Tragfähigkeit, Gebrauchstauglichkeit und Dauerhaftigkeit 
+der Stahltragwerke von Türmen, Masten und Schornsteinen. Türme und Maste werden in Teil 3-1 behandelt, 
+Stahlschornsteine in Teil 3-2. 
+Die Regeln in EN 1993-3 gelten ergänzend zu den Grundregeln in EN 1993-1. 
+Es ist vorgesehen, dass EN 1993-3 zusammen mit EN 1990, Grundlagen der Tragwerksplanung , EN 1991, 
+Einwirkungen auf Tragwerke , und den Teilen 1 von EN 1992 bis EN 1998 angewendet wird, soweit diese auf 
+Stahltragwerke oder Stahlkomponenten von Türmen, Masten und Schornsteinen Bezug nehmen. 
+Regelungen in diesen Normen werden nicht wiederholt. 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie, ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagendoku-
+mentes Nr 1. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+9 
+Die Anwendung von EN 1993-3 ist gedacht für: 
+ Komitees zur Erstellung von Spezifikationen für Bauprodukte, Normen für Prüfverfahren sowie Normen 
+für die Bauausführung; 
+ Auftraggeber (z. B. zur Formulierung spezieller Anforderungen); 
+ Tragwerksplaner und Bauausführende; 
+ zuständige Behörden. 
+Die Zahlenwerte für -Faktoren und andere Parameter, die die Zuverlässigkeit festlegen, gelten als Empfeh-
+lungen, mit denen ein akzeptables Zuverlässigkeitsniveau erreicht werden soll. Bei ihrer Festlegung wurde 
+vorausgesetzt, dass ein angemessenes Niveau der Ausführungsqualität und Qualitätsprüfung vorhanden ist. 
+Der Anhang B von EN 1993-3-1 ergänzt die Regelungen von EN 1991-1-4 in Bezug auf Windeinwirkungen 
+auf Gittermaste und abgespannte Maste oder abgespannte Schornsteine. 
+Zu Masten von Überlandleitungen sind alle Regelungen zu Windbelastungen und Eislasten, Lastkom-
+binationen, Sicherheitsfragen und allen besonderen Anforderungen (z. B. für Leitungen, Isolatoren, Freiräume 
+usw.) in der CENELEC-Norm EN 50341 zu finden, auf die für die Bemessung dieser Tragwerke Bezug 
+genommen werden kann. 
+Bei Anwendung der in diesem Teil angegebenen Festigkeitsanforderungen an Stahlbauteile darf davon 
+ausgegangen werden, dass diese die Anforderungen der EN 50341 an Maste von Überlandleitungen erfüllen 
+und als Alternativen zu den Regelungen in EN 50341 gelten können. 
+Der Teil 3-2 wurde zusammen mit dem technischen Komitee CEN/TC 297, Freistehende Schornsteine , 
+ausgearbeitet. 
+Für Tragwerke oder Teile davon, die im Zusammenhang mit einem abgestimmten experimentellen Unter-
+suchungsprogramm bemessen werden, ist die Anwendung besonderer Teilsicherheitsbeiwerte vorgesehen. 
+Nationaler Anhang zu EN 1993-3-1 
+Diese Norm enthält alternative Methoden, Zahlenangaben und Empfehlungen in Verbindung mit Anmer-
+kungen, die darauf hinweisen, wo nationale Festlegungen getroffen werden können. EN 1993-3-1 wird bei der 
+nationalen Einführung einen Nationalen Anhang enthalten, der alle national festzulegenden Parameter 
+enthält, die für die Bemessung und Konstruktion von Stahlbauten im jeweiligen Land erforderlich sind. 
+Nationale Festlegungen sind bei folgenden Regelungen vorgesehen: 
+ 2.1.1(3)P 
+ 2.3.1(1) 
+ 2.3.2(1) 
+ 2.3.6(2) 
+ 2.3.7(1) 
+ 2.3.7(4) 
+ 2.5(1) 
+ 2.6(1) 
+ 4.1(1) 
+ 4.2(1) 
+ 5.1(6) 
+ 5.2.4(1) 
+ 6.1(1) 
+ 6.3.1(1) 
+ 6.4.1(1) 
+ 6.4.2(2) 
+ 6.5.1(1) 
+ 7.1(1) 
+ 9.5(1) 
+ A.1(1) 
+ A.2(1)P (zweimal) 
+ B.1.1(1) 
+ B.2.1.1(5) 
+ B.2.3(1) 
+gestrichener 
+Text
+ B.3.2.2.6(4) 
+ B.3.3(1) 
+ B.3.3(2) 
+ B.4.3.2.2(2) 
+ B.4.3.2.3(1) 
+ B.4.3.2.8.1(4) 
+ C.2(1) 
+ C.6.(1) 
+D.1.1(2)
+ D.1.2(2) 
+ D.3(6) (zweimal) 
+ D.4.1(1) 
+ D.4.2(3) 
+ D.4.3(1) 
+ D.4.4(1) 
+ F.4.2.1(1) 
+ F.4.2.2(2) 
+ G.1(3) 
+ H.2(5) 
+ H.2(7) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+10 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+1.1.1 Anwendungsbereich von Eurocode 3 
+Siehe EN 1993-1-1, 1.1.1. 
+1.1.2 Anwendungsbereich von Eurocode 3  Teil 3.1 
+(1) EN 1993-3-1 regelt die Bemessung und Konstruktion von Gittermasten und abgespannten Masten und 
+ähnlicher Konstruktionen, die prismatische, zylindrische oder andere sperrige Elemente tragen. 
+Regelungen für freistehende und abgespannte zylindrische und kegelförmige Türme  und Schornsteine 
+sind in EN 1993-3-2 enthalten. Regelungen für die Seile von abgespannten Tragwerken einschließlich 
+abgespannten Schornsteinen finden sich in EN 1993-1-11 mit Ergänzungen in diesem Normenteil. 
+(2) Die Regeln in diesem Teil von EN 1993 gelten in Ergänzung zu denen in EN 1993-1. 
+(3) Soweit die Anwendbarkeit einer Regelung aus praktischen Gründen oder aufgrund von Verein-
+fachungen eingeschränkt ist, werden deren Anwendungsgrenzen definiert und erläutert. 
+(4) Dieser Teil enthält keine Vorschriften für die Bemessung von Lichtmasten mit polygonalem oder 
+kreisförmigem Querschnitt, die in EN 40 behandelt werden. Gittermaste mit polygonalem Gesamtquerschnitt 
+werden in diesem Normenteil nicht behandelt. Für Maste mit aus Blechen geformten polygonalen Quer-
+schnitten dürfen die angegebenen Lastansätze verwendet werden. Hinweise zur Festigkeit solcher Maste 
+können EN 40 entnommen werden. 
+(5) Dieser Teil enthält keine besonderen Vorschriften für die Bemessung im Hinblick auf Erdbeben; diese 
+sind in EN 1998-3 enthalten. 
+(6) Besondere Maßnahmen zur Begrenzung von Unfallfolgen werden in diesem Normenteil nicht behan-
+delt. Zum Brandwiderstand wird auf EN 1993-1-2 verwiesen. 
+(7) Zur Herstellung und Montage von Türmen und Masten aus Stahl wird auf EN 1090 verwiesen. 
+ANMERKUNG Fertigung und Montage werden bis zu einem gewissen Maße behandelt, um die erforderliche Qualität 
+der eingesetzten Werkstoffe und Bauprodukte und die Ausführungsqualität auf der Baustelle festlegen zu können, so dass 
+die den Bemessungsregeln zugrunde liegenden Annahmen eingehalten sind. 
+1.2 Normative Verweisungen 
+Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+EN 40, Lichtmaste 
+EN 365, Persönliche Schutzausrüstung zum Schutz gegen Absturz  Allgemeine Anforderungen an 
+Gebrauchsanleitungen, Wartung, regelmäßige Überprüfung, Instandsetzung, Kennzeichnung und Verpackung 
+EN 795, Schutz gegen Absturz  Anschlageinrichtungen  Anforderungen und Prüfverfahren 
+EN 1090, Ausführung von Stahltragwerken und Aluminiumtragwerken 
+EN ISO 1461, Durch Feuerverzinken auf Stahl aufgebrachte Zinküberzüge (Stückverzinken  Anforderun-
+gen und Prüfungen 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+11 
+EN ISO 12944, Beschichtungsstoffe  Korrosionsschutz von Stahlbauten durch Beschichtungssysteme 
+EN ISO 14713, Schutz von Eisen- und Stahlkonstruktionen vor Korrosion  Zink- und Aluminiumüberzüge  
+Leitfäden 
+ISO 12494, Atmospheric icing of structures 
+1.3 Annahmen 
+(1) Siehe EN 1993-1-1, 1.3. 
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln 
+(1) Siehe EN 1993-1-1, 1.4. 
+1.5 Begriffe 
+(1) In dieser EN 1993-3-1 gelten die allgemeinen Begriffe nach EN 1990, 1.5. 
+(2) Zusätzlich zu EN 1993-1 gelten für die Anwendung in diesem Teil 3-1 folgende Begriffe: 
+1.5.1 
+Tragwerksberechnung 
+Bestimmung der Schnittgrößen in einem Tragwerk, die mit der entsprechenden Kombination von Einwirkun-
+gen im Gleichgewicht stehen 
+1.5.2 
+Turm 
+freistehende, als Kragarm tragende Stahlgitterkonstruktion mit dreieckiger, quadratischer oder rechteckiger 
+Querschnittsform oder freistehender Mast mit kreisförmigem oder polygonalem Vollwandquerschnitt 
+1.5.3 
+abgespannter Mast 
+Stahlgitterkonstruktion mit dreieckiger, quadratischer oder rechteckiger Querschnittsform oder zylindrische 
+Stahlkonstruktion, die durch in verschiedenen Höhen angeordnete und am Boden oder einem anderen 
+Bauwerk verankerte Seile gehalten wird 
+1.5.4 
+Schaft 
+vertikales Stahltragwerk eines Mastes 
+1.5.5 
+Eckstiele 
+Gurtstäbe 
+Stahlbauteile, die die wesentlichen lastabtragenden Komponenten des Tragwerks darstellen 
+1.5.6 
+primäre Füllstäbe 
+außer den Eckstielen notwendige Bauteile zur Abtragung von Lasten 
+1.5.7 
+sekundäre Füllstäbe 
+Bauteile zur Verringerung der Knicklänge anderer Bauteile 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+12 
+1.5.8 
+Winkel mit einem Öffnungswinkel von 60° 
+modifizierte, gleichschenklige, warmgewalzte Winkelprofile mit ursprünglich 90°-Öffnungswinkel, bei denen 
+die Enden der Flansche um 15° gebogen sind, so dass sich zwischen den äußeren Flanschenden und der 
+Symmetrieachse ein Winkel vom 30° ergibt (siehe Bild 1.1) 
+1.5.9 
+Windwiderstand 
+Widerstand, den ein Bauteil eines Turmes oder abgespannten Mastes mit Anbauteilen der Windströmung 
+entgegensetzt; der Widerstand wird aus dem Produkt des aerodynamischen Kraftbeiwertes und der 
+Projektionsfläche, gegebenenfalls unter Berücksichtigung von Eisansatz, berechnet 
+1.5.10 
+langgestreckte Außenanbauten 
+nicht zur Tragkonstruktion gehörenden Anbauteile, die sich über mehrere Module erstrecken, z. B. Wellen-
+leitern, Leitungen, Steigleitern, Rohre 
+1.5.11 
+einzelne Außenanbauten 
+nicht zur Tragkonstruktion gehörenden Anbauteile, die auf wenige Module konzentriert sind, z. B. Parabol-
+reflektoren, Antennen, Beleuchtungsmittel, Plattformen, Geländer, Isolatoren usw. 
+1.5.12 
+Projektionsfläche 
+angenommene Schattenfläche des betrachteten Bauteils, die sich durch Parallelprojektion auf die Ansichts-
+fläche des Tragwerks in Windrichtung ergibt, gegebenenfalls unter Berücksichtigung von Eislast; bei nicht auf 
+eine Ansichtsfläche senkrechter Windanströmung wird eine Bezugsansichtsfläche als Projektionsfläche 
+angesetzt (siehe Anhang B)
+1.5.13 
+Modul (eines Turmes oder Mastes) 
+Abschnitt eines Turmes oder abgespannten Mastes; dieser wird zur Ermittlung der Projektionsfläche und des 
+Windwiderstandes über die vertikale Erstreckung in Module unterteilt; Module werden in der Regel, jedoch 
+nicht notwendigerweise, zwischen den Stößen von Eckstielen und primären Füllstäben angenommen 
+1.5.14 
+Segment 
+Abschnitt 
+Abschnitt eines Turmes oder abgespannten Mastes, der mehrere Module umfasst, die annähernd oder exakt 
+baugleich sind und zur Ermittlung des Windwiderstandes herangezogen werden 
+1.5.15 
+Abspannseil 
+ein ausschließlich als Zugglied wirkendes Bauteil, das an beiden Enden verankert ist, um eine horizontale 
+Lagerung des Mastes in verschiedenen Höhen zu erreichen; das untere Ende des Abspannseiles ist am 
+Boden oder einem vorhandenen Bauwerk verankert und erlaubt üblicherweise das Vorspannen des Seiles 
+ANMERKUNG 1 Die Begriffe Pardune und Abspannseil sind im Allgemeinen austauschbar; in dieser Norm wird 
+ausschließlich der Begriff Abspannseil verwendet. 
+ANMERKUNG 2 Anhang D enthält besondere Definitionen zu Abspannseilen sowie Hinweise zu Montage und 
+Zubehörteilen. 
+1.5.16 
+Schwingungsdämpfer 
+Vorrichtung zur Erhöhung der Bauwerksdämpfung, wodurch die Bauwerksreaktion oder Seilreaktion begrenzt 
+wird 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+13 
+1.6 Formelzeichen 
+(1) In Ergänzung zu EN 1993-1-1 werden folgende Formelzeichen verwendet: 
+Lateinische Großbuchstaben 
+Db Durchmesser des Kreises durch die Lochachsen für die Schrauben; 
+Di Durchmesser des Eckstiels; 
+G Böenreaktionsfaktor; 
+M Biegemoment; 
+N Zugkraft, Lastspielzahl; 
+Ni Lastspielzahl; 
+Nb Normalkraft; 
+T Bemessungsnutzungsdauer des Tragwerks, gemessen in Jahren. 
+Lateinische Kleinbuchstaben 
+b Schenkellänge eines Winkelprofils; 
+ce (z) aerodynamischer Beiwert; 
+cscd Strukturfaktor; 
+e Exzentrizitäten; 
+h Schenkellänge eines Winkelprofils; 
+kp Faktor zur Berücksichtigung von Abstützkräften; 
+k Beulwert; 
+m Wöhlerlinienneigung; 
+n Schraubenanzahl; 
+r1 Radius des konvexen Auflagerteils; 
+r2 Radius des konkaven Auflagerteils; 
+t Dicke. 
+Griechische Großbuchstaben 
+ Neigung der Achse des Mastes am Mastfuß; 
+E Spannungsschwingbreite. 
+Griechische Kleinbuchstaben 
+A Beiwert zur Berücksichtigung der wirksamen Fläche; 
+M Teilsicherheitsbeiwert; 
+s logarithmisches Dekrement der Strukturdämpfung; 
+ Beiwert in Abhängigkeit von fy; 
+ Schlankheitsgrad; 
+p Beulschlankheitsgrad; 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+14 
+p,1 Beulschlankheitsgrad für Winkelschenkel Nr. 1; 
+p,2 Beulschlankheitsgrad für Winkelschenkel Nr. 2; 
+ Abminderungsbeiwert. 
+(2) Weitere Formelzeichen werden im Text definiert. 
+1.7 Definition der Bauteilachsen 
+(1) Es gilt die Definition der Bauteilachsen entsprechend Bild 1.1. 
+ANMERKUNG Hierdurch wird die durch unterschiedliche Definitionen für warmgewalzte und kaltgeformte Winkelprofile 
+hervorgerufene Verwechslungsgefahr vermieden. 
+(2) Für mehrteilige Bauteile gilt die Definition der Bauteilachsen nach EN 1993-1-1, Bild 6.9. 
+ANMERKUNG Bei ungleichschenkligen 
+Winkelprofilen bezeichnet h die größere Schenkellänge. 
+Bild 1.1  Abmessungen und Bauteilachsen 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+15 
+2 Grundlagen für die Tragwerksplanung 
+2.1 Anforderungen 
+2.1.1 Grundlegende Anforderungen 
+(1)P Für die Tragwerksplanung von Türmen und abgespannten Masten gelten die Grundlagen in EN 1990. 
+(2) In der Regel sind die Bestimmungen für Stahlbauten nach EN 1993-1-1 anzuwenden. 
+(3)P Zusätzlich sind abgespannte Masten mit hoher Sicherheitsklasse (siehe 2.1.2) bezüglich ihrer Stand-
+festigkeit für Ausfall eines Abspannseiles zu bemessen. 
+ANMERKUNG Der Nationale Anhang darf Hinweise zum Ausfall eines Abspannseiles geben. Die Anwendung der 
+Regelungen in Anhang E wird empfohlen. 
+2.1.2 Sicherheitsklassen 
+(1) Es dürfen verschiedene Sicherheitsklassen für Nachweise im Grenzzustand der Tragfähigkeit von 
+Türmen und Masten in Abhängigkeit der Versagensfolgen angenommen werden. 
+ANMERKUNG Anhang A gibt Hinweise zur Definition verschiedener Sicherheitsklassen. 
+2.2 Grundsätzliches zur Bemessung mit Grenzzuständen 
+(1) Siehe EN 1993-1-1, 2.2. 
+2.3 Einwirkungen und Umgebungseinflüsse 
+2.3.1 Windeinwirkungen 
+(1) Windeinwirkungen sind in der Regel EN 1991-1-4 zu entnehmen. 
+ANMERKUNG Der Nationale Anhang darf Hinweise zur Erweiterung von EN 1991-1-4 für Türme und Maste geben. Die 
+Anwendung der zusätzlichen Regelungen in Anhang B wird empfohlen. 
+2.3.2 Eislasten 
+(1) Eislasten sind in der Regel sowohl hinsichtlich des erhöhten Eigengewichts als bezüglich ihrer Auswir-
+kungen auf die Windeinwirkungen zu berücksichtigen. 
+ANMERKUNG Der Nationale Anhang darf Hinweise zu Eislasten, Eisdicken, Eisdichten und Eisverteilungen sowie 
+Lastfallkombinationen und Kombinationsbeiwerte für Wind- und Eiseinwirkungen auf Türme und Maste  geben. Es 
+wird die Anwendung von Anhang C empfohlen. 
+2.3.3 Temperatureinwirkungen 
+(1) Temperatureinwirkungen sind in der Regel entsprechend EN 1991-1-5 zu ermitteln. 
+2.3.4 Eigengewicht 
+(1) Das Eigengewicht ist in der Regel entsprechend EN 1991-1-1 zu ermitteln. 
+(2) Das Eigengewicht von Abspannseilen ist in der Regel entsprechend EN 1993-1-11 zu ermitteln. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+16 
+2.3.5 Vorspannung in Abspannseilen 
+(1) Die Vorspannung in Abspannseilen ist in der Regel als ständige Last anzunehmen, wenn keine klima-
+tischen Lasten einwirken, siehe EN 1993-1-11. 
+(2) In der Regel sind Nachstellmöglichkeiten für Abspannseile vorzusehen. Geschieht dies nicht, so ist in 
+der Regel bei der Bemessung die Spanne möglicher Vorspannkräfte in den Abspannseilen zu berück-
+sichtigen, siehe EN 1993-1-11. 
+2.3.6 Veränderliche Lasten 
+(1) Bauteile mit einer Neigung gegenüber der Horizontalen 
+ 30° sind in der Regel für eine Mannlast zu 
+bemessen; die Mannlast darf als vertikale Einzellast von 1 kN angenommen werden. 
+(2) In der Regel sind auf Plattformen und Geländern veränderliche Last zu berücksichtigen. 
+ANMERKUNG 1 Der Nationale Anhang darf Hinweise zu veränderlichen Lasten auf Plattformen und Geländern geben. 
+Es werden folgende charakteristische veränderliche Lasten empfohlen: 
+ veränderliche Lasten auf Plattformen: 2,0 kN/m 2; (2.1a) 
+ horizontale Lasten auf Geländer: 0,5 kN/m. (2.1b) 
+ANMERKUNG 2 Es darf angenommen werden, dass diese Lasten nicht gleichzeitig mit anderen klimatischen Lasten 
+wirken. 
+2.3.7 Andere Einwirkungen 
+(1) Zu außergewöhnlichen Einwirkungen und Anpralllasten siehe EN 1991-1-7. 
+ANMERKUNG Der Nationale Anhang kann Hinweise zur Auswahl außergewöhnlicher Einwirkungen geben. 
+(2) Einwirkungen während der Montage sind in der Regel unter Beachtung des Montageablaufs zu berück-
+sichtigen. Die entsprechenden Lastfallkombinationen und Abminderungsbeiwerte können EN 1991-1-6 
+entnommen werden. 
+ANMERKUNG Die begrenzte Dauer vorübergehender Bemessungssituationen darf berücksichtigt werden. 
+(3) Falls notwendig, sind ungleichmäßige Setzungen der Fundamente nachzuweisen. Dies gilt insbeson-
+dere für Gittermaste, bei denen die Eckstiele auf Einzelfundamenten stehen, sowie für abgespannte Maste, 
+bei denen ungleichmäßige Setzungen zwischen dem Mastschaftfundament und den Seilverankerungen 
+auftreten können. 
+(4) Einwirkungen aus der Halterung und Verankerung von Ausrüstungen zum Schutz gegen Absturz dürfen 
+mit Bezug auf EN 795 ermittelt werden. Erfordert der Schutz gegen Absturz die Verwendung von 
+Arbeitsbühnen-Systemen oder mobilen Auffangsystemen, sollten entsprechende Anschlagpunkte vorgesehen 
+werden, siehe EN 365. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+2.3.8 Lastverteilung 
+(1) Es sind sowohl Einflüsse aus über die Bauteillänge verteilten Lasten als auch Einflüsse aus 
+Belastungen, die sich infolge von Wind- und Eigenlasten auf an das betrachtete Bauteil angeschlossene 
+andere Bauteile ergeben, zu berücksichtigen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+17 
+2.4 Nachweise im Grenzzustand der Tragfähigkeit 
+(1) Zu Bemessungswerten von Einwirkung und Kombinationsbeiwerten siehe EN 1990. 
+ANMERKUNG Zu Teilsicherheitsbeiwerten im Grenzzustand der Tragfähigkeit siehe Anhang A. 
+(2) Die Teilsicherheitsbeiwerte für Eigenlasten und Vorspannung der Abspannseile sind in der Regel 
+entsprechend EN 1993-1-11 anzusetzen. 
+2.5 Versuchsgestützte Bemessung 
+(1) Die allgemeinen Anforderungen entsprechend EN 1990 sind in der Regel unter Beachtung der 
+besonderen Anforderungen in EN 1993-3-1, Abschnitt 8 zu erfüllen. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise zu Tragwerken oder Bauteilen geben, für die ein abge-
+stimmtes Versuchsprogramm mit Großproben durchgeführt wird, siehe 6.1. 
+2.6 Dauerhaftigkeit 
+(1) Dauerhaftigkeit wird in der Regel durch den Nachweis gegen Ermüdung (siehe Abschnitt 9) und 
+geeigneten Korrosionsschutz (siehe Abschnitt 4) gewährleistet. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise zur Bemessungsnutzungsdauer eines Tragwerkes geben. 
+Es wird eine Bemessungsnutzungsdauer von 30 Jahren vorgeschlagen. 
+3 Werkstoffe 
+3.1 Baustahl 
+(1) Zu Anforderungen und Eigenschaften von Baustahl siehe EN 1993-1-1 und EN 1993-1-3. 
+(2) Zu Zähigkeitsanforderungen siehe EN 1993-1-10. 
+3.2 Verbindungsmittel 
+(1) Zu Anforderungen und Eigenschaften von Schrauben und Schweißwerkstoffen siehe EN 1993-1-8. 
+3.3 Abspannseile und Anschlussstücke 
+(1) Zu Anforderungen und Eigenschaften von Seilen, Litzen, Drähten und Anschlussstücken siehe 
+EN 1993-1-11. 
+ANMERKUNG Siehe auch Anhang D. 
+4 Dauerhaftigkeit 
+4.1 Korrosionsschutz 
+(1) Abhängig von dem Standort, der Nutzungsdauer und der Bauwerksunterhaltung sind in der Regel 
+geeignete Korrosionsschutzmaßnahmen vorzusehen. 
+ANMERKUNG 1 Der Nationale Anhang darf weitere Hinweise geben. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+18 
+ANMERKUNG 2 Siehe auch: 
+ EN ISO 1461 zu Zinküberzügen, 
+ EN ISO 14713 zu Spritzverzinkung, 
+ EN ISO 12944 zu Beschichtungen. 
+4.2 Abspannseile 
+(1) Zu Korrosionsschutz von Abspannseilen siehe EN 1993-1-11. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. Die folgenden Maßnahmen werden empfohlen: 
+Abhängig von Korrosionsangriff sollten Seile aus verzinkten Stahldrähten einen zusätzlichen Korrosionsschutz erhalten, 
+z. B. Fett oder eine Beschichtung. Diese Schutzschicht soll verträglich mit dem bei der Herstellung des Seils verwendeten 
+Korrosionsschutz sein. 
+Als alternative Schutzmaßnahme können Stahlseile mit Durchmessern bis 20 mm mit einer Polypropylen-Imprägnierung 
+geschützt werden. Sie brauchen dann keine weitere Schutzmaßnahme, außer wenn der Überzug bei der Montage oder 
+Nutzung verletzt wird. Besondere Sorgfalt ist bei der Gestaltung der Seilendstücke hinsichtlich Korrosionsschutz 
+erforderlich. Seile mit Mantel, der nicht imprägniert ist, sollten wegen der Möglichkeit versteckter Korrosion nicht benutzt 
+werden. 
+Blitzschlag kann den Polypropylenüberzug lokal beschädigen. 
+5 Tragwerksberechnung 
+5.1 Berechnungsmodelle zur Bestimmung von Schnittgrößen 
+(1) Die Schnittgrößen sind in der Regel mit einer elastischen Tragwerksberechnung zu ermitteln. 
+(2) Zur elastischen Tragwerksberechnung siehe EN 1993-1-1. 
+(3) Bei der Tragwerksberechnung dürfen die Querschnittseigenschaften des Bruttoquerschnitts angesetzt 
+werden. 
+(4) 
+(5) Entstehen aus der Tragwerksverformung nicht mehr vernachlässigbare Einflüsse (z. B. für Türme mit 
+hohen Kopflasten), sind Verfahren der Theorie II. Ordnung anzuwenden, siehe EN 1993-1-1. 
+ANMERKUNG 1 Gittermaste dürfen zunächst ohne Verformungseinfluss (Theorie I. Ordnung) berechnet werden. 
+ANMERKUNG 2 Bei Masten und abgespannten Schornsteinen sollten die Verformungen beim Gleichgewicht berück-
+sichtigt werden (Theorie II. Ordnung). 
+ANMERKUNG 3 Zum Knicken der gesamten symmetrischen Mastkonstruktionen siehe B.4.3.2.6. 
+(6) Bei der Tragwerksberechnung des gesamten Mastes oder des abgespannten Schornsteins sollte das 
+nichtlineare Verhalten der Abspannseile berücksichtigt werden, siehe EN 1993-1-11. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+19 
+5.2 Berechnungsmodelle für Verbindungen 
+5.2.1 Grundlagen 
+(1) Das Verhalten der Verbindungen sollte bei der Tragwerksberechnung und den lokalen Nachweisen 
+berücksichtigt werden. 
+ANMERKUNG Berechnungsverfahren für Verbindungen sind in EN 1993-1-8 geregelt. 
+5.2.2 Tragwerke aus Dreieckselementen (Gelenkfachwerke) 
+(1) Bei Gelenkfachwerken darf angenommen werden, dass sich in den Anschlüssen der Bauteile keine 
+Biegemomente bilden. Das statische Modell darf deshalb von Gelenkverbindungen ausgehen. 
+(2) Die Verbindungen sollten die Bedingungen für gelenkige Anschlüsse erfüllen: 
+ entweder nach EN 1993-1-8, 5.2.2.2 oder 
+ nach EN 1993-1-8, 5.2.3.2. 
+5.2.3 Tragwerke ohne Fachwerkwirkung (Balkentragwerke) 
+(1) Bei Balkentragwerken sollte die elastische Berechnung von voller Kontinuität der Biegelinie ausgehen, 
+wenn die Verbindungen die Bedingung für starre Verbindungen nach EN 1993-1-8, 5.2.2.3 erfüllen. 
+5.2.4 Fachwerke mit Berücksichtigung der Balkenwirkung zur Vermeidung kinematischer Ketten 
+(1) Die elastische Tragwerksberechnung sollte von einer zuverlässigen Vorhersage des Momenten-
+Rotations-Verhaltens oder Kraft-Verschiebungs-Verhaltens der eingesetzten Verbindungen ausgehen. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+6 Grenzzustände der Tragfähigkeit 
+6.1 Allgemeines 
+(1) Es gelten für die verschiedenen Grenzzustände folgende Teilsicherheitsbeiwerte M: 
+ Plastizieren der Querschnitte: M0
+ Stabilitätsversagen der Bauteile: M1
+ Bruchversagen des Nettoquerschnitts (an Schraubenlöchern): M2
+ Bruch der Verbindung: siehe 6.4 
+ Beanspruchbarkeit der Seile und Seilköpfe: Mg, siehe EN 1993-1-11 
+ Beanspruchbarkeit der Isolatoren: Mi
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+20 
+ANMERKUNG 1 Der nationale Anhang darf Hinweise zu den Teilsicherheitsbeiwerte M geben. Die folgenden Zahlen-
+werte werden empfohlen; 
+M0 = 1,00 
+M1 = 1,00 
+M2 = 1,25 
+Mg = 2,00 
+Mi = 2,50 
+ANMERKUNG 2 Der Teilsicherheitsbeiwert Mg bezieht sich auf das Seil einschließlich Seilkopf (oder anderer 
+Endverankerung). Die zugehörigen Bolzen, Verbinder und Bleche sind passend zu den Seilen und Seilköpfen zu 
+bemessen und können einen höheren Teilsicherheitsbeiwert Mg erfordern, siehe EN 1993-1-11. 
+ANMERKUNG 3 Liegen die Ergebnisse von Großversuchen zu dem Bautyp oder einem ähnlichen Bautyp vor, kann je 
+nach Ergebnis der Teilsicherheitsbeiwert M reduziert sein. 
+6.2 Beanspruchbarkeit von Querschnitten 
+6.2.1 Klassifizierung der Querschnitte 
+(1) Bei Türmen und Masten gelten die Querschnittsklassen nach EN 1993-1-1, 5.5.2. 
+ANMERKUNG Die c/t-Verhältnisse von Winkelprofilen nach EN 1993-1-1, Tabelle 5.2 dürfen mit den Werten ( h-2t)/t
+anstelle von h/t gebildet werden. 
+6.2.2 Bauteile von Gittermasten und Gittertürmen 
+(1) Bei mit einem Schenkel angeschlossenen Winkelstäben gelten die Regelungen in EN 1993-1-8, 3.10.3 
+bei Schraubverbindungen oder EN 1993-1-8, 4.13 bei Schweißverbindungen. 
+6.2.3 Abspannseile und Zubehör 
+(1) Zu Abspannseilen und Zubehör siehe EN 1993-1-11 und Anhang D. 
+6.3 Beanspruchbarkeit von Bauteilen 
+6.3.1 Druckbeanspruchte Bauteile 
+(1) Druckbeanspruchte Bauteile in Gittermasten und -türmen sind in der Regel nach einer der beiden 
+folgenden Verfahren zu bemessen: 
+a) Verfahren in Anhang G und Anhang H; 
+b) Verfahren in EN 1993-1-1 unter Berücksichtigung der Exzentrizitäten. 
+ANMERKUNG 1 Das Verfahren in EN 1993-1-1, Anhang B, B.1.2 (2)B kann für die Stabilitätsnachweise von Bauteilen 
+in Gittermasten und -türmen konservativ sein. 
+ANMERKUNG 2 Der Nationale Anhang darf ein Verfahren festlegen. 
+(2) Der wirksame Querschnitt von Bauteilen sollte nach EN 1993-1-5, 4.3 berechnet werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+21 
+ANMERKUNG 1 Bei Winkelstäben darf der Abminderungsbeiwert mit dem Schlankheitsgrad p aufbauend auf der 
+vorhandenen Breite b des gedrückten Winkelschenkels wie folgt berechnet werden: 
+a) bei gleichschenkligen Winkeln: 
+k
+tth
+k
+tb
+4,28
+/2
+4,28
+/
+p
+b) bei ungleichschenkligen Winkeln: 
+k
+tth
+k
+tb
+4,28
+/2
+4,28
+/
+p,1 und 
+k
+ttb
+k
+tb
+4,28
+/2
+4,28
+/
+p,2
+ANMERKUNG 2 Bei mit nur einem Schenkel angeschlossenen Winkeln bezieht sich der Abminderungsbeiwert nur 
+auf den angeschlossenen Schenkel. 
+ANMERKUNG 3 Zu k siehe EN 1993-1-5. Für einen Winkelschenkel unter Druck gilt k = 0,43. 
+(3) Drillknicken und Biegedrillknicken sollten wie folgt ebenfalls nachgewiesen werden: 
+a) Drillknicken von gleichschenkligen Winkel wird durch den Beulnachweis nach (2) erfasst; 
+(4) Zu kaltgeformten dünnwandigen Bauteile, siehe EN 1993-1-3. 
+6.4 Verbindungen 
+6.4.1 Allgemeines 
+(1) Zu Verbindungen siehe EN 1993-1-8. 
+ANMERKUNG Die Teilsicherheitsbeiwerte für Verbindungen in Türmen und Masten dürfen im Nationalen Anhang 
+angegeben sein. Die Zahlenwerte in EN 1993-1-8, Tabelle 2.1 werden empfohlen. 
+(2) Alle Schrauben sind in der Regel gegen Lockern zu sichern. 
+6.4.2 Zugbeanspruchte Schrauben in Kopfplattenverbindungen (Flanschverbindungen) 
+(1) Können bei Flanschverbindungen Zugkräfte auftreten, sollten die Schrauben vorgespannt sein. 
+(2) Der kleinste zulässige Schraubendurchmesser ist in der Regel 12 mm. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+22 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise zu geschraubten Flanschverbindungen von Rund-
+hohlprofilen oder zylindrischen Schalen geben. gestrichener Text
+Bei der Bestimmung der Flanschdicke ist Folgendes zu beachten: 
+a) die Scherbeanspruchbarkeit der Verbindung des Flansches mit dem Hohlprofil; 
+b) die Beanspruchbarkeit des Flansches in dem Kreis, der durch die Schraubenlöcher geht, im Hinblick auf Biegung und 
+Schub. Das Biegemoment (M) darf mit 
+M = N (Db Di)/2 
+angesetzt werden. 
+Dabei ist 
+N die Zugkraft im Hohlprofilstab; 
+Db der Durchmesser des Kreises durch die Schraubenlöcher; 
+Di der Durchmesser des Hohlprofils. 
+Nachweis für Biegung 
+und Schub 
+Nachweis für Schub 
+Bild 6.1  Geschraubte Flanschverbindung 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+23 
+Die Zugkraft Nb in einer Schraube ist 
+n
+Nk
+N p
+b
+Dabei ist 
+n die Anzahl der Schrauben; 
+kp der Faktor zu Berücksichtigung von Abstützkräften, anzusetzen mit 
+kp = 1,2 bei vorgespannten Schrauben; 
+kp = 1,8 bei nicht vorgespannten Schrauben. 
+Alle Schrauben sollten gegen Ermüdung vorgespannt sein, siehe EN 1993-1-8. 
+6.4.3 Ankerschrauben 
+(1) Bei Ermüdungsbelastung sind die Ankerschrauben in der Regel vorzuspannen; in diesem Fall gelten 
+die Werkstoffanforderungen in EN 1993-1-8. 
+6.4.4 Schweißverbindungen 
+(1) Siehe EN 1993-1-8. 
+ANMERKUNG Zur Ausführung siehe EN 1090. 
+6.5 Sonderverbindungen für Maste 
+6.5.1 Anschluss des Mastfußes 
+(1) Die Bestimmung der Lagerpressung in dem Kugelgelenk sollte entsprechend den Berechnungs-
+vorschriften für Kalottenlager in EN 1337-6 erfolgen. 
+ANMERKUNG Der Nationale Anhang kann Hinweise zu Exzentrizitäten und Grenzwerte der Hertz'schen Pressung 
+geben. 
+Für den Nachweis, dass sich die Druckzone bei dem erwarteten Verdrehwinkel am Mastfuß (siehe Bild 6.2) in den 
+Grenzen der Auflagerfläche befindet, und um die Biegemomente aus den Exzentrizitäten für die Bemessung des Lagers 
+und des Querschnitts des Mastfußes zu ermitteln, wird die folgende Vorgehensweise empfohlen: 
+Bei Kugellagern sollte angenommen werden, dass sich der Kontaktpunkt in Richtung der möglichen Neigung der 
+Mastachse durch Rollen über die Lageroberfläche bewegt. 
+Die Exzentrizitäten eu und eo (siehe Bild 6.2) sind dann: 
+eu = r1 sin 1 (6.1a) 
+eo = r2 (sin 1  sin ) (6.1b) 
+Dabei ist 
+r1 der Radius des konvexen Lagerteils; 
+r2 der Radius des konkaven Lagerteils; 
+r2 > r1
+ der Drehwinkel der Mastachse am Fuß; 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+24 
+mit 
+12
+21 rr
+r (6.2a) 
+2 = 1  (6.2b) 
+Bei ebener Fläche (r2 = ) gilt eo = r1 cos . 
+Legende 
+1 Mastachse 
+2 Druckfläche 
+Bild 6.2  Exzentrizität infolge Mastdrehung am Fuß 
+(2) Vorrichtungen zur Verhinderung der Verdrehung des Mastes am Mastfuß um seine Mastachse sollten 
+so konstruiert sein, dass Verdrehungen um die horizontale Achse nicht behindert werden. 
+(3) Bei eingespanntem Mastfuß sind in der Regel die möglichen Setzungen des Mastfundamentes und der 
+Fundamente der Seilverankerungen bei der Berechnung zu berücksichtigen. 
+6.5.2 Anschlüsse der Abspannseile 
+(1) Die Anschlüsse der Abspannseile an den Mast und die Seilfundamente sollten Verdrehungen der 
+Seilenden in vertikaler und horizontaler Richtung erlauben, siehe EN 1993-1-11. 
+Bei der Bemessung und konstruktiven Durchbildung ist in der Regel zu berücksichtigen, dass die Seile sich 
+bei Zugbelastung um die Längsachse verdrehen können. 
+ANMERKUNG Bei Bolzenverbindungen kann die Verdrehfreiheit durch eine kugelförmige Ausbildung der Löcher in 
+dem Anschlussblech erreicht werden. In Ausnahmefällen können auch Kugellager angewendet werden. 
+(2) Alle Bolzen sind in der Regel gegen Herausfallen zu sichern, z. B. durch Muttern mit Splint. 
+(3) Sowohl das Anschlussblech am Mast als auch am Fundament ist in der Regel für die seitlichen Kräfte 
+zu dimensionieren, die durch Wind senkrecht zur Seilebene entstehen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+25 
+(4) Schweißverbindungen sollten für Sichtprüfungen und zerstörungsfreie Prüfungen zugänglich sein. 
+7 Grenzzustände der Gebrauchstauglichkeit 
+7.1 Grundlagen 
+(1) Die folgenden Grenzzustände der Gebrauchstauglichkeit können maßgebend sein: 
+ Auslenkungen und Verdrehungen, die die Nutzung einschränken, z. B. die Funktion von Antennen oder 
+anderen Einrichtungen; 
+ Schwingungen, Bewegungen oder Schiefstellungen, die die Signalübertragung stören; 
+ Verformungen, Auslenkungen, Schwingungen oder Schiefstellungen, die Schäden an nicht tragenden 
+Bauteilen verursachen. 
+ANMERKUNG Der Nationale Anhang darf hinweise zu Begrenzungen und zugehörigen M-Werten geben. Der Wert 
+M = 1,0 wird empfohlen. 
+7.2 Auslenkungen und Verdrehungen 
+7.2.1 Anforderungen 
+(1) Die maximalen Auslenkungen und Verdrehungen sind in der Regel für die charakteristische Last-
+kombination auf das Tragwerk und die Anbauten zu bestimmen. 
+(2) Die Auslenkungen und Verdrehungen von Masten und abgespannten Schornsteinen sollten, soweit 
+notwendig, nach Theorie II. Ordnung (siehe EN 1993-1-1) und unter Berücksichtigung dynamischer 
+Wirkungen berechnet werden. 
+7.2.2 Festlegung von Grenzwerten 
+(1) Die Grenzwerte sollten zusammen mit dem Lastfall für den Nachweis festgelegt werden. 
+ANMERKUNG Bei abgespannten Masten siehe Anhang B. 
+(2) Bei Funk- und Flutlichtmasten sollten die Grenzwerte für die horizontale Auslenkung und Verdrehung 
+der Mastspitze beachtet werden. Bei Richtantennen beziehen sich die Anforderungen auf den Anschlusspunkt 
+der Richtantenne. 
+7.3 Schwingungen 
+(1) Türme und Maste sollten zu folgenden Schwingungen untersucht werden: 
+ böenerregte Schwingungen (die Schwingungen in Windrichtung erzeugen); 
+ wirbelerregte Schwingungen bei Türmen und Masten mit prismatischen, zylindrischen oder anderen 
+Anbauten oder mit Umhüllungen (die Schwingungen quer zur Windrichtung erzeugen); 
+ Galloping-Schwingungen (der Abspannseile); 
+ Regen-Wind-induzierte Schwingungen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+26 
+ANMERKUNG 1 Zu dynamischen Effekten siehe Anhang B, sowie EN 1991-1-4 und EN 1993-3-2, Anhang B. 
+ANMERKUNG 2 Schwingungen können schnell zu Ermüdungsschäden führen, siehe Abschnitt 9. 
+(2) Wenn bei Gittermasten und -türmen und abgespannten Schornsteinen die Gefahr von Windschwin-
+gungen vorhergesagt wird und nicht von vornherein schwingungsreduzierende Maßnahmen im Entwurf 
+getroffen werden, sollte Vorsorge für den möglichen späteren Einbau von Dämpfungsmaßnahmen getroffen 
+werden. 
+ANMERKUNG Siehe EN 1993-3-2, Anhang B. 
+8 Versuchsgestützte Bemessung 
+(1) Die Regelungen für die versuchsgestützte Bemessung in EN 1990 sind in der Regel zu beachten. 
+(2) Wenn die Werte für das logarithmische Dekrement der Dämpfung s in EN 1991-1-4 für die Anwendung 
+auf Gittertürme und Maste, die aus zylindrischen Elementen bestehen oder solche Elemente tragen, 
+ungeeignet erscheinen, können Versuche durchgeführt werden, um diese Werte zu bestimmen. 
+ANMERKUNG EN 1993-3-2, Anhang D enthält Hinweise zur Bestimmung von s. 
+(3) Insbesondere bei abgespannten Masten können höhere Schwingungsmoden als die Grundschwingung 
+maßgebend sein, so dass bei der Bestimmung des logarithmischen Dekrements der Dämpfung darauf zu 
+achten ist. 
+(4) Es ist in der Regel darauf zu achten, dass die Schwingfrequenzen von den Belastungsbedingungen 
+abhängig sind, z. B. bei ruhigem Wetter, bei Wind oder unter Eisbelastung. 
+9 Ermüdung 
+9.1 Allgemeines 
+(1) Für die Ermüdungsnachweise gelten die Regeln in EN 1993-1-9. 
+(2) Die Wirkung möglicher sekundärer Biegemomente auf die Ermüdungsbeanspruchung, die gegebenen-
+falls bei den Tragfähigkeitsnachweisen nicht berücksichtigt wurden, ist in der Regel zu beachten. 
+9.2 Ermüdungsbelastung 
+9.2.1 Schwingungen in Windrichtung 
+(1) Eine Ermüdungsbelastung infolge von böenerregten Schwingungen in Windrichtung (ohne 
+wirbelerregte Querschwingungen) braucht bei Gittermasten nicht ermittelt zu werden. 
+ANMERKUNG Vorausgesetzt, dass die Kerbfalldetails höher als 71 N/mm 2 eingestuft sind, darf bei abgespannten 
+Masten die Nutzungsdauer dieser Konstruktionen, die böenerregten Schwingungen in Windrichtung (ohne wirbelerregte 
+Querschwingungen) ausgesetzt sind, mit 50 Jahren oder größer angenommen werden.
+(2) In allen anderen Fällen sollten Ermüdungsnachweise für die gewählten Konstruktionsdetails geführt 
+werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+27 
+ANMERKUNG Zu Ermüdungsnachweisen für Schwingungen in Windrichtung siehe EN 1991-1-4. Die folgende verein-
+fachte Vorgehensweise darf angewendet werden: 
+a) Der Spannungs-Zeit-Verlauf infolge von Windböen wird ermittelt, indem die jährliche Einwirkungsdauer verschie-
+dener mittlerer Windgeschwindigkeiten aus unterschiedlichen Richtungen aus meteorologischen Aufzeichnungen für 
+den Bauwerksstandort bestimmt wird. Die Spannungsschwankungen um die Mittelwerte dürfen dann als 
+normalverteilt mit einer Standardabweichung angenommen werden, die dem G/4-fachen der Spannung infolge der 
+mittleren Windgeschwindigkeit entspricht. Der Böenreaktionsfaktor G ist wie folgt definiert: 
+G = ce(z) cscd 1 
+Dabei ist 
+ce(z) der aerodynamische Beiwert, siehe EN 1991-4; 
+cscd der Strukturbeiwert, siehe EN 1991-4. 
+Siehe auch Anhang B. 
+b) Die Spannungsschwingbreite Si darf als der 1,1-fache Wert der Differenz zwischen der Spitzenspannung (mit 
+Böenreaktionsfaktor) und der mittleren Spannung (aufgrund des 10-min-Mittels der Windgeschwindigkeit) angesetzt 
+werden. Die schadensäquivalente Anzahl Ni der Schwingspiele wird mit: 
+Ni = 105 T/50 (9.1) 
+angenommen. 
+Dabei ist 
+T der Bemessungswert der Nutzungsdauer in Jahren. 
+9.2.2 Wirbelerregte Querschwingungen 
+(1) Die Ermüdungsbelastung von Türmen und abgespannten Masten, die aus tragenden oder nicht tragen-
+den zylindrischen oder ähnlichen Elementen bestehen, wird aus der Maximalamplitude der maßgebenden 
+Schwingform und der Anzahl der Schwingspiele ermittelt. 
+ANMERKUNG Zu Ermüdungsbelastungen siehe EN 1991-1-4, Anhang E. 
+9.2.3 Dynamische Antwort einzelner Bauteile 
+(1) Schlanke einzelne Bauteile der Tragwerks müssen in der Regel im Hinblick auf Querwindschwingungen 
+nachgewiesen werden. 
+ANMERKUNG Zu Ermüdungseinwirkungen siehe EN 1991-1-4, Anhang E. Die Begrenzungen der Schlankheit nach 
+H.2(1) und H.3.1(3) reichen im Allgemeinen aus, um solche Schwingungserregungen zu vermeiden. Die Erhöhung der 
+Dämpfung (durch Reibung oder zusätzliche Dämpfer) ist eine Möglichkeit, solche Schwingungen zu unterdrücken, wenn 
+sie unter Betrieb auftreten. 
+9.3 Ermüdungsfestigkeit 
+(1) In der Regel ist für typische Details von Türmen, Schornsteinen und Masten auf die Ermüdungsfestig-
+keiten in EN 1993-1-9 Bezug zu nehmen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+28 
+9.4 Nachweis 
+(1) Der Ermüdungsnachweis ist in der Regel nach EN 1993-1-9, 8(2) wie folgt zu führen: 
+E2 = E (9.2) 
+Dabei ist 
+ der Schadenäquivalenzbeiwert, um E auf Nc = 2 106 Schwingspiele umzurechnen; 
+E die Spannungsschwingbreite zugehörig zu N Schwingspielen (siehe 9.2), gegebenenfalls unter Be-
+rücksichtigung von Spannungskonzentrationsfaktoren. 
+(2) Der Schadenäquivalenzfaktor darf wie folgt ermittelt werden: 
+mN
+1
+6102
+ (9.3) 
+Dabei ist m die Neigung der Wöhlerlinie. 
+9.5 Teilsicherheitsbeiwerte für den Ermüdungsnachweis 
+(1) Die Teilsicherheitsbeiwerte für den Ermüdungsnachweis sind in der Regel nach EN 1993-1-9, 3(6), 
+3.6(7) und 6.2(1) zu wählen. 
+ANMERKUNG Der Nationale Anhang darf Zahlenwerte für Ff und Mf vorgeben. Es wird der Wert Ff = 1,00 empfohlen. 
+Zu den Mf-Werten siehe EN 1993-1-9, Tabelle 3.1. 
+9.6 Ermüdung von Abspannseilen 
+(1) Die Ermüdungsnachweise für Abspannseile sollten nach EN 1993-1-11 durchgeführt werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+29 
+Anhang A
+(normativ)
+Zuverlässigkeitsdifferenzierung und Teilsicherheitsbeiwerte 
+für Einwirkungen 
+ANMERKUNG Da dieser Anhang sich mit Zuverlässigkeitsdifferenzierung und Teilsicherheitsbeiwerten für Einwir-
+kungen auf Türme und Maste befasst, wird erwartet, dass er in EN 1990, Anhang A überführt wird. 
+A.1 Zuverlässigkeitsdifferenzierung für Türme und Maste 
+(1) Zuverlässigkeitsdifferenzierungen können bei Türmen und Masten durch die Anwendung von Zuverläs-
+sigkeitsklassen erfolgen. 
+ANMERKUNG Der Nationale Anhang darf Zuverlässigkeitsklassen angeben, in denen die Folgen des Tragwerks-
+versagens berücksichtigt werden. Die Klassen in Tabelle A.1 werden empfohlen. 
+Tabelle A.1  Zuverlässigkeitsdifferenzierungen für Türme und Maste 
+Zuverlässigkeitsklasse 
+3 
+Türme und Maste, die an städtischen Standorten errichtet werden oder dort, wo ihr 
+Versagen zu Verletzten oder Toten führen kann; Türme und Maste für wichtige zentrale 
+Telekommunikationsanlagen; andere bedeutende Bauwerke, bei denen die 
+Versagensfolgen sehr hoch sein können. 
+2 Alle Türme und Maste, die nicht zu Klasse 1 oder 3 gehören. 
+1 Türme und Maste, die auf unbewohntem offenen Gelände stehen; Türme und Maste, durch 
+deren Versagen wahrscheinlich keine Verletzungen entstehen. 
+A.2 Teilsicherheitsbeiwerte für Einwirkungen 
+(1)P Die Teilsicherheitsbeiwerte für die Einwirkungen hängen von der Zuverlässigkeitsklasse des Turms 
+oder Mastes ab. 
+ANMERKUNG 1 Bei der Wahl der Teilsicherheitsbeiwerte für ständige Lasten G und für Verkehrslasten Q kann der 
+dominierende Einfluss der Windeinwirkung in der Bemessung berücksichtigt werden. 
+ANMERKUNG 2 Der Nationale Anhang kann Zahlenwerte für G und Q angeben. Für die in Tabelle A.1 empfohlenen 
+Zuverlässigkeitsklassen werden die Werte in Tabelle A.2 für G und Q empfohlen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+30 
+Tabelle A.2  Teilsicherheitsbeiwerte für ständige Lasten und Verkehrslasten 
+Wirkung der Einwirkung 
+Zuverlässigkeitsklasse, 
+siehe 
+Anmerkung zu 2.1.2 
+Ständige Lasten Verkehrslasten (Qs)
+3 1,2 1,6 
+2 1,1 1,4 ungünstig 
+1 1,0 1,2 
+günstig alle Zuverlässig-
+keitsklassen 1,0 0,0 
+Außergewöhnliche Situationen 1,0 1,0 
+ANMERKUNG 3 Der Nationale Anhang darf Hinweise zur Verwendung von dynamischen Berechnungsmethoden für 
+Windlasten angeben, siehe Anhang B. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+31 
+Anhang B
+(informativ) 
+Berechnungsannahmen für Windeinwirkungen 
+ANMERKUNG Da sich dieser Anhang mit ergänzenden Regeln zu Windeinwirkungen auf Gittermaste, abgespannte 
+Maste und abgespannte Schornsteine sowie mit deren dynamischer Antwort befasst, wird erwartet, dass dieser später in 
+die EN 1991-1-4 überführt wird. 
+B.1 Allgemeines 
+B.1.1 Anwendungsbereich dieses Anhangs 
+(1) Dieser Anhang enthält ergänzende Angaben zu Windeinwirkungen auf Türme und abgespannte Maste 
+in folgenden Punkten: 
+ Windkräfte, siehe B.2; 
+ Tragwerksreaktion von Gittermasten, siehe B.3; 
+ Tragwerksreaktion von abgespannten Masten, siehe B.4. 
+ANMERKUNG Dieser Anhang nimmt für Eislasten auf ISO 12494 Bezug. Der Nationale Anhang darf weitere Hinweise 
+bereitstellen. 
+B.1.2 Formelzeichen 
+(1) Ergänzend zu den in EN 1993-1-1 und EN 1991-1-4 angegebenen werden die folgenden wichtigsten 
+Formelzeichen in diesem Anhang verwendet: 
+i Anordnung der feldweisen Belastung; 
+K Beiwert; 
+L projizierte Länge, Sehnenlänge; 
+N Anzahl; 
+Q Parameter; 
+S Schnittgröße in einem Bauteil (z. B. Längskraft, Querkraft oder Biegemoment); 
+T Torsionsmoment; 
+ Neigung eines Abspannseils gegen die Horizontale; 
+ Parameter; 
+ Abschattungsfaktor; 
+ Winkel des Windeinfalls, bezogen auf die Flächennormale; Neigung; 
+ Konstante; 
+ Winkel des Windeinfalls, bezogen auf die Längsachse; 
+ Abstandsverhältnis; 
+ks Skalierungsfaktor.
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+32 
+(2) Ergänzend zu den in EN 1993-1-1 angegebenen werden die folgenden Indizes in diesem Anhang 
+verwendet: 
+A Element der Außenanbauten; 
+C Kragarm; 
+c Bauteil mit kreisförmigem Querschnitt; 
+e effektiv; 
+F Außenfläche; 
+f kantige Bauteile; 
+G Abspannseil; 
+H Masthöhe; 
+L Länge; 
+M ausschließlich bezogen auf den Mast; 
+m Mast; gemittelt; 
+n Einzelfachwerk; 
+PL feldweise Belastung; 
+p Belastungsfeld; 
+q Schub; 
+S Bauwerk; 
+sup überkritisch; 
+T Turm, total; 
+W in Windrichtung; 
+w mit Wind; 
+x quer zur Windrichtung; 
+Z in vertikaler Richtung; 
+z Höhe z über Grund; 
+ Winkel des Windeinfalls. 
+B.2 Windkraft 
+B.2.1 Allgemeines 
+B.2.1.1 Silhouetten 
+(1) Für die Berechnung der Windkräfte sollte das Tragwerk in eine Reihe von Abschnitten mit mehreren 
+identischen oder nahezu identischen Modulen aufgeteilt werden, siehe Bild B.2.1. Die Angriffsfläche für die 
+Winddrücke sollten die Projektionsflächen senkrecht zur Windrichtung unter Außerachtlassung von Flächen 
+parallel zur Windrichtung und im Windschatten (z. B. bei Verbänden) umfassen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+33 
+(2) Die Anzahl der Abschnitte sollte ausreichend sein, um die Windbelastung für die Berechnung des 
+Gesamtsystems korrekt abzubilden. 
+(3) Die auf einen Abschnitt oder ein Bauteil wirkende Windkraft ist nach EN 1991-1-4, 5.3(2) zu bestimmen. 
+(4) Bei der Berechnung der Windkraft mit Eisansatz sind um die Eisschicht vergrößerte Projektionsflächen 
+der tragenden Bauteile und der Außenanbauten anzusetzen. 
+(5) Bei Anwendung der in diesem Anhang angegebenen Berechnungsmethode ist die maximale Windkraft 
+innerhalb eines Winkels 30° zur nominellen Windrichtung anzusetzen, um die maximale Windlast in 
+Windrichtung zu bestimmen. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise zu Windkanalversuchen geben. 
+B.2.1.2 Verfahren 
+(1) Das in B.2.1.3 angegebenem Verfahren dient der Bestimmung der Windkräfte auf quadratische oder 
+gleichseitige dreieckförmige Gittermaste. 
+ANMERKUNG 1 Das in B.2.7 angegebene Verfahren ist nur anwendbar: 
+a) auf Tragwerke mit rechteckigem Querschnitt oder 
+b) für den Nachweis bestehender Bauwerke, bei denen die Anordnung von Anbauten und Antennen genau bekannt ist. 
+ANMERKUNG 2 Das in B.2.7 angegebene Verfahren kann zu geringeren Windkräften führen als das Verfahren in 
+B.2.1.3, wenn KA in B.2.3 und B.2.4 als 1,0 angenommen wird. 
+B.2.1.3 Gesamter Windkraftbeiwert 
+(1) Der gesamte Windkraftbeiwert  fc  in Windrichtung eines Bauwerksegmentes ist wie folgt 
+anzusetzen: 
+ = cf,S cf,A (B.1) fc
+Dabei ist 
+cf,S der Windkraftbeiwert ohne Anbauten, ermittelt nach B.2.2 unter Verwendung des Völligkeitsgrades 
+ für das Bauwerk ohne Anbauten; 
+cf,A der Windkraftbeiwert für die Außenanbauten, ermittelt nach B.2.3 und B.2.4. 
+(2) Wenn die Projektionsflächen der Außenanbauten nicht mehr als 10 % der Bauteilprojektionsflächen 
+ausmachen, dann können sie der Projektionsfläche der tragende Bauteile zugeschlagen werden und die 
+gesamte Windkraft nach B.2.2 bestimmt werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 36 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+34 
+ANMERKUNG Die Ansichtsfläche 1 gilt als 
+Windangriffsfläche für 45° 45° 
+ANMERKUNG Die Ansichtsfläche 1 gilt als 
+Windangriffsfläche für 60° 60°. Eine externe Leiter 
+sollte als individuelles Objekt behandelt werden. 
+a) Gittermast mit quadratischem Querschnitt b) Gittermast mit dreieckigem Querschnitt 
+c) Mastabschnitt d) Einzelnes Modul 
+Legende 
+1 Ansichtsfläche 1 
+2 Ansichtsfläche 2 
+3 Ansichtsfläche 3 
+4 Ansichtsfläche 4 
+5 Wind 
+6 Außenanbauten (Projektion senkrecht zur Ansichtsfläche 1) 
+7 Eckstiel (Projektion senkrecht zur Ansichtsfläche) 
+8 Der Ansichtsfläche 2 zugeordnete Außenanbauten 
+9 Außenanbauten inklusive Sprossenleitern, Schützbügel usw. (Projektion senkrecht zur Ansichtsfläche) 
+10 Eckstiel (Projektion senkrecht zur Ansichtsfläche) 
+11 Der Ansichtsfläche 2 zugeordnete Außenanbauten 
+12 Mastabschnitt 
+13 Außenanbauten in der Projektionsfläche A
+A
+14 Tragende Bauteile in der Projektionsfläche AS
+15 Höhe des Moduls ( h)
+Bild B.2.1  Für die Ermittlung des Völligkeitsgrades anzusetzende Projektionsfläche eines Moduls 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 37 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+35 
+B.2.2 Windkraftbeiwerte für Bauteile 
+B.2.2.1 Allgemeines 
+(1) Für Gittermaste mit quadratischem oder gleichseitigem, dreieckigem Querschnitt, die gleiche Ansichts-
+flächen auf jeder Seite besitzen, ist der Gesamtwindkraftbeiwert cf,S der tragenden Bauteile eines 
+Abschnitts in Windrichtung folgendermaßen anzusetzen: 
+
+A
+AcKc S
+0S,f,Sf,  (B.2) 
+Dabei ist 
+cf,S,0 der Gesamtwindkraftbeiwert für den Abschnitt j ohne Berücksichtigung von Endeffekten nach 
+B.2.2.2; 
+K der Windrichtungsbeiwert; 
+ AS die Gesamtfläche als Projektion senkrecht zur Fläche der tragenden Bauteile, einschließlich jener 
+Außenanbauten, die als tragende Bauteile behandelt werden, der betrachten Fläche innerhalb 
+der Höhe eines Abschnitts auf dem betreffenden Niveau (siehe Bild B.2.1), einschließlich 
+Vereisung, sofern zutreffend; 
+A A ref nach EN 1991-1-4, 5.3(2); es kann jeder angenommene Wert angesetzt werden (zum 
+Beispiel Eins), solange Aref als derselbe Wert angesetzt wird.
+(2) Der Windrichtungsbeiwert K darf folgendermaßen angesetzt werden: 
+K = 1,0 K1 K2 sin2 2 für quadratische Gittermaste (B.3a) 
+5,1sin1,01 2
+S
+f
+S
+supc,c
+A
+A
+A
+AA
+K für dreieckige Gittermaste (B.3b) 
+Dabei ist 
+S
+supc,c
+S
+f
+1
+8,055,0
+A
+AA
+A
+AK (B.3c) 
+K2 = 0,2 für 0 0,2 und 0,8 1,0 (B.3d) 
+= für 0,2 < 0,5 (B.3e) 
+= 1 für 0,5 < < 0,8 (B.3f) 
+ Winkel des Windeinfalls (im Grundriss) senkrecht zur Ansichtsfläche 1; 
+ Völligkeitsgrad, siehe EN 1991-1-4, 7.11(2); 
+Af gesamte Projektionsfläche von kantigen Bauteilen in der Ansichtfläche senkrecht auf die 
+Ansichtsfläche; 
+Ac gesamte Projektionsfläche senkrecht auf die Ansichtsfläche von Bauteilen mit kreisförmigem 
+Querschnitt in der Ansichtsfläche, die einer unterkritischen Umströmung ausgesetzt sind; 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 38 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+36 
+Ac,sup gesamte Projektionsfläche senkrecht auf die Ansichtfläche von Bauteilen mit kreisförmigem Quer-
+schnitt in der Ansichtsfläche, die einer überkritischen Umströmung ausgesetzt sind; 
+h Höhe des betrachteten Abschnitts; 
+b gesamte Abschnittsbreite wie in Bild B.2.1. 
+ANMERKUNG AS = Af Ac Ac,sup
+(3) Für übliche -Werte dürfen die K -Werte Bild B.2.2 entnommen werden. 
+(4) Für Bauteile mit kreisförmigem Querschnitt darf unterkritische Umströmung angenommen werden, 
+wenn die Reynoldszahl bei Re 4 105 liegt; bei größeren Werten von Re darf überkritische Umströmung 
+angenommen werden, sofern kein Eisansatz vorliegt. 
+(5) Der Wert für Re sollte mit EN 1991-1-4, 7.9.1(1) bestimmt werden. 
+(6) Wird für einzelne oder alle Bauteile angenommen, dass die Reynoldszahl im überkritischen Bereich 
+liegt, ist nachzuweisen, dass bei geringer Windgeschwindigkeit, bei der Re < 4 105 ist, keine größeren 
+Lasten auftreten. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 39 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+37 
+S
+f
+A
+A
+Legende 
+1 Wind 
+2 Quadratische Gittermaste, Wind in der Diagonalen ( = 45°) 
+3 Quadratische und dreieckige Gittermaste mit Wind auf eine Ansichtsfläche 
+4 Dreieckige Gittermaste mit Wind parallel zu einer Ansichtsfläche 
+5 Dreieckige Gittermaste mit Wind auf eine Ecke ( = 180°) 
+Zu Formelzeichen siehe B.2.2.1 
+Bild B.2.2  Windrichtungsbeiwert K
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 40 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+38 
+B.2.2.2 Gesamtkraftbeiwerte 
+(1) Werte für Gesamtkraftbeiwerte cf,S,0, die für Gittermaste mit quadratischem oder gleichseitigem Drei-
+eckquerschnitt, zusammengesetzt aus Bauteilen mit kantigen und kreisförmigen Profilen, gelten, sind 
+folgendermaßen anzusetzen: 
+S
+supc,
+supc,f,0,
+S
+c
+cf,0,
+S
+f
+ff,0,jS,0,f, A
+A
+cA
+AcA
+Acc (B.4) 
+Dabei ist 
+cf,0,f, cf,0,c und cf,0,c,sup die Kraftbeiwerte für Abschnitte, die aus Bauteilen mit kantigen, unterkritischen 
+kreisförmigen bzw. überkritischen kreisförmigen Profilen zusammengesetzt sind, 
+gemäß: 
+cf,0,f = 1,76 C1 [1 C2 2] (B.5a) 
+cf,0,c = C1 (1 C2 ) (C1 0,875) 2 (B.5b) 
+1supc,f,0, 14,18,211,9 Cc (B.5c) 
+mit: 
+C1 = 2,25 für quadratische Gittermaste 
+ 1,9 für dreieckige Gittermaste 
+C2 = 1,5 für quadratische Gittermaste 
+ 1,4 für dreieckige Gittermaste 
+wobei: 
+, AS, Af, Ac, Ac,sup in B.2.2.1 angegeben sind. 
+(2) Bei Windkraftberechnungen darf für kreisförmige Bauteile im überkritischen Zustand konservativ ein 
+unterkritischer Zustand angenommen werden. 
+(3) Näherungswerte für diese Kraftbeiwerte dürfen Bild B.2.3 entnommen werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 41 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+39 
+Völligkeitsgrad 
+a) Quadratische Gittermaste 
+Völligkeitsgrad 
+b) Dreieckige Gittermaste 
+Legende 
+1 kantig 
+2 kreisförmig (unterkritisch) 
+3 kreisförmig (überkritisch) 
+ANMERKUNG Bei Gittermasten mit > 0,6 ist die Möglichkeit des Auftretens wirbelerregter Querschwingungen zu 
+berücksichtigen, siehe EN 1991-1-4. 
+Bild B.2.3  Gesamtkraftbeiwerte cf,S,0 für quadratische und dreieckige Gittermaste 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 42 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+40 
+B.2.3 Windkraftbeiwerte für langgestreckte Außenanbauten 
+(1) Die Windkraftbeiwerte cf,A von langgestreckten Außenanbauteilen (einschließlich Wellenleitern, 
+Antennenkabeln usw.) sind in Windrichtung innerhalb der Höhe eines Moduls folgendermaßen anzusetzen: 
+
+A
+AcKc A
+A,f,AAf,
+2
+0 sin  (B.6) 
+Dabei ist 
+cf,A,0 der Gesamtkraftbeiwert für ein Anbauteil unter Berücksichtigung seiner effektiven Reynoldszahl; 
+Werte für übliche Einzelbauteile sind in Tabelle B.2.1 angegeben und dürfen nach B.2.7.2 für 
+Teile, die aus Fachwerkwänden zusammengesetzt sind, ermittelt werden; 
+KA der Abminderungsbeiwert zur Berücksichtigung der Abschattung des Bauteils durch das Bauwerk 
+selbst: Näherungswerte für KA sind in Tabelle B.2.2 angegeben, außer für kreisförmige Profile im 
+superkritischen Strömungszustand und für Außenanbauten, für die nicht die Einschränkungen in 
+B.2.3 (2) gelten; für diesen Fall gilt KA = 1,0; 
+ AA die Fläche des bei Betrachtung in Windrichtung sichtbaren Teils, einschließlich Vereisung, sofern 
+zutreffend. Bei Zylindern mit Wendeln sollte der Wert von AA auf der Gesamtbreite einschließlich 
+der zweifachen Wendelbreite basieren; 
+A siehe B.2.2.1(1). 
+ANMERKUNG Wenn AA größer als AS ist, ist der Abminderungsbeiwert eher bei cf,S,0 zu berücksichtigen als bei cf,A. In 
+diesen Fällen gilt: 
+cf,S = K cf,S,0 KA
+cf,A = cf,A,0 sin2
+Dabei ist 
+ der Winkel des Windeinfalls bezogen auf die Längsachse jedes geradlinigen Bauteils. 
+(2) KA ist als 1,0 anzusetzen, wenn die Außenanbauten keine der folgenden Bedingungen erfüllen: 
+a) die gesamte Projektionsfläche der Außenanbauten neben der betrachteten Ansichtsfläche des Tragwerks 
+ist kleiner als die Projektionsfläche der Bauteile in dieser Ansichtsfläche (siehe Bild B.2.1); 
+b) die gesamte Projektionsfläche jedes einzelnen internen oder externen Außenanbauteils senkrecht auf die 
+Ansichtsfläche des Bauwerks ist kleiner als die halbe Bruttoansichtsfläche des Moduls (siehe Bild B.2.1); 
+c) keines der Außenanbauteile geht mehr als 10 % über die Breite der gesamten Ansichtsfläche des 
+Bauwerks auf dieser Höhe hinaus. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 43 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+41 
+Tabelle B.2.1  Typische Kraftbeiwerte, cf,A,0 und cf,G,0, für einzelne Bauteile 
+Kraft-(Druck-)beiwert 
+cf,A,0 oder cf,G,0 Bauteiltyp 
+Effektive Reynoldszahl Re
+(siehe EN 1991-1-4) 
+(siehe Anmerkung 1) eisfrei vereist 
+(a) Kantige Profile und Bleche alle Werte 2,0 2,0 
+ 2 105 1,2 1,2 
+4 105 0,6 1,0 
+(b) Kreisförmige Profile und 
+glatte Drähte 
+> 10 105 0,7 1,0 
+eisfrei: 
+ 6 104 1,2 
+ 105 0,9 
+vereist: 
+ 1 105 1,25 
+(c) Dünne Spiralseile, z. B. 
+Aluminiumtragseile mit 
+Stahlkern, vollverschlossene 
+Spiralseile, Stahlspiralseile 
+mit mehr als sieben Drähten 
+ 2 105 1,0 
+eisfrei: 
+ 4 104 1,3 
+> 4 104 1,1 
+vereist: 
+ 1 105 1,25 
+(d) Dicke Spiralseile, z. B. 
+kleine Rundlitzenseile, 
+Stahllitzenbündel, 
+Spiralseile mit nur sieben 
+Drähten (1 
+ 7) 
+ 2 105 1,0 
+(e) Zylinder mit Wendeln mit 
+einer Höhe bis zu 0,12D
+(siehe Anmerkung 2) 
+alle Werte 1,2 1,2 
+ANMERKUNG 1 cf,A,0 für Zwischenwerte von Re sind mittels linearer Interpolation zu bestimmen. 
+ANMERKUNG 2 Diese Werte basieren auf der Gesamtbreite, in der die zweifache Wendelbreite berücksichtigt ist. 
+ANMERKUNG 3 Die Werte für vereiste Bauteile sind für Glatteis von Bedeutung; besondere Sorgfalt gilt bei Raueis 
+(siehe ISO 12494). 
+ANMERKUNG 4 Diese Werte dürfen im Nationalen Anhang verändert werden. 
+(3) Wenn von Bedeutung, ist die Torsionskraft TAW unter Verwendung des passenden Beiwerts und des 
+maßgeblichen Hebelarms zu berechnen, der in Windkanaluntersuchungen zu bestimmen ist. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 44 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+42 
+Tabelle B.2.2  Abminderungsbeiwert, KA, für zusätzliche Außenanbauten 
+Abminderungsbeiwert KA
+Position zusätzlicher 
+Außenanbauten Viereckiger Querschnitt (quadratisch oder 
+rechteckig) 
+Dreieckiger 
+Querschnitt 
+Innerhalb des Querschnitts 0,8 0,8 
+Außerhalb des Querschnitts 0,8 0,8 
+ANMERKUNG Diese Werte können im Nationalen Anhang geändert werden. 
+B.2.4 Windkraftbeiwerte für einzelne kompakte Außenanbauten 
+(1) Für alle einzelnen Außenanbauten, wie z. B. Parabolantennen, ist der Gesamtwindkraftbeiwert cf,A in 
+Windrichtung folgendermaßen anzusetzen: 
+cf,A = cf,A,0 KA (B.7) 
+Dabei ist 
+cf,A,0 der Kraftbeiwert für ein Anbauteil für die betrachtete Windrichtung und Windgeschwindigkeit; er ist 
+mit Hilfe von Windkanalversuchen zu ermitteln, die üblicherweise vom Hersteller durchgeführt 
+werden; 
+KA wie in B.2.3.definiert. 
+(2) Die zugehörigen Beiwerte für seitliche Windkräfte cf,Ax und c1,A,z sind wie cf,A zu berechnen, wobei die 
+jeweilige Richtung orthogonal zur mittleren Windrichtung anzunehmen ist. cf,A,0 ist der jeweils anzusetzende 
+Kraftbeiwert für Quertrieb und Auftrieb. 
+(3) Die zugehörige Torsionskraft TAW ist unter Ansatz des zutreffenden Kraftbeiwertes zu berechnen, der in 
+Windkanalversuchen in Verbindung mit dem relevanten Hebelarm eine derartige Torsion ermittelt wurde. 
+B.2.5 Windkraftbeiwerte für Abspannseile 
+(1) Der Windkraftbeiwerte cf,G senkrecht zu den Abspannseilen, bezogen auf die Ebene, die durch das Seil 
+und den Wind gebildet wird, ist wie folgt anzusetzen: 
+cf,G = cf,G,0 sin2 (B.8) 
+Dabei ist 
+ cf,G,0 der Reynoldszahl-abhängige Gesamtkraftbeiwert; Werte dafür sind in Tabelle B.2.1 sowohl 
+ohne als auch mit Eisansatz angegeben; 
+ der Winkel des Windeinfalls zur Sehne. 
+ANMERKUNG Der Windwiderstand der Isolatoren der Abspannseile ist, wenn relevant, zu berücksichtigen, indem sie 
+entweder als individuelle Bauteile betrachtet werden und die passenden Windkräfte berücksichtigt werden, oder ihre 
+Wirkung in cf,G verschmiert wird. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 45 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+43 
+B.2.6 Windkraftbeiwerte bei Vereisung 
+(1) Bei der Ermittlung des Windwiderstandes eines Bauwerks und der Außenanbauten bei Eisansatz ist 
+jedes Bauteil, Anbauteil und Abspannseil als allseitig mit Eis bedeckt anzusetzen, und zwar mit einer Eisdicke 
+nach Anhang C. 
+(2) Falls die Spaltbreiten zwischen Elementen im eisfreien Zustand kleiner als 75 mm sind, sollte 
+angenommen werden, dass diese Spalten durch Eisansatz geschlossen werden. 
+(3) Kraftbeiwerte von einzelnen Bauteilen sollten Tabelle B.2.1 entnommen werden. 
+(4) Ein nicht symmetrischer Eisansatz, bei dem einige Abspannseile vereist und andere eisfrei sind, ist zu 
+berücksichtigen (siehe Anhang C). 
+B.2.7 Anleitung für Spezialfälle 
+B.2.7.1 Gesamtwindkraftbeiwert 
+(1) Der Gesamtwindkraftbeiwert cf in Windrichtung für die Höhe eines Moduls eines Gittermastes mit 
+quadratischem oder dreieckigem Grundriss oder eines Gittermastes mit rechteckigem Grundriss mit 
+unterschiedlichen Seitenlängen kann wie unter (2) beschrieben bestimmt werden: 
+ANMERKUNG Für die Bemessung von Gittermasten mit quadratischem oder gleichseitig dreieckeckigem Grundriss ist 
+das Verfahren nach B.2.1.3 zu verwenden. 
+(2) Der Gesamtwindkraftbeiwert cf für ein Modul in Windrichtung kann folgendermaßen bestimmt werden: 
+Für quadratische und rechteckige Gittermaste: 
+cf = c1e cos2 1 c2e sin2 1 (B.9) 
+Für dreieckige Gittermaste: 
+4
+3sin4
+3cos 12
+2
+12
+1 eef ccc (B.10) 
+Dabei ist 
+c1e der effektiver Windkraftbeiwert: 
+ für quadratische und rechteckige Gittermaste: 
+c1e = (c1 1 c3) K 1
+ für dreieckige Gittermaste: 
+132111e 2 Kcccc
+c2e der effektiver Windkraftbeiwert: 
+ für quadratische und rechteckige Gittermaste: 
+c2e = (c2 2 c4) K 2
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 46 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+44 
+ für dreieckige Gittermaste: 
+231
+2
+22e 2 Kcccc
+c1 bis c4 sind Windkraftbeiwerte: 
+c1 = cf,S1 AS1/ A cf,A1 AA1/ A; 
+c2 = cf,S2 AS2/ A cf,A2 AA2/ A; 
+c3 = cf,S3 AS3/ A cf,A3 AA3/ A; 
+c4 = cf,S4 AS4/ A cf,A4 AA4/ A; 
+AS1 bis AS4 Projektionsflächen der Elemente auf die Ansichtsflächen 1 bis 4, die wie tragende 
+Bauteile innerhalb desselben Moduls, gegebenenfalls einschließlich Vereisung, betrachtet 
+werden (siehe Bild B.2.1); 
+AA1 bis AA4 Projektionsflächen der Elemente auf die Ansichtsflächen 1 bis 4, die wie zusätzliche 
+Bauteile innerhalb desselben Moduls, gegebenenfalls einschließlich Vereisung, betrachtet 
+werden (siehe Bild B.2.1); 
+cf,S1 bis cf,S4 Kraftbeiwerte der Elemente, die wie tragende Bauteile betrachtet werden, für die 
+Ansichtsflächen 1 bis 4; die Kraftbeiwerte dürfen nach B.2.7.2 ermittelt werden; 
+cf,A1 bis cf,A4 Windkraftbeiwerte für Außenanbauten, die nicht als tragende Bauteile betrachtet werden, 
+für die Ansichtsflächen 1, 2, 3 bzw. 4; die Windkraftbeiwerte werden nach B.2.3 oder 
+B.2.4 ermittelt; KA = 1,0 in allen Fällen; 
+ als Aref nach EN 1991-1-4, 5.3(2) anzusetzen; es kann jeder angenommen Wert 
+angesetzt werden (zum Beispiel Eins), solange Aref als derselbe Wert angesetzt wird.
+A
+1 und 2 effektive Abschattungsbeiwerte für die Ansichtsfläche 1 bzw. 2, einschließlich der 
+tragenden Bauteile und Anbauteile; 1 und 2 sind wie folgt anzusetzen: 
+ für quadratische Gittermaste: e
+ für dreieckige Gittermaste: 0,67 e
+ für rechteckige Gittermaste: e 0,15( 1)( 0,1) jedoch nicht größer als 1,0 
+e = f (Af 0,83 Ac 2,1 Ac,sup AA)/(As AA) jedoch nicht größer als 1,0; 
+f = (1 )1,89 siehe auch Bild B.2.4; 
+Dabei ist 
+Af, Ac, Ac,sup wie in B.2.2.1 angegeben; sie sind für die Ansichtsflächen 1 und 2 anwendbar; 
+AS = Af Ac Ac,sup (siehe B.2.2.1(2)) 
+AA die Projektionsfläche der Anbauteile, die nicht wie tragende Bauteile betrachtet werden; 
+sie ist für die Ansichtsflächen 1, 2, 3 und 4 anwendbar; 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 47 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+45 
+der Völligkeitsgrad für die Ansichtsflächen 1 und 2 nach B.2.2, jedoch einschließlich 
+tragender Bauteile und Anbauteile (siehe Bild B.2.2). 
+Folglich 
+b
+AS
+h
+AA
+Abstandsverhältnis, entspricht dem Abstand zwischen der betrachteten und der parallel 
+dazu liegenden Ansichtsfläche, dividiert durch die Breite der betrachteten Fachwerkwand 
+in Höhe des Schwerpunktes des Moduls, jedoch nicht kleiner als 1,0; 
+K 1 und K 2 nach B.2.2.1 zu bestimmen; anwendbar auf die Ansichtsflächen 1 und 2 unter Verwendung 
+von (AS AA) Af und , wie in diesem Abschnitt definiert; 
+1 Windanströmwinkel (im Grundriss) zur Normalen auf Ansichtsfläche 1. 
+(3) Bei Gittermasten mit > 0,6 ist zu berücksichtigen, dass Schwingungsantworten quer zur Windrichtung 
+infolge von Wirbelanregung möglich sind, siehe EN 1991-1-4. 
+(4) Der Gesamtkraftbeiwert cfx eines Moduls für den Quertrieb ist wie unter (2) zu bestimmen, jedoch für 
+eine Windrichtung senkrecht zur mittleren Windrichtung im Grundriss. 
+(5) Der Gesamtkraftbeiwert cf eines Moduls mit polygonförmigem Grundriss (mit mehr als vier Ansichts-
+flächen) in Windrichtung ist anhand von maßstäblichen Windkanalmessungen in Übereinstimmung mit 
+EN 1991-1-4, 1.5 zu bestimmen. 
+Völligkeitsgrad 
+Bild B.2.4  Abschattungsbeiwert f für aus kantigen Bauteilen zusammengesetzte 
+einzelne Tragwerke 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 48 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+46 
+B.2.7.2 Windkraftbeiwerte für einzelne Tragwerke 
+(1) Werte für Windkraftbeiwerte cf für einzelne Tragwerke, die aus Bauteilen mit sowohl kantigen als auch 
+kreisförmigen Querschnitten bestehen, sind zu bestimmen mit: 
+S
+c,sup
+c,supf,
+S
+ccf,
+S
+fff,f A
+AcA
+AcA
+Acc (B.11) 
+Dabei ist 
+cf,f, cf,c und cf,c,sup der Kraftbeiwerte für Bauteile mit kantigen, unterkritisch kreisförmigen bzw. über-
+kritisch kreisförmigen Querschnitten unter Verwendung von: 
+cf,f der Kraftbeiwert für einzelne Tragwerke, anzusetzen mit: 
+1,58 1,05 (0,6 )1,8 für 0,6; 
+1,58 2,625 ( - 0,6)2 für > 0,6; 
+Af, Ac, Ac,sup, AS und sind in B.2.7.1 definiert. 
+cf,c = (0,6 0,4 2) cf,f
+cf,c,sup = (0,33 0,62 5/3) cf,f
+(2) Näherungswerte für diese Kraftbeiwerte sind in Bild B.2.5 angegeben. 
+Völligkeitsgrad 
+Legende 
+1 Kantige Profile 
+2 Kreisförmige Profile (unterkritisch) 
+3 Kreisförmige Profile (überkritisch) 
+ANMERKUNG Bei Gittermasten mit > 0,6 siehe B.2.7.1(3). 
+Bild B.2.5  Kraftbeiwert cf für einzelne Tragwerke 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 49 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+47 
+B.3 Tragwerksreaktion von Gittermasten 
+B.3.1 Bedingungen für die Anwendung statischer Verfahren 
+(1) Das statische Ersatzlastverfahren, siehe B.3.2, ist üblicherweise anzuwenden, wenn die Bedingungen 
+in B.3.1(3) erfüllt sind. Wenn nicht, sind aufwändigere Verfahren wie z. B. das Spektralverfahren, siehe B.3.3, 
+anzuwenden. Ein Fachgutachten ist notwendig. 
+(2) Die statische Ersatzlast-Methode berücksichtigt eine gewisse dynamische Überhöhung der Bauwerks-
+antwort, die typisch für die Mehrzahl der nach dieser Vorschrift gebauten Gittermaste ist. Die Kontrolle für die 
+Anwendbarkeit des statischen Verfahrens nach Gleichung (B.12) ist nur als Anleitung zu betrachten. Die 
+dynamische Vergrößerung nimmt im Allgemeinen mit zunehmender Höhe der Moduln eines Mastes zu, 
+insbesondere wenn er viele Außenanbauten hat oder wenn er eine konkave bzw. gevoutete Bauform aufweist 
+(Eiffelturm-Form). In solchen Fällen sollte bei Anwendung der statischen Vorgehensweisen auf Gittermaste, 
+bei denen diese Einflüsse stärker ausgeprägt sind als bei herkömmlichen Bauweisen, mit Vorsicht vorge-
+gangen werden. 
+(3) Die statische Ersatzlast-Methode darf angewendet werden, falls: 
+16
+57 2
+T
+oBTTf,s
+T
+h
+h
+dAc
+m (B.12) 
+Dabei ist 
+cf,TAT die Summe der Windkräfte (einschließlich Außenanbauteile) der einzelnen Module, beginnend 
+von der Mastspitze, so dass cf,TAT gerade kleiner ist als ein Drittel der Gesamtsumme cf für den 
+gesamten Mast (in m2); 
+s die Dichte des Werkstoffes der Mastkonstruktion (in kg/m 3); 
+mT die Gesamtmasse der Module im Bereich von cf,T (in kg); 
+h die Masthöhe (in m); 
+hT die Gesamthöhe der Module im Bereich von cf,T, jedoch nicht größer als h/3 (in m); 
+o die Volumen-/Widerstandskonstante, anzusetzen mit 0,001 m; 
+dB die Tiefe in Windrichtung, anzusetzen mit: 
+ Basisbreite d für rechtwinklige Gittermaste (in m); 
+ 0,75 Basisbreite für dreigurtige Maste (in m). 
+B.3.2 Statische Ersatzlast-Methode 
+B.3.2.1 Allgemeines 
+(1) Bei symmetrischen Masten, die mit Gurtstäben mit dreieckigen Ausfachungen konstruiert sind, mit oder 
+ohne Außenanbauten, für die die Windkraft  nach B.2 berechnet worden ist, ist die maximale 
+Schnittkraft im Bauteil nach B.3.2.2.1 bis B.3.2.2.5 zu bestimmen. Bei unsymmetrischen Masten, die mit 
+Gurtstäben mit dreieckigen Ausfachungen konstruiert sind und Außenanbauten aufweisen, oder bei Masten, 
+für die die Windkraft  nach B.2.7 berechnet worden ist, ist die maximale Schnittkraft im Bauteil nach 
+B.3.2.2.6 zu bestimmen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 50 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+48 
+ANMERKUNG Bei symmetrischen, dreieckigen und quadratischen Masten sind die Windlasten quer zur Windrichtung 
+nicht maßgebend für die Bemessung und dürfen folglich vernachlässigt werden. Bei unsymmetrischen Gittermasten sind 
+diese Lasten zu berücksichtigen. 
+B.3.2.2 Windbelastung 
+B.3.2.2.1 Allgemeines 
+(1) Die maximale Windlast auf den Gittermast in Windrichtung ist nach EN 1991-1-4, 5.3 zu bestimmen 
+unter Verwendung der in diesem Anhang in B.2 angegebenen Windkraftbeiwerte. 
+(2) Die mittlere Windlast in Windrichtung auf den Gittermast Fm,W ( z) ist in der Regel folgendermaßen 
+anzusetzen: 
+ reff
+ev
+p
+Wm,
+)(71)( AczI
+qzF  (B.14a) 
+(3) Die äquivalente Böenwindlast in Windrichtung auf den Gittermast FT,W(z) ist in der Regel zu ermitteln 
+aus: 
+)(
+1)(71)/(2,011)()( 2
+mo
+dsev
+mWm,WT, zc
+cczIhzzFzF (B.14b) 
+Dabei ist 
+Iv die Intensität der Turbolenzen nach EN 1991-1-4; 
+cscd der Strukturbeiwert nach EN 1991-1-4, 6.3; 
+zm die Höhe der Schnittfläche über Grund, für die die Beanspruchung ermittelt wird; 
+h die Gesamthöhe des Gittermasts; 
+ c0(zm) der orographische Faktor nach EN 1991-1-4. 
+B.3.2.2.2 Lasten zur Berechnung der Kräfte in den Bauteilen oder in den Fundamenten 
+(1) Die maximale Kraft Smax in einem Bauteil oder in dem Fundament ist gemäß (B.14b) mittels Fm,W zu 
+bestimmen und um einen Faktor zu erhöhen:
+)(
+1)(71)/(2,011 dsev2
+Wm,max
+mo
+m zc
+cczIhzSS (B.15) 
+Dabei ist 
+Sm,W die Kraft im Bauteil oder im Fundament aus der mittleren Windlast Fm,W; 
+c0(zm) siehe B.3.2.2.1(3). 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 51 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+49 
+B.3.2.2.3 Lasten zur Berechnung der Querkräfte 
+(1) Die zur Berechnung der Füllstabkräfte verwendete Belastung ist in Abhängigkeit von der Ausführung 
+des Mastes anzusetzen. 
+ANMERKUNG Querkräfte im Fundament sind nach B.3.2.2.2 zu bestimmen. 
+(2) Bei Gittermasten, bei denen die Neigung der Eckstiel derart ist, dass sie sich projiziert oberhalb der 
+Mastspitze schneiden (siehe Bild 3.1a)), ist die maximale Beanspruchung in der Ausfachung oder die 
+Querkraft auf einem gegebenen Niveau nach B.3.2.2.2 zu ermitteln. 
+ANMERKUNG Kräfte in Füllstäben an Knoten, an denen sich die Neigung der Eckstiele ändert, können aus Anteilen 
+der Eckstielkräfte und der Querkraft bestehen. 
+(3) Bei Gittermasten, bei denen die Neigung der Eckstiele des betrachteten Gefaches derart ist, dass sie 
+sich projiziert unterhalb der Mastspitze schneiden (siehe Bild B.3.1b)), sind zwei Berechnungen mit 
+ungleichmäßigen Feldbelastungen durchzuführen, mit 
+a) der mittleren Windlast, F
+m,W(z) unterhalb des Schnittpunktes und einer statischen Ersatzlast FT,W(z) für 
+die Böenwindlast oberhalb des Schnittpunktes, 
+b) der mittleren Windlast, Fm,W(z) oberhalb des Schnittpunktes und einer statischen Ersatzlast FT,W(z) für 
+die Böenwindlast unterhalb des Schnittpunktes. 
+(4) Existiert mehr als ein Schnittpunkt, dann sind zwei Lastfälle mit ungleichmäßiger Feldbelastung für 
+jedes Modul zu berechnen, siehe Bild B.3.1c). 
+ANMERKUNG Für Füllstäbe über dem höchsten Schnittpunkt darf das Verfahren nach B.3.2.2.3(2) verwendet werden. 
+a) Fall 1 Alle Querkräfte ermittelt aus mittlere Windlast und 
+Böenreaktionsfaktor 
+b) Fall 2 Feldweise Belastung für Modul A 
+Bild B.3.1  Feldweise ungleichmäßige Belastung
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 52 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+50 
+c) Fall 3 
+Feldweise Belastung für 
+Modul A: 
+Feldweise 1  
+Feldweise 2      
+Feldweise Belastung für 
+Modul B: 
+Feldweise 1  
+Feldweise 2      
+Legende 
+1 Modul A 
+2 Verlängerung der Eckstiele des Moduls A 
+3 Mittelwert 
+4 oberhalb Modul A liegende Fachwerkfelder wie Fall 1 zu behandeln 
+5 Böenlast 
+6 Modul B 
+7 oberhalb Modul B liegende Fachwerkfelder wie Fall 1 zu behandeln 
+8 Verlängerung der Eckstiele des Moduls B 
+Bild B.3.1  Feldweise ungleichmäßige Belastung (fortgesetzt)
+B.3.2.2.4 Belastung von Abspannseilen 
+(1) Die maximale Windlast F
+c/Gw(z) auf Seile in Windrichtung ist wie folgt anzusetzen: 
+)(
+1)(711)(71
+)(
+)( GGf,c/Gw zc
+cczIAczI
+zq
+zF
+o
+dsv
+v
+p (B.16) 
+Dabei ist: 
+qp(z) der Spitzenstaudruck in effektiver Höhe z in m des Seils über Grund, ermittelt nach EN 1991-1-4; 
+cf,G der Gesamtwindkraftbeiwert des Seils in Windrichtung, ermittelt nach B.2. 
+B.3.2.2.5 Belastung zur Bestimmung von Durchbiegungen und Verdrehungen 
+(1) Verformungen und Verdrehungen brauchen in der Regel nur den Anforderungen für die Gebrauchs-
+tauglichkeit zu genügen. Die Gebrauchstauglichkeitskriterien sind vom Kunden in der Bauausschreibung 
+festzulegen (siehe 7.2.2). 
+B.3.2.2.6 Windbelastung für nicht symmetrische Gittermaste und Türme oder Türme 
+mit komplexen Anbauten 
+(1) Bei nicht symmetrischen Gittermasten oder Türmen, die große, nicht symmetrisch angeordnete Außen-
+anbauten und/oder Seile bzw. Leitungen aufweisen, die nicht vernachlässigbare Torsionsbelastungen und 
+Belastungen quer zur Windrichtung einleiten, müssen die Gesamtkräfte infolge der Windlasten für die 
+kombinierte Einwirkung von Wind auf einzelne Teile, und zwar in Windrichtung und quer zur Windrichtung 
+berücksichtigt werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 53 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+51 
+(2) Die schwankenden Beanspruchungen, die durch laterale Turbulenz verursacht werden, sollten zusam-
+men mit den Beanspruchungen aus Windlasten in Windrichtung berücksichtigt werden. 
+(3) Zur Ermittlung der Gesamtbelastung in solchen Fällen ist die mittlere Windlast in Windrichtung unab-
+hängig vom schwankenden Anteil zu betrachten. Dazu ist der Mast unter Belastung der mittleren Windlast 
+Fm,W(z) in Windrichtung, wie nach B.3.2.2.1(1) ermittelt, zu untersuchen. 
+ANMERKUNG Falls Abspannungen vorhanden sind, ist die mittlere Last Fm,CW(z) auf die Abspannungen zu 
+berücksichtigen (siehe B.3.2.2.4). 
+(4) Folgende einzelne Beanspruchungen sind zu berechnen: 
+a) die mittlere Beanspruchung Sm,TW infolge Windlast, ermittelt aus der mittleren Windlast Fm,TW(z); 
+b) die Beanspruchung S1,TW im Bauteil infolge schwankender Windlasten in Windrichtung, ermittelt anhand: 
+2
+,1 )/(2,01)(
+1)(71 hzzc
+cczISS m
+mo
+dsv
+TWm,TW (B.17) 
+c) schwankende laterale Windbeanspruchungen S1,TX infolge Turbulenz quer zur Windrichtung, die wie folgt 
+angesetzt werden sollten, falls keine anderen Angaben vorliegen: 
+1,TW
+f
+X
+X1,TX S
+c
+c
+KS (B.18) 
+Dabei ist 
+KX der Beiwert zur Berücksichtigung der lateralen Turbulenz; 
+cX der Kraftbeiwert für den Quertrieb des Bauwerks (und aller vorhandener Außenanbauten) für das 
+betrachtete Modul; 
+ siehe B.2.1.3(1). fc
+ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben werden. Der Wert KX = 1,0 wird empfohlen. 
+ANMERKUNG 2 Die laterale Turbulenz bedeutet auch für symmetrisch ausgebildete Gittermaste schwankende Wind-
+lasten quer zur Windrichtung; jedoch ist die Auswirkung dieser Lasten normalerweise nicht relevant für die maßgebend 
+beanspruchten Bauteile, außer für Ermüdung. 
+(5) Die Gesamtbeanspruchung eines jeden Bauteils infolge von Wind ST ist wie folgt anzusetzen: 
+2
+cables
+2
+TX1,
+2
+TW1,cwm,TWm,T SSSSSS (B.20) 
+Dabei ist 
+Sm,cw die mittlere Beanspruchung der Kabel, ermittelt aus der Lastkomponente in (B.16); 
+Scables die schwankende Beanspruchung der Kabel, ermittelt aus der Schwankungskomponente 
+in (B.16). 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 54 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+52 
+B.3.3 Spektralmethode 
+(1) Wird die Bauwerksantwort auf Kräfte in Windrichtung mittels der Spektralmethode berechnet, sollten die 
+meteorologischen Daten nach EN 1991-1-4 angesetzt werden und die Windkraftbeiwerte nach B.2. Zusätzlich 
+sollten  falls genauere Angaben fehlen  die in EN 1991-1-4, Anhang B definierten Parameter angesetzt 
+werden. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise liefern. 
+(2) Laterale Turbulenz führt zu wechselnden Beanspruchungen, die zusammen mit den Beanspruchungen 
+in Windrichtung zu betrachten sind. Die zutreffenden Parameter sollten entsprechend denen für Windwir-
+kungen in Windrichtung gewählt werden. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise liefern. 
+B.3.4 Wirbelerregte Schwingungen quer zur Windrichtung 
+(1) Falls Gittermaste große zylindrische Körper tragen oder sich durch starken Eisansatz derart zusetzen 
+können, dass wirbelerregte Querschwingungen möglich sind, so sind diese nach EN 1991-1-4 zu berechnen. 
+B.4 Dynamische Antwort von abgespannten Masten 
+B.4.1 Allgemeines 
+(1) Die maximalen Kräfte für die Bemessung von Mastbauteilen und -fundamenten sind unter Berück-
+sichtigung der Bauwerksantwort auf die Turbulenz des natürlichen Windes zu berechnen. 
+(2) Diese Kräfte sollten die Auswirkungen auf eine äquivalente, statische Belastung durch einen Wind, der 
+mit der mittleren 10-Minuten-Windgeschwindigkeit und nur aus der Windrichtung weht, und die schwankenden 
+Lastanteile infolge Böen in Windrichtung und, wenn maßgebend, quer zur Windrichtung erfassen. 
+B.4.2 Bedingungen für statische Methoden 
+(1) Im Allgemeinen können statische Methoden zur Ermittlung der maximalen Beanspruchungen der 
+Bauteile eines Mastes verwendet werden (siehe B.4.3). Nur bei Masten, die zu ausgeprägten dynamischen 
+Reaktionen neigen, ist es notwendig, dynamische Antwortberechnungen durchzuführen (siehe B.4.4). 
+(2) Die Bemessung größerer Maste, deren Versagen sehr schwere Folgen hätte (siehe 2.3), sollte immer 
+mit dynamischen Anwort-Berechnungen überprüft werden. 
+(3) Das folgende Kriterium ist zu erfüllen, damit statische Methoden angewendet werden können: 
+a) der Kragarm oberhalb des obersten Anschlussniveaus der Abspannseile hat eine Gesamtlänge, die nicht 
+größer als die Hälfte des Abstandes zwischen den obersten beiden Anschlussniveaus; 
+b) Der Parameter 
+s ist < 1 wenn: 
+1
+1
+4
+1
+GG
+2
+S
+mm
+s N
+i
+ii HKN
+L
+IE
+ (B.21a) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 55 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+53 
+mit: 
+KGi = 0,5NiAGiEGicos2 Gi/LGi (B.21b) 
+Dabei ist 
+N die Anzahl der Abspannanschlussniveaus; 
+AGi die Querschnittsfläche des Seils auf Anschlussniveau i; 
+EGi der Elastizitätsmodul des Seils auf Anschlussniveau i; 
+LGi die Länge des Seils auf Anschlussniveau i; 
+Ni Anzahl der Seile auf Anschlussniveau i; 
+HGi Höhe des Anschlussniveaus über dem Mastfuß; 
+Gi Winkel der Sehne der Seile auf Anschlussniveau i mit der Horizontalen; 
+Em Elastizitätsmodul des Mastes; 
+Im durchschnittliches Trägheitsmoment des Mastes; 
+Ls durchschnittliche Spannweite des Mastes zwischen den Anschlussniveaus. 
+c) Der Parameter Q ist < 1 wenn: 
+HR
+m
+D
+HVQ o3
+o
+H
+30
+1 (B.21c) 
+Dabei ist 
+mo die durchschnittliche Masse je Längeneinheit des Mastes einschließlich Anbauten in kg/m; 
+Do die durchschnittliche Breite der Ansichtsfläche des Mastes in m; 
+VH die mittlere Windgeschwindigkeit Ve auf Höhe der Mastspitze in m/s; 
+ R der durchschnittliche Gesamtwert des Produkts aus dem Windkraftbeiwert cf und der 
+Bezugsfläche nach B.2.2.1(1); A
+H die Höhe des Mastes einschließlich des Kragarms, falls vorhanden, in m. 
+(4) Falls eines der Kriterien in (3) nicht erfüllt ist, ist die Spektralmethode wie folgt (siehe B.4.4) anzu-
+wenden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 56 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+54 
+B.4.3 Statische Ersatzlast-Methode 
+B.4.3.1 Allgemeines 
+(1) Um die dynamische Antwort von Masten auf Windbelastung zu berücksichtigen, muss der Mast für eine 
+Reihe von statischen Windlastfällen mit ungleichmäßigen Feldbelastungen untersucht werden; dies geschieht 
+auf der Grundlage der mittleren Windlast, die um zusätzliche Feldbelastungen vergrößert wird. Diese 
+Vorgehensweise erfordert für jede betrachtete Windrichtung zahlreiche statische Windberechnungen, wobei 
+die Ergebnisse kombiniert werden müssen, um die Maximalantwort zu bestimmen. 
+(2) Bei Masten mit symmetrischem Querschnitt mit dreieckiger Ausfachung, sowohl ohne Außenanbauten 
+als auch mit symmetrisch zur betrachteten Windrichtung angeordneten Außenanbauten, die vermutlich nicht 
+dynamisch anfällig (siehe B.4.7) sind, sind die maximalen Kräfte nach B.4.3.2 zu ermitteln. 
+(3) Bei Masten mit Außenanbauten, die nicht symmetrisch zur betrachteten Windrichtung angeordnet sind, 
+sind die zusätzlichen Kräfte infolge von Windwirkungen quer zur Windrichtung nach B.4.3.2.8 zu ermitteln. 
+B.4.3.2 Zu berücksichtigende Lastfälle 
+B.4.3.2.1 Mittlere Windbelastung 
+(1) Die Windlast F
+m,W auf den Mastschaft in Windrichtung infolge der mittleren Windgeschwindigkeit ist wie 
+folgt anzusetzen: 
+ refW
+v
+p
+Wm, 71 AzczI
+zq
+zF )()(
+)(
+)(  (B.22) 
+Dabei ist 
+cW(z) der Gesamtwindkraftbeiwert des Bauwerks (und aller vorhandenen Außenanbauten) über das 
+betrachtete Segment in Windrichtung in Höhe z in m über Grund innerhalb des betrachteten 
+Gefaches, ermittelt nach B.2.1.3. 
+(2) Diese Lasten sollten in der Mitte der Ansichtsflächen des jeweiligen Abschnittes (einschließlich 
+vorhandener Außenanbauten) wirkend angesetzt werden. 
+(3) Die Windbelastung FGW(z) auf Abspannseile infolge der mittleren Windgeschwindigkeit ist in der 
+Seil-Wind-Ebene normal zum Abspannseil wie folgt anzusetzen: 
+ AzczI
+zqzF Gf,
+v
+p
+GW
+)(71
+)(
+ (B.23) 
+Dabei ist 
+cf,G(z) der Windwiderstandsbeiwert des betrachteten Abspannseils, ermittelt nach B.2. 
+(4) Wenn eine gleichförmige Streckenbelastung verwendet wird, sollte qp(z) auf der Windgeschwindig-
+keit in 2/3 der Höhe des jeweiligen Seilanschlusses am Mast basieren . 
+(5) Die Beanspruchung Sm infolge des mittleren Windes ist für jedes Bauteil des Mastes durch eine nicht-
+lineare statische Berechnung unter der mittleren Belastung Fm,W und FGW zu ermitteln. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 57 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+55 
+B.4.3.2.2 Zusätzliche Feldbelastungen 
+(1) Zusätzlich zu der mittleren Belastung nach B.4.3.2.1 sind nacheinander verschiedene zusätzliche 
+Feldbelastungen wie folgt anzusetzen: 
+ in jedem Feld des Mastschaftes zwischen benachbarten Abspannebenen (und in dem Feld zwischen 
+Mastfuß und der ersten Abspannebene); 
+ gegebenenfalls über dem Kragarm; 
+ von Mittelpunkt zu Mittelpunkt benachbarter Felder; 
+ vom Mastfuß bis zur Mitte der ersten Abspannebene; 
+ von der Mitte des Feldes zwischen der vorletzten und der obersten Abspannebene, falls darüber kein 
+auskragender Teil vorhanden ist, ansonsten gegebenenfalls einschließlich des Kragteils. 
+(2) Diese sind in Bild B.4.1 dargestellt. Die feldweise Belastung ist wie folgt zu berechnen: 
+ refW
+o
+v
+v
+p
+sPW )()(
+)(
+)(71
+)(2)( Azczc
+zI
+zI
+zqkzF  (B.24) 
+Dabei ist 
+cW(z) nach B.4.3.2.1; 
+ks der Skalierungsfaktor, der die Wahrscheinlichkeit des Auftretens definiert; 
+Iv(z) die Turbulenzintensität nach EN 1991-1-4, 4.4 in Abhängigkeit von der Geländekategorie; 
+co(z) der Orographie-Beiwert nach EN 1991-1-4. 
+ANMERKUNG 1 Der Skalierungsfaktor ks berücksichtigt multi-modale Antworten des abgespannten Mastes. 
+ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen. 
+ANMERKUNG 3 
+das obere Ende der feldweisen Belastung zur Ermittlung von Iv(z) und qp(z) benutzt wird. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 58 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+56 
+Mittlere 
+Windbelastung i = 1 2 3 4 5 6 
+Feldweise zusätzliche Belastungen 
+Bild B.4.1  Ansatz der feldweisen zusätzlichen Belastung 
+(3) Diese feldweisen zusätzlichen Belastungen sind rechnerisch auf den unter mittlerer Windlast nach 
+B.4.3.2.1 in seiner Gleichgewichtslage befindlichen Mast aufzubringen. 
+(4) Für Maste mit einer Höhe bis zu 50 m braucht nur der Fall mit einer den ganzen Mast einhüllenden 
+zusätzlichen Belastung berücksichtigt zu werden. 
+ANMERKUNG 1 In diesen Fällen ist die Querkraftausfachung in jedem Feld für die maximale Querkraft (und die 
+zugehörige Torsion) in dem Feld zu bemessen. 
+ANMERKUNG 2 In diesen Fällen sind die Stiele und die Anschlüsse in den Feldern für die maximale (und minimale) 
+Belastung des Stiels in diesem Feld zu bemessen. 
+ANMERKUNG 3 Falls in diesen Fällen der Mast einen Kragarm besitzt, dann sind 
+(i) mittlere Windbelastungen plus zusätzliche feldweise Belastung auf den Kragarm und mittlere Windbelastung auf den 
+Mast und 
+(ii) mittlere Windbelastung auf den Kragarm und mittlere Windbelastung plus zusätzliche feldweise Belastung auf den 
+Mast 
+zu berücksichtigen. 
+B.4.3.2.3 Belastung der Abspannseile 
+(1) Für jeden Lastfall mit zusätzlichen Feldbelastungen auf den Mastschaft (nach B.4.3.2.2) sind 
+zusätzliche feldweise Belastungen FPG(z) innerhalb derselben Grenzen aufzubringen, siehe Bild B.4.2. 
+Diese zusätzlichen feldweisen Belastungen sind in der Regel in der Seil-Wind-Ebene normal auf jedes 
+Abspannseil wie folgt anzusetzen: 
+ Azczc
+zI
+zI
+zqkzF )()(
+)(
+)(71
+)(2)( Gf,
+o
+v
+v
+p
+sPG  (B.25) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 59 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+57 
+Dabei ist 
+ks der Skalierungsfaktor; 
+ cf,G(z) der Windkraftbeiwert des Abspannseils in der Ebene, die aus Windrichtung und Abspannseil 
+gebildet wird, bestimmt nach B.2. 
+ANMERKUNG 1 Der Skalierungsfaktor ks berücksichtigt multi-modale Antworten abgespannter Maste. 
+ANMERKUNG 2 Der Wert für ks darf im Nationalen Anhang angegeben werden. Der Wert ks = 3,5 wird empfohlen. 
+(2) Vereinfachend darf eine einheitliche Belastung der betrachteten Abspannseile über die gesamte Höhe 
+durch Multiplikation der oben genannten Windlast mit dem Verhältnis zp/zG angegeben werden: 
+Dabei ist 
+zp die Höhe des Felds des betrachteten Abspannseils; 
+zG die Höhe des Seilanschlusses am Mast. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 60 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+58 
+Feldweise Zusatzlast auf 
+den Mastschaft 
+(typischer Fall) 
+ Feldweise Zu-
+satzlast auf das 
+Abspannseil (3) 
+(darf verschmiert 
+werden, siehe 
+B.4.3.2.3(2)) 
+Mittlere 
+Windlast auf 
+das Abspann-
+seil (3) 
+Bild B.4.2  Feldweise Zusatzlast auf den Abspannseilen 
+B.4.3.2.4 Bestimmung der Bauwerksantwort unter feldw eiser Zusatzlast 
+(1) Die Beanspruchung S
+PLi der Bauteile des Mastschaftes und der Abspannseile, die man für jede der 
+nacheinander aufgebrachten zusätzlichen Feldbelastungen erhält, ist zu berechnen. 
+(2) Dazu wird die Differenz zwischen der kombinierten Beanspruchung aus feldweiser Zusatzlast und 
+mittlere Belastung und der Beanspruchung nur aus der mittleren Belastung berechnet. 
+(3) Diese Beanspruchungen sind dann als Wurzel des quadratischen Mittelwertes zu kombinieren: 
+N
+i
+iSS
+1
+2
+PLp (B.26) 
+Dabei ist 
+SPLi die Beanspruchung (Antwort) aufgrund des i-ten Lastfalls; 
+N die Gesamtzahl der erforderlichen Lastfälle; 
+Sp die Gesamtbeanspruchung infolge zusätzlicher Feldbelastungen. 
+B.4.3.2.5 Auswirkung der Windlast auf das gesamte Bauwerk 
+(1) Die Auswirkung STM der Windlast auf die Bauteile des gesamten Mastes ist folgendermaßen zu 
+ermitteln: 
+STM = SM Sp (B.27) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 61 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+59 
+Dabei ist 
+SM die mittlere Beanspruchung, ermittelt nach B.4.3.2.1; 
+Sp die schwankende Beanspruchung, ermittelt nach B.4.3.2.4 mit variablen Vorzeichen, um die 
+ungünstigste Auswirkung zu ermitteln. 
+(2) Zur Berechnung der Gesamtkraft in der Schubausfachung in einem Feld des Mastschaftes nach (1) ist 
+als Mindestwert innerhalb dieses Feldes als der höchste berechnete Wert im Viertelspunkt des Feldes 
+zwischen benachbarten Abspannebenen (oder dem Mastfuß) anzusetzen. In diesem Zusammenhang bezieht 
+sich die Feldlänge auf den Abstand zwischen benachbarten Abspannebenen oder zwischen dem Mastfuß und 
+der untersten Abspannebene (siehe Bild B.4.3). 
+Legende 
+1 im Feld zu verwendender Mindestwert 
+2 siehe Anmerkung 
+3 Kraft für die Schubausfachungen 
+ANMERKUNG Einhüllende der Kräfte in Ausfachungsstäben, die aus der zusätzlichen feldweisen Belastung entsteht 
+(gezeigt sind Absolutwerte). 
+Bild B.4.3  Mindestkräfte in den Schubausfachungen des Mastschaftes 
+B.4.3.2.6 Zu berücksichtigende Windrichtungen 
+(1) Für jedes Bauteil des Mastes ist die Windrichtung zu berücksichtigen, die zu der ungünstigsten 
+Überlagerung der Beanspruchungen führt. Das bedeutet in der Praxis, dass mehrere Windrichtungen zu 
+untersuchen sind. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 62 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+60 
+ischem Querschnitt, der in vier 
+Richtungen abgespannt ist, sollten mindestens zwei Richtungen betrachtet werden: nämlich die Richtungen 
+aft quer zur Windrichtung in Höhe von 2 % der Windkraft in Windrichtung oder mit 
+einer Windrichtung um 2° gegenüber der angenommen Windrichtung gedreht) anzunehmen, indem eine Betrachtung nach 
+Theorie II. Ordnung durchgeführt wird. 
+(2) Falls der Mast nahezu symmetrisch in Geometrie und Belastung ist, sollten bei in drei Richtungen 
+abgespannten dreieckigen Masten mindestens drei Windrichtungen untersucht werden, d. h. die Richtungen 
+90°, 60° und 30° zu einer Fachwerkwand. Bei einem Mast mit quadrat
+90° und 45° zu einer Fachwerkwand. Beispiele sind in Bild B.4.4 dargestellt. 
+ANMERKUNG Zur Berücksichtigung des Knickens symmetrischer Maste (siehe 5.1(5)) ist ein lateraler 
+Beanspruchungseffekt (z. B. als Windkr
+(gilt analog für in vier Richtungen abgespannte 
+kreiszylindrische Maste) 
+gen 
+3.
+(1) Verformungen brauchen in der Regel nur den Gebrauchstauglichkeitsanforderungen zu genügen. Die 
+2). 
+ nicht symmetrische Maste oder Maste mit komplexen Anbauten 
+.
+indrichtung 
+hervorrufen, müssen die Gesamtkräfte infolge der Windlasten für die kombinierte Einwirkung von Wind auf 
+einzelne Teile, gegebenenfalls in Windrichtung und quer zur Windrichtung, berücksichtigt werden. 
+Bild B.4.4  Typische zu berücksichtigende Windrichtun
+B.4. 2.7 Belastung zur Berechnung der Verformungen und Verdrehungen 
+Gebrauchstauglichkeitskriterien sind vom Kunden in der Projektausschreibung zu definieren (siehe 7.2.
+B.4.3.2.8 Windbelastung für
+B.4.3 2.8.1 Allgemeines 
+(1) Bei nicht symmetrischen Masten oder Masten, die große, nicht symmetrisch angeordnete 
+Außenanbauten und/oder Seile enthalten, die Torsionslasten und Windlasten quer zur W
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 63 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+61 
+(2) Die schwankenden Beanspruchungen, die durch Turbulenz quer zur Windrichtung verursacht werden, 
+sind in Verbindung mit den Windlasten in Windrichtung zu berücksichtigen. 
+(3) Das Vorgehen zur Trennung der mittleren Windlast in Windrichtung von den schwankenden Anteilen 
+sollte analog zum Vorgehen bei Gittermasten nach B.3.2.2.1 erfolgen. Bei abgespannten Masten erfordert 
+dies jedoch eine Reihe von quer zur Windrichtung aufzubringenden zusätzlichen feldweisen Belastungen, die 
+in gleicher Weise wie für Windlasten in Windrichtung nach B.4.3.2.2 angesetzt werden. 
+(4) Die Gesamtbeanspruchung ist wie folgt anzusetzen: 
+2
+PX
+2
+X
+2
+PWMTM SKSSS (B.28) 
+Dabei ist 
+SPW die Beanspruchung infolge von zusätzlichen feldweisen Belastungen in Windrichtung; 
+SPX die Beanspruchung infolge von zusätzlichen feldweisen Belastungen quer zur Windrichtung; 
+KX der Beiwert zur Berücksichtigung der Turbulenzintensität quer zur Windrichtung. 
+ANMERKUNG 1 Der Wert für KX darf im Nationalen Anhang angegeben sein. Empfohlen wird ein Wert von KX = 1,0. 
+ANMERKUNG 2 Turbulenz quer zur Windrichtung verursacht auch bei symmetrisch ausgebildeten Gittermasten 
+schwankende Windlasten quer zur Windrichtung; jedoch ist die Auswirkung dieser Lasten nicht relevant für die 
+maßgeblich beanspruchten Bauteile. 
+(5) Alternativ zur expliziten Berechnung der Turbulenzeinflüsse quer zur Windrichtung nach B.4.3.2.8.1(4) 
+können die Extrembeanspruchungen STM in Windrichtung nach B.4.3.2.5(1) zur Berücksichtigung der 
+Einflüsse aus Turbulenz quer zur Windrichtung um 10 % erhöht werden. 
+B.4.4 Spektralverfahren 
+(1) Die Berechnung der Antwort mittels der Spektralmethode dient zur Ermittlung des Resonanzanteils der 
+Antwort. 
+(2) Der Hintergrundanteil darf bestimmt werden, indem die statische Vorgehensweise (siehe B.4.3.2) 
+angewendet wird. Für ks sollte ks = 2,95 angesetzt werden. 
+(3) Es sollten die in EN 1991-1-4 definierten meteorologischen Daten angesetzt und der Windwiderstand 
+nach B.2 ermittelt werden. Weiterhin sollten die in EN 1991-1-4, Anhang B definierten Parameter verwendet 
+werden, falls keine genaueren Angaben vorliegen. 
+(4) Turbulenz quer zur Windrichtung bewirkt schwankende Beanspruchungen, die in Überlagerung mit 
+Windlasten in Windrichtung berücksichtigt werden sollten. Zutreffende Parameter sollten entsprechend dem 
+für Windwirkungen in Windrichtungen angesetzt werden. 
+(5) Die Antwort sollte für alle Schwingungsformen, die Eigenfrequenzen von weniger als 2 Hz aufweisen, 
+berechnet werden. 
+B.4.5 Wirbelerregte Querschwingungen 
+(1) Falls abgespannte Maste große zylindrische Körper tragen oder sich Gitterstrukturen durch starken 
+Eisansatz derart zusetzen können, dass wirbelerregte Querschwingungen möglich sind, so sind diese nach 
+EN 1991-1-4 zu berechnen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 64 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+62 
+B.4.6 Seilschwingungen 
+(1) Die Abspannseile des Mastes sollten für hochfrequente, wirbelerregte Querschwingungen und 
+Galloping, insbesondere wenn sich an den Abspannseilen Eisansatz gebildet hat, wie folgt nachgewiesen 
+werden: 
+a) Wirbelerregung 
+Abspannseile können bei niedrigen Windgeschwindigkeiten Resonanzschwingungen mit kleiner 
+Amplitude vollführen, die durch Wirbelablösung mit hohen Frequenzen verursacht werden. 
+Da eine Anregung höherer Schwingungsformen auftreten kann, können allgemeine Regeln nicht festge-
+legt werden. Jedoch treten solche Schwingungen erfahrungsgemäß dann auf, wenn die Vorspannkräfte 
+in den Abspannseilen bei Windstille mehr als 10 % der Bruchlast überschreiten. 
+b) Galloping (einschließlich Regen-Wind-induzierter Schwingungen) 
+ Abspannseile können Galloping-Schwingungen vollführen, wenn sie mit Eis oder dickem Schmierfett 
+bedeckt sind. Eis- oder Schmiermittelansatz kann eine aerodynamische Form erzeugen, die Instabilitäten 
+hervorruft. Dies führt zu Schwingungen mit großen Amplituden bei kleinen Frequenzen. Das Auftreten 
+ähnlicher Schwingungen bei Regen ist bekannt. 
+ Auch hier können keine allgemein gültigen Regeln angegeben werden, da das Auftreten von Galloping-
+Schwingungen stark von der Eisbildung oder vom Schmierfettprofil abhängt. Im Allgemeinen tritt 
+Galloping bei Seilen mit großen Durchmessern auf und ist relativ unempfindlich gegenüber Vorspannung, 
+siehe EN 1993-1-11, 8.3. 
+(2) Falls Schwingungen beobachtet werden, sind Schwingungsdämpfer oder Spoiler anzuordnen, um die 
+Spannungsspiele auf das geforderte Maß zu beschränken, siehe D.2. 
+(3) Ermüdungsnachweise der Seilverankerungen sind durchzuführen, wenn derartige Schwingungen auf-
+getreten sind und keine Gegenmaßnahmen getroffen wurden. In solchen Fällen sollte der Rat von Experten 
+gesucht werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 65 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+63 
+Anhang C
+(informativ) 
+Eislast und kombinierte Einwirkung aus Eis und Wind 
+ANMERKUNG Da dieser Anhang sich mit Eislasten und kombinierten Einwirkungen aus Eis und Wind auf Türme und 
+Maste befasst, wird erwartet, dass er in die EN 1991  Einwirkungen auf Bauwerke überführt wird. 
+C.1 Allgemeines 
+(1) Der Eisansatz an Türmen und Masten kann an bestimmten Standorten erheblich sein. Bei gleichzeitiger 
+Windwirkung kann der infolge des Eisansatzes vergrößerter Windwiderstand bemessungsrelevant sein. 
+(2) Das Ausmaß des Eisansatzes an Bauwerken hängt ebenso wie die Dichte, die Verteilung und die Form 
+des Eisansatzes an Türmen und Masten im Wesentlichen von den lokalen meteorologischen Verhältnissen 
+und der Topographie sowie der Form des Bauwerks selbst ab. 
+(3) Man unterscheidet bei Eisansatz je nach Entstehungsart: 
+ Raueis (Vereisung infolge von Luftfeuchte); 
+ Eisregen (Vereisung infolge von Niederschlag; sich ablagerndes Eis aus herabrinnendem Wasser). 
+(4) Dies kann zu unterschiedlichen Erscheinungsformen von Eisansatz führen, wie weiches Raueis, hartes 
+Raueis, Nassschnee oder glasiges Eis, mit jeweils unterschiedlichen physikalischen Eigenschaften wie 
+Dichte, Adhäsion, Kohäsion, Farbe und Form. Die Dichte kann z. B. zwischen 200 kg/m 3 und 900 kg/m 3
+liegen; die Form des Eisansatzes kann von konzentrischem (glasigem Eis oder Nassschnee) bis stark 
+exzentrischem Eisansatz auf der windzugewandten Seite bei weichem oder hartem Raueis variieren. 
+(5) Für die ingenieurmäßige Bemessung wird in der Regel angenommen, dass alle Bauteile eines Mastes 
+oder Turmes mit einer Eisschicht einer bestimmten Dicke überzogen sind; aus der Dicke und der ange-
+nommenen Dichte können das Gewicht sowie der Windwiderstand berechnet werden. Diese Vorgehensweise 
+kann in Gegenden gerechtfertigt sein, in denen der Eisansatz in Form von glasigem Eis oder Nassschnee 
+bemessungsrelevant ist. Bei Raueis entspricht eine an allen Teilen des Mastes oder Turms gleich dicke 
+Eisschicht jedoch nicht der Realität. Dennoch kann in Gegenden, wo der Eisansatz durch Luftfeuchte in Form 
+von Raueis relativ selten ist, die Berechnung des Eisgewichtes und des Windwiderstands mit einem überall 
+gleichförmigen Eisansatz praktikabel und zweckmäßig sein, sofern konservative Werte angenommen werden. 
+(6) Es gibt auch Gegenden in Europa, in denen extrem starke Vereisung auftreten kann; für diese 
+Gegenden sollte die Eislast durch Experten für Eislasten abgeschätzt werden. Die Angaben sollten das 
+Gewicht, den Ort, die Form usw. der Eislast am betrachteten Bauwerk umfassen; es sollte auch eine 
+zutreffende Kombination von Eis und Wind genau spezifiziert werden. 
+(7) Die folgenden Abschnitte geben eine allgemeine Beschreibung, wie Eislasten und Eis in Kombination 
+mit Wind auf Türme und Maste zu behandeln sind. 
+C.2 Eislast 
+(1) Die Prinzipien für charakteristische Eislast einschließlich der Dichte und anderer Parameter wird in 
+ISO 12494 angegeben. In ISO 12494 beruht die Eislast auf Eisklassen für Raueis und glasigem Eis, aber es 
+wird weder die wirkliche Eisklasse für die Lage noch die Eisdichte angegeben. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 66 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+64 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+(2) Es ist zu berücksichtigen, dass der Eisansatz auf Türmen und Masten asymmetrisch erfolgen kann. 
+Asymmetrischer Eisansatz ist bei solchen Masten von besonderer Bedeutung, bei denen der Eisansatz an 
+den verschiedenen Abspannseilen stark unterschiedlich sein kann und dadurch Biegeeffekte im Mastschaft 
+hervorgerufen werden können. Asymmetrische Vereisung von Abspannseilen kann sowohl durch aufgrund 
+der Windrichtung asymmetrisches Entstehen der Eisschicht als auch durch ungleichmäßiges Abfallen des 
+Eises von Abspannseilen verursacht werden. 
+C.3 Eisgewicht 
+(1) Bei der Abschätzung des Gewichts des Eises auf Gittermasten oder Rohrmasten kann in der Regel 
+angenommen werden, dass alle Bauteile, Steigleiterteile, Außenanbauten usw. mit einer Eisschicht 
+überzogen sind, die über die gesamte Bauteiloberfläche die gleiche Dicke aufweist, siehe Bild C.1. 
+Bild C.1  Bauteile mit Eisansatz 
+C.4 Wind und Eis 
+(1) In Gegenden, in denen Vereisung auftreten kann, ist für Türme und Maste häufig die Kombination von 
+Vereisung und Wind bemessungsrelevant. Der aufgrund von Eisansatz an den einzelnen Bauteilen 
+vergrößerte Windwiderstand kann dann zu einer maßgebenden Beanspruchung führen, selbst wenn die 
+angesetzten Windgeschwindigkeiten kleiner als die maximalen charakteristischen Werte sind. 
+(2) Der Windwiderstand eines Turmes oder Mastes mit Eisansatz darf nach Anhang B abgeschätzt 
+werden, wobei die durch den Eisansatz vergrößerten Bauteilquerschnitte zu berücksichtigen sind. Falls die 
+Spalten zwischen einzelnen Bauteilen schmal sind (kleiner als etwa 75 mm), dann sollte angenommen 
+werden, dass diese sich mit Eis zusetzen. Für Raueis ist die Abschätzung des Windwiderstandes weit 
+komplizierter und eine vollständig mit Eisansatz belegte Mastansicht sollte in die Betrachtung einbezogen 
+werden; zu Hinweisen siehe ISO 12494. 
+(3) Bei kombiniertem Auftreten von Eisansatz und Wind ist der charakteristische Staudruck in den 
+Zeiträumen, in denen Vereisung auftreten kann, geringer als der auf die gesamte Lebensdauer bezogene 
+charakteristische Staudruck. Dies darf durch Multiplikation des charakteristischen Staudrucks nach 
+EN 1991-1-4 mit einem Faktor k berücksichtigt werden. Der Faktor k ist in ISO 12494 gegeben und hängt ab 
+von der Eislastklasse. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 67 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+65 
+C.5 Asymmetrische Eislast 
+(1) Asymmetrischer Eisansatz an einem Mast sollte bei der Bemessung berücksichtigt werden, indem die 
+Eislast auf den Mastschaft und auf alle Abspannseile rechnerisch aufgebracht wird, abgesehen von: 
+der Abspannung bzw. den Abspannungen in einem Seil der obersten Abspannebene 
+und als getrennter Fall: 
+der Abspannung bzw. den Abspannungen in zwei Seilen der obersten Abspannebene. 
+C.6 Kombinationen von Eis und Wind 
+(1) Sowohl für asymmetrische als auch für symmetrische Vereisung sollten zwei Lastfallkombinationen mit 
+Wind berücksichtigt werden. Die Lasten sind nach 2.3 anzusetzen, und es sollten die beiden folgenden 
+Kombinationen untersucht werden: 
+ für die Leiteinwirkung Vereisung und Begleiteinwirkung Wind: 
+G Gk ice Qk,ice W k W Qk,w (C.1) 
+ für die Leiteinwirkung Wind und Begleiteinwirkung Vereisung: 
+G Gk W kQ k,w ice ice Qk,ice (C.2) 
+wobei k in C.4(3) definiert ist. 
+ANMERKUNG Der Nationale Anhang darf weitere Informationen zu Kombinationsfaktoren geben. Die Kombinations-
+beiwerte werden wie folgt empfohlen: 
+W = 0,5 (C.3a) 
+ice = 0,5 (C.3b) 
+(2) Die Teilsicherheitsbeiwerte für Eigengewicht G, für Eislast ice und für Windlast W sind in 
+Anhang A angegeben. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 68 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+66 
+Anhang D
+(normativ)
+Seile, Dämpfer, Isolatoren, Außenanbauten und Zusatzeinrichtungen 
+D.1 Seile 
+D.1.1 Stahlseile und stählerne Zugglieder 
+(1) Zu Stahlseilen und stählernen Zuggliedern siehe EN 1993-1-11. 
+(2) Es ist in der Regel metallisches Füllmaterial für Seile in Antennen zu verwenden. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+D.1.2 Nichtmetallische Seile 
+(1) Auch andere Werkstoffe als Stahl dürfen eingesetzt werden, wenn der Wert des Elastizitätsmoduls 
+ausreichend hoch ist und geeignete Maßnahmen zur Vermeidung hochfrequenter Schwingungen eingesetzt 
+werden. 
+ANMERKUNG Bei der Wahl synthetischer Werkstoffe können der geringe Elastizitätsmodul und die geringe Steifigkeit 
+eine höhere Vorspannung verlangen. Damit sind höhere Schwingfrequenzen möglich. Die Seilenden werden gegen 
+Eindringen von Feuchtigkeit versiegelt, um elektrische Entladungen zu vermeiden. Die Teilsicherheitsbeiwerte für 
+nichtmetallische Seile können höher liegen als bei Stahlseilen. 
+(2) Nichtmetallische Seile sollten den entsprechenden technischen Spezifikationen entsprechen. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+D.2 Dämpfer 
+D.2.1 Dämpfer für das Tragwerk 
+(1) Treten in Türmen oder Masten unter Wind Schwingungen auf, sollten diese, wenn notwendig, durch 
+den Einbau von Dämpfern reduziert werden. 
+ANMERKUNG Siehe EN 1993-3-2, Anhang B und Anhang A. 
+D.2.2 Seildämpfer 
+D.2.2.1 Allgemeines 
+(1) Um mögliche Seilschwingungen unter Wind zu unterdrücken, sollte eine der folgenden Vorgehens-
+weisen verfolgt werden: 
+a) Liegt die Vorspannung bei über 10 % der Bruchfestigkeit der Seile, sind in der Regel Seildämpfer zu 
+installieren. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 69 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+67 
+b) Sind die Seildämpfer nicht abgestimmt, sollten die Seile in den ersten Nutzungsjahren auf mögliche 
+exzessive Frequenzen und Schwingungsamplituden hin beobachtet werden. Bei Auftreten solcher 
+Schwingungen sollten die Dämpfer nach a) abgestimmt werden. 
+ANMERKUNG Zu Schwingungen siehe Anhang B. 
+D.2.2.2 Dämpfer zur Reduzierung der Wirbelerregung 
+(1) Geeignete Dämpfer sind dort einzubauen, wo nicht akzeptable wirbelerregte Schwingungen vorher-
+gesagt werden können oder beobachtet wurden. Die Dämpfer sollten den entsprechenden technischen 
+Spezifikationen entsprechend. Das Frequenzband der zu dämpfenden Schwingungen sollte darin festgelegt 
+sein. 
+D.2.2.3 Dämpfer zur Verhinderung von Galloping (inklusive Regen-Wind-induzierter Schwingungen) 
+(1) Galloping und Regen-Wind-induzierte Schwingungen können durch Kopplung von Abspannseilen in 
+den Punkten maximaler Amplituden durch Kopplungsseile abgestellt werden. Die Anschlüsse der Kopplungs-
+seile an die Abspannseile sind für Starkwindbedingungen nachzuweisen. 
+ANMERKUNG Auch hängende Ketten können zur Abstellung von Galloping eingesetzt werden, wenn die Ketten über 
+den maßgebenden Frequenzbereich wirksam sind. 
+D.3 Isolatoren 
+(1) Die Isolatoren sind entsprechend den elektrischen und mechanischen Anforderungen auszuwählen. 
+(2) Die charakteristischen Werte oder Bemessungswerte der Tragfähigkeiten sind den technischen Spezi-
+fikationen zu entnehmen. 
+(3) Die Isolatoren und ihre Anschlüsse sind in der Regel so zu bemessen, dass auch bei Ausfall der 
+elektrischen Eigenschaften die Maststabilität eingehalten wird. Dies kann z. B. durch Isolatoren mit 
+ausreichender Bruchsicherheit (fail safe) oder durch Parallelanordnung von Isolatoren (damage tolerant) 
+erreicht werden. 
+(4) Entladungsvorkehrungen sind in der Regel so vorzusehen, dass keine Entladungsbögen auf den 
+Isolatoroberflächen in der Nähe der Stahlanschlüsse auftreten. 
+(5) Werden Isolatoren am Mastfuß eingesetzt, sind in der Regel Pressenansatzpunkte für den Austausch 
+der Einheiten vorzusehen. 
+(6) Mechanische Belastungs- und Entlastungsversuche der keramischen Komponenten der Isolatoren (im 
+Rahmen von mechanischen Tests oder bei der Montage) sollen nach den maßgebenden technischen 
+Spezifikationen durchgeführt werden. 
+ANMERKUNG 1 Der Nationale Anhang darf weitere Hinweise geben. Soweit keine weiteren Angaben zu Belastungs- 
+und Entlastungsversuchen vorliegen, wird empfohlen, diese in Stufen von 5 % der erwarteten Kräfte in 1-Minuten-
+Schritten durchzuführen, so dass jede Belastung oder Entlastung nicht weniger als 20 Minuten in Anspruch nimmt. 
+ANMERKUNG 2 Zu elektrischen Eigenschaften siehe Nationalen Anhang. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 70 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+68 
+D.4 Außenanbauten und Zusatzeinrichtungen 
+D.4.1 Steigleitern, Bühnen usw. 
+(1) Steigleitern, Bühnen, Sicherheitsgeländer und andere Außenanbauten sollten die entsprechenden 
+technischen Spezifikationen erfüllen. 
+ANMERKUNG Der Nationale Anhang kann weitere Hinweise geben. 
+D.4.2 Blitzschutz 
+(1) Türme, Maste und Seile sollten als Blitzschutzmaßnahme vollständig geerdet sein. Dies kann durch 
+eine Metallbandage um den Mastfuß erfolgen, die mit Metallblechen und Stäben im Boden verbunden ist. 
+Seilverankerungen sind ähnlich zu schützen. 
+(2) Das Erdungssystem sollte vor der Stahlbaumontage verlegt sein, so dass entsprechend den Montage-
+schritten geerdet werden kann. 
+(3) Bei allen Anschlüssen mit elektrischer Leitung brauchen keine weiteren Kurzschlüsse verlegt zu 
+werden. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+D.4.3 Flugsicherung 
+(1) Wo notwendig, sollten Einrichtungen für die Flugsicherung angebracht werden. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+D.4.4 Schutz gegen Vandalismus 
+(1) Geeignete Schutzmaßnahmen gegen Zutritt nicht autorisierter Personen sind in der Regel vorzusehen. 
+ANMERKUNG Der Nationale Anhang darf weitere Hinweise geben. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 71 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+69 
+Anhang E
+(informativ) 
+Seilbruch 
+E.1 Einleitung 
+(1) Der Bruch von Seilen ist ein außergewöhnliches Ereignis. Zu Teilsicherheitsbeiwerten siehe Anhang A. 
+(2) Die exakte Berechnung der dynamischen Reaktionen eines abgespannten Mastes, die durch einen 
+plötzlichen Seilbruch verursacht werden, ist sehr aufwändig, weil eine Vielzahl von unterschiedlichen 
+Einflussfaktoren auf das Verhalten des Mastes unmittelbar nach dem Versagen mit Unsicherheiten behaftet 
+ist, wie zum Beispiel der genaue Ablauf des Seilbruchs, die Dämpfung der übrigen Abspannseile und des 
+Mastschaftes, die Schwingungen der Abspannseile und des Mastes usw. Daher darf das in E.2 angegebene 
+vereinfachte Berechnungsmodell angewendet werden. Eine konservative Vorgehensweise ist in E.3 
+angegeben. 
+E.2 Vereinfachtes Berechnungsmodell 
+(1) Bei der vereinfachten Berechnung eines abgespannten Mastes für einen Seilbruch sollten die 
+dynamischen Kräfte als äquivalent zu einer statischen Kraft angenommen werden, die in Höhe der 
+Abspannebene, in der das Auftreten des Seilbruchs angenommen, auf den Mast einwirkt. 
+(2) Bei der unten beschriebenen Berechnung dieser statischen Ersatzkraft F
+h,dyn,Sd wird angenommen, 
+dass: 
+ der Seilbruch einem einfachen Durchtrennen des Seils entspricht; 
+ die vor dem Auftreten des Risses in Seil 1 gespeicherte Energie (siehe Bild E.1) vernachlässigt wird; 
+ die Dämpfung nicht berücksichtigt wird; 
+ die Windlast vernachlässigt wird, wenn die quasi-statische Kraft berechnet wird. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 72 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+70 
+Seitenansicht Querschnitt im Bereich der obersten 
+Abspannebene 
+Legende 
+1 Seil 1 
+2 Seil 2 
+3 Seil 3 
+4 Auslenkung 
+Bild E.1  Seilbruch 
+(3) Bei einer gegebenen Auslenkung u wirken die Seile 2 und 3 mit einer Kraft F
+h,Sd auf den Mastschaft. 
+Dieser Zusammenhang wird als Kurve 1 in Bild E.2 wiedergegeben. Darin ist erkennbar, dass Fh,Sd wegen 
+des Schlaffwerdens der Seile mit zunehmender Auslenkung abnimmt. 
+(4) Bei Vernachlässigung der Seite in der betrachteten Abspannebene kann für das Mastsystem die 
+Beziehung zwischen einer äußeren Horizontalkraft und der Auslenkung am Knoten in gleicher Weise 
+aufgetragen werden. Kurve 2 in Bild E.2 zeigt diesen Zusammenhang. Im Schnittpunkt der beiden Kurven 1 
+und 2 sind die beiden Kräfte gleich groß, d. h., es herrscht ein statisches Gleichgewicht. Die auf den Mast 
+einwirkende Kraft ist F
+h,stat,Sd. 
+(5) Im Augenblick des Seilbruchs ist in den Seilen 2 und 3 potentielle Energie gespeichert. Bei beginnender 
+Verformung des Mastes wird diese Energie teilweise in Form von kinetischer Energie freigesetzt. 
+(6) Bei Erreichen der Maximalauslenkung wird die kinetische Energie null, da die Energie aus den Seilen 2 
+und 3 auf den Mast in Form von elastischer Dehnungsenergie im Schaft und in den Seilen übertragen worden 
+ist. Dämpfung ist dabei nicht berücksichtigt worden. 
+(7) Der Energieverlust der Seile 2 und 3 sollte als gleich der Fläche A2 unter der Kurve 1 in Bild E.2 
+angenommen werden. 
+(8) Die Auslenkung, die sich bei gleich großen Flächen A1 und A2 ergibt, sollte als die dynamische 
+Auslenkung udyn betrachtet werden. 
+(9) Die zu dieser dynamischen Auslenkung zugehörige dynamische Kraft ist Fh,dyn,Sd. Der Stoßfaktor 
+darf wie folgt bestimmt werden: 
+Sdh,stat,
+Sdh,dyn,
+F
+F (E.1) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 73 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+71 
+Legende 
+1 Kurve 1: Seile 2 und 3 
+2 Kurve 2: Mast ohne Seile 1, 2 und 3 
+ Fläche A1 unter Kurve 2
+ Fläche A2 unter Kurve 1
+Bild E.2  Kraft-Verformungs-Diagramm 
+(10) Die oben beschriebene Vorgehensweise für die Berechnung eines Mastes unmittelbar nach einem 
+möglichen Seilbruch gilt für Maste, die in 3 Richtungen abgespannt sind. Für Maste, die in 4 (oder mehr) 
+Richtungen abgespannt sind, ist eine ähnliche Vorgehensweise nach dem gleichen Prinzip anzuwenden. 
+(11) Die dynamische Kraft, die durch einen Seilbruch entsteht, sollte nicht mit klimatischen Lasten 
+kombiniert werden, wenn dazu Übereinstimmung zwischen Tragwerksplaner, Kunde und der zuständigen 
+Aufsichtsbehörde besteht. 
+E.3 Konservative Vorgehensweise 
+(1) Die durch einen Seilbruch verursachten dynamischen Kräfte im Mastschaft und in den Abspannseilen 
+können mit der folgenden statischen Berechnung konservativ abgeschätzt werden. 
+(2) Die Horizontalkomponente der vor dem Seilbruch wirkenden Seilkraft sollte als Zusatzlast auf den Mast 
+ohne Seilbruch wirkend angesetzt werden. 
+ANMERKUNG Dies entspricht der Vorspannung, wenn keine klimatischen Lasten einwirken. 
+(3) Die resultierenden Seilkräfte sollten bei Masten mit nur zwei Abspannebenen oder, falls die Berech-
+nung für die höchstgelegene Abspannebene durchgeführt wird, mit dem Faktor 1,3 multipliziert werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 74 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+72 
+E.4 Berechnung für den Zustand nach einem Seilbruch 
+(1) Zusätzlich zum oben in E.2 und E.3 beschriebenen Verfahren sollte der Mast unmittelbar nach einem 
+Seilbruch in der Lage sein, für einen begrenzten Zeitraum die Windlasten aufzunehmen, bis eine 
+provisorische Abspannung angeordnet werden kann. 
+(2) Falls keine weitergehenden Anforderungen gestellt werden, sollte der Mast ohne das gebrochene 
+Abspannseil in der Lage sein, einer reduzierten statischen Windlast ohne Berücksichtigung von zusätzlichen 
+feldweisen Belastungen zu widerstehen. Diese reduzierte Windlast sollte mit 50 % der charakteristischen 
+mittleren Windlast in ungünstigster Richtung wirkend angenommen werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 75 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+73 
+Anhang F
+(informativ) 
+Ausführung 
+F.1 Allgemeines 
+(1) Türme und Maste sind in der Regel nach EN 1090-2 herzustellen und zu errichten. 
+F.2 Schraubverbindungen 
+(1) Alle geschraubten Bauteile an Türmen und Masten sind in der Regel mit passenden Maßnahmen 
+auszustatten, um Lösen der Muttern im Betrieb zu verhindern. 
+(2) Schraubenlöcher in Bauteilen sind in der Regel zu bohren, wenn Ermüdung nicht vernachlässigt 
+werden kann. 
+(3) Passschrauben, vorgespannte reibfeste Schraubverbindungen oder Schrauben mit geringeren Toleran-
+zen für die Schraubenlöcher als in EN 1090-2 angegeben können eingesetzt werden, wenn 
+Verschiebungen kritisch sind (siehe F.4.2). 
+F.3 Schweißverbindungen 
+(1) Die Qualität der Schweißnähte, die für die Auswahl der entsprechenden Ermüdungsklasse eines Bau-
+teildetails angenommen wird, siehe 9.3, ist in der Regel auf den Werkszeichnungen darzustellen. 
+F.4 Toleranzen 
+F.4.1 Allgemeines 
+(1) Die in EN 1090-2 angegebenen Toleranzen sind in der Regel bei der Fertigung zu erfüllen. 
+(2) Geringere Toleranzen sind in der Regel zu verwenden, wenn die in EN 1090-2 angegebenen Tole-
+ranzen nicht die Anforderungen an die Funktion des Bauwerks erfüllen. 
+F.4.2 Ausführungstoleranzen 
+F.4.2.1 Gittermaste 
+(1) Die maximale Verschiebung der Mastspitze ist in der Regel anzugeben. 
+ANMERKUNG Der Nationale Anhand kann weitere Hinweise geben. Es wird empfohlen, dass die maximale Verschie-
+bung der Mastspitze nicht größer als 1/500 der Masthöhe ist. 
+(2) Die abschließende Ausrichtung ist bei ruhigen Wetterbedingungen unter Berücksichtigung der Tempe-
+ratureffekte durchzuführen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 76 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+74 
+F.4.2.2 Abgespannte Maste 
+(1) Die Empfindlichkeit der endgültigen Ausrichtung des Bauwerks und der Seilvorspannung auf veränder-
+liche Windgeschwindigkeiten sollte beim Entwurf festgestellt werden. 
+ANMERKUNG Wenn solche Untersuchungen für Windgeschwindigkeiten über 5 m/s durchgeführt werden sollen, 
+dienen sie zur Kompensation von Windeffekten. Dabei müssen auch Temperatureffekte berücksichtigt werden. 
+(2) Die endgültige Ausrichtung und die Vorspannung der Seile erfolgen normalerweise von der untersten 
+Abspannebene aufwärts. 
+ANMERKUNG Der Nationale Anhang darf Toleranzen vorgeben. Die folgenden Werte werden empfohlen: 
+a) Die endgültige Lage der Mastachse sollte sich in einem Kegel mit Spitze am Mastfuß und einem Radius von 1/1 500
+der Höhe über dem Mastfuß befinden. 
+b) Die Horizontalkomponente der Resultierenden aller Seilkräfte auf einem Abspannniveau sollte 5 % der Horizontal-
+komponente der mittleren Vorspannung eines Seiles nicht überschreiten. Die Vorspannung eines Seiles sollte um 
+nicht mehr als 10 % vom Bemessungswert abweichen, siehe EN 1993-1-11. 
+c) Die maximale Verformung des Mastes zwischen zwei Abspannniveaus sollte L/1 000 sein, wobei L der Abstand 
+zwischen zwei Abspannebenen ist. 
+d) Nach der Montage ist die Toleranz für die Ausrichtung von 3 aufeinander folgenden Seilanschlüssen am Mast 
+(L1 L2)/2 000, wobei L1 und L2 die Längen der aufeinander folgenden Mastfelder sind. 
+F.4.3 Beschränkungen für die Vorspannung 
+(1) Nach der Montage sind die Abspannseile entsprechend den Vorgaben der Berechnung vorzuspannen, 
+wobei die wirkliche Temperatur an der Baustelle zu berücksichtigen ist, siehe EN 1993-1-11. 
+(2) Um Seilschwingungen zu vermeiden, sind bei der Vorspannung ruhige Wetterbedingungen zu wählen, 
+so dass die Vorspannung unter 10 % der Bruchlast liegt. 
+ANMERKUNG 1 Für kurze Maste kann der Prozentsatz überschritten werden. 
+ANMERKUNG 2 Niedrigere Vorspannungen können zu Galloping-Schwingungen der Seile führen. 
+F.5 Vorstrecken der Seile 
+(1) Um ein wirklich elastisches Verhalten zu erzielen, sollten Seile möglichst vor der Ablängung vorgereckt 
+werden. Dies kann im Lieferwerk oder bei Vorliegen geeigneter Einrichtungen auf der Baustelle erfolgen, 
+siehe EN 1993-1-11. 
+ANMERKUNG Die Notwendigkeit eines Vorreckens hängt von dem geplanten Programm für das Nachspannen der 
+Seile, dem Seiltyp und den Abmessungen und der Empfindlichkeit auf Verformungen ab. 
+(2) Vorrecken sollte durch zyklisches Belasten des Seiles zwischen 10 % und 50 % der Bruchlast statt-
+finden. Die Zyklenanzahl sollte mindestens 10 sein. Beim Vorrecken sollte das Seil nicht um eine Rolle geführt 
+werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 77 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+75 
+Anhang G
+(informativ) 
+Knicken druckbeanspruchter Bauteile in Türmen und Masten 
+G.1 Beanspruchbarkeit von Druckstäben auf Biegeknicken 
+(1) Der Bemessungswert der Beanspruchbarkeit eines Druckstabes in einem Fachwerkturm oder Mast auf 
+Biegeknicken ist in der Regel nach EN 1993-1-1 wie folgt zu bestimmen: 
+M1
+y
+Rdb,
+Af
+N für Querschnitte der Klasse 1, 2 oder 3 (G.1a) 
+M1
+yeff
+Rdb,
+fA
+N für Querschnitte der Klasse 4 (G.1b) 
+Hierbei ist der Abminderungsbeiwert in Abhängigkeit von der maßgebenden Knicklinie nach EN 1993-1-1, 
+6.3.1.2. 
+(2) Bei gleichförmigen Bauteilen mit konstanter Normalkraft sind der Abminderungsbeiwert und der 
+Faktor zur Ermittlung von in der Regel mit dem effektiven Schlankheitsgrad eff (anstelle des Schlank-
+heitsgrades ) zu bestimmen, wobei gilt: 
+keff (G.2) 
+Dabei ist 
+k der Beiwert für den effektiven Schlankheitsgrad nach G.2 und 
+1
+; 
+1 definiert in EN 1993-1-1; 
+ der Schlankheitsgrad für den maßgebenden Knickfall, siehe Anhang H. 
+ANMERKUNG Der effektive Schlankheitsgrad berücksichtigt die Lagerungsbedingungen des Druckstabes. 
+(3) Bei einzelnen Winkelprofilen, die nicht an beiden Bauteilenden biegesteif angeschlossen sind (bei 
+geschraubten Anschlüssen müssen dazu mindestens zwei Schrauben vorhanden sein), ist der Bemessungs-
+wert der Beanspruchbarkeit auf Biegeknicken nach G.1(1) in der Regel mit einem Beiwert abzumindern. 
+ANMERKUNG Der Abminderungsbeiwert darf im Nationalen Anhang festgelegt werden. Es werden folgende Werte 
+empfohlen: 
+ = 0,8 bei einzelnen Winkelprofilen, die an beiden Bauteilenden mit nur einer Schraube befestigt sind; 
+ = 0,9 bei einzelnen Winkelprofilen, die an einem Bauteilende mit nur einer Schraube befestigt und an dem anderen 
+Bauteilende durchlaufen oder biegesteif befestigt sind. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 78 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+76 
+G.2 Beiwert k für den effektiven Schlankheitsgrad 
+(1) Zur Bestimmung des effektiven Schlankheitsgrades eines druckbeanspruchten Bauteils darf der 
+Beiwert k abhängig von der konstruktiven Ausbildung wie folgt bestimmt werden: 
+a) Gurtstäbe 
+k ist Tabelle G.1 zu entnehmen. 
+b) Diagonale Füllstäbe 
+k ist unter Berücksichtigung der Füllstabanordnung (siehe Bild H.1) und der Anschlüsse der Füllstäbe an 
+die Gurtstäbe zu bestimmen. Liegen keine weiteren Informationen vor, so ist in der Regel der Beiwert k
+der Tabelle G.2 zu entnehmen. 
+c) Horizontale Füllstäbe 
+Bei horizontalen Füllstäben von K-Fachwerken ohne horizontale Ausfachungsebene (siehe H.3.10), die 
+über ihre Länge je zur Hälfte druckbeansprucht und zugbeansprucht sind, ist der Beiwert k nach 
+Tabelle G.2 für Knicken aus der Fachwerkebene mit einem Korrekturbeiwert k1 nach Tabelle G.3 zu 
+multiplizieren. Der Korrekturbeiwert k1 ist abhängig vom Verhältnis der Druckbeanspruchung Nt zur 
+Zugbeanspruchung Nc. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 79 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+77 
+Tabelle G.1  Beiwert k für den effektiven Schlankheitsgrad von Gurtstäben 
+Nicht 
+durchgehendes 
+oberes Ende mit 108,02,1
+10
+8,02,1
+asymmetrisch 
+108,0
+ 0,9 
+1,0 (1)
+Fall (c) 
+Sekundäre 
+Ausfachung an 
+beiden Enden 
+108,0
+jedoch 0,9 
+und 1,0 
+1,0 
+Fall (e) 
+Primäre 
+Ausfachung an 
+beiden Enden 
+108,0
+jedoch 0,9 
+und 1,0 
+bezogen auf L2
+(2)
+108,0
+jedoch 0,9 
+und 1,0 
+bezogen auf L1
+1,0 
+bezogen auf 
+L1
+(1)
+ANMERKUNG 1 Es darf ein durch weitergehende Untersuchungen belegter Abminderungsfaktor verwendet werden. 
+ANMERKUNG 2 Nur maßgebend, wenn ein stark ungleichschenkliges Winkelprofil verwendet wird. 
+ANMERKUNG 3 Die angegebenen Werte gelten nur für 90°-Winkelprofile.
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 80 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+78 
+Tabelle G.2  Beiwert k für den effektiven Schlankheitsgrad von Füllstäben 
+(a) Winkelprofile mit Ein- und Zweischraubenverbindungen 
+nicht durchlaufend an 
+beiden Enden 
+(d. h. 
+Einschraubenverbindungen 
+an beiden Bauteilenden) 
+durchlaufend an einem Ende 
+(d. h. 
+Einschraubenverbindung an 
+einem Ende und 
+durchlaufend oder 
+Zweischraubenverbindung 
+durchlaufend an beiden 
+Enden 
+(d. h. 
+Zweischraubenverbindungen 
+oder durchlaufend an beiden 
+Bauteilenden bzw. 
+Zweischraubenverbindung 
+an einem und durchlaufend 
+am anderen Bauteilende) 
+z-z 
+z
+40,07,0
+ANMERKUNG 1 Die oben angegebenen Beispiele dienen der Erläuterung und spiegeln nicht notwendigerweise praktische Anwen-
+dungen wider. 
+ANMERKUNG 2 Es werden nur Anschlüsse an Winkelprofile dargestellt; der Beiwert k darf auch bei Anschlüssen an Hohlprofile 
+oder Vollquerschnitte mit angeschweißten Knotenblechen angewendet werden.
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 81 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+79 
+Tabelle G.2  Beiwert K für den effektiven Schlankheitsgrad von Füllstäben 
+(b) Hohlprofile und Zugstangen 
+gebogene und geschweißte Stangen 
+aus der Fachwerkebene 0,85 
+ANMERKUNG 1 Die K-Werte gelten auch für vorgespannte Zweischraubenverbindungen. 
+ANMERKUNG 2 Die Abminderung darf nur auf die wirkliche Bauteillänge bezogen werden, mindestens jedoch auf den Abstand 
+zwischen den Endschrauben. 
+ANMERKUNG 3 Sind die Bedingungen am Bauteilende unterschiedlich, ist in der Regel ein gemittelter k-Wert zu 
+bestimmen. 
+ANMERKUNG 4 Die oben angegebenen Beispiele dienen der Erläuterung und spiegeln nicht notwendigerweise praktische Anwen-
+dungen wider. 
+ANMERKUNG 5 Die k-Werte gelten für Füllstäbe mit gleichen Anschlüssen an den Bauteilenden. Bei Bauteilen mit 
+zwischenliegenden sekundären Füllstäben können höhere k-Werte auftreten; es ist daher in der Regel 
+k = 1,0 anzunehmen, es sei denn, kleinere Werte werden durch Versuche bestätigt.
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 82 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+80 
+Tabelle G.3  Korrekturbeiwert (k1) für horizontale Füllstäbe von K Fachwerken ohne horizontale 
+Aussteifungsebene 
+Verhältnis 
+c
+t
+N
+N Korrekturbeiwert k1
+0,0 0,73 
+0,2 0,67 
+0,4 0,62 
+0,6 0,57 
+0,8 0,53 
+1,0 0,50 
+Für negative 
+c
+t
+N
+N -Verhältnisse (d. h., wenn beide Bau-
+teile druckbeansprucht sind) gilt k1 = 1,0. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 83 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+81 
+Anhang H
+(informativ) 
+Knicklängen und Schlankheiten von druckbeanspruchten Bauteilen 
+H.1 Allgemeines 
+(1) Dieser Anhang enthält Hinweise zur Bestimmung von Knicklängen und der Schlankheiten von druck-
+beanspruchten Bauteilen in Türmen und Masten. 
+H.2 Bauteile in Eckstielen 
+(1) Die Schlankheit von Bauteile in Eckstielen sollte im Allgemeinen den Wert = 120 nicht übersteigen. 
+(2) Bei der Verwendung von einteiligen Winkelprofilen, Hohlprofilen oder Vollprofilen als druckbean-
+spruchte Eckstützen, die in zwei orthogonalen Ebenen, bei dreieckigen Gittermasten in 60° zueinander 
+liegenden Ebenen, symmetrisch ausgefacht sind, ist die Schlankheit in der Regel mit der Systemlänge, d. h. 
+dem Abstand der Knoten, zu bestimmen. 
+(3) Ist die Ausfachung in zwei orthogonalen Ebenen, bei dreieckigen Gittermasten in 60° zueinander 
+liegenden Ebenen versetzt, ist die Systemlänge in der Regel mit dem Abstand der Knoten anzusetzen. Im Fall 
+(d) in Tabelle G.1 ist die Schlankheit in der Regel nach Gleichung (H.1a) bzw. (H.1b) zu bestimmen: 
+yy
+1
+i
+L oder 
+vv
+2
+i
+L bei Winkelprofilen (H.1a) 
+yy
+1
+i
+L bei Hohlprofilen (H.1b) 
+ANMERKUNG Im Vergleich zu einer genaueren Berücksichtigung der tatsächlichen Lagerungsbedingungen kann die 
+Verwendung der Schlankheit 
+vv
+2
+i
+L zu konservativen Ergebnissen führen. 
+(4) Eckstiele können als mehrteilige Bauteile aus zwei über Eck gestellten oder parallelen Schenkel an 
+Schenkel angeordneten Winkelprofilen ausgeführt werden. 
+(5) Mehrteilige Bauteile, die aus zwei Schenkel an Schenkel parallel angeordneten Winkelprofilen bestehen 
+(und somit einen T-Querschnitt bilden), dürfen einen geringen Schenkelabstand haben und in gewissen 
+Abständen mit Schrauben und Futtern verbunden sein. Diese Bauteile sind in der Regel gegen Biegeknicken 
+um beide Achsen nach EN 1993-1-1, 6.4.4 nachzuweisen. Der maximale Abstand zwischen den Binde-
+blechen ist in EN 1993-1-1, 6.4.4 geregelt. 
+ANMERKUNG Der Nationale Anhang darf Hinweise zur Vorgehensweise geben, wenn die Abstände zwischen den 
+Schrauben größer sind als in EN 1993-1-1, 6.4.4 angegeben. 
+(6) Ist der Spalt zwischen den Winkelprofilen größer als 1,5 t (mit t = Schenkeldicke), so darf bei Schraub-
+verbindungen mit Futter in der Regel nicht von einer vollen Verbundwirkung ausgegangen werden; in diesem 
+Fall sind die Querschnittseigenschaften in der Regel für die tatsächliche Konfiguration oder nur für einen Spalt 
+von 1,5 t zu bestimmen und der kleinere Wert ist zu bestimmen. Werden geschraubte Bindebleche verwendet, 
+so darf in der Regel auch bei großen Spalten von voller Verbundwirkung ausgegangen werden, siehe 
+EN 1993-1-1, 6.4.4. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 84 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+82 
+(7) Bindebleche sollen eine Relativverschiebung der beiden Winkelprofile verhindern; bei Verwendung von 
+Schraubenverbindungen der Kategorie A oder B nach EN 1993-1-8, 3.4 sind die Lochdurchmesser in der 
+Regel zu reduzieren. 
+ANMERKUNG 1 Die in (5) bis (7) angegebenen Regeln gelten auch für mehrteilige Bauteile, die als Füllstäbe 
+eingesetzt werden. 
+ANMERKUNG 2 Der Nationale Anhang darf weitergehende Hinweise geben. 
+H.3 Füllstäbe 
+H.3.1 Allgemeines 
+(1) Die nachfolgende Regelungen gelten für die in Bild H.1 dargestellten typischen primären Füllstab-
+anordnungen. Sekundäre Füllstäbe können zur Unterteilung der primären Füllstäbe oder der Eckstiele 
+verwendet werden; Beispiele hierzu sind in der Bildern H.1 (IA, IIA, IIIA, IVA) und H.2 dargestellt. 
+(2) Bei Füllstäben ist die Schlankheit 
+ in der Regel wie folgt zu bestimmen: 
+vv
+d
+i
+L i bei Winkelprofilen (H.2a) 
+yy
+d
+i
+L i bei Hohlprofilen (H.2b) 
+wobei Ldi entsprechend Bild H.1 definiert ist. 
+ANMERKUNG Im Vergleich zu einer genaueren Berücksichtigung der tatsächlichen Lagerungsbedingungen kann die 
+Schlankheit 
+vv
+d
+i
+L i konservativ sein. 
+(3) Die Schlankheit von primären Füllstäben sollte im Allgemeinen den Wert = 180 und vom sekundären 
+Füllstäben den Wert = 250 nicht überschreiten. Bei einer mehrfachen Vergitterung (siehe Bild H.1(V)) sollte 
+die Gesamtbauteilschlankheit kleiner als = 350 sein. 
+ANMERKUNG Die Verwendung von Bauteilen mit größeren Schlankheiten kann zu Schwingungen und Schadensan-
+fälligkeit gegenüber Biegung infolge lokaler Lasteinwirkung führen. 
+H.3.2 Einfaches Fachwerk 
+(1) Bei geringen Lasten und relativ kurzen Bauteillängen kann ein einfaches Fachwerk verwendet werden 
+(siehe Bild H.1(I)). 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 85 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+83 
+ANMERKUNG Die Zugglieder in 
+IA IIA IIIA IVA 
+oder 
+kreuzweise 
+Ausfachung 
+kreuzweise 
+Ausfachung mit 
+sekundären 
+Bauteilen einfaches 
+Fachwerk
+Ldi = Ld1
+Ldi = Ld1
+Ldi = Ld2 aus der 
+Ebene 
+Ldi = Ld1
+Bild H.1  Typische Anordnungen von Füllstäben 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 86 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+84 
+H.3.3 Kreuzweise Ausfachung 
+(1) Wenn die Druck- und Zugkraft zweier sich kreuzender und durchgehender Bauteile betragsmäßig 
+gleich sind (siehe Bild H.1(II)), darf der Kreuzungspunkt sowohl in der Fachwerkebene als auch senkrecht zur 
+Fachwerkebene als gehalten und die Knicklänge für Knicken um die schwache Achse mit Ld2 angenommen 
+werden. 
+(2) Wenn die Druck- und Zugkraft zweier sich kreuzender und durchgehender Bauteile betragsmäßig nicht 
+gleich sind, sind die Bauteile in der Regel für die größtmögliche Druckkraft zu bemessen. Zusätzlich ist in der 
+Regel nachzuweisen, dass die Summe der Tragfähigkeiten beider Bauteile gegenüber Knicken mindestens so 
+groß ist wie die Summe der Normalkräfte in beiden Bauteilen. Bei der Berechnung der Tragfähigkeit 
+gegenüber Knicken ist in der Regel als Systemlänge L
+d und als Trägheitsradius der für Knicken senkrecht zur 
+Ausfachungsebene zu verwenden. Die Schlankheit darf wie folgt bestimmt werden: 
+yy
+d
+i
+L oder 
+zz
+d
+i
+L bei Winkelprofilen (H.3a) 
+yy
+d
+i
+L bei Hohlprofilen oder Vollprofilen (H.3b) 
+ANMERKUNG Ist eines der Bauteile nicht durchgehend, darf der Kreuzungspunkt nur dann als senkrecht zur 
+Fachwerkebene als gehalten betrachtet werden, wenn durch die konstruktive Ausbildung des Anschlusses im 
+Kreuzungspunkt sichergestellt ist, dass die effektive Steifigkeit beider Bauteile für Verformungen aus der Fachwerkebene 
+erhalten bleibt und beide Bauteile eine ähnliche Längssteifigkeit aufweisen. 
+H.3.4 Kreuzweise Ausfachung mit Zuggliedern 
+(1) Jedes der beiden diagonalen Zugglieder sowie die Horizontalstäbe sind in der Regel für die Abtragung 
+der gesamten Querkraft zu bemessen (siehe Bild H.1(VI)). 
+ANMERKUNG Das Tragverhalten von Zuggliedsystemen ist abhängig vom der Art des Einbaus, Nachstellvorgängen 
+oder relativen Verformungen. Es sind Vorkehrungen zur Aufbringung einer Vorspannung sowie zur Sicherstellung einer 
+gegenseitigen Stützung im Kreuzungspunkt notwendig, um Verformungen zu minimieren. 
+H.3.5 Kreuzweise Ausfachung mit sekundären Füllstäben 
+(1) Werden sekundäre Füllstäbe zur Aussteifung der Gurtstäbe eingefügt (siehe Bild H.1(IIA und IVA) und 
+Bild H.2(a)), ist die Knicklänge in der Regel mit Ld1 anzusetzen. 
+(2) In der Regel ist auch Knicken aus der Fachwerkebene sowohl mit der Knicklänge Ld2 als auch für die 
+Summe der Normalkräfte mit die Knicklänge Ld nachzuweisen, siehe H.3.3. 
+H.3.6 Kreuzweise Ausfachung mit im Kreuzungspunkt unterbrochenen Füllstäben und 
+durchgehenden horizontalen Füllstäben 
+(1) In der Regel muss der horizontale Stab senkrecht zur Fachwerkebene eine ausreichende Steifigkeit 
+aufweisen, um für Lastfälle eine Stützung zu bewirken, bei denen die Druckkraft in der einen Diagonale 
+betragsmäßig größer als die Zugkraft in der anderen Diagonale ist oder beide Bauteile als Druckstab wirken, 
+siehe Bild H.1(IV). 
+(2) Das oben genannte Kriterium darf als erfüllt angesehen werden, wenn der Horizontalstab für die 
+Summe der Horizontalkomponenten der Kräfte in den Diagonalen nachgewiesen wird, wobei als Knicklänge 
+für Knicken aus der Fachwerkebene die gesamte Bauteillänge anzusetzen ist. 
+ANMERKUNG Zusätzliche Biegespannungen in Eckstreben infolge von senkrecht zum Fachwerk einwirkenden lokalen 
+Lasten (z. B. Wind) sind gegebenenfalls zu berücksichtigen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 87 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+85 
+H.3.7 Kreuzweise Ausfachung mit diagonalen Eckstreben 
+(1) Bei kreuzweisen Ausfachungen darf zur Reduzierung der Knicklänge senkrecht zur Fachwerkebene 
+eine diagonale Eckstrebe angeordnet werden (siehe Bild H.2(b)). Es darf wie in H.3.3 vorgegangen werden, 
+um eine ausreichende Stützwirkung nachzuweisen. 
+(2) In diesem Fall sind in der Regel folgende fünf Nachweise gegen Knicken zu führen: 
+ Knicknachweis um die schwache Achse mit der Länge Ld1 für die maximale Last; 
+ Knicknachweis für Knicken rechtwinklig zu Fachwerkebene mit der Länge Ld2 für die maximale Last; 
+ Knicknachweis für die beiden Diagonalstäbe der kreuzweisen Ausfachung für Knicken aus der 
+Fachwerkebene mit der Länge Ld3 für die Summe der Lasten in den beiden Stäben; 
+ Knicknachweis für die zwei durch die diagonale Eckstrebe verbundenen Diagonalstäbe (je eine 
+Diagonale in zwei benachbarten Fachwerkwänden) für Knicken aus der Fachwerkebene mit der Länge 
+Ld4 für die Summe der Lasten in den beiden Stäben; 
+ANMERKUNG In diesem Fall ist in der Regel die gesamte Tragfähigkeit aus der Summe der Tragfähigkeiten der 
+beiden Druckstäbe gegen Knicken zu bestimmen (siehe H.3.3(2)). 
+ Knicknachweis für vier Diagonalstäbe (jedes Bauteil der kreuzweisen Ausfachung in zwei benachbarten 
+Fachwerkwänden) für Knicken aus der jeweiligen Fachwerkebene mit der Länge Ld für die Summe der 
+Lasten in allen vier Bauteilen. 
+H.3.8 Diagonalstäbe von K-Fachwerken 
+(1) Werden keine sekundären Füllstäbe angeordnet (siehe Bild H.1(III)), darf die Länge Ld2 als Knicklänge 
+für Knicken um die schwache Achse angesetzt werden. 
+(2) Werden sekundäre Füllstäbe in den Fachwerkwänden angeordnet, jedoch keine Ausfachung mit 
+Walmstäben (siehe Bild H.1(IIIA)), darf die Länge Ld2 als Knicklänge für Knicken senkrecht zur betrachteten 
+Fachwerkebene angesetzt werden. Die Schlankheit berechnet sich damit in der Regel wie folgt: 
+yy
+d2
+i
+L oder 
+zz
+d2
+i
+L (H.4) 
+(3) Werden sekundäre Füllstäbe in den Fachwerkwänden und zusätzlich Walmstäbe angeordnet (siehe 
+Bild H.2(c)), ist in der Regel die Knicklänge für den Nachweis gegen Knicken aus der Fachwerkebene mit den 
+durch die Walmstäbe gegebenen Bauteillängen Ld4 zu führen. Die Schlankheit berechnet sich damit in der 
+Regel wie folgt: 
+yy
+d4
+i
+L oder 
+zz
+d4
+i
+L für alle Querschnittstypen (H.5) 
+H.3.9 Horizontale Füllstäbe in einer Fachwerkwand mit horizontaler Ausfachungsebene 
+(1) Wird die Länge der horizontalen Füllstäbe in einer Fachwerkwand zu groß, kann eine horizontale 
+Ausfachungsebene angeordnet werden, um die Stabilität senkrecht zur Fachwerkebene zu erhöhen. 
+(2) Die Systemlänge eines horizontalen Füllstabes ist in der Regel für Knicken aus der Fachwerkebene als 
+Abstand zwischen den Schnittpunkten in der horizontalen Ausfachungsebene und für Knicken in der 
+Fachwerkebene als Abstand zwischen den Abstützungen in der Fachwerkebene anzusetzen. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 88 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+86 
+(3) Bei Bauteilen aus einteiligen Winkelprofilen ist in der Regel auf den korrekten Ansatz der maßgebenden 
+Querschnittsachsen zu achten. In der Regel ist die schwache Hauptachse v v zu betrachten, wenn keine 
+geeignete Abstützung durch Fachwerkstäbe in oder im Bereich der Mitte der Systemlänge vorhanden ist. 
+Anderenfalls sind in der Regel Knicknachweise sowohl für die schwache Hauptachse v v mit der System-
+länge zwischen den Abstützungen als Knicklänge als auch Nachweise für Knicken aus der Fachwerkebene 
+um die entsprechende Achse mit der gesamten Länge als Knicklänge zu führen. 
+ANMERKUNG Im Vergleich zu einer genaueren Betrachtung mit Berücksichtigung der tatsächlichen Lagerungsbedin-
+gungen kann dieses Vorgehen zu konservativen Ergebnissen führen. 
+(4) Ist die horizontale Ausfachungsebene nicht nur aus Dreiecken zusammengesetzt, sind in der Regel 
+zusätzliche Biegebeanspruchungen der Eckstiele zu berücksichtigen, die infolge senkrecht zur Fachwerk-
+ebene einwirkender lokaler Lasten (z. B. Wind) auftreten können, siehe Bild H.3. 
+(5) Zur Vermeidung von Knicken bei Ausfachungen, die nicht nur aus Dreiecken zusammengesetzt sind, ist 
+in der Regel 
+ die horizontale Ausfachungsebene so zu bemessen, dass eine konzentrierte horizontale Einzellast der 
+Größe p H, die in Bauteilmitte aufgebracht wird, aufgenommen werden kann; p ist hierbei der 
+prozentuale Anteil der maximalen Druckkraft H in Fachwerkebene (siehe H.4); 
+ nachzuweisen, dass die maximale Verformung des horizontalen Fachwerkebene unter dieser Last den 
+Wert L/500 nicht überschreitet. 
+a) [IIB] b) [IIC] 
+Kreuzweise Ausfachung mit 
+zusätzlichen Eckdiagonalen 
+Bild H.2  Sekundäre Ausfachungen 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 89 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+87 
+Walmausfachung 
+mit Dreiecken 
+c) [IIIB] 
+Legende 
+1 Eckstrebe (von untergeordneter Bedeutung, falls beide Füllstäbe druckbeansprucht sind) 
+2 Walmausfachung 
+Bild H.2  Sekundäre Ausfachungen (fortgesetzt)
+Horizontale Ausfachungen aus Dreiecken 
+* Sind zwei Diagonalen vorhanden, dürfen diese als Zugglieder bemessen werden. 
+Horizontale Ausfachungsebenen, die nicht nur aus Dreiecken zusammengesetzt sind 
+(nicht empfohlen, außer bei besonderer Berücksichtigung der Einflüsse aus Biegung)
+Bild H.3  Typische horizontale Ausfachungen 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 90 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+88 
+H.3.10 Horizontale Füllstäbe ohne horizontale Ausfachungsebene 
+(1) Bei kleinen Basisbreiten von Türmen und Masten darf gegebenenfalls auf horizontale Ausfachungs-
+ebenen verzichtet werden, wenn die entsprechenden Nachweise geführt werden. 
+(2) Die Schlankheit für Knicken aus der Fachwerkebene ist in der Regel mit der Länge Lh (siehe 
+Bild H.4(a)) und dem entsprechenden Trägheitsradius zu ermitteln. Für Bauteile aus einteiligen Winkelprofilen 
+ist jedoch in der Regel der Trägheitsradius bezogen auf die schwache Hauptachse v-v und die Länge Lh2 zu 
+verwenden, sofern innerhalb der Systemlänge keine Abstützung durch sekundäre Füllstäbe gegeben ist; 
+anderenfalls ist in der Regel die Länge Lh1 anzusetzen, siehe Bild H.4(b). 
+ANMERKUNG Im Vergleich zu einer genaueren Betrachtung mit Berücksichtigung der tatsächlichen Lagerungsbedin-
+gungen kann dieses Vorgehen zu konservativen Ergebnissen führen. 
+(3) Um Knicken des horizontalen Füllstabes zu vermeiden, ist in der Regel die Bedingung in H.3.9(5) 
+einzuhalten. 
+ANMERKUNG Zusätzliche Biegespannungen in Eckstreben infolge von senkrecht zum Fachwerk einwirkenden lokalen 
+Lasten (z. B. Wind) sind gegebenenfalls zu berücksichtigen. 
+a) 
+ b) 
+ = Lh2/ivv
+und ( = Lh/izz) 
+für 
+Winkelprofile 
+ = Lh1/ivv
+und ( = Lh/izz) 
+für 
+Winkelprofile 
+ = Lh/iyy für Hohlprofile = Lh/iyy
+für 
+Hohlprofile 
+Bild H.4  Horizontalstäbe beim K-Fachwerk ohne horizontale Ausfachungsebene 
+H.3.11 K-Fachwerke mit Abknickungen 
+(1) Bei Türmen mit großer Basisbreite kann eine Abknickung der Diagonalen vorgenommen werden (siehe 
+Bild H.5), die zu einer Reduzierung der Länge und der Abmessungen der redundanten Bauteile führt. Da 
+diese Maßnahme hohe Beanspruchungen in den Bauteilen verursacht, die in der Abknickung aufeinander-
+treffen, ist in der Regel am Verbindungspunkt eine Abstützung senkrecht zur Fachwerkwand anzuordnen. 
+Diagonalen und Horizontalstäbe sind in der Regel wie beim K-Fachwerk zu bemessen, wobei die 
+Systemlängen der Diagonalen auf den Abstand zum Abknickpunkt bezogen werden. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 91 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+89 
+H.3.12 Portalrahmenfachwerk 
+(1) Mit einem horizontalen Füllstab am Abknickpunkt kann das Tragsystem in einen Portalrahmen überführt 
+werden, siehe Bild H.6. Da dies zu einem Verlust der Gelenkwirkung im K-Fachwerk führt, sind in der Regel 
+für diesen Fall besondere Nachweise zu führen, um die Einflüsse aus Gründungssetzungen und 
+Auflagerverschiebungen zu berücksichtigen. 
+Bild H.5  K-Fachwerk mit Kopfbändern 
+Bild H.6  Portalrahmenfachwerk 
+H.3.13 Mehrfach vergitterte Fachwerke 
+(1) Bei einem mehrfach vergitterten Fachwerk sind in der Regel die durchgehenden Füllstäbe, die an allen 
+Knoten verbunden sind, als sekundäre Füllstäbe (siehe H.4) mit einer Systemlänge von Eckstiel zu Eckstiel 
+und einem entsprechenden Trägheitsradius i
+yy oder izz (siehe Bild H.7) zu bemessen. Für die Stabilität des 
+Moduls gilt in der Regel für die Schlankheit 
+yyi
+L < 350. Bei Bauteilen aus einteiligen Winkelprofilen gilt in 
+der Regel die Grenze: 
+vv
+yy
+i
+i
+ > 1,50, wobei iyy der Trägheitsradius für die parallel zur Gitterebene liegende 
+Querschnittsachse ist. 
+(2) Der Stabilitätsnachweis des in Bild H.7 dargestellten Bauteils A-B ist in der Regel mit der mit der 
+Knicklänge Lo berechneten Schlankheit zu führen: 
+vv
+o
+i
+L bei Winkelprofilen (H.6a) 
+yy
+o
+i
+L bei Hohlprofilen und Vollprofilen (H.6b) 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 92 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+90 
+ANMERKUNG Im Vergleich zu einer genaueren Betrachtung mit Berücksichtigung der tatsächlichen Lagerungs-
+bedingungen kann die Verwendung der Schlankheit 
+vv
+o
+i
+L zu konservativen Ergebnissen führen. 
+Bild H.7  Mehrfach vergittertes Fachwerk 
+H.4 Sekundäre Füllstäbe 
+(1) Zur Berücksichtigung von Imperfektionen in Eckstielen sowie zur Bemessung sekundärer Füllstäbe ist 
+in der Regel eine fiktive Abtriebskraft anzusetzen, die am Knotenpunkt des Anschlusses des sekundären 
+Füllstabes senkrecht zum gestützten Eckstiel (oder zu einem Gurtstab, falls es sich nicht um einen Eckstiel 
+handelt) angreift. Die Bemessung eines sekundären Füllstabes wird in der Regel unter Ansatz dieser 
+Abtriebskraft in Abhängigkeit von der Schlankheit des gestützten Eckstiels nach (2) und (3) durchgeführt. 
+(2) Die nacheinander an jedem Knoten in der Fachwerkebene anzusetzende Abtriebskraft, ausgedrückt als 
+prozentualer Anteil p der Normalkraft im Eckstiel, darf für verschiedene Schlankheiten des Eckstiels wie folgt 
+angenommen werden: 
+p = 1,41 für 
+ < 30 (H.7a) 
+50
+40p für 30 135 (H.7b) 
+p = 3,5 für > 135 (H.7c) 
+(3) Ist in einem Modul mehr als ein zwischenliegender Knoten vorhanden, ist in der Regel für das 
+sekundäre Füllstabsystem ein separater Nachweis mit 2,5 % der Normalkraft des Eckstiels zu führen, die 
+gleichmäßig auf alle zwischenliegenden Knoten verteilt wird. Diese fiktiven Abtriebskräfte werden in der Regel 
+gleichzeitig und gleichgerichtet rechtwinklig zum Gurtstab und in der Fachwerkebene angesetzt. 
+(4) In beiden Fällen (2) und (3) sind die Schnittkräfte innerhalb der dreieckförmigen Ausfachung in der 
+Regel mittels linear-elastischer Berechnung zu ermitteln. 
+DIN EN 1993-3-1:2010-12
+
+===== PDF-SEITE 93 =====
+EN 1993-3-1:2006 + AC:2009 (D) 
+(5) Für die Bemessung der primären Füllstäbe sind in der Regel die aus dieser fiktiven Abtriebskraft 
+resultierenden Schnittkräfte generell zu den Primärschnittkräften aus der Berechnung des Gesamtsystems zu 
+addieren. Ausgenommen sind freistehende Gittermaste konventioneller Bauart; hier brauchen die 
+Schnittkräfte infolge der fiktiven Abtriebskräfte nicht zu den Primärschnittkräften addiert zu werden, wenn 
+diese kleiner sind als die fiktiven Abtriebskräfte  und das primäre Füllstabsystem für die fiktiven 
+Abtriebskräfte nachgewiesen wird. Bei abgespannten Masten sind die Schnittkräfte aus den fiktiven 
+Abtriebkräften in der Regel immer zu den Primärschnittkräften zu addieren. 
+(6) Erfolgt die Bemessung wie in (1) bis (5) beschrieben unter Berücksichtigung der fiktiven Abtriebskräfte, 
+darf angenommen werden, dass die Steifigkeit der Ausfachung ausreichend ist. 
+(7) Der oben genannte Wert der fiktiven Abtriebskraft kann unzureichend sein, wenn das Hauptbauteil 
+exzentrisch belastet oder der Winkel zwischen der Hauptdiagonalen eines K-Fachwerkes und dem Eckstiel 
+kleiner als 25° ist. In diesem Fall ist in der Regel ein genauerer Wert anzusetzen, mit dem das Moment infolge 
+der Exzentrizität sowie sekundäre Biegespannungen aus Eckstielverformungen berücksichtigt werden. 
+(8) Liegt die Knickrichtung nicht in der Fachwerkebene, sind in der Regel die Werte nach den Gleichungen 
+(H.7a), (H.7b) und (H.7c) durch den Faktor 
+2 zu dividieren. 
+H.5 Schalentragwerke 
+(1) Zur Tragfähigkeit und Stabilität von Schalentragwerken siehe EN 1993-1-6. 
+ANMERKUNG Siehe auch EN 1993-3-2. 
+91 
+DIN EN 1993-3-1:2010-12

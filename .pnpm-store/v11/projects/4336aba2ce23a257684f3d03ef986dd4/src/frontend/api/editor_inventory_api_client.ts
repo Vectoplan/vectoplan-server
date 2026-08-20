@@ -66,6 +66,36 @@ export const DEFAULT_EDITOR_INVENTORY_CACHE_TTL_MS = 5_000;
 export const DEFAULT_EDITOR_INVENTORY_STALE_CACHE_TTL_MS = 60_000;
 export const DEFAULT_EDITOR_INVENTORY_MAX_RETRIES = 1;
 
+/**
+ * Resolve the selection carried by the productive inventory response.
+ *
+ * The bootstrap selection is only a fallback. Treating it as an explicit
+ * normalization override made the editor runtime select slot 0 after every
+ * reload even though the user-inventory service (and its iframe) had restored
+ * another slot.
+ */
+export function resolveEditorInventoryPayloadSelectedSlot(
+  payload: unknown,
+  fallback: number,
+  hotbarSize: number,
+): number {
+  const record = asRecord(payload);
+  const inventory = asRecord(record.inventory);
+  const source = Object.keys(inventory).length > 0 ? inventory : record;
+  const candidate =
+    source.selectedSlot ??
+    source.selected_slot ??
+    source.defaultSelectedSlot ??
+    source.default_selected_slot;
+
+  return asInteger(
+    candidate,
+    fallback,
+    0,
+    Math.max(0, hotbarSize - 1),
+  );
+}
+
 export type EditorInventoryHttpMethod = "GET";
 
 export type EditorInventoryCachePolicy =
@@ -819,9 +849,14 @@ export class EditorInventoryApiClient {
   }
 
   private normalizePayload(payload: unknown): EditorInventoryPayload {
+    const selectedSlot = resolveEditorInventoryPayloadSelectedSlot(
+      payload,
+      this.config.selectedSlot,
+      this.config.hotbarSize,
+    );
     const normalized = normalizeEditorInventoryPayload(payload, {
       hotbarSize: this.config.hotbarSize,
-      selectedSlot: this.config.selectedSlot,
+      selectedSlot,
       includeEmptySlots: this.config.includeEmptySlots,
       route: this.config.apiUrl,
       rejectForbiddenDebugItems: true,

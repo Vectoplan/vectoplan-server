@@ -1,0 +1,1418 @@
+{
+  "document_id": "EN_1993-4-3__base_standard__EC_3_Teil_4-3",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-4-3",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 4-3.pdf",
+  "relative_path": "EC 3/EC 3 Teil 4-3.pdf",
+  "sha256": "b99f52765ba6f1db62b6bcf4afc65e4eacad3dfac7f382b3a852e6bf55c456aa",
+  "pages": 43,
+  "text_pages": 43,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 105,
+  "equation_candidate_count": 58,
+  "table_reference_count": 0,
+  "figure_reference_count": 6,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161358+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232716+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 4-3.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ..........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ...................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... .................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... .........................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Prinzipien und Anwendungsregeln..............................................................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... ..............................11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "SI-Einheiten ............................................................................................................... ...........................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7",
+      "title": "Symbole .................................................................................................................... ............................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7.1",
+      "title": "Lateinische Großbuchstaben ............................................................................................... ..............12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7.2",
+      "title": "Lateinische Kleinbuchstaben .............................................................................................. ...............13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7.3",
+      "title": "Griechische Buchstaben................................................................................................... ..................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.8",
+      "title": "Terminologie ............................................................................................................... .........................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen der Bemessung..................................................................................................... ..........15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines................................................................................................................ ..........................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundlegende Anforderungen an Rohrleitungen.............................................................................15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Differenzierung der Zuverlässigkeit........................................................................................ ...........16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Rechenverfahren............................................................................................................ ......................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5",
+      "title": "Grenzzustände der Tragfähigkeit............................................................................................ ...........16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6",
+      "title": "Grenzzustände der Gebrauchstauglichkeit .................................................................................... ..17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffeigenschaften ....................................................................................................... ...............17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Eigenschaften von Stahl für Rohrleitungen..............................................................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Eigenschaften von Schweißnähten............................................................................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Zähigkeitsanforderungen an Rohrwerkstoffe und die Schweißnähte............................................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Verbindungsmittel .......................................................................................................... .....................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6",
+      "title": "Bodeneigenschaften ......................................................................................................... ..................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Einwirkungen ................................................................................................................. ......................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Zu berücksichtigende Einwirkungen.......................................................................................... .......19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Teilsicherheitsbeiwerte für Einwirkungen ................................................................................... .....20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Lastkombinationen für Grenzzustände der Tragfähigkeit...............................................................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Lastkombinationen für Grenzzustände der Gebrauchstauglichkeit ..............................................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Berechnung ................................................................................................................... .......................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Tragwerksmodelle ........................................................................................................... ....................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Vereinfachtes Bemessungsverfahren im Grenzzustand der Tragfähigkeit...................................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind ....................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Nachweise im Grenzzustand der Tragfähigkeit................................................................................ 24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.1",
+      "title": "LS1: Bruch............................................................................................................... .............................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.2",
+      "title": "LS2: Plastische Dehngrenze............................................................................................... ................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.3",
+      "title": "LS3: Verformung .......................................................................................................... ........................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.4",
+      "title": "LS4: Ermüdung ............................................................................................................ ........................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.5",
+      "title": "LS5: Leckagen............................................................................................................ ..........................25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Nachweise in den Grenzzuständen der Gebrauchstauglichkeit.....................................................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Gesichtspunkte für die Planung hinsichtlich Fertigung und Montage ..........................................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 10
+    },
+    {
+      "clause": "700",
+      "title": "N/mm",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Prinzipien und Anwendungsregeln",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Druck: Der unter statischen Bedingungen gemessene Druck eines Gases oder einer Flüssigkeit innerhalb",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Bemessungsdruck (DP): Druck, auf dem die Berechnungen bei der Bemessung basieren.",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Betriebsdruck (OP): Druck, der innerhalb eines Systems unter normalen Betriebsbedingungen auftritt.",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Maximaler Betriebsdruck (MOP): Maximaler Druck, bei dem ein System unter normalen Bedingungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Bemessungstemperatur (DT): Temperatur, auf der die Berechnungen bei der Bemessung basieren.",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5.6",
+      "title": "Betriebstemperatur (OT): Temperatur, die innerhalb eines Systems unter normalen Bedingungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.6",
+      "title": "SI-Einheiten",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.7",
+      "title": "Symbole",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.7.1",
+      "title": "Lateinische Großbuchstaben",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.7.2",
+      "title": "Lateinische Kleinbuchstaben",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.7.3",
+      "title": "Griechische Buchstaben",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8",
+      "title": "Terminologie",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.1",
+      "title": "Notfall: Situation, durch die der sichere Betrieb des Rohrleitungssystems und/oder die Sicherheit der",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.2",
+      "title": "Vorfall: Unerwartetes Vorkommnis, das zu einem Notfall führen könnte. Dies schließt Auslaufen von",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.3",
+      "title": "Inspektion: Vorgang, bei dem durch Messen, Prüfen, Testen, Eichen oder auf sonstige Art der Zustand",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.4",
+      "title": "Einbautemperatur: Temperatur, die sich durch die Umgebungstemperatur oder durch die",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.5",
+      "title": "Wartung: Kombination aus allen technischen und damit zusammenhängenden Verwaltungsmaß-",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.6",
+      "title": "Molch: Gerät, das mit Hilfe einer strömenden Flüssigkeit durch eine Rohrleitung transportiert wird, um",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.7",
+      "title": "Rohrleitung: System von Leitungen mit allen zugeordneten Einrichtungen und Stationen bis zur",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.8",
+      "title": "Rohrleitungskomponenten: Elemente, aus denen die Rohrleitung hergestellt wird. Nachfolgend sind",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1.8.9",
+      "title": "Rohrleitungsbetreiber: Private oder öffentliche Organisation, die befugt ist, ein Versorgungssystem zu",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1.8.10",
+      "title": "Leitungen: System aus Rohren und Formstücken.",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1.8.11",
+      "title": "Druckkontrollsystem: Kombiniertes System einschließlich Druckregulierung, Drucksicherheit und,",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen der Bemessung",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.2",
+      "title": "Grundlegende Anforderungen an Rohrleitungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3",
+      "title": "Differenzierung der Zuverlässigkeit",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.4",
+      "title": "Rechenverfahren",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.5",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.6",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffeigenschaften",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Eigenschaften von Stahl für Rohrleitungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Eigenschaften von Schweißnähten",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.4",
+      "title": "Zähigkeitsanforderungen an Rohrwerkstoffe und die Schweißnähte",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.5",
+      "title": "Verbindungsmittel",
+      "pdf_page": 21
+    },
+    {
+      "clause": "3.6",
+      "title": "Bodeneigenschaften",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4",
+      "title": "Einwirkungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.1",
+      "title": "Zu berücksichtigende Einwirkungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.2",
+      "title": "Teilsicherheitsbeiwerte für Einwirkungen",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.3",
+      "title": "Lastkombinationen für Grenzzustände der Tragfähigkeit",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.4",
+      "title": "Lastkombinationen für Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5",
+      "title": "Berechnung",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.1",
+      "title": "Tragwerksmodelle",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.1.1",
+      "title": "Vereinfachtes Bemessungsverfahren im Grenzzustand der Tragfähigkeit",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.1.2",
+      "title": "Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.2",
+      "title": "Nachweise im Grenzzustand der Tragfähigkeit",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.2.1",
+      "title": "LS1: Bruch",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.2.2",
+      "title": "LS2: Plastische Dehngrenze",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.2.3",
+      "title": "LS3: Verformung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.2.4",
+      "title": "LS4: Ermüdung",
+      "pdf_page": 27
+    },
+    {
+      "clause": "5.2.5",
+      "title": "LS5: Leckagen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "5.3",
+      "title": "Nachweise in den Grenzzuständen der Gebrauchstauglichkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6",
+      "title": "Gesichtspunkte für die Planung hinsichtlich Fertigung und Montage",
+      "pdf_page": 28
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 9,
+      "equation_number": "2",
+      "line": "2.3 (2)",
+      "context": "Ausgabeland gebaut werden sollen, erforderlich sind. | Nationale Festlegungen sind in den folgenden Abschnitten von EN 1993-4-3 vorgesehen: | 2.3 (2) | 3.2 (1)P | 3.2 (1)P, (2)P, (3), (4)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "4",
+      "line": "3.3 (2), (3, (4)",
+      "context": "3.2 (1)P | 3.2 (1)P, (2)P, (3), (4) | 3.3 (2), (3, (4) | 3.4 (3) | 4.2 (1)P",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "3",
+      "line": "3.4 (3)",
+      "context": "3.2 (1)P, (2)P, (3), (4) | 3.3 (2), (3, (4) | 3.4 (3) | 4.2 (1)P | 5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "13",
+      "line": "5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13)",
+      "context": "3.4 (3) | 4.2 (1)P | 5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13) | 5.2.3 (2) | 5.2.4 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "2",
+      "line": "5.2.3 (2)",
+      "context": "4.2 (1)P | 5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13) | 5.2.3 (2) | 5.2.4 (1) | 7",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "1",
+      "line": "5.2.4 (1)",
+      "context": "5.1.1 (2), (3), (4), (5), (6), (9), (10), (11), (12), (13) | 5.2.3 (2) | 5.2.4 (1) | 7 | DIN EN 1993-4-3:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": " Spannungen und Elastizitätsmoduli : kPa MPa (= N/mm2)",
+      "context": " Resultierende aus Membranspannungen : kN/m N/mm |  Resultierende aus Biegespannungen (Biegemoment): kNm/m Nmm/mm |  Spannungen und Elastizitätsmoduli : kPa MPa (= N/mm2) | (3) Umrechnungsfaktoren | 1 mbar = 100 N/m2 = 0,1 kPa",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": "1 mbar = 100 N/m2 = 0,1 kPa",
+      "context": " Spannungen und Elastizitätsmoduli : kPa MPa (= N/mm2) | (3) Umrechnungsfaktoren | 1 mbar = 100 N/m2 = 0,1 kPa | 1.7 Symbole | Es gelten die in EN 1990 und EN 1993-1 angegebenen Symbole. Weitere Symbole sind unten angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "p effektiver Druck: p = pi  pe",
+      "context": "pi Druck innerhalb des Rohres (nach außen gerichtet positiv) | pe Druck außerhalb des Rohres (nach innen gerichtet negativ) | p effektiver Druck: p = pi  pe | r Rohrradius: r= D / 2 | 13",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "r Rohrradius: r= D / 2",
+      "context": "pe Druck außerhalb des Rohres (nach innen gerichtet negativ) | p effektiver Druck: p = pi  pe | r Rohrradius: r= D / 2 | 13 | DIN EN 1993-4-3:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "3.1",
+      "line": "fy,d = fy,nom / M (3.1)",
+      "context": "aufgelisteten maßgebenden Norm festgelegten Mindestwerte für fy,min und fu,min. Die Bemessungswerte für | die Streckgrenze fy,d und die Zugfestigkeit fu,d sind wie folgt festgelegt: | fy,d = fy,nom / M (3.1) | fu,d = fu,nom / M (3.2) | 17",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "3.2",
+      "line": "fu,d = fu,nom / M (3.2)",
+      "context": "die Streckgrenze fy,d und die Zugfestigkeit fu,d sind wie folgt festgelegt: | fy,d = fy,nom / M (3.1) | fu,d = fu,nom / M (3.2) | 17 | DIN EN 1993-4-3:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Teilsicherheitsbeiwert M ist im Nationalen Anhang angegeben. Der Wert M = 1,00 wird empfohlen.",
+      "context": "Dabei ist | M der Teilsicherheitsbeiwert. | ANMERKUNG Der Teilsicherheitsbeiwert M ist im Nationalen Anhang angegeben. Der Wert M = 1,00 wird empfohlen. | (2)P Die Höchstwerte der Streckgrenze fy,max und der Zugfestigkeit fu,max sind festzulegen; sie dürfen die | festgelegten Mindestwerte fy,min und fu,min um nicht mehr als f überschreiten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "festgelegt werden. Der Wert f = 50 MPa wird empfohlen.",
+      "context": "festgelegten Mindestwerte fy,min und fu,min um nicht mehr als f überschreiten. | ANMERKUNG Der Wert f für die Differenz zwischen diesen beiden Festigkeitswerten darf im Nationalen Anhang | festgelegt werden. Der Wert f = 50 MPa wird empfohlen. | (3) Um eine angemessene Duktilität sicherzustellen, sollte das Verhältnis von Zugfestigkeit zu Streckgrenze | fu,nom/ fy,nom des Stahls den Wert fu,min/ fy,min nicht unterschreiten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "Nationalen Anhang festgelegt werden. Der Wert fu,min/ fy,min = 1,1 wird empfohlen.",
+      "context": "fu,nom/ fy,nom des Stahls den Wert fu,min/ fy,min nicht unterschreiten. | ANMERKUNG Der Zahlenwert fu,min/ f y,min für das Verhältnis zwischen diesen beiden Festigkeitswerten darf im | Nationalen Anhang festgelegt werden. Der Wert fu,min/ fy,min = 1,1 wird empfohlen. | (4) Die Bruchdehnung u, bezogen auf eine Messlänge von 5,65 Ao (wobei Ao die ursprüngliche | Querschnittsfläche ist), darf nicht geringer als u,min sein.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "u,min = 20 % wird empfohlen.",
+      "context": "Querschnittsfläche ist), darf nicht geringer als u,min sein. | ANMERKUNG Der Zahlenwert für u,min für die Bruchdehnung u darf im Nationalen Anhang festgelegt werden. Der Wert | u,min = 20 % wird empfohlen. | (5)P Der Werkstoff muss eine ausreichende Bruchzähigkeit aufweisen, um bei der niedrigsten | Betriebstemperatur während der geplanten Lebensdauer der Rohrleitung Sprödbruch auszuschließen. Es wird",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert x darf im Nationalen Anhang festgelegt werden. Der Wert x = 15 % wird empfohlen.",
+      "context": "maximale Streckgrenze des Grundwerkstoffes des Blechs oder des Rohres ist, dann darf die oben genannte | Anforderung als erfüllt betrachtet werden. | ANMERKUNG Der Wert x darf im Nationalen Anhang festgelegt werden. Der Wert x = 15 % wird empfohlen. | (3) Die Duktilität des eingebrachten Schweißguts mit seinen Schweißnahtunregelmäßigkeiten in zulässigen | Grenzen sollte so hoch sein, dass die Schweißnahtzone eine Dehnung von mindestens % aufnehmen kann.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert der Dehnung darf im Nationalen Anhang festgelegt werden. Der Wert = 2 % wird empfohlen.",
+      "context": "(3) Die Duktilität des eingebrachten Schweißguts mit seinen Schweißnahtunregelmäßigkeiten in zulässigen | Grenzen sollte so hoch sein, dass die Schweißnahtzone eine Dehnung von mindestens % aufnehmen kann. | ANMERKUNG Der Wert der Dehnung darf im Nationalen Anhang festgelegt werden. Der Wert = 2 % wird empfohlen. | (4) Die Bruchfestigkeit des eingebrachten Schweißguts muss in der Regel mindestens y % höher als die | festgelegte maximale Bruchfestigkeit des Grundwerkstoffes des Blechs oder des Rohrmaterials sein.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert y darf im Nationalen Anhang festgelegt werden. Der Wert y = 15 % wird empfohlen.",
+      "context": "(4) Die Bruchfestigkeit des eingebrachten Schweißguts muss in der Regel mindestens y % höher als die | festgelegte maximale Bruchfestigkeit des Grundwerkstoffes des Blechs oder des Rohrmaterials sein. | ANMERKUNG Der Wert y darf im Nationalen Anhang festgelegt werden. Der Wert y = 15 % wird empfohlen. | 3.4 Zähigkeitsanforderungen an Rohrwerkstoffe und die Schweißnähte | (1) Die in den vorangehenden Abschnitten definierten Duktilitätsanforderungen vor Bruch im Rohrwerkstoff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "Rk, = z % ( 3 . 3 )",
+      "context": "die in EN 1594 bzw. EN 12732 festgelegten Anforderungen erfüllt. | (3) Die Zuggrenzdehnung (LS2) sollte folgendermaßen bestimmt werden: Rk, | Rk, = z % ( 3 . 3 ) | ANMERKUNG Der Wert z darf im Nationalen Anhang festgelegt werden. Der Wert z = 0,5 % wird empfohlen. | 3.5 Verbindungsmittel",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert z darf im Nationalen Anhang festgelegt werden. Der Wert z = 0,5 % wird empfohlen.",
+      "context": "(3) Die Zuggrenzdehnung (LS2) sollte folgendermaßen bestimmt werden: Rk, | Rk, = z % ( 3 . 3 ) | ANMERKUNG Der Wert z darf im Nationalen Anhang festgelegt werden. Der Wert z = 0,5 % wird empfohlen. | 3.5 Verbindungsmittel | (1) Verbindungsmittel sollten die Festlegungen von EN 1993-1-8 erfüllen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "F = F1 für Überland-Leitungen;",
+      "context": "EN 1993-4-3:2007 + AC:2009 (D) | (2) Die Teilsicherheitsbeiwerte sind anzunehmen mit: | F = F1 für Überland-Leitungen; | F = F2 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen ohne | Hochwasserschutz.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "F = F2 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen ohne",
+      "context": "(2) Die Teilsicherheitsbeiwerte sind anzunehmen mit: | F = F1 für Überland-Leitungen; | F = F2 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen ohne | Hochwasserschutz. | F = F3 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "F = F3 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen mit",
+      "context": "F = F2 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen ohne | Hochwasserschutz. | F = F3 für Kreuzungen mit Straßen, Gräben, Kanälen und natürlichen Wasserläufen mit | Hochwasserschutz. | ANMERKUNG 1 Die Zahlenwerte für F dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "empfohlen: F1 = 1,39; F2 = 1,50; F3 = 1,82.",
+      "context": "Hochwasserschutz. | ANMERKUNG 1 Die Zahlenwerte für F dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden | empfohlen: F1 = 1,39; F2 = 1,50; F3 = 1,82. | ANMERKUNG 2 In vielen Normen für Rohrleitungen werden die zulässigen Beanspruchungen mit 72 % der Streckgrenze | festgelegt (1,39 = 1/0,72).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "festgelegt (1,39 = 1/0,72).",
+      "context": "empfohlen: F1 = 1,39; F2 = 1,50; F3 = 1,82. | ANMERKUNG 2 In vielen Normen für Rohrleitungen werden die zulässigen Beanspruchungen mit 72 % der Streckgrenze | festgelegt (1,39 = 1/0,72). | (3) Abhängig von der Bemessungsstreckgrenze fy,d sollte das Verhältnis De/tmin folgende Bedingungen | erfüllen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "für fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 1 )",
+      "context": "(3) Abhängig von der Bemessungsstreckgrenze fy,d sollte das Verhältnis De/tmin folgende Bedingungen | erfüllen: | für fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 1 ) | für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 ) | für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 )",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 )",
+      "context": "erfüllen: | für fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 1 ) | für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 ) | für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 ) | für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 )",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 )",
+      "context": "für fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 1 ) | für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 ) | für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 ) | für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 ) | ANMERKUNG Die Werte für De/tmin dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 )",
+      "context": "für fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 2 ) | für fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 3 ) | für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 ) | ANMERKUNG Die Werte für De/tmin dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden | empfohlen: val240 = 70; val360 = 80; val415 = 92; val480 = 106.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "empfohlen: val240 = 70; val360 = 80; val415 = 92; val480 = 106.",
+      "context": "für fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 4 ) | ANMERKUNG Die Werte für De/tmin dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden | empfohlen: val240 = 70; val360 = 80; val415 = 92; val480 = 106. | (4) Die Überdeckung der Oberseite der Rohrleitung sollte Dcover nicht überschreiten. Dieses Kriterium | braucht nicht angewendet zu werden, wenn nachgewiesen wird, dass die effektive Last an der Oberseite des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "werden empfohlen: Dcover = 2,5 m und Geff = 65 kN/m².",
+      "context": "Rohrs Geff nicht überschreitet. | ANMERKUNG Die Werte für Dcover und Geff dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte | werden empfohlen: Dcover = 2,5 m und Geff = 65 kN/m². | (5) Die Wanddicke des Rohrs tspec sollte mindestens tspec,min mm betragen. | ANMERKUNG Der Wert für tspec,min darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "tspec,min = 4,8 mm.",
+      "context": "(5) Die Wanddicke des Rohrs tspec sollte mindestens tspec,min mm betragen. | ANMERKUNG Der Wert für tspec,min darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: | tspec,min = 4,8 mm. | (6) Die ungleichmäßigen Setzungen infolge Konsolidierung sollten ds in mm nicht überschreiten. Sie sollten, | wie in Bild 5.1 dargestellt, über eine Strecke von mindestens in m von null allmählich auf den Größtwert",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "empfohlen: ds = 100 mm und = 20 m.",
+      "context": "2 | ANMERKUNG Die Werte für ds und dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte werden | empfohlen: ds = 100 mm und = 20 m. | 21 | DIN EN 1993-4-3:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: x = 20.",
+      "context": "(9) Der betroffene gebogene Abschnitt der Rohrleitung sollte keinen Krümmungsradius unter x D | e besitzen. | ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: x = 20. | (10) Die maximale Differenz zwischen der Einbautemperatur und der maximalen bzw. minimalen | Betriebstemperatur der Rohrleitung sollte T ºC nicht übersteigen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "T = 35 °C.",
+      "context": "Betriebstemperatur der Rohrleitung sollte T ºC nicht übersteigen. | ANMERKUNG Der Wert für T darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: | T = 35 °C. | (11) Der gesamte Temperaturbereich sollte zwischen  T 1 ºC und T2 ºC  liegen. Im Falle von | Frosthebung wird auf die EN 1594 verwiesen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "werden empfohlen:  T1 =  40 ºC und T2 = + 60 °C.",
+      "context": "Frosthebung wird auf die EN 1594 verwiesen. | ANMERKUNG Die Werte für  T1 und T2 dürfen im Nationalen Anhang festgelegt werden. Die folgenden Werte | werden empfohlen:  T1 =  40 ºC und T2 = + 60 °C. | (12) Falls Bögen mit einem Radius kleiner als y De verwendet werden, sollten die folgenden Kriterien erfüllt | werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "Werte werden empfohlen: y = 20;  T3 = 20 ºC; D1 = 300 mm; D2 = 450 mm und = 2,0 m.",
+      "context": "sein. | ANMERKUNG Die Werte für y, T3, D1 und dürfen im Nationalen Anhang festgelegt werden. Die folgenden | Werte werden empfohlen: y = 20;  T3 = 20 ºC; D1 = 300 mm; D2 = 450 mm und = 2,0 m. | (13) Bei Querungen, die mittels Bohrung oder Rohreinzug von Baugruben aus hergestellt und wenn Bögen | mit einem Radius kleiner als z De im Baugrubenbereich angeordnet werden, sollten die folgenden Kriterien",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "bei fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 5 )",
+      "context": "EN 1993-4-3:2007 + AC:2009 (D) | Bei geraden Rohren sollte das Verhältnis De/tmin folgende Bedingungen erfüllen: | bei fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 5 ) | bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 ) | bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 )",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 )",
+      "context": "Bei geraden Rohren sollte das Verhältnis De/tmin folgende Bedingungen erfüllen: | bei fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 5 ) | bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 ) | bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 ) | bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 )",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 )",
+      "context": "bei fy,d = 240 N/mm2 : De/tmin v a l 2 4 0 ( 5 . 5 ) | bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 ) | bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 ) | bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 ) | ANMERKUNG Die Zahlenwerte für z, F,  D2 und De/tmin dürfen im Nationalen Anhang festgelegt werden. Die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 )",
+      "context": "bei fy,d = 360 N/mm2 : De/tmin v a l 3 6 0 ( 5 . 6 ) | bei fy,d = 415 N/mm2 : De/tmin v a l 4 1 5 ( 5 . 7 ) | bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 ) | ANMERKUNG Die Zahlenwerte für z, F,  D2 und De/tmin dürfen im Nationalen Anhang festgelegt werden. Die | folgenden Werte werden empfohlen: z = 20; F = 1,82; D2 = 450 mm; val240 = 57; val360 = 61; val415 = 70; val480",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "folgenden Werte werden empfohlen: z = 20; F = 1,82; D2 = 450 mm; val240 = 57; val360 = 61; val415 = 70; val480",
+      "context": "bei fy,d = 480 N/mm2 : De/tmin v a l 4 8 0 ( 5 . 8 ) | ANMERKUNG Die Zahlenwerte für z, F,  D2 und De/tmin dürfen im Nationalen Anhang festgelegt werden. Die | folgenden Werte werden empfohlen: z = 20; F = 1,82; D2 = 450 mm; val240 = 57; val360 = 61; val415 = 70; val480 | = 81. | 5.1.2 Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "= 81.",
+      "context": "ANMERKUNG Die Zahlenwerte für z, F,  D2 und De/tmin dürfen im Nationalen Anhang festgelegt werden. Die | folgenden Werte werden empfohlen: z = 20; F = 1,82; D2 = 450 mm; val240 = 57; val360 = 61; val415 = 70; val480 | = 81. | 5.1.2 Vorgehen, falls die Bedingungen für das vereinfachte Verfahren nicht erfüllt sind | (1) Unterirdische Rohrleitungen sollten wie dreidimensional federnd gelagerte Balken behandelt werden. Im",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.9",
+      "line": "xEde, 3 f (5.9)",
+      "context": "y | 2 | xEde, 3 f (5.9) | 5.2.2 LS2: Plastische Dehngrenze | (1) Die maximale Dehnung max sollte die in 3.4 definierte Grenzdehnung nicht überschreiten. Rk,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.10",
+      "line": "minmax DDa (5.10)",
+      "context": "(2) Der Parameter a, der die Ovalisierung kennzeichnet, ist definiert als: | 4 | minmax DDa (5.10) | Er sollte auf den Wert amax begrenzt werden mit: | amax = x De",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "amax = x De",
+      "context": "minmax DDa (5.10) | Er sollte auf den Wert amax begrenzt werden mit: | amax = x De | (5.11) | ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.11",
+      "line": "(5.11)",
+      "context": "Er sollte auf den Wert amax begrenzt werden mit: | amax = x De | (5.11) | ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: | x = 0,05.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "x = 0,05.",
+      "context": "(5.11) | ANMERKUNG Der Wert für x darf im Nationalen Anhang festgelegt werden. Der folgende Wert wird empfohlen: | x = 0,05. | (3) Örtliches Beulen sollte mit Hilfe der kritischen Dehnung cr nachgewiesen werden. Für die Ermittlung von | cr sollte zunächst die Ovalisierung infolge von ungleichmäßigem Erddruck mit Hilfe des Parameters a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "5.12",
+      "line": "r (5.12)",
+      "context": "t 2o00035002,0o25,0cr für 60o | t | r (5.12) | p | p",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "5.13",
+      "line": "r (5.13)",
+      "context": "t 2o0003o10,0cr für 60o | t | r (5.13) | Dabei ist | r",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "5.14",
+      "line": "o (5.14)",
+      "context": "a | rr 31 | o (5.14) | (5) Es sollte nachgewiesen werden, dass: | max cr",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "5.15",
+      "line": "(5.15)",
+      "context": "(5) Es sollte nachgewiesen werden, dass: | max cr | (5.15) | Bild 5.3  Definition von ro in einem Querschnitt mit Ovalisierung | (6) In Rohrleitungen unter Einwirkung von Außendruck sollte der mögliche Querschnittskollaps (Implosion)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "deformation capacity = Verformungsvermögen",
+      "context": "verschiedenen Einwirkungen, wie Normalkraft, Querkraft, Innendruck und Erddruck belastet ist. | Legende | deformation capacity = Verformungsvermögen | curvature = Krümmung | Bild A.2  Momenten-Krümmungs-Diagramm für ein gerades Rohr mit Angabe weiterer",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "curvature = Krümmung",
+      "context": "Legende | deformation capacity = Verformungsvermögen | curvature = Krümmung | Bild A.2  Momenten-Krümmungs-Diagramm für ein gerades Rohr mit Angabe weiterer | Einwirkungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "a' die Ovalisierung bei C = Ce",
+      "context": "r | atrEEI 5,113red (A.34) | a' die Ovalisierung bei C = Ce | * | (2) Der elastisch-plastische Teil des Momenten-Krümmungs-Diagramms in Bild A.2 darf mit den folgenden",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "(3) Für den elastischen Anteil ( y,el yield = fy/E):",
+      "context": "bestimmt werden: | ply,el,ymax,y (A.57) | (3) Für den elastischen Anteil ( y,el yield = fy/E): | tE | rpa",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "(4) Für den plastischen Anteil ( y,pl > yield = fy/E):",
+      "context": "ely,max,y (A.58) | ANMERKUNG Die Ovalisierung bei yield wird als ayield bezeichnet. | (4) Für den plastischen Anteil ( y,pl > yield = fy/E): | tE | rp",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [
+    {
+      "label": "5.1",
+      "pdf_page": 23,
+      "line": "wie in Bild 5.1 dargestellt, über eine Strecke von mindestens in m von null allmählich auf den Größtwert"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 24,
+      "line": "Bild 5.1  Grenzwerte für die ungleichmäßigen Setzungen mit den empfohlenen Werten"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "Modell sollten die Federn die mechanischen Eigenschaften des Bodens abbilden, wie in Bild 5.2 verdeutlicht:"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "Bild 5.2  Schematische Ansicht einer elastisch gebetteten Rohrleitung"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 26,
+      "line": "eingedrückt wird, zu berechnen, siehe Bild 5.3. Der Druck p sollte im Falle von Innendruck positiv, bei"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 27,
+      "line": "Bild 5.3  Definition von ro in einem Querschnitt mit Ovalisierung"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 893,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1932,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2082,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6351,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "1.7",
+        "1.7.1",
+        "1.7.2",
+        "1.7.3",
+        "1.8",
+        "2",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "4",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "5",
+        "5.1",
+        "5.1.1",
+        "5.1.2",
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "5.2.5",
+        "5.3",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1945,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3467,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3362,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3185,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1092,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1898,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 3255,
+      "text_layer": "usable",
+      "clauses": [
+        "700",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2391,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2600,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1576,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5.4",
+        "1.5.5",
+        "1.5.6",
+        "1.6",
+        "1.7",
+        "1.7.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1501,
+      "text_layer": "usable",
+      "clauses": [
+        "1.7.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2243,
+      "text_layer": "usable",
+      "clauses": [
+        "1.7.3",
+        "1.8",
+        "1.8.1",
+        "1.8.2",
+        "1.8.3",
+        "1.8.4",
+        "1.8.5",
+        "1.8.6",
+        "1.8.7",
+        "1.8.8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2696,
+      "text_layer": "usable",
+      "clauses": [
+        "1.8.9",
+        "1.8.10",
+        "1.8.11",
+        "2",
+        "2.1",
+        "2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2830,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3",
+        "2.4",
+        "2.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2518,
+      "text_layer": "usable",
+      "clauses": [
+        "2.6",
+        "3",
+        "3.1",
+        "3.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2939,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3",
+        "3.4"
+      ],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1905,
+      "text_layer": "usable",
+      "clauses": [
+        "3.5",
+        "3.6",
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2653,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "4.3",
+        "4.4",
+        "5",
+        "5.1",
+        "5.1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2171,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 13
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2302,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2046,
+      "text_layer": "usable",
+      "clauses": [
+        "5.1.2"
+      ],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2234,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1194,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.4",
+        "5.2.5"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1076,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2881,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1013,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1037,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 853,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 714,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 829,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2037,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1243,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1938,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 859,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 39,
+      "characters": 319,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1274,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 2980,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 3153,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 2084,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

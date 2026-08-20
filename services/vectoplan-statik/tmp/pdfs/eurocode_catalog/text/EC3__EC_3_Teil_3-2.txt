@@ -1,0 +1,1345 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-3-2 
+ICS 91.01 0.30; 91.060.40; 91.080.10 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1993-3-2:2007-02; 
+mit DIN EN 
+1993-3-2/NA:201 0-12 
+Ersatz far 
+DIN V 4133:2007-07 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Tei13-2: Türme, Maste und Schornsteine-
+Schornsteine; 
+Deutsche FassungEN 1993-3-2:2006 
+Eurocode 3: Design of steel structures -
+Part 3-2: Towers, masts and chimneys­
+Chimneys; 
+German version EN 1993-3-2:2006 
+Eurocode 3: Calcul des structures en acier­
+Partie 3-2: Tours, mäts et cheminees -
+Cheminees; 
+Version allemande EN 1993-3-2:2006 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 34 Seiten 
+Preisgruppe 15 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723948
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-3-2:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-3-2:2006) wurde vom Technischen Komitee CEN/TC 250 Eurocodes für den 
+konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-11-37 AA Industrieschornsteine begleitet. 
+Diese Europäische Norm wurde vom CEN am 13. Januar 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen Gemein-
+schaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die verbindliche 
+Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind im Vorwort 
+dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Änderungen 
+Gegenüber DIN V ENV 1993-3-2:2002-05 und DIN V ENV 1993-3-2 Berichtigung 1:2002-11 wurden folgende 
+Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet; 
+d) die Berichtigung wurde eingearbeitet. 
+Gegenüber DIN EN 1993-3-2:2007-02 und DIN V 4133:2007-07 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 4133: 1973-08, 1991-11 
+DIN V 4133: 2007-07 
+DIN EN 1993-3-2: 2007-02 
+DIN V ENV 1993-3-2: 2002-05 
+DIN V ENV 1993-3-2 Berichtigung 1: 2002-11 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-3-2 
+ Oktober 2006 
+ICS 91.010.30; 91.060.40; 91.080.10 Ersatz für ENV 1993-3-2:1997
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 3-2: Türme, Maste und Schornsteine  
+Schornsteine 
+Eurocode 3: Design of steel structures  
+Part 3-2: Towers, masts and chimneys  
+Chimneys 
+Eurocode 3: Calcul des structures en acier  
+Partie 3-2: Tours, mâts et cheminées  
+Cheminées 
+Diese Europäische Norm wurde vom CEN am 13. Januar 2006 angenommen. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied auf
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2006 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-3-2:2006 D
+
+===== PDF-SEITE 4 =====
+EN 1993-3-2:2006 (D) 
+2 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang zu EN 1993-3-2 ...................................................................................................................4
+1 Allgemeines.................................................................................................................. ..........................5
+1.1 Anwendungsbereich .......................................................................................................... ...................5
+1.2 Normative Verweisungen..................................................................................................... .................6
+1.3 Annahmen ................................................................................................................... ...........................6
+1.4 Unterscheidung zwischen verbindlichen und nicht verbindlichen Regeln .....................................6
+1.5 Begriffe ................................................................................................................... ................................6
+1.6 Formelzeichen.............................................................................................................. ..........................9
+2 Grundlagen der Tragwerksplanung .............................................................................................. .......9
+2.1 Anforderungen .............................................................................................................. .........................9
+2.1.1 Grundlegende Anforderungen ............................................................................................... ..............9
+2.1.2 Sicherheitsklassen ....................................................................................................... .........................9
+2.2 Grundsätze für Nachweise in Grenzzuständen ................................................................................. .9
+2.3 Einwirkungen und Umgebungseinflüsse ........................................................................................ ..10
+2.3.1 Allgemeines.............................................................................................................. ............................10
+2.3.2 Ständige Einwirkungen .................................................................................................... ...................10
+2.3.3 Veränderliche Einwirkungen ............................................................................................... ...............10
+2.4 Nachweise in Grenzzuständen ................................................................................................ ...........11
+2.5 Geometrische Werte......................................................................................................... ...................12
+2.6 Dauerhaftigkeit............................................................................................................ .........................12
+3 Werkstoffe ................................................................................................................... .........................12
+3.1 Allgemeines................................................................................................................ ..........................12
+3.2 Baustähle.................................................................................................................. ............................12
+3.2.1 Werkstoffeigenschaften ................................................................................................... ...................12
+3.2.2 Werkstoffeigenschaften allgemeiner Baustähle............................................................................. ..12
+3.2.3 Mechanische Eigenschaften nichtrostender Stähle ........................................................................12
+3.3 Verbindungen............................................................................................................... ........................12
+4 Dauerhaftigkeit.............................................................................................................. .......................13
+4.1 Korrosionszuschlag ......................................................................................................... ...................13
+4.2 Äußerer Korrosionszuschlag ................................................................................................. ............13
+4.3 Innerer Korrosionszuschlag ................................................................................................. ..............14
+5 Tragwerksberechnung .......................................................................................................... ..............14
+5.1 Modellierung des Schornsteins zur Ermittlung der Beanspruchungen ........................................14
+5.2 Berechnung der Schnittgrößen und Spannungen ...........................................................................14
+5.2.1 Untersuchung des Tragrohres .............................................................................................. .............14
+5.2.2 Imperfektionen ........................................................................................................... ..........................15
+5.2.3 Nachweis des Gesamtsystems ............................................................................................... ...........16
+6 Grenzzustände der Tragfähigkeit.............................................................................................. .........17
+6.1 Allgemeines................................................................................................................ ..........................17
+6.2 Tragrohre .................................................................................................................. ............................17
+6.2.1 Festigkeitsnachweis...................................................................................................... ......................17
+6.2.2 Stabilitätsnachweise ..................................................................................................... ......................18
+6.3 Sicherheitsbewertung anderer Schornsteinbauteile .......................................................................19
+6.4 Anschlüsse und Verbindungen................................................................................................ ..........19
+6.4.1 Grundlagen............................................................................................................... ............................19
+6.4.2 Geschraubte Flanschverbindungen .......................................................................................... ........19
+6.4.3 Anschluss eines Schornsteins an ein Fundament oder ein tragendes Bauwerk .........................20
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1993-3-2:2006 (D) 
+3 
+Seite 
+6.5 Schweißverbindungen ........................................................................................................ ................20
+7 Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 20
+7.1 Grundlagen ................................................................................................................. .........................20
+7.2 Auslenkungen............................................................................................................... .......................21
+8 Versuchsgestützte Bemessung .................................................................................................. .......21
+9 Ermüdung..................................................................................................................... ........................21
+9.1 Allgemeines ................................................................................................................ .........................21
+9.2 Ermüdungsbeanspruchung ..................................................................................................... ..........22
+9.2.1 Schwingungen in Windrichtung ............................................................................................. ...........22
+9.2.2 Querschwingungen ......................................................................................................... ....................22
+9.3 Ermüdungsfestigkeit im Bereich hoher Lastspielzahlen ................................................................22
+9.4 Sicherheitsnachweis........................................................................................................ ...................22
+9.5 Teilsicherheitsbeiwerte.................................................................................................... ...................23
+Anhang A (normativ) Zuverlässigkeitsdifferenzierung und Teilsicherheitsbeiwerte für 
+Einwirkungen .......................................................................................................................................24
+A.1 Zuverlässigkeitsdifferenzierung für Stahlschornsteine..................................................................24
+A.2 Teilsicherheitsbeiwerte für Einwirkungen ................................................................................... .....24
+Anhang B (informativ) Aerodynamische und dämpfende Maßnahmen ......................................................25
+B.1 Allgemeines ................................................................................................................ .........................25
+B.2 Aerodynamische Maßnahmen ................................................................................................... ........25
+B.3 Dynamische Schwingungsdämpfer.............................................................................................. .....26
+B.4 Seile mit dämpfenden Vorrichtungen......................................................................................... .......26
+B.5 Direkte Dämpfung........................................................................................................... .....................26
+Anhang C (informativ) Ermüdungsfestigkeit und Qualitätsanforderungen................................................27
+C.1 Allgemeines ................................................................................................................ .........................27
+C.2 Erhöhung der Ermüdungsfestigkeit bei speziellen Qualitätsanforderungen ...............................27
+Anhang D (informativ) Versuchsgestützte Bemessung................................................................................31
+D.1 Allgemeines ................................................................................................................ .........................31
+D.2 Definition des logarithmischen Dämpfungsdekrements.................................................................31
+Anhang E (informativ) Ausführung .................................................................................................................32
+E.1 Allgemeines ................................................................................................................ .........................32
+E.2 Ausführungstoleranzen ...................................................................................................... ................32
+E.3 Qualität der Schweißverbindungen und Ermüdung ........................................................................32
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1993-3-2:2006 (D) 
+4 
+Vorwort 
+Dieses Dokument EN 1993-3-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 3-2: 
+Türme, Maste und Schornsteine  Schornsteine wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau  erarbeitet, dessen Sekretariat vom BSI gehalten wird. CEN/TC 250 ist 
+verantwortlich für alle Eurocode-Teile. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis April 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-3-2. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Nationaler Anhang zu EN 1993-3-2 
+Diese Norm enthält alternative Methoden, Zahlenangaben und Empfehlungen in Verbindung mit Anmerkun-
+gen, die darauf hinweisen, wo Nationale Festlegungen getroffen werden können. EN 1993-3-2 wird bei der 
+nationalen Einführung einen Nationalen Anhang enthalten, der alle national festzulegenden Parameter enthält, 
+die für die Bemessung und Konstruktion von Stahlbauten im jeweiligen Land erforderlich sind. 
+Nationale Festlegungen sind bei folgenden Regelungen vorgesehen: 
+ 2.3.3.1(1) 
+ 2.3.3.5(1) 
+ 2.6(1) 
+ 4.2(1) 
+ 5.1(1) 
+ 5.2.1(3) 
+ 6.1(1)P 
+ 6.2.1(6) 
+ 6.4.1(1) 
+ 6.4.2(1) 
+ 6.4.3(2) 
+ 7.2(1) 
+ 7.2(2) 
+ 9.1(3) 
+ 9.1(4) 
+ 9.5(1) 
+ A.1(1) 
+ A.2(1) (zweimal) 
+ C.2(1) 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-3-2:2006 (D) 
+5 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1993-3-2 behandelt die Bemessung und Konstruktion vertikaler Stahlschornsteine mit zylindrischer 
+oder konischer Form. Sie schließt Schornsteine ein, die als Kragsystem ausgebildet oder auf unterschied-
+lichen Ebenen abgestützt oder abgespannt sind. 
+(2) Die Regeln in diesem Teil ergänzen die Regeln von EN 1993-1-1. 
+(3) Der Teil 3-2 befasst sich nur mit den Belangen der Beanspruchbarkeit (Festigkeit, Stabilität, Ermüdung) 
+von Stahlschornsteinen. 
+ANMERKUNG In diesem Zusammenhang (d. h. Beanspruchbarkeit) bezieht sich der Begriff Schornstein auf: 
+a) Schornsteinkonstruktionen; 
+b) die zylindrischen Stahlbauteile von Türmen; 
+c) den zylindrischen Stahlschaft abgespannter Maste.
+(4) Chemische Beanspruchung, thermodynamisches Verhalten und Wärmedämmung sind in EN 13084-1 
+geregelt, Bemessung und Konstruktion von Innenrohren in EN 13084-6. 
+(5) Stahlbetonfundamente für Stahlschornsteine werden in EN 1992 und EN 1997 behandelt. Siehe auch 
+EN 13084-1, 4.7 und 5.4. 
+(6) Windlasten sind in EN 1991-1-4 geregelt. 
+ANMERKUNG Verfahren zur Berechnung der Windwirkungen auf abgespannte Schornsteine werden in EN 1993-3-1, 
+Anhang B angegeben. 
+(7) Dieser Teil enthält keine besonderen Regeln für die Bemessung und Konstruktion im Hinblick auf Erd-
+beben; diese sind in EN 1998-6 enthalten. Siehe auch EN 13084-1, 5.2.4.1. 
+(8) Regeln für Abspannungen und deren Anschlüsse sind in EN 1993-3-1 und in EN 1993-1-11 zu finden. 
+(9) Bei der Fertigung und Montage von Stahlschornsteinen sollten EN 1090-2 und EN 13084-1 beachtet 
+werden. 
+ANMERKUNG Fertigung und Montage werden nur in dem Umfang behandelt, dass die Qualität der zur Verwendung 
+vorgesehenen Werkstoffe und Bauprodukte für tragende Teile und die Qualität der Montage erkennbar wird, die für die 
+Gültigkeit der Bemessungsregeln vorausgesetzt wurde. 
+(10) Folgende Themen werden in EN 1993-3-2 behandelt: 
+Abschnitt 1: Allgemeines; 
+Abschnitt 2: Grundlagen der Tragwerksplanung; 
+Abschnitt 3: Werkstoffe; 
+Abschnitt 4: Dauerhaftigkeit; 
+Abschnitt 5: Tragwerksberechnung; 
+Abschnitt 6: Grenzzustände der Tragfähigkeit; 
+Abschnitt 7: Grenzzustände der Gebrauchstauglichkeit; 
+Abschnitt 8: Versuchsgestützte Bemessung; 
+Abschnitt 9: Ermüdung. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-3-2:2006 (D) 
+6 
+1.2 Normative Verweisungen 
+Diese Europäische Norm nimmt teilweise Bezug auf andere Regelwerke. Die normativen Verweise werden an 
+den betreffenden Stellen zitiert und sind in der nachstehenden Liste enthalten. Für Dokumente, die ein 
+Ausgabedatum tragen, gilt, dass eine neuere Ausgabe für das Arbeiten mit dieser Europäischen Norm nur 
+dann anzuwenden ist, wenn hierfür ein Hinweis vorhanden ist. Bei nicht datierten Dokumenten ist die neueste 
+Version maßgebend. 
+EN 1090, Ausführung von Tragwerken aus Stahl
+EN 10025, Warmgewalzte Erzeugnisse aus Baustählen 
+EN 10088, Nichtrostende Stähle
+EN 13084-1, Freistehende Schornsteine  Teil 1: Allgemeine Anforderungen
+EN ISO 5817, Schweißen  Schmelzschweißverbindungen an Stahl, Nickel, Titan und deren Legierungen 
+(ohne Strahlschweißen)  Bewertungsgruppen von Unregelmäßigkeiten 
+1.3 Annahmen 
+(1) Siehe EN 1993-1-1, 1.3. 
+1.4 Unterscheidung zwischen verbindlichen und nicht verbindlichen Regeln 
+(1) Siehe EN 1993-1-1, 1.4.
+1.5 Begriffe 
+(1) In dieser EN 1993-3-2 gelten die allgemeinen Begriffe nach EN 1990. 
+(2) Zusätzlich zu EN 1993-1 gelten für die Anwendung in diesem Teil 3-2 die folgenden Begriffe. Bild 1.1 zeigt 
+einige der bei Schornsteinkonstruktionen verwendeten Begriffe. 
+1.5.1 
+Schornstein 
+vertikal angeordnetes Bauwerk oder Teil eines Bauwerks, das Abgase von Feuerstätten, andere Abgase oder 
+Fortluft in die Atmosphäre oder Zuluft leitet 
+1.5.2 
+selbsttragender Schornstein 
+Schornstein, dessen Tragrohr oberhalb des eingespannten Fußpunktes nicht mit anderen Bauwerken 
+verbunden ist 
+1.5.3 
+abgespannter Schornstein 
+Schornstein, dessen Tragrohr in einer oder mehreren Höhenlage(n) durch Abspannungen gehalten wird 
+1.5.4 
+einwandiger Schornstein 
+Schornstein, bei dem das Tragrohr gleichzeitig abgasführendes Rohr ist; es kann wärmegedämmt und/oder 
+ausgekleidet sein 
+1.5.5 
+doppelwandiger Schornstein 
+Schornstein mit einem äußeren Tragrohr aus Stahl und einem abgasführenden Innenrohr 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-3-2:2006 (D) 
+7 
+1.5.6 
+mehrzügiger Schornstein 
+Gruppe von zwei oder mehr Schornsteinen, deren Konstruktionen miteinander verbunden sind, oder eine 
+Gruppe von zwei oder mehr Innenrohren innerhalb eines Tragrohres 
+1.5.7 
+Innenrohr 
+die innerhalb des Tragrohrs liegende tragende Schale der Innenrohrkonstruktion 
+1.5.8 
+Innenrohrkonstruktion 
+Gesamtsystem, wenn vorhanden, das die Abgase vom Tragrohr trennt; darin enthalten sind ein Innenrohr und 
+dessen Abstützungen, der Raum zwischen Innenrohr und Tragrohr und, wenn vorhanden, die Wärme-
+dämmung
+1.5.9 
+Tragrohr 
+das hauptsächlich tragende Stahlbauteil des Schornsteins, ohne Flansche 
+1.5.10 
+aerodynamische Vorrichtung 
+eine am Schornstein angebrachte Vorrichtung, um Schwingungsanregung infolge von Wirbeln zu reduzieren, 
+ohne die Bauwerksdämpfung zu erhöhen 
+1.5.11 
+Dämpfungsvorrichtung 
+eine am Schornstein angebrachte Vorrichtung zur Reduzierung wirbelerregter Querschwingungen durch 
+Erhöhung der Strukturdämpfung 
+1.5.12 
+Spoiler 
+eine an der Schornsteinoberfläche angebrachte Vorrichtung zur Reduzierung winderregter Querschwin-
+gungen 
+1.5.13 
+Schraubenwendel oder Störstreifen 
+Vorrichtungen an der äußeren Oberfläche des Schornsteins zur Reduzierung winderregter Querschwin-
+gungen 
+1.5.14 
+Fußplatte 
+eine horizontal am Schornsteinfuß angeordnete Platte 
+1.5.15 
+Ankerschraube 
+Schraube zur Verbindung des Schornsteins mit dem Fundament 
+1.5.16 
+Ringsteife 
+horizontal angeordnetes Bauteil zur Verhinderung von Querschnittsovalisierungen und zur Erhaltung der 
+Kreisform des Schornsteintragrohrs während Herstellung und Transport; horizontales Bauteil zur Versteifung 
+an Öffnungen oder ggf. bei Änderungen der Mantelneigung des Tragrohrs 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-3-2:2006 (D) 
+8 
+Legende 
+1 Hüllrohr 
+2 Kondensatboden 
+3 Zugangstür 
+4 Kondensatablass 
+5 Fußplatte 
+6 Abdeckhaube 
+7 Kopfplatte 
+8 Kopfversteifung 
+9 horizontale 
+Innenrohrführung 
+10 Wärmedämmung 
+11 Innenrohr 
+12 Verbindungs-
+flansch 
+13 Tragrohr 
+14 Abgaseinführung 
+15 Innenrohrfuß 
+16 Fußkonus 
+17 Druckring 
+18 Fußkonstruktion 
+19 Ankerschraube 
+20 Versteifungsring 
+21 Mündungskonus 
+22 schraubenförmige 
+aerodynamische 
+Vorrichtung 
+23 konisches 
+Übergangsstück 
+24 Verbindungs-
+flansch 
+25 Prallblech 
+26 Dämpfungs-
+vorrichtung 
+27 Innenrohr 
+28 Leiterhaken 
+29 Fußplatte
+Mehrzügiger Schornstein Einwandiger Schornstein Doppelwandiger Schornstein 
+Bild 1.1  Bei Schornsteinkonstruktionen verwendete Begriffe 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-3-2:2006 (D) 
+9 
+1.6 Formelzeichen 
+(1) Die im Folgenden aufgeführten Formelzeichen werden zusätzlich zu den in EN 1993-1-1 aufgeführten 
+verwendet. 
+c Korrosionszuschlag; 
+N Lastspielzahl; 
+b Durchmesser; 
+d Schraubendurchmesser; 
+h Höhe; 
+m Steigung; 
+t Zeit; 
+w Winddruck; 
+ref Referenz; 
+crit kritischer Wert; 
+ext außen; 
+F Einwirkung; 
+f Ermüdung; 
+int innen; 
+lat seitlich (quer zur Windrichtung); 
+top Mündung/Kopf; 
+R Bruch/Versagen; 
+Temp Temperatur; 
+ Äquivalenzfaktor; 
+ Faktor zur Berücksichtigung von Effekten aus der Theorie II. Ordnung. 
+(2) Weitere Formelzeichen werden definiert, wenn sie zum ersten Mal verwendet werden. 
+2 Grundlagen der Tragwerksplanung 
+2.1 Anforderungen 
+2.1.1 Grundlegende Anforderungen 
+(1) Siehe EN 1993-1-1. 
+(2)P Ein Schornstein ist so zu bemessen und zu konstruieren, dass er, vorausgesetzt er ist ordnungsgemäß 
+ausgeführt und instand gehalten, die grundlegenden Anforderungen nach EN 1990 und EN 13084-1 erfüllt. 
+(3) Die Tragwerksplanung abgespannter Schornsteine ist in Übereinstimmung mit den maßgebenden 
+Abschnitten von EN 1993-3-1 und diesem Teil zu führen. 
+2.1.2 Sicherheitsklassen 
+(1) Für die Nachweise im Grenzzustand der Tragfähigkeit von Schornsteinen können in Abhängigkeit von 
+möglichen Schadensfolgen für Objekte, Personen oder die Allgemeinheit unterschiedliche Sicherheitsklassen 
+angenommen werden. 
+ANMERKUNG Zur Definition der verschiedenen Sicherheitsklassen siehe Anhang A. 
+2.2 Grundsätze für Nachweise in Grenzzuständen 
+(1) Siehe EN 1993-1-1, 2.2. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-3-2:2006 (D) 
+10 
+2.3 Einwirkungen und Umgebungseinflüsse 
+2.3.1 Allgemeines 
+(1)P Die allgemeinen Anforderungen von EN 1990, Abschnitt 4 sind anzuwenden. 
+(2) Festigkeit und Stabilität von Schornsteinen sind in der Regel für die in 2.3.2 und 2.3.3 beschriebenen 
+Einwirkungen nachzuweisen. 
+2.3.2 Ständige Einwirkungen 
+(1) Für die Ermittlung des Eigengewichts ist in der Regel die volle Dicke der Stahlbleche ohne eine 
+Abminderung durch Korrosion anzusetzen. 
+(2) In der Regel schließen die ständigen Einwirkungen das ermittelte Gewicht aller ständig vorhandenen 
+Bauteile und anderer Elemente, einschließlich aller Anschlussstücke, Wärmedämmung, Staublasten, 
+Ascheanbackungen, Beschichtungen und anderer Lasten ein. Das Gewicht des Schornsteins und seiner 
+Auskleidung ist in der Regel nach EN 1991-1-1 gegebenenfalls unter Berücksichtigung der Langzeitwirkungen 
+von Flüssigkeiten oder Feuchtigkeit auf die Dichte der Auskleidung zu ermitteln. 
+2.3.3 Veränderliche Einwirkungen 
+2.3.3.1 Nutzlasten 
+(1) An Bühnen und Geländern sind in der Regel Nutzlasten anzusetzen. 
+ANMERKUNG 1 Der Nationale Anhang darf Hinweise zu Nutzlasten auf Bühnen und Geländer geben. Es werden 
+folgende charakteristische Werte für Nutzlasten auf Bühnen und Geländer empfohlen: 
+ Nutzlast auf Bühnen: 2,0 kN/m², (siehe auch EN 13084-1) (2.1a) 
+ Horizontallast auf Geländer: 0,5 kN/m (2.1b) 
+ANMERKUNG 2 Diese Einwirkungen brauchen nicht mit klimatischen Einwirkungen überlagert zu werden. 
+2.3.3.2 Windlasten 
+(1) Einwirkungen aus Wind sind in der Regel nach EN 1991-1-4 zu berücksichtigen. 
+(2) In der Regel sind Windlasten auf die Außenflächen eines Schornsteins als Ganzes und auf Anbauteile, 
+zum Beispiel eine Leiter, anzusetzen. Neben den Windkräften infolge des böigen Windes, die im Allgemeinen 
+in Windrichtung wirken, sind in der Regel Kräfte infolge von Wirbelablösungen, die Querschwingungen eines 
+Schornsteins verursachen, zu berücksichtigen. 
+ANMERKUNG Abgespannte Schornsteine siehe EN 1993-3-1, Anhang B. 
+(3) Andere Windeinwirkungen, wie zum Beispiel solche infolge ungleicher Winddruckverteilung (ovalisierende 
+Querschnittsverformung) oder Interferenzeffekte, sind in der Regel zu berücksichtigen, wenn die maßgeben-
+den Grenzwerte überschritten werden, siehe 5.2.1. 
+(4) In der Regel sind Einwirkungen, die durch Interferenz-Galloping oder klassisches Galloping verursacht 
+werden, nach EN 1991-1-4 abzuschätzen. 
+(5) Wenn bei einem Schornstein gefährliche winderregte Schwingungen zu erwarten sind, können diese durch 
+Maßnahmen bei der Bemessung und Konstruktion oder mit Hilfe von Dämpfungsvorrichtungen reduziert 
+werden, siehe Anhang B. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-3-2:2006 (D) 
+11 
+2.3.3.3 Innendruck 
+(1) Wenn anlagenbedingt im Schornstein außerplanmäßiger Über- oder Unterdruck auftreten kann, ist dieser 
+in der Regel wie eine außergewöhnliche Einwirkung zu behandeln. 
+ANMERKUNG Der Unterdruck kann zum Beispiel aus der Strömungsgeschwindigkeit des Gases, der Gasdichte, dem 
+gesamten Strömungswiderstand und den Umgebungsbedingungen ermittelt werden. Siehe EN 13084-1, Anhang A. 
+2.3.3.4 Wärmeeinwirkungen 
+(1) Wärmeeinwirkungen können aus einer gleichmäßigen sich über das gesamte Bauteil erstreckenden 
+Wärmewirkung und aus Temperaturunterschieden resultieren, die durch meteorologische und betriebliche 
+Einflüsse, einschließlich solcher infolge von ungleichmäßiger Gasströmung, verursacht werden. 
+(2) Meteorologische Temperatureinwirkungen siehe EN 1991-1-5. 
+(3) Temperaturen aufgrund von Betriebszuständen und infolge von ungleichmäßiger Gasströmung sind in der 
+Regel zu beachten, siehe EN 13084-1 und EN 13084-6. 
+2.3.3.5 Eislasten 
+(1) Wenn an einem Schornstein Eisansatz auftreten kann, sind in der Regel die Dicke, die Dichte und die 
+Verteilung der Eisschicht zu ermitteln. 
+ANMERKUNG 1 Der Nationale Anhang darf weitere Hinweise zu Eislasten enthalten. 
+ANMERKUNG 2 Siehe auch EN 1993-3-1, 2.3.2. 
+2.3.3.6 Erdbebeneinwirkungen 
+(1) Erdbebeneinwirkungen sind in der Regel nach EN 1998-6 zu ermitteln. Siehe auch EN 13084-1. 
+2.3.3.7 Feuer 
+(1) Die Gefahr eines Feuers im Inneren eines Schornsteines ist in der Regel zu berücksichtigen. 
+ANMERKUNG Feuer in einem Schornstein kann durch die Entzündung folgender Stoffe entstehen: 
+ aus dem zugehörigen Kessel oder der Feuerungsanlage unverbrannt ausgetragenes Brennmaterial; 
+ unverbrannte Kohlenwasserstoffreste als Folge eines Kesselrohrbruches; 
+ Ruß- und Schwefelablagerungen; 
+ Ablagerungen z. B. von Textilprodukten, Schmierstoffen oder Kondensaten. 
+(2) Die tragenden Bauteile dürfen in der Regel durch die Brandeinwirkung nicht versagen; auch andere Teile 
+in der Nähe des Schornsteins dürfen in der Regel nicht bis zu ihrem Flammpunkt erhitzt werden. Wenn die 
+Gefahr von Feuer besteht, ist in der Regel ein geeigneter Brandschutz vorzusehen. Siehe EN 13084-6 und 
+EN 13084-7. 
+2.3.3.8 Chemische Beanspruchung 
+(1) Zu chemischen Beanspruchungen siehe EN 13084-1. 
+2.4 Nachweise in Grenzzuständen 
+(1) Zu Bemessungswerten der Einwirkungen sowie Einwirkungskombinationen siehe EN 1990. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-3-2:2006 (D) 
+12 
+(2) Zusätzlich zu den Nachweisen im Grenzzustand der Tragfähigkeit und den Ermüdungssicherheits-
+nachweisen kann die Begrenzung von Amplituden im Grenzzustand der Gebrauchstauglichkeit (siehe 
+Abschnitt 7) maßgebend sein. 
+ANMERKUNG Teilsicherheitsbeiwerte für Nachweise im Grenzzustand der Tragfähigkeit siehe Anhang A. 
+2.5 Geometrische Werte 
+(1) Steifigkeit und Festigkeit tragender Bauteile sind in der Regel mit den Nennwerten der geometrischen 
+Größen, gegebenenfalls unter Berücksichtigung sowohl des Korrosionszuschlags als auch des Temperatur-
+einflusses, zu ermitteln. Siehe Abschnitte 3 und 5. 
+2.6 Dauerhaftigkeit 
+(1) Die Dauerhaftigkeit ist in der Regel durch die Durchführung der Ermüdungsnachweise (siehe Abschnitt 9), 
+die Wahl einer rechnerisch geeigneten Wanddicke (siehe Abschnitt 4) und/oder einen angemessenen 
+gewählten Korrosionsschutz gegeben. Siehe auch EN 1993-1-1, Abschnitt 4. 
+ANMERKUNG Der Nationale Anhang darf Angaben zur Entwurfslebensdauer des Bauwerks enthalten. Eine Entwurfs-
+lebensdauer von 30 Jahren wird empfohlen. 
+3 Werkstoffe 
+3.1 Allgemeines 
+(1) Siehe EN 1993-1-1, EN 1993-1-3 und 1993-1-4. 
+3.2 Baustähle 
+3.2.1 Werkstoffeigenschaften 
+(1) Die Veränderung der Werkstoffeigenschaften in Abhängigkeit von Umgebungs- und Betriebstemperaturen 
+ist in der Regel zu berücksichtigen, siehe 3.2.2(1). 
+(2) Bei Temperaturen oberhalb von 400 °C sind die Auswirkungen des temperaturbedingten Kriechens in der 
+Regel zu berücksichtigen, um Kriechbrüche zu vermeiden. 
+(3) Zu Zähigkeitsanforderungen an Baustahl siehe EN 1993-1-10. 
+3.2.2 Werkstoffeigenschaften allgemeiner Baustähle 
+(1) Zu mechanischen Eigenschaften allgemeiner Baustähle S 235, S 275, S 355, S 420, S 460 und zu 
+wetterfesten Baustählen S 235, S 275, S 355 siehe EN 1993-1-1. Zu Eigenschaften bei höheren Tempera-
+turen siehe EN 13084-7. 
+3.2.3 Mechanische Eigenschaften nichtrostender Stähle 
+(1) Zu mechanischen Eigenschaften nichtrostender Stähle bei Temperaturen bis 400 
+C siehe EN 1993-1-4. 
+Zu Eigenschaften bei höheren Temperaturen siehe EN 10088 und EN 13084-7. 
+3.3 Verbindungen 
+(1) Zu Werkstoffen von Verbindungsmitteln, Schweißzusatzwerkstoffen usw. siehe EN 1993-1-8. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-3-2:2006 (D) 
+13 
+4 Dauerhaftigkeit 
+4.1 Korrosionszuschlag 
+(1) Wenn für Oberflächen, die der Korrosion ausgesetzt sind, ein Korrosionszuschlag vorgesehen ist, sind 
+Widerstand und Ermüdung in der Regel auf der Grundlage der Stahldicke ohne Korrosionszuschlag zu 
+berechnen, sofern sich nicht ungünstigere Spannungen ergeben, wenn die Dicke einschließlich des Korro-
+sionszuschlags berücksichtigt wird. 
+(2) Der Korrosionszuschlag ist in der Regel die Summe aus äußerem ( c
+ext) und innerem ( cint) Korrosions-
+zuschlag, wie nachstehend angegeben. Diese Zuschläge sind in der Regel insgesamt oder anteilig für jeden 
+weiteren 10-Jahres-Zeitraum anzusetzen, falls erforderlich. 
+(3) Der gesamte Korrosionszuschlag ist in der Regel zu der Dicke hinzuzurechnen, die aufgrund der 
+Festigkeits- und Stabilitätsnachweise erforderlich ist. 
+4.2 Äußerer Korrosionszuschlag 
+(1) Der äußere Korrosionszuschlag ist in der Regel in Abhängigkeit von den Umgebungsbedingungen zu 
+wählen. 
+ANMERKUNG Der Nationale Anhang kann Werte für den äußeren Korrosionszuschlag cext enthalten. Für normale 
+Umgebungsbedingungen werden die Werte der Tabelle 4.1 empfohlen. 
+Tabelle 4.1  Äußerer Korrosionszuschlag cext
+Beaufschlagungsdauer 
+Schutzsystem für die ersten 
+10 Jahre 
+für jeden weiteren 
+10-Jahres-Zeitraum 
+beschichteter allgemeiner Baustahl (ohne Konzept für die 
+Instandhaltung der Beschichtung) 0 mm 1 mm 
+beschichteter allgemeiner Baustahl (mit einem Konzept für 
+die Instandhaltung der Beschichtung) 0 mm 0 mm 
+beschichteter allgemeiner Baustahl, durch Wärmedämmung 
+und wasserdichte Bekleidung geschützt 0 mm 1 mm 
+ungeschützter allgemeiner Baustahl 1,5 mm 1 mm 
+ungeschützter wetterfester Baustahl (siehe (3)) 0,5 mm 0,3 mm 
+ungeschützter nichtrostender Stahl 0 mm 0 mm 
+ungeschützte innere Oberfläche des Tragrohrs und 
+ungeschützte äußere Oberfläche des Innenrohres in einem 
+doppelwandigen oder mehrzügigen Schornstein (bei 
+allgemeinen oder wetterfesten Baustählen) 
+0,2 mm 0,1 mm 
+(2) Der äußere Korrosionszuschlag gilt nur für den oberen Abschnitt des Schornsteins mit der Länge 5 b, 
+wobei b der äußere Durchmesser des Schornsteins ist. Wenn ein Schornstein aggressiven Umgebungs-
+bedingungen ausgesetzt ist, die zum Beispiel durch Industrieemissionen, nahe gelegene Schornsteine oder 
+unmittelbare Nähe zur See bedingt sind, ist in der Regel eine Erhöhung dieser Werte in Erwägung zu ziehen 
+oder es sind andere Schutzmaßnahmen zu ergreifen. 
+(3) Folgende Maßnahmen sollten berücksichtigt werden: 
+a) Verbindungen sollten so ausgebildet werden, dass der Verbleib von Feuchtigkeit ausgeschlossen oder 
+minimiert wird. Zum Beispiel sollten die Ausrichtung der Bauteile, Rand- und Lochabstände usw. in die 
+Überlegungen miteinbezogen werden, oder es sollte ein besonderer Schutz der Verbindungen vorge-
+sehen werden. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-3-2:2006 (D) 
+14 
+b) Im Fußbereich des Schornsteins sollte die Vegetation von dem Bauwerk ferngehalten werden. 
+c) Unmittelbar einbetonierte Teile oder Teile für die Verankerung sollten beschichtet werden, um mögliche 
+Korrosion infolge von Kontakt mit dem Erdreich und ständigem Kontakt mit Feuchtigkeit zu minimieren. 
+(4) Wenn wetterfester Stahl eingesetzt wird, sind in der Regel die Vorgaben in (3) zu berücksichtigen. 
+4.3 Innerer Korrosionszuschlag 
+(1) Werte für den inneren Korrosionszuschlag (cint) werden in EN 13084-7 angegeben. 
+5 Tragwerksberechnung 
+5.1 Modellierung des Schornsteins zur Ermittlung der Beanspruchungen 
+(1) Im Allgemeinen braucht bei den Nachweisen des Schornsteins im Grenzzustand der Tragfähigkeit die 
+Kopplung zwischen Tragrohr und Innenrohr nicht beachtet zu werden. Zwängungen des Innenrohrs, die sich 
+ungünstig auf die Sicherheit des Rohrs auswirken können, sind jedoch in der Regel zu berücksichtigen. 
+ANMERKUNG Dämpfungseffekte infolge der Wechselwirkung zwischen Trag- und Innenrohr dürfen berücksichtigt 
+werden. Der Nationale Anhang darf weitere Angaben dazu enthalten. 
+(2) Festigkeit und Stabilität des Innenrohrs sind in der Regel unter Berücksichtigung der vom Tragrohr 
+aufgezwungenen Verformung nachzuweisen. 
+(3) Die Auswirkungen der Temperatur auf die Steifigkeit und Festigkeit der für den Schornstein verwendeten 
+Stähle sind in der Regel zu berücksichtigen. 
+(4) Bei der Berechnung der Steifigkeit des Schornsteines ist in der Regel die Wanddicke des Rohrs ohne 
+Korrosionszuschlag anzusetzen, es sei denn, dass die Wanddicke einschließlich Korrosionszuschlag 
+ungünstigere Spannungen ergibt. Die beiden Korrosionszuschläge, der äußere und der innere, sind in der 
+Regel nach 4.2 und 4.3 zu berücksichtigen. 
+5.2 Berechnung der Schnittgrößen und Spannungen 
+5.2.1 Untersuchung des Tragrohres 
+(1) Ermittlung der Schnittgrößen und Spannungen im Tragrohr siehe EN 1993-1-6. 
+(2) Im Allgemeinen darf eine lineare Berechnung (LA) des Tragrohrs erfolgen, und zwar entweder mit 
+analytischen oder mit Finite-Element-Methoden. 
+ANMERKUNG Regeln und Formeln zur Berechnungsmethode LA von Zylindern und konischen Schalen sind in 
+EN 1993-1-6 angegeben. 
+(3) Bei nicht ausgesteiften vertikal angeordneten zylindrischen Schalen dürfen die Membranspannungen 
+infolge äußerer Einwirkungen mit Hilfe der Membrantheorie ermittelt werden, bei der der Zylinder als Balken 
+betrachtet wird, wenn die Schalenwirkung, mit Ausnahme der Biegemomente in Umfangsrichtung infolge der 
+ungleichmäßigen Verteilung des Winddrucks über den Umfang, vernachlässigt werden kann. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-3-2:2006 (D) 
+15 
+ANMERKUNG Der Nationale Anhang darf Grenzbedingungen für die Vernachlässigung der Schalenwirkung angeben. 
+Die folgenden Bedingungen und Nachweisverfahren werden empfohlen: 
+1014,0 m
+m t
+r
+r
+l ( 5 . 1 ) 
+Dabei ist 
+ l die Gesamthöhe; 
+ r m der mittlerer Radius des Tragrohres (in der Mitte der Schalenwand); 
+ t die Wanddicke ohne Korrosionszuschlag. 
+Die Biegemomente in Umfangsrichtung je Längeneinheit dürfen näherungsweise wie folgt ermittelt werden: 
+(5.2)e
+2
+m5,0 wrmy
+Dabei ist 
+ w e der Winddruck auf die Außenfläche der Schale nach EN 1991-1-4, 5.1, in der Höhe z. 
+Biegemomente in Umfangsrichtung infolge des Winddrucks (für Grundwindgeschwindigkeiten bis zu 25 m/s (siehe 
+EN 1991-1-4) dürfen bei nicht ausgesteiften zylindrischen Schalen vernachlässigt werden, wenn: 
+061m
+t
+r (5.3)
+Bei zylindrischen Schalen mit Ringsteifen und bei mehreren zusammengesetzten zylindrischen und konischen Schalen 
+mit Ringsteifen dürfen die Membranspannungen unabhängig vom l/rm- und vom rm/t-Verhältnis nach der Membrantheorie 
+ermittelt werden, wobei das Bauteil insgesamt als Balken angenommen werden darf. Die Schalenwirkung darf 
+vernachlässigt werden, wenn folgende Bedingungen erfüllt sind: 
+ die zur Abtragung des Winddrucks vorgesehenen Ringsteifen wurden für die Aufnahme der Biegemomente in 
+Umfangsrichtung bemessen; 
+ Ringsteifen, die in den Übergangsbereichen zwischen zylindrischen und konischen Teilen vorgesehen sind, wurden 
+für die Aufnahme der Kräfte bemessen, die aus der Umlenkung der in Meridianrichtung wirkenden Membrankräfte 
+resultieren. 
+Die Festigkeitsnachweise, siehe 6.2.1, und Beulsicherheitsnachweise, siehe 6.2.2, sind in der Regel mit den aus den oben 
+aufgeführten Berechnungen resultierenden Schnittgrößen und Spannungen zu führen. 
+5.2.2 Imperfektionen 
+(1) Bei fußeingespannten auskragenden Schornsteinen ist in der Regel eine Schiefstellung anzunehmen, und 
+zwar in Form einer seitlichen Abweichung (in m) des Schornsteinkopfes aus der Lotrechten von 
+h
+h 501500 ( 5 . 4 ) 
+Dabei ist 
+h die Gesamthöhe des Schornsteins in m. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-3-2:2006 (D) 
+16 
+(2) Örtliche Imperfektionen des Tragrohres sind bereits in den Festigkeitsformeln für den Beulsicherheits-
+nachweis nach EN 1993-1-6 berücksichtigt und brauchen beim Nachweis des Gesamtsystems nicht angesetzt 
+zu werden. 
+ANMERKUNG Siehe auch die maßgebenden geometrischen Toleranzen im Anhang E. 
+(3) Bauteilimperfektionen anderer Schornsteinbauteile unter zentrischem Druck sind in der Regel in Über-
+einstimmung mit EN 1993-1-1, 5.3 zu berücksichtigen. 
+5.2.3 Nachweis des Gesamtsystems 
+(1) Wenn das Tragrohr als Balken berechnet wird, siehe 5.2.1, kann nach Theorie I. Ordnung gerechnet 
+werden, wenn: 
+10,0
+crit
+b
+N
+N ( 5 . 5 ) 
+Dabei ist 
+Nb der Bemessungswert der gesamten Vertikallast am Fußpunkt des Tragrohres; 
+Ncrit die elastische kritische Last am Fußpunkt des Tragrohres für Stabilitätsversagen (Knicken) 
+ (siehe EN 1993-1-6). 
+(2) Wenn das Tragrohr als Balken berechnet wird, siehe 5.2.1, und für das Gesamtsystem nach Theorie 
+II. Ordnung gerechnet werden muss, können die Biegemomente nach Theorie II. Ordnung, , aus denen 
+nach der Theorie I. Ordnung, Mb, abgeleitet werden gemäß: 
+bM
+81
+2
+bb MM ( 5 . 6 ) 
+EI
+Nh b ( 5 . 7 ) 
+Dabei ist 
+h die Gesamthöhe des Tragrohres; 
+EI die Biegesteifigkeit am Fußpunkt des Tragrohres. 
+(3) Diese vereinfachte Vorgehensweise darf nur angewendet werden, wenn: 
+ 0 , 8 ( 5 . 8 a ) 
+und 
+10,0
+b
+top
+N
+N
+ ( 5 . 8 b ) 
+Dabei ist 
+Ntop der Bemessungswert der gesamten Vertikallast am Kopf des Tragrohres. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-3-2:2006 (D) 
+17 
+6 Grenzzustände der Tragfähigkeit 
+6.1 Allgemeines 
+(1)P Der Teilsicherheitsbeiwert M ist wie folgt anzusetzen: 
+ Beanspruchbarkeit von tragenden Teilen oder Bauteilen mit Bezug auf die Streckgrenze fy, wenn kein 
+globales oder örtliches Stabilitätsversagen eintreten kann: M0; 
+ Beanspruchbarkeit von tragenden Teilen oder Bauteilen mit Bezug auf die Streckgrenze fy, wenn globales 
+oder örtliches Stabilitätsversagen eintreten kann: M1; 
+ Beanspruchbarkeit von tragenden Teilen oder Bauteilen mit Bezug auf die Zugfestigkeit fu: M2; 
+ Beanspruchbarkeit von Verbindungen und Anschlüssen, siehe EN 1993-1-8. 
+ANMERKUNG Diese Werte dürfen im Nationalen Anhang festgelegt werden. Folgende Werte werden empfohlen: 
+M0 = 1,00 
+M1 = 1,10 
+M2 = 1,25 
+(2)P Bei Schornsteinen müssen folgende Grenzzustände nachgewiesen werden: 
+ statisches Gleichgewicht; 
+ Festigkeit der Tragelemente; 
+ Gesamtstabilität; 
+ örtliches Stabilitätsversagen ihrer tragenden Bauteile; 
+ Ermüdung ihrer tragenden Bauteile (einschließlich Ermüdung bei niedriger Lastspielzahl, wenn erforder-
+lich); 
+ Versagen von Verbindungen. 
+6.2 Tragrohre 
+6.2.1 Festigkeitsnachweis 
+(1) Die Festigkeit des Tragrohres und des Innenrohres ist in der Regel gegen den Grenzzustand des 
+plastischen Versagens oder des Bruches bei Zug nachzuweisen. 
+(2) Wenn das Tragrohr oder das Innenrohr für äußere Einwirkungen als Balken bemessen wird, siehe 5.2.1, 
+geschieht dies in der Regel in Übereinstimmung mit EN 1993-1-1 oder EN 1993-1-3, wobei die Querschnitts-
+Klasse des Rohrabschnittes zu beachten ist. 
+(3) In allen anderen Fällen sollte das Tragrohr oder das Innenrohr in Übereinstimmung mit den in EN 1993-1-6 
+angegebenen Methoden geprüft werden. 
+(4) Eine Schwächung von Querschnittsteilen durch Ausschnitte und Öffnungen (z. B. Mannlöcher, Abgas-
+eintrittsöffnung usw.) wird in der Regel durch eine entsprechend bemessene Verstärkung kompensiert, wobei 
+die örtliche Schalenstabilität und Ermüdungswirkungen zu berücksichtigen sind, was dazu führen kann, dass 
+Steifen im Bereich der Öffnungsränder erforderlich sind, siehe Bild 6.1. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-3-2:2006 (D) 
+18 
+Legende 
+1 mögliche Ringsteifen 
+2 Längssteifen 
+3 Öffnung 
+Bild 6.1  Aussteifungen um Ausschnitte und Öffnungen 
+(5) Wenn Längssteifen angeordnet werden, ist in der Regel sicherzustellen, dass Biegespannungen des 
+Tragrohrs in Umfangsrichtung, die sich ober- und unterhalb in der Nähe der Öffnung einstellen, berücksichtigt 
+werden, wenn die Lastverteilung der in Meridianrichtung (längs) verlaufenden Spannungen berücksichtigt wird. 
+(6) Längssteifen sind in der Regel ausreichend lang zu wählen, damit sie in der Lage sind, die Kräfte in den 
+ungeschwächten Bereich des Tragrohres einzuleiten. 
+ANMERKUNG Der Nationale Anhang darf Grenzbedingungen für die Öffnungen definieren. Die folgenden Grenzen 
+werden empfohlen. Die örtliche Spannungsverteilung kann im Allgemeinen als ausreichend erachtet werden, wenn die 
+Vorbindelänge der Steifen oberhalb und unterhalb der Öffnung mindestens das 0,8-fache des Abstands zwischen den 
+Steifen oder das 0,8-fache der Höhe der Öffnung beträgt, je nachdem, welcher Wert größer ist, und der Öffnungswinkel 
+maximal 120° beträgt.
+(7) Zusätzliche Ringsteifen im Bereich des Öffnungsrandes und am Ende der Längssteifen dürfen zur 
+Aufnahme der Biegespannungen in Umfangsrichtung eingesetzt werden. 
+(8) Ringsteifen sind in der Regel nach EN 1993-1-6, Anhang C nachzuweisen. 
+6.2.2 Stabilitätsnachweise 
+(1) Die Stabilität des Tragrohrs ist in der Regel sicherzustellen, indem lokales Schalenbeulen für den 
+Grenzzustand der Tragfähigkeit nach EN 1993-1-6, Abschnitt 8 nachgewiesen wird. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-3-2:2006 (D) 
+19 
+(2) Wenn das Tragrohr im Hinblick auf äußere Einwirkungen insgesamt als Balken berechnet wird, siehe 5.2.1, 
+ist in der Regel das Konzept des spannungsbasierten Nachweises nach EN 1993-1-6 anzuwenden. 
+(3) Wenn die Balkentheorie II. Ordnung anzuwenden ist, siehe 5.2.3, ist der Beulsicherheitsnachweis in der 
+Regel mit den Membrandruckspannungen in Meridianrichtung, welche die Effekte aus Theorie II. Ordnung 
+beinhalten, zu führen. 
+6.3 Sicherheitsbewertung anderer Schornsteinbauteile 
+(1) Die Festigkeit und Stabilität von stabförmigen Schornsteinbauteilen sind in der Regel als Teil des Trag-
+rohres nachzuweisen, siehe 6.2. 
+(2) Die Festigkeit und Stabilität von Innenrohren von doppelwandigen oder mehrzügigen Schornsteinen sind 
+in der Regel analog zum Tragrohr nachzuweisen, siehe 6.2. 
+(3) Gegebenenfalls kann der Schalenbeulnachweis eines Innenrohres wie ein Gebrauchstauglichkeits-
+nachweis gehandhabt werden, siehe Abschnitt 7. 
+(4) Wenn das Tragsystem eines Schornsteins mit anderen Bauteilen verbunden ist, sind die Festigkeit und 
+Stabilität dieser Teile und deren Verbindungen in der Regel nach 6.2 und 6.4 nachzuweisen. 
+6.4 Anschlüsse und Verbindungen 
+6.4.1 Grundlagen 
+(1) Zu Anschlüssen und Verbindungen siehe EN 1993-1-8. 
+ANMERKUNG Die Teilsicherheitsbeiwerte für Anschlüsse und Verbindungen in Schornsteinen dürfen im Nationalen 
+Anhang angegeben werden. Die numerischen Werte in EN 1993-1-8, Tabelle 2.1 werden empfohlen. 
+6.4.2 Geschraubte Flanschverbindungen 
+(1) Die Spannung in den Schrauben und im Flansch ist in der Regel unter Berücksichtigung der Außermittig-
+keit der Lasten aus dem Tragrohr zu ermitteln. 
+ANMERKUNG 
+(2) Flansche sind in der Regel ohne Unterbrechungen mit dem Tragrohr zu verschweißen. In der Regel dürfen 
+unterbrochene Schweißnähte nicht ausgeführt werden. 
+(3) Es sollten vorgespannte hochfeste Schrauben verwendet werden. 
+(4) Der maximal zulässige Abstand zwischen den Schraubenlöchern (Lochmitte) beträgt in der Regel 10 d. Bei 
+Fragen der Dichtheit sollte EN 13084-6 zu Rate gezogen werden, da der Schraubenabstand eventuell weiter 
+reduziert werden müsste (möglicherweise bis 5 d), wobei d der Schraubendurchmesser ist. 
+(5) Der kleinste Schraubendurchmesser ist in der Regel d = 12 mm. 
+(6) Da die Schrauben über die gesamte Lebensdauer des Schornsteines in der Regel überprüfbar sein sollten, 
+sind innen liegende Flansche möglichst zu vermeiden. 
+(7) Flansche werden in der Regel zu einem Ring gebogen, der möglichst genau zur Form des Tragrohrs passt. 
+Spalte zwischen Flansch und Tragrohr sind in der Regel so auszubilden, dass die Schweißanforderungen 
+eingehalten werden können. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-3-2:2006 (D) 
+20 
+(8) Die Möglichkeit der Spannungskonzentrationen im Tragrohr in der Nähe der Schrauben, die Biegung im 
+Flansch und im Tragrohr und zusätzliche Spannungen infolge möglicher Deformationen sind in der Regel zu 
+berücksichtigen. 
+(9) Temperatur und Temperaturwechsel sind in der Regel bei der Bemessung und Konstruktion von Flansch-
+verbindungen besonders zu beachten. 
+6.4.3 Anschluss eines Schornsteins an ein Fundament oder ein tragendes Bauwerk 
+(1) Der Anschluss des Tragrohres an das Stahlbetonfundament oder die Stützkonstruktion hat in der Regel 
+das Einspannmoment, die Normalkraft und die Querkraft am Fuß des Tragrohres sicher aufzunehmen und in 
+das Fundament einzuleiten. 
+(2) Wenn der Anschluss mit Hilfe einer Fußplatte und Ankerschrauben ausgeführt wird, sind die Ankerkräfte in 
+der Regel unter Beachtung der Außermittigkeit der Lasten aus dem Tragrohr zu berechnen. 
+ANMERKUNG 1 Der Nationale Anhang darf weitere Informationen zur Berechnung und Konstruktion von Verbindungen 
+zum Fundament geben. 
+ANMERKUNG 2 Zum Ermüdungsnachweis siehe Abschnitt 9. 
+ANMERKUNG 3 Möglicherweise erfüllen beispielsweise auch nicht vorgespannte Schrauben die Anforderungen an die 
+Ermüdung, wenn die Schwingungen mit Hilfe aerodynamischer oder dämpfender Maßnahmen reduziert werden. 
+(3) Wenn der Anschluss vom Tragrohr an das Fundament in anderer Weise erfolgt, zum Beispiel indem das 
+Tragrohr verlängert und in das Fundament direkt einbetoniert wird, ist in der Regel nachzuweisen, dass das 
+statische Modell zutreffend ist, und die dafür erforderliche konstruktive Ausbildung sollte berücksichtigt 
+werden. 
+6.5 Schweißverbindungen 
+(1) Zu Schweißverbindungen an Stahlschornsteinen siehe EN 1993-1-8, EN 1993-1-9 und EN 13084-1. 
+7 Grenzzustände der Gebrauchstauglichkeit 
+7.1 Grundlagen 
+(1) Die folgenden Grenzzustände der Gebrauchstauglichkeit von Stahlschornsteinen sind in der Regel zu 
+berücksichtigen: 
+ Verformungen oder Auslenkungen in Windrichtung oder quer zur Windrichtung, die sich nachteilig auf 
+den Eindruck vom Bauwerk oder dessen Nutzung auswirken; 
+ Vibrationen, Schwingungen oder Schiefstellungen, die umstehende Personen beunruhigen können; 
+ Verformungen, Auslenkungen, Vibrationen, Schwingungen oder Schiefstellungen, die Schäden an nicht 
+tragenden Teilen hervorrufen. 
+(2) Wenn in den jeweiligen Abschnitten vereinfachte konstruktive Regeln für die Gebrauchstauglichkeit 
+angegeben sind, brauchen keine detaillierten Berechnungen mit kombinierten Einwirkungen durchgeführt zu 
+werden. 
+ANMERKUNG Für alle Gebrauchstauglichkeitsnachweise werden die Teilsicherheitsbeiwerte üblicherweise mit 1,0 
+angenommen. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1993-3-2:2006 (D) 
+21 
+7.2 Auslenkungen 
+(1) Der Wert der Auslenkung ( max) an der Mündung eines selbsttragenden Schornsteins infolge der 
+charakteristischen Belastung in Windrichtung, nach EN 1991-1-4, ist in der Regel zu begrenzen. 
+ANMERKUNG Der Nationale Anhang darf Grenzwerte angeben. Der folgende Wert wird empfohlen. 
+max = h/50 (7.1) 
+Dabei ist h die Gesamthöhe des Schornsteins. 
+(2) Die Werte für die Schwingwegamplituden an der Mündung eines selbsttragenden Schornsteins infolge von 
+Wirbelablösung sind in der Regel zu begrenzen. 
+ANMERKUNG 1 Zur Bestimmung der maximalen Werte siehe EN 1991-1-4, Anhang E. 
+ANMERKUNG 2 Der Nationale Anhang darf Grenzwerte für Schwingwegamplituden angeben. Wenn die Sicherheits-
+klassen nach Anhang A dieses Teils genutzt werden, wird empfohlen, die Grenzwerte nach Tabelle 7.1 zu verwenden. 
+Tabelle 7.1  Maximale Amplitude der Querschwingung 
+Sicherheitsklasse Vorgeschlagene Grenzwerte der Querschwingungsamplitude 
+3 0,05 mal Außendurchmesser 
+2 0,10 mal Außendurchmesser 
+1 0,15 mal Außendurchmesser 
+8 Versuchsgestützte Bemessung 
+(1) Die in EN 1990 angegebenen Regeln für die versuchsgestützte Bemessung und Konstruktion sind in der 
+Regel anzuwenden. 
+(2) Werte für das logarithmische Dämpfungsdekrement, die von EN 1991-1-4 abweichen, sind in der Regel 
+durch einen Versuch nachzuweisen. Zur Anleitung siehe Anhang D. 
+9 Ermüdung 
+9.1 Allgemeines 
+(1) In der Regel sind die Ermüdungswirkungen von Spannungsschwingbreiten infolge von Kräften in 
+Windrichtung und quer zur Windrichtung zu berücksichtigen. 
+ANMERKUNG Da die Ermüdungsbeanspruchung infolge von wirbelerregten Querschwingungen üblicherweise maßgeb-
+lich für die Bemessung ist, braucht eine Ermüdungsuntersuchung aus Belastungen in Windrichtung üblicherweise nicht 
+durchgeführt zu werden. 
+(2) Zu Ermüdungsuntersuchungen siehe EN 1993-1-9. 
+(3) Wenn die Methode mit geometrischen Spannungen angewandt wird, wie z. B. an Öffnungen oder an 
+besonderen Verbindungsausführungen, dürfen Spannungskonzentrationsbeiwerte nach EN 1993-1-6 verwen-
+det werden. 
+ANMERKUNG Der Nationale Anhang darf nähere Informationen zu Verfahren für die Spannungsberechnung geben. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1993-3-2:2006 (D) 
+22 
+(4) 
+ANMERKUNG Der Nationale Anhang darf weitere Informationen geben. 
+(5) Ermüdung durch Korrosion wird in diesem Teil nicht behandelt. 
+9.2 Ermüdungsbeanspruchung 
+9.2.1 Schwingungen in Windrichtung 
+(1) Bei der Ermittlung der Ermüdungsbeanspruchungen in Windrichtung sind in der Regel böenerregte 
+Schwingungen zu berücksichtigen. 
+ANMERKUNG Ein Verfahren für die Bestimmung von Ermüdungsbeanspruchungen infolge von böenerregten Schwin-
+gungen in Windrichtung ist in EN 1993-3-1, 9.2.1 zu finden.
+9.2.2 Querschwingungen 
+(1) Die Ermüdungsbeanspruchung infolge wirbelerregter Querschwingungen darf mit Hilfe der maximalen 
+Spannungsschwingbreiten ermittelt werden. 
+ANMERKUNG Zur Ermittlung der Spannungsschwingbreiten und der Lastspielzahl siehe 2.4 und EN 1991-1-4, E.1.5.2.6. 
+(2) Bei Schornsteinen, die niedriger als 3 m sind, braucht kein Ermüdungsnachweis geführt zu werden. 
+(3) Wenn die kritische Windgeschwindigkeit für Wirbelerregung des Schornsteins größer als 20 m/s ist, 
+brauchen die Korrelationslängen, die sich unterhalb von 16 m Höhe über dem Boden befinden, nicht 
+berücksichtigt zu werden, siehe EN 1991-1-4. 
+(4) In der Regel sind höhere Eigenschwingformen zu berücksichtigen, wenn die kritische Windgeschwindigkeit 
+für diese Eigenschwingformen geringer als die Grenzgeschwindigkeit ist, siehe EN 1991-1-4. 
+9.3 Ermüdungsfestigkeit im Bereich hoher Lastspielzahlen 
+(1) Die Tabellen der Ermüdungsfestigkeit für die konstruktiven Details von geschweißten Schalenbauteilen 
+von Schornsteinen in EN 1993-1-9 sind zu beachten. 
+ANMERKUNG Hilfen zur Anwendung von EN 1993-1-9 und zur Erhöhung der Ermüdungsfestigkeit durch die Qualität 
+der Schweißung sind in Anhang C angegeben. 
+(2) Wenn anstelle eines Korrosionsschutzes ein Korrosionszuschlag zur Blechdicke vorgesehen wird, sollte 
+das Detail um eine Kerbfallklasse tiefer eingestuft werden als in den Tabellen der Kerbfallklassen angegeben, 
+siehe EN 1993-1-9, Bild 7.1. 
+9.4 Sicherheitsnachweis 
+(1) Der Ermüdungsnachweis ist in der Regel nach EN 1993-1-9, 8(2) zu führen. 
+E,2 = E (9.1) 
+Dabei ist 
+ der Faktor für die Umrechnung von E in NC = 2 × 106 Lastspiele; 
+E die Spannungsschwingbreite, die mit der Lastspielzahl N auftritt (siehe 9.2), gegebenenfalls 
+auch unter Berücksichtigung des Spannungskonzentrationsfaktors. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1993-3-2:2006 (D) 
+23 
+(2) Der Umrechnungsfaktor kann ermittelt werden aus 
+6
+1
+102
+N=
+m
+ (9.2) 
+Dabei ist 
+m die Steigung der Wöhlerlinie. 
+9.5 Teilsicherheitsbeiwerte 
+(1) Teilsicherheitsbeiwerte für die Ermüdung sind in der Regel so anzunehmen wie in EN 1993-1-9, 
+Abschnitte 3(6) und (7) und 6.2(1) festgelegt. 
+ANMERKUNG Der Nationale Anhang darf Zahlenwerte für Ff und Mf angeben. Für Ff wird der Wert Ff = 1,00 
+empfohlen. Für Mf siehe EN 1993-1-9, Tabelle 3.1. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1993-3-2:2006 (D) 
+24 
+Anhang A
+(normativ)
+Zuverlässigkeitsdifferenzierung und Teilsicherheitsbeiwerte 
+für Einwirkungen 
+A.1 Zuverlässigkeitsdifferenzierung für Stahlschornsteine 
+(1) Für Schornsteine ist eine Zuverlässigkeitsdifferenzierung nach Sicherheitsklassen vorzunehmen. 
+ANMERKUNG Der Nationale Anhang darf relevante Sicherheitsklassen abhängig von der Schadensfolge angeben. Es 
+wird empfohlen, die Klassen in Tabelle 1 zu verwenden. 
+Tabelle A.1  Zuverlässigkeitsdifferenzierung für Schornsteine 
+Sicherheitsklasse 
+3 
+Schornsteine, die an wichtigen Orten stehen, wie zum Beispiel in Kernkraftwerken oder in dicht 
+besiedelten Stadtgebieten. Größere Schornsteine in Industrieanlagen, in denen Menschen 
+arbeiten, wo die wirtschaftlichen und sozialen Folgen eines Einsturzes sehr groß wären. 
+2 Alle gewöhnlichen Schornsteine in Industrieanlagen oder an anderen Standorten, die sich nicht 
+der Klasse 1 oder Klasse 3 zuordnen lassen. 
+1 
+Schornsteine, die auf freiem Gelände stehen und deren Versagen keine weitergehenden 
+Schäden verursachen würde. Schornsteine, die kleiner als 16 m sind und die in unbewohntem 
+Gelände stehen.
+A.2 Teilsicherheitsbeiwerte für Einwirkungen 
+(1) Die Teilsicherheitsbeiwerte können von der Sicherheitsklasse des Schornsteins abhängig sein. 
+ANMERKUNG 1 Bei der Wahl der Teilsicherheitsbeiwerte für ständige Einwirkungen G und für veränderliche Ein-
+wirkungen Q darf berücksichtigt werden, dass Windeinwirkungen für die Bemessung vorherrschend sind. 
+ANMERKUNG 2 Der Nationale Anhang darf Angaben zu G und Q enthalten. Bei Anwendung der Tabelle A.1 werden die 
+Zahlenwerte in Tabelle A.2 empfohlen. 
+Tabelle A.2  Teilsicherheitsbeiwerte für ständige und für veränderliche Einwirkungen 
+Art der Einwirkung 
+Sicherheitsklasse, 
+siehe Anmerkung zu 
+2.1.2
+Ständige Einwirkungen Veränderliche Einwirkungen 
+3 1,2 1,6 
+2 1,1 1,4 Ungünstig 
+1 1,0 1,2 
+Günstig alle Klassen 1,0 0,0 
+Störfälle 1,0 1,0 
+ANMERKUNG 3 Der Nationale Anhang darf auch Informationen für die Verwendung von dynamischen Antwortberech-
+nungen für Windeinwirkungen geben, siehe auch EN 1993-3-1, Anhang B. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1993-3-2:2006 (D) 
+25 
+Anhang B
+(informativ) 
+Aerodynamische und dämpfende Maßnahmen 
+B.1 Allgemeines 
+(1) In Übereinstimmung mit üblichen Methoden der Aerodynamik und der Baudynamik können Schwingungen 
+mit Hilfe der folgenden einzelnen oder kombinierten Maßnahmen wirksam reduziert werden: 
+ aerodynamische Maßnahmen wie z. B. schraubenförmige Wendeln, Spoiler oder perforierte Blechmäntel; 
+ Schwingungsdämpfer; 
+ Seilverspannung mit dämpfenden Eigenschaften; 
+ direkte Dämpfung (gegen einen Fixpunkt). 
+B.2 Aerodynamische Maßnahmen 
+(1) Aerodynamische Maßnahmen, wie Wendeln, perforierte Bleche oder Streifen, welche die regelmäßige 
+Wirbelablösung stören, dürfen eingesetzt werden, um die Erregerkraft zu reduzieren. Stahlschornsteine mit 
+schraubenförmigen Wendeln dürfen nach den im Folgenden genannten Kriterien ausgelegt werden, wenn die 
+Scrutonzahl größer als 8 ist (siehe EN 1991-1-4, Anhang E). Für andere aerodynamische Maßnahmen sollten 
+unabhängige Untersuchungen, wie zum Beispiel Windkanalversuche, hinsichtlich ihrer Wirksamkeit durchge-
+führt werden. 
+(2) Wenn schraubenförmige Wendeln im oberen Bereich des Schornsteins angeordnet werden, darf der 
+Grundwert des aerodynamischen Erregerkraftbeiwertes c
+lat, der dann über die gesamte Höhe des Schorn-
+steins anzusetzen ist, mit folgendem Abminderungsfaktor multipliziert werden. 
+h
+l=
+3
+S1
+ (B.1)
+Dabei ist 
+lS die Länge des Bereichs des Rohrs, der mit Wendeln versehen ist; 
+h die Gesamthöhe des Schornsteins. 
+(3) Gleichung (B.1) sollte in der Regel nur angewendet werden, wenn die folgenden Bedingungen für die 
+Geometrie derartiger schraubenförmiger Wendeln erfüllt sind: 
+ dreigängige Wendeln; 
+ Ganghöhe der Wendel hS = 4,5 b bis 5,0 b; (B.2a) 
+ Wendeltiefe t = 0,10 b bis 0,12 b; ( B . 2 b ) 
+ die Wendeln erstrecken sich über eine Länge lS von mindestens 0,3 h; üblicherweise 0,3 h bis 0,5 h. 
+Darüber hinaus ist es zulässig, am Schornsteinkopf einen Bereich mit einer Länge von maximal 1,0 b
+nicht mit Wendeln auszurüsten, der der Länge lS in Gleichung (B.1) zugerechnet werden darf. 
+Der Durchmesser des Schornsteins ist b. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1993-3-2:2006 (D) 
+26 
+ANMERKUNG Vorstehend wird angenommen, dass das Berechnungsverfahren 1 von EN 1991-1-4, Anhang E 
+angewandt wird. Bei der Berechnung der Querschwingungsamplitude ist der Wirklängenfaktor Kw mit 1,0 anzusetzen 
+(siehe EN 1991-1-4, E.1.5.2.1). 
+(4) Bei zwei oder mehr gleichartigen Schornsteinen, die dicht beieinander stehen, können die Wendeln 
+weniger wirksam sein als sich nach Formel (B.1) ergibt. Wenn der Mittenabstand zwischen den Schornsteinen 
+weniger als 5 d beträgt, sollten entweder besondere Untersuchungen im Hinblick auf die Wirksamkeit der 
+Wendeln gegen wirbelerregte Querschwingungen durchgeführt werden, oder es sollte angenommen werden, 
+dass die Wendeln ihren Zweck nicht erfüllen. 
+(5) Das Anbringen von Wendeln oder Störstreifen erhöht den Windwiderstandsbeiwert des Schornstein-
+abschnitts, an dem sie angebracht sind. Für Wendeln, deren Höhe bis zu 0,2 × Schornsteindurchmesser 
+beträgt, sollte der Winddruckbeiwert bezogen auf den äußeren Durchmesser (die Wendelhöhe einbezogen) 
+mit 1,2 angesetzt werden. 
+B.3 Dynamische Schwingungsdämpfer 
+(1) Ein dynamischer Schwingungsdämpfer kann zur Reduzierung von Schwingungen eingesetzt werden, z. B. 
+mit einer elastisch gelagerten schwingfähigen Zusatzmasse. Der Dämpfer sollte unter Berücksichtigung der 
+Masse, Eigenfrequenz, Dämpfung und anderer wichtiger Parameter so bemessen und konstruiert werden, 
+dass die Bauwerksdämpfung angehoben wird. 
+(2) Die erforderliche Größe der effektiven Dämpfung ist im Allgemeinen aus der Berechnung der Quer-
+schwingungen und deren Ermüdungswirkungen zu ermitteln. 
+(3) Eine Prüfung der Funktionsfähigkeit, der Frequenzabstimmung und der Dämpfung des Systems sollte 
+vorgenommen werden. Es sollte ein Bescheinigung angefertigt werden, aus der hervorgeht, dass die erzielte 
+Dämpfung mit den vorgelegten Berechnungen übereinstimmt. 
+(4) Wenn Schwingungsdämpfer eingebaut werden, sollte vom Hersteller angegeben werden, in welchen 
+Intervallen die Inspektion und/oder die Wartung des Dämpfers zu erfolgen haben. 
+B.4 Seile mit dämpfenden Vorrichtungen 
+(1) Seile mit dämpfenden Einrichtungen können eingesetzt werden, um zusätzliche Dämpfung zu erzielen. 
+(2) Die Wirksamkeit derartiger Dissipationsmaßnahmen sollte durch geeignete Versuche am fertig gestellten 
+Schornstein nachgewiesen werden. 
+(3) Wenn die Seilenden unverschieblich verankert sind, sollte ein statischer Nachweis für das Bauwerk 
+einschließlich der Seile unter Berücksichtigung der maximalen Windlast erbracht werden. 
+B.5 Direkte Dämpfung 
+(1) Wenn ein Festpunkt in der Nähe des Schornsteins in ausreichender Höhe zur Verfügung steht, kann eine 
+direkte Dämpfung vorgenommen werden, indem ein Dämpfungselement zwischen dem Schornstein und dem 
+Festpunkt eingebaut wird. 
+ANMERKUNG Für gekoppelte gleichartige Schornsteine mit identischer Eigenfrequenz kann keine Dämpfungserhöhung 
+aufgrund der Kopplung angesetzt werden. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1993-3-2:2006 (D) 
+27 
+Anhang C
+(informativ) 
+Ermüdungsfestigkeit und Qualitätsanforderungen 
+C.1 Allgemeines 
+(1) Bei der Wahl der passenden Detailkategorie aus EN 1993-1-9, Tabellen 8.1 bis 8.5 können Schalendetails, 
+wie in Tabelle C.1 dargestellt, als flach angenommen werden. 
+(2) Das unterste Qualitätsniveau ermüdungsbelasteter Schweißnähte am Tragrohr ist die Qualitätsstufe C 
+nach EN ISO 5817. 
+C.2 Erhöhung der Ermüdungsfestigkeit bei speziellen Qualitätsanforderungen 
+(1) Werden erhöhte Qualitätsanforderungen gestellt und führen diese Qualitätsanforderungen zu einer 
+Erhöhung der Ermüdungsfestigkeit, so kann ein um eine Stufe höherer Kerbfall benutzt werden als in 
+EN 1993-1-9 angegeben, wenn dies durch geeignete Prüfungen bestätigt wird. 
+ANMERKUNG Der Nationale Anhang darf Hinweise zu den in Frage kommenden Kerbfällen und den zugehörigen 
+Qualitätsanforderungen enthalten. Für nachstehende Kerbfälle kann eine Erhöhung der Ermüdungsfestigkeit ange-
+nommen werden, wenn die Qualitätsstufe B angewendet wird: 
+ Querstoß in Rohrschüssen mit Stumpfnaht, von beiden Seiten geschweißt; 
+ Längsstoß in Rohrschüssen, durchlaufend mit Schweißautomaten geschweißt; 
+ Längssteg, an Rohrschuss durchlaufend angeschweißt, mit oder ohne kontinuierlichem Schubfluss; 
+ Kreuzstöße mit teilweise durchgeschweißten Nähten. 
+Tabelle C.1  Ermüdungsfestigkeit von typischen Details 
+Verweis Konstruktive Details Beschreibung 
+EN 1993-1-9 
+Tabelle 8.3 
+Details 4 und 7 
+Querstoß in Rohrschüssen 
+Stumpfnaht, von beiden Seiten 
+geschweißt 
+EN 1993-1-9 
+Tabelle 8.3 
+Detail 14 
+Querstoß in Rohrschüssen 
+Stumpfnaht, einseitig geschweißt
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1993-3-2:2006 (D) 
+28 
+Tabelle C.1 (fortgesetzt) 
+Verweis Konstruktive Details Beschreibung
+EN 1993-1-9 
+Tabelle 8.3 
+Detail 16 (< 1:4) 
+Querstoß in Rohrschüssen 
+Stumpfnaht, geschweißt auf 
+verbleibender Wurzelunterlage 
+Detail 
+Kategorie 50 
+Querstoß in Rohrschüssen 
+Stumpfnaht, einseitig geschweißt
+EN 1993-1-9 
+Tabelle 8.2 
+Detail 10 
+Längsstoß in Rohrschüssen, 
+durchlaufend mit 
+Schweißautomaten geschweißt 
+EN 1993-1-9 
+Tabelle 8.2 
+Details 1, 2, 3, 5 und 
+7 
+Längssteg, an Rohrschuss 
+durchlaufend angeschweißt 
+EN 1993-1-9 
+Tabelle 8.5 
+Detail 8 
+Längssteg, an Rohrschuss 
+durchlaufend angeschweißt, 
+unter Schubbeanspruchung 
+(Quersteg analog) 
+EN 1993-1-9 
+Tabelle 8.4 
+Details 6 und 7 
+Quersteg, an Rohrschuss 
+durchlaufend angeschweißt 
+EN 1993-1-9 
+Tabelle 8.4 
+Details 6 und 7 
+kurzer Quersteg, an Rohrschuss 
+umlaufend angeschweißt 
+(auch für durchlaufenden 
+Quersteg mit unterbrochener 
+Naht) 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1993-3-2:2006 (D) 
+29 
+Tabelle C.1 (fortgesetzt) 
+Verweis Konstruktive Details Beschreibung
+EN 1993-1-9 
+Tabelle 8.5 
+Details 1, 2 und 3 
+Kreuzstöße mit teilweise 
+durchgeschweißten Nähten 
+EN 1993-1-9 
+Tabelle 8.4 
+Detail 9 
+Angeschweißter Rundstahl oder 
+Kopfbolzendübel 
+EN 1993-1-9 
+Tabelle 8.4 
+Detail 2 
+Längssteg, an Rohrschuss 
+angeschweißt 
+EN 1993-1-9 
+Tabelle 8.4 
+Detail 1 
+Kurzer Längssteg, an 
+Rohrschuss angeschweißt 
+EN 1993-1-9 
+Tabelle 8.2 
+Detail 8 
+Durchlaufender Längssteg mit 
+unterbrochener Naht EN 1993-1-9 
+Tabelle 8.5 
+Details 6 und 7 
+Pflasterblech (mit oder ohne 
+weitere Anschlussstücke), an 
+Rohrschuss angeschweißt 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1993-3-2:2006 (D) 
+30 
+Tabelle C.1 (fortgesetzt) 
+Verweis Konstruktive Details Beschreibung 
+EN 1993-1-9 
+Tabelle 8.5 
+Details 1, 2 und 3 
+Fußring mit Kehl- und 
+Stumpfnaht 
+EN 1993-1-9 
+Tabelle 8.5 
+Detail 11 
+Flanschverbindung mit 
+Stumpfnaht 
+In der konstruktiven Ausführung 
+der Schrauben 
+siehe EN 1993-1-8 
+EN 1993-1-9 
+Tabelle 8.5 
+Detail 12 
+Flanschverbindung mit 
+Kehlnähten 
+In der konstruktiven Ausführung 
+der Schrauben 
+siehe EN 1993-1-8 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1993-3-2:2006 (D) 
+31 
+Anhang D
+(informativ) 
+Versuchsgestützte Bemessung 
+D.1 Allgemeines 
+(1) Wenn die in EN 1991-1-4 angegebenen Werte für das logarithmische Dämpfungsdekrement als nicht 
+zutreffend angesehen werden oder wenn nach der Installation von Dämpfungsmaßnahmen die Wirksamkeit 
+dieser Dämpfer überprüft werden muss, sollten die folgenden Hinweise beachtet werden, um das logarithmi-
+sche Dämpfungsdekrement mit Hilfe von Versuchen zu ermitteln. 
+D.2 Definition des logarithmischen Dämpfungsdekrements 
+(1) Für die Definition des logarithmischen Dämpfungsdekrements siehe EN 1991-1-4, Anhang D. 
+D.3 Vorgehensweise bei der Messung des logarithmischen Dämpfungsdekrements
+(1) Die Messgrößen können die Schwingbeschleunigung, die Verformung, Kräfte oder Dehnungen des 
+Schornsteins sein. 
+(2) Es dürfen unterschiedliche Methoden für die Messung angewendet werden, wie Ausschwingversuch, 
+Autokorrelationsmethode oder Methode der Halbwertsbreite. 
+(3) Es sollte sichergestellt sein, dass die Messung die gesamte Schwingenergie erfasst; daher sollte die 
+Messung gleichzeitig in zwei orthogonalen Richtungen erfolgen. 
+(4) Bei der Auswertung der Messwerte sollte die Abhängigkeit von der Schwingamplitude berücksichtigt 
+werden. 
+(5) Die Amplitude während des Versuchs sollte die gleiche Größenordnung aufweisen wie die berechnete 
+Wirbelresonanzamplitude des Schornsteins, oder es sollte sichergestellt sein, dass die für die berechnete 
+Amplitude angenommene Dämpfung auf der sicheren Seite liegt. 
+(6) Wenn während des Versuchs Wind herrscht, sollte der Einfluss der aerodynamischen Dämpfung vom 
+Messwert abgezogen werden. Für die Definition der aerodynamischen Dämpfung siehe EN 1991-1-4, 
+Anhang D. 
+DIN EN 1993-3-2:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1993-3-2:2006 (D) 
+Anhang E
+(informativ) 
+Ausführung 
+E.1 Allgemeines 
+(1) Schornsteine sind in der Regel gemäß der Ausführungsnorm EN 1090-2 herzustellen und zu montieren. 
+Die in EN 13084-7 angegebenen besonderen Anforderungen für Schornsteine sind in der Regel zu beachten. 
+(2) Die Ausführungstoleranzen in E.2 sind in der Regel bei der Bemessung und Konstruktion zu beachten. 
+ANMERKUNG Die Regeln für Festigkeit und Stabilität in EN 1993-3-2 basieren auf der Annahme, dass die besonderen 
+Herstellungstoleranzen nach E.2 eingehalten werden. 
+(3) In der Regel ist zwischen den Flanschen beim Zusammenbau vor dem Verschrauben nur ein Spalt von 
+höchstens 1,5 mm zulässig. 
+(4) Flansche sind in der Regel eben auszuführen mit einer Toleranz von 0,5 mm je 100 mm Breite und einer 
+Gesamttoleranz von 1,0 mm auf den Umfang bezogen. 
+(5) Bei Schornsteinen, die mit einer Fußplatte und Ankerschrauben hergestellt werden, ist in der Regel 
+zwischen der Fußplatte und dem Fundament schwindfreier Beton zu verwenden. 
+E.2 Ausführungstoleranzen 
+(1) Die zulässige Abweichung des Tragrohres aus der Lotrechten auf jedem Höhenniveau h (in m) über dem 
+Fuß eines selbsttragenden Schornsteins ist in der Regel: 
+h
+h 5010001 (E.1) 
+(2) Diese Abweichung gilt in der Regel auch für die Mittelachse von Innenrohren. 
+E.3 Qualität der Schweißverbindungen und Ermüdung 
+(1) Die Qualität von Schweißverbindungen, die nach angegebenem Kerbfall des konstruktiven Details, siehe 
+9.3, gefordert wird, ist in der Regel auf den Werkstattzeichnungen anzugeben. 
+32 
+DIN EN 1993-3-2:2010-12

@@ -1,0 +1,254 @@
+{
+  "document_id": "EN_1996-3_NA__national_annex__EC_6_Teil_3_NA",
+  "eurocode_family": "EC6",
+  "designation": "DIN EN 1996-3/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 6 Teil 3 NA.pdf",
+  "relative_path": "EC 6/EC 6 Teil 3 NA.pdf",
+  "sha256": "b65b727a864a785651b9c59ede63a0e1fe41283d8e2ca02b376a439bbdc9e204",
+  "pages": 18,
+  "text_pages": 18,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 13,
+  "table_reference_count": 1,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111162403+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232954+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 6\\EC 6 Teil 3 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "„In Gleichung (4.4) ist für die belastete Bruttoquerschnittsfläche der Wand der maßgebende Wandabschnitt",
+      "context": "NCI zu 4.2.2.2 „Bemessungswert des vertikalen Tragwiderstands“ | Abschnitt (1) ist wie folgt zu ergänzen: | „In Gleichung (4.4) ist für die belastete Bruttoquerschnittsfläche der Wand der maßgebende Wandabschnitt | (bezogen auf einen Meter Wandlänge) anzusetzen.“ | (NA.2) Bei Langzeitwirkungen ist der Bemessungswert der Druckfestigkeit des Mauerwerks f",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "= 0,85; für kurzzeitige Beanspruchungsarten darf = 1,0 gesetzt werden.",
+      "context": "als ein Faktor zur Berücksichtigung von Langzeiteinwirkungen und weiterer Einflüsse; für | eine dauernde Beanspruchung infolge von Eigengewicht, Schnee- und Verkehrslasten gilt | = 0,85; für kurzzeitige Beanspruchungsarten darf = 1,0 gesetzt werden. | (NA.3) Bei Wand-Querschnittsflächen kleiner als 0,1 m² ist die Bemessungsdruckfestigkeit des Mauerwerks | mit dem Faktor 0,8 zu multiplizieren.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "Eine Mitwirkung der Vorsatzschale darf in Deutschland nicht angesetzt werden ( tef = t). Die erforderliche",
+      "context": "mit dem Faktor 0,8 zu multiplizieren. | NDP zu 4.2.2.3 (1) „Abminderungsbeiwert“ | Eine Mitwirkung der Vorsatzschale darf in Deutschland nicht angesetzt werden ( tef = t). Die erforderliche | Anzahl der Anker ntmin ist in DIN EN 1996-1-1/NA:2012-01, NDP zu 8.5.2.2 (2), angegeben. | NCI zu 4.2.2.3 „Abminderungsbeiwert“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "unvollständig",
+      "line": "1= 0,9·a/t bei teilweise aufliegender Deckenplatte (siehe Bild NA.1) und 1=0,9 bei vollaufliegender",
+      "context": "(NA.4) Wird die Traglastminderung infolge Deckenverdrehung durch konstruktive Maßnahmen, z. B. | Zentrierleisten mittig unter dem Deckenauflager, vermieden, so gilt unabhängig von der Deckenstützweite | 1= 0,9·a/t bei teilweise aufliegender Deckenplatte (siehe Bild NA.1) und 1=0,9 bei vollaufliegender | Deckenplatte. | (NA.5) Zur Berücksichtigung der Traglastminderung bei Knickgefahr gilt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "2 = 0,75 für Wanddicken t 175 mm;",
+      "context": "(NA.8) Sind die Voraussetzungen zur Anwendung des vereinfachten Nachweisverfahrens nach 4.2.1.1 | eingehalten, gilt statt Absatz (2) vereinfacht: | 2 = 0,75 für Wanddicken t 175 mm; | 2 = 0,90 für Wanddicken 175 mm < t 250 mm; | 2 = 1,00 für Wanddicken t > 250 mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "2 = 0,90 für Wanddicken 175 mm < t 250 mm;",
+      "context": "eingehalten, gilt statt Absatz (2) vereinfacht: | 2 = 0,75 für Wanddicken t 175 mm; | 2 = 0,90 für Wanddicken 175 mm < t 250 mm; | 2 = 1,00 für Wanddicken t > 250 mm. | (NA.9) Eine Abminderung der Knicklänge mit 2 < 1,0 ist jedoch nur zulässig, wenn folgende erforderliche",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "2 = 1,00 für Wanddicken t > 250 mm.",
+      "context": "2 = 0,75 für Wanddicken t 175 mm; | 2 = 0,90 für Wanddicken 175 mm < t 250 mm; | 2 = 1,00 für Wanddicken t > 250 mm. | (NA.9) Eine Abminderung der Knicklänge mit 2 < 1,0 ist jedoch nur zulässig, wenn folgende erforderliche | Auflagertiefen a gegeben sind:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "t < 240mm a = t.",
+      "context": "Auflagertiefen a gegeben sind: | t 240 mm a 175 mm; | t < 240mm a = t. | NCI zu 4.3 „Vereinfachte Berechnungsmethode für Wände unter Einzellasten“ | (NA.2) Für Vollsteine nach DIN EN 1996-1-1/NA:2012-01, NCI zu 3.1.1, NA.5, gilt DIN EN 1996-1-1:2010-12,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "(NA.5) In Gleichung (4.12) ist bei Elementmauerwerk mit einem planmäßigen Überbindemaß",
+      "context": "(NA.4) Die Anschütthöhe h | e darf höchstens 1,15 h betragen. | (NA.5) In Gleichung (4.12) ist bei Elementmauerwerk mit einem planmäßigen Überbindemaß | 0,2 hu lol < 0,4 hu generell = 20 einzusetzen. | (NA.6) DIN EN 1996-2/NA:2012-01, Anhang NA.E, regelt die Ausführung von Kellerwänden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "0,2 hu lol < 0,4 hu generell = 20 einzusetzen.",
+      "context": "e darf höchstens 1,15 h betragen. | (NA.5) In Gleichung (4.12) ist bei Elementmauerwerk mit einem planmäßigen Überbindemaß | 0,2 hu lol < 0,4 hu generell = 20 einzusetzen. | (NA.6) DIN EN 1996-2/NA:2012-01, Anhang NA.E, regelt die Ausführung von Kellerwänden. | NCI zu Anhang A „Vereinfachte Berechnungsmethode für unbewehrte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "Bei vollaufliegender Decke und hef/tef 10 darf der Beiwert cA = 0,7 angenommen werden.",
+      "context": "Für eine teilaufliegende Decke ist für die Anwendung von Anhang A eine Mindestwanddicke von 30 cm | erforderlich und der Beiwert cA ist mit 0,45 anzusetzen. | Bei vollaufliegender Decke und hef/tef 10 darf der Beiwert cA = 0,7 angenommen werden. | NCI zu Anhang B „Vereinfachte Berechnungsmethode für vertikal nicht beanspruchte | Innenwände mit begrenzter horizontaler Belastung“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "hi/li =1,0",
+      "context": "einer Höhe über Gelände von | 0 m bis 8 m 8 m bis 20 m c | hi/li =1,0 | hi/li 2,0 | oder",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "hi/li =1,0",
+      "context": "oder | hi/li 0,5 | hi/li =1,0 | hi/li 2,0 | oder",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "6.12",
+      "pdf_page": 12,
+      "line": "DIN EN 1991-1-1/NA:2010-12, Tabelle 6.12DE, Zeile 1 nicht überschritten wird, vorausgesetzt dass Vollsteine"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1328,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2969,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1869,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1898,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1311,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1840,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3189,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2142,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1128,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1398,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 1681,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2333,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1427,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1396,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1035,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 924,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1191,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 433,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

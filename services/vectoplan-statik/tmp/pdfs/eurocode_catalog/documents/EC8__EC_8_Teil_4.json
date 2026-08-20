@@ -1,0 +1,669 @@
+{
+  "document_id": "EN_1998-4__base_standard__EC_8_Teil_4",
+  "eurocode_family": "EC8",
+  "designation": "DIN EN 1998-4",
+  "document_kind": "base_standard",
+  "file_name": "EC 8 Teil 4.pdf",
+  "relative_path": "EC 8/EC 8 Teil 4.pdf",
+  "sha256": "183a92ac3202401cda1abf243d7f0c5ffdc2f1cc8c99c5c93d2aae609d09983b",
+  "pages": 82,
+  "text_pages": 82,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 1,
+  "equation_candidate_count": 8,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184042+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233459+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 8\\EC 8 Teil 4.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "6",
+      "title": "MR\u0004Q",
+      "pdf_page": 46
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "+IWEQXQEWWI\u0004REGL\u0004HIQ\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK \u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0019\u0016",
+      "context": "8EFIPPIR\u0004 | 8EFIPPI\u0004%\u0012\u0015\u0004{\u0004)JJIOXMZ\u0004FIXIMPMKXI\u00041EWWI\u0004HIV\u00048ERO[ERH\u0004MR\u0004HIV\u0004IVW XIR\u0004)MKIRJSVQ\u0004EPW\u0004%RXIMP\u0004HIV\u0004\u0004 | +IWEQXQEWWI\u0004REGL\u0004HIQ\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK \u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0012\u0019\u0016 | 8EFIPPI\u0004%\u0012\u0016\u0004{\u0004/SIJJM^MIRXIR\u0004 M\u0004YRH\u0004 G\u0004JàV\u0004HMI\u0004+VYRHTIVMSHI\u0010\u00041EWWIR\u0004 M\u0004YRH\u0004 G\u0004YRH\u0004HMI\u0004,ÚLIR\u0004 M\u0004YRH\u0004\u0004 | G\u0004HIW\u0004%RKVMJJWTYROXIW\u0004HIV\u00046IWYPXMIVIRHIR\u0004HIV\u0004MQTYPWMZIR\u0004YRH\u0004OSRZ IOXMZIR\u0004(VYGOOSQTSRIRXIR\u0004\u0004",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": ":IVJELVIR\u0004 WMRH\u0004 Y\u0012\u0004E\u0012\u0004 ZSR\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0010\u0004 ,EVSYR\u0004 YRH\u0004 ,SYWRIV\u0004YRH\u0004 7GLEVJ\u0004 IRX[MGOIPX\u0004 [SVHIR\u0012\u0004 7MI\u0004 WMRH\u0004",
+      "context": ">Y\u0004 HMIWIV\u0004 4VSFPIQWXIPPYRK\u0004 WMRH\u0004 ZIVWGLMIHIRI\u0004 2ÈLIVYRKWZIVJELVIR\u0010\u0004 FEWMIVIRH\u0004 EYJ\u0004 HIV\u0004 ZSVLIV\u0004 FIWGLVMIFIRIR\u0004 | 8LISVMI\u0010\u0004ZSVKIWGLPEKIR\u0004[SVHIR\u0012\u0004 | :IVJELVIR\u0004 WMRH\u0004 Y\u0012\u0004E\u0012\u0004 ZSR\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0010\u0004 ,EVSYR\u0004 YRH\u0004 ,SYWRIV\u0004YRH\u0004 7GLEVJ\u0004 IRX[MGOIPX\u0004 [SVHIR\u0012\u0004 7MI\u0004 WMRH\u0004 | HIXEMPPMIVX\u0004MR\u0004?\u0018A\u0010\u0004?\u0019A\u0004FIWGLVMIFIR\u0012\u0004 | -Q\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK\u0004[MVH\u0004MQ\u0004;IWIRXPMGLIR\u0004HIV\u0004%YW HVYGO\u0004",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "-Q\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK\u0004[MVH\u0004MQ\u0004;IWIRXPMGLIR\u0004HIV\u0004%YW HVYGO\u0004",
+      "context": ":IVJELVIR\u0004 WMRH\u0004 Y\u0012\u0004E\u0012\u0004 ZSR\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0010\u0004 ,EVSYR\u0004 YRH\u0004 ,SYWRIV\u0004YRH\u0004 7GLEVJ\u0004 IRX[MGOIPX\u0004 [SVHIR\u0012\u0004 7MI\u0004 WMRH\u0004 | HIXEMPPMIVX\u0004MR\u0004?\u0018A\u0010\u0004?\u0019A\u0004FIWGLVMIFIR\u0012\u0004 | -Q\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK\u0004[MVH\u0004MQ\u0004;IWIRXPMGLIR\u0004HIV\u0004%YW HVYGO\u0004 | %\u0012\u0016 | \u0004HYVGL\u0004HMI\u0004JSPKIRHI\u0004+PIMGLYRK\u0004",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "+IWEQXQEWWI\u0004REGL\u0004HIQ\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK\u0004",
+      "context": "\u0019\u0016\u0004 | 8EFIPPI\u0004%\u0012\u0015\u0004{\u0004)JJIOXMZ\u0004FIXIMPMKXI\u00041EWWI\u0004HIV\u00048ERO[ERH\u0004MR\u0004HIV\u0004IVW XIR\u0004)MKIRJSVQ\u0004EPW\u0004%RXIMP\u0004HIV\u0004 | +IWEQXQEWWI\u0004REGL\u0004HIQ\u0004:SVWGLPEK\u0004ZSR\u0004:IPIXWSW\u0004YRH\u0004=ERK\u0004 | ,\u00136 \u0014\u0010\u0019\u0004 \u0015\u0010\u0014\u0004 \u0017\u0010\u0014\u0004 | S \u0014\u0010\u0019\u0004 \u0014\u0010\u001b\u0004 \u0014\u0010",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "(EW\u0004 :IVJELVIR\u0004 REGL\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0004 PMIJIVX\u0004 JàV\u0004 ,\u00136\u0011;IVXI\u0004 HMI\u0004 RMGLX\u0004 ZMIP\u0004 KVÚÃIV\u0004 EPW\u0004 \u0015\u0004 WMRH\u0010\u0004 IMRIR\u0004",
+      "context": "S \u0014\u0010\u0019\u0004 \u0014\u0010\u001b\u0004 \u0014\u0010 | \u0004 | (EW\u0004 :IVJELVIR\u0004 REGL\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0004 PMIJIVX\u0004 JàV\u0004 ,\u00136\u0011;IVXI\u0004 HMI\u0004 RMGLX\u0004 ZMIP\u0004 KVÚÃIV\u0004 EPW\u0004 \u0015\u0004 WMRH\u0010\u0004 IMRIR\u0004 | EYWVIMGLIRH\u0004 EFKIWMGLIVXIR\u0004 SFIVIR\u0004 +VIR^[IVX\u0012\u0004 *àV\u0004 KVÚÃIVI\u0004 ;IVXI\u0004 Z SR\u0004 ,\u00136\u0004 [YVHIR\u0004 /SVVIOXYVIR\u0004 | ZSVKIWGLPEKIR\u0010\u0004 YQ\u0004 HMI\u0004 ÀFIVFI[IVXYRK\u0004 HIV\u0004 WIMWQMWGLIR\u0004 %RX[SVXKVÚÃ IR\u0004 ^Y\u0004 ZIVLMRHIVR\u0012\u0004 (E\u0004 HMIWI\u0004 1IXLSHI\u0004",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "¨LRPMGL\u0004 ^YQ\u0004 :IVJELVIR\u0004 ZSR\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0004 [YVHI\u0004 IMRI\u0004 RSGL\u0004 IMRJEGLIVI\u0004 2ÈLIVYRK\u0004 ZSR\u0004 ?\u001aA\u0004 IRX[MGOIPX\u0012\u0004",
+      "context": "%\u0012\u0017\u0018 | \u0004 | ¨LRPMGL\u0004 ^YQ\u0004 :IVJELVIR\u0004 ZSR\u0004 :IPIXWSW\u0004 YRH\u0004 =ERK\u0004 [YVHI\u0004 IMRI\u0004 RSGL\u0004 IMRJEGLIVI\u0004 2ÈLIVYRK\u0004 ZSR\u0004 ?\u001aA\u0004 IRX[MGOIPX\u0012\u0004 | (MIWI\u0004[MVH\u0004REGLJSPKIRH\u0004HEVKIWXIPPX\u0012\u0004 | &I^àKPMGL\u0004 HIV\u0004 YRXIVWGLMIHPMGLIR\u0004 L]WXIVIXMWGLIR\u0004 )RIVKMIHMWWMTEXM SRWZSVKÈRKI\u0004",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "?\u0015\u0015A\u0004 :IPIXWSW\u0010\u0004 %\u00127\u0012\u0004 ERH\u0004 =Y\u0004 8ERK\u0010\u0004 7SMP\u00117XVYGXYVI\u0004 -RXIVEGXMSR\u0004 )JJ IGXW\u0004 JSV\u0004 0EXIVEPP]\u0004 )\\GMXIH\u0004 0MUYMH\u0004 7XSVEKI\u0004",
+      "context": "1IGLERMGW\u0012\u0004)H\u0012\u0004;\u0012.\u0012\u0004,EPP\u0010\u00044VIRXMGI\u0004,EPP\u0010\u0004-RG\u0012\u0010\u0004)RKPI[SSH\u0004'PMJJW \u0010\u00042I[\u0004.IVWI]\u0010\u0004\u0015 | \u001b\u001b\u0010\u0004\u0017\u0017\u0017\u0011\u0017\u001a\u0015\u0012\u0004 | ?\u0015\u0015A\u0004 :IPIXWSW\u0010\u0004 %\u00127\u0012\u0004 ERH\u0004 =Y\u0004 8ERK\u0010\u0004 7SMP\u00117XVYGXYVI\u0004 -RXIVEGXMSR\u0004 )JJ IGXW\u0004 JSV\u0004 0EXIVEPP]\u0004 )\\GMXIH\u0004 0MUYMH\u0004 7XSVEKI\u0004 | 8EROW\u0012\u0004 \u0004\u0015 | \u0014\u0010\u0004\u0015",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "?\u0015\u0016A\u0004 :IPIXWSW\u0004 %\u00127\u0012\u0010\u0004 =Y\u0004 8ERK\u0004 ERH\u0004 ,\u00128\u0012\u0004 8ERK\u0010\u0004 (]REQMG\u0004 6IWTSRWI\u0004 SJ\u0004 *PI\\MFP]\u0004 7YTTSVXIH\u0004 0MUYMH\u0004 7XSVEKI\u0004",
+      "context": "\u0010\u0004\u0018\u001b\u0017\u0011\u0018 | \u001a\u0012\u0004 | ?\u0015\u0016A\u0004 :IPIXWSW\u0004 %\u00127\u0012\u0010\u0004 =Y\u0004 8ERK\u0004 ERH\u0004 ,\u00128\u0012\u0004 8ERK\u0010\u0004 (]REQMG\u0004 6IWTSRWI\u0004 SJ\u0004 *PI\\MFP]\u0004 7YTTSVXIH\u0004 0MUYMH\u0004 7XSVEKI\u0004 | 8EROW\u0012\u0004 \u0010\u0004%7')\u0012\u0004\u0015 | \u0016\u0010\u0004\u0015\u0015",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 891,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1135,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2013,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7347,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 7895,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 5669,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1912,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 8,
+      "characters": 3331,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2815,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2747,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2562,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 3883,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1060,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1911,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2214,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 3147,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 3734,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 4389,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 3931,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 4296,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 3038,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2881,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2949,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 3725,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2309,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 4131,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2871,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2710,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 3058,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 3746,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2184,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 2348,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 3486,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 3023,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 3172,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 4146,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 3205,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 3304,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 3944,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1019,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 2642,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1068,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 942,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 993,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 671,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1420,
+      "text_layer": "usable",
+      "clauses": [
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 527,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1301,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 49,
+      "characters": 3413,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 3508,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 2581,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 1526,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2934,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 54,
+      "characters": 2442,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1704,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1701,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 2372,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1539,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 59,
+      "characters": 311,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1537,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1370,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 1540,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 3279,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1626,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1265,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 1473,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 1502,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 68,
+      "characters": 823,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 910,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 70,
+      "characters": 595,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 653,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 3628,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 73,
+      "characters": 1047,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 74,
+      "characters": 928,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 75,
+      "characters": 1012,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 76,
+      "characters": 1590,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 77,
+      "characters": 1180,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 78,
+      "characters": 3590,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 79,
+      "characters": 2366,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 80,
+      "characters": 511,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 81,
+      "characters": 2602,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 82,
+      "characters": 1534,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

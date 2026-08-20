@@ -244,6 +244,9 @@ function fallbackColorForPaletteIndex(index: number): string {
 
 function colorForPaletteEntry(entry: RuntimeChunkPaletteEntry): string {
   try {
+    if (entry.blockTypeId.startsWith("system_terrain")) {
+      return "#f8fafc";
+    }
     const appearance = getMaterialAppearance(entry.blockTypeId);
     return safeColor(
       entry.color ?? appearance?.color,

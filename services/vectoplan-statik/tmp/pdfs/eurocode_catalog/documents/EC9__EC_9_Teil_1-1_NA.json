@@ -1,0 +1,113 @@
+{
+  "document_id": "EN_1999-1-1_NA__national_annex__EC_9_Teil_1-1_NA",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-1/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 9 Teil 1-1 NA.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-1 NA.pdf",
+  "sha256": "0078104b199d9a2cd28a574634c58b2f2d7057a92b1a2dea20cf0f6ac66b80c4",
+  "pages": 8,
+  "text_pages": 8,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 1,
+  "equation_candidate_count": 1,
+  "table_reference_count": 2,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184334+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111184334+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-1 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "12",
+      "title": "Konstruktion unzulässig bzw. mit oder ohne Korrosionsschutz nur für kurze",
+      "pdf_page": 8
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "= Summe der Punkte aus den",
+      "context": "Tabelle NA.4  Feststellung des Korrosionsrisikos  Zu ergreifende Maßnahmen | Korrosionsrisiko | = Summe der Punkte aus den | Tabellen NA.1 bis NA.3 | Erforderliche Maßnahme",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "5.1",
+      "pdf_page": 4,
+      "line": "Es gilt die Tabelle 5.1."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 5,
+      "line": "Es gilt Tabelle 8.1."
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 423,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1872,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1518,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1050,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1325,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1787,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2239,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1234,
+      "text_layer": "usable",
+      "clauses": [
+        "12"
+      ],
+      "equation_candidates": 1
+    }
+  ]
+}

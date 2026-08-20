@@ -1,0 +1,111 @@
+{
+  "document_id": "EN_1999-1-1_NA__amendment__EC_9_Teil_1-1_NA_A1",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-1/NA",
+  "document_kind": "amendment",
+  "file_name": "EC 9 Teil 1-1 NA A1.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-1 NA A1.pdf",
+  "sha256": "8c653cc2670c268ad3b366735c827414597fdb8782cabd7ecb95feeec41c3624",
+  "pages": 5,
+  "text_pages": 5,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 6,
+  "equation_candidate_count": 0,
+  "table_reference_count": 0,
+  "figure_reference_count": 1,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184140+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111184140+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-1 NA A1.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Änderung zu NDP in 8.1.1 .................................................................................................... ............ 4",
+      "pdf_page": 2
+    },
+    {
+      "clause": "2",
+      "title": "Änderung zu NCI zu A.5 ...................................................................................................... ............. 4",
+      "pdf_page": 2
+    },
+    {
+      "clause": "3",
+      "title": "Änderung zu Abschnitt Ausführungsklasse EXC 4 ...................................................................... 5",
+      "pdf_page": 2
+    },
+    {
+      "clause": "1",
+      "title": "Änderung zu NDP in 8.1.1",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Änderung zu NCI zu A.5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Änderung zu Abschnitt Ausführungsklasse EXC 4",
+      "pdf_page": 5
+    }
+  ],
+  "equation_candidates": [],
+  "tables": [],
+  "figures": [
+    {
+      "label": "1",
+      "pdf_page": 4,
+      "line": "Bild 1 — Überhöhte Kehlnähte"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 467,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 622,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 471,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1622,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1405,
+      "text_layer": "usable",
+      "clauses": [
+        "3"
+      ],
+      "equation_candidates": 0
+    }
+  ]
+}

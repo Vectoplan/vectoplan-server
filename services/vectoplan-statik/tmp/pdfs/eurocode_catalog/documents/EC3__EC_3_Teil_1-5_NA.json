@@ -1,0 +1,122 @@
+{
+  "document_id": "EN_1993-1-5_NA__national_annex__EC_3_Teil_1-5_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-5/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-5 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-5 NA.pdf",
+  "sha256": "c6cdcd033b230637cc2b559880a693bafafc451b76f3bad9fc4d1c9670a08b20",
+  "pages": 8,
+  "text_pages": 8,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 5,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160848+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111160848+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-5 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 4,
+      "equation_number": "unvollständig",
+      "line": "Für den Brückenbau und ähnliche Anwendungsbereiche ist = 1,0 anzusetzen.",
+      "context": "NDP zu 5.1(2) Anmerkung 2 | Für den Hochbau gilt die Empfehlung. | Für den Brückenbau und ähnliche Anwendungsbereiche ist = 1,0 anzusetzen. | NCI zu 5.3(2) | Für schubbeanspruchte Beulfelder mit geschlossenen Längssteifen, die an die Auflager- bzw. Vertikalsteife",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "kF,1 = kF nach DIN EN 1993-1-5:2010-12, Gleichung (6.6) (NA.4)",
+      "context": "Fcr (NA.3) | und | kF,1 = kF nach DIN EN 1993-1-5:2010-12, Gleichung (6.6) (NA.4) | 5,0 | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "(2) Der Schlankheitsgrad F bestimmt sich mit m2 = 0 nach DIN EN 1993-1-5:2010-12, Gleichung (6.4).",
+      "context": "a | tsk (NA.5) | (2) Der Schlankheitsgrad F bestimmt sich mit m2 = 0 nach DIN EN 1993-1-5:2010-12, Gleichung (6.4). | (3) Der Abminderungsfaktors F für Stege mit Längssteifen und Lasteinleitungstyp (a) ermittelt sich zu: | 0,11",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Für die Querbelastung ist folgende Beulkurve mit p = 0,34 und 0 =0,80 anzuwenden:",
+      "context": "Es gilt die Empfehlung, dass beim Auftreten von Zug- und Druckspannungen in einem Blechfeld, Gleichungen | (10.4) und (10.5) lediglich auf die unter Druckbeanspruchung stehenden Querschnittsteile anzuwenden sind. | Für die Querbelastung ist folgende Beulkurve mit p = 0,34 und 0 =0,80 anzuwenden: | 0,11 | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "1 ist mit 1,05 anzusetzen bei gleichzeitiger Verwendung von 2 mit M1 = 1,1 oder M2 = 1,25, sofern keine",
+      "context": "NCI zu C.9(2) | Zum Text C.9(2): | 1 ist mit 1,05 anzusetzen bei gleichzeitiger Verwendung von 2 mit M1 = 1,1 oder M2 = 1,25, sofern keine | genaueren Untersuchungen im Rahmen eines bauaufsichtlichen Verwendbarkeitsnachweises erfolgen. | NDP zu C.9(3) Anmerkung",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 416,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2409,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1251,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1449,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1038,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1907,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 7,
+      "characters": 702,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 929,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

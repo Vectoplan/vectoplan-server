@@ -1,0 +1,132 @@
+{
+  "contract_version": "cad-library-fallback/0.1",
+  "source": "vectoplan-library/standard_library/v1",
+  "items": [
+    {
+      "id": "fallback-mauerwerkswand",
+      "family_id": "vp.hochbau.waende.mauerwerkswaende.mauerwerkswand",
+      "package_id": "vplib.vp.hochbau.waende.mauerwerkswaende.mauerwerkswand",
+      "label": "Mauerwerkswand",
+      "description": "Allgemeine Mauerwerkswand in üblichen Wandstärken.",
+      "domain": "hochbau",
+      "category": "waende",
+      "subcategory": "mauerwerkswaende",
+      "object_kind": "cell_block",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "240_mm",
+      "variants": [
+        {"variant_id": "175_mm", "label": "175 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 175, "dimensions.thickness_mm": 175}},
+        {"variant_id": "240_mm", "label": "240 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 240, "dimensions.thickness_mm": 240}},
+        {"variant_id": "365_mm", "label": "365 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 365, "dimensions.thickness_mm": 365}}
+      ]
+    },
+    {
+      "id": "fallback-standardfenster",
+      "family_id": "vp.hochbau.oeffnungen.fenster.standardfenster",
+      "package_id": "vplib.vp.hochbau.oeffnungen.fenster.standardfenster",
+      "label": "Standardfenster",
+      "description": "Fensteröffnung mit üblichen Rohbaumaßen.",
+      "domain": "hochbau",
+      "category": "oeffnungen",
+      "subcategory": "fenster",
+      "object_kind": "cell_block",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "1000_x_1200_mm",
+      "variants": [
+        {"variant_id": "1000_x_1200_mm", "label": "1000 × 1200 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 1200, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}},
+        {"variant_id": "1250_x_1350_mm", "label": "1250 × 1350 mm", "definition_values": {"dimensions.width_mm": 1250, "dimensions.height_mm": 1350, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}},
+        {"variant_id": "2000_x_1350_mm", "label": "2000 × 1350 mm", "definition_values": {"dimensions.width_mm": 2000, "dimensions.height_mm": 1350, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}}
+      ]
+    },
+    {
+      "id": "fallback-innentuer",
+      "family_id": "vp.hochbau.oeffnungen.innentueren.innentuer",
+      "package_id": "vplib.vp.hochbau.oeffnungen.innentueren.innentuer",
+      "label": "Innentür",
+      "description": "Türöffnung mit üblichen Rohbaumaßen.",
+      "domain": "hochbau",
+      "category": "oeffnungen",
+      "subcategory": "innentueren",
+      "object_kind": "cell_block",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "885_x_2010_mm",
+      "variants": [
+        {"variant_id": "760_x_2010_mm", "label": "760 × 2010 mm", "definition_values": {"dimensions.width_mm": 760, "dimensions.height_mm": 2010, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}},
+        {"variant_id": "885_x_2010_mm", "label": "885 × 2010 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 885, "dimensions.height_mm": 2010, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}},
+        {"variant_id": "1010_x_2135_mm", "label": "1010 × 2135 mm", "definition_values": {"dimensions.width_mm": 1010, "dimensions.height_mm": 2135, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}}
+      ]
+    },
+    {
+      "id": "fallback-eps-wdvs",
+      "family_id": "vp.hochbau.fassade.putzfassaden.eps_fassadendaemmung",
+      "package_id": "vplib.vp.hochbau.fassade.putzfassaden.eps_fassadendaemmung",
+      "label": "EPS-Fassadendämmung",
+      "description": "Wärmedämmplatte für WDVS.",
+      "domain": "hochbau",
+      "category": "fassade",
+      "subcategory": "putzfassaden",
+      "object_kind": "cell_block",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "160_mm",
+      "variants": [
+        {"variant_id": "120_mm", "label": "120 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 120, "dimensions.thickness_mm": 120}},
+        {"variant_id": "160_mm", "label": "160 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 160, "dimensions.thickness_mm": 160}},
+        {"variant_id": "200_mm", "label": "200 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 200, "dimensions.thickness_mm": 200}}
+      ]
+    },
+    {
+      "id": "fallback-treppenbereich",
+      "family_id": "vp.hochbau.treppen_rampen.treppenlaeufe.treppenbereich",
+      "package_id": "vplib.vp.hochbau.treppen_rampen.treppenlaeufe.treppenbereich",
+      "label": "Treppenbereich",
+      "description": "Semantischer Bereich wie ein Raum; Treppenlogik folgt spaeter.",
+      "domain": "hochbau",
+      "category": "treppen_rampen",
+      "subcategory": "treppenlaeufe",
+      "object_kind": "semantic_zone",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "1200_x_3000_mm",
+      "variants": [
+        {"variant_id": "1000_x_2500_mm", "label": "1000 x 2500 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 3000, "dimensions.depth_mm": 2500, "dimensions.thickness_mm": 0}},
+        {"variant_id": "1200_x_3000_mm", "label": "1200 x 3000 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 1200, "dimensions.height_mm": 3000, "dimensions.depth_mm": 3000, "dimensions.thickness_mm": 0}},
+        {"variant_id": "1500_x_3500_mm", "label": "1500 x 3500 mm", "definition_values": {"dimensions.width_mm": 1500, "dimensions.height_mm": 3000, "dimensions.depth_mm": 3500, "dimensions.thickness_mm": 0}}
+      ]
+    },
+    {
+      "id": "fallback-widerlager",
+      "family_id": "vp.ingenieurbau.bruecken.widerlager.brueckenwiderlager",
+      "package_id": "vplib.vp.ingenieurbau.bruecken.widerlager.brueckenwiderlager",
+      "label": "Brückenwiderlager",
+      "description": "Massiver Widerlagerkörper.",
+      "domain": "ingenieurbau",
+      "category": "bruecken",
+      "subcategory": "widerlager",
+      "object_kind": "cell_block",
+      "status": "published",
+      "enabled": true,
+      "visible": true,
+      "revision_hash": "standard-library-v1",
+      "default_variant_id": "800_mm",
+      "variants": [
+        {"variant_id": "600_mm", "label": "600 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 5000, "dimensions.depth_mm": 600, "dimensions.thickness_mm": 600}},
+        {"variant_id": "800_mm", "label": "800 mm", "is_default": true, "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 5000, "dimensions.depth_mm": 800, "dimensions.thickness_mm": 800}},
+        {"variant_id": "1200_mm", "label": "1200 mm", "definition_values": {"dimensions.width_mm": 1000, "dimensions.height_mm": 5000, "dimensions.depth_mm": 1200, "dimensions.thickness_mm": 1200}}
+      ]
+    }
+  ]
+}

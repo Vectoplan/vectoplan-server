@@ -1,0 +1,3955 @@
+
+
+===== SEITE 1 =====
+Berichte der
+Bundesanstalt für Straßenwesen
+Brücken- und Ingenieurbau Heft B 161
+Lagerwege von Brücken
+ISSN 0943-9293
+ISBN 978-3-95606-553-8
+Berichte der Bundesanstalt für Straßenwesen Heft B 161
+
+===== SEITE 2 =====
+Lagerwege von Brücken
+von
+Christiane Butz
+Maurer Engineering GmbH
+München
+Thomas Mack
+Alexander Krawtschuk
+Eduardo Maldonado
+Schimetta Consult ZT GmbH
+Wien
+Berichte der
+Bundesanstalt für Straßenwesen
+Brücken- und Ingenieurbau Heft B 161
+
+===== SEITE 3 =====
+Die Bundesanstalt für Straßenwesen
+veröffentlicht ihre Arbeits- und Forschungs-
+ergebnisse in der Schriftenreihe Berichte der 
+Bundesanstalt für Straßenwesen. Die Reihe
+besteht aus folgenden Unterreihen:
+A - Allgemeines
+B - Brücken- und Ingenieurbau
+F - Fahrzeugtechnik
+M - Mensch und Sicherheit
+S - Straßenbau
+V - Verkehrstechnik
+Es wird darauf hingewiesen, dass die unter
+dem Namen der Verfasser veröffentlichten
+Berichte nicht in jedem Fall die Ansicht des
+Herausgebers wiedergeben.
+Nachdruck und photomechanische Wieder-
+gabe, auch auszugsweise, nur mit Genehmi-
+gung der Bundesanstalt für Straßenwesen,
+Stabsstelle Presse und Kommunikation.
+Die Hefte der Schriftenreihe Berichte der 
+Bundesanstalt für Straßenwesen können
+direkt bei der Carl Ed. Schünemann KG,
+Zweite Schlachtpforte 7, D-28195 Bremen,
+Telefon: (04 21) 3 69 03 - 53, bezogen werden.
+Über die Forschungsergebnisse und ihre 
+Veröffentlichungen wird in der Regel in Kurzform im 
+Informationsdienst Forschung kompakt berichtet.
+Dieser Dienst wird kostenlos angeboten;
+Interessenten wenden sich bitte an die
+Bundesanstalt für Straßenwesen,
+Stabsstelle Presse und Kommunikation.
+Die Berichte der Bundesanstalt für Straßenwesen (BASt) 
+stehen zum Teil als kostenfreier Download im 
+elektronischen BASt-Archiv ELBA zur Verfügung. 
+https://bast.opus.hbz-nrw.de
+Impressum
+Bericht zum Forschungsprojekt 15.0537
+Lagerwege von Brücken
+Fachbetreuung
+Arnold Hemmert-Halswick
+Referat
+Stahlbau, Korrosionsschutz, Brückenausstattung
+Herausgeber
+Bundesanstalt für Straßenwesen
+Brüderstraße 53, D-51427 Bergisch Gladbach
+Telefon: (0 22 04) 43 - 0
+Redaktion
+Stabsstelle Presse und Kommunikation
+Druck und Verlag
+Fachverlag NW in der 
+Carl Ed. Schünemann KG
+Zweite Schlachtpforte 7, D-28195 Bremen
+Telefon: (04 21) 3 69 03 - 53
+Telefax: (04 21) 3 69 03 - 48
+www.schuenemann-verlag.de
+ISSN 0943-9293
+ISBN 978-3-95606-553-8
+Bergisch Gladbach, Februar 2021
+
+===== SEITE 4 =====
+3
+Kurzfassung – Abstract
+Lagerwege von Brücken
+Der ständige Wechsel der klimatischen Einflüsse
+verursacht in Brücken instationäre Temperaturver -
+teilungen. Dadurch entstehen Dehnungen im Bau-
+werk, die Verformungen und ggfs. Zwangsbean -
+spruchungen hervorrufen. Durch die Anwendung
+von Berechnungsmethoden und Eingangsparame -
+ter nach aktuellen Normen sollen die berechneten 
+Lagerwege ausreichende Reserven gegenüber den 
+tatsächlichen aufweisen. Um diese Reserven zu
+quantifizieren, werden Messungen an verschiede -
+nen Brücken mit unterschiedlichen Bauweisen und 
+Längen durchgeführt.
+Die an vier Brücken über 19 Monate gemessenen 
+Temperaturen und Lagerwege sind deutlich gerin -
+ger als die Kapazität der Lager sowie der nach ak-
+tuellen Normen berechneten temperaturinduzierten 
+Verschiebungen. 
+Umwelt- und Standorteinflüsse, wie einseitige Son-
+neneinstrahlung oder querende Gewässer unter-
+halb des Bauwerks, beeinflussen die oberflächliche 
+Bauwerkstemperatur und somit die Lagerverdre -
+hung, haben jedoch keinen nennenswerten Einfluss 
+auf die Lagerverschiebung.
+Die ermittelten Wärmeausdehnungskoeffizienten
+weichen zwischen -6 % und +17 % von den norma-
+tiven Werten ab.
+Eine Berechnung der Lagerwege mit dem Berech-
+nungsmodell nach DIN EN 1991-1-5 und gemesse-
+nen Bauwerkstemperaturen bestätigt eine gute
+Übereinstimmung.
+Mithilfe der Lufttemperaturen naheliegender Wet-
+terstationen des Deutschen Wetterdiensts wur - 
+den standortbezogene Bemessungswerte der Luft-
+schattentemperatur ermittelt. Diese Maximaltempe-
+raturen sind um ca. 2 °C größer, während die Mini-
+maltemperaturen um ca. -4,5 °C kleiner sind. Eine 
+Berechnung nach DIN EN 1991-1-5 mit diesen Be-
+messungstemperaturen führt zu ca. 8 % größeren 
+Lagerwegen.
+Es wird empfohlen, die Bemessungswerte der Au-
+ßenlufttemperatur für Deutschland kleinskaliger
+und mit den Klimadaten der letzten drei Jahrzehnte 
+auszuwerten, um Abweichungen zu den gültigen
+Werten zu identifizieren. Auch sollten die Wärme-
+ausdehnungskoeffizienten von weiteren Brücken
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+anhand von Messdaten ermittelt werden, um die 
+normativen Werte zu prüfen.
+Thermal elongation of bridges 
+The permanent change of 
+climatic influences 
+causes transient temperature distributions in 
+bridges. This causes strains in the structure, which 
+cause deformations and, in same cases, constraining 
+forces. By applying calculation methods and input 
+parameters according to current standards, the 
+calculated bridge elongation should have sufficient 
+reserves compared to the actual ones. In order to 
+quantify these reserves, measurements are made 
+on different bridges of different designs and lengths.
+The temperatures and bearing displacements 
+measured on four bridges over 19 months are 
+significantly lower than the displacement capacity 
+of the bearings and the temperature-induced 
+displacements calculated according to current 
+standards.
+Environmental and site influences, such as unilateral 
+solar radiation or crossing waters below the struc-
+ture, influence the temperature at the structure’s 
+surface and thus the bearing rotation, but have no 
+measurable influence on the bearing displacement.
+The determined coefficients of thermal expansion 
+deviate between -6% and +17% from the normative 
+values.
+A calculation of the bridge elongation with the 
+calculation model according to DIN EN 1991-1-5 
+and measured bridge temperatures confirms a good 
+agreement.
+Based on the shade air temperatures of nearby 
+weather stations of the German Weather Service, 
+site-specific characteristic values of the shade air 
+temperature were determined. These maximum 
+temperatures are higher by about 2 °C, while the 
+minimum temperatures are lower by about -4.5 °C. 
+A calculation according to DIN EN 1991-1-5 with 
+these design temperatures leads to approx. 8% 
+larger bridge elongations.
+It is recommended to evaluate the design values of 
+the shade air temperature for Germany on a smaller 
+scale and with the climate data of the last three 
+decades in order to identify deviations from the valid 
+values. Also, the coefficients of thermal expansion 
+of other bridges should be determined using 
+measurement data to check the normative values.
+
+===== SEITE 5 =====
+4
+Summary
+Thermal elongation of bridges 
+1 Introduction
+The permanent change of climatic influences 
+causes transient, non-linearly limited temperature 
+distributions in bridge superstructures. These
+temperature states generate thermal strains in the 
+structure, which cause deformations in statically 
+determined structures and additional constraining 
+forces in statically indeterminate structures. In 
+addition to the climatic temperature changes, the 
+hydration heat in concrete and composite structures 
+as well as the installation of the road surface causes 
+thermal stresses. Temperature stresses belong to 
+variable actions.
+By applying engineering calculation methods and 
+input parameters according to current standards, it 
+can generally be assumed that the design bearing 
+displacement capacities have sufficient reserves. In 
+order to quantify these reserves, measurements are 
+made on different bridges composed of different 
+construction material and having different bridge 
+length.
+2 Temperature induced bearing 
+displacements according to 
+DIN EN 1991-1-5
+For road, pedestrian and cycle bridges as well 
+as railway bridges, only the linear and constant 
+temperature components are usually taken into 
+account in the bridge design. In special cases, the 
+nonlinear temperature component should also be 
+considered. According to the Eurocode concept, 
+the characteristic extremes of outer shade air 
+temperature statistically occur once every 50 years. 
+The data relevant for the calculation of the 
+temperature effects on structures are described in 
+DIN EN 1991-1-5 as well as in the national annex 
+DIN EN 1991-1-5/NA. In Germany, the constant 
+temperature component of the minimum outer 
+shade air temperature T
+min is -24 °C and that of the 
+maximum outside air temperature Tmax +37 °C. The 
+same outer shade air temperatures apply throughout 
+ 
+Germany. For the calculation 
+of the constant 
+temperature proportion, a bridge type shall be 
+selected from DIN EN 1991-1-5. Three types are 
+distinguished according to the construction material, 
+i.e. steel bridge, composite bridge and concrete 
+bridge.
+For the determination of bearing forces and 
+deformations resp. displacements, i.e. bridge 
+elongation, the constant temperature parts accor-
+ding to DIN EN 1990/NA/A1, NA.E.5.2.2 are 
+cosindered in Germany. The minimum and maxi-
+mum temperature of the bridge can be found in 
+DIN EN 1991-1-5, section 6.1.3.1, figure 6.1. The 
+correlation between minimum/maximum outer 
+shade air temperature and minimum and maximum 
+constant bridge temperature in dependence of the 
+bridge type is determined.
+Due to the uncertainties in the procedure of 
+installation of bridge bearings, the partial safety 
+factor 
+γF = 1.35 as well as a bridge type-dependent 
+safety margin are also taken into account. To 
+determine the installation temperature T
+0, the 
+temperature at which the installation (completion) 
+takes place should be assumed. If this is 
+unpredictable, the average temperature prevailing 
+during structural erection should be used. If no 
+information is available, T
+0 can be assumed to be 
+10 °C. Since the exact erection temperature is not 
+known in most cased and for the presetting of the 
+bearings, a safety margin is taken into account. 
+Therefore an additional temperature of ±20 K is 
+added.
+Subsequently, the consideration of the type of 
+bridge surface and thickness for the temperature 
+development in a bridge is of importance. Due to 
+the shielding effect of road surfaces, the vertical 
+temperature gradient in the bridge cross-section is 
+influenced by the surface thickness. In this context, 
+it should be noted that especially in the case of 
+asphalt pavements and strong solar radiation at 
+high air temperatures in the past, structural 
+temperatures in the range of the design values were 
+recorded in individual cases. These influences must 
+be taken into account by a corresponding thickness 
+dependence factor K
+Sur. The above-mentioned 
+temperature components result in a total of a 
+temperature field which acts on the bridge structure.
+
+===== SEITE 6 =====
+5
+3 Monitoring
+A total of four bridges (see table 1) were investigated 
+in northern Bavaria at sites where high temperature 
+differences between summer and winter occur.
+The aim is to measure bearing displacements and 
+bridge temperatures at bridges with different 
+materials and road surfaces. Therefore, the
+reference bridges were equipped with monitoring 
+systems to measure bearing displacements, i.e. 
+bridge elongation, and bridge temperatures. The 
+monitoring systems meet the following basic 
+requirements:
+• Direct measurement of the investigated 
+parameters,
+• flexible extensible system architecture,
+• long-term stability under real operating and 
+weather conditions,
+• battery-driven and thus independent of 
+connection for power supply and power failures.
+Adapted to the task and the structural system of the 
+bridges, the accessibility as well as the infrastructure, 
+the following monitoring components were selected 
+for each bridge:
+• Control cabinet/base station,
+• data logger with batteries,
+• data transmission via mobile radio,
+• 3 displacement transducers and 5 temperature 
+sensors,
+• cabling.
+It is a low maintenance measuring system. The 
+bearings were instrumented with maximum distance 
+to the fixed bearing. The maintenance-accessible 
+base station is located near the instrumented 
+bearings. The temperature sensors in the concrete 
+are also near the bearings, so that the length of the 
+cables is minimal.
+ 
+The monitoring systems were put into operation on 
+01.06.2017. 
+The measurement data were obtained 
+and evaluated until 27.01.2019.
+4 Results
+4.1 Measured data
+The measured bridge temperatures (see figure 1) 
+show typical seasonal as well as daytime changes. 
+During the measuring period, a cold wave occurred 
+in the winter of 2018, peaking in February/March 
+and an above-average heat wave in the summer 
+of 2018. Table 2 shows the measured extreme 
+values of the bridge temperature T
+e,max,meas and 
+Te,min,meas, the statistically evaluated shade air 
+temperatures Tmax,DWD and Tmin,DWD, the measured 
+bearing displacement ΔLmeas and the determined 
+thermal expansion coefficients αT,meas.
+No design bridge temperatures according to DIN 
+EN 1991-1-5 were measured at any bridge. The 
+statistically determined outer shade air temperatures 
+at the sites are compared to the values according to 
+DIN EN 1991-1-5, NDP to 6.1.3.2, i.e. T
+min = -24 °C 
+and Tmax = 37 °C. They are more conservative. The 
+coefficients of thermal expansion show deviations 
+from -6% to + 17% from the values according to 
+standard, i.e. 
+α -5
+T,EC is 1.2 • 10 1/K for steel 
+composite bridges and 1.0 • 10-5 1/K for concrete 
+bridges.
+4.2 Comparison between measured 
+and calculated bearing 
+displacements
+In order to validate the calculation approach for 
+temperature-induced bridge elongation according 
+to DIN EN 1991-1-5, the measured changes in the 
+constant component of the bridge temperature 
+ΔTN,con,Dil,meas and ΔTN,exp,Dil,meas are used together 
+with normative or determined thermal expansion 
+No. Name Material Location Bridge Type Length
+1 Hangbrücke Würgau Steel Composite Würgau combined truss and plate bridge 425,4 m
+2 Hangbrücke Würgau Concrete Würgau combined truss and plate bridge 403,0 m
+3 Trubbachbrücke Concrete Forchheim combined truss and plate bridge 95,0 m
+4 Paradiestalbrücke Concrete Wölkendorf combined truss and plate bridge 27,1 m
+Tab. 1: Reference bridges
+
+===== SEITE 7 =====
+6
+coefficients αT to calculate bridge elongation 
+difference ΔLtotal. These values are compared with 
+the measured bridge elongation (see table 3). It 
+shows a good match. The difference between 
+calculated bridge elongation differences based on 
+measured coefficients of thermal expansion and the 
+actual measured differences can be caused by the 
+assumption that the maximum measured structural 
+temperature corresponds to the constant part of the 
+structural temperature. The deviation between 
+calculated elongation differences based on 
+normative coefficients of thermal expansion and 
+actual measured displacements is -7% to +6%, 
+which is a very good match. Again, this deviation 
+can be caused by the assumption of the measured 
+bridge temperature being equivalent to the constant 
+temperature component.
+Bridge Temperature [°C] ΔLmeas αT,meas 
+[mm] [1/K]Te,max,meas Te,min,meas Tmax,DWD Tmin,DWD
+Hangbrücke Würgau (Steel composite) 35,4 -12,4 38,9 -28,6 104 1,24 • 10-5
+Hangbrücke Würgau (Concrete) 32,7 -9,7 81,8 1,17 • 10-5
+Trubbachbrücke (Concrete) 31,5 -7,5 39,6 -27,2 23-25 0,94 • 10-5
+Paradi
+Tab. 2: 
+estalbrücke (Concrete) 32,8 -11,4 38,9 -28,2 12,5 1,05 • 10-5
+ Measured temperature, bearing displacements and coefficients of thermal expansion as well as statistically evaluated air 
+shade temperatures
+Fig. 1: Measured temperature gradients and bearing displacements at the reference bridges
+
+===== SEITE 8 =====
+7
+4.3 Comparison of bearing 
+displacement difference due 
+to temperature
+For the verification of normative values for the 
+temperature as variable action effect on the basis of 
+the according to DIN EN 1991-1-5 and DIN EN 
+1991-1-5/NA are compared with site specific 
+characteristic values of the air shade temperature 
+derived with the data of the German Weather 
+Service (see table 4).
+It turns out that due to the more conservative site-
+specific characteristic temperatures, the bridge 
+elongation increases by up to 9%. Based on the 
+bridge elongation calculated on the basis of the 
+static design calculations, they are 6.5% larger 
+for the steel composite construction Hangbrücke 
+Würgau and 7.8% larger for the Trubbach Bridge in 
+concrete construction. The Hangbrücke Würgau in 
+concrete construction and the Paradistalbrücke 
+have sufficient bearing displacement capacity.
+4.4 Correlation between outside 
+air temperature and bridge 
+temperature
+Based on the measured temperature values of 
+the bridge deck and at the base station as the 
+reference value for the outside air temperature, the 
+correlation between outside air temperature and 
+building temperature for the reference bridges 
+was determined and compared with the data 
+according to DIN EN 1991-1-5. A correlation 
+between measured structural temperature and air 
+shade temperature is confirmed by showing that the 
+measured structural temperatures follow the outside 
+air temperatures with some delay due to the large 
+mass. Peaks of the outside air are attenuated in 
+the the structure temperatures. There are only 
+slight deviations with increasing or decreasing 
+temperature, averaging lines run for the most part 
+parallel.
+Hangbrücke Würgau Hangbrücke Würgau Trubbachbrücke Paradiestalbrücke
+Steel Composite Concrete Concrete Concrete
+Standard Measured Standard Measured Standard Measured Standard Measured 
+value value value value
+αT x 105 [1/°K] 1,20 1,24 1,00 1,17 1,00 0,94 1,00 1,05
+ΔTN,con,Dil,meas [°C] -12,4 -9,7 -7,5 -11,4
+ΔTN,exp,Dil,meas [°C] 35,4 32,7 31,5 32,8
+ΔLtotal,calc [mm] 105,9 109,4 77,2 90,3 26,3 24,7 12,0 12,6
+ΔLtotal,meas [mm] 104,4 82,4 24,8 12,5
+Ltotal,calc/Ltotal,meas 1,01 1,05 0,93 1,09 1,06 1,0 0,96 1,01
+Tab. 3: CompariVon between measured and calculated bearing displacments
+Würgau Würgau Trubbachbrücke Paradiestalbrücke
+Steel Composite Concrete
+Standard Location Standard Location Standard Location Standard Location
+αT x 105 [1/°K] 1,20 1,00 1,00 1,00
+Tmin [°C] -24 -28,6 -24 -28,6 -24 -27,2 -24 -28,5
+Tmax [°C] +37 +38,9 +37 +38,9 +37 39,6 +37 +38,9
+ΔTN,con,Dil [°C] -50,5 -56,7 -45,1 -51,3 -45,1 -49,4 -45,1 -50,8
+ΔTN,exp,Dil [°C] +51,9 +54,4 49,2 51,7 +49,2 +52,7 +49,2 +51,7
+ΔLtotal,d,EC [mm] 227 246 172 188 64 69 26 28
+ΔLtotal,d,Statics [mm] 231 208 64 27
+Location/Standard 1,08 1,09 1,08 1,08
+Tab. 4: Comparison of the calculated bearing displacement difference due to temperature according to DIN EN 1991-1-5 and DIN 
+EN 1991-1-5/NA and location-specific values
+
+===== SEITE 9 =====
+8
+5 Summary and conclusion
+The temperatures and bearing displacements
+measured on four bridges over 19 months provide 
+valuable information on the temperature-induced 
+elongation behavior of real bridges and the induced 
+bearing displacements. The measured bearing 
+displacements are significantly lower than the 
+bearings’ capacities and the temperature-induced 
+elongation calculated according to current
+standards. Due to the short measurement period, 
+no statistical evaluation of the measured values can 
+be performed.
+Environmental and site influences, such as one-
+sided solar radiation due to the structure or crossing 
+waters below the structure, influence the surface 
+temperature of the superstructure and causes a 
+change in the bearing rotation, but have no 
+measureably influence on the bearing displacement.
+The coefficients of thermal expansion determined 
+on the basis of the measured values deviate 
+between -6% and +17% from the normative 
+values. However, the number of examined objects 
+is too small to determine general thermal expansion 
+coefficients for concrete and steel composite 
+bridges.
+A calculation of the bearing displacements with the 
+calculation model according to DIN EN 1991-1-5 
+and measured bridge temperatures confirms a good 
+agreement.
+By means of annual extreme values of the air shade 
+temperatures of nearby weather stations of the 
+German Weather Service, location-specific design 
+values of the air shade temperature are determined 
+with an occurrence probability of p = 0.02. The site-
+specific maximum temperatures are higher by 
+approx. 2 °C, while the minimum temperatures are 
+lower by approx. -4.5 °C. A calculation in accordance 
+with DIN EN 1991-1-5 with these site-specific rated 
+temperatures leads to approx. 8% larger bridge 
+elongation.
+It is recommended to evaluate the design values of 
+the shade air temperature for Germany on a smaller 
+scale and with the climate data of the last three 
+decades in order to identify deviations from the 
+actual design values. Based on this study, the need 
+for action to update the temperature map for 
+Germany in the National Annex to DIN EN 1991-1-5 
+can be determined. Also, it is recommended to 
+ 
+ 
+determine the coefficients of 
+thermal expansion of 
+other bridges using measurement data to check the 
+normative values.
+
+===== SEITE 10 =====
+9
+Inhalt
+1 Projektbeschreibung . . . . . . . . . . . . . 11
+2 Aufgabenstellung ................ 11
+3 Ausgewählte Messobjekte ......... 12
+3.1 Hangbrücke Würgau Beton ......... 13
+3.2 Hangbrücke Würgau Stahlverbund ... 13
+3.3 Trubbachbrücke .................. 13
+3.4 Paradiestalbrücke ................. 13
+4 Installiertes Monitoringsystem ..... 14
+4.1 Sensorpositionen . . . . . . . . . . . . . . . . . 15
+4.1.1 Hangbrücke Würgau Beton ......... 15
+4.1.2 Hangbrücke Würgau Stahlverbund ... 16
+4.1.3 Trubbachbrücke .................. 16
+4.1.4 Paradiestalbrücke ................. 17
+4.2 Basisstation ..................... 17
+4.3 Datenlogger ..................... 18
+4.4 Datenfernübertragung (DFÜ) ........ 19
+4.5 Temperatursensor ................ 19
+4.6 Wegaufnehmer ................... 20
+4.7 Software ........................ 21
+5 Wartung und Instandhaltung ...... 21
+6 Ergebnisse ..................... 22
+6.1 Temperaturen .................... 22
+6.1.1 Hangbrücke Würgau Beton ......... 22
+6.1.2 Hangbrücke Würgau Stahlverbund ... 23
+6.1.3 Trubbachbrücke .................. 24
+6.1.4 Paradiestalbrücke ................. 24
+6.2 Längenänderungen ............... 26
+6.2.1 Hangbrücke Würgau Beton ......... 26
+6.2.2 Hangbrücke Würgau Stahlverbund ... 27
+6.2.3 Trubbachbrücke .................. 27
+6.2.4 Paradiestalbrücke ................. 29
+6.3 Abhängigkeiten Weg – Temperatur ... 29
+7 Parameterstudie ................. 29
+7.1 Vergleich gemessenener vs. 
+rechnerischer Lagerwege........... 29
+7.1.1 Rechnerische Lagerwege gem. 
+Eurocode ....................... 30
+7.1.2 Rechnerische Lagerwege in Bezug 
+auf die Außenlufttemperatur......... 31
+7.1.3 Rechnerische Lagerwege gem. 
+Bestandsstatik ................... 35
+7.1.4 Vergleich der Lagerwege . . . . . . . . . . . 39
+7.2 Vergleich der Längenänderung 
+infolge Temperatur ................ 40
+7.3 Akkumulierter Gleitweg ............ 43
+7.4 Korrelation Außenluft zu Bauwerks- 
+temperatur ...................... 43
+7.5 Beurteilung Lage Tragwerk zur 
+Sonneneinstrahlung ............... 48
+7.6 Einfluss Fahrbahnbelag/Überbau- 
+werkstoff auf Verschiebung ......... 48
+7.7 Einfluss querende Gewässer 
+unterhalb der Brücke .............. 49
+8 Zusammenfassung/ 
+Schlussfolgerung................ 50
+Bilder ............................... 51
+Tabellen............................. 53
+Anhang 1: Erläuterung Temperatursensor- 
+anordnung
+Anhang 2: Wartungsprotokolle
+Anhang 3: Messdaten
+Anhang 4: Temperaturdaten aus aus gewählten 
+Wetterstationen in Bayern
+
+===== SEITE 11 =====
+
+
+===== SEITE 12 =====
+11
+1 Projektbeschreibung
+Der ständige Wechsel der klimatischen Einflüsse 
+verursacht in Bauwerken instationäre, nichtlinear 
+begrenzte Temperaturverteilungen. Ähnlich zu die-
+sen Temperaturentwicklungen entstehen thermi-
+sche Dehnungen, die in statisch bestimmt gelager-
+ten Tragwerken Verformungen und bei statisch un-
+bestimmter Lagerung zusätzliche Zwangsbean -
+spruchungen hervorrufen. Temperaturbeanspru -
+chungen sind veränderliche Einwirkungen. Bei Ver-
+kehrsbrücken sind in der Regel nur der lineare und 
+der konstante Temperaturanteil zu berücksichtigen. 
+In Sonderfällen ist auch der nichtlineare Tempera-
+turanteil darzustellen. Entsprechend den gültigen 
+Regelungen ist der charakteristische Eingangswert 
+so niedergeschrieben, dass er im Mittel alle 50 Jah-
+re erreicht bzw. überschritten wird.
+Die zur Berechnung der Einwirkung auf Tragwerke 
+durch Temperatur relevanten Daten sind in der DIN 
+EN 1991-1-5 sowie in den Fachberichten und natio-
+nalen Bestimmungen beschrieben. In Deutschland 
+ergibt sich der konstante Temperaturanteil laut DIN 
+EN 1991-1-5, 6.1.3.3 Anhang A für die minimale Au-
+ßenlufttemperatur T
+min mit -24 °C und für die maxi-
+male Außenlufttemperatur mit T max +37 °C. In Ös-
+terreich ergeben sich laut ÖNORM B 1991-1-5:2012 
+die minimale und die maximale Außenlufttempera -
+tur in Abhängigkeit von standortrelevanten Angaben 
+wie die Seehöhe, die Zone und einen Koeffizienten 
+k. Für die Berechnung des konstanten Tempera-
+turanteils ist weiter aus der DIN EN 1991-1-5 ein 
+Brückentyp zu wählen. Zur Auswahl stehen folgen -
+de Arten:
+• Typ 1 Stahlkonstruktion,
+• Typ 2 Verbundkonstruktion,
+• Typ 3 Betonkonstruktion.
+Für die Ermittlung von Lagerkräften und Verformun-
+gen gelten in Deutschland die konstanten Tempera-
+turanteile gemäß DIN EN 1990/NA/A1, NA.E.5.2.2. 
+Aufgrund der Unsicherheiten bei der Lagerung des 
+Tragwerkes wird hierbei zusätzlich der Teilsicher -
+heitsbeiwert 
+γF = 1,35 sowie ein konstruktionsab -
+hängiger Sicherheitszuschlag (Typ 1, Typ 2, Typ 3) 
+berücksichtigt. Für die Ermittlung der Verschiebe -
+wege der Lager und Fahrbahnübergänge wird ein 
+Temperaturzuschlag vom +/-20 K angesetzt. Der 
+minimale und maximale Temperaturanteil der Brü-
+cke kann aus der ÖNORM EN 1991-1-5, 6.1.3.1 
+Bild 6.1 Korrelation zwischen minimaler/maximaler 
+Außenlufttemperatur und minimalen und maxima-
+len konstanten Temperaturanteil für Brücken abge-
+lesen werden. Für die Bestimmung der Aufstelltem-
+peratur T
+0 sollte die Temperatur angenommen wer-
+den, bei der Zwängung auftritt (Fertigstellung). 
+Wenn dies nicht vorhersagbar ist, sollte die wäh-
+rend der Tragwerkserrichtung vorherrschende 
+Durchschnittstemperatur verwendet werden. Wenn 
+keine Informationen verfügbar sind, kann T
+0 mit 
+10 °C angenommen werden.
+In weiterer Folge ist die Berücksichtigung der Be-
+lagsart und Belagsdicke für die Temperaturentwick-
+lung in einer Brücke von Bedeutung. Durch die ab-
+schirmende Wirkung von Fahrbahnbelägen wird 
+der vertikale Temperaturunterschied im Brücken-
+querschnitt durch die Belagseinbaudicke beein -
+flusst. In diesem Zusammenhang ist anzumerken, 
+dass insbesondere bei Asphaltbelägen und starker 
+Sonneneinstrahlung bei hohen Lufttemperaturen in 
+der Vergangenheit auch im Einzelfall Bauwerkstem-
+peraturen im Bereich der Bemessungswerte erfasst 
+wurden. Diese Beeinflussungen müssen durch ei-
+nen entsprechenden Dickenabhängigkeitsfaktor 
+K
+Sur berücksichtigt werden. Die genannten Tempe-
+raturanteile ergeben in Summe ein Temperaturfeld, 
+welches auf das Brückenbauwerk einwirkt.
+Durch die Verwendung der normativen Werte kann 
+im Regelfall davon ausgegangen werden, dass die 
+Lagerwege aus der Bemessung ausreichende Re-
+serven aufweisen. Um diese Reserven entspre-
+chend zu eruieren, werden Messungen an verschie-
+denen Brückenobjekten mit unterschiedlichen Bau-
+weisen durchgeführt. Die Aufzeichnung der Ver-
+kehrsfrequenzen auf den Brücken stand nicht im 
+Fokus dieses Projektes und konnten auch aufgrund 
+der gewählten Abtastraten des Monitoringsystems 
+nicht erfasst werden. 
+2 Aufgabenstellung
+Ziel ist es, Lagerverschiebungen an Brückenstruk-
+turen mit unterschiedlichen Werkstoffen und Fahr-
+bahnbelägen messtechnisch mithilfe eines Monito-
+ringsystem zu erfassen und für die statische Be-
+messung entsprechende Rückschlüsse für Tempe-
+raturansätze abzuleiten. Ein weiteres Ziel ist, es die 
+entsprechenden Referenzobjekte zu untersuchen 
+und auszuwerten und auch noch weitere gemesse-
+ne Brücken aus dem Datenbestand der Firma Schi-
+metta Consult ZT GmbH in die Datenbasis mitein-
+
+===== SEITE 13 =====
+12
+zubeziehen. Mithilfe dieser Datenbasis soll es mög-
+lich sein, die maßgebenden Temperaturunterschie-
+de für repräsentative Brücken anzugeben. Im Detail 
+können folgende Ziele für das Projekt formuliert 
+werden:
+• Messung und Untersuchung von Neubaustruk -
+turen zum Einfluss von Temperatur und Krie-
+chen/Schwinden,
+• Messung und Untersuchung von Bestands- und 
+Instandsetzungsobjekten zum Einfluss der Tem-
+peratur,
+• Untersuchung des Einflusses des Überbauwerk-
+stoffes Stahl oder Beton auf das Temperaturver-
+halten,
+• Beurteilung der Lage des Tragwerkes zur Son-
+neneinstrahlung,
+• Unterscheidung Asphaltdecke auf die Bau-
+werkstemperatur,
+• Untersuchung des Einflusses von querenden 
+Gewässern unterhalb der Brücke durch Abküh-
+lung der Brückenunterseite,
+• Untersuchung der Korrelation zwischen Lufttem-
+peratur und Bauwerkstemperatur,
+• Datenbestand von metrologischen Messungen 
+untersuchen, um zu eruieren, ob Extremwerte in 
+den letzten 20 Jahren größer geworden sind,
+• Ableitung von Bemessungsansätzen bzw. Emp-
+fehlungen auf Grundlage der Messungen und 
+Auswertungen. 
+3 Ausgewählte Messobjekte
+Im weiteren Verlauf des Berichts wurde für die ge-
+messenen Brückentragwerke die Nummerierung 
+aus Tabelle 1 ausgewählt.
+Für die Durchführung der Messungen konnten vier 
+Objekte in Nordbayern ausgewählt werden, die die 
+genannten Vorgaben erfüllen, deren Lage in Bild 1 
+dargestellt ist.
+Bild 1: Lage der Brücken (Quelle: © OpenStreetMap und Mitwirkende, CC-BY-SA)
+Nr. Name Ort Gesamtlänge
+1 Hangbrücke Würgau 
+Beton
+Würgau/ 
+Scheßlitz 403 m
+2 Hangbrücke Würgau 
+Stahlverbund
+Würgau/ 
+Scheßlitz 425,37 m
+3 Trubbachbrücke Forchheim 95 m
+4 Paradiestalbrücke Wölkendorf 27,06 m
+Tab. 1: Gemessene Brücken
+
+===== SEITE 14 =====
+13
+3.1 Hangbrücke Würgau Beton
+Bezeichnung Brücke A70 über FW und Gelände, BW 80a 
+Hangbrücke Würgau, FR Bayreuth
+Standort Schesslitz/Würgau
+Baujahr 2016
+Gesamtlänge 403,0 m
+Breite 16,85 m
+Bauart Plattenbalkenbrücke, Trägerrostbrücke
+Fahrbahnbelag Deckschicht Splittmastixasphalt
+Tab. 2: Beschreibung Hangbrücke Würgau Beton
+3.2 Hangbrücke Würgau Stahlverbund
+Bezeichnung Brücke A70 über FW und Gelände, BW 80a 
+Hangbrücke Würgau, FR Bamberg
+Standort Schesslitz/Würgau
+Baujahr 1994
+Gesamtlänge 425,37 m
+Breite 15,0 m
+Bauart Plattenbalkenbrücke, Trägerrostbrücke
+Fahrbahnbelag Deckschicht aus Asphalt
+Tab. 3: Beschreibung Hangbrücke Würgau Stahlverbund
+3.3 Trubbachbrücke
+Bezeichnung Brücke A73 über die Trubbach, Trubbach-
+brücke, FR Nürnberg
+Standort Forchheim
+Baujahr 2015
+Gesamtlänge 95,0 m
+Breite 18,47 m
+Bauart Plattenbalkenbrücke, Trägerrostbrücke
+Fahrbahnbelag Deckschicht Splittmastixasphalt
+Tab. 4: Beschreibung Trubbachbrücke
+3.4 Paradiestalbrücke
+Bezeichnung Brücke A70 über Feldweg, 
+FR Bamberg
+Standort Wölkendorf
+Baujahr 1992
+Gesamtlänge 27,06 m
+Breite 13,35 m
+Bauart Plattenbalkenbrücke, Trägerrostbrücke
+Fahrbahnbelag Deckschicht Gussasphalt
+Tab. 5: Beschreibung Paradiestalbrücke
+Bild 2: Hangbrücke Würgau Beton
+Bild 3: Hangbrücke Würgau Stahlverbund
+Bild 4: Trubbachbrücke
+ 
+Bild 5: Paradiestalbrücke
+
+===== SEITE 15 =====
+14
+4 Installiertes Monitoringsystem
+Auf Basis langjähriger Erfahrungen mit Monito-
+ringsystemen wurde ein System (DDMS – Distribu-
+ted Digital Monitoring System) konzipiert, das 
+grundsätzlich folgende Anforderungen erfüllt:
+• Möglichst direkte Messung der gesuchten 
+Parameter,
+• flexible Systemarchitektur, um Erweiterungen 
+zuzulassen,
+• Langzeitstabilität unter den realen Betriebs- 
+und Witterungsbedingungen bei einer Bau-
+werksüberwachung,
+• unabhängig von Stromanschluss und Strom -
+ausfällen – batteriebetrieben.
+Angepasst an die Aufgabenstellung und das stati-
+sche System der Brückenobjekte, die Zugangs -
+möglichkeiten sowie die Infrastruktur wie fehlender 
+Stromanschluss und Internetanbindung wurden fol-
+gende Festlegungen für das Über wachungssystem 
+getroffen, wobei das System grundsätzlich aus fol-
+genden Hauptkomponenten besteht:
+• Schaltschrank/Basisstation
+ In dem an der jeweiligen Widerlagerwand befes-
+tigten Schaltschrank werden alle Sensorkabel 
+zusammengeführt. Darin befinden sich die den 
+unterschiedlichen Sensoren zugehörigen Daten-
+logger, die Datenfernübertragung, die Verkabe -
+lung und die Stromversorgung durch die Batteri-
+en. Der Schaltschrank ist witterungsbeständig 
+und verschlossen und konnte an drei der Trag-
+werke auch im vor Vandalismus geschützten, 
+versperrten Widerlagerbereich angebracht wer-
+den.
+• Datenlogger
+ Jedem Sensor ist ein eigener kleiner Datenlog -
+ger zugehörig, welcher die Messwerte digital ab-
+speichert und den dazugehörigen Wegaufneh -
+mer mit Strom versorgt. Die Temperatursenso -
+ren werden auf einem Datenlogger zusammen -
+gefasst. Jeder Datenlogger hat einen festen 
+Speicher. An einem der Datenlogger wird auch 
+noch die Temperatur und Luftfeuchtigkeit im 
+Schaltschrank gemessen, um eventuell drohen -
+de Ausfälle durch Feuchtigkeit vermeiden zu 
+können.
+• Datenfernübertragung
+ Zur Datenübertragung und Sicherung sind die 
+verwendeten Datenlogger mit einem Datenfern -
+übertragungsmodul gekoppelt. In diesem befin-
+det sich eine SIM-Karte, welche über das Mobil-
+funknetz die aktuellen Messdaten per E-Mail 
+versendet. Da die Datenübertragung die stro-
+mintensivste Aufgabe des Systems ist, wird die-
+ses über ein großes Batteriepaket versorgt, wel-
+ches etwa 100 Übertragungen schafft, ehe die 
+Stromquelle erschöpft ist. Dieser Teil des Sys-
+tems ist grundsätzlich ausgeschaltet und wird 
+nur in einem vordefinierten Intervall „aufge-
+weckt“. Daher ist das stromintensive Aufrechter-
+halten der Mobilfunkverbindung überflüssig.
+• Sensoren und Ziel der Messung
+ Durchführung von statischen Messungen für die 
+Überwachung der maßgebenden Parameter. 
+Folgende Messwertaufnehmer wurden für die 
+Aufgabe ausgewählt:
+– Wegaufnehmer
+ Eine direkte Möglichkeit zur Bestimmung von 
+absoluten Längenänderungen oder Verschie-
+bungen. Es wurden potenziometrische Weg-
+aufnehmer verwendet. Die Wegaufnehmer 
+messen die Verformungen der Tragwerke in 
+Längs- und Querrichtung über den jahres -
+zeitlichen Verlauf.
+– Temperaturaufnehmer
+ Der jahreszeitliche Verlauf der Temperatur für 
+die Tragwerke wird an unterschiedlichen 
+Stellen durch Temperaturaufnehmer erfasst. 
+Dabei wurden Sensoren für Kerntemperatur 
+(Beton) und Oberflächentemperatur (Stahl) 
+verwendet. Dazu wurden jeweils Aufnehmer 
+an die sonnenzugewandte Seite und an son-
+nenabgewandte Stellen montiert. Zusätzlich 
+wurden die Lufttemperatur am Widerlager so-
+wie die Luftfeuchtigkeit und Temperatur im 
+Schaltschrank gemessen.
+• Verkabelung
+ Einen wesentlichen Gesichtspunkt für den dau-
+erhaften und störungsfreien Betrieb des Mess-
+systems stellt eine fachgerechte Verkabelung 
+des gesamten Systems dar. Alle Kabel wurden 
+in Kunststoffrohren/-schläuchen geführt. Diese 
+Hüllrohre stellen einen mechanischen Schutz 
+der empfindlichen Datenkabel dar. Alle Verroh-
+rungen wurden am Objekt durch Rohrschellen 
+befestigt.
+
+===== SEITE 16 =====
+15
+4.1 Sensorpositionen
+Der grundsätzliche Aufbau der 4 unabhängigen 
+Monitoringsysteme ist bis auf die Kabellängen und 
+Längen der Wegaufnehmer nahezu identisch (siehe 
+Tabelle 6).
+In den Planausschnitten (Kapitel 4.1.1 bis 4.1.4) 
+werden die einzelnen Sensorpositionen dargestellt.
+4.1.1 Hangbrücke Würgau
+Bild 6: Sensorpositionen (1 – Hangbrücke Würgau)
+Messparameter Sensorwahl Anzahl
+Längenänderung längs
+Längenänderung quer
+Bauwerkstemperatur
+Lufttemperatur am 
+Widerlager
+Überwachung Basis-
+station/Schaltschrank
+Wegaufnehmer (W)
+Wegaufnehmer (W)
+Temperatursensoren (T)
+Temperatursensoren (T)
+Temp. und Luftfeuchtig-
+keit (X)
+2
+1
+4
+1
+2
+Gesamtanzahl an Sensoren je Brücke 8
+Tab. 6: Beschreibung Messparameter, Sensoren und Anzahl
+
+===== SEITE 17 =====
+16
+4.1.2 Hangbrücke Würgau Stahlverbund
+4.1.3 Trubbachbrücke
+Bild 7: Sensorpositionen (2 – Hangbrücke Würgau)
+Bild 8: Sensorpositionen (3 – Trubbachbrücke)
+
+===== SEITE 18 =====
+17
+4.1.4 Paradiestalbrücke
+4.2 Basisstation
+Die Basisstation (Bild 10) besteht aus einem ro-
+busten Schaltschrank, welcher abgesehen von 
+den Sensoren die komplette Messtechnik enthält 
+und diese vor Umwelt- und Witterungseinflüssen 
+schützt. Die Stromversorgung, die Datenübertra -
+gungsmodule, die Datenlogger und die Kabelver -
+bindungen sind in dieser Box verbaut, nur die jewei-
+ligen Sensorkabel werden durch eine hochwertige 
+Kabeldurchführung der Schutzklasse IP 68 nach 
+außen geführt. Somit ist diese Komponente gegen 
+Eindringen von Feuchtigkeit bestens geschützt. Die 
+Tür des Schaltschranks ist mit einer Gummidich -
+tung abgedichtet und wird mit einem mitgelieferten 
+Schlüssel zweifach versperrt. Die Basisstation 
+selbst ist an einer geeigneten Stelle an einer Wand 
+verschraubt.
+Die komplette Verkabelung der Datenleitungen, 
+Stromversorgungskabel, sowie Sensorkabel wurde 
+vorab durchgeführt. Ein ausgiebiger Testlauf mit al-
+len Sensoren über einige Wochen wurde erfolgreich 
+und ohne Zwischenfälle absolviert.
+Bild 9: Sensorpositionen (4 – Paradiestalbrücke)
+Bild 10: Foto Basisstation
+
+===== SEITE 19 =====
+18
+Bei der Inbetriebnahme des Monitoringsystems 
+konnte mithilfe eines Notebooks und der geeigne -
+ten Software in der Basisstation die notwendige 
+Konfiguration durchgeführt werden. Während des 
+Betriebs ist außer für den Batteriewechsel (Interval-
+le im Kapitel der jeweiligen Module) oder bei Bedarf 
+für die manuelle Datensicherung kein Zugang zu 
+dieser Box notwendig.
+4.3 Datenlogger
+Der Datenlogger besteht aus mehreren individuell 
+konfigurierbaren Komponenten, die im vorhinein 
+festgelegt werden müssen.
+Darin enthalten sind:
+• Stromversorgung (Batterien) für Sensor und 
+Datenlogger,
+• Speicher,
+• T emperatursensor,
+• Luftfeuchtigkeitssensor,
+• Anschlüsse:
+– Ausgang: Datenfernübertragungsmodul,
+– Ein-/Ausgang: Sensor,
+– Ein-/Ausgang: Anschluss PC zur 
+Konfiguration.
+Die Stromversorgung wird über 2 AA-Batterien 
+aufrechterhalten. Das System ist sehr sparsam, 
+da es nur nach vorgegebenem Messintervall aktiv 
+wird, einen Wert aufnimmt und sich sofort wieder 
+fast zur Gänze abschaltet. Somit kann jeder Daten-
+logger und die dazugehörige Sensorik in etwa 9 
+Monate zuverlässig mit Strom versorgt werden. 
+Durch den Batteriebetrieb ist das komplette Sys - 
+tem zugleich unabhängig von möglichen Stromaus-
+fällen.
+Die Speichergröße ist wählbar und liegt in der Grö-
+ßenordnung für 16.000 – 64.000 speicherbare 
+Messwerte. Zur Messwertaufnahme wurde ein 
+10-Minuten-Intervall ausgewählt. Das heißt, dass 
+alle Datenlogger zeitgleich aktiv werden, je einen 
+bzw. bei der Temperaturmessung mehrere Mess-
+werte in den Speicher schreiben und sich dann wie-
+der in den Standby-Modus zurückbegeben.
+Die Speichergrößen wurden so gewählt, dass zu-
+mindest 40 Tage alle Sensoren auf jedem Datenlog-
+ger gespeichert werden können. Somit ist eine gute 
+Redundanz durch mehrfache Datenübertragung 
+gegeben (siehe Kapitel Datenfernübertragung). 
+Wenn der Speicher voll ist, werden die ältesten Da-
+ten wieder überschrieben.
+Bild 11: Anordnung der Komponenten in einer Basisstation
+Bild 12: Datenlogger
+
+===== SEITE 20 =====
+19
+4.4 Datenfernübertragung (DFÜ)
+Das Datenfernübertragungsmodul besteht aus 3 
+Teilen:
+• Modul mit Anschlüssen für mehrere Datenlogger 
+(Bild 13 – unterer Teil),
+• Übertragungseinheit mit Antenne und SIM-Karte 
+(Bild 13 – oberer Teil),
+• Stromversorgung (Bild 14).
+Das Modul hat die Aufgabe, die Messdaten aus den 
+jeweilig angeschlossenen Datenloggern zu sam-
+meln und zusammenzufassen. Im nächsten Schritt 
+wird über voreingestellte Zugangsdaten eine Ver-
+bindung zum Mobilfunknetz aufgebaut und die ge-
+bündelten Messdaten an ausgewählte Empfänger 
+per E-Mail versendet.
+Wie schon bei den Datenloggern beschrieben ist 
+das Messintervall aller Sensoren auf 10 Minuten 
+eingestellt. Somit füllt sich der Speicher der Daten-
+logger kontinuierlich. Das Datenfernübertragungs -
+modul erwacht alle 5 Tage um 04:00 Uhr morgens 
+und übermittelt den kompletten Datenspeicher der 
+jeweilig angehängten Datenlogger. Das heißt in der 
+Praxis, dass bei dem gewählten Messintervall und 
+der daraus resultierenden Gesamtspeicherdauer 
+von mindestens 40 Tagen die Daten auch zumin-
+dest 8 Mal übertragen werden. Sollten also Emp-
+fangsprobleme entstehen, sind die Daten dann ein-
+fach auch bei den nächsten 7 Übertragungen ent-
+halten.
+Um den gelegentlich möglichen Empfangsproble -
+men beim Verbindungsaufbau unter den Brücken 
+entgegenzuwirken, wurden an den DFÜ-Modulen 
+noch zusätzliche Antennen montiert.
+4.5 Temperatursensor
+Es wurden in Summe folgende Komponenten in-
+stalliert:
+• 18 x T emperaturfühler normal (für Kern- und 
+Lufttemperatur am Widerlager),
+• 2 x Oberflächentemperatursensoren.
+Bei den Sensoren handelt es sich um NTC-Tempe-
+ratursensoren (Bild 15). Diese sind Heißleiter, also 
+temperaturabhängige Widerstände. Sie stammen 
+aus der Kategorie der Thermistoren. Diese haben 
+im Gegensatz zu den Kaltleitern einen negativen 
+Temperaturkoeffizienten und leiten bei höheren 
+Temperaturen den Strom besser als bei niedrigeren 
+Temperaturen.
+Bild 13: Datenfernübertragungsmodul
+Bild 14: Stromversorgung DFÜ
+
+===== SEITE 21 =====
+20
+Die Sensoren wurden mit unterschiedlichen Kabel -
+längen versehen und in Kombination mit dem dazu-
+gehörigen Datenlogger kalibriert. 
+Für die Messung der Betonkerntemperatur wurden 
+zuerst etwa 20 – 25 cm tiefe Löcher an den ausge -
+wählten Positionen gebohrt. Im Anschluss wurde 
+die messende Sensorspitze komplett in das Bohr-
+loch eingeführt und in dieser Position von außer-
+halb erstmal mit einem Klebeband fixiert. Danach 
+wurden alle Bohrlöcher mit einem speziellen 2-kom-
+ponentigen Mörtelverbund eingeklebt. Die Kabel -
+verbindung zur Basisstation wurde je nach Möglich-
+keit mit Klebeband, Kabelbinder bzw. vorrangig in 
+Elektroschläuchen verlegt, damit eine gute Absi-
+cherung gegenüber Tierbiss oder starken Witte-
+rungseinflüssen gegeben ist.
+4.6 Wegaufnehmer
+In Summe wurden folgende Wegaufnehmer instal-
+liert:
+• 3 x Wegaufnehmer Novotechnik IP 68 75mm 
+Weg: 3 kOhm,
+• 3 x Wegaufnehmer Novotechnik IP 68 100mm 
+Weg: 4 kOhm,
+• 3 x Wegaufnehmer Novotechnik IP 68 200mm 
+Weg: 8 kOhm.
+Das Messprinzip der Wegaufnehmer beruht ähn-
+lich dem der Temperatursensoren auf Widerstands-
+änderungen nach Art eines Potenziometers. Im Zu-
+sammenhang von einem beweglichen Schleifer und 
+Bild 15: NTC-Temperatursensor
+Bild 16: Wegaufnehmer 200 mm Novotechnik
+Bild 17: Wegaufnehmer montiert (Paradiestalbrücke)
+
+===== SEITE 22 =====
+21
+der daraus resultierenden Widerstandsänderung
+kann auf den Weg geschlossen werden. 
+Die Wegaufnehmer dienen der Aufzeichnung der 
+Längs- und Querbewegung der Brücke. Jeder Weg-
+aufnehmer hat 2 Befestigungspunkte, die mit kugel-
+gelenkigen Befestigungspunkten ausgestattet wur-
+den.
+An ausgewählten Positionen wurden Edelstahl- 
+Gewindestangen mit einem dafür geeigneten 2- 
+Komponenten-Klebstoff in Bohrlöchern verklebt und 
+darauf nach kurzer Trocknungszeit die Wegaufneh-
+mer direkt befestigt. Gelegentlich wurden auch Ver-
+längerungen oder Winkel am Beton verschraubt, 
+um eine saubere Messung zu gewährleisten.
+Die Verkabelung ist geschirmt und für den Außen-
+einsatz robust ausgeführt. Die Wegaufnehmer und 
+deren Verkabelung bis in die Basisstation entspre-
+chen der Schutzklasse IP 68.
+4.7 Software
+Für das gesamte Messsystem ist ein Software-Pa-
+ket mitgeliefert worden, welches zur Auswertung 
+und Konfiguration des Systems verwendet wird. 
+Einstellungen wie Messintervall, Informationen für 
+die Internetverbindung oder die Uhrzeit-Synchroni -
+sierung können hier eingesehen und verändert wer-
+den. Ebenso wie das Öffnen, Sichten und Exportie-
+ren der Messdaten ist dies im ersten Schritt nur 
+über die für diese Hardware entwickelte Software 
+möglich. Mit einer Kabelverbindung zu einem Note-
+book können alle Einstellungen vorgenommen wer-
+den, die Daten manuell gesichtet und gespeichert 
+sowie empfangene Messdaten geöffnet und expor-
+tiert werden.
+Im zweiten Schritt bzw. nach der ersten Konfigurati-
+on ist diese Software nur mehr zum Exportieren der 
+Messdaten zuständig. Die Messdaten werden in fol-
+genden Datenformaten gespeichert, um alle Aus-
+wertungen durchführen zu können:
+• *.csv Einfach zu Exportieren und zu öffnen, 
+• *.ged GreenEye – einfache Visualisierungs- 
+ software zum Darstellen und Messen,
+• *.dat Famos DAT, für die Auswertung und 
+ spezielle Berechnungen.
+Die Auswertung der Messdaten wird in imc-FAMOS 
+durchgeführt. Dabei können einfache Min/Max-Aus-
+ wertungen sowie auch komplexere 
+Berechnungen 
+gut durchgeführt und auch dargestellt werden.
+5 Wartung und Instandhaltung
+Die Auslegung des Messsystems erfolgte in einer 
+solchen Weise, dass der Wartungsaufwand mög-
+lichst minimiert wird. Alle Sensoren wurden mög-
+lichst in der Nähe der Basisstation montiert, um lan-
+ge Verkabelungen zu vermeiden. Für Wartungs-
+zwecke ist einerseits die Basisstation zugänglich 
+als auch andererseits die Sensoren allenfalls unter 
+Einsatz eines BIG. In regelmäßigen Intervallen 
+(halbjährlich) erfolgt die Vorlage eines Zwischen-
+berichtes beim Auftraggeber, in dem die erzielten 
+Mess ergebnisse laufend zusammengefasst wer-
+den.
+Im Zuge des aktuellen Auftrages wird neben der ter-
+minlich vorgegebenen Berichtslegung über die ge-
+messenen Tragwerksverhältnisse auch eine jährli -
+che Wartung durchgeführt. In den zugehörigen Be-
+richten werden die zugehörigen Wartungsarbeiten 
+des Systems dokumentiert. Diese haben im Beob-
+achtungszeitraum folgende Punkte umfasst:
+• T ausch aller eingesetzten Batterien der Mess -
+systeme April 2018,
+• Kontrolle der Hardware und Anschlusskabel 
+April 2018,
+• Austausch defekter Wegaufnehmer Hang­
+brücke Würgau (Betonbrücke) April 2018,
+• Reinigung und Pflege der Wegaufnehmer 
+April 2018,
+• Neustart aller Systeme und anschließender 
+Testlauf April 2018.
+Der Ausfall bzw. die fehlerhafte Aufzeichnung des 
+Wegaufnehmers bei der Hangbrücke Würgau (laut 
+Plan „W längs 1.2.2“) wurde Mitte März 2018 sofort 
+durch die ständigen visuellen Kontrollen der Mess-
+daten erkannt. Die entsprechenden Maßnahmen 
+wurden sofort eingeleitet (erste visuelle Begutach -
+tung, Bestellen neuer Wegaufnehmer etc.), und 
+Ende April 2018 wurde der defekte Wegaufnehmer 
+ausgetauscht. Für diesen Zeitraum liegen daher 
+keine Messdaten zum Wegaufnehmer „W längs 
+1.2.2“ Hangbrücke Würgau vor.
+
+===== SEITE 23 =====
+22
+6 Ergebnisse
+6.1 Temperaturen
+Durch die Monitoringsysteme an den Referenz-
+objekten werden ab Inbetriebnahme der Monito-
+ringsysteme (ab 01.06.2017) die Jahreszyklen des 
+Temperaturganges aufgezeichnet. Die gemesse -
+nen Tragwerkstemperaturen zeigen in diesem Be-
+obachtungszeitraum (01.06.2017 bis 27.01.2019) 
+den zu erwartenden Verlauf.
+6.1.1 Hangbrücke Würgau Beton
+In Bild 18 ist der Temperaturverlauf über den Mess-
+zeitraum und in Tabelle 7 die Messwerte je Sensor 
+dargestellt.
+• Die Lufttemperatur am Widerlager (T1) lag in 
+diesem Zeitraum zwischen -11,4 °C und 29,4 °C.
+• Die dabei höchste gemessene Betontemperatur 
+war mit 32,7 °C auf Sensor T5.
+• Die niedrigste gemessene Betontemperatur lag 
+bei -9,7 °C ebenfalls auf Sensor T5.
+Sensor Min Max Position fiktive Mitteltemperatur Temperaturgradienten 
+[°C] [°C] [°C] [°C]
+T1 -11,4 29,4 bei Basisstation 9,0 ±20,4
+T2 -8,2 31,8 Platte innen 11,8 ±20,0
+T3 -6,8 28,4 Balken innen 10,8 ±17,6
+T4 -7,3 30,0 Balken außen 11,3 ±18,6
+T5 -9,7 32,7 Platte außen 11,5 ±21,2
+Tab. 7: Darstellung Temperaturdaten
+Bild 18: Temperaturverlauf – Hangbrücke Würgau Beton – 02.06.2017-27.01.2019
+
+===== SEITE 24 =====
+23
+6.1.2 Hangbrücke Würgau Stahlverbund
+In Bild 19 ist der Temperaturverlauf über den Mess-
+zeitraum und in Tabelle 8 die Messwerte je Sensor 
+dargestellt.
+• Die Lufttemperatur am Widerlager (T1) lag in 
+diesem Zeitraum zwischen -12,6 °C und 30,7 °C.
+• Die dabei höchste gemessene Betontemperatur 
+erreichte mit 35,4 °C Sensor T2.
+• Die niedrigste gemessene Betontemperatur lag 
+mit -10,6 °C auf Sensor T3.
+• Die dabei höchste gemessene Stahltemperatur 
+war mit +34,9 °C auf Sensor T4.
+• Die niedrigste gemessene Stahltemperatur lag 
+bei -12,4 °C ebenfalls auf Sensor T4.
+In den gemessenen Temperaturen der Stahlver-
+bund-Brücke in Würgau ist zu erkennen, dass in 
+den Herbst- und Wintermonaten aufgrund der geo-
+grafischen Lage und Ausrichtung an sonnenreichen 
+Tagen die Temperaturspitzen an der Stahloberflä -
+che der sonnenzugewandten Seite in den Nachmit-
+tagsstunden größer sind, sich aber daraus nur ein 
+geringfügiger Einfluss auf den Tagesgang des La-
+gerweges ergibt.
+In Bild 20 ist deutlich erkennbar, dass bei direkter 
+Sonneneinstrahlung die Bauwerkstemperatur steigt 
+und somit sich auch die Lagerverschiebungen grö-
+ßer ausbilden als an schattigen Tagen.
+Sensor Min Max Position fiktive Mitteltemperatur Temperaturgradienten 
+[°C] [°C] [°C] [°C]
+T1 -12,6 30,7 bei Basisstation 9,1 ±21,7
+T2 -10,3 35,4 Platte innen 12,6 ±22,9
+T3 -10,6 33,8 Platte außen 11,6 ±22,2
+T4 -12,4 34,9 Träger außen 11,3 ±23,7
+T5 -12,2 32,7 Träger innen 10,3 ±22,5
+Tab. 8: Darstellung Temperaturdaten
+Bild 19: Temperaturverlauf – Hangbrücke Würgau Stahlverbund – 01.06.2017-27.01.2019
+
+===== SEITE 25 =====
+24
+6.1.3 Trubbachbrücke
+In Bild 21 ist der Temperaturverlauf über den Mess-
+zeitraum und in Tabelle 9 die Messwerte je Sensor 
+dargestellt.
+• Die Lufttemperatur am Widerlager (T1) lag in 
+diesem Zeitraum zwischen -8,5 °C und 29,7 °C.
+• Die dabei höchste gemessene Betontemperatur 
+war mit +31,5 °C auf Sensor T5.
+• Die niedrigste gemessene Betontemperatur lag 
+bei -7,5 °C ebenfalls auf Sensor T5.
+6.1.4 Paradiestalbrücke
+In Bild 22 ist der Temperaturverlauf über den Mess-
+zeitraum und in Tabelle 10 die Messwerte je Sensor 
+dargestellt.
+• Die Lufttemperatur am Widerlager (T1) lag in 
+diesem Zeitraum zwischen -13,1 °C und 30,9 °C.
+• Die dabei höchste gemessene Betontemperatur 
+war mit +32,8 °C auf Sensor T3.
+• Die niedrigste gemessene Betontemperatur lag 
+bei -11,4 °C ebenfalls auf Sensor T3.
+Bild 20: Temperaturverlauf Herbstwoche – Hangbrücke Würgau Stahlverbund – 15.11.2018-22.11.2018
+Sensor Min Max Position fiktive Mitteltemperatur Temperaturgradienten 
+[°C] [°C] [°C] [°C]
+T1 -8,5 29,7 bei Basisstation 10,6 ±19,1
+T2 -6,5 29,1 Balken Schattenseite 11,3 ±17,8
+T3 -6,8 31,2 Platte Schattenseite 12,2 ±19,0
+T4 -6,5 30,2 Balken Sonnenseite 11,9 ±18,4
+T5 -7,5 31,5 Platte Sonnenseite 12,0 ±19,5
+Tab. 9: Darstellung Temperaturdaten
+
+===== SEITE 26 =====
+25
+Bild 21: Temperaturverlauf – Trubbachbrücke – 01.06.2017-27.01.2019
+Bild 22: Temperaturverlauf – Paradiestalbrücke – 02.06.2017-20.08.2018
+
+===== SEITE 27 =====
+26
+6.2 Längenänderung
+Die Längsbewegungen infolge Temperaturschwan-
+kungen werden durch die Wegaufnehmer wie in 
+Kapitel 4 beschrieben (Position, Bauart) gemessen. 
+Die Messungen der Verschiebungen zeigen im 
+Beobachtungszeitraum vom 01.06.2017 bis 27.01. 
+2019 den zu erwarteten Verlauf.
+6.2.1 Hangbrücke Würgau Beton
+In Bild 23 ist die Längenänderung in einem Dia-
+gramm dargestellt und in Tabelle 11 die dazugehöri-
+gen maximalen und minimalen Auslenkungen auf-
+gelistet.
+Bei der Hangbrücke Würgau Beton ist anzumerken, 
+dass ein abnehmender Trend in den gemessenen 
+Wegen stattgefunden hat. Dieses Verhalten ist 
+möglicherweise auf eine noch nicht abgeschlosse -
+Sensor Min Max Position fiktive Mitteltemperatur Temperaturgradienten 
+[°C] [°C] [°C] [°C]
+T1 -13,1 30,9 bei Basisstation 8,9 ±22,0
+T2 -11,0 28,0 Balken innen 8,5 ±19,5
+T3 -11,4 32,8 Platte innen 10,7 ±22,1
+T4 -9,6 30,4 Platte außen 10,4 ±20,0
+T5 -10,4 28,8 Balken außen 9,2 ±19,6
+Tab. 10: Darstellung Temperaturdaten
+Sensor Weg Min/Max Gemessener Weg
+Weg Längs 01
+-77,58 mm
+4,84 mm
+82,42 mm
+Weg Längs 02
+-76,20 mm
+4,94 mm
+81,14 mm
+Weg Quer 01
+-0,30 mm
+8,35 mm
+8,65 mm
+Tab. 11: Darstellung Auslenkungen der Wegaufnehmer
+Bild 23: Längenänderung – Hangbrücke Würgau Beton- 02.06.2017-27.01.2019
+
+===== SEITE 28 =====
+27
+ne Tragwerksverformung zufolge Kriechen und
+Schwinden des jungen Bauwerks zurückzuführen, 
+welche erfahrungsgemäß innerhalb der ersten drei 
+Jahren nach Errichtung noch nicht abgeklungen 
+sind. Im kurzen Messzeitraum ist diese Vermutung 
+jedoch nicht eindeutig verifizierbar, sodass ein Sen-
+sordrift nicht ausgeschlossen werden kann. Dies 
+kann zukünftig anhand der Lagerstellung weiter be-
+obachtet werden.
+6.2.2 Hangbrücke Würgau Stahlverbund
+In Bild 24 ist die Längenänderung in einem Dia-
+gramm dargestellt und in Tabelle 12 die dazugehö-
+rigen maximalen und minimalen Auslenkungen auf-
+gelistet.
+6.2.3 Trubbachbrücke
+In Bild 25 ist die Längenänderung in einem Dia-
+gramm dargestellt und in Tabelle 13 die dazugehö-
+rigen maximalen und minimalen Auslenkungen auf-
+gelistet.
+ Sensor Weg Min/Max Gemessener Weg
+Weg Längs 01
+-82,42 mm
+21,95 mm
+104,37 mm
+Weg Längs 02
+-81,98 mm
+22,12 mm
+104,10 mm
+Weg Quer 01
+-2,35 mm
+7,79 mm
+10,14 mm
+Tab. 12: Darstellung Auslenkungen der Wegaufnehmer
+Bild 24: Längenänderung – Hangbrücke Würgau Stahlverbund – 01.06.2017-27.01.2019
+Sensor Weg Min/Max Gemessener Weg
+Weg Längs 01
+-21,25 mm
+3,51 mm
+24,76 mm
+Weg Längs 02
+-18,93 mm
+3,78 mm
+22,71 mm
+Weg Quer 01
+-1,25 mm
+0,77 mm
+2,02 mm 
+Tab. 13: Darstellung Auslenkungen der Wegaufnehmer
+
+===== SEITE 29 =====
+28
+Bild 25: Längenänderung – Trubbachbrücke – 01.06.2017 – 27.01.2019
+Bild 26: Längenänderung – Paradiestalbrücke – 02.06.2017 – 27.01.2019
+
+===== SEITE 30 =====
+29
+6.2.4 Paradiestalbrücke
+In Bild 26 ist die Längenänderung in einem Dia-
+gramm dargestellt und in Tabelle 14 die dazugehö-
+rigen maximalen und minimalen Auslenkungen auf-
+gelistet.
+Gemäß Wartungsprotokoll 2017 sollte die Sensor-
+halterung für den Sensor Weg Quer 01 repariert 
+werden. Aufgrund der erschwerten Zugänglichkeit 
+(Steiger erforderlich, stark eingeschränkte Platzver-
+hältnisse) und der untergeordneten Bedeutung der 
+Ergebnisse dieses Sensors wurde auf eine Repara-
+tur verzichtet. Die auffälligen Sprünge im Messver-
+lauf des Sensors Weg Quer 01 sind auf diesen kon-
+struktionsbedingten Umstand zurückzuführen, was 
+jedoch keinen Einfluss auf die restlichen Sensoren 
+und auf die Forschungsergebnisse darstellt.
+6.3 Abhängigkeiten Weg – Temperatur
+Um die Abhängigkeit der gemessenen Wege zur 
+gemessenen Temperatur besser darstellen zu kön-
+nen, wurden die Wege der einzelnen Messobjekte 
+auf einen Temperaturunterschied von 1 °C auf die 
+Verschiebelänge der jeweiligen Brücke umgerech-
+net und in Bild 27 dargestellt. Die Längenänderung 
+des horizontalen Weges in Abhängigkeit von der 
+Temperatur zur Brückenlänge ist nichtlinear. Diese 
+Nichtlinearität kann Bild 27 entnommen werden. 
+7 Parameterstudie
+7.1 Vergleich gemessener vs. 
+rechnerischer Lagerwege
+Für den Vergleich werden zunächst die rechneri -
+schen Lagerwege gemäß aktuell gültiger Norm 
+(Ausgabe 2012) ermittelt. Ausganspunkt für die Be-
+rechnung sind die normativen Außenlufttemperatu -
+ren von T
+min = -24 °C und Tmax = 37 °C nach DIN EN 
+1991-1-5, NDP zu 6.1.3.2. Anschließend wird die-
+selbe Berechnung durchgeführt, doch anstelle der 
+normativen Außenlufttemperaturen werden die 
+Wetterdaten aus naheliegenden Wetterstationen 
+herangezogen, welche aus den Messdaten des 
+Deutschen Wetterdienstes stammen (siehe Anhang 
+4). Diese Werte werden sowohl miteinander als 
+auch mit den gemessenen Werten gegenüberge -
+stellt, um daraus Schlüsse hinsichtlich Reserven 
+ziehen zu können. Die Rechenergebnisse sind in 
+Tabelle 18 und Tabelle 19 festgehalten.
+In den folgenden Kapiteln wird folgende Nomen-
+klatur (entnommen aus DIN EN 1990/NA/A1 und 
+DIN EN 1991-1-5) verwendet:
+T
+min minimale Außenlufttemperatur mit einer 
+Wahrscheinlichkeit von 0,02
+Tmax maximale Außenlufttemperatur mit einer 
+Wahrscheinlichkeit von 0,02
+Te,min minimaler konstanter Temperaturanteil 
+für Brücken
+Te,max maximaler konstanter Temperaturanteil 
+für Brücken
+ΔTN,con maximale negative Änderung des kon-
+stanten Temperaturanteils für Brücken
+ΔTN,exp maximale positive Änderung des kon-
+stanten Temperaturanteils für Brücken
+Ted,min Bemessungswert des minimalen kon-
+stanten Temperaturanteils
+Ted,max Bemessungswert des maximalen kon-
+stanten Temperaturanteils
+T0 Aufstelltemperatur des Bauteils zur Be-
+stimmung seiner Zwängung
+Sensor Weg Min/Max Gemessener Weg
+Weg Längs 01
+-9,68 mm
+2,62 mm
+12,30 mm
+Weg Längs 02
+-9,71 mm
+2,81 mm
+12,52 mm
+Weg Quer 01
+-1,09 mm
+1,63 mm
+2,72 mm
+Tab. 14: Darstellung Auslenkungen der Wegaufnehmer
+Bild 27: Längenänderung je Brücke bei 1 °C Temperaturunter-
+schied in Bezug auf die Verschiebelänge
+
+===== SEITE 31 =====
+30
+ΔT0 zusätzliches Sicherheitselement zur Er-
+fassung der Unsicherheit der Lagerposi-
+tion bei der Aufstelltemperatur T0
+ΔTN,con,Dil Bemessungswert der maximalen nega -
+tiven Änderung
+ΔTN,exp,Dil Bemessungswert der maximalen positi-
+ven Änderung
+7.1.1 Rechnerische Lagerwege gem. Eurocode
+Der konstante Temperaturanteil berechnet sich
+nach DIN EN 1991-1-5, Absatz 6.1.3.3 mit der Auf-
+stelltemperatur T
+0 = 10 °C nach DIN EN 1991-1-5, 
+Anhang A1(3) sowie der extremalen Außenlufttem-
+peratur T
+min = -24 °C und Tmax = 37 °C nach DIN EN 
+1991-1-5, NDP zu 6.1.3.2. 
+Die Hangbrücke Würgau aus Beton, die Para-
+diestalbrücke und die Brücke über den Trubbach 
+gehören als Betonbrücken zum Brückentyp 3. Die 
+maßgebenden Temperaturen sind:
+T
+e,max = Tmax + 2 °C = 39 °C 
+Te,min = Tmin + 8 °C = -16 °C 
+Daraus folgt: 
+ΔTN,con = T0 – Te,min = (-)26 °C 
+ΔTN,exp = Te,max – T0 = (+)29 °C 
+Nach DIN EN 1990/NA/A1, NA.E.5.2.2 ergeben 
+sich die Bemessungswerte der extremalen Tempe-
+raturanteile:
+T
+ed,min = T 0– γF x ΔTN,con – ΔT0
+ = 10 – 1,35 x 26 °C – 10 
+ = (-)35,1 °C bzw. (-)26 °C (ohne γF)
+Ted,max = T 0 + γF x ΔTN,exp + ΔT0
+ = 10 + 1,35 x 29 °C + 10
+ = (+)59,2 °C bzw. (+)49 °C (ohne 
+γF)
+Mit ΔT0 = 10 °C nach Tabelle NA.E.5, Fall 2
+T0, ΔTN,con, ΔTN,exp nach DIN EN 1991-1-5
+γF = 1,35 nach NA.E.5.2.2(2)
+Daraus folgt für die konstanten Temperaturanteile: 
+ΔTN,con,Dil = T 0 – Ted,min 
+ 
+ = (-)45,1 °C bzw. (-)36 °C (ohne γF) 
+ΔTN,exp,Dil = T ed,max – T0 
+ = (+)49,2 °C bzw. (+)39 °C (ohne γF) 
+Verkürzung εT-,d = αT x ΔTN,con,Dil
+Ausdehnung εT+,d = αT x ΔTN,exp,Dil
+Mit: αT = 10-5 1/K für Beton 
+Die Hangbrücke Würgau aus Stahlverbund gehört 
+zu Brückentyp 2. Es gilt hier:
+Te,max = Tmax + 4 °C = 41 °C 
+Te,min = Tmin + 4 °C = -20 °C 
+Daraus folgt: 
+ΔTN,con = T0 – Te,min = (-)30 °C 
+ΔTN,exp = Ted,max – T0 = (+)31 °C 
+Nach DIN EN 1990/NA/A1, NA.E.5.2.2 ergeben 
+sich die Bemessungswerte der extremalen Tempe-
+raturanteile:
+T
+ed,min = T 0 – γF x ΔTN,con – ΔT0
+ = 10 – 1,35 x 30 °C – 10 
+ = (-)40,5 °C bzw. (-)30 °C (ohne γF) 
+Ted,max = T 0 + γF x ΔTN,exp + ΔT0
+ = 10 + 1,35 x 31 °C + 10
+ = (+)61,85 °C bzw. (-)51 °C (ohne γF)
+Mit ΔT0 = 10 °C nach Tabelle NA.E.5, Fall 2
+T0, ΔTN,con, ΔTN,exp nach DIN EN 1991-1-5 
+γF = 1,35 nach NA.E.5.2.2(2) 
+Daraus folgt für die konstanten Temperaturanteile: 
+ΔTN,con,Dil = T 0 – Ted,min
+ = (-)50,5 °C bzw. (-)40 °C (ohne γF) 
+ΔTN,exp,Dil = T ed,max – T0
+ = (+)51,85 °C bzw. (+)41 °C (ohne γF) 
+Verkürzung εT-,d = αT x ΔTN,con,Dil 
+Ausdehnung εT+,d = αT x ΔTN,exp,Dil 
+Mit: αT = 1,2 x 10-5 1/K für Stahlverbund
+
+===== SEITE 32 =====
+31
+7.1.2 Rechnerische Lagerwege in Bezug auf 
+die Außenlufttemperatur
+Anhand von gemessenen jährlichen Extremwerten 
+der Temperatur, entnommen aus Daten des Deut-
+schen Wetterdiensts, werden die Quantilwerte mit 
+einer Überschreitenswahrscheinlichkeit p von 2 % 
+bzw. Unterschreitenswahrscheinlichkeit 1-p von
+98 % ermittelt. In Tabelle 30 im Anhang sind die 
+Wetterstationen, deren Lage sowie der Zeitraum 
+und die Anzahl der jährlichen Extremwertpaare
+(Maxima und Minima) aufgelistet.
+Tabelle 15 listet die Quantilwerte der Jahresmaxima 
+und -minima für die betrachteten Wetterstationen 
+auf. Diese Werte entsprechen den Bemessungs-
+werten nach DIN EN 1991-1-5. Dabei wird die An-
+nahme einer Gumbel-Verteilung gewählt und die- 
+se mithilfe von Wahrscheinlichkeitspapieren (siehe 
+Bild 28 und Anhang 4) überprüft.
+Wie im vorigen Kapitel werden die konstanten Tem-
+peraturanteile in Anlehnung an die DIN EN 1991-1-
+5 ermittelt. Es werden jedoch anstelle der gemäß 
+DIN EN 1991-1-5, NDP zu 6.1.3.2 angeführten Wer-
+te für die minimalen und maximalen Außenlufttem-
+peraturen die Extremwerte aus nahegelegenen
+Wetterstationen herangezogen, um einen direkten 
+ 
+ 
+ 
+Vergleich 
+mit den gemessenen Lagerwegen zu er-
+möglichen. Diese Temperaturen sind in der nachfol-
+genden Tabelle ersichtlich. Die Aufstelltemperatur 
+T0 = 10 °C wird nach DIN EN 1991-1-5, Anhang 
+A1(3) übernommen.
+Um Bemessungswerte für die Brückenstandorte zu 
+ermitteln, werden anhand der Wetterstationsdaten 
+und deren Lage auf die Werte an den Brückenstand-
+orten interpoliert (siehe Bild 29 und Bild 30). Tabelle 
+16 listet die Bemessungswerte der Außenlufttempe-
+ratur für die Brückenstandorte.
+Bild 28: Statistische Verteilung der Jahresextrema auf Gumbel-
+papier für die Wetterstation Nr. 1107 in Ebrach
+Station Ort Tmax,98% Tmin,98%
+282 Bamberg 39,0 -30,4
+320 Heinersreuth-Vollhof 39,0 -30,5
+867 Lautertal-Oberlauter 38,6 -26,7
+1107 Ebrach 38,0 -28,1
+1279 Möhrendorf-Kleinseebach 40,1 -28,5
+1721 Gräfenberg-Kasberg 38,3 -21,4
+2600 Kitzingen 46,2 -26,0
+2680 Königshofen, Bad 38,7 -32,1
+2750 Kronach 39,0 -26,8
+3667 Nürnberg-Netzstahl 41,0 -26,9
+3668 Nürnberg 39,4 -28,9
+Tab. 15: Bemessungswerte der Lufttemperatur für die Wetter-
+stationen
+
+===== SEITE 33 =====
+32
+Hangbrücke Würgau Beton
+Bild 29: Interpolation der Bemessungstemperaturen Tmin,98% für 
+die Brückenstandorte
+Bild 30: Interpolation der Bemessungstemperaturen Tmax,98% 
+für die Brückenstandorte
+Ort Breitengrad Längengrad TW,max,98%,c [°C] TW,min,98%,c [°C]
+Würgau
+Trubbach
+Paradiestal
+11,087593
+11,052781
+11,174292
+49,983136
+49,714536
+49,996341
+38,9
+39,6
+38,9
+-28,6
+-27,2
+-28,2
+Tab. 16: Extremwerte aus Wetterstationen in der Umgebung
+
+===== SEITE 34 =====
+33
+Hangbrücke Würgau Stahlverbund
+Trubbachbrücke
+
+===== SEITE 35 =====
+34
+Paradiestalbrücke
+
+===== SEITE 36 =====
+35
+7.1.3 Rechnerische Lagerwege gem. 
+Bestandsstatik
+In den Bildern 31 bis Bild 34 werden die Lagerwege 
+laut Bestandsstatik je Brücke angegeben.
+Hangbrücke Würgau Beton
+Bild 31: Auszug aus der Bestandsstatik Teil V.B. 01, S. 19. Verformung aus Temperatur mit roter Farbe gekennzeichnet Bemes-
+sungswert für den konstanten Temperaturanteil ΔTN = 114 K => εT = 1,14 ‰ ΔLStatik = 1,14 x 182 = 207,5 mm
+
+===== SEITE 37 =====
+36
+Hangbrücke Würgau Stahlverbund
+Bild 32: Auszug aus der Bestandsstatik Teil V.B. Lager, S. 24. Verformung aus Temperatur mit roter Farbe gekennzeichnet Bemes-
+sungswert für den konstanten Temperaturanteil ΔTN = 125 K => εT = 1,25 ‰ ΔLStatik = 1,25 x 184,5 = 230,6 mm
+
+===== SEITE 38 =====
+37
+Trubbachbrücke
+Bild 33: Auszug aus der Bestandsstatik Teil 3. Lager und ÜKO, S. 3-21. Verformung aus Temperatur mit roter Farbe gekennzeich-
+net Bemessungswert für den konstanten Temperaturanteil ΔTN = 94 K => εT = 0,94 ‰ ΔLStatik = 0,94 x 67,5 = 63,5 mm
+
+===== SEITE 39 =====
+38
+Paradiestalbrücke
+Bild 34: Auszug aus der Bestandsstatik Teil III Lager, S. 3-21. Verformung aus Temperatur mit roter Farbe gekennzeichnet Bemes-
+sungswert für den konstanten Temperaturanteil ΔTN = 101 K => εT = 1,01 ‰ ΔLStatik = 1,01 x 27,2 = 27,5 mm
+
+===== SEITE 40 =====
+39
+Zusammenfassung
+In Tabelle 17 sind die aus der Bestandsstatik ent-
+nommenen Verformungen in Brückenlängsrichtung
+zusammengefasst.
+7.1.4 Vergleich der Lagerwege
+Um die Messwerte mit Bemessungswerten aus der
+Statik zu vergleichen, werden die Messwerte der
+maximalen/minimalen Bauwerkstemperatur und La-
+gerwege verwendet wie folgt: 
+• Ermittlung der linearen Beziehung zwischen La-
+gerweg und Temperatur anhand der Messwerte
+(rote Linie Punkt 1 und 2),
+• Extrapolation der Lagerwege auf die absolute
+Temperatur T
+e,max und Te,min (rote Linie Punkt 3
+und 4),
+• Ermittlung der linearen Beziehung zwischen La-
+gerweg und der Außenlufttemperatur mit den
+statischen Bemessungstemperaturen 
+ΔTN,con
+und ΔTN,exp (ohne γF, blaue Linie Punkt 5 und 6)
+sowie ΔTN,con,Dil und ΔTN,exp,Dil (mit γF, blaue Li-
+nie Punkt 7 und 8) mit Beziehung auf die Ein-
+bautemperatur T
+0 = 10 °C,
+• Bezug der gemessenen Lagerweg/T empera -
+tur-Beziehung auf die Einbautemperatur T 0 =
+10 °C und s = 0 mm (Offset-Korrektur, schwarze
+gestrichelte Linie Punkt 1 und 2),
+• Extrapolation der Lagerwege auf die statischen
+Bemessungstemperaturen 
+ΔTN,con und ΔTN,exp
+(ohne γF, Punkt 5 und 6) sowie ΔTN,con,Dil und
+ΔTN,exp,Dil (mit γF, Punkt 7 und 8).
+Die Punktbezeichnung ist exemplarisch für die
+Hangbrücke Würgau Beton dargestellt und wird in
+den weiteren Brücken nicht dargestellt. 
+Die Auswertung der Referenzobjekte lässt erken-
+nen, dass die im Beobachtungszeitraum ausgewer-
+teten Temperaturen bei keinem Tragwerk die mini-
+malen und maximalen Temperaturwerte für Brü-
+ckentyp 2 und Brückentyp 3 (T
+e,min und Te,max) errei-
+chen. Eine entsprechende Extrapolation zeigt die
+möglichen Bewegungen der Lager bis zu den abso-
+luten Temperaturminima und –maxima ohne jegli -
+che Teilsicherheiten. 
+Die Rückrechnung der gemessenen Lagerwege/
+Temperatur-Beziehung auf die Einbautemperatur T
+0
+= 10 °C und s = 0 mm ermöglicht den Vergleich mit
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ΔLStatik mit γF [mm]
+Würgau Beton 207,5
+Würgau Stahlverbund 230,6
+Trubbachbrücke 63,5
+Paradiestalbrücke 27,4
+Tab. 17: Längenänderung infolge Temperatur lt. Bestandsstatik
+Bild 35: Ermittlung der Lagerwege bezogen auf die Bemes-
+sungstemperatur für die Hangbrücke Würgau Beton
+Bild 36: Ermittlung der Lagerwege bezogen auf die Bemes-
+sungstemperatur für die Hangbrücke Würgau Stahl-
+verbund
+Bild 37: Ermittlung der Lagerwege bezogen auf die Bemes-
+sungstemperatur für die Trubbachbrücke
+
+===== SEITE 41 =====
+40
+den statischen Annahmen, wie sie die Norm vorgibt. 
+Durch die Extrapolation der gemessenen Lager-
+wege auf die maximale negative (Verkürzung) und 
+positive (Ausdehnung) Änderung des konstanten 
+Temperaturanteils 
+ΔTN,con und ΔTN,exp zeigt bei al-
+len Objekten keine Überschreitung der normgemä -
+ßen Ausdehnung und der Verkürzung. Die Extrapo-
+lation der Lagerwege mit den Normvorgaben inkl. 
+Teilsicherheitsbeiwerte (
+ΔTN,con,Dil und ΔTN,exp,Dil) 
+zeigt, dass für den Beobachtungszeitraum noch 
+eine ausreichende Reserve bis zum Erreichen der 
+Bemessungswerte vorhanden ist. Im Vergleich zu 
+den normativen Regelungen unter Berücksichti-
+gung eines Wiederkehrintervalls von 50 Jahren ist 
+jedoch eine Aussage über die vorhandene Sicher-
+heit gemäß aktueller Norm nur mit Einschränkung 
+auf den Beobachtungszeitraum möglich. Die detail-
+lierte Auswertung der Lagerwege/Temperatur-Be-
+ziehung mit allen Messdaten ist im Anhang 2 ent-
+halten. 
+7.2 Vergleich der Längenänderung 
+infolge Temperatur
+Bei der Gegenüberstellung von Messungen hat sich 
+generell gezeigt, dass die Speichermasse und die 
+zugehörige Trägheit gegenüber Temperaturände -
+rung ein wesentliches Kriterium bei der Kerntempe-
+ratur eines Tragwerks und den daraus resultieren -
+den Längsverschiebungen am Ende des Überbaus 
+darstellt. 
+Grundsätzlich zeigt sich im Hinblick auf das Anspre-
+chen auf Temperaturen folgender Zusammenhang 
+(Reihung vom maximalen Ansprechen auf Tempe-
+raturänderungen in abnehmender Reihenfolge):
+• Stahltragwerke mit orthotroper Fahrbahnplatte: 
+maximale Tragwerkstemperaturen und maxima-
+le Längenänderungen,
+• Stahlverbundtragwerke mit Stahlbeton- 
+Fahrbahnplatte,
+• Massivbrücken mit schlanken Tragwerksquer -
+schnitten,
+• Massivbrücken mit großen Tragwerksquer -
+schnitten (insbesondere Hohlkästen), welche 
+grundsätzlich im Vergleich die kleinsten Länge -
+nänderungen zufolge Temperatur aufweisen.
+Besonders Stahlbrücken sind auf unterschiedliche 
+Temperaturgradienten, die sich durch Sonnenein -
+strahlung ergeben können, sehr sensibel.
+Anhand der gemessenen maximalen und minima -
+len Brückentemperaturen und der maximalen und 
+minimalen Lagerverschiebungen wird die Länge -
+nänderung [mm] pro Grad [K] berechnet und mit 
+normativen Werten verglichen:
+ΔlT = αT x l [mm/K]
+wird verglichen mit
+(smax–smin)/(Tmax–Tmin) [mm/K]
+wobei:
+αT Wärmeausdehnungskoeffizient 
+ α T = 10-5 1/K für Betonbrücken, αT = 1,2 x 
+10-5 1/K für Stahlverbund brücken 
+l Brückenlänge zwischen Brückenfestpunkt 
+und instrumentiertem Brückenlager 
+smax maximale gemessene Lagerverschiebung 
+smin minimale gemessene Lagerverschiebung 
+Tmax maximale gemessene Bauwerkstemperatur 
+TW,max maximale Bemessungstemperatur mit 
+Außenlufttemperatur aus Wetterstationen
+Tmin minimale gemessene Bauwerkstemperatur
+TW,min minimale Bemessungstemperatur mit 
+Außenlufttemperatur aus Wetterstationen
+Die tatsächlich gemessenen Tragwerkslängsverfor-
+mungen sind in Tabelle 15 unter Δsgem dargestellt. 
+Laut Eurocode (Ausgabe 2012) ergibt sich für die 
+Referenzobjekte folgende Tragwerksverlängerung 
+ΔLEC (inkl. Sicherheitsbeiwert γ = 1,35):
+Bild 38: Ermittlung der Lagerwege bezogen auf die Bemes-
+sungstemperatur für die Paradiestalbrücke
+
+===== SEITE 42 =====
+41
+ΔLEC = αT x l x ΔTN,EC [mm]
+mit ΔTN,EC laut Eurocode (s. Kapitel 7.1):
+ΔTN,EC = ΔTN,exp,Dil – ΔTN,con,Dil
+Für den direkten Vergleich der gemessenen Längs-
+verschiebungen Δsgem mit rechnerisch ermittelten 
+Tragwerksverformungen auf Basis der gemesse-
+nen Bauwerks- und Außenlufttemperaturen werden 
+folgende Temperaturunterschiede angesetzt. Die
+Längsverschiebungen werden analog zu 
+ΔLEC er-
+mittelt.
+ΔTe Temperaturdelta Minima/Maxima 
+Bauwerkstemperatur
+ ΔTe = Te,max – Te,min
+ΔTW Temperaturdelta Minima/Maxima gemäß 
+Lufttemperatur aus Wetterstationen 
+(s. Tabelle 16)
+ Δ TW = TW,max – TW,min
+Die ermittelten Längenänderungen sind in Tabel- 
+le 18 und Tabelle 19 sowie auch in Bild 39 darge -
+stellt.
+Die in Tabelle 18 gem. Eurocode berechnete Län-
+genänderung (ΔLEC) liegt im Vergleich zur gemes-
+ 
+senen (Δsgem) und zur auf Basis der Tragwerkstem-
+peratur berechneten ( ΔLber,e) Längenänderung ca. 
+beim 2-fachen. Durch die Verwendung des anhand 
+der durchgeführten Messungen ermittelten Wärme-
+ausdehnungskoeffizienten nach Bild 27 ergibt sich 
+eine sehr gute Übereinstimmung zwischen den 
+zwei letzten Vergleichsparametern. Darüber hinaus 
+ist dadurch auch eine gute Korrelation zwischen 
+den gemessenen und den gerechneten Längenän -
+derungen pro Grad (
+Δs/ΔTe und αTn x l) zu beob-
+achten. Dadurch wird die Genauigkeit der Messung 
+bestätigt.
+Die in Tabelle 19 berechneten Lagerverschiebun -
+gen (
+ΔLber,W) sind deutlich größer als die gemesse-
+nen Werte (Δsgem), jedoch kleiner als die gem. Eu-
+rocode berechneten Längenänderungen ( ΔLEC). 
+Den Längenänderungen nach Eurocode liegt ein 
+Bemessungswert für den konstanten Tempera -
+turanteil ΔTN,EC von 75 K für die Betonbrücken bzw. 
+81 K für die Stahlverbundbrücke zugrunde, wäh-
+rend dieser Wert bei ca. 81 K für die Betonbrücken 
+bzw. 88 K für die Stahlbetonbrücken auf Grundlage 
+der Wetterstationsdaten liegt. Der Ansatz der Au-
+ßenlufttemperaturen liefert realitätsnahe Ergebnis -
+se, die für die Ermittlung von Reserven sinnvoll 
+sind. Dadurch kann ein direkter Vergleich zu Lager-
+wegen nach EC ermöglicht werden (siehe Tabelle 
+20 und Bild 39).
+Tab. 18: Darstellung Längenänderung infolge Temperatur
+Würgau Beton Würgau Stahlverbund Trubbachbrücke Paradiestalbrücke
+αT [1/K] 1 x 10-5 1,2 x 10-5 1 x 10-5 1 x 10-5
+l [m] 182,0 184,5 67,5 27,1
+ΔTe [K] 38,7 45,6 37,3 40,6
+Δsgem [mm] 81,8 104,2 23,7 9,3
+ΔLber,e [mm] 70,5 100,9 25,2 11,0
+ΔLEC [mm] 136,5 179,3 50,6 20,3
+γF ΔLEC [mm] 171,6 226,6 63,7 25,6
+Δs/ΔTe [mm/K] 2,11 2,29 0,64 0,23
+αT x l [mm/K] 1,82 2,21 0,68 0,27
+Update αT-Faktor gem. Bild 27
+αTn [1/K] 1,17 x 10-5 1,24 x 10-5 0,94 x 10-5 1,05 x 10-5
+Δsgem [mm] 81,8 104,2 23,7 9,3
+ΔLber,e [mm] 82,5 104,3 23,7 11,6
+ΔLEC [mm] 159,7 185,3 47,6 21,3
+γF ΔLEC [mm] 200,8 234,2 59,8 26,8
+Δs/ΔTe [mm/K] 2,11 2,29 0,64 0,23
+αTn x l [mm/K] 2,13 2,29 0,63 0,30
+
+===== SEITE 43 =====
+42
+Bild 39: Vergleich gemessener und rechnerisch ermittelter Lagerwege
+Tab. 20: Zusammenfassung und Ermittlung von Reserven aus rechnerisch ermittelten Lagerwegen gemäß dem normativen Regel-
+werk und rechnerisch ermittelten Lagerwegen mit Wetterstationsdaten
+Würgau Beton Würgau Stahlverbund Trubbachbrücke Paradiestalbrücke
+Δsgem [mm] 81,8 104,2 23,7 9,3
+ΔLber,W [mm] 148,3 193,7 54,5 22,0
+ΔLEC [mm] 136,5 179,3 50,6 20,3
+ΔLber,W – ΔLEC [mm] 11,8 14,4 3,9 1,7
+ΔLEC/ΔLber,W [-] 0,92 0,93 0,93 0,92
+Tab. 19: Darstellung Längenänderung infolge Temperatur unter Berücksichtigung der an Wetterstationen gemessenen Lufttempera-
+turen
+Würgau Beton Würgau Stahlverbund Trubbachbrücke Paradiestalbrücke
+αT [1/K] 1 x 10-5 1,2 x 10-5 1 x 10-5 1 x 10-5
+l [m] 182,0 184,5 67,5 27,1
+ΔTW [K] 81,5 87,5 80,8 81,1
+γF ΔTW [K] 103,0 111,1 102,1 102,5
+ΔLber,W [mm] 148,3 193,7 54,5 22,0
+γF ΔLber,W [mm] 187,5 246,0 68,9 27,8
+Δs/ΔTW [mm/K] 1,82 2,21 0,68 0,27
+αT x l [mm/K] 1,82 2,21 0,68 0,27
+
+===== SEITE 44 =====
+43
+Es ist zu erkennen, dass für den gemessenen Zeit-
+raum eine ausreichende Reserve bis zu den maxi-
+malen Lagerwegen hinsichtlich der Außenlufttem-
+peraturen vorhanden ist. Aufgrund der Messperiode 
+von nur einem Jahr und der Untersuchung von nur 
+vier Brücken kann in Bezug auf normative Reser-
+ven jedoch keine aussagekräftige Verifizierung ge-
+macht werden. Mit Ausnahme der Würgau Beton-
+brücke konnten gute Übereinstimmungen zwischen 
+den ermittelten Lagerwegen gem. aktuell gültiger 
+Norm und den Lagerwegen aus der objektspezifi -
+schen Bestandsstatik festgestellt werden.
+7.3 Akkumulierter Gleitweg
+Ein wesentliches Indiz für die Lebensdauer von 
+Brückenlagern ist der akkumulierte Gleitweg dieser 
+Bauteile. Zur Abschätzung der Lebensdauer in Jah-
+ren wurde für die gegenständlichen Brücken der ak-
+kumulierte Weg ermittelt und in Bild 40 dargestellt. 
+Dieser ergibt sich aus der Integration des Lagerwe-
+ges über einen gewählten Messzeitraum von einem 
+Jahr:
+Dabei bedeutet:
+Lk akkumulierter Gleitweg eines Wegaufnehmers 
+„k“
+Wk der gemessene tägliche Lagerweg eines 
+Wegaufnehmers „k“
+t0 Messzeitbeginn = 03.06.2017
+ti Messzeitende = 03.06.2018
+7.4 Korrelation Außenluft zu 
+Bauwerkstemperatur
+Anhand der Messwerte im Überbau und an der Ba-
+sisstation als Referenzwert für die Außenlufttempe-
+ratur wird die Korrelation zwischen Außenluft- zu 
+Bauwerkstemperatur für die Referenzbrücken er-
+mittelt und mit den Angaben nach DIN EN 1991-1-5 
+verglichen. 
+Zu beachten ist, dass in der DIN EN 1991-1-5 als 
+Außenlufttemperatur die Luftschattentemperatur 
+angesetzt wird. An den Referenzbrücken wird in der 
+Basisstation, die sich im Wartungsgang des Wider-
+lagers befindet, die Temperatur gemessen. Erwartet 
+wird, dass die Luftschattentemperatur für hohe 
+Temperaturen etwas höher ist und für tiefe Tempe-
+raturen etwas tiefer ist als die Temperatur an der 
+Basisstation. Im Anschluss werden die Außenluft-
+temperaturen im Bereich der Basisstation für alle 
+Brücken dargestellt. 
+Für den Abgleich wurden die Temperaturdaten der 
+vier nächstgelegenen Wetterstationen (siehe Tabel-
+le 22) im überschneidenden Zeitraum je Brücke ver-
+glichen und davon der jeweilige Maximal- und 
+Minimalwert der Temperatur zu je einem Datensatz 
+zusammengefasst (T_DWDmax in schwarz und 
+T_DWDmin in grau). In Bild 41 bis Bild 44 ist deut-
+lich zu sehen, dass die gemessene Lufttemperatur 
+am Widerlager je Brücke (T1_max in rot, T1_min in 
+blau) innerhalb des Bereiches liegt. Die Differenz 
+zwischen gemessenen und tatsächlich vorherr-
+schenden Lufttemperaturen am Widerlager wird in 
+Tabelle 21 dargestellt.
+Bild 40: Akkumulierter Gleitweg für den Messzeitraum je Brü-
+cke und Sensor in mm
+Tab. 21: Vergleich gemessener Außenlufttemperaturen am Bauwerk vs. Temperatur Wetterstationen
+Brücke Würgau 1 Würgau 2 Trubbachbrücke 3 Paradiestalbrücke 4
+Tmin Tmax Tmin Tmax Tmin Tmax Tmin Tmax
+[°C]
+Tgemessen -11,4 29,4 -12,6 30,7 -8,5 29,7 -13,1 30,9
+TWetterstation -21,8 37,9 -21,8 37,9 -19,1 37,9 -21,8 37,9
+
+===== SEITE 45 =====
+44
+Für die vier Bauwerke wurden die in Tabelle 22 an-
+geführten Wetterstationen zur Auswertung heran-
+gezogen. Dabei wurde standortabhängig versucht, 
+aus jeder Richtung eine Station auszuwählen. Die 
+Auswahl kann mit den Koordinaten und Namensbe-
+zeichnung verifiziert werden und beschränkt sich 
+pro Brücke auf vier Wetterstationen. Die Entfernun-
+gen zur jeweiligen Station ist im rechten Tabellenteil 
+angeführt.
+Vergleicht man nun die minimalen und maximalen 
+Temperaturen je Tag für alle 4 Brücken wie in den 
+folgenden Abbildungen dargestellt (Bild 41 bis Bild 
+44), zeigt sich, dass die Tragwerkstemperaturen 
+den Außenlufttemperaturen mit einer gewissen Ver-
+zögerung aufgrund der großen Masse folgen und 
+sich Spitzen in der Außenluft bei den Bauwerkstem-
+peraturen eher abgerundet darstellen. Es zeigen 
+sich nur geringe Abweichungen bei zunehmender 
+oder abnehmender Temperatur, Mittelwertlinien 
+verlaufen großteils parallel. Zur Feststellung einer 
+ 
+quantitativen Korrelation dieser Temperaturen wur-
+den zunächst die maximalen Temperaturdifferen-
+zen in der sommerlichen und in der winterlichen 
+Jahreszeit ermittelt. Aus diesen Werten wurden zu-
+nächst die Differenz und anschließend das Verhält-
+nis zueinander ermittelt. Die Ergebnisse dieser Be-
+rechnung sind in Tabelle 23 zusammengefasst. Als 
+Bezugsgröße wurde hierfür die Außenlufttempera -
+tur herangezogen.
+Der Vergleich der gemessenen Temperaturen an 
+den Betonbrücken Würgau, Trubbachbrücke und 
+Paradiestalbrücke zeigt, dass die normative Bezie-
+hung auf der sicheren Seite liegt (siehe Bild 46). 
+Der Vergleich der Messwerte an der Stahlverbund -
+brücke Würgau zeigt, dass die normative Bezie-
+hung bei tiefen Temperaturen bereits knapp bemes-
+sen sind (siehe Bild 47), was aufgrund dieser Ein-
+zelmessung jedoch erst durch weitere Untersu-
+chungen geprüft werden kann.
+Tab. 22: Entfernungen Brücken-Wetterstationen
+Wetterstation Entfernung zur Brücke
+Nr. Station Koordinaten Hangbrücke 
+Würgau
+Trubbach- 
+brücke
+Paradiestal- 
+brücke
+0282 Bamberg 49.8742, 10.9206 16,9 km 20,1 km 23,0 km
+0320 Heinersreuth-Vollhof 49.9667, 11.5197 30,6 km - 24,6 km
+0867 Lautertal-Oberlauter 50.3067, 10.968 37,6 km - 37,5 km
+2750 Kronach 50.2523, 11.3209 34,5 km - 30,1 km
+1279 Möhrendorf-Kleinseebach 49.6497, 11.0074 - 7,9 km -
+1721 Gräfenberg-Kasberg 49.664, 11.2239 - 13,5 km -
+3668 Nürnberg 49.503, 11.0549 - 23,5 km -
+Tab. 23: Korrelation zwischen Basisstationstemperaturen (T1) und Außenlufttemperatur aus Wetterstationen (TDWD)
+Würgau 1 Würgau 2 Trubbachbrücke 3 Paradiestalbrücke 4
+Winter Sommer Winter Sommer Winter Sommer Winter Sommer
+[°C]
+T1 -1,4 24,8 -2,1 25,9 -0,2 25,0 -2,6 25,6
+TDWD -4,8 30,8 -4,8 30,8 -5,0 31,3 -4,8 30,8
+| TDWD – T1 | 3,4 6,0 2,7 4,9 4,8 6,3 2,2 5,2
+0,29 0,81 0,44 0,84 0,04 0,80 0,54 0,83
+
+===== SEITE 46 =====
+45
+Bild 41: Temperaturvergleich Basisstation (T1) mit Außenlufttemperatur Wetterstationen (T_DWD) Hangbrücke Würgau Beton
+Bild 42: Temperaturvergleich Basisstation (T1) mit Außenlufttemperatur Wetterstationen (T_DWD) Hangbrücke Würgau Stahl-
+verbund
+
+===== SEITE 47 =====
+46
+Bild 43: Temperaturvergleich Basisstation (T1) mit Außenlufttemperatur Wetterstationen (T_DWD) Trubbachbrücke
+Bild 44: Temperaturvergleich Basisstation (T1) mit Außenlufttemperatur Wetterstationen (T_DWD) Paradiestalbrücke
+
+===== SEITE 48 =====
+47
+Eine Verifizierung, ob die normative Beziehung tat-
+sächlich konservativ ist, erfolgt, indem statt der ge-
+messenen Luftschattentemperatur am Widerlager
+die Außenlufttemperatur aus nahegelegenen Wett-
+erstationen herangezogen wird. Es ist zu erkennen, 
+dass die normative Bauwerkstemperatur für den
+Extremfall der Minimaltemperatur mit der Bau-
+werkstemperatur auf Basis der Außenlufttemperatur 
+in Bild 47 für die Stahlverbundbrücke korreliert. Im 
+Falle der Maximaltemperatur sind jedoch noch Re-
+serven vorhanden. Die Betonbrücken verfügen hin-
+gegen über eine ausreichende Reserve in Bezug
+auf die normative Bauwerkstemperatur, was in Bild 
+46 zu erkennen ist.
+Die Korrelation zwischen den vom Eurocode vorge-
+gebenen Werten aus Bild 45 mit den gemessenen 
+Werten aus Bild 46 und Bild 47 wurde abgeleitet, 
+indem die Differenz zwischen der blauen Linie (ent-
+ 
+ 
+ 
+spricht EC für Brücke Type 3 bzw. Type 2) und der 
+Trendlinie (nicht dargestellt) für die gemessenen 
+Außenlufttemperaturen bei den gewählten Bezugs-
+punkten T
+min = -24 °C und Tmax = 37 °C ermittelt und 
+daraus das Verhältnis gebildet wurde. Diese sind in 
+Tabelle 24 dargestellt.
+Tab. 24: Abgeleitete Korrelation zwischen Außenluft- und Bauwerkstemperatur je Brücke
+Würgau 1 Würgau 2 Trubbachbrücke 3 Paradiestalbrücke 4
+Tmin Tmax Tmin Tmax Tmin Tmax Tmin Tmax
+[°C]
+Te,min,gem -10,9 - -18,4 - -10,7 - -15,7 -
+Te,min,EC -16,0 - -20,0 - -16,0 - -16,0 -
+0,68 - 0,92 - 0,67 - 0,98 -
+Te,max,gem - 29,6 - 32,4 - 28,5 - 26,1
+Te,max,EC - 39,0 - 41,0 - 39,0 - 39,0
+- 0,76 - 0,79 - 0,73 - 0,67
+Bild 45: Korrelation zwischen min/max Außenlufttemperatur 
+und min/max konstanter Temperaturanteil für Brücken 
+nach DIN EN 1991-1-5
+Bild 46: Korrelation zwischen Außenluft und Bauwerkstempera-
+tur für die Betonbrücken Hangbrücke Würgau, Trub-
+bachbrücke und Paradiestalbrücke
+Bild 47: Korrelation zwischen Außenluft und Bauwerkstempera-
+tur für die Stahlverbundbrücke Hangbrücke Würgau
+
+===== SEITE 49 =====
+48
+7.5 Beurteilung Lage 
+Tragwerk zur 
+Sonneneinstrahlung
+Die Ausrichtung der Referenzobjekte zur Sonnen-
+einstrahlung ist folgende:
+Die Hangbrücke Würgau (Beton und Stahlverbund) 
+und die Paradiestalbrücke sind Teil der Autobahn -
+strecke A70, welche parallel zum Sonnenverlauf 
+(von Osten nach Westen) steht. Die Längsseite der 
+Brücken befindet sich in einer exponierten Lage zur 
+Sonneneinstrahlung. In Bild 48 ist exemplarisch die 
+Draufsicht der Hangbrücke Würgau Beton darge-
+stellt. Die Autobahn A73, auf welcher die Trubbach-
+brücke befindet, liegt 90° versetzt zum Sonnenver -
+lauf. Dazu wird die Draufsicht der Trubbachbrücke 
+in Bild 49 dargestellt. 
+Besonders für Stahlbrücken kann der Energieein -
+trag durch direkte Sonneneinstrahlung ein nen-
+nenswertes Ausmaß erreichen. Neben einer Länge-
+nänderung des gesamten Tragwerks kann es ins-
+besondere durch eine (ungünstige) Lage dazu kom-
+men, dass durch einseitigen Energieeintrag eine 
+ungleichmäßige Erwärmung und ungleiche Ver-
+schiebungswege für die Lager hervorgerufen wer-
+den und insbesondere eine Schiefstellung des 
+Fahrbahnüberganges entsteht. Bei den gegen-
+ständlichen Referenzobjekten konnten zwar im Ta-
+gesgang kleine Verformungen festgestellt werden 
+(siehe Bild 20), die auf die Ausrichtung zurückzu-
+führen sind, im jahreszeitlichen Verlauf konnten je-
+doch keine wesentlichen Unterschiede im Hinblick 
+auf die maximalen Lagerwege erkannt werden.
+7.6 Einfluss Fahrbahnbelag/Überbau-
+werkstoff auf Verschiebung
+In Bild 50 sind die gemessenen Temperaturen der 
+Fahrbahnplatten aus Beton der vier Referenzobjek-
+ten dargestellt. Es ist zu erkennen, dass es keine 
+großen Unterschiede im Temperaturverlauf der ein-
+zelnen Brückentragwerke gibt. Grund dafür ist ein 
+ähnlicher Fahrbahnbelag bei den gemessenen 
+Objekten. Es ist auf den Brücken ein Spiltmastix-
+asphalt (Hangbrücke Würgau Beton, Trubbachbrü -
+cke), Gussasphalt (Paradiestalbrücke) bzw. Asphalt 
+(Hangbrücke Würgau Stahlverbund) vorhanden. 
+Bild 48: Draufsicht Hangbrücke Würgau mit Nordpfeilausrichtung
+Bild 49: Draufsicht Trubbachbrücke mit Nordpfeilausrichtung
+
+===== SEITE 50 =====
+49
+Der Unterschied der drei Asphaltvarianten liegt in 
+der Zusammensetzung der Mineralstoffgemische, 
+Bindemittel und Füller.
+Für die Tragwerkstemperatur und somit die auftre-
+tenden Längenänderungen hat die Ausführung des 
+Fahrbahnbelages Bedeutung. Maximale Längenän-
+derungen ergeben sich erfahrungsgemäß bei Stahl-
+brücken mit orthotropen Fahrbahnplatten und bitu-
+minösen Belägen, während der Einfluss bei Massiv-
+brücken durch die Speichermasse des Betons nur 
+gering ausgeprägt ist. Bei Messungen in der Ver-
+gangenheit konnte gezeigt werden, dass die Trag-
+werkstemperatur bei bituminösen Belägen insbe -
+sondere in der Fahrbahnplatte höher ist als bei Brü-
+cken mit Betonfahrbahn. In der Literatur wird die 
+Wirkung des Fahrbahnbelagsbaustoffs aufgrund
+der niedrigen Wärmeleitfähigkeiten und im Hinblick 
+auf die Temperaturbeanspruchungen von Brücken 
+wie eine Wärmedämmung beschrieben, während 
+die Asphalteigenschaften – Wärmeleitfähigkeit und 
+Dichte – sogar mit jenen vom Beton verglichen wer-
+den.
+1 Darüber hinaus wird die Wärmeübertragung 
+wesentlich durch den Adsorptionsgrad des Fahr-
+bahnbelags beeinflusst. Ein sehr dunkler bituminö -
+ser Fahrbahnbelag bewirkt eine stärkere Erwär-
+mung der oberen Faser des Überbaus im Vergleich 
+zu einer helleren Betonfahrbahn. Der dadurch 
+entstehende Temperaturunterschied zwischen der 
+1 LICHTE, U. (2014): Klimatische Temperatureinwirkungen und 
+Kombinationsregeln bei Brückenbauwerken, Dissertation, Uni- 
+versität der Bundeswehr München, Fakultät für Bauingenieur- 
+und Vermessungswesen
+ 
+ 
+oberen und der unteren Querschnittsfaser führt zu 
+einer Krümmung 
+des Bauwerks und in weiterer Fol-
+ge zu einer Lagerverdrehung, welche je nach Bau-
+weise des Überbaus deutlicher zu erkennen ist. 
+Verdrehungen waren nicht Teil des gegenständli -
+chen Projektes und des Messprogramms.
+Bei massiven Brücken ist durch die Speichermasse 
+des Betons der Einfluss des Überbauwerkstoffs nur 
+gering ausgeprägt, bei Stahlbrücken mit orthotroper 
+Platte ist dieser Effekt deutlich erkennbar. Dieser 
+Einfluss ist auch bei den gemessenen Längenände-
+rungen an der Hangbrücke Würgau aus Beton und 
+an der Hangbrücke Würgau aus Stahlverbund er-
+kennbar. Während bei der Brücke in Massivbauwei-
+se ein Weg von max. 82,42 mm gemessen wurde, 
+betrug die max. Längenänderung der Brücke in 
+Stahlverbundbauweise 104,37 mm, was einem Un-
+terschied von über 25 % entspricht. Die Lagerwe -
+gunterschiede sind auf die vergleichsweise höhe -
+ren Temperaturschwankungen der Stahlverbund-
+brücke zurückzuführen, wodurch die Auswirkungen 
+der Bauweise, Materialwahl (Beton, Stahl, Stahlver-
+bund) und Fahrbahnbelag klar erkennbar ist.
+7.7 Einfluss querende Gewässer 
+unterhalb der Brücke
+Die zur Verfügung gestellten Referenzobjekte der 
+Autobahndirektion Nordbayern enthielten ein Brü-
+ckenobjekt mit einem Fließgewässer darunter. Die 
+Trubbachbrücke auf der A73 führt über den Trub-
+bach. Die Temperaturauswertungen haben gezeigt, 
+dass keine Einflüsse zufolge des Trubbaches er-
+kennbar sind. Ein Grund dafür dürfte die Entfernung 
+des Messquerschnittes zum Fließgewässer sein. 
+Das monitorierte Widerlager wird durch eine unter 
+der Trubbachbrücke durchführende Straße abge -
+trennt. Der Abstand Messquerschnitt zu Gewässer 
+beträgt ca. 20 m. Um eine Abhängigkeit erkennen 
+zu können, müsste direkt über dem Fließgewässer 
+ein Messquerschnitt installiert werden.
+Aufgrund der gewonnenen Erkenntnisse aus be-
+reits durchgeführten Messungen, bei denen ein ent-
+sprechendes Messgerät direkt über dem Wasser in-
+stalliert wurde, kann ein Einfluss auf die Temperatu-
+reinwirkung im Brückenumfeld zufolge Fließgewäs-
+ser bestätigt werden. Generell führen Gewässer im 
+Umfeld von Brücken dazu, dass die maximal auftre-
+tenden Verschiebungswege bei den Lagern etwas 
+geringer ausfallen als bei Brücken, die sich bei-
+spielsweise im versiegelten Bereich befinden. Be-
+Bild 50: Maxima und Minima für je Brücke 2 Sensoren in der 
+Fahrbahnplatte
+
+===== SEITE 51 =====
+50
+trachtet man stehende Gewässer, so kann die Spei-
+chermasse des Wassers noch deutlich über Nacht 
+nachwirken und den Temperaturabfall des Trag-
+werks vermindern (siehe Steyrtalbrücke im An-
+hang).
+Der Einfluss querender Gewässer auf die Tempera-
+tur im Brückenüberbau kann im Allgemeinen als 
+dämpfend beschrieben werden. Die Speichermas -
+se des Wassers führt dazu, dass im Sommer die 
+Maximaltemperauren etwas reduziert werden (aus-
+gleichender Effekt im Tagesgang). Nur bei tiefen 
+und lang anhaltenden Temperaturen unter dem Ge-
+frierpunkt kann es im Frühjahr bei beginnender stär-
+keren Sonneneinstrahlung zu einer Erhöhung der 
+Temperaturgradienten (Tag – Nacht) kommen. Die-
+ser Effekt kann anhand der Messergebnisse des an 
+der Seitenhafenbrücke in Wien (S. 69) installierten 
+Monitoring-Systems verdeutlicht werden, welches 
+aufgrund der Exponiertheit des Temperatursensors 
+über dem Wasserkörper niedrigere Temperaturwer-
+te sowohl im Durchschnitt als auch im Extremfall im 
+Vergleich zum Temperatursensor in Widerlagernä -
+he aufgenommen hat. Am ausgeprägtesten zeigt 
+sich der durch querende Gewässer hervorgerufene 
+Umwelteinfluss auf das Bauwerk im Tagesgang, 
+was jedoch für die maximalen Lagerwege nicht be-
+stimmend ist.
+Es werden daraus jedoch keine maßgeblichen 
+Bemessungsparameter abgeleitet, da die Effekte 
+meist von untergeordneter Bedeutung sind.
+8 Zusammenfassung/ 
+Schlussfolgerung
+Im Fokus des gegenständlichen Projektes „Lager -
+wege von Brücken (FE-Nr. 15.0537/2011/GRB)“ 
+liegt die Ableitung von Rückschlüssen für Tempera-
+turansätze im Hinblick auf die statische Bemes-
+sung. Die an vier von der Autobahndirektion Nord-
+bayern zur Verfügung gestellten Referenzobjekten 
+messtechnisch erfassten Lagerverschiebungen,
+Bauwerks- und Lufttemperatur am Widerlager sol-
+len Aufschluss über die Korrelation zwischen nor-
+mativ festgelegten Bauwerkstemperaturen und den 
+damit verbundenen Lagerwegen zu den noch vor-
+handenen Reserven aus der Bemessung geben. 
+Die dafür vorgesehenen Monitoringsysteme wur-
+den mit 01.06.2017 an den in Tabelle 25 aufgeliste-
+ten Brückentragwerken installiert und in Betrieb ge-
+nommen.
+ 
+Die Messdaten
+ wurden vor Ort im internen Speicher 
+des Datenloggers gespeichert und in einem 5-Ta-
+ge-Intervall auf die Schimetta-Server transferiert. 
+Diese Daten wurden bis zum 27.01.2019 bezogen 
+und ausgewertet. Hierbei wurden folgende Punkte 
+festgestellt:
+Temperaturen
+Die Temperaturen sind im erwarteten Rahmen und 
+haben die statischen Rechenwerte nicht erreicht. 
+Aktuell wurden bei der Hangbrücke Würgau maxi-
+male Betontemperaturen von +32,7 °C (Sensor T5) 
+und minimale Temperaturen von -9,7 °C (Sensor 
+T5) gemessen. Bei der Hangbrücke Würgau (Stahl-
+verbund) wurden maximale Stahltemperaturen von 
++35,4 °C (Sensor T2) und minimale Stahltempera-
+turen von -12,4 °C (Sensor T4) aufgezeichnet. Bei 
+der Trubbachbrücke wurden maximale Betontem-
+peraturen von +31,5 °C (Sensor T5) und minimale 
+Betontemperaturen von -7,5 °C (Sensor T5) ge-
+messen. Die Paradiestalbrücke zeigt im Beobach -
+tungszeitraum maximale Betontemperaturen von 
++32,8 °C (Sensor T3) und minimale Betontempera-
+turen von -11,4 °C (Sensor T3).
+Im Vergleich zu den genannten Messwerten erge-
+ben sich aus DIN EN 1991-1-5, 6.1.3 in Abhängig -
+keit des Materials folgende maximale und minimale 
+Temperaturanteile:
+• Betonbrücken:
+ T
+e,min = -16 °C,
+ T e,max = +39 °C.
+• Verbundbrücken:
+ T
+e,min = -20 °C,
+ T e,max = +41 °C.
+Längenänderungen
+Die Wegaufnehmer zeigen im Beobachtungszeit -
+raum, aufgrund der Temperaturschwankungen, den 
+Tab. 25: Gemessene Brücken
+Nr. Name Ort Gesamtlänge
+1 Hangbrücke Würgau 
+Beton
+Würgau/
+Scheßlitz 403 m
+2 Hangbrücke Würgau 
+Stahlverbund
+Würgau/
+Scheßlitz 425,37 m
+3 Trubbachbrücke Forchheim 95 m
+4 Paradiestalbrücke Wölkendorf 27,06 m
+
+===== SEITE 52 =====
+51
+zu erwarteten Verlauf. Die maximalen Längsbewe -
+gungen bei der Hangbrücke Würgau wurden für
+den Messzeitraum 01.06.2017 bis 27.01.2019 mit 
+ca. 81 – 82 mm aufgezeichnet. Bei der Hangbrücke 
+Würgau (Stahlverbund) wurde eine maximale
+Längsbewegung von ca. 104 mm gemessen. Die 
+Trubbachbrücke zeigt eine maximale Längsver -
+schiebung von ca. 23 – 25 mm und die Paradiestal-
+brücke eine maximale Längsbewegung von ca.
+12,5 mm.
+Wie in Kapitel 7 bereits erwähnt ergeben die Tem-
+peraturauswertungen der Referenzobjekte keine
+Überschreitung der minimalen und maximalen Tem-
+peraturen für Brückentyp 2 und Brückentyp 3 (T
+e,min 
+und Te,max). Weiter kann durch die in Kapitel 7 dar-
+gestellte Auswertung gezeigt werden, dass bei allen 
+Objekten keine Überschreitung der normgemäßen 
+Ausdehnung und der Verkürzung vorliegt. Die La-
+gerwege mit den Normvorgaben inkl. Teilsicher -
+heitsbeiwerte (
+ΔTN,con,Dil und ΔTN,exp,Dil) zeigen,
+dass noch eine ausreichende Reserve bis zum Er-
+reichen der Bemessungswerte vorhanden ist. Der 
+als Fahrbahnbelag dienende Baustoff hat aufgrund 
+seiner geringen Wärmeleitfähigkeit eine wärme-
+dämmende Wirkung. Bei massiven Brücken hat der 
+Fahrbahnbelag nur eine geringe Auswirkung auf die 
+Lagerwege, während dieser Effekt bei Stahlbrücken 
+mit orthotroper Fahrbahnplatte deutlich ausgepräg-
+ter ist.
+Die Messergebnisse sowie die im Anhang do-
+kumentierten weiteren Projektergebnisse zeigen,
+dass die verformungswirksamen Bauteiltemperatu -
+ren sehr träge auf die aktuellen Außenlufttempera -
+turen reagieren. Zwischen den Extremwerten der 
+Außen- und der Bauteiltemperatur bestehen bau-
+werksabhängige zeitliche Verschiebungen von z. B. 
+½ Tag. Grund dafür ist die relativ hohe Wärmekapa-
+zität von Beton und insbesondere die massive
+Querschnittsform bei z. B. Plattenbalkensystemen. 
+Weiterführende Messungen können daher eine Da-
+tenbasis schaffen, mit der gezeigt werden kann,
+dass bei der Festlegung von maximalen und mini-
+malen Außentemperaturen über längere Zeitinter-
+valle gemittelt werden kann als bisher angenom -
+men. Umgekehrt können diese Erkenntnisse auch 
+in eine mögliche Optimierung der wirksamen Bau-
+teiltemperaturen T
+e,max und T e,min einfließen. Die
+Auswertung der trägen Reaktion der wirksamen
+Bauteiltemperatur auf die Außenluftemperatur ist
+außerdem ein Beleg dafür, dass lokale Effekte, wie 
+z. B. zeitlich begrenzte Teilabschattungen durch die 
+Lage des Tragwerkes zur Sonneneinstrahlung, un-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+berücksichtigt bleiben können. Gewässer direkt un-
+ter einer Brücke haben 
+aufgrund der hohen spezifi-
+schen Wärmekapazität von Wasser eine unterge -
+ordnete Auswirkung auf die Kerntemperatur des 
+Tragwerks und werden daher in der Bemessung 
+nicht berücksichtigt, da eine konstante Temperatu -
+ränderung durch das Gewässer nicht gewährleistet 
+ist.
+Fazit und Schlussfolgerungen
+Die im gegenständlichen Bericht dokumentierten 
+Messwerte (Temperaturen und Verschiebwege) lie-
+fern wertvolle Informationen zum Temperaturverfor-
+mungsverhalten realer Brückensysteme und bestä-
+tigen das im Rahmen der bauphysikalischen Eigen-
+schaften erwartete Systemverhalten. Umweltein -
+flüsse, wie querende Gewässer unterhalb des Bau-
+werks oder die einseitige Sonneneinstrahlung auf-
+grund der Bauwerkslage, haben einen Einfluss auf 
+die oberflächliche Bauwerkstemperatur und teilwei-
+se auf die Lagerverdrehung, jedoch keine nennens-
+werte Auswirkung auf die Lagerwege.
+In Bezug auf die in der DIN EN 1991-1-5 angeführ -
+ten Bemessungswerte hat sich mit den Messwerten 
+eine gute Korrelation gezeigt, wobei noch Reserven 
+erkennbar sind. Hierbei ist anzumerken, dass in 
+Summe vier Tragwerke über ein Jahr gemessen 
+wurde und damit zu wenig Daten vorliegen, um sta-
+tistisch abgesicherte Aussagen treffen zu können.
+Eine Empfehlung wäre die Temperaturminima und 
+-maxima in der Normung aufgrund der veränderli -
+chen Klimadaten der letzten Jahrzehnte auf Aktuali-
+tät zu prüfen. Im aktuellen Projekt liegen die Daten 
+von Wetterstation nur für den Messzeitraum vor. Die 
+Lagerwege selbst haben eine gute Übereinstim -
+mung mit den berechneten Werten gezeigt und die 
+in der Norm fixierten Sicherheiten wurden nicht be-
+rührt.
+Bilder
+Bild 1: Lage der Brücken (Quelle: © OpenStreet 
+Map und Mitwirkende, CC-BY-SA)
+Bild 2: Hangbrücke Würgau Beton
+Bild 3: Hangbrücke Würgau Stahlverbund
+Bild 4: Trubbachbrücke
+Bild 5: Paradiestalbrücke
+
+===== SEITE 53 =====
+52
+Bild 6: Sensorpositionen 
+(1 – Hangbrücke Würgau)
+Bild 7: Sensorpositionen 
+(2 – Hangbrücke Würgau)
+Bild 8: Sensorpositionen (3 – Trubbachbrücke)
+Bild 9: Sensorpositionen (4 – Paradiestalbrücke)
+Bild 10: Foto Basisstation
+Bild 11: Anordnung der Komponenten in einer 
+Basisstation
+Bild 12: Datenlogger
+Bild 13: Datenfernübertragungsmodul
+Bild 14: Stromversorgung DFÜ
+Bild 15: NTC Temperatursensor
+Bild 16: Wegaufnehmer 200 mm Novotechnik
+Bild 17: Wegaufnehmer montiert (Paradiestal-
+brücke)
+Bild 18: Temperaturverlauf – Hangbrücke Würgau 
+Beton – 02.06.2017-27.01.2019
+Bild 19: Temperaturverlauf – Hangbrücke Würgau 
+Stahlverbund – 01.06.2017-27.01.2019
+Bild 20: Temperaturverlauf Herbstwoche – 
+Hangbrücke Würgau Stahlverbund – 
+15.11.2018-22.11.2018
+Bild 21: Temperaturverlauf – Trubbachbrücke – 
+01.06.2017-27.01.2019
+Bild 22: Temperaturverlauf – Paradiestalbrücke – 
+02.06.2017-20.08.2018
+Bild 23: Längenänderung – Hangbrücke Würgau 
+Beton – 02.06.2017-27.01.2019
+Bild 24: Längenänderung – Hangbrücke Würgau 
+Stahlverbund – 01.06.2017-27.01.2019
+Bild 25: Längenänderung – Trubbachbrücke – 
+01.06.2017 – 27.01.2019
+Bild 26: Längenänderung – Paradiestalbrücke – 
+02.06.2017 – 27.01.2019
+Bild 27: Längenänderung je Brücke bei 1 °C Tem-
+peraturunterschied in Bezug auf die Ver-
+schiebelänge
+Bild 28: Statistische Verteilung der Jahresextrema 
+auf Gumbelpapier für die Wetterstation Nr. 
+1107 in Ebrach
+Bild 29: Interpolation der Bemessungstemperatu-
+ren T
+min,98% für die Brückenstandorte
+Bild 30: Interpolation der Bemessungstemperatu-
+ren Tmax,98% für die Brückenstandorte
+Bild 31: Auszug aus der Bestandsstatik Teil V.B. 
+01, S. 19. Verformung aus Temperatur mit 
+roter Farbe gekennzeichnet Bemessungs-
+wert für den konstanten Temperaturanteil 
+∆TN = 114 K => εT = 1,14 ‰ ∆LStatik = 
+1,14 x 182 = 207,5 mm
+Bild 32: Auszug aus der Bestandsstatik Teil V.B. 
+Lager, S. 24. Verformung aus Temperatur 
+mit roter Farbe gekennzeichnet Bemes-
+sungswert für den konstanten Tempera-
+turanteil 
+∆TN = 125 K => εT = 1,25 ‰ 
+∆LStatik = 1,25 x 184,5 = 230,6 mm
+Bild 33: Auszug aus der Bestandsstatik Teil 3. 
+Lager und ÜKO, S. 3-21. Verformung aus 
+Temperatur mit roter Farbe gekennzeich-
+net Bemessungswert für den konstanten 
+Temperaturanteil 
+∆TN = 94 K => εT = 
+0,94 ‰ ∆LStatik = 0,94 x 67,5 = 63,5 mm
+Bild 34: Auszug aus der Bestandsstatik Teil III La-
+ger, S. 3-21. Verformung aus Temperatur 
+mit roter Farbe gekennzeichnet Bemes-
+sungswert für den konstanten Tempera-
+turanteil 
+∆TN = 101 K => εT = 1,01 ‰ 
+∆LStatik = 1,01 x 27,2 = 27,5 mm
+Bild 35: Ermittlung der Lagerwege bezogen auf 
+die Bemessungstemperatur für die Hang-
+brücke Würgau Beton
+Bild 36: Ermittlung der Lagerwege bezogen auf 
+die Bemessungstemperatur für die Hang-
+brücke Würgau Stahlverbund
+Bild 37: Ermittlung der Lagerwege bezogen auf 
+die Bemessungstemperatur für die Trub-
+bachbrücke
+Bild 38: Ermittlung der Lagerwege bezogen auf 
+die Bemessungstemperatur für die Para-
+diestalbrücke
+Bild 39: Vergleich gemessener und rechnerisch 
+ermittelter Lagerwege
+
+===== SEITE 54 =====
+53
+Bild 40: Akkumulierter Gleitweg für den Messzeit-
+raum je Brücke und Sensor in mm
+Bild 41: Temperaturvergleich Basisstation (T1) 
+mit Außenlufttemperatur Wetterstationen 
+(T_DWD) Hangbrücke Würgau Beton
+Bild 42: Temperaturvergleich Basisstation (T1) 
+mit Außenlufttemperatur Wetterstationen 
+(T_DWD) Hangbrücke Würgau Stahlver-
+bund
+Bild 43: Temperaturvergleich Basisstation (T1) 
+mit Außenlufttemperatur Wetterstationen 
+(T_DWD) Trubbachbrücke
+Bild 44: Temperaturvergleich Basisstation (T1) 
+mit Außenlufttemperatur Wetterstationen 
+(T_DWD) Paradiestalbrücke
+Bild 45: Korrelation zwischen min/max Außen-
+lufttemperatur und min/max konstanter 
+Temperaturanteil für Brücken nach DIN 
+EN 1991-1-5
+Bild 46: Korrelation zwischen Außenluft und Bau-
+werkstemperatur für die Betonbrücken 
+Hangbrücke Würgau, Trubbachbrücke 
+und Paradiestalbrücke
+Bild 47: Korrelation zwischen Außenluft und Bau-
+werkstemperatur für die Stahlverbund-
+brücke Hangbrücke Würgau
+Bild 48: Draufsicht Hangbrücke Würgau mit Nord-
+pfeilausrichtung
+Bild 49: Draufsicht Trubbachbrücke mit Nordpfeil-
+ausrichtung
+Bild 50: Maxima und Minima für je Brücke 2 Sen-
+soren in der Fahrbahnplatte
+Tabellen
+Tab.1: Gemessene Brücken
+Tab. 2: Beschreibung Hangbrücke Würgau Beton
+Tab. 3: Beschreibung Hangbrücke Würgau Stahl-
+verbund
+Tab. 4: Beschreibung Trubbachbrücke
+Tab. 5: Beschreibung Paradiestalbrücke
+Tab. 6: Beschreibung Messparameter, Sensoren 
+und Anzahl
+Tab. 7: Darstellung Temperaturdaten
+Tab. 8: Darstellung Temperaturdaten
+Tab. 9: Darstellung Temperaturdaten
+Tab. 10: Darstellung Temperaturdaten
+Tab. 11: Darstellung Auslenkungen der Weg-
+aufnehmer
+Tab. 12: Darstellung Auslenkungen der Weg-
+aufnehmer
+Tab. 13: Darstellung Auslenkungen der Weg-
+aufnehmer
+Tab. 14: Darstellung Auslenkungen der Weg-
+aufnehmer
+Tab. 15: Bemessungswerte der Lufttemperatur für 
+die Wetterstationen
+Tab. 16: Extremwerte aus Wetterstationen in der 
+Umgebung
+Tab. 17: Längenänderung infolge Temperatur lt. 
+Bestandsstatik
+Tab. 18: Darstellung Längenänderung infolge 
+Temperatur
+Tab. 19: Darstellung Längenänderung infolge 
+Temperatur unter Berücksichtigung der 
+an Wetterstationen gemessenen Lufttem-
+peraturen
+Tab. 20: Zusammenfassung und Ermittlung von 
+Reserven aus rechnerisch ermittelten 
+Lager-wegen gemäß dem normativen 
+Regelwerk und rechnerisch ermittelten 
+Lagerwegen mit Wetter-stationsdaten
+Tab. 21: Vergleich gemessener Außenlufttempera-
+turen am Bauwerk vs. Temperatur Wetter-
+stationen
+Tab. 22: Entfernungen Brücken-Wetterstationen
+Tab. 23: Korrelation zwischen Basisstationstempe-
+raturen (T
+1) und Außenlufttemperatur aus 
+Wetterstationen (TDWD)
+Tab. 24: Abgeleitete Korrelation zwischen Außen-
+luft- und Bauwerkstemperatur je Brücke
+Tab. 25: Gemessene Brücken
+
+===== SEITE 55 =====
+54
+Schriftenreihe
+Berichte der Bundesanstalt
+für Straßenwesen
+Unterreihe „Brücken- und Ingenieurbau“
+2016
+ 
+B 123: Nachrechnung bestehender Stahl- und Verbundbrü -
+cken – Restnutzung
+Geißler, Krohn € 15,50
+B 124: Nachrechnung von Betonbrücken – Systematische 
+Datenauswertung nachgerechneter Bauwerke
+Fischer, Lechner, Wild, Müller, Kessner
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 125: Entwicklung einheitlicher Bewertungskriterien für In-
+frastrukturbauwerke im Hinblick auf Nachhaltigkeit
+Mielecke, Kistner, Graubner, Knauf, Fischer, Schmidt-Thrö
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 126: Konzeptionelle Ansätze zur Nachhaltigkeitsbewer-
+tung im Lebenszyklus von Elementen der Straßeninfrastruktur
+Mielecke, Graubner, Roth
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 127: Verstärkung von Stahlbrücken mit Kategorie-2-Schäden
+Kuhlmann, Hubmann € 21,50
+B 128: Verstärkung von Stahlbrücken mit Kategorie-3-Schäden
+Ungermann, Brune, Giese € 21,00
+B 129: Weiterentwicklung von Verfahren zur Bewertung der 
+Nachhaltigkeit von Verkehrsinfrastrukturen
+Schmellekamp
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 130: Intelligente Straßenverkehrsinfrastruktur durch 
+3D-Modelle und RFID-Tags
+Tulke, Schäfer, Brakowski, Braun
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 131: Pilotstudie zum Bewertungsverfahren Nachhaltigkeit 
+von Straßenbrücken im Lebenszyklus
+Schmidt-Thrö, Mielecke, Jungwirth, Graubner, Fischer, Kuhl-
+mann, Hauf
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/heruntergeladen werden.
+B 132: Pre-Check der Nachhaltigkeitsbewertung für Brü-
+ckenbauwerke
+Graubner, Ramge, Hess, Ditter, Lohmeier
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 133: Anforderungen an Baustoffe, Bauwerke und Realisie-
+rungsprozesse der Straßeninfrastrukturen im Hinblick auf 
+Nachhaltigkeit
+Mielecke, Graubner, Ramge, Hess, Pola, Caspari
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 134: Nachhaltigkeitsbewertung für Erhaltungs- und Er-
+tüchtigungskonzepte von Straßenbrücken
+Gehrlein, Lingemann, Jungwirth
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+2017
+B 135: Wirksamkeit automatischer Brandbekämpfungsanla-
+gen in Straßentunneln
+Kohl, Kammerer, Leucker, Leismann, Mühlberger, Gast
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 136: HANV als Verstärkung von Stahlbrücken mit Katego-
+rie-1-Schäden
+Stranghöner, Lorenz, Raake, Straube †, Knauff
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 137: Verstärkung von Stahlbrücken mit hochfestem Beton
+Mansperger, Lehmann, Hofmann, Krüger, Lehmann € 14,50
+B 138: Rückhaltesysteme auf Brücken – Einwirkungen aus 
+Fahr
+zeuganprall und Einsatz von Schutzeinrichtungen auf 
+Bauwerken
+Mayer
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 139: Unterstützung der Bauwerksprüfung durch innovati-
+ve digitale Bildauswertung – Pilotstudie
+Sperber, Gößmann, Reget, Müller, Nolden,
+Köhler, Kremkau € 16,50
+B 140: Untersuchungen zum Beulnachweis nach DIN EN 1993-1-5
+U. Kuhlmann, Chr. Schmidt-Rasche, J. Frickel, V. Pourostad
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 141: Entwurf von hydrogeothermischen Anlagen an deut-
+schen Straßentunneln
+Moormann, Buhmann
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 142: Einsatz von offenporigen Belägen in Einhausungs- 
+und Tunnelbauwerken
+Baltzer, Riepe, Zimmermann, Meyer, Brungsberg, Mayer,
+Brennberger, Jung, Oeser, Meyer, Koch, Wienecke
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+2018
+B 143: Analyse des menschlichen Verhaltens bei Aktivie-
+rung von stationären Brandbekämpfungsanlagen in Stra-
+ßentunneln
+Mühlberger, Gast, Plab, Probst € 15,50
+B 144: Nachrechnung von Stahl- und Verbundbrücken – Sys-
+tematische Datenauswertung nachgerechneter Bauwerke
+Neumann, Brauer € 16,50
+B 145: 8. BASt-Tunnelsymposium vom 6. Juni 2018 in der 
+Bundesanstalt für Straßenwesen Bergisch Gladbach – Ta -
+gungsband 
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+2019
+B 147: Vorbereitung von Großversuchen an Stützkonstrukti-
+onen aus Gabionen
+Blosfeld, Schreck, Decker, Wawrzyniak
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+
+===== SEITE 56 =====
+55
+2020
+B 146: Beurteilung der Ermüdungssicherheit von vollver-
+schlossenen Seilen mit Korrosionsschäden
+Paschen, Dürrer, Gronau, Rentmeister 
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 148: Übergreifungslängen von Betonstahlbewehrung Maß-
+gebende Einflussparameter in den Grenzzuständen der Trag-
+fähigkeit und Gebrauchstauglichkeit 
+Maurer, Bettin
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 149: Untersuchungen zum Einfluss von Modellparametern 
+auf die Lebensdauerprognose für Brückenbauwerke 
+Keßler, Gehlen € 16,00
+B 150: Beurteilung der Querkraft- und Torsionstragfähigkeit 
+von Brücken im Bestand – erweiterte Bemessungsansätze 
+Hegger, Herbrand, Adam, Maurer, Gleich, Stuppak, Fischer, 
+Schramm, Scheufler, Zilch, Tecusan
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 151: Verfahren und Modelle zur Quantifizierung der Zuver-
+lässigkeit von dauerüberwachten Bestandsbrücken 
+Ralbovsky, Prammer, Lachinger, Vorwagner
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 152: Bemessung von Kopfbolzendübeln in Randlage unter 
+Vermeidung eines Versagens infolge Herausziehens 
+Kuhlmann, Stempniewski
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 153: Kanalbrücke Berkenthin mit temperierter Fahrbahn 
+– Pilotprojekt 
+Eilers, Friedrich, Quaas, Rogalski € 15,00
+B 154: Korrosionsschutz von Brückenseilen – Wickelverfah-
+ren mit Korrosionsschutzbändern 
+Friedrich € 9,00
+B 155: Innovativer und nachhaltiger Ersatzneubau von Beton-
+brücken 
+Wirker, Donner 
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 156: Wirtschaftlichkeitsuntersuchungen von Monitoring-
+maßnahmen – Entwicklung eines Konzepts für die Analyse 
+von Nutzen und Kosten 
+Schubert, Faber, Betz, Straub, Niemeier, Ziegler, Walther, Majka
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 157: 9. BASt-Tunnelsymposium – Tagungsband
+in Vorbereitung
+B 158: Beanspruchung orthotroper Fahrbahnplatten infolge 
+der Erneuerung des Brückenbelags 
+Friedrich, Eilers, Quaas, Robrecht, Schamne, Staeck
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 159: Lebenszyklusmanagement für Bauwerke der Verkehrs- 
+infrastruktur – Entwicklung eines verkehrsträgerübergreifen-
+den, indikatorgestützten Systems
+Lebhardt, Seiler, Gerdes € 15,50
+ 
+2021
+B 160: Digitales Testfeld Autobahn – Intelligente Brücke – Da-
+tenerfassungsstrategien und Datenanalyse für intelligente 
+Kalottenlager
+Butz 
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+B 161: Lagerwege von Brücken
+Butz, Mack, Krawtschuk, Maldonado 
+Dieser Bericht liegt nur in digitaler Form vor und kann unter 
+https://bast.opus.hbz-nrw.de/ heruntergeladen werden.
+Fachverlag NW in der Carl Ed. Schünemann KG 
+Zweite Schlachtpforte 7 · 28195 Bremen 
+Tel.+(0)421/3 69 03-53 · Fax +(0)421/3 69 03-48
+Alternativ können Sie alle lieferbaren Titel auch auf unserer Web-
+site finden und bestellen.
+www.schuenemann-verlag.de
+Alle Berichte, die nur in digitaler Form erscheinen, können wir auf 
+Wunsch als »Book on Demand« für Sie herstellen.
+
+===== SEITE 57 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ANHANG 1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Erläuterung Temperatursensoranordnung
+
+===== SEITE 58 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+1 Anordnung Temperatursensoren 
+Um die Anordnung der Temperatursensoren zu erlä utern, werden nachfolgend aus der Vielzahl von 
+Messungen durch die Firma Schimetta Consult exempl arisch 4 aktuelle Beispiele dargestellt. Es soll 
+verdeutlicht werden, dass Temperaturvariationen über die Länge des Tragwerkes keinen großen 
+Einfluss auf die resultierenden Lagerwege verursachen. Weiters wird auf einen Artikel in der Zeitschrift 
+Beton- und Stahlbetonbau verwiesen: Sanio, D.; Mark, P.; Ahrens, M. A.: Temperaturfeldberechnung 
+für Brücken. Beton- und Stahlbeton 112 (2017), Heft 2, S. 85 – 95. In diesem Artikel wird folgende 
+Aussage getätigt: „Das Temperaturfeld wenig gekrümmter Brücken gilt a llgemein als konstant über 
+die Länge.“ 
+Zum Abschluss an die 4 Brückenbeispiele wird auch die aktuell gemessene Hangbrücke Würgau Beton 
+mit den Messdaten dargestellt. Ein Detailausschnitt ze igt die Abhängigkeit Temperatur vs. Lagerweg. 
+2 Steyrtalbrücke (Oberösterreich, Österreich) 
+Bauerwerksbeschreibung: Tragwerkstyp Beton-Bogentragwerk 
+Anzahl Brückenfelder 4 Richtung Linz + 5 Richtung Selztal 
+Länge 180,50 m 
+Die neue Steyrtalbrücke spannt si ch mittels eines Bogens über die aufgestaute Steyr. Beiderseits der 
+Steyr befinden sich die Bogenwiderlager etwa 10 Hö henmeter über dem Stauzi el. Die Widerlager der 
+neuen Brücke befinden sich im Bereich des alten ersten Bogenpfeilers neben dem bestehenden 
+Widerlager. Die aufgeständerte Fahrbahn in Fahrtricht ung Linz weist vier Felder auf, in Fahrtrichtung 
+Selzthal wurden fünf Felder ausgeführt. 
+Der jahreszeitliche Verlauf der Temperatur für das Tragwerk wird an unterschiedlichen Stellen durch 
+Temperaturaufnehmer erfasst (Betontemperatur). Dabei wurden Aufnehmer an unterschiedlichen 
+Stellen des Tragwerks angeordnet, um Temperaturgr adienten ermitteln zu können. Die Temperaturen 
+werden im Bogenscheitel, im Bogen selbst sowi e in den Achsen 0, 2 und 9 gemessen und sind 
+Grundlage für die Interpretati on der weiteren Messdaten. 
+ 
+Abbildung 51: Foto Steyrtalbrücke 
+Sensorpositionen: 
+Die Sensoren 1 und 4 sind im Bogen im den Vierte lspunkten montiert. Der Umstand der ausgeprägten 
+Temperaturgradienten ist bei diesen Sensoren vermutlich auf den Einfluss des Wasserkörpers 
+zurückzuführen, der durch Strahlung bzw. auch Reflexion den Temperaturgang des Tragwerks 
+beeinflusst. 
+Der Sensor 5 befindet sich im Kabeltrog in Achse 2 und der Sensor 6 am Endquerträger Achse 0, und 
+beide Sensoren haben direkten Kontakt mit der Umgebungstemperatur im Freien und sind daher von 
+den Temperaturschwankungen der Außenluft abhängig.
+
+===== SEITE 59 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Geringere Schwankungen zeigen die Sensoren 2, 3 und 7. Temperatursensor 2 und 3 sind im 
+Bogenscheitel montiert und Sensor 7 am Endquerträg er Achse 9 in der Widerl agerkammer. In diesen 
+Bereichen sind die Einflüsse durch den Wasserkörper, direkte Sonneneinstrahlung, 
+Umgebungstemperatur und Änderung der Temperatur durch direkten Windangriff geringer oder nicht 
+vorhanden. 
+ 
+ 
+Abbildung 52: Sensorpositionen nordseitig 
+ 
+Temp_2: Bogenscheitel, in Bodenplatte 
+Temp_3: Bogenscheitel, Unterseite Haupttragwerk 
+Temp_4: ¼-Punkt des Bogens nordseitig 
+Temp_5: Kabeltrog Achse 2 
+Temp_6: Endquerträger, Achse 0, nordseitig 
+ 
+ 
+Abbildung 53: Sensorpositionen südseitig 
+ 
+Temp_1: ¼-Punkt des Bogens südseitig 
+Temp_7: Endquerträger, Achse 9, südseitig
+
+===== SEITE 60 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Gemessene Temperaturen: 
+Durch das Monitoringsystem an der Steyrtalbrüc ke wurde im Zeitraum von November 2014 – Juni 
+2017 die nachfolgenden Temperaturmessdaten aufgezeichnet. 
+Die deutlichsten Temperaturschwankungen zeigen die Se nsoren 1, 4, 5 und 6 mit ähnlich intensiver 
+Ausprägung. Dies war einerseits bei den gemessenen Tiefstwerten im Januar 2015 der Fall sowie auch 
+im Sommer (August 2015), wo die höchst en Temperaturen erfasst wurden. 
+ 
+ 
+Abbildung 54: Temperaturmessdaten 11-2014 – 6-2017 
+Tab. 26: Darstellung Mittel-/Minimum-/M aximumwert und Temperaturgradient 
+ T1 T2 T3 T4 T5 T6 T7 
+Mittelwert in °C 9,0 9,5 9,5 9, 0 9,5 9,5 9,5 
+Minimum in °C -8,5 -6,5 -6,5 -9,0 -6,5 -8,5 -7,0 
+Maximum in °C 26,0 25,0 25,0 26, 5 27,5 26,5 25,0 
+Temperaturgrad. in °C ± 17,25 ± 15,75 ± 15,75 ± 17, 75 ± 17,00 ± 17,50 ± 16,00 
+ 
+Über die gesamte Messdauer zeigt sich jedoch keine große Abweichung der mittleren Temperatur 
+(Gesamtdifferenz ca. 0,5 °C) üb er alle Temperaturmessstellen. 
+Man erkennt im Vergleich Temperatur vs. Längenänderung, dass sich durch die unterschiedlichen 
+Temperaturmesspositionen auf der Steyrtalbrücke keine Unterschiede in den aufgezeichneten 
+Längenänderungen ergeben. Die Längenänderungen (Weg) laufen von den Temperaturänderungen 
+ohne große Ausreißer dahin. 
+Temp_1 Temp_2 Temp_3 Temp_4 Temp_5 Temp_6 Temp_7
+11.2.2015 22.5.2015 30.8.2015 8.12.2015 17.3.2016 25.6.2016 3.10.2016 11.1.2017 21.4.2017
+-8
+-6
+-4
+-2
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28°C
+
+===== SEITE 61 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 55: Vergleich Temperatur Längenänderung Steyrtalbrücke 2015 
+In einem Detailausschnitt wie nachfolgend dargestellt erkennt man noch genauer die Unabhängigkeit 
+der Längenänderung (Weg) zur Temperatur. Die Temperatur in den einzelnen Messquerschnitten 
+unterliegt teilweise starken Schwankungen. Die Lä ngenänderung des Tragwerks in den Messpunkten 
+ist davon aber nicht beeinflusst bzw. so träge, da ss sich solche Temperaturänderungen nicht auf die 
+Lagerwege auswirken. 
+ 
+Abbildung 56: Vergleich Temperatur Längenänderung Steyrtalbrücke 2015 
+Temp_1 Temp_2 Temp_3 Temp_4 Temp_7 Temp_5 Temp_6 Weg_3 Weg_4
+Weg_1 Weg_2
+11.2.2015 22.5.2015 30.8.2015 8.12.2015
+0
+5
+10
+15
+20
+25°C
+-10
+-5
+0
+5
+10
+15
+20mm
+Temp_1 Temp_2 Temp_3 Temp_4 Temp_7 Temp_5 Temp_6 Weg_3 Weg_4 Weg_1
+Weg_2
+9.4 10.4 11.4 12.4 13.4 14.4 15.4 16.4 17.4 18.4 19.4 20.4 21.4 22.4 23.4 24.4 25.4 26.4 27.4
+2015
+0
+5
+10
+15
+20
+25°C
+-10
+-5
+0
+5
+10
+15
+20mm
+
+===== SEITE 62 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+3 Seitenhafenbrücke (Wien, Österreich) 
+Bauerwerksbeschreibung: Tragwerkstyp vorgespannte integrale Betonbrücke 
+Anzahl Brückenfelder 3 Felder 
+Länge 128,69 m 
+Mit der Seitenhafenbrücke B0245 wurde eine neue Do naukanalquerung in Wien für den Straßen-, Fuß- 
+und Radwegverkehr als Teilstück der Freudenaue r Hafenstraße B14 errichtet. Die Brücke kam 
+innerhalb des Straßenzuges von km 1,6 + 87,196 bis km 1,8 + 15,889 zu liegen. Mit 
+Einzelstützweiten von 32,0 m + 64,69 m + 32,0 m weis t die Seitenhafenbrücke eine Gesamtlänge von 
+128,69 m auf. Die Breite ist im gesamten Brückenverlauf kons tant und beträgt 15,00 m. Die 
+Brückennivellette steigt bis km 1,7 + 02,046 mit 4% , geht in eine Kuppe mit dem Radius von 1000 m 
+über und fällt danach bis km 1, 7 + 82,046 zum Kreuzungsbereich um 4%. Hochpunkt ist bei km 1,7 + 
+42,046 mit einer Höhe von 9,426 m üb er Wiener Null. Die Querneigung im gesamten Fahrbahnbereich 
+beträgt konstant 2,5%. Im Fuß- und Radwegbe reich wird ebenfalls um 2,5% gegengeneigt. 
+Die Seitenhafenbrücke wurde mit einem digitalen Monitoringsystem ausgestattet, welches einen 
+Einsatz mit unterschiedlichen Sensortypen ermöglicht . Zur Erfassung des jahreszeitlichen Verlaufs der 
+Temperatur am Tragwerk wurden Temperaturaufneh mer an zwei Stellen montiert, welche je in 
+Feldmitte zwischen den Achsen 0 und 10 und den Achsen 10 und 20 angeordnet sind. 
+ 
+Abbildung 57: Foto Seitenhafenbrücke 
+Sensorpositionen: 
+Zur Ermittlung von Temperaturgradienten wu rden zwei Temperaturaufnehmer an zwei 
+unterschiedlichen Stellen des Tragwerks angebracht . Der Temperatursensor T1 misst in Feldmitte 
+zwischen Achse 0 und Achse 10. Der Sensor T2 misst in Brückenmitte.
+
+===== SEITE 63 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 58: Anordnung der Sensoren am Tragwerk 
+Gemessene Temperaturen: 
+Nach Installation der Temperatursensoren und der zugehörigen Messtechnik wurde das System in 
+Betrieb genommen. Der Nullabgleich erfolgte am 07.12.2011. Ab diesen Zeitpunkt startete die 
+permanente Aufzeichnung der Messdaten bis 30.06. 2017. Zuvor wurden laufend Kalibrierungsarbeiten 
+durchgeführt. In der nachfolgenden Abbildung sind die Ergebnisse inne rhalb diesen Zeitraums 
+dargestellt. 
+Die gemessene Tragwerkstemperatur zeigt in Summe über 5 ½ Jahre grundsätzlich den erwarteten 
+Verlauf. Die aktuell stärkste Erwärmung erfolgte in der Vorperiode mit ca. 34,5°C (T1) Mitte August 
+2015. Die bisher tiefste gemesse ne Temperatur trat Anfang Februar 2012 in einer starken 
+Kälteperiode auf und betrug etwas mehr als 11° C unter Null (T2). Diese Extremwerte wurden im 
+neuen Beobachtungszeitraum 1. Halbjahr 2017 nicht erreicht. 
+Der Messverlauf zeigt, dass der Sensor (T2) in Tragwerksmitte stärker auf Temperaturschwankungen 
+reagiert, da er gegenüber den Umwelteinflüssen ex ponierter ist. Der Temperaturverlauf des Sensors 
+(T1) in der Nähe des Widerlagers unterliegt weni ger starken Schwankungen, hat aber trotzdem das 
+bisherige Temperaturmaximum erfasst . Beide Sensoren befinden sich wie zu erwarten weiterhin im 
+gleichen Temperaturbereich.
+
+===== SEITE 64 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 59: Temperaturverlauf der Seite nhafenbrücke (gesamter Beobachtungszeitraum) 
+Tab. 27: Darstellung Mittel-/Minimum-/M aximumwert und Temperaturgradient 
+ T1 T2 
+Mittelwert in °C 12,75 11,25 
+Minimum in °C -9,0 -11,0 
+Maximum in °C 34,5 33,5 
+Temperaturgrad. in °C ± 21,75 ± 22,25 
+ 
+Über die gesamte Messdauer zeigt sich jedoch keine große Abweichung der mittleren Temperatur 
+(Gesamtdifferenz ca. 1,5 °C) üb er alle Temperaturmessstellen. 
+Die der Statik zu Grunde liegenden Fahrbahnübergange (Belagsdehnfugen) bei den Widerlagern Achse 
+0 und 30 weisen einen maximalen Dehnweg von ±5 0 mm auf. Die maximale Längenänderung ist 
+daher mit 100mm begrenzt. Der Sensor L1 misst di e Längenänderung zwischen beiden Widerlagern 
+(Achse 0 – Achse 30). In Achse 0 ist der Sensor, in Achse 30 ist die Reflektorplatte montiert. Sensor 
+L2 misst nur die Längenänderung zw ischen Widerlager Achse 0 und St ahlstütze noch vor Achse 10, da 
+die Reflektorplatte unter dem Brückentragwerk am Kopf der Stahlstütze befestigt ist. In den 
+dargestellten Messdaten (in nachfolgender Abbildung ) weisen die Laserdaten (Wege L1 und L2) einen 
+elektronischen Drift auf. Die ma ximale Längenänderung über den jahreszeitlichen Verlauf von 5 ½ 
+Jahren liegt bei ca. 52 mm für den Laser 1. 
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+===== SEITE 65 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 60: Längenänderungen über den Beobachtungszeitraum 
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+  
+
+  
+
+  
+  
+   
+
+ 
+
+ 
+ 
+  
+
+ 
+
+ 
+ 
+  
+
+ 
+
+ 
+ 
+  
+
+ 
+
+ 
+ 
+  
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+!
+ !
+
+ 
+
+
+
+===== SEITE 66 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+4 Chao Phraya River Crossing, Nonthaburi (Thailand) 
+Bauerwerksbeschreibung: Tragwerkstyp Schrägseilbrücke mit zwei Pylonen 
+Anzahl Brückenfelder 3 Felder 
+Länge 460,00 m 
+Die Nonthaburi-Brücke überquert den Chao Phraya River in Thailand und ist Bestandteil der 
+Nonthaburi-1 Strecke. Die Brücke weist eine Ge samtlänge von 460,0 m mit Einzelstützweiten von 
+130,0 m + 200,0 m + 130,0 m auf. Die als Hohlkasten ausgeführte Fahrbahn hängt an in 
+Fahrbahnmitte angeordneten Schrägseilen, welche an zwei 45,96 m hohen Pylonen befestigt sind. 
+Die Brücke wurde mit einem permanenten Monitoringsystem versehen, um in regelmäßigen 
+Zeitintervallen objektspezifische Daten via Intern et zu erheben. Der jahreszeitliche Verlauf der 
+Temperatur für das Tragwerk wird an unterschied lichen Stellen durch Temperaturaufnehmer erfasst 
+(Betontemperatur). Dabei wurden Aufnehmer an unt erschiedlichen Stellen des Tragwerks angeordnet, 
+um Temperaturgradienten ermitteln zu können. Die Temperaturen werden an den Eckpunkten des 
+Fahrbahnquerschnittes im mittleren und im seitliche n Feld zwischen den Achsen M3 und M4 gemessen 
+und sind Grundlage für die Interp retation der weiteren Messdaten. 
+ 
+Abbildung 61: Foto Chao Phraya River Crossing, Nonthaburi 
+Sensorpositionen 
+Die Sensoren T2 bis T5 wurden in Brückenfeldm itte installiert, jeweils in einer Ecke bei den 
+Außenwänden des Hohlkastens. Im Feld zwischen den Achsen M3 und M4 wurden die Sensoren T7 und 
+T8 in entgegengesetzten Ecken der Hohlkastenaußenw änden montiert. Die Sensoren befinden sich im 
+Inneren der Betonwände und haben daher keinen Kontakt mit der Umgebung stemperatur im Freien. 
+ 
+Abbildung 62: Längsschnitt Chao Phraya River Crossing im Bereich Pylon M2
+
+===== SEITE 67 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 63: Längsschnitt Chao Phraya River Crossing im Bereich Pylon M3 
+ 
+ 
+Abbildung 64: Querschnitte Chao Phraya River Crossing im Bereich Schnitt 5-5 und 6-6 
+ 
+Section 5-5 
+T2-Midspan: Ecke links-unten 
+T3-Midspan: Ecke links-oben 
+T4-Midspan: Ecke rechts-unten 
+T5-Midspan: Ecke rechts-oben 
+Section 6-6 
+T7-Sidespan: Ecke links-unten 
+T8-Sidespan: Ecke rechts-oben
+
+===== SEITE 68 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Gemessene Temperaturen: 
+Die nachfolgende Abbildung zeigt die Tragwerkstemperatur an den angeführten Positionen im 
+Messzeitraum von März 2015 – Nove mber 2016. Die stärkste Erwärm ung erfolgte am 13.05.2016 mit 
+ca. 39,4°C (T8). Die tiefste geme ssene Temperatur trat Ende Januar 2016 in einer außergewöhnlich 
+kalten Periode für Thailand auf und betrug knapp 21,5°C (T4). 
+Die Bauwerkstemperatur ist die wesentliche Grundlage für die Interpretation aller übrigen Messdaten, 
+um zwischen gewöhnlichen (temperaturbedingt en) und außergewöhnlichen Veränderungen der 
+Messaufnehmer unterscheiden zu können. 
+ 
+Abbildung 65: Temperaturmessdaten Chao Phraya River Crossing 
+Tab. 28: Darstellung Mittel-/Minimum-/M aximumwert und Temperaturgradient 
+ T2 T3 T4 T5 T6 T7 
+Mittelwert in °C 6,25 6,50 7,50 7,75 6,00 7,75 
+Minimum in °C 22,5 24,0 20,5 22,5 23,5 24,0 
+Maximum in °C 35,0 37,0 35,5 38,0 35,5 39,5 
+Temperaturgrad. in °C ± 28,75 ±30,50 ±28,00 ±30,25 ±29,50 ±31,75 
+ 
+Über die gesamte Messdauer zeigt sich jedoch keine große Abweichung der mittleren Temperatur 
+(Gesamtdifferenz ca. 1,75 °C) üb er alle Temperaturmessstellen. 
+Auch bei der Brücke Chao Phraya River Crossing wie nachfolgend dargestellt erkennt man genau die 
+Unabhängigkeit der Längenänderung (Weg) zur Temperatur. Die Temperat ur in den einzelnen 
+Messquerschnitten unterliegt wiederum Schwankung en. Die Längenänderung des Tragwerks in den 
+Messpunkten ist davon aber nicht beeinflusst bzw. so träge, dass sich solche Temperaturänderungen 
+nicht auf die Lagerwege auswirken und einem durch schnittlichen täglichen Temperaturverlauf folgen. 
+ 
+T2-M idspan T3-M idspan T4- Mids pan T5- Mids pan T7-Sidespan T8-Sidespan
+2.6.2015 10.9.2015 19.12.2015 28.3.2016 6.7.2016 14.10.2016
+22
+24
+26
+28
+30
+32
+34
+36
+38°C
+
+===== SEITE 69 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 66: Temperaturmessdaten Chao Phraya River Crossing
+
+===== SEITE 70 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+5 Brückenbauwerk B2309 
+Bauerwerksbeschreibung: Tragwerkstyp Integrales Beton-Brückentragwerk 
+Anzahl Brückenfelder 5 
+Länge 120,84 m 
+Im Zuge der Instandsetzung der HS Inzersdorf wurde im Knoten Inzersdorf das bestehende 
+Brückenobjekt B2309 abgetragen und als mehrfeldrige integrale Brücke mit einer Gesamtlänge von 
+rund 120 m neu errichtet. Um die Überwachung der Zustandsentwicklungen im Betrieb, die Erfassung 
+von Vergleichswerten für statische Berechnungen und die Aufnahme des Einflusses der 
+Randbedingungen auf das Tragwerk gewährleisten zu können, wurde das Brückenobjekt mit einer 
+messtechnischen Überwachung ausgerüstet. 
+Die Einzelspannweiten betragen 23,42 m+24, 68 m+24,68 m+24,68 m+23,38 m, was zu einer 
+Gesamtlänge von 120,84 m führt. Die Breite von 10,8 m ist währende des gesamten Verlaufes 
+konstant. 
+ 
+ 
+Abbildung 67: Foto B2309 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Abbildung 68: Auszug Positi on Temperatursensoren B2309
+
+===== SEITE 71 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 69: Position Temperatursensoren Achse 4 
+ 
+Beschreibung Messpositionen: 
+T1: Widerlagerbereich Achse 6 
+T2: Kragarm Unterseite Achse 5 
+T3: Randbalken Oberseite Achse 4 
+T4: Betonkern Achse 4 
+T5: Kragarm Unterseite Achse 4 
+T6: Kragarm Unterseite Achse 3 
+T7: Kragarm Unterseite Achse 2
+
+===== SEITE 72 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Gemessene Temperaturen: 
+Die nachfolgende Abbildung behandelt die Tragwerkstemperatur an den angeführten Positionen im 
+Messzeitraum von Juli 2016 – Juni 2017. Die aktuell stärkste Erwärmung erfolgte am 22.06.2017 mit 
+ca. 36,0°C (T3). Die bisher tiefst e gemessene Temperatur trat An fang Januar 2017 in einer starken 
+Kälteperiode auf und betrug knapp -9,5°C unter null (T1). 
+Der Messverlauf zeigt, dass der Sensor (T3) in Tr agwerksachse 3 (Randbalken Oberseite) etwas früher 
+auf Temperaturschwankungen reagiert, da er gegenüber den Umwelteinflüssen exponierter ist. Der 
+Temperaturverlauf der Sensoren (T2, T5, T6, T7) an der Bauteilunterseite bzw. der Temperaturverlauf 
+im Bauteilkern (T4) unterliegt weniger starken Schwankungen. 
+Die Bauwerkstemperatur ist die wesentliche Grundlage für die Interpretation aller übrigen Messdaten, 
+um zwischen gewöhnlichen (temperaturbedingten) und außergewöhnlichen Veränderungen der 
+Messaufnehmer unterscheiden zu können. 
+ 
+Abbildung 70: Temperaturmessdaten Juli 2016 – Juni 2017 
+Für den angegebenen Beobachtungszeitraum vom Juni 2016 bis Juli 2017 sind folgende 
+Temperaturwerte der Bauwerkstemperatur (Mittelw ert, Minimum, Maximum und Temperaturgradient) 
+bei den einzelnen Temperatursensoren aufgetreten: 
+Tab. 29: Darstellung Mittel-/Minimum-/M aximumwert und Temperaturgradient 
+ T1 T2 T3 T4 T5 T6 T7 
+Mittelwert in °C 12,0 13,5 12,0 12,5 12,5 12,5 13,0 
+Maximum in °C 34,5 33,0 36,0 32,0 33,5 32,5 33,0 
+Minimum in °C -9,5 -6,0 -8,5 -7,0 -8,0 -7,5 -7,5 
+Temperaturgrad. in °C ± 22,00 ± 19,50 ± 22,25 ± 19, 50 ± 20,75 ± 20,00 ± 20,25 
+Über die gesamte Messdauer zeigt sich jedoch keine große Abweichung der mittleren Temperaturen 
+(Gesamtdifferenz ca. 1,5 °C) üb er alle Temperaturmessstellen. 
+ 
+Temperatursensor 1 Temperatursensor 2 Temperatursensor 3 Temperatursensor 4 Temperatursensor 5 Temperatursensor 6
+Temperatursensor 7
+29.8.2016 18.10.2016 7.12.2016 26.1.2017 17.3.2017 6.5.2017 25.6.2017
+-10.0
+-7.5
+-5.0
+-2.5
+0.0
+2.5
+5.0
+7.5
+10.0
+12.5
+15.0
+17.5
+20.0
+22.5
+25.0
+27.5
+30.0
+32.5
+35.0
+37.5°C
+
+===== SEITE 73 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+6 Hangbrücke Würgau Beton (Würgau, Deutschland) 
+Die Hangbrücke Würgau Beton wird im Punkt 3 „Ausgewählte Messobjekte“ detailliert beschrieben. 
+Hier soll nun lediglich das Verhalten der Temperaturen im Messquerschnitt und die dazugehörigen 
+Lagerwege dargestellt werden und die zuvor besch riebenen Beispielbrücken in der Aussage der 
+Unabhängigkeit der Anordnung der Temperatursens oren zur Lagerwegaufzeichnung bekräftigen. 
+ 
+Abbildung 71: 1 – Hangbrücke Würgau Beton– Temperaturverlauf und Längenänderung – 01.06.2017-
+20.08.2018 
+ 
+ 
+Abbildung 72: 1 – Hangbrücke Würgau Beto n – Temperaturverlauf und Längenänderung 
+Detailausschnitt 
+ 
+T1 T2 T3 T4 T5 Weg Laengs 01 Weg Laengs 02 Weg Quer 01
+2.6.2017 22.7.2017 10.9.2017 30.10.2017 19.12.2017 7.2.2018 29.3.2018 18.5.2018 7.7.2018
+-10
+-5
+0
+5
+10
+15
+20
+25
+30°C
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0mm
+T1 T2 T3 T4 T5 Weg Laengs 01 Weg Laengs 02
+21.8 22.8 23.8 24.8 25.8 26.8 27.8 28.8 29.8 30.8 31.8 1.9 2.9 3.9 4.9 5.9
+2017
+10
+12
+14
+16
+18
+20
+22
+24
+26°C
+-30.0
+-27.5
+-25.0
+-22.5
+-20.0
+-17.5
+-15.0
+-12.5
+-10.0
+-7.5mm
+
+===== SEITE 74 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Anhang 2 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Wartungsprotokolle
+
+===== SEITE 75 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 76 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 77 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 78 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 79 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 80 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 81 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 82 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+ 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Anhang 3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Messdaten
+
+===== SEITE 83 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 73: Hangbrücke Würgau Beton – Lagerweg/Temperatur-Beziehung – 01.06.2017-27.01.2019
+
+===== SEITE 84 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+ 
+Abbildung 74: Hangbrücke Würgau Stahlverbund – Lagerweg/Temperatur-Beziehung - 01.06.2017-27.01.2019
+
+===== SEITE 85 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+ 
+Abbildung 75: Trubbachbrücke – Lagerweg/Temperatur-Beziehung – 01.06.2017-27.01.2019
+
+===== SEITE 86 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 76: Paradiestalbrücke – Lagerweg/Temperatur-Beziehung – 01.06.2017-27.01.2019
+
+===== SEITE 87 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+ 
+Abbildung 77: Hangbrücke Würgau Beton – Temperaturverlauf und Längenänderung – 01.06.2017-27.01.2019 
+T1T2T3T4T5Weg Laengs 01Weg Laengs 02Weg Quer 01
+2.6.201710.9.201719.12.201729.3.20187.7.201815.10.201823.1.2019
+-10
+-5
+0
+5
+10
+15
+20
+25
+30 °C
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10 mm
+
+===== SEITE 88 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+ 
+Abbildung 78: Hangbrücke Würgau Stahlverbund – Temperaturverlauf und Längenänderung – 01.06.2017-27.01.2019 
+T1T2T3T4T5Weg Laengs 01Weg Laengs 02Weg Quer 01
+9.9.201718.12.201728.3.20186.7.201814.10.201822.1.2019
+-10
+-5
+0
+5
+10
+15
+20
+25
+30
+35 °C
+-80
+-70
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+20 mm
+
+===== SEITE 89 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+ 
+Abbildung 79: Trubbachbrücke – Temperaturverlauf und Längenänderung – 01.06.2017-27.01.2019 
+T1T2T3T4T5Weg Laengs 01Weg Laengs 02Weg Quer 01
+9.9.201718.12.201728.3.20186.7.201814.10.201822.1.2019
+-5
+0
+5
+10
+15
+20
+25
+30 °C
+-20.0
+-17.5
+-15.0
+-12.5
+-10.0
+-7.5
+-5.0
+-2.5
+0.0
+2.5 mm
+
+===== SEITE 90 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Abbildung 80: Paradiestalbrücke – Temperaturverlauf und Längenänderung – 02.06.2017-27.01.2019 
+ 
+T1T2T3T4T5Weg Laengs 01Weg Laengs 02Weg Quer 01
+10.9.201719.12.201729.3.20187.7.201815.10.201823.1.2019
+-10
+-5
+0
+5
+10
+15
+20
+25
+30 °C
+-9
+-8
+-7
+-6
+-5
+-4
+-3
+-2
+-1
+0
+1
+2
+3 mm
+
+===== SEITE 91 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Anhang 4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Temperaturdaten aus ausgewählten Wetterstationen in Bayern
+
+===== SEITE 92 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Tab. 30: Liste der Wetterstationen mit Ortsangabe sowie Zeitraum und Anzahl der Jahresextremwerte 
+ 
+Station Ort Breiten- 
+grad 
+Längen- 
+grad 
+Beginn Ende Anzahl Tmax,98%, c ΔTmax,98% Tmax,98%, g Tmin,98%, c ΔTmin,98% Tmin,98%, g 
+284 Bamberg (Sternwarte) 10,880 49,880 1879 1958 80 38,5 1,9 38,1 -30,6 4,5 -29,8 
+3666 Nürnberg-Buchenbühl 11,107 49,5008 1947 1974 28 39,9 3,7 39,0 -30,0 7,2 -28,2 
+2780 Kulmbach 11,4494 50,1003 1960 1982 23 37,4 3,2 36,3 -30,0 7,1 -27,4 
+5434 Weismain 11,2364 50,0858 1951 1992 42 38,2 2,7 37,6 -29,8 5,2 -28,5 
+3565 Neustadt/Aisch 10,6001 49,5728 1947 2002 56 43,0 4,2 39,6 -29,6 4,9 -28,7 
+4621 Schweinfurt-
+Gartenstadt 
+10,216 50,0575 1958 2003 46 38,9 2,3 38,3 -25,4 4,6 -24,3 
+1689 Gößweinstein 11,3061 49,7656 1937 2004 68 40,0 3,2 37,7 -30,1 4,2 -29,0 
+2268 Hofheim 10,5156 50,1352 1949 2006 57 39,1 2,4 38,5 -29,0 4,7 -28,1 
+5185 Uttenreuth 11,0704 49,5933 1971 2006 36 43,8 5,1 40,4 -29,5 6,0 -28,1 
+4752 Sonneberg-Neufang 11,1828 50,3746 1951 2008 58 38,2 3,4 35,9 -24,2 3,8 -23,6 
+282 Bamberg 10,9206 49,8742 1960 2018 59 39,0 2,0 38,6 -30,4 5,0 -29,4 
+320 Heinersreuth-Vollhof 11,5197 49,9667 1947 2018 72 39,0 2,0 38,5 -30,5 4,3 -29,4 
+867 Lautertal-Oberlauter 10,968 50,3067 1947 2018 72 38,6 2,0 38,2 -26,7 3,7 -25,7 
+1107 Ebrach 10,499 49,852 1963 2018 56 38,0 2,0 37,5 -28,1 4,4 -27,0 
+1279 Möhrendorf-
+Kleinseebach 
+11,0074 49,6497 1949 2018 69 40,1 2,3 39,5 -28,5 4,5 -27,1 
+1721 Gräfenberg-Kasberg 11,2239 49,664 1991 2018 28 38,3 3,2 37,6 -21,4 4,4 -20,2 
+2600 Kitzingen 10,1781 49,7363 1982 2018 37 46,2 5,3 42,4 -26,0 5,9 -24,6 
+2680 Königshofen, Bad 10,4456 50,284 1951 2018 68 38,7 2,0 38,2 -32,1 5,0 -31,1 
+2750 Kronach 11,3209 50,2523 1949 2018 69 39,0 2,1 38,5 -26,8 3,6 -25,8 
+3667 Nürnberg-Netzstahl 11,2538 49,4258 1975 2018 44 41,0 3,3 40,0 -26,9 4,6 -25,8 
+3668 Nürnberg 11,0549 49,503 1955 2018 64 39,4 2,1 38,9 -28,9 4,6 -27,9
+
+===== SEITE 93 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+Tab. 31: Auswertung der Wetterdaten je Brücke 
+Brücke Breiten- 
+grad 
+Längen- 
+grad 
+Tmax,98%,c 
+[°C] 
+Tmax,98%,g 
+[°C] 
+Tmin,98%,c 
+[°C] 
+Tmin,98%,g 
+[°C] 
+Würgau 11,087593 49,983136 38,9 38,4 -28,6 -27,5 
+Trubbach 11,052781 49,714536 39,6 39,0 -27,2 -25,9 
+Paradiestal 11,174292 49,996341 38,9 38,4 -28,2 -27,2 
+
+
+===== SEITE 94 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 95 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH 
+ 
+ 
+Statistische Verteilungen:
+
+===== SEITE 96 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 97 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 98 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH
+
+===== SEITE 99 =====
+LAGERWEGE VON BRÜCKEN SCHLUSSBERICHT 
+MAURER ENGINEERING GMBH UND SCHIMETTA CONSULT ZT GMBH

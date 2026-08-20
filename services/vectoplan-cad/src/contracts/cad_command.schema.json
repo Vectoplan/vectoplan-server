@@ -14,9 +14,9 @@
     "geometry"
   ],
   "properties": {
-    "contract_version": {"const": "cad-command/0.1"},
+    "contract_version": {"enum": ["cad-command/0.1", "cad-command/0.2"]},
     "command": {
-      "enum": ["create_wall", "create_line", "create_dimension", "create_section_marker"]
+      "enum": ["create_wall", "create_line", "create_dimension", "create_section_marker", "create_opening", "place_library_object", "create_room", "update_room"]
     },
     "document_ref": {"type": "string", "minLength": 1},
     "sheet_ref": {"type": "string", "minLength": 1},
