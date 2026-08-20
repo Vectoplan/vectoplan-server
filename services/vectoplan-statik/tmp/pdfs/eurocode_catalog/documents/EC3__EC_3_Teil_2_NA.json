@@ -1,0 +1,1194 @@
+{
+  "document_id": "EN_1993-2_NA__national_annex__EC_3_Teil_2_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-2/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 2 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 2 NA.pdf",
+  "sha256": "23988e9ad62815b47b8136a581678bab1281ece7694a5937d4cd5619fd47d026",
+  "pages": 65,
+  "text_pages": 65,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 57,
+  "equation_candidate_count": 32,
+  "table_reference_count": 21,
+  "figure_reference_count": 3,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161120+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161120+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 2 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "10365",
+      "title": "Berlin.",
+      "pdf_page": 8
+    },
+    {
+      "clause": "1",
+      "title": "Windrichtung",
+      "pdf_page": 32
+    },
+    {
+      "clause": "1",
+      "title": "Windrichtung",
+      "pdf_page": 33
+    },
+    {
+      "clause": "2",
+      "title": "Anschlussnähte der Längsrippen an das Deckblech",
+      "pdf_page": 38
+    },
+    {
+      "clause": "3",
+      "title": "Anschlussnähte zwischen Längsrippen und",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4",
+      "title": "Querträgerausschnitt",
+      "pdf_page": 38
+    },
+    {
+      "clause": "5",
+      "title": "Längsrippenstoß",
+      "pdf_page": 38
+    },
+    {
+      "clause": "6",
+      "title": "Querträgerstoß",
+      "pdf_page": 38
+    },
+    {
+      "clause": "7",
+      "title": "Verbindung zwischen Querträger und",
+      "pdf_page": 38
+    },
+    {
+      "clause": "1",
+      "title": "Radlast",
+      "pdf_page": 39
+    },
+    {
+      "clause": "1",
+      "title": "Rissbeginn",
+      "pdf_page": 40
+    },
+    {
+      "clause": "1",
+      "title": "Schwerverkehrsstreifen",
+      "pdf_page": 41
+    },
+    {
+      "clause": "2",
+      "title": "Haupt- und Längsträgersteg",
+      "pdf_page": 41
+    },
+    {
+      "clause": "1",
+      "title": "Deckblech",
+      "pdf_page": 43
+    },
+    {
+      "clause": "2",
+      "title": "Hauptträgersteg",
+      "pdf_page": 43
+    },
+    {
+      "clause": "1",
+      "title": "Ausnehmung an der Unterkante der Flachstahlrippe",
+      "pdf_page": 46
+    },
+    {
+      "clause": "1",
+      "title": "Keine Ausnehmungen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "1",
+      "title": "Blechdicke des Querträgerstegs",
+      "pdf_page": 48
+    },
+    {
+      "clause": "1",
+      "title": "Querträger",
+      "pdf_page": 50
+    },
+    {
+      "clause": "2",
+      "title": "Stumpfnähte",
+      "pdf_page": 50
+    },
+    {
+      "clause": "3",
+      "title": "Quersteife des Hauptträgersteges",
+      "pdf_page": 50
+    },
+    {
+      "clause": "1",
+      "title": "Messlänge 2 000 mm",
+      "pdf_page": 58
+    },
+    {
+      "clause": "2",
+      "title": "Blech",
+      "pdf_page": 58
+    },
+    {
+      "clause": "3",
+      "title": "Spalt max. 2,0 mm",
+      "pdf_page": 58
+    },
+    {
+      "clause": "1",
+      "title": "Spalt max. L/1 000",
+      "pdf_page": 58
+    },
+    {
+      "clause": "1",
+      "title": "Versatz 2 mm",
+      "pdf_page": 59
+    },
+    {
+      "clause": "1",
+      "title": "Heftnaht",
+      "pdf_page": 59
+    },
+    {
+      "clause": "2",
+      "title": "Versatz 2 mm",
+      "pdf_page": 59
+    },
+    {
+      "clause": "2",
+      "title": "Vor dem Fertigungs-",
+      "pdf_page": 60
+    },
+    {
+      "clause": "3",
+      "title": "Während der Fertigung",
+      "pdf_page": 60
+    },
+    {
+      "clause": "2",
+      "title": "Nahtprüfung der",
+      "pdf_page": 60
+    },
+    {
+      "clause": "1",
+      "title": "Baustellennaht",
+      "pdf_page": 61
+    },
+    {
+      "clause": "2",
+      "title": "Werkstattnaht",
+      "pdf_page": 61
+    },
+    {
+      "clause": "2",
+      "title": "Versatz 2 mm",
+      "pdf_page": 61
+    },
+    {
+      "clause": "2",
+      "title": "Versatz 2 mm",
+      "pdf_page": 61
+    },
+    {
+      "clause": "2",
+      "title": "Nachprüfung der",
+      "pdf_page": 61
+    },
+    {
+      "clause": "1",
+      "title": "Spalt 3 mm",
+      "pdf_page": 61
+    },
+    {
+      "clause": "1",
+      "title": "Spalt 3 mm",
+      "pdf_page": 62
+    },
+    {
+      "clause": "1",
+      "title": "Spalt 2 mm",
+      "pdf_page": 62
+    },
+    {
+      "clause": "2",
+      "title": "Versatz 2 mm",
+      "pdf_page": 62
+    },
+    {
+      "clause": "1",
+      "title": "Längsträger",
+      "pdf_page": 62
+    },
+    {
+      "clause": "2",
+      "title": "Querträger",
+      "pdf_page": 62
+    },
+    {
+      "clause": "3",
+      "title": "Heftnaht",
+      "pdf_page": 62
+    },
+    {
+      "clause": "1",
+      "title": "Spalt 1 mm",
+      "pdf_page": 63
+    },
+    {
+      "clause": "1",
+      "title": "Spalt 1 mm",
+      "pdf_page": 63
+    },
+    {
+      "clause": "1",
+      "title": "HT-Steg",
+      "pdf_page": 63
+    },
+    {
+      "clause": "2",
+      "title": "QT-Steg",
+      "pdf_page": 63
+    },
+    {
+      "clause": "4",
+      "title": "Versatz 0,5 tSteg,QT",
+      "pdf_page": 63
+    },
+    {
+      "clause": "1",
+      "title": "HT-Steg",
+      "pdf_page": 63
+    },
+    {
+      "clause": "2",
+      "title": "QT-Steg",
+      "pdf_page": 63
+    },
+    {
+      "clause": "3",
+      "title": "Spaltweite 2 mm",
+      "pdf_page": 63
+    },
+    {
+      "clause": "1",
+      "title": "Versatz 0 – 2 mm",
+      "pdf_page": 64
+    },
+    {
+      "clause": "1",
+      "title": "HT-Steg",
+      "pdf_page": 64
+    },
+    {
+      "clause": "2",
+      "title": "QT-Steg",
+      "pdf_page": 64
+    },
+    {
+      "clause": "4",
+      "title": "Versatz 0,5 tSteg,QT",
+      "pdf_page": 64
+    },
+    {
+      "clause": "1",
+      "title": "Hauptträger",
+      "pdf_page": 64
+    },
+    {
+      "clause": "2",
+      "title": "Querträger",
+      "pdf_page": 64
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 2,
+      "equation_number": "unvollständig",
+      "line": "NCI Zu 7.4(3) Gleichung 7.7 ........................................................................................................................ 16",
+      "context": "NDP Zu 7.3(1), Anmerkung: ........................................................................................................................ 16 | NDP Zu 7.4(1), Anmerkung: ........................................................................................................................ 16 | NCI Zu 7.4(3) Gleichung 7.7 ........................................................................................................................ 16 | NDP Zu 8.1.3.2.1(1), Anmerkung: ............................................................................................................... 16 | NDP Zu 8.1.6.3(1), Anmerkung: .................................................................................................................. 16",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "45 (30)",
+      "context": "130 | 175 | 45 (30) | 65 (30) | 65 (65)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "65 (30)",
+      "context": "175 | 45 (30) | 65 (30) | 65 (65) | 90 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "65",
+      "line": "65 (65)",
+      "context": "45 (30) | 65 (30) | 65 (65) | 90 (30) | 90 (90)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "90 (30)",
+      "context": "65 (30) | 65 (65) | 90 (30) | 90 (90) | 55 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "90",
+      "line": "90 (90)",
+      "context": "65 (65) | 90 (30) | 90 (90) | 55 (30) | 80 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "55 (30)",
+      "context": "90 (30) | 90 (90) | 55 (30) | 80 (30) | 95 (80)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "80 (30)",
+      "context": "90 (90) | 55 (30) | 80 (30) | 95 (80) | 130 (100)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "80",
+      "line": "95 (80)",
+      "context": "55 (30) | 80 (30) | 95 (80) | 130 (100) | 45 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "100",
+      "line": "130 (100)",
+      "context": "80 (30) | 95 (80) | 130 (100) | 45 (30) | 65 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "45 (30)",
+      "context": "95 (80) | 130 (100) | 45 (30) | 65 (30) | 80 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "65 (30)",
+      "context": "130 (100) | 45 (30) | 65 (30) | 80 (30) | 80 (80)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "30",
+      "line": "80 (30)",
+      "context": "45 (30) | 65 (30) | 80 (30) | 80 (80) | 110 (100)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "80",
+      "line": "80 (80)",
+      "context": "65 (30) | 80 (30) | 80 (80) | 110 (100) | 70",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "100",
+      "line": "110 (100)",
+      "context": "80 (30) | 80 (80) | 110 (100) | 70 | 100",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "55",
+      "line": "55 (55)",
+      "context": "135 | 55/45 (30/30) | 55 (55) | 80/70 (30/30) | 80 (80)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "80",
+      "line": "80 (80)",
+      "context": "55 (55) | 80/70 (30/30) | 80 (80) | S355J0 | S355J2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "30",
+      "line": "40 (30)",
+      "context": "110 | 130 | 40 (30) | 55 (30) | 70 (30)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "30",
+      "line": "55 (30)",
+      "context": "130 | 40 (30) | 55 (30) | 70 (30) | DIN EN",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "30",
+      "line": "70 (30)",
+      "context": "40 (30) | 55 (30) | 70 (30) | DIN EN | 10025-3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "80",
+      "line": "85 (80)",
+      "context": "115 | 155 | 85 (80) | 115 (100) | 70 (70)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "100",
+      "line": "115 (100)",
+      "context": "155 | 85 (80) | 115 (100) | 70 (70) | 95 (95)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "70",
+      "line": "70 (70)",
+      "context": "85 (80) | 115 (100) | 70 (70) | 95 (95) | 60",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "95",
+      "line": "95 (95)",
+      "context": "115 (100) | 70 (70) | 95 (95) | 60 | 85",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "NCI Zu 7.4(3) Gleichung 7.7",
+      "context": "der globalen Beulschlankheit p 2,0 beträgt und der Nachweis nach DIN EN 1993-1-5:2010-12, | Abschnitt 10, geführt wird. | NCI Zu 7.4(3) Gleichung 7.7 | Für bp ist nur b anzunehmen. | NDP Zu 8.1.3.2.1(1), Anmerkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "Für kritische Längen 80 m darf der Nachweis nach DIN EN 1993-2:2010-12, Gleichung (9.9), für einen",
+      "context": "Der Beiwert 1 darf nach DIN EN 1993-2:2010-12, Bild 9.5, bestimmt werden, wenn anstatt der Spannweite L | die kritische Länge der zutreffenden Einflusslinie als Eingangswert angesetzt wird. | Für kritische Längen 80 m darf der Nachweis nach DIN EN 1993-2:2010-12, Gleichung (9.9), für einen | Beiwert 1 entsprechend dem Wert für 80 m geführt werden. | NDP Zu 9.5.2(3), Anmerkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "Für kritische Längen 80 m darf der Nachweis nach DIN EN 1993-2:2010-12, Gleichung (9.9), für einen",
+      "context": "Der Beiwert max darf nach DIN EN 1993-2:2010-12, Bild 9.6, bestimmt werden, wenn anstatt der | Spannweite L die kritische Länge der zutreffenden Einflusslinie als Eingangswert angesetzt wird. | Für kritische Längen 80 m darf der Nachweis nach DIN EN 1993-2:2010-12, Gleichung (9.9), für einen | Beiwert max entsprechend dem Wert für 80 m geführt werden. | !Bei Inanspruchnahme der erhöhten Klasse (*), siehe DIN EN 1993-1-9:2010-12, Bild 7.3, sind die max -",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "ks=(25/t)0,2",
+      "context": "Blechdickenabhänigigkeit | für t > 25 mm: | ks=(25/t)0,2 | Mehrteilige, quer zur | Kraftrichtung durch",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "ks=(25/t)0,2",
+      "context": "Blechdickenabhänigig- | keit für t > 25 mm: | ks=(25/t)0,2 | Baustellenstoß mit | Ausschnitt für",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "3",
+      "line": "(3)",
+      "context": "die infolge der Hängerschwingungen und der Windwirkung auf dem Umfang des Hängerprofils oszillieren | und rhythmisch veränderliche Druckverteilungen mit entsprechenden Kraftwirkungen erzeugen. | (3) | !Galloping-Schwingungen entstehen durch wechselnde unsymmetrische Winddruckverteilungen am | Querschnitt, die mit der Eigenbewegung der Hänger einhergehen. Sie können aeroelastische",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "1",
+      "line": "NA.G.1.3.5.1 (1)) wie bei Längsrippen aus Hohlprofilen, jedoch sind die Wirkungen nach NA.G.1.3.5.1 (1)",
+      "context": "NA.G.1.3.5.3 zu entnehmen. | (5) Bei Längsrippen aus Flachstahl, siehe Bild NA.G.10, sind die Ermüdungswirkungen ähnlich (siehe | NA.G.1.3.5.1 (1)) wie bei Längsrippen aus Hohlprofilen, jedoch sind die Wirkungen nach NA.G.1.3.5.1 (1) | 3. geringer.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "5",
+      "line": "Maße nach Tabelle NA.G.4 (3), (4) und (5)",
+      "context": "Legende | 1 Keine Ausnehmungen | Maße nach Tabelle NA.G.4 (3), (4) und (5) | Bild NA.G.12 — Nahtkreuzung am Deckblech ohne Ausnehmungen | (3) Die Ausbildung der Freischnitte im Querträgersteg ist derart zu gestalten, siehe Bild NA.G.11, dass",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "4.2",
+      "pdf_page": 17,
+      "line": "Für Stahlbrücken darf anstelle von DIN EN 1993-1-8:2010-12, Tabelle 4.2, die folgende Erleichterung"
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.1, Detail 13."
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.2, Detail 2."
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.2, Detail 4 bei Eisenbahnbrücken."
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.2, Detail 8."
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.3, Detail 13."
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.3, Detail 18 und 19."
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.4, Detail 5."
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.5, Detail 4, 5, 6 und 9."
+    },
+    {
+      "label": "8.7",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.7, Detail 3 und 4."
+    },
+    {
+      "label": "8.1",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.1, Detail 14: Kerbfall 50 darf nur bei vorgespannten Schrauben"
+    },
+    {
+      "label": "8.2",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.2, Detail 10: Kerbfall 90 darf nur angewendet werden, wenn die"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.4, Detail 9, c 71 N/mm2 für Eisenbahnbrücken."
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.5, Detail 7: die Abschrägung in Form einer Neigung 1:4 gilt für alle"
+    },
+    {
+      "label": "8.8",
+      "pdf_page": 20,
+      "line": "DIN EN 1993-1-9:2010-12, Tabelle 8.8, Detail 4: Die Heftnaht der Badsicherung ist nur innerhalb der"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 21,
+      "line": "in Ergänzung zu DIN EN 1993-1-9:2010-12, Tabelle 8.5, Detail 7, gilt folgendes Detail als konfliktfreie"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 21,
+      "line": "in Ergänzung zu DIN EN 1993-1-9:2010-12, Tabelle 8.4, Detail 4, gilt folgendes Detail als konfliktfreie"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 21,
+      "line": "in Ergänzung zu DIN EN 1993-1-9:2010-12, Tabelle 8.4, Detail 2, gilt folgendes Detail als konfliktfreie"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 22,
+      "line": "in Ergänzung zu DIN EN 1993-1-9:2010-12, Tabelle 8.3, Detail 1, gilt folgendes Detail als konfliktfreie"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 22,
+      "line": "in Ergänzung zu DIN EN 1993-1-9:2010-12, Tabelle 8.3, Detail 9, gilt folgendes Detail als konfliktfreie"
+    },
+    {
+      "label": "3",
+      "pdf_page": 61,
+      "line": "siehe Tabelle 3, Detail 2)b)."
+    }
+  ],
+  "figures": [
+    {
+      "label": "9.5",
+      "pdf_page": 19,
+      "line": "Der Beiwert 1 darf nach DIN EN 1993-2:2010-12, Bild 9.5, bestimmt werden, wenn anstatt der Spannweite L"
+    },
+    {
+      "label": "9.6",
+      "pdf_page": 19,
+      "line": "Der Beiwert max darf nach DIN EN 1993-2:2010-12, Bild 9.6, bestimmt werden, wenn anstatt der"
+    },
+    {
+      "label": "7.3",
+      "pdf_page": 19,
+      "line": "!Bei Inanspruchnahme der erhöhten Klasse (*), siehe DIN EN 1993-1-9:2010-12, Bild 7.3, sind die max -"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 388,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 7736,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 3,
+      "characters": 7573,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 4133,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1464,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1585,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2659,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1969,
+      "text_layer": "usable",
+      "clauses": [
+        "10365"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2038,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1107,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 1079,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 14
+    },
+    {
+      "pdf_page": 12,
+      "characters": 518,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 930,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1432,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1824,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1834,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1698,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1967,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1702,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1554,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 738,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1552,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 23,
+      "characters": 197,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2210,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1276,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 441,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2012,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1040,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1473,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1551,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1436,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 859,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1419,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1295,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1791,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1528,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 650,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 945,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 921,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1150,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 955,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1131,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1648,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 2479,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1258,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 46,
+      "characters": 993,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 1050,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1741,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 49,
+      "characters": 2514,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1410,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1258,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 677,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 1172,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 1051,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1029,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1779,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 239,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1279,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2580,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 2354,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "3",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 61,
+      "characters": 2265,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "2",
+        "2",
+        "2",
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 2103,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "2",
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 2003,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "1",
+        "2",
+        "4",
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1481,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "2",
+        "4",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 857,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

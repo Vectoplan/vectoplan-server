@@ -1,0 +1,258 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken 
+aus Stahl und Beton  
+Teil 1-1: Allgemeine Bemessungsregeln und Anwendungsregeln 
+für den Hochbau 
+National Annex  
+Nationally determined parameters  
+Eurocode 4: Design of composite steel and concrete structures  
+Part 1-1: General rules and rules for buildings 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 4: Calcul des structures mixtes acier-béton  
+Partie 1-1: Règles générales et règles pour les bâtiments
+
+===== PDF-SEITE 2 =====
+DIN EN 1994-1-1/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde im NABau-Spiegelausschuss NA 005-08-99 AA Verbundbau (Sp CEN/TC 250/SC 4) 
+erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1994-1-1:2010-12, Eurocode 4: Bemessung und 
+Konstruktion von Verbundtragwerken aus Stahl und Beton  Teil 1-1: Allgemeine Bemessungsregeln und 
+Anwendungsregeln für den Hochbau. 
+Die Europäische Norm EN 1994-1-1:2004 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifi zierungssystemen. Die entsprechen den Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1994-1-1:2010-12 
+(en: non-contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1994-1-1:2010-12. 
+DIN EN 1994-1-1:2010-12 und dieser Nationale Anhang DIN EN 1994-1-1/NA:2010-12 ersetzen 
+DIN 18800-5:2007-03. 
+Änderungen 
+Gegenüber DIN 18800-5:2007-03 wurden folgende Änderungen vorgenommen: 
+a) nationale Festlegungen zu DIN EN 1994-1-1:2010-12 aufgenommen. 
+Frühere Ausgaben 
+DIN 18806-1: 1984-03 
+DIN V 18800-5: 2004-11 
+DIN 18800-5: 2007-03 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1994-1-1/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser nationale Anhang enthält nationale Festlegungen für den Entwurf, die Berechnung und die Bemessung 
+von Verbundtragwerken und Verbundbauteilen, die bei der Anwendung von DIN EN 1994-1-1:2010-12 in 
+Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1994-1-1:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1994-1-1:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1994-1-1:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(en: Nationally determined parameters, NDP). 
+ 2.4.1.1(1) 
+ 2.4.1.2(5) 
+ 2.4.1.2(6) 
+ 2.4.1.2(7) 
+ 3.1(4) 
+ 3.5(2) 
+ 6.4.3 
+ 6.6.3.(1)(h) 
+ 6.6.3.1(3) 
+ 6.6.4.1(3) 
+ 6.8.2(1) 
+ 6.8.2(2) 
+ 9.1.1(2) 
+ 9.6(2) 
+ 9.7.3(4) 
+ 9.7.3(8) 
+ 9.7.3(9) 
+ B.2.5(1) 
+ B.3.6(5) 
+Der jeweilige Status der Verwendbarkeit der Anhänge A, B und C wurde festgelegt. 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1994-1-1:2010-12. Diese sind durch ein vorangestelltes NCI gekennzeichnet (en: non-contradictory 
+complementary information, NCI). 
+ 5.4.2.4(1)P 
+ 6.7.2(1)P 
+ 6.7.3.3(4) 
+ 6.7.3.5, 6.7.3.6 und Tabelle 6.5 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1994-1-1/NA:2010-12 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1994-1-1:2010-12. 
+NCI Zu 1.2 Normative Verweisungen 
+DIN EN 1990:2010-12, Eurocode: Grundlagen der Tragwerksplanung 
+DIN EN 1992-1-1, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken  
+Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau 
+DIN EN 1992-1-1/NA: Nationaler Anhang - National festgelegte Parameter  Eurocode 2: Bemessung und 
+Konstruktion von Stahlbeton- und Spannbetontragwerken  Teil 1--1: Allgemeine Bemessungsregeln und 
+Regeln für den Hochbau 
+DIN EN 1993-1-1:2010-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: Allgemeine 
+Bemessungsregeln und Regeln für den Hochbau 
+DIN EN 1993-1-9, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-9: Ermüdung 
+DIN EN 1993-1-9/NA: Nationaler Anhang - National festgelegte Parameter  Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 1-9: Ermüdung 
+DIN EN 1994-1-1:2010-12, Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und 
+Beton  Teil 1-1: Allgemeine Bemessungsregeln und Anwendungsregeln für den Hochbau 
+DIN EN 1994-2:2010-12, Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und 
+Beton  Teil 2: Allgemeine Bemessungsregeln und Anwendungsregeln für Brücken 
+NDP Zu 2.4.1.1(1), Anmerkung 
+Für ungünstige Auswirkungen gilt P = 1,1 und für günstige Auswirkungen P = 1,0. 
+NDP Zu 2.4.1.2(5), Anmerkung 
+Es gelten die in dieser Norm angegebenen Regelungen zu 6.6.3.1(1) . 
+NDP Zu 2.4.1.2(6) Anmerkung 
+Es gilt der empfohlene Wert, wenn nicht in anderen besonderen technischen Regeln (z. B. europäische oder 
+nationale Zulassungen auf der Grundlage von DIN EN 1994-1-1) abweichende Angaben enthalten sind. 
+NDP Zu 2.4.1.2(7) Anmerkung 
+Für den Teilsicherheitsbeiwert Mf gilt DIN EN 1993-1-9 unter Berücksichtigung von DIN EN 1993-1-9/NA. Für 
+Kopfbolzendübel ist der Wert Mf,s = 1,25 zu verwenden. 
+NDP Zu 3.1(4) Anmerkung 
+Es sind die Werte nach DIN EN 1992-1-1 zu verwenden. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1994-1-1/NA:2010-12 
+NDP Zu 3.5(2) Anmerkung 
+Es gilt der empfohlene Wert. 
+NCI Zu 5.4.2.4(1)P: 
+Wenn bei seitlich verschieblichen Rahmentragwerken die Schnittgrößen nach Theorie II. Ordnung ermittelt 
+werden müssen, darf der Einfluss der Belastungsgeschichte auf die aus den Imperfektionen resultierenden 
+Beanspruchungen im Endzustand vernachlässigt werden, wenn bei der Schnittgrößenermittlung für den 
+Endzustand die Vorverdrehungen nach DIN EN 1993-1-1:2010-12, 5.3.2 mit dem Faktor 
+nach 
+Gleichung (NA.1) vergrößert werden. 
+,B
+Ed
+B,Ed
+,E
+11
+11
+cr
+cr N
+N
+ (NA.1) 
+Dabei ist 
+NB,Ed die Summe aller im Bauzustand in dem betrachteten Stockwerk übertragenen Bemessungs-
+werte der Vertikallasten; 
+NEd die Summe aller im Endzustand in dem betrachteten Stockwerk übertragenen Bemessungs-
+werte der Vertikallasten; 
+cr,B der ideale Verzweigungslastfaktor im Bauzustand, bezogen auf NB,Ed ; 
+cr,E der ideale Verzweigungslastfaktor im Endzustand bezogen auf NEd . 
+NDP Zu 6.4.3(1)(h) Anmerkung 
+Es gelten die Werte nach Tabelle NA.1.
+Tabelle NA.1  Maximale Profilhöhen h in mm 
+für Träger ohne Kammerbeton 
+Grenzprofilhöhe hmax in mm
+Profil der Reihe Baustahl 
+S235 
+Baustahl 
+S275 
+Baustahl 
+S355 
+Baustahl S420
+und S460 
+IPE 600 550 400 270 
+HEA 800 700 650 500 
+HEB 900 800 700 600 
+NDP Zu 6.6.3.1(1) Anmerkung 
+Für den Bemessungswert der Tragfähigkeit nach Gleichung (6.18) gilt der empfohlene Wert und für den 
+Bemessungswert nach Gleichung (6.19) der Teilsicherheitsbeiwert V = 1,5. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1994-1-1/NA:2010-12 
+NDP Zu 6.6.3.1(3) Anmerkung 
+Es gilt DIN EN 1994-2:2010-12, 6.6.4 und DIN EN 1994-2:2010-12, Anhang C. 
+NDP Zu 6.6.4.1(3) Anmerkung 
+Es dürfen nur Befestigungsmittel verwendet werden, wenn ihre Verwendung in besonderen technischen 
+Regeln unter Bezugnahme auf diese Norm geregelt ist. 
+NCI Zu 6.7.2(1)P 
+Bei Anwendung nichtlinearer Berechnungsverfahren unter Berücksichtigung von geometrischen und physika-
+lischen Nichtlinearitäten darf der Bemessungswert des Tragwiderstandes beim Nachweis von Verbundstützen 
+nach DIN EN 1994-1-1:2010-12, 6.7.2 nach Gleichung (NA.2) ermittelt werden. 
+Rms,Rc,Ry,Rmm
+R
+d ,,,mit1 PfffRRR (NA.2) 
+Dabei sind fc,R und fs,R die rechnerischen Mittelwerte der Baustofffestigkeiten für Beton und Betonstahl. Für 
+Beton darf für Betonfestigkeitsklassen bis C50/60 fc,R = fck angenommen werden, wenn der Teilsicher-
+heitsbeiwert R nach Gleichung (NA-3) ermittelt wird. Für den rechnerischen Mittelwert der Streckgrenze des 
+Baustahls darf fy,R = fyk und für die Tragfähigkeit von Verbundmitteln PRm = PRk zugrunde gelegt werden. 
+Der Teilsicherheitsbeiwert R ist für Verbundstützen für den maßgebenden kritischen Querschnitt nach 
+Gleichung (NA.3) zu ermitteln. 
+dpl,
+mpl,
+R R
+R (NA.3)
+Dabei ist 
+Rpl,d der für den maßgebenden kritischen Schnitt vollplastisch ermittelte Bemessungswert der 
+Querschnittstragfähigkeit nach DIN EN 1994-1-1:2010-12, 6.7.3.2, 
+Rpl,m die für den maßgebenden kritischen Schnitt ermittelte vollplastische Querschnittstragfähigkeit 
+unter Ansatz der rechnerischen Mittelwerte der Werkstofffestigkeiten nach Gleichung (NA.2). 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1994-1-1/NA:2010-12 
+Legende
+1 vollplastisch ermittelte Interaktionskurve unter Ansatz der rechnerischen Mittelwerte der 
+Werkstofffestigkeiten 
+2 Interaktionskurve nach DIN EN 1994-1-1:2010-12, 6.7.3.2 
+Bild NA.1  Zur Ermittlung des Teilsicherheitsbeiwertes R
+Eine ausreichende Tragsicherheit gilt als nachgewiesen, wenn der auf die Bemessungswerte der Einwirkun-
+gen bezogene Laststeigerungsfaktor u größer als der Teilsicherheitsbeiwert R für den Systemwiderstand ist. 
+Der Teilsicherheitsbeiwert R ist dabei für den maßgebenden Bemessungspunkt nach Bild NA.1 und 
+Gleichung (NA.3) zu bestimmen. 
+NCI Zu 6.7.3.3(4) 
+Für die Bestimmung der Kriechzahl darf bei betongefüllten Hohlprofilen die Kriechzahl mit 25 % desjenigen 
+Wertes angenommen werden, der sich nach DIN EN 1992-1-1 ohne Berücksichtigung der Austrocknungs-
+behinderung durch das Hohlprofil ergibt. 
+NCI Zu 6.7.3.5, 6.7.3.6 und Tabelle 6.5 
+Verbundstützen mit ausbetonierten, geschweißten Kastenquerschnitten sind in die Knickspannungslinie b 
+einzustufen. 
+NDP Zu 6.8.2(1) Anmerkung 
+Es gilt die Regelung zu 2.4.1.2(7) dieses Nationalen Anhanges. 
+NDP Zu 6.8.2 Anmerkung 
+Es gilt DIN EN 1993-1-9 unter Berücksichtigung von DIN EN 1993-1-9/NA und DIN EN 1992-1-1 unter 
+Berücksichtigung von DIN EN 1992-1-1/NA. 
+NDP Zu 9.1.1(2)P Anmerkung 
+Es gilt der empfohlene Wert. 
+NDP Zu 9.6(2) Anmerkung 
+Es gilt der empfohlene Wert. 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1994-1-1/NA:2010-12 
+NDP Zu 9.7.3(4) Anmerkung 1 
+Es gilt die Regelung zu 2.4.1.2(6) dieses Nationalen Anhanges. 
+NDP Zu 9.7.3(4) Anmerkungen 2 und 3 
+Die Werte m und k sind besonderen technischen Regelungen (europäischen oder nationalen bauaufsicht-
+lichen Zulassungen auf der Grundlage von DIN EN 1994-1-1) zu entnehmen. 
+NDP Zu 9.7.3(8) Anmerkung 1 
+Es gilt die Regelung zu 2.4.1.2(6) dieses Nationalen Anhanges. 
+NDP Zu 9.7.3(8) Anmerkung 2 
+Die Längsschubtragfähigkeit u,Rd ist besonderen technischen Regeln (europäische oder nationale 
+bauaufsichtliche Zulassungen auf der Grundlage von DIN EN 1994-1-1) zu entnehmen. 
+NDP Zu 9.7.3(9) Anmerkung 
+Es dürfen nur dann Nennwerte des Reibungskoeffizienten verwendet werden, wenn ihre Verwendung in 
+besonderen technischen Regeln (europäische oder nationale bauaufsichtliche Zulassungen auf der 
+Grundlage von DIN EN 1994-1-1) geregelt ist. 
+NDP Zu Anhang A 
+Der Anhang A hat einen normativen Status. 
+NDP Zu Anhang B 
+Der Anhang B hat einen informativen Status. Er bildet die Grundlage für die Festlegung von Bemessungs-
+werten für Verbundmittel und Verbunddecken im Rahmen der Erarbeitung besonderer technischer Regeln 
+(europäische oder nationale bauaufsichtliche Zulassungen auf der Grundlage von DIN EN 1994-1-1). 
+NDP Zu B.2.5(1) Anmerkung 
+Der Teilsicherheitsbeiwert ist nach DIN EN 1990:2010-12, Anhang D zu ermitteln. 
+NDP Zu B.3.6(5) Anmerkung 
+Der Teilsicherheitsbeiwert ist nach DIN EN 1990:2010-12, Anhang D zu ermitteln. 
+NDP Zu Anhang C 
+Der Anhang ist nicht anzuwenden. 
+8

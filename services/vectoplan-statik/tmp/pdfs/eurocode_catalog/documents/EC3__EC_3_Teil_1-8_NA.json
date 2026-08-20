@@ -1,0 +1,523 @@
+{
+  "document_id": "EN_1993-1-8_NA__national_annex__EC_3_Teil_1-8_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-8/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-8 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-8 NA.pdf",
+  "sha256": "7b43ab8d09d07e01c26a7f850f3fd3c9134537243d3e2f8506c2cd3e1696597a",
+  "pages": 20,
+  "text_pages": 20,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 43,
+  "equation_candidate_count": 10,
+  "table_reference_count": 3,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160944+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111160944+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-8 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen;",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1.1",
+      "title": "Verzinkte Schrauben;",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Schraubverbindungen mit Sackloch;",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.13.1",
+      "title": "Schraubverbindungen;",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5.2",
+      "title": "Grenzwert für Kehlnahtdicken;",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1",
+      "title": "Festigkeitsklasse 4.8 DIN EN ISO 13918 340 420",
+      "pdf_page": 7
+    },
+    {
+      "clause": "2",
+      "title": "S235J2+C450 DIN EN ISO 13918 350 450",
+      "pdf_page": 7
+    },
+    {
+      "clause": "3",
+      "title": "S235JR, S235J0, S235J2,",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Stirnfugennähte",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1",
+      "title": "M12 35 40 70",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2",
+      "title": "M16 70 80 170",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3",
+      "title": "M20 110 120 300",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4",
+      "title": "M22 130 145 450",
+      "pdf_page": 13
+    },
+    {
+      "clause": "5",
+      "title": "M24 150 165 600",
+      "pdf_page": 13
+    },
+    {
+      "clause": "6",
+      "title": "M27 200 220 900",
+      "pdf_page": 13
+    },
+    {
+      "clause": "7",
+      "title": "M30 245 270 1 200",
+      "pdf_page": 13
+    },
+    {
+      "clause": "8",
+      "title": "M36 355 390 2 100",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1",
+      "title": "M12 50 60 100 75",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2",
+      "title": "M16 100 110 250 190",
+      "pdf_page": 14
+    },
+    {
+      "clause": "3",
+      "title": "M20 160 175 450 340",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4",
+      "title": "M22 190 210 650 490",
+      "pdf_page": 14
+    },
+    {
+      "clause": "5",
+      "title": "M24 220 240 800 600",
+      "pdf_page": 14
+    },
+    {
+      "clause": "6",
+      "title": "M27 290 320 1 250 940",
+      "pdf_page": 14
+    },
+    {
+      "clause": "7",
+      "title": "M30 350 390 1 650 1 240",
+      "pdf_page": 14
+    },
+    {
+      "clause": "8",
+      "title": "M36 510 560 2 800 2 100",
+      "pdf_page": 14
+    },
+    {
+      "clause": "111",
+      "title": "Lichtbogenhandschweißen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "114",
+      "title": "Metalllichtbogenschweißen mit",
+      "pdf_page": 16
+    },
+    {
+      "clause": "12",
+      "title": "Unterpulverschweißen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "136",
+      "title": "Metall-Aktivgas-Schweißen mit",
+      "pdf_page": 16
+    },
+    {
+      "clause": "141",
+      "title": "Wolfram-Schutzgasschweißen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "15",
+      "title": "Plasmaschweißen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "311",
+      "title": "Gasschweißen mit Sauerstoff-",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1",
+      "title": "GS200 200 380 DIN EN 10340",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2",
+      "title": "GS240",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3",
+      "title": "GE200 200 380 DIN EN 10293",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4",
+      "title": "GE240",
+      "pdf_page": 18
+    },
+    {
+      "clause": "5",
+      "title": "G17Mn5+QT t 50 240 450 DIN EN 10340",
+      "pdf_page": 18
+    },
+    {
+      "clause": "6",
+      "title": "G20Mn5+N t 30 300 480 DIN EN 10340",
+      "pdf_page": 18
+    },
+    {
+      "clause": "7",
+      "title": "G20Mn5+Qt t 100 300 500",
+      "pdf_page": 18
+    },
+    {
+      "clause": "8",
+      "title": "EN-GJS-400-15 250 390 DIN EN 1563",
+      "pdf_page": 18
+    },
+    {
+      "clause": "9",
+      "title": "EN-GJS-400-18 250 390 DIN EN 1563",
+      "pdf_page": 18
+    },
+    {
+      "clause": "10",
+      "title": "EN-GJS-400-18-LT 230 380 DIN EN 1563",
+      "pdf_page": 18
+    },
+    {
+      "clause": "11",
+      "title": "EN-GJS-400-18-RT",
+      "pdf_page": 18
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "M2,S420 = 1,25, unter Verwendung von w = 0,88 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1.",
+      "context": "NDP zu 2.2(2) Anmerkung | Es gelten die Empfehlungen unter Beachtung der folgenden Ergänzungen. | M2,S420 = 1,25, unter Verwendung von w = 0,88 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. | M2,S460 = 1,25, unter Verwendung von w = 0,85 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. | Für Injektionsschrauben ist ein bauaufsichtlicher Verwendbarkeitsnachweis erforderlich.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "M2,S460 = 1,25, unter Verwendung von w = 0,85 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1.",
+      "context": "Es gelten die Empfehlungen unter Beachtung der folgenden Ergänzungen. | M2,S420 = 1,25, unter Verwendung von w = 0,88 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. | M2,S460 = 1,25, unter Verwendung von w = 0,85 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. | Für Injektionsschrauben ist ein bauaufsichtlicher Verwendbarkeitsnachweis erforderlich. | ANMERKUNG Als bauaufsichtliche Verwendbarkeitsnachweise gelten:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Für die Vorspannanforderung für die Kategorien B und C mit der Vorspannkraft Fp,C = 0,7 fub As und für die",
+      "context": "nicht zulässig. | NDP zu 3.4.2(1) Anmerkung | Für die Vorspannanforderung für die Kategorien B und C mit der Vorspannkraft Fp,C = 0,7 fub As und für die | Kategorie E mit der vollen Vorspannkraft ist das kombinierte Vorspannverfahren nach DIN EN 1090-2 anzu- | wenden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Fp,C* = 0,7 fyb As",
+      "context": "Für die Vorspannung als Qualitätssicherungsmaßnahme und für nicht voll vorgespannte Verbindungen der | Kategorie E darf eine Vorspannkraft von bis zu | Fp,C* = 0,7 fyb As | angesetzt werden. Diese kann mit den Vorspannverfahren nach Anhang A aufgebracht werden. | Für die Sicherung der Garnitur gegenüber Lockern reicht in der Regel eine Vorspannung von 50 % von Fp,C*",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "= (600/fu,k) · (0,3+0,4fu,b,k/500) und wenn fu,k fu,b,k erfüllt ist.",
+      "context": "aus, wenn das Verhältnis der Einschraubtiefe zum Durchmesser des Außengewindes mindestens folgenden | Wert erreicht | = (600/fu,k) · (0,3+0,4fu,b,k/500) und wenn fu,k fu,b,k erfüllt ist. | Dabei ist | fu,k der charakteristische Wert der Zugfestigkeit des Bauteils mit Innengewinde in N/mm²;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "DIN EN 1993-1-8:2010-12, Gleichung (6.26) dient dazu, ein mögliches Schraubenversagen auszuschließen.",
+      "context": "ANMERKUNG Literatur zum Kontaktstoß, siehe [5] | NDP zu 6.2.7.2(9) Anmerkung | DIN EN 1993-1-8:2010-12, Gleichung (6.26) dient dazu, ein mögliches Schraubenversagen auszuschließen. | 8",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "unvollständig",
+      "line": "Schweißnahtdicke a = 0,15 t, wenn die als Stegabstand bezeichnete Spaltbreite h zwischen Querschnittsteil",
+      "context": "In Querschnittsteilen mit Dicken t von 10 mm bis 30 mm aus den Stahlsorten S235, S275 oder S355, die | durch Doppelkehlnähte an Stirnplatten angeschlossen sind, genügt für die Druckübertragung die rechnerische | Schweißnahtdicke a = 0,15 t, wenn die als Stegabstand bezeichnete Spaltbreite h zwischen Querschnittsteil | und Stirnplatte nicht größer als 2,0 mm ist. | Sofern in diesem Anschluss des Profils gleichzeitig auch Querkräfte zu übertragen sind, muss die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": "d= Schraubendurchmesser Drehung",
+      "context": "Futterbleche und | Unterlegscheiben) | d= Schraubendurchmesser Drehung | 1 t < 2 d 45° 1/8 | 2 2 d t < 6 d 60° 1/6",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "zusätzlich eine Temperaturverschiebung TG = 10 K zu berücksichtigen und für die Bauteildicke ist der",
+      "context": "Richtlinie DVS 1702 | (4) Für den Nachweis ausreichender Zähigkeit gilt DIN EN 1993-1-10 entsprechend. Dabei ist für Stahlguss | zusätzlich eine Temperaturverschiebung TG = 10 K zu berücksichtigen und für die Bauteildicke ist der | Maximalwert in einem 50 mm breiten Bereich beiderseits der Schweißnaht anzusetzen. Die Zuordnung zu den | Walzstahlsorten ist hinsichtlich der Festigkeit und der Kerbschlagarbeit vorzunehmen. Für Stahlguss ist die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "a Für den Ausnutzungsgrad gilt = Sd/Rd.",
+      "context": "AP2b oder AM2b | (Anzeigen in Reihe) | a Für den Ausnutzungsgrad gilt = Sd/Rd. | b Für Stahlguss. | c Für Gusseisen mit Kugelgraphit.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "4.1",
+      "pdf_page": 5,
+      "line": "M2,S420 = 1,25, unter Verwendung von w = 0,88 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 5,
+      "line": "M2,S460 = 1,25, unter Verwendung von w = 0,85 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 7,
+      "line": "Tabelle 3.1"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 416,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 4796,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2214,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1353,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2",
+        "3.1.1",
+        "3.5",
+        "3.13.1",
+        "4.5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2027,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 6,
+      "characters": 2210,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1925,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1508,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2937,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 10,
+      "characters": 981,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 158,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 3217,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1277,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1492,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2379,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2582,
+      "text_layer": "usable",
+      "clauses": [
+        "111",
+        "114",
+        "12",
+        "136",
+        "141",
+        "15",
+        "311"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1751,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1792,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 158,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 656,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

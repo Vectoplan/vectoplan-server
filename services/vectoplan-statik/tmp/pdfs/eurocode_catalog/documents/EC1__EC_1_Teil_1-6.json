@@ -1,0 +1,979 @@
+{
+  "document_id": "EN_1991-1-6__base_standard__EC_1_Teil_1-6",
+  "eurocode_family": "EC1",
+  "designation": "DIN EN 1991-1-6",
+  "document_kind": "base_standard",
+  "file_name": "EC 1 Teil 1-6.pdf",
+  "relative_path": "EC 1/EC 1 Teil 1-6.pdf",
+  "sha256": "c1bf821042e49f2eeca92125979b24dda21de4f5f7a4d0c37a7ddd21df23b87a",
+  "pages": 33,
+  "text_pages": 33,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 85,
+  "equation_candidate_count": 12,
+  "table_reference_count": 15,
+  "figure_reference_count": 5,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111123837+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117231949+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\6.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich ........................................................................................................... ..................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen .................................................................................................................... ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln........................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe .................................................................................................................... ...............................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole ..................................................................................................................... .......................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Einteilung der Einwirkungen ................................................................................................... .......... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines................................................................................................................. ........................ 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Bausführungslasten .......................................................................................................... ................. 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituationen und Grenzzustände.................................................................................. 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines  Festlegung der Bemessungssituationen................................................................ 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Grenzzustände der Tragfähigkeit............................................................................................. ......... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Grenzzustände der Gebrauchstauglichkeit ..................................................................................... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Darstellung der Einwirkungen.................................................................................................. ......... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines................................................................................................................. ........................ 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Einwirkung auf tragende und nicht tragende Bauteile während der Montage............................. 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Geotechnische Einwirkungen .................................................................................................. ......... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Einwirkung infolge Vorspannung .............................................................................................. ....... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5",
+      "title": "Vorverformungen............................................................................................................. ................... 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6",
+      "title": "Temperatur, Schwinden, Einflüsse aus Hydratation....................................................................... 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.7",
+      "title": "Windeinwirkungen............................................................................................................ .................. 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.8",
+      "title": "Schneelasten................................................................................................................ ....................... 20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.9",
+      "title": "Einwirkungen verursacht durch Wasser........................................................................................ .. 20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.10",
+      "title": "Einwirkung infolge atmosphärischer Eisbildung............................................................................ 22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.11",
+      "title": "Bauausführungslasten....................................................................................................... ................ 22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.12",
+      "title": "Außergewöhnliche Einwirkungen.............................................................................................. ....... 25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.13",
+      "title": "Einwirkungen aus Erdbeben .................................................................................................. ........... 26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerungskomitees mit Repräsentanten der",
+      "pdf_page": 5
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsregeln",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Zusätzliche Begriffe und Definitionen, die insbesondere für diese Norm gelten",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.2.1",
+      "title": "Hilfskonstruktionen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.2.2",
+      "title": "Bauausführungslasten",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.5.2.3",
+      "title": "Allgemeine Kolktiefe",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.5.2.4",
+      "title": "Lokale Kolktiefe",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2",
+      "title": "Einteilung der Einwirkungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4.2",
+      "title": "Eigengewicht ständig direkt",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.3",
+      "title": "Baugrund-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.3",
+      "title": "Erddruck",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.4",
+      "title": "Vorspannung",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.5",
+      "title": "Vorverfor-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.6",
+      "title": "Temperatur Veränder-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.6",
+      "title": "Schwinden/",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.7",
+      "title": "Windein-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.8",
+      "title": "Schnee-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.9",
+      "title": "Einwirkungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.12",
+      "title": "Ausserge-",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.13",
+      "title": "Erdbeben",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2",
+      "title": "Bausführungslasten",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3",
+      "title": "Bemessungssituationen und Grenzzustände",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines  Festlegung der Bemessungssituationen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3",
+      "title": "Tage",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3",
+      "title": "Monate (aber > 3 Tage)",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1",
+      "title": "Jahr (aber > 3 Monate)",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3.2",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3.3",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 18
+    },
+    {
+      "clause": "4",
+      "title": "Darstellung der Einwirkungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.2",
+      "title": "Einwirkung auf tragende und nicht tragende Bauteile während der Montage",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.3",
+      "title": "Geotechnische Einwirkungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.4",
+      "title": "Einwirkung infolge Vorspannung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.5",
+      "title": "Vorverformungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.6",
+      "title": "Temperatur, Schwinden, Einflüsse aus Hydratation",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.7",
+      "title": "Windeinwirkungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.8",
+      "title": "Schneelasten",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.9",
+      "title": "Einwirkungen verursacht durch Wasser",
+      "pdf_page": 22
+    },
+    {
+      "clause": "1",
+      "title": "Druck infolge Wasserströmung ( p)",
+      "pdf_page": 23
+    },
+    {
+      "clause": "2",
+      "title": "Objekt",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3",
+      "title": "Allgemeine Kolktiefe",
+      "pdf_page": 23
+    },
+    {
+      "clause": "4",
+      "title": "Lokale Kolktiefe",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5",
+      "title": "Gesamte Kolktiefe",
+      "pdf_page": 23
+    },
+    {
+      "clause": "4.10",
+      "title": "Einwirkung infolge atmosphärischer Eisbildung",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.11",
+      "title": "Bauausführungslasten",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.11.1",
+      "title": "Allgemeines",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4.11.2",
+      "title": "Bausführungslasten beim Betonieren",
+      "pdf_page": 26
+    },
+    {
+      "clause": "4.12",
+      "title": "Außergewöhnliche Einwirkungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "4.13",
+      "title": "Einwirkungen aus Erdbeben",
+      "pdf_page": 28
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 8,
+      "equation_number": "4",
+      "line": "2.2 (4)",
+      "context": "Regelung Bezug | 1.1(3) Bemessungsregeln für Hilfskonstruktionen | 2.2 (4) | ANMERKUNG 1 | ",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "hervorgerufen wird, sind in der Regel mit Gleichung (4.1) zu bestimmen. Siehe auch Bild 4.1.",
+      "context": "(4) Die Größe der gesamten Horizontalkraft F | wa (N), die durch das Anströmen vertikaler Flächen | hervorgerufen wird, sind in der Regel mit Gleichung (4.1) zu bestimmen. Siehe auch Bild 4.1. | 2 | wawawa 2/1 vbhkF (4.1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "4.1",
+      "line": "wawawa 2/1 vbhkF (4.1)",
+      "context": "hervorgerufen wird, sind in der Regel mit Gleichung (4.1) zu bestimmen. Siehe auch Bild 4.1. | 2 | wawawa 2/1 vbhkF (4.1) | 20 | DIN EN 1991-1-6:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "= 1,44 für einen Gegenstand mit einem quadratischen oder rechteckigen horizontalen",
+      "context": "b die Breite des Bauteils, in m; | k der Formbeiwert, wobei | = 1,44 für einen Gegenstand mit einem quadratischen oder rechteckigen horizontalen | Querschnitt, und | k",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "= 0,70 für einen Gegenstand mit einem kreisförmigen horizontalen Querschnitt ist. k",
+      "context": "Querschnitt, und | k | = 0,70 für einen Gegenstand mit einem kreisförmigen horizontalen Querschnitt ist. k | Legende | 1 Druck infolge Wasserströmung ( p)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "4.2",
+      "line": "wadebdebdeb vAF (4.2)",
+      "context": "Beispiel für einen rechteckigen Gegenstand (z. B. Kofferdamm) folgendermaßen berechnet wird | 2 | wadebdebdeb vAF (4.2) | 21 | DIN EN 1991-1-6:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 1 Gleichung (4.2) darf unter Berücksichtigung der Umgebungsbedingungen für das Einzelprojekt",
+      "context": "Adeb ist die Querschnittsfläche, die vom sich ablagernden Geröll oder einem Lehrgerüst gebildet wird, | im m2. | ANMERKUNG 1 Gleichung (4.2) darf unter Berücksichtigung der Umgebungsbedingungen für das Einzelprojekt | angepasst werden. | ANMERKUNG 2 Der empfohlene Wert für deb ist 666 kg/m3.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "cb,k = 0,2 kN/m2;",
+      "context": "empfohlen: |  q | cb,k = 0,2 kN/m2; |  Fcb,k = 100 kN | wobei für eine genaue",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": " Fcb,k = 100 kN",
+      "context": " q | cb,k = 0,2 kN/m2; |  Fcb,k = 100 kN | wobei für eine genaue | Bemessung Fcb,k über eine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "cc,k = 0,5",
+      "context": "mit einem charakteristischen | Mindestwert von q | cc,k = 0,5 | kN/m2 modelliert werden. | Eine Anzahl von CEN-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "µmin = 0",
+      "context": "ANMERKUNG 2 Wenn keine genaueren Werte aus Versuchen für Bewegungen unter Berücksichtigung sehr geringer | Oberflächenreibung (z.B. PTFE - Polytetrafluorethen) verfügbar sind, werden die folgenden Werte empfohlen: | µmin = 0 | µmax = 0,04 | 29",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "µmax = 0,04",
+      "context": "Oberflächenreibung (z.B. PTFE - Polytetrafluorethen) verfügbar sind, werden die folgenden Werte empfohlen: | µmin = 0 | µmax = 0,04 | 29 | DIN EN 1991-1-6:2010-12",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 13,
+      "line": "ANMERKUNG Tabelle 2.1 enthält die Einteilungen von Einwirkungen (andere als Bauausführungslasten)."
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 14,
+      "line": "Tabelle 2.1 Einteilung der Einwirkungen (andere als Bauausführungslasten)"
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 15,
+      "line": "ANMERKUNG 1 Tabelle 2.2 enthält eine Einteilung für Bauausführungslasten."
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 15,
+      "line": "Tabelle 2.2  Einteilung der Bauausführungslasten"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 15,
+      "line": "ANMERKUNG 2 Tabelle 4.1 enthält die volle Beschreibung und Einteilung für Bauausführungslasten."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 16,
+      "line": "Empfohlene Wiederkehrperioden klimatischer Einwirkungen sind in Tabelle 3.1 in Abhängigkeit der nominellen Zeitdauer"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 17,
+      "line": "Tabelle 3.1  Empfohlene Wiederkehrperioden zur Festlegung"
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 24,
+      "line": "ANMERKUNG 3 Siehe auch Tabelle 2.2."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 24,
+      "line": "(2) Bauausführungslasten, die zu berücksichtigen sind, werden in Tabelle 4.1 angegeben."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 25,
+      "line": "Tabelle 4.1  Darstellung der Bauausführungslasten (Qc)"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 26,
+      "line": "Tabelle 4.1 (fortgesetzt)"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 27,
+      "line": "aus Tabelle 4.2 und für Frischbeton EN 1991-1-1: 2002, Tabelle A.1 entnommen werden. Andere Werte sind festzulegen,"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 27,
+      "line": "ANMERKUNG 4 Es ist beabsichtigt, die Lasten nach (1), (2) und (3), wie sie in Tabelle 4.2 angegeben sind, so"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 27,
+      "line": "Tabelle 4.2  Empfehlungen für die charakteristischen Werte der Einwirkungen aus"
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 32,
+      "line": "Eigenschaften und Darstellungen von denen, die in Tabelle 2.2 und 4.1 aufgeführt sind, unterscheiden. Die"
+    }
+  ],
+  "figures": [
+    {
+      "label": "4.1",
+      "pdf_page": 22,
+      "line": "hervorgerufen wird, sind in der Regel mit Gleichung (4.1) zu bestimmen. Siehe auch Bild 4.1."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 23,
+      "line": "Bild 4.1  Druck und Kraft infolge Wasserströmung"
+    },
+    {
+      "label": "A2.1",
+      "pdf_page": 30,
+      "line": "Durchbiegung (siehe Bild A2.1) festgelegt werden."
+    },
+    {
+      "label": "A2.1",
+      "pdf_page": 30,
+      "line": "(Bild A2.1a);"
+    },
+    {
+      "label": "A2.1",
+      "pdf_page": 30,
+      "line": "(Bild A2.1b)."
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1117,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2037,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2129,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6890,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.2",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4",
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6",
+        "4.7",
+        "4.8",
+        "4.9",
+        "4.10",
+        "4.11",
+        "4.12",
+        "4.13"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 3364,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3541,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2384,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1680,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1455,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2916,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2094,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2391,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5.2.2",
+        "1.5.2.3",
+        "1.5.2.4",
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1120,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1980,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "4.3",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6",
+        "4.6",
+        "4.7",
+        "4.8",
+        "4.9",
+        "4.12",
+        "4.13"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1805,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2524,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2554,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3",
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 3339,
+      "text_layer": "usable",
+      "clauses": [
+        "3.2",
+        "3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 3482,
+      "text_layer": "usable",
+      "clauses": [
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 3265,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "4.3",
+        "4.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 3211,
+      "text_layer": "usable",
+      "clauses": [
+        "4.5",
+        "4.6",
+        "4.7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2921,
+      "text_layer": "usable",
+      "clauses": [
+        "4.8",
+        "4.9"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1225,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2456,
+      "text_layer": "usable",
+      "clauses": [
+        "4.10",
+        "4.11",
+        "4.11.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2395,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 26,
+      "characters": 3257,
+      "text_layer": "usable",
+      "clauses": [
+        "4.11.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2486,
+      "text_layer": "usable",
+      "clauses": [
+        "4.12"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1937,
+      "text_layer": "usable",
+      "clauses": [
+        "4.13"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2195,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1454,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2629,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 3356,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 287,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

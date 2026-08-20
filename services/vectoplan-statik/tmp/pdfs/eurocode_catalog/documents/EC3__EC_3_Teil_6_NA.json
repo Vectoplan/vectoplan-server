@@ -1,0 +1,279 @@
+{
+  "document_id": "EN_1993-6_NA__national_annex__EC_3_Teil_6_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-6/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 6 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 6 NA.pdf",
+  "sha256": "be2eb823507fe0a61d526b2fcbfd29ba26c43f165f78efb15ca7b8975a35b917",
+  "pages": 9,
+  "text_pages": 9,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 11,
+  "equation_candidate_count": 10,
+  "table_reference_count": 9,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161331+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161331+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 6 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Reduzierte Schwingbeiwerte",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Zusammenwirken von Kranen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Lastansatz in der Bemessungssituation Erdbeben",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Stahlsorten bis S700",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.5",
+      "title": "Maßabweichungen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.8",
+      "title": "Überlagerung mit lokaler Biegespannung im Untergurt infolge Radlasten",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.3",
+      "title": "Einteilung der Einwirkungen  Ergänzung für Grenzzustand der Gebrauchstauglichkeit",
+      "pdf_page": 4
+    },
+    {
+      "clause": "8.5.2",
+      "title": "Kranklassen für starre Schienenbefestigungen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "8.5.3",
+      "title": "Dehnfugen",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Inspektionsintervallen auszugehen. Davon abweichende Teilsicherheitsbeiwerte sind an die Mindestanzahl",
+      "pdf_page": 8
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "der Kranbahn bis in die Fundamente weiterleiten, dürfen Schwingbeiwerte 1,1 um = 0,1 reduziert",
+      "context": "NCI zu 2.3.1 Reduzierte Schwingbeiwerte | Für den Nachweis der Unterstützungs- und Aufhängungskonstruktionen von Kranbahnen, die die Lasten von | der Kranbahn bis in die Fundamente weiterleiten, dürfen Schwingbeiwerte 1,1 um = 0,1 reduziert | werden. Die Bemessung der Gründungen darf ohne Ansatz der Schwingbeiwerte erfolgen. | NCI zu 2.3.1 Zusammenwirken von Kranen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M0 = 1,00;",
+      "context": "Mi für Beanspruchbarkeit im Grenzzustand der Tragfähigkeit | Es gelten folgende Teilsicherheitsbeiwerte Mi für die Beanspruchbarkeit von Kranbahnen: | M0 = 1,00; | M1 = 1,10; | M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M1 = 1,10;",
+      "context": "Es gelten folgende Teilsicherheitsbeiwerte Mi für die Beanspruchbarkeit von Kranbahnen: | M0 = 1,00; | M1 = 1,10; | M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA; | M3 = 1,25;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA;",
+      "context": "M0 = 1,00; | M1 = 1,10; | M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA; | M3 = 1,25; | M3,ser = 1,10;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M3 = 1,25;",
+      "context": "M1 = 1,10; | M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA; | M3 = 1,25; | M3,ser = 1,10; | M4 ist jeweils über den bauaufsichtlichen Verwendbarkeitsnachweis festzulegen;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M3,ser = 1,10;",
+      "context": "M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA; | M3 = 1,25; | M3,ser = 1,10; | M4 ist jeweils über den bauaufsichtlichen Verwendbarkeitsnachweis festzulegen; | M5 = 1,00;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M5 = 1,00;",
+      "context": "M3,ser = 1,10; | M4 ist jeweils über den bauaufsichtlichen Verwendbarkeitsnachweis festzulegen; | M5 = 1,00; | M6,ser = 1,00; | M7 = 1,10.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M6,ser = 1,00;",
+      "context": "M4 ist jeweils über den bauaufsichtlichen Verwendbarkeitsnachweis festzulegen; | M5 = 1,00; | M6,ser = 1,00; | M7 = 1,10. | 6",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "M7 = 1,10.",
+      "context": "M5 = 1,00; | M6,ser = 1,00; | M7 = 1,10. | 6",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "unvollständig",
+      "line": "Als Standardfall für Kranbahnen ist von einem Teilsicherheitsbeiwert Mf = 1,15 verbunden mit",
+      "context": "Es gilt die Empfehlung. | NDP zu 9.2(2)P Teilsicherheitsbeiwerte Mf für Ermüdungsfestigkeit | Als Standardfall für Kranbahnen ist von einem Teilsicherheitsbeiwert Mf = 1,15 verbunden mit | 3 Inspektionsintervallen auszugehen. Davon abweichende Teilsicherheitsbeiwerte sind an die Mindestanzahl | der Inspektionsintervalle gemäß Tabelle NA.3 geknüpft.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.2",
+      "pdf_page": 3,
+      "line": "3.2.4(1) Tabelle 3.2 Sollwerte ZEd für Eigenschaften in Dickenrichtung"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 5,
+      "line": "NDP zu 3.2.4(1) Tabelle 3.2, Sollwerte ZEd für Eigenschaften in Dickenrichtung"
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 7,
+      "line": "Ergänzend zu DIN EN 1991-3:2010-12, Tabelle 2.2 darf die angegebene Tabelle NA.1 verwendet werden."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 7,
+      "line": "Tabelle 7.1 und Tabelle 7.2 mit folgender Änderung:"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 7,
+      "line": "Tabelle 7.1 und Tabelle 7.2 mit folgender Änderung:"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 7,
+      "line": "Für die Berechnung der Verformungen nach Tabelle 7.1, Zeile b) brauchen nur die Lasten aus"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 7,
+      "line": "Kranbetrieb berücksichtigt zu werden. Die Grenzwerte der Verformungen nach Tabelle 7.1, Zeile b)"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 8,
+      "line": "Für die Berechnung der Verformungen nach Tabelle 7.1, Zeile e) brauchen nur die Lasten aus"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 8,
+      "line": "In Tabelle 7.2, Zeile a) wird der Grenzwert für vertikale Verformungen auf z L/500 und z 25 mm"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 404,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1541,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1749,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1660,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2",
+        "2.3.1",
+        "2.3.1",
+        "2.3.1",
+        "3.1",
+        "3.2.5",
+        "5.8",
+        "7.3",
+        "8.5.2",
+        "8.5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2296,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1843,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1317,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1678,
+      "text_layer": "usable",
+      "clauses": [
+        "3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 9,
+      "characters": 312,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

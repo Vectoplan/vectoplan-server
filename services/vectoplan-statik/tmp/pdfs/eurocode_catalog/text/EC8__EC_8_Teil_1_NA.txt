@@ -1,0 +1,1203 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Januar 2011 
+DIN EN 1998-1/NA 
+ICS91.120.25 
+Nationaler Anhang -
+National festgelegte Parameter-
+Ersatzvermerk 
+siehe unten 
+Eurocode 8: Auslegung von Bauwerken gegen Erdbeben-
+DIN 
+Teil 1: Grundlagen, Erdbebeneinwirkungen und Regeln für Hochbau 
+National Annex -
+Nationally determined parameters-
+Eurocode 8: Design of structures for earthquake resistance­
+Part 1: General rules, Seismic actions and rules for buildings 
+Annexe Nationale-
+Parametres determines au plan nationai-
+Eurocode 8: Calcul des structures pour leur resistance aux seismes­
+Partie 1: Regles generales, actions sismiques et regles pour les bätiments 
+Ersatzvermerk 
+Ersatz ftlr DIN EN 1998-1/NA:201 0-08; 
+mit DIN EN 1998-1:2010-12 und DIN EN 1998-5:2010-12 Ersatz fardie 2010-12 zurtlckgezogene Norm 
+DIN 4149:2005-04 
+Gesamtumfang 31 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jede Art der Vervielfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN oeutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 14 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1738038
+
+===== PDF-SEITE 2 =====
+DIN EN 1998-1/NA:2011-01 
+Vorwort 
+Dieses Dokument wurde vom NA 005-51-06 AA Erdbeben; Sonderfragen (Sp CEN/TC 250/SC 8) erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1998-1:2010-12 Eurocode 8: Auslegung von 
+Bauwerken gegen Erdebeben  Teil 1: Grundlagen, Erdbebeneinwirkungen und Regeln für Hochbauten.
+Die Europäische Norm EN 1998-1 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: National determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA.2.1. Darüber hinaus enthält dieser nationale 
+Anhang ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1998-1:2010-12 
+(en: non-contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1998-1:2010-12. 
+DIN EN 1998-1:2010-12 und dieser Nationale Anhang ersetzen zusammen mit DIN EN 1998-5:2010-12 und 
+DIN EN 1998-5/NA die DIN 4149:2005-04. 
+Änderungen 
+Gegenüber DIN 4149:2005-04 wurden folgende Änderungen vorgenommen: 
+a) teilweise Übernahme der Regelungen aus DIN 4149:2005-04 zur nationalen Anwendung von 
+DIN EN 1998-1:2010-12. 
+Frühere Ausgaben 
+DIN 4149: 1981-04; 2005-04 
+DIN 4149-1:1981-04 
+DIN 4149-1/A1: 1992-12 
+DI EN 1998-1/NA: 2010-08 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1998-1/NA:2011-01 
+NA.1 Anwendungsbereich 
+Dieser nationale Anhang enthält nationale Festlegungen für den Entwurf, Bemessung und Konstruktion von 
+Bauwerken des Hoch- und Ingenieurbaus in Erdbebengebieten , die bei der Anwendung von 
+DIN EN 1998-1:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1998-1:2010-12. 
+NA.2 Nationale Festlegungen zur Anwendung von DIN EN 1998-1:2010-12 
+NA.2.1 Allgemeines 
+DIN EN 1998-1:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP). 
+Tabelle NA.1  Nationale Festlegungen  Textstellenbezüge in EN 1998-1 
+Bezug Gegenstand 
+1.1.2(7) Informative Anhänge A und B. 
+2.1(1)P 
+Referenz-Wiederkehrperiode TNCR der Erdbebeneinwirkung für die Forderung nach 
+Standsicherheit (oder gleichwertig, Referenz-Überschreitungswahrscheinlichkeit in 
+50 Jahren, PNCR). 
+2.1(1)P 
+Referenz-Wiederkehrperiode TDLR der Erdbebeneinwirkung für die Forderung nach 
+Schadensbegrenzung (oder gleichwertig, Referenz-Überschreitungswahrscheinlich-
+keit in 10 Jahren, PDLR). 
+3.1.1(4) 
+Bedingungen, damit Baugrunduntersuchungen zusätzlich zu denjenigen, die für 
+nichtseismische Einwirkungen notwendig sind, entfallen können und vordefinierte 
+Baugrundklassen verwendet werden dürfen. 
+3.1.2(1) 
+Baugrundklassifizierungsschema zur Berücksichtigung des Baugrundes und des 
+Geologischen Untergrundes; Festlegung der Werte für die Parameter S, TB, TC und 
+TD zur Definition von horizontalen und vertikalen elastischen Antwortspektren nach 
+3.2.2.2 und 3.2.2.3. 
+3.2.1(1), (2),(3) Erdbebenzonenkarten mit zugehörigen Referenz-Bodenbeschleunigungen. 
+3.2.1(4) Fälle geringer Seismizität. 
+3.2.1(5) Fälle sehr geringer Seismizität. 
+3.2.2.1(4), 
+3.2.2.2(1)P 
+Parameter S, TB, TC, TD zur Definition der Form von horizontalen elastischen 
+Antwortspektren. 
+3.2.2.3(1)P Parameter avg, TB, TC, TD zur Definition der Form von vertikalen elastischen 
+Antwortspektren. 
+3.2.2.5(4)P Beiwert für den unteren Grenzwert von Bemessungs-Spektralwerten. 
+4.2.3.2(8) 
+Verweis auf Definitionen des Steifigkeitsmittelpunktes und des Torsionsradius für 
+mehrgeschossige Gebäude, welche die Bedingungen (a) und (b) in 4.2.3.2(8) erfüllen 
+bzw. nicht erfüllen 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1998-1/NA:2011-01 
+Tabelle NA.1 (fortgesetzt) 
+4.2.4(2)P Werte von für Hochbauten. 
+4.2.5(5)P Bedeutungsbeiwert I für Hochbauten. 
+4.3.3.1(4) 
+Entscheidung ob nichtlineare Berechnungsmethoden für die Auslegung nicht 
+schwingungsisolierter Gebäude verwendet werden dürfen. Verweis auf das 
+Deformationsvermögen von Bauteilen und die zugeordneten Teilsicherheitsbeiwerte 
+im Grenzzustand der Tragfähigkeit für die Auslegung oder Evaluierung auf Basis 
+nichtlinearer Berechnungsmethoden. 
+4.3.3.1(8) Grenzwert des Bedeutungsbeiwerts I, bis zu dem die Berechnung mit zwei ebenen 
+Modellen zulässig ist. 
+4.4.2.5(2) Beiwert für die Überfestigkeit Rd von horizontalen Scheiben. 
+4.4.3.2(2) Abminderungsbeiwert für Verformungen beim Nachweis der Begrenzung von 
+Schäden. 
+5.2.1(5) Duktilitätsklassen für Betonbauten. 
+5.2.2.2(10) qo-Wert für Betonbauten, die einem besonderen Qualitätssicherungsplan unterliegen. 
+5.2.4(1), (3) Materialsicherheitsbeiwerte für Betonbauten in der Erdbebenbemessungssituation. 
+5.4.3.5.2(1) Minimale Netzbewehrung großer leichtbewehrter Stahlbetonwände. 
+5.8.2(3) Minimale Querschnittsabmessungen von Betonfundamentbalken. 
+5.8.2(4) Minimale Dicke und Bewehrungsgrad von Betonfundamentplatten. 
+5.8.2(5) Minimaler Bewehrungsgrad von Betonfundamentbalken. 
+5.11.1.3.2(3) Duktilitätsklasse von vorgefertigten Wandscheibensystemen. 
+5.11.1.4 q-Werte von Fertigteilsystemen. 
+5.11.1.5(2) Erdbebeneinwirkung während der Errichtung von Bauwerken aus Fertigteilen. 
+5.11.3.4(7)e Minimale Längsbewehrung in vermörtelten Verbindungen von großen Wandscheiben. 
+6.1.2(1) 
+Höchstwert von q anwendbar für das Auslegungskonzept für niedrig-dissipatives 
+Tragwerksverhalten; Einschränkung der anwendbaren Auslegungskonzepte; 
+regionale Einschränkungen für die Wahl der anwendbaren Duktilitätsklassen für 
+Bauwerke aus Stahl. 
+6.1.3(1) Materialsicherheitsbeiwerte für Stahlbauten in der Erdbeben-Bemessungssituation. 
+6.2(3) Überfestigkeitsbeiwert für die Kapazitätsbemessung von Stahlbauten. 
+6.2(7) Angaben zur Verwendung von EN 1993-1-10:2004 bei der Erdbebenbemessung. 
+6.5.5(7) Hinweise auf ergänzende Regeln für zulässige Anschlussbemessung. 
+6.7.4(2) Überkritische Resttragfähigkeit von knickgefährdeten Druckdiagonalen in 
+Stahl-Rahmentragwerken mit V-Verbänden. 
+7.1.2(1) 
+Höchstwert von q für das Auslegungskonzept für niedrig-dissipatives 
+Tragwerksverhalten; Einschränkungen der anwendbaren Auslegungskonzepte; 
+regionale Einschränkungen für die Wahl der anwendbaren Duktilitätsklassen für 
+Verbundtragwerke aus Stahl und Beton. 
+7.1.3(1), (3) Teilsicherheitsbeiwerte für Werkstoffe in Verbundtragwerken aus Stahl und Beton bei 
+der Erdbebenbemessung. 
+7.1.3(4) Überfestigkeitsfaktoren für die Kapazitätsbemessung von Verbundtragwerken aus 
+Stahl und Beton. 
+7.7.2(4) Abminderungsfaktor für die Steifigkeit des Betonteils von Verbundstützen-
+querschnitten. 
+8.3(1) Duktilitätsklassen für Holzbauten. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1998-1/NA:2011-01 
+Tabelle NA.1 (fortgesetzt) 
+9.2.1(1) Typen von Mauerwerkssteinen mit ausreichender Robustheit. 
+9.2.2(1) Mindestfestigkeit von Mauerwerkssteinen. 
+9.2.3(1) Mindestfestigkeit des Mörtels in Mauerwerksbauten. 
+9.2.4(1) Alternative Klassen von Stoßfugen in Mauerwerk 
+9.3(2) Verwendung unbewehrten Mauerwerks, das allein den Vorschriften von EN 1996 
+genügt. 
+9.3(2) Effektive Mindestdicke unbewehrter Mauerwerkswände die allein den Vorschriften 
+von EN 1996 genügen. 
+9.3(3) Größtwert der Bodenbeschleunigung für die Verwendung unbewehrten Mauerwerks, 
+das die Vorschriften von EN 1998-1 erfüllt. 
+9.3(4),Tabelle 9.1 q-Beiwerte in Mauerwerksbauten. 
+9.3(4), Tabelle 9.1 q-Beiwerte für Bauten mit Mauerwerkssystemen, mit erhöhter Duktilität. 
+9.5.1(5) Geometrische Anforderungen für Schubwände aus Mauerwerk. 
+9.6(3) Materialsicherheitsbeiwerte für Mauerwerksbauten in der Erdbebenbemessungs-
+situation. 
+9.7.2(1) Maximal zulässige Anzahl der Geschosse und Mindestfläche der Schubwände für 
+einfache Mauerwerksbauten. 
+9.7.2(2)b Mindest-Seitenverhältnis im Grundriss für einfache Mauerwerksbauten. 
+9.7.2(2)c Größtwert von Deckenrücksprüngen im Grundriss für einfache Mauerwerksbauten. 
+9.7.2(5) Größter zulässiger Unterschied der Masse und der Wandfläche benachbarter 
+Geschosse bei einfachen Mauerwerksbauten 
+10.3(2)P Vergrößerungsfaktor der erdbebenbedingten Verschiebungen für die Auslegung von 
+Einrichtungen zur Schwingungsisolierung. 
+Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1998-1:2010-12. Diese sind durch ein vorangestelltes NCI gekennzeichnet. 
+Tabelle NA.2
+Bezug Gegenstand 
+1.2.1 Normative Verweisungen 
+3.1.1 Allgemeines 
+3.1.3 
+Geologische Untergrundklassen; zur Festlegung der für das Spektrum 
+charakteristischen Untergrundverhältnisse (als Kombination von Baugrund und 
+geologischem Untergrund) 
+9.4(6) Tragwerksberechnung 
+9.7.2(3) Regeln für einfache Mauerwerksbauten 
+Anhang NA.D Vereinfachte Auslegungsregeln für einfache Bauten des üblichen Hochbaus 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1998-1/NA:2011-01 
+NA.2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1998-1:2010-12 bzw. ergänzt 
+diese. 
+NCI zu 1.2.1 Normative Verweisungen 
+NA DIN EN 771-1:2005-05, Festlegungen für Mauersteine  Teil 1: Mauerziegel
+NA DIN EN 771-2:2005-05, Festlegungen für Mauersteine  Teil 2: Kalksandsteine
+NA DIN EN 771-3:2005-05, Festlegungen für Mauersteine  Teil 3: Mauersteine aus Beton (mit dichten und 
+porigen Zuschlägen)
+NA DIN EN 771-4:2005-05, Festlegungen für Mauersteine  Teil 4: Porenbetonsteine
+NA DIN EN 1998-2, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben  Teil 2: Brücken
+NA DIN V 105-100:2005-10, Mauerziegel  Teil 100: Mauerziegel mit besonderen Eigenschaften
+NA DIN V 106:2005-10, Kalksandsteine mit besonderen Eigenschaften
+NA DIN V 4165-100:2005-10, Porenbetonsteine  Teil 100: Plansteine und Planelemente mit besonderen 
+Eigenschaften
+NA DIN V 18151-100:2005-10, Hohlblöcke aus Leichtbeton  Teil 100: Hohlblöcke mit besonderen 
+Eigenschaften
+NA DIN V 18152-100:2005-10, Vollsteine und Vollblöcke aus Leichtbeton  Teil 100: Vollsteine und 
+Vollböcke mit besonderen Eigenschaften
+NA DIN V 18153-100:2005-10, Mauersteine aus Beton (Normalbeton)  Teil 100: Mauersteine mit 
+besonderen Eigenschaften
+NA DIN V 18580, Mauermörtel mit besonderen Eigenschaften
+NA DIN V 20000-401, Anwendung von Bauprodukten in Bauwerken  Teil 401: Regeln für die Verwendung 
+von Mauerziegeln nach DIN EN 771-1:2005-05
+NA DIN V 20000-402, Anwendung von Bauprodukten in Bauwerken  Teil 402: Regeln für die Verwendung 
+von Kalksandsteinen nach DIN EN 771-2:2005-05
+NA DIN V 20000-403, Anwendung von Bauprodukten in Bauwerken  Teil 403: Regeln für die Verwendung 
+von Mauersteinen aus Beton nach DIN EN 771-3:2005-05
+NA DIN V 20000-404, Anwendung von Bauprodukten in Bauwerken  Teil 404: Regeln für die Verwendung 
+von Porenbetonsteinen nach DIN EN 771-4:2005-05
+NA DIN V 20000-412:2004-03, Anwendung von Bauprodukten in Bauwerken  Teil 412: Regeln für die 
+Verwendung von Mauermörtel nach DIN EN 998-2:2003-09
+NDP zu 1.1.2(7) Anwendungsbereich von EN 1998-1 
+Die Anhänge A und B behalten ihren informativen Charakter. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 2.1(1)P Grundlegende Anforderungen 
+Es gelten die empfohlenen Werte TNCR 475 Jahre, PNCR 10 %. Der Nachweis der Schadensbegrenzung 
+(TDLR) entfällt. 
+NDP zu 3.1.1(4) Allgemeines 
+Bei unzureichender Kenntnis des Untergrundes darf ohne gesonderte Baugrunduntersuchungen die 
+Baugrundklasse C nach 3.1.2(1) angenommen werden, wenn es sich nicht um den Sonderfall nach 3.1.2(1) 
+handelt. In diesem Fall ist der Einfluss des Baugrundes auf die Erdbebeneinwirkungen gesondert zu 
+untersuchen und zu berücksichtigen. 
+NCI zu 3.1.1 Allgemeines 
+(NA.5) Der Einfluss der örtlichen Untergrundverhältnisse auf die Erdbebeneinwirkung ist generell durch die 
+Einstufung in eine der nachfolgend unter 3.1.3 beschriebenen geologischen Untergrundklassen R, T oder S 
+und in eine der drei in 3.1.2 beschriebenen Baugrundklassen A, B oder C zu berücksichtigen. 
+(NA.6) Als Kombinationen von Baugrund und geologischem Untergrund sind die Untergrundverhältnisse A-R, 
+B-R, C-R, B-T, C-T oder C-S vorgesehen. 
+NDP zu 3.1.2(1) Feststellung der Baugrundklassen 
+(i) Der Baugrund wird in Deutschland nach folgenden Baugrundklassen unterschieden: 
+Baugrundklasse A 
+Unverwitterte (bergfrische) Festgesteine mit hoher Festigkeit. 
+Dominierende Scherwellengeschwindigkeiten liegen höher als etwa 800 m/s. 
+Baugrundklasse B 
+Mäßig verwitterte Festgesteine bzw. Festgesteine mit geringerer Festigkeit. 
+oder 
+grobkörnige (rollige) bzw. gemischtkörnige Lockergesteine mit hohen Reibungseigenschaften in dichter 
+Lagerung bzw. in fester Konsistenz (z. B. glazial vorbelastete Lockergesteine). 
+Dominierende Scherwellengeschwindigkeiten liegen etwa zwischen 350 m/s und 800 m/s. 
+Baugrundklasse C 
+Stark bis völlig verwitterte Festgesteine. 
+oder 
+grobkörnige (rollige) bzw. gemischtkörnige Lockergesteine in mitteldichter Lagerung bzw. in mindestens 
+steifer Konsistenz. 
+oder 
+feinkörnige (bindige) Lockergesteine in mindestens steifer Konsistenz. 
+Dominierende Scherwellengeschwindigkeiten liegen etwa zwischen 150 m/s und 350 m/s. 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1998-1/NA:2011-01 
+(ii) Wenn sich der Baugrund nicht nach Absatz (i) einordnen lässt, insbesondere wenn als Baugrund 
+tiefgründig unverfestigte Ablagerungen in lockerer Lagerung (z. B. lockerer Sand) bzw. in weicher oder 
+breiiger Konsistenz (z. B. Seeton, Schlick) vorhanden sind (dominierende Scherwellengeschwindigkeiten 
+liegen unter 150 m/s), ist der Einfluss der Baugrundverhältnisse auf die Erdbebeneinwirkungen gesondert zu 
+untersuchen und zu berücksichtigen. 
+(iii) Bauwerksstandorte, bei denen im Erdbebenfall mit Hangrutschungen oder Setzung infolge Boden-
+verflüssigung zu rechnen ist, sollten vermieden werden. 
+(iv) Die Einstufung eines Standortes in eine Baugrundklasse ist im Zweifelsfall durch weitergehende Unter-
+suchungen zu bestimmen. Diese dürfen entfallen, wenn ungünstige Baugrundverhältnisse nach Absatz (ii) 
+ausgeschlossen werden können und die Erdbebeneinwirkung unter der Annahme der Baugrundklasse C 
+bestimmt wird. 
+NCI NA 3.1.3 Geologische Untergrundklassen 
+(i) Zusätzlich zum Baugrund ist auch der geologische Untergrund zu berücksichtigen. Es wird zwischen den 
+folgenden geologischen Untergrundklassen unterschieden: 
+Untergrundklasse R 
+Gebiete mit felsartigem Gesteinsuntergrund. 
+Untergrundklasse T 
+Übergangsbereiche zwischen den Gebieten der Untergrundklasse R und der Untergrundklasse S, sowie 
+Gebiete relativ flachgründiger Sedimentbecken. 
+Untergrundklasse S 
+Gebiete tiefer Beckenstrukturen mit mächtiger Sedimentfüllung. 
+(ii) Eine schematische Darstellung der geologischen Untergrundklassen in den Erdbebenzonen nach 3.2.1 
+(Bild NA.1), zeigt Bild NA.2. 
+ANMERKUNG Im Geltungsbereich der Landesbauordnungen erfolgt die Zuordnung der geologischen Untergrund-
+klassen zu Verwaltungseinheiten im Zuge der Bekanntmachung der DIN EN 1998-1 als Technische Baubestimmung. 
+NDP zu 3.2.1(1), (2), (3) Erdbebenzonen 
+(i) Für das Gebiet der Bundesrepublik Deutschland gelten die in Bild NA.1 dargestellten Erdbebenzonen. 
+Nichttektonische seismische Ereignisse, z. B. in Bergbau- oder Erdfallgebieten, sind im Rahmen dieser 
+Vorschrift nicht berücksichtigt. 
+ANMERKUNG Im Geltungsbereich der Landesbauordnungen erfolgt die Zuordnung der Erdbebenzonen zu 
+Verwaltungseinheiten im Zuge der Bekanntmachung der DIN EN 1998-1 als Technische Baubestimmung. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1998-1/NA:2011-01 
+Bild NA.1  Schematische Darstellung der Erdbebenzonen der Bundesrepublik Deutschland 
+(ii) Als zonenspezifischer Einwirkungsparameter gilt ein Referenz-Spitzenwert der Bodenbeschleunigung agR, 
+der in Tabelle NA.3 den Erdbebenzonen zugeordnet ist. 
+9 
+54° 
+48° 
+6. 
+60 
+~ Zoneo 
+r===J Zone 1 
+~ Zone2 
+IIIIllilliii Zone 3 
+a· 
+a· 
+• Hannover 
+• Schwarin 
+•Nümberg 
+14° 
+- - 54 • 
+14°
+
+===== PDF-SEITE 10 =====
+DIN EN 1998-1/NA:2011-01 
+Tabelle NA.3  Zuordnung von Intensitätsintervallen und Referenz-Spitzenwerten der 
+Bodenbeschleunigung zu den Erdbebenzonen 
+Erdbebenzone Intensitätsintervall 
+Referenz-Spitzenwert der 
+Bodenbeschleunigung 
+agR
+m/s2
+0 
+1 
+2 
+3 
+6 I < 6,5 
+6,5 I < 7 
+7 I < 7,5 
+7,5 I
+ 
+0,4 
+0,6 
+0,8 
+(iii) Die geologischen Untergrundklassen in den Erdbebenzonen in Deutschland nach Bild NA.1 werden in 
+Bild NA.2 gezeigt. 
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1998-1/NA:2011-01 
+Bild NA.2  Schematische Darstellung der geologischen Untergrundklassen in den Erdbebenzonen 
+der Bundesrepublik Deutschland 
+11 
+6" 
+54" -
+48" 
+~ KlasseR 
+IIJill]lli]J!] Klasse T 
+EJ] KlasseS 
+6" 
+8" 
+8" 
+14" 
+54" 
+• Hannover 
+so· 
+- 48" 
+14"
+
+===== PDF-SEITE 12 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 3.2.1(4) Erdbebenzonen 
+Da die in Bild NA.1 dargestellten Erdbebenzonen 1 bis 3 im Anwendungsbereich dieser Norm als Gebiete 
+geringer Seismizität eingestuft werden, darf für übliche Hochbauten der Bedeutungskategorie I bis III mit nicht 
+mehr als 6 Geschossen und einer maximalen Gebäudehöhe von 20 m über der im Mittel gemessenen 
+Geländehöhe die im Anhang A beschriebene vereinfachte Vorgehensweise angewandt werden. 
+NDP zu 3.2.1(5) Erdbebenzonen 
+Gebiete, die nicht den Erdbebenzonen 1 bis 3 nach Bild NA.1 zugeordnet sind, werden als Gebiete sehr 
+geringer Seismizität im Sinne dieser Norm eingestuft. 
+NDP zu 3.2.2.1(4), 3.2.2.2(1)P Grundlegende Darstellung der Erdbebeneinwirkung 
+Für die horizontalen elastischen Antwortspektren gelten folgende Parameter und Beziehungen: 
+(1) Das elastische Antwortspektrum Se(T) für die Referenz-Wiederkehrperiode (siehe Bild NA.3) wird durch 
+folgende Ausdrücke bestimmt: 
+15,21:
+B
+IgReBA T
+TSTSTTT a (NA.1)
+5,2: IgReCB STSTTT a (NA.2)
+T
+TSTSTTT CIgReDC 5,2: a (NA.3)
+2
+DC
+IgReD 5,2:
+T
+TTSTSTT a (NA.4)
+Dabei ist 
+Se (T) die Ordinate des elastischen Antwortspektrums; 
+T die Schwingungsdauer eines linearen Einmassenschwingers; 
+agR der Referenz-Spitzenwert der Bodenbeschleunigung nach Tabelle NA.3; 
+I Bedeutungsbeiwert nach Tabelle NA.6 
+TA, TB, TC, TD die Kontrollperioden des Antwortspektrums, mit TA 0; zur Darstellung im Frequenzbe-
+reich kann an Stelle der Periode 0 s die Frequenz 25 Hz gesetzt werden, mit konstantem 
+Se zu höheren Frequenzen; 
+S der Untergrundparameter; 
+der Dämpfungs-Korrekturbeiwert mit dem Referenzwert 1 für 5 % viskose Dämpfung, 
+siehe Absatz (3). 
+12
+
+===== PDF-SEITE 13 =====
+DIN EN 1998-1/NA:2011-01 
+Bild NA.3  Elastisches Antwortspektrum 
+(2) Der Einfluss der Untergrundverhältnisse auf das elastische Antwortspektrum wird für die horizontale 
+Bodenbewegung durch die Wahl der Parameter nach Tabelle NA.4 berücksichtigt. 
+Tabelle NA.4  Werte der Parameter zur Beschreibung des elastischen 
+horizontalen Antwortspektrums 
+Untergrundverhältnisse S TB
+s 
+TC
+s 
+TD
+s 
+A-R 
+B-R 
+C-R 
+1,00 
+1,25 
+1,50 
+0,05 
+0,05 
+0,05 
+0,20 
+0,25 
+0,30 
+2,0 
+2,0 
+2,0 
+B-T 
+C-T 
+1,00 
+1,25 
+0,1 
+0,1 
+0,30 
+0,40 
+2,0 
+2,0 
+C-S 0,75 0,1 0,50 2,0 
+(3) Der Wert des Dämpfungs-Korrekturbeiwerts kann durch nachfolgende Gleichung bestimmt werden. 
+55,05
+10 (NA.5) 
+Dabei ist 
+ der Wert der viskosen Dämpfung des Bauwerks in Prozent. 
+Falls für spezielle Untersuchungen eine andere viskose Dämpfung als 5 % verwendet werden soll, ist dieser 
+Wert besonders zu begründen. 
+13
+
+===== PDF-SEITE 14 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 3.2.2.3(1)P Vertikales elastisches Antwortspektrum 
+Für die vertikalen elastischen Antwortspektren gelten folgende Parameter und Beziehungen: 
+Das elastische Antwortspektrum Sve(T) für die Referenz-Wiederkehrperiode wird durch folgende Ausdrücke 
+bestimmt: 
+10,31:
+B
+vgveBA T
+TTSTTT a (NA.6)
+0,3: vgveCB aTSTTT (NA.7)
+T
+TTSTTT C
+vgveDC 0,3: a (NA.8)
+2
+DC
+vgveD 0,3:
+T
+TTTSTT a (NA.9)
+Die Kontrollperiode TB ist für alle Bodenklassen mit TB 0,05 s anzusetzen. 
+Die Kontrollperiode TC beträgt 0,2 s, die Kontrollperiode TD ist mit TD 2,0 s anzusetzen. 
+Weiter gilt avg 0,5 agR I. 
+NDP zu 3.2.2.5(4)P Bemessungsspektrum für lineare Berechnung 
+(NA.4.1) Alle Bauwerke besitzen die mehr oder weniger ausgeprägte Fähigkeit, durch seismische 
+Einwirkungen eingeleitete Energie durch hysteretische Energiedissipation abzubauen. Dies gestattet 
+vereinfachend ihre Bemessung für Kräfte, die kleiner sind als diejenigen, die bei einer linear-elastischen 
+Reaktion ohne Energiedissipation auftreten würden. 
+(NA.4.2) Um die günstig wirkenden dissipativen Effekte auch bei linearer Berechnung berücksichtigen zu 
+können, wird das elastische Antwortspektrum durch den konstruktions- und bauartspezifischen Verhaltens-
+beiwert q abgemindert. 
+14
+
+===== PDF-SEITE 15 =====
+DIN EN 1998-1/NA:2011-01 
+(NA.4.3) Das Bemessungsspektrum für die Horizontalkomponente der Erdbebeneinwirkung Sd(T) wird durch 
+die folgenden Ausdrücke bestimmt. 
+15,21:
+B
+IgRdBA qT
+TSTSTTT a (NA.10)
+qSTSTTT 5,2: IgRdCB a (NA.11)
+T
+T
+qSTSTTT CIgRdDC
+5,2: a (NA.12)
+2
+DC
+IgRdD
+5,2:
+T
+TT
+qSTSTT a (NA.13)
+Dabei ist 
+Sd(T) die Ordinate des Bemessungsspektrums; 
+q der Verhaltensbeiwert 
+ANMERKUNG Der Beiwert nach EN 1998-1:2004 wird zu 0 gesetzt und ist daher nicht in den Gleichungen NA.10 bis 
+NA.13 enthalten. 
+(NA.4.4) Die Werte für die Parameter TB, TC, TD und S sind in Tabelle NA.4 angegeben. Zur Festlegung des 
+Bemessungsspektrums sollte TB 0,01 s angesetzt werden. 
+(NA.4.5) Das in Absatz (3) angegebene Bemessungsspektrum ist nicht geeignet für die Bemessung von 
+Bauwerken mit Fundamentisolierungs- oder Energiedissipations-Systemen. 
+NDP zu 4.2.3.2(8) Kriterien für Regelmäßigkeit im Grundriss 
+Es gelten die Regelungen nach DIN EN 1998-1:2010-12. 
+NDP zu 4.2.4(2)P Kombinationsbeiwerte für veränderliche Einwirkungen 
+Beiwerte für zur Berechnung von Ei sind Tabelle NA.5 zu entnehmen. Bei der Ermittlung der wirksamen 
+Massen zur Berechnung der Erdbebenlasten sind Schneelasten in Gleichung (4.2) mit dem Kombinations-
+beiwert 2 0,5 zu multiplizieren. Diese reduzierten Schneelasten sind auch beim Standsicherheitsnachweis 
+zu berücksichtigen. 
+Hinweis  Kann es aus der Nutzung zu länger anhaltenden wesentlichen unsymmetrischen Belastun-
+gen kommen, z. B. bei einem über längere Zeit nur teilweise genutzten Lagergebäude, so sind die sich 
+hieraus im Erdbebenfall ergebenden Torsionswirkungen bei den Nachweisen zu berücksichtigen. 
+15
+
+===== PDF-SEITE 16 =====
+DIN EN 1998-1/NA:2011-01 
+Tabelle NA.5  Beiwerte für zur Berechnung von Ei 
+Art der veränderlichen Einwirkung nach 
+DIN EN 1991-1-1/NA Lage im Gebäude
+oberstes Geschoss 1,0 Nutzlasten der Kategorien A  C einschließlich 
+Nutzlasten der Kategorien T und Z andere Geschosse 0,7 
+Nutzlasten der Kategorien D  F einschließlich 
+Nutzlasten der Kategorien T und Z 
+alle Geschosse 1,0 
+NDP zu 4.2.5(5)P Bedeutungskategorien und Bedeutungsbeiwerte 
+Bedeutungskategorien und Bedeutungsbeiwerte sind der Tabelle NA.6 zu entnehmen. 
+Tabelle NA.6  Bedeutungskategorien und Bedeutungsbeiwerte 
+Bedeutungskategorie Bauwerke Bedeutungsbeiwert
+I
+I 
+Bauwerke ohne Bedeutung für den 
+Schutz der Allgemeinheit, mit 
+geringem Personenverkehr (z. B. 
+Scheunen, Kulturgewächshäuser, 
+usw.). 
+0,8 
+II 
+Bauwerke, die nicht zu den anderen 
+Kategorien gehören ( z. B. kleinere 
+Wohn- und Bürogebäude, 
+Werkstätten, usw.). 
+1,0 
+III 
+Bauwerke, von deren Versagen bei 
+Erdbeben eine große Zahl von 
+Personen betroffen ist ( z. B. große 
+Wohnanlagen, Schulen, 
+Versammlungsräume, Kaufhäuser, 
+usw.). 
+1,2 
+IV 
+Bauwerke, deren Unversehrtheit im 
+Erdbebenfall von hoher Bedeutung für 
+den Schutz der Allgemeinheit ist ( z. B. 
+Krankenhäuser, wichtige 
+Einrichtungen des 
+Katastrophenschutzes, der Feuerwehr 
+und der Sicherheitskräfte, usw.). 
+1,4 
+NDP zu 4.3.3.1(4) Berechnungsmethoden 
+Als Alternative zu dem Vereinfachten Antwortspektrenverfahren  nach 4.3.3.1(3) a) und dem Multimodalen 
+Antwortspektrenverfahren nach 4.3.3.1(3) b) darf bei ausreichender Erfahrung die nichtlineare statische 
+(pushover) Berechnung nach 4.3.3.1(4) c) Verwendung finden sowie in Ausnahmefällen die nichtlineare 
+dynamische Zeitverlaufsberechnung nach 4.3.3.1(4) d). 
+16
+
+===== PDF-SEITE 17 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 4.3.3.1(8) Berechnungsmethoden 
+Der Abschnitt ist für alle Bedeutungskategorien gültig. 
+NDP zu 4.4.2.5(2) Tragfähigkeit horizontaler Scheiben 
+Für den Überfestigkeitswert gelten die Angaben nach DIN EN 1998-1:2010-12: 
+d 1,3 für spröde Versagensformen, wie in schubbeanspruchten Betonscheiben, 
+d 1,1 für duktile Versagensformen. 
+NDP zu 4.4.3.2(2) Beschränkung der gegenseitigen Stockwerksverschiebung 
+Es ist sicherzustellen, dass sowohl die nicht tragenden Bauteile als auch ihre Verbindungen und Befesti-
+gungen oder Verankerungen der Kombination aus maßgebenden ständigen, veränderlichen und seismischen 
+Einwirkungen standhalten. Besonderes Augenmerk ist auf die Konsequenzen behinderter Verformungen 
+(z. B. bei spröden Fassadenteilen) zu legen. 
+NDP zu 5.2.1(5) Energiedissipationskapazität und Duktilitätsklassen 
+Es wird empfohlen, im Anwendungsbereich dieser Norm die Duktilitätsklassen DCL und DCM zu verwenden. 
+NDP zu 5.2.2.2(10) Verhaltensbeiwerte für horizontale Erdbebeneinwirkungen 
+Eine Erhöhung von q
+o in Abhängigkeit eines besonderen Qualitätssicherungssystems ist nicht zulässig. 
+NDP zu 5.2.4(1) und (3) Sicherheitsnachweise 
+Für die Erdbeben-Bemessungssituation sind die Material-Teilsicherheitsbeiwerte für ständige und vorüber-
+gehende Bemessungssituationen zu verwenden. Diese sind der DIN EN 1992-1-1 und ihrem nationalen 
+Anhang zu entnehmen. 
+NDP zu 5.4.3.5.2(1) Beanspruchbarkeit auf Schub 
+Es gilt die in der Anmerkung zu 5.4.3.5.2(1) der DIN EN 1998-1:2010-12 gegebene Empfehlung. Bezüglich 
+der Querbewehrung von Wänden gilt DIN EN 1992-1-1:2011-01, 9.6.2. 
+NDP zu 5.8.2(3) Zerrbalken und Gründungsbalken 
+Es gilt die in der Anmerkung zu 5.8.2(3) der DIN EN 1998-1:2010-12 gegebene Empfehlung. Es gelten die 
+Werte b
+w,min 0,25 m und hw,min 0,4 m für Hochbauten mit bis zu drei Geschossen oder hw,min 0,5 m für 
+Hochbauten mit vier oder mehr Geschossen. 
+NDP zu 5.8.2(4) Zerrbalken und Gründungsbalken 
+Es gilt die in der Anmerkung zu 5.8.2(4) der DIN EN 1998-1:2010-12 gegebene Empfehlung. Es gelten die 
+Werte tmin 0,2 m und s,min 0,2 %. 
+NDP zu 5.8.2(5) Zerrbalken und Gründungsbalken 
+Es gilt die in der Anmerkung zu 5.8.2(5) der DIN EN 1998-1:2010-12 gegebene Empfehlung mit 
+b,min 0,4 %. 
+17
+
+===== PDF-SEITE 18 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 5.11.1.3.2(3) Energiedissipation 
+Für vorgefertigte Wandscheibensysteme ist die Duktilitätsklasse DCL zu verwenden. 
+NDP zu 5.11.1.4 Verhaltensbeiwerte 
+Es gelten die empfohlenen Werte: k 1,0 für Tragwerke mit Verbindungen nach 5.11.2.1.1 bis 5.11.2.1.3, 
+k 0,5 für Tragwerke mit anderen Verbindungstypen. 
+NDP zu 5.11.1.5(2) Untersuchung einer vorübergehenden Situation 
+Ist die Berücksichtigung von Erdbebeneinwirkungen nach 5.11.1.5 (1) der DIN EN 1998-1:2010-12 während 
+der Errichtung von baulichen Anlagen erforderlich, so ist der Wert Ap abhängig von den Umständen des 
+vorliegenden Einzelfalls zu wählen. 
+NDP zu 5.11.3.4(7) Vorgefertigte Wände in Großtafel-Bauweise 
+Es gilt die in der Anmerkung zu 5.11.3.4(7) der DIN EN 1998-1:2010-12 gegebene Empfehlung mit dem Wert 
+c,min 1 %. 
+NDP zu 6.1.2(1) Auslegungskonzepte 
+Es wird empfohlen, im Anwendungsbereich dieser Norm die Höchstwerte der Verhaltensbeiwerte q nach 
+Tabelle 6.2 für deutsche Erdbebengebiete auf q 4 zu begrenzen. Ferner wird empfohlen, Duktilitätsklasse 
+DCL oder DCM zu verwenden. 
+NDP zu 6.1.3(1) Sicherheitsnachweise 
+Für die Teilsicherheitsbeiwerte S gilt S M Die Teilsicherheitsbeiwerte M sind der DIN EN 1993-1-1 zu 
+entnehmen. 
+NDP zu 6.2(3) Werkstoffe 
+Für den Überfestigkeitsbeiwert gilt der vorgeschlagene Wert ov 1,25. 
+ANMERKUNG Der zur Bestimmung des Überfestigkeitsbeiwerts verwendete obere Wert der Streckgrenze muss durch 
+die einschlägigen Produktregeln gewährleistet sein. 
+NDP zu 6.2(7) Werkstoffe 
+In Bauwerken der Duktilitätsklassen DCM und DCH müssen dissipative Bauteile im Freien die 
+Mindestzähigkeit T27J 20 °C aufweisen. 
+NDP zu 6.5.5(7) Auslegungsregeln für Verbindungen im dissipativen Bereich
+Keine ergänzenden Regeln für Anschlussbemessung. 
+HINWEIS  Im Geltungsbereich der Landesbauordnungen können Versuchsergebnisse nur im 
+Rahmen einer allgemeinen bauaufsichtlichen Zulassung anwendbar gemacht werden. 
+NDP zu 6.7.4(2) Riegel und Stützen 
+Für die überkritische Resttragfähigkeit von Druckdiagonalen gilt der empfohlene Wert PB 0,3. 
+18
+
+===== PDF-SEITE 19 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 7.1.2(1) Auslegungskonzepte 
+Es wird empfohlen, im Anwendungsbereich dieser Norm die Höchstwerte der Verhaltensbeiwerte q nach 
+Tabelle 6.2 für deutsche Erdbebengebiete auf q 4 zu begrenzen. 
+NDP zu 7.1.3(1) und (3) Sicherheitsnachweise 
+Es gelten die Angaben dieses Dokumentes zu 5.2.4(1),(3) und zu 6.1.3(1). 
+NDP zu 7.1.3(4) Sicherheitsnachweise 
+Es gelten die Angaben dieses Dokumentes zu 6.2(3). 
+NDP zu 7.7.2(4) Berechnung 
+Es gilt der empfohlene Wert r 0,5. 
+NDP zu 8.3(1) Duktilitätsklassen und Verhaltensbeiwerte 
+(1) Bezüglich der erforderlichen hysteretischen Dissipationsfähigkeit sind die drei Duktilitätsklassen DCL 
+(gering dissipativ), DCM (teilweise dissipativ) und DCH (dissipativ, mit erhöhter Duktilität) wie folgt zu 
+unterscheiden: 
+a) Duktilitätsklasse DCL 
+Der Duktilitätsklasse DCL sind Tragwerke zuzuordnen, die beim Bemessungserdbeben im Wesentlichen 
+im elastischen Zustand verbleiben sollen und an die keine besonderen Duktilitätsanforderungen gestellt 
+werden. Dieser Duktilitätsklasse dürfen alle Holzbauten zugeordnet werden. Es sind hier alle Tragwerke 
+zuzuordnen, die keine nachgiebigen Verbindungen mit stiftförmigen Verbindungsmitteln aufweisen, wie 
+z. B. 
+ Dreigelenkbögen; 
+ Dreigelenkrahmen mit Keilzinkenvollstößen in den Rahmenecken; 
+ Stützen-Binder-Tragwerke mit unnachgiebig eingespannten Stützenfüßen. 
+b) Duktilitätsklasse DCM 
+Der Duktilitätsklasse DCM sind Tragwerke zuzuordnen, bei denen sich die Duktilitätsanforderungen auf 
+wenige aber wirksame dissipative Bereiche mit stiftförmigen Verbindungsmitteln beschränken, soweit sie 
+nicht für die Duktilitätsklasse DCL, im elastischen Zustand, ausgelegt werden. Dazu zählen: 
+ Stützen-Binder-Tragwerke mit nachgiebig (mittels Dübelverbindungen) eingespannten Stützenfüßen; 
+ Zwei- und Dreigelenkrahmen mit Dübelverbindungen in den Rahmenecken; 
+ Holztafelbauten mit starren Schubfeldern (verleimten Schubfeldern), bei denen der Anschluss der 
+einzelnen Tafeln untereinander mittels mechanischer Verbindungsmittel erfolgt. 
+19
+
+===== PDF-SEITE 20 =====
+DIN EN 1998-1/NA:2011-01 
+c) Duktilitätsklasse DCH 
+Der Duktilitätsklasse DCH sind Tragwerke zuzuordnen, die viele dissipative Bereiche mit metallischen 
+stiftförmigen Verbindungsmitteln besitzen, soweit sie nicht für die Duktilitätsklasse DCL, im elastischen 
+Zustand, ausgelegt werden. Dazu zählen: 
+ Statisch überbestimmte Tragwerke mit Verbindungen aus metallischen stiftförmigen Verbindungs-
+mitteln, bei denen die Energiedissipation ausschließlich über die Verbindungsmittel erfolgt.
+ Wandscheiben mit metallischen stiftförmigen Verbindungsmitteln, bei denen ein Auszugsversagen 
+der Verbindungsmittel ausgeschlossen werden kann.
+ Skelettbauten und Pfostenriegelkonstruktionen, bei denen die mechanischen Verbindungsmittel in 
+den Knotenpunkten als Horizontalaussteifung auf Grundlage der Plastizitätstheorie bemessen 
+wurden.
+ Wandscheiben mit stiftförmigen metallischen Verbindungsmitteln, bei denen die besondere Duktilität 
+der Verankerung und der Verbindung Plattenwerkstoff-Verbindungsmittel-Holzunterkonstruktion 
+nachgewiesen wurde.
+Als Verbindungsmittel im Sinne von Tabelle NA.7 gelten sämtliche stiftförmige Verbindungsmittel nach 
+DIN EN 1995-1-1. 
+Tabelle NA.7  Auslegungskonzepte, Tragwerkstypen und Höchstbeträge der 
+Verhaltensbeiwerte für die drei Duktilitätsklassen 
+Duktilitätsklasse und 
+Auslegungskonzept q Beispielhafte Merkmale von Tragwerken 
+Duktilitätsklasse DCL 
+Niedriges Energiedissipationsvermögen 1,5 
+Zwei- und Dreigelenkbögen ohne besondere Dissipationsmecha-
+nismen, Kragarme, Fachwerkkonstruktionen mit steifen 
+Anschlüssen 
+Duktilitätsklasse DCM 
+Mittleres Energiedissipationsvermögen 2,5 
+Statisch überbestimmte Tragwerke mit Verbindungen aus nach-
+giebigen stiftförmigen Verbindungsmitteln, Bauteile in Holztafel-
+bauart mit starren (z. B. verleimten) Schubfeldern. 
+4,0 
+Statisch überbestimmte Tragwerke mit Verbindungen aus 
+metallischen stiftförmigen Verbindungsmitteln, bei denen die Ener-
+giedissipation ausschließlich über die Verbindungsmittel erfolgt, 
+Wandscheiben mit metallischen stiftförmigen Verbindungsmitteln, 
+bei denen ein Auszugsversagen ausgeschlossen werden kann 
+a
+Duktilitätsklasse DCH 
+Hohes Energiedissipationsvermögen 
+5,0 
+Wandscheiben mit stiftförmigen metallischen Verbindungsmitteln, 
+bei denen die besondere Duktilität der Verankerung und der Ver-
+bindung Plattenwerkstoff-Verbindungsmittel-Holzunterkonstruk-
+tion nachgewiesen wurde. 
+a In der Klasse DCH sind die Mindesteindringtiefen nach DIN 1052 für Klammern und glattschaftige Nägel um den Faktor 1,25 zu 
+erhöhen. 
+Es wird empfohlen, Duktilitätsklasse DCL oder DCM zu verwenden. Bei einer Kombination von Tragwerken 
+mit den Duktilitätsklassen DCL und DCH in den Erdbebenzonen 2 und 3 darf der Verhaltensbeiwert nicht 
+höher als q 1,5 angesetzt werden. 
+ANMERKUNG Im Geltungsbereich der Landesbauordnungen sind alle versuchtechnischen Nachweise im Rahmen 
+einer allgemeinen bauaufsichtlichen Zulassung zu führen.
+20
+
+===== PDF-SEITE 21 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 9.2.1(1) Mauersteinarten 
+In den Erdbebenzonen 1 bis 3 dürfen alle Mauersteine nach DIN EN 771-1, DIN EN 771-2, DIN EN 771-3, 
+DIN EN 771-4 verwendet werden, sofern diese nach den entsprechenden Anwendungsnormen DIN V 105-6, 
+DIN V 20000-401, -402, -403 bzw. -404 oder als Mauersteine nach einer allgemeinen bauaufsichtlichen 
+Zulassung geeignet sind oder zusätzlich folgende Anforderungen erfüllen: 
+ Mauerziegel nach DIN V 105-100; 
+ Kalksandsteine nach DIN V 106; 
+ Betonsteine nach DIN V 18151-100, DIN V 18152-100 oder DIN V 18153-100; 
+ Porenbetonsteine nach DIN V 4165-100. 
+NDP zu 9.2.2(1) Mindestfestigkeit von Mauersteinen 
+Es werden keine weiteren Anforderungen an die Druckfestigkeit bei Verwendung der nach 9.2.1(1) zulässigen 
+Mauersteine in deutschen Erdbebengebieten gestellt. 
+NDP zu 9.2.3(1) Mörtel 
+In den Erdbebenzonen 1 bis 3 dürfen alle Mauermörtel nach DIN EN 998-2 in Verbindung mit 
+DIN V 20000-412:2004-03 oder nach DIN V 18580 verwendet werden. 
+NDP zu 9.2.4(1) Mauerwerksverbund 
+In den Erdbebenzonen 1 bis 3 dürfen alle Klassen der Stoßfugenausführung verwendet werden. 
+NDP zu 9.3(2) Bauwerkstypen und Verhaltensbeiwerte 
+Die Mindestdicke unbewehrter tragender Mauerwerkswände, die allein den Vorschriften von DIN EN 1996 
+entsprechen, beträgt 115 mm. 
+NDP zu 9.3(3) Bauwerkstypen und Verhaltensbeiwerte 
+Unbewehrtes Mauerwerk darf in allen deutschen Erdbebenzonen eingesetzt werden. 
+NDP zu 9.3(4) Bauwerkstypen und Verhaltensbeiwerte 
+Tabelle NA.8  Bauwerkstypen und Höchstbeträge der Verhaltensbeiwerte 
+Bauwerkstyp Verhaltensbeiwert 
+q
+Unbewehrtes Mauerwerk nach DIN EN 1996-1 1,5 
+Unbewehrtes Mauerwerk nach DIN EN 1998-1 Tabelle NA.9 
+Eingefasstes Mauerwerk Tabelle NA.9 
+Bewehrtes Mauerwerk 3,0 
+21
+
+===== PDF-SEITE 22 =====
+DIN EN 1998-1/NA:2011-01 
+Tabelle NA.9  Verhaltensbeiwert q für unbewehrtes und eingefasstes Mauerwerk nach DIN EN 1998-1 
+Wandgeometrie Mauerwerksart 
+h/la 1 h/l 1,6
+Unbewehrtb, c 1,5 2,0 
+Eingefasst 2,0 2,5 
+a h/l bezeichnet das Verhältnis der lichten Geschosshöhe zur Länge der längsten Wand in der betrachteten Gebäuderichtung. 
+b Die Verwendung von Verhaltensbeiwerten q > 1,5 ist nur zulässig, wenn bei der Bemessungssituation infolge Erdbeben die 
+mittlere Normalspannung in den entsprechenden Wänden 15 % der charakteristischen Mauerwerkdruckfestigkeit fk nach 
+DIN EN 1996-1-1 nicht überschreitet. 
+c Die Tragwerksmodellierung darf nach DIN EN 1996-1-1 erfolgen. 
+Zwischenwerte dürfen linear interpoliert werden.
+NCI zu 9.4(6) Tragwerksberechnung 
+Alternativ kann eine Umverteilung der durch lineare Berechnung nach Abschnitt 4 ermittelten Gesamterd-
+bebenlast auf die einzelnen Wände vorgenommen werden, wenn: 
+d) die Lastumlagerung unter Verwendung elastisch-ideal plastischer Lastverformungskurven der Einzelwände 
+unter Einhaltung des globalen Gleichgewichts erfolgt. Hierbei darf hinsichtlich der Tragwerksmodellierung 
+nach DIN EN 1996-1-1 verfahren werden. 
+Dabei dürfen die maximalen Verformungen zwischen Wandfuß und Wandkopf für alle Mörtel und Steinarten 
+von in Deutschland üblichen Bauweisen für unbewehrtes Mauerwerk wie folgt angesetzt werden: 
+ Biegeversagen: 0,006 H0/L H. 
+ Schubversagen: 0,004 H, wenn bei der Bemessungssituation infolge Erdbeben die mittlere Normalspan-
+nung 15 % der charakteristischen Mauerwerkdruckfestigkeit fk nach DIN EN 1996-1-1 oder allgemeiner 
+bauaufsichtlicher Zulassung nicht überschreitet. In allen anderen Fällen ist die Verformung für Schubver-
+sagen mit höchstens 0,003 H anzusetzen. 
+Hierbei sind H die Stockwerkshöhe, L die Wandlänge und H0 der Abstand zwischen dem Querschnitt, in dem 
+die Biegekapazität erreicht wird, und dem Wendepunkt, jeweils in m. 
+Für eingefasstes Mauerwerk dürfen die für unbewehrtes Mauerwerk angegebenen Verformungswerte um den 
+Faktor 2 vergrößert werden. 
+NDP zu 9.5.1(5) Auslegungskriterien und Konstruktionsregeln 
+Tabelle NA.10  Mindestanforderungen an aussteifende Wände(Schubwände) 
+Erdbebenzone hef /tef
+tef
+mm l/h
+1 nach DIN EN 1996-1-1 0,27 
+2 18 150a 0,27 
+3 15 175 0,27 
+hef Knicklänge nach DIN EN 1996-1-1 
+tef Wanddicke 
+l Wandlänge 
+a Wände der Wanddicke 115 mm dürfen zusätzlich berücksichtigt werden, wenn hef/tef 15 ist. 
+Giebelwände sind durch Querwände oder Pfeilervorlagen ausreichend auszusteifen, falls sie nicht kraft-
+schlüssig mit dem Dachstuhl verbunden werden. 
+22
+
+===== PDF-SEITE 23 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 9.6(3) Sicherheitsnachweise 
+Tabelle NA.11  Teilsicherheitsbeiwerte für Mauerwerksbauten in der Erdbebenbemessungssituation 
+Baustoff Teilsicherheitsbeiwert 
+Mauerwerk m 1,2 
+Bewehrungsstahl s 1,0 
+NDP zu 9.7.2(1) Regeln für einfache Mauerwerksbauten 
+Tabelle NA.12  Mindestanforderungen an die auf die Geschossgrundrissfläche bezogene 
+Querschnittsfläche von Schubwändenc), d)
+agR S I
+ 0,6 ka kr
+e
+agR S I
+ 0,9 ka kr
+e
+agR S I
+ 1,2 ka kr
+e
+Steindruckfestigkeitsklasse nach DIN 1053-1b
+Anzahl der 
+Vollgeschosse 
+4 6 12 4 6 12 4 6 12 
+1 0,02 0,02 0,02 0,03 0,025 0,02 0,04 0,03 0,02 
+2 0,035 0,03 0,02 0,055 0,045 0,03 0,08 0,05 0,04 
+3 0,065 0,04 0,03 0,08 0,065 0,05 
+4 KvNz 0,05 0,04 KvNz 
+Kein vereinfachter 
+Nachweis zulässig 
+(KvNz) 
+a Für Gebäude, bei denen mindestens 70 % der betrachteten Schubwände in einer Richtung länger als 2 m sind, beträgt der 
+Beiwert k 1 (la 2)/4 2. Dabei ist la die mittlere Wandlänge der betrachteten Schubwände in m. In allen anderen Fällen 
+beträgt k 1. Der Wert I wird nach Tabelle NA.6 bestimmt. 
+b Bei Verwendung unterschiedlicher Steinfestigkeitsklassen, z. B. für Innen- und Außenwände, sind die Anforderungswerte im Ver-
+hältnis der Steifigkeitsanteile der jeweiligen Steinfestigkeitsklasse zu wichten.
+c Zwischenwerte dürfen linear interpoliert werden. 
+d Die Verwendung der Steinfestigkeitsklasse 2 für Außenwände ist zulässig, wenn in jeder Richtung wenigstens 50 % der erforder-
+lichen Wandquerschnittsfläche der Schubwände aus Mauerwerk der Festigkeitsklasse 4 oder höher bestehen. Die Gesamtquer-
+schnittsfläche der Schubwände muss dann die in Tabelle NA.12 für die Steinfestigkeitsklasse 4 geltenden Werte einhalten. 
+e Für Reihenhäuser mit Abmessungen von B 7 m und L 12 m und mindestens zwei parallelen Wänden in zwei orthogonalen 
+Richtungen, wobei die Länge jeder dieser Wände mindestens 40 % der Bauwerkslänge in der betrachteten Richtung sein muss, 
+kann kr mit 1,25 angesetzt werden. In allen anderen Fällen beträgt kr 1,0. 
+NDP zu 9.7.2(2)b Regeln für einfache Mauerwerksbauten 
+Das Mindest-Seitenverhältnis darf nicht kleiner als min 0,25 sein. 
+NDP zu 9.7.2(2)c Regeln für einfache Mauerwerksbauten 
+Es gilt der empfohlene Wert pmax 15 %. 
+NCI zu 9.7.2(3) Regeln für einfache Mauerwerksbauten 
+Alternativ ist die Bedingung 9.7.2 (3)d auch erfüllt, wenn der überwiegende Teil der Vertikallasten von den 
+Schubwänden in den beiden orthogonalen Hauptrichtungen abgetragen wird. 
+23
+
+===== PDF-SEITE 24 =====
+DIN EN 1998-1/NA:2011-01 
+NDP zu 9.7.2(5) Regeln für einfache Mauerwerksbauten 
+Größter zulässiger Unterschied der Masse und der Wandfläche übereinander liegender Geschosse bei 
+einfachen Mauerwerksbauten: 
+Die größten zulässigen Werte betragen m,max 20 % und A,max 30 %. 
+NDP zu 10.3(2)P Grundlegende Anforderungen 
+Vergrößerungsfaktor der erdbebenbedingten Verschiebungen für die Auslegung von Einrichtungen zur 
+Schwingungsisolierung: 
+Es gilt der empfohlene Wert x 1,2. 
+24
+
+===== PDF-SEITE 25 =====
+DIN EN 1998-1/NA:2011-01 
+NCI Anhang NA.D 
+(informativ) 
+Vereinfachte Auslegungsregeln für einfache Bauten des üblichen 
+Hochbaus 
+NCI NA.D.1 Allgemeines
+(1) Voraussetzungen für die Anwendung dieser vereinfachten Auslegungsregeln sind: 
+a) Der Bauwerksstandort und die Art des Untergrundes weisen keine besonderen Risiken bezüglich 
+Hangrutschung und Setzung infolge Bodenverflüssigung oder Bodenverdichtung bei Erdbeben auf. 
+b) Der Baugrund besteht nicht aus mächtigen unverfestigten Ablagerungen in lockerer Lagerung (z. B. 
+lockerer Sand) bzw. solchen in weicher oder breiiger Konsistenz (z. B. Seeton, Schlick) (dominierende 
+Scherwellengeschwindigkeiten liegen unter 150 m/s). 
+(2) Die in diesem Anhang beschriebene vereinfachte Berechnungsmethode darf für übliche Hochbauten der 
+Bedeutungskategorie I bis III mit nicht mehr als 6 Geschossen und einer maximalen Gebäudehöhe von 20 m 
+über der im Mittel gemessenen Geländehöhe angewendet werden, wenn folgende Bedingungen erfüllt sind: 
+a) Das Bauwerk sollte im Grundriss eine nahezu symmetrische Verteilung von Horizontalsteifigkeit und 
+Masse in beide Hauptrichtungen aufweisen. Bei Abweichungen von der Symmetrie muss das Bauwerk in 
+der Lage sein, die entsprechenden Auswirkungen (z. B. aus Torsion) nach A.4 aufzunehmen. 
+b) Der Grundriss des Gebäudes weist keine stark gegliederten Formen wie z. B. die von H, X, L, T oder U 
+auf. Gegliederte Formen sind nur zulässig, wenn die einzelnen Gebäudeabschnitte durch geeignete 
+Fugen (siehe NA.D.8 d) schwingungstechnisch voneinander getrennt werden. In diesem Fall ist jeder 
+Gebäudeabschnitt für sich getrennt zu betrachten. 
+c) Die Decken müssen als quasi-starre Scheiben in der Lage sein, die horizontalen Kräfte in die 
+aussteifenden Bauteile weiterzuleiten. 
+d) Alle Systeme zur Abtragung von Horizontallasten, wie Kerne, tragende Wä nde oder Rahmen, müssen bei 
+mehrgeschossigen Gebäuden ohne Unterbrechung von der Gründung bis zur obersten lastverteilenden 
+Decke verlaufen. Anderenfalls muss die horizontale und vertikale Lastweiterleitung sichergestellt werden. 
+e) Die Horizontalsteifigkeit, die tatsächliche Horizontaltragfähigkeit und die Masse der einzelnen Geschosse 
+bleiben konstant oder verringern sich nur allmählich ohne große sprunghafte Veränderungen mit der 
+Bauwerkshöhe (Ausnahme: Übergang in Untergeschosse). 
+(3) Bei Hochbauten, die den in den Absätzen (1) und (2) genannten Kriterien genügen, darf die Berechnung 
+anhand von zwei ebenen Modellen, jeweils für eine der beiden Hauptrichtungen, durchgeführt werden. Die 
+Standsicherheit des Bauwerks muss in jeder Richtung unter Berücksichtigung von NA.D.5 und der möglichen 
+Torsionswirkung entsprechend NA.D.4 nachgewiesen werden. 
+25
+
+===== PDF-SEITE 26 =====
+DIN EN 1998-1/NA:2011-01 
+NCI NA.D.2 Gesamterdbebenkraft 
+(1) Die Gesamterdbebenkraft Fb für jede Hauptrichtung wird wie folgt bestimmt: 
+MTSF 1db (NA.D.1) 
+Dabei ist 
+Sd(T1) die Ordinate des Bemessungsspektrums (NA.3.2.2.5) bei Grundschwingzeit T1; 
+T1 die Grundschwingzeit des Bauwerks für die Translationsbewegung in der betrachteten Richtung; 
+M die Gesamtmasse des Bauwerks, die nach Absatz (2) berechnet wird; 
+ein Korrekturfaktor mit dem Wert 0,85 für T1 2 · TC für Gebäude mit mehr als 2 Geschossen 
+und 1,0 in allen anderen Fällen. 
+(2) Die Gesamtmasse des Bauwerks M wird unter Berücksichtigung aller ständigen Einwirkungen und 30 % 
+der Nutzlasten (80 % bei Lagerräumen, Bibliotheken, Warenhäusern, Parkhäusern, Werkstätten und 
+Fabriken) ermittelt. Schneelasten werden zu 50 % berücksichtigt. 
+(3) Der Wert von T
+1 [s] darf durch folgenden Ausdruck näherungsweise bestimmt werden: 
+uT 21 (NA.D.2)
+Dabei bezeichnet u [m] die fiktive horizontale Auslenkung der Gebäudeoberkante unter den in horizontaler 
+Richtung angesetzten ständigen und quasi-ständigen Lasten aus den Massen nach Absatz (2). 
+(4) Der Verhaltensbeiwert q darf für alle Bauwerksarten höchstens zu 1,5 angesetzt werden. 
+(5) Alternativ zu Absatz (1) kann die Gesamterdbebenkraft Fb für jede Hauptrichtung unter Ansatz von q 1,5 
+auf der sicheren Seite liegend wie folgt bestimmt werden: 
+MSF dmaxb (NA.D.3) 
+(6) Verankerungen von Holztafelelementen sind für Kräfte infolge der vollen Sdmax-Werte nach Tabelle NA.D.1 
+zu bemessen. 
+Tabelle NA.D.1  Maximale Bemessungsspektralbeschleunigung Sdmax [m/s2]
+ BK I BK II BK III 
+Erdbebenzone 1 0,8 1 1,2 
+Erdbebenzone 2 1,2 1,5 1,8 
+Erdbebenzone 3 1,6 2 2,4 
+26
+
+===== PDF-SEITE 27 =====
+DIN EN 1998-1/NA:2011-01 
+NCI NA.D.3 Verteilung der horizontalen Erdbebenkräfte
+(1) Die Beanspruchungsgrößen aus Erdbebeneinwirkung müssen bestimmt werden, indem an den beiden 
+ebenen Modellen horizontale Kräfte Fi an allen Geschossmassen mi angebracht werden. 
+(2) Die Kräfte Fi können linear über die Höhe verteilt werden (Bild NA.D.1): 
+1j
+jj
+iibi n
+mz
+mzFF (NA.D.4) 
+mit 
+mi, mj Geschossmassen, berechnet nach NA.D.2 (2). 
+zi, zj Höhe der Massen mi, mj über der Ebene, in der die Erdbebeneinwirkung angreift (Fundament-
+ebene oder Oberkante eines starren Kellergeschosses); 
+Fi die am Geschoss i angreifende Horizontalkraft; 
+Fb die Gesamterdbebenkraft nach Gleichung (NA.D.1) bzw. Gleichung (NA.D.3). 
+Bild NA.D.1  Höhenproportionale Verteilung der Erdbebenkräfte 
+(3) Die horizontalen Kräfte Fi, die nach diesem Unterabschnitt bestimmt wurden, müssen unter der Annahme 
+in ihrer Ebene starrer Deckenscheiben auf die Aussteifungssysteme für Horizontallasten verteilt werden. 
+NA.D.4 Torsionswirkungen 
+(1) Falls das Bauwerk im Grundriss eine nahezu symmetrische Verteilung von Horizontalsteifigkeit und Masse 
+in beide Hauptrichtungen aufweist, ist der Beitrag von Torsion durch Erhöhung der Erdbebenschnittgrößen um 
+15 % abgedeckt. 
+Hinweis  Kann es aus der Nutzung zu länger anhaltenden wesentlichen unsymmetrischen Belastun-
+gen kommen, z. B. bei einem über längere Zeit nur teilweise genutzten Lagergebäude, so sind die sich 
+hieraus im Erdbebenfall ergebenden Torsionswirkungen bei den Nachweisen zu berücksichtigen. 
+27
+
+===== PDF-SEITE 28 =====
+DIN EN 1998-1/NA:2011-01 
+(2) Zur Berücksichtigung der Torsionswirkung sind die Exzentrizitäten der resultierenden Ersatzkräfte der 
+oben liegenden Geschosse in die Hauptrichtungen wie folgt anzusetzen (Bild NA.D.2): 
+i1,i0,imin,
+i2,i1,i0,imax,
+0,5 eee
+eeee
+(NA.D.5)
+mit 
+i Hauptrichtungen i x, y; 
+e0,i Tatsächliche Exzentrizität; 
+e1,i Zufällige Exzentrizität, e1i 0,05·Li, Li: Bauwerksabmessung senkrecht zur Erdbebenrichtung; 
+e2,i Zusätzliche Exzentrizität. 
+Die zusätzliche Exzentrizität e2,i berechnet sich zu: 
+yx
+i
+i0,
+yxi2, 1,0101,0 LLL
+eLLe (NA.D.6)
+(3) Bei Vorhandensein einer guten Torsionsaussteifung kann e2,i auch nach Gleichung (NA.D.7) bestimmt 
+werden: 
+2
+i
+2
+i0,
+22
+i
+2
+i0,
+2
+s
+2
+i
+2
+i0,
+2
+s
+i0,
+i2, 42
+1 rerelrelee (NA.D.7)
+Mit den Flächenmomenten 2. Grades (Trägheitsmomente) der in der betrachteten Hauptrichtung i liegenden 
+Aussteifungselemente Ij und der senkrecht dazu liegenden Aussteifungselemente Ik sowie den dazugehörigen 
+Abständen zum Steifigkeitsmittelpunkt rj und rk berechnet sich der Torsionsradius zu: 
+j
+kj
+I
+rIrI
+r
+j
+2
+kk
+2
+jj
+i
+Der Trägheitsradius kann für eine Rechteckfläche (Bild NA.D.2) wie folgt ermittelt werden: 
+12
+2
+y
+2
+x2
+s
+LL
+l
+Bild NA.D.2  Anzusetzende Exzentrizitäten für eine in y-Richtung wirkende Erdbebenkraft 
+28
+
+===== PDF-SEITE 29 =====
+DIN EN 1998-1/NA:2011-01 
+NCI NA.D.5 Kombination der Beanspruchungsgrößen infolge der Komponenten 
+der Erdbebeneinwirkung 
+(1) Es darf angenommen werden, dass die Erdbebeneinwirkung getrennt in Richtung der beiden senkrecht 
+zueinander stehenden horizontalen Hauptachsen des Bauwerks angreift. Sind Torsionswirkungen nach 
+NA.D.4 (2) zu berücksichtigen, müssen in jeder Richtung zusätzlich 30 % der Schnittgrößen infolge der 
+Erdbebeneinwirkung (u. a. aus Torsionswirkung) aus der jeweils anderen Richtung berücksichtigt werden. 
+(2) Die Vertikalkomponente der Erdbebeneinwirkung darf üblicherweise vernachlässigt werden, außer bei 
+Balken und Decken, die Stützen oder aussteifende oder tragende Wände tragen. 
+NCI NA.D.6 Berechnung der Verformungen 
+(1) Die Verformungen infolge Erdbebeneinwirkung können vereinfachend auf der Grundlage der elastischen 
+Verformungen des Tragsystems berechnet werden: 
+es dqd (NA.D.8)
+Dabei ist 
+ds die Verformung des Tragsystems infolge Erdbebeneinwirkung; 
+q Verhaltensbeiwert; 
+de die durch lineare Berechnung aufgrund des Bemessungsspektrums ermittelte Verformung des 
+gleichen Punktes des Tragsystems. 
+NCI NA.D.7 Nicht tragende Bauteile 
+(1) Für sekundäre und nicht tragende Bauteile (z. B. Verglasungskonstruktionen, spröde Außenwandbeklei-
+dungen, Brüstungen, Giebel, Antennen, technische Anlagenteile, nicht tragende Außenwände, nicht tragende 
+innere Trennwände über 3,50 m Höhe, Geländer, Schornsteine), die im Falle des Versagens Gefahren für 
+Personen hervorrufen oder das Tragwerk des Bauwerks beeinträchtigen können, muss nachgewiesen wer-
+den, dass sie  zusammen mit ihren Auflagern  die Bemessungs-Erdbebeneinwirkung aufnehmen können. 
+(2) Für nicht tragende innere Trennwände unter 3,50 m Höhe und nichttragende Außenschalen von 
+zweischaligem Mauerwerk ist ein rechnerischer Nachweis für den Lastfall Erdbeben nicht erforderlich. 
+(3) Es ist sicherzustellen, dass sowohl die nicht tragenden Bauteile als auch ihre Verbindungen und Befesti-
+gungen oder Verankerungen der Kombination aus maßgebenden ständigen, veränderlichen und seismischen 
+Einwirkungen standhalten. Besonderes Augenmerk ist auf die Konsequenzen behinderter Verformungen 
+(z. B. bei spröden Fassadenteilen) zu legen. 
+(4) Die Schnittgrößen infolge der Erdbebeneinwirkung dürfen vereinfachend bestimmt werden, indem an den 
+nicht tragenden Bauteilen eine Horizontalkraft F
+a in ungünstigster Richtung wirkend angesetzt wird: 
+aagRa 4 mSF a (NA.D.9)
+Dabei ist 
+Fa die horizontale Erdbebenkraft, die im Massenschwerpunkt des nicht tragenden Bauteils in der 
+ungünstigsten Richtung angreift; 
+ma die Masse des Bauteils; 
+S Bodenparameter nach Tabelle NA.4; 
+ga R Referenz-Spitzenwert der Bodenbeschleunigung nach Tabelle NA.3; 
+a Bedeutungsfaktor des nicht tragenden Bauteils 
+a 1,5 für Verankerungen von Maschinen und Geräten, die für Systeme zur Lebensrettung 
+benötigt werden. In allen anderen Fällen darf a 1,0 gesetzt werden. 
+29
+
+===== PDF-SEITE 30 =====
+DIN EN 1998-1/NA:2011-01 
+NCI NA.D.8 Nachweise der Standsicherheit
+(1) Zur Gewährleistung der Sicherheit gegen Einsturz (Grenzzustand der Tragfähigkeit) in der Erdbebenbe-
+messungssituation sind die nachfolgenden Bedingungen hinsichtlich Tragfähigkeit, Gleichgewicht, Tragsicher-
+heit der Gründung und erdbebengerechter Fugen zu erfüllen. Effekte aus Theorie 2. Ordnung (P- -Effekte) 
+brauchen bei der Ermittlung der Erdbebeneinwirkung nicht berücksichtigt zu werden. 
+a) Tragfähigkeitsbedingung: Die folgende Beziehung ist für alle tragenden Bauteile  einschließlich Verbin-
+dungen  und die maßgebenden nicht tragenden Bauteile (NA.D.7) zu erfüllen. 
+dd RE (NA.D.10)
+Dabei ist 
+ik,i2,Ed1kjk,d QAPGEE (NA.D.11)
+der Bemessungswert der Beanspruchungsgrößen der Erdbebenbemessungssituation (DIN EN 1990) und 
+M
+kd
+fRR (NA.D.12)
+die Bemessungstragfähigkeit des Bauteils, ermittelt nach baustoffbezogenen Anforderungen (charakte-
+ristischer Wert der Eigenschaft fk und Teilsicherheitsbeiwert M). Ferner ist der in DIN EN 1990 genannte 
+Wichtungsfaktor für Einwirkungen aus Erdbeben 1 1,0 zu setzen. 
+b) Gleichgewichtsbedingung: Das Bauwerk muss auch unter Erdbebeneinwirkungen in stabilem Gleich-
+gewicht verbleiben. Das schließt auch Wirkungen wie Kippen und Gleiten unter Berücksichtigung von 
+DIN EN 1997-1 mit ein. 
+c) Tragfähigkeit der Gründungen: Für Gründungen sind die Anforderungen nach NA.D.9 zu erfüllen. 
+d) Bedingungen für erdbebengerechte Fugen: Hochbauten sind gegen erdbebeninduzierte Zusammenstöße 
+mit angrenzenden Bauwerken oder Bauteilen zu schützen. Dies gilt als erfüllt, wenn der Abstand 
+angrenzender Bauteile an den Stellen möglicher Zusammenstöße nicht kleiner ist als die Wurzel aus der 
+Summe der Quadrate der jeweiligen Maximalwerte der Horizontalverschiebungen nach Gleichung 
+(NA.D.8). Bei der Planung der Fugengröße ist die begrenzte Zusammendrückbarkeit eines eventuell 
+eingebauten Fugenmaterials (z. B. Weichfasermatte) zu berücksichtigen. Falls kein genauerer Nachweis 
+hierzu geführt wird, sollte die planmäßige Fugengröße auf das 1,5-fache der oben genannten Summe 
+erhöht werden. Die Bedingung gilt auch als erfüllt, wenn in benachbarten Gebäuden, die die gleiche 
+Anzahl von Geschossen haben, die Decken auf gleicher Höhe sind oder, bei Gebäuden mit maximal drei 
+Geschossen, wenn der Abstand zwischen den zweischaligen Haustrennwänden mindestens 40 mm 
+beträgt. 
+(2) Auf einen rechnerischen Nachweis für den Grenzzustand der Tragfähigkeit nach Absatz (1) kann bei 
+Wohn- und ähnlichen Gebäuden (z. B. Bürogebäude) sowie einfachen gewerblichen Gebäuden und einfachen 
+Hallen verzichtet werden, wenn die folgenden Bedingungen eingehalten sind: 
+a) die Anzahl der Vollgeschosse über Gründungsniveau überschreitet nicht die Werte der Tabelle NA.D.2. 
+Das oberste Geschoss eines Gebäudes gilt dann nicht als Vollgeschoss, wenn die für die 
+Erdbebeneinwirkungen zu berücksichtigende Masse (aus ständiger Einwirkung und Nutzlasten nach 
+NA.D.2, (2)) des obersten Geschosses bzw. der Dachkonstruktion maximal 50 % des darunter liegenden 
+Vollgeschosses beträgt. Für Kellergeschosse siehe Absatz (4). 
+b) die Gesamterdbebenkraft nach NA.D.2 (1) in jeder Richtung ist kleiner als die 1,5-fache charakteristische 
+resultierende Windkraft in der entsprechenden Richtung. 
+30
+
+===== PDF-SEITE 31 =====
+DIN EN 1998-1/NA:2011-01 
+31 
+(3) Für Mauerwerksbauten darf auch auf einen rechnerischen Nachweis verzichtet werden, wenn die 
+Bedingungen nach NA.D.10 eingehalten sind. 
+(4) Wenn das Kellergeschoss bzw. das Geschoss über Gründungsebene als steifer Kasten ausgebildet und 
+auf einheitlichem Niveau gegründet ist, muss es bei der Ermittlung der Geschossanzahl nicht berücksichtigt 
+werden. Sofern die Konstruktion in dieser Hinsicht nicht zweifelsfrei bewertet werden kann, darf die 
+Bedingung als erfüllt angesehen werden, wenn in jeder Richtung die Gesamtsteifigkeit dieses Geschosses, 
+d. h. Biege- und Schubsteifigkeit aller Bauteile, die primär zur Abtragung der horizontalen Erdbebenbe-
+lastungen herangezogen werden, mindestens 5-mal größer ist als die entsprechende Steifigkeit des darüber 
+liegenden Geschosses. 
+Tabelle NA.D.2  Bedeutungskategorie und zulässige Anzahl der Vollgeschosse für 
+Hochbauten mit Standsicherheitsnachweis durch Vergleich mit Wind 
+Erdbebenzone Bedeutungskategorie Maximale Anzahl von 
+Vollgeschossen 
+1 
+2 
+3 
+I bis III 
+I und II 
+I und II 
+4 
+3 
+2 
+NCI NA.D.9 Gründungen 
+(1) Der Zusammenhalt des Bauwerks bzw. der jeweils dynamisch unabhängigen Teile eines Bauwerks im 
+Gründungsbereich muss konstruktiv sichergestellt sein. 
+(2) Bei getrennten Gründungskörpern ist sicherzustellen (z. B. durch konstruktive Maßnahmen), dass als 
+Folge möglicher Relativverschiebungen zwischen den einzelnen Fundamenten keine unzulässigen 
+Verschiebungen oder Beanspruchungen im Bauwerk auftreten. Auf die konstruktiven Maßnahmen kann in 
+folgenden Fällen verzichtet werden: 
+ Bei Baugrundklasse A in allen Erdbebenzonen; 
+ Bei Baugrundklasse B und Erdbebenzone 1. 
+(3) Nicht abgedeckt durch die vereinfachten Regeln sind Gründungen von Gebäuden bzw. dynamisch unab-
+hängigen Bauwerksteilen: 
+a) in unterschiedlicher Tiefe; sofern dies das Schwingungsverhalten wesentlich beeinflusst; 
+b) auf unterschiedlichen Gründungselementen, die ein deutlich von einander abweichendes Verformungs-
+verhalten aufweisen; 
+c) auf verschiedenartigem Baugrund mit deutlich von einander abweichendem Verformungs- bzw. Setzungs-
+verhalten; 
+d) auf Pfahlgründungen, soweit sie das dynamische Verhalten wesentlich mitbestimmen. 
+(4) Auf einen rechnerischen Nachweis der Tragsicherheit der Gründungen für den Lastfall Erdbeben kann im 
+Rahmen dieser vereinfachten Regeln verzichtet werden. 
+NCI NA.D.10 Besondere Regeln für Mauerwerksbauten 
+Für Mauerwerksbauten darf auf einen rechnerischen Nachweis verzichtet werden, wenn die Regeln von 
+DIN EN 1998-1:2010-12, 9.7, unter Berücksichtigung des Nationalen Anhanges eingehalten sind.

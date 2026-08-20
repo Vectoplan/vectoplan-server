@@ -1,0 +1,1666 @@
+{
+  "document_id": "EN_1999-1-5__base_standard__EC_9_Teil_1-5",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-5",
+  "document_kind": "base_standard",
+  "file_name": "EC 9 Teil 1-5.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-5.pdf",
+  "sha256": "f25d226cff5c456c242e6d8cecd9d57f0d41cb799abf4df0d01320bfd28eda0c",
+  "pages": 77,
+  "text_pages": 77,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 106,
+  "equation_candidate_count": 36,
+  "table_reference_count": 16,
+  "figure_reference_count": 20,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184244+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233937+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-5.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich ........................................................................................................... ..................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1999 ............................................................................................. ..........9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1999-1-5......................................................................................... ........9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ..............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe .................................................................................................................... .............................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3.1",
+      "title": "Formen und Geometrie des Tragwerks........................................................................................ .....12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3.2",
+      "title": "Spezielle Definitionen für Beulberechnungen ............................................................................... ...13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen............................................................................................................... .......................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Vorzeichenvereinbarungen.................................................................................................... .............17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Koordinatensysteme .......................................................................................................... .................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Berechnung und Bemessung ..................................................................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines................................................................................................................. .........................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Zuverlässigkeitsklasse und Ausführungsklasse .............................................................................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe und Geometrie...................................................................................................... ............20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Werkstoffeigenschaften ...................................................................................................... ................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Bemessungswerte für geometrische Daten...................................................................................... 20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Geometrische Toleranzen und geometrische Imperfektionen........................................................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit............................................................................................................... ......................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung ........................................................................................................... .............21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Geometrie ................................................................................................................... ..........................21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Randbedingungen ............................................................................................................. ..................21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Einwirkungen und Einflüsse aus der Umgebung.............................................................................22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4",
+      "title": "Spannungsresultanten und Spannungen ......................................................................................... 23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5",
+      "title": "Berechnungsarten ............................................................................................................ ...................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustand der Tragfähigkeit................................................................................................ .........25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1",
+      "title": "Beanspruchbarkeit des Querschnitts.......................................................................................... ......25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Bemessungswerte für die Spannungen ........................................................................................ ....25",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Bemessungswerte für die Beanspruchbarkeit ................................................................................. 26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Spannungsbegrenzung....................................................................................................... ................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Bemessung durch numerische Analyse ........................................................................................ ...26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2",
+      "title": "Knickfestigkeit (Beanspruchbarkeit durch Beulen; Beulsicherheitsnachweis) ...........................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines............................................................................................................... ...........................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Geometrische Toleranzen, die für Beulen von Belang sind............................................................28",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Schale unter Druck- und Schubbeanspruchungen..........................................................................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.4",
+      "title": "Einfluss des Schweißens................................................................................................... .................32",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2.5",
+      "title": "Bemessung durch numerische Analyse ........................................................................................ ...35",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit ......................................................................................3 5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines................................................................................................................. .........................35",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7.2",
+      "title": "Durchbiegungen .............................................................................................................. ....................35",
+      "pdf_page": 4
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1999",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1999-1-5",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.3",
+      "title": "Begriffe",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.3.1",
+      "title": "Formen und Geometrie des Tragwerks",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.3.2",
+      "title": "Spezielle Definitionen für Beulberechnungen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.4",
+      "title": "Formelzeichen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1",
+      "title": "Oberflächendrücke",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2",
+      "title": "Koordinaten",
+      "pdf_page": 17
+    },
+    {
+      "clause": "3",
+      "title": "Membranspannungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "4",
+      "title": "Richtungen:",
+      "pdf_page": 17
+    },
+    {
+      "clause": "5",
+      "title": "Verschiebungen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "6",
+      "title": "Schubspannungen in Querrichtung",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1.5",
+      "title": "Vorzeichenvereinbarungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "1.6",
+      "title": "Koordinatensysteme",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Berechnung und Bemessung",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.1",
+      "title": "Allgemeines",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.2",
+      "title": "Zuverlässigkeitsklasse und Ausführungsklasse",
+      "pdf_page": 21
+    },
+    {
+      "clause": "3",
+      "title": "Werkstoffe und Geometrie",
+      "pdf_page": 22
+    },
+    {
+      "clause": "3.1",
+      "title": "Werkstoffeigenschaften",
+      "pdf_page": 22
+    },
+    {
+      "clause": "3.2",
+      "title": "Bemessungswerte für geometrische Daten",
+      "pdf_page": 22
+    },
+    {
+      "clause": "3.3",
+      "title": "Geometrische Toleranzen und geometrische Imperfektionen",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5",
+      "title": "Tragwerksberechnung",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.1",
+      "title": "Geometrie",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.2",
+      "title": "Randbedingungen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.3",
+      "title": "Einwirkungen und Einflüsse aus der Umgebung",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5.4",
+      "title": "Spannungsresultanten und Spannungen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.5",
+      "title": "Berechnungsarten",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6",
+      "title": "Grenzzustand der Tragfähigkeit",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.1",
+      "title": "Beanspruchbarkeit des Querschnitts",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.1.1",
+      "title": "Bemessungswerte für die Spannungen",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.1.2",
+      "title": "Bemessungswerte für die Beanspruchbarkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.1.3",
+      "title": "Spannungsbegrenzung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.1.4",
+      "title": "Bemessung durch numerische Analyse",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.2",
+      "title": "Knickfestigkeit (Beanspruchbarkeit durch Beulen; Beulsicherheitsnachweis)",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 29
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Geometrische Toleranzen, die für Beulen von Belang sind",
+      "pdf_page": 30
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Schale unter Druck- und Schubbeanspruchungen",
+      "pdf_page": 31
+    },
+    {
+      "clause": "6.2.3.1",
+      "title": "Bemessungswerte für die Spannungen",
+      "pdf_page": 31
+    },
+    {
+      "clause": "6.2.3.2",
+      "title": "Knick- bzw. Beulfestigkeit",
+      "pdf_page": 31
+    },
+    {
+      "clause": "6.2.3.3",
+      "title": "Nachweis der Beulfestigkeit",
+      "pdf_page": 33
+    },
+    {
+      "clause": "6.2.4",
+      "title": "Einfluss des Schweißens",
+      "pdf_page": 34
+    },
+    {
+      "clause": "6.2.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 34
+    },
+    {
+      "clause": "6.2.4.2",
+      "title": "Grad der Festigkeitsverringerung",
+      "pdf_page": 34
+    },
+    {
+      "clause": "6.2.4.3",
+      "title": "Ausdehnung der Wärmeeinflusszone",
+      "pdf_page": 35
+    },
+    {
+      "clause": "6.2.4.4",
+      "title": "Beulbeanspruchbarkeit unausgesteifter geschweißter Schalen",
+      "pdf_page": 35
+    },
+    {
+      "clause": "6.2.4.5",
+      "title": "Beulbeanspruchbarkeit ausgesteifter geschweißter Schalen",
+      "pdf_page": 37
+    },
+    {
+      "clause": "6.2.5",
+      "title": "Bemessung durch numerische Analyse",
+      "pdf_page": 37
+    },
+    {
+      "clause": "7",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 37
+    },
+    {
+      "clause": "7.1",
+      "title": "Allgemeines",
+      "pdf_page": 37
+    },
+    {
+      "clause": "7.2",
+      "title": "Durchbiegungen",
+      "pdf_page": 37
+    },
+    {
+      "clause": "1",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "2",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "3",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "4",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "5",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "6",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "1",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "2",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "3",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "4",
+      "title": "Ende 1",
+      "pdf_page": 42
+    },
+    {
+      "clause": "2130",
+      "title": "Etd,EID yy (A.63)",
+      "pdf_page": 68
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 27,
+      "equation_number": "6.1",
+      "line": "(6.1)",
+      "context": "2 | Edx,Edeq, 31 nnnnnt | (6.1) | (4) Wenn eine linear elastische Analyse (LA) oder eine geometrisch nichtlineare elastische Analyse (GNA) | angewendet wird, kann das sich ergebende zweidimensionale Feld der Primärspannungen durch den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "6.2",
+      "line": "nxnxx (6.2)",
+      "context": "x | 22 | nxnxx (6.2) | Hierbei sind | 4",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "6.3",
+      "line": "x (6.3)",
+      "context": "t | n xx | x (6.3) | t | q",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "6.4",
+      "line": "1 (6.4)",
+      "context": "Ed, ,, | 4 | 1 (6.4) | Dabei ist ein Korrekturfaktor für das unelastische Verhalten des Werkstoffs, der sowohl von den Merkmalen | des Härtens als auch von der Zähigkeit der Legierung abhängig ist.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "6.5",
+      "line": "ff außerhalb der WEZ (6.5)",
+      "context": "0 | Rdeq, | ff außerhalb der WEZ (6.5) | M1 | 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "6.6",
+      "line": "Rdeq, ,min fff im Bereich WEZ (6.6)",
+      "context": "M2 | 0,hazu, | Rdeq, ,min fff im Bereich WEZ (6.6) | Hierbei ist | 0 der charakteristische Wert für die 0,2%-Dehngrenze nach EN 1999-1-1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "6.7",
+      "line": "Eeq,Edeq, f (6.7)",
+      "context": "(1) Für diesen Grenzzustand sollten die Bemessungsspannungen bei allen Nachweisen die folgende | Bedingung erfüllen: | Eeq,Edeq, f (6.7) | 6.1.4 Bemessung durch numerische Analyse | (1) Der Bemessungswert für die plastische Grenzbeanspruchbarkeit sollte als ein Lastverhältnis R bestimmt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "6.8",
+      "line": "FR (6.8)",
+      "context": "dE | dR ,F | FR (6.8) | hierbei ist FEd der Bemessungswert für die Einwirkung. | 6.2 Knickfestigkeit (Beanspruchbarkeit durch Beulen; Beulsicherheitsnachweis)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.9",
+      "line": "xxxx (6.9)",
+      "context": "perf,w,Rd, | f | xxxx (6.9) | 1M | 0perf,w,Rd,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.10",
+      "line": "f (6.10)",
+      "context": "1M | 0perf,w,Rd, | f (6.10) | 1M | 0perf,Rd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.11",
+      "line": "w, (gilt auch für ausgesteifte Schalen) (6.11)",
+      "context": "3 | f | w, (gilt auch für ausgesteifte Schalen) (6.11) | und für ausgesteifte und/oder profilierte Schalen | 1M",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.12",
+      "line": "nn (6.12)",
+      "context": "x | xn,xx | nn (6.12) | 1M | Rk,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "6.13",
+      "line": "npp pn (gilt auch für torikonische und torisphärische Schalen, siehe A.7) (6.13)",
+      "context": "Rk, | perf,,Rd, | npp pn (gilt auch für torikonische und torisphärische Schalen, siehe A.7) (6.13) | Hierbei ist | nx,Rk die axiale Quetschgrenze der ausgesteiften Schale;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.14",
+      "line": "für i,perf 1,00 (6.14)",
+      "context": "1 | iii | für i,perf 1,00 (6.14) | mit: | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.15",
+      "line": "015,0 ii,iii (6.15)",
+      "context": "mit: | 2 | 015,0 ii,iii (6.15) | Hierbei ist | µi ein Parameter, der von der Legierung und vom Belastungsfall abhängig und aus Anhang A zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.16",
+      "line": "f (6.16)",
+      "context": "x | x | f (6.16) | cr, | 0f (6.17)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.17",
+      "line": "0f (6.17)",
+      "context": "f (6.16) | cr, | 0f (6.17) | cr | 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.18",
+      "line": "f (gilt auch für ausgesteifte Schalen) (6.18)",
+      "context": "0 | 3 | f (gilt auch für ausgesteifte Schalen) (6.18) | und für ausgesteifte und/oder profilierte Schalen | cr,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.19",
+      "line": "(6.19)",
+      "context": "n | n | (6.19) | cr, | Rk,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "6.20",
+      "line": "p (6.20)",
+      "context": "n | p | p (6.20) | DIN EN 1999-1-5:2010-05",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "6.21",
+      "line": "Rd,Ed, xx (6.21)",
+      "context": "(2) In Abhängigkeit vom jeweiligen Belastungs- und Spannungsfall sollten eine oder mehrere der folgenden | Nachweise für die Schlüsselwerte der einzelnen Membranspannungskomponenten durchgeführt werden: | Rd,Ed, xx (6.21) | Rd,Ed, (6.22) | RdEd (6.23)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "6.22",
+      "line": "Rd,Ed, (6.22)",
+      "context": "Nachweise für die Schlüsselwerte der einzelnen Membranspannungskomponenten durchgeführt werden: | Rd,Ed, xx (6.21) | Rd,Ed, (6.22) | RdEd (6.23) | (3) Falls unter den betrachteten Einwirkungen mehr als eine der für Beulen wesentlichen Membran-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "6.23",
+      "line": "RdEd (6.23)",
+      "context": "Rd,Ed, xx (6.21) | Rd,Ed, (6.22) | RdEd (6.23) | (3) Falls unter den betrachteten Einwirkungen mehr als eine der für Beulen wesentlichen Membran- | spannungskomponenten vorhanden ist, sollte für den kombinierten Membranspannungszustand der folgende",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "6.24",
+      "line": "(6.24)",
+      "context": "x k | x | (6.24) | Dabei sind x,Ed, ,Ed und Ed die für eine Interaktion relevanten Gruppen der signifikanten Druck- und | Schub-Membranspannungswerte in der Schale; die Werte für die Interaktionsparameter kx, k , k und ki sind",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "6.25",
+      "line": "(6.25)",
+      "context": "k | k | (6.25) | ANMERKUNG 1 Bei einem nicht ausgesteiften Zylinder, der durch axialen Druck und Druck in Umfangsrichtung und | durch Schub beansprucht wird, darf die in A.1.6 angegebene Gleichung für die Interaktionsparameter angewendet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "(4) Wenn x,Ed oder ,Ed eine Zugspannung ist, sollte ihr Wert in Gleichung (6.24) gleich null gesetzt",
+      "context": "sehr dicken Schalen für die Interaktion zwischen Spannungen gilt die von-Mises-Interaktion der äquivalenten Spannung | oder die der in EN 1999-1-1 angegebenen alternativen Interaktionsgleichung. | (4) Wenn x,Ed oder ,Ed eine Zugspannung ist, sollte ihr Wert in Gleichung (6.24) gleich null gesetzt | werden. | ANMERKUNG Für Zylinder, die durch axialen Innendruck beansprucht werden (wodurch in Umfangsrichtung eine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "repräsentiert, wenn die Zugspannung ,Ed in Gleichung (6.24) gleich null gesetzt wird.",
+      "context": "berücksichtigt sowohl die Verfestigungswirkung des Innendruckes auf die elastische Beulbeanspruchbarkeit als auch den | Schwächungseinfluss des elastisch-plastischen Elefantenfuß-Phänomens [Gleichung (A.22)]. Die Beulfestigkeit wird exakt | repräsentiert, wenn die Zugspannung ,Ed in Gleichung (6.24) gleich null gesetzt wird. | (5) Die Lagen und Werte für alle in Gleichung (6.24) kombiniert anzuwendenden beulen-relevanten | Membranspannungen werden in Anhang A festgelegt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "(5) Die Lagen und Werte für alle in Gleichung (6.24) kombiniert anzuwendenden beulen-relevanten",
+      "context": "Schwächungseinfluss des elastisch-plastischen Elefantenfuß-Phänomens [Gleichung (A.22)]. Die Beulfestigkeit wird exakt | repräsentiert, wenn die Zugspannung ,Ed in Gleichung (6.24) gleich null gesetzt wird. | (5) Die Lagen und Werte für alle in Gleichung (6.24) kombiniert anzuwendenden beulen-relevanten | Membranspannungen werden in Anhang A festgelegt. | 6.2.4 Einfluss des Schweißens",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "6.26",
+      "line": "f (6.26)",
+      "context": "hazu, | hazu, f | f (6.26) | (2) Die charakteristischen Werte für die Festigkeiten o,haz und o,haz sowie die Werte für o,haz und o,haz | werden in Tabelle 3.2a von EN 1999-1-1 für Aluminiumknetlegierungen in Form von Blechen, Bändern und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "6.27",
+      "line": "i mit i,w 1 und i,w > 0 (6.27)",
+      "context": "i,i | i,i | i mit i,w 1 und i,w > 0 (6.27) | Hierbei ist | 1M",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "r5071 ,, Cx = 1",
+      "context": "072831361 ,,,xC | Mittlere Länge t | r5071 ,, Cx = 1 | Große Länge t | r50, 12201",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "x,Ed der Bemessungswert für die Spannung in Meridianrichtung ( x,Ed = x,N,Ed + x,M,Ed);",
+      "context": "Hierbei ist | Cx,N der Parameter für einen langen Zylinder unter axialem Druck nach Tabelle A.1; | x,Ed der Bemessungswert für die Spannung in Meridianrichtung ( x,Ed = x,N,Ed + x,M,Ed); | x,N,Ed die Spannungskomponente aus dem axialen Druck (gleich bleibende Komponente in Umfangs- | richtung);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "der größte Wert unabhängig von der Lage in der Schale in Gleichung (6.24) eingesetzt werden.",
+      "context": "Aussonderungen von interaktions-relevanten Gruppen von Membranspannungskomponenten getroffen | werden und weiterhi eine einfache konservative Behandlung gefordert wird, darf für jede Membranspa | der größte Wert unabhängig von der Lage in der Schale in Gleichung (6.24) eingesetzt werden. | n nnung | a) Kurzer Zylinder b) Langer Zylinder",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "Der Fa tor C sollte in diesen Ausdrücken den Wert C = 1,0 haben.",
+      "context": "Parameter j beschrieben: | eff | Der Fa tor C sollte in diesen Ausdrücken den Wert C = 1,0 haben. | (8) Die Länge des Schalenabschnitts wird durch den dimensionslosen | j",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "5",
+      "line": "Festlegungen in Abschnitt 5, 6.1 und A.1 gelten, aber mit den in den vorstehenden Absätzen (1) bis (5)",
+      "context": "tragfähigkeit an Verbindungen in Profilblechen zu berücksichtigen ist. | (6) Für die Bemessungswerte für Spannungsresultanten und Widerstände und für die Nachweise sollten die | Festlegungen in Abschnitt 5, 6.1 und A.1 gelten, aber mit den in den vorstehenden Absätzen (1) bis (5) | angegebenen zusätzlichen Regeln. | ANMERKUNG Beispiele für die Anordnung von Wandaussteifungen werden in Bild A.11 gezeigt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "tEpn für = 0,3",
+      "context": "5,2 | T5,1cr, )(cossin60,2 r | tEpn für = 0,3 | Hierbei ist | sin)cos1( TTT trrrr mit rr",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 22,
+      "line": "(Knetlegierungen und Zustände) und für kalt umgeformte Bleche in Tabelle 2.1 von EN 1999-1-4."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 23,
+      "line": "(1) Bei den Berechnungen für die Grenzzustände sollten die geeigneten Randbedingungen nach Tabelle 5.1"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 24,
+      "line": "Tabelle 5.1  Randbedingungen für Schalen"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "mehreren der in Tabelle 5.2 angegebenen Berechnungsarten basieren. Die Berechnungsarten werden in"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 25,
+      "line": "Tabelle 5.3 ausführlicher erläutert. Für weitere Einzelheiten wird auf EN 1993-1-6 verweisen."
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "Tabelle 5.2  Berechnungsarten für Schalentragwerke"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 26,
+      "line": "Tabelle 5.3  Beschreibung der Berechnungsarten für Schalentragwerke"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 35,
+      "line": "werden in Tabelle 3.2a von EN 1999-1-1 für Aluminiumknetlegierungen in Form von Blechen, Bändern und"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 35,
+      "line": "Platten und in Tabelle 3.2b für Strangpressteile angegeben."
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 36,
+      "line": "u,haz und o,haz die durch die Schweißeinflusszone bedingten Abminderungsfaktoren, die Tabelle 3.2a"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 36,
+      "line": "oder Tabelle 3.2b in EN 1999-1-1 zu entnehmen sind;"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 36,
+      "line": "Abhängigkeit von Lastfall, Baustoff und Toleranzklasse der Schale, die in Tabelle 6.5"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 36,
+      "line": "Tabelle 6.5  ,w,0i -Werte für die in Anhang A berücksichtigten wesentlichen Lastfälle"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 40,
+      "line": "werden. Für Toleranzklasse 4 hängt der Toleranzparameter Q auch von den in Tabelle 5.1 definierten"
+    },
+    {
+      "label": "7",
+      "pdf_page": 43,
+      "line": "Tabelle 7 entnommen werden:"
+    },
+    {
+      "label": "10",
+      "pdf_page": 45,
+      "line": "(2) Der Bezugs-Schub-Imperfektionsfaktor ,ref sollte für die festgelegte Toleranzklasse aus Tabelle 10 ent-"
+    }
+  ],
+  "figures": [
+    {
+      "label": "1.1",
+      "pdf_page": 12,
+      "line": "(6) In EN 1999-1-5 können folgende Arten von Schalenwänden erfasst werden, siehe Bild 1.1:"
+    },
+    {
+      "label": "1.1",
+      "pdf_page": 12,
+      "line": "Bild 1.1  Darstellung der Formen zylindrischer Schalen"
+    },
+    {
+      "label": "1.2",
+      "pdf_page": 15,
+      "line": "(2) Koordinatensystem (siehe Bild 1.2):"
+    },
+    {
+      "label": "1.3",
+      "pdf_page": 16,
+      "line": "(5) Membranspannungsresultanten (siehe Bild 1.3a):"
+    },
+    {
+      "label": "1.3",
+      "pdf_page": 16,
+      "line": "(6) Biegespannungsresultanten (siehe Bild 1.3b):"
+    },
+    {
+      "label": "1.2",
+      "pdf_page": 17,
+      "line": "Bild 1.2  Formelzeichen für Rotationsschalen"
+    },
+    {
+      "label": "1.3",
+      "pdf_page": 18,
+      "line": "Bild 1.3  Spannungsresultierende in der Schalenwand"
+    },
+    {
+      "label": "1.2",
+      "pdf_page": 19,
+      "line": "Schubspannungen wie in Bild 1.2 dargestellt."
+    },
+    {
+      "label": "1.4",
+      "pdf_page": 20,
+      "line": "verwendet (siehe Bild 1.4):"
+    },
+    {
+      "label": "1.4",
+      "pdf_page": 20,
+      "line": "Bild 1.4  Koordinatensysteme für eine kreisförmige Schale"
+    },
+    {
+      "label": "1.5",
+      "pdf_page": 20,
+      "line": "(2) Die Vereinbarung für Tragwerksteile, die mit der Tankwand verbunden sind (siehe Bild 1.5), ist für solche"
+    },
+    {
+      "label": "1.5",
+      "pdf_page": 20,
+      "line": "Bild 1.5a)] ist:"
+    },
+    {
+      "label": "1.5",
+      "pdf_page": 20,
+      "line": "[siehe Bild 1.5b)] ist:"
+    },
+    {
+      "label": "1.5",
+      "pdf_page": 21,
+      "line": "Bild 1.5  Lokales Koordinatensystem für Meridiansteifen und Umfangssteifen bei einer Schale"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 29,
+      "line": "entstehen). Beispiele für entsprechende Randbedingungen werden in Bild 6.1 angegeben."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 30,
+      "line": "Bild 6.1  Schematische Darstellung für Beispiele zu den Randbedingungen"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 35,
+      "line": "und entsprechend der Darstellung in Bild 6.2 an ebenen Stumpfnähten rechtwinklig zur Mittellinie oder an"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 35,
+      "line": "Bild 6.2  Ausdehnung der Schweißeinflusszonen (WEZ) im Schalenblech"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 36,
+      "line": "))(1(39,1 ,0w,0,hazo,w, iii , aber w,0,w, ii , siehe Bild 6.3;"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 36,
+      "line": "Bild 6.3  Festlegung des durch die WEZ bedingten Abminderungsfaktors i,w"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 825,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 800,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2044,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7057,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2",
+        "1.3",
+        "1.3.1",
+        "1.3.2",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.2",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4",
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5",
+        "6",
+        "6.1",
+        "6.1.1",
+        "6.1.2",
+        "6.1.3",
+        "6.1.4",
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.2.4",
+        "6.2.5",
+        "7",
+        "7.1",
+        "7.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 5311,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1176,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3043,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2783,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1819,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 663,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2310,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 1558,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2185,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2920,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2579,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3.2",
+        "1.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1472,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 971,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1571,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1877,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1217,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1638,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2.1",
+        "2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2296,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2938,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2563,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2310,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4",
+        "5.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2186,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2201,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1",
+        "6.1.1"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2489,
+      "text_layer": "usable",
+      "clauses": [
+        "6.1.2",
+        "6.1.3",
+        "6.1.4"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1770,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.2.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1671,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2045,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.3",
+        "6.2.3.1",
+        "6.2.3.2"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1218,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2324,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.3.3"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 34,
+      "characters": 3940,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.4",
+        "6.2.4.1",
+        "6.2.4.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2928,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.4.3",
+        "6.2.4.4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1564,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1463,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.4.5",
+        "6.2.5",
+        "7",
+        "7.1",
+        "7.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 912,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1174,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1578,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1110,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1106,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1473,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 44,
+      "characters": 902,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 989,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 2063,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 2647,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 1746,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 49,
+      "characters": 2091,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1679,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1290,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 52,
+      "characters": 532,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 1982,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 2521,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1917,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1590,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 2990,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 2669,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2063,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 2480,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1743,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 2600,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 1587,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 64,
+      "characters": 2922,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1216,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 2220,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 2865,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 68,
+      "characters": 1927,
+      "text_layer": "usable",
+      "clauses": [
+        "2130"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 1122,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 70,
+      "characters": 1022,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 1089,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 471,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 73,
+      "characters": 682,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 74,
+      "characters": 534,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 75,
+      "characters": 879,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 76,
+      "characters": 810,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 77,
+      "characters": 577,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

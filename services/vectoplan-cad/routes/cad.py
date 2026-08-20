@@ -3,8 +3,9 @@ from __future__ import annotations
 from flask import Blueprint, current_app, jsonify, render_template, request
 
 from src.commands.service import build_command_receipt, validate_cad_command
-from src.core.client import CoreClientError, get_import_projection, project_chunks_to_projection
+from src.core.client import CoreClientError, dispatch_cad_command, get_import_projection, project_chunks_to_projection
 from src.exports.service import build_export_receipt, validate_export_request
+from src.library.client import LibraryClientError, load_cad_library_catalog
 from src.projection.service import (
     build_bootstrap_payload,
     build_preview,
@@ -36,7 +37,8 @@ def status():
             "contracts": {
                 "projection": current_app.config["CONTRACT_VERSION"],
                 "scene": "cad-scene/0.1",
-                "command": "cad-command/0.1",
+                "command": "cad-command/0.2",
+                "library_catalog": "cad-library-catalog/0.1",
                 "export": "cad-export/0.1",
             },
             "mock_mode": current_app.config["MOCK_MODE"],
@@ -59,6 +61,14 @@ def plan_profiles():
 @cad_api_bp.get("/test-input")
 def test_input():
     return jsonify(load_json_file(current_app.config["TEST_INPUT_PATH"]))
+
+
+@cad_api_bp.get("/library/catalog")
+def library_catalog():
+    try:
+        return jsonify(load_cad_library_catalog(current_app.config))
+    except LibraryClientError as exc:
+        return jsonify({"ok": False, "error": "library_unavailable", "message": str(exc)}), 502
 
 
 @cad_api_bp.post("/preview")
@@ -92,10 +102,34 @@ def core_import_projection(core_project_id: str, document_id: str):
 @cad_api_bp.post("/commands")
 def create_command_draft():
     payload = request.get_json(silent=True)
-    errors = validate_cad_command(payload)
+    try:
+        catalog = load_cad_library_catalog(current_app.config)
+    except LibraryClientError as exc:
+        return jsonify({"ok": False, "error": "library_unavailable", "message": str(exc)}), 502
+    errors = validate_cad_command(payload, catalog=catalog)
     if errors:
         return jsonify({"ok": False, "error": "invalid_cad_command", "errors": errors}), 400
-    return jsonify(build_command_receipt(payload)), 202
+    receipt = build_command_receipt(payload, catalog=catalog)
+    user_context = payload.get("user_context") if isinstance(payload.get("user_context"), dict) else {}
+    core_project_id = str(user_context.get("core_project_id") or "").strip()
+    if receipt["mutation_intent"]["model_changing"] and core_project_id:
+        try:
+            dispatch = dispatch_cad_command(current_app.config, core_project_id, receipt["command"])
+        except CoreClientError as exc:
+            return jsonify({
+                "ok": False,
+                "error": "model_command_unavailable",
+                "message": str(exc),
+                "receipt": receipt,
+            }), 502
+        receipt.update({
+            "accepted": True,
+            "dispatch": dispatch.get("dispatch") or "chunk-persisted",
+            "message": "CAD-Ã„nderung wurde im gemeinsamen 3D-Modell gespeichert.",
+            "stateful_storage": True,
+            "core_result": dispatch,
+        })
+    return jsonify(receipt), 202
 
 
 @cad_api_bp.post("/exports")

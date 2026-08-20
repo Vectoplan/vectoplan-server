@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import hashlib
+import hmac
 import json
 import math
+import os
 import re
 import threading
 import time
@@ -23,8 +25,10 @@ MAX_DISPLAY_NAME_LENGTH: Final[int] = 48
 MAX_ID_LENGTH: Final[int] = 180
 MAX_POSITION_ABS: Final[float] = 10_000_000.0
 MAX_VELOCITY_ABS: Final[float] = 10_000.0
+ALLOWED_INVALIDATION_SERVICES: Final[frozenset[str]] = frozenset({"vectoplan-core"})
 
 _SAFE_ID_RE: Final[re.Pattern[str]] = re.compile(r"[^A-Za-z0-9_.:-]+")
+_CHUNK_KEY_RE: Final[re.Pattern[str]] = re.compile(r"^-?\d+:-?\d+:-?\d+$")
 
 realtime_bp = Blueprint("editor_realtime", __name__, url_prefix="/editor/api/realtime")
 
@@ -107,6 +111,52 @@ def _safe_string_list(value: Any, *, maximum: int = 256) -> list[str]:
     return result
 
 
+def _safe_chunk_key(value: Any) -> str:
+    """Return one canonical signed ``x:y:z`` chunk key.
+
+    Chunk coordinates may be negative.  The generic identifier sanitizer
+    deliberately trims punctuation at both ends, so using it for chunk keys
+    turned ``-6:0:2`` into ``6:0:2`` and caused realtime clients to reload the
+    mirrored chunk instead of the changed one.
+    """
+    text = _safe_text(value, "", maximum=MAX_ID_LENGTH)
+    if not text or _CHUNK_KEY_RE.fullmatch(text) is None:
+        return ""
+
+    try:
+        x, y, z = (int(part) for part in text.split(":"))
+    except (TypeError, ValueError):
+        return ""
+    return f"{x}:{y}:{z}"
+
+
+def _safe_chunk_key_list(value: Any, *, maximum: int = 256) -> list[str]:
+    if not isinstance(value, (list, tuple)):
+        return []
+
+    result: list[str] = []
+    seen: set[str] = set()
+    for item in value[:maximum]:
+        normalized = _safe_chunk_key(item)
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            result.append(normalized)
+    return result
+
+
+def _safe_chunk_versions(value: Any) -> dict[str, str]:
+    if not isinstance(value, Mapping):
+        return {}
+
+    result: dict[str, str] = {}
+    for key, version in value.items():
+        normalized_key = _safe_chunk_key(key)
+        normalized_version = _safe_text(version, "", maximum=128)
+        if normalized_key and normalized_version:
+            result[normalized_key] = normalized_version
+    return result
+
+
 def _avatar_color(user_id: str) -> str:
     digest = hashlib.sha256(user_id.encode("utf-8", errors="ignore")).hexdigest()
     hue = int(digest[:6], 16) % 360
@@ -125,6 +175,36 @@ def _json_message(message_type: str, **payload: Any) -> str:
         ensure_ascii=False,
         separators=(",", ":"),
     )
+
+
+def _internal_invalidation_token() -> str:
+    return str(
+        os.getenv("VECTOPLAN_EDITOR_REALTIME_INTERNAL_TOKEN")
+        or os.getenv("VECTOPLAN_EDITOR_CHUNK_SERVICE_API_KEY")
+        or os.getenv("VECTOPLAN_CHUNK_SERVICE_API_KEY")
+        or ""
+    ).strip()
+
+
+def _request_service_id() -> str:
+    return _safe_id(
+        request.headers.get("X-Service-ID")
+        or request.headers.get("X-VECTOPLAN-Service-ID")
+        or request.headers.get("X-VECTOPLAN-Service"),
+        "",
+    )
+
+
+def _request_internal_token() -> str:
+    authorization = str(request.headers.get("Authorization") or "").strip()
+    if authorization.lower().startswith("bearer "):
+        authorization = authorization[7:].strip()
+    return str(
+        request.headers.get("X-Vectoplan-Internal-Token")
+        or request.headers.get("X-API-Key")
+        or authorization
+        or ""
+    ).strip()
 
 
 @dataclass(slots=True)
@@ -338,21 +418,14 @@ def _presence_payload(peer: RealtimePeer, message: Mapping[str, Any]) -> dict[st
 
 
 def _world_invalidation_payload(peer: RealtimePeer, message: Mapping[str, Any]) -> dict[str, Any]:
-    raw_versions = message.get("chunkVersions")
-    chunk_versions = {
-        _safe_id(key, ""): _safe_text(value, "", maximum=128)
-        for key, value in raw_versions.items()
-        if _safe_id(key, "") and _safe_text(value, "", maximum=128)
-    } if isinstance(raw_versions, Mapping) else {}
-
     return {
         "sessionId": peer.session_id,
         "userId": peer.user_id,
         "commandType": _safe_text(message.get("commandType"), "unknown", maximum=64),
         "eventIds": _safe_string_list(message.get("eventIds")),
-        "changedChunks": _safe_string_list(message.get("changedChunks")),
-        "dirtyChunks": _safe_string_list(message.get("dirtyChunks")),
-        "chunkVersions": chunk_versions,
+        "changedChunks": _safe_chunk_key_list(message.get("changedChunks")),
+        "dirtyChunks": _safe_chunk_key_list(message.get("dirtyChunks")),
+        "chunkVersions": _safe_chunk_versions(message.get("chunkVersions")),
     }
 
 
@@ -519,9 +592,71 @@ def realtime_status() -> Response:
     )
 
 
+@realtime_bp.post("/invalidate")
+def publish_realtime_invalidation() -> Response:
+    """Accept an authoritative post-commit invalidation from VECTOPLAN Core."""
+    service_id = _request_service_id()
+    expected_token = _internal_invalidation_token()
+    supplied_token = _request_internal_token()
+    if service_id not in ALLOWED_INVALIDATION_SERVICES:
+        return jsonify({
+            "ok": False,
+            "error": "service_not_allowed",
+            "message": "This service may not publish Editor invalidations.",
+        }), 403
+    if not expected_token:
+        return jsonify({
+            "ok": False,
+            "error": "realtime_internal_auth_not_configured",
+            "message": "Editor realtime internal authentication is not configured.",
+        }), 503
+    if not supplied_token or not hmac.compare_digest(supplied_token, expected_token):
+        return jsonify({
+            "ok": False,
+            "error": "invalid_internal_token",
+            "message": "The Editor realtime internal token is invalid.",
+        }), 401
+
+    payload = request.get_json(silent=True)
+    if not isinstance(payload, Mapping):
+        return jsonify({"ok": False, "error": "invalid_payload"}), 400
+    project_id = _safe_id(payload.get("projectId") or payload.get("project_id"), "")
+    world_id = _safe_id(payload.get("worldId") or payload.get("world_id"), "")
+    if not project_id or not world_id:
+        return jsonify({
+            "ok": False,
+            "error": "project_world_required",
+            "message": "projectId and worldId are required.",
+        }), 400
+
+    invalidation = {
+        "sessionId": f"service_{service_id}",
+        "userId": service_id,
+        "commandType": _safe_text(payload.get("commandType"), "unknown", maximum=64),
+        "eventIds": _safe_string_list(payload.get("eventIds")),
+        "changedChunks": _safe_chunk_key_list(payload.get("changedChunks")),
+        "dirtyChunks": _safe_chunk_key_list(payload.get("dirtyChunks")),
+        "chunkVersions": _safe_chunk_versions(payload.get("chunkVersions")),
+    }
+    room_id = f"{project_id}:{world_id}"
+    recipient_count = len(_HUB.peers(room_id))
+    _HUB.broadcast(
+        room_id,
+        _json_message("world.invalidate", invalidation=invalidation),
+    )
+    return jsonify({
+        "ok": True,
+        "roomId": room_id,
+        "recipientCount": recipient_count,
+        "changedChunks": invalidation["changedChunks"],
+        "dirtyChunks": invalidation["dirtyChunks"],
+    })
+
+
 __all__ = [
     "REALTIME_SOCKET_PATH",
     "REALTIME_STATUS_PATH",
     "init_realtime_socket",
+    "publish_realtime_invalidation",
     "realtime_bp",
 ]

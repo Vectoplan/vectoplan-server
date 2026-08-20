@@ -1,0 +1,2732 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1999-1-4 
+ICS 91.01 0.30; 91.080.10 
+Eurocode 9-
+Mai 2010 
+DIN 
+Teilweiser Ersatz far 
+DIN 18807-6:1995..09, 
+DIN 18807-7:1995..09 und 
+DIN 18807-8:1995..09 
+Bemessung und Konstruktion von Aluminiumtragwerken­
+Tei11-4: Kaltgeformte Profiltafeln; 
+Deutsche Fassung EN 1999-1-4:2007 + AC:2009 
+Eurocode 9-
+Design of alumini um structures-
+Part 1-4: Cold-formed structural sheeting; 
+GermanversionEN 1999-1-4:2007 + AC:2009 
+Eurocode 9-
+Calcul des structures en aluminium -
+Partie 1-4: Les structures a plaques formees ä froid; 
+Versionallemande EN 1999-1-4:2007 + AC:2009 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung a.V. · Jade Art dar Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e.V., Ber1in, gestattet. 
+Alleinver1<auf der Normen durch Beuth Ver1ag GmbH, 1 0772 Ber1in 
+Gesamtumfang 7 4 Seiten 
+Preisgruppe 25 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+9843194
+
+===== PDF-SEITE 2 =====
+DIN EN 1999-1-4:2010-05 
+Nationales Vorwort 
+Dieses Dokument (EN 1999-1-4:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau , dessen Sekretariat von BSI (Vereinigtes Königreich) gehalten wird, unter 
+deutscher Mitwirkung erarbeitet. 
+Im DIN Deutsches Institut für Normung e. V. ist hierfür der Arbeitsausschuss NA 005-08-07 AA Aluminium-
+konstruktionen unter vorwiegend ruhender Belastung (DIN 4113, Sp CEN/TC 250/SC 9 + CEN/TC 135/WG 11) 
+des Normenausschusses Bauwesen (NABau) zuständig. 
+Dieses Dokument enthält die Berichtigung, die von CEN am 4. November 2009 angenommen wurde. 
+Der Anfang und das Ende der Textstellen, die aufgrund der Berichtigung eingefügt bzw. gestrichen wurden, 
+sind durch  gekennzeichnet. 
+Änderungen 
+Gegenüber DIN 18807-6:1995-09, DIN 18807-7:1995-09 und DIN 18807-8:1995-09 wurden folgende 
+Änderungen vorgenommen: 
+a) Einführung des semi-probalistischen Teilsicherheitskonzeptes. 
+Frühere Ausgaben 
+DIN 18807-6: 1995-09 
+DIN 18807-7: 1995-09 
+DIN 18807-8: 1995-09 2
+
+===== PDF-SEITE 3 =====
+EN 1999-1-4 
+Februar 2007
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
++AC
+November 2009
+ICS 91.010.30; 91.080.10
+Deutsche Fassung 
+ Eurocode 9: Bemessung und Konstruktion von 
+Aluminiumtragwerken  
+Teil 1-4: Kaltgeformte Profiltafeln 
+Eurocode 9: Design of aluminium structures  
+Part 1-4: Could-formed structural sheeting 
+Eurocode 9: Calcul des structures en aluminium  
+Partie 1-4: Les Structures à plaques formées à froid 
+Diese Europäische Norm wurde von CEN am 12. November 2006 angenommen. Die Berichtigung AC wurde vom CEN am 
+4. November 2009 angenommen. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter denen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Listen 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum oder bei jedem CEN-Mitglied auf Anfrage 
+erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sprache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, 
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich 
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: rue de Stassart, 36 B- 1050 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1999-1-4:2007 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+2 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang für EN 1999-1-4...................................................................................................................8
+1 Allgemeines.................................................................................................................. ..........................9
+1.1 Anwendungsbereich .......................................................................................................... ...................9
+1.1.1 Anwendungsbereich von EN 1999............................................................................................ ...........9
+1.1.2 Anwendungsbereich von EN 1999-1-4. ................................................................................................9
+1.2 Normative Verweisungen..................................................................................................... ...............10
+1.2.1 Allgemeines.............................................................................................................. ............................10
+1.2.2 Bemessung................................................................................................................ ...........................10
+1.2.3 Werkstoffe und Werkstoffprüfung .......................................................................................... ...........10
+1.2.4 Verbindungselemente ...................................................................................................... ...................11
+1.2.5 Sonstiges................................................................................................................ ..............................11
+1.3 Begriffe ................................................................................................................... ..............................11
+1.4 Formelzeichen.............................................................................................................. ........................12
+1.5 Geometrie und Festlegungen für Abmessungen .............................................................................13
+1.5.1 Querschnittsformen....................................................................................................... ......................13
+1.5.2 Aussteifungsformen ....................................................................................................... .....................13
+1.5.3 Abmessungen der Querschnitte ............................................................................................. ...........13
+1.5.4 Festlegung der Bauteilachsen............................................................................................. ...............14
+2 Bemessungsgrundlagen......................................................................................................... ............14
+3 Werkstoffe ................................................................................................................... .........................15
+3.1 Allgemeines................................................................................................................ ..........................15
+3.2 Aluminiumlegierungen für Bauteile.......................................................................................... .........15
+3.2.1 Materialeigenschaften .................................................................................................... .....................15
+3.2.2 Blechdicken und geometrische Toleranzen .................................................................................. ...17
+3.3 Mechanische Verbindungselemente ............................................................................................ .....17
+4 Dauerhaftigkeit.............................................................................................................. .......................17
+5 Berechnungsmethoden.......................................................................................................... .............18
+5.1 Einfluss ausgerundeter Ecken ............................................................................................... ............18
+5.2 Geometrische Festlegungen .................................................................................................. ............19
+5.3 Bemessungsmodelle.......................................................................................................... .................20
+5.4 Einwölbung der Gurte ....................................................................................................... ..................20
+5.5 Örtliches Beulen und Gesamtfeldbeulen ...................................................................................... ....21
+5.5.1 Allgemeines.............................................................................................................. ............................21
+5.5.2 Unausgesteifte ebene Teilflächen......................................................................................... .............21
+5.5.3 Ebene Teilflächen mit Zwischensteifen.................................................................................... .........23
+5.5.4 Trapezprofiltafeln mit Zwischensteifen ................................................................................... ..........28
+6 Grenzzustände der Tragfähigkeit.............................................................................................. .........34
+6.1 Beanspruchbarkeit von Querschnitten ........................................................................................ .....34
+6.1.1 Allgemeines.............................................................................................................. ............................34
+6.1.2 Zentrischer Zug.......................................................................................................... ..........................35
+6.1.3 Zentrischer Druck ........................................................................................................ ........................35
+6.1.4 Biegemoment .............................................................................................................. .........................36
+6.1.5 Querkraft................................................................................................................ ...............................38
+6.1.6 Torsion.................................................................................................................. ................................40
+6.1.7 Örtliche Lasteinleitung.................................................................................................. ......................40
+6.1.8 Zugkraft und Biegung ..................................................................................................... ....................45
+6.1.9 Druckkraft und Biegung................................................................................................... ...................45
+6.1.10 Querkraft, zentrische Kraft und Biegung ................................................................................. .........46
+6.1.11 Biegemoment und örtliche Lasteinleitung oder Auflagerkraft .......................................................46
+6.2 Beanspruchbarkeit bezüglich Knicken ........................................................................................ .....47
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 5 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+3 
+Seite
+6.2.1 Allgemeines .............................................................................................................. ...........................47
+6.2.2 Zentrischer Druck........................................................................................................ ........................47
+6.2.3 Biegung und zentrischer Druck ............................................................................................ .............48
+6.3 Schubfelder................................................................................................................ ..........................49
+6.3.1 Allgemeines .............................................................................................................. ...........................49
+6.3.2 Scheibenwirkung.......................................................................................................... .......................49
+6.3.3 Voraussetzungen.......................................................................................................... .......................50
+6.3.4 Schubfelder aus Aluminium-Profiltafeln................................................................................... ........51
+6.4 Gelochte Profiltafeln mit Lochanordnung in Form gleichseitiger Dreiecke..................................52
+7 Gebrauchstauglichkeit........................................................................................................ ................53
+7.1 Allgemeines ................................................................................................................ .........................53
+7.2 Plastische Verformungen .................................................................................................... ...............53
+7.3 Durchbiegungen ............................................................................................................. .....................54
+8 Verbindungen mit mechanischen Verbindungselementen.............................................................54
+8.1 Allgemeines ................................................................................................................ .........................54
+8.2 Blindniete ................................................................................................................. ............................56
+8.2.1 Allgemeines .............................................................................................................. ...........................56
+8.2.2 Bemessungswerte für scherbeanspruchte Nietverbindungen.......................................................56
+8.2.3 Bemessungswerte für zugbeanspruchte Nietverbindungen ..........................................................56
+8.3 Gewindeformende Schrauben / Bohrschrauben..............................................................................57
+8.3.1 Allgemeines .............................................................................................................. ...........................57
+8.3.2 Bemessungswerte für scherbeanspruchte Schraubverbindungen ...............................................57
+8.3.3 Bemessungswerte für zugbeanspruchte Schraubverbindungen ..................................................58
+9 Versuchsgestützte Bemessung .................................................................................................. .......60
+Anhang A (normativ) Versuchsaufbau und -durchführung..........................................................................61
+A.1 Allgemeines ................................................................................................................ .........................61
+A.2 Versuche mit Profiltafeln .................................................................................................. ..................61
+A.2.1 Allgemeines .............................................................................................................. ...........................61
+A.2.2 Einfeldträgerversuch..................................................................................................... ......................62
+A.2.3 Zweifeldträgerversuch .................................................................................................... ....................62
+A.2.4 Ersatzträgerversuch...................................................................................................... ......................63
+A.2.5 Endauflagerversuche...................................................................................................... ....................66
+A.3 Versuchsauswertung ......................................................................................................... .................66
+A.3.1 Allgemeines .............................................................................................................. ...........................66
+A.3.2 Normierung der Versuchsergebnisse ........................................................................................ .......66
+A.3.3 Charakteristische Werte .................................................................................................. ...................67
+A.3.4 Bemessungswerte.......................................................................................................... .....................69
+A.3.5 Gebrauchstauglichkeit.................................................................................................... ....................69
+Anhang B (informativ) Dauerhaftigkeit von Verbindungselementen...........................................................70
+Literaturhinweise..............................................................................................................................................72
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 6 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+4 
+Vorwort 
+Dieses Dokument (EN 1999-1-4:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis August 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Diese Europäische Norm ersetzt keine bestehende Europäische Norm. 
+CEN/TC 250 ist für die Erarbeitung aller Eurocodes für den konstruktiven Ingenieurbau zuständig. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+CEN [und/oder CENELEC] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Bulgarien, Dänemark, Deutschland, 
+Estland, Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, 
+Niederlande, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, 
+Spanien, Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 7 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+5 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Aktions-
+programm auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des 
+Programms war die Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer 
+Spezifikationen. 
+Im Rahmen dieses Aktionsprogramms leitete die Kommission die Bearbeitung von harmonisierten 
+technischen Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative 
+zu den in den Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das in den 80er Jahren des zwanzigsten Jahrhunderts zu der 
+ersten Eurocode-Generation führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine Verein-
+barung
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Richtlinien des Rates und mit den Kommissionsentscheidungen, die die Europäischen 
+Normen behandeln (z. B. die Richtlinie des Rates 89/106/EWG zu Bauprodukten (Bauproduktenrichtlinie), die 
+Richtlinien des Rates 93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und 
+Dienstleistungen und die entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeführt 
+wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990 Eurocode 0: Grundlagen der Tragwerksplanung
+EN 1991 Eurocode 1: Einwirkungen auf Tragwerke
+EN 1992 Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+EN 1993 Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+EN 1994 Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und Beton
+EN 1995 Eurocode 5: Bemessung und Konstruktion von Holzbauwerken
+EN 1996 Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten 
+EN 1997 Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998 Eurocode 8: Auslegung von Bauwerken gegen Erdbeben 
+EN 1999 Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken
+Die EN-Eurocodes berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitgliedsländern und 
+haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte berücksichtigt, so dass diese 
+Werte von Land zu Land unterschiedlich bleiben können. 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaften und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 8 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+6 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und der EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung von Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie des Rates 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1. 
+Mechanische Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2. Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und die dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Erstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs). 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagendoku-
+menten2) auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art sind als 
+die harmonisierten Produktnormen3). Daher sind die technischen Gesichtspunkte, die sich aus den Eurocodes 
+ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an Produktnormen 
+arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und die Bemessung von kompletten 
+Tragwerken und Bauteilen, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle Bauweisen 
+und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für ungewöhnliche 
+Baulösungen und Entwurfsbedingungen. Für diese Fälle können zusätzliche Spezialkenntnisse für den 
+Bauplaner erforderlich sein. 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, möglicherweise mit einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem (informativen) Nationalen Anhang. 
+Der (informative) Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für 
+nationale Entscheidungen offen gelassen wurden. Diese so genannten national festzulegenden Parameter 
+(NDP) gelten für die Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt 
+werden. Sie umfassen: 
+ Zahlenwerte für die Teilsicherheitsbeiwerte und/oder Klassen, wo die Eurocodes Alternativen eröffnen, 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben, 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Anforderungen in Grundlagendokumenten 
+zu konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die europäische Zulassung 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie haben die Grundlagendokumente 
+a) die wesentlichen Anforderungen zu konkretisieren, indem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungsstufen vereinheitlicht werden, 
+b) Methoden zur Verbindung dieser Klassen oder Anforderungsstufen mit technischen Spezifikationen anzugeben, 
+z. B. Berechnungs- oder Nachweisverfahren, technische Entwurfsregeln usw., 
+c) als Bezugsdokumente für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 9 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+7 
+ landesspezifische geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten, 
+ die Vorgehensweise, wenn die Eurocodes mehrere Verfahren zur Wahl anbieten, 
+ Vorschriften zur Verwendung der informativen Anhänge, 
+ Hinweise zur Anwendung der Eurocodes, soweit diese die Eurocodes ergänzen und ihnen nicht 
+widersprechen. 
+Verhältnis zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (ENs und ETAs) 
+Es besteht die Notwendigkeit, dass die harmonisierten Technischen Spezifikationen für Bauprodukte und die 
+technischen Regelungen für die Tragwerksplanung 4) konsistent sind. Insbesondere sollten alle Hinweise, die 
+mit der CE-Kennzeichnung von Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar 
+erkennen lassen, welche national festzulegenden Parameter (NDP) zugrunde liegen. 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie ebenso wie die Abschnitte 4.2, 4.3.1, 4.3.2 und 5.2 des 
+Grundlagendokumentes Nr. 1. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 10 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+8 
+Nationaler Anhang für EN 1999-1-4 
+Diese Norm enthält alternative Verfahren, Zahlenwerte und Empfehlungen für Klassen zusammen mit 
+Hinweisen, an welchen Stellen nationale Festlegungen möglicherweise getroffen werden müssen. Deshalb 
+sollte die jeweilige nationale Ausgabe von EN 1999-1-4 einen Nationalen Anhang mit allen national 
+festzulegenden Parametern enthalten, die für die Bemessung und Konstruktion von Aluminiumtragwerken, die 
+in dem Ausgabeland gebaut werden sollen, erforderlich sind. 
+Nationale Festlegungen sind nach EN 1999-1-4 in den folgenden Abschnitten vorgesehen: 
+2(3) 
+2(4) 
+2(5) 
+3.1(3) 
+7.3(3) 
+A.1(1) 
+A.3.4(3) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 11 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+9 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+1.1.1 Anwendungsbereich von EN 1999 
+(1) EN 1999 gilt für den Entwurf, die Berechnung und die Bemessung von Bauwerken und Tragwerken aus 
+Aluminium. Sie entspricht den Grundsätzen und Anforderungen an die Tragfähigkeit und Gebrauchs-
+tauglichkeit von Tragwerken, sowie den Grundlagen für ihre Bemessung und Nachweise, die in EN 1990  
+Grundlagen der Tragwerksplanung  enthalten sind. 
+(2) EN 1999 behandelt ausschließlich Anforderungen an die Tragfähigkeit, die Gebrauchstauglichkeit, die 
+Dauerhaftigkeit und den Feuerwiderstand von Tragwerken aus Aluminium. Andere Anforderungen, wie z. B. 
+Wärmeschutz oder Schallschutz, werden nicht behandelt. 
+(3) EN 1999 gilt in Verbindung mit folgenden Regelwerken: 
+ EN 1990, Eurocode: Grundlagen der Tragwerksplanung
+ EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+ Europäische Normen für Bauprodukte, die für Aluminiumtragwerke Verwendung finden 
+ EN 1090-1, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 1: Konformitäts-
+nachweisverfahren für tragende Bauteile5)
+ EN 1090-3, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 3: Technische 
+Anforderungen für Aluminiumtragwerke5)
+(4) EN 1999 ist in fünf Teile gegliedert: 
+ EN 1999-1-1, Bemessung und Konstruktion von Aluminiumtragwerken  Allgemeine Bemessungsregeln
+ EN 1999-1-2, Bemessung und Konstruktion von Aluminiumtragwerken  Tragwerksbemessung für den 
+Brandfall
+ EN 1999-1-3, Bemessung und Konstruktion von Aluminiumtragwerken  Ermüdungsbeanspruchte 
+Tragwerke
+ EN 1999-1-4, Bemessung und Konstruktion von Aluminiumtragwerken  Kaltgeformte Profiltafeln
+ EN 1999-1-5, Bemessung und Konstruktion von Aluminiumtragwerken  Schalen
+1.1.2 Anwendungsbereich von EN 1999-1-4 
+(1)P EN 1999-1-4 behandelt die Bemessung kaltgeformter Profiltafeln. Die Bemessungsmethoden sind 
+anwendbar für profilierte Produkte, die aus kalt- oder warmgewalztem Vormaterial durch Kaltumformung wie 
+Rollformen oder Abkanten hergestellt sind. Die Ausführung von Aluminiumkonstruktionen aus kaltgeformten 
+Profiltafeln ist in EN 1090-3 behandelt. 
+ANMERKUNG Die in diesem Teil angegebenen Regeln ergänzen die Regeln der übrigen Teile von EN 1999-1. 
+(2) Es werden auch Bemessungsregeln für die Scheibentragfähigkeit von Schubfeldern aus Aluminium-
+Profiltafeln angegeben. 
+5) ZZ. in Vorbereitung. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 12 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+10 
+(3) Dieser Teil gilt nicht für stabförmige Kaltprofile mit C-, Z- oder ähnlichen Profilquerschnitten sowie 
+kaltgeformte und geschweißte Rund- oder Rechteckhohlquerschnitte aus Aluminium. 
+(4) EN 1999-1-4 beschreibt Verfahren für die rechnerische und die versuchsgestützte Bemessung. Die 
+rechnerischen Bemessungsverfahren gelten nur in den angegebenen Grenzen für die Werkstoffkennwerte 
+und geometrischen Verhältnisse, für die ausreichende Erfahrung und Versuchsergebnisse vorhanden sind. 
+Diese Einschränkungen gelten nicht für die versuchsgestützte Bemessung. 
+(5) EN 1999-1-4 beinhaltet keine Lastannahmen für Montage und Gebrauch. 
+1.2 Normative Verweisungen 
+(1) Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+1.2.1 Allgemeines 
+EN 1090-1, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 1: Konformitäts-
+nachweisverfahren für tragende Bauteile
+6)
+EN 1090-3, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 3: Technische Anforderungen 
+für Aluminiumtragwerke6)
+1.2.2 Bemessung 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+EN 1995-1-1, Eurocode 5: Bemessung und Konstruktion von Holzbauwerken  Teil 1-1: Allgemeines  
+Allgemeine Regeln und Regeln für den Hochbau
+EN 1999-1-1, Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-1: Allgemeine 
+Bemessungsregeln
+1.2.3 Werkstoffe und Werkstoffprüfung 
+EN 485-2:2008 , Aluminium und Aluminiumlegierungen  Bänder, Bleche und Platten  Teil 2: 
+Mechanische Eigenschaften
+EN 508-2gestrichener Text, Dachdeckungsprodukte aus Metallblech  Festlegungen für 
+selbsttragende Bedachungselemente aus Stahlblech, Aluminiumblech oder nichtrostendem Stahlblech  
+Teil 2: Aluminium
+EN 1396:2007, Aluminium und Aluminiumlegierungen  Bandbeschichtete Bleche und Bänder für 
+allgemeine Anwendungen  Spezifikationen
+EN 10002-1, Metallische Werkstoffe  Zugversuch  Teil 1: Prüfverfahren bei Raumtemperatur
+gestrichener Text
+6) ZZ. in Vorbereitung. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 13 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+11 
+1.2.4 Verbindungselemente 
+EN ISO 1479, Sechskant-Blechschrauben
+EN ISO 1481, Flachkopf-Blechschrauben mit Schlitz
+EN ISO 15480, Sechskant-Bohrschrauben mit Bund mit Blechschraubengewinde
+EN ISO 15481, Flachkopf-Bohrschrauben mit Kreuzschlitz mit Blechschraubengewinde
+EN ISO 15973, Geschlossene Blindniete mit Sollbruchdorn und Flachkopf
+EN ISO 15974, Geschlossene Blindniete mit Sollbruchdorn und Senkkopf
+EN ISO 15977, Offene Blindniete mit Sollbruchdorn und Flachkopf
+EN ISO 15978, Offene Blindniete mit Sollbruchdorn und Senkkopf
+EN ISO 15981, Offene Blindniete mit Sollbruchdorn und Flachkopf
+EN ISO 15982, Offene Blindniete mit Sollbruchdorn und Senkkopf
+EN ISO 7049:1994, Linsenkopf-Blechschrauben mit Kreuzschlitz
+1.2.5 Sonstiges 
+EN ISO 12944-2, Beschichtungsstoffe  Korrosionsschutz von Stahlbauten durch Beschichtungssysteme  
+Teil 2: Einteilung der Umgebungsbedingungen
+1.3 Begriffe 
+Für die Anwendung dieses Dokuments gelten die Begriffe nach EN 1999-1-1 und die folgenden Begriffe. 
+1.3.1 
+Ausgangsmaterial 
+Bleche und Bänder aus Aluminium, aus welchen durch Kaltumformung Profiltafeln hergestellt werden 
+1.3.2 
+Streckgrenze des Ausgangsmaterials 
+0,2%-Dehngrenze fo des Ausgangsmaterials 
+1.3.3 
+Scheibenwirkung 
+Tragwirkung von Profiltafeln bei Schubbeanspruchung in Scheibenebene 
+1.3.4 
+elastische Verformungsbehinderung 
+Behinderung von Verschiebungen und Verdrehungen an Stellen eines Querschnittes, wodurch die 
+Beanspruchbarkeit hinsichtlich Beulen bzw. Knicken erhöht wird 
+1.3.5 
+bezogener Schlankheitsgrad 
+normierte, materialbezogene Schlankheit 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 14 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+12 
+1.3.6 
+Verformungsbehinderung 
+Behinderung von Verschiebungen, Verdrehungen oder Verwölbungen eines Profils oder eines ebenen 
+Teilquerschnittes, die die Beanspruchbarkeit hinsichtlich Beulen bzw. Knicken erhöht, wie bei einer unnach-
+giebigen Stützung 
+1.3.7 
+Schubfeldbemessung 
+Bemessungsmethode zur Berücksichtigung der Scheibenwirkung von Profiltafeln hinsichtlich Steifigkeit und 
+Beanspruchbarkeit einer Konstruktion 
+1.3.8 
+Auflager 
+Stelle, wo Kräfte oder Momente eines Bauteils zum Fundament oder zu einem anderen Bauteil übergeleitet 
+werden 
+1.3.9 
+wirksame Dicke 
+rechnerische Dicke in Verbindung mit dem Beulen eines ebenen Querschnittsteiles 
+1.3.10 
+reduzierte wirksame Dicke 
+rechnerische Dicke in Verbindung mit dem globalen Beulen einer Aussteifung in einem zweiten Berechnungs-
+schritt, wenn lokales Beulen im ersten Berechnungsschritt berücksichtigt wurde 
+1.4 Formelzeichen 
+(1) Zusätzlich zu den Formelzeichen in EN 1999-1-1 werden folgende Zeichen benutzt: 
+Abschnitte 1 bis 6 
+C Drehfedersteifigkeit; 
+k Längsfedersteifigkeit; 
+ Verdrehung; 
+bp Nennbreite einer ebenen Teilfläche; 
+hw Steghöhe, vertikal zwischen den Systemlinien der Gurte gemessen; 
+sw Stegbreite, schräg zwischen den Eckenmitten gemessen; 
+d Abminderungsfaktor für Knicken (Biegeknicken der Längsaussteifungen) 
+der Winkel zwischen zwei benachbarten ebenen Teilflächen; 
+ die auf die Gurte bezogene Stegneigung. 
+Abschnitt 8 Verbindungen mit mechanischen Verbindungselementen 
+dw Durchmesser von (Dicht-)Scheibe oder Kopf des Verbindungselementes; 
+fu,min die kleinere Zugfestigkeit der beiden verbundenen Bauteile; 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 15 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+13 
+fu,sup Zugfestigkeit der Unterkonstruktion, in welche die Schraube eingedreht ist; 
+fy Streckgrenze der Unterkonstruktion aus Stahl; 
+tmin Dicke des dünneren der beiden verbundenen Bauteile; 
+tsup Dicke der Unterkonstruktion, in welche die Schraube eingedreht ist. 
+(2) Weitere Begriffe und Formelzeichen werden bei deren Erstverwendung erläutert. 
+1.5 Geometrie und Festlegungen für Abmessungen 
+1.5.1 Querschnittsformen 
+(1) Kaltgeformte Profiltafeln haben innerhalb festgelegter Toleranzen konstante Blechdicke und über ihre 
+gesamte Länge gleichförmigen Querschnitt. 
+(2) Die Querschnitte von kaltgeformten Profiltafeln bestehen im Wesentlichen aus einer Anzahl von ebenen 
+Teilflächen, die durch gekrümmte Elemente verbunden sind. 
+(3) Typische Querschnittsformen von kaltgeformten Profiltafeln zeigt Bild 1.1. 
+(4) Kaltgeformte Profiltafeln können entweder unausgesteift sein oder Längsaussteifungen in Stegen oder 
+Gurten oder auch in beiden aufweisen. 
+1.5.2 Aussteifungsformen 
+(1) Typische Formen von Längsaussteifungen kaltgeformter Profiltafeln zeigt Bild 1.2. 
+Bild 1.1  Beispiele kaltgeformter Profiltafeln 
+Bild 1.2  Typische Zwischenaussteifungen 
+1.5.3 Abmessungen der Querschnitte 
+(1) Die Maße kaltgeformter Profiltafeln, einschließlich Gesamtbreite b, Gesamthöhe h, innerer Biegeradius r, 
+sowie alle Außenabmessungen mit indexloser Bezeichnung werden, falls nicht anders festgelegt, über die 
+Außenkontur gemessen, siehe Bild 5.1. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 16 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+14 
+(2) Falls nicht anders angegeben, werden die, die mit Index versehen sind, Querschnittsabmessungen kalt-
+geformter Profiltafeln  wie zum Beispiel bp, hw oder sw  entweder bis zur Blechmittellinie bzw. bis zur 
+Eckenmitte gemessen. 
+(3) Bei geneigten Stegen wird die schräge Länge s parallel zur Neigung gemessen. 
+(4) Die Abwicklung der Steghöhe wird einschließlich der Stegaussteifungen entlang der Blechmittellinien 
+gemessen. 
+(5) Die Abwicklung der Gurtbreite wird einschließlich aller inneren Aussteifungen entlang der Blechmittellinie 
+gemessen. 
+(6) Die Dicke t ist, sofern nicht anders angegeben, die Nennblechdicke. Siehe 3.2.2. 
+1.5.4 Festlegung der Bauteilachsen 
+(1) Für Profiltafeln werden in EN 1999-1-4 folgende Festlegungen für die Bauteilachsen verwendet: 
+ y-y für die Achse parallel zur Profiltafelebene; 
+ z-z für die Achse rechtwinklig zur Profiltafelebene. 
+2 Bemessungsgrundlagen 
+(1) Die Bemessung kaltgeformter Profiltafeln muss mit den allgemeinen Regeln in EN 1990 und EN 1999-1-1 
+übereinstimmen. 
+(2) Für die Grenzzustände der Tragfähigkeit und Gebrauchstauglichkeit sind angemessene Teilsicherheits-
+beiwerte festzulegen. 
+(3) Beim Nachweis der Grenzzustände der Tragfähigkeit gelten folgende Teilsicherheitsbeiwerte M: 
+ für Beanspruchbarkeit von Querschnitten und Bauteilen, bei denen das Versagen durch Instabilität 
+eintritt: M1
+ für Beanspruchbarkeit von Querschnitten, bei denen das Versagen durch Zugbruch eintritt: M2
+ für Beanspruchbarkeit von Verbindungen: M3
+ANMERKUNG Zahlenwerte für Mi können im Nationalen Anhang festgelegt werden. Für Bauwerke werden die 
+folgenden Werte empfohlen: 
+M1 1,10 
+M2 1,25 
+M3 1,25 
+(4) Für den Nachweis der Gebrauchstauglichkeit ist in der Regel der Teilsicherheitsbeiwert M,ser zu 
+verwenden. 
+ANMERKUNG Zahlenwerte für M,ser können im Nationalen Anhang festgelegt werden. Für Bauwerke wird der folgende 
+Wert empfohlen: 
+M,ser 1,0. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 17 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+15 
+(5) Bei der Bemessung von Tragwerken aus kaltgeformten Profiltafeln ist zwischen Konstruktionsklassen“ 
+zu unterscheiden, die in Abhängigkeit von der Art ihrer tragenden Funktion im Bauwerk wie folgt definiert sind: 
+Konstruktionsklasse I: Tragwerke, bei denen kaltgeformte Profiltafeln integrierende Elemente des 
+Tragwerks im Hinblick auf Gesamttragfähigkeit und Steifigkeit sind, siehe 6.3.3; 
+Konstruktionsklasse II: Tragwerke, bei denen kaltgeformte Profiltafeln für die Tragfähigkeit und Stabilität 
+bestimmter Bauteile erforderlich sind; 
+Konstruktionsklasse III: Tragwerke, bei denen kaltgeformte Profiltafeln derart eingesetzt werden, dass sie 
+lediglich Lasten auf die Unterkonstruktion abgeben. 
+ANMERKUNG 1 Der Nationale Anhang kann Regeln für die Zuordnung von Konstruktionsklasse mit Schadens-
+folgenklasse nach EN 1990 festgelegen. 
+ANMERKUNG 2 Bei den Konstruktionsklassen I und II sollten die Anforderungen an die Ausführung in den 
+Ausführungsunterlagen angegeben sein, siehe EN 1090-3. 
+3 Werkstoffe 
+3.1 Allgemeines 
+(1) Die auf Rechnung basierenden Bemessungsverfahren nach EN 1999-1-4 dürfen für Bauteile aus den in 
+Tabelle 3.1 aufgeführten Legierungen in den dort angegebenen Zuständen angewendet werden. 
+(2) Für rechnerische Bemessungen nach EN 1999-1-4 muss die 0,2%-Dehngrenze fo mindestens 
+fo 165 N/mm2 betragen. 
+(3) Aluminiumhalbzeug, das für kaltgeformte Profiltafeln verwendet wird, sollte für die vorgesehene 
+Kaltumformung (Querschnittsform und Herstellverfahren) geeignet sein. 
+ANMERKUNG Andere Aluminiumwerkstoffe und -produkte siehe Nationaler Anhang. 
+3.2 Aluminiumlegierungen für Bauteile 
+3.2.1 Materialeigenschaften 
+(1) Die charakteristischen Werte für die 0,2%-Dehngrenze fo und für die Zugfestigkeit fu sind unmittelbar aus 
+den Produktnormen zu entnehmen, durch Übernahme der Kleinstwerte von Rp0,2 und Rm. 
+(2) Es darf vorausgesetzt werden, dass die mechanischen Kennwerte für Druck die gleichen sind wie für 
+Zug. 
+(3) Soll ein teilplastischer Biegewiderstand ausgenutzt werden, darf das Verhältnis der charakteristischen 
+Werte von Zugfestigkeit fu zu 0,2%-Dehngrenze fo nicht kleiner als 1,2 sein. 
+(4) Die Bemessungswerte der übrigen Werkstoffkennwerte, z. B. Elastizitätsmodul, sind EN 1999-1-1 zu 
+entnehmen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 18 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+16 
+Tabelle 3.1  Charakteristische Werte für die 0,2%-Dehngrenze fo, Zugfestigkeit fu
+und Bruchdehnung A50 für Bleche und Bänder in Zuständen mit fo 165 N/mm2
+und Dicken zwischen 0,5 mm und 6 mm 
+Numerische 
+Bezeichnung 
+EN AW- 
+Chemische 
+Bezeichnung 
+EN AW- 
+Bestän-
+digkeits-
+klasse5) 
+Zustand1), 2), 3) Dicke 
+bis zu 
+fu
+Rm
+fo
+Rp0,2
+1)
+A50
+%4) 
+H18 3,0 190 170 2 
+3003 AlMn1Cu A 
+H48 3,0 180 165 2 
+H14 | H24/H34 6 | 3 220 180 | 170 2-3 | 4 
+H16 | H26/H36 4 | 3 240 200 | 190 1-2 | 3 
+H18 | H28/H38 3 | 1,5 260 230 | 220 1-2 | 3 
+H44 3 210 180 4 
+H46 3 230 200 3 
+3004 AlMn1Mg1 A 
+H48 3 260 220 3 
+H16 4 195 175 2 
+H18 | H28 3 220 200 | 190 2 | 2-3 3005 AlMn1Mg0,5 A 
+H48 3 210 180 2 
+3103 AlMn1 A H18 3 185 165 2 
+H18 | H28 3 | 1,5 195 180 | 170 1 | 2 
+3105 AlMn0,5Mg0,5 A 
+H48 3 195 170 2 
+5005 AlMg1(B) A H18 3 185 165 2 
+H14 6 230 180 3-4 
+H16 | H26/H36 6 250 210 | 180 3 | 4-6 
+H18 | H28/H38 3 270 240 | 210 2 | 3-4 
+H46 3 250 180 4-5 
+5052 AlMg2,5 A 
+H48 3 270 210 3-4 
+ H14 6 210 170 2-4 
+ H16 | H26/H36 4 230 200 | 170 2-3 | 4-7 
+5251 AlMg2Mn0,
+3 A H18 | H28/H38 3 255 230 | 200 2 | 3 
+ H46 3 210 165 4-5 
+ H48 3 250 215 3 
+1) Werte für Zustände H1x, H2x, H3x nach EN 485-2: 2008
+2) Werte für Zustände H4x (bandbeschichtete Bleche und Bänder) nach EN 1396: 2007
+3) Sind zwei (drei) Zustände in einer Zeile angegeben, haben durch |“ getrennte Zustände unterschiedliche und durch /“ getrennte 
+Zustände gleiche technologische Werte. (Die Unterschiede beziehen sich nur auf fo und A50.) 
+4) A50 kann von der Blechdicke abhängen, erforderlichenfalls sind daher auch A50-Bereiche angegeben. 
+5) Beständigkeitsklasse, siehe EN 1999-1-1 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 19 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+17 
+3.2.2 Blechdicken und geometrische Toleranzen 
+(1) Die in EN 1999-1-4 angegebenen Berechnungsverfahren können bei Legierungen angewendet werden, 
+mit einer nominellen Blechdicke tnom ohne organische Beschichtung von: 
+tnom 0,5 mm 
+(2) Die nominelle Blechdicke tnom ist in der Regel als Bemessungswert für die Blechdicke t zu verwenden, 
+sofern die Minustoleranz kleiner als 5 % ist. Andernfalls gilt 
+95/)100(nom devtt (3.1) 
+Dabei ist 
+dev die Minustoleranz in %. 
+(3) Toleranzen für Dachelemente sind in EN 508-2 geregelt. 
+3.3 Mechanische Verbindungselemente 
+(1) Folgende mechanische Verbindungselemente können benutzt werden: 
+ Gewindeformende Schrauben in Form von gewindefurchenden Schrauben und Bohrschrauben nach den 
+in 8.3 aufgeführten Normen; 
+ Blindniete nach den in 8.2 aufgeführten Normen. 
+(2) Die charakteristische Tragfähigkeit bezüglich Abscheren Rkv,F und die charakteristische Zugbruchtrag-
+fähigkeit Rkt,F der mechanischen Verbindungselemente sollten nach 8.2 oder 8.3 ermittelt werden. 
+(3) Bezüglich weiterer Details zu Gewindeformschrauben und Blindniete wird auf EN 1090-3 verwiesen. 
+(4) Die charakteristische Tragfähigkeit bezüglich Abscheren und die charakteristische Zugbruchtragfähigkeit 
+von mechanischen Verbindungselementen, die nicht in dieser Norm geregelt sind, können europäischen 
+Zulassungen (ETA) entnommen werden. 
+4 Dauerhaftigkeit 
+(1) Für grundsätzliche Anforderungen siehe EN 1999-1-1, Abschnitt 4. 
+(2) Besondere Aufmerksamkeit ist angebracht, wenn verschiedene Werkstoffe zusammengefügt werden und 
+durch elektrochemische Reaktionen Korrosion auftreten kann. 
+ANMERKUNG Bezüglich des Korrosionswiderstandes von Verbindungselementen in Abhängigkeit von der 
+Korrosivitätskategorie der Umgebung siehe EN ISO 12944-2, Anhang B. 
+(3) Die Umgebungs- und Witterungseinflüsse während Herstellung, Transport und Zwischenlagerung auf der 
+Baustelle sind zu berücksichtigen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 20 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+18 
+5 Berechnungsmethoden 
+5.1 Einfluss ausgerundeter Ecken 
+(1) In Querschnitten mit ausgerundeten Ecken werden die Nennbreiten bp der ebenen Teilflächen als 
+Abstand zwischen den angrenzenden Eckenmitten gemessen, siehe Bild 5.1. 
+(2) Bei Querschnitten mit ausgerundeten Ecken sollte die Berechnung der Querschnittswerte auf der Grund-
+lage der wirklichen Querschnittsgeometrie erfolgen. 
+(3) Unabhängig davon, ob geeignetere Methoden zur Ermittlung der Querschnittswerte zur Anwendung 
+kommen, kann das in (4) beschriebene Näherungsverfahren angewendet werden. Der Einfluss von 
+Eckausrundungen darf aber bei inneren Biegeradien r 10 t und r 0,15 bp vernachlässigt und der Quer-
+schnitt darf unter Annahme scharfkantiger Ecken berechnet werden. 
+(4) Bei ausgerundeten Ecken kann die Berechnung von Querschnittswerten über eine Abminderung der 
+Querschnittswerte des scharfkantigen Querschnitts nach folgender Näherungsformel geschehen: 
+1shg,g AA (5.1a) 
+21shg,g II (5.1b) 
+mit 
+m
+i
+i
+n
+j
+jj br
+1
+p,
+1
+90/43,0 (5.1c) 
+Dabei ist 
+gA die Gesamtquerschnittsfläche; 
+shg,A die Fläche gA des scharfkantigen Querschnittes; 
+,ibp die Gesamtbreite der ebenen Teilfläche i des scharfkantigen Querschnittes; 
+gI das Flächenträgheitsmoment des Gesamtquerschnittes; 
+g,shI das Flächenträgheitsmoment gI des scharfkantigen Querschnittes; 
+ der Winkel zwischen zwei benachbarten ebenen Teilflächen; 
+m die Anzahl der ebenen Teilflächen; 
+n die Anzahl der gekrümmten Teilflächen ohne Berücksichtigung der Bögen von Aussteifungen in 
+Stegen und Gurten; 
+rj der innere Biegeradius der gekrümmten Teilfläche j . 
+(5) Die Abminderungen, die sich aus Formel (5.1) ergeben, dürfen auch bei der Bestimmung der wirksamen 
+Querschnittswerte effA und effy,I zur Anwendung kommen, wenn für die Nennbreiten der ebenen Teilflächen 
+die Abstände zwischen den Schnittpunkten der Mittellinien angesetzt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 21 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+19 
+(6) Ist der innere Biegeradius o/04,0 fEtr , so ist die Beanspruchbarkeit des Querschnittes durch 
+Versuche zu bestimmen. 
+(a) Mittelpunkt der Ecke oder der Ausrundung / 
+Eckenmitte 
+X ist der Schnittpunkt der Mittellinien 
+P ist die Eckenmitte 
+2/m trr
+)2sin()2tan(mr rg
+(b) Nennbreite bp eines Steges 
+(bp schräge Höhe sw) 
+(c) Nennbreite bp ebener durch 
+Stegaussteifungen verbundener Teilflächen 
+(d) Nennbreite bp ebener durch 
+Gurtaussteifungen verbundener Teilflächen 
+Bild 5.1  Nennbreiten ebener Teilflächen bp bei ausgerundeten Ecken 
+5.2 Geometrische Festlegungen 
+(1) Die Regeln für die rechnerische Bemessung nach EN 1999-1-4 sollten nicht bei Querschnitten mit 
+Breiten-zu-Dicken-Verhältnissen b / t und sw / t angewendet werden, welche die in (2) angegebenen maximal 
+zulässigen Werte überschreiten. 
+(2) Die maximal zulässigen Breiten-zu-Dicken-Verhältnisse sind: 
+ für gedrückte Gurte b / t 300 
+ für Stege sw / t 0,5 E / fo
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 22 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+20 
+ANMERKUNG Die in (2) angegebenen Grenzwerte für b / t und sw / t beschreiben den Anwendungsbereich, für den 
+ausreichende Erfahrungen und Bestätigungen durch Versuchsergebnisse vorliegen. Querschnitte mit größeren Breiten-
+zu-Dicken-Verhältnissen dürfen zur Anwendung gelangen, wenn Beanspruchbarkeit und Gebrauchstauglichkeit durch 
+Versuche und/oder durch Berechnung ermittelt werden, wobei jedoch Berechnungen durch eine angemessene Anzahl 
+von Versuchen bestätigt werden. 
+5.3 Bemessungsmodelle 
+(1) Für die Berechnung können Querschnittsteile wie in Tabelle 5.1 aufgeführt modelliert werden. 
+(2) Der wechselseitige Einfluss mehrerer Aussteifungen ist zu berücksichtigen. 
+Tabelle 5.1  Bemessungsmodelle für Querschnittsteile 
+Art des 
+Querschnittsteiles Modell Art des 
+Querschnittsteiles Modell 
+5.4 Einwölbung der Gurte 
+(1) Der Einfluss der Einwölbung sehr breiter Gurte (d. h. Durchbiegung in Richtung neutraler Faser) auf die 
+Tragfähigkeit einer biegebeanspruchten Profiltafel oder einer gebogenen Profiltafel, deren konkave Seite 
+Druckbeanspruchungen unterworfen ist, ist in der Regel zu berücksichtigen, es sei denn, das Einwöl-
+bungsmaß u ist geringer als 5 % der Profilhöhe. Ist die Einwölbung größer, so ist die Abminderung der 
+Tragfähigkeit, zum Beispiel durch Verringerung des inneren Hebelarmes des breiten Gurtes zur 
+Schwerachse zu berücksichtigen. 
+Bild 5.2  Einwölbung von Gurten 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 23 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+21 
+(2) Die Berechnung der Einwölbung darf wie folgt durchgeführt werden. Die angegebenen Formeln gelten 
+sowohl für ausgesteifte als auch unausgesteifte Druck- und Zuggurte, jedoch nicht für querausgesteifte Gurte. 
+ Für Profiltafeln, die vor Belastung gerade sind, siehe Bild 5.2: 
+ztE
+bu 22
+4
+s
+2
+a2 (5.1e) 
+ Für gebogene Profiltafeln: 
+rtE
+bu 2
+4
+sa2 (5.1f) 
+Dabei ist 
+u die Einwölbung des Gurtes in Richtung der neutralen Achse, siehe Bild 5.2; 
+bs der halbe Stegabstand; 
+z der Schwerpunktsabstand des Gurtes; 
+r der Krümmungsradius des gebogenen Profils; 
+a die mittlere, mit der Gesamtfläche ermittelte Spannung im Gurt. Wurde die Spannung mit dem 
+wirksamen Querschnitt ermittelt, ergibt sich die mittlere Spannung durch Multiplikation der mit dem 
+wirksamen Querschnitt ermittelten Spannung mit dem Verhältnis aus wirksamer Gurtfläche und 
+gesamter Gurtfläche. 
+5.5 Örtliches Beulen und Gesamtfeldbeulen 
+5.5.1 Allgemeines 
+(1) Die Einflüsse örtlichen Beulens und Gesamtfeldbeulens sind bei der Bestimmung der Beanspruchbarkeit 
+und der Steifigkeit von kaltgeformten Profiltafeln in der Regel zu berücksichtigen. 
+(2) Örtliches Beulen kann durch Ansatz wirksamer Querschnittswerte berücksichtigt werden, die auf der 
+Grundlage wirksamer Wanddicken ermittelt werden, siehe EN 1999-1-1. 
+(3) Bei der Ermittlung der Beanspruchbarkeit im Hinblick auf örtliches Beulen ist die 0,2%-Dehngrenze fo zu 
+verwenden. 
+(4) Bezüglich der wirksamen Querschnittswerte beim Nachweis der Gebrauchstauglichkeit siehe 7.1(3). 
+(5) Das Gesamtfeldbeulen von Querschnittsteilen mit Zwischenaussteifungen wird in 5.5.3 behandelt. 
+5.5.2 Unausgesteifte ebene Teilflächen 
+(1) Die wirksame Dicke t
+eff druckbeanspruchter Querschnittsteile ergibt sich aus teff t, worin ein das 
+örtliche Beulen berücksichtigender Abminderungsfaktor ist. 
+(2) Die Nennbreite bp eines ebenen Querschnittsteiles ist nach 5.1 zu ermitteln. Bei ebenen Querschnitt-
+steilen in geneigten Stegen ist die jeweilige schräge Höhe zu verwenden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 24 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+22 
+(3) Der Abminderungsfaktor zur Bestimmung von teff ist mit der größten Druckspannung com,Ed in der 
+entsprechenden Teilfläche zu ermitteln (berechnet auf der Grundlage des wirksamen Querschnittes), wenn 
+die Beanspruchbarkeit des Querschnittes erreicht ist. 
+(4) Ist com,Ed f0 / M1, gilt für den Abminderungsbeiwert der folgende Ansatz: 
+ bei limp : 1,0 (5.2a) 
+ bei limp : pp //0,221 (5.2b) 
+worin der bezogene Schlankheitsgrad p der ebenen Teilfläche (Platte) gegeben ist durch: 
+Ek
+f
+t
+b
+Ek
+fv
+t
+bf op
+2
+o
+2p
+cr
+0
+p 052,1112 (5.3) 
+k ist der von der Spannungsverteilung abhängige Beulwert nach Tabelle 5.3. Die Parameter lim und 
+können Tabelle 5.2 entnommen werden. 
+Tabelle 5.2  Parameter lim und 
+lim
+0,517 0,90 
+(5) Ist com,Ed of / M1, sollte der Abminderungsbeiwert so bestimmt werden, indem in den Ausdrücken 
+(5.2a) und (5.2b) der bezogene Schlankheitsgrad p durch einen reduzierten bezogenen Schlankheitsgrad 
+redp, ersetzt wird, mit: 
+M10
+Edcom,
+predp, /f (5.4) 
+(6) Bezüglich der wirksamen Steifigkeit beim Nachweis der Gebrauchstauglichkeit siehe 7.1(3). 
+(7) Zur Bestimmung der wirksamen Dicke einer Gurtteilfläche mit ungleichmäßiger Spannungsverteilung 
+dürfen die in Tabelle 5.3 benutzten Spannungsverhältnisse am Gesamtquerschnitt ermittelt werden. 
+(8) Für die Bestimmung der wirksamen Dicken bei Stegteilflächen darf das in Tabelle 5.3 angegebene 
+Spannungsverhältnis unter Ansatz der wirksamen Fläche des druckbeanspruchten Gurtes und des 
+Gesamtquerschnittes der Stege ermittelt werden. 
+(9) Die wirksamen Querschnittswerte können ausgehend von dem auf dem Gesamtquerschnitt beruhenden 
+wirksamen Querschnitt durch Iteration von (6) und (7) verbessert werden. Für die Berechnung von 
+Spannungsverteilungen sind hierbei mindestens zwei Iterationsschritte vorzunehmen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 25 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+23 
+Tabelle 5.3  Beulwerte k für druckbeanspruchte Querschnittsteile 
+Teilquerschnitt ( Druck) 12 / Beulwert k
+1 0 ,4k
+01
+05,1
+2,8k
+10 278,926,681,7k
+31 2)1(98,5k
+5.5.3 Ebene Teilflächen mit Zwischensteifen 
+5.5.3.1 Allgemeines 
+(1) Die Bemessung druckbeanspruchter Teilquerschnitte mit Zwischensteifen sollte auf der Annahme 
+beruhen, dass sich die Aussteifung wie ein Druckstab auf elastischer Bettung verhält, wobei die Bettungsziffer 
+(Federsteifigkeit) von den Randbedingungen und der Biegesteifigkeit der benachbarten ebenen Teilflächen 
+abhängig ist. 
+(2) Die Federsteifigkeit einer Aussteifung sollte ermittelt werden, indem eine Einheitslast je Längeneinheit u, wie 
+in Bild 5.3 dargestellt, angebracht wird. Die Federsteifigkeit k je Längeneinheit ergibt sich dann wie folgt: 
+k
+u / (5.5) 
+worin die Verformung eines durch die Einheitslast u beanspruchten abgekanteten Plattenstreifens ist, und 
+die Einheitslast u in der Mittelebene ( 1b ) des wirksamen Teiles der Aussteifung angreift. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 26 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+24 
+Bild 5.3  Modell zur Ermittlung der Federsteifigkeit 
+(3) Bei der Ermittlung der Drehfedersteifigkeiten C ,1 und C 2 aus der Geometrie des Querschnittes sind 
+mögliche Einwirkungen anderer, an der gleichen Teilfläche vorhandenen Aussteifungen oder anderer 
+druckbeanspruchter Teilflächen des Gesamtquerschnittes zu berücksichtigen. 
+(4) Bei Zwischensteifen können, als auf der sicheren Seite liegende Näherung, die Drehfedersteifigkeiten 
+C und C zu null gesetzt werden und die Verformung kann wie folgt angesetzt werden: 
+3
+2
+21
+2
+2
+2
+1 112
+3 Et
+v
+bb
+bub (5.6) 
+(5) Der Reduktionsfaktor d bezüglich Gesamtfeldbeulen bei einer Aussteifung (Biegeknicken bei einer 
+Zwischensteife) ist in Abhängigkeit der nach (5.7) zu ermittelnden bezogenen Schlankheit Tabelle 5.4 zu 
+entnehmen. 
+scr,0s /f (5.7) 
+Dabei ist 
+cr,s die elastische kritische Spannung nach 5.5.3.3 oder 5.5.4.2. 
+Tabelle 5.4  Abminderungsfaktoren d bezüglich Gesamtfeldbeulen 
+s d
+s 0,25 1,00 
+0,25 s 1,04 s62,0155,1
+1,04 s s/53,0
+5.5.3.2 Voraussetzungen für das Bemessungsverfahren 
+(1) Die nachfolgende Vorgehensweise ist anwendbar bei ein oder zwei gleichen Zwischenaussteifungen, 
+welche durch Sicken oder Versätze gebildet werden, vorausgesetzt, alle ebenen Teilflächen werden nach 
+5.5.2 berechnet. 
+(2) Die Aussteifungen sollten gleich geformt sein und ihre Anzahl soll nicht mehr als zwei betragen. Sind 
+mehrere Aussteifungen vorhanden, dürfen nicht mehr als zwei in Ansatz gebracht werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 27 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+25 
+(3) Sind die in (1) und (2) genannten Bedingungen erfüllt, kann die Wirksamkeit der Aussteifung nach dem in 
+5.5.3.3 aufgeführten Berechnungsverfahren ermittelt werden. 
+5.5.3.3 Berechnungsverfahren 
+(1) Der Querschnitt einer Zwischensteife sollte angenommen werden als aus der Aussteifung selbst 
+bestehend und den wirksamen Anteilen der angrenzenden ebenen Querschnittsteilen bp,1 und bp,2, wie in 
+Bild 5.4 dargestellt. 
+Bild 5.4  Anfänglicher wirksamer Querschnitt As für Zwischensteifen in (a) Gurt und (b) Steg 
+(2) Das in Bild 5.5 dargestellte Verfahren beinhaltet die nachfolgend aufgeführten Berechnungsschritte: 
+Schritt 1: Ermittlung eines ersten wirksamen Querschnittes für die Aussteifung zur Berechnung der 
+Querschnittsfläche As unter Verwendung wirksamer Dicken, welche unter der Annahme, dass die 
+Aussteifung unverschieblich gelagert ist und com,Ed fo. / M1 ist, berechnet werden, siehe (3) und (4); 
+Schritt 2: Ermittlung des wirksamen Flächenträgheitsmomentes unter Verwendung eines weiteren 
+wirksamen Querschnittes, zur Berechnung des Abminderungsfaktors bezüglich Gesamtfeldbeulen unter 
+Berücksichtigung der kontinuierlichen Federsteifigkeit, siehe (5) und (6); 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 28 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+26 
+Schritt 3: Wahlweise Iteration zur Verbesserung des Wertes für den Abminderungsfaktor bezüglich 
+Knicken der Zwischensteife, siehe (7) und (8). 
+(3) Die Eingangswerte für die wirksamen Dicken teff,1 und teff,2 sollten, wie in Bild 5.4 dargestellt, unter der 
+Voraussetzung einer zweiseitigen Lagerung der ebenen Teilflächen bp,1 und bp,2 nach 5.5.2 ermittelt werden, 
+siehe Tabelle 5.1. 
+(4) Die wirksame Querschnittsfläche einer Zwischensteife As ergibt sich aus: 
+As teff,1 bp,1 / 2 tb s teff,2 bp,2 / 2 (5.8) 
+mit der Steifenbreite bs wie in Bild 5.4 dargestellt. 
+(5) Die kritische (elastische) Beulspannung cr,s einer Zwischensteife beträgt: 
+A
+kEI
+s
+s
+scr,
+2 (5.9) 
+Dabei ist 
+k die Federsteifigkeit je Längeneinheit, siehe 5.5.3.1(2); 
+Is das wirksame Flächenträgheitsmoment der Zwischensteife unter Ansatz der Dicke t und der fiktiv 
+angesetzten Breiten 12 t der benachbarten ebenen Teilflächen bezogen auf die Schwerachse
+a  a des wirksamen Querschnittes, siehe Bild 5.6(a). 
+(6) Der Reduktionsfaktor d bezüglich Gesamtfeldbeulen bei einer Zwischensteife ergibt sich mit der elas-
+tischen Knickspannung cr,s aus dem in 5.5.3.1(5) angegeben Verfahren. 
+(7) Ist d < 1, kann das Ergebnis durch Iteration weiter verbessert werden, indem ein modifizierter Wert 
+nach 5.5.2(4), ausgehend von com,Ed d fo / M1, berechnet wird, sodass gilt: 
+p,red p d (5.10) 
+(8) Wird d iterativ ermittelt, sollte die Iteration so lange durchgeführt werden, bis der aktuelle Wert von d
+nahezu gleich dem vorangegangenen Wert ist, jedoch nicht größer. 
+(9) Die reduzierte Querschnittsfläche As,red der Steife ergibt sich unter Berücksichtigung des Gesamtfeld-
+beulens zu: 
+As,red d As
+Edcom,
+M1o /f aber sreds, AA (5.11) 
+und worin Edcom, die mit dem wirksamen Querschnitt ermittelte Druckspannung an der Schwerelinie der 
+Steife ist. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 29 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+27 
+a) Gesamtquerschnitt und Randbedingungen
+b) Schritt 1: Wirksamer Querschnitt für k
+unter der Annahme M1oEdcom, /f
+c) Schritt 2: Elastische kritische Spannung 
+cr,s für einen auf den wirksamen Breiten 
+12 t und der Federsteifigkeit k beruhenden 
+wirksamen Querschnitt 
+d) Reduzierte Festigkeit M1od /f für die 
+wirksame Fläche As der Aussteifung unter 
+Verwendung des in Abhängigkeit von scr,
+ermittelten Reduktionsfaktors d
+e) Schritt 3: Wahlweise Wiederholung von 
+Schritt 1: Berechnung der wirksamen 
+Dicke infolge reduzierter Druckspannung 
+M1odiEd,com, /f mit d vom 
+vorherigen Iterationsschritt, bis 
+1nd,nd, jedoch 1nd,nd,
+f) Annahme eines wirksamen Querschnittes 
+As,red unter Ansatz von mit d,n ermittelten 
+reduzierten Dicken redt
+Bild 5.5  Modell zur Ermittlung der Druckbeanspruchbarkeit eines Gurtes mit einer Zwischensteife 
+(10) Bei der Berechnung von wirksamen Querschnittswerten ist in der Regel die reduzierte wirksame 
+Steifenfläche As,red durch reduzierte Dicken tred d teff in allen zu As zugehörigen Teilflächen zu 
+berücksichtigen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 30 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+28 
+5.5.4 Trapezprofiltafeln mit Zwischensteifen 
+5.5.4.1 Allgemeines 
+(1) Dieser Unterabschnitt sollte in Verbindung mit 5.5.3.3 für Gurte mit Zwischensteifen und für Stege mit 
+Zwischensteifen angewendet werden. 
+(2) Die Interaktion zwischen Gesamtfeldbeulen von Zwischensteifen in Gurten und Zwischensteifen in 
+Stegen sollte ebenfalls nach dem in 5.5.4.4 angegebenen Verfahren berücksichtigt werden. 
+5.5.4.2 Gurte mit Zwischensteifen 
+(1) Bei vorausgesetzter gleichmäßig verteilter Druckspannung kann angenommen werden, dass der 
+wirksame Querschnitt eines Gurtes mit Zwischensteifen aus reduzierten wirksamen Querschnittsflächen As,red
+von bis zu zwei Zwischensteifen und zwei angrenzenden Streifen mit einer Breite von 0,5 bp und einer Dicke 
+von teff besteht, welche an den Stegen aufgelagert sind, siehe Bild 5.5f. 
+(2) Bei einer zentrischen Steife im Gurt ergibt sich die kritische Beulspannung cr,s zu: 
+cr,s
+b+bb
+tI
+A
+E
+spp
+2
+3s
+s
+w
+324
+2,4 (5.12) 
+Dabei ist 
+bp die Gesamtbreite der ebenen Teilstücke, wie in Bild 5.6 dargestellt; 
+bs die (abgewickelte) Breite der Steife, siehe Bild 5.6(c); 
+w ein Beiwert, der die Drehbettung des ausgesteiften Gurtes durch die Stege berücksichtigt, siehe (5) 
+und (6); 
+As und Is wie 5.5.3.3 und Bild 5.6 definiert. 
+(a) Querschnitt für Is
+(b) Querschnitt für As
+(c) Steifenbreite 
+Bild 5.6  Wirksamer Querschnitt zur Ermittlung von Is und As für Druckgurte mit zwei Steifen bzw. 
+einer Steife 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 31 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+29 
+(3) Bei zwei symmetrisch angeordneten Steifen im Gurt ergibt sich die kritische Beulspannung cr,s zu: 
+cr,s
+bbb
+tI
+A
+E
+1e
+2
+1
+3s
+s
+w
+438
+2,4 (5.13) 
+mit 
+be 2bp,1 bp,2 2bs
+b1 bp,1 0,5br
+Dabei ist 
+bp,1 die Nennbreite einer äußeren ebenen Teilfläche, wie in Bild 5.6 dargestellt; 
+bp,2 die Nennbreite der inneren ebenen Teilfläche, wie in Bild 5.6 dargestellt; 
+bs die (abgewickelte) Breite der Steife, gemessen über den Umfang der Steife, siehe Bild 5.6(c). 
+(4) Sind drei Zwischensteifen vorhanden, ist die mittlere nicht zu berücksichtigen. 
+(5) Der Beiwert w ergibt sich aus der Knicklänge lb des gedrückten Gurtes wie folgt: 
+ wenn lb / sw 2: w wo (5.14a) 
+ wenn lb / sw 2: w wo ( wo 1)[2lb / sw (lb / sw)2] (5.14b) 
+Dabei ist 
+sw die geneigte Länge des Steges ist, siehe Bild 5.7(a). 
+lb die halbe Knicklänge der Aussteifung, siehe (7); 
+(6) Alternativ darf der Drehbettungsbeiwert w mit 1,0 auf der sicheren Seite liegend, entsprechend einer 
+gelenkigen Lagerung, angesetzt werden. 
+(7) Die Werte für lb und wo können wie folgt ermittelt werden: 
+ für einen druckbeanspruchten Gurt mit einer Zwischensteife: 
+lb 4 3spp
+2
+s 3207,3 t/bbbI (5.15) 
+wo
+dw
+dw
+5,0
+2
+b+s
+b+s (5.16) 
+mit 
+bd 2bp bs
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 32 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+30 
+ für einen druckbeanspruchten Gurt mit zwei oder drei Zwischensteifen: 
+lb
+4 311
+2
+s 4365,3 t/bbbI e (5.17) 
+wo
+1ew1e1
+1ewe
+4364
+432
+bb s+bbb
+bbsb (5.18) 
+(8) Die hinsichtlich des Gesamtfeldbeulens (Biegeknicken einer Zwischensteife) reduzierte wirksame Quer-
+schnittsfläche As,red der Steife ergibt sich zu: 
+As,red d As
+Edcom,
+M1o /f jedoch sreds, AA (5.19) 
+(9) Bei unausgesteiften Stegen ergibt sich der Abminderungsfaktor d unmittelbar aus cr,s nach der in 
+5.5.3.1(5) angegebenen Berechnungsmethode. 
+(10) Bei ausgesteiften Stegen ergibt sich der Abminderungsfaktor d wiederum aus der in 5.5.3.1(5) 
+angegebenen Berechnungsmethode, jedoch unter Verwendung der modifizierten elastischen kritischen 
+Spannung cr,mod nach 5.5.4.4. 
+(11) Bei der Bestimmung der wirksamen Querschnittswerte ist die reduzierte wirksame Steifenfläche As,red
+über reduzierte Dicken tred d teff in allen zu As zugehörigen Teilflächen zu berücksichtigen. 
+5.5.4.3 Stege mit bis zu zwei Steifen unter ungleichförmiger Spannung 
+(1) Für den wirksamen Querschnitt des druckbeanspruchten Bereiches eines Steges ist in der Regel 
+anzunehmen, dass sich dieser aus den reduzierten Flächen As,red von bis zu zwei Zwischensteifen, einer 
+ebenen mit dem Druckgurt verbundenen Teilfläche und einer ebenen bis zur Schwerachse des 
+Gesamtquerschnittes reichenden Teilfläche zusammensetzt, siehe Bild 5.7. Stege unter konstanter 
+Druckbeanspruchung sind wie ausgesteifte Gurte zu behandeln. 
+(2) Der wirksame Querschnitt eines Steges besteht, wie in Bild 5.7 dargestellt, aus: 
+a) einem am Druckgurt abliegenden Streifen mit der Breite sa / 2 und der wirksamen Dicke teff,a; 
+b) reduzierten Flächen As,red der Stegsteifen, jedoch höchstens zwei; 
+c) einem Streifen mit der Länge 2 sn / 3 bis zur Schwereachse des wirksamen Querschnittes; 
+d) dem zugbeanspruchten Stegteil. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 33 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+31 
+Bild 5.7  Wirksame Querschnitte in Stegen kaltgeformter Profiltafeln 
+(3) Die Eingangswerte für die wirksamen Querschnittsflächen ergeben sich aus: 
+ bei einer Steife: 
+)32( nneff,sa
+a
+aeff,sa
+stststA , Bild 5.7(d1) (5.20a) 
+ für die dem Druckgurt zugekehrte Steife bei Stegen mit zwei Steifen: 
+)22( b
+beff,sa
+a
+aeff,sa
+stststA , Bild 5.7(d2) (5.20b) 
+ für die zweite Steife 
+)32( nneff,sbbeff,sb
+stststA b , Bild 5.7(d3) (5.21) 
+wobei die Abmessungen sa, ssa, sb, ssb und sn Bild 5.7 zu entnehmen und teff,a, teff,b und teff,n nach (5) zu 
+ermitteln sind. 
+(4) Zu Beginn der Berechnung ist die Lage der wirksamen Schwerachse unter der Annahme von 
+wirksamen Querschnitten in den Gurten und Nennquerschnitten der Stege zu ermitteln. 
+(5) Wenn die bezogene Schlankheit p des druckbeanspruchten Stegbereiches größer ist als lim (siehe 
+5.5.2(4)), sollten die wirksamen Dicken tteff,a, tteff,b und tteff,n wie folgt ermittelt werden: 
+teff t (5.22) 
+wobei nach Gleichung (5.2) mit der Schlankheit p und dem Faktor für die Spannungsverteilung nach 
+Tabelle 5.5 zu bestimmen ist. ec und et sind hierbei die Abstände von der wirksamen Schwereachse zu den 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 34 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+32 
+Systemlinien des druck- bzw. zugbeanspruchten Gurtes, siehe Bild 5.7. Die Abmessungen ha, hb, hsa, hsb und 
+sn sowie sind Bild 5.7 zu entnehmen. 
+(6) Zur Bestimmung der Eingangswerte für die wirksamen Querschnittsflächen Asa und Asb von Stegaus-
+steifungen sind in der Regel sa und sb in zwei gleiche Teile sa / 2 und sb / 2 zu unterteilen. Der Teil sn des 
+Steges oberhalb der Schwerachse ist in einen an die Steife angrenzenden Teil sn / 3, siehe 
+Bild 5.7(d1) und (d3), und einen der Schwerachse zugekehrten Teil 2 sn / 3 aufzuteilen. 
+ 
+Tabelle 5.5  Bezogene Schlankheit p und Spannungsverhältnisse für ausgesteifte Stege 
+Lage in Steg Anteil des 
+Steges Bezogene Schlankheit p Spannungsverhältnis 
+Keine Aussteifungen, Bild 5.7 (a) 
+Zwischen Druckgurt 
+und Schwerachse sn kE
+f
+t
+s onp 052,1
+c
+t
+e
+e
+Eine Aussteifung, Bild 5.7 (b) 
+Am Druckgurt 
+angrenzend sa kE
+f
+t
+s oap 052,1
+c
+ac
+e
+he
+An die Schwerachse 
+angrenzend sn
+c
+saacocp 052,1 e
+hhe
+kE
+f
+t
+s
+sinn
+t
+s
+e
+Zwei Aussteifungen, Bild 5.7 (c) 
+Am Druckgurt 
+angrenzend sa kE
+f
+t
+s oap 052,1
+c
+ac
+e
+he
+Zwischen zwei 
+Aussteifungen sb
+c
+saacobp 052,1 e
+hhe
+kE
+f
+t
+s
+saac
+bc
+hhe
+he
+An die Schwerachse 
+angrenzend sn
+c
+sbbcocp 052,1 e
+hhe
+kE
+f
+t
+s
+sinn
+t
+s
+e
+
+(7) Für eine einzelne Aussteifung oder, im Falle von zwei Aussteifungen, für die dem Druckgurt zugewandte 
+Aussteifung ergibt sich die elastische Beulspannung scr,sa aus: 
+)(
+05,1
+212sa
+1
+3
+saf
+cr,sa sssA
+stIE (5.23) 
+worin s1 und s2 wie folgt definiert sind: 
+ für eine einzelne Aussteifung: 
+)(9,0 csaa1 ssss , saa12 5,0 ssss (5.24) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 35 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+33 
+ im Falle von zwei Aussteifungen für die dem Druckgurt zugewandte Aussteifung, wenn sich die andere 
+Aussteifung im zugbeanspruchten Bereich befindet oder unmittelbar an der Schwerachse liegt: 
+)(5,0 csbbsaa1 ssssss , saa12 5,0 ssss (5.25) 
+Dabei ist 
+f ein Beiwert, der die Drehbettung des ausgesteiften Steges durch den Gurt berücksichtigt; 
+Isa das Flächenträgheitsmoment der Steife, bestehend aus dem Versatz ssa und zwei angeschlossenen 
+Teilflächen der jeweiligen Länge 12 t, deren Schwerachse parallel zu den ebenen Teilflächen 
+verläuft, siehe Bild 5.7(e). Bei der Ermittlung darf eine mögliche Veränderung der Neigung der 
+ebenen Teilflächen ober- oder unterhalb der Aussteifung vernachlässigt werden. 
+(8) Falls nicht genauer ermittelt, darf der Drehbettungsbeiwert f mit 1,0, einer gelenkigen Lagerung ent-
+sprechend auf der sicheren Seite liegend, angenommen werden. 
+(9) Bei einer einzelnen druckbeanspruchten Aussteifung oder, im Falle von zwei Aussteifungen, für die dem 
+Druckgurt zugewandte Aussteifung ergibt sich die reduzierte Fläche Asa,red (Schritt 2 in Bild 5.5) zu: 
+saredsa,
+c
+saa
+sadredsa, wobei5,01
+AA
+e
+hh
+AA (5.26) 
+(10) Sind die Gurte ebenfalls ausgesteift, ist der Reduktionsfaktor d mit der in 5.5.4.4 angegebenen elas-
+tischen kritischen Spannung cr,mod in Verbindung mit dem in 5.5.3.1(5) angegebenen Verfahren zu ermitteln. 
+(11) Für eine einzelne zugbeanspruchte Aussteifung ist die reduzierte wirksame Querschnittsfläche Asa,red
+gleich Asa zu setzen. 
+(12) Bei Stegen mit zwei Aussteifungen ist die reduzierte Fläche Asb,red der zweiten, der Schwer-
+achse zugekehrten Aussteifung gleich Asb zu setzen. 
+(13) Zur Bestimmung der wirksamen Querschnittswerte wird die reduzierte Fläche Asa,red durch Ansetzen 
+einer reduzierten Blechdicke tred d teff für alle Asa zugehörigen Querschnittsteile erfasst. 
+(14) Ist d 1, kann wahlweise nach 5.5.3(7) iterativ verfeinert werden. 
+(15) Bezüglich der wirksamen Querschnittswerte für den Gebrauchszustand siehe 7.1. 
+5.5.4.4 Profiltafeln mit Gurt- und Stegaussteifungen 
+(1) Bei Profiltafeln mit Zwischensteifen in Gurten und Stegen, siehe Bild 5.8, ist die Interaktion zwischen dem 
+Gesamtfeldbeulen der Gurtaussteifungen und der Stegaussteifungen unter Verwendung der modifizierten 
+elastischen kritischen Spannung modcr, für beide Aussteifungsarten zu berücksichtigen: 
+4
+4
+sacr,
+scr,
+s
+scr,
+modcr,
+1
+ (5.27) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 36 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+34 
+Dabei ist 
+cr,s die elastische kritische Spannung eines Gurtes mit Zwischenaussteifung, siehe 5.5.4.2(2) 
+für den Gurt mit einer Aussteifung oder 5.5.4.2(3) für den Gurt mit zwei Aussteifungen; 
+cr,sa die elastische kritische Spannung einer einzelnen Stegaussteifung oder, im Falle von zwei 
+Aussteifungen, für die dem Druckgurt zugekehrte Aussteifung, siehe 5.5.4.3(7). 
+csaas /)5,0(1 ehh für ein biegebeanspruchtes Profil 
+1s für ein Profil unter zentrischem Druck 
+Bild 5.8  Wirksamer Querschnitt von Profiltafeln mit Gurt- und Stegaussteifungen 
+6 Grenzzustände der Tragfähigkeit 
+6.1 Beanspruchbarkeit von Querschnitten 
+6.1.1 Allgemeines 
+(1) Die in diesem Abschnitt angegebenen Regeln gelten für die Bemessung durch Berechnung. 
+(2) Anstelle einer Bemessung durch Berechnung kann eine versuchsgestützte Bemessung durchgeführt 
+werden, siehe hierzu Abschnitt 9 und Anhang A. 
+ANMERKUNG Die versuchsgestützte Bemessung wirkt sich besonders bei relativ großen bp / t-Verhältnissen günstig 
+aus, zum Beispiel im Hinblick auf nichtelastisches Verhalten, Stegkrüppeln oder Schubverzerrung. 
+(3) Bei der Bemessung durch Berechnung sind die Einflüsse aus örtlichem Beulen und Gesamtfeldbeulen 
+durch Verwendung nach 5.5 ermittelter, wirksamer Querschnittswerte zu berücksichtigen. 
+(4) Die Beanspruchbarkeit druckbeanspruchter, knickgefährdeter Profiltafeln ist nach 6.2 zu berücksichtigen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 37 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+35 
+6.1.2 Zentrischer Zug 
+(1) Der Bemessungswert der Beanspruchbarkeit Nt,Rd eines Querschnittes unter gleichmäßiger Zug-
+beanspruchung ergibt sich aus: 
+M1
+go
+Rdt,
+Af
+N wobei Nt,Rd Fnet,Rd (6.1) 
+Dabei ist 
+Ag die Gesamtfläche des Querschnittes; 
+Fnet,Rd die Beanspruchbarkeit des Nettoquerschnittes bei Verwendung von mechanischen Verbin-
+dungselementen. 
+6.1.3 Zentrischer Druck 
+(1) Der Bemessungswert der Beanspruchbarkeit Nc,Rd eines Querschnittes unter Druckbeanspruchung wird 
+wie folgt ermittelt: 
+ wenn die wirksame Fläche effA kleiner ist als die Gesamtfläche gA (Querschnitt mit Reduktion 
+hinsichtlich örtlichen Beulens und/oder Gesamtfeldbeulens): 
+M1oeffRdc, /fAN (6.2) 
+ wenn die wirksame Fläche effA gleich ist wie die Gesamtfläche gA (Querschnitt ohne Reduktion 
+hinsichtlich örtlichen Beulens und/oder Gesamtfeldbeulens) 
+M1ogRdc, /fAN (6.3) 
+Dabei ist 
+effA die wirksame Querschnittsfläche nach 5.5.2 unter der Annahme einer gleichförmigen Druck-
+spannung M1o /f . 
+(2) Die resultierende Normalkraft eines Bauteiles wirkt im Schwerpunkt des Gesamtquerschnittes. Dies ist 
+eine auf der sicheren Seite liegende Abschätzung, die immer angenommen werden kann. Nähere 
+Untersuchungen können wirklichkeitsnähere Ergebnisse bezüglich des inneren Kräfteverlaufes im 
+druckbeanspruchten Querschnittsteil liefern, zum Beispiel bei gleichmäßig anwachsender Normalkraft. 
+(3) Der Widerstand eines Querschnittes unter gleichmäßiger Druckbeanspruchung sollte mit seinem 
+Bemessungswert im Schwerpunkt des wirksamen Querschnittes angesetzt werden. Wenn die Schwerachsen 
+des Gesamtquerschnittes und des wirksamen Querschnittes nicht zusammenfallen, ist die Verschiebung e
+N
+der Schwerachsen (siehe Bild 6.1) nach dem in 6.1.9 angegebenen Verfahren zu berücksichtigen. 
+Wirkt sich die Verschiebung günstig aus, darf diese vernachlässigt werden, vorausgesetzt, die Verschiebung 
+wurde unter Ansatz der Dehngrenzenspannung und nicht der vorhandenen Druckspannung ermittelt. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 38 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+36 
+(a) Gesamtquerschnitt (b) Wirksamer Querschnitt 
+Bild 6.1  Verschiebung der Schwerachse bei Querschnitten unter Druckbeanspruchung 
+6.1.4 Biegemoment 
+6.1.4.1 Elastischer und plastischer Widerstand bei Erreichen der Dehngrenze im 
+druckbeanspruchten Gurt 
+(1) Der Bemessungswert des Biegemomentes Mc,Rd eines Querschnittes ist in der Regel wie folgt zu 
+ermitteln: 
+ wenn das wirksame Widerstandsmoment effW kleiner ist als das Widerstandsmoment elW des Gesamt-
+querschnittes: 
+M1oeffRdc, /fWM (6.4) 
+ wenn das wirksame Widerstandsmoment effW gleich ist wie das Widerstandsmoment elW des Gesamt-
+querschnittes: 
+M1elelpleloRdc, /)/1(4)( WWWfM , jedoch nicht größer als M1opl /fW (6.5) 
+Dabei ist 
+ die Schlankheit jenes Querschnittsteiles, der den größten Wert für el/ ergibt. 
+Für zweiseitig gelagerte ebene Querschnittsteile ist p und limel mit lim nach Tabelle 5.2. 
+Für ausgesteifte Querschnittsteile ist s und 25 ,0el , siehe 5.5.3.1. 
+ANMERKUNG Der Zusammenhang zwischen resultierendem Biegetragwiderstand und Schlankheit des schlanksten 
+Querschnittsteiles ist in Bild 6.2 dargestellt. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 39 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+37 
+Bild 6.2  Biegewiderstand in Abhängigkeit der Schlankheit 
+(2) Der Ausdruck (6.5) ist unter der Voraussetzung anwendbar, dass der Stegneigungswinkel (siehe 
+Bild 6.5) 60° nicht übersteigt 
+(3) Ist Bedingung (2) nicht erfüllt, sollte folgende Bedingung benutzt werden: 
+M1oelRdc, /fWM (6.6) 
+(4) Das wirksame Widerstandsmoment Weff sollte auf den durch das Biegemoment bestimmten wirksamen 
+Querschnitt bezogen werden, wobei zur Berücksichtigung von Einflüssen aus örtlichem Beulen und 
+Gesamtfeldbeulen, wie in 5.5 aufgezeigt, max,Ed gleich fo / M1 zu setzen ist. Falls die mittragende Breite 
+(shear lag“, siehe EN 1999-1-1) maßgebend ist, ist deren Einfluss zu berücksichtigen. 
+(5) Das zur Ermittlung der wirksamen Steganteile benötigte Spannungsverhältnis 2 / 1 darf mit der 
+wirksamen Fläche des druckbeanspruchten Gurtes und der Gesamtfläche des Steges ermittelt werden, siehe 
+Bild 6.3. 
+Bild 6.3  Wirksamer Querschnitt bezüglich Biegebeanspruchung 
+(6) Wird die Streckgrenze zuerst im druckbeanspruchten Bereich Teil des Querschnittes erreicht, ist das 
+Widerstandsmoment Weff  sofern nicht die in 6.1.4.2 aufgeführten Bedingungen zutreffen  mit einer über 
+die Querschnittshöhe linearen Spannungsverteilung zu ermitteln. 
+(7) Wird in der Tragwerksberechnung eine Momentenumlagerung in Ansatz gebracht, sollten die in 7.2 
+aufgeführten Bedingungen erfüllt sein. Wird das Reststützmoment am Zwischenauflager nicht zu null gesetzt, 
+so ist das aufnehmbare Reststützmoment durch Versuchsergebnisse zu ermitteln. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 40 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+38 
+6.1.4.2 Elastischer und plastischer Widerstand bei Erreichen der Dehngrenze ausschließlich im 
+zugbeanspruchten Gurt 
+(1) Wenn die Streckgrenze zuerst im zugbeanspruchten Bereich des Querschnittes erreicht wird, können 
+plastische Reserven im Zugbereich ohne Dehnungsbeschränkung ausgenutzt werden, bis die maximale 
+Druckspannung com,Ed den Wert fo / M1 erreicht. In diesem Abschnitt wird nur die Biegebeanspruchung 
+berücksichtigt. Bei zentrischem Druck mit Biegung ist in der Regel 6.1.8 oder 6.1.9 anzuwenden. 
+(2) In diesem Fall sollte das wirksame teilplastische Widerstandsmoment Wpp,eff mit einer abgeknickten 
+Spannungsverteilung in der Biegezugzone und einer linearen Spannungsverteilung in der Biegedruckzone 
+ermittelt werden. 
+(3) Falls keine genauere Berechnung erfolgt, darf die wirksame Dicke teff von Stegen nach 5.5.2 mit 1 
+ermittelt werden. ec ergibt sich hierin aus der abgeknickten Spannungsverteilung (siehe Bild 6.4). 
+Bild 6.4  Maß ec zur Ermittlung wirksamer Dicken 
+(4) Wird in der Tragwerksberechnung eine Momentenumlagerung in Ansatz gebracht, sollten die in 7.2 
+aufgeführten Bedingungen erfüllt sein. Wird das Reststützmoment am Zwischenauflager nicht zu null gesetzt, 
+so ist das aufnehmbare Reststützmoment durch Versuchsergebnisse zu ermitteln. 
+6.1.4.3 Mittragende Breiten infolge Schubverzerrungen 
+(1) Effekte von Schubverzerrungen auf die mittragende Breite sollten nach EN 1999-1-1 berücksichtigt 
+werden. 
+(2) Effekte von Schubverzerrungen dürfen bei Gurten mit b / t 300 vernachlässigt werden. 
+6.1.5 Querkraft 
+(1) Die Beanspruchbarkeit bezüglich Querkraft Vb,Rd sollte ermittelt werden aus: 
+Vb,Rd (hw / sin ) tf bv / M1 (6.7) 
+Dabei ist 
+fbv die Schubbeulspannung nach Tabelle 6.1; 
+hw die Steghöhe, gemessen zwischen den Mittellinien der Gurte, siehe Bild 6.5; 
+ die auf die Gurte bezogene Stegneigung. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 41 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+39 
+Tabelle 6.1  Schubbeulfestigkeit fbv in Abhängigkeit der Stegschlankheit w
+Bezogene Schlankheit 
+des Steges 
+Stege 
+ohne Aussteifung am Auflager 
+Stege 
+mit Aussteifung am Auflager1) 
+83,0w 0,58 fo 0,58 fo
+40,183,0 w 0,48 fo / w 0,48 fo / w
+w 1,40 0,67 fo / 
+2
+w 0,48 fo / w
+1) Aussteifung am Auflager, wie zum Beispiel Profilfüller, die geeignet sind Stegverdrehungen zu verhindern und die 
+Auflagerkräfte zu übertragen.
+(2) Die Bezogene Schlankheit w des Steges sollte ermittelt werden aus: 
+ bei Stegen ohne Längsaussteifungen: 
+w 0,346
+t
+sw
+E
+fo (6.8a) 
+ bei Stegen mit Längsaussteifungen, siehe Bild 6.5: 
+w E
+f
+kt
+s od 34,5346,0 jedoch w E
+f
+t
+s op346,0 ( 6 . 8 b ) 
+mit 
+k 3
+d
+s10,234,5
+s
+I
+t+ (6.9) 
+Dabei ist 
+Is das Flächenmoment 2. Ordnung der Längssteife bezüglich der Achse a  a, wie in Bild 6.5 
+dargestellt; 
+sd die Abwicklung der Steglänge, wie in Bild 6.5 dargestellt; 
+sp die größte schräge Länge einer ebenen Teilfläche im Steg, siehe Bild 6.5; 
+sw die schräge Länge der zwischen den Eckpunkten gemessenen Steghöhe, siehe Bild 6.5. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 42 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+40 
+Bild 6.5  Geometrie eines längsausgesteiften Steges und wirksamer Querschnitt einer Aussteifung 
+6.1.6 Torsion 
+(1) Torsionssteifigkeiten und -beanspruchbarkeiten sind bei profilierten Blechen zu vernachlässigen. 
+6.1.7 Örtliche Lasteinleitung 
+6.1.7.1 Allgemeines 
+(1) Um Zusammendrücken, Stegkrüppeln oder örtliches Beulen bei einem durch Auflagerkräfte oder örtliche, 
+über die Gurte erfolgende Lasteinleitung beanspruchten Steg zu vermeiden, sollte die transversale Kraft FEd
+der folgenden Bedingung genügen: 
+FEd Rw,Rd (6.10) 
+worin Rw,Rd die Beanspruchbarkeit des Steges unter örtlicher Lasteinleitung ist. 
+(2) Die örtliche Beanspruchbarkeit des Steges Rw,Rd wird wie folgt ermittelt: 
+a) bei unausgesteiften Stegen: nach 6.1.7.2; 
+b) bei ausgesteiften Stegen: nach 6.1.7.3. 
+(3) Die örtliche Beanspruchbarkeit des Steges braucht nicht nachgewiesen zu werden, wenn die 
+Auflagerkräfte oder die örtlichen Lasten beispielsweise über Profilfüller eingeleitet werden, die geeignet sind 
+Stegverformungen zu verhindern und die Auflagerkräfte zu übertragen. 
+6.1.7.2 Querschnitte mit unausgesteiften Stegen 
+(1) Die Beanspruchbarkeit eines unausgesteiften Steges unter örtlich begrenzter Lasteinleitung, siehe 
+Bild 6.6, ist in der Regel nach (2) zu ermitteln, vorausgesetzt, dass alle nachfolgend aufgeführten 
+Bedingungen eingehalten sind: 
+ der Abstand c von der Wirkungslinie der Auflagerkraft oder der örtlich eingeleiteten Last zum freien 
+Trägerende beträgt mindestens 40 mm, siehe Bild 6.7; 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 43 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+41 
+ der Querschnitt genügt folgenden Bedingungen: 
+r / t 10 (6.11a) 
+hw / t 200 sin (6.11b) 
+45 90 (6.11c) 
+Dabei ist 
+hw die zwischen den Mittellinien der Gurte gemessene Steghöhe; 
+r der innere Biegeradius der Ecken; 
+ der Stegneigungswinkel [Grad]. 
+Bild 6.6  Beispiel eines Querschnittes mit zwei oder mehr Stegen 
+(2) Sind beide in (1) genannten Bedingungen erfüllt, ergibt sich die Beanspruchbarkeit bei örtlicher Last-
+einleitung Rw,Rd je Steg eines profilierten Bleches zu: 
+Ml
+2
+ao
+2
+Rdw, )90/(4,202,05,01,01 /+t/l+r/tEftR (6.12) 
+Dabei ist 
+la die wirksame Auflagerbreite der zugehörigen Lagerungskategorie, siehe (4); 
+ der Beiwert für die zugehörige Lagerungskategorie, siehe (3); 
+sw die schräge Länge des Steges ( hw / sin ); 
+r der innere Biegeradius ( r 10 t). 
+(3) Werte für den Beiwert sind in Bild 6.7 aufgeführt. 
+(4) Die Werte für la sind in der Regel nach (5) zu ermitteln. Der größtmögliche für la ansetzbare Wert ist 
+200 mm. Ist das Auflager ein kaltgeformtes Profil mit nur einem Steg oder ein Rundrohr, ist in der Regel für ss
+der Wert 10 mm einzusetzen. Die maßgebende Lagerungskategorie (1 oder 2) ergibt sich aus dem Abstand e
+von der örtlichen Lasteinleitung bis zum nächstgelegenen Auflager oder dem Abstand c vom Ende des 
+Auflagers oder der örtlichen Lasteinleitung zum freien Trägerende, siehe Bild 6.7. 
+(5) Der Wert für die wirksame Auflagerbreite la profilierter Bleche ist in der Regel folgt zu ermitteln: 
+a) für Kategorie 1: 
+la ss, jedoch la 40 mm (6.13a) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 44 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+42 
+b) für Kategorie 2: 
+wenn v 0,2: la ss (6.13b) 
+wenn v 0,3: la 10 mm (6.13c) 
+wenn 0,2 v 0,3: lineare Interpolation zwischen den Werten la für 0,2 und 0,3 mit: 
+||||
+||||
+Ed,21Ed,
+2Ed,1Ed,
+VV
+VV
+v (6.14) 
+worin |VEd,1| und |VEd,2| die Beträge der transversalen Kräfte auf jeder Seite der örtlichen Lasteinleitung 
+oder der Auflagerreaktionen sind, wobei |VEd,1| |VEd,2| und ss die tatsächliche Auflager- oder Lastein-
+leitungsbreite ist. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 45 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+43 
+Lagerungskategorie 1; 0,075 
+ örtliche Lasteinleitung mit Abstand e 1,5 hw / t vom 
+nächstgelegenen Auflager; 
+Lagerungskategorie 1; 0,075 
+ örtliche Lasteinleitung mit Abstand c 1,5 hw / t vom freien 
+Trägerende; 
+Lagerungskategorie 1; 0,075 
+ Endauflagerreaktion mit Abstand c 1,5 hw / t vom freien 
+Trägerende; 
+Lagerungskategorie 2; 0,15 
+ örtliche Lasteinleitung mit Abstand e 1,5 hw / t vom 
+nächstgelegenen Auflager; 
+Lagerungskategorie 2; 0,15 
+ örtliche Lasteinleitung mit Abstand c 1,5 hw / t vom freien 
+Trägerende; 
+Lagerungskategorie 2; 0,15 
+ Endauflagerreaktion mit Abstand c 1,5 hw / t vom freien 
+Trägerende; 
+Lagerungskategorie 2; 0,15 
+ Zwischenauflagerreaktion. 
+Bild 6.7  Örtliche Lasteinleitungen und Lagerungskategorien für Querschnitte mit 
+zwei oder mehr Stegen 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 46 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+44 
+6.1.7.3 Querschnitte mit ausgesteiften Stegen 
+(1) Die örtliche Beanspruchbarkeit eines ausgesteiften Steges kann bei Querschnitten mit Stegaussteifungen 
+nach (2) ermittelt werden, wenn die Aussteifungen derart ausgebildet sind, dass die beiden Abkantungen der 
+Aussteifungen jeweils auf der gegenüberliegenden Seite einer zwischen den Schnittpunkten der Mittellinien 
+von Gurten und der Stegen gedachten Verbindungslinie liegen, siehe Bild 6.8, und folgende Bedingung erfüllt 
+ist: 
+2 
+emax / t 12 (6.15) 
+Dabei ist 
+emax die größere Exzentrizität zwischen den Abkantungen und der Verbindungslinie. 
+(2) Für Querschnitte mit ausgesteiften Stegen, welche die in (1) genannten Bedingungen erfüllen, ergibt sich 
+die transversale Beanspruchbarkeit eines ausgesteiften Steges durch Multiplikation des entsprechenden 
+Wertes von 6.1.7.2 für einen vergleichbaren unausgesteiften Steg mit dem Faktor a,s: 
+a,s 1,45 0,05 emax / t, jedoch a,s 0,95 35 000 t2 emin / (bd2 sp) (6.16) 
+Dabei ist 
+bd die abgewickelte Länge des belasteten Gurtes, siehe Bild 6.8; 
+emin die kleinere Exzentrizität zwischen den Abkantungen und der Verbindungslinie, siehe Bild 6.8; 
+sp die schräge Länge des am belasteten Gurt anliegenden ebenen Steganteiles, siehe Bild 6.8. 
+Bild 6.8  Auflagerkräfte und Geometrie ausgesteifter Stege 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 47 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+45 
+6.1.8 Zugkraft und Biegung 
+(1) Bei Querschnitten unter gleichzeitiger Beanspruchung durch zentrische Zugkraft NEd und Biegemoment 
+My,Ed ist in der Regel nachzuweisen, dass: 
+1
+tenRd,cy,
+dEy,
+Rdt,
+dE
+M
+M+N
+N (6.17a) 
+Dabei ist 
+Nt,Rd der Bemessungswert des Querschnittes bezüglich zentrischer Zugbeanspruchung ist 
+(6.1.2); 
+Mcy,Rd,ten der Bemessungswert des Querschnittes für die maximale Zugbeanspruchbarkeit bezüglich 
+Biegung um die Achse y  y (6.1.4). 
+(2) Ist tenRd,cy,comRd,cy, MM , wobei comRd,cy,M der Bemessungswert des Querschnittes für die maximale 
+Druckbeanspruchbarkeit ist, sollte die folgende Bedingung ebenfalls erfüllt sein: 
+1
+Rdt,
+Ed
+Rd,comcy,
+Edy,
+N
+N
+M
+M (6.17b) 
+6.1.9 Druckkraft und Biegung 
+(1) Bei Querschnitten unter gleichzeitiger Beanspruchung durch zentrische Druckkraft NEd und Biegemoment 
+My,Ed ist in der Regel nachzuweisen, dass: 
+1
+Rd,comcy,
+Edy,Edy,
+Rdc,
+Ed
+M
+M+M+N
+N (6.18a) 
+worin Nc,Rd nach 6.1.3 und Mcy,Rd,com nach 6.1.8 definiert sind. 
+(2) Das sich aus dem Versatz der Schwerachsen ergebende Zusatzmoment My,Ed sollte ange-
+nommen werden: 
+My,Ed NEd eN (6.18b) 
+worin eN die Verschiebung der y  y-Schwerachse infolge axialer Kräfte ist, siehe 6.1.3 (3). 
+(3) Ist comRd,cy,tenRd,cy, MM , sollte die folgende Bedingung ebenfalls erfüllt sein: 
+1
+Rdc,
+Ed
+tenRd,cy,
+Edy,Edy,
+N
+N
+M
+M+M (6.19) 
+worin Mcy,Rd,ten nach 6.1.8 definiert ist. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 48 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+46 
+6.1.10 Querkraft, zentrische Kraft und Biegung 
+(1) Die Beanspruchbarkeit bezüglich Biegung und Normalkraft muss nicht zur Berücksichtigung der Querkraft 
+reduziert werden, wenn das Verhältnis VEd / Vw,Rd weniger als 0,5 beträgt. Beträgt das Verhältnis VEd / Vw,Rd
+mehr als 0,5, so ist für die kombinierte Beanspruchung aus zentrischer Normalkraft NEd, Biegemoment My,Ed
+und Querkraft VEd in der Regel nachzuweisen, dass: 
+1121
+2
+Rdw,
+Ed
+Rdpl,
+Rdf,
+Rdy,
+Edy,
+Rd
+Ed
+V
+V
+M
+M
+M
+M+N
+N (6.20) 
+Dabei ist 
+NRd der Bemessungswert des Querschnittes bezüglich zentrischer Zug- oder Druckbean-
+spruchung nach 6.1.2 oder 6.1.3; 
+My,Rd der Bemessungswert des Querschnittes bezüglich Biegung nach 6.1.4; 
+Vw,Rd der Bemessungswert des Querschnittes bezüglich Querkraft nach 6.1.5. Bei Bauteilen mit 
+mehr als einem Steg ist Vw,Rd die Summe der Beanspruchbarkeiten aller Stege; 
+Mf,Rd der Bemessungswert der plastischen Momententragfähigkeit des aus den wirksamen 
+Querschnitten in den Gurten bestehenden Querschnittes; 
+Mpl,Rd der Bemessungswert der plastischen Momententragfähigkeit des unabhängig von der Quer-
+schnittsklasse aus den wirksamen Querschnitten in den Gurten und Nennquerschnitten der 
+Stege bestehenden Querschnittes. 
+6.1.11 Biegemoment und örtliche Lasteinleitung oder Auflagerkraft 
+(1) Bei Querschnitten unter gleichzeitiger Beanspruchung durch Biegemoment MEd und transversal 
+eingeleiteter Kraft FEd infolge örtlicher Lasteinleitung oder Auflagerreaktion ist in der Regel nachzuweisen, 
+dass: 
+1
+Rdc,
+Ed
+M
+M (6.21a) 
+1
+Rdw,
+Ed
+R
+F (6.21b) 
+194,0
+2
+Rdw,
+Ed
+2
+Rdc,
+Ed
+R
+F
+M
+M (6.22) 
+Dabei ist 
+Mc,Rd der Bemessungswert des Querschnittes bezüglich Biegung nach 6.1.4.1; 
+Rw,Rd die Summe der entsprechenden Werte der einzelnen Stege nach 6.1.7. 
+(2) Im Ausdruck (6.22) darf das Biegemoment MEd vom Auflagerrand eingesetzt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 49 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+47 
+6.2 Beanspruchbarkeit bezüglich Knicken 
+6.2.1 Allgemeines 
+(1) Die Effekte aus örtlichem Beulen und Gesamtfeldbeulen sind in der Regel zu berücksichtigen. Hierfür 
+können die in 5.5 angegebenen Verfahren verwendet werden. 
+(2) Die resultierende Normalkraft wirkt in der Schwerachse des Gesamtquerschnittes. 
+(3) Die Beanspruchbarkeit von Profiltafeln wird auf die Schwerachse des wirksamen Querschnittes 
+bezogen. Fällt diese nicht mit der Schwerachse des Gesamtquerschnittes zusammen, sollten die sich 
+hieraus ergebenden Zusatzmomente (siehe Bild 6.9) nach dem in 6.2.3 angegebenen Verfahren berück-
+sichtigt werden. 
+(a) Gesamtquerschnitt (b) Wirksamer Querschnitt 
+Bild 6.9  Verschobene Schwerachse im wirksamen Querschnitt 
+6.2.2 Zentrischer Druck 
+6.2.2.1 Beanspruchbarkeit bezüglich Knicken 
+(1) Der Bemessungswert der Beanspruchbarkeit bezüglich Knicken infolge einer zentrischen Druckkraft 
+Nb,Rd ergibt sich aus: 
+Nb,Rd Aeff fo / M1 (6.23) 
+Dabei ist 
+Aeff die nach Abschnitt 5 unter Voraussetzung einer konstanten Druckbeanspruchung 
+com,Ed fo / M1 ermittelte wirksame Querschnittsfläche; 
+ der zugehörige Abminderungsfaktor bezüglich Knicken. 
+(2) Der Abminderungsfaktor bezüglich Knicken ergibt sich aus: 
+5,022 )(
+1
++
+, jedoch 1,0 (6.24a) 
+mit: 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 50 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+48 
+2
+0)(15,0 (6.24b) 
+Dabei ist 
+ der die Imperfektionen berücksichtigender Faktor; 
+0 die Grenze des horizontalen Bereichs der bezogenen Schlankheit; 
+ die bezogene Schlankheit des zugehörigen Knickfalles. 
+(3) Der Imperfektionsfaktor für Profiltafeln ist 0,13 und 0 0,2. 
+(4) Die bezogene Schlankheit bezüglich Knicken ergibt sich aus: 
+E
+of
+i
+l (6.25) 
+Dabei ist 
+l die Knicklänge bezüglich Knicken um die y  y-Achse ( ly); 
+i der mit den Abmessungen des Gesamtquerschnittes ermittelte Trägheitsradius bezüglich der 
+zugehörigen Achse ( iy ). 
+6.2.3 Biegung und zentrischer Druck 
+(1) Alle einer kombinierten Beanspruchung aus Biegung und zentrischem Druck unterworfenen Bauteile 
+sollten der folgenden Bedingung genügen: 
+1
+1Mcomy,eff,o
+dEy,dEy,
+1Meffxo
+dE
+/Wf
+M+M+/Af
+N
+y
+ (6.26) 
+Dabei ist 
+Aeff die wirksame Fläche eines ausschließlich durch zentrischen Druck beanspruchten Quer-
+schnittes; siehe Bild 6.10(a); 
+Weff,y,com das wirksame Widerstandsmoment für die maximale Druckbeanspruchbarkeit bezüglich 
+Biegung um die Achse y  y, siehe Bild 6.10(b); 
+My,Ed das sich aus Verschiebung der Schwerachsen in y-Richtung ergebende Zusatz-
+moment My,Ed, siehe 6.1.9(2); 
+y der Reduktionsfaktor nach 6.2.2 bezüglich Knicken um die y  y-Achse; 
+x ein die Interaktion berücksichtigender Ausdruck, siehe (2). 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 51 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+49 
+(a) Zentrischer Druck (b) Moment bezüglich y  y-Achse 
+Bild 6.10  Modell zur Ermittlung wirksamer Querschnittswerte 
+(2) Profiltafeln, die einer kombinierten Beanspruchung aus zentrischen Normalkräften und ungleichen 
+Randmomenten und/oder Transversalkräften unterworfen sind, sind in der Regel entlang ihrer Stützweite 
+abschnittsweise zu untersuchen. Das im untersuchten Abschnitt vorhandene Moment ist in der Regel in der 
+Interaktionsgleichung zu verwenden und 
+)/sin()1(
+1
+csyy
+x lx (6.27) 
+Dabei ist 
+xs der Abstand des untersuchten Abschnittes zu einem gelenkigen Lager oder zu einem 
+Wendepunkt der Knicklinie infolge zentrischen Drucks, siehe Bild 5.9 in EN1999-1-1; 
+lc KL die Knicklänge, siehe Tabelle 5.7 in EN 1999-1-1. 
+ANMERKUNG Zur Vereinfachung darf x 1 gesetzt werden. 
+6.3 Schubfelder 
+6.3.1 Allgemeines 
+(1) Das planmäßige Zusammenwirken von Tragwerksteilen und Profiltafeln als kombinierte Tragstruktur 
+kann, wie in diesem Abschnitt beschrieben, berücksichtigt werden. 
+(2) Aluminium-Profiltafeln können in der Anwendung als Dach- oder Wandelemente als Schubfelder wirken. 
+ANMERKUNG Weitere Informationen über Schubfelder sind enthalten in: 
+ECCS Publication No. 88 (1995): European recommendations for the application of metal sheeting acting as a 
+diaphragm. 
+6.3.2 Scheibenwirkung 
+(1) Mit der Schubfeldbemessung kann das Beitragen der Scheibenwirkung von Dach-, Wand- und Decken-
+konstruktionen aus profilierten Blechen zur Steifigkeit und Tragfähigkeit der Tragstruktur ausgenutzt werden. 
+(2) Dächer und Decken dürfen als Scheiben betrachtet werden, die in ihrer Ebene angreifende Kräfte zu last-
+abtragenden vertikalen Tragwerken wie Giebelkonstruktionen oder Rahmen überführen können. Die 
+Profiltafeln können dabei als schubbeanspruchte Stege mit Randgliedern als Gurte zur Aufnahme der Druck- 
+und Zugkräfte betrachtet werden, siehe Bilder 6.11 und 6.12. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 52 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+50 
+(3) In ähnlicher Weise können Wände als Schubfelder zur Gebäudestabilisierung herangezogen werden. 
+Legende 
+(a) Profiltafel 
+(b) Profiltafel als Schubfeld 
+(c) Gurtkräfte in Randgliedern 
+Bild 6.11  Scheibenwirkung bei einem ebenen Dach 
+6.3.3 Voraussetzungen 
+(1) Die Ausnutzung der Scheibenwirkung als integrierender Teil des Tragwerkes ist an folgende Voraus-
+setzungen gebunden: 
+ die über die primäre Aufgabe der Lastabtragung rechtwinklig zur Profilierung hinausgehende Anwendung 
+ist auf die Ausbildung von Schubfeldern mit Lastabtragung in Scheibenebene beschränkt; 
+ die Schubfelder haben Randglieder zur Aufnahme der Gurtkräfte aus der Schubfeldwirkung; 
+ die Scheibenkräfte in Dächern oder Decken werden über Rahmen oder vertikale Schubfelder in die 
+Fundamente weitergeleitet; 
+ es werden zur Lastüberleitung vom Schubfeld zu den als Gurten wirkenden Randgliedern und zum 
+Tragwerk geeignete Verbindungsmittel angeordnet; 
+ die Profiltafeln bilden Tragwerkskomponenten und dürfen nicht ohne Genehmigung entfernt werden; 
+ sowohl die Ausführungsunterlagen als auch die Berechnungen und die Zeichnungen müssen Warn-
+vermerke enthalten, die auf die planmäßige Scheibenwirkung der Profiltafeln hinweisen; 
+ es wird empfohlen, Warnschilder anzubringen, die darauf hinweisen, dass die Wände als Schubfelder 
+dienen und dass bei Demontage Sicherungsmaßnahmen zum Erhalt der Stabilität erforderlich sind. 
+(2) Die Scheibenwirkung sollte vorzugsweise in Gebäuden mit wenig Geschossen, in Decken und in Außen-
+wänden von mehrgeschossigen Gebäuden ausgenutzt werden. 
+(3) Die Scheibenwirkung sollte vorzugsweise zur Abtragung von Wind- und Schneelasten sowie anderen 
+Lasten, die über die Profiltafeln eingetragen werden, ausgenutzt werden. Die Scheibenwirkung darf auch bei 
+der Abtragung geringer Brems- oder Stoßkräfte ausgenutzt werden, die von leichten Hebezeugen oder 
+Laufkranen erzeugt werden. Sie darf dagegen nicht zur Aufnahme permanenter Lasten aus dem Betrieb des 
+Gebäudes herangezogen werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 53 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+51 
+Legende 
+(a) Profiltafel 
+(b) Gurtkräfte in Randgliedern 
+(c) Profiltafel als Schubfeld 
+(d) Giebelkonstruktion zur Abtragung der aus der 
+Schubfeldwirkung resultierenden Kräfte 
+Bild 6.12  Scheibenwirkung bei einem Satteldach 
+6.3.4 Schubfelder aus Aluminium-Profiltafeln 
+(1) Bei einem Schubfeld aus Aluminium-Profiltafeln, siehe Bild 6.13, werden beide Enden der Profiltafeln auf 
+der Unterkonstruktion mit gewindeformenden Schrauben, Schweißnähten, Schrauben mit Muttern oder 
+anderen Verbindungsmitteln befestigt. Die Verbind ungselemente sollten sich im Gebrauch nicht lockern, nicht 
+herausgezogen werden können oder durch Abscheren versagen, bevor nicht das Blech reißt. Die Befestigung 
+der Profiltafeln auf der Unterkonstruktion erfolgt direkt durch die Untergurte, sofern nicht durch besondere 
+Maßnahmen die anzusetzenden Kräfte einwandfrei in die Unterkonstruktion geleitet werden. 
+(2) Die Längsstöße der Profiltafeln werden mit Hilfe von Nieten, Bohrschrauben, Schweißnähten oder 
+anderen Verbindungselementen verbunden. Die Verbindungselemente sollten sich im Gebrauch nicht lockern, 
+nicht herausgezogen werden können oder durch Abscheren versagen, bevor nicht das Blech reißt. Der 
+Abstand der Verbindungselemente sollte 500 mm nicht überschreiten. 
+(3) Die Rand- und Endabstände der Verbindungselemente sollten so gewählt werden, dass kein vorzeitiges 
+Versagen in Blech eintritt. 
+(4) Kleine, nicht systematisch verteilte Öffnungen bis zu etwa 3 % der Gesamtfläche dürfen ohne 
+besonderen Nachweis angeordnet werden, vorausgesetzt, dass die Gesamtanzahl der Verbindungselemente 
+nicht reduziert wird. Öffnungen bis zu 15 % der zugehörigen Fläche sind zugelassen, wenn eine 
+entsprechende Berechnung durchgeführt wird. Flächen, die größere Öffnungen haben, sind in der Regel in 
+kleinere Flächen für die Schubfelder aufzuteilen. 
+(5) Alle Profiltafeln, die Teil eines Schubfeldes sind, sind in der Regel zunächst für ihren primären Zweck der 
+Biegebeanspruchung zu bemessen. Um sicherzustellen, dass unter Biegebeanspruchung die Bean-
+spruchbarkeit bezüglich Scheibenwirkung nicht vermindert ist, ist in der Regel nachzuweisen, dass die 
+Schubbeanspruchungen aus der Scheibenwirkung nicht größer sind als 0,25 f
+o / M1. 
+(6) Die Beanspruchbarkeit des Schubfeldes entspricht entweder der Grenzlochleibungskraft der Ver-
+bindungen der Längsstöße der Profiltafeln oder  bei Schubfeldern, die nur an den Längsrändern befestigt 
+sind  der Beanspruchbarkeit der Längsrandbefestigungen. Die Beanspruchbarkeit der Verbindungs-
+elemente bei anderen Versagenstypen sollte größer sein als die Grenzlochleibungskraft; und zwar: 
+ bei Profiltafel-Pfettenbefestigung unter Beanspruchungen durch Scherkräfte und Windsog mindestens 
+40 %; 
+ bei jedem anderen Versagenszustand mindestens 25 %. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 54 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+52 
+Legende 
+(a) Binder 
+(b) Träger 
+(c) Schubblech 
+(d) Verbindung Profiltafel  Schubblech 
+(e) Träger 
+(f) Verbindung Profiltafel  Träger 
+(g) Verbindungen im Längsstoß 
+Bild 6.13  Aufbau eines einzelnen Schubfeldes 
+6.4 Gelochte Profiltafeln mit Lochanordnung in Form gleichseitiger Dreiecke 
+(1) Gelochte Profiltafeln mit Lochanordnung in Form gleichseitiger Dreiecke können durch Modifizierung der 
+Bemessungsregeln für nicht gelochte Profiltafeln durch Einführen der nachfolgend aufgeführten wirksamen 
+Dicke bemessen werden. 
+ANMERKUNG Diese Berechnungsregeln ergeben auf der sicheren Seite liegende Werte. Wirtschaftlichere Lösungen 
+werden durch eine versuchsgestützte Bemessung erzielt. 
+(2) Für den Fall, dass 0,2 d / a 0,9 ist, dürfen die Kennwerte des Gesamtquerschnittes nach 6.1.2 bis 
+6.1.5 berechnet werden, wobei t durch ta,eff zu ersetzen ist, mit: 
+ta,eff )9,0(/118,1 adt (6.28) 
+Dabei ist 
+d der Durchmesser der Perforierung; 
+a der Abstand zwischen den Mittelpunkten der Perforierung. 
+(3) Für den Fall, dass 0,2 d / a 0,9 ist, dürfen die Kennwerte des Gesamtquerschnittes nach 5.5 
+berechnet werden, wobei t durch tb,eff zu ersetzen ist, mit: 
+tb,eff 3 118,1 d/at (6.29) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 55 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+53 
+(4) Für den Fall, dass 0,2 d / a 0,8 ist, kann die Beanspruchbarkeit eines einzelnen unausgesteiften 
+Steges durch örtliche Lasteinleitung nach 6.1.7 ermittelt werden, wobei t durch tc,eff zu ersetzen ist, mit: 
+tc,eff s/sd/at wper
+2 2/3
+1 (6.30) 
+Dabei ist 
+sper die schräge Länge der Perforation im Steg zentrisch in Steghöhe; 
+sw die schräge Gesamtlänge des Steges. 
+7 Gebrauchstauglichkeit 
+7.1 Allgemeines 
+(1) Die Grundsätze für die Grenzzustände der Gebrauchstauglichkeit nach EN 1999-1-1 gelten auch für kalt-
+geformte Profiltafeln. 
+(2) Die sich aus (3) ergebenden Kennwerte für den wirksamen Querschnitt sind in der Regel in allen Berech-
+nungen bezüglich der Gebrauchstauglichkeit von Profiltafeln zu verwenden. 
+(3) Das Flächenträgheitsmoment darf durch Interpolation zwischen dem Gesamtquerschnitt und dem wirk-
+samen Querschnitt mit Hilfe der nachfolgend aufgeführten Gleichung ermittelt werden: 
+Ieff,ser Igr gr (Igr Ieff ) / fo (7.1) 
+Dabei ist 
+Igr das Flächenträgheitsmoment des Gesamtquerschnittes; 
+Ieff das Flächenmoment 2. Ordnung (Trägheitsmoment) des wirksamen Querschnittes für den 
+Grenzzustand der Tragfähigkeit, wobei örtliches Beulen zugelassen ist; 
+gr die maximale am Gesamtquerschnitt ermittelte Biegedruckspannung im Grenzzustand der 
+Gebrauchstauglichkeit (Druck ist in der Formel positiv einzusetzen). 
+(4) Das Flächenträgheitsmoment Ieff,ser darf entlang der Stützweite als veränderlich angenommen werden. 
+Alternativ kann ein konstanter Wert angenommen werden, welcher sich aus dem maximalen Feldmoment 
+unter Gebrauchslast ergibt. 
+7.2 Plastische Verformungen 
+(1) Für den Fall einer Traglastberechnung unter Ansatz von Fließgelenken, sollte die Kombination aus Stütz-
+moment und Auflagerkraft am Zwischenauflager den 0,9-fachen Bemessungswert der Beanspruchbarkeit 
+bezüglich Interaktion unter Verwendung von M,ser und Ieff,ser nach 7.1(3) nicht überschreiten. 
+(2) Der Bemessungswert der Beanspruchbarkeit bezüglich Interaktion kann nach Gleichung (6.22) in 6.1.11 
+ermittelt werden, wobei jedoch der wirksame Querschnitt für den Grenzzustand der Gebrauchstauglichkeit 
+und M,ser zu verwenden sind. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 56 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+54 
+7.3 Durchbiegungen 
+(1) Durchbiegungen dürfen unter der Annahme elastischen Verhaltens ermittelt werden. 
+(2) Der Einfluss von Schlupf an den Verbindungsstellen (zum Beispiel bei durch Überlappung hergestellten 
+Profiltafelbahnen) ist in der Regel bei der Ermittlung von Verformungen, Kräften und Momenten zu 
+berücksichtigen. 
+ANMERKUNG Bei den gebräuchlichen Verbindungselementen nach 8.2 und 8.3 kann der Schlupf vernachlässigt 
+werden. 
+(3) Mit Bezug auf EN 1990, Anhang A, A.1.4, sind in der Regel Durchbiegungsbeschränkungen in jedem 
+Einzelfall mit dem Auftraggeber zu vereinbaren. 
+ANMERKUNG Im Nationalen Anhang können hierzu Grenzwerte festgelegt werden. 
+8 Verbindungen mit mechanischen Verbindungselementen 
+8.1 Allgemeines 
+(1) Verbindungen mit mechanischen Verbindungselementen sollten kompakt gestaltet sein. Die Anordnung 
+der Verbindungselemente ist in der Regel so festzulegen, dass ausreichend Platz für die Montage und die 
+Wartung zur Verfügung steht. 
+(2) Die durch die einzelnen Verbindungselemente zu übertragenden Scherkräfte dürfen als gleichmäßig 
+verteilt angenommen werden, vorausgesetzt, dass: 
+ die einzelnen Stellen der Verbindung ausreichende Duktilität aufweisen; 
+ Abscheren des Verbindungselementes nicht die maßgebende Versagensform ist. 
+(3) Bei der Bemessung durch Berechnung sind in der Regel die Beanspruchbarkeiten der mechanischen 
+Verbindungselemente infolge vorwiegend ruhender Beanspruchung für Blindniete nach 8.2 und für gewinde-
+formende Schrauben nach 8.3 zu ermitteln. 
+(4) Die Bedeutung der Formelzeichen in den oben genannten Abschnitten ist in EN 1999-1-1 und ergänzend 
+in EN 1999-1-4, 1.4, angegeben. 
+(5) Der Teilsicherheitsbeiwert zur Ermittlung der Bemessungswerte der Beanspruchbarkeit von mecha-
+nischen Verbindungselementen ist in der Regel M3 (siehe 2(3)). 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 57 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+55 
+p1
+30 mm 
+4 d
+p2
+20 mm 
+2 d
+e1
+20 mm 
+2 d
+(a) Kraftrichtung e2
+10 mm 
+1,5 d
+Bild 8.1  Rand- und Lochabstände von Verbindungselementen 
+(6) Die in 8.2.3.1 für Blindniete bzw. in 8.3.3.1 für gewindefurchende Schrauben angegebenen 
+Beanspruchbarkeiten bezüglich Durchknöpfen hängen von der Lage der Verbindungselemente ab. Die 
+Beanspruchbarkeiten sind in der Regel abzumindern, wenn die Verbindungselemente nicht mittig in den 
+Rippen der Profiltafeln angeordnet werden. Bei Befestigung im Viertelspunkt ist in der Regel der 
+Bemessungswert des Verbindungselementes auf 0,9 F
+p,Rd abzumindern. Bei Befestigung mit zwei 
+Verbindungselementen in beiden Viertelspunkten ist in der Regel der Bemessungswert jedes 
+Verbindungselementes auf 0,7 Fp,Rd abzumindern, siehe Tabelle 8.3. 
+(7) Bei gleichzeitiger Beanspruchung eines Verbindungselementes durch Quer- und Zugkraft ist in der Regel 
+die Beanspruchbarkeit des Verbindungselementes durch folgende Interaktionsbedingung nachzuweisen, 
+vorausgesetzt, die Beanspruchbarkeiten F
+p,Rd, Fo,Rd, Fb,Rd und Fn,Rd wurden für Blindniete nach 8.2 bzw. für 
+gewindefurchende Schrauben nach 8.3 ermittelt: 
+1),min(),min( Rdn,Rdb,
+Edv,
+Rdo,Rdp,
+Edt,
+FF
+F
+FF
+F (8.1) 
+(8) Die Verformung des Gesamtquerschnittes kann vernachlässigt werden, wenn die Bemessungswerte 
+nach 8.2.3 und 8.3.3 ermittelt werden, vorausgesetzt, die Befestigung erfolgt durch einen Gurt, der nicht 
+breiter als 150 mm ist. 
+(9) Der Bohrlochdurchmesser bei gewindeformenden Schrauben sollte nach den Angaben des Schrauben-
+herstellers ausgeführt werden. Diesen Angaben sollten folgenden Kriterien zugrunde liegen: 
+ das Anziehdrehmoment ist geringfügig größer als das Eindrehmoment; 
+ das Anziehdrehmoment ist geringer als das Überdrehmoment; 
+ das Anziehdrehmoment ist geringer als 2/3 des Bruchdrehmomentes. 
+(10) Die Bemessungsregeln für Blindniete gelten nur, wenn der Bohrlochdurchmesser nicht größer als 
+0,1 mm als der Durchmesser der Niethülse ist. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 58 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+56 
+8.2 Blindniete 
+8.2.1 Allgemeines 
+(1) Der Bemessungswert der Beanspruchbarkeit einer schubbeanspruchten Blindnietverbindung ist der 
+kleinste Wert aus den Beanspruchbarkeiten bezüglich Lochleibung Fb,Rd, bezüglich Versagen des Netto-
+querschnittes Fnet,Rd des Bauteiles und bezüglich Abscheren des Verbindungselementes Fv,Rd. 
+(2) Die Niethülse sollte aus EN AW- 5019 bestehen. 
+(3) Es sind in der Regel Blindniete nach EN ISO 15973, EN ISO 15974, EN ISO 15977, EN ISO 15978, 
+EN ISO 15981 oder EN ISO 15982 zu verwenden. 
+8.2.2 Bemessungswerte für scherbeanspruchte Nietverbindungen 
+8.2.2.1 Beanspruchbarkeit bezüglich Lochleibung 
+Fb,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.2a) 
+Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.2b) 
+8.2.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes 
+Fnet,Rd Anet fu / M3 (8.3) 
+8.2.2.3 Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes 
+Fv,Rd 38 d2 / M3 [N] mit d in mm (8.4) 
+Bedingungen bezüglich Lochleibung und Abscheren: 
+ Werte von fu,min 260 N/mm2 sollten nicht angesetzt werden; 
+ 2,6 mm d 6,4 mm. 
+8.2.3 Bemessungswerte für zugbeanspruchte Nietverbindungen 
+8.2.3.1 Beanspruchbarkeit bezüglich Durchknöpfen 
+F
+p,Rd 2,35 E tf o / M3 [N] mit t in mm und fo in N/mm2; E nach Tabelle 8.3 (8.5) 
+Bedingungen: 
+t 1,5 mm; dw 9,5 mm; 
+ Werte von fo 220 N/mm2 sollten nicht angesetzt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 59 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+57 
+8.2.3.2 Beanspruchbarkeit bezüglich Ausreißen 
+ bei Unterkonstruktion aus Stahl: Fo,Rd 0,47 tsup df y / M3 (8.6) 
+ bei Unterkonstruktion aus Aluminium: Fo,Rd 0,20 tsup df o / M3 (8.7) 
+Bedingungen: 
+tsup 6 mm, fy 350 N/mm 2 und Werte von fo 220 N/mm 2 sollten nicht angesetzt werden (jeweils zu 
+erfüllen); 
+ Ausführung der Bohrlöcher nach den Angaben des Nietherstellers. 
+8.2.3.3 Beanspruchbarkeit bezüglich Zugbruch 
+Ft,Rd 47 d2 / M3 N , worin d in mm einzusetzen ist. (8.8) 
+8.3 Gewindeformende Schrauben / Bohrschrauben 
+8.3.1 Allgemeines 
+(1) Der Bemessungswert der Beanspruchbarkeit schubbeanspruchter Schraubenverbindungen ist der 
+kleinste Wert aus den Beanspruchbarkeiten bezüglich Lochleibung Fb,Rd, bezüglich Versagen des 
+Nettoquerschnittes Fnet,Rd des Bauteils und bezüglich Abscheren des Verbindungselementes Fv,Rd. 
+(2) Die in den folgenden Abschnitten angegebenen Anwendungsgrenzen bezüglich der Schrauben-
+durchmesser sind in der Regel einzuhalten, es sei denn, andere Grenzen werden durch entsprechende 
+Versuche bestätigt. 
+(3) Die Anwendungsgrenzen bezüglich der Festigkeitswerte der Unterkonstruktion sind in der Regel 
+einzuhalten, es sei denn, andere Anwendungsgrenzen werden durch entsprechende Versuche bestätigt. 
+(4) Es sind in der Regel gewindeformende Schrauben nach EN ISO 1479, EN ISO 1481 oder ISO 7049 zu 
+verwenden. 
+(5) Es sind in der Regel Bohrschrauben nach EN ISO 15480 oder EN ISO 15481 zu verwenden. 
+8.3.2 Bemessungswerte für scherbeanspruchte Schraubverbindungen 
+8.3.2.1 Beanspruchbarkeit bezüglich Lochleibung 
+(1) Die Beanspruchbarkeit bezüglich Lochleibung ergibt sich für Unterkonstruktionen aus Stahl oder 
+Aluminium zu: 
+F
+b,Rd 2,5 fu,min dt3 / M3 für tsup / t 1,0, jedoch Fb,Rd 1,5 fu,min td / M3 (8.9a) 
+Fb,Rd 1,5 fu,min td / M3 für tsup / t 2,5 (8.9b) 
+Für Blechdicken 1,0 tsup / t 2,5 kann die Beanspruchbarkeit bezüglich Lochleibung Fb,Rd durch lineare 
+Interpolation ermittelt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 60 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+58 
+Unter den Bedingungen: 
+ Gewindeformende Schrauben oder Bohrschrauben aus Stahl oder nichtrostendem Stahl mit 
+Durchmessern d 5,5 mm; 
+ Werte von fu,min 260 N/mm2 sollten nicht angesetzt werden; 
+ bei t tsup ist t tsup zu setzen; 
+ die Bohrlöcher sind nach den Angaben des Schraubenherstellers auszuführen. 
+(2) Bei Unterkonstruktionen aus Holz ergibt sich die Beanspruchbarkeit von Aluminium-Profiltafeln bezüglich 
+Lochleibung: 
+Fb,Rd 1,5 t d fu,min / M3 [N] (8.10) 
+(3) Bezüglich der Beanspruchbarkeit der Unterkonstruktion aus Holz hinsichtlich Lochleibung siehe 
+EN 1995-1-1, Abschnitt 8, Stahl-Holz-Verbindung. 
+Bedingungen: 
+ Gewindeformende Schrauben oder Bohrschrauben aus Stahl oder nichtrostendem Stahl mit Durch-
+messern 5,5 mm d 8 mm; 
+ Rand- und Lochabstände im Bauteil aus Holz siehe EN 1995-1-1, Abschnitt 8. 
+8.3.2.2 Beanspruchbarkeit bezüglich Versagen des Nettoquerschnittes 
+Fnet,Rd Anet fu / M3 (8.11) 
+8.3.2.3 Beanspruchbarkeit bezüglich Abscheren des Verbindungselementes 
+Die Beanspruchbarkeit bezüglich Abscheren von Schrauben aus Stahl oder nichtrostendem Stahl ergibt sich 
+zu: 
+Fv,Rd 380 As / M3 [N], mit As in mm2 (8.12) 
+8.3.3 Bemessungswerte für zugbeanspruchte Schraubverbindungen 
+8.3.3.1 Beanspruchbarkeit bezüglich Durchknöpfen 
+(1) Die Beanspruchbarkeit bezüglich Durchknöpfen von zugbeanspruchten Schraubverbindungen ergibt sich 
+zu: 
+Fp,Rd 6,1 L E M tf u /22wd / M3 [N] (8.13) 
+mit: 
+t und dw in mm und fu in N/ mm2 und 
+L Korrekturfaktor zur Berücksichtigung des Einflusses von Biegezugspannungen im 
+angeschlossenen Profilgurt (Tabelle 8.1);
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 61 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+59 
+M Korrekturfaktor zur Berücksichtigung des Werkstoffes der Dichtscheibe (Tabelle 8.2); 
+E Korrekturfaktor zur Berücksichtigung der Anordnung der Verbindungselemente (Tabelle 8.3). 
+Bedingungen: 
+t 1,5 mm; 
+dw 14 mm und Dicke der Dichtscheibe 1 mm; 
+ Breite des anliegenden Profilgurtes 200 mm; 
+dw 30 mm und Werte von fu 260 N/mm sollten nicht angesetzt werden; 
+ bei Profilhöhen kleiner als 25 mm sollten die Beanspruchbarkeiten bezüglich Durchknöpfen um 30 % 
+gemindert werden. 
+Tabelle 8.1  Korrekturfaktor L zur Berücksichtigung des Einflusses 
+der Biegezugspannungen im angeschlossenen Profilgurt 
+LZugfestigkeit
+N/mm2 Stützweite 
+L 1,5 m 
+Stützweite 
+1,5 L 4,5 m 
+Stützweite 
+L 4,5 m 
+ 215 1 1 1 
+ 215 1 1,25  L/6 0,5 
+ANMERKUNG An Endauflagern ohne Biegezugspannungen und bei Verbindungen im Obergurt gilt immer L 1. 
+Tabelle 8.2  Korrekturfaktor M zur Berücksichtigung des Werkstoffes 
+der Dichtscheibe 
+Werkstoff der Dichtscheibe M
+Stahl, nichtrostender Stahl 1,0
+Aluminium 0,8 
+Tabelle 8.3  Korrekturfaktor E zur Berücksichtigung der Anordnung der Verbindungselemente 
+Im an der Unterkonstruktion anliegenden Profilgurt 
+Im nicht an der 
+Unterkonstruktion 
+anliegenden Profilgurt 
+Verbindung 
+E 1,0 
+bu 150:0,9
+bu 150:0,7 0,7 0,9 0,7 0,7 1,0 0,9 
+ANMERKUNG Die Kombination von Korrekturfaktoren ist nicht erforderlich. Es gilt jeweils der kleinste Wert. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 62 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+60 
+8.3.3.2 Beanspruchbarkeit bezüglich Ausreißen 
+(1) Die Beanspruchbarkeit bezüglich Ausreißen gewindeformender Schrauben und Bohrschrauben aus Stahl 
+oder nichtrostendem Stahl aus Unterkonstruktionen aus Stahl oder Aluminium ergibt sich zu: 
+Fo,Rd 0,95 fu,sup dt 3
+sup / M3 (8.14) 
+Bedingungen: 
+ gewindeformende Schrauben oder Bohrschrauben aus Stahl oder nichtrostendem Stahl; 
+ Durchmesser der Schrauben 6,25 mm d 6,5 mm; 
+ bei Unterkonstruktionen aus Aluminium und tsup 6 mm sollten Werte von fu,sup 250 N/mm2 nicht 
+angesetzt werden; 
+ bei Unterkonstruktionen aus Stahl und tsup 5 mm sollten Werte von fu,sup 400 N/mm2 nicht angesetzt 
+werden; 
+ die Bohrlöcher sollten nach den Angaben des Schraubenherstellers ausgeführt werden. 
+(2) Bei Unterkonstruktionen aus Holz siehe EN 1995-1-1, Abschnitt 8. 
+8.3.3.3 Beanspruchbarkeit bezüglich Zugbruch 
+(1) Die Beanspruchbarkeit bezüglich Zugbruch von Schrauben aus Stahl oder nichtrostendem Stahl ergibt 
+sich aus:
+Ft,Rd 560 As / M3 N mit As in mm2 (8.15) 
+9 Versuchsgestützte Bemessung 
+(1) Dieser Abschnitt 9 kann zur Anwendung der in EN 1990 aufgeführten Regeln zur versuchsgestützten 
+Bemessung, ergänzt um Festlegungen für kaltgeformte Profiltafeln, verwendet werden. 
+(2) Zur Durchführung von Versuchen mit Profiltafeln sind in der Regel die in Anhang A angegebenen Regeln 
+anzuwenden. 
+(3) Versuche zur Ermittlung der Zugfestigkeit von Aluminiumlegierungen sind in der Regel nach EN 10002-1 
+durchzuführen. Versuche zur Ermittlung anderer Materialeigenschaften von Aluminium sind in der Regel in 
+Übereinstimmung mit den betreffenden Europäischen Normen durchzuführen. 
+(4) Versuche mit Verbindungselementen oder an Verbindungen sind in der Regel in Übereinstimmung mit 
+den betreffenden Europäischen oder Internationalen Normen durchzuführen. 
+ANMERKUNG Bis zur Verfügbarkeit einer geeigneten Europäischen oder Internationalen Norm können weitere 
+Informationen bezüglich Versuchen mit Verbindungselementen entnommen werden: 
+ ECCS Publication No. 21 (1983): European recommendations for steel construction: the design and testing of 
+connections in steel sheeting and sections; 
+ ECCS Publication No. 42 (1983): European recommendations for steel construction: mechanical fasteners for use in 
+steel sheeting and sections. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 63 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+61 
+Anhang A
+(normativ) 
+Versuchsaufbau und -durchführung
+A.1 Allgemeines 
+(1) Dieser Anhang A enthält Angaben über Standardversuche und deren Auswertungen für Prüfungen, die 
+häufig in der Praxis zur Anwendung kommen und eine Grundlage für die Harmonisierung von zukünftigen 
+Versuchen bilden. 
+ANMERKUNG 1 Im Bereich kaltgeformter Profiltafeln sind Standardprodukte, bei denen eine Bemessung durch 
+Berechnung nicht zu wirtschaftlichen Ergebnissen führt, weit verbreitet. Daher ist es oft erwünscht, eine versuchsgestützte 
+Bemessung durchzuführen. 
+ANMERKUNG 2 Der Nationale Anhang kann weitere Informationen zur Versuchsdurchführung  und für die 
+Auswertung der Versuchsergebnisse enthalten. 
+ANMERKUNG 3 Der Nationale Anhang kann Umrechnungsfaktoren für vorhandene Versuchsergebnisse enthalten, um 
+die Gleichwertigkeit dieser Versuchsergebnisse zu den Ergebnissen von nach diesem Anhang durchgeführten 
+Standardversuch sicherzustellen. 
+(2) Dieser Anhang beinhaltet: 
+ Versuche mit Profiltafeln, siehe A.2; 
+ Versuchsauswertung zur Ermittlung von Bemessungswerten, siehe A.3. 
+A.2 Versuche mit Profiltafeln 
+A.2.1 Allgemeines 
+(1) Um eine gleichmäßig verteilte Beanspruchung zu simulieren, kann die Belastung durch Luftsack, durch 
+Unterdruck oder durch Querträger aus Metall oder Holz eingetragen werden. 
+(2) Um ein Auseinanderspreizen der Rippen zu verhindern, können Querbänder oder andere geeignete 
+Hilfsmittel wie Holzklötze am Versuchskörper angebracht werden. Beispiele sind in Bild A.1 angegeben. 
+(3) Versuchkörper für Profiltafeln sollten im Regelfall aus mindestens zwei vollständigen Rippen bestehen. Ist 
+die Steifigkeit der Rippen ausreichend groß, darf der Versuchskörper auch aus nur einer Rippe bestehen. 
+Freie Längsränder müssen sich beim Versuch in der Zugzone befinden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 64 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+62 
+Legende 
+(a) Niet oder Schraube 
+(b) Querband (Metallstreifen) 
+(c) Holzklötze 
+Bild A.1  Beispiele für geeignete Stützkonstruktionen 
+(4) Bei Windsogversuchen muss der Versuchsaufbau das wirkliche Tragverhalten der Profiltafeln 
+wiedergeben. Die Verbindungen zwischen Profiltafel und Unterkonstruktion müssen die gleichen wie in der 
+Praxis sein. 
+(5) Um die Ergebnisse so allgemein gültig wie möglich zu machen und zur Vermeidung jeglichen Einflusses 
+behinderter Verdrehbarkeit und Verschieblichkeit an den Auflagern, sind bevorzugt gelenkige und 
+verschiebliche Auflagerungen vorzusehen. 
+(6) Es ist sicherzustellen, dass die Wirkungslinie der Last während der Versuchsdurchführung rechtwinklig 
+zur anfänglichen Profiltafelebene bleibt. 
+(7) Um Auflagerverformungen zu erfassen, sind die Verformungen an beiden Enden des Versuchskörpers zu 
+messen. 
+(8) Als Versuchsergebnis gilt der Maximalwert der auf den Versuchskörper aufgebrachten Last zum 
+Zeitpunkt des Versagens oder unmittelbar vor dem Versagen. 
+A.2.2 Einfeldträgerversuch 
+(1) Für die Ermittlung der querkraftfreien Momentenbeanspruchbarkeit und der wirksamen Biegesteifigkeit 
+kann der in Bild A.2 dargestellte Versuchsaufbau verwendet werden. 
+(2) Die Stützweite ist in der Regel so zu wählen, dass die Versuchsergebnisse die Momenten-
+beanspruchbarkeit der Profiltafel wiedergeben. 
+(3) Die Momentenbeanspruchbarkeit ist in der Regel aus den Versuchsergebnissen zu ermitteln. 
+(4) Die Biegesteifigkeit ist in der Regel aus der Last-Verformungskurve zu ermitteln. 
+A.2.3 Zweifeldträgerversuch 
+(1) Für die Ermittlung der Beanspruchbarkeit bei gleichzeitiger Wirkung von Biegemoment und Querkraft 
+bzw. von Biegemoment und Auflagerreaktion für eine gegebene Auflagerbreite am Zwischenauflager einer 
+zwei- oder mehrfeldrig verlegten Profiltafel kann der in Bild A.3 dargestellte Versuchsaufbau verwendet 
+werden. 
+(2) Die Belastung sollte vorzugsweise gleichmäßig verteilt sein (zum Beispiel durch Verwendung eines 
+Luftsackes oder mittels Unterdruck). 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 65 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+63 
+(3) Alternativ können mehrere, rechtwinklig zur Profilierung verlaufende Linienlasten zur Anwendung 
+kommen, die angenähert Momenten- und Kraftverläufe einer gleichmäßig verteilten Belastung ergeben. 
+Beispiele für derartige Belastungsanordnungen sind in Bild A.4 dargestellt. 
+A.2.4 Ersatzträgerversuch 
+(1) Als Alternative zu A.2.3 kann der in Bild A.5 dargestellte Versuchsaufbau für die Ermittlung der 
+Beanspruchbarkeit bei gleichzeitiger Wirkung von Biegemoment und Querkraft bzw. von Biegemoment und 
+Auflagerreaktion für eine gegebene Auflagerbreite am Zwischenauflager einer zwei- oder mehrfeldrig 
+verlegten Profiltafel verwendet werden. 
+(2) Die Spannweite s im Versuch, die den Abstand der Wendepunkte einer zweifeldrig mit der Stützweite L
+verlegten Profiltafel repräsentiert, ergibt sich aus: 
+s
+ 0,4L (A.1) 
+(3) Ist eine plastische Umlagerung des Stützmomentes zu erwarten, so ist die Spannweite s im Versuch 
+entsprechend dem Verhältnis aus Stützmoment und Querkraft zu verringern. 
+(4) Die Breite bB des Lasteinleitungsträgers ist so zu wählen, dass diese der Breite des in der praktischen 
+Anwendung vorgesehenen Auflagers entspricht. 
+(5) Aus jedem Versuchsergebnis ergibt sich eine Beanspruchbarkeit infolge kombinierter Beanspruchung 
+aus Biegemoment und Auflagerreaktion (oder Querkraft) in Abhängigkeit der Spannweite und der Auflager-
+breite. Um Informationen bezüglich der Interaktion von Biegemoment und Auflagerreaktion zu erhalten, sollten 
+Versuche mit mehreren unterschiedlichen Spannweiten durchgeführt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 66 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+64 
+Legende 
+1 Querband
+a) Gleichförmig verteilte Belastung und 
+Beispiel für gleichwertige Linienlasten 
+als Alternative 
+b) Durch Luftsack aufgebrachte verteilte 
+Belastung (alternativ durch Vakuumprüfstand) 
+c) Beispiel für eine Auflagerausbildung zur Vermeidung örtlicher Verformungen 
+d) Beispiel für das Einleiten von Linienlasten 
+Bild A.2  Versuchsanordnung für Einfeldträgerversuche 
+Bild A.3  Versuchsanordnung für Einfeldträgerversuche 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 67 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+65 
+Bild A.4  Beispiele für geeignete Anordnungen bei alternativ gewählten Linienlasten 
+a) Zwischenauflager für andrückende Belastung (Auflast) 
+b) Zwischenauflager für abhebende Belastung (Windsog) 
+c) Zwischenauflager mit am Zuggurt angreifender Belastung 
+Bild A.5  Versuchsanordnung für Ersatzträgerversuche 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 68 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+66 
+Legende
+bA Auflagerbreite 
+u Abstand vom inneren Auflagerrand zum Ende der Profiltafel 
+Bild A.6  Versuchsanordnung für Endauflagerversuche 
+A.2.5 Endauflagerversuche 
+(1) Der in Bild A.6 dargestellte Versuchsaufbau kann zur Ermittlung der Beanspruchbarkeit einer Profiltafel 
+am Endauflager verwendet werden. 
+(2) Zur Ermittlung der Beanspruchbarkeit der Profiltafel bezüglich Querkraft in Abhängigkeit des Abstandes u
+vom inneren Auflagerungspunkt zum Ende der Profiltafel sollten getrennte Versuche nach Bild A.6 
+durchgeführt werden. 
+A.3 Versuchsauswertung 
+A.3.1 Allgemeines 
+(1) Als Versagen eines Prüfkörpers wird angesehen, wenn entweder ein Lastmaximum erreicht wird oder die 
+Verformungen vorgegebene Grenzwerte überschreiten. 
+(2) Bei Versuchen mit Verbindungen oder anderen Komponenten, bei denen große Formänderungen für eine 
+richtige Deutung des Tragverhaltens erforderlich sind  wie beispielsweise bei der Auswertung der 
+Momenten-Rotationscharakteristik von Überlappungsstößen , ist eine Begrenzung der Verformung während 
+des Versuches nicht erforderlich. 
+(3) Zwischen einem Versagen mit deutlichen Formänderungen und einem plötzlichen Versagen ohne 
+erkennbare Verformungen sollte ein angemessener Sicherheitsspielraum bestehen. Da ein verformungsloses 
+Versagen bei Bauteilversuchen kaum vorkommt, sollten nötigenfalls ergänzende Detailversuche durchgeführt 
+werden. 
+ANMERKUNG Dies ist häufig bei Verbindungen der Fall. 
+A.3.2 Normierung der Versuchsergebnisse 
+(1) Die Versuchsergebnisse sollten wegen der Unterschiede zwischen den tatsächlich gemessenen und den 
+nominellen Kennwerten normiert werden. 
+(2) Die am Versuchsmaterial ermittelte 0,2%-Dehngrenze f0,2,obs sollte nicht mehr als 25 % von der 
+nominellen 0,2%-Dehngrenze f0,2abweichen. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 69 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+67 
+(3) Die am Versuchsmaterial gemessene Materialdicke tobs sollte die für die Berechnung vorgesehene 
+Dicke t, basierend auf der nominellen Materialdicke tnom, um nicht mehr als 12 % überschreiten. 
+(4) Eine Normierung bezüglich der aktuell ermittelten Werte für die Materialdicke tobs und der 0,2%-
+Dehngrenze f0,2,obs ist in der Regel für alle Versuche durchzuführen  jedoch nicht, wenn sich die auf der 
+Grundlage der Versuchsergebnisse abgeleiteten Bemessungsregeln auf die tatsächlich vorhandenen Werte 
+für die Materialdicke tobs und die 0,2%-Dehngrenze f0,2,obs beziehen. 
+(5) Der normierte Wert Radj,i des Versuchsergebnisses i ergibt sich aus dem beobachteten Versuchsergebnis 
+Robs,i wie folgt: 
+Radj,i Robs,i / R (A.2) 
+worin der Normierungsfaktor für die Beanspruchbarkeit R wie folgt bestimmt wird: 
+R t
+t
+f
+f obs
+0,2
+obs0,2, (A.3) 
+(6) Der Exponent in Formel (A.2) sollte wie folgt bestimmt werden: 
+ wenn f0,2,obs f0,2: 0; 
+ wenn f0,2,obs f0,2 : 1; 
+ bei Profiltafeln, bei denen druckbeanspruchte Querschnittsteile derart große bp / t-Werte haben, so dass 
+örtliches Beulen die Versagensform ist: 0,5. 
+(7) Der Exponent in Formel (A.2) sollte wie folgt bestimmt werden: 
+ wenn tobs t: 1; 
+ wenn tobs t: 2. 
+A.3.3 Charakteristische Werte 
+A.3.3.1 Allgemeines 
+(1) Charakteristische Werte können ermittelt werden, wenn mindestens vier Versuchsergebnisse vorliegen. 
+ANMERKUNG Eine größere Anzahl von Versuchen ist generell vorzuziehen, insbesondere wenn eine verhältnismäßig 
+große Streuung vorliegt. 
+(2) Der charakteristische Kleinstwert ist in der Regel unter den folgend beschriebenen Voraussetzungen zu 
+ermitteln. Wenn der charakteristische Maximalwert oder der charakteristische Mittelwert benötigt wird, sollten 
+die Regeln entsprechend beachtet werden. 
+(3) Der charakteristische Wert der Widerstandes R
+k wird auf der Grundlage von mindestens vier Versuchs-
+ergebnissen wie folgt ermittelt: 
+Rk Rm ks (A.4) 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 70 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+68 
+Dabei ist 
+s die Standardabweichung; 
+k ein von der Anzahl der Versuche abhängiger Koeffizient nach Tabelle A.1; 
+Rm der Mittelwert der normierten Versuchsergebnisse Radj. 
+(4) Die Standardabweichung s wird wie folgt bestimmt: 
+11
+1
+2
+m
+2
+adj,
+1
+2
+m
+1
+2
+adj,
+n
+RnR
+n
+RR
+s
+n
+i
+i
+n
+i
+n
+i
+i
+ (A.5) 
+Dabei ist 
+Radj,i das normierte Versuchsergebnis des Versuches i; 
+n die Anzahl der Versuche. 
+Tabelle A.1  Werte für den Koeffizienten k
+n 4 5 6 8 10 20 30 
+k 2,63 2,33 2,18 2,00 1,92 1,76 1,73 1,64 
+A.3.3.2 Charakteristische Werte für eine Versuchsfamilie 
+(1) Wird eine Versuchsserie mit ähnlichen Tragwerken, Teilen von Tragwerken, einzelnen Bauteilen oder 
+Profiltafeln durchgeführt, bei denen ein oder mehrere Parameter variiert werden, so dürfen sie als eine einzige 
+Familie betrachtet werden, vorausgesetzt, dass alle Prüfkörper der Familie die gleiche Versagensart 
+aufweisen. Die variierenden Parameter können Querschnittsabmessungen, Spannweiten, Blechdicken oder 
+Festigkeitswerte sein. 
+(2) Die charakteristischen Beanspruchbarkeiten der Mitglieder der Familie können auf der Grundlage von 
+Bemessungsformeln ermittelt werden, welche die Parameter der Versuchsergebnisse beinhalten. Diese 
+Bemessungsformel können entweder auf der Grundlage der mechanischen Gesetzmäßigkeiten beruhen oder 
+empirisch bestimmt werden. 
+(3) Die Bemessungsformeln sollten den Mittelwert des im Versuch ermittelten Widerstandes so genau wie 
+möglich vorhersagen, indem sie Koeffizienten zur Optimierung der Korrelation enthalten. 
+ANMERKUNG Weitere Informationen zu dieser Vorgehensweise sind in Anhang D von EN 1990 gegeben. 
+(4) Bei der Bestimmung der Standardabweichung s wird jedes Versuchsergebnis zunächst durch Division mit 
+dem entsprechenden Wert der betreffenden Bemessungsformel normalisiert. Wenn die Bemessungsformel 
+wie in (3) angegeben modifiziert wurde, ist der Mittelwert der normalisierten Versuchsergebnisse gleich eins. 
+Die Anzahl der Versuche n ist gleich der Gesamtanzahl der Versuche in der Familie. 
+(5) Bei einer Familie von mindestens vier Versuchen ergibt sich der charakteristische Widerstand R
+k aus 
+Formel (A.3), indem für Rm der Wert der Bemessungsformel eingesetzt wird und der Wert k aus Tabelle A.1 
+und entsprechend der Gesamtanzahl n der Versuche der Familie entnommen wird. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 71 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+69 
+A.3.4 Bemessungswerte 
+(1) Der Bemessungswert der Beanspruchbarkeit Rd wird aus dem entsprechenden charakteristischen Wert 
+Rk der Versuchsergebnisse wie folgt abgeleitet: 
+Rd Rk / ( M sys) (A.6) 
+Dabei ist 
+M der Teilsicherheitsbeiwert für den Widerstand; 
+sys der Teilsicherheitsbeiwert für Unterschiede im Tragverhalten unter Versuchsbedingungen und in 
+der praktischen Anwendung. 
+(2) Bei einer Familie mit mindestens vier Versuchen kann der Wert M mit statistischen Methoden bestimmt 
+werden. 
+ANMERKUNG Informationen über eine geeignete Methode siehe Anhang D von EN 1990. 
+(3) Alternativ kann M dem Wert von M bei Bemessung auf Grundlage von Berechnungen, wie in Abschnitt 2 
+angegeben, gleichgesetzt werden. 
+ANMERKUNG Der Nationale Anhang kann Werte für M und sys enthalten. Bei Profiltafeln ist sys gleich 1,0 ein 
+empfohlener Wert. 
+(4) Bei andersgearteten Versuchen, bei denen mögliche Instabilitätsprobleme oder wechselndes Verhalten 
+des Tragwerkes oder einzelner Tragwerksteile nicht zuverlässig im Versuch beobachtet werden können, ist in 
+der Regel der Wert von sys unter Berücksichtigung der aktuellen Versuchssituation festzulegen, um die 
+notwendige Zuverlässigkeit zu gewährleisten. 
+A.3.5 Gebrauchstauglichkeit 
+(1) Die Anforderungen nach Abschnitt 7 sollten erfüllt werden. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 72 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+70 
+Anhang B 
+(informativ)
+Dauerhaftigkeit von Verbindungselementen 
+(1) Für mechanische Verbindungen von Profiltafeln kann Tabelle B.1 angewendet werden. 
+Tabelle B.1  Werkstoffe der Verbindungselemente hinsichtlich der Umgebungsbedingungen 
+bezüglich Korrosion (und der Profiltafeln nur zur Information). Es ist nur die Gefährdung bezüglich 
+Korrosion. Umgebungsbedingungen bezüglich Korrosion nach EN ISO 12944-2 
+Werkstoff des Verbindungselementes 
+Korrosivitäts-
+kategorie 
+Werkstoff 
+der 
+Profiltafel Aluminium 
+galvanisch 
+verzinkter Stahl.
+Dicke des 
+Überzugs 
+ 7 m 
+feuerverzinkter 
+Stahlb
+Dicke des 
+Überzugs 
+ 45 m 
+Nichtrostender 
+Stahl, 
+einsatzgehärtet
+1.4006d, e
+Nichtrostender 
+Stahl, 
+1.4301d
+1.4436d
+Monela
+A, B, C X X X X X X C1 
+D, E, S X X X X X X 
+A X  X X X X 
+C, D, E X  X X X X C2 
+S X  X X X X 
+C3 A X  X  X X 
+ C, E X  X (X)c (X) c  
+ D X  X  (X)c X 
+ S   X X X X 
+C4 A X  (X)c  (X)c  
+ D   X  (X)c  
+ E X  X  (X)c  
+ S   X  X X 
+C5-I A X    (X)c  
+Df   X  (X)c  
+ S     X  
+C5-M A X    (X)c  
+Df   X  (X)c  
+ S     X  
+ANMERKUNG Verbindungselemente aus Stahl ohne Überzug können in Korrosivitätskategorie C1 eingesetzt werden. 
+A = Aluminium, unabhängig von der Oberflächenbehandlung 
+B = unbeschichtetes Stahlblech 
+C = feuerverzinktes (Z275) oder Aluzink- beschichtetes Stahlblech (AZ150) 
+D = feuerverzinktes und farb- oder kunststoffbeschichtetes Stahlblech 
+E = Aluzink-beschichtetes Stahlblech (AZ185) 
+S = nichtrostender Stahl 
+X = bezüglich Korrosionsbeständigkeit empfohlener Werkstoff 
+(X) = nur unter bestimmten Bedingungen bezüglich Korrosionsbeständigkeit empfohlener Werkstoff 
+ = bezüglich Korrosionsbeständigkeit nicht empfohlener Werkstoff 
+a nur für Niete 
+b nur für Schrauben und Muttern 
+c Dichtscheibe mit alterungsbeständigem Material zwischen Profiltafel und Verbindungselement 
+d Nichtrostender Stahl EN 10088 
+e Gefahr der Verfärbung 
+f nur in Absprache mit dem Profiltafelhersteller 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 73 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+71 
+(2) Die Korrosivitätskategorien nach EN ISO 12944-2 sind in Tabelle B.2 wiedergegeben. 
+Tabelle B.2  Atmosphärische Korrosivitätskategorien nach EN ISO 12944-2 und Beispiele typischer 
+Umgebungen 
+Beispiele typischer Umgebungsklimate (informativ) Korro-
+sivitäts-
+kategorie 
+Korrosions-
+grad Außen Innen 
+C1 sehr gering  
+Beheizte Gebäude mit normaler Atmos-
+phäre, z. B. Büros, Geschäfte, Schulen, 
+Hotels. 
+C2 gering Atmosphäre mit geringem Verschmut-
+zungsgrad. Ländliche Gegend. 
+Unbeheizte Gebäude, in denen Kondens-
+wasser auftreten kann, z. B. Lager- und 
+Sporthallen. 
+C3 mittel 
+Städtische und Industrieatmosphäre, 
+mäßige Schwefeldioxid-Belastung. 
+Küstengegend mit geringem Salz-
+gehalt. 
+Produktionsstätten mit hoher Luftfeuch-
+tigkeit und geringer Luftverschmutzung, 
+z. B. Lebensmittelherstellung, Fabriken, 
+Wäschereien, Brauereien und 
+Molkereien. 
+C4 hoch Industrie- und Küstengegend mit 
+mäßigem Salzgehalt. 
+Chemische Industrie, Schwimmbäder, 
+küstennahe Schiffs- und Bootshallen. 
+C5-I sehr hoch 
+(Industrie) 
+Industriegegend mit hoher Luftfeuch-
+tigkeit und aggressiver Atmosphäre. 
+Gebäude und Örtlichkeiten mit fast 
+ständigem Auftreten von Kondenswasser 
+und hoher Luftverschmutzung. 
+C5-M sehr hoch 
+(Seeklima) 
+Küstengegend und offenes Meer mit 
+hohem Salzgehalt. 
+Gebäude und Örtlichkeiten mit fast 
+ständigem Auftreten von Kondenswasser 
+und hoher Luftverschmutzung. 
+DIN EN 1999-1-4:2010-05
+
+===== PDF-SEITE 74 =====
+EN 1999-1-4:2007 + AC:2009 (D) 
+72 
+Literaturhinweise 
+[1] Weber, H.: Dach und Wand  Planen und Bauen mit Aluminium-Profiltafeln; Aluminium-Verlag- 
+Düsseldorf 1982 (in Deutsch) 
+[2] Richtlinie für die Verlegung von Aluminium-Profiltafeln; Aluminium-Merkblatt A7; Gesamtverband der 
+Aluminiumindustrie, Düsseldorf 1995 (in Deutsch) 
+[3] Verbindungen von Profiltafeln und dünnwandigen Bauteilen aus Aluminium; Aluminium-Merkblatt A9; 
+Gesamtverband der Aluminiumindustrie, Düsseldorf 1995 (in Deutsch) 
+[4] SFHF-Richtlinien für hinterlüftete Fassaden  Grundsätze für Planung, Bemessung, Konstruktion und 
+Ausführung; Schweizerischer Fachverband für hinterlüftete Fassaden; Zürich 1992 (in Deutsch und 
+Französisch) 
+[5] Directives APSFV pour façades ventilées; Principes et remarques pour l’étude, le dimensionnement, la 
+construction et l’exécution; Association professionnelle suisse pour des façades ventilées (in 
+Französisch und deutsch) 
+[6] Aluminium-Trapezprofile und ihre Verbindungen  Kommentar zur Anwendung und Konstruktion. 
+Gesamtverband der Aluminiumindustrie e. V. Am Bonneshof 5, D-40474 Düsseldorf (in Deutsch) 
+[7] Baehre, R., Wolfram, R.: Zur Schubfeldberechnung von Trapezprofilen, Stahlbau 6/1986, S. 175179 
+[8] Baehre, R., Huck, G.: Zur Berechnung der aufnehmbaren Normalkraft von Stahl-Trapezprofilen nach 
+DIN 18807 Teile 1 und 3, Stahlbau 69 (1990), Heft 8, S. 225232 
+DIN EN 1999-1-4:2010-05

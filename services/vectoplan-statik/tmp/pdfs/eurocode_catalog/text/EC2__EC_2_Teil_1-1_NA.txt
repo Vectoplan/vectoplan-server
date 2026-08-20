@@ -1,0 +1,3708 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken 
+Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau 
+National Annex  
+Nationally determined parameters  
+Eurocode 2: Design of concrete structures  
+Part 1-1: General rules and rules for buildings 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 2: Calcul des structures en béton 
+Partie 1-1: Règles générales et règles pour les bâtiments
+a
+
+===== PDF-SEITE 2 =====
+DIN EN 1992-1-1/NA:2011-01 
+Vorwort 
+Dieses Dokument wurde vom NA 005-07-01 AA Bemessung und Konstruktion“ erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1992-1-1, Eurocode 2: Bemessung und 
+Konstruktion von Stahlbeton- und Spannbetontragwerken  Teil 1-1: Allgemeine Bemessungsregeln und 
+Regeln für den Hochbau. 
+Die Europäische Norm EN 1992-1-1 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser Nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1992-1-1 (en: non-contradictory 
+complementary information, NCI). 
+Nationale Absätze werden mit vorangestelltem (NA.+lfd. Nr.)“ eingeführt. 
+Bei Bildern, Tabellen und Gleichungen, die national ergänzt werden, wird ein NA.“ vorangestellt und die 
+Nummer des vorangegangenen Elements um .1 ff.“ ergänzt (z. B. ist das zusätzliche Bild NA.6.22.1 zwischen 
+den Bildern 6.22 und 6.23 angeordnet.) 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1992-1-1:2011-01. 
+DIN EN 1992-1-1 und dieser Nationale Anhang DIN EN 1992-1-1/NA:2011-01 ersetzen DIN 1045-1:2008-08. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (EN und ETA) 
+Im Nationalen Anhang werden Europäische Technische Zulassungen und nationale allgemeine 
+bauaufsichtliche Zulassungen in Bezug genommen. Diese werden nachfolgend als Zulassungen bezeichnet. 
+Soweit in DIN EN 1992-1-1 Europäische Technische Zulassungen in Bezug genommen werden, dürfen in 
+Deutschland auch allgemeine bauaufsichtliche Zulassungen verwendet werden. 
+In Deutschland dürfen Europäische Technische Zulassungen in bestimmten Fällen (z. B. nach ETAG 013) nur 
+in Verbindung mit einer allgemeinen bauaufsichtlichen Zulassung für die Anwendung verwendet werden. 
+Änderungen 
+Gegenüber DIN 1045-1:2008-08 wurden folgende Änderungen vorgenommen: 
+a) Übernahme der Regelungen aus DIN 1045-1:2008-08 zur nationalen Anwendung von DIN EN 1992-1-1. 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1992-1-1/NA:2011-01 
+Frühere Ausgaben 
+DIN 1045: 1925-09, 1932-04, 1937-05, 1943xxx, 1959-11, 1972-01, 1978-12, 1988-07 
+DIN 1045-1: 2001-07, 2008-08 
+DIN 1045-1 Berichtigung 1: 2002-07 
+DIN 1045-1 Berichtigung 2: 2005-06 
+DIN 1046: 1925-09, 1932-04, 1935-12, 1943x 
+DIN 1047: 1925-09, 1932-04, 1937-05, 1943x 
+DIN 4028: 1938-10 
+DIN 4030:1954-09 
+DIN 4163: 1951-02 
+DIN 4219-2: 1979-12 
+DIN 4225: 1943, 1951xx-02, 1960-07 
+DIN 42271: 1953xx-10, 1979-12, 1988-07 
+DIN 4227-1/A1: 1995-12 
+DIN 4227-2: 1984-05 
+DIN V 4227-4: 1985-12 
+DIN 4227-4: 1986-02 
+DIN 4229: 1950-07 
+DIN 4233: 1951-03, 1953x-12 
+DIN 4420: 1952x-01 
+DIN V 18932-1: 1991-10 
+DIN V ENV 1992-1-1: 1992-06 
+DIN V ENV 1992-1-3: 1994-12 
+DIN V ENV 1992-1-4: 1994-12 
+DIN V ENV 1992-1-5: 1994-12 
+DIN V ENV 1992-1-6: 1994-12 
+DIN EN 1992-1-1: 2005-10 
+DIN EN 1992-1-1 Berichtigung 1: 2010-01 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1992-1-1/NA:2011-01 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für den Entwurf, die Berechnung und die 
+Bemessung von Tragwerken aus Stahlbeton und Spannbeton aus normalen und leichten Gesteinskörnungen 
+und zusätzlich auf den Hochbau abgestimmte Regeln, die bei der Anwendung von DIN EN 1992-1-1 in 
+Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1992-1-1:2011-01. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1992-1-1:2011-01 
+NA 2.1 Allgemeines 
+DIN EN 1992-1-1 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus (NDP): 
+ 2.3.3 (3) 
+ 2.4.2.1 (1) 
+ 2.4.2.2 (1) 
+ 2.4.2.2 (2) 
+ 2.4.2.2 (3) 
+ 2.4.2.3 (1) 
+ 2.4.2.4 (1) 
+ 2.4.2.4 (2) 
+ 2.4.2.5 (2) 
+ 3.1.2 (2)P 
+ 3.1.2 (4) 
+ 3.1.6 (1)P 
+ 3.1.6 (2)P 
+ 3.2.2 (3)P 
+ 3.2.7 (2) 
+ 3.3.4 (5) 
+ 3.3.6 (7) 
+ 4.4.1.2 (3) 
+ 4.4.1.2 (5) 
+ 4.4.1.2 (6) 
+ 4.4.1.2 (7) 
+ 4.4.1.2 (8) 
+ 4.4.1.2 (13) 
+ 4.4.1.3 (1)P 
+ 4.4.1.3 (3) 
+ 4.4.1.3 (4) 
+ 5.1.3 (1)P 
+ 5.2 (5) 
+ 5.5 (4) 
+ 5.6.3 (4) 
+ 5.8.3.1 (1) 
+ 5.8.3.3 (1) 
+ 5.8.3.3 (2) 
+ 5.8.5 (1) 
+ 5.8.6 (3) 
+ 5.10.1 (6) 
+ 5.10.2.1 (1)P 
+ 5.10.2.1 (2) 
+ 5.10.2.2 (4) 
+ 5.10.2.2 (5) 
+ 5.10.3 (2) 
+ 5.10.8 (2) 
+ 5.10.8 (3) 
+ 5.10.9 (1)P 
+ 6.2.2 (1) 
+ 6.2.2 (6) 
+ 6.2.3 (2) 
+ 6.2.3 (3) 
+ 6.2.4 (4) 
+ 6.2.4 (6) 
+
+ 6.4.3 (6) 
+ 6.4.4 (1) 
+ 6.4.5 (3) 
+ 6.4.5 (4) 
+ 6.5.2 (2) 
+ 6.5.4 (4) 
+ 6.5.4 (6) 
+ 6.8.4 (1) 
+ 6.8.4 (5) 
+ 6.8.6 (1) 
+ 6.8.6 (3) 
+ 6.8.7 (1) 
+ 7.2 (2) 
+ 7.2 (3) 
+ 7.2 (5) 
+ 7.3.1 (5) 
+ 7.3.2 (4) 
+ 7.3.3 (2) 
+ 7.3.4 (3) 
+ 7.4.2 (2) 
+ 8.2 (2) 
+ 8.3 (2) 
+ 8.6 (2) 
+ 8.8 (1) 
+ 9.2.1.1 (1) 
+ 9.2.1.1 (3) 
+ 9.2.1.2 (1) 
+ 9.2.1.4 (1) 
+ 9.2.2 (4) 
+ 9.2.2 (5) 
+ 9.2.2 (6) 
+ 9.2.2 (7) 
+ 9.2.2 (8) 
+ 9.3.1.1(3) 
+ 9.5.2 (1) 
+ 9.5.2 (2) 
+ 9.5.2 (3) 
+ 9.5.3 (3) 
+ 9.6.2 (1) 
+ 9.6.3 (1) 
+ 9.7 (1) 
+ 9.8.1 (3) 
+ 9.8.2.1 (1) 
+ 9.8.3 (1) 
+ 9.8.3 (2) 
+ 9.8.4 (1) 
+ 9.8.5 (3) 
+ 9.10.2.2 (2) 
+ 9.10.2.3 (3) 
+ 9.10.2.3 (4) 
+ 9.10.2.4 (2) 
+ 11.3.5 (1)P 
+ 11.3.5 (2)P 
+ 11.3.7 (1) 
+ 11.6.1 (1) 
+ 11.6.2 (1) 
+ 11.6.4.1 (1) 
+ 12.3.1 (1) 
+ 12.6.3 (2) 
+ A.2.1 (1) 
+ A.2.1 (2) 
+ A.2.2 (1) 
+ A.2.2 (2) 
+ A.2.3 (1) 
+ C.1 (1) 
+ C.1 (3) 
+ E.1 (2) 
+ J.1 (3) 
+ J.2.2 (2) 
+ J.3 (2) 
+ J.3 (3) 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1992-1-1/NA:2011-01 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1992-1-1:2011-01. Diese sind durch ein vorangestelltes NCI“ (en: non-contradictory complementary 
+information) gekennzeichnet. 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1992-1-1 bzw. ergänzt diese. 
+NCI zu 1.2.2 
+NA Normen der Reihe DIN 488, Betonstahl
+NA DIN 1045-2:2008-08, Tragwerke aus Beton, Stahlbeton und Spannbeton  Teil 2: Beton  Festlegung, 
+Eigenschaften, Herstellung und Konformität  Anwendungsregeln zu DIN EN 206-1
+NA DIN 1045-3, Tragwerke aus Beton, Stahlbeton und Spannbeton  Teil 3: Bauausführung1)
+NA DIN 1045-4, Tragwerke aus Beton, Stahlbeton und Spannbeton  Teil 4: Ergänzende Regeln für die 
+Herstellung und die Konformität von Fertigteilen
+NA DIN 1055-100, Einwirkungen auf Tragwerke  Teil 100: Grundlagen der Tragwerksplanung, Sicherheits-
+konzept und Bemessungsregeln2)
+NA DIN 18516-1, Außenwandbekleidungen, hinterlüftet  Teil 1: Anforderungen, Prüfgrundsätze
+NA DIN EN 206-1, Beton  Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität
+NA DIN EN 1536, Ausführung von besonderen geotechnischen Arbeiten (Spezialtiefbau)  Bohrpfähle 
+NA E DIN EN 13670, Ausführung von Tragwerken aus Beton
+NA DIN EN ISO 17660-1, Schweißen  Schweißen von Betonstahl  Teil 1: Tragende Schweißver-
+bindungen
+NA ISO 6784, Concrete  Determination of static modulus of elasticity in compression 
+NA DAfStb-Heft 600, Erläuterungen zu Eurocode 2 (DIN EN 1992-1-1) 
+NA DBV-Merkblatt, Abstandhalter 3)
+NA DBV-Merkblatt, Betondeckung und Bewehrung 3)
+NA DBV-Merkblatt, Unterstützungen 3) 
+1) Gilt nur bis zur bauaufsichtlichen Einführung von DIN EN 13670. 
+2) Gilt nur bis zur bauaufsichtlichen Einführung von DIN EN 1990. 
+3) Zu beziehen bei: Deutscher Beton und Bautechnikverein e.V., Kurfürstenstrasse 129, 10785 Berlin. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 1.4 
+Die Prinzipien (mit P nach der Absatznummer gekennzeichnet) enthalten: 
+ allgemeine Festlegungen, Definitionen und Angaben, die einzuhalten sind, 
+ Anforderungen und Rechenmodelle, für die keine Abweichungen erlaubt sind, sofern dies nicht 
+ausdrücklich angegeben ist. 
+Die Anwendungsregeln (ohne P) sind allgemein anerkannte Regeln, die den Prinzipien folgen und deren 
+Anforderungen erfüllen. Abweichungen hiervon sind zulässig, wenn sie mit den Prinzipien übereinstimmen 
+und hinsichtlich der nach dieser Norm erzielten Tragfähigkeit, Gebrauchstauglichkeit und Dauerhaftigkeit 
+gleichwertig sind. 
+NCI Zu 1.5.2 
+NA 1.5.2.5 üblicher Hochbau. Hochbau, der für vorwiegend ruhende, gleichmäßig verteilte Nutzlasten bis 
+5,0 kN/m², gegebenenfalls auch für Einzellasten bis 7,0 kN und für PKW bemessen ist. 
+NA 1.5.2.6 vorwiegend ruhende Einwirkung. Statische Einwirkung oder nicht ruhende Einwirkung, die 
+jedoch für die Tragwerksplanung als ruhende Einwirkung betrachtet werden darf. 
+NA 1.5.2.7 nicht vorwiegend ruhende Einwirkung. Stoßende Einwirkung oder sich häufig 
+wiederholende Einwirkung, die eine vielfache Beanspruchungsänderung während der Nutzungsdauer des 
+Tragwerks oder des Bauteils hervorruft und die für die Tragwerksplanung nicht als ruhende Einwirkung 
+angesehen werden darf (z. B. Kran-, Kranbahn-, Gabelstaplerlasten, Verkehrslasten auf Brücken). 
+NA 1.5.2.8 Normalbeton. Beton mit einer Trockenrohdichte von mehr als 2 000 kg/m³, höchstens aber 
+2 600 kg/m³.
+NA 1.5.2.9 Leichtbeton. Gefügedichter Beton mit einer Trockenrohdichte von nicht weniger als 
+800 kg/m³ und nicht mehr als 2 000 kg/m³. Er wird unter Verwendung von grober leichter Gesteinskörnung 
+hergestellt. 
+NA 1.5.2.10 Schwerbeton. Beton mit einer Trockenrohdichte von mehr als 2 600 kg/m³. 
+NA 1.5.2.11 hochfester Beton. Beton mit Festigkeitsklasse C55/67 bzw. LC55/60. 
+NA 1.5.2.12 Spannglied im sofortigen Verbund. Im Betonquerschnitt liegendes Zugglied aus Spann-
+stahl, das vor dem Betonieren im Spannbett gespannt wird. Der wirksame Verbund zwischen Beton und 
+Spannglied entsteht nach dem Betonieren mit dem Erhärten des Betons. 
+NA 1.5.2.13 Spannglied im nachträglichen Verbund. Im Betonquerschnitt im Hüllrohr liegendes 
+Zugglied aus Spannstahl, das beim Vorspannen gegen den bereits erhärteten Beton gespannt und durch 
+Ankerkörper verankert wird. Der wirksame Verbund zwischen Beton und Spannglied entsteht nach dem 
+Einpressen des Mörtels in das Hüllrohr mit dem Erhärten des Einpressmörtels. 
+NA 1.5.2.14 Monolitze. Werksmäßig korrosionsgeschützte Stahllitze in einer fettverpressten Kunst-
+stoffhülle, in der sich jene in Längsrichtung frei bewegen kann. 
+NA 1.5.2.15 Umlenkelement. Dient zur Führung der externen Spannglieder. An ihm werden Reibungs- 
+und Umlenkkräfte in die Konstruktion eingeleitet. Es kann halbseitig offen (Sattel) oder vollständig von Beton 
+umgeben sein (Durchdringung). 
+NA 1.5.2.16 Verbundbauteil. Bauteil aus einem Fertigteil und einer Ortbetonergänzung mit Verbindungs-
+elementen oder ohne Verbindungselemente. 
+NA 1.5.2.17 vorwiegend auf Biegung beanspruchtes Bauteil. Bauteil mit einer bezogenen Lastausmitte 
+im Grenzzustand der Tragfähigkeit von ed / h 3,5. 
+NA 1.5.2.18 Druckglied. Vorwiegend auf Druck beanspruchtes, stab- oder flächenförmiges Bauteil mit 
+einer bezogenen Lastausmitte im Grenzzustand der Tragfähigkeit von ed / h < 3,5. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1992-1-1/NA:2011-01 
+NA 1.5.2.19 Balken, Plattenbalken. Stabförmiges, vorwiegend auf Biegung beanspruchtes Bauteil mit 
+einer Stützweite von mindestens der dreifachen Querschnittshöhe und mit einer Querschnitts- bzw. Stegbreite 
+von höchstens der fünffachen Querschnittshöhe. 
+NA 1.5.2.20 Platte. Ebenes, durch Kräfte rechtwinklig zur Mittelfläche vorwiegend auf Biegung 
+beanspruchtes, flächenförmiges Bauteil, dessen kleinste Stützweite mindestens das Dreifache seiner 
+Bauteildicke beträgt und mit einer Bauteilbreite von mindestens der fünffachen Bauteildicke. 
+NA 1.5.2.21 Stütze. Stabförmiges Druckglied, dessen größere Querschnittabmessung das Vierfache der 
+kleineren Abmessung nicht übersteigt. 
+NA 1.5.2.22 Scheibe, Wand. Ebenes, durch Kräfte parallel zur Mittelfläche beanspruchtes, 
+flächenförmiges Bauteil, dessen größere Querschnittsabmessung das Vierfache der kleineren übersteigt. 
+NA 1.5.2.23 wandartiger bzw. scheibenartiger Träger. Ebenes, durch Kräfte parallel zur Mittelfläche 
+vorwiegend auf Biegung beanspruchtes, scheibenartiges Bauteil, dessen Stützweite weniger als das 
+Dreifache seiner Querschnittshöhe beträgt. 
+NA 1.5.2.24 Betondeckung. Abstand zwischen der Oberfläche eines Bewehrungsstabes, eines Spann-
+glieds im sofortigen Verbund oder des Hüllrohrs eines Spannglieds im nachträglichen Verbund und der 
+nächstgelegenen Betonoberfläche. 
+NA 1.5.2.25 Dekompression. Grenzzustand, bei dem ein Teil des Betonquerschnitts unter der 
+maßgebenden Einwirkungskombination unter Druckspannungen steht. 
+NA 1.5.2.26 direkte und indirekte Lagerung. Eine direkte Lagerung ist gegeben, wenn der Abstand der 
+Unterkante des gestützten Bauteils zur Unterkante des stützenden Bauteils größer ist als die Höhe des 
+gestützten Bauteils. Andernfalls ist von einer indirekten Lagerung auszugehen (siehe Bild NA.1.1). 
+Legende 
+A stützendes Bauteil 
+B gestütztes Bauteil 
+(h1  h2) h2 direkte Lagerung 
+(h1  h2) < h2 indirekte Lagerung 
+Bild NA.1.1  Direkte und indirekte Lagerung 
+NCI Zu 1.6 Formelzeichen 
+dg Durchmesser des Größtkorns einer Gesteinskörnung 
+ANMERKUNG Größtkorn dg wird in DIN EN 206-1 mit Dmax bezeichnet. 
+u0 Umfang der Lasteinleitungsfläche Aload beim Durchstanzen
+u1 Umfang des kritischen Rundschnitts beim Durchstanzen
+uout Umfang des äußeren Rundschnitts bei dem Durchstanzbewehrung nicht mehr erforderlich ist 
+NCI Zu 2.3.1.2 (3) 
+Allgemein gilt Q,T = 1,5. 
+Bei linear-elastischer Schnittgrößenermittlung mit den Steifigkeiten der ungerissenen Querschnitte und dem 
+mittleren Elastizitätsmodul Ecm darf für Zwang der Teilsicherheitsbeiwert Q,T = 1,0 angesetzt werden. 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 2.3.1.3 (4) 
+Allgemein gilt Q,set = 1,5. 
+Bei linear-elastischer Schnittgrößenermittlung mit den Steifigkeiten der ungerissenen Querschnitte und dem 
+mittleren Elastizitätsmodul Ecm darf für Setzungen der Teilsicherheitsbeiwert Q,set = 1,0 angesetzt werden. 
+NDP Zu 2.3.3 (3) 
+djoint muss im Einzelfall bestimmt werden. 
+NCI Zu 2.3.4.2 
+ANMERKUNG Dieser Abschnitt gilt sinngemäß auch für Ortbeton-Verdrängungspfähle. 
+NCI Zu 2.3.4.2 (1)P 
+ANMERKUNG Einflüsse aus der Betonierung gegen den Boden können durch erhöhte Betondeckungen berücksichtigt 
+werden, siehe DIN EN 1536. 
+NCI Zu 2.3.4.2 (2) 
+ANMERKUNG Die Regelungen in DIN EN 1536 sind als weitere Angaben“ im Sinne von 2.3.4.2 (2) zu verstehen. 
+Absatz (2) muss daher nicht angewendet werden, wenn die Pfähle nach DIN EN 1536 hergestellt werden. 
+NDP Zu 2.4.2.1 (1) 
+Es gilt der empfohlene Wert SH = 1,0. 
+NDP Zu 2.4.2.2 (1) 
+allgemein: P = P,fav = P,unfav = 1,0 
+NDP Zu 2.4.2.2 (2) 
+P,unfav = 1,0 
+Bei einem nichtlinearen Verfahren der Schnittgrößenermittlung ist ein oberer oder ein unterer Grenzwert für P
+anzusetzen, wobei die Rissbildung oder die Fugenöffnung (Segmentbauweise) zu berücksichtigen sind: 
+P,unfav = 1,2 und P,fav = 0,83 (der jeweils ungünstigere Wert ist anzusetzen). 
+NDP Zu 2.4.2.2 (3) 
+Für die Bestimmung von Spaltzugbewehrung ist P,unfav = 1,35 (ständige Last) zu verwenden. 
+NDP Zu 2.4.2.3 (1) 
+Es gilt der empfohlene Wert F,fat = 1,0 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 2.4.2.4 (1) 
+Tabelle NA.2.1  Teilsicherheitsbeiwerte für Baustoffe in den Grenzzuständen der Tragfähigkeit 
+Bemessungssituationen C für Beton S für Betonstahl oder 
+Spannstahl 
+ständig und 
+vorübergehend 
+1,5 1,15 
+außergewöhnlich 1,3 1,0 
+NDP Zu 2.4.2.4 (2) 
+Es gelten die empfohlenen Werte C = 1,0 und S = 1,0. 
+NDP Zu 2.4.2.5 (2) 
+Bei Bohrpfählen, deren Herstellung nach DIN EN 1536 erfolgt, ist für kf = 1,0 einzusetzen. In allen anderen 
+Fällen gilt: kf = 1,1. 
+NCI Zu 2.6 (2) 
+ANMERKUNG 1 Der informative Anhang G ist in Deutschland nicht verbindlich. 
+NCI Zu 2.8 
+NA.2.8 Bautechnische Unterlagen 
+NA.2.8.1 Umfang der bautechnischen Unterlagen 
+(1) Zu den bautechnischen Unterlagen gehören die für die Ausführung des Bauwerks notwendigen 
+Zeichnungen, die statische Berechnung und  wenn für die Bauausführung erforderlich  eine ergänzende 
+Projektbeschreibung sowie bauaufsichtlich erforderliche Verwendbarkeitsnachweise für Bauprodukte bzw. 
+Bauarten (z. B. allgemeine bauaufsichtliche Zulassungen). 
+(2) Zu den bautechnischen Unterlagen gehören auch Angaben über den Zeitpunkt und die Art des 
+Vorspannens, das Herstellungsverfahren sowie das Spannprogramm. 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1992-1-1/NA:2011-01 
+NA.2.8.2 Zeichnungen 
+(1)P Die Bauteile, die einzubauende Betonstahlbewehrung und die Spannglieder sowie alle Einbauteile sind 
+auf den Zeichnungen eindeutig und übersichtlich darzustellen und zu bemaßen. Die Darstellungen müssen 
+mit den Angaben in der statischen Berechnung übereinstimmen und alle für die Ausführung der Bauteile und 
+für die Prüfung der Berechnungen erforderlichen Maße enthalten. 
+(2)P Auf zugehörige Zeichnungen ist hinzuweisen. Bei nachträglicher Änderung einer Zeichnung sind alle von 
+der Änderung ebenfalls betroffenen Zeichnungen entsprechend zu berichtigen. 
+(3)P Auf den Bewehrungszeichnungen sind insbesondere anzugeben: 
+ die erforderliche Festigkeitsklasse, die Expositionsklassen und weitere Anforderungen an den Beton, 
+ die Betonstahlsorte und die Spannstahlsorte, 
+ Anzahl, Durchmesser, Form und Lage der Bewehrungsstäbe; gegenseitiger Abstand und 
+Übergreifungslängen an Stößen und Verankerungslängen; Anordnung, Maße und Ausbildung von 
+Schweißstellen; Typ und Lage der mechanischen Verbindungsmittel, 
+ Rüttelgassen, Lage von Betonieröffnungen, 
+ das Herstellungsverfahren der Vorspannung; Anzahl, Typ und Lage der Spannglieder sowie der 
+Spanngliedverankerungen und Spanngliedkopplungen sowie Anzahl, Durchmesser, Form und Lage der 
+zugehörigen Betonstahlbewehrung; Typ und Durchmesser der Hüllrohre; Angaben zum Einpressmörtel, 
+ bei gebogenen Bewehrungsstäben die erforderlichen Biegerollendurchmesser, 
+ Maßnahmen zur Lagesicherung der Betonstahlbewehrung und der Spannglieder sowie Anordnung, Maße 
+und Ausführung der Unterstützungen der oberen Betonstahlbewehrungslage und der Spannglieder, 
+ das Verlegemaß cv der Bewehrung, das sich aus dem Nennmaß der Betondeckung cnom ableitet, sowie 
+das Vorhaltemaß cdev der Betondeckung, 
+ die Fugenausbildung, 
+ gegebenenfalls besondere Maßnahmen zur Qualitätssicherung. 
+NA.2.8.3 Statische Berechnungen 
+(1)P Das Tragwerk und die Lastabtragung sind zu beschreiben. Die Tragfähigkeit und die 
+Gebrauchstauglichkeit der baulichen Anlage und ihrer Bauteile sind in der statischen Berechnung 
+übersichtlich und leicht prüfbar nachzuweisen. Mit numerischen Methoden erzielte Rechenergebnisse sollten 
+grafisch dargestellt werden. 
+(2) Für Regeln, die von den in dieser Norm angegebenen Anwendungsregeln abweichen, und für 
+abweichende außergewöhnliche Gleichungen ist die Fundstelle anzugeben, sofern diese allgemein 
+zugänglich ist, sonst sind die Ableitungen so weit zu entwickeln, dass ihre Richtigkeit geprüft werden kann. 
+NA.2.8.4 Baubeschreibung 
+(1)P Angaben, die für die Bauausführung oder für die Prüfung der Zeichnungen oder der statischen 
+Berechnung notwendig sind, aber aus den Unterlagen nach NA.2.8.2 und NA.2.8.3 nicht ohne Weiteres 
+entnommen werden können, müssen in einer Baubeschreibung enthalten und erläutert sein. Dazu gehören 
+auch die erforderlichen Angaben für Beton mit gestalteten Ansichtsflächen. 
+NCI Zu 3.1.1 
+(NA.3) 3.1 und 11.3.1 gelten für Beton nach DIN EN 206-1 in Verbindung mit DIN 1045-2. 
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 3.1.2 (2)P 
+Cmax = C100/115 
+ANMERKUNG Für die Herstellung von Beton der Festigkeitsklassen C90/105 und C100/115 bedarf es nach 
+DIN 1045-2 weiterer auf den Verwendungszweck abgestimmter Nachweise. 
+NDP Zu 3.1.2 (4) 
+Der Wert kt muss entsprechend der Festigkeitsentwicklung im Einzelfall festgelegt werden. 
+NCI Zu 3.1.2 (6) 
+Für hochfeste Betone gilt für alle Zemente s = 0,20. 
+NCI Zu 3.1.3 
+Eine Spalte für C100/115 in Tabelle 3.1 wird ergänzt: 
+fck N/mm² 100 
+fck,cube N/mm² 115 
+fcm N/mm² 108 
+fctm N/mm² 5,2 
+fctk;0,05 N/mm² 3,7 
+fctk;0,95 N/mm² 6,8 
+Ecm (10 3) N/mm² 45 
+c1  2,8 
+cu1  2,8 
+c2  2,6 
+cu2  2,6 
+n  1,4 
+c3  2,4 
+cu3  2,6 
+Die Fußnoten 1) an fck = 12 und 2) an fck = 100 werden ergänzt: 
+1) Die Festigkeitsklasse C12/15 darf nur bei vorwiegend ruhenden Einwirkungen verwendet werden. 
+2) Die analytischen Beziehungen interpolieren nur bis C90/105. Die Werte für C100/115 wurden unabhängig davon festgelegt. 
+NCI Zu 3.1.4 (2) 
+ANMERKUNG Die Endkriechzahlen und Schwinddehnungen dürfen als zu erwartende Mittelwerte angesehen werden. 
+Die mittleren Variationskoeffizienten für die Vorhersage der Endkriechzahl und der Schwinddehnung liegen bei etwa 30 %. 
+Für gegenüber Kriechen und Schwinden empfindliche Tragwerke sollte die mögliche Streuung dieser Werte berücksichtigt 
+werden. 
+11
+
+===== PDF-SEITE 12 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 3.1.4 (5) 
+ANMERKUNG u  bei Hohlkästen einschließlich 50 % des inneren Umfangs. 
+NCI Zu 3.1.4 (6) 
+ANMERKUNG zu Tabelle 3.2: 
+Weitere Nennwerte für die unbehinderte Trocknungsschwinddehnung cd,0 sind für die Zementklassen S, N, R 
+und die Luftfeuchten RH = 40 % bis RH = 90 % im Anhang B als Tabellen NA.B.1 bis NA.B.3 ergänzt. 
+NCI Zu 3.1.5 (1) 
+Für Rotationsnachweise nach 5.6.3, für das Allgemeine Verfahren Theorie II. Ordnung nach 5.8.6 oder für 
+nichtlineare Verfahren nach 5.7, sind für fcm die dort angegebenen Werte zu verwenden. 
+NCI Zu 3.1.5 (2) 
+D.h. sie müssen dem in Absatz (1) beschriebenen Ansatz gleichwertig sein. 
+NDP Zu 3.1.6 (1)P 
+cc = 0,85 
+In begründeten Fällen (z. B. Kurzzeitbelastung) dürfen auch höhere Werte für cc mit cc 1 angesetzt 
+werden. 
+NDP Zu 3.1.6 (2)P 
+ct = 0,85 
+ct = 1,0 bei Ermittlung der Verbundspannungen fbd nach 8.4.2 (2) 
+NCI Zu 3.1.7 (3) 
+Die Gleichungen (3.20) und (3.22) dürfen auch bis fck 100 N/mm² verwendet werden. 
+NCI Zu 3.2.1 (1)P 
+Dieser Abschnitt gilt für Betonstahlprodukte im Lieferzustand nach den Normen der Reihe DIN 488 oder nach 
+allgemeinen bauaufsichtlichen Zulassungen. Für Betonstahl, der in Ringen produziert wurde, gelten die 
+Anforderungen für den Zustand nach dem Richten. 
+NCI Zu 3.2.1 (3)P 
+Bei der Verwendung anderer Betonstähle, die nicht den Normen der Reihe DIN 488 entsprechen, sind 
+Zulassungen erforderlich. 
+NCI Zu 3.2.1 (4)P 
+Betonstähle nach allgemeiner bauaufsichtlicher Zulassung dürfen für Betone ab C70/85 nur verwendet 
+werden, sofern dies in der Zulassung geregelt ist. 
+ANMERKUNG Die charakteristischen Streckgrenzen fyk und Re nach den Normen der Reihe DIN 488 sind identisch. 
+12
+
+===== PDF-SEITE 13 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 3.2.1 (5) 
+ANMERKUNG Für die Verwendung von Gitterträgern sind die jeweiligen allgemeinen bauaufsichtlichen Zulassungen 
+zu beachten. 
+NCI Zu 3.2.2 (1)P 
+Sofern relevant, gelten die Eigenschaften der Betonstähle gleichermaßen für Zug- und Druckbeanspruchung. 
+Für Stähle mit Eigenschaften, die von den Normen der Reihe DIN 488 abweichen, können andere als die in 
+dieser Norm angegebenen Festlegungen und konstruktiven Regeln notwendig sein. 
+Für Betonstähle nach Zulassungen sind die Duktilitätsmerkmale (normalduktil oder hochduktil) darin geregelt. 
+Falls dort keine entsprechenden Festlegungen getroffen sind, sind die Betonstähle als normalduktil (A) 
+einzustufen. 
+Soweit in den Normen der Reihe DIN 488 oder in den Zulassungen nicht abweichend festgelegt, darf für die 
+Bemessung die Wärmedehnzahl mit 
+ = 10 10 6 K 1 angenommen werden. 
+ANMERKUNG 1 gilt in Deutschland nicht. 
+Zu ANMERKUNG 2 wird ergänzt: Maßgebend sind Produktnormen für Betonstahl und Betonfertigteile. 
+NDP Zu 3.2.2 (3)P 
+Die Anwendungsregeln in diesem Eurocode gelten für Betonstähle mit der Streckgrenze fyk = 500 N/mm². 
+NCI Zu 3.2.2 (5) 
+Anmerkung wird ersetzt: 
+ANMERKUNG Die entsprechenden Quantilwerte für die bezogene Rippenfläche fR sind den Normen der Reihe DIN 488 
+oder den allgemeinen bauaufsichtlichen Zulassungen zu entnehmen. 
+NCI Zu 3.2.2 (6)P 
+Anmerkung wird ersetzt: 
+ANMERKUNG Die Normen der Reihe DIN 488 enthalten die Anforderungen an die Biegefähigkeit von Betonstahl-
+erzeugnissen. 
+NCI Zu 3.2.4 (1)P 
+Die Duktilität wird ggf. auch durch das Verhältnis der im Zugversuch ermittelten Streckgrenze zum Nennwert 
+der Streckgrenze fy,ist / fyk definiert (siehe DIN 488-1). 
+NCI Zu 3.2.4 (2) 
+ANMERKUNG wird ersetzt: 
+ANMERKUNG Die Werte für k = ( ft / fy)k, uk und ggf. fy,ist / fyk für die Duktilitätsklassen A und B sind in DIN 488 
+angegeben. Betonstähle der Duktilitätsklasse C werden durch allgemeine bauaufsichtliche Zulassungen geregelt. 
+13
+
+===== PDF-SEITE 14 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 3.2.5 (1)P 
+Betonstähle müssen eine Schweißeignung aufweisen, die für die vorgesehene Verbindung und die in 
+Tabelle 3.4 genannten Schweißverfahren ausreicht. 
+NCI Zu 3.2.5 (1)P, Tabelle 3.4 
+Das Widerstandspunktschweißen ist bei nicht vorwiegend ruhenden Einwirkungen nicht zugelassen. Zu 
+beachten ist DIN EN ISO 17660-1. 
+Es gelten folgende Kurzbezeichnungen und Ordnungsnummern der Schweißverfahren nach 
+DIN EN ISO 4063: 
+Tabelle NA.3.4.1  Kurzbezeichnungen und Ordnungsnummern der Schweißverfahren nach 
+DIN EN ISO 4063 
+Schweißverfahren Kurzbezeichnung Ordnungsnummer 
+Abbrennstumpfschweißen RA 24 
+Lichtbogenhandschweißen E 111 
+Metall-Lichtbogenschweißen MF 114 
+Metall-Aktivgasschweißen MAG 
+135 
+136 
+Reibschweißen FR 42 
+Widerstandspunktschweißen RP 21 
+Ergänzung zu Fußnote 1): 
+Als näherungsweise gleich gelten benachbarte Stabdurchmesser, die sich nur durch eine Durchmessergröße 
+unterscheiden. 
+NCI Zu 3.2.6 (1)P 
+Die Kennwerte der Ermüdungsfestigkeit für Betonstahlprodukte können DIN 488-1 oder einer allgemeinen 
+bauaufsichtlichen Zulassung entnommen werden. 
+NDP Zu 3.2.7 (2) 
+ud = 0,025 
+Für B500A und B500B darf für ftk,cal = 525 N/mm² (rechnerische Zugfestigkeit bei ud = 0,025) angenommen 
+werden. 
+NCI Zu 3.2.7 (2) 
+Anmerkung 2 wird ersetzt: 
+ANMERKUNG 2 Der Mindestwert für ( ft / fy)k ist in DIN 488-1 enthalten. 
+14
+
+===== PDF-SEITE 15 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 3.2.7 
+(NA.5) Bei nichtlinearen Verfahren der Schnittgrößenermittlung ist in der Regel eine wirklichkeitsnahe 
+Spannungs-Dehnungs-Linie nach Bild NA.3.8.1 mit s uk anzusetzen. 
+Vereinfachend darf auch ein bilinear idealisierter Verlauf der Spannungs-Dehnungs-Linie (siehe Bild NA.3.8.1 
+angenommen werden. Dabei darf für fy der Rechenwert fyR nach den NCI zu 5.7 angenommen werden. 
+Legende 
+1 idealisierter Verlauf 
+Bild NA.3.8.1  Spannungs-Dehnungslinie des Betonstahls für die Schnittgrößenermittlung 
+NCI Zu 3.3.1 (1)P 
+Für die Spannstähle, das Herstellungsverfahren, die Eigenschaften, die Prüfverfahren und das Verfahren zum 
+Übereinstimmungsnachweis gelten bis zur bauaufsichtlichen Einführung von DIN EN 10138 die Festlegungen 
+der allgemeinen bauaufsichtlichen Zulassungen. 
+NCI Zu 3.3.1 (3) 
+Es gelten die Festlegungen der Zulassungen. 
+NCI Zu 3.3.1 (4) 
+Die Anforderungen gelten für das Erzeugnis im Lieferzustand. Es gelten die Festlegungen der Zulassungen. 
+NCI Zu 3.3.2 (4)P 
+Es gelten die Festlegungen der Zulassungen. 
+NDP Zu 3.3.4 (5) 
+Es gilt der empfohlene Wert k = 1,1. 
+15
+
+===== PDF-SEITE 16 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 3.3.4 
+(NA.6) Es darf im Allgemeinen angenommen werden, dass Spannglieder im nachträglichen Verbund und 
+Spannglieder ohne Verbund eine hohe Duktilität und Spannglieder im sofortigen Verbund eine normale 
+Duktilität aufweisen. 
+NDP Zu 3.3.6 (7) 
+ud = p
+(0) + 0,025 0,9 uk
+Dabei ist p
+(0) die Vordehnung des Spannstahls. 
+Das Verhältnis fp0,1k / fpk ist der Zulassung des Spannstahls bzw. DIN EN 10138 zu entnehmen. 
+NCI Zu 3.3.6 
+(NA.8) Für die Bemessung darf die Wärmedehnzahl mit = 10 10-6 K-1 angenommen werden. 
+(NA.9) Bei nichtlinearen Verfahren der Schnittgrößenermittlung ist in der Regel eine wirklichkeitsnahe 
+Spannungs-Dehnungs-Linie nach Bild NA.3.10.1 anzunehmen. Vereinfachend darf der idealisierte bilineare 
+Verlauf der Spannungs-Dehnungs-Linie nach Bild NA.3.10.1 angesetzt werden. Hierbei dürfen für fp0,1 und fp
+die Rechenwerte fp0,1R bzw. fpR nach den NCI zu 5.7 angenommen werden. 
+Legende 
+1 idealisierter Verlauf 
+Bild NA.3.10.1  Spannungs-Dehnungslinie des Spannstahls für die Schnittgrößenermittlung 
+NCI Zu 3.4.1 
+Abschnitt wird wie folgt ersetzt: 
+(1)P Für die Verwendung von Spannverfahren in tragenden Bauteilen ist stets eine allgemeine 
+bauaufsichtliche Zulassung erforderlich. 
+NCI Zu 3.4.2.2 (1) 
+Die Verankerungen und Umlenkstellen müssen der Zulassung für das verwendete Spannverfahren 
+entsprechen. 
+16
+
+===== PDF-SEITE 17 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 4.1(4) 
+ANMERKUNG wird ersetzt: 
+ANMERKUNG Die Mindestbetondruckfestigkeitsklassen sind im normativen Anhang E festgelegt. 
+NCI Zu 4.2, Tabelle 4.1 
+Zeile 1: X0  sehr geringe Luftfeuchte bedeutet RH 
+ 30 %. 
+Zeile 3: XD3  Ausführung von Parkdecks nur mit zusätzlichen Maßnahmen (z. B. rissüberbrückende 
+Beschichtung, siehe DAfStb-Heft 600) 
+ANMERKUNG 2 Die Expositionsklasse XM wird in 4.4.1.2 (13) definiert. 
+ANMERKUNG 3 Die Feuchteangaben beziehen sich auf den Zustand innerhalb der Betondeckung der Bewehrung. Im 
+Allgemeinen kann angenommen werden, dass die Bedingungen in der Betondeckung den Umgebungsbedingungen des 
+Bauteils entsprechen. Dies braucht nicht der Fall zu sein, wenn sich zwischen dem Beton und seiner Umgebung eine 
+Sperrschicht befindet. 
+ANMERKUNG 4 Grenzwerte für die Expositionsklassen bei chemischem Angriff sind in DIN EN 206-1 und DIN 1045-2 
+angegeben. 
+ANMERKUNG 5 Weitere informative Beispiele für die Zuordnung enthält DIN 1045-2. 
+17
+
+===== PDF-SEITE 18 =====
+DIN EN 1992-1-1/NA:2011-01 
+Ergänzt wird die Nummer NA.7 Betonkorrosion infolge Alkali-Kieselsäurereaktion“: 
+1 2 3 
+Klasse Beschreibung der 
+Umgebung 
+Beispiele für die Zuordnung von Expositionsklassen (informativ) 
+NA.7 Betonkorrosion infolge Alkali-Kieselsäurereaktion 
+Anhand der zu erwartenden Umgebungsbedingungen ist der Beton einer der vier folgenden Feuchtigkeitsklassen 
+zuzuordnen. 
+WO Beton, der nach normaler 
+Nachbehandlung nicht 
+längere Zeit feucht und 
+nach dem Austrocknen 
+während der Nutzung 
+weitgehend trocken bleibt. 
+ Innenbauteile des Hochbaus; 
+ Bauteile, auf die Außenluft, nicht jedoch z. B. Niederschläge, 
+Oberflächenwasser, Bodenfeuchte einwirken können und/oder die nicht 
+ständig einer relativen Luftfeuchte von mehr als 80 % ausgesetzt werden. 
+WF Beton, der während der 
+Nutzung häufig oder 
+längere Zeit feucht ist. 
+ Ungeschützte Außenbauteile, die z. B. Niederschlägen, 
+Oberflächenwasser oder Bodenfeuchte ausgesetzt sind; 
+ Innenbauteile des Hochbaus für Feuchträume, wie z. B. Hallenbäder, 
+Wäschereien und andere gewerbliche Feuchträume, in denen die relative 
+Luftfeuchte überwiegend höher als 80 % ist; 
+ Bauteile mit häufiger Taupunktunterschreitung, wie z. B. Schornsteine, 
+Wärmeübertragerstationen, Filterkammern und Viehställe; 
+ Massige Bauteile gemäß DAfStb-Richtlinie "Massige Bauteile aus Beton", 
+deren kleinste Abmessung 0,80 m überschreitet (unabhängig vom 
+Feuchtezutritt).
+WA Beton, der zusätzlich zu 
+der Beanspruchung nach 
+Klasse WF häufiger oder 
+langzeitiger Alkalizufuhr 
+von außen ausgesetzt ist. 
+ Bauteile mit Meerwassereinwirkung; 
+ Bauteile unter Tausalzeinwirkung ohne zusätzliche hohe dynamische 
+Beanspruchung (z. B. Spritzwasserbereiche, Fahr- und Stellflächen in 
+Parkhäusern); 
+ Bauteile von Industriebauten und landwirtschaftlichen Bauwerken (z. B. 
+Güllebehälter) mit Alkalisalzeinwirkung.
+WS Beton, der hoher 
+dynamischer 
+Beanspruchung und 
+direktem Alkalieintrag 
+ausgesetzt ist. 
+Bauteile unter Tausalzeinwirkung mit zusätzlicher hoher dynamischer 
+Beanspruchung (z. B. Betonfahrbahnen) 
+NCI Zu 4.3 (2)P 
+ANMERKUNG Eine angemessene Dauerhaftigkeit des Tragwerks gilt als sichergestellt, wenn neben den 
+Anforderungen aus den Nachweisen in den Grenzzuständen der Tragfähigkeit und Gebrauchstauglichkeit und den 
+konstruktiven Regeln der Abschnitte 8 und 9 die Anforderungen dieses Abschnittes sowie die Anforderungen an die 
+Zusammensetzung und die Eigenschaften des Betons nach DIN EN 206-1 und DIN 1045-2 und an die Bauausführung 
+nach DIN 1045-3 bzw. E DIN EN 13670 erfüllt sind. 
+NCI Zu 4.4.1.1 (2)P 
+Auf den Bewehrungszeichnungen sollte das Verlegemaß der Bewehrung cv, das sich aus dem Nennmaß der 
+Betondeckung cnom ableitet, sowie das Vorhaltemaß cdev der Betondeckung angegeben werden (siehe 
+NA 2.8.2 (3)P). 
+NDP Zu 4.4.1.2 (3) 
+18
+
+===== PDF-SEITE 19 =====
+DIN EN 1992-1-1/NA:2011-01 
+Spannglieder im nachträglichen Verbund: 
+ runde Hüllrohre: cmin,b = duct 80 mm 
+ rechteckige Hüllrohre a b (a b): cmin,b = max{a; b / 2} 80 mm 
+Spannglieder im sofortigen Verbund bei Ansatz der Verbundspannungen nach 8.10.2.2: 
+ Litzen, profilierte Drähte: cmin,b = 2,5 p
+NDP Zu 4.4.1.2 (5) 
+Es gelten die Tabellen NA.4.3, NA.4.4 und NA.4.5. 
+ANMERKUNG In Deutschland wird Beton der Zusammensetzung nach DIN EN 206-1 und DIN 1045-2 verwendet. Die 
+Festigkeit und Dichtheit des Betons im oberflächennahen Bereich wird durch die Nachbehandlung nach DIN 1045-3 bzw. 
+E DIN EN 13670 sichergestellt. Nach nationalen Erfahrungen entspricht die Anforderungsklasse S3 einer Nutzungsdauer 
+von 50 Jahren. 
+Tabelle NA.4.3  Modifikation für cmin,dur 
+Expositionsklasse nach Tabelle 4.1 Kriterium 
+X0 
+XC1 
+XC2 XC3 XC4 XD1 XS1 XD2 
+XS2 
+XD3 
+XS3 
+0 C25/30 C30/37 C35/45 C40/50 b C45/55 b C45/55 bDruckfestig-
+keitsklasse a
+5 mm
+a Es wird davon ausgegangen, dass die Druckfestigkeitsklasse und der Wasserzementwert einander zugeordnet werden dürfen. 
+b Die geforderten Druckfestigkeitsklassen dürfen um eine Klasse reduziert werden, wenn unter Zugabe eines Luftporenbildners 
+Poren mit einem Mindestluftgehalt nach DIN 1045-2 für XF-Klassen erzeugt werden.
+Tabelle NA.4.4  Mindestbetondeckung cmin,dur  Anforderungen an die Dauerhaftigkeit von Betonstahl 
+nach DIN 488 
+Dauerhaftigkeitsanforderung für cmin,dur
+mm
+Expositionsklasse nach Tabelle 4.1 Anforderungs- 
+klasse (X0) XC1 XC2 
+XC3 
+XC4 XD1 
+XS1 
+XD2 
+XS2 
+XD3 
+XS3 
+S3 cmin,dur (10) 10 20 25 30 35 40 
+cdur, 0 +10 +5 0 
+19
+
+===== PDF-SEITE 20 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.4.5  Mindestbetondeckung cmin,dur  Anforderungen an die Dauerhaftigkeit von Spannstahl 
+Dauerhaftigkeitsanforderung für cmin,dur
+mm 
+Expositionsklasse nach Tabelle 4.1 Anforderungsklasse 
+(X0) XC1 XC2 
+XC3 
+XC4 XD1 
+XS1 
+XD2 
+XS2 
+XD3 
+XS3 
+S3 cmin,dur (10) 20 30 35 40 45 50 
+cdur, 0 +10 +5 0 
+NDP Zu 4.4.1.2 (6) 
+Das Sicherheitselement cdur, ist anzusetzen. Für die Werte cdur, siehe Tabelle NA.4.4 und NA.4.5. 
+NDP Zu 4.4.1.2 (7) 
+Für die Abminderung der Betondeckung cdur,st gelten die Festlegungen der jeweiligen allgemeinen 
+bauaufsichtlichen Zulassung des nichtrostenden Stahls. 
+NDP Zu 4.4.1.2 (8) 
+cdur,add = 0 mm ohne Spezifikation 
+cdur,add = 10 mm für Expositionsklassen XD bei dauerhafter, rissüberbrückender Beschichtung (siehe DAfStb-
+Heft 600) 
+NCI Zu 4.4.1.2 (9) 
+Die Werte cmin dürfen an den der Fuge zugewandten Rändern auf 5 mm im Fertigteil und auf 10 mm im 
+Ortbeton verringert werden. In diesen Fällen darf auf das Vorhaltemaß verzichtet werden. Die Bedingungen 
+zur Sicherstellung des Verbundes nach 4.4.1.2 (3) müssen jedoch eingehalten werden, sofern die Bewehrung 
+im Bauzustand ausgenutzt wird. 
+Werden bei rau oder verzahnt ausgeführten Verbundfugen Bewehrungsstäbe direkt auf die Fugenoberfläche 
+aufgelegt, so sind für den Verbund dieser Stäbe nur mäßige Verbundbedingungen nach 8.4.2 (2) anzusetzen. 
+Die Dauerhaftigkeit der Bewehrung ist jedoch durch das erforderliche Nennmaß der Betondeckung im Bereich 
+von Elementfugen bei Halbfertigteilen sicherzustellen. 
+NDP Zu 4.4.1.2 (13) 
+Es gelten die empfohlenen Werte k
+1 = 5 mm, k2 = 10 mm und k3 = 15 mm.
+ANMERKUNG Die Bauteile von Industrieanlagen sind tragende bzw. aussteifende Industrieböden. Anforderungen an 
+die Betonzusammensetzung für die XM-Klassen ohne Opferbeton sind in DIN 1045-2 geregelt. 
+NDP Zu 4.4.1.3 (1)P 
+ für Dauerhaftigkeit mit cmin,dur nach 4.4.1.2 (5): cdev = 15 mm (außer für XC1: cdev = 10 mm) 
+ für Verbund mit cmin,b nach 4.4.1.2 (3): cdev = 10 mm
+20
+
+===== PDF-SEITE 21 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 4.4.1.3 (2) 
+ANMERKUNG Bis zur bauaufsichtlichen Einführung von DIN EN 13670 gilt DIN 1045-3. 
+NDP Zu 4.4.1.3 (3) 
+Anmerkung wird ersetzt: 
+ANMERKUNG Das Vorhaltemaß cdev darf um 5 mm abgemindert werden, wenn dies durch eine entsprechende 
+Qualitätskontrolle bei Planung, Entwurf, Herstellung und Bauausführung gerechtfertigt werden kann (siehe z. B. DBV-
+Merkblätter Betondeckung und Bewehrung“, Unterstützungen“ und Abstandhalter“). 
+NDP Zu 4.4.1.3 (4) 
+k1 = 20 mm bei unebener Sauberkeitsschicht 
+k2 = 50 mm 
+NCI Zu 5.1.1 (3) 
+Der informative Anhang F ist in Deutschland nicht verbindlich. 
+NCI Zu 5.1.1 
+(NA.8)P Alle Berechnungsverfahren der Schnittgrößenermittlung müssen sicherstellen, dass die 
+Gleichgewichtsbedingungen erfüllt sind. 
+(NA.9)P Wenn die Verträglichkeitsbedingungen nicht unmittelbar für die jeweiligen Grenzzustände 
+nachgewiesen werden, muss sichergestellt werden, dass das Tragwerk bis zum Erreichen des 
+Grenzzustandes der Tragfähigkeit ausreichend verformungsfähig ist und ein unzulässiges Verhalten im 
+Grenzzustand der Gebrauchstauglichkeit ausgeschlossen ist. 
+(NA.10)P Der Gleichgewichtszustand wird im Allgemeinen am nichtverformten Tragwerk nachgewiesen 
+(Theorie I. Ordnung). Wenn jedoch die Tragwerksauslenkungen zu einem wesentlichen Anstieg der 
+Schnittgrößen führen, muss der Gleichgewichtszustand am verformten Tragwerk nachgewiesen werden 
+(Theorie II. Ordnung). 
+(NA.11)P Die Auswirkungen zeitlicher Einflüsse (z. B. Kriechen, Schwinden des Betons) auf die Schnittgrößen 
+sind zu berücksichtigen, wenn sie von Bedeutung sind. 
+(NA.12) Für Tragwerke mit vorwiegend ruhender Belastung dürfen die Auswirkungen der Belastungs-
+geschichte im Allgemeinen vernachlässigt werden. Es darf von einer gleichmäßigen Steigerung der Belastung 
+ausgegangen werden. 
+(NA.13) Übliche Berechnungsverfahren für Plattenschnittgrößen mit Ansatz gleicher Steifigkeiten in beiden 
+Richtungen gelten nur, wenn der Abstand der Längsbewehrung zur zugehörigen Querbewehrung in der Höhe 
+50 mm nicht überschreitet. 
+(NA.14) Berechnungsverfahren mit plastischen Umlagerungen sind bei Bauteiltemperaturen unter 
+20 °C 
+wegen der abnehmenden Duktilitätseigenschaften der Stähle nicht ohne weitere Nachweise anwendbar. 
+NCI Zu 5.1.2 (1)P 
+Der informative Anhang G ist in Deutschland nicht verbindlich. 
+21
+
+===== PDF-SEITE 22 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 5.1.3 (1)P 
+Die bei den Nachweisen in den GZT in Betracht zu ziehenden Bemessungssituationen sind in DIN EN 1990 
+angegeben. 
+NCI Zu 5.1.3 
+(NA.2) Bei durchlaufenden Platten und Balken darf für ein und dieselbe unabhängige ständige Einwirkung 
+(z. B. Eigenlast) entweder der obere oder der untere Wert G in allen Feldern gleich angesetzt werden. Dies 
+gilt nicht für den Nachweis der Lagesicherheit nach DIN EN 1990. 
+(NA.3) Die maßgebenden Querkräfte dürfen bei üblichen Hochbauten für Vollbelastung aller Felder ermittelt 
+werden, wenn das Stützweitenverhältnis benachbarter Felder mit annähernd gleicher Steifigkeit 
+0,5 < leff,1 / leff,2 < 2,0 beträgt. 
+(NA.4) Bei nicht vorgespannten durchlaufenden Bauteilen des üblichen Hochbaus brauchen, mit Ausnahme 
+des Nachweises der Lagesicherheit nach DIN EN 1990, Bemessungssituationen mit günstig wirkenden 
+ständigen Einwirkungen bei linear-elastischer Berechnung nicht berücksichtigt zu werden, wenn die 
+Konstruktionsregeln für die Mindestbewehrung eingehalten werden. 
+NCI Zu 5.1.4 
+(NA.4)P Der Gleichgewichtszustand von Tragwerken mit stabförmigen Bauteilen oder Wänden unter 
+Längsdruck und insbesondere der Gleichgewichtszustand dieser Bauteile selbst muss unter Berücksichtigung 
+der Auswirkung von Bauteilverformungen nachgewiesen werden, wenn diese die Tragfähigkeit um mehr als 
+10 % verringern. Dies gilt für jede Richtung, in der ein Versagen nach Theorie II. Ordnung auftreten kann. 
+NCI Zu 5.2 (1)P 
+Die einzelnen aussteifenden Bauteile sind für Schnittgrößen zu bemessen, die sich aus der Berechnung am 
+Gesamttragwerk ergeben, wobei die Auswirkungen der Einwirkungen und Imperfektionen am Tragwerk als 
+Ganzem einzubeziehen sind. 
+Der Einfluss der Tragwerksimperfektionen darf durch den Ansatz geometrischer Ersatzimperfektionen erfasst 
+werden. 
+NDP Zu 5.2 (5) 
+ allgemein: 0 = 1 / 200 mit 0 h = 2 / l 1,0 
+ für Auswirkungen auf Decken- bzw. Dachscheiben: 0 = 0,008 / (2m) mit h = m = 1 
+NCI Zu 5.2 (6), zweiter Anstrich 
+Für m dürfen nur vertikale Bauteile angesetzt werden, die mindestens 70 % des Bemessungswerts der 
+mittleren Längskraft NEd,m = FEd / n aufnehmen, worin FEd die Summe der Bemessungswerte der Längskräfte 
+aller nebeneinander liegenden lotrechten Bauteile im betrachteten Geschoss bezeichnet. 
+NCI Zu 5.2 (8) 
+Für die Schiefstellung i in den Gleichungen (5.5) und (5.6) ist i = 0,008 / (2m) in Bogenmaß anzunehmen 
+(siehe 5.2 (5)). 
+Dabei ist 
+m die Anzahl der auszusteifenden Tragwerksteile im betrachteten Geschoss. 
+22
+
+===== PDF-SEITE 23 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.3.1 (6) 
+Die Schnittgrößenermittlung für diese Decken als Vollplatte ist auf die Verfahren nach 5.4 und 5.5 beschränkt. 
+Der letzte Satz findet keine Anwendung. 
+ANMERKUNG In 10.9.3 (11) werden diese Deckensysteme für Fertigteile behandelt. 
+NCI Zu 5.3.2.1 (2) 
+Bild 5.2 gilt bei annähernd gleichen Steifigkeiten und annähernd gleicher Belastung für ein 
+Stützweitenverhältnis benachbarter Felder im Bereich von 0,8 < l1 / l2 < 1,25. Für kurze Kragarme (in Bezug 
+auf das angrenzende Feld) sollte die wirksame Stützweite l0 ermittelt werden zu l0 = 1,5l3. 
+NCI Zu 5.3.2.2 (1) 
+Bild 5.4f) wird ergänzt: 
+f) freier Kragträger 
+NCI Zu 5.3.2.2 (3) 
+Bei indirekter Lagerung ist dies nur zulässig, wenn das stützende Bauteil eine Vergrößerung der statischen 
+Nutzhöhe des gestützten Bauteils mit einer Neigung von mindestens 1:3 zulässt. 
+ANMERKUNG Definition direkte / indirekte Auflagerung siehe NA 1.5.2.26. 
+NCI Zu 5.4 (2), i) 
+Es dürfen jedoch auch die Steifigkeiten der gerissenen Querschnitte (Zustand II) verwendet werden. 
+NCI Zu 5.4 
+(NA.4) Im Allgemeinen sind keine besonderen Maßnahmen zur Sicherstellung angemessener 
+Verformungsfähigkeit erforderlich, sofern sehr hohe Bewehrungsgrade in den kritischen Abschnitten der 
+Bauteile vermieden und die Anforderungen bezüglich der Mindestbewehrung erfüllt werden.
+(NA.5) Für Durchlaufträger, bei denen das Stützweitenverhältnis benachbarter Felder mit annähernd gleichen 
+Steifigkeiten 0,5 < l
+eff,1 / leff,2 < 2,0 beträgt, in Riegeln von Rahmen und in sonstigen Bauteilen, die vorwiegend 
+auf Biegung beansprucht sind, einschließlich durchlaufender, in Querrichtung kontinuierlich gestützter Platten, 
+sollte xd / d den Wert 0,45 bis C50/60 und 0,35 ab C55/67 nicht übersteigen, sofern keine geeigneten 
+konstruktiven Maßnahmen getroffen oder andere Nachweise zur Sicherstellung ausreichender Duktilität 
+geführt werden. 
+23
+
+===== PDF-SEITE 24 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.5 (3) 
+Für die Ermittlung von Querkraft, Drillmoment und Auflagerreaktion bei Platten darf im üblichen Hochbau 
+entsprechend dem Momentenverlauf nach Umlagerung eine lineare Interpolation zwischen den 
+Beanspruchungen bei voll eingespanntem Rand und denen bei gelenkig gelagertem Rand vorgenommen 
+werden. 
+NDP Zu 5.5 (4) 
+k1 = 0,64 k2 = 0,8 
+k3 = 0,72 k4 = 0,8 
+k5 = 0,7 für fck 50 N/mm² und k5 = 0,8 für fck > 50 N/mm² 
+k6 = 0,85 für fck 50 N/mm² und k6 = 1,0 für fck > 50 N/mm² 
+NCI Zu 5.5 (5) 
+Bei verschieblichen Rahmen, Tragwerken aus unbewehrtem Beton und solchen, die aus vorgefertigten 
+Segmenten mit unbewehrten Kontaktfugen bestehen, ist keine Umlagerung zugelassen. 
+NCI Zu 5.6.1 
+(NA.5) Bei Scheiben dürfen Verfahren nach der Plastizitätstheorie stets (also auch bei Verwendung von Stahl 
+mit normaler Duktilität) ohne direkten Nachweis des Rotationsvermögens angewendet werden. 
+NCI Zu 5.6.2 (2) 
+Dieser vereinfachte Nachweis ist nur für zweiachsig gespannte Platten zulässig. Die Druckzonenhöhe xu ist 
+dabei mit den Bemessungswerten der Einwirkungen und der Baustofffestigkeiten zu ermitteln. 
+NCI Zu 5.6.2 (4) 
+Bewehrungsstöße in plastischen Zonen sind nicht gestattet. 
+NCI Zu 5.6.2 (5) 
+Absatz (5) ist in Deutschland nicht anzuwenden. 
+NCI Zu 5.6.2 
+(NA.6)P Bei Anwendung der Plastizitätstheorie für stabförmige Bauteile und Platten darf Betonstahl mit 
+normaler Duktilität (Klasse A) nicht verwendet werden. 
+NDP Zu 5.6.3 (4) 
+Es gilt Bild NA.5.6. 
+24
+
+===== PDF-SEITE 25 =====
+DIN EN 1992-1-1/NA:2011-01 
+Legende 
+1 für C12/15 bis C50/60 
+2 für C100/115 
+Bild NA.5.6  Grundwert der zulässigen plastischen Rotation pl,d von Stahlbetonquerschnitten 
+(Schubschlankheit = 3,0) 
+ANMERKUNG wird ersetzt: 
+ANMERKUNG Die Werte nach Bild NA.5.6 gelten für Betonstahl B500B sowie für die Betonfestigkeitsklassen C50/60 
+bzw. C100/115. 
+Die Werte für die Betonfestigkeitsklassen C55/67 bis C100/115 dürfen entsprechend interpoliert werden. Die Werte gelten 
+für eine Schubschlankheit = 3,0. Für abweichende Werte der Schubschlankheit ist in der Regel pl,d mit k zu 
+multiplizieren: 
+k = ( / 3) (5.11N) 
+Dabei ist das Verhältnis aus dem Abstand zwischen Momentennullpunkt und Momentenmaximum nach Umlagerung und 
+der statischen Nutzhöhe d. 
+Vereinfacht darf dabei aus den Bemessungswerten des Biegemoments und der zugehörigen Querkraft berechnet 
+werden: 
+ = MEd / (VEd d) (5.12N) 
+Angaben für eine genauere Ermittlung der zulässigen plastischen Rotation können DAfStb-Heft 600 entnommen werden. 
+25
+
+===== PDF-SEITE 26 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.6 4 
+(NA.6) Stabwerkmodelle dürfen kinematisch sein, wenn Geometrie und Belastung aufeinander abgestimmt 
+sind.
+(NA.7) Bei der Stabkraftermittlung für statisch unbestimmte Stabwerkmodelle dürfen die unterschiedlichen 
+Dehnsteifigkeiten der Druck- und Zugstreben näherungsweise berücksichtigt werden. Vereinfachend dürfen 
+einzelne statisch unbestimmte Stabkräfte in Anlehnung an die Kräfte aus einer linear-elastischen Berechnung 
+des Tragwerks gewählt werden.
+(NA.8) Die Ergebnisse aus mehreren Stabwerkmodellen dürfen im Allgemeinen nicht überlagert werden. Dies 
+ist im Ausnahmefall möglich, wenn die Stabwerkmodelle für jede Einwirkung im Wesentlichen über-
+einstimmen. 
+NCI Zu 5.7 
+(NA.6) Ein geeignetes nichtlineares Verfahren der Schnittgrößenermittlung einschließlich der 
+Querschnittsbemessung ist in NCI zu 5.7, (NA.7) bis (NA.15) beschrieben. 
+(NA.7)P Der Bemessungswert des Tragwiderstands R
+d ist bei nichtlinearen Verfahren nach Gleichung 
+(NA.5.12.1) zu ermitteln: 
+Rd = R(fcR; fyR; ftR; fp0,1R; fpR) / R (NA.5.12.1)
+Dabei ist 
+fcR, fyR, ftR, fp0,1R, fpR der jeweilige rechnerische Mittelwert der Festigkeiten des Betons, des Betonstahls 
+bzw. des Spannstahls; 
+R der Teilsicherheitsbeiwert für den Systemwiderstand. 
+(NA.8) Durch die Festlegung der Bewehrung nach Größe und Lage schließen nichtlineare Verfahren die 
+Bemessung für Biegung mit Längskraft ein. 
+(NA.9)P Die Formänderungen und Schnittgrößen des Tragwerks sind auf der Grundlage der Spannungs-
+Dehnungs-Linien für Beton nach Bild 3.2, Betonstahl nach Bild NA.3.8.1 und für Spannstahl nach 
+Bild NA.3.10.1 zu berechnen, wobei die Mittelwerte der Baustofffestigkeiten zugrunde zu legen sind. 
+(NA.10) Die Mittelwerte der Baustofffestigkeiten dürfen rechnerisch wie folgt angenommen werden:
+f
+yR = 1,1 fyk (NA.5.12.2) 
+ftR = 1,08 fyR (für B500B) (NA.5.12.3) 
+ftR = 1,05 fyR (für B500A) (NA.5.12.4) 
+fp0,1R = 1,1 fp0,1k (NA.5.12.5) 
+fpR = 1,1 fpk (NA.5.12.6) 
+fcR = 0,85 fck (NA.5.12.7) 
+Hierbei sollte ein einheitlicher Teilsicherheitsbeiwert R = 1,3 (für ständige und vorübergehende Bemessungs-
+situationen und Nachweis gegen Ermüdung) oder R = 1,1 (für außergewöhnliche Bemessungssituationen) für 
+den Bemessungswert des Tragwiderstands berücksichtigt werden. 
+26
+
+===== PDF-SEITE 27 =====
+DIN EN 1992-1-1/NA:2011-01 
+(NA.11)P Der Bemessungswert des Tragwiderstands darf nicht kleiner sein als der Bemessungswert der 
+maßgebenden Einwirkungskombination. 
+(NA.12)P Der GZT gilt als erreicht, wenn in einem beliebigen Querschnitt des Tragwerks die kritische 
+Stahldehnung oder die kritische Betondehnung oder am Gesamtsystem oder Teilen davon der kritische 
+Zustand des indifferenten Gleichgewichts erreicht ist. 
+(NA.13) Die kritische Stahldehnung sollte auf den Wert ud = 0,025 bzw. ud = p
+(0) + 0,025 0,9 uk festgelegt 
+werden. Die kritische Betondehnung c1u ist Tabelle 3.1 zu entnehmen. 
+(NA.14) Die Mitwirkung des Betons auf Zug zwischen den Rissen (en: tension stiffening ) ist zu 
+berücksichtigen. Sie darf unberücksichtigt bleiben, wenn dies auf der sicheren Seite liegt. 
+(NA.15) Die Auswahl eines geeigneten Verfahrens zur Berücksichtigung der Mitwirkung des Betons auf Zug 
+sollte in Abhängigkeit von der jeweiligen Bemessungsaufgabe getroffen werden. 
+NCI Zu 5.8.2 (1)P 
+ANMERKUNG Für Nachweise am Gesamtsystem nach Theorie II. Ordnung wird auf DAfStb-Heft 600 verwiesen. 
+NCI Zu 5.8.2 (6) 
+Dies gilt für jede Richtung, in der ein Versagen nach Theorie II. Ordnung auftreten kann. 
+NDP Zu 5.8.3.1 (1) 
+lim = 25 für |n| 0,41 (NA.5.13.a) 
+lim = 16 / n für |n| < 0,41 (NA.5.13.b) 
+Dabei ist 
+n = NEd / (Ac fcd). 
+NCI Zu 5.8.3.2 (3) 
+ANMERKUNG Die Ermittlung weiterer Knicklängen nach Fachliteratur, z. B. nach DAfStb-Heft 600, ist zulässig. 
+NDP Zu 5.8.3.3 (1) 
+Es gilt der empfohlene Wert K1 = 0,31. 
+Der Bemessungswert der Vertikallasten FV,Ed darf mit F = 1,0 angesetzt werden. 
+27
+
+===== PDF-SEITE 28 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.8.3.3 (1) 
+Gleichung (5.18) darf in die in Deutschland gebräuchliche Form gebracht werden: 
+6,1s
+s
+1
+ccd
+2
+EdV,
+n
+nKE
+LF (NA.5.18) 
+NDP Zu 5.8.3.3 (2) 
+Es gilt der empfohlene Wert K2 = 0,62. 
+NCI Zu 5.8.3.3 (2) 
+ANMERKUNG 3 Die aussteifenden Bauteile dürfen als nicht gerissen angenommen werden, wenn die Betonzug-
+spannungen den Wert fctm nach Tabelle 3.1 nicht überschreiten. 
+ANMERKUNG 4 In Gleichung (NA.5.18.1) darf K1 ebenfalls durch K2 ersetzt werden. 
+NCI zu 5.8.3.3 
+(NA.3) Wenn die lotrechten aussteifenden Bauteile nicht annähernd symmetrisch angeordnet sind oder nicht 
+vernachlässigbare Verdrehungen zulassen, muss zusätzlich die Verdrehsteifigkeit aus der Kopplung der 
+Wölbsteifigkeit EcdI und der Torsionssteifigkeit GcdIT der Gleichung (NA.5.18.1) genügen, um Nachweise am 
+Gesamttragwerk nach Theorie II. Ordnung zu vernachlässigen: 
+6,1
+28,2
+11
+1
+s
+s
+12
+2
+jjEd,V,
+Tcd
+2
+jjEd,V,
+cd
+n
+nK
+rF
+G
+rF
+E
+L
+jj
+ (NA.5.18.1) 
+Dabei ist 
+K1, ns, L, Ecd, Ic nach Absatz (1); 
+rj der Abstand der Stütze j vom Schubmittelpunkt des Gesamtsystems; 
+FV,Ed,j der Bemessungswert der Vertikallast der aussteifenden und ausgesteiften Bauteile j 
+mit F = 1,0; 
+EcdI die Summe der Nennwölbsteifigkeiten aller gegen Verdrehung aussteifenden 
+Bauteile (Bemessungswert); 
+GcdIT die Summe der Torsionssteifigkeiten aller gegen Verdrehung aussteifenden Bauteile 
+(St. Venant'sche Torsionssteifigkeit, Bemessungswert). 
+NCI Zu 5.8.4 (2) 
+Die Biegemomente M0Eqp und M0Ed in Gleichung (5.19) beinhalten die Imperfektionen, die bei Nachweisen 
+nach Theorie II. Ordnung zu berücksichtigen sind. 
+28
+
+===== PDF-SEITE 29 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.8.4 (4) 
+Kriechauswirkungen dürfen auch in der Regel vernachlässigt werden, wenn die Stützen an beiden Enden 
+monolithisch mit lastabtragenden Bauteilen verbunden sind oder wenn bei verschieblichen Tragwerken die 
+Schlankheit des Druckgliedes < 50 und gleichzeitig die bezogene Lastausmitte e0 / h > 2 (M0Ed / NEd > 2h) ist. 
+NDP Zu 5.8.5 (1) 
+Die vereinfachte Methode (a) Verfahren auf Grundlage einer Nenn-Steifigkeit, kann in Deutschland entfallen. 
+NDP Zu 5.8.6 (3) 
+CE = 1,5 
+Die Formänderungen dürfen auf der Grundlage von Bemessungswerten, die auf den Mittelwerten der 
+Baustoffkennwerte beruhen (z. B. fcm / c, Ecm / cE) ermittelt werden. Für die Ermittlung der Grenztragfähigkeit 
+im kritischen Querschnitt sind jedoch die Bemessungswerte der Baustofffestigkeiten anzusetzen. 
+Für die Aussteifungskriterien nach 5.8.3.3 gilt CE = 1,2. 
+NCI Zu 5.8.6 (5) 
+ANMERKUNG Diese Auswirkung ist nur bei Einzeldruckgliedern immer günstig. 
+NDP Zu 5.8.7 
+Das Verfahren mit Nenn-Steifigkeiten nach 5.8.7 kann in Deutschland entfallen. 
+NCI Zu 5.8.8.2 (3) 
+Für Druckglieder mit Schlankheiten 25 35 darf die Verformung e2 mit dem interpolierenden Faktor K1
+multipliziert werden: K1 = / 10 -2,5. 
+NCI Zu 5.8.9 (2) 
+Die getrennten Nachweise dürfen dabei in den Richtungen der beiden Hauptachsen jeweils mit der gesamten 
+im Querschnitt angeordneten Bewehrung durchgeführt werden.
+29
+
+===== PDF-SEITE 30 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 5.8.9 (3) 
+Für Druckglieder mit rechteckigem Querschnitt und mit e0z > 0,2 h dürfen getrennte Nachweise nur dann 
+geführt werden, wenn der Nachweis der Biegung über die schwächere Hauptachse z des Querschnitts auf der 
+Grundlage der reduzierten Querschnittsdicke hred nach Bild NA.5.8.1 geführt wird. Der Wert hred darf unter der 
+Annahme einer linearen Spannungsverteilung nach folgender Gleichung ermittelt werden: 
+he
+hhh
+az0z
+red (612 (NA.5.38.1) 
+Dabei ist 
+h die größere der beiden Querschnittsseiten; 
+eaz die Zusatzausmitte zur Berücksichtigung geometrischer Ersatzimperfektionen in z-Richtung; 
+e0z die Lastausmitte nach Theorie I. Ordnung in Richtung der Querschnittsseite h. 
+Bild NA.5.8.1  Reduzierte Querschnittsdicke hred
+NCI Zu 5.9 (4) 
+Sofern keine genaueren Angaben vorliegen, ist die Auflagerkonstruktion so zu bemessen, dass sie 
+mindestens ein Torsionsmoment TEd = VEd leff / 300 aus dem Träger aufnehmen kann. Dabei ist leff die 
+effektive Stützweite des Trägers und VEd der Bemessungswert der Auflagerkraft rechtwinklig zur Trägerachse. 
+NDP Zu 5.10.1 (6) 
+In Deutschland sind nur die Verfahren A, C und E zugelassen. Zum Verfahren E siehe auch DAfStb-Heft 600. 
+30
+
+===== PDF-SEITE 31 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 5.10.2.1 (1)P 
+Es gelten die empfohlenen Werte k1 = 0,80 und k2 = 0,90. 
+NDP Zu 5.10.2.1 (2) 
+Es gilt der empfohlene Wert k3 = 0,95. 
+NCI Zu 5.10.2.1 (2) 
+ANMERKUNG Diese Überspannreserve kann bei unerwartet hohem Reibungsbeiwert nicht ausreichend sein (siehe 
+DAfStb-Heft 600). 
+NCI Zu 5.10.2.1 
+(NA.3) Wenn die Kontrolle der Spannkraft nicht genügend genau ist und nur der Spannweg exakt kontrolliert 
+wird, kann nicht ausgeschlossen werden, dass bei erhöhten Verlusten (aus erhöhter Reibung, zusätzlicher 
+Umlenkung oder Blockierungen) die Spannstahlspannung die Streckgrenze erreicht. Darüber hinaus sind bei 
+unplanmäßigen Verlusten keine Reserven mehr vorhanden. 
+Die planmäßige Vorspannkraft ist deshalb für Spannglieder im nachträglichen Verbund so zu begrenzen, dass 
+auch bei erhöhten Reibungsverlusten die gewünschte Vorspannung bei Einhaltung der Gleichung (5.41) über 
+die Bauteillänge erreicht werden kann. Dazu ist die planmäßige Höchstkraft P
+max mit einem Faktor k
+abzumindern. 
+Der Abminderungsbeiwert zur Berücksichtigung erhöhter Reibungsverluste k beträgt dabei: 
+1ek (NA.5.41.1) 
+Dabei ist 
+ der Reibungsbeiwert nach Zulassung; 
+ = + k x siehe Gleichung (5.45); 
+ das Vorhaltemaß zur Sicherung einer Überspannreserve: 
+= 1,5 bei ungeschützter Lage des Spannstahls im Hüllrohr bis zu drei Wochen oder mit 
+Maßnahmen zum Korrosionsschutz, 
+= 2,0 bei ungeschützter Lage über mehr als drei Wochen. 
+Der Wert x entspricht bei einseitigem Vorspannen dem Abstand zwischen Spannanker und Festanker oder 
+fester Kopplung, bei beidseitiger Vorspannung der Einflusslänge des jeweiligen Spannankers. 
+31
+
+===== PDF-SEITE 32 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 5.10.2.2 (4) 
+k4 und k5: Die Mindestbetondruckfestigkeiten bei Teilvorspannung sind den entsprechenden Zulassungen zu 
+entnehmen. 
+NDP Zu 5.10.2.2 (5) 
+Es gilt der empfohlene Wert k6 = 0,7. 
+Zur Vermeidung von Längsrissen muss die maximale Betondruckspannung zum Zeitpunkt der 
+Spannkraftübertragung durch die Erfahrung des Fertigteilherstellers belegt werden (siehe auch DAfStb-
+Heft 600). 
+NDP Zu 5.10.3 (2) 
+Es gelten die empfohlenen Werte k7 = 0,75 und k8 = 0,85. 
+NCI Zu 5.10.5.2 (2) und (3) 
+Die Angaben für und k dürfen nur den Zulassungen entnommen werden, Tabelle 5.1 ist nicht anzuwenden. 
+NCI Zu 5.10.5.2 (4) 
+Bei Spanngliedern ohne Verbund braucht die Reibung nur bei der Ermittlung der wirksamen mittleren 
+Vorspannkraft Pmt und der Ermittlung der daraus resultierenden Schnittgrößen infolge der Eintragung der 
+Vorspannkraft berücksichtigt zu werden. 
+NCI Zu 5.10.6 (2) 
+Die Spannungsänderung pr im Spannstahl an der Stelle x infolge Relaxation darf mit den Angaben der 
+Zulassung des Spannstahls für das Verhältnis der Ausgangsspannung zur charakteristischen Zugfestigkeit 
+(
+p / fpk) bestimmt werden. 
+NCI Zu 5.10.7 (3) 
+Bei Anwendung linear-elastischer Verfahren der Schnittgrößenermittlung sollte die statisch unbestimmte 
+Wirkung der Vorspannung als Einwirkung berücksichtigt werden. Die Schnittgrößen sind im GZT mit den 
+Steifigkeiten der ungerissenen Querschnitte zu bestimmen. 
+Bei Anwendung nichtlinearer Verfahren sowie bei der Ermittlung der erforderlichen Rotation bei Verfahren 
+nach der Plastizitätstheorie sollte die Vorspannung als Vordehnung mit entsprechender Vorkrümmung 
+berücksichtigt werden. Die Ermittlung des statisch unbestimmten Moments aus Vorspannung entfällt dann, da 
+bei diesen Verfahren die Schnittgrößen infolge Vorspannung nicht getrennt von den Lastschnittgrößen 
+ausgewiesen werden können. 
+NDP Zu 5.10.8 (2) 
+Es gilt der empfohlene Wert 
+p,ULS = 100 N/mm². 
+Diese Vereinfachung darf nur bei Tragwerken mit exzentrisch geführten internen Spanngliedern angesetzt 
+werden. 
+32
+
+===== PDF-SEITE 33 =====
+DIN EN 1992-1-1/NA:2011-01 
+Wenn bei Tragwerken mit externen Spanngliedern die Schnittgrößenermittlung für das gesamte Tragwerk 
+vereinfachend linear-elastisch erfolgt, darf der Spannungszuwachs im Spannstahl infolge Tragwerks-
+verformungen unberücksichtigt bleiben. 
+NDP Zu 5.10.8 (3) 
+Es gelten die empfohlenen Werte. 
+ nichtlineares Verfahren: P,sup = 1,2 bzw. P,inf = 0,8 
+ lineares Verfahren mit ungerissen Querschnitten: P,sup = P,inf = 1,0 
+NDP Zu 5.10.9 (1)P 
+ Spannglieder im sofortigen Verbund oder ohne Verbund: rsup = 1,05 und rinf = 0,95, 
+ Spannglieder im nachträglichen Verbund: rsup = 1,10 und rinf = 0,90. 
+Die Annahme von rsup = rinf = 1,0 ist unzulässig. 
+NCI Zu 5.11 (2)P 
+Anmerkung wird ersetzt: 
+ANMERKUNG Der informative Anhang I ist in Deutschland nicht verbindlich. 
+NCI Zu 6.1 (3)P 
+ANMERKUNG Bei geringen Ausmitten bis ed / h 0,1 darf für Normalbeton die günstige Wirkung des Kriechens 
+des Betons vereinfachend durch die Wahl von c2 = 0,002 2 berücksichtigt werden. 
+NCI Zu 6.1 (4) 
+Für Querschnitte in Biegebauteilen braucht diese Mindestausmitte nicht angesetzt zu werden. Für Bauteile, 
+die nach Theorie II. Ordnung nachzuweisen sind, sind die Imperfektionen nach 5.2 maßgebend. 
+NCI Zu 6.1 (5) 
+Die Tragfähigkeit des Gesamtquerschnitts braucht nicht kleiner angesetzt zu werden als diejenige der Stege 
+mit der Höhe h und der Dehnungsverteilung nach Bild 6.1. 
+NCI Zu 6.2.1 (1)P 
+ANMERKUNG Wenn die Vorspannung nicht als Einwirkung berücksichtigt wird, ergibt sich der Bemessungswert der 
+Querkraftkomponente in der Zugbewehrung bei geneigtem Zuggurt Vtd einschließlich dem Querkraftanteil der 
+Vorspannung Vpd. 
+NCI Zu 6.2.1 (3) 
+Zum Querkraftwiderstand eines Bauteiles ohne Querkraftbewehrung dürfen analog Gleichung (6.1) Vccd + Vtd
+addiert werden. 
+33
+
+===== PDF-SEITE 34 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.2.1 (4) 
+ANMERKUNG 1 Bei Einhaltung der Bewehrungs- und Konstruktionsregeln nach Abschnitt 8 und 9 kann von einer 
+ausreichenden Querverteilung der Lasten bei Platten ausgegangen werden. 
+Bei Rippendecken darf unter vorwiegend ruhenden Einwirkungen mit Nutzlasten qk 3,0 kN/m² bzw. Einzellasten 
+Qk 3,0 kN auf die Mindestquerkraftbewehrung in den Rippen verzichtet werden, wenn der maximale Rippenabstand 
+700 mm beträgt. Bei Rippendecken, die feuerbeständig ( R90) sein müssen, sind stets Bügel anzuordnen. 
+ANMERKUNG 2 Zur Belastung von Stürzen siehe DAfStb-Heft 600. 
+NCI Zu 6.2.1 (7) 
+Alternativ darf diese zusätzliche Zugkraft auch nach 9.2.1.3 (2) mit einem Versatzmaß berücksichtigt werden. 
+NCI Zu 6.2.1 (8) 
+Die Nachweise für VRd,c und VRd,s dürfen in der Regel nur bei direkter Auflagerung im Abstand d vom 
+Auflagerrand und für VRd,max unmittelbar am Auflagerrand geführt werden. Bei indirekter Auflagerung ist die 
+Bemessungsquerkraft für alle Nachweise VRd in der Regel in der Auflagerachse zu bestimmen. Ausnahmen 
+siehe DAfStb-Heft 600. 
+NCI Zu 6.2.1 
+(NA.10) Die Querkraftnachweise dürfen bei zweiachsig gespannten Platten in den Spannrichtungen x und y
+mit den jeweiligen Einwirkungs- und Widerstandskomponenten getrennt geführt werden. Wenn Querkraft-
+bewehrung erforderlich wird, ist diese aus beiden Richtungen zu addieren.
+(NA.11) Vorgespannte Elementdecken werden in allgemeinen bauaufsichtlichen Zulassungen geregelt. 
+NDP Zu 6.2.2 (1) 
+CRd,c = 0,15 / C
+k1 = 0,12
+vmin = (0,0525 / C)k3/2 fck
+1/2 für d 600 mm (NA.6.3a) 
+vmin = (0,0375 / C)k3/2 fck
+1/2 für d > 800 mm (NA.6.3b) 
+Für 600 mm < d 800 mm darf interpoliert werden. 
+Betonzugspannungen cp sind in den Gleichungen (6.2) negativ einzusetzen. 
+NCI Zu 6.2.2 (2) 
+Die Gleichung (6.4) darf für Stahlbetonbauteile mit Normaldruckkraft ebenfalls angewendet werden. Dann ist 
+l = 1,0. 
+Bei Anwendung der Gleichung (6.4) wird vorausgesetzt, dass eine ausreichende Spaltzugbewehrung 
+vorhanden ist.
+Die Anforderungen an die Mindestquerkraftbewehrung nach 9.2.2 (5) und 9.3.2 (2) sind einzuhalten. 
+Für vorgespannte Elementdecken darf Gleichung (6.4) nicht verwendet werden. 
+34
+
+===== PDF-SEITE 35 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 6.2.2 (6) 
+ allgemein für Querkraft: = 0,675 
+ allgemein für Torsion nach 6.3.2 (4): = 0,525 
+ für Schubnachweise in der Verbundfuge in 6.2.5 nach Gleichung (6.25) gilt:
+ sehr glatte Fuge: = 0 
+ (für sehr glatte Fugen ohne äußere Drucknormalkraft senkrecht zur Fuge; der Reibungsanteil in 
+Gleichung (6.25) darf bis zur Grenze ( · n 0,1 fcd) ausgenutzt werden) 
+ glatte Fuge: = 0,20 
+ raue Fuge: = 0,50 
+ verzahnte Fuge: = 0,70 
+Für Betonfestigkeitsklassen C55/67 sind alle -Werte mit dem Faktor 2 = (1,1  fck / 500) zu multiplizieren. 
+NCI Zu 6.2.2 (6) 
+Die Abminderung des Querkraftanteils auflagernaher Einzellasten mit darf nur bei direkter Auflagerung 
+erfolgen. 
+NCI Zu 6.2.2 (7) 
+Konsolen sind in der Regel mit Stabwerkmodellen zu bemessen. 
+NCI Zu 6.2.3 (1) 
+Für die Annahme von z = 0,9 d wird vorausgesetzt, dass die Bügel nach 8.5 in der Druckzone verankert sind. 
+Es darf für z aber kein größerer Wert angesetzt werden, als sich aus z = d  2 cV,l d  cV,l  30 mm ergibt (mit 
+Verlegemaß cV,l der Längsbewehrung in der Betondruckzone). 
+Zu Bild 6.5: 
+Bei anderen Querschnittsformen, z. B. Kreisquerschnitten, ist als wirksame Breite bw der kleinere Wert der 
+Querschnittsbreite zwischen dem Bewehrungsschwerpunkt (Zuggurt) und der Druckresultierenden (entspricht 
+der kleinsten Breite senkrecht zum inneren Hebelarm z) zu verwenden. 
+35
+
+===== PDF-SEITE 36 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 6.2.3 (2) 
+0,3/1
+/4,12,1cot0,1
+EdccRd,
+cdcd
+VV
+f (NA.6.7a) 
+Bei geneigter Querkraftbewehrung darf cot bis 0,58 ausgenutzt werden. 
+zbffcV w
+cd
+cd3/1
+ckccRd, 2,1148,0 (NA.6.7b) 
+Dabei ist 
+c = 0,5; 
+cd der Bemessungswert der Betonlängsspannung in Höhe des Schwerpunkts des Querschnitts mit 
+cd = NEd / Ac in N/mm²; Betonzugspannungen cd in den Gleichungen (NA.6.7a) und (NA.6.7b) 
+sind negativ einzusetzen; 
+NEd der Bemessungswert der Längskraft im Querschnitt infolge äußerer Einwirkungen ( NEd > 0 als 
+Längsdruckkraft). 
+Vereinfachend dürfen für cot die folgenden Werte angesetzt werden: 
+ reine Biegung: cot = 1,2 
+ Biegung und Längsdruckkraft: cot = 1,2 
+ Biegung und Längszugkraft: cot = 1,0 
+NDP Zu 6.2.3 (3) 
+1 = 0,75 2
+2 = (1,1  fck / 500) 1,0 
+cw = 1,0 
+Die Gleichungen (6.10N) und (6.11N) sind nicht zu anzuwenden. 
+NCI Zu 6.2.3 (4) 
+ANMERKUNG Die Gleichung (6.14) darf bis cot = 0,58 ausgewertet werden. 
+NCI Zu 6.2.3 (5) 
+Wird die Belastung nicht an der Bauteiloberseite eingetragen, ist die Querkraftbewehrung mit dem Mittelwert 
+von VEd in diesem Längenabschnitt zu bestimmen. 
+36
+
+===== PDF-SEITE 37 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.2.3 (6) 
+In Gleichung (6.16) sollten die Querschnitte der Hüllrohre bei Betonen C55/67 oder LC55/60 vollständig 
+abgezogen werden: bw,nom = bw  1,0
+Die Abminderung des Faktors 1,2 in Gleichung (6.17) ist auch bei vorhandener Querbewehrung nicht 
+zulässig. 
+NCI Zu 6.2.3 (8) 
+Die Querkraft darf nur bei direkter Auflagerung mit dem Beiwert abgemindert werden. 
+Konsolen sollten ohne Querkraftabminderung mit Stabwerkmodellen bemessen werden. 
+NDP Zu 6.2.4 (4) 
+Der Druckstrebenwinkel f darf nach NDP zu 6.2.3 (2) ermittelt werden. Dabei ist bw = hf und z = x zu setzen. 
+Für cd darf die mittlere Betonlängsspannung im anzuschließenden Gurtabschnitt mit der Länge x angesetzt 
+werden.
+Vereinfachend darf in Zuggurten cot f = 1,0 und in Druckgurten cot f = 1,2 gesetzt werden.
+Gleichung (6.22): Für ist 1 nach NDP zu 6.2.3 (3) zu verwenden. 
+NCI Zu 6.2.4 (5) 
+Wenn Querkraftbewehrung in der Gurtplatte erforderlich wird, sollte der Nachweis der Druckstreben in beiden 
+Beanspruchungsrichtungen des Gurtes (Scheibe und Platte) in linearer Interaktion nach Gleichung 
+(NA.6.22.1) geführt werden: 
+0,1
+ScheibemaxRd,
+Ed
+PlattemaxRd,
+Ed
+V
+V
+V
+V
+ (NA.6.22.1) 
+NDP Zu 6.2.4 (6) 
+Es gilt der empfohlene Wert k = 0,4 für monolithische Querschnitte und mit Mindestbiegebewehrung nach 
+Abschnitt 9. 
+NCI Zu 6.2.5 (1) 
+Für den inneren Hebelarm darf z = 0,9d angesetzt werden. Ist die Verbundbewehrung jedoch gleichzeitig 
+Querkraftbewehrung, muss die Ermittlung des inneren Hebelarms nach NCI zu 6.2.3 (1) erfolgen. 
+Gleichung (6.25): Der Traganteil der Verbundbewehrung aus der Schubreibung in Gleichung (6.25) darf auf 
+fyd (1,2 µ sin + cos ) erhöht werden. 
+ANMERKUNG Die Übertragung von Spannungen aus teilweise vorgespannten Bauteilen infolge Kriechen und 
+Schwinden über die Verbundfuge ist bei der einwirkenden Schubkraft vEdi zu berücksichtigen. 
+NCI Zu 6.2.5, Bild 6.9 
+Es gilt zusätzlich: 0,8 h1 / h2 1,25. Die Zahnhöhe muss abweichend vom Bild 6.9 d 10 mm betragen. 
+37
+
+===== PDF-SEITE 38 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.2.5 (2) 
+Im Allgemeinen ist für sehr glatte Fugen der Rauigkeitsbeiwert c = 0 zu verwenden. Höhere Beiwerte müssen 
+durch entsprechende Nachweise begründet sein. 
+Unbehandelte Fugenoberflächen sollten bei der Verwendung von Beton (1. Betonierabschnitt) mit fließfähiger 
+bzw. sehr fließfähiger Konsistenz ( F5) als sehr glatte Fugen eingestuft werden. 
+Bei rauen Fugen muss die Gesteinskörnung mindestens 3 mm tief freigelegt werden (d. h. z. B. mit dem 
+Sandflächenverfahren bestimmte mittlere Rautiefe mindestens 1,5 mm). 
+Wenn eine Gesteinskörnung mit dg 16 mm verwendet und diese mit Hochdruckwasserstrahlen mindestens 
+6 mm tief freigelegt wird (d. h. z. B. mit dem Sandflächenverfahren bestimmte mittlere Rautiefe mindestens 
+3 mm), darf die Fuge als verzahnt eingestuft werden. 
+In den Fällen, in denen die Fuge infolge Einwirkungen rechtwinklig zur Fuge unter Zug steht, ist bei glatten 
+oder rauen Fugen c = 0 zu setzen. 
+NCI Zu 6.2.5 (3) 
+Für die Verbundbewehrung bei Ortbetonergänzungen sollten im Allgemeinen die Konstruktionsregeln für die 
+Querkraftbewehrung eingehalten werden. 
+Für Verbundbewehrung bei Ortbetonergänzungen in Platten ohne rechnerisch erforderliche Querkraft-
+bewehrung dürfen nachfolgende Konstruktionsregeln angewendet werden. 
+Für die maximalen Abstände gilt 
+ in Spannrichtung: 2,5 h 300 mm 
+ quer zur Spannrichtung: 5 h 750 mm ( 375 mm zum Rand). 
+Wird die Verbundbewehrung zugleich als Querkraftbewehrung eingesetzt, gelten die Konstruktionsregeln für 
+Querkraftbewehrung nach NCI zu 9.3.2. Für aufgebogene Längsstäbe mit angeschweißter Verankerung in 
+Platten mit h 200 mm darf jedoch als Abstand in Längsrichtung (cot + cot ) z 200 mm gewählt werden. 
+In Bauteilen mit erforderlicher Querkraftbewehrung und Deckendicken bis 400 mm beträgt der maximale 
+Abstand quer zur Spannrichtung 400 mm. Für größere Deckendicken gilt NCI zu 9.3.2 (4). 
+NCI Zu 6.2.5 (4) 
+Dies gilt auch bei Fugen zwischen nebeneinander liegenden Fertigteilen ohne Verbindung durch Mörtel- oder 
+Kunstharzfugen wegen des nicht vorhandenen Haftverbundes. 
+NCI Zu 6.2.5 (5) 
+Bei dynamischer oder Ermüdungsbeanspruchung darf der Adhäsionstraganteil des Betonverbundes nicht 
+berücksichtigt werden (c = 0 in 6.2.5 (1)). 
+NCI Zu 6.2.5 
+(NA.6) Bei überwiegend auf Biegung beanspruchten Bauteilen mit Fugen rechtwinklig zur Systemachse wirkt 
+die Fuge wie ein Biegeriss. In diesem Fall sind die Fugen rau oder verzahnt auszuführen. Der Nachweis sollte 
+deshalb entsprechend 6.2.2 und 6.2.3 geführt werden. Dabei sollte sowohl VRd,c nach Gleichung (6.2) als auch 
+VRd,cc nach Gleichung (NA.6.7b) als auch VRd,max nach Gleichung (6.9) bzw. Gleichung (6.14) im Verhältnis 
+c / 0,50 abgemindert werden. Bei Bauteilen mit Querkraftbewehrung ist die Abminderung mindestens bis zum 
+Abstand von le = 0,5 cot d beiderseits der Fuge vorzunehmen. 
+38
+
+===== PDF-SEITE 39 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.3.2 (1) 
+Die effektive Wanddicke tef,i ist immer gleich dem doppelten Abstand von der Außenfläche bis zur Mittellinie 
+der Längsbewehrung, aber nicht größer als die vorhandene Wanddicke, anzunehmen. 
+Bei Hohlkästen mit Wanddicken hW b / 6 bzw. hW h / 6 und beidseitiger Wandbewehrung darf die gesamte 
+Wanddicke für tef,i angesetzt werden. 
+NCI Zu 6.3.2 (2) 
+Bei kombinierter Beanspruchung aus Torsion und anteiliger Querkraft ist in Gleichung (NA.6.7a) für VEd die 
+Schubkraft der Wand VEd,T+V nach Gleichung (NA.6.27.1) und in Gleichung (NA.6.7b) für bw die effektive 
+Dicke der Wand tef,i einzusetzen. Mit dem gewählten Winkel ist der Nachweis sowohl für Querkraft als auch 
+für Torsion zu führen. Die so ermittelten Bewehrungen sind zu addieren. 
+w
+ief,Ed
+TEd,VTEd,
+b
+tVVV (NA.6.27.1) 
+Vereinfachend darf die Bewehrung für Torsion allein unter der Annahme von = 45° ermittelt und zu der nach 
+6.2.3 ermittelten Querkraftbewehrung addiert werden. 
+NCI Zu 6.3.2 (3) 
+Die erforderliche Querschnittsfläche der Torsionsbügelbewehrung 
+ASW rechtwinklig zur Bauteilachse darf mit 
+Gleichung (NA.6.28.1) ermittelt werden: 
+tan2 k
+Ed
+w
+sw
+A
+t
+s
+fA yd (NA.6.28.1) 
+Dabei ist 
+sW der Abstand der Torsionsbewehrung in Richtung der Bauteilachse. 
+NCI zu 6.3.2 (4) 
+Für Kompaktquerschnitte darf die günstige Wirkung des Kernquerschnitts in der Interaktionsgleichung 
+1,0
+2
+maxRd,
+Ed
+2
+maxRd,
+Ed
+V
+V
+T
+T (NA.6.29.1) 
+berücksichtigt werden. 
+Bei Kastenquerschnitten mit Bewehrung an den Innen- und Außenseiten der Wände darf v = 0,75 angesetzt 
+werden. 
+NCI Zu 6.3.2 (5) 
+Wenn die beiden folgenden Bedingungen nicht eingehalten werden, sollte neben dem Einbau der 
+Mindestbewehrung der Nachweis auf Querkraft und Torsion geführt werden: 
+5,4
+wEd
+Ed
+bVT
+ (NA.6.31.1) 
+cRd,
+wEd
+Ed
+Ed
+4,51 VbV
+TV (NA.6.31.2) 
+39
+
+===== PDF-SEITE 40 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.4.1 (2)P 
+Die Festlegungen in 6.4 sind auf die folgenden Arten von Lasteinleitungsflächen Aload anwendbar: 
+ rechteckig und kreisförmig mit einem Umfang u0 12d und einem Seitenverhältnis a / b 2; 
+ beliebig, aber sinngemäß wie die oben erwähnten Formen begrenzt. 
+Dabei ist d die mittlere statische Nutzhöhe des nachzuweisenden Bauteils. Die Rundschnitte benachbarter 
+Lasteinleitungsflächen dürfen sich nicht überschneiden. 
+Bei größeren Lasteinleitungsflächen Aload sind die Durchstanznachweise auf Teilrundschnitte zu beziehen 
+(siehe Bild NA.6.12.1). 
+Bei Rundstützen mit u0 > 12d sind querkraftbeanspruchte Flachdecken nach 6.2 nachzuweisen. Dabei darf in 
+6.2.2 (1) der Vorwert CRd,c = (12d / u0) 0,18 / C 0,15 / C verwendet werden. 
+ b 1 = min {b; 3d} 
+a1 = min {a; 2d; 6d  b1} 
+Bild NA.6.12.1  kritischer Rundschnitt bei ausgedehnten Auflagerflächen 
+40
+
+===== PDF-SEITE 41 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.4.2 (1) 
+Bei Wänden und großen Stützen sind, sofern kein genauerer Nachweis geführt wird, die Rundschnitte nach 
+Bild NA.6.12.1 festzulegen, da sich die Querkräfte auf die Ecken der Auflagerflächen konzentrieren. 
+Zu Bild 6.13 wird ergänzt: 
+NCI Zu 6.4.2 (2) 
+Der Abstand acrit des maßgebenden Rundschnitts ist iterativ zu ermitteln. Für Bodenplatten und schlanke 
+Fundamente mit > 2,0 darf zur Vereinfachung der Rechnung ein konstanter Rundschnitt im Abstand 1,0 d
+angenommen werden. 
+Die Fundamentschlankheit = a / d bezieht sich auf den kürzesten Abstand a zwischen Lasteinleitungs-
+fläche und Fundamentrand (siehe auch Bild NA.6.21.1). 
+NCI Zu 6.4.2 (8) 
+Die Nachweisgrenze lH < 2hH ist durch lH < 1,5hH zu ersetzen. 
+Für Stützenkopfverstärkungen mit 1,5 hH < lH < 2hH ist ein zusätzlicher Nachweis im Abstand 1,5( d + hH) vom 
+Stützenrand zu führen (Nachweis mit dH als statische Nutzhöhe). Hierbei darf der Durchstanzwiderstand ohne 
+Durchstanzbewehrung vRd,c im Verhältnis der Rundschnittlängen u2,0d / u1,5d erhöht werden. 
+NCI Zu 6.4.2 (11) 
+Für nicht kreisförmige Stützen sind die Rundschnitte affin zu Bild 6.13 anzunehmen. Dabei sind die kritischen 
+Rundschnitte für die Stützenkopfverstärkung mit dH und für die anschließende Platte mit d zu ermitteln. 
+NCI Zu 6.4.3 (2) 
+Der maximale Durchstanzwiderstand vRd,max wird modifiziert und ist im kritischen Rundschnitt u1 nachzu-
+weisen. 
+NCI Zu 6.4.3 (3) 
+Bei Anwendung der Gleichung (6.39) ist das Moment unter Berücksichtigung der Steifigkeiten der 
+angrenzenden Bauteile zu berechnen. Werte kleiner als 1,10 sind für den Lasterhöhungsfaktor unzulässig. 
+Bei Stützen-Decken-Knoten mit zweiachsigen Ausmitten darf Gleichung (NA.6.39.1) verwendet werden: 
+2
+y,1
+1
+Ed
+yEd,
+y
+2
+x,1
+1
+Ed
+xEd,
+x1
+W
+u
+V
+M
+k
+W
+u
+V
+Mk
+ (NA.6.39.1) 
+Die Gleichungen (6.41) und (6.42) dürfen bei allen Stützen angesetzt werden, bei denen ein geschlossener 
+kritischer Rundschnitt geführt werden kann (z. B auch Randstützen mit großem Deckenüberstand). 
+Gleichung (6.43) gilt nur bei Innenstützen mit zweiachsiger Ausmitte. 
+41
+
+===== PDF-SEITE 42 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.4.3 (4) 
+Das Nachweisverfahren nach 6.4.3 (4) darf nicht angewendet werden. 
+NCI Zu 6.4.3 (5) 
+Das Nachweisverfahren nach 6.4.3 (5) darf nicht angewendet werden. 
+NDP Zu 6.4.3 (6) 
+Für unverschiebliche Systeme gilt Bild NA.6.21 mit folgenden Werten für : 
+A  Innenstütze: = 1,10; B  Randstütze: = 1,4; C  Eckstütze: = 1,5 
+D  Wandende: = 1,35; E  Wandecke: = 1,20 
+Für Randstützen mit großen Ausmitten e / c 1,2 ist der Lasterhöhungsfaktor genauer zu ermitteln (z. B. nach 
+Gleichung (6.39)). 
+Bild 6.21N wird um D und E ergänzt: 
+Legende 
+D Wandende 
+E Wandecke 
+Bild NA.6.21 
+NCI Zu 6.4.3 (9) 
+ANMERKUNG Zur Lage anrechenbarer Spannglieder siehe 9.4.3 (2). 
+NDP Zu 6.4.4 (1) 
+ bei Flachdecken und Bodenplatten: CRd,c = 0,18 / C
+Für Innenstützen bei Flachdecken mit u0 / d < 4 gilt jedoch: CRd,c = 0,18 / C (0,1 u0 / d + 0,6) 
+ bei Fundamenten: CRd,c = 0,15 / C
+k1 = 0,10
+vmin wie in 6.2.2 (1) 
+42
+
+===== PDF-SEITE 43 =====
+DIN EN 1992-1-1/NA:2011-01 
+Der Biegebewehrungsgrad l ist zusätzlich auf l 0,5fcd / fyd zu begrenzen. 
+Betonzugspannungen cp in Gleichung (6.47) sind negativ einzusetzen. 
+NCI Zu 6.4.4 (2) 
+Der Abstand acrit des maßgebenden Rundschnitts ist iterativ zu ermitteln (Bild NA.6.21.1). Für Bodenplatten 
+und schlanke Fundamente mit > 2,0 darf zur Vereinfachung der Rechnung ein konstanter Rundschnitt im 
+Abstand 1,0d angenommen werden. 
+Für Stützenfundamente gilt CRd,c = 0,15 / C. 
+Die resultierende einwirkende Querkraft VEd,red nach Gleichung (6.48) sollte in jedem Fall mindestens mit 
+einem Lasterhöhungsfaktor = 1,10 vergrößert werden. 
+In Gleichung (6.51) wird der Mindestwert für den Lasterhöhungsfaktor für ausmittige Lasten analog NCI zu 
+6.4.3 (3) ergänzt: 
+10,11
+redEd,
+Ed
+W
+u
+V
+Mk (NA.6.51.1) 
+Der Bemessungswert des Durchstanzwiderstands vRd,c nach Gleichung (6.50) ergibt sich in N/mm². 
+Für ausmittig belastete Fundamente mit klaffender Fuge im Rundschnittbereich unter Bemessungs-
+einwirkungen darf eine Berechnung mit Sektorlasteinzugsflächen erfolgen. Der Abzugswert für den Sohldruck 
+ergibt sich dann jeweils in jedem Sektor separat. 
+Legende 
+A kritischer Rundschnitt 
+B Fundament AF Fundamentgrundfläche
+C Lasteinleitungsfläche Aload VEd Abzugswert des Sohldrucks ohne Fundamentlast 
+nach 6.4.4 (2)
+ = a / d mit a und d an der Lasteinleitungsfläche 
+ arctan 1/2 
+Bild NA.6.21.1  Rundschnitt und Abzug Sohldruck bei Fundamenten 
+43
+
+===== PDF-SEITE 44 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.4.5 (1) 
+Die Tragfähigkeit der Durchstanzbewehrung nach Gleichung (6.52), der Betontraganteil vRd,c nach 
+Gleichung (6.47) und die einwirkende Querkraft vEd,i nach Gleichung (6.38) sind für diesen Nachweis für 
+Flachdecken auf den kritischen Umfang u1 im Abstand acrit = 2,0d bezogen. Diese Durchstanzbewehrung ist in 
+jeder rechnerisch erforderlichen Bewehrungsreihe einzulegen, wobei die Bewehrungsmenge Asw in den ersten 
+beiden Reihen neben Aload mit einem Anpassungsfaktor sw,i zu vergrößern ist: 
+Reihe 1 (mit 0,3d a1 0,5d): sw,1 = 2,5 
+Reihe 2 (mit sr 0,75d): sw,2 = 1,4. 
+Bei unterschiedlichen radialen Abständen der Bewehrungsreihen sr,i ist in Gleichung (6.52) der maximale 
+einzusetzen. 
+Für aufgebogene Durchstanzbewehrung ist für das Verhältnis d / sr in Gleichung (6.52) der Wert 0,53 (statt 
+0,67) anzusetzen. Die aufgebogene Bewehrung darf mit fywd,ef = fywd ausgenutzt werden. 
+Aufgrund der steileren Neigung der Druckstreben wird für Fundamente und Bodenplatten folgendes 
+festgelegt: 
+Die reduzierte einwirkende Querkraft VEd,red nach Gleichung (6.48) ist von den ersten beiden Bewehrungs-
+reihen neben Aload ohne Abzug eines Betontraganteils aufzunehmen. Dabei wird die Bewehrungsmenge
+Asw,1+2 gleichmäßig auf beide Reihen verteilt, die in den Abständen a1 = 0,3d und a2 = 0,8d anzuordnen sind: 
+ Bügelbewehrung: 
+VEd,red VRd,s = Asw,1+2 · fywd,ef (NA.6.52.1) 
+ aufgebogene Bewehrung: 
+VEd,red VRd,s = 1,3 · Asw,1+2 · fywd · sin (NA.6.52.2) 
+Dabei ist 
+ der Erhöhungsfaktor für die Querkraft nach Gleichung (NA.6.51.1); 
+ der Winkel der geneigten Durchstanzbewehrung zur Plattenebene. 
+Wenn bei Fundamenten und Bodenplatten ggf. weitere Bewehrungsreihen erforderlich werden, sind je Reihe 
+jeweils 33 % der Bewehrung Asw,1+2 nach Gleichung (NA.6.52.1) vorzusehen. Der Abzugswert des Sohldrucks 
+VEd in Gleichung (6.48) darf dabei mit der Fundamentfläche innerhalb der betrachteten Bewehrungsreihe 
+angesetzt werden. 
+NCI Zu 6.4.5 (2) 
+Es sind in jedem Fall mindestens 2 Bewehrungsreihen innerhalb des durch den Umfang uout nach 6.4.5 (4 ) 
+begrenzten Bauteilbereiches zu verlegen. 
+Der radiale Abstand der 1. Bewehrungsreihe ist bei gedrungenen Fundamenten auf 0,3 d vom Rand der 
+Lasteinleitungsfläche und die Abstände sr zwischen den ersten drei Bewehrungsreihen auf 0,5d zu begrenzen. 
+44
+
+===== PDF-SEITE 45 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 6.4.5 (3) 
+Die Maximaltragfähigkeit ist im kritischen Rundschnitt u1 mit Gleichung (NA.6.53.1) nachzuweisen:
+vEd,u1 vRd,max = 1,4 vRd,c,u1 (NA.6.53.1) 
+Eine Betondrucknormalspannung cp infolge Vorspannung bei vRd,c, darf dabei nicht berücksichtigt werden. 
+NDP Zu 6.4.5 (4) 
+Es gilt der empfohlene Wert k = 1,5. 
+NCI Zu 6.4.5 (4) 
+ANMERKUNG vRd,c für Querkrafttragfähigkeit ohne Querkraftbewehrung nach 6.2.2 (1). 
+Bild 6.22: Die rechtwinklig angeordnete und auf die Gurtstreifen konzentrierte Durchstanzbewehrung mit 
+einem aufgelösten äußeren Rundschnitt uout,ef B darf nicht verwendet werden. 
+NCI Zu 6.4.5 
+(NA.6) Um die Querkrafttragfähigkeit sicherzustellen, sind die Platten im Bereich der Stützen für 
+Mindestmomente mEd nach Gleichung (NA.6.54.1) zu bemessen, sofern die Schnittgrößenermittlung nicht zu 
+höheren Werten führt. 
+Wenn andere Festlegungen fehlen, sollten folgende Mindestmomente je Längeneinheit angesetzt werden: 
+mEd,x = x VEd und mEd,y = y VEd (NA.6.54.1)
+Dabei ist
+VEd die aufzunehmende Querkraft;
+x, y der Momentenbeiwert nach Tabelle NA.6.1.1 für die x- bzw. y-Richtung (siehe Bild NA.6.22.1). 
+Diese Mindestmomente sollten jeweils in einem Bereich mit der in Tabelle NA.6.1.1 angegebenen Breite 
+angesetzt werden (siehe Bild NA.6.22.1). 
+45
+
+===== PDF-SEITE 46 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.6.1.1  Momentenbeiwerte und Verteilungsbreite der Mindestlängsbewehrung 
+Spalte 1 2 3 4 5 6 
+x y
+Zeile Lage der 
+Stütze Zug an der 
+Platten-
+oberseitec
+Zug an der 
+Platten-
+unterseitec
+anzu-
+setzende 
+Breite b
+Zug an der 
+Platten-
+oberseitec
+Zug an der 
+Platten-
+unterseitec
+anzu-
+setzende 
+Breite b
+1 Innenstütze 0,125 0 0,3 ly 0,125 0 0,3 lx
+2 Randstütze, 
+Rand x“ a 0,25 0 0,15 ly 0,125 0,125 
+(je m 
+Platten-
+breite 
+3 Randstütze, 
+Rand y“ a 0,125 0,124 
+(je m 
+Platten-
+breite) 
+0,25 0 0,15 lx
+4 Eckstütze 0,5 0,5 
+(je m 
+Platten-
+breite) 
+0,5 0,5 
+(je m 
+Platten-
+breite 
+a Definition der Ränder und der Stützenabstände lx und ly siehe Bild NA.6.22.1. 
+b Siehe Bild NA.6.22.1. 
+c Die Plattenoberseite bezeichnet die der Lasteinleitungsfläche gegenüberliegende Seite der Platte; die Plattenunterseite diejeni ge 
+Seite, auf der die Lasteinleitungsfläche liegt. 
+Die Bereiche für den Ansatz der Mindestbiegemomente mEd,x und mEd,y nach Tabelle NA.6.1.1 können 
+Bild NA.6.22.1 entnommen werden. 
+Legende 
+1 Rand x“ 
+2 Rand y“ 
+Bild NA.6.22.1  Bereiche für den Ansatz der Mindestbiegemomente mEd,x und mEd,y 
+46
+
+===== PDF-SEITE 47 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.5.2 (1) 
+ANMERKUNG Ist die Dehnungsverteilung über die Höhe der Betonstrebe nicht konstant, dann sollte die Höhe des 
+Druckspannungsfeldes oder die Höhe des Spannungsblocks im Hinblick auf die Verträglichkeit begrenzt werden. So 
+sollten diese Abmessungen nicht größer gewählt werden, als sie sich bei Annahme einer linearen Dehnungsverteilung 
+ergeben. 
+NDP Zu 6.5.2 (2) Bemessung der Druckstreben 
+ für Druckstreben parallel zu Rissen: ’ = 1,25 (NA.6.57a) 
+ für Druckstreben, die Risse kreuzen und für Knotenbemessung nach 6.5.4: ’ = 1,0 (NA.6.57b) 
+ für starke Rissbildung mit V und T: ’ = 0,875 (NA.6.57c) 
+Für Betonfestigkeitsklassen C55/67 ist ’ zusätzlich mit 2 = (1,1  fck / 500) zu multiplizieren. 
+NCI Zu 6.5.3 (1) 
+Der Bemessungswert der Stahlspannung der Bewehrung der Zugstreben und der Bewehrung zur Aufnahme 
+der Querzugkräfte in Druckstreben ist bei Betonstahl auf fyd, bei Spannstahl auf 0,9fp0,1k / S zu begrenzen. 
+NCI Zu 6.5.3 (2) 
+Die Bewehrung ist bis in die konzentrierten Knoten ungeschwächt durchzuführen. 
+Sie darf in verschmierten Knoten, die sich im Tragwerk über eine größere Länge erstrecken, innerhalb des 
+Knotenbereichs gestaffelt enden. Dabei muss sie alle durch die Bewehrung umzulenkenden Druckwirkungen 
+erfassen. 
+Die Verankerungslänge der Bewehrung in Druck-Zug-Knoten beginnt am Knotenanfang, wo erste 
+Druckspannungen aus den Druckstreben auf die verankerte Bewehrung treffen und von ihr umgelenkt werden 
+(siehe Bild 6.27). 
+NDP Zu 6.5.4 (4) 
+k1 = 1,1; k2 = k3 = 0,75 
+NCI Zu 6.5.4 (4) 
+Knoten mit Abbiegungen von Bewehrung (z. B. nach Bild 6.28) erfordern die Einhaltung der zulässigen 
+Biegerollendurchmesser nach 8.3. 
+NDP Zu 6.5.4 (6) 
+k4 = 1,1 
+Bei genaueren Nachweisen können auch höhere Werte bis Rd,max. = 3,0 fcd angesetzt werden (siehe 3.1.9 
+bzw. 6.7). 
+NCI Zu 6.7 (3) 
+Bei ausmittiger Belastung ist die Belastungsfläche Ac0 entsprechend der Ausmitte zu reduzieren. 
+47
+
+===== PDF-SEITE 48 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.7 (3), Bild 6.29 
+ANMERKUNG Für den Ansatz der Teilflächentragfähigkeit ist mindestens eine Ac0 umgebende Betonfläche mit den 
+Abmessungen aus der Projektion von Ac1 auf die Lasteinleitungsebene erforderlich.
+NCI Zu 6.7 (4) 
+Ist die Aufnahme der Spaltzugkräfte nicht durch Bewehrung gesichert, sollte die Teilflächenlast auf 
+FRdu 0,6 fcd Ac0 begrenzt werden. 
+NCI Zu 6.8.1 (2) 
+Für Tragwerke des üblichen Hochbaus braucht im Allgemeinen kein Nachweis gegen Ermüdung geführt zu 
+werden. 
+NCI Zu 6.8.2 (2)P 
+ANMERKUNG 1 Der Wert ist in Europäischen Technischen Zulassungen nicht enthalten. 
+ANMERKUNG 2 Die Verbundbeiwerte für sofortigen Verbund in Tabelle 6.2 gelten für Betone C50/60. Bei Beton-
+druckfestigkeiten C70/85 sind diese Werte zu halbieren. Für Werte zwischen C50/60 und C70/85 darf interpoliert 
+werden. 
+NCI Zu 6.8.3 (1)P 
+Die Nachweise sind für Stahl und Beton im Allgemeinen unter Berücksichtigung der folgenden 
+Einwirkungskombinationen zu führen: 
+ ständige Einwirkungen, 
+ maßgebender charakteristischer Wert der Vorspannung Pk, 
+ wahrscheinlicher Wert der Setzungen, sofern ungünstig wirkend, 
+ häufiger Wert der Temperatureinwirkung, sofern ungünstig wirkend, 
+ Einwirkung aus Nutzlasten bzw. Verkehrslasten. 
+NDP Zu 6.8.4 (1) 
+Es gilt der empfohlene Wert F,fat = 1,0. 
+Die Parameter der Wöhlerlinien sind in den Tabellen NA.6.3 und NA.6.4 enthalten. 
+NCI Zu 6.8.4 (1) 
+Kann ein vereinfachter Nachweis nach 6.8.5 oder 6.8.6 nicht erbracht werden, so ist ein expliziter 
+Betriebsfestigkeitsnachweis nach 6.8.4 (2) zu führen. 
+NDP zu 6.8.4, Tabelle 6.3N 
+Es gilt Tabelle NA.6.3. 
+48
+
+===== PDF-SEITE 49 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.6.3  Parameter der Ermüdungsfestigkeitskurven (Wöhlerlinien) für Betonstahl 
+Spannungsexponent 
+Art der Bewehrung N* 
+k1 k2
+Rsk bei N* Zyklen 
+N/mm² 
+gerade und gebogene Stäbe a 106 5 9 c 175 
+geschweißte Stäbe und Betonstahlmatten b 106 4 5 85 
+a Für gebogene Stäbe mit D < 25 ist Rsk mit dem Reduktionsfaktor 1 = 0,35 + 0,026 D / zu multiplizieren. Für Stäbe > 28 
+mm ist Rsk = 145 N/mm² (gilt nur für hochduktile Betonstähle). Dabei ist D der Biegerollendurchmesser; der Stabdurchmesser. 
+b Sofern nicht andere Wöhlerlinien durch eine allgemeine bauaufsichtliche Zulassung oder Zustimmung im Einzelfall festgelegt 
+werden. 
+c In korrosiven Umgebungsbedingungen (XC2, XC3, XC4, XS, XD) sind weitere Überlegungen zur Wöhlerlinie anzustellen. Wenn 
+keine genaueren Erkenntnisse vorliegen, ist für k2 ein reduzierter Wert 5 k2 < 9 anzusetzen.
+NCI Zu 6.8.4, Tabelle NA.6.3 
+Mechanische Verbindungen werden grundsätzlich über Zulassungen geregelt. 
+Die Werte gelten bei geschweißten Stäben einschließlich Heft- und Stumpfstoßverbindungen. 
+Die Verwendung von Stabdurchmessern > 40 mm wird durch Zulassungen geregelt. 
+Auf den Reduktionsfaktor 1 darf bei Querkraftbewehrung mit 90°-Bügeln für 16 mm mit Bügelhöhen 
+ 600 mm verzichtet werden. 
+NDP Zu 6.8.4, Tabelle 6.4N 
+Es gilt Tabelle NA.6.4.
+Tabelle NA.6.4  Parameter der Ermüdungsfestigkeitskurven (Wöhlerlinien) für Spannstahl 
+Spannungs-
+exponent 
+Rsk
+bei N* Zyklen b 
+N/mm² Spannstahl a N* 
+k1 k2 Klasse 1 Klasse 2 
+im sofortigen Verbund 10 6 5 9 185 120 
+im nachträglichen Verbund 
+ Einzellitzen in Kunststoffhüllrohren 106 5 9 185 120 
+ gerade Spannglieder, gekrümmte Spannglieder in 
+Kunststoffhüllrohren 
+106 5 9 150 95 
+ gekrümmte Spannglieder in Stahlhüllrohren 106 3 7 120 75 
+a Sofern nicht andere Wöhlerlinien durch eine Zulassung oder Zustimmung im Einzelfall für den eingebauten Zustand festgelegt 
+werden. 
+b Werte im eingebauten Zustand. Die Spannstähle werden in 2 Klassen eingeteilt. Die Werte für Klasse 1 sind durch eine 
+allgemeine bauaufsichtliche Zulassung für den Spannstahl nachzuweisen. Die Werte für Nachweise des Verankerungsbereichs von 
+Spanngliedern sind immer der allgemeinen bauaufsichtlichen Zulassung zu entnehmen.
+49
+
+===== PDF-SEITE 50 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 6.8.4, Tabelle NA.6.4 
+Kopplungen werden grundsätzlich im Rahmen von Zulassungen für Spannverfahren geregelt. 
+Die Verwendung von Stabdurchmessern > 40 mm wird durch Zulassungen geregelt. 
+NDP Zu 6.8.4 (5) 
+Es gilt der empfohlene Wert k2 = 5. 
+NDP Zu 6.8.6 (1) 
+k1 = 70 N/mm² und k2 = 0 
+NDP Zu 6.8.6 (3) 
+k3 = 0,75 
+NDP Zu 6.8.7 (1) 
+N = 106
+k1 = 1,0 
+NCI Zu 6.8.7 (3) 
+In diesem Fall darf die Betondruckfestigkeit fcd,fat mit dem Festigkeitsabminderungsbeiwert 1 nach 
+NDP zu 6.2.3 (3) reduziert werden. 
+NCI Zu 7.1 
+(NA.3) Die Spannungsnachweise nach 7.2 dürfen für nicht vorgespannte Tragwerke des üblichen Hochbaus, 
+die nach Abschnitt 6 bemessen wurden, im Allgemeinen entfallen, wenn 
+ die Schnittgrößen nach der Elastizitätstheorie ermittelt und im Grenzzustand der Tragfähigkeit um nicht 
+mehr als 15 % umgelagert wurden und 
+ die bauliche Durchbildung nach Abschnitt 9 durchgeführt wird und insbesondere die Festlegungen für die 
+Mindestbewehrungen eingehalten sind. 
+NDP Zu 7.2 (2) 
+Es gilt der empfohlene Wert k1 = 0,6. 
+ANMERKUNG charakteristische = seltene Einwirkungskombination 
+NDP Zu 7.2 (3) 
+Es gilt der empfohlene Wert k2 = 0,45. 
+50
+
+===== PDF-SEITE 51 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 7.2 (5) 
+k3 = 0,8 
+k4 = 1,0 
+k5 = 0,65 für die quasi-ständige Einwirkungskombination nach Abzug der Spannkraftverluste nach 5.10.5.2 
+und 5.10.6 unter Berücksichtigung des Mittelwertes der Vorspannung 
+ANMERKUNG charakteristische = seltene Einwirkungskombination 
+NCI Zu 7.2 
+(NA.6) Nach dem Absetzen der Pressenkraft bzw. dem Lösen der Verankerung darf der Mittelwert der 
+Spannstahlspannung unter der seltenen Einwirkungskombination in keinem Querschnitt und zu keinem 
+Zeitpunkt den kleineren Wert von 0,9fp0,1k und 0,8fpk überschreiten. 
+(NA.7) Im Bereich von Verankerungen und Auflagern dürfen die Nachweise nach Absatz (2) und (3) entfallen, 
+wenn die Festlegungen in 8.10.3 sowie Abschnitt 9 eingehalten werden. 
+NDP Zu 7.3.1 (5) 
+Es gilt Tabelle NA.7.1. 
+Tabelle NA.7.1  Rechenwerte für wmax (in Millimeter)
+Stahlbeton 
+und 
+Vorspannung 
+ohne Verbund 
+Vorspannung 
+mit 
+nachträglichem 
+Verbund 
+Vorspannung mit 
+sofortigem Verbund 
+mit Einwirkungskombination 
+Expositions-
+klasse 
+quasi-ständig häufig häufig selten 
+X0, XC1 0,4 a 0,2 0,2 
+XC2  XC4 0,2 b
+
+XS1  XS3 
+XD1, XD2, 
+XD3 d
+0,3 0,2 b, c
+Dekom-
+pression
+0,2 
+a Bei den Expositionsklassen X0 und XC1 hat die Rissbreite keinen Einfluss auf die 
+Dauerhaftigkeit und dieser Grenzwert wird i. Allg. zur Wahrung eines akzeptablen 
+Erscheinungsbildes gesetzt. Fehlen entsprechende Anforderungen an das 
+Erscheinungsbild, darf dieser Grenzwert erhöht werden. 
+b Zusätzlich ist der Nachweis der Dekompression unter der quasi-ständigen 
+Einwirkungskombination zu führen. 
+c Wenn der Korrosionsschutz anderweitig sichergestellt wird (Hinweise hierzu in den 
+Zulassungen der Spannverfahren), darf der Dekompressionsnachweis entfallen. 
+d Beachte 7.3.1 (7).
+51
+
+===== PDF-SEITE 52 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 7.3.1 (5) 
+Für die Einhaltung des Grenzzustands der Dekompression ist nachzuweisen, dass der Betonquerschnitt um 
+das Spannglied im Bereich von 100 mm oder von 1/10 der Querschnittshöhe unter Druckspannungen steht. 
+Der größere Bereich ist maßgebend. Die Spannungen sind im Zustand II nachzuweisen. 
+Die ANMERKUNG zu Tabelle 7.1N entfällt. 
+NCI Zu 7.3.1 (8) 
+Auch an Stellen, an denen nach dem verwendeten Stabwerkmodell rechnerisch keine Bewehrung erforderlich 
+ist, können Zugkräfte entstehen, die durch eine geeignete konstruktive Bewehrung, z. B. für wandartige 
+Träger nach 9.7, abgedeckt werden müssen. 
+NCI Zu 7.3.1 
+(NA.10) Werden Betonstahlmatten mit einem Querschnitt a
+s 6 cm²/m nach 8.7.5.1 in zwei Ebenen gestoßen, 
+ist im Stoßbereich der Nachweis der Rissbreitenbegrenzung mit einer um 25 % erhöhten Stahlspannung zu 
+führen. 
+NCI Zu 7.3.2 (2) 
+Die Mindestbewehrung ist überwiegend am gezogenen Querschnittsrand anzuordnen, mit einem 
+angemessenen Anteil aber auch so über die Zugzone zu verteilen, dass die Bildung breiter Sammelrisse 
+vermieden wird. 
+Der Querschnitt der Mindestbewehrung darf vermindert werden, wenn die Zwangsschnittgröße die 
+Rissschnittgröße nicht erreicht. In diesen Fällen darf die Mindestbewehrung durch eine Bemessung des 
+Querschnitts für die nachgewiesene Zwangsschnittgröße unter Berücksichtigung der Anforderungen an die 
+Rissbreitenbegrenzung ermittelt werden. 
+Dabei ist 
+fct,eff die wirksame Zugfestigkeit des Betons zum betrachteten Zeitpunkt t, die beim Auftreten der Risse zu 
+erwarten ist (bei diesem Nachweis als Mittelwert der Zugfestigkeit fctm(t)). In vielen Fällen, z. B. wenn 
+der maßgebende Zwang aus dem Abfließen der Hydratationswärme entsteht, kann die Rissbildung 
+in den ersten 3 Tagen bis 5 Tagen nach dem Einbringen des Betons in Abhängigkeit von den 
+Umweltbedingungen, der Form des Bauteils und der Art der Schalung entstehen. In diesem Fall darf, 
+sofern kein genauerer Nachweis erforderlich ist, die Betonzugfestigkeit f
+ct,eff = 0,5 fctm(28 d) gesetzt 
+werden. Falls diese Annahme getroffen wird, ist dies durch Hinweis in der Baubeschreibung und auf 
+den Ausführungsplänen dem Bauausführenden rechtzeitig mitzuteilen, damit bei der Festlegung des 
+Betons eine entsprechende Anforderung aufgenommen werden kann. Wenn der Zeitpunkt der 
+Rissbildung nicht mit Sicherheit innerhalb der ersten 28 Tage festgelegt werden kann, sollte 
+mindestens eine Zugfestigkeit von 3 N/mm² angenommen werden; 
+k der Beiwert zur Berücksichtigung von nichtlinear verteilten Betonzugspannungen und weiteren 
+risskraftreduzierenden Einflüssen. Modifizierte Werte für k sind für unterschiedliche Fälle 
+nachfolgend angegeben: 
+a) Zugspannungen infolge im Bauteil selbst hervorgerufenen Zwangs (z. B. Eigenspannungen 
+infolge Abfließen der Hydratationswärme): 
+k darf mit 0,8 multipliziert werden. Für h ist der kleinere Wert von Höhe oder Breite des 
+Querschnitts oder Teilquerschnitts zu setzen; 
+52
+
+===== PDF-SEITE 53 =====
+DIN EN 1992-1-1/NA:2011-01 
+b) Zugspannungen infolge außerhalb des Bauteils hervorgerufenen Zwangs (z. B. Stützensenkung, 
+wenn der Querschnitt frei von nichtlinear verteilten Eigenspannungen und weiteren 
+risskraftreduzierenden Einflüssen ist): k = 1,0;
+c die Betonspannung in Höhe der Schwerlinie des Querschnitts oder Teilquerschnitts im ungerissenen 
+Zustand unter der Einwirkungskombination, die am Gesamtquerschnitt zur Erstrissbildung führt. 
+NCI Zu 7.3.2 (3) 
+ANMERKUNG Der Ansatz für den Wirkungsbereich der Bewehrung Ac,eff mit 2,5( h  d) gilt nur für eine konzentrierte 
+Bewehrungsanordnung und dünne Bauteile mit h / (h  d) 10 bei Biegung und h / (h  d) 5 bei zentrischem Zwang 
+hinreichend genau. Bei dickeren Bauteilen kann der Wirkungsbereich bis auf 5(h  d) anwachsen (siehe Bild 7.1 d)). 
+Wenn die Bewehrung nicht innerhalb des Grenzbereiches ( h  x) / 3 liegt, sollte dieser auf ( h  x) / 2 mit x im 
+Zustand I vergrößert werden. 
+NCI Zu 7.3.2; Bild 7.1N 
+Bild 7.1N wird ergänzt um Bild NA.7.1d): 
+d1 = (h  d)
+Bild NA.7.1d)  Vergrößerung der Höhe hc,ef des Wirkungsbereiches der Bewehrung bei zunehmender 
+Bauteildicke 
+NDP Zu 7.3.2 (4) 
+In Bauteilen mit Vorspannung mit Verbund ist die Mindestbewehrung nicht in Bereichen erforderlich, in denen 
+im Beton unter der seltenen Einwirkungskombination und unter den maßgebenden charakteristischen Werten 
+der Vorspannung Betondruckspannungen c,p am Querschnittsrand auftreten, die dem Betrag nach größer als 
+1,0 N/mm² sind. Anderenfalls ist Mindestbewehrung nachzuweisen. 
+ANMERKUNG charakteristische = seltene Einwirkungskombination 
+NCI Zu 7.3.2 Mindestbewehrung für die Begrenzung der Rissbreite 
+(NA.5) Bei dickeren Bauteilen darf die Mindestbewehrung unter zentrischem Zwang für die Begrenzung der 
+Rissbreiten je Bauteilseite unter Berücksichtigung einer effektiven Randzone Ac,eff mit Gleichung (NA.7.5.1) je 
+Bauteilseite berechnet werden. 
+As,min = fct,eff Ac,eff / s k fct,eff Act / fyk (NA.7.5.1) 
+Dabei ist 
+Ac,eff der Wirkungsbereich der Bewehrung nach Bild 7.1: Ac,eff = hc,ef b;
+Act die Fläche der Betonzugzone je Bauteilseite mit Act = 0,5 h b. 
+53
+
+===== PDF-SEITE 54 =====
+DIN EN 1992-1-1/NA:2011-01 
+Der Grenzdurchmesser der Bewehrungsstäbe zur Bestimmung der Betonstahlspannung in 
+Gleichung (NA.7.5.1) muss in Abhängigkeit von der wirksamen Betonzugfestigkeit fct,eff folgendermaßen 
+modifiziert werden: 
+ = s* fct,eff / 2,9 (NA.7.5.2) 
+Es braucht aber nicht mehr Mindestbewehrung eingelegt zu werden, als sich nach Gleichung (7.1) mit 
+Gleichung (NA.7.7) bzw. nach 7.3.4 ergibt. 
+(NA.6) Werden langsam erhärtende Betone mit r 0,3 verwendet (in der Regel bei dickeren Bauteilen), darf 
+die Mindestbewehrung mit einem Faktor 0,85 verringert werden. Die Rahmenbedingungen der Anwendungs-
+voraussetzungen für die Bewehrungsverringerung sind dann in den Ausführungsunterlagen festzulegen. 
+ANMERKUNG Kennwert für die Festigkeitsentwicklung des Betons r = fcm2 / fcm28 nach DIN EN 206-1. 
+NCI Zu 7.3.3 (1) 
+Die Regel darf nur für Platten in der Expositionsklasse XC1 angewendet werden. 
+NCI Zu 7.3.3 (2) 
+ANMERKUNG wird ergänzt: 
+Es gelten Tabelle NA.7.2 und 7.3N. 
+Bei Bauteilen mit im Verbund liegenden Spanngliedern ist die Betonstahlspannung für die maßgebende 
+Einwirkungskombination unter Berücksichtigung des unterschiedlichen Verbundverhaltens von Betonstahl und 
+Spannstahl nach Gleichung (NA.7.5.3) zu berechnen: 
+toteff,
+effct,s2s
+114,0 f (NA.7.5.3) 
+Dabei ist 
+s2 die Spannung im Betonstahl bzw. der Spannungszuwachs im Spannstahl im Zustand II für die 
+maßgebende Einwirkungskombination unter Annahme eines starren Verbundes; 
+,eff der effektive Bewehrungsgrad unter Berücksichtigung der unterschiedlichen Verbundfestigkeiten 
+nach Gleichung (7.10); 
+tot der geometrische Bewehrungsgrad: 
+tot = (As + Ap) / Ac,eff (NA.7.5.4) 
+Dabei ist 
+As die Querschnittsfläche der Betonstahlbewehrung, siehe Legende zu Gleichung (7.1);
+Ap die Querschnittsfläche der Spannglieder, die im Wirkungsbereich Ac,eff der Bewehrung liegen;
+Ac,eff der Wirkungsbereich der Bewehrung nach Bild 7.1, im Allgemeinen darf heff = 2,5 d1 (konstant) 
+verwendet werden; 
+fct,eff die wirksame Betonzugfestigkeit nach NCI zu 7.3.2 (2). 
+54
+
+===== PDF-SEITE 55 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.7.2  Grenzdurchmesser bei Betonstählen 
+Grenzdurchmesser bei Betonstählen s* a
+mm 
+s b wk
+N/mm² 0,4 mm 0,3 mm 0,2 mm 
+160 54 41 27 
+200 35 26 17 
+240 24 18 12 
+280 18 13 9 
+320 14 10 7 
+360 11 8 5 
+400 9 7 4 
+450 7 5 3 
+a Die Werte der Tabelle NA.7.2 basieren auf den folgenden Annahmen: 
+Grenzwerte der Gleichungen (7.9) und (7.11) mit fct,eff = 2,9 N/mm² und Es = 200 000 N/mm²: 
+*
+61048,3
+s
+kS w
+b unter der maßgebenden Einwirkungskombination
+Mindestbewehrung Rissmoment Biegung nach 7.3.2: 
+9,29,2)(4
+effct,*
+s
+effct,crc*
+ss
+ff
+dh
+hkk (NA.7.6) 
+Mindestbewehrung zentrischer Zug nach 7.3.2: 
+9,29,2)(8
+effct,*
+s
+effct,crc*
+ss
+ff
+dh
+hkk (NA.7.7) 
+Lastbeanspruchung: 
+9,22,9)(4
+effct,*
+s
+ss*
+ss
+f
+bdh
+A (NA.7.7.1) 
+Dabei ist 
+s die Betonstahlspannung im Zustand II; bei Spanngliedern im Verbund nach Gleichung (NA.7.5.3).
+55
+
+===== PDF-SEITE 56 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 7.3.3 
+(NA.6)P Bei Stabbündeln ist anstelle des Stabdurchmessers der n-Einzelstäbe der Vergleichsdurchmesser 
+des Stabbündels n = n anzusetzen. 
+(NA.7) Werden in einem Querschnitt Stäbe mit unterschiedlichen Durchmessern verwendet, darf ein mittlerer 
+Stabdurchmesser m = i
+2 / i angesetzt werden. 
+(NA.8) Bei Betonstahlmatten mit Doppelstäben darf der Durchmesser eines Einzelstabes angesetzt werden. 
+(NA.9) Die Begrenzung der Schubrissbreite darf ohne weiteren Nachweis als sichergestellt angenommen 
+werden, wenn die Bewehrungsregeln nach 8.5 und die Konstruktionsregeln nach 9.2.2 und 9.2.3 eingehalten 
+sind. 
+NCI Zu 7.3.4 (1) 
+Wenn die Rissbreiten für Beanspruchungen berechnet werden, bei denen die Zugspannungen aus einer 
+Kombination von Zwang und Lastbeanspruchung herrühren, dürfen die Gleichungen dieses Abschnitts 
+verwendet werden. Jedoch sollte die Dehnung infolge Lastbeanspruchung, die auf Grundlage eines 
+gerissenen Querschnitts berechnet wurde, um den Wert infolge Zwang erhöht werden. 
+NCI Zu 7.3.4 (2) 
+Wenn die resultierende Dehnung infolge von Zwang im gerissenen Zustand den Wert 0,8  nicht 
+überschreitet, ist es im Allgemeinen ausreichend, die Rissbreite für den größeren Wert der Spannung aus 
+Zwang- oder Lastbeanspruchung zu ermitteln. 
+Die wirksame Betonzugfestigkeit in Gleichung (7.9) entspricht f
+ct,eff nach NCI zu 7.3.2 (2) (jedoch ohne Ansatz 
+einer Mindestbetonzugfestigkeit). 
+In der Regel ist das Verbundkriechen zu berücksichtigen und kt = 0,4 zu setzen. 
+Bei Bauteilen mit Vorspannung mit Verbund ist s nach (NCI) zu 7.3.3 (2) zu berücksichtigen. 
+NDP Zu 7.3.4 (3) 
+k1 k2 = 1; k3 = 0; k4 = 1 / 3,6 
+Dabei darf sr,max nach Gleichung (7.11) mit 
+effct,
+s
+maxr, 6,3 fs
+und bei Betonstahlmatten auf maximal zwei Maschenweiten begrenzt werden. 
+NCI Zu 7.3.4 (5) 
+Wenn für diese Wände der Nachweis der Rissbreitenbegrenzung geführt wird, sollte ein oberer Grenzwert der 
+Rissbreite im Einzelfall festgelegt werden. Der maximale Rissabstand sollte jedoch gleich der 2-fachen 
+Wandhöhe gesetzt werden. 56
+
+===== PDF-SEITE 57 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 7.4.1 (3) 
+ANMERKUNG In diesem Abschnitt werden nur Verformungen in vertikaler Richtung von biegebeanspruchten Bauteilen 
+behandelt. Dabei wird unterschieden in 
+ Durchhang: vertikale Bauteilverformung bezogen auf die Verbindungslinie der Unterstützungspunkte, 
+ Durchbiegung: vertikale Bauteilverformung bezogen auf die Systemlinie des Bauteils (z. B. bei Schalungs-
+überhöhungen bezogen auf die überhöhte Lage). 
+NCI Zu 7.4.1 (4) 
+Bei Kragträgern darf für die Stützweite die 2,5-fache Kraglänge angesetzt werden, d.h. Durchhang 1/100 der 
+Kraglänge. Der maximal zulässige Durchhang eines Kragträgers sollte jedoch den des benachbarten Feldes 
+nicht überschreiten. 
+In Fällen, in denen der Durchhang weder die Gebrauchstauglichkeit beeinträchtigt noch besondere 
+Anforderungen an das Erscheinungsbild gestellt werden, darf dieser Wert erhöht werden. 
+ANMERKUNG Auch bei Anwendung der Biegeschlankheitskriterien bzw. sorgfältiger Verformungsberechnung können 
+die Verformungsgrenzwerte gelegentlich und geringfügig überschritten werden. 
+NDP Zu 7.4.2 (2) 
+Es gilt die empfohlene Tabelle 7.4N. 
+NCI Zu 7.4.2 (2) 
+Die Biegeschlankheiten nach Gleichung (7.16) sollten jedoch allgemein auf die Maximalwerte l / d K 35 und 
+bei Bauteilen, die verformungsempfindliche Ausbauelemente beeinträchtigen können, auf l / d K² 150 / l
+begrenzt werden. 
+NCI Zu 7.4.3 (2)P 
+ANMERKUNG In der Literatur finden sich weitere Hinweise zur Berechnung der Durchbiegung von Stahlbetonbauteilen 
+(siehe DAfStb-Heft 600). 
+NCI Zu 8.1 (1)P 
+Für die außergewöhnliche Einwirkung aus Fahrzeuganprall im Hochbau dürfen die Bewehrungsregeln 
+uneingeschränkt verwendet werden. 
+NDP Zu 8.2 (2) 
+k1 = 1 
+k2 = 0 für dg 16 mm 
+k2 = 5 für dg > 16 mm 
+57
+
+===== PDF-SEITE 58 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 8.3 (2) 
+Es gilt Tabelle NA.8.1. 
+Tabelle NA.8.1  Mindest-Biegerollendurchmesser Dmin 
+a) für Stäbe 
+Mindestwerte der 
+Biegerollendurchmesser für 
+Haken, Winkelhaken, 
+Schlaufen, Bügel 
+Mindestwerte der 
+Biegerollendurchmesser für Schrägstäbe 
+oder andere gebogene Stäbe 
+Stabdurchmesser
+mm 
+Mindestwerte der Betondeckung 
+rechtwinklig zur Biegeebene 
+ < 20 20 > 100 mm 
+und > 7
+> 50 mm 
+und > 3
+ 50 mm 
+oder 3
+4 7 10 15 20
+b) für nach dem Schweißen gebogene Bewehrung (Stäbe und Matten) 
+vorwiegend ruhende 
+Einwirkungen 
+nicht vorwiegend ruhende 
+Einwirkungen 
+Schweißung 
+außerhalb 
+Schweißung 
+innerhalb 
+Schweißung 
+auf der 
+Außenseite 
+Schweißung 
+auf der 
+Innenseite 
+für 
+des Biegebereiches der Biegung 
+a 4 20 
+a 4
+Werte nach 
+Tabelle 
+NA.8.1a) 
+20 100 500
+Dabei ist 
+a der Abstand zwischen Biegeanfang und Schweißstelle. 
+58
+
+===== PDF-SEITE 59 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.3 
+(NA.4)P Beim Hin- und Zurückbiegen gelten die Absätze (NA.5)P bis (NA.7)P. 
+(NA.5)P Beim Kaltbiegen von Betonstählen sind die folgenden Bedingungen einzuhalten: 
+ Der Stabdurchmesser darf maximal = 14 mm sein. Ein Mehrfachbiegen (wiederholtes Hin- und 
+Zurückbiegen an derselben Stelle) ist nicht zulässig. 
+ Bei vorwiegend ruhenden Einwirkungen muss der Biegerollendurchmesser beim Hinbiegen mindestens 
+Dmin = 6 betragen. Die Bewehrung darf im GZT höchstens zu 80 % ausgenutzt werden. 
+ Bei nicht vorwiegend ruhender Einwirkung muss der Biegerollendurchmesser beim Hinbiegen mindestens 
+15 betragen. Die Schwingbreite der Stahlspannung darf 50 N/mm 2 nicht überschreiten. 
+ Im Bereich der Rückbiegestelle ist die Querkraft auf 0,30 VRd,max bei Bauteilen mit Querkraftbewehrung 
+senkrecht zur Bauteilachse und 0,20 VRd,max bei Bauteilen mit Querkraftbewehrung in einem Winkel 
+< 90° zur Bauteilachse zu begrenzen. Dabei darf VRd,max nach 6.2.3 vereinfachend mit = 40° ermittelt 
+werden. 
+(NA.6)P Beim Warmbiegen von Betonstählen sind die folgenden Bedingungen einzuhalten: 
+ Wird Betonstahl B500 bei der Verarbeitung warm gebogen ( 500 °C), so darf er nur mit einer 
+Streckgrenze von fyk = 250 N/mm2 in Rechnung gestellt werden. 
+ Bei nicht vorwiegend ruhenden Einwirkungen darf die Schwingbreite der Stahlspannung 50 N/mm 2 nicht 
+überschreiten. 
+(NA.7)P Verwahrkästen für Bewehrungsanschlüsse sind so auszubilden, dass sie weder die Tragfähigkeit des 
+Betonquerschnitts noch den Korrosionsschutz der Bewehrung beeinträchtigen. 
+ANMERKUNG Einzelheiten der technischen Ausführung sind z. B. im DBV-Merkblatt ,,Rückbiegen von Betonstahl und 
+Anforderungen an Verwahrkästen'' enthalten. 
+NCI Zu 8.4.1 (2), Bild 8.1 e) 
+Der Grundwert der Verankerungslänge darf bei gebogenen Bewehrungsstäben nur dann über die Krümmung 
+nach Bild 8.1a) gemessen werden, wenn der größere Biegerollendurchmesser nach Tabelle NA.8.1 für 
+Schrägstäbe und gebogene Stäbe eingehalten ist. Für gebogene Stäbe mit einem kleineren 
+Biegerollendurchmesser (Haken, Winkelhaken, Schlaufen) ist die Ersatzverankerungslänge l
+b,eq nach 
+Bild 8.1b) bis 8.1d) zu verwenden. 
+Schweißverbindungen sind als tragende Verbindungen auszuführen (z. B. in Bild 8.1e). 
+NCI Zu 8.4.1 (3) 
+Für die Verankerung von Druckbewehrungen sind auch Schlaufen nicht zulässig. 
+NCI Zu 8.4.1 (4) 
+ANMERKUNG Einem Abplatzen des Betons oder einer Zerstörung des Betongefüges kann vorgebeugt werden, indem 
+eine Konzentration von Verankerungen vermieden wird. 
+NCI Zu 8.4.1 (5) 
+Sofern rechnerisch nicht nachweisbar, sind Ankerkörper durch Zulassungen zu regeln. 
+59
+
+===== PDF-SEITE 60 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.4.2 (2) 
+ANMERKUNG Für fctd darf hier nach NDP zu 3.1.6 (2) 1,0 fctk;0,05 / C eingesetzt werden. 
+NCI Zu 8.4.2, Bild 8.2 
+Der gute Verbundbereich darf im unteren Bauteilbereich auf 300 mm Höhe angenommen werden, d.h. 
+Bild 8.2b): h 300 mm 
+Bild 8.2c): h > 300 mm sowie Maß für gute Verbundbedingungen auf 300 mm erhöhen. 
+Der gute Verbundbereich darf auch für liegend gefertigte stabförmige Bauteile (z. B. Stützen) angenommen 
+werden, die mit einem Außenrüttler verdichtet werden und deren äußere Querschnittsabmessungen 500 mm 
+nicht überschreiten. 
+NCI Zu 8.4.3 (3) 
+Die gerade Vorlänge (Abstand zwischen Beginn der Verankerungslänge und Beginn der Krümmung) sollte 
+z. B. in Rahmenecken ausreichend lang sein (z. B. 0,5lbd, mit 1 = 1,0). 
+NCI Zu 8.4.4 (1), Bild 8.3 
+ANMERKUNG Bei Übergreifungsstößen gerader Stäbe nach Bild 8.3a) darf die Betondeckung orthogonal zur 
+Stoßebene unberücksichtigt bleiben, d.h. cd = min {a/2; c1}. 
+NCI Zu 8.4.4 (1), Gleichungen (8.6) und (8.7) 
+Gleichung (8.6): Bei lb,min darf auch 1 und 4 berücksichtigt werden. Der Mindestwert 100 mm darf 
+unterschritten werden. Der Mindestwert 10 darf bei direkter Lagerung auf 6,7 reduziert werden. 
+Gleichung (8.7): Der Mindestwert 100 mm darf unterschritten werden. 
+NCI Zu 8.4.4 (2) 
+lb,eq = 1 4 lb,rqd für Haken, Winkelhaken und Schlaufen mit mindestens einem angeschweißten 
+Querstab innerhalb von lb,rqd vor Krümmungsbeginn 
+lb,eq = 0,5 lb,rqd für gerade Stabenden mit mindestens zwei angeschweißten Stäben innerhalb lb,rqd
+(Stababstand s < 100 mm und 5 und 50 mm), jedoch nur zulässig bei Einzelstäben mit 16 mm 
+und bei Doppelstäben mit 12 mm 
+Grundsätzlich gilt lb,eq lb,min. 
+Wenn wegen Querzugspannungen der Beiwert 5 > 1,0 anzusetzen ist, muss dieser bei der Ermittlung der 
+Ersatzverankerungslänge zusätzlich berücksichtigt werden. 
+60
+
+===== PDF-SEITE 61 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI zu 8.4.4 (2), Tabelle 8.2 
+Bei Schlaufenverankerungen mit cd > 3 und mit Biegerollendurchmessern D 15 darf 1 = 0,5 angesetzt 
+werden. 
+Der Beiwert 2 ist in der Regel mit 2 = 1,0 anzusetzen. 
+Bei direkter Lagerung darf 5 = 2/3 gesetzt werden. 
+Falls eine allseitige, durch Bewehrung gesicherte Betondeckung von mindestens 10 vorhanden ist, darf 
+5 = 2/3 angenommen werden. Dies gilt nicht für Übergreifungsstöße mit einem Achsabstand der Stöße von 
+s 10 . 
+Der Beiwert 5 ist auf 1,5 zu erhöhen, wenn rechtwinklig zur Bewehrungsebene ein Querzug vorhanden ist, 
+der eine Rissbildung parallel zur Bewehrungsstabachse im Verankerungsbereich erwarten lässt. Wird bei 
+vorwiegend ruhenden Einwirkungen die Breite der Risse parallel zu den Stäben auf wk 0,2 mm im GZG 
+begrenzt, darf auf diese Erhöhung verzichtet werden. 
+ANMERKUNG Verankerungen mit gebogenen Druckstäben sind unzulässig (siehe NCI zu 8.4.1 (3)). 
+NCI Zu 8.5 
+(NA.3)P Bei Balken sind die Bügel in der Druckzone nach Bild NA.8.5 e) oder Bild NA.8.5 f), in der Zugzone 
+nach Bild NA.8.5 g) oder Bild NA.8.5 h) zu schließen. 
+(NA.4) Bei Plattenbalken dürfen die für die Querkrafttragfähigkeit erforderlichen Bügel im Bereich der Platte 
+mittels durchgehender Querstäbe nach Bild NA.8.5 i) geschlossen werden, wenn der Bemessungswert der 
+Querkraft VEd 2/3VRd,max nach 6.2.3 beträgt. 
+61
+
+===== PDF-SEITE 62 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.5, Bild 8.5 
+Bild 8.5 wird durch Bild NA.8.5 ersetzt. 
+Legende 
+1 Verankerungselemente nach a) bzw. b) a) Haken
+2 Kappenbügel b) Winkelhaken
+3 Betondruckzone c) gerade Stabenden mit zwei angeschweißten 
+Querstäben
+4 Betonzugzone d) gerade Stabenden mit einem angeschweißten 
+Querstab
+5 obere Querbewehrung e) und f) Schließen in der Druckzone
+6 untere Bewehrung der anschließenden Platte g) und h) Schließen in der Zugzone ( l0 mit 1 = 0,7 
+nach Tabelle 8.2 mit Haken oder 
+Winkelhaken am Bügelende)
+i) Schließen bei Plattenbalken im Bereich der 
+Platte 
+ANMERKUNG Für c) und d) darf in der Regel die Betondeckung nicht weniger als 3 oder 50 mm betragen. 
+Bild NA.8.5  Verankerung und Schließen von Bügeln 
+62
+
+===== PDF-SEITE 63 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 8.6 (2) 
+Fbtd = 0 (NA.8.8) 
+Dies gilt auch für Gleichung (8.9). 
+NCI Zu 8.6 (5) 
+Analog 8.6 (2) ist Fbtd = 0 zu setzen. 
+NCI Zu 8.7.1 (1)P 
+Mechanische Verbindungen sind durch Zulassungen zu regeln. 
+NCI Zu 8.7.2 
+(NA.5) Druckstäbe mit 20 mm dürfen in Stützen durch Kontaktstoß der Stabstirnflächen gestoßen werden, 
+wenn sie beim Betonieren lotrecht stehen, die Stützen an beiden Enden unverschieblich gehalten sind und die 
+gestoßenen Stäbe auch unter Berücksichtigung einer Beanspruchung nach 5.8 (Theorie II. Ordnung) 
+zwischen den gehaltenen Stützenenden nur Druck erhalten. Der zulässige Stoßanteil beträgt dabei maximal 
+50 % und ist gleichmäßig über den Querschnitt zu verteilen. Die Querschnittsfläche der nicht gestoßenen 
+Bewehrung muss mindestens 0,8 % des statisch erforderlichen Betonquerschnitts betragen. Die Stöße sind in 
+den äußeren Vierteln der Stützenlänge anzuordnen. Der Längsversatz der Stöße muss mindestens 1,3 l
+b,rqd
+betragen (lb,rqd nach Gleichung (8.3) mit sd = fyd). Die Stabstirnflächen müssen rechtwinklig zur Längsachse 
+hergestellt und entgratet sein. Ihr mittiger Sitz ist durch eine feste Führung zu sichern, die die Stoßfuge vor 
+dem Betonieren teilweise sichtbar lässt. 
+NCI Zu 8.7.3 (1) 
+Gleichung (8.11): Bei l0,min darf neben 6 auch 1 berücksichtigt werden. 
+Statt Tabelle 8.3 ist in Deutschland TabelleNA.8.3 anzuwenden. 
+Tabelle NA.8.3  Beiwert 6 
+Stoßanteil einer Bewehrungslage 
+Stoß Stab-
+ 33 % > 33 % 
+< 16 mm 1,2 a 1,4 aZug 
+ 16 mm 1,4 a 2,0 b
+Druck alle 1,0 1,0 
+Wenn die lichten Stababstände a 8 (Bild 8.7) und der Randabstand in der Stoßebene c1 4 (Bild 8.3) eingehalten werden, darf der 
+Beiwert a6 reduziert werden auf:
+a 6 = 1,0 
+b 6 = 1,4 
+63
+
+===== PDF-SEITE 64 =====
+DIN EN 1992-1-1/NA:2011-01 
+Zu 8.7.4.1 (3) 
+Zusätzlich gilt: 
+In flächenartigen Bauteilen muss die Querbewehrung ebenfalls bügelartig ausgebildet werden, falls a 5 ist; 
+sie darf jedoch auch gerade sein, wenn die Übergreifungslänge um 30 % erhöht wird. 
+Sofern der Abstand der Stoßmitten benachbarter Stöße mit geraden Stabenden in Längsrichtung etwa 0,5 l0
+beträgt, ist kein bügelartiges Umfassen der Längsbewehrung erforderlich. 
+Werden bei einer mehrlagigen Bewehrung mehr als 50 % des Querschnitts der einzelnen Lagen in einem 
+Schnitt gestoßen, sind die Übergreifungsstöße durch Bügel zu umschließen, die für die Kraft aller gestoßenen 
+Stäbe zu bemessen sind. 
+NCI Zu 8.7.4.1 
+(NA.5) In vorwiegend biegebeanspruchten Bauteilen ab der Festigkeitsklasse C70/85 sind die Übergreifungs-
+stöße durch Bügel zu umschließen, wobei die Summe der Querschnittsfläche der orthogonalen Schenkel 
+gleich der erforderlichen Querschnittsfläche der gestoßenen Längsbewehrung sein muss. 
+NCI Zu 8.7.5.1 (1) 
+Zu Bild 8.10 wird Bild NA.8.10 c) ergänzt. 
+Bild NA.8.10 c)  Übergreifungsstoß der Querbewehrung 
+NCI Zu 8.7.5.1 (3) 
+Die Übergreifungslänge für verschränkte Betonstahlmatten ist nach Gleichung (8.10) zu berechnen. Darüber 
+hinaus sollte l0,min nach Gleichung (8.11) den Abstand der Querbewehrung squer bei Matten nicht unter-
+schreiten. 
+NCI Zu 8.7.5.1 (4) 
+Zwei-Ebenen-Stöße ohne bügelartige Umfassung sind zulässig, wenn der zu stoßende Mattenquerschnitt 
+as 6 cm²/m beträgt. 
+NCI Zu 8.7.5.1 (6) 
+Für Zwei-Ebenen Stöße gilt: 
+Betonstahlmatten mit einem Bewehrungsquerschnitt as 12 cm2/m dürfen stets ohne Längsversatz gestoßen 
+werden. Vollstöße von Matten mit größerem Bewehrungsquerschnitt sind nur in der inneren Lage bei mehr-
+lagiger Bewehrung zulässig, wobei der gestoßene Anteil nicht mehr als 60 % des erforderlichen Bewehrungs-
+querschnitts betragen darf. 
+64
+
+===== PDF-SEITE 65 =====
+DIN EN 1992-1-1/NA:2011-01 
+Die Übergreifungslänge (siehe Bild 8.10b)) darf folgenden Wert nicht unterschreiten: 
+min0,7rqdb,0 lll (NA.8.11.1) 
+Dabei ist 
+lb,rqd der Grundwert der Verankerungslänge nach Gleichung (8.3); 
+7 der Beiwert Mattenquerschnitt mit 7 = 0,4 + as,vorh / 8 mit 1,0 7 2,0; 
+as,vorh die vorhandene Querschnittsfläche der Bewehrung im betrachteten Schnitt in cm
+2
+/m; 
+l0,min der Mindestwert der Übergreifungslänge mit l0,min = 0,3 7 lb,rqd sq; 200 mm; 
+sq der Abstand der geschweißten Querstäbe. 
+NCI Zu 8.7.5.2 (1) 
+Tabelle 8.4 wird um eine Zeile ergänzt: 
+Stabdurchmesser 
+mm Übergreifungslänge 
+> 12 
+ 500 mm 
+ 2 Mattenmaschen 
+NDP Zu 8.8 (1) 
+Es gilt der empfohlene Wert large = 32 mm. 
+Stäbe mit > 32 mm dürfen nur in Bauteilen mit einer Mindestdicke von 15 und der Festigkeitsklassen 
+C20/25 bis C80/95 eingesetzt werden. 
+Bei überwiegend auf Druck beanspruchten Bauteilen darf hiervon abgewichen werden, wenn die 
+Bedingungen nach 8.4, 8.7 und 9.5 eingehalten sind. 
+Die Verwendung von Stabdurchmessern > 40 mm wird durch Zulassungen geregelt. 
+NCI Zu 8.8 (4) 
+Stöße dürfen nur mittels mechanischer Verbindungen oder als geschweißte Stöße ausgeführt werden. 
+Übergreifungsstöße sind nur in überwiegend biegebeanspruchten Bauteilen zulässig, wenn maximal 50 % der 
+Stäbe in einem Schnitt gestoßen werden. Stöße gelten dabei als längsversetzt, wenn der Längsabstand der 
+Stoßmitten mindestens 1,5l0 beträgt. 
+NCI Zu 8.8 
+(NA.9)P Beim Nachweis der Querkrafttragfähigkeit nach 6.2.2 und der Torsionstragfähigkeit nach 6.3 ist der 
+Bemessungswert für den Querkraftwiderstand VRd,c mit dem Faktor 0,9 zu multiplizieren. 
+(NA.10)P Die Bauteile müssen direkt gelagert sein (siehe 1.5.2.26), so dass die Auflagerkraft normal zum 
+unteren Bauteilrand mit Druckspannungen eingetragen wird. 
+65
+
+===== PDF-SEITE 66 =====
+DIN EN 1992-1-1/NA:2011-01 
+(NA.11) Gerade oder kreisförmig gekrümmte Stabe dürfen verwendet werden, wenn der 
+Mindestbiegerollendurchmesser Dmin = 1,00 m eingehalten wird. 
+(NA.12)P In biegebeanspruchten Bauteilen ist die zur Aufnahme der Stützmomente angeordnete Bewehrung 
+im Bereich rechnerischer Betondruckspannungen zu verankern. 
+(NA.13)P Zur Verankerung gerader Stäbe ist das Grundmaß lb,rqd (nach Gleichung (8.3) mit sd = fyd) 
+erforderlich. Die ersten endenden Stäbe müssen jedoch mindestens um das Maß d über den Nullpunkt der 
+Zugkraftlinie hinausgeführt werden (siehe Bild NA.8.11.1). Die Anzahl der in einem Schnitt endenden Stäbe 
+ergibt sich aus der Zugkraftdeckung nach 9.2.1.3. Als längsversetzt gelten Stäbe mit einem Abstand lb,rqd
+(nach Gleichung (8.3) mit sd = fyd). 
+Legende 
+A rechnerischer Anfangspunkt 
+E rechnerischer Endpunkt 
+ai Versatzmaß 
+d statische Nutzhöhe 
+As1 Fläche eines Längsstabes 
+Bild NA.8.11.1  Verankerung von geraden Stäben > 32 mm im Stützbereich 
+(NA.14) In massigen Bauteilen mit h 800 mm darf die Bewehrung gestaffelt werden. Die Anzahl der in einem 
+Schnitt endenden Stäbe ergibt sich aus der Zugkraftdeckung nach 9.2.1.3. Als längsversetzt gelten 
+Stabenden mit einem Abstand größer 0,5lb,rqd (nach Gleichung (8.3) mit sd = fyd). Es dürfen nur innenliegende 
+Stäbe vor dem Auflager enden. Der über das Auflager zu führende Prozentsatz der Längsbewehrung muss 
+Absatz (1) entsprechen. 
+(NA.15)P Zur Verbundsicherung ist über die ganze Länge der Bewehrung eine Zusatzbewehrung anzuordnen 
+und im Bauteilinneren so zu verankern, dass jeweils maximal drei Stäbe von einem Bügel umfasst werden 
+(siehe Bild NA.8.11.2). Der Bügelquerschnitt muss dabei Asw = 0,1As (cm²/m und Stab) und der Abstand 
+sw 200 mm sein. 
+Bei Bauteilen mit rechnerisch erforderlicher Querkraftbewehrung gilt diese Bedingung als eingehalten, wenn 
+mindestens 50 % der erforderlichen Querkraftbewehrung in Form von Bügeln angeordnet wird. 
+66
+
+===== PDF-SEITE 67 =====
+DIN EN 1992-1-1/NA:2011-01 
+Bild NA.8.11.2  Zusatzbewehrung zur Verbundsicherung von geraden Stäben > 32 mm 
+(NA.16) Liegt die erforderliche Querbewehrung Ast = 0,25As mindestens zu 50 % außen, wird der horizontale 
+Anteil Ast 0,1As cm²/m der Bewehrung zur Verbundsicherung abgedeckt. Die Oberflächenbewehrung darf 
+dabei angerechnet werden. 
+(NA.17)P Zur Verbundsicherung ist in Querrichtung eine zusätzliche Bewehrung von 0,1 As [cm²/m] über die 
+gesamte Balkenlänge erforderlich. Diese muss die Zugbewehrung umschließen und im Balkensteg verankert 
+werden. Die Querstäbe der Oberflächenbewehrung nach Anhang J.1 dürfen dafür herangezogen werden. 
+(NA.18)P Jeder zweite Längsstab muss von einem Bügelschenkel gehalten werden, der im Bauteilinneren 
+verankert ist. Diese Längsstäbe sind in den Bügelecken anzuordnen. 
+(NA.19) In plattenartigen Bauteilen mit mehrlagiger Bewehrung ist die erforderliche Querbewehrung möglichst 
+gleichmäßig zwischen den einzelnen Stablagen zu verteilen. 
+(NA.20)P Bei Balken und Platten mit mehrlagiger Bewehrung sind ab der dritten Lage die an den Stegseiten 
+angeordneten Stäbe gegen seitliches Ausbrechen durch eine entsprechende Bewehrung zu sichern. Diese 
+kann aus Steckbügeln bestehen, welche die Randstäbe von mindestens zwei Lagen in das Bauteilinnere 
+verankern. Der Querschnitt der Steckbügel muss mindestens 0,18 Asl cm²/m, bezogen auf einen in das 
+Bauteilinnere geführten Schenkel betragen (siehe Bild NA.8.11.3). 
+Legende 
+c1 Betondeckung der Längsbewehrung As 
+c2 Betondeckung der Oberflächenbewehrung As,surf
+Bild NA.8.11.3  Balken und Anordnung von Steckbügeln bei mehrlagiger Bewehrung > 32 mm 
+(NA.21)P Bei Druckgliedern muss der Bügelabstand sw hmin / 2 300 mm betragen (mit hmin die kleinste 
+Querschnittsabmessung). 
+(NA.22) Für das Schweißen an der Bewehrung sind stets vorgezogene Arbeitsprüfungen nach 
+DIN EN ISO 17660-1:2006-12, Abschnitte 11 und 12 erforderlich, die von einer für die Überwachung von 
+Betonstählen anerkannten Stelle geprüft werden müssen. 
+67
+
+===== PDF-SEITE 68 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.9.1 (1) 
+Die Durchmesser der Einzelstäbe dürfen = 28 mm nicht überschreiten. 
+NCI Zu 8.9.1 (2) 
+Bei Betonfestigkeitsklassen C70/85 ist n 28 mm einzuhalten, sofern keine genaueren Untersuchungs-
+ergebnisse vorliegen. 
+NCI Zu 8.9.2 (3) 
+Auf die Bügel darf verzichtet werden, wenn der Spitzendruck durch andere Maßnahmen (z. B. Anordnung der 
+Stabenden innerhalb einer Deckenscheibe) aufgenommen wird; in diesem Fall ist ein Bügel außerhalb des 
+Verankerungsbereichs anzuordnen. 
+NCI Zu 8.10.1.1 (1
+)P 
+Zwischen im Verbund liegenden Spanngliedern und verzinkten Einbauteilen oder verzinkter Bewehrung 
+müssen mindestens 20 mm Beton vorhanden sein; außerdem darf keine metallische Verbindung bestehen. 
+NCI Zu 8.10.1.1 
+(NA.2)P Die nachfolgenden Regeln gelten, sofern in den allgemeinen bauaufsichtlichen Zulassungen keine 
+anderen Werte gefordert werden. 
+(NA.3)P Kritische Querschwingungen extern geführter Spannglieder infolge von Nutzlasten, Wind oder 
+anderer Ursachen sind durch geeignete Maßnahmen auszuschließen. 
+NCI Zu 8.10.1.2 (1) 
+Eine Unterschreitung der Mindestabstände nach Bild 8.14 ist nur im Rahmen einer Zulassung oder 
+Zustimmung im Einzelfall zulässig. 
+Für Vorspannung mit sofortigem Verbund ist die Verwendung von glatten Drähten nicht zulässig. 
+NCI Zu 8.10.1.2 
+(NA.3) Spannglieder aus gezogenen Drähten oder Litzen dürfen nach dem Spannen umgelenkt werden oder 
+im umgelenkten Zustand vorgespannt werden, wenn sie dabei im Bereich der Krümmung keine Schädigung 
+erfahren und das Verhältnis aus Biegeradius und Spannglieddurchmesser min. 15 beträgt. 
+NCI Zu 8.10.1.3 (2) 
+Die Ausnahme ist nicht zulässig. 
+NCI Zu 8.10.2.1 (1) 
+Im Verankerungsbereich ist eine enge Querbewehrung zur Aufnahme der aus den Verankerungskräften 
+hervorgerufenen Spaltzugkräfte anzuordnen. Darauf darf in besonderen Fällen (z. B. Spannbetonhohlplatten) 
+verzichtet werden, wenn die Spaltzugspannung den Wert fctd nicht überschreitet. 
+68
+
+===== PDF-SEITE 69 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.10.2.1 
+(NA.2)P Die nachfolgenden Regeln gelten, sofern in den allgemeinen bauaufsichtlichen Zulassungen keine 
+anderen Werte gefordert werden. 
+NCI zu 8.10.2.2 (1) 
+Die Verbundspannung beim Absetzen der Spannkraft fbpt nach Gleichung (8.15) gilt nur für übliche (nicht 
+verdichtete) Litzen mit einer Querschnittsfläche 100 mm². 
+Für profilierte Drähte mit 8 mm und Litzen ist p1 = 2,85 anzusetzen. 
+ANMERKUNG Es gilt ct = 0,85. 
+NCI Zu 8.10.2.2 (5) 
+ANMERKUNG Zur Begründung siehe DAfStb-Heft 600. 
+NCI Zu 8.10.2.3 (1) 
+Überschreiten die Betonzugspannungen den Wert fctk;0,05, ist nachzuweisen, dass die vorhandene Zugkraftlinie 
+die Zugkraftdeckungslinie aus der Zugkraft von Spannstahl und Betonstahl nicht überschreitet. 
+Die in der Entfernung x vom Bauteilende zu verankernde Kraft FEd(x) beträgt: 
+FEd(x) = MEd(x) / z + 0,5 VEd(x) (cot - cot ) (NA.8.19.1) 
+Dabei ist 
+MEd(x) der Bemessungswert des aufzunehmenden Biegemoments an der Stelle x; 
+z der innere Hebelarm nach 6.2.3 (1); 
+VEd(x) der Bemessungswert der zugehörigen aufzunehmenden Querkraft an der Stelle x; 
+ der Winkel zwischen den Betondruckstreben und der Bauteillängsachse; für Bauteile ohne 
+Querkraftbewehrung gilt cot = 3,0 und cot = 0; 
+ der Winkel zwischen der Querkraftbewehrung und der Bauteilachse. 
+Bei der Ermittlung der vom Spannstahl aufzunehmenden Verankerungskraft ist die Rissbildung zu 
+berücksichtigen. 
+NCI Zu 8.10.2.3 (2) 
+Die Verbundspannung fbpd nach Gleichung (8.20) gilt nur für nicht verdichtete Litzen mit einer 
+Querschnittsfläche 100 mm². 
+Für 7-drähtige Litzen darf abweichend auch p2 = 1,4 angesetzt werden. 
+69
+
+===== PDF-SEITE 70 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.10.2.3 (4) 
+Gleichung (8.21) gilt bei Rissbildung außerhalb der Übertragungslänge lpt. 
+Bei Rissbildung innerhalb der Übertragungslänge lpt ist die Verankerungslänge wie folgt zu ermitteln (siehe 
+auch Bild NA.8.17b)): 
+lbpd = lr + 2 [ pd  pt(x = lr)] / fbpd (NA.8.21.1) 
+Dabei ist 
+lr die Länge des ungerissenen Verankerungsbereichs. 
+NCI Zu 8.10.2.3, Bild 8.17 
+Bild 8.17 wird durch Bild NA.8.17 ersetzt. 
+ a) Übertragungslänge, ungerissen b) Übertragungslänge, gerissen 
+Legende 
+A Spannung im Spannglied 
+B Abstand vom Ende 
+1 beim Absetzen der Spannkraft 
+2 im GZT ohne Rissbildung in der Übertragung 
+3 mit Rissbildung in der Übertragungslänge 
+4 Stelle des ersten Biegerisses 
+Bild NA.8.17  Spannungen im Verankerungsbereich von Spannbetonbauteilen mit Spanngliedern im 
+sofortigen Verbund 
+70
+
+===== PDF-SEITE 71 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.10.2.3 
+(NA.7)P Bei zyklischer Beanspruchung nach 6.8.3 sind zusätzlich folgende Regeln zu beachten: 
+ Der rechnerische Erstriss darf frühestens 200 mm hinter dem Ende der Verankerungslänge lbpd auftreten, 
+um ein Verbundversagen auszuschließen. 
+ Für die Bestimmung der Übertragungslänge lpt nach 8.10.2.2 ist fbpt auf 80 % der Wertes für fbpt nach 
+Gleichung (8.15) zu begrenzen. 
+ Für die Bestimmung der Verankerungslänge lbpd nach 8.10.2.3 ist fbpd auf 80 % der Wertes für fbpd nach 
+Gleichung (8.20) zu begrenzen. 
+ Die rechnerische Verankerungslänge lbpd muss frei von Rissen bleiben. 
+NCI Zu 8.10.3 (1) 
+Die Verankerung muss der allgemeinen bauaufsichtlichen Zulassung für das verwendete Spannverfahren 
+entsprechen. 
+Die im Verankerungsbereich erforderliche Spaltzug- und Zusatzbewehrung ist dieser Zulassung zu 
+entnehmen. 
+NCI Zu 8.10.3 (4) 
+ANMERKUNG Eine Spannungsbegrenzung im GZT auf sd 300 N/mm² lässt erwarten, dass angemessene 
+Rissbreiten nicht überschritten werden. 
+NCI Zu 8.10.3 
+(NA.6) Die lichten Mindestabstände zwischen den Hüllrohren nach 8.10.1.3 (3) gelten sowohl für 
+Spannglieder im nachträglichen Verbund als auch für intern geführte Spannglieder ohne Verbund. 
+Die Abstände extern geführter Spannglieder werden durch Austauschbarkeit und Inspizierbarkeit bestimmt. 
+(NA.7) Eine Bündelung interner Spannglieder ohne Verbund ist nur in Bereichen außerhalb der 
+Verankerungsbereiche zulässig, wenn das Einbringen und Verdichten des Betons einwandfrei möglich und 
+die Aufnahme der Umlenkkräfte sichergestellt ist. 
+NCI Zu 8.10.4 (1)P 
+Als Spezifikation darf nur die allgemeine bauaufsichtliche Zulassung des Vorspannsystems verwendet 
+werden. 
+NCI Zu 8.10.4 (2)P 
+Als Spezifikation darf nur die allgemeine bauaufsichtliche Zulassung des Vorspannsystems verwendet 
+werden. 
+NCI Zu 8.10.5 (3)P 
+Es gelten die Zulassungen der Spannverfahren. 
+71
+
+===== PDF-SEITE 72 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 8.10.5 (4) 
+Planmäßige Krümmungen ohne Umlenkstellen sind nur zulässig, wenn sie in den Zulassungen der 
+Spannverfahren enthalten sind. 
+NCI Zu 8.10.5 
+(NA.5) Verankerungs- und Umlenkstellen externer Spannglieder sollten so ausgebildet werden, dass sie ein 
+Auswechseln des Spannglieds ohne Beschädigung von Tragwerksteilen erlauben, sofern dies nicht 
+ausdrücklich anders festgelegt wurde. 
+NDP Zu 9.2.1.1 (1) 
+Gleichung (9.1N) gilt nicht. 
+ANMERKUNG 2 wird ersetzt: 
+ANMERKUNG 2 Die Mindestbewehrung As,min zur Sicherstellung eines duktilen Bauteilverhaltens ist für das 
+Rissmoment (bei Vorspannung ohne Anrechnung der Vorspannkraft) mit dem Mittelwert der Zugfestigkeit des Betons fctm
+nach Tabelle 3.1 und einer Stahlspannung s = fyk zu berechnen. 
+Auf As,min darf bei Spannbetonbauteilen 1/3 der Querschnittsfläche der im Verbund liegenden Spannglieder angerechnet 
+werden, wenn mindestens zwei Spannglieder vorhanden sind. Es dürfen nur Spannglieder angerechnet werden, die nicht 
+mehr als 0,2h oder 250 mm (der kleinere Wert ist maßgebend) von der Betonstahlbewehrung entfernt liegen. Dabei ist die 
+anrechenbare Spannung im Spannstahl auf fyk des Betonstahls begrenzt.
+Die Mindestbewehrung ist gleichmäßig über die Breite sowie anteilmäßig über die Höhe der Zugzone zu verteilen. Die im 
+Feld erforderliche untere Mindestbewehrung muss unabhängig von den Regelungen zur Zugkraftdeckung zwischen den 
+Auflagern durchlaufen. 
+Hochgeführte Spannglieder und Bewehrung dürfen nicht berücksichtigt werden. Über Innenauflagern ist die obere 
+Mindestbewehrung in beiden anschließenden Feldern über eine Länge von mindestens einem Viertel der Stützweite 
+einzulegen. Bei Kragarmen muss sie über die gesamte Kragarmlänge durchlaufen. Die Mindestbewehrung ist am 
+Endauflager und am Innenauflager mit der Mindestverankerungslänge zu verankern. Stöße sind für die volle Zugkraft 
+auszubilden. 
+Bei Gründungsbauteilen und erddruckbeIasteten Wänden aus Stahlbeton darf auf die Mindestbewehrung nach Absatz (1) 
+verzichtet werden, wenn das duktile Bauteilverhalten durch Umlagerung der Sohldrucks bzw. des Erddrucks sichergestellt 
+werden kann. Dies ist in der Regel bei Gründungsbauteilen zu erwarten. Dabei müssen die Schnittgrößen für äußere 
+Lasten nach 5.4 ermittelt sowie die Grenzzustände der Tragfähigkeit nach Abschnitt 6 und der Gebrauchstauglichkeit 
+nach Abschnitt 7 nachgewiesen werden. 
+Der Verzicht auf Mindestbewehrung ist im Rahmen der Tragwerksplanung zu begründen. Bei schwierigen 
+Baugrundbedingungen oder komplizierten Gründungen ist nachzuweisen, dass ein duktiles Bauteilverhalten auch ohne 
+entsprechende Mindestbewehrung durch die Boden-Bauwerk-Interaktion sichergestellt ist. 
+NDP Zu 9.2.1.1 (3) 
+Die Summe der Zug- und Druckbewehrung darf As,max = 0,08Ac nicht überschreiten. Dies gilt auch im Bereich 
+von Übergreifungsstößen. 
+72
+
+===== PDF-SEITE 73 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 9.2.1.2 (1) 
+Es gilt 1 = 0,25 für Balken und Platten. 
+Die Bewehrung muss, vom Auflagerrand gemessen, mindestens über die 0,25-fache Länge des Endfeldes 
+eingelegt werden. 
+NCI Zu 9.2.1.2 (2) 
+Es wird empfohlen, die Zugbewehrung bei Plattenbalken- und Hohlkastenquerschnitten höchstens auf einer 
+Breite entsprechend der halben rechnerischen effektiven Gurtbreite beff,i nach Gleichung (5.7a) anzuordnen.
+Die tatsächlich vorhandene Gurtbreite darf ausgenutzt werden. 
+NCI Zu 9.2.1.3 (1) 
+Ausreichende Bewehrung ist mit der Zugkraftdeckung im GZG und GZT nachgewiesen. 
+Bei einer Schnittgrößenermittlung nach E-Theorie darf i. Allg. auf einen Nachweis im GZG verzichtet werden, 
+wenn nicht mehr als 15 % der Biegemomente umgelagert werden. 
+NCI Zu 9.2.1.3 (2) 
+Bei einer Anordnung der Zugbewehrung in der Gurtplatte außerhalb des Steges ist al jeweils um den Abstand 
+der einzelnen Stäbe vom Steganschnitt zu erhöhen. 
+NDP Zu 9.2.1.4 (1) 
+Es gilt der empfohlene Wert 2 = 0,25. 
+NCI Zu 9.2.1.4 (2) 
+Gleichung (9.3) wird um einen Mindestwert ergänzt 
+FEd = |VEd| al / z + NEd VEd / 2 (NA.9.3) 
+NCI Zu 9.2.1.4 (3) 
+Der Querdruck bei direkter Auflagerung wird mit 5 = 0,67 in lbd 6,7 nach 8.4.4 (1) berücksichtigt. 
+Die Bewehrung ist jedoch in allen Fällen mindestens über die rechnerische Auflagerlinie zu führen. 
+ANMERKUNG Definition direkte / indirekte Auflagerung siehe NA.1.5.2.26. 
+NCI Zu 9.2.1.5 (2) 
+In der Regel ist es ausreichend an Zwischenauflagern von durchlaufen den Bauteilen die erforderliche 
+Bewehrung mindestens um das Maß 6 bis hinter den Auflagerrand zu führen. 
+73
+
+===== PDF-SEITE 74 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.2.2 (3) 
+Die Verankerung muss in der Druckzone zwischen dem Schwerpunkt der Druckzonenfläche und dem 
+Druckrand erfolgen; dies gilt im Allgemeinen als erfüllt, wenn die Querkraftbewehrung über die ganze 
+Querschnittshöhe reicht. In der Zugzone müssen die Verankerungselemente möglichst nahe am Zugrand 
+angeordnet werden. 
+NCI Zu 9.2.2 (3), Bild 9.5 
+Einschnittige Bügel mit Haken in Balken gelten als Querkraftzulage. 
+Weitere Beispiele für Querkraftbewehrung sind in Bild NA.9.5.1 angegeben: 
+Legende 
+1 Bügel 
+2 Bügelkorb als Zulage 
+3 leiterartige Querkraftzulage 
+Bild NA.9.5.1  Weitere Beispiele für Querkraftbewehrung 
+NDP Zu 9.2.2 (4) 
+Es gilt der empfohlene Wert 3 = 0,5 mit Bügeln nach Bild NA.8.5. 
+NDP Zu 9.2.2 (5) 
+Allgemein: w,min = 0,16 fctm / fyk (NA.9.5a) 
+Für gegliederte Querschnitte mit vorgespanntem Zuggurt: w,min = 0,256 fctm / fyk (NA.9.5b) 
+74
+
+===== PDF-SEITE 75 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 9.2.2 (6) 
+Gleichung (9.6N) wird durch Tabelle NA.9.1 ersetzt: 
+Tabelle NA.9.1  Längsabstand sl,max für Bügel 
+1 2 3 
+Beton der Festigkeitsklasse Querkraftausnutzung a)
+ C50/60 > C50/60 
+1 VEd 0,3VRd,max 0,7h b) bzw. 300 mm 0,7h bzw. 200 mm 
+2 0,3VRd,max < VEd 0,6VRd,max 0,5h bzw. 300 mm 0,5 h bzw. 200 mm 
+3 VEd > 0,6VRd,max 0,25 h bzw. 200 mm 
+a) VRd,max darf hier vereinfacht mit = 40° (cot = 1,2) ermittelt werden. 
+b) Bei Balken mit h < 200 mm und VEd VRd,c braucht der Bügelabstand nicht kleiner als 150 mm zu sein.
+NDP zu 9.2.2 (7) 
+sb,max = 0,5h (1 + cot ) (NA.9.7) 
+NDP zu 9.2.2 (8) 
+Gleichung (9.8N) wird durch Tabelle NA.9.2 ersetzt: 
+Tabelle NA.9.2  Querabstand st,max für Bügel 
+ 1 2 3 
+Beton der Festigkeitsklasse Querkraftausnutzung a
+ C50/60 > C50/60 
+1 VEd 0,3VRd,max h bzw. 800 mm h bzw. 600 mm 
+2 0,3VRd,max < VEd VRd,max h bzw. 600 mm h bzw. 400 mm 
+a VRd,max darf hier vereinfacht mit = 40° (cot = 1,2) ermittelt werden.
+NCI Zu 9.2.3 (1) 
+Die Torsionsbügel dürfen in Balken und in Stegen von Plattenbalken nach Bild NA.8.5 e), g) oder h) 
+geschlossen werden. Die Hakenlänge nach Bild NA.8.5 a) in Bild e) ist dabei auf 10 zu vergrößern. Die 
+Bügelform a3) nach Bild 9.6 darf für Torsionsbügel nicht angewendet werden. 
+NCI Zu 9.2.4 (1) 
+ANMERKUNG Der Anhang J ist normativ. 
+75
+
+===== PDF-SEITE 76 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI zu 9.2.5 (2) 
+Wenn die Aufhängebewehrung nach Bild 9.7 ausgelagert wird, dann sollte eine über die Höhe verteilte 
+Horizontalbewehrung im Auslagerungsbereich angeordnet werden, deren Gesamtquerschnittsfläche dem 
+Gesamtquerschnitt dieser Bügel entspricht. 
+Bei sehr breiten stützenden Trägern oder bei stützenden Platten sollte die in diesen Trägern oder Platten 
+angeordnete Aufhängebewehrung nicht über eine Breite angeordnet werden, die größer als die Nutzhöhe des 
+gestützten Trägers ist. 
+NCI Zu 9.3 (1) 
+Die Regeln für Vollplatten dürfen auch für l
+eff / h 3 angewendet werden. 
+NCI Zu 9.3.1.1 (1) 
+Bei zweiachsig gespannten Platten braucht die Mindestbewehrung nach 9.2.1.1 (1) nur in der Haupt-
+spannrichtung angeordnet zu werden. 
+NCI Zu 9.3.1.1 (2) 
+Der zweite Satz ist nicht anzuwenden. 
+Bei Betonstahlmatten ist quer,min = 5 mm einzuhalten. 
+In zweiachsig gespannten Platten darf die Bewehrung in der minderbeanspruchten Richtung nicht weniger als 
+20 % der in der höherbeanspruchten Richtung betragen. 
+NDP Zu 9.3.1.1 (3) 
+ für die Haupt(Zug-)bewehrung: 
+smax,slabs = 250 mm für Plattendicken h 250 mm; 
+smax,slabs = 150 mm für Plattendicken h 150 mm; 
+Zwischenwerte sind linear zu interpolieren. 
+ für die Querbewehrung oder die Bewehrung in der minderbeanspruchten Richtung: 
+smax,slabs 250 mm. 
+NCI Zu 9.3.1.1 
+(NA.5) Die Mindestdicke hmin einer Vollplatte (Ortbeton) beträgt in der Regel 70 mm. 
+NCI Zu 9.3.1.2 (1) 
+Die Regel gilt für alle Auflager von beliebig gelagerten Platten. 
+NCI Zu 9.3.1.2 (2) 
+Auch bei frei drehbar angenommenen Endauflagern sind 25 % des angrenzenden Feldmomentes durch eine 
+obere konstruktive Bewehrung abzudecken. 
+76
+
+===== PDF-SEITE 77 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.3.1.3 
+(NA.2) Werden die Schnittgrößen in einer Platte unter Ansatz der Drillsteifigkeit ermittelt, so ist die Bewehrung 
+in den Plattenecken unter Berücksichtigung des Drillmoments zu bemessen. 
+(NA.3) Die Drillbewehrung darf durch eine parallel zu den Seiten verlaufende obere und untere 
+Netzbewehrung in den Plattenecken ersetzt werden, die in jeder Richtung die gleiche Querschnittsfläche wie 
+die Feldbewehrung und mindestens eine Länge von 0,3 leff,min hat. 
+(NA.4) In Plattenecken, in denen ein frei aufliegender und ein eingespannter Rand zusammenstoßen, sollte 
+die Hälfte der Bewehrung nach Absatz (NA.3) rechtwinklig zum freien Rand eingelegt werden. 
+(NA.5) Bei vierseitig gelagerten Platten, deren Schnittgrößen als einachsig gespannt oder unter 
+Vernachlässigung der Drillsteifigkeit ermittelt werden, sollte zur Begrenzung der Rissbildung in den Ecken 
+ebenfalls eine Bewehrung nach Absatz (NA.3) angeordnet werden. 
+(NA.6) Ist die Platte mit Randbalken oder benachbarten Deckenfeldern biegefest verbunden, so brauchen die 
+zugehörigen Drillmomente nicht nachgewiesen und keine Drillbewehrung angeordnet zu werden. 
+NCI Zu 9.3.1.4 
+(NA.3) Bei Fundamenten und innen liegenden Bauteilen des üblichen Hochbaus braucht eine Bewehrung 
+nach Absatz (1) nicht angeordnet zu werden. 
+NCI Zu 9.3.2 (1) 
+h
+min einer Vollplatte (Ortbeton): 
+ mit Querkraftbewehrung (aufgebogen): 160 mm; 
+ mit Querkraftbewehrung (Bügel) oder Durchstanzbewehrung: 200 mm 
+NCI Zu 9.3.2 (2) 
+ bei VEd VRd,c mit b / h > 5 ist keine Mindestbewehrung für Querkraft erforderlich. 
+ Bauteile mit b / h < 4 sind als Balken zu behandeln. 
+ Im Bereich 5 b / h 4 ist eine Mindestbewehrung erforderlich, die bei VEd VRd,c zwischen dem 
+nullfachen und dem einfachen Wert, bei VEd > VRd,c zwischen dem 0,6-fachen und dem einfachen Wert 
+der erforderlichen Mindestbewehrung von Balken interpoliert werden darf. 
+ bei VEd > VRd,c mit b / h > 5 ist der 0,6-fache Wert der Mindestbewehrung von Balken erforderlich. 
+77
+
+===== PDF-SEITE 78 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.3.2 (4) 
+Größter Längsabstand von Bügeln: 
+ für VEd 0,30 VRd,max smax = 0,7 h
+ für 0,30 VRd, max < VEd 0,60VRd,max smax = 0,5 h
+ für VEd > 0,60VRd,max smax = 0,25 h
+Der größte Längsabstand von aufgebogenen Stäben darf mit smax = h angesetzt werden. 
+NCI Zu 9.3.2 (5) 
+Der größte Querabstand von Bügeln darf in der Regel smax = h nicht überschreiten. 
+NCI Zu 9.4.1 (1) 
+ANMERKUNG Beachte auch die Festlegungen zu den Mindestbiegemomenten für den Durchstanzbereich nach 
+NCI zu 6.4.5 (1). 
+NCI Zu 9.4.1 (3) 
+Zur Vermeidung eines fortschreitenden Versagens von punktförmig gestützten Platten ist stets ein Teil der 
+Feldbewehrung über die Stützstreifen im Bereich von Innen- und Randstützen hinwegzuführen bzw. dort zu 
+verankern. Die hierzu erforderliche Bewehrung muss mindestens die Querschnittsfläche As = VEd / fyk
+aufweisen und ist im Bereich der Lasteinleitungsfläche anzuordnen. Abminderungen von VEd sind dabei nicht 
+zulässig. Dabei ist VEd der Bemessungswert der Querkraft mit F = 1,0. 
+Auf diese Abreißbewehrung beim Durchstanzen darf bei elastisch gebetteten Bodenplatten wegen der Boden-
+Bauwerk-Interaktion verzichtet werden. 
+NCI Zu 9.4.2 (1) 
+ANMERKUNG Beachte auch die Festlegungen zu den Mindestbiegemomenten für den Durchstanzbereich nach 
+NCI zu 6.4.5 (1). 
+NCI zu 9.4.2 
+(NA.2) Bei Lasteinleitungsflächen, die sich nahe oder an einem freien Rand oder einer Ecke befinden, d. h. 
+mit einem Randabstand kleiner als d, ist stets eine besondere Randbewehrung nach 9.3.1.4 mit einem 
+Abstand der Steckbügel sw 100 mm längs des freien Randes erforderlich. 
+78
+
+===== PDF-SEITE 79 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.4.3 (1) 
+Die Stabdurchmesser einer Durchstanzbewehrung sind auf die vorhandene mittlere statische Nutzhöhe der 
+Platte abzustimmen: 
+Bügel: 0,05d
+Schrägaufbiegungen: 0,08d
+Weitere Hinweise zu Bügelformen und Darstellung der Durchstanzbewehrung sind in DAfStb-Heft 600 
+enthalten. 
+NCI Zu 9.4.3 (2) 
+Die Gleichung (9.11) wird durch Gleichung (NA.9.11) ersetzt: 
+tr
+yk
+ck
+sminsw,
+5,1
+08,0sin ssf
+fAA (NA.9.11) 
+NCI Zu 9.4.3 (4) 
+Werden Schrägstäbe als Durchstanzbewehrung eingesetzt, sollten diese eine Neigung von 45° 60° 
+gegen die Plattenebene aufweisen. 
+79
+
+===== PDF-SEITE 80 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.4.3, Bild 9.10 
+Bild 9.10 wird durch Bild NA.9.10 ersetzt. 
+a) Bügelabstände bei Flachdecken 
+b) Abstände aufgebogener Stäbe 
+c) Bügelabstände bei Fundamenten 
+Legende 
+A letzter Rundschnitt, der noch Durchstanzbewehrung benötigt
+B erster Rundschnitt, der keine Durchstanzbewehrung benötigt 
+Bild NA.9.10  Durchstanzbewehrung 
+NCI zu 9.5.1 (1) 
+Für Stützen mit Vollquerschnitt, die vor Ort (senkrecht) betoniert werden, darf die kleinste Querschnitts-
+abmessung 200 mm nicht unterschreiten. 
+80
+
+===== PDF-SEITE 81 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 9.5.2 (1) 
+min = 12 mm 
+NDP Zu 9.5.2 (2) 
+As,min = 0,15 |NEd| / fyd (NA.9.12) 
+NDP Zu 9.5.2 (3) 
+As,max = 0,09Ac auch im Bereich von Übergreifungsstößen 
+NCI Zu 9.5.2 (4) 
+Dabei sollte der Abstand der Längsstäbe 300 mm betragen. Bei b 400 mm und h b genügt je ein 
+Bewehrungsstab in den Ecken. In Stützen mit Kreisquerschnitt sollten mindestens 6 Stäbe angeordnet 
+werden. 
+NCI Zu 9.5.3 (1) 
+Die Querbewehrung muss die Stützenlängsbewehrung umfassen. 
+Bei Verwendung von Stabbündeln mit n > 28 mm und bei Stäben mit > 32 mm nach 8.8 als 
+Druckbewehrung muss abweichend von Absatz (1) der Mindeststabdurchmesser für Einzelbügel und für 
+Bügelwendeln 12 mm betragen. 
+NCI Zu 9.5.3 (2) 
+Bügel sind in der Regel mit Haken nach Bild NA.8.5a) zu schließen. 
+Wird der Widerstand gegen Abplatzen der Betondeckung erhöht, darf die Querbewehrung aus Bügeln auch 
+mit 90°-Winkelhaken nach Bild NA.8.5 b) geschlossen werden. Die Bügelschlösser sind entlang der Stütze zu 
+versetzen. Mindestens eine der folgenden Maßnahmen kommen hierfür in Frage: 
+ Vergrößerung des Mindestbügeldurchmessers um mindestens 2 mm gegenüber Absatz (1); 
+ Halbierung der Bügelabstände nach Absatz (3) bzw. (4); 
+ angeschweißte Querstäbe (Bügelmatten); 
+ Vergrößerung der Winkelhakenlänge nach Bild NA.8.5 b) von 10 auf 15 .
+NDP Zu 9.5.3 (3) 
+Der Abstand der Querbewehrung scl,tmax darf den kleinsten der drei folgenden Werte nicht überschreiten: 
+ das 12-fache des kleinsten Durchmessers der Längsstäbe; 
+ die kleinste Seitenlänge oder den Durchmesser der Stütze; 
+ 300 mm. 
+81
+
+===== PDF-SEITE 82 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.5.3 (6) 
+In oder in der Nähe jeder Ecke ist eine Anzahl von maximal 5 Stäben durch die Querbewehrung gegen 
+Ausknicken zu sichern. Weitere Längsstäbe und solche, deren Abstand vom Eckbereich den 15-fachen 
+Bügeldurchmesser überschreitet, sind durch zusätzliche Querbewehrung nach Absatz (1) zu sichern, die 
+höchstens den doppelten Abstand der Querbewehrung nach Absatz (3) haben darf. 
+NCI Zu 9.6.1 (1) 
+Für Wände mit Halbfertigteilen gelten die allgemeinen bauaufsichtlichen Zulassungen. 
+NCI Zu 9.6.1 
+(NA.2) Die Wanddicken tragender Wände sollten die Nennmaße nach Tabelle NA.9.3 nicht unterschreiten: 
+Tabelle NA.9.3  Mindestwanddicken für tragende Stahlbetonwände 
+1 2 
+mit Decken Wandkonstruktion
+nicht durchlaufend durchlaufend 
+1 Ortbeton 120 mm 100 mm 
+2 
+ C16/20 
+Fertigteil 100 mm 80 mm 
+NDP Zu 9.6.2 (1) 
+ allgemein: As,vmin = 0,15|NEd| / fyd 0,0015Ac
+ bei schlanken Wänden lim (nach 5.8.3.1) oder solchen mit |NEd| 0,3fcd Ac : As,vmin = 0,003 Ac
+As,vmax = 0,04 Ac (dieser Wert darf innerhalb von Stoßbereichen verdoppelt werden.) 
+Der Bewehrungsgehalt sollte an beiden Wandaußenseiten im Allgemeinen gleich groß sein. 
+NDP Zu 9.6.2 (3) 
+Der Abstand zwischen zwei benachbarten lotrechten Stäben sollte nicht über der 2-fachen Wanddicke oder 
+nicht über 300 mm liegen (der kleinere Wert ist maßgebend). 
+NDP Zu 9.6.3 (1) 
+ allgemein: As,hmin = 0,20As,v
+ bei schlanken Wänden lim (nach 5.8.3.1) oder solchen mit |NEd| 0,3fcd Ac : As,hmin = 0,50As,v
+Der Durchmesser der horizontalen Bewehrung muss mindestens ein Viertel des Durchmessers der lotrechten 
+Stäbe betragen. 
+NCI Zu 9.6.3 (2) 
+Der Abstand s zwischen zwei benachbarten waagerechten Stäben sollte max. 350 mm betragen. 
+82
+
+===== PDF-SEITE 83 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 9.6.4 (1) 
+Beträgt die Vertikalbewehrung weniger als 0,02Ac ist die Querbewehrung nach 9.6.4 (2) auszubilden. 
+NCI Zu 9.6.4 (2) 
+S-Haken dürfen bei Tragstäben mit 16 mm entfallen, wenn deren Betondeckung mindestens 2 beträgt; in 
+diesem Fall und stets bei Betonstahlmatten dürfen die druckbeanspruchten Stäbe außen liegen. 
+Die außenliegenden Bewehrungsstäbe dicker Wände können auch mit Steckbügeln im Innern der Wand 
+verankert werden, wobei die freien Bügelenden die Verankerungslänge 0,5 lb,rqd haben müssen. 
+An freien Rändern von Wänden mit einer Bewehrung As 0,003Ac je Wandseite müssen die Eckstäbe durch 
+Steckbügel nach Bild 9.8 gesichert werden. 
+NDP Zu 9.7 (1) 
+As,dbmin = 0,075 % von Ac und As,dbmin 150 mm²/m. 
+NCI Zu 9.7 (1) 
+Die Mindestwanddicken nach Tabelle NA.9.3 sind auch bei wandartigen Trägern einzuhalten. 
+NDP Zu 9.8.1 (3) 
+Es gilt der empfohlene Wert min = 8 mm. 
+NCI Zu 9.8.1 (4) 
+Es gilt 8.4.1 und Tabelle 8.2. Verankerungen nach 8.6 sind nicht zulässig. 
+NDP Zu 9.8.2.1 (1) 
+min = 6 mm für Betonstahlmatten und min = 10 mm für Stabstahl 
+NDP Zu 9.8.3 (1) 
+min = 6 mm für Betonstahlmatten und min = 10 mm für Stabstahl 
+NDP Zu 9.8.3 (2) 
+Es gilt der empfohlene Wert q1 = 10 kN/m. 
+NDP Zu 9.8.4 (1) 
+min = 6 mm für Betonstahlmatten und min = 10 mm für Stabstahl 
+Es gilt der empfohlene Wert q2 = 5 N/mm². 
+83
+
+===== PDF-SEITE 84 =====
+DIN EN 1992-1-1/NA:2011-01 
+NDP Zu 9.8.5 (3) 
+Es gelten die empfohlenen Werte der Tabelle 9.6N. 
+Bohrpfähle mit dnom 300 mm sind immer zu bewehren. Bezüglich Herstellung und Bemessung wird auf 
+DIN EN 14199 verwiesen. 
+Für bewehrte Bohrpfähle mit Durchmessern dnom h1 = 600 mm ist die Mindestbewehrung As,bpmin nach 
+Tabelle 9.6N einzulegen. 
+Pfähle mit 300 mm < dnom 600 mm sollten über mindestens 6 Längsstäbe mit = 16 mm verfügen, 
+ansonsten gelten sie als unbewehrt. 
+Bohrpfähle mit dnom > 600 mm dürfen auch nach Abschnitt 12 unbewehrt ausgeführt werden. Bei bewehrter 
+Ausführung ist eine Mindestbewehrung nach Tabelle 9.6N vorzusehen. 
+NCI Zu 9.10.1 (4) 
+Bei der Bemessung der Zugglieder dürfen andere Schnittgrößen als die, die direkt durch die 
+außergewöhnlichen Einwirkungen hervorgerufen werden oder unmittelbar aus der betrachteten lokalen 
+Zerstörung resultieren, vernachlässigt werden. 
+NCI Zu 9.10.1 
+(NA.6) Zugglieder dürfen mit Vorspannung mit nachträglichem Verbund ausgeführt werden. 
+NDP zu 9.10.2.2 (2) 
+Es gelten die empfohlenen Werte q
+1 = 10 kN/m und Q2 = 70 kN. 
+NCI Zu 9.10.2.2 (2) 
+Die Umlaufwirkung kann durch Stoßen der Längsbewehrung mit einer Stoßlänge ls = 2lb,rqd erzielt werden. Der 
+Stoßbereich ist mit Bügeln, Steckbügeln oder Wendeln mit einem Abstand s 100 mm zu umfassen. Die 
+Umlaufwirkung darf auch durch Verschweißen oder durch Verwenden mechanischer Verbindungen erzielt 
+werden. 
+NDP Zu 9.10.2.3 (3) 
+Es gilt der empfohlene Wert Ftie,int = 20 kN/m. 
+NDP Zu 9.10.2.3 (4) 
+Es gelten die empfohlenen Werte q3 = 20 kN/m und Q4 = 70 kN. 
+NDP Zu 9.10.2.4 (2) 
+ftie,fac = 10 kN/m und Ftie,col = 150 kN 
+NCI Zu 9.10.2.4 
+(NA.4) Bei Hochhäusern sollte auch eine horizontale Verankerung am unteren Rand der Randstützen und 
+tragenden Außenwände vorgesehen werden. 
+84
+
+===== PDF-SEITE 85 =====
+DIN EN 1992-1-1/NA:2011-01 
+(NA.5) Bei Außenwandtafeln von Hochhäusern, die zwischen ihren aussteifenden Wänden nicht gestoßen 
+sind und deren Länge zwischen diesen Wänden höchstens das Doppelte ihrer Höhe ist, dürfen die 
+Verbindungen am unteren Rand ersetzt werden durch Verbindungen gleicher Gesamtzugkraft, die in der 
+unteren Hälfte der lotrechten Fugen zwischen der Außenwand und ihren aussteifenden Wänden anzuordnen 
+sind. 
+(NA.6) Am oberen Rand tragender Innenwandtafeln sollte mindestens eine Bewehrung von 0,7 cm
+2/m in den 
+Zwischenraum zwischen den Deckentafeln eingreifen. Diese Bewehrung darf an zwei Punkten vereinigt 
+werden, bei Wandtafeln mit einer Länge bis 2,50 m genügt ein Anschlusspunkt in Wandmitte. Die Bewehrung 
+darf durch andere gleichwertige Maßnahmen ersetzt werden. 
+NCI Zu 9.10.2.5 
+Der Abschnitt gilt nur für Großtafelbauten. 
+NCI Zu 10.1 
+(NA.2) Diese Norm enthält keine Angaben über den Nachweis der Tragfähigkeit von Transportankern. Für 
+Bemessung, Herstellung und Einbau sind spezielle Richtlinien zu beachten. 
+NCI Zu 10.1.1 
+Fertigteilprodukt: Ein Fertigteil, das nach einer harmonisierten Produktnorm oder einer Zulassung oder nach 
+DIN 1045-4 hergestellt wird. 
+NCI Zu 10.2 
+(NA.4) Bei Fertigteilen dürfen für Bauzustände im Grenzzustand der Tragfähigkeit für Biegung und Längskraft 
+die Teilsicherheitsbeiwerte für die ständigen und die veränderlichen Einwirkungen mit 
+G = Q = 1,15 angesetzt 
+werden. Einwirkungen aus Krantransport und Schalungshaftung sind dabei zu berücksichtigen. 
+(NA.5) Bei Verwendung von Fertigteilen sind auf den Ausführungszeichnungen anzugeben: 
+ die Art der Fertigteile, 
+ Typ- oder Positionsnummer und Eigenlast der Fertigteile, 
+ die Mindestdruckfestigkeitsklasse des Betons beim Transport und bei der Montage, 
+ Art, Lage und zulässige Einwirkungsrichtung der für den Transport und die Montage erforderlichen 
+Anschlagmittel (z. B. Transportanker), Abstützpunkte und Lagerungen, 
+ gegebenenfalls zusätzliche konstruktive Maßnahmen zur Sicherung gegen Stoßbeanspruchung, 
+ die auf der Baustelle zusätzlich zu verlegende Bewehrung in gesonderter Darstellung. 
+(NA.6) Bei Bauwerken mit Fertigteilen sind für die Baustelle Verlegezeichnungen der Fertigteile mit den 
+Positionsnummern der einzelnen Teile und eine Positionsliste anzufertigen. In den Verlegezeichnungen sind 
+auch die für den Zusammenbau erforderlichen Auflagertiefen, die Art und die Abmessungen der Lager und die 
+erforderlichen Abstützungen der Fertigteile anzugeben. 
+(NA.7) Bei Bauwerken mit Fertigteilen sind in der Baubeschreibung Angaben über den Montagevorgang 
+einschließlich zeitweiliger Stützungen und Aufhängungen sowie über das Ausrichten und über die während 
+der Montage auftretenden, für die Tragfähigkeit und Gebrauchstauglichkeit wichtigen Zwischenzustände 
+erforderlich. Besondere Anforderungen an die Lagerung der Fertigteile sind in den Zeichnungen und der 
+Montageanleitung anzugeben. 
+85
+
+===== PDF-SEITE 86 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 10.3.1.1 (2) 
+Dieser Absatz gilt in Deutschland nicht. 
+NCI Zu 10.3.2.1 (2) 
+ANMERKUNG Der Abschnitt findet nur Anwendung, sofern in den allgemeinen bauaufsichtlichen Zulassungen nichts 
+anderes festgelegt wird. 
+NCI NA.10.4 
+(1) Bei Fertigteilen mit einer werksmäßigen und ständig überwachten Herstellung darf das Vorhaltemaß cdev
+nur dann um mehr als 5 mm reduziert werden, wenn durch eine Überprüfung der Mindestbetondeckung am 
+fertigen Bauteil (Messung und Auswertung nach DBV-Merkblatt Betondeckung und Bewehrung“) 
+sichergestellt wird, dass Fertigteile mit zu geringer Mindestbetondeckung ausgesondert werden. Eine 
+Verringerung von cdev unter 5 mm ist dabei unzulässig. 
+NCI Zu 10.9.2 (2) 
+Dies gilt bei Anordnung einer Fertigteilwand auf einer Fuge zwischen zwei Deckenplatten als auch auf einer 
+Deckenplatte (siehe Bild NA.10.1.1). 
+Die Querschnittsfläche einer zusätzlichen Querbewehrung am Wandfuß bzw. Wandkopf (siehe Bild NA.10.1) 
+sollte mindestens betragen: 
+asw = h / 8 
+mit asw in cm2/m und h in cm. 
+Der Durchmesser der Längsbewehrung Asl sollte ebenfalls mindestens 6 mm betragen. 
+Bild 10.1 links wird ersetzt durch Bild NA.10.1: 
+Legende 
+1 Fertigteilwand 
+2 Decke 
+Bild NA.10.1  Beispiel zur Bewehrung einer Wand über der Verbindung zweier Deckenplatten 
+86
+
+===== PDF-SEITE 87 =====
+DIN EN 1992-1-1/NA:2011-01 
+ a) Mittelauflager b) Randauflager 
+Legende 
+1 Fertigteilwände 
+2 Fertigteildeckenplatten 
+3 Fugenverguss
+Bild NA.10.1.1  Auflagerung von Deckenplatten auf Fertigteilwänden 
+NCI Zu 10.9.3 (4) Deckensysteme 
+Bild 10.2a) wird ersetzt durch Bild NA.10.2a): 
+ Maße in mm 
+Legende 
+1 Fugenverguss
+Bild NA.10.2a)  Mindestmaße für ausbetonierte bzw. vergossene Fugen 
+NCI Zu 10.9.3 (5) 
+Die Lasteinzugbreite be / 3 in Gleichung (10.4) sollte mindestens 0,50 m betragen. 
+NCI Zu 10.9.3 (12) 
+Die Scheiben sind dabei mit Zugankern nach 9.10.2 auszubilden. 
+87
+
+===== PDF-SEITE 88 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 10.9.3 
+(NA.13) Für nachträglich mit Ortbeton ergänzte Deckenplatten gelten zusätzlich die Absätze (NA.14)P bis 
+(NA.18). 
+(NA.14)P Bei zweiachsig gespannten Platten darf für die Beanspruchung rechtwinklig zur Fuge nur die 
+Bewehrung berücksichtigt werden, die durchläuft oder mit ausreichender Übergreifung gestoßen ist. 
+Voraussetzung für die Berücksichtigung der gestoßenen Bewehrung ist, dass der Durchmesser der 
+Bewehrungsstäbe 
+ 14 mm, der Bewehrungsquerschnitt as 10 cm2/m und der Bemessungswert der 
+Querkraft VEd 0,3VRd,max (VEd und VRd,max nach 6.2.3) ist. Darüber hinaus ist der Stoß durch Bewehrung (z. B. 
+Bügel) im Abstand höchstens der zweifachen Deckendicke zu sichern. Der Betonstahlquerschnitt dieser 
+Bewehrung im fugenseitigen Stoßbereich ist dabei für die Zugkraft der gestoßenen Längsbewehrung zu 
+bemessen. Werden Gitterträger verwendet gelten darüber hinaus die Zulassungen. 
+(NA.15)P Die günstige Wirkung der Drillsteifigkeit darf bei der Schnittgrößenermittlung nur berücksichtigt 
+werden, wenn sich innerhalb des Drillbereiches von 0,3 l ab der Ecke keine Stoßfuge der Fertigteilplatten 
+befindet oder wenn die Fuge durch eine Verbundbewehrung im Abstand von höchstens 100 mm vom 
+Fugenrand gesichert wird. Die Aufnahme der Drillmomente ist nachzuweisen. 
+(NA.16) Die Aufnahme der Drillmomente braucht nicht nachgewiesen zu werden, wenn die Platte mit den 
+Randbalken oder den benachbarten Deckenfeldern biegesteif verbunden ist.
+(NA.17)P Bei Endauflagern ohne Wandauflast ist eine Verbundsicherungsbewehrung von mindestens 
+6 cm
+2/m entlang der Auflagerlinie anzuordnen. Diese sollte auf einer Breite von 0,75 m angeordnet werden. 
+(NA.18) Wenn an Fertigteilplatten mit Ortbetonergänzung planmäßig und dauerhaft Lasten angehängt 
+werden, sollte die Verbundsicherung im unmittelbaren Lasteinleitungsbereich nachgewiesen werden. 
+NCI Zu 10.9.4.1 (3)P 
+Verbindungsmittel für Fassaden im Außenbereich müssen grundsätzlich aus korrosionsbeständigen 
+Baustoffen bestehen. Verbindungsmittel aus beschichteten Baustoffen bedürfen einer Zulassung. 
+ANMERKUNG Zu beachten sind auch DIN 18516-1 bzw. die Zulassungen für Fassadenverbindungsmittel. 
+NCI Zu 10.9.4.2 (3) 
+ANMERKUNG Nachweise unter Verwendung von Versuchen erfordern eine Zulassung oder eine Zustimmung im 
+Einzelfall. 
+NCI Zu 10.9.4.3 (1) 
+ANMERKUNG Druckfugen sind Fugen, die bei der ungünstigsten anzusetzenden Beanspruchungskombination 
+vollständig überdrückt bleiben. 
+NCI Zu 10.9.4.3 (4) 
+ANMERKUNG Konzentrierter Druck entsteht bei einer harten Lagerung. Diese wird angenommen, wenn der 
+Elastizitätsmodul des Fugenmaterials mehr als 70 % des Elastizitätsmoduls der angrenzenden Bauteile beträgt. Eine 
+harte Lagerung bilden auch vollflächig mit Zementmörtel gefüllte Fugen. Hier treten Querzugspannungen infolge der 
+Umlenkung der Traganteile aus Bewehrung und Betonanteil auf. 
+Bei verformbarem Fugenmaterial (Bild 10.3b) kann es zusätzlich erforderlich sein, die Fuge selbst zu bewehren, sofern ein 
+Ausweichen des Fugenmaterials nicht anderweitig verhindert wird. 
+88
+
+===== PDF-SEITE 89 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 10.9.4.3 (6) 
+ANMERKUNG Nachweise unter Verwendung von Versuchen erfordern eine Zulassung oder eine Zustimmung im 
+Einzelfall. Hinweise zur Berechnung der Tragfähigkeit von Druckfugen siehe DAfStb-Heft 600. 
+NCI Zu 10.9.4.7 (1) 
+ANMERKUNG d = di 
+NCI Zu 10.9.6.3 (1) 
+Die Einbindetiefe l sollte 1,5h nicht unterschreiten. 
+NCI NA.10.9.8 Zusätzliche Konstruktionsregeln für Fertigteile 
+(1) Zur Erzielung einer ausreichenden Seitensteifigkeit sollte bei Fertigteilen, deren Verhältnis leff / b > 20 ist, 
+ein Teil der Längsbewehrung konzentriert an den seitlichen Rändern der Zug- und Druckzone angeordnet 
+werden. 
+(2) Für Vollplatten aus Fertigteilen mit einer Breite b 1,20 m darf die Querbewehrung nach 9.3.1.1 (2) 
+entfallen. 
+(3) Bei feingliedrigen Fertigteilträgern (z. B. Trägern mit I-, T- oder Hohlquerschnitten mit Stegbreiten 
+bw 80 mm) dürfen einschnittige Querkraftzulagen allein als Querkraftbewehrung verwendet werden, wenn 
+die Druckzone und die Biegezugbewehrung gesondert durch Bügel umschlossen sind. 
+(4) Die Mindestquerschnittsabmessung nach 9.5.1 (1) darf für waagerecht betonierte Fertigteilstützen auf 
+120 mm reduziert werden. 
+NCI NA.10.9.9 Sandwichtafeln 
+(1)P Bei der Bemessung von Sandwichtafeln müssen die Einflüsse von Temperatur, Feuchtigkeit, 
+Austrocknen und Schwinden in ihrem zeitlichen Verlauf berücksichtigt werden. 
+(2)P In Sandwichtafeln sind ausschließlich zugelassene, korrosionsbeständige Werkstoffe für die 
+Verbindungen der einzelnen Schichten zu verwenden. 
+(3) Die Mindestbewehrung der tragenden Schicht der Tafeln sollte an beiden Seiten in der horizontalen und 
+vertikalen Richtung nicht weniger als 1,3 cm 2/m betragen. Im Allgemeinen ist eine Randbewehrung (siehe 
+Bild 9.8) nicht erforderlich. 
+(4) In der Vorsatzschicht einer Sandwichtafel darf die Bewehrung einlagig angeordnet werden. 
+(5) Die Mindestdicke für Trag- und Vorsatzschicht beträgt 70 mm. 
+(6) Bei Sandwichtafeln mit Fugenabdichtung sollte die Innenseite der Vorsatzschicht und in der Regel auch 
+die gegenüberliegende Seite der Tragschicht im Bereich einer anliegenden, geschlossenporigen 
+Kerndämmung der Expositionsklasse XC3 zugeordnet werden. 
+NCI Zu 11.1.1 (2)P 
+Für die Anwendung zuverlässiger Erfahrungswerte ist in der Regel eine allgemeine bauaufsichtliche 
+Zulassung erforderlich. 
+89
+
+===== PDF-SEITE 90 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 11.1.1 (4)P 
+Leichtbeton muss eine Dichte von min. 800 kg/m³ aufweisen. Der obere Grenzwert der Dichte für 
+Konstruktionsleichtbeton darf auch für die Bemessung mit 2 000 kg/m³ angesetzt werden. 
+NCI Zu 11.3.1 (3) 
+ANMERKUNG Dies gilt für fctm, fctk;0,05 und fctk;0,95. 
+NCI Zu 11.3.2 (1) 
+Der Beiwert E nach Gleichung (11.2) gilt auch für den Tangentenmodul Elc0m. 
+Bei Verwendung von Werten nach ISO 6784 ist in der Regel eine allgemeine bauaufsichtliche Zulassung 
+erforderlich. 
+NCI Zu 11.3.2, Tabelle 11.3.1 
+Ergänzt werden die Fußnoten 1) (an Festigkeitsklassen für Leichtbeton) und 2) (an fck = 12): 
+NCI 1) Für die Einstufung in die Festigkeitsklasse für die Bemessung ist nur die Zylinderdruckfestigkeit relevant.
+NCI 2) Ermüdungsnachweise mit der Festigkeitsklasse LC12/13 sind nicht zulässig. 
+NDP Zu 11.3.5 (1)P 
+lcc = 0,75 bei Verwendung des Parabel-Rechteck-Diagramms nach Bild 3.3 oder des Spannungsblocks 
+nach Bild 3.5 
+lcc = 0,8 bei Verwendung der bilinearen Spannungs-Dehnungslinie nach Bild 3.4 
+NDP Zu 11.3.5 (2)P 
+Es gilt der empfohlene Wert lct = 0,85. 
+NDP Zu 11.3.7 (1) 
+Es gelten die empfohlenen Werte: 
+k = 1,1 für Leichtbeton mit Sand als feine Gesteinskörnung, 
+k = 1,0 für Leichtbeton sowohl mit feiner als auch grober leichter Gesteinskörnung. 
+NCI Zu 11.3.7 (1) 
+Dabei ist 2 (= 3) die effektive seitliche Druckspannung im Grenzzustand der Tragfähigkeit infolge einer 
+Umschnürung (siehe 3.1.9). 
+NCI Zu 11.4.1 (1) 
+Zur Sicherstellung der Dauerhaftigkeit sind zusätzliche Anforderungen an die Zusammensetzung und die 
+Eigenschaften des Betons nach DIN EN 206-1 und DIN 1045-2 zu berücksichtigen. 
+90
+
+===== PDF-SEITE 91 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 11.4.2 (1)P 
+Bei Bauteilen aus Leichtbeton muss die Mindestbetondeckung nach 4.4.1.2 (3) außer für die 
+Expositionsklasse XC1 mindestens 5 mm größer sein als der Durchmesser des Größtkorns der leichten 
+Gesteinskörnung. Die Mindestwerte für cmin zum Schutz gegen Korrosion sind einzuhalten. 
+NCI Zu 11.5.1 
+(NA.1)P Verfahren der Schnittgrößenermittlung nach der Plastizitätstheorie dürfen bei Bauteilen aus 
+Leichtbeton nicht angewendet werden. 
+NCI NA.11.5.2 Linear-elastische Berechnung 
+(1) Für Durchlaufträger, bei denen das Stützweitenverhältnis benachbarter Felder mit annähernd gleichen 
+Steifigkeiten 0,5 < leff,1 / leff,2 < 2,0 beträgt, in Riegeln von Rahmen und in sonstigen Bauteilen, die vorwiegend 
+auf Biegung beansprucht sind, einschließlich durchlaufender, in Querrichtung kontinuierlich gestützter Platten, 
+sollte das Verhältnis xd / d den Wert 0,35 für Leichtbeton nicht übersteigen, sofern keine geeigneten 
+konstruktiven Maßnahmen zur Sicherstellung ausreichender Duktilität getroffen werden (enge Verbügelung 
+der Druckzone). 
+(2) Für die linear-elastische Berechnung mit begrenzter Umlagerung von durchlaufenden Balken oder Platten 
+aus Leichtbeton gilt 5.5 (4), Gleichung (5.10b) mit den folgenden Beiwerten: 
+k3 = 0,72; k4 = 0,8; k5 = 0,8; k6 = 1,0. 
+NDP Zu 11.6.1 (1) 
+Cl,Rd,c = 0,15 / C
+k1 = 0,12 
+vl,min nach 6.2.2 (1), jedoch mit flck 
+Tabelle 11.6.1N gilt nicht. 
+NDP Zu 11.6.2 (1) 
+ allgemein für Querkraft: 
+1 = 0,675 1 in Gleichung (6.5) 
+1 = 0,75 1 in Gleichung (6.9) 
+ allgemein für Torsion: 1 = 0,525 1
+ für Schubnachweise in der Verbundfuge nach 6.2.5: 
+sehr glatte Fuge: 1 = 0 
+glatte Fuge: 1 = 0,20 1
+raue Fuge: 1 = 0,50 1
+verzahnte Fuge: 1 = 0,70 1
+Für Betonfestigkeitsklassen LC55/60 sind alle 1-Werte mit dem Faktor 2 = (1,1  flck / 500) zu multiplizieren. 
+91
+
+===== PDF-SEITE 92 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 11.6.2 
+(NA.2) Der Druckstrebenwinkel nach Gleichung (NA.6.7a) muss auf max. cot = 2,0 begrenzt werden. VRd,cc
+nach Gleichung (NA.6.7b) ist mit 1 zu multiplizieren. 
+(NA.3) Die Tragfähigkeit der Verbundfuge vRdi nach 6.2.5(1) beträgt 
+vRdi = c flctd + µ n + 1,2 fyd (µ sin + cos ) 0,5 1 fcd (11.6.25) 
+mit 1 nach 11.6.2 (1). 
+NDP Zu 11.6.4.1 (1) 
+Es gilt der empfohlene Wert k2 = 0,08. Für ClRd,c gilt NDP zu 6.4.4 (1). 
+NDP Zu 11.6.4.1 (2) 
+Für ClRd,c gilt CRd,c nach NDP zu 6.4.4 (1). 
+NCI Zu 11.6.4.2 (1) 
+Es gelten die Ergänzungen zu NCI zu 6.4.5 (1) analog. 
+NCI Zu 11.6.4.2 (2) 
+Es gelten die Ergänzungen zu NDP zu 6.4.5 (3) analog. 
+NCI Zu 11.6 
+Es wird der folgende Abschnitt NA.11.6.5 ergänzt. Die folgenden Abschnittsnummern werden um +1 erhöht. 
+NCI NA.11.6.5 Stabwerkmodelle 
+(1)P Für Stabwerk-Druckstreben ist fcd in Gleichungen (6.55) und (6.56) mit 1 zu multiplizieren. 
+(2)P Für Stabwerk-Druckknoten ist fcd in Gleichungen (6.60) bis (6.62) mit 1 zu multiplizieren. 
+NCI Zu 11.7 
+(NA.2) Wenn der Zeitpunkt der Rissbildung nicht mit Sicherheit innerhalb der ersten 28 Tage festgelegt 
+werden kann, sollte in 7.3.3 (2), Gleichung (7.1) mindestens eine Zugfestigkeit flct,eff 2,5 N/mm² ange-
+nommen werden. 
+NCI Zu 11.8.2 
+(NA.2)P Den Verbundfestigkeiten in den Gleichungen (8.15) und (8.20) ist flctd zugrunde zu legen. 
+NCI Zu 11.9 (1) 
+Bei Leichtbeton sollten Stabbündel nur dann Verwendung finden, wenn ihr Einsatz aufgrund von Erfahrungen 
+oder Versuchsergebnissen gerechtfertigt ist (in der Regel in Zulassungen). Der Durchmesser eines Einzel-
+stabes darf hierbei 20 mm nicht überschreiten. 
+92
+
+===== PDF-SEITE 93 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 11.9 
+(NA.2) Der Mindestquerkraftbewehrungsgrad nach Gleichung (NA.9.5a) dieses Nationalen Anhangs darf bei 
+Leichtbeton unter Verwendung von flctm nach Tabelle 11.3.1 ermittelt werden. 
+(NA.3) Die Mindestwanddicken nach Tabelle NA.9.3 bzw. Tabelle NA.12.2 in Zeile 1 gelten für LC12/13, die in 
+Zeilen 2 und 3 für LC16/18. 
+NCI Zu 12.1 (2) 
+Pfähle mit dnom 600 mm dürfen unter Berücksichtigung der folgenden Abschnitte auch bei höheren 
+Ausnutzungsgraden als NEd / Ac = 0,3 fck unbewehrt ausgeführt werden, wenn im GZT der Querschnitt 
+vollständig überdrückt bleibt. 
+NDP Zu 12.3.1 (1) 
+cc,pl = 0,70 in Gleichung (3.15) 
+ct,pl = 0,70 in Gleichung (12.1) 
+NCI Zu 12.5 (2) 
+Eine nichtlineare Schnittgrößenermittlung ist nur nach 5.7 (6) zulässig. 
+NCI Zu 12.6 
+Die Betonzugspannungen dürfen im Allgemeinen nicht angesetzt werden. 
+Rechnerisch darf keine höhere Festigkeitsklasse des Betons als C35/45 oder LC20/22 ausgenutzt werden. 
+NCI Zu 12.6.2 (1)P 
+Für stabförmige unbewehrte Bauteile mit Rechteckquerschnitt gilt das Duktilitätskriterium als erfüllt, wenn die 
+Ausmitte der Längskraft in der maßgebenden Einwirkungskombination des Grenzzustandes der Tragfähigkeit 
+auf e
+d / h < 0,4 beschränkt wird. Die Ausmitte ed ist mit MEd nach Gleichung (5.31) zu ermitteln. 
+Für ed ist etot nach 12.6.5.2 (1) zu setzen. 
+NCI Zu 12.6.3 (1) 
+Es ist nachzuweisen, dass die Betonzugfestigkeit nicht infolge von Rissbildung ausfällt. 
+NDP Zu 12.6.3 (2) 
+k = S Acc / (bw I) für Schnittgrößen aus vorwiegend ruhenden Einwirkungen 
+NCI Zu 12.6.3 (3) 
+Kann nicht von einem ungerissenen Bauteil ausgegangen werden, ist der Bemessungswert der 
+Querkrafttragfähigkeit VRd am ungerissenen Restquerschnitt zu berechnen. Dieser ist aus dem 
+Spannungszustand des Querschnitts für die ungünstigste Bemessungssituation zu ermitteln. 
+93
+
+===== PDF-SEITE 94 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu 12.6.4 
+(NA.2) Für kombinierte Beanspruchung aus Torsion und Querkraft gelten die Festlegungen aus 12.6.3 und 
+12.6.4 (1) analog. 
+NCI Zu 12.6.5.1 (5) 
+Dies gilt auch für unbewehrte Stützen aus Ortbeton. 
+NCI Zu 12.6.5.1 
+(NA.6) Unabhängig vom Schlankheitsgrad sind Druckglieder aus unbewehrtem Beton als schlanke Bauteile 
+zu betrachten. Jedoch ist für Druckglieder aus unbewehrtem Beton mit lcol / h < 2,5 eine 
+Schnittgrößenermittlung nach Theorie II. Ordnung nicht erforderlich. 
+NCI Zu 12.6.5.2 (1) 
+Das vereinfachte Verfahren darf nur für Bauteile in unverschieblich ausgesteiften Tragwerken angewendet 
+werden. 
+Eine Zusatzausmitte infolge Kriechen in etot darf im Allgemeinen vernachlässigt werden. 
+NCI Zu 12.9 
+Für die Mindestwanddicken gilt Tabelle NA.12.2. 
+Tabelle NA.12.2  Mindestwanddicken für tragende unbewehrte Wände 
+ 1 2 
+mit Decken 
+Wandkonstruktion
+nicht durchlaufend durchlaufend 
+1 C12/15 Ortbeton 200 mm 140 mm 
+2 Ortbeton 140 mm 120 mm 
+3 
+ C16/20 
+Fertigteil 120 mm 100 mm 
+NCI Zu 12.9.1 (2) 
+Aussparungen, Schlitze, Durchbrüche und Hohlräume sind bei der Bemessung der Wände zu 
+berücksichtigen, mit Ausnahme von lotrechten Schlitzen sowie lotrechten Aussparungen und Schlitzen von 
+Wandanschlüssen, die den nachstehenden Regelungen für nachträgliches Einstemmen genügen. Das 
+nachträgliche Einstemmen ist nur bei lotrechten Schlitzen bis 30 mm Tiefe zulässig, wenn ihre Tiefe 
+höchstens 1 / 6 der Wanddicke, ihre Breite höchstens gleich der Wanddicke, ihr gegenseitiger Abstand 
+mindestens 2,0 m und die Wand mindestens 120 mm dick ist. 
+NCI Zu 12.9.3 (1) 
+Das Verhältnis h
+F / a darf auch bei Anwendung von Gleichung (12.13) den Wert 1,0 nicht unterschreiten. Für 
+fctd,pl darf fctd nach Gleichung (3.16) angesetzt werden. 
+94
+
+===== PDF-SEITE 95 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu Anhang A 
+Anhang A ist normativ. 
+NDP Zu A.2.1 (1) 
+S,red1 = 1,15 
+NDP Zu A.2.1 (2) 
+C,red1 = 1,5 
+NDP Zu A.2.2 (1) 
+S,red2 = 1,15 und C,red2 = 1,5 
+NDP Zu A.2.2 (2) 
+C,red3 = 1,5 
+NDP Zu A.2.3 (1) 
+Ortbeton: = 1,0 und C,red4 = 1,5 
+Fertigteile: = 0,9 und C,red4 = 1,35, wenn bei Fertigteilen mit einer werksmäßigen und ständig 
+überwachten Herstellung durch eine Überprüfung der Betonfestigkeit an jedem fertigen Bauteil 
+sichergestellt wird, dass alle Fertigteile mit zu geringer Betonfestigkeit ausgesondert werden. 
+Die in diesem Fall notwendigen Maßnahmen sind durch den Hersteller in Abstimmung mit der 
+zuständigen Überwachungsstelle festzulegen. Diese Maßnahmen sind vom Hersteller zu 
+dokumentieren. 
+NCI Zu Anhang B 
+Anhang B ist normativ. 
+NCI Zu B.2 
+ANMERKUNG Die Gleichungen für das Gesamtschwinden sind in 3.1.4 (6) enthalten. 
+Die Auswertung der Gleichungen (B.11) und (B.12) für die Grundwerte der Trocknungsschwinddehnung cd,0 ist für die 
+Zementklassen S, N, R und die Luftfeuchten RH = 40 % bis RH = 90 % in den Tabellen NA.B.1 bis NA.B.3 enthalten (für 
+RH = 100 % beträgt cd,0 = 0). 
+95
+
+===== PDF-SEITE 96 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.B.1  Grundwerte für die Trocknungsschwinddehnung cd,0 in  für Beton mit Zement 
+CEM Klasse S 
+relative Luftfeuchte RH in % fck / fck,cube
+N/mm² 40 50 60 70 80 90 
+C12/15 0,52 0,49 0,44 0,37 0,27 0,15
+C16/20 0,50 0,46 0,42 0,35 0,26 0,14
+C20/25 0,47 0,44 0,39 0,33 0,25 0,14
+C25/30 0,44 0,41 0,37 0,31 0,23 0,13
+C30/37 0,41 0,39 0,35 0,29 0,22 0,12
+C35/45 0,39 0,36 0,32 0,27 0,20 0,11
+C40/50 0,36 0,34 0,30 0,26 0,19 0,11
+C45/55 0,34 0,32 0,29 0,24 0,18 0,10
+C50/60 0,32 0,30 0,27 0,22 0,17 0,09
+C55/67 0,30 0,28 0,25 0,21 0,16 0,09
+C60/75 0,28 0,26 0,23 0,20 0,15 0,08
+C70/85 0,25 0,23 0,21 0,17 0,13 0,07
+C80/95 0,22 0,20 0,18 0,15 0,11 0,06
+C90/105 0,19 0,18 0,16 0,13 0,10 0,05
+C100/115 0,17 0,16 0,14 0,12 0,09 0,05
+96
+
+===== PDF-SEITE 97 =====
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.B.2  Grundwerte für die unbehinderte Trocknungsschwinddehnung cd,0 in  für Beton 
+mit Zement CEM Klasse N 
+relative Luftfeuchte RH in % fck / fck,cube
+N/mm² 40 50 60 70 80 90 
+C12/15 0,64 0,60 0,54 0,45 0,33 0,19 
+C16/20 0,61 0,57 0,51 0,43 0,32 0,18 
+C20/25 0,58 0,54 0,49 0,41 0,30 0,17 
+C25/30 0,55 0,51 0,46 0,38 0,29 0,16 
+C30/37 0,52 0,48 0,43 0,36 0,27 0,15 
+C35/45 0,49 0,45 0,41 0,34 0,25 0,14 
+C40/50 0,46 0,43 0,38 0,32 0,24 0,13 
+C45/55 0,43 0,40 0,36 0,30 0,22 0,12 
+C50/60 0,41 0,38 0,34 0,28 0,21 0,12 
+C55/67 0,38 0,36 0,32 0,27 0,20 0,11 
+C60/75 0,36 0,34 0,30 0,25 0,19 0,10 
+C70/85 0,32 0,30 0,27 0,22 0,17 0,09 
+C80/95 0,28 0,26 0,24 0,20 0,15 0,08 
+C90/105 0,25 0,23 0,21 0,18 0,13 0,07 
+C100/115 0,22 0,21 0,19 0,16 0,12 0,06 
+Tabelle NA.B.3  Grundwerte für die unbehinderte Trocknungsschwinddehnung cd,0 in  für Beton 
+mit Zement CEM Klasse R 
+relative Luftfeuchte RH in % fck / fck,cube
+N/mm² 40 50 60 70 80 90 
+C12/15 0,87 0,81 0,73 0,61 0,45 0,25 
+C16/20 0,83 0,78 0,70 0,58 0,43 0,24 
+C20/25 0,80 0,75 0,67 0,56 0,42 0,23 
+C25/30 0,75 0,71 0,63 0,53 0,39 0,22 
+C30/37 0,71 0,67 0,60 0,50 0,37 0,21 
+C35/45 0,68 0,63 0,57 0,47 0,35 0,20 
+C40/50 0,64 0,60 0,54 0,45 0,33 0,19 
+C45/55 0,61 0,57 0,51 0,43 0,32 0,18 
+C50/60 0,57 0,54 0,48 0,40 0,30 0,17 
+C55/67 0,54 0,51 0,45 0,38 0,28 0,16 
+C60/75 0,51 0,48 0,43 0,36 0,27 0,15 
+C70/85 0,46 0,43 0,39 0,32 0,24 0,13 
+C80/95 0,41 0,39 0,35 0,29 0,21 0,12 
+C90/105 0,37 0,35 0,31 0,26 0,19 0,11 
+C100/115 0,33 0,31 0,28 0,23 0,17 0,10 
+97
+
+===== PDF-SEITE 98 =====
+DIN EN 1992-1-1/NA:2011-01 
+98 
+NCI Zu Anhang C 
+Anhang C ist informativ. 
+Der Anhang C findet in Deutschland keine Anwendung. Es gelten die Normen der Reihe DIN 488, die die für 
+die Bemessung erforderlichen Eigenschaften sicherstellen. 
+NCI Zu C.1 (1) 
+Für die Ausführung auf der Baustelle gilt DIN EN 13670 bzw. DIN 1045-3. 
+Für die Anwendung von Betonstählen, die von den technischen Baubestimmungen abweichen oder für die 
+Anwendung unter abweichenden Anwendungsbedingungen ist eine allgemeine bauaufsichtliche Zulassung 
+erforderlich. 
+Es gilt Tabelle NA.C.2 mit = 0,6. 
+Tabelle NA.C.2  Eigenschaften von Betonstahl 
+Produktart Stäbe und 
+Betonstabstahl 
+vom Ring 
+Betonstahl-
+matten 
+Anforderung 
+oder Quantilwert 
+%
+Klasse A B C A B C  
+ 28 mm 175 100 Ermüdungs-
+schwingbreite 
+(N/mm2)
+(für N 1 106
+Lastzyklen) mit 
+einer Obergrenze 
+von fyk
+> 28 mm  145  5,0 
+Verbund: Nenn-
+mm
+5 bis 6 0,039 
+6,5 bis 8,5 0,045 
+9 bis 10,5 0,052 
+Mindestwerte der 
+bezogenen 
+Rippenfläche, 
+fR,min
+11 bis 40 0,056 
+min. 5,0 
+NDP Zu C.1 (3) 
+Die landesspezifischen Werte für a, fyk, k und uk dürfen DIN 488 oder Zulassungen entnommen werden. 
+Tabelle C.3N gilt nicht. Die landesspezifischen Grenzwerte dürfen DIN 488 oder Zulassungen entnommen 
+werden. 
+NCI Zu Anhang E 
+Anhang E ist normativ. 
+NDP Zu E.1 (2) 
+Es gilt Tabelle NA.E.1.
+
+===== PDF-SEITE 99 =====
+~ .... 
+~ .... .... 
+~ 
+~ 
+~ 
+ci .... 
+Q 
+;::: 
+~ 
+I 
+~ 
+I a 
+~ .... 
+i 
+0.: 
+I 
+~ 
+fl 
+~ 
+:e 111 
+i "5 
+i 
+I ! 
+:II 
+i a 
+J !!I 
+"': 
+I 
+j 
+DIN EN 1992-1-1/NA:2011-01 
+Tabelle NA.E.1 - Indikative Mindestfestigkeitsklassen 
+Expositionsklasse nach Tabelle 4.1 
+Bewehrungskorrosion 
+ausgelöst durch Karbonatisierung ausgelöst durch Chloride ausgenommen ausgelöst durch Chloride aus Meerwasser 
+Meerwasser 
+XC1 XC2 XC3 XC4 XD1 XD2 XD3 XS1 XS2 XS3 
+Indikative C16/20 C16120 C20125 C25/30 C30/37 C35/45 C35/45 C30/37 C35/45 C35/45 
+Mindestfestigkeitsklasse 
+8 8 oder c 8 a a oderc • 
+Betonangriff 
+Kein Angriffs- durch Frost mit und ohne Taumittel durch chemischen Angriff 
+risiko der Umgebung 
+xo XF1 XF2 XF3 XF4 XA1 XA2 XA3 
+Indikative C12/15 C25/30 C25130 LPb C25130 LPb C30/37 LP C25/30 C35/45 C35145 8 
+Mindestfestigkeitsklasse C35/45c C35/45C b,d,e aoderc 
+8 Bei Verwendung von Luftporenbeton, z. B. auf Grund gleichzeitiger Anforderungen aus der Expositionsklasse XF, eine Betonfestigkeitsklasse niedriger; siehe auch Fußnote 2. 
+b Diese Mindestbetonfestigkeitsklassen gelten fQ r Luftporenbeton mit Mindestanforderungen an den mittleren Luftgehalt im Frischbeton nach DIN 1 045-2 unmittelbar vor dem Einbau. 
+c Bei langsam und sehr langsam erhärtenden Betonen {r < 0,30 nach DIN EN 206-1) eine Festigkeitsklasse im Alter von 28 Tagen niedriger. Die Druckfestigkeit zur Einteilung in die 
+geforderte Druckfestigkeitsklasse ist auch in diesem Fall an Probekörpern im Alter von 28 Tagen zu bestimmen. 
+d Erdfeuchter Beton mit w/z s 0,40 auch ohne Luftporen 
+e Bei Verwendung eines CEM 11118 nach DIN 1045-2:2008-08, Tabelle F.3.3, Fußnote c) für Räumertaufbahnen in Beton ohne Luftporen mindestens C40/50 (hierbei gilt: w/z s 0,35, 
+z :.: 360 kg/m3 ). 
+99
+
+===== PDF-SEITE 100 =====
+DIN EN 1992-1-1/NA:2011-01 
+NCI Zu Anhang F 
+Der informative Anhang F ist in Deutschland nicht anzuwenden. 
+NCI Zu Anhang G 
+Der informative Anhang G ist in Deutschland nicht anzuwenden. 
+NCI Zu Anhang I 
+Der informative Anhang I ist in Deutschland nicht anzuwenden. 
+NCI Zu Anhang J 
+Der Anhang J ist normativ. 
+NCI Zu J.1 (1) 
+Die Durchmesser der Oberflächenbewehrung sollten 10 mm betragen. 
+Zu Bild J.1: Es gilt As,surf 0,02 Act,ext 
+NDP Zu J.1 (2) Oberflächenbewehrung 
+As,surfmin 0,02 Act,ext 
+NCI Zu J.2 und J.3 
+Die Abschnitte J.2 und J.3 werden gestrichen (informativ in DAfStb-Heft 600). 
+NCI NA.J.4 Oberflächenbewehrung bei vorgespannten Bauteilen 
+(1) P Bei Bauteilen mit Vorspannung ist stets eine Oberflächenbewehrung nach Tabelle NA.J4.1 anzuordnen. 
+Die Grundwerte sind dabei mit = 0,16 fctm / fyk einzusetzen. 
+(2) Bei Vorspannung mit sofortigem Verbund dürfen diejenigen Spannglieder vollflächig auf die 
+Oberflächenbewehrung angerechnet werden, die im Bereich der zweifachen Betondeckung der 
+Oberflächenbewehrung aus Betonstahl nach 4.4.1 liegen. 
+(3)P Die Oberflächenbewehrung ist in der Zug- und Druckzone von Platten in Form von Bewehrungsnetzen 
+anzuordnen, die aus zwei sich annähernd rechtwinklig kreuzenden Bewehrungslagen mit der jeweils nach 
+Tabelle NA.J.4.1 erforderlichen Querschnittsfläche bestehen. Dabei darf der Stababstand 200 mm nicht 
+überschreiten. 
+(4) In Bauteilen, die den Umgebungsbedingungen der Expositionsklasse XC1 ausgesetzt sind, darf die 
+Oberflächenbewehrung am äußeren Rand der Druckzone nach Tabelle NA.J.4.1, Zeile 2, Spalte 1 entfallen. 
+(5) Für Platten aus Fertigteilen mit einer kleineren Breite als 1,20 m darf die Oberflächenbewehrung in 
+Querrichtung nach Tabelle NA.J4.1, Zeile 2 entfallen. 
+(6) Eine Addition der aus den Anforderungen nach Absatz (1), 9.2.1.1 und 7.3.2 resultierenden 
+Längsbewehrung ist nicht erforderlich. In jedem Querschnitt ist der jeweils größere Wert maßgebend. 
+100
+
+===== PDF-SEITE 101 =====
+DIN EN 1992-1-1/NA:2011-01 
+101 
+(7) Die Oberflächenbewehrung nach Absatz (1) darf bei allen Nachweisen in den Grenzzuständen der 
+Tragfähigkeit und der Gebrauchstauglichkeit auf die jeweils erforderliche Bewehrung angerechnet werden, 
+wenn sie die Regelungen für die Anordnung und Verankerung dieser Bewehrungen erfüllt. 
+Tabelle NA.J.4.1  Mindestoberflächenbewehrung für die verschiedenen Bereiche eines 
+vorgespannten Bauteils 
+ 1 2 3 4 
+Platten, Gurtplatten und breite 
+Balken 
+mit bw > h je m 
+Balken mit bw h 
+und Stege von Plattenbalken 
+und Kastenträgern 
+Bauteile in Umgebungsbedingungen der Expositionsklassen 
+Bauteilbereich 
+XC1 bis XC4 sonstige XC1 bis XC4 sonstige 
+1 - bei Balken an jeder Seitenfläche 
+- bei Platten mit h 1,0 m an jedem gestützten 
+oder nicht gestützten Rand a
+0,5 h
+bzw. 
+0,5 h f
+1,0 h
+bzw. 
+1,0 hf
+0,5 bw
+je m 
+1,0 bw
+je m 
+2 - in der Druckzone von Balken und Platten am 
+äußeren Rand b
+- in der vorgedrückten Zugzone von Plattena, b
+0,5 h
+bzw. 
+0,5 hf
+1,0 h
+bzw. 
+1,0 hf
+ 1,0 hb w
+3 - in Druckgurten mit h >120 mm (obere und 
+untere Lage je für sich) a
+ 1,0 hf 
+a Eine Oberflächenbewehrung größer als 3,35 cm²/m je Richtung ist nicht erforderlich. 
+b Siehe Absätze (4) und (5).
+Es bedeuten: 
+h die Höhe des Balkens oder die Dicke der Platte; 
+hf die Dicke des Druck- oder Zuggurtes von profilierten Querschnitten; 
+bw die Stegbreite des Balkens; 
+der Grundwert nach 9.2.2 (5), Gleichung (9.5aDE).

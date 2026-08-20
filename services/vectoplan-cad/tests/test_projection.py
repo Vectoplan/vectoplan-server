@@ -54,6 +54,39 @@ def test_projection_rejects_invalid_wall_geometry():
     assert any("thickness_mm" in error for error in errors)
 
 
+def test_room_zone_is_validated_and_projected_as_room_primitive():
+    payload = deepcopy(input_payload())
+    payload["sheets"][0]["elements"].append(
+        {
+            "element_ref": "room_wohnen_01",
+            "label": "Wohnen",
+            "kind": "room",
+            "layer": "rooms",
+            "view_refs": ["vp_ground_floor"],
+            "semantic_role": "energy_zone",
+            "room_type": "wohnen",
+            "text": "Wohnen\n20.00 m²",
+            "geometry": {
+                "x_mm": 1000,
+                "y_mm": 2000,
+                "width_mm": 5000,
+                "depth_mm": 4000,
+                "height_mm": 3000,
+                "area_m2": 20.0,
+            },
+        }
+    )
+    assert validate_projection_input(payload) == []
+    primitive = next(
+        item
+        for item in build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+        if item["primitive_ref"] == "room_wohnen_01"
+    )
+    assert primitive["primitive_type"] == "room"
+    assert primitive["metadata"]["room_type"] == "wohnen"
+    assert primitive["metadata"]["area_m2"] == 20.0
+
+
 def test_semantic_polyline_is_one_selectable_thick_path():
     payload = deepcopy(input_payload())
     sheet = payload["sheets"][0]

@@ -183,16 +183,27 @@ function parseOverlayTile(value: unknown): OverlayTile | null {
   const datasetId = safeString(item.datasetId, "");
   const tileKey = safeString(item.tileKey, "");
   if (!id || !datasetId || !tileKey) return null;
+  const semanticRole = safeString(item.semanticRole, "visual-reference");
+  const label = safeString(item.label, id);
+  const parcelBoundary = `${id} ${datasetId} ${label} ${semanticRole}`.toLowerCase();
+  const parsedStyle = parseStyle(item.style);
+  const isParcelBoundary = (
+    item.classificationSource === true
+    || ["parcel", "cadastr", "cadastre", "flurstueck", "grundstueck", "alkis"].some((token) => parcelBoundary.includes(token))
+  );
+  const style: OverlayStyle = isParcelBoundary
+    ? { ...parsedStyle, color: "#1687ff", opacity: Math.max(parsedStyle.opacity, 0.92) }
+    : parsedStyle;
   return {
     id,
     datasetId,
-    label: safeString(item.label, id),
+    label,
     releaseKey: safeString(item.releaseKey, "unknown-release"),
     tileKey,
     renderMode: "surface-lines",
-    semanticRole: safeString(item.semanticRole, "visual-reference"),
+    semanticRole,
     classificationSource: item.classificationSource === true,
-    style: parseStyle(item.style),
+    style,
     lines: parseLines(geometry.coordinates),
   };
 }
@@ -264,7 +275,7 @@ function isTerrainCellValue(cellValue: number, chunk: RuntimeChunkContent): bool
   const blockTypeId = entry.blockTypeId.toLowerCase();
   const role = safeString(entry.metadata.role, "").toLowerCase();
   const category = safeString(entry.metadata.category, "").toLowerCase();
-  return blockTypeId.startsWith("system_terrain_")
+  return blockTypeId.startsWith("system_terrain")
     || role === "terrain"
     || category === "terrain";
 }

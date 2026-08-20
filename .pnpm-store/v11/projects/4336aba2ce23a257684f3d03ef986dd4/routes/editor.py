@@ -61,6 +61,10 @@ DEFAULT_FRAME_ANCESTORS: Final[tuple[str, ...]] = (
     "http://127.0.0.1:5103",
     "http://localhost:5101",
     "http://127.0.0.1:5101",
+    "http://localhost:5097",
+    "http://127.0.0.1:5097",
+    "http://localhost:5108",
+    "http://127.0.0.1:5108",
 )
 DEFAULT_LIBRARY_GENERATOR_ORIGIN: Final[str] = "http://127.0.0.1:5101"
 

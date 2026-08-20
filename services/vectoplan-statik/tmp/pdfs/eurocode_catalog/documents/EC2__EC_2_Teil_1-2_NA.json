@@ -1,0 +1,286 @@
+{
+  "document_id": "EN_1992-1-2_NA__national_annex__EC_2_Teil_1-2_NA",
+  "eurocode_family": "EC2",
+  "designation": "DIN EN 1992-1-2/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 2 Teil 1-2 NA.pdf",
+  "relative_path": "EC 2/EC 2 Teil 1-2 NA.pdf",
+  "sha256": "e0f42846cdee0b6c87ab0dc923528f8d7acd9bd76c53720bf96bab4d9389ed0e",
+  "pages": 16,
+  "text_pages": 16,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 8,
+  "equation_candidate_count": 7,
+  "table_reference_count": 8,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111151927+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232138+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 2\\EC 2 Teil 1-2 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd)",
+      "pdf_page": 10
+    },
+    {
+      "clause": "2",
+      "title": "Querschnitt: h 300 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1",
+      "title": "Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd)",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2",
+      "title": "Querschnitt: h 450 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1",
+      "title": "Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd)",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2",
+      "title": "Querschnitt: h 600 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1",
+      "title": "Gesamtmoment tot,fi,d,90 1,fi,d,90 + 2,fi,d,90 Mtot,fi,d,90 /(Ac · h · fcd)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2",
+      "title": "Querschnitt: h 800 mm; Achsabstand a/h d1/h 0,10; Beton C30/37; Bewehrung B500; Bewehrungs-",
+      "pdf_page": 13
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 4,
+      "equation_number": "2",
+      "line": "2.1.3 (2) 5.3.2 (2)",
+      "context": "DIN EN 1992-1-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen | (en: Nationally Determined Parameters, NDP) aus: | 2.1.3 (2) 5.3.2 (2) | 2.3 (2)P 5.6.1 (1) | 3.2.3 (5) 5.7.3 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "1",
+      "line": "2.3 (2)P 5.6.1 (1)",
+      "context": "(en: Nationally Determined Parameters, NDP) aus: | 2.1.3 (2) 5.3.2 (2) | 2.3 (2)P 5.6.1 (1) | 3.2.3 (5) 5.7.3 (2) | 3.2.4 (2) 6.1 (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "2",
+      "line": "3.2.3 (5) 5.7.3 (2)",
+      "context": "2.1.3 (2) 5.3.2 (2) | 2.3 (2)P 5.6.1 (1) | 3.2.3 (5) 5.7.3 (2) | 3.2.4 (2) 6.1 (5) | 3.3.3 (1)P 6.2 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "5",
+      "line": "3.2.4 (2) 6.1 (5)",
+      "context": "2.3 (2)P 5.6.1 (1) | 3.2.3 (5) 5.7.3 (2) | 3.2.4 (2) 6.1 (5) | 3.3.3 (1)P 6.2 (2) | 4.1 (1)P 6.3 (1)P",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "2",
+      "line": "3.3.3 (1)P 6.2 (2)",
+      "context": "3.2.3 (5) 5.7.3 (2) | 3.2.4 (2) 6.1 (5) | 3.3.3 (1)P 6.2 (2) | 4.1 (1)P 6.3 (1)P | 4.5.1 (2) 6.4.2.1 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "3",
+      "line": "4.5.1 (2) 6.4.2.1 (3)",
+      "context": "3.3.3 (1)P 6.2 (2) | 4.1 (1)P 6.3 (1)P | 4.5.1 (2) 6.4.2.1 (3) | 5.2 (3) 6.4.2.2 (2) | Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "2",
+      "line": "5.2 (3) 6.4.2.2 (2)",
+      "context": "4.1 (1)P 6.3 (1)P | 4.5.1 (2) 6.4.2.1 (3) | 5.2 (3) 6.4.2.2 (2) | Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von | DIN EN 1992-1-2:2010-12. Diese sind durch ein vorangestelltes NCI (en: Non-contradictory Complementary",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3",
+      "pdf_page": 5,
+      "line": "Zur ANMERKUNG Die Entscheidung, ob Klasse N (Tabelle 3a) oder Klasse X (Tabelle 3b) in einem"
+    },
+    {
+      "label": "3",
+      "pdf_page": 5,
+      "line": "Zur ANMERKUNG Die Entscheidung, ob Klasse N (Tabelle 3a) oder Klasse X (Tabelle 3b) in einem"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 6,
+      "line": "Nationalem Anhang angegeben. Drei Klassen werden in Tabelle 6.1N angegeben. Jedoch beruhen die für"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 6,
+      "line": "Tabelle 6.1N darf angewendet werden."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 7,
+      "line": "Klasse 1 in Tabelle 6.1N beziehungsweise auf die 400 °C-Isotherme für die Klasse 2 in Tabelle 6.1N. Der"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 7,
+      "line": "Klasse 1 in Tabelle 6.1N beziehungsweise auf die 400 °C-Isotherme für die Klasse 2 in Tabelle 6.1N. Der"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 7,
+      "line": "m, der auf der in Tabelle 6.1 angegebenen reduzierten Festigkeit"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 7,
+      "line": "Tabelle 6.2N angegeben. Für die Klasse 3 werden genauere Methoden empfohlen. "
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 985,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1766,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1804,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1739,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2327,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 2662,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2628,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 759,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1919,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 914,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 484,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 484,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1299,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1649,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2108,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1567,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

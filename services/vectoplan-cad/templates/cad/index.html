@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8fafc">
   <title data-i18n="vectoplan.server.cad.cad.index.title.cad_erdgeschoss.35c0caf3">CAD · Erdgeschoss</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260815-cad-tools-4">
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
@@ -16,103 +16,49 @@
           <button type="button" data-action="undo" disabled title="Rückgängig (Strg+Z)" aria-label="Rückgängig" data-i18n-aria-label="server.cad.cad.index.button_aria-label.r_ckg_ngig.3ca38d3e" data-i18n-title="server.cad.cad.index.button_title.r_ckg_ngig_strg_z.d2e8a1e4">↶</button>
           <button type="button" data-action="redo" disabled title="Wiederholen (Strg+Y)" aria-label="Wiederholen" data-i18n-aria-label="server.cad.cad.index.button_aria-label.wiederholen.58855d68" data-i18n-title="server.cad.cad.index.button_title.wiederholen_strg_y.e3466463">↷</button>
         </div>
-
-        <button type="button" class="mobile-panel-toggle inspector-toggle" data-action="toggle-inspector" aria-controls="right-panel" aria-expanded="false" aria-label="Eigenschaften öffnen oder schließen" data-i18n-aria-label="server.cad.cad.index.button_aria-label.eigenschaften_ffnen_oder_schlie_en.f67ca266">
-          <span aria-hidden="true">☷</span><span class="toggle-label" data-i18n="vectoplan.server.cad.cad.index.span.details.fc76f86b">Details</span>
-        </button>
+      </div>
+      <div class="cad-authoring" aria-label="CAD- und WorldEdit-Werkzeuge">
+        <div class="cad-tool-rail" aria-label="Zeichenwerkzeuge">
+          <button type="button" class="cad-tool-button is-active" data-tool="select" title="Auswählen" aria-label="Auswählen"><span aria-hidden="true">⌖</span><small>Auswahl</small></button>
+          <button type="button" class="cad-tool-button" data-tool="parcel-grid" title="Grundstücksraster anpassen" aria-label="Grundstücksraster anpassen"><span aria-hidden="true">▦</span><small>Raster</small></button>
+          <button type="button" class="cad-tool-button" data-quick-tool="wall" title="Wand zeichnen (Umschalt = 45°)" aria-label="Wand zeichnen"><span aria-hidden="true">╱</span><small>Wand</small></button>
+          <button type="button" class="cad-tool-button" data-quick-tool="room" title="Raum zeichnen" aria-label="Raum zeichnen"><span aria-hidden="true">▱</span><small>Raum</small></button>
+          <button type="button" class="cad-tool-button" data-quick-tool="window" title="Fenster einsetzen" aria-label="Fenster einsetzen"><span aria-hidden="true">▭</span><small>Fenster</small></button>
+          <button type="button" class="cad-tool-button" data-quick-tool="door" title="Tür einsetzen" aria-label="Tür einsetzen"><span aria-hidden="true">◿</span><small>Tür</small></button>
+          <button type="button" class="cad-tool-button" data-quick-tool="stair" title="Treppenbereich zeichnen" aria-label="Treppenbereich zeichnen"><span aria-hidden="true">▥</span><small>Treppe</small></button>
+          <button type="button" class="cad-tool-button cad-tool-button--library" data-action="toggle-library" title="Weitere Bauteile" aria-label="Creative Library öffnen"><span aria-hidden="true">＋</span><small>Mehr</small></button>
+        </div>
+        <div class="cad-active-library" id="active-library-item" hidden>
+          <span id="active-library-kind">Library</span>
+          <strong id="active-library-label">–</strong>
+          <small id="active-library-variant">–</small>
+        </div>
+        <section class="cad-library-panel" id="library-panel" hidden aria-label="Creative Library">
+          <div class="cad-library-panel__header">
+            <div><span>VECTOPLAN</span><strong>Creative Library</strong></div>
+            <button type="button" data-action="toggle-library" aria-label="Creative Library schließen">×</button>
+          </div>
+          <label class="cad-library-search">
+            <span class="visually-hidden">Creative Library durchsuchen</span>
+            <input id="library-search" type="search" placeholder="Wand, Fenster, Tür, WDVS …" autocomplete="off">
+          </label>
+          <div class="cad-library-filters" id="library-filters" role="tablist" aria-label="Library-Kategorien"></div>
+          <div id="library-status" class="cad-library-status">Creative Library wird geladen …</div>
+          <div id="library-grid" class="cad-library-grid"></div>
+        </section>
       </div>
       <div class="workspace-canvas" id="workspace-canvas">
         <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
       </div>
       <div class="navigation-hint">
-        <span class="desktop-hint" data-i18n="vectoplan.server.cad.cad.index.span.mausrad_zoom_shift_mausrad_horizontal_.e603a6ff">Mausrad: Zoom · Shift + Mausrad: horizontal · Mittlere Maustaste: verschieben</span>
+        <span class="desktop-hint">Mausrad: Zoom · Umschalt beim Zeichnen: 45° · Umschalt + Mausrad: horizontal · Mittlere Maustaste: verschieben</span>
         <span class="touch-hint" data-i18n="vectoplan.server.cad.cad.index.span.ziehen_verschieben_zwei_finger_zoomen.d0c629ea">Ziehen: verschieben · Zwei Finger: zoomen</span>
       </div>
       <div id="workspace-message" class="workspace-message" role="status" aria-live="polite" hidden></div>
     </section>
 
-    <aside id="right-panel" class="right-panel panel" aria-label="Eigenschaften und Werkzeuge" data-i18n-aria-label="server.cad.cad.index.aside_aria-label.eigenschaften_und_werkzeuge.136eb4cc">
-      <div class="panel-header">
-        <div>
-          <span class="eyebrow" data-i18n="vectoplan.server.cad.cad.index.span.auswahl.71f97ad5">Auswahl</span>
-          <strong data-i18n="vectoplan.server.cad.cad.index.strong.eigenschaften.a9ed272e">Eigenschaften</strong>
-        </div>
-        <div class="panel-header-actions">
-          <span id="selection-badge" class="selection-badge">0</span>
-          <button type="button" data-action="close-panels" class="icon-button panel-close" aria-label="Eigenschaften schließen" data-i18n-aria-label="server.cad.cad.index.button_aria-label.eigenschaften_schlie_en.297ca51d">×</button>
-        </div>
-      </div>
-
-      <div id="inspector-empty" class="empty-state">
-        <span class="empty-icon">⌖</span>
-        <strong data-i18n="vectoplan.server.cad.cad.index.strong.element_ausw_hlen.c1f70a60">Element auswählen</strong>
-        <p data-i18n="vectoplan.server.cad.cad.index.p.w_hle_ein_element_im_grundriss_um_sein.605be73e">Wähle ein Element im Grundriss, um seine semantischen Referenzen zu prüfen.</p>
-      </div>
-      <div id="inspector" hidden>
-        <div class="property-title">
-          <span id="prop-kind-badge" class="kind-badge">–</span>
-          <strong id="prop-label">–</strong>
-          <span id="prop-draft" class="draft-badge" hidden data-i18n="vectoplan.server.cad.cad.index.span.entwurf.3c39dd10">Entwurf</span>
-        </div>
-        <dl>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.id.117213de">ID</dt><dd id="prop-id">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.typ.6b492c22">Typ</dt><dd id="prop-kind">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.form.d5c44422">Form</dt><dd id="prop-form">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.dicke.39067b42">Dicke</dt><dd id="prop-thickness">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.quellbl_cke.086517dd">Quellblöcke</dt><dd id="prop-source-cells">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.layer.a5be271d">Layer</dt><dd id="prop-layer">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.family.eb262ee3">Family</dt><dd id="prop-family">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.variant.1d183713">Variant</dt><dd id="prop-variant">–</dd>
-          <dt data-i18n="vectoplan.server.cad.cad.index.dt.quelle.2534e7c5">Quelle</dt><dd id="prop-source">–</dd>
-        </dl>
-      </div>
-
-      <section id="tool-options">
-        <div class="section-heading">
-          <h2 data-i18n="vectoplan.server.cad.cad.index.h2.werkzeugoptionen.8aba348e">Werkzeugoptionen</h2>
-          <span id="active-tool-label" class="count-badge" data-i18n="vectoplan.server.cad.cad.index.span.auswahl.0ef2b32d">Auswahl</span>
-        </div>
-        <label class="field" id="wall-thickness-field">
-          <span data-i18n="vectoplan.server.cad.cad.index.span.wandst_rke.1420cc84">Wandstärke</span>
-          <div class="input-unit"><input id="wall-thickness" type="number" min="50" max="1000" step="5" value="240"><span data-i18n="vectoplan.server.cad.cad.index.span.mm.9bf08961">mm</span></div>
-        </label>
-        <label class="check-field">
-          <input id="snap-enabled" type="checkbox" checked>
-          <span data-i18n="vectoplan.server.cad.cad.index.span.fangraster.04c4ca94">Fangraster</span>
-        </label>
-        <label class="field inline-field">
-          <span data-i18n="vectoplan.server.cad.cad.index.span.rasterweite.8a1f6913">Rasterweite</span>
-          <select id="snap-size">
-            <option value="50" data-i18n="vectoplan.server.cad.cad.index.option.50_mm.702e2623">50 mm</option>
-            <option value="100" selected data-i18n="vectoplan.server.cad.cad.index.option.100_mm.73770ca6">100 mm</option>
-            <option value="250" data-i18n="vectoplan.server.cad.cad.index.option.250_mm.97a839b1">250 mm</option>
-            <option value="500" data-i18n="vectoplan.server.cad.cad.index.option.500_mm.49548dda">500 mm</option>
-          </select>
-        </label>
-        <p id="tool-hint" class="tool-hint" data-i18n="vectoplan.server.cad.cad.index.p.element_anklicken_um_es_auszuw_hlen.22549686">Element anklicken, um es auszuwählen.</p>
-      </section>
-
-      <section>
-        <div class="section-heading">
-          <h2 data-i18n="vectoplan.server.cad.cad.index.h2.lokale_commands.df3e769e">Lokale Commands</h2>
-          <span id="command-count" class="count-badge">0</span>
-        </div>
-        <div id="command-log" class="command-log">
-          <p class="muted" data-i18n="vectoplan.server.cad.cad.index.p.noch_keine_commands_in_diesem_browser_.4bf05cfd">Noch keine Commands in diesem Browser-Tab.</p>
-        </div>
-      </section>
-
-      <section class="system-status">
-        <h2 data-i18n="vectoplan.server.cad.cad.index.h2.verbindung.c4dcff6d">Verbindung</h2>
-        <div id="core-status-row" class="status-row"><span class="status-dot is-warning"></span><span id="core-status-text" data-i18n="vectoplan.server.cad.cad.index.span.core_wird_verbunden.d17a0eb1">Core wird verbunden</span></div>
-        <div class="status-row"><span class="status-dot is-ok"></span><span data-i18n="vectoplan.server.cad.cad.index.span.scene_graph_aktiv.a6a35de2">Scene-Graph aktiv</span></div>
-        <div id="project-status-row" class="status-row"><span class="status-dot is-warning"></span><span id="project-status-text" data-i18n="vectoplan.server.cad.cad.index.span.projekt_wird_geladen.0397ff6e">Projekt wird geladen</span></div>
-      </section>
-    </aside>
-
-    <button type="button" class="panel-backdrop" data-action="close-panels" aria-label="Seitenbereich schließen" data-i18n-aria-label="server.cad.cad.index.button_aria-label.seitenbereich_schlie_en.11eee847"></button>
   </main>
 
-  <script src="{{ url_for('static', filename='cad/js/main.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260815-cad-tools-4" defer></script>
 </body>
 </html>

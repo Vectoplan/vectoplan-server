@@ -1,0 +1,117 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 1: Einwirkungen auf Tragwerke  
+Teil 4: Einwirkungen auf Silos und Flüssigkeitsbehälter 
+National Annex  
+Nationally determined parameters  
+Eurocode 1: Actions on structures  
+Part 4: Silos and tanks 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 1: Actions sur les structures  
+Partie 4: Silos et réservoirs
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-4/NA:2010-12 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................3
+NA 1 Anwendungsbereich .......................................................................................................... ...................4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-4:2010-12.............................................4
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1991-4/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde im NA 005-51-02 AA Einwirkungen auf Bauten  (Sp CEN/TC 250/SC 1) des 
+Normenausschusses NA Bauwesen (NABau) erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1991-4:2010-12, Einwirkungen auf Tragwerke  
+Teil 4: Silos und Flüssigkeitsbehälter. 
+Die Europäische Norm DIN EN 1991-4 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parameter national festzulegen. Diese national festzulegenden Parameter (NDP) umfassen alternative 
+Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl von Klassen aus gegebenen 
+Klassifizierungssystemen. Die entsprechenden Textstellen sind in der Europäischen Norm durch Hinweise auf 
+die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste dieser Textstellen befindet sich im 
+nachfolgenden Abschnitt NA 2.1. 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1991-4:2010-12. 
+DIN EN 1991-4:2010-12 und dieser Nationale Anhang DIN EN 1991-4/NA:2010-12 ersetzen 
+DIN 10556:2005-03 und DIN 1055-6 Berichtigung 1:2006-02. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Änderungen 
+Gegenüber DIN 1055-6:2005-03 und DIN 1055-6 Berichtigung 1:2006-02 wurden folgende Änderungen 
+vorgenommen: 
+a) teilweise Übernahme der Regelungen aus DIN 1055-6:2005-03 zur Anwendung von 
+DIN EN 1991-4:2010-12. 
+Gegenüber DIN EN 1991-4/NA:2010-04 wurden folgende Änderungen vorgenommen: 
+a) Ersatzvermerke korrigiert; 
+b) datierte Verweisungen aktualisiert; 
+c) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 1055-6: 1964-11, 1987-05, 2005-03 
+DIN 1055-6 Berichtigung 1: 2006-02 
+DIN EN 1991-4/NA: 2010-04 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1991-4/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält Festlegungen für die Ermittlung von Einwirkungen auf Silos für die Lagerung 
+von Schüttgütern und auf Flüssigkeitsbehälter, die bei der Anwendung von DIN EN 1991-4:2010-12 in 
+Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1991-4:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-4:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1991-4:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (NDPs) 
+aus. 
+ 2.5 (5) 
+ 3.6 (2) 
+ 5.2.4.3.1 (3) 
+ 5.4.1 (3) 
+ 5.4.1 (4) 
+ A.4 (3) 
+ B.2.14 (1) 
+NA 2.2 Nationale Festlegungen 
+ANMERKUNG Die nachfolgende Nummerierung entspricht derjenigen von DIN EN 1991-4:2010-12. 
+2 Darstellung und Klassifikation der Einwirkungen 
+2.5 Anforderungsklassen 
+NDP zu 2.5 (5) 
+ANMERKUNG 1 Es gelten die empfohlenen Regelungen. 
+3 Bemessungssituationen 
+3.6 Bemessungsprinzipien für Explosionen 
+NDP zu 3.6 (2) 
+ANMERKUNG Keine weitere nationale Festlegung. 
+5 Lasten auf vertikale Silowände 
+5.2 Schlanke Silos 
+NDP zu 5.2.4.3.1 (3) 
+ANMERKUNG Es gelten die empfohlenen Regelungen. 
+5.4 Stützwandsilos
+NDP zu 5.4.1 (3) 
+ANMERKUNG Keine weitere nationale Festlegung. 
+NDP zu 5.4.1 (4) 
+ANMERKUNG Keine weitere nationale Festlegung. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1991-4/NA:2010-12 
+Anhang A
+(informativ) 
+Grundlagen der Tragwerksplanung  Regeln in Ergänzung zu EN 1990 
+für Silos und Flüssigkeitsbehälter 
+NDP zu A.4 (3) 
+ANMERKUNG Keine weitere nationale Festlegung. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1991-4/NA:2010-12 
+6 
+Anhang B 
+(informativ)
+Einwirkungen, Teilsicherheitsfaktoren und Kombinationsbeiwerte der 
+Einwirkungen auf Flüssigkeitsbehälter 
+NDP zu B.2.14 (1) 
+ANMERKUNG Keine weitere nationale Festlegung.

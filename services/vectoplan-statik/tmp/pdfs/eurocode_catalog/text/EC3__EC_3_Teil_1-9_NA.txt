@@ -1,0 +1,145 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten  
+Teil 1-9: Ermüdung 
+National Annex  
+Nationally determined parameters  
+Eurocode 3: Design of steel structures  
+Part 1-9: Fatigue 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 3: Calcul des structures en acier  
+Partie 1-9: Fatigue
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-9/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde vom NA 005-08-16 AA Tragwerksbemessung erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1993-1-9:2010-12, Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 1-9: Ermüdung.
+Die Europäische Norm EN 1993-1-9 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifi zierungssystemen. Die entsprechen den Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1993-1-9:2010-12 
+(en: non-contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1993-1-9:2010-12. 
+DIN EN 1993-1-9:2010-12 und dieser Nationale Anhang DIN EN 1993-1-9/NA:2010-12 ersetzen: 
+ zusammen mit DIN EN 1993-1-1, DIN EN 1993-1-1/NA, DIN EN 1993-1-3, DIN EN 1993-1-3/NA, 
+DIN EN 1993-1-5, DIN EN 1993-1-5/NA, DIN EN 1993-1-8, DIN EN 1993-1-8/NA, DIN EN 1993-1-10, 
+DIN EN 1993-1-10/NA, DIN EN 1993-1-11 und DIN EN 1993-1-11/NA 
+die nationale Norm DIN 18800-1:2008-11. 
+Änderungen 
+Gegenüber DIN 18800-1:2008-11, DIN V ENV 1993-1-1:1993-04, DIN V ENV 1993-1-1/A1:2002-05 und 
+DIN V ENV 1993-1-1/A2:2002-05 wurden folgende Änderungen vorgenommen: 
+a) nationale Festlegungen zu DIN EN 1993-1-9:2010-12 aufgenommen. 
+Frühere Ausgaben 
+DIN 1050: 1934-08, 1937xxxxx-07, 1946-10, 1957x-12, 1968-06 
+DIN 1073: 1928-04, 1931-09, 1941-01, 1974-07 
+DIN 1073 Beiblatt: 1974-07 
+DIN 1079: 1938-01, 1938-11, 1970-09 
+DIN 4100: 1931-05, 1933-07, 1934xxxx-08, 1956-12, 1968-12 
+DIN 4101: 1937xxx-07, 1974-07 
+DIN 18800-1: 1981-03, 1990-11, 2008-11 
+DIN 18800-1/A1: 1996-02 
+DIN V ENV 1993-1-1: 1993-04 
+DIN V ENV 1993-1-1/A1: 2002-05 
+DIN V ENV 1993-1-1/A2: 2002-05 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-9/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für Nachweisverfahren zur Prüfung der 
+Ermüdungsfestigkeit von Bauteilen, Verbindungen und Anschlüssen, die unter Ermüdungsbeanspruchung 
+stehen, die bei der Anwendung von DIN EN 1993-1-9:2010-12 in Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1993-1-9:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1993-1-9:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1993-1-9:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP, en: Nationally determined parameters). 
+ 1.1(2); 
+ 2(2); 
+ 2(4); 
+ 3(2); 
+ 3(7); 
+ 5(2); 
+ 6.1(1); 
+ 6.2(2); 
+ 7.1(3); 
+ 7.1(5); 
+ 8(4). 
+ 6.1(1); 
+ 6.2(2); 
+ 7.1(3); 
+ 7.1(5); 
+ 8(4). 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1993-1-9:2010-12. Diese sind durch ein vorangestelltes NCI (en: non-contradictory complementary 
+information ) gekennzeichnet. 
+ 1.2 
+ Literaturhinweise 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-9/NA:2010-12 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1993-1-9:2010-12 bzw. ergänzt 
+diese. 
+NDP zu 1.1(2) Anmerkung 1 
+Es gilt DIN EN 1090-2. Weitere Toleranzen für spezielle Kerbfälle sind in den Tabellen 8.1 bis 8.10 von 
+DIN EN 1993-1-9:2010-12 allgemein und für Stahlbrücken in DIN EN 1993-2:2010-12, Anhang C geregelt. 
+NDP zu 1.1(2) Anmerkung 2 
+Es gilt DIN EN 1090-1. 
+NCI zu 1.2 Normative Verweisungen 
+NA DIN EN 1993-2:2010-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 2: 
+Stahlbrücken; Deutsche Fassung EN 1993-2:2006 
+NDP zu 2(2) Anmerkung 
+Die Ermüdungslasten sind nach DIN EN 1993-1-9:2010-12, Anhang A entsprechend den Betriebs-
+bedingungen zu ermitteln; weitere Hinweise sind in [1] angegeben. 
+NDP zu 2(4) Anmerkung 
+Die Anwendung von Ermüdungsfestigkeitswerten aus Versuchen bedarf eines bauaufsichtlichen 
+Verwendbarkeitsnachweises (Zustimmung im Einzelfall oder allgemeine bauaufsichtliche Zulassung). 
+Hinweise zur Bestimmung von Ermüdungsfestigkeiten sind in [1] angegeben. 
+NDP zu 3(2) Anmerkung 2 
+Die Festlegungen zu Inspektionsprogrammen erfolgen in den jeweiligen Nationalen Anhängen zu den für die 
+Anwendung geltenden Normen (z. B. DIN EN 1993-2 bis DIN EN 1993-6). 
+NDP zu 3(7) Anmerkung 
+Im Allgemeinen ist das Konzept der Schadenstoleranz anzuwenden und das Inspektionsprogramm danach 
+auszurichten. In Sonderfällen, in denen regelmäßige Inspektionen unzumutbar oder unmöglich sind, ist das 
+Konzept der ausreichenden Sicherheit gegen Ermüdungsversagen ohne Vorankündigung anzuwenden, 
+siehe [1]. Weiteres ist den Normenteilen DIN EN 1993-2 bis DIN EN 1993-6 zu entnehmen. Für andere Fälle 
+werden die in DIN EN 1993-1-9:2010-12, Tabelle 3.1 angegebenen Teilsicherheitsbeiwerte 
+Mf für die 
+Ermüdungsfestigkeit festgelegt. 
+NDP zu 5(2) Anmerkung 2 
+Die Regeln dürfen für Querschnitte der Klasse 4 angewendet werden, wenn nach den entsprechenden 
+Anwendungsnormen unter häufigen Lasten kein Blech- bzw. Stegblechatmen auftritt. 
+NDP zu 6.1(1) Anmerkung 
+Informationen zu Nennspannungen, korrigierten Nennspannungen und Strukturspannungen sind in [1] 
+angegeben. 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1993-1-9/NA:2010-12 
+NDP zu 6.2(2) Anmerkung 
+Es werden keine weiteren Hinweise gegeben. 
+NDP zu 7.1(3) Anmerkung 2 
+Hinweise zur Versuchsauswertung sind in [1] angegeben. 
+NDP zu 7.1(5) Anmerkung 
+Es werden keine weiteren Hinweise gegeben. 
+NDP zu 8(4) Anmerkung 2 
+Es werden keine weiteren Hinweise gegeben. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1993-1-9/NA:2010-12 
+NCI Literaturhinweise 
+[1] Stahlbau-Kalender 2006, Schwerpunkt: Dauerhaftigkeit, Kuhlmann, Ulrike (Hrsg.), Ernst und Sohn, 
+Berlin 
+6

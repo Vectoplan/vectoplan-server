@@ -1,0 +1,300 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 1: Einwirkungen auf Tragwerke  
+Teil 1-6: Allgemeine Einwirkungen, Einwirkungen während der 
+Bauausführung 
+National Annex  
+Nationally determined parameters  
+Eurocode 1: Actions on structures  
+Part 1-6: General actions, Actions during execution 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 1: Actions sur les structures  
+Partie 1-6: Actions générales, Actions en cours dexécution
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-1-6/NA:2010-12
+Inhalt
+Seite 
+Vorwort ................................................................................................................................................................3
+NA 1 Anwendungsbereich .......................................................................................................... ...................4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-1-6:2005-09 .........................................4
+NA 2.1 Allgemeines............................................................................................................................................4
+NA 2.2 Nationale Festlegungen ........................................................................................................................5
+Anhang A1 (normativ) Ergänzende Regelungen für Gebäude ........................................................................9
+Anhang A2 (normativ) Ergänzende Regelungen für Brücken ...................................................................... 10
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1991-1-6/NA:2010-12
+Vorwort 
+Dieses Dokument wurde im NA 005-51-02 AA Einwirkungen auf Bauten  (Sp CEN/TC 250/SC 1) des Nor-
+menausschusses NA Bauwesen (NABau) erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1991-1-6:2010-12, Einwirkungen auf Trag-
+werke  Teil 1-6: Allgemeine Einwirkungen  Einwirkungen während der Bauausführung. 
+Die Europäische Norm DIN EN 1991-1-6 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parameter national festzulegen. Diese national festzulegenden Parameter (NDP) umfassen alternative Nach-
+weisverfahren und Angaben einzelner Werte sowie die Wahl von Klassen aus gegebenen Klassifizierungs-
+systemen. Die entsprechenden Textstellen sind in der Europäischen Norm durch Hinweise auf die Möglichkeit 
+nationaler Festlegungen gekennzeichnet. Eine Liste dieser Textstellen befindet sich in NA 2.1. 
+Darüber hinaus enthält dieser Nationale Anhang zusätzliche, der EN 1991-1-6 nicht widersprechende Anga-
+ben und Erläuterungen, die mit (NCI) gekennzeichnet sind und die nach dem Leitpapier L Anwendung der 
+Eurocodes der Europäischen Kommission zulässig sind. 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1991-1-6:2010-12. 
+DIN EN 1991-1-6:2010-12 und dieser Nationale Anhang DIN EN 1991-1-6/NA:2010-12 ersetzen 
+DIN 1055-8:2003-01. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Änderungen 
+Gegenüber DIN 1055-8:2003-01 wurden folgende Änderungen vorgenommen: 
+a) Norm inhaltlich überarbeitet; 
+b) Ergänzende Festlegungen zur nationalen Anwendung von DIN EN 1991-1-6:2010-12 aufgenommen. 
+Gegenüber DIN EN 1991-1-6/NA:2010-05 wurden folgende Änderungen vorgenommen: 
+a) Ersatzvermerke korrigiert; 
+b) datierte Verweisungen aktualisiert; 
+c) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 1055-8: 2003-01 
+DIN EN 1991-1-6/NA: 2010-05 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1991-1-6/NA:2010-12
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält Festlegungen zu Einwirkungen auf Gebäude und Ingenieurbauwerke, die 
+während deren Ausführung zu erwarten sind und die bei der Anwendung von DIN EN 1991-1-6:2010-12 in 
+Deutschland zu berücksichtigen sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1991-1-6:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1991-1-6:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1991-1-6:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen 
+(NDPs). 
+Regelung Bezug 
+1.1(3) Bemessungsregeln für Hilfskonstruktionen 
+2.2(4) Positionierung von als frei eingestuften Bauausführungslasten 
+3.1(1)P Bemessungssituation für Sturmbedingungen 
+3.1(5) Anmerkung 1 Wiederkehrperiode für den Ansatz von charakteristischen Werten von ver-
+änderlichen Einwirkungen während der Bauausführung 
+3.1(5) Anmerkung 2 Kleinste Windgeschwindigkeit während der Bauausführung 
+3.1(7) Regeln für die Kombination von Schneelasten und Windeinwirkungen mit 
+Bauausführungslasten 
+3.1(8) Anmerkung 1 Regeln bezüglich Imperfektionen in der Tragwerksgeometrie 
+3.3(2) Kriterien für Grenzzustände der Gebrauchstauglichkeit während der Bau-
+ausführung 
+3.3(6) Anforderungen an die Gebrauchstauglichkeit für Hilfskonstruktionen 
+4.9(6) Anmerkung 2 Lasten und Wasserspiegelhöhen für Treibeis 
+4.10(1)P Definition der Einwirkungen infolge atmosphärischer Vereisung 
+4.11.1(1) Tabelle 4.1 Empfohlene charakteristische Werte für die Bauausführungslasten Qca, Qcb
+und Qcc
+4.11.2(1) Bauausführungslasten während des Betonierens 
+4.12(1)P Anmerkung 2 Dynamische Auswirkungen infolge außergewöhnlicher Einwirkungen 
+4.12(2) Dynamische Auswirkungen infolge herabfallender Ausrüstungsgegenstände 
+4.12(3) Bemessungswerte von menschlichen Anpralllasten 
+4.13(2) Einwirkungen aus Erdbebeben 
+Anhang A1, A1.1(1) Repräsentative Werte für veränderliche Einwirkungen infolge Bauausfüh-
+rungslasten 
+Anhang A1, A1.3(2) Charakteristische Werte von äquivalenten Horizontalkräften 
+Anhang A2, A2.3(1) Bemessungswerte für die vertikale Durchbiegung von Brücken im Takt-
+schiebeverfahren 
+Anhang A2, A2.4(2) Abminderung der charakteristischen Werte von Schneelasten 
+Anhang A2, A2.4(3) Abgeminderte Werte der charakteristischen Schneelasten für den Nachweis 
+des statischen Gleichgewichtes 
+Anhang A2, A2.5(2) Bemessungswerte für horizontale Reibungskräfte 
+Anhang A2, A2.5(3) Bestimmung von Reibbeiwerten min und max 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1991-1-6/NA:2010-12
+NA 2.2 Nationale Festlegungen 
+ANMERKUNG Die nachfolgende Nummerierung entspricht derjenigen von DIN EN 1991-1-6:2010-12. 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+NDP Zu 1.1 (3) 
+Für Traggerüste gilt DIN EN 12812, für Arbeitsgerüste gelten DIN EN 12810-1 und DIN EN 12810-2 sowie 
+DIN EN 12811-1 bis DIN EN 12811-3 und für Schutzgerüste DIN 4420-1, DIN 4420-2 und DIN 4420-3. 
+1.2 Normative Verweisungen 
+NCI zu 1.2 
+Zur Anwendung dieses Nationalen Anhangs sind zusätzlich zu den in DIN EN 1991-1-6 zitierten Normen die 
+folgenden Dokumente zu verwenden: 
+NA DIN 4420-1, Arbeits- und Schutzgerüste  Teil 1: Schutzgerüste  Leistungsanforderungen, Entwurf, 
+Konstruktion und Bemessung 
+NA DIN 4420-2, Arbeits- und Schutzgerüste; Leitergerüste; Sicherheitstechnische Anforderungen 
+NA DIN 4420-3, Arbeits- und Schutzgerüste  Teil 3: Ausgewählte Gerüstbauarten und ihre Regelausfüh-
+rungen 
+NA DIN 19704-1, Stahlwasserbauten  Teil 1: Berechnungsgrundlagen 
+NA DIN EN 12810-1, Fassadengerüste aus vorgefertigten Bauteilen  Teil 1: Produktfestlegungen 
+NA DIN EN 12810-2, Fassadengerüste aus vorgefertigten Bauteilen  Teil 2: Besondere Bemessungsver-
+fahren und Nachweise 
+NA DIN EN 12811-1, Temporäre Konstruktionen für Bauwerke  Teil 1: Arbeitsgerüste  Leistungsanfor-
+derungen, Entwurf, Konstruktion und Bemessung 
+NA DIN EN 12811-2, Temporäre Konstruktionen für Bauwerke  Teil 2: Informationen zu den Werkstoffen 
+NA DIN EN 12811-3, Temporäre Konstruktionen für Bauwerke  Teil 3: Versuche zum Tragverhalten 
+NA DIN EN 12812, Traggerüste  Anforderungen, Bemessung und Entwurf 
+NA DIN EN 1991-1-4/NA, Nationaler Anhang  National festgelegte Parameter  Eurocode 1: Einwirkungen 
+auf Tragwerke  Teil 1-4: Allgemeine Einwirkungen  Windlasten
+NA DIN EN 1993-1-6, Eurocode 3: Bemessung und Konstruktion von Stahlbauten: Allgemeine Bemes-
+sungsregeln  Teil 1-6: Ergänzende Regeln für Schalenkonstruktionen 
+NA DIN EN 1993-3-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: Allgemeine 
+Bemessungsregeln und Regeln für den Hochbau 
+NA DIN EN 1993-3-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-2: Allgemeine 
+Regeln  Tragwerksbemessung für den Brandfall 
+NA DIN EN 1993-4-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-1: Silos, Tank-
+bauwerke und Rohrleitungen  Silos 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1991-1-6/NA:2010-12
+NA DIN EN 1993-4-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-2: Silos, Tank-
+bauwerke und Rohrleitungen  Tankbauwerke 
+NA DIN EN 1998-1, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben  Teil 1: Grundlagen, Erd-
+bebeneinwirkungen und Regeln für Hochbauten 
+NA DIN EN 1998-1/NA, Nationaler Anhang  National festgelegte Parameter  Eurocode 8: Auslegung von 
+Bauwerken gegen Erdbeben  Teil 1: Grundlagen, Erdbebeneinwirkungen und Regeln für Hochbau 
+2 Einleitung der Einwirkungen 
+2.2 Bauausführungslasten 
+NDP zu 2.2 (4) 
+Die Grenzen sind für das Einzelprojekt festzulegen. 
+3 Bemessungssituation 
+3.1 Allgemeines  Festlegung der Bemessungssituation 
+NDP zu 3.1 (1) 
+Es gilt DIN EN 1991-1-4 in Verbindung mit DIN EN 1991-1-4/NA. 
+NDP zu 3.1 (5) 
+ANMERKUNG 1 Es gelten die empfohlenen Wiederkehrperioden (siehe Tabelle 3.1). 
+NDP zu 3.1 (5)
+ANMERKUNG 2 Für die kleinste Windgeschwindigkeit gilt für die Dauer von bis zu 3 Monaten der empfohlene 
+Grundwert von v = 20 m/s. 
+NDP zu 3.1 (7) 
+Es gilt DIN EN 1990. 
+NDP zu 3.1 (8) 
+Es gelten die Regelungen von Anhang A2 sowie DIN EN 1990. 
+3.3 Grenzzustände 
+NDP zu 3.3 (2) 
+Es gelten die Normen der Reihen DIN EN 1992 bis DIN EN 1999 in Verbindung mit den jeweiligen Nationalen 
+Anhängen. 
+NDP zu 3.3 (6)
+Es gelten die Normen der Reihen DIN EN 1992 bis DIN EN 1999 in Verbindung mit den jeweiligen Nationalen 
+Anhängen. 
+4 Darstellung der Einwirkungen 
+4.9 Einwirkungen verursacht durch Wasser 
+NDP zu 4.9 (6) 
+Es gilt DIN 19704-1. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1991-1-6/NA:2010-12
+4.10 Einwirkungen infolge atmosphärischer Eisbildung 
+NDP zu 4.10 (1) 
+Die repräsentativen Werte sind für das Einzelprojekt festzulegen. Hinweise für Türme und Maste aus Stahl 
+enthält DIN EN 1993-3-1, für Schornsteine aus Stahl DIN EN 1993-3-2. 
+4.11 Bauausführungslasten 
+NDP zu 4.11.1 (1), Tabelle 4.1 
+Es gelten die empfohlenen Werte. 
+NDP zu 4.11.2 (1) 
+Abschnitt 4.11.2 ist durch folgenden Text zu ersetzen: 
+1) Die charakteristischen Werte für Einwirkungen aus Personal und Gerät, die während des Betonierens auf 
+Schalungen anzusetzen sind, sind in Tabelle NA.1 angegeben. 
+Tabelle NA.1  Charakteristische Werte der Einwirkung während des Betonierens 
+(zusätzlich zur Eigenlast des Bauteils und zur Frischbetonlast) 
+Nr Belastungsbereich Last in kN/m
+2
+1 im Bereich der Arbeitsfläche 3 m 3 m (bzw. der Spannweite, falls geringer) 1,5 
+2 außerhalb der Arbeitsfläche 0,75 
+2) Die Belastungen Nr 1 und 2 in Tabelle NA.1 sind so anzuordnen, dass die maximalen Beanspruchungen 
+auftreten (siehe Bild NA.1). 
+a) Einfeldsystem b) Zweifeldsystem 
+Legende 
+1 Lasten nach Tabelle 1, Zeile 1 
+2 Lasten nach Tabelle 1, Zeile 2 
+3 Eigengewicht des Bauteils als Frischbeton 
+a Maß der Arbeitsflächen gleich 3 m 
+Bild NA.1  Beispiele für die Belastungsanordnung während des Betonierens 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1991-1-6/NA:2010-12
+4.12 Außergewöhnliche Einwirkungen 
+NDP zu 4.12 (1) 
+Dynamische Einflüsse sind für das Einzelprojekt festzulegen. Der empfohlene Wert für den dynamischen Ver-
+größerungsfaktor beträgt 2. 
+NDP zu 4.12 (2) 
+Die für die Bemessung zu berücksichtigenden dynamischen Einwirkungen durch herabfallende Gegenstände 
+sind für das Einzelprojekt festzulegen. 
+NDP zu 4.12 (3) 
+Es gelten die empfohlenen Werte. 
+4.13 Einwirkungen aus Erdbeben 
+NDP zu 4.13 (2) 
+Es gilt DIN EN 1998-1 in Verbindung mit DIN EN 1998-1/NA. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1991-1-6/NA:2010-12
+Anhang A1 
+(normativ)
+Ergänzende Regelungen für Gebäude 
+A1.1 Grenzzustände der Tragfähigkeit 
+NDP zu A1.1 (1) 
+1) Für Kombinationswerte für außergewöhnliche Einwirkungen bei Hochbauten gilt Tabelle NA.A1.1. 
+Tabelle NA.A1.1  Werte für außergewöhnliche Einwirkungen bei Hochbauten 
+Veränderliche Einwirkungen oa 2b
+Baustellenpersonal und ihre Ausrüstung (Qca) 0,5 0,2 
+Zeitweise Lagerung von Baustoffen und Bauelementen (Qcb) 0,5 0,2 
+Schweres Gerät an der jeweiligen Einsatzstelle (Qcc) 0,5 0,2 
+Krane, Fahrzeuge, Hubeinrichtungen, Kraftgeneratoren (Qcd): 
+ häufige Anwendung 
+ gelegentliche Anwendung
+0,6 
+0,6 
+0,5 
+0 
+Temperatureinwirkungenb 0,5 0 
+Windeinwirkungenb (Qwn) 0,5 0 
+Schneeeinwirkungenb (Qsn) 0,5 0 
+Einwirkungen aus Wasserb (Qwa) 0,5 0 
+a Nur bei möglicher Gleichzeitigkeit zu berücksichtigen. 
+b Auf repräsentative Werte anzuwenden.
+2) Für Kombinationswerte für außergewöhnliche Einwirkungen bei Brücken gilt Tabelle NA.A1.2 
+Tabelle NA.A1.2  Werte für außergewöhnliche Einwirkungen bei Brücken 
+Veränderliche Einwirkungen oa 2b
+Baustellenpersonal und ihre Ausrüstung (Qca) 0,4 0,2 
+Zeitweise Lagerung von Baustoffen und Bauelementen (Qcb) 0,4 0,2 
+Schweres Gerät usw. (Qcc) 1 1 
+Krane, Fahrzeuge, Hubeinrichtungen, Kraftgeneratoren (Qcd): In den technischen Anforderungen 
+für das Projekt anzugeben
+Horizontalkräfte (Fh) 1 0 
+Windeinwirkungenb (wo gleichzeitig möglich) (Qwn) 0,8 0 
+Schneelastenb (wo gleichzeitig möglich) (Qsn) 0,8 0 
+Temperatur und Schwindenb 0,6 0 
+Einwirkungen aus Wasserlasten (Qwa) In den technischen Anforderungen 
+für das Projekt anzugeben
+a Nur bei möglicher Gleichzeitigkeit zu berücksichtigen. 
+b Auf repräsentative Werte anzuwenden.
+A1.3 Horizontale Einwirkungen 
+NDP zu A1.3 (2)
+Es gelten für Traggerüste DIN EN 12812, für Arbeitsgerüste gelten DIN EN 12810-1 und DIN EN 12810-2 
+sowie DIN EN 12811-1 bis DIN EN 12811-3 und für Schutzgerüste gelten DIN 4420-1, DIN 4420-2 und 
+DIN 4420-3. 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1991-1-6/NA:2010-12
+Anhang A2 
+(normativ)
+Ergänzende Regelungen für Brücken 
+A2.3 Bemessungswerte für Verfassungen 
+NDP zu A2.3 (1) 
+Atmosphärische Eislasten sind den technischen Anforderungen für das jeweilige Projekt zu entnehmen. 
+A2.4 Schneelasten 
+NDP zu A2.4 (2) 
+Es gilt der empfohlene Wert. 
+NDP zu A2.4 (3)
+Es gilt der empfohlene Wert.
+A2.5 Bauausführungslasten 
+NDP zu A2.5 (2) 
+Es gilt der empfohlene Wert.
+NDP zu A2.5 (3) 
+Es gelten die empfohlenen Werte. 
+10

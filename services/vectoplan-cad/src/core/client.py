@@ -40,17 +40,21 @@ def _request(
             error = error_payload.get("error") if isinstance(error_payload, Mapping) else None
             if isinstance(error, Mapping):
                 message = str(error.get("message") or error.get("code") or message)
-            elif error:
-                message = str(error)
             elif isinstance(error_payload, Mapping) and error_payload.get("message"):
                 message = str(error_payload["message"])
+            elif error:
+                message = str(error)
         except (UnicodeDecodeError, json.JSONDecodeError, AttributeError):
             pass
         raise CoreClientError(message) from exc
     except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
         raise CoreClientError(f"Core request failed: {exc}") from exc
-    if not isinstance(payload, dict) or payload.get("ok") is False:
-        raise CoreClientError(str(payload.get("message") or payload.get("error") or "Core rejected request"))
+    if not isinstance(payload, dict):
+        raise CoreClientError("Core returned an invalid response")
+    if payload.get("ok") is False:
+        error = payload.get("error")
+        nested_message = error.get("message") if isinstance(error, Mapping) else None
+        raise CoreClientError(str(payload.get("message") or nested_message or error or "Core rejected request"))
     return payload
 
 
@@ -77,4 +81,18 @@ def get_import_projection(
         method="GET",
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
         timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
+    )
+
+
+def dispatch_cad_command(
+    config: Mapping[str, Any], core_project_id: str, command: Mapping[str, Any]
+) -> dict[str, Any]:
+    project_id = urllib.parse.quote(core_project_id, safe="")
+    return _request(
+        base_url=str(config.get("CORE_INTERNAL_URL") or ""),
+        path=f"/api/v1/projects/{project_id}/commands/cad",
+        method="POST",
+        api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
+        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
+        body={"command": dict(command)},
     )

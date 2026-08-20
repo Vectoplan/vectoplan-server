@@ -1,0 +1,31 @@
+{
+  "dataset_id": "residential-new-build",
+  "dataset_label": "Wohngebäude · Neubau",
+  "dataset_description": "Mehrfamilienhaus mit Wärmepumpe, WRG und schichtbasierten U-Werten.",
+  "schema_version": "energy-project/0.2",
+  "revision": "test-rnb-1",
+  "project": {"id": "test-rnb", "name": "MFH Neubau Köln"},
+  "building": {"type": "residential", "condition": "new_build", "units": 10},
+  "geometry": {"heated_floor_area_m2": 720, "conditioned_volume_m3": 2268},
+  "zones": [
+    {"id": "z1", "name": "Wohnen", "usage_profile": "residential_multi_family", "floor_area_m2": 720, "volume_m3": 2268, "indoor_temperature_c": 20, "occupants": 26}
+  ],
+  "envelope": {
+    "thermal_bridge_delta_u_w_m2k": 0.03,
+    "components": [
+      {"id": "wall", "name": "Außenwand", "kind": "exterior_wall", "area_m2": 520, "status": "verified", "source": "library", "layers": [{"name": "Putz", "thickness_m": 0.015, "conductivity_w_mk": 0.7, "mu": 10}, {"name": "Dämmung", "thickness_m": 0.20, "conductivity_w_mk": 0.035, "mu": 1}, {"name": "Mauerwerk", "thickness_m": 0.175, "conductivity_w_mk": 0.18, "mu": 8}]},
+      {"id": "roof", "name": "Flachdach", "kind": "roof", "area_m2": 260, "u_value": 0.14, "status": "verified", "source": "library"},
+      {"id": "floor", "name": "Bodenplatte", "kind": "floor", "area_m2": 260, "u_value": 0.20, "boundary_temperature_factor": 0.7, "status": "verified", "source": "library"},
+      {"id": "windows", "name": "Fenster", "kind": "window", "area_m2": 190, "u_value": 0.85, "g_value": 0.50, "shading_factor": 0.70, "orientation": "mixed", "status": "verified", "source": "library"}
+    ]
+  },
+  "systems": {
+    "heating": {"type": "heat_pump", "seasonal_performance_factor": 4.1, "renewable_heat_share": 1.0, "verified": true},
+    "ventilation": {"type": "balanced_with_heat_recovery", "air_changes_per_hour": 0.5, "infiltration_air_changes_per_hour": 0.08, "heat_recovery_rate": 0.82},
+    "renewables": {"pv_peak_kwp": 24, "specific_yield_kwh_kwp_a": 930, "self_use_fraction": 0.42}
+  },
+  "usage": {"climate_location": "Köln", "usage_profile": "residential_multi_family"},
+  "climate": {"design_outdoor_temperature_c": -10, "heating_degree_days_kd": 3400, "window_solar_irradiation_kwh_m2a": 430},
+  "targets": {"standard": "EH40", "primary_energy_ratio": 0.4, "transmission_ratio": 0.55},
+  "provenance": {"geometry_revision": "editor-rnb-4", "cad_revision": "cad-rnb-7", "library_revision": "library-rnb-3"}
+}

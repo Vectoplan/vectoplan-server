@@ -1,0 +1,15 @@
+{
+  "contract_version": "structural-analysis-job/0.2",
+  "project_ref": "reference_prestress_tendon",
+  "model_revision_ref": "reference_001",
+  "job_ref": "job_prestress_tendon",
+  "structure_type": "bridge",
+  "material_kind": "prestressed_concrete",
+  "standards_profile": "DE_EC_2021",
+  "load_cases": [{"load_case_id": "P", "label": "Vorspannung", "category": "permanent", "value": 1.0, "unit": "-", "action_type": "prestress"}],
+  "analysis_model": {"kind": "member_check"},
+  "design": {
+    "type": "prestress_tendon",
+    "parameters": {"prestress_grade": "Y1860S7", "area_mm2": 2850.0, "length_m": 42.0, "angular_change_rad": 0.22, "friction_mu": 0.19, "wobble_1_m": 0.006, "anchorage_slip_mm": 6.0, "relaxation_percent": 2.5}
+  }
+}

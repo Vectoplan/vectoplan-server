@@ -1,0 +1,537 @@
+{
+  "document_id": "EN_1992-1-1_NA__corrigendum__EC_2_Teil_1-1_NA_Berichtigung_052012",
+  "eurocode_family": "EC2",
+  "designation": "DIN EN 1992-1-1/NA",
+  "document_kind": "corrigendum",
+  "file_name": "EC 2 Teil 1-1 NA Berichtigung 052012.pdf",
+  "relative_path": "EC 2/EC 2 Teil 1-1 NA Berichtigung 052012.pdf",
+  "sha256": "31f23fe192ac19c43c0efc351a6170d8f3c77c68c1e07d987c38c674d2465ae4",
+  "pages": 8,
+  "text_pages": 8,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 26,
+  "equation_candidate_count": 35,
+  "table_reference_count": 5,
+  "figure_reference_count": 3,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111151828+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111151828+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 2\\EC 2 Teil 1-1 NA Berichtigung 052012.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Änderung zu NCI zu 2.3.1.3 (4)",
+      "pdf_page": 3
+    },
+    {
+      "clause": "2",
+      "title": "Änderung zu NCI zu 2.7 (Baumgärtel)",
+      "pdf_page": 3
+    },
+    {
+      "clause": "3",
+      "title": "Änderung zu NCI zu 3.3.1 (5)P",
+      "pdf_page": 3
+    },
+    {
+      "clause": "4",
+      "title": "Änderung zu NCI zu 4.2, Tabelle 4.1",
+      "pdf_page": 3
+    },
+    {
+      "clause": "1",
+      "title": "Kein Korrosions- oder Angriffsrisiko",
+      "pdf_page": 3
+    },
+    {
+      "clause": "2",
+      "title": "Korrosion, ausgelöst durch Karbonatisierung",
+      "pdf_page": 3
+    },
+    {
+      "clause": "3",
+      "title": "Bewehrungskorrosion, ausgelöst durch Chloride, ausgenommen Meerwasser",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Bewehrungskorrosion, ausgelöst durch Chloride aus Meerwasser",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Betonangriff durch Frost mit und ohne Taumittel",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Betonangriff durch chemischen Angriff der Umgebung",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Änderung zu NDP zu 4.4.1.2 (8)",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Änderung zu NDP zu 5.2 (5)",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Änderung zu NCI zu 5.2 (8)",
+      "pdf_page": 6
+    },
+    {
+      "clause": "8",
+      "title": "Änderung zu NCI zu 6.2.2 (2)",
+      "pdf_page": 6
+    },
+    {
+      "clause": "9",
+      "title": "Änderung zu NCI zu 6.2.3 (5)",
+      "pdf_page": 6
+    },
+    {
+      "clause": "10",
+      "title": "Änderung zu NDP zu 6.4.4 (1)",
+      "pdf_page": 6
+    },
+    {
+      "clause": "11",
+      "title": "Änderung zu NCI zu 6.4.4 (2)",
+      "pdf_page": 6
+    },
+    {
+      "clause": "12",
+      "title": "Änderung zu NCI zu 6.5.3 (3)",
+      "pdf_page": 7
+    },
+    {
+      "clause": "13",
+      "title": "Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7)",
+      "pdf_page": 7
+    },
+    {
+      "clause": "14",
+      "title": "Änderung zu NCI zu 8.7.3(1)",
+      "pdf_page": 7
+    },
+    {
+      "clause": "15",
+      "title": "Änderung zu NDP zu 9.6.2 (3)",
+      "pdf_page": 7
+    },
+    {
+      "clause": "16",
+      "title": "Änderung zu NCI zu A.1 (2)",
+      "pdf_page": 7
+    },
+    {
+      "clause": "17",
+      "title": "Änderung zu NDP zu A.2.1 (1)",
+      "pdf_page": 8
+    },
+    {
+      "clause": "18",
+      "title": "Änderung zu NDP zu A.2.1 (2)",
+      "pdf_page": 8
+    },
+    {
+      "clause": "19",
+      "title": "Änderung zu NDP zu A.2.2 (1)",
+      "pdf_page": 8
+    },
+    {
+      "clause": "20",
+      "title": "Änderung zu NDP zu A.2.2 (2)",
+      "pdf_page": 8
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 3,
+      "equation_number": "4",
+      "line": "1 Änderung zu NCI zu 2.3.1.3 (4)",
+      "context": "3 | Gegenüber DIN EN 1992-1-1/NA:2011-01 sind folgende Änderungen vorzunehmen: | 1 Änderung zu NCI zu 2.3.1.3 (4) | Die folgende NCI zu 2.3.1.3(4) wird wie folgt ergänzt: | Die Anmerkung in DIN EN 1992-1-1 entfällt aufgrund der Regelung der Teilsicherheitsbeiwerte für Setzungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "8",
+      "line": "5 Änderung zu NDP zu 4.4.1.2 (8)",
+      "context": "ANMERKUNG 4 Grenzwerte für die Expositionsklassen bei chemischem Angriff XA sind in DIN EN 206-1 und DIN 1045-2 angegeben. | ANMERKUNG 5 Es gelten die informativen Beispiele für die Zuordnung nach DIN 1045-2. | 5 Änderung zu NDP zu 4.4.1.2 (8) | NDP zu 4.4.1.2 (8) wird wie folgt ergänzt: | In der Erläuterung zu cdur,add = 10 mm wird der Bezug auf DAfStb-Heft 600 um das DBV-Merkblatt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "In der Erläuterung zu cdur,add = 10 mm wird der Bezug auf DAfStb-Heft 600 um das DBV-Merkblatt:",
+      "context": "5 Änderung zu NDP zu 4.4.1.2 (8) | NDP zu 4.4.1.2 (8) wird wie folgt ergänzt: | In der Erläuterung zu cdur,add = 10 mm wird der Bezug auf DAfStb-Heft 600 um das DBV-Merkblatt: | „Parkhäuser und Tiefgaragen ergänzt. | 6 Änderung zu NDP zu 5.2 (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "5",
+      "line": "6 Änderung zu NDP zu 5.2 (5)",
+      "context": "In der Erläuterung zu cdur,add = 10 mm wird der Bezug auf DAfStb-Heft 600 um das DBV-Merkblatt: | „Parkhäuser und Tiefgaragen ergänzt. | 6 Änderung zu NDP zu 5.2 (5) | NDP zu 5.2 (5) wird wie folgt ergänzt: | Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden.",
+      "context": "6 Änderung zu NDP zu 5.2 (5) | NDP zu 5.2 (5) wird wie folgt ergänzt: | Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden. | Für Auswirkungen auf Dachscheiben gilt abweichend: | Dächer: 0 = 0,008 / m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Dächer: 0 = 0,008 / m",
+      "context": "Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden. | Für Auswirkungen auf Dachscheiben gilt abweichend: | Dächer: 0 = 0,008 / m",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "8",
+      "line": "7 Änderung zu NCI zu 5.2 (8)",
+      "context": "E DIN EN 1992-1-1/NA/A1:2012-05 | 6 | 7 Änderung zu NCI zu 5.2 (8) | NCI zu 5.2 (8) wird wie folgt ergänzt: | Für die Schiefstellung i ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "in Gleichung (5.5) bei Deckenscheiben i = 0,008/ m2 und",
+      "context": "NCI zu 5.2 (8) wird wie folgt ergänzt: | Für die Schiefstellung i ist | in Gleichung (5.5) bei Deckenscheiben i = 0,008/ m2 und | in Gleichung (5.6) bei Dachscheiben i = 0,008 / m | im Bogenmaß anzunehmen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "in Gleichung (5.6) bei Dachscheiben i = 0,008 / m",
+      "context": "Für die Schiefstellung i ist | in Gleichung (5.5) bei Deckenscheiben i = 0,008/ m2 und | in Gleichung (5.6) bei Dachscheiben i = 0,008 / m | im Bogenmaß anzunehmen. | Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden.",
+      "context": "in Gleichung (5.6) bei Dachscheiben i = 0,008 / m | im Bogenmaß anzunehmen. | Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden. | In Bild 5.1 c1) wird i /2 in i geändert. | 8 Änderung zu NCI zu 6.2.2 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "2",
+      "line": "8 Änderung zu NCI zu 6.2.2 (2)",
+      "context": "Für Auswirkungen auf Deckenscheiben darf i in Gleichung 5.5 nicht halbiert werden. | In Bild 5.1 c1) wird i /2 in i geändert. | 8 Änderung zu NCI zu 6.2.2 (2) | Die NCI zu 6.2.2 (2) wird wie folgt ergänzt: | Anstelle von fctk,0,05 / C ist zur Ermittlung ungerissener Bereiche bei der Überprüfung der Biegezugspannung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "5",
+      "line": "9 Änderung zu NCI zu 6.2.3 (5)",
+      "context": "Anstelle von fctk,0,05 / C ist zur Ermittlung ungerissener Bereiche bei der Überprüfung der Biegezugspannung | der Wert fctd nach 3.1.6 (2) einzusetzen. | 9 Änderung zu NCI zu 6.2.3 (5) | NCI zu 6.2.3 (5) wird gestrichen. | 10 Änderung zu NDP zu 6.4.4 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "1",
+      "line": "10 Änderung zu NDP zu 6.4.4 (1)",
+      "context": "9 Änderung zu NCI zu 6.2.3 (5) | NCI zu 6.2.3 (5) wird gestrichen. | 10 Änderung zu NDP zu 6.4.4 (1) | Ersetze den bestehenden Absatz wie folgt: | \"Bei Flachdecken: CRd,c = 0,18 / C",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "\"Bei Flachdecken: CRd,c = 0,18 / C",
+      "context": "10 Änderung zu NDP zu 6.4.4 (1) | Ersetze den bestehenden Absatz wie folgt: | \"Bei Flachdecken: CRd,c = 0,18 / C | Für Innenstützen bei Flachdecken mit u0 / d < 4 gilt jedoch: CRd,c = 0,18 / C · (0,1 · u0 / d + 0,6) | k1 = 0,10",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Für Innenstützen bei Flachdecken mit u0 / d < 4 gilt jedoch: CRd,c = 0,18 / C · (0,1 · u0 / d + 0,6)",
+      "context": "Ersetze den bestehenden Absatz wie folgt: | \"Bei Flachdecken: CRd,c = 0,18 / C | Für Innenstützen bei Flachdecken mit u0 / d < 4 gilt jedoch: CRd,c = 0,18 / C · (0,1 · u0 / d + 0,6) | k1 = 0,10 | vmin wie in 6.2.2(1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "k1 = 0,10",
+      "context": "\"Bei Flachdecken: CRd,c = 0,18 / C | Für Innenstützen bei Flachdecken mit u0 / d < 4 gilt jedoch: CRd,c = 0,18 / C · (0,1 · u0 / d + 0,6) | k1 = 0,10 | vmin wie in 6.2.2(1) | Der Biegebewehrungsgrad I ist zusätzlich auf I 0,5 fcd / fyd zu begrenzen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Betonzugspannungen cp in Gleichung (6.47) sind negativ einzusetzen.\"",
+      "context": "vmin wie in 6.2.2(1) | Der Biegebewehrungsgrad I ist zusätzlich auf I 0,5 fcd / fyd zu begrenzen. | Betonzugspannungen cp in Gleichung (6.47) sind negativ einzusetzen.\" | 11 Änderung zu NCI zu 6.4.4 (2) | Ersetze die ersten zwei Absätze (\"Der Abstand acrit …\" bis \"… CRd,c = 0,15 / C.\") wie folgt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "2",
+      "line": "11 Änderung zu NCI zu 6.4.4 (2)",
+      "context": "Der Biegebewehrungsgrad I ist zusätzlich auf I 0,5 fcd / fyd zu begrenzen. | Betonzugspannungen cp in Gleichung (6.47) sind negativ einzusetzen.\" | 11 Änderung zu NCI zu 6.4.4 (2) | Ersetze die ersten zwei Absätze (\"Der Abstand acrit …\" bis \"… CRd,c = 0,15 / C.\") wie folgt: | \"Der Abstand acrit des maßgebenden Rundschnitts ist iterativ zu ermitteln (Bild NA.6.21.1). Für schlanke",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Ersetze die ersten zwei Absätze (\"Der Abstand acrit …\" bis \"… CRd,c = 0,15 / C.\") wie folgt:",
+      "context": "Betonzugspannungen cp in Gleichung (6.47) sind negativ einzusetzen.\" | 11 Änderung zu NCI zu 6.4.4 (2) | Ersetze die ersten zwei Absätze (\"Der Abstand acrit …\" bis \"… CRd,c = 0,15 / C.\") wie folgt: | \"Der Abstand acrit des maßgebenden Rundschnitts ist iterativ zu ermitteln (Bild NA.6.21.1). Für schlanke | Fundamente mit a / d > 2,0 und Bodenplatten darf zur Vereinfachung der Rechnung ein konstanter",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 6,
+      "equation_number": "unvollständig",
+      "line": "Für Bodenplatten und Stützenfundamente gilt CRd,c = 0,15 / C.",
+      "context": "Fundamente mit a / d > 2,0 und Bodenplatten darf zur Vereinfachung der Rechnung ein konstanter | Rundschnitt im Abstand 1,0 · d angenommen werden. | Für Bodenplatten und Stützenfundamente gilt CRd,c = 0,15 / C.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "3",
+      "line": "12 Änderung zu NCI zu 6.5.3 (3)",
+      "context": "entlastend angenommen werden. | vmin wie in 6.2.2(1)\" | 12 Änderung zu NCI zu 6.5.3 (3) | Die folgende NCI wird ergänzt: | NCI zu 6.5.3 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "3",
+      "line": "NCI zu 6.5.3 (3)",
+      "context": "12 Änderung zu NCI zu 6.5.3 (3) | Die folgende NCI wird ergänzt: | NCI zu 6.5.3 (3) | In Gleichung (6.59) sollte anstelle von „h die Abmessung „H eingesetzt werden. | ANMERKUNG Zur Erläuterung der Anwendungsgrenzen von Gleichung (6.59) siehe DAfStb-Heft 600.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "In Gleichung (6.59) sollte anstelle von „h die Abmessung „H eingesetzt werden.",
+      "context": "Die folgende NCI wird ergänzt: | NCI zu 6.5.3 (3) | In Gleichung (6.59) sollte anstelle von „h die Abmessung „H eingesetzt werden. | ANMERKUNG Zur Erläuterung der Anwendungsgrenzen von Gleichung (6.59) siehe DAfStb-Heft 600. | 13 Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Zur Erläuterung der Anwendungsgrenzen von Gleichung (6.59) siehe DAfStb-Heft 600.",
+      "context": "NCI zu 6.5.3 (3) | In Gleichung (6.59) sollte anstelle von „h die Abmessung „H eingesetzt werden. | ANMERKUNG Zur Erläuterung der Anwendungsgrenzen von Gleichung (6.59) siehe DAfStb-Heft 600. | 13 Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7) | Ergänzt wird:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "8.7",
+      "line": "13 Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7)",
+      "context": "In Gleichung (6.59) sollte anstelle von „h die Abmessung „H eingesetzt werden. | ANMERKUNG Zur Erläuterung der Anwendungsgrenzen von Gleichung (6.59) siehe DAfStb-Heft 600. | 13 Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7) | Ergänzt wird: | \"Dabei ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln.\"",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "\"Dabei ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln.\"",
+      "context": "13 Änderung zu NCI zu 8.4. 4 (1), Gleichung (8.6) und (8.7) | Ergänzt wird: | \"Dabei ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln.\" | 14 Änderung zu NCI zu 8.7.3(1) | Die NCI wird ergänzt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "unvollständig",
+      "line": "\"In Gleichung (8.11) ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln.",
+      "context": "14 Änderung zu NCI zu 8.7.3(1) | Die NCI wird ergänzt: | \"In Gleichung (8.11) ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln. | Für die Bestimmung des Stoßanteils nach Tabelle 8.3DE gilt nicht Bild 8.8 sondern Bild 8.7.\" | 15 Änderung zu NDP zu 9.6.2 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "3",
+      "line": "15 Änderung zu NDP zu 9.6.2 (3)",
+      "context": "\"In Gleichung (8.11) ist lb,rqd nach Gleichung (8.3) mit sd = fyd zu ermitteln. | Für die Bestimmung des Stoßanteils nach Tabelle 8.3DE gilt nicht Bild 8.8 sondern Bild 8.7.\" | 15 Änderung zu NDP zu 9.6.2 (3) | Der NDP zu 9.6.2 (3) wird wie folgt ersetzt | „NCI zu 9.6.2 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "3",
+      "line": "„NCI zu 9.6.2 (3)",
+      "context": "15 Änderung zu NDP zu 9.6.2 (3) | Der NDP zu 9.6.2 (3) wird wie folgt ersetzt | „NCI zu 9.6.2 (3) | Der bestehende Absatz (3) wird wie folgt ersetzt: | (3) Der Abstand zwischen zwei benachbarten vertikalen Stäben darf nicht größer als die 2-fache Wanddicke",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "2",
+      "line": "16 Änderung zu NCI zu A.1 (2)",
+      "context": "(3) Der Abstand zwischen zwei benachbarten vertikalen Stäben darf nicht größer als die 2-fache Wanddicke | oder 300 mm sein (der kleinere Wert ist maßgebend). | 16 Änderung zu NCI zu A.1 (2) | Der folgende NCI wird ergänzt: | NCI zu A.1 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 7,
+      "equation_number": "2",
+      "line": "NCI zu A.1 (2)",
+      "context": "16 Änderung zu NCI zu A.1 (2) | Der folgende NCI wird ergänzt: | NCI zu A.1 (2) | Eine Differenzierung durch Veränderung der Teilsicherheitsbeiwerte ist nach DIN EN 1990:2010-12, | Anhang B möglich. Da in Deutschland nur Zuverlässigkeitsklasse RC2 normativ geregelt ist und die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "1",
+      "line": "17 Änderung zu NDP zu A.2.1 (1)",
+      "context": "E DIN EN 1992-1-1/NA/A1:2012-05 | 8 | 17 Änderung zu NDP zu A.2.1 (1) | Der NDP zu A.2.1 (1) kann wegen NCI zu A.1 (2) entfallen. | 18 Änderung zu NDP zu A.2.1 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "2",
+      "line": "18 Änderung zu NDP zu A.2.1 (2)",
+      "context": "17 Änderung zu NDP zu A.2.1 (1) | Der NDP zu A.2.1 (1) kann wegen NCI zu A.1 (2) entfallen. | 18 Änderung zu NDP zu A.2.1 (2) | Der NDP zu A.2.1 (2) kann wegen NCI zu A.1 (2) entfallen. | 19 Änderung zu NDP zu A.2.2 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "1",
+      "line": "19 Änderung zu NDP zu A.2.2 (1)",
+      "context": "18 Änderung zu NDP zu A.2.1 (2) | Der NDP zu A.2.1 (2) kann wegen NCI zu A.1 (2) entfallen. | 19 Änderung zu NDP zu A.2.2 (1) | Der NDP zu A.2.2 (1) kann wegen NCI zu A.1 (2) entfallen. | 20 Änderung zu NDP zu A.2.2 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 8,
+      "equation_number": "2",
+      "line": "20 Änderung zu NDP zu A.2.2 (2)",
+      "context": "19 Änderung zu NDP zu A.2.2 (1) | Der NDP zu A.2.2 (1) kann wegen NCI zu A.1 (2) entfallen. | 20 Änderung zu NDP zu A.2.2 (2) | Der NDP zu A.2.2 (2) kann wegen NCI zu A.1 (2) entfallen.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "4.1",
+      "pdf_page": 3,
+      "line": "4 Änderung zu NCI zu 4.2, Tabelle 4.1"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 3,
+      "line": "Die Tabelle 4.1 „Expositionsklassen in Übereinstimmung mit EN 206-1  wird ersetzt durch die folgende"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 3,
+      "line": "Tabelle 4.1 „Expositionsklassen in Übereinstimmung mit EN 206-1 und DIN 1045-2."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 3,
+      "line": "Tabelle 4.1  Expositionsklassen in Übereinstimmung mit EN 206-1 und DIN 1045-2"
+    },
+    {
+      "label": "8.3",
+      "pdf_page": 7,
+      "line": "Für die Bestimmung des Stoßanteils nach Tabelle 8.3DE gilt nicht Bild 8.8 sondern Bild 8.7.\""
+    }
+  ],
+  "figures": [
+    {
+      "label": "5.1",
+      "pdf_page": 6,
+      "line": "In Bild 5.1 c1) wird i /2 in i geändert."
+    },
+    {
+      "label": "8.8",
+      "pdf_page": 7,
+      "line": "Für die Bestimmung des Stoßanteils nach Tabelle 8.3DE gilt nicht Bild 8.8 sondern Bild 8.7.\""
+    },
+    {
+      "label": "8.7",
+      "pdf_page": 7,
+      "line": "Für die Bestimmung des Stoßanteils nach Tabelle 8.3DE gilt nicht Bild 8.8 sondern Bild 8.7.\""
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 561,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 376,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2114,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 4,
+      "characters": 2603,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 3037,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "6"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1528,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "equation_candidates": 14
+    },
+    {
+      "pdf_page": 7,
+      "characters": 1907,
+      "text_layer": "usable",
+      "clauses": [
+        "12",
+        "13",
+        "14",
+        "15",
+        "16"
+      ],
+      "equation_candidates": 11
+    },
+    {
+      "pdf_page": 8,
+      "characters": 402,
+      "text_layer": "usable",
+      "clauses": [
+        "17",
+        "18",
+        "19",
+        "20"
+      ],
+      "equation_candidates": 4
+    }
+  ]
+}

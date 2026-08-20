@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/structural-report-outline.schema.json",
+  "title": "VECTOPLAN Dynamic Structural Report Outline",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "template_id",
+    "outline_title",
+    "variant",
+    "profile",
+    "facts",
+    "scope",
+    "position_groups",
+    "groups",
+    "chapters",
+    "available_modules",
+    "statistics"
+  ],
+  "properties": {
+    "contract_version": {"const": "structural-report-outline/0.2"},
+    "template_id": {"type": "string"},
+    "template_title": {"type": "string"},
+    "outline_title": {"type": "string"},
+    "variant": {
+      "type": "object",
+      "required": ["variant_id", "label", "description"],
+      "properties": {
+        "variant_id": {"enum": ["regelfall", "vollstaendig", "prueffassung"]},
+        "label": {"type": "string"},
+        "description": {"type": "string"}
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "base_profile_id", "groups"]
+    },
+    "facts": {"type": "object"},
+    "scope": {
+      "type": "object",
+      "required": ["enabled_modules", "disabled_modules"],
+      "properties": {
+        "enabled_modules": {"type": "array", "items": {"type": "string"}},
+        "disabled_modules": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "position_groups": {"type": "array", "items": {"type": "string"}},
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["group_id", "title", "number", "chapter_count"]
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "chapter_id",
+          "module_id",
+          "number",
+          "title",
+          "group",
+          "section_template_id",
+          "section_template",
+          "activation",
+          "repeat_by",
+          "page_range"
+        ]
+      }
+    },
+    "available_modules": {"type": "array", "items": {"type": "object"}},
+    "statistics": {
+      "type": "object",
+      "required": [
+        "group_count",
+        "chapter_count",
+        "available_module_count",
+        "block_template_count",
+        "calculation_count",
+        "sketch_slot_count",
+        "table_slot_count",
+        "repeatable_chapter_count",
+        "estimated_pages_low",
+        "estimated_pages_high"
+      ]
+    },
+    "review_mode": {"type": "object"}
+  }
+}

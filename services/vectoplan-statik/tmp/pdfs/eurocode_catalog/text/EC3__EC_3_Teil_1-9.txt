@@ -1,0 +1,1734 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-1-9 
+ICS 91.01 0.30; 91.080.10 Ersatzvermerk 
+siehe unten 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Tei11-9: Ermüdung; 
+Deutsche FassungEN 1993-1-9:2005 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 1-9: Fatigue; 
+GermanversionEN 1993-1-9:2005 + AC:2009 
+Eurocode 3: Calcul des structures en acier­
+Partie 1-9: Fatigue; 
+Versionallemande EN 1993-1-9:2005 + AC:2009 
+Ersatzvennerk 
+Ersatz für DIN EN 1993-1-9:2005-07; 
+mit DIN EN 1993-1-1:2010-12, DIN EN 1993-1-1/NA:2010-12, DIN EN 1993-1-3:2010-12, 
+DIN EN 1993-1-3/NA:2010-12, DIN EN 1993-1-5:2010-12, DIN EN 1993-1-5/NA:2010-12, 
+DIN EN 1993-1-8:2010-12, DIN EN 1993-1-8/NA:2010-12, DIN EN 1993-1-9/NA:2010-12, 
+DIN EN 1993-1-10:2010-12, DIN EN 1993-1-10/NA:2010-12, DIN EN 1993-1-11:2010-12 und 
+DIN EN 1993-1-11/NA:2010-12 Ersatz fOr DIN 18800-1:2008-11; 
+Ersatz für DIN EN 1993-1-9 Berichtigung 1:2009-12 
+Dezember 2010 
+DIN 
+Gesamtumfang 43 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Verlag GmbH, 1 0772 Berlin 
+Preisgruppe 17 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1722660
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-9:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-1-9:2005 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses NA 005-08-16 AA 
+Tragwerksbemessung (Sp CEN/TC 250/SC 3) begleitet. 
+Diese Europäische Norm wurde vom CEN am 16. April 2005 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im 
+Vorwort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-1-1:1993-04, DIN V ENV 1993-1-1/A1:2002-05 und DIN V ENV 1993-1-1/ 
+A2:2002-05 wurden folgende Änderungen vorgenommen: 
+a) Vornorm-Charakter wurde ; aufgehoben
+b) in Teil 1-1, Teil 1-8, Teil 1-9 und Teil 1-10 aufgeteilt; 
+c) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet und der Text vollständig 
+überarbeitet und in einen eigenständigen Normteil überführt. 
+Gegenüber DIN EN 1993-1-9:2005-07, DIN EN 1993-1-9 Berichtigung 1:2009-12 und DIN 18800-1:2008-11 
+wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-9:2010-12 
+Frühere Ausgaben 
+DIN 1050: 1934-08, 1937xxxxx-07, 1946-10, 1957x-12, 1968-06 
+DIN 1073: 1928-04, 1931-09, 1941-01, 1974-07 
+DIN 1073 Beiblatt: 1974-07 
+DIN 1079: 1938-01, 1938-11, 1970-09 
+DIN 4100: 1931-05, 1933-07, 1934xxxx-08, 1956-12, 1968-12 
+DIN 4101: 1937xxx-07, 1974-07 
+DIN 18800-1: 1981-03, 1990-11, 2008-11 
+DIN 18800-1/A1: 1996-02 
+DIN V ENV 1993-1-1: 1993-04 
+DIN V ENV 1993-1-1/A1: 2002-05 
+DIN V ENV 1993-1-1/A2: 2002-05 
+DIN EN 1993-1-9: 2005-07 
+DIN EN 1993-1-9 Berichtigung 1: 2009-12 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-9:2010-12 
+ Leerseite  
+4
+
+===== PDF-SEITE 5 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-1-9 
+ Mai 2005 
+ +AC 
+ April 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-1-1:1992
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 1-9: Ermüdung 
+Eurocode 3: Design of steel structures  
+Part 1-9: Fatigue 
+ Eurocode 3: Calcul des structures en acier  
+Partie 1-9: Fatigue 
+Diese Europäische Norm wurde vom CEN am 23. April 2004 angenommen. 
+Die Berichtigung tritt am 1. April 2009 in Kraft und wurde in EN 1993-1-9:2005 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-1-9:2005 + AC:2009 D
+
+===== PDF-SEITE 6 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................3 
+Hintergrund des Eurocode-Programms ...........................................................................................................3 
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................4 
+Nationale Fassungen der Eurocodes ...............................................................................................................5 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (EN und ETAZ) .............................................................................................................................5 
+Nationaler Anhang zu EN 1993-1-9 ...................................................................................................................5 
+1 Allgemeines.................................................................................................................. ..........................6 
+1.1 Anwendungsbereich .......................................................................................................... ...................6 
+1.2 Normative Verweisungen..................................................................................................... .................6 
+1.3 Begriffe ................................................................................................................... ................................7 
+1.3.1 Allgemeines.............................................................................................................. ..............................7 
+1.3.2 Parameter für die Ermüdungsbelastung ..................................................................................... ........7 
+1.3.3 Ermüdungsfestigkeit ...................................................................................................... .......................9 
+1.4 Formelzeichen.............................................................................................................. ..........................9 
+2 Grundlegende Anforderungen und Verfahren................................................................................. 10 
+3 Bemessungskonzepte........................................................................................................... ............. 11 
+4 Ermüdungsbeanspruchungen..................................................................................................... ...... 12 
+5 Berechnung der Spannungen .................................................................................................... ....... 13 
+6 Berechnung der Spannungsschwingbreiten................................................................................... 14 
+6.1 Allgemeines................................................................................................................ ......................... 14 
+6.2 Bemessungswert der Spannungsschwingbreite der Nennspannungen ...................................... 15 
+6.3 Bemessungswert der Spannungsschwingbreite korrigierter Nennspannungen ........................ 15 
+6.4 Bemessungswert der Spannungsschwingbreite für geschweißte Hohlprofilknoten.................. 15 
+6.5 Bemessungswert der Spannungsschwingbreite der Strukturspannungen 
+(Kerbspannungen).............................................................................................................................. 16 
+7 Ermüdungsfestigkeit .......................................................................................................... ................ 17 
+7.1 Allgemeines................................................................................................................ ......................... 17 
+7.2 Modifizierung der Ermüdungsfestigkeit...................................................................................... ..... 20 
+7.2.1 Nicht geschweißte oder spannungsarm geglühte geschweißte Konstruktionen unter 
+Druckbeanspruchung......................................................................................................................... 20 
+7.2.2 Größenabhängigkeit....................................................................................................... .................... 21 
+8 Ermüdungsnachweis............................................................................................................ .............. 21 
+Anhang A (normativ) Bestimmung von ermüdungsrelevanten Lastkenngrößen und 
+Nachweisformate ................................................................................................................................ 36 
+A.1 Bestimmung von Belastungszyklen ............................................................................................ ..... 36 
+A.2 Spannungszeitverlauf am Kerbdetail......................................................................................... ....... 36 
+A.3 Zählverfahren .............................................................................................................. ........................ 36 
+A.4 Spektrum der Spannungsschwingbreiten ....................................................................................... 36 
+A.5 Anzahl der Spannungsschwingspiele bis zum Versagen .............................................................. 37 
+A.6 Nachweisformate ............................................................................................................ .................... 37 
+Anhang B (normativ) Ermüdungsfestigkeit bei Verwendung von Strukturspannungen 
+(Kerbspannungen).............................................................................................................................. 39 
+2 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Vorwort 
+Dieses Dokument (EN 1993-1-9:2005 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. CEN/TC 250 ist 
+verantwortlich für alle Eurocode-Teile. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis November 2005, und etwaige entgegenstehende 
+nationale Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-1-1. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Schweden, Schweiz, Slowakei, Slowenien, Spanien, Tschechische 
+Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm auf der 
+Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Programms war die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und sie schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 80’er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu über-
+tragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine Vereinbarung
+1)
+zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den Regelungen der 
+Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln (z. B. die 
+Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie, die Ratsrichtlinien 93/37/EWG, 
+92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die entsprechenden 
+EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung; 
+EN 1991, Eurocode 1: Einwirkung auf Tragwerke; 
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten; 
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten; 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten; 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+3 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten; 
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten; 
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik; 
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben; 
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen. 
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den Mitglieds-
+ländern und haben deren Recht zur nationalen Festl egung sicherheitsbezogener Werte berücksichtigt, so 
+dass diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr. 1: Mechani-
+scher Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr. 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(EN’s und ETA’s) 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art 
+sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die sich aus den 
+Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes vollständig kompatibel 
+sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+ a) die wesentliche Anforderung zu konkretisieren, in dem die Begriffe und, soweit erforderlich, die technische 
+ Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ b) die Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen 
+ anzugeben, z. B. rechnerische oder Testverfahren, Entwurfsregeln, 
+ c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+ Zulassungen zu dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+wesentlichen Anforderung Nr. 2. 
+4 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang. 
+Der Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die Trag-
+werksplanung von Hochbauten und Ingenieurbauten in dem Land, in dem sie erstellt werden. Sie umfassen: 
+ Zahlenwerte für -Faktoren und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische, geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ Vorgehensweise, wenn die Eurocodes mehrere zur Wahl anbieten; 
+Des weiteren dürfen enthalten sein: 
+ Entscheidungen über die Anwendung der informativen Anhänge, und 
+ Verweise zu ergänzenden, nicht widersprechenden Informationen, die dem Nutzer bei der Anwendung 
+der Eurocodes helfen. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (EN und ETAZ) 
+Die harmonisierten Technischen Spezifikationen für Bauprodukte und die technischen Regelungen für die 
+Tragwerksplanung4) müssen konsistent sein. Insbesondere sollten die Hinweise, die mit den CE-Zeichen an 
+den Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar erkennen lassen, welche 
+national festzulegenden Parameter (NDP) zugrunde liegen. 
+Nationaler Anhang zu EN 1993-1-9 
+Diese Norm enthält alternative Methoden, Zahlenangaben und Empfehlungen in Verbindung mit Anmerkun-
+gen, die darauf hinweisen, wo Nationale Festlegungen getroffen werden können. EN 1993-1-9 wird bei der 
+nationalen Einführung einen Nationalen Anhang enthalten, der alle national festzulegenden Parameter enthält, 
+die für die Bemessung und Konstruktion von Stahlbauten im jeweiligen Land erforderlich sind 
+Eine nationale Wahl darf für folgende Abschnitte erfolgen: 
+ 1.1(2); 
+ 2(2); 
+ 2(4); 
+ 3(2); 
+ 3(7); 
+ 5(2); 
+ 6.1(1); 
+ 6.2(2); 
+ 7.1(3); 
+ 7.1(5); 
+ 8(4). 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie, ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagendoku-
+mentes Nr. 1 
+5 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1993-1-9 enthält Nachweisverfahren zur Prüfung der Ermüdungsfestigkeit von Bauteilen, Verbindun-
+gen und Anschlüssen, die unter Ermüdungsbeanspruchung stehen. 
+(2) Die Nachweisverfahren basieren auf Ergebnissen von Ermüdungsversuchen mit bauteilähnlichen Prüf-
+körpern mit geometrischen und strukturellen Imperfektionen, die von der Stahlproduktion und Bauteilherstel-
+lung herrühren (z. B. Herstellungstoleranzen und Eigenspannungen infolge Schweißens). 
+ANMERKUNG 1 Zu Toleranzen siehe EN 1090. Solange EN 1090 noch nicht veröffentlicht ist, darf die Wahl der 
+Ausführungsnorm im Nationalen Anhang geregelt werden. 
+ANMERKUNG 2 Informationen zu Anforderungen an die Herstellungsüberwachung dürfen im Nationalen Anhang 
+gegeben werden. 
+(3) Die Regelungen gelten für Bauteile, die nach EN 1090 ausgeführt werden. 
+ANMERKUNG Gegebenenfalls sind zusätzliche Anforderungen in den Kerbschlagtabellen angegeben. 
+(4) Die in EN 1993-1-9 angegebenen Nachweisverfahren gelten in gleicher Weise für Baustähle, nicht-
+rostende Stähle und ungeschützte wetterfeste Stähle, soweit in den Kerbfalltabellen keine anderen Angaben 
+gemacht werden. EN 1993-1-9 gilt nur für Werkstoffe, die den Zähigkeitsanforderungen nach EN 1993-1-10 
+genügen. 
+(5) Diese Norm enthält das Nachweisverfahren mit Ermüdungsfestigkeitskurven (Wöhlerlinien). Andere 
+Verfahren oder Konzepte wie das Kerbgrundkonzept oder das bruchmechanische Konzept werden in 
+EN 1993-1-9 nicht behandelt. 
+(6) Andere Nachbehandlungsmethoden als Spannungsarmglühen zur Erhöhung der Ermüdungsfestigkeit 
+werden in dieser Norm nicht behandelt. 
+(7) Die in dieser Norm angegebenen Ermüdungsfestigkeiten gelten für Konstruktionen unter normalen 
+atmosphärischen Bedingungen und ausreichendem Ko rrosionsschutz. Korrosionserscheinungen infolge 
+Seewasser werden nicht behandelt; Zeitschäden aus hohen Temperaturen (>150 °C) werden ebenfalls nicht 
+behandelt. 
+1.2 Normative Verweisungen 
+(1) Diese Europäische Norm enthält durch datierte oder undatierte Verweisungen Festlegungen aus anderen 
+Publikationen. Diese normativen Verweisungen sind an den jeweiligen Stellen im Text zitiert, und die 
+Publikationen sind nachstehend angeführt. Bei datierten Verweisungen gehören spätere Änderungen oder 
+Überarbeitungen dieser Publikationen nur zu dieser Europäischen Norm, falls sie durch Änderungen oder 
+Überarbeitungen eingearbeitet sind. Bei undatierten Verweisungen gilt die letzte Ausgabe der in Bezug 
+genommenen Publikation (einschließlich Änderungen). 
+EN 1090, Anforderungen für die Ausführung von Stahlbauten
+EN 1990, Grundlagen der Tragwerksplanung
+EN 1991, Einwirkungen auf Tragwerke
+EN 1993, Bemessung und Konstruktion von Stahlbauten
+EN 1994-2, Bemessung und Konstruktion von Stahl-Beton-Verbundbauten  Teil 2: Brücken
+6 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+1.3 Begriffe 
+(1) Für die Anwendung dieser Europäischen Norm gelten die folgenden Begriffe. 
+1.3.1 Allgemeines 
+1.3.1.1 
+Ermüdung 
+Prozess der Rissbildung und des Rissfortschritts in einem Bauteil, hervorgerufen durch wiederholte Span-
+nungsschwankungen 
+1.3.1.2 
+Nennspannung 
+Spannung im Grundwerkstoff oder einer Schweißnaht unmittelbar an der erwarteten Rissstelle, berechnet 
+nach der elastischen Spannungstheorie ohne Berücksichtigung der örtlichen Kerbwirkung 
+ANMERKUNG Mit Spannungen sind Längsspannungen oder Schubspannungen, Hauptspannungen oder Vergleichs-
+spannungen gemeint. 
+1.3.1.3 
+korrigierte Nennspannung 
+Nennspannung, vergrößert um den geometrischen Kerbfaktor kf, der die geometrischen Abweichungen 
+erfasst, die nicht im Kerbfall des Konstruktionsdetails berücksichtigt sind 
+1.3.1.4 
+Strukturspannung 
+Kerbspannung 
+maximale Hauptspannung im Grundwerkstoff unmittelba r an der potenziellen Rissstelle am Schweißnaht-
+übergang einschließlich der lokalen Spannungsspitze aufgrund der geometrischen Ausbildung des Bauteils 
+ANMERKUNG Die Kerbwirkung infolge Nahtausbildung braucht nicht berücksichtigt zu werden, da diese in der 
+Ermüdungsfestigkeitskurve enthalten ist, siehe Anhang B. 
+1.3.1.5 
+Eigenspannung 
+Die Eigenspannung ist eine ständige im Gleichgewicht befindliche Spannungsverteilung im Bauteil ohne 
+äußere Lasteinwirkung. Eigenspannungen können vom Walzprozess, Schneiden, Schweißschrumpf oder von 
+Zwängungen aus dem Zusammenbau herrühren. Sie entstehen auch bei Überschreitung der Streckgrenze 
+infolge äußerer Belastung. 
+1.3.2 Parameter für die Ermüdungsbelastung 
+1.3.2.1 
+Belastungszyklus 
+ein bestimmter Ablauf der Belastung auf ein Tragwerk, der zu einem Spannungs-Zeit-Verlauf führt, mit einer in 
+der Regel definierten Anzahl von Wiederholungen während der Nutzungsdauer des Tragwerks 
+1.3.2.2 
+Spannungs-Zeit-Verlauf 
+gemessene oder berechnete Zeitfolge der Spannungen an einem bestimmten Tragwerkspunkt für einen 
+Belastungszyklus 
+1.3.2.3 
+Rainflow-Methode 
+Zählverfahren zur Bestimmung des Spektrums der Spannungsschwingbreiten aus einem Spannungs-Zeit-
+Verlauf 
+7 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+1.3.2.4 
+Reservoir-Methode 
+Zählverfahren zur Bestimmung des Spektrums der Spannungsschwingbreiten aus einem Spannungs-Zeit-
+Verlauf 
+ANMERKUNG Zur mathematischen Vorgehensweise siehe Anhang A. 
+1.3.2.5 
+Spannungsschwingbreite 
+algebraische Differenz zwischen zwei Extremwerten einer Spannungsänderung in einem Spannungs-Zeit-
+Verlauf 
+1.3.2.6 
+Spektrum der Spannungsschwingbreiten 
+Darstellung der Auftretenshäufigkeit der Spannungsschwingbreiten verschiedener Größe aus Messungen 
+oder Berechnungen für einen bestimmten Belastungszyklus 
+1.3.2.7 
+Bemessungsspektrum 
+Gesamtheit aller Spektren der Spannungsschwingbreiten während der Nutzungsdauer, die für den Ermü-
+dungsnachweis zugrunde gelegt werden 
+1.3.2.8 
+Nutzungsdauer 
+Bezugszeitraum, für den mit ausreichender Zuverlässigkeit planmäßiges Verhalten des Tragwerks ohne 
+Versagen durch Ermüdungsrisse verlangt wird 
+1.3.2.9 
+Lebensdauer (Zeitgröße) 
+voraussichtlicher Zeitraum mit der Gesamtzahl von Spannungsschwingspielen, die zu Ermüdungsversagen 
+führen können 
+1.3.2.10 
+Miner-Regel 
+lineare Schadensakkumulationshypothese nach Palmgren-Miner 
+1.3.2.11 
+schadensäquivalente konstante Spannungsschwingbreite 
+konstante Spannungsschwingbreite, die nach der Miner-Regel zu derselben Lebensdauer führen würde wie 
+das Spektrum nicht konstanter Spannungsschwingbreiten 
+ANMERKUNG Zur mathematischen Bestimmung der schadensäquivalenten konstanten Spannungsschwingbreite 
+siehe Anhang A. 
+1.3.2.12 
+Ermüdungsbelastung 
+eine Reihe von Einwirkungsparametern, die mit typischen Belastungszyklen bestimmt wurden und die 
+Anordnung und Größe der Lasten, ihre relative Auftretenshäufigkeit und ihre Zeitfolge beschreiben 
+ANMERKUNG 1 Bei den Ermüdungseinwirkungen in EN 1991 handelt es sich um obere Grenzwerte, die anhand von 
+Messauswertungen nach Anhang A bestimmt wurden. 
+ANMERKUNG 2 Die Einwirkungsparameter in EN 1991 sind entweder: 
+Qmax, nmax, standardisiertes Spektrum oder 
+QE,nmax bezogen auf nmax oder 
+QE,2 bezogen auf n = 2 · 106 Lastwechsel. 
+Dynamische Effekte sind, soweit nicht anders geregelt, in diesen Parametern enthalten. 
+8 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+1.3.2.13 
+schadensäquivalente konstante Ermüdungsbelastung 
+vereinfachte konstante Ermüdungsbelastung, die nach der Miner-Regel zu der gleichen Lebensdauer führt 
+wie die wirklichen Belastungszyklen mit veränderlicher Belastung 
+1.3.3 Ermüdungsfestigkeit 
+1.3.3.1 
+Ermüdungsfestigkeitskurve 
+Wöhlerlinie 
+quantitative Beziehung zwischen den Spannungsschwingbreiten und der Anzahl der Spannungsspiele, die 
+zum Ermüdungsversagen führen; sie wird für den Ermüdungsnachweis für einen bestimmten Kerbfall ange-
+wendet 
+ANMERKUNG Die Ermüdungsfestigkeiten in diesem Normenteil sind untere Grenzwerte, die anhand von Auswertun-
+gen von Ermüdungsversuchen mit bauteilähnlichen Prüfkörpern nach EN 1990, Anhang D bestimmt wurden. 
+1.3.3.2 
+Kerbfall 
+Zahlenwert, der einem bestimmten Konstruktionsdetail für eine bestimmte Beanspruchung zugeordnet ist, um 
+die Ermüdungsfestigkeitskurve für den Ermüdungsnachweis festzulegen (die Kerbfallzahl bezeichnet den 
+Bezugswert der Ermüdungsfestigkeit C in N/mm2) 
+1.3.3.3 
+Dauerfestigkeit 
+Grenze für die Schwingbreite der Längsspannung oder Schubspannung, unterhalb derer im Versuch mit 
+konstanten Schwingbreiten kein Ermüdungsschaden auftritt. Bei variablen Spannungsschwingbreiten müssen 
+alle Schwingbreiten unterhalb dieser Grenze liegen, damit kein Ermüdungsschaden auftritt. 
+1.3.3.4 
+Schwellenwert der Ermüdungsfestigkeit 
+Grenze, unterhalb derer Spannungsschwingbreiten von Bemessungsspektren nicht mehr zur Akkumulation 
+des Ermüdungsschadens beitragen 
+1.3.3.5 
+Lebensdauer (Anzahl der Spannungsschwingspiele) 
+in Spannungsschwingspielen ausgedrückte Zeit bis zum Versagen bei Einwirkung konstanter 
+Spannungsschwingbreiten 
+1.3.3.6 
+Bezugswert der Ermüdungsfestigkeit 
+konstante Spannungsschwingbreite 
+C oder C für einen bestimmten Kerbfall, die zu der Lebensdauer 
+N = 2 × 106 Schwingspiele gehört 
+1.4 Formelzeichen 
+ Spannungsschwingbreite (Längsspannungen); 
+ Spannungsschwingbreite (Schubspannungen); 
+E, E schadensäquivalente konstante Spannungsschwingbreite bezogen auf nmax; 
+E,2, E,2 schadensäquivalente konstante Spannungsschwingbreite bezogen auf 2 106 Schwingspiele; 
+C, C Bezugswert für die Ermüdungsfestigkeit bei NC = 2 106 Schwingspielen; 
+D, D Dauerfestigkeit bei ND Schwingspielen; 
+9 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+L, L Schwellenwert der Ermüdungsfestigkeit bei NL Schwingspielen; 
+eq äquivalentes Spannungsschwingspiel bei Steganschlussdetails von orthotropen Platten; 
+C,red reduzierter Bezugswert für die Ermüdungsfestigkeit; 
+Ff -Faktor für die schadensäquivalenten Spannungsschwingbreiten E, E; 
+Mf -Faktor für die Ermüdungsfestigkeit C, C; 
+m Neigung der Ermüdungsfestigkeitskurve; 
+i Schadensäquivalenzfaktor; 
+1 Faktor für den häufig auftretenden Wert einer variablen Last; 
+Qk charakteristischer Wert einer einzeln auftretenden variablen Last; 
+ks Abminderungsfaktor für den Bezugswert der Ermüdungsfestigkeit zur Berücksichtigung der 
+Größenabhängigkeit; 
+k1 Erhöhungsfaktor für die Nennspannungsschwingbreite zur Berücksichtigung sekundärer An-
+schlussmomente in Fachwerken; 
+kf Kerbfaktor (Spannungskonzentrationsfaktor); 
+NR Lebensdauer, ausgedrückt als Anzahl von Spannungsschwingspielen mit konstanter 
+Spannungsschwingbreite. 
+2 Grundlegende Anforderungen und Verfahren 
+(1)P Tragende Bauteile sind im Hinblick auf den Grenzzustand der Ermüdung so auszubilden, dass 
+ihr Verhalten mit ausreichender Wahrscheinlichkeit während der gesamten Nutzungsdauer zufrieden stellend 
+ist. 
+ANMERKUNG Für Tragwerke, die mit Ermüdungslasten nach EN 1991 und Ermüdungsfestigkeiten nach diesem Teil 
+bemessen werden, darf diese Anforderung als erfüllt gelten. 
+(2) Anhang A darf für die Bestimmung von Ermüdungslasten im Einzelfall verwendet werden, wenn 
+ in EN 1991 keine Ermüdungsbelastung angegeben wird oder 
+ ein realistischeres Ermüdungslastmodell gefordert wird. 
+ANMERKUNG Anforderungen für die Bestimmung von Ermüdungslastmodellen dürfen im Nationalen Anhang gegeben 
+werden. 
+(3) Ermüdungsversuche können durchgeführt werden 
+ um Ermüdungsfestigkeiten für Details zu bestimmen, die nicht in diesem Teil enthalten sind; 
+ um die Lebensdauer von Prototypen unter wirklichen oder schadensäquivalenten Ermüdungsbelastungen 
+zu bestimmen. 
+10 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+(4) Bei der Durchführung und Auswertung von Ermüdungsversuchen ist in der Regel EN 1990 
+heranzuziehen, siehe auch 7.1. 
+ANMERKUNG Zu Anforderungen für die Bestimmung von Ermüdungslasten im Einzelfall siehe Nationaler Anhang. 
+(5) Der Ermüdungsnachweis in diesem Normenteil folgt dem üblichen Nachweiskonzept, bei dem Beanspru-
+chungen und Beanspruchbarkeiten verglichen werden. Ein solcher Vergleich ist nur möglich, wenn die Ermü-
+dungsbeanspruchungen mit Parametern der Ermüdungsfestigkeit nach diesem Normteil bestimmt werden. 
+(6) Die Ermüdungslasten werden entsprechend den Anforderungen des Ermüdungsnachweises bestimmt. 
+Sie unterscheiden sich von denen für Tragfähigkeit- und Gebrauchstauglichkeitsnachweise. 
+ANMERKUNG Treten Risse während der Betriebszeit auf, so bedeutet dies nicht notwendigerweise das Ende der 
+Nutzungsdauer. Werden Risse repariert, ist hierbei besondere Sorgfalt erforderlich, um ungünstigere Kerbbedingungen 
+als bereits vorhanden zu vermeiden. 
+3 Bemessungskonzepte 
+(1) Der Ermüdungsnachweis ist in der Regel nach einem der folgenden Konzepte durchzuführen: 
+ Konzept der Schadenstoleranz; 
+ Konzept der ausreichenden Sicherheit gegen Ermüdungsversagen ohne Vorankündigung. 
+(2) Durch planmäßige Inspektionen und Wartung während der Nutzungsdauer des Tragwerks können 
+eventuelle Ermüdungsschäden erkannt und beseitigt werden. Das Konzept der Schadenstoleranz sollte hier 
+zu der geforderten Zuverlässigkeit für zufrieden stellendes Verhalten während der Nutzungsdauer führen. 
+ANMERKUNG 1 Das Konzept der Schadenstoleranz darf angewendet werden, wenn bei Auftreten von Ermüdungs-
+rissen Lastumlagerungen im tragenden Querschnitt oder zwischen Bauteilen möglich sind. 
+ANMERKUNG 2 Die Bestimmungen für ein Inspektionsprogramm sind im Nationalen Anhang geregelt. 
+ANMERKUNG 3 Tragwerke, die nach diesem Normenteil konstruiert und bemessen und für die Werkstoffe nach 
+EN 1993-1-10 gewählt werden sowie regelmäßige Überwachung vorgesehen ist, können als schadenstolerant angesehen 
+werden. 
+(3) Das Konzept der ausreichenden Sicherheit gegen Ermüdungsversagen ohne Vorankündigung gewährt in 
+der Regel die geforderte Zuverlässigkeit für zufrieden stellendes Verhalten während der Nutzungsdauer, ohne 
+dass planmäßige Inspektionen zum rechtzeitigen Erkennen von Ermüdungsschäden notwendig sind. Dieses 
+Konzept ist in der Regel dann anzuwenden, wenn die lokale Ausbildung von Rissen in einer Bauteil-
+komponente zu unangekündigtem Versagen des Bauteils oder des gesamten Tragwerks führen kann. 
+(4) Bei Ermüdungsnachweisen nach diesem Normenteil kann die geforderte Zuverlässigkeit durch Festle-
+gung des 
+Mf -Faktors für die Ermüdungsfestigkeit in Abhängigkeit von dem gewählten Bemessungskonzept 
+und den Schadensfolgen erreicht werden. 
+(5) Die Ermüdungsfestigkeiten werden durch das konstruktive Detail mit seinen metallurgischen und 
+geometrischen Kerbeffekten bestimmt. In den konstruktiven Details dieses Normenteils ist die wahrscheinliche 
+Stelle der Rissbildung angegeben. 
+(6) Das angegebene Nachweisverfahren benutzt Ermüdungsfestigkeiten in Form von Wöhlerlinien für: 
+ Standardkerbfälle (Nennspannungen); 
+ Kerbfälle bei bestimmten Schweißdetails (Strukturspannungen). 
+11 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+(7) Die geforderte Zuverlässigkeit kann wie folgt erreicht werden: 
+a) Konzept der Schadenstoleranz: 
+ Wahl des konstruktiven Details, des Werkstoffs und des Beanspruchungsniveaus, so dass im 
+unwahrscheinlichen Fall von Rissen ein langsames Risswachstum und große kritische Risslängen 
+erreicht werden könnten; 
+ Konstruktionen mit Umlagerungsvermögen; 
+ Konstruktionen, die in der Lage sind, Rissentwicklungen zu hemmen; 
+ leichte Zugänglichkeit für regelmäßige Inspektionen. 
+b) Konzept der ausreichenden Sicherheit gegen Ermüdungsversagen ohne Vorankündigung: 
+ Wahl der Konstruktion und des Beanspruchungsniveaus, so dass am Ende der rechnerischen 
+Nutzungsdauer Zuverlässigkeitswerte ( -Werte) mindestens so hoch wie bei Tragsicherheits-
+nachweisen gefordert erreicht werden können. 
+ANMERKUNG Die Wahl des Bemessungskonzeptes, die Definitionen der Schadensfolgeklassen sowie die Zahlen-
+werte für Mf dürfen im Nationalen Anhang geregelt werden. Empfohlene Mf-Werte sind in Tabelle 3.1 angegeben. 
+Tabelle 3.1  Empfehlungen für Mf-Faktoren für die Ermüdungsfestigkeit 
+Schadensfolgen 
+Bemessungskonzept 
+niedrig hoch 
+Schadenstoleranz 1,00 1,15 
+Sicherheit gegen Ermüdungsver-
+sagen ohne Vorankündigung 1,15 1,35 
+4 Ermüdungsbeanspruchungen 
+(1) Die Berechnungsmethoden zur Bestimmung der Nennspannungen beruhen auf elastischem Verhalten 
+von Bauteilen und Verbindungen; sie müssen in der Regel alle Lastwirkungen (auch Wirkungen aus 
+Verformungen unter der Last) realistisch wiedergeben. 
+(2) Bei Fachwerkträgern mit geschweißten Hohlprofilknoten darf von der Annahme gelenkiger Verbindungen 
+an den Anschlüssen ausgegangen werden. Wenn die Spannungen infolge äußerer Lasten auf Bauteile 
+zwischen den Knoten berücksichtigt werden, dürfen die Wirkungen von sekundären Anschlussmomenten aus 
+der Steifigkeit der Verbindungen mit k
+1-Faktoren nach 6.4 berücksichtigt werden, siehe Tabelle 4.1 für 
+Kreisquerschnitte, Tabelle 4.2 für Rechteckquerschnitte; bei diesen Querschnitten sind die geometrischen 
+Einschränkungen in Tabelle 8.7 zu beachten.
+Tabelle 4.1  k1-Faktoren für Hohlprofile mit Kreisquerschnitten 
+bei Belastung in der Fachwerksebene 
+Knotenausbildung Gurte Pfosten Diagonalen 
+K-Knoten 1,5 - 1,3 Anschlüsse 
+mit 
+Spalt N-Knoten/KT-Knoten 1,5 1,8 1,4 
+K-Knoten 1,5 - 1,2 Anschlüsse 
+mit 
+Überlappung N-Knoten/KT-Knoten 1,5 1,65 1,25 
+12 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 4.2  k1-Faktoren für Hohlprofile mit Recheckquerschnitt 
+bei Belastung in der Fachwerksebene 
+Knotenausbildung Gurte Pfosten Diagonalen 
+K-Knoten 1,5 - 1,5 Anschlüsse 
+mit 
+Spalt N-Knoten/KT-Knoten 1,5 2,2 1,6 
+K-Knoten 1,5 - 1,3 Anschlüsse 
+mit 
+Überlappung N-Knoten/KT-Knoten 1,5 2,0 1,4 
+ ANMERKUNG 1 Zur Begriffserklärung der Knotenausbildungen siehe EN 1993-1-8. 
+ ANMERKUNG 2 Gültigkeitsgrenzen für die Geometrie: 
+Bei ebenen Knoten mit Kreisquerschnitten (K-, N-, KT-Knoten): 
+0,30 0, 60
+12,0 30,0
+0, 25 1,00
+30 60
+Bei Knoten mit Rechteckquerschnitten (K-, N-, KT-Knoten): 
+0, 40 0,60
+6, 25 12,5
+0, 25 1,00
+30 60
+
+5 Berechnung der Spannungen 
+(1) Spannungen sind in der Regel auf Gebrauchsniveau zu bestimmen. 
+(2) Querschnitte der Querschnittsklasse 4 sind für Ermüdungslasten nach EN 1993-1-5 nachzuweisen. 
+ANMERKUNG 1 Hinweise sind EN 1993-2 bis EN 1993-6 zu entnehmen. 
+ANMERKUNG 2 Der Nationale Anhang darf Gültigkeitsgrenzen für Klasse-4-Querschnitte angeben. 
+(3) Nennspannungen sind in der Regel an der Stelle der potenziellen Rissentstehung zu bestimmen. Abwei-
+chungen von den Konstruktionsdetails in den Tabellen 8.1 bis 8.10, die zusätzliche Spannungskonzentra-
+tionen erzeugen, werden durch (mit Spannungskonzentrationsfaktoren k
+f) korrigierten Nennspannungen nach 
+6.3 berücksichtigt. 
+(4) Bei Verwendung von Strukturspannungen (Kerbspannungen) für die Details in Tabelle B.1 sind die 
+Spannungen nach 6.5 zu ermitteln. 
+(5) Die maßgebenden Spannungen im Grundwerkstoff sind: 
+ die Längsspannungen ; 
+ die Schubspannungen . 
+ANMERKUNG Bei gleichzeitiger Wirkung von Längs- und Schubspannungen  siehe 8(3).
+13 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+(6) Die maßgebenden Spannungen in den Schweißnähten sind, siehe Bild 5.1: 
+ die Längsspannungen wf quer zur Nahtachse: 22
+ffwf ; 
+ die Schubspannungen wf längs der Nahtachse: wf = ||f ; 
+für die in der Regel zwei getrennte Nachweise zu führen sind. 
+ANMERKUNG Diese Vorgehensweise unterscheidet sich von den Tragsicherheitsnachweisen von Kehlnähten nach 
+EN 1993-1-8. 
+maßgebende Spannungen f maßgebende Spannungen f
+Bild 5.1  Maßgebende Spannungen in Kehlnähten 
+6 Berechnung der Spannungsschwingbreiten 
+6.1 Allgemeines 
+(1) Der Ermüdungsnachweis ist in der Regel auf der Basis der Spannungsschwingbreiten zu führen mit: 
+ Nennspannungen für die Kerbfälle nach Tabelle 8.1 bis Tabelle 8.10; 
+ korrigierten Nennspannungen, z. B. bei abrupten Querschnittsänderungen in der Nähe der 
+Rissentstehung, die nicht in den Tabellen 8.1 bis Tabelle 8.10 enthalten sind; 
+ Strukturspannungen (Kerbspannungen), wo große Spannungsgradienten am Schweißnahtübergang ent-
+sprechend Tabelle B.1 auftreten. 
+ANMERKUNG Der Nationale Anhang darf weitere Informationen zu Nennspannungen, korrigierten Nennspannungen 
+und Strukturspannungen (Kerbspannungen) geben. Kerbfälle für Strukturspannungen (Kerbspannungen) sind im Anhang 
+B angegeben. 
+(2) Der für den Ermüdungsnachweis maßgebende Bemessungswert der Spannungsschwingbreite wird in der 
+Regel durch die Spannungsschwingbreite Ff · E,2 bezogen auf NC = 2 106 Schwingspiele ausgedrückt. 
+14 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+6.2 Bemessungswert der Spannungsschwingbreite der Nennspannungen 
+(1) Der Bemessungswert der Spannungsschwingbreite für Nennspannungen Ff E,2 und Ff E,2 ist in der 
+Regel wie folgt zu bestimmen: 
+Ff E,2 = 1 2 i · ... n ( Ff Qk) (6.1) 
+Ff E,2 = 1 2 i ... n ( Ff Qk) 
+Dabei ist 
+( Ff Qk), ( Ff Qk) die Spannungsschwingbreite aus den Ermüdungsbelastungen nach EN 1991; 
+i die Schadensäquivalenzfaktoren abhängig von den Bemessungsspektren der An-
+wendungsteile von EN 1993 sind. 
+(2) Wenn keine i-Werte zur Verfügung stehen, dürfen die Bemessungswerte der Nennspannungen nach 
+Anhang A bestimmt werden. 
+ANMERKUNG Der Nationale Anhang darf Informationen in Ergänzung zum Anhang A geben. 
+6.3 Bemessungswert der Spannungsschwingbreite korrigierter Nennspannungen 
+(1) Der Bemessungswert der Spannungsschwingbreite der korrigierten Nennspannungen Ff E,2 und 
+Ff E,2 ist in der Regel wie folgt zu bestimmen: 
+Ff E,2 = kf 1 2 i ... n ( Ff Qk) (6.2) 
+Ff E,2 = kf 1 2 i ... n ( Ff Qk) 
+Dabei ist 
+kf der Spannungskonzentrationsfaktor zur Berücksichtigung der lokalen Spannungserhöhung in Bezug 
+auf die Kerbfallsituation der Bezugs-Wöhlerlinie ist. 
+ANMERKUNG kf -Werte können der Literatur entnommen oder durch geeignete Finite Element Berechnungen ermittelt 
+werden. 
+6.4 Bemessungswert der Spannungsschwingbreite für geschweißte Hohlprofilknoten 
+(1) Wenn kein genauerer Nachweis geführt wird, sollte der Bemessungswert der Spannungsschwingbreite 
+für die korrigierten Nennspannungen Ff E,2 mit dem vereinfachten Verfahren in 4(2) bestimmt werden 
+Ff E,2 = k1 ( Ff *E,2) (6.3) 
+Dabei ist 
+Ff *E,2 der Bemessungswert der Spannungsschwingbreite, gerechnet mit dem vereinfachten Fach-
+werksmodell mit gelenkigen Anschlüssen; 
+k1 der Vergrößerungsfaktor nach Tabelle 4.1 und Tabelle 4.2. 
+15 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+6.5 Bemessungswert der Spannungsschwingbreite der Strukturspannungen 
+(Kerbspannungen) 
+(1) Der Bemessungswert der Spannungsschwingbreite von Strukturspannungen Ff E,2 wird in der Regel 
+ermittelt mit 
+Ff E,2 = kf ( Ff *E,2) (6.4) 
+Dabei ist 
+kf der Spannungskonzentrationsfaktor. 
+16 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+7 Ermüdungsfestigkeit 
+7.1 Allgemeines 
+(1) Für Nennspannungen werden die Ermüdungsfestigkeiten durch eine Reihe von ( log R)  (log N)-Kurven 
+und ( log R)  ( log N)-Kurven bestimmt, wobei jede Kurve einer bestimmten Kerbfallkategorie zugeordnet 
+wird. Jeder Kerbfall ist durch die Kerbfallkategorie gekennzeichnet, die den Bezugswert C oder C in 
+N/mm2 der Ermüdungsfestigkeitskurve bei 2 Millionen Spannungsspielen darstellt. 
+(2) Die Ermüdungsfestigkeitskurven für konstante Spannungsschwingbreiten sind definiert durch: 
+m
+R NR = m
+C 2 106 mit m = 3 für N 5 106, siehe Bild 7.1 
+m
+R NR = m
+C 2 106 mit m = 5 für N 108, siehe Bild 7.2 
+Dabei ist 
+D = 
+31
+5
+2 /
+C = 0,737 C die Dauerfestigkeit, siehe Bild 7.1; 
+L = 
+51
+100
+2 /
+C = 0,457 C der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.2. 
+(3) Bei Spannungsspektren mit Längsspannungsschwingbreiten oberhalb und unterhalb der Dauerfestigkeit 
+D ist in der Regel der Ermüdungsschaden mit den erweiterten Ermüdungsfestigkeitskurven zu ermitteln. 
+m
+R NR = m
+C 2 106 mit m = 3 für N 5 106
+m
+R NR = m
+D 5 106 mit m = 5 für 5 106 N 108
+Dabei ist 
+L = 
+51
+100
+5 /
+D = 0,549 D der Schwellenwert der Ermüdungsfestigkeit, siehe Bild 7.1. 
+17 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Lebensdauer, Anzahl der Spannungsschwingspiele N 
+Legende 
+1 Kerbfall C
+2 Dauerfestigkeit D
+3 Schwellenwert der Ermüdungsfestigkeit L
+Bild 7.1  Ermüdungsfestigkeitskurve für Längsspannungsschwingbreiten 
+18 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+ Lebensdauer, Anzahl der Spannungsschwingspiele N 
+Legende 
+1 Kerbfall C 
+2 Schwellenwert der Ermüdungsfestigkeit L
+Bild 7.2  Ermüdungsfestigkeitskurve für Schubspannungsschwingbreiten 
+ANMERKUNG 1 Soweit Ergebnisse von Ermüdungsversuchen benutzt wurden, um den Bezugswert C für einen be-
+stimmten Kerbfall zu bestimmen, ist C für 2 Millionen Spannungsspiele statistisch als 95 %-Quantil für Überleben mit 
+etwa 75 % Vertrauenswahrscheinlichkeit ermittelt worden. Dabei wurden Standardabweichungen, Probekörpergröße und 
+Eigenspannungen berücksichtigt. Die Anzahl der Proben (mindestens 10) wurde nach EN 1990, Anhang D berücksichtigt. 
+ANMERKUNG 2 Der Nationale Anhang darf die Ermittlung der Ermüdungsfestigkeit für den Einzelfall regeln, wenn die 
+Auswertung nach den Vorgaben in Anmerkung 1 erfolgt. 
+ANMERKUNG 3 Die Testdaten einiger Kerbdetails lassen sich nicht eindeutig den Ermüdungsfestigkeitskurven in 
+Bild 7.1 zuordnen. Die Kerbfallkategorien, die mit einem Stern gekennzeichnet sind, wurden eine Kategorie tiefer 
+eingestuft, um die Dauerfestigkeit D den Ergebnissen von Versuchen anzupassen. Die Kerbfallkategorien c dürfen in 
+diesen Fällen um eine Kategorie angehoben werden, wenn die S-N-Kurve mit m = 3 bis zur Dauerfestigkeit *C bei 
+N *D = 107 verlängert wird, siehe Bild 7.3. 
+19 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Bild 7.3  Alternative Ermüdungsfestigkeit C für Kerbfälle, die mit *C bezeichnet sind 
+(4) Die Kerbfallkategorien C und C für Nennspannungen sind wie folgt angegeben: 
+ Tabelle 8.1 für ungeschweißte Bauteile und Anschlüsse mit mechanischen Verbindungsmitteln; 
+ Tabelle 8.2 für geschweißte zusammengesetzte Querschnitte; 
+ Tabelle 8.3 für quer laufende Stumpfnähte; 
+ Tabelle 8.4 für angeschweißte Anschlüsse und Steifen; 
+ Tabelle 8.5 für geschweißte Stöße; 
+ Tabelle 8.6 für Hohlprofile; 
+ Tabelle 8.7 für geschweißte Knoten von Fachwerkträgern; 
+ Tabelle 8.8 für orthotrope Platten mit Hohlrippen; 
+ Tabelle 8.9 für orthotrope Platten mit offenen Rippen; 
+ Tabelle 8.10 für die Obergurt-Stegblech Anschlüsse von Kranbahnträgern. 
+(5) Die Kerbfallkategorien C für Strukturspannungen (Kerbspannungen) werden in Anhang B angegeben. 
+ANMERKUNG Kerbfallkategorien C und C für Kerbdetails, die nicht in Tabelle 8.1 bis Tabelle 8.10 und im 
+Anhang B enthalten sind, dürfen im Nationalen Anhang angegeben werden. 
+7.2 Modifizierung der Ermüdungsfestigkeit 
+7.2.1 Nicht geschweißte oder spannungsarm geglühte geschweißte Konstruktionen unter 
+Druckbeanspruchung 
+(1) Bei nicht geschweißten Konstruktionen oder bei geschweißten Konstruktionen, die spannungsarm 
+geglüht werden, darf der Mittelspannungseinfluss auf die Ermüdungsfestigkeit dadurch berücksichtigt werden, 
+dass die Spannungsschwingbreite E,2 im Ermüdungsnachweis reduziert wird, wenn sie ganz oder teilweise 
+im Druckbereich liegt. 
+20 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+(2) Die reduzierte Spannungsschwingbreite darf als Summe des Zuganteils der Spannungsschwingbreite 
+und 60 % des Druckanteils der Spannungsschwingbreite ermittelt werde, siehe Bild 7.4. 
+Legende 
++ Zugspannungen 
+ Druckspannungen 
+Bild 7.4  Modifizierte Spannungsschwingbreiten für nicht geschweißte und spannungsarm geglühte 
+geschweißte Konstruktionen 
+7.2.2 Größenabhängigkeit 
+(1) Die Größenabhängigkeit aus Effekten der Blechdicke oder anderer Abmessungen ist in der Regel 
+entsprechend Tabelle 8.1 bis Tabelle 8.10 zu berücksichtigen. Die Ermüdungsfestigkeit lautet dann: 
+C,red = ks C (7.1) 
+8 Ermüdungsnachweis 
+(1) Die Spannungsschwingbreiten für Nennspannungen, korrigierte Nennspannungen oder Strukturspannun-
+gen (Kerbspannungen) infolge der häufig auftretenden Lasten 1 Qk ,siehe EN 1990, sind in der Regel zu 
+begrenzen durch: 
+ 1,5 fy für Längsspannungen; (8.1) 
+ 1,5 fy/ 3 für Schubspannungen. 
+(2) Folgende Ermüdungsnachweise sind zu führen: 
+012 ,/ MfC
+EFf ,
+und (8.2) 
+012 ,/ MfC
+E,Ff . 
+ANMERKUNG Die Tabellen 8.1 bis 8.9 erfordern für einige Kerbfälle die Verwendung von Spannungsschwingbreiten 
+für Hauptspannungen. 
+21 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+(3) Bei gleichzeitiger Wirkung von Längs- und Schubspannungsschwingbreiten E,2 and E,2 ist in der 
+Regel nachzuweisen, dass 
+01
+5
+2
+3
+2 ,// MfC
+E,Ff
+MfC
+E,Ff (8.3) 
+falls nicht bei den Kerbfallkategorien in Tabelle 8.8 und Tabelle 8.9 ein anderes Nachweisformat angegeben 
+ist. 
+(4) Wenn keine Angaben zu E,2 oder E,2 vorliegen, darf der Nachweis nach Anhang A erfolgen. 
+ANMERKUNG 1 Die in Anhang A dargestellten Regelungen für Längsspannungsschwingspiele können auch analog 
+für Schubspannungsschwingspiele verwendet werden. 
+ANMERKUNG 2 Hinweise zur Anwendung von Anhang A dürfen im Nationalen Anhang gegeben werden. 
+22 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.1  Ungeschweißte Bauteile und Anschlüsse mit mechanischen Verbindungsmitteln 
+Gescherte oder brenngeschnittene 
+Bleche:
+4) Maschinell brenngeschnittener 
+Werkstoff mit nachträglicher 
+mechanischer Bearbeitung 
+5) Maschinell brenngeschnittener 
+Werkstoff mit seichten und 
+regelmäßigen Brennriefen oder 
+4) Alle sichtbaren Randkerben sind 
+zu beseitigen, Schnittflächen zu 
+überschleifen und Kanten zu 
+brechen. 
+Riefen infolge mechanischer Bear-
+beitung (z. B. Schleifen) müssen 
+parallel zu den Spannungen 
+verlaufen. 
+112 
+90 
+80 12) Einschnittige Verbindung mit 
+nicht vorgespannten 
+Injektionsschrauben. 
+12) ... Netto-
+querschnitt ... 50 
+13) Einschnittige oder 
+symmetrische zweischnittige 
+Verbindung mit Lochspiel und 
+nicht vorgespannten Schrauben. 
+Keine Lastumkehr. 
+13) ... Netto-
+querschnitt ... 
+Allgemein gilt für 
+geschraubte Ver-
+bindungen (Kerb-
+fälle 8) bis 13)):
+Lochabstand 
+vom Rand in 
+Kraftrichtung: 
+e1 1,5 d
+Lochabstand 
+vom Rand 
+senkrecht zur 
+Kraftrichtung: 
+e
+2 1,5 d
+Lochabstand in 
+Kraftrichtung: 
+p1 2,5 d
+Lochabstand 
+senkrecht zur 
+Kraftrichtung: 
+p2 2,5 d
+Ausbildung nach 
+EN 1993-1-8, 
+Bild 3.1
+23 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.1 (fortgesetzt)
+Kerbfall Konstruktionsdetail Beschreibung Anforderungen 
+50 
+Größenab-
+hängigkeit für 
+ > 30 mm: 
+ks=(30/ )0,25
+14) Schrauben und Gewindestan-
+gen mit gerolltem oder geschnitte-
+nen Gewinde unter Zug. 
+Bei großen Durchmessern (Anker-
+schrauben) muss der Größen-
+effekt mit k
+s berücksichtigt werden.
+14) ist am Spannungsquer-
+schnitt der Schraube zu ermitteln. 
+Biegung und Zug infolge Abstütz-
+kräften sowie weitere Biegespan-
+nungen (z. B. sekundäre Biege-
+spannungen) sind zu berücksichti-
+gen. 
+Bei vorgespannten Schrauben darf 
+die reduzierte Spannungsschwing-
+breite berücksichtigt werden. 
+100 
+m=5 
+Schrauben in ein- oder zwei-
+schnittigen Scher-Lochleibungs-
+verbindungen (Gewinde nicht in 
+der Scherfläche) 
+15) 
+ Passschrauben 
+ Schrauben ohne Lastumkehr 
+(Schraubengüten 5.6, 8.8 oder 
+10.9) 
+15) 
+ ist am Schaftquerschnitt zu 
+ermitteln. 
+24 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.2  Geschweißte zusammengesetzte Querschnitte 
+90 11) Mit Ansatzstellen. 
+11) Wanddicke t > 12,5 mm 
+Werden die Kerbfälle 1 bis 11 mit voll mechanisierter Schweißung ausgeführt, gelten die Kerbfallkategorien für Automatenschweißung. 
+25 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.3  Quer laufende Stumpfnähte 
+Kerbfall Konstruktionsdetail Beschreibung Anforderungen 
+112 
+Blechdi-
+ckenab-
+hängigkeit 
+für 
+t > 25 mm: 
+k
+s=(25/t)0,2
+Ohne Schweißbadsicherung:
+1) Querstöße in Blechen und 
+Flachstählen. 
+2) Vor dem Zusammenbau ge-
+schweißte Flansch- und 
+Stegstöße in geschweißten 
+Blechträgern. 
+3) Vollstöße von Walzprofilen mit 
+Stumpfnähten ohne Freischnitte. 
+4) Querstöße in Blechen oder 
+Flachstählen, abgeschrägt in 
+Breite oder Dicke mit einer 
+Neigung 
+ ¼. 
+ Alle Nähte blecheben in Last-
+richtung geschliffen. 
+ Schweißnahtan- und -auslauf-
+stücke sind zu verwenden und 
+anschließend zu entfernen, 
+Blechränder sind blecheben in 
+Lastrichtung zu schleifen. 
+ Beidseitige Schweißung mit 
+ZFP. 
+Kerbfall 3):
+Walzprofile mit denselben 
+Abmessungen ohne 
+Toleranzunterschiede 
+90 
+Blechdi-
+ckenab-
+hängigkeit 
+für 
+t > 25 mm: 
+k
+s=(25/t)0,2
+5) Querstöße von Blechen oder 
+Flachstählen. 
+6) Vollstöße von Walzprofilen mit 
+Stumpfnähten ohne Freischnitte. 
+7) Querstöße von Blechen oder 
+Flachstählen, abgeschrägt in 
+Breite oder Dicke mit einer 
+Neigung 
+ ¼. Der Übergang muss 
+kerbfrei ausgeführt werden. 
+ Die Nahtüberhöhung muss 
+10 % der Nahtbreite und mit 
+verlaufendem Übergang in die 
+Blechoberfläche ausgeführt 
+werden. 
+ Schweißnahtan- und -auslauf-
+stücke sind zu verwenden und 
+anschließend zu entfernen, 
+Blechränder sind blecheben in 
+Lastrichtung zu schleifen. 
+ Beidseitige Schweißung mit 
+ZFP. 
+Kerbfälle 5 und 7:
+Die Nähte sind in Wannenlage zu 
+schweißen. 
+90 
+Blechdi-
+ckenabh-
+ängigkeit 
+für 
+t > 25 mm: 
+ks=(25/t)0,2
+8) Vollstöße von Walzprofilen mit 
+Stumpfnähten mit Freischnitten. 
+ Alle Nähte blecheben in Last-
+richtung geschliffen. 
+ Schweißnahtan- und -auslauf-
+stücke sind zu verwenden und 
+anschließen zu entfernen, 
+Blechränder sind blecheben in 
+Lastrichtung zu schleifen. 
+ Beidseitige Schweißung mit 
+ZFP. 
+ Walzprofile mit denselben 
+Abmessungen ohne 
+Toleranzunterschiede 
+80 
+Blechdi-
+ckenab-
+hängigkeit 
+für 
+t > 25 mm: 
+k
+s=(25/t)0,2
+9) Querstöße in geschweißten 
+Blechträgern ohne Freischnitte. 
+10) Vollstöße von Walzprofilen mit 
+Stumpfnähten mit Freischnitten. 
+11) Querstöße in Blechen, Flach-
+stählen, Walzprofilen oder 
+geschweißten Blechträgern. 
+ Die Nahtüberhöhung muss 
+ 20 % der Nahtbreite und mit 
+verlaufendem Übergang in die 
+Blechoberfläche ausgeführt 
+werden. 
+ keine Schweißnahtnachbehand-
+lung 
+ Schweißnahtan- und -auslauf-
+stücke sind zu verwenden und 
+anschließen zu entfernen, 
+Blechränder sind blecheben in 
+Lastrichtung zu schleifen. 
+ Beidseitige Schweißung mit 
+ZFP. 
+Kerbfall 10:
+Die Nahtüberhöhung muss 10% 
+der Nahtbreite und mit verlaufen-
+dem Übergang in die Blech-
+oberfläche ausgeführt werden. 
+63 
+12) Querstöße in Walzquer-
+schnitten (ohne Freischnitt). 
+ Schweißnahtan- und -auslauf-
+stücke sind zu verwenden und 
+anschließen zu entfernen, 
+Blechränder sind blecheben in 
+Lastrichtung zu schleifen. 
+ Beidseitige Schweißung 
+26 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.3 (fortgesetzt)
+13) Ohne Schweißbadsicherung.
+wie 4 in 
+Tabelle 
+8.5 
+19) Mit Übergang entsprechend 
+Tabelle 8.4, Kerbfall 4. 
+Kerbfälle 18) und 19)
+Die Ermüdungsfestigkeit senkrecht 
+zur Lastrichtung ist nach Ta-
+belle 8.4, Kerbfall 4 oder 5 
+nachzuweisen. 
+27 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.4  Angeschweißte Anschlüsse und Steifen 
+Längsrippen:
+1) Die Kerbgruppe hängt von der 
+Länge L der Längsrippe ab. 
+Die Dicke der Steifen muss kleiner 
+sein als ihre Höhe, sonst siehe 
+Tabelle 8.5, Kerbfall 5 oder 6. 
+Kerbfall 3) und 4)
+: 
+Am Knotenblech muss ein gleich-
+mäßiger Übergang hergestellt wer-
+den, und zwar vor dem Schweißen 
+mit dem Radius r durch maschi-
+nelle Bearbeitung oder Brenn-
+schneiden und nach dem Schwei-
+ßen durch Schleifen der Schweiß-
+zone parallel zur Lastrichtung, so 
+dass der Schweißnahtübergang 
+der Quernaht vollständig entfernt 
+ist. 
+4) An den Blech- oder Träger-
+flanschrändern angeschweißtes 
+Knotenblech. 
+Quersteifen:
+Kerbfälle 6) und 7): 
+6) Quersteifen auf Blechen Die Schweißnahtenden sind sorg-
+fältig zu schleifen, um Einbrand-
+kerben zu entfernen. 
+7) Vertikalsteifen in Walz- oder 
+geschweißten Blechträgern. 
+7) Wenn die Steife, Fall 7) links, im 
+Stegblech abschließt, wird 
+ mit 
+den Hauptspannungen berechnet. 
+8) Am Steg oder Flansch ange-
+schweißte Querschotte in Kasten-
+trägern. 50 < 
+ 80 mm 71 
+Nicht für Hohlprofile. 
+Die Kerbfälle gelten auch für 
+Ringsteifen. 
+9) Einfluss geschweißter 
+Kopfbolzendübel auf den 
+Grundwerkstoff. 
+80 
+28 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.5  Geschweißte Stöße 
+Kreuz- und T-Stöße: 1) Nach Prüfung frei von Diskonti-
+nuitäten und Exzentrizitäten außer-
+halb der Toleranzen nach 
+EN 1090. 
+1) Riss am Schweißnahtübergang 
+in voll durchgeschweißten 
+Stumpfnähten und allen nicht 
+durchgeschweißten Nähten. 
+2) 
+ ist mit korrigierten Nenn-
+spannungsschwingbreiten zu 
+ermitteln. 
+3) Es sind 2 Ermüdungsnachweise 
+erforderlich: zum einen der Nach-
+weis gegen Riss der Schweißnaht-
+wurzel mit Spannungen nach 
+Abschnitt 5 mit Kerbgruppe 36* für 
+w und Kerbgruppe 80 für w, zum 
+anderen der Nachweis des Naht-
+überganges mit Bestimmung von 
+ in den belasteten Blechen. 
+Kerbfälle 1) bis 3):
+Die Ausmittigkeit der belasteten 
+Bleche muss 15 % der Dicke des 
+4) Berechnung von im Haupt-
+blech mit der in der Skizze gezeig-
+ten Fläche. 
+5) Berechnung von 
+ in den 
+überlappenden Laschen. 
+Kerbfälle 4) und 5):
+ Die Schweißnahtenden müssen 
+Gurtlamellen auf Walzprofilen und 6) Wenn die Lamellen breiter sind 
+als der Flansch, ist eine Stirnnaht, 
+die sorgfältig ausgeschliffen wird, 
+um Einbrandkerben zu entfernen, 
+erforderlich. 
+geschweißten Blechträgern:
+6) Endbereiche von einlagig oder 
+mehrlagig aufgeschweißten Gurt-
+platten mit und ohne Stirnnaht. 
+Die minimale Lamellenlänge 
+beträgt 300 mm. 
+Für kürzere Lamellen siehe 
+Abstufung für Kerbfall 1. 
+36  t > 50 
+7) Die Stirnnaht ist blecheben zu 
+schleifen. Zusätzlich ist für 
+t
+c > 20 mm die Lamelle mit einer 
+Neigung <¼ auszubilden. 
+verstärkte Stirnnaht 7) Gurtlamellen auf Walzprofilen 
+und geschweißten Blechträgern. 
+5 tc ist die Minimallänge der 
+Verstärkungsnaht. 56 
+8) Durchgehende Kehlnähte, die 
+einen Schubfluss übertragen, wie 
+z. B. Halskehlnähte zwischen 
+Stegblech und Flansch bei 
+geschweißten Blechträgern. 
+8) 
+ ist auf die Schweißnahtdicke 
+bezogen zu berechnen. 
+9) ist auf die Schweißnahtdicke 
+bezogen unter Berücksichtigung 
+der Gesamtlänge der Schweißnaht 
+zu berechnen. Schweißnahtenden 
+müssen 
+10 mm vom Blechende 
+entfernt sein. 
+80 
+m=5 
+9) Mit Kehlnähten geschweißte 
+Laschenverbindung. 
+29 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.5 (fortgesetzt)
+12) Ringflanschanschluss mit 
+Kehlnähten 
+12) wird am Rohrquerschnitt 
+berechnet. 
+40 
+30 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.6  Hohlprofile (t 12,5 mm) 
+2) Rohr-Blech-Anschluss, Rohr 
+geschlitzt und an das Blech 
+geschweißt, Loch am Schlitzende. 
+2) ist am Rohrquerschnitt zu 
+berechnen. Schubrisse in der 
+Schweißnaht sind nach 
+Tabelle 8.5, Kerbfall 8) 
+nachzuweisen. 
+63 
+ > 45° 
+Quernähte:
+71 
+ 3) Stöße von Rundhohlprofilen mit 
+durchgeschweißten 
+Stumpfnähten. 
+Kerbfälle 3) und 4):
+ Nahtüberhöhung 10% der 
+Schweißnahtdicke mit verlaufen-
+dem Übergang in das Grund-
+material. 4) Stöße von 
+Rechteckhohlprofilen mit 
+durchgeschweißten 
+Stumpfnähten. 
+ In Wannenlage geschweißte 
+Nähte und nachweisbar frei von 
+erkennbaren Fehlern außerhalb 
+der Toleranzen nach EN 1090. 
+56 
+ Konstruktionsdetails mit 
+t > 8 mm dürfen 2 Kerbfallkate-
+gorien höher eingestuft werden. 
+71 
+Nicht tragende Schweißnähte: 5) 
+5) Mit Kehlnähten an ein anderes 
+Bauteil angeschweißte runde oder 
+rechteckige Hohlprofile. 
+ Nicht tragende Schweißnähte. 
+ Querschnittsbreite parallel zur 
+Spannungsrichtung 
+ 100 mm. 
+ für andere Fälle siehe 
+Tabelle 8.4. 
+Tragende Schweißnähte:
+50 
+6) Kopfplattenstoß von 
+Rundhohlprofile mit 
+durchgeschweißten Nähten. 
+Kerbfälle 6) und 7):
+ Tragende Schweißnähte. 
+ Scheißnahtinspektion und nach-
+weisbar frei von erkennbaren 
+Fehlern außerhalb der Tole-
+ranzen nach EN 1090. 
+ Konstruktionsdetails mit 
+Wanddicken t > 8 mm dürfen 
+eine Kerbfallkategorien höher 
+eingestuft werden. 
+7) Kopfplattenstoß von 
+Rechteckhohlprofile mit 
+durchgeschweißten Nähten. 
+45 
+40 
+8) Kopfplattenstoß von 
+Rundhohlprofilen mit Kehlnähten. 
+Kerbfälle 8) und 9):
+ Tragende Schweißnähte. 
+ Wanddicken t 8 mm. 
+9) Kopfplattenstoß von Recht-
+eckhohlprofilen mit Kehlnähten. 
+36 
+31 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 36 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.7  Geschweißte Knoten von Fachwerkträgern 
+Kerbfälle 1) und 2):Anschluss mit Spalt: Kerbdetail 1): K- und N-Knoten, Rundhohlprofile: 
+ Es sind getrennte Nachweise für 
+Gurte und Diagonalen zu 
+führen. 
+ Bei Zwischenwerten von t
+o/ti ist 
+zwischen den Kerbgruppen 
+linear zu interpolieren. 
+ Bei Diagonalen mit t 8 mm 
+sind Kehlnähte erlaubt. 
+ t0 und ti 8 mm 
+ 35° 50° 
+ b0/t0 t0/ti 25 
+ d0/t0 t0/ti 25 
+ 0,4 bi/b0 1,0 Anschluss mit Spalt: Kerbdetail 2): K- und N-Knoten, Rechteckprofile: 
+ 0,25 di/d0 1,0 
+ b0 200 mm 
+ d0 300 mm 
+ 0,5h0 ei/p 0,25h0
+e
+Anschluss mit Überlappung: Kerbdetail 3): K-Knoten, Rechteck- oder Rundhohlprofile: Kerbfälle 3) und 4):
+ 30 % Überlappung 100 % 
+ Überlappung= ( q/p) 100 % 
+ Es sind getrennte Nachweise für 
+Gurte und Diagonalen zu 
+führen. 
+ Bei Zwischenwerten von t
+o/ti ist 
+zwischen den Kerbgruppen 
+linear zu interpolieren.. 
+ Bei Diagonalen mit t 8 mm 
+sind Kehlnähte erlaubt. 
+ t0 und ti 8 mm 
+ 35° 50° 
+ b0/t0 t0/ti 25 
+ d0/t0 t0/ti 25 
+ 0,4 bi/b0 1,0 
+ 0,25 di/d0 1,0 
+ b0 200 mm Anschluss mit Überlappung: Kerbdetail 4): N-Knoten, Rechteck- oder Rundhohlprofile: 
+ d0 300 mm 
+ 0,5h0 ei/p 0,25h0
+ 0,5d0 ei/p 0,25d0
+ eo/p 0,02b0 oder 0,02d0
+[eo/p: Ausmittigkeit rechtwinklig zur 
+Verbandsebene] 
+Definition von p und q: 
+50 010 ,
+it
+t
+m = 5 
+32 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 37 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.8  Orthotrope Platten mit Hohlrippen 
+1) Durchgehende Längsrippe mit 
+Ausschnitt im Querträger. 
+1) Der Nachweis ist mit der 
+Längsspannungsschwingbreite 
+in der Rippe zu führen. 
+2) Durchgehende Längsrippe 
+ohne Ausschnitt im Querträger. 
+2) Der Nachweis ist mit der 
+Längsspannungsschwingbreite 
+in der Rippe zu führen. 
+5) Von beiden Seiten voll 
+durchgeschweißte Stumpfnaht 
+ohne Badsicherung. 
+5) Der Nachweis ist mit der 
+Längsspannungsschwingbreite 
+in der Rippe zu führen. 
+gestrichener Text
+w
+w
+W
+M
+8) Kehlnaht oder nicht voll 
+durchgeschweißte Naht, wenn 
+nicht durch Kerbfall 7) abgedeckt. 
+8) Der Nachweis ist mit der Span-
+nungsschwingbreite infolge Bie-
+gung in der Schweißnaht oder im 
+Blech zu führen. 
+Ww ist mit a zu berechnen. 50 
+33 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 38 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.9  Orthotrope Platten mit offenen Rippen 
+1) Anschluss einer Längsrippe an 
+den Querträger. 
+1) Der Nachweis ist mit der Span-
+nungsschwingbreite in der 
+Rippe infolge Biegung zu führen. 
+t > 12 mm 71 
+2) Anschluss einer durchgehen-
+den Längsrippe an den Quer-
+träger. 
+2) Der Nachweis ist mit der Kombi-
+nation der Spannungsschwing-
+breite infolge Querkraft und der 
+Spannungsschwingbreite infolge 
+Biegung im Querträgersteg mit 
+einer äquivalenten Spannungs-
+schwingbreite zu führen: 
+snet,
+s
+W
+M
+snet,w,
+s
+A
+V
+22 42
+1
+eq
+Spannungsschwingspiele 
+zwischen den Längsrippen sind 
+ebenfalls entsprechend 
+EN 1993-2 nachzuweisen. 
+56 
+34 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 39 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Tabelle 8.10  Obergurt-Stegblech Anschlüsse von Kranbahnträgern 
+Kerbfall Konstruktionsdetail Beschreibung Anforderungen 
+1) Gewalzte I- oder H-Querschnitte. 
+ 1) Spannungsschwingbreite vert. im Steg 
+infolge vertikaler Druckkräfte aus 
+Radlasteinleitung. 160 
+2) Voll durchgeschweißter 
+T-Stumpfstoß. 
+2) Spannungsschwingbreite vert. im Steg 
+infolge vertikaler Druckkräfte aus 
+Radlasteinleitung. 71 
+3) Nicht voll durchgeschweißter 
+T-Stumpfstoß oder wirksam voll 
+durchgeschweißter T-Stumpfstoß in 
+Übereinstimmung mit EN 1993-1-8 
+3) Spannungsschwingbreite vert. in der 
+Schweißnaht infolge vertikaler Druckkräfte 
+aus Radlasteinleitung. 36* 
+4) Kehlnähte 
+ 4) Spannungsschwingbreite vert. in der 
+Schweißnaht infolge vertikaler Druckkräfte 
+aus Radlasteinleitung. 36* 
+5) Gurt aus einem T-Profil mit voll 
+durchgeschweißtem T-Stumpfstoß. 
+5) Spannungsschwingbreite vert. im Steg 
+infolge vertikaler Druckkräfte aus 
+Radlasteinleitung. 71 
+6) Gurt aus einem T-Profil mit nicht voll 
+durchgeschweißtem T-Stumpfstoß oder 
+wirksam voll durchgeschweißtem 
+T-Stumpfstoß in Übereinstimmung mit 
+EN 1993-1-8 
+6) Spannungsschwingbreite 
+vert. in der 
+Schweißnaht infolge vertikaler Druckkräfte 
+aus Radlasteinleitung. 
+36* 
+7) Gurt aus einem T-Profil mit Kehlnähten. 
+ 7) Spannungsschwingbreite vert. in der 
+Schweißnaht infolge vertikaler Druckkräfte 
+aus Radlasteinleitung. 36* 
+35 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 40 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Anhang A
+(normativ)
+Bestimmung von ermüdungsrelevanten Lastkenngrößen und 
+Nachweisformate 
+A.1 Bestimmung von Belastungszyklen 
+(1) Typische Last-Zeit-Verläufe können aus Erfahrungswerten ähnlicher Lastsituationen angesetzt werden, 
+solange diese eine konservative Abschätzung aller erwarteten Belastungszyklen innerhalb der Nutzungsdauer 
+darstellen, siehe Bild A.1 a). 
+A.2 Spannungszeitverlauf am Kerbdetail 
+(1) Aus den Belastungszyklen sollte ein Spannungszeitverlauf am Kerbdetail unter Berücksichtigung der Art 
+und des Verlaufs der Einflusslinien sowie dynamischer Vergrößerungsfaktoren ermittelt werden, siehe 
+Bild A.1 b). 
+(2) Spannungszeitverläufe dürfen auch auf der Basis von Messungen an ähnlichen Tragwerken oder durch 
+eine dynamische Berechnung des Tragwerkes bestimmt werden. 
+A.3 Zählverfahren 
+(1) Spannungszeitverläufe können durch folgende Zählverfahren bestimmt werden: 
+ Rainflow-Methode; 
+ Reservoir-Methode, siehe Bild A.1 c). 
+Hierbei werden folgende Parameter bestimmt: 
+ die Spannungsschwingbreiten sowie deren Anzahl; 
+ die Mittelspannung, falls der Mittelspannungseinfluss zu berücksichtigen ist. 
+A.4 Spektrum der Spannungsschwingbreiten 
+(1) Ein Spektrum der Spannungsschwingbreiten wird bestimmt, indem die Spannungsschwingbreiten mit der 
+zugehörigen Anzahl der Schwingspiele in absteigender Reihenfolge geordnet werden, siehe Bild A.1 d). 
+(2) Bei der Bestimmung der Spektren der Spannungsschwingbreiten dürfen Spitzenwerte der Spannungs-
+schwingbreiten vernachlässigt werden, wenn diese weniger als 1 % der Gesamtschädigung ausmachen; dies 
+gilt auch für kleine Spannungsschwingbreiten, wenn diese unterhalb des Schwellenwertes der Ermüdungs-
+festigkeit liegen. 
+(3) Spektren der Spannungsschwingbreiten können entsprechend ihrer Völligkeit standardisiert werden, z. B. 
+mit den normierten Achsen n= 1,0 und = 1,0. 
+36 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 41 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+A.5 Anzahl der Spannungsschwingspiele bis zum Versagen 
+(1) Werden die Bemessungsspektren der Spannungsschwingbreiten i , multipliziert mit Ff und die Ermü-
+dungsfestigkeitswerte C , dividiert durch Mf zur Bestimmung der Lebensdauerwerte NRi verwendet, so darf 
+die Schadenakkumulation wie folgt durchgeführt werden: 
+n
+i i
+i
+N
+nD
+R
+E
+d (A.1) 
+Dabei ist 
+nEi die Anzahl der Spannungsschwingspiele, bezogen auf den Streifen i mit der Spannungsschwing-
+breite Ff i; 
+NRi die Lebensdauer als Anzahl der Schwingspiele, bezogen auf die Bemessungs-Wöhlerlinie 
+C/ Mf  NR für die Spannungsschwingbreite Ff i. 
+(2) Mit der Annahme gleicher Schädigung Dd darf das Bemessungsspektrum der Spannungsschwingbreiten 
+in ein beliebiges äquivalentes Bemessungsspektrum der Spannungsschwingbreiten umgerechnet werden. So 
+kann z. B. nach der Umwandlung in eine äquivalente konstante Spannungsschwingbreite eine weitere 
+Transformation in eine äquivalente Ermüdungslast Qe, abhängig von der Anzahl der Spannungsschwingspiele
+nmax = ni , oder in QE,2 mit NC = 2 × 106 Spannungsschwingspielen erfolgen. 
+A.6 Nachweisformate 
+(1) In der Regel ist der Ermüdungsnachweis auf der Grundlage der Schadensakkumulation erbracht, wenn 
+ bei Anwendung der Schadensakkumulation: 
+Dd 1,0 (A.2) 
+ bei der Anwendung der Spannungsschwingbreite: 
+Mf
+C
+d2E,fF
+m D (A.3) 
+Dabei ist m = 3. 
+37 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 42 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+a) Lastfolge: Typischer Lastzyklus 
+(n-fach wiederholt in der Nutzungsdauer) 
+b) Spannungszeitverlauf am Konstruk-
+tionsdetail 
+c) Zählverfahren (z. B. Reservoirmethode) 
+d) Spektrum der Spannungsschwingbreiten 
+e) Anzahl der Spannungsschwingbreiten 
+bis zum Versagen 
+L
+4
+4
+3
+3
+2
+2
+1
+1 DN
+n
+N
+n
+N
+n
+N
+n
+N
+n
+i
+if) Schadensakkumulation 
+(Palmgren-Miner-Regel) 
+Bild A.1  Schadensakkumulation 
+38 
+DIN EN 1993-1-9:2010-12
+
+===== PDF-SEITE 43 =====
+EN 1993-1-9:2005 + AC:2009 (D) 
+Anhang B
+(normativ)
+Ermüdungsfestigkeit bei Verwendung von Strukturspannungen 
+(Kerbspannungen) 
+(1) Die Kerbfälle für die Anwendung des Verfahrens mit Strukturspannungen (Kerbspannungen) sind in 
+Tabelle B.1 für folgende Orte der Rissbildung zusammengestellt: 
+ Nahtübergang von Stumpfnähten; 
+ Nahtübergang von Kehlnähten an Anschlüssen; 
+ Nahtübergang von Kehlnähten in Kreuzstößen. 
+Tabelle B.1  Kerbfälle bei Verwendung von Strukturspannungen (Kerbspannungen) 
+Kerbfall Konstruktionsdetail Beschreibung Anforderungen 
+1) Voll durchgeschweißte 
+Stumpfnaht. 
+1) 
+ Alle Nähte blecheben in Lastrichtung geschliffen. 
+ Schweißnahtan- und -auslaufstücke sind zu 
+verwenden und anschließen zu entfernen, 
+Blechränder sind blecheben in Lastrichtung zu 
+schleifen. 
+112 
+ Beidseitige Schweißung mit ZFP. 
+ Für Exzentrizitäten siehe Anmerkung 1 unten. 
+2) Voll durchgeschweißte 
+Stumpfnaht. 
+2) 
+ Nähte nicht blecheben geschliffen 
+ Schweißnahtan- und -auslaufstücke sind zu 
+verwenden und anschließen zu entfernen, 
+Blechränder sind blecheben in Lastrichtung zu 
+schleifen. 
+100 
+ Beidseitige Schweißung. 
+ Für Exzentrizitäten siehe Anmerkung 1 unten. 
+3) Kreuzstoß mit voll 
+durchgeschweißten K-
+Nähten. 
+3) 
+ Anstellwinkel 60°. 
+100  Für Exzentrizitäten siehe Anmerkung 1 unten. 
+4) Unbelastete Kehlnähte. 
+ 4) Anstellwinkel 60°, siehe auch Anmerkung 2. 
+100 
+5) Enden von 
+Anschlussblechen und 
+Längssteifen. 
+5) Anstellwinkel 60°, siehe auch Anmerkung 2 
+100 
+6) Enden von Gurtlamellen 
+und ähnliche Anschlüsse. 
+6) Anstellwinkel 60°, siehe auch Anmerkung 2 
+100 
+7) Kreuzstöße mit belasteten 
+Kehlnähten. 
+7) 
+ Anstellwinkel 60°. 90  Für Exzentrizitäten siehe Anmerkung 1 unten. 
+ siehe auch Anmerkung 2 
+ANMERKUNG 1 In Tabelle B.1 sind keine Exzentrizitäten enthalten; diese müssen bei der Spannungsermittlung 
+explizit berücksichtigt werden. 
+ANMERKUNG 2 Tabelle B.1 gilt nicht für Rissbildung an der Nahtwurzel, gefolgt von Risswachstum durch die Naht. 
+ANMERKUNG 3 Anstellwinkel der Schweißnaht ist in EN 1090 definiert. 
+39 
+DIN EN 1993-1-9:2010-12

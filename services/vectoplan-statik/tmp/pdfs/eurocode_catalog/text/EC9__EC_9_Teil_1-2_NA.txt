@@ -1,0 +1,124 @@
+
+
+===== PDF-SEITE 1 =====
+National Annex  
+Nationally determined parameters  
+Eurocode 9: Design of aluminium structures 
+Part 1-2: Structural fire design 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 9: Calcul des structures en aluminium  
+Partie 1-2: Calcul du comportement au feu
+
+===== PDF-SEITE 2 =====
+DIN EN 1999-1-2/NA:2011-04 
+Inhalt Seite
+Vorwort ................................................................................................................................................................3
+NA 1 Anwendungsbereich ......................................................................................................... ....................4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1999-1-2........................................................4
+NA 2.1 Allgemeines............................................................................................................. ...............................4
+NA 2.2 Nationale Festlegungen ........................................................................................................................4
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1999-1-2/NA:2011-04 
+Vorwort 
+Diese Norm wurde vom Normenausschuss Bauwesen (NABau), Arbeitsausschuss NA 005-52-22 AA 
+Konstruktiver baulicher Brandschutz (Spiegelausschuss zu Teilbereichen von CEN/TC 250)  erarbeitet. 
+Diese Norm bildet den Nationalen Anhang zu DIN EN 1999-1-2:2010-12, Eurocode 9: Bemessung und 
+Konstruktion von Aluminiumtragwerken  Teil 1-2: Tragwerksbemessung für den Brandfall. 
+Die Europäische Norm EN 1999-1-2:2007-02 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally Determined 
+Parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifizierungssystemen. Die entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. 
+Eine Liste dieser Textstellen befindet sich in NA.2.1. 
+Darüber hinaus enthält dieser Nationale Anhang ergänzende nicht widersprechende Angaben und 
+Erläuterungen zur Anwendung von DIN EN 1999-1-2:2010-12 (en: Non-contradictory Complementary 
+Information, NCI), die nach dem Leitpapier L Anwendung der Eurocodes  der Europäischen Kommission 
+zulässig sind, sowie Festlegungen zur Anwendung der informativen Anhänge von DIN EN 1999-1-2. 
+Die in dieser Norm national getroffenen Festlegungen wurden im Hinblick auf die Aufrechterhaltung des 
+erforderlichen nationalen Sicherheitsniveaus abgestimmt. 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1999-1-2:2010-12. 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1999-1-2/NA:2011-04 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für die Bemessung und Konstruktion von 
+Aluminiumtragwerken für den Brandfall, die bei der Anwendung von DIN EN 1999-1-2:2010-12 in Deutschland 
+zu berücksichtigen sind. 
+Diese Norm gilt nur in Verbindung mit DIN EN 1999-1-2:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1999-1-2 
+NA 2.1 Allgemeines 
+DIN EN 1999-1-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (en: 
+Nationally Determined Parameters, NDP) aus: 
+ 2.3 (1) 
+ 2.3 (2) 
+ 2.4.2 (3) 
+ 4.2.2.1 (1) 
+ 4.2.2.3 (5) 
+ 4.2.2.4 (5) 
+Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1999-1-2:2010-12. Diese sind durch ein vorangestelltes NCI (en: Non-contradictory Complementary 
+Information) gekennzeichnet. 
+Für die Anwendung dieses Dokuments gelten die Begriffe nach DIN EN 1999-1-2. 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1999-1-2:2010-12. 
+NCI zu 1.2 Normative Verweisungen 
+DIN EN 1991-1-2/NA: Nationaler Anhang  National festgelegte Parameter  Eurocode 1: Einwirkungen auf 
+Tragwerke  Teil 1-2/NA: Allgemeine Einwirkungen  Brandeinwirkungen auf Tragwerke 
+DIN EN 1990/NA: Nationaler Anhang  National festgelegte Parameter  Eurocode: Grundlagen der Trag-
+werksplanung 
+DIN EN 1999-1-2:2010-12: Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken  Teil 1-2: 
+Tragwerksbemessung für den Brandfall; Deutsche Fassung EN 1999-1-2:2007 + AC:2009 
+NDP zu 2.3 (1) Bemessungswerte der Materialeigenschaften 
+Zur ANMERKUNG Der Teilsicherheitsbeiwert für die mechanischen Eigenschaften von Aluminium im 
+Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. 
+Als Teilsicherheitsbeiwert der mechanischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. 
+NDP zu 2.3 (2) Bemessungswerte der Materialeigenschaften 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1999-1-2/NA:2011-04 
+5 
+Zur ANMERKUNG Der Teilsicherheitsbeiwert für die thermischen Eigenschaften von Aluminium im 
+Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. 
+Als Teilsicherheitsbeiwert der thermischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. 
+NDP zu 2.4.2 (3) Bauteilberechnung 
+Zur ANMERKUNG 1 Die Werte von G, Q,1, fi und dürfen im Nationalen Anhang festgelegt werden. 
+EN 1990 gibt hierzu Vorschläge an. In EN 1991-1-2 wird vorgeschlagen, anstelle von fi den Wert von 2.1
+zu wählen. 
+Für die Werte von G, Q,1, fi und sind die Festlegungen nach DIN EN 1990/NA und die Festlegungen nach 
+DIN EN 1991-1-2/NA zu verwenden. 
+NDP zu 4.2.2.1 (1) Querschnittsklassifizierung 
+Zur ANMERKUNG Diese Regel basiert auf dem gleichen relativen Abfall der 0,2 %-Dehngrenze und 
+des Elastizitätsmoduls. Wenn der tatsächliche Abfall des Elastizitätsmoduls nach Bild 2 verwendet wird, 
+kann sich die Querschnittsklasse ändern, ggf. ergibt sich eine günstigere Klassenzugehörigkeit. Der 
+nationale Anhang kann dazu Berücksichtigungsmöglichkeiten festlegen.  
+Für die Bemessung im Brandfall ist die Querschnittsklassifizierung wie für die Bemessung nach EN 1999-1-1, 
+6.1.4, zu verwenden. 
+NDP zu 4.2.2.3 (5) Träger 
+Zur ANMERKUNG Die Bemessungswerte der Tragfähigkeit nach den Gleichungen (4.5), (4.7) und 
+(4.8) basiert auf dem gleichen relativen Abfall der 0,2 %-Dehngrenze und des Elastizitätsmoduls bei 
+erhöhten Temperaturen. Wenn der tatsächliche Abfall des Elastizitätsmoduls berücksichtigt wird, kann sich 
+die Querschnittsklasse ändern, ggf. ergibt sich eine günstigere Klassenzugehörigkeit. Der nationale 
+Anhang kann dazu Berücksichtigungsmöglichkeiten festlegen. 
+Für die Bemessungswerte der Biegemomententragfähigkeit M
+fi,t,Rd, Biegedrillknickmomententragfähigkeit 
+Mb,fi,t,Rd und der Querkrafttragfähigkeit Vfi,t,Rd von Trägern im Brandfall sind die Gleichungen (4.5), (4.7) und 
+(4.8) zu verwenden ohne Berücksichtigung einer günstigeren Querschnittsklassen durch Verwendung des 
+tatsächlichen Abfalls des Elastizitätsmoduls. 
+NDP zu 4.2.2.4 (5) Stützen 
+Zur ANMERKUNG Der Bemessungswert der Tragfähigkeit nach Gleichung (4.9) basiert auf dem 
+gleichen relativen Abfall der 0,2 %-Dehngrenze und des Elastizitätsmoduls. Wenn der tatsächliche Abfall 
+des Elastizitätsmoduls berücksichtigt wird, kann sich die Querschnittsklasse ändern, ggf. ergibt sich eine 
+günstigere Klassenzugehörigkeit. Der nationale Anhang kann dazu Berücksichtigungsmöglichkeiten 
+festlegen. 
+Für den Bemessungswert der Tragfähigkeit von Stützen im Brandfall ist die Gleichung (4.9) zu verwenden 
+ohne Berücksichtigung einer günstigeren Querschnittsklassen durch Verwendung des tatsächlichen Abfalls 
+des Elastizitätsmoduls. 
+Zu Anhang A Eigenschaften von nicht in EN 1999-1-1 angegebenen Aluminiumlegierungen  
+Der Anhang A darf angewendet werden. Die angegebenen Werte sind informativ. 
+Zu Anhang B Wärmeübertragung auf Außenbauteile aus Aluminiumlegierungen  
+Der Anhang B darf angewendet werden.

@@ -1,0 +1,36 @@
+{
+  "dataset_id": "non-residential-office",
+  "dataset_label": "Nichtwohngebäude · Büro",
+  "dataset_description": "Mehrzoniges Bürogebäude mit Beleuchtung und höherer Luftmenge.",
+  "schema_version": "energy-project/0.2",
+  "revision": "test-office-1",
+  "project": {"id": "test-office", "name": "Büro Campus"},
+  "building": {"type": "non_residential", "condition": "new_build"},
+  "geometry": {"net_room_area_m2": 2600, "conditioned_volume_m3": 8580},
+  "zones": [
+    {"id": "office", "name": "Büro", "usage_profile": "office", "floor_area_m2": 2050, "volume_m3": 6765, "indoor_temperature_c": 21, "occupants": 165},
+    {"id": "meeting", "name": "Besprechung", "usage_profile": "meeting", "floor_area_m2": 350, "volume_m3": 1155, "indoor_temperature_c": 21, "occupants": 70},
+    {"id": "service", "name": "Nebenflächen", "usage_profile": "service", "floor_area_m2": 200, "volume_m3": 660, "indoor_temperature_c": 18, "occupants": 5}
+  ],
+  "envelope": {
+    "thermal_bridge_delta_u_w_m2k": 0.04,
+    "summer_screening_threshold_w_m2": 40,
+    "components": [
+      {"id": "wall", "name": "Fassade", "kind": "exterior_wall", "area_m2": 1460, "u_value": 0.19, "status": "verified", "source": "library"},
+      {"id": "roof", "name": "Dach", "kind": "roof", "area_m2": 920, "u_value": 0.14, "status": "verified", "source": "library"},
+      {"id": "floor", "name": "Boden", "kind": "floor", "area_m2": 920, "u_value": 0.22, "boundary_temperature_factor": 0.7, "status": "verified", "source": "library"},
+      {"id": "windows", "name": "Pfosten-Riegel-Fassade", "kind": "window", "area_m2": 690, "u_value": 1.0, "g_value": 0.35, "shading_factor": 0.45, "orientation": "mixed", "status": "verified", "source": "library"}
+    ]
+  },
+  "systems": {
+    "heating": {"type": "district_heating", "efficiency": 0.92, "energy_carrier": "district_heating", "renewable_heat_share": 0.55, "verified": true},
+    "ventilation": {"type": "balanced_with_heat_recovery", "design_airflow_m3_h": 9000, "infiltration_air_changes_per_hour": 0.06, "heat_recovery_rate": 0.78},
+    "renewables": {"pv_peak_kwp": 85, "specific_yield_kwh_kwp_a": 900, "self_use_fraction": 0.72},
+    "lighting_kwh_m2a": 12.0,
+    "auxiliary_kwh_m2a": 5.0
+  },
+  "usage": {"climate_location": "Berlin", "usage_profile": "office", "occupied_hours_per_year": 2100},
+  "climate": {"design_outdoor_temperature_c": -12, "heating_degree_days_kd": 3600, "window_solar_irradiation_kwh_m2a": 420},
+  "targets": {"standard": "EG40", "primary_energy_ratio": 0.4, "transmission_ratio": 0.55},
+  "provenance": {"geometry_revision": "editor-office", "cad_revision": "cad-office", "library_revision": "library-office"}
+}

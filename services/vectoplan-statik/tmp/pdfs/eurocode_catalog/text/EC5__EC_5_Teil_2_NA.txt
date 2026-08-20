@@ -1,0 +1,412 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 5: Bemessung und Konstruktion von Holzbauten  
+Teil 2: Brücken 
+National Annex  
+Nationally determined parameters  
+Eurocode 5: Design of timber structures  
+Part 2: Bridges 
+Annexe Nationale  
+Paramèters déterminés au plan national  
+Eurocode 5: Conception et calcul des structures en bois  
+Partie 2: Ponts
+
+===== PDF-SEITE 2 =====
+DIN EN 1995-2/NA:2011-08 
+Inhalt Seite
+Vorwort ........................................................................................................................................................... 3
+NA.1 Anwendungsbereich ......................................................................................................... ............... 4
+NA.2 Nationale Festlegungen zur Anwendung von DIN EN 1995-2:2010-12........................................ 4
+NA.2.1 Allgemeines............................................................................................................. .......................... 4
+NA.2.2 Nationale Festlegungen ................................................................................................................... 4
+NCI Zu 1.1.2 Anwendungsbereich der EN 1995-2 ................................................................................... 4
+NCI Zu 1.2 Normative Verweisungen........................................................................................................ 4
+NCI Zu 1.5 Begriffe und Formelzeichen ................................................................................................... 5
+NCI Zu 1.5.2 Zusätzliche Begriffe in dieser Europäischen Norm .......................................................... 5
+NCI Zu 2.3.1 Einwirkungen und Umgebungseinflüsse........................................................................... 6
+NDP Zu 2.3.1.2(1) Klassen der Lasteinwirkungsdauer........................................................................... 6
+NCI NA.2.3.1.3 Zuordnung zu Nutzungsklassen ..................................................................................... 6
+NDP Zu 2.4.1 Bemessungswert der Baustoffeigenschaft...................................................................... 6
+NCI Zu 3 Baustoffe ..................................................................................................................................... 6
+NCI Zu 4 Dauerhaftigkeit ........................................................................................................................... 7
+NCI Zu 4.1 Holz ........................................................................................................................................... 7
+NCI NA 4.4 Bauliche Durchbildung von Brücken ....................................................................................... 8
+NCI NA.4.4.1 Holz und Holzwerkstoffe......................................................................................................... 8
+NCI NA.4.4.2 Schutz vor Korrosion von Stahlteilen ................................................................................... 8
+NCI Zu 5 Grundlagen der Berechnung..................................................................................................... 9
+NCI Zu 5.2 Zusammengesetzte Bauteile .................................................................................................. 9
+NCI NA.5.4 Bohlen ......................................................................................................................................... 9
+NCI NA.5.5 Verbände ..................................................................................................................................... 9
+NCI Zu 6 Grenzzustände der Tragfähigkeit ............................................................................................. 9
+NCI NA.6.3 Allgemeines ................................................................................................................................ 9
+NCI Zu 7 Grenzzustände der Gebrauchstauglichkeit ............................................................................. 9
+NDP Zu 7.2 Grenzwerte für Durchbiegung .............................................................................................. 9
+NDP Zu 7.3.1(2), Durch Fußgänger verursachte Schwingungen .......................................................... 9
+NCI Zu 7.3.1 Durch Fußgänger verursachte Schwingungen ............................................................... 10
+Anhang NA.C (informativ) Empfehlungen zur baulichen Durchbildung von Holzbrücken .................. 11
+NA.C.1 Schutz von Holz und Holzwerkstoffen.......................................................................................... 11
+NA.C.2 Schutz vor Korrosion ..................................................................................................................... 12
+Literaturhinweise ......................................................................................................................................... 13
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1995-2/NA:2011-08 
+Vorwort 
+Dieses Dokument (DIN EN 1995-2/NA) wurde im Spiegelausschuss NA 005-04-01 AA Holzbau bzw. 
+NA 005-04-01-03 AK Holzbau  Arbeitskreis Nationaler Anhang zu DIN EN 1995-2  im DIN Deutsches Institut 
+für Normung e.V., erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1995-2, Eurocode 5: Bemessung und 
+Konstruktion von Holzbauten  Teil 2: Brücken. 
+Die Europäische Norm EN 1995-2 ermöglicht zu einer Reihe von Punkten die Festlegung nationaler 
+sicherheitsrelevanter Parameter. Diese national festzulegenden Parameter (en: Nationally Determined 
+Parameter, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte sowie die Wahl von 
+Klassen aus gegebenen Klassifizierungssystemen. 
+Die entsprechenden Textstellen sind in der Europäischen Norm durch Hinweise auf die Möglichkeit nationaler 
+Festlegungen (NDP) gekennzeichnet. Eine Liste dieser Textstellen befindet sich in NA.2.1 Allgemeines. Die 
+national festgelegten Parameter sind in NA.2.2 zu finden. 
+Darüber hinaus enthält dieser Nationale Anhang zusätzliche, EN 1995-2 nicht widersprechende Regelungen 
+und Erläuterungen (en: Non-contradictory Complementary Information, NCI ), die nach dem Leitpapier L 
+Anwendung der Eurocodes der Europäischen Kommission zulässig sind. 
+Die Nummerierung der national festgelegten Parameter und der zusätzlichen nicht widersprechenden 
+Regelungen und Erläuterungen schließt sich an diejenige von DIN EN 1995-2:2010-12 an und ist zusätzlich 
+bei den NCI mit einem vorangestellten NA. gekennzeichnet. 
+DIN EN 1995-2:2010-12 und dieser Nationale Anhang DIN EN 1995-2/NA:2011-09 ersetzen 
+DIN 1074:2006-09. 
+Diese Norm gilt mit den im Abschnitt NA.1 genannten Teilen der DIN EN 1995-1-1, DIN EN 1995-1-1/NA und 
+DIN 1052-10 (in Vorbereitung). 
+Änderungen 
+Gegenüber der 2011-06 zurückgezogenen Norm DIN 1074:2006-09 wurden folgende Änderungen 
+vorgenommen: 
+a) national festzulegende Parameter (NDP) entsprechend DIN EN 1995-2 aufgenommen; 
+b) nicht widersprechende Regelungen und Erläuterungen (NCI) entsprechend DIN EN 1995-2 
+aufgenommen. 
+Frühere Ausgaben 
+DIN 1074: 1930-08, 1941x-08, 1991-05, 2006-09 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1995-2/NA:2011-08 
+NA.1 Anwendungsbereich 
+Dieser Nationale Anhang enthält die nationalen Festlegungen für die Bemessung und Konstruktion der 
+Haupttragwerksteile von Brücken, die bei der Anwendung von DIN EN 1995-2:2010-12 in Deutschland zu 
+beachten sind. 
+Dieses Dokument gilt nur in Verbindung mit DIN EN 1995-2. Sofern dieses Dokument keine anderslautenden 
+Regelungen enthält, gelten DIN EN 1995-1-1, DIN EN 1995-1-1/NA:2010-12 und DIN 1052-10 (in 
+Vorbereitung). 
+ANMERKUNG Es können ggf. zusätzliche technische Vorschriften des Bauherrn (z. B. [1], [2]) zu beachten sein. 
+NA.2 Nationale Festlegungen zur Anwendung von DIN EN 1995-2:2010-12 
+NA.2.1 Allgemeines 
+DIN EN 1995-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (NDP) 
+aus: 
+2.3.1.2 (1) Zuordnung von Einwirkungen zu Klassen der Lasteinwirkungsdauer 
+2.4.1 Teilsicherheitsbeiwerte für Baustoffeigenschaften 
+7.2 Grenzwerte für Durchbiegungen 
+7.3.1 (2) Dämpfungskoeffizienten 
+NA.2.2 enthält die entsprechenden nationalen Festlegungen, die durch ein vorangestelltes 
+NDP gekennzeichnet sind. 
+Darüber hinaus enthält NA.2.2 ergänzende, nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1995-2:2010-12. Diese sind durch ein vorgestelltes NCI gekennzeichnet. 
+NA.2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung in DIN EN 1995-2:2010-12 bzw. schließt an 
+diese an. 
+NCI Zu 1.1.2 Anwendungsbereich der EN 1995-2 
+(NA.5) DIN EN 1995-2 gilt auch für Brücken zu vorübergehenden Zwecken, für hölzerne Bauteile bei Brücken 
+in Mischbauweise und Dachtragwerke, die Teile des Haupttragwerkes der Brücke sind. 
+NCI Zu 1.2 Normative Verweisungen 
+Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+NA DIN 1052-10, Entwurf, Bemessung und Konstruktion von Holzbauten  Teil 10: Herstellung und 
+Ausführung (in Vorbereitung) 
+NA DIN 1076, Ingenieurbauwerke im Zuge von Straßen und Wegen  Überwachung und Prüfung 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1995-2/NA:2011-08 
+NA DIN 68800-1, Holzschutz  Teil 1: Allgemeines 
+NA DIN 68800-2, Holzschutz  Teil 2: Vorbeugende bauliche Maßnahmen im Hochbau 
+NA DIN 68800-3, Holzschutz  Teil 3: Vorbeugender Schutz von Holz mit Holzschutzmitteln 
+NA DIN EN 1995-1-1:2010-12, Eurocode 5: Bemessung und Konstruktion von Holzbauten  Teil 1-1: 
+Allgemeines - Allgemeine Regeln und Regeln für den Hochbau 
+NA DIN EN 1995-1-1/NA:2010-12, Nationaler Anhang  National festgelegte Parameter  Eurocode 5: 
+Bemessung und Konstruktion von Holzbauten  Teil 1-1: Allgemeines - Allgemeine Regeln und Regeln für 
+den Hochbau 
+NA DIN EN 1995-2:2010-12, Eurocode 5: Bemessung und Konstruktion von Holzbauten  Teil 2: Holz-
+brücken 
+NCI Zu 1.5 Begriffe und Formelzeichen 
+NCI Zu 1.5.2 Zusätzliche Begriffe in dieser Europäischen Norm 
+NA.1.5.2.6 
+Geschütztes Bauteil 
+Bauteil, bei dem eine direkte Bewitterung durch Niederschläge oder durch Eintrag von Feuchte 
+ausgeschlossen ist 
+Legende 
+a) Brücke mit unten liegender Verkehrsbahn 
+b) Brücke mit oben liegender Verkehrsbahn 
+c) gedeckte Brücke 
+Bild NA.1  Beispiele für geschützte Brückenbauteile 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1995-2/NA:2011-08 
+6 
+NA.1.5.2.7 
+Ungeschütztes Bauteil 
+Bauteil, das nicht oder nur teilweise vor direkter Bewitterung durch Niederschläge oder durch Eintrag von 
+Feuchte geschützt ist 
+NCI Zu 2.3.1 Einwirkungen und Umgebungseinflüsse 
+NDP Zu 2.3.1.2(1) Klassen der Lasteinwirkungsdauer 
+Tabelle NA.1 enthält für Einwirkungen die Zuordnung zu einer der Klassen der Lasteinwirkungsdauer. 
+Ansonsten gilt DIN EN 1995-1-1/NA: 2010-12, Tabelle NA.1. 
+Tabelle NA.1  Zuordnung der Einwirkungen zu Klassen der Lasteinwirkungsdauer (KLED) 
+ 1 2 
+1 Einwirkung KLED 
+2 Wichten- und Flächenlasten ständig 
+3 Verkehrslasten, lotrecht und horizontal kurz 
+4 Windlasten kurz/sehr kurza
+5 Schneelast und Eislast 
+Geländehöhe des Bauwerkstandortes über NN 1 000 m 
+Geländehöhe des Bauwerkstandortes über NN > 1 000 m 
+kurz 
+mittel 
+6 Anpralllasten sehr kurz 
+7 Temperatur- und Feuchteänderungen mittel 
+8 ungleichmäßige Setzungen ständig 
+a Bei Wind darf für kmod der Mittelwert der den KLED kurz und sehr kurz zugeordneten kmod-Werte verwendet 
+werden. 
+NCI NA.2.3.1.3 Zuordnung zu Nutzungsklassen 
+(NA.1) Geschützte Bauteile sind der Nutzungsklasse 2, ungeschützte Bauteile sind der Nutzungsklasse 3 
+zuzuweisen. 
+NDP Zu 2.4.1 Bemessungswert der Baustoffeigenschaft 
+Für die normalen Nachweise gelten die Teilsicherheitsbeiwerte aus 
+DIN EN 1995-1-1/NA:2010-12, Tabelle NA.2 und Tabelle NA.3. Für Ermüdungsnachweise sind die 
+Teilsicherheitsbeiwerte zu M,fat = 1,0 anzunehmen. 
+NCI Zu 3 Baustoffe 
+(NA.2) Für tragende Holzbauteile in Holzbrücken dürfen Vollholz, Balkenschichtholz, Brettschichtholz, 
+Brettsperrholz, Sperrholz und Furnierschichtholz verwendet werden. 
+(NA.3) Die Mindestmaße für tragende Holzbauteile sind Tabelle NA.2 zu entnehmen. 
+(NA.4) Die Dicke von Metallteilen muss mindestens 3 mm, die von geeigneten nichtrostenden Blechformteilen 
+für Geh- und Radwegbrücken mindestens 2 mm sein.
+
+===== PDF-SEITE 7 =====
+DIN EN 1995-2/NA:2011-08 
+7 
+Tabelle NA.2  Mindestmaße für tragende Holzbauteile in Holzbrücken 
+ 1 2 3 
+Bauteil 
+Kleinste 
+Querschnittsseite 
+mm
+Kleinste 
+Querschnittsfläche 
+mm2
+1 Hauptträger aus Vollholz, Brettschichtholz, 
+Balkenschichtholz und Furnierschichtholz 
+(ausgenommen Fachwerkträger, verbretterte Träger) 
+120 24 000 
+2 Einteilige St äbe aus Fachwerken 40 4 800 
+3 Einzelne Querschnittsteile von zusammengesetzten 
+Stäben und von verbretterten Trägern 
+30 3 600 
+4 Knotenplatten und Laschen sowie Stege aus 
+Sperrholz (mindestens 5-lagig) 
+12 a
+5 Tragbelag aus Vollholz, einlagig 50b  
+6 Tragbelag aus Vollholz, zweilagig 40b  
+7 Tragbelag aus Holzwerkstoffplatten 20  
+a Mindestbreite von Knotenplatten und Laschen: 120 mm. 
+b Für Geh- und Radwegbrücken 30 mm. Erforderlichenfalls ist eine Verschleißschicht nach Tabelle NA.3 
+hinzuzurechnen. 
+NCI Zu 4 Dauerhaftigkeit 
+NCI Zu 4.1 Holz 
+(NA.3) Tragbeläge ohne Deckschicht, die unmittelbar begangen oder befahren werden, sind mit Rücksicht auf 
+die Abnutzung dicker auszuführen als die Bemessung dies erfordert. Die Mindestdicke dv der 
+Verschleißschicht ist Tabelle NA.3 zu entnehmen. 
+Tabelle NA.3  Mindestdicken von Verschleißschichten 
+ 1 2 3 
+dv
+mm
+1 Typ Für Tragbeläge aus 
+Nadelholz 
+Für Tragbeläge aus 
+Laubholz 
+2 Fahrbahnen 20 10 
+3 Geh- und Radwegbrücken 10 5 
+(NA.4) Tragbeläge aus Holzwerkstoffplatten sind i.d.R. durch eine Deckschicht vor Abnutzung zu schützen.
+
+===== PDF-SEITE 8 =====
+DIN EN 1995-2/NA:2011-08 
+8 
+NCI NA 4.4 Bauliche Durchbildung von Brücken 
+NCI NA.4.4.1 Holz und Holzwerkstoffe 
+(NA.1) Brücken sind so zu planen, zu konstruieren, auszuführen und zu unterhalten, dass sie während der 
+vorgesehenen Nutzungsdauer ihre Tragfähigkeit und Gebrauchstauglichkeit ohne wesentlichen Verlust der 
+Nutzungseigenschaften und mit einem vertretbaren Instandhaltungsaufwand behalten. 
+(NA.2) Der Holzschutz von Brücken ist unter Berücksichtigung der geplanten Nutzungsdauer und der 
+Korrosionsgefährdung der Verbindungselemente sicher zu stellen. 
+(NA.3) Sofern nicht anders geregelt, gelten DIN 68800-1 bis DIN 68800-3. 
+(NA.4) Zu den bautechnischen Unterlagen für Brücken gehören auch Unterlagen zur Dauerhaftigkeit. 
+(NA.5) Entsprechend der Schutzwirkung der vorbeugenden baulichen Maßnahmen werden die Bauteile in die 
+Schutzklassen geschützt und ungeschützt eingeteilt. 
+(NA.6) Geschützte Bauteile sind an allen durch Niederschläge gefährdeten Seiten durch einen Wetterschutz 
+z.B. in Form von Bekleidungen oder eines ausreichenden Dachüberstands, zu schützen. Ein ausreichender 
+Überstand ist oberhalb der Gerade, die von der Dachkante um 30° gegen die Lotrechte zum überdachten 
+Bereich hingeneigt ist (siehe Bild NA.1), gegeben. 
+(NA.7) Der nutzungsbedingte Eintrag von Feuchte und Korrosionsstoffen, wie Enteisungsmitteln, in die vor 
+unmittelbarer Bewitterung geschützten Bauteile einer gedeckten Brücke, z. B. durch Fahrzeugverkehr oder 
+durch Nutzung als Loipenbrücke ist zu berücksichtigen. Besondere Expositionen, z. B. unmittelbar über 
+besonderen Nassbereichen wie Wasserfällen, sind ebenfalls zu berücksichtigen. 
+(NA.8) Ergänzende Hinweise zum Schutz von Holz und Holzwerkstoffen sind im Anhang NA.C.1 aufgeführt. 
+NCI NA.4.4.2 Schutz vor Korrosion von Stahlteilen 
+(NA.1) Folgende Maßnahmen sind zur Vermeidung der Korrosionsgefahr zu berücksichtigen: 
+ Tragende Bauteile aus Stahl sind grundsätzlich so auszubilden, dass sie mit den in DIN 1076 
+festgelegten Regeln geprüft werden können. Andernfalls ist die ausreichende Korrosionsbeständigkeit 
+unter Berücksichtigung der auftretenden mechanischen und dynamischen Beanspruchungen 
+nachzuweisen. Es darf von einer ausreichenden Korrosionsbeständigkeit ausgegangen werden: 
+ wenn geeignete nichtrostende Stähle nach allgemeiner bauaufsichtlicher Zulassung verwendet 
+werden; 
+ wenn Stahlteile 4 mm dicker als statisch erforderlich ausgeführt werden und als Korrosionsschutz 
+eine Zinkschichtdicke von mindestens 85 µm mit geeigneter Chromatierung (z. B. Farb-
+chromatierung) vorgesehen wird. 
+ Der Nachweis der Korrosionsbeständigkeit gilt für tragende Bauteile aus Stahl im geschützten Bereich als 
+erbracht, wenn die Stahloberflächen eine mittlere Zinkschichtdicke von mindestens 55 µm aufweisen. 
+ Werden verschiedene Metalle verwendet, z. B. in einer Verbindung, darf nur eine geringfügige 
+Kontaktkorrosion auftreten. 
+(NA.2) Die Festlegungen aus NCI NA.4.4.1(NA.7) sind entsprechend zu berücksichtigen. 
+(NA.3) Ergänzende Hinweise zum Korrosionsschutz von Stahlteilen sind im Anhang NA.C.2 enthalten.
+
+===== PDF-SEITE 9 =====
+DIN EN 1995-2/NA:2011-08 
+9 
+NCI Zu 5 Grundlagen der Berechnung 
+NCI Zu 5.2 Zusammengesetzte Bauteile 
+(NA.2) Bei Trägern oder Stützen aus nachgiebig miteinander verbundenen Querschnittsteilen ist die 
+Verbindung auch für eine Zugkraft FEd rechtwinklig zur Fuge nach Gleichung (NA.1) auszulegen. 
+FEd = 0,1 Fv,Ed (NA.1) 
+Dabei ist 
+FEd der Bemessungswert der Zugkraft zwischen den Querschnittsteilen; 
+Fv,Ed der Bemessungswert der Schubkraft zwischen den Querschnittsteilen. 
+NCI NA.5.4 Bohlen 
+(NA.1) Durchlaufende Bohlen dürfen im Allgemeinen als frei drehbar gelagerte Träger auf zwei Stützen 
+berechnet werden. Die Bohlen sind erforderlichenfalls gegen Abheben durch konstruktive Maßnahmen zu 
+sichern. Sie dürfen als Durchlaufträger berechnet werden, wenn die Nachgiebigkeit der Unterstützung 
+berücksichtigt wird. 
+(NA.2) Als Stützweite 
+der Tragbohlen gilt in der Regel der lichte Abstand ihrer Unterstützungen zuzüglich 
+10 cm, höchstens jedoch deren Achsabstand (Maße jeweils in Längsrichtung der Bohlen). Erforderlichenfalls 
+ist das Zusammenwirken mit den Unterstützungen (Trägerrostwirkung) zu beachten. 
+NCI NA.5.5 Verbände 
+(NA.1) Die Schnittgrößen von Wind- und Aussteifungsverbänden sind im Allgemeinen unter Berücksichtigung 
+der Verformungen der Stäbe und der Verschiebungen der Verbindungsmittel zu ermitteln. 
+(NA.2) Bei Geh- und Radwegbrücken mit Spannweiten 
+ 12 m brauchen Beanspruchungen aus der 
+Tragwirkung des räumlichen Gesamtsystems bei der Bemessung der Verbände i.d.R. nicht nachgewiesen zu 
+werden. 
+NCI Zu 6 Grenzzustände der Tragfähigkeit 
+NCI NA.6.3 Allgemeines 
+(NA.1) Auf Querzug beanspruchte Bauteile, Queranschlüsse, Ausklinkungen und Durchbrüche sind nach 
+DIN EN 1995-1-1 mit DIN EN 1995-1-1/NA zu verstärkten. 
+NCI Zu 7 Grenzzustände der Gebrauchstauglichkeit 
+NDP Zu 7.2 Grenzwerte für Durchbiegung 
+Für die Anfangsverformung infolge Verkehrslast uq,inst nach DIN EN 1995-1-1:2010-12, 2.2.3(2) von 
+Haupttraggliedern gelten die empfohlenen Werte, d. h. die unterstrichenen Werte der Tabelle 7.1. 
+NDP Zu 7.3.1(2), Durch Fußgänger verursachte Schwingungen 
+Für die Dämpfungskoeffizienten gelten die empfohlenen Werte.
+
+===== PDF-SEITE 10 =====
+DIN EN 1995-2/NA:2011-08 
+10 
+NCI Zu 7.3.1 Durch Fußgänger verursachte Schwingungen 
+(NA.3) Bei von Fußgängern und Radfahrern verursachten Schwingungen kann für Geh- und Radwegbrücken 
+mit Spannweiten 12 m ein Schwingungsnachweis in der Regel entfallen. 
+(NA.4) Es wird empfohlen, je nach Lage und Nutzung der Brücke die in der Tabelle NA.4 zusammengestellten 
+Gleichungen zur Berechnung der Beschleunigung der Brücke zu verwenden. 
+Tabelle NA.4  Gleichungen zur Berechnung der Beschleunigung 
+Berechnung der 
+Brückenbeschleunigung Lage der Brücke Nutzungs-
+häufigkeit 
+vertikal horizontal 
+gelegentlich (B.1) (B.4) außerhalb von Ortschaften 
+oft (B.2) mit n = 13 (B.5) mit n = 13 
+innerhalb von Ortschaften oft (B.2) mit n = 13 (B.5) mit n = 13 
+im Bereich von möglichen 
+Großveranstaltungen 
+oft (B.2) mit n = 0,6 A (B.5) mit n = 0,6 A
+im Bereich von Bahnhöfen gelegentlich (B.2) mit n = 13 (B.5) mit n = 13 
+im Bereich von Bahnhöfen 
+(S- oder U- Bahn) 
+oft (B.2) mit n = 0,6 A (B.5) mit n = 0,6 A
+im Bereich von Sportstätten und 
+Parkanlagen 
+oft (B.3) zusätzlich Besondere Unter-
+suchung erforderlich 
+auf Strecken mit Volksläufen oft Besondere Untersuchung erforderlich 
+Dabei ist 
+n die Anzahl der Fußgänger, für eine Gruppe von Fußgänger ist n = 13 anzusetzen; 
+A die Fläche des Gehbelages in m 2.
+
+===== PDF-SEITE 11 =====
+DIN EN 1995-2/NA:2011-08 
+11 
+Anhang NA.C 
+(informativ)
+Empfehlungen zur baulichen Durchbildung von Holzbrücken 
+NA.C.1 Schutz von Holz und Holzwerkstoffen 
+(NA.1) Bauteile, die nicht oder nur mit erheblichem Aufwand ausgetauscht werden können, wie z. B. 
+Hauptträger, sollten als geschützte Bauteile ausgebildet werden. 
+(NA.2) Untergeordnete oder austauschbare Bauteile, wie z. B. Geländer und Bohlenbeläge, werden i.d.R. 
+ungeschützt angeordnet. 
+(NA.3) Die oberen Bauteilflächen ungeschützter tragender Bauteile sollten, sofern möglich, Abdeckungen 
+erhalten. 
+(NA.4) Der Wetterschutz sollte so konstruiert sein, dass die dahinter liegenden Bauteile einfach zu 
+kontrollieren sind. 
+ (NA.5) Folgende Maßnahmen sollten bei der Planung des baulichen Holzschutzes geschützter und 
+ungeschützter Holzbauteile berücksichtigt werden: 
+ Brückenbauteile sollten mittels Überhöhungen oder planmäßigem Gefälle so ausgelegt werden, so 
+dass Wasser auch unter Berücksichtigung der sich langfristig einstellenden Durchbiegungen 
+abfließen kann. 
+ Bauteile, Stöße und Anschlüsse sollten so ausgebildet werden, dass Schneeablagerungen 
+vermieden werden. 
+ Horizontale oder leicht geneigte Oberflächen sollten dauerhaft wasserdicht abgedeckt werden, z. B. 
+mit Blechbändern, geneigten Holzbrettern bzw. Holzwerkstoffstreifen oder mit geeigneten Kunststoff- 
+bzw. Bitumenbahnen. Die Abdeckung sollte ausreichend weit überstehen. 
+ Eine Durchfeuchtung der Bauteile durch Kondenswasser sollte z. B. durch eine Hinterlüftung der 
+Abdeckung vermieden werden. 
+ Geländerpfosten sollten so konstruiert werden, dass Durchdringungen von Abdichtungen und 
+Belägen vermieden werden können. 
+ Bauteilunterkanten sollten mit ausreichendem Abstand von Fließwasser, Erdreich und Bewuchs 
+angeordnet werden. 
+ Die besondere Gefährdung von Hirnholzflächen sollte berücksichtigt werden. 
+ Die Rissbildung infolge Schwindverformungen sollte durch Wahl einer geeigneten Einbaufeuchte und 
+durch geeigneten Oberflächenschutz beschränkt werden. 
+ Durch die Wahl der Tragwerksgeometrie und der räumlichen Anordnung der Bauteile sollte eine 
+ausreichende natürliche Belüftung aller Holzteile sichergestellt werden. 
+ Bewitterte Kontaktflächen (z. B. Hirnholzanschlüsse, mehrteilige Stäbe) sollten ausreichend 
+hinterlüftet werden. Ist eine Hinterlüftung dieser Kontaktflächen nicht möglich oder sinnvoll, sollten 
+die gefährdeten Fugen dauerhaft vor eindringender Feuchte geschützt werden.
+
+===== PDF-SEITE 12 =====
+DIN EN 1995-2/NA:2011-08 
+12 
+NA.C.2 Schutz vor Korrosion 
+ (NA.1) Folgende Maßnahmen zur Vermeidung der Korrosionsgefahr sollten berücksichtigt werden: 
+ Es sollten Entwässerungslöcher in waagerecht liegenden oder leicht geneigt eingebauten 
+Stahlblechen (z. B. Anschlussbleche von liegenden Verbänden und Fachwerken) a werden. 
+ Es sollten Tropfscheiben in der Nähe des tief liegenden Anschlusses von längs geneigten 
+Stahldiagonalen an Holzbauteilen (z. B. Verbandsstreben bei Längsneigung oder im Jochbereich) 
+eingebaut werden. 
+ Bewitterte Kontaktflächen (z. B. Kopfplattenanschluss Querträger-Hauptträger) sollten ausreichend 
+hinterlüftet werden. Ist eine Hinterlüftung dieser Kontaktflächen nicht möglich oder sinnvoll, sollten 
+die gefährdeten Kanten dauerhaft vor eindringender Feuchte geschützt werden.
+
+===== PDF-SEITE 13 =====
+DIN EN 1995-2/NA:2011-08 
+13 
+Literaturhinweise 
+[1] ZTV-ING, Zusätzliche Technische Vertragsbedingungen und Richtlinien für Ingenieurbauwerke 1)
+[2] Ril 804, Eisenbahnbrücken (und sonstige Ingenieurbauwerke) planen bauen und instand halten 2)
+1) Zu beziehen bei: Verkehrsblattverlag, Borgmann GmbH & Co. KG, Schleefstr. 14, 44287 Dortmund. 
+2) Zu beziehen bei: DB Kommunikationstechnik GmbH, Medien- und Kommunikationsdienste, Logistikcenter 
+Kriegsstraße 136, 76133 Karlsruhe.

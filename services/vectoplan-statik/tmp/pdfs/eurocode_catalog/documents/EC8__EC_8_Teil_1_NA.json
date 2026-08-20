@@ -1,0 +1,324 @@
+{
+  "document_id": "EN_1998-1_NA__national_annex__EC_8_Teil_1_NA",
+  "eurocode_family": "EC8",
+  "designation": "DIN EN 1998-1/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 8 Teil 1 NA.pdf",
+  "relative_path": "EC 8/EC 8 Teil 1 NA.pdf",
+  "sha256": "c352f39a1c7b504cbc6a22674f357df26fced36f2c982bfc55d167e5333f4671",
+  "pages": 31,
+  "text_pages": 31,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 6,
+  "equation_candidate_count": 2,
+  "table_reference_count": 4,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184111+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233419+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 8\\EC 8 Teil 1 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "50",
+      "title": "Jahren, PNCR).",
+      "pdf_page": 3
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Normative Verweisungen",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "I < 6,5",
+      "pdf_page": 10
+    },
+    {
+      "clause": "7",
+      "title": "I < 7,5",
+      "pdf_page": 10
+    },
+    {
+      "clause": "4",
+      "title": "KvNz 0,05 0,04 KvNz",
+      "pdf_page": 23
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 9,
+      "equation_number": "unvollständig",
+      "line": "r===J Zone 1",
+      "context": "60 | ~ Zoneo | r===J Zone 1 | ~ Zone2 | IIIIllilliii Zone 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "Massen zur Berechnung der Erdbebenlasten sind Schneelasten in Gleichung (4.2) mit dem Kombinations-",
+      "context": "NDP zu 4.2.4(2)P Kombinationsbeiwerte für veränderliche Einwirkungen | Beiwerte für zur Berechnung von Ei sind Tabelle NA.5 zu entnehmen. Bei der Ermittlung der wirksamen | Massen zur Berechnung der Erdbebenlasten sind Schneelasten in Gleichung (4.2) mit dem Kombinations- | beiwert 2 0,5 zu multiplizieren. Diese reduzierten Schneelasten sind auch beim Standsicherheitsnachweis | zu berücksichtigen.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "9.1",
+      "pdf_page": 5,
+      "line": "9.3(4),Tabelle 9.1 q-Beiwerte in Mauerwerksbauten."
+    },
+    {
+      "label": "9.1",
+      "pdf_page": 5,
+      "line": "9.3(4), Tabelle 9.1 q-Beiwerte für Bauten mit Mauerwerkssystemen, mit erhöhter Duktilität."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 18,
+      "line": "Tabelle 6.2 für deutsche Erdbebengebiete auf q 4 zu begrenzen. Ferner wird empfohlen, Duktilitätsklasse"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 19,
+      "line": "Tabelle 6.2 für deutsche Erdbebengebiete auf q 4 zu begrenzen."
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1193,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1587,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2253,
+      "text_layer": "usable",
+      "clauses": [
+        "50"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 2929,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2068,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2.1",
+        "3.1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 2183,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2037,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2298,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 410,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 10,
+      "characters": 437,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 269,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 1663,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 876,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1263,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1649,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1730,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2266,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2081,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2057,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2951,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1769,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2586,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2483,
+      "text_layer": "usable",
+      "clauses": [
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 481,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2718,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1682,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1533,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1273,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2952,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 3300,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 2634,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

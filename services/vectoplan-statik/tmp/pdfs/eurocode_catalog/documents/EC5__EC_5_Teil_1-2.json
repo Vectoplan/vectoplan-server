@@ -1,0 +1,2926 @@
+{
+  "document_id": "EN_1995-1-2__base_standard__EC_5_Teil_1-2",
+  "eurocode_family": "EC5",
+  "designation": "DIN EN 1995-1-2",
+  "document_kind": "base_standard",
+  "file_name": "EC 5 Teil 1-2.pdf",
+  "relative_path": "EC 5/EC 5 Teil 1-2.pdf",
+  "sha256": "1b9eb139e5defd933fe42b0af110e6792755af3313cea5756a2b70687721e8b1",
+  "pages": 80,
+  "text_pages": 79,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 193,
+  "equation_candidate_count": 103,
+  "table_reference_count": 40,
+  "figure_reference_count": 42,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161940+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232847+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 5\\EC 5 Teil 1-2.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... .................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von Eurocode 5 ......................................................................................... ......10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1995-1-2........................................................................................ .......10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ...............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... .........................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterschied zwischen Prinzipien und Anwendungsregeln ............................................................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... ..............................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole .................................................................................................................... ............................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Bemessung und Konstruktion.................................................................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen .............................................................................................................. .......................16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Wesentliche Anforderungen................................................................................................ ...............16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Nominelle Brandbeanspruchung ............................................................................................. ..........17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Parametrische Brandbeanspruchung ......................................................................................... ......17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Einwirkungen ............................................................................................................... ........................17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Bemessungswerte der Materialeigenschaften und Materialbeanspruchbarkeiten ......................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren .......................................................................................................... ....................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.1",
+      "title": "Allgemeines.............................................................................................................. ............................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.2",
+      "title": "Bauteilberechnung ........................................................................................................ ......................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.3",
+      "title": "Berechnung von Teilen des Tragwerks...................................................................................... .......22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.4",
+      "title": "Berechnung des gesamten Tragwerks........................................................................................ ......23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Materialeigenschaften ........................................................................................................ .................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Eigenschaften.................................................................................................. .............23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Thermische Eigenschaften................................................................................................... ..............23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Abbrandtiefe............................................................................................................... ..........................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.1",
+      "title": "Allgemeines.............................................................................................................. ............................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.2",
+      "title": "Ungeschützte Oberflächen während der gesamten Branddauer ...................................................24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.3",
+      "title": "Oberflächen von anfänglich vor Brandeinwirkung geschützten Balken und Stützen .................27",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Klebstoffe ................................................................................................................. ............................32",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Bemessungsverfahren für mechanische Beanspruchbarkeit ........................................................33",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines................................................................................................................ ..........................33",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Vereinfachte Regeln zur Bestimmung von Querschnittswerten ....................................................33",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeines.............................................................................................................. ............................33",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Methode mit reduziertem Querschnitt...................................................................................... .........33",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Methode mit reduzierten Eigenschaften .................................................................................... .......34",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Vereinfachte Regeln zur Berechnung tragender Bauteile und zusammengesetzter",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Allgemeines.............................................................................................................. ............................36",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Balken ................................................................................................................... ................................36",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Stützen .................................................................................................................. ................................36",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.4",
+      "title": "Mechanisch verbundene Bauteile........................................................................................... ...........37",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.5",
+      "title": "Aussteifungen ............................................................................................................ ..........................37",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Allgemeine Berechnungsverfahren ............................................................................................ .......37",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Bemessungsverfahren für Wand- und Deckenkonstruktionen ......................................................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines ................................................................................................................ .........................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2",
+      "title": "Bemessung der Tragfähigkeit................................................................................................ ............38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessung des Raumabschlusses .............................................................................................. ....38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Verbindungen ................................................................................................................. .....................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines ................................................................................................................ .........................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2",
+      "title": "Verbindungen mit Seitenteilen aus Holz..................................................................................... ......38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Vereinfachte Regeln ...................................................................................................... ......................38",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Methode mit reduzierten Beanspruchungen .................................................................................. ..43",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Verbindungen mit außen liegenden Stahlblechen...........................................................................45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Ungeschützte Verbindungen................................................................................................ ..............45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Geschützte Verbindungen.................................................................................................. ................45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Vereinfachte Regeln für auf Herausziehen beanspruchte Schrauben...........................................45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Konstruktive Ausführung ...................................................................................................... .............47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Wände und Decken ........................................................................................................... ..................47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1.1",
+      "title": "Bauteilmaße und Abstände ................................................................................................. ...............47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1.2",
+      "title": "Detaillierung von Plattenverbindungen .................................................................................... ........47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1.3",
+      "title": "Wärmedämmung ............................................................................................................. ....................47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Sonstige Bauteile .......................................................................................................... ......................48",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von Eurocode 5",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1995-1-2",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterschied zwischen Prinzipien und Anwendungsregeln",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 15
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionalen Abbrandrate bei Normbrandbe-",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen für Entwurf, Bemessung und Konstruktion",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Wesentliche Anforderungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Nominelle Brandbeanspruchung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "180",
+      "title": "K nicht übersteigt.",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Parametrische Brandbeanspruchung",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2.2",
+      "title": "Einwirkungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2.3",
+      "title": "Bemessungswerte der Materialeigenschaften und Materialbeanspruchbarkeiten",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.2",
+      "title": "Bauteilberechnung",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.3",
+      "title": "Berechnung von Teilen des Tragwerks",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2.4.4",
+      "title": "Berechnung des gesamten Tragwerks",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3",
+      "title": "Materialeigenschaften",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Eigenschaften",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.3",
+      "title": "Thermische Eigenschaften",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.4",
+      "title": "Abbrandtiefe",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.4.2",
+      "title": "Ungeschützte Oberflächen während der gesamten Branddauer",
+      "pdf_page": 26
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionale Abbrandrate bei Normbrandbeanspruchung;",
+      "pdf_page": 26
+    },
+    {
+      "clause": "3.4.3",
+      "title": "Oberflächen von anfänglich vor Brandeinwirkung geschützten Balken und Stützen",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.4.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 29
+    },
+    {
+      "clause": "1",
+      "title": "Balken",
+      "pdf_page": 30
+    },
+    {
+      "clause": "2",
+      "title": "Stütze",
+      "pdf_page": 30
+    },
+    {
+      "clause": "4",
+      "title": "Bekleidung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "1",
+      "title": "Verlauf für während der Branddauer ungeschützte Bauteile mit der ideellen Abbrandrate n (oder 0 )",
+      "pdf_page": 30
+    },
+    {
+      "clause": "2",
+      "title": "Verlauf für anfänglich geschützte Bauteile nach dem Versagen der Brandschutzbekleidung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "1",
+      "title": "Verlauf für während der Branddauer ungeschützte Bauteile mit der ideellen Abbrandrate nach Tabelle 3.1",
+      "pdf_page": 31
+    },
+    {
+      "clause": "3",
+      "title": "Verlauf für anfänglich geschützte Bauteile mit Versagenszeiten der Brandschutzbekleidung tf und einem",
+      "pdf_page": 31
+    },
+    {
+      "clause": "1",
+      "title": "Verlauf für während der Branddauer ungeschützte Bauteile mit der ideellen Abbrandrate n (oder 0)",
+      "pdf_page": 31
+    },
+    {
+      "clause": "2",
+      "title": "Verlauf für anfänglich geschützte Bauteile, bei denen der Abbrand vor dem Versagen der Brandschutzbekleidung",
+      "pdf_page": 31
+    },
+    {
+      "clause": "3.4.3.2",
+      "title": "Abbrandraten für anfänglich geschützte Bauteile",
+      "pdf_page": 32
+    },
+    {
+      "clause": "3.4.3.3",
+      "title": "Beginn des Abbrandes",
+      "pdf_page": 33
+    },
+    {
+      "clause": "3.4.3.4",
+      "title": "Versagenszeit von Brandschutzbekleidungen",
+      "pdf_page": 34
+    },
+    {
+      "clause": "3.5",
+      "title": "Klebstoffe",
+      "pdf_page": 34
+    },
+    {
+      "clause": "4",
+      "title": "Bemessungsverfahren für mechanische Beanspruchbarkeit",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.2",
+      "title": "Vereinfachte Regeln zur Bestimmung von Querschnittswerten",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Methode mit reduziertem Querschnitt",
+      "pdf_page": 35
+    },
+    {
+      "clause": "1",
+      "title": "Anfängliche Oberfläche des Bauteils",
+      "pdf_page": 35
+    },
+    {
+      "clause": "2",
+      "title": "Grenze des Restquerschnitts",
+      "pdf_page": 35
+    },
+    {
+      "clause": "3",
+      "title": "Grenze des ideellen Querschnitts",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Methode mit reduzierten Eigenschaften",
+      "pdf_page": 36
+    },
+    {
+      "clause": "1",
+      "title": "Zugfestigkeit, E-Modul",
+      "pdf_page": 37
+    },
+    {
+      "clause": "2",
+      "title": "Biegefestigkeit",
+      "pdf_page": 37
+    },
+    {
+      "clause": "3",
+      "title": "Druckfestigkeit",
+      "pdf_page": 37
+    },
+    {
+      "clause": "4.3",
+      "title": "Vereinfachte Regeln zur Berechnung tragender Bauteile und zusammengesetzter",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Balken",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Stützen",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4.3.4",
+      "title": "Mechanisch verbundene Bauteile",
+      "pdf_page": 39
+    },
+    {
+      "clause": "4.3.5",
+      "title": "Aussteifungen",
+      "pdf_page": 39
+    },
+    {
+      "clause": "4.4",
+      "title": "Allgemeine Berechnungsverfahren",
+      "pdf_page": 39
+    },
+    {
+      "clause": "5",
+      "title": "Bemessungsverfahren für Wand- und Deckenkonstruktionen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines",
+      "pdf_page": 40
+    },
+    {
+      "clause": "5.2",
+      "title": "Bemessung der Tragfähigkeit",
+      "pdf_page": 40
+    },
+    {
+      "clause": "5.3",
+      "title": "Bemessung des Raumabschlusses",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6",
+      "title": "Verbindungen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.1",
+      "title": "Allgemeines",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.2",
+      "title": "Verbindungen mit Seitenteilen aus Holz",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Vereinfachte Regeln",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.2.1.1",
+      "title": "Ungeschützte Verbindungen",
+      "pdf_page": 40
+    },
+    {
+      "clause": "6.2.1.2",
+      "title": "Geschützte Verbindungen",
+      "pdf_page": 42
+    },
+    {
+      "clause": "1",
+      "title": "Eingeleimte Holzdübel",
+      "pdf_page": 43
+    },
+    {
+      "clause": "2",
+      "title": "Zusätzlicher Schutz durch Bekleidungen",
+      "pdf_page": 43
+    },
+    {
+      "clause": "3",
+      "title": "Verbindungsmittel zur Befestigung der zusätzlichen Schutzbekleidung",
+      "pdf_page": 43
+    },
+    {
+      "clause": "1",
+      "title": "Bauteil",
+      "pdf_page": 44
+    },
+    {
+      "clause": "2",
+      "title": "Bolzen",
+      "pdf_page": 44
+    },
+    {
+      "clause": "3",
+      "title": "Schutzbekleidung",
+      "pdf_page": 44
+    },
+    {
+      "clause": "6.2.1.3",
+      "title": "Zusätzliche Regeln für Verbindungen mit innen liegenden Stahlblechen",
+      "pdf_page": 44
+    },
+    {
+      "clause": "60",
+      "title": "Minuten ist;",
+      "pdf_page": 44
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Methode mit reduzierten Beanspruchungen",
+      "pdf_page": 45
+    },
+    {
+      "clause": "6.2.2.1",
+      "title": "Ungeschützte Verbindungen",
+      "pdf_page": 45
+    },
+    {
+      "clause": "6.2.2.2",
+      "title": "Geschützte Verbindungen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.3",
+      "title": "Verbindungen mit außen liegenden Stahlblechen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.3.1",
+      "title": "Ungeschützte Verbindungen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.3.2",
+      "title": "Geschützte Verbindungen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "6.4",
+      "title": "Vereinfachte Regeln für auf Herausziehen beanspruchte Schrauben",
+      "pdf_page": 47
+    },
+    {
+      "clause": "7",
+      "title": "Konstruktive Ausführung",
+      "pdf_page": 49
+    },
+    {
+      "clause": "7.1",
+      "title": "Wände und Decken",
+      "pdf_page": 49
+    },
+    {
+      "clause": "7.1.1",
+      "title": "Bauteilmaße und Abstände",
+      "pdf_page": 49
+    },
+    {
+      "clause": "7.1.2",
+      "title": "Detaillierung von Plattenverbindungen",
+      "pdf_page": 49
+    },
+    {
+      "clause": "7.1.3",
+      "title": "Wärmedämmung",
+      "pdf_page": 49
+    },
+    {
+      "clause": "7.2",
+      "title": "Sonstige Bauteile",
+      "pdf_page": 50
+    },
+    {
+      "clause": "2",
+      "title": "Kohleschicht",
+      "pdf_page": 50
+    },
+    {
+      "clause": "3",
+      "title": "Bekleidung",
+      "pdf_page": 50
+    },
+    {
+      "clause": "4",
+      "title": "Verbindungsmittel",
+      "pdf_page": 50
+    },
+    {
+      "clause": "5",
+      "title": "Wärmedämmung",
+      "pdf_page": 50
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionalen Abbrandrate bei Normbrandbeanspruchung, siehe",
+      "pdf_page": 61
+    },
+    {
+      "clause": "1",
+      "title": "Fuge in einer einzelnen Lage",
+      "pdf_page": 62
+    },
+    {
+      "clause": "2",
+      "title": "Fuge in der inneren Plattenlage",
+      "pdf_page": 62
+    },
+    {
+      "clause": "3",
+      "title": "Fuge in der äußeren Plattenlage",
+      "pdf_page": 62
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionalen Abbrandrate bei Normbrandbeanspruchung, siehe 3.4.2",
+      "pdf_page": 63
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionalen Abbrandrate bei Normbrandbeanspruchung, siehe 3.4.2",
+      "pdf_page": 64
+    },
+    {
+      "clause": "1",
+      "title": "Holzbauteil",
+      "pdf_page": 65
+    },
+    {
+      "clause": "2",
+      "title": "Stahlprofil",
+      "pdf_page": 65
+    },
+    {
+      "clause": "3",
+      "title": "Bekleidung",
+      "pdf_page": 65
+    },
+    {
+      "clause": "4",
+      "title": "Verbindungsmittel zur Befestigung des Stahlprofils auf dem Holzbauteil",
+      "pdf_page": 65
+    },
+    {
+      "clause": "5",
+      "title": "Verbindungsmittel zur Befestigung der Bekleidung auf dem Stahlprofil",
+      "pdf_page": 65
+    },
+    {
+      "clause": "6",
+      "title": "Holzkohleschicht",
+      "pdf_page": 65
+    },
+    {
+      "clause": "1",
+      "title": "Biegefestigkeit mit",
+      "pdf_page": 66
+    },
+    {
+      "clause": "2",
+      "title": "Biegefestigkeit mit",
+      "pdf_page": 66
+    },
+    {
+      "clause": "3",
+      "title": "Druckfestigkeit",
+      "pdf_page": 66
+    },
+    {
+      "clause": "1",
+      "title": "Druckfestigkeit",
+      "pdf_page": 67
+    },
+    {
+      "clause": "1",
+      "title": "Stabilitätsversagen",
+      "pdf_page": 67
+    },
+    {
+      "clause": "2",
+      "title": "Stabilitätsversagen",
+      "pdf_page": 67
+    },
+    {
+      "clause": "1",
+      "title": "Stabilitätsversagen",
+      "pdf_page": 68
+    },
+    {
+      "clause": "2",
+      "title": "Stabilitätsversagen in",
+      "pdf_page": 68
+    },
+    {
+      "clause": "1",
+      "title": "Schmalseite des Bauteils",
+      "pdf_page": 70
+    },
+    {
+      "clause": "2",
+      "title": "Längsseite des Bauteils, zum Hohlraum zeigend",
+      "pdf_page": 70
+    },
+    {
+      "clause": "3",
+      "title": "Bekleidung auf der brandbeanspruchten Seite",
+      "pdf_page": 70
+    },
+    {
+      "clause": "4",
+      "title": "Bekleidung auf der feuerabgewandten Seite",
+      "pdf_page": 70
+    },
+    {
+      "clause": "0",
+      "title": "Bemessungswert der eindimensionalen Abbrandrate bei Normbrandbeanspruchung, in mm/min.",
+      "pdf_page": 70
+    },
+    {
+      "clause": "1",
+      "title": "Holzbauteil",
+      "pdf_page": 72
+    },
+    {
+      "clause": "2",
+      "title": "Bekleidung",
+      "pdf_page": 72
+    },
+    {
+      "clause": "4",
+      "title": "Hohlraumdämmung",
+      "pdf_page": 72
+    },
+    {
+      "clause": "5",
+      "title": "Bekleidungsfuge nicht hinterlegt durch Latten, Balken oder Stiele",
+      "pdf_page": 72
+    },
+    {
+      "clause": "6",
+      "title": "Lage einer Installation",
+      "pdf_page": 72
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "Feuchte (kmod = 1)",
+      "context": "FRk Charakteristische mechanische Beanspruchbarkeit einer Verbindung bei | Normaltemperatur ohne Berücksichtigung der Lasteinwirkungsdauer und der | Feuchte (kmod = 1) | Gd,fi Bemessungswert des Schubmoduls im Brandfall | Gk Charakteristischer Wert der ständigen Einwirkung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "1 = 200 K und 2 = 240 K. Informationen zu nationalen Anforderungen können im Nationalen Anhang enthalten sein.",
+      "context": "Temperaturanstieg 1, der maximale Temperaturanstieg 2 nicht überschreiten. | ANMERKUNG Die empfohlenen Werte für den maximalen Temperaturanstieg während der Abklingphase sind | 1 = 200 K und 2 = 240 K. Informationen zu nationalen Anforderungen können im Nationalen Anhang enthalten sein. | 2.2 Einwirkungen | (1)P Thermische und mechanische Einwirkungen müssen nach EN 1991-1-2:2002 gewählt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "2.1",
+      "line": "f= fk (2.1)",
+      "context": "d,fi mod,fi | M,fi | f= fk (2.1) | 20 | mod,fid,f i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "2.2",
+      "line": "S= Sk (2.2)",
+      "context": "mod,fid,f i | M,fi | S= Sk (2.2) | bestimmt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Der empfohlene Teilsicherheitsbeiwert für Materialeigenschaften im Brandfall ist M,fi = 1,0.",
+      "context": "EN 1995-1-1 für Normaltemperatur angegebenen Modifikationsbeiwert kmod. Werte für kmod,fi werden in den relevanten | Abschnitten gegeben. | ANMERKUNG 2 Der empfohlene Teilsicherheitsbeiwert für Materialeigenschaften im Brandfall ist M,fi = 1,0. | Informationen zu nationalen Anforderungen können im Nationalen Anhang enthalten sein. | (2)P Der Bemessungswert der mechanischen Beanspruchbarkeit Rd,t,fi (Tragfähigkeit) muss mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "2.3",
+      "line": "R=R (2.3)",
+      "context": "d,t, fi | M,fi | R=R (2.3) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "Berücksichtigung von Lasteinwirkungsdauer und Feuchte (kmod = 1);",
+      "context": "Rd,t,fi Bemessungswert einer mechanischen Beanspruchbarkeit im Brandfall zum Zeitpunkt t; | R20 20 %-Faktilwert einer mechanischen Beanspruchbarkeit bei Normaltemperatur ohne | Berücksichtigung von Lasteinwirkungsdauer und Feuchte (kmod = 1); | Umrechnungsfaktor; | M,fi Teilsicherheitsbeiwert für Holz im Brandfall.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "2.4",
+      "line": "20 fi kfk f (2.4)",
+      "context": "und 6.4. Für Verbindungen wird ein Umrechnungsfaktor in 6.2.2.1 gegeben. | (3) Der 20 %-Fraktilwert einer Festigkeits- oder Steifigkeitseigenschaft sollte aus | 20 fi kfk f (2.4) | 20 fi 05Sk S (2.5) | berechnet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "2.5",
+      "line": "20 fi 05Sk S (2.5)",
+      "context": "(3) Der 20 %-Fraktilwert einer Festigkeits- oder Steifigkeitseigenschaft sollte aus | 20 fi kfk f (2.4) | 20 fi 05Sk S (2.5) | berechnet werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "2.6",
+      "line": "20 fi kRk R (2.6)",
+      "context": "Auf Herausziehen beanspruchte Verbindungsmittel 1,05 | (4) Der 20 %-Fraktilwert der mechanischen Beanpruchbarkeit, R20, einer Verbindung sollte aus | 20 fi kRk R (2.6) | berechnet werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "Berücksichtigung der Lasteinwirkungsdauer und der Feuchte (kmod = 1).",
+      "context": "kfi entsprechend Tabelle 2.1; | Rk charakteristische mechanische Beanspruchbarkeit einer Verbindung bei Normaltemperatur ohne | Berücksichtigung der Lasteinwirkungsdauer und der Feuchte (kmod = 1). | (5) Für die Bemessungswerte von temperaturabhängigen thermischen Eigenschaften, siehe 3.2. | 19",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "2.7",
+      "line": "Ed,fi Rd,t,fi (2.7)",
+      "context": "Brandfall wiedergeben. | (2)P Für die maßgebende Brandbeanspruchungsdauer t muss nachgewiesen werden: | Ed,fi Rd,t,fi (2.7) | Dabei ist | Ed,fi Bemessungswert der Beanspruchungen im Brandfall, entsprechend EN 1991-1-2:2002,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "(1) Beanspruchungen sollten für den Zeitpunkt t = 0 unter Verwendung der Kombinationsbeiwerte",
+      "context": "EN 1990:2002, 5.2. | 2.4.2 Bauteilberechnung | (1) Beanspruchungen sollten für den Zeitpunkt t = 0 unter Verwendung der Kombinationsbeiwerte | 1,1 oder | 2,1 entsprechend EN 1991-1-2:2002, 4.3.1, bestimmt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "2.8",
+      "line": "d,fi fi dEE (2.8)",
+      "context": "2,1 entsprechend EN 1991-1-2:2002, 4.3.1, bestimmt werden. | (2) Vereinfachend zu (1) dürfen die Beanspruchungen Ed,fi aus der Berechnung für Normaltemperatur aus | d,fi fi dEE (2.8) | bestimmt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.9",
+      "line": "GQ (2.9)",
+      "context": "Gk Q , 1k , 1 | GQ | GQ (2.9) | angenommen werden. Für Lastkombinationen nach EN 1990:2002, (6.10a) und (6.10b), sollte der kleinste | Wert entsprechend den beiden folgenden Gleichungen verwendet werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.9a",
+      "line": "GQ (2.9a)",
+      "context": "Gk Q , 1k , 1 | GQ | GQ (2.9a) | kf i k , 1 | fi",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.9b",
+      "line": "GQ (2.9b)",
+      "context": "Gk Q , 1k , 1 | GQ | GQ (2.9b) | Dabei ist | Qk,1 charakteristischer Wert der vorherrschenden unabhängigen veränderlichen Einwirkung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "Qk,1/Gk für verschiedene Kombinationsbeiwerte fi entsprechend Gleichung (2.9) ist in Bild 2.1 mit folgenden Annahmen",
+      "context": "Abminderungsfaktor für ungünstige ständige Einwirkungen G. | ANMERKUNG 1 Ein Beispiel für die Variation des Abminderungsfaktors fi bei Veränderung des Lastverhältnisses | Qk,1/Gk für verschiedene Kombinationsbeiwerte fi entsprechend Gleichung (2.9) ist in Bild 2.1 mit folgenden Annahmen | dargestellt: GA = 1,0, G = 1,35 and Q = 1,5. Teilsicherheitsbeiwerte werden in den jeweiligen Nationalen Anhängen von | EN 1990:2002 angegeben. Die Gleichungen (2.9a) und (2.9b) ergeben etwas höhere Werte.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "dargestellt: GA = 1,0, G = 1,35 and Q = 1,5. Teilsicherheitsbeiwerte werden in den jeweiligen Nationalen Anhängen von",
+      "context": "ANMERKUNG 1 Ein Beispiel für die Variation des Abminderungsfaktors fi bei Veränderung des Lastverhältnisses | Qk,1/Gk für verschiedene Kombinationsbeiwerte fi entsprechend Gleichung (2.9) ist in Bild 2.1 mit folgenden Annahmen | dargestellt: GA = 1,0, G = 1,35 and Q = 1,5. Teilsicherheitsbeiwerte werden in den jeweiligen Nationalen Anhängen von | EN 1990:2002 angegeben. Die Gleichungen (2.9a) und (2.9b) ergeben etwas höhere Werte. | 21",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "2.9",
+      "line": "entsprechend Gleichung (2.9)",
+      "context": "EN 1995-1-2:2004 + AC:2009 (D) | Bild 2.1  Beispiele für Abminderungsfaktoren fi bei Veränderung des Lastverhältnisses Qk,1/Gk | entsprechend Gleichung (2.9) | ANMERKUNG 2 Zur Vereinfachung wird der Wert fi = 0,6 empfohlen, mit Ausnahme für Bereiche mit größeren | Nutzlasten entsprechend Kategorie E nach EN 1991-2-1:2002 (Flächen mit Anhäufungen von Gütern, einschließlich",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Zur Vereinfachung wird der Wert fi = 0,6 empfohlen, mit Ausnahme für Bereiche mit größeren",
+      "context": "Bild 2.1  Beispiele für Abminderungsfaktoren fi bei Veränderung des Lastverhältnisses Qk,1/Gk | entsprechend Gleichung (2.9) | ANMERKUNG 2 Zur Vereinfachung wird der Wert fi = 0,6 empfohlen, mit Ausnahme für Bereiche mit größeren | Nutzlasten entsprechend Kategorie E nach EN 1991-2-1:2002 (Flächen mit Anhäufungen von Gütern, einschließlich | Zugangsbereichen), für die der empfohlene Wert fi = 0,7 ist. Informationen zu nationalen Anforderungen können im",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "Zugangsbereichen), für die der empfohlene Wert fi = 0,7 ist. Informationen zu nationalen Anforderungen können im",
+      "context": "ANMERKUNG 2 Zur Vereinfachung wird der Wert fi = 0,6 empfohlen, mit Ausnahme für Bereiche mit größeren | Nutzlasten entsprechend Kategorie E nach EN 1991-2-1:2002 (Flächen mit Anhäufungen von Gütern, einschließlich | Zugangsbereichen), für die der empfohlene Wert fi = 0,7 ist. Informationen zu nationalen Anforderungen können im | Nationalen Anhang enthalten sein. | ANMERKUNG 3 Die nationale Wahl der Lastkombinationen zwischen Gleichung (2.9) und den Gleichungen (2.9a) und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 3 Die nationale Wahl der Lastkombinationen zwischen Gleichung (2.9) und den Gleichungen (2.9a) und",
+      "context": "Zugangsbereichen), für die der empfohlene Wert fi = 0,7 ist. Informationen zu nationalen Anforderungen können im | Nationalen Anhang enthalten sein. | ANMERKUNG 3 Die nationale Wahl der Lastkombinationen zwischen Gleichung (2.9) und den Gleichungen (2.9a) und | (2.9b) wird in EN 1991-1-2:2002 getroffen. | (4) Die Randbedingungen an den Auflagern dürfen als konstant über die Zeit angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "(2) Als Alternative zur Durchführung einer Tragwerksberechnung für den Brandfall zum Zeitpunkt t = 0 dürfen",
+      "context": "2.4.3 Berechnung von Teilen des Tragwerks | (1) Es gilt 2.4.2 (1). | (2) Als Alternative zur Durchführung einer Tragwerksberechnung für den Brandfall zum Zeitpunkt t = 0 dürfen | die Auflagerreaktionen und die inneren Kräfte und Momente an den Grenzen von Tragwerksteilen der | Berechnung des Gesamttragwerks bei Normaltemperatur entsprechend 2.4.2 entnommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "3.1",
+      "line": "char,0 0dt (3.1)",
+      "context": "(1) Die Abbrandrate für eindimensionalen Abbrand, siehe Bild 3.1, sollte als konstant über die Zeit | angenommen werden und der Bemessungswert der Abbrandtiefe aus | char,0 0dt (3.1) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "3.2",
+      "line": "char,n ndt (3.2)",
+      "context": "sollte als konstant über die Zeit angenommen werden. Der Bemessungswert der ideellen Abbrandtiefe sollte | aus | char,n ndt (3.2) | ermittelt werden. | 24",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "Querschnitts Gleichung (3.3) erfüllt.",
+      "context": "(3) Unter Berücksichtigung des erhöhten Eckabbrandes darf der Bemessungswert der eindimensionalen | Abbrandrate bei Normbrandbeanspruchung angewendet werden, wenn die Ausgangsbreite bmin des | Querschnitts Gleichung (3.3) erfüllt. | char,0 | min",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "3.3",
+      "line": "(3.3)",
+      "context": "0 für dchar,0 13 mm | für dchar,0 < 13 mm | (3.3) | Wenn die kleinste Breite des Querschnitts kleiner als bmin ist, sollte der Bemessungswert der ideellen | Abbrandrate verwendet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.4",
+      "line": "0, , 0th kk (3.4)",
+      "context": "(9) Für andere charakteristische Rohdichten k und Werkstoffdicken hp kleiner als 20 mm sollte die | Abbrandrate aus | 0, , 0th kk (3.4) | berechnet werden, mit | k",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.5",
+      "line": "450k (3.5)",
+      "context": "berechnet werden, mit | k | 450k (3.5) | h | p",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.6",
+      "line": "20k h (3.6)",
+      "context": "h | p | 20k h (3.6) | Dabei ist | k charakteristische Rohdichte, in kg/m 3;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "9",
+      "line": "Werkstoffdicken und Rohdichten, siehe 3.4.2 (9)",
+      "context": "Holzwerkstoffplatten außer Sperrholz 0,9a  | a Die Werte gelten für eine charakteristische Rohdichte von 450 kg/m3 und eine Werkstoffdicke von 20 mm, für andere | Werkstoffdicken und Rohdichten, siehe 3.4.2 (9) | 26 | DIN EN 1995-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "Bild 3.4  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und",
+      "context": "2b Nach Überschreiten der Abbrandtiefe von 25 mm reduziert sich die Abbrandrate auf die Werte der | Tabelle 3.1 | Bild 3.4  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und | einer Abbrandtiefe von 25 mm zum Zeitpunkt ta | 28",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "kleineren Zeitlimit ta als nach Gleichung (3.8b) angegeben",
+      "context": "1 Verlauf für während der Branddauer ungeschützte Bauteile mit der ideellen Abbrandrate nach Tabelle 3.1 | 3 Verlauf für anfänglich geschützte Bauteile mit Versagenszeiten der Brandschutzbekleidung tf und einem | kleineren Zeitlimit ta als nach Gleichung (3.8b) angegeben | Bild 3.5  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und | einer Abbrandtiefe von weniger als 25 mm zum Zeitpunkt ta",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "Bild 3.5  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und",
+      "context": "3 Verlauf für anfänglich geschützte Bauteile mit Versagenszeiten der Brandschutzbekleidung tf und einem | kleineren Zeitlimit ta als nach Gleichung (3.8b) angegeben | Bild 3.5  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und | einer Abbrandtiefe von weniger als 25 mm zum Zeitpunkt ta | Legende",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "3.7",
+      "line": "2p 10 , 0 1 8kh (3.7)",
+      "context": "(2) Wenn das Holzbauteil von einer einlagigen Bekleidung aus einer Gipsplatte Typ F geschützt wird, sollte | k2 nach | 2p 10 , 0 1 8kh (3.7) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "Tabelle 3.1 mit dem Faktor k3 = 2 multipliziert werden. Für t ta sollte die Abbrandrate aus Tabelle 3.1 ohne",
+      "context": "45 0,6 | (4) Für den Zeitraum tf t ta nach dem Versagen der Brandschutzbekleidung sollte die Abbrandrate aus | Tabelle 3.1 mit dem Faktor k3 = 2 multipliziert werden. Für t ta sollte die Abbrandrate aus Tabelle 3.1 ohne | Multiplikation mit k3 angesetzt werden. | (5) Das Zeitlimit ta (siehe Bilder 3.4 und 3.5) sollte für tch = tf aus",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "(5) Das Zeitlimit ta (siehe Bilder 3.4 und 3.5) sollte für tch = tf aus",
+      "context": "Tabelle 3.1 mit dem Faktor k3 = 2 multipliziert werden. Für t ta sollte die Abbrandrate aus Tabelle 3.1 ohne | Multiplikation mit k3 angesetzt werden. | (5) Das Zeitlimit ta (siehe Bilder 3.4 und 3.5) sollte für tch = tf aus | f | a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "3.8",
+      "line": "(3.8)",
+      "context": "t tk | a) | (3.8) | oder für tch < tf aus | fc h 2 n",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "3.9",
+      "line": "25 tt ktt k (3.9)",
+      "context": "af | 3n | 25 tt ktt k (3.9) | berechnet werden (siehe Bild 3.6). | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Gleichung (3.8b) basiert auf der Annahme, dass eine verkohlte Schicht von 25 mm einen ausreichend",
+      "context": "auch für eindimensionalen Abbrand, wenn n durch 0 ersetzt wird. | Für die Berechnung von tf siehe 3.4.3.4. | ANMERKUNG Gleichung (3.8b) basiert auf der Annahme, dass eine verkohlte Schicht von 25 mm einen ausreichend | Schutz für eine Abminderung der Abbrandrate auf den Wert der Tabelle 3.1 sicherstellt. | 30",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "3.10",
+      "line": "t (3.10)",
+      "context": "0 | h | t (3.10) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "3.11",
+      "line": "ch p 2,8 14th (3.11)",
+      "context": "Abbrandes tch außerhalb von Stößen oder im Bereich von verspachtelten Stößen oder offenen Stößen mit | einer Breite von 2 mm anzunehmen mit | ch p 2,8 14th (3.11) | Dabei ist | hp Plattendicke in mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "3.12",
+      "line": "ch p 2, 8 23th (3.12)",
+      "context": "hp Plattendicke in mm. | An Stellen im Bereich von offenen Stößen mit einer Breite von > 2 mm sollte der Beginn des Abbrandes aus | ch p 2, 8 23th (3.12) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (3.11) bestimmt werden, wobei die Dicke hp der Dicke der äußeren Lage und 50 % der Dicke der",
+      "context": "mechanische Eigenschaften als die Typen A und H. | (3) Für Bekleidungen aus zwei Lagen Gipsplatten, Typ A oder H, sollte der Beginn des Abbrandes tch nach | Gleichung (3.11) bestimmt werden, wobei die Dicke hp der Dicke der äußeren Lage und 50 % der Dicke der | inneren Lage entspricht, vorausgesetzt, dass der Abstand der Verbindungsmittel der inneren Lage nicht | größer ist als der Abstand der Verbindungsmittel der äußeren Lage.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "nach Gleichung (3.11) bestimmt werden, wobei die Dicke hp der Dicke der äußeren Lage und 80 % der Dicke",
+      "context": "größer ist als der Abstand der Verbindungsmittel der äußeren Lage. | (4) Für Bekleidungen, bestehend aus zwei Lagen Gipsplatten, Typ F, sollte der Beginn des Abbrandes tch | nach Gleichung (3.11) bestimmt werden, wobei die Dicke hp der Dicke der äußeren Lage und 80 % der Dicke | der inneren Lage entspricht, vorausgesetzt, dass der Abstand der Verbindungsmittel der inneren Lage nicht | größer ist als der Abstand der Verbindungsmittel der äußeren Lage.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "3.13",
+      "line": "ch ins ins0,07 20th (3.13)",
+      "context": "(5) Für Balken und Stützen, die von Steinwollematten entsprechend 3.4.3.2 (3) geschützt werden, sollte der | Beginn des Abbrandes aus | ch ins ins0,07 20th (3.13) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "3.14",
+      "line": "(3.14)",
+      "context": "h | l | (3.14) | bestimmt werden, wobei tch entsprechend Gleichung (3.10) ermittelt wird. | (3) Für Gipsplatten, Typen A und H, sollte die Versagenszeit tf entsprechend:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "bestimmt werden, wobei tch entsprechend Gleichung (3.10) ermittelt wird.",
+      "context": "l | (3.14) | bestimmt werden, wobei tch entsprechend Gleichung (3.10) ermittelt wird. | (3) Für Gipsplatten, Typen A und H, sollte die Versagenszeit tf entsprechend: | fctt (3.15)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "3.15",
+      "line": "fctt (3.15)",
+      "context": "bestimmt werden, wobei tch entsprechend Gleichung (3.10) ermittelt wird. | (3) Für Gipsplatten, Typen A und H, sollte die Versagenszeit tf entsprechend: | fctt (3.15) | bestimmt werden, wobei tch entsprechend Absatz 3.4.3.3 (3) ermittelt wird. | ANMERKUNG Im Allgemeinen hängt das Versagen durch mechanischen Abtrag von der Temperatur, sowie der Größe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "3.16",
+      "line": "f,req p char,0 alh d (3.16)",
+      "context": "(4) Die Verankerungslänge la der Verbindungsmittel in das unverkohlte Bauholz sollte mindestens 10 mm | betragen. Die geforderte Länge der Verbindungsmittel lf,req sollte aus | f,req p char,0 alh d (3.16) | berechnet werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "4.1",
+      "line": "0ef char,n 0 = + dd d k (4.1)",
+      "context": "(1) Der ideelle Restquerschnitt sollte durch die Reduzierung des Ausgangsquerschnitts um die ideelle | Abbrandtiefe def ermittelt werden (siehe Bild 4.1). | 0ef char,n 0 = + dd d k (4.1) | Dabei ist | d0 = 7 mm;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "d0 = 7 mm;",
+      "context": "0ef char,n 0 = + dd d k (4.1) | Dabei ist | d0 = 7 mm; | dchar,n entsprechend Gleichung (3.2) oder 3.4.3; | k0 entsprechend Absatz (2) und (3).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "dchar,n entsprechend Gleichung (3.2) oder 3.4.3;",
+      "context": "Dabei ist | d0 = 7 mm; | dchar,n entsprechend Gleichung (3.2) oder 3.4.3; | k0 entsprechend Absatz (2) und (3). | ANMERKUNG Es wird angenommen, dass das Material nahe der Abbrandgrenze mit einer Schichtdicke k0 d0 keine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "Zeitintervalls von t = 0 bis t = tch zwischen 0 und 1 linear ansteigt, siehe 4.2b. Für geschützte Oberflächen mit",
+      "context": "t 20 Minuten 1,0 | (3) Für geschützte Oberflächen mit tch > 20 Minuten ist in der Regel anzunehmen, dass k0 während des | Zeitintervalls von t = 0 bis t = tch zwischen 0 und 1 linear ansteigt, siehe 4.2b. Für geschützte Oberflächen mit | tch 20 Minuten gilt Tabelle 4.1. | Bild 4.2  Verlauf von k0:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "unvollständig",
+      "line": "der Regel mit kmod,fi = 1,0 zu ermitteln.",
+      "context": "interpoliert werden, siehe Bild 4.2b. | (5) Die Bemessungswerte der Festigkeits- und Steifigkeitsparameter des ideellen Restquerschnitts sind in | der Regel mit kmod,fi = 1,0 zu ermitteln. | 4.2.3 Methode mit reduzierten Eigenschaften | (1) Die folgenden Regeln gelten für Rechteckquerschnitte aus Nadelholz, die dem Feuer an drei oder vier",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.2",
+      "line": "pk A (4.2)",
+      "context": "r | 11, 0 200 | pk A (4.2) | für Druckfestigkeit: | mod,fi",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.3",
+      "line": "pk A (4.3)",
+      "context": "r | 11, 0 125 | pk A (4.3) | für Zugfestigkeit und E-Modul: | mod,fi",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.4",
+      "line": "pk A (4.4)",
+      "context": "r | 11, 0 330 | pk A (4.4) | Dabei ist | p Umfang des dem Feuer ausgesetzten Restquerschnitts, in m;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "(4) Für ungeschützte und geschützte Bauteile sollte der Modifikationsfaktor zum Zeitpunkt t = 0 mit kmod,fi = 1",
+      "context": "p Umfang des dem Feuer ausgesetzten Restquerschnitts, in m; | Ar Fläche des Restquerschnitts, in m 2. | (4) Für ungeschützte und geschützte Bauteile sollte der Modifikationsfaktor zum Zeitpunkt t = 0 mit kmod,fi = 1 | angesetzt werden. Für ungeschützte Bauteile darf der Modifikationsfaktor für 0 t 20 min linear interpoliert | werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.4",
+      "line": "Bild 4.3  Kurvenverläufe entsprechend der Gleichungen (4.2) bis (4.4)",
+      "context": "2 Biegefestigkeit | 3 Druckfestigkeit | Bild 4.3  Kurvenverläufe entsprechend der Gleichungen (4.2) bis (4.4) | 35 | DIN EN 1995-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "4.5",
+      "line": "fi u fKK (4.5)",
+      "context": "berücksichtigt werden. | (2) Der Verschiebungsmodul Kfi für die Brandsituation sollte aus | fi u fKK (4.5) | berechnet werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "6.1",
+      "line": "fi flux req d,fin ()ak t - t (6.1)",
+      "context": "des End- und Randabstands des Verbindungsmittels | mit | fi flux req d,fin ()ak t - t (6.1) | Dabei ist | n Abbrandrate entsprechend Tabelle 3.1;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "6.2",
+      "line": "ch req d,fi 0, 5tt t (6.2)",
+      "context": "(1) Wenn die Verbindung durch zusätzliche Holzbekleidungen, Holzwerkstoffplatten oder Gipsplatten, Typ A | oder H, geschützt wird, sollte die Zeitdauer bis zum Beginn des Abbrandes die folgende Bedingung | ch req d,fi 0, 5tt t (6.2) | erfüllen. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "6.3",
+      "line": "ch req d,fi 1, 2tt t (6.3)",
+      "context": "(2) Wenn die Verbindung durch Gipsplatten Typ F geschützt wird, sollte die Zeitdauer bis zum Beginn des | Abbrandes die folgende Bedingung | ch req d,fi 1, 2tt t (6.3) | erfüllen. | (3) Für Verbindungen, bei denen das Verbindungsmittel durch einen eingeleimten Holzdübel geschützt wird,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "sollte die Länge der Dübel entsprechend Gleichung (6.1) bestimmt werden, siehe Bild 6.2.",
+      "context": "erfüllen. | (3) Für Verbindungen, bei denen das Verbindungsmittel durch einen eingeleimten Holzdübel geschützt wird, | sollte die Länge der Dübel entsprechend Gleichung (6.1) bestimmt werden, siehe Bild 6.2. | 40 | DIN EN 1995-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "vor dem rechnerischen Beginn des Abbrand des Bauteils ( t = tch) abfallen. Zusätzliche Beplankungen aus",
+      "context": "(4) Die zusätzliche Schutzbekleidung sollte so befestigt werden, dass ein vorzeitiges Versagen | ausgeschlossen werden kann. Zusätzliche Bekleidungen aus Holzwerkstoffen und Gipsplatten dürfen nicht | vor dem rechnerischen Beginn des Abbrand des Bauteils ( t = tch) abfallen. Zusätzliche Beplankungen aus | Gipsplatten, Typ F, sollten während der gesamten Feuerwiderstandsdauer nicht abfallen ( t = treq). | (5) Zum Schutz von Bolzenverbindungen sollte der Bolzenkopf durch eine Schutzbekleidung der Dicke afi",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "Gipsplatten, Typ F, sollten während der gesamten Feuerwiderstandsdauer nicht abfallen ( t = treq).",
+      "context": "ausgeschlossen werden kann. Zusätzliche Bekleidungen aus Holzwerkstoffen und Gipsplatten dürfen nicht | vor dem rechnerischen Beginn des Abbrand des Bauteils ( t = tch) abfallen. Zusätzliche Beplankungen aus | Gipsplatten, Typ F, sollten während der gesamten Feuerwiderstandsdauer nicht abfallen ( t = treq). | (5) Zum Schutz von Bolzenverbindungen sollte der Bolzenkopf durch eine Schutzbekleidung der Dicke afi | geschützt werden, siehe Bild 6.3.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "6.1",
+      "line": "der Randabstand der Verbindungsmittel sollte gleich oder größer als afi entsprechend Gleichung (6.1)",
+      "context": "der Abstand zwischen den Verbindungsmitteln sollte nicht mehr als 100 mm entlang der Plattenränder | und nicht mehr als 300 mm bei Befestigungen in der Fläche betragen; | der Randabstand der Verbindungsmittel sollte gleich oder größer als afi entsprechend Gleichung (6.1) | sein, siehe Bild 6.2. | (7) Die Verankerungslänge der Verbindungsmittel zur Befestigung der zusätzlichen Schutzbekleidung aus",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "Holz, Holzwerkstoffen oder Gipsplatten, Typ A oder H, sollte mindestens 6 d betragen ( d = Durchmesser des",
+      "context": "sein, siehe Bild 6.2. | (7) Die Verankerungslänge der Verbindungsmittel zur Befestigung der zusätzlichen Schutzbekleidung aus | Holz, Holzwerkstoffen oder Gipsplatten, Typ A oder H, sollte mindestens 6 d betragen ( d = Durchmesser des | Verbindungsmittel). Bei Gipsplatten, Typ F, sollte die Verankerungslänge in das unverkohlte Holz (hinter der | Abbrandgrenze) mindestens 10 mm betragen, siehe Bild 7.1b.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "6.4",
+      "line": "max 50 1 ,25 12t d (6.4)",
+      "context": "1 | 50 | max 50 1 ,25 12t d (6.4) | Dabei ist | d Durchmesser des Bolzens oder Stabdübels, in mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "6.5",
+      "line": "v,Rk,fi v,RkFF (6.5)",
+      "context": "(2) Bei Normbrandbeanspruchung sollte der charakteristische mechanische Widerstand eines Verbindungs- | mittels auf Abscheren aus: | v,Rk,fi v,RkFF (6.5) | berechnet werden | mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "6.6",
+      "line": "(6.6)",
+      "context": "e | kt | (6.6) | Dabei ist | Fv,Rk charakteristische Beanspruchbarkeit der Verbindung mit auf Abscheren beanspruchten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "6.7",
+      "line": "kt (6.7)",
+      "context": "k | k | kt (6.7) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "Feuerwiderstandsdauern als nach Gleichung (6.7), aber von nicht mehr als 30 Minuten, die Seitenteildicke",
+      "context": "Verbindung als die Summe der Beanspruchbarkeit der jeweiligen Verbindungsmittel errechnet werden. | (6) Für Verbindungen mit Nägeln oder Schrauben ohne überstehende Köpfe sollten für längere | Feuerwiderstandsdauern als nach Gleichung (6.7), aber von nicht mehr als 30 Minuten, die Seitenteildicke | und die End- und Randabstände um afi (siehe Bild 6.1) erhöht werden, mit | fi n req d,fiat t (6.8)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "6.8",
+      "line": "fi n req d,fiat t (6.8)",
+      "context": "Feuerwiderstandsdauern als nach Gleichung (6.7), aber von nicht mehr als 30 Minuten, die Seitenteildicke | und die End- und Randabstände um afi (siehe Bild 6.1) erhöht werden, mit | fi n req d,fiat t (6.8) | 44 | DIN EN 1995-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "(1) Die Aussagen nach 6.2.1.2 gelten mit der Ausnahme, dass td,fi entsprechend Gleichung (6.7) berechnet",
+      "context": "der Beanspruchung im Brandfall, siehe 2.4.1. | 6.2.2.2 Geschützte Verbindungen | (1) Die Aussagen nach 6.2.1.2 gelten mit der Ausnahme, dass td,fi entsprechend Gleichung (6.7) berechnet | werden sollte. | (2) Alternativ zum Schutz von End- und Seitenoberflächen der Bauteile dürfen die End- und Randabstände",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "um afi gemäß Gleichung (6.1) vergrößert werden. Für Feuerwiderstandsdauern größer als 30 Minuten sollten",
+      "context": "werden sollte. | (2) Alternativ zum Schutz von End- und Seitenoberflächen der Bauteile dürfen die End- und Randabstände | um afi gemäß Gleichung (6.1) vergrößert werden. Für Feuerwiderstandsdauern größer als 30 Minuten sollten | die Endabstände um 2afi vergrößert werden. Dies gilt auch für gestoßene Mittelteile in einer Verbindung. | 6.3 Verbindungen mit außen liegenden Stahlblechen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "Bekleidung aus Holz oder Holzwerkstoffen der Mindestdicke afi nach Gleichung (6.1) mit td,fi = 5 min",
+      "context": "6.3.2 Geschützte Verbindungen | (1) Außen liegende Stahlbleche dürfen als geschützt angesehen werden, wenn sie vollständig von einer | Bekleidung aus Holz oder Holzwerkstoffen der Mindestdicke afi nach Gleichung (6.1) mit td,fi = 5 min | abgedeckt sind. | (2) Die Auswirkungen anderer Brandschutzmaßnahmen sollten entsprechend EN 1993-1-2 berechnet",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "2.3",
+      "line": "(2) Der Bemessungswert der Beanspruchbarkeit von Schrauben sollte entsprechend Gleichung (2.3)",
+      "context": "(1) Die folgenden Regeln gelten für auf Herausziehen beanspruchte Schrauben, die vor direkter | Brandbeanspruchung geschützt sind. | (2) Der Bemessungswert der Beanspruchbarkeit von Schrauben sollte entsprechend Gleichung (2.3) | berechnet werden. | (3) Für Verbindungen, bei denen die Abstände a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 47,
+      "equation_number": "unvollständig",
+      "line": "Beanspruchbarkeit der Schraube auf Herausziehen im Brandfall entsprechend Gleichung (6.11) berechnet",
+      "context": "2 und a3 der Verbindungsmittel die Bedingungen der | Gleichungen (6.9) und (6.10) erfüllen, siehe Bild 6.5, sollte der Umrechnungsfaktor für die Abminderung der | Beanspruchbarkeit der Schraube auf Herausziehen im Brandfall entsprechend Gleichung (6.11) berechnet | werden. | 45",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.9",
+      "line": "21 40aa (6.9)",
+      "context": "EN 1995-1-2:2004 + AC:2009 (D) | 21 40aa (6.9) | 31 20aa (6.10) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.10",
+      "line": "31 20aa (6.10)",
+      "context": "EN 1995-1-2:2004 + AC:2009 (D) | 21 40aa (6.9) | 31 20aa (6.10) | Dabei ist | a1, a2 und a3 Abstände in Millimetern.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "6.11",
+      "line": "(6.11)",
+      "context": "at | t für a1 td,fi + 28 (d) | (6.11) | Dabei ist | a1 seitliche Überdeckung, in mm, siehe Bild 6.5;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "(4) Der Umrechnungsfaktor für Verbindungsmittel mit Randabständen a2 = a1 und a3 a1 + 20 mm sollte",
+      "context": "a1 seitliche Überdeckung, in mm, siehe Bild 6.5; | td,fi erforderliche Feuerwiderstandsdauer, in Minuten. | (4) Der Umrechnungsfaktor für Verbindungsmittel mit Randabständen a2 = a1 und a3 a1 + 20 mm sollte | entsprechend Gleichung (6.11) berechnet werden, wobei td,fi durch 1,25 td,fi zu ersetzen ist. | Bild 6.5  Querschnitt und Definition der Abstände",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "entsprechend Gleichung (6.11) berechnet werden, wobei td,fi durch 1,25 td,fi zu ersetzen ist.",
+      "context": "td,fi erforderliche Feuerwiderstandsdauer, in Minuten. | (4) Der Umrechnungsfaktor für Verbindungsmittel mit Randabständen a2 = a1 und a3 a1 + 20 mm sollte | entsprechend Gleichung (6.11) berechnet werden, wobei td,fi durch 1,25 td,fi zu ersetzen ist. | Bild 6.5  Querschnitt und Definition der Abstände | 46",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "7.1",
+      "line": "t (7.1)",
+      "context": "8 | l | t (7.1) | haben. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "für t 3t0 sollte der Modifikationsfaktor bei Brandbeanspruchung entsprechend Gleichung (4.2) berechnet",
+      "context": "(2) Für Nadelholz sollte der Modifikationsfaktor bei Brandbeanspruchung k | mod,fi wie folgt berechnet werden: | für t 3t0 sollte der Modifikationsfaktor bei Brandbeanspruchung entsprechend Gleichung (4.2) berechnet | werden; | für t = 5t0 ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "für t = 5t0 ist",
+      "context": "für t 3t0 sollte der Modifikationsfaktor bei Brandbeanspruchung entsprechend Gleichung (4.2) berechnet | werden; | für t = 5t0 ist | char,n | mod,fi 1, 0 3 , 2dk b (A.8)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "a = Feuchtegehalt",
+      "context": "800 1,65 0,26 | 1 200 1,65 0 | a = Feuchtegehalt | B.3 Mechanische Eigenschaften | (1) Die lokalen Werte der Festigkeit und des E-Moduls von Nadelholz sollten mit einem temperatur-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "Abbrandtiefe entsprechend Gleichung (3.2) bestimmt wird und die ideelle Abbrandrate entsprechend den",
+      "context": "C.2.1 Abbrandraten | (1) Der ideelle verbleibende Restquerschnitt sollte entsprechend Bild C.1 bestimmt werden, wobei die ideelle | Abbrandtiefe entsprechend Gleichung (3.2) bestimmt wird und die ideelle Abbrandrate entsprechend den | Gleichungen (C.1) oder (C.2) bestimmt wird. | 58",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "3.11",
+      "line": "Beginns des Abbrandes der schmalen, brandbeanspruchten Seite entsprechend 3.4.3.3 (2), Gleichung (3.11)",
+      "context": "bestimmt werden, wobei die Versagenszeit tf entsprechend C.2.3 (1) berechnet wird. | (2) Wenn Brandschutzbekleidungen aus Gipsplatten von Typ A, H oder F bestehen, sollte der Zeitpunkt des | Beginns des Abbrandes der schmalen, brandbeanspruchten Seite entsprechend 3.4.3.3 (2), Gleichung (3.11) | oder (3.12), bestimmt werden. | C.2.3 Versagenszeitpunkt von Bekleidungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "equation_number": "unvollständig",
+      "line": "dchar,n ideelle Abbrandtiefe entsprechend Gleichung (3.2) mit n entsprechend Gleichungen (C.1) und",
+      "context": "Dabei ist | a0, a1 Werte entsprechend Tabellen C.2 und C.3; | dchar,n ideelle Abbrandtiefe entsprechend Gleichung (3.2) mit n entsprechend Gleichungen (C.1) und | (C.2); | h die Höhe des Balken oder des Stieles.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "dchar,n die ideelle Abbrandtiefe entsprechend Gleichung (3.2) mit n entsprechend Gleichungen (C.1)",
+      "context": "Dabei ist | b0, b1 Werte nach Tabellen C.4 und C.5; | dchar,n die ideelle Abbrandtiefe entsprechend Gleichung (3.2) mit n entsprechend Gleichungen (C.1) | und (C.2); | h die Höhe des Balkens.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "tch = tf (D.1)",
+      "context": "(1) Für Brandschutzbekleidungen aus Holzwerkstoffen sollte der Beginn des Abbrandes von Holzbauteilen | mit | tch = tf (D.1) | ermittelt werden. | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "auf der schmalen brandbeanspruchten Seite entsprechend Gleichung (3.11) oder (3.12);",
+      "context": "(2) Für Brandschutzbekleidungen aus Gipsplatten sollte der Beginn des Abbrandes von Holzbauteilen wie | folgt bestimmt werden: | auf der schmalen brandbeanspruchten Seite entsprechend Gleichung (3.11) oder (3.12); | auf der Längsseite des Bauteils zum Hohlraum zeigend, siehe Bild D.1 mit | tch = tf (D.2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "tch = tf (D.2)",
+      "context": "auf der schmalen brandbeanspruchten Seite entsprechend Gleichung (3.11) oder (3.12); | auf der Längsseite des Bauteils zum Hohlraum zeigend, siehe Bild D.1 mit | tch = tf (D.2) | wobei der Versagenszeitpunkt tf entsprechend D.4 (2) bestimmt wird. Eine Definition der Schmal- und | Längsseite von Holzbauteilen ist in Bild D.1 angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 73,
+      "equation_number": "unvollständig",
+      "line": "dämmung mit tins,0 = 5,0 min angesetzt werden.",
+      "context": "kdens entsprechend Tabelle E.2. | (4) Für ungedämmte Hohlräume mit einer Tiefe von 45 mm bis 200 mm sollte der Grundwert der Wärme- | dämmung mit tins,0 = 5,0 min angesetzt werden. | E.2.3 Positionsbeiwerte | (1) Für Wände mit einer einlagigen Bekleidung sollte der Positionsbeiwert für Bekleidungen auf der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "kpos = 1,5 für ungedämmte Hohlräume oder Hohlräume mit einer Wärmedämmungen aus Steinwolle;",
+      "context": "die Bekleidung auf der brandbeanspruchten Seite aus Gipsplatten Typ F besteht, sollte der Positionsbeiwert | wie folgt gewählt werden: | kpos = 1,5 für ungedämmte Hohlräume oder Hohlräume mit einer Wärmedämmungen aus Steinwolle; | kpos = 2,0 für Hohlräume mit einer Wärmedämmungen aus Glaswolle; | (2) Für Wände mit zweilagigen Bekleidungen, siehe Bild E.2, sollte der Positionsbeiwert aus Tabelle E.5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "kpos = 2,0 für Hohlräume mit einer Wärmedämmungen aus Glaswolle;",
+      "context": "wie folgt gewählt werden: | kpos = 1,5 für ungedämmte Hohlräume oder Hohlräume mit einer Wärmedämmungen aus Steinwolle; | kpos = 2,0 für Hohlräume mit einer Wärmedämmungen aus Glaswolle; | (2) Für Wände mit zweilagigen Bekleidungen, siehe Bild E.2, sollte der Positionsbeiwert aus Tabelle E.5 | entnommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "(3) Für Fugen von Wärmedämmmatten sollte der Fugenbeiwert mit kj = 1 angesetzt werden.",
+      "context": "(2) Für nicht hinterlegte Bekleidungsfugen sollte der Fugenbeiwert kj aus den Tabellen E.6 und E.7 | entnommen werden. | (3) Für Fugen von Wärmedämmmatten sollte der Fugenbeiwert mit kj = 1 angesetzt werden. | Tabelle E.2  Werte für kdens für Hohlraumdämmungen | Hohlraummaterial Rohdichte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 80,
+      "equation_number": "1",
+      "line": "6.2.1 .1 (1)",
+      "context": "vereinfachte | Regeln | 6.2.1 .1 (1) | nein | Berechnung von",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 80,
+      "equation_number": "3",
+      "line": "a11 6.2.1 .1 (2), (3)",
+      "context": "nein | Berechnung von | a11 6.2.1 .1 (2), (3) | nein | nein",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 21,
+      "line": "kfi entsprechend Tabelle 2.1"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 21,
+      "line": "Tabelle 2.1  Werte für kfi"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 21,
+      "line": "kfi entsprechend Tabelle 2.1;"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 27,
+      "line": "spruchung ungeschützt sind, werden die Bemessungswerte der Abbrandraten 0 und n in Tabelle 3.1"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 27,
+      "line": "Tabelle 3.1 ermittelt werden. Abbrandraten von Buche sollten entsprechend den Werten für Nadelvollholz"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 27,
+      "line": "(7) Bemessungswerte der Abbrandraten für Furnierschichtholz (LVL) nach EN 14374 sind in Tabelle 3.1"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 28,
+      "line": "sind die Bemessungswerte der Abbrandraten in Tabelle 3.1 angegeben. Die Werte gelten für eine"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 28,
+      "line": "Tabelle 3.1  Bemessungswerte der Abbrandraten 0 und n für Bauholz, Furnierschichtholz,"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 29,
+      "line": "Versagenszeitpunkt tf der Brandschutzbekleidung geringer ist als die Werte nach Tabelle 3.1;"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 29,
+      "line": "beschriebenen Zeitpunkt ta größer ist als die Werte nach Tabelle 3.1;"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 29,
+      "line": "nach Tabelle 3.1 annimmt."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 30,
+      "line": "Tabelle 3.1"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 31,
+      "line": "1 Verlauf für während der Branddauer ungeschützte Bauteile mit der ideellen Abbrandrate nach Tabelle 3.1"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 31,
+      "line": "2c nach Überschreiten der Abbrandtiefe von 25 mm reduziert sich die Abbrandrate auf die Werte der Tabelle 3.1"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 32,
+      "line": "(1) Für tch t tf sollten die in Tabelle 3.1 gegebenen Abbrandraten mit dem Faktor k2 multipliziert werden."
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 32,
+      "line": "26 kg/m3 und einem Schmelzpunkt T 1 000 °C geschützt wird, darf k2 der Tabelle 3.2 entnommen werden."
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 32,
+      "line": "Tabelle 3.2  Werte von k2 für durch Steinwolleplatten geschütztes Bauholz"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 32,
+      "line": "Tabelle 3.1 mit dem Faktor k3 = 2 multipliziert werden. Für t ta sollte die Abbrandrate aus Tabelle 3.1 ohne"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 32,
+      "line": "Tabelle 3.1 mit dem Faktor k3 = 2 multipliziert werden. Für t ta sollte die Abbrandrate aus Tabelle 3.1 ohne"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 32,
+      "line": "Schutz für eine Abminderung der Abbrandrate auf den Wert der Tabelle 3.1 sicherstellt."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 36,
+      "line": "(2) Für ungeschützte Oberflächen sollte k0 Tabelle 4.1 entnommen werden."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 36,
+      "line": "Tabelle 4.1  Bestimmung von k0 für ungeschützte Oberflächen mit t in Minuten (siehe Bild 4.2a)"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 36,
+      "line": "tch 20 Minuten gilt Tabelle 4.1."
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 39,
+      "line": "f Umrechnungsfaktor entsprechend Tabelle 4.2."
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 39,
+      "line": "Tabelle 4.2  Umrechnungsfaktor f"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 40,
+      "line": "standsdauer nach Tabelle 6.1 bestimmt werden."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 41,
+      "line": "Tabelle 6.1  Feuerwiderstandsdauer ungeschützter Verbindungen mit Seitenteilen aus Holz"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 41,
+      "line": "größere Feuerwiderstandsdauern als nach Tabelle 6.1, aber von nicht mehr als 30 Minuten, durch die"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 41,
+      "line": "n Abbrandrate entsprechend Tabelle 3.1;"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 41,
+      "line": "td,fi Feuerwiderstandsdauer der ungeschützten Verbindung nach Tabelle 6.1."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 42,
+      "line": "td,fi Feuerwiderstandsdauer der ungeschützten Verbindung nach Tabelle 6.1."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 44,
+      "line": "st des Stahlbleches die in Tabelle 6.2"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 44,
+      "line": "Tabelle 6.2  Breiten von Stahlblechen mit ungeschützten Rändern"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 45,
+      "line": "k Parameter entsprechend Tabelle 6.3;"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 46,
+      "line": "k ein Parameter entsprechend Tabelle 6.3;"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 46,
+      "line": "Tabelle 6.3  Parameter k"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 47,
+      "line": "n Bemessungswert der ideellen Abbrandtiefe entsprechend Tabelle 3.1;"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 61,
+      "line": "Tabelle 3.1, 3.4.2;"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 63,
+      "line": "Tabelle 3.1, in mm/min."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 64,
+      "line": "Tabelle 3.1, in mm/min."
+    }
+  ],
+  "figures": [
+    {
+      "label": "1",
+      "pdf_page": 10,
+      "line": "Möglichkeiten für die Anwendung von EN 1995-1-2 sind in Bild 1 dargestellt. Die Ansätze mit festgelegten"
+    },
+    {
+      "label": "1",
+      "pdf_page": 11,
+      "line": "Bild 1  Alternative Bemessungsverfahren"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 23,
+      "line": "Qk,1/Gk für verschiedene Kombinationsbeiwerte fi entsprechend Gleichung (2.9) ist in Bild 2.1 mit folgenden Annahmen"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 24,
+      "line": "Bild 2.1  Beispiele für Abminderungsfaktoren fi bei Veränderung des Lastverhältnisses Qk,1/Gk"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 26,
+      "line": "(1) Die Abbrandrate für eindimensionalen Abbrand, siehe Bild 3.1, sollte als konstant über die Zeit"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 26,
+      "line": "Bild 3.1  Eindimensionaler Abbrand eines breiten Querschnitts (einseitige Brandbeanspruchung)"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 26,
+      "line": "(2) Die ideelle Abbrandrate enthält die Effekte der Eckausrundungen und von Rissen, siehe Bild 3.2. Sie"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 27,
+      "line": "Bild 3.2  Bemessungswert der Abbrandtiefe dchar,0 für eindimensionalen Abbrand und"
+    },
+    {
+      "label": "3.3",
+      "pdf_page": 29,
+      "line": "Bauteilen geschützt werden, siehe Bild 3.3, sollte berücksichtigt werden, dass"
+    },
+    {
+      "label": "3.3",
+      "pdf_page": 30,
+      "line": "Bild 3.3  Beispiele für die Verwendung von Platten als Brandschutzbekleidung: a) Balken, b) Stützen"
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 30,
+      "line": "Bild 3.4  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und"
+    },
+    {
+      "label": "3.5",
+      "pdf_page": 31,
+      "line": "Bild 3.5  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch = tf und"
+    },
+    {
+      "label": "3.6",
+      "pdf_page": 31,
+      "line": "Bild 3.6  Darstellung der Abbrandtiefe in Abhängigkeit von der Zeit für tch < tf"
+    },
+    {
+      "label": "3.6",
+      "pdf_page": 32,
+      "line": "berechnet werden (siehe Bild 3.6)."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 35,
+      "line": "Abbrandtiefe def ermittelt werden (siehe Bild 4.1)."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 35,
+      "line": "Bild 4.1  Definition des verbleibenden Restquerschnitts und des ideellen Restquerschnitts"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 36,
+      "line": "Tabelle 4.1  Bestimmung von k0 für ungeschützte Oberflächen mit t in Minuten (siehe Bild 4.2a)"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 36,
+      "line": "Bild 4.2  Verlauf von k0:"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 36,
+      "line": "interpoliert werden, siehe Bild 4.2b."
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 37,
+      "line": "Gleichungen (4.2) bis (4.4) ermittelt werden (siehe Bild 4.3):"
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 37,
+      "line": "Bild 4.3  Kurvenverläufe entsprechend der Gleichungen (4.2) bis (4.4)"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 38,
+      "line": "obersten Stockwerk nur am unteren Ende als voll eingespannt angenommen werden, siehe Bild 4.4. Die"
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 38,
+      "line": "Stützenlänge L sollte entsprechend Bild 4.4 angenommen werden."
+    },
+    {
+      "label": "4.4",
+      "pdf_page": 38,
+      "line": "Bild 4.4  Durchlaufende Stütze"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 42,
+      "line": "Bild 6.1  Zusätzliche Dicken und zusätzliche Randabstände der Verbindung"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 42,
+      "line": "sollte die Länge der Dübel entsprechend Gleichung (6.1) bestimmt werden, siehe Bild 6.2."
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 43,
+      "line": "geschützt werden, siehe Bild 6.3."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 43,
+      "line": "sein, siehe Bild 6.2."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 43,
+      "line": "Abbrandgrenze) mindestens 10 mm betragen, siehe Bild 7.1b."
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 43,
+      "line": "Bild 6.2  Beispiele für zusätzlichen Schutz durch eingeleimte Holzdübel oder durch Holzwerkstoff-"
+    },
+    {
+      "label": "6.3",
+      "pdf_page": 44,
+      "line": "Bild 6.3  Beispiel für den Schutz eines Bolzenkopfes"
+    },
+    {
+      "label": "6.4",
+      "pdf_page": 44,
+      "line": "als geschützt angesehen werden (siehe Bild 6.4):"
+    },
+    {
+      "label": "6.4",
+      "pdf_page": 45,
+      "line": "Bild 6.4  Schutz der Ränder von Stahlblechen (Verbindungsmittel nicht dargestellt):"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 46,
+      "line": "und die End- und Randabstände um afi (siehe Bild 6.1) erhöht werden, mit"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 47,
+      "line": "Gleichungen (6.9) und (6.10) erfüllen, siehe Bild 6.5, sollte der Umrechnungsfaktor für die Abminderung der"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 48,
+      "line": "a1 seitliche Überdeckung, in mm, siehe Bild 6.5;"
+    },
+    {
+      "label": "6.5",
+      "pdf_page": 48,
+      "line": "Bild 6.5  Querschnitt und Definition der Abstände"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 49,
+      "line": "Restquerschnitt nicht weniger als 10 mm betragen, siehe Bild 7.1."
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 50,
+      "line": "entsprechend Bild 7.2 befestigt werden. Die Bekleidungen sollten an dem Bauteil selbst und nicht an anderen"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 50,
+      "line": "Verankerungslänge gilt 7.1.2 (1)  (2), siehe Bild 7.1 b. Der Randabstand sollte nicht größer als 3 hp und nicht"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 50,
+      "line": "Bild 7.1  Durch Gipsplatten geschützte Holzbauteile "
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 50,
+      "line": "Bild 7.2  Beispiele für die Befestigung von Brandschutzbekleidungen an Balken und Stützen"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1008,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2448,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2200,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7523,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.4.1",
+        "2.4.2",
+        "2.4.3",
+        "2.4.4",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.4.1",
+        "3.4.2",
+        "3.4.3",
+        "3.5",
+        "4",
+        "4.1",
+        "4.2",
+        "4.2.1",
+        "4.2.2",
+        "4.2.3",
+        "4.3",
+        "4.3.1",
+        "4.3.2",
+        "4.3.3",
+        "4.3.4",
+        "4.3.5",
+        "4.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 7013,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "6",
+        "6.1",
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.3",
+        "6.3.1",
+        "6.3.2",
+        "6.4",
+        "7",
+        "7.1",
+        "7.1.1",
+        "7.1.2",
+        "7.1.3",
+        "7.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3465,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3403,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2450,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 3086,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2692,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 100,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2181,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2713,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2585,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1857,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1587,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1895,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2064,
+      "text_layer": "usable",
+      "clauses": [
+        "0",
+        "2",
+        "2.1",
+        "2.1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2510,
+      "text_layer": "usable",
+      "clauses": [
+        "2.1.2",
+        "180",
+        "2.1.3",
+        "2.2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1870,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1520,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1822,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4",
+        "2.4.1",
+        "2.4.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1368,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1946,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4.3"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2377,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4.4",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1877,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.2",
+        "0"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1873,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 28,
+      "characters": 1597,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2238,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.3",
+        "3.4.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 760,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "4",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1104,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "3",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1827,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.3.2"
+      ],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2148,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.3.3"
+      ],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2124,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.3.4",
+        "3.5"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1520,
+      "text_layer": "usable",
+      "clauses": [
+        "4",
+        "4.1",
+        "4.2",
+        "4.2.1",
+        "4.2.2",
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1881,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 37,
+      "characters": 889,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1391,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3",
+        "4.3.1",
+        "4.3.2",
+        "4.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1772,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3.4",
+        "4.3.5",
+        "4.4"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1984,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "6",
+        "6.1",
+        "6.2",
+        "6.2.1",
+        "6.2.1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1128,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1086,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.1.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1705,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 44,
+      "characters": 1367,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "6.2.1.3",
+        "60"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1166,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.2",
+        "6.2.2.1"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1758,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 47,
+      "characters": 2193,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.2.2",
+        "6.3",
+        "6.3.1",
+        "6.3.2",
+        "6.4"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 48,
+      "characters": 711,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 49,
+      "characters": 2129,
+      "text_layer": "usable",
+      "clauses": [
+        "7",
+        "7.1",
+        "7.1.1",
+        "7.1.2",
+        "7.1.3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1199,
+      "text_layer": "usable",
+      "clauses": [
+        "7.2",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1104,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 770,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 1470,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 54,
+      "characters": 490,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 2246,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1150,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 248,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 818,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 59,
+      "characters": 539,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1282,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1020,
+      "text_layer": "usable",
+      "clauses": [
+        "0"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 1328,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 1510,
+      "text_layer": "usable",
+      "clauses": [
+        "0"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1220,
+      "text_layer": "usable",
+      "clauses": [
+        "0"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 989,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 810,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 67,
+      "characters": 891,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 68,
+      "characters": 461,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 69,
+      "characters": 985,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 70,
+      "characters": 1531,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "0"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 1892,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 1252,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "4",
+        "5",
+        "6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 73,
+      "characters": 1308,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 74,
+      "characters": 1686,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 75,
+      "characters": 1195,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 76,
+      "characters": 911,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 77,
+      "characters": 205,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 78,
+      "characters": 253,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 79,
+      "characters": 352,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 80,
+      "characters": 510,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    }
+  ]
+}

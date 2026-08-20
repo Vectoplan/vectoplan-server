@@ -1,0 +1,1596 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1991-1-6 
+ICS 91.01 0.30 
+Eurocode 1: Einwirkungen auf Tragwerke-
+Ersatzvermerk 
+siehe unten 
+Tei11-6: Allgemeine Einwirkungen, Einwirkungen während der 
+Bauausführung; 
+Deutsche FassungEN 1991-1-6:2005 + AC:2008 
+Eurocode 1: Actions on structures -
+Part 1-6: General actions, Actions during execution; 
+GermanversionEN 1991-1-6:2005 + AC:2008 
+Eurocode 1: Actions sur les structures-
+Partie 1-6: Actions generales, Actionsen cours d'execution; 
+Versionallemande EN 1991-1-6:2005 + AC:2008 
+Ersatzvennerk 
+Ersatz für DIN EN 1991-1-6:2005-09; 
+Dezember 2010 
+DIN 
+mit DIN EN 1991-1-6/NA:2010-12 Ersatz for die 2010-05 zurockgezogene Norm DIN 1055-8:2003-01; 
+Ersatz für DIN EN 1991-1-6 Berichtigung 1:2009-09 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 33 Seiten 
+Preisgruppe 15 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723933
+
+===== PDF-SEITE 2 =====
+DIN EN 1991-1-6:2010-12 
+Nationales Vorwort 
+Diese Europäische Norm (EN 1991-1-6:2005 + AC:2008) ist in der Verantwortung des CEN/TC 250 Euro-
+codes für den konstruktiven Ingenieurbau (Sekretariat: BSI, Vereinigtes Königreich) entstanden. 
+Die Arbeiten wurden auf nationaler Ebene vom NABau-Arbeitsausschuss NA 005-51-02 Einwirkungen auf 
+Bauten begleitet. 
+Die Norm wird Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen sein, deren Anwendung nur 
+im Paket sinnvoll ist. Dieser Tatsache wird durch die Richtlinie der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, in dem dort Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen 
+müssen im Einzelfall von CEN und der Kommission präzisiert werden. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Anfang und Ende der durch die Berichtigung eingefügten oder geänderten Texte sind jeweils durch 
+Änderungsmarken  angegeben. 
+Änderungen 
+Gegenüber DIN V ENV 1991-2-6:1999-08 wurden folgende Änderungen vorgenommen: 
+a) der Vornormstatus wurde aufgehoben; 
+b) die Norm wurde umnummeriert in DIN EN 1991-1-6; 
+c) die Stellungnahmen der nationalen Normungsinstitute wurde eingearbeitet und der Text vollständig 
+überarbeitet. 
+Gegenüber DIN EN 1991-1-6:2005-09, DIN EN 1991-1-6 Berichtigung 1:2009-09 und DIN 1055-8:2003-01 
+wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN 1055-8: 2003-01 
+DIN V ENV 1991-2-6: 1999-08 
+DIN EN 1991-1-6: 2005-09 
+DIN EN 1991-1-6 Berichtigung 1: 2009-09 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1991-1-6 
+ Juni 2005 
+ +AC 
+ Juli 2008 
+ICS 91.010.30
+Deutsche Fassung 
+ Eurocode 1: Einwirkungen auf Tragwerke  
+Teil 1-6: Allgemeine Einwirkungen, 
+Einwirkungen während der Bauausführung 
+Eurocode 1: Actions on structures  
+Part 1-6: General actions, 
+Actions during execution 
+ Eurocode 1: Actions sur les structures  
+Partie 1-6: Actions générales, 
+Actions en cours dexécution 
+Diese Europäische Norm wurde vom CEN am 13. Januar 2005 angenommen. 
+Die Berichtigung tritt am 30. Juli 2008 in Kraft und wurde in EN 1991-1-6:2005 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal,
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+© 2008 CEN Ref. Nr. EN 1991-1-6:2005 + AC:2008 D
+
+===== PDF-SEITE 4 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................3
+Hintergrund des Eurocode Programm .............................................................................................................3
+Status und Gültigkeit der Eurocodes ...............................................................................................................4
+Nationale Fassungen der Eurocodes ...............................................................................................................5
+Beziehung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (ENs und ETAs) ...........................................................................................................................5
+Zusätzliche Informationen insbesondere für EN 1991-1-6 .............................................................................5
+Nationaler Anhang..............................................................................................................................................6
+1 Allgemeines................................................................................................................... .........................8
+1.1 Anwendungsbereich ........................................................................................................... ..................8
+1.2 Normative Verweisungen...................................................................................................... ................8
+1.3 Annahmen .................................................................................................................... ..........................9
+1.4 Unterscheidung zwischen Prinzipien und Anwendungsregeln........................................................9
+1.5 Begriffe .................................................................................................................... ...............................9
+1.6 Symbole ..................................................................................................................... .......................... 10
+2 Einteilung der Einwirkungen ................................................................................................... .......... 11
+2.1 Allgemeines................................................................................................................. ........................ 11
+2.2 Bausführungslasten .......................................................................................................... ................. 13
+3 Bemessungssituationen und Grenzzustände.................................................................................. 14
+3.1 Allgemeines  Festlegung der Bemessungssituationen................................................................ 14
+3.2 Grenzzustände der Tragfähigkeit............................................................................................. ......... 16
+3.3 Grenzzustände der Gebrauchstauglichkeit ..................................................................................... 16
+4 Darstellung der Einwirkungen.................................................................................................. ......... 17
+4.1 Allgemeines................................................................................................................. ........................ 17
+4.2 Einwirkung auf tragende und nicht tragende Bauteile während der Montage............................. 18
+4.3 Geotechnische Einwirkungen .................................................................................................. ......... 18
+4.4 Einwirkung infolge Vorspannung .............................................................................................. ....... 18
+4.5 Vorverformungen............................................................................................................. ................... 19
+4.6 Temperatur, Schwinden, Einflüsse aus Hydratation....................................................................... 19
+4.7 Windeinwirkungen............................................................................................................ .................. 19
+4.8 Schneelasten................................................................................................................ ....................... 20
+4.9 Einwirkungen verursacht durch Wasser........................................................................................ .. 20
+4.10 Einwirkung infolge atmosphärischer Eisbildung............................................................................ 22
+4.11 Bauausführungslasten....................................................................................................... ................ 22
+4.12 Außergewöhnliche Einwirkungen.............................................................................................. ....... 25
+4.13 Einwirkungen aus Erdbeben .................................................................................................. ........... 26
+Anhang A 1 (normativ) Ergänzende Regelungen für Gebäude ................................................................... 27
+A1.1 Grenzzustände der Tragfähigkeit............................................................................................ .......... 27
+A1.2 Grenzzustände der Gebrauchstauglichkeit .................................................................................... .2 7
+A1.3 Horizontale Einwirkungen................................................................................................... ............... 27
+Anhang A2 (normativ) Ergänzende Regelungen für Brücken .................................................................... 28
+A2.1 Grenzzustände der Tragfähigkeit............................................................................................ .......... 28
+A2.2 Grenzzustände der Gebrauchstauglichkeit .................................................................................... .2 8
+A2.3 Bemessungswerte für Verformungen ........................................................................................... ... 28
+A2.4 Schneelasten............................................................................................................... ........................ 29
+A2.5 Bauausführungslasten....................................................................................................... ................ 29
+Anhang B (informativ) Einwirkungen auf Tragwerke bei Umbauten, Wiederaufbau oder Abriss............ 30
+Literaturhinweise ............................................................................................................................................. 31
+2 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Vorwort 
+Dieses Dokument (EN 1991-1-6:2005 + AC:2008) wurde vom Technischen Komitee CEN/TC 250 Structural 
+Eurocodes erarbeitet, dessen Sekretariat vom BSI erstellt. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Dezember 2005, und etwaige entgegenstehende 
+nationale Normen müssen bis März 2010 zurückgezogen werden. 
+Das Technische Komitee CEN/TC 250 ist für alle Eurocodes des konstruktiven Ingenieurbaus zuständig. 
+Diese europäische Norm ersetzt die Europäische Norm ENV 1991-2-6:1996. 
+Anhänge A1 und A2 sind normativ und Anhang B ist informativ. Diese Norm enthält ein Literaturverzeichnis. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Schweden, Schweiz, Slowakei, Slowenien, Spanien, Tschechische 
+Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein 
+Programm auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des 
+Programms war die Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerungskomitees mit Repräsentanten der 
+Mitgliedsländer die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 
+80‘er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine 
+Vereinbarung 
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln 
+(z. B. die Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie (CPD), die Ratsrichtlinien 
+93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die 
+entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990 Eurocode: Grundlagen der Tragwerksplanung 
+EN 1991 Eurocode 1: Einwirkungen auf Tragwerke 
+EN 1992 Eurocode 2: Entwurf, Berechnung und Bemessung von Stahlbetonbauten 
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaften und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken. 
+3 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+EN 1993 Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten 
+EN 1994 Eurocode 4: Entwurf, Berechnung und Bemessung von Stahl-Beton Verbundbauten 
+EN 1995 Eurocode 5: Entwurf, Berechnung und Bemessung von Holzbauten 
+EN 1996 Eurocode 6: Entwurf, Berechnung und Bemessung von Mauerwerksbauten 
+EN 1997 Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+EN 1998 Eurocode 8: Auslegung von Bauwerken gegen Erdbeben 
+EN 1999 Eurocode 9: Entwurf, Berechnung und Bemessung von Aluminiumkonstruktionen 
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den 
+Mitgliedsländern und haben deren Recht zur Festlegung sicherheitsbezogener Werte auf nationaler Ebene 
+sichergestellt, so dass diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeit der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EEC, besonders mit der wesentlichen Anforderung Nr. 1: 
+Mechanischer Widerstand und Stabilität und der wesentlichen Anforderung Nr. 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(EN’s und ETA’s). 
+Die Eurocodes haben, soweit sie sich auf Bauleistungen beziehen, eine direkte Beziehung zu den 
+Grundlagendokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch 
+anderer Art sind als die harmonisierten Produktnormen 3). Daher sind die technischen Gesichtspunkte, die 
+sich aus den Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von 
+EOTA, die an Produktnormen arbeiten, angemessen zu berücksichtigen, damit diese Produktnormen mit den 
+Eurocodes vollständig kompatibel sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+ konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+ Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+ selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+ a) die wesentliche Anforderung zu konkretisieren, in dem die Begriffe und soweit erforderlich die technische 
+ Grundlagen für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ b) Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen anzugeben, 
+ z. B. rechnerische oder Testverfahren, Entwurfsregeln, 
+ c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+ Zulassungen zu dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr. 1 und einen Teil der 
+ wesentlichen Anforderung Nr.2. 
+4 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Nationale Fassungen der Eurocodes 
+Die nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang. 
+Der Nationale Anhang darf nur Hinweise zu den Parametern enthalten, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die 
+Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, indem sie erstellt werden. Sie 
+umfassen: 
+ Zahlenwerte und/oder Klassen, bei denen die Eurocodes Alternativen eröffnen, 
+ Zahlenwerte, bei denen die Eurocodes nur Symbole angeben, 
+ Landesspezifische Daten (geographische, klimatische usw., die nur für ein Mitgliedsland gelten, z.B .
+Schneekarten; 
+ Vorgehensweise, bei denen die Eurocodes mehrere Vorgehensweisen zur Wahl anbieten. 
+Des weiteren dürfen enthalten sein: 
+ Entscheidungen über die Anwendung der informativen Anhänge, 
+ Verweise zu ergänzenden, sich nicht widersprechenden Informationen, die dem Anwender bei der 
+Benutzung des Eurocodes helfen. 
+Beziehung zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (ENs und ETAs) 
+Es besteht die Notwendigkeit, dass die harmonisierten Technischen Spezifikationen für Bauprodukte und die 
+technischen Regelungen für die Tragwerksplanung 4) konsistent sind. Weiterhin sollten die Hinweise, die mit 
+den CE-Zeichen an den Bauprodukten verbunden sind, die die Eurocodes in Bezug nehmen, klar erkennen 
+lassen, welche national festzulegenden Parameter (NDP) zugrunde liegen. 
+Zusätzliche Informationen insbesondere für EN 1991-1-6 
+EN 1991-1-6 beschreibt Prinzipien und Anwendungsregeln für die Bestimmung von Einwirkungen, die bei der 
+Bauausführung von Gebäuden und Ingenieurbauwerken, einschließlich der folgenden Aspekte, zu beachten 
+sind: 
+ Einwirkungen auf tragende und nicht tragende Bauteile während der Montage, 
+ geotechnische Einwirkungen, 
+ Einwirkungen infolge Vorspannung, 
+ Vorverformungen, 
+ Temperatur, Schwinden, Einflüsse aus Hydratation, 
+ Windeinwirkungen, 
+4) Siehe Artikel 3.3 und Art. 12 der Bauproduktenrichtlinie, ebenso wie die Abschnitte 4.2, 4.3.1, 4.3.2, und 5.2 des 
+ Grundlagendokumentes Nr. 1 
+5 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ Schneelasten, 
+ Einwirkungen infolge Wasser, 
+ Einwirkungen infolge atmosphärischer Vereisung, 
+ Bauausführungslasten, 
+ außergewöhnliche Einwirkungen, 
+ Einwirkungen durch Erdbeben. 
+EN 1991-1-6 ist für folgende Nutzungen gedacht: 
+ Bauherren (die z. B. besondere Anforderungen an die Zuverlässigkeit oder Dauerhaftigkeit spezifizieren 
+wollen), 
+ Planer und Konstrukteure, 
+ die Bauaufsicht und öffentliche Auftraggeber. 
+EN 1991-1-6 ist für die Anwendung mit EN 1990, den anderen Teilen von EN 1991 und EN 1992 bis EN 1999 
+für die Bemessung von Tragwerken gedacht. 
+Nationaler Anhang 
+Dieser Teil von EN 1991 enthält alternative Methoden und Werte sowie Empfehlungen für Klassen mit 
+Hinweisen, an welchen Stellen nationale Festlegungen getroffen werden. Dazu sollte die jeweilige nationale 
+Ausgabe von EN 1991-1-6 einen nationalen Anhang mit den national festzulegenden Parametern erhalten, 
+mit dem die Tragwerksplanung von Hochbauten und Ingenieurbauwerken, die in dem Ausgabeland gebaut 
+werden sollen, möglich ist. 
+Regelung Bezug 
+1.1(3) Bemessungsregeln für Hilfskonstruktionen 
+2.2 (4) 
+ANMERKUNG 1
+
+ Positionierung von als frei eingestuften Bauausführungslasten 
+3.1(1)P Bemessungssituation für Sturmbedingungen 
+3.1(5) 
+Anmerkung 1 Wiederkehrperiode für den Ansatz von charakteristischen Werten von veränderlichen 
+Einwirkungen während der Bauausführung 
+Anmerkung 2 Kleinste Windgeschwindigkeit während der Bauausführung 
+3.1(7) Regeln für die Kombination von Schneelasten und Windeinwirkungen mit 
+Bauausführungslasten 
+3.1(8) 
+Anmerkung 1 
+Regeln bezüglich Imperfektionen in der Tragwerksgeometrie 
+6 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+(fortgesetzt) 
+Regelung Bezug 
+3.3(2) Kriterien für Grenzzustände der Gebrauchstauglichkeit während der Bauausführung 
+3.3(6) Anforderungen an die Gebrauchstauglichkeit für Hilfskonstruktionen 
+4.9(6) 
+Anmerkung 2 
+Lasten und Wasserspiegelhöhen für Treibeis 
+4.10(1)P Definition der Einwirkungen infolge atmosphärischer Vereisung 
+4.11.1(1)  Empfohlene charakteristische Werte für die Bauausführungslasten Qca und Qcb 
+4.11.2(1) 
+ANMERKUNG 2
+
+ Bauausführungslasten während des Betonierens 
+4.12(1)P 
+Anmerkung 2 
+Dynamische Auswirkungen infolge außergewöhnlicher Einwirkungen 
+4.12(2) Dynamische Auswirkungen infolge herabfallender Ausrüstungsgegenstände 
+4.12 (3) Bemessungswerte von menschlichen Anpralllasten 
+4.13(2) Einwirkungen aus Erdbebeben 
+Anhang A1 
+A1.1(1) 
+Repräsentative Werte für veränderliche Einwirkungen infolge Bauausführungslasten 
+Anhang A1 
+A1.3(2) 
+Charakteristische Werte von äquivalenten Horizontalkräften 
+ Anhang A2 
+A2.3(1) 
+ANMERKUNG 1
+
+Bemessungswerte für die vertikale Durchbiegung von Brücken im Taktschiebe-
+verfahren
+Anhang A2 
+A2.4(2) 
+Abminderung der charakteristischen Werte von Schneelasten 
+Anhang A2 
+A2.4(3) 
+Abgeminderte Werte der charakteristischen Schneelasten für den Nachweis des 
+statischen Gleichgewichtes 
+Anhang A2 
+A2.5(2) 
+Bemessungswerte für horizontale Reibungskräfte 
+Anhang A2 
+A2.5(3) 
+Bestimmung von Reibbeiwerten min und max 
+7 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1991-1-6 gibt Prinzipien und allgemeine Regelungen zur Bestimmung der Einwirkungen an, die bei der 
+Errichtung von Gebäuden und Ingenieurbauwerken zu berücksichtigen sind. 
+ANMERKUNG 1 Dieser Teil von EN 1991 gibt Hinweise zur Bestimmung der Einwirkungen, die bei unterschiedlichen 
+Arten von Bauarbeiten, einschließlich Umbauten des Tragwerks, wie z. B. einer Ertüchtigung und/oder teilweisen oder 
+ganzen Abriss, zu berücksichtigen sind. Weitere Regelungen und Hinweise werden in den Anhängen A1, A2 and B 
+gegeben. 
+ANMERKUNG 2 Regelungen, die auf Grund von Belangen, die nicht Gegenstand dieser Europäischen Norm sind, 
+jedoch die Sicherheit von Personen auf und um die Baustelle betreffen, dürfen projektabhängig festgelegt werden.
+(2) Die folgenden Aspekte werden in diesem Teil von EN 1991 behandelt: 
+Kapitel 1: Allgemeines 
+Kapitel 2: Einteilung der Einwirkungen 
+Kapitel 3: Bemessungssituationen und Grenzzustände 
+Kapitel 4: Darstellung der Einwirkungen 
+Anhang A1: Ergänzende Regelungen für Gebäude (normativ) 
+Anhang A2 : Ergänzende Regelungen für Brücken (normativ) 
+Anhang B: Einwirkung auf Tragwerke bei Umbauten, Wiederaufbau oder Abriss (informativ). 
+(3) EN 1991-1-6 enthält auch Regelungen zur Bestimmung der Einwirkungen, die für die Bemessung von 
+Hilfskonstruktionen, wie sie in 1.5 definiert sind, und die für die Errichtung von Gebäuden und 
+Ingenieurbauwerken benötigt werden, verwendet werden können. 
+ANMERKUNG Bemessungsregeln für Hilfskonstruktionen können im Nationalen Anhang oder für das Einzelprojekt 
+festgelegt werden. Hinweise können in den maßgebenden Europäischen Normen gefunden werden. Zum Beispiel werden 
+Bemessungsregeln für Schalungen und Lehrgerüste in EN 12812 angegeben. 
+1.2 Normative Verweisungen 
+Diese Europäische Norm beinhaltet datierte oder undatierte Verweise zu anderen Veröffentlichungen. Diese 
+normativen Verweise sind an den entsprechenden Stellen im Text zitiert und die Veröffentlichungen sind 
+hiernach aufgelistet. Bei datierten Verweisen gelten spätere Änderungen oder Ergänzungen der in Bezug 
+genommenen Normen nur, wenn diese durch Änderungen oder Ergänzungen der Norm eingeführt sind. Bei 
+undatierten Verweisen gilt die jeweils gültige Ausgabe der in Bezug genommenen Veröffentlichung 
+(einschließlich ihrer Ergänzungen). 
+ANMERKUNG Die Eurocodes wurden als Europäische Vornorm veröffentlicht. Die folgenden bereits veröffentlichten 
+oder in Bearbeitung befindlichen Vornormen werden in den normativen Abschnitten oder in Anmerkungen zu den 
+normativen Abschnitten zitiert. 
+EN 1990 Eurocode: Grundlagen der Tragwerksplanung 
+EN 1991-1-1 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-1: Allgemeine Einwirkungen  Wichten, 
+Eigenlasten, Nutzlasten für Gebäude 
+EN 1991-1-2 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-2: Brandeinwirkung 
+8 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+EN 1991-1-3 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-3: Allgemeine Einwirkungen  Schnee-
+lasten 
+EN 1991-1-4 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-4: Allgemeine Einwirkungen  Wind-
+lasten 
+EN 1991-1-5 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-5: Allgemeine Einwirkungen  Ther-
+mische Einwirkungen 
+EN 1991-1-7 Eurocode 1: Einwirkungen auf Tragwerke: Teil 1-7: Allgemeine Einwirkungen 
+Außergewöhnliche Einwirkungen 
+EN 1991-2 Eurocode 1: Einwirkungen auf Tragwerke: Teil 2: Verkehrslasten auf Brücken 
+EN 1991-3 Eurocode 1: Einwirkungen auf Tragwerke: Teil 3: Einwirkung infolge von Kranen und 
+Maschinen 
+EN 1991-4 Eurocode 1: Einwirkungen auf Tragwerke: Teil 4: Silos und Flüssigkeitsbehälter 
+EN 1992 Eurocode 2: Entwurf, Berechnung und Bemessung von Stahlbetonbauten 
+EN 1993 Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten 
+EN 1994 Eurocode 4: Entwurf, Berechnung und Bemessung von Stahl-Beton-Verbundbauten 
+EN 1995 Eurocode 5: Entwurf, Berechnung und Bemessung von Holzbauten 
+EN 1996 Eurocode 6: Entwurf, Berechnung und Bemessung von Mauerwerk 
+EN 1997 Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik 
+EN 1998 Eurocode 8: Auslegung von Bauwerken gegen Erdbeben 
+EN 1999 Eurocode 9: Entwurf, Berechnung und Bemessung von Aluminiumkonstruktionen 
+1.3 Annahmen 
+(1)P Es gelten allgemein die in EN 1990:2002, 1.3 angegebenen Annahmen. 
+1.4 Unterscheidung zwischen Prinzipien und Anwendungsregeln 
+(1)P Es gelten die in von EN 1990:2002, 1.4 angegebenen Regelungen. 
+1.5 Begriffe 
+1.5.1 Allgemeines 
+(1) Es gelten die in von EN 1990:2002, 1.5 angegebenen Begriffe. 
+1.5.2 Zusätzliche Begriffe und Definitionen, die insbesondere für diese Norm gelten 
+1.5.2.1 Hilfskonstruktionen 
+Konstruktionen, die in Verbindung mit dem Baufortschritt stehen, die nach ihrer Nutzung nicht mehr benötigt 
+werden, wenn die zugehörigen Ausführungsarbeiten abgeschlossen sind und die demontiert werden können 
+(z.B. Lehrgerüst, Baugerüst, Hilfsstützen, Kofferdamm, Aussteifungen, Vorbauschnabel). 
+9 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Ganze Tragwerke, die einer zeitlich begrenzten Nutzung unterliegen, (z.B. eine Hilfsbrücke zur 
+Umleitung des Verkehrs) werden nicht als Hilfskonstruktionen angesehen. 
+1.5.2.2 Bauausführungslasten 
+Last, die durch Bauausführungsarbeiten vorhanden sein kann, die aber nicht mehr bei Abschluss der 
+Bauarbeiten vorhanden ist. 
+1.5.2.3 Allgemeine Kolktiefe 
+Kolktiefe infolge von Flussströmung, unabhängig vom Vorhandensein von Hindernissen (die Tiefe hängt von 
+der Größe der Strömung ab). 
+1.5.2.4 Lokale Kolktiefe 
+Kolktiefe infolge Wasserwirbeln an Hindernissen, wie z. B. Brückenpfeilern 
+1.6 Symbole 
+Für die Anwendung dieser Europäischen Norm gelten die folgenden Symbole (siehe auch EN 1990). 
+Lateinische Großbuchstaben 
+Adeb Fläche der Ablagerungen (Ansammlung von Ablagerungen) 
+Fdeb Horizontalkräfte verursacht durch angesammelte Ablagerungen 
+Fcb.k charakteristische Werte von konzentrierten Bauausführungslasten Qcb
+Fhn Nennwert für die Horizontalkräfte 
+Fwa Horizontalkräfte verursacht durch die Wasserströmmung auf eingetauchte Gegenstände 
+Qc Bauausführungslasten (allgemeines Symbol) 
+Qca Bauausführungslasten infolge Personal, Angestellte und Besucher, möglicherweise mit Hand-
+werkzeugen oder anderen kleinen Baustellengeräten 
+Qcb Bauausführungslasten infolge gestapelter beweglicher Güter (z. B. Bau- und Konstruktions-
+materialien, vorbetonierte Bauteile und Ausrüstungsgegenstände) 
+Qcc Bauausführungslasten infolge nicht ständig vorhandener Ausrüstungsgegenstände, vor Ort um
+während der Errichtung benutzt zu werden, entweder statisch (z. B. Schaltafeln, Baugerüst, 
+Lehrgerüst, Maschinen, Container) oder beweglich (z. B. fahrbare Schalungen, Vorbauträge r
+und -schnabel, Gegengewichte) 
+Qcd Bauausführungslasten infolge beweglicher schwerer Maschinen und Ausrüstungsgegenstände, 
+in der Regel auf Rädern oder Gleisen (z. B. Krankonstruktionen, Aufzüge, Fahrzeuge, 
+Hubwagen, Stromerzeuger, Hebezeuge, schwere Leiteinrichtungen) 
+Qce Bauausführungslasten aus Ansammlung von nicht genutzten Materialien (z. B. überschüssige 
+Baumaterialien, Aushub oder Abbruchmaterial) 
+Qcf Bauausführungslasten aus Teilen des Tragwerks für zeitlich begrenzte Zustände (während der
+Errichtung), bevor die endgültigen Einwirkungen der Bemessung wirksam werden 
+QW Windeinwirkungen 
+Qwa Einwirkungen infolge Wasser 
+10 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Lateinische Kleinbuchstaben 
+b Breite eines eingetauchten Gegenstandes 
+cpe Winddruckkoeffizient für freistehende Wände 
+h Wassertiefe 
+k Formbeiwert für einen eingetauchten Gegenstand 
+deb Dichte der angesammelten Ablagerungen 
+p Wasserdruck, bei fließendem Gewässer 
+qca,k charakteristische Werte von gleichförmig verteilten Bauausführungslasten Qca
+qcb,k charakteristische Werte von gleichförmig verteilten Bauausführungslasten Qcb
+qcc,k charakteristische Werte von gleichförmig verteilten Lasten, stellvertretend für die Bauausfüh-
+rungslast, Qcc
+vwa Mittlere Strömungsgeschwindigkeit des Wassers in m/s, gemittelt über die Wassertiefe 
+Griechische kleine Buchstaben 
+wa Dichte von Wasser 
+2 Einteilung der Einwirkungen 
+2.1 Allgemeines 
+(1) Einwirkungen während der Bauausführung, die sowohl Lasten, die unmittelbar aus der Bauausführung 
+herrühren, als auch andere Lasten als diese umfassen, sind in Übereinstimmung mit EN 1990:2002, 4.1.1 
+einzuteilen. 
+ANMERKUNG Tabelle 2.1 enthält die Einteilungen von Einwirkungen (andere als Bauausführungslasten). 
+11 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Tabelle 2.1 Einteilung der Einwirkungen (andere als Bauausführungslasten) 
+während der Bauausführungszeit 
+Einteilung Bemerkungen Verweis Abschnitt 
+in dieser 
+Norm 
+Einwirkung Verände-
+rung in Zeit 
+Einteilung/ 
+Herkunft 
+Räumliche 
+Verän-
+derung 
+Eigenschaft
+(Statisch/ 
+Dynamisch)
+4.2 Eigengewicht ständig direkt 
+fest mit 
+Tole-ranz/ 
+frei 
+statisch 
+Frei während 
+Transport/ 
+Lagerung. 
+Dynamisch bei 
+Fall 
+EN 1991-1-1 
+4.3 Baugrund-
+bewegungen ständig indirekt frei statisch EN 1997 
+4.3 Erddruck 
+ständig/ 
+veränder-
+lich 
+direkt frei statisch EN 1997 
+4.4 Vorspannung 
+ständig/ 
+veränder-
+lich 
+direkt fest statisch 
+Veränderlich für 
+örtliche 
+Bemessung 
+(Verankerung). 
+EN 1990, 
+EN 1992 bis 
+EN 1999 
+4.5 Vorverfor-
+mungen 
+ständig/ 
+veränder-
+lich 
+indirekt frei statisch EN 1990 
+4.6 Temperatur Veränder-
+lich indirekt frei statisch EN 1991-1.5 
+4.6 Schwinden/ 
+Hydratation 
+ständig/ 
+veränder-
+lich 
+indirekt frei statisch 
+EN 1992, 
+EN 1993, 
+EN1994 
+4.7 Windein-
+wirkung 
+veränder-
+lich/ 
+außerge-
+wöhnlich 
+direkt fest/ frei Statisch/ 
+dynamisch (*) EN 1991-1-4 
+4.8 Schnee-
+lasten 
+veränder-
+lich/ 
+außerge-
+wöhnlich 
+direkt fest/ frei Statisch/ 
+dynamisch (*) EN 1991-1-3 
+4.9 Einwirkungen 
+durch Wasser 
+ständig/ 
+veränder-
+lich/außer-
+gewöhn-
+lich 
+direkt fest/ frei Statisch/ 
+dynamisch 
+Ständig/ver- 
+änderlich nach 
+Projektfestlegung, 
+dynamisch für 
+Wasserströ-
+mungen, falls 
+maßgebend 
+EN 1990 
+4.10 
+Atmos-
+phärische 
+Eislasten 
+Veränder-
+lich direkt frei Statisch/ 
+dynamisch (*) ISO 12494 
+4.12 Ausserge-
+wöhnliche 
+Außerge-
+wöhnlich 
+direkt/in-
+direkt frei Statisch/ 
+dynamisch (*) EN 1990, 
+EN 1991-1-7 
+4.13 Erdbeben 
+Veränder-
+lich/aus-
+serge-
+wöhnlich 
+direkt frei dynamisch (*) EN 1990 (4.1), 
+EN1998 
+ANMERKUNG(*) Die Bezugsquellendokumente müssen im Rahmen der Erstellung der Nationalen Anhänge überprüft 
+werden, in denen weitere einschlägige Informationen gegeben werden können. 
+12 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+2.2 Bausführungslasten 
+(1) Bauausführungslasten (siehe auch 4.11) sind in der Regel als veränderliche Einwirkungen ( Qc) 
+einzuordnen. 
+ANMERKUNG 1 Tabelle 2.2 enthält eine Einteilung für Bauausführungslasten. 
+Tabelle 2.2  Einteilung der Bauausführungslasten 
+Einteilung Bemerkungen Verweis Abschnitt
+in dieser 
+Norm 
+Einwirkungen
+(kurze 
+Beschrei-
+bung) 
+Verände-
+rung in 
+Zeit 
+Eintei-
+lung/ 
+Herkunft 
+räumliche 
+Verände-
+rung 
+Eigenschaft
+(Statisch/ 
+Dynamisch) 
+4.11 
+Personal 
+und Hand-
+werkzeuge 
+veränder-
+lich direkt frei statisch 
+4.11 
+bewegliche 
+Stapelgüter veränder-
+lich direkt frei statisch / 
+dynamisch 
+Dynamisch 
+im Fall von 
+herabfal-
+lenden 
+Lasten 
+EN 1991-1-1 
+4.11 
+Nicht 
+ständig vor-
+handene 
+Aus-
+rüstungs-
+gegen-
+stände 
+veränder-
+lich direkt fest/frei statisch/ 
+dynamisch EN 1991-3 
+4.11 
+Bewegliche 
+schwere 
+Maschinen 
+und Aus-
+rüstungs-
+gegen-
+stände 
+veränder-
+lich direkt frei statisch/ 
+dynamisch 
+EN 1991-2, 
+EN 1991-3 
+4.11 
+Ansamm-
+lung von 
+Abfallstoffen veränder-
+lich direkt frei statisch/ 
+dynamisch 
+Kann Lasten 
+auf z. B. 
+vertikale 
+Oberfläche 
+hervorrufen 
+EN 1991-1-1 
+4.11 
+Lasten von 
+Bauteilen 
+des Trag-
+werks aus 
+Bauzu-
+ständen 
+veränder-
+lich direkt frei statisch 
+Dynamische 
+Einflüsse sind 
+ausge-
+schlossen 
+EN 1991-1-1 
+ANMERKUNG 2 Tabelle 4.1 enthält die volle Beschreibung und Einteilung für Bauausführungslasten. 
+ANMERKUNG 3 Bauausführungslasten, verursacht durch Krane, Ausrüstungsgegenstände, Hilfskonstruktionen, können 
+abhängig von ihren möglichen Einsatzpositionen als feste oder freie Einwirkungen eingeteilt werden. 
+(3) Werden die Bauausführungslasten als fest eingeteilt, sollten Toleranzen für mögliche Abweichungen von 
+der theoretischen Position festgelegt werden. 
+13 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Die Abweichungen dürfen für das Einzelprojekt festgelegt werden. 
+(4) Werden die Bauausführungslasten als frei eingeteilt, dann sollten die Grenzen der Fläche, auf der sie 
+bewegt oder positioniert werden können, festgelegt werden. 
+ANMERKUNG 1 Die Grenzen können im Nationalen Anhang und für das Einzelprojekt festgelegt werden. 
+ANMERKUNG 2 In Übereinstimmung mit EN 1990:2002, 1.3(2), sind Kontrollmaßnahmen festzulegen, um nachzuweisen, 
+dass die Positionen und Bewegungen der Bauausführungslasten mit den Bemessungsannahmen übereinstimmen. 
+3 Bemessungssituationen und Grenzzustände 
+3.1 Allgemeines  Festlegung der Bemessungssituationen 
+(1)P Es sind die vorübergehenden, außergewöhnlichen und seismischen Bemessungssituationen festzulegen 
+und falls angemessen für die Bemessung der Bauzustände zu berücksichtigen. 
+ANMERKUNG Für Windeinwirkungen bei stürmischen Bedingungen (z. B. Zyklone, Wirbelsturm) darf der Nationale 
+Anhang die zu verwendende Bemessungssituation auswählen. Die empfohlene Bemessungssituation ist diejenige für 
+außergewöhnliche Bedingungen. 
+(2) Die Bemessungssituationen sollten sowohl für das Gesamttragwerk, für die Einzelbauteile, für das 
+teilweise errichtete Tragwerk als auch für die Hilfskonstruktionen und Ausrüstungsgegenstände angemessen 
+ausgewählt werden. 
+(3)P Die ausgewählten Bemessungssituationen haben die während des Baufortschritts auftretenden 
+Verhältnisse in Übereinstimmung mit EN 1990:2002, 3.2 (3)P zu berücksichtigen. 
+(4)P Die ausgewählten Bemessungssituationen müssen mit der in der Planung erwarteten Bauausführung 
+übereinstimmen. Die Bemessungssituationen haben jegliche Änderung der Bauausführung zu berücksichtigen. 
+(5) Jede gewählte vorübergehende Bemessungssituation ist in der Regel mit einer nominellen Zeitdauer zu 
+verbinden, die gleich oder größer als die vorhersehbare Dauer der betrachteten Bauausführung ist. Die 
+Bemessungssituationen sollte die Wahrscheinlichkeit jeglicher entsprechender Wiederkehrperioden von 
+veränderlichen Einwirkungen berücksichtigen (z. B. klimatische Einwirkungen). 
+ANMERKUNG 1 Die Wiederkehrperioden für die Festlegung der charakteristischen Werte von veränderlichen 
+Einwirkungen während der Bauausführung dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. 
+Empfohlene Wiederkehrperioden klimatischer Einwirkungen sind in Tabelle 3.1 in Abhängigkeit der nominellen Zeitdauer 
+der maßgeblichen Bemessungssituation angegeben. 
+14 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Tabelle 3.1  Empfohlene Wiederkehrperioden zur Festlegung 
+der charakteristischen Werte für klimatische Einwirkungen 
+Zeitdauer Wiederkehrperiode (Jahre) 
+ 3 Tage 
+ 3 Monate (aber > 3 Tage) 
+ 1 Jahr (aber > 3 Monate) 
+> 1 Jahr 
+ 2a
+ 5b
+10 
+50 
+a Eine nominelle Dauer von 3 Tagen, zu wählen für kurze Bauzustände, 
+gehört zu einer Zeitdauer einer zuverlässigen meteorologischen Vorhersage 
+für den Ort der Baustelle. Diese Wahl darf für einen etwas längeren 
+Bauzustand beibehalten werden, wenn entsprechende organisatorische 
+Maßnahmen berücksichtigt werden. Das Verfahren mit mittleren 
+Wiederkehrperioden ist im allgemeinen nicht für kurze Zeitspannen 
+geeignet. 
+b Für eine nominelle Dauer von bis zu 3 Monaten dürfen Einwirkungen unter 
+ Berücksichtigung von angemessenen jahreszeitlichen und kurzfristigen 
+ meteorologischen klimatischen Veränderungen bestimmt werden. Zum 
+ Beispiel, hängt die Größe der Strömung eines Flusses von der betrachteten 
+ Jahreszeit ab. 
+ANMERKUNG 2 Die kleinste Windgeschwindigkeit während der Bauausführung darf im Nationalen Anhang oder für das 
+Einzelprojekt festgelegt werden. Der empfohlene Grundwert für eine Dauer von bis zu 3 Monaten ist 20 m/s in 
+Übereinstimmung mit EN 1991-1-4. 
+ANMERKUNG 3 Beziehungen zwischen den charakteristischen Werten und der Wiederkehrperiode für klimatische 
+Einwirkungen sind in den entsprechenden Teilen von EN 1991 angegeben. 
+(6) Wenn eine Planung für eine Ausführungsphase zeitlich begrenzte klimatische Bedingungen oder ein 
+Wetterfenster berücksichtigt, sind die charakteristischen Einwirkungen in der Regel so zu bestimmen, dass 
+folgendes berücksichtigt wird: 
+ voraussichtliche Dauer der Ausführungsphase, 
+ Zuverlässigkeit von Wettervorhersagen, 
+ Zeitaufwand für Schutzmaßnahmen. 
+(7) Die Kombinationsregeln für Schneelasten und Windeinwirkungen mit Bauausführungslasten Qc (siehe 
+4.11.1) sollten festgelegt werden. 
+ANMERKUNG Diese Regelungen dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. 
+(8) Geometrische Imperfektionen des Tragwerks und der Bauteile sollten für ausgewählte Bemessungs-
+situationen der Bauausführung festgelegt werden. 
+ANMERKUNG 1 Diese Imperfektionen dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. Siehe 
+auch Anhang A2 und EN 1990:2002, 3.5 (3) und (7). 
+ANMERKUNG 2 Für Betonkonstruktionen, siehe auch die geeignete Europäische Norm einschließlich derer 
+für Vorgefertigte Betonprodukte, die von CEN/TC 229 erarbeitet wurden. 
+15 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+(9) Einwirkungen aus Windanregung (einschließlich aerodynamischer Auswirkungen vorbeifahrender 
+Fahrzeuge, einschließlich Zügen), die zu einer Ermüdung der Bauteile führt, sind in der Regel zu 
+berücksichtigen. 
+ANMERKUNG Siehe EN 1991-1-4 und EN 1991-2. 
+(10) Wenn das Tragwerk oder Teile des Tragwerks Beschleunigungen ausgesetzt sind, die dynamische oder 
+Trägheitseffekte hervorrufen, sind diese Effekte in der Regel zu berücksichtigen. 
+ANMERKUNG Merkliche Beschleunigungen dürfen vernachlässigt werden, wenn möglich Bewegungen durch 
+entsprechende Vorrichtungen streng kontrolliert werden. 
+(11) Falls angemessen, sollten durch Wasser verursachte Einwirkungen, z. B. Auftrieb durch Grundwasser in 
+Verbindung mit Wasserständen bestimmt werden, die festgelegten oder festgestellten Bemessungs-
+situationen entsprechen. 
+ANMERKUNG Diese Einwirkungen dürfen üblicherweise, in gleicher Weise wie in (5) beschrieben, bestimmt werden. 
+(12) Falls notwendig, sollten Bemessungssituationen festgelegt werden, die Einflüsse aus Kolken in 
+strömendem Wasser berücksichtigen. 
+ANMERKUNG Bei längeren Ausführungsphasen können unterschiedliche Kolktiefen für die Bemessung im Bauzustand 
+für im strömenden Wasser untergetauchten, ständigen oder Hilfskonstruktionen zu berücksichtigen sein. Diese Höhen 
+dürfen für das jeweilige Projekt festgelegt werden (siehe 4.9(4)). 
+(13) Falls notwendig, sollten bei Betonkonstruktionen Einwirkungen aus Kriechen und Schwinden auf der 
+Grundlage von Zeitangaben und Daue r berücksichtigt werden, die im Zusammenhang mit der Bemessungs-
+situation stehen. 
+3.2 Grenzzustände der Tragfähigkeit 
+(1)P Grenzzustände der Tragfähigkeit müssen für alle vorübergehenden, außergewöhnlichen und 
+seismischen Bemessungssituationen, die für die Dauer der Bauausführung in Übereinstimmung mit EN 
+1990:2002, als geeignet ausgewählt wurden, nachgewiesen werden. 
+ANMERKUNG 1 Die Einwirkungskombinationen für außergewöhnliche Bemessungssituationen können entweder 
+ausdrücklich die außergewöhnliche Einwirkung enthalten, oder sie können sich auf eine Situation nach einem 
+außergewöhnlichem Ereignis beziehen (siehe EN 1990: 2002, Abschnitt 6). 
+ANMERKUNG 2 Allgemein beziehen sich außergewöhnliche Bemessungssituationen auf außergewöhnliche 
+Bedingungen, die auf das Tragwerk oder seiner Exposition anwendbar sind, wie z. B. Anprall, örtliches Versagen und 
+nachfolgender fortschreitender Zusammenbruch, Absturz von tragenden oder nicht tragenden Bauteilen und im Falle von 
+Bauwerken, ungewöhnliche Konzentrationen von Baugeräten und/oder Baumaterialien, Wasseransammlung auf 
+Stahldächern, Brand, usw.. 
+ANMERKUNG 3 Siehe auch EN 1991-1-7. 
+(2) Der Nachweis des Tragwerks hat in der Regel die zutreffende Geometrie und Widerstandsfähigkeit des 
+teilweise fertig gestellten Tragwerks entsprechend der gewählten Bemessungssituationen zu berücksichtigen. 
+3.3 Grenzzustände der Gebrauchstauglichkeit 
+(1)P Für die ausgewählten Bemessungssituationen während der Bauausführung sind die Grenzzustände der 
+Gebrauchstauglichkeit in Übereinstimmung mit EN 1990 nachzuweisen sofern notwendig. 
+(2) Die mit den Grenzzuständen der Gebrauchstauglichkeit verbundenen Anforderungen haben in der Regel 
+die an das fertige Tragwerk gestellten Anforderungen zu berücksichtigen. 
+16 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Die mit den Grenzzuständen der Gebrauchstauglichkeit verbundenen Anforderungen dürfen im 
+Nationalen Anhang oder für das Einzelprojekt festgelegt werden (siehe EN 1992 bis EN 1999). 
+(3)P Arbeitsverfahren, die während der Bauausführung übermäßige Rissbildung und/oder frühzeitig Verfor-
+mungen verursachen und die Dauerhaftigkeit, die Betriebsbereitschaft und/oder das Erscheinungsbild im 
+Endzustand beeinträchtigen, sind in der Regel zu vermeiden. 
+(4) Beanspruchungen infolge Schwinden und Temperatur sind in der Regel bei der Bemessung zu 
+berücksichtigen, und sollten durch eine geeignete konstruktive Durchbildung verringert werden. 
+(5) Die Einwirkungskombinationen sollten in Übereinstimmung mit EN 1990:2002, 6.5.3 (2) aufgestellt werden. 
+Im Allgemeinen sind die maßgebenden Einwirkungskombinationen für vorübergehende Bemessungs-
+situationen während der Bauausführung: 
+ die charakteristische Kombination 
+ die quasi-ständige Kombination 
+ANMERKUNG Wenn häufige Werte für einige bestimmte Einwirkungen betrachtet werden müssen, dürfen diese Werte 
+für das Einzelprojekt festgelegt werden. 
+(6) Gebrauchstauglichkeitsanforderungen für Hilfskonstruktionen sollten festgelegt werden, um jegliche 
+unbeabsichtigte Verformungen und Verschiebungen zu vermeiden, die das Erscheinungsbild oder den 
+wirksamen Gebrauch des Tragwerks beeinflussen oder Schäden an der Bauwerksaußenfläche oder an nicht 
+tragenden Bauteilen hervorrufen. 
+ANMERKUNG Diese Anforderungen dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. 
+4 Darstellung der Einwirkungen 
+4.1 Allgemeines 
+(1)P Charakteristische oder andere repräsentative Werte von Einwirkungen sind in Übereinstimmung mit 
+EN 1990, EN 1991, EN 1997 und EN 1998 zu bestimmen. 
+ANMERKUNG 1 Die repräsentativen Werte der Einwirkungen während der Bauausführung dürfen von denjenigen 
+abweichen, die zur Bemessung des fertig gestellten Tragwerks verwendet werden. In diesem Kapitel werden 
+gebräuchliche Einwirkungen während der Bauausführung, besondere Bauausführungslasten und Verfahren zur 
+Festlegung ihrer Zahlenwerte angegeben. 
+ANMERKUNG 2 Siehe auch Kapitel 2 bezüglich der Klassifizierung der Einwirkungen und Kapitel 3 für die Nenndauer 
+von vorübergehenden Bemessungssituationen. 
+ANMERKUNG 3 Die Auswirkungen der Einwirkungen dürfen durch geeignete konstruktive Maßnahmen, den Einsatz von 
+Hilfskonstruktionen oder Schutz- bzw. Sicherheitseinrichtungen vermindert oder verhindert werden. 
+(2) Repräsentative Werte für Bauausführungslasten ( Qc) sind in der Regel unter Berücksichtigung ihrer 
+zeitlichen Veränderlichkeit zu bestimmen. 
+(3) Auswirkungen von Wechselwirkungen zwischen den Tragwerken und Teilen davon sind in der Regel 
+während der Bauausführung zu berücksichtigen. Derartige Tragwerke sollten auch solche einschließen, die 
+Teile von Hilfskonstruktionen sind. 
+(4)P Wenn Teile eines Tragwerks durch andere Teile des Tragwerks ausgesteift oder abgestützt werden (z. B. 
+Schalungsträger zum Betonieren der Decke), sollten die sich daraus auf diese Teile ergebenden 
+Einwirkungen berücksichtigt werden. 
+ANMERKUNG 1 Abhängig von den angewendeten Bauausführungsverfahren dürfen Abstützungen des Tragwerks durch 
+höhere Lasten beaufschlagt werden, als die Nutzlasten, für die sie für die ständige Bemessungssituation bemessen 
+wurden. Die Abstützungen dürfen jedoch nicht bis zu ihrer vollen Tragfähigkeit ausgenutzt werden. 
+17 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG 2 Für Bauausführungslasten siehe auch 4.11. 
+(5) Horizontale Einwirkungen infolge Reibung sollten auf der Grundlage von geeigneten Reibungsbeiwerten 
+bestimmt werden. 
+ANMERKUNG Es kann erforderlich sein, dass obere und untere Grenzen für die Reibung zu berücksichtigen sind. Die 
+Reibungsbeiwerte dürfen für das Einzelprojekt festgelegt werden. 
+4.2 Einwirkung auf tragende und nicht tragende Bauteile während der Montage 
+(1) Das Eigengewicht von tragenden und nicht tragenden Teilen während der Montage sollte in 
+Übereinstimmung mit EN 1991-1-1 bestimmt werden. 
+(2) In der Regel sind die Einflüsse aus Dynamik und Trägheit des Eigengewichtes von tragenden und nicht 
+tragenden Bauteilen zu berücksichtigt. 
+(3) Es sollten die Einwirkungen auf Befestigungen von Hebeeinrichtungen und Materialien nach EN 1991-3 
+bestimmt werden. 
+(4) Einwirkungen auf tragende und nicht tragende Bauteile infolge Auflagerpunkten und -bedingungen bei 
+Hebe- und Transportvorgängen und Lagern sollten die tatsächlichen Auflagerbedingungen und die 
+Auswirkungen aus Dynamik oder Trägheitseffekten infolge senkrechter und waagerechter Beschleunigungen 
+berücksichtigen, sofern zweckmäßig. 
+ANMERKUNG Für die Abschätzung von vertikalen und horizontalen Beschleunigungen infolge Transport und 
+Hebevorgängen siehe EN 1991-3. 
+4.3 Geotechnische Einwirkungen 
+(1)P Die charakteristischen Werte für geotechnische Parameter, Boden und Erddruck sowie Grenzwerte für 
+Gründungsverschiebungen sind nach EN 1997 zu bestimmen. 
+(2) Die Baugrundsetzungen für Fundamente von Tragwerken und Hilfskonstruktionen, z.B. zeitlich begrenzte 
+Unterstützungen während der Bauausführung, sind in der Regel anhand von geotechnischen Untersuchungen 
+zu berücksichtigen. Entsprechende Untersuchungen sollten durchgeführt werden, um Informationen über 
+absolute und relative Setzungen sowie deren Zeitabhängigkeit und möglichen Streuungen zu erhalten. 
+ANMERKUNG Setzungen von Hilfskonstruktionen können Verformungen und zusätzliche Spannungen verursachen. 
+(3) Charakteristische Werte von Baugrundsetzungen, die auf der Grundlage von geotechnischen Unter-
+suchungen unter Verwendung statistischer Verfahren abgeschätzt wurden, sind in der Regel als Nennwerte 
+für eingeprägte Verformungen auf das Tragwerk zu verwenden. 
+ANMERKUNG Es ist möglich, die berechneten eingeprägten Verformungen durch Betrachtung der vollständigen 
+Boden-Bauwerk-Wechselwirkung anzupassen. 
+4.4 Einwirkung infolge Vorspannung 
+(1) Einwirkungen infolge Vorspannung sollten, wenn erforderlich, einschließlich der Einflüsse aus Wechsel- 
+wirkungen zwischen Tragwerken und Hilfskonstruktionen (z. B. Gerüste) berücksichtigt werden. 
+ANMERKUNG Vorspannkräfte während der Bauausführung dürfen in Übereinstimmung mit den Anforderungen der 
+Eurocodes EN 1992 bis EN 1999 und möglicherweise mit besonderen Anforderungen, die für das Einzelprojekt festgelegt 
+wurden, bestimmt werden. 
+(2) Lasten auf das Tragwerk durch Spannvorrichtungen während des Spannvorganges sind in der Regel für 
+die Bemessung des Verankerungsbereiches als veränderliche Lasten anzunehmen. 
+(3) Vorspannkräfte während der Bauausführung sind in der Regel als ständige Lasten zu berücksichtigen. 
+18 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Siehe auch Abschnitt 3. 
+4.5 Vorverformungen 
+(1)P Die Behandlung der Auswirkung von Vorverformungen hat in Übereinstimmung mit den einschlägigen 
+Bemessungsnormen (EN 1992 bis EN 1999) zu erfolgen. 
+ANMERKUNG Vorverformungen können z. B. durch das Verschieben von Auflagern (wie Lockerung von Seilen, 
+einschließlich deren Hänger und Lagerverschiebungen) verursacht werden. 
+(2) Einflüsse aus Einwirkungen infolge des Bauausführungsverfahrens sind in der Regel zu berücksichtigen, 
+insbesondere wenn Vorverformungen auf ein bestimmtes Tragwerk aufgebracht werden, um durch diese ein 
+besseres Verhalten im Endzustand, besonders hinsichtlich der Tragsicherheits- und Gebrauchstaug-
+lichkeitsanforderungen, zu erzielen. 
+(3) Die Einflüsse aus Vorverformungen sind in der Regel gegenüber den Bemessungsvorgaben durch 
+Messungen der Kräfte und Verformungen während der Bauausführung zu überprüfen. 
+4.6 Temperatur, Schwinden, Einflüsse aus Hydratation 
+(1)P Die Einflüsse aus Temperatur, Schwinden und Hydratation sind in jeder Bauphase angemessen zu 
+berücksichtigen. 
+ANMERKUNG 1 Für Gebäude sind Einwirkungen infolge Temperatur und Schwinden üblicherweise nicht maßgebend, 
+wenn für die ständige Bemessungssituation eine angemessene konstruktive Ausbildung vorgesehen ist. 
+ANMERKUNG 2 Zwängungen aus dem Einfluss der Lagerreibung können zu berücksichtigen sein (siehe auch 4.1 (5)). 
+(2) Klimatische Temperatureinwirkungen sind in der Regel nach EN 1991-1-5 zu bestimmen. 
+(3) Temperatureinwirkungen infolge Hydratation sind in der Regel in Übereinstimmung mit den 
+Bemessungsnormen EN 1992, EN 1994 und EN 1995 zu bestimmen. 
+ANMERKUNG 1 Die Temperatur kann bei massiven Betontragwerken nach dem Betonieren merkbar ansteigen und 
+Temperaturbeanspruchungen nach sich ziehen. 
+ANMERKUNG 2 Die Extremwerte von Tief- und Höchsttemperaturen, die bei der Bemessung berücksichtigt werden 
+sollten, können infolge jahreszeitlicher Änderungen wechseln. 
+(4) Der durch das Schwinden von Baustoffen hervorgerufene Einfluss ist in der Regel mit den maßgebenden 
+Bemessungsnormen EN 1992 bis EN 1999 zu bestimmen. 
+(5) Bei Brücken ist in der Regel die Ermittlung von Zwang, der bei Temperaturwirkung durch Lagereibung in 
+verschieblichen Lagern hervorgerufen wird, auf Grundlage von geeigneten repräsentativen Werten 
+durchzuführen. 
+ANMERKUNG Siehe EN 1337. 
+(6) Wenn zutreffend, sollten Auswirkungen zweiter Ordnung berücksichtigt werden und Auswirkungen aus 
+Verformungen infolge Temperatur und Schwinden sollten mit den ursprünglich angenommenen 
+Imperfektionen kombiniert werden. 
+4.7 Windeinwirkungen 
+(1) Die Notwendigkeit einer Bemessung nach dem Antwortspektrenverfahren für Wind sollte für die einzelnen 
+Ausführungsphasen unter Berücksichtigung des Fertigstellungsgrades und der Standsicherheit des Tragwerks 
+sowie seiner unterschiedlichen Teile bestimmt werden. 
+ANMERKUNG Merkmale und Verfahren dürfen für das Einzelprojekt festgelegt werden. 
+(2) Wenn ein Antwortspektrenverfahren nicht benötigt wird, sind die charakteristischen Werte der statischen 
+Windkraft Q
+W nach EN 1991-1-4 für die entsprechende Wiederkehrperiode zu bestimmen. 
+19 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Siehe 3.1 für empfohlene Wiederkehrperioden. 
+(3) Für Hebe- und Verschiebearbeiten oder für andere Bauzustände, die von kurzer Dauer sind, sollte eine 
+maximale zulässige Windgeschwindigkeit für die Bauzustände festgelegt werden. 
+ANMERKUNG Die maximale Windgeschwindigkeit darf für das Einzelprojekt festgelegt werden. Siehe auch 3.1(6). 
+(4) Auswirkungen von windinduzierten Schwingungen wie z. B. wirbelerregte Querwindschwingungen 
+Gallopping, Flattern und Schlagregen sind in der Regel zu erfassen, einschließlich möglicher 
+Materialermüdung bei z. B. schlanken Bauteilen. 
+(5) Windeinwirkungen auf Teile des Tragwerks, die später beim fertig gestellten Bauwerk Innenbauteile sind, 
+wie z.B. Innenwände, sind in der Regel bei der Bauausführung zu berücksichtigen. 
+ANMERKUNG In diesen Fällen ist der Winddruckkoeffizient cpe , z. B. für freistehende Wände, anzuwenden. 
+(6) Bei der Ermittlung der Windkräfte sind in der Regel die Flächen von Ausrüstungsgegenständen, Gerüsten 
+und anderer Hilfskonstruktionen, wenn diese belastet werden, zu berücksichtigen. 
+4.8 Schneelasten 
+(1)P Schneelasten sind in Übereinstimmung mit EN 1991-1-3 für die Bedingungen auf der Baustelle und der 
+erforderlichen Wiederkehrperiode zu bestimmen. 
+ANMERKUNG 1 Für Brücken siehe auch Anhang A2. 
+ANMERKUNG 2 Siehe 3.1 für empfohlene Wiederkehrperioden. 
+4.9 Einwirkungen verursacht durch Wasser 
+(1) Im Allgemeinen sollten Einwirkungen infolge Wasser, einschließlich Grundwasser ( Qwa), entweder als 
+statischer Druck und/oder als hydrodynamische Beanspruchung dargestellt werden, sodass sich die 
+ungünstigste Auswirkung ergibt. 
+ANMERKUNG Phänomene, die durch hydrodynamische Beanspruchungen gekennzeichnet sind: 
+ hydrodynamische Kräfte infolge Anströmen von unter Wasser vorhandenen Hindernissen; 
+ Kräfte infolge Wellengang; 
+ Auswirkungen von Wasser infolge Erdbeben (Tsunami). 
+(2) Die durch Wasser verursachten Einwirkungen dürfen in den Lastkombinationen als ständige oder 
+veränderliche Einwirkungen berücksichtigt werden. 
+ANMERKUNG Die Einteilung der durch Wasser verursachten Einwirkungen in ständig oder veränderlich darf unter 
+Berücksichtigung der besonderen Umgebungsbedingungen für das Einzelprojekt festgelegt werden. 
+(3) Einwirkungen verursacht durch Wasser, einschließlich gegebenenfalls dynamischer Auswirkungen, 
+hervorgerufen durch Strömungen auf im Wasser stehende Bauteile, sollten senkrecht zur Kontaktfläche 
+angreifend angenommen werden. Sie sind in der Regel mit Hinblick auf die Fließgeschwindigkeit, die 
+Wassertiefe und die Form des Bauteils zu bestimmen, wobei die geplanten Bauzustände zu berücksichtigen 
+sind. 
+(4) Die Größe der gesamten Horizontalkraft F
+wa (N), die durch das Anströmen vertikaler Flächen 
+hervorgerufen wird, sind in der Regel mit Gleichung (4.1) zu bestimmen. Siehe auch Bild 4.1. 
+2
+wawawa 2/1 vbhkF (4.1) 
+20 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Dabei ist 
+vwa die mittlere Geschwindigkeit des Wassers, gemittelt über die Tiefe in m/s; 
+wa die Dichte von Wasser in kg/m 3; 
+h die Wassertiefe, ohne Berücksichtigung von örtlichen Kolken, in m; 
+b die Breite des Bauteils, in m; 
+k der Formbeiwert, wobei 
+= 1,44 für einen Gegenstand mit einem quadratischen oder rechteckigen horizontalen 
+ Querschnitt, und 
+k
+= 0,70 für einen Gegenstand mit einem kreisförmigen horizontalen Querschnitt ist. k
+Legende 
+1 Druck infolge Wasserströmung ( p) 
+2 Objekt 
+3 Allgemeine Kolktiefe 
+4 Lokale Kolktiefe 
+5 Gesamte Kolktiefe 
+Bild 4.1  Druck und Kraft infolge Wasserströmung 
+ANMERKUNG 1 Fwa darf benutzt werden, um die Standsicherheit von Brückenpfeilern und Kofferdämmen zu prüfen. Für 
+das Einzelprojekt darf eine genauere Festlegung von Fwa erfolgen. 
+ANMERKUNG 2 Die Auswirkung von Kolken darf, wenn erforderlich, bei der Planung berücksichtigt werden. Siehe 
+3.1(12), 1.5.2.3 und 1.5.2.4. 
+(5) Wo notwendig, sollte die Ablagerung von Geröll durch eine Kraft Fdeb (N) berücksichtigt werden, die zum 
+Beispiel für einen rechteckigen Gegenstand (z. B. Kofferdamm) folgendermaßen berechnet wird 
+2
+wadebdebdeb vAF (4.2) 
+21 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Dabei ist 
+deb ist die Dichte des Gerölls in kg/m3; 
+vwa ist die mittlere Strömungsgeschwindigkeit von Wasser, gemittelt über die Wassertiefe in m/s; 
+Adeb ist die Querschnittsfläche, die vom sich ablagernden Geröll oder einem Lehrgerüst gebildet wird, 
+im m2. 
+ANMERKUNG 1 Gleichung (4.2) darf unter Berücksichtigung der Umgebungsbedingungen für das Einzelprojekt 
+angepasst werden. 
+ANMERKUNG 2 Der empfohlene Wert für deb ist 666 kg/m3. 
+(6) Einwirkungen infolge Eis, einschließlich Treibeis, sollten wenn notwendig berücksichtigt werden. 
+ANMERKUNG 1 Die Einwirkungen dürfen als Flächenlasten angesetzt werden. Sie wirken in Strömungsrichtung und 
+entsprechen Hoch- und Niedrigwasserständen, wobei die ungünstigste Beanspruchung maßgebend ist. 
+ANMERKUNG 2 Die Lasten und Wasserspiegelhöhen dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt 
+werden. 
+(7) Einwirkungen aus Regenwasser sollten in den Fällen berücksichtigt werden, bei denen es zu 
+Wasseransammlung kommen kann, zum Beispiel bei nicht ausreichender Drainage, Imperfektionen in der 
+Oberfläche, Verformungen und/oder Versagen von Entwässerungsanlagen. 
+4.10 Einwirkung infolge atmosphärischer Eisbildung 
+(1)P Wenn notwendig, sind Einwirkungen infolge atmosphärischer Eisbildung zu berücksichtigen. 
+ANMERKUNG Die repräsentativen Werte dieser Einwirkungen dürfen im Nationalen Anhang oder für das Einzelprojekt 
+festgelegt werden. Hinweise können in EN 1993-3 und in ISO 12494 gefunden werden. 
+4.11 Bauausführungslasten 
+4.11.1 Allgemeines 
+(1) Bauausführungslasten ( Qc) können in den entsprechenden Bemessungssituationen (siehe EN 1990) 
+entweder als eine einzelne veränderliche Einwirkung angesehen werden oder sie können, wenn angemessen, 
+aus unterschiedlichen Arten von Bauausführungslasten zusammengesetzt werden und als eine einzelne 
+veränderliche Einwirkung betrachtet werden. Sofern zutreffend sollten einzelne und/oder gruppierte 
+Bauausführungslasten gleichzeitig mit Lasten, die nicht aus der Bauausführung resultieren, berücksichtigt 
+werden. 
+ANMERKUNG 1 Siehe EN 1990 und EN 1991 für Hinweise zur Gleichzeitigkeit von Bauausführungslasten mit Lasten, 
+die nicht aus der Bauausführung resultieren. 
+ANMERKUNG 2 Die Gruppierung von Lasten hängt von dem Einzelprojekt ab. 
+ANMERKUNG 3 Siehe auch Tabelle 2.2. 
+(2) Bauausführungslasten, die zu berücksichtigen sind, werden in Tabelle 4.1 angegeben. 
+22 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Tabelle 4.1  Darstellung der Bauausführungslasten (Qc)
+Bauausführungslasten (Qc)
+Einwirkungen 
+Art Symbol Beschreibung 
+Darstellung Anmerkungen und 
+Bemerkungen 
+Personal, 
+und 
+Handwerk-
+zeuge 
+Q
+ca Arbeitspersonal, 
+Angestellte und 
+Besucher, mög-
+licherweise mit 
+Handwerkzeugen oder 
+anderen kleineren Aus-
+rüstungsgegenständen 
+Modelliert als eine 
+gleichförmig verteilte Last q
+ca, 
+die so angreift, dass sie den 
+ungünstigsten Einfluss erzielt 
+ANMERKUNG 1: Der charakte-
+ristische Wert q
+ca,k der 
+gleichförmig verteilten Last darf 
+im Nationalen Anhang oder für 
+das Einzelprojekt festgelegt 
+werden. 
+ANMERKUNG 2: Der 
+empfohlene Wert ist 1,0 kN/m
+2. 
+Siehe auch 4.11.2. 
+Gestapelte 
+bewegbare 
+Güter 
+Q
+cb Stapelung von 
+beweglichen Gütern, 
+z. B: 
+ Bau- und Kon-
+ struktions-
+ materialien, 
+ Fertigteile, und 
+ Ausrüstungs-
+ gegenstände 
+Modelliert als freie 
+Einwirkung, die angemessen 
+dargestellt wird als: 
+ eine gleichförmig 
+ verteilte Last q
+cb; 
+ eine Einzellast Fcb. 
+ANMERKUNG 3: Der charakte-
+ristische Wert für die 
+gleichförmig verteilte Last und 
+die Einzellast darf im Nationalen 
+Anhang oder für das 
+Einzelprojekt festgelegt werden. 
+Für Brücken werden die 
+folgenden Mindestwerte 
+empfohlen: 
+ q
+cb,k = 0,2 kN/m2; 
+ Fcb,k = 100 kN 
+wobei für eine genaue 
+Bemessung Fcb,k über eine 
+Nennfläche angreift. Für die 
+Dichte von Baumaterialien, siehe 
+EN1991-1-1. 
+Nicht ständig 
+vorhandene 
+Ausrüstungs-
+gegenstände 
+Q
+cc Nicht ständig 
+vorhandene 
+Ausrüstungsgegen-
+stände, in Position für 
+den Einsatz während 
+der Bauausführung, 
+entweder: 
+ statisch (z. B. 
+ Schalungsträger, 
+ Baugerüst, 
+ Lehrgerüst, 
+ Maschinen, 
+ Container) oder 
+ in Bewegung 
+ (z. B. fahrbare 
+ Schalungen, 
+ Vorbauträger und 
+ -schnabel, 
+ Gegengewichte) 
+Modelliert als freie 
+Einwirkung, die angemessen 
+dargestellt werden sollte als: 
+ eine gleichförmig ver-
+ teilte Last q
+cc;
+ANMERKUNG 4: Diese Lasten 
+dürfen für das Einzelprojekt unter 
+Verwendung der Informationen 
+des Anbieters festgelegt werden. 
+Wenn keine genaueren Angaben 
+verfügbar sind, dürfen sie durch 
+eine gleichförmig verteilte Last 
+mit einem charakteristischen 
+Mindestwert von q
+cc,k = 0,5 
+kN/m2 modelliert werden. 
+Eine Anzahl von CEN-
+Bemessungsnormen sind 
+verfügbar, z. B. siehe 
+EN 12811 und für Schalungen 
+und Lehrgerüste siehe EN 
+12812. 
+23 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Tabelle 4.1 (fortgesetzt)
+Bauausführungslasten (Qc)
+Einwirkungen 
+Art Symbol Beschreibung 
+Darstellung Anmerkungen und 
+Bemerkungen 
+Bewegbare 
+schwere 
+Maschinen 
+und 
+Ausrüstungs-
+gegenstände 
+Q
+cd Bewegbare schwere 
+Maschinen und 
+Ausrüstungsgegen-
+stände, normalerweise 
+mit Rädern oder auf 
+Gleisen (z. B. Kräne, 
+Aufzüge, Fahrzeuge, 
+Hubfahrzeuge, 
+Stromerzeuger, 
+Pressen, schwere 
+Hebewerkzeuge) 
+wenn nicht festgelegt, sollte 
+sie modelliert werden auf 
+Informationen, die in den 
+maßgebenden Teilen von 
+EN 1991 angegeben sind. 
+Informationen zur Bestimmung 
+von Einwirkungen aus 
+Fahrzeugen, wenn nicht für das 
+Einzelprojekt festgelegt, können 
+in EN 1991-2 gefunden werden. 
+Informationen zur Bestimmung 
+der Einwirkungen infolge Krane 
+werden in EN 1991-3 
+angegeben. 
+Ansamm-
+lung von 
+(Bau)Abfall-
+materialien 
+Q
+ce Ansammlung von 
+ungenutzten Materialien 
+(z.B. überschüssige 
+Baumaterialien, 
+Bodenaushub oder 
+Abruchmaterialien) 
+Zu berücksichtigen bei der 
+Betrachtung von 
+Masseneinflüssen auf 
+horizontale, geneigte und 
+vertikale Elemente (z. B. 
+Wände) 
+ANMERKUNG 5 Diese Lasten 
+können in Abhängigkeit von z. B. 
+den Baumaterialien, den 
+Klimabedingungen, der 
+Geschwindigkeit des Anhäufens 
+und Räumens kurzfristig merkbar 
+schwanken. 
+Lasten durch 
+Teile des 
+Tragwerks in 
+zeitlich 
+begrenztem 
+Bauzustand 
+Q
+cf Lasten von Teilen des 
+Tragwerks in zeitlich 
+begrenztem Bauzustand 
+(während der 
+Errichtung) bevor die 
+endgültigen 
+Bemessungseinwir-
+kungen vorliegen (wie 
+z. B. Lasten aus 
+Hebevorgänge). 
+Zu berücksichtigen und zu 
+modellieren in 
+Übereinstimmung mit den 
+geplanten Bauzuständen, 
+einschließlich der 
+Konsequenzen von solchen 
+Bauzuständen (z. B. Lasten 
+und Entlastungen während 
+eines bestimmten 
+Bauzustandes, wie 
+Lagerung). 
+Siehe auch 4.11.2 für zusätzliche 
+Lasten infolge Frischbeton. 
+(3)P Charakteristische Werte für Bauausführungslasten, einschließlich vertikaler und horizontaler Anteile, 
+sofern notwendig, sollten entsprechend den technischen Anforderungen für die Ausführung der Bauarbeiten 
+und nach den in EN 1990 enthaltenen Anforderungen bestimmt werden. 
+ANMERKUNG 1 Für Bauausführungslasten sind Empfehlungen für die Werte von Faktoren für Gebäude in Anhang A1 
+dieser Norm und für Brücken in Anhang A2 von EN 1990 angegeben. 
+ANMERKUNG 2 Es können auch andere Arten von Bauausführungslasten zu berücksichtigen sein. Diese Lasten dürfen 
+für das Einzelprojekt festgelegt werden. 
+(4)P Horizontale Einwirkungen, die aus den Bauausführungslasten resultieren, sind zu bestimmen und sowohl 
+bei teilweise errichteten Tragwerken als auch bei vollständig errichteten Tragwerken zu berücksichtigen. 
+(5)P Wenn Bauausführungslasten dynamische Einflüsse erzeugen, sind diese Einflüsse zu berücksichtigen. 
+ANMERKUNG Siehe auch 3.1(10) und EN1990, Anhang A1 und A2. 
+4.11.2 Bausführungslasten beim Betonieren 
+(1) Einwirkungen, die gleichzeitig während des Betoniervorganges zu berücksichtigen sind, können 
+Arbeitspersonal mit kleinem Arbeitsgerät (Q
+ca), Schalungen und Stützen ( Qcc) und das Gewicht des 
+Frischbetons sein (dass ein Beispiel für Qcf ist). 
+ANMERKUNG 1 Für die Dichte von Frischbeton siehe EN 1991-1-1:2002, Tabelle A.1. 
+24 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG 2 Qca, Qcc und Qcf dürfen im Nationalen Anhang angegeben werden. 
+ANMERKUNG 3 Empfohlene Werte für Einwirkungen von Bauausführungslasten während des Betonierens ( Qcf) dürfen 
+aus Tabelle 4.2 und für Frischbeton EN 1991-1-1: 2002, Tabelle A.1 entnommen werden. Andere Werte sind festzulegen, 
+zum Beispiel bei Fließbeton oder Betonfertigteilen. 
+ANMERKUNG 4 Es ist beabsichtigt, die Lasten nach (1), (2) und (3), wie sie in Tabelle 4.2 angegeben sind, so 
+anzuordnen, dass sie eine maximale Beanspruchung hervorrufen, die symmetrisch oder unsymmetrisch sein kann. 
+Tabelle 4.2  Empfehlungen für die charakteristischen Werte der Einwirkungen aus 
+Bauausführungslasten während des Betoniervorganges 
+Einwirkung Belastete Fläche Last in kN/m 2
+(1) Außerhalb der Arbeitsfläche 0,75 deckt Qca ab 
+(2) Innerhalb der Arbeitsfläche 3 m 3 m 
+(oder der Spannweite, falls kleiner) 
+10 % des Eigengewichtes von Beton, aber nicht 
+weniger als 0,75 und nicht mehr als 1,5, ein-
+schließlich Qca und Qcf
+(3) Tatsächliche Fläche Eigengewicht der Schalung, Lastabtragende 
+Elemente (Qcc) und das Gewicht des Frischbetons 
+für die Bemessungshöhe (Qcf) 
+(2) Horizontale Einwirkungen von Frischbeton sind in der Regel zu berücksichtigen. 
+ANMERKUNG: Siehe auch A1.3(2). 
+4.12 Außergewöhnliche Einwirkungen 
+(1)P Sofern notwendig, sind außergewöhnliche Einwirkungen, wie Anprall von Baufahrzeugen, Krane, 
+Gebäudeausstattung oder bewegte Materialbehälter (z.B. Förderung von Frischbeton) und/oder lokales 
+Versagen von endgültigen oder zeitlich begrenzten Auflagern, einschließlich dynamischer Einflüsse, die zum 
+Einsturz von Last tragenden Bauteilen führen können, zu berücksichtigen. 
+ANMERKUNG 1 Außergewöhnliche Konzentrationen von Gebäudeausrüstungen und/oder Baumaterialien auf 
+lastabtragenden Bauteilen werden nicht als außergewöhnliche Einwirkung betrachtet. 
+ANMERKUNG 2 Dynamische Einflüsse dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. Der 
+empfohlene Wert für den dynamischen Vergrößerungsfaktor ist 2. In speziellen Fällen ist eine dynamische Berechnung 
+notwendig. 
+ANMERKUNG 3 Außergewöhnliche Einwirkungen aus Kranbetrieb dürfen für das Einzelprojekt festgelegt werden. Siehe 
+auch EN 1991-3. 
+(2) Die Einwirkungen durch das Herabfallen von Ausrüstungsgegenständen auf das oder von dem Tragwerk, 
+einschließlich der dynamischen Beanspruchungen, sollten festgelegt und berücksichtigt werden. 
+25 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG Die dynamischen Einwirkungen durch herabfallende Ausrüstungsgegenstände dürfen im Nationalen 
+Anhang oder für das Einzelprojekt festgelegt werden. 
+(3) Sofern notwendig, sollte eine Aufpralllast infolge von Personen als eine außergewöhnliche Einwirkung 
+berücksichtigt werden, die als eine quasi-statische Vertikalkraft angesetzt wird. 
+ANMERKUNG Die Bemessungswerte der Aufpralllast infolge von Personen dürfen im Nationalen Anhang oder für das 
+Einzelprojekt festgelegt werden. Empfohlene Werte sind: 
+a) 2,5 kN angreifend auf einer Fläche von 200 mm 200 mm, zur Berücksichtigung von Einflüssen aus 
+Stolpern 
+b) 6,0 kN angreifend auf einer Fläche von 300 mm 300 mm, zur Berücksichtigung von Einflüssen aus 
+Fallen 
+(4) Bewegungen sowie Größe und Auswirkungen im Tragwerk, die infolge des Einflusses der in den Absätzen 
+(1), (2) und (3) beschriebenen Einwirkungen entstehen, sind zu bestimmen, einschließlich der Abschätzung 
+der Gefahr für ein fortschreitendes Versagen. 
+ANMERKUNG Siehe auch EN1991-1-7. 
+(5) Außergewöhnliche Einwirkungen, die für Bemessungssituationen verwendet werden, haben in der Regel 
+jede Änderung zu berücksichtigen. Um sicher zu stellen, dass die zugehörigen Bemessungskriterien zu allen 
+Zeiten zutreffen, sind in der Regel mit dem Fortschritt der Bauarbeiten Korrekturmaßnahmen zu ergreifen. 
+(6) Einwirkungen aus Brand sollten, sofern notwendig, angemessen berücksichtigt werden. 
+4.13 Einwirkungen aus Erdbeben 
+(1) Einwirkungen infolge Erdbeben sind unter Berücksichtigung der Dauer der betrachteten vorübergehenden 
+Bemessungssituation in Übereinstimmung mit EN 1998 zu bestimmen. 
+(2) Die Bemessungswerte der Beschleunigung und des Bedeutungsbeiwertes I sollte festgelegt werden. 
+ANMERKUNG Der Bemessungswert der Beschleunigung und des Bedeutungswertes I darf im Nationalen Anhang 
+oder für das Einzelprojekt festgelegt werden. 
+26 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Anhang A1
+(normativ)
+Ergänzende Regelungen für Gebäude 
+A.1.1 Grenzzustände der Tragfähigkeit 
+(1) Für vorübergehende, außergewöhnliche Bemessungssituationen und Erdbeben haben die Nachweise für 
+die Grenzzustände der Tragfähigkeit in der Regel auf Kombinationen der Einwirkungen, die mit den F -
+Faktoren für die Einwirkung und den zugehörigen -Faktoren multipliziert werden, zu basieren. 
+ANMERKUNG 1 Für die Werte von F und -Faktoren siehe EN 1990, Anhang A1. 
+ANMERKUNG 2 Repräsentative Werte von veränderlichen Einwirkungen infolge Bauausführungslasten dürfen durch den 
+Nationalen Anhang innerhalb des Bereiches 0 0,6 bis 1,0 festgelegt werden. Der empfohlene Wert für 0 ist 1,0. 
+Der empfohlene Mindest-Wert für 2 ist 0,2 und es wird weiter empfohlen, keinen Wert unter 0,2 festzulegen. 
+ANMERKUNG 3 1 ist nicht für Bauausführungslasten während der Errichtung anzuwenden. 
+A.1.2 Grenzzustände der Gebrauchstauglichkeit 
+(1) Für den Nachweis von Grenzzuständen der Gebrauchstauglichkeit sind die zu berücksichtigenden 
+Einwirkungskombinationen die charakteristischen und quasi ständigen Kombinationen in der Regel, wie in 
+EN 1990 definiert, festzulegen. 
+ANMERKUNG Für die empfohlenen Werte von Faktoren siehe A1.1, Anmerkungen 1 und 2. 
+A.1.3 Horizontale Einwirkungen 
+(1)P Zusätzlich zu 4.11.1 (3) sind horizontale Einwirkungen, die sich z. B. aus Wind ergeben und die daraus 
+resultierenden Wirkungen, wie Auslenkungen zu berücksichtigen. 
+ANMERKUNG Siehe auch 4.7 und EN 1990: 2002, 3.5(7). 
+(2) Nennwerte für die Horizontalkräfte (Fhn) dürfen nur angewendet werden, wenn eine entsprechende 
+Vorgehensweise angemessen und für einen speziellen Fall begründet ist. In diesen Fällen sollten die 
+bestimmten nominellen Horizontalkräfte an Stellen angreifen, die den ungünstigsten Einfluss ergeben, und die 
+nicht immer mit denen für die Vertikalkräfte übereinstimmen müssen. 
+ANMERKUNG Die charakteristischen Werte dieser äquivalenten Horizontalkräfte dürfen im Nationalen Anhang oder für 
+das Einzelprojekt festgelegt werden. Der empfohlene Wert beträgt 3 % der vertikalen Lasten aus der ungünstigsten 
+Einwirkungskombination. 
+27 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Anhang A2 
+(normativ) 
+Ergänzende Regelungen für Brücken 
+A.2.1 Grenzzustände der Tragfähigkeit 
+(1) Für vorübergehende, außergewöhnliche Bemessungssituationen und Erdbeben sind die Nachweise in der 
+Regel für den Grenzzustand der Tragfähigkeit zu führen. 
+ANMERKUNG Für die Werte von F und -Faktoren siehe EN 1990, Anhang A2. 
+A.2.2 Grenzzustände der Gebrauchstauglichkeit 
+(1) Für Grenzzustände der Gebrauchstauglichkeit sollten die F Beiwerte der Einwirkung zu 1,0 angesetzt 
+werden, wenn nichts anderes in EN 1991 bis EN 1999 festgelegt ist. Die - Beiwerte sollten wie in EN 1990, 
+Anhang A2, festgelegt werden. 
+A.2.3 Bemessungswerte für Verformungen 
+(1) Für das schrittweise Verschieben von Brücken sollten die Bemessungswerte für die vertikale 
+Durchbiegung (siehe Bild A2.1) festgelegt werden. 
+a) Verformung in Längsrichtung 
+b) Verformung in Querrichtung 
+Bild A.2.1  Verformungen von Auflagern während der Errichtung von Brücken im 
+Taktschiebeverfahren 
+ANMERKUNG 1 Die Bemessungswerte für die vertikalen Durchbiegungen dürfen im Nationalen Anhang oder für das 
+Einzelprojekt festgelegt werden. Die empfohlenen Werte sind: 
+ 10 mm in Längsrichtung für ein Auflager, die anderen Auflager werden auf dem theoretischen Niveau festgehalten 
+(Bild A2.1a); 
+ 2,5 mm in Querrichtung für ein Auflager, die anderen Auflager werden auf dem theoretischen Niveau festgehalten 
+(Bild A2.1b). 
+28 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+ANMERKUNG 2 Die Verformungen in Längs- und Querrichtung werden einzeln betrachtet. 
+A.2.4 Schneelasten 
+(1) Schneelasten auf Brücken während der Bauausführung sollten auf Werten basieren, die unter 
+Berücksichtigung der Wiederkehrperiode (siehe Kapitel 3) in EN 1991-1-3 festgelegt sind. 
+(2) Wenn eine tägliche Räumung des Schnees (auch an den Wochenenden und in den Ferien) für das 
+Einzelprojekt gefordert ist, und Sicherheitsmaßnahmen für die Räumung vorbereitet sind, darf die 
+charakteristische Schneelast gegenüber dem Wert aus EN 1991-1-3 für den endgültigen Zustand reduziert 
+werden. 
+ANMERKUNG Die Reduzierung kann im Nationalen Anhang oder für das Einzelprojekt festgelegt werden. Der 
+empfohlene Wert beträgt 30 % des charakteristischen Wertes für die ständigen Bemessungssituationen. 
+(3) Für den Nachweis des statischen Gleichgewichtes (EQU) und wenn es durch die klimatischen 
+Bedingungen und durch die voraussichtliche Bauausführungsdauer gerechtfertigt ist, ist in der Regel die 
+charakteristische Schneelast als gleichmäßig verteilt auf Flächen so angesetzt werden, dass eine ungünstige 
+Wirkung erreicht wird. Sie sollte X% des charakteristischen Wertes für ständige Bemessungssituationen, nach 
+EN 1991-1-3 betragen. 
+ANMERKUNG Die Bedingungen für die Anwendung dieser Regelung und der reduzierten prozentualen Werte (X%) 
+dürfen im Nationalen Anhang festgelegt werden. Es wird empfohlen, den Wert 75 % zu verwenden. 
+A.2.5 Bauausführungslasten 
+(1) Für Brücken, die mit dem Taktschiebeverfahren ausgeführt werden, sind in der Regel die Horizontalkräfte 
+infolge Reibung zwischen dem Brückentragwerk und den Lagern und Stützkonstruktionen anzusetzen, wobei 
+dynamische Auswirkungen, wenn angemessen, berücksichtigt werden sollte. 
+(2) Die Bemessungswerte für die horizontalen Gesamtreibkräfte sollten ermittelt werden, sie sollten nicht 
+kleiner als x% der vertikalen Lasten sein, und sie sollten so bestimmt sein, dass sie die ungünstigste Wirkung 
+erzielen. 
+ANMERKUNG Der Wert x % darf im Nationalen Anhang festgelegt werden. Der empfohlene Wert beträgt 10 %. 
+(3) Die horizontalen Reibkräfte sollten an jedem Pfeiler mit angemessenen Reibkoeffizienten µmin und µmax
+bestimmt werden. 
+ANMERKUNG 1 Die Reibkoeffizienten µmin und µmax dürfen im Nationalen Anhang oder für das Einzelprojekt festgelegt 
+werden. 
+ANMERKUNG 2 Wenn keine genaueren Werte aus Versuchen für Bewegungen unter Berücksichtigung sehr geringer 
+Oberflächenreibung (z.B. PTFE - Polytetrafluorethen) verfügbar sind, werden die folgenden Werte empfohlen: 
+µmin = 0 
+µmax = 0,04 
+29 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Anhang B
+(informativ) 
+Einwirkungen auf Tragwerke bei Umbauten, Wiederaufbau oder Abriss 
+(1) Charakteristische und andere repräsentative Werte der Einwirkungen sollten in Übereinstimmung mit 
+EN 1990 bestimmt werden. 
+(2) Das tatsächliche Tragverhalten des Tragwerks, beeinträchtigt durch Schädigungen, sollte in den 
+Nachweisen für die beim Wiederaufbau und Abriss vorhandenen Bauzustände berücksichtigt werden. Es 
+sollten Untersuchungen für die Tragwerkszustände durchgeführt werden, um die Belastbarkeit des Tragwerks 
+festzustellen und um unvorhersehbares Verhalten bei Wiederaufbau oder Abriss zu vermeiden. 
+(3) Hinweise für die ungünstigsten Einwirkungen und Verfahren für deren Ermittlung werden in Kapitel 4 
+gegeben. Einige Bauausführungslasten für Wiederaufbau oder Abriss können sich jedoch in ihren 
+Eigenschaften und Darstellungen von denen, die in Tabelle 2.2 und 4.1 aufgeführt sind, unterscheiden. Die 
+Auswirkungen auf alle maßgebenden Bauteile unter vorübergehenden Bemessungssituationen sollten 
+berücksichtigt und nachgewiesen werden. 
+(4) Einwirkungskombinationen für verschiedene Bemessungssituationen sollten, wie in EN 1990 und seinem 
+Anhängen A1 und A2 angegeben, berücksichtigt werden. 
+(5) Wenn keine weiteren Informationen bekannt sind, sollten die Werte für die 
+-Faktoren, empfohlen für 
+Hochbauten in EN 1990 Anhang A1 und für Brücken in EN 1990 Anhang A2, für die Bemessung von 
+vorübergehenden Bemessungssituationen benutzt werden. 
+(6) Alle Nutzlasten, einschließlich Verkehrslasten sollten berücksichtigt werden, falls Teile des Tragwerks bei 
+Wiederaufbau oder Abriss weiter genutzt werden. Diese Lasten können sich bei verschiedenen Bauzuständen 
+ändern. Verkehrslasten sollten bei Bedarf zum Beispiel Anpralllasten und Horizontalkräfte von Fahrzeugen, 
+Windeinwirkungen auf Fahrzeuge, aerodynamische Einwirkungen von vorüberfahrenden Fahrzeugen und 
+Zügen beinhalten. 
+(7) Eine Reduzierung der Verkehrslasten gegenüber den Bemessungswerten für den Endzustand sollte nur 
+vorgenommen werden, wenn das Tragwerk messtechnisch überwacht und auf geeignetem Niveau planmäßig 
+beaufsichtigt wird. 
+(8) Die Zuverlässigkeit für das verbleibende Tragwerk oder für Teile des Tragwerks sollten beim 
+Wiederaufbau, teilweise oder vollständigen Abriss mit derjenigen übereinstimmen, die in den Eurocodes für 
+das vollständige Tragwerk oder Teile des Tragwerks festgelegt ist. 
+(9) Die durch Bauarbeiten verursachten Einwirkungen sollten nicht nachteilig die in der Umgebung 
+vorhandenen Tragwerke beeinflussen, zum Beispiel kann das Entfernen oder Hinzufügen von Lasten 
+Instabilitäten hervorrufen. 
+(10) Bauausführungslasten speziell für den Wiederaufbau oder Abriss sollten so bestimmt werden, dass zum 
+Beispiel folgendes berücksichtigt wird: Art und Anordnung von gelagerten Baustoffen, die Techniken, die beim 
+Wiederaufbau oder Abriss benutzt werden, die Ausführungsverfahren und die einzelnen Bauzustände. 
+Bauausführungslasten während des Wiederaufbaus und des Abrisses können auch die Auswirkungen von 
+rückgebauten Materialien oder Elementen einschließlich Horizontalkräften einschließen. 
+(11) Dynamische Auswirkungen sollten berücksichtigt werden, wo erwartet wird, dass Aktivitäten während des 
+Wiederaufbaus und Abrisses solche Auswirkungen hervorrufen. 
+30 
+DIN EN 1991-1-6:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1991-1-6:2005 + AC:2008 (D) 
+Literaturhinweise 
+EN 1337, Lager im Bauwesen
+EN 12811, Temporäre Konstruktionen für Bauwerke
+EN 12812, Traggerüste  Anforderungen, Bemessung und Entwurf
+ISO 12494, Einwirkungen auf Tragwerke infolge atmosphärischer Eisbildung
+31 
+DIN EN 1991-1-6:2010-12

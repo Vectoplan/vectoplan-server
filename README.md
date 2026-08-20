@@ -1,5 +1,26 @@
 # API
 
+## Start und vollständiger lokaler Daten-Reset
+
+Normaler Start (inklusive Datenbank-Initialisierung, GeoServer, Chunk,
+Library, Filecloud und nachgelagerter Chunk-Reconciliation):
+
+```powershell
+docker compose up -d --build
+```
+
+Container zu entfernen löscht die benannten PostgreSQL-/Medien-Volumes nicht.
+Ein **vollständiger lokaler Server-Reset mit unwiderruflichem Datenverlust** ist:
+
+```powershell
+docker compose down --volumes --remove-orphans
+docker compose up -d --build
+```
+
+Vor dem Reset kann mit `docker volume ls` geprüft werden, welche
+`vectoplan-server_*`-Volumes vorhanden sind. Ohne `--volumes` bleiben Projekte,
+Chunk-Welten und Filecloud-Daten absichtlich erhalten.
+
 ## Technische Dokumentation
 
 - [Grundstücksauswahl, Grundstücksraster und WorldEdit](services/vectoplan-editor/docs/PARCEL_GRID_AND_WORLDEDIT.md)

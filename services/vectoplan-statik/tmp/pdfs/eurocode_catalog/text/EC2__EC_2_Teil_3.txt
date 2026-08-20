@@ -1,0 +1,982 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Januar 2011 
+DIN EN 1992-3 
+ICS 91.01 0.30; 91.080.40 Ersatzvermerk 
+siehe unten 
+DIN 
+Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken-
+Teil 3: Silos und Behälterbauwerke aus Beton; 
+Deutsche Fassung EN 1992-3:2006 
+Eurocode 2: Design of concrete structures -
+Part 3: Liquid retaining and containment structures; 
+German version EN 1992-3:2006 
+Eurocode 2: Calcul des structures en beton­
+Partie 3: Silos et reservoirs; 
+Version allemande EN 1992-3:2006 
+Ersatzvennerk 
+Ersatz für DIN EN 1992-3:2006-11; 
+mitDIN EN 1992-1-1:2011-01, DIN EN 1992-1-1/NA:2011-Q1 und DIN EN 1992-3/NA:2011-01 Ersatztor 
+DIN 1045-1:2008-08 
+Gesamtumfang 30 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jede Art der Vervielfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 14 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1723946
+
+===== PDF-SEITE 2 =====
+DIN EN 1992-3:2011-01 
+Nationales Vorwort 
+Dieses Dokument (EN 1992-3:2006) wurde vom Technischen Komitee CEN/TC 250 Eurocodes für den 
+konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten wird. 
+Auf nationaler Ebene ist im DIN Deutsches Institut für Normung e. V. der NABau-Arbeitsausschuss 
+NA 005-07-01 AA Bemessung und Konstruktion (Sp CEN/TC 250/SC 2) zuständig. 
+Diese Europäische Norm wurde vom CEN am 24. November 2005 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind 
+im Vorort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Auf der Plenarsitzung des CEN/TC 250/SC 2 wurde im Oktober 2010 eine Berichtigung zu EN 1992-3:2006 
+diskutiert. Diese Berichtigung soll noch 2010 bei CCMC eingereicht und im Laufe 2011 offiziell veröffentlicht 
+werden. Um den Anwendern frühzeitig eine aktuelle und fehlerfreie nationale Fassung anbieten zu können, 
+entschied sich der zuständige Spiegelausschuss, die im Oktober 2010 identifizierten und erforderlichen 
+Berichtigungen bereits in diese Fassung einzuarbeiten. Die Textstellen, die hiervon betroffen sind, sind mit 
+nationalen Fußnoten versehen. 
+Änderungen 
+Gegenüber DIN V ENV 1992-4:2000-12 wurden folgende Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute eingearbeitet und Text vollständig überarbeitet; 
+b) Normnummer geändert; 
+c) Vornormcharakter aufgehoben; 
+d) sprachlich weitgehend die Terminologie von DIN 1045-1:2001-07 übernommen. 
+Gegenüber DIN EN 1992-3:2006-11 und DIN 1045-1:2008-08 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept ungestellt; 
+b) Ersatzvermerke korrigiert; 
+c) redaktionell vollständig überarbeitet; 
+d) ausstehende Berichtigung eingearbeitet. 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1992-3:2011-01 
+Frühere Ausgaben 
+DIN 1045: 1925-09, 1932-04, 1937-05, 1943xxx, 1959-11, 1972-01, 1978-12, 1988-07 
+DIN 1045-1: 2001-07, 2008-08 
+DIN 1045-1 Berichtigung 1: 2002-07 
+DIN 1045-1 Berichtigung 2: 2005-06 
+DIN 1046: 1925-09, 1932-04, 1935-12, 1943x 
+DIN 1047: 1925-09, 1932-04, 1937-05, 1943x 
+DIN 4028: 1938-10 
+DIN 4030: 1954-09 
+DIN 4163: 1951-02 
+DIN 4219-2: 1979-12 
+DIN 4225: 1943, 1951xx-02, 1960-07 
+DIN 4227-1: 1953x-10, 1979-12, 1988-07 
+DIN 4227-1/A1: 1995-12 
+DIN 4227-2: 1984-05 
+DIN V 4227-4: 1985-12 
+DIN 4227-4: 1986-02 
+DIN 4229: 1950-07 
+DIN 4233: 1951-03, 1953x-12 
+DIN 4420: 1952x-01 
+DIN V ENV 1992-4: 2000-12 
+DIN EN 1992-3: 2006-11 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1992-3:2011-01 
+4 
+ Leerseite 
+
+===== PDF-SEITE 5 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1992-3 
+ Juni 2006 
+ICS 91.010.30; 91.080.40 Ersatz für ENV 1992-4:1998 
+Deutsche Fassung 
+ Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und 
+Spannbetontragwerken  
+Teil 3: Silos und Behälterbauwerke aus Beton 
+Eurocode 2: Design of concrete structures  
+Part 3: Liquid retaining and containment structures 
+Eurocode 2: Calcul des structures en béton  
+Partie 3: Silos et réservoirs 
+Diese Europäische Norm wurde vom CEN am 24. November 2005 angenommen. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum oder bei jedem CEN-Mitglied auf Anfra ge 
+erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Dänemark, Deutschland, Estland, Finnland, Frankreich, Grieche nland,
+Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, Rumänien , 
+Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich und Zypern.
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: rue de Stassart, 36 B- 1050 Brüssel 
+© 2006 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1992-3:2006 D
+
+===== PDF-SEITE 6 =====
+EN 1992-3:2006 (D) 
+2 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang für EN 1992-3......................................................................................................................6
+1 Einleitung................................................................................................................... .............................7
+1.1 Anwendungsbereich .......................................................................................................... ...................7
+1.1.2 Anwendungsbereich von Eurocode 2-3 ....................................................................................... .......7
+1.2 Normative Verweisungen..................................................................................................... .................8
+1.6 Formelzeichen.............................................................................................................. ..........................8
+1.7 Besondere Formelzeichen im Eurocode 2-3.................................................................................... ...8
+2 Grundlagen der Tragwerksplanung .............................................................................................. .......9
+2.1 Anforderungen .............................................................................................................. .........................9
+2.1.1 Grundlegende Anforderungen ............................................................................................... ..............9
+2.3 Basisvariablen............................................................................................................. ...........................9
+2.3.1 Einwirkungen und Umwelteinflüsse ......................................................................................... ...........9
+2.3.2 Material- und Produkteigenschaften....................................................................................... .............9
+3 Baustoffe .................................................................................................................... ............................9
+3.1 Beton...................................................................................................................... .................................9
+3.1.1 Allgemeines.............................................................................................................. ..............................9
+3.1.3 Elastische Verformungseigenschaften ...................................................................................... .......10
+3.1.4 Kriechen und Schwinden................................................................................................... .................10
+3.1.11 Wärmeentwicklung und Temperaturverteilung infolge Hydratation ..............................................10
+3.2 Betonstahl ................................................................................................................. ...........................10
+3.2.2 Materialeigenschaften .................................................................................................... .....................10
+3.3 Spannstahl................................................................................................................. ...........................10
+3.3.2 Materialeigenschaften .................................................................................................... .....................10
+4 Dauerhaftigkeit und Betondeckung............................................................................................. ......11
+4.3 Anforderungen an die Dauerhaftigkeit ....................................................................................... .......11
+5 Schnittgrößenermittlung...................................................................................................... ...............11
+5.12 Ermittlung der Schnittgrößen infolge Temperatur ........................................................................... 11
+5.12.1 Allgemeines............................................................................................................. .............................11
+5.13 Berechnung der Schnittgrößen infolge Innendruck ........................................................................11
+6 Grenzzustände der Tragfähigkeit.............................................................................................. .........11
+6.2 Querkraft.................................................................................................................. .............................11
+6.9 Nachweis für Staubexplosion................................................................................................ .............12
+6.9.1 Allgemeines.............................................................................................................. ............................12
+6.9.2 Bemessung tragender Bauteile............................................................................................. .............12
+7 Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 13
+7.3 Rissbildung ................................................................................................................ ..........................13
+7.3.1 Allgemeines.............................................................................................................. ............................13
+7.3.3 Begrenzung der Rissbreite ohne direkte Berechnung ....................................................................14
+7.3.4 Berechnung der Rissbreite................................................................................................ .................16
+7.3.5 Begrenzung der Rissbreite infolge von Zwang .............................................................................. ..16
+8 Bauliche Durchbildung ........................................................................................................ ...............16
+8.10.1 Anordnung von Spanngliedern und Hüllrohren .............................................................................. .16
+8.10.4 Verankerungen und Spanngliedkopplungen für Spannglieder ......................................................17
+9 Konstruktionsregeln für Bauteile und spezielle Regeln ..................................................................17
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 7 =====
+EN 1992-3:2006 (D) 
+3 
+Seite
+9.6 Stahlbetonwände............................................................................................................ .....................17
+9.6.5 Eckverbindungen von Wänden............................................................................................... ...........17
+9.6.6 Anordnung von Bewegungsfugen............................................................................................. ........17
+9.11 Zusatzregeln für Wände.................................................................................................... ..................17
+9.11.1 Mindestbewehrung und Mindestabmessungen ...............................................................................17
+Anhang K (informativ) Einfluss der Temperatur auf die Betoneigenschaften............................................18
+K.1 Allgemeines ................................................................................................................ .........................18
+K.2 Baustoffeigenschaften bei Minustemperaturen...............................................................................1 8
+K.3 Baustoffeigenschaften bei höheren Temperaturen .........................................................................19
+Anhang L (informativ) Berechnung der Dehnungen und Spannungen von Betonquerschnitten 
+infolge Zwang ......................................................................................................................................21
+L.1 Beziehungen für die Spannungen und Dehnungen bei ungerissenen Betonquerschnitten.......21
+L.2 Abschätzung des Zwangs ..................................................................................................... .............21
+Anhang M (informativ) Berechnung von Rissbreiten infolge Zwang...........................................................24
+M.1 Allgemeines ................................................................................................................ .........................24
+M.2 Zwang an den Bauteilenden.................................................................................................. .............24
+Anhang N (informativ) Anordnung von Bewegungsfugen ...........................................................................26
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 8 =====
+EN 1992-3:2006 (D) 
+4 
+Vorwort 
+Dieses Dokument (EN 1992-3:2006) wurde vom Technischen Komitee CEN/TC 250 Eurocodes für den 
+konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Dezember 2006, und etwaige entgegenstehende 
+nationale Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1992-4. 
+CEN/TC 250 ist für die Erarbeitung aller Eurocodes zuständig. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 9 =====
+EN 1992-3:2006 (D) 
+5 
+Hintergrund des Eurocode-Programms 
+Siehe EN 1992-1-1. 
+Eurocode-Programm 
+Siehe EN 1992-1-1 
+Status und Anwendungsbereich der Eurocodes 
+Siehe EN 1992-1-1. 
+Nationale Fassungen der Eurocodes 
+Siehe EN 1992-1-1. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen 
+für Bauprodukte (ENs und ETAs) 
+Siehe EN 1992-1-1. 
+Besondere Regelungen für EN 1992-3 und Verbindung zu EN 1992-1-1 
+Der Anwendungsbereich von Eurocode 2 ist in 1.1.1 von EN 1992-1-1 definiert, während der Anwendungs-
+bereich des vorliegenden Teils des Eurocode 2 in 1.1.2 dieser Norm festgelegt wird. Weitere zusätzliche Teile 
+des Eurocode 2 sind in 1.1.1 von EN 1992-1-1 aufgeführt; diese betreffen weitere Verfahren oder Anwen-
+dungsmöglichkeiten der Betonbauweise und ergänzen und vervollständigen diesen Teil. 
+In EN 1992-3 mussten einige wenige Regeln eingeführt werden, die sich nicht nur auf Silos und Behälterbau-
+werke beziehen und streng genommen zum Teil 1-1 gehören. Diese Regeln gelten als gültige Auslegungen 
+des Teils 1-1. Eine Bemessung nach EN 1992-3 stimmt mit den Prinzipien von EN 1992-1-1 überein. 
+Werden Bauprodukte, wie z. B. Betonrohre, nach einer Norm für wasserundurchlässige Produkte gefertigt und 
+verwendet, darf in der Regel davon ausgegangen werden, dass diese Bauprodukte die Anforderungen dieses 
+Eurocodes einschließlich der konstruktiven Durchbildung ohne weiteren rechnerischen Nachweis erfüllen. 
+Es gibt besondere Anforderungen an die Oberflächen von Behältern, in denen Lebensmittel oder Trinkwasser 
+gespeichert werden. Bei solchen Anwendungen sind diese in der Regel in Bezug zu nehmen. Diese 
+speziellen Festlegungen werden in diesem Eurocode jedoch nicht behandelt. 
+Bei der Anwendung dieser Norm in der Praxis sind insbesondere die im Abschnitt 1.3 von EN 1992-1-1 
+zugrunde gelegten Annahmen und Bedingungen zu beachten. 
+Die neun Kapitel dieser Norm werden durch vier informative Anhänge ergänzt. Diese Anhänge wurden aufge-
+nommen, um allgemeine Informationen über Baustoff- und Tragwerkseigenschaften zu liefern, die genutzt 
+werden können, wenn keine Kenntnisse über die tatsächlich vorhandenen Baustoffe oder Nutzungs-
+bedingungen vorliegen. 
+Bezüglich mitgeltender Bezugsnormen sind in der Regel die dazugehörigen Nationalen Anhänge zu beachten. 
+Für diesen Teil von Eurocode 2 wird besonders auf EN 206-1 (Beton: Festlegung, Eigenschaften, Herstellung 
+und Konformität) hingewiesen. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 10 =====
+EN 1992-3:2006 (D) 
+6 
+Für EN 1992-3 gelten folgende zusätzliche Absätze: 
+EN 1992-3, ergänzt EN 1992-1-1 im Hinblick auf die besonderen Aspekte von Flüssigkeits- und Schüttgut-
+behältern. 
+Rahmen und Aufbau dieses Teils 3 entsprechen EN 1992-1-1. Dieser Teil 3 enthält jedoch Prinzipien und 
+Anwendungsregeln, die ausschließlich für Silos und Behälterbauwerke gelten. 
+Alle Absätze von EN 1992-1-1 gelten in der Regel weiterhin soweit dies sinnvoll ist, wenn sie nicht in dieser 
+EN 1992-3 spezifiziert oder ergänzt werden. 
+Einige Prinzipien und Anwendungsregeln der EN 1992-1-1 werden durch diesen Teil 3 für Silos und 
+Behälterbauwerke modifiziert oder ersetzt. 
+Werden vorhandene Prinzipien oder Anwendungsregeln von EN 1992-1-1 verändert oder ersetzt, ist die neue 
+Absatznummer durch die Addition von 100 zu der ursprünglichen Absatznummer gekennzeichnet. Hinzuge-
+fügte neue Prinzipien oder Anwendungsregeln werden nach der letzten Absatznummer von EN 1992-1-1 
+fortlaufend nummeriert und um 100 erhöht. 
+Die Nummerierung von Gleichungen, Bildern, Fußnoten und Tabellen in diesem Teil erfolgt wie die für die 
+zuvor beschriebenen Absatznummerierungen. 
+Nationaler Anhang für EN 1992-3 
+In dieser Norm werden Werte mit zusätzlichen Anmerkungen angegeben, die nationale Wahlmöglichkeiten 
+erlauben. Es sollten deshalb die nationalen Normen zur Einführung von EN 1992-3 mit einen nationalen 
+Anhang versehen werden, der alle national festgelegten Parameter für die Bemessung von den im jeweiligen 
+Land zu errichtenden Silos und Behälterbauwerke enthalten. 
+In EN 1992-3 sind nationale Wahlmöglichkeiten in den folgenden Absätzen erlaubt: 
+7.3.1 (111) 
+7.3.1 (112) 
+7.3.3 
+N1)
+8.10.3.3 (102) und (103) N2)
+9.11.1 (102) 
+N1) Nationale Fußnote: Wird ersetzt durch Bilder 7.103N und 7.104N. 
+N2) Nationale Fußnote: Wird ersetzt durch 8.10.1.3 (103). 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 11 =====
+EN 1992-3:2006 (D) 
+7 
+1 Einleitung 
+1.1 Anwendungsbereich 
+Abschnitt 1.1.2 von EN 1992-1-1 wird ersetzt durch: 
+1.1.2 Anwendungsbereich von Eurocode 2-3 
+(101)P Eurocode 2 3 enthält zusätzliche Regeln für die Planung von Tragwerken aus unbewehrtem oder 
+gering bewehrtem Beton, aus Stahlbeton oder Spannbeton für die Speicherung von Flüssigkeiten oder 
+Schüttgütern. 
+(102)P In diesem Teil werden Prinzipien und Anwendungsregeln für die Bemessung der Bauteile ange-
+geben, die mit den gespeicherten Flüssigkeiten oder Stoffen direkt in Kontakt stehen (z. B. Wände von Tanks, 
+Speichern oder Silos). Andere Bauteile, die diese Primärbauteile stützen (z. B. das Turmtragwerk für den 
+Speicher eines Wasserturms), sind in der Regel nach Teil 1-1 zu bemessen. 
+(103)P Dieser Teil behandelt nicht: 
+ Tragwerke für die Lagerung von Stoffen mit sehr tiefen oder sehr hohen Temperaturen; 
+ Tragwerke für die Lagerung gefährlicher Stoffe, deren Austritt zu einem hohen Gesundheits- oder 
+Sicherheitsrisiko führen kann; 
+ Auswahl und Bemessung von Auskleidungen sowie die Konsequenzen ihrer Wahl auf die Tragwerks-
+bemessung; 
+ Druckbehälter; 
+ schwimmende Tragwerke; 
+ große Dämme; 
+ Gasundurchlässigkeit. 
+(104) Diese Norm gilt für gespeicherte Stoffen mit Temperaturen, die ständig zwischen 40 °C und 
+200 °C betragen. 
+(105) Für die Wahl und Bemessung von Auskleidungen sind in der Regel geeignete Spezifikationen 
+heranzuziehen. 
+(106) Obwohl diese Norm besonders Tragwerke von Silos und Behälterbauwerken für Flüssigkeiten und 
+Schüttgüter behandelt, können die Regeln über die Wasserundurchlässigkeit auch auf Bauteile zutreffen, bei 
+denen es auf die Undurchlässigkeit gegenüber anderen Flüssigkeiten ankommt. 
+(107) Die Regeln zu Durchlässigkeit und Dauerhaftigkeit beziehen sich im Wesentlichen auf Wasser. 
+Wenn andere Flüssigkeiten in direktem Kontakt mit Beton gespeichert werden, sollte diesbezüglich spezielles 
+Schrifttum herangezogen werden. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 12 =====
+EN 1992-3:2006 (D) 
+8 
+1.2 Normative Verweisungen 
+Die folgenden Normen enthalten Regelungen, auf die in dieser Europäischen Norm durch Hinweis Bezug 
+genommen wird. Bei datierten Bezügen gelten spätere Änderungen oder Ergänzungen der zitierten Normen 
+nicht. Es sollte jedoch bei Bedarf geprüft werden, ob die jeweils gültige Ausgabe der Normen angewendet 
+werden darf. Bei undatierten Bezügen gilt die jeweils gültige Ausgabe der Norm. 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung 
+EN 1991-1-5, Eurocode 1: Einwirkungen auf Tragwerke  Teil 1-5: Allgemeine Einwirkungen Temperatur-
+einwirkungen
+EN 1991-4, Eurocode 1: Einwirkungen auf Tragwerke  Teil 4: Einwirkungen auf Silos und 
+Flüssigkeitsbehälter
+EN 1992-1-1, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken  
+Teil 1-1: Allgemeine Bemessungsregeln und Regeln für den Hochbau
+EN 1992-1-2, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken  
+Teil 1-2: Allgemeine Regeln  Tragwerksbemessung für den Brandfall
+EN 1997-1, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik  Teil 1: Allgemeine 
+Regeln
+1.6 Formelzeichen 
+Zusatz nach 1.6. 
+1.7 Besondere Formelzeichen im Eurocode 2-3 
+Große lateinische Buchstaben 
+Rax Beiwert zur Bestimmung der Größe einer Zwangsnormalkraft infolge angeschlossener Bauteile 
+Rm Beiwert zur Bestimmung der Größe eines Zwangsmoments infolge angeschlossener Bauteile 
+Kleine lateinische Buchstaben 
+fctx Zugfestigkeit, wie jeweils definiert 
+fckT modifizierter charakteristischer Wert der Betondruckfestigkeit zur Berücksichtigung der Temperatur 
+Griechische Buchstaben 
+av mittlere Dehnung im Bauteil 
+az Dehnung in der Höhe z
+iz aufgezwungene Dehnung in der Höhe z
+Tr Dehnung infolge veränderlicher Temperatur (Übergangskriechen) 
+Th freie Temperaturdehnung im Beton 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 13 =====
+EN 1992-3:2006 (D) 
+9 
+2 Grundlagen der Tragwerksplanung 
+2.1 Anforderungen 
+2.1.1 Grundlegende Anforderungen 
+Zusatz nach Absatz (3): 
+(104) Die zu berücksichtigenden Bemessungssituationen müssen in der Regel mit EN 1990, EN 1991-4 
+und EN 1991-1-5, Abschnitt 3 übereinstimmen. Zusätzlich können für Silos und Behälterbauwerke aus Beton 
+die folgenden besonderen Bemessungssituationen auftreten: 
+ Betriebsbedingungen mit Entleeren und Füllen; 
+ Staubexplosionen; 
+ Temperatureinflüsse, z. B. infolge des gespeicherten Stoffes oder der Umgebungstemperatur; 
+ Anforderungen zur Überprüfung der Wasserundurchlässigkeit des Behälters. 
+2.3 Basisvariablen 
+2.3.1 Einwirkungen und Umwelteinflüsse 
+2.3.1.1 Allgemeines 
+Zusatz nach Absatz (1): 
+(102)P Die Teilsicherheitsbeiwerte für Einwirkungen auf Silos und Behälterbauwerke sind im normativen 
+Anhang B von EN 1991-4 angegeben. 
+(103) Aus Erddruck oder Wasser im Erdreich resultierende Einwirkungen sind in der Regel nach EN 1997 
+zu ermitteln. 
+2.3.2 Material- und Produkteigenschaften 
+2.3.2.3 Wasserundurchlässiger Beton 
+(101) Wird die Mindestbauteildicke von Bauteilen nach 9.11.1 (102) gewählt, so kann ein geringerer 
+Wasser-Zement-Faktor erforderlich werden. In der Regel ist das Größtkorn der Gesteinskörnung zu 
+begrenzen. 
+3 Baustoffe 
+3.1 Beton 
+3.1.1 Allgemeines 
+(103) Der Einfluss der Temperatur auf die Betoneigenschaften ist in der Regel bei der Bemessung zu 
+berücksichtigen. 
+ANMERKUNG Weitere Informationen enthält der informative Anhang K. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 14 =====
+EN 1992-3:2006 (D) 
+10 
+3.1.3 Elastische Verformungseigenschaften 
+Ersatz von Absatz (5) durch: 
+(105) Sofern keine genaueren Angaben vorliegen, darf für die lineare Wärmedehnzahl ein Wert von 
+10 106 K1 angenommen werden. In der Regel ist jedoch zu beachten, dass die Wärmedehnzahlen für 
+Beton in Abhängigkeit von der Art der Gesteinskörnung und den Feuchtebedingungen im Beton erheblich 
+streuen können. 
+3.1.4 Kriechen und Schwinden 
+Zusatz nach Anwendungsregel (5): 
+(106) Sind die Bauteile über beträchtliche Zeiträume hohen Temperaturen ( 50 °C) ausgesetzt, wird das 
+Kriechverhalten maßgebend verändert. Sofern dies auftreten kann, sind in der Regel geeignete Werte für die 
+besonderen Bedingungen der vorgesehenen Nutzung zu ermitteln. 
+ANMERKUNG Angaben zur Abschätzung von Kriecheinflüssen bei erhöhten Temperaturen enthält der informative 
+Anhang K. 
+3.1.11 Wärmeentwicklung und Temperaturverteilung infolge Hydratation 
+(101) Wenn die Bauzustände maßgebend werden, sind die charakteristischen Merkmale der Wärme-
+entwicklung für den jeweiligen Zement in der Regel durch Versuche zu ermitteln. Die tatsächliche Wärme-
+entwicklung ist in der Regel unter Berücksichtigung der zu erwartenden Bedingungen im frühen Bauteilalter 
+(z. B. Nachbehandlung, Umweltbedingungen) zu bestimmen. Die Höchsttemperatur und der Zeitpunkt ihres 
+Auftretens nach dem Betonieren sind in der Regel in Abhängigkeit von der Betonzusammensetzung, der Art 
+der Schalung und den Umgebungsbedingungen festzustellen. 
+3.2 Betonstahl 
+3.2.2 Materialeigenschaften 
+(107) Hinsichtlich der Eigenschaften von Betonstahl im Temperaturbereich zwischen 40 °C und +100 °C 
+sei auf EN 1992-1-1, 3.2.2 verwiesen (sofern keine besonderen Untersuchungen angestellt werden). Für 
+höhere Temperaturen gibt es Angaben in 3.2.3 von EN 1992-1-2. Für die Minderung der Tragfähigkeit bei 
+Temperaturen über 20 °C siehe EN 1992-1-2, 10.3.2.2. N3)
+3.3 Spannstahl 
+3.3.2 Materialeigenschaften 
+(110) Für die Festigkeit und Relaxation von Spannstahl gelten im Temperaturbereich zwischen 40 °C 
+und 100 °C dieselben Werte wie für normale Temperaturen" (sofern keine besonderen Untersuchungen 
+angestellt werden). Für höhere Temperaturen enthält EN 1992-1-2, 3.2.4 weitere Angaben. N4)
+N3) Nationale Fußnote: Absatz geändert in (107) Die Eigenschaften von Betonstahl im Temperaturbereich zwischen 
+40 °C und +100 °C sind in EN 1992-1-1, 3.2.2 geregelt. Für höhere Temperaturen enthält EN 1992-1-2, 3.2.3 
+weitere Angaben. 
+N4) Nationale Fußnote: Absatz geändert in (110) Für die Festigkeit und Relaxation von Spannstahl gelten im 
+Temperaturbereich zwischen 40 °C und 100 °C gelten die Werte für Normaltemperatur. Für höhere Temperaturen 
+enthält EN 1992-1-2, 3.2.4 weitere Angaben. Für die Relaxation von Temperaturen über 20 °C siehe EN 1992-1-1, 
+10.3.2.1. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 15 =====
+EN 1992-3:2006 (D) 
+11 
+4 Dauerhaftigkeit und Betondeckung 
+4.3 Anforderungen an die Dauerhaftigkeit 
+Zusatz nach Absatz 4.4.1.2 (13): 
+(114) Abrieb an den Innenflächen von Silowänden kann zu Verunreinigungen des Schüttguts oder zu 
+einer signifikanten Reduktion der Betondeckung führen. Es können drei Ursachen von Abrieb auftreten: 
+ mechanischer Angriff infolge des Füll- und Entleerungsprozesses; 
+ physikalischer Angriff infolge Erosion und Korrosion bei wechselnden Temperatur- und Feuchte-
+bedingungen; 
+ chemischer Angriff infolge einer Reaktion zwischen Beton und Schüttgut. 
+(115) In der Regel ist durch geeignete Maßnahmen sicherzustellen, dass dem Abrieb ausgesetzte Bau-
+teile für die geplante Nutzungsdauer gebrauchstauglich bleiben. 
+5 Schnittgrößenermittlung 
+Zusatz nach Abschnitt 5.11: 
+5.12 Ermittlung der Schnittgrößen infolge Temperatur 
+5.12.1 Allgemeines 
+(101) Eine genaue Schnittgrößenermittlung kann nach den Regelungen in 3.1.4 und Anhang B von 
+EN 1992-1-1 für Kriechen und Schwinden durchgeführt werden. 
+(102) In Behältern können hohe Temperaturgradienten auftreten, wenn das Füllgut entweder sich selbst 
+aufheizen kann oder mit hoher Temperatur eingefüllt wird. Unter solchen Bedingungen müssen die auf-
+tretenden Temperaturgradienten und die daraus resultierenden Schnittgrößen ermittelt werden. 
+5.13 Berechnung der Schnittgrößen infolge Innendruck 
+(101) Der Innendruck von festem Füllgut wirkt direkt auf die innere Betonoberfläche. Falls keine 
+genaueren Berechnungen durchgeführt werden, darf angenommen werden, dass der Innendruck von Flüssig-
+keiten auf die Mittelfläche der Behälterbauteile wirkt. 
+6 Grenzzustände der Tragfähigkeit 
+6.2 Querkraft 
+Zusatz nach Absatz 6.2.3 (8): 
+(109) In 6.2.3 (2) ist in der Regel bei der Wahl des Neigungswinkels für die Druckstreben der Einfluss 
+wesentlicher Längszugkräfte zu beachten. Cot darf auf der sicheren Seite liegend zu 1,0 angenommen 
+werden. Es darf auch das Verfahren nach Anhang QQ von EN 1992-2 herangezogen werden. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 16 =====
+EN 1992-3:2006 (D) 
+12 
+Zusatz nach Abschnitt 6.8: 
+6.9 Nachweis für Staubexplosion 
+6.9.1 Allgemeines 
+(101)P Werden Silos für die Aufnahme von Schüttgütern bemessen, bei denen Staubexplosionen möglich 
+sind, muss entweder das Tragwerk so bemessen werden, dass es den zu erwartenden maximalen Drücken 
+widersteht, oder es muss ein geeigneter Druckausgleich vorgesehen werden, der den Druck auf ein 
+vertretbares Maß vermindert. 
+Die Einwirkungen infolge Staubexplosionen werden in EN 1991-4 behandelt. Allgemeine Hinweise zur 
+Bemessung für Staubexplosionen enthält EN 1991-1-7; dabei sind in der Regel die zusätzlichen Angaben in 
+6.9.2 (101) bis (105) zu beachten. 
+(102)P Flammen aus Druckentlastungsöffnungen dürfen weder zu einer Gefährdung der Umgebung führen 
+noch in anderen Bereichen des Silos Explosionen auslösen. Die Gefahr für Menschen durch umherfliegende 
+Glassplitter oder Trümmerteile muss minimiert werden. 
+(103) Druckentlastungen müssen in der Regel über entsprechend vorgesehene Auslassöffnungen direkt 
+ins Freie führen, um so den Explosionsdruck zu reduzieren. 
+(104) Druckentlastungssysteme müssen in der Regel bereits bei niedrigen Drücken ansprechen und eine 
+geringe Massenträgheit besitzen. 
+(105) Einwirkungen infolge Staubexplosionen sind in der Regel als außergewöhnliche Einwirkungen zu 
+betrachten. 
+6.9.2 Bemessung tragender Bauteile 
+(101)P Die maximalen Explosionsdrücke treten in leeren Silos auf, jedoch kann der Druck in einem 
+teilweise gefüllten Silo in Kombination mit der Belastung durch das Schüttgut für die Bemessung kritischer 
+sein. 
+(102) Treten durch das schnelle Ausströmen von Gas und das folgende Abkühlen des heißen Rauchs 
+Trägheitskräfte auf, kann ein Druck unterhalb des atmosphärischen Drucks auftreten. Dies ist in der Regel 
+beim Entwurf von Bekleidungen und Bauteilen im Strömungsbereich zu berücksichtigen. 
+(103) Die Bauteile zur Druckentlastung sind in der Regel gegen Wegfliegen zu sichern, um nicht die 
+Gefahr umherfliegender Trümmerteile zu vergrößern. 
+(104) Die durch eine Druckentlastung entstehenden Reaktionskräfte sind in der Regel bei der Bemessung 
+der tragenden Bauteile zu berücksichtigen. 
+(105) In der Regel sind weitere Fachleute hinzuzuziehen, wenn komplexe Installationen vorgesehen 
+werden oder Explosionen zu einem hohen Verletzungsrisiko führen können. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 17 =====
+EN 1992-3:2006 (D) 
+13 
+7 Grenzzustände der Gebrauchstauglichkeit 
+7.3 Rissbildung 
+7.3.1 Allgemeines 
+Zusatz nach Absatz(9): 
+(110) Zweckmäßigerweise werden die Flüssigkeitsbehälter entsprechend dem erforderlichen Schutz-
+niveau gegen Flüssigkeitsaustritt nach Tabelle 7.105 klassifiziert. Es sollte beachtet werden, dass durch jeden 
+Beton geringe Mengen an Flüssigkeit und Gas diffundieren können. 
+Tabelle 7.105  Klassifizierung der Undurchlässigkeit 
+Undurchlässig-
+keitsklasse Anforderungen an den Flüssigkeitsdurchtritt 
+0 Ein gewisser Flüssigkeitsdurchtritt ist akzeptabel oder vernachlässigbar. 
+1 Der Flüssigkeitsdurchtritt ist auf eine geringe Menge zu begrenzen. Feuchtstellen 
+oder Verfärbungen auf der Bauteiloberfläche sind akzeptabel. 
+2 Der Flüssigkeitsdurchtritt soll minimal sein. Das Aussehen wird nicht durch 
+Feuchtstellen oder Verfärbungen beeinträchtigt. 
+3 Kein Flüssigkeitsaustritt zulässig. 
+(111) Für die Rissbreiten sind in der Regel geeignete Grenzwerte in Abhängigkeit von der Klassifikation 
+des entsprechenden Bauteils und unter Berücksichtigung der erforderlichen Funktion des Tragwerks 
+festzulegen. Liegen keine besonderen Anforderungen vor, darf Folgendes angenommen werden: 
+Undurchlässigkeitsklasse 0: Die Regeln in 7.3.1 in EN 1992-1-1 dürfen angewendet werden. 
+Undurchlässigkeitsklasse 1: Trennrisse sind in der Regel auf die Rissbreite w
+k1 zu begrenzen. Die 
+Begrenzung nach in 7.3.1 von EN 1992-1-1 ist ausreichend, wenn der Quer-
+schnitt nicht voll gerissen ist und wenn die Bedingungen der Absätze (112) 
+und (113) erfüllt sind. 
+Undurchlässigkeitsklasse 2: Trennrisse sind in der Regel zu vermeiden, falls nicht andere Maßnahmen 
+(z. B. Auskleidungen oder Wasserbarrieren) ergriffen werden. 
+Undurchlässigkeitsklasse 3: Im Allgemeinen sind besondere Maßnahmen (z. B. Auskleidungen oder Vor-
+spannung) zur Sicherstellung der Wasserundurchlässigkeit erforderlich. 
+ANMERKUNG Der jeweils in einem Land zu verwendende Wert für wk1 darf in einem Nationalen Anhang festgelegt 
+werden. Der für Wasserbehälter empfohlene Wert hängt von dem Verhältnis zwischen dem Wasserdruck über der Höhe 
+hD zur Wanddicke h ab. Für hD/h 5 ist wk1 0,20 mm, und für hD/h 35 ist wk1 0,05 mm; für Zwischenwerte darf 
+zwischen 0,20 mm und 0,05 mm linear interpoliert werden. Bei einer Begrenzung der Rissbreite auf diese Werte ist eine 
+Selbstheilung der Risse in einer vergleichsweise kurzen Zeit zu erwarten. 
+(112) Um bei Tragwerken der Undurchlässigkeitsklasse 2 oder 3 Trennrisse zu vermeiden, muss in der 
+Regel der Bemessungswert der Druckzonenhöhe unter der quasi-ständigen Einwirkungskombination 
+mindestens x
+min betragen. Bei Querschnitten unter wechselnden Beanspruchungen sind in der Regel Trenn-
+risse zu erwarten, wenn nicht nachgewiesen werden kann, dass eine bestimmter Querschnittsbereich dabei 
+ständig überdrückt wird. Die Höhe dieser Druckzone muss in der Regel unter allen auftretenden 
+Lastkombinationen mindestens x
+min betragen. Die Schnittgrößen dürfen unter Annahme eines linear-
+elastischen Baustoffverhaltens ermittelt werden. Die dabei sich ergebenden Spannungen im Querschnitt sind 
+in der Regel unter Vernachlässigung der Betonzugfestigkeit zu berechnen. 
+ANMERKUNG Der jeweils in einem Land zu verwendende Wert für xmin darf in einem Nationalen Anhang festgelegt 
+werden. Der empfohlene Wert für xmin ist der kleinere Wert von 50 mm oder 0,2 h, wobei h die Bauteildicke ist. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 18 =====
+EN 1992-3:2006 (D) 
+14 
+(113) Wenn die Bedingungen von 7.3.1 (111) für die Undurchlässigkeitsklasse 1 eingehalten werden, 
+dann darf bei von Wasser durchströmten Rissen eine Selbstheilung der Risse angenommen werden, wenn 
+die Bauteile während der Nutzungsdauer keinen wesentlichen Änderungen der Belastung oder der 
+Temperatur unterliegen. Liegen keine genaueren Kenntnisse vor, darf eine Selbstheilung angenommen 
+werden, wenn der zu erwartende Bereich der Dehnungen unter Gebrauchslast unterhalb 150 
+ 106 liegt. 
+(114) Ist eine Selbstheilung nicht zu erwarten, kann durch jeden Trennriss unabhängig von der Rissbreite 
+Flüssigkeit durchtreten. 
+(115) Silos für trockene Schüttgüter dürfen im Allgemeinen für die Undurchlässigkeitsklasse 0 bemessen 
+werden. Jedoch kann auch die Wahl anderer Undurchlässigkeitsklassen zweckmäßig sein, wenn das 
+Schüttgut feuchteempfindlich ist. 
+(116) Besondere Sorgfalt ist Bauteilen zu widmen, in denen Zugspannungen durch Zwangsverformungen 
+infolge Schwinden oder Temperatur auftreten können. 
+(117) Bei den Anforderungskriterien für Flüssigkeitsbehälter kann eine Höchstleckagemenge vereinbart 
+werden. 
+7.3.3 Begrenzung der Rissbreite ohne direkte Berechnung 
+Ersatz der Anmerkung zur Anwendungsregel (2): 
+ANMERKUNG Wird die Mindestbewehrung nach 7.3.2 vorgesehen, dürfen für vollständig auf Zug beanspruchte Quer-
+schnitte die Grenzdurchmesser und Höchstwerte der Stababstände in den Bildern 7.103N und 7.104N für verschiedene 
+Bemessungswerte der Rissbreite abgelesen werden. 
+Der Grenzdurchmesser nach Bild 7.103N ist in der Regel nach Gleichung (7.122) zu modifizieren: 
+dh
+hf
+109,2
+effct,*
+ss (7.122) 
+Dabei ist 
+s der modifizierte Grenzdurchmesser; 
+s* der Grenzdurchmesser nach Bild 7.103N; 
+h die Bauteildicke; 
+d die Nutzhöhe bis zum Schwerpunkt der äußeren Bewehrungslage, (siehe Bild 7.1 c) in EN 1992-
+1-1); 
+fct,eff die wirksame mittlere Betonzugfestigkeit nach EN 1992-1-1, in N/mm 2. 
+Bei überwiegend durch Zwang verursachter Rissbildung dürfen in der Regel die im Bild 7.103N angegebenen 
+Stabdurchmesser nicht überschritten werden, wobei die Stahlspannung unmittelbar nach Rissbildung zu 
+verwenden ist (d. h. s in Gleichung (7.1)). 
+Wenn die Risse überwiegend durch Last verursacht werden, sind in der Regel entweder die Höchstwerte der 
+Stabdurchmesser nach Bild 7.103N oder die größten Stababstände nach Bild 7.104N einzuhalten. Die Stahl-
+spannungen sind in der Regel unter Annahme gerissener Querschnitte für die maßgebende Einwirkungs-
+kombination zu ermitteln. 
+Für Zwischenwerte der Rissbreite dürfen die Werte interpoliert werden. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 19 =====
+EN 1992-3:2006 (D) 
+15 
+Legende 
+X Stahlspannung s (N/mm2) 
+Y Grenzdurchmesser (mm) 
+Bild 7.103N  Grenzdurchmesser zur Rissbreitenbegrenzung bei Bauteilen unter Längszug 
+Legende 
+X Stahlspannung s (N/mm2) 
+Y Höchstwerte der Stababstände (mm) 
+Bild 7.104N  Höchstwerte der Stababstände zur Rissbreitenbegrenzung bei Bauteilen unter 
+Längszug 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 20 =====
+EN 1992-3:2006 (D) 
+16 
+7.3.4 Berechnung der Rissbreite 
+Zusatz nach Anwendungsregel (5): 
+(106) Angaben zur Berechnung der Rissbreiten für Bauteile unter Zwang infolge behinderter Temperatur- 
+oder Schwindverformung sind in den informativen Anhängen L und M enthalten. 
+Zusatz nach Abschnitt 7.3.4: 
+7.3.5 Begrenzung der Rissbreite infolge von Zwang 
+(101) Wenn die Rissbildung infolge Zwang aus Temperaturänderungen oder Schwinden beschränkt 
+werden soll, kann dies für Tragwerke der Undurchlässigkeitsklasse 1 (siehe Tabelle 7.105) durch Begrenzung 
+der Betonzugspannungen auf die charakteristische Betonzugfestigkeit f
+ctk, 0,05; gegebenenfalls unter Berück-
+sichtigung eines biaxialen Spannungszustandes (siehe Anhang QQ in EN 1992-2), erfolgen. 
+Für Tragwerke der Undurchlässigkeitsklassen 2 oder 3 ohne Beschichtung kann dies sichergestellt werden, 
+wenn der Betonquerschnitt voll überdrückt bleibt. Dies kann erreicht werden durch: 
+ Begrenzung des Temperaturanstiegs infolge Hydratation des Zements; 
+ Vermeidung oder Verminderung des Zwangs; 
+ Verminderung des Betonschwindens; 
+ Verwendung von Beton mit einem geringen Wärmeausdehnungskoeffizienten; 
+ Verwendung von Beton mit hoher Zugfestigkeit (nur bei Tragwerken der Undurchlässigkeitsklasse 1); 
+ Anwendung einer Vorspannung. 
+(102) Im Allgemeinen werden die Spannungen genügend genau unter der Annahme elastischen 
+Betonverhaltens und unter Verwendung eines effektiven Beton-Elastizitätsmodul zur Berücksichtigung des 
+Kriechens ermittelt. Im informativen Anhang L wird ein vereinfachtes Verfahren zur Ermittlung von 
+Spannungen und Dehnungen in Betonbauteilen unter Zwang angegeben, das angewendet werden darf, wenn 
+keine genaueren Angaben vorliegen. 
+8 Bauliche Durchbildung 
+8.10.1 Anordnung von Spanngliedern und Hüllrohren
+8.10.1.3 Hüllrohre für Spannglieder im nachträglichen Verbund 
+Zusatz nach Anwendungsregel (1): 
+(102) Bei kreisrunden Behältern mit interner Vorspannung muss verhindert werden, dass die Spannglieder 
+nicht mit der inneren Betondeckung ausbrechen. Im Allgemeinen wird dies vermieden, wenn die Achse der 
+horizontalen Spannglieder im äußeren Drittel der Wand liegt. Ist dies wegen der erforderlichen äußeren 
+Betondeckung nicht möglich, sollten die Hüllrohre der Spannglieder mindestens in der äußeren Hälfte der 
+Wand liegen. 
+(103) Der Durchmesser eines in der Wand liegenden Hüllrohres darf in der Regel das 
+fache der 
+Wanddicke nicht überschreiten. 
+ANMERKUNG Der jeweils in einem Land zu verwendende Wert für darf in einem Nationalen Anhang festgelegt 
+werden. Der empfohlene Wert ist 0,25. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 21 =====
+EN 1992-3:2006 (D) 
+17 
+(104) Die Vorspannkraft ist in der Regel so gleichmäßig wie möglich in einer Wand zu verteilen. Ver-
+ankerungen oder Lisenen sind in der Regel so anzuordnen, dass ungleichmäßige Kraftverteilungen möglichst 
+verringert werden, falls nicht besondere Maßnahmen zur Berücksichtigung dieser Einflüsse ergriffen werden. 
+(105) Bei Tragwerken mit vertikalen Spanngliedern ohne Verbund, die höheren Temperaturen ausgesetzt 
+sind, kann die Korrosionsschutzmasse auslaufen. Um dies zu vermeiden, dürfen in der Regel Spannglieder 
+ohne Verbund zur vertikalen Vorspannung nicht verwendet werden. Geschieht dies dennoch, sind in der 
+Regel Maßnahmen zur Überprüfung und gegebenenfalls Erneuerung der Korrosionsschutzmasse zu ergreifen. 
+8.10.4 Verankerungen und Spanngliedkopplungen für Spannglieder 
+Zusatz nach Anwendungsregel (5): 
+(106) Wenn Spanngliedverankerungen auf der Innenseite von Behältern angeordnet werden, sind diese in 
+der Regel besonders sorgfältig gegen Korrosion zu schützen. 
+9 Konstruktionsregeln für Bauteile und spezielle Regeln 
+9.6 Stahlbetonwände 
+Zusatz nach Abschnitt 9.6.4: 
+9.6.5 Eckverbindungen von Wänden 
+(101) Sind Wände an einer Ecke monolithisch verbunden und wirken dort positive Momente und Quer-
+kräfte, die Zug an den Wandinnenseiten erzeugen, ist die Bewehrungsführung besonders sorgfältig auszu-
+bilden, um die Aufnahme der diagonalen Zugkräfte zu sichern. Stabwerkmodelle sind für die Bemessung 
+dieser Bewehrung geeignet (siehe EN 1992-1-1, 5.6.4). 
+9.6.6 Anordnung von Bewegungsfugen 
+(101) Wenn die Maßnahmen zur Begrenzung der Rissbildung ineffektiv und unwirtschaftlich werden, sind 
+in der Regel Bewegungsfugen bei Flüssigkeitsbehältern vorzusehen. Die Vorgehensweise hängt dabei von 
+den Nutzungsbedingungen des Behälters und dem Gefährdungspotenzial einer Leckage ab. International 
+wurden unterschiedliche Maßnahmen zur geeigneten Ausbildung von Bewegungsfugen entwickelt. Die 
+Funktionsfähigkeit von Fugen setzt eine korrekte Durchbildung voraus. Fugenabdichtungen weisen in der 
+Regel eine wesentlich kürzere Lebensdauer auf als die erforderliche Nutzungsdauer des Behälters. Deshalb 
+sind die Fugen in der Regel überprüfbar und reparierbar bzw. erneuerbar auszuführen. Weitere Angaben zur 
+Anordnung von Bewegungsf ugen enthält der informative Anhang N. Es ist sicherzustellen, dass das 
+Fugendichtungsmaterial gegenüber dem Füllgut bzw. der Flüssigkeit beständig ist. 
+9.11 Zusatzregeln für Wände 
+9.11.1 Mindestbewehrung und Mindestabmessungen 
+(101) Sind keine vertikalen Spannglieder (oder geneigte Spannglieder in geneigten Wänden) vorhanden, 
+dann ist in der Regel die vertikale bzw. geneigte Bewehrung auf Grundlage einer Stahlbetonbemessung zu 
+ermitteln. 
+(102) Die Dicke von Umfassungswänden von Silos oder Behältern darf in der Regel nicht dünner als t
+1 bei 
+Undurchlässigkeitsklasse 0 oder t2 bei der Undurchlässigkeitsklasse 1 oder 2 sein. In Gleitschalung herge-
+stellte Wände dürfen in der Regel bei allen Undurchlässigkeitsklassen nicht dünner als t2 sein. Die durch die 
+Schalungsanker verursachten Öffnungen sind in der Regel mit einem geeigneten Zementmörtel zu verfüllen. 
+ANMERKUNG Die jeweils in einem Land zu verwendenden Werte für t1 und t2 dürfen in einem Nationalen Anhang 
+festgelegt werden. Der empfohlene Wert für t1 ist 120 mm, und der für t2 ist 150 mm. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 22 =====
+EN 1992-3:2006 (D) 
+18 
+Anhang K 
+(informativ)
+Einfluss der Temperatur auf die Betoneigenschaften 
+K.1 Allgemeines 
+(101) Dieser Anhang behandelt die Einflüsse von Temperaturen im Bereich von 25 °C bis 200 °C auf 
+die Betoneigenschaften Festigkeit, Steifigkeit, Kriechen und Übergangskriechen. 
+(102) In allen Fällen hängen die Änderungen der Eigenschaften sehr stark von der speziellen Art des 
+Betons ab. Dieser Anhang soll nur allgemeine Hinweise geben. 
+K.2 Baustoffeigenschaften bei Minustemperaturen 
+(101) Wird Beton auf Temperaturen unter 0 °C abgekühlt, steigen Festigkeit und Steifigkeit an. Die 
+Zunahme hängt hauptsächlich vom Feuchtegehalt des Betons ab: je höher der Feuchtegehalt, desto stärker 
+ist die Zunahme an Festigkeit und Steifigkeit. Dies gilt jedoch nur für Bauteile, die ständig Temperaturen unter 
+25 °C ausgesetzt sind. 
+(102) Ein Abkühlen des Betons auf 
+25 °C führt zu einem Anstieg der Druckfestigkeit um: 
+ etwa 5 N/mm 2 bei teilweise trockenem Beton, 
+ etwa 30 N/mm 2 bei wassergesättigtem Beton. 
+(103) Die in Tabelle 3.1 angegebene Gleichung für die Zugfestigkeit darf wie folgt verändert werden, um 
+den Einfluss der Temperatur zu erfassen: 
+fctx fckT2/3 (K.1) 
+Dabei ist 
+fctx die Betonzugfestigkeit, je nach Definition (siehe Tabelle K.1); 
+ der Beiwert zur Berücksichtigung des Feuchtegehalts des Betons. Werte für sind in Tabelle K.1 
+angegeben; 
+fckT der veränderte Wert der charakteristischen Druckfestigkeit von Beton zur Berücksichtigung der 
+Temperatur nach (102). 
+Tabelle K.1  Beiwerte für wassergesättigten und trockenen Beton 
+Definition der Zugfestigkeit 
+(fctx) Wassergesättigter Beton Lufttrockener Beton 
+fctm 0,47 0,30 
+fctk;0,05 0,27 0,21 
+fctk;0,95 0,95 0,39 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 23 =====
+EN 1992-3:2006 (D) 
+19 
+(104) Ein Abkühlen des Betons auf 25 °C führt zu einem Anstieg des Elastizitätsmoduls um: 
+ etwa 2 000 N/mm 2 bei teilweise trockenem Beton, 
+ etwa 8 000 N/mm 2 bei wassergesättigtem Beton. 
+(105) Bei Temperaturen unter 0 °C darf das Kriechen zu 60 % bis 80 % des Kriechens bei Normal-
+temperatur angenommen werden. Unter 20 °C darf angenommen werden, dass Kriechen vernachlässigbar 
+ist. 
+K.3 Baustoffeigenschaften bei höheren Temperaturen 
+(101) Angaben zum Einfluss erhöhter Temperaturen auf die Druck- und Zugfestigkeit von Beton enthält 
+Abschnitt 3.2.2 von EN 1992-1-2. 
+(102) Es darf angenommen werden, dass sich der Elastizitätsmodul des Betons bei Temperaturen bis zu 
+50 °C nicht verändert. Für höhere Temperaturen darf eine lineare Abnahme um 20 % bis zu einer Temperatur 
+von 200 °C angesetzt werden. 
+(103) Wird ein Beton vor der Belastung erwärmt, darf angenommen werden, dass sich die Kriechzahl mit 
+Zunahme der Temperatur über 20 °C durch Multiplikation mit dem in Tabelle K.2 angegebenen Beiwert erhöht. 
+Tabelle K.2  Beiwert zur Erhöhung der Kriechzahl zur 
+Berücksichtigung höherer Temperaturen vor der Belastung 
+Temperatur 
+(°C)
+Erhöhungsfaktor für 
+Kriechbeiwerte 
+20 1,00 
+50 1,35 
+100 1,96 
+150 2,58 
+200 3,20 
+ANMERKUNG Die Tabellenwerte wurden aus dem CEB-Bulletin 208 abgeleitet 
+und weisen eine gute Übereinstimmung mit Beiwerten auf, die auf der Grundlage 
+einer Aktivierungsenergie für das Kriechen von 8 kJ/mol berechnet wurden. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 24 =====
+EN 1992-3:2006 (D) 
+20 
+(104) Wird ein Betonbauteil unter Last erwärmt, treten überproportional größere Verformungen auf, als sie 
+mit dem Erhöhungsbeiwert für Kriechen nach (103) berücksichtigt werden können. Diese verstärkte 
+Verformung (Übergangskriechen) ist eine bleibende, zeit unabhängige Dehnung. Die maximale Dehnung 
+infolge Übergangskriechen darf näherungsweise nach folgender Gleichung berechnet werden: 
+Tr c Th/fcm (K.2) 
+Dabei ist 
+ eine aus Versuchsergebnissen abgeleitete Konstante; der Wert für liegt im Bereich 
+1,8 2,35; 
+fcm der Mittelwert der Betondruckfestigkeit; 
+Tr die Dehnung infolge Übergangskriechen; 
+Th die freie thermische Dehnung im Beton ( T T); 
+c die aufgebrachte Druckspannung. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 25 =====
+EN 1992-3:2006 (D) 
+21 
+Anhang L 
+(informativ)
+Berechnung der Dehnungen und Spannungen von Betonquerschnitten 
+infolge Zwang 
+L.1 Beziehungen für die Spannungen und Dehnungen bei ungerissenen 
+Betonquerschnitten 
+(101) Die Dehnung und die Betonspannung in einer beliebigen Querschnittsfaser dürfen wie folgt ermittelt 
+werden: 
+az (1  Rax) iav (1  Rm) (1/r) (z  z) (L.1) 
+z Ec,eff ( iz  az) (L.2) 
+Dabei ist 
+Rax der Beiwert zur Bestimmung der Größe eines zentrischen Zwangs infolge der an das betrachtete 
+Bauteil angeschlossenen Bauteile; 
+Rm der Beiwert zur Bestimmung der Größe eines Zwangsmoments infolge der an das betrachtete 
+Bauteil angeschlossenen Bauteile. Für die üblichen Fälle darf Rm zu 1,0 angenommen werden; 
+Ec,eff der effektive Elastizitätsmodul für Beton unter Berücksichtigung des Kriechens; 
+iav die mittlere Bauteildehnung (d. h. die mittlere Dehnung des völlig frei verformbaren Bauteils); 
+iz die Zwangsdehnung in der Höhe z; 
+az die tatsächliche Dehnung in der Höhe z; 
+z der Abstand zur Faser in der Höhe z; 
+z der Abstand vom Querschnittsschwerpunkt; 
+1/r die Krümmung. 
+L.2 Abschätzung des Zwangs 
+(101) Die Zwangsbeiwerte dürfen unter Berücksichtigung der Steifigkeiten des betrachteten Bauteils und 
+der an ihm angeschlossenen Bauteile berechnet werden. Alternativ dürfen die Beiwerte für zentrischen Zwang 
+für übliche Fälle dem Bild L.1 und der Tabelle L.1 entnommen werden. In vielen Fällen (z. B. wenn eine Wand 
+auf ein starres vorhandenes Fundament betoniert wird) kann offensichtlich keine wesentliche Krümmung 
+auftreten, und der Beiwert für Momentenzwang R
+m 1,0 trifft zu. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 26 =====
+EN 1992-3:2006 (D) 
+22 
+Maße in m 
+a) Wand auf einem Fundament 
+Bei H L ist der Faktor 0,5 (1 L
+H ) N5)
+b) Platte zwischen starren Widerlagern 
+N5) Nationale Fußnote: Die Gleichung wurde bereits in der nationalen Ausgabe DIN EN 1992-3:2006-11 berichtigt. 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 27 =====
+EN 1992-3:2006 (D) 
+23 
+Bild L.1 (fortgesetzt)
+Bei L 2H ist der Faktor 0,5 (1 H
+L
+2 ) N5)
+ANMERKUNG Die verwendeten Beiwerte R sollten die 
+tatsächliche Verteilung der Bewehrung berücksichtigen. 
+c) nacheinander folgend betonierte Wände 
+(mit Arbeitsfugen) 
+d) alternierend betonierte Wände 
+(mit Arbeitsfugen) 
+Legende 
+1 vertikale Zwangsbeiwerte 
+2 horizontale Zwangsbeiwerte (siehe Tabelle L.1 
+für diesen mittleren Bereich) 
+3 Dehnfuge
+4 der höhere Wert ist maßgebend 
+5 mögliche Hauptrisse
+Bild L.1  Zwangsbeiwerte für typische Fälle 
+Tabelle L.1  Zwangsbeiwerte für die mittleren Bereiche von Wänden, siehe Bild L.1 
+Verhältnis L/H
+(siehe Bild L.1) Zwangsbeiwert am Fundament Zwangsbeiwert oben 
+1 0,5 0 
+2 0,5 0 
+3 0,5 0,05 
+4 0,5 0,3 
+ 8 0,5 0,5 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 28 =====
+EN 1992-3:2006 (D) 
+24 
+Anhang M 
+(informativ)
+Berechnung von Rissbreiten infolge Zwang 
+M.1 Allgemeines 
+(101) Dieser Anhang behandelt den Zwang infolge von Schwinden und von frühen Temperatur-
+verformungen durch Abkühlen der Bauteile während der Tage unmittelbar nach dem Betonieren. 
+In der Praxis sind in der Regel zwei grundlegende Fälle zu betrachten, die sich auf verschied ene Arten des 
+Zwanges beziehen (siehe Bild M.1). 
+Die Einflussparameter für die Rissbildung sind für beide Fälle sehr verschieden. Der Fall a) tritt auf, wenn ein 
+neuer Betonierabschnitt zwei vorhandene Abschnitte verbindet. Der häufige Fall b) tritt auf, wenn eine Wand 
+auf ein vorher hergestelltes Fundament betoniert wird. Der Fall a) wurde in den vergangenen Jahrzehnten 
+ausreichend untersucht und behandelt. Zum Fall b) wurden nicht in gleichem Maße systematische 
+Untersuchungen veröffentlicht. 
+a) Zwang an den Bauteilenden b) Zwang an einem Bauteilrand
+Bild M.1  Arten des Zwanges von Wänden 
+Die Einflussparameter für die Rissbreitenbeschränkung sind für diese beiden Fälle sehr verschieden, und 
+beide Fälle sind wirklich von praktischer Bedeutung. Der Fall a) tritt auf, wenn ein neuer Betonabschnitt 
+zwischen zwei vorhandene Abschnitte betoniert wird. Der Fall b) ist besonders häufig und tritt auf, wenn eine 
+Wand auf ein vorher betoniertes Fundament betoniert wird. Der Fall a) wurde über die letzten Jahrzehnte 
+ausführlich erforscht und ist ziemlich klar. Der Fall b) wurde nicht so systematisch untersucht und es scheint 
+wenige veröffentlichte Anleitungen zu geben. 
+M.2 Zwang an den Bauteilenden 
+Fall a): Zwang an den Bauteilenden 
+Die maximale Rissbreite darf nach Gleichung (7.8) von EN 1992-1-1 berechnet werden, wobei ( sm  cm) mit 
+Gleichung (M.1) ermittelt wird: 
+( sm  cm) 0,5 e kc k fct,eff (1 1/( e ))/Es (M.1) 
+Für die Rissbreitenbegrenzung ohne direkte Berechnung darf s nach Gleichung (M.2) bestimmt werden, mit 
+der dann mit den Bildern 7.103N und 7.104N eine geeignete Bewehrungsanordnung ermittelt werden kann. 
+s kc k fct,eff / (M.2) 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 29 =====
+EN 1992-3:2006 (D) 
+25 
+Dabei ist 
+As/Act; 
+Act die Betonzugfläche nach 7.3.2. 
+Fall b): Zwang an einem Bauteilrand einer langen Wand 
+Im Gegensatz zu Zwang an den Bauteilenden beeinflusst die Rissbildung hier nur lokal die Spannungs-
+verteilungen. Die Rissbreite hängt von der Zwangsdehnung und nicht von der Dehnfähigkeit des Betons auf 
+Zug ab. Eine gute Abschätzung der Rissbreite kann mit dem Ansatz von ( sm  cm) nach Gleichung (M.3) in 
+Gleichung (7.8) von EN 1992-1-1 erfolgen. 
+( sm  cm) Rax free (M.3) 
+Dabei ist 
+Rax der Zwangsbeiwert nach dem informativen Anhang L; 
+free die Dehnung des völlig unbehinderten Bauteils. 
+Das Bild M.2 veranschaulicht den Unterschied in der Rissbildung der beiden Zwangsfälle. 
+Legende 
+X Zwang 
+Y Rissbreite 
+1 Gleichung (M.1) 
+2 Rissbildung infolge Zwang an den Bauteilenden 
+3 Rissbildung bei Zwang am Bauteilrand (Gleichung (M.3)) 
+Bild M.2  Zusammenhang zwischen Rissbreite und Zwangsdehnung für Zwang an den Bauteilenden 
+und an einem Bauteilrand 
+DIN EN 1992-3:2011-01
+
+===== PDF-SEITE 30 =====
+EN 1992-3:2006 (D) 
+26 
+Anhang N 
+(informativ)
+Anordnung von Bewegungsfugen 
+(101) Folgende Bemessungsoptionen sind möglich: 
+a) Bemessung für vollen Zwang. In diesem Fall werden keine Bewegungsfugen angeordnet und die Breiten 
+und Abstände der Risse werden durch Anordnung einer angemessenen Bewehrung nach den Regeln in 
+7.3 kontrolliert. 
+b) Bemessung für freie Bewegungsmöglichkeit. In diesem Fall wird die Rissbildung durch den Abstand der 
+Fugen kontrolliert. Es wird eine geringe Bewehrung eingelegt, um die Verformung zur anschließenden 
+Fuge zu übertragen. Zwischen den Fugen sollte keine wesentliche Rissbildung auftreten. Wird der Zwang 
+durch Beton unterhalb des betrachteten Bauteils hervorgerufen, dann kann eine Gleitfuge zur 
+Vermeidung oder Verminderung des Zwangs angeordnet werden. 
+Tabelle N.1 enthält Empfehlungen für die Optionen. 
+Tabelle N.1  Anordnung von Bewegungsfugen zur Risskontrolle 
+Option Konstruktionsprinzip Fugenabstand Bewehrung 
+a) fugenlos  voller Zwang 
+Im Allgemeinen keine Fugen. 
+Wenn großer Zwang (infolge 
+Temperatur oder Schwinden) 
+zu erwarten ist, können Fugen 
+auch in größeren Abständen 
+zweckmäßig sein. 
+Bewehrung nach Abschnitt 6 
+und 7.3 
+b) enge Fugenabstände  
+minimaler Zwang 
+vollständig ausgebildete 
+Fugen in größerem Abstand 
+von 5 m oder dem 1,5-fachen 
+der Wandhöhe 
+Bewehrung nach Abschnitt 6, 
+aber nicht weniger als die 
+Mindestbewehrung nach 9.6.2 
+bis 9.6.4 
+DIN EN 1992-3:2011-01

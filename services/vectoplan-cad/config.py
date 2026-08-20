@@ -23,7 +23,7 @@ def _int(name: str, default: int) -> int:
 
 class BaseConfig:
     SERVICE_NAME = "vectoplan-cad"
-    SERVICE_VERSION = "0.2.0"
+    SERVICE_VERSION = "0.4.0"
     CONTRACT_VERSION = "cad-projection/0.1"
 
     HOST = os.getenv("VECTOPLAN_CAD_HOST", "0.0.0.0")
@@ -37,11 +37,21 @@ class BaseConfig:
     CORE_SERVICE_API_KEY = os.getenv("VECTOPLAN_CAD_CORE_SERVICE_API_KEY", "")
     CORE_TIMEOUT_SECONDS = _int("VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS", 30)
 
+    LIBRARY_INTERNAL_URL = os.getenv("VECTOPLAN_CAD_LIBRARY_INTERNAL_URL", "")
+    LIBRARY_PUBLIC_URL = os.getenv("VECTOPLAN_CAD_LIBRARY_PUBLIC_URL", "")
+    LIBRARY_INVENTORY_PATH = os.getenv(
+        "VECTOPLAN_CAD_LIBRARY_INVENTORY_PATH",
+        "/api/v1/vplib/creative-library/inventory",
+    )
+    LIBRARY_SERVICE_API_KEY = os.getenv("VECTOPLAN_CAD_LIBRARY_SERVICE_API_KEY", "")
+    LIBRARY_TIMEOUT_SECONDS = _int("VECTOPLAN_CAD_LIBRARY_TIMEOUT_SECONDS", 15)
+
     TEST_INPUT_PATH = ROOT / "static" / "cad" / "examples" / "test_input.json"
     PLAN_PROFILE_PATH = ROOT / "src" / "profiles" / "catalog.json"
     CONTRACT_SCHEMA_PATH = ROOT / "src" / "contracts" / "cad_projection_input.schema.json"
     COMMAND_SCHEMA_PATH = ROOT / "src" / "contracts" / "cad_command.schema.json"
     EXPORT_SCHEMA_PATH = ROOT / "src" / "contracts" / "export_request.schema.json"
+    LIBRARY_FALLBACK_CATALOG_PATH = ROOT / "src" / "library" / "fallback_catalog.json"
 
     JSON_SORT_KEYS = False
     LOG_LEVEL = os.getenv("VECTOPLAN_CAD_LOG_LEVEL", "INFO")

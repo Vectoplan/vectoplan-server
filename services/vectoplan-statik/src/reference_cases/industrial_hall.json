@@ -1,0 +1,23 @@
+{
+  "contract_version": "structural-analysis-job/0.2",
+  "project_ref": "reference_industrial_hall",
+  "model_revision_ref": "reference_001",
+  "job_ref": "job_industrial_hall",
+  "structure_type": "industrial_hall",
+  "material_kind": "steel",
+  "standards_profile": "DE_EC_2021",
+  "load_cases": [
+    {"load_case_id": "G", "label": "Dachaufbau", "category": "permanent", "value": 3.0, "unit": "kN/m", "action_type": "self_weight"},
+    {"load_case_id": "S", "label": "Schnee", "category": "variable", "value": 7.0, "unit": "kN/m", "action_type": "snow", "psi0": 0.5, "psi1": 0.2, "psi2": 0.0}
+  ],
+  "analysis_model": {
+    "kind": "beam_line",
+    "spans": [{"span_id": "roof_girder", "length_m": 18.0, "elastic_modulus_mpa": 210000.0, "inertia_m4": 0.0045, "load_case_values_kn_m": {"G": 3.0, "S": 7.0}}],
+    "supports": [{"vertical": true}, {"vertical": true}],
+    "samples_per_span": 61
+  },
+  "design": {
+    "type": "steel",
+    "parameters": {"steel_grade": "S355", "area_mm2": 28500.0, "shear_area_mm2": 11500.0, "section_modulus_cm3": 6200.0, "design_axial_kn": 0.0}
+  }
+}

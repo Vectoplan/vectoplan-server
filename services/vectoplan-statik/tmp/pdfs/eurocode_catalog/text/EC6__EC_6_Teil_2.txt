@@ -1,0 +1,1394 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Dezember 2010 
+DIN EN 1996-2 DIN 
+ICS 91.010.30; 91.080.30 Ersatzvermerk 
+siehe unten 
+Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten­
+Teil2: Planung, Auswahl der Baustoffe und Ausführung von Mauerwerk; 
+Deutsche FassungEN 1996-2:2006 + AC:2009 
+Eurocode 6: Design of masonry structures -
+Part 2: Design considerations, selection of materials and execution of masonry; 
+German version EN 1996-2:2006 + AC:2009 
+Eurocode 6: Calcul des ouvrages en ma~onnerie -
+Partie 2: Conception, choix des materiaux et mise en oeuvredes ma~onneries; 
+Version allemande EN 1996-2:2006 + AC:2009 
+Ersatzvennerk 
+Ersatz ftlr DIN EN 1996-2:2006-03 und DIN EN 1996-2 Berichtigung 1:2010-01; 
+teilweiser Ersatz ftlr DIN 1053-1:1996-11 und DIN 1053-3:1990-02 
+Gesamtumfang 35 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfaltigung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Preisgruppe 15 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1721445
+
+===== PDF-SEITE 2 =====
+DIN EN 1996-2:2010-12 
+Nationales Vorwort 
+Diese Europäische Norm (EN 1996-2:2006 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 
+Eurocodes für den konstruktiven Ingenieurbau (Sekretariat: BSI, Vereinigtes Königreich) ausgearbeitet. 
+Im DIN Deutsches Institut für Normung e. V. ist hierfür der Arbeitsausschuss NA 005-06-01 AA 
+Mauerwerksbau des Normenausschusses Bauwesen (NABau) zuständig. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs-, Bemessungs- und Ausführungsnormen, deren 
+Anwendung nur im Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der 
+Europäischen Union für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im 
+Vorwort der EN angegeben. 
+Die Anwendung dieser Norm ist in Deutschland in Verbindung mit dem Nationalen Anhang vorgesehen. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+In Abhängigkeit von der Bedeutung der einzelnen Absätze wird in dieser Norm zwischen verbindlichen Regeln 
+und Anwendungsregeln unterschieden (siehe auch 1.4). Die verbindlichen Regeln sind durch den Buch-
+staben P nach der Nummer des Absatzes gekennzeichnet, z. B. (1)P. Bei allen Absätzen, die nicht als 
+verbindliche Regeln gekennzeichnet sind, handelt es sich um Anwendungsregeln. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen 
+ angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1996-2:2001-09 wurden folgende Änderungen vorgenommen: 
+a) ENV 1996-2 wurde vollständig überarbeitet und der Inhalt an den Stand der Technik angepasst; 
+b) der Vornormcharakter wurde aufgehoben. 
+Gegenüber DIN EN 1996-2:2006-03, DIN EN 1996-2 Berichtigung 1:2010-01, DIN 1053-1:1996-11 und 
+DIN 1053-3:1990-02 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben
+DIN 1053: 1937x-02, 1952-12, 1962-11 
+DIN 1053-1: 1974-11, 1990-02, 1996-11 
+DIN 1053-2: 1984-07 
+DIN 1053-3: 1974-11, 1990-02 
+DIN 4156: 1943-05 
+DIN V ENV 1996-2: 2001-09 
+DIN EN 1996-2: 2006-03 
+DIN EN 1996-2 Berichtigung 1: 2010-01 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1996-2 
+ Januar 2006 
+ +AC 
+ September 2009 
+ICS 91.010.30; 91.080.30 Ersatz für ENV 1996-2:1998 
+Deutsche Fassung 
+Eurocode 6  
+Bemessung und Konstruktion von Mauerwerksbauten  
+Teil 2: Planung, Auswahl der Baustoffe und Ausführung von 
+Mauerwerk 
+Eurocode 6  
+Design of masonry structures  
+Part 2: Design considerations, selection of materials and 
+execution of masonry 
+Eurocode 6  
+Calcul des ouvrages en maçonnerie  
+Partie 2: Conception, choix des matériaux et mise en 
+oeuvre des maçonneries 
+Diese Europäische Norm wurde vom CEN am 24. November 2005 angenommen. Die Berichtigung EN 1996-2:2009 tritt am 
+30. September 2009 in Kraft und wurde in EN 1996-2:2006 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter denen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Listen 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum oder bei jedem CEN-Mitglied auf Anfrage 
+erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sprache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-
+Zentrum mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+.CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, 
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich 
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management Centre: Avenue Marnix 17, B-1000 Brussels 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1996-2:2006 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................4
+Hintergrund des Eurocode-Programms ...........................................................................................................4
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................5
+Nationale Fassungen der Eurocodes ...............................................................................................................6
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (ENs und ETAs) ...........................................................................................................................6
+Zusätzliche Informationen zu EN 1996-2..........................................................................................................7
+Nationaler Anhang zu EN 1996-2.......................................................................................................................7
+1 Allgemeines................................................................................................................... .........................7
+1.1 Anwendungsbereich von Teil 2 des Eurocodes 6..............................................................................7
+1.2 Normative Verweisungen...................................................................................................... ................8
+1.3 Annahmen .................................................................................................................... ..........................9
+1.4 Unterscheidung zwischen verbindlichen Regeln und Anwendungsregeln.....................................9
+1.5 Begriffe .................................................................................................................... ...............................9
+1.5.1 Allgemeines............................................................................................................... .............................9
+1.5.2 Begriffe für die Planung .................................................................................................. ......................9
+1.5.3 Begriffe für Klimafaktoren und Umweltbedingungen ........................................................................9
+1.5.4 Begriffe für Mauersteine .................................................................................................. .....................9
+1.5.5 Sonstige Begriffe ......................................................................................................... ..........................9
+1.6 Symbole ..................................................................................................................... .......................... 10
+2 Planungsgrundsätze ............................................................................................................ .............. 10
+2.1 Einflüsse auf die Dauerhaftigkeit des Mauerwerks......................................................................... 10
+2.1.1 Allgemeines............................................................................................................... .......................... 10
+2.1.2 Klassifizierung der Umweltbedingungen ..................................................................................... .... 10
+2.1.3 Aggressive chemische Umgebungen........................................................................................... .... 11
+2.2 Auswahl der Baustoffe....................................................................................................... ................ 12
+2.2.1 Allgemeines............................................................................................................... .......................... 12
+2.2.2 Mauersteine............................................................................................................... .......................... 12
+2.2.3 Mauermörtel und Füllbeton ................................................................................................. .............. 12
+2.2.4 Ergänzungsbauteile und Bewehrung .......................................................................................... ..... 13
+2.3 Mauerwerk ................................................................................................................... ........................ 14
+2.3.1 Konstruktionsdetails ...................................................................................................... .................... 14
+2.3.2 Fugenausbildung........................................................................................................... ..................... 14
+2.3.3 Formänderungen im Mauerwerk ............................................................................................... ........ 14
+2.3.4 Dehnungsfugen............................................................................................................. ...................... 14
+2.3.5 Zulässige Abweichungen.................................................................................................... ............... 16
+2.3.6 Widerstand gegen das Eindringen von Feuchte durch Außenwände........................................... 16
+3 Ausführung.................................................................................................................... ...................... 16
+3.1 Allgemeines................................................................................................................. ........................ 16
+3.2 Annahme, Handhabung sowie Lagerung von Baustoffen.............................................................. 17
+3.2.1 Allgemeines............................................................................................................... .......................... 17
+3.2.2 Bewehrungs- und Vorspannmaterial.......................................................................................... ...... 17
+3.3 Vorbereitung von Baustoffen ................................................................................................. ........... 17
+3.3.1 Baustellenmörtel und -füllbeton........................................................................................... ............. 17
+3.3.2 Werkmörtel, werkmäßig vorbereitete Mörtel, Kalk-Sand-Werk-Vormörtel und Füllbeton als 
+Transportbeton ................................................................................................................................... 19
+3.4 Zulässige Abweichungen...................................................................................................... ............. 19
+3.5 Ausführung des Mauerwerks ................................................................................................... ......... 21
+3.5.1 Haftverbund............................................................................................................... .......................... 21
+3.5.2 Vermauerung der Mauersteine............................................................................................... ........... 21
+2 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 5 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Seite 
+3.5.3 Nachträgliches Verfugen und Fugenglattstrich bei Mauerwerk mit Ausnahme von 
+Dünnbettmauerwerk ........................................................................................................................... 21
+3.5.4 Einbau von Feuchtesperrschichten.......................................................................................... ........ 21
+3.5.5 Dehnungsfugen............................................................................................................. ...................... 21
+3.5.6 Einbau von Wärmedämmstoffen............................................................................................... ........ 22
+3.5.7 Reinigung von Verblendmauerwerk........................................................................................... ....... 22
+3.6 Nachbehandlung und Schutzmaßnahmen während der Bauausführung..................................... 22
+3.6.1 Allgemeines............................................................................................................... .......................... 22
+3.6.2 Schutz gegen Regen........................................................................................................ ................... 22
+3.6.3 Schutz gegen Frost-Tau-Wechsel ............................................................................................ ......... 22
+3.6.4 Schutz gegen Austrocknung ................................................................................................. ............ 22
+3.6.5 Schutz vor mechanischer Beschädigung ...................................................................................... .. 23
+3.6.6 Bauhöhe des Mauerwerks.................................................................................................... .............. 23
+Anhang A (informativ) Einteilung der Mikroumweltbedingungen von fertigem Mauerwerk .................... 24
+A.1 Klassifizierung............................................................................................................. ........................ 24
+A.2 Beanspruchung durch Feuchte................................................................................................. ........ 25
+Anhang B (informativ) Bewährte Stein-/Mörtel-Kombinationen für dauerhaftes Mauerwerk unter 
+verschiedenen Umweltbedingungen ................................................................................................28
+Anhang C (informativ) Festlegungen zur Auswahl der Werkstoffe und Korrosionsschutzsysteme für 
+Ergänzungsbauteile entsprechend der Expositionsklasse............................................................ 30
+C.1 Expositionsklasse........................................................................................................... .................... 30
+C.2 Auswahl der Werkstoffe ...................................................................................................... ............... 30
+3 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 6 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Vorwort 
+Dieses Dokument (EN 1996-2:2006 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes für 
+den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Juli 2006, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+CEN/TC 250 ist für alle Eurocodes des konstruktiven Ingenieurbaus zuständig. 
+Dieses Dokument ersetzt ENV 1996-2:1998. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, Finnland, 
+Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, Norwegen, 
+Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, Tschechische 
+Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+Im Jahre 1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm 
+auf der Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Die Ziele des Programms waren die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer die 
+Entwicklung des Eurocode-Programms, das in den 80er Jahren zur ersten Generation der Eurocodes führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der EFTA, 
+die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu übertragen, 
+damit diese den Status von Europäischen Normen (EN) erhielten; Grundlage war eine Vereinbarung
+1) zwischen 
+der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den Regelungen der 
+Ratsrichtlinien und/oder Kommissionsentscheidungen, die die Europäischen Normen behandeln (z. B. die 
+Ratsrichtlinie 89/106/EWG zu Bauprodukten  die Bauproduktenrichtlinie , die Ratsrichtlinien 93/37/EWG, 
+92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die entsprechenden 
+EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Programm der Eurocodes für den konstruktiven Ingenieurbau umfasst die folgenden Normen, die in der 
+Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbeton- und Spannbetontragwerken
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für Normung 
+(CEN) zur Bearbeitung der EUROCODES für die Tragwerksbemessungs- und Konstruktion von Hochbauten und 
+Ingenieurbauwerken (BC/CEN/03/89). 
+4 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1996-2:2006 + AC:2009 (D) 
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Verbundtragwerken aus Stahl und Beton
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumtragwerken
+Die Europäischen Normen berücksichtigen die Zuständigkeit der Bauaufsichtsorgane der jeweiligen Mitglieds-
+länder bei der nationalen Festlegung sicherheitsbezogener Werte, so dass diese Werte von Land zu Land 
+unterschiedlich sein können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und EFTA betrachten die Eurocodes als Bezugsdokumente für folgende Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen An-
+forderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr 1: Mechanische 
+Festigkeit und Standsicherheit und der wesentlichen Anforderung Nr 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu erforder-
+lichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Erstellung harmonisierter technischer Spezifikationen für Bauprodukte (ENs 
+und ETAs) 
+Die Eurocodes haben, soweit sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den Grundlagen-
+dokumenten2), auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch anderer Art sind 
+als die harmonisierten Produktnormen 3). Daher sind technische Gesichtspunkte, die sich aus den Eurocodes 
+ergeben, von den Technischen Komitees des CEN und/oder den Arbeitsgruppen von EOTA, die an 
+Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes kompatibel sind. 
+Die Eurocodes liefern allgemeine Regeln für den Entwurf, die Berechnung und Bemessung von vollständigen 
+Tragwerken und Einzelbauteilen, die sich für die übliche Anwendung eignen und für bewährte Bauweisen und 
+Aspekte neuartiger Anwendungen gelten. Sie enthalten keine Regelungen für ungewöhnliche Konstruktionen 
+oder Sonderlösungen, wofür der Planer zusätzlich Experten zu Rate ziehen muss. 
+2) Nach Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Anforderungen in Grundlagendokumenten zu kon 
+ kretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den Mandaten für 
+ die Erstellung harmonisierter Europäischer Normen und ETAGs/ETAs zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie muss das Grundlagendokument: 
+ a) die wesentliche Anforderung konkretisieren, indem die Begriffe und, soweit erforderlich, die technischen Grund- 
+ lagen für Klassen und Anforderungshöhen vereinheitlicht werden, 
+ b) Verfahren zur Verbindung dieser Klassen oder Anforderungsniveaus mit technischen Spezifikationen angeben, z. B. 
+ Berechnungs- oder Prüfverfahren, Entwurfsregeln usw. 
+ c) als Bezugsdokument für die Erstellung harmonisierter Normen und Richtlinien für Europäische Technische 
+ Zulassungen dienen. 
+ Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr 1 und einen Teil der wesentlichen 
+ Anforderung Nr 2. 
+5 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, möglicherweise mit einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem (informativen) Nationalen Anhang. 
+Der Nationale Anhang darf nur Angaben zu den Parametern enthalten, die im Eurocode für nationale Ent-
+scheidungen offen gelassen wurden; diese national festzulegenden Parameter (NDP) gelten für die Trag-
+werksplanung von Hoch- und Ingenieurbauten in dem Land, in dem sie erstellt werden. Dazu gehören: 
+ Zahlenwerte und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ zu verwendende Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische Daten (geographische, klimatische usw.), z. B. Schneekarten; 
+ anzuwendende Verfahren, wenn die Eurocodes mehrere zur Wahl anbieten 
+und gegebenenfalls auch: 
+ Entscheidungen zur Anwendung informativer Anhänge; 
+ Verweisungen auf ergänzende und nicht im Widerspruch stehende Informationen zur Anwendung des 
+Eurocodes. 
+Verbindung zwischen den Eurocodes und den harmonisierten 
+Technischen Spezifikationen für Bauprodukte (ENs und ETAs) 
+Es besteht die Notwendigkeit, dass die harmonisierten Technischen Spezifikationen für Bauprodukte und die 
+technischen Regelungen für die Tragwerksplanung 4) konsistent sind. Außerdem sollten alle Angaben zur 
+CE-Kennzeichnung der Bauprodukte, die auf Eurocodes Bezug nehmen, klar erkennen lassen, welche national 
+festzulegenden Parameter zugrunde liegen. 
+Diese Europäische Norm ist Teil von EN 1996, die die folgenden Teile umfasst: 
+Teil 1-1: Allgemeine Regeln für bewehrtes und unbewehrtes Mauerwerk 
+Teil 1-2: Allgemeine Regeln  Tragwerksbemessung für den Brandfall 
+Teil 2: Planung, Auswahl der Baustoffe und Ausführung von Mauerwerk 
+Teil 3: Vereinfachte Berechnungsmethoden für unbewehrte Mauerwerksbauten 
+EN 1996-2 beschreibt die Grundsätze für und Anforderungen an die Planung, die Auswahl der Baustoffe und die 
+Ausführung von Mauerwerk. 
+EN 1996-1-1 ist zusammen mit den ENs 1990, 1991, 1992, 1993, 1994, 1995, 1997, 1998 und 1999 zur direkten 
+Anwendung für die Bemessung und Konstruktion von neu zu errichtenden Tragwerken vorgesehen. 
+EN 1996-2 ist dazu vorgesehen, zusammen mit EN 1990, EN 1991-1-2, EN 1996-1-1, EN 1996-1-2 und 
+EN 1996-3 angewendet zu werden. 
+4) Siehe Artikel 3.3 und Artikel 12 der Bauproduktenrichtlinie ebenso wie die Abschnitte 4.2, 4.3.1, 4.3.2 und 5.2 des 
+Grundlagendokumentes Nr 1. 
+6 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Zusätzliche Informationen zu EN 1996-2 
+Der Anwendungsbereich des Eurocodes 6 ist in EN 1996-1-1 festgelegt, welche auch Informationen zu den 
+anderen Teilen des Eurocodes 6 enthält. 
+Nationaler Anhang zu EN 1996-2 
+Diese Norm enthält alternative Verfahren, Werte und Empfehlungen für Klassen mit Anmerkungen zu den Fällen, 
+in denen eine nationale Auswahl erforderlich ist. Daher sollte der nationalen Norm, mit der EN 1996-2 national 
+eingeführt wird, ein nationaler Anhang beigefügt werden, der alle national festzulegenden Parameter für die 
+Bemessung und Konstruktion von im betreffenden Mitgliedsland zu errichtenden Hoch- und Ingenieurbauten 
+enthält. 
+Nationale Auswahlmöglichkeiten enthalten in EN 1996-2 die Abschnitte: 
+ 2.3.4.2(2); 
+ 3.5.3.1(1). 
+Zusätzlich zu allgemeinen Verweisungen auf ergänzende und nicht im Widerspruch stehende Informationen 
+können folgende Abschnitte spezielle Verweisungen enthalten: 
+ 1.1(2) P 
+ 2.3.1(1) 
+ 3.4(3) 
+1 Allgemeines 
+1.1 Anwendungsbereich von Teil 2 des Eurocodes 6 
+(1)P Der in EN 1996-1-1:2005, 1.1.1 beschriebene Anwendungsbereich des Eurocodes 6 für Mauerwerks-
+bauten gilt auch für diese EN 1996-2. 
+(2)P EN 1996-2 enthält Grundregeln für die Auswahl von Baustoffen und Ausführung von Mauerwerk mit dem 
+Ziel, den der Bemessung und Konstruktion zugrunde zu legenden Annahmen der anderen Teile des 
+Eurocodes 6 zu entsprechen. Mit Ausnahme der in 1.1(3)P angegebenen Aufzählungen gilt der 
+Anwendungsbereich von Teil 2 für die üblichen Aspekte der Planung sowie der Ausführung von Mauerwerk; 
+dazu gehören: 
+ die Auswahl der Baustoffe; 
+ Faktoren, die die Eigenschaften und Dauerhaftigkeit des Mauerwerks beeinflussen; 
+ der Widerstand der Bauwerke gegen das Eindringen von Feuchte; 
+ die Lagerung, Vorbereitung und Verwendung von Baustoffen auf der Baustelle; 
+ die Ausführung des Mauerwerks; 
+ der Schutz des Mauerwerks während der Ausführung. 
+7 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1996-2:2006 + AC:2009 (D) 
+ANMERKUNG 1 Wenn nur allgemeine Leitlinien angegeben sind, darf im Nationalen Anhang auf zusätzliche Leitlinien, die 
+auf der Grundlage der örtlichen Bedingungen und Verfahrensweisen erstellt wurden und in nicht entgegenstehenden, 
+ergänzenden Dokumenten enthalten sind, verwiesen werden. 
+ANMERKUNG 2 Der Anwendungsbereich des Eurocodes 6 schließt das Leistungsvermögen des Mauerwerks in Bezug 
+auf Erdbebensicherheit, Wärme- und Schalldämmung aus. 
+(3)P EN 1996-2 gilt nicht für: 
+ die in anderen Teilen des Eurocodes 6 behandelten Mauerwerksaspekte; 
+ ästhetische Aspekte; 
+ Oberflächenbehandlungen; 
+ die Gesundheit und Sicherheit der mit der Planung oder der Ausführung von Mauerwerk beschäftigten 
+Personen; 
+ die Umwelteinflüsse von Mauerwerksbauten, Ingenieurbauten und Tragwerken auf ihre Umgebung. 
+1.2 Normative Verweisungen 
+(1)P Diese Europäische Norm enthält durch datierte oder undatierte Verweisungen Festlegungen aus anderen 
+Publikationen. Diese normativen Verweisungen sind an den jeweiligen Stellen im Text zitiert, und die 
+Publikationen sind nachstehend aufgeführt. Bei datierten Verweisungen gehören spätere Änderungen oder 
+Überarbeitungen dieser Publikationen nur zu dieser Europäischen Norm, falls sie durch Änderung oder 
+Überarbeitung eingearbeitet sind. Bei undatierten Verweisungen gilt die letzte Ausgabe der in Bezug 
+genommenen Publikation (einschließlich Änderungen). 
+EN 206-1, Beton  Teil 1: Festlegung, Eigenschaften, Herstellung und Konformität
+EN 771 (alle Teile), Festlegungen für Mauersteine
+EN 998-2, Festlegungen für Mörtel im Mauerwerksbau  Teil 2: Mauermörtel
+EN 845 (alle Teile), Festlegungen für Ergänzungsbauteile für Mauerwerk 
+EN 1015-11, Prüfverfahren für Mörtel für Mauerwerk  Teil 11: Bestimmung der Biegezug- und Druckfestigkeit 
+von Festmörtel
+EN 1015-17, Prüfverfahren für Mörtel für Mauerwerk  Teil 17: Bestimmung des Gehalts an wasserlöslichem 
+Chlorid von Frischmörteln
+EN 1052 (alle Teile), Prüfverfahren für Mauerwerk
+EN 1990:2002, Eurocode: Grundlagen der Tragwerksplanung
+EN 1996-1-1:2005, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten  Teil 1-1: Allgemeine 
+Regeln für bewehrtes und unbewehrtes Mauerwerk
+EN 13914-1, Planung, Zubereitung und Ausführung von Innen- und Außenputzen  Teil 1: Außenputz
+8 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1996-2:2006 + AC:2009 (D) 
+1.3 Annahmen 
+(1)P Zusätzlich zu den Annahmen in EN 1990:2002, 1.3, gelten für EN 1996-2 die folgenden Annahmen: 
+ Die Planung muss entsprechend Abschnitt 2 und unter Berücksichtigung von Abschnitt 3 erfolgen. 
+ Die Ausführung muss entsprechend Abschnitt 3 und unter Berücksichtigung von Abschnitt 2 erfolgen. 
+ Die Planungsgrundsätze sind nur dann gültig, wenn die in Abschnitt 3 für die Ausführung angegebenen 
+verbindlichen Regeln eingehalten werden. 
+1.4 Unterscheidung zwischen verbindlichen Regeln und Anwendungsregeln 
+(1)P Für EN 1996-2 gelten die in EN 1990:2002, 1.4, angegebenen Regeln. 
+1.5 Begriffe 
+1.5.1 Allgemeines 
+(1) Für EN 1996-2 gelten die in EN 1990:2002, 1.5, angegebenen Begriffe. 
+(2) Für EN 1996-2 gelten die in EN 1996-1-1 angegebenen Begriffe. 
+(3) Weitere in EN 1996-2 verwendete Begriffe werden den in 1.5.2 bis 1.5.5 angegebenen Definitionen 
+zugeordnet. 
+1.5.2 Begriffe für die Planung 
+1.5.2.1 
+Planungsunterlagen 
+Unterlagen, die die Anforderungen des Planers an die Bauausführung beschreiben, z. B. Zeichnungen, Pläne, 
+Prüfberichte, Verweise auf Teile anderer Unterlagen und schriftliche Anweisungen 
+1.5.3 Begriffe für Klimafaktoren und Umweltbedingungen 
+1.5.3.1 
+Makrobedingungen 
+klimatische Faktoren, die vom allgemeinen Klima der Gegend, in dem ein Bauwerk errichtet wird, abhängen und 
+durch die örtliche Topographie und/oder sonstige Aspekte der Baustelle beeinflusst werden 
+1.5.3.2 
+Mikrobedingungen 
+örtliche klimatische und Umweltfaktoren, die von der Lage eines Mauerwerkselements innerhalb der Ge-
+bäudestruktur abhängen, unter Berücksichtigung vorhandener oder nicht vorhandener Schutzwirkungen 
+baulicher Details oder Beschichtungen 
+1.5.4 Begriffe für Mauersteine 
+1.5.4.1 
+Ergänzungsmauerstein 
+für eine bestimmte Funktion geformter Mauerstein, z. B. um die Geometrie des Mauerwerks zu vervollständigen 
+1.5.5 Sonstige Begriffe 
+1.5.5.1 
+Oberflächenbehandlung 
+mit der Oberfläche des Mauerwerks verbundene Materialschicht 
+9 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1996-2:2006 + AC:2009 (D) 
+1.5.5.2 
+Hohlraumbreite 
+senkrecht zur Wandebene gemessener Abstand zwischen den den Hohlraum begrenzenden Mauerwerks-
+schalen einer zweischaligen Wand 
+1.5.5.3 
+Bekleidung 
+Schicht aus Material(ien), das (die) an der Vorderseite des Mauerwerks befestigt oder verankert, aber nicht 
+durchgehend mit ihr verbunden ist (sind) 
+1.6 Symbole 
+(1)P Für die Anwendung dieser Norm gelten die in EN 1996-1-1:2005, 1.6 angegebenen Symbole. 
+(2)P Weitere in EN 1996-2 verwendete Symbole sind: 
+dp Mindestausfugungstiefe; 
+lm größter horizontaler Abstand zwischen senkrechten Bewegungsfugen in nicht tragenden Außenwänden. 
+2 Planungsgrundsätze 
+2.1 Einflüsse auf die Dauerhaftigkeit des Mauerwerks 
+2.1.1 Allgemeines 
+(1)P Mauerwerk ist so zu planen, dass es die für seine vorgesehene Verwendung geforderten Eigenschaften 
+hat. 
+2.1.2 Klassifizierung der Umweltbedingungen 
+2.1.2.1 Mikroumweltbedingungen 
+(1)P Bei der Planung des Mauerwerks sind die Mikroumweltbedingungen, denen das Mauerwerk voraus-
+sichtlich ausgesetzt sein wird, zu berücksichtigen. 
+(2) Bei der Entscheidung über die Mikroumweltbedingungen des Mauerwerks müssen die Auswirkungen der 
+Oberflächenbehandlungen, Schutzbekleidungen und baulichen Einzelheiten berücksichtigt werden. 
+(3) Die Mikroumweltbedingungen für fertiggestelltes Mauerwerk sollten folgenden Klassen zugeordnet werden: 
+MX1  in trockener Umgebung; 
+MX2  Feuchte oder Durchnässung ausgesetzt; 
+MX3  Feuchte oder Durchnässung und Frost-Tau-Wechseln ausgesetzt; 
+MX4  der Einwirkung von salzhaltiger Luft oder Meerwasser ausgesetzt; 
+MX5  in einer Umgebung mit stark angreifenden Chemikalien. 
+ANMERKUNG Innerhalb dieser Klassen dürfen erforderlichenfalls mit Hilfe der in Anhang A angegebenen Unterklassen 
+genauer definierte Bedingungen (z. B. MX2.1 oder MX2.2 und MX3.1 oder MX3.2) angegeben werden. 
+10 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1996-2:2006 + AC:2009 (D) 
+(4) Um Mauerwerk herzustellen, das die festgelegten Leistungskriterien erfüllt und widerstandfähig gegen die 
+Umweltbedingungen ist, denen es ausgesetzt ist, sollten bei der Bestimmung der Umweltklasse folgende Punkte 
+berücksichtigt werden: 
+ Klimafaktoren; 
+ Beanspruchungsgrad durch Feuchte oder Durchnässung; 
+ Beanspruchung durch Frost-Tau-Wechsel; 
+ Vorhandensein von chemischen Substanzen, deren Reaktionen Schäden verursachen können. 
+2.1.2.2 Klimafaktoren (Makroumweltbedingungen) 
+(1)P Bei der Bestimmung der Feuchte des Mauerwerks und der Frost-Tau-Wechselbedingungen sollten die 
+Einflüsse der Makrobedingungen auf die Mikrobedingungen berücksichtigt werden. 
+(2) In Bezug auf die Makrobedingungen sollten folgende Punkte berücksichtigt werden: 
+ Regen und Schnee; 
+ Kombination von Wind und Regen; 
+ Temperaturschwankungen; 
+ Schwankungen der relativen Luftfeuchte. 
+ANMERKUNG Es ist allgemein bekannt, dass sich die in Europa herrschenden Klimate (Makrobedingungen) beträchtlich 
+unterscheiden und bestimmte Klimabedingungen das Risiko, dass Mauerwerk durchnässt wird und/oder Frost-Tau-Wechseln 
+ausgesetzt ist, beeinflussen können. Jedoch ist für die Bestimmung der Dauerhaftigkeit von Mauerwerk die Einteilung der 
+Mikrobedingungen von Bedeutung und nicht die Einstufung der Makrobedingungen. Anhang A gibt Beispiele für Bedingungen 
+mit relativer Feuchte von Mauerwerkselementen in einem typischen Gebäude. 
+2.1.3 Aggressive chemische Umgebungen 
+(1) In Küstenregionen sollte die Einwirkung von Chloridanteilen aus der Luft oder von Meerwasser berück-
+sichtigt werden. 
+(2) Zu den möglichen Sulfatquellen gehören: 
+ natürliche Böden; 
+ Grundwasser; 
+ Müllhalden und Bodenabraum; 
+ Baustoffe; 
+ Luftschadstoffe. 
+(3) In den Fällen, in denen in der Umgebung vorhandene aggressive Chemikalien, mit Ausnahme von Chlo-
+ridanteilen aus der Luft oder Meerwasser, das Mauerwerk angreifen können, sollte Klasse MX5 angenommen 
+werden. Wo Salze durch Feuchtetransport in das Mauerwerk eindringen können, sollten mögliche erhöhte 
+Konzentrationen und Mengen der vorhandenen Chemikalien berücksichtigt werden. 
+11 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1996-2:2006 + AC:2009 (D) 
+2.2 Auswahl der Baustoffe 
+2.2.1 Allgemeines 
+(1)P Baustoffe müssen nach dem Einbau ausreichend widerstandsfähig gegen vorgesehene Beanspruchungen 
+und Umwelteinflüsse sein. 
+(2)P Es dürfen nur nachweislich geeignete Baustoffe, Produkte und Systeme verwendet werden. 
+(3) Falls die Auswahl der für das Mauerwerk zu verwendenden Baustoffe nicht an anderer Stelle im vorlie-
+genden Teil 2 festgelegt ist, sollte diese nach der am Ort der Verwendung üblichen Praxis und Erfahrung er-
+folgen. 
+ANMERKUNG 1 Die Eignung gilt als nachgewiesen, wenn einer Europäischen Norm entsprochen wird, auf die entweder 
+in dieser Norm verwiesen wird oder die speziell auf Anwendungen innerhalb des Anwendungsbereichs dieser Norm verweist. 
+Für den Fall, dass keine geeignete Europäische Norm existiert oder der Baustoff bzw. das Produkt von den Anforderungen 
+einer geeigneten Europäischen Norm abweicht, kann die Eignung als nachgewiesen gelten, wenn Konformität besteht mit: 
+ einer Technischen Zulassung oder 
+ einer nationalen Norm oder 
+ anderen Bestimmungen, 
+wenn darin speziell auf Anwendungen innerhalb des Anwendungsbereichs dieser Norm verwiesen wird und diese am 
+Verwendungsort des Baustoffs oder Produkts anerkannt sind. 
+ANMERKUNG 2 Je nach geforderter Dauerhaftigkeit können bewährte Stein-Mörtel-Kombinationen aus den in Anhang B 
+angegebenen Tabellen B.1 und B.2 ausgewählt werden. 
+2.2.2 Mauersteine 
+(1) Die Anforderungen an Mauersteine sollten dem für den Baustofftyp geltenden Teil von EN 771 entspre-
+chend festgelegt werden: 
+ EN 771-1 für Mauerziegel; 
+ EN 771-2 für Kalksandsteine; 
+ EN 771-3 für Betonsteine; 
+ EN 771-4 für Porenbetonsteine; 
+ EN 771-5 für Betonwerksteine; 
+ EN 771-6 für Natursteine. 
+(2) Für Produkte, die nicht EN 771 entsprechen (z. B. zurückgewonnene Produkte), sollten die geforderten 
+Eigenschaften des Produktes und die Möglichkeiten zu deren Nachweis, einschließlich der Anforderungen an die 
+Probenahme und die Prüfhäufigkeit, in den Planungsunterlagen angegeben werden. 
+2.2.3 Mauermörtel und Füllbeton 
+2.2.3.1 Allgemeines 
+(1) Mauermörtel sollte den Bedingungen, denen das Mauerwerk ausgesetzt ist, und den für die Mauersteine 
+geltenden Festlegungen entsprechend ausgewählt werden. Bis ein durch eine Europäische Norm festgelegtes 
+Verfahren für die Prüfung der Dauerhaftigkeit zur Verfügung steht, sollte die Eignung von Mauermörteln aufgrund 
+der bewährten örtlichen Erfahrungen bezüglich der Eigenschaften der betreffenden Baustoffe und der 
+Mischungsverhältnisse bestimmt werden. 
+12 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1996-2:2006 + AC:2009 (D) 
+2.2.3.2 Auswahl von Werkmörtel und im Werk hergestellter Füllbeton 
+(1) Falls erwogen wird, Werkmörtel oder Füllbeton in Bereichen der Beanspruchungsklassen MX4 oder MX5 zu 
+verwenden, sollte bezüglich deren Eignung der Hersteller zu Rate gezogen werden. 
+ANMERKUNG Bis ein durch eine Europäische Norm festgelegtes Verfahren für die Prüfung der Dauerhaftigkeit zur 
+Verfügung steht, basiert die Eignung von Mauermörteln nach EN 998-2 im Hinblick auf die vorgesehene Verwendung auf den 
+Erfahrungen des Herstellers. 
+2.2.3.3 Auswahl von Baustellenmörtel und -füllbeton 
+(1) Für baustellengemischten Mauermörtel und Füllbeton sollten die Planungsunterlagen die geforderten 
+Eigenschaften des Produktes und die Möglichkeiten zu deren Nachweis einschließlich der Anforderungen an die 
+Probenahme und Prüfhäufigkeit enthalten. Bei hinreichender Erfahrung kann durch den Planer zusätzlich eine 
+detaillierte Festlegung der Inhaltsstoffe, deren Mischungsverhältnis und Mischverfahren auf der Grundlage von 
+an Probemischungen durchgeführten Prüfungen und/oder auf der Grundlage maßgeblicher, öffentlich ver-
+fügbarer und am Verwendungsort anerkannter Referenzen erfolgen. 
+(2) Die in 3.3.1 angegebenen Hinweise sollten besonders bei der Verwendung von Zusatzmitteln, Zusatzstoffen 
+und Pigmenten berücksichtigt werden. 
+(3) Für die Beanspruchungsklassen MX1, MX2 oder MX3 sollte die Dauerhaftigkeit von Mauermörtel unter 
+Verwendung der in EN 998-2 definierten Begriffe festgelegt werden: 
+ Mauerwerk in nicht angreifender Umgebung; 
+ Mauerwerk in mäßig angreifender Umgebung; 
+ Mauerwerk in stark angreifender Umgebung. 
+ANMERKUNG Nach 2.2.3.3(1) ist grundsätzlich in jedem Falle gefordert, die Leistungseigenschaften festzulegen. Für die 
+Dauerhaftigkeit ist nach 2.2.3.3(3) gefordert, dass diese Festlegung unter Bezug auf die festgelegten Begriffe erfolgt. Dem 
+Planer wird freigestellt, eine genaue Festlegung vorzunehmen, die die Leistungsanforderungen erfüllt; alternativ kann dies in 
+Übereinstimmung mit 3.3.1.1(2) als Aufgabe an den Ausführenden geschehen. Für übliche Anwendungsfälle können die 
+Festlegungen mit Bezug auf die Dauerhaftigkeit von Mörtel aus Tabelle B.2 ausgewählt werden. 
+(4) Falls baustellengemischter Mauermörtel oder Füllbeton für die Verwendung in Bereichen der Beanspru-
+chungsklassen MX4 oder MX5 festzulegen ist, sollten die Mischungsverhältnisse, durch die eine für die jewei-
+ligen Bedingungen angemessene Dauerhaftigkeit sichergestellt werden soll, auf der Grundlage maßgeblicher, 
+öffentlich verfügbarer und am Verwendungsort anerkannter Referenzen ausgewählt werden. 
+(5) Falls ein besonderer Haftverbund zwischen den Mauersteinen und dem Mörtel (Verbundfestigkeit) gefordert 
+ist, sollte dies bei der Festlegung der Mischungsverhältnisse berücksichtigt werden. 
+ANMERKUNG Der Hersteller der Mauersteine kann die Verwendung einer bestimmten Art von Mauermörtel empfehlen, 
+oder es können Prüfungen in Übereinstimmung mit den einschlägigen Teilen von EN 1052 durchgeführt werden. 
+2.2.4 Ergänzungsbauteile und Bewehrung 
+(1)P Ergänzungsbauteile und ihre Befestigungsmittel müssen in der Umgebung, in der sie verwendet werden, 
+korrosionsbeständig sein. 
+ANMERKUNG 1 Anhang C gibt Hinweise zu den Werkstoffen und Korrosionsschutzsystemen für Ergänzungsbauteile in 
+Abhängigkeit von den Beanspruchungsklassen. 
+ANMERKUNG 2 Bewehrungsstahl sollte entsprechend den in EN 1996-1-1:2005, 4.3.3, angegebenen Empfehlungen aus-
+gewählt werden. 
+13 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1996-2:2006 + AC:2009 (D) 
+2.3 Mauerwerk 
+2.3.1 Konstruktionsdetails 
+(1) Falls die Konstruktionsdetails des Mauerwerks nicht an anderer Stelle in EN 1996-2 behandelt werden, 
+sollten sie in Übereinstimmung mit der am Ort der Verwendung üblichen Baupraxis und Erfahrung ausgeführt 
+werden. 
+ANMERKUNG Die örtliche Praxis und Erfahrung kann in ergänzenden und nicht im Widerspruch stehenden Informationen 
+beschrieben sein, auf die im Nationalen Anhang verwiesen werden darf. 
+2.3.2 Fugenausbildung 
+(1) Der zum nachträglichen Verfugen verwendete Mörtel sollte mit dem Mauermörtel in den Fugen verträglich 
+sein. 
+2.3.3 Formänderungen im Mauerwerk 
+(1)P Die Möglichkeit von Formänderungen im Mauerwerk ist bei der Planung so zu berücksichtigen, dass sich 
+diese Formänderungen auf die Gebrauchstauglichkeit des Mauerwerks nicht nachteilig auswirken. 
+(2) Wenn miteinander verbundene Wände nicht das gleiche Verformungsverhalten aufweisen, sollte die Ver-
+bindung zwischen solchen Wänden in der Lage sein, sich ergebende Verformungsunterschiede aufzunehmen. 
+(3) Erforderlichenfalls sollten Anker vorgesehen werden, die in der Lage sind, in einer Ebene stattfindende rela-
+tive Bewegungen zwischen Mauerwerksschalen oder zwischen dem Mauerwerk und sonstigen Strukturen, mit 
+denen das Mauerwerk verbunden ist, aufzunehmen. 
+(4) Falls Maueranker verwendet werden, die keine Bewegungen aufnehmen können, sollte die durchgehende 
+Höhe zwischen waagerechten Dehnungsfugen in der äußeren Schale einer zweischaligen Außenwand begrenzt 
+werden, um eine Lockerung der Maueranker zu vermeiden. 
+(5) Es sollten Dehnungsfugen vorgesehen oder Fugenbewehrungen im Mauerwerk verwendet werden, um 
+durch Ausdehnung, Schwinden, Differenzialbewegungen oder Kriechen verursachte Risse, Biegungen oder 
+Verwerfungen auf ein Mindestmaß zu reduzieren. 
+2.3.4 Dehnungsfugen 
+2.3.4.1 Allgemeines 
+(1) Um den Auswirkungen von Wärme- und Feuchtedehnung, Kriechen und Durchbiegung und den möglichen 
+Auswirkungen von durch senkrechte oder seitliche Belastung verursachten internen Spannungen Rechnung zu 
+tragen, sollten senkrechte und waagerechte Dehnungsfugen vorgesehen werden, damit das Mauerwerk nicht 
+beschädigt wird. 
+(2) Bei der Anordnung der Dehnungsfugen sollte berücksichtigt werden, dass die Tragfähigkeit und Stabilität 
+der Wand erhalten bleiben muss. 
+(3) Dehnungsfugen sollten unter Berücksichtigung folgender Punkte bemessen und angeordnet werden: 
+ Art der Mauersteine unter Berücksichtigung ihrer charakteristischen Feuchtedehnung; 
+ Geometrie der Gebäudestruktur unter Berücksichtigung der Öffnungen, falls vorhanden, das Verhältnis der 
+Ausfachungsflächen; 
+ Größenordnung der Verformungsbehinderungen; 
+14 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1996-2:2006 + AC:2009 (D) 
+ Verhalten des Mauerwerks unter Kurzzeit- oder Dauerbelastungen; 
+ Verhalten des Mauerwerks unter dem Einfluss von Wärme- und Klimabedingungen; 
+ Anforderungen an den Feuerwiderstand; 
+ Anforderungen an die Schall- und Wärmedämmung; 
+ Vorhandensein oder Nichtvorhandensein von Bewehrung. 
+(4) Die Ausbildung der Dehnungsfugen sollte ermöglichen, dass sowohl umkehrbare als auch nicht umkehrbare 
+Formänderungen aufgenommen werden können, ohne Schäden am Mauerwerk zu verursachen. 
+(5) Alle Dehnungsfugen sollten über die gesamte Dicke der Wand, oder im Falle von zweischaligen Wänden 
+durch die gesamte Dicke der Außenschale einschließlich aller Oberflächenbehandlungen verlaufen, sofern diese 
+die Formänderung nicht aufnehmen können. 
+(6) Gleitebenen sollten so geplant werden, dass sich Teile der Konstruktion gegeneinander bewegen können, 
+um Zug- und Scherspannungen in den benachbarten Bauteilen zu reduzieren. 
+(7) In Außenwänden sollten die Dehnungsfugen so geplant werden, dass gegebenenfalls vorhandenes Wasser 
+ablaufen kann, ohne das Mauerwerk zu beschädigen oder in das Bauwerk einzudringen. 
+2.3.4.2 Abstände zwischen Dehnungsfugen 
+(1) Bei der Festlegung der horizontalen Abstände zwischen senkrechten Dehnungsfugen im Mauerwerk sollten 
+die Art des Mauerwerks, der Mauersteine und des Mörtels sowie die besonderen Konstruktionsdetails 
+berücksichtigt werden. 
+(2) Der horizontale Abstand zwischen den senkrechten Dehnungsfugen in nicht tragenden Außenwänden sollte 
+nicht größer als l
+m sein. 
+ANMERKUNG 1 Der am Ort der Verwendung geltende Wert für lm ist dem entsprechenden nationalen Anhang zu 
+entnehmen. Die nachstehende Tabelle enthält empfohlene lm-Werte für unbewehrte nichttragende Wände: 
+Empfohlene maximale horizontale Abstände lm zwischen senkrechten Dehnungsfugen 
+in unbewehrten nichttragenden Wänden 
+Art des Mauerwerks 
+lm
+m 
+Ziegelmauerwerk 12 
+Kalksandsteinmauerwerk 8 
+Mauerwerk aus Beton (mit Zuschlägen) und Betonwerksteinen 6 
+Porenbetonmauerwerk 6 
+Natursteinmauerwerk 12 
+ANMERKUNG 2 Bei Wänden mit Lagerfugenbewehrung nach EN 845-3 darf ein größerer maximaler horizontaler Abstand 
+zwischen den senkrechten Dehnungsfugen gewählt werden. Hinweise dazu können von den Herstellern der Lager-
+fugenbewehrung erhalten werden. 
+(3) Der Abstand der ersten senkrechten Fuge zu einer verformungsbehinderten Wandecke sollte nicht größer 
+als lm/2 sein. 
+15 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1996-2:2006 + AC:2009 (D) 
+(4) Die Notwendigkeit von senkrechten Dehnungsfugen in unbewehrten tragenden Wänden sollte berücksichtigt 
+werden. 
+ANMERKUNG Für die Abstände werden keine empfohlenen Werte angegeben, da diese von den örtlichen Bautraditionen, 
+der Deckenart und anderen Konstruktionsdetails abhängig sind. 
+(5) Die Anordnung der Dehnungsfugen sollte auf die Tragfähigkeit und Stabilität des tragenden Hinter-
+mauerwerks abgestimmt werden. 
+(6) Für die Festlegung der Abstände zwischen den waagerechten Dehnungsfugen in unbewehrten Verblend-
+schalen oder in der unbewehrten, nichttragenden Außenschale einer zweischaligen Wand sind die Art und die 
+Anordnung des Verankerungssystems zu berücksichtigen. 
+2.3.5 Zulässige Abweichungen 
+(1) Grenzwerte für mögliche Abweichungen des ausgeführten Mauerwerks von den vorgesehenen Pla-
+nungsmaßen (Sollmaße im Grund- und Aufriss) sollten festgelegt werden. 
+(2) Die zulässigen Abweichungen sollten gesondert in den Planungsunterlagen festgelegt werden oder in 
+Übereinstimmung mit den am Ort der Verwendung anerkannten Normen als Werte angegeben werden. 
+ANMERKUNG Die Einhaltung der Toleranzen ist erforderlich, um trotz unvermeidlicher Ungenauigkeiten beim Messen, bei 
+der Fertigung und bei der Montage die vorgesehene Funktion zu erfüllen und das funktionsgerechte Zusammenfügen von 
+Bauwerken und Bauteilen des Roh- und Ausbaus ohne Anpass- und Nacharbeiten zu ermöglichen. Die zulässigen 
+Toleranzen für die Maße von Mauersteinen sind in EN 771 festgelegt. 
+(3) Sofern für die konstruktive Planung keine anderen Festlegungen getroffen werden, sollten die zulässigen 
+Abweichungen nicht größer als die in Tabelle 3.1 angegebenen Werte sein. Falls der Entwurf größere als die in 
+Tabelle 3.1 angegebenen Abweichungen zulässt, sollten diese zulässigen Abweichungen gesondert in den 
+Planungsunterlagen angegeben werden. 
+ANMERKUNG Tabelle 3.1 enthält die in EN 1996-1-1 berücksichtigten maximal zulässigen Abweichungen. 
+2.3.6 Widerstand gegen das Eindringen von Feuchte durch Außenwände 
+(1) Für den Fall, dass ein höherer, über den üblichen Feuchtewiderstand von Mauerwerk hinausgehender 
+Schutz gegen das Eindringen von Feuchte gefordert ist, sollten geeignete Putze, belüftete Bekleidungen oder 
+sonstige geeignete Oberflächenbehandlungen ver- bzw. angewendet werden. 
+ANMERKUNG Hinweise zur Verwendung von Außenputzen sind prEN 13914-1 Planung, Zubereitung und Ausführung von 
+Innen- und Außenputzen  Teil 1: Außenputz zu entnehmen. Falls vollständige Regenundurchlässigkeit erforderlich ist, darf 
+ein belüftetes, wasserdichtes Bekleidungssystem am Mauerwerk an- oder auf dieses aufgebracht werden. 
+3 Ausführung 
+3.1 Allgemeines 
+(1)P Alle verwendeten Baustoffe und alle ausgeführten Arbeiten müssen den in der Planung vorgegebenen 
+Festlegungen entsprechen. 
+(2)P Die Stabilität der Gebäudestruktur oder einzelner Wandbauteile sind auch während der Bauphase 
+sicherzustellen. 
+16 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1996-2:2006 + AC:2009 (D) 
+3.2 Annahme, Handhabung sowie Lagerung von Baustoffen 
+3.2.1 Allgemeines 
+(1)P Die Handhabung bzw. die Lagerung von Baustoffen und Mauerwerksprodukten, die zur Verwendung in 
+Mauerwerk bestimmt sind, müssen so erfolgen, dass sie nicht beschädigt und dadurch für ihren Zweck 
+ungeeignet werden. 
+(2) Sofern in den Planungsunterlagen gefordert, sollten von den Baustoffen Proben genommen und geprüft 
+werden. 
+(3) Unterschiedliche Baustoffe sollten getrennt gelagert werden. 
+3.2.2 Bewehrungs- und Vorspannmaterial 
+(1)P Die Oberflächenbeschaffenheit von Bewehrungs- und Vorspannmaterial muss vor der Verwendung geprüft 
+werden, und die Oberfläche muss frei von schädlichen Substanzen sein, die den Stahl, Beton oder Mörtel oder 
+den Haftverbund zwischen ihnen beeinträchtigen können. 
+(2) Beschädigung oder Verformung der Bewehrung bei der Lagerung und Handhabung sollten vermieden 
+werden. Bewehrungs- und Vorspannstäbe und/oder Spannglieder aus Stahl sollten ebenso wie vorgefertigte 
+Lagerfugenbewehrungen eindeutig gekennzeichnet und ohne direkten Bodenkontakt frei von Schlamm, Öl, Fett, 
+Anstrichstoffen und Schweißarbeiten gelagert werden. 
+(3) Bei der Lagerung und Handhabung sollten Schweißarbeiten in unmittelbarer Nähe von Spanngliedern ohne 
+besondere Schutzmaßnahmen (zum Schutz gegen Spritzer) vermieden werden. 
+(4) Bei Spanngliedhüllen sollte Folgendes berücksichtigt werden: 
+ örtliche Schäden sowie innere Korrosion sollten vermieden werden; 
+ sie sollten wasserdicht sein. 
+3.3 Vorbereitung von Baustoffen 
+3.3.1 Baustellenmörtel und -füllbeton 
+3.3.1.1 Allgemeines 
+(1) Baustellenmörtel und -füllbeton sollten nach Vorgabe einer Mischanweisung (Rezeptmörtel) hergestellt 
+werden, die hinreichend sicher die geforderten Leistungseigenschaften erreichen. Falls in den Planungsunter-
+lagen keine Mischanweisung vorgegeben ist, sollten die genauen Vorgaben zu den verwendeten Material-
+bestandteilen, dem Mischungsverhältnis und dem Mischverfahren aufgrund von an Versuchsmischungen 
+durchgeführten Prüfungen und/oder aufgrund von am Ort der Verwendung allgemein anerkannten Rezept-
+mörteln ausgewählt werden. 
+(2) Falls Prüfungen gefordert sind, sollten diese in Übereinstimmung mit den Planungsunterlagen durchgeführt 
+werden. Falls die Prüfergebnisse anzeigen, dass die Mischanweisung nicht zu den geforderten Leis-
+tungseigenschaften führt, sollte die Mischanweisung verbessert werden; ist sie Teil der Planungsvorgabe, so 
+sollten Verbesserungen mit dem Planer vereinbart werden. 
+3.3.1.2 Chloridgehalt 
+(1) Falls die Probenahme nach EN 998-2, Anhang B, und die Prüfung nach EN 1015-17 erfolgt oder wenn ein 
+Rechenverfahren auf der Grundlage des gemessenen Anteils der in den Bestandteilen des Mörtels enthaltenen 
+Cloridionen durchgeführt wird, sollte der nach EN 998-2 zulässige Höchstwert nicht überschritten werden. 
+17 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1996-2:2006 + AC:2009 (D) 
+3.3.1.3 Festigkeit von Mörtel und Füllbeton 
+(1) Für die Bestimmung der Mörtelfestigkeit, sollten Probekörper nach EN 1015-11 hergestellt und geprüft 
+werden. 
+(2) Für die Bestimmung der Festigkeit von Füllbeton, sollten Probekörper nach EN 206-1 hergestellt und geprüft 
+werden. 
+3.3.1.4 Zusatzmittel und Zusatzstoffe 
+(1)P Falls nicht ausdrücklich in den Planungsunterlagen zugelassen, dürfen Zusatzmittel, Zusatzstoffe oder 
+Pigmente nicht verwendet werden. 
+3.3.1.5 Dosierung 
+(1)P Die Bestandteile für Mörtel und Füllbeton müssen nach Gewicht oder Volumen in den angegebenen 
+Mischungsverhältnissen in geeigneten sauberen Messvorrichtungen abgemessen werden. 
+(2) Bei der Dosierung der Bestandteile für Füllbeton sollte das Saugvermögen der Mauersteine und der 
+Mörtelfugen berücksichtigt werden. 
+3.3.1.6 Mischverfahren und Mischzeit 
+(1) Das Mischverfahren und die Mischzeit sollten eine gleich bleibende Mörtelproduktion mit der richtigen 
+Zusammensetzung sicherstellen. Der Mörtel sollte während der Verwendung nicht verunreinigt werden. 
+(2) Sofern Handmischung nach den Planungsunterlagen nicht ausdrücklich erlaubt ist, sollte ein geeigneter 
+mechanischer Mischer verwendet werden. 
+(3) Die Mischzeit sollte von dem Zeitpunkt an gemessen werden, an dem alle Bestandteile in den Mischer 
+zugegeben worden sind. Große Unterschiede in den Mischzeiten verschiedener Chargen sollten vermieden 
+werden. 
+ANMERKUNG Im Allgemeinen ist eine Mischzeit im Mischer von 3 min bis 5 min nach der Zugabe aller Bestandteile 
+angemessen und sollte außer bei verzögerten Mörteln nicht mehr als 15 min betragen. Bei Verwendung von Luftporen-
+bildnern kann verlängertes Mischen zu übermäßiger Luftporenbildung und infolgedessen zu einer Vermindung des Haft-
+verbundes und der Dauerhaftigkeit führen. 
+(4) Der Mörtel oder Füllbeton sollte so gemischt werden, dass er nach dem Mischen ausreichend gut verar-
+beitbar ist, um den Raum, in den er ohne sich zu entmischen gegossen und anschließend verdichtet wird, 
+auszufüllen. 
+3.3.1.7 Verarbeitbarkeitszeit von Zementmörtel und Füllbeton 
+(1) Zementmörtel und Füllbeton sollten beim Entleeren des Mischers gebrauchsfertig sein, und es sollten keine 
+weiteren Bindemittel, Gesteinskörnungen, Zusatzmittel oder Wasser zugegeben werden. 
+ANMERKUNG Baustellenmörteln darf Wasser hinzugegeben werden, um den durch Verdunstung verursachten Was-
+serverlust auszugleichen. 
+(2) Mörtel und Füllbeton sollten verarbeitet sein, bevor die Verarbeitbarkeitszeit abgelaufen ist. Mörtel und 
+Füllbeton, bei dem der Abbindevorgang bereits eingesetzt hat, sollte entsorgt und nicht neu gemischt werden. 
+3.3.1.8 Mörtelherstellung bei kaltem Wetter 
+(1)P Wasser, Sand oder Kalk-Sand-Werk-Vormörtel, die Eispartikel enthalten, dürfen nicht verwendet werden. 
+(2) Falls nicht ausdrücklich nach den Planungsunterlagen zugelassen, sollten keine Tausalze oder sonstige 
+Frostschutzmittel verwendet werden. 
+18 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1996-2:2006 + AC:2009 (D) 
+3.3.2 Werkmörtel, werkmäßig vorbereitete Mörtel, Kalk-Sand-Werk-Vormörtel und Füllbeton als 
+Transportbeton 
+(1)P Werkmörtel und werkmäßig vorbereiteter Mörtel müssen nach den Anweisungen des Herstellers unter 
+Einhaltung der Mischzeit und Einsatz des dort angegebenen Mischertyps verwendet werden. 
+(2) Mörtel sollte gründlich gemischt werden, um eine gleichmäßige Verteilung der Bestandteile sicherzustellen. 
+(3) Die vom Mörtelhersteller vorgesehenen Baustellen-Mischgeräte, Mischverfahren und die Mischzeiten 
+einschließlich der Anweisungen zur Mörtelherstellung bei kaltem Wetter und zur Instandhaltung der Mischanlage, 
+sollten angewendet werden. 
+(4) Kalk-Sand-Werk-Vormörtel sollten mit dem Bindemittel nach 3.3.1 gemischt werden. 
+(5)P Werk-Frischmörteln müssen innerhalb der vom Hersteller angegebenen Verarbeitbarkeitszeit verwendet 
+werden. 
+(6) Füllbeton als Frischbeton sollte den Planungsvorgaben entsprechend verwendet werden. 
+3.4 Zulässige Abweichungen 
+(1)P Alle Arbeiten müssen den Planungsvorgaben entsprechend und innerhalb der zulässigen Abweichungen 
+ausgeführt werden. 
+(2) Während des Fortgangs der Arbeiten sollten die Maße und die Ebenheit überprüft werden. 
+(3) Die Abweichungen des ausgeführten Mauerwerks von den Planungsvorgaben sollten die in den 
+Planungsunterlagen angegebenen Werte für die zulässigen Abweichungen nicht überschreiten. Falls in den 
+Planungsunterlagen für eine der in Tabelle 3.1 aufgeführten Abweichungen oder für die Ebenheits- und 
+Winkelabweichungen kein Wert angegeben ist, sollten die entsprechenden zulässigen Abweichungen die 
+geringeren der folgenden sein: 
+ die in Tabelle 3.1 angegebenen Werte (siehe auch Bild 3.1); 
+ die am Ort der Verwendung anerkannten Werte für die zulässigen Abweichungen. 
+ANMERKUNG Derartige, am Verwendungsort anerkannte Werte für die zulässigen Abweichungen können in ergänzenden 
+und nicht im Widerspruch stehenden Informationen beschrieben sein, auf die im nationalen Anhang verwiesen werden darf. 
+19 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1996-2:2006 + AC:2009 (D) 
+1)
+1)
+2)
+20 mm
+ 50 mm
+20 mm
+20 mm1)
+Legende 
+1) Geschosshöhe 
+2) Gebäudehöhe 
+Legende 
+1) Zwischendecke 
+a) Vertikalität b) Vertikale Fluchtlinie 
+Bild 3.1  Maximale vertikale Abweichungen 
+Tabelle 3.1  Zulässige Abweichungen für Mauerwerkselemente 
+Position Maximale Abweichung 
+Vertikalität: 
+über ein Geschoss 20 mm 
+über die gesamte Gebäudehöhe, 
+bei drei oder mehr Geschossen 
+ 50 mm 
+senkrechte Fluchtlinie 20 mm 
+Ebenheita:
+über einen Meter 10 mm 
+über 10 Meter 50 mm 
+Dicke: 
+der Wandschaleb 5 mm oder 5 % der Schalendicke, 
+wobei der größere Wert maßgebend ist 
+der zweischaligen Wand 10 mm 
+a Die Ebenheit wird als maximale Abweichung von einer geraden Linie zwischen zwei beliebigen Punkten gemessen. 
+b Ausgenommen Wandschalen mit der Breite oder Länge eines einzelnen Mauersteins, bei denen die Maßtoleranzen
+ des Mauersteins die Schalendicke bestimmen.
+20 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1996-2:2006 + AC:2009 (D) 
+(4) Falls nichts anderes festgelegt ist, sollte die erste Schicht des Mauerwerks nicht mehr als 15 mm über die 
+Kante einer Bodenplatte oder des Fundaments überstehen. 
+3.5 Ausführung des Mauerwerks 
+3.5.1 Haftverbund 
+(1) Um einen ausreichenden Haftverbund zu erhalten, sollten Mauersteine und Mörtel ordnungsgemäß vor-
+bereitet werden. Ob es notwendig ist, die Mauersteine vor Gebrauch vorzunässen, sollte den Planungs-
+unterlagen entnommen werden. Sind den Planungsunterlagen keine diesbezüglichen Anforderungen zu 
+entnehmen, so sollten die Empfehlungen des Mauersteinherstellers und, falls erforderlich, die des Werkmörtel-
+herstellers befolgt werden. 
+(2) Falls nicht anders vorgegeben, sollten die Fugen in Wänden mit einer Dicke bis 200 mm um nicht mehr als 
+5 mm in ihrer Tiefe, gemessen ab der Oberfläche des Mauerwerks, zurückspringen. 
+(3) Falls nicht anders festgelegt, sollten die Mörtelfugen bei Verwendung von gelochten Mauersteinen um nicht 
+mehr als 1/3 der Außenschalendicke des Mauersteins zurückspringen. 
+3.5.2 Vermauerung der Mauersteine 
+(1) Falls in den Planungsunterlagen nicht anders festgelegt, sollten Mauersteine mit Mulden so vermauert 
+werden, dass die Mulden vollständig mit Mörtel ausgefüllt sind. 
+3.5.3 Nachträgliches Verfugen und Fugenglattstrich bei Mauerwerk mit Ausnahme von 
+Dünnbettmauerwerk 
+3.5.3.1 Nachträgliches Verfugen 
+(1) Wenn die Fugen nachträglich ausgefugt werden sollen, sind die nicht ausgehärteten Mörtelfugen sauber 
+auszukratzen, und zwar bis zu einer Tiefe von mindestens d
+p, jedoch nicht mehr als 15 % der Wanddicke, 
+gemessen von der fertigen Fugenoberfläche. Lose anhaftende Partikel sollten ausgebürstet werden. 
+ANMERKUNG Der im betreffenden Land zu verwendende Wert für dp lässt sich dem in diesem Land geltenden nationalen 
+Anhang entnehmen. Der empfohlene Wert für dp beträgt 15 mm für Wände mit einer Dicke von 100 mm. 
+(2) Vor dem Ausfugen sollte die gesamte Fläche gereinigt und erforderlichenfalls genässt werden, um den 
+bestmöglichen Haftverbund für das anschließende Ausfugen zu erzielen. 
+3.5.3.2 Fugenglattstrich 
+(1) Falls das Mauerwerk während der Bauausführung abschließend durch Fugenglattstrich bearbeitet wird, 
+sollte der Mörtel verdichtet werden, solange er noch plastisch ist. 
+3.5.4 Einbau von Feuchtesperrschichten 
+(1) Falls nicht anders vorgegeben, sollten die Bahnen für die Horizontalabdichtung im Mauerwerk an den Ecken 
+und dort, wo zwei Wände aneinander stoßen, über die gesamte Wandbreite und an allen anderen Stellen 
+mindestens 150 mm überlappt verlegt werden. 
+3.5.5 Dehnungsfugen 
+(1) Bauteile, einschließlich Mauerkronen und Abdeckplatten sollten keine Dehnungsfugen überbrücken 
+(ausgenommen Gleitanker). 
+21 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1996-2:2006 + AC:2009 (D) 
+3.5.6 Einbau von Wärmedämmstoffen 
+(1) Falls die Wärmedämmung durch Einpressen oder Einblasen von Werkstoffen in den Hohlraum zwischen 
+Wandschalen erfolgt, sollten die Wandschalen ausreichende Festigkeit aufweisen, um den während und nach 
+dem Einbau einwirkenden Drücken standzuhalten. 
+3.5.7 Reinigung von Verblendmauerwerk 
+(1) Mörtelreste, -spritzer oder sonstige Flecken sollten so früh wie möglich und vorzugsweise durch Abbürsten 
+entfernt werden, bevor die zementartigen Bestandteile erhärtet sind. 
+(2) Es sollte ein vom Mauersteinhersteller empfohlenes Reinigungsverfahren angewendet werden, wobei die 
+Art der Fleckenbildung oder Ausblühung zu berücksichtigen ist. 
+3.6 Nachbehandlung und Schutzmaßnahmen während der Bauausführung 
+3.6.1 Allgemeines 
+(1)P Es müssen geeignete Maßnahmen getroffen werden, um frisch hergestelltes Mauerwerk gegen Be-
+schädigung zu schützen. 
+(2) Frisch hergestelltes Mauerwerk sollte während der Abbindephase in geeigneter Weise gegen übermäßigen 
+Feuchteverlust oder übermäßige Feuchteaufnahme geschützt sein. 
+3.6.2 Schutz gegen Regen 
+(1) Fertiges Mauerwerk sollte, bis der Mörtel abgebunden hat, vor direktem Regen geschützt sein. Das 
+Mauerwerk sollte so geschützt werden, dass der Mörtel nicht aus den Fugen ausgewaschen wird und dass es 
+nicht abwechselnd Feucht- und Trockenzeiten unterworfen wird. 
+(2) Um das fertige Mauerwerk zu schützen, sollten Fensterbänke, Schwellen, Regenrinnen und Behelfs-
+Regenfallrohre sobald wie möglich nach Beendigung des Mauerns und Verfugens eingebaut werden. 
+(3) Bei anhaltendem starken Regen sollte nicht gemauert bzw. verfugt werden, und die Mauersteine, der Mörtel 
+und das frisch verfugte Mauerwerk sollten geschützt werden. 
+(4) Frisch verfugtes Mauerwerk sollte vor starken Regenschauern geschützt werden. 
+3.6.3 Schutz gegen Frost-Tau-Wechsel 
+(1) Es sollten Maßnahmen ergriffen werden, um durch Frost-Tau-Wechsel verursachte Schäden am frisch her-
+gestellten Mauerwerk und an den Fugen zu vermeiden. 
+(2) Es sollte nicht auf gefrorenem Grund und nicht mit gefrorenen Baustoffen gemauert werden. 
+3.6.4 Schutz gegen Austrocknung 
+(1) Frisch hergestelltes Mauerwerk sollte gegen Austrocknung, einschließlich der austrocknenden Wirkung von 
+Wind und hohen Temperaturen, geschützt werden. Das Mauerwerk sollte feucht gehalten werden, bis der Mörtel 
+abgebunden hat. 
+22 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1996-2:2006 + AC:2009 (D) 
+3.6.5 Schutz vor mechanischer Beschädigung 
+(1) Mauerwerksoberflächen, empfindliche Kanten an Ecken und Öffnungen, Mauersockel und sonstige vor-
+springende Bauteile sollten in angemessener Weise gegen Schäden und Beeinträchtigungen geschützt werden. 
+Hierbei ist zu berücksichtigen: 
+ der laufende Baubetrieb und die nachfolgenden Gewerke; 
+ Einwirkungen aus dem Bauverkehr; 
+ Betonierarbeiten oberhalb des Mauerwerks; 
+ von Baugerüsten aus ausgeführte Arbeiten. 
+(2) Fertiges Mauerwerk sollte vor Beginn von Bauarbeiten, die Sichtmauerwerk verschmutzen oder das 
+Haftvermögen für zukünftige Arbeiten, wie das Verputzen, beeinflussen können, geschützt werden. 
+3.6.6 Bauhöhe des Mauerwerks 
+(1) Die Mauerwerkshöhe, die in einem Tag hergestellt werden soll, sollte so begrenzt werden, dass Instabilität 
+oder eine Überlastung des frischen Mörtels vermieden wird. Bei der Festlegung einer angemessenen Höhe 
+sollten Wanddicke, Mörtelart, Form und Rohdichte der Mauersteine und das Ausmaß der Beanspruchung durch 
+Wind berücksichtigt werden. 
+23 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Anhang A
+(informativ) 
+Einteilung der Mikroumweltbedingungen von fertigem Mauerwerk 
+A.1 Klassifizierung 
+(1) Tabelle A.1 enthält eine Unterteilung der in 2.1.2.1(3) mit Beispielen angegebenen Grundeinteilung. 
+Tabelle A.1  Einteilung der Mikroumweltbedingungen von Mauerwerk im eingebauten Zustand 
+Klasse Mikrobedingungen des Mauerwerks Beispiele für Mauerwerk in diesem Zustand 
+MX1 In trockener Umgebung Innenmauerwerk für normale Wohnräume und Bü-
+ros, einschließlich der Innenschale von zweischa-
+ligen Außenwänden, die im Normalfall nicht feucht 
+werden. 
+Verputztes Außenmauerwerk, das keinem mäßi-
+gen oder starken Schlagregen ausgesetzt ist, und 
+von Feuchte in benachbartem Mauerwerk oder 
+Bauteilen getrennt ist. 
+MX2 Feuchte oder Durchnässung ausgesetzt 
+MX2.1 Feuchte, aber keinen Frost-Tau-Wechsel-
+bedingungen oder Sulfattreiben oder angrei-
+fenden Chemikalien in signifikanten Mengen 
+ausgesetzt 
+Innenmauerwerk, das großen Mengen an Wasser-
+dampf ausgesetzt ist, wie z. B. in einer Wäscherei. 
+Außenwände, die von einem Dachüberstand oder 
+einer Mauerabdeckung geschützt und keinem 
+starken Schlagregen oder Frost ausgesetzt sind. 
+Mauerwerk frostfrei gegründet und in gut entwäs-
+serten, nicht angreifenden Böden. 
+MX2.2 Durchnässung, aber keinen Frost-Tau-
+Wechselbedingungen oder Sulfattreiben oder 
+angreifenden Chemikalien in signifikanten 
+Mengen ausgesetzt 
+Mauerwerk, das weder Frost noch angreifenden 
+Chemikalien ausgesetzt ist, z. B. in Außenwänden 
+mit Mauerkronen oder mit Dachüberstand, in Brüs-
+tungsmauern, freistehenden Mauern, im Boden, 
+unter Wasser. 
+MX3 Feuchte oder Durchnässung und Frost-
+Tau-Wechseln ausgesetzt 
+MX3.1 Feuchte oder Durchnässung und Frost-Tau-
+Wechselbedingungen, aber keinem Sulfat-
+treiben oder angreifenden Chemikalien in 
+signifikanten Mengen ausgesetzt 
+Mauerwerk wie Klasse MX2.1 aber Frost-Tau-
+Wechsel ausgesetzt. 
+MX3.2 Starker Durchnässung und Frost-Tau-
+Wechselbedingungen, aber keinem Sulfat-
+treiben oder angreifenden Chemikalien in 
+signifikanten Mengen ausgesetzt 
+Mauerwerk wie Klasse MX2.2 aber Frost-Tau-
+Wechsel ausgesetzt. 
+MX4 Der Einwirkung von salzhaltiger Luft, 
+Meerwasser oder Tausalzen ausgesetzt 
+Mauerwerk im Küstenbereich. Mauerwerk an Stra-
+ßen, auf denen im Winter Tausalz gestreut wird 
+24 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Tabelle A.1 (fortgesetzt) 
+Klasse Mikrobedingungen des Mauerwerks Beispiele für Mauerwerk in diesem Zustand 
+MX5 In einer Umgebung mit stark angreifenden 
+Chemikalien 
+Mauerwerk in Berührung mit gewachsenen oder 
+aufgefülltem Böden oder Grundwasser, wobei 
+Feuchte und Sulfate in signifikanten Mengen vor-
+handen sind. 
+Mauerwerk in Berührung mit stark sauren Böden, 
+kontaminiertem Boden oder Grundwasser. Mauer-
+werk in der Nähe von Industriegebieten, mit atmo-
+sphärisch angreifenden Chemikalien. 
+ANMERKUNG Bei der Überlegung, welchen Umweltbedingungen das Mauerwerk ausgesetzt ist, sollten die aufge-
+brachten Oberflächenbehandlungen und Schutzbekleidungen berücksichtigt werden. 
+A.2 Beanspruchung durch Feuchte 
+(1) Die Bilder A.1 und A.2 zeigen Beispiele für vergleichbare Expositionen der Feuchtebeanspruchung. 
+ANMERKUNG Die Bilder beruhen auf typischen modernen Bauwerken, zeigen jedoch der Klarheit halber nicht alle 
+baulichen Einzelheiten der Hohlräume und Abdichtungen gegen Feuchte. 
+25 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1996-2:2006 + AC:2009 (D) 
+a) Abdeckplatte mit Überstand b) Abdeckplatte ohne Überstand 
+(einfache Abdeckung) 
+Legende 
+Vergleichbare Expositionen der 
+Feuchtebeanspruchung 
+ Stark 
+ Geschützt beansprucht 
+c) Fensterbank mit Überstand 
+ d) Fensterbank ohne Überstand
+(bündige Fensterbank) 
+Bild A.1  Beispiele für die Auswirkungen von Konstruktionsdetails auf die vergleichbaren Expositionen 
+des Mauerwerks bezüglich der Feuchtebeanspruchung 
+26 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Legende 
+Vergleichbare Expositionen der Feuchte-
+beanspruchung 
+ Stark 
+ Geschützt beansprucht 
+ANMERKUNG Die Größe des Bereichs für
+vergleichbare Expositionen der Feuchtebean-
+spruchung wird durch das Makroklima beein-
+flusst. 
+1) kein Dachüberstand 
+2) Loggia 
+3) Abdeckplatte 
+4) Außenputz 
+5) Brüstungsmauer 
+6) Dachüberstand 
+7) Revisionsschacht 
+8) Freistehende Mauer 
+9) Pflasterung 
+10) Stützmauer
+Bild A.2  Beispiele für die vergleichbaren Expositionen des Mauerwerks bezüglich der 
+Feuchtebeanspruchung (Mauerwerk, das nicht durch Oberflächenbehandlungen oder Bekleidungen 
+geschützt ist, oder Mauerwerksgründungen in gut entwässernden Böden) 
+27 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Anhang B
+(informativ) 
+Bewährte Stein-/Mörtel-Kombinationen für dauerhaftes Mauerwerk unter 
+verschiedenen Umweltbedingungen 
+(1) Stein-/Mörtel-Kombinationen können entsprechend der anhand von Tabelle A.1 bestimmten Beanspru-
+chungsklasse des Mauerwerks aus den Tabellen B.1 und B.2 bestimmt werden. 
+(2) Mauermörtel wird unter Verwendung der in EN 998-2 definierten Begriffe für Dauerhaftigkeit festgelegt. Für 
+die Anwendung von Tabelle B.2 werden folgende Symbole als Abkürzung verwendet: 
+P  Mörtel zur Verwendung in Mauerwerk für nicht angreifende Umgebung; 
+M  Mörtel zur Verwendung in Mauerwerk für mäßig angreifende Umgebung; 
+S  Mörtel zur Verwendung in Mauerwerk für stark angreifende Umgebung. 
+(3) Bis ein Europäisches Prüfverfahren zur Verfügung steht, dürfen baustellengemischte Rezeptmörtel, für die 
+allgemein anerkannte Werte verfügbar sind, mit Bezug auf P, M oder S bezeichnet werden. 
+(4) Zusätzlich zur Auswahl eines Mörtels nach dem Kriterium der Dauerhaftigkeit sollten andere Leistungs-
+eigenschaften, wie z. B. die Druckfestigkeit, der Haftverbund und das Wasserrückhaltevermögen berücksichtigt 
+werden, damit der Mörtel mit den ausgewählten Mauersteinen verträglich ist und es ermöglicht, dass das fertige 
+Mauerwerk alle relevanten Bemessungsanforderungen erfüllt. 
+(5) Beim gegenwärtigen Stand der Technik sind Informationen zur Eignung von Mörtel üblicherweise vom 
+Werkmörtelhersteller oder, im Falle von Baustellenmörtel, von den am Ort der Verwendung allgemein aner-
+kannten Informationsquellen einzuholen, siehe 2.2.3. 
+Tabelle B.1  Bewährte Anforderungen für Mauersteine in Bezug auf Dauerhaftigkeit 
+Betonsteine 
+nach EN 771-3Expositions-
+klasse (siehe 
+Tabelle A.1) 
+Mauerziegel 
+nach 
+EN 771-1
+Kalksand-
+steine 
+nach 
+EN 771-2
+Dichte 
+Gesteins-
+körnungen 
+Leichte 
+Gesteins-
+körnungen 
+Poren-
+betonsteine
+nach 
+EN 771-4
+Beton-
+werksteine 
+nach 
+EN 771-5
+Natursteine
+nach 
+EN 771-6
+MX1a Alle Alle Alle Alle Alle Alle Alle 
+MX2.1 F0, F1 oder 
+F2/S1 oder S2 Alle Alle Alle Alle Alle Alle 
+MX2.2 F0, F1 oder 
+F2/S1 oder S2 Alle Alle Alle 400 kg/m3 Alle Alle 
+MX3.1 F1 oder F2/S1 
+oder S2 
+Frost-Tau-
+Wechsel-
+beständig 
+Frost-Tau-
+Wechsel-
+beständig 
+Frost-Tau-
+Wechsel-
+beständig 
+ 400 kg/m3 Alle 
+Den Herstel-
+ler konsultie-
+ren 
+MX3.2 F2/S1 oder S2 
+Frost-Tau-
+Wechsel-
+beständig 
+Frost-Tau-
+Wechsel-
+beständig 
+Frost-Tau-
+Wechsel-
+beständig 
+ 400 kg/m3 Alle 
+Den Herstel-
+ler konsultie-
+ren 
+MX4 In jedem Falle ist der Grad der Beanspruchung durch Salze, Durchnässung und Frost-Tau-Wechsel 
+abzuschätzen und der Hersteller zu konsultieren. 
+MX5 
+In jedem Falle sollte eine genaue Einschätzung der Umgebung und der Auswirkungen der vorhandenen 
+Chemikalien unter Berücksichtigung der Konzentrationen, vorhandenen Mengen und Reaktionszeiten 
+vorgenommen und der Hersteller konsultiert werden. 
+a Die Klasse MX1 gilt nur, solange das Mauerwerk oder einer oder mehrere seiner Bestandteile nicht während der Bauausführung 
+ über einen längeren Zeitraum stärkeren Beanspruchungen ausgesetzt ist. 
+28 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Tabelle B.2  Bewährte Anforderungen für Mörtel in Bezug auf Dauerhaftigkeit 
+Expositionsklasse 
+(siehe Tabelle A.1) 
+Mörtel in Kombination mit einem beliebigen Mauersteintyp nach der in 
+B.1 2) angegebenen Einteilung 
+MX1a b P, M oder S 
+MX2.1 M oder S 
+MX2.2 M oder Sc 
+MX3.1 M oder S 
+MX3.2 Sc
+MX4 
+In jedem Falle sind der Grad der Beanspruchung durch Salze, Durchnässung 
+und Frost-Tau-Wechsel abzuschätzen und die Hersteller der Bestandteile zu 
+konsultieren. 
+MX5 
+In jedem Falle sollten eine genaue Einschätzung der Umgebung und der Auswir-
+kungen der vorhandenen Chemikalien unter Berücksichtigung der Konzentratio-
+nen, vorhandenen Mengen und Reaktionszeiten vorgenommen und die Herstel-
+ler der Bestandteile konsultiert werden. 
+a Die Klasse MX1 gilt nur, solange das Mauerwerk oder einer oder mehrere seiner Bestandteile nicht während der Bauausführung 
+ über einen längeren Zeitraum stärkeren Beanspruchungen ausgesetzt ist. 
+b Wenn mit P bezeichnete Mörtel festgelegt sind, ist es unbedingt erforderlich, sicherzustellen, dass Mauersteine, Mörtel und Mau er
+ werk während der Errichtung vollständig gegen Durchnässung und Frost geschützt sind. 
+c Wenn Mauerziegel der Kategorie des Gehalts an löslichen Salzen S1 in Mauerwerk der Expositionsklassen MX2.2, MX3.2, MX4 
+ und MX5 verwendet werden sollen, sollten die verwendeten Mörtel außerdem widerstandsfähig gegen den Angriff durch Sulfate 
+ sein. 
+29 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Anhang C
+(informativ) 
+Festlegungen zur Auswahl der Werkstoffe und Korrosionsschutzsysteme 
+für Ergänzungsbauteile entsprechend der Expositionsklasse 
+C.1 Expositionsklasse 
+(1) Der Bereich der Umweltbedingungen, denen die Ergänzungsbauteile ausgesetzt sind, sollte den fünf in 
+Tabelle A.1 angegebenen Expositionsklassen MX1, MX2, MX3, MX4 und MX5 zugeordnet werden. 
+(2) Die Auswahl der Expositionsklasse sollte entweder die Beanspruchung der Produkte während der Bau-
+ausführung oder die Beanspruchung nach der Fertigstellung berücksichtigen, die schärfere ist maßgebend. 
+C.2 Auswahl der Werkstoffe 
+(1) Die Werkstoffe und die gegebenenfalls vorhandene Schutzschicht für Ergänzungsbauteile können aus dem 
+betreffenden Teil von EN 845 ausgewählt werden. 
+(2) Die Werkstoffe für die Herstellung von Ergänzun gsbauteilen und ihren Korros ionsschutzsystemen sind 
+detailliert im betreffenden Teil von EN 845 festgelegt und einer eindeutigen Werkstoff- bzw. Beschichtungsbe-
+zugsnummer zugeordnet. Die Reihenfolge der Bezugsnummern lässt keinen Bezug auf die Leistung oder 
+Qualität zu. 
+(3) Die Werkstoffe für Anker, Zugbänder, Auflager und Konsolen nach EN 845-1 können mit Hilfe von Ta-
+belle C.1 ausgewählt werden. 
+(4) Die Werkstoffe für Stürze nach EN 845-2 können mit Hilfe von Tabelle C.2 ausgewählt werden. 
+(5) Die Werkstoffe für Lagerfugenbewehrung nach EN 845-3 können mit Hilfe von Tabelle C.3 ausgewählt 
+werden. 
+(6) Die Tabellen C.1, C.2 und C.3 enthalten die Werkstoff- bzw. Beschichtungsbezugsnummer mit einer kurzen 
+Beschreibung der Werkstoffe und Expositionsklassen, auf die die Spezifikation zutrifft. Diese Anleitung beruht 
+auf Langzeiterfahrungen mit der Dauerhaftigkeit solcher Werkstoffe in einem gegebenen Bereich von 
+Beanspruchungsbedingungen. Zurzeit gibt es kein anerkanntes Kurzverfahren zur Messung dieses Parameters. 
+(7) Von den einzelnen Expositionsklassen zugeordneten Werkstoffen wird erwartet, dass sie unter den 
+beschriebenen Bedingungen eine wirtschaftlich vertretbare Lebensdauer aufweisen, wobei in einigen Fällen, wie 
+in der Tabelle angegeben, fachmännischer Rat einzuholen ist. Die Auswahl hängt von der jeweiligen Ver-
+wendung, ihrem Ort und der vorgesehenen Lebensdauer ab. 
+(8) Für Ergänzungsbauteile, die während des Einbaus oder im eingebauten Zustand Formänderungen auf-
+nehmen müssen, sollten Werkstoffe und Beschichtungen berücksichtigt werden, die den erwarteten Form-
+änderungen widerstehen. 
+30 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Tabelle C.1  Korrosionsschutzsysteme für Anker, Zugbänder, Konsolen und Auflager nach EN 845-1 in 
+Bezug auf die Expositionsklassen 
+Expositionsklasse 
+Werkstoff a Bezugs-
+Nr. MX1 MX2 MX3 MX4 MX5
+Austenitischer nichtrostender Stahl (Molybdän-Chrom-Nickel-
+Legierungen) 1 U U U U R 
+Kunststoff für Ankerkörper 2 U U U U R 
+Austenitischer nichtrostender Stahl (Chrom-Nickel-Legierungen) 3 U U U R R 
+Ferritischer nichtrostender Stahl 4 U X X X X 
+Phosphorbronze 5 U U U X X 
+Aluminiumbronze 6 U U U X X 
+Kupfer 7 U U U X X 
+Verzinkter (940 g/m2) Stahldraht 8 U U U R X 
+Verzinktes (940 g/m2) Stahlbauteil 9 U U U R X 
+Verzinktes (710 g/m2) Stahlbauteil 10 U U U R X 
+Verzinktes (460 g/m2) Stahlbauteil 11 U R R R X 
+Verzinktes (300 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils 12.1 U U U R X 
+Verzinktes (300 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils 12.2 U U U R X 
+Verzinkter (265 g/m2) Stahldraht 13 U R R X X 
+Verzinktes (300 g/m2) Stahlband oder -blech, dessen Schnitt-
+kanten mit einem organischen Überzug versehen sind 14 U R R X X 
+Vorverzinktes (300 g/m2) Stahlband oder -blech 15 U R R X X 
+Verzinktes (137 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils 16.1 U U U R X 
+Verzinktes (137 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils 16.2 U U U R X 
+Vorverzinktes (137 g/m2) Stahlband mit verzinkten Kanten 17 U R R X X 
+Verzinkter (60 g/m2) Stahldraht mit organischem Überzug auf 
+allen Außenflächen des fertig bearbeiteten Bauteils 18 U R R R X 
+Verzinkter (105 g/m2) Stahldraht 19 U R R X X 
+Verzinkter (60 g/m2) Stahldraht 20 U X X X X 
+Verzinktes (137 g/m2) Stahlblech 21 U X X X X 
+Legende U  uneingeschränkte Verwendung des Werkstoffs in dieser Expositionsklasse. 
+R  eingeschränkte Verwendung; bezüglich der jeweiligen Planungsbedingungen ist der 
+Hersteller oder ein Fachberater zu konsultieren. 
+X  nicht für den Gebrauch in dieser Expositionsklasse empfohlener Werkstoff. 
+a Die genaue Festlegung des der Bezugsnummer entsprechenden Werkstoffs und des Überzugs oder der 
+ Betondeckung ist in EN 845-1 angegeben. Die angegebenen Massen der Überzüge sind ungefähre Werte für eine 
+ Oberfläche.
+31 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Tabelle C.2  Korrosionsschutzsysteme für Stürze nach EN 845-2 in Bezug auf die Expositionsklassen 
+Expositionsklasse 
+Werkstoffa Bezugs-
+Nr. MX1 MX2 MX3 MX4 MX5
+Austenitischer nichtrostender Stahl (Chrom-Nickel-Legierungen) L3 U U U R R 
+Verzinktes (710 g/m2) Stahlbauteil L10 U U U R X 
+Verzinktes (460 g/m2) Stahlbauteil L11 U D D R X 
+Verzinktes (460 g/m2) Stahlbauteil mit organischem Überzug auf 
+bestimmten Oberflächen L11.1 U U U R X 
+Verzinktes (460 g/m2) Stahlbauteil mit organischem Überzug auf 
+bestimmten Oberflächen L11.2 U U U R X 
+Verzinktes (300 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils L12.1 U U U R X 
+Verzinktes (300 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils L12.2 U U U R X 
+Verzinktes (300 g/m2) Stahlband oder -blech, dessen Schnitt-
+kanten mit einem organischen Überzug versehen sind L14 U D D R X 
+Verzinktes (137 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils L16.1 U D D R X 
+Verzinktes (137 g/m2) Stahlband oder -blech mit organischem 
+Überzug auf allen Außenflächen des fertig bearbeiteten Bauteils L16.2 U D U R X 
+Betonb oder Beton und Mauerwerk A U U R R R 
+Betonb oder Beton und Mauerwerk B U U R R R 
+Betonb oder Beton und Mauerwerk C U U R X X 
+Betonb oder Beton und Mauerwerk D U U X X X 
+Betonb oder Beton und Mauerwerk E U X X X X 
+Betonb oder Mauerwerk mit nicht rostender Stahlbewehrung F U U R R R 
+Porenbeton mit einer durch ein Beschichtungssystem ge-
+schützten Bewehrung G U R R R R 
+Legende U  uneingeschränkte Verwendung des Werkstoffs in dieser Expositionsklasse. 
+R  eingeschränkte Verwendung; bezüglich der jeweiligen Planungsbedingungen ist der Her-
+steller oder ein Fachberater zu konsultieren. 
+D  in Verbindung mit einer Feuchtesperrschicht auf dem Sturz uneingeschränkte Verwen-
+dung (U). Ohne Feuchtesperrschicht ist die Verwendung eingeschränkt (R). 
+X  nicht für den Gebrauch in dieser Expositionsklasse empfohlener Werkstoff. 
+a Die genaue Festlegung des der Bezugsnummer bzw. dem Bezugsbuchstaben entsprechenden Werkstoffs und des 
+ Überzugs oder der Betondeckung ist in EN 845-2 angegeben. Die angegebenen Massen der Überzüge sind 
+ ungefähre Werte für eine Oberfläche . 
+b Bei Verwendung von vorgefertigten Betonstürzen kann eine weniger restriktive Verwendung möglich sein; 
+ Empfehlungen sind von den Herstellern oder von speziellen Beratern zu erhalten.
+32 
+DIN EN 1996-2:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1996-2:2006 + AC:2009 (D) 
+Tabelle C.3  Korrosionsschutzsysteme für Lagerfugenbewehrung nach EN 845-3 
+in Bezug auf die Expositionsklassen 
+Expositionsklasse 
+Werkstoffa Bezugs-
+Nr. MX1 MX2 MX3 MX4 MX5
+Austenitischer nichtrostender Stahl (Molybdän-Chromnickel-
+Legierungen) R1 U U U U R 
+Austenitischer nichtrostender Stahl (Chrom-Nickel-Legierungen) R3 U U U R R 
+Verzinkter (265 g/m2) Stahldraht R13 U R R X X 
+Verzinkter (60 g/m2) Stahldraht mit organischem Überzug auf 
+allen Oberflächen des fertig bearbeiteten Bauteils R18 U U U R X 
+Verzinkter (105 g/m2) Stahldraht R19 U R R X X 
+Verzinkter (60 g/m2) Stahldraht R20 U X X X X 
+Vorverzinkter (137 g/m2) Stahldraht R21 U X X X X 
+Legende U  uneingeschränkte Verwendung des Werkstoffs in dieser Expositionsklasse. 
+R  eingeschränkte Verwendung; bezüglich der jeweiligen Planungsbedingungen ist der 
+Hersteller oder ein Fachberater zu konsultieren. 
+X  nicht für den Gebrauch in dieser Expositionsklasse empfohlener Werkstoff. 
+a Die genaue Festlegung des der Bezugsnummer bzw. dem Bezugsbuchstaben entsprechenden Werkstoffs und des
+ Überzugs oder der Betondeckung ist in EN 845-3 angegeben. Die angegebenen Massen der Überzüge sind
+ ungefähre Werte für eine Oberfläche.
+33 
+DIN EN 1996-2:2010-12

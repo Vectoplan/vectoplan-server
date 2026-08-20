@@ -1,0 +1,177 @@
+{
+  "schema_version": "structural-report-section-template-catalog/0.2",
+  "templates": [
+    {
+      "section_template_id": "document_control",
+      "label": "Dokumentensteuerung",
+      "purpose": "Deckblatt, Revision, Freigabe und Verzeichnisse",
+      "layout": "frontmatter",
+      "blocks": [
+        {"block_id": "title", "kind": "title", "label": "Dokumenttitel", "required": true, "binding": "/document_control/title"},
+        {"block_id": "project", "kind": "key_value", "label": "Projektstammdaten", "required": true, "binding": "/project"},
+        {"block_id": "revision", "kind": "revision_table", "label": "Revisionshistorie", "required": true, "binding": "/document_control/revisions"},
+        {"block_id": "directory", "kind": "generated_directory", "label": "Inhalts-, Positions- und Prüfverzeichnis", "required": true, "binding": "/outline"},
+        {"block_id": "approval", "kind": "signature", "label": "Aufstellung und Freigabe", "required": true, "binding": "/verification"}
+      ]
+    },
+    {
+      "section_template_id": "source_narrative",
+      "label": "Grundlagen und Quellen",
+      "purpose": "Nachvollziehbarer Textteil mit Quellen- und Annahmenregister",
+      "layout": "narrative",
+      "blocks": [
+        {"block_id": "scope", "kind": "rich_text", "label": "Aufgabenstellung und Abgrenzung", "required": true, "binding": "/project/scope"},
+        {"block_id": "documents", "kind": "source_register", "label": "Planungs- und Quelldokumente", "required": true, "binding": "/provenance/documents"},
+        {"block_id": "standards", "kind": "standards_table", "label": "Normen und nationale Anhänge", "required": true, "binding": "/standards"},
+        {"block_id": "assumptions", "kind": "assumption_register", "label": "Annahmen und offene Grundlagen", "required": true, "binding": "/assumptions"},
+        {"block_id": "limitations", "kind": "warning_list", "label": "Anwendungsgrenzen", "required": true, "binding": "/limitations"}
+      ]
+    },
+    {
+      "section_template_id": "system_model",
+      "label": "System- und Modellbeschreibung",
+      "purpose": "Systemskizze, Idealisierung, Geometrie und Lastpfad",
+      "layout": "calculation_spread",
+      "blocks": [
+        {"block_id": "system_figure", "kind": "sketch", "label": "Systemskizze / Positionsplan", "required": true, "binding": "/visualizations/system"},
+        {"block_id": "geometry", "kind": "parameter_table", "label": "Geometrie und Querschnitte", "required": true, "binding": "/model/geometry"},
+        {"block_id": "supports", "kind": "boundary_table", "label": "Lagerung und Randbedingungen", "required": true, "binding": "/model/boundaries"},
+        {"block_id": "idealization", "kind": "rich_text", "label": "Idealisierung und Theorie", "required": true, "binding": "/analysis/model"},
+        {"block_id": "load_path", "kind": "flow_diagram", "label": "Lastpfad und Lastweiterleitung", "required": true, "binding": "/load_path"},
+        {"block_id": "model_limits", "kind": "warning_list", "label": "Modellgrenzen", "required": true, "binding": "/analysis/limitations"}
+      ]
+    },
+    {
+      "section_template_id": "actions_combinations",
+      "label": "Einwirkungen und Kombinationen",
+      "purpose": "Lastursprung, Lastfälle, Lastbilder und Kombinationsregeln",
+      "layout": "table_spread",
+      "blocks": [
+        {"block_id": "actions", "kind": "action_register", "label": "Einwirkungsregister", "required": true, "binding": "/actions"},
+        {"block_id": "origin", "kind": "source_trace", "label": "Lastursprung und Weiterleitung", "required": true, "binding": "/load_path/transfers"},
+        {"block_id": "load_figures", "kind": "sketch_gallery", "label": "Lastfall- und Lastbildskizzen", "required": true, "binding": "/visualizations/load_cases"},
+        {"block_id": "groups", "kind": "factor_table", "label": "Lastgruppen und Beiwerte", "required": true, "binding": "/load_groups"},
+        {"block_id": "combinations", "kind": "combination_table", "label": "GZT-/GZG-Kombinationen", "required": true, "binding": "/load_combinations"},
+        {"block_id": "governing", "kind": "result_callout", "label": "Maßgebende Kombination", "required": true, "binding": "/results/governing_combination"}
+      ]
+    },
+    {
+      "section_template_id": "linear_member_calculation",
+      "label": "Stab- und Rahmenposition",
+      "purpose": "Vollständige Rechenkette für Balken, Stützen, Rahmen und Fachwerke",
+      "layout": "position_sequence",
+      "blocks": [
+        {"block_id": "system", "kind": "sketch", "label": "Statisches System", "required": true, "binding": "/positions/{position}/system"},
+        {"block_id": "inputs", "kind": "parameter_table", "label": "Geometrie, Material und Lager", "required": true, "binding": "/positions/{position}/inputs"},
+        {"block_id": "loads", "kind": "load_diagram", "label": "Belastung und Lastfälle", "required": true, "binding": "/positions/{position}/loads"},
+        {"block_id": "solver", "kind": "calculation_steps", "label": "Theorie, Solver und Gleichungen", "required": true, "binding": "/positions/{position}/calculation_steps"},
+        {"block_id": "forces", "kind": "result_diagrams", "label": "Schnittgrößen und Auflagerreaktionen", "required": true, "binding": "/positions/{position}/results"},
+        {"block_id": "checks", "kind": "verification_table", "label": "GZT-/GZG-Nachweise", "required": true, "binding": "/positions/{position}/checks"},
+        {"block_id": "transfer", "kind": "load_transfer", "label": "Weiterzugebende Reaktionen", "required": true, "binding": "/positions/{position}/load_transfer"}
+      ]
+    },
+    {
+      "section_template_id": "surface_fe_calculation",
+      "label": "Platten-, Scheiben- und Schalen-FE",
+      "purpose": "Mehrseitige Rechenkette für Flächenmodelle und Ergebnisfelder",
+      "layout": "fe_sequence",
+      "blocks": [
+        {"block_id": "plan", "kind": "sketch", "label": "Grundriss / Positionsplan", "required": true, "binding": "/positions/{position}/geometry"},
+        {"block_id": "mesh", "kind": "mesh_figure", "label": "Netz, Systempunkte und Elemente", "required": true, "binding": "/positions/{position}/analysis/mesh"},
+        {"block_id": "materials", "kind": "parameter_table", "label": "Material- und Steifigkeitsmodell", "required": true, "binding": "/positions/{position}/materials"},
+        {"block_id": "boundaries", "kind": "boundary_table", "label": "Wände, Stützen, Linien- und Punktlager", "required": true, "binding": "/positions/{position}/boundaries"},
+        {"block_id": "load_cases", "kind": "sketch_gallery", "label": "Lastfallbilder", "required": true, "binding": "/positions/{position}/load_cases"},
+        {"block_id": "analysis", "kind": "calculation_steps", "label": "FE-Modell und Berechnungsparameter", "required": true, "binding": "/positions/{position}/calculation_steps"},
+        {"block_id": "fields", "kind": "contour_gallery", "label": "Verformungs-, Momenten- und Kraftfelder", "required": true, "binding": "/positions/{position}/result_fields"},
+        {"block_id": "reactions", "kind": "reaction_table", "label": "Auflagerkräfte und Lastweiterleitung", "required": true, "binding": "/positions/{position}/reactions"},
+        {"block_id": "design", "kind": "reinforcement_gallery", "label": "Bemessungs- und Bewehrungsfelder", "required": true, "binding": "/positions/{position}/design_fields"},
+        {"block_id": "checks", "kind": "verification_table", "label": "Lokale Nachweise und Maximalwerte", "required": true, "binding": "/positions/{position}/checks"}
+      ]
+    },
+    {
+      "section_template_id": "geotechnical_calculation",
+      "label": "Geotechnische Position",
+      "purpose": "Baugrundmodell, Erd-/Wasserdruck, Bauzustände und GEO-/UPL-Nachweise",
+      "layout": "geotechnical_sequence",
+      "blocks": [
+        {"block_id": "source", "kind": "source_register", "label": "Baugrundquellen und Gültigkeitsbereich", "required": true, "binding": "/ground_model/sources"},
+        {"block_id": "profile", "kind": "ground_profile", "label": "Schichtenprofil und Wasserstände", "required": true, "binding": "/ground_model/layers"},
+        {"block_id": "parameters", "kind": "parameter_table", "label": "Charakteristische und Bemessungskennwerte", "required": true, "binding": "/ground_model/parameters"},
+        {"block_id": "pressure", "kind": "pressure_diagram", "label": "Erd- und Wasserdruckdiagramme", "required": true, "binding": "/geotechnical_actions"},
+        {"block_id": "stages", "kind": "stage_sequence", "label": "Bauzustände", "required": true, "binding": "/construction_stages"},
+        {"block_id": "analysis", "kind": "calculation_steps", "label": "Boden-Bauwerk-Interaktion", "required": true, "binding": "/analysis"},
+        {"block_id": "geo_checks", "kind": "verification_table", "label": "GEO, STR, UPL und HYD", "required": true, "binding": "/checks"},
+        {"block_id": "monitoring", "kind": "monitoring_plan", "label": "Mess-, Beobachtungs- und Freigabepunkte", "required": false, "binding": "/monitoring"}
+      ]
+    },
+    {
+      "section_template_id": "construction_stage",
+      "label": "Bau- und Montagezustand",
+      "purpose": "Zeitliche Abfolge mit Aktivierungen, Lastumlagerungen und Freigaben",
+      "layout": "stage_sequence",
+      "blocks": [
+        {"block_id": "sequence", "kind": "stage_timeline", "label": "Bauablauf und Aktivierungen", "required": true, "binding": "/construction_stages"},
+        {"block_id": "stage_models", "kind": "sketch_gallery", "label": "System je Bauzustand", "required": true, "binding": "/construction_stages/{stage}/model"},
+        {"block_id": "stage_actions", "kind": "action_register", "label": "Einwirkungen je Zustand", "required": true, "binding": "/construction_stages/{stage}/actions"},
+        {"block_id": "redistribution", "kind": "flow_diagram", "label": "Lastumlagerungen", "required": true, "binding": "/construction_stages/{stage}/transfers"},
+        {"block_id": "stage_checks", "kind": "verification_table", "label": "Nachweise je Zustand", "required": true, "binding": "/construction_stages/{stage}/checks"},
+        {"block_id": "release", "kind": "approval_gate", "label": "Freigabekriterien", "required": true, "binding": "/construction_stages/{stage}/approval"}
+      ]
+    },
+    {
+      "section_template_id": "component_verification",
+      "label": "Bauteilnachweis",
+      "purpose": "Material- und bauteilspezifische Nachweise mit vollständiger Formelspur",
+      "layout": "verification_sequence",
+      "blocks": [
+        {"block_id": "component", "kind": "detail_sketch", "label": "Bauteil und maßgebender Schnitt", "required": true, "binding": "/positions/{position}/component"},
+        {"block_id": "demand", "kind": "result_table", "label": "Bemessungsschnittgrößen", "required": true, "binding": "/positions/{position}/demand"},
+        {"block_id": "resistance", "kind": "calculation_steps", "label": "Widerstand und Einsetzungen", "required": true, "binding": "/positions/{position}/resistance"},
+        {"block_id": "comparison", "kind": "verification_card", "label": "Einwirkung ≤ Widerstand", "required": true, "binding": "/positions/{position}/checks"},
+        {"block_id": "serviceability", "kind": "verification_table", "label": "Gebrauchstauglichkeit", "required": false, "binding": "/positions/{position}/serviceability"},
+        {"block_id": "design_output", "kind": "design_output", "label": "Querschnitt, Bewehrung oder Verbindungsmittel", "required": true, "binding": "/positions/{position}/design"},
+        {"block_id": "references", "kind": "rule_trace", "label": "Formel-, Regel- und Testreferenzen", "required": true, "binding": "/positions/{position}/provenance"}
+      ]
+    },
+    {
+      "section_template_id": "connection_detail",
+      "label": "Anschluss und Detail",
+      "purpose": "Kraftfluss, Verbindungsmittel, lokale Nachweise und Ausführungsdetails",
+      "layout": "detail_sequence",
+      "blocks": [
+        {"block_id": "detail", "kind": "detail_sketch", "label": "Anschluss- oder Bewehrungsdetail", "required": true, "binding": "/details/{detail}/figure"},
+        {"block_id": "forces", "kind": "force_flow", "label": "Kraftfluss und Anschlusskräfte", "required": true, "binding": "/details/{detail}/forces"},
+        {"block_id": "fasteners", "kind": "parameter_table", "label": "Verbindungsmittel und Werkstoffe", "required": true, "binding": "/details/{detail}/components"},
+        {"block_id": "local_checks", "kind": "verification_table", "label": "Lokale Nachweise", "required": true, "binding": "/details/{detail}/checks"},
+        {"block_id": "execution", "kind": "execution_notes", "label": "Ausführungs- und Toleranzhinweise", "required": true, "binding": "/details/{detail}/execution"}
+      ]
+    },
+    {
+      "section_template_id": "result_review",
+      "label": "Ergebnis- und Prüfakte",
+      "purpose": "Projektweite Nachweis-, Ausnutzungs-, Offenpunkt- und Freigabematrix",
+      "layout": "review_matrix",
+      "blocks": [
+        {"block_id": "position_matrix", "kind": "result_matrix", "label": "Positions- und Nachweismatrix", "required": true, "binding": "/checks"},
+        {"block_id": "utilization", "kind": "utilization_chart", "label": "Ausnutzungsübersicht", "required": true, "binding": "/summary/utilization"},
+        {"block_id": "load_transfer", "kind": "flow_diagram", "label": "Geschlossener Lastpfad", "required": true, "binding": "/load_path"},
+        {"block_id": "open_points", "kind": "issue_register", "label": "Offene Punkte und Warnungen", "required": true, "binding": "/open_points"},
+        {"block_id": "completeness", "kind": "coverage_matrix", "label": "Vollständigkeit je Kapitel und Position", "required": true, "binding": "/verification/coverage"},
+        {"block_id": "approval", "kind": "approval_table", "label": "Prüfung und Freigabe", "required": true, "binding": "/verification/approvals"}
+      ]
+    },
+    {
+      "section_template_id": "appendix_register",
+      "label": "Anlagen und Nachweisbeilagen",
+      "purpose": "Indexierte Anlagen mit Herkunft, Revision und Bezug",
+      "layout": "appendix",
+      "blocks": [
+        {"block_id": "appendix_index", "kind": "appendix_index", "label": "Anlagenverzeichnis", "required": true, "binding": "/appendices"},
+        {"block_id": "drawings", "kind": "drawing_register", "label": "Positions-, Schal- und Bewehrungspläne", "required": false, "binding": "/appendices/drawings"},
+        {"block_id": "approvals", "kind": "approval_register", "label": "Zulassungen und Produktnachweise", "required": false, "binding": "/appendices/approvals"},
+        {"block_id": "solver", "kind": "calculation_audit", "label": "Solver-, Versions- und Testprotokoll", "required": true, "binding": "/provenance/runtime"},
+        {"block_id": "exchange", "kind": "exchange_register", "label": "Austausch- und Modelldateien", "required": false, "binding": "/appendices/exchange"}
+      ]
+    }
+  ]
+}

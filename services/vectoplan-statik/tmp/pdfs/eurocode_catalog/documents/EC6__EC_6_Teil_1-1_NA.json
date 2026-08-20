@@ -1,0 +1,1081 @@
+{
+  "document_id": "EN_1996-1-1_NA__national_annex__EC_6_Teil_1-1_NA",
+  "eurocode_family": "EC6",
+  "designation": "DIN EN 1996-1-1/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 6 Teil 1-1 NA.pdf",
+  "relative_path": "EC 6/EC 6 Teil 1-1 NA.pdf",
+  "sha256": "10b3f9145749205daf38ec49a03b4c43c378523ceba7f26aea8bf9566777ff5e",
+  "pages": 68,
+  "text_pages": 68,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 6,
+  "equation_candidate_count": 68,
+  "table_reference_count": 9,
+  "figure_reference_count": 2,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111162355+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232933+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 6\\EC 6 Teil 1-1 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Kunststoffscheibe",
+      "pdf_page": 38
+    },
+    {
+      "clause": "3.3",
+      "title": "Verhältnis dJlu --- :S 0,25 :S 0,20 :S 0,25 :S 0,20 :S 0,13 :S 0,07",
+      "pdf_page": 55
+    },
+    {
+      "clause": "4.1",
+      "title": "Übertragungsfaktor TJt --- i!: 0,5 i!: 0,5 i!: 0,5 i!:0,65 i!:0,75 i!:0 ,85",
+      "pdf_page": 55
+    },
+    {
+      "clause": "4.2",
+      "title": "Fugenneigung tlL -· --- -- tan CL :S 0,30 tan CL :S 0,15 tan CL :S 0,10 tan CL :S 0,05",
+      "pdf_page": 55
+    },
+    {
+      "clause": "5",
+      "title": "N/mm² betragen.“",
+      "pdf_page": 65
+    },
+    {
+      "clause": "4",
+      "title": "T4 nach Tabelle",
+      "pdf_page": 67
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "NA.10 angegebenen Anwendungsgrenzen sind im Einzelnen zu beachten. In der Gleichung (3.1) ist f",
+      "context": "Es wird (i) angewendet. Die Konstanten und freien Exponenten sind das Ergebnis der Auswertung | vorliegender Versuche zur Bestimmung der Druckfestigkeit von Mauerwerk. Die in den Tabellen NA.4 bis | NA.10 angegebenen Anwendungsgrenzen sind im Einzelnen zu beachten. In der Gleichung (3.1) ist f | b durch | fst zu ersetzen. fst ist die umgerechnete mittlere Steindruckfestigkeit einschließlich Formfaktor in Lastrichtung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": "* Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm².",
+      "context": "NM III | NM IIIa | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm². | Tabelle NA.5 — Parameter zur Ermittlung der Druckfestigkeit von Einsteinmauerwerk aus | Hochlochziegeln mit Lochung W (HLzW), Mauertafelziegeln T2, T3 und T4 sowie Langlochziegeln (LLz)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": "T4 nicht größer angenommen werden als für Steinfestigkeiten fst=15N/mm² und bei Mauerwerk aus Mauertafelziegeln T2",
+      "context": "NM IIIa* | * Die Druckfestigkeit des Mauerwerks darf bei Mauerwerk aus Hochlochziegeln mit Lochung W und Mauertafelziegeln | T4 nicht größer angenommen werden als für Steinfestigkeiten fst=15N/mm² und bei Mauerwerk aus Mauertafelziegeln T2 | und T3 nicht größer als für fst 25 N/mm².",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "* Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für die Steinfestigkeiten fst = 45 N/mm².",
+      "context": "0,95 0,585 0,162 | NM III**, IIIa** | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für die Steinfestigkeiten fst = 45 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 60 N/mm². | Tabelle NA.7 — Parameter zur Ermittlung der Druckfestigkeit von Einsteinmauerwerk aus Kalksand-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 60 N/mm².",
+      "context": "NM III**, IIIa** | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für die Steinfestigkeiten fst = 45 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 60 N/mm². | Tabelle NA.7 — Parameter zur Ermittlung der Druckfestigkeit von Einsteinmauerwerk aus Kalksand- | Plansteinen und Kalksand-Planelementen mit Dünnbettmörtel",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "* Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 35 N/mm².",
+      "context": "KS-P DM ** | KS L-P DM *** 1,15 0,585 --- | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 35 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 45 N/mm². | *** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm².",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 45 N/mm².",
+      "context": "KS L-P DM *** 1,15 0,585 --- | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 35 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 45 N/mm². | *** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm². | Tabelle NA.8 — Parameter zur Ermittlung der Druckfestigkeit von Einsteinmauerwerk aus",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "*** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm².",
+      "context": "* Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 35 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 45 N/mm². | *** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 25 N/mm². | Tabelle NA.8 — Parameter zur Ermittlung der Druckfestigkeit von Einsteinmauerwerk aus | Mauerziegeln und Kalksandsteinen mit Leichtmauermörtel",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "* Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 15 N/mm².",
+      "context": "LM 21* 0,81 | LM 36** 1,05 | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 15 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 10 N/mm².",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 10 N/mm².",
+      "context": "LM 36** 1,05 | * Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 15 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für Steinfestigkeiten fst = 10 N/mm².",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "Steindruckfestigkeiten fst = 10 N/mm².",
+      "context": "fst 3 fm. Die Mörtelfestigkeit darf nicht größer angenommen werden als für Mörtelgruppe III fm 10 N/mm². | ** Die Druckfestigkeit des Mauerwerks darf nicht größer angenommen werden als für umgerechnete mittlere | Steindruckfestigkeiten fst = 10 N/mm². | *** Die umgerechnete mittlere Steindruckfestigkeit darf nicht größer angenommen werden als die dreifache Mörtelfestigkeit | fst 3 fm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "ebenfalls nach Gleichung (3.1) bestimmt werden, wobei anstelle von fb die mittlere Druckfestigkeit der",
+      "context": "Der Absatz (1) (i) ist durch folgende Sätze zu ergänzen: | „Wenn die Einwirkung parallel zur Lagerfugenrichtung erfolgt, darf die charakteristische Druckfestigkeit | ebenfalls nach Gleichung (3.1) bestimmt werden, wobei anstelle von fb die mittlere Druckfestigkeit der | Mauersteine in Lastrichtung aus der CE-Deklaration zu entnehmen ist. Der zugehörige K-Wert nach Tabelle | NA.4 bis Tabelle NA.10 ist mit 0,5 zu multiplizieren. Aufgrund der Wahl des Verfahrens (i) sind die Abschnitte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "Querschnitt; im Regelfall ist die minimale Einwirkung NEd=1,0 NGk maßgebend;",
+      "context": "Dd der Bemessungswert der zugehörigen Druckspannung an der Stelle der maximalen | Schubspannung. Für Rechteckquerschnitte gilt AN /EdDd , dabei ist A der überdrückte | Querschnitt; im Regelfall ist die minimale Einwirkung NEd=1,0 NGk maßgebend; | fbt,cal die rechnerische Steinzugfestigkeit. Es darf angenommen werden: | fbt,cal = 0,020 fst für Hohlblocksteine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "fbt,cal = 0,020 fst für Hohlblocksteine",
+      "context": "Querschnitt; im Regelfall ist die minimale Einwirkung NEd=1,0 NGk maßgebend; | fbt,cal die rechnerische Steinzugfestigkeit. Es darf angenommen werden: | fbt,cal = 0,020 fst für Hohlblocksteine | fbt,cal = 0,026 fst für Hochlochsteine und Steine mit Grifflöchern oder Grifftaschen | fbt,cal = 0,032 fst für Vollsteine ohne Grifflöcher oder Grifftaschen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "fbt,cal = 0,026 fst für Hochlochsteine und Steine mit Grifflöchern oder Grifftaschen",
+      "context": "fbt,cal die rechnerische Steinzugfestigkeit. Es darf angenommen werden: | fbt,cal = 0,020 fst für Hohlblocksteine | fbt,cal = 0,026 fst für Hochlochsteine und Steine mit Grifflöchern oder Grifftaschen | fbt,cal = 0,032 fst für Vollsteine ohne Grifflöcher oder Grifftaschen | st5,0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "fbt,cal = 0,032 fst für Vollsteine ohne Grifflöcher oder Grifftaschen",
+      "context": "fbt,cal = 0,020 fst für Hohlblocksteine | fbt,cal = 0,026 fst für Hochlochsteine und Steine mit Grifflöchern oder Grifftaschen | fbt,cal = 0,032 fst für Vollsteine ohne Grifflöcher oder Grifftaschen | st5,0 | st",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 18,
+      "equation_number": "unvollständig",
+      "line": "Querschnitt; im Regelfall ist die minimale Einwirkung NEd=1,0 NG maßgebend.",
+      "context": "Dd der Bemessungswert der zugehörigen Druckspannung an der Stelle der maximalen | Schubspannung. Für Rechteckquerschnitte gilt AN /EdDd , dabei ist A der überdrückte | Querschnitt; im Regelfall ist die minimale Einwirkung NEd=1,0 NG maßgebend. | NDP zu 3.6.2 (4) „Charakteristische Schubfestigkeit von Mauerwerk“ | a) Die charakteristische Schubfestigkeit fvk darf auch allein aus der Berechnung des Grenzwertes fvlt nach b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 18,
+      "equation_number": "unvollständig",
+      "line": "Bemessung eine charakteristische Biegezugfestigkeit in Höhe von fxk1 = 0,2 N/mm2 zugrunde gelegt",
+      "context": "wenn Wände aus Planelementen bestehen und lediglich durch zeitweise einwirkende Lasten rechtwinklig | zur Oberfläche beansprucht werden (z. B. Wind auf Ausfachungsmauerwerk). In diesem Fall darf der | Bemessung eine charakteristische Biegezugfestigkeit in Höhe von fxk1 = 0,2 N/mm2 zugrunde gelegt | werden. Beim Versagen der Wand darf es nicht zu einem größeren Einsturz oder zum Stabilitätsverlust | des ganzen Tragwerkes kommen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "unvollständig",
+      "line": "abweichend davon ein Elastizitätsmodul von E0 = 700 fk zu verwenden.",
+      "context": "größer sein. | Für den Nachweis der vertikalen Belastung im Grenzzustand der Tragfähigkeit (Knicksicherheitsnachweis) ist | abweichend davon ein Elastizitätsmodul von E0 = 700 fk zu verwenden. | NDP zu 3.7.4 (2) „Kriechen, Quellen oder Schwinden und Wärmedehnung“ | Als Rechenwerte für die Verformungseigenschaften (Kriechen, Quellen oder Schwinden und Wärmedehnung)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "a Endkriechzahl = / el, mit c als Endkriechmaß und el = /E.",
+      "context": "Porenbeton- | steine Dünnbettmörtel 0,5 0,2 bis 0,7 -0,1 -0,2 bis +0,1 8 7 bis 9 | a Endkriechzahl = / el, mit c als Endkriechmaß und el = /E. | b Endwert der Feuchtedehnung ist bei Stauchung negativ und bei Dehnung positiv angegeben. | c Für Mauersteine < 2 DF gilt der Grenzwert – 0,2 mm/m.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ef = t2).“",
+      "context": "Absatz (1) ist wie folgt zu ergänzen: | „Die effektive Wanddicke entspricht generell der Dicke der inneren, tragenden Schale (t | ef = t2).“ | NDP zu 5.5.1.3 (3) „Effektive Wanddicke“ | Bei mehrschaligen Wänden nach 1.5.10, deren Schalen mit Mauerankern nach DIN EN 1996-1-1:2010-12,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "6.5, verbunden sind, sollte die effektive Wanddicke tef nach DIN EN 1996-1-1:2010-12, Gleichung (5.11) unter",
+      "context": "NDP zu 5.5.1.3 (3) „Effektive Wanddicke“ | Bei mehrschaligen Wänden nach 1.5.10, deren Schalen mit Mauerankern nach DIN EN 1996-1-1:2010-12, | 6.5, verbunden sind, sollte die effektive Wanddicke tef nach DIN EN 1996-1-1:2010-12, Gleichung (5.11) unter | Berücksichtigung des Faktors ktef = 0 bestimmt werden. | NCI zu 5.5.3 „Schubbeanspruchte Aussteifungswände“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "Berücksichtigung des Faktors ktef = 0 bestimmt werden.",
+      "context": "Bei mehrschaligen Wänden nach 1.5.10, deren Schalen mit Mauerankern nach DIN EN 1996-1-1:2010-12, | 6.5, verbunden sind, sollte die effektive Wanddicke tef nach DIN EN 1996-1-1:2010-12, Gleichung (5.11) unter | Berücksichtigung des Faktors ktef = 0 bestimmt werden. | NCI zu 5.5.3 „Schubbeanspruchte Aussteifungswände“ | (NA.11) Bei Elementmauerwerk mit einem planmäßigen Überbindemaß lol < 0,4 hu darf nur 40% der nach den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "Beanspruchung infolge von Eigengewicht, Schnee- und Verkehrslasten, gilt = 0,85; für kurz-",
+      "context": "Dabei ist | ein Faktor zur Berücksichtigung von Langzeitwirkungen und weiterer Einflüsse; für eine dauernde | Beanspruchung infolge von Eigengewicht, Schnee- und Verkehrslasten, gilt = 0,85; für kurz- | zeitige Beanspruchungsarten darf = 1,0 eingesetzt werden. | NCI zu 6.1.2.2 „Abminderungsfaktor zur Berücksichtigung der Schlankheit und Lastausmitte“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "zeitige Beanspruchungsarten darf = 1,0 eingesetzt werden.",
+      "context": "ein Faktor zur Berücksichtigung von Langzeitwirkungen und weiterer Einflüsse; für eine dauernde | Beanspruchung infolge von Eigengewicht, Schnee- und Verkehrslasten, gilt = 0,85; für kurz- | zeitige Beanspruchungsarten darf = 1,0 eingesetzt werden. | NCI zu 6.1.2.2 „Abminderungsfaktor zur Berücksichtigung der Schlankheit und Lastausmitte“ | Absatz (1), (i) ist wie folgt zu ergänzen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "„Am Wandkopf und am Wandfuß darf die ungewollte Ausmitte einit = 0 gesetzt werden.“",
+      "context": "NCI zu 6.1.2.2 „Abminderungsfaktor zur Berücksichtigung der Schlankheit und Lastausmitte“ | Absatz (1), (i) ist wie folgt zu ergänzen: | „Am Wandkopf und am Wandfuß darf die ungewollte Ausmitte einit = 0 gesetzt werden.“ | (NA.3) Bei überwiegend in Wandlängsrichtung biegebeanspruchten Querschnitten, insbesondere bei | Windscheiben, darf der Abminderungsfaktor i angenommen werden zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "= 1,3 zu bestimmen. Bei horizontalen Lasten FEd > 4,0 kN ist zusätzlich die Schubtragfähigkeit in den",
+      "context": "Dieser Nachweis ersetzt weder den Nachweis der gesamten Wand noch den Nachweis der Knicksicherheit. | (NA.9) Für Teilflächenbelastungen rechtwinklig zur Wandebene ist der Bemessungswert der Tragfähigkeit mit | = 1,3 zu bestimmen. Bei horizontalen Lasten FEd > 4,0 kN ist zusätzlich die Schubtragfähigkeit in den | Lagerfugen der belasteten Steine mit der Gleichung (NA.24) nach NCI zu 6.2. nachzuweisen. Bei Loch- und | Kammersteinen ist z. B. durch lastverteilende Zwischenlagen (elastomere Lager o. ä.) sicherzustellen, dass",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "der Reibungsbeiwert darf für alle Mörtelarten mit = 0,6 angenommen werden;",
+      "context": "Ebenbleiben der Querschnitte; | der Nachweis der Tragfähigkeit darf abweichend von (2) am Gesamtsystem geführt werden; | der Reibungsbeiwert darf für alle Mörtelarten mit = 0,6 angenommen werden; | die Mörtelgruppe des in der untersten Lagerfuge (Kimmschicht) vorhandenen Mörtels ist zu | berücksichtigen;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "Nachweises gegen Schubdruckversagen nach Gleichung (NA.21) kann NEd = 1,0·NGk angenommen werden.",
+      "context": "Rechnung gestellt werden. | (NA.10) Die Querkrafttragfähigkeit VRdlt hängt von der einwirkenden Normalkraft NEd ab. Mit Ausnahme des | Nachweises gegen Schubdruckversagen nach Gleichung (NA.21) kann NEd = 1,0·NGk angenommen werden. | (NA.11) Bei Querkraftbeanspruchung in Wandebene (Scheibenschub) ist stets auch der Biegedrucknachweis | nach DIN EN 1996-1-1:2012-01, 6.1.2.1, Gleichung (6.1) zu führen. Darüber hinaus ist auch NCI zu 6.1.2.2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "nach DIN EN 1996-1-1:2012-01, 6.1.2.1, Gleichung (6.1) zu führen. Darüber hinaus ist auch NCI zu 6.1.2.2",
+      "context": "Nachweises gegen Schubdruckversagen nach Gleichung (NA.21) kann NEd = 1,0·NGk angenommen werden. | (NA.11) Bei Querkraftbeanspruchung in Wandebene (Scheibenschub) ist stets auch der Biegedrucknachweis | nach DIN EN 1996-1-1:2012-01, 6.1.2.1, Gleichung (6.1) zu führen. Darüber hinaus ist auch NCI zu 6.1.2.2 | (NA.iii) (kombinierte Beanspruchung) zu beachten. | Querkrafttragfähigkeit in Scheibenrichtung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "fvd der Bemessungswert der Schubfestigkeit fvk nach 3.6.2 mit fvd = fvk/ M",
+      "context": "tflV vdcalRdlt (NA.19) | Dabei ist | fvd der Bemessungswert der Schubfestigkeit fvk nach 3.6.2 mit fvd = fvk/ M | M der Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | lcal die rechnerische Wandlänge. Für den Nachweis von Wandscheiben unter Windbeanspruchung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "gilt: lcal= 1,125 l bzw. lcal= 1,333 lc,lin. Der kleinere der beiden Werte ist maßgebend. In allen",
+      "context": "M der Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | lcal die rechnerische Wandlänge. Für den Nachweis von Wandscheiben unter Windbeanspruchung | gilt: lcal= 1,125 l bzw. lcal= 1,333 lc,lin. Der kleinere der beiden Werte ist maßgebend. In allen | anderen Fällen ist lcal=l bzw. lc,lin. | c Schubspannungsverteilungsfaktor",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "anderen Fällen ist lcal=l bzw. lc,lin.",
+      "context": "lcal die rechnerische Wandlänge. Für den Nachweis von Wandscheiben unter Windbeanspruchung | gilt: lcal= 1,125 l bzw. lcal= 1,333 lc,lin. Der kleinere der beiden Werte ist maßgebend. In allen | anderen Fällen ist lcal=l bzw. lc,lin. | c Schubspannungsverteilungsfaktor | c = 1,0 für h/l 1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "c = 1,0 für h/l 1",
+      "context": "anderen Fällen ist lcal=l bzw. lc,lin. | c Schubspannungsverteilungsfaktor | c = 1,0 für h/l 1 | c = 1,5 für h/l 2 | Zwischenwerte dürfen linear interpoliert werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "c = 1,5 für h/l 2",
+      "context": "c Schubspannungsverteilungsfaktor | c = 1,0 für h/l 1 | c = 1,5 für h/l 2 | Zwischenwerte dürfen linear interpoliert werden; | h die lichte Höhe der Wand;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "e w= MEd/NEd",
+      "context": "t die Dicke der nachzuweisenden Wand; | ew die Exzentrizität der einwirkenden Normalkraft in Wandlängsrichtung mit | e w= MEd/NEd | MEd der Bemessungswert des in Scheibenrichtung wirkenden Momentes; | NEd der Bemessungswert der einwirkenden Normalkraft.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "c = 1,0 für h/l 1",
+      "context": "M der Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | c der Schubspannungsverteilungsfaktor | c = 1,0 für h/l 1 | c = 1,5 für h/l 2; | Zwischenwerte dürfen linear interpoliert werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "c = 1,5 für h/l 2;",
+      "context": "c der Schubspannungsverteilungsfaktor | c = 1,0 für h/l 1 | c = 1,5 für h/l 2; | Zwischenwerte dürfen linear interpoliert werden; | fk die charakteristische Mauerwerksdruckfestigkeit nach NDP zu 3.6.1.2 (1);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "ew= MEwd/ NEd",
+      "context": "el wc 21 (NA.22) | ew die Exzentrizität in Wandlängsrichtung | ew= MEwd/ NEd | MEwd Bemessungswert des in Wandlängsrichtung einwirkenden Momentes und; | NEd der Bemessungswert der einwirkenden Normalkraft, im Regelfall ist die maximale",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "fvd der Bemessungswert der Schubfestigkeit von Mauerwerk mit fvd = fvk/ M und f vk nach NDP zu",
+      "context": "ltfV calRdlt vd (NA.24) | Dabei ist | fvd der Bemessungswert der Schubfestigkeit von Mauerwerk mit fvd = fvk/ M und f vk nach NDP zu | 3.6.2; | tcal die rechnerische Wanddicke. Es gilt für die Fuge am Wandfuß tcal = t, bzw. tcal = 1,25·tc,lin. Der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "tcal die rechnerische Wanddicke. Es gilt für die Fuge am Wandfuß tcal = t, bzw. tcal = 1,25·tc,lin. Der",
+      "context": "fvd der Bemessungswert der Schubfestigkeit von Mauerwerk mit fvd = fvk/ M und f vk nach NDP zu | 3.6.2; | tcal die rechnerische Wanddicke. Es gilt für die Fuge am Wandfuß tcal = t, bzw. tcal = 1,25·tc,lin. Der | kleinere der beiden Werte ist maßgebend. In allen anderen Fällen ist tcal = t, bzw. tc,lin; | tc,lin die für die Berechnung anzusetzende überdrückte Dicke der Wand. Es gilt hier:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "kleinere der beiden Werte ist maßgebend. In allen anderen Fällen ist tcal = t, bzw. tc,lin;",
+      "context": "3.6.2; | tcal die rechnerische Wanddicke. Es gilt für die Fuge am Wandfuß tcal = t, bzw. tcal = 1,25·tc,lin. Der | kleinere der beiden Werte ist maßgebend. In allen anderen Fällen ist tcal = t, bzw. tc,lin; | tc,lin die für die Berechnung anzusetzende überdrückte Dicke der Wand. Es gilt hier: | ttt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "l die Länge der Wand; bei gleichzeitig vorhandenem Scheibenschub gilt l = lc,lin nach Gleichung",
+      "context": "t die Wanddicke; | e die Exzentrizität der einwirkenden Normalkraft; | l die Länge der Wand; bei gleichzeitig vorhandenem Scheibenschub gilt l = lc,lin nach Gleichung | (NA.20); | c der Schubspannungsverteilungsfaktor, hier c = 1,5;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "c der Schubspannungsverteilungsfaktor, hier c = 1,5;",
+      "context": "l die Länge der Wand; bei gleichzeitig vorhandenem Scheibenschub gilt l = lc,lin nach Gleichung | (NA.20); | c der Schubspannungsverteilungsfaktor, hier c = 1,5;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "oberfläche nicht mehr als qk = 5 kN/m2, die Geländeoberfläche steigt nicht an, und die Anschütthöhe he ist",
+      "context": "b) die Kellerdecke wirkt als Scheibe und kann die aus dem Erddruck entstehenden Kräfte aufnehmen. | c) im Einflussbereich des Erddrucks auf die Kellerwände beträgt die Verkehrslast auf der Gelände- | oberfläche nicht mehr als qk = 5 kN/m2, die Geländeoberfläche steigt nicht an, und die Anschütthöhe he ist | nicht größer als 1,15 h. | In Gleichung (NA.26) ist eine Auflast von 5 kN/m² auf der Geländeoberfläche als charakteristischer Wert",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "mu = -0,0035 für Mauersteine nach NCI zu 3.1.1, (NA.5) (siehe Bild 3.2).“",
+      "context": "Im ersten Absatz (1)P ist folgender Spiegelstrich zu ergänzen: | „ | mu = -0,0035 für Mauersteine nach NCI zu 3.1.1, (NA.5) (siehe Bild 3.2).“ | NCI zu 6.6.2 „Nachweis von bewehrten Mauerwerksbauteilen bei Biegung und/oder Normalkraft“ | Absatz (5) ist wie folgt zu ergänzen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "„Gleichung (6.24a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen).",
+      "context": "NCI zu 6.6.2 „Nachweis von bewehrten Mauerwerksbauteilen bei Biegung und/oder Normalkraft“ | Absatz (5) ist wie folgt zu ergänzen: | „Gleichung (6.24a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen). | Gleichung (6.24b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“ | NCI zu 6.6.4 „Wandscheiben“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (6.24b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“",
+      "context": "Absatz (5) ist wie folgt zu ergänzen: | „Gleichung (6.24a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen). | Gleichung (6.24b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“ | NCI zu 6.6.4 „Wandscheiben“ | Absatz (2) ist wie folgt zu ergänzen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "„Gleichung (6.31a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen).",
+      "context": "NCI zu 6.6.4 „Wandscheiben“ | Absatz (2) ist wie folgt zu ergänzen: | „Gleichung (6.31a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen). | Gleichung (6.31b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (6.31b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“",
+      "context": "Absatz (2) ist wie folgt zu ergänzen: | „Gleichung (6.31a) gilt für Vollsteine nach NCI zu 3.1.1, (NA.5) (außer Leichtbetonsteinen). | Gleichung (6.31b) gilt für Lochsteine und Leichtbeton-Vollsteine nach NCI zu 3.1.1, (NA.5).“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "der Scheibenbeanspruchung auf der Seite der Klaffung R= D a/l´w für charakteristische Bemessungs-",
+      "context": "(NA.10) Sofern in Gleichung (NA.19) der Rechenwert der Haftscherfestigkeit in Ansatz gebracht wird, ist bei | Windscheiben mit einer Ausmitte e > lw/6 zusätzlich nachzuweisen, dass die rechnerische Randdehnung aus | der Scheibenbeanspruchung auf der Seite der Klaffung R= D a/l´w für charakteristische Bemessungs- | situationen nach DIN EN 1990:2010-12, 6.5.3 (2) a) den Wert R = 10-4 nicht überschreitet (siehe Bild NA.4). | Der Elastizitätsmodul für Mauerwerk darf hierfür zu E = 1000 fk angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "situationen nach DIN EN 1990:2010-12, 6.5.3 (2) a) den Wert R = 10-4 nicht überschreitet (siehe Bild NA.4).",
+      "context": "Windscheiben mit einer Ausmitte e > lw/6 zusätzlich nachzuweisen, dass die rechnerische Randdehnung aus | der Scheibenbeanspruchung auf der Seite der Klaffung R= D a/l´w für charakteristische Bemessungs- | situationen nach DIN EN 1990:2010-12, 6.5.3 (2) a) den Wert R = 10-4 nicht überschreitet (siehe Bild NA.4). | Der Elastizitätsmodul für Mauerwerk darf hierfür zu E = 1000 fk angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "Der Elastizitätsmodul für Mauerwerk darf hierfür zu E = 1000 fk angenommen werden.",
+      "context": "der Scheibenbeanspruchung auf der Seite der Klaffung R= D a/l´w für charakteristische Bemessungs- | situationen nach DIN EN 1990:2010-12, 6.5.3 (2) a) den Wert R = 10-4 nicht überschreitet (siehe Bild NA.4). | Der Elastizitätsmodul für Mauerwerk darf hierfür zu E = 1000 fk angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "Für tragende Innen- und Außenwände gilt tmin = 115 mm, sofern aus Gründen der Standsicherheit, der",
+      "context": "oder ein anderer Witterungsschutz vorzusehen. | NDP zu 8.1.2 (2) „Mindestwanddicken“ | Für tragende Innen- und Außenwände gilt tmin = 115 mm, sofern aus Gründen der Standsicherheit, der | Bauphysik oder des Brandschutzes nicht größere Dicken erforderlich sind. | NCI zu 8.1.2 „Mindestwanddicken“",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "Ei der Elastizitätsmodul des Stabes i, mit i = 1, 2, 3 oder 4;",
+      "context": "ni der Steifigkeitsfaktor des Stabes; er ist 4 bei an beiden Enden eingespannten Stäben und 3 in den | anderen Fällen; | Ei der Elastizitätsmodul des Stabes i, mit i = 1, 2, 3 oder 4; | ANMERKUNG 1 Für Mauerwerk ist der Elastizitätsmodul mit E = KE fk zu bestimmen. Der Wert KE kann | getrennt nach der jeweiligen Mauersteinart aus Tabelle NA.12 entnommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 1 Für Mauerwerk ist der Elastizitätsmodul mit E = KE fk zu bestimmen. Der Wert KE kann",
+      "context": "anderen Fällen; | Ei der Elastizitätsmodul des Stabes i, mit i = 1, 2, 3 oder 4; | ANMERKUNG 1 Für Mauerwerk ist der Elastizitätsmodul mit E = KE fk zu bestimmen. Der Wert KE kann | getrennt nach der jeweiligen Mauersteinart aus Tabelle NA.12 entnommen werden. | Ii das Trägheitsmoment des Stabes i, mit i = 1, 2, 3 oder 4 (bei zweischaligem Mauerwerk mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "Ii das Trägheitsmoment des Stabes i, mit i = 1, 2, 3 oder 4 (bei zweischaligem Mauerwerk mit",
+      "context": "ANMERKUNG 1 Für Mauerwerk ist der Elastizitätsmodul mit E = KE fk zu bestimmen. Der Wert KE kann | getrennt nach der jeweiligen Mauersteinart aus Tabelle NA.12 entnommen werden. | Ii das Trägheitsmoment des Stabes i, mit i = 1, 2, 3 oder 4 (bei zweischaligem Mauerwerk mit | Luftschicht, bei dem nur eine Wandschale belastet ist, sollte als Ii nur das der belasteten Wand- | schale angenommen werden);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "fvd der Bemessungswert der Schubfestigkeit fvk nach 3.6.2 mit fvd = fvk/ M;",
+      "context": "tflV cal vdRdlt (NA.K.4) | Dabei ist | fvd der Bemessungswert der Schubfestigkeit fvk nach 3.6.2 mit fvd = fvk/ M; | M Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | c Schubspannungsverteilungsfaktor",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "c = 1,0 für v 1",
+      "context": "M Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | c Schubspannungsverteilungsfaktor | c = 1,0 für v 1 | c = 1,5 für v 2 | Zwischenwerte dürfen linear interpoliert werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "c = 1,5 für v 2",
+      "context": "c Schubspannungsverteilungsfaktor | c = 1,0 für v 1 | c = 1,5 für v 2 | Zwischenwerte dürfen linear interpoliert werden; | lcal die für die Berechnung anzusetzende, überdrückte Länge der Wandscheibe. Es gilt hier:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Die Anwendung der rechnerischen Wandlänge nach NCI zu 6.2 , Absatz (NA.12) mit lcal= 1,125 l bzw.",
+      "context": "NEd der Bemessungswert der einwirkenden Normalkraft; | v die Schubschlankheit mit lhv / ; | ANMERKUNG Die Anwendung der rechnerischen Wandlänge nach NCI zu 6.2 , Absatz (NA.12) mit lcal= 1,125 l bzw. | lcal= 1,333 lc,lin. von Wandscheiben unter Windbelastung ist bei Anwendung von Modellen, die vom einfachen Kragarm | abweichen, nicht zulässig.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "lcal= 1,333 lc,lin. von Wandscheiben unter Windbelastung ist bei Anwendung von Modellen, die vom einfachen Kragarm",
+      "context": "v die Schubschlankheit mit lhv / ; | ANMERKUNG Die Anwendung der rechnerischen Wandlänge nach NCI zu 6.2 , Absatz (NA.12) mit lcal= 1,125 l bzw. | lcal= 1,333 lc,lin. von Wandscheiben unter Windbelastung ist bei Anwendung von Modellen, die vom einfachen Kragarm | abweichen, nicht zulässig.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "c = 1,0 für v 1",
+      "context": "M der Teilsicherheitsbeiwert für das Material nach Tabelle NA.1; | c der Schubspannungsverteilungsfaktor | c = 1,0 für v 1 | c = 1,5 für v 2; | Zwischenwerte dürfen linear interpoliert werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 51,
+      "equation_number": "unvollständig",
+      "line": "c = 1,5 für v 2;",
+      "context": "c der Schubspannungsverteilungsfaktor | c = 1,0 für v 1 | c = 1,5 für v 2; | Zwischenwerte dürfen linear interpoliert werden; | v die Schubschlankheit mit lhv / ;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "maximalen Schubspannung. Für Rechteckquerschnitte gilt Dd= NEd/A, dabei ist A der überdrückte",
+      "context": "fvk0 die charakteristische Schubfestigkeit von M auerwerk ohne Auflast nach Tabelle NA.11; | Dd der Bemessungswert der zugehörigen Druckspannung im untersuchten Lastfall an der Stelle der | maximalen Schubspannung. Für Rechteckquerschnitte gilt Dd= NEd/A, dabei ist A der überdrückte | Querschnitt. Im Regelfall ist die minimale Einwirkung NEd=1,0 NG maßgebend.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "Querschnitt. Im Regelfall ist die minimale Einwirkung NEd=1,0 NG maßgebend.",
+      "context": "Dd der Bemessungswert der zugehörigen Druckspannung im untersuchten Lastfall an der Stelle der | maximalen Schubspannung. Für Rechteckquerschnitte gilt Dd= NEd/A, dabei ist A der überdrückte | Querschnitt. Im Regelfall ist die minimale Einwirkung NEd=1,0 NG maßgebend.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "7",
+      "line": "4 175 8 (7)",
+      "context": "2 115 6 | 3 145 7 | 4 175 8 (7) | 5 240 10 | 6 300 12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "3",
+      "line": "12 71 4 (3)",
+      "context": "40 3 | 11 52 3 | 12 71 4 (3) | 13 113 4 | 14 155 5",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.3",
+      "pdf_page": 16,
+      "line": "„Der Absatz bezieht sich nicht auf Tabelle 3.3 sondern auf die Tabellen NA.4 bis NA 10.“"
+    },
+    {
+      "label": "1",
+      "pdf_page": 55,
+      "line": "b Gilt auch für tragendes Mauerwerk aus maßgerechten Steinen der Toleranzklassen 01 bis 03 nach DIN EN 771-6:2011-07 , Tabelle 1."
+    },
+    {
+      "label": "1",
+      "pdf_page": 59,
+      "line": "Bild NA.L.9 — Darstellung der Anhaltswerte nach Tabelle 1"
+    },
+    {
+      "label": "1",
+      "pdf_page": 61,
+      "line": "Tabelle 1: Nettotrockenrohdichte nach 4.5.2 wird gestrichen;"
+    },
+    {
+      "label": "3",
+      "pdf_page": 61,
+      "line": "Tabelle 3: Das Höchstmaß der Ziegelbreite darf bei Ziegeln mit Lochung B höchsten 365 mm betragen;"
+    },
+    {
+      "label": "4",
+      "pdf_page": 61,
+      "line": "Tabelle 4 wird wie folgt ersetzt:"
+    },
+    {
+      "label": "5",
+      "pdf_page": 62,
+      "line": "Tabelle 5 wird wie folgt ersetzt:"
+    },
+    {
+      "label": "7",
+      "pdf_page": 65,
+      "line": "fst ist der entsprechenden Druckfestigkeitsklasse nach Tabelle 7 zuzuordnen. Zwischenwerte sind nicht"
+    },
+    {
+      "label": "7",
+      "pdf_page": 65,
+      "line": "Tabelle 7: Zeile 1 wird gestrichen"
+    }
+  ],
+  "figures": [
+    {
+      "label": "6.1",
+      "pdf_page": 26,
+      "line": "System analog Bild 6.1 mit einer ideellen Wanddicke, die gleich der Deckenauflagertiefe a ist, erfolgen. Bei"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 32,
+      "line": "mu = -0,0035 für Mauersteine nach NCI zu 3.1.1, (NA.5) (siehe Bild 3.2).“"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 545,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 7142,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 6789,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6115,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2543,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1716,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2373,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2053,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1609,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1817,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2421,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2062,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1905,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1257,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1778,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2089,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1863,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2557,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1574,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2274,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1372,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1430,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1722,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2124,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1920,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2030,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1793,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2180,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1628,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1801,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1305,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1771,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2864,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2258,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2008,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1060,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 2432,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1676,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 2691,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 2164,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 542,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 42,
+      "characters": 516,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 2564,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 44,
+      "characters": 661,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 45,
+      "characters": 1419,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 46,
+      "characters": 330,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 327,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 941,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 49,
+      "characters": 1218,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1305,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 51,
+      "characters": 1546,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 52,
+      "characters": 2608,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 53,
+      "characters": 2471,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 889,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1977,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3",
+        "4.1",
+        "4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 56,
+      "characters": 707,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 866,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1200,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 59,
+      "characters": 2020,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1394,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 61,
+      "characters": 1027,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 1948,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 2022,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 64,
+      "characters": 3089,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 65,
+      "characters": 1464,
+      "text_layer": "usable",
+      "clauses": [
+        "5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 2394,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 695,
+      "text_layer": "usable",
+      "clauses": [
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 68,
+      "characters": 1030,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

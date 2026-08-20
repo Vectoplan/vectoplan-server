@@ -1,0 +1,3152 @@
+{
+  "document_id": "EN_1993-1-2__base_standard__EC_3_Teil_1-2",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-2",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 1-2.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-2.pdf",
+  "sha256": "8c0e7a5b3a472e0ff9da47f3d0a65d998fcc5796f59899a3c4671def742db0dd",
+  "pages": 88,
+  "text_pages": 87,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 137,
+  "equation_candidate_count": 213,
+  "table_reference_count": 11,
+  "figure_reference_count": 20,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160748+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232514+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-2.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ........................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... .................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1993............................................................................................ .........10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1993-1-2........................................................................................ .......10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ...............11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen ................................................................................................................... .........................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffsbestimmungen....................................................................................................... .................12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Besondere Begriffe zur allgemeinen Bemessung............................................................................1 2",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Begriffe zu thermischen Einwirkungen ..................................................................................... ........12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Begriffe mit Bezug auf Baustoffe und Bauprodukte........................................................................1 3",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Begriffe mit Bezug auf Wärmeübertragungsberechnungen ...........................................................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Begriffe mit Bezug auf die Berechnung des Tragverhaltens ..........................................................13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole .................................................................................................................... ............................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen der Bemessung..................................................................................................... ..........18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen .............................................................................................................. .......................18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen ............................................................................................... ............18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Nominelle Brandbeanspruchung ............................................................................................. ..........19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Parametrische Brandbeanspruchung ......................................................................................... ......19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Einwirkungen ............................................................................................................... ........................19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Bemessungswerte der Materialeigenschaften .................................................................................1 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren .......................................................................................................... ....................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.1",
+      "title": "Allgemeines.............................................................................................................. ............................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.2",
+      "title": "Bauteilberechnung ........................................................................................................ ......................20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.3",
+      "title": "Berechnung von Teiltragwerken............................................................................................ ............22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4.4",
+      "title": "Gesamttragwerksberechnung................................................................................................ ............23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Materialeigenschaften ........................................................................................................ .................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................ ..........................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Werkstoffeigenschaften von Kohlenstoffstahl .........................................................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Festigkeits- und Verformungseigenschaften ................................................................................ ...23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Rohdichte ................................................................................................................ .............................23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Werkstoffeigenschaften von nichtrostendem Stahl.................................................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Thermische Werkstoffeigenschaften.......................................................................................... .......26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.1",
+      "title": "Kohlenstoffstahl......................................................................................................... ..........................26",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.2",
+      "title": "Nichtrostender Stahl ..................................................................................................... ......................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4.3",
+      "title": "Brandschutzmaterialien ................................................................................................... ...................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Tragwerksbemessung für den Brandfall......................................................................................... ..29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines................................................................................................................ ..........................29",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Einfache Bemessungsverfahren ............................................................................................... .........30",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeines.............................................................................................................. ............................30",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Querschnittsklassifizierung.............................................................................................. ..................31",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Tragfähigkeit ............................................................................................................ ............................31",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.4",
+      "title": "Kritische Temperatur..................................................................................................... ......................39",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.5",
+      "title": "Entwicklung der Stahltemperatur .......................................................................................... ............40",
+      "pdf_page": 5
+    },
+    {
+      "clause": "4.3",
+      "title": "Erweiterte Berechnungsmodelle .............................................................................................. .........45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Allgemeines .............................................................................................................. ...........................45",
+      "pdf_page": 5
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Thermisches Verhalten .................................................................................................... ...................46",
+      "pdf_page": 5
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Tragverhalten............................................................................................................ ...........................46",
+      "pdf_page": 5
+    },
+    {
+      "clause": "4.3.4",
+      "title": "Überprüfung erweiterter Berechnungsmodelle ............................................................................... 47",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Lenkungsausschusses mit Vertretern der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.1",
+      "title": "Anwendungsbereich von EN 1993",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.1.2",
+      "title": "Anwendungsbereich von EN 1993-1-2",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung nach Grundsätzen und Anwendungsregeln",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffsbestimmungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Besondere Begriffe zur allgemeinen Bemessung",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Begriffe zu thermischen Einwirkungen",
+      "pdf_page": 14
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Begriffe mit Bezug auf Baustoffe und Bauprodukte",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Begriffe mit Bezug auf Wärmeübertragungsberechnungen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Begriffe mit Bezug auf die Berechnung des Tragverhaltens",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1",
+      "title": "Anpassungsfaktors für eine ungleichmäßige Temperaturverteilung über den Querschnitt;",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2",
+      "title": "Anpassungsfaktors für eine ungleichmäßige Temperaturverteilung entlang des Trägers;",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2",
+      "title": "Grundlagen der Bemessung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2.1",
+      "title": "Anforderungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Grundlegende Anforderungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Nominelle Brandbeanspruchung",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Parametrische Brandbeanspruchung",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.2",
+      "title": "Einwirkungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.3",
+      "title": "Bemessungswerte der Materialeigenschaften",
+      "pdf_page": 21
+    },
+    {
+      "clause": "2.4",
+      "title": "Nachweisverfahren",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.2",
+      "title": "Bauteilberechnung",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2.4.3",
+      "title": "Berechnung von Teiltragwerken",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2.4.4",
+      "title": "Gesamttragwerksberechnung",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3",
+      "title": "Materialeigenschaften",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.2",
+      "title": "Mechanische Werkstoffeigenschaften von Kohlenstoffstahl",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Festigkeits- und Verformungseigenschaften",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Rohdichte",
+      "pdf_page": 25
+    },
+    {
+      "clause": "20",
+      "title": "C 1,000 1,000 1,000",
+      "pdf_page": 27
+    },
+    {
+      "clause": "100",
+      "title": "C 1,000 1,000 1,000",
+      "pdf_page": 27
+    },
+    {
+      "clause": "200",
+      "title": "C 1,000 0,807 0,900",
+      "pdf_page": 27
+    },
+    {
+      "clause": "300",
+      "title": "C 1,000 0,613 0,800",
+      "pdf_page": 27
+    },
+    {
+      "clause": "400",
+      "title": "C 1,000 0,420 0,700",
+      "pdf_page": 27
+    },
+    {
+      "clause": "500",
+      "title": "C 0,780 0,360 0,600",
+      "pdf_page": 27
+    },
+    {
+      "clause": "600",
+      "title": "C 0,470 0,180 0,310",
+      "pdf_page": 27
+    },
+    {
+      "clause": "700",
+      "title": "C 0,230 0,075 0,130",
+      "pdf_page": 27
+    },
+    {
+      "clause": "800",
+      "title": "C 0,110 0,050 0,090",
+      "pdf_page": 27
+    },
+    {
+      "clause": "900",
+      "title": "C 0,060 0,0375 0,0675",
+      "pdf_page": 27
+    },
+    {
+      "clause": "3.3",
+      "title": "Mechanische Werkstoffeigenschaften von nichtrostendem Stahl",
+      "pdf_page": 28
+    },
+    {
+      "clause": "3.4",
+      "title": "Thermische Werkstoffeigenschaften",
+      "pdf_page": 28
+    },
+    {
+      "clause": "3.4.1",
+      "title": "Kohlenstoffstahl",
+      "pdf_page": 28
+    },
+    {
+      "clause": "3.4.1.1",
+      "title": "Thermische Dehnung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "3.4.1.2",
+      "title": "Spezifische Wärmekapazität",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3",
+      "title": "J/kgK (3.2a)",
+      "pdf_page": 29
+    },
+    {
+      "clause": "13002",
+      "title": "J/kgK (3.2b)",
+      "pdf_page": 29
+    },
+    {
+      "clause": "3.4.1.3",
+      "title": "Wärmeleitfähigkeit",
+      "pdf_page": 30
+    },
+    {
+      "clause": "3.4.2",
+      "title": "Nichtrostender Stahl",
+      "pdf_page": 31
+    },
+    {
+      "clause": "3.4.3",
+      "title": "Brandschutzmaterialien",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4",
+      "title": "Tragwerksbemessung für den Brandfall",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines",
+      "pdf_page": 31
+    },
+    {
+      "clause": "4.2",
+      "title": "Einfache Bemessungsverfahren",
+      "pdf_page": 32
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 32
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Querschnittsklassifizierung",
+      "pdf_page": 33
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Tragfähigkeit",
+      "pdf_page": 33
+    },
+    {
+      "clause": "4.2.3.1",
+      "title": "Zugglieder",
+      "pdf_page": 33
+    },
+    {
+      "clause": "4.2.3.2",
+      "title": "Druckbeanspruchte Bauteile mit Querschnitten der Klassen 1, 2 oder 3",
+      "pdf_page": 34
+    },
+    {
+      "clause": "4.2.3.3",
+      "title": "Träger mit Querschnitten der Klassen 1 und 2",
+      "pdf_page": 35
+    },
+    {
+      "clause": "4.2.3.4",
+      "title": "Träger mit Querschnitten der Klasse 3",
+      "pdf_page": 37
+    },
+    {
+      "clause": "4.2.3.5",
+      "title": "Auf Biegung und axialen Druck beanspruchte Bauteile der Querschnittsklassen 1, 2 oder 3",
+      "pdf_page": 38
+    },
+    {
+      "clause": "4.2.3.6",
+      "title": "Bauteile mit Querschnitten der Klasse 4",
+      "pdf_page": 40
+    },
+    {
+      "clause": "4.2.4",
+      "title": "Kritische Temperatur",
+      "pdf_page": 41
+    },
+    {
+      "clause": "4.2.5",
+      "title": "Entwicklung der Stahltemperatur",
+      "pdf_page": 42
+    },
+    {
+      "clause": "4.2.5.1",
+      "title": "Ungeschützte innen liegende Stahlkonstruktionen",
+      "pdf_page": 42
+    },
+    {
+      "clause": "4.2.5.2",
+      "title": "Innen liegende Stahlkonstruktionen, geschützt durch Brandschutzmaterialien",
+      "pdf_page": 45
+    },
+    {
+      "clause": "4.2.5.3",
+      "title": "Innen liegende Stahlkonstruktionen in Hohlräumen, geschützt durch Wärmeschilde",
+      "pdf_page": 46
+    },
+    {
+      "clause": "4.2.5.4",
+      "title": "Außen liegende Stahlkonstruktionen",
+      "pdf_page": 47
+    },
+    {
+      "clause": "4.3",
+      "title": "Erweiterte Berechnungsmodelle",
+      "pdf_page": 47
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 47
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Thermisches Verhalten",
+      "pdf_page": 48
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Tragverhalten",
+      "pdf_page": 48
+    },
+    {
+      "clause": "4.3.4",
+      "title": "Überprüfung erweiterter Berechnungsmodelle",
+      "pdf_page": 49
+    },
+    {
+      "clause": "3",
+      "title": "J/kgK (C.2)",
+      "pdf_page": 79
+    },
+    {
+      "clause": "20",
+      "title": "C 1,00",
+      "pdf_page": 87
+    },
+    {
+      "clause": "100",
+      "title": "C 1,00",
+      "pdf_page": 87
+    },
+    {
+      "clause": "200",
+      "title": "C 0,89",
+      "pdf_page": 87
+    },
+    {
+      "clause": "300",
+      "title": "C 0,78",
+      "pdf_page": 87
+    },
+    {
+      "clause": "400",
+      "title": "C 0,65",
+      "pdf_page": 87
+    },
+    {
+      "clause": "500",
+      "title": "C 0,53",
+      "pdf_page": 87
+    },
+    {
+      "clause": "600",
+      "title": "C 0,30",
+      "pdf_page": 87
+    },
+    {
+      "clause": "700",
+      "title": "C 0,13",
+      "pdf_page": 87
+    },
+    {
+      "clause": "800",
+      "title": "C 0,07",
+      "pdf_page": 87
+    },
+    {
+      "clause": "900",
+      "title": "C 0,05",
+      "pdf_page": 87
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 10,
+      "equation_number": "1",
+      "line": "2.3 (1)",
+      "context": "jeweiligen Land gültig sind. | Eine nationale Wahl darf in EN 1993-1-2 für folgende Abschnitte erfolgen: | 2.3 (1) | 2.3 (2) | 4.1 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "2.3 (2)",
+      "context": "Eine nationale Wahl darf in EN 1993-1-2 für folgende Abschnitte erfolgen: | 2.3 (1) | 2.3 (2) | 4.1 (2) | 4.2.3.6 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "4.1 (2)",
+      "context": "2.3 (1) | 2.3 (2) | 4.1 (2) | 4.2.3.6 (1) | 4.2.4 (2)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "1",
+      "line": "4.2.3.6 (1)",
+      "context": "2.3 (2) | 4.1 (2) | 4.2.3.6 (1) | 4.2.4 (2) | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 10,
+      "equation_number": "2",
+      "line": "4.2.4 (2)",
+      "context": "4.1 (2) | 4.2.3.6 (1) | 4.2.4 (2) | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "Rfi,d,0 Wert von Rfi,d,t zum Zeitpunkt t = 0;",
+      "context": "Qk,1 größte veränderliche Einwirkung; | Rfi,d,t Bemessungswert der Beanspruchbarkeit des Stahlbauteils im Brandfall zum Zeitpunkt t; | Rfi,d,0 Wert von Rfi,d,t zum Zeitpunkt t = 0; | Tf Temperatur des Brandes [K]; | To Flammentemperatur an der Öffnung [K];",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "df Dicke des Brandschutzmaterials ( df = 0 bei ungeschützten Bauteilen);",
+      "context": "di Querschnittsabmessung der Bauteilseite i; | dp Dicke des Brandschutzmaterials; | df Dicke des Brandschutzmaterials ( df = 0 bei ungeschützten Bauteilen); | fp, Proportionalitätsgrenze von Stahl bei erhöhter Temperatur a; | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "0 Ausnutzungsgrad zum Zeitpunkt t = ;",
+      "context": "p Wärmeleitfähigkeit des Brandschutzsystems; | f effektive Wärmeleitfähigkeit des Brandschutzmaterials; | 0 Ausnutzungsgrad zum Zeitpunkt t = ; | Stefan-Boltzmann-Konstante [5,67 10-8 W/m2K4]; | a Rohdichte von Stahl;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "2.1",
+      "line": "Xd,fi = k Xk / M,fi (2.1)",
+      "context": "(1) Die Bemessungswerte der mechanischen Materialeigenschaften Xd,fi (Festigkeit und Verformung) sind wie | folgt definiert: | Xd,fi = k Xk / M,fi (2.1) | Dabei ist | Xk der charakteristische Wert einer Festigkeits- oder Verformungseigenschaft (im Allgemeinen fk",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "Verwendung von M,fi = 1,0 wird empfohlen.",
+      "context": "M,fi der Teilsicherheitsbeiwert der entsprechenden Materialeigenschaft im Brandfall. | ANMERKUNG Siehe Nationaler Anhang zum Teilsicherheitsbeiwert der mechanischen Materialeigenschaften. Die | Verwendung von M,fi = 1,0 wird empfohlen. | (2) Die Bemessungswerte der thermischen Materialeigenschaften Xd,fi sind wie folgt definiert: | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "2.2a",
+      "line": "Xd,fi = Xk, / M,fi (2.2a)",
+      "context": "20 | wenn sich eine Vergrößerung der Eigenschaft günstig auf die Sicherheit auswirkt: | Xd,fi = Xk, / M,fi (2.2a) | wenn sich eine Vergrößerung der Eigenschaft ungünstig auf die Sicherheit auswirkt: | Xd,fi = M,fi Xk, (2.2b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "2.2b",
+      "line": "Xd,fi = M,fi Xk, (2.2b)",
+      "context": "Xd,fi = Xk, / M,fi (2.2a) | wenn sich eine Vergrößerung der Eigenschaft ungünstig auf die Sicherheit auswirkt: | Xd,fi = M,fi Xk, (2.2b) | Dabei ist | Xk, der Wert einer Materialeigenschaft im Brandfall, im Allgemeinen abhängig von der Materialtem-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "siehe Nationaler Anhang. Die Verwendung von M,fi = 1,0 wird empfohlen.",
+      "context": "M,fi der Teilsicherheitsbeiwert der entsprechenden Materialeigenschaft im Brandfall. | ANMERKUNG Zu den Teilsicherheitsbeiwerten der thermischen Materialeigenschaften in der jeweiligen Brandfallsituation, | siehe Nationaler Anhang. Die Verwendung von M,fi = 1,0 wird empfohlen. | 2.4 Nachweisverfahren | 2.4.1 Allgemeines",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "2.3",
+      "line": "Efi,d Rfi,d,t (2.3)",
+      "context": "hingewiesen. | (2)P Es muss nachgewiesen werden, dass für die maßgebliche Dauer t der Brandeinwirkung gilt: | Efi,d Rfi,d,t (2.3) | Dabei ist | Efi,d der Bemessungswert der Einwirkungen im Brandfall nach EN 1991-1-2, einschließlich der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "(1) Beanspruchungen sollten für den Zeitpunkt t = 0 unter Verwendung der Kombinationsbeiwerte",
+      "context": "und Ergebnissen von Brandversuchen zulässig. | 2.4.2 Bauteilberechnung | (1) Beanspruchungen sollten für den Zeitpunkt t = 0 unter Verwendung der Kombinationsbeiwerte | 1,1 oder | 2,1 nach EN 1991-1-2, 4.3.1, bestimmt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.4",
+      "line": "Ed,fi = fi Ed (2.4)",
+      "context": "(2) Als Vereinfachung von (1) dürfen die Beanspruchungen Ed,fi der Berechnung des Gesamttragwerks für | Normaltemperatur entnommen werden, mit: | Ed,fi = fi Ed (2.4) | Dabei ist | Ed der Bemessungswert der entsprechenden Schnittgröße bei Normaltemperatur gerechnet für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "fi =",
+      "context": "fi der Abminderungsfaktor der Bemessungslasten für den Brandfall. | (3) Der Abminderungsfaktor fi für die Lastkombination (6.10) in EN 1990 sollte berechnet werden mit | fi = | Q+G | Q+G fik",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.5",
+      "line": "k,1 (2.5)",
+      "context": "Q+G fik | k,1Q,1kG | k,1 (2.5) | oder bei Anwendung der Lastkombinationen (6.10a) und (6.10b) in EN 1990 als der kleinste Wert aus den | beiden folgenden Gleichungen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "fi =",
+      "context": "oder bei Anwendung der Lastkombinationen (6.10a) und (6.10b) in EN 1990 als der kleinste Wert aus den | beiden folgenden Gleichungen: | fi = | Q+G | Q+G fik",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.5a",
+      "line": "k,1 (2.5a)",
+      "context": "Q+G fik | k,11,0Q,1kG | k,1 (2.5a) | fi = | Q+G",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "fi =",
+      "context": "k,11,0Q,1kG | k,1 (2.5a) | fi = | Q+G | Q+G fik",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "2.5b",
+      "line": "k,1 (2.5b)",
+      "context": "Q+G fik | k,1Q,1kG | k,1 (2.5b) | Dabei ist | Qk,1 die führende veränderliche Einwirkung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "Qk,1/Gk für verschiedene Größen des Kombinationsbeiwertes fi = 1,1 nach Gleichung (2.5) ist in Bild 2.1 angegeben;",
+      "context": "der Abminderungsfaktor für ungünstige ständige Einwirkungen G. | ANMERKUNG 1 Ein Beispiel für die Variation des Abminderungsfaktors fi in Abhängigkeit von dem Lastverhältnis | Qk,1/Gk für verschiedene Größen des Kombinationsbeiwertes fi = 1,1 nach Gleichung (2.5) ist in Bild 2.1 angegeben; | dabei gelten die folgenden Annahmen: G = 1,35 und Q = 1,5. Die Teilsicherheitsbeiwerte werden in den entsprechenden | Nationalen Anhängen von EN 1990 angegeben. Die Gleichungen (2.5a) und (2.5b) ergeben leicht erhöhte Werte.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "dabei gelten die folgenden Annahmen: G = 1,35 und Q = 1,5. Die Teilsicherheitsbeiwerte werden in den entsprechenden",
+      "context": "ANMERKUNG 1 Ein Beispiel für die Variation des Abminderungsfaktors fi in Abhängigkeit von dem Lastverhältnis | Qk,1/Gk für verschiedene Größen des Kombinationsbeiwertes fi = 1,1 nach Gleichung (2.5) ist in Bild 2.1 angegeben; | dabei gelten die folgenden Annahmen: G = 1,35 und Q = 1,5. Die Teilsicherheitsbeiwerte werden in den entsprechenden | Nationalen Anhängen von EN 1990 angegeben. Die Gleichungen (2.5a) und (2.5b) ergeben leicht erhöhte Werte. | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG 2 Als Vereinfachung wird die Verwendung von fi = 0,65 empfohlen. Ausgenommen davon sind",
+      "context": "22 | Bild 2.1  Abhängigkeit des Abminderungsfaktors fi vom Verhältnis von Qk,1 / Gk | ANMERKUNG 2 Als Vereinfachung wird die Verwendung von fi = 0,65 empfohlen. Ausgenommen davon sind | aufgebrachte Lasten der Kategorie E nach EN 1991-1-1 (Flächen, die zur Lagerung von Waren vorgesehen sind, | einschließlich der Zufahrtsflächen), für die der Wert 0,7 empfohlen wird.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "(2) Alternativ zur Durchführung einer Gesamttragwerksberechnung für den Brandfall zum Zeitpunkt t = 0",
+      "context": "2.4.3 Berechnung von Teiltragwerken | (1) Es gilt 2.4.2 (1). | (2) Alternativ zur Durchführung einer Gesamttragwerksberechnung für den Brandfall zum Zeitpunkt t = 0 | dürfen die Schnittgrößen an den Auflagern und Rändern des Teiltragwerks aus der Berechnung bei Normal- | temperatur nach 2.4.2 ermittelt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "effektive Fließgrenze, relativ zur Fließgrenze bei 20 C: ky, = fy, / fy",
+      "context": "(3) Tabelle 3.1 enthält die Abminderungsfaktoren für die Spannungs-Dehnungsbeziehung von Stahl unter | erhöhter Temperatur nach Bild 3.1. Diese Abminderungsfaktoren sind wie folgt definiert: | effektive Fließgrenze, relativ zur Fließgrenze bei 20 C: ky, = fy, / fy | Proportionalitätsgrenze, relativ zur Fließgrenze bei 20 C: kp, = fp, / fy | Steigung im elastischen Bereich, relativ zu der Steigung bei 20 C: kE, = Ea, / Ea",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "Proportionalitätsgrenze, relativ zur Fließgrenze bei 20 C: kp, = fp, / fy",
+      "context": "erhöhter Temperatur nach Bild 3.1. Diese Abminderungsfaktoren sind wie folgt definiert: | effektive Fließgrenze, relativ zur Fließgrenze bei 20 C: ky, = fy, / fy | Proportionalitätsgrenze, relativ zur Fließgrenze bei 20 C: kp, = fp, / fy | Steigung im elastischen Bereich, relativ zu der Steigung bei 20 C: kE, = Ea, / Ea | ANMERKUNG Bild 3.2 stellt die Abhängigkeit dieser Abminderungsfaktoren von der Temperatur dar.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "Steigung im elastischen Bereich, relativ zu der Steigung bei 20 C: kE, = Ea, / Ea",
+      "context": "effektive Fließgrenze, relativ zur Fließgrenze bei 20 C: ky, = fy, / fy | Proportionalitätsgrenze, relativ zur Fließgrenze bei 20 C: kp, = fp, / fy | Steigung im elastischen Bereich, relativ zu der Steigung bei 20 C: kE, = Ea, / Ea | ANMERKUNG Bild 3.2 stellt die Abhängigkeit dieser Abminderungsfaktoren von der Temperatur dar. | (4) Alternativ darf bei Temperaturen unter 400 °C die in (1) angegebene Spannungs-Dehnungsbeziehung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "a = 7 850 kg/m3",
+      "context": "a unabhängig von der Temperatur ist. Der | folgende Wert darf verwendet werden: | a = 7 850 kg/m3 | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "= u, 0,00 -",
+      "context": "y, t, fy, 0 | t, < < u, t,u,t,y, -/--1f - | = u, 0,00 - | Parameter p, = fp, / Ea, y, = 0,02 t, = 0,15 u, = 0,20 | Funktionen Ec/+--=a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "Parameter p, = fp, / Ea, y, = 0,02 t, = 0,15 u, = 0,20",
+      "context": "t, < < u, t,u,t,y, -/--1f - | = u, 0,00 - | Parameter p, = fp, / Ea, y, = 0,02 t, = 0,15 u, = 0,20 | Funktionen Ec/+--=a | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "Funktionen Ec/+--=a",
+      "context": "= u, 0,00 - | Parameter p, = fp, / Ea, y, = 0,02 t, = 0,15 u, = 0,20 | Funktionen Ec/+--=a | 2 | a,p,y,p,y,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "c+E-c=b",
+      "context": "2 | a,p,y,p,y, | c+E-c=b | 22 | a,p,y,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "f-f=c",
+      "context": "a,p,y, | f-f2-E- | f-f=c | 2 | p,y,a,p,y,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "ky, = fy, / fy",
+      "context": "(relativ zu fy) für die | effektive Fließgrenze | ky, = fy, / fy | Abminderungsfaktor | (relativ zu fy)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "kp, = fp, / fy",
+      "context": "für die | Proportionalitätsgrenze | kp, = fp, / fy | Abminderungsfaktor (relativ | zu Ea) für die Steigung im",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "kE, = Ea, / Ea",
+      "context": "zu Ea) für die Steigung im | elastischen Bereich | kE, = Ea, / Ea | 20 C 1,000 1,000 1,000 | 100 C 1,000 1,000 1,000",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "l / l = 1,2 10-5",
+      "context": "(1) Die thermische Dehnung von Stahl l / l sollte wie folgt bestimmt werden: | bei 20 C a < 750 C: | l / l = 1,2 10-5 | a + 0,4 10-8 | a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.1a",
+      "line": "2  2,416 10-4 (3.1a)",
+      "context": "a + 0,4 10-8 | a | 2  2,416 10-4 (3.1a) | bei 750 C a 860 C: | l / l = 1,1 10-2 (3.1b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.1b",
+      "line": "l / l = 1,1 10-2 (3.1b)",
+      "context": "2  2,416 10-4 (3.1a) | bei 750 C a 860 C: | l / l = 1,1 10-2 (3.1b) | bei 860 C < a 1 200 C: | l / l = 2 10-5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "unvollständig",
+      "line": "l / l = 2 10-5",
+      "context": "l / l = 1,1 10-2 (3.1b) | bei 860 C < a 1 200 C: | l / l = 2 10-5 | a  6,2 10-3 (3.1c) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 28,
+      "equation_number": "3.1c",
+      "line": "a  6,2 10-3 (3.1c)",
+      "context": "bei 860 C < a 1 200 C: | l / l = 2 10-5 | a  6,2 10-3 (3.1c) | Dabei ist | l die Länge bei 20 °C;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "ca = 425 + 7,73 10-1",
+      "context": "(1) Die spezifische Wärmekapazität von Stahl ca sollte wie folgt ermittelt werden: | bei 20 C a < 600 C: | ca = 425 + 7,73 10-1 | a  1,69 10-3 | a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "3.2a",
+      "line": "3 J/kgK (3.2a)",
+      "context": "2 + 2,22 10-6 | a | 3 J/kgK (3.2a) | bei 600 C a < 735 C: | ca = 666 +",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "ca = 666 +",
+      "context": "3 J/kgK (3.2a) | bei 600 C a < 735 C: | ca = 666 + | a-738 | 13002 J/kgK (3.2b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "3.2b",
+      "line": "13002 J/kgK (3.2b)",
+      "context": "ca = 666 + | a-738 | 13002 J/kgK (3.2b) | bei 735 C a < 900 C: | ca = 545 + 731",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "ca = 545 + 731",
+      "context": "13002 J/kgK (3.2b) | bei 735 C a < 900 C: | ca = 545 + 731 | 17820 | a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "3.2c",
+      "line": "J/kgK (3.2c)",
+      "context": "17820 | a | J/kgK (3.2c) | bei 900 C a 1 200 C: | ca = 650 J/kgK (3.2d)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "3.2d",
+      "line": "ca = 650 J/kgK (3.2d)",
+      "context": "J/kgK (3.2c) | bei 900 C a 1 200 C: | ca = 650 J/kgK (3.2d) | Dabei ist | a die Stahltemperatur [ C].",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "a = 54  3,33 10-2",
+      "context": "(1) Die Wärmeleitfähigkeit von Stahl a sollte wie folgt bestimmt werden: | bei 20 C a < 800 C: | a = 54  3,33 10-2 | a W/mK (3.3a) | bei 800 C a 1 200 C:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "3.3a",
+      "line": "a W/mK (3.3a)",
+      "context": "bei 20 C a < 800 C: | a = 54  3,33 10-2 | a W/mK (3.3a) | bei 800 C a 1 200 C: | a = 27,3 W/mK (3.3b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "3.3b",
+      "line": "a = 27,3 W/mK (3.3b)",
+      "context": "a W/mK (3.3a) | bei 800 C a 1 200 C: | a = 27,3 W/mK (3.3b) | Dabei ist | a die Stahltemperatur [ C].",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "4.1",
+      "line": "Efi,d Rfi,d,t (4.1)",
+      "context": "(1)P Es wird unterstellt, dass ein Bauteil seine lastabtragende Funktion zum Zeitpunkt t eines gegebenen | Brandes erfüllt, wenn: | Efi,d Rfi,d,t (4.1) | Dabei ist | Efi,d der Bemessungswert der maßgebenden Beanspruchung im Brandfall nach EN 1991-1-2;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "df die Dicke des Brandschutzmaterials ( df = 0 bei ungeschützten Bauteilen);",
+      "context": "31 | Dabei ist | df die Dicke des Brandschutzmaterials ( df = 0 bei ungeschützten Bauteilen); | f die effektive Wärmeleitfähigkeit des Brandschutzmaterials. | 2) Die Ausnutzung der Verbindung sollte gleich oder kleiner sein als die maximale Ausnutzung der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "unvollständig",
+      "line": "Normaltemperatur jedoch mit einem nach Gleichung (4.2) abgeminderten Wert für durchgeführt werden.",
+      "context": "4.2.2 Querschnittsklassifizierung | (1) Im Rahmen der Anwendung dieser vereinfachten Regeln darf die Querschnittsklassifizierung wie unter | Normaltemperatur jedoch mit einem nach Gleichung (4.2) abgeminderten Wert für durchgeführt werden. | yf/23585,0 (4.2) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "4.2",
+      "line": "yf/23585,0 (4.2)",
+      "context": "(1) Im Rahmen der Anwendung dieser vereinfachten Regeln darf die Querschnittsklassifizierung wie unter | Normaltemperatur jedoch mit einem nach Gleichung (4.2) abgeminderten Wert für durchgeführt werden. | yf/23585,0 (4.2) | Dabei ist | fy die Streckgrenze bei 20 °C.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "4.3",
+      "line": "Nfi, ,Rd = ky, NRd [ M,0 / M,fi ] (4.3)",
+      "context": "(1) Der Bemessungswert der Tragfähigkeit Nfi, ,Rd eines auf Zug beanspruchten Bauteils mit gleichmäßiger | Temperatur a sollte wie folgt berechnet werden: | Nfi, ,Rd = ky, NRd [ M,0 / M,fi ] (4.3) | Dabei ist | ky, der Abminderungsfaktor der Streckgrenze von Stahl bei der Temperatur a zum Zeitpunkt t, siehe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 33,
+      "equation_number": "4.4",
+      "line": "Nfi,t,Rd = (4.4)",
+      "context": "(2) Der Bemessungswert der Tragfähigkeit Nfi,t,Rd zum Zeitpunkt t eines auf Zug beanspruchten Bauteils mit | einer ungleichmäßigen Temperaturverteilung über den Querschnitt darf wie folgt berechnet werden: | Nfi,t,Rd = (4.4) | n | i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "4.5",
+      "line": "Nb,fi,t,Rd = fi A ky, fy / M,fi (4.5)",
+      "context": "(1) Die Knickfestigkeit druckbeanspruchter Bauteile Nb,fi,t,Rd zum Zeitpunkt t mit Querschnitten der Klassen 1, | 2 oder 3 mit einer gleichmäßigen Temperatur a sollte ermittelt werden mit: | Nb,fi,t,Rd = fi A ky, fy / M,fi (4.5) | Dabei ist | fi der Abminderungsfaktor für das Biegeknicken unter Brandbeanspruchung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "4.6",
+      "line": "(4.6)",
+      "context": "1 | fi | (4.6) | mit | ]21[2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "4.7",
+      "line": ",, ]/[ Ey kk (4.7)",
+      "context": "Die dimensionslose bezogene Schlankheit für die Temperatur a wird berechnet nach: | 5,0 | ,, ]/[ Ey kk (4.7) | Dabei ist | ky, der Abminderungsfaktor nach Abschnitt 3 für die Streckgrenze von Stahl bei der Temperatur a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "lfi = 0,5L und bei dem obersten Stockwerk mit lfi = 0,7L berechnet werden. Dabei ist L die Systemhöhe des",
+      "context": "33 | Stütze mit | lfi = 0,5L und bei dem obersten Stockwerk mit lfi = 0,7L berechnet werden. Dabei ist L die Systemhöhe des | (4) Falls bei einem Stahlrahmen jedes Stockwerk einen eigenen Brandabschnitt mit ausreichendem Feuer- | widerstand bildet, darf bei innen liegenden Stockwerken die Knicklänge lfi einer durchgehenden",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "4.9",
+      "line": "(4.9)",
+      "context": "(2) Der Bemessungswert der Momententragfähigkeit M zum Zeitpunkt t von Querschnitten der Klassen 1 | ode it u | (4.9) | punkt t eines druckbeanspruchten Bauteils mit einer ungleichmäßigen Temp | b,fi, ,Rd",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "4.8",
+      "line": "Mfi, ,Rd = ky, [ M,0 / M,fi ]MRd (4.8)",
+      "context": "fi, | gleichmäßiger Temperatur a sollte wie folgt berechnet werde | Mfi, ,Rd = ky, [ M,0 / M,fi ]MRd (4.8) | fi,t,Rd | r 2 m ngleichmäßiger Temperaturverteilung im Querschnitt darf berechnet werden nach:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 35,
+      "equation_number": "unvollständig",
+      "line": "Mfi,t,Rd =",
+      "context": "fi,t,Rd | r 2 m ngleichmäßiger Temperaturverteilung im Querschnitt darf berechnet werden nach: | Mfi,t,Rd = | n | Ai zi ky, ,i f y,i / M,fi",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.10",
+      "line": "Mfi,t,Rd = Mfi, ,Rd / ( 1 2) mit Mfi, ,Rd MRd (4.10)",
+      "context": "klasse 1 oder 2 zum Zeitpunkt t und mit einer ungleichmäßigen Temperaturverteilung über den Querschnitt | berechnet werden nach: | Mfi,t,Rd = Mfi, ,Rd / ( 1 2) mit Mfi, ,Rd MRd (4.10) | Dabei ist | Mfi, ,Rd der Bemessungswert der Momententragfähigkeit bei konstanter Temperatur a, die der Tempe-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.11",
+      "line": "Mb,fi,t,Rd = LT,fi Wpl,y ky, ,com fy / M,fi (4.11)",
+      "context": "(4) Der Bemessungswert der Biegedrillknickbeanspruchbarkeit Mb,fi,t,Rd zum Zeitpunkt t eines seitlich nicht | gehaltenen Trägers mit einem Querschnitt der Klasse 1 oder 2 sollte berechnet werden mit: | Mb,fi,t,Rd = LT,fi Wpl,y ky, ,com fy / M,fi (4.11) | Dabei ist | LT,fi der Abminderungsfaktor für das Biegedrillknicken bei der Tragwerksbemessung im Brandfall;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.12",
+      "line": "fiLT (4.12)",
+      "context": "1 | comLTcomLTcomLT | fiLT (4.12) | mit | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.13",
+      "line": "comLTcomLTcomLT (4.13)",
+      "context": ",,,,,, )(12 | 1 | comLTcomLTcomLT (4.13) | und | yf/23565,0 (4.14)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.14",
+      "line": "yf/23565,0 (4.14)",
+      "context": "comLTcomLTcomLT (4.13) | und | yf/23565,0 (4.14) | comLT ,, = LT [ ky, ,com / kE, ,com ]0,5 (4.15) | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 36,
+      "equation_number": "4.15",
+      "line": "comLT ,, = LT [ ky, ,com / kE, ,com ]0,5 (4.15)",
+      "context": "und | yf/23565,0 (4.14) | comLT ,, = LT [ ky, ,com / kE, ,com ]0,5 (4.15) | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.16",
+      "line": "Vfi,t,Rd = ky, web, VRd [ M,0 / M,fi ] (4.16)",
+      "context": "(6) Der Bemessungswert der Querkraftbeanspruchbarkeit Vfi,t,Rd zum Zeitpunkt t eines Querschnitts der | Klasse 1 oder 2 sollte berechnet werden nach: | Vfi,t,Rd = ky, web, VRd [ M,0 / M,fi ] (4.16) | Dabei ist | VRd der Bemessungswert der Querkraftbeanspruchbarkeit des Bruttoquerschnitts bei Normaltem-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "1 = 1,0",
+      "context": "schnitt sollte wie folgt angenommen werden: | für einen Träger, der von allen vier Seiten brandbeansprucht wird: | 1 = 1,0 | für einen ungeschützten Träger mit einer Stahlbeton- oder Stahlbetonverbundplatte auf der einen Seite | und Brandbeanspruchung auf den drei anderen Seiten:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "1 = 0,70",
+      "context": "für einen ungeschützten Träger mit einer Stahlbeton- oder Stahlbetonverbundplatte auf der einen Seite | und Brandbeanspruchung auf den drei anderen Seiten: | 1 = 0,70 | für einen brandgeschützten Träger mit einer Stahlbeton- oder Stahlbetonverbundplatte auf der einen | Seite und Brandbeanspruchung auf den drei anderen Seiten:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "1 = 0,85",
+      "context": "für einen brandgeschützten Träger mit einer Stahlbeton- oder Stahlbetonverbundplatte auf der einen | Seite und Brandbeanspruchung auf den drei anderen Seiten: | 1 = 0,85 | (8) Bei ungleichmäßiger Temperaturverteilung entlang des Trägers sollte die Größe des Anpassungs- | faktors 2 wie folgt angesetzt werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "2 = 0,85",
+      "context": "faktors 2 wie folgt angesetzt werden: | an den Auflagern statisch unbestimmt gelagerter Träger: | 2 = 0,85 | in allen anderen Fällen: | 2 = 1,0.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "2 = 1,0.",
+      "context": "2 = 0,85 | in allen anderen Fällen: | 2 = 1,0. | 4.2.3.4 Träger mit Querschnitten der Klasse 3 | (1) Der Bemessungswert der Momentenbeanspruchbarkeit Mfi,t,Rd zum Zeitpunkt t von Querschnitten der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "4.17",
+      "line": "Mfi,t,Rd = ky, MRd [ M,0 / M,fi ] (4.17)",
+      "context": "(1) Der Bemessungswert der Momentenbeanspruchbarkeit Mfi,t,Rd zum Zeitpunkt t von Querschnitten der | Klasse 3 mit gleichmäßiger Temperaturverteilung sollte berechnet werden nach: | Mfi,t,Rd = ky, MRd [ M,0 / M,fi ] (4.17) | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "4.18",
+      "line": "Mfi,t,Rd = ky, ,max MRd [ M,0 / M,fi ] / ( 1 2) mit Mfi, ,Rd MRd (4.18)",
+      "context": "(2) Der Bemessungswert der Momentenbeanspruchbarkeit Mfi,t,Rd zum Zeitpunkt t von Querschnitten der | Klasse 3 mit einer ungleichmäßigen Temperaturverteilung darf berechnet werden nach: | Mfi,t,Rd = ky, ,max MRd [ M,0 / M,fi ] / ( 1 2) mit Mfi, ,Rd MRd (4.18) | Dabei ist | MRd der Bemessungswert der elastischen Momentenbeanspruchbarkeit M el,Rd des Bruttoquerschnitts",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "4.19",
+      "line": "Mb,fi,t,Rd = LT,fi Wel,y ky, ,com fy / M,fi (4.19)",
+      "context": "(3) Der Bemessungswert der Biegedrillknickbeanspruchbarkeit Mb,fi,t,Rd zum Zeitpunkt t eines seitlich nicht | gehaltenen Trägers mit einem Querschnitt der Klasse 3 sollte berechnet werden nach: | Mb,fi,t,Rd = LT,fi Wel,y ky, ,com fy / M,fi (4.19) | Dabei ist | LT,fi wie in 4.2.3.3 (5) angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "4.20",
+      "line": "Vfi,t,Rd = ky, ,web VRd [ M,0 / M,fi ] (4.20)",
+      "context": "(4) Der Bemessungswert der Querkraftbeanspruchbarkeit Vfi,t,Rd zum Zeitpunkt t eines Querschnitts der | Klasse 3 wird berechnet nach: | Vfi,t,Rd = ky, ,web VRd [ M,0 / M,fi ] (4.20) | Dabei ist | VRd die Querkraftbeanspruchbarkeit des Bruttoquerschnitts bei Normaltemperatur nach EN 1993-1-1.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "4.21a",
+      "line": "N (4.21a)",
+      "context": "Mk | fkA | N (4.21a) | 1 | ,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "4.21b",
+      "line": "N (4.21b)",
+      "context": "Mk | fkA | N (4.21b) | 1 | ,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "4.21c",
+      "line": "N (4.21c)",
+      "context": "Mk | fkA | N (4.21c) | 1 | ,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "4.21d",
+      "line": "N (4.21d)",
+      "context": "Mk | fkA | N (4.21d) | Dabei ist | min,fi wie in 4.2.3.2 angegeben;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "M, = 1,8  0,7",
+      "context": "Momentenverlauf Anpassungsfaktor M | Endmomente | M, = 1,8  0,7 | Momente aus Querlasten in Tragwerksebene | M,Q = 1,3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "M,Q = 1,3",
+      "context": "M, = 1,8  0,7 | Momente aus Querlasten in Tragwerksebene | M,Q = 1,3 | M,Q = 1,4 | Momente aus Querlasten in der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "M,Q = 1,4",
+      "context": "Momente aus Querlasten in Tragwerksebene | M,Q = 1,3 | M,Q = 1,4 | Momente aus Querlasten in der | Tragwerksebene mit zusätzlichen Endmo-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "M Q = | max M | nur aus Querlast",
+      "context": "M | M | M Q = | max M | nur aus Querlast | wechselVorzeichenmit | rläufenMomentenvebei|minM||maxM|",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "crit = 350 °C wird empfohlen.",
+      "context": "ANMERKUNG 1 Weitere Informationen enthält Anhang E. | ANMERKUNG 2 Die Grenztemperatur crit darf im Nationalen Anhang festgelegt werden. Die Verwendung des Wertes | crit = 350 °C wird empfohlen. | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "Temperaturverteilung im Bauteil für den Ausnutzungsgrad 0 zum Zeitpunkt t = 0 berechnet werden nach:",
+      "context": "(2) Außer wenn Verformungskriterien oder Einflüsse aus Stabilitätsproblemen zu beachten sind, darf | die kritische Temperatur des Kohlenstoffstahls a,cr nach 1.1.2 (6) zum Zeitpunkt t für eine gleichmäßige | Temperaturverteilung im Bauteil für den Ausnutzungsgrad 0 zum Zeitpunkt t = 0 berechnet werden nach: | a,cr = 39,19 ln 11 | 0",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "a,cr = 39,19 ln 11",
+      "context": "die kritische Temperatur des Kohlenstoffstahls a,cr nach 1.1.2 (6) zum Zeitpunkt t für eine gleichmäßige | Temperaturverteilung im Bauteil für den Ausnutzungsgrad 0 zum Zeitpunkt t = 0 berechnet werden nach: | a,cr = 39,19 ln 11 | 0 | 3,833",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "4.22",
+      "line": "+ 482 (4.22)",
+      "context": "3,833 | 0,9674 | + 482 (4.22) | Dabei dürfen für 0 keine kleineren Werte als 0 = 0,013 angesetzt werden. | ANMERKUNG In Tabelle 4.1 werden für Ausnutzungsgrade 0 von 0,22 bis 0,80 Beispiele für die kritischen Tempera-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "Dabei dürfen für 0 keine kleineren Werte als 0 = 0,013 angesetzt werden.",
+      "context": "0,9674 | + 482 (4.22) | Dabei dürfen für 0 keine kleineren Werte als 0 = 0,013 angesetzt werden. | ANMERKUNG In Tabelle 4.1 werden für Ausnutzungsgrade 0 von 0,22 bis 0,80 Beispiele für die kritischen Tempera- | turen angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "(3) Der Ausnutzungsgrad 0 zum Zeitpunkt t = 0 von Bauteilen mit Querschnitten der Klassen 1, 2 oder 3 und",
+      "context": "ANMERKUNG In Tabelle 4.1 werden für Ausnutzungsgrade 0 von 0,22 bis 0,80 Beispiele für die kritischen Tempera- | turen angegeben. | (3) Der Ausnutzungsgrad 0 zum Zeitpunkt t = 0 von Bauteilen mit Querschnitten der Klassen 1, 2 oder 3 und | bei auf Zug beanspruchten Bauteilen darf berechnet werden nach: | 0 = Efi,d / Rfi,d,0 (4.23)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "4.23",
+      "line": "0 = Efi,d / Rfi,d,0 (4.23)",
+      "context": "(3) Der Ausnutzungsgrad 0 zum Zeitpunkt t = 0 von Bauteilen mit Querschnitten der Klassen 1, 2 oder 3 und | bei auf Zug beanspruchten Bauteilen darf berechnet werden nach: | 0 = Efi,d / Rfi,d,0 (4.23) | Dabei ist | Rfi,d,0 der Wert von Rfi,d,t zum Zeitpunkt t = 0 nach 4.2.3;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "Rfi,d,0 der Wert von Rfi,d,t zum Zeitpunkt t = 0 nach 4.2.3;",
+      "context": "0 = Efi,d / Rfi,d,0 (4.23) | Dabei ist | Rfi,d,0 der Wert von Rfi,d,t zum Zeitpunkt t = 0 nach 4.2.3; | Efi,d und Rfi,d,t nach 4.2.1(1). | (4) Alternativ darf der Ausnutzungsgrad 0 bei zugbeanspruchten Bauteilen und Trägern, bei denen das",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "4.24",
+      "line": "0 = fi [ M,fi / M0] (4.24)",
+      "context": "Biegedrillknicken als maßgebende Versagensform ausgeschlossen werden kann, auf der sicheren Seite | liegend berechnet werden nach: | 0 = fi [ M,fi / M0] (4.24) | Dabei ist | fi der Abminderungsfaktor nach 2.4.2 (3) .",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "a,t = ksh thc",
+      "context": "(1) Bei äquivalenter gleichmäßiger Temperatur im Querschnitt sollte der Temperaturanstieg a,t in einem | ungeschützten Stahlbauteil während eines Zeitintervalls t berechnet werden nach: | a,t = ksh thc | /VA | dnet,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "4.25",
+      "line": "m (4.25)",
+      "context": "dnet, | aa | m (4.25) | Dabei ist | ksh Korrekturfaktor für den Abschattungseffekt, siehe (2);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "4.26a",
+      "line": "ksh = 0,9 [Am/V]b/[Am/V] (4.26a)",
+      "context": "41 | (2) Bei I-Querschnitten unter nominaler Brandeinwirkung darf der Abschattungseffekt bestimmt werden mit: | ksh = 0,9 [Am/V]b/[Am/V] (4.26a) | Dabei ist | [Am/V]b der Profilfaktor für den das Profil umschließenden Kasten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "4.26b",
+      "line": "ksh = [Am/V]b/[Am/V] (4.26b)",
+      "context": "[Am/V]b der Profilfaktor für den das Profil umschließenden Kasten. | In allen anderen Fällen sollte für ksh der folgende Wert verwendet werden: | ksh = [Am/V]b/[Am/V] (4.26b) | ANMERKUNG 1 Bei allen Querschnitten konvexer Form (z. B. rechteckige oder runde Hohlquerschnitte), die von allen | Seiten dem Brand ausgesetzt sind, ist der Abschattungseffekt ohne Bedeutung, so dass er mit 1,0 angesetzt werden kann.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "ksh = 1,0).",
+      "context": "Seiten dem Brand ausgesetzt sind, ist der Abschattungseffekt ohne Bedeutung, so dass er mit 1,0 angesetzt werden kann. | ANMERKUNG 2 Konservative Ergebnisse werden erzielt, wenn der Abschattungseffekt nicht berücksichtigt wird (d. h. | ksh = 1,0). | (3) Die Größe von sollte nach EN 1991-1-2 unter Verwendung von f = 1,0 und m nach 2.2 (2) ermittelt | werden. Die Größen f und m sind in EN 1991-1-2 definiert.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "(3) Die Größe von sollte nach EN 1991-1-2 unter Verwendung von f = 1,0 und m nach 2.2 (2) ermittelt",
+      "context": "ANMERKUNG 2 Konservative Ergebnisse werden erzielt, wenn der Abschattungseffekt nicht berücksichtigt wird (d. h. | ksh = 1,0). | (3) Die Größe von sollte nach EN 1991-1-2 unter Verwendung von f = 1,0 und m nach 2.2 (2) ermittelt | werden. Die Größen f und m sind in EN 1991-1-2 definiert. | h dnet,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "(5) Die Größe des Profilfaktors Am / V in Gleichung (4.26) sollte nicht kleiner als 10 m-1 sein.",
+      "context": "h dnet, | (4) Die Schrittweite t sollte nicht größer als 5 Sekunden sein. | (5) Die Größe des Profilfaktors Am / V in Gleichung (4.26) sollte nicht kleiner als 10 m-1 sein. | ANMERKUNG In Tabelle 4.2 werden einige Gleichungen zur Berechnung des Profilfaktors Am / V von ungeschützten | Stahlbauteilen angegeben.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "Umfangm =V",
+      "context": "Offener Querschnitt mit allseitiger Brandeinwirkung: | tsflächeQuerschnit | Umfangm =V | A | Rohr mit allseitiger Brandeinwirkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "A m / V = 1 / t",
+      "context": "A | Rohr mit allseitiger Brandeinwirkung: | A m / V = 1 / t | Offener Querschnitt mit dreiseitiger Brandein- | wirkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "Oberflächepruchtebrandbeansm =V",
+      "context": "wirkung: | tsflächeQuerschnit | Oberflächepruchtebrandbeansm =V | A | Hohlquerschnitt (oder geschweißter Kasten) mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "A m / V = (b + 2tf ) / (btf )",
+      "context": "Flansch eines I-Querschnitts mit dreiseitiger Brand- | einwirkung: | A m / V = (b + 2tf ) / (btf ) | Wenn t « b: A m / V 1 / tf | Geschweißter Kastenquerschnitt mit allseitiger",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "m h)+2(b=V",
+      "context": "Brandeinwirkung: | tsflächeQuerschnit | m h)+2(b=V | A | Wenn t « b: Am / V 1 / t",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "Am / V = 2/t",
+      "context": "Wenn t « b: Am / V 1 / t | Winkel mit allseitiger Brandeinwirkung: | Am / V = 2/t | I-Querschnitt mit Kastenverstärkung und allseitiger | Brandeinwirkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "m h)+2(b=",
+      "context": "Brandeinwirkung: | tsflächeQuerschnit | m h)+2(b= | V | A",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "A m / V = 2(b + t) / (bt)",
+      "context": "A | Flachstahl mit allseitiger Brandeinwirkung: | A m / V = 2(b + t) / (bt) | Wenn t « b: A m / V 2 / t | Flachstahl mit dreiseitiger Brandeinwirkung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "A m / V = (b + 2t) / (bt)",
+      "context": "Wenn t « b: A m / V 2 / t | Flachstahl mit dreiseitiger Brandeinwirkung: | A m / V = (b + 2t) / (bt) | Wenn t « b: A m / V 1 / t | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "a,t = p p",
+      "context": "(1) Bei gleichmäßiger Temperaturverteilung über den Querschnitt sollte der Temperaturanstieg a,t eines | wärmegedämmten Stahlbauteils während des Zeitintervalls t berechnet werden nach: | a,t = p p | pa a | g,t a,tA /V",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "4.27",
+      "line": "(1 + /3) t  (e /1 0  1) g,t (aber a,t 0 wenn g,t > 0) (4.27)",
+      "context": "dc | ( - ) | (1 + /3) t  (e /1 0  1) g,t (aber a,t 0 wenn g,t > 0) (4.27) | mit: | /VAdc",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "a = 50 (fu,  fy, ) + 2 fy,  fu, (A.1a)",
+      "context": "(1) Die Verfestigung darf bei Temperaturen unter 400 C wie folgt berücksichtigt werden (siehe 3.2): | für 0,02 < < 0,04: | a = 50 (fu,  fy, ) + 2 fy,  fu, (A.1a) | für 0,04 0,15: | a = fu, (A.1b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "a = fu, (A.1b)",
+      "context": "a = 50 (fu,  fy, ) + 2 fy,  fu, (A.1a) | für 0,04 0,15: | a = fu, (A.1b) | für 0,15 < < 0,20: | = fu, [ 1  20 (  0,15)] (A.1c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "= fu, [ 1  20 (  0,15)] (A.1c)",
+      "context": "a = fu, (A.1b) | für 0,15 < < 0,20: | = fu, [ 1  20 (  0,15)] (A.1c) | für 0,20: | a = 0,00 (A.1d)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "a = 0,00 (A.1d)",
+      "context": "= fu, [ 1  20 (  0,15)] (A.1c) | für 0,20: | a = 0,00 (A.1d) | Dabei ist | fu, die Bruchfestigkeit unter erhöhter Temperatur unter Berücksichtigung der Verfestigung.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "fu, = 1,25 fy, (A.2a)",
+      "context": "bestimmt werden: | für a < 300 C: | fu, = 1,25 fy, (A.2a) | für 300 C a < 400 C: | fu, = fy, (2  0,0025 a) (A.2b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "fu, = fy, (2  0,0025 a) (A.2b)",
+      "context": "fu, = 1,25 fy, (A.2a) | für 300 C a < 400 C: | fu, = fy, (2  0,0025 a) (A.2b) | für a 400 C: | fu, = fy, (A.2c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "fu, = fy, (A.2c)",
+      "context": "fu, = fy, (2  0,0025 a) (A.2b) | für a 400 C: | fu, = fy, (A.2c) | ANMERKUNG Die Abhängigkeit der Spannungs-Dehnungsbeziehung von der Temperatur ist in Bild A.2 dargestellt. | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 52,
+      "equation_number": "unvollständig",
+      "line": "4 + Tm = Iz + If + 293 (B.1)",
+      "context": "der folgenden Wärmebilanz bestimmt werden: | Tm | 4 + Tm = Iz + If + 293 (B.1) | Dabei ist | die Stefan-Boltzmann-Konstante [56,7 10-12 kW/m2K4];",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 52,
+      "equation_number": "unvollständig",
+      "line": "abmessung d = (d1 + d2 ) / 2 entnommen werden.",
+      "context": "(2) Der konvektive Wärmeübergangskoeffizient sollte Anhang B der EN 1991-1-2 für Feuer mit Zwangsbe- | und Entlüftung  bzw. ohne Zwangsbe- und Entlüftung  unter Verwendung einer effektiven Querschnitts- | abmessung d = (d1 + d2 ) / 2 entnommen werden. | DIN EN 1993-1-2:2010-12 | EN 1993-1-2:2005 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "4 + Tm = Iz + If + Tz (B.2)",
+      "context": "52 | Tm | 4 + Tm = Iz + If + Tz (B.2) | Dabei ist | Tz die Temperatur der Flamme [K];",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "If = f f (1  az ) Tf",
+      "context": "werden. | (5) Der Wärmestrom If durch Strahlung aus einer Öffnung sollte ermittelt werden mit: | If = f f (1  az ) Tf | 4 (B.3) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 54,
+      "equation_number": "unvollständig",
+      "line": "f =",
+      "context": "(1) Der Gesamtkonfigurationsfaktor f eines Bauteils zur Berechnung der Wärmeübertragung durch | Strahlung aus einer Öffnung sollte wie folgt berechnet werden: | f = | d)C + C + (d)C + C( | d)C + C + (d)C + C( f,f,f,f,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "für eine geschützte Seite: C i = 0",
+      "context": "53 | Ci der Schutzbeiwert der Bauteilseite i, definiert wie folgt: | für eine geschützte Seite: C i = 0 | für eine ungeschützte Seite: Ci = 1 | (2) Der Konfigurationsfaktor f,i einer von der Öffnung nicht sichtbaren Bauteilseite sollte zu null gesetzt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "für eine ungeschützte Seite: Ci = 1",
+      "context": "Ci der Schutzbeiwert der Bauteilseite i, definiert wie folgt: | für eine geschützte Seite: C i = 0 | für eine ungeschützte Seite: Ci = 1 | (2) Der Konfigurationsfaktor f,i einer von der Öffnung nicht sichtbaren Bauteilseite sollte zu null gesetzt | werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "z =",
+      "context": "(3) Der Gesamtkonfigurationsfaktor z für die Berechnung der Wärmestrahlung einer Flamme sollte wie folgt | berechnet werden: | z = | d)C + C + (d)C + C( | d)C + C + (d)C + C( z,z,z,z,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "Iz = z z Tz",
+      "context": "(2) Wenn eine Stütze vor einer Öffnung steht, dann sollte der Wärmestrom Iz durch die Strahlung berechnet | werden nach: | Iz = z z Tz | 4 (B.6) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "Iz = ( z,m z,m + z,n z,n ) Tz",
+      "context": "(3) Für Stützen zwischen Öffnungen sollte der Wärmestrom durch Strahlung Iz der Flamme von jeder Seite | berechnet werden nach: | Iz = ( z,m z,m + z,n z,n ) Tz | 4 (B.7) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "= 2h / 3 (B.8a)",
+      "context": "werden: | ohne Zwangsbe- und Zwangsentlüftung\": | = 2h / 3 (B.8a) | mit Zwangsbe- und Zwangsentlüftung\": | = x aber hx / z (B.8b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 56,
+      "equation_number": "unvollständig",
+      "line": "= x aber hx / z (B.8b)",
+      "context": "= 2h / 3 (B.8a) | mit Zwangsbe- und Zwangsentlüftung\": | = x aber hx / z (B.8b) | Dabei sind h, x and z wie in EN 1991-1-2, Anhang B, angegeben. | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "= (B.9a) i",
+      "context": "58 | für Seite m : | = (B.9a) i | m | 1=i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "1=i",
+      "context": "= (B.9a) i | m | 1=i | für Seite n : | = (B.9b) i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "= (B.9b) i",
+      "context": "1=i | für Seite n : | = (B.9b) i | n | 1=i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "1=i",
+      "context": "= (B.9b) i | n | 1=i | Dabei ist | m die Zahl der Öffnungen auf der Seite m;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "i = wi (B.10a)",
+      "context": "(3) Die Flammendicke i sollte wie folgt angenommen werden: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | i = wi (B.10a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | i = wi + 0,4 s (B.10b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "i = wi + 0,4 s (B.10b)",
+      "context": "i = wi (B.10a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | i = wi + 0,4 s (B.10b) | Dabei ist | wi die Breite der Öffnung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "l = h / 2 (B.11a)",
+      "context": "sich wie folgt: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | l = h / 2 (B.11a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | für eine Stütze vor einer Öffnung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "l = 0 (B.11b)",
+      "context": "für den Fall mit Zwangsbe- und Zwangsentlüftung\": | für eine Stütze vor einer Öffnung: | l = 0 (B.11b) | bei einer Stütze zwischen Öffnungen ist die Länge l entlang der Flammenachse bis zu einem Punkt, der | im horizontalen Abstand s von der Wand des Brandabschnitts liegt, zu bestimmen. Wenn sich keine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 60,
+      "equation_number": "unvollständig",
+      "line": "l = s X / x (B.11c)",
+      "context": "im horizontalen Abstand s von der Wand des Brandabschnitts liegt, zu bestimmen. Wenn sich keine | Markisen oder Balkone über der Öffnung befinden, ergibt sich l zu: | l = s X / x (B.11c) | DIN EN 1993-1-2:2010-12 | EN 1993-1-2:2005 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 61,
+      "equation_number": "unvollständig",
+      "line": "Iz = z z Tz",
+      "context": "Stahlbauteils Tm an einem Punkt in dem Trägerbereich direkt über der Öffnung ermittelt werden. In diesem | Fall wird der Wärmestrom durch Strahlung berechnet nach: | Iz = z z Tz | 4 (B.12) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 61,
+      "equation_number": "unvollständig",
+      "line": "Iz = ( z,m z,m + z,n z,n ) Tz",
+      "context": "werden. Als Bauteiltemperatur Tm sollte die größte der ermittelten Temperaturen angenommen werden. In | diesem Fall wird der Wärmestrom durch Strahlung Iz wie folgt ermittelt: | Iz = ( z,m z,m + z,n z,n ) Tz | 4 (B.13) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "= 2h / 3 (B.14a)",
+      "context": "liegenden Balkone oder Markisen vorhanden sind, darf wie folgt berechnet werden: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | = 2h / 3 (B.14a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | = x aber hx / z (B.14b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "= x aber hx / z (B.14b)",
+      "context": "= 2h / 3 (B.14a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | = x aber hx / z (B.14b) | Dabei sind h, x und z wie in EN 1991-1-2, Anhang B, angegeben. | (2) Wenn der Träger senkrecht auf der Außenwand des Brandabschnittes liegt und sich zwischen zwei",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "= (B.15a) i",
+      "context": "Flammendicke ergibt sich zu: | für Seite m : | = (B.15a) i | m | 1=i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "1=i",
+      "context": "= (B.15a) i | m | 1=i | für Seite n : | = (B.15b) i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "= (B.15b) i",
+      "context": "1=i | für Seite n : | = (B.15b) i | n | 1=i",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "1=i",
+      "context": "= (B.15b) i | n | 1=i | Dabei ist | m die Zahl der Öffnungen auf der Seite m ;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "i = wi (B.16a)",
+      "context": "(3) Die Flammendicke i sollte wie folgt angenommen werden: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | i = wi (B.16a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | i = wi + 0,4 s (B.16b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "i = wi + 0,4 s (B.16b)",
+      "context": "i = wi (B.16a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | i = wi + 0,4 s (B.16b) | Dabei ist | wi die Breite der Öffnung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "l = h / 2 (B.17a)",
+      "context": "Flammenachse gemessen und ergibt sich wie folgt: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | l = h / 2 (B.17a) | für den Fall mit Zwangsbe- und Zwangsentlüftung\": | für Träger parallel zur Außenwand des Brandabschnitts und oberhalb einer Öffnung:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "l = 0 (B.17b)",
+      "context": "für den Fall mit Zwangsbe- und Zwangsentlüftung\": | für Träger parallel zur Außenwand des Brandabschnitts und oberhalb einer Öffnung: | l = 0 (B.17b) | für Träger senkrecht zur Außenwand des Brandabschnitts und zwischen Öffnungen ist l die Länge | entlang der Flammenachse bis zu einem Punkt, der im horizontalen Abstand s von der Wand des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "l = s X / x (B.17c)",
+      "context": "Brandabschnitts entfernt liegt. Wenn sich keine Markisen oder Balkone über der Öffnung befinden, | ergibt sich l zu: | l = s X / x (B.17c) | Dabei sind X und x wie in Anhang B von EN 1991-1-2 angegeben. | B.3.4 Absorptionswert der Flamme",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "Iz,1 = C1 z,1 Tz",
+      "context": "(B.18) | mit: | Iz,1 = C1 z,1 Tz | 4 | Iz,2 = C2 z,2 Tz",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "Iz,2 = C2 z,2 Tz",
+      "context": "Iz,1 = C1 z,1 Tz | 4 | Iz,2 = C2 z,2 Tz | 4 | Iz,3 = C3 z,3 To",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "Iz,3 = C3 z,3 To",
+      "context": "Iz,2 = C2 z,2 Tz | 4 | Iz,3 = C3 z,3 To | 4 | Iz,4 = C4 z,4 Tz",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "Iz,4 = C4 z,4 Tz",
+      "context": "Iz,3 = C3 z,3 To | 4 | Iz,4 = C4 z,4 Tz | 4 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "die Flammendicken in der Höhe zu ermitteln, in der 4 = 0 ist.",
+      "context": "siehe Bild B.6 b) (1). Liegt der Schnittpunkt oberhalb der Öffnung, dann werden die Flammendicken i in Höhe | der Öffnungsoberkante bestimmt, siehe Bild B.6 b) (2). Ist in diesem Fall die Flammendicke 4 < 0, dann sind | die Flammendicken in der Höhe zu ermitteln, in der 4 = 0 ist. | (5) Die Flammentemperatur Tz sollte mit der in Anhang B der EN 1991-1-2 angegebenen Gleichung für Tz im | Abstand l von der Öffnung ermittelt werden. Die Länge wird entlang der Flammenachse gemessen und ergibt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "l = h / 2 (B.19a)",
+      "context": "sich wie folgt: | für den Fall ohne Zwangsbe- und Zwangsentlüftung\": | l = h / 2 (B.19a) | für den Fall mit Zwangsbe- und Zwangsentlüftung  ist l die Strecke auf der Flammenachse bis zu der | Höhe, in der i bestimmt wird. Unter der Voraussetzung, dass sich keine Balkone oder Markisen oberhalb",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "l = ( 3 + 0,5 d1 ) X / x aber l 0,5 hX / z (B.19b)",
+      "context": "Höhe, in der i bestimmt wird. Unter der Voraussetzung, dass sich keine Balkone oder Markisen oberhalb | der Öffnung befinden, gilt: | l = ( 3 + 0,5 d1 ) X / x aber l 0,5 hX / z (B.19b) | Dabei sind h , X , x und z die Werte wie in EN 1991-1-2, Anhang B, angegeben. | (6) Der Absorptionswert der Flammen az sollte wie folgt berechnet werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "az =",
+      "context": "Dabei sind h , X , x und z die Werte wie in EN 1991-1-2, Anhang B, angegeben. | (6) Der Absorptionswert der Flammen az sollte wie folgt berechnet werden: | az = | 3 | 321 + + z,z,z, (B.20)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Iz,1 = C1 z,1 To",
+      "context": "darunter liegt. | (2) Falls die Flammenoberseite über der Trägeroberkante liegt, gilt: | Iz,1 = C1 z,1 To | 4 (B.22a) | Iz,2 = C2 z,2 Tz,2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Iz,2 = C2 z,2 Tz,2",
+      "context": "Iz,1 = C1 z,1 To | 4 (B.22a) | Iz,2 = C2 z,2 Tz,2 | 4 (B.22b) | Iz,3 = C3 z,3 ( Tz,1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Iz,3 = C3 z,3 ( Tz,1",
+      "context": "Iz,2 = C2 z,2 Tz,2 | 4 (B.22b) | Iz,3 = C3 z,3 ( Tz,1 | 4 + Tz,2 | 4 ) / 2 (B.22c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Iz,4 = C4 z,4 ( Tz,1",
+      "context": "4 + Tz,2 | 4 ) / 2 (B.22c) | Iz,4 = C4 z,4 ( Tz,1 | 4 + Tz,2 | 4 ) / 2 (B.22d)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,1 = C1 z,1 To",
+      "context": "68 | Iz,1 = C1 z,1 To | 4 (B.23a) | Iz,2 = 0 (B.23b)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,2 = 0 (B.23b)",
+      "context": "Iz,1 = C1 z,1 To | 4 (B.23a) | Iz,2 = 0 (B.23b) | Iz,3 = (hz / d2 ) C3 z,3 (Tz,1 | 4 + Tx",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,3 = (hz / d2 ) C3 z,3 (Tz,1",
+      "context": "4 (B.23a) | Iz,2 = 0 (B.23b) | Iz,3 = (hz / d2 ) C3 z,3 (Tz,1 | 4 + Tx | 4 ) / 2 (B.23c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,4 = (hz / d2 ) C4 z,4 (Tz,1",
+      "context": "4 + Tx | 4 ) / 2 (B.23c) | Iz,4 = (hz / d2 ) C4 z,4 (Tz,1 | 4 + Tx | 4 ) / 2 (B.23d)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,1 = C1 z,1 To",
+      "context": "ANMERKUNG Siehe Bild B.7. | (2) Für nicht an der Wand anliegende oder senkrecht darauf stehende Träger gilt in der Regel: | Iz,1 = C1 z,1 To | 4 (B.24a) | Iz,2 = C2 z,2 Tz,2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,2 = C2 z,2 Tz,2",
+      "context": "Iz,1 = C1 z,1 To | 4 (B.24a) | Iz,2 = C2 z,2 Tz,2 | 4 (B.24b) | Iz,3 = C3 z,3 ( Tz,1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,3 = C3 z,3 ( Tz,1",
+      "context": "Iz,2 = C2 z,2 Tz,2 | 4 (B.24b) | Iz,3 = C3 z,3 ( Tz,1 | 4 + Tz,2 | 4 ) / 2 (B.24c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,4 = C4 z,4 ( Tz,1",
+      "context": "4 + Tz,2 | 4 ) / 2 (B.24c) | Iz,4 = C4 z,4 ( Tz,1 | 4 + Tz,2 | 4 ) / 2 (B.24d)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "z,1 = C1 z,1 To",
+      "context": "durch die Wärmestrahlung der Flammenoberseite betroffen, siehe Bild B.7 b) (2). Deshalb gilt: | I | z,1 = C1 z,1 To | 4 (B.25a) | Iz,2 = z,2 C2 z,2 Tz,2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,2 = z,2 C2 z,2 Tz,2",
+      "context": "z,1 = C1 z,1 To | 4 (B.25a) | Iz,2 = z,2 C2 z,2 Tz,2 | 4 (B.25b) | Iz,3 = z,3 C3 z,3 ( Tz,1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,3 = z,3 C3 z,3 ( Tz,1",
+      "context": "Iz,2 = z,2 C2 z,2 Tz,2 | 4 (B.25b) | Iz,3 = z,3 C3 z,3 ( Tz,1 | 4 + Tz,2 | 4 ) / 2 (B.25c)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "Iz,4 = 0 (B.25d)",
+      "context": "4 + Tz,2 | 4 ) / 2 (B.25c) | Iz,4 = 0 (B.25d) | Dabei ist z,i der Konfigurationsfaktor der Flammenoberseite bezüglich der Seite i des Trägers nach Anhang G | von EN 1991-1-2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 70,
+      "equation_number": "unvollständig",
+      "line": "az = 1  e-0,3h (B.26)",
+      "context": "B.5.3 Absorptionswert der Flamme | (1) Der Absorptionswert der Flamme az sollte berechnet werden nach: | az = 1  e-0,3h (B.26) | DIN EN 1993-1-2:2010-12 | EN 1993-1-2:2005 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "Steigung im linear-elastischen Bereich, relativ zur Steigung bei 20 C: kE, = Ea, / Ea",
+      "context": "(3) Tabelle C.1 enthält die Abminderungsfaktoren für die Spannungs-Dehnungsbeziehung von nicht- | rostendem Stahl. Diese Abminderungsfaktoren sind wie folgt definiert: | Steigung im linear-elastischen Bereich, relativ zur Steigung bei 20 C: kE, = Ea, / Ea | Streckgrenze, relativ zur Streckgrenze bei 20 C: k0.2p, = f0,2p, / fy | Zugfestigkeit, relativ zur Zugfestigkeit bei 20 C: ku, = fu, / fu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "Streckgrenze, relativ zur Streckgrenze bei 20 C: k0.2p, = f0,2p, / fy",
+      "context": "rostendem Stahl. Diese Abminderungsfaktoren sind wie folgt definiert: | Steigung im linear-elastischen Bereich, relativ zur Steigung bei 20 C: kE, = Ea, / Ea | Streckgrenze, relativ zur Streckgrenze bei 20 C: k0.2p, = f0,2p, / fy | Zugfestigkeit, relativ zur Zugfestigkeit bei 20 C: ku, = fu, / fu | (4) Für die Anwendung von vereinfachten Berechnungsverfahren sind die Korrekturwerte k2%, für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "Zugfestigkeit, relativ zur Zugfestigkeit bei 20 C: ku, = fu, / fu",
+      "context": "Steigung im linear-elastischen Bereich, relativ zur Steigung bei 20 C: kE, = Ea, / Ea | Streckgrenze, relativ zur Streckgrenze bei 20 C: k0.2p, = f0,2p, / fy | Zugfestigkeit, relativ zur Zugfestigkeit bei 20 C: ku, = fu, / fu | (4) Für die Anwendung von vereinfachten Berechnungsverfahren sind die Korrekturwerte k2%, für die | Berechnung der Streckgrenze in Tabelle C.1 angegeben. Diese werden berechnet nach:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "fy, = f0,2p, + k2%, (fu,  f0,2p, ) (C.1)",
+      "context": "(4) Für die Anwendung von vereinfachten Berechnungsverfahren sind die Korrekturwerte k2%, für die | Berechnung der Streckgrenze in Tabelle C.1 angegeben. Diese werden berechnet nach: | fy, = f0,2p, + k2%, (fu,  f0,2p, ) (C.1) | (5) Für die Anwendung von erweiterten Berechnungsverfahren sind in Tabelle C.2 weitere Werte der | Spannungs-Dehnungsbeziehung von verschiedenen nichtrostenden Stahlsorten unter erhöhter Temperatur",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 72,
+      "equation_number": "unvollständig",
+      "line": "Steigung an der Streckgrenze, relativ zur Steigung bei 20 C: k Ect, = Ect, / Ea",
+      "context": "Spannungs-Dehnungsbeziehung von verschiedenen nichtrostenden Stahlsorten unter erhöhter Temperatur | angegeben. Diese werden berechnet nach: | Steigung an der Streckgrenze, relativ zur Steigung bei 20 C: k Ect, = Ect, / Ea | Bruchdehnung: u, | DIN EN 1993-1-2:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 73,
+      "equation_number": "unvollständig",
+      "line": "a = 7 850 kg/m3",
+      "context": "(1) Es darf angenommen werden, dass die Rohdichte von nichtrostendem Stahl a unabhängig von der | Temperatur ist. Der folgende Wert darf verwendet werden: | a = 7 850 kg/m3 | DIN EN 1993-1-2:2010-12 | EN 1993-1-2:2005 + AC:2009 (D)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "Parameter c, = f0.2p, / Ea, + 0,002",
+      "context": "cc | d | Parameter c, = f0.2p, / Ea, + 0,002 | Funktionen | b",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "fE=a",
+      "context": "pca | f | fE=a | ,,2.0 | ,2.0,,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "EfE=b",
+      "context": "capctc | ffE | EfE=b | , | ,,,,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "e=c 2",
+      "context": "cucu | E | e=c 2 | ,,, | 2 )( eEe=d ctcu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "2 )( eEe=d ctcu",
+      "context": "e=c 2 | ,,, | 2 )( eEe=d ctcu | )(2)( | )(",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "ff=e",
+      "context": "pu | ffE | ff=e | Legende | fu, Zugfestigkeit;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "kE, = Ea, / Ea",
+      "context": "Steigung im | elastischen Bereich | kE, = Ea, / Ea | Abminderungsfaktor | (relativ zu fy) für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "k0.2p, = f0.2p, / fy",
+      "context": "(relativ zu fy) für die | Streckgrenze | k0.2p, = f0.2p, / fy | Abminderungsfaktor | (relativ zu fu) für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 75,
+      "equation_number": "unvollständig",
+      "line": "ku, = fu, / fu",
+      "context": "(relativ zu fu) für die | Zugfestigkeit | ku, = fu, / fu | Faktor zur | Bestimmung der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "kE, = Ea, / Ea",
+      "context": "Steigung im | elastischen Bereich | kE, = Ea, / Ea | Abminderungsfaktor | (relativ zu fy) für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "k0.2p, = f0.2p, / fy",
+      "context": "(relativ zu fy) für die | Streckgrenze | k0.2p, = f0.2p, / fy | Abminderungsfaktor | (relativ zu fu) für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "ku, = fu, / fu",
+      "context": "(relativ zu fu) für die | Zugfestigkeit | ku, = fu, / fu | Faktor zur | Bestimmung der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 77,
+      "equation_number": "unvollständig",
+      "line": "kEct, = Ect, / Ea",
+      "context": "zu Ea) für die Steigung im | linear-elastischen Bereich | kEct, = Ect, / Ea | Bruchdehnung | u,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "kEct, = Ect, / Ea",
+      "context": "zu Ea) für die Steigung im | linear elastischen Bereich | kEct, = Ect, / Ea | Bruchdehnung | u,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "l / l = (16 + 4,79 10-3",
+      "context": "C.3.1 Thermische Dehnung | (1) Die thermische Dehnung von austenitischem nichtrostendem Stahl l / l darf wie folgt bestimmt werden: | l / l = (16 + 4,79 10-3 | a 1,243 10-6 | a",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "unvollständig",
+      "line": "ca = 450 + 0,280 a  2,91 10-4",
+      "context": "C.3.2 Spezifische Wärmekapazität | (1) Die spezifische Wärmekapazität von nichtrostendem Stahl ca darf wie folgt ermittelt werden: | ca = 450 + 0,280 a  2,91 10-4 | a | 2 + 1,34 10-7",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 80,
+      "equation_number": "unvollständig",
+      "line": "a = 14,6 + 1,27 10-2",
+      "context": "C.3.3 Wärmeleitfähigkeit | (1) Die Wärmeleitfähigkeit von nichtrostendem Stahl a darf wie folgt bestimmt werden: | a = 14,6 + 1,27 10-2 | a W/mK (C.3) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "h = 0,88 o [1  0,3(h/D)] (D.5)",
+      "context": "folgt bestimmt werden: | a) Falls die Trägerhöhe kleiner oder gleich 400 mm ist: | h = 0,88 o [1  0,3(h/D)] (D.5) | Dabei ist | h die Temperatur an der Höhe h (mm) des Stahlträgers (Bild D.1);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "h = 0,88 o (D.6)",
+      "context": "b) Falls die Trägerhöhe größer ist als 400 mm: | 1) Wenn h kleiner oder gleich D/2 ist: | h = 0,88 o (D.6) | 2) Wenn h größer ist als D/2: | h = 0,88 o [1 + 0,2 (1  2h/D)] (D.7)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "h = 0,88 o [1 + 0,2 (1  2h/D)] (D.7)",
+      "context": "h = 0,88 o (D.6) | 2) Wenn h größer ist als D/2: | h = 0,88 o [1 + 0,2 (1  2h/D)] (D.7) | Dabei ist | o die Temperatur des Unterflansches des Stahlträgers an einer von der Verbindung entfernten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 86,
+      "equation_number": "unvollständig",
+      "line": "Streckgrenze bezogen auf die Streckgrenze bei 20 °C: kp0,2, = fp0,2, / fy",
+      "context": "(4) Abminderungsfaktoren für die Streckgrenze für Kohlenstoffstahl (Baustahl), bezogen auf die Fließgrenze | bei 20 °C, dürfen Tabelle E.1 entnommen werden: | Streckgrenze bezogen auf die Streckgrenze bei 20 °C: kp0,2, = fp0,2, / fy | Steigung im linear-elastischen Bereich, bezogen auf die Steigung bei 20 °C: kE, = Ea, / Ea | ANMERKUNG Diese Abminderungsfaktoren sind in Bild E.1 dargestellt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 86,
+      "equation_number": "unvollständig",
+      "line": "Steigung im linear-elastischen Bereich, bezogen auf die Steigung bei 20 °C: kE, = Ea, / Ea",
+      "context": "bei 20 °C, dürfen Tabelle E.1 entnommen werden: | Streckgrenze bezogen auf die Streckgrenze bei 20 °C: kp0,2, = fp0,2, / fy | Steigung im linear-elastischen Bereich, bezogen auf die Steigung bei 20 °C: kE, = Ea, / Ea | ANMERKUNG Diese Abminderungsfaktoren sind in Bild E.1 dargestellt. | (5) Abminderungsfaktoren für die Streckgrenze von nichtrostendem Stahl, bezogen auf die Streckgrenze bei",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 87,
+      "equation_number": "unvollständig",
+      "line": "k0,2p, = f0,2p, / fy",
+      "context": "geschweißten Klasse 4 | Querschnitten | k0,2p, = f0,2p, / fy | Abminderungsfaktor (relativ | zu fyb) für die Bemessung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 87,
+      "equation_number": "unvollständig",
+      "line": "k0,2p, = f0,2p, / fyb",
+      "context": "von kaltverformten Klasse 4 | Querschnitten | k0,2p, = f0,2p, / fyb | 20 C 1,00 | 100 C 1,00",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "3.1",
+      "pdf_page": 25,
+      "line": "(3) Tabelle 3.1 enthält die Abminderungsfaktoren für die Spannungs-Dehnungsbeziehung von Stahl unter"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 27,
+      "line": "Tabelle 3.1  Abminderungsfaktoren für die Spannungs-Dehnungsbeziehung von"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 41,
+      "line": "ANMERKUNG In Tabelle 4.1 werden für Ausnutzungsgrade 0 von 0,22 bis 0,80 Beispiele für die kritischen Tempera-"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 42,
+      "line": "Tabelle 4.1  Kritische Temperaturen a,cr in Abhängigkeit des Ausnutzungsgrades 0"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 43,
+      "line": "ANMERKUNG In Tabelle 4.2 werden einige Gleichungen zur Berechnung des Profilfaktors Am / V von ungeschützten"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 44,
+      "line": "Tabelle 4.2  Profilfaktor Am / V für ungeschützte Stahlbauteile"
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 45,
+      "line": "ANMERKUNG In Tabelle 4.3 werden einige Bemessungswerte für den Profilfaktor Ap / V für wärmegedämmte Stahlbau-"
+    },
+    {
+      "label": "4.3",
+      "pdf_page": 46,
+      "line": "Tabelle 4.3  Profilfaktor Ap / V von Stahlbauteilen, die durch Brandschutzmaterialien geschützt"
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 82,
+      "line": "dass die Scherfuge im Schaft liegt (siehe Tabelle 3.4 von EN 1993-1-8);"
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 82,
+      "line": "Fb,Rd nach EN 1993-1.8, Tabelle 3.4;"
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 83,
+      "line": "Ft,Rd die Tragfähigkeit nach EN 1993-1-8, Tabelle 3.4;"
+    }
+  ],
+  "figures": [
+    {
+      "label": "0.1",
+      "pdf_page": 10,
+      "line": "Die Anwendung dieses Teils 1-2 ist in Bild 0.1 dargestellt. Die Ansätze mit festgelegten Vorgaben und mit"
+    },
+    {
+      "label": "0.1",
+      "pdf_page": 11,
+      "line": "Bild 0.1  Bemessungsverfahren"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 23,
+      "line": "Qk,1/Gk für verschiedene Größen des Kombinationsbeiwertes fi = 1,1 nach Gleichung (2.5) ist in Bild 2.1 angegeben;"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 24,
+      "line": "Bild 2.1  Abhängigkeit des Abminderungsfaktors fi vom Verhältnis von Qk,1 / Gk"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 25,
+      "line": "mungseigenschaften von Stahl unter erhöhter Temperatur der Spannungs-Dehnungsbeziehung in Bild 3.1 zu"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 25,
+      "line": "(2) Die Spannungs-Dehnungsbeziehung nach Bild 3.1 sollte für die Berechnung der Tragfähigkeiten bei Zug-,"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 25,
+      "line": "erhöhter Temperatur nach Bild 3.1. Diese Abminderungsfaktoren sind wie folgt definiert:"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 25,
+      "line": "ANMERKUNG Bild 3.2 stellt die Abhängigkeit dieser Abminderungsfaktoren von der Temperatur dar."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 26,
+      "line": "Bild 3.1  Spannungs-Dehnungsbeziehung von Stahl unter erhöhter Temperatur"
+    },
+    {
+      "label": "3.2",
+      "pdf_page": 28,
+      "line": "Bild 3.2  Abminderungsfaktoren für die Spannungs-Dehnungsbeziehung von Kohlenstoffstahl unter"
+    },
+    {
+      "label": "3.3",
+      "pdf_page": 29,
+      "line": "ANMERKUNG Die Abhängigkeit der Temperaturdehnung von der Temperatur ist in Bild 3.3 dargestellt."
+    },
+    {
+      "label": "3.3",
+      "pdf_page": 29,
+      "line": "Bild 3.3  Thermische Dehnung von Kohlenstoffstahl in Abhängigkeit von der Temperatur"
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 29,
+      "line": "ANMERKUNG Die Abhängigkeit der spezifischen Wärmekapazität von der Temperatur ist in Bild 3.4 dargestellt."
+    },
+    {
+      "label": "3.4",
+      "pdf_page": 30,
+      "line": "Bild 3.4  Spezifische Wärmekapazität von Kohlenstoffstahl in Abhängigkeit von der Temperatur"
+    },
+    {
+      "label": "3.5",
+      "pdf_page": 30,
+      "line": "ANMERKUNG Die Abhängigkeit der Wärmeleitfähigkeit von der Temperatur ist in Bild 3.5 dargestellt."
+    },
+    {
+      "label": "3.5",
+      "pdf_page": 31,
+      "line": "Bild 3.5  Wärmeleitfähigkeit von Kohlenstoffstahl in Abhängigkeit von der Temperatur"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 35,
+      "line": "relevanten Stockwerkes, siehe Bild 4.1."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 35,
+      "line": "Bild 4.1  Knicklängen lfi von Stützen in seitlich ausgesteiften Rahmen"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 39,
+      "line": "ANMERKUNG Die Anpassungsfaktoren M zur Berücksichtigung des Momentenverlaufs können Bild 4.2 entnommen"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 40,
+      "line": "Bild 4.2  Anpassungsfaktoren für den Momentenverlauf"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1008,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2504,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2195,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7106,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.4.1",
+        "2.4.2",
+        "2.4.3",
+        "2.4.4",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.3",
+        "3.4",
+        "3.4.1",
+        "3.4.2",
+        "3.4.3",
+        "4",
+        "4.1",
+        "4.2",
+        "4.2.1",
+        "4.2.2",
+        "4.2.3",
+        "4.2.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 7146,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.5",
+        "4.3",
+        "4.3.1",
+        "4.3.2",
+        "4.3.3",
+        "4.3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3183,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3219,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2924,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 3267,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2084,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 11,
+      "characters": 90,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2445,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2916,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2325,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2407,
+      "text_layer": "usable",
+      "clauses": [
+        "1.5.3",
+        "1.5.4",
+        "1.5.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2082,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1874,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2050,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1550,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1585,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "2",
+        "2.1",
+        "2.1.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2327,
+      "text_layer": "usable",
+      "clauses": [
+        "2.1.2",
+        "2.1.3",
+        "2.2",
+        "2.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 22,
+      "characters": 2316,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4",
+        "2.4.1",
+        "2.4.2"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1649,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2008,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2319,
+      "text_layer": "usable",
+      "clauses": [
+        "2.4.4",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 26,
+      "characters": 660,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 27,
+      "characters": 940,
+      "text_layer": "usable",
+      "clauses": [
+        "20",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 28,
+      "characters": 806,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3",
+        "3.4",
+        "3.4.1",
+        "3.4.1.1"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 29,
+      "characters": 774,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.1.2",
+        "3",
+        "13002"
+      ],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 30,
+      "characters": 497,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.1.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1134,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4.2",
+        "3.4.3",
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 2522,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2",
+        "4.2.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1903,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.2",
+        "4.2.3",
+        "4.2.3.1"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2191,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1717,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3.3"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1803,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 37,
+      "characters": 1778,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3.4"
+      ],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 38,
+      "characters": 2501,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3.5"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 39,
+      "characters": 998,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 40,
+      "characters": 948,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.3.6"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 41,
+      "characters": 1354,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.4"
+      ],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1348,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.5",
+        "4.2.5.1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1212,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 44,
+      "characters": 1085,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 45,
+      "characters": 2120,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.5.2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1510,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.5.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 47,
+      "characters": 2677,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.5.4",
+        "4.3",
+        "4.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 2491,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3.2",
+        "4.3.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 49,
+      "characters": 1153,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1011,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 51,
+      "characters": 287,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 2143,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 53,
+      "characters": 386,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 54,
+      "characters": 1733,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 55,
+      "characters": 2141,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 56,
+      "characters": 1166,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 57,
+      "characters": 180,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 182,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 59,
+      "characters": 439,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 60,
+      "characters": 1324,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 61,
+      "characters": 2108,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 62,
+      "characters": 193,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 63,
+      "characters": 1475,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 64,
+      "characters": 1691,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 65,
+      "characters": 422,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 66,
+      "characters": 188,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 67,
+      "characters": 2924,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 68,
+      "characters": 1265,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 69,
+      "characters": 274,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 70,
+      "characters": 1871,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 13
+    },
+    {
+      "pdf_page": 71,
+      "characters": 162,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 72,
+      "characters": 2306,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 73,
+      "characters": 247,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 74,
+      "characters": 751,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 6
+    },
+    {
+      "pdf_page": 75,
+      "characters": 1549,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 76,
+      "characters": 1101,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 77,
+      "characters": 995,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 78,
+      "characters": 1043,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 79,
+      "characters": 592,
+      "text_layer": "usable",
+      "clauses": [
+        "3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 80,
+      "characters": 445,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 81,
+      "characters": 149,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 82,
+      "characters": 1681,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 83,
+      "characters": 1427,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 84,
+      "characters": 1794,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 85,
+      "characters": 145,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 86,
+      "characters": 1636,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 87,
+      "characters": 767,
+      "text_layer": "usable",
+      "clauses": [
+        "20",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 88,
+      "characters": 215,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

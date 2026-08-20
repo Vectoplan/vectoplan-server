@@ -1,0 +1,2365 @@
+{
+  "document_id": "EN_1995-1-1_NA__national_annex__EC_5_Teil_1-1_NA",
+  "eurocode_family": "EC5",
+  "designation": "DIN EN 1995-1-1/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 5 Teil 1-1 NA.pdf",
+  "relative_path": "EC 5/EC 5 Teil 1-1 NA.pdf",
+  "sha256": "7fafa371689a730005d35e9d56cf1d95aadcb978faea76014ae5d3ad3cba6af3",
+  "pages": 99,
+  "text_pages": 98,
+  "weak_or_scanned_pages": 1,
+  "clause_count": 92,
+  "equation_candidate_count": 138,
+  "table_reference_count": 10,
+  "figure_reference_count": 9,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161957+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161957+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 5\\EC 5 Teil 1-1 NA.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Einwirkung KLED",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2",
+      "title": "Wichten- und Flächenlasten nach DIN 1055-1 ständig",
+      "pdf_page": 15
+    },
+    {
+      "clause": "3",
+      "title": "Lotrechte Nutzlasten nach DIN 1055-3",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4",
+      "title": "Horizontale Nutzlasten nach DIN 1055-3",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5",
+      "title": "Windlasten nach DIN 1055-4 kurz /",
+      "pdf_page": 15
+    },
+    {
+      "clause": "6",
+      "title": "Schneelast und Eislast nach DIN 1055-5",
+      "pdf_page": 15
+    },
+    {
+      "clause": "7",
+      "title": "Anpralllasten nach DIN 1055-9 sehr kurz",
+      "pdf_page": 15
+    },
+    {
+      "clause": "8",
+      "title": "Horizontallasten aus Kran- und Maschinenbetrieb nach DIN 1055-10 kurz",
+      "pdf_page": 15
+    },
+    {
+      "clause": "1",
+      "title": "Baustoff M",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2",
+      "title": "Vollholz, Spanplatten, Harte Faserplatten, Mittelharte Faserplatten, MDF-Faserplatten, Weiche",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3",
+      "title": "Stahl in Verbindungen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1",
+      "title": "Baustoff M",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2",
+      "title": "Balkenschichtholz, Brettsperrholz, Massivholzplatten, Faserverstärkte Gipsplatten, Gipsplatten,",
+      "pdf_page": 16
+    },
+    {
+      "clause": "1",
+      "title": "Baustoff Norm Nutzungs-",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1",
+      "title": "Baustoff Norm",
+      "pdf_page": 17
+    },
+    {
+      "clause": "4",
+      "title": "Zementgebundene",
+      "pdf_page": 17
+    },
+    {
+      "clause": "1",
+      "title": "Nutzungsklasse 1 2 3",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2",
+      "title": "Gleichsgewichtsfeuchte (5 bis",
+      "pdf_page": 18
+    },
+    {
+      "clause": "1",
+      "title": "Fichte, Kiefer, Tanne, Lärche, Douglasie, Western",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2",
+      "title": "Buche 0,30",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3",
+      "title": "Teak, Yellow Cedar 0,20",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4",
+      "title": "Azobé (Bongossi), Ipe 0,36",
+      "pdf_page": 19
+    },
+    {
+      "clause": "7",
+      "title": "Kunstharzgebundene Spanplatten; Faserplatten 0,035",
+      "pdf_page": 19
+    },
+    {
+      "clause": "8",
+      "title": "Zementgebundene Spanplatten 0,03",
+      "pdf_page": 19
+    },
+    {
+      "clause": "2",
+      "title": "GG (NA.2)",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5",
+      "title": "GG (NA.3)",
+      "pdf_page": 20
+    },
+    {
+      "clause": "1",
+      "title": "Nenndicke der Platten",
+      "pdf_page": 22
+    },
+    {
+      "clause": "2",
+      "title": "Biegung fm,k 9",
+      "pdf_page": 22
+    },
+    {
+      "clause": "3",
+      "title": "Druck fc,90,k 12",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4",
+      "title": "Schub fv,k 2",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5",
+      "title": "Biegung fm,k 8",
+      "pdf_page": 22
+    },
+    {
+      "clause": "6",
+      "title": "Zug ft,k 2,5",
+      "pdf_page": 22
+    },
+    {
+      "clause": "7",
+      "title": "Druck fc,k 11,5",
+      "pdf_page": 22
+    },
+    {
+      "clause": "8",
+      "title": "Schub fv,k 6,5",
+      "pdf_page": 22
+    },
+    {
+      "clause": "9",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 22
+    },
+    {
+      "clause": "10",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 22
+    },
+    {
+      "clause": "11",
+      "title": "Schubmodul Gmean",
+      "pdf_page": 22
+    },
+    {
+      "clause": "12",
+      "title": "Rohdichte k 1 000",
+      "pdf_page": 22
+    },
+    {
+      "clause": "1",
+      "title": "Technische Klasse HB.HLA2",
+      "pdf_page": 24
+    },
+    {
+      "clause": "2",
+      "title": "Nenndicke der Platten in mm > 3,5 bis 5,5 > 5,5 10 > 10",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3",
+      "title": "Biegung fm,k 35,0 32,0 17,0 15,0",
+      "pdf_page": 24
+    },
+    {
+      "clause": "4",
+      "title": "Druck fc,90,k 12,0 12,0 8,0 8,0",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5",
+      "title": "Schub fv,k 3,0 2,5 0,3 0,25",
+      "pdf_page": 24
+    },
+    {
+      "clause": "6",
+      "title": "Biegung fm,k 26,0 23,0 9,0 8,0",
+      "pdf_page": 24
+    },
+    {
+      "clause": "7",
+      "title": "Zug ft,k 26,0 23,0 9,0 8,0",
+      "pdf_page": 24
+    },
+    {
+      "clause": "8",
+      "title": "Druck fc,k 27,0 24,0 9,0 8,0",
+      "pdf_page": 24
+    },
+    {
+      "clause": "9",
+      "title": "Schub fv,k 18 16 5,5 4,5",
+      "pdf_page": 24
+    },
+    {
+      "clause": "10",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 24
+    },
+    {
+      "clause": "11",
+      "title": "Schubmodul Gmean",
+      "pdf_page": 24
+    },
+    {
+      "clause": "12",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 24
+    },
+    {
+      "clause": "13",
+      "title": "Schubmodul Gmean",
+      "pdf_page": 24
+    },
+    {
+      "clause": "14",
+      "title": "Rohdichte k 850 800 650 600",
+      "pdf_page": 24
+    },
+    {
+      "clause": "1",
+      "title": "Beanspruchung Parallel zur",
+      "pdf_page": 25
+    },
+    {
+      "clause": "2",
+      "title": "Nenndicke der Platten",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3",
+      "title": "Biegung fm,k 6,5 5,4 4,2 2,0 1,8 1,5",
+      "pdf_page": 25
+    },
+    {
+      "clause": "4",
+      "title": "Druck fc,90,k 3,5 (5,5)b",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5",
+      "title": "Biegung fm,k 4,0 3,8 3,6 2,0 1,7 1,4",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6",
+      "title": "Zug ft,k 1,7 1,4 1,1 0,7",
+      "pdf_page": 25
+    },
+    {
+      "clause": "7",
+      "title": "Druck fc,k 3,5 (5,5)b 4,2 (4,8) b",
+      "pdf_page": 25
+    },
+    {
+      "clause": "8",
+      "title": "Schub fv,k 1,0",
+      "pdf_page": 25
+    },
+    {
+      "clause": "9",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 25
+    },
+    {
+      "clause": "10",
+      "title": "Elastizitätsmodul Emean",
+      "pdf_page": 25
+    },
+    {
+      "clause": "11",
+      "title": "Schubmodul Gmean",
+      "pdf_page": 25
+    },
+    {
+      "clause": "12",
+      "title": "Rohdichte k 680 (800)b",
+      "pdf_page": 25
+    },
+    {
+      "clause": "1",
+      "title": "Lamellen a Ey /Ex Gxz /Ex Gxy/G xz Gyz/G xz",
+      "pdf_page": 29
+    },
+    {
+      "clause": "1",
+      "title": "Befestigungsmittel",
+      "pdf_page": 38
+    },
+    {
+      "clause": "2",
+      "title": "Fuge",
+      "pdf_page": 38
+    },
+    {
+      "clause": "1",
+      "title": "Gefährdeter Bereich",
+      "pdf_page": 45
+    },
+    {
+      "clause": "1",
+      "title": "Stahlstabdurchmesser Ø dr",
+      "pdf_page": 48
+    },
+    {
+      "clause": "2",
+      "title": "Verstärkungsplatten",
+      "pdf_page": 48
+    },
+    {
+      "clause": "2",
+      "title": "F (NA.96)",
+      "pdf_page": 54
+    },
+    {
+      "clause": "1",
+      "title": "Holzwerkstoff",
+      "pdf_page": 63
+    },
+    {
+      "clause": "4",
+      "title": "Kunstharzgebundene Spanplatten der",
+      "pdf_page": 63
+    },
+    {
+      "clause": "6",
+      "title": "Faserplatten der technischen Klasse HB.HLA2",
+      "pdf_page": 63
+    },
+    {
+      "clause": "7",
+      "title": "Gipsplatten nach DIN 18180 1,1 10 · d ",
+      "pdf_page": 63
+    },
+    {
+      "clause": "1",
+      "title": "Stahlblech",
+      "pdf_page": 65
+    },
+    {
+      "clause": "1",
+      "title": "Nageltyp fax,k Nageltyp fhead,k",
+      "pdf_page": 66
+    },
+    {
+      "clause": "2",
+      "title": "A1 130 12 24",
+      "pdf_page": 70
+    },
+    {
+      "clause": "2",
+      "title": "C1 75 10 d1",
+      "pdf_page": 70
+    },
+    {
+      "clause": "3",
+      "title": "C1 95 10 30",
+      "pdf_page": 70
+    },
+    {
+      "clause": "4",
+      "title": "C10 10 30",
+      "pdf_page": 70
+    },
+    {
+      "clause": "1",
+      "title": "Dübel, Typ nach NCI NA.8.11 (NA.1)",
+      "pdf_page": 71
+    },
+    {
+      "clause": "2",
+      "title": "Rundstahl Ø 24 bis 40 mm",
+      "pdf_page": 71
+    },
+    {
+      "clause": "1",
+      "title": "Modifikationsbeiwert Wert",
+      "pdf_page": 76
+    },
+    {
+      "clause": "1",
+      "title": "Stelle 1",
+      "pdf_page": 86
+    },
+    {
+      "clause": "2",
+      "title": "Stelle 2",
+      "pdf_page": 86
+    },
+    {
+      "clause": "1",
+      "title": "Blockfuge",
+      "pdf_page": 88
+    },
+    {
+      "clause": "1",
+      "title": "Lagesicherung",
+      "pdf_page": 89
+    },
+    {
+      "clause": "1",
+      "title": "Fachwerkrahmen",
+      "pdf_page": 94
+    },
+    {
+      "clause": "2",
+      "title": "Vollwandrahmen mit I-Querschnitt",
+      "pdf_page": 94
+    },
+    {
+      "clause": "1.4",
+      "title": "Draufsicht:",
+      "pdf_page": 97
+    },
+    {
+      "clause": "3.2",
+      "title": "Draufsicht:",
+      "pdf_page": 97
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,8 · Emean, G05 = 0,8 · Gmean.",
+      "context": "Rohdichtekennwerte in kg/m3 | 12 Rohdichte k 1 000 | a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,8 · Emean, G05 = 0,8 · Gmean. | NCI NA.3.5.5 Faserplatten | NCI NA.3.5.5.1 Anforderungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,8 · Emean, G05 = 0,8 · Gmean.",
+      "context": "Rohdichtekennwerte in kg/m3 | 14 Rohdichte k 850 800 650 600 | a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,8 · Emean, G05 = 0,8 · Gmean. | NCI NA.3.5.6 Gipsplatten | NCI NA.3.5.6.1 Anforderungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,9 · Emean, G05 = 0,9 · Gmean.",
+      "context": "Rohdichtekennwerte in kg/m3 | 12 Rohdichte k 680 (800)b | a Für die charakteristischen Steifigkeitskennwerte E05 und G05 gelten die Rechenwerte: E05 = 0,9 · Emean, G05 = 0,9 · Gmean. | b Werte in Klammern gelten für GKF- und GKFI-Platten. | c Bei unter Verwendung einer Gipsplatte der Nenndicke 18 mm bemessenen Bauteilen können im Rahmen der Ausführung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "Ku nach Gleichung (2.1) berechnet werden. Die Steifigkeitswerte sind in Richtung der Hauptachsen unter",
+      "context": "oder Druckplatten) sind, dürfen mit linear-elastischem Baustoffverhalten und den Steifigkeitswerten nach den | Gleichungen (2.15) und (2.16) und den durch den Teilsicherheitsbeiwert M dividierten Verschiebungsmoduln | Ku nach Gleichung (2.1) berechnet werden. Die Steifigkeitswerte sind in Richtung der Hauptachsen unter | Berücksichtigung des Querschnittsaufbaus zu ermitteln. | (NA.2) Ebene Flächen dürfen für Lasten in der Ebene als Scheiben und für Lasten rechtwinklig zur Ebene",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "beachten. Wenn die x-Richtung mit der Faserrichtung übereinstimmt, ist yz = zy der Rollschub.",
+      "context": "Bild NA.1 bezeichnet. | (NA.4) Beanspruchungen rechtwinklig zur Faserrichtung (Querdruck und Querzug) und Rollschub sind zu | beachten. Wenn die x-Richtung mit der Faserrichtung übereinstimmt, ist yz = zy der Rollschub. | NCI NA.5.5.2 Flächen aus miteinander verklebten Schichten | (NA.1) Für Flächentragwerke mit Querschnitten aus geklebten Schichten (z. B. Brettsperrholz und verklebte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 29,
+      "equation_number": "unvollständig",
+      "line": "R,mean = 0,10 · Gmean angenommen werden.",
+      "context": "Schubmodul für die Rollschub-Beanspruchung darf für Nadelholz und für Brettschichtholz mit | G | R,mean = 0,10 · Gmean angenommen werden. | (NA.5) Für den Elastizitätsmodul, den Schubmodul und die Verbindungsmittelsteifigkeiten sind für den | Nachweis der Tragsicherheit die durch den Sicherheitsbeiwert geteilten Mittelwerte zu verwenden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "(NA.4) Verwindung der xy-Ebene (Drillmoment mxy = myx), Drillsteifigkeit Bxy und Schubspannung xy = yx",
+      "context": "y | ,, (NA.8) | (NA.4) Verwindung der xy-Ebene (Drillmoment mxy = myx), Drillsteifigkeit Bxy und Schubspannung xy = yx | für auch an den Schmalseiten verklebte Brettlagen: | 62",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "(NA.4) Gleitung der xy-Ebene (Schubkraft nxy), Schubsteifigkeit Dxy und Schubspannung xy = yx für auch",
+      "context": "yiy,iy, D | nE (NA.24) | (NA.4) Gleitung der xy-Ebene (Schubkraft nxy), Schubsteifigkeit Dxy und Schubspannung xy = yx für auch | an den Schmalseiten verklebte Brettlagen: | iixy,yx dGD (NA.25)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 32,
+      "equation_number": "unvollständig",
+      "line": "(NA.5) Gleitung der xy-Ebene (Schubkraft nxy), Schubsteifigkeit Dxy und Schubspannung xy = yx für an den",
+      "context": "ixy, D | nGxy,i (NA.26) | (NA.5) Gleitung der xy-Ebene (Schubkraft nxy), Schubsteifigkeit Dxy und Schubspannung xy = yx für an den | Schmalseiten nicht verklebte Brettlagen: | iixy,yx 4",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "(NA.3) Verwindung der xy-Ebene (Drillmoment mAxy = mAyx), Drillsteifigkeit BAxy und Schubrandspannung der",
+      "context": "B | mE (NA.33) | (NA.3) Verwindung der xy-Ebene (Drillmoment mAxy = mAyx), Drillsteifigkeit BAxy und Schubrandspannung der | Schicht i, xy,i = yx,i: | 6",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "Schicht i, xy,i = yx,i:",
+      "context": "mE (NA.33) | (NA.3) Verwindung der xy-Ebene (Drillmoment mAxy = mAyx), Drillsteifigkeit BAxy und Schubrandspannung der | Schicht i, xy,i = yx,i: | 6 | 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "(NA.3) Verwindung der xy-Ebene (Drillmoment mBxy = mByx), Drillsteifigkeit BBxy und Schubspannung in der",
+      "context": "Byiy,iy, zB | mE (NA.39) | (NA.3) Verwindung der xy-Ebene (Drillmoment mBxy = mByx), Drillsteifigkeit BBxy und Schubspannung in der | Schicht i, xy,i = yx,i:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "Schicht i, xy,i = yx,i:",
+      "context": "mE (NA.39) | (NA.3) Verwindung der xy-Ebene (Drillmoment mBxy = mByx), Drillsteifigkeit BBxy und Schubspannung in der | Schicht i, xy,i = yx,i:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "unvollständig",
+      "line": "und bei Vernachlässigung des Einflusses der Fugenbreite (Näherung, dix = diy = d; e = ex = ey bx = by):",
+      "context": "(NA.51) | (NA.5) Gleitung in xy-Ebene (Schubkraft nxy), Schubsteifigkeit Dxy bei Brettlagen aus identischen Brettern | und bei Vernachlässigung des Einflusses der Fugenbreite (Näherung, dix = diy = d; e = ex = ey bx = by): | dGn | n",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "aus Nadelholz der Wert kc,90 = 1,75 anzunehmen.",
+      "context": "mit Auflagerdruck. | (NA.5) Für Bauteile auf Einzellagerung mit 1 2 h ist für Auflagerlängen > 400 mm bei Brettschichtholz | aus Nadelholz der Wert kc,90 = 1,75 anzunehmen. | (NA.6) Bei Auflagerknoten von Stabwerken mit indirekten Verbindungen gilt kc,90=1,5. | NDP Zu 6.1.7(2) Schub",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "(NA.6) Bei Auflagerknoten von Stabwerken mit indirekten Verbindungen gilt kc,90=1,5.",
+      "context": "(NA.5) Für Bauteile auf Einzellagerung mit 1 2 h ist für Auflagerlängen > 400 mm bei Brettschichtholz | aus Nadelholz der Wert kc,90 = 1,75 anzunehmen. | (NA.6) Bei Auflagerknoten von Stabwerken mit indirekten Verbindungen gilt kc,90=1,5. | NDP Zu 6.1.7(2) Schub | Für Holzwerkstoffe nach DIN EN 13986 und DIN EN 14374 und für Vollholz aus Laubholz gelten die in",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "Für Vollholz und Balkenschichtholz aus Nadelholz gilt kcr =",
+      "context": "Für Holzwerkstoffe nach DIN EN 13986 und DIN EN 14374 und für Vollholz aus Laubholz gelten die in | DIN EN 1995-1-1 empfohlenen Werte. | Für Vollholz und Balkenschichtholz aus Nadelholz gilt kcr = | kv, | 02",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "Für Brettschichtholz gilt kcr =",
+      "context": "f | , mit fv,k in N/mm². | Für Brettschichtholz gilt kcr = | kv, | 52",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 39,
+      "equation_number": "unvollständig",
+      "line": "Für Brettsperrholz gilt kcr = 1,0.",
+      "context": "f | , mit fv,k in N/mm². | Für Brettsperrholz gilt kcr = 1,0. | Bei Stäben aus Nadelschnittholz dürfen die Werte für kcr in Bereichen die mindestens 1,50 m vom | Hirnholzende des Holzes entfernt liegen, um 30 % erhöht werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 40,
+      "equation_number": "unvollständig",
+      "line": "Querkraft geführt werden. Als maßgebend darf die Querkraft im Abstand h (h = Trägerhöhe über",
+      "context": "der Nachweis der Schubspannungen und gegebenenfalls der Schubverbindungsmittel im Bereich von End- | und Zwischenauflagern, wenn dort keine Ausklinkungen und Durchbrüche sind, mit der maßgebenden | Querkraft geführt werden. Als maßgebend darf die Querkraft im Abstand h (h = Trägerhöhe über | Auflagermitte) vom Auflagerrand angenommen werden. Bei Trägern mit geneigtem Rand kann die | Bauteilhöhe über der Symmetrieachse des Auflagers angesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "kc,y Knickbeiwert nach Gleichung (6.25) für Knicken um die y-Achse;",
+      "context": "ffkfk ( NA.59) | Dabei ist | kc,y Knickbeiwert nach Gleichung (6.25) für Knicken um die y-Achse; | kc,z Knickbeiwert nach Gleichung (6.26) für Knicken um die z-Achse; | kcrit Kippbeiwert nach Gleichung (6.34).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "kc,z Knickbeiwert nach Gleichung (6.26) für Knicken um die z-Achse;",
+      "context": "Dabei ist | kc,y Knickbeiwert nach Gleichung (6.25) für Knicken um die y-Achse; | kc,z Knickbeiwert nach Gleichung (6.26) für Knicken um die z-Achse; | kcrit Kippbeiwert nach Gleichung (6.34). | NDP Zu 6.4.3 (8) Satteldachträger, gekrümmte Träger und Satteldachträger mit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "kcrit Kippbeiwert nach Gleichung (6.34).",
+      "context": "kc,y Knickbeiwert nach Gleichung (6.25) für Knicken um die y-Achse; | kc,z Knickbeiwert nach Gleichung (6.26) für Knicken um die z-Achse; | kcrit Kippbeiwert nach Gleichung (6.34). | NDP Zu 6.4.3 (8) Satteldachträger, gekrümmte Träger und Satteldachträger mit | gekrümmtem Untergurt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "Es gilt Gleichung (6.54).",
+      "context": "NDP Zu 6.4.3 (8) Satteldachträger, gekrümmte Träger und Satteldachträger mit | gekrümmtem Untergurt | Es gilt Gleichung (6.54). | NCI Zu 6.4.3 Satteldachträger, gekrümmte Träger und Satteldachträger mit | gekrümmtem Untergurt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "nach Gleichung (6.50) und (6.53) Verstärkungen nach NCI NA.6.8.5 empfohlen.",
+      "context": "und Satteldachträger mit gekrümmtem Untergurt immer Verstärkungen nach NCI NA.6.8.5 empfohlen. Für | Satteldachträger mit geradem Untergurt werden ab einem Ausnutzungsgrad 0.8 im Nachweis der Querzugspannungen | nach Gleichung (6.50) und (6.53) Verstärkungen nach NCI NA.6.8.5 empfohlen. | ANMERKUNG 3 Hinweise zu Trägern mit sogenannter hochgesetzter Trockenfuge  bzw. bei Trägern mit | unterschiedlicher Neigung des Ober- und Untergurtes können [2] entnommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "(NA.3) Für Träger mit Ausklinkungen auf der Gegenseite des Auflagers (siehe Bild 6.11) ist kv = 1. Falls",
+      "context": "42 | NCI Zu 6.5.2 Biegestäbe mit Ausklinkungen am Auflager | (NA.3) Für Träger mit Ausklinkungen auf der Gegenseite des Auflagers (siehe Bild 6.11) ist kv = 1. Falls | x < hef ist, darf kv wie folgt bestimmt werden: | ef",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 42,
+      "equation_number": "unvollständig",
+      "line": "kt,90 = min 5,0/450;1 h , h in mm",
+      "context": "ft,90,d Bemessungswert der Zugfestigkeit des Brett- oder Furnierschichtholzes rechtwinklig zur | Faserrichtung, | kt,90 = min 5,0/450;1 h , h in mm",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "Ft, 90, d = Ft,V,d + Ft,M,d (NA.64)",
+      "context": "hh 5,0353,0 dt,90 für kreisförmige Durchbrüche (NA.63) | Der Bemessungswert der Zugkraft ist dabei wie folgt zu ermitteln: | Ft, 90, d = Ft,V,d + Ft,M,d (NA.64) | mit | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "hr = min {hro; hru} für rechteckige Durchbrüche;",
+      "context": "Dabei ist | Vd der Betrag des Bemessungswertes der Querkraft am Durchbruchsrand; | hr = min {hro; hru} für rechteckige Durchbrüche; | hr = min {hro + 0,15 · hd; hru + 0,15 · hd} für kreisförmige Durchbrüche; | Md der Betrag des Bemessungswertes des Biegemomentes am Durchbruchsrand.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 43,
+      "equation_number": "unvollständig",
+      "line": "hr = min {hro + 0,15 · hd; hru + 0,15 · hd} für kreisförmige Durchbrüche;",
+      "context": "Vd der Betrag des Bemessungswertes der Querkraft am Durchbruchsrand; | hr = min {hro; hru} für rechteckige Durchbrüche; | hr = min {hro + 0,15 · hd; hru + 0,15 · hd} für kreisförmige Durchbrüche; | Md der Betrag des Bemessungswertes des Biegemomentes am Durchbruchsrand. | In Gleichung (NA.65) darf bei runden Durchbrüchen anstelle von hd der Wert 0,7 · hd eingesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "Ft,90,d = [1  3 · 2 + 2 3] · F90,d (NA.67)",
+      "context": "t,90,d | bemessen werden: | Ft,90,d = [1  3 · 2 + 2 3] · F90,d (NA.67) | Dabei ist | F90,d der Bemessungswert der Anschlusskraft rechtwinklig zur Faserrichtung des Holzes;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 44,
+      "equation_number": "unvollständig",
+      "line": "= h",
+      "context": "Dabei ist | F90,d der Bemessungswert der Anschlusskraft rechtwinklig zur Faserrichtung des Holzes; | = h | a siehe Bild NA.7 . | (NA.2) Bei der Aufnahme der Zugkraft Ft,90,d nach Gleichung (NA.67) durch Stahlstäbe ist für die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "ad = min { ad,c; ad,t} siehe Bild NA.7;",
+      "context": "45 | Dabei ist | ad = min { ad,c; ad,t} siehe Bild NA.7; | n die Anzahl der Stahlstäbe; dabei darf außerhalb des Queranschlusses in Trägerlängsrichtung | nur jeweils ein Stab in Rechnung gestellt werden;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 45,
+      "equation_number": "unvollständig",
+      "line": "ad = min { ad,c; ad,t} (siehe Bild NA.7);",
+      "context": "F (NA.71) | Dabei ist | ad = min { ad,c; ad,t} (siehe Bild NA.7); | r die Breite der Verstärkungsplatte (siehe Bild NA.7); | fk2,d der Bemessungswert der Klebfugenfestigkeit (charakteristischer Wert siehe Tabelle NA.12);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "Nachweis darf kk = 1,5 angenommen werden;",
+      "context": "tr die Dicke einer Verstärkungsplatte; | kk der Beiwert zur Berücksichtigung der ungleichmäßigen Spannungsverteilung; ohne genaueren | Nachweis darf kk = 1,5 angenommen werden; | ft,d der Bemessungswert der Zugfestigkeit des Plattenwerkstoffes in Richtung der Zugkraft Ft,90. | (NA.5) Die Verstärkungsplatten sind entsprechend Bild NA.7 aufzukleben, wobei gilt:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "Ft,90,d = 1,3 · Vd · [3 ·(1  )2  2 ·(1  )3] (NA.75)",
+      "context": "(NA.1) Die Verstärkung einer rechtwinkligen Ausklinkung auf der belasteten Seite eines Trägerauflagers | (siehe Bild NA.8) darf für eine Zugkraft Ft,90,d bemessen werden: | Ft,90,d = 1,3 · Vd · [3 ·(1  )2  2 ·(1  )3] (NA.75) | Dabei ist | Vd der Bemessungswert der Querkraft;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 46,
+      "equation_number": "unvollständig",
+      "line": "= hef/h (siehe Bild NA.8).",
+      "context": "Dabei ist | Vd der Bemessungswert der Querkraft; | = hef/h (siehe Bild NA.8). | Legende | 1 gefährdeter Bereich",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 48,
+      "equation_number": "unvollständig",
+      "line": "Nachweis darf kk = 2,0 angenommen werden;",
+      "context": "tr die Dicke einer Verstärkungsplatte; | kk der Beiwert zur Berücksichtigung der ungleichmäßigen Spannungsverteilung; ohne genaueren | Nachweis darf kk = 2,0 angenommen werden; | ft,d der Bemessungswert der Zugfestigkeit des Plattenwerkstoffes in Richtung der Zugkraft Ft,90. | (NA.6) Die Verstärkungsplatten sind nach Bild NA.9 aufzukleben, wobei gilt",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "unvollständig",
+      "line": "ad = hru + 0,15 · hd oder ad = hro + 0,15 · hd für kreisförmige Durchbrüche;",
+      "context": "F (NA.84) | Dabei ist | ad = hru + 0,15 · hd oder ad = hro + 0,15 · hd für kreisförmige Durchbrüche; | ad = hru oder ad = hro für rechteckige Durchbrüche; | hru(ro) siehe Bild NA.10;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 49,
+      "equation_number": "unvollständig",
+      "line": "ad = hru oder ad = hro für rechteckige Durchbrüche;",
+      "context": "Dabei ist | ad = hru + 0,15 · hd oder ad = hro + 0,15 · hd für kreisförmige Durchbrüche; | ad = hru oder ad = hro für rechteckige Durchbrüche; | hru(ro) siehe Bild NA.10; | n die Anzahl der Stahlstäbe; dabei dürfen je Durchbruchseite nur die im Abstand a1,c",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "had = h1 für rechteckige Durchbrüche;",
+      "context": "a (NA.86) | Dabei ist | had = h1 für rechteckige Durchbrüche; | had = h1 + 0,15 hd für kreisförmige Durchbrüche; | ar, h1, hd siehe Bild NA.11;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "had = h1 + 0,15 hd für kreisförmige Durchbrüche;",
+      "context": "Dabei ist | had = h1 für rechteckige Durchbrüche; | had = h1 + 0,15 hd für kreisförmige Durchbrüche; | ar, h1, hd siehe Bild NA.11; | fk2,d der Bemessungswert der Klebfugenfestigkeit (charakteristischer Wert siehe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "Nachweis darf kk = 2,0 angenommen werden;",
+      "context": "ar ,tr siehe Bild NA.11; | kk der Beiwert zur Berücksichtigung der ungleichmäßigen Spannungsverteilung; ohne genaueren | Nachweis darf kk = 2,0 angenommen werden; | ft,d der Bemessungswert der Zugfestigkeit des Plattenwerkstoffes in Richtung der Zugkraft Ft,90. | (NA.7) Die Verstärkungsplatten sind beispielsweise nach Bild NA.11 aufzukleben, wobei",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 50,
+      "equation_number": "unvollständig",
+      "line": "0,25 · a ar 0,6 · t,90 mit t,90 = 0,5 · (hd + h) ( N A . 8 9 )",
+      "context": "ft,d der Bemessungswert der Zugfestigkeit des Plattenwerkstoffes in Richtung der Zugkraft Ft,90. | (NA.7) Die Verstärkungsplatten sind beispielsweise nach Bild NA.11 aufzukleben, wobei | 0,25 · a ar 0,6 · t,90 mit t,90 = 0,5 · (hd + h) ( N A . 8 9 ) | und | h1 0,25 · a (NA.90)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 52,
+      "equation_number": "unvollständig",
+      "line": "Bedingungen nach Gleichung (6.50) und Gleichung (6.53) unbeachtet bleiben, sofern die maximale",
+      "context": "gekrümmtem Untergurt mit Verstärkungen nach Absätzen (NA.2) bis (NA.6) für die Aufnahme | zusätzlicher, klimabedingter Querzugspannungen dürfen in den Nutzungsklassen 1 und 2 die | Bedingungen nach Gleichung (6.50) und Gleichung (6.53) unbeachtet bleiben, sofern die maximale | Zugspannung rechtwinklig zur Faserrichtung des Holzes im Firstquerschnitt Gleichung (NA.91) erfüllt: | 1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "kdis = 1,3 für Satteldachträger mit geradem oder gekrümmten Untergurt;",
+      "context": "53 | dabei ist | kdis = 1,3 für Satteldachträger mit geradem oder gekrümmten Untergurt; | kdis = 1,15 für gekrümmte Träger; | ho = 600 mm;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "kdis = 1,15 für gekrümmte Träger;",
+      "context": "dabei ist | kdis = 1,3 für Satteldachträger mit geradem oder gekrümmten Untergurt; | kdis = 1,15 für gekrümmte Träger; | ho = 600 mm; | t,90,d = Bemessungswert der Querzugspannungen nach",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "ho = 600 mm;",
+      "context": "kdis = 1,3 für Satteldachträger mit geradem oder gekrümmten Untergurt; | kdis = 1,15 für gekrümmte Träger; | ho = 600 mm; | t,90,d = Bemessungswert der Querzugspannungen nach | DIN EN 1995-1-1:2010-12, 6.4.3(8).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "t,90,d = Bemessungswert der Querzugspannungen nach",
+      "context": "kdis = 1,15 für gekrümmte Träger; | ho = 600 mm; | t,90,d = Bemessungswert der Querzugspannungen nach | DIN EN 1995-1-1:2010-12, 6.4.3(8). | (NA.2) Die Verstärkungen zur Aufnahme zusätzlicher klimabedingter Querzugspannungen sind für",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "a1 = der Abstand der Verstärkungen in Trägerlängsrichtung in Höhe der Trägerachse;",
+      "context": "( NA.92) | dabei ist | a1 = der Abstand der Verstärkungen in Trägerlängsrichtung in Höhe der Trägerachse; | n = die Anzahl der Verstärkungselemente im Bereich innerhalb der Länge a1; | t,90,d = Bemessungswert der Querzugspannungen nach",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "n = die Anzahl der Verstärkungselemente im Bereich innerhalb der Länge a1;",
+      "context": "dabei ist | a1 = der Abstand der Verstärkungen in Trägerlängsrichtung in Höhe der Trägerachse; | n = die Anzahl der Verstärkungselemente im Bereich innerhalb der Länge a1; | t,90,d = Bemessungswert der Querzugspannungen nach | DIN EN 1995-1-1:2010-12, 6.4.3(8);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "t,90,d = Bemessungswert der Querzugspannungen nach",
+      "context": "a1 = der Abstand der Verstärkungen in Trägerlängsrichtung in Höhe der Trägerachse; | n = die Anzahl der Verstärkungselemente im Bereich innerhalb der Länge a1; | t,90,d = Bemessungswert der Querzugspannungen nach | DIN EN 1995-1-1:2010-12, 6.4.3(8); | b = Bauteilbreite in mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "b = Bauteilbreite in mm.",
+      "context": "t,90,d = Bemessungswert der Querzugspannungen nach | DIN EN 1995-1-1:2010-12, 6.4.3(8); | b = Bauteilbreite in mm. | (NA.3) Bei der Aufnahme der Zugkraft Ft,90,d durch eingeklebte Stahlstäbe oder durch eingeschraubte Stäbe | mit Holzschraubengewinde nach DIN 7998 ist für die Fugenspannung nachzuweisen, dass",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 53,
+      "equation_number": "unvollständig",
+      "line": "fk1,k = 22 * 10-6 * k²",
+      "context": "Tabelle NA.12) oder der Bemessungswert des Ausziehparameters der Holzschrauben, | berechnet mit dem charakteristischen Wert | fk1,k = 22 * 10-6 * k² | Die Zugtragfähigkeit der Stahlstäbe ist im maßgebenden Querschnitt nachzuweisen. | (NA.4) Die Stahlstäbe müssen mit Ausnahme einer Randlamelle über die gesamte Trägerhöhe durchgehen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 55,
+      "equation_number": "unvollständig",
+      "line": "Gleichung (6.50) und Gleichung (6.53) unbeachtet bleiben.",
+      "context": "(NA.1) Werden die Zugkräfte rechtwinklig zur Faserrichtung des Holzes vollständig durch | Verstärkungselemente aufgenommen (siehe Absätze (NA.2) bis (NA.5)), dann darf die Bedingung nach | Gleichung (6.50) und Gleichung (6.53) unbeachtet bleiben. | (NA.2) Für Träger, bei denen die Zugkräfte rechtwinklig zur Faser vollständig durch Verstärkungselemente | aufgenommen werden, sind die Verstärkungen in den beiden inneren Vierteln des querzugbeanspruchten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "n = 4",
+      "context": "angeordnet werden. | ANMERKUNG Mit runde Nägeln und quadratische Nägeln (siehe 8.2.2(2)) sind glattschaftige Nägel gemeint. | n = 4 | n = 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 58,
+      "equation_number": "unvollständig",
+      "line": "n = 3",
+      "context": "ANMERKUNG Mit runde Nägeln und quadratische Nägeln (siehe 8.2.2(2)) sind glattschaftige Nägel gemeint. | n = 4 | n = 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "unvollständig",
+      "line": "= fh,2,k/fh,1,k,",
+      "context": "Wert ist maßgebend, siehe z. B. Bild 8.4); | fh,1,k, fh,2,k der charakteristische Wert der Lochleibungsfestigkeit im Holz 1 bzw. 2; | = fh,2,k/fh,1,k, | d der Durchmesser des Verbindungsmittels; | My,Rk der charakteristische Wert des Fließmoments des Verbindungsmittels.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 59,
+      "equation_number": "unvollständig",
+      "line": "Rkv,FkF mit M = 1,1 (NA.106)",
+      "context": "mod | Rdv, | Rkv,FkF mit M = 1,1 (NA.106)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "treq = 9 · d (NA.114)",
+      "context": "oder Eindringtiefen der Nägel mit rundem Querschnitt) für Verbindungen zwischen Bauteilen aus Nadelholz | angenommen werden zu: | treq = 9 · d (NA.114) | (NA.10) Abweichend von 8.3.1.1(9) dürfen Befestigungen von Schalungen, Trag- und Konterlatten und | Zwischenanschlüsse von Windrispen mit nur einem Nagel erfolgen. Dies gilt auch für die Befestigung von",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 62,
+      "equation_number": "unvollständig",
+      "line": "h,k = 3,9 · d0,6 · t0,7 N/mm2 (NA.115)",
+      "context": "angenommen werden: | f | h,k = 3,9 · d0,6 · t0,7 N/mm2 (NA.115) | Dabei ist | d der Durchmesser, in mm;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.118)",
+      "context": "Gipsplatten-Holz-Verbindungen, darf der charakteristische Wert der Tragfähigkeit Fv,Rk nach | Gleichung (NA.116) um einen Anteil Fv,Rk erhöht werden: | Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.118) | Dabei ist | Fax,Rk Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "Fax,Rk Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23).",
+      "context": "Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.118) | Dabei ist | Fax,Rk Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23). | (NA.10) Abweichend von den Gleichungen (NA.103) bis (NA.105) dürfen die in Tabelle NA.13 angegebenen | Mindestdicken treq für Verbindungen zwischen Bauteilen aus Holz- oder Gipswerkstoffen und Holz",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 63,
+      "equation_number": "unvollständig",
+      "line": "a1 = 20 · d anzunehmen.",
+      "context": "angenommen werden. | (NA.11) Für Gipsplatten-Holz-Verbindungen ist der Mindestnagelabstand abweichend von 8.3.1.3(1) mit | a1 = 20 · d anzunehmen. | Tabelle NA.13  Werte des Faktors A in Gleichung (NA.116) und der erforderlichen Holzwerkstoff- | oder Gipswerkstoffplattendicken",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "fh,k = 0,11 · (1  0,01 · d) · k N/mm 2 ( NA.119)",
+      "context": "Lochleibungsfestigkeit angenommen werden: | Für vorgebohrte Sperrhölzer: | fh,k = 0,11 · (1  0,01 · d) · k N/mm 2 ( NA.119) | Dabei ist | k charakteristische Rohdichte, in kg/m 3;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 64,
+      "equation_number": "unvollständig",
+      "line": "fh,k = 50 · d0,6 · t0,2 N/mm 2 ( NA.120)",
+      "context": "nach NCI NA.3.5.3 dürfen folgende charakteristische Werte der Lochleibungsfestigkeit angenommen werden: | Für vorgebohrte Platten: | fh,k = 50 · d0,6 · t0,2 N/mm 2 ( NA.120) | Dabei ist | d Durchmesser, in mm;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.122)",
+      "context": "(NA.4) Bei einschnittigen Stahlblech-Holz-Nagelverbindungen mit profilierten Nägeln darf der | charakteristische Wert der Tragfähigkeit Fv,Rk nach Gleichung (NA.121) um einen Anteil Fv,Rk erhöht werden: | Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.122) | Dabei ist | Fax,Rk der Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23).",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 65,
+      "equation_number": "unvollständig",
+      "line": "Fax,Rk der Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23).",
+      "context": "Fv,Rk = min {0,5 · Fv,Rk ; 0,25 · Fax,Rk} (NA.122) | Dabei ist | Fax,Rk der Ausziehwiderstand des profilierten Nagels nach Gleichung (8.23). | Tabelle NA.14  Werte des Faktors A in Gleichung (NA.121) und der erforderlichen Holzdicken in | Stahlblech-Holz-Nagelverbindungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 66,
+      "equation_number": "unvollständig",
+      "line": "Ausziehparameter fax,k in Gleichung (8.23) nur zu 70 % in Ansatz gebracht werden, wenn der Bohrlochdurch-",
+      "context": "Charakteristische Rohdichte k in kg/m3, jedoch höchstens 500 kg/m3. | (NA.13) Bei Verbindungen mit profilierten Nägeln in vorgebohrten Nagellöchern darf der charakteristische | Ausziehparameter fax,k in Gleichung (8.23) nur zu 70 % in Ansatz gebracht werden, wenn der Bohrlochdurch- | messer nicht größer als der Kerndurchmesser des profilierten Nagels ist. Bei größerem Bohrlochdurchmesser | darf der profilierte Nagel nicht auf Herausziehen beansprucht werden. Für fax,k und fhead,k dürfen die in",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "(NA.15) Bei der Bestimmung des Ausziehwiderstandes nach Gleichung 8.23 ist für Klammern anstelle dh",
+      "context": "(NA.14) Für Klammern darf in Bezug auf die Bestimmung der wirksamen Anzahl von Verbindungsmitteln nef | eine versetzte Anordnung angenommen werden. | (NA.15) Bei der Bestimmung des Ausziehwiderstandes nach Gleichung 8.23 ist für Klammern anstelle dh | 2 das | Produkt aus Klammerdurchmesser und Klammerrückenbreite anzusetzen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "Nenndurchmesser (=Gewindeaußendurchmesser) der Gewindestange.",
+      "context": "(NA.2) Anstelle von Bolzen dürfen auch Gewindestangen nach DIN 976-1 verwendet werden. | (NA.3) Die Durchmesser der Löcher für Gewindestangen dürfen max. 1 mm größer sein als der | Nenndurchmesser (=Gewindeaußendurchmesser) der Gewindestange. | (NA.4) Auf Abscheren beanspruchte Bolzen- und Gewindestangenverbindungen sind nicht in Dauerbauten | zu verwenden, bei denen es auf Steifigkeit und Formbeständigkeit der Konstruktion ankommt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "(NA.5) Für die Berechnung des charakteristischen Wertes des Fließmomentes nach Gleichung (8.30) ist bei",
+      "context": "(NA.4) Auf Abscheren beanspruchte Bolzen- und Gewindestangenverbindungen sind nicht in Dauerbauten | zu verwenden, bei denen es auf Steifigkeit und Formbeständigkeit der Konstruktion ankommt. | (NA.5) Für die Berechnung des charakteristischen Wertes des Fließmomentes nach Gleichung (8.30) ist bei | Gewindestangen für d der Mittelwert aus Kerndurchmesser und Gewindeaußendurchmesser einzusetzen. | (NA.6) Tragende, auf Abscheren beanspruchte Verbindungen mit Bolzen und Gewindestangen sollten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) n",
+      "context": "Tragfähigkeit nur zur Hälfte in Rechnung gestellt wird. | (NA.7) Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf | für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) n | ef = n gesetzt werden. Für a1 darf auch | bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "ef = n gesetzt werden. Für a1 darf auch",
+      "context": "(NA.7) Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf | für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) n | ef = n gesetzt werden. Für a1 darf auch | bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden. | (NA.8) In den Fugen nachgiebig verbundener Bauteile sowie in den Verbindungen zwischen Rippen und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden.",
+      "context": "für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) n | ef = n gesetzt werden. Für a1 darf auch | bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden. | (NA.8) In den Fugen nachgiebig verbundener Bauteile sowie in den Verbindungen zwischen Rippen und | Beplankung aussteifender Scheiben darf nef = n gesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 67,
+      "equation_number": "unvollständig",
+      "line": "Beplankung aussteifender Scheiben darf nef = n gesetzt werden.",
+      "context": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden. | (NA.8) In den Fugen nachgiebig verbundener Bauteile sowie in den Verbindungen zwischen Rippen und | Beplankung aussteifender Scheiben darf nef = n gesetzt werden. | NCI Zu 8.6 Verbindungen mit Stabdübeln oder Passbolzen | (NA.5) Sofern nicht ausdrücklich anders festgelegt, gelten die nachfolgend angegebenen Regeln für",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) nef = n gesetzt werden. Für a1 darf auch",
+      "context": "68 | (NA.9) Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf | für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) nef = n gesetzt werden. Für a1 darf auch | bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.5 für = 0° eingesetzt werden. | (NA.10) In biegesteifen Verbindungen mit einem Stabdübelkreis, in den Fugen nachgiebig verbundener",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.5 für = 0° eingesetzt werden.",
+      "context": "(NA.9) Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf | für die wirksame Anzahl der Verbindungsmittel nach Gleichung (8.34) nef = n gesetzt werden. Für a1 darf auch | bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.5 für = 0° eingesetzt werden. | (NA.10) In biegesteifen Verbindungen mit einem Stabdübelkreis, in den Fugen nachgiebig verbundener | Bauteile sowie in den Verbindungen zwischen Rippen und Beplankung aussteifender Scheiben darf nef = n",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Bauteile sowie in den Verbindungen zwischen Rippen und Beplankung aussteifender Scheiben darf nef = n",
+      "context": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.5 für = 0° eingesetzt werden. | (NA.10) In biegesteifen Verbindungen mit einem Stabdübelkreis, in den Fugen nachgiebig verbundener | Bauteile sowie in den Verbindungen zwischen Rippen und Beplankung aussteifender Scheiben darf nef = n | gesetzt werden. | (NA.11) In biegesteifen Verbindungen mit mehreren Stabdübelkreisen, z. B. Rahmenecken, ist die wirksame",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "nef = 0,85 · n (NA.124)",
+      "context": "(NA.11) In biegesteifen Verbindungen mit mehreren Stabdübelkreisen, z. B. Rahmenecken, ist die wirksame | Anzahl nef wie folgt zu bestimmen: | nef = 0,85 · n (NA.124) | Dabei ist | n die Gesamtanzahl der Stabdübel in den Stabdübelkreisen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 68,
+      "equation_number": "unvollständig",
+      "line": "Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf nef = n",
+      "context": "Dabei ist | n die Gesamtanzahl der Stabdübel in den Stabdübelkreisen. | Wird das Spalten des Holzes durch eine Verstärkung rechtwinklig zur Faserrichtung verhindert, darf nef = n | gesetzt werden. | NCI Zu 8.7 Verbindungen mit Holzschrauben",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 69,
+      "equation_number": "unvollständig",
+      "line": "nach Gleichung (8.71) berechnet werden.",
+      "context": "NA.8.11. | (NA.12) Für eine Reihe von Verbindungseinheiten in Faserrichtung des Holzes darf die wirksame Anzahl nef | nach Gleichung (8.71) berechnet werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 71,
+      "equation_number": "unvollständig",
+      "line": "Fv,o,Rk der charakteristischer Wert der Tragfähigkeit einer Verbindungseinheit nach Gleichung (8.61);",
+      "context": "71 | Dabei ist | Fv,o,Rk der charakteristischer Wert der Tragfähigkeit einer Verbindungseinheit nach Gleichung (8.61); | kH der Beiwert zur Berücksichtigung des Einflusses des Hirnholzes des anzuschließenden Trägers; | dc der Dübeldurchmesser in mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 71,
+      "equation_number": "unvollständig",
+      "line": "kH = 0,65 bei einem oder zwei Dübeln hintereinander,",
+      "context": "Bild NA.13  Ausbildung eines Hirnholzanschlusses mit Dübeln besonderer Bauart | (NA.5) Der Beiwert kH in Gleichung (NA.125) darf angenommen werden zu: | kH = 0,65 bei einem oder zwei Dübeln hintereinander, | kH = 0,80 bei drei, vier oder fünf Dübeln hintereinander. | (NA.6) Beträgt die charakteristische Rohdichte der miteinander verbundenen Bauteile mindestens",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 71,
+      "equation_number": "unvollständig",
+      "line": "kH = 0,80 bei drei, vier oder fünf Dübeln hintereinander.",
+      "context": "(NA.5) Der Beiwert kH in Gleichung (NA.125) darf angenommen werden zu: | kH = 0,65 bei einem oder zwei Dübeln hintereinander, | kH = 0,80 bei drei, vier oder fünf Dübeln hintereinander. | (NA.6) Beträgt die charakteristische Rohdichte der miteinander verbundenen Bauteile mindestens | 350 kg/m3, jedoch nicht mehr als 500 kg/m 3, dann darf für Scheibendübel mit Zähnen des Typs C1 und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 71,
+      "equation_number": "unvollständig",
+      "line": "(8.31) für = 90°.",
+      "context": "Fb,90,Rk die charakteristische Tragfähigkeit des verwendeten Bolzens oder der Gewindestange nach | Gleichung (NA.110) mit der charakteristischen Lochleibungsfestigkeit fh,1,k nach Gleichung | (8.31) für = 90°.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 73,
+      "equation_number": "unvollständig",
+      "line": "rechnerischen Scheibenhöhe von b = /4 geführt wird,",
+      "context": "bei Einleitung von Druckkräften über Rippen in Lastrichtung, | wenn die Scheibenhöhe b kleiner /4 ist oder wenn bei größerer Scheibenhöhe der Nachweis mit einer | rechnerischen Scheibenhöhe von b = /4 geführt wird,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "wenn bei größerer Scheibenhöhe der Nachweis mit einer rechnerischen Scheibenhöhe von b = /2",
+      "context": "74 | bei auf den oberen und unteren Rand gleich verteilter Last, wenn die Scheibenhöhe b kleiner /2 ist oder | wenn bei größerer Scheibenhöhe der Nachweis mit einer rechnerischen Scheibenhöhe von b = /2 | geführt wird, | bei verteilt über die Scheibenhöhe angreifenden Lasten,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 74,
+      "equation_number": "unvollständig",
+      "line": "Maß a4,t für = 90° gewählt werden.",
+      "context": "rechtwinklig zu ihrer Stabachse beansprucht werden, können andere Randabstände erforderlich sein. Bei | allen Tafeln mit freien Plattenrändern nach Absatz (NA.9) muss als Randabstand der Verbindungsmittel das | Maß a4,t für = 90° gewählt werden. | (NA.11) Die Randrippen von Scheiben dürfen nicht gestoßen sein, oder die Stöße sind verformungsarm | auszuführen. Stöße sind verformungsarm in diesem Sinne, wenn der Bemessungswert der Tragfähigkeit des",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "einer ideellen Breite der Druckdiagonalen bd = 0,2 , höchstens jedoch bd = 0,2 h angeordnet sind. Dabei ist",
+      "context": "Druckdiagonalen zu bemessen. | (NA.4) Für den Nachweis der Schalung dürfen rechnerisch Bretter berücksichtigt werden, die innerhalb | einer ideellen Breite der Druckdiagonalen bd = 0,2 , höchstens jedoch bd = 0,2 h angeordnet sind. Dabei ist | die Länge und h die Höhe der Tafel. Als Knicklänge ef ist die Länge der Diagonalen zwischen den stützenden | Rippen einzusetzen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "2.1",
+      "line": "(2.15) und (2.16) und den durch den Teilsicherheitsbeiwert M dividierten Verschiebungsmoduln Ku nach Gleichung (2.1)",
+      "context": "NCI Zu 9.2.5.3 Aussteifung von Trägern und Fachwerken | ANMERKUNG Die Berechnung der horizontalen Ausbiegung ist mit den Steifigkeitswerten nach den Gleichungen | (2.15) und (2.16) und den durch den Teilsicherheitsbeiwert M dividierten Verschiebungsmoduln Ku nach Gleichung (2.1) | zu berechnen. | (NA.3) Für einen durch einachsige Biegung beanspruchten Biegestab dürfen die Schnittgrößen nach",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 76,
+      "equation_number": "unvollständig",
+      "line": "tor,d = Md/80 (NA.129)",
+      "context": "kann. | M | tor,d = Md/80 (NA.129)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 77,
+      "equation_number": "unvollständig",
+      "line": "Dabei ist k mit DIN EN 1995-1-1: 2010-12, Gleichung (9.38) zu ermitteln.",
+      "context": "(NA.5) Für andere Nachweisverfahren darf die spannungslose seitliche Vorverformung zu | kle 400 angenommen werden. | Dabei ist k mit DIN EN 1995-1-1: 2010-12, Gleichung (9.38) zu ermitteln. | NCI NA.9.3 Flächentragwerke aus zusammengeklebten oder nachgiebig | miteinander verbundenen Schichten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Bei Schichten aus Schnittholz darf mit E90 = 0 gerechnet werden. Damit wird rechnerisch t,90,d = 0.",
+      "context": "t,90,d der Bemessungswert der Zugspannung rechtwinklig zur Faserrichtung in der Schicht aus | Biegung und Normalkraft; | ANMERKUNG Bei Schichten aus Schnittholz darf mit E90 = 0 gerechnet werden. Damit wird rechnerisch t,90,d = 0. | c,90,d der Bemessungswert der Druckspannung rechtwinklig zur Faserrichtung in der Schicht aus | Biegung und Normalkraft;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "fm, ,d = kSys · fm,d (NA.135)",
+      "context": "(NA.1) Beim Nachweis der Tragwirkung in Faserrichtung dürfen die Bemessungswerte der Biege- und | Schubfestigkeit um einen Systembeiwert kSys erhöht in Rechnung gestellt werden: | fm, ,d = kSys · fm,d (NA.135) | fv, ,d = kSys · fv,d (NA.136) | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "fv, ,d = kSys · fv,d (NA.136)",
+      "context": "Schubfestigkeit um einen Systembeiwert kSys erhöht in Rechnung gestellt werden: | fm, ,d = kSys · fm,d (NA.135) | fv, ,d = kSys · fv,d (NA.136) | Dabei ist | fm,d der Bemessungswert der Biegefestigkeit der Lamelle;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "n = bef /blam (NA.137)",
+      "context": "kSys der Systembeiwert nach Bild 6.12. | Die Anzahl der mitwirkenden Lamellen n ergibt sich wie folgt: | n = bef /blam (NA.137) | Dabei ist | bef die mitwirkende Breite; bef = MTräger/mPlatte;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 78,
+      "equation_number": "unvollständig",
+      "line": "bef die mitwirkende Breite; bef = MTräger/mPlatte;",
+      "context": "n = bef /blam (NA.137) | Dabei ist | bef die mitwirkende Breite; bef = MTräger/mPlatte; | MTräger das Biegemoment aus Trägerberechnung; | mPlatte das Biegemoment aus Plattenberechnung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "unvollständig",
+      "line": "E0,mean · I Biegesteifigkeit für die Breite b = 1 nach NA.5.6,",
+      "context": "ef Ersatzstablänge der Fläche; bei Wänden ist ef die Geschosshöhe oder der halbe Abstand | der Aussteifungen durch Querwände (der kleinere Wert ist maßgebend), | E0,mean · I Biegesteifigkeit für die Breite b = 1 nach NA.5.6, | Nd Druckkraft für die Breite b = 1. | (NA.2) Schalen sind auf Beulen zu untersuchen, sofern die Beulsicherheit nicht offensichtlich ist.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 79,
+      "equation_number": "unvollständig",
+      "line": "Nd Druckkraft für die Breite b = 1.",
+      "context": "der Aussteifungen durch Querwände (der kleinere Wert ist maßgebend), | E0,mean · I Biegesteifigkeit für die Breite b = 1 nach NA.5.6, | Nd Druckkraft für die Breite b = 1. | (NA.2) Schalen sind auf Beulen zu untersuchen, sofern die Beulsicherheit nicht offensichtlich ist. | (NA.3) Der Beulnachweis von Flächen zusammengesetzter Bauteile ist erbracht, wenn die Bedingungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "Der zulässige Größtwert für die spannungslose seitliche Auslenkung beträgt abow,perm,max = min ( /400; 50 mm).",
+      "context": "NDP Zu 10.9.2(3) Montage von Nagelplattenbindern: Größtwert für die spannungslose | seitliche Auslenkung | Der zulässige Größtwert für die spannungslose seitliche Auslenkung beträgt abow,perm,max = min ( /400; 50 mm). | = Abstand zwischen den Auflagern (in mm) | Die spannungslose seitliche Auslenkung ist bei der Ermittlung der Beanspruchungen und Verformungen der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "= Abstand zwischen den Auflagern (in mm)",
+      "context": "seitliche Auslenkung | Der zulässige Größtwert für die spannungslose seitliche Auslenkung beträgt abow,perm,max = min ( /400; 50 mm). | = Abstand zwischen den Auflagern (in mm) | Die spannungslose seitliche Auslenkung ist bei der Ermittlung der Beanspruchungen und Verformungen der | stabilisierenden Bauteile zu berücksichtigen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 81,
+      "equation_number": "unvollständig",
+      "line": "Der zulässige Größtwert für die Schiefstellung beträgt adev,perm,max = 50mm. Die Schiefstellung ist bei der",
+      "context": "stabilisierenden Bauteile zu berücksichtigen. | NDP Zu 10.9.2(4) Montage von Nagelplattenbindern: Größtwert für die Schiefstellung | Der zulässige Größtwert für die Schiefstellung beträgt adev,perm,max = 50mm. Die Schiefstellung ist bei der | Ermittlung der Beanspruchungen und Verformungen der stabilisierenden Bauteile zu berücksichtigen. | NCI NA.11 Geklebte Verbindungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 82,
+      "equation_number": "unvollständig",
+      "line": "a2 = 5 · d",
+      "context": "1 2 | 1 parallel zur Faserrichtung eingeklebte Stahlstäbe | a2 = 5 · d | a2,c = 2,5 · d | a2,t = 4 · d",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 82,
+      "equation_number": "unvollständig",
+      "line": "a2,c = 2,5 · d",
+      "context": "1 parallel zur Faserrichtung eingeklebte Stahlstäbe | a2 = 5 · d | a2,c = 2,5 · d | a2,t = 4 · d | 2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe siehe Tabelle 8.5",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 82,
+      "equation_number": "unvollständig",
+      "line": "a2,t = 4 · d",
+      "context": "a2 = 5 · d | a2,c = 2,5 · d | a2,t = 4 · d | 2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe siehe Tabelle 8.5 | (NA.5) Bei parallel zur Faserrichtung eingeklebten Stahlstäben dürfen die charakteristischen Werte der",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "Fax,Rd = min {fy,d · Aef; · d · ad · fk1,d} (NA.144)",
+      "context": "(NA.4) Der Bemessungswert des Ausziehwiderstandes von eingeklebten Stahlstäben darf berechnet | werden zu: | Fax,Rd = min {fy,d · Aef; · d · ad · fk1,d} (NA.144) | Dabei ist | fy,d der Bemessungswert der Streckgrenze des Stahlstabes;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a2 = 5 · d",
+      "context": "1 2 | 1 parallel zur Faserrichtung eingeklebte Stahlstäbe | a2 = 5 · d | a2,c = 2,5 · d | 2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a2,c = 2,5 · d",
+      "context": "1 parallel zur Faserrichtung eingeklebte Stahlstäbe | a2 = 5 · d | a2,c = 2,5 · d | 2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe | a1 = 4 · d",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a1 = 4 · d",
+      "context": "a2,c = 2,5 · d | 2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe | a1 = 4 · d | a2 = 4 · d | a1,c = 2,5 · d",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a2 = 4 · d",
+      "context": "2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe | a1 = 4 · d | a2 = 4 · d | a1,c = 2,5 · d | a2,c = 2,5 · d",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a1,c = 2,5 · d",
+      "context": "a1 = 4 · d | a2 = 4 · d | a1,c = 2,5 · d | a2,c = 2,5 · d | (NA.5) Die Einklebelänge ad,min in mm muss mindestens betragen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "a2,c = 2,5 · d",
+      "context": "a2 = 4 · d | a1,c = 2,5 · d | a2,c = 2,5 · d | (NA.5) Die Einklebelänge ad,min in mm muss mindestens betragen: | ad,min = max {0,5 · d2; 10 · d} (NA.145)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 84,
+      "equation_number": "unvollständig",
+      "line": "ad,min = max {0,5 · d2; 10 · d} (NA.145)",
+      "context": "a2,c = 2,5 · d | (NA.5) Die Einklebelänge ad,min in mm muss mindestens betragen: | ad,min = max {0,5 · d2; 10 · d} (NA.145) | Dabei ist | d der Nenndurchmesser des Stahlstabes, in mm.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 86,
+      "equation_number": "unvollständig",
+      "line": "Beim Nachweis nach der Theorie II. Ordnung ist kc = 1.",
+      "context": "ffkf | f (NA.147) | Beim Nachweis nach der Theorie II. Ordnung ist kc = 1. | Dabei ist | d,c,f die Druckfestigkeit unter dem Winkel nach Gleichung (NA.152). In Gleichung (NA.152) sind",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 86,
+      "equation_number": "unvollständig",
+      "line": "kc der Knickbeiwert nach Gleichung (6.25) bzw. (6.26).",
+      "context": "d,c,f die Druckfestigkeit unter dem Winkel nach Gleichung (NA.152). In Gleichung (NA.152) sind | die Werte der Festigkeit der zu verbindenden Brettschichtholzkomponenten einzusetzen; | kc der Knickbeiwert nach Gleichung (6.25) bzw. (6.26). | Die Spannungen c,0 und m sind mit den Schnittgrößen an den Stellen 1 und 2 (siehe Bild NA.16) und mit | Querschnitten rechtwinklig zur Faserrichtung unmittelbar neben der Universal-Keilzinkenverbindung zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 87,
+      "equation_number": "unvollständig",
+      "line": "Beim Nachweis nach der Theorie II. Ordnung ist kc = 1.",
+      "context": "ffkf | f (NA.148) | Beim Nachweis nach der Theorie II. Ordnung ist kc = 1. | Dabei ist | fc, ,d die Druckfestigkeit unter dem Winkel nach Gleichung (NA.152). In Gleichung (NA.152)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 87,
+      "equation_number": "unvollständig",
+      "line": "c der Knickbeiwert nach Gleichung (6.25) bzw. (6.26).",
+      "context": "einzusetzen; | k | c der Knickbeiwert nach Gleichung (6.25) bzw. (6.26). | Die Spannungen c,0 und m sind mit den Schnittgrößen an den Stellen 1 und 2 (siehe Bild NA.16) und mit | Querschnitten rechtwinklig zur Faserrichtung unmittelbar neben der Universal-Keilzinkenverbindung zu",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 88,
+      "equation_number": "unvollständig",
+      "line": "der Einzelbauteile von R 1 000 · a (a = Dicke des Einzelbauteils) sind die Biegespannungen infolge äußerer",
+      "context": "88 | (NA.3) Bei gekrümmten geklebten Verbundbauteilen aus Brettschichtholz mit einem Krümmungsradius R | der Einzelbauteile von R 1 000 · a (a = Dicke des Einzelbauteils) sind die Biegespannungen infolge äußerer | Einwirkungen mit denjenigen infolge des Krümmens der Einzelbauteile zu überlagern. | (NA.4) Werden die Einzelbauteile nicht vollflächig über die gesamte Breite sondern nur streifenförmig über",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "efz, = min { z + 30 mm; 2 z}",
+      "context": "2min fbfkkhbF (NA.153) | mit | efz, = min { z + 30 mm; 2 z} | Dabei sind | kv der Beiwert nach Gleichung (6.62);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "kv der Beiwert nach Gleichung (6.62);",
+      "context": "efz, = min { z + 30 mm; 2 z} | Dabei sind | kv der Beiwert nach Gleichung (6.62); | kz der Beiwert, abhängig von der Geometrie des Zapfens: | kz = · {1 + 2 · (1  )2} · (2  ) mit = he/h und = hz/he;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "kz = · {1 + 2 · (1  )2} · (2  ) mit = he/h und = hz/he;",
+      "context": "kv der Beiwert nach Gleichung (6.62); | kz der Beiwert, abhängig von der Geometrie des Zapfens: | kz = · {1 + 2 · (1  )2} · (2  ) mit = he/h und = hz/he; | b, he, hz, h, z die Maße nach Bild NA.19. | Außerdem gelten die folgenden Mindest- und Höchstmaße:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 90,
+      "equation_number": "unvollständig",
+      "line": "Rk = 9,5 · d2 ,in Newton (N) (NA.154)",
+      "context": "Scherfuge wie folgt in Rechnung gestellt werden: | F | Rk = 9,5 · d2 ,in Newton (N) (NA.154)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 91,
+      "equation_number": "unvollständig",
+      "line": "ef = · s oder ef = · h (NA.156)",
+      "context": "NCI NA.13.2 Knicklängenbeiwerte (Biegeknicken) | (NA.1) Die Ersatzstablänge ef wird mit dem Knicklängenbeiwert nach Tabelle A.23 berechnet: | ef = · s oder ef = · h (NA.156) | (NA.2) Bei Berücksichtigung der Schubsteifigkeit S wird die Ersatzstablänge: | Sh",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 91,
+      "equation_number": "unvollständig",
+      "line": "S = G · A/1,2 (NA.158)",
+      "context": "ef 1oder1 ( NA.157) | Für den Rechteckquerschnitt ist: | S = G · A/1,2 (NA.158) | Für den I-Träger ist: | S = Gw · bw · hw,ef (NA.159)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 91,
+      "equation_number": "unvollständig",
+      "line": "S = Gw · bw · hw,ef (NA.159)",
+      "context": "S = G · A/1,2 (NA.158) | Für den I-Träger ist: | S = Gw · bw · hw,ef (NA.159) | Dabei ist | Gw der Schubmodul des Steges für Scheibenbeanspruchung;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 92,
+      "equation_number": "unvollständig",
+      "line": "= 1",
+      "context": "System Knicklängenbeiwert | 1 | = 1 | 2 | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "und ef = · s: = 1,25 (für antimetrisches Knicken)",
+      "context": "4 | für 5,015,0 h | und ef = · s: = 1,25 (für antimetrisches Knicken) | 5 | Stiel: ef = S · h ( S 15°)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "Stiel: ef = S · h ( S 15°)",
+      "context": "und ef = · s: = 1,25 (für antimetrisches Knicken) | 5 | Stiel: ef = S · h ( S 15°) | 2 | SR",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "Riegel: ef = R · s ( R 20°)",
+      "context": "Kh | IE | Riegel: ef = R · s ( R 20°) | s | h",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "für s1 < 0,7 · s: = 0,8",
+      "context": "(für antimetrisches Knicken) | 6 | für s1 < 0,7 · s: = 0,8 | für s1 0,7 · s: = 1,0 | (für antimetrisches Knicken)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "für s1 0,7 · s: = 1,0",
+      "context": "6 | für s1 < 0,7 · s: = 0,8 | für s1 0,7 · s: = 1,0 | (für antimetrisches Knicken) | 7",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "bei gelenkiger Lagerung (K 0): = 1,0",
+      "context": "(für antimetrisches Knicken) | 7 | bei gelenkiger Lagerung (K 0): = 1,0 | bei nachgiebiger Einspannung (K >> 0): = 0,8",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 93,
+      "equation_number": "unvollständig",
+      "line": "bei nachgiebiger Einspannung (K >> 0): = 0,8",
+      "context": "7 | bei gelenkiger Lagerung (K 0): = 1,0 | bei nachgiebiger Einspannung (K >> 0): = 0,8",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 94,
+      "equation_number": "unvollständig",
+      "line": "Abstand zwischen dem Fußpunkt und der Unterkante der Dachhaut anzunehmen ( ef = a + b), wenn der",
+      "context": "(NA.6) Bei Fachwerkrahmen ist für das Knicken aus der Rahmenebene (siehe Bild NA.20) für die inneren | gedrückten Stäbe der Rahmenstiele als Ersatzstablänge (Knicklänge) der in Stabrichtung gemessene | Abstand zwischen dem Fußpunkt und der Unterkante der Dachhaut anzunehmen ( ef = a + b), wenn der | innere Rahmeneckpunkt seitlich nicht gehalten ist. Dabei ist zusätzlich eine Seitenkraft von 1/100 der größten | im inneren Rahmeneckpunkt einlaufenden Stabkraft an dieser Stelle zu berücksichtigen.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 95,
+      "equation_number": "unvollständig",
+      "line": "kc der Knickbeiwert nach 6.3.2, Gleichung (6.25) und (6.26) des an die Feder angeschlossenen Stabes.",
+      "context": "Dabei ist | h die Querschnittshöhe des an die Feder angeschlossenen Stabes; | kc der Knickbeiwert nach 6.3.2, Gleichung (6.25) und (6.26) des an die Feder angeschlossenen Stabes. | Bei System 5 ist das Moment für den Stiel und den Riegel zu berechnen, das größere ist maßgebend. | NCI NA.13.3 Kippbeiwerte (Biegedrillknicken, Kippen)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 95,
+      "equation_number": "unvollständig",
+      "line": "B = E · Iz die Biegesteifigkeit um die z-Achse (Rechteckquerschnitt: 12",
+      "context": "Dabei ist | die Länge des Trägers; | B = E · Iz die Biegesteifigkeit um die z-Achse (Rechteckquerschnitt: 12 | 3 hbEB ); | T = G · Itor die Torsionssteifigkeit (Rechteckquerschnitt: 3",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 95,
+      "equation_number": "unvollständig",
+      "line": "T = G · Itor die Torsionssteifigkeit (Rechteckquerschnitt: 3",
+      "context": "B = E · Iz die Biegesteifigkeit um die z-Achse (Rechteckquerschnitt: 12 | 3 hbEB ); | T = G · Itor die Torsionssteifigkeit (Rechteckquerschnitt: 3 | 3 hbGT ); | az der Abstand des Lastangriffes vom Schubmittelpunkt (siehe Bild NA.21).",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "4.1",
+      "pdf_page": 27,
+      "line": "(NA.3) Für eingeklebte Stahlstäbe ist der Korrosionsschutz wie für Bolzen und Stabdübel nach Tabelle 4.1"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 27,
+      "line": "imprägnierten Hölzern. Bei imprägnierten Hölzern sollten die Mindestanforderungen nach Tabelle 4.1 für die"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 33,
+      "line": "mechanischer Verbindungsmittel ist mit den in Tabelle 7.1 angegebenen Verschiebungsmoduln zu bestimmen."
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 56,
+      "line": "Bolzen und Stabdübel nach Tabelle 7.1 anzunehmen."
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 67,
+      "line": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.4 für = 0° eingesetzt werden."
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 68,
+      "line": "bei einem Winkel 0° < < 90° der Mindestwert nach Tabelle 8.5 für = 0° eingesetzt werden."
+    },
+    {
+      "label": "9.1",
+      "pdf_page": 73,
+      "line": "Anmerkung zu Tabelle 9.1:"
+    },
+    {
+      "label": "9.1",
+      "pdf_page": 79,
+      "line": "nach Tabelle 9.1 bzw. die Bedingungen nach den Gleichungen (9.8) und (9.9) eingehalten sind."
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 80,
+      "line": "Montagezustände die Klasse der Lasteinwirkungsdauer sehr kurz  (siehe Tabelle 2.1) zugrunde gelegt"
+    },
+    {
+      "label": "8.5",
+      "pdf_page": 82,
+      "line": "2 rechtwinklig zur Faserrichtung eingeklebte Stahlstäbe siehe Tabelle 8.5"
+    }
+  ],
+  "figures": [
+    {
+      "label": "6.2",
+      "pdf_page": 39,
+      "line": "ANMERKUNG zu Bild 6.2 \"Kontinuierliche Lagerung  entspricht Schwellendruck. Einzellagerung ist gleichbedeutend"
+    },
+    {
+      "label": "6.11",
+      "pdf_page": 42,
+      "line": "(NA.3) Für Träger mit Ausklinkungen auf der Gegenseite des Auflagers (siehe Bild 6.11) ist kv = 1. Falls"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 59,
+      "line": "Die Mindestdicke t1,req für das Seitenholz 1 (siehe Bild 8.4) beträgt:"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 59,
+      "line": "Die Mindestdicke t2,req für das Seitenholz 2 (siehe Bild 8.4a) einer einschnittigen Verbindung beträgt:"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 59,
+      "line": "Die Mindestdicke t2,req für Mittelhölzer (siehe Bild 8.4b) mit zweischnittig beanspruchten Verbindungsmitteln"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 59,
+      "line": "Wert ist maßgebend, siehe z. B. Bild 8.4);"
+    },
+    {
+      "label": "8.4",
+      "pdf_page": 61,
+      "line": "1 bzw. t2 sind in Bild 8.4 definiert. Bei zweischnittigen Verbindungen ist t1"
+    },
+    {
+      "label": "9.7",
+      "pdf_page": 75,
+      "line": "(NA.18) Für Wandtafeln (siehe Bild 9.7) ist eine Berücksichtigung der Auswirkungen von Imperfektionen in"
+    },
+    {
+      "label": "6.12",
+      "pdf_page": 78,
+      "line": "kSys der Systembeiwert nach Bild 6.12."
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 528,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 6603,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 6616,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 6010,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 4995,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 4366,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2327,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2332,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2265,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2382,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2169,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2482,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 1886,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1308,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2116,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1761,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 1799,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 1277,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1831,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "7",
+        "8",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2143,
+      "text_layer": "usable",
+      "clauses": [
+        "5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2009,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1262,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 23,
+      "characters": 884,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1462,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1595,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 26,
+      "characters": 1960,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2552,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 28,
+      "characters": 735,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 1877,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 30,
+      "characters": 2231,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 31,
+      "characters": 975,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 1029,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2451,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1523,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1453,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1269,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 534,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 38,
+      "characters": 170,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 2416,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 40,
+      "characters": 2234,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 41,
+      "characters": 2174,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 42,
+      "characters": 1715,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 43,
+      "characters": 1522,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 44,
+      "characters": 1778,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 45,
+      "characters": 907,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 46,
+      "characters": 1275,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 47,
+      "characters": 1169,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 48,
+      "characters": 824,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 49,
+      "characters": 1862,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 50,
+      "characters": 1164,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 51,
+      "characters": 315,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 52,
+      "characters": 945,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 53,
+      "characters": 1642,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 9
+    },
+    {
+      "pdf_page": 54,
+      "characters": 837,
+      "text_layer": "usable",
+      "clauses": [
+        "2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 55,
+      "characters": 1723,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 56,
+      "characters": 2426,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 57,
+      "characters": 1993,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 58,
+      "characters": 1241,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 59,
+      "characters": 1849,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 60,
+      "characters": 2036,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 61,
+      "characters": 2918,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 62,
+      "characters": 2568,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 63,
+      "characters": 2122,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "4",
+        "6",
+        "7"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 64,
+      "characters": 2337,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 65,
+      "characters": 2575,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 66,
+      "characters": 2450,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 67,
+      "characters": 3304,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 68,
+      "characters": 3427,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 69,
+      "characters": 1432,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 70,
+      "characters": 2291,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2",
+        "3",
+        "4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 71,
+      "characters": 1248,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 72,
+      "characters": 1226,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 73,
+      "characters": 2854,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 74,
+      "characters": 2877,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 75,
+      "characters": 3051,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 76,
+      "characters": 2720,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 77,
+      "characters": 1860,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 78,
+      "characters": 1766,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 79,
+      "characters": 1956,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 80,
+      "characters": 1668,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 81,
+      "characters": 2490,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 82,
+      "characters": 2098,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 83,
+      "characters": 1257,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 84,
+      "characters": 927,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 85,
+      "characters": 1408,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 86,
+      "characters": 1283,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 87,
+      "characters": 2710,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 88,
+      "characters": 932,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 89,
+      "characters": 1341,
+      "text_layer": "usable",
+      "clauses": [
+        "1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 90,
+      "characters": 1173,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 91,
+      "characters": 1378,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 92,
+      "characters": 261,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 93,
+      "characters": 481,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 94,
+      "characters": 2033,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "2"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 95,
+      "characters": 1261,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 96,
+      "characters": 693,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 97,
+      "characters": 830,
+      "text_layer": "usable",
+      "clauses": [
+        "1.4",
+        "3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 98,
+      "characters": 74,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 99,
+      "characters": 442,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

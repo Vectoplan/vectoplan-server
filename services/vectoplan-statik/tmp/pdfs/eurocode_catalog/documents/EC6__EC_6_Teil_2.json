@@ -1,0 +1,1081 @@
+{
+  "document_id": "EN_1996-2__base_standard__EC_6_Teil_2",
+  "eurocode_family": "EC6",
+  "designation": "DIN EN 1996-2",
+  "document_kind": "base_standard",
+  "file_name": "EC 6 Teil 2.pdf",
+  "relative_path": "EC 6/EC 6 Teil 2.pdf",
+  "sha256": "f1af207410c0fa4ad4125d31e19832c97528243a9b3b18a003cb1bc7eeb9a4f7",
+  "pages": 35,
+  "text_pages": 35,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 124,
+  "equation_candidate_count": 0,
+  "table_reference_count": 6,
+  "figure_reference_count": 2,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111162306+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232951+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 6\\EC 6 Teil 2.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich von Teil 2 des Eurocodes 6..............................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen .................................................................................................................... ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen verbindlichen Regeln und Anwendungsregeln.....................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe .................................................................................................................... ...............................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Allgemeines............................................................................................................... .............................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Begriffe für die Planung .................................................................................................. ......................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Begriffe für Klimafaktoren und Umweltbedingungen ........................................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Begriffe für Mauersteine .................................................................................................. .....................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Sonstige Begriffe ......................................................................................................... ..........................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole ..................................................................................................................... .......................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Planungsgrundsätze ............................................................................................................ .............. 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Einflüsse auf die Dauerhaftigkeit des Mauerwerks......................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Allgemeines............................................................................................................... .......................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Klassifizierung der Umweltbedingungen ..................................................................................... .... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Aggressive chemische Umgebungen........................................................................................... .... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Auswahl der Baustoffe....................................................................................................... ................ 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Allgemeines............................................................................................................... .......................... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Mauersteine............................................................................................................... .......................... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Mauermörtel und Füllbeton ................................................................................................. .............. 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.4",
+      "title": "Ergänzungsbauteile und Bewehrung .......................................................................................... ..... 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Mauerwerk ................................................................................................................... ........................ 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Konstruktionsdetails ...................................................................................................... .................... 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Fugenausbildung........................................................................................................... ..................... 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.3",
+      "title": "Formänderungen im Mauerwerk ............................................................................................... ........ 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.4",
+      "title": "Dehnungsfugen............................................................................................................. ...................... 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.5",
+      "title": "Zulässige Abweichungen.................................................................................................... ............... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3.6",
+      "title": "Widerstand gegen das Eindringen von Feuchte durch Außenwände........................................... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Ausführung.................................................................................................................... ...................... 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines................................................................................................................. ........................ 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Annahme, Handhabung sowie Lagerung von Baustoffen.............................................................. 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Allgemeines............................................................................................................... .......................... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Bewehrungs- und Vorspannmaterial.......................................................................................... ...... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Vorbereitung von Baustoffen ................................................................................................. ........... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3.1",
+      "title": "Baustellenmörtel und -füllbeton........................................................................................... ............. 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3.2",
+      "title": "Werkmörtel, werkmäßig vorbereitete Mörtel, Kalk-Sand-Werk-Vormörtel und Füllbeton als",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Zulässige Abweichungen...................................................................................................... ............. 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Ausführung des Mauerwerks ................................................................................................... ......... 21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5.1",
+      "title": "Haftverbund............................................................................................................... .......................... 21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5.2",
+      "title": "Vermauerung der Mauersteine............................................................................................... ........... 21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5.3",
+      "title": "Nachträgliches Verfugen und Fugenglattstrich bei Mauerwerk mit Ausnahme von",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.5.4",
+      "title": "Einbau von Feuchtesperrschichten.......................................................................................... ........ 21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.5.5",
+      "title": "Dehnungsfugen............................................................................................................. ...................... 21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.5.6",
+      "title": "Einbau von Wärmedämmstoffen............................................................................................... ........ 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.5.7",
+      "title": "Reinigung von Verblendmauerwerk........................................................................................... ....... 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6",
+      "title": "Nachbehandlung und Schutzmaßnahmen während der Bauausführung..................................... 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.1",
+      "title": "Allgemeines............................................................................................................... .......................... 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.2",
+      "title": "Schutz gegen Regen........................................................................................................ ................... 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.3",
+      "title": "Schutz gegen Frost-Tau-Wechsel ............................................................................................ ......... 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.4",
+      "title": "Schutz gegen Austrocknung ................................................................................................. ............ 22",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.5",
+      "title": "Schutz vor mechanischer Beschädigung ...................................................................................... .. 23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "3.6.6",
+      "title": "Bauhöhe des Mauerwerks.................................................................................................... .............. 23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer die",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 9
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich von Teil 2 des Eurocodes 6",
+      "pdf_page": 9
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen verbindlichen Regeln und Anwendungsregeln",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Allgemeines",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Begriffe für die Planung",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.3",
+      "title": "Begriffe für Klimafaktoren und Umweltbedingungen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.4",
+      "title": "Begriffe für Mauersteine",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.5.5",
+      "title": "Sonstige Begriffe",
+      "pdf_page": 11
+    },
+    {
+      "clause": "1.6",
+      "title": "Symbole",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2",
+      "title": "Planungsgrundsätze",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1",
+      "title": "Einflüsse auf die Dauerhaftigkeit des Mauerwerks",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Klassifizierung der Umweltbedingungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1.2.1",
+      "title": "Mikroumweltbedingungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1.2.2",
+      "title": "Klimafaktoren (Makroumweltbedingungen)",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Aggressive chemische Umgebungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.2",
+      "title": "Auswahl der Baustoffe",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Mauersteine",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Mauermörtel und Füllbeton",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 14
+    },
+    {
+      "clause": "2.2.3.2",
+      "title": "Auswahl von Werkmörtel und im Werk hergestellter Füllbeton",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.2.3.3",
+      "title": "Auswahl von Baustellenmörtel und -füllbeton",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.2.4",
+      "title": "Ergänzungsbauteile und Bewehrung",
+      "pdf_page": 15
+    },
+    {
+      "clause": "2.3",
+      "title": "Mauerwerk",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.1",
+      "title": "Konstruktionsdetails",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.2",
+      "title": "Fugenausbildung",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.3",
+      "title": "Formänderungen im Mauerwerk",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.4",
+      "title": "Dehnungsfugen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 16
+    },
+    {
+      "clause": "2.3.4.2",
+      "title": "Abstände zwischen Dehnungsfugen",
+      "pdf_page": 17
+    },
+    {
+      "clause": "2.3.5",
+      "title": "Zulässige Abweichungen",
+      "pdf_page": 18
+    },
+    {
+      "clause": "2.3.6",
+      "title": "Widerstand gegen das Eindringen von Feuchte durch Außenwände",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3",
+      "title": "Ausführung",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3.1",
+      "title": "Allgemeines",
+      "pdf_page": 18
+    },
+    {
+      "clause": "3.2",
+      "title": "Annahme, Handhabung sowie Lagerung von Baustoffen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.2.2",
+      "title": "Bewehrungs- und Vorspannmaterial",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3",
+      "title": "Vorbereitung von Baustoffen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3.1",
+      "title": "Baustellenmörtel und -füllbeton",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3.1.2",
+      "title": "Chloridgehalt",
+      "pdf_page": 19
+    },
+    {
+      "clause": "3.3.1.3",
+      "title": "Festigkeit von Mörtel und Füllbeton",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.1.4",
+      "title": "Zusatzmittel und Zusatzstoffe",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.1.5",
+      "title": "Dosierung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.1.6",
+      "title": "Mischverfahren und Mischzeit",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.1.7",
+      "title": "Verarbeitbarkeitszeit von Zementmörtel und Füllbeton",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.1.8",
+      "title": "Mörtelherstellung bei kaltem Wetter",
+      "pdf_page": 20
+    },
+    {
+      "clause": "3.3.2",
+      "title": "Werkmörtel, werkmäßig vorbereitete Mörtel, Kalk-Sand-Werk-Vormörtel und Füllbeton als",
+      "pdf_page": 21
+    },
+    {
+      "clause": "3.4",
+      "title": "Zulässige Abweichungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "3.5",
+      "title": "Ausführung des Mauerwerks",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.1",
+      "title": "Haftverbund",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.2",
+      "title": "Vermauerung der Mauersteine",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.3",
+      "title": "Nachträgliches Verfugen und Fugenglattstrich bei Mauerwerk mit Ausnahme von",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.3.1",
+      "title": "Nachträgliches Verfugen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.3.2",
+      "title": "Fugenglattstrich",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.4",
+      "title": "Einbau von Feuchtesperrschichten",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.5",
+      "title": "Dehnungsfugen",
+      "pdf_page": 23
+    },
+    {
+      "clause": "3.5.6",
+      "title": "Einbau von Wärmedämmstoffen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.5.7",
+      "title": "Reinigung von Verblendmauerwerk",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6",
+      "title": "Nachbehandlung und Schutzmaßnahmen während der Bauausführung",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6.1",
+      "title": "Allgemeines",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6.2",
+      "title": "Schutz gegen Regen",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6.3",
+      "title": "Schutz gegen Frost-Tau-Wechsel",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6.4",
+      "title": "Schutz gegen Austrocknung",
+      "pdf_page": 24
+    },
+    {
+      "clause": "3.6.5",
+      "title": "Schutz vor mechanischer Beschädigung",
+      "pdf_page": 25
+    },
+    {
+      "clause": "3.6.6",
+      "title": "Bauhöhe des Mauerwerks",
+      "pdf_page": 25
+    }
+  ],
+  "equation_candidates": [],
+  "tables": [
+    {
+      "label": "3.1",
+      "pdf_page": 18,
+      "line": "Abweichungen nicht größer als die in Tabelle 3.1 angegebenen Werte sein. Falls der Entwurf größere als die in"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 18,
+      "line": "Tabelle 3.1 angegebenen Abweichungen zulässt, sollten diese zulässigen Abweichungen gesondert in den"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 18,
+      "line": "ANMERKUNG Tabelle 3.1 enthält die in EN 1996-1-1 berücksichtigten maximal zulässigen Abweichungen."
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 21,
+      "line": "Planungsunterlagen für eine der in Tabelle 3.1 aufgeführten Abweichungen oder für die Ebenheits- und"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 21,
+      "line": "die in Tabelle 3.1 angegebenen Werte (siehe auch Bild 3.1);"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 22,
+      "line": "Tabelle 3.1  Zulässige Abweichungen für Mauerwerkselemente"
+    }
+  ],
+  "figures": [
+    {
+      "label": "3.1",
+      "pdf_page": 21,
+      "line": "die in Tabelle 3.1 angegebenen Werte (siehe auch Bild 3.1);"
+    },
+    {
+      "label": "3.1",
+      "pdf_page": 22,
+      "line": "Bild 3.1  Maximale vertikale Abweichungen"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1151,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 2493,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2260,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7329,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.2",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "2.2.4",
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.3.3",
+        "2.3.4",
+        "2.3.5",
+        "2.3.6",
+        "3",
+        "3.1",
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.3",
+        "3.3.1",
+        "3.3.2",
+        "3.4",
+        "3.5",
+        "3.5.1",
+        "3.5.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 2996,
+      "text_layer": "usable",
+      "clauses": [
+        "3.5.3",
+        "3.5.4",
+        "3.5.5",
+        "3.5.6",
+        "3.5.7",
+        "3.6",
+        "3.6.1",
+        "3.6.2",
+        "3.6.3",
+        "3.6.4",
+        "3.6.5",
+        "3.6.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3386,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3324,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2590,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1958,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2337,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2031,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.5.3",
+        "1.5.4",
+        "1.5.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 1890,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2172,
+      "text_layer": "usable",
+      "clauses": [
+        "2.1.2.2",
+        "2.1.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2583,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "2.2.3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 15,
+      "characters": 3524,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2.3.2",
+        "2.2.3.3",
+        "2.2.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 2726,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3",
+        "2.3.1",
+        "2.3.2",
+        "2.3.3",
+        "2.3.4",
+        "2.3.4.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 17,
+      "characters": 2441,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3.4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 2971,
+      "text_layer": "usable",
+      "clauses": [
+        "2.3.5",
+        "2.3.6",
+        "3",
+        "3.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2897,
+      "text_layer": "usable",
+      "clauses": [
+        "3.2",
+        "3.2.1",
+        "3.2.2",
+        "3.3",
+        "3.3.1",
+        "3.3.1.1",
+        "3.3.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2978,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3.1.3",
+        "3.3.1.4",
+        "3.3.1.5",
+        "3.3.1.6",
+        "3.3.1.7",
+        "3.3.1.8"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2046,
+      "text_layer": "usable",
+      "clauses": [
+        "3.3.2",
+        "3.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 924,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2763,
+      "text_layer": "usable",
+      "clauses": [
+        "3.5",
+        "3.5.1",
+        "3.5.2",
+        "3.5.3",
+        "3.5.3.1",
+        "3.5.3.2",
+        "3.5.4",
+        "3.5.5"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 24,
+      "characters": 2413,
+      "text_layer": "usable",
+      "clauses": [
+        "3.5.6",
+        "3.5.7",
+        "3.6",
+        "3.6.1",
+        "3.6.2",
+        "3.6.3",
+        "3.6.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 1095,
+      "text_layer": "usable",
+      "clauses": [
+        "3.6.5",
+        "3.6.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2334,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 27,
+      "characters": 1055,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 473,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 710,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 3087,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1468,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 2506,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 2424,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2574,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 1257,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

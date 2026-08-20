@@ -1,0 +1,29 @@
+{
+  "dataset_id": "residential-1960-renovation",
+  "dataset_label": "Wohngebäude · Bestand 1960",
+  "dataset_description": "Unsanierter Bestand für Varianten und Sanierungsfahrplan.",
+  "schema_version": "energy-project/0.2",
+  "revision": "test-r60-1",
+  "project": {"id": "test-r60", "name": "Reihenhaus Bestand"},
+  "building": {"type": "residential", "condition": "existing", "construction_year": 1960, "units": 1},
+  "geometry": {"heated_floor_area_m2": 148, "conditioned_volume_m3": 425},
+  "zones": [{"id": "house", "name": "Wohnhaus", "usage_profile": "residential_single_family", "floor_area_m2": 148, "volume_m3": 425, "indoor_temperature_c": 20, "occupants": 4}],
+  "envelope": {
+    "thermal_bridge_delta_u_w_m2k": 0.10,
+    "components": [
+      {"id": "wall", "name": "Mauerwerk ungedämmt", "kind": "exterior_wall", "area_m2": 184, "u_value": 1.35, "status": "assumption", "source": "survey"},
+      {"id": "roof", "name": "Dach", "kind": "roof", "area_m2": 96, "u_value": 1.10, "status": "assumption", "source": "survey"},
+      {"id": "floor", "name": "Kellerdecke", "kind": "floor", "area_m2": 82, "u_value": 1.20, "boundary_temperature_factor": 0.7, "status": "assumption", "source": "survey"},
+      {"id": "windows", "name": "Fenster Zweifach alt", "kind": "window", "area_m2": 31, "u_value": 2.80, "g_value": 0.70, "shading_factor": 0.85, "orientation": "mixed", "status": "assumption", "source": "survey"}
+    ]
+  },
+  "systems": {
+    "heating": {"type": "gas_condensing", "efficiency": 0.88, "energy_carrier": "natural_gas", "renewable_heat_share": 0.0, "verified": false},
+    "ventilation": {"type": "natural", "air_changes_per_hour": 0.5, "infiltration_air_changes_per_hour": 0.30, "heat_recovery_rate": 0.0},
+    "renewables": {"pv_peak_kwp": 0, "roof_potential_kwp": 12}
+  },
+  "usage": {"climate_location": "Kassel", "usage_profile": "residential_single_family"},
+  "climate": {"design_outdoor_temperature_c": -12, "heating_degree_days_kd": 3800, "window_solar_irradiation_kwh_m2a": 410},
+  "targets": {"standard": "EH70EE", "primary_energy_ratio": 0.7, "transmission_ratio": 0.85},
+  "provenance": {"geometry_revision": "survey-r60", "cad_revision": "cad-r60"}
+}

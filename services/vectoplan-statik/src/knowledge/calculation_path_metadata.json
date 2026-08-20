@@ -1,0 +1,41 @@
+{
+  "schema_version": "structural-calculation-path-metadata/0.1",
+  "profiles": {
+    "universal": {"structure_types":["residential_building","industrial_hall","bridge","tower","temporary_structure"],"materials":["all"],"component_types":["all"],"calculation_scopes":["component","subsystem","global"],"limits":{"minimum":["eindeutiges statisches System und konsistente Einheiten"],"maximum":["nur durch den gewählten Solver und Formelstatus"],"exclusions":[]}},
+    "building": {"structure_types":["residential_building","office_building","industrial_hall"],"materials":["reinforced_concrete","steel","timber","masonry","composite"],"component_types":["building_component"],"calculation_scopes":["component","subsystem","global"]},
+    "bridge": {"structure_types":["road_bridge","rail_bridge","pedestrian_bridge","bridge"],"materials":["reinforced_concrete","prestressed_concrete","steel","composite","timber"],"component_types":["bridge_component"],"calculation_scopes":["component","subsystem","global"]},
+    "hall": {"structure_types":["industrial_hall","warehouse","sports_hall"],"materials":["steel","timber","reinforced_concrete","composite"],"component_types":["hall_component"],"calculation_scopes":["component","subsystem","global"]},
+    "concrete": {"structure_types":["all"],"materials":["reinforced_concrete","prestressed_concrete"],"component_types":["slab","beam","column","wall","foundation"],"calculation_scopes":["component"]},
+    "steel": {"structure_types":["all"],"materials":["steel"],"component_types":["beam","column","brace","connection"],"calculation_scopes":["component","subsystem"]},
+    "timber": {"structure_types":["all"],"materials":["timber"],"component_types":["beam","column","truss","connection","panel"],"calculation_scopes":["component","subsystem"]},
+    "masonry": {"structure_types":["residential_building","office_building"],"materials":["masonry"],"component_types":["wall","pier"],"calculation_scopes":["component","subsystem"]},
+    "geotechnical": {"structure_types":["all"],"materials":["soil","rock","reinforced_concrete"],"component_types":["foundation","pile","retaining_wall","slope"],"calculation_scopes":["component","subsystem","global"]},
+    "special": {"structure_types":["all"],"materials":["all"],"component_types":["all"],"calculation_scopes":["component","subsystem","global","scenario"]}
+  },
+  "path_metadata": {
+    "RW-BASIS-001":{"profiles":["universal"],"component_types":["model","support","load_path"]},
+    "RW-ACTION-DEAD-001":{"profiles":["universal"],"component_types":["all load-bearing components"]},
+    "RW-SNOW-001":{"profiles":["building","hall"],"component_types":["roof","canopy"],"limits":{"minimum":["bestätigte Bodenschneelast und Dachform"],"maximum":["gleichmäßige Dachschneelast und explizite Lasteinzugsfläche"],"exclusions":["automatische Verwehungs- und Sonderlastmodelle"]}},
+    "RW-WIND-001":{"profiles":["building","hall","bridge"],"component_types":["facade","roof","bridge_deck","mast"],"limits":{"minimum":["Basiswindgeschwindigkeit und Expositionsparameter"],"maximum":["statischer Flächendruck"],"exclusions":["Wirbelerregung","aeroelastische Instabilität"]}},
+    "RW-TEMP-001":{"profiles":["bridge","building"],"component_types":["bridge_deck","long_member","bearing"]},
+    "RW-COMB-001":{"profiles":["universal"],"component_types":["all"]},
+    "RW-BEAM-001":{"profiles":["building","hall","bridge"],"component_types":["beam","girder","purlin","bridge_girder"],"limits":{"minimum":["mindestens ein Balkenelement mit Lagerung"],"maximum":["lineare Euler-Bernoulli-Stäbe mit kleinen Verformungen"],"exclusions":["allgemeine räumliche Nichtlinearität"]}},
+    "RW-TRUSS-001":{"profiles":["building","hall","bridge"],"component_types":["truss","brace_system"]},
+    "RW-PLATE-NAVIER-001":{"profiles":["building","concrete"],"component_types":["rectangular_slab"],"limits":{"minimum":["rechteckige Geometrie, vier gelenkige Ränder"],"maximum":["dünne isotrope Platte, Gleichlast"],"exclusions":["Öffnungen","innere Lager","große Verformungen"]}},
+    "RW-PLATE-GRILLAGE-001":{"profiles":["building","bridge","concrete"],"component_types":["slab","deck_plate"],"limits":{"minimum":["orthogonales diskretisierbares Tragverhalten"],"maximum":["begrenztes lineares Plattenrost mit globaler Risssekante"],"exclusions":["Membranwirkung","plastische Gelenke"]}},
+    "RW-SECTION-001":{"profiles":["universal"],"component_types":["cross_section"]},
+    "RW-RC-001":{"profiles":["concrete","building","bridge"],"component_types":["beam","slab"]},
+    "RW-STEEL-001":{"profiles":["steel","hall","bridge"],"component_types":["beam"]},
+    "RW-TIMBER-001":{"profiles":["timber","building","hall"],"component_types":["beam"]},
+    "RW-STABILITY-001":{"profiles":["steel","concrete","timber","special"],"component_types":["column","compression_member"]},
+    "RW-MASONRY-001":{"profiles":["masonry","building"],"component_types":["wall","pier"]},
+    "RW-PRESTRESS-001":{"profiles":["concrete","bridge"],"component_types":["tendon","prestressed_girder"]},
+    "RW-FOUNDATION-001":{"profiles":["geotechnical","building","hall","bridge"],"component_types":["pad_foundation"]},
+    "RW-EARTH-001":{"profiles":["geotechnical","bridge"],"component_types":["retaining_wall","abutment"]},
+    "RW-FATIGUE-001":{"profiles":["special","steel","bridge"],"component_types":["fatigue_detail"]},
+    "RW-FIRE-001":{"profiles":["special","building","hall"],"component_types":["fire_exposed_component"]},
+    "RW-STAGE-001":{"profiles":["special","building","hall","bridge"],"component_types":["construction_stage_model"]},
+    "RW-DYNAMIC-001":{"profiles":["special","building","hall","bridge"],"component_types":["dynamic_model"]},
+    "RW-SYSTEMS-001":{"profiles":["special","universal"],"component_types":["advanced_structural_system"]}
+  }
+}

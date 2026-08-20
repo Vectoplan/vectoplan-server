@@ -1,0 +1,254 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten  
+Teil 6: Kranbahnen 
+National Annex  
+Nationally determined parameters  
+Eurocode 3: Design of steel structures  
+Part 6: Crane supporting structures 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 3: Calcul des structures en acier  
+Partie 6: Chemins de roulement
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-6/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde vom NA 005-08-01 AA Kranbahnen erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1993-6:2010-12, Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 6: Kranbahnen. 
+Die Europäische Norm EN 1993-6 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifi zierungssystemen. Die entsprechen den Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1993-6:2010-12 (en: non-
+contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1993-6:2010-12. 
+DIN EN 1993-6:2010-12 und dieser Nationale Anhang DIN EN 1993-6/NA:2010-12 ersetzen 
+DIN 4132:1981-02, DIN 4132 Beiblatt 1:1981-02 und DIN-Fachbericht 126:2002. 
+Änderungen 
+Gegenüber DIN 4132:1981-02 und DIN 4132 Beiblatt 1:1981-02 wurden folgende Änderungen vorgenommen: 
+a) Festlegungen zur nationalen Anwendung von DIN EN 1993-6:2010-12 aufgenommen. 
+Frühere Ausgaben 
+DIN 120-1: 1936-11xxxx 
+DIN 120-2: 1936-11 
+DIN 4132: 1980-02, 1981-02 
+DIN 4132 Beiblatt 1:1981-02 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-6/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für Regeln für den Entwurf und die Bemessung von 
+Kranbahnträgern, die bei der Anwendung von DIN EN 1993-6:2010-12 in Deutschland zu berücksichtigen 
+sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1993-6:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1993-6:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1993-6:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP, en: Nationally determined parameters): 
+ 2.1.3.2(1)P Nutzungsdauer 
+ 2.8(2)P Teilsicherheitsbeiwert F,test für Kranprüflasten 
+ 3.2.3(1) Niedrigste Betriebstemperatur bei Hallenkranbahnen 
+ 3.2.3(2)P Wahl der Zähigkeit für druckbeanspruchte Bauteile 
+ 3.2.4(1) Tabelle 3.2 Sollwerte ZEd für Eigenschaften in Dickenrichtung 
+ 3.6.2(1) Informationen über geeignete Schienen und Schienenstahl 
+ 3.6.3(1) Informationen über besondere Verbindungsmittel für Schienen 
+ 6.1(1) Teilsicherheitsbeiwerte Mi für Beanspruchbarkeit im Grenzzustand der Tragfähigkeit 
+ 6.3.2.3(1) Alternative Bemessungsmethoden für Biegedrillknicken 
+ 7.3(1) Begrenzungen der Durchbiegungen und Verformungen 
+ 7.5(1) Teilsicherheitsbeiwerte M,ser für Beanspruchbarkeit im Grenzzustand der Gebrauchstauglichkeit 
+ 8.2(4) Beanspruchungsgruppen unter hoher Ermüdungsbelastung 
+ 9.1(2) Begrenzung der Lastwechselzahl C0 ohne Ermüdungsnachweis 
+ 9.2(1)P Teilsicherheitsbeiwerte Ff für Ermüdungsbelastung 
+ 9.2(2)P Teilsicherheitsbeiwerte Mf für Ermüdungsfestigkeit 
+ 9.3.3(1) Beanspruchungsgruppen, bei denen Biegung aus Exzentrizität vernachlässigt werden kann 
+ 9.4.2(5) Schädigungsäquivalente Beiwerte dup für Beanspruchung aus mehreren Kranen 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-6/NA:2010-12 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1993-6:2010-12. Diese sind durch ein vorangestelltes NCI (en: non-contradictory complementary 
+information) gekennzeichnet. 
+ 1.2 Normative Verweisungen 
+ 2.3.1 Reduzierte Schwingbeiwerte 
+ 2.3.1 Zusammenwirken von Kranen 
+ 2.3.1 Lastansatz in der Bemessungssituation Erdbeben 
+ 3.1 Stahlsorten bis S700 
+ 3.2.5 Maßabweichungen 
+ 5.8 Überlagerung mit lokaler Biegespannung im Untergurt infolge Radlasten 
+ 7.3 Einteilung der Einwirkungen  Ergänzung für Grenzzustand der Gebrauchstauglichkeit 
+ 8.5.2 Kranklassen für starre Schienenbefestigungen 
+ 8.5.3 Dehnfugen 
+NA 2.2 Nationale Festlegungen 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1993-6:2010-12 bzw. ergänzt 
+diese. 
+NCI zu 1.2 Normative Verweisungen 
+NA DIN 536-1, Kranschienen; Maße, statische Werte, Stahlsorten für Kranschienen mit Fußflansch Form A 
+NA DIN EN 1090-2, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 2: Technische 
+ Regeln für die Ausführung von Stahltragwerken
+NA DIN EN 1991-3:2010-12, Eurocode 1: Einwirkungen auf Tragwerke - Teil 3: Einwirkungen infolge von 
+ Kranen und Maschinen 
+NA DIN EN 1993-1-1:2010-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: 
+Allgemeine Bemessungsregeln und Regeln für den Hochbau
+NA DIN EN 1993-1-8/NA, Nationaler Anhang  National festgelegte Parameter - Eurocode 3: Bemessung 
+ und Konstruktion von Stahlbauten  Teil 1-8: Bemessung von Anschlüssen 
+NA DIN EN 1993-6:2010-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 6: 
+ Kranbahnen 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1993-6/NA:2010-12 
+NDP zu 2.1.3.2(1)P Nutzungsdauer 
+Wenn keine Angaben über die Nutzungsdauer vorliegen, ist diese mit 25 Jahren anzusetzen. 
+Inspektionsintervalle für Kranbahnen sind in Abhängigkeit der Teilsicherheitsbeiwerte für die 
+Ermüdungsfestigkeit nach NDP zu 9.2(2)P zu bestimmen. 
+ANMERKUNG 1 Unter Inspektion wird hier die Überprüfung der Kranbahnen auf Risse und die gegebenenfalls 
+erforderliche Instandsetzung verstanden. 
+ANMERKUNG 2 Die Notwendigkeit der Wartung der Kranbahnen und die Bestimmungen anderer Regelwerke, z. B. 
+Unfallverhütungsvorschriften, bleiben von diesen Festlegungen unberührt. 
+NCI zu 2.3.1 Reduzierte Schwingbeiwerte 
+Für den Nachweis der Unterstützungs- und Aufhängungskonstruktionen von Kranbahnen, die die Lasten von 
+der Kranbahn bis in die Fundamente weiterleiten, dürfen Schwingbeiwerte 1,1 um = 0,1 reduziert 
+werden. Die Bemessung der Gründungen darf ohne Ansatz der Schwingbeiwerte erfolgen. 
+NCI zu 2.3.1 Zusammenwirken von Kranen 
+Bei der Berechnung von Spannungen aus dem gleichzeitigen Wirken mehrerer Krane ist für den Kran mit dem 
+größten Wert Fz,Ed (einschließlich Schwingbeiwert) mit dessen Schwingbeiwert und für die übrigen mit dem 
+Schwingbeiwert der Hubklasse HC1 nach DIN EN 1991-3 zu rechnen.
+NCI zu 2.3.1 Lastansatz in der Bemessungssituation Erdbeben 
+Nach DIN EN 1991-3:2010-12, A.2.3 ermittelt sich der Kombinationsbeiwert 2 aus dem Verhältnis von 
+Krangewicht zu Krangewicht plus Hublast des Krans. Das Krangewicht setzt sich in der Regel aus dem 
+Brückengewicht und dem Katzgewicht zusammen. 
+Für die Ermittlung der Horizontallasten infolge Erdbeben sind lediglich das Krangewicht und gegebenenfalls 
+geführte, mit 2 multiplizierte Hublasten anzusetzen. 
+NDP zu 2.8(2)P Teilsicherheitsbeiwert F,test für Kranprüflasten 
+Es gilt die Empfehlung. 
+NCI zu 3.1 Stahlsorten bis S700 
+Die Erweiterung von DIN EN 1993 auf Stahlsorten bis S700 gilt auch für Kranbahnen. 
+NDP zu 3.2.3(1) Niedrigste Betriebstemperatur bei Hallenkranbahnen 
+Die niedrigste Betriebstemperatur für Kranbahnen innerhalb von Gebäuden beträgt -10 °C. 
+NDP zu 3.2.3(2)P Wahl der Zähigkeit für druckbeanspruchte Bauteile 
+Es gilt die Empfehlung. 
+NDP zu 3.2.4(1) Tabelle 3.2, Sollwerte ZEd für Eigenschaften in Dickenrichtung 
+Es gilt die Empfehlung. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1993-6/NA:2010-12 
+NCI zu 3.2.5 Maßabweichungen 
+Maßabweichungen von Kranbahnen werden in DIN EN 1090-2 geregelt. 
+NDP zu 3.6.2(1) Informationen über geeignete Schienen und Schienenstahl 
+Solange keine harmonisierten Produktnormen oder europäischen technischen Zulassungen ETAs vorliegen, 
+gilt für Schienen und Schienenstähle DIN 536-1. 
+NDP zu 3.6.3(1) Informationen über besondere Verbindungsmittel für Schienen 
+Kranschienenbefestigungen sind nach den Angaben der Hersteller zu montieren. 
+Bei der Querschnittstragfähigkeit des Kranbahnträgers berücksichtigte Kranschienen müssen mit 
+Verbindungsmitteln angeschlossen werden, für die eine harmonisierte Produktnorm oder ein bauaufsichtlicher 
+Verwendbarkeitsnachweis vorliegt. 
+Für Injektionsschrauben ist ein bauaufsichtlicher Verwendbarkeitsnachweis erforderlich. 
+ANMERKUNG Als bauaufsichtliche Verwendbarkeitsnachweise gelten: 
+ europäische technische Zulassungen, 
+ allgemeine bauaufsichtliche Zulassungen, 
+ die Zustimmung im Einzelfall. 
+NCI zu 5.8 Überlagerung mit lokaler Biegespannung im Untergurt infolge Radlasten 
+Bei der Überlagerung der lokalen Biegespannungen im Untergurt infolge Radlasten nach 
+DIN EN 1993-6:2010-12, 5.8(3) mit den Normalspannungen aus der globalen Trägerbeanspruchung dürfen 
+die lokalen Biegespannungen auf 75 % reduziert werden. Das gilt auch für den Ermüdungsnachweis, siehe 
+DIN EN 1993-6:2010-12, 9.3.4. 
+NDP zu 6.1(1) Teilsicherheitsbeiwerte 
+Mi für Beanspruchbarkeit im Grenzzustand der Tragfähigkeit 
+Es gelten folgende Teilsicherheitsbeiwerte Mi für die Beanspruchbarkeit von Kranbahnen: 
+M0 = 1,00; 
+M1 = 1,10; 
+M2 = 1,25, unter Berücksichtigung der Ergänzungen in DIN EN 1993-1-8/NA; 
+M3 = 1,25; 
+M3,ser = 1,10; 
+M4 ist jeweils über den bauaufsichtlichen Verwendbarkeitsnachweis festzulegen; 
+M5 = 1,00; 
+M6,ser = 1,00; 
+M7 = 1,10. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1993-6/NA:2010-12 
+NDP zu 6.3.2.3(1) Alternative Bemessungsmethoden für Biegedrillknicken 
+Es wird das in Anhang A angegebene Verfahren empfohlen. 
+NCI zu 7.3 Einteilung der Einwirkungen  Ergänzung für Grenzzustand der Gebrauchstauglichkeit 
+Ergänzend zu DIN EN 1991-3:2010-12, Tabelle 2.2 darf die angegebene Tabelle NA.1 verwendet werden. 
+Tabelle NA.1 Zuordnung von Lastgruppen und dynamischen Faktoren, die als einzelne 
+charakteristische Einwirkung anzusehen sind 
+1 2 3 4 5 
+Belastung Symbol Grenzzustand der 
+Gebrauchstauglichkeit 
+Lastgruppen 
+101 102 103 
+Eigengewicht des Krans Qc 1 1 1 
+Hublast QH 1 1 1 
+Beschleunigen / Bremsen der 
+Kranbrücke HL, HT - - 1 
+Schräglauf der Kranbrücke HS - 1 - 
+Wind in Betrieb WF - 1 1 
+NDP zu 7.3(1) Begrenzungen der Durchbiegungen und Verformungen 
+Die Begrenzungen der vertikalen und horizontalen Durchbiegungen erfolgen nach DIN EN 1993-6:2010-12, 
+Tabelle 7.1 und Tabelle 7.2 mit folgender Änderung: 
+ Für die Berechnung der Verformungen nach Tabelle 7.1, Zeile b) brauchen nur die Lasten aus 
+Kranbetrieb berücksichtigt zu werden. Die Grenzwerte der Verformungen nach Tabelle 7.1, Zeile b) 
+ergeben sich aus folgender Tabelle NA.2: 
+Tabelle NA.2  Grenzwerte für Verformungen 
+Hubklasse grenz 
+y
+HC 1 hc / 250 
+HC 2 hc / 300 
+HC 3 hc / 350 
+HC 4 hc / 400 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1993-6/NA:2010-12 
+ Für die Berechnung der Verformungen nach Tabelle 7.1, Zeile e) brauchen nur die Lasten aus 
+Kranbetrieb berücksichtigt zu werden. 
+ In Tabelle 7.2, Zeile a) wird der Grenzwert für vertikale Verformungen auf z L/500 und z 25 mm
+erweitert. 
+NDP zu 7.5(1) Teilsicherheitsbeiwerte M,ser für Beanspruchbarkeit im Grenzzustand der 
+Gebrauchstauglichkeit 
+Es gilt die Empfehlung. 
+NCI zu 8.5.2 Kranklassen für starre Schienenbefestigungen 
+Starre Schienenbefestigungen sind nur bei Kranklassen S0 bis S3 zu empfehlen. 
+NDP zu 8.2(4) Beanspruchungsgruppen unter hoher Ermüdungsbelastung 
+Es gilt die Empfehlung mit folgender Ausnahme: Für das Anschweißen von Steifen an den befahrenen 
+Obergurt sind die Beanspruchungsklassen S5 bis S9 nach DIN EN 1991-3:2010-06, Anhang B als hohe 
+Ermüdungsbelastung zu spezifizieren. 
+NCI zu 8.5.3 Dehnfugen 
+Auch wenn die Kranbahnen Dehnfugen aufweisen, kann in lose verlegten Schienen (Befestigung mit 
+Klemmplatten) auf Dehnfugen verzichtet werden. 
+NDP zu 9.1(2) Begrenzung der Lastwechselzahl C
+0 ohne Ermüdungsnachweis 
+Es gilt die Empfehlung. 
+NDP zu 9.2(1)P Teilsicherheitsbeiwerte Ff für Ermüdungsbelastung 
+Es gilt die Empfehlung. 
+NDP zu 9.2(2)P Teilsicherheitsbeiwerte Mf für Ermüdungsfestigkeit 
+Als Standardfall für Kranbahnen ist von einem Teilsicherheitsbeiwert Mf = 1,15 verbunden mit 
+3 Inspektionsintervallen auszugehen. Davon abweichende Teilsicherheitsbeiwerte sind an die Mindestanzahl 
+der Inspektionsintervalle gemäß Tabelle NA.3 geknüpft. 
+Tabelle NA.3  Erforderliche Anzahl der Inspektionsintervalle 
+Teilsicherheitsbeiwert Mf Anzahl der Inspektionsintervalle 
+1,00 4 
+1,15 3 
+1,35 2 
+1,60 1 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1993-6/NA:2010-12 
+NDP zu 9.3.3(1) Beanspruchungsgruppen, bei denen Biegung aus Exzentrizität vernachlässigt werden 
+kann 
+Es gilt die Empfehlung für die Beanspruchungsgruppen S0 bis S2. 
+NDP zu 9.4.2(5) Schädigungsäquivalente Beiwerte dup für Beanspruchung aus mehreren Kranen 
+Es gilt die Empfehlung. 
+9

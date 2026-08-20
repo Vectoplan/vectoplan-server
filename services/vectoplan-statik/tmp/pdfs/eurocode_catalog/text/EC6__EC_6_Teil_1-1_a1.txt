@@ -1,0 +1,247 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM Entwurf Oktober 2010 
+DIN EN 1996-1-1/A1 DIN 
+ICS 91.010.30; 91.080.30 
+Entwurf 
+EinsprOehe bis 2011-01-08 
+Vorgesehen als Anderung von 
+DIN EN 1996-1-1:2006-01 
+Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten­
+Tei11-1: Allgemeine Regeln für bewehrtes und unbewehrtes Mauerwerk; 
+Deutsche FassungEN 1996-1-1:2005/prA1:2010 
+Eurocode 6: Design of masonry structures -
+Part 1-1: General rules for reinforced and unreinforced masonry structures; 
+GermanversionEN 1996-1-1:2005/prA1:2010 
+Eurocode 6: Calcul des ouvrages en ma~onnerie -
+Partie 1-1: Regles communes pour ouvrages en ma~nnerie armee et non armee; 
+Versionallemande EN 1996-1-1:2005/prA1:2010 
+Anwendungswarnvermerk 
+Dieser Norm-Entwurf mit Erscheinungsdatum 201 0-11-QB wird der Öffentlichkeit zur Prtlfung und 
+Stellungnahme vorgelegt. 
+Weil die beabsichtigte Norm von der vorliegenden Fassung abweichen kann, ist die Anwendung dieses 
+Entwurfes besonders zu vereinbaren. 
+Stellungnahmen werden erbeten 
+- vorzugsweise als Datei per E-Mail an nabau@din.de in Form einer Tabelle. Die Vorlage dieser Tabelle 
+kann im Internet unter www.din.de/stellungnahme oder frlr Stellungnahmen zu Norm-EntwOrfen der DKE 
+unter www.dke.de/stellungnahme abgerufen werden; 
+- oder online im Norm-Entwurfs-Portal des DIN unter www.entwuerfe.din.de, sofern dort wiedergegeben; 
+- oder in Papierform an den Normenausschuss Bauwesen (NABau) im DIN, 10772 Berlin (Hausanschrift: 
+Burggrafenstr. 6, 10787 Ber1in). 
+Die Empfang er dieses Norm-Entwurfs werden gebeten, mit ihren Kommentaren jegliche relevanten 
+Patentrechte, die sie kennen, mitzuteilen und unterstützende Dokumentationen zur Verfügung zu stellen. 
+Gesamtumfang 1 0 Seiten 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung a.V. · Jade Art dar Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e.V., Ber1in, gestattet. 
+Alleinver1<auf der Normen durch Beuth Ver1ag GmbH, 1 0772 Ber1in 
+Preisgruppe 7 
+www.din.de 
+www.beuth.de 1111111111111 
+1720836
+
+===== PDF-SEITE 2 =====
+E DIN EN 1996-1-1/A1:2010-10 
+Nationales Vorwort 
+Dieses Dokument (EN 1996-1-1:2005/prA1:2010) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau  (Sekretariat: BSI, Vereinigtes Königreich) ausgearbeitet. Im DIN 
+Deutsches Institut für Normung e.V. ist hierfür der Arbeitsausschuss NA 005-06-01 AA Mauerwerksbau des 
+Normenausschusses Bauwesen (NABau) zuständig. 
+2
+
+===== PDF-SEITE 3 =====
+Dokument-Typ: Europäische Norm 
+Dokument-Untertyp: Änderung 
+Dokument-Stage: CEN-Umfrage 
+Dokument-Sprache: D 
+STD Version 2.3a 
+CEN/TC 250
+Datum: 2010-09 
+EN 1996-1-1:2005/prA1:2010 
+CEN/TC 250 
+Sekretariat: BSI
+Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten  Teil 1-
+1: Allgemeine Regeln für bewehrtes und unbewehrtes Mauerwerk
+Eurocode 6: Calcul des ouvrages en maçonnerie  Partie 1-1 : Règles communes pour ouvrages en maçonnerie 
+armée et non armée 
+Eurocode 6: Design of masonry structures  Part 1-1: General rules for reinforced and unreinforced masonry 
+structures 
+ICS: 
+Deskriptoren
+
+===== PDF-SEITE 4 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+2 
+Inhalt 
+Seite 
+Vorwort ................................................................................................................................................................3
+1 Änderung in 1.5.8............................................................................................................. ......................4
+2 Änderung in 1.5.11............................................................................................................ .....................4
+3 Änderung in 1.6............................................................................................................... .......................4
+4 Änderung in 3.6............................................................................................................... .......................4
+5 Änderung in 5.5.2............................................................................................................. ......................5
+6 Änderung in 6.2............................................................................................................... .......................6
+7 Änderung in 6.6.5............................................................................................................. ......................7
+8 Änderung in 8.7............................................................................................................... .......................8
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 5 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+3 
+Vorwort 
+Dieses Dokument (EN 1996-1-1:2005/prA1:2010) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Dieses Dokument ist derzeit zur CEN-Umfrage vorgelegt. 
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 6 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+4 
+1 Änderung in 1.5.8 
+Aufnahme eines neuen Begriffs: 
+
+1.5.8.4 
+Flachsturz 
+Zuggurt, der mit einer darüber befindlichen Aufmauerung zusammenwirkt 
+ 
+2 Änderung in 1.5.11 
+Aufnahme eines neuen Begriffs: 
+
+1.5.11.5 
+eingebaute Länge 
+vom Hersteller nach EN 845-2 angegebene Länge des vorgefertigten Bauteils 
+ 
+3 Änderung in 1.6 
+Aufnahme der folgenden neuen Formelzeichen: 
+ 
+Ftkl vom Hersteller nach EN 845-2 angegebene charakteristische Zugfestigkeit des vorgefertigten Teils 
+des Flachsturzes 
+fvkoi charakteristische Schubfestigkeit von Mauerwerk ohne Auflast an der Verbindungsfläche zwischen 
+der Oberseite des vorgefertigten Teils und dem aufgesetzten Mauerwerksbauteil (Aufmauerung) 
+hl Höhe des Flachsturzes von der Unterseite des vorgefertigten Teils bis zur Oberseite des ergänzen-
+den Bauteils 
+Ed Bemessungswert der Schubspannung an der Verbindungsfläche zwischen dem vorgefertigten Teil 
+und der Aufmauerung 
+ 
+4 Änderung in 3.6 
+Aufnahme eines neuen Unterabschnitts 3.6.3 zwischen dem Unterabschnitt 3.6.2 und dem bisherigen 
+Unterabschnitt 3.6.3 und Anpassung der Nummerierung der bisherigen Unterabschnitte. 
+ 
+3.6.3 Charakteristische Schubfestigkeit an der Verbindungsfläche zwischen dem Mauerwerk und 
+dem vorgefertigten Sturz 
+(1) Die charakteristische Schubfestigkeit an der Verbindungsfläche zwischen dem Mauerwerk und der 
+Oberfläche des vorgefertigten Teils eines Flachsturzes fvkoi wird vom Hersteller angegeben. Der Wert für fvkoi
+sollte nicht größer als der Wert für fvko im Mauerwerk oberhalb des vorgefertigten Teils sein. 
+ 
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 7 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+5 
+5 Änderung in 5.5.2 
+Aufnahme eines neuen Unterabschnitts 5.5.2.4 zwischen 5.5.2.3 und dem bisherigen Unterabschnitt 5.5.2.4 
+und Anpassung der Nummerierung der bisherigen Unterabschnitte 
+ 
+5.5.2.4 Flachstürze 
+(1) Die effektive Stützweite von Flachstürzen sollte als der lichte Abstand zwischen den Auflagern des 
+Sturzes zuzüglich der angegebenen eingebauten Länge oder als der Abstand zwischen den Auflagermitten 
+zuzüglich der Höhe des Sturzes hl angenommen werden, wobei der kleinere Wert maßgebend ist (siehe 
+EN 845-2). 
+(2) Alle vertikalen Lasten, die innerhalb eines gleichschenkligen Dreiecks mit einer Grundlinie, die der 
+effektiven Stützweite des Sturzes entspricht, wirken, sollten berücksichtigt werden, es sei denn, die Lasten 
+können durch andere Bauteile, z. B. durch darüber liegende Decken, die als Zugband wirken, aufgenommen 
+werden. 
+(3) Zur Bestimmung von Biegemomenten ist der Flachsturz als Einfeldträger anzunehmen. 
+(4) Die an der Verbindungsfläche zwischen dem ergänzenden Bauteil aus Mauerwerk und der Oberseite des 
+vorgefertigten Teils des Sturzes auftretende Schubspannung 
+Ed wird benötigt, falls der Wert für fvkoi niedriger 
+als der Wert für fvko nach 3.6.3(1) ist. Sie darf folgendermaßen berechnet werden: 
+tI
+hAVv
+cl
+ceceEd
+Ed (5.13) 
+Dabei ist: 
+VEd der Bemessungswert der vertikalen Schublast am betrachteten Querschnitt; 
+Ace die Querschnittsfläche des ergänzenden Bauteils;
+hce der vertikale Abstand zwischen der Mitte des ergänzenden Bauteils und der neutralen Achse des 
+gesamten Flachsturzes; 
+Icl das Trägheitsmoment des Flachsturzes; 
+t die Dicke der Wand an der Verbindungsfläche zwischen dem ergänzenden Bauteil und dem 
+vorgefertigten Teil des Sturzes. 
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 8 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+6 
+Legende 
+1) vorgefertigter Teil 
+2) ergänzendes Bauteil 
+3) neutrale Achse des Flachsturzes 
+Bild 5.6  Querschnitt eines Flachsturzes 
+ 
+6 Änderung in 6.2 
+In 6.2 (2) ist nach der Zeile mit der Gleichung (6.13) Folgendes aufzunehmen: 
+ 
+oder als Alternative aus 
+RdltRd VV (6.14) 
+ 
+Am Ende der Liste in 6.2(2) ist Folgendes aufzunehmen: 
+ 
+VRdlt der Bemessungswert im Grenzzustand der Tragfähigkeit 
+ANMERKUNG Die Festlegung, ob in einem Land die Gleichung (6.14) und VRdlt anzuwenden sind, sowie die Werte 
+oder Ableitung bezogen beispielsweise auf die Zugfestigkeit der Mauersteine und/oder die Überbindung des Mauerwerks, 
+sofern gewählt, werden im Nationalen Anhang eines jeden Landes geregelt. Materialeigenschaften, die als 
+Eingabegrößen verwendet werden, sollten auf die in Europäischen Normen festgelegten Eigenschaften beschränkt 
+werden. 
+ 
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 9 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+7 
+7 Änderung in 6.6.5 
+Der bisherige Unterabschnitt 6.6.5 ist durch den folgenden zu ersetzen: 
+ 
+(1) Bei Flachstürzen kann der Bemessungswert des aufnehmbaren Momentes MRd aus 6.6.4 berechnet 
+werden, sofern der Flachsturz als scheibenartiger Träger betrachtet wird, oder aus 6.6.2, falls dies nicht der 
+Fall ist. 
+(2) Bei der Berechnung des aufnehmbaren Moments nach 6.6.2 oder 6.6.4 ist Asfyd durch Ftkl/ M zu 
+ersetzen. 
+Dabei ist: 
+Ftkl die charakteristische Zugfestigkeit des vorgefertigten Teils des Flachsturzes, die vom Hersteller 
+nach prEN 845-2:2009 angegeben wird; 
+M der Teilsicherheitsbeiwert für Werkstoffe (Betonstahl) 
+Legende 
+1) vorgefertigter Teil 
+2) ergänzendes Bauteil 
+3) eingebaute Länge 
+Bild 6.8  Flachsturz 
+(3) Flachstürze sollten auf vertikale Beanspruchung im Auflagerbereich nachgewiesen werden. 
+(4) Der Nachweis von Flachstürzen unter Schubbelastung sollte nach (6.7.3) oder (6.7.4) durchgeführt 
+werden, je nach dem, ob der Flachsturz als scheibenartiger Träger betrachtet wird oder nicht. Wenn der Wert 
+für f
+vkoi niedriger als der Wert für fvko nach 3.6.3(2) ist, sollte die Schubbeanspruchung an der Verbindungs-
+fläche zwischen dem vorgefertigten Teil und dem ergänzenden Bauteil so nachgewiesen werden, dass 
+dMvkoiEd 4,0/fv (6.3.6) 
+Dabei ist: 
+vEd die Schubspannung an der Verbindungsfläche zwischen dem vorgefertigten Teil und dem 
+ergänzenden Bauteil 
+d der Bemessungswert der Vertikalspannung infolge der Lasten im gleichschenkligen Dreieck 
+ausschließlich oberhalb des Sturzes 
+ 
+E DIN EN 1996-1-1/A1:2010-10
+
+===== PDF-SEITE 10 =====
+EN 1996-1-1:2005/prA1:2010 (D) 
+8 
+8 Änderung in 8.7 
+Am Ende von 8.7 ist die folgende Anmerkung aufzunehmen: 
+ 
+ANMERKUNG Es wird empfohlen, keine Feuchtsperrschicht zwischen dem vorgefertigten Teil und dem ergänzenden 
+Bauteil eines Flachsturzes einzubauen. Für den Fall, dass eine Feuchtsperrschicht für erforderlich gehalten wird, muss 
+diese die an der Verbindungsfläche auftretenden horizontalen Schubkräfte sowie die vertikale Druckbelastung aufnehmen 
+können. Siehe 6.6.5(7). 
+ 
+E DIN EN 1996-1-1/A1:2010-10

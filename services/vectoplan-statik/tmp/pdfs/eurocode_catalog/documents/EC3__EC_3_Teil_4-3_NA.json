@@ -1,0 +1,80 @@
+{
+  "document_id": "EN_1993-4-3_NA__national_annex__EC_3_Teil_4-3_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-4-3/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 4-3 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 4-3 NA.pdf",
+  "sha256": "d7693e290615c9e3b8a6f3eb9629aaf00b6c1f168bdd9d4ff9c003d575180d3e",
+  "pages": 4,
+  "text_pages": 4,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 3,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161331+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232713+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 4-3 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 3,
+      "equation_number": "4",
+      "line": "3.2(1)P, (2)P, (3), (4)",
+      "context": "(NDP, en: Nationally determined parameters, NDP). | 2.3(2) | 3.2(1)P, (2)P, (3), (4) | 3.3(2), (3), (4) | 3.4(3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 3,
+      "equation_number": "4",
+      "line": "3.3(2), (3), (4)",
+      "context": "2.3(2) | 3.2(1)P, (2)P, (3), (4) | 3.3(2), (3), (4) | 3.4(3) | 4.2(1)P",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 3,
+      "equation_number": "13",
+      "line": "5.1.1(2), (3), (4), (5), (6), (9), (10), (11), (12), (13)",
+      "context": "3.4(3) | 4.2(1)P | 5.1.1(2), (3), (4), (5), (6), (9), (10), (11), (12), (13) | 5.2.3(2) | 5.2.4(1)",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 841,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 944,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1347,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 4,
+      "characters": 779,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

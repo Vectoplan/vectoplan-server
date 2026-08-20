@@ -1,0 +1,173 @@
+
+
+===== SEITE 1 =====
+März 2006
+ 
+DIN 1055-4 Berichtigung 1 { 
+ ICS 91.010.30 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Einwirkungen auf Tragwerke  
+Teil 4: Windlasten, 
+Berichtigungen zu DIN 1055-4:2005-03 
+Action on structures  
+Part 4: Wind loads, 
+Corrigenda to DIN 1055-4:2005-03 
+Action sur les structures  
+Partie 4: Actions du vent, 
+Corrigenda à DIN 1055-4:2005-03 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Gesamtumfang 6 Seiten
+ 
+ 
+ 
+Normenausschuss Bauwesen (NABau) im DIN 
+ 
+' DIN Deutsches Instit ut für Normung e.V. Jede Art der Vervielfälti gung, auch auszugsweise, 
+ nur mit Genehmigung des DIN Deutsches Instit ut für Normung e.V., Berlin gestattet. 
+Alleinverkauf der Normen durch Beuth Verlag GmbH, 10772 Berlin 
+Preisgruppe 99 
+www.din.de 
+www.beuth.de 
+!,fOY"
+9674454
+Es wird empfohlen, auf der betroffenen Norm 
+einen Hinweis auf diese Berichtigung 
+zu machen.
+
+===== SEITE 2 =====
+DIN 1055-4 Ber 1:2006-03 
+2 
+In DIN 1055-4:2005-03 sind die folgenden Berichtigungen vorzunehmen: 
+zu 9.2 Windkräfte infolge von Reibung 
+⎯ In Absatz (2) sind die Verweise „12. 11“ jeweils durch „12.12“ zu ersetzen. 
+zu 10.3 Höhenabhängiger Böengeschwindigkeitsdruck im Regefall 
+⎯ Gleichung (17) muss lauten: 
+ m300m2fürkN/m105,1)( 2
+19,0
+≤<⎟
+⎠
+⎞⎜
+⎝
+⎛= zzzq 
+⎯ In Absatz (6) muss es lauten: „… topografisch exponiert…“ 
+zu 12.1.2 Vertikale Wände von Gebäuden mit rechtfertigen Grundriss 
+⎯ In Bild 4 ist folgende Legende zu ergänzen: 
+e = b oder 2 h, der kleinere Wert ist maßgebend 
+b Abmessung quer zum Wind 
+⎯ In Tabelle 3 sind die Werte cpe,10 in Spalte D mit positivem Vorzeichen anzugeben. 
+zu 12.1.5 Sattel- und Trogdächer 
+⎯ In Bild 7 ist bei a), rechte Skizze „ α > 0“ durch „α < 0“ zu ersetzen und die folgende Legende zu 
+ergänzen: 
+e = b oder 2 h, der kleinere Wert ist maßgebend 
+b Abmessung quer zur Anströmrichtung 
+⎯ In Tabelle 6, Anströmrichtung θ = 0°, Zeile 10°, Bereich J muss die senkrechte Teilung der Spalte 
+entfallen und es heißt: – 0,8/+ 0,2. 
+zu 12.1.6 Walmdächer 
+⎯ In Tabelle 7 sind die Werte im Bereich J, Spalte cpe,1, Zeilen + 15° und + 30° zu ersetzten durch: 
+– 1,5 bzw. – 1,2 
+⎯ In Tabelle 7 sind die Werte im Bereich L, Spalte cpe,1 zu ersetzen durch: – 2,0 
+zu 12.2 Druckwerte für freistehende Dächer 
+⎯ In Tabelle 8, Zeile (lfd. Nr. 1) ist die Skizze zu ersetzen durch:
+
+===== SEITE 3 =====
+DIN 1055-4 Ber 1:2006-03 
+3 
+ 
+⎯ In Tabelle 8, Zeile (lfd. Nr. 1), Zeile unter „Abmessungsverhältnisse“ muss lauten: a ≤ b ≤ 5 a 
+zu 12.3.1 Druckbeiwert für freistehende Wände 
+⎯ In Bild 12 muss es für den dritten Fall „ l ≤ 2 h“ anstatt „ l ≤ h“ lauten. 
+zu 12.3.2 Abschattungsfaktoren für freistehende Wände 
+⎯ Absatz (1), zweiter Satz muss lauten: „… der luvseitigen, abschattenden Wand ab.“ 
+⎯ Absatz (1), vierter Satz muss lauten: „Der resultierende Druck auf die abgeschattete Wand…“ 
+⎯ Absatz (2) muss lauten: „Der Endbereich der abgeschatteten Wand…“ 
+zu 12.3.3 Kraftbeiwerte für Anzeigetafeln 
+⎯ Bild 14 ist zu ersetzen durch: 
+ 
+Zu 12.4 Kraftbeiwerte für Bauteile mit rechteckigem Querschnitt 
+⎯ In Bild 15 muss die Legende lauten: 
+Kurvendefinitionen in den Abschnitten: A cf,0 = 0,319 3 ⋅ In (d/b) + 2,513 9 
+ B cf,0 = – 0,712 1 ⋅ In (d/b) + 2,146 0 
+ C cf,0 = – 0,144 3 ⋅ In (d/b) + 1,232 2
+
+===== SEITE 4 =====
+DIN 1055-4 Ber 1:2006-03 
+4 
+Zu 12.7.3 Druckbeiwerte 
+⎯ In Absatz (2) muss der Hinweis auf Bild 20 anstatt auf Bild 21 erfolgen. 
+⎯ In Bild 20 ist die Teilskizze durch wie folgt zu ersetzen: 
+ 
+⎯ In Bild 21 ist die Gleichung durch folgenden Ausdruck zu ersetzen: 
+Cf,x = – 0,46 ln (Re) + 6,3 
+⎯ In Bild 24 muss im rechten unteren Diagramm die Beschriftung am obersten horizontalen Ast der 
+Kurvenschar f = 0,2 statt f = 0,6 lauten. 
+Zu Anhang B Einfluss von Geländerauhigkeit und Topographie 
+⎯ In Tabelle B.2 ist der Wert 0,20 in Spalte „Geländekategorie I, Zeile 1, „ Iv für z < zmin“ durch 
+0,17 zu ersetzen. 
+⎯ In Bild B.2 ist die Abzissenbeschriftung x/Le durch x/Ld zu ersetzen. 
+⎯ Zu den Gleichungen (B.2) und (B.4) sind die Symbole vm,t (z) bzw. vm (z) durch folgende 
+Schreibweise zu ersetzen: vm,t (z) bzw. vm (z) 
+zu Anhang C Verfahren zur Ermittlung der Böenreaktionsfaktors 
+⎯ In C.1, Bild C.1 ist in der obersten Zeile die Darstellung des Baukörpers durch folgende 
+auszutauschen:
+
+===== SEITE 5 =====
+DIN 1055-4 Ber 1:2006-03 
+5 
+⎯ In C.2, Absatz (3) ist Gleichung (C.3) ist das Symbol vm durch folgende Schreibweise zu ersetzen: 
+vm 
+⎯ In C.2, Absatz (3) ist die Dimension für die Luftdichte ρ mit kg/m3 anzugeben. 
+⎯ In C.3, Absatz (2), Erläuterung zu Gleichung (C.5) muss das Symbol vE durch folgende 
+Schreibweise ersetzt werden: vE. 
+Die Achsbezeichnung der Abszisse in Bild C.2 muss entsprechend ersetzt werden: vE T 
+⎯ In C.3, Absatz (3), ist 
+1) das Symbol vE durch folgende Schreibweise zu ersetzen: vE 
+2) in der Erläuterung zu Gleichung (C.6) das Symbol vE,0 durch folgende Schreibweise zu 
+ersetzen: vE,0. 
+3) in Gleichung (C.7) ist vm (ze) durch folgende Schreibweise zu ersetzen: vm (ze). 
+4) in Gleichung (C.8) der Faktor 1,58 im zw eiten additiven Term durch 10,58 zu ersetzen. 
+⎯ In C.3, Bild C.3 sind im Diagramm die B enummerungen der Kurven 5 und 6 zu vertauschen. 
+⎯ In C.3 ist das Bild C.5 durch folgendes Bild zu ersetzen: 
+ 
+⎯ In C.4, Absatz (2) ist in der Erläuterung zu r Gleichung (C.18) die Dimension der Luftdichte ρ durch 
+kg/m3 zu ersetzen. 
+⎯ In C.4, Bild C.7 ist der letzte Absz issenwert „03“ durch „0,3“ zu ersetzen. 
+⎯ In C.5, Absatz (2) ist „… eines freistellenden Gebäudes“ durch „… eines freistehenden 
+Gebäudes“ zu ersetzen. 
+⎯ In C.6, Bild C.8 ist in der Bildunterschrift „ S“ durch „Se“ zu ersetzen.
+
+===== SEITE 6 =====
+DIN 1055-4 Ber 1:2006-03 
+6 
+Zu Anhang D Wirbelerregte Schwingungen 
+⎯ In D.2.4, Absatz (2) ist in der Erläuteru ng zur Gleichung (D.5) die Dimension der Luftdichte ρ 
+durch kg/m3 zu ersetzen. 
+⎯ In D.2.6, Absatz (2) muss es lauten „… im Punkt j ist.“ 
+⎯ In Bild D.3 sind die Angaben zu m am Fuß der Einzelskizzen a) bis f) zu streichen und bei der 
+Einzelskizze e) ist folgende Legende hinzuzufügen: b Breite des mittleren Stabes. 
+⎯ In D.2.7, Absatz (1) ist in den Erläuterungen zu Gleichung (D.7) hinzuzufügen: 
+„s Koordinate entlang der Tragwerks längsachse, siehe Tabelle D.4“ 
+⎯ In D.2.9, Absatz (1) 
+1) ist in Gleichung (D.9) „ v0“ durch die Schreibweise „v 0“ zu ersetzen, 
+2) ist bei der Erläuterung zu vcrit,i die Dimension durch „m · s–1“ zu ersetzen. 
+Zu Anhang F Dynamische Grundlagen 
+⎯ In F.2, Absatz (1) und Absatz (2) muss es „Grundeigenfrequenz“ anstatt „Grundbiege-
+eigenfrequenz“ lauten. 
+⎯ In F.3, Absatz (1) ist in der Erläuterung zu „ s“ der griechische Buchstabe ζ zu streichen und beim 
+Exponenten ζ = 1,0 muss es heißen: „… mit aussteifendem Kern…“.

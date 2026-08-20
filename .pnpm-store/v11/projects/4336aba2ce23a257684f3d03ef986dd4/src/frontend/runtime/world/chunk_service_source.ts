@@ -135,6 +135,7 @@ export interface ChunkServiceSourceLibraryPlacementInput
   readonly libraryRef?: EditorInventoryLibraryRef | null;
   readonly placementCommand?: EditorInventoryPlacementCommand | null;
   readonly commandMetadata?: Record<string, unknown> | null;
+  readonly semanticProfile?: Record<string, unknown> | null;
   readonly semanticPlacement?: Readonly<{
     readonly kind: "parcel-grid-prism.v1";
     readonly footprint: Readonly<Record<string, unknown>>;
@@ -142,6 +143,74 @@ export interface ChunkServiceSourceLibraryPlacementInput
     readonly mergeKey: string;
     readonly anchorPosition?: ChunkApiWorldPosition;
   }> | null;
+}
+
+function semanticProfileVariables(profile: unknown): AnyRecord {
+  const record = asRecord(profile);
+  return asRecord(record.variables ?? record.definitionValues ?? record.definition_values);
+}
+
+function semanticProfileText(variables: AnyRecord, key: string, fallback = ""): string {
+  return normalizeText(variables[key], fallback).toLowerCase().replace(/-/g, "_");
+}
+
+function semanticProfileNumber(
+  variables: AnyRecord,
+  key: string,
+  fallback: number,
+): number {
+  const value = Number(variables[key]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function isParametricLibraryProfile(profile: unknown): boolean {
+  const variables = semanticProfileVariables(profile);
+  const shape = semanticProfileText(variables, "geometry.primitive_shape");
+  const profileId = semanticProfileText(variables, "geometry.profile_id");
+  return ["pipe", "cylinder", "frame", "conveyor", "stairs", "composite"].includes(shape)
+    || [
+      "block", "half_block", "slab", "wall_segment", "beam", "column",
+      "pipe_segment", "vertical_cylinder", "thin_window", "hinged_door",
+      "conveyor_segment", "stair_run", "composite_parts",
+    ].includes(profileId);
+}
+
+function parametricGridCells(
+  position: ChunkApiWorldPosition,
+  variables: AnyRecord,
+): Readonly<{
+  dimensions: Readonly<{ x: number; y: number; z: number }>;
+  occupiedCells: readonly ChunkApiWorldPosition[];
+}> {
+  const profileId = semanticProfileText(variables, "geometry.profile_id");
+  const toCells = (millimetres: number): number => Math.max(
+    1,
+    Math.min(16, Math.ceil(Math.max(1, millimetres - 20) / 1000)),
+  );
+  const axis = semanticProfileText(variables, "geometry.axis", "x");
+  const widthCells = toCells(semanticProfileNumber(variables, "dimensions.width_mm", 1000));
+  const heightCells = toCells(semanticProfileNumber(variables, "dimensions.height_mm", 1000));
+  const depthCells = toCells(semanticProfileNumber(variables, "dimensions.depth_mm", 1000));
+  const lengthCells = toCells(semanticProfileNumber(variables, "dimensions.length_mm", 1000));
+  let dimensions = { x: widthCells, y: heightCells, z: depthCells };
+  if (profileId === "hinged_door") dimensions = { x: 1, y: 2, z: 1 };
+  else if (profileId === "thin_window") dimensions = { x: 1, y: 1, z: 1 };
+  else if (profileId === "half_block") dimensions = { x: 1, y: 1, z: 1 };
+  else if (profileId === "pipe_segment") dimensions = {
+    x: axis === "x" ? lengthCells : 1,
+    y: axis === "y" ? lengthCells : 1,
+    z: axis === "z" ? lengthCells : 1,
+  };
+  else if (["slab", "conveyor_segment"].includes(profileId)) dimensions.y = 1;
+  const occupiedCells: ChunkApiWorldPosition[] = [];
+  for (let x = 0; x < dimensions.x; x += 1) {
+    for (let y = 0; y < dimensions.y; y += 1) {
+      for (let z = 0; z < dimensions.z; z += 1) {
+        occupiedCells.push({ x: position.x + x, y: position.y + y, z: position.z + z });
+      }
+    }
+  }
+  return { dimensions, occupiedCells };
 }
 
 export interface ChunkServiceSource extends ChunkSource {
@@ -1847,6 +1916,42 @@ export function createChunkServiceSource(
     }
   }
 
+  function markChunkDirty(chunkKey: string, reason?: string): readonly string[] {
+    const normalized = normalizeChunkKey(chunkKey);
+    rememberDirtyKeys([normalized]);
+    emit("chunk:dirty", {
+      chunkKey: normalized,
+      reason: normalizeOptionalText(reason),
+    });
+    return [...dirtyChunkKeys];
+  }
+
+  function markChunksDirty(
+    chunkKeys: readonly string[],
+    reason?: string,
+  ): readonly string[] {
+    const normalized = uniqueDirtyKeys(chunkKeys);
+    rememberDirtyKeys(normalized);
+    emit("chunks:dirty", {
+      dirtyChunkKeys: [...dirtyChunkKeys],
+      reason: normalizeOptionalText(reason),
+    });
+    return [...dirtyChunkKeys];
+  }
+
+  function clearDirtyChunks(
+    chunkKeys: readonly string[] = [...dirtyChunkKeys],
+    reason?: string,
+  ): readonly string[] {
+    const normalized = uniqueDirtyKeys(chunkKeys);
+    forgetDirtyKeys(normalized);
+    emit("chunks:dirty:cleared", {
+      clearedChunkKeys: normalized,
+      reason: normalizeOptionalText(reason),
+    });
+    return normalized;
+  }
+
   async function initialize(): Promise<unknown> {
     try {
       if (destroyed || isDestroyedLifecycle(lifecycle)) {
@@ -2126,10 +2231,10 @@ export function createChunkServiceSource(
 
   async function reloadDirtyChunks(
     options?: ChunkSourceDirtyOptions,
-  ): Promise<ChunkSourceLoadChunksResult> {
+  ): Promise<readonly RuntimeChunkContent[] | ChunkApiFailedResult> {
     try {
       if (destroyed || isDestroyedLifecycle(lifecycle)) {
-        return createFailedFromDestroyed() as unknown as ChunkSourceLoadChunksResult;
+        return createFailedFromDestroyed();
       }
 
       const optionsRecord = asRecord(options);
@@ -2144,20 +2249,7 @@ export function createChunkServiceSource(
       ]);
 
       if (keys.length === 0) {
-        return {
-          ok: true,
-          request: null,
-          source: "client-fallback",
-          raw: {
-            empty: true,
-            reason: "no-dirty-chunks",
-          },
-          error: null,
-          projectId,
-          worldId,
-          chunks: [],
-          failedChunks: [],
-        } as unknown as ChunkSourceLoadChunksResult;
+        return [];
       }
 
       const coordinates = keys.map((key) => chunkCoordinatesFromDirtyKey(key));
@@ -2172,12 +2264,13 @@ export function createChunkServiceSource(
 
       if (!isFailedResult(result)) {
         forgetDirtyKeys(keys);
+        return result.chunks;
       }
 
       return result;
     } catch (error) {
       const failed = createFailedFromUnknown(error, "Failed to reload dirty chunks.");
-      return failed as unknown as ChunkSourceLoadChunksResult;
+      return failed;
     }
   }
   async function flushScheduledDirtyChunkReloads(): Promise<void> {
@@ -2579,8 +2672,14 @@ export function createChunkServiceSource(
       });
 
       const semanticPlacement = placement.semanticPlacement;
+      const semanticProfile = placement.semanticProfile;
+      const profileVariables = semanticProfileVariables(semanticProfile);
+      const parametric = isParametricLibraryProfile(semanticProfile)
+        ? parametricGridCells(normalizedPosition, profileVariables)
+        : null;
+      const libraryContext = prepared.context;
       const payload: ChunkApiCommandPayload = semanticPlacement?.kind === "parcel-grid-prism.v1"
-        ? {
+        ? ({
             type: "PlaceObject",
             userId: normalizeText(prepared.options.userId, commandUserId),
             sessionId: normalizeText(prepared.options.sessionId, commandSessionId),
@@ -2594,9 +2693,47 @@ export function createChunkServiceSource(
             metadata: {
               schemaVersion: "vectoplan-parcel-grid-body.v1",
               mergeKey: semanticPlacement.mergeKey,
-              libraryPlacementContext: prepared.context,
+              libraryPlacementContext: libraryContext,
             },
-          }
+            libraryContext,
+            runtimeBlockTypeId: prepared.runtimeBlockTypeId,
+          } as unknown as ChunkApiCommandPayload)
+        : parametric
+          ? ({
+              type: "PlaceObject",
+              userId: normalizeText(prepared.options.userId, commandUserId),
+              sessionId: normalizeText(prepared.options.sessionId, commandSessionId),
+              position: normalizedPosition,
+              blockTypeId: prepared.runtimeBlockTypeId,
+              runtimeBlockTypeId: prepared.runtimeBlockTypeId,
+              objectTypeId: `vplib_${semanticProfileText(profileVariables, "geometry.profile_id", "parametric")}`,
+              objectVariantId: normalizeText(prepared.context.variantId, "default"),
+              // Persist through the established object-kind contract. The
+              // parametric subtype is carried by metadata.schemaVersion so an
+              // existing Chunk database needs no check-constraint migration.
+              objectKind: "library_object",
+              dimensions: parametric.dimensions,
+              footprint: {
+                type: "Box",
+                coordinateSpace: "world-cell",
+                anchor: normalizedPosition,
+                size: parametric.dimensions,
+              },
+              occupiedCells: parametric.occupiedCells,
+              metadata: {
+                schemaVersion: "vectoplan-vplib-parametric.v1",
+                libraryPlacementContext: libraryContext,
+                geometryProfile: {
+                  schemaVersion: "vectoplan-vplib-geometry-profile.v1",
+                  ...profileVariables,
+                },
+                interactionState: {
+                  kind: semanticProfileText(profileVariables, "interaction.kind", "none"),
+                  open: semanticProfileText(profileVariables, "interaction.default_state", "closed") === "open",
+                },
+              },
+              libraryContext,
+            } as unknown as ChunkApiCommandPayload)
         : createSetBlockPayload(
             normalizedPosition,
             prepared.runtimeBlockTypeId,
@@ -2813,6 +2950,10 @@ export function createChunkServiceSource(
     getRegistry: () => registry,
     getEditSession: () => editSession,
 
+    getChunk: (chunkKey: string) => registry.getChunk(normalizeChunkKey(chunkKey)),
+    getLoadedChunkKeys: () => registry.getChunkKeys(),
+    getVisibleChunkKeys: () => registry.getVisibleChunkKeys(),
+
     loadChunk,
     loadChunks,
     loadChunksBatch: loadChunks,
@@ -2821,11 +2962,17 @@ export function createChunkServiceSource(
     reloadDirtyChunks,
     refreshDirtyChunks: reloadDirtyChunks,
 
+    markChunkDirty,
+    markChunksDirty,
     getDirtyChunkKeys: () => [...dirtyChunkKeys],
-    clearDirtyChunkKeys: () => {
-      const keys = [...dirtyChunkKeys];
-      dirtyChunkKeys.clear();
-      clearDirtyChunksInRegistry(registry, keys);
+    clearDirtyChunks,
+    clearDirtyChunkKeys: clearDirtyChunks,
+    invalidateChunk: (chunkKey: string, reason?: string) => {
+      markChunkDirty(chunkKey, reason ?? "chunk-service-invalidate");
+      return true;
+    },
+    invalidateAll: (reason?: string) => {
+      markChunksDirty(registry.getChunkKeys(), reason ?? "chunk-service-invalidate-all");
     },
 
     setBlock,

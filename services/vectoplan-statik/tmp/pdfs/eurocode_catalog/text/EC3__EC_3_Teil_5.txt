@@ -1,0 +1,3239 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-5 
+ICS 91.01 0.30; 91.080.10 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1993-5:2007-07 und 
+DIN EN 1993-5 
+Berichtigung 1:2009-12 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Teil 5: Pfähle und Spundwände; 
+Deutsche FassungEN 1993-5:2007 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 5: Piling; 
+GermanversionEN 1993-5:2007 + AC:2009 
+Eurocode 3: Calcul des structures en acier­
+Partie 5: Pieux et palplanches; 
+Version allemande EN 1993-5:2007 + AC:2009 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 94 Seiten 
+Preisgruppe 30 
+www.din.de 
+www.beuth.de 11111111111111 
+1723936
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-5:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-5:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten 
+wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-08-19 AA Stahlspundwände und Stahlpfähle begleitet. 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen 
+Gemeinschaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die 
+verbindliche Umsetzung der Eurocodes in den Mitgliedstaaten vorgesehen sind. Die Übergangsfristen sind im 
+Vorwort dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-5:2000-10 wurden folgende Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet. 
+Gegenüber DIN EN 1993-5:2007-07 und DIN EN 1993-5 Berichtigung 1:2009-12 wurden folgende 
+Änderungen vorgenommen: 
+a) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+b) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN V ENV 1993-5: 2000-10 
+DIN EN 1993-5: 2007-07 
+DIN EN 1993-5 Berichtigung 1: 2009-12 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-5 
+ Februar 2007 
+ +AC 
+ Mai 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-5:1998 
+Deutsche Fassung 
+ Eurocode 3  
+Bemessung und Konstruktion von Stahlbauten  
+Teil 5: Pfähle und Spundwände 
+Eurocode 3  
+Design of steel structures  
+Part 5: Piling 
+ Eurocode 3  
+Calcul des structures en acier  
+Partie 5: Pieux et palplanches 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Berichtigung tritt am 13. Mai 2009 in Kraft und wurde in EN 1993-5:2007 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter denen 
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Listen 
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied auf 
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sprache, 
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreich, 
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Portugal, 
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königreich 
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management Centre: Avenue Marnix 17, B-1000 Brussels 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-5:2007 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+Inhalt 
+ Seite
+Vorwort ................................................................................................................................................................5
+Hintergrund des Eurocode-Programms ...........................................................................................................5
+Status und Gültigkeitsbereich der Eurocodes ................................................................................................6
+Nationale Fassungen der Eurocodes ...............................................................................................................7
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen Spezifikationen für 
+Bauprodukte (EN und ETAZ) ................................................................................................................7
+Zusätzliche Hinweise zu EN 1993-5 ..................................................................................................................7
+Nationaler Anhang zu EN 1993-5.......................................................................................................................8
+1 Allgemeines.................................................................................................................. ..........................9
+1.1 Anwendungsbereich .......................................................................................................... ...................9
+1.2 Normative Verweisungen..................................................................................................... ...............10
+1.3 Annahmen ................................................................................................................... .........................11
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln.........................................................11
+1.5 Begriffe ................................................................................................................... ..............................11
+1.6 Symbole .................................................................................................................... ............................12
+1.7 Einheiten.................................................................................................................. .............................13
+1.8 Begriffsbestimmung......................................................................................................... ...................13
+1.9 Vereinbarung für die Spundbohlenachsen ..................................................................................... ..22
+2 Grundlagen für Entwurf, Bemessung und Konstruktion.................................................................22
+2.1 Allgemeines................................................................................................................ ..........................22
+2.2 Kriterien für den Grenzzustand der Tragfähigkeit........................................................................... .23
+2.3 Kriterien für den Grenzzustand der Gebrauchstauglichkeit ...........................................................24
+2.4 Baugrunderkundungen und Bodenparameter..................................................................................24
+2.5 Statische Berechnung....................................................................................................... ..................24
+2.5.1 Allgemeines.............................................................................................................. ............................24
+2.5.2 Bestimmung der Einwirkungen.............................................................................................. ............25
+2.5.3 Tragwerksberechnung ...................................................................................................... ..................25
+2.6 Versuchsgestützte Bemessung ................................................................................................ .........26
+2.6.1 Allgemeines.............................................................................................................. ............................26
+2.6.2 Tragpfähle............................................................................................................... ..............................26
+2.6.3 Stahlspundwände .......................................................................................................... ......................26
+2.6.4 Verankerung .............................................................................................................. ...........................26
+2.7 Rammbarkeit ................................................................................................................ ........................26
+3 Werkstoffeigenschaften ....................................................................................................... ...............27
+3.1 Allgemeines................................................................................................................ ..........................27
+3.2 Tragpfähle................................................................................................................. ............................27
+3.3 Warmgewalzte Stahlspundbohlen .............................................................................................. .......27
+3.4 Kaltgeformte Stahlspundbohlen .............................................................................................. ..........28
+3.5 Profile für Gurtungen und Aussteifungen.................................................................................... .....28
+3.6 Verbindungsmittel .......................................................................................................... .....................28
+3.7 Stahlteile für Anker....................................................................................................... .......................28
+3.8 Stahlteile für kombinierte Spundwände ...................................................................................... ......28
+3.9 Bruchzähigkeit ............................................................................................................. ........................29
+4 Dauerhaftigkeit.............................................................................................................. .......................29
+4.1 Allgemeines................................................................................................................ ..........................29
+4.2 Dauerhaftigkeitsanforderungen für Tragpfähle............................................................................... .31
+4.3 Dauerhaftigkeitsanforderungen an Spundwände ............................................................................31
+4.4 Korrosionsraten für die Bemessung .......................................................................................... .......32
+2 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 5 =====
+Seite
+5 Grenzzustände der Tragfähigkeit .............................................................................................. ........33
+5.1 Grundlagen ................................................................................................................. .........................33
+5.1.1 Allgemeines .............................................................................................................. ...........................33
+5.1.2 Bemessung ................................................................................................................ ..........................33
+5.1.3 Ermüdung................................................................................................................. ............................34
+5.2 Spundwände ................................................................................................................. .......................34
+5.2.1 Querschnittsklassifizierung .............................................................................................. .................34
+5.2.2 Spundwände bei Biegung und Querkraft..................................................................................... .....35
+5.2.3 Spundwände mit Biegung, Quer- und Normalkraft..........................................................................39
+5.2.4 Lokale Auswirkungen von Wasserdrücken.................................................................................... ..44
+5.2.5 Flachprofile ............................................................................................................. .............................45
+5.3 Tragpfähle ................................................................................................................. ...........................48
+5.3.1 Allgemeines .............................................................................................................. ...........................48
+5.3.2 Bemessungsverfahren und -hinweise........................................................................................ .......48
+5.3.3 Stahlpfähle .............................................................................................................. .............................48
+5.3.4 Betongefüllte Tragpfähle ................................................................................................. ...................50
+5.4 Trägerpfahlwände........................................................................................................... .....................50
+5.5 Kombinierte Wände.......................................................................................................... ...................50
+5.5.1 Allgemeines .............................................................................................................. ...........................50
+5.5.2 Füllelemente............................................................................................................. ............................51
+5.5.3 Verbindungselemente ...................................................................................................... ...................52
+5.5.4 Tragelemente ............................................................................................................. ..........................52
+6 Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 53
+6.1 Grundlagen ................................................................................................................. .........................53
+6.2 Verformungen von Stützwänden ............................................................................................... ........53
+6.3 Verformungen von Tragpfählen............................................................................................... ..........53
+6.4 Konstruktive Aspekte von Stahlspundwänden................................................................................53
+7 Anker, Gurtungen, Aussteifungen und Anschlüsse........................................................................55
+7.1 Allgemeines ................................................................................................................ .........................55
+7.2 Verankerungen .............................................................................................................. ......................55
+7.2.1 Allgemeines .............................................................................................................. ...........................55
+7.2.2 Grundlegende Bemessungsbestimmungen .....................................................................................5 6
+7.2.3 Nachweis im Grenzzustand der Tragfähigkeit............................................................................... ...56
+7.2.4 Gebrauchstauglichkeitsnachweis ........................................................................................... ..........57
+7.2.5 Anforderungen an die Dauerhaftigkeit..................................................................................... .........57
+7.3 Gurtungen und Aussteifungen ................................................................................................ ..........57
+7.4 Verbindungen ............................................................................................................... .......................58
+7.4.1 Allgemeines .............................................................................................................. ...........................58
+7.4.2 Tragpfähle ............................................................................................................... .............................58
+7.4.3 Verankerung.............................................................................................................. ...........................60
+8 Ausführung ................................................................................................................... .......................64
+8.1 Allgemeines ................................................................................................................ .........................64
+8.2 Stahlspundwände............................................................................................................ ....................64
+8.3 Tragpfähle ................................................................................................................. ...........................64
+8.4 Verankerungen .............................................................................................................. ......................64
+8.5 Gurtungen, Steifen und Verbindungen ........................................................................................ .....64
+Anhang A (normativ) Dünnwandige Stahlspundwände................................................................................65
+A.1 Allgemeines ................................................................................................................ .........................65
+A.1.1 Geltungsbereich .......................................................................................................... ........................65
+A.1.2 Form von kaltgeformten Stahlspundbohlen.................................................................................. ...65
+A.1.3 Begriffe ................................................................................................................. ................................65
+A.2 Grundlagen für Entwurf, Bemessung und Konstruktion ................................................................66
+A.2.1 Grenzzustände der Tragfähigkeit .......................................................................................... ............66
+A.2.2 Grenzzustände der Gebrauchstauglichkeit .................................................................................. ....66
+3 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 6 =====
+Seite
+A.3 Werkstoff- und Querschnittseigenschaften................................................................................... ...66
+A.3.1 Werkstoffeigenschaften ................................................................................................... ...................66
+A.3.2 Querschnittseigenschaften ................................................................................................ ................68
+A.4 Lokales Beulen............................................................................................................. ........................69
+A.5 Querschnittswiderstand..................................................................................................... .................71
+A.5.1 Allgemeines.............................................................................................................. ............................71
+A.5.2 Biegemoment .............................................................................................................. .........................72
+A.5.3 Querkräfte............................................................................................................... ..............................73
+A.5.4 Lokale Einleitung quergerichteter Kräfte ................................................................................. .........73
+A.5.5 Kombination aus Querkraft und Biegemoment................................................................................ 74
+A.5.6 Kombination aus Biegemoment und lokalen quergerichteten Kräften..........................................74
+A.5.7 Kombination aus Biegemoment und Normalkraft............................................................................74
+A.5.8 Lokale Querbiegung ....................................................................................................... .....................74
+A.6 Rechnerischer Nachweis ..................................................................................................... ...............75
+A.7 Versuchsgestützte Bemessung ................................................................................................ .........75
+A.7.1 Grundlagen............................................................................................................... ............................75
+A.7.2 Bedingungen .............................................................................................................. ..........................76
+A.7.3 Querschnittswerte auf der Grundlage von Versuchen ....................................................................76
+Anhang B (informativ) Versuche mit dünnwandigen Spundbohlen ............................................................77
+B.1 Allgemeines................................................................................................................ ..........................77
+B.2 Versuche mit Einfeldträgern................................................................................................ ...............77
+B.3 Versuche am Zwischenlager .................................................................................................. ............78
+B.4 Versuche mit Zweifeldträgern ............................................................................................... .............79
+B.5 Auswertung der Versuchsergebnisse .......................................................................................... .....80
+B.5.1 Allgemeines.............................................................................................................. ............................80
+B.5.2 Anpassung von Versuchsergebnissen ........................................................................................ .....80
+B.5.3 Charakteristische Werte.................................................................................................. ....................80
+B.5.4 Bemessungswerte .......................................................................................................... .....................80
+Anhang C (informativ) Anleitung zur Bemessung von Stahlspundwänden................................................82
+C.1 Bemessung von Spundbohlenquerschnitten für den Grenzzustand der Tragfähigkeit ..............82
+C.1.1 Allgemeines.............................................................................................................. ............................82
+C.1.2 Nachweis von Klasse-1- und Klasse-2-Querschnitten.....................................................................83
+C.2 Grenzzustand der Gebrauchstauglichkeit ..................................................................................... ...85
+Anhang D (informativ) Tragelemente bei kombinierten Spundwänden.......................................................87
+D.1 I-Profile als Tragelemente ................................................................................................. ..................87
+D.1.1 Allgemeines.............................................................................................................. ............................87
+D.1.2 Nachweismethode .......................................................................................................... .....................87
+D.2 Rohrpfähle als Tragelemente ................................................................................................ .............89
+D.2.1 Allgemeines.............................................................................................................. ............................89
+D.2.2 Nachweismethode .......................................................................................................... .....................91
+4 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 7 =====
+Vorwort 
+Diese Europäische Norm EN 1993-5 + AC:2009, Eurocode 3: Bemessung und Konstruktion von 
+Stahlbauten  Teil 5: Pfähle und Spundwände wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+erarbeitet, dessen Sekretariat vom BSI gehalten wird. CEN/TC 250 ist verantwortlich für alle Eurocodes. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis August 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-5:1998. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Bulgarien, Dänemark, Deutschland, 
+Estland, Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, 
+Niederlande, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, 
+Spanien, Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Hintergrund des Eurocode-Programms 
+1975 beschloss die Kommission der Europäischen Gemeinschaften, für das Bauwesen ein Programm auf der 
+Grundlage des Artikels 95 der Römischen Verträge durchzuführen. Das Ziel des Programms war die 
+Beseitigung technischer Handelshemmnisse und die Harmonisierung technischer Normen. 
+Im Rahmen dieses Programms leitete die Kommission die Bearbeitung von harmonisierten technischen 
+Regelwerken für die Tragwerksplanung von Bauwerken ein, die im ersten Schritt als Alternative zu den in den 
+Mitgliedsländern geltenden Regeln dienen und diese schließlich ersetzen sollten. 
+15 Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer 
+die Entwicklung des Eurocode-Programms, das zu der ersten Eurocode-Generation in den 80er Jahren führte. 
+Im Jahre 1989 entschieden sich die Kommission und die Mitgliedsländer der Europäischen Union und der 
+EFTA, die Entwicklung und Veröffentlichung der Eurocodes über eine Reihe von Mandaten an CEN zu 
+übertragen, damit diese den Status von Europäischen Normen (EN) erhielten. Grundlage war eine 
+Vereinbarung
+1) zwischen der Kommission und CEN. Dieser Schritt verknüpft die Eurocodes de facto mit den 
+Regelungen der Ratsrichtlinien und Kommissionsentscheidungen, die die Europäischen Normen behandeln 
+(z. B. die Ratsrichtlinie 89/106/EWG zu Bauprodukten, die Bauproduktenrichtlinie, die Ratsrichtlinien 
+93/37/EWG, 92/50/EWG und 89/440/EWG zur Vergabe öffentlicher Aufträge und Dienstleistungen und die 
+entsprechenden EFTA-Richtlinien, die zur Einrichtung des Binnenmarktes eingeleitet wurden). 
+Das Eurocode-Programm umfasst die folgenden Normen, die in der Regel aus mehreren Teilen bestehen: 
+EN 1990, Eurocode 0: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkung auf Tragwerke
+EN 1992, Eurocode 2: Bemessung und Konstruktion von Stahlbetonbauten
+EN 1993, Eurocode 3: Bemessung und Konstruktion von Stahlbauten
+EN 1994, Eurocode 4: Bemessung und Konstruktion von Stahl-Beton-Verbundbauten
+1) Vereinbarung zwischen der Kommission der Europäischen Gemeinschaft und dem Europäischen Komitee für 
+Normung (CEN) zur Bearbeitung der Eurocodes für die Tragwerksplanung von Hochbauten und Ingenieurbauwerken 
+(BC/CEN/03/89). 
+5 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1995, Eurocode 5: Bemessung und Konstruktion von Holzbauten
+EN 1996, Eurocode 6: Bemessung und Konstruktion von Mauerwerksbauten
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+EN 1999, Eurocode 9: Bemessung und Konstruktion von Aluminiumkonstruktionen
+Die Europäischen Normen berücksichtigen die Verantwortlichkeit der Bauaufsichtsorgane in den 
+Mitgliedsländern und haben deren Recht zur nationalen Festlegung sicherheitsbezogener Werte 
+berücksichtigt, so dass diese Werte von Land zu Land unterschiedlich bleiben können. 
+Status und Gültigkeitsbereich der Eurocodes 
+Die Mitgliedsländer der EU und von EFTA betrachten die Eurocodes als Bezugsdokumente für folgende 
+Zwecke: 
+ als Mittel zum Nachweis der Übereinstimmung der Hoch- und Ingenieurbauten mit den wesentlichen 
+Anforderungen der Richtlinie 89/106/EWG, besonders mit der wesentlichen Anforderung Nr 1: 
+Mechanischer Widerstand und Stabilität und der wesentlichen Anforderung, Nr 2: Brandschutz; 
+ als Grundlage für die Spezifizierung von Verträgen für die Ausführung von Bauwerken und dazu 
+erforderlichen Ingenieurleistungen; 
+ als Rahmenbedingung für die Herstellung harmonisierter, technischer Spezifikationen für Bauprodukte 
+(ENs und ETAs) 
+Die Eurocodes haben, da sie sich auf Bauwerke beziehen, eine direkte Verbindung zu den 
+Grundlagendokumenten2) auf die in Artikel 12 der Bauproduktenrichtlinie hingewiesen wird, wenn sie auch 
+anderer Art sind als die harmonisierten Produktnormen. 3) Daher sind die technischen Gesichtspunkte, die 
+sich aus den Eurocodes ergeben, von den Technischen Komitees von CEN und den Arbeitsgruppen von 
+EOTA, die an Produktnormen arbeiten, zu beachten, damit diese Produktnormen mit den Eurocodes 
+vollständig kompatibel sind. 
+Die Eurocodes liefern Regelungen für den Entwurf, die Berechnung und Bemessung von kompletten 
+Tragwerken und Baukomponenten, die sich für die tägliche Anwendung eignen. Sie gehen auf traditionelle 
+Bauweisen und Aspekte innovativer Anwendungen ein, liefern aber keine vollständigen Regelungen für 
+ungewöhnliche Baulösungen und Entwurfsbedingungen, wofür Spezialistenbeiträge erforderlich sein können. 
+2) Entsprechend Artikel 3.3 der Bauproduktenrichtlinie sind die wesentlichen Angaben in Grundlagendokumenten zu 
+konkretisieren, um damit die notwendigen Verbindungen zwischen den wesentlichen Anforderungen und den 
+Mandaten für die Erstellung harmonisierter Europäischer Normen und Richtlinien für die Europäische Zulassungen 
+selbst zu schaffen. 
+3) Nach Artikel 12 der Bauproduktenrichtlinie hat das Grundlagendokument 
+a) die wesentliche Anforderung zu konkretisieren, in dem die Begriffe und, soweit erforderlich, die technische 
+Grundlage für Klassen und Anforderungshöhen vereinheitlicht werden, 
+b) Methode zur Verbindung dieser Klasse oder Anforderungshöhen mit technischen Spezifikationen anzugeben, z. B. 
+rechnerische oder Testverfahren, Entwurfsregeln, 
+c) als Bezugsdokument für die Erstellung harmonisierter Normen oder Richtlinien für Europäische Technische 
+Zulassungen zu dienen. 
+Die Eurocodes spielen de facto eine ähnliche Rolle für die wesentliche Anforderung Nr 1 und einen Teil der 
+wesentlichen Anforderung Nr 2. 
+6 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 9 =====
+Nationale Fassungen der Eurocodes 
+Die Nationale Fassung eines Eurocodes enthält den vollständigen Text des Eurocodes (einschließlich aller 
+Anhänge), so wie von CEN veröffentlicht, mit möglicherweise einer nationalen Titelseite und einem nationalen 
+Vorwort sowie einem Nationalen Anhang. 
+Der Nationale Anhang darf nur Hinweise zu den Parametern geben, die im Eurocode für nationale 
+Entscheidungen offen gelassen wurden. Diese national festzulegenden Parameter (NDP) gelten für die 
+Tragwerksplanung von Hochbauten und Ingenieurbauten in dem Land, indem sie erstellt werden. Sie 
+umfassen: 
+ Zahlenwerte für -Faktoren und/oder Klassen, wo die Eurocodes Alternativen eröffnen; 
+ Zahlenwerte, wo die Eurocodes nur Symbole angeben; 
+ landesspezifische, geographische und klimatische Daten, die nur für ein Mitgliedsland gelten, z. B. 
+Schneekarten; 
+ Vorgehensweise, wenn die Eurocodes mehrere zur Wahl anbieten; 
+ Verweise zur Anwendung des Eurocodes, soweit diese ergänzen und nicht widersprechen. 
+Verbindung zwischen den Eurocodes und den harmonisierten Technischen 
+Spezifikationen für Bauprodukte (EN und ETAZ) 
+Die harmonisierten Technischen Spezifikationen für Bauprodukte und die technischen Regelungen für die 
+Tragwerksplanung4) müssen konsistent sind. Insbesondere sollten die Hinweise, die mit den CE-Zeichen an 
+den Bauprodukten verbunden sind und die die Eurocodes in Bezug nehmen, klar erkennen lassen, welche 
+national festzulegenden Parameter (NDP) zugrunde liegen. 
+Zusätzliche Hinweise zu EN 1993-5 
+EN 1993-5 liefert in Ergänzung zu der Grundnorm EN 1993-1 Bemessungsregeln für stählerne Spundwände 
+und Tragpfähle. 
+EN 1993-5 ist für die Anwendung gemeinsam mit den Eurocodes EN 1990, Grundlagen der Tragwerks-
+planung, EN 1991, Einwirkungen auf Tragwerke und EN 1997-Teil 1, Geotechnischer Entwurf und 
+Berechnung bestimmt. 
+Regelungen in diesen Normen werden nicht noch einmal wiederholt. 
+EN 1993-5 ist bestimmt für 
+ Komitees, die Produkt-, Prüf- oder Ausführungsnormen schreiben, die sich auf Bemessungsregeln 
+beziehen, 
+ Auftraggeber (z. B. für die Formulierung technischer Anforderungen), 
+ Entwurfsbüros und ausführende Firmen, 
+ die zuständigen Behörden. 
+4) Siehe Artikel 3.3 und Artikel 12 der Bauproduktenrichtlinie, ebenso wie 4.2, 4.3.1, 4.3.2 und 5.2 des Grundlagen-
+dokumentes Nr 1. 
+7 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 10 =====
+Die Zahlenwerte für Teilsicherheitsbeiwerte oder andere Parameter, die empfohlen werden, stellen eine 
+Grundlage mit akzeptablem Sicherheitsmaß dar. Die Empfehlungen beruhen auf einem angemessenen 
+Ausführungsstandard und einem geeigneten Qualitätsmanagement. 
+Die Anhänge A und B dienen der Vervollständigung der Bestimmungen in EN 1993-1-3 für Stahlspundwände 
+mit Klasse 4  Querschnitten. 
+Anhang C liefert Hinweise zur plastischen Bemessung von Stützkonstruktionen aus Stahlspundwänden. 
+Anhang D zeigt einen möglichen Satz von Bemessungsregeln für primäre Tragelemente von kombinierten 
+Wänden. 
+Zur geotechnischen Bemessung, die in dieser Norm nicht behandelt ist, sollte EN 1997 herangezogen 
+werden. 
+Nationaler Anhang zu EN 1993-5 
+Die Norm enthält alternative Vorgehensweisen, Zahlenwerte und Empfehlungen für Klassen, die mit 
+Anmerkungen versehen sind, die auf Nationale Festlegungen dazu hinweisen. Daher sollte die Nationale 
+Norm, in die EN 1993-5 überführt ist, einen Nationalen Anhang erhalten, der die Nationalen Festlegungen 
+enthält, die für den Bau von Hochbauten und baulichen Anlagen in dem betreffenden Land gelten. 
+Nationale Festlegungen sind in den folgenden Abschnitten von EN 1993-5 vorgesehen: 
+3.7 (1) 
+3.9 (1)P 
+4.4 (1) 
+5.1.1 (4) 
+5.2.2 (2) 
+5.2.2 (13) 
+5.2.5 (7) 
+5.5.4 (2) 
+6.4 (3) 
+7.1 (4) 
+7.2.3 (2) 
+7.4.2 (4) 
+A.3.1 (3) 
+B.5.4 (1) 
+D.2.2 (5) 
+8 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 11 =====
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) Teil 5 der EN 1993 enthält Grundsätze und Anwendungsregeln für den Entwurf, die Bemessung und 
+Konstruktion von Pfählen und Spundwänden aus Stahl. 
+(2) Diese Norm liefert ebenso Beispiele zur konstruktiven Gestaltung von Gründungs- und 
+Stützwandkonstruktionen. 
+(3) Der Anwendungsbereich umfasst: 
+ Stahlpfahlgründungen für Ingenieurbauwerke an Land und im Wasser; 
+ temporäre oder permanente Konstruktionen, die Ausführungen mit Stahlpfählen oder Stahlspundwänden 
+erfordern; 
+ temporäre oder permanente Stützwandkonstruktionen aus stählernen Spundwandprofilen einschließlich 
+aller Formen von kombinierten Spundwänden. 
+(4) Der Anwendungsbereich schließt aus: 
+ Bohrplattformen; 
+ Dalben. 
+(5) Teil 5 der EN 1993 enthält auch Anwendungsregeln für betongefüllte Stahlpfähle. 
+(6) Besondere Anforderungen an eine Erdbebenbemessung sind nicht enthalten. In Fällen, bei denen die 
+Wirkung von Bodenbewegungen infolge Erdbeben von Bedeutung ist, ist EN 1998 zu beachten. 
+(7) Bemessungs- und Konstruktionsregeln werden auch für Gurtungen, Aussteifungen und Anker 
+angegeben, siehe Abschnitt 7. 
+(8) Die Bemessung von Spundwänden für Querschnitte der Klassen 1, 2 und 3 ist in den Abschnitten 5 und 
+6 geregelt, während die Bemessung von Querschnitten in Klasse 4 in Anhang A behandelt wird. 
+ANMERKUNG Versuche an Spundwänden der Klasse 4 werden in Anhang B behandelt. 
+(9) Das Bemessungsverfahren für verpresste U-Bohlen und für Flachprofile verwendet 
+Bemessungswiderstände, die aus Versuchen ermittelt werden. Zu den Prüfverfahren wird auf EN 10248 
+verwiesen. 
+(10) Geotechnische Aspekte sind in diesem Dokument nicht enthalten. Stattdessen wird auf EN 1997 
+verwiesen. 
+(11) Regelungen zur Berücksichtigung der Auswirkung von Korrosion bei der Bemessung von Pfählen und 
+Spundwänden sind in Abschnitt 4 enthalten. 
+(12) Die Möglichkeit der plastischen globalen Tragwerksberechnung nach EN 1993-1-1, 5.4.3 ist in 5.2 
+berücksichtigt. 
+ANMERKUNG Eine Anleitung für die Bemessung von Spundwänden unter Berücksichtigung einer plastischen 
+Tragwerksberechnung liefert Anhang C. 
+(13) Die Bemessung von kombinierten Spundwänden im Grenzzustand der Tragfähigkeit wird in Abschnitt 5 
+behandelt. Dort werden auch allgemeine Regeln für die Bemessung der Tragelemente angegeben. 
+ANMERKUNG Eine Anleitung für die Bemessung von Hohlprofilen und I-Profilen als Tragelemente liefert Anhang D. 
+9 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 12 =====
+1.2 Normative Verweisungen 
+Diese Europäische Norm enthält durch datierte oder undatierte Verweisungen Festlegungen aus anderen 
+Publikationen. Diese normativen Verweisungen sind an den jeweiligen Stellen im Text zitiert, und die 
+Publikationen sind nachstehend aufgeführt. Bei datierten Verweisungen gehören spätere Änderungen oder 
+Überarbeitungen dieser Publikationen nur zu dieser Europäischen Norm, falls sie durch Änderung oder 
+Überarbeitung eingearbeitet sind. Bei undatierten Verweisungen gilt die letzte Ausgabe der in Bezug 
+genommenen Publikation (einschließlich Änderungen). 
+EN 1990, Eurocode: Grundlagen der Tragwerksplanung
+EN 1991, Eurocode 1: Einwirkungen auf Tragwerke
+EN 1992, Eurocode 2: Entwurf, Berechnung und Bemessung von Stahlbetonbauten
+EN 1993-1-1, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-1: Bemessung 
+und Konstruktion von Stahlbauten: Allgemeine Bemessungsregeln und Regeln für den Hochbau
+EN 1993-1-2, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-2: Bemessung 
+und Konstruktion von Stahlbauten: Baulicher Brandschutz
+EN 1993-1-3, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-3: Bemessung 
+und Konstruktion von Stahlbauten: Kaltgeformte dünnwandige Bauteile und Bleche
+EN 1993-1-5, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-5: Bemessung 
+und Konstruktion von Stahlbauten: Aus Blechen zusammengesetzte Bauteile
+EN 1993-1-6, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-6: Bemessung 
+und Konstruktion von Stahlbauten: Festigkeit und Stabilität von Schalentragwerken
+EN 1993-1-8, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-8: Bemessung 
+und Konstruktion von Stahlbauten: Bemessung und Konstruktion von Anschlüssen und Verbindungen
+EN 1993-1-9, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-9: Bemessung 
+und Konstruktion von Stahlbauten: Ermüdungsfestigkeiten von Stahlbauteilen
+EN 1993-1-10, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-10: Bemessung 
+und Konstruktion von Stahlbauten: Werkstoffwahl im Hinblick auf Zähigkeit und Eigenschaften in 
+Dickenrichtung
+EN 1993-1-11, Eurocode 3: Entwurf, Berechnung und Bemessung von Stahlbauten  Teil 1-11: Bemessung 
+und Konstruktion von Stahlbauten: Bemessung und Konstruktion von Tragwerken mit stählernen 
+Zugelementen
+EN 1994, Eurocode 4: Entwurf, Berechnung und Bemessung von Stahl-Beton-Verbundbauten
+EN 1997, Eurocode 7: Entwurf, Berechnung und Bemessung in der Geotechnik
+EN 1998, Eurocode 8: Auslegung von Bauwerken gegen Erdbeben
+EN 10002, Metallische Werkstoffe  Zugversuch
+EN 10027, Bezeichnungssysteme für Stähle
+EN 10210, Warmgefertigte Hohlprofile für den Stahlbau aus unlegierten Baustählen und aus 
+Feinkornbaustählen
+10 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 13 =====
+EN 10219, Kaltgefertigte geschweißte Hohlprofile für den Stahlbau aus unlegierten Baustählen und aus 
+Feinkornbaustählen
+EN 10248, Warmgewalzte Spundbohlen aus unlegierten Stählen
+EN 10249, Kaltgeformte Spundbohlen aus unlegierten Stählen
+EN 1536, Ausführung von besonderen geotechnischen Arbeiten (Spezialtiefbau)  Bohrpfähle
+EN 1537, Ausführung von besonderen geotechnischen Arbeiten (Spezialtiefbau)  Verpressanker
+EN 12063, Ausführung von besonderen geotechnischen Arbeiten (Spezialtiefbau)  Spundwand-
+konstruktionen
+EN 12699, Ausführung spezieller geotechnischer Arbeiten (Spezialtiefbau)  Verdrängungspfähle
+EN 14199, Ausführung von besonderen geotechnischen Arbeiten (Spezialtiefbau)  Pfähle mit kleinen 
+Durchmessern (Mikropfähle)
+EN 10045, Metallische Werkstoffe; Kerbschlagbiegeversuch nach Charpy
+EN 1090-2, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 2: Technische Anforderungen 
+an die Ausführung von Tragwerken aus Stahl 
+1.3 Annahmen 
+(1) Zusätzlich zu den allgemeinen Annahmen in EN 1990 gelten folgende Annahmen: 
+Der Einbau und die Herstellung der Stahlpfähle und Stahlspundwände erfolgen nach EN 12699, EN 14199 
+und EN 12063. 
+1.4 Unterscheidung nach Grundsätzen und Anwendungsregeln 
+(1)P Es gelten die Regelungen der EN 1990, 1.4. 
+1.5 Begriffe 
+Für den Anwendungsbereich dieser Norm gelten die folgenden Begriffe. 
+1.5.1 
+Gründung 
+Teil eines Bauwerks einschließlich der Pfähle und möglicherweise Pfahlköpfe 
+1.5.2 
+Stützwandkonstruktion 
+ein Bauwerkselement, bestehend aus Wänden, welche das Erdreich, ähnliche Stoffe und/oder Wasser 
+zurückhalten; gegebenenfalls gehören auch Lagerungen (z. B. Anker) dazu 
+1.5.3 
+Boden-Bauwerk-Interaktion 
+die gegenseitige Beeinflussung der Verformungen des Bodens und der Gründung bzw. Stützwand-
+konstruktion 
+11 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 14 =====
+1.6 Symbole 
+(1) Folgende Hauptsymbole werden zusätzlich zu denen in EN 1993-1-1 verwendet: 
+c Steglänge der Stahlspundwand, siehe Bild 5-1; 
+ Stegwinkel, siehe Bild 5-1. 
+(2) Folgende Abkürzungen werden zusätzlich zu denen in EN 1993-1-1 verwendet: 
+red reduziert. 
+(3) Folgende wichtige Symbole werden zusätzlich zu denen in EN 1993-1-1 verwendet: 
+Av Projizierte Schubfläche, siehe Bild 5-1; 
+FEd Bemessungswert der Ankerkraft; 
+FQ,Ed Zusätzliche horizontale Kraft aus dem Knicken der Wand, die am Spundwandfuß aufgenommen 
+werden muss, so dass die Annahme einer vollwirksamen seitlichen Abstützung für das Knicken 
+gilt, siehe Bild 5-4; 
+Ft,Rd Grenzzugbeanspruchbarkeit des Ankers; 
+Ft,Ed Bemessungswert der umlaufenden Zugkraft in einem Zellenfangdamm; 
+Ft,ser Axiale Kraft in einem Anker unter charakteristischer Belastung; 
+Fta,Ed Bemessungswert der Zugkraft in einem Bogenelement eines Zellenfangedamms; 
+Ftc,Ed Bemessungswert der Zugkraft in der gemeinsamen Wand eines Zellenfangedamms; 
+Ftg,Rd Zugkraftbeanspruchbarkeit des Ankerschafts; 
+Ftm,Ed Bemessungswert der Zugkraft in der Hauptzelle des Zellenfangedamms; 
+Fts,Rd Zugkraftbeanspruchbarkeit des einfachen Flachbohlenprofils; 
+Ftt,Rd Zugkraftbeanspruchbarkeit des Ankergewindes; 
+Rc,Rd Beanspruchbarkeit einer Spundwand gegen eine lokale quergerichtete Kraft; 
+Rtw,Rd Zugkraftbeanspruchbarkeit des Spundwandsteges gegen die Lasteinleitung einer lokalen 
+quergerichteten Kraft; 
+RVf,Rd Schubkraftbeanspruchbarkeit des Spundwandflansches gegen die Lasteinleitung einer lokalen 
+quergerichteten Kraft; 
+pm,Ed Bemessungswert des Innendrucks in der Hauptzelle eines Zellenfangedamms; 
+ra Radius des Verbindungsbogens zwischen den Hauptzellen eines Kreiszellenfangedamms; 
+rm Radius der Hauptzelle eines Kreiszellenfangedamms; 
+12 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 15 =====
+tf Nennwert der Flanschdicke der Spundbohle; 
+tw Nennwert der Stegdicke der Spundbohle; 
+B Abminderungsfaktor des Widerstandsmomentes von U-Bohlen zur Berücksichtigung einer 
+unzureichenden Schubkraftübertragung im Schloss; 
+ D Abminderungsfaktor der Biegesteifigkeit von U-Bohlen zur Berücksichtigung einer 
+unzureichenden Schubkraftübertragung im Schloss; 
+ R Faktor für den Schlosswiderstand von Flachprofilen; 
+ T Faktor zur Berücksichtigung des Verhaltens von geschweißten Verbindungsbohlen im 
+Grenzzustand der Tragfähigkeit; 
+ o,I Abminderungsfaktor zur Berücksichtigung des durch Ovalisation der Rohre reduzierten 
+Flächenträgheitsmomentes um die Wandachse; 
+P Faktor zur Berücksichtigung der Effekte der Wasserdruckbeanspruchung auf die 
+Plattenbiegung. 
+(4) Weitere Symbole und Abkürzungen sind definiert, wo sie zum ersten Mal auftreten. 
+1.7 Einheiten 
+(1) Es sollten die SI-Einheiten nach ISO 1000 verwendet werden. 
+(2) Die folgenden Einheiten sind bei der Berechnung empfohlen: 
+ Kräfte und Lasten: kN, kN/m, kN/m 2; 
+ Masseneinheiten: kg/m 3; 
+ Gewichtseinheiten: kN/m 3; 
+ Spannungen und Festigkeiten: N/mm² (MN/m 2 oder MPa); 
+ Biegemomente: kNm; 
+ Torsionsmomente: kNm. 
+1.8 Begriffsbestimmung 
+Für diese Norm werden folgende Begriffe verwendet: 
+ANMERKUNG Bild 1-1 bis Bild 1-10 sind nur Beispiele zum Verständnis der Begriffe. Die Beispiele sind keineswegs 
+vollständig und stellen keine bevorzugte Ausführung dar. 
+1.8.1 
+Verankerung 
+dies ist die allgemeine Bezeichnung für ein rückwärtiges Verankerungssystem für eine Stützwand, z. B. Tote-
+Männer, Ankerplatten oder Ankerwände, Gewindeanker, geschraubte Erdanker, Ankerpfähle und 
+Expansionsanker. Beispiele für Anschlüsse zwischen Anker und Spundwände sind in Bild 1-1 dargestellt. 
+13 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 16 =====
+1.8.2 
+rückverankerte Wand 
+eine Wand, deren Stab ilität von der Einbi ndung der Spundwand in den Boden und zusätzlich von einer oder 
+mehreren Ankerlagen abhängig ist 
+1.8.3 
+Tragpfähle 
+Konstruktionselemente (Hohlprofile, H-Profile, kreuz- oder X-förmige Profile), die in Gründungen von Hoch- 
+oder Ingenieurbauten zur Aufnahme von axialen Zug- oder Druckkräften, Momenten und Querkräften (siehe 
+Tabelle 1-1) verwendet werden. Die Tragfähigkeit wird durch den Spitzenwiderstand oder die Mantelreibung 
+oder die Kombination von beidem erreicht. 
+1.8.4 
+Aussteifungen 
+senkrecht oder im Winkel zur Stützwandvorderseite angeordnete Streben, die die Wand abstützen und 
+gewöhnlich an Gurtungen angeschlossen sind (siehe Bild 1-2) 
+1.8.5 
+ungestützte Wand 
+ein Wand, deren Stabilität allein von der Einbindung der Profile im Boden abhängig ist 
+1.8.6 
+Zellenfangedämme 
+Zellenfangedämme bestehen aus Flachprofilen, die eine ausreichende Schlosszugfestigkeit besitzen, um die 
+umlaufenden Zugkräfte in den kreisförmigen Zellen infolge des Innendrucks der Füllung aufzunehmen (siehe 
+Bild 1-3). Die Standsicherheit der Zellen wird durch das Eigengewicht der Füllung erreicht. Es gibt zwei Typen 
+von Zellenfangedämmen: 
+ Zellenfangedämme aus kreisförmigen Zellen: Dieser Typ besteht aus einzelnen Zellen mit großen 
+Kreisdurchmessern, die über Bögen mit kleinerem Durchmesser verbunden sind (siehe Bild 1-4a); 
+ Zellenfangedämme aus flachen Zellen: Dieser Typ besteht aus zwei Reihen von kreisförmigen Bögen, die 
+durch rechtwinkelig zur Dammachse angeordnete Querschotte miteinander verbunden sind. (siehe 
+Bild 1-4b). 
+1.8.7 
+kombinierte Spundwände 
+Stützwände, die aus Trag- und Zwischenelementen bestehen. Die Tragelemente sind häufig Rohrprofile, 
+I-Profile oder geschweißte Hohlkästen, die in gleichmäßigen Abständen über die Wandlänge verteilt sind. Die 
+Zwischenelemente sind im Allgemeinen Spundbohlen verschiedener Profile, die zwischen den Tragelementen 
+eingebaut und durch Schlösser mit diesen verbunden sind (siehe Bild 1-5). 
+1.8.8 
+Doppel-U-Bohlen 
+zwei U-Bohlen, die in ihrem gemeinsamen Schloss durch Verpressen oder Verschweißen verbunden sind und 
+so die Übertragung der Schubkräfte ermöglichen 
+1.8.9 
+Rammfähigkeit 
+Fähigkeit einer Spundbohle oder eines Tragpfahles, ohne Schaden durch die Bodenschichten bis auf die 
+erforderliche Einbindetiefe eingebracht werden zu können 
+1.8.10 
+Einbringen 
+Methode, mit der eine Bohle oder ein Pfahl in den Boden auf die erforderliche Tiefe eingebracht wird, z. B. 
+durch Schlagrammen, Vibrationsrammen, Pressen, Drehen oder durch eine Kombination dieser oder anderer 
+Methoden 
+14 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 17 =====
+1.8.11 
+Trägerpfahlwand 
+Stützwand, die aus Stahlträgern derselben Geometrie zusammengesetzt und durch Schlösser verbunden 
+wird. Diese Elemente können aus geschweißten Profilen bestehen, siehe Bild 1-6, um ein hohes 
+Widerstandsmoment des Querschnitts zu erreichen. 
+1.8.12 
+Schloss 
+Teil einer Spundbohle oder anderer Verbauelemente, der benachbarte Elemente mittels Daumen-Finger-
+Verhakung oder ähnlicher Ausbildungen miteinander verbindet, so dass eine durchgängige Wand entsteht. 
+Die Schlossverbindungen können bezeichnet werden als 
+ frei: Eingefädelte Schlösser, die weder verschweißt noch verpresst sind; 
+ verpresst: Die Schlösser der zusammengesetzten Einzelbohlen sind mechanisch durch Verpress-
+punkte verbunden; 
+ verschweißt: Die Schlösser der zusammengesetzten Einzelbohlen sind mechanisch durch durch-
+gängige oder unterbrochene Verschweißungen verbunden. 
+1.8.13 
+Verbundwände in Winkelform 
+spezielle Spundwandausführung, bei der die Einzelbohlen entweder zur Erhöhung des Flächen-
+trägheitsmomentes der Wand (siehe Beispiel in Bild 1-7) oder zur Erfüllung besonderer Anforderungen (siehe 
+Beispiel in Bild 1-8) winkelig zur Wandachse verlaufen 
+1.8.14 
+Pfahlkupplung 
+Reibungsmanschette zur Verlängerung eines Stahlrohres oder eines X-förmigen Pfahls 
+1.8.15 
+abgestützte Wand 
+Stützwand, deren Stabilität von der Einbindetiefe der Spundwand in den Boden und zusätzlich von einer oder 
+mehreren Lagen von Aussteifungen abhängig ist 
+1.8.16 
+Trägerbohlwand (Berliner Verbau) 
+Trägerbohlwände bestehen aus in gleichen Abständen eingebrachten vertikalen Pfählen und horizontalen 
+Zwischenelementen (Tafeln, Bohlen oder Verschalung), siehe Bild 1-9. Die Pfähle können gewalzte oder 
+geschweißte I-Profile, Rohre oder Kastenprofile sein. 
+1.8.17 
+Kastenpfähle 
+nicht kreisförmige Hohlprofile, die sich aus zwei oder mehreren warmgewalzten Profilen zusammensetzen 
+und durchgängig oder abschnittsweise in Längsrichtung verschweißt sind (siehe Tabelle 1-1) 
+1.8.18 
+Stahlrohrpfähle 
+Pfähle mit kreisförmigem Querschnitt, die nahtlos gewalzt oder aus längsseitig oder spiralförmig 
+verschweißten Blechen hergestellt werden (siehe Tabelle 1-1) 
+1.8.19 
+Stahlspundbohle 
+Dies ist ein einzelnes Stahlelemente, aus dem eine Spundwand zusammengesetzt wird. Die Bohlentypen, die 
+in diesem Teil 5 behandelt werden, sind in Tabelle 1-2 aufgeführt: Z-förmige, U-förmige und Flachprofile. 
+Kaltgeformte Bohlen sind in Tabelle A-1 in Anhang A gegeben. Die Schlösser von Z-Bohlen liegen in der 
+äußeren Wandfläche, während sich die Schlösser von U-Bohlen und Flachbohlen in der Stützwandachse 
+befinden. 
+15 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 18 =====
+1.8.20 
+Stahlspundwand 
+durchgängige flächenförmige Stützwandkonstruktion aus Spundbohlen, die sich durch die Wirksamkeit der 
+Schlösser ergibt 
+1.8.21 
+T-Verbindung 
+Sonderelement, siehe Bild 1-10, das zwei Hauptzellen eines Fangedamms über Bögen mit kleineren 
+Durchmessern miteinander verbindet, siehe Bild 1-3 
+1.8.22 
+Dreifach-U-Bohlen 
+Eine aus drei einzelnen U-Bohlen zusammengesetzte Mehrfachbohle. Die beiden gemeinsamen Schlösser 
+ermöglichen durch Verpressen oder Verschweißen die Übertragung der Schubkräfte. 
+1.8.23 
+Gurtung 
+horizontaler Balken, in der Regel aus Stahl oder Stahlbeton, der an der Stützwand angebracht wird, um die 
+Auflagerlasten der Wand in die Zuganker und Steifen zu übertragen 
+Tabelle 1-1  Beispiele für Querschnitte von Tragpfählen aus Stahl 
+Querschnittstypen Darstellung 
+Hohlprofile (Beispiele), 
+siehe Anmerkung 
+H-Profile 
+X-Profile 
+ANMERKUNG Für Ausführungsdetails wird auf EN 12699 und EN 14199 verwiesen. 
+16 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 19 =====
+Tabelle 1-2  Stahlspundwände 
+Querschnittstyp Einzelbohle Doppelbohle 
+Z-Profile 
+U-Profile 
+Flachprofile 
+ANMERKUNG Für Details der Schlösser wird auf EN 10248 verwiesen. 
+Legende 
+A Zuganker 
+B Ankerplatte 
+C Spundbohle 
+D Gurtung 
+Bild 1-1  Beispiele für die Verbindung zwischen Ankern und Spundwänden 
+17 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 20 =====
+Legende 
+A Gurtung 
+B Aussteifung 
+Bild 1-2  Beispiel für eine Aussteifung 
+Legende 
+A T-Verbindung 
+B Innendruck 
+C ringförmige Zugkraft 
+Bild 1-3  Zellenfangedämme 
+18 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 21 =====
+a) Konstruktion aus kreisförmigen Zellen 
+b) Konstruktion aus flachen Zellen 
+Bild 1-4  Beispiel für Zellenfangedämme 
+Legende 
+A Tragelement 
+B Zwischenelement 
+Bild 1-5  Beispiele für kombinierte Spundwände 19 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 22 =====
+Legende 
+A auf I-Profil angeschweißte Spundbohle 
+B I-Profil 
+C am I-Profil angeschweißtes Schlossprofil 
+Bild 1-6  Beispiele für Trägerpfahlwände 
+20 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 23 =====
+Legende 
+A einseitig an einer U-Bohle angeschweißtes Verbindungsstück 
+B Verpresstes Schloss 
+Bild 1-7  Beispiel für Verbundwände in Winkelform aus U-Profilen 
+Bild 1-8  Beispiel für eine Verbundwand in Winkelform aus Z-Profilen 
+Legende 
+A Verschalung, Tafeln, Bohlen 
+B Tragbohle 
+Bild 1-9  Beispiel für eine Trägerbohlwand (Berliner Verbau) 
+21 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 24 =====
+a) geschraubt b) geschweißt 
+Bild 1-10  Beispiele für T-Verbindungen 
+1.9 Vereinbarung für die Spundbohlenachsen 
+(1) Für Spundwände wird die folgende Achsenvereinbarung getroffen: 
+ allgemein 
+ x x ist die Längsachse der Bohle; 
+ y y ist die Querschnittsachse parallel zur Stützwand; 
+ z z ist die andere Querschnittsachse; 
+ falls notwendig 
+ u u ist die zur Stützwandachse nächstgelegene Querschnittshauptachse, wenn diese nicht mit 
+yy übereinstimmt; 
+ v v ist die andere Querschnittshauptachse, wenn diese nicht mit z z übereinstimmt. 
+ANMERKUNG Diese Vereinbarung weicht von der Achsenvereinbarung in EN 1993-1-1 ab. Dieses ist bei 
+Querverweisen zu Teil 1-1 zu beachten. 
+2 Grundlagen für Entwurf, Bemessung und Konstruktion 
+2.1 Allgemeines 
+(1)P Für die Bemessung von Tragpfählen und Spundwänden einschließlich der Bemessung der Gurtungen, 
+Aussteifungen und Anker sind die Regelungen in EN 1990 anzuwenden, es sei denn, dieses Dokument liefert 
+abweichende Regeln. 
+22 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 25 =====
+(2) Nachfolgend werden besondere Regelungen für den Entwurf, die Bemessung und die Konstruktion von 
+Tragpfählen und Spundwänden angegeben, um die Anforderungen an die Sicherheit und Dauerhaftigkeit für 
+die Grenzzustände der Gebrauchstauglichkeit und der Tragfähigkeit zu erfüllen. 
+(3) Die Tragfähigkeit des Bodens sollte nach EN 1997-1 bestimmt werden. 
+(4)P Es sind alle Bemessungssituationen in jeder Phase der Bauausführung und der Nutzung zu 
+berücksichtigen, siehe EN 1990. 
+(5) Die Rammfähigkeit der Tragpfähle und Spundbohlen sollte bei Entwurf und Bemessung der 
+Konstruktion berücksichtigt werden, siehe 2.7. 
+(6) Wenn nichts anderes angegeben ist, gelten die in diesem Dokument angegebenen Regeln 
+gleichermaßen für temporäre und permanente Bauwerke, siehe EN 1990. 
+(7) Nachfolgend wird eine Unterscheidung zwischen Tragpfählen und Stützwänden gemacht, wenn dies 
+notwendig ist. 
+(8) Regelungen zu Gurtungen, Aussteifungen, Verbindungen und Ankern befinden sich in Abschnitt 7. 
+2.2 Kriterien für den Grenzzustand der Tragfähigkeit 
+(1)P Es sind die nachfolgenden Kriterien für den Grenzzustand der Tragfähigkeit zu berücksichtigen: 
+a) Versagen des Bauwerks durch Versagen des Bodens (die Tragfähigkeit des Bodens ist überschritten); 
+b) Tragwerksversagen; 
+c) Kombination des Boden- und Tragwerksversagens. 
+ANMERKUNG Versagen benachbarter Bauwerke kann durch Verformungen infolge des Aushubs verursacht werden. 
+Wenn benachbarte Bauwerke empfindlich gegenüber diesen Verformungen sind, können Empfehlungen für die 
+Vorgehensweise für den Einzelfall angegeben werden. 
+(2) Die Kriterien für den Grenzzustand der Tragfähigkeit sollten in Übereinstimmung mit EN 1997-1 
+nachgewiesen werden. 
+(3) Abhängig von der Bemessungssituation sollte der Bauteilwiderstand für eine oder mehrere der 
+nachfolgenden Versagensarten nachgewiesen werden: 
+ für Tragpfähle:
+ Versagen infolge Biegung- und/oder Normalkraft; 
+ Versagen infolge Biegeknicken unter Berücksichtigung der Zwängungen, die durch den Boden und 
+die Stützkonstruktion sowie deren Anschlüsse erzeugt werden; 
+ lokales Versagen an den Lasteinleitungsstellen; 
+ Ermüdung; 
+ für Stützwände:
+ Versagen infolge Biegung- und/oder Normalkraft; 
+ Versagen infolge Biegeknicken unter Berücksichtigung der Zwängungen, die durch den Boden 
+erzeugt werden; 
+23 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 26 =====
+lokales Beulen infolge Biegung; 
+ lokales Versagen an den Lasteinleitungsstellen (z. B. Stegblechbeulen); 
+ Ermüdung. 
+2.3 Kriterien für den Grenzzustand der Gebrauchstauglichkeit 
+(1) Soweit nichts anderes vereinbart ist, sollten die nachfolgenden Kriterien für den Grenzzustand der 
+Gebrauchstauglichkeit berücksichtigt werden: 
+ für Tragpfähle:
+ Begrenzung der vertikalen Setzungen oder horizontalen Verschiebungen, die für das abzustützende 
+Tragwerk einzuhalten sind; 
+ Begrenzung der Erschütterungen, die für die direkt mit den Tragpfählen verbundenen oder 
+benachbarten Tragwerke einzuhalten sind; 
+ für Stützwände: 
+ Verformungsbegrenzungen, die für die Stützwand selbst einzuhalten sind; 
+ Begrenzung der horizontalen Verschiebungen, vertikalen Setzungen oder Erschütterungen, die für 
+die Nutzung der direkt mit der Stützwand verbundenen oder benachbarten Tragwerke einzuhalten 
+sind. 
+(2) Werte für die in (1) genannten Grenzen sollten im Einzelfall in Verbindung mit den dafür geltenden 
+Lastfallkombinationen nach EN 1990 festgelegt werden. 
+(3) Grenzwerte, die sich aus benachbarten Tragwerken ergeben, sollten im Einzelfall festgelegt werden. 
+Eine Anleitung für die Bestimmung dieser Grenzwerte ist in EN 1997-1 angegeben. 
+ANMERKUNG Die Kriterien der Gebrauchstauglichkeit dürfen für die Bemessung maßgebend sein. 
+2.4 Baugrunderkundungen und Bodenparameter 
+(1)P Parameter für den Boden und/oder Hinterfüllungen sind nach geotechnischen Untersuchungen nach 
+EN 1997 zu bestimmen. 
+2.5 Statische Berechnung 
+2.5.1 Allgemeines 
+(1) Eine statische Berechnung sollte durchgeführt werden, um die Beanspruchungen (Kräfte und 
+Biegemomente, Spannungen, Dehnungen und Verformungen) für das gesamte Tragwerk oder Teile davon zu 
+bestimmen. Falls erforderlich, sollten zusätzliche Berechnungen für Konstruktionsdetails durchgeführt werden, 
+z. B. für Lasteinleitungsstellen, Verbindungen usw. 
+(2) Die Berechnungen können mit Idealisierung der Geometrie, des Verhaltens des Tragwerks und des 
+Bodens durchgeführt werden. Die Idealisierungen sollten entsprechend der Bemessungssituation ausgewählt 
+werden. 
+(3) Außer in den Fällen, in denen die Bemessung empfindlich auf Abweichungen reagiert, darf die 
+Bestimmung der Schnittgrößen in Pfahlgründungen und Spundwänden auf der Basis der Nennwerte der 
+Abmessungen durchgeführt werden. 
+24 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 27 =====
+(4) Eine Brandschutzbemessung sollte nach den Festlegungen in EN 1993-1-2 und EN 1991-1-2 
+durchgeführt werden. 
+2.5.2 Bestimmung der Einwirkungen 
+(1) Wo zutreffend, sollten die Einwirkungen nach EN 1991 bestimmt werden, andernfalls sollten sie im 
+Einzelfall und in Abstimmung mit dem Auftraggeber festgelegt werden. 
+(2) Bei Pfahlgründungen sollten die Einwirkungen infolge vertikaler oder quer verlaufender 
+Bodenbewegungen (z. B. negative Mantelreibung usw.) nach EN 1997-1 bestimmt werden. 
+(3) Die Einwirkungen, die vom Boden auf das Tragwerk wirken, sollten mit Modellen nach EN 1997-1 
+bestimmt werden oder im Einzelfall und in Abstimmung mit dem Auftraggeber festgelegt werden. 
+(4) Wo notwendig, sollten die Auswirkungen von Temperaturänderungen mit der Zeit oder von 
+Sonderlasten, die nicht in EN 1991 erfasst sind, berücksichtigt werden. 
+ANMERKUNG 1 Es kann erforderlich sein, Temperaturauswirkungen zu berücksichtigen, z. B. für Aussteifungen, wenn 
+große Temperaturänderungen wahrscheinlich sind. Der Entwurf darf dabei Maßnahmen vorschreiben, um den Einfluss 
+der Temperaturänderungen zu reduzieren. 
+ANMERKUNG 2 Beispiele für Sonderlasten sind: 
+ Lasten durch fallende Gegenstände oder schwingende Kranlasten; 
+ Lasten von Baggern und Kränen; 
+ Auflasten aus Pumpen, Zugangswegen, Zwischenaussteifungen, Lagerung von Geräten oder Stapeln von 
+Stahlbewehrung. 
+(5) Soweit nicht anders festgelegt, dürfen für Stützwände, die Belastungen von einer Straße oder 
+Bahnstrecke erfahren, vereinfachte Modelle für diese Lasten (z. B. Gleichlasten) abgeleitet aus den Lasten für 
+Brücken verwendet werden, siehe EN 1991-2. 
+2.5.3 Tragwerksberechnung 
+2.5.3.1 Allgemeines 
+(1) Die Tragwerksberechnung sollte mit einer geeigneten Boden-Tragwerks-Interaktion in Übereinstimmung 
+mit EN 1997-1 durchgeführt werden. 
+(2) In Abhängigkeit von der Bemessungssituation können Anker als einfache starre Stützung oder als 
+Federstützung abgebildet werden. 
+(3) Wenn die Verbindungen und Anschlüsse einen großen Einfluss auf die Schnittgrößenverteilung haben, 
+sollten diese in der Tragwerksberechnung berücksichtigt werden. 
+2.5.3.2 Grenzzustand der Tragfähigkeit 
+(1) Die Tragwerksberechnung für Pfahlgründungen für den Grenzzustand der Tragfähigkeit darf mit 
+demselben Modell durchgeführt werden wie für den Grenzzustand der Gebrauchstauglichkeit. 
+(2) Wenn außergewöhnliche Bemessungssituationen berücksichtigt werden müssen, darf die Bestimmung 
+der Schnittgrößen in den Gründungspfählen mit einem plastischen Modell sowohl für das gesamte Tragwerk 
+als auch für die Boden-Tragwerks-Interaktion vorgenommen werden. 
+ANMERKUNG Ein Beispiel für eine außergewöhnliche Bemessungssituation ist der Schiffsanprall auf einen 
+Brückenpfeiler. 
+25 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 28 =====
+(3) Die Bestimmung der Schnittgrößen in Stützwänden aus Spundbohlen sollte für den Grenzzustand der 
+Tragfähigkeit für den jeweiligen Versagensfall unter Verwendung der Boden-Tragwerks-Interaktion nach 
+2.5.3.1 (1) durchgeführt werden. 
+2.5.3.3 Grenzzustand der Gebrauchstauglichkeit 
+(1) Sowohl für Stützwände aus Spundbohlen als auch für Pfahlgründungen sollte die statische Berechnung 
+auf der Grundlage eines linear elastischen Modells des Tragwerks und Boden-Tragwerksmodells, wie sie in 
+2.5.3.1 (1) definiert sind, durchgeführt werden. 
+(2) Es sollte nachgewiesen werden, dass im Tragwerk für Gebrauchslasten keine plastischen 
+Verformungen auftreten. 
+2.6 Versuchsgestützte Bemessung 
+2.6.1 Allgemeines 
+(1) Die allgemeinen Regelungen für die versuchsgestützte Bemessung, die in EN 1990, EN 1993-1-1 und 
+EN 1997-1 aufgeführt sind, sollten beachtet werden. 
+ANMERKUNG Eine Anleitung für die Bestimmung des Bemessungswiderstandes aus Versuchen befindet sich in 
+EN 1990, Anhang D. 
+2.6.2 Tragpfähle 
+(1) Anleitungen für Versuche an Tragpfählen sind EN 1997-1, EN 12699 und EN 14199 zu entnehmen. 
+2.6.3 Stahlspundwände 
+(1) Die bei der Bemessung von Spundwänden getroffenen Annahmen können entsprechend dem 
+Bauablauf durch Versuche auf der Baustelle überprüft werden (z. B. im Fall von Bodenaushub). 
+(2) Die Kalibrierung eines Berechnungsmodells und die Änderung des Entwurfs während der Ausführung 
+sollten mit Bezug auf EN 1997-1 durchgeführt werden. 
+2.6.4 Verankerung 
+(1) Für die Verankerungen sollten die allgemeinen Regelungen für die versuchsgestützte Bemessung, die 
+in EN 1997-1, EN 1537 und EN 1993-1-11 angegeben sind, beachtet werden. 
+2.7 Rammbarkeit 
+(1)P Bei der Bemessung von Pfählen und Spundbohlen sind die ausführungstechnischen Aspekte des 
+Einbringens auf die erforderliche Einbindetiefe zu berücksichtigen. Dazu wird auf EN 12063, EN 12699 und 
+EN 14199 verwiesen. 
+(2) Der Typ, die Abmessungen und die konstruktive Durchbildung der Bohlen und Pfähle sollten in 
+Verbindung mit der Wirksamkeit der Geräte zum Rammen und Ziehen sowie des Rammverfahrens 
+(Rammparameter) so gewählt werden, dass sie den Bedingun gen des Bodens, in den die Bohlen bzw. die 
+Pfähle eingebracht werden, entsprechen. 
+(3) Wenn Rammschuhe, Versteifungen oder Reibungsverminderer als Rammhilfe oder zur Verstärkung der 
+Bohlen oder der Pfähle während des Einbringens verwendet werden, sollten die Auswirkungen auf das 
+Verhalten während der Nutzung beachtet werden. 
+26 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 29 =====
+3 Werkstoffeigenschaften 
+3.1 Allgemeines 
+(1)P Dieser Teil 5 der EN 1993 gilt für die Bemessung von Tragpfählen und Stützwänden aus Stahl, der den 
+in 3.2 bis 3.9 genannten Normen entspricht. 
+(2) Diese Norm darf auch bei anderen Baustählen angewendet werden, wenn ausreichende Daten 
+vorhanden sind, um die Anwendung der diesbezüglichen Bemessungs- und Fertigungsregeln zu rechtfertigen. 
+Die Versuchsdurchführungen und -auswertungen sollten den Regelungen in EN 1993-1-1, Abschnitt 2 und 
+EN 1990 entsprechen, und die Versuchsanforderungen sollten mit den Normen, die in 3.2 bis 3.9 genannt 
+sind, übereinstimmen. 
+(3)P Spundbohlen und Pfähle, die gebraucht oder als Elemente zweiter Wahl  verwendet werden sollen, 
+müssen mindestens die Anforderungen bezüglich der Abmessungen und der Materialeigenschaften erfüllen 
+und frei von Schäden oder Schadstoffen sein, welche die Festigkeit oder die Dauerhaftigkeit beeinträchtigen 
+können. 
+3.2 Tragpfähle 
+(1) Zu Stahleigenschaften sollte EN 1993-1-1 beachtet werden. 
+(2) Zu Eigenschaften von Stahlpfählen aus Stahlbohlen siehe 3.3 oder 3.4. 
+3.3 Warmgewalzte Stahlspundbohlen 
+(1)P Warmgewalzte Stahlspundbohlen müssen EN 10248 entsprechen. 
+(2) Die Nennwerte der Streckgrenze f
+y und der Zugfestigkeit fu für warmgewalzte Spundbohlen dürfen 
+Tabelle 3-1 entnommen werden. Diese entsprechen den Mindestwerten in EN 10248-1. 
+(3) Zu Duktilitätsanforderungen sollte EN 1993-1-1, 3.2.2 beachtet werden. 
+ANMERKUNG Die in Tabelle 3-1 aufgeführten Stahlsorten genügen diesen Anforderungen. 
+Tabelle 3-1  Nennwerte der Streckgrenze fy und der Zugfestigkeit fu für warmgewalzte 
+Stahlspundbohlen nach EN 10248-1 
+Stahl nach EN 10027 fy
+N/mm2
+fu
+N/mm2
+S240GP 
+S270GP 
+S320GP 
+S355GP 
+S390GP 
+S430GP 
+240 
+270 
+320 
+355 
+390 
+430 
+340 
+410 
+440 
+480 
+490 
+510 
+27 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 30 =====
+3.4 Kaltgeformte Stahlspundbohlen 
+(1)P Kaltgeformte Stahlspundbohlen müssen EN 10249 entsprechen. 
+(2) Nennwerte für die Streckgrenze fyb des Grundmaterials und die Zugfestigkeit fu für kaltgeformte 
+Spundbohlen dürfen Tabelle 3-2 entnommen werden. Diese stimmen mit EN 10249-1 überein. 
+ANMERKUNG Die Streckgrenze fyb ist der Nennwert der Streckgrenze des Grundmaterials, das für die Kaltverformung 
+verwendet wird. 
+(3) Zu Duktilitätsanforderungen sollte A.3.1 beachtet werden. 
+Tabelle 3-2  Nennwerte der Streckgrenze fyb des Grundmaterials und Zugfestigkeit fu für 
+kaltgeformte Stahlspundbohlen nach EN 10249-1 
+Stahl nach EN 10027 fyb
+N/mm2
+fu 
+N/mm2
+S235JRC 
+S275JRC 
+S355JOC 
+235 
+275 
+355 
+340 
+410 
+490 
+3.5 Profile für Gurtungen und Aussteifungen 
+(1) Zu Stahleigenschaften von Gurtungen und Aussteifungen sollte EN 1993-1-1, 3.1 und 3.2 beachtet 
+werden. 
+3.6 Verbindungsmittel 
+(1) Zu Eigenschaften von Schrauben, Muttern, Unterlegscheiben, Ankerplatten und Schweißzusatzmitteln 
+sollte EN 1993-1-8 beachtet werden. 
+3.7 Stahlteile für Anker 
+(1) Für Anker aus hochfestem Stahl mit einer definierten minimalen Mindeststreckgrenze fy,spec, die nicht 
+höher als fy,spec,max sein sollte, sollte EN 1537 beachtet werden. 
+ANMERKUNG Der Zahlenwert für fy,spec,max darf im Nationalen Anhang angegeben sein. Der Wert 
+fy,spec,max = 500 N/mm² wird empfohlen. 
+(2) Zu Materialeigenschaften von Ankern aus nicht-hochfestem Stahl sollten EN 1993-1-1, 3.2.1, 3.2.2 und 
+EN 1993-5, 3.9 beachtet werden.
+3.8 Stahlteile für kombinierte Spundwände 
+(1)P Die Stahleigenschaften von Sonder-I-Profilen, die als Tragelemente bei kombinierten Spundwänden 
+eingesetzt werden, müssen EN 10248 entsprechen. 
+(2)P Rohre, die als Tragelemente in kombinierten Spundwänden verwendet werden, müssen EN 10210 oder 
+EN 10219 entsprechen. 
+(3) Die Stahleigenschaften von zusammengesetzten Hohlkastenpfählen, die als Tragelemente in 
+kombinierten Spundwänden verwendet werden, sollten die Anforderungen in 3.2 erfüllen. 
+28 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 31 =====
+(4) Die Stahleigenschaften der Füllelemente in kombinierten Spundwänden sollten die Anforderungen in 
+3.3 oder 3.4 erfüllen. 
+(5)P Warmgewalzte Schlossprofile für Spundbohlen müssen mit EN 10248 übereinstimmen. 
+3.9 Bruchzähigkeit 
+(1)P Der Werkstoff muss eine ausreichende Zähigkeit besitzen, um bei den niedrigsten 
+Betriebstemperaturen innerhalb der geplanten Nutzungsdauer des Tragwerks Sprödbruch zu vermeiden. 
+ANMERKUNG Die niedrigste zu berücksichtigende Betriebstemperatur darf im Nationalen Anhang angegeben sein. 
+(2) Für Spundwände mit einer Flanschdicke von maximal 25 mm dürfen Stähle mit den T27J-Werten nach 
+Tabelle 3-3 eingesetzt werden, vorausgesetzt, dass die niedrigste Betriebstemperatur nicht geringer 
+als 30 °C ist. 
+ANMERKUNG 1 Für andere Fälle kann EN 1993-1-10 herangezogen werden. 
+ANMERKUNG 2 Der T27J-Wert ist die Versuchstemperatur, bei der eine Kerbschlagarbeit KV(T) > 27 Joule erforderlich 
+ist, um den Bruch einer Probe im Kerbschlagbiegeversuch hervorzurufen. Zum Versuch siehe EN 10045. 
+Tabelle 3-3  Testtemperatur T27J für die Bruchzähigkeit von Spundbohlen 
+Streckgrenze fy in N/mm2
+240 270 320 355 390 430 
+niedrigste Betriebstemperatur 15 °C 35° 35° 35° 15° 15° 15° Wert 
+von
+T27J niedrigste Betriebstemperatur 30 °C 20° 20° 20° 0° 0° 0° 
+ANMERKUNG 1 Wenn sich in einem durch Zug belasteten Flansch Aussparungen befinden (z. B. für Anker), sollte die 
+Verminderung des Querschnittswiderstandes durch eine Abminderung der Streckgrenze oder durch die effektive 
+Querschnittsfläche berücksichtigt werden. 
+ANMERKUNG 2 Die Werte sind für die niedrigste Betriebstemperatur und Flanschdicken von maximal 25 mm ohne 
+dynamische Effekte berechnet worden. Bei Flanschdicken 25 < tf 30 mm sollten die Tabellenwerte für T27J für die 
+niedrigste Betriebstemperaturen von 15 °C um 5 °C und für die niedrigste Betriebstemperaturen von 30 °C um 10 °C 
+verringert werden. 
+ANMERKUNG 3 Höhere Zähigkeitsanforderungen können notwendig sein, wenn die Bohlen in harte Böden bei 
+Temperaturen unter 10 °C eingebracht werden sollen. 
+4 Dauerhaftigkeit 
+4.1 Allgemeines 
+(1)P Abhängig von der Aggressivität der Medien, die die Stahlbauteile umgeben, sind Maßnahmen gegen 
+Korrosion zu ergreifen, wenn erhebliche Verluste der Stahldicke erwartet werden. 
+(2) Wenn Korrosion bei der Bemessung durch eine Reduktion der Blechdicken berücksichtigt werden 
+muss, sollte 4.4 beachtet werden. 
+(3) Um die Lebensdauer eines Tragwerks zu verlängern, sollten folgende Maßnahmen beachtet werden: 
+29 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 32 =====
+die Nutzung einer größeren Blechdicke als Korrosionsreserve; 
+ statische Reserven; 
+ Verwendung von Schutzbeschichtungen (Anstriche, Verpressmörtel oder Verzinkung); 
+ Verwendung eines kathodischen Schutzes mit oder ohne Schutzbeschichtungen; 
+ Ausstattung der Zonen mit hoher Korrosion mit einem Schutz aus Beton, Mörtel oder Suspensionen. 
+(4) Wenn die geforderte Nutzungsdauer länger als die Wirkungsdauer des Schutzes ist, sollte beim 
+Nachweis des Grenzzustandes der Gebrauchstauglichkeit und der Tragfähigkeit der Blechdickenverlust aus 
+der restlichen Nutzungsdauer berücksichtigt werden. 
+ANMERKUNG 1 Eine Kombination verschiedener Korrosionsschutzmaßnahmen kann sinnvoll sein, um eine höhere 
+Nutzungsdauer zu erreichen. Das gesamte Schutzsystem kann anhand der Bemessung, der Schutzbeschichtungen und 
+der Durchführbarkeit von Inspektionen spezifiziert werden. 
+ANMERKUNG 2 Besondere Vorsicht ist in Bereichen erforderlich, wo schlecht isolierte Gleichstromquellen Streuströme 
+im Boden hervorrufen können. 
+(5) Wenn die Korrosion nicht gleichmäßig über die Bohlenlänge auftritt, darf dies ausgenutzt werden, um 
+eine wirtschaftliche Bemessung durch Anpassung der Momentenverteilung an die Korrosionsverteilung zu 
+erreichen, siehe Bild 4-1. 
+(6) Die geforderte Nutzungsdauer für Spundwände und Tragpfähle sollte im Einzelfall bestimmt werden. 
+(7) Bei Nutzungsdaueranforderungen von weniger als 4 Jahren kann die Blechdickenreduktion infolge 
+Korrosion vernachlässigt werden, es sei denn, andere Zeitdauern werden im Einzelfall definiert. 
+(8) Die Korrosionsschutzmaßnahmen sollten für jeden Einzelfall festgelegt werden. 
+30 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 33 =====
+a) Vertikale Bereiche 
+unterschiedlichen Korrosions- 
+angriffs bei Meerwasser 
+b) Verteilung der 
+Korrosionsrate an der 
+Meerwasserseite 
+c) Typische Biege- 
+momentverteilung 
+Legende 
+A Bereich mit hohem Angriff (Spritzwasserzone) 
+B Wasserwechselzone 
+C Bereich mit hohem Angriff (Niedrigwasserzone) 
+D ständig unter Wasser 
+E verdeckter Bereich (Wasserseite) 
+F Anker 
+G Erdseite 
+MHW Mittleres Hochwasser 
+MLW Mittleres Niedrigwasser 
+ANMERKUNG Der Verlauf des Korrosionsangriffs in der Vertikalen und die Bereiche der höchsten Angriffe können 
+beträchtlich vom gezeigten Beispiel abweichen, da sie von den vorherrschenden Bedingungen am Bauwerksstandort 
+abhängig sind.
+Bild 4-1  Beispiel der Verteilung der Korrosionsrate 
+4.2 Dauerhaftigkeitsanforderungen für Tragpfähle 
+(1) Wenn nicht anders festgelegt, sollte sowohl für den Grenzzustand der Gebrauchstauglichkeit als auch 
+der Tragfähigkeit der Festigkeitsnachweis für einzelne Pfähle unter Berücksichtigung eines gleichmäßigen 
+Dickenverlustes über den gesamten Umfang des Querschnitts durchgeführt werden. 
+(2) Wenn nicht anders festgelegt, sollte bei Pfählen, die in Kontakt mit Wasser oder Boden (mit oder ohne 
+Grundwasser) stehen, die Reduktion der Blechdicke infolge Korrosion für den Grenzzustand der 
+Gebrauchstauglichkeit und der Tragfähigkeit aus 4.4 in Abhängigkeit von der erforderlichen Nutzungsdauer 
+des Tragwerks entnommen werden. 
+(3) Wenn im Einzelfall nicht anders festgelegt, darf die Korrosion innerhalb von Hohlprofilen, deren Enden 
+wasserdicht geschlossen oder die mit Beton verfüllt sind, vernachlässigt werden. 
+4.3 Dauerhaftigkeitsanforderungen an Spundwände 
+(1) Wenn nicht anders festgelegt, sollte für die Teile von Spundwänden, die in Kontakt mit Wasser und 
+Boden (mit oder ohne Grundwasser) stehen, der Dickenverlust infolge Korrosion für den Festigkeitsnachweis 
+31 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 34 =====
+im Grenzzustand der Gebrauchstauglichkeit und der Tragfähigkeit aus 4.4 in Abhängigkeit von der 
+erforderlichen Nutzungsdauer des Tragwerks entnommen werden. Wo Spundbohlen beidseitig in Kontakt mit 
+Boden oder Wasser stehen, ist die Korrosionsrate für beide Seiten anzusetzen. 
+(2) Wenn der Korrosionsangriff des Bodens oder des Wassers an den beiden Seiten der Spundwand 
+unterschiedlich ist, dürfen zwei unterschiedliche Korrosionsraten angesetzt werden. 
+4.4 Korrosionsraten für die Bemessung 
+(1) In diesem Abschnitt werden Korrosionsraten gegeben, die für die Bemessung zu beachten sind. 
+ANMERKUNG Geeignete Werte für Korrosionsraten können im Nationalen Anhang angegeben werden, wobei 
+regionale Bedingungen zu erfassen sind. Anhaltswerte sind in Tabelle 4-1 und Tabelle 4-2 angegeben. 
+(2) Der Dickenverlust infolge der Korrosion darf mit 0,01 mm je Jahr in normaler Atmosphäre angenommen 
+werden und mit 0,02 mm je Jahr an Standorten, an denen maritime Bedingungen die Funktion der 
+Konstruktion beeinflussen. 
+ANMERKUNG Einen bedeutenden Einfluss auf die Korrosionsrate im Boden haben: 
+ die Bodenart; 
+ die Änderung des Grundwasserspiegels; 
+ das Vorhandensein von Sauerstoff; 
+ das Vorhandensein von Verunreinigungen. 
+Tabelle 4-1  Empfohlene Werte für den Dickenverlust in mm infolge Korrosion bei Pfählen und 
+Spundbohlen in Böden, mit oder ohne Grundwasser 
+Geforderte planmäßige Nutzungsdauer 5 Jahre 25 Jahre 50 Jahre 75 Jahre 100 Jahre
+Ungestörte natürlich gewachsene Böden (Sand, 
+Schluff, Ton, Schiefer, ....) 0,00 0,30 0,60 0,90 1,20 
+Verunreinigte natürliche Böden und industrielle 
+Standorte 0,15 0,75 1,50 2,25 3,00 
+Aggressive natürliche Böden (Sumpf, Marsch, 
+Torf, ...) 0,20 1,00 1,75 2,50 3,25 
+Unverdichtete nicht-aggressive Auffüllungen 
+(Ton, Schiefer, Sand, Schluff, ....) 0,18 0,70 1,20 1,70 2,20 
+Unverdichtete und aggressive Auffüllungen 
+(Asche, Schlacke, ....) 0,50 2,00 3,25 4,50 5,75 
+ANMERKUNG 1 Korrosionsraten in verdichteten Auffüllungen sind niedriger als in unverdichteten. Bei verdichteten 
+Böden sollten die Werte in dieser Tabelle halbiert werden. 
+ANMERKUNG 2 Den Werten für 5 Jahre und 25 Jahre liegen Messungen zugrunde, während die anderen Werte 
+extrapoliert sind. 
+32 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 35 =====
+Tabelle 4-2  Empfohlene Werte für den Dickenverlust in mm infolge Korrosion bei Pfählen und 
+Spundbohlen in Süßwasser und Salzwasser 
+Geforderte planmäßige Nutzungsdauer 5 Jahre 25 Jahre 50 Jahre 75 Jahre 100 Jahre 
+Allgemeines Süßwasser (Fluss, Schiffskanal, ....) 
+im Bereich hohen Angriffes (Wasserspiegel) 0,15 0,55 0,90 1,15 1,40 
+Sehr verunreinigtes Süßwasser (Abwasser, 
+Industrieabwasser, ....) in der Zone hohen 
+Angriffes (Wasserspiegel) 
+0,30 1,30 2,30 3,30 4,30 
+Seewasser in gemäßigtem Klima im Bereich 
+hohen Angriffes (Niedrigwasser und Spritzzone) 0,55 1,90 3,75 5,60 7,50 
+Seewasser in gemäßigtem Klima im Bereich, der 
+ständig unter Wasser ist, oder in der 
+Wasserwechselzone 
+0,25 0,90 1,75 2,60 3,50 
+ANMERKUNG 1 Die höchste Korrosionsrate ist in der Regel in der Spritzwasserzone oder bei Gezeiten in der 
+Niedrigwasserzone zu finden. In den meisten Fällen befinden sich jedoch die höchsten Biegespannungen in der Zone, 
+die ständig unter Wasser liegt, siehe Bild 4-1. 
+ANMERKUNG 2 Den Werten für 5 Jahre und 25 Jahre liegen Messungen zugrunde, während die anderen Werte 
+extrapoliert sind. 
+5 Grenzzustände der Tragfähigkeit 
+5.1 Grundlagen 
+5.1.1 Allgemeines 
+(1)P Pfähle, Spundbohlen und ihre Komponenten sind so zu bemessen, dass die grundlegenden 
+Bemessungsanforderungen für den Grenzzustand der Tragfähigkeit nach Abschnitt 2 erfüllt sind. 
+(2) Die folgenden Regelungen sollten für den Querschnittsnachweis und den Bauteilnachweis für den 
+Grenzzustand der Tragfähigkeit verwendet werden. 
+(3) Zu Teilsicherheitsbeiwerten für die Einwirkung und zur Kombination dieser Einwirkungen sollte EN 1990 
+verwendet werden. 
+(4) Zu Teilsicherheitsbeiwerten für die Widerstände M0, M1 und M2 siehe EN 1993-1-1. 
+ANMERKUNG Die Teilsicherheitsbeiwerte M0, M1 und M2 für Pfähle und Spundwände dürfen im Nationalen Anhang 
+festgelegt werden. Die folgenden Werte werden empfohlen: M0 = 1,00; M1 = 1,10 und M2 = 1,25. 
+5.1.2 Bemessung 
+(1) Für Stützwände und Tragpfähle sind in der Regel nachzuweisen: 
+ Querschnittstragfähigkeit sowie Knicken von Spundwänden (siehe 5.2) und Tragpfählen (siehe 5.3); 
+ der Widerstand von Gurtungen, Aussteifungen, Verbindungen und Ankern (siehe Abschnitt 7); 
+ globales Versagen des Tragwerks durch Bodenversagen (siehe Abschnitt 2). 
+33 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 36 =====
+5.1.3 Ermüdung 
+(1) Wenn ein Tragwerk oder Teil eines Tragwerks empfindlich gegenüber Ermüdungserscheinungen ist, ist 
+in der Regel die Beurteilung der Ermüdung entsprechend EN 1993-1-9 durchzuführen. 
+ANMERKUNG In Kombination mit starker Korrosion kann der Widerstand gegenüber Ermüdung reduziert sein. 
+(2) Die Auswirkung von Stößen oder Vibrationen während des Einbringens von Tragpfählen oder 
+Spundbohlen kann in Ermüdungsberechnungen vernachlässigt werden. 
+5.2 Spundwände 
+5.2.1 Querschnittsklassifizierung 
+(1)P Wenn eine elastische statische Berechnung durchgeführt wird, ist nachzuweisen, dass die maximalen 
+Schnittgrößen die zugehörigen Widerstände nicht überschreiten. 
+(2)P Wenn eine plastische Berechnung erfolgt, muss nachgewiesen werden, dass die maximalen 
+Schnittgrößen nicht die zugehörigen plastischen Widerstände überschreiten. Zusätzlich muss die 
+Rotationskapazität geprüft werden, siehe Tabelle 5-1. 
+(3) Die Berechnungsmethode für die Schnittgrößenermittlung sollte der folgenden Querschnitts-
+klassifizierung entsprechen: 
+ Klasse 1: Querschnitte, für die eine plastische Berechnung einschließlich Momentenumlagerung 
+ausgeführt werden darf, vorausgesetzt, dass sie eine ausreichende Rotationskapazität besitzen; 
+ Klasse 2: Querschnitte, für die eine elastische Berechnung notwendig ist, jedoch kann der Vorteil des 
+plastischen Querschnittswiderstandes ausgenutzt werden; 
+ Klasse 3: Querschnitte, die für die Anwendung einer elastischen Berechnung und elastischer 
+Spannungsverteilung im Querschnitt bemessen sind, wobei in den Randfasern Fließen auftreten kann; 
+ Klasse 4: Querschnitte, für die lokales Beulen den Querschnittswiderstand vermindert, siehe Anhang A. 
+(4) Die Grenzabmaße von Spundbohlen für Querschnitte der Klassen 1, 2 und 3 dürfen der Tabelle 5-1 
+entnommen werden. Dabei ist eine mögliche Verminderung der Stahldicke infolge Korrosion zu 
+berücksichtigen. 
+ANMERKUNG Weitere Anleitungen für die Klassifizierung von Querschnitten sind in Anhang C enthalten. 
+(5) Ein Bauteil, das die Grenzen für Klasse 1, 2 oder 3 nicht erfüllt, sollte in Klasse 4 eingestuft werden. 
+(6)P Die Schnittgrößen in anderen Tragwerkskomponenten und den Verbindungen dürfen die Widerstände 
+dieser Elemente und Verbindungen nicht überschreiten. 
+34 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 37 =====
+Tabelle 5-1  Querschnittsklassifizierung 
+Klassifizierung Z-Profile U-Profile 
+Klasse 1  dieselben Grenzwerte wie für Klasse 2 
+ ein Rotationsnachweis ist durchzuführen 
+Klasse 2 45/ ftb 37/ ftb
+Klasse 3 66/ ftb 49/ ftb
+fy in N/mm² 240 270 320 355 390 430 
+y
+235
+f 0,99 0,93 0,86 0,81 0,78 0,74 
+Erläuterung: 
+b Flanschbreite, zwischen den Eckausrundungen, wenn das Verhältnis r/tf nicht größer als 5,0 ist, 
+andernfalls muss eine genauere Methode verwendet werden; 
+tf Flanschdicke bei Flanschen mit konstanter Dicke; 
+r Radius der Querschnittsmittellinie in der Ecke zwischen Flansch und Steg; 
+fy Streckgrenze. 
+ANMERKUNG Bei Klasse-1-Querschnitten ist nachzuweisen, dass die plastische Rotationskapazität des Querschnitts 
+nicht geringer ist als die wirklich erforderliche plastische Rotation im Bemessungsfall. Eine Anleitung für diesen Nachweis 
+(Rotationsnachweis) ist in Anhang C zu finden. 
+5.2.2 Spundwände bei Biegung und Querkraft 
+(1) Im Fall ohne Quer- und Normalkräfte gilt in der Regel für den Bemessungswert des einwirkenden 
+Biegemomentes MEd in jedem Querschnitt: 
+MEd Mc,Rd (5.1) 
+Dabei ist 
+MEd der Bemessungswert des Biegemomentes, rechnerisch bestimmt entsprechend dem relevanten 
+Fall nach EN 1997-1; 
+Mc,Rd der Bemessungswert des Momentenwiderstandes des Querschnitts. 
+(2) Der Bemessungswert des Momentenwiderstandes des Querschnitts Mc,Rd sollte wie folgt bestimmt 
+werden: 
+ Klasse-1- oder Klasse-2-Querschnitte: 
+Mc,Rd = B Wpl fy / M0 (5.2) 
+35 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 38 =====
+Klasse-3-Querschnitte: 
+Mc,Rd = B Wel fy / M0 (5.3) 
+ Klasse-4-Querschnitte: siehe Anhang A. 
+Dabei ist 
+Wel das elastische Widerstandsmoment für eine durchgängige Wand; 
+Wpl das plastische Widerstandsmoment für eine durchgängige Wand; 
+M0 der Teilsicherheitsfaktor nach 5.1.1 (4); 
+B der Faktor, der die mögliche Verminderung der Schubkraftübertragung in den Schlössern 
+berücksichtigt. Er hat die folgenden Werte: 
+B = 1,0 für Z-Bohlen und Dreifach-U-Bohlen; 
+B 1,0 für Einzel- und Doppelbohlen. 
+ANMERKUNG 1 Der Grad der Schubkraftübertragung in den Schlössern von U-Bohlen ist maßgebend beeinflusst von: 
+ dem Bodentyp, in welchen die Bohle eingebracht wurde; 
+ dem eingebrachten Bauteiltyp; 
+ der Anzahl der Auflagerebenen und deren Art des Anschlusses in der Wandebene; 
+ dem Einbringverfahren; 
+ der Behandlung der Baustellenfädelschlösser (geschmiert oder abschnittsweise verriegelt durch Verschweißung oder 
+durch einen Betonholm usw.); 
+ der auskragenden Wandhöhe (z. B. wenn die Wand in einem beträchtlichen Abstand über der höchsten oder unter der 
+niedrigsten Gurtung ungestützt ist). 
+ANMERKUNG 2 Die Werte von B für Einfach- und Doppel-U-Bohlen, die diese Einflussfaktoren berücksichtigen und 
+auf lokalen Bemessungserfahrungen beruhen, können im Nationalen Anhang angegeben werden. 
+(3) Die Spundwandstege sind in der Regel hinsichtlich des Schubkraftwiderstandes nachzuweisen. 
+(4) Für den Bemessungswert der Querkraft VEd sollte in jedem Querschnitt gelten: 
+VEd Vpl,Rd (5.4) 
+Dabei ist 
+Vpl,Rd Bemessungswert des plastischen Querkraftwiderstandes für einen einzelnen Steg, der durch 
+Vpl,Rd = 
+0M
+yV
+3
+fA
+ definiert ist; (5.5) 
+Av Schubfläche für einen einzelnen Steg, projiziert in die Richtung von VEd. 
+36 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 39 =====
+(5) Die projizierte Schubfläche Av darf für die einzelnen Stege eines U-Profils und eines Z-Profils wie folgt 
+angenommen werden, siehe Bild 5-1: 
+)( fwv thtA (5.6) 
+Dabei ist 
+h die Gesamthöhe; 
+tf die Flanschdicke; 
+tw die Stegdicke. Im Fall einer über die Steghöhe c veränderlichen Stegdicke tw,i sollte tw in 
+Gleichung (5.6) als Mindestwert von tw,i angenommen werden, wobei die Schlösser ausgenommen 
+werden sollten. 
+sin
+fthc sin2
+fthc
+a) Z-Bohle b) U- Bohle 
+Bild 5-1  Definition der Schubfläche 
+(6) Zusätzlich sollte der Schubbeulwiderstand des Stegs für Spundbohlen nachgewiesen werden wenn 
+c/tw > 72 . 
+(7) Der Stegbeulwiderstand sollte bestimmt werden mit: 
+0M
+bvwf
+b,Rd
+)( ftthV (5.7) 
+wobei fb,v die Schubbeulfestigkeit nach EN 1993-1-3, Tabelle 6-1 für ein unausgesteiftes Stegblech an der 
+Auflagerung ist. Dabei lautet die bezogene Schlankheit: 
+E
+f
+t
+c y
+w
+346,0 (5.8) 
+(8) Wenn der Bemessungswert der Querkraft VEd 50 % des plastischen Bemessungswertes des 
+Querkraftwiderstands Vpl,Rd nicht überschreitet, ist keine Abminderung des Bemessungswertes des 
+Momentenwiderstandes Mc,Rd notwendig. 
+37 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 40 =====
+(9) Ist VEd > 0,5 Vpl,Rd, sollte der Bemessungswert des Momentenwiderstands des Querschnittes auf MV,Rd
+abgemindert werden. Der abgeminderte Bemessungswert des plastischen Momentenwiderstandes lautet 
+dann: 
+0M
+y
+W
+2
+V
+plBV,Rd sin4
+f
+t
+AWM jedoch (5.9) c,RdV,Rd MM
+mit 
+ = (2 VEd / Vpl,Rd  1)2 (5.10) 
+Dabei ist 
+Av die Schubfläche nach (5.6); 
+tw die Stegdicke; 
+ der Stegwinkel nach Bild 5-1; 
+B der Faktor, bestimmt nach 5.2.2 (2). 
+ANMERKUNG Av und tw sind auf dieselbe Wandbreite wie Wpl bezogen. 
+(10) Wenn Stahlspundwände aus U-Bohlen zur Vergrößerung der Schubkraftübertragung in den Schlössern 
+durch Verschweißungen oder Verpressungen verbunden werden, sollte für die Verbindungen in den 
+Schlössern der Nachweis der Schubkraftübertragung erbracht werden. Dabei wird angenommen, dass nur in 
+den verbundenen Schlössern die Schubkraft übertragen wird. 
+ANMERKUNG Diese Annahme führt zu einer Bemessung der Verbindung auf der sicheren Seite. 
+(11) Der Nachweis von Stumpfnähten für die Übertragung von Schubkräften sollte nach EN 1993-1-8, 4.7 
+durchgeführt werden. 
+(12) Die Anordnung der Stumpfnähte ist gegebenenfalls unter Berücksichtigung der Korrosion nach 
+EN 1993-1-8, 4.3 zu gestalten. 
+(13) Bei abschnittsweisen Stumpfnähten sollte eine durchgängige Länge von mindestens l an jedem 
+Bohlenende verschweißt werden, um eine Überbeanspruchung beim Einbringen zu vermeiden. Zur 
+Bemessung von Schweißnähten wird auf EN 1993-1-8 verwiesen. 
+ANMERKUNG Der Wert l darf im Nationalen Anhang angegeben werden. Ein Wert von l = 500 mm wird empfohlen. 
+(14)P Es ist nachzuweisen, dass die Verpresspunkte von Schlössern ausreichend sind, um die auftretenden 
+Schlossschubkräfte zu übertragen. 
+(15) Wenn die Abstände von Einfach- oder Doppelverpresspunkten 0,7 m nicht überschreiten und die 
+Abstände von Dreifachverpresspunkten 1,0 m nicht überschreiten, darf für jeden Verpresspunkt angenommen 
+werden, dass eine gleichmäßige Schubkraft von VEd Rk / M0 übertragen wird, wobei Rk der charakteristische 
+Wert der Widerstandskraft eines Verpresspunktes ist, der durch Versuche nach 2.6 bestimmt wird. 
+ANMERKUNG Für die versuchsgestützte Bestimmung von Rk siehe EN 10248. 
+38 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 41 =====
+5.2.3 Spundwände mit Biegung, Quer- und Normalkraft 
+(1) Bei Kombination von Biegung und Druck ist es nicht notwendig, Knicken zu berücksichtigen, wenn gilt: 
+cr
+Ed
+N
+N 0,04 (5.11) 
+Dabei ist 
+NEd der Bemessungswert der Druckkraft; 
+Ncr die elastische kritische Last der Spundbohle, berechnet mit einem geeigneten Bodenmodell unter 
+Berücksichtigung reiner Druckkräfte in der Bohle. 
+(2) Alternativ kann Ncr angenommen werden als: 
+22
+Dcr /EIN (5.12) 
+Hierbei ist die Knicklänge, die für ein freies oder teilweise eingespanntes Erdlager nach Bild 5-2 oder für ein 
+eingespanntes Erdlager nach Bild 5-3 bestimmt wird, und D ein Abminderungsfaktor, siehe 6.4. 
+(3) Wenn das in (1) angegebene Kriterium nicht erfüllt ist, ist in der Regel der Knickwiderstand 
+nachzuweisen. 
+ANMERKUNG Dieser Nachweis kann nach dem in (4) bis (7) angegebenen Verfahren erfolgen. 
+(4) Wenn die Randbedingungen für Knicken mit unverschieblichen Stützungen durch Bauteile (Anker, 
+Erdauflager, Kopfholme usw.) bereitgestellt werden, kann der nachfolgende vereinfachte Knicknachweis 
+geführt werden: 
+ für Klasse-1-, Klasse-2- und Klasse-3-Querschnitte: 
+0,1)/(15,1)/( 1M0Mc,Rd
+Ed
+1M0Mpl,Rd
+Ed
+M
+M
+N
+N (5.13) 
+Dabei ist 
+Npl,Rd der Bemessungswert des plastischen Querschnittswiderstandes ( A fy/ M0); 
+Mc,Rd der Bemessungswert des Momentenwiderstandes des Querschnitts, siehe 5.2.2 (2); 
+M1 der Teilsicherheitsbeiwert nach 5.1.1 (4); 
+M0 der Teilsicherheitsbeiwert nach 5.1.1 (4); 
+ der Knickbeiwert nach EN 1993-1-1, 6.3.1.2, ermittelt mit Kurve d und der bezogenen 
+Schlankheit: 
+cr
+y
+N
+fA
+39 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 42 =====
+Dabei ist 
+Ncr die kritische elastische Last, die nach Gleichung (5.12) bestimmt werden kann; 
+A die Querschnittsfläche; 
+ für Klasse-4-Querschnitte: siehe Anhang A. 
+ANMERKUNG Die Knickkurve d enthält auch Rammimperfektionen bis 0,5 % von , was dem Stand der Technik 
+entspricht. 
+(5) Für den vereinfachten Knicknachweis kann die Knicklänge für unverschiebliche Lagerung nach 
+Absatz (7) wie folgt bestimmt werden: 
+ bei einem freien Erdauflager mit ausreichendem Haltevermögen nach Absatz (6) darf als der Abstand 
+zwischen dem Fuß und dem horizontalen Auflager (Gurtung, Anker) angenommen werden, siehe 
+Bild 5-2; 
+ bei einem eingespannten Erdauflager darf mit 70 % des Abstands zwischen dem Fuß und dem 
+horizontalem Auflager (Gurtung, Anker) angesetzt werden, siehe Bild 5-3. 
+(6) Es darf angenommen werden, dass ein freies Erdauflager ausreichendes Haltevermögen für den 
+vereinfachten Knicknachweis liefert, wenn der Fuß der Spundwand in felsigem Untergrund fixiert ist oder 
+wenn am Fuß der Spundwand eine zusätzliche horizontale Kraft F
+Q,Ed durch passiven Erddruck oder Reibung 
+nach Bild 5-4 aufgenommen werden kann. FQ,Ed ist gegeben durch: 
+01,0EdQ,Ed
+dNF (5.14) 
+Dabei ist d die maximale Relativverschiebung der Spundwand zwischen den Auflagern, berechnet nach 
+Theorie I. Ordnung. Wenn der Erdwiderstand ohne Reibung vollkommen ausgenutzt ist, kann die zusätzliche 
+Kraft FQ,Ed aufgenommen werden, indem eine zusätzliche Wandlänge h nach Bild 5-4 zur Verfügung gestellt 
+wird. 
+(7) Wenn die zusätzliche Verschiebung eines horizontalen Lagers (Anker, Gurtung) infolge einer 
+Auflagerlast von NEd/100 kleiner als /500 ist, darf angenommen werden, dass die Voraussetzung einer 
+unverschieblichen Lagerung für die Knickform erfüllt ist. 
+(8) Wenn das System keine ausreichende Einspannung liefert, sollte auf der Grundlage der Methoden in 
+EN 1993-1-1 eine genaue Knickberechnung durchgeführt werden. 
+40 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 43 =====
+ 
+ 
+ a) Verformungskurve infolge Knicken b) Vereinfachtes System 
+Bild 5-2  Mögliche Bestimmung der Knicklänge , freies Erdauflager 
+41 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 44 =====
+ 
+
+ a) Verformungskurve infolge Knicken b) Vereinfachtes System 
+Bild 5-3  Mögliche Bestimmung der Knicklänge , eingespanntes Erdauflager 
+Legende 
+eph horizontaler passiver Erddruck 
+A Reibungskraft 
+Bild 5-4  Bestimmung der zusätzlichen Horizontalkraft FQ,Ed
+42 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 45 =====
+(9) Bei Bauteilen, die einer Normalkraft ausgesetzt sind, sollte der Bemessungswert der Normalkraft NEd in 
+jedem Querschnitt Folgendes erfüllen: 
+NEd Npl,Rd (5.15) 
+wobei Npl,Rd der Bemessungswert des plastischen Querschnittswiderstandes ist, mit: 
+0Mypl,Rd /fAN (5.16) 
+(10) Die Auswirkung der Normalkraft auf den plastische Momentenwiderstand von Spundbohlen-
+querschnitten der Klassen 1, 2 und 3 darf vernachlässigt werden, wenn: 
+ bei Z-Bohlen der Klassen 1 und 2: 
+pl,Rd
+Ed
+N
+N 0,1 (5.17) 
+ bei U-Bohlen der Klassen 1 und 2: 
+pl,Rd
+Ed
+N
+N 0,25 (5.18) 
+ bei Klasse-3-Profilen: 
+pl,Rd
+Ed
+N
+N 0,1 (5.19) 
+(11) Wenn die Normalkraft die in Absatz (10) gegebenen Grenzwerte überschreitet, sollten bei Fehlen der 
+Querkraft folgende Kriterien erfüllt sein: 
+ Klasse-1- und Klasse-2-Querschnitte: 
+ bei Z-Bohlen: 
+MN,Rd = 1,11 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.20) 
+ bei U-Bohlen: 
+MN,Rd = 1,33 Mc,Rd (1  NEd / Npl,Rd) jedoch MN,Rd Mc,Rd (5.21) 
+ Klasse-3-Querschnitte: 
+MN,Rd = Mc,Rd (1  NEd / Npl,Rd) (5.22) 
+ Klasse-4-Querschnitte: siehe Anhang A. 
+Dabei ist 
+MN,Rd der reduzierte Bemessungswert des Momentenwiderstandes unter Berücksichtigung der 
+Normalkraft. 
+(12) Wenn die Normalkraft die in Absatz (10) gegebenen Grenzwerte überschreitet, sollte das gleichzeitige 
+Auftreten von Biegung, Normal- und Querkraft wie folgt berücksichtigt werden: 
+43 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 46 =====
+a) Wenn der Bemessungswert der Querkraft VEd 50 % des Bemessungswertes des plastischen 
+Querkraftwiderstandes Vpl,Rd nicht überschreitet, braucht keine Abminderung der Kombination von 
+Moment und Normalkraft nach dem Kriterium in Absatz (11) durchgeführt zu werden. 
+b) Ist VEd > 0,5 Vpl,Rd, sollte der Bemessungswert des Querschnittswiderstandes für die Kombination von 
+Moment und Normalkraft mit der abgeminderten Streckgrenze fy,red = (1  ) fy für die Schubfläche 
+ermittelt werden. Dabei gilt = (2 VEd / Vpl,Rd  1)2. 
+5.2.4 Lokale Auswirkungen von Wasserdrücken 
+(1) Im Fall von unterschiedlichen Wasserdrücken, die bei Z-Bohlen 5 m und bei U-Bohlen 20 m 
+Wassersäule überschreiten, sind in der Regel die Auswirkungen des Wasserdrucks auf die lokale 
+Plattenquerbiegung zu berücksichtigen, um den Gesamtbiegewiderstand zu bestimmen. 
+(2) Vereinfacht dürfen Z-Bohlen mit dem folgenden Verfahren nachgewiesen werden: 
+ wenn die unterschiedlichen Wasserdrücke mehr als 5 m betragen, sollte der Querschnittsnachweis an 
+der Stelle des maximalen Biegemomentes durchgeführt werden; 
+ die Auswirkung von unterschiedlichen Wasserdrücken kann durch eine reduzierte Streckgrenze ermittelt 
+werden: 
+fy,red = P fy
+ mit P nach Tabelle 5-2; 
+ zur Bestimmung von P nach Tabelle 5-2 ist der Wasserdruckunterschied an der Stelle des maximalen 
+Moments zu berücksichtigen. 
+Tabelle 5-2  Abminderungsfaktor P für Z-Bohlen infolge unterschiedlicher Wasserdrücke 
+w (b/tmin) = 20,0 ( b/tmin) = 30,0 ( b/tmin) = 40,0 ( b/tmin) = 50,0 
+5,0 1,00 1,00 1,00 1,00 
+10,0 0,99 0,97 0,95 0,87 
+15,0 0,98 0,96 0,92 0,76 
+20,0 0,98 0,94 0,88 0,60 
+Erläuterung: 
+b Flanschweite, aber b sollte nicht kleiner als 2/c angenommen werden, wobei c die Steglänge ist; 
+tmin der kleinere Wert von tf oder tw; 
+tf Flanschdicke; 
+tw Stegdicke; 
+w Wasserhöhenunterschied, in m; 
+y
+235
+f ; fy ist die Fließgrenze in N/mm². 
+ANMERKUNG 1 Wenn die Schlösser der Z-Bohle verschweißt sind, kann P = 1,0 angesetzt werden. 
+ANMERKUNG 2 Zwischenwerte können linear interpoliert werden. 
+44 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 47 =====
+5.2.5 Flachprofile 
+(1)P Die Schnittgrößen für den Festigkeitsnachweis von Flachbohlen in Zellenfangedämmen müssen mit 
+einem Modell bestimmt werden, das das Verhalten der Spundwand im Grenzzustand der Tragfähigkeit 
+beschreibt. 
+(2) Zu den auf die Füllung und Einwirkungen anzuwendenden Teilsicherheitsfaktoren wird auf EN 1997-1 
+und EN 1990 verwiesen. 
+(3) Das Modell für die Füllung sollte mit EN 1997-1 übereinstimmen. 
+(4) Das Modell für die Spundbohlen sollte mit EN 1993-1-1 übereinstimmen. 
+ANMERKUNG Es kann von Vorteil sein, für die Spundbohlen ein Rechenmodell mit großen Verformungen zu 
+verwenden. 
+(5) Es darf eine zweidimensionale Berechnung in der maßgebenden horizontalen Ebene durchgeführt 
+werden. 
+(6) Der Innendruck, der aus der Füllung herrührt oder über diese übertragen wird, sollte mit einem Wert, 
+der mindestens dem Erdruhedruck entspricht, ermittelt werden, siehe EN 1997-1. 
+(7) Der Zugkraftwiderstand Fts,Rd der Flachbohle sollte (anders als bei Verbindungsbohlen) als der kleinere 
+Wert aus dem Schloss- und dem Stegwiderstand angenommen werden: 
+Fts,Rd = R Rk,s / M0 jedoch Fts,Rd tw fy / M0 (5.23) 
+Dabei ist 
+fy die Streckgrenze; 
+Rk,s der charakteristischer Schlosswiderstand; 
+tw die Stegdicke; 
+R der Abminderungsfaktor des Schlosswiderstands. 
+ANMERKUNG Der Wert R kann im Nationalen Anhang angegeben werden. Der Wert R = 0,8 wird empfohlen. 
+(8) Der charakteristische Schlosswiderstand Rk,s hängt vom Schlossquerschnitt und der verwendeten 
+Stahlgüte ab. Der charakteristische Schlosswiderstand Rk,s sollte durch Versuche nach 2.6 und EN 10248 
+bestimmt werden. 
+(9) Für Flachbohlen sollte der Nachweis wie folgt geführt werden: 
+Ft,Ed Fts,Rd (5.24) 
+Dabei ist 
+Fts,Rd der Bemessungswert des Zugwiderstandes nach Gleichung (5.23); 
+Ft,Ed der Bemessungswert der Ringzugkraft. 
+(10) Wenn Bohlen verschiedener Größe im gleichen Wandsegment verwendet werden, ist in der Regel der 
+kleinste Zugkraftwiderstand im Nachweis anzusetzen. 
+45 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 48 =====
+(11) Der Schlossdrehwinkel (180° minus dem inneren Winkel zwischen zwei benachbarten Bohlen) ist in der 
+Regel auf den vom Hersteller angegebenen Maximalwert zu begrenzen. 
+(12) Bei geschweißten Verbindungsbohlen sollten Stahlgüten mit geeigneten Eigenschaften verwendet 
+werden. 
+(13) Bei der Bemessung von Verbindungsbohlen nach Bild 5-5 und Bild 5-6 sind in der Regel die 
+Spannungen infolge Plattenbiegung zu berücksichtigen. 
+Bild 5-5  Geschweißte Verbindungsbohle 
+Bild 5-6  Geschraubte T-Verbindung mit Unterlegplatte 
+(14) Wenn die Schweißung nach dem gegebenen Verfahren in EN 12063 ausgeführt wird, darf die 
+Verbindungsbohle wie folgt nachgewiesen werden: 
+ Ftm,Ed T Fts,Rd  (5.25) 
+Dabei ist 
+Fts,Rd der Bemessungswert des Zugwiderstandes der Bohle nach Gleichung (5.23); 
+ Ftm,Ed der Bemessungswert der Zugkraft in der Hauptzelle, gegeben durch: 
+ Ftm,Ed = pm,Ed rm  (5.26) 
+mit: 
+pm,Ed Bemessungswert des Innendrucks der Hauptzelle in der maßgebenden horizontalen 
+Ebene infolge Wasserdruck und Erdruhedruck; 
+46 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 49 =====
+rm Radius der Hauptzelle, siehe Bild 5-7; 
+T Abminderungsfaktor, der das Verhalten der geschweißten Verbindungsbohle im Grenzzustand 
+der Tragfähigkeit berücksichtigt und wie folgt berechnet wird: 
+ T = 0,9 (1,3  0,8 ra / rm) (1  0,3 tan k) (5.27) 
+Darin sind ra und rm die Radien des Verbindungsbogens und der Hauptzelle nach Bild 5-7, und 
+ k ist der charakteristische Wert des inneren Reibungswinkels des Füllmaterials. 
+ANMERKUNG 1 Der Faktor T berücksichtigt sowohl die Rotationskapazität (Duktilität) der Verbindungsbohle als auch 
+die Rotationsanforderung (bis zu 20°), gerechnet mit einem Modell, das das Verhalten eines Fangedammes im 
+Grenzzustand der Tragfähigkeit erfasst. 
+ANMERKUNG 2 Obwohl Gleichung (5.27) für Zellenfangedämme mit Verbindungsbögen in einer Flucht, siehe Bild 5-7, 
+entwickelt wurde, liefert sie auch für andere Anordnungen brauchbare Ergebnisse. Wenn genauerer Werte gefordert 
+werden, können diese aus vergleichbaren Erfahrungen oder durch Versuche in Kombination mit einem geeigneten 
+Bemessungsmodell in Übereinstimmung mit (1)P entwickelt werden. 
+Bild 5-7  Geometrie einer Kreiszelle und eines in der Flucht angeordneten Verbindungsbogens 
+(15) Bei einer 90°-Verbindungsbohle darf eine geschraubte T-Verbindung verwendet werden. 
+(16) Bei Verbindungsbohlen, die als geschraubte T-Verbindung nach Bild 5-6 ausgeführt sind, darf der 
+Nachweis unter Anwendung der folgenden Vorgehensweise durchgeführt werden. 
+(17) Die Schlosszugfestigkeit sollte nach Absatz (9) nachgewiesen werden. 
+(18) Die Verbindung sollte wie folgt nachgewiesen werden, siehe Bild 5-6: 
+ Nachweis des Scher- und Lochleibungswiderstands der Schrauben (1) nach EN 1993-1-8, 3.6, mit 
+Annahme einer gleichmäßig verteilten Zugkraft Fta,Ed; 
+ Nachweis der Schraubenabstände (1) nach EN 1993-1-8, 3.5; 
+47 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 50 =====
+Nachweis der Nettoquerschnittsfläche des Steges 1 und der benachbarten Schenkel des Winkels 3 nach 
+den Festlegungen in EN 1993-1-8, 6.2.5; 
+ Nachweis der Schrauben (2) auf Zugfestigkeit nach EN 1993-1-8, 3.11 unter Verwendung eines 
+T-Stummel-Modells nach EN 1993-1-8, 6.2.4 (Versagensart 3); 
+ Nachweis der hinteren Platte 4 und der benachbarten Schenkel des Winkels 3 nach EN 1993-1-8, 6.2.4 
+(Versagensarten 1 und 2). Um die Verwendung der in EN 1993-1-8, 6.2.4 angegebenen Versagensart zu 
+erlauben, sollte der Bohlensteg 2 (siehe Bild 5-6) wie der Flansch des Ersatz-T-Stummels mit 
+Versagensarten 1 und 2 behandelt werden; 
+ Nachweis des Bohlenstegs 2 für die Zugkraft Ftc,Ed gegen Fließen des Nettoquerschnitts. 
+(19) Andere Verbindungsbohlentypen dürfen entsprechend nachgewiesen werden. 
+5.3 Tragpfähle 
+5.3.1 Allgemeines 
+(1) Die Schnittgrößen von Pfählen sind in der Regel nach EN 1997-1 zu bestimmen, indem sowohl das 
+Gleichgewichtsbedingungen eingehalten werden als auch die Verträglichkeit beachtet wird. 
+(2) Tragfähigkeitsnachweise sind in der Regel sowohl für Bodenversagen für die einzelnen Pfähle und 
+Pfahlgruppen nach EN 1997 durchzuführen als auch für das Versagen der Pfähle und ihrer Anschlüsse an 
+das Tragwerk nach EN 1993-5, EN 1992 und EN 1994. 
+5.3.2 Bemessungsverfahren und -hinweise 
+(1) Für Pfähle, die durch Normal- und Querkräfte belastet werden, ist in der Regel der Bodenwiderstand 
+aus EN 1997-1 zu entnehmen. 
+(2) Die Pfahlschnittgrößen infolge Querbelastung sollten gleichzeitig mit den Normalkräften und den 
+angreifenden Momenten betrachtet werden. Diese dürfen durch Superposition einzelner 
+Berechnungsergebnisse bestimmt werden, in denen angenommen wird, dass der Boden in Kontakt mit den 
+einzelnen Pfahlabschnitten über deren Länge den einzelnen Einwirkungen Widerstand leistet. Alternativ darf 
+angenommen werden, dass die Normalkräfte, Biegemomente und quergerichteten Kräfte durch den 
+Widerstand des Bodens über die gesamte Pfahllänge aufgenommen werden, wenn der Boden fähig ist, die 
+Beanspruchung aus deren Kombination aufzunehmen. 
+(3) Die Bemessung eines einzelnen Pfahls sollte nach EN 1993-1-1, Abschnitt 5 durchgeführt werden. 
+(4) Außer bei negativer Mantelreibung, darf konservativ die Spannungsverteilung infolge Normalkräften am 
+Pfahlkopf für die Bestimmung der Schnittgrößen als konstant über die Pfahllänge angenommen werden. 
+(5) Eine Übertragbarkeit von Torsionsmomenten, die am Pfahlkopf eingeleitet werden, in den Boden sollte 
+nicht angesetzt werden, wenn keine besonderen Vorrichtungen dafür vorgesehen sind. Der Verlauf der 
+Torsionsmomente sollte als konstant über die Pfahllänge angenommen werden. 
+5.3.3 Stahlpfähle 
+(1) Querschnittsnachweise von Stahltragpfählen sind in der Regel nach EN 1993-1-1 zu führen. 
+(2) Zu Bodenbedingungen, bei denen Gesamtknicken der Pfähle betrachtet werden muss, darf auf 
+EN 1997, 7.8 zurückgegriffen werden. 
+(3) Wenn der Boden eine unzureichende seitliche Abstützung liefert, darf das Schlankheitskriterium für den 
+Knicknachweis als erfüllt angenommen werden, wenn N
+Ed / Ncr 0,10, wobei Ncr die kritische Last der 
+Normalkraft NEd ist. 
+48 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 51 =====
+(4) Wenn der Knicknachweis erforderlich ist, ist in der Regel EN 1993-1-1, Abschnitt 5 zu beachten. Die 
+nachfolgenden Effekte sollten berücksichtigt werden: 
+ zusätzlich zu den in EN 1993-1-1, 5.3 angegebenen Imperfektionen sollten zusätzliche Anfangs-
+imperfektionen (z. B. aus Anschlüssen oder der Einbringung) nach EN 12699 und EN 14199 
+berücksichtigt werden; 
+ seitliche Stützung durch den umgebenden Boden darf bei Verwendung geeigneter Modelle (z. B. p-y-
+Methode, Bettungsmodulverfahren) auf der Grundlage der Theorie II. Ordnung berücksichtigt werden. 
+(5) Die Knicklänge darf mit der folgenden Näherung abgeschätzt werden (siehe Bild 5-8): 
+Hklcr (5.28) 
+Der Wert k berücksichtigt die Verbindung zwischen dem Pfahlkopf und der Betondecke oder der 
+Stahlkonstruktion. 
+(6) Bei genauerer Bestimmung der Knicklänge, z. B. für Pfähle mit kleinem Durchmesser, sollte 5.3.3 (4) 
+beachtet werden. 
+(7)P Die Ausführung muss nach EN 12699 und EN 14199 erfolgen. 
+Legende 
+A Beton- oder Stahlkonstruktion 
+B Anschluss 
+C Wasser oder weicher Boden 
+D tragender Boden 
+l
+crit = k H mit k = 
+1,0 Anschluss B gegen Translationsbewegung gesichert, Rotationsbewegung 
+frei
+0,7 Anschluss B gegen Translations- und Rotationsbewegung gesichert 
+2,0 Anschluss B Translationsbewegung frei, gegen Rotationsbewegung 
+gesichert
+Bild 5-8  Vereinfachte Abschätzung der Knicklänge von Tragpfählen 
+49 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 52 =====
+5.3.4 Betongefüllte Tragpfähle 
+(1) Betongefüllte Stahlpfähle sind in der Regel nach EN 1994 zu entwerfen und zu bemessen. 
+(2) Querschnittsnachweise von betongefüllten Stahlpfählen sind in der Regel nach EN 1994-1 
+vorzunehmen. 
+(3) Für Knicknachweise sind in der Regel EN 1994-1-1, 5.3.3 und 6.7 zu beachten. 
+(4) Das Betonieren von Tragpfählen ist in der Regel nach EN 1536, EN 12699 und EN 14199 
+durchzuführen.
+5.4 Trägerpfahlwände 
+(1) Die Bemessung von Trägerpfahlwänden erfolgt in der Regel nach den Regeln für Spundwände. Die 
+besondere Geometrie der verwendeten Querschnitte ist zu berücksichtigen, siehe Bild 1-6, und lokale Effekte 
+infolge Erd- und Wasserdruck und infolge der Einleitung von Anker- und Gurtungskräften sind zu beachten. 
+(2) Zur Bestimmung des Querschnittswiderstandes darf konservativ eine elastische Berechnung des 
+Querschnittes zugrunde gelegt werden, vorausgesetzt, dass: 
+ das Beulen der Bleche nach EN 1993-1-5 geprüft wird; 
+ die mitwirkende Breite für breite Elemente berücksichtigt wird. 
+5.5 Kombinierte Wände 
+5.5.1 Allgemeines 
+(1) Nachfolgend werden die Regeln für den Grenzzustand der Tragfähigkeit für die folgenden Typen von 
+kombinierten Wänden angegeben, siehe Bild 1-5: 
+ kombinierte Rohrprofile und Spundwände; 
+ kombinierte Sonder-I-Querschnitte und Spundwände; 
+ kombinierte zusammengesetzte Querschnitte und Spundwände. 
+(2) Die Bemessung der Trag- und Füllelemente sollte die Funktion der Elemente berücksichtigen: 
+ die Tragelemente wirken als stützende Bauteile gegen Erd- und Wasserdruck und können als Tragpfahl 
+für vertikale Belastungen wirken; 
+ die Füllelemente schließen nur die Lücke zwischen den Tragelementen und leiten die Lasten aus Erd- 
+und Wasserdruck zu den Tragelementen ab. 
+(3) In den freien Schlössern zwischen Trag- und Füllelement kann keine Übertragung von Schubkräften in 
+Längsrichtung berücksichtigt werden. 
+(4) P In der Regel ist im Einzefall und in Abstimmung mit dem Auftraggeber festzulegen, ob Ramm-
+imperfektionen bei der Bemessung von kombinierten Wänden berücksichtigt werden müssen. Die 
+Bemessungswerte der Rammimperfektionen müssen als prozentualer Anteil der Länge der Tragelemente mit 
+Ansatz einer linearen Verteilung angegeben werden. 50 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 53 =====
+5.5.2 Füllelemente 
+(1) Spundbohlen, die als Füllelemente für kombinierte Wände verwendet werden, sollten der EN 10248 
+entsprechen. 
+(2)P Für die Bemessung der Füllelemente muss nachgewiesen werden, dass die Übertragung der 
+Schnittkräfte aus Erd- und Wasserdruck in die Tragelemente über die Anschlüsse möglich ist. 
+ANMERKUNG Es kann von Vorteil sein, die Gewölbewirkung im Boden zu berücksichtigen, die zu einer zusätzlichen 
+Belastung der Tragelemente und zu einer reduzierten Erddruckbelastung der Füllelemente führt. 
+(3) Der Nachweis nach Absatz (2)P darf unter Verwendung eines vereinfachten zweidimensionalen 
+Tragwerksmodells für das Füllelement erfolgen. Wenn nach 5.5.1 (4) Rammimperfektionen zu berücksichtigen 
+sind, sollten diese durch den Ansatz einer eingeprägten Verformung mit Annahme der Randbedingungen in 
+Bild 5-9, das eine Doppel-U-Bohle als Beispiel für ein Füllelement zeigt, berücksichtigt werden. 
+ANMERKUNG Es wird angenommen, dass die Rammimperfektionen, senkrecht zur Stützwandebene durch 
+Verdrehungen am Schloss aufgenommen werden (Rotationsspiel). 
+(Schlösser sind nicht berücksichtigt) 
+Bild 5-9  Vereinfachtes Modell für Füllelemente 
+(4) Für die Querschnittsnachweise mit vereinfachtem Tragwerksmodell darf eine plastische Berechnung mit 
+großen Verformungen angewendet werden. Wenn Bauteile des Tragwerksmodells unter Druckspannungen 
+stehen, sollte auf mögliche Instabilitäten, z. B. Durchschlagen, geachtet werden. 
+(5) Alternativ darf der Nachweis nach Absatz (2)P mit Versuchsergebnissen nach 2.6 durchgeführt werden. 
+ANMERKUNG Für die Versuchsauswertung ist EN 1990, Anhang D zu beachten. 
+(6) Der Versuchsaufbau sollte in der Lage sein, das Verhalten der Füllelemente nachzubilden. 
+(7) Für Spundwände, die als Füllelemente verwendet werden, dürfen weitere Nachweise entfallen, wenn 
+die nachfolgenden Bedingungen zutreffen: 
+ die Wanddicke der Spundwand ist 10 mm; 
+ der auf die Spundwand wirkende Druckunterschied ist 40 kN/m², entsprechend einer 
+Wasserspiegeldifferenz von 4 m; 
+51 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 54 =====
+der maximale lichte Abstand zwischen den Tragelementen ist 1,8 m bei U-Bohlen und 1,5 m bei 
+Z-Bohlen. 
+(8) Es kann sinnvoll sein, die Füllelemente gegenüber den Tragelementen kürzer auszulegen. Die Kürzung 
+der Füllelemente sollte nach EN 1997-1 überprüft werden. 
+ANMERKUNG 1 Bei gekürzten Füllelementen sollte bei unterschiedlichen Wasserständen die Gefahr des 
+hydraulischen Grundbruches oder der Unterspülung beachtet werden. 
+ANMERKUNG 2 Zu dem Ansatz des passiven Erddrucks, der auf die Tragelemente wirkt, sollte auf EN 1997-1 
+verwiesen werden. 
+5.5.3 Verbindungselemente 
+(1)P Die Verbindung zwischen Trag- und Füllelement muss so bemessen werden, dass die Übertragung der 
+Bemessungskräfte von den Füllelementen in die Tragelemente möglich ist. 
+(2) Dieser Nachweis darf mit Versuchsergebnissen nach 2.6 durchgeführt werden. 
+(3) Wenn der Nachweis rechnerisch erfolgt, ist in der Regel nachzuweisen, dass die Verbindungen in der 
+Lage sind, die Auflagerreaktionen nach 5.5.2 (3) zu übertragen. 
+(4) Beim Nachweis der Verbindung auf Plattenbiegung sollte Plastifizierung berücksichtigt werden. 
+5.5.4 Tragelemente 
+(1)P Die Schnittgrößen infolge Erd- und Wasserdruck müssen unter Berücksichtigung der Lasten auf die 
+Trag- und die Füllelemente und wo möglich zusätzlicher Lasten infolge Gewölbewirkung im Boden bestimmt 
+werden, siehe 5.5.2 (2)P. 
+(2) Bei der Berechnung sollte die Reduzierung der Gesamttragfähigkeit der Tragelemente infolge der 
+Lasteinleitung durch die Füllelemente über die Verbindungen berücksichtigt werden. Diese Anforderung darf 
+als erfüllt gelten, wenn unterstellt werden kann, dass der Erdruck infolge der Gewölbewirkung direkt auf die 
+Tragelemente wirkt und wenn auf die Füllelemente ein Wasserüberdruck von 
+h [m] wirkt. 
+ANMERKUNG Der Wert h darf im Nationalen Anhang angegeben werden. Der Wert von h = 5 m wird empfohlen. 
+(3) Wird keine genauere Methode verwendet, sollten für den Festigkeitsnachweis der Tragelemente die 
+nach 5.5.2 (3) ermittelten Auflagerkräfte der Füllelemente, die über die Verbindungen eingeleitet werden, 
+berücksichtigt werden. 
+(4) Der Gesamtwiderstand darf entweder durch Versuche nach 2.6 oder durch die Berechnung nach den 
+folgenden Abschnitten bestimmt werden. 
+(5) Der Nachweis von I-Profilen oder Rohren sollte nach EN 1993-1-1, Abschnitt 5 erfolgen. 
+(6) Die Auswirkung der Lasteinleitung aus den Verbindungen mit den Füllelementen auf den Widerstand 
+von I-Profil-Bohlen sollte nach EN 1993-1-1 berücksichtigt werden. 
+ANMERKUNG Das in D.1 beschriebene Verfahren darf zur Bestimmung des durch die Lasteinleitung aus den 
+Füllelementen reduzierten Gesamtwiderstandes der I-Profil-Bohlen, die als Tragelemente in kombinierten Spundwänden 
+eingesetzt werden, verwendet werden. 
+(7) Die Wirkung der Lasteinleitung aus den Füllelementen über die Verbindungen auf den Widerstand von 
+Rohren sollte nach EN 1993-1-1 und EN 1993-1-6 berücksichtigt werden. 
+ANMERKUNG Das in D.2 beschriebene Verfahren darf zur Bestimmung des durch die Lasteinleitung aus den 
+Füllelementen reduzierten Gesamtwiderstandes der Rohrprofile, die als Tragelemente in kombinierten Spundwänden 
+eingesetzt werden, verwendet werden. 
+52 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 55 =====
+(8) Für die Einleitung von konzentrierten Lasten aus Gurtungen, Ankern usw. ist das Rohrprofil in der Regel 
+entweder entsprechend nachzuweisen oder konstruktiv mit Steifen oder einer Füllung aus Beton oder 
+hochverdichtetem nicht-kohäsiven Material auszustatten, so dass lokales Beulen vermieden wird. 
+(9) Bei Rohrpfählen, die nach Absatz (8) verfüllt sind, darf der volle Querschnittswiderstand nach EN 1992, 
+EN 1993 und EN 1994 im verfüllten Bereich des Rohrs angesetzt werden. 
+(10) Zusammengesetzte Profile, die als Tragelemente verwendet werden, sind in der Regel nach 5.4 
+nachzuweisen, vorausgesetzt, dass die Wirkungen der Lasten aus den Füllelementen berücksichtigt werden. 
+(11) Wenn die vereinfachte Methode nach 5.4 (2) verwendet wird, sollten die lokalen Wirkungen der 
+Auflagerreaktionen, die nach 5.5.2 (3) bestimmt werden, berücksichtigt werden. 
+6 Grenzzustände der Gebrauchstauglichkeit 
+6.1 Grundlagen 
+(1) Die Bedeutungen von Setzungen und Erschütterungen und deren Grenzwerte sind in der Regel in 
+jedem Einzelfall unter Berücksichtigung der jeweiligen lokalen Bedingungen anzugeben. 
+(2) Die Einhaltung der Grenzwerte ist in der Regel durch einen Gebrauchstauglichkeitsnachweis zu 
+bestätigen. 
+(3) Auch wenn keine Grenzwerte vorgegeben sind, sollte nachgewiesen werden, dass bei Anwendung 
+eines Modells nach 2.5.3.3 (1) keine plastischen Verformungen auftreten. 
+(4) Die Bemessung von Spundbohlen oder Tragpfählen für den Grenzzustand der Gebrauchstauglichkeit 
+sollte für geeignete Bemessungssituationen nach EN 1997-1 unter Berücksichtigung einer möglichen 
+Stahldickenverminderung infolge Korrosion durchgeführt werden. 
+6.2 Verformungen von Stützwänden 
+(1) Für den Nachweis der Verformungen ist in der Regel EN 1997-1 zu beachten. 
+(2) Die Verschiebungen infolge Lagerbewegungen (z. B. an Gurtungen, Steifen, Ankern) sollten 
+berücksichtigt werden. 
+(3) Falls erforderlich, sollten zusätzlich zu den Verformungen infolge der Belastung Anfangs imperfektionen 
+infolge des Einbringens nach den in EN 12063 angegebenen Einbringtoleranzen berücksichtigt werden. 
+ANMERKUNG Dies kann notwendig sein, wenn bestimmte lichte Abstände in einer Baugrube gefordert sind. 
+(4) Wenn die Verformungen einer Spundwand nachgewiesen werden, sollte berücksichtigt werden, dass 
+die Qualität der Bauausführung und deren Überwachung einen erheblichen Einfluss auf das Ausmaß dieser 
+Verformungen haben. 
+6.3 Verformungen von Tragpfählen 
+(1) EN 1997-1 sollte bei der Bestimmung der Verformungen von Trag- und Mikropfählen berücksichtigt 
+werden. 
+6.4 Konstruktive Aspekte von Stahlspundwänden 
+(1) Bei der Verformungsberechnung von Stützwandkonstruktionen sollten die möglichen zusätzlichen 
+Verschiebungen infolge der lokalen Verformungen an den Anschlussstellen der Anker, Gurtungen und Steifen 
+berücksichtigt werden, wenn sie nicht vernachlässigbar sind. 
+53 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 56 =====
+ANMERKUNG Diese Effekte können relevant sein, wenn große horizontale Kräfte in unausgesteifte Verbundwände, 
+siehe Bild 1-7, durch ein H-Profil als Gurtung eingeleitet werden. 
+(2)P Die effektive Biegesteifigkeit muss berücksichtigt werden. 
+(3) Die effektive Biegesteifigkeit von Spundwänden aus U-Bohlen darf wie folgt bestimmt werden, wenn der 
+unterschiedliche Grad der Schubkraftübertragung in den Schlössern, die nahe der Wandachse liegen, 
+berücksichtigt werden soll: 
+)()( Deff EIEI (6.1) 
+Dabei ist 
+I der Flächenträgheitsmoment der durchgehenden Wand; 
+D der Faktor mit einem Wert 1,0, um die mögliche Verminderung infolge unvollständiger Schubkraft-
+übertragung im Schloss zu berücksichtigen. 
+ANMERKUNG 1 D hängt von vielen örtlichen Einflüssen ab, siehe Anmerkung 1 von 5.2.2 (2). Der Wert für D darf im 
+Nationalen Anhang angegeben werden. 
+ANMERKUNG 2 Die Übertragbarkeit von Schubkräften in den Schlössern von U-Bohlen kann durch durchgehende 
+oder abschnittsweise Verschweißung oder durch Verpressungen vergrößert werden. 
+(4)P Verpresspunkte müssen die Übertragung der erforderlichen Schlossschubkräfte ermöglichen. Der 
+repräsentative Wert der Schubkraft Rser, die von einem Verpresspunkt im Grenzzustand der 
+Gebrauchstauglichkeit übertragen wird, ist: Rser = 75 kN. Es muss durch Versuche nach EN 10248 
+nachgewiesen werden, dass die Verpresspunktsteifigkeit nicht geringer als 15 kN/mm ist. 
+ANMERKUNG 1 Diese Steifigkeitsanforderungen entsprechen einer Schubkraft von 75 kN bei einer Verschiebung von 
+5 mm.
+ANMERKUNG 2 Verpresspunkte können aus Einfach-, Doppel- oder Dreifachverpresspunkten bestehen. 
+(5) Wenn der Abstand von Einfach- oder Doppelverpresspunkten nicht größer ist als 0,7 m (siehe Bild 6-1) 
+und der Abstand von Dreifachverpresspunkten nicht größer ist als 1,0 m, kann für jeden Verpresspunkt 
+vorausgesetzt werden, dass gleich große Schubkräfte mit Vser Rser übertragen werden. 
+54 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 57 =====
+Legende 
+a 100 mm 
+b 700 mm 
+Bild 6-1  Abstände von Doppelverpresspunkten 
+7 Anker, Gurtungen, Aussteifungen und Anschlüsse 
+7.1 Allgemeines 
+(1)P Die Schnittgrößen in Ankern, Gurtungen, Aussteifungen und Anschlüssen müssen aus einer 
+Berechnung bestimmt werden, bei der die Boden-Tragwerks-Interaktion berücksichtigt wird. 
+(2) Wo notwendig, sollten auch die Schnittgrößen infolge Temperaturänderungen oder Sonderlasten 
+berücksichtigt werden, siehe 2.5.2 (4). 
+(3) Es dürfen vereinfachte Berechnungsmethoden verwendet werden, bei denen in geeigneter Weise die 
+Einwirkungen auf die verschiedenen Elemente des Tragwerks das Verhalten der einzelnen Bauteile 
+berücksichtigen. 
+(4) Zu den Teilsicherheitsfaktoren M2 und  M3,ser, die bei Anschlüssen anzusetzen sind, siehe 
+EN 1993-1-8. 
+ANMERKUNG Die Teilsicherheitsfaktoren Mb und Mt,ser dürfen im Nationalen Anhang festgelegt werden. Die Werte 
+M2 = 1,25 und Mt,ser = 1,10 werden empfohlen. 
+7.2 Verankerungen 
+7.2.1 Allgemeines 
+(1)P Die Nachweise der Querschnitte und der Verbindungen zwischen den Stahlteilen von passiven Ankern, 
+einschließlich Zugankern, Ankerköpfen oder Anschlüssen, müssen wie folgt durchgeführt werden. 
+ANMERKUNG Bemessungsvorschriften für die Stahlteile von vorgespannten Ankern sind in EN 1537 angegeben. 
+(2) Die Versuchsdurchführung und die Verwendung von Versuchsergebnissen zur Bestimmung des 
+Bemessungswiderstands von passiven Ankern und verpressten Ankern im Hinblick auf Ausreißversagen des 
+55 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 58 =====
+Ankers (Boden-Tragwerks-Verhalten) sollten mit den Grundsätzen in EN 1997-1 und EN 1537 
+übereinstimmen. 
+7.2.2 Grundlegende Bemessungsbestimmungen 
+(1)P Für die Ankerbemessung müssen die Grenzzustände der Tragfähigkeit und der Gebrauchstauglichkeit 
+beachtet werden. 
+(2) Die Ankerlänge ist in der Regel so festzulegen, dass ein Versagen des Bodens oder der Mantelreibung 
+vor dem Fließen des erforderlichen Mindestquerschnitts des Ankers verhindert wird. Die Ankerlänge sollte 
+nach EN 1997-1 berechnet werden. 
+(3) Für passive Anker sollte Stahl mit einer Streckgrenze von höchstens 800 N/mm² verwendet werden. 
+(4) Die Längssteifigkeit des Ankers sollte bei der Bemessung einer Stützwand berücksichtigt werden. Sie 
+darf aus vorausgegangenen Versuchen oder mit vergleichbaren Erfahrungswerten abgeschätzt werden. 
+ANMERKUNG Es kann nützlich sein, die Auswirkungen der Ankersteifigkeit auf die Bemessung der Stützwand durch 
+eine Maximum/Minimum-Betrachtung für die Steifigkeit einzugrenzen. 
+7.2.3 Nachweis im Grenzzustand der Tragfähigkeit 
+(1) Für den Zugwiderstand Ft,Rd der Anker ist in der Regel als der kleinere Wert von F tt,Rd und Ftg,Rd
+anzusetzen. 
+(2) Wenn nicht anders vorgegeben, sollte der Zugwiderstand im Ankergewinde wie folgt bestimmt werden: 
+2
+Sua
+ttt,Rd
+M
+AfkF (7.1) 
+Dabei ist 
+As die Zugspannungsfläche im Gewinde; 
+fua die Zugfestigkeit des Stahlankers; 
+M2 der Teilsicherheitsbeiwert nach 7.1 (4). 
+ANMERKUNG 1 kt darf im Nationalen Anhang angegeben sein. Der empfohlene Wert für k t ist 0,6. Dies 
+berücksichtigt Fälle, in denen eine mögliche Biegung im Anker infolge von Schnittgrößen nicht ausdrücklich zutage tritt. 
+Nur in Fällen, in denen die Stelle, an der der Ankerstab mit der Wand verbunden ist, so bemessen ist, dass 
+Biegemomente hier vermieden werden, kann als empfohlener Wert kt = 0,9 angesetzt werden.
+ANMERKUNG 2 Konservativ kann die Nettofläche im Gewindebereich anstelle der Zugspannungsfläche verwendet 
+werden. 
+(3) Der Zugwiderstand Ftg,Rd des Ankerschaftes sollte wie folgt bestimmt werden: 
+Ftg,Rd = Ag fy / M0 (7.2) 
+Dabei ist 
+Ag die Bruttoquerschnittsfläche des Ankerstabs. 
+gestrichener Text
+56 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 59 =====
+(4) Wenn die Anker mit einem toten Mann oder mit anderen Lastverteilungselementen am 
+Ankerende bestückt sind, sollte keine Haftung entlang des Ankerschaftes berücksichtigt werden. Die gesamte 
+Ankerkraft sollte durch das Ankerende übertragen werden. 
+(5) Der Bemessungswert des Zugkraftwiderstandes der Ankerplatte Bt,Rd sollte als der kleinste Wert 
+aus dem Zugwiderstand Ftg,Rd nach Absatz (3) und dem Abscherwiderstand des Ankerkopfs und der Mutter 
+Bp,Rd, aus EN 1993-1-8, Tabelle 3-4 bestimmt werden. 
+(6) Die Bemessung der Lastverteilungselemente sollte nach EN 1993-1-1 durchgeführt werden. 
+(7) Bei einem geneigten Anker sollte nachgewiesen werden, dass die Komponente der Ankerkraft, 
+die in Richtung der Längsachse der Spundbohle wirkt, sicher vom Anker auf die Gurtung oder auf den 
+Flansch der Spundbohle und in den Boden übertragen werden kann, siehe EN 1997-1.
+7.2.4 Gebrauchstauglichkeitsnachweis 
+(1)P Für Nachweise im Grenzzustand der Gebrauchstauglichkeit muss der Querschnitt des Ankers so 
+bemessen werden, dass unter den charakteristischen Lastkombinationen Verformungen infolge Fließens des 
+Zugankers vermieden werden. 
+(2) Der Grundsatz in Absatz (1)P darf als erfüllt angesehen werden, wenn 
+serMt,
+Sy
+sert,
+Af
+F (7.3) 
+Dabei ist 
+As die Zugspannungsfläche des Gewindestücks oder Bruttoquerschnittsfläche des Ankerstabes, 
+wobei der kleinere Wert gilt; 
+Ft,ser die Normalkraft im Anker unter charakteristischen Lasten; 
+Mt,ser der Teilsicherheitsfaktor nach 7.1 (4). 
+7.2.5 Anforderungen an die Dauerhaftigkeit 
+(1) Zu Anforderungen an die Dauerhaftigkeit von Ankern, die aus hochfestem Stahl entsprechend 3.7 (1) 
+hergestellt werden, sollte EN 1537 beachtet werden. 
+(2) Zu Ankern aus anderen Stahlgüten sollte 4.1 beachtet werden. 
+ANMERKUNG Biegung im Ankerstab am Anschluss zur Spundwand kann einen nachteiligen Effekt auf die 
+Dauerhaftigkeit der Stützwandkonstruktion haben. Dies sollte beachtet werden, insbesondere bei Stützwänden, deren 
+Stabilität ausschließlich auf den Verankerungen beruht.
+7.3 Gurtungen und Aussteifungen 
+(1) Die mechanischen Eigenschaften von Gurtungen und Aussteifungen, die in einer Tragwerksberechnung 
+verwendet werden, sollten mit den Konstruktionsdetails übereinstimmen. 
+(2) Für den Nachweis des Grenzzustandes der Tragfähigkeit, sollten die Schnittgrößen in den Gurtungen 
+und Aussteifungen für alle maßgeblichen Bemessungssituationen bestimmt werden. 
+ANMERKUNG Wenn eine Aussteifung versagt, ist es unwahrscheinlich, dass sich dies in Form einer allmählichen 
+Bewegung ankündigt oder dass genügend Zeit für Gegenmaßnahmen bleibt. Versagen eines Ankers könnte zu 
+progressivem Versagen führen. Da die Schadensfolgen bei diesem Versagen sehr schwerwiegend sein können, sind 
+konservative Annahmen für die Bemessung dieser Bauteile und ihrer Anschlüsse angemessen. 
+(3) Der Querschnittswiderstand der Bauteile sollte nach EN 1993-1-1 bestimmt werden. 
+57 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 60 =====
+7.4 Verbindungen 
+7.4.1 Allgemeines 
+(1) Der Widerstand von Anschlüssen ist in der Regel nach EN 1993-1-8 nachzuweisen. 
+7.4.2 Tragpfähle 
+(1) Wenn nicht anders festgelegt, darf die Verbindung zwischen dem Tragpfahl und dem Pfahlrost auf 
+verschiedenen (konservativen) Wegen für die Bemessung des Stahlpfahls und für die Bemessung des 
+Pfahlrosts berücksichtigt werden. 
+ANMERKUNG Der Grad der Einspannung des Pfahls in dem Pfahlrost oder der Gründung bestimmt die lokalen 
+Querkräfte und Momente, für die zu bemessen ist.
+(2) Die statischen Eigenschaften der Verbindungen zwischen den Pfahlköpfen und dem Pfahlrost (gelenkig 
+oder eingespannte Verbindung), welche von ihrer Steifigkeit und der konstruktiven Ausbildung abhängig sind, 
+sollten mit der gewählten Art der Lastübertragung übereinstimmen. Beispiele hierfür werden in Bild 7-1 und 
+Bild 7-2 gezeigt, siehe auch EN 1994. 
+ANMERKUNG Eine direkte Verbindung eines Stahltragwerks mit Tragpfählen ist ebenfalls möglich, siehe Bild 7-3. 
+(3) Bei der Bemessung der Verbindungen zwischen Pfahl und Pfahlrost sollten Dauerhaftigkeitsaspekte 
+berücksichtigt werden. 
+(4) Verbindungen zwischen zwei Pfahlabschnitten sollten nach EN 1993-1-8 bemessen werden. 
+ANMERKUNG Der Nationale Anhang darf Informationen zur Bemessung von Pfahlverbindungsstücken enthalten. 
+Legende 
+A Betonplatte / Pfahlrost 
+B Bewehrung 
+C Betonfüllung 
+D Stahlpfahl 
+Bild 7-1  Rohr- und Kastenpfähle, Beispiele für die Verbindung mit dem Pfahlrost 
+58 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 61 =====
+Legende 
+A Pfahlrost 
+B Bewehrung entsprechend der Art der Lastübertragung in die Betonplatte angeordnet 
+a) Druckbelastung 
+Legende 
+A Pfahlrost 
+B Bewehrung entsprechend der Art der Lastübertragung in die Betonplatte angeordnet 
+C am Pfahl angeschweißter Betonrippenstahl 
+D Kopfbolzendübel oder an Winkelprofil angeschweißt 
+b) Druck- und Zugbelastung 
+Bild 7-2  Beispiele für Tragpfahlanschlüsse an einen Betonträgerrost 
+59 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 62 =====
+Bild 7-3  Beispiel für eine Verbindung des Tragpfahls an eine 
+Stahlkonstruktion oberhalb der Gründung 
+7.4.3 Verankerung 
+(1)P Es ist der Widerstand der Spundbohle gegen die Einleitung der Ankerkraft in den Flansch mittels 
+Ankerplatte nachzuweisen, wenn der Ankeranschluss über eine Gurtung hinter der Wand (siehe Bild 7-4) oder 
+ohne Einsatz einer Gurtung (siehe Bild 7-5a) erfolgt. 
+ANMERKUNG Ein mögliches Verfahren für diesen Nachweis ist in Absatz (3) angegeben. 
+(2)P Es ist der Widerstand der Spundbohle gegen die Einleitung der Anker- oder Aussteifungskraft in den 
+Steg mittels Gurtung (siehe Bild 7-6) oder mittels Ankerplatte (siehe Bild 7-5b) nachzuweisen. 
+ANMERKUNG Ein mögliches Verfahren für diesen Nachweis ist in Absatz (4) und Absatz (5) angegeben. 
+Legende 
+A Aushub 
+B Anker 
+C Spundwand 
+D Boden 
+E Bolzen 
+Bild 7-4  Beispiel einer Verankerung mit Gurtung hinter der Spundwand 
+60 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 63 =====
+a) Anker befindet sich im 
+Wellental der Spundwand 
+b) Anker befindet sich am 
+Wellenberg der Spundwand 
+Legende 
+A Aushub 
+B Anker 
+C Boden 
+D Spundwand 
+Bild 7-5  Beispiel einer Verankerung ohne Gurtung 
+Legende 
+A Aushub 
+B Gurtung 
+C Anker 
+D Boden 
+E Spundwand 
+Bild 7-6  Beispiel einer Gurtung vor der Spundwand 
+(3) Der Widerstand der Spundwand mit einer Gurtung hinter der Wand (siehe Bild 7-4) oder ohne Gurtung 
+(siehe Bild 7-5a) gegen die Ankerkraft, die über die Flansche durch eine Ankerplatte eingeleitet wird, darf wie 
+folgt nachgewiesen werden: 
+a) Schubwiderstand des Flansches: 
+F
+Ed RVf,Rd (7.4) 
+ Dabei ist 
+FEd der Bemessungswert der lokalen quergerichteten Kraft, die in den Flansch eingeleitet wird; 
+RVf,Rd der Bemessungswert des Schubwiderstandes des Flansches unter der Ankerplatte definiert 
+durch 
+0M
+y
+faaVf,Rd
+3
+)(0,2
+f
+thbR (7.5) 
+Dabei ist 
+ba die Ankerplattenbreite; 
+61 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 64 =====
+fy die Streckgrenze der Spundwand; 
+ha die Ankerplattenlänge, jedoch 1,5 ba; 
+tf die Flanschdicke. 
+b) Zugwiderstand des Steges: 
+FEd Rtw,Rd (7.6) 
+Dabei ist 
+Rtw,Rd der Bemessungswert des Zugwiderstandes von 2 Stegen, definiert durch 
+Rtw,Rd = 2,0 ha tw fy / M0 (7.7) 
+mit 
+tw Stegdicke; 
+c) Breite der Ankerplatte: 
+ba 0,8 b (7.8) 
+Dabei ist 
+ba die Breite der Ankerplatte; 
+b die Flanschbreite, siehe Bild in Tabelle 5-1; 
+ANMERKUNG Es darf ein kleinerer Wert für b angesetzt werden, unter der Voraussetzung, dass die Flanschbiegung 
+überprüft wurde. 
+d) Dicke der Ankerplatte: 
+Die Ankerplatte sollte für Biegung nachgewiesen werden und eine Mindestdicke von 2 tf haben. 
+(4) Der Widerstand der Spundbohle gegen den Teil der Anker- oder Steifenkraft, der in die Stege über eine 
+Gurtung (siehe Bild 7-6) eingeleitet wird, darf wie folgt bestimmt werden: 
+Bei FEd 0,5 Rc,Rd: kein weiterer Nachweis ist notwendig. 
+Bei FEd > 0,5 Rc,Rd: lautet der Nachweis: 
+0,15,0
+c,Rd
+Ed
+c,Rd
+Ed
+M
+M
+R
+F (7.9) 
+Dabei ist 
+FEd Bemessungswert der lokalen quergerichteten Kraft je Steg, die über die Gurtung eingeleitet wird; 
+Rc,Rd der Widerstand gegen die lokale Kraft. Rc,Rd sollte als der kleinste Wert von Re,Rd und Rp,Rd für 
+jeden Steg angesetzt werden. Dieser lautet: 
+0My
+2
+f
+2
+wecSe,Rd /sin0,44 fttsseR (7.10) 
+oder 
+62 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 65 =====
+Rp,Rd = Rpo / M0 (7.11) 
+Dabei ist 
+= 0,147,006,0 (7.12) 
+=
+cr
+0p
+R
+R
+ (7.13) 
+crR = sin42,5
+3
+w
+c
+tE (7.14) 
+0pR =
+w
+fSwy
+sin2sin2 t
+btstf (7.15) 
+b die Flanschbreite, siehe Bild in Tabelle 5-1; 
+c die Steglänge, siehe Bild 5-1; 
+e die Exzentrizität der Lasteinleitung in den Steg, gegeben durch 
+sin22tan w
+0
+tr , jedoch nicht weniger als 5 mm; (7.16) 
+fy die Streckgrenze der Spundbohle; 
+r0 der Außenradius der Ecke zwischen Flansch und Steg; 
+sec = 1800,2 0r mit in Grad; (7.17) 
+ss die Länge der Lasteinleitungsbreite, bestimmt nach EN 1993-1-5, 6.3. Wenn die Gurtung aus zwei 
+Teilen besteht, z. B. bei zwei U-Profilen, ist sS die Summe beider Teile zuzüglich des kleinsten 
+Wertes aus dem Abstand zwischen den zwei Teilen oder der Länge sec; 
+tf die Flanschdicke; 
+tw die Stegdicke; 
+ der Stegwinkel, siehe Bild 5-1; 
+ =
+y
+235
+f mit fy in N/mm²; 
+MEd der Bemessungswert des Biegemoments an der Stelle der Anker- oder Aussteifungskraft; 
+Mc,Rd der Bemessungswert des Biegewiderstandes der Spundbohle nach 5.2.2 (2). 
+(5) Wenn eine Ankerplatte für die Einleitung einer Ankerkraft in die Stege nach Bild 7-5 b) verwendet wird, 
+darf der in Absatz (4) angegebene Nachweis verwendet werden, vorausgesetzt, die Ankerplattenbreite ist 
+größer als die Flanschbreite, um eine zusätzliche Exzentrizität e, wie in Absatz (4) angegeben, zu vermeiden. 
+63 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 66 =====
+8 Ausführung 
+8.1 Allgemeines 
+(1) Die Gründungsarbeiten sind in der Regel in der Weise durchzuführen, wie sie für das Projekt festgelegt 
+wurden. 
+(2) Wenn zwischen der Ausführung auf der Baustelle und dem, was für das Projekt festgelegt wurde, 
+Unterschiede auftreten, sollten die Auswirkungen untersucht und, falls notwendig, Änderungen vorgenommen 
+werden. 
+(3) Die Anforderungen an die Ausführung sollten EN 1997-1 entsprechen. 
+(4) Sonderanforderungen sollten im Einzelfall angegeben werden. 
+8.2 Stahlspundwände 
+(1)P Stahlspundwände müssen nach EN 12063 ausgeführt werden. 
+(2) Die Toleranzen für die Positionierung und die Vertikalität von Spundwänden sollten EN 12063, 
+Tabelle 2 entsprechen. 
+(3) Um die Nennwerte der Widerstands- und Steifigkeitseigenschaften der Spundwand sicherzustellen, 
+sollten die Einbringtoleranzen mit EN 12063, 8.5 übereinstimmen. 
+8.3 Tragpfähle 
+(1)P Die Ausführung von Tragpfählen muss EN 1997-1, Abschnitt 4 entsprechen. 
+(2)P Die Ausführung von Tragpfählen muss ebenfalls in Übereinstimmung mit EN 12699 und EN 14 199 
+stehen. 
+(3) Die Toleranzen für die Position und die lotrechte Lage von Tragpfählen sollten so sein, wie sie in 
+EN 12699 und EN 14199 angegeben sind. 
+8.4 Verankerungen 
+(1) Die Ausführung von Verankerungen sollte, soweit anwendbar, in Übereinstimmung mit EN 1997-1 und 
+EN 1537 stehen. 
+8.5 Gurtungen, Steifen und Verbindungen 
+(1)P Für die Ausführung von Tragwerkskomponenten muss EN 1090-2 beachtet werden. 
+64 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 67 =====
+Anhang A
+(normativ)
+Dünnwandige Stahlspundwände 
+A.1 Allgemeines 
+A.1.1 Geltungsbereich 
+(1) Dieser Anhang dient der Bestimmung des Widerstandes und der Steifigkeit von Stahlspundwänden mit 
+Berücksichtigung der Besonderheiten von kaltgeformten Stahlspundwänden, alle mit Querschnitten der 
+Klasse 4. Zur Bestimmung der Einwirkungen und Schnittgrößen wird auf Abschnitt 2 verwiesen. 
+(2) Zur Querschnittsklassifizierung wird in der Regel auf 5.2 verwiesen. 
+(3) Die Bemessungsmethoden werden in diesem Anhang für kaltgeformte Spund bohlen dargestellt, dürfen 
+aber auch für warmgewalzte Klasse-4-Profile angewendet werden. 
+(4) Die hier dargestellte Bemessung mit Berechnungen setzt voraus, dass die Querschnitte keine 
+Zwischensteifen haben. Diese Einschränkungen brauchen bei versuchsgestützter Bemessung nicht 
+berücksichtigt zu werden, siehe A.7. Bei Profilen, die aus Elementen mit Zwischensteifen bestehen und 
+rechnerisch bemessen werden sollen, sollte EN 1993-1-3 beachtet werden. 
+(5) Bei dünnwandigen Stahlspundbohlen führt die Bemessung mit Berechnungen nicht immer zu 
+wirtschaftlichen Lösungen. Es ist daher oft sinnvoll, Versuche zur Bestimmung der Widerstände 
+durchzuführen. 
+ANMERKUNG Anleitungen für die Versuchsdurchführung befinden sich in Anhang B. 
+(6) Einschränkungen für die Abmessungen oder den Werkstoff gelten nur für die rechnerische Bemessung. 
+A.1.2 Form von kaltgeformten Stahlspundbohlen 
+(1) Kaltgeformte Stahlspundbohlen sind Produkte, die aus warmgewalzten Blechen nach EN 10249 
+hergestellt werden. Sie bestehen aus geraden und abgerundeten Wandstücken. Über ihre gesamte Länge 
+haben sie innerhalb der spezifizierten Toleranzen einen konstanten Querschnitt und eine Dicke, die nicht 
+weniger als 2 mm beträgt. 
+(2) Diese Spundbohlen werden ausschließlich durch Kaltverformung (Walzen oder Abkanten) hergestellt. 
+(3) Die Querschnittsränder einer Spundbohle dürfen aus Schlössern bestehen. 
+(4) Einige Beispiele von kaltgeformten Bohlenquerschnitten, die in diesem Anhang behandelt werden, sind 
+in Tabelle A.1 angegeben. 
+A.1.3 Begriffe 
+(1) Es gelten die Begriffe für die Querschnittsabmessungen in EN 1993-1-3, 1.5.3. 
+(2) Für kaltgeformte Spundbohlen gilt die Achsenvereinbarung in 1.9. 
+65 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 68 =====
+Tabelle A.1  Beispiele für kaltgeformte Spundbohlen 
+ Querschnittsbeispiel 
+-Profil 
+Z-Profil 
+Kanaldielenprofil 
+A.2 Grundlagen für Entwurf, Bemessung und Konstruktion 
+A.2.1 Grenzzustände der Tragfähigkeit 
+(1) Soweit nicht anders in diesem Anhang geregelt, gelten die allgemeinen Regelungen in 2.2 und 5.1 auch 
+für kaltgeformte Profile. 
+A.2.2 Grenzzustände der Gebrauchstauglichkeit 
+(1) Soweit nicht anders in diesem Anhang geregelt, gelten die allgemeinen Regelungen in 2.3, 6.1 und 6.2 
+auch für kaltgeformte Profile. 
+(2) Für die Gebrauchstauglichkeitsnachweise ist EN 1993-1-3, Abschnitt 7 zu beachten. 
+A.3 Werkstoff- und Querschnittseigenschaften 
+A.3.1 Werkstoffeigenschaften 
+(1) Zu Werkstoffeigenschaften ist für diesen Anhang Abschnitt 3 zu beachten. 
+(2) Die Regelungen in diesem Anhang gelten für Klasse-4-Stahlspundbohlen nach EN 10248 und 
+EN 10249. 
+66 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 69 =====
+(3) Diese Regelungen dürfen auch auf andere Baustähle mit ähnlichen Festigkeits- und Zähigkeits-
+eigenschaften angewendet werden, wenn die folgenden Bedingungen erfüllt sind: 
+ der Stahl erfüllt die Anforderungen an die chemische Zusammensetzung, mechanischen Prüfungen und 
+andere Prüfverfahren nach Umfang und Methode wie in EN 10248 und EN 10249 beschrieben; 
+ es wird ein Mindestwert der Duktilität gefordert, ausgedrückt durch Grenzwerte von 
+fu / fy; 
+ die Bruchverformung bezogen auf die Länge 5,65 0A (wobei A0 die Ausgangsquerschnittsfläche 
+ist); 
+ die Grenzdehnung u, wobei sich u auf die Zugfestigkeit fu bezieht; 
+ANMERKUNG Die Grenzwerte dürfen im Nationalen Anhang angegeben sein. Folgende Werte werden empfohlen: 
+ fu / fy 1,1; 
+ die Bruchdehnung 15 %; 
+ u 15 y; 
+wobei sich y auf die Streckgrenze fy bezieht. 
+ die Stahllieferung erfolgt: 
+ entweder nach einer anderen anerkannten Norm für Baustahl, oder 
+ mit mechanischen Eigenschaften und einer chemischen Zusammensetzung, die einer der Stahlgüten 
+in Tabelle 3-1 oder Tabelle 3-2 entsprechen. 
+(4) Der Nennwert der Streckgrenze fyb des Grundmaterials in Tabelle 3-1 und Tabelle 3-2 sollte als 
+charakteristischer Wert für die Bemessung angesetzt werden. Bei anderen Stählen sollte der charakteristische 
+Wert anhand von Zugversuchen entsprechend EN 10002-1 bestimmt werden. 
+(5) Es darf angenommen werden, dass die Stahleigenschaften unter Druck dieselben sind wie unter Zug. 
+(6) Für die in diesem Anhang erfassten Stähle, sollten die weiteren Werkstoffeigenschaften für die 
+Bemessung wie folgt angenommen werden: 
+ Elastizitätsmodul: E = 210 000 N/mm 2; 
+ Schubmodul: G = E / [2(1 + )] N/mm2; 
+ Querkontraktionszahl: = 0,3; 
+ Temperaturausdehnungskoeffizient: = 12 × 10 6 1/K; 
+ Dichte: = 7 850 kg/m 3. 
+(7) Die Verfestigung infolge Kaltverformung darf anhand von Versuchen nach A.7 berücksichtigt werden. 
+(8) Wenn in diesem Anhang oder in der EN 1993-1-3 die Streckgrenze mit dem Symbol fy bezeichnet wird, 
+ist entweder die Streckgrenze des Grundwerkstoffes fyb nach Tabelle 3-2 oder die Streckgrenze nach 
+Tabelle 3-1 zu verwenden. 
+ANMERKUNG Hier besteht ein Unterschied zu den in EN 1993-1-3 verwendeten Vereinbarungen. 
+67 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 70 =====
+(9) Die Regelungen für den rechnerischen Nachweis in diesem Anhang sind nur anwendbar, wenn die 
+Nennwerte der Erzeugungsdicke in den folgenden Grenzen liegen: 
+2,0 mm t 15,0 mm. 
+(10) Für dickere oder dünnere Klasse-4-Querschnitte von Spundwänden sollte die Tragfähigkeit nach A.7 
+Versuchsgestützte Bemessung bestimmt werden. 
+A.3.2 Querschnittseigenschaften 
+(1) Querschnittseigenschaften sollten, unter gebührender Berücksichtigung der Empfindlichkeit des 
+Gesamtquerschnittes gegenüber Näherungsberechnungen, siehe EN 1993-1-3, 5.1, und deren Einfluss auf 
+die vorhergesagte Festigkeit von Bauteilen, berechnet werden. 
+(2) Die Effekte des lokalen Beulens sollten durch die Verwendung von effektiven Querschnittswerten nach 
+A.4 berücksichtigt werden 
+(3) Die Eigenschaften des Bruttoquerschnitts sollten mit den angegebenen Nennabmessungen bestimmt 
+werden. Bei der Berechnung der Bruttoquerschnittseigenschaften brauchen kleine Löcher nicht angerechnet 
+zu werden, große Öffnungen sollten jedoch berücksichtigt werden. 
+(4) Die Nettofläche eines Bohlenquerschnittes oder eines Teilquerschnittes sollte aus dem 
+Bruttoquerschnitt durch Abzug aller Löcher und Öffnungen berechnet werden. 
+(5) Der Einfluss von ausgerundeten Ecken auf die Querschnittseigenschaften sollte nach EN 1993-1-3, 
+5.1(4) berücksichtigt werden. 
+ANMERKUNG Ein Beispiel für einen idealisierten Spundbohlenquerschnitt mit ausgerundeten Ecken ist in Bild A.1 
+angegeben. 
+(6) Für den rechnerischen Nachweis sollte das Breiten-zu-Dicken-Verhältnis die Werte der Tabelle A.2 
+nicht überschreiten. 
+(7) Die Verwendung von Breiten-zu-Dicken-Verhältnissen, die diese Werte überschreiten, ist nicht 
+ausgeschlossen. Dann sollten jedoch die Tragfähigkeit der Bohle und ihr Gebrachstauglichkeitsverhalten 
+durch Versuche nach A.7 nachgewiesen werden. 
+Bild A.1  Beispiel eines idealisierten Querschnitts 
+68 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 71 =====
+Tabelle A.2  Maximale Breiten-zu-Dicken-Verhältnisse; Modellierung des statischen Verhaltens 
+45° 90° 
+c/t 200 
+A.4 Lokales Beulen 
+(1) Wenn nicht anders in diesem Anhang geregelt, sollten die Effekte des lokalen Beulens auf den 
+Widerstand und die Steifigkeit von Klasse-4-Stahlspundbohlenquerschnitten nach EN 1993-1-3, 5.5 
+berücksichtigt werden. 
+(2) Unausgesteifte flache Elemente von Spundbohlenquerschnitten werden in EN 1993 1-3, 5.5.2 
+behandelt. 
+(3) Flache Elemente mit Schlössern, die als Eckaussteifung wirken, sollten nach EN 1993-1-3, 5.5.3.2 
+berücksichtigt werden. 
+ANMERKUNG Bild A.2 zeigt ein Beispiel für die Idealisierung der Schlossgeometrie, die als Eckaussteifung wirkt. 
+69 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 72 =====
+Bild A.2  Schloss, das als Eckaussteifung betrachtet wird 
+(4) Flache druckbeanspruchte Elemente mit Schlössern, die als Eckaussteifung wirken, sollten nach dem 
+Grundsatz in EN 1993-1-3, 5.5.3.1 (1) bemessen werden. 
+(5) Die Federsteifigkeit des Schlosses, das als Eckaussteifung wirkt, sollte nach EN 1993-1-3, Gleichung 
+(5.10) bestimmt werden. 
+(6) EN 1993-1-3, Gleichung (5.9) darf für Spundbohlen, nämlich für Z-Bohlen nach Bild A.3 und Bild A.4, 
+angewendet werden, indem für die Plattensteifigkeit ( E t³) / 12 / (1  2) angesetzt wird. Die Steifigkeit der 
+Drehfeder, die den Steg abbildet, siehe Bild A.4, darf bestimmt werden mit: 
+EIw = ½ × 1 × 1 × sw (A.1) 
+c
+EIC w21 (A.2) 
+)1(12 2
+3
+w
+tI (A.3) 
+Das tatsächliche Biegemoment, das in der Drehfeder infolge der Einheitslast wirkt, ist u × bp und die 
+dazugehörige Verdrehung ist: 
+w
+pp
+2EI
+cbu
+C
+bu
+ (A.4) 
+Somit lautet EN 1993-1-3, Gleichung (5.10): 
+)23(
+)1(2
+p3
+22
+p bc
+tE
+bu
+ (A.5) 
+70 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 73 =====
+Bild A.3  Bestimmung der Federsteifigkeit des Flansches 
+Bild A.4  Bestimmung der Federsteifigkeit des Steges 
+A.5 Querschnittswiderstand 
+A.5.1 Allgemeines 
+(1)P Die Bemessungswerte der Schnittgrößen in jedem Querschnitt dürfen den Bemessungswert des 
+zugehörigen Widerstandes nicht überschreiten. 
+(2) Der Bemessungswert des Widerstandes des Querschnitts sollte entweder mit den in diesem Anhang 
+beschriebenen Berechnungsmethoden, oder durch versuchsgestützte Bemessung nach A.7 bestimmt 
+werden. 
+(3) Die Regelungen in A.5 sollten nur bei einachsiger Biegung mit M
+z = 0 verwendet werden. 
+(4) Es darf angenommen werden, dass eine der Hauptachsen der Spundbohle parallel zur Systemachse 
+der Stützwand verläuft. 
+(5) Beim rechnerischen Nachweis sollte der Querschnittswiderstand nachgewiesen werden für: 
+ das Biegemoment unter Berücksichtigung der lokalen Querbiegung; 
+ lokale quer einwirkende Kräfte; 
+ die Kombination von Biegemoment und Querkraft; 
+71 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 74 =====
+die Kombination von Biegemoment und Normalkraft; 
+ die Kombination von Biegemoment und lokaler quer einwirkender Kraft. 
+(6) Für alle diese Querschnittswiderstände darf die versuchsgestützte Bemessung anstatt des 
+rechnerischen Nachweises angewendet werden. 
+ANMERKUNG Die versuchsgestützte Bemessung ist besonders vorteilhaft bei Querschnitten mit relativ hohem bp/t-
+Verhältnis, zum Beispiel in Verbindung mit unelastischem Verhalten oder Stegkrüppeln. 
+(7) Beim rechnerischen Nachweis sollte lokales Beulen anhand von effektiven Querschnittswerten nach A.4 
+berücksichtigt werden. 
+(8) Die in diesem Abschnitt gegebenen Regelungen gehen nicht auf globales Stabilitätsversagen von 
+Spundbohlen ein. Für Spundbohlen, bei denen Stabilitätsversagen infolge von Druckkräften auftreten kann, 
+wird in der Regel auf EN 1993-1-3, 6.2 verwiesen. 
+(9) Die in 5.2.3 (1) angegebenen Kriterien sollten eingehalten werden. Größere Normalkräfte, die zu 
+Gesamtknicken führen können, sollten bei Klasse-4-Querschnitten vermieden werden. 
+(10) Gurtungen sollten vor oder hinter der Spundwand verwendet werden, um Kräfte von Ankern oder 
+Steifen (siehe Bild A.5a)) mit einer Umverteilung der Kräfte einzuleiten. Wenn Ankerplatten verwendet 
+werden, um die Last aus einem Zuganker direkt in die Spundbohle nach Bild A.5b) einzuleiten, sollten 
+Versuche nach 2.6 durchgeführt werden, wenn die Dicke der Spundwandprofile 
+ 6 mm ist. 
+(11) Bei iterativen Berechnungen sollte eine genügende Anzahl von Iterationen durchgeführt werden, um die 
+erforderliche Genauigkeit zu erreichen. 
+ a) mit Gurtung b) mit Ankerplatte 
+Bild A.5  Einleitung von Ankerkräften 
+A.5.2 Biegemoment 
+(1) Wenn nicht anders in diesem Anhang geregelt, sollte der Momentenwiderstand von Klasse-4-
+Querschnitten nach EN 1993-1-3, 6.1.4 bestimmt werden. 
+(2) Die Einschränkung der mitwirkenden Breiten zur Berücksichtigung der Schubverzerrung darf bei 
+Stahlspundwandbohlen vernachlässigt werden. 
+(3) Bei Stützwänden aus Klasse-4-Querschnitten sollte keine plastische Momentenumlagerung angesetzt 
+werden. 
+(4) Wenn der Momentenwiderstand des Profils bei positiven und negativen Biegemomenten unterschiedlich 
+ist, sollte dies bei der Bemessung berücksichtigt werden. 
+72 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 75 =====
+A.5.3 Querkräfte 
+(1) Wenn nicht anders in diesem Anhang geregelt, sollte der Querkraftwiderstand des Steges nach 
+EN 1993-1-3, 6.1.5 bestimmt werden. 
+(2) Die Schubbeulfestigkeit fbv sollte für Stege ohne Aussteifung am Auflager mit EN 1993-1-3, Tabelle 6-1 
+bestimmt werden. 
+A.5.4 Lokale Einleitung quergerichteter Kräfte 
+A.5.4.1 Allgemeines 
+(1) Wenn sich die Gurtung auf der Aushubseite, siehe Bild 7-6, befindet, sollte der Nachweis nach A.5.4.2 
+durchgeführt werden. 
+(2) Wenn sich die Gurtung auf der Landseite, siehe Bild 7-4, befindet, sollte der Nachweis nach A.5.4.3 
+durchgeführt werden. 
+A.5.4.2 Stege mit quergerichteten Druckkräften 
+(1) Um Stauchen, Krüppeln oder Beulen des Steges infolge der Auflagerreaktionen aus der Gurtung zu 
+vermeiden, sollte für die quergerichtete Kraft FEd gelten: 
+FEd Rw,Rd
+Dabei ist 
+Rw,Rd der Widerstand des Steges gegen lokale quergerichtete Kräfte. 
+(2) Wenn nicht anders in diesem Anhang geregelt, sollte für einen unausgesteiften Steg der Widerstand 
+Rw,Rd gegen lokal quergerichtete Kräfte aus EN 1993-1-3, 6.1.7.3 entnommen werden. 
+ANMERKUNG (2) gilt auch für Z-Bohlen, indem eine Doppelbohle aus zwei Z-Bohlen betrachtet wird. 
+(3) Für Gurtungen, die als Auflager wirken, gilt: 
+ der Wert der effektiven Auflagerlänge la in EN 1993-1-3, Gleichung (6.18) sollte nach EN 1993-1-3, 
+6.1.7.3 (4) bestimmt werden; 
+ der Wert des Koeffizienten in EN 1993-1-3, Gleichung (6.18) sollte wie folgt angenommen werden: 
+ für Kategorie 1: = 0,075; 
+ für Kategorie 2: = 0,15. 
+ANMERKUNG Die Kategorie 1 gilt, wenn der Abstand zwischen Gurtung und dem Bohlenende 1,5 hw ist, wobei hw
+die Höhe des Profils ist. Sonst gilt Kategorie 2, siehe EN 1993-1-3, Bild 6-9. 
+A.5.4.3 Stege mit quergerichteten Zugkräften 
+(1) Für Stege mit quergerichteten Zugkräften sollte der Nachweis nach 7.4.3 (3) geführt werden. 
+73 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 76 =====
+A.5.5 Kombination aus Querkraft und Biegemoment 
+(1) Für die Kombinationen aus Querkraft und Biegemoment sollte der Nachweis nach EN 1993-1-3, 
+Gleichung (6.27) durchgeführt werden. 
+A.5.6 Kombination aus Biegemoment und lokalen quergerichteten Kräften 
+(1) Für die Kombination von Biegemoment und Lasteinleitung für lokale quergerichtete Kräfte sollte der 
+Nachweis nach EN 1993-1-3, 6.1.11 durchgeführt werden. 
+A.5.7 Kombination aus Biegemoment und Normalkraft 
+(1) Die Kombination von Biegemoment und Zugkraft sollte ohne Berücksichtigung der Biegung um die 
+z-z-Achse nach EN 1993-1-3, 6.1.8 nachgewiesen werden. 
+(2) Der Nachweis für die Kombination von Biegemoment und Druckkraft sollte ohne Berücksichtigung der 
+Biegung um die z-z-Achse nach EN 1993-1-3, 6.1.9 durchgeführt werden. 
+A.5.8 Lokale Querbiegung 
+(1) Bei Wasserdruckbelastung, die 1 m Wasserspiegelunterschied überschreitet, sind in der Regel die 
+Effekte des Wasserdrucks auf die Plattenquerbiegung bei Ermittlung des globalen Biegewiderstand zu 
+berücksichtigen. 
+(2) Vereinfachend kann dieser Nachweis mit dem folgenden Verfahren durchgeführt werden: 
+ die Querschnittsnachweise brauchen nur an den Stellen mit dem maximalen Moment durchgeführt zu 
+werden, bei denen die Wasserdruckbelastung mehr als 1 m beträgt; 
+ die Effekte der Wasserdruckbelastung sollten durch eine reduzierte Plattendicke tred = P t mit P nach 
+Tabelle A.3 berücksichtigt werden; 
+ bei der Bestimmung von P nach Tabelle A-3 sollte die wirkende Wasserdruckbelastung an den Stellen 
+des maximalen Momentes berücksichtigt werden. 
+Tabelle A.3  Abminderungsfaktor P für Plattendicken bei Wasserdruckbelastung 
+w (b/tmin) = 40,0 ( b/tmin) = 60,0 ( b/tmin) = 80,0 ( b/tmin) = 100,0 
+1,0 0,99 0,98 0,96 0,94 
+2,5 0,98 0,94 0,88 0,78 
+5,0 0,95 0,86 0,67 0,00 
+7,5 0,92 0,75 0,00 0,00 
+10,0 0,88 0,58 0,00 0,00 
+Erläuterung: 
+b Flanschbreite, jedoch sollte b nicht kleiner angesetzt werden als 2/c , wobei c die Steglänge ist; 
+tmin kleinster Wert der Dicken von Flansch oder Steg; 
+w Höhe des Wasserdruckunterschieds in m; 
+ = 
+y
+235
+f , mit fy in N/mm² 
+ANMERKUNG Diese Werte gelten für Z-Bohlen und sind konservativ für - and U-Bohlen anwendbar. Eine Erhöhung 
+von P ist möglich (z. B. wenn die Schlösser verschweißt sind), jedoch sind dann zusätzliche Untersuchungen 
+notwendig. 
+74 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 77 =====
+A.6 Rechnerischer Nachweis 
+(1) Das folgende Verfahren darf für die Bemessung von Stützwänden aus Spundbohlen mit Klasse-4-
+Querschnitten angewendet werden. 
+(2) Die Schnittgrößen in der Bohle im Grenzzustand der Tragfähigkeit dürfen unter Verwendung eines 
+elastischen Balkenmodells und eines geeigneten Modells für den Boden nach EN 1997-1 bestimmt werden. 
+(3) Falls erforderlich, sollten Schätzwerte als Eingangsdaten für das Balkenmodell gewählt werden. 
+(4) Bei Druckkräften sollte nachgewiesen werden, ob Knicken vernachlässigt werden kann. 
+(5) Um einen rechnerischen Nachweis möglich zu machen, sollte vorab nachgewiesen werden, dass die 
+dafür notwendigen Kriterien nach diesem Anhang von der geplanten Stahlspundbohle erfüllt werden. 
+(6) Der gewählte Bohlenquerschnitt sollte unter Verwendung von Querschnittswiderständen nach 
+Herstellerangaben nach A.5 nachgewiesen werden, falls erforderlich mit Berücksichtigung der Effekte aus 
+Korrosion. 
+ANMERKUNG Die Querschnittswiderstände, die vom Hersteller unter Berücksichtigung der Stahlgüte und einer 
+reduzierten Dicke infolge Korrosion angegeben werden sollten, sind: Mc,Rk, NRk, Vb,Rk, Rw,Rk. 
+(7) Falls erforderlich, sollte die effektive Steifigkeit des Querschnitts im Grenzzustand der Tragfähigkeit mit 
+dem Balkenmodell iterativ bestimmt werden. 
+ANMERKUNG Die Steifigkeitsdaten des Querschnitts im Grenzzustand der Tragfähigkeit dürfen durch den Hersteller in 
+Querschnittswerttabellen bereitgestellt werden. 
+(8) Wenn Gebrauchstauglichkeitsnachweise gefordert sind, darf ein elastisches Balkenmodell kombiniert 
+mit einem passenden Bodenmodell in Übereinstimmung mit EN 1997-1 verwendet werden. 
+(9) Zur Bestimmung der Querschnittssteifigkeitsdaten im Grenzzustand der Gebrauchstauglichkeit wird auf 
+EN 1993-1-3, 7.1 verwiesen 
+A.7 Versuchsgestützte Bemessung 
+A.7.1 Grundlagen 
+(1) Das folgende Verfahren sollte verwendet werden, um die Grundsätze für die versuchsgestützte 
+Bemessung nach EN 1990, Abschnitt 5 auf die speziellen Anforderungen von kaltgeformten Stahlspund-
+bohlen anzuwenden. 
+(2) Obwohl die nachfolgenden Regelungen für kaltgeformte Profile entwickelt wurden, dürfen sie auch für 
+warmgewalzte Profile angewendet werden. 
+(3) Versuche dürfen unter den nachfolgenden Umständen durchgeführt werden: 
+a) wenn die Eigenschaften des Stahls unbekannt sind; 
+b) falls die tatsächlichen Eigenschaften des kaltgeformten Profils berücksichtigt werden sollen; 
+c) wenn ausreichende analytische Verfahren zur rechnerischen Bemessung eines Spundbohlenprofils nicht 
+zur Verfügung stehen; 
+d) wenn realistische Daten für die Bemessung nicht anders beschafft werden können; 
+e) wenn das Verhalten einer bestehenden Konstruktion überprüft werden muss; 
+75 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 78 =====
+f) wenn eine Serie von ähnlichen Konstruktionen oder Komponenten auf der Grundlage eines Prototyps 
+gebaut werden soll; 
+g) wenn die Übereinstimmungsbestätigung für die Herstellung gefordert ist; 
+h) zur Bestätigung der Gültigkeit und Eignung eines Berechnungsverfahrens; 
+i) zur Erstellung von Tabellen für die Widerstände auf der Grundlage von Versuchen oder der Kombination 
+von Versuchen und Berechnungen; 
+j) wenn Erfahrungsbeiwerte berücksichtigt werden sollen, die in den Berechnungsmodellen nicht 
+vorgesehen sind, aber das Verhalten der Konstruktion verändern. 
+(4) Versuche als Grundlage für Tabellen für die Tragfähigkeit sollten nach A.7.3 ausgeführt werden. 
+ANMERKUNG Informationen zu Verfahren mit dünnwandigen Stahlspundwänden sind in Anhang B zu finden. 
+(5) Zugversuche für Stahl sollten nach EN 10002-1 durchgeführt werden. Versuche an anderen 
+Stahleigenschaften sollten in Übereinstimmung mit den entsprechenden Europäischen Normen durchgeführt 
+werden. 
+A.7.2 Bedingungen 
+(1) Falls nicht anders in diesem Anhang geregelt, sollten die in EN 1993-1-3, A.3.1 angegebenen 
+Regelungen angewendet werden. 
+(2) Bis zum Erreichen der Gebrauchslast darf beim Versuch entlastet und wiederbelastet werden. Zu 
+diesem Zweck kann die Gebrauchslast mit 30 % der Grenztragfähigkeit abgeschätzt werden. Oberhalb der 
+Gebrauchslast sollte die Last in jedem Schritt konstant gehalten werden, bis die zeitabhängige Verformung 
+infolge plastischen Verhaltens auf vernachlässigbare Werte abgeklungen ist. 
+A.7.3 Querschnittswerte auf der Grundlage von Versuchen 
+(1) Der Querschnittswiderstand und die effektive Steifigkeit einer kaltgeformten Stahlspundbohle dürfen 
+nach EN 1993-1-3, A.4.2 bestimmt werden. 
+76 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 79 =====
+Anhang B
+(informativ) 
+Versuche mit dünnwandigen Spundbohlen 
+B.1 Allgemeines 
+(1) Um eine gleichmäßig verteilte Belastung zu erreichen, darf die Belastung über Luftkissen oder 
+Balkensysteme aufgebracht werden. Um Querschnittsverformungen an den Lasteinleitungsstellen oder an 
+den Auflagern zu vermeiden, dürfen querlaufende Zugbänder und/oder Aussteifungen (z. B. mit Holzbalken 
+oder Stahlplatten) verwendet werden. 
+(2) Für Versuche an Z-Bohlen sollte mindestens eine Doppelbohle verwendet werden. 
+(3) Bei 
+-Bohlen sollte mindestens eine Bohle verwendet werden. 
+(4) Die Genauigkeit der Messungen sollte sich nach der Größenordnung der Messwerte richten und im 
+Bereich von ±1 % der zu bestimmenden Werte liegen. 
+(5) Die Querschnittsvermessung eines Versuchskörpers sollte die folgenden geometrischen Eigenschaften 
+erfassen: 
+ die Gesamtabmessungen (Breite, Höhe und Länge) auf ±1,0 mm; 
+ die Breite der flachen Querschnittsteile auf ±1,0 mm; 
+ Biegeradien auf ±1,0 mm; 
+ die Neigung zwischen zwei Blechen (Winkel zwischen zwei Oberflächen) auf ± 2°; 
+ die Werkstoffdicke auf ± 0,1 mm. 
+(6) Es sollte sichergestellt sein, dass die Wirkungsrichtung der Belastung während des Versuchs gleich 
+bleibt. 
+B.2 Versuche mit Einfeldträgern 
+(1) Der in Bild B.1 gezeigte Versuchsaufbau sollte verwendet werden, um den Momentenwiderstand (wenn 
+die Querkraft vernachlässigbar ist) und die effektive Biegesteifigkeit zu ermitteln. 
+(2) In diesem Versuch sollten mindestens zwei Lasteinleitungspunkte, wie in Bild B.1 dargestellt, 
+vorgesehen werden. 
+(3) Die Spannweite sollte so gewählt werden, dass die Versuchergebnisse den Momentenwiderstand der 
+Spundbohle wiedergeben. Die Durchbiegungen sollten in der Feldmitte auf beiden Seiten des Profils (ohne 
+Berücksichtigung der Auflagerverformung) gemessen werden. 
+(4) Die auf den Prüfkörper aufgebrachte maximale Last zum Zeitpunkt des Versagens oder kurz davor 
+sollte für die Ermittlung des Biegemomentenwiderstandes aufgezeichnet werden. Die Biegesteifigkeit darf aus 
+der Lastverformungskurve ermittelt werden. 
+77 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 80 =====
+a) Belastung 
+b) Vermeidung von Querschnittsverformungen 
+Legende 
+A am Lasteinleitungspunkt 
+B am Auflager 
+ANMERKUNG Bei unsymmetrischen Querschnitten kann es notwendig sein, auch mit umgekehrter Lastrichtung zu 
+prüfen. 
+Bild B.1  Versuchsaufbau zur Bestimmung des Momentenwiderstandes 
+B.3 Versuche am Zwischenlager 
+(1) Der in Bild B.2 gezeigte Versuchsaufbau darf verwendet werden, um an Zwischenauflagern von 
+Spundbohlen den Querschnittswiderstand für die Kombination von Biegemoment und Querkraft als auch die 
+Interaktion zwischen Moment und Lagerreaktion für eine vorgegebene Lagerbreite (Gurtung) zu ermitteln. 
+(2) Um den abfallenden (instabilen) Ast der Lastverformungskurve ausreichend zu erfassen, sollte der 
+Versuch nach Erreichen der Maximallast über eine geeignete Dauer fortgesetzt werden. 
+(3) Die Spannweite L im Versuch sollte so gewählt werden, dass sie dem Bohlenabschnitt zwischen den 
+Momentennullpunkten auf beidseits des Auflagers entspricht. 
+(4) Die Lasteinleitungsbreite b
+B sollte der Breite der verwendeten Gurtung entsprechen. 
+78 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 81 =====
+(5) Die Verformungen des Prüfkörpers sollten auf beiden Seiten gemessen werden (ohne Berücksichtigung 
+der Auflagerverformung). 
+(6) Die auf den Prüfkörper aufgebrachte maximale Last zum Zeitpunkt des Versagens oder kurz davor 
+sollte als Grenzlast aufgezeichnet werden. Diese liefert das Stützmoment und die Lagerkraft für die 
+verwendete Lagerbreite. Um Informationen zur Interaktion zwischen Moment und Lagerkraft zu erhalten, 
+sollten Versuche mit verschiedenen Spannweiten durchgeführt werden. 
+Legende 
+A Zugband 
+B Platte 
+Bild B.2  Lasteinleitung für die Bestimmung des Momenten- und Querkraftwiderstandes an einer 
+Zwischenstütze (Gurtung) 
+B.4 Versuche mit Zweifeldträgern 
+(1) Alternativ zu B.3 dürfen auch Versuche an Zweifeldträgern durchgeführt werden, um den 
+Grenzwiderstand von kaltgeformten Spundbohlen zu bestimmen. Die Belastung sollte vorzugsweise 
+gleichmäßig verteilt (z. B. durch Luftkissen) aufgebracht werden. 
+(2) Diese Belastung darf durch eine beliebige Anzahl von Punktlasten ersetzt werden, wenn diese 
+Lastverteilung die Gleichlast ausreichend wiedergibt (siehe Bild B.3). 
+79 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 82 =====
+Bild B.3  Versuchsaufbau bei Zweifeldträgern 
+B.5 Auswertung der Versuchsergebnisse 
+B.5.1 Allgemeines 
+(1) Als Versagen eines Versuchskörpers gilt der Punkt, bei dem die aufgebrachte Versuchslast ihren 
+Maximalwert erreicht hat oder bei dem die Verformungen die festgelegten Grenzwerte überschreiten, siehe 
+EN 1993-1-3, A.6.1. 
+B.5.2 Anpassung von Versuchsergebnissen 
+(1) Die Anpassung der Versuchsergebnisse sollte nach EN 1993-1-3, A.6.2 erfolgen. 
+B.5.3 Charakteristische Werte 
+(1) Die charakteristischen Werte Rk dürfen aus den Versuchergebnissen nach EN 1993-1-3, A.6.3 bestimmt 
+werden. 
+B.5.4 Bemessungswerte 
+(1) Der Bemessungswert Rd des Widerstandes sollte aus dem dazugehörigen charakteristischen Wert Rk
+abgeleitet werden, unter Verwendung von: 
+Rd = Rk / M / sys (B.1) 
+80 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 83 =====
+Dabei ist 
+M der Teilsicherheitsbeiwert des Widerstands nach 5.1.1 (4); 
+sys der Faktor zur Erfassung des Unterschieds zwischen Test- und Einsatzbedingungen. 
+ANMERKUNG 1 Der Wert sys darf im Nationalen Anhang angegeben werden. Für die genau definierten 
+standardisierten Versuchsverfahren in B.2, B.3 und B.4 wird ein Wert von sys = 1,0 empfohlen.
+ANMERKUNG 2 Der Wert für M kann durch statistische Auswertung einer Versuchsreihe mit mindestens vier 
+Versuchen bestimmt werden. Hierzu sollte EN 1990, Anhang D beachtet werden. 
+81 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 84 =====
+Anhang C
+(informativ) 
+Anleitung zur Bemessung von Stahlspundwänden 
+C.1 Bemessung von Spundbohlenquerschnitten für den Grenzzustand der 
+Tragfähigkeit 
+C.1.1 Allgemeines 
+(1) Die Bemessungswerte der Schnittgrößen sollten den Bemessungswert des Querschnittswiderstandes 
+nicht überschreiten. 
+(2) Die Bemessungswerte sollten nach 2.5 unter Berücksichtigung eines sorgfältig gewählten 
+Bemessungsmodells für das Tragwerk bestimmt werden. 
+(3) Falls erforderlich, sollte nach Abschnitt 4 die Verminderung der Querschnittswiderstände infolge 
+Dickenverlust durch Korrosion berücksichtigt werden. 
+(4) Bei U-Bohlen sollte eine mögliche verminderte Schubkraftübertragung im Schloss nach 5.2.2 (2) 
+berücksichtigt werden. 
+(5) Wenn die Spundbohle Querbiegung infolge unterschiedlichen Wasserdrucks erfährt, sollten die Effekte 
+des Wasserdrucks nach 5.2.4 berücksichtigt werden. 
+(6) Der Widerstand des Querschnitts gegenüber der Einleitung einer Ankerkraft in den Flansch der 
+Spundbohle über eine Ankerplatte sowie einer Anker- oder Steifenkraft in den Steg einer Bohle über die 
+Gurtung sollte nach 7.4.3 bestimmt werden. 
+(7) Wenn die Querschnittseigenschaften, die für die Bestimmung der Schnittgrößen gewählt wurden, nicht 
+den Kriterien in den Absätzen (1) bis (4) genügen, sollte ein anderes Profil (oder eine andere Stahlgüte) 
+gewählt und die Berechnung wiederholt werden. 
+(8) Plastische Tragfähigkeiten dürfen für Klasse-1- und Klasse-2-Querschnitte angesetzt werden. 
+(9) Wenn keine Momentenumlagerung und daher auch keine plastische Rotation für Klasse-1-oder Klasse-
+2-Querschnitte angesetzt wird, darf die Bestimmung der Schnittgrößen für die Querschnittsnachweise mit 
+einem elastischen Balkenmodell durchgeführt werden. 
+(10) Wenn die Momentenumlagerung und daher auch die plastische Rotation bei der Bemessung 
+ausgenutzt wird, sollten die folgenden Bemessungsannahmen erfüllt sein: 
+ es sollten nur Klasse-1- und Klasse-2-Querschnitte in Kombination mit einem Rotationsnachweis, wie in 
+dem folgenden Abschnitt angegeben, verwendet werden; 
+ der Querschnittsnachweis sollte unter Verwendung eines Balkenmodells durchgeführt werden, die 
+plastische Rotation ermöglicht (z. B. anhand des Fließzonenverfahrens oder Fließgelenkverfahrens). 
+82 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 85 =====
+C.1.2 Nachweis von Klasse-1- und Klasse-2-Querschnitten 
+(1) Die Klassifizierung von Querschnitten darf nach den b/tf-Verhältnissen nach einem der nachfolgenden 
+Verfahren durchgeführt werden: 
+ Klassifizierung nach Tabelle 5-1: b/tf-Verhältnis für den vollen plastischen Momentenwiderstand. 
+ Klassifizierung nach Tabelle C.1, in der das b/tf-Verhältnis für 85 % bis 100 % des vollen plastischen 
+Momentenwiderstandes in 5 %-Schritten angegeben ist. 
+(2) Wenn die Klassifizierung für einen Klasse-1- oder Klasse-2-Querschnitt mit einem reduziertem Niveau 
+des vollen plastischen Momentenwiderstandes abhängig vom Abminderungsfaktor C = 0,85 bis 0,95 erfolgt, 
+dann sollte der Bemessungswert des Querschnittswiderstandes mit der reduzierten Fließgrenze fy,red = C fy
+bestimmt werden. 
+Tabelle C.1  Klassifizierung von Querschnitten für Biegung auf einem reduzierten Mpl,Rd-Niveau 
+Mpl,Rd 100 % 95 % 90 % 85 % 
+Profilart 
+Abminderungsfaktor C 1,0 0,95 0,90 0,85 
+U-Bohle Klasse 1 oder 2 f/ tb 37 f/ tb 40 f/ tb 46 f/ tb 49 
+Z-Bohle Klasse 1 oder 2 f/ tb 45 f/ tb 50 f/ tb 60 f/ tb 66 
+(3) Eine plastische Bemessung mit Momentenumlagerung darf für Klasse-1- und Klasse-2-Querschnitte 
+durchgeführt werden, vorausgesetzt, dass gezeigt werden kann: 
+EdCd (C.1) 
+Dabei ist 
+Cd der Bemessungswert der plastischen Rotationskapazität, die vom Querschnitt bereitgestellt wird, 
+siehe Bild C.1 und Bild C.2; 
+Ed der maximale Bemessungswert der Rotationsanforderung, die für den jeweiligen Bemessungsfall 
+bestimmt wird. 
+(4) Die plastische Rotationskapazität , die in Bild C.1 für verschiedene Mpl,Rd-Niveaus gegeben ist, 
+hängt vom b/tf/ -Verhältnis des Querschnitts ab. Diese Diagramme basieren auf Biegeversuchen mit 
+Stahlspundwänden, siehe Bild C.2. 
+Cd
+83 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 86 =====
+a) U-Bohlen b) Z- Bohlen
+Bild C.1  Plastische Rotationskapazität von Querschnitten abhängig von 
+verschiedenen Mpl,Rd-Niveaus 
+Cd
+Bild C.2  Definition der plastischen Rotationskapazität als Winkel Cd
+(5) Der Bemessungswert der plastischen Rotationsanforderung darf für den jeweiligen Bemessungsfall 
+mit einem der folgenden Verfahren bestimmt werden: 
+Ed
+a) mit dem Fließgelenkmodell: 
+Ed ist der maximale Bemessungswinkel in einem der Fließgelenke; 
+b) alternativ mit dem Fließgelenkmodell und dem Fließzonenmodell: 
+Ed =  (C.2) Edrot, Edpl,
+84 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 87 =====
+Dabei ist 
+Edrot, der Gesamtwert des Rotationswinkels im Grenzzustand der Tragfähigkeit, gemessen 
+zwischen den Momentennullpunkten (siehe Bild C.3); 
+Edpl, der elastische Rotationswinkel, zugehörig zu dem plastischen Momentenwiderstand Mpl. 
+ANMERKUNG Vereinfacht darf wie folgt bestimmt werden: Edpl,
+EI
+LM
+D
+pl,Rd
+pl,Ed 3
+2 (C.3) 
+Dabei ist 
+L der Abstand zwischen den Momentennullpunkten im Grenzzustand der Tragfähigkeit, siehe 
+Bild C.3; 
+EI die elastische Biegesteifigkeit der Spundbohle; 
+D der Faktor nach 6.4 (3). 
+c) mit dem Fließgelenk- oder dem Fließzonenmodell werden die Rotationswinkel aus den berechneten 
+Wandverformungen, wie in Bild C.4 gezeigt, bestimmt: 
+Ed =  (C.4) Edrot, Edpl,
+Dabei ist 
+2
+32
+1
+12
+rot,Ed L
+ww
+L
+ww (C.5) 
+EI
+LM
+D
+pl,Rd
+pl,Ed 12
+5 (C.6) 
+ANMERKUNG Wenn das verwendete Berechnungsprogramm nach der Berechnung eine Entlastung der Spundbohle 
+zulässt, kann aus den verbleibenden plastischen Verformungen direkt bestimmt werden. Ed
+C.2 Grenzzustand der Gebrauchstauglichkeit 
+(1) Bei U-Bohlen sollte eine mögliche Verminderung der Schubkraftübertragung im Schloss nach 6.4 
+berücksichtigt werden. 
+85 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 88 =====
+a) System b) Momentenverlauf c) Verformung (überhöht) 
+Bild C.3  Beispiel für die Bestimmung des gesamten Rotationswinkels Edrot,
+ a) System b) Momentenverlauf c) Verformung (überhöht) 
+Bild C.4  Bezeichnungen für die Bestimmung des gesamten Rotationswinkels aus den 
+Wandverformungen 
+Edrot,
+86 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 89 =====
+Anhang D
+(informativ) 
+Tragelemente bei kombinierten Spundwänden 
+D.1 I-Profile als Tragelemente 
+D.1.1 Allgemeines 
+(1) I-Profile, die als Tragelemente in kombinierten Wänden eingesetzt werden, siehe Bild 1-5, und Klasse-
+1-, Klasse-2-oder Klasse-3-Querschnitten nach EN 1993-1-1, Tabelle 5-2 entsprechen, dürfen nach D.1.2 
+nachgewiesen werden. 
+ANMERKUNG Klasse-4-Querschnitte sollten nach EN 1993-1-3 und nach EN 1993-1-7 nachgewiesen werden. 
+(2) Wenn das Kriterium (5.1) in EN 1993-1-1 nicht erfüllt ist, sollten die Schnittgrößen mit einem 
+Balkenmodell nach Theorie II. Ordnung bestimmt werden. Bei der Bestimmung der Knicklänge sollte 5.2.3 
+beachtet werden. 
+(3) Falls erforderlich, sollten lokale Plattenbiegespannungen infolge der Lasteinleitung aus Anschlüssen der 
+Füllelemente nach 5.5.4 berücksichtigt werden, siehe Bild D.1. 
+D.1.2 Nachweismethode 
+(1) Wenn keine genauere Bemessungsmethode verwendet wird, erlaubt die nachfolgende vereinfachte 
+Methode den Nachweis von I-Profilen unter Berücksichtigung der Interaktion zwischen Biegemomenten, 
+Normalkräften und lokaler Plattenbiegung in Flanschen infolge der Lasteinleitung aus den Füllelementen. 
+ANMERKUNG Die Verwendung einer genaueren Berechnungsmethode, die für Werkstoff und Geometrie ein nicht 
+lineares Verhalten berücksichtigt, kann zu einer wirtschaftlicheren Bemessung führen. Dieser Ansatz wird auch zur 
+Behandlung von hohen Wasserdruckbelastungen über 10 m Höhe empfohlen. 
+(2) Für Wasserdrücke (oder äquivalente Erddrücke in sehr weichen Böden) bis zu 10 m Höhe darf die 
+Interaktion zwischen den Schnittgrößen und der lokalen Plattenbiegung wie folgt berücksichtigt werden: 
+ Die Querschnittsnachweise der Tragelemente sollten nach EN 1993-1-1, 6.2.9.2 und 6.2.10 mit einer 
+verminderten Fließgrenze durchgeführt werden: 
+ für h = 10 m : fy,red = 0,9 fy
+ für h 4 m : fy,red = 1,0 fy
+ für 4 m < h < 10 m : lineare Interpolation 
+ die lokale Plattenbiegung der Flansche wird nach Absatz (3) nachgewiesen. 
+(3) Die lokale Flanschbiegung sollte am Beginn der Ausrundung zwischen Flansch und Steg nachgewiesen 
+werden. Für die Einleitung der Füllbohlenbelastung (siehe Bild D.1) ist nachzuweisen: 
+1
+2
+Rd
+Ed
+Rd
+Ed
+N
+N
+M
+M (D.1) 
+87 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 90 =====
+Dabei ist 
+MEd und NEd die Bemessungswerte der Schnittgrößen für die Plattenbiegung aus 
+MEd = mEd + wz,Ed d und NEd = wy,Ed (D.2)
+MRd und NRd die Bemessungswerte des Widerstandes für die Plattenbiegung: 
+MRd = 0,2875 t2 fy / M0 und NRd = t fy / M0
+t die Flanschdicke am Anfang der Ausrundung. 
+ANMERKUNG 1 MEd, NEd, MRd und NRd sind je laufenden Meter anzusetzen. 
+ANMERKUNG 2 Die Querkraftinteraktion darf vernachlässigt werden. 
+(4) Für den Schubbeulnachweis im Steg ist EN 1993-1-5 zu beachten. 
+(5) Für den Knicknachweis des Gesamtsystems ist in der Regel EN 1993-1-1, 6.3.3 zu beachten. 
+a) 
+b) 
+Bild D.1  I-Profil mit Biegung und Plattenbiegung 
+88 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 91 =====
+D.2 Rohrpfähle als Tragelemente 
+D.2.1 Allgemeines 
+(1) Rohrpfähle, die in kombinierten Spundwänden als Tragelemente eingesetzt werden und Klasse-4-
+Querschnitten nach EN 1993-1-1, Tabelle 5-2 entsprechen, dürfen wie folgt nachgewiesen werden. 
+(2) Wenn das Kriterium (5.1) in EN 1993-1-1 nicht erfüllt ist, sollten die Schnittgrößen mit einem 
+Balkenmodell nach Theorie II. Ordnung bestimmt werden. Bei der Bestimmung der Knicklänge sollte 5.2.3 
+beachtet werden. 
+ANMERKUNG Bei der Berechnung von Fcr sollten die Effekte der Ovalisation auf das Flächenträgheitsmoment 
+berücksichtigt werden. Siehe 5.2.3 für die Bestimmung der Knicklänge. 
+(3) Falls nach 5.5.4 erforderlich, können die lokalen Schalenbiegespannungen und Schalenverformungen 
+infolge der Lasteinleitung aus Anschlüssen der Füllelemente nach Tabelle D.1 abgeschätzt werden. 
+ANMERKUNG 1 Die vertikalen Lagerreaktionen in Bild 5-9 dürfen für die Bestimmung der lokalen Schalenbiege-
+spannungen vernachlässigt werden. 
+ANMERKUNG 2 Als Vereinfachung darf die horizontale Kraft wy,Ed nur als Zugkraft angesetzt werden. 
+(4) Die Wirkung der Ovalisation der Röhre infolge lokaler Schalenbiegung auf das Flächenträgheitsmoment 
+bezogen auf die Wandachse, siehe Bild D.2, darf mit dem folgenden Abminderungsfaktor abgeschätzt 
+werden: 
+o,I = 1  1,5 (e / r) (D.3) 
+ANMERKUNG Die Wirkung der Ovalisierung auf das Widerstandsmoment darf vernachlässigt werden. 
+(5) Die Ovalisierung e infolge lokaler Schalenbiegung, siehe Bild D.2 und Tabelle D.1, darf wie folgt 
+abgeschätzt werden: 
+EI
+rwe ³Edy,4068,0 jedoch e 0,1 r (D.4) 
+Dabei ist 
+EI die Biegesteifigkeit des Rohres, gegeben durch: 
+EI = E t3 /12; 
+r der Radius der Mittellinie der Rohrwandung; 
+wy,Ed die Lagerkraft je Längeneinheit nach 5.2.2 (3), siehe Bild 5-9. 
+(6) Der Krümmungsradius a an der Ovalisierung, siehe Bild D.2, darf wie folgt angenommen werden: 
+r
+e
+ra 31
+ (D.5) 
+89 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 92 =====
+Tabelle D.1  Lokale Schalenbiegung infolge der Anschlusskräfte aus den Füllelementen 
+MA = 0,182 wy,Ed r
+NA = 0,5 wy,Ed
+VA = 0 
+MB = 0,318 wy,Ed r
+NB = 0 
+VB = 0,5 wy,Ed
+DBD = 0,148 8 wy,Ed r3 / EI
+DAC = 0,136 8 wy,Ed r3 / EI
+MA = 0,137 mEd
+NA = 0,637 mEd / r
+VA = 0 
+MB = 0,5 mEd
+NB = 0 
+VB = 0,637 mEd / r
+DBD = 0 
+DAC = 0 
+Dabei ist 
+M, N und V die Schnittgrößen aus der Schalen-
+biegung nach den im Bild 
+angegebenen Definitionen 
+wy,Ed und mEd die Anschlusskräfte eingeleitet aus 
+den Füllelementen 
+DBD und DAC die Durchmesseränderungen 
+infolge der aufgebrachten Kräfte 
+(Ovalisation) 
+r der Radius der Mittellinie der Rohr-
+wandung 
+EI die Schalenbiegesteifigkeit des 
+Rohres 
+Definition der Schnittgrößen bei Schalenbiegung: 
+90 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 93 =====
+Legende 
+a Krümmungsradius an der Ovalisation 
+e Ovalisation infolge lokaler Schalenbiegung 
+r Radius der Mittellinie der Rohrwandung 
+t Wanddicke des Rohrs 
+wy,Ed Kraft, eingeleitet aus dem Füllelement 
+Bild D.2  Rohrpfahl: geometrische Daten und lokale Schalenbiegung 
+D.2.2 Nachweismethode 
+(1) Das nachfolgende Verfahren darf für den Nachweis der Rohrpfähle unter Berücksichtigung des 
+Schalenbeulens, der Interaktion zwischen Biegemomenten, Normalkräften, lokaler Schalenbiegung und 
+Knicken verwendet werden. 
+ANMERKUNG Alternativ darf der Nachweis auch nach EN 1993-1-6, 8.6 oder 8.7 mit einem Modell, das für diese Art 
+der Berechnung geeignet ist und die Effekte aus der Bodensteifigkeit berücksichtigt, durchgeführt werden. 
+(2) Der Beulnachweis sollte wie für zylindrische Schalen, jedoch mit einem Radius entsprechend dem 
+Radius der Krümmung a an der Ovalisation durchgeführt werden. 
+(3) Für den Beulnachweis wird auf EN 1993-1-6, 8.5 verwiesen. 
+(4) Vorausgesetzt, dass die Lasteinleitungspunkte durch eine Betonfüllung oder entsprechend bemessene 
+Steifen ausgesteift sind, darf Schubbeulen an den Punkten der Lasteinleitung vernachlässigt werden. 
+(5) Wenn der Rohrpfahl über eine gewisse Höhe mit dichtem Sand oder steifem Ton gefüllt ist, dürfen in 
+diesem Rohrteil die Umfangsdruckspannungen infolge externen Erd- und Wasserdrucks für den Beulnachweis 
+vernachlässigt werden. 
+ANMERKUNG Informationen zu der erforderlichen Dichte oder Steifigkeit dürfen auf der Grundlage von örtlichen 
+Erfahrungen im Nationalen Anhang angegeben werden.
+(6) Die kritische Beulspannung sollte bestimmt werden: 
+ für Axialspannungen nach EN 1993-1-6, D.1.2.1 mit Cx = 1,0 auch für lange Zylinder; 
+ für Schubspannungen nach EN 1993-1-6, D.1.4.1; 
+ für Umfangsdruckspannungen nach EN 1993-1-6, D.1.3.1 unter Verwendung der Randbedingungen in 
+Fall 3 in Tabelle D.3 oder D.4. 
+91 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12
+
+===== PDF-SEITE 94 =====
+92 
+(7) Die Beulparameter sollten nach EN 1993-1-6, D.1.2.2, D.1.4.2 und D.1.3.2 bestimmt werden. Dabei darf 
+für neue Rohre Qualität B angesetzt werden. 
+(8) Die Bemessungswerte der Spannungen sollten mit der Membrantheorie nach EN 1993-1-6, Anhang A 
+berechnet werden. 
+(9) Für den Nachweis der Beulfestigkeit wird in der Regel auf EN 1993-1-6, 8.5.3 verwiesen. 
+ANMERKUNG 1 Wenn die Umfangsdruckspannungen für den Beulnachweis berücksichtigt werden müssen, sollte eine 
+ungleichmäßige Manteldruckverteilung durch eine gleichmäßige mit dem Höchstwert ersetzt werden.
+ANMERKUNG 2 Schub darf vernachlässigt werden, wenn die Interaktion nach EN 1993-1-6, 8.5.3 (3) geprüft wurde. 
+(10) Die allgemeinen Querschnittsnachweise sollten nach EN 1993-1-1, 6.2.1 mit dem in EN 1993-1-6, 6.2 
+angegebenen Verfahren durchgeführt werden. Bei diesem Nachweis sollten die Spannungen infolge globaler 
+Biegung und infolge lokaler Schalenbiegung nach Tabelle D.1 berücksichtigt werden. Der Effekt der 
+Ovalisierung darf vernachlässigt werden und die vollen elastischen Querschnittseigenschaften dürfen in 
+diesem Nachweis verwendet werden. Bei der Bestimmung der kritischen Punkte für die Überprüfung des 
+Fließkriteriums sollten sowohl der maßgebende Querschnitt als auch die maßgebenden Punkte (Punkte A, B, 
+C und D in Tabelle D.1) auf diesem Querschnitt betrachtet werden. 
+(11) Für den Nachweis gegen Biegeknicken ist EN 1993-1-1, 6.3.3 zu beachten. Dabei sollten die voll-
+elastischen Querschnittseigenschaften unter Berücksichtigung der Ovalisierung nach D.2.1 (4) verwendet 
+werden. 
+(12) Dieser Nachweis ist erbracht, wenn das folgende Interaktionskriterium erfüllt wird: 
+0,15,1
+1M
+Rk
+Ed
+1M
+Rk
+Ed
+M
+M
+N
+N (D.6) 
+Dabei ist 
+NEd und MEd die Bemessungswerte der Druckkräfte und Biegemomente im maßgebenden Querschnitt; 
+NRk und MRk die charakteristischen Widerstände nach Absatz (11); 
+ der Abminderungsfaktor infolge Biegeknickens aus EN 1993-1-1, 6.3.1.2, dem die 
+Knicklänge nach 5.2.3 zugrunde liegt. 
+ANMERKUNG Die Schlankheit sollte nach EN 1993-1-1, 6.3.1.3 unter Beachtung von D.2.1 (2) bestimmt werden. 
+EN 1993-5:2007 + AC:2009 (D) 
+DIN EN 1993-5:2010-12

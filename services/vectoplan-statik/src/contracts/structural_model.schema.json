@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/structural-model/0.1",
+  "title": "VECTOPLAN structural model preparation contract",
+  "type": "object",
+  "required": ["contract_version", "project_ref", "model_revision_ref", "project", "elements"],
+  "properties": {
+    "contract_version": {"const": "structural-model/0.1"},
+    "project_ref": {"type": "string", "minLength": 1},
+    "model_revision_ref": {"type": "string", "minLength": 1},
+    "project": {"type": "object"},
+    "levels": {"type": "array", "items": {"type": "object"}},
+    "elements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["element_ref", "kind", "label", "geometry", "parameters"],
+        "properties": {
+          "element_ref": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["slab", "beam", "column", "wall", "foundation"]},
+          "label": {"type": "string"},
+          "geometry": {"type": "object"},
+          "parameters": {"type": "object"},
+          "provenance": {"type": "object"}
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

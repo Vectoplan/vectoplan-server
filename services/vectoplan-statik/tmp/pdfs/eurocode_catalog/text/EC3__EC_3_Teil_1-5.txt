@@ -1,0 +1,2790 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-1-5 
+ICS 91.01 0.30; 91.080.10 Ersatzvermerk 
+siehe unten 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Tei11-5: Plattenförmige Bauteile; 
+Deutsche FassungEN 1993-1-5:2006 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 1-5: Plated structural elements; 
+GermanversionEN 1993-1-5:2006 + AC:2009 
+Eurocode 3: Calcul des structures en acier-
+Partie 1-5: Plaques planes; 
+Versionallemande EN 1993-1-5:2006 + AC:2009 
+Ersatzvennerk 
+Ersatz ftlr DIN EN 1993-1-5:2007-02; 
+mit DIN EN 1993-1-1:2010-12, DIN EN 1993-1-1/NA:2010-12, DIN EN 1993-1-3:2010-12, 
+DIN EN 1993-1-3/NA:2010-12, DIN EN 1993-1-5/NA:2010-12, DIN EN 1993-1-8:2010-12, 
+DIN EN 1993-1-8/NA:2010-12, DIN EN 1993-1-9:2010-12, DIN EN 1993-1-9/NA:2010-12, 
+DIN EN 1993-1-10:2010-12, DIN EN 1993-1-10/NA:2010-12, DIN EN 1993-1-11:2010-12 und 
+DIN EN 1993-1-11/NA:2010-12 Ersatz fllr DIN 18800-1:2008-11; 
+mit DIN EN 1993-1-1:2010-12, DIN EN 1993-1-1/NA:2010-12, DIN EN 1993-1-3:2010-12, 
+Dezember 2010 
+DIN 
+DIN EN 1993-1-3/NA:2010-12 und DIN EN 1993-1-5/NA:2010-12 Ersatz fllr DIN 18800-2:2008-11; 
+mit DIN EN 1993-1-3:2010-12, DIN EN 1993-1-3/NA:2010-12 und DIN EN 1993-1-5/NA:2010-12 Ersatz für 
+DIN 18800-3:2008-11: 
+Ersatz ftlr DIN EN 1993-1-5 Berichtigung 1:2010-05 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 70 Seiten 
+Preisgruppe 24 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1718734
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-5:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-1-5:2006 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten 
+wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-08-16 AA Tragwerksbemessung begleitet. 
+Diese Europäische Norm wurde vom CEN am 13. Januar 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen Gemein-
+schaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die verbindliche 
+Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind im Vorwort 
+dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen  angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-1-5:2001-02 wurden folgende Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet. 
+Gegenüber DIN EN 1993-1-5:2007-02, DIN EN 1993-1-5 Berichtigung 1:2010-05, DIN 18800-1:2008-11, 
+DIN 18800-2:2008-11 und DIN 18800-3:2008-11 wurden folgende Änderungen vorgenommen: 
+a) auf europäisches Bemessungskonzept umgestellt; 
+b) Ersatzvermerke korrigiert; 
+c) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+d) redaktionelle Änderungen durchgeführt. 
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-5:2010-12 
+Frühere Ausgaben 
+DIN 1050: 1934-08, 1937xxxxx-07, 1946-10, 1957x-12, 1968-06 
+DIN 1073: 1928-04, 1931-09, 1941-01, 1974-07 
+DIN 1073 Beiblatt: 1974-07 
+DIN 1079: 1938-01, 1938-11, 1970-09 
+DIN 4100: 1931-05, 1933-07, 1934xxxx-08, 1956-12, 1968-12 
+DIN 4101: 1937xxx-07, 1974-07 
+DIN 4114-1: 1952xx-07 
+DIN 4114-2: 1952-07, 1953x-02 
+DIN 18800-1: 1981-03, 1990-11, 2008-11 
+DIN 18800-1/A1: 1996-02 
+DIN 18800-2: 1990-11, 2008-11 
+DIN 18800-2/A1: 1996-02 
+DIN 18800-3: 1990-11, 2008-11 
+DIN 18800-3/A1: 1996-02 
+DIN V ENV 1993-1-5: 2001-02 
+DIN EN 1993-1-5: 2007-02 
+DIN EN 1993-1-5 Berichtigung 1: 2010-05 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-5:2010-12 
+ Leerseite  
+4
+
+===== PDF-SEITE 5 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-1-5 
+ Oktober 2006 
+ +AC 
+ April 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-1-5:1997
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 1-5: Plattenförmige Bauteile 
+Eurocode 3: Design of steel structures  
+Part 1-5: Plated structural elements 
+ Eurocode 3: Calcul des structures en acier  
+Partie 1-5: Plaques planes 
+Diese Europäische Norm wurde vom CEN am 13. Januar 2006 angenommen. 
+Die Berichtigung tritt am 1. Aprlil 2009 in Kraft und wurde in EN 1993-1-5:2006 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankrei ch,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal,
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-1-5:2006 + AC:2009 D
+
+===== PDF-SEITE 6 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Inhalt 
+Seite
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang zu EN 1993-1-5 ...................................................................................................................4
+1 Allgemeines.................................................................................................................. ..........................5
+1.1 Anwendungsbereich .......................................................................................................... ...................5
+1.2 Normative Verweisungen..................................................................................................... .................5
+1.3 Begriffe ................................................................................................................... ................................5
+1.4 Formelzeichen.............................................................................................................. ..........................6
+2 Grundlagen für die Tragwerksplanung und Verfahren......................................................................7
+2.1 Allgemeines................................................................................................................ ............................7
+2.2 Effektive Breiten bei der Tragwerksberechnung.............................................................................. ..8
+2.3 Einfluss des Plattenbeulens auf die Tragfähigkeit gleichförmiger Bauteile ...................................8
+2.4 Methode der reduzierten Spannungen ......................................................................................... .......9
+2.5 Bauteile mit veränderlichem Querschnitt .................................................................................... .......9
+2.6 Bauteile mit profilierten Stegblechen ...................................................................................... ............9
+3 Berücksichtigung der Schubverzerrungen bei der Bemessung von Bauteilen..............................9
+3.1 Allgemeines................................................................................................................ ............................9
+3.2 Mittragende Breiten zur Berücksichtigung der Schubverzerrungen bei elastischem 
+Werkstoffverhalten ............................................................................................................................. 10
+3.2.1 Mittragende Breiten ...................................................................................................... ...................... 10
+3.2.2 Spannungsverteilung unter Berücksichtigung der Schubverzerrung .......................................... 11
+3.2.3 Lasteinleitung in Blechebene............................................................................................. ............... 12
+3.3 Berücksichtigung der Schubverzerrungen im Grenzzustand der Tragfähigkeit ......................... 13
+4 Plattenbeulen bei Längsspannungen im Grenzzustand der Tragfähigkeit .................................. 14
+4.1 Allgemeines................................................................................................................ ......................... 14
+4.2 Beanspruchbarkeit bei Längsspannungen...................................................................................... 15
+4.3 Effektive Querschnittsgrößen ............................................................................................... ............ 15
+4.4 Einzelblechfelder ohne Längssteifen ........................................................................................ ....... 16
+4.5 Längs ausgesteifte Blechfelder............................................................................................. ............ 20
+4.5.1 Allgemeines.............................................................................................................. ........................... 20
+4.5.2 Plattenartiges Verhalten................................................................................................. .................... 22
+4.5.3 Knickstabähnliches Verhalten............................................................................................. .............. 22
+4.5.4 Interaktion zwischen plattenartigem und knickstabähnlichem Verhalten.................................... 24
+4.6 Nachweis ................................................................................................................... .......................... 25
+5 Schubbeulen .................................................................................................................. ..................... 25
+5.1 Grundlagen................................................................................................................. ......................... 25
+5.2 Bemessungswert der Beanspruchbarkeit....................................................................................... .2 6
+5.3 Beitrag des Steges......................................................................................................... ..................... 27
+5.4 Beitrag der Flansche ....................................................................................................... ................... 29
+5.5 Nachweis ................................................................................................................... .......................... 30
+6 Beanspruchbarkeit bei Querbelastung .......................................................................................... .. 30
+6.1 Grundlagen................................................................................................................. ......................... 30
+6.2 Bemessungswert der Beanspruchbarkeit....................................................................................... .3 1
+6.3 Länge der starren Lasteinleitung........................................................................................... ........... 31
+6.4 Abminderungsfaktor 
+F für die wirksame Lastausbreitungslänge ............................................... 32
+6.5 Wirksame Lastausbreitungslänge ............................................................................................. ....... 33
+6.6 Nachweis ................................................................................................................... .......................... 33
+7 Interaktion.................................................................................................................. .......................... 34
+7.1 Interaktion zwischen Schub, Biegemoment und Normalkraft ....................................................... 34
+7.2 Interaktion zwischen Querbelastung an den Längsrändern, Biegemoment und 
+Normalkraft.......................................................................................................................................... 35
+2 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 7 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Seite
+8 Flanschinduziertes Stegblechbeulen........................................................................................... .....35
+9 Steifen und Detailausbildung................................................................................................. ............36
+9.1 Allgemeines ................................................................................................................ .........................36
+9.2 Wirkung von Längsspannungen................................................................................................ ........36
+9.2.1 Minimale Anforderungen an Quersteifen.................................................................................... ......36
+9.2.2 Minimale Anforderungen an Längssteifen................................................................................... .....38
+9.2.3 Geschweißte Blechstöße................................................................................................... .................39
+9.2.4 Steifenausschnitte....................................................................................................... ........................39
+9.3 Wirkung von Schubspannungen ................................................................................................ .......40
+9.3.1 Starre Auflagersteifen................................................................................................... ......................40
+9.3.2 Verformbare Auflagersteifen.............................................................................................. ................41
+9.3.3 Zwischenliegende Quersteifen ............................................................................................. .............41
+9.3.4 Längssteifen ............................................................................................................. ...........................42
+9.3.5 Schweißnähte ............................................................................................................. .........................42
+9.4 Wirkung von Querlasten..................................................................................................... ................42
+10 Methode der reduzierten Spannungen.......................................................................................... ....42
+Anhang A (informativ) Berechnung kritischer Spannungen für ausgesteifte Blechfelder .......................45
+A.1 Äquivalente orthotrope Platten............................................................................................. .............45
+A.2 Kritische Beulspannung bei Blechfeldern mit einer oder zwei Steifen in der Druckzone...........48
+A.2.1 Allgemeine Vorgehensweise................................................................................................ ..............48
+A.2.2 Vereinfachtes Modell für einen Ersatzstab mit elastischer Bettung durch ein Blech..................49
+A.3 Schubbeulwerte für ausgesteifte Blechfelder................................................................................ ..50
+Anhang B (informativ) Bauteile mit veränderlichem Querschnitt................................................................52
+B.1 Allgemeines ................................................................................................................ .........................52
+B.2 Interaktion von Plattenbeulen und Biegedrillknicken von Bauteilen.............................................53
+Anhang C (informativ) Berechnungen mit der Finite-Element-Methode (FEM) ..........................................54
+C.1 Allgemeines ................................................................................................................ .........................54
+C.2 Anwendung.................................................................................................................. ........................54
+C.3 Modellierung ............................................................................................................... .........................55
+C.4 Wahl des Programms und Dokumentation....................................................................................... 55
+C.5 Ansatz von Imperfektionen .................................................................................................. ..............55
+C.6 Werkstoffeigenschaften..................................................................................................... .................58
+C.7 Belastungen ................................................................................................................ .........................59
+C.8 Kriterien für den Grenzzustand............................................................................................. .............59
+C.9 Teilsicherheitsbeiwerte.................................................................................................... ...................60
+Anhang D (informativ) Bauteile mit profilierten Stegblechen.......................................................................61
+D.1 Allgemeines ................................................................................................................ .........................61
+D.2 Grenzzustand der Tragfähigkeit ............................................................................................. ...........61
+D.2.1 Momententragfähigkeit.................................................................................................... ...................61
+D.2.2 Schubtragfähigkeit....................................................................................................... .......................63
+D.2.3 Anforderungen an Endsteifen.............................................................................................. ..............64
+Anhang E (normativ) Alternative Methoden zur Bestimmung wirksamer Querschnitte ...........................65
+E.1 Wirksame Querschnittsflächen für Spannungen unterhalb der Streckgrenze .............................65
+E.2 Wirksame Querschnittsflächen für die Steifigkeit ........................................................................... 65
+3 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 8 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Vorwort 
+Dieses Dokument (EN 1993-1-5:2006) wurde vom Technischen Komitee CEN/TC 250 Structural Eurocodes 
+erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis April 2007, und etwaige entgegenstehende nationale 
+Normen müssen bis März 2010 zurückgezogen werden. 
+Dieses Dokument ersetzt ENV 1993-1-5:1997. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Dänemark, Deutschland, Estland, 
+Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, Niederlande, 
+Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, Spanien, 
+Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Nationaler Anhang zu EN 1993-1-5 
+Diese Norm enthält alternative Vorgehensweisen, Zahlenwerte sowie Empfehlungen. Durch besonderen 
+Hinweis (Anmerkungen) sind die Stellen gekennzeichnet, bei denen eine nationale Auswahl getroffen werden 
+darf. EN 1993-1-5 enthält bei der nationalen Einführung einen nationalen Anhang. Dieser Anhang legt die 
+nationalen Parameter fest, die für die Bemessung und Konstruktion von Stahlbauten verwendet werden 
+müssen. 
+Eine nationale Wahl darf für folgende Abschnitte erfolgen: 
+ 2.2(5) 10(1) 
+ 3.3(1) 10(5) 
+ C.2(1) 
+ C.5(2) 
+ C.8(1) 
+ C.9(3) 
+ D.2.2(2) 
+ 4.3(6) 
+ 5.1(2) 
+ 6.4(2) 
+ 8(2) 
+ 9.1(1) 
+ 9.2.1(9) 
+4 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 9 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1) EN 1993-1-5 enthält Regelungen für den Entwurf und die Berechnung von aus ebenen Blechen 
+zusammengesetzten und in ihrer Ebene belasteten Bauteilen mit oder ohne Steifen. 
+(2) Diese Regelungen gelten für Blechträger mit I-Querschnitt und Kastenträger, bei denen ungleichmäßige 
+Spannungsverteilungen infolge Schubverzerrungen sowie Beulen unter Längsspannungen, Schubspan-
+nungen und Querlasten auftreten. Sie gelten auch für ebene Bleche aller anderen Bauteile, z. B. von 
+Tankbauwerken und Silos, soweit Lasten und Beanspruchungen in der Ebene der Bauteile wirken. Die 
+Wirkungen von Lasten quer zur Bauteilebene werden in EN 1993-1-5 nicht behandelt. 
+ANMERKUNG 1 Die Regelungen in EN 1993-1-5 ergänzen die Regelungen für Querschnitte der Querschnittsklassen 1, 
+2, 3 und 4, siehe EN 1993-1-1. 
+ANMERKUNG 2 Regelungen zu schlanken Platten mit wechselnden Längsspannungen und/oder Schubspannungen, 
+die zu Ermüdung durch wechselnde Biegung aus der Plattenebene (Blechatmen) führen können, sind in EN 1993-2 und 
+EN 1993-6 angegeben. 
+ANMERKUNG 3 Regelungen zur Wirkung von Lasten quer zur Plattenebene und zur Kombination von Lastwirkungen in 
+der Ebene und aus der Ebene sind EN 1993-2 und EN 1993-1-7 zu entnehmen. 
+ANMERKUNG 4 Einzelne Blechfelder dürfen als eben angesehen werden, wenn für den Krümmungsradius r gilt: 
+t
+ar
+2
+ (1.1) 
+Dabei ist 
+a die Blechfeldbreite; 
+t die Blechdicke. 
+1.2 Normative Verweisungen 
+Die folgenden zitierten Dokumente sind für die Anwendung dieses Dokuments erforderlich. Bei datierten 
+Verweisungen gilt nur die in Bezug genommene Ausgabe. Bei undatierten Verweisungen gilt die letzte 
+Ausgabe des in Bezug genommenen Dokuments (einschließlich aller Änderungen). 
+EN 1993-1-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: Allgemeine Bemes-
+sungsregeln und Regeln für den Hochbau
+1.3 Begriffe 
+Für die Anwendung dieses Dokuments gelten die folgenden Begriffe. 
+1.3.1 
+kritische elastische Spannung
+Spannung in einem Bauteil oder Beulfeld, bei dem das Gleichgewicht im Bauteil oder im Beulfeld nach den 
+Ergebnissen der elastischen Theorie für perfekte Strukturen und kleine Verformungen instabil wird 
+1.3.2 
+Membranspannungen
+Spannungen in der Mittelebene der Platte oder des Blechs 
+5 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 10 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+1.3.3 
+Bruttoquerschnitt 
+die gesamte Querschnittsfläche eines Bauteils ohne Berücksichtigung nicht durchlaufender Längssteifen, 
+Bindebleche oder Bleche für die Stoßdeckung 
+1.3.4 
+effektiver Querschnitt und effektive Breite 
+Bruttoquerschnitt oder Bruttoquerschnittsbreite, reduziert infolge gemeinsamer Wirkung von Plattenbeulen 
+und Schubverzerrung; der Begriff effektiv wird wie folgt unterschieden: 
+wirksam (effektiv
+p) bezeichnet die Wirkung von Plattenbeulen; 
+mittragend (effektivs) bezeichnet die Wirkung der ungleichförmigen Spannungsverteilung aus Schubverzer-
+rung; 
+effektiv bezeichnet die Verbindung von wirksamem Querschnitt und mittragendem Querschnitt 
+1.3.5 
+Blechträger 
+Bauteil, das aus ebenen Blechen (ebenen Flachstählen oder Blechen) zusammengesetzt ist; die ebenen 
+Bleche können ausgesteift oder nicht ausgesteift sein 
+1.3.6 
+Steifen 
+Flachstäbe oder Profilstäbe, die an ein Blech angeschlossen werden, um Beulen zu verhindern oder um 
+Lasteinleitungen auszusteifen; Steifen werden bezeichnet als: 
+ Längssteifen, wenn sie parallel zur Bauteilachse laufen; 
+ Quersteifen, wenn sie quer zur Bauteilachse laufen. 
+1.3.7 
+ausgesteiftes Beulfeld (Gesamtfeld, Blech) 
+Beulfeld (Gesamtfeld, Blech) mit Quer- und/oder Längssteifen 
+1.3.8 
+Einzelfeld 
+von Quer- und /oder Längssteifen oder Flansche umrandetes, nicht weiter ausgesteiftes Blech 
+1.3.9 
+Hybridträger 
+Blechträger mit unterschiedlichen Stahlsorten für Gurte und Stege; für die hier angegebenen Regelungen wird 
+eine höhere Stahlsorte der Gurte im Vergleich zu den Stegen angenommen 
+1.3.10 
+Vorzeichenregelung 
+solange nicht anders angegeben, sind Druckkräfte bzw. Druckspannungen positiv definiert 
+1.4 Formelzeichen 
+(1) In Ergänzung zu den Formelzeichen in EN 1990 und EN 1993-1-1 werden folgende Formelzeichen 
+benutzt: 
+As die gesamte Fläche aller Längssteifen in einer ausgesteiften Platte; 
+Ast die Bruttoquerschnittsfläche einer Quersteife; 
+6 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 11 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Aeff effektive Querschnittsfläche; 
+Ac,eff wirksame Querschnittsfläche; 
+Ac,eff,loc wirksame Querschnittsfläche infolge lokalen Plattenbeulens; 
+a Länge des ausgesteiften oder nicht ausgesteiften Beulfeldes; 
+b Breite des ausgesteiften oder nicht ausgesteiften Beulfeldes; 
+bw lichter Abstand zwischen Schweißnähten bei geschweißten Abschnitten oder zwischen den 
+Enden der Radien gewalzter Abschnitte ; 
+beff mittragende Breite zur Berücksichtigung der elastischen Schubverzerrung; 
+FEd Bemessungswert der einwirkenden Querlast; 
+hw lichte Steghöhe zwischen den Flanschen; 
+Leff wirksame Lastausbreitungslänge von Querlasten unter Berücksichtigung des Beulens, 
+siehe Abschnitt 6; 
+Mf,Rd Bemessungswert der plastischen Momententragfähigkeit, wenn nur die Flanschen rechnerisch 
+angesetzt werden; 
+Mpl,Rd Bemessungswert der plastischen Momententragfähigkeit (unabhängig von der 
+Querschnittsklassifizierung); 
+MEd Bemessungswert des einwirkenden Biegemomentes; 
+NEd Bemessungswert der einwirkenden Normalkraft; 
+t Blechdicke; 
+VEd Bemessungswert der einwirkenden Schubkraft aus Querkraft und Torsion; 
+Weff effektives elastisches Widerstandsmoment; 
+ Abminderungsfaktor für die mittragende Breite zur Berücksichtigung der elastischen 
+Schubverzerrung. 
+(2) Weitere Formelzeichen sind im Text definiert. 
+2 Grundlagen für die Tragwerksplanung und Verfahren 
+2.1 Allgemeines 
+(1)P Mittragenden Breiten und die Auswirkungen von Plattenbeulen müssen berücksichtigt werden, wenn 
+dadurch der Grenzzustand der Tragfähigkeit, Gebrauchstauglichkeit oder Ermüdung wesentlich beeinflusst 
+wird. 
+ANMERKUNG Die in dieser Norm zu verwendenden Teilsicherheitsbeiwerte M0 und M1 sind für die verschiedenen 
+Anwendungsbereiche in den nationalen Anhängen von EN 1993-1 bis EN 1993-6 angegeben. 
+7 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 12 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+2.2 Effektive Breiten bei der Tragwerksberechnung 
+(1)P Die Auswirkung der ungleichförmigen Spannungsverteilung aus Schubverzerrung und des Platten-
+beulens auf die Steifigkeit der Bauteile und Verbindungen muss berücksichtigt werden, wenn sie die 
+Tragwerksberechnung wesentlich beeinflusst. 
+(2) Die Auswirkung der ungleichförmigen Spannungsverteilung aus Schubverzerrung darf bei elastischer 
+Tragwerksberechnung durch eine mittragende Breite berücksichtigt werden, die als über die gesamte 
+Spannweite konstant angenommen werden darf. 
+(3) Bei Durchlaufträgern ist in der Regel in jedem Feld als mittragende Breite auf jeder Stegseite das 
+Minimum aus der vollen geometrischen mittragenden Breite und L/8 anzusetzen, wobei L die Spannweite 
+oder bei Kragarmen die doppelte Kragarmlänge ist. 
+(4) Die Auswirkung des Plattenbeulens darf bei der elastischen Tragwerksberechnung durch die wirksame 
+Fläche der unter Druckbeanspruchung stehenden Querschnittsteile berücksichtigt werden, siehe 4.3. 
+(5) Die Auswirkung des Plattenbeulens darf bei der statischen Tragwerksberechnung vernachlässigt 
+werden, wenn die wirksame Fläche eines unter Druckbeanspruchung stehenden Querschnittsteiles größer als 
+die zugehörige 
+lim-fache Bruttoquerschnittsfläche ist. 
+ANMERKUNG 1 Der Grenzwert lim kann im nationalen Anhang angegeben sein. Der Wert lim = 0,5 wird empfohlen. 
+ANMERKUNG 2 Hinweise zur Bestimmung der Steifigkeit für den Fall, dass (5) nicht eingehalten ist, sind in Anhang E 
+angegeben. 
+2.3 Einfluss des Plattenbeulens auf die Tragfähigkeit gleichförmiger Bauteile 
+(1) Die Verfahren mit wirksamen Breiten bei Längsspannungen, die Verfahren zur Ermittlung der Tragfähig-
+keit bei Schubbeulen und bei Beulen infolge Querlasten auf den Längsrändern sowie die Interaktionsformeln 
+zur Bestimmung der Beanspruchbarkeit im Grenzzustand der Tragfähigkeit beim Zusammenwirken dieser 
+Effekte gelten für die folgenden Bedingungen: 
+ die Plattenfelder sind rechteckig und die Flansche verlaufen parallel; 
+ der Durchmesser nicht ausgesteifter Löcher oder Ausschnitte ist kleiner als 0,05 b, wobei b die 
+Beulfeldbreite ist. 
+ANMERKUNG Die Regeln dürfen auch für nicht rechteckige Beulfelder angewendet werden, wenn für den Winkel limit
+(siehe Bild 2.1) gilt: limit 10°. Ist limit > 10°, so darf das Beulfeld unter Ansatz eines rechteckigen Ersatzbeulfeldes mit 
+der größeren der beiden Abmessungen b1 und b2 des vorhandenen Beulfeldes nachgewiesen werden. 
+Bild 2.1  Definition des Winkels 
+8 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 13 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(2) Für die Berechnung von Spannungen für Gebrauchstauglichkeitsnachweise oder von Spannungs-
+schwingbreiten für Ermüdungsnachweise darf die mittragende Querschnittsfläche verwendet werden, wenn 
+die Bedingungen in 2.2(5) erfüllt sind. Für die Berechnung von Spannungen für Tragfähigkeits-
+nachweise ist in der Regel die effektive Querschnittsfläche nach 3.3 zu verwenden, wobei 
+ durch ult ersetzt 
+wird. 
+2.4 Methode der reduzierten Spannungen 
+(1) Als Alternative zu dem Verfahren mit wirksamen Breiten nach den Abschnitten 4 bis 7 dürfen die 
+Querschnitte auch der Querschnittsklasse 3 zugeordnet werden, wenn die Längsspannungen für jedes 
+Blechfeld bestimmte Grenzwerte nicht überschreiten. Diese Grenzwerte sind in Abschnitt 10 angegeben. 
+ANMERKUNG Für Einzelbleche entspricht die Methode der reduzierten Spannungen der Methode mit wirksamen 
+Breiten (siehe 2.3). Es ist zu beachten, dass bei der Methode der reduzierten Spannungen Lastumlagerungen zwischen 
+den Einzelblechen eines Bauteils nicht berücksichtigt werden. 
+2.5 Bauteile mit veränderlichem Querschnitt 
+(1) Bei Bauteilen mit veränderlichen Querschnitten (z. B. Bauteile mit nicht parallelen Gurten oder Blech-
+felder ohne Rechteckberandung) oder Bauteilen mit regelmäßigen oder unregelmäßigen großen Ausschnitten 
+dürfen Verfahren auf der Grundlage von Finite-Elemente-Berechnungen angewendet werden. 
+ANMERKUNG 1 Hinweise zu nicht gleichförmigen Bauteilen können Anhang B entnommen werden. 
+ANMERKUNG 2 Anhang C gibt Hinweise zu FE-Berechnungen. 
+2.6 Bauteile mit profilierten Stegblechen 
+(1) Bei der Berechnung von Bauteilen mit profilierten Stegblechen ist in der Regel anzunehmen, dass die 
+Biegesteifigkeit allein aus den Flanschen herrührt und die profilierten Stege nur Schubkräfte und Querlasten 
+aus den Längsrändern übernehmen. 
+ANMERKUNG Anhang D gibt Hinweise zum Beulen der Druckflansche und zur Schubtragfähigkeit der Stegbleche. 
+3 Berücksichtigung der Schubverzerrungen bei der Bemessung von Bauteilen 
+3.1 Allgemeines 
+(1) In Gurten darf der Einfluss der Schubverzerrungen vernachlässigt werden, wenn die Bedingung 
+b0 < Le/50 erfüllt ist. Für einseitig gestützte Flanschteile entspricht die Flanschbreite b0 der vorhandenen 
+Flanschbreite, bei zweiseitig gestützten Flanschteilen ist b0 gleich der Hälfte der vorhandene Flanschbreite. 
+Die Länge Le ergibt sich aus dem Abstand der Momentennullpunkte, siehe 3.2.1(2). 
+(2) Wird die in (1) angegebene Bedingung nicht erfüllt, sind in der Regel bei den Nachweisen sowohl im 
+Gebrauchstauglichkeitszustand als auch bei den Nachweisen für die Werkstoffermüdung die Einflüsse der 
+Schubverzerrungen auf das Tragverhalten der Gurte zu berücksichtigen. Hierzu wird die mittragende Breite 
+nach 3.2.1 bestimmt und die Spannungsverteilung nach 3.2.2 angenommen. Für Nachweise im Grenzzustand 
+der Tragfähigkeit dürfen effektive Breiten nach 3.3 eingesetzt werden. 
+(3) Elastische Spannungen sind in der Regel nach 3.2.3 zu ermitteln, wenn diese aus einer in Blechebene 
+wirkenden lokalen Lasteinleitung resultieren, wobei die Lasteinleitung über den Gurt in den Steg erfolgt. 
+9 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 14 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+3.2 Mittragende Breiten zur Berücksichtigung der Schubverzerrungen bei elastischem 
+Werkstoffverhalten 
+3.2.1 Mittragende Breiten 
+(1) Zur Berücksichtigung elastischer Schubverzerrungen ist die mittragende Breite beff in der Regel wie 
+folgt zu ermitteln: 
+beff = b0 (3.1) 
+Der Faktor ist Tabelle 3.1 zu entnehmen. 
+Diese mittragende Breite darf bei den Nachweisen sowohl im Gebrauchstauglichkeitszustand als auch bei den 
+Nachweisen für die Werkstoffermüdung verwendet werden. 
+(2) Unterscheiden sich angrenzende Feldweiten um nicht mehr als 50 % bzw. sind die Kragarme nicht 
+länger als 50 % der angrenzenden Feldweite, so darf die mittragende Länge L e nach Bild 3.1 bestimmt 
+werden. In anderen Fällen ist in der Regel Le als der Abstand zwischen zwei Momentennullpunkten abzu-
+schätzen. 
+Bild 3.1  Effektive Länge Le für Durchlaufträger und Verteilung der mittragenden Breite 
+10 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 15 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Legende 
+1 einseitig gestütztes Flanschteil 
+2 zweiseitig gestütztes Flanschteil 
+3 Blechdicke t
+4 Längssteifen mit 
+iss AA
+Bild 3.2  Bezeichnungen für die mittragende Breite 
+Tabelle 3.1  Abminderungsfaktor für die mittragende Breite 
+Nachweisort -Wert 
+ 0,02 = 1,0 
+Feldmoment 21
+4,61
+1
+0,02 < 0,70 
+Stützmoment 2
+2
+615002
+10,61
+1
+,
+Feldmoment 9,5
+1
+1
+> 0,70 
+Stützmoment 6,8
+1
+2
+alle Endauflager 0 = (0,55 + 0,025/ ) 1, jedoch 0 < 1
+alle Kragarm = 2 am Auflager und am Kragarmende 
+ = 0 b0/Le mit tb
+A
+0
+s
+0 1
+Dabei ist As die Querschnittsfläche aller Längssteifen innerhalb der Breite b0. Weitere Formelzeichen sind in 
+Bild 3.1 und Bild 3.2 angegeben. 
+3.2.2 Spannungsverteilung unter Berücksichtigung der Schubverzerrung 
+(1) Zur Berücksichtigung der Schubverzerrungen sind in der Regel die in Bild 3.3 dargestellten Verteilungen 
+der Längsspannungen über die Platte anzusetzen. 
+11 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 16 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+4
+0212
+12
+/1
+20,025,1
+:20,0
+byy 4
+11
+2
+/1
+0
+:20,0
+byy
+1 wird mit der mittragenden Breite beff des Obergurtes ermittelt. 
+Bild 3.3  Verteilung der Längsspannungen über das Obergurtblech unter Berücksichtigung 
+der Schubverzerrungen 
+3.2.3 Lasteinleitung in Blechebene 
+(1) Die elastische Spannungsverteilung in einer nicht ausgesteiften oder ausgesteiften Platte infolge einer 
+lokalen Lasteinleitung in der Blechebene ist in der Regel wie folgt zu ermitteln, siehe Bild 3.4: 
+
+1st,w
+Ed
+Edz,
+atb
+F
+eff
+ (3.2) 
+mit 
+2
+e
+eeff 1 ns
+zsb
+w
+1st,878,01636,0 tn a
+fse 2 tss
+Dabei ist 
+ast,1 die Bruttoquerschnittsfläche der direkt belasteten Steifen dividiert durch  die Längeneinheit 
+der Breite se, d. h., auf der sicheren Seite, die gesamte Fläche der Steifen je Schwerpunkt-
+abstand sst; 
+12 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 17 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+
+se ist die Länge der starren Lasteinleitung; 
+sst ist der Abstand der Steifen; 
+tw die Stegblechdicke; 
+z der Abstand zum Flansch. 
+ANMERKUNG Gleichung (3.2) gilt für sst/se 0,5; anderenfalls ist in der Regel die Wirkung der Steifen zu vernach-
+lässigen. 
+Legende 
+1 Steife 
+2 vereinfachte Spannungsverteilung 
+3 tatsächliche Spannungsverteilung
+Bild 3.4  Lasteinleitung in Blechebene 
+ANMERKUNG Die oben gezeigte Spannungsverteilung darf auch bei Nachweisen für die Werkstoffermüdung 
+verwendet werden. 
+3.3 Berücksichtigung der Schubverzerrungen im Grenzzustand der Tragfähigkeit 
+(1) Im Grenzzustand der Tragfähigkeit dürfen die Schubverzerrungen wie folgt berücksichtigt werden: 
+a) wie elastische Schubverzerrungen entsprechend den Nachweisen im Grenzzustand der Gebrauchs-
+tauglichkeit und den Nachweisen für die Werkstoffermüdung; 
+b) für die gleichzeitige Wirkung von Schubverzerrungen und Plattenbeulen; 
+c) für die elastisch-plastische Wirkung von Schubverzerrungen unter Berücksichtigung der Begrenzung 
+plastischer Dehnungen. 
+13 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 18 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ANMERKUNG 1 Die zu verwendende Vorgehensweise darf im nationalen Anhang festgelegt werden. Solange nicht in 
+EN 1993-2 bis EN 1993-6 anders festgelegt, wird die Anwendung der in ANMERKUNG 3 angegebenen Vorgehensweise 
+empfohlen. 
+ANMERKUNG 2 Die gleichzeitige Wirkung von Plattenbeulen und Schubverzerrungen darf mittels der effektiven 
+Querschnittsfläche Aeff wie folgt berücksichtigt werden: 
+ulteffc,eff AA (3.3) 
+Dabei ist 
+Ac,eff die wirksame Querschnittsfläche eines Druckgur tes unter Berücksichtigung von Plattenbeulen 
+nach 4.4 und 4.5; 
+ult der Abminderungsfaktor für die mittragende Breite zur Berücksichtigung der Schubverzerrungen 
+im Grenzzustand der Tragfähigkeit. ult darf mit nach Tabelle 3.1 angesetzt werden, jedoch unter 
+Verwendung von 
+f0
+effc,*
+0 tb
+A (3.4) 
+tf die Gurtblechdicke. 
+ANMERKUNG 3 Die elastisch-plastische Wirkung von Schubverzerrungen unter Berücksichtigung der Begrenzung 
+plastischer Dehnungen darf mittels der effektiven Querschnittsfläche Aeff wie folgt berücksichtigt werden: 
+effc,effc,eff AAA (3.5) 
+mit und nach Tabelle 3.1. 
+Die Gleichungen in ANMERKUNG 2 und ANMERKUNG 3 dürfen auch für Gurte unter Zugbeanspruchung 
+angesetzt werden; hierbei ist Ac,eff in der Regel durch die Bruttoquerschnittsfläche des Zuggurtes zu ersetzen. 
+4 Plattenbeulen bei Längsspannungen im Grenzzustand der Tragfähigkeit 
+4.1 Allgemeines 
+(1) Dieser Abschnitt gilt für Beulnachweise von Be ulfeldern mit Längsdruckspannungen im Grenzzustand der 
+Tragfähigkeit, wenn die folgenden Bedingungen zutreffen: 
+a) die Beulfelder sind rechteckig und die Flansche näherungsweise parallel (siehe 2.3); 
+b) soweit Steifen vorhanden sind, verlaufen diese in Längs- und/oder Querrichtung; 
+c) Löcher oder Ausschnitte sind klein (siehe 2.3); 
+d) die Bauteile sind gleichförmig; 
+e) flanschinduziertes Stegblechbeulen ist ausgeschlossen. 
+ANMERKUNG 1 Anforderungen zur Vermeidung des Einbeulens von Druckflanschen in den Steg sind in Abschnitt 8 
+angegeben. 
+ANMERKUNG 2 Anforderungen an Steifen sowie Hinweise zur Detailausbildung sind in Abschnitt 9 angegeben. 
+14 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 19 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+4.2 Beanspruchbarkeit bei Längsspannungen 
+(1) Die Beanspruchbarkeit von Blechträgern mit Längsspannungen darf nach dem Verfahren der wirksamen 
+Fläche für druckbeanspruchte Blechelemente mit den Querschnittswerten für Querschnittsklasse 4 ( Aeff, Ieff, 
+Weff) ermittelt werden. Damit können die Querschnittsnachweise oder die Bauteilnachweise für Knicken oder 
+Biegedrillknicken nach EN 1993-1-1 geführt werden. 
+(2) Die wirksamen Flächen dürfen auf der Grundlage der linearen Spannungsverteilung infolge der 
+Anwendung der elementaren Biegetheorie ermittelt werden. Soweit nicht iterativ vorgegangen wird, sind die 
+Spannungen in der Regel auf die Streckgrenze in der Mittelebene des Druckflansches zu begrenzen. 
+4.3 Effektive Querschnittsgrößen 
+(1) Bei der Berechnung der Längsspannungen sind in der Regel die Einflüsse der Schubverzerrung und des 
+Plattenbeulens durch effektive Breiten zu berücksichtigen, siehe 3.3. 
+(2) Die effektiven Querschnittswerte von Bauteilen sind in der Regel aus den effektiven Flächen der 
+druckbeanspruchten Blechelemente und den mittragenden Flächen der zugbeanspruchten Blechelemente 
+unter Berücksichtigung ihrer Lage im Querschnitt zu ermitteln. 
+(3) Die wirksame Querschnittsfläche A
+eff wird in der Regel unter der Annahme reiner Druckspannungen 
+infolge der Druckkraft NEd berechnet. Bei unsymmetrischen Querschnitten erzeugt die Verschiebung der 
+Schwerelinie eN der wirksamen Querschnittsfläche Aeff gegenüber der Schwerelinie des Bruttoquerschnitts ein 
+zusätzliches Moment, siehe Bild 4.1, das in der Regel beim Querschnittsnachweis nach 4.6 zu berück-
+sichtigen ist. 
+(4) Das wirksame Widerstandsmoment W
+eff ist in der Regel unter der Annahme reiner Biegelängsspan-
+nungen infolge MEd zu bestimmen, siehe Bild 4.2. Bei zweiaxialer Biegung sind in der Regel die wirksamen 
+Widerstandsmomente für beide Hauptachsen zu bestimmen. 
+ANMERKUNG Alternativ zu 4.3(3) und (4) dürfen die wirksamen Querschnittswerte mit der resultierenden Verteilung 
+der Längsspannungen aus gleichzeitiger Wirkung von NEd und MEd bestimmt werden. Die Auswirkungen einer 
+Verschiebung der Schwerelinie eN ist in der Regel entsprechend 4.3(3) zu berücksichtigen, wobei ein iteratives Vorgehen 
+erforderlich ist. 
+(5) Die Spannungen in den Flanschen sind in der Regel mit dem elastischen Widerstandsmoment, bezogen 
+auf die Mittelebene des Gurtbleches, zu berechnen. 
+(6) Hybridträger dürfen mit Werkstoffen im Gurt mit einer Streckgrenze fyf bis zu h fyw des Stegwerkstoffs 
+berechnet werden, wenn gilt: 
+a) die Erhöhung der Spannungen im Gurt infolge Fließens im Steg wird durch eine Begrenzung der 
+Stegspannungen auf fyw berücksichtigt; 
+b) die wirksame Fläche des Steges wird mit fyf gestrichener Text ermittelt. 
+ANMERKUNG Der Wert h darf im nationalen Anhang festgelegt werden. Der Wert h = 2,0 wird empfohlen. 
+(7) Die Vergrößerung der Verformungen und Spannungen infolge Hybridwirkung nach 4.3(6) unter Berück-
+sichtigung der ANMERKUNG darf bei Gebrauchstauglichkeitsnachweisen und Ermüdungsnachweisen 
+vernachlässigt werden. 
+(8) Bei Hybridträgern, die die Bedingungen in 4.3(6) erfüllen, darf für die Begrenzung des Spannungs-
+schwingspiels in EN 1993-1-9 der Wert 1,5 fyf zugrunde gelegt werden. 
+15 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 20 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ Bruttoquerschnitt Wirksamer Querschnitt 
+Legende 
+G Schwerpunkt des Bruttoquerschnitts 
+G´ Schwerpunkt des wirksamen Querschnitts 
+1 Schwerelinie des Bruttoquerschnitts 
+2 Schwerelinie des wirksamen Querschnitts 
+3 nicht wirksame Querschnittsflächen 
+Bild 4.1  Wirkung von Normalkräften bei Querschnitten der Klasse 4 
+ Bruttoquerschnitt Wirksamer Querschnitt 
+Legende 
+G Schwerpunkt des Bruttoquerschnitts 
+G´ Schwerpunkt des wirksamen Querschnitts 
+1 Schwerelinie des Bruttoquerschnitts 
+2 Schwerelinie des wirksamen Querschnitts 
+3 nicht wirksame Querschnittsflächen 
+Bild 4.2  Wirkung von Biegemomenten bei Querschnitten der Klasse 4 
+4.4 Einzelblechfelder ohne Längssteifen 
+(1) Die wirksamen Flächen ebener druckbeanspruchter Blechfelder sind in der Regel für beidseitig gestützte 
+Querschnittsteile der Tabelle 4.1 und für einseitig gestützte Querschnittsteile der Tabelle 4.2 zu entnehmen. 
+Die wirksame Fläche eines druckbeanspruchten Teils eines Blechfeldes mit der wirklichen Fläche Ac wird in 
+der Regel wie folgt ermittelt. 
+16 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 21 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Ac,eff = Ac (4.1) 
+Dabei ist der Abminderungsfaktor für Beulen. 
+(2) Der Abminderungsfaktor darf wie folgt ermittelt werden: 
+ beidseitig gestützte Querschnittsteile: 
+= 1,0 für  p 0,5 055,0085,0 
+0,13055,0
+2
+p
+p für  p 0,5 055,0085,0  gestrichener Text (4.2) 
+ einseitig gestützte Querschnittsteile: 
+= 1,0 für 748,0p
+0,1188,0
+2
+p
+p für 748,0p (4.3) 
+mit 
+k
+tbf
+4,28
+/
+cr
+y
+p
+ Spannungsverhältnis nach 4.4(3) und 4.4(4); 
+b maßgebende Breite nach folgender Festlegung (Bezeichnungen siehe EN 1993-1-1, 
+Tabelle 5.2); 
+bw für Stege; 
+b für beidseitig gestützte Gurtelemente (außer bei rechteckigen Hohlprofilen); 
+b  3 t für Gurte von rechteckigen Hohlprofilen; 
+c für einseitig gestützte Gurtelemente; 
+h für gleichschenklige Winkel; 
+h für ungleichschenklige Winkel; 
+k Beulwert in Abhängigkeit vom Spannungsverhältnis und den Lagerungsbedingungen; Beul-
+werte langer Platten sind in Tabelle 4.1 oder Tabelle 4.2 angegeben; 
+t Blechdicke; 
+cr kritische elastische Beulspannung (siehe Gleichung (A.1) in A.1(2) und Tabelle 4.1 und 
+Tabelle 4.2); 
+]N/mm[
+235
+2
+yf
+. 
+(3) Für Gurte von I-Querschnitten und Kastenträgern sind in der Regel die Spannungsverteilungen für die 
+Anwendung der Tabelle 4.1 und Tabelle 4.2 mit Bruttoquerschnittswerten zu bestimmen, wobei auf eine 
+mögliche Reduzierung der Bruttoquerschnittswerte durch mittragende Breiten zu achten ist. Für Stegelemente 
+17 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 22 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ist in der Regel das Spannungsverhältnis für die Tabelle 4.1 mit der Spannungsverteilung zu ermitteln, die 
+sich aus der wirksamen Breite der Druckflansche und dem Bruttoquerschnitt des Steges ergibt. 
+ANMERKUNG Sind Spannungsverteilungen für verschiedene Montagezustände (z. B. bei Verbundbrücken) zu berück-
+sichtigen, so dürfen im ersten Schritt die Spannungsverteilungen für einen Querschnitt berechnet werden, der sich aus 
+den effektiven Gurtflächen und den Bruttoquerschnitten der Stege zusammensetzt. Mit der hieraus resultierenden 
+Spannungsverteilung darf die wirksame Querschnittsfläche der Stege bestimmt werden; diese wirksame Querschnitts-
+fläche der Stege darf für alle Montagezustände zur Bestimmung der endgültigen Spannungsverteilung verwendet werden. 
+(4) Mit der Einschränkung in 4.4(5) darf der Beulschlankheitgrad p eines Blechfeldes ersetzt werden durch: 
+0My
+Edcom,
+predp,
+/f (4.4) 
+Dabei ist 
+com,Ed der größte Bemessungswert der einwirkenden Druckbeanspruchung in dem Blechfeld unter 
+Berücksichtigung aller einwirkenden Lasten. 
+ANMERKUNG 1 Dieses Vorgehen erfordert im Allgemeinen eine iterative Berechnung, in der das Spannungsverhältnis 
+ (siehe Tabelle 4.1 und Tabelle 4.2) in jedem Schritt neu aus der Spannungsverteilung mit dem wirksamen Querschnitt 
+des vorherigen Iterationsschritts ermittelt wird. 
+ANMERKUNG 2 Eine alternative Vorgehensweise ist in Anhang E angegeben. 
+(5) Beim Knicknachweis von Bauteilen der Querschnittsklasse 4 nach EN 1993-1-1, 6.3.1, 6.3.2 oder 6.3.4 
+ist in der Regel entweder der Beulschlankheitsgrad p oder redp, mit com,Ed anzuwenden, wobei com,Ed
+nach Theorie II. Ordnung unter Berücksichtigung globaler Imperfektionen ermittelt wird. 
+(6) Bei Beulfeldabmessungen, bei denen knickstabähnliches Verhalten auftreten kann (z. B. für a/b < 1), ist 
+der Nachweis in der Regel nach 4.5.4 unter Verwendung der Abminderungsfaktoren c zu führen. 
+ANMERKUNG Dies betrifft z. B. schmale Einzelfelder zwischen Quersteifen, bei denen das Plattenbeulen knickstab-
+ähnlich ist und einen Abminderungsfaktor c in der Größenordnung des Abminderungsfaktors c für Stabknicken erfordert, 
+siehe Bild 4.3 a) und b). Bei längs ausgesteiften Blechfeldern mit a/b 1 kann ebenfalls knickstabähnliches Verhalten 
+auftreten, siehe Bild 4.3 c). 
+18 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 23 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+a) knickstabähnliches Verhalten eines 
+Beulfeldes ohne Lagerung 
+in Längsrichtung 
+b) knickstabähnliches Verhalten eines nicht 
+ausgesteiften Beulfeldes mit 
+kleinem Seitenverhältnis
+c) knickstabähnliches Verhalten eines längs ausgesteiften 
+Blechfeldes mit großem Seitenverhältnis
+Bild 4.3  Knickstabähnliches Verhalten 
+Tabelle 4.1  Zweiseitig gestützte druckbeanspruchte Querschnittsteile 
+Spannungsverteilung (Druck positiv) Wirksame Breite beff
+= 1: beff = b
+be1 = 0,5 beff be2 = 0,5 beff
+1 > 0: beff = b
+ff1e 5
+2
+ebb be2 = beff  be1
+ < 0: beff = bc = b/(1  ) 
+be1 = 0,4 beff be2 = 0,6 beff
+ = 2/ 1 1 1 > > 0 0 0 > > 1 1 -1 -3
+Beulwert k 4,0 8,2/(1,05 + ) 7,81 7,81  6,29 + 9,78 2 23,9 5,98 (1  )2
+19 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 24 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Tabelle 4.2  Einseitig gestützte druckbeanspruchte Querschnittsteile 
+Spannungsverteilung (Druck positiv) Wirksame Breite beff
+1 > 0: beff = c
+ < 0: beff = bc = c/(1  ) 
+ = 2/ 1 1 0 1 1 3 
+Beulwert k 0,43 0,57 0,85 0,57  0,21 + 0,07 2
+1 > 0: beff = c
+ < 0: beff = bc = c/(1  ) 
+ = 2/ 1 1 1 > > 0 0 0 > > 1 1 
+Beulwert k 0,43 0,578/( + 0,34) 1,70 1,7  5 + 17,1 2 23,8 
+4.5 Längs ausgesteifte Blechfelder 
+4.5.1 Allgemeines 
+(1) Bei längs ausgesteiften Blechfeldern sind in der Regel sowohl die wirksamen Flächen infolge lokalen 
+Beulens der Einzelfelder im Blech und in den Steifen als auch die wirksamen Flächen aus den Gesamtfeld-
+beulen des ausgesteiften Gesamtfeldes zu berücksichtigen. 
+(2) In einer zweischrittigen Vorgehensweise sind in der Regel zunächst die wirksamen Flächen der 
+Einzelfelder mit Hilfe des Abminderungsfaktors nach 4.4 zur Berücksichtigung des Einzelfeldbeulens zu 
+bestimmen. Im zweiten Schritt ist in der Regel die wirksame Fläche des ausgesteiften Gesamtfeldes aus den 
+wirksamen Flächen der Steifen mit Hilfe des Abminderungsfaktors 
+c zur Berücksichtigung des 
+Gesamtfeldbeulens (z. B. über das Modell der äquivalenten orthotropen Platte) zu ermitteln. 
+20 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 25 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(3) Die wirksame Fläche der Druckzone eines ausgesteiften Blechfeldes ist in der Regel mit: 
+tbAA effedge,loceff,c,ceffc, (4.5) 
+anzusetzen, wobei Ac,eff,loc aus den wirksamen Flächen aller Steifen und Einzelfelder besteht, die sich ganz 
+oder teilweise im Druckbereich befinden, mit Ausnahme derjenigen wirksamen Querschnittsteile der Breite 
+bedge,eff, die durch ein angrenzendes Plattenbauteil gestützt werden (siehe Beispiel in Bild 4.4). 
+(4) Die Fläche Ac,eff,loc ist in der Regel mit: 
+tbAA locc,
+c
+loceff,sloceff,c, (4.6) 
+zu ermitteln. 
+Dabei ist 
+c
+ bezieht sich auf den im Druckbereich liegenden Teil des längs ausgesteiften Blechfeldes mit 
+Ausnahme der Querschnittsteile bedge,eff, siehe Bild 4.4; 
+As ,eff die Summe der wirksamen Fläche aller Längssteifen mit der Bruttoquerschnittsfläche As in der 
+Druckzone nach 4.4; 
+bc,loc die Breite der Druckzone in einem Einzelfeld; 
+loc der Abminderungsfaktor nach 4.4(2) für das Einzelfeld. 
+Bild 4.4  Längsausgesteiftes Blechfeld unter konstanter Druckbeanspruchung 
+ANMERKUNG Bei nicht konstanter Verteilung der Druckspannungen siehe Bild A.1. 
+(5) Bei der Ermittlung des Abminderungsfaktors c für das Gesamtfeldbeulen ist in der Regel auf die 
+Möglichkeit knickstabähnlichen Verhaltens mit größerer Abminderung als beim Plattenbeulen zu achten. 
+(6) Der Abminderungsfaktor c ist in der Regel durch Interpolation zwischen dem Abminderungsfaktor für 
+plattenartiges Verhalten und dem Abminderungsfaktor c für knickstabähnliches Verhalten nach 4.5.4 zu 
+ermitteln. 
+21 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 26 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(7) Die Abminderung der unter Druckbeanspruchung stehenden Fläche Ac,eff,loc durch c darf als über diesen 
+Gesamtquerschnitt gleichmäßig verteilt angenommen werden. 
+(8) Sind mittragende Breiten zu berücksichtigen (siehe 3.3), ist in der Regel für die unter Druck-
+beanspruchung stehenden Querschnittsteile eines längs ausgesteiften Blechfeldes anstelle der wirksamen 
+Querschnittsfläche A c,eff die effektive Querschnittsfläche zur Berücksichtigung sowohl der Platten-
+beuleffekte als auch der Effekte aus Schubverzerrungen zu verwenden. 
+*
+effc,A
+(9) Als wirksame Querschnittsfläche der unter Zug stehenden Flächen des ausgesteiften Beulfeldes ist in 
+der Regel die Bruttofläche der Zugzone anzunehmen, wobei gegebenenfalls mittragende Breiten zu 
+berücksichtigten sind, siehe 3.3. 
+(10) Das wirksame Widerstandsmoment Weff ist in der Regel als Flächenträgheitsmoment des wirksamen 
+Gesamtquerschnitts geteilt durch den Randabstand zur Mittelebene des Gurtbleches anzusetzen. 
+4.5.2 Plattenartiges Verhalten 
+(1) Der Schlankheitsgrad p einer äquivalenten orthotropen Platte ist wie folgt definiert: 
+pcr,
+ycA,
+p
+f
+ (4.7) 
+mit 
+c
+loceff,c,
+cA, A
+A
+Dabei ist 
+Ac die Bruttoquerschnittsfläche des längs ausgesteiften Blechfeldes ohne Berücksichtigung der 
+durch ein angrenzendes Plattenbauteil gestützten Randbleche, siehe Bild 4.4 ( Ac ist 
+gegebenenfalls mit einem Faktor zur Berücksichtigung der Effekte aus Schubverzerrungen zu 
+multiplizieren, siehe 3.3); 
+Ac,eff,loc die effektive Querschnittsfläche (ggf. unter Berücksichtigung von Schubverzerrungen) des 
+oben beschriebenen Bereiches des längsausgesteiften Blechfeldes unter Berücksichtigung des 
+Einzelfeldbeulens und/oder des Gesamtfeldbeulens. 
+(2) Der Abminderungsfaktor für die äquivalente orthotrope Platte wird nach 4.4(2) bestimmt; Voraus-
+setzung hierfür ist die Ermittlung von p nach Gleichung (4.7). 
+ANMERKUNG Anhang A gibt Hinweise zur Berechnung von cr,p. 
+4.5.3 Knickstabähnliches Verhalten 
+(1) Als elastische kritische Knickspannung cr,c eines unausgesteiften Blechfeldes (siehe 4.4) oder eines 
+ausgesteiften Blechfeldes (siehe 4.5) ist in der Regel die Knickspannung anzusetzen, die sich bei Freisetzen 
+der Längsränder ergibt. 
+22 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 27 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(2) Die elastische kritische Knickspannung cr,c eines unausgesteiften Blechfeldes darf mit: 
+22
+22
+ccr,
+112 a
+tE (4.8) 
+bestimmt werden. 
+(3) Bei einem ausgesteiften Blechfeld darf cr,c mit Hilfe der Knickspannung cr,st der am höchstbelasteten 
+Druckrand liegenden Steife ermittelt werden: 
+2
+,1s
+,1s
+2
+scr,
+aA
+IE
+ (4.9) 
+Dabei ist 
+,1sI das Flächenträgheitsmoment unter Ansatz der Bruttoquerschnittsfläche der als Ersatzdruckstab 
+betrachteten Steife und der angrenzenden mittragenden Blechstreifen bezogen auf Knicken 
+senkrecht zur Blechebene; 
+,1sA die Bruttoquerschnittsfläche des Ersatzdruckstabes, die sich aus der Steife und den angrenzen-
+den mittragenden Blechstreifen entsprechend Bild A.1 zusammensetzt. 
+ANMERKUNG Der Wert cr,c darf aus 
+,1s
+c
+scr,ccr, b
+b ermittelt werden, wobei cr,c für den Druckrand gilt. 
+und bc bezeichnen die Abstände aus der Spannungsverteilung, die für die Extrapolation benötigt werden, siehe Bild A.1. 
+,1sb
+(4) Der Schlankheitsgrad c des Ersatzdruckstabes ist wie folgt definiert: 
+ccr,
+y
+c
+f
+ bei nicht ausgesteiften Blechfeldern (4.10) 
+ccr,
+ycA,
+c
+f
+ bei ausgesteiften Blechfeldern (4.11) 
+Dabei ist 
+,1s
+eff,1,s
+cA, A
+A ; 
+,1sA nach 4.5.3(3) und 
+eff,1,sA die wirksame Querschnittsfläche der Steife und der angrenzenden mittragenden Blechstreifen 
+unter Berücksichtigung des Beulens, siehe Bild A.1. 
+23 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 28 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(5) Der Abminderungsfaktor c ist in der Regel nach EN 1993-1-1, 6.3.1.2 zu bestimmen. Der Imperfektions-
+beiwert hat bei nicht ausgesteiften Blechfeldern in der Regel der Knickkurve a mit = 0,21 zu entsprechen. 
+Bei ausgesteiften Blechfeldern ist in der Regel zur Berücksichtigung größerer Imperfektionen geschweißter 
+Platten durch den vergrößerten Wert e: 
+ei /
+09,0
+e (4.12) 
+zu ersetzen. 
+Dabei ist 
+,1s
+,1s
+A
+Ii
+e = max ( e1, e2) der größere der beiden Abstände nach Bild A.1, d. h. entweder der Abstand zwischen 
+dem Schwerpunkt der vom Blech isoliert betrachteten, einseitig angebrachten Einzelsteifen ohne 
+mitwirkende Breite (bei zweiseitig angebrachten Steifen wird hierbei nur eine Seite betrachtet) zur 
+Schwereachse des ausgesteiften Blechfeldes oder der Abstand der Schwereachse des ausge-
+steiften Blechfeldes zur Mittelebene des Bleches; 
+ = 0,34 (Kurve b) für Hohlsteifenquerschnitte; 
+= 0,49 (Kurve c) für offene Steifenquerschnitte. 
+4.5.4 Interaktion zwischen plattenartigem und knickstabähnlichem Verhalten 
+(1) Der endgültige Abminderungsfaktor c wird in der Regel mit Hilfe der Interaktionsgleichung: 
+ccc 2 (4.13) 
+ermittelt. 
+Dabei ist 
+1
+ccr,
+pcr, jedoch 10 ; 
+cr,p die elastische Plattenbeulspannung, siehe A.1(2); 
+cr,c die elastische Knickspannung, siehe 4.5.3(2) und (3); 
+c der Abminderungsbeiwert zur Berücksichtigung knickstabähnlichen Verhaltens; 
+ der Abminderungsbeiwert zur Berücksichtigung des Plattenbeulens, siehe 4.4(1). 
+24 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 29 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+4.6 Nachweis 
+(1) Der Bauteilnachweis mit Hilfe von Normalkraft und wirksamer Querschnittsgrößen für 
+Längsspannungen lautet in der Regel wie folgt: 
+0,1
+0M
+effy
+NEdEd
+0M
+effy
+Ed
+1 Wf
+eNM
+Af
+N (4.14) 
+Dabei ist 
+Aeff die wirksame Querschnittsfläche nach 4.3(3); 
+eN die Verschiebung der neutralen Achse nach 4.3(3); 
+MEd der Bemessungswert des einwirkenden Biegemomentes; 
+NEd der Bemessungswert der einwirkenden Normalkraft; 
+Weff das wirksame Widerstandsmoment, siehe 4.3(4); 
+M0 der Teilsicherheitsbeiwert, siehe EN 1993-2 bis -6. 
+ANMERKUNG Gleichung (4.14) darf für Bauteile unter Normalkraft und zweiaxialer Biegung wie folgt erweitert werden: 
+0,1
+0M
+effz,y
+Nz,EdEdz,
+0M
+effy,y
+Ny,EdEdy,
+0M
+effy
+Ed
+1 Wf
+eNM
+Wf
+eNM
+Af
+N (4.15) 
+Dabei ist 
+My,Ed, Mz,Ed die Bemessungswerte der einwirkenden Biegemomente um die y-y- bzw. die z-z-Achse; 
+ey,N, ez,N die Verschiebungen der jeweiligen neutralen Achse. 
+(2) Die Schnittgrößen MEd und NEd sind gegebenenfalls nach Theorie II. Ordnung zu berechnen. 
+(3) Für eine längs des Beulfeldes veränderliche Spannung ist in der Regel der Beulnachweis für die 
+Schnittgrößen an der Querschnittsstelle zu führen, die sich im Abstand 0,4 a oder 0,5 b (kleinster Wert) von 
+dem Beulfeldrand befindet, an dem die größten Spannungen auftreten. In diesem Fall muss am Beulfeldrand 
+zusätzlich ein Querschnittsnachweis geführt werden. 
+5 Schubbeulen 
+5.1 Grundlagen 
+(1) Die Regeln dieses Abschnittes zur Bestimmung der Querkrafttragfähigkeit von Plattenelementen unter 
+Berücksichtigung von Schubbeulen gelten unter folgenden Voraussetzungen: 
+a) die Beulfelder sind rechteckig und die Flansche näherungsweise parallel (siehe 2.3); 
+b) soweit Steifen vorhanden sind, laufen diese in Längs- und/oder Querrichtung; 
+25 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 30 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+c) Löcher oder Ausschnitte sind klein (siehe 2.3); 
+d) die Bauteile sind gleichförmig. 
+(2) Für nicht ausgesteifte Blechfelder mit einem Verhältnis hw/t > 72 und für ausgesteifte Blechfelder mit 
+einem Verhältnis hw/t > k31 ist in der Regel ein Schubbeulnachweis zu führen und es sind Quersteifen 
+an den Lagern vorzusehen; es gilt: 
+2
+y N/mm
+235
+f
+. 
+ANMERKUNG 1 hw ist in Bild 5.1 und k in 5.3(3) angegeben. 
+ANMERKUNG 2 Der nationale Anhang darf festlegen. Der Wert = 1,20 wird empfohlen für Stahlsorten bis S460, für 
+Stahlsorten höher als S460 wird = 1,0 empfohlen. 
+5.2 Bemessungswert der Beanspruchbarkeit 
+(1) Bei nicht ausgesteiften und ausgesteiften Stegen ist in der Regel der Bemessungswert der Beanspruch-
+barkeit Vb,Rd unter Berücksichtigung des Schubbeulens wie folgt zu ermitteln: 
+M1
+wyw
+Rdbf,Rdbw,Rdb,
+3
+thf
+VVV (5.1) 
+Der Beitrag des Steges ergibt sich zu: 
+1M
+wyww
+Rdbw,
+3
+thf
+V (5.2) 
+Der Beitrag der Flansche Vbf,Rd wird nach 5.4 bestimmt. 
+(2) Steifen haben in der Regel den Anforderungen nach 9.3 zu genügen; die Schweißnähte sind in der Regel 
+nach 9.3.5 auszubilden. 
+Querschnitts-
+definitionen 
+a) keine 
+Auflagersteife 
+b) starre 
+Auflagersteife 
+c) verformbare 
+Auflagersteife 
+Bild 5.1  Kriterien für Auflagersteifen 
+26 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 31 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+5.3 Beitrag des Steges 
+(1) Bei Stegen mit Quersteifen nur an den Auflagern (Auflagersteifen) und bei Stegen, die quer und/oder 
+längs ausgesteift sind, ist in der Regel der Faktor w für den Stegbeitrag zur Beanspruchbarkeit nach 
+Tabelle 5.1 oder Bild 5.2 zu bestimmen. 
+Tabelle 5.1  Beitrag des Steges w zur Schubbeanspruchbarkeit 
+Starre Auflagersteife Verformbare Auflagersteife 
+/83,0w
+08,1/83,0 w w/83,0 w/83,0
+08,1w w7,0/37,1 w/83,0
+ANMERKUNG Siehe auch 6.2.6 in EN 1993-1-1. 
+(2) Es werden nach Bild 5.1 folgende Fälle unterschieden: 
+a) keine Auflagersteifen; siehe 6.1(2), Typ (c); 
+b) starre Auflagersteifen; dieser Fall gilt auch für Innenfelder außer dem Feld am Endauflager und für Felder 
+an Zwischenlagern von durchlaufenden Trägern, siehe 9.3.1; 
+c) verformbare Auflagersteifen, siehe 9.3.2. 
+(3) Die modifizierte Schlankheit w in Tabelle 5.1 und Bild 5.2 ist in der Regel mit: 
+cr
+yw
+w 76,0
+f
+ (5.3) 
+zu bestimmen. Für die kritische Beulspannung cr gilt: 
+Ecr k (5.4) 
+ANMERKUNG 1 Werte für E und k dürfen Anhang A entnommen werden. 
+ANMERKUNG 2 Die modifizierte Schlankheit w darf wie folgt ermittelt werden: 
+a) nur Auflagersteifen: 
+t
+h
+4,86
+ww (5.5) 
+b) Auflagersteifen und zusätzlich in Querrichtung und/oder in Längsrichtung laufenden Steifen: 
+kt
+h
+4,37
+ww (5.6) 
+wobei k der kleinste Schubbeulwert des Stegfeldes ist. 
+27 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 32 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ANMERKUNG 3 Werden zusätzlich zu starren Quersteifen auch verformbare Quersteifen verwendet, sollten sowohl die 
+Stegfelder zwischen allen Quersteifen (z. B. a2 hw und a3 hw) als auch das Stegfeld zwischen nur starren Quersteifen, 
+zwischen denen sich verformbare Quersteifen befinden (z. B. a4 hw), im Hinblick auf das kleinste k geprüft werden. 
+ANMERKUNG 4 Sind Flansche und starre Quersteifen vorhanden, darf eine starre Randlagerung angenommen 
+werden. In diesem Fall kann die Schubbeuluntersuchung für Beulfelder zwischen zwei Quersteifen (z. B. a1 hw in 
+Bild 5.3) erfolgen. 
+ANMERKUNG 5 Bei verformbaren Quersteifen darf der kleinste Wert k durch eine Eigenwertbestimmung für folgende 
+Subsysteme ermittelt werden: 
+1. zwei benachbarte Stegblechfelder mit einer verformbaren Quersteife; 
+2. drei benachbarte Stegblechfelder mit zwei verformbaren Quersteifen. 
+Hinweise zur Bestimmung von k gibt A.3. 
+(4) Das Flächenträgheitsmoment der Steifen ist in der Regel bei der Ermittlung von k auf 1/3 seines 
+wirklichen Wertes zu reduzieren. Diese Reduktion ist bereits in den Gleichungen in A.3 enthalten. 
+w
+w
+Legende 
+1 starre Auflagersteife 
+2 verformbare Auflagersteife 
+3 Bereich der empfohlenen Werte für 
+Bild 5.2  Beitrag des Steges w zur Schubbeanspruchbarkeit 
+28 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 33 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(5) Bei Stegen mit Längssteifen ist in der Regel die modifizierte Schlankheit w in (3) mit mindestens 
+dem Wert von 
+i
+iww
+4,37 kt
+h (5.7) 
+anzusetzen, wobei sich hwi und k i auf das Einzelfeld mit der modifizierten Schlankheit dem größten 
+Einzelfeldschlankheitsgrad w beziehen. 
+ANMERKUNG Zur Berechnung von k i darf der Ausdruck in A.3 mit k st = 0 verwendet werden. 
+a) b) 
+Legende 
+1 starre Quersteife 
+2 Längssteife 
+3 verformbare Quersteife
+Bild 5.3  Stegblech mit Quer- und Längssteifen 
+5.4 Beitrag der Flansche 
+(1) Werden die Flansche bei Annahme eines Zweipunktquerschnittes nicht vollständig für die Querschnitts-
+beanspruchung ausgenutzt (MEd < Mf,Rd), darf der Flanschbeitrag zur Schubbeanspruchbarkeit berücksichtigt 
+werden. Dieser wird in der Regel wie folgt ermittelt: 
+2
+Rdf,
+Ed
+1M
+yf
+2
+ff
+Rdbf, 1 M
+M
+c
+ftb
+V (5.8) 
+Dabei ist 
+bf und tf gelten für den Flansch, der die kleinere Beanspruchbarkeit für Normalkräfte liefert; 
+bf sollte an jeder Stegseite nicht größer als 15 tf angenommen werden; 
+0M
+kf,
+Rdf,
+MM der Bemessungswert der Biegebeanspruchbarkeit bei Berücksichtigung alleine der 
+effektiven Flächen der Flansche; 
+yw
+2
+yf
+2
+ff6,1
+25,0
+fht
+ftb
+c
+w
+a . 
+29 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 34 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(2) Wirkt auch eine Normalkraft NEd, so ist der Wert von Mf,Rd in der Regel mit dem Faktor: 
+0M
+yf2f1f
+Ed1 fAA
+N (5.9) 
+zu reduzieren. Af1 und Af2 sind die Flächen der Flansche. 
+5.5 Nachweis 
+(1) Der Nachweis ist in der Regel wie folgt zu führen: 
+0,1
+Rdb,
+Ed
+3 V
+V (5.10) 
+Dabei ist 
+VEd der Bemessungswert der einwirkenden Schubkraft aus Querkraft und Torsion. 
+6 Beanspruchbarkeit bei Querbelastung 
+6.1 Grundlagen 
+(1) Die Beanspruchbarkeit eines Trägersteges für Querlasten, die über die Flansche an den Längsrändern 
+einwirken, ist für gewalzte und geschweißte Träger in der Regel nach 6.2 zu bestimmen. Dabei wird 
+vorausgesetzt, dass die Flansche infolge ihrer eigenen Querbiegesteifigkeit oder durch Verbände in ihrer 
+Lage quer gehalten werden. 
+(2) Es werden 3 Arten der Lasteinleitung unterschieden: 
+a) Lasten, die einseitig über einen Flansch eingeleitet werden und im Gleichgewicht mit Querkräften im Steg 
+stehen, siehe Bild 6.1 a); 
+b) Lasten, die beidseitig über beide Flansche eingeleitet werden und mit sich selbst im Gleichgewicht 
+stehen, siehe Bild 6.1 b); 
+c) Lasten, die in der Nähe des Trägerendes ohne Quersteifen eingeleitet werden und mit der Querkraft im 
+Steg im Gleichgewicht stehen, siehe Bild 6.1 c). 
+(3) Bei Hohlkastenträgern mit geneigten Stegen ist in der Regel die Beanspruchbarkeit sowohl der Stege als 
+auch der Gurte nachzuweisen. Die zu berücksichtigenden inneren Kräfte sind die Komponenten der äußeren 
+Lasten in der Stegebene und der Gurtebene. 
+(4) Zusätzlich ist in der Regel die Auswirkung der Querbelastung auf die Momententragfähigkeit des Bauteils 
+zu berücksichtigen, siehe 7.2. 
+30 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 35 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ Typ (a) Typ (b) Typ (c) 
+2
+w
+F 26
+a
+hk
+2
+w
+F 25,3
+a
+hk 662
+w
+s
+F h
+csk
+Bild 6.1  Beulwerte für verschieden Arten der Lasteinleitung 
+6.2 Bemessungswert der Beanspruchbarkeit 
+(1) Der Bemessungswert der Beanspruchbarkeit eines nicht ausgesteiften oder ausgesteiften Stegbleches 
+bei Plattenbeulen unter Querbelastung ist in der Regel aus 
+1M
+weffyw
+Rd
+tLf
+F (6.1) 
+zu bestimmen. Dabei ist 
+tw die Stegblechdicke; 
+fyw die Streckgrenze des Stegblechs; 
+Leff die wirksame Lastausbreitungslänge unter Berücksichtigung des Stegbeulens bei Querlasten: 
+yFeffL (6.2) 
+y die wirksame Lastausbreitungslänge ohne Stegbeulen (siehe 6.5), abhängig von der Länge ss der 
+starren Lasteinleitung, siehe 6.3; 
+F der Abminderungsfaktor infolge Stegbeulen bei Querlasten, siehe 6.4(1). 
+6.3 Länge der starren Lasteinleitung 
+(1) Die Länge der starren Lasteinleitung ss ist in der Regel die Länge, über die die Querlast auf den Flansch 
+eingeleitet wird, siehe Bild 6.2. Diese Länge kann bei Lasteinleitung über Futter oder Bleche über einen 
+Lastausbreitungswinkel 1:1 berechnet werden. Der Wert ss ist in der Regel kleiner als hw. 
+(2) Liegen mehrere Einzellasten dicht beieinander, so ist in der Regel die Beanspruchbarkeit sowohl für jede 
+Einzellast als auch für die gesamte Querbelastung und diese mit einer Länge der starren Lasteinleitung 
+entsprechend dem Abstand der äußeren Einzellasten zu ermitteln. 
+31 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 36 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Bild 6.2  Länge der starren Lasteinleitung 
+(3) Folgen die Futter oder Bleche an der Stelle der Lasteinleitung bei Verformung des Trägers nicht der 
+Neigung des Trägers (siehe rechtes Teilbild 6.2), so ist in der Regel ss = 0 anzusetzen. 
+6.4 Abminderungsfaktor F für die wirksame Lastausbreitungslänge 
+(1) Der Abminderungsfaktor F für die wirksame Lastausbreitungslänge ist in der Regel aus 
+0,15,0
+F
+F (6.3) 
+zu ermitteln, wobei gilt: 
+cr
+ywwy
+F
+F
+ft
+ (6.4) 
+wh
+tEkF
+3
+w
+Fcr 9,0 (6.5) 
+(2) Der Faktor kF für Stege ohne Längssteifen ist in der Regel nach Bild 6.1 zu ermitteln. 
+ANMERKUNG Der nationale Anhang darf Hinweise zur Bestimmung von kF für Stege mit Längssteifen geben. 
+Folgende Regelungen werden empfohlen: 
+Für Stege mit Längssteifen darf kF wie folgt bestimmt werden: 
+s
+1
+2
+w
+F 21,044,526 aa
+bhk (6.6) 
+Dabei ist 
+b1 die Höhe des belasteten Einzelfeldes als lichter Abstand zwischen dem belasteten Flansch und der ersten 
+Steife 
+a
+a 1
+3
+w3
+ww
+1,s
+s 3,0210139,10 b
+hth
+I
+ (6.7) 
+1sI das Flächenträgheitsmoment der zu dem belasteten Flansch am nächsten gelegenen Steife einschließlich 
+der wirksamen Stegteile nach Bild 9.1. 
+Gleichung (6.6) gilt für 3,005,0 1
+a
+b und 3,01
+wh
+b für den Typ (a) nach Bild 6.1. 
+(3) y ist in der Regel nach 6.5 zu bestimmen. 
+32 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 37 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+6.5 Wirksame Lastausbreitungslänge 
+(1) Die wirksame Lastausbreitungslänge ohne Stegbeulen y ist in der Regel mit Hilfe der dimensionslosen 
+Parameter m1 und m2 mit 
+wyw
+fyf
+1 tf
+bf
+m (6.8) 
+5,0für0
+5,0für02,0
+F2
+F
+2
+f
+w
+2
+m
+t
+hm (6.9) 
+zu berechnen. 
+Bei Kastenträgern ist bf in Gleichung (6.8) in der Regel an jeder Stegseite auf 15 tf zu begrenzen. 
+(2) Für die Fälle (a) und (b) in Bild 6.1 ist y in der Regel aus: 
+21fsy 12 mmts mit y a (Quersteifenabstand) (6.10) 
+zu bestimmen. 
+(3) Für den Fall (c) ist y in der Regel als kleinster Wert der Gleichungen (6.11) und (6.12) gestrichener 
+Text zu ermitteln: 
+2
+2
+f
+e1
+fey 2 mt
+mt (6.11) 
+21fey mmt (6.12) 
+Dabei ist
+cshf
+tEk
+s
+wyw
+2
+wF
+e 2
+ (6.13) 
+6.6 Nachweis 
+(1) Der Nachweis ist in der Regel wie folgt zu führen: 
+0,1
+1M
+weffyw
+Ed
+2 tLf
+F (6.14) 
+Dabei ist 
+FEd der Bemessungswert der einwirkenden Querlast; 
+Leff die wirksame Lastausbreitungslänge unter Berücksichtigung des Stegbeulens bei Querbelastung, 
+siehe 6.2(1) ; 
+tw die Blechdicke. 
+33 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 38 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+7 Interaktion 
+7.1 Interaktion zwischen Schub, Biegemoment und Normalkraft 
+(1) Für 5,03 (siehe unten) darf der Einfluss der Schubkräfte auf die Beanspruchbarkeit für Biegemoment 
+und Normalkraft vernachlässigt werden. Bei 5,03 ist in der Regel für die gemeinsame Wirkung von 
+Biegung, Normalkraft und Schub im Steg von I-Trägern oder von Kastenträgern die Bedingung 
+Rdpl,
+Rdf,
+1
+2
+3
+Rdpl,
+Rdf,
+1 mit0,1121 M
+M
+M
+M (7.1) 
+zu erfüllen. 
+Dabei ist 
+Mf,Rd der Bemessungswert der plastischen Momentenbeanspruchbarkeit des Querschnitts, der nur mit 
+der effektiven Querschnittsfläche der Flansche berechnet wird; 
+Mpl,Rd der Bemessungswert der plastischen Momentenbeanspruchbarkeit des Querschnitts, der mit der 
+effektiven Querschnittsfläche der Flansche und der vollen Querschnittsfläche des Steges 
+berechnet wird (unabhängig von der Querschnittsklasse). 
+Rdpl,
+Ed
+1 M
+M
+Rdbw,
+Ed
+3 V
+V
+ Vbw,Rd siehe (5.2).
+Zusätzlich sind in der Regel die Anforderungen nach 4.6 und 5.5 zu erfüllen. 
+Die Schnittgrößen sind gegebenenfalls nach Theorie II. Ordnung zu ermittelt. 
+(2) Das Interaktionskriterium in (1) gilt in der Regel an jeder Querschnittsstelle, braucht jedoch an 
+Innenstützen von Drucklaufträgern bei Vorhandensein einer Quersteife nur im Bereich außerhalb des 
+Abstandes h
+w/2 von der Stütze erfüllt zu werden. 
+(3) Der Bemessungswert Mf,Rd der plastischen Momentenbeanspruchbarkeit des Querschnitts, der nur mit 
+Flanschen berechnet wird, darf als das Produkt der effektiven Fläche des kleineren Flansches und der 
+Streckgrenze (= Affy/ M0) multipliziert mit dem Abstand zwischen den Mittelebenen der Flanschbleche 
+bestimmt werden. 
+(4) Wirkt zusätzlich eine Normalkraft NEd ein, ist in der Regel der Wert Mpl,Rd nach EN 1993-1-1, 6.2.9 und 
+Mf,Rd nach 5.4(2) zu reduzieren. Ist die Normalkraft so groß, dass sich der gesamte Steg unter 
+Druckbeanspruchung befindet, ist in der Regel 7.1(5) anzuwenden. 
+(5) Der Flansch eines Kastenträgers ist in der Regel nach 7.1(1) nachzuweisen, wobei Mf,Rd = 0 und Ed als 
+Mittelwert der Schubspannung im Flansch mit mindestens der Hälfte der maximalen Schubspannungen im 
+Flansch anzusetzen ist; für 1 ist hierbei 1 nach 4.6(1) anzusetzen. Zusätzlich sind in der Regel die 
+Einzelfelder mit dem Mittelwert der Schubspannung in den Einzelfeldern und dem für Einzelfeldbeulen nach 
+5.3 ermittelten Abminderungsfaktor w nachzuweisen, wobei von starrer Randlagerung an den Längssteifen 
+ausgegangen werden darf. 
+34 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 39 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+7.2 Interaktion zwischen Querbelastung an den Längsrändern, 
+Biegemoment und Normalkraft 
+(1) Bei gemeinsamer Wirkung von Querlasten an den Längsrändern, Biegemoment und Normalkraft ist in der 
+Regel die Beanspruchbarkeit zusätzlich zu den Nachweisen in 4.6 und 6.6 mit der folgenden Interaktions-
+beziehung zu prüfen: 
+4,18,0 12 (7.2) 
+(2) Wirkt eine Querlast auf den Zugflansch, so ist in der Regel die Beanspruchbarkeit nach Abschnitt 6 
+nachzuweisen; zusätzlich sind die Regelungen in EN 1993-1-1, 6.2.1(5) einzuhalten. 
+8 Flanschinduziertes Stegblechbeulen 
+(1) Um das Einknicken des Druckflansches in den Steg zu vermeiden, hat in der Regel das Verhältnis hw/tw
+für den Steg das folgende Kriterium zu erfüllen: 
+fc
+w
+yfw
+w
+A
+A
+f
+Ekt
+h (8.1) 
+Dabei ist 
+Aw die Stegfläche; 
+Afc die effektive Querschnittsfläche des Druckflansches; 
+hw die lichte Steghöhe; 
+tw die Stegdicke. 
+Der Wert k ist in der Regel wie folgt anzusetzen: 
+ bei Ausnutzung plastischer Rotationen k = 0,3; 
+ bei Ausnutzung der plastischen Momentenbeanspruchbarkeit k = 0,4; 
+ bei Ausnutzung der elastischen Momentenbeanspruchbarkeit k = 0,55. 
+(2) Bei Trägern, die in ihrer Stegebene gekrümmt sind, und bei denen der Druckflansch auf der konkaven 
+Seite liegt, ist in der Regel das folgende Kriterium zu prüfen: 
+yf
+w
+fc
+w
+yf
+w
+w
+31 fr
+Eh
+A
+A
+f
+Ek
+t
+h (8.2) 
+Dabei ist r der Krümmungsradius des Druckflansches. 
+ANMERKUNG Der nationale Anhang gibt weitere Informationen zu flanschinduziertem Stegblechbeulen. 
+35 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 40 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+9 Steifen und Detailausbildung 
+9.1 Allgemeines 
+(1) Die in diesem Abschnitt enthaltenen Regelungen zu Steifen in Plattenbauteilen ergänzen die 
+Plattenbeulregeln in den Abschnitten 4 bis 7. 
+ANMERKUNG Im nationalen Anhang können weitere Anforderungen an Steifen und deren Detailausbildung für 
+spezifische Anwendungsbereiche festgelegt werden. 
+(2) Beim Nachweis der Knicksicherheit von Steifen darf der wirksame Querschnitt mit einer mitwirkenden 
+Blechbreite von 15 t auf jeder Seite, jedoch maximal dem Steifenabstand angenommen werden, siehe 
+Bild 9.1. 
+(3) Die Normalkraft in Quersteifen ist in der Regel als Summe der Kräfte aus der Schubübertragung (siehe 
+9.3.3(3)) und den äußeren Lasten anzusetzen. 
+Bild 9.1  Wirksamer Querschnitt von Steifen 
+9.2 Wirkung von Längsspannungen 
+9.2.1 Minimale Anforderungen an Quersteifen 
+(1) Um die Bedingung für starre Lagerung eines Blechfeldes mit oder ohne Längssteifen zu erfüllen, haben 
+Quersteifen in der Regel den nachfolgenden Steifigkeits- und Festigkeitsanforderungen zu genügen. 
+(2) Die Quersteife wird in der Regel als gelenkig gelagerter Einfeldträger unter Querbelastung mit einer 
+sinusförmigen geometrischen Imperfektion w0 = s/300 behandelt, wobei s der kleinste Wert von a1, a2 oder b
+ist, siehe Bild 9.2. Dabei sind a1 und a2 die Breiten der Beulfelder rechts und links der Quersteife und b ist die 
+Spannweite der Quersteife bzw. der Abstand zwischen den Schwerpunkten der das Beulfeld begrenzenden 
+Flansche. Exzentrizitäten sind in der Regel zu berücksichtigen. 
+Legende 
+1 Quersteife
+Bild 9.2  Quersteife 
+36 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 41 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(3) Die Quersteife ist in der Regel für die Abtriebskräfte aus den Druckkräften in den Nachbarfeldern zu 
+bemessen, wobei anzunehmen ist, dass die übrigen Quersteifen starr und ohne Imperfektionen sind; hierbei 
+sind angreifende äußere Lasten sowie die Normalkraft entsprechend der ANMERKUNG zu 9.3.3(3) zu 
+berücksichtigen. Die Bleche und die Längssteifen der Nachbarfelder werden als gelenkig an die Quersteifen 
+angeschlossen betrachtet. 
+(4) Es ist in der Regel mit einer elastischen Berechnung nach Theorie II. Ordnung nachzuweisen, dass im 
+Grenzzustand der Tragfähigkeit 
+ die maximale Spannung in den Steifen unter der Bemessungslast die Streckgrenze fy/ M1 nicht 
+überschreitet; 
+ die zusätzliche Auslenkung zu der Imperfektion den Wert b/300 nicht überschreitet. 
+(5) Sind keine Normalkräfte in der Quersteife vorhanden, so dürfen beide Kriterien in (4) als erfüllt 
+angesehen werden, wenn das Flächenträgheitsmoment Ist der Quersteife mindestens folgende Bedingungen 
+erfüllt: 
+ubwb
+EI 3001 0
+4
+m
+st (9.1) 
+mit 
+21
+Ed
+pcr,
+ccr,
+m
+11
+aab
+N
+0,1300
+1M
+y
+max
+2
+bf
+eEu
+Dabei ist 
+emax der Abstand der Randfaser der Steife zum Schwerpunkt der Steife; 
+NEd der größte Bemessungswert der einwirkenden Druckkraft in den Nachbarfeldern, jedoch 
+mindestens die größte Druckspannung multipliziert mit der halben wirksamen Druckfläche 
+eines Feldes einschließlich der Steifen; 
+cr,c, cr,p sind in 4.5.3 und Anhang A definiert. 
+ANMERKUNG EN 1993-2 und EN 1993-1-7 geben Hinweise zur Behandlung senkrecht zur Blechebene belasteter 
+Quersteifen. 
+(6) Bei Quersteifen unter Druckbeanspruchung ist in der Regel die einwirkende Normalkraft um den Wert 
+ zur Berücksichtigung von Abtriebskräften zu erhöhen. Die Kriterien in (4) behalten ihre 
+Gültigkeit, jedoch braucht Nst bei der Berechnung der konstanten Druckspannung infolge der einwirkenden 
+Druckbeanspruchung in der Quersteife nicht berücksichtigt zu werden. 
+22
+mst /bN
+(7) Sind keine Normalkräfte in der Quersteife vorhanden, so dürfen vereinfachend die Anforderungen in (4) 
+nach Theorie I. Ordnung mit der folgenden gleichmäßig über die Länge b verteilten zusätzlichen Querlast q
+nachgewiesen werden: 
+el0m4 wwq (9.2) 
+37 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 42 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Dabei ist 
+m in (5) definiert; 
+w0 in Bild 9.2 angegeben; 
+wel die unter Annahme elastischen Werkstoffverhaltens ermittelte Verformung; diese darf entweder 
+iterativ ermittelt oder mit dem maximalen Wert b/300 angenommen werden. 
+(8) Um Drillknicken von Steifen mit offenen Querschnitten zu vermeiden, ist in der Regel das folgende 
+Kriterium zu erfüllen (solange kein Nachweis mit genaueren Methoden erfolgt): 
+E
+f
+I
+I y
+p
+T 3,5 (9.3) 
+Dabei ist 
+Ip das polare Trägheitsmoment des Steifenquerschnitts alleine, gerechnet um den Anschlusspunkt an 
+das Blech; 
+IT das St. Venant'sche Torsionsträgheitsmoment für den Steifenquerschnitt alleine (ohne Blech). 
+(9) Wird die Wölbsteifigkeit berücksichtigt, ist in der Regel entweder das Kriterium in (8) oder das folgende 
+Kriterium zu erfüllen: 
+cr fy (9.4) 
+Dabei ist 
+cr die kritische Drillknickspannung ohne Berücksichtigung von Einspanneffekten durch das Blech; 
+ ein Beiwert zur Sicherstellung elastischen Verhaltens entsprechend der Querschnittsklasse 3. 
+ANMERKUNG Der Beiwert ist im nationalen Anhang festgelegt. Es wird ein Wert von = 6 empfohlen. 
+9.2.2 Minimale Anforderungen an Längssteifen 
+(1) Die Anforderungen zur Vermeidung von Drillknicken in 9.2.1(8) and (9) gelten ebenfalls für Längssteifen. 
+(2) Bei diskontinuierlich angeordnete Längssteifen, die nicht kraftschlüssig an den Quersteifen angeschlos-
+sen sind oder durch diese durchlaufen, sind in der Regel folgende Punkte zu beachten: 
+ Einsatz nur für Stege (d. h. nicht zulässig in Flanschen); 
+ bei Steifigkeitsannahmen für die statisch e Berechnung nicht zu berücksichtigen; 
+ bei Spannungsberechnungen zu vernachlässigen; 
+ zu berücksichtigen bei der Ermittlung der wirksamen Breiten von Einzelstegfeldern; 
+ zu berücksichtigen bei der Berechnung von Beul- bzw. Knickspannungen. 
+(3) Tragfähigkeitsnachweise für Steifen sind in der Regel nach 4.5.3 und 4.6 zu führen. 
+38 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 43 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+9.2.3 Geschweißte Blechstöße 
+(1) Schweißstöße von Blechen unterschiedlicher Blechdicken sind in der Regel in der Nähe von Quersteifen 
+anzuordnen, siehe Bild 9.3. Exzentrizitäten brauchen nicht berücksichtigt zu werden, wenn der Abstand des 
+Schweißstoßes zur Quersteife kleiner als der kleinere Wert von b
+0/2 und 200 mm ist; b0 ist der Abstand 
+zwischen Längssteifen, die die dünnere Platte versteifen. 
+Legende 
+1 Quersteife 
+2 Schweißnaht
+Bild 9.3  Geschweißte Blechstöße 
+9.2.4 Steifenausschnitte 
+(1) Ausschnitte in Längssteifen sind in der Regel entsprechend Bild 9.4 auszubilden. 
+Bild 9.4  Ausschnitte in Längssteifen 
+(2) Für die Ausschnittbreite sind in de r Regel folgende Grenzwerte einzuhalten: 
+min6 t bei druckbelasteten Flachsteifen; 
+min8 t bei druckbelasteten Steifen mit anderen Querschnittsformen; 
+min15 t bei Steifen mit anderen Querschnittsformen ohne Druckbelastung. 
+tmin bezeichnet die kleinere Blechdicke. 
+(3) Die Grenzwerte für die Ausschnittsbreite in (2) für druckbelastete Steifen darf um den Faktor 
+Edx,
+Rdx,
+erhöht werden, wenn gilt: Rdx,Edx, und min15 t . 
+Dabei ist Edx, die Druckspannung am Ausschnitt. 
+39 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 44 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(4) Ausschnitte in Quersteifen sind in der Regel nach Bild 9.5 auszubilden. 
+Bild 9.5  Ausschnitte in Quersteifen 
+(5) Der Bruttoquerschnitt des Steges im Bereich des Ausschnittes ist in der Regel für folgende Querkraft VEd
+nachzuweisen: 
+G0M
+yknet
+Ed b
+f
+e
+IV (9.5) 
+Dabei ist 
+Inet das Flächenträgheitsmoment des Nettoquerschnitts des Quersteife; 
+e der maximale Abstand der Flanschunterseite zur Schwerelinie des Nettoquerschnitts, 
+siehe Bild 9.5; 
+bG die Länge der Quersteife zwischen den Flanschen. 
+9.3 Wirkung von Schubspannungen 
+9.3.1 Starre Auflagersteifen 
+(1) Starre Auflagersteifen (siehe Bild 5.1) dienen in der Regel als Steifen für die Einleitung der Auflagerkräfte 
+aus Lagern (siehe 9.4) und als kurze Biegeträger für die Verankerung der längsgerichteten Membran-
+spannungen in der Stegebene. 
+ANMERKUNG EN 1993-2 gibt Hinweise zu Lagerbewegungen infolge von Exzentrizitäten. 
+(2) Eine starre Auflagersteife besteht in der Regel aus zwei doppelseitig angeordneten Quersteifen, die die 
+Gurte eines kurzen Biegeträgers der Länge h
+w bilden, siehe Bild 5.1 b). Der Stegstreifen zwischen den 
+Quersteifen bildet den Steg des kurzen Biegeträgers. Alternativ darf die starre Auflagersteife auch aus einem 
+eingesetzten Profilträger bestehen, der nach Bild 9.6 mit dem Stegblech verbunden wird. 
+40 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 45 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Legende 
+1 eingesetzter Profilträger
+Bild 9.6  Eingesetzter Profilträger als Auflagersteifer 
+(3) Die Mindestquerschnittsfläche jeder der beiden Quersteifen beträgt in der Regel , wobei e der 
+Abstand zwischen den Mittelebenen der Flachbleche ist und die Bedingung erfüllen sollte, siehe 
+Bild 5.1 b). Wird die Auflagersteife nicht aus zwei Quersteifen zusammengesetzt, sollte das elastische 
+Widerstandsmoment für Biegung senkrecht zum Steg mindestens betragen. 
+eth /4 2
+w
+w1,0 he
+2
+w4 th
+(4) Als Alternative darf das Trägerende auch mit einer einzigen doppelseitigen Quersteife ausgebildet sein, 
+wenn sich eine weitere Quersteife so dicht am Lager befindet, dass das Einzelfeld den maximalen Schub 
+aufnehmen kann, der bei der Bemessung von verformbaren Auflagersteifen entsteht. 
+9.3.2 Verformbare Auflagersteifen 
+(1) Eine verformbare Auflagersteife liegt bei einer einzelnen doppelseitigen Auflagersteife nach Bild 5.1 c) 
+vor. Sie kann gegebenenfalls die Auflagerkräfte aus dem Lager aufnehmen (siehe 9.4). 
+9.3.3 Zwischenliegende Quersteifen 
+(1) Zwischenliegende Quersteifen, die als starre Randlagerung für die Stegbeulfelder dienen, sind in der 
+Regel hinsichtlich ihrer Tragfähigkeit und Steifigkeit nachzuweisen. 
+(2) Zwischenliegende Quersteifen, die als nicht starr zu betrachten sind, dürfen mit ihrer Steifigkeit bei der 
+Berechnung von k nach 5.3(5) berücksichtigt werden. 
+(3) Zwischenliegende starre Quersteifen haben in der Regel zusammen mit dem mittragenden Teil des 
+Steges folgenden Mindestbedingungen für das Flächenträgheitsmoment Ist zu genügen: 
+3
+wstw
+233
+wstw
+75,0:2/für
+/5,1:2/für
+thIh
+thIh
+a
+aa (9.6) 
+ANMERKUNG Die Tragfähigkeit starrer Quersteifen darf für eine Normalkraft 1Mwyw2
+w
+Ed 3/1 thfV nach 
+9.2.1(3) geprüft werden. Im Falle veränderlicher Schubkraft wird der Nachweis für eine Schubkraft im Abstand von 0,5 hw
+von dem Beulfeldrand mit der größten Schubkraft durchgeführt. 
+41 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 46 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+9.3.4 Längssteifen 
+(1) Die Querschnittstragfähigkeit von Längssteifen unter Längsspannungen ist in der Regel nachzuweisen, 
+wenn diese als zur Querschnittstragfähigkeit beitragend angenommen werden. 
+9.3.5 Schweißnähte 
+(1) Die Schweißnähte dürfen für den Nennwert des Schubflusses bemessen werden, solange VEd
+den Wert 
+wEd / hV
+1Mwyww 3/thf nicht überschreitet. Bei größeren Werten sind in der Regel die Halsnähte 
+zwischen den Gurten und dem Steg für den Schubfluss 1Myw 3/tf zu bemessen. 
+(2) Anderenfalls sind in der Regel genauere Berechnungen zur Bemessung der Schweißnähte unter 
+Berücksichtigung der Berechnungsmethode (elastisch/plastisch) und Einflüssen aus Theorie II. Ordnung 
+durchzuführen. 
+9.4 Wirkung von Querlasten 
+(1) Reicht die Beanspruchbarkeit des nicht ausgesteiften Stegbleches nicht aus, sind in der Regel 
+Quersteifen vorzusehen. 
+(2) Knicken von Quersteifen aus der Stegebene unter Querbelastung und Querkräften (siehe 9.3.3(3)) ist in 
+der Regel nach EN 1993-1-1, 6.3.3 oder 6.3.4 unter Verwendung von Knicklinie c und einer Knicklänge von 
+ 0,75 hw nachzuweisen, wenn beide Steifenenden seitlich gehalten sind. Größere Knicklängen sind bei 
+Endlagerungen mit Verformungsmöglichkeit notwendig. Zusätzlich ist auch die Beanspruchbarkeit des 
+Querschnitts der Quersteifen nachzuweisen, wenn Ausschnitte in den Quersteifen vorhanden sind. 
+(3) Bei Anwendung einseitiger oder anderer unsymmetrisch angeordneter Steifen ist die Exzentrizität bei 
+Nachweisen nach EN 1993-1-1, 6.3.3 oder 6.3.4 in der Regel zu berücksichtigen. Werden die Steifen zur 
+seitlichen Stützung des Obergurtes eingesetzt, so sollten sie eine Steifigkeit und Tragfähigkeit haben, die mit 
+den Annahmen für die Bemessung gegen Biegedrillknicken übereinstimmen. 
+10 Methode der reduzierten Spannungen 
+(1) Die Methode der reduzierten Spannungen darf zur Bestimmung der Grenzspannungen ausgesteifter und 
+nicht ausgesteifter Blechfelder eines Querschnitts benutzt werden. 
+ANMERKUNG 1 Dieses Verfahren ist eine Alternative zum Verfahren mit wirksamen Breiten nach Abschnitten 4 bis 7 
+unter Berücksichtigung folgender Punkte: 
+ die Spannungskomponenten des gesamten Spannungsfeldes, das sich aus x,Ed, z,Ed und Ed zusammensetzt, 
+wirken gemeinsam; 
+ die Grenzspannungen des schwächsten Querschnittsteils können die Tragfähigkeit des gesamten Querschnitts 
+bestimmen. 
+ANMERKUNG 2 Die Grenzspannungen dürfen ebenfalls zur Bestimmung äquivalenter wirksamer Flächen heran-
+gezogen werden. Anwendungsgrenzen der jeweiligen Methoden können im nationalen Anhang festgelegt werden. 
+(2) Bei ausgesteiften und nicht ausgesteiften Blechfeldern, die mit den gemeinsam wirkenden Spannungen 
+x,Ed, z,Ed und Ed beansprucht werden, darf Querschnittsklasse 3 angenommen werden, wenn gilt: 
+1
+1M
+kult, (10.1) 
+42 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 47 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Dabei ist 
+ult,k der kleinste Faktor für die Vergrößerung der Bemessungslasten, um den charakteristischen Wert 
+der Beanspruchbarkeit am kritischen Punkt des Blechfeldes zu erreichen, siehe (4); 
+ der Reduktionsbeiwert in Abhängigkeit des Schlankheitsgrades des Blechfeldes p , siehe (5); 
+M1 der Teilsicherheitsbeiwert. 
+(3) Der modifizierte Schlankheitsgrad des Blechfeldes  p des Blechfeldes ist in der Regel wie folgt 
+zu bestimmen: 
+cr
+kult,
+p (10.2) 
+Dabei ist 
+cr der kleinste Faktor für die Vergrößerung der Bemessungslasten, um die elastische Verzweigungs-
+belastung für das gesamte einwirkende Spannungsfeld zu erreichen, siehe (6). 
+ANMERKUNG 1 Zur Bestimmung von cr für das gesamte einwirkende Spannungsfeld darf das ausgesteifte Blechfeld 
+entsprechend den Regeln in Abschnitten 4 und 5 abgebildet werden, jedoch ohne die in 5.3(4) angegebene Abminderung 
+des Flächenträgheitsmomentes der Längssteifen. 
+ANMERKUNG 2 Kann cr nicht für das gesamte Blechfeld einschließlich der Einzelfelder als Ganzes bestimmt werden, 
+so dürfen getrennte Nachweise für die Einzelfelder und das gesamte Blechfeld geführt werden. 
+(4) Für die Bestimmung von ult,k darf das Fließkriterium benutzt werden: 
+2
+y
+Ed
+y
+Edz,
+y
+Edx,
+2
+y
+Edz,
+2
+y
+Edx,
+2
+kult,
+31
+fffff (10.3) 
+x,Ed, z,Ed und Ed sind die Komponenten des Spannungsfeldes im Grenzzustand der Tragfähigkeit. 
+ANMERKUNG Bei Verwendung der Fließbeziehung in Gleichung (10.3) wird angenommen, dass sich der Grenz-
+zustand des Fließens ohne vorhergehendes Beulen einstellt. 
+(5) Der Abminderungsbeiwert darf nach einer der beiden folgenden Methoden ermittelt werden: 
+a) der kleinste Werte der folgenden Abminderungsbeiwerte: 
+x der Reduktionsbeiwert nach 4.5.4(1) für die Längsrichtung, falls erforderlich unter Berücksichtigung 
+knickstabähnlichen Verhaltens; 
+z der Reduktionsbeiwert nach 4.5.4(1), hier jedoch für die Querrichtung, falls erforderlich unter 
+Berücksichtigung knickstabähnlichen Verhaltens; 
+w der Reduktionsbeiwert für Schubbeulen nach 5.3(1). 
+Alle Reduktionsbeiwerte werden mit dem modifizierten Schlankheitsgrad des Blechfeldes p des 
+Blechfeldes nach Gleichung (10.2) ermittelt. 
+43 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 48 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ANMERKUNG Dieses Vorgehen führt zu dem Nachweisformat: 
+2
+2
+1My
+Ed
+1My
+Edz,
+1My
+Edx,
+2
+1My
+Edz,
+2
+1My
+Edx,
+/3//// fffff (10.4) 
+ANMERKUNG Zur Bestimmung von z für Spannungen in Querrichtung ist in der Regel das Vorgehen nach 
+Abschnitt 4 für Längsspannungen x auf die Spannungen in Querrichtung z anzuwenden. Aus Kompatibilitäts-
+gründen ist Abschnitt 6 in der Regel nicht anzuwenden. 
+b) ein aus den Abminderungsbeiwerten x, z und w entsprechend a) interpolierter Abminderungsbeiwert, 
+wobei die Gleichung für ult,k als Interpolationsfunktion herangezogen wird. 
+ANMERKUNG Diese Vorgehen führt zu dem Nachweisformat: 
+1/3////
+2
+1Myw
+Ed
+1Myz
+Edz,
+1Myx
+Edx,
+2
+1Myz
+Edz,
+2
+1Myx
+Edx,
+fffff (10.5) 
+ANMERKUNG 1 Da die Nachweise nach den Gleichungen (10.3), (10.4) und (10.5) bereits eine Interaktion 
+zwischen Querkraft, Biegemoment, Normalkraft und Querbelastung beinhalten, braucht Abschnitt 7 in der Regel nicht 
+angewendet zu werden. 
+ANMERKUNG 2 Der nationale Anhang darf weitere Informationen zur Verwendung der Gleichungen (10.4) und 
+(10.5) geben. Treten Zug- und Druckspannungen in einem Blechfeld auf, so wird empfohlen, die Gleichungen (10.4) 
+und (10.5) lediglich auf die unter Druckbeanspruchung stehenden Querschnittsteile anzuwenden. 
+(6) Liegen nicht die Werte cr für das gesamte Spannungsfeld, sondern nur die Werte cr,i jeweils für die 
+Komponenten x,Ed, z,Ed und Ed des Spannungsfeldes vor, so darf der Wert cr für die gemeinsame 
+Wirkung von x,Ed, z,Ed, Ed wie folgt bestimmt werden: 
+2/1
+2
+cr,
+2
+zcr,
+z
+2
+xcr,
+x
+2
+zcr,
+z
+xcr,
+x
+zcr,
+z
+xcr,
+x
+cr
+1
+2
+1
+2
+1
+4
+1
+4
+1
+4
+1
+4
+11 (10.6) 
+Dabei ist 
+Edx,
+cr,x
+cr,x
+Edz,
+zcr,
+zcr,
+
+Ed
+cr
+cr, 
+cr,x, cr,z, cr, x und z werden nach Abschnitten 4 bis 6 bestimmt. 
+(7) Die Bemessung von Steifen sowie die Detailausbildung haben in der Regel nach Abschnitt 9 zu erfolgen. 
+44 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 49 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Anhang A
+(informativ) 
+Berechnung kritischer Spannungen für ausgesteifte Blechfelder 
+A.1 Äquivalente orthotrope Platten 
+(1) Blechfelder mit mindestens drei Längssteifen, deren Steifigkeit verschmiert werden darf, dürfen als äqui-
+valente orthotrope Platten nachgewiesen werden. 
+(2) Die elastische kritische Beulspannung der äquivalenten orthotropen Platte ist: 
+Ep,pcr, k (A.1) 
+Dabei ist 
+MPain000190
+112
+2
+22
+22
+E b
+t
+b
+tE ; 
+k ,p der Beulwert für die orthotrope Platte mit verschmierten Steifen (ohne Betrachtung des Einzelfeld-
+beulens); 
+b wie in Bild A.1 definiert; 
+t die Blechdicke. 
+ANMERKUNG 1 Der Beulwert k ,p darf entweder entsprechenden Beulwerttafeln für verschmierte Längssteifen 
+entnommen oder mittels Computerberechnungen ermittelt werden. Alternativ dürfen auch Beulwerttafeln für diskrete 
+Längssteifen verwendet werden, falls Einzelfeldbeulen ausgeschlossen werden kann bzw. in einer separaten Berechnung 
+berücksichtigt wird. 
+ANMERKUNG 2 cr,p ist die kritische Beulspannung an dem Blechfeldrand mit der größten Druckspannung, siehe 
+Bild A.1. 
+ANMERKUNG 3 Bei der Untersuchung von Stegen sollte die Breite b in den Gleichungen (A.1) und (A.2) durch hw
+ersetzt werden. 
+ANMERKUNG 4 Für längs ausgesteifte Blechfelder mit mindestens drei äquidistant verteilten Längssteifen darf der 
+Beulwert k ,p zur Berücksichtigung des Gesamtfeldbeulens des ausgesteiften Blechfeldes näherungsweise wie folgt 
+bestimmt werden: 
+4
+2
+22
+p, für
+11
+112
+k
+4p, für11
+14k (A.2) 
+45 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 50 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+mit: 
+5,0
+1
+2
+p
+sl
+I
+I
+
+p
+sl
+A
+A 
+5,0b
+a
+Dabei ist 
+slI das Flächenträgheitsmoment des gesamten längsversteiften Blechfeldes; 
+pI das Flächenträgheitsmoment für Plattenbiegung 92,10112
+3
+2
+3 btbt ; 
+ die Summe der Bruttoquerschnittsflächen aller Längssteifen ohne Anteile des Blechfeldes; slA
+pA die Bruttoquerschnittsfläche des Bleches = b t; 
+1 die größere Randspannung; 
+2 die kleinere Randspannung. 
+a, b und t sind in Bild A.1 definiert. 
+46 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 51 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+e = max (e1, e2) 
+Legende 
+1 Schwerelinie der Längssteife
+2 Schwerelinie des Ersatzdruckstabes = Längssteife + mitwirkende Blechteile 
+3 Einzelfeld 
+4 Längssteife 
+5 Blechdicke t
+Breite bei 
+Bruttoquerschnittsfläche 
+Breite bei wirksamen 
+Flächen nach Tabelle 4.1 
+Bedingung für
+i
+b1,inf 1
+1
+1
+5
+3 b eff,1
+1
+1
+5
+3 b 0
+pcr,
+1sl,cr,
+1
+b2,sup 2
+25
+2 b eff,2
+25
+2 b 0
+sl,1cr,
+2
+2
+b2,inf 2
+2
+2
+5
+3 b eff,2
+2
+2
+5
+3 b 02
+b3,sup 0,4 b3c 0,4 b3c,eff 0
+2
+3
+3
+Bild A.1  Bezeichnungen für längsausgesteifte Beulfelder 
+47 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 52 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+A.2 Kritische Beulspannung bei Blechfeldern mit einer oder zwei Steifen in der 
+Druckzone 
+A.2.1 Allgemeine Vorgehensweise 
+(1) Bei Blechfeldern mit nur einer Längssteife in der Druckzone darf die Vorgehensweise in A.1 dadurch 
+vereinfacht werden, dass die elastische kritische Beulspannung mit Hilfe der elastischen kritischen 
+Knickspannung der Längssteife als Ersatzdruckstab auf elastischer Bettung ermittelt wird. Die elastische 
+Bettung steht dabei für die Plattenwirkung quer zur Längssteife. Die kritische Knickspannung darf nach A.2.2 
+ermittelt werden. 
+(2) Der Bruttoquerschnitt des Ersatzdruckstabes (zur Berechnung von und ) setzt sich in der 
+Regel aus dem Bruttoquerschnitt der Steife und der anschließenden mitwirkenden Blechteile zusammen. 
+Liegt das anschließende Einzelfeld voll im Druckbereich, ist ein Anteil
+,1sA 1,sI
+53 der wirksamen Breite b1
+an der Kante des Feldes und ein Anteil 2/(5  ) an der Kante mit den höchsten Spannungen als mitwirkend 
+anzusehen. Wechseln im anschließenden Einzelfeld die Spannungen von Druck auf Zug, sollte das 0,4fache 
+der wirksamen Breite bc der Druckzone verwendet werden, siehe Bild A.2 und Tabelle 4.1. ist dabei das 
+Spannungsverhältnis des betrachteten Einzelfeldes. 
+(3) Die wirksame Querschnittsfläche des Ersatzdruckstabes sollte in der Regel aus den wirksamen 
+Querschnittsteilen der Steife und den anschließenden wirksamen Blechteilen zusammengesetzt werden, 
+siehe Bild A.1. Der Schlankheitsgrad der Blechfelder in dem Ersatzdruckstab darf nach 4.4(4) ermittelt 
+werden, wobei 
+com,Ed für die Bruttofläche des Blechfeldes berechnet wird. 
+eff,sA
+(4) Falls der Wert c fy/ M1 (mit c nach 4.5.4(1)) größer als die mittlere Spannung com,Ed in dem 
+Ersatzdruckstab ist, braucht keine weitere Abminderung der wirksamen Fläche des Ersatzdruckstabes 
+vorgenommen zu werden; andernfalls ist die Abminderung nach (4.6) durch 
+1MEdcom,
+sl,1yc
+loceff,c,
+Af
+A (A.3) 
+zu ersetzen. 
+(5) Die Abminderung in A.2.1(4) gilt in der Regel nur für die Fläche des Ersatzknickstabes. Außer für das 
+Einzelfeldbeulen brauchen andere unter Druckbeanspruchung stehende Teile des Blechfeldes nicht 
+abgemindert zu werden. 
+(6) Alternativ zur Verwendung der wirksamen Fläche nach A.2.1(4) darf die Beanspruchbarkeit des 
+Ersatzdruckstabes auch nach A.2.1(5) bis (7 ) ermittelt und mit der mittleren Spannung 
+com,Ed verglichen 
+werden. 
+ANMERKUNG Diese Näherung in (6) darf auch im Falle mehrfacher Steifen verwendet werden, wobei als weitere 
+Vereinfachung die Federung durch das Blech vernachlässigt werden darf. Dadurch wird der Ersatzdruckstab als freier 
+Knickstab für Knicken quer zur Blechebene nachgewiesen. 
+48 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 53 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ a ) b ) c ) 
+Bild A.2  Bezeichnungen für ein Blechfeld mit nur einer Steife in der Druckzone 
+(7) Befinden sich zwei Steifen in der Druckzone eines ausgesteiften Beulfeldes, darf das Verfahren für eine 
+Einzelsteife nach A.2.1(1) ebenso angewendet werden, siehe Bild A.3. Zunächst wird angenommen, dass 
+jede der beiden Steifen für sich ausknicken kann, wobei die andere als starr gilt. Dann wird das gemeinsame 
+Ausknicken beider Steifen durch Betrachtung einer einzigen Ersatzsteife berücksichtigt, in der beide Steifen 
+zusammengeführt sind. Für diese Ersatzsteife gilt: 
+a) ihre Querschnittsfläche und ihr Flächenträgheitsmoment I
+s sind die Summe der entsprechenden Größen 
+für die Einzelsteifen, die in den vorhergehenden Schritten betrachtet wurden; 
+b) ihre Lage entspricht der Lage der Resultierenden der Druckkräfte in den Einzelsteifen, die in den 
+vorhergehenden Schritten berechnet wurden. 
+Für die drei in Bild A.3 dargestellten Fälle wird jeweils ein kritischer Wert cr.p berechnet, siehe A.2.2(1), 
+wobei jeweils gilt: und sowie , siehe Bild A.3. *
+11 bb *
+22 bb *
+2
+*
+1
+* bbB
+ Steife I Steife II Zusammengeführte Ersatzsteife 
+Querschnittsfläche I,sA II,sA II,sI,s AA
+Flächenträgheitsmoment I,sI II,sI II,sI,s II
+Bild A.3  Bezeichnungen für ein Blechfeld mit zwei Steifen in der Druckzone 
+A.2.2 Vereinfachtes Modell für einen Ersatzstab mit elastischer Bettung durch ein Blech 
+(1) Bei nur einer Längssteife in der Druckzone und Vernachlässigung eventuell vorhandener weiterer 
+Längssteifen in der Zugzone lautet die elastische kritische Knickspannung der Steifen: 
+49 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 54 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+
+c2
+2
+2
+1,1s
+22
+23
+2
+1,s
+1,s
+2
+cr,s
+c
+21
+3
+,1s
+1,s
+cr,s
+für14
+für05,1
+aaa
+a
+aa
+bbA
+btE
+A
+IE
+bb
+btI
+A
+E
+ (A.4) 
+mit 
+4
+3
+2
+2
+2
+11,s
+c 33,4
+bt
+bbI
+a
+Dabei ist 
+,1sA die Bruttoquerschnittsfläche des Ersatzdruckstabes nach A.2.1(2); 
+1,sI das Flächenträgheitsmoment des Bruttoquerschnitts des Ersatzdruckstabes nach A.2.1(2) für 
+Knicken quer zur Blechebene; 
+b1, b2 die Abstände der Steifen zu den Längsrändern ( b1 + b2 = b). 
+gestrichener Text
+(2) Bei zwei Längssteifen in der Druckzone und Vernachlässigung eventuell vorhandener weiterer Längs-
+steifen in der Zugzone ist in der Regel die maßgebende elastisch kritische Beulspannung der niedrigste Wert, 
+der für die drei Fälle nach Gleichung (A.4) mit , und berechnet wurde. *
+11 bb *
+22 bb *Bb
+A.3 Schubbeulwerte für ausgesteifte Blechfelder 
+(1) Bei Blechfeldern mit mehr als zwei oder ohne Längssteifen, die durch starre Quersteifen begrenzt sind, 
+darf der Schubbeulwert k wie folgt bestimmt werden: 
+1//34,500,4
+1//00,434,5
+ws
+2
+w
+ws
+2
+w
+hfürkhk
+hfürkhk
+aa
+aa (A.5) 
+Dabei ist 
+3
+w
+s4
+3
+w
+3
+s
+2
+w
+s
+1,29 h
+I
+tht
+Ihk a
+a der Abstand starrer Quersteifen, siehe Bild 5.3; 
+sI das Flächenträgheitsmoment einer Längssteife um die z-z-Achse, siehe Bild 5.3 b). Bei Stegblechen 
+mit gestrichener Text  Steifen ist Is die Summe der Steifigkeiten aller Einzelsteifen, wobei 
+diese nicht gleichmäßig angeordnet sein müssen. 
+ANMERKUNG Gleichung (A.5) gilt nicht für Blechfelder mit verformbaren Zwischenquersteifen. 
+50 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 55 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(2) Gleichung (A.5) darf auch für Blechfelder mit einer oder zwei Längssteifen angewendet werden, wenn für 
+wh
+a gilt: . Für Blechfelder mit einer oder zwei Längssteifen und darf der Schubbeulwert wie 
+folgt bestimmt werden: 
+3 3
+3
+w
+3
+s
+2
+w
+3
+s
+2,2
+18,03,6
+1,4
+ht
+Iht
+I
+k (A.6) 
+51 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 56 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Anhang B
+(informativ) 
+Bauteile mit veränderlichem Querschnitt 
+B.1 Allgemeines 
+(1) Der Beulnachweis von aus Blechfeldern zusammengesetzten Bauteilen, bei denen die Regelmäßigkeits-
+bedingungen nach 4.1(1) nicht zutreffen, kann nach dem Verfahren in Abschnitt 10 durchgeführt werden. 
+(2) Zur Bestimmung von ult,N und cr dürfen FE-Verfahren verwendet werden, siehe Anhang C. 
+(3) Die Abminderungsfaktoren x, z und w können für den Schlankheitsgrad p den entsprechenden 
+Plattenbeulkurven entnommen werden, siehe Abschnitte 4 und 5. 
+ANMERKUNG Die Abminderungsfaktoren dürfen auch wie folgt ermittelt werden: 
+p2
+pp
+1 (B.1) 
+mit 
+p0pppp 12
+1
+und 
+cr
+kult,
+p
+Dieses Vorgehen gilt für x, z und w. Werte für 0p und p sind in Tabelle B.1 angegeben. Die Werte in 
+Tabelle B.1 sind an den Beulkurven in Abschnitten 4 und 5 kalibriert und liefern eine direkte Verbindung zu 
+der geometrischen Ersatzimperfektion durch: 
+p
+1M
+p
+0ppp0
+1
+1
+6
+te (B.2) 
+52 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 57 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Tabelle B.1  Zahlenwerte für 0p und p
+Produkt Vorherrschende Beulform p 0p
+Längsspannungen mit 0 0,70 
+warmgewalzt Längsspannungen mit < 0 
+Schubspannungen 
+Querlasten 
+0,13 
+0,80 
+Längsspannungen mit 0 0,70 
+geschweißt oder 
+kaltgeformt 
+Längsspannungen mit < 0 
+Schubspannungen 
+Querlasten 
+0,34 
+0,80 
+B.2 Interaktion von Plattenbeulen und Biegedrillknicken von Bauteilen 
+(1) Das in B.1 angegebene Verfahren darf auf den Nachweis von gemeinsam auftretendem Plattenbeulen 
+und Biegedrillknicken von Bauteilen angewendet werden, wenn die Werte ult und cr wie folgt ermittelt 
+werden: 
+ult ist der kleinste Faktor für die Vergrößerung der Bemessungswerte der Lasten, um die charakteris-
+tische Beanspruchbarkeit des kritischen Bauteilquerschnitts zu erreichen, wobei Plattenbeulen und 
+Biegedrillknicken vernachlässigt und bei der Berechnung nicht betrachtet werden; 
+cr ist der kleinste Faktor für die Vergrößerung der Bemessungswerte der Lasten, um die elastische 
+Verzweigungsbelastung für das Bauteil unter Einschluss von Plattenbeulen und Biegedrillknicken zu 
+erreichen. 
+(2) Wenn cr Biegedrillknickverformungen enthält, ist in der Regel der Abminderungsfaktor der kleinste 
+Wert von nach B.1(3) und LT nach EN 1993-1-1, 6.3.3 anzusetzen. 
+53 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 58 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Anhang C
+(informativ) 
+Berechnungen mit der Finite-Element-Methode (FEM) 
+C.1 Allgemeines 
+(1) Anhang C enthält Hinweise zur Anwendung von FE-Methoden bei Nachweisen im Grenzzustand der 
+Tragfähigkeit und der Gebrauchstauglichkeit sowie bei Ermüdungsnachweisen von plattenartigen Bauteilen. 
+ANMERKUNG 1 EN 1993-1-6 gibt Hinweise zur Anwendung von FE-Methoden bei Schalentragwerken. 
+ANMERKUNG 2 Diese Anhang darf nur von Ingenieuren mit entsprechender Erfahrung bei der Anwendung von 
+FE-Methoden angewendet werden. 
+(2) Die Wahl der jeweiligen FE-Methode hängt von der zu untersuchenden Fragestellung ab. Folgende 
+Annahmen sind zu treffen: 
+Tabelle C.1  Annahmen für Berechnungen mit FEM 
+Nr Werkstoff-
+verhalten 
+Struktur-
+verhalten 
+Imperfektionen, 
+siehe C.5 Anwendungsbeispiel 
+1 linear linear Nein elastische mittragende Breite, elastische 
+Tragfähigkeit 
+2 nichtlinear linear Nein plastische Tragfähigkeit im Grenzzustand 
+der Tragfähigkeit 
+3 linear nichtlinear Nein kritische Plattenbeullast 
+4 linear nichtlinear Ja elastische Tragfähigkeit unter 
+Berücksichtigung von Plattenbeulen 
+5 nichtlinear nichtlinear Ja elastisch-plastische Tragfähigkeit im 
+Grenzzustand der Tragfähigkeit 
+C.2 Anwendung 
+(1) Bei Anwendung von FE-Berechnungen ist in der Regel besonders auf folgende Punkte zu achten: 
+ geeignete Modellierung des Bauteils und seiner Randbedingungen; 
+ geeignetes Programm und ausreichende Programmdokumentation; 
+ Ansatz von Imperfektionen; 
+ Ansatz der Werkstoffeigenschaften; 
+ Modellierung der Lasten; 
+ Modellierung der Kriterien für den Grenzzustand; 
+ anzuwendende Teilsicherheitsbeiwerte. 
+54 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 59 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+ANMERKUNG Der nationale Anhang darf Bedingungen für die Anwendung von FE-Berechnungen für Entwurf und 
+Bemessung festlegen. 
+C.3 Modellierung 
+(1) Die Wahl der Finiten Elemente (z. B. Schalenelemente oder Volumenelemente) und die Netzgestaltung 
+bestimmt die Genauigkeit der Ergebnisse durchzuführen. Im Zweifelsfall sind die Brauchbarkeit des Netzes 
+und die Größe der Finiten Elemente durch Empfindlichkeitsprüfungen (gegebenenfalls mit anschließender 
+Verfeinerung) nachzuweisen. 
+(2) Die FE-Modellierung darf durchgeführt werden für 
+ ein Bauteil als Ganzes; 
+ eine Substruktur als Teil des Bauteils. 
+ANMERKUNG Ein Beispiel für ein Bauteil könnte der Steg oder das druckbeanspruchte Bodenblech eines 
+Kastenträgers im Stützenbereich eines Durchlaufträgers sein. Ein Beispiel für eine Substruktur könnte ein Einzelfeld des 
+Bodenblechs sein, das unter zweiaxialer Belastung steht. 
+(3) Die geometrischen und mechanischen Bedingungen für Lagerung, Koppelbedingungen und Einzelheiten 
+der Lasteinleitung sind in der Regel so zu wählen, dass realistische oder auf der sicheren Seite liegende 
+Resultate erzielt werden. 
+(4) Die Abmessungen sind in der Regel mit den Nennwerten zu modellieren. 
+(5) Sind Imperfektionen vorzusehen, so gelten für diese in der Regel die Form und die Amplituden gemäß C.5.
+(6) Die Werkstoffeigenschaften sind in der Regel unter Beachtung von C.6(2) zu wählen. 
+C.4 Wahl des Programms und Dokumentation 
+(1) Das Programm muss für die Aufgabe geeignet und erwiesenermaßen zuverlässig sein. 
+ANMERKUNG Die Zuverlässigkeit kann durch geeignete Prüfberechnungen (benchmark tests) nachgewiesen werden. 
+(2) Netzgestaltung, Belastung, Randbedingungen und andere Eingaben sind in der Regel ebenso wie die 
+Resultate nachprüfbar zu dokumentieren, so dass sie von unabhängigen Drittstellen reproduziert werden 
+können. 
+C.5 Ansatz von Imperfektionen 
+(1) Bei FE-Berechnungen verwendete Imperfektionen sollten in der Regel sowohl geometrische als auch 
+strukturelle Imperfektionen (Eigenspannungen) enthalten. 
+(2) Sind keine genaueren getrennten Ansätze von geometrischen und strukturellen Imperfektionen möglich, 
+dürfen geometrische Ersatzimperfektionen verwendet werden. 
+ANMERKUNG 1 Geometrische Imperfektionen dürfen mit der Form der modalen Beulfigur angesetzt werden. Der 
+nationale Anhang darf die zugehörigen Amplituden festlegen. Ein Wert entsprechend 80 % der geometrischen Fertigungs-
+toleranzen wird empfohlen. 
+ANMERKUNG 2 Strukturelle Imperfektionen in Form von Eigenspannungen dürfen mit einer Eigenspannungsverteilung 
+angesetzt werden, deren Verlauf und Amplitude im Mittel aus dem Fertigungsablauf erwartet werden können. 
+55 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 60 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(3) Die Richtung der Imperfektionen ist in der Regel so anzusetzen, dass die niedrigste Beanspruchbarkeit 
+erzielt wird. 
+(4) Für geometrische Ersatzimperfektionen dürfen die Ansätze in Tabelle C.2 und Bild C.1 angewendet 
+werden. 
+Tabelle C.2  Geometrische Ersatzimperfektionen 
+Imperfektionsansatz Bauteil Form Amplitude 
+global Bauteil der Länge Bogen siehe EN 1993-1-1, Tabelle 5.1 
+global Längssteife der Länge a Bogen min ( a/400, b/400) 
+lokal Teilfeld oder Einzelfeld mit kurzer 
+Länge a oder b Beulform min ( a/200, b/200) 
+lokal Verdrehung von Steifen und 
+Flanschen Bogen 1/50 
+56 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 61 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+57 
+DIN EN 1993-1-5:2010-12 
+Imperfektionsansatz Bauteil 
+global, 
+Bauteil der Länge 
+global, 
+Längssteife der Länge a
+lokal, 
+Teilfeld oder Einzelfeld 
+lokal, 
+Verdrehung von Steifen oder 
+Flanschen 
+Bild C.1  Modellierung geometrischer Ersatzimperfektionen
+
+===== PDF-SEITE 62 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(5) Bei Betrachtung des Zusammenwirkens verschiedener Imperfektionen ist in der Regel eine Leit-
+imperfektion zu wählen; die Begleitimperfektionen dürfen auf 70 % abgemindert werden. 
+ANMERKUNG 1 Jede der Imperfektionen in Tabelle C.2 ist in der Regel als Leitimperfektion und die verbleibenden sind 
+als Begleitimperfektionen anzusetzen. 
+ANMERKUNG 2 Geometrische Ersatzimperfektionen dürfen auch durch entsprechende Störlasten abgebildet werden. 
+C.6 Werkstoffeigenschaften 
+(1) Werkstoffeigenschaften sind in der Regel mit charakteristischen Werten anzusetzen. 
+(2) Abhängig von der gewünschten Genauigkeit und der Größe der erwarteten Dehnungen dürfen folgende 
+Näherungen für das Werkstoffverhalten verwendet werden, siehe Bild C.2: 
+a) elastisch-plastisch ohne Wiederverfestigung; 
+b) elastisch-plastisch mit Pseudowiederverfestigung; 
+c) elastisch-plastisch mit linearer Wiederverfestigung; 
+d) wahre Spannungs-Dehnungs-Kurve, die aus der technischen Spannungs-Dehnungs-Kurve wie folgt 
+ermittelt wird: 
+1
+1
+true
+true
+n (C.1) 
+58 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 63 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Modell 
+nur mit 
+Fließplateau 
+Legende 
+1 tan -1 (E/10 000) (oder ähnlich kleiner 
+Wert) 
+Legende 
+1 wahre Spannungs-Dehnungs-Kurve 
+2 technische Spannungs-Dehnungs-
+Kurve 
+mit 
+Wiederverfestigung Bild C.2  Modellierung des Werkstoffverhaltens 
+ANMERKUNG Für den Elastizitätsmodul im elastischen Bereich ist der Nennwert maßgebend. 
+C.7 Belastungen 
+(1) Die anzusetzenden Lasten sollten in der Regel die maßgebenden Teilsicherheitsbeiwerte und Kombina-
+tionsfaktoren enthalten. Für schrittweise Berechnungen darf ein einziger Lasterhöhungsfaktor verwendet 
+werden. 
+C.8 Kriterien für den Grenzzustand 
+(1) Folgende Kriterien für Grenzzustände sind in der Regel zu verwenden: 
+1. Für Bauteile mit Plattenbeulen: 
+ Erreichen des Maximums der Last-Verformungskurve. 
+59 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 64 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+2. Für Bereiche unter Zugbeanspruchungen: 
+ Erreichen eines Maximalwertes der Hauptmembrandehnung. 
+ANMERKUNG 1 Der Maximalwert der Hauptmembrandehnung darf im nationalen Anhang festgelegt werden; es wird 
+ein Wert von 5 % empfohlen. 
+ANMERKUNG 2 Andere Kriterien dürfen verwendet werden (z. B. Erreichen eines Fließkriteriums oder Begrenzung der 
+Fließzone). 
+C.9 Teilsicherheitsbeiwerte 
+(1) Der ermittelte Lasterhöhungsfaktor u, mit dem der Grenzzustand erreicht wird, soll ausreichend zuver-
+lässig sein. 
+(2) Der erforderliche Lasterhöhungsfaktor u besteht in der Regel aus zwei Anteilen: 
+1. 1 zur Abdeckung der Modellunsicherheit bei der Modellierung mit Finiten Elementen; 1 ist in der Regel 
+aus der Auswertung geeigneter Versuche zu ermitteln, siehe EN 1990, Anhang D; 
+2. 2 zur Abdeckung von Ungenauigkeiten des Belastungs- und des Widerstandsmodells. 2 darf mit M1
+angesetzt werden, wenn der Verlust der Stabilität maßgebend ist, und mit M2, wenn Werkstoffversagen 
+zu erwarten ist. 
+(3) Der Nachweis ist in der Regel mit 
+u > 1 2 (C.2) 
+zu führen. 
+ANMERKUNG Der nationale Anhang darf Hinweise zur Festlegung von M1 und M2 geben. Es wird empfohlen, die 
+Zahlenwerte für M1 und M2 in den entsprechenden Teilen der EN 1993 anzuwenden. 
+60 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 65 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Anhang D
+(informativ) 
+Bauteile mit profilierten Stegblechen 
+D.1 Allgemeines 
+(1) Die Bemessungsregeln in Anhang D gelten für Bauteile mit trapezförmig oder sinusförmig profilierten 
+Stegblechen und Blechgurten nach Bild D.1. 
+Bild D.1  Bezeichnungen 
+D.2 Grenzzustand der Tragfähigkeit 
+D.2.1 Momententragfähigkeit 
+(1) Die Beanspruchbarkeit für Biegemomente My,Rd ist in der Regel wie folgt zu ermitteln: 
+
+Druckgurt
+21
+w
+1M
+fy11
+Druckgurt
+21
+w
+0M
+r,fy11
+Zuggurt
+21
+w
+0M
+r,fy22
+Rd,
+2;2;2min tthftbtthftbtthftbM y (D.1) 
+61 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 66 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Dabei ist 
+fyf,r die aufgrund der Querbiegemomente in den Gurten wie folgt abgeminderte Fließgrenze: 
+fyf,r = fyf fT
+0M
+yf
+zx
+T 4,01 f
+Mf
+x(Mz) die durch Querbiegemomente hervorgerufene Spannung im Gurt; 
+ der Abminderungsbeiwert für Biegeknicken senkrecht zur Systemebene nach EN 1993-1-1, 6.3. 
+ANMERKUNG 1 Das Querbiegemoment Mz kann aus der Einleitung des Schubflusses vom Steg in die Gurte nach 
+Bild D.2 herrühren. 
+ANMERKUNG 2 Bei sinusförmig profilierte Stegblechen ist fT = 1,0. 
+Bild D.2  Querlasten infolge Einleitung des Schubflusses in die Gurte 
+(2) Die wirksame Fläche des Druckflansches ist in der Regel nach 4.4(1) zu bestimmen; hierzu ist der 
+größere Wert des Schlankheitsgrades p , siehe 4.4(2), zu verwenden. Der Beulwert ergibt sich wie folgt, 
+wobei der größere Wert aus a) und b) zu verwenden ist: 
+k
+a) 
+2
+43,0 a
+bk (D.2) 
+Dabei ist 
+b die Breite des einseitig gestützten Gurtblechs von der Schweißnahtwurzel bis zum freien Ende; 
+41 2 aaa
+b) 
+60,0k (D.3) 
+gestrichener Text
+62 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 67 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+D.2.2 Schubtragfähigkeit 
+(1) Die Schubtragfähigkeit Vbw,Rd ist in der Regel wie folgt zu bestimmen: 
+
+ww
+1M
+yw
+cRd,
+3
+thfVbw  (D.4) 
+Dabei ist 
+c der kleinere Wert der Abminderungsbeiwerte aus lokalem Plattenbeulen c, (siehe (2)) und 
+Knicken gc, (siehe (3)) ist. 
+(2) Der Abminderungsbeiwert c, für lokales Plattenbeulen ist in der Regel wie folgt zu ermitteln: 
+0,1
+9,0
+15,1
+c,
+c, (D.5) 
+mit 
+
+3cr,
+y
+c,
+wf
+ (D.6) 
+2
+max
+w
+cr, 83,4 a
+tE (D.7) 
+amax ist der größere Wert von a1 und a2. 
+ANMERKUNG Der nationale Anhang darf Hinweise zur Bestimmung von cr, und c, für sinusförmig profilierte 
+Stegbleche geben. Die Verwendung der folgenden Gleichung wird empfohlen: 
+2
+w
+2
+2
+ww
+3
+lcr,
+)1(12
+34,5 s
+tE
+th
+sa
+Dabei ist 
+w die Länge der Projektion eine halben Welle, siehe Bild D.1; 
+s die abgewickelte Länge eine halben Welle, siehe Bild D.1. 
+(3) Der Abminderungsbeiwert gc, für Knicken ist in der Regel wie folgt zu berechnen: 
+0,1
+5,0
+5,1
+2
+gc,
+gc, (D.8) 
+63 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 68 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Dabei ist 
+
+3gcr,
+y
+gc,
+wf
+(D.9) 
+4 3
+zx2
+ww
+gcr,
+4,32 DD
+ht
+ (D.10) 
+s
+wtED 2
+3
+x
+112
+w
+IED z
+z
+Iz das Flächenträgheitsmoment eines Profilierungsabschnittes der Länge w, siehe Bild D.1. 
+ANMERKUNG 1 Die Werte s und Iz werden für die wirkliche Form der Profilierung ermittelt. 
+ANMERKUNG 2 Gleichung (D.10) gilt für Bleche unter der Annahme gelenkiger Randlagerung. 
+D.2.3 Anforderungen an Endsteifen 
+(1) Endsteifen sind in der Regel nach Abschnitt 9 zu bemessen. 
+64 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 69 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+Anhang E
+(normativ)
+Alternative Methoden zur Bestimmung wirksamer Querschnitte 
+E.1 Wirksame Querschnittsflächen für Spannungen unterhalb der Streckgrenze 
+(1) Als Alternative zum Vorgehen nach 4.4(2) dürfen folgende Gleichungen zur Ermittlung wirksamer Flächen 
+für Spannungen unterhalb der Streckgrenze angewendet werden: 
+a) für zweiseitig gestützte druckbeanspruchte Querschnittsteile: 
+6,0
+18,0/3055,01
+p
+redp,p
+redp,
+redp, 1,0 (E.1) 
+b) für einseitig gestützte druckbeanspruchte Querschnittsteile: 
+6,0
+18,0/188,01
+p
+redp,p
+redp,
+redp, 1,0 (E.2) 
+Die Bezeichnungen sind in 4.4(2) und 4.4(4) angegeben. Der Einfluss knickstabähnlichen Verhaltens ist bei 
+der Berechnung der Tragfähigkeit nach 4.4(5) zu berücksichtigen. 
+E.2 Wirksame Querschnittsflächen für die Steifigkeit 
+(1) Zur Bestimmung wirksamer Querschnittsflächen für die Steifigkeit darf der Schlankheitsgrad serp, für 
+die Gebrauchstauglichkeit wie folgt ermittelt werden: 
+y
+serEd,com,
+pserp,
+f (E.3) 
+Dabei ist 
+com,Ed,ser die größte Druckspannung (berechnet für den wirksamen Querschnitt) im betrachteten 
+Querschnittsteil unter Lasten im Gebrauchtauglichkeitszustand. 
+(2) Das Flächenträgheitsmoment darf durch eine Interpolation der Bruttoquerschnittsfläche und der wirk-
+samen Querschnittsfläche unter der entsprechenden Lastkombination wie folgt angenommen werden: 
+serEd,com,effgr
+serEd,com,
+gr
+greff IIII (E.4) 
+Dabei ist 
+Igr das Flächenträgheitsmoment des Bruttoquerschnitts; 
+gr die größte am Bruttoquerschnitt ermittelte Biegespannung im Grenzzustand der Gebrauchs-
+tauglichkeit; 
+Ieff( com,Ed,ser) das für den wirksamen Querschnitt ermittelte Flächenträgheitsmoment; der wirksame 
+Querschnitt wird nach (E.1) für die größte Spannung innerhalb der betrachteten Bauteil-
+länge com,Ed,ser gr ermittelt. 
+65 
+DIN EN 1993-1-5:2010-12
+
+===== PDF-SEITE 70 =====
+EN 1993-1-5:2006 + AC:2009 (D) 
+(3) Das wirksame Flächenträgheitsmoment Ieff darf veränderlich entsprechend dem Spannungszustand 
+entlang des Bauteils angenommen werden. Alternativ darf Ieff als konstant entlang des Bauteils, berechnet für 
+das größte einwirkende positive Biegemoment unter Gebrauchtauglichkeitslasten, angesetzt werden. 
+(4) Die Berechnung erfordert ein iteratives Vorgehen. Auf der sicheren Seite darf die Berechnung jedoch in 
+einem Schritt für eine Spannung größer oder gleich com,Ed,ser durchgeführt werden. 
+66 
+DIN EN 1993-1-5:2010-12

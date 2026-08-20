@@ -1,0 +1,1760 @@
+
+
+===== PDF-SEITE 1 =====
+DEUTSCHE NORM 
+DIN EN 1993-1-7 
+ICS 91.01 0.30; 91.080.10 
+Dezember 2010 
+DIN 
+Ersatz far 
+DIN EN 1993-1-7:2007-07 und 
+DIN EN 1993-1-7 
+Berichtigung 1:2009-12 
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten­
+Tei11-7: Plattenförmige Bauteile mit Querbelastung; 
+Deutsche FassungEN 1993-1-7:2007 + AC:2009 
+Eurocode 3: Design of steel structures -
+Part 1-7: Plated structures subject to out of plane loading; 
+GermanversionEN 1993-1-7:2007 + AC:2009 
+Eurocode 3: Calcul des structures en acier-
+Partie 1-7: Resistance et stabilite des structures en plaquesplanes chargees hors de leur 
+plan; 
+Versionallemande EN 1993-1-7:2007 + AC:2009 
+Normenausschuss Bauwesen (NABau) im DIN 
+C DIN Deutsches Institut fOr Normung e. V. · Jade Art der Varvialfalligung, auch auszugsweise, 
+nur mit Genehmigung des DIN Deutsches Institut für Normung e. V., Bertin, gestattet 
+Alleinvert<auf der Normen durch Beuth Vertag GmbH, 1 0772 Bertin 
+Gesamtumfang 45 Seiten 
+Preisgruppe 18 
+www.din.de 
+www.beuth.de 111111111111111111111111 
+1718736
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-7:2010-12 
+Nationales Vorwort 
+Dieses Dokument (EN 1993-1-7:2007 + AC:2009) wurde vom Technischen Komitee CEN/TC 250 Eurocodes 
+für den konstruktiven Ingenieurbau erarbeitet, dessen Sekretariat vom BSI (Vereinigtes Königreich) gehalten 
+wird. 
+Die Arbeiten auf nationaler Ebene wurden durch die Experten des NABau-Spiegelausschusses 
+NA 005-08-16 AA Tragwerksbemessung begleitet. 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Norm ist Bestandteil einer Reihe von Einwirkungs- und Bemessungsnormen, deren Anwendung nur im 
+Paket sinnvoll ist. Dieser Tatsache wird durch das Leitpapier L der Kommission der Europäischen Gemein-
+schaft für die Anwendung der Eurocodes Rechnung getragen, indem Übergangsfristen für die verbindliche 
+Umsetzung der Eurocodes in den Mitgliedsstaaten vorgesehen sind. Die Übergangsfristen sind im Vorwort 
+dieser Norm angegeben. 
+Die Anwendung dieser Norm gilt in Deutschland in Verbindung mit dem Nationalen Anhang. 
+Es wird auf die Möglichkeit hingewiesen, dass einige Texte dieses Dokuments Patentrechte berühren können. 
+Das DIN [und/oder die DKE] sind nicht dafür verantwortlich, einige oder alle diesbezüglichen Patentrechte zu 
+identifizieren. 
+Der Beginn und das Ende des hinzugefügten oder geänderten Textes wird im Text durch die 
+Textmarkierungen 
+ angezeigt. 
+Änderungen 
+Gegenüber DIN V ENV 1993-1-7:2002-05 wurden folgende Änderungen vorgenommen: 
+a) die Stellungnahmen der nationalen Normungsinstitute wurden eingearbeitet; 
+b) der Vornormcharakter wurde aufgehoben; 
+c) der Text wurde vollständig überarbeitet. 
+Gegenüber DIN EN 1993-1-7:2007-07 und DIN EN 1993-1-7 Berichtigung 1:2009-12 wurden folgende 
+Änderungen vorgenommen: 
+a) Vorgänger-Norm mit der Berichtigung 1 konsolidiert; 
+b) redaktionelle Änderungen durchgeführt. 
+Frühere Ausgaben 
+DIN V ENV 1993-1-7: 2002-05 
+DIN EN 1993-1-7: 2007-07 
+DIN EN 1993-1-5 Berichtigung 1: 2009-12 
+2
+
+===== PDF-SEITE 3 =====
+EUROPÄISCHE NORM 
+EUROPEAN STANDARD 
+NORME EUROPÉENNE
+ EN 1993-1-7 
+ April 2007 
+ +AC 
+ April 2009 
+ICS 91.010.30; 91.080.10 Ersatz für ENV 1993-1-7:1999
+Deutsche Fassung 
+ Eurocode 3: Bemessung und Konstruktion von Stahlbauten 
+Teil 1-7: Plattenförmige Bauteile mit Querbelastung 
+Eurocode 3: Design of steel structures  
+Part 1-7: Plated structures subject to out of plane loading 
+ Eurocode 3: Calcul des structures en acier  
+Partie 1-7: Résistance et stabilité des structures en plaques 
+planes chargées hors de leur plan 
+Diese Europäische Norm wurde vom CEN am 12. Juni 2006 angenommen. 
+Die Berichtigung tritt am 15. April 2009 in Kraft und wurde in EN 1993-1-7:2007 eingearbeitet. 
+Die CEN-Mitglieder sind gehalten, die CEN/CENELEC-Geschäftsordnung zu erfüllen, in der die Bedingungen festgelegt sind, unter d enen
+dieser Europäischen Norm ohne jede Änderung der Status einer nationalen Norm zu geben ist. Auf dem letzten Stand befindliche Li sten
+dieser nationalen Normen mit ihren bibliographischen Angaben sind beim Management-Zentrum des CEN oder bei jedem CEN-Mitglied au
+f
+Anfrage erhältlich. 
+Diese Europäische Norm besteht in drei offiziellen Fassungen (Deutsch, Englisch, Französisch). Eine Fassung in einer anderen Sp rache,
+die von einem CEN-Mitglied in eigener Verantwortung durch Übersetzung in seine Landessprache gemacht und dem Management-Zentrum 
+mitgeteilt worden ist, hat den gleichen Status wie die offiziellen Fassungen. 
+CEN-Mitglieder sind die nationalen Normungsinstitute von Belgien, Bulgarien, Dänemark, Deutschland, Estland, Finnland, Frankreic h,
+Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, den Niederlanden, Norwegen, Österreich, Polen, Port ugal,
+Rumänien, Schweden, der Schweiz, der Slowakei, Slowenien, Spanien, der Tschechischen Republik, Ungarn, dem Vereinigten Königrei ch
+und Zypern. 
+EUROPÄISCHES KOMITEE FÜR NORMUNG 
+EUROPEAN COMMITTEE FOR STANDARDIZATION 
+COMITÉ EUROPÉEN DE NORMALISATION
+Management-Zentrum: Avenue Marnix 17, B-1000 Brüssel 
+© 2009 CEN Alle Rechte der Verwertung, gleich in welcher Form und in welchem 
+Verfahren, sind weltweit den nationalen Mitgliedern von CEN vorbehalten.
+Ref. Nr. EN 1993-1-7:2007 + AC:2009 D
+
+===== PDF-SEITE 4 =====
+2 
+Inhalt 
+Se ite 
+Vorwort ................................................................................................................................................................4
+Nationaler Anhang zu EN 1993-1-7 ...................................................................................................................4
+1 Allgemeines.................................................................................................................. ..........................5
+1.1 Anwendungsbereich .......................................................................................................... ...................5
+1.2 Normative Verweisungen..................................................................................................... .................5
+1.3 Begriffe ................................................................................................................... ................................6
+1.3.1 Konstruktive Ausbildung und Abmessungen .................................................................................. ..6
+1.4 Symbole .................................................................................................................... ..............................8
+2 Grundlagen der Bemessung..................................................................................................... ..........10
+2.1 Anforderungen .............................................................................................................. .......................10
+2.2 Grundsätze der Grenzzustandsnachweise ...................................................................................... .10
+2.2.1 Allgemeines.............................................................................................................. ............................10
+2.2.2 Plastisches Versagen..................................................................................................... .....................10
+2.2.3 Zyklische Plastizierung .................................................................................................. .....................11
+2.2.4 Beulen ................................................................................................................... ................................11
+2.2.5 Ermüdung ................................................................................................................. ............................11
+2.3 Einwirkungen ............................................................................................................... ........................11
+2.4 Bemessung mit Versuchsunterstützung........................................................................................ ...11
+3 Werkstoffeigenschaften ....................................................................................................... ...............11
+4 Dauerhaftigkeit.............................................................................................................. .......................11
+5 Statische Berechnung......................................................................................................... ................12
+5.1 Allgemeines................................................................................................................ ..........................12
+5.2 Schnittgrößen in der Platte................................................................................................ .................12
+5.2.1 Allgemeines.............................................................................................................. ............................12
+5.2.2 Randbedingungen für die Platte ........................................................................................... .............12
+5.2.3 Berechnungsmodelle für plattenartige Tragwerke........................................................................... 12
+6 Grenzzustand der Tragfähigkeit............................................................................................... ..........18
+6.1 Allgemeines................................................................................................................ ..........................18
+6.2 Plastische Grenzbeanspruchbarkeit.......................................................................................... ........18
+6.2.1 Allgemeines.............................................................................................................. ............................18
+6.2.2 Ergänzende Regelungen für die Gesamtberechnung......................................................................18
+6.2.3 Ergänzende Regelungen für die Anwendung vereinfachter Modelle.............................................19
+6.3 Zyklisches Plastizieren .................................................................................................... ...................19
+6.3.1 Allgemeines.............................................................................................................. ............................19
+6.3.2 Ergänzende Regelungen für die Gesamtberechnung......................................................................19
+6.4 Beulnachweise.............................................................................................................. .......................20
+6.4.1 Allgemeines.............................................................................................................. ............................20
+6.4.2 Ergänzende Regeln für die Gesamtberechnung ..............................................................................2 0
+6.4.3 Ergänzende Regelungen für die Anwendung vereinfachter Modelle.............................................21
+7 Ermüdung ..................................................................................................................... ........................21
+8 Grenzzustände der Gebrauchstauglichkeit ...................................................................................... 22
+8.1 Allgemeines................................................................................................................ ..........................22
+8.2 Plattendurchbiegungen...................................................................................................... .................22
+8.3 Exzessive Schwingungen ..................................................................................................... ..............22
+Anhang A (informativ) Berechnungsverfahren für den Entwurf von plattenartigen Tragwerken.............23
+A.1 Allgemeines................................................................................................................ ..........................23
+A.2 Linear-elastische Plattenberechnung (LA) ................................................................................... ....23
+A.3 Geometrisch nicht-lineare Berechnung (GNA)................................................................................. 23
+A.4 Werkstofflich nicht-lineare Berechnung (MNA)............................................................................... .24
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 5 =====
+3 
+A.5 Geometrisch und werkstofflich nicht-lineare Berechnung (GMNA)...............................................24
+A.6 Geometrisch nicht-lineare Berechnung mit Imperfektionen (GNIA) ..............................................24
+A.7 Geometrisch und werkstofflich nicht-lineare Berechnung mit Imperfektionen (GMNIA) ............25
+Anhang B (informativ) Spannungen in unausgesteiften Rechteckplatten aus der Theorie kleiner 
+Verformungen ......................................................................................................................................26
+B.1 Allgemeines ................................................................................................................ .........................26
+B.2 Symbole.................................................................................................................... ............................26
+B.3 Gleichmäßig verteilte Flächenlast .......................................................................................... ...........27
+B.3.1 Plattendurchbiegungen .................................................................................................... ..................27
+B.3.2 Plattenspannungen ........................................................................................................ .....................27
+B.3.3 Koeffizienten k für gleichmäßig verteilte Flächenlasten .................................................................28
+B.4 Auf eine Teilfläche der Platte gleichmäßig verteilte Flächenlast ...................................................31
+B.4.1 Plattendurchbiegungen .................................................................................................... ..................31
+B.4.2 Plattenspannungen ........................................................................................................ .....................31
+B.4.3 Koeffizienten k für eine auf eine Teilfläche konzentrierte Last ......................................................32
+Anhang C (informativ) Spannungen in unausgesteiften Rechteckplatten aus der Theorie großer 
+Verformungen ......................................................................................................................................33
+C.1 Allgemeines ................................................................................................................ .........................33
+C.2 Symbole.................................................................................................................... ............................33
+C.3 Auf die Gesamtfläche der Platte gleichmäßig verteilte Flächenlast ..............................................34
+C.3.1 Plattendurchbiegungen .................................................................................................... ..................34
+C.3.2 Plattenspannungen ........................................................................................................ .....................34
+C.3.3 Koeffizienten k für gleichmäßig verteilte Flächenlasten .................................................................35
+C.4 Auf eine Teilfläche der Platte gleichmäßig verteilte Flächenlast ...................................................39
+C.4.1 Allgemeines .............................................................................................................. ...........................39
+C.4.2 Plattenspannungen ........................................................................................................ .....................39
+C.4.3 Koeffizienten k für auf Teilflächen konzentrierte Last.....................................................................40
+Se ite 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 6 =====
+4 
+Vorwort 
+Dieses Dokument EN 1993-1-7:2007, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-7: 
+Plattenförmige Bauteile mit Querbelastung wurde vom Technischen Komitee CEN/TC 250 Structural 
+Eurocodes“ erarbeitet, dessen Sekretariat vom BSI gehalten wird. 
+Diese Europäische Norm muss den Status einer nationalen Norm erhalten, entweder durch Veröffentlichung 
+eines identischen Textes oder durch Anerkennung bis Oktober 2007, und etwaige entgegenstehende 
+nationale Normen müssen bis März 2010 zurückgezogen werden. 
+EN 1993-1-7 ersetzt ENV 1993-1-7:1999. 
+Entsprechend der CEN/CENELEC-Geschäftsordnung sind die nationalen Normungsinstitute der folgenden 
+Länder gehalten, diese Europäische Norm zu übernehmen: Belgien, Bulgarien, Dänemark, Deutschland, 
+Estland, Finnland, Frankreich, Griechenland, Irland, Island, Italien, Lettland, Litauen, Luxemburg, Malta, 
+Niederlande, Norwegen, Österreich, Polen, Portugal, Rumänien, Schweden, Schweiz, Slowakei, Slowenien, 
+Spanien, Tschechische Republik, Ungarn, Vereinigtes Königreich und Zypern. 
+Nationaler Anhang zu EN 1993-1-7 
+Diese Norm enthält alternative Vorgehensweisen, Zahlenwerte sowie Empfehlungen. Durch besonderen 
+Hinweis (Anmerkungen) sind die Stellen gekennzeichnet, bei denen eine nationale Auswahl getroffen werden 
+darf. EN 1993-1-7 enthält bei der nationalen Einführung einen Nationalen Anhang. Dieser Anhang legt die 
+nationalen Parameter fest, die für die Bemessung und Konstruktion von Stahlbauten verwendet werden 
+müssen. 
+Eine nationale Wahl darf für folgenden Abschnitt erfolgen: 
+ 6.3.2(4) 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 7 =====
+5 
+1 Allgemeines 
+1.1 Anwendungsbereich 
+(1)P EN 1993-1-7 liefert Bemessungsregeln für den Entwurf nicht ausgesteifter und ausgesteifter Platten, die 
+Teil von plattenartigen Tragwerken wie z.B. Silos und Behälter sind, welche einer Querbelastung ausgesetzt 
+sind. Sie gilt in Verbindung mit EN 1993-1-1 und den entsprechenden Anwendungsnormen. 
+(2) Diese Europäische Norm legt die Bemessungswerte für die Beanspruchbarkeiten fest; der 
+Teilsicherheitsbeiwert für die Beanspruchbarkeit kann dem Nationalen Anhang der maßgebenden 
+Anwendungsnormen entnommen werden; Empfehlungen sind in der entsprechenden Anwendungsnorm 
+enthalten. 
+(3) Diese Norm enthält Anforderungen für Tragfähigkeitsnachweise für die Grenzzustände: 
+ plastisches Versagen; 
+ zyklische Plastizierung; 
+ Beulen; 
+ Ermüdung. 
+(4) Die Grenzzustände des statischen Gleichgewichts (Rutschen, Abheben und Kippen) werden in dieser 
+Norm nicht behandelt; sie sind in EN 1993-1-1 geregelt. Besonderheiten, die für bestimmte Anwendungen 
+gelten, können in den Anwendungsnormen von EN 1993 gefunden werden. 
+(5) Die Regeln dieser Norm beziehen sich auf dünne Plattenelemente von Bauteilen, die ausgesteift oder 
+nicht ausgesteift sein können und quer zur Plattenebene belastet werden. 
+(6) Für den Nachweis ausgesteifter und nicht ausgesteifter plattenartiger Tragwerke mit Belastungen nur in 
+der Plattenebene gilt EN 1993-1-5. In EN 1993-1-7 werden Interaktionsregeln für die Auswirkungen von 
+Belastungen in der Ebene und aus der Ebene angegeben. 
+(7) Bemessungsregeln für dünnwandige kaltgeformte Bauteile und Blechtafeln sind in EN 1993-1-3 zu 
+finden. 
+(8) Der Temperaturbereich, für den die Regelungen in dieser Norm gelten, wird in den Anwendungsnormen 
+von EN 1993 geregelt. 
+(9) Die Bemessungsregeln in dieser Norm beziehen sich auf Tragwerke, die nach EN 1090-2 ausgeführt 
+sind. 
+(10) Windlasten und Lasten aus Schüttgütern können im Allgemeinen als vorwiegend ruhende Lasten 
+angesehen werden. Dynamische Wirkungen sind in der Regel entsprechend dem Ermüdungsnachweis nach 
+EN 1993-1-9 zu berücksichtigen. In diesem Teil werden die Schnittgrößen aus dynamischem Verhalten als 
+vorwiegend ruhend behandelt. 
+1.2 Normative Verweisungen 
+(1) Diese Europäische Norm enthält durch datierte oder undatierte Verweisungen Festlegungen aus 
+anderen Publikationen. Diese normativen Verweisungen sind an den jeweiligen Stellen im Text zitiert, und die 
+Publikationen sind nachstehend aufgeführt. Bei datierten Verweisungen gehören spätere Änderungen oder 
+Überarbeitungen dieser Publikationen nur zu dieser Europäischen Norm, falls sie durch Änderung oder 
+Überarbeitung eingearbeitet sind. Bei undatierten Verweisungen gilt die letzte Ausgabe der in Bezug 
+genommenen Publikation. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 8 =====
+6 
+EN 1993-1-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-1: Allgemeine 
+Bemessungsregeln und Regeln für den Hochbau 
+EN 1993-1-3, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-3: Kaltgeformte dünn-
+wandige Profile und Bleche 
+EN 1993-1-4, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-4: Nichtrostender Stahl 
+EN 1993-1-5, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-5: Plattenbeulen 
+EN 1993-1-6, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-6: Festigkeit und Stabilität 
+von Schalentragwerken 
+EN 1993-1-8, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-8: Berechnung und 
+Bemessung von Anschlüssen 
+EN 1993-1-9, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-9: Ermüdung 
+EN 1993-1-10, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-10: Auswahl der 
+Stahlsorten im Hinblick auf Bruchzähigkeit und Eigenschaften in Dickenrichtung 
+EN 1993-1-12, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 1-12: Zusätzliche Regeln 
+zur Erweiterung von EN 1993 auf Stahlgüten bis S700 
+EN 1993-4-1, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-1: Silos 
+EN 1993-4-2, Eurocode 3: Bemessung und Konstruktion von Stahlbauten  Teil 4-2: Tanks 
+1.3 Begriffe 
+(1) Es gelten die Regelungen in EN 1990, 1.5. 
+(2) Die nachfolgenden Begriffe werden in Ergänzung zu EN 1993-1-1 verwendet: 
+1.3.1 Konstruktive Ausbildung und Abmessungen 
+1.3.1.1 
+plattenartiges Tragwerk 
+Tragwerk, das aus Flachblechen zusammengesetzt und verschweißt ist. Die Flachbleche können ausgesteift 
+und nicht ausgesteift sein, siehe Bild 1.1 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 9 =====
+7 
+Legende 
+1 Querstreifen (offene oder geschlossene Form) 
+2 Flächentragwerg 
+3 Längssteifen (offene oder geschlossene Form) 
+4 Blechfeld 
+5 Einzelbleche 
+Bild 1.1  Komponenten eines plattenartigen Tragwerks 
+1.3.1.2 
+Plattenfeld 
+Plattenfeld ist ein nicht ausgesteiftes oder ausgesteiftes Flachblech. Ein Plattenfeld darf als eine Komponente 
+eines plattenartigen Tragwerks angesehen werden 
+1.3.1.3 
+Steife 
+Blech oder Profil, das das Flachblech zur Vermeidung von Beulen oder zur Verstärkung für lokale Lasten 
+aussteift. Eine Steife wird bezeichnet als: 
+ Längssteife, wenn die Steifenachse in Hauptrichtung der Lastübertragung verläuft; 
+ Quersteife, wenn die Steifenachse senkrecht zur Hauptrichtung der Lastübertragung verläuft 
+1.3.1.4 
+ausgesteiftes Flachblech 
+Blech mit Längs- und/oder Quersteifen 
+1.3.1.5 
+Einzelfeld 
+nicht ausgesteiftes Blechfeld umrandet von 
+ Steifen; 
+ Gurten und/oder Steifen (bei einem Steg); 
+ Stegen und/oder Steifen (bei einem Gurt) 
+1.3.2 Bezeichnungen 
+1.3.2.1 
+plastisches Versagen 
+Versagensart im Grenzzustand der Tragfähigkeit, bei der das Tragwerk die Fähigkeit zur weiteren 
+Lastaufnahme durch Ausbildung von Fließmechanismen verliert 
+1.3.2.2 
+Bruch unter Zugbelastung 
+Versagen im Grenzzustand der Tragfähigkeit, bei dem das Blech infolge Zugbeanspruchung reißt 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 10 =====
+8 
+1.3.2.3 
+zyklische Plastizierung 
+wiederholtes Fließen infolge von Belastungs- und Entlastungszyklen 
+1.3.2.4 
+Beulen 
+Stabilitätsversagen des plattenartigen Tragwerks infolge Druck und/oder Schubbelastung 
+1.3.2.5 
+Ermüdung 
+Rissbildung oder Versagen infolge zyklischer Belastung 
+1.3.3 Einwirkungen 
+1.3.3.1 
+Querbelastung 
+Belastung senkrecht zur Mittelfläche eines Plattenfeldes 
+1.3.3.2 
+Kräfte in Plattenebene 
+Kräfte, die parallel zur Oberfläche des Plattenfeldes einwirken. Sie werden durch Wirkungen in der Ebene 
+(z. B. Temperaturwirkungen oder Reibung) ausgelöst oder entstehen durch äußere Lasten, die auf das 
+plattenartige Tragwerk einwirken 
+1.4 Symbole 
+(1) Zusätzlich zu den Bezeichnungen in EN 1990 und EN 1993-1-1 gelten die folgenden Bezeichnungen: 
+(2) Membranspannungen in Rechteckplatte, siehe Bild 1.2: 
+mx Membrannormalspannung in x-Richtung infolge der breitenbezogenen Membrannormalkräfte nx; 
+my Membrannormalspannung in y-Richtung infolge der breitenbezogenen Membrannormalkräfte ny; 
+mxy Membranschubspannung infolge der breitenbezogenen Membranschubkräfte nxy. 
+Bild 1.2  Membranspannungen 
+(3) Biege- und Schubspannungen in Rechteckplatten infolge Biegung, siehe Bild 1.3: 
+bx Spannung in x-Richtung infolge des breitenbezogenen Biegemomentes mx; 
+by Spannung in y-Richtung infolge des breitenbezogenen Biegemomentes my; 
+bxy Schubspannung infolge des breitenbezogenen Torsionsmomentes mxy; 
+bxz Schubspannungen infolge der breitenbezogenen Querkräfte infolge Biegung qx; 
+byz Schubspannungen infolge der breitenbezogenen Querkräfte infolge Biegung qy. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 11 =====
+9 
+Bild 1.3  Längs- und Schubspannungen infolge Biegung 
+ANMERKUNG Im Allgemeinen gibt es acht Schnittgrößen an jedem Punkt der Platte. Die Schubspannungen bxz und 
+byz infolge qx und qy sind meistens verglichen mit den anderen Spannungskomponenten ohne Bedeutung und werden 
+deshalb in der Regel bei der Bemessung vernachlässigt. 
+(4) Griechische Kleinbuchstaben: 
+ Seitenverhältnis des Plattenfeldes ( a/b); 
+ Dehnung; 
+R Lastvergrößerungsfaktor; 
+ Abminderungsbeiwert für Plattenbeulen; 
+i Längsspannungen in der Richtung i, siehe Bild 1.2 und Bild 1.3; 
+ Schubspannungen, siehe Bild 1.2 und Bild 1.3; 
+ Querkontraktionszahl; 
+M Teilsicherheitsbeiwert. 
+(5) Lateinische Großbuchstaben: 
+E Elastizitätsmodul 
+(6) Lateinische Kleinbuchstaben: 
+a Länge des Plattenfeldes, siehe Bild 1.4 und Bild 1.5; 
+b Breite des Plattenfeldes, siehe Bild 1.4 und Bild 1.5; 
+fyk Fließspannung/Streckgrenze oder 0,2-%-Dehngrenze bei einem Werkstoff mit einer nichtlinearen 
+Spannungs-Dehnungs-Kurve; 
+ni Membrannormalkraft in der Richtung i [kN/m]; 
+mxy Membranquerkraft [kN/m];
+m Biegemoment/Torsionsmoment [kNm/m]; 
+qz Querkraft in der Richtung z [kN/m]; 
+t Dicke des Blechfeldes, siehe 1.4 und 1.5. 
+ANMERKUNG Kurzzeichen und Bezeichnungen, die vorstehend nicht aufgeführt sind, werden im Text erklärt, wenn sie 
+zuerst auftauchen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 12 =====
+10 
+Bild 1.4  Abmessungen und Achsen für nicht ausgesteifte Plattenfelder 
+Bild 1.5  Abmessungen und Achsen für ausgesteifte Blechfelder; die Steifen können offen 
+oder geschlossen sein 
+2 Grundlagen der Bemessung 
+2.1 Anforderungen 
+(1)P Die Bemessung hat nach EN 1990 zu erfolgen. 
+(2)P Die folgenden Grenzzustände sind für plattenartige Tragwerke nachzuweisen: 
+ plastisches Versagen, siehe 2.2.2; 
+ zyklische Plastizierung, siehe 2.2.3; 
+ Beulen, siehe 2.2.4; 
+ Ermüdung, siehe 2.2.5. 
+(3) Der Entwurf der plattenartigen Tragwerke sollte den Gebrauchstauglichkeitsanforderungen der ent-
+sprechenden Anwendungsnorm genügen. 
+2.2 Grundsätze der Grenzzustandsnachweise 
+2.2.1 Allgemeines 
+(1)P Die Grundsätze der Grenzzustandsnachweise nach EN 1993-1-1, Abschnitt 2 und EN 1993-1-6 gelten 
+auch für plattenartige Tragwerke. 
+2.2.2 Plastisches Versagen 
+(1) Plastisches Versagen wird als der Zustand bezeichnet, bei dem ein Teil des Tragwerks solche 
+plastische Verformungen entwickelt, dass sich ein plastischer Mechanismus bildet. Das plastische Versagen 
+wird in der Regel mit einem Mechanismus unter Zugrundelegung kleiner Verformungen nachgewiesen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 13 =====
+11 
+2.2.3 Zyklische Plastizierung 
+(1) Zyklische Plastizierung sollte als eine Grenzbedingung für zyklische Belastungen und Entlastungen 
+angesehen werden, bei der an einem Punkt Fließen unter Zug- oder Druckbeanspruchung oder unter beidem 
+auftritt und plastische Arbeit abgefordert wird. Dieses wechselnde Fließen kann infolge Begrenzung des 
+plastischen Arbeitsvermögens zu lokalen Rissen führen und stellt deshalb eine niedrig-zyklische Form der 
+Ermüdung dar. Die Spannungen für diesen Grenzzustand entwickeln sich aus der Kombination der 
+Einwirkungen und den Verträglichkeitsbedingungen für die Verformungen des Tragwerks. 
+2.2.4 Beulen 
+(1) Beulen wird als die Grenzbedingung angesehen, bei der das Tragwerk infolge der Instabilität des 
+Plattenfeldes unter Druck- und/oder Schubspannungen große Verformungen entwickelt. Dies kann zu 
+Instabilitätsverhalten führen, so dass weitere Laststeigerungen nicht mehr aufgenommen werden können. 
+(2) Zu lokalem Plattenbeulen siehe EN 1993-1-5. 
+(3) Zur Tragfähigkeit der Steifen bei Biegeknicken, Biegedrillknicken und Knicken mit Querschnitts-
+verformung siehe EN 1993-1-5. 
+2.2.5 Ermüdung 
+(1) Ermüdung wird als die Grenzbedingung angesehen, bei der sich infolge wiederholter Zyklen von 
+anwachsenden und abfallenden Spannungen Risse entwickeln und/oder Risse weiterwachsen können. 
+2.3 Einwirkungen 
+(1) Die charakteristischen Werte der Einwirkungen sollten nach den entsprechenden Teilen von EN 1991 
+bestimmt werden. 
+2.4 Bemessung mit Versuchsunterstützung 
+(1) Für die Bemessung mit Versuchsunterstützung sollte EN 1993-1-1, 2.5 und wo erforderlich 
+EN 1993-1-3, Abschnitt 9 herangezogen werden. 
+3 Werkstoffeigenschaften 
+(1) Diese Norm gilt für plattenartige Tragwerke aus Werkstoffen, die den Produktnormen EN 1993-1-1 und 
+EN 1993-1-12 entsprechen. 
+(2) Die Werkstoffeigenschaften für kaltgeformte, dünnwandige Bauteile und Bleche sollten EN 1993-1-3 
+entnommen werden. 
+(3) Die Werkstoffeigenschaften von nichtrostenden Stählen sollten EN 1993-1-4 entnommen werden. 
+4 Dauerhaftigkeit 
+(1) Zur Dauerhaftigkeit siehe EN 1993-1-1, Abschnitt 4. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 14 =====
+12 
+5 Statische Berechnung 
+5.1 Allgemeines 
+(1)P Die Berechnungsmodelle sind so zu wählen, dass sie das Bauteilverhalten im betrachteten 
+Grenzzustand zutreffend wiedergeben. 
+(2) Bei der Wahl sicherer Randbedingungen (d.h. eingespannter oder nicht eingespannter Rand) darf ein 
+Tragwerk in einzelne Plattenfelder aufgeteilt werden, die unabhängig voneinander betrachtet werden können. 
+(3)P Die Gesamtstabilität des gesamten Tragwerks ist, wie in den entsprechenden Teilen von EN 1993 
+geregelt, nachzuweisen. 
+5.2 Schnittgrößen in der Platte 
+5.2.1 Allgemeines 
+(1) Das Berechnungsmodell und die grundsätzlichen Annahmen für die Bestimmung der Schnittgrößen 
+oder Spannungen sollten das erwartete Tragwerksverhalten bei Belastung im Grenzzustand der Tragfähigkeit 
+wiedergeben. 
+(2) Das Berechnungsmodell kann in dem Maße vereinfacht werden, wie nachgewiesen werden kann, dass 
+die Vereinfachungen auf der sicheren Seite liegende Resultate liefern. 
+(3) Ein elastisches Tragwerksmodell darf grundsätzlich für plattenartige Tragwerke benutzt werden. Tritt 
+Ermüdung auf, sollte kein plastisches Tragwerksmodell benutzt werden. 
+(4) Mögliche Abweichungen der Richtung oder des Angriffspunktes der Einwirkungen sollten berücksichtigt 
+werden. 
+(5) Die Fließlinienmethode darf im Grenzzustand der Tragfähigkeit benutzt werden, wenn die Druck- oder 
+Schubbeanspruchungen in der Plattenebene kleiner als 10 % der entsprechenden Tragfähigkeit sind. Die 
+Momententragfähigkeit der Platte darf mit 
+0M
+Rd
+, 2250 tf
+m y
+angesetzt werden. 
+5.2.2 Randbedingungen für die Platte 
+(1) Die Randbedingungen, die für die Berechnung angenommen werden, sollten für den betrachteten 
+Grenzzustand angemessen sein. 
+(2)P Wird ein plattenartiges Tragwerk in einzelne Plattenfelder aufgeteilt, sind die rechnerischen Annahmen 
+für die Randbedingungen der Steifen der einzelnen Plattenfelder in den Ausführungszeichnungen zu 
+berücksichtigen. 
+5.2.3 Berechnungsmodelle für plattenartige Tragwerke 
+5.2.3.1 Allgemeines 
+(1) Die Spannungen eines Plattenfeldes eines plattenartigen Tragwerks sollten nach einem der folgenden 
+Verfahren ermittelt werden: 
+ Standardformeln für Plattenschnittgrößen, siehe 5.2.3.2; 
+ Gesamtberechnung, siehe 5.2.3.3; 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 15 =====
+13 
+en je nach Anforderung die lineare oder nicht-lineare Plattentheorie 
+berücksichtigen. 
+ Plattentheorie geht von kleinen Verformungen aus und nimmt eine lineare Abhängigkeit 
+zwischen Lasten und Verformungen an. Diese darf angewendet werden, wenn die Druckbeanspruchung oder 
+b
+Wirkung der Verformungen auf das Gleichgewicht. 
+gsmöglichkeiten, auf denen die Berechnungsmodelle 
+nach (1) beruhen können. 
+Tabelle 5.1  Berechnungsmöglichkeiten 
+Berechnungsmöglich rhalten Plattengeometrie
+ vereinfachte Modelle, siehe 5.2.3.4. 
+(2) Die Berechnungsmodelle in (1) sollt
+(3) Die lineare
+Schu beanspruchung in der Plattenebene kleiner als 10 % der entsprechenden Beanspruchbarkeit ist. 
+(4) Die nicht-lineare Plattentheorie beruht auf der Annahme großer Verformungen und berücksichtigt die 
+(5) Die Tabelle 5.1 zeigt verschiedene Berechnun
+keit Plattentheorie Werkstoffve
+Linear e (LA) li lilastische Plattenberechnung near near perfekt 
+Geometrisch nicht-lineare elastische 
+Berechnung (GNA) nicht-linear linear perfekt 
+Werkstofflich nicht-lineare Berechnung
+(MNA) near linear nicht-li perfekt 
+Geometrisch und werkstofflich nicht-line
+Berechnu
+are 
+ng (GMNA) near nicht-li nicht-linear perfekt 
+Geometrisch nicht-lineare elastische 
+Berechnung mit Imperfektionen (GNIA) t nicht-linear linear imperfek
+Geometrisch und werkstofflich nicht-linea
+Berechnung mit Imperfektionen (GMNIA)
+re near nicht-linear nicht-li imperfekt 
+NMERKUNG 1 Im Anhang A sind die verschiedenen Berechnungsmöglichkeiten definiert. 
+gelegt werden. 
+D metrische 
+Imperfektionen entweder nicht relevant sind oder implizit in den Bemessungsregeln berücksichtigt werden. 
+ählt, dass die 
+Ergebnisse im Vergleich mit Versuchsergebnissen an Prüfkörpern, die mit Toleranzen nach EN 1090-2 gefertigt wurden, 
+rmeln 
+ plattenartigen Tragwerks kann der Spannungsnachweis für die 
+maßgebende Einwirkungskombination mit geeigneten Berechnungsformeln durchgeführt werden, die für die 
+c
+rechteckige, nicht ausgesteifte Platten mit Querbelas-
+tung. Für Kreisplatten sind Berechnungsformeln in EN 1993-1-6 angegeben. Weitere Berechnungsformeln können 
+nnungsfelder auf, kann die 
+v. Mises-Vergleichsspannung mit 
+A
+ANMERKUNG 2 Die für ein Tragwerk anzuwendende Berechnungsmethode sollte vorab fest
+ANMERKUNG 3 ie Verwendung eines Modells mit perfekter Geometrie lässt darauf schließen, dass geo
+ANMERKUNG 4 Bei imperfekter Geometrie wird die Amplitude der geometrischen Imperfektionen so gew
+sicher sind. Die Amplituden der geometrischen Imperfektionen unterscheiden sich daher im Allgemeinen von den in 
+EN 1090-2 angegebenen Toleranzen. 
+5.2.3.2 Nutzung von Standardfo
+(1) Für ein einzelnes Plattenfeld eines
+Bere hnungsmöglichkeiten nach 5.2.3.1 aufgestellt wurden. 
+ANMERKUNG Die Anhänge B und C liefern Tabellenwerke für 
+verwendet werden, wenn deren Genauigkeit den Anforderungen in EN 1990 entspricht. 
+(2) Treten bei Anwendung der Membrantheorie zweidimensionale Spa
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 16 =====
+14 
+222 31
+,Ed,Ed,Edeq, xyx nnnnnt (5.1) Ed,Ed,Ed xyy
+ermittelt werden. 
+(3) Im Falle zweidimensionaler Spannungsfelder, gerechnet nach der elastischen Plattentheorie, darf die 
+spannung eq,Ed wie folgt ermittelt werden: v. Mises-Vergleichs
+222 3 Ed,Ed,Ed,Ed,Ed,Edeq, xyyxyx (5.2) 
+Dabei gilt 
+42 /
+Ed,Ed,
+t
+m
+t
+n xx
+Ed,x
+42 /
+Ed,Ed,
+Ed,
+t
+m
+t
+n yy
+y
+42 /
+Ed,Ed,
+Ed,
+t
+m
+t
+n xyxy
+xy
+wobei nx,Ed, ny,Ed, nxy,Ed, mx,E , my,Ed und mxy,Ed in 1.4(1) und (2) definiert sind. 
+ANMER UNG Di n angegebenen G chungen ergeben eine vereinfachte, auf der sicheren Seite liegende 
+(1) Werden die Spannungen eines plattenartigen Tragwerks mit einem numerischen Verfahren ermittelt, 
+rößte v. Mises-Vergleichsspannung eq,Ed in dem 
+ht
+d
+K e obe lei
+Vergleichsspannung für die Bemessung. 
+5.2.3.3 Gesamtberechnung: numerisches Verfahren 
+das auf einem linearen Werkstoffmodell aufbaut, sollte die g
+Blec ragwerk für die maßgebende Einwirkungskombination berechnet werden. 
+(2) Die v. Mises-Vergleichsspannung eq,Ed wird mit den Spannungskomponenten an einem Punkt des 
+Blechtragwerks bestimmt. 
+22
+Ed,
+2
+Ed,Edeq, 3yx (5.3) EdEd,Ed, yx
+wobei x,Ed und y,Ed mit positivem Vorzeichen 
+Wird num ind die Wirkungen von Imperfek-
+ Abweichungen von den Nennmaßen der Form der Platte (Vorverformungen, Durchbiegungen aus 
+ Abweichungen von den Nennwerten der Blechdicken;
+bei Zug eingeführt werden. 
+(3) mit dem erischen Verfahren der Beulnachweis geführt, s
+tionen zu berücksichtigen. Diese Imperfektionen können sein: 
+(a) geometrische Imperfektionen: 
+der Ebene); 
+ imperfekte Schweißnähte (kleinere Exzentrizitäten); 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 17 =====
+15 
+(b) Werkstoffimperfektionen: 
+ Walz-, Formungs-, Schweiß- oder Richtprozess; 
+ Imperfektionen sollten durch eine äquivalente geometrische 
+Anfangsimperfektion der perfekten Platte berücksichtigt werden. Die Form der äquivalenten geometrischen 
+ rechteckigen Plattenfeldes 
+darf durch Kalibration mit Versuchsergebnissen bestimmt werden, wobei die verwendeten Versuchskörper in 
+ Eigenspannungen aus dem
+ Inhomogenitäten und Anisotropien. 
+(4) Die geometrischen und werkstofflichen
+Anfangsimperfektion ist mit der maßgebenden kritischen Beulform zu bestimmen. 
+(5) Die Amplitude der äquivalenten geometrischen Ersatzimperfektion e 0 eines
+Bezug auf Herstellung und Werkstoff repräsentativ sein müssen, oder mit Hilfe der Beulkurve in EN 1993-1-5 
+ermittelt werden. In diesem Fall gilt: 
+0
+(1 )(1 )e
+p
+(5.4) 
+wobei 
+222
+222
+)(
+)(6 b
+bat
+ab und 2 
+ Abminderungsbeiwert für das Plattenbeulen nach 4.4 in EN 1993-1-5, 
+a
+a/b <
+,b geometrische Abmessungen der Platte, siehe Bild 5.1, 
+t Blechdicke, 
+2, Seitenverhältnis
+p Schlankheitsgrad der Platte, siehe EN 1993-1-5. 
+Bild 5.1  Äquivalente geometrische Anfangsimperfektion e0 eines Plattenfeldes 
+(6) Auf d
+rlich, an die ge-
+wählte konstruktive Ausbildung und die aus der Herstellung erwarteten Vorverformungen angepasst werden. 
+resultate oder den Ergebnissen vergleichbarer Berechnungen zu prüfen. 
+er sicheren Seite darf die Amplitude e0 = a/200 angesetzt werden, wenn b a ist. 
+(7) Der Ansatz für die äquivalente geometrische Ersatzimperfektion sollte, wenn erforde
+(8)P In jedem Fall ist die Zuverlässigkeit von numerischen Berechnungen anhand bekannter Versuchs-
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 18 =====
+16 
+5.2.3.4 Vereinfachte Modelle 
+5.2.3.4.1 Allgemeines 
+(1) Die Schnittgrößen oder Spannungen eines plattenartigen Tragwerks, das mit Querlasten und Lasten in 
+der Ebene belastet ist, dürfen mit einem vereinfachten Modell berechnet werden, wenn dieses Resultate auf 
+der sicheren Seite liefert. 
+(2) Dazu kann das plattenartige Tragwerk in einzelne ausgesteifte und nicht ausgesteifte Plattenfelder 
+aufgeteilt werden. 
+5.2.3.4.2 Unausgesteifte Plattenfelder 
+(1) Eine nicht ausgesteifte rechteckige Platte mit Querbelastung kann mit dem Modell eines Ersatzbalkens 
+in Richtung der vorherrschenden Lastabtragung berechnet werden, wenn die folgenden Bedingungen erfüllt 
+werden: 
+ das Seitenverhältnis a/b ist größer als 2; 
+ die Plattenbelastung besteht aus einer gleichmäßig verteilten Querbelastung mit konstanter Größe oder 
+linearem Verlauf; 
+ die Festigkeit, Stabilität und Steifigkeit der Randglieder, auf denen das Plattenfeld aufgelagert ist, erfüllen 
+die Randbedingungen, die für den Ersatzbalken angenommen werden. 
+(2) Die Schnittgrößen des Ersatzbalkens sollten mit einer elastischen Berechnung gemäß EN 1993-1-1 
+ermittelt werden. 
+(3) Ist die Durchbiegung der Platte infolge Querbelastung, gerechnet nach Theorie 1. Ordnung, ähnlich der 
+Beulform infolge Druck in der Plattenebene, dann muss die Interaktion zwischen Biegung und Druck 
+berücksichtigt werden. 
+(4) Trifft (3) zu, darf die Interaktionsformel in EN 1993-1-1, 6.3.3 für den Ersatztr äger verwendet werden. 
+5.2.3.4.3 Ausgesteifte Plattenfelder 
+(1) Eine ausgesteifte Platte oder ein ausgesteiftes Plattenfeld darf bei regelmäßiger Aussteifung in 
+Längs- und Querrichtung als Trägerrost berechnet werden. 
+(2) Bei der Bestimmung der Querschnittsfläche Ai des mittragenden Blechs eines einzelnen Trägers i des 
+Trägerrostes sollte die mittragende Breite mit dem Beiwert nach EN 1993-1-5 bestimmt werden. 
+(3) Bei der Bestimmung der Querschnittsfläche Ai eines Trägers i des Trägerrostes, der in Richtung der 
+Druckkräfte im Plattenfeld angeordnet ist, ist die wirksame Breite der angrenzenden Einzelfelder infolge 
+lokalen Beulens entsprechend EN 1993-1-5 zu berücksichtigen. 
+(4) Die Interaktion zwischen mittragender Breite und wirksamer Breite sollte mit nachfolgender Beziehung 
+berücksichtigt werden, siehe Bild 5.2: 
+Ai = [ c (AL,eff + pan,i bpan,i tpan,i)] (5.5) 
+Dabei ist 
+AL,eff die wirksame Fläche der Steife infolge lokalen Beulens der Steife; 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 19 =====
+17 
+c der Abminderungsbeiwert aufgrund globalen Beulens des Plattenfeldes nach 4.5.4(1) in 
+EN 1993-1-5; 
+pan,i der Abminderungsbeiwert infolge lokalen Beulens des Einzelfeldes i, nach 4.4(1) in EN 1993-1-5; 
+bpan,i die Breite des Einzelfeldes i, siehe 4.5.1(3) in EN 1993-1-5. 
+tpan,i die Blechdicke des Einzelfeldes i
+ der Beiwert für die mittragende Breite nach 3.2.1 in EN 1993-1-5. 
+ das Verhältnis nach 3.3 in EN 1993-1-5. 
+Bild 5.2  Definition der Querschnittsfläche Ai
+(5) Der Nachweis des Trägers i des Trägerrostes kann mit der Interaktionsformel in 6.3.3 in EN 1993-1-1 
+erfolgen, wobei Folgendes berücksichtigt wird: 
+ Querbelastung; 
+ Normalkraft NEd im Querschnitt Ai aus den Längsspannungen in der Platte; 
+ Exzentrizität e der Normalkraft NEd bezogen auf den Schwerpunkt der Querschnittsfläche Ai. 
+(6) Sind die Steifen einer Platte oder eines Plattenfeldes nur in der Achse der Druckkraft in der Platten-
+ebene angeordnet, darf die ausgesteifte Platte als Ersatzbalken auf elastischen Federn abgebildet werden, 
+siehe EN 1993-1-5. 
+(7) Sind die Steifen einer Platte oder eines Plattenfeldes nur senkrecht zur Achse der Druckkraft in der 
+Plattenebene angeordnet, sollten die Einzelfelder zwischen den Steifen nach 5.2.3.4.2(4) nachgewiesen 
+werden. 
+(8) Die Längssteifen sollten den Bedingungen in Abschnitt 9 in EN 1993-1-5 genügen. 
+(9) Die Quersteifen sollten den Bedingungen in Abschnitt 9 in EN 1993-1-5 genügen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 20 =====
+18 
+6 Grenzzustand der Tragfähigkeit 
+6.1 Allgemeines 
+(1) Alle Teile eines plattenartigen Tragwerks sind so zu bemessen, dass die grundlegenden Anforderungen 
+für den Grenzzustand der Tragfähigkeit nach Abschnitt 2 eingehalten werden. 
+(2) Der Teilsicherheitsbeiwert M für die Beanspruchbarkeit von plattenartigen Tragwerken ist den ent-
+sprechenden Anwendungsteilen von EN 1993 zu entnehmen. 
+(3) Zum Teilsicherheitsbeiwert M für Verbindungen von plattenartigen Tragwerken siehe EN 1993-1-8. 
+6.2 Plastische Grenzbeanspruchbarkeit 
+6.2.1 Allgemeines 
+(1)P An jedem Punkt eines plattenartigen Tragwerks sollte für den Bemessungswert der Spannung eq,Ed
+die folgende Bedingung eingehalten werden: 
+eq,Ed eq,Rd (6.1) 
+Dabei ist 
+eq,Ed der Größtwert der v.Mises-Vergleichsspannung nach 5.2.3. 
+(2) Bei Verwendung des elastischen Widerstandes eines Plattenfeldes zum Nachweis gegen plastisches 
+Versagen oder Materialbruch infolge Zug oder Biegung ist die Beanspruchbarkeit eq,Rd durch: 
+eq,Rd = fyk / M0 (6.2) 
+definiert. 
+ANMERKUNG Für den Zahlenwert für M0 siehe 1.1 (2). 
+6.2.2 Ergänzende Regelungen für die Gesamtberechnung 
+(1) Liegt der numerischen Berechnung die Annahme linearen Werkstoffverhaltens zugrunde, sollte der 
+Nachweis gegen plastisches Versagen oder Materialbruch bei Zug nach 6.2.1 erfolgen. 
+(2) Bei Anwendung einer werkstofflich nicht-linearen Berechnung unter Verwendung eines Spannungs-
+Dehnungsdiagramms mit fyd (= fy/ M0), sollten die Bemessungslasten FEd, die infolge der Einwirkungen am 
+Tragwerk angreifen, schrittweise so gesteigert werden, bis mit dem Lastvergrößerungsfaktor R die plastische 
+Grenzbelastbarkeit FRd erreicht ist. 
+(3) Als Resultat der Berechnung lautet der Nachweis: 
+FEd FRd (6.3) 
+wobei 
+FRd = R FEd
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 21 =====
+19 
+Dabei ist 
+R der Lastvergrößerungsfaktor an den Bemessungslasten FEd, bei dem der Grenzzustand erreicht wird. 
+6.2.3 Ergänzende Regelungen für die Anwendung vereinfachter Modelle 
+6.2.3.1 Unausgesteifte Platten 
+(1) Wird eine unausgesteifte Platte als Ersatzbalken berechnet, ist die Querschnittsbeanspruchbarkeit des 
+Ersatzbalkens für das Zusammenwirken von Lasten in der Plattenebene und von Querlasten mit den 
+Bemessungsregeln in EN 1993-1-1 nachzuweisen. 
+6.2.3.2 Ausgesteifte Platten 
+(1) Wird eine ausgesteifte Platte gemäß 5.2.3.4 als Trägerrost berechnet, sollten die Querschnittstragfähig-
+keit und die Knickstabilität der einzelnen Träger i für das Zusammenwirken von Lasten in der Plattenebene 
+und von Querlasten mit der Interaktionsformel in 6.3.3 in EN 1993-1-1 nachgewiesen werden. 
+(2) Wird eine ausgesteifte Platte gemäß 5.2.3.4 als Ersatzträger berechnet, sollten die Querschnitts-
+tragfähigkeit und die Knickstabilität des Ersatzträgers für das Zusammenwirken von Lasten in der Platten-
+ebene und von Querlasten mit der Interaktionsformel in 6.3.3 in EN 1993-1-1 nachgewiesen werden. 
+(3) Die Schnittgrößen oder Spannungen der Einzelfelder sollten gegen plastisches Versagen oder 
+Werkstoffbruch bei Zug nach 5.2.3.2, 5.2.3.3 oder 5.2.3.4 nachgewiesen werden. 
+6.3 Zyklisches Plastizieren 
+6.3.1 Allgemeines 
+(1) An jedem Punkt des plattenartigen Tragwerks sollte der Bemessungswert der Spannungsschwingbreite 
+Ed folgende Bedingung erfüllen: 
+Ed Rd (6.4) 
+Dabei ist 
+Ed der Größtwert der Schwingbreite der v. Mises-Vergleichsspannung 
+2
+EdEd,Ed,2
+Ed,
+2
+Ed,Edeq, 3yxyx infolge der maßgebenden Lastkombination. 
+(2) Bei werkstofflich linearer Berechnung darf für die Beanspruchbarkeit eines Plattenfeldes des platten-
+artigen Tragwerks gegen zyklische Plastizierung/Kurzzeitermüdung der Wert 
+Rd = 2,0 fyk / M0 (6.5) 
+angesetzt werden. 
+ANMERKUNG Für den Zahlenwert für M0 siehe 1.1 (2). 
+6.3.2 Ergänzende Regelungen für die Gesamtberechnung 
+(1) Wird eine werkstofflich nicht-lineare Berechnung durchgeführt, sind die Bemessungswerte der 
+Einwirkungen aufzubringen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 22 =====
+20 
+(2) Aus der Berechnung der Belastungszyklen während der Nutzungszeit des Tragwerks ist die Dehnungs-
+akkumulation eq,Ed der v. Mises-Vergleichsdehnungen am Ende der Nutzungszeit zu ermitteln. 
+(3) Wenn nicht anders geregelt, darf die akkumulierte plastische Dehnung eq,Ed der v. Mises-Vergleichs-
+dehnung wie folgt bestimmt werden 
+eq,Ed = m eq,Ed (6.6) 
+Dabei ist 
+m Anzahl der Zyklen während der Nutzungszeit, 
+eq,Ed größter Zuwachs der v.Mises-Vergleichsdehnung während eines kompletten Belastungszyklus am 
+maßgebenden Punkt des Tragwerks nach dem 3. Zyklus. 
+(4) Wird kein genauerer Nachweis der Kurzzeitermüdung geführt, sollte der Gesamtwert eq,Ed der 
+akkumulierten v. Mises-Vergleichsdehnung folgende Bedingungen erfüllen 
+0M
+yk
+eqEdeq,p, E
+f
+n (6.7) 
+ANMERKUNG 1 Der Wert für neq kann im Nationalen Anhang festgelegt werden. Der Wert neq = 25 wird empfohlen. 
+ANMERKUNG 2 Für den Zahlenwert für M0 siehe 1.1 (2). 
+6.4 Beulnachweise 
+6.4.1 Allgemeines 
+(1) Plattenfelder mit Belastungen aus Druck oder Schub in der Plattenebene sollten nach EN 1993-1-5 
+nachgewiesen werden. 
+(2) Die Tragfähigkeit der Steifen bei Biegeknicken, Biegedrillknicken und Knicken mit Querschnitts-
+verformung ist entsprechend EN 1993-1-5 nachzuweisen, siehe auch 5.2.3.4.2 (8) und (9). 
+(3) Zum Zusammenwirken von Belastungen in der Plattenebene und aus der Plattenebene siehe 
+Abschnitt 5. 
+6.4.2 Ergänzende Regeln für die Gesamtberechnung 
+(1) Wird die Beulsicherheit für kombinierte Belastung in der Plattenebene und aus der Plattenebene 
+numerisch nachgewiesen, sollten die Bemessungswerte der Lasten FEd folgende Bedingung erfüllen: 
+FEd FRd (6.8) 
+(2) Die Beulbeanspruchbarkeit FRd eines plattenartigen Tragwerks wird definiert als: 
+FRd = kF Rk/ M1 (6.9) 
+Dabei ist 
+FRk charakteristischer Wert des Beulwiderstandes des Blechtragwerks; 
+k Kalibrationsfaktor nach (6). 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 23 =====
+21 
+ANMERKUNG Für den Zahlenwert für M1 siehe 1.1 (2). 
+(3) Der charakteristische Wert des Beulwiderstandes FRk sollte aus einer Last-Verformungskurve ermittelt 
+werden, der für den maßgebenden Punkt des Tragwerks für die maßgebende Lastkombination FEd berechnet 
+wird. Dabei sind die Imperfektionen nach 5.2.3.2 zu berücksichtigen. 
+(4) Der charakteristische Wert des Beulwiderstandes FRk wird nach dem maßgebenden der folgenden zwei 
+Kriterien ermittelt: 
+ Maximallast der Last-Verformungskurve (Traglast), 
+ größte tolerierbare Verformung, falls diese vor Erreichen der Verzweigungslast oder der Maximallast 
+auftritt, sofern relevant. 
+(5) Die Zuverlässigkeit der numerischen Bestimmung des kritischen Beulwiderstandes sollte wie folgt 
+geprüft werden: 
+a) entweder durch Kontrolle mit der Berechnung anderer Beulfälle, für die die charakteristischen Beul-
+widerstände FRk,known bekannt sind und für die vergleichbare Imperfektionsansätze gewählt wurden. Die 
+Kontrollfälle sollten hinsichtlich der wesentlichen Parameter (Plattenschlankheit, Nachbeulverhalten, 
+Imperfektionsempfindlichkeit, Werkstoffverhalten) vergleichbar sein; 
+b) oder durch Vergleich mit Versuchsergebnissen FRk,known. 
+(6) Abhängig vom Ergebnis der Zuverlässigkeitsüberprüfung sollte der Kalibrationsfaktor k wie folgt ermittelt 
+werden: 
+k = FRk,known,check/FRk,check (6.10) 
+Dabei gilt 
+FRk,known,check Resultat aus Vorkenntnissen; 
+FRk.check Resultate der numerischen Ermittlungen. 
+6.4.3 Ergänzende Regelungen für die Anwendung vereinfachter Modelle 
+(1) Wird ein ausgesteiftes Plattenfeld in Einzelfelder und wirksame Steifen nach 5.2.3.4 unterteilt, kann der 
+Beulwiderstand dieses Plattenfeldes nach EN 1993-1-5 zunächst ohne Berücksichtigung der Querbelastung 
+durchgeführt werden. Seitliches Ausweichen freier Gurte von Stegen kann nach EN 1993-1-1, 6.3.3 
+nachgewiesen werden. 
+(2) Danach kann die Knicksicherheit der wirksamen Steifen nach Abschnitt 5.2.3.4 mit dem Verfahren nach 
+EN 1993-1-1 nachgewiesen werden. 
+7 Ermüdung 
+(1) Anforderungen an die Ermüdung sollten für plattenartige Tragwerke den maßgebenden Anwendungs-
+normen von EN 1993 entnommen werden. 
+(2) Der Ermüdungsnachweis sollte nach EN 1993-1-9 geführt werden. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 24 =====
+22 
+8 Grenzzustände der Gebrauchstauglichkeit 
+8.1 Allgemeines 
+(1) Auch für plattenartige Tragwerken sollten die Grundsätze für Gebrauchstauglichkeits-Grenzzustände in 
+Abschnitt 7 von EN 1993-1-1 angewendet werden. 
+(2) Bei plattenartigen Tragwerken sollten insbesondere die Grenzzustandskriterien in 8.2 und 8.3 
+nachgewiesen werden. 
+8.2 Plattendurchbiegungen 
+(1) Die Plattendurchbiegung w sollte begrenzt werden, wenn dadurch die Nutzung des Plattenfeldes 
+eingeschränkt wird. 
+ANMERKUNG Zu Durchbiegungsgrenzen siehe Anwendungsnorm. 
+8.3 Exzessive Schwingungen 
+(1) Grenzbedingungen für exzessive Schwingungen sind so zu definieren, dass entweder Versagen des 
+plattenartigen Tragwerks durch Ermüdung an den Verbindungen der Platten oder die Gebrauchstauglichkeits-
+grenzen angegeben werden. 
+ANMERKUNG Zu Schlankheitsbegrenzungen zur Vermeidung exzessiver Schwingungen siehe die Anwendungsnorm. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 25 =====
+23 
+Anhang A
+(informativ) 
+Berechnungsverfahren für den Entwurf von plattenartigen Tragwerken 
+A.1 Allgemeines 
+(1) Zur Bestimmung der Spannungen von ausgesteiften und unausgesteiften Platten dürf die folgenden 
+Berechnungsverfahren angewendet werden: 
+ LA: Linear-elastische Berechnung; 
+ GNA: Geometrisch nicht-lineare Berechnung; 
+ MNA: Werkstofflich nicht-lineare Berechnung; 
+ GMNA: Geometrisch und werkstofflich nicht-lineare Berechnung; 
+ GNIA: Geometrisch nicht-lineare Berechnung mit Imperfektionen; 
+ GMNIA: Geometrisch und werkstofflich nicht-lineare Berechnung mit Imperfektionen. 
+A.2 Linear-elastische Plattenberechnung (LA) 
+(1) Die linear-elastische Berechnung beschreibt das Verhalten eines dünnwandigen, perfekten, 
+plattenartigen Tragwerks auf der Grundlage der linearen Plattentheorie. Das lineare Verhalten ergibt sich aus 
+der Annahme des linear-elastischen Werkstoffverhaltens und der Annahme kleiner Verformungen. 
+(2) Die linear-elastische Berechnung (LA) erfüllt sowohl die Gleichgewichtsbedingungen als auch die 
+Verformungsverträglichkeit. Spannungen und Verformungen verändern sich linear mit der Querbelastung der 
+Platte. 
+(3) Als Beispiel für die linear-elastische Berechnung wird auf die folgende partielle Differentialgleichung 
+4. Ordnung einer isotropen dünnen Platte hingewiesen, die nur durch eine quergerichtete Flächenlast p(x,y) 
+belastet wird: 
+D
+yxp
+y
+w
+yx
+w
+x
+w ),(· 4
+4
+22
+4
+4
+4
+2 ( A . 1 ) 
+Dabei ist 
+2
+3
+112
+tED
+A.3 Geometrisch nicht-lineare Berechnung (GNA) 
+(1) Die geometrisch nicht-lineare Berechnung (GNA) verwendet die nicht-lineare Plattentheorie für eine 
+perfekte Struktur, bei der das Werkstoffverhalten linear-elastisch angenommen wird und die Nichtlinearität 
+durch die Berücksichtigung großer Verformungen entsteht. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 26 =====
+24 
+(2) Das GNA-Verfahren erfüllt sowohl die Gleichgewichtsbedingungen als auch die Verträglichkeit der 
+großen Verformungen. 
+(3) Die nicht-lineare Plattentheorie berücksichtigt die Interaktion von Biege- und Membranspannungen in 
+der Platte. Verformungen und Spannungen verändern sich nicht-linear mit der Größe der Querbelastung. 
+(4) Als Beispiel für das GNA-Verfarhen wird auf die folgende partielle Differentialgleichung 4. Ordnung 
+einer isotropen dünnen Platte hingewiesen, die nur durch eine quergerichtete Flächenlast p(x,y) belastet wird. 
+D
+yxp
+y
+w
+x
+f
+yx
+w
+yx
+f
+x
+w
+y
+f
+D
+t
+y
+w
+yx
+w
+x
+w ),(2·2 2
+2
+2
+222
+2
+2
+2
+2
+4
+4
+22
+4
+4
+4
+ (A.2a) 
+2
+2
+2
+222
+4
+4
+22
+4
+4
+4
+2
+y
+w
+x
+w
+yx
+wE
+y
+f
+yx
+f
+x
+f · (A.2b) 
+Dabei ist 
+f die Airy’s Spannungsfunktion und 
+D = 
+)1(12 2
+3tE
+A.4 Werkstofflich nicht-lineare Berechnung (MNA) 
+(1) Die werkstofflich nicht-lineare Berechnung basiert auf der linearen Plattentheorie für das perfekte 
+Tragwerk mit der Annahme kleiner Verformungen wie in A.2. Im Unterschied dazu wird jedoch das 
+nicht-lineare Werkstoffverhalten berücksichtigt. 
+A.5 Geometrisch und werkstofflich nicht-lineare Berechnung (GMNA) 
+(1) Die geometrisch und werkstofflich nicht-lineare Berechnung basiert auf der nicht-linearen Plattentheorie 
+für das perfekte Tragwerk. Das Werkstoffverhalten wird als nicht-linear elastisch-plastisch angenommen, und 
+es werden große, nicht-lineare Verformungen berücksichtigt. 
+A.6 Geometrisch nicht-lineare Berechnung mit Imperfektionen (GNIA) 
+(1) Die geometrisch nicht-lineare Berechnung (GNIA) mit Imperfektionen entspricht dem GNA-Verfahren, 
+siehe A.3. Dabei werden jedoch anstelle des geometrisch perfekten Tragwerks geometrische Imperfektionen 
+berücksichtigt, die beispielsweise bei einer Platte Vorverformungen sein können, die durch die maßgebenden 
+Beulformen bestimmt werden. 
+(2) Das GNIA-Verfahren wird angewendet, wenn bei Blechtragwerken Druck- oder Schubspannungen in 
+der Blechebene vorherrschen. Mit dem Verfahren werden die elastischen Beulwiderstände von wirklichkeits-
+nahen imperfekten Blechtragwerken bestimmt. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 27 =====
+25 
+A.7 Geometrisch und werkstofflich nicht-lineare Berechnung mit Imperfektionen 
+(GMNIA) 
+(1) Die geometrisch und werkstofflich nicht-lineare Berechnung mit Imperfektionen (GMNIA) entspricht dem 
+GMNA-Verfahren, siehe A.5. Es werden jedoch geometrische Imperfektionen berücksichtigt. Dies kann zum 
+Beispiel bei einer Platte eine Vorimperfektion sein, die durch die maßgebende Beulform bestimmt wird. 
+(2) Das GMNIA-Verfahren wird angewendet, wenn Druck- oder Schubspannungen in der Platte dominie-
+ren. Mit dem Verfahren werden elastisch-plastische Beulwiderstände von wirklichkeitsnahen“ imperfekten 
+Blechtragwerken bestimmt. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 28 =====
+26 
+Anhang B
+(informativ) 
+Spannungen in unausgesteiften Rechteckplatten 
+aus der Theorie kleiner Verformungen 
+B.1 Allgemeines 
+(1) In diesem Anhang werden Bemessungsformeln für die Berechnung von Spannungen unausgesteifter 
+Rechteckplatten angegeben, die auf der linearen Plattentheorie basieren. Daher werden Membrankräfte in 
+den Bemessungsformeln dieses Anhangs nicht berücksichtigt. 
+(2) Die Bemessungsformeln werden für die folgenden Belastungen angegeben: 
+ gleichmäßig über der gesamten Platte verteilte Flächenlast siehe B.3; 
+ auf eine Teilfläche der Platte gleichmäßig verteilte Flächenlast, siehe B.4. 
+(3) Mit Koeffizienten, die in den Tabellen von B.3 und B.4 angegeben sind, können die Durchbiegung w
+und die Beigespannungen bx und by einer Platte berechnet werden. Für die Koeffizienten gilt die Quer-
+kontraktionszahl v = 0,3. 
+B.2 Symbole 
+(1) Die verwendeten Bezeichnungen sind: 
+qEd Bemessungswert der gleichmäßig verteilten Flächenlast; 
+pEd Bemessungswert der auf einer Teilfläche konzentrierten Flächenlast; 
+a kurze Seitenabmessung der Platte; 
+b lange Seitenabmessung der Platte; 
+t Dicke der Platte; 
+E Elastizitätismodul; 
+kw Koeffizient für die Durchbiegung w der Platte, entsprechend den in der Tabelle angegebenen Rand-
+bedingungen; 
+xk b Koeffizient für die Biegespannung bx der Platte, entsprechend den in der Tabelle angegebenen Rand-
+bedingungen; 
+yk b Koeffizient für die Biegespannung by der Platte, entsprechend den in der Tabelle angegebenen Rand-
+bedingungen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 29 =====
+27 
+B.3 Gleichmäßig verteilte Flächenlast 
+B.3.1 Plattendurchbiegungen 
+(1) Die Durchbiegung w eines Plattenfeldes unter einer gleichmäßig verteilten Flächenlast p kann wie folgt 
+berechnet werden: 
+3
+4Edw tE
+qkw a (B.1) 
+ANMERKUNG Die Gleichung (B.1) gilt nur bei kleinem w gegenüber t. 
+B.3.2 Plattenspannungen 
+(1) Die Biegespannungen bx und by in einem Plattenfeld dürfen mit folgenden Gleichungen bestimmt 
+werden: 
+2
+2EdEd,b b t
+qk xx
+a (B.2) 
+2
+2EdEd,b b t
+qk yy
+a (B.3) 
+(2) Mit den Biegespannungen nach (1) darf die Vergleichsspannung in einem Plattenfeld wie folgt 
+berechnet werden: 
+Ed,bEd,b2
+Ed,b
+2
+Ed,bEdeq, yxyx (B.4) 
+ANMERKUNG Die in den Tabellen angegebenen Spannungen sind definiert für Punkte, die entweder auf den Platten-
+achsen oder an den Rändern liegen, so dass aufgrund von Symmetrieeigenschaften oder geforderten Randbedingungen 
+die Biegeschubspannungen b null sind. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 30 =====
+28 
+B.3.3 Koeffizienten k für gleichmäßig verteilte Flächenlasten 
+Tabelle B.1  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Alle Ränder sind frei drehbar gelagert 
+b/a kw1 k bx1 k by1
+1,0 0,044 34 0,286 0,286 
+1,5 0,084 38 0,486 0,299 
+2,0 0,110 70 0,609 0,278 
+3,0 0,134 20 0,712 0,244 
+Tabelle B.2  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Alle Ränder sind eingespannt. 
+b/a kw1 k bx1 k by1 k bx2
+1,0 0,013 75 0,136 0 0,136 0 0,308 
+1,5 0,023 93 0,218 0 0,121 0 0,454 
+2,0 0,027 63 0,245 0 0,094 5 0,498 
+3,0 0,028 70 0,248 0 0,075 4 0,505 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 31 =====
+29 
+Tabelle B.3  Koeffizienten k 
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Drei Ränder sind frei drehbar gelagert. Ein Rand ist 
+eingespannt. 
+b/a kw1 k bx1 k by1 k bx4
+1,5 0,048 94 0,330 0,177 0,639 
+2,0 0,056 50 0,368 0,146 0,705 
+Tabelle B.4  Koeffizienten k 
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Zwei aneinander angrenzende Ränder sind frei 
+drehbar gelagert; die anderen beiden Ränder sind 
+eingespannt. 
+b/a kw1 k bx1 k by1 k bx4
+1,0 0,024 49 0,185 0,185 0,375 
+1,5 0,044 11 0,302 0,180 0,588 
+2,0 0,054 21 0,355 0,152 0,683 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 32 =====
+30 
+Tabelle B.5  Koeffizienten k 
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Zwei gegenüberliegende kurze Ränder sind einge-
+spannt; die anderen beiden Ränder sind frei drehbar 
+gelagert. 
+b/a kw1 k bx1 k by1 k by3
+1,0 0,020 89 0,145 0,197 0,420 
+1,5 0,058 03 0,348 0,274 0,630 
+2,0 0,092 22 0,519 0,284 0,717 
+Tabelle B.6  Koeffizienten k 
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Zwei gegenüberliegende lange Ränder sind einge-
+spannt; die anderen beiden Ränder sind frei drehbar 
+gelagert. 
+b/a kw1 k bx1 k by1 k bx2
+1,5 0,027 06 0,240 0,106 0,495 
+2,0 0,028 52 0,250 0,0848 0,507 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 33 =====
+31 
+B.4 Auf eine Teilfläche der Platte gleichmäßig verteilte Flächenlast 
+B.4.1 Plattendurchbiegungen 
+(1) Die Durchbiegung w eines Plattenfeldes unter einer Last p, die gleichmäßig über die Teilfläche u v in 
+Plattenmitte verteilt ist, kann wie folgt berechnet werden: 
+3
+4Ed
+w tE
+pkw a (B.5) 
+B.4.2 Plattenspannungen 
+(1) Die Biegespannungen bx und by in einem Plattenfeld können mit folgenden Gleichungen bestimmt 
+werden: 
+2
+EdEd,b b t
+pk xx (B.6) 
+2
+EdEd,b b t
+pk yy (B.7) 
+(2) Mit den Biegespannungen nach (1) kann die Vergleichsspannung in einem Plattenfeld wie folgt berechnet 
+werden: 
+Ed,bEd,b2
+Ed,b
+2
+Ed,bEdeq, yxyx (B.8) 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 34 =====
+32 
+B.4.3 Koeffizienten k für eine auf eine Teilfläche konzentrierte Last 
+Tabelle B.7  Koeffizienten k 
+Parameter: 
+ = u/a
+ = v/a
+b/a kw1 k bx1 k by1
+1 0,1 0,1 0,125 4 1,72 1,72 
+0,2 0,2 0,121 0 1,32 1,32 
+0,3 0,3 0,112 6 1,04 1,04 
+0,2 0,3 0,116 7 1,20 1,12 
+0,2 0,4 0,111 7 1,10 0,978 
+1,5 0,1 0,1 0,166 4 1,92 1,70 
+0,2 0,2 0,161 6 1,51 1,29 
+0,3 0,3 0,152 8 1,22 1,01 
+0,2 0,3 0,157 7 1,39 1,09 
+0,2 0,4 0,153 2 1,29 0,953 
+2,0 0,1 0,1 0,179 5 1,97 1,67 
+0,2 0,2 0,174 6 1,56 1,26 
+0,3 0,3 0,165 7 1,28 0,985 
+0,2 0,3 0,170 8 1,45 1,07 
+0,2 0,4 0,166 5 1,35 0,929 
+3,0 0,1 0,1 0,184 0 1,99 1,66 
+0,2 0,2 0,179 1 1,58 1,25 
+0,3 0,3 0,170 1 1,30 0,975 
+0,2 0,3 0,175 3 1,47 1,06 
+0,2 0,4 0,171 1 1,37 0,918 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 35 =====
+33 
+Anhang C
+(informativ) 
+Spannungen in unausgesteiften Rechteckplatten 
+aus der Theorie großer Verformungen 
+C.1 Allgemeines 
+(1) In diesem Anhang werden Bemessungsformeln für die Berechnung der Spannungen unausgesteifter 
+Rechteckplatten angegeben, die mit der nicht-linearen Plattentheorie ermittelt wurden. 
+(2) Die Bemessungsformeln werden für die folgenden Belastungen angegeben: 
+ gleichmäßig über der gesamten Platte verteilte Flächenlast, siehe C.3 
+ auf Teilflächen der Platte gleichmäßig verteilte Flächenlast, siehe C.4 
+(3) Mit den Koeffizienten, die in den Tabellen in C.3 und C.4 angegeben sind, dürfen die Biege- und 
+Membranspannungen in der Platte und die Durchbiegung w der Platte berechnet werden. Für die 
+Koeffizienten gilt die Poissonzahl v = 0,3. 
+C.2 Symbole 
+(1) Die verwendeten Bezeichnungen sind: 
+qEd Bemessungswert der gleichmäßig über die Gesamtfläche verteilten Last; 
+pEd Bemessungswert der gleichmäßig verteilten Last auf die Teilfläche u v; 
+a kurze Seitenabmessung der Platte; 
+b lange Seitenabmessung der Platte; 
+t Dicke der Platte; 
+E Elastizitätsmodul; 
+FBC Randbedingungen für plattenartiges Verhalten; 
+MBC Randbedingungen für das Membranverhalten; 
+kw Koeffizient für die Durchbiegung w der Platte, entsprechend den in den Tabellen angegebenen 
+Randbedingungen; 
+xk b Koeffizient für die Biegespannung bx der Platte, entsprechend den in den Tabellen ange-
+gebenen Randbedingungen; 
+yk b Koeffizient für die Biegespannung by der Platte, entsprechend den in den Tabellen ange-
+gebenen Randbedingungen; 
+xk m Koeffizient für die Membranspannung mx der Platte, entsprechend den in den Tabellen ange-
+gebenen Randbedingungen; 
+yk m Koeffizient für die Membranspannung my der Platte, entsprechend den in den Tabellen ange-
+gebenen Randbedingungen. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 36 =====
+34 
+C.3 Auf die Gesamtfläche der Platte gleichmäßig verteilte Flächenlast 
+C.3.1 Plattendurchbiegungen 
+(1) Die Durchbiegung w eines Plattenfeldes unter einer gleichmäßig verteilten Flächenlast p kann wie folgt 
+berechnet werden: 
+3
+4Edw tE
+qkw a (C.1) 
+C.3.2 Plattenspannungen 
+(1) Die Biegespannungen bx und by in einem Plattenfeld können mit folgenden Gleichungen bestimmt 
+werden: 
+2
+2EdEd,b b t
+qk xx
+a (C.2) 
+2
+2EdEd,b b t
+qk yy
+a (C.3) 
+(2) Die Membranspannungen mx und my in einem Plattenfeld können wie folgt bestimmt werden: 
+2
+2Ed
+Ed,m m t
+qk xx
+a (C.4) 
+2
+2Ed
+Ed,m m t
+qk yy
+a (C.5) 
+(3) An der belasteten Oberfläche lassen sich die Gesamtspannungen aus den Biege- und Membran-
+spannungen nach (1) und (2) wie folgt berechnen: 
+x,Ed =  bx,Ed + mx,Ed (C.6) 
+y,Ed =  by,Ed + my,Ed (C.7) 
+(4) An der nicht belasteten Oberfläche lassen sich die Gesamtspannungen aus den Biege- und Membran-
+spannungen nach (1) und (2) wie folgt berechnen: 
+x,Ed = bx,Ed + mx,Ed (C.8) 
+y,Ed = by,Ed + my,Ed (C.9) 
+(5) Mit den Spannungen nach (3) und (4) kann für eine Platte die Vergleichspannung v,Ed wie folgt 
+berechnet werden: 
+Ed,Ed,2
+Ed,
+2
+Ed,Edeq, yxyx (C.10) 
+ANMERKUNG Die in den Tabellen angegebenen Spannungen sind definiert für Punkte, die entweder auf den 
+Plattenachsen oder an den Rändern liegen, so dass aufgrund von Symmetrieeigenschaften oder geforderten 
+Randbedingungen die Membranschubspannungen m und die Biegeschubspannungen b null sind. Eine Aufsummierung 
+der entsprechenden Biege- und Membranspannungen an den Punkten in den Tabellen ergibt die maximalen und 
+minimalen Oberflächenspannungen an diesen Punkten. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 37 =====
+35 
+C.3.3 Koeffizienten k für gleichmäßig verteilte Flächenlasten 
+Tabelle C.1  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei drehbar gelagert. 
+Membran: Normalspannungen = 0; 
+Schubspannungen = 0. 
+Parameter: 
+4
+4Ed
+tE
+qQ a
+b/a Q kw1 k bx1 k by1 k mx1 k my1 k my2
+1,0 20 0,039 6 0,243 1 0,243 1 0,030 2 0,030 2 0,058 9 
+ 40 0,033 4 0,189 3 0,189 3 0,040 3 0,040 3 0,084 1 
+ 120 0,021 4 0,096 1 0,096 1 0,041 1 0,041 1 0,102 4 
+ 200 0,016 6 0,065 8 0,065 8 0,037 2 0,037 2 0,100 4 
+ 300 0,013 5 0,048 0 0,048 0 0,033 5 0,033 5 0,095 8 
+ 400 0,011 6 0,038 3 0,038 3 0,030 6 0,030 6 0,091 5 
+1,5 20 0,068 5 0,371 3 0,215 6 0,024 3 0,069 4 0,124 4 
+ 40 0,054 6 0,277 0 0,154 6 0,023 8 0,082 2 0,149 2 
+ 120 0,033 2 0,144 8 0,080 7 0,017 0 0,078 9 0,146 8 
+ 200 0,025 7 0,100 1 0,058 3 0,014 1 0,071 5 0,136 3 
+ 300 0,020 7 0,072 4 0,044 0 0,012 6 0,064 6 0,127 1 
+ 400 0,017 6 0,056 9 0,035 9 0,011 7 0,059 5 0,120 5 
+2,0 20 0,092 1 0,490 9 0,216 6 0,008 5 0,080 1 0,134 6 
+ 40 0,074 6 0,383 7 0,168 7 0,007 9 0,098 4 0,165 7 
+ 120 0,046 2 0,213 8 0,095 9 0,007 3 0,099 2 0,170 7 
+ 200 0,035 6 0,151 6 0,069 5 0,006 7 0,091 4 0,161 0 
+ 300 0,028 7 0,112 1 0,052 8 0,006 1 0,084 0 0,151 0 
+ 400 0,024 5 0,088 3 0,042 8 0,006 1 0,078 1 0,143 4 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 38 =====
+36 
+Tabelle C.2  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei drehbar gelagert. 
+Membran: Alle Ränder bleiben gerade, Resultierende der 
+Normalspannungen = 0; Schubspannungen = 0.
+Parameter: 
+4
+4Ed
+tE
+qQ a
+b/a Q kw1 k bx1 k by1 k mx1 k my1 k mx2 k my2
+1 20 0,036 9 0,229 1 0,229 1 0,031 5 0,031 5 0,035 2 0,034 3 
+ 40 0,029 3 0,172 7 0,172 7 0,038 3 0,038 3 0,045 5 0,042 9 
+ 120 0,017 0 0,088 7 0,088 7 0,036 0 0,036 0 0,047 8 0,042 3 
+ 200 0,012 6 0,062 1 0,062 1 0,031 7 0,031 7 0,044 3 0,038 0 
+ 300 0,009 9 0,046 6 0,046 6 0,028 0 0,028 0 0,040 3 0,033 7 
+ 400 0,008 2 0,038 3 0,038 3 0,025 5 0,025 5 0,037 2 0,030 9 
+1,5 20 0,055 4 0,302 3 0,161 2 0,061 7 0,028 7 0,070 5 0,029 6 
+ 40 0,040 0 0,211 4 0,100 2 0,058 3 0,028 4 0,071 0 0,029 3 
+ 120 0,021 4 0,107 9 0,042 8 0,041 8 0,022 4 0,055 9 0,022 4 
+ 200 0,015 7 0,077 8 0,029 6 0,034 5 0,019 1 0,047 1 0,018 8 
+ 300 0,012 2 0,060 3 0,022 4 0,029 6 0,016 7 0,040 8 0,016 1 
+ 400 0,010 3 0,050 5 0,018 8 0,026 7 0,015 2 0,036 9 0,014 7 
+2 20 0,062 1 0,323 4 0,110 9 0,062 7 0,014 2 0,071 9 0,014 2 
+ 40 0,043 8 0,222 9 0,068 9 0,053 0 0,012 0 0,063 9 0,012 0 
+ 120 0,023 4 0,116 3 0,033 6 0,036 5 0,008 6 0,045 7 0,008 3 
+ 200 0,017 2 0,084 7 0,024 7 0,030 5 0,007 5 0,038 4 0,006 7 
+ 300 0,013 5 0,065 8 0,019 5 0,026 8 0,006 7 0,033 5 0,005 8 
+ 400 0,011 3 0,054 8 0,016 4 0,024 4 0,006 4 0,030 5 0,005 0 
+3 20 0,068 6 0,351 0 0,102 2 0,047 7 0,002 0 0,050 6 0,000 7 
+ 40 0,049 0 0,247 1 0,072 5 0,042 0 0,002 0 0,044 1 0,000 0 
+ 120 0,026 7 0,131 7 0,039 0 0,032 0 0,002 7 0,033 5 0,001 0 
+ 200 0,019 6 0,095 4 0,028 3 0,027 1 0,004 4 0,028 5 0,002 7 
+ 300 0,015 3 0,073 3 0,021 7 0,024 2 0,005 9 0,025 6 0,004 4 
+ 400 0,012 7 0,060 5 0,017 8 0,022 1 0,006 6 0,023 5 0,005 1 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 39 =====
+37 
+Tabelle C.3  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind eingespannt. 
+Membran: Normalspannungen = 0; Schubspannungen = 0.
+Parameter: 
+4
+4Ed
+tE
+qQ a
+b/a Q kw1 k bx1 k by1 k mx1 k my1 k mx2 k my2
+1 20 0,013 6 0,133 6 0,133 6 0,006 1 0,006 1 0,306 2 0,007 3 
+ 40 0,013 1 0,126 8 0,126 8 0,011 3 0,011 3 0,300 6 0,013 7 
+ 120 0,010 8 0,093 3 0,093 3 0,021 2 0,021 2 0,272 0 0,028 6 
+ 200 0,009 2 0,071 1 0,071 1 0,023 3 0,023 3 0,248 6 0,034 7 
+ 300 0,007 8 0,054 7 0,054 7 0,023 3 0,023 3 0,227 3 0,038 3 
+ 400 0,006 9 0,044 6 0,044 6 0,022 6 0,022 6 0,211 3 0,039 9 
+1,5 20 0,023 4 0,211 7 0,116 2 0,006 1 0,013 3 0,447 2 0,018 1 
+ 40 0,022 2 0,196 4 0,105 0 0,009 8 0,023 4 0,429 9 0,032 2 
+ 120 0,017 3 0,140 6 0,069 6 0,012 4 0,038 5 0,359 1 0,055 9 
+ 200 0,014 4 0,110 3 0,053 7 0,011 6 0,041 5 0,316 0 0,062 0 
+ 300 0,012 2 0,087 9 0,043 0 0,010 5 0,041 6 0,281 5 0,063 6 
+ 400 0,010 7 0,073 7 0,036 4 0,009 8 0,040 9 0,258 3 0,063 5 
+2 20 0,027 3 0,241 8 0,093 2 0,001 0 0,010 8 0,493 5 0,015 0 
+ 40 0,026 5 0,233 0 0,089 7 0,001 7 0,019 8 0,481 6 0,027 7 
+ 120 0,022 3 0,190 1 0,074 0 0,003 2 0,039 2 0,422 3 0,055 1 
+ 200 0,019 2 0,157 8 0,062 1 0,003 9 0,045 6 0,378 0 0,064 7 
+ 300 0,016 5 0,130 6 0,051 8 0,004 2 0,048 3 0,339 6 0,069 0 
+ 400 0,014 7 0,112 0 0,044 6 0,004 4 0,048 7 0,313 2 0,070 2 
+3 20 0,028 8 0,249 2 0,076 7 0,001 5 0,002 7 0,506 5 0,003 3 
+ 40 0,029 0 0,251 7 0,079 5 0,00 22 0,006 6 0,509 5 0,008 4 
+ 120 0,028 1 0,244 0 0,081 2 0,00 10 0,024 7 0,498 4 0,033 1 
+ 200 0,026 0 0,223 0 0,075 0 0,000 0 0,036 8 0,470 2 0,049 7 
+ 250 0,024 7 0,209 6 0,070 7 0,000 2 0,041 5 0,452 0 0,056 4 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 40 =====
+38 
+Tabelle C.4  Koeffizienten k
+Belastung: 
+Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind eingespannt. 
+Membran: Alle Ränder bleiben gerade, Resul-
+tierende der Normalspannungen = 0; 
+Schubspannungen = 0. 
+Parameter: 
+4
+4Ed
+tE
+qQ a
+b/a Q kw1 k bx1 k by1 k mx1 k my1 k bx2 k mx2 k my2
+1 20 0,013 6 0,133 3 0,133 3 0,006 5 0,006 5 0,305 8 0,003 1 0,005 5
+ 40 0,013 0 0,125 8 0,125 8 0,011 8 0,011 8 0,300 0 0,005 9 0,010 3
+ 120 0,010 5 0,090 8 0,090 8 0,021 6 0,021 6 0,270 4 0,012 3 0,020 2
+ 200 0,008 7 0,068 8 0,068 8 0,023 4 0,023 4 0,247 3 0,015 1 0,023 3
+ 300 0,007 3 0,052 8 0,052 8 0,023 1 0,023 1 0,226 7 0,016 9 0,024 4
+ 400 0,006 3 0,043 0 0,043 0 0,022 3 0,022 3 0,211 9 0,017 6 0,024 6
+1,5 20 0,023 0 0,206 4 0,112 5 0,013 7 0,009 7 0,443 1 0,011 8 0,008 2
+ 40 0,021 0 0,183 3 0,095 7 0,021 8 0,015 5 0,419 5 0,020 0 0,013 3
+ 120 0,014 9 0,117 5 0,053 2 0,027 5 0,020 2 0,344 1 0,029 5 0,018 5
+ 200 0,011 8 0,087 6 0,036 9 0,025 9 0,019 5 0,302 8 0,030 4 0,018 2
+ 300 0,009 6 0,067 8 0,027 5 0,023 8 0,018 0 0,271 0 0,030 0 0,017 3
+ 400 0,008 3 0,056 2 0,022 1 0,022 0 0,016 8 0,249 2 0,029 1 0,016 3
+2 20 0,026 2 0,228 8 0,085 3 0,014 0 0,006 0 0,481 1 0,014 9 0,005 2
+ 40 0,023 4 0,199 4 0,070 1 0,020 6 0,008 6 0,449 2 0,023 4 0,007 7
+ 120 0,016 2 0,127 6 0,040 4 0,023 8 0,009 4 0,361 1 0,029 9 0,008 6
+ 200 0,012 9 0,096 3 0,029 6 0,022 3 0,008 5 0,316 2 0,028 9 0,007 9
+ 300 0,010 5 0,075 2 0,023 0 0,020 8 0,007 7 0,282 4 0,027 4 0,007 2
+ 400 0,009 0 0,062 7 0,019 0 0,019 6 0,007 1 0,260 0 0,025 9 0,006 6
+3 20 0,027 2 0,233 1 0,070 0 0,010 2 0,0010 0,487 8 0,011 1 0,000 8
+ 40 0,024 7 0,207 1 0,061 5 0,014 9 0,001 1 0,457 5 0,016 7 0,000 9
+ 120 0,017 7 0,139 6 0,041 3 0,018 6 0,000 9 0,372 7 0,020 2 0,000 5
+ 200 0,014 3 0,107 4 0,031 9 0,018 4 0,000 9 0,327 2 0,019 7 0,000 3
+ 300 0,011 7 0,084 8 0,025 1 0,017 6 0,000 8 0,292 4 0,019 2 0,000 2
+ 400 0,010 1 0,070 9 0,021 0 0,016 9 0,000 8 0,268 7 0,018 2 0,000 0 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 41 =====
+39 
+C.4 Auf eine Teilfläche der Platte gleichmäßig verteilte Flächenlast 
+C.4.1 Allgemeines 
+(1) Die Durchbiegung w eines Plattenfeldes unter einer Last pEd, die gleichmäßig über die Teilfläche u v
+in Plattenmitte verteilt ist, kann wie folgt berechnet werden: 
+3
+4
+Ed
+w
+tE
+pkw a (C.11) 
+C.4.2 Plattenspannungen 
+(1) Die Biegespannungen bx und by in einem Plattenfeld dürfen mit folgenden Gleichungen bestimmt 
+werden: 
+2
+2EdEd,b b t
+pk xx
+a (C.12) 
+2
+2EdEd,b b t
+pk yy
+a (C.13) 
+(2) Die Membranspannungen mx und my in einem Plattenfeld dürfen wie folgt bestimmt werden: 
+2
+2Ed
+Ed,m m t
+pk xx
+a (C.14) 
+2
+2
+Ed
+Ed,m m t
+pk yy
+a (C.15) 
+(3) An der belasteten Oberfläche lassen sich die Gesamtspannungen aus den Biege- und Membran-
+spannungen nach (1) und (2) wie folgt berechnen: 
+x,Ed =  bx,Ed + mx,Ed (C.16) 
+y,ed =  by,Ed + my,Ed (C.17) 
+(4) An der nicht belasteten Oberfläche lassen sich die Gesamtspannungen aus den Biege- und Membran-
+spannungen nach (1) und (2) wie folgt berechnen: 
+x,Ed = bx,Ed + mx,Ed (C.18) 
+y,Ed = by,Ed + my,Ed (C.19) 
+(5) Mit den Spannungen nach (3) und (4) können für eine Platte die Vergleichsspannungen v,Ed wie folgt 
+berechnet werden: 
+Ed,Ed,2
+Ed,
+2
+Ed,Edeq, yxyx (C.20) 
+ANMERKUNG Die in den Tabellen angegebenen Spannungen sind definiert für Punkte, die entweder auf den 
+Plattenachsen oder an den Rändern liegen, so dass aufgrund von Symmetrieeigenschaften oder geforderten 
+Randbedingungen die Membranschubspannungen m und die Biegeschubspannungen b null sind. Eine Aufsummierung 
+der entsprechenden Biege- und Membranspannungen an den Punkten in den Tabellen ergibt die maximalen und 
+minimalen Oberflächenspannungen an diesen Punkten. 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 42 =====
+40 
+C.4.3 Koeffizienten k für auf Teilflächen konzentrierte Last 
+Tabelle C.5  Koeffizienten k
+Belastung: Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei drehbar gelagert. 
+Membran: Normalspannungen = 0; Schubspannungen = 0. 
+Parameter: 
+ = u/a; = v/a 
+4
+4
+tE
+apP Ed
+b/a = 1 
+P kw1 k bx1 k by1 k mx1 k my1
+0,1 0,1 10 0,102 1 1,458 6 1,458 6 0,154 8 0,154 8 
+ 20 0,080 8 1,214 3 1,214 3 0,192 6 0,192 6 
+ 60 0,048 5 0,827 3 0,827 3 0,204 7 0,204 7 
+ 100 0,037 2 0,674 2 0,674 2 0,197 8 0,197 8 
+ 150 0,029 8 0,569 3 0,569 3 0,189 2 0,189 2 
+ 200 0,025 5 0,500 5 0,500 5 0,182 3 0,182 3 
+0,2 0,2 10 0,099 8 1,085 0 1,085 0 0,139 9 0,139 9 
+ 20 0,079 5 0,859 3 0,859 3 0,172 9 0,172 9 
+ 60 0,047 8 0,510 8 0,510 8 0,175 6 0,175 6 
+ 100 0,036 4 0,388 1 0,388 1 0,162 4 0,162 4 
+ 150 0,029 3 0,308 9 0,308 9 0,150 5 0,150 5 
+ 200 0,024 9 0,261 4 0,261 4 0,141 2 0,141 2 
+0,3 0,3 10 0,094 5 0,850 7 0,850 7 0,114 4 0,114 4 
+ 20 0,075 9 0,661 4 0,661 4 0,142 5 0,142 5 
+ 60 0,045 9 0,370 2 0,370 2 0,142 5 0,142 5 
+ 100 0,035 1 0,270 4 0,270 4 0,130 0 0,130 0 
+ 150 0,028 2 0,210 1 0,210 1 0,118 6 0,118 6 
+ 200 0,024 0 0,174 7 0,174 7 0,110 2 0,110 2 
+0,2 0,3 10 0,097 1 0,988 8 0,912 8 0,122 4 0,128 8 
+ 20 0,077 6 0,780 0 0,7101 0,151 2 0,160 2 
+ 60 0,046 8 0,459 6 0,402 1 0,148 8 0,162 4 
+ 100 0,035 8 0,346 8 0,295 7 0,136 8 0,151 2 
+ 150 0,028 7 0,276 0 0,230 7 0,124 8 0,138 9 
+ 200 0,024 5 0,234 0 0,192 6 0,115 2 0,131 0 
+0,2 0,4 10 0,093 9 0,911 9 0,796 1 0,107 8 0,118 3 
+ 20 0,075 5 0,721 6 0,614 2 0,132 0 0,148 7 
+ 60 0,045 7 0,423 5 0,335 5 0,128 7 0,151 6 
+ 100 0,035 0 0,320 1 0,243 5 0,116 6 0,140 8 
+ 150 0,028 0 0,254 1 0,186 8 0,104 5 0,130 1 
+ 200 0,023 9 0,215 6 0,154 5 0,096 8 0,121 3 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 43 =====
+41 
+Tabelle C.6  Koeffizienten k
+Belastung: Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei gelagert. 
+Membran: Normalspannungen = 0; Schubspannungen = 0. 
+Parameter: 
+ = u/a; = v/a 
+4
+4
+tE
+apP Ed
+b/a = 1,5 
+P kw1 k bx1 k by1 k mx1 k my1
+0,1 0,1 10 0,130 3 1,578 2 1,385 5 0,151 7 0,192 1 
+ 20 0,101 8 1,305 6 1,137 3 0,178 6 0,229 5 
+ 60 0,061 2 0,898 6 0,770 1 0,182 4 0,238 0 
+ 100 0,046 9 0,741 1 0,627 3 0,174 7 0,229 5 
+ 150 0,037 8 0,629 8 0,528 7 0,167 0 0,219 3 
+ 200 0,032 3 0,556 8 0,464 1 0,159 4 0,212 5 
+0,2 0,2 10 0,128 1 1,197 4 1,004 9 0,134 4 0,178 0 
+ 20 0,100 7 0,945 3 0,776 6 0,155 5 0,211 6 
+ 60 0,060 5 0,578 3 0,455 4 0,146 5 0,210 3 
+ 100 0,046 2 0,448 5 0,345 7 0,132 9 0,197 4 
+ 150 0,037 2 0,362 4 0,274 8 0,120 8 0,184 5 
+ 200 0,031 7 0,311 1 0,232 2 0,113 3 0,174 2 
+0,3 0,3 10 0,122 9 0,958 9 0,773 7 0,107 4 0,152 5 
+ 20 0,097 2 0,740 5 0,582 8 0,123 2 0,181 8 
+ 60 0,058 5 0,428 2 0,316 1 0,111 0 0,178 8 
+ 100 0,044 9 0,322 1 0,235 3 0,098 8 0,166 7 
+ 150 0,036 1 0,255 0 0,1828 0,087 8 0,153 5 
+ 200 0,030 9 0,214 7 0,152 5 0,080 5 0,144 4 
+0,2 0,3 10 0,126 0 1,103 7 0,836 0 0,115 4 0,165 7 
+ 20 0,099 4 0,868 8 0,632 2 0,132 1 0,198 4 
+ 60 0,059 8 0,529 6 0,355 3 0,116 8 0,197 3 
+ 100 0,045 9 0,411 4 0,264 9 0,104 3 0,185 3 
+ 150 0,036 9 0,333 6 0,208 2 0,093 1 0,172 2 
+ 200 0,031 4 0,287 7 0,175 5 0,084 8 0,162 4 
+0,2 0,4 10 0,123 5 1,029 4 0,7271 0,099 3 0,156 3 
+ 20 0,097 7 0,810 1 0,543 2 0,110 9 0,187 7 
+ 60 0,059 0 0,495 4 0,298 3 0,095 5 0,187 7 
+ 100 0,045 3 0,385 7 0,222 0 0,082 6 0,175 4 
+ 150 0,036 5 0,314 8 0,174 4 0,072 2 0,163 0 
+ 200 0,031 1 0,272 2 0,146 8 0,065 8 0,154 4 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 44 =====
+42 
+Tabelle C.7  Koeffizienten k
+Belastung: Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei gelagert. 
+Membran: Normalspannungen = 0; Schubspannungen = 0. 
+Parameter: 
+ = u/a; = v/a 
+4
+4
+tE
+apP Ed
+b/a = 2 
+P kw1 k bx1 k by1 k mx1 k my1
+0,1 0,1 10 0,143 8 1,635 1 1,356 0 0,151 7 0,190 4 
+ 20 0,115 4 1,369 2 1,110 6 0,177 3 0,228 8 
+ 60 0,072 5 0,963 3 0,749 8 0,175 3 0,243 8 
+ 100 0,056 4 0,797 9 0,611 2 0,167 5 0,235 5 
+ 150 0,045 6 0,679 7 0,512 7 0,159 6 0,227 1 
+ 200 0,039 0 0,602 8 0,449 2 0,151 7 0,218 8 
+0,2 0,2 10 0,141 4 1,254 2 0,975 2 0,132 6 0,175 1 
+ 20 0,113 8 1,007 8 0,751 0 0,151 3 0,210 4 
+ 60 0,071 6 0,642 7 0,441 0 0,137 3 0,216 7 
+ 100 0,055 5 0,505 4 0,333 9 0,123 2 0,205 4 
+ 150 0,044 9 0,413 4 0,264 6 0,110 8 0,192 8 
+ 200 0,038 4 0,357 2 0,223 0 0,103 0 0,182 7 
+0,3 0,3 10 0,136 2 1,022 7 0,750 6 0,106 2 0,151 7 
+ 20 0,110 4 0,809 0 0,561 5 0,119 0 0,182 2 
+ 60 0,069 8 0,494 1 0,309 3 0,102 4 0,186 2 
+ 100 0,054 2 0,378 9 0,227 5 0,088 3 0,175 3 
+ 150 0,042 1 0,304 6 0,178 3 0,079 4 0,164 5 
+ 200 0,037 4 0,258 6 0,148 7 0,071 7 0,154 6 
+0,2 0,3 10 0,139 5 1,170 2 0,816 4 0,114 6 0,123 1 
+ 20 0,112 9 0,939 6 0,615 3 0,126 2 0,199 0 
+ 60 0,071 2 0,600 3 0,348 8 0,108 8 0,204 4 
+ 100 0,055 3 0,474 2 0,261 1 0,094 3 0,194 7 
+ 150 0,044 7 0,390 1 0,206 5 0,084 1 0,183 0 
+ 200 0,038 3 0,337 9 0,174 4 0,075 4 0,173 3 
+0,2 0,4 10 0,137 5 1,097 6 0,705 1 0,095 9 0,155 1 
+ 20 0,111 7 0,882 9 0,526 7 0,105 3 0,188 6 
+ 60 0,070 6 0,567 0 0,294 5 0,085 1 0,194 2 
+ 100 0,054 9 0,449 6 0,222 0 0,072 9 0,184 9 
+ 150 0,044 5 0,371 3 0,176 5 0,063 5 0,173 7 
+ 200 0,038 1 0,322 7 0,149 6 0,055 4 0,164 4 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12
+
+===== PDF-SEITE 45 =====
+Tabelle C.8  Koeffizienten k
+Belastung: Gleichmäßig verteilte Flächenlast 
+Randbedingungen: 
+Platte: Alle Ränder sind frei gelagert. 
+Membran: Normalspannungen = 0; Schubspannungen = 0. 
+Parameter: 
+ = u/a; = v/a 
+4
+4
+tE
+apP Ed
+b/a = 2,5 
+P kw1 k bx1 k by1 k mx1 k my1
+0,1 0,1 10 0,149 6 1,663 6 1,346 3 0,155 2 0,182 6 
+ 20 0,123 5 1,410 9 1,100 6 0,181 1 0,217 5 
+ 60 0,086 1 1,042 8 0,745 3 0,181 1 0,237 4 
+0,2 0,2 10 0,147 0 1,281 4 0,965 0 0,135 9 0,168 8 
+ 20 0,121 8 1,049 1 0,740 0 0,154 8 0,200 0 
+ 60 0,084 9 0,720 5 0,436 3 0,139 0 0,208 8 
+0,3 0,3 10 0,141 9 1,050 4 0,741 0 0,109 2 0,144 3 
+ 20 0,118 2 0,848 9 0,551 9 0,122 2 0,172 6 
+ 60 0,082 7 0,568 1 0,305 2 0,101 4 0,177 5 
+0,2 0,3 10 0,145 5 1,198 1 0,805 6 0,116 1 0,157 9 
+ 20 0,121 0 0,982 0 0,605 3 0,129 4 0,187 6 
+ 60 0,084 7 0,680 6 0,348 7 0,108 8 0,198 2 
+0,2 0,4 10 0,143 4 0,112 6 0,694 9 0,098 6 0,146 9 
+ 20 0,119 9 0,926 1 0,516 8 0,106 9 0,176 3 
+ 60 0,084 4 0,648 0 0,299 3 0,084 9 0,187 3 
+43 
+EN 1993-1-7:2007 + AC:2009 (D) 
+DIN EN 1993-1-7:2010-12

@@ -1,0 +1,15 @@
+{
+  "contract_version": "structural-analysis-job/0.2",
+  "project_ref": "reference_pad_foundation",
+  "model_revision_ref": "reference_001",
+  "job_ref": "job_pad_foundation",
+  "structure_type": "residential_building",
+  "material_kind": "soil",
+  "standards_profile": "DE_EC_2021",
+  "load_cases": [{"load_case_id": "GQ", "label": "Stützenlast", "category": "permanent", "value": 1.0, "unit": "-", "action_type": "self_weight"}],
+  "analysis_model": {"kind": "member_check"},
+  "design": {
+    "type": "foundation",
+    "parameters": {"width_m": 2.2, "length_m": 2.2, "design_axial_kn": 960.0, "design_moment_x_knm": 52.0, "design_moment_y_knm": 35.0, "design_soil_resistance_kn_m2": 300.0}
+  }
+}

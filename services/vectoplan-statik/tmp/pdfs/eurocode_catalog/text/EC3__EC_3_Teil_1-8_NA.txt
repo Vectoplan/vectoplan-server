@@ -1,0 +1,745 @@
+
+
+===== PDF-SEITE 1 =====
+Nationaler Anhang  
+National festgelegte Parameter  
+Eurocode 3: Bemessung und Konstruktion von Stahlbauten  
+Teil 1-8: Bemessung von Anschlüssen 
+National Annex  
+Nationally determined parameters  
+Eurocode 3: Design of steel structures  
+Part 1-8: Design of joints 
+Annexe Nationale  
+Paramètres déterminés au plan national  
+Eurocode 3: Calcul des structures en acier  
+Partie 1-8: Calcul des assemblages
+
+===== PDF-SEITE 2 =====
+DIN EN 1993-1-8/NA:2010-12 
+Inhalt 
+Seite 
+Vorwort ........................................................................................................................................................... 3
+NA 1 Anwendungsbereich .......................................................................................................... .............. 4
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1993-1-8:2010-12 .................................... 4
+NA 2.1 Allgemeines....................................................................................................................................... 4
+NA 2.2 Nationale Festlegungen ................................................................................................................... 5
+NCI zu 1.2 Normative Verweisungen............................................................................................................ 5
+NDP zu 1.2.6 (Bezugsnormengruppe 6: Niete) Anmerkung ...................................................................... 5
+NDP zu 2.2(2) Anmerkung............................................................................................................................. 5
+NCI zu Abschnitt 3.1.1 Verzinkte Schrauben .............................................................................................. 5
+NDP zu 3.1.1(3) Anmerkung.......................................................................................................................... 6
+NDP zu 3.4.2(1) Anmerkung.......................................................................................................................... 6
+NCI zu 3.5 Schraubverbindungen mit Sackloch ......................................................................................... 6
+NCI zu 3.13.1 Schraubverbindungen ........................................................................................................... 7
+NCI zu 4.5.2 Grenzwert für Kehlnahtdicken ................................................................................................ 7
+NCI zu 4.5.3.2(6) ............................................................................................................................................. 7
+NDP zu 5.2.1(2) Anmerkung.......................................................................................................................... 7
+NCI zu 6.2.7.1(13) und 6.2.7.1 (14) Kontaktstoß und Druckübertragung durch Kontakt ........................ 7
+NDP zu 6.2.7.2(9) Anmerkung....................................................................................................................... 8
+NCI Kontaktstoß und Druckübertrag durch Kontakt.................................................................................. 9
+NCI Stumpfstoß von Querschnittsteilen verschiedener Dicken ............................................................... 9
+NCI Geschweißte Endanschlüsse zusätzlicher Gurtplatten.................................................................... 10
+NCI Gurtplattenstöße................................................................................................................................... 10
+NCI Anhang NA.A (normativ) Ergänzende Vorspannverfahren zu DIN EN 1090-2 .......................... 12
+NCI NA.A.1 Allgemeines.......................................................................................................... .............. 12
+NCI NA.A.2 Drehimpuls-Vorspannverfahren....................................................................................... 12
+NCI NA.A.3 Modifiziertes Drehmoment-Vorspannverfahren ............................................................. 12
+NCI NA.A.4 Modifiziertes kombiniertes Vorspannverfahren ............................................................. 12
+NCI NA.A.5 Tabellen............................................................................................................. .................. 13
+NCI NA.B.1 Werkstoffe......................................................................................................... ................. 15
+NCI NA.B.2 Anforderungen ....................................................................................................... ............ 15
+NCI NA.B.3 Charakteristische Werte.............................................................................................. ...... 16
+NCI NA.B.4 Schweißnähte......................................................................................................... ............ 18
+NCI NA.B.5 Schraubenverbindungen................................................................................................ ... 18
+NCI Literaturhinweise ........................................................................................................... ................. 20
+2
+
+===== PDF-SEITE 3 =====
+DIN EN 1993-1-8/NA:2010-12 
+Vorwort 
+Dieses Dokument wurde vom NA 005-08-16 AA Tragwerksbemessung erstellt. 
+Dieses Dokument bildet den Nationalen Anhang zu DIN EN 1993-1-8:2010-12, Eurocode 3: Bemessung und 
+Konstruktion von Stahlbauten  Teil 1-8 NA: Bemessung von Anschlüssen. 
+Die Europäische Norm EN 1992-1-8 räumt die Möglichkeit ein, eine Reihe von sicherheitsrelevanten 
+Parametern national festzulegen. Diese national festzulegenden Parameter (en: Nationally determined 
+parameters, NDP) umfassen alternative Nachweisverfahren und Angaben einzelner Werte, sowie die Wahl 
+von Klassen aus gegebenen Klassifi zierungssystemen. Di e entsprechenden Textstellen sind in der 
+Europäischen Norm durch Hinweise auf die Möglichkeit nationaler Festlegungen gekennzeichnet. Eine Liste 
+dieser Textstellen befindet sich im Unterabschnitt NA 2.1. Darüber hinaus enthält dieser Nationale Anhang 
+ergänzende nicht widersprechende Angaben zur Anwendung von DIN EN 1993-1-8:2010-12 
+(en: non-contradictory complementary information, NCI). 
+Dieser Nationale Anhang ist Bestandteil von DIN EN 1993-1-8:2010-12. 
+DIN EN 1993-1-8:2010-12 und dieser Nationale Anhang DIN EN 1993-1-8/NA:2010-12 ersetzen teilweise 
+DIN 18800-1:2008-11, DIN 18801:1993-09, DIN 18808:1984-10 und DIN 18914:1985-09, sowie 
+DIN V ENV 1993-1-1:1993-04, DIN V ENV 1993-1-1/A1:2002-05 und DIN V ENV 1993-1-1/A2:2002-05. 
+Änderungen 
+Gegenüber DIN 18800-1:2008-11, DIN 18801:1983-09, DIN 18808:1984-10 und DIN 18914:1985-09, sowie 
+DIN V ENV 1993-1-1:1993-04, DIN V ENV 1993-1-1/A1:2002-05 und DIN V ENV 1993-1-1/A2:2002-05 
+wurden folgende Änderungen vorgenommen: 
+a) nationale Festlegungen zu DIN EN 1993-1-8:2010-12 aufgenommen. 
+Frühere Ausgaben 
+DIN 1050: 1934-08, 1937xxxxx-07, 1946-10, 1957x-12, 1968-06 
+DIN 1073: 1928-04, 1931-09, 1941-01, 1974-07 
+DIN 1073 Beiblatt: 1974-07 
+DIN 1079: 1938-01, 1938-11, 1970-09 
+DIN 4100: 1931-05, 1933-07, 1934xxxx-08, 1956-12, 1968-12 
+DIN 4101: 1937xxx-07, 1974-07 
+DIN 4115: 1950-08 
+DIN 18800-1: 1981-03, 1990-11, 2008-11 
+DIN 18800-1/A1: 1996-02 
+DIN 18801: 1983-09 
+DIN 18808: 1984-10 
+DIN 18914: 1985-09 
+DIN V ENV 1993-1-1: 1993-04 
+DIN V ENV 1993-1-1/A1: 2002-05 
+DIN V ENV 1993-1-1/A2: 2002-05 
+3
+
+===== PDF-SEITE 4 =====
+DIN EN 1993-1-8/NA:2010-12 
+NA 1 Anwendungsbereich 
+Dieser Nationale Anhang enthält nationale Festlegungen für den Entwurf, die Berechnung und die 
+Bemessung von Anschlüssen aus Stahl mit Stahlsorten S235, S275, S355 und S460 unter vorwiegend 
+ruhender Belastung, die bei der Anwendung von DIN EN 1993-1-8:2010-12 in Deutschland zu berücksichtigen 
+sind. 
+Dieser Nationale Anhang gilt nur in Verbindung mit DIN EN 1993-1-8:2010-12. 
+NA 2 Nationale Festlegungen zur Anwendung von DIN EN 1993-1-8:2010-12 
+NA 2.1 Allgemeines 
+DIN EN 1993-1-8:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen aus 
+(NDP). 
+ 1.2.6 (Bezugsnormengruppe 6: Niete); 
+ 2.2(2); 
+ 3.1.1(3); 
+ 3.4.2(1); 
+ 5.2.1(2); 
+ 6.2.7.2(9). 
+Darüber hinaus enthält NA 2.2 ergänzende nicht widersprechende Angaben zur Anwendung von 
+DIN EN 1993-1-8:2010-12. Diese sind durch ein vorangestelltes NCI gekennzeichnet. 
+ 1.2 Normative Verweisungen; 
+ 3.1.1 Verzinkte Schrauben; 
+ 3.5 Schraubverbindungen mit Sackloch; 
+ 3.13.1 Schraubverbindungen; 
+ 4.5.2 Grenzwert für Kehlnahtdicken; 
+ 4.5.3.2(6); 
+ 6.2.7.1 (13) und 6.2.7.1(14) Kontaktstoß und Druckübertragung durch Kontakt; 
+ Kontaktstoß und Druckübertragung durch Kontakt; 
+ Stumpfstoß von Querschnittsteilen verschiedener Dicken; 
+ Geschweißte Endanschlüsse zusätzlicher Gurtplatten; 
+ Gurtplattenstöße; 
+4
+
+===== PDF-SEITE 5 =====
+DIN EN 1993-1-8/NA:2010-12 
+ Anhang NA.A Ergänzende Vorspannverfahren zu DIN EN 1090-2; 
+ Anhang NA.B Gussteile, Schmiedeteile und Bauteile aus Vergütungsstählen; 
+ Literaturhinweise. 
+Die nachfolgende Nummerierung entspricht der Nummerierung von DIN EN 1993-1-8:2010-12. 
+NA 2.2 Nationale Festlegungen 
+NCI zu 1.2 Normative Verweisungen 
+NA DIN 124, Halbrundniete; Nenndurchmesser 10 bis 36 mm
+NA DIN 302, Senkniete; Nenndurchmesser 10 bis 36 mm
+NA DIN EN 1090-2:2008-12, Ausführung von Stahltragwerken und Aluminiumtragwerken  Teil 2: 
+Technische Anforderungen an die Ausführung von Tragwerken aus Stahl 
+NDP zu 1.2.6 (Bezugsnormengruppe 6: Niete) Anmerkung 
+Bis zum Erscheinen einer entsprechenden EN-Norm gelten für die geometrischen Abmessungen DIN 124 und 
+DIN 302. Der Werkstoff für Niete ist im Einzelfall festzulegen. 
+NDP zu 2.2(2) Anmerkung 
+Es gelten die Empfehlungen unter Beachtung der folgenden Ergänzungen. 
+M2,S420 = 1,25, unter Verwendung von w = 0,88 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. 
+M2,S460 = 1,25, unter Verwendung von w = 0,85 statt w = 1,0 aus DIN EN 1993-1-8:2010-12, Tabelle 4.1. 
+Für Injektionsschrauben ist ein bauaufsichtlicher Verwendbarkeitsnachweis erforderlich. 
+ANMERKUNG Als bauaufsichtliche Verwendbarkeitsnachweise gelten: 
+ europäische technische Zulassungen, 
+ allgemeine bauaufsichtliche Zulassungen, 
+ die Zustimmung im Einzelfall. 
+NCI zu Abschnitt 3.1.1 Verzinkte Schrauben 
+Es sind nur komplette Garnituren (Schrauben, Muttern und Scheiben) eines Herstellers zu verwenden. 
+Feuerverzinkte Schrauben der Festigkeitsklasse 8.8 und 10.9 sowie zugehörige Muttern und Scheiben dürfen 
+nur verwendet werden, wenn sie vom Schraubenhersteller im Eigenbetrieb oder unter seiner Verantwortung 
+im Fremdbetrieb verzinkt wurden. 
+Andere metallische Korrosionsschutzüberzüge dürfen verwendet werden, wenn 
+ die Verträglichkeit mit dem Stahl gesichert ist und 
+ eine wasserstoffinduzierte Versprödung vermieden wird und 
+ ein adäquates Anziehverhalten nachgewiesen wird. 
+5
+
+===== PDF-SEITE 6 =====
+DIN EN 1993-1-8/NA:2010-12 
+Galvanisch verzinkte Schrauben der Festigkeitsklasse 8.8 und 10.9 dürfen nicht verwendet werden. 
+ANMERKUNG 1 Ein anderer metallischer Korrosionsschutzüberzug ist z.B. die galvanische Verzinkung. Die 
+galvanische Verzinkung bei Schrauben reicht als Korrosionsschutz alleine nur in trockenen Innenräumen 
+(Korrosionskategorie C1 nach DIN EN ISO 12944-2) aus. 
+ANMERKUNG 2 Zur Vermeidung wasserstoffinduzierter Versprödung siehe auch DIN 267-9. 
+NDP zu 3.1.1(3) Anmerkung 
+Die Verwendung von Schrauben der Festigkeitsklassen 4.8, 5.8 und 6.8 sind für die Anwendung im Stahlbau 
+nicht zulässig. 
+NDP zu 3.4.2(1) Anmerkung 
+Für die Vorspannanforderung für die Kategorien B und C mit der Vorspannkraft Fp,C = 0,7 fub As und für die 
+Kategorie E mit der vollen Vorspannkraft ist das kombinierte Vorspannverfahren nach DIN EN 1090-2 anzu-
+wenden. 
+Für die Vorspannung als Qualitätssicherungsmaßnahme und für nicht voll vorgespannte Verbindungen der 
+Kategorie E darf eine Vorspannkraft von bis zu 
+Fp,C* = 0,7 fyb As
+angesetzt werden. Diese kann mit den Vorspannverfahren nach Anhang A aufgebracht werden. 
+Für die Sicherung der Garnitur gegenüber Lockern reicht in der Regel eine Vorspannung von 50 % von Fp,C* 
+aus. 
+NCI zu 3.5 Schraubverbindungen mit Sackloch 
+Die folgenden Regelungen gelten für Gewindeteile M100. 
+Bei Schraubverbindungen  z. B. Gewindestangen und Sacklochverbindungen  reicht die Einschraubtiefe 
+aus, wenn das Verhältnis der Einschraubtiefe zum Durchmesser des Außengewindes mindestens folgenden 
+Wert erreicht 
+ = (600/fu,k) · (0,3+0,4fu,b,k/500) und wenn fu,k fu,b,k erfüllt ist. 
+Dabei ist 
+fu,k der charakteristische Wert der Zugfestigkeit des Bauteils mit Innengewinde in N/mm²; 
+fu,b,k der charakteristische Wert der Zugfestigkeit des Bauteils mit Außengewinde in N/mm². 
+ANMERKUNG 1 Eine genauere Ermittlung der Einschraubtiefe bei Sacklochverbindungen (z. B. Einschraubtiefe für 
+Rundstäbe mit Gewinde) erfolgt nach der VDI-Richtlinie 2230. 
+ANMERKUNG 2 Sacklochverbindungen dürfen nur mit speziellem Nachweis (Verfahrensprüfung) planmäßig vorge-
+spannt werden. 
+Bei Schraubverbindungen gelten die Regeln für Schraubenverbindungen im Übrigen sinngemäß. 
+6
+
+===== PDF-SEITE 7 =====
+DIN EN 1993-1-8/NA:2010-12 
+NCI zu 3.13.1 Schraubverbindungen 
+Es sind Kopf- und Gewindebolzen nach Tabelle NA.1 zu verwenden. Für Kopf- und Gewindebolzen, die nicht 
+in Tabelle NA.1 aufgeführt sind, sind die Nachweise nach DIN EN 1090-2:2008-12, 5.6.12 zu erbringen. 
+Bei der Ermittlung der Beanspruchbarkeiten von Verbindungen mit Kopf- und Gewindebolzen sind für die 
+Bolzenwerkstoffe die in Tabelle NA.1 angegebenen charakteristischen Werte zu verwenden. 
+Tabelle NA.1  Als charakteristische Werte für Werkstoffe von Kopf- und Gewindebolzen festgelegte 
+Werte 
+ 1 2 3 4 
+ Bolzen nach Streckgrenze 
+fy,b,k
+N/mm²
+Zugfestigkeit 
+fu,b,k
+N/mm²
+1 Festigkeitsklasse 4.8 DIN EN ISO 13918 340 420 
+2 S235J2+C450 DIN EN ISO 13918 350 450 
+3 S235JR, S235J0, S235J2, 
+S355J0, S355J2 
+DIN EN ISO 10025-2 Werte nach DIN EN 1993-1-1:2010-12, 
+Tabelle 3.1 
+NCI zu 4.5.2 Grenzwert für Kehlnahtdicken 
+Bei Flacherzeugnissen und offenen Profilen mit Querschnittsteilen t 3 mm muss folgender Grenzwert für die 
+Schweißnahtdicke a von Kehlnähten zusätzlich eingehalten werden: 
+5,0max ta (NA.1) 
+mit a und t in mm. 
+In Abhängigkeit von den gewählten Schweißbedingungen darf auf die Einhaltung von Bedingung (NA.1) 
+verzichtet werden, jedoch sollte für Blechdicken t 30 mm die Schweißnahtdicke mit a 5 mm gewählt 
+werden. 
+ANMERKUNG Der Richtwert nach Bedingung (NA.1) vermeidet ein Missverhältnis von Nahtquerschnitt und 
+verbundenen Querschnittsteilen, siehe auch [1] und [4]. 
+NCI zu 4.5.3.2(6) 
+Für Schweißnähte an Bauteilen mit Erzeugnisdicken über 40 mm gilt für die Zugfestigkeit fu jeweils der Wert 
+für Erzeugnisdicken bis 40 mm. 
+NDP zu 5.2.1(2) Anmerkung 
+Keine weitere nationale Festlegung. 
+NCI zu 6.2.7.1(13) und 6.2.7.1 (14) Kontaktstoß und Druckübertragung durch Kontakt 
+(1) Druckkräfte normal zur Kontaktfuge dürfen in den Fällen der Ausführung nach Bild NA.1 b) oder c) 
+vollständig durch Kontakt übertragen werden, wenn 
+7
+
+===== PDF-SEITE 8 =====
+DIN EN 1993-1-8/NA:2010-12 
+ die Stoßflächen eben sind (Sägeschnitt), 
+ der Querschnittsversatz und der Winkel am Stoß den Toleranzen nach DIN EN 1090-2 entsprechen, 
+siehe Bild NA.2, 
+ die Lage der Stoßflächen durch Verbindungsmittel gesichert ist, 
+ der Stoss zwischen zwei gleichen Profilen erfolgt. 
+Bild NA.1  mögliche Ausführungen von Kontaktstößen (a) Teilkontakt, 
+b) und c) vollständiger Kontakt) 
+Bild NA.2  erlaubte Toleranzen, 1/500, e 2 mm
+(2) Die Grenzdruckspannungen in der Kontaktfuge dürfen wie die des Werkstoffs der gestoßenen Bauteile 
+angenommen werden. 
+(3) Beim Nachweis der zu stoßenden Bauteile müssen die Schnittgrößen an der Stoßstelle und ein 
+eventuelles Bilden einer klaffenden Fuge berücksichtigt werden. Bei gleichen Profilen am Stoß darf auf die 
+Berücksichtigung unterschiedlicher Querschnittsabmessungen der Stoßfläche der Profile infolge Toleranzen 
+verzichtet werden. Beim Stoß nach Bild NA.1 c) gilt dies nur dann, wenn die beiden Bauteile aus der gleichen 
+Lieferlänge stammen. Andernfalls sind die Grenzdruckspannungen auf 90 % zu reduzieren. 
+(4) Zugbeanspruchungen sind durch schlupffreie Verbindungen oder Schweißverbindungen aufzunehmen. 
+(5) Für die Übertragung der Querkräfte am Stoß sind Verbindungsmittel vorzusehen, eine Mitwirkung der 
+Reibung darf nicht angenommen werden. 
+ANMERKUNG Literatur zum Kontaktstoß, siehe [5] 
+NDP zu 6.2.7.2(9) Anmerkung 
+DIN EN 1993-1-8:2010-12, Gleichung (6.26) dient dazu, ein mögliches Schraubenversagen auszuschließen. 
+8
+
+===== PDF-SEITE 9 =====
+DIN EN 1993-1-8/NA:2010-12 
+NCI Kontaktstoß und Druckübertrag durch Kontakt 
+Druckkräfte normal zur Kontaktfuge dürfen vollständig durch Kontakt übertragen werden, wenn seitliches 
+Ausweichen der Bauteile am Kontaktstoß ausgeschlossen ist. 
+Wenn Kräfte aus druckbeanspruchten Querschnitten oder Querschnittsteilen durch Kontakt übertragen 
+werden, müssen 
+ die Stoßflächen der in den Kontaktfugen aufeinandertreffenden Teile eben und zueinander parallel und 
+ lokale Instabilitäten infolge herstellungsbedingter Imperfektionen ausgeschlossen oder unschädlich sein 
+und 
+ die gegenseitige Lage der miteinander zu stoßenden Teile gesichert sein. 
+Die Grenzdruckspannungen in der Kontaktfuge sind gleich denen des Werkstoffes der gestoßenen Bauteile. 
+Beim Nachweis der zu stoßenden Bauteile müssen Verformungen, Toleranzen und eventuelles Bilden einer 
+klaffenden Fuge berücksichtigt werden. 
+Die ausreichende Sicherung der gegenseitigen Lage der Bauteile ist nachzuweisen. Dabei dürfen 
+Reibungskräfte nicht berücksichtigt werden. 
+In Querschnittsteilen mit Dicken t von 10 mm bis 30 mm aus den Stahlsorten S235, S275 oder S355, die 
+durch Doppelkehlnähte an Stirnplatten angeschlossen sind, genügt für die Druckübertragung die rechnerische 
+Schweißnahtdicke a = 0,15 t, wenn die als Stegabstand bezeichnete Spaltbreite h zwischen Querschnittsteil 
+und Stirnplatte nicht größer als 2,0 mm ist. 
+Sofern in diesem Anschluss des Profils gleichzeitig auch Querkräfte zu übertragen sind, muss die 
+Übertragung der Druckspa nnungen und der Schubspannungen unte rschiedlichen Querschnittsteilen 
+zugewiesen werden. Die Schweißnahtbemessung für die Querkraftübertragung ist nach 
+DIN EN 1993-1-8:2010-12, Abschnitt 4 vorzunehmen. Für die zur Übertragung der Druckspannungen und die 
+zur Übertragung der Schubspannungen aus der Querkraft herangezogenen Kehlnähte ist einheitlich der 
+größere Wert der aus den beiden Nachweisen ermittelten Schweißnahtdicke anzusetzen. Sofern in dem 
+Anschluss des Profils auch Zugspannungen übertragen werden, ist dafür die Schweißnahtbemessung 
+DIN EN 1993-1-8:2010-12, Abschnitt 4 vorzunehmen. 
+ANMERKUNG 1 Verformungen können hierbei Vorverformungen, elastische Verformungen und lokale plastische 
+Verformungen sein. 
+ANMERKUNG 2 Toleranzen können einen Versatz in der Schwerlinie von Querschnittsteilen bewirken. 
+ANMERKUNG 3 Herstellungsbedingte Imperfektionen können z. B. Versatz oder Unebenheiten sein. Lokale Instabilitäten 
+können insbesondere bei dünnwandigen Bauteilen auftreten, siehe z. B. [2], [3]. 
+ANMERKUNG 4 Die Anforderung für die Begrenzung des Luftspaltes gilt z. B. für den Anschluss druckbeanspruchter 
+Flansche an Stirnplatten. 
+NCI Stumpfstoß von Querschnittsteilen verschiedener Dicken 
+Wechselt an Stumpfstößen von Querschnittsteilen die Dicke, so sind bei Dickenunterschieden von mehr als 
+10 mm die vorstehenden Kanten im Verhältnis 1 : 1 oder flacher zu brechen (siehe Bild NA.3). 
+9
+
+===== PDF-SEITE 10 =====
+DIN EN 1993-1-8/NA:2010-12 
+a) Einseitig bündiger Stoß 
+ b) Zentrischer Stoß 
+Bild NA.3  Beispiele für das Brechen von Kanten bei Stumpfstößen von Querschnittsteilen 
+mit verschiedenen Dicken 
+NCI Geschweißte Endanschlüsse zusätzlicher Gurtplatten 
+Sofern kein Nachweis für den Gurtplattenanschluss geführt wird, ist die zusätzliche Gurtplatte nach Bild 
+NA.4 a) vorzubinden. 
+Bei Gurtplatten mit t > 20 mm darf der Endanschluss nach Bild NA.4 b) ausgeführt werden. Bei Bauteilen mit 
+vorwiegend ruhender Beanspruchung darf auf die Ausführung nach Bild NA.4 verzichtet werden. Die 
+Stirnkehlnähte können wie die Flankenkehlnähte ausgeführt werden. Deren Dicke ergibt sich nach den 
+statischen Erfordernissen. 
+a rechnerischer Endpunkt der zusätzlichen Gurtplatte 
+Bild NA.4  Vorbinden zusätzlicher Gurtplatten 
+NCI Gurtplattenstöße 
+Wenn aufeinanderliegende Gurtplatten an derselben Stelle gestoßen werden, ist der Stoß mit Stirnfugen-
+nähten vorzubereiten (siehe Bild NA.5). 
+10
+
+===== PDF-SEITE 11 =====
+DIN EN 1993-1-8/NA:2010-12 
+Legende 
+1 Stirnfugennähte 
+Bild NA.5  Beispiele für die Nahtvorbereitung eines Stumpfstoßes aufeinanderliegender Gurtplatten 
+11
+
+===== PDF-SEITE 12 =====
+DIN EN 1993-1-8/NA:2010-12 
+NCI Anhang NA.A 
+(normativ) 
+Ergänzende Vorspannverfahren zu DIN EN 1090-2 
+NCI NA.A.1 Allgemeines 
+Alle Regeln aus DIN EN 1090-2:2008-12, 8.5.1 gelten sinngemäß. Die wesentliche Besonderheit der 
+ergänzenden Vorspannverfahren besteht im Aufbringen der  im Vergleich zur Mindestvorspannkraft Fp,C  
+kleineren Regelvorspannkraft Fp,C*. Dadurch kann die Ermittlung eines Referenz-Drehmomentes nach 
+DIN EN 1090-2:2008-12, 8.5.2 entfallen. Stattdessen können, eine Schmierung nach k-Klasse K1 vor-
+ausgesetzt, feste Werte für die Anziehmomente angegeben werden. Daraus folgt ein modifiziertes 
+Drehmoment-Vorspannverfahren (siehe NA.A.3) und ein modifiziertes kombiniertes Vorspannverfahren (siehe 
+NA.A.4). Ferner ist es dadurch möglich, das traditionelle Drehimpuls-Vorspannverfahren beizubehalten (siehe 
+NA.A.2). 
+NCI NA.A.2 Drehimpuls-Vorspannverfahren 
+Die Garnituren müssen mit Hilfe eines vorher auf geeignete Weise eingestellten Impuls- oder 
+Schlagschraubers mit einer Unsicherheit von weniger als 4 % angezogen werden. Jedes hierfür benutzte 
+Einstellgerät ist hinsichtlich seiner Messgenauigkeit regelmäßig nach Angaben des Geräteherstellers zu 
+überprüfen. Soll auf die Regel-Vorspannkraft F
+p,C* nach Spalte 2 von Tabelle NA.A.1 bzw. Tabelle NA.A.2 
+vorgespannt werden, so muss der Schrauber auf den um etwa 10 % höheren Vorspannkraftwert FV,DI nach 
+Spalte 3 von Tabelle NA.A.1 bzw. Spalte 4 von Tabelle NA.A.2 eingestellt werden. Bei kleinerer planmäßiger 
+Vorspannkraft als der Regel-Vorspannkraft Fp,C* sind die Einstell-Vorspannkraftwerte proportional zu 
+reduzieren. 
+NCI NA.A.3 Modifiziertes Drehmoment-Vorspannverfahren 
+Das Vorspannen der Garnituren erfolgt nach DIN EN 1090-2:2008-12, 8.5.3, mit folgenden Modifizierungen: 
+Der erste Anziehschritt kann beliebig gewählt werden. Soll auf die Regelvorspannkraft F
+p,C* nach Spalte 2 von 
+Tabelle NA.A.1 bzw. Tabelle NA.A.2 vorgespannt werden, so muss im zweiten Anziehschritt das in Spalte 4 
+von Tabelle NA.A.1 bzw. Tabelle NA.A.2 angegebene Anziehmoment M
+A aufgebracht werden. Bei kleinerer 
+planmäßiger Vorspannkraft als der Regelvorspannkraft Fp,C* ist das Anziehmoment proportional zu 
+reduzieren. 
+ANMERKUNG Dieses Verfahren ermöglicht ein beliebiges stufenweises Vorspannen in Anschlüssen mit vielen 
+Schrauben sowie ein Nachziehen als Kontrolle oder zum Ausgleich von Vorspannkraftverlusten nach wenigen Tagen. 
+NCI NA.A.4 Modifiziertes kombiniertes Vorspannverfahren 
+Das Vorspannen der Garnituren erfolgt nach DIN EN 1090-2:2008-12, 8.5.4, mit folgenden Modifizierungen: 
+Das im ersten Anziehschritt aufzubringende Anziehmoment M
+A,MKV (Voranziehmoment) ist Spalte 5 von 
+Tabelle NA.A.2 zu entnehmen. Das Anziehen kann mit Hilfe eines der in NA.A.2 und NA.A.3 beschriebenen 
+Verfahren erfolgen. Ein Mitdrehen der Schraube relativ zum Bauteil ist zu verhindern. 
+Der im zweiten Anziehschritt zum Erreichen der Regelvorspannkraft F
+p,C* nach Spalte 2 von Tabelle NA.A.2 
+aufzubringende Weiterdrehwinkel MKV ist Tabelle NA.A.3 zu entnehmen. 
+ANMERKUNG1 Kleinere planmäßige Vorspannkräfte als die Regelvorspannkraft Fp,C* sind bei Anwendung des 
+modifizierten kombinierten Vorspannverfahrens nicht zulässig. 
+12
+
+===== PDF-SEITE 13 =====
+DIN EN 1993-1-8/NA:2010-12 
+ANMERKUNG 2 Ist mit Hilfe des Voranziehmomentes MA,MKV eine ausreichend flächige Anlage der zu verbindenden 
+Bauteile nicht erreichbar und das Erreichen der planmäßigen Vorspannkraft somit zweifelhaft, so ist der erforderliche 
+Weiterdrehwinkel MKV durch eine Verfahrensprüfung an der jeweiligen Originalverschraubung zu ermitteln (z. B. mittels 
+Messung der Schraubenverlängerung). 
+NCI NA.A.5 Tabellen 
+Tabelle NA.A.1  Vorspannkräfte und Anziehmomente für Drehimpuls- und modifiziertes 
+Drehmoment-Vorspannverfahren für Garnituren der Festigkeitsklasse 8.8 nach DIN EN ISO 4014, 
+DIN EN ISO 4017, DIN EN ISO 4032 und DIN 34820  
+k-Klasse K1 nach DIN EN 14399-1 
+1 2 3 4 
+Drehimpulsverfahren Modifiziertes 
+Drehmomentverfahren 
+Einzustellende Vorspannkraft
+FV,DI zum Erreichen der
+Regelvorspannkraft Fp,C* 
+kN
+Aufzubringendes Anziehmoment 
+MA zum Erreichen der Regel-
+Vorspannkraft Fp,C* 
+Nm
+Maße 
+Regel-
+Vorspann-
+kraft Fp,C* 
+kN
+Oberflächenzustand: feuerverzinkt und geschmiert a
+oder wie hergestellt und geschmiert a
+1 M12 35 40 70 
+2 M16 70 80 170 
+3 M20 110 120 300 
+4 M22 130 145 450 
+5 M24 150 165 600 
+6 M27 200 220 900 
+7 M30 245 270 1 200 
+8 M36 355 390 2 100 
+a Muttern mit Molybdänsulfid oder gleichwertigem Schmierstoff behandelt.
+13
+
+===== PDF-SEITE 14 =====
+DIN EN 1993-1-8/NA:2010-12 
+Tabelle NA.A.2  Vorspannkräfte und Anziehmomente für Drehimpuls-, modifiziertes Drehmoment-, 
+und modifiziertes kombiniertes Vorspannverfahren für Garnituren der Festigkeitsklasse 10.9 nach 
+DIN EN 14399-4, DIN EN 14399-6 und DIN EN 14399-8  
+k-Klasse K1 nach DIN EN 14399-1 
+1 2 3 4 5 
+Drehimpuls-
+verfahren 
+Modifiziertes 
+Drehmoment-
+verfahren 
+Modifiziertes 
+kombiniertes 
+Verfahren 
+Einzustellende 
+Vorspannkraft FV,DI
+zum Erreichen der 
+Regel-
+Vorspannkraft Fp,C* 
+Aufzubringendes 
+Anziehmoment MA
+zum Erreichen der 
+Regelvorspannkraft 
+Fp,C* 
+Voranziehmoment 
+MA,MKV
+kN Nm Nm 
+Maße 
+Regel-
+Vor-
+spann-
+kraft 
+Fp,C* 
+kN 
+Oberflächenzustand: 
+feuerverzinkt und geschmiert a
+oder wie hergestellt und geschmiert a
+1 M12 50 60 100 75 
+2 M16 100 110 250 190 
+3 M20 160 175 450 340 
+4 M22 190 210 650 490 
+5 M24 220 240 800 600 
+6 M27 290 320 1 250 940 
+7 M30 350 390 1 650 1 240 
+8 M36 510 560 2 800 2 100 
+a Muttern mit Molybdänsulfid oder gleichwertigem Schmierstoff behandelt.
+Tabelle NA.A.3  Erforderliche Weiterdrehwinkel MKV für das modifizierte kombinierte 
+Vorspannverfahren an Garnituren der Festigkeitsklasse 10.9 
+ 1 2 3 
+Während des zweiten Anziehschrittes 
+aufzubringender Weiterdrehwinkel MKV
+Gesamtnenndicke t der zu 
+verbindenden Teile 
+(einschließlich aller 
+Futterbleche und 
+Unterlegscheiben) 
+d= Schraubendurchmesser Drehung 
+1 t < 2 d 45° 1/8 
+2 2 d t < 6 d 60° 1/6 
+3 6 d t < 10 d 90° 1 4 
+4 10 d < t keine Empfehlung keine Empfehlung 
+14
+
+===== PDF-SEITE 15 =====
+DIN EN 1993-1-8/NA:2010-12 
+NCI Anhang NA.B 
+(normativ) 
+Gussteile, Schmiedeteile und Bauteile aus Vergütungsstählen 
+NCI NA.B.1 Werkstoffe 
+(1) Die Vergütungsstähle C35+N und C45+N nach DIN EN 10083-2 sind nur für stählerne Lager, Gelenke und 
+spezielle Verbindungselemente (z. B. Raumfachwerkknoten, Bolzen) zu verwenden.
+(2) Die Stahlgusssorten GS200, GS240, G17Mn5+QT, G20Mn5+QT und G20Mn5+N nach DIN EN 10340 
+(Stahlguss für das Bauwesen), die Stahlgusssorten GE200 und GE240 nach DIN EN 10293 (Stahlguss für 
+allgemeine Anwendungen) sowie die Gusseisensorten EN-GJS-400-15, EN-GJS-400-18, EN-GJS-400-18-LT, 
+EN-GJS-400-18-RT nach DIN EN 1563 (Gießereiwesen  Gusseisen mit Kugelgrafit) sind nur für spezielle 
+Formstücke, wie z. B. Verankerungsbauteile für Rundstäbe mit Gewinde, anzuwenden. 
+NCI NA.B.2 Anforderungen 
+(1) Bauteile aus den oben genannten Werkstoffen dürfen nur elastisch berechnet und bemessen werden. 
+(2) Für Bauteile aus Stahlguss und Gusseisen sind die Anforderungen an die innere und äußere 
+Beschaffenheit entsprechend dem Verwendungszweck festzulegen. In Tabelle NA.B.2 sind für vorwiegend 
+ruhend beanspruchte Bauteile in Abhängigkeit von den unterschiedlichen Beanspruchungszonen H (hoch), M 
+(mittel) und N (niedrig) die erforderlichen Gütestufen angegeben. Bezüglich der Kriterien für die 
+verschiedenen Beanspruchungszonen gilt, dass jeweils jedes einzelne Kriterium maßgebend wird. Die 
+Beanspruchungszonen eines Gussstückes oder die entsprechende einheitliche Klassifizierung bei kleinen 
+Gussstücken sind in den Bauteilzeichnungen zu definieren. Wegen des Korrosionsschutzes können bezüglich 
+der Oberflächenbeschaffenheit höhere Anforderungen erforderlich sein, als in Tabelle NA.B.2 angegeben. Der 
+Nachweis der Gütestufen gilt als erbracht, wenn die Prüfung einer Stichprobe von 10 % der Gussstücke einer 
+Produktionseinheit keine unzulässigen Befunde ergab. Bei Bauteilen, deren Versagen die Standsicherheit 
+wesentliche Teile einer baulichen Anlage gefährdet, ist eine umfassendere Prüfung erforderlich, deren 
+Umfang projektspezifisch festzulegen ist. 
+(3) Fertigungsschweißungen an Gussstücken nach DIN EN 1559-1 und DIN EN 1559-2 sind zulässig, wenn 
+die dafür erforderliche Qualifizierung des Schweißverfahrens und des Schweißpersonals nach DIN EN 1090-2 
+vorliegt. Zur Qualifizierung des Schweißverfahrens siehe Tabelle NA.B.1. 
+15
+
+===== PDF-SEITE 16 =====
+DIN EN 1993-1-8/NA:2010-12 
+Tabelle NA.B.1  Methoden der Qualifizierung von Schweißverfahren 
+Schweißprozesse nach DIN EN ISO 4063 Methode der Qualifizierung 
+Ordnungs-
+nummer Bezeichnung Werkstoff Mechanisie-
+rungsgrad 
+Methode der 
+Qualifizierung 
+111 Lichtbogenhandschweißen 
+114 Metalllichtbogenschweißen mit 
+Fülldrahtelektrode ohne Schutzgas 
+Manuell und 
+teil-
+mechanisch 
+DIN EN ISO 15610, 
+DIN EN ISO 15611, 
+DIN EN ISO 15612, 
+DIN EN ISO 15613, 
+oder 
+DIN EN ISO 15614-1, 
+12 Unterpulverschweißen 
+Walzstähle, 
+Schmiede-
+stähle und 
+Stahlguss-
+werkstoffe 
+Re 355 
+N/mm2
+Voll-
+mechanisch 
+und 
+automatisch 135 Metall-Aktivgas-Schweißen 
+136 Metall-Aktivgas-Schweißen mit 
+Fülldrahtelektrode 
+141 Wolfram-Schutzgasschweißen 
+15 Plasmaschweißen 
+311 Gasschweißen mit Sauerstoff-
+Acetylen-Flamme 
+Walzstähle, 
+Schmiede-
+stähle und 
+Stahlguss-
+werkstoffe 
+Re 355 
+N/mm2
+Alle 
+DIN EN ISO 15613 
+oder 
+DIN EN ISO 15614-1 
+unter Beachtung der 
+zusätzlichen 
+Festlegungen der 
+Richtlinie DVS 1702 
+(4) Für den Nachweis ausreichender Zähigkeit gilt DIN EN 1993-1-10 entsprechend. Dabei ist für Stahlguss 
+zusätzlich eine Temperaturverschiebung TG = 10 K zu berücksichtigen und für die Bauteildicke ist der 
+Maximalwert in einem 50 mm breiten Bereich beiderseits der Schweißnaht anzusetzen. Die Zuordnung zu den 
+Walzstahlsorten ist hinsichtlich der Festigkeit und der Kerbschlagarbeit vorzunehmen. Für Stahlguss ist die 
+DIN EN 1993-1-10:2010-12, Abschnitt 3 nicht anzuwenden. 
+(5) Zur Ermittlung der mechanisch-technologischen Kennwerte von Gussstücken ist in Abhängigkeit von der 
+für den Verwendungsfall erforderlichen Zuverlässigkeit eine Probe zu gießen, deren Abmessungen 
+Abkühlbedingungen sicherstellt, die den Verhältnissen an den höchstbeanspruchten Stellen des Gussstückes 
+entsprechen. 
+(6) Für alle Schmiede- und Gusserzeugnisse müssen Prüfbescheinigungen nach DIN EN 10204, z. B. 
+Prüfbescheinigung 3.1,vorliegen. 
+NCI NA.B.3 Charakteristische Werte 
+(1) Für Stähle im geschmiedeten Zustand gelten als charakteristische Werte für die entsprechenden 
+Wanddickenbereiche die unteren Grenzwerte der Streckgrenze und der Zugfestigkeit in den jeweiligen 
+Technischen Lieferbedingungen. 
+(2) Bei der Ermittlung von Beanspruchungen und Beanspruchbarkeiten sind für die Gusswerkstoffe die in 
+Tabelle NA.B.3 angegebenen charakteristischen Werte zu verwenden. 
+(3) Bei Erzeugnisdicken, die größer sind als die in Tabelle NA.B.3, Spalte 2 angegebenen, jedoch kleiner oder 
+gleich den in den jeweiligen Technischen Lieferbedingungen angegebenen, dürfen als charakteristische 
+16
+
+===== PDF-SEITE 17 =====
+DIN EN 1993-1-8/NA:2010-12 
+Werte für die entsprechenden Wanddickenbereiche die unteren Grenzwerte der Streckgrenze und der 
+Zugfestigkeit nach den jeweiligen Technischen Lieferbedingungen verwendet werden. 
+(4) Bauteile, deren Wanddicken größer als 160 mm sind, gehören nicht zum Anwendungsbereich der Norm. 
+ANMERKUNG Die Erzeugnisdicken sind auch durch die Güteanforderungen an Gusserzeugnissen begrenzt. 
+(5) Die temperaturabhängige Veränderung der charakteristischen Werte ist bei Temperaturen über 100 °C zu 
+berücksichtigen. 
+Tabelle NA.B.2  Anforderungen an die innere und äußere Beschaffenheit von vorwiegend ruhend 
+beanspruchten Bauteilen aus Stahlguss und Gusseisen mit Kugelgraphit 
+Beanspruchungszonen Gütestufen 
+Kriteriena Der inneren Beschaffenheit 
+(Volumen) 
+Ultraschallprüfung nach 
+DIN EN 12680-1b oder 
+DIN EN 12680-3c 
+Der äußeren Beschaffenheit 
+(Oberfläche)d 
+Eindringprüfung nach DIN EN 1371-1 
+oder Magnetpulverprüfung nach 
+DIN EN 1369 
+H 
+1,00 Zug > 0,75 
+Wanddicke t 30 mm b
+Wanddicke t 20 mm c
+Schweißflanken 
+Bereiche von Krafteinleitungen 
+(z.B. Sachlochgewinde) 
+Druckkegel von vorgespannten 
+Schrauben 
+1e 
+M 
+0,75 Zug > 0,30 
+1,00 Druck > 0,75 
+Wanddicke 30 mm < t 50 mm b
+Wanddicke 20 mm < t 30 mm c
+2f 
+N 
+0,30 Zug
+0,75 Druck
+Wanddicke t > 50 mm b
+Wanddicke t > 30 mm c
+3f
+SP2 oder SM2
+(Einzelanzeigen) 
+LP2b oder LM2b
+(lineare Anzeigen) 
+AP2b oder AM2b
+(Anzeigen in Reihe) 
+a Für den Ausnutzungsgrad gilt = Sd/Rd. 
+b Für Stahlguss. 
+c Für Gusseisen mit Kugelgraphit. 
+d Zur visuellen Bestimmung der Oberfläche kann auch DIN EN 12454 vereinbart werden. 
+e Oberflächenrisse mit Tiefen über 3 mm sind unzulässig. 
+f Innerhalb einer Bezugsfläche dürfen nicht gleichzeitig Reflektoren am Rand und Kern auftreten. 
+17
+
+===== PDF-SEITE 18 =====
+DIN EN 1993-1-8/NA:2010-12 
+Tabelle NA.B.3  Als charakteristische Eigenschaften für Gusswerkstoffe festgelegte Werte 
+ 1 2 3 4 5 6 7 8 
+Lfd. 
+Nr. 
+Gusswerkstoffe Erzeug-
+nisdicke 
+t 
+mm
+Streck-
+grenze
+fy,k
+N/mm²
+Zug-
+festig-
+keit 
+fu,k
+N/mm²
+E-Modul
+E 
+N/mm²
+Schub-
+modul
+G 
+N/mm²
+Tempe-
+ratur-
+dehnzahl 
+T
+K-1
+Technische 
+Liefer-
+bedingungen 
+1 GS200 200 380 DIN EN 10340 
+2 GS240 
+t 100
+240 450 DIN EN 10340 
+3 GE200 200 380 DIN EN 10293 
+4 GE240 
+t 160 
+240 450 DIN EN 10293 
+5 G17Mn5+QT t 50 240 450 DIN EN 10340 
+6 G20Mn5+N t 30 300 480 DIN EN 10340 
+7 G20Mn5+Qt t 100 300 500 
+210 000 81 000 12 × 10 -6
+DIN EN 10340 
+8 EN-GJS-400-15 250 390 DIN EN 1563 
+9 EN-GJS-400-18 250 390 DIN EN 1563 
+10 EN-GJS-400-18-LT 230 380 DIN EN 1563 
+11 EN-GJS-400-18-RT 
+t 60 
+250 390 
+169 000 46 000 12,5 × 10 -6
+DIN EN 1563 
+NCI NA.B.4 Schweißnähte 
+(1) Bei Bauteilen aus Stahlguss sind in den Beanspruchungszonen H und M nach Tabelle NA.B.2
+Schweißverbindungen mit nicht durchgeschweißten Nähten nicht zulässig. Schweißverbindungen in den 
+Beanspruchungszonen H und M sind mit voll durchgeschweißten Nähten (Stumpf-, HV- und DHV-Nähte) 
+auszuführen. 
+(2) In der Beanspruchungszone N sind nicht durchgeschweißte Nähte (HY-, DHY- und Kehlnähte) zulässig. 
+Zur Berechnung der Tragfähigkeit sind die Korrelationsbeiwerte 
+w nach Tabelle NA.B.4 zu verwenden. Der 
+Nachweis der Schweißnähte wird auf das vereinfachte Bemessungsverfahren nach 
+DIN EN 1993-1-8:2010-12, Abschnitt 4.5.3.3 beschränkt. 
+NCI NA.B.5 Schraubenverbindungen 
+(1) Bei Sacklochverschraubungen in Bauteilen aus Gusswerkstoffen ist für den Bereich des eingeschnittenen 
+Gewindes durch zerstörungsfreie Prüfung nachzuweisen, dass die für die Übertragung der jeweiligen 
+Beanspruchung erforderliche Werkstoffhomogenität vorhanden ist. 
+18
+
+===== PDF-SEITE 19 =====
+DIN EN 1993-1-8/NA:2010-12 
+Tabelle NA.B.4 Korrelationsbeiwerte w für Kehlnähte 
+Stahl w
+GS200 1,0 
+GS240 1,0 
+G17Mn5+QT 1,0 
+G20Mn5+N 1,0 
+G20Mn5+QT 1,1 
+19
+
+===== PDF-SEITE 20 =====
+DIN EN 1993-1-8/NA:2010-12 
+NCI Literaturhinweise 
+[1] Fischer, M. und Wenk, P.: Vergleich vorhandener Konzepte zur erforderlichen Kehlnahtdicke. 
+Stahlbau 57 (1988), S. 2-8. 
+[2] Scheer, J., Peil, U. und Scheibe, H.-J.: Zur Übertragung von Kräften durch Kontakt im Stahlbau. 
+Bauingenieur 62 (1987), S. 419424. 
+[3] Lindner, J. und Gietzelt, R.: Kontaktstöße in Druckstäben. Stahlbau 57 (1988), S. 39 50, S. 384. 
+[4] DIN EN 1011 (alle Teile), Schweißen  Empfehlungen zum Schweißen metallischer Werkstoffe
+[5] JRC  Scientific and Technical Reports: Effects of imperfections of steel columns with contact splices 
+on the design, JRC, September 2010 
+20

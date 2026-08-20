@@ -1,0 +1,28 @@
+{
+  "catalog_version": "structural-literature-traceability/0.1",
+  "sources": [
+    {
+      "source_id": "krings_kleine_baustatik_2014",
+      "title": "Kleine Baustatik - Grundlagen der Statik und Berechnung von Bauteilen",
+      "author": "Wolfgang Krings",
+      "edition": "16. Auflage, 2014",
+      "role": "didactic_and_reference_test_source",
+      "normative_authority": false,
+      "notice": "Die Literatur strukturiert Erklärungen und Referenztests. Aktuelle Normprofile und Landesrecht werden separat versioniert."
+    }
+  ],
+  "topics": [
+    {"topic_id": "equilibrium_loads", "source_id": "krings_kleine_baustatik_2014", "book_pages": "3-12", "title": "Kräfte, Gleichgewicht und Lasten", "backend": ["src/loads/transfer.py", "src/solvers/beam.py", "src/solvers/grillage.py"], "tests": ["test_project_pipeline_closes_member_equilibrium"], "status": "implemented"},
+    {"topic_id": "partial_safety", "source_id": "krings_kleine_baustatik_2014", "book_pages": "13-16", "title": "Sicherheitskonzepte", "backend": ["src/loads/combinations.py", "src/standards/registry.py"], "tests": ["test_en1990_oriented_combination_exposes_every_factor"], "status": "implemented"},
+    {"topic_id": "compression_tension_foundations", "source_id": "krings_kleine_baustatik_2014", "book_pages": "17-42", "title": "Druck, Zug, Baugrund, Fundamente, Lager und Wandknicken", "backend": ["src/design/foundation.py", "src/design/masonry.py", "src/design/advanced.py"], "tests": ["test_foundation_contact_and_member_stability_are_explicit"], "status": "implemented_bounded"},
+    {"topic_id": "shear", "source_id": "krings_kleine_baustatik_2014", "book_pages": "43-46", "title": "Scherkräfte und Schubspannungen", "backend": ["src/design/concrete.py", "src/design/steel.py", "src/design/timber.py"], "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace"], "status": "implemented_bounded"},
+    {"topic_id": "bending_beams", "source_id": "krings_kleine_baustatik_2014", "book_pages": "47-108", "title": "Biegung, Auflager, Schwerpunkte, Balken und Ausmittigkeit", "backend": ["src/solvers/beam.py", "src/design/concrete.py", "src/design/steel.py", "src/design/timber.py"], "tests": ["test_simply_supported_beam_matches_closed_form_solution", "test_two_span_beam_is_in_equilibrium_and_has_hogging_support_moment"], "status": "implemented_bounded"},
+    {"topic_id": "force_diagrams", "source_id": "krings_kleine_baustatik_2014", "book_pages": "109-132", "title": "Kraftzerlegung und grafische Schnittgrößen", "backend": ["src/reports/dossier.py", "src/reports/renderer.py"], "tests": ["test_project_html_contains_positions_and_visual_results"], "status": "implemented"},
+    {"topic_id": "buckling", "source_id": "krings_kleine_baustatik_2014", "book_pages": "133-142", "title": "Knickgefahr und Knicksicherheit", "backend": ["src/design/advanced.py"], "tests": ["test_foundation_contact_and_member_stability_are_explicit"], "status": "implemented_bounded"},
+    {"topic_id": "trusses", "source_id": "krings_kleine_baustatik_2014", "book_pages": "143-148", "title": "Fachwerkträger und Stabkräfte", "backend": ["src/solvers/truss.py"], "tests": ["test_roof_truss_is_in_equilibrium"], "status": "implemented_bounded"},
+    {"topic_id": "reinforced_concrete", "source_id": "krings_kleine_baustatik_2014", "book_pages": "149-172", "title": "Stahlbetonplatten, Kragplatten, Balken und Schub", "backend": ["src/design/concrete.py", "src/solvers/plate.py", "src/solvers/grillage.py"], "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace", "test_grillage_handles_opening_and_internal_supports"], "status": "implemented_bounded"},
+    {"topic_id": "deflection", "source_id": "krings_kleine_baustatik_2014", "book_pages": "173-174", "title": "Durchbiegungsnachweis", "backend": ["src/solvers/beam.py", "src/solvers/plate.py", "src/solvers/grillage.py"], "tests": ["test_simply_supported_beam_matches_closed_form_solution", "test_plate_field_is_symmetric_and_has_zero_supported_edges"], "status": "implemented_bounded"},
+    {"topic_id": "worked_house", "source_id": "krings_kleine_baustatik_2014", "book_pages": "175-188", "title": "Durchgängige statische Berechnung eines Hauses", "backend": ["src/projects/service.py", "src/project_cases/complex_residential_building.json"], "tests": ["test_complex_residential_project_runs_every_position"], "status": "implemented_as_extended_test_case"},
+    {"topic_id": "tables_catalogs", "source_id": "krings_kleine_baustatik_2014", "book_pages": "189-230", "title": "Last-, Material-, Querschnitts- und Systemtabellen", "backend": ["src/materials/catalog.py", "src/standards/registry.py"], "tests": ["test_literature_catalog_links_every_topic_to_backend_and_tests"], "status": "metadata_only_revalidate_against_current_rules"}
+  ]
+}

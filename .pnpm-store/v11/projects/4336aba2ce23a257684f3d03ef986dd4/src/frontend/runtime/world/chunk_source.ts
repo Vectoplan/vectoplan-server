@@ -147,6 +147,7 @@ export interface ChunkSourceLibraryPlacementInput extends EditorLibraryPlacement
   readonly libraryRef?: EditorInventoryLibraryRef | null;
   readonly placementCommand?: EditorInventoryPlacementCommand | null;
   readonly commandMetadata?: Record<string, unknown> | null;
+  readonly semanticProfile?: Record<string, unknown> | null;
   readonly semanticPlacement?: Readonly<{
     readonly kind: "parcel-grid-prism.v1";
     readonly footprint: Readonly<Record<string, unknown>>;

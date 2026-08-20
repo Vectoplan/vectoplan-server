@@ -130,18 +130,24 @@ x-vectoplan-filecloud-environment: &vectoplan-filecloud-environment
   VECTOPLAN_FILECLOUD_MAX_UPLOAD_BYTES: "${VECTOPLAN_FILECLOUD_MAX_UPLOAD_BYTES:-104857600}"
   VECTOPLAN_FILECLOUD_ORCHESTRATOR_API_KEY: "${VECTOPLAN_FILECLOUD_ORCHESTRATOR_API_KEY:-}"
   VECTOPLAN_FILECLOUD_PUBLIC_URL: "${VECTOPLAN_FILECLOUD_PUBLIC_URL:-http://localhost:5107}"
+  VECTOPLAN_FILECLOUD_WEBDAV_ENABLED: "${VECTOPLAN_FILECLOUD_WEBDAV_ENABLED:-true}"
   VECTOPLAN_FILECLOUD_AUTH_REQUIRED: "${VECTOPLAN_FILECLOUD_AUTH_REQUIRED:-true}"
   VECTOPLAN_FILECLOUD_PROJECT_ACCESS_REQUIRED: "${VECTOPLAN_FILECLOUD_PROJECT_ACCESS_REQUIRED:-true}"
   VECTOPLAN_AUTH_BASE_URL: "${VECTOPLAN_FILECLOUD_AUTH_BASE_URL:-http://host.docker.internal:5000}"
-  VECTOPLAN_AUTH_PUBLIC_URL: "${VECTOPLAN_FILECLOUD_AUTH_PUBLIC_URL:-http://localhost:5000}"
+  VECTOPLAN_AUTH_PUBLIC_URL: "${VECTOPLAN_FILECLOUD_AUTH_PUBLIC_URL:-http://127.0.0.1:5000}"
   VECTOPLAN_AUTH_REQUEST_TIMEOUT_SECONDS: "${VECTOPLAN_FILECLOUD_AUTH_TIMEOUT_SECONDS:-5}"
   VECTOPLAN_AUTH_VERIFY_TLS: "${VECTOPLAN_FILECLOUD_AUTH_VERIFY_TLS:-true}"
   VECTOPLAN_AUTH_SERVICE_NAME: "${VECTOPLAN_FILECLOUD_AUTH_SERVICE_NAME:-vectoplan-filecloud}"
   VECTOPLAN_FILECLOUD_REQUIRED_ENTITLEMENT: "${VECTOPLAN_FILECLOUD_REQUIRED_ENTITLEMENT:-cloud_access}"
+  VECTOPLAN_FILECLOUD_ACCESS_TICKET_SECRET: "${VECTOPLAN_FILECLOUD_ACCESS_TICKET_SECRET:-dev-vectoplan-filecloud-access-ticket-secret-change-me}"
+  VECTOPLAN_FILECLOUD_ACCESS_SESSION_TTL_SECONDS: "${VECTOPLAN_FILECLOUD_ACCESS_SESSION_TTL_SECONDS:-28800}"
   VECTOPLAN_APP_BASE_URL: "${VECTOPLAN_FILECLOUD_APP_BASE_URL:-http://vectoplan-app:8000}"
   VECTOPLAN_APP_REQUEST_TIMEOUT_SECONDS: "${VECTOPLAN_FILECLOUD_APP_TIMEOUT_SECONDS:-5}"
   VECTOPLAN_APP_VERIFY_TLS: "${VECTOPLAN_FILECLOUD_APP_VERIFY_TLS:-true}"
-  VECTOPLAN_FILECLOUD_FRAME_ANCESTORS: "${VECTOPLAN_FILECLOUD_FRAME_ANCESTORS:-'self' http://localhost:5103 http://127.0.0.1:5103}"
+  VECTOPLAN_LV_BASE_URL: "${VECTOPLAN_FILECLOUD_LV_BASE_URL:-http://vectoplan-lv:5000}"
+  VECTOPLAN_LV_REQUEST_TIMEOUT_SECONDS: "${VECTOPLAN_FILECLOUD_LV_TIMEOUT_SECONDS:-8}"
+  VECTOPLAN_LV_VERIFY_TLS: "${VECTOPLAN_FILECLOUD_LV_VERIFY_TLS:-true}"
+  VECTOPLAN_FILECLOUD_FRAME_ANCESTORS: "${VECTOPLAN_FILECLOUD_FRAME_ANCESTORS:-'self' http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200}"
   VECTOPLAN_FILECLOUD_BOOTSTRAP_DEVELOPMENT_DEFAULTS: "${VECTOPLAN_FILECLOUD_BOOTSTRAP_DEVELOPMENT_DEFAULTS:-false}"
 
 x-vectoplan-editor-environment: &vectoplan-editor-environment
@@ -161,8 +167,8 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_PUBLIC_BASE_URL: "${VECTOPLAN_EDITOR_PUBLIC_BASE_URL:-http://localhost:5100}"
   VECTOPLAN_EDITOR_ROUTE: "${VECTOPLAN_EDITOR_ROUTE:-/editor}"
   VECTOPLAN_EDITOR_EMBED_ENABLED: "${VECTOPLAN_EDITOR_EMBED_ENABLED:-true}"
-  VECTOPLAN_EDITOR_FRAME_ANCESTORS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5101 http://127.0.0.1:5101 http://localhost:5200 http://127.0.0.1:5200"
-  VECTOPLAN_ALLOWED_FRAME_PARENTS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5101 http://127.0.0.1:5101 http://localhost:5200 http://127.0.0.1:5200"
+  VECTOPLAN_EDITOR_FRAME_ANCESTORS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5101 http://127.0.0.1:5101 http://localhost:5200 http://127.0.0.1:5200 http://localhost:5108 http://127.0.0.1:5108 http://localhost:5097 http://127.0.0.1:5097"
+  VECTOPLAN_ALLOWED_FRAME_PARENTS: "http://localhost:5103 http://127.0.0.1:5103 http://localhost:5101 http://127.0.0.1:5101 http://localhost:5200 http://127.0.0.1:5200 http://localhost:5108 http://127.0.0.1:5108 http://localhost:5097 http://127.0.0.1:5097"
   VECTOPLAN_APP_PUBLIC_URL: "${VECTOPLAN_APP_PUBLIC_URL:-http://localhost:5103}"
   VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET: "${VECTOPLAN_EDITOR_ACCESS_TICKET_SECRET:-dev-vectoplan-editor-access-ticket-secret-change-me}"
   VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS: "${VECTOPLAN_EDITOR_ACCESS_TICKET_TTL_SECONDS:-300}"
@@ -195,6 +201,7 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_CHUNK_SERVICE_ID: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_ID:-vectoplan-editor}"
   VECTOPLAN_EDITOR_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
   VECTOPLAN_EDITOR_CHUNK_INTERNAL_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_EDITOR_REALTIME_INTERNAL_TOKEN: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
   VECTOPLAN_AUTH_INTERNAL_URL: "${VECTOPLAN_AUTH_INTERNAL_URL:-http://host.docker.internal:5000}"
 
   VECTOPLAN_EDITOR_CHUNK_ENABLED: "${VECTOPLAN_EDITOR_CHUNK_ENABLED:-true}"
@@ -288,10 +295,42 @@ x-vectoplan-cad-environment: &vectoplan-cad-environment
   VECTOPLAN_CAD_CORE_PUBLIC_URL: "${VECTOPLAN_CAD_CORE_PUBLIC_URL:-http://localhost:5106}"
   VECTOPLAN_CAD_CORE_SERVICE_API_KEY: "${VECTOPLAN_CORE_INTERNAL_API_KEY:-dev-vectoplan-core-service-key-change-me}"
   VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS: "${VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS:-30}"
+  VECTOPLAN_CAD_LIBRARY_INTERNAL_URL: "${VECTOPLAN_CAD_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
+  VECTOPLAN_CAD_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
+  VECTOPLAN_CAD_LIBRARY_INVENTORY_PATH: "${VECTOPLAN_CAD_LIBRARY_INVENTORY_PATH:-/api/v1/vplib/creative-library/inventory}"
+  VECTOPLAN_CAD_LIBRARY_SERVICE_API_KEY: "${VECTOPLAN_CAD_LIBRARY_SERVICE_API_KEY:-}"
+  VECTOPLAN_CAD_LIBRARY_TIMEOUT_SECONDS: "${VECTOPLAN_CAD_LIBRARY_TIMEOUT_SECONDS:-15}"
   VECTOPLAN_CAD_LOG_LEVEL: "${VECTOPLAN_CAD_LOG_LEVEL:-INFO}"
   VECTOPLAN_CAD_WORKERS: "${VECTOPLAN_CAD_WORKERS:-2}"
   VECTOPLAN_CAD_THREADS: "${VECTOPLAN_CAD_THREADS:-2}"
   VECTOPLAN_CAD_TIMEOUT: "${VECTOPLAN_CAD_TIMEOUT:-120}"
+
+x-vectoplan-energie-environment: &vectoplan-energie-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-energie"
+  APP_NAME: "vectoplan-energie"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-energie"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-energie"
+
+  VECTOPLAN_ENERGIE_CONFIG: "${VECTOPLAN_ENERGIE_CONFIG:-production}"
+  VECTOPLAN_ENERGIE_HOST: "0.0.0.0"
+  VECTOPLAN_ENERGIE_PORT: "5000"
+  VECTOPLAN_ENERGIE_ROUTE_PREFIX: "${VECTOPLAN_ENERGIE_ROUTE_PREFIX:-/api/v1/energie}"
+  VECTOPLAN_ENERGIE_MOCK_MODE: "${VECTOPLAN_ENERGIE_MOCK_MODE:-true}"
+  VECTOPLAN_ENERGIE_STRICT_STARTUP: "${VECTOPLAN_ENERGIE_STRICT_STARTUP:-true}"
+  VECTOPLAN_ENERGIE_INTEGRATIONS_ENABLED: "${VECTOPLAN_ENERGIE_INTEGRATIONS_ENABLED:-false}"
+  VECTOPLAN_EDITOR_PUBLIC_URL: "${VECTOPLAN_EDITOR_PUBLIC_URL:-http://localhost:5100}"
+  VECTOPLAN_CAD_PUBLIC_URL: "${VECTOPLAN_CAD_PUBLIC_URL:-http://localhost:5104}"
+  VECTOPLAN_ENERGIE_EDITOR_ROUTE: "${VECTOPLAN_ENERGIE_EDITOR_ROUTE:-/editor/test-generator}"
+  VECTOPLAN_ENERGIE_CAD_ROUTE: "${VECTOPLAN_ENERGIE_CAD_ROUTE:-/cad}"
+  VECTOPLAN_ENERGIE_FRAME_ANCESTORS: "'self' http://localhost:5103 http://127.0.0.1:5103 http://localhost:5200 http://127.0.0.1:5200"
+  VECTOPLAN_ENERGIE_FRAME_SOURCES: "'self' http://localhost:5100 http://127.0.0.1:5100 http://localhost:5104 http://127.0.0.1:5104"
+  VECTOPLAN_ENERGIE_CONNECT_SOURCES: "'self' http://localhost:5100 http://127.0.0.1:5100 http://localhost:5104 http://127.0.0.1:5104"
+  VECTOPLAN_ENERGIE_CORE_INTERNAL_URL: "${VECTOPLAN_CORE_INTERNAL_URL:-http://vectoplan-core:5000}"
+  VECTOPLAN_ENERGIE_EDITOR_INTERNAL_URL: "${VECTOPLAN_EDITOR_INTERNAL_URL:-http://vectoplan-editor:5000}"
+  VECTOPLAN_ENERGIE_CAD_INTERNAL_URL: "${VECTOPLAN_CAD_INTERNAL_URL:-http://vectoplan-cad:5000}"
+  VECTOPLAN_ENERGIE_LIBRARY_INTERNAL_URL: "${VECTOPLAN_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
 
 x-vectoplan-core-environment: &vectoplan-core-environment
   <<: *vectoplan-python-environment
@@ -311,6 +350,9 @@ x-vectoplan-core-environment: &vectoplan-core-environment
   VECTOPLAN_CORE_CHUNK_INTERNAL_URL: "${VECTOPLAN_CORE_CHUNK_INTERNAL_URL:-http://vectoplan-chunk:5000}"
   VECTOPLAN_CORE_CHUNK_SERVICE_ID: "${VECTOPLAN_CORE_CHUNK_SERVICE_ID:-vectoplan-core}"
   VECTOPLAN_CORE_CHUNK_SERVICE_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CORE_EDITOR_INTERNAL_URL: "${VECTOPLAN_EDITOR_INTERNAL_URL:-http://vectoplan-editor:5000}"
+  VECTOPLAN_CORE_EDITOR_REALTIME_API_KEY: "${VECTOPLAN_CHUNK_SERVICE_API_KEY:-dev-vectoplan-chunk-service-key-change-me}"
+  VECTOPLAN_CORE_EDITOR_TIMEOUT_SECONDS: "${VECTOPLAN_CORE_EDITOR_TIMEOUT_SECONDS:-5}"
   VECTOPLAN_CORE_INTERNAL_API_KEY: "${VECTOPLAN_CORE_INTERNAL_API_KEY:-dev-vectoplan-core-service-key-change-me}"
   VECTOPLAN_CORE_MAX_DISCOVERED_CHUNKS: "${VECTOPLAN_CORE_MAX_DISCOVERED_CHUNKS:-2048}"
   VECTOPLAN_CORE_CHUNK_BATCH_SIZE: "${VECTOPLAN_CORE_CHUNK_BATCH_SIZE:-128}"
@@ -736,7 +778,7 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_AUTH_INTERNAL_URL: "${VECTOPLAN_AUTH_INTERNAL_URL:-http://host.docker.internal:5000}"
   VECTOPLAN_AUTH_BASE_URL: "${VECTOPLAN_AUTH_BASE_URL:-http://host.docker.internal:5000}"
   AUTH_IDENTITY_INTERNAL_URL: "${AUTH_IDENTITY_INTERNAL_URL:-http://host.docker.internal:5000}"
-  VECTOPLAN_AUTH_PUBLIC_URL: "${VECTOPLAN_AUTH_PUBLIC_URL:-http://localhost:5000}"
+  VECTOPLAN_AUTH_PUBLIC_URL: "${VECTOPLAN_AUTH_PUBLIC_URL:-http://127.0.0.1:5000}"
   VECTOPLAN_AUTH_SERVICE_NAME: "${VECTOPLAN_AUTH_SERVICE_NAME:-vectoplan-auth}"
   VECTOPLAN_AUTH_TRUSTED_GATEWAY_SECRET: "${VECTOPLAN_AUTH_TRUSTED_GATEWAY_SECRET:-dev-vectoplan-auth-gateway-secret-change-me}"
 
@@ -763,6 +805,8 @@ x-vectoplan-app-environment: &vectoplan-app-environment
   VECTOPLAN_FILECLOUD_INTERNAL_URL: "${VECTOPLAN_FILECLOUD_INTERNAL_URL:-http://vectoplan-filecloud:5000}"
   VECTOPLAN_FILECLOUD_ROUTE: "${VECTOPLAN_FILECLOUD_ROUTE:-/files}"
   VECTOPLAN_FILECLOUD_EMBED_ENABLED: "${VECTOPLAN_FILECLOUD_EMBED_ENABLED:-true}"
+  VECTOPLAN_FILECLOUD_ACCESS_TICKET_SECRET: "${VECTOPLAN_FILECLOUD_ACCESS_TICKET_SECRET:-dev-vectoplan-filecloud-access-ticket-secret-change-me}"
+  VECTOPLAN_FILECLOUD_ACCESS_TICKET_TTL_SECONDS: "${VECTOPLAN_FILECLOUD_ACCESS_TICKET_TTL_SECONDS:-300}"
 
   VECTOPLAN_CHUNK_PUBLIC_URL: "${VECTOPLAN_CHUNK_PUBLIC_URL:-http://localhost:5102}"
   VECTOPLAN_CHUNK_PUBLIC_BASE_URL: "${VECTOPLAN_CHUNK_PUBLIC_BASE_URL:-http://localhost:5102}"
@@ -1020,9 +1064,32 @@ x-geoserver-orchestrator-runtime-environment: &geoserver_orchestrator_runtime_en
   GEOSERVER_HEALTHCHECK_ON_STARTUP: "true"
 
 services:
+  vectoplan-libretranslate-init:
+    <<: *vectoplan-init-service-defaults
+    image: libretranslate/libretranslate:latest
+    user: "0:0"
+    entrypoint:
+      - /bin/sh
+      - -ec
+    command:
+      - |
+        set -eu
+        mkdir -p /data/share /data/cache
+        chown -R 1032:65534 /data
+        echo "[vectoplan-libretranslate-init] /data ownership is ready."
+    volumes:
+      - vectoplan-language-data:/data
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-libretranslate-init
+
   vectoplan-libretranslate:
     <<: *vectoplan-service-defaults
     image: libretranslate/libretranslate:latest
+    depends_on:
+      vectoplan-libretranslate-init:
+        condition: service_completed_successfully
     environment:
       <<: *vectoplan-python-environment
       XDG_DATA_HOME: "/data/share"
@@ -1034,7 +1101,13 @@ services:
     expose:
       - "5000"
     healthcheck:
-      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:5000/languages"]
+      test:
+        [
+          "CMD",
+          "/app/venv/bin/python",
+          "-c",
+          "import urllib.request; response = urllib.request.urlopen('http://127.0.0.1:5000/languages', timeout=5); raise SystemExit(0 if response.status == 200 else 1)"
+        ]
       interval: "${LIBRETRANSLATE_HEALTH_INTERVAL:-15s}"
       timeout: "${LIBRETRANSLATE_HEALTH_TIMEOUT:-10s}"
       retries: ${LIBRETRANSLATE_HEALTH_RETRIES:-60}
@@ -1657,6 +1730,8 @@ services:
     depends_on:
       vectoplan-core:
         condition: service_healthy
+      vectoplan-library:
+        condition: service_healthy
 
     ports:
       - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CAD_PUBLIC_PORT:-5104}:5000"
@@ -1684,6 +1759,45 @@ services:
         aliases:
           - vectoplan-cad
           - server-cad
+
+  vectoplan-energie:
+    <<: *vectoplan-service-defaults
+
+    build:
+      context: ./services/vectoplan-energie
+      dockerfile: Dockerfile
+
+    working_dir: /opt/vectoplan/services/vectoplan-energie
+
+    environment:
+      <<: *vectoplan-energie-environment
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_ENERGIE_PUBLIC_PORT:-5108}:5000"
+
+    expose:
+      - "5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import json, urllib.request; response = urllib.request.urlopen('http://127.0.0.1:5000/health/ready', timeout=3); payload = json.load(response); raise SystemExit(0 if response.status == 200 and payload.get('ok') is True else 1)\""
+        ]
+      interval: "${VECTOPLAN_ENERGIE_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_ENERGIE_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_ENERGIE_HEALTH_RETRIES:-5}
+      start_period: "${VECTOPLAN_ENERGIE_HEALTH_START_PERIOD:-15s}"
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-energie
+          - energie
+      vectoplan-shared:
+        aliases:
+          - vectoplan-energie
+          - server-energie
 
   vectoplan-core-db:
     <<: *vectoplan-service-defaults
@@ -1829,10 +1943,10 @@ services:
         condition: service_healthy
       vectoplan-library:
         condition: service_healthy
-      # App remains available when Chunk is unhealthy. Provisioning/access-sync
-      # failures are persisted and reconciled later instead of blocking startup.
+      # Project creation must not become available before Chunk is actually
+      # ready; transient Docker DNS/startup errors must not be persisted.
       vectoplan-chunk:
-        condition: service_started
+        condition: service_healthy
       vectoplan-lv:
         condition: service_started
       vectoplan-cad:
@@ -1896,8 +2010,7 @@ services:
 
   vectoplan-app-reconcile-chunk:
     <<: *vectoplan-init-service-defaults
-    profiles:
-      - maintenance
+    restart: "on-failure:5"
 
     build:
       context: ./services/vectoplan-app
@@ -1912,7 +2025,7 @@ services:
       <<: *vectoplan-app-environment
 
     depends_on:
-      vectoplan-app-db:
+      vectoplan-app:
         condition: service_healthy
       vectoplan-chunk:
         condition: service_healthy
@@ -1921,10 +2034,12 @@ services:
       - python
       - ./src/scripts/reconcile_chunk_projects.py
 
-    # Safe default. Operators can override arguments with:
-    # docker compose run --rm vectoplan-app-reconcile-chunk --force --only both
+    # Heal pending/failed persisted states after every complete stack start.
+    # Provisioning and access projection are idempotent.
     command:
-      - --dry-run
+      - --force
+      - --only
+      - both
       - --json-lines
 
     volumes:

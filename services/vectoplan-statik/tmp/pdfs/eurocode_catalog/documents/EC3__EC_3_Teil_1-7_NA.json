@@ -1,0 +1,44 @@
+{
+  "document_id": "EN_1993-1-7_NA__national_annex__EC_3_Teil_1-7_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-7/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-7 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-7 NA.pdf",
+  "sha256": "1f54a2c425ddeeefac651e1d55f8b1b13e35e06fef678f5b3212aa0dc03a7043",
+  "pages": 2,
+  "text_pages": 2,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 0,
+  "table_reference_count": 0,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161015+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232539+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-7 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [],
+  "tables": [],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 978,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1746,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

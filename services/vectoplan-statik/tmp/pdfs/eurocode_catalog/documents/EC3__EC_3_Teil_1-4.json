@@ -1,0 +1,1547 @@
+{
+  "document_id": "EN_1993-1-4__base_standard__EC_3_Teil_1-4",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-4",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 1-4.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-4.pdf",
+  "sha256": "f921160531dc1ac2f4182856e090128d71d4e596b755af39e145429cc3cb786a",
+  "pages": 41,
+  "text_pages": 41,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 105,
+  "equation_candidate_count": 60,
+  "table_reference_count": 28,
+  "figure_reference_count": 3,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111160806+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232526+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-4.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines.................................................................................................................. ............................ 4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich .......................................................................................................... ..................... 4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen..................................................................................................... ................... 5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Voraussetzungen............................................................................................................ ......................... 6",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung von verbindlichen Regeln und nicht verbindlichen Regeln ................................... 6",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................... .................................. 6",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen.............................................................................................................. ............................ 6",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Werkstoffe ................................................................................................................... ............................. 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Nichtrostende Stähle im Bauwesen........................................................................................... ............ 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Allgemeines.............................................................................................................................................. 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Mechanische Eigenschaften nichtrostender Stähle ............................................................................ 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Werkstoffkennwerte ................................................................................................................................ 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.4",
+      "title": "Bruchzähigkeit......................................................................................................................................... 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.5",
+      "title": "Eigenschaften in Dickenrichtung........................................................................................................... 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1.6",
+      "title": "Toleranzen................................................................................................................................................ 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Schrauben .................................................................................................................. ............................ 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Allgemeines............................................................................................................................................ 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Vorgespannte Schrauben ..................................................................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Andere mechanische Verbindungsmittel............................................................................................ 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Schweißzusatzwerkstoffe .................................................................................................... ................. 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Dauerhaftigkeit.............................................................................................................. ......................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Grenzzustände der Gebrauchstauglichkeit ...................................................................................... .. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines................................................................................................................ ............................ 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Ermittlung von Verformungen................................................................................................ .............. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Grenzzustände der Tragfähigkeit.............................................................................................. ........... 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines................................................................................................................ ............................ 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2",
+      "title": "Einstufung in Querschnittsklassen .......................................................................................... ........... 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Maximales Breite-zu-Dicke-Verhältnis................................................................................................. 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Klassifizierung druckbeanspruchter Querschnittsteile.....................................................................14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Wirksame Breiten von Querschnitten der Klasse 4...........................................................................1 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Wirkung der Schubverzerrung ............................................................................................................. 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3",
+      "title": "Querschnittstragfähigkeit.................................................................................................. ................... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Zugtragfähigkeit an Stellen mit Schraubenlöchern ........................................................................... 18",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4",
+      "title": "Stabilität von Bauteilen................................................................................................... ...................... 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Allgemeines............................................................................................................................................ 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Gleichförmige Bauteile mit planmäßig zentrischem Druck .............................................................. 19",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.4.3",
+      "title": "Gleichförmige Bauteile mit Biegung um die Hauptachse ................................................................. 20",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.5",
+      "title": "Auf Biegung und Druck beanspruchte gleichförmige Bauteile........................................................ 21",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.6",
+      "title": "Schubtragfähigkeit ......................................................................................................... ....................... 22",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5.7",
+      "title": "Quersteifen im Steg........................................................................................................ ....................... 23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6",
+      "title": "Bemessung von Anschlüssen .................................................................................................... ......... 23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.1",
+      "title": "Grundlagen................................................................................................................. ............................ 23",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.2",
+      "title": "Schraubenverbindungen ...................................................................................................... ................ 24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "6.3",
+      "title": "Geschweißte Verbindungen ................................................................................................... .............. 24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "7",
+      "title": "Versuchsgestützte Bemessung .................................................................................................. ......... 24",
+      "pdf_page": 4
+    },
+    {
+      "clause": "8",
+      "title": "Ermüdung..................................................................................................................... ...........................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "9",
+      "title": "Bemessung im Brandfall ....................................................................................................... ................25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1.3",
+      "title": "Voraussetzungen",
+      "pdf_page": 8
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung von verbindlichen Regeln und nicht verbindlichen Regeln",
+      "pdf_page": 8
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe",
+      "pdf_page": 8
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen",
+      "pdf_page": 8
+    },
+    {
+      "clause": "2",
+      "title": "Werkstoffe",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.1",
+      "title": "Nichtrostende Stähle im Bauwesen",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.1.1",
+      "title": "Allgemeines",
+      "pdf_page": 9
+    },
+    {
+      "clause": "480",
+      "title": "N/mm².",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.1.2",
+      "title": "Mechanische Eigenschaften nichtrostender Stähle",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.1.3",
+      "title": "Werkstoffkennwerte",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.1.4",
+      "title": "Bruchzähigkeit",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.1.5",
+      "title": "Eigenschaften in Dickenrichtung",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.1.6",
+      "title": "Toleranzen",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.2",
+      "title": "Schrauben",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "50",
+      "title": "M 39 210 500",
+      "pdf_page": 12
+    },
+    {
+      "clause": "70",
+      "title": "M 24 450 700 Austenitisch und",
+      "pdf_page": 12
+    },
+    {
+      "clause": "80",
+      "title": "M 24 600 800",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Vorgespannte Schrauben",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Andere mechanische Verbindungsmittel",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.3",
+      "title": "Schweißzusatzwerkstoffe",
+      "pdf_page": 12
+    },
+    {
+      "clause": "3",
+      "title": "Dauerhaftigkeit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4",
+      "title": "Grenzzustände der Gebrauchstauglichkeit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4.1",
+      "title": "Allgemeines",
+      "pdf_page": 13
+    },
+    {
+      "clause": "4.2",
+      "title": "Ermittlung von Verformungen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "5",
+      "title": "Grenzzustände der Tragfähigkeit",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5.1",
+      "title": "Allgemeines",
+      "pdf_page": 15
+    },
+    {
+      "clause": "5.2",
+      "title": "Einstufung in Querschnittsklassen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "5.2.1",
+      "title": "Maximales Breite-zu-Dicke-Verhältnis",
+      "pdf_page": 16
+    },
+    {
+      "clause": "5.2.2",
+      "title": "Klassifizierung druckbeanspruchter Querschnittsteile",
+      "pdf_page": 16
+    },
+    {
+      "clause": "3",
+      "title": "ANMERKUNG Zu d > 240 mm und d/t > 280 2 siehe",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.2.3",
+      "title": "Wirksame Breiten von Querschnitten der Klasse 4",
+      "pdf_page": 19
+    },
+    {
+      "clause": "5.2.4",
+      "title": "Wirkung der Schubverzerrung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.3",
+      "title": "Querschnittstragfähigkeit",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Zugtragfähigkeit an Stellen mit Schraubenlöchern",
+      "pdf_page": 20
+    },
+    {
+      "clause": "5.4",
+      "title": "Stabilität von Bauteilen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.1",
+      "title": "Allgemeines",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.2",
+      "title": "Gleichförmige Bauteile mit planmäßig zentrischem Druck",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.2.1",
+      "title": "Knickspannungslinien",
+      "pdf_page": 21
+    },
+    {
+      "clause": "5.4.3",
+      "title": "Gleichförmige Bauteile mit Biegung um die Hauptachse",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.4.3.1",
+      "title": "Biegedrillknickkurven",
+      "pdf_page": 22
+    },
+    {
+      "clause": "5.5",
+      "title": "Auf Biegung und Druck beanspruchte gleichförmige Bauteile",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.6",
+      "title": "Schubtragfähigkeit",
+      "pdf_page": 24
+    },
+    {
+      "clause": "5.7",
+      "title": "Quersteifen im Steg",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6",
+      "title": "Bemessung von Anschlüssen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.1",
+      "title": "Grundlagen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "6.2",
+      "title": "Schraubenverbindungen",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6.3",
+      "title": "Geschweißte Verbindungen",
+      "pdf_page": 26
+    },
+    {
+      "clause": "7",
+      "title": "Versuchsgestützte Bemessung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "8",
+      "title": "Ermüdung",
+      "pdf_page": 27
+    },
+    {
+      "clause": "9",
+      "title": "Bemessung im Brandfall",
+      "pdf_page": 27
+    },
+    {
+      "clause": "4",
+      "title": "Schraube und Mutter aus nichtrostendem Stahl",
+      "pdf_page": 38
+    },
+    {
+      "clause": "5",
+      "title": "Unterlegscheibe aus nichtrostendem Stahl",
+      "pdf_page": 38
+    },
+    {
+      "clause": "6",
+      "title": "Blech aus unlegiertem Stahl",
+      "pdf_page": 38
+    },
+    {
+      "clause": "7",
+      "title": "Blech aus nichtrostendem Stahl",
+      "pdf_page": 38
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "E = 200 000 N/mm2 für austenitische und austenitisch-ferritische Sorten der Tabelle 2.1 außer für die",
+      "context": "die folgenden Werte angesetzt werden: | Elastizitätsmodul E: | E = 200 000 N/mm2 für austenitische und austenitisch-ferritische Sorten der Tabelle 2.1 außer für die | Sorten 1.4539, 1.4529 und 1.4547 | E = 195 000 N/mm2 für austenitische Sorten 1.4539, 1.4529 und 1.4547",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "E = 195 000 N/mm2 für austenitische Sorten 1.4539, 1.4529 und 1.4547",
+      "context": "E = 200 000 N/mm2 für austenitische und austenitisch-ferritische Sorten der Tabelle 2.1 außer für die | Sorten 1.4539, 1.4529 und 1.4547 | E = 195 000 N/mm2 für austenitische Sorten 1.4539, 1.4529 und 1.4547 | E = 220 000 N/mm2 für ferritische Sorten der Tabelle 2.1 | Schubmodul G mit )1(2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "E = 220 000 N/mm2 für ferritische Sorten der Tabelle 2.1",
+      "context": "Sorten 1.4539, 1.4529 und 1.4547 | E = 195 000 N/mm2 für austenitische Sorten 1.4539, 1.4529 und 1.4547 | E = 220 000 N/mm2 für ferritische Sorten der Tabelle 2.1 | Schubmodul G mit )1(2 | EG",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "Querdehnungszahl v = 0,3",
+      "context": "Schubmodul G mit )1(2 | EG | Querdehnungszahl v = 0,3 | Wahlweise dürfen für geglühte Werkstoffe Spannungs-Dehnungskurven nach Anhang C zur Beschreibung | des Materialverhaltens herangezogen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "4.1",
+      "line": "EEE (4.1)",
+      "context": ")( s,2s,1 | sers, | EEE (4.1) | Dabei ist | Es,1 der Sekantenmodul, bezogen auf die Spannung 1 im Zugflansch;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "4.2",
+      "line": "EE (4.2)",
+      "context": "is, | E, + | EE (4.2) | mit: | i = 1 oder 2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "unvollständig",
+      "line": "i = 1 oder 2.",
+      "context": "EE (4.2) | mit: | i = 1 oder 2. | (8) Der Koeffizient n darf der Tabelle 4.1 entnommen werden. | ANMERKUNG Anhang C enthält eine Methode zur Bestimmung von n für Sorten, die nicht in Tabelle 4.1 enthalten",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "M0 = 1,1",
+      "context": "EN 1993-1-4:2006 (D) | 14 | M0 = 1,1 | M1 = 1,1 | M2 = 1,25",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "M1 = 1,1",
+      "context": "14 | M0 = 1,1 | M1 = 1,1 | M2 = 1,25 | (3) Diese Norm enthält keine Regelungen für eine plastische Tragwerksberechnung.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "M2 = 1,25",
+      "context": "M0 = 1,1 | M1 = 1,1 | M2 = 1,25 | (3) Diese Norm enthält keine Regelungen für eine plastische Tragwerksberechnung. | ANMERKUNG Tragwerke sollten nicht mit plastischen Berechnungsverfahren berechnet werden, solange keine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 17,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Bei Hohlprofilen darf auf der sicheren Seite liegend c = (h 2t) oder (b 2t) gesetzt werden.",
+      "context": "f | 1,03 1,01 0,698 | ANMERKUNG Bei Hohlprofilen darf auf der sicheren Seite liegend c = (h 2t) oder (b 2t) gesetzt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 19,
+      "equation_number": "5.1",
+      "line": "125,0772,0 jedoch 1 (5.1)",
+      "context": "2 | pp | 125,0772,0 jedoch 1 (5.1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "5.2",
+      "line": "231,01 jedoch 1 (5.2)",
+      "context": "2 | pp | 231,01 jedoch 1 (5.2) | Geschweißte einseitig gestützte Querschnittsteile: | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "5.3",
+      "line": "242,01 jedoch 1 (5.3)",
+      "context": "2 | pp | 242,01 jedoch 1 (5.3) | Dabei ist p der Schlankheitsgrad eines Querschnittsteils mit folgender Definition: | p",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = d bei Stegen (außer für RHS-Querschnitte);",
+      "context": "Tabelle 4.1 oder gegebenenfalls Tabelle 4.2 in EN 1993-1-5; | b die folgende, maßgebende Breite: | b = d bei Stegen (außer für RHS-Querschnitte); | b = Breite der ebenen Stegflächen von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = h 2t;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = Breite der ebenen Stegflächen von Rechteckhohlprofilen (RHS), auf der sicheren Seite",
+      "context": "b die folgende, maßgebende Breite: | b = d bei Stegen (außer für RHS-Querschnitte); | b = Breite der ebenen Stegflächen von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = h 2t; | b = b bei beidseitig gestützten Teilflächen (außer bei RHS);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = h 2t;",
+      "context": "b = d bei Stegen (außer für RHS-Querschnitte); | b = Breite der ebenen Stegflächen von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = h 2t; | b = b bei beidseitig gestützten Teilflächen (außer bei RHS); | b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = b bei beidseitig gestützten Teilflächen (außer bei RHS);",
+      "context": "b = Breite der ebenen Stegflächen von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = h 2t; | b = b bei beidseitig gestützten Teilflächen (außer bei RHS); | b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = b 2t;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite",
+      "context": "b = h 2t; | b = b bei beidseitig gestützten Teilflächen (außer bei RHS); | b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = b 2t; | b = c bei einseitig gestützten Querschnittselementen;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = b 2t;",
+      "context": "b = b bei beidseitig gestützten Teilflächen (außer bei RHS); | b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = b 2t; | b = c bei einseitig gestützten Querschnittselementen; | b = h bei gleichschenkligen und ungleichschenkligen Winkeln;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = c bei einseitig gestützten Querschnittselementen;",
+      "context": "b = Breite der ebene Flanschfläche von Rechteckhohlprofilen (RHS), auf der sicheren Seite | b = b 2t; | b = c bei einseitig gestützten Querschnittselementen; | b = h bei gleichschenkligen und ungleichschenkligen Winkeln; | der Werkstoffbeiwert nach Tabelle 5.2.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "unvollständig",
+      "line": "b = h bei gleichschenkligen und ungleichschenkligen Winkeln;",
+      "context": "b = b 2t; | b = c bei einseitig gestützten Querschnittselementen; | b = h bei gleichschenkligen und ungleichschenkligen Winkeln; | der Werkstoffbeiwert nach Tabelle 5.2. | 5.2.4 Wirkung der Schubverzerrung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "5.4",
+      "line": "Npl,Rd = Af y/ M0 (5.4)",
+      "context": "19 | (2) Die plastische Tragfähigkeit des Bruttoquerschnitts sollte bestimmt werden aus: | Npl,Rd = Af y/ M0 (5.4) | (3) Die Zugtragfähigkeit des Nettoquerschnitts sollte bestimmt werden aus: | Nu,Rd = kr Anet fu/ M2 (5.5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "5.5",
+      "line": "Nu,Rd = kr Anet fu/ M2 (5.5)",
+      "context": "Npl,Rd = Af y/ M0 (5.4) | (3) Die Zugtragfähigkeit des Nettoquerschnitts sollte bestimmt werden aus: | Nu,Rd = kr Anet fu/ M2 (5.5) | mit: | kr = (1 3 r (do/u 0,3 )) jedoch kr 1",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "kr = (1 3 r (do/u 0,3 )) jedoch kr 1",
+      "context": "Nu,Rd = kr Anet fu/ M2 (5.5) | mit: | kr = (1 3 r (do/u 0,3 )) jedoch kr 1 | r = [Anzahl der Schrauben im kritischen Schnitt] / [Gesamtanzahl der Schrauben in der Verbindung] | u = 2 e2 jedoch u p2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "r = [Anzahl der Schrauben im kritischen Schnitt] / [Gesamtanzahl der Schrauben in der Verbindung]",
+      "context": "mit: | kr = (1 3 r (do/u 0,3 )) jedoch kr 1 | r = [Anzahl der Schrauben im kritischen Schnitt] / [Gesamtanzahl der Schrauben in der Verbindung] | u = 2 e2 jedoch u p2 | Dabei ist",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "unvollständig",
+      "line": "u = 2 e2 jedoch u p2",
+      "context": "kr = (1 3 r (do/u 0,3 )) jedoch kr 1 | r = [Anzahl der Schrauben im kritischen Schnitt] / [Gesamtanzahl der Schrauben in der Verbindung] | u = 2 e2 jedoch u p2 | Dabei ist | Anet die Fläche des Nettoquerschnitts;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "5.6",
+      "line": "(5.6)",
+      "context": "11 | 0,522 | (5.6) | mit: | 2015,0 (5.7)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 21,
+      "equation_number": "5.7",
+      "line": "2015,0 (5.7)",
+      "context": "(5.6) | mit: | 2015,0 (5.7)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "5.8",
+      "line": "für Querschnitte der Klassen 1, 2 und 3; (5.8)",
+      "context": "N | Af | für Querschnitte der Klassen 1, 2 und 3; (5.8) | cr | yeff",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "5.9",
+      "line": "fA für Querschnitte der Klasse 4; (5.9)",
+      "context": "yeff | N | fA für Querschnitte der Klasse 4; (5.9) | ein Imperfektionsbeiwert; | Ncr die elastische Verzweigungslast der maßgebenden Knickform, gerechnet mit dem Bruttoquer-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "5.10",
+      "line": "(5.10)",
+      "context": "2 | LT | (5.10) | Dabei ist | 2",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.12",
+      "line": "fW ; (5.12)",
+      "context": "yy | LT M | fW ; (5.12) | LT der Imperfektionsbeiwert | = 0,34 bei kaltgeformten Querschnitten und Hohlprofilen (geschweißt und nahtlos);",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "= 0,34 bei kaltgeformten Querschnitten und Hohlprofilen (geschweißt und nahtlos);",
+      "context": "fW ; (5.12) | LT der Imperfektionsbeiwert | = 0,34 bei kaltgeformten Querschnitten und Hohlprofilen (geschweißt und nahtlos); | = 0,76 bei geschweißten offenen Querschnitten und anderen Querschnitten, für die keine Versuchs- | ergebnisse existieren;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "= 0,76 bei geschweißten offenen Querschnitten und anderen Querschnitten, für die keine Versuchs-",
+      "context": "LT der Imperfektionsbeiwert | = 0,34 bei kaltgeformten Querschnitten und Hohlprofilen (geschweißt und nahtlos); | = 0,76 bei geschweißten offenen Querschnitten und anderen Querschnitten, für die keine Versuchs- | ergebnisse existieren; | Mcr das elastische Verzweigungsmoment für Biegedrillknicken.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.13",
+      "line": "N (5.13)",
+      "context": "eNM | kN | N (5.13) | gegen vorzeitiges Versagen um die schwache Hauptachse (bei biegedrillknickgefährdeten Bauteilen): | 1)( Rdb,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.14",
+      "line": "N (5.14)",
+      "context": "eNM | kN | N (5.14) | Druckkraft und einachsige Biegung um die schwache Hauptachse | gegen vorzeitiges Versagen um die schwache Hauptachse:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.15",
+      "line": "N (5.15)",
+      "context": "fW | eNMkN | N (5.15) | Druckkraft und zweiachsige Biegung | Alle Bauteile sollten folgende Bedingung erfüllen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.16",
+      "line": "N (5.16)",
+      "context": "eNM | kN | N (5.16) | Für biegedrillknickgefährdete Bauteile gilt zusätzlich: | 1/)( M1yzpl,zW,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "5.17",
+      "line": "N (5.17)",
+      "context": "eNM | kN | N (5.17)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "W = 1,0 für Querschnitte der Klasse 1 oder 2;",
+      "context": "z-Achse, Drillknicken und Biegetorsionsknicken; | W,y und W,z die Beiwerte jeweils für die y- oder z-Achse mit: | W = 1,0 für Querschnitte der Klasse 1 oder 2; | W = Wel/Wpl für Querschnitte der Klasse 3; | W = Weff/Wpl für Querschnitte der Klasse 4;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "W = Wel/Wpl für Querschnitte der Klasse 3;",
+      "context": "W,y und W,z die Beiwerte jeweils für die y- oder z-Achse mit: | W = 1,0 für Querschnitte der Klasse 1 oder 2; | W = Wel/Wpl für Querschnitte der Klasse 3; | W = Weff/Wpl für Querschnitte der Klasse 4; | Wpl,y und Wpl,z die plastischen Widerstandsmomente jeweils für die y- oder die z-Achse;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "W = Weff/Wpl für Querschnitte der Klasse 4;",
+      "context": "W = 1,0 für Querschnitte der Klasse 1 oder 2; | W = Wel/Wpl für Querschnitte der Klasse 3; | W = Weff/Wpl für Querschnitte der Klasse 4; | Wpl,y und Wpl,z die plastischen Widerstandsmomente jeweils für die y- oder die z-Achse; | Mb,Rd die Tragfähigkeit gegenüber Biegedrillknicken;",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "unvollständig",
+      "line": "kLT = 1,0.",
+      "context": "N | N ; | kLT = 1,0. | ANMERKUNG 2 Der nationale Anhang darf andere Interaktionsgleichungen als die der Gleichungen (5.13) bis (5.17) | enthalten.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 24,
+      "equation_number": "5.17",
+      "line": "ANMERKUNG 2 Der nationale Anhang darf andere Interaktionsgleichungen als die der Gleichungen (5.13) bis (5.17)",
+      "context": "N ; | kLT = 1,0. | ANMERKUNG 2 Der nationale Anhang darf andere Interaktionsgleichungen als die der Gleichungen (5.13) bis (5.17) | enthalten. | 5.6 Schubtragfähigkeit",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG darf im nationalen Anhang definiert sein. Es wird = 1,20 empfohlen.",
+      "context": "nach Tabelle 5.2; | k nach EN 1993-1-5, 5.3. | ANMERKUNG darf im nationalen Anhang definiert sein. Es wird = 1,20 empfohlen. | (3) Bei Stegen mit Quersteifen nur am Auflager und bei Stegen mit Quersteifen und/oder Längssteifen | sollte für den Tragfähigkeitsbeiwert w gegen Schubbeulen Folgendes angesetzt werden:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "w = für 6,0",
+      "context": "(3) Bei Stegen mit Quersteifen nur am Auflager und bei Stegen mit Quersteifen und/oder Längssteifen | sollte für den Tragfähigkeitsbeiwert w gegen Schubbeulen Folgendes angesetzt werden: | w = für 6,0 | w (5.18) | 2ww",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.18",
+      "line": "w (5.18)",
+      "context": "sollte für den Tragfähigkeitsbeiwert w gegen Schubbeulen Folgendes angesetzt werden: | w = für 6,0 | w (5.18) | 2ww | w",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.19",
+      "line": "w (5.19)",
+      "context": "w | 05,064,011,0 für 6,0 | w (5.19) | mit: | w nach EN 1993-1-5, 5.3(3) und (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5",
+      "line": "w nach EN 1993-1-5, 5.3(3) und (5)",
+      "context": "w (5.19) | mit: | w nach EN 1993-1-5, 5.3(3) und (5) | (4) Wird die Flanschtragfähigkeit nicht vollständig zur Aufnahme des Biegemoments genutzt, d. h. | MEd < Mf,Rd, darf ein Flanschfaktor f in die Berechnung der Schubtragfähigkeit eingeführt werden. f ist in",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "5.20",
+      "line": "c 0,65 (5.20)",
+      "context": "fht | ftbc und a | c 0,65 (5.20) | 5.7 Quersteifen im Steg | (1) Die Festlegungen in EN 1993-1-5, 9.3 gelten, wenn zusätzlich (2) und (3) beachtet wird.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "(2) Die Knicktragfähigkeit Nb,Rd der Steifen senkrecht zur Blechebene sollte nach 5.4.2 mit = 0,49 und",
+      "context": "5.7 Quersteifen im Steg | (1) Die Festlegungen in EN 1993-1-5, 9.3 gelten, wenn zusätzlich (2) und (3) beachtet wird. | (2) Die Knicktragfähigkeit Nb,Rd der Steifen senkrecht zur Blechebene sollte nach 5.4.2 mit = 0,49 und | 0 = 0,2 ermittelt werden. Die Knicklänge l der Steife sollte entsprechend den Randbedingungen, jedoch nicht | mit weniger als 0,75 hw festgelegt werden, wenn beide Enden seitlich gehalten sind. Ein größerer Wert sollte",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 25,
+      "equation_number": "unvollständig",
+      "line": "0 = 0,2 ermittelt werden. Die Knicklänge l der Steife sollte entsprechend den Randbedingungen, jedoch nicht",
+      "context": "(1) Die Festlegungen in EN 1993-1-5, 9.3 gelten, wenn zusätzlich (2) und (3) beachtet wird. | (2) Die Knicktragfähigkeit Nb,Rd der Steifen senkrecht zur Blechebene sollte nach 5.4.2 mit = 0,49 und | 0 = 0,2 ermittelt werden. Die Knicklänge l der Steife sollte entsprechend den Randbedingungen, jedoch nicht | mit weniger als 0,75 hw festgelegt werden, wenn beide Enden seitlich gehalten sind. Ein größerer Wert sollte | für weniger wirksame Randeinspannungen verwendet werden. Weist die Steife einen Ausschnitt am",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "fu,red = 0,5 fy 0,6 fu jedoch fu ( 6 . 1 )",
+      "context": "(1) Die Beanspruchbarkeit gegenüber Lochleibung sollte statt mit fu mit einem abgeminderten Wert fu,red | berechnet werden: | fu,red = 0,5 fy 0,6 fu jedoch fu ( 6 . 1 ) | (2) Abscherbeanspruchte Schrauben aus nichtrostenden Stählen der Festigkeitsklassen 50, 70 und 80 | nach EN ISO 3506 sollten wie Schrauben der Festigkeitsgüte 4.6, 5.6 und 8.8 behandelt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "6.2",
+      "line": "AfF (6.2)",
+      "context": "2M | ubRdv, | AfF (6.2) | Dabei ist | A der Schaftquerschnitt (bei Scherfläche im Schaft); oder der Spannungsquerschnitt (bei Scherfläche",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": " bei Scherfläche durch den Schaft, = 0,6;",
+      "context": "fub die Zugfestigkeit einer Schraube, siehe Tabelle 2.2. | ANMERKUNG Der nationale Anhang darf den Wert angeben. Empfohlene Werte sind: |  bei Scherfläche durch den Schaft, = 0,6; |  bei Scherfläche durch das Gewinde, = 0,5. | 6.3 Geschweißte Verbindungen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": " bei Scherfläche durch das Gewinde, = 0,5.",
+      "context": "ANMERKUNG Der nationale Anhang darf den Wert angeben. Empfohlene Werte sind: |  bei Scherfläche durch den Schaft, = 0,6; |  bei Scherfläche durch das Gewinde, = 0,5. | 6.3 Geschweißte Verbindungen | (1) Bei der Ermittlung der Tragfähigkeit von Kehlnähten sollte bei nichtrostenden Stählen für jede",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "unvollständig",
+      "line": "Festigkeitsklasse ein Korrelationsbeiwert W = 1,0 angesetzt werden, wenn sich nicht kleinere Werte aus",
+      "context": "6.3 Geschweißte Verbindungen | (1) Bei der Ermittlung der Tragfähigkeit von Kehlnähten sollte bei nichtrostenden Stählen für jede | Festigkeitsklasse ein Korrelationsbeiwert W = 1,0 angesetzt werden, wenn sich nicht kleinere Werte aus | Versuchen nach Abschnitt 7 ergeben. | 7 Versuchsgestützte Bemessung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "true = (1 ) (C.2)",
+      "context": "b) Spannungs-Dehnungs-Linie nach a) aber mit gemessenen Größen; | c) wahre Spannungs-Dehnungs-Linie, ermittelt aus der technischen Spannungs-Dehnungs-Kurve nach: | true = (1 ) (C.2) | true = In(1 )",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "true = In(1 )",
+      "context": "c) wahre Spannungs-Dehnungs-Linie, ermittelt aus der technischen Spannungs-Dehnungs-Kurve nach: | true = (1 ) (C.2) | true = In(1 )",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "2.1",
+      "pdf_page": 9,
+      "line": "Streckgrenze fy: Nennwert (f0,2%-Wert) nach Tabelle 2.1;"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 9,
+      "line": "Zugfestigkeit fu: Nennwert der Zugfestigkeit nach Tabelle 2.1."
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 9,
+      "line": "in Übereinstimmung mit einer der in Tabelle 2.1 aufgeführten Sorte stehen, sollten als diesen Anforderungen"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 9,
+      "line": "(3) Bei Konstruktionshohlprofilen sollten die Festigkeitswerte der Tabelle 2.1, die der jeweiligen Erzeugnis-"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 10,
+      "line": "Tabelle 2.1  Nennwerte der Streckgrenze fy und der Zugfestigkeit fu für nichtrostende"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 11,
+      "line": "E = 200 000 N/mm2 für austenitische und austenitisch-ferritische Sorten der Tabelle 2.1 außer für die"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 11,
+      "line": "E = 220 000 N/mm2 für ferritische Sorten der Tabelle 2.1"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 11,
+      "line": "CVN-Werte dürfen der Tabelle 2.1 der EN 1993-1-10 entnommen werden."
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 12,
+      "line": "Tabelle 2.2 zu entnehmen."
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 12,
+      "line": "Tabelle 2.2  Nennwerte für fyb und fub für Schrauben aus nichtrostendem Stahl"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 14,
+      "line": "(8) Der Koeffizient n darf der Tabelle 4.1 entnommen werden."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 14,
+      "line": "ANMERKUNG Anhang C enthält eine Methode zur Bestimmung von n für Sorten, die nicht in Tabelle 4.1 enthalten"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 15,
+      "line": "Tabelle 4.1  Koeffizient n"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 15,
+      "line": "unterschiedlichen charakteristischen Beanspruchbarkeitsgrößen dieses Abschnitts, siehe Tabelle 5.1."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 15,
+      "line": "Tabelle 5.1  Teilsicherheitsbeiwerte"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 16,
+      "line": "nach Tabelle 5.2 eingeteilt werden. Druckbeanspruchte Querschnittsteile, die die Kriterien der Klasse 3 nicht"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 17,
+      "line": "Tabelle 5.2  (Blatt 1 von 3): Maximale Breiten-zu-Dicken-Verhältnisse druckbeanspruchter"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 18,
+      "line": "Tabelle 5.2  (Blatt 2 von 3): Maximale Breiten-zu-Dicken-Verhältnisse druckbeanspruchter"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 19,
+      "line": "Tabelle 5.2  (Blatt 3 von 3): Maximale Breiten-zu-Dicken-Verhältnisse druckbeanspruchter"
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 20,
+      "line": "Tabelle 4.1 oder gegebenenfalls Tabelle 4.2 in EN 1993-1-5;"
+    },
+    {
+      "label": "4.2",
+      "pdf_page": 20,
+      "line": "Tabelle 4.1 oder gegebenenfalls Tabelle 4.2 in EN 1993-1-5;"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 20,
+      "line": "der Werkstoffbeiwert nach Tabelle 5.2."
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 22,
+      "line": "(2) Die Werte und 0 sollten für die jeweiligen Knickspannungslinien der Tabelle 5.3 entnommen"
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 22,
+      "line": "werden. Die Knickspannungslinien der Tabelle 5.3 gelten nicht für nach der Fertigung geglühte Hohlprofile."
+    },
+    {
+      "label": "5.3",
+      "pdf_page": 22,
+      "line": "Tabelle 5.3  Werte und 0 für Biegeknicken, Drillknicken und Biegedrillknicken"
+    },
+    {
+      "label": "5.2",
+      "pdf_page": 25,
+      "line": "nach Tabelle 5.2;"
+    },
+    {
+      "label": "2.2",
+      "pdf_page": 26,
+      "line": "fub die Zugfestigkeit einer Schraube, siehe Tabelle 2.2."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 40,
+      "line": "n darf der Tabelle 4.1 entnommen oder aus den gemessenen Spannungs-Dehnungs-Linien"
+    }
+  ],
+  "figures": [
+    {
+      "label": "5.1",
+      "pdf_page": 16,
+      "line": "b/t und h/t in EN 1993-1-3 sind größer als 400, siehe Bild 5.1."
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 16,
+      "line": "Bild 5.1  Maximale Breite-zu-Dicke-Verhältnisse"
+    },
+    {
+      "label": "5.1",
+      "pdf_page": 24,
+      "line": "hw die lichte Steghöhe zwischen den Flanschen, siehe EN 1993-1-5, Bild 5.1;"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 958,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1259,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2078,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7022,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6",
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2",
+        "2.1.3",
+        "2.1.4",
+        "2.1.5",
+        "2.1.6",
+        "2.2",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "2.3",
+        "3",
+        "4",
+        "4.1",
+        "4.2",
+        "5",
+        "5.1",
+        "5.2",
+        "5.2.1",
+        "5.2.2",
+        "5.2.3",
+        "5.2.4",
+        "5.3",
+        "5.3.1",
+        "5.4",
+        "5.4.1",
+        "5.4.2",
+        "5.4.3",
+        "5.5",
+        "5.6",
+        "5.7",
+        "6",
+        "6.1",
+        "6.2",
+        "6.3",
+        "7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 4120,
+      "text_layer": "usable",
+      "clauses": [
+        "8",
+        "9"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 2180,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2823,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 1948,
+      "text_layer": "usable",
+      "clauses": [
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 2104,
+      "text_layer": "usable",
+      "clauses": [
+        "2",
+        "2.1",
+        "2.1.1",
+        "480",
+        "2.1.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 1368,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2301,
+      "text_layer": "usable",
+      "clauses": [
+        "2.1.3",
+        "2.1.4",
+        "2.1.5",
+        "2.1.6"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2333,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2",
+        "2.2.1",
+        "50",
+        "70",
+        "80",
+        "2.2.2",
+        "2.2.3",
+        "2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2703,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "4",
+        "4.1",
+        "4.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 14,
+      "characters": 1886,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 15,
+      "characters": 1225,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 16,
+      "characters": 1889,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2",
+        "5.2.1",
+        "5.2.2"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 17,
+      "characters": 774,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 18,
+      "characters": 799,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 1247,
+      "text_layer": "usable",
+      "clauses": [
+        "3",
+        "5.2.3"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 20,
+      "characters": 1437,
+      "text_layer": "usable",
+      "clauses": [
+        "5.2.4",
+        "5.3",
+        "5.3.1"
+      ],
+      "equation_candidates": 10
+    },
+    {
+      "pdf_page": 21,
+      "characters": 1552,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4",
+        "5.4.1",
+        "5.4.2",
+        "5.4.2.1"
+      ],
+      "equation_candidates": 7
+    },
+    {
+      "pdf_page": 22,
+      "characters": 1368,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4.3",
+        "5.4.3.1"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 23,
+      "characters": 1490,
+      "text_layer": "usable",
+      "clauses": [
+        "5.5"
+      ],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 24,
+      "characters": 1918,
+      "text_layer": "usable",
+      "clauses": [
+        "5.6"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 25,
+      "characters": 2016,
+      "text_layer": "usable",
+      "clauses": [
+        "5.7",
+        "6",
+        "6.1"
+      ],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2470,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2",
+        "6.3",
+        "7"
+      ],
+      "equation_candidates": 5
+    },
+    {
+      "pdf_page": 27,
+      "characters": 328,
+      "text_layer": "usable",
+      "clauses": [
+        "8",
+        "9"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 28,
+      "characters": 3199,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 3724,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 4278,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 31,
+      "characters": 3431,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 32,
+      "characters": 3019,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 1228,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 1710,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 35,
+      "characters": 2694,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 1207,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 2527,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 38,
+      "characters": 1509,
+      "text_layer": "usable",
+      "clauses": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 39,
+      "characters": 2092,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 1269,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 266,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 2
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "document_id": "EN_1993-1-12__base_standard__EC_3_Teil_1-12",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-12",
+  "document_kind": "base_standard",
+  "file_name": "EC 3 Teil 1-12.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-12.pdf",
+  "sha256": "54943f25626fa4274202702ed62cb9c316d35da35f5f581d6df35a8548dcc910",
+  "pages": 12,
+  "text_pages": 12,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 40,
+  "equation_candidate_count": 5,
+  "table_reference_count": 10,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161432+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117232510+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-12.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines................................................................................................................... .........................4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich ........................................................................................................... ..................4",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen...................................................................................................... ................5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Symbole ..................................................................................................................... .............................5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-1 bis EN 1993-1-11 .........................................5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-1.......................................................................5",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-2.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.3",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-3.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.4",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-4.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.5",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-5.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.6",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-6.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.7",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-7.......................................................................7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.8",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-8.......................................................................8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.9",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-9.......................................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.10",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-10.....................................................................9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.11",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-11...................................................................10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Zusätzliche Regeln zur Erweiterung der Anwendungsnormen EN 1993-2 bis EN 1993-6 ..........10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 7
+    },
+    {
+      "clause": "1.3",
+      "title": "Symbole",
+      "pdf_page": 7
+    },
+    {
+      "clause": "2",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-1 bis EN 1993-1-11",
+      "pdf_page": 7
+    },
+    {
+      "clause": "2.1",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-1",
+      "pdf_page": 7
+    },
+    {
+      "clause": "2.2",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-2",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.3",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-3",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.4",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-4",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.5",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-5",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.6",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-6",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.7",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-7",
+      "pdf_page": 9
+    },
+    {
+      "clause": "2.8",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-8",
+      "pdf_page": 10
+    },
+    {
+      "clause": "3.10.4",
+      "title": "Gilt nicht für Stahlsorten über S460 bis S700.",
+      "pdf_page": 10
+    },
+    {
+      "clause": "4.11",
+      "title": "Zusätzliche Regel:",
+      "pdf_page": 10
+    },
+    {
+      "clause": "5.1.3",
+      "title": "Gilt nicht für Stahlsorten über S460 bis S700.",
+      "pdf_page": 10
+    },
+    {
+      "clause": "5.1.4",
+      "title": "Gilt nicht für Stahlsorten über S460 bis S700.",
+      "pdf_page": 10
+    },
+    {
+      "clause": "5.2.2.4",
+      "title": "Gilt nicht für Stahlsorten über S460 bis S700.",
+      "pdf_page": 10
+    },
+    {
+      "clause": "6",
+      "title": "Zusätzliche Regeln",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.9",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-9",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.10",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-10",
+      "pdf_page": 11
+    },
+    {
+      "clause": "2.11",
+      "title": "Zusätzliche Regeln zur Erweiterung von EN 1993-1-11",
+      "pdf_page": 12
+    },
+    {
+      "clause": "3",
+      "title": "Zusätzliche Regeln zur Erweiterung der Anwendungsnormen EN 1993-2 bis",
+      "pdf_page": 12
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 5,
+      "equation_number": "1",
+      "line": "3 (1)",
+      "context": "2.1 (6.2.3(2)) | 2.8 (4.2(2)) | 3 (1) | 3 | DIN EN 1993-1-12:2010-12",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "6.7a",
+      "line": "9,0 fAN (6.7a)",
+      "context": "unet | Rdt, | 9,0 fAN (6.7a) | Dabei ist | M12 der Teilsicherheitsbeiwert für den Widerstand des Nettoquerschnittes für Stahlsorten über S 460",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 9,
+      "equation_number": "unvollständig",
+      "line": "ANMERKUNG Der Wert für M12 darf im Nationalen Anhang festgelegt werden. Der Wert M12 = M2 = 1,25 wird",
+      "context": "M12 der Teilsicherheitsbeiwert für den Widerstand des Nettoquerschnittes für Stahlsorten über S 460 | bis S 700. | ANMERKUNG Der Wert für M12 darf im Nationalen Anhang festgelegt werden. Der Wert M12 = M2 = 1,25 wird | empfohlen. | 6.2.3(3) Zusätzliche Regeln:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 11,
+      "equation_number": "unvollständig",
+      "line": "Ed-Werte zwischen Ed = 0,75 fy(t) und Ed = 0,50 fy(t). Die Werte für Ed = 0,25 fy(t) sind aus Interpolationsgründen mit",
+      "context": "bis S700. | ANMERKUNG 1 Bei Anwendung der Tabelle 4 darf linear interpoliert werden. Für die meisten Anwendungen liegen die | Ed-Werte zwischen Ed = 0,75 fy(t) und Ed = 0,50 fy(t). Die Werte für Ed = 0,25 fy(t) sind aus Interpolationsgründen mit | angegeben. Extrapolationen in Bereiche außerhalb der angegebenen Grenzen sind nicht zulässig. | ANMERKUNG 2 Bei Bestellung von Stahlerzeugnissen nach Tabelle 4 sollten die TJ-Werte angegeben werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 12,
+      "equation_number": "unvollständig",
+      "line": "°C Jmin Ed = 0,75 fy(t) Ed = 0,50 fy(t) Ed = 0,25 fy(t)",
+      "context": "CVN 10 0 -10 -20 -30 -40 -50 10 0 -10 -20 -30 -40 -50 10 0 -10 -20 -30 -40 -50 | bei T | °C Jmin Ed = 0,75 fy(t) Ed = 0,50 fy(t) Ed = 0,25 fy(t) | EN 10025-6 | Q 0 40 55 45 35 30 20 15 15 85 70 60 50 40 35 25 145 125 105 90 80 65 55",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "1",
+      "pdf_page": 7,
+      "line": "Tabelle 1  Nennwerte der Streckgrenze fy und Zugfestigkeit fu für warmgewalzten Baustahl"
+    },
+    {
+      "label": "2",
+      "pdf_page": 8,
+      "line": "Tabelle 2  Nennwerte der Streckgrenze fy und Zugfestigkeit fu für"
+    },
+    {
+      "label": "6.2",
+      "pdf_page": 9,
+      "line": "Tabelle 6.2 Zusätzliche Regel:"
+    },
+    {
+      "label": "3",
+      "pdf_page": 10,
+      "line": "nach EN 499, EN 12534 und EN 12535 fu durch die Bruchfestigkeit des Schweißgutes feu nach Tabelle 3"
+    },
+    {
+      "label": "3",
+      "pdf_page": 10,
+      "line": "Tabelle 3  Bruchfestigkeit feu von Elektroden"
+    },
+    {
+      "label": "4",
+      "pdf_page": 11,
+      "line": "Die Tabelle 4 darf auch für die Bestimmung der größten zulässigen Erzeugnisdicke für Stahlsorten über S460"
+    },
+    {
+      "label": "4",
+      "pdf_page": 11,
+      "line": "ANMERKUNG 1 Bei Anwendung der Tabelle 4 darf linear interpoliert werden. Für die meisten Anwendungen liegen die"
+    },
+    {
+      "label": "4",
+      "pdf_page": 11,
+      "line": "ANMERKUNG 2 Bei Bestellung von Stahlerzeugnissen nach Tabelle 4 sollten die TJ-Werte angegeben werden."
+    },
+    {
+      "label": "4",
+      "pdf_page": 11,
+      "line": "ANMERKUNG 3 Tabelle 4 liegen die nominellen Werte der Charpy V-Kerbschlagprobe in Walzrichtung zu"
+    },
+    {
+      "label": "4",
+      "pdf_page": 12,
+      "line": "Tabelle 4  Größte zulässige Erzeugnisdicken t in mm"
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 1089,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1664,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 2245,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 2462,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.3",
+        "2",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6",
+        "2.7",
+        "2.8",
+        "2.9",
+        "2.10",
+        "2.11",
+        "3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 1820,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 6,
+      "characters": 1023,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 2602,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2",
+        "1.3",
+        "2",
+        "2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2122,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 1791,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5",
+        "2.6",
+        "2.7"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2045,
+      "text_layer": "usable",
+      "clauses": [
+        "2.8",
+        "3.10.4",
+        "4.11",
+        "5.1.3",
+        "5.1.4",
+        "5.2.2.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 2331,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "2.9",
+        "2.10"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 12,
+      "characters": 3257,
+      "text_layer": "usable",
+      "clauses": [
+        "2.11",
+        "3"
+      ],
+      "equation_candidates": 1
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "document_id": "EN_1999-1-2_NA__national_annex__EC_9_Teil_1-2_NA",
+  "eurocode_family": "EC9",
+  "designation": "DIN EN 1999-1-2/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 9 Teil 1-2 NA.pdf",
+  "relative_path": "EC 9/EC 9 Teil 1-2 NA.pdf",
+  "sha256": "873e93124d40c428ec0a11772c7eb039e784f39fbb72c739fac7f3afbe77ec34",
+  "pages": 5,
+  "text_pages": 5,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 12,
+  "table_reference_count": 0,
+  "figure_reference_count": 1,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184335+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111184335+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 9\\EC 9 Teil 1-2 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 4,
+      "equation_number": "1",
+      "line": "2.3 (1)",
+      "context": "DIN EN 1999-1-2:2010-12 weist an den folgenden Textstellen die Möglichkeit nationaler Festlegungen (en: | Nationally Determined Parameters, NDP) aus: | 2.3 (1) | 2.3 (2) | 2.4.2 (3)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "2",
+      "line": "2.3 (2)",
+      "context": "Nationally Determined Parameters, NDP) aus: | 2.3 (1) | 2.3 (2) | 2.4.2 (3) | 4.2.2.1 (1)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "3",
+      "line": "2.4.2 (3)",
+      "context": "2.3 (1) | 2.3 (2) | 2.4.2 (3) | 4.2.2.1 (1) | 4.2.2.3 (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "1",
+      "line": "4.2.2.1 (1)",
+      "context": "2.3 (2) | 2.4.2 (3) | 4.2.2.1 (1) | 4.2.2.3 (5) | 4.2.2.4 (5)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "5",
+      "line": "4.2.2.3 (5)",
+      "context": "2.4.2 (3) | 4.2.2.1 (1) | 4.2.2.3 (5) | 4.2.2.4 (5) | Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "5",
+      "line": "4.2.2.4 (5)",
+      "context": "4.2.2.1 (1) | 4.2.2.3 (5) | 4.2.2.4 (5) | Darüber hinaus enthält NA.2.2 ergänzende nicht widersprechende Angaben zur Anwendung von | DIN EN 1999-1-2:2010-12. Diese sind durch ein vorangestelltes NCI (en: Non-contradictory Complementary",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "unvollständig",
+      "line": "Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen.",
+      "context": "NDP zu 2.3 (1) Bemessungswerte der Materialeigenschaften | Zur ANMERKUNG Der Teilsicherheitsbeiwert für die mechanischen Eigenschaften von Aluminium im | Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. | Als Teilsicherheitsbeiwert der mechanischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. | NDP zu 2.3 (2) Bemessungswerte der Materialeigenschaften",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 4,
+      "equation_number": "unvollständig",
+      "line": "Als Teilsicherheitsbeiwert der mechanischen Materialeigenschaften ist M,fi = 1,0 zu verwenden.",
+      "context": "Zur ANMERKUNG Der Teilsicherheitsbeiwert für die mechanischen Eigenschaften von Aluminium im | Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. | Als Teilsicherheitsbeiwert der mechanischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. | NDP zu 2.3 (2) Bemessungswerte der Materialeigenschaften | 4",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen.",
+      "context": "5 | Zur ANMERKUNG Der Teilsicherheitsbeiwert für die thermischen Eigenschaften von Aluminium im | Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. | Als Teilsicherheitsbeiwert der thermischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. | NDP zu 2.4.2 (3) Bauteilberechnung",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Als Teilsicherheitsbeiwert der thermischen Materialeigenschaften ist M,fi = 1,0 zu verwenden.",
+      "context": "Zur ANMERKUNG Der Teilsicherheitsbeiwert für die thermischen Eigenschaften von Aluminium im | Brandfall ist im Nationalen Anhang geregelt. Die Verwendung von M,fi = 1,0 wird empfohlen. | Als Teilsicherheitsbeiwert der thermischen Materialeigenschaften ist M,fi = 1,0 zu verwenden. | NDP zu 2.4.2 (3) Bauteilberechnung | Zur ANMERKUNG 1 Die Werte von G, Q,1, fi und dürfen im Nationalen Anhang festgelegt werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Zur ANMERKUNG Der Bemessungswert der Tragfähigkeit nach Gleichung (4.9) basiert auf dem",
+      "context": "tatsächlichen Abfalls des Elastizitätsmoduls. | NDP zu 4.2.2.4 (5) Stützen | Zur ANMERKUNG Der Bemessungswert der Tragfähigkeit nach Gleichung (4.9) basiert auf dem | gleichen relativen Abfall der 0,2 %-Dehngrenze und des Elastizitätsmoduls. Wenn der tatsächliche Abfall | des Elastizitätsmoduls berücksichtigt wird, kann sich die Querschnittsklasse ändern, ggf. ergibt sich eine",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "unvollständig",
+      "line": "Für den Bemessungswert der Tragfähigkeit von Stützen im Brandfall ist die Gleichung (4.9) zu verwenden",
+      "context": "günstigere Klassenzugehörigkeit. Der nationale Anhang kann dazu Berücksichtigungsmöglichkeiten | festlegen. | Für den Bemessungswert der Tragfähigkeit von Stützen im Brandfall ist die Gleichung (4.9) zu verwenden | ohne Berücksichtigung einer günstigeren Querschnittsklassen durch Verwendung des tatsächlichen Abfalls | des Elastizitätsmoduls.",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [],
+  "figures": [
+    {
+      "label": "2",
+      "pdf_page": 5,
+      "line": "des Elastizitätsmoduls. Wenn der tatsächliche Abfall des Elastizitätsmoduls nach Bild 2 verwendet wird,"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 286,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 795,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1581,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 1999,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 8
+    },
+    {
+      "pdf_page": 5,
+      "characters": 3060,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 4
+    }
+  ]
+}

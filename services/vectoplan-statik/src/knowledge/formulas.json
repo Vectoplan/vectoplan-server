@@ -1,0 +1,275 @@
+{
+  "catalog_version": "structural-formula-catalog/0.2",
+  "purpose": "Jede Formel ist mit Quelle, Bedeutung, Variablen, Einheiten, Gültigkeitsbereich, Backend und Test verknüpft. Die Buchquelle ist didaktisch; der aktuelle Norm- und Rechtsstand wird separat geprüft.",
+  "sources": [
+    {
+      "source_id": "krings_kleine_baustatik_2014",
+      "title": "Kleine Baustatik - Grundlagen der Statik und Berechnung von Bauteilen",
+      "author": "Wolfgang Krings",
+      "edition": "16. Auflage, 2014",
+      "role": "didactic_formula_source",
+      "normative_authority": false
+    },
+    {
+      "source_id": "musterstatik_einfamilienhaus_2012",
+      "title": "Musterstatik Einfamilienhaus",
+      "role": "report_structure_reference",
+      "normative_authority": false
+    },
+    {
+      "source_id": "ibz_gruendung_2017",
+      "title": "Statische Berechnung Gründung und Brückenwiderlager",
+      "role": "report_structure_and_geotechnical_reference",
+      "normative_authority": false
+    }
+  ],
+  "formulas": [
+    {
+      "formula_id": "EQ-001", "chapter": "1 Kräfte und Gleichgewicht", "title": "Horizontales Gleichgewicht",
+      "equation": "sum(F_x) = 0", "description": "Alle horizontalen Einwirkungen und Reaktionen müssen sich aufheben.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "4-5", "section": "1.2 Kräfte im Gleichgewicht"},
+      "variables": [{"symbol": "F_x", "description": "horizontale Kraft mit Vorzeichen", "unit": "kN"}],
+      "assumptions": ["statisches Gleichgewicht", "einheitliches Koordinatensystem"],
+      "standard_refs": ["EN1990"], "backend": "src/solvers/*", "status": "implemented", "tests": ["test_project_pipeline_closes_member_equilibrium"]
+    },
+    {
+      "formula_id": "EQ-002", "chapter": "1 Kräfte und Gleichgewicht", "title": "Vertikales Gleichgewicht",
+      "equation": "sum(F_z) = 0", "description": "Vertikale Lasten und Auflagerreaktionen werden bilanziert.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "4-5", "section": "1.2 Kräfte im Gleichgewicht"},
+      "variables": [{"symbol": "F_z", "description": "vertikale Kraft mit Vorzeichen", "unit": "kN"}],
+      "assumptions": ["statisches Gleichgewicht"], "standard_refs": ["EN1990"], "backend": "src/solvers/*", "status": "implemented", "tests": ["test_project_pipeline_closes_member_equilibrium"]
+    },
+    {
+      "formula_id": "EQ-003", "chapter": "1 Kräfte und Gleichgewicht", "title": "Momentengleichgewicht",
+      "equation": "sum(M) = 0", "description": "Momente aus Kräften und Reaktionsmomenten werden um einen Bezugspunkt bilanziert.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "4-5", "section": "1.2 Kräfte im Gleichgewicht"},
+      "variables": [{"symbol": "M", "description": "Moment mit Vorzeichen", "unit": "kNm"}],
+      "assumptions": ["statisches Gleichgewicht"], "standard_refs": ["EN1990"], "backend": "src/solvers/beam.py", "status": "implemented", "tests": ["test_two_span_beam_is_in_equilibrium_and_has_hogging_support_moment"]
+    },
+    {
+      "formula_id": "LOAD-001", "chapter": "1 Lasten", "title": "Gewichtskraft aus Volumen und Wichte",
+      "equation": "G_k = V * gamma", "description": "Eigenlast eines Bauteils aus geometrischem Volumen und charakteristischer Wichte.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "9-11", "section": "1.3 Lasten, Beispiel 5"},
+      "variables": [{"symbol": "V", "description": "Volumen", "unit": "m³"}, {"symbol": "gamma", "description": "Wichte", "unit": "kN/m³"}, {"symbol": "G_k", "description": "charakteristische Eigenlast", "unit": "kN"}],
+      "assumptions": ["homogene Wichte innerhalb des Volumens"], "standard_refs": ["EN1991-1-1"], "backend": "src/loads/actions.py", "status": "implemented", "tests": ["test_formula_catalog_and_action_calculators_are_traceable"]
+    },
+    {
+      "formula_id": "LOAD-002", "chapter": "1 Lasten", "title": "Flächenlast eines Schichtenaufbaus",
+      "equation": "g_k = sum(d_i * gamma_i)", "description": "Eigenlast einer Decke, eines Daches oder einer Wand aus den einzelnen Schichten.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "8-10", "section": "1.3 Lasten, Beispiele 3 und 4"},
+      "variables": [{"symbol": "d_i", "description": "Dicke der Schicht i", "unit": "m"}, {"symbol": "gamma_i", "description": "Wichte der Schicht i", "unit": "kN/m³"}, {"symbol": "g_k", "description": "Flächeneigenlast", "unit": "kN/m²"}],
+      "assumptions": ["gleichmäßige Schichtdicken"], "standard_refs": ["EN1991-1-1"], "backend": "src/loads/actions.py", "status": "implemented", "tests": ["test_formula_catalog_and_action_calculators_are_traceable"]
+    },
+    {
+      "formula_id": "LOAD-003", "chapter": "1 Lasten", "title": "Flächenlast in Streckenlast",
+      "equation": "q_k,line = q_k,area * b_t", "description": "Umrechnung einer Flächenlast auf einen Balken über dessen Lasteinzugsbreite.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "9-10", "section": "1.3 Lasten, Beispiel 4"},
+      "variables": [{"symbol": "q_k,area", "description": "Flächenlast", "unit": "kN/m²"}, {"symbol": "b_t", "description": "Lasteinzugsbreite", "unit": "m"}, {"symbol": "q_k,line", "description": "Streckenlast", "unit": "kN/m"}],
+      "assumptions": ["eindeutige Lasteinzugsfläche"], "standard_refs": ["EN1991-1-1"], "backend": "src/loads/actions.py", "status": "implemented", "tests": ["test_formula_catalog_and_action_calculators_are_traceable"]
+    },
+    {
+      "formula_id": "LOAD-004", "chapter": "1 Lasten", "title": "Resultierende einer gleichmäßigen Streckenlast",
+      "equation": "F_k = q_k * L", "description": "Die Resultierende greift im Schwerpunkt der belasteten Länge an.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "52-60", "section": "5.3 Auflagerkraft"},
+      "variables": [{"symbol": "q_k", "description": "Streckenlast", "unit": "kN/m"}, {"symbol": "L", "description": "belastete Länge", "unit": "m"}, {"symbol": "F_k", "description": "resultierende Kraft", "unit": "kN"}],
+      "assumptions": ["konstante Streckenlast"], "standard_refs": ["EN1990"], "backend": "src/loads/transfer.py", "status": "implemented", "tests": ["test_project_pipeline_closes_member_equilibrium"]
+    },
+    {
+      "formula_id": "COMB-001", "chapter": "2 Sicherheitskonzepte", "title": "GZT-Grundkombination",
+      "equation": "E_d = sum(gamma_G * G_k) + gamma_Q * Q_k,lead + sum(gamma_Q * psi_0,i * Q_k,i)",
+      "description": "Bemessungswert der Einwirkungen mit führender und begleitenden veränderlichen Einwirkungen.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "13-16", "section": "2.2 Teilsicherheitskonzept"},
+      "variables": [{"symbol": "gamma_G", "description": "Teilsicherheitsbeiwert ständige Einwirkung", "unit": "-"}, {"symbol": "gamma_Q", "description": "Teilsicherheitsbeiwert veränderliche Einwirkung", "unit": "-"}, {"symbol": "psi_0", "description": "Kombinationsbeiwert", "unit": "-"}],
+      "assumptions": ["Faktoren aus projektspezifischem Normprofil"], "standard_refs": ["EN1990"], "backend": "src/loads/combinations.py", "status": "implemented", "tests": ["test_en1990_oriented_combination_exposes_every_factor"]
+    },
+    {
+      "formula_id": "STRESS-001", "chapter": "3 Druck und Zug", "title": "Normalspannung",
+      "equation": "sigma = N / A", "description": "Mittlere Normalspannung bei zentrischer Zug- oder Druckbeanspruchung.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "17-19, 36-42", "section": "3 Druckkräfte und Zugkräfte"},
+      "variables": [{"symbol": "N", "description": "Normalkraft", "unit": "kN"}, {"symbol": "A", "description": "wirksame Querschnittsfläche", "unit": "mm²"}, {"symbol": "sigma", "description": "Normalspannung", "unit": "N/mm²"}],
+      "assumptions": ["zentrische Beanspruchung", "gleichmäßige Spannungsverteilung"], "standard_refs": [], "backend": "src/design/*", "status": "implemented", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "FOUND-001", "chapter": "3 Fundamente", "title": "Mittlere Sohldruckspannung",
+      "equation": "sigma_Ed = N_Ed / A_eff", "description": "Mittlerer Bemessungssohldruck auf der wirksamen Fundamentfläche.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "17-24", "section": "3.1-3.2 Baugrund und Fundamente"},
+      "variables": [{"symbol": "N_Ed", "description": "vertikale Bemessungsresultierende", "unit": "kN"}, {"symbol": "A_eff", "description": "wirksame Sohlfläche", "unit": "m²"}, {"symbol": "sigma_Ed", "description": "Sohldruck", "unit": "kN/m²"}],
+      "assumptions": ["planmäßige Fundamentsohle", "Widerstand projektspezifisch vorgegeben"], "standard_refs": ["EN1997-1"], "backend": "src/design/foundation.py", "status": "implemented", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "FOUND-002", "chapter": "3 Fundamente", "title": "Exzentrizität der Resultierenden",
+      "equation": "e = M_Ed / N_Ed", "description": "Abstand der Lastresultierenden von der Querschnittsmitte.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "20-24, 101-108", "section": "3.2 und 5.10"},
+      "variables": [{"symbol": "M_Ed", "description": "Bemessungsmoment", "unit": "kNm"}, {"symbol": "N_Ed", "description": "Bemessungsnormalkraft", "unit": "kN"}, {"symbol": "e", "description": "Exzentrizität", "unit": "m"}],
+      "assumptions": ["N_Ed ungleich null"], "standard_refs": ["EN1997-1"], "backend": "src/design/foundation.py", "status": "implemented", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "FOUND-003", "chapter": "3 Fundamente", "title": "Kernbedingung rechteckige Sohle",
+      "equation": "abs(e_x) <= B/6 and abs(e_y) <= L/6", "description": "Bedingung für eine vollständig gedrückte rechteckige Sohlfläche.",
+      "source": {"source_id": "ibz_gruendung_2017", "book_pages": "wiederkehrend in den Widerlagerpositionen", "section": "Erddrucklager, Ersatzkraft und Versinken"},
+      "variables": [{"symbol": "e_x,e_y", "description": "Exzentrizitäten", "unit": "m"}, {"symbol": "B,L", "description": "Sohldimensionen", "unit": "m"}],
+      "assumptions": ["rechteckige Sohle", "kein Zugkontakt"], "standard_refs": ["EN1997-1"], "backend": "src/design/foundation.py", "status": "implemented", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "SHEAR-001", "chapter": "4 Scherkräfte", "title": "Mittlere Schubspannung",
+      "equation": "tau = V / A_v", "description": "Grundbeziehung zwischen Querkraft und wirksamer Schubfläche.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "43-46", "section": "4.1 Scherkräfte erzeugen Schubspannungen"},
+      "variables": [{"symbol": "V", "description": "Querkraft", "unit": "kN"}, {"symbol": "A_v", "description": "wirksame Schubfläche", "unit": "mm²"}, {"symbol": "tau", "description": "mittlere Schubspannung", "unit": "N/mm²"}],
+      "assumptions": ["vereinfachte mittlere Spannungsverteilung"], "standard_refs": [], "backend": "src/design/steel.py", "status": "implemented_bounded", "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace"]
+    },
+    {
+      "formula_id": "BEAM-001", "chapter": "5 Biegung", "title": "Auflagerkräfte Einfeldträger unter Gleichlast",
+      "equation": "R_A = R_B = q * L / 2", "description": "Vertikale Auflagerreaktionen eines beidseitig gelagerten Balkens unter konstanter Streckenlast.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "52-59, 91-94", "section": "5.3 und 5.8"},
+      "variables": [{"symbol": "q", "description": "Streckenlast", "unit": "kN/m"}, {"symbol": "L", "description": "Spannweite", "unit": "m"}, {"symbol": "R_A,R_B", "description": "Auflagerkräfte", "unit": "kN"}],
+      "assumptions": ["beidseitig gelenkig gelagert", "konstante Streckenlast"], "standard_refs": [], "backend": "src/solvers/beam.py", "status": "implemented", "tests": ["test_simply_supported_beam_matches_closed_form_solution"]
+    },
+    {
+      "formula_id": "BEAM-002", "chapter": "5 Biegung", "title": "Maximales Feldmoment Einfeldträger",
+      "equation": "M_max = q * L^2 / 8", "description": "Größtes positives Biegemoment in Feldmitte bei konstanter Gleichlast.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "81-94", "section": "5.7.2 und 5.8"},
+      "variables": [{"symbol": "q", "description": "Streckenlast", "unit": "kN/m"}, {"symbol": "L", "description": "Spannweite", "unit": "m"}, {"symbol": "M_max", "description": "maximales Moment", "unit": "kNm"}],
+      "assumptions": ["beidseitig gelenkig gelagert", "konstante Streckenlast"], "standard_refs": [], "backend": "src/solvers/beam.py", "status": "implemented", "tests": ["test_simply_supported_beam_matches_closed_form_solution"]
+    },
+    {
+      "formula_id": "BEAM-003", "chapter": "5 Biegung", "title": "Kragarmmoment unter Gleichlast",
+      "equation": "M_support = q * L^2 / 2", "description": "Betrag des Einspannmoments eines Kragarms unter konstanter Streckenlast.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "58-59, 91-94", "section": "5.3.3 und 5.8"},
+      "variables": [{"symbol": "q", "description": "Streckenlast", "unit": "kN/m"}, {"symbol": "L", "description": "Kraglänge", "unit": "m"}, {"symbol": "M_support", "description": "Einspannmoment", "unit": "kNm"}],
+      "assumptions": ["starre Einspannung", "konstante Streckenlast"], "standard_refs": [], "backend": "src/solvers/beam.py", "status": "implemented", "tests": ["test_cantilever_beam_matches_closed_form_solution"]
+    },
+    {
+      "formula_id": "BEND-001", "chapter": "5 Biegung", "title": "Biegespannung",
+      "equation": "sigma_m = M / W", "description": "Elastische Randspannung aus Moment und Widerstandsmoment.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "66-76", "section": "5.6 Biegelehre"},
+      "variables": [{"symbol": "M", "description": "Biegemoment", "unit": "Nmm"}, {"symbol": "W", "description": "Widerstandsmoment", "unit": "mm³"}, {"symbol": "sigma_m", "description": "Biegespannung", "unit": "N/mm²"}],
+      "assumptions": ["linear-elastische Spannungsverteilung"], "standard_refs": [], "backend": "src/design/steel.py, src/design/timber.py", "status": "implemented_bounded", "tests": ["test_steel_beam_design_returns_trace"]
+    },
+    {
+      "formula_id": "BEND-002", "chapter": "5 Biegung", "title": "Widerstandsmoment Rechteck",
+      "equation": "W = b * h^2 / 6", "description": "Elastisches Widerstandsmoment eines Rechteckquerschnitts um die starke Achse.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "69-72", "section": "5.6.2"},
+      "variables": [{"symbol": "b", "description": "Breite", "unit": "mm"}, {"symbol": "h", "description": "Höhe", "unit": "mm"}, {"symbol": "W", "description": "Widerstandsmoment", "unit": "mm³"}],
+      "assumptions": ["voller Rechteckquerschnitt"], "standard_refs": [], "backend": "src/design/timber.py", "status": "implemented", "tests": ["test_timber_design_returns_trace"]
+    },
+    {
+      "formula_id": "CENTROID-001", "chapter": "5 Biegung", "title": "Schwerpunkt zusammengesetzter Flächen",
+      "equation": "x_s = sum(A_i * x_i) / sum(A_i)", "description": "Lage des Flächenschwerpunkts aus Teilflächen und deren Schwerpunktabständen.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "60-65", "section": "5.4-5.5"},
+      "variables": [{"symbol": "A_i", "description": "Teilfläche", "unit": "mm²"}, {"symbol": "x_i", "description": "Schwerpunktkoordinate der Teilfläche", "unit": "mm"}, {"symbol": "x_s", "description": "Gesamtschwerpunkt", "unit": "mm"}],
+      "assumptions": ["gemeinsames Bezugssystem"], "standard_refs": [], "backend": "src/formulas/evaluator.py", "status": "implemented", "tests": ["test_formula_catalog_and_action_calculators_are_traceable"]
+    },
+    {
+      "formula_id": "ECC-001", "chapter": "5 Biegung", "title": "Einachsige ausmittige Normalspannung",
+      "equation": "sigma_edge = N/A +/- M/W", "description": "Überlagerung aus zentrischer Normalspannung und linearer Biegespannung.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "101-108", "section": "5.10"},
+      "variables": [{"symbol": "N", "description": "Normalkraft", "unit": "N"}, {"symbol": "A", "description": "Querschnittsfläche", "unit": "mm²"}, {"symbol": "M", "description": "Moment", "unit": "Nmm"}, {"symbol": "W", "description": "Widerstandsmoment", "unit": "mm³"}],
+      "assumptions": ["linear-elastisch", "ebene Querschnitte"], "standard_refs": [], "backend": "src/design/foundation.py, src/design/masonry.py", "status": "implemented_bounded", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "BUCK-001", "chapter": "7 Knicken", "title": "Flächenmoment Rechteck",
+      "equation": "I = b * h^3 / 12", "description": "Flächenmoment zweiten Grades eines Rechtecks um die Schwerpunktachse.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "133-135", "section": "7.1-7.2"},
+      "variables": [{"symbol": "b", "description": "Breite", "unit": "mm"}, {"symbol": "h", "description": "Höhe in Knickrichtung", "unit": "mm"}, {"symbol": "I", "description": "Flächenmoment zweiten Grades", "unit": "mm⁴"}],
+      "assumptions": ["voller Rechteckquerschnitt"], "standard_refs": [], "backend": "src/design/advanced.py", "status": "implemented", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "BUCK-002", "chapter": "7 Knicken", "title": "Euler-Knicklast",
+      "equation": "N_cr = pi^2 * E * I / (k * L)^2", "description": "Elastische kritische Normalkraft eines ideal geraden Stabes.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "133-142", "section": "7 Knickgefahr und Knicksicherheit"},
+      "variables": [{"symbol": "E", "description": "Elastizitätsmodul", "unit": "N/mm²"}, {"symbol": "I", "description": "Flächenmoment zweiten Grades", "unit": "mm⁴"}, {"symbol": "L", "description": "Stablänge", "unit": "mm"}, {"symbol": "k", "description": "Knicklängenbeiwert", "unit": "-"}],
+      "assumptions": ["linear-elastisch", "idealer gerader Stab", "konservative Druckkraft"], "standard_refs": [], "backend": "src/design/advanced.py", "status": "implemented_bounded", "tests": ["test_foundation_contact_and_member_stability_are_explicit"]
+    },
+    {
+      "formula_id": "TRUSS-001", "chapter": "8 Fachwerk", "title": "Knotengleichgewicht Fachwerk",
+      "equation": "sum(N_i * cos(alpha_i)) + F_x = 0; sum(N_i * sin(alpha_i)) + F_y = 0", "description": "Stabnormalkräfte werden aus dem Gleichgewicht jedes Fachwerkknotens bestimmt.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "143-148", "section": "8 Fachwerkträger und Stabkräfte"},
+      "variables": [{"symbol": "N_i", "description": "Stabnormalkraft", "unit": "kN"}, {"symbol": "alpha_i", "description": "Stabwinkel", "unit": "°"}],
+      "assumptions": ["gelenkige Knoten", "Lasten greifen an Knoten an", "nur Normalkräfte"], "standard_refs": [], "backend": "src/solvers/truss.py", "status": "implemented_bounded", "tests": ["test_roof_truss_is_in_equilibrium"]
+    },
+    {
+      "formula_id": "RC-001", "chapter": "9 Stahlbeton", "title": "Bemessungsfestigkeit Beton",
+      "equation": "f_cd = alpha_cc * f_ck / gamma_c", "description": "Bemessungswert der Betondruckfestigkeit aus charakteristischer Festigkeit und Sicherheitsbeiwert.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "149-172", "section": "9.5"},
+      "variables": [{"symbol": "f_ck", "description": "charakteristische Zylinderdruckfestigkeit", "unit": "N/mm²"}, {"symbol": "alpha_cc", "description": "Langzeit-/Belastungsbeiwert", "unit": "-"}, {"symbol": "gamma_c", "description": "Teilsicherheitsbeiwert Beton", "unit": "-"}],
+      "assumptions": ["Werte aus aktuellem Projektprofil"], "standard_refs": ["EN1992-1-1"], "backend": "src/design/concrete.py", "status": "implemented", "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace"]
+    },
+    {
+      "formula_id": "RC-002", "chapter": "9 Stahlbeton", "title": "Bemessungsfestigkeit Betonstahl",
+      "equation": "f_yd = f_yk / gamma_s", "description": "Bemessungswert der Streckgrenze des Betonstahls.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "149-172", "section": "9.5"},
+      "variables": [{"symbol": "f_yk", "description": "charakteristische Streckgrenze", "unit": "N/mm²"}, {"symbol": "gamma_s", "description": "Teilsicherheitsbeiwert Betonstahl", "unit": "-"}],
+      "assumptions": ["Werte aus aktuellem Projektprofil"], "standard_refs": ["EN1992-1-1"], "backend": "src/design/concrete.py", "status": "implemented", "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace"]
+    },
+    {
+      "formula_id": "RC-003", "chapter": "9 Stahlbeton", "title": "Erforderliche Biegezugbewehrung",
+      "equation": "A_s,req = M_Ed / (z * f_yd)", "description": "Erforderlicher Stahlquerschnitt bei vorgegebenem innerem Hebelarm.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "154-166", "section": "9.5.1-9.5.3"},
+      "variables": [{"symbol": "M_Ed", "description": "Bemessungsmoment", "unit": "Nmm"}, {"symbol": "z", "description": "innerer Hebelarm", "unit": "mm"}, {"symbol": "f_yd", "description": "Bemessungsstreckgrenze", "unit": "N/mm²"}],
+      "assumptions": ["einfach bewehrter Querschnitt", "Hebelarm aus Querschnittsmodell"], "standard_refs": ["EN1992-1-1"], "backend": "src/design/concrete.py", "status": "implemented_bounded", "tests": ["test_concrete_design_applies_minimum_reinforcement_and_returns_trace"]
+    },
+    {
+      "formula_id": "RC-004", "chapter": "9 Stahlbeton", "title": "Querkraftwiderstand mit Bügeln",
+      "equation": "V_Rd,s = (A_sw/s) * z * f_ywd * cot(theta)", "description": "Widerstand der Querkraftbewehrung im Fachwerkmodell.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "166-172", "section": "9.5.4 Schub"},
+      "variables": [{"symbol": "A_sw/s", "description": "Bügelquerschnitt je Abstand", "unit": "mm²/mm"}, {"symbol": "z", "description": "innerer Hebelarm", "unit": "mm"}, {"symbol": "f_ywd", "description": "Bemessungsfestigkeit Bügel", "unit": "N/mm²"}, {"symbol": "theta", "description": "Druckstrebenwinkel", "unit": "°"}],
+      "assumptions": ["Fachwerkmodell", "Druckstreben- und Maximalwiderstand separat prüfen"], "standard_refs": ["EN1992-1-1"], "backend": "src/design/concrete.py", "status": "implemented_bounded", "tests": ["test_concrete_design_with_stirrups"]
+    },
+    {
+      "formula_id": "DEF-001", "chapter": "10 Durchbiegung", "title": "Durchbiegung Einfeldträger unter Gleichlast",
+      "equation": "w_max = 5 * q * L^4 / (384 * E * I)", "description": "Maximale elastische Durchbiegung eines beidseitig gelagerten Balkens.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "173-174", "section": "10 Durchbiegungsnachweis"},
+      "variables": [{"symbol": "q", "description": "Streckenlast", "unit": "N/mm"}, {"symbol": "L", "description": "Spannweite", "unit": "mm"}, {"symbol": "E", "description": "Elastizitätsmodul", "unit": "N/mm²"}, {"symbol": "I", "description": "Flächenmoment zweiten Grades", "unit": "mm⁴"}],
+      "assumptions": ["Euler-Bernoulli-Balken", "linear-elastisch", "kleine Verformungen"], "standard_refs": [], "backend": "src/solvers/beam.py", "status": "implemented", "tests": ["test_simply_supported_beam_matches_closed_form_solution"]
+    },
+    {
+      "formula_id": "SNOW-001", "chapter": "12 Lastannahmen", "title": "Schneelast auf dem Dach",
+      "equation": "s = mu_i * C_e * C_t * s_k", "description": "Charakteristische Dachschneelast aus Formbeiwert, Expositionsbeiwert, Temperaturbeiwert und Bodenschneelast.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "195-196", "section": "Tabellen 12.4-12.6"},
+      "variables": [{"symbol": "mu_i", "description": "Formbeiwert des Daches", "unit": "-"}, {"symbol": "C_e", "description": "Expositionsbeiwert", "unit": "-"}, {"symbol": "C_t", "description": "Temperaturbeiwert", "unit": "-"}, {"symbol": "s_k", "description": "charakteristische Bodenschneelast", "unit": "kN/m²"}],
+      "assumptions": ["s_k und nationale Parameter projektspezifisch bestätigt", "keine Verwehung ohne eigenen Lastfall"], "standard_refs": ["EN1991-1-3", "DIN_EN_1991-1-3_NA_2019-04"], "backend": "src/loads/environmental.py", "status": "implemented_bounded", "tests": ["test_snow_and_wind_actions_expose_every_factor"]
+    },
+    {
+      "formula_id": "WIND-001", "chapter": "12 Lastannahmen", "title": "Basisgeschwindigkeitsdruck",
+      "equation": "q_b = 0.5 * rho * v_b^2", "description": "Basisdruck aus Luftdichte und Basiswindgeschwindigkeit.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "196-199", "section": "Tabellen 12.7-12.11"},
+      "variables": [{"symbol": "rho", "description": "Luftdichte", "unit": "kg/m³"}, {"symbol": "v_b", "description": "Basiswindgeschwindigkeit", "unit": "m/s"}, {"symbol": "q_b", "description": "Basisgeschwindigkeitsdruck", "unit": "kN/m²"}],
+      "assumptions": ["v_b aus bestätigtem Standort-/Normprofil"], "standard_refs": ["EN1991-1-4", "DIN_EN_1991-1-4_NA_2024-08"], "backend": "src/loads/environmental.py", "status": "implemented_bounded", "tests": ["test_snow_and_wind_actions_expose_every_factor"]
+    },
+    {
+      "formula_id": "WIND-002", "chapter": "12 Lastannahmen", "title": "Spitzengeschwindigkeitsdruck",
+      "equation": "q_p(z) = c_e(z) * q_b", "description": "Vereinfachte Multiplikation des Basisdrucks mit einem explizit vorgegebenen Expositionsfaktor.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "196-199", "section": "Tabellen 12.7-12.11"},
+      "variables": [{"symbol": "c_e(z)", "description": "Expositionsfaktor in Höhe z", "unit": "-"}, {"symbol": "q_b", "description": "Basisgeschwindigkeitsdruck", "unit": "kN/m²"}, {"symbol": "q_p(z)", "description": "Spitzengeschwindigkeitsdruck", "unit": "kN/m²"}],
+      "assumptions": ["c_e(z) explizit aus bestätigtem Geländemodell"], "standard_refs": ["EN1991-1-4", "DIN_EN_1991-1-4_NA_2024-08"], "backend": "src/loads/environmental.py", "status": "implemented_bounded", "tests": ["test_snow_and_wind_actions_expose_every_factor"]
+    },
+    {
+      "formula_id": "WIND-003", "chapter": "12 Lastannahmen", "title": "Netto-Winddruck einer Fläche",
+      "equation": "w_net = q_p(z) * (c_pe - c_pi)", "description": "Netto-Flächendruck aus Außen- und Innendruckbeiwert; Vorzeichen bleibt erhalten.",
+      "source": {"source_id": "krings_kleine_baustatik_2014", "book_pages": "197-199", "section": "Tabellen 12.9-12.11"},
+      "variables": [{"symbol": "c_pe", "description": "Außendruckbeiwert", "unit": "-"}, {"symbol": "c_pi", "description": "Innendruckbeiwert", "unit": "-"}, {"symbol": "w_net", "description": "Netto-Winddruck", "unit": "kN/m²"}],
+      "assumptions": ["Druckbeiwerte für Fläche, Zone und Windrichtung explizit bestätigt"], "standard_refs": ["EN1991-1-4", "DIN_EN_1991-1-4_NA_2024-08"], "backend": "src/loads/environmental.py", "status": "implemented_bounded", "tests": ["test_snow_and_wind_actions_expose_every_factor"]
+    },
+    {
+      "formula_id": "EARTH-001", "chapter": "Gründungsreferenz", "title": "Aktiver Erddruckbeiwert",
+      "equation": "K_a = tan(45 deg - phi/2)^2", "description": "Rankine-Beiwert für horizontalen, kohäsionslosen Boden ohne Wandreibung.",
+      "source": {"source_id": "ibz_gruendung_2017", "book_pages": "91-123 und 157-225", "section": "Erddruck, Bauzustände, Widerlager"},
+      "variables": [{"symbol": "phi", "description": "Reibungswinkel", "unit": "°"}, {"symbol": "K_a", "description": "aktiver Erddruckbeiwert", "unit": "-"}],
+      "assumptions": ["Rankine-Sonderfall", "horizontaler Boden", "keine Kohäsion", "keine Wandreibung"], "standard_refs": ["EN1997-1"], "backend": "src/design/geotechnical.py", "status": "implemented_bounded", "tests": ["test_geotechnical_reference_calculations"]
+    },
+    {
+      "formula_id": "EARTH-002", "chapter": "Gründungsreferenz", "title": "Aktive Erddruckspannung",
+      "equation": "sigma_h(z) = K_a * gamma * z", "description": "Linear zunehmende horizontale Spannung aus Bodeneigengewicht im Rankine-Sonderfall.",
+      "source": {"source_id": "ibz_gruendung_2017", "book_pages": "91-123 und 157-225", "section": "Erddruckspannungen und resultierende Erddruckkräfte"},
+      "variables": [{"symbol": "gamma", "description": "Bodenwichte", "unit": "kN/m³"}, {"symbol": "z", "description": "Tiefe", "unit": "m"}, {"symbol": "sigma_h", "description": "horizontale Erddruckspannung", "unit": "kN/m²"}],
+      "assumptions": ["homogener kohäsionsloser Boden", "kein Grundwasseranteil"], "standard_refs": ["EN1997-1"], "backend": "src/design/geotechnical.py", "status": "implemented_bounded", "tests": ["test_geotechnical_reference_calculations"]
+    },
+    {
+      "formula_id": "WATER-001", "chapter": "Gründungsreferenz", "title": "Hydrostatischer Wasserdruck",
+      "equation": "p_w(z) = gamma_w * z", "description": "Hydrostatischer Druck in Tiefe z unter dem Wasserspiegel.",
+      "source": {"source_id": "ibz_gruendung_2017", "book_pages": "91-123 und 157-225", "section": "Wasserdruck, Grundwasserstand"},
+      "variables": [{"symbol": "gamma_w", "description": "Wichte des Wassers", "unit": "kN/m³"}, {"symbol": "z", "description": "Tiefe unter Wasserspiegel", "unit": "m"}, {"symbol": "p_w", "description": "Wasserdruck", "unit": "kN/m²"}],
+      "assumptions": ["hydrostatischer Zustand"], "standard_refs": ["EN1997-1"], "backend": "src/design/geotechnical.py", "status": "implemented_bounded", "tests": ["test_geotechnical_reference_calculations"]
+    }
+  ]
+}

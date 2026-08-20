@@ -1,0 +1,1509 @@
+{
+  "document_id": "EN_1998-6__base_standard__EC_8_Teil_6",
+  "eurocode_family": "EC8",
+  "designation": "DIN EN 1998-6",
+  "document_kind": "base_standard",
+  "file_name": "EC 8 Teil 6.pdf",
+  "relative_path": "EC 8/EC 8 Teil 6.pdf",
+  "sha256": "555a1f922fa246f75d322f42c8eb249424ab040e9fc2a354a59ed64d7e97f572",
+  "pages": 43,
+  "text_pages": 37,
+  "weak_or_scanned_pages": 6,
+  "clause_count": 147,
+  "equation_candidate_count": 27,
+  "table_reference_count": 5,
+  "figure_reference_count": 11,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111184053+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130117233716+01'00'",
+    "Producer": "Adobe Acrobat 10.1.5 Paper Capture Plug-in",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 8\\EC 8 Teil 6.oxps"
+  },
+  "clauses": [
+    {
+      "clause": "1",
+      "title": "Allgemeines ............................................................................................................................................ 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich des Teils 6 von Eurocode 8 .............................................................................. 7",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen ...................................................................................................................... &",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Verwendung ........................................................................................................................................... 8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.2",
+      "title": "Allgemeine Bezugsnormen ................................................................................................................... 8",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.2.3",
+      "title": "Zusätzliche Bezugsnormen für Türme, Maste und Schornsteine .................................................... &",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.3",
+      "title": "Annahmen .............................................................................................................................................. 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.4",
+      "title": "Unterscheidung zwischen Prinzipien und Anwendungsrageln ........................................................ 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5",
+      "title": "Begriffe ................................................................................................................................................... 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.1",
+      "title": "Allgemeine Begriffe ............................................................................................................................... 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.5.2",
+      "title": "Zusätzliche Begriffe und Definitionen, die in EN 1998-6 Verwendung finden ................................. 9",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichan ..................................................................................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.6.1",
+      "title": "Allgemeines ......................................................................................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "1.7",
+      "title": "SI-Einheiten ......................................................................................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2",
+      "title": "Funktionsanforderungen und Übereinstimmungskriterien ........................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.1",
+      "title": "Grundlegende Anforderungen .......................................................................................................... 10",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2",
+      "title": "Übereinstimmungskriterien ............................................................................................................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Gründung ............................................................................................................................................. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Grenzzustand der Tragfähigkeit ........................................................................................................ 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Grenzzustand der Schadensbegrenzung ......................................................................................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3",
+      "title": "Erdbebeneinwirkung .......................................................................................................................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.1",
+      "title": "Definition der seismischen Eingangsgrößen .................................................................................. 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.2",
+      "title": "Elastisches Antwortspektrum ........................................................................................................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.3",
+      "title": "Bemessungsantwortspektrum .......................................................................................................... 11",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.4",
+      "title": "Zeitverlaufsdarstellung ...................................................................................................................... 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.5",
+      "title": "Langwellige Komponenten der Bodenbewegung in einem Punkt ................................................ 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "3.6",
+      "title": "Komponenten der Bodenbewegung ................................................................................................. 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4",
+      "title": "Auslegung erdbebenresistenter Türme, Masten und Schornsteine ............................................. 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.1",
+      "title": "Bedeutungsklassen und Badeutungsbeiwerta ................................................................................ 12",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2",
+      "title": "Regeln zur rechnerischen Abbildung und Rechenannahmen ....................................................... 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Anzahl der Freiheitsgrade .................................................................................................................. 13",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Massen ................................................................................................................................................. 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Steifigkeit ............................................................................................................................................. 14",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.4",
+      "title": "Dämpfung ............................................................................................................................................ 15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.2.5",
+      "title": "Boden-Bauwerk-Wechselwirkung ..................................................................................................... 15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3",
+      "title": "Berechnungsmethoden ...................................................................................................................... 15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.1",
+      "title": "Anwendbare Methoden ...................................................................................................................... 15",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.2",
+      "title": "Verfahren der statischen Ersatzlasten (Vereinfachtes Antwortspektrumsverfahren) ................. 16",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Multimodales Antwortspektrumsverfahren ..................................................................................... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.4",
+      "title": "Kombinationen der Beanspruchungen infolge der Komponenten der Erdbebeneinwirkung .... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.5",
+      "title": "Kombinationen der Erdbebeneinwirkung mit anderen Einwirkungen .......................................... 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "4.6",
+      "title": "Verschiebungen .................................................................................................................................. 17",
+      "pdf_page": 4
+    },
+    {
+      "clause": "5",
+      "title": "Besondere Regeln für Stahlbetonschomsteine ............................................................................... 21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.1",
+      "title": "Anwendungsbereich ........................................................................................................................... 21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.2",
+      "title": "Auslegung für dissipatives Verhalten ............................................................................................... 21",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3",
+      "title": "Bauliche Durchbildung der Bewahrung ............................................................................................ 23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Mindestbewehrung (vertikal und horizontal) .................................................................................... 23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Mindestbewehrung rund um Öffnungen ........................................................................................... 23",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.4",
+      "title": "Besondere Regeln für die Berechnung und die Auslegung ........................................................... 24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "5.5",
+      "title": "Grenzzustand der Schadensbegrenzung .......................................................................................... 24",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6",
+      "title": "Besondere Regeln für Stahlschornsteine ......................................................................................... 25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.1",
+      "title": "Auslegung für dissipatives Verhalten ............................................................................................... 25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2",
+      "title": "Werkstoffe ............................................................................................................................................ 25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines ......................................................................................................................................... 25",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Mechanische Eigenschaften von Kohlenstoff-Baustählen (Schwarzstählen) .............................. 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Mechanische Eigenschaften von nichtrostenden Stählen .............................................................. 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.2.4",
+      "title": "Verbindungen ...................................................................................................................................... 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.3",
+      "title": "Grenzzustand der Schadensbegrenzung .......................................................................................... 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "6.4",
+      "title": "Grenzzustand der Tragfähigkeit ........................................................................................................ 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7",
+      "title": "Besondere Regeln für Stahltürme ..................................................................................................... 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.1",
+      "title": "Anwendungsbereich ........................................................................................................................... 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.2",
+      "title": "Auslegung für dissipatives Verhalten ............................................................................................... 26",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.3",
+      "title": "Werkstoffe ............................................................................................................................................ 27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.4",
+      "title": "Auslegung von Türmen mit konzentrischen Verbänden ................................................................. 27",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.5",
+      "title": "Besondere Regeln für die Auslegung von Masten für Freileitungen ............................................. 28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.6",
+      "title": "Grenzzustand der Schadensbegrenzung .......................................................................................... 28",
+      "pdf_page": 5
+    },
+    {
+      "clause": "7.7",
+      "title": "Andere besondere Bemessungsregeln ............................................................................................. 29",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8",
+      "title": "Besondere Regeln für abgespannte Maste ....................................................................................... 30",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.1",
+      "title": "Anwendungsbereich ........................................................................................................................... 30",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.2",
+      "title": "Besondere Anforderungen für Berechnung und Bemessung ........................................................ 30",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.3",
+      "title": "Werkstoffe ............................................................................................................................................ 30",
+      "pdf_page": 5
+    },
+    {
+      "clause": "8.4",
+      "title": "Grenzzustand der Schadensbegrenzung .......................................................................................... 31",
+      "pdf_page": 5
+    },
+    {
+      "clause": "15",
+      "title": "Jahre lang leitete die Kommission mit Hilfe eines Steuerkomitees mit Repräsentanten der Mitgliedsländer",
+      "pdf_page": 6
+    },
+    {
+      "clause": "1",
+      "title": "Allgemeines",
+      "pdf_page": 9
+    },
+    {
+      "clause": "1.1",
+      "title": "Anwendungsbereich des Teils 6 von Eurocode 8",
+      "pdf_page": 9
+    },
+    {
+      "clause": "1.2",
+      "title": "Normative Verweisungen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2.1",
+      "title": "Verwendung",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2.2",
+      "title": "Allgemeine Bezugsnormen",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.2.3",
+      "title": "Zusätzliche Bezugsnormen für Türme, Maste und Schornsteine",
+      "pdf_page": 10
+    },
+    {
+      "clause": "1.6",
+      "title": "Formelzeichen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.6.1",
+      "title": "Allgemeines",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.6.2",
+      "title": "Weitere in EN 1998-6 verwendete Formelzeichen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "1.7",
+      "title": "SI-Einheiten",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2",
+      "title": "Funktionsanforderungen und Übereinstimmungskriterien",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.1",
+      "title": "Grundlegende Anforderungen",
+      "pdf_page": 12
+    },
+    {
+      "clause": "2.2",
+      "title": "Übereinstimmungskriterien",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.2.1",
+      "title": "Gründung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.2.2",
+      "title": "Grenzzustand der Tragfähigkeit",
+      "pdf_page": 13
+    },
+    {
+      "clause": "2.2.3",
+      "title": "Grenzzustand der Schadensbegrenzung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3",
+      "title": "Erdbebeneinwirkung",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.1",
+      "title": "Definition der seismischen Eingangsgrößen",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.2",
+      "title": "Elastisches Antwortspektrum",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.3",
+      "title": "Bemessungsantwortspektrum",
+      "pdf_page": 13
+    },
+    {
+      "clause": "3.4",
+      "title": "Zeitverlaufsdarstellung",
+      "pdf_page": 14
+    },
+    {
+      "clause": "3.5",
+      "title": "Langwellige Komponenten der Bodenbewegung in einem Punkt",
+      "pdf_page": 14
+    },
+    {
+      "clause": "3.6",
+      "title": "Komponenten der Bodenbewegung",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4",
+      "title": "Auslegung erdbebenresistenter Türme, Masten und Schornsteine",
+      "pdf_page": 14
+    },
+    {
+      "clause": "4.1",
+      "title": "Bedeutungsklassen und Bedeutungsbeiwerte",
+      "pdf_page": 14
+    },
+    {
+      "clause": "111",
+      "title": "Turm, Mast oder Schornstein, dessen Versagen fur umgebende Gebäude oder",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4.2",
+      "title": "Regeln zur rechnerischen Abbildung und Rechenannahmen",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4.2.1",
+      "title": "Anzahl der Freiheitsgrade",
+      "pdf_page": 15
+    },
+    {
+      "clause": "4.2.2",
+      "title": "Massen",
+      "pdf_page": 16
+    },
+    {
+      "clause": "4.2.3",
+      "title": "Steifigkeit",
+      "pdf_page": 16
+    },
+    {
+      "clause": "4.3.3",
+      "title": "Multimodales Antwortspektrumsverfahren",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.3.3.1",
+      "title": "Allgemeines",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.3.3.2",
+      "title": "Anzahl der Eigenschwingungsformen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.3.3.3",
+      "title": "Kombination der Modalbeiträge",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.4",
+      "title": "Kombinationen der Beanspruchungen infolge der Komponenten der",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.5",
+      "title": "Kombinationen der Erdbebeneinwirkung mit anderen Einwirkungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.6",
+      "title": "Verschiebungen",
+      "pdf_page": 19
+    },
+    {
+      "clause": "4.7.1",
+      "title": "Grenzzustand der Tragfähigkeit",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.7.2",
+      "title": "Tragfähigkeitsbedingung fürtragende Bauteile",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.7.3",
+      "title": "Effekte nach Theorie 2. Ordnung",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.7.4",
+      "title": "Tragfähigkeit (Widerstand) der Verbindungen",
+      "pdf_page": 20
+    },
+    {
+      "clause": "4.7.6",
+      "title": "Duktilität und Energiedissipationsbedingung",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.7.7",
+      "title": "Gründungen",
+      "pdf_page": 21
+    },
+    {
+      "clause": "4.7.8",
+      "title": "Abspannseile und Formstücke",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.8",
+      "title": "Thermische Effekte",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.9",
+      "title": "Grenzzustand der Schadensbegrenzung",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.10",
+      "title": "Verhaltensbeiwert",
+      "pdf_page": 22
+    },
+    {
+      "clause": "4.10.2",
+      "title": "Werte des Modifikationsbeiwerts kr",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5",
+      "title": "Besondere Regeln für Stahlbetonschornsteine",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.2",
+      "title": "Auslegung für dissipatives Verhalten",
+      "pdf_page": 23
+    },
+    {
+      "clause": "5.3",
+      "title": "Bauliche Durchbildung der Bewehrung",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.3.1",
+      "title": "Mindestbewehrung (vertikal und horizontal)",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.3.2",
+      "title": "Mindestbewehrung rund um Öffnungen",
+      "pdf_page": 25
+    },
+    {
+      "clause": "5.4",
+      "title": "Besondere Regeln für die Berechnung und die Auslegung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "5.5",
+      "title": "Grenzzustand der Schadensbegrenzung",
+      "pdf_page": 26
+    },
+    {
+      "clause": "6",
+      "title": "Besondere Regeln für Stahlschornsteine",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.1",
+      "title": "Auslegung für dissipatives Verhalten",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.2",
+      "title": "Werkstoffe",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.2.1",
+      "title": "Allgemeines",
+      "pdf_page": 27
+    },
+    {
+      "clause": "6.2.2",
+      "title": "Mechanische Eigenschaften von Kohlenstoff-Baustählen (Schwarzstählen)",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.2.3",
+      "title": "Mechanische Eigenschaften von nichtrostenden Stählen",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.2.4",
+      "title": "Verbindungen",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.3",
+      "title": "Grenzzustand der Schadensbegrenzung",
+      "pdf_page": 28
+    },
+    {
+      "clause": "6.4",
+      "title": "Grenzzustand der Tragfähigkeit",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7",
+      "title": "Besondere Regeln für Stahltürme",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.1",
+      "title": "Anwendungsbereich",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.2",
+      "title": "Auslegung für dissipatives Verhalten",
+      "pdf_page": 28
+    },
+    {
+      "clause": "7.3",
+      "title": "Werkstoffe",
+      "pdf_page": 29
+    },
+    {
+      "clause": "7.4",
+      "title": "Auslegung von Türmen mit konzentrischen Verbänden",
+      "pdf_page": 29
+    },
+    {
+      "clause": "7.5",
+      "title": "Besondere Regeln fQr die Aualegung von Muten rar Frallaltungen",
+      "pdf_page": 30
+    },
+    {
+      "clause": "7.6",
+      "title": "Granzzuatand der 8chaden8begranzung",
+      "pdf_page": 30
+    },
+    {
+      "clause": "7.7",
+      "title": "Anden besondere Bemessungsregeln",
+      "pdf_page": 31
+    },
+    {
+      "clause": "8.4",
+      "title": "Grenzzustand der Schadensbegrenzung",
+      "pdf_page": 33
+    }
+  ],
+  "equation_candidates": [
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "Verhaltensbeiwert den Wert q = 1,5 nicht überschreiten.",
+      "context": "(2) Für Türme, Maste und Schornsteine kann in Abhängigkeit vom Querschnitt der Bauteile eine Bemes­ | sung für elastisches Verhalten bis zum Grenzzustand der Tragfähigkeit sinnvoll sein. ln diesem Fall sollte der | Verhaltensbeiwert den Wert q = 1,5 nicht überschreiten. | (3) Alternativ zu (2) darf die Auslegung für elastisches Verhalten mit Hilfe des elastischen Antwort- | spektrums mit q = 1,0 erfolgen, mit zum jeweiligen Fall passenden Dämpfungswerten, im Einklang mit 4.2.4.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 13,
+      "equation_number": "unvollständig",
+      "line": "spektrums mit q = 1,0 erfolgen, mit zum jeweiligen Fall passenden Dämpfungswerten, im Einklang mit 4.2.4.",
+      "context": "Verhaltensbeiwert den Wert q = 1,5 nicht überschreiten. | (3) Alternativ zu (2) darf die Auslegung für elastisches Verhalten mit Hilfe des elastischen Antwort- | spektrums mit q = 1,0 erfolgen, mit zum jeweiligen Fall passenden Dämpfungswerten, im Einklang mit 4.2.4. | 11",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 14,
+      "equation_number": "3.16",
+      "line": "Anteile der Bodenbewegung durchgeführt, können niedrigere Werte für den Beiwert p in der Beziehung (3.16)",
+      "context": "könnte. | (2) Wurden standortspezifische Untersuchungen unter besonderer Berücksichtigung der langwelligen | Anteile der Bodenbewegung durchgeführt, können niedrigere Werte für den Beiwert p in der Beziehung (3.16) | von EN 1998-1:2004 angenommen werden. | ANMERKUNG Der Wert von p zur Verwendung in einem Land in den Fällen, in denen standortspezifische",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 15,
+      "equation_number": "unvollständig",
+      "line": "(3) Der Bedeutungsbeiwert '}( = 1 ,0 bezieht sich auf ein Beben mit der Referenz-Wiederkehrperiode nach",
+      "context": "zum Schutz der Offentliehkeil ist (Wasserversorgungsnetze, Elektrizitätswerke, | Fernmeldeeinrichtungen, Krankenhäuser) | (3) Der Bedeutungsbeiwert '}( = 1 ,0 bezieht sich auf ein Beben mit der Referenz-Wiederkehrperiode nach | EN 1998-1 :2004, 3.2.1 (3). | (4 )P Der Wert von X für die Bedeutungsklasse II ist definitionsgemäß gleich 1,0.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "(3)P Die in EN 1998-1 :2004, 3.2.4(2)P, Gleichung (3.17), für die Berechnung der Trägheitsauswirkungen der",
+      "context": "Lasten auf Plattformen (unter | Berücksichtigung von Wartungsarbeiten und zeitweilig vorhandenen Vorrichtungen) berücksichtigt werden. | (3)P Die in EN 1998-1 :2004, 3.2.4(2)P, Gleichung (3.17), für die Berechnung der Trägheitsauswirkungen der | Erdbebeneinwirkung eingeführten Kombinationsbeiwerte V'Ei müssen gleich den Kombinationsbeiwerten V'2; | für den quasi-ständigen Wert der veränderlichen Einwirkung qi wie in EN 1990:2002, Anhang A3 angegeben,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "unvollständig",
+      "line": "einem Wert q = 1 und dem elastischen Antwortspektrum oder einer entsprechenden Zeitverlaufsdarstellung",
+      "context": "entsprechenden Bemessungsspektrum, sollten diese Steifigkeitseigenschatten dem beginnenden Fließen | entsprechen und dürfen nach EN 1998-1:2004, 4.3.1(6) und (7) bestimmt werden. Beruht die Bemessung auf | einem Wert q = 1 und dem elastischen Antwortspektrum oder einer entsprechenden Zeitverlaufsdarstellung | der Bodenbewegung, sollte die Steifigkeit von Stahlbetonbauteilen aus den Eigenschaften des gerissenen | Querschnitts, die dem",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 16,
+      "equation_number": "4.1",
+      "line": "(4.1)",
+      "context": "die durch Federn verbunden sind, modelliert, sollte die Steifigkeit der einen Feder den Durchhang des Kabels | berücksichtigen. Das darf durch Verwendung des folgenden äquivalenten Elastizitätsmoduls geschehen: | (4.1) | 14",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "4.4",
+      "line": "(4.4)",
+      "context": "4.7.2 Tragfähigkeitsbedingung fürtragende Bauteile | (1)P Folgende Beziehung muss für alle tragenden Bauteile einschließlich ihrer Verbindungen erfüllt sein: | (4.4) | Dabei ist | Rd die Bemessungs-Tragfähigkeit (Widerstand) des Bauteils, berechnet im Einklang mit den",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 20,
+      "equation_number": "4.5",
+      "line": "t'NIM0 < 0, 10 (4.5)",
+      "context": "(2) Effekte nach Theorie 2. Ordnung brauchen nicht berücksichtigt zu werden, wenn folgende Bedingung | erfüllt ist: | t'NIM0 < 0, 10 (4.5) | Dabei ist | t'N das Kippmoment infolge des (P-A) Effekts nach Theorie 2. Ordnung,",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Ist die berechnete Beanspruchung für die Bemessungs-Erdbebeneinwirkung, EF E• in Gleichung (4.30) der",
+      "context": "EN 1998-6:2005 (D) | (2) Die Bemessung und der Nachweis der Gründung sollten im Einklang mit EN 1998-1:2004, 4.4.2.6 sein. | Ist die berechnete Beanspruchung für die Bemessungs-Erdbebeneinwirkung, EF E• in Gleichung (4.30) der | EN 1998-1:2004 die Vertikalkraft infolge des Bebens, NEd• darf der Beitrag der Vertikalkomponente der | seismischen Einwirkung zu NEd vernachlässigt werden, wenn er ein Abheben der Gründung verursacht.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Türme, Maste oder Schornsteine verschieden sein können. Die empfohlenen Werte für v sind v = 0,4 für die",
+      "context": "Anhang festgelegt sein. Es können verschiedene Werte für vfür die verschiedenen Erdbebenzonen des Landes definiert | werden, in Abhängigkeit von den Umständen der Erdbebengefährdung und den Zielen der Schadensbegrenzung, die für | Türme, Maste oder Schornsteine verschieden sein können. Die empfohlenen Werte für v sind v = 0,4 für die | Bedeutungsklassen 111 und IV und v = 0,5 für die Bedeutungsklassen I und II. | 4.10 Verhaltensbeiwert",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "unvollständig",
+      "line": "Bedeutungsklassen 111 und IV und v = 0,5 für die Bedeutungsklassen I und II.",
+      "context": "werden, in Abhängigkeit von den Umständen der Erdbebengefährdung und den Zielen der Schadensbegrenzung, die für | Türme, Maste oder Schornsteine verschieden sein können. Die empfohlenen Werte für v sind v = 0,4 für die | Bedeutungsklassen 111 und IV und v = 0,5 für die Bedeutungsklassen I und II. | 4.10 Verhaltensbeiwert | 4.1 0.1 Allgemeines",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 22,
+      "equation_number": "4.6",
+      "line": "(4.6)",
+      "context": "4.1 0.1 Allgemeines | (1 )P Der Zahlenwert des Verhaltensbeiwerts q muss wie folgt bestimmt werden: | (4.6) | Dabei ist | q0 der Grundwert des Verhaltensbeiwerts, in Abhängigkeit von der Duktilität des Aussteifungssystems",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "k,. = 0,8",
+      "context": "a) Horizontale Ausmittigkeil der Masse in einer Horizontalebene bezogen auf den Steifigkeitsmittelpunkt der | Bauteile in dieser Ebene, die 5 % der dazu parallelen Abmessung des Bauwerks übersteigt: | k,. = 0,8 | b) Öffnungen in einem Turm oder Tragrohr, die zu einer Reduktion des Trägheitsmoments des Querschnitts | von 30 % oder mehr führen:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "k,. = 0,8",
+      "context": "b) Öffnungen in einem Turm oder Tragrohr, die zu einer Reduktion des Trägheitsmoments des Querschnitts | von 30 % oder mehr führen: | k,. = 0,8 | c) Konzentrierte Massen innerhalb des oberen Drittels der Bauwerkshöhe, die mit 50% oder mehr am | Kippmoment am Fuß beteiligt sind:",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "k,. = 0,7",
+      "context": "c) Konzentrierte Massen innerhalb des oberen Drittels der Bauwerkshöhe, die mit 50% oder mehr am | Kippmoment am Fuß beteiligt sind: | k,. = 0,7 | (2)P Sind mehr als eine der obigen Unregelmäßigkeiten vorhanden, muss kr gleich dem 0,9fachen Wert des | niedrigsten kr·Werts angenommen werden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 23,
+      "equation_number": "unvollständig",
+      "line": "(1) Stahlbetonschornsteine dürfen für dissipatives Verhalten mit einem Grundwert q0 = 2,5 für den",
+      "context": "(3) Der Beton sollte keiner niedrigeren Klasse als C20/25 angehören, wie in EN 1992-1-1:2004 definiert. | 5.2 Auslegung für dissipatives Verhalten | (1) Stahlbetonschornsteine dürfen für dissipatives Verhalten mit einem Grundwert q0 = 2,5 für den | Verhaltensbeiwert ausgelegt werden, wenn innerhalb der in (2) definierten kritischen Bereiche die Regeln | dieses Absatzes 5.2 Anwendung finden.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.5",
+      "line": "(5.5)",
+      "context": "Innenrohrs zu ermöglichen (z. B. indem man das Innenrohr aus Teilrohren konstruiert, die unabhängig | voneinander sind und einen geeigneten Spielraum zu einander haben): | (5.5) | b) in allen anderen Fällen: | (5.6)",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 26,
+      "equation_number": "5.6",
+      "line": "(5.6)",
+      "context": "(5.5) | b) in allen anderen Fällen: | (5.6) | MI ist der Vertikalabstand von benachbarten Podesten zur Abstützung der Auskleidung. | 24",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 27,
+      "equation_number": "unvollständig",
+      "line": "diesem Fall darf ihre Bemessung auf einem Grundwert des Verhaltensbeiwerts q0 = 2,5 basieren.",
+      "context": "(2) Stahlschornsteine, die aus einem Tragrohr bestehen, die für dissipatives Verhalten ausgelegt wurde, | sollten die Bedingungen von EN 1993-1-1:2004, 5.4.3 und 5.6 für plastische Tragwerksberechnung erfüllen. ln | diesem Fall darf ihre Bemessung auf einem Grundwert des Verhaltensbeiwerts q0 = 2,5 basieren. | (3) Der Grundwert des Verhaltensbeiwerts wird in Abhängigkeit von den gewählten Querschnitten durch | die Zahlenwerte der Tabelle 6.1 begrenzt.",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 30,
+      "equation_number": "unvollständig",
+      "line": "a) q0 =1,5 b) q0 = 1,5 c) q0 = 1,5 d) q0 =2",
+      "context": "(1) ln Abhängigkelt von der Funktion des TuiTII6 sollten fir das Jeweilige ProJelcl zur Schadansbegrenzung | Grenzwette für die nach 4.t{3) berechneten Verschiebungen feetgelegt werden. | a) q0 =1,5 b) q0 = 1,5 c) q0 = 1,5 d) q0 =2 | I 28",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "e) q0 =3 f) fo=4 G) q0 =4 h) q0 =2",
+      "context": "I I | EN 181M:2005 (D) | e) q0 =3 f) fo=4 G) q0 =4 h) q0 =2 | Bild 7.1 - Grundwerte dH Verhallilnabelwlllb für Stahlrahmen mit konun!Mchen Vetbinden | Bild 7.2- Balaplala von aus volla1lndlgen DJaleckan bestehenden, horizontalen",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 31,
+      "equation_number": "unvollständig",
+      "line": "eines Varllaltsnsbalwerts nicht gl!ßar als q = 2.",
+      "context": "a) die nach 4.2.1(2) berechnete Krall; | b) die aus der Berechnung für die Erdbeben-Bem8118ungaaituation 1'811Uitierande Knlft unter V81W8ndung | eines Varllaltsnsbalwerts nicht gl!ßar als q = 2. | (3) AnschiÜ88e in Maaten sollten so bem8118sn und durchkonstruiert Wlllden, d88S sie den einschlägigen | Anfal'clllnqan ln EN 1998-1:2004, Abschnitt& ftlr AnschiOssa ln Tragsystemen ähnlicher Art und Form, die",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 34,
+      "equation_number": "unvollständig",
+      "line": "bei niedrigen Werten der Schubgleitung sowie der Bodendichte p im Labor aus Gleichung (3.1) in",
+      "context": "gleitungen in der Größenordnung von 10--6, verwendet werden. | (6) Der Wert von v8 wird direkt durch Feldversuche bestimmt, oder nach Bestimmung des Schubmoduls G | bei niedrigen Werten der Schubgleitung sowie der Bodendichte p im Labor aus Gleichung (3.1) in | EN 1998-5:2004, 3.2(1): | v8 ~Gip",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 37,
+      "equation_number": "8.1",
+      "line": "(8.1)",
+      "context": "[K] die Steifigkeitsmatrix; | EN 1998-6:2005 (D) | (8.1) | [K] die modifizierte Steifigkeitsmatrix, mit Koeffizienten gleich dem jeweiligen Element der Steifigkeits­ | matrix [K] multipliziert mit dem Dämpfungsgrad des entsprechenden Bauteils und",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 38,
+      "equation_number": "unvollständig",
+      "line": "Yeff = 0,65 Ymax,t (C.1)",
+      "context": "Kennwerte und der Dämpfung im Rahmen von äquivalenten linearen Methoden verwendet werden, dürfen wie | folgt angenommen werden | Yeff = 0,65 Ymax,t (C.1) | mit Ymax,t als Größtwert der Freifeld-Schubgleitung im Boden während der betrachteten Erdbebeneinwirkung. | (8) Werden Finite Elemente zur Modeliierung des Bodens verwendet, sollten die Kriterien für die Fest­",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 41,
+      "equation_number": "unvollständig",
+      "line": "(1) Der Verhaltensbeiwert soll zu q = 1,5 angenommen werden, entsprechend einem niedrig dissipativen",
+      "context": "liegen. | E.3 Verhaltensbeiwert | (1) Der Verhaltensbeiwert soll zu q = 1,5 angenommen werden, entsprechend einem niedrig dissipativen | Verhalten. | E.4 Mindest-Vertikalbewehrung",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "4.1",
+      "pdf_page": 14,
+      "line": "(2) Die Definitionen der Bedeutungsklassen sind in Tabelle 4.1 enthalten."
+    },
+    {
+      "label": "4.1",
+      "pdf_page": 15,
+      "line": "Tabelle 4.1 - Bedeutungsklassen für Türme, Maste und Schomsteine"
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 27,
+      "line": "die Zahlenwerte der Tabelle 6.1 begrenzt."
+    },
+    {
+      "label": "6.1",
+      "pdf_page": 27,
+      "line": "Tabelle 6.1 -Einschränkungen für den Grundwert des Verhaltensbeiwerts in Abhängigkeit von der"
+    },
+    {
+      "label": "2.1",
+      "pdf_page": 27,
+      "line": "(3)P Die Dicke der Stahlbauteile sollte den Anforderungen von EN 1993-1-10:2004, Tabelle 2.1 genügen, in"
+    }
+  ],
+  "figures": [
+    {
+      "label": "7.1",
+      "pdf_page": 27,
+      "line": "b) Rahmen mit konzentrischen Verbänden: q0 wird Bild 7.1 entnommen"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "b) Rahmen mit konzentrischen Verbänden: q0 wird Bild 7.1 entnommen"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(1) Bild 7.1 zeigt die q0-Werte an, die bei der Bemessung üblicher Formen von Stahltürmen mit"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(2) ln den Rahmen in Bild 7.1 (a) bis (e) und (h) müssen sowohl die Zug- als auch die Druckdiagonalen in"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(3) Die Rahmen in Bild 7.1 (a) bis (c) haben Verbände vom K-Typ und sind für dissipatives Verhalten nicht"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(4) Die Rahmen in Bild 7.1(d) und (h) dürfen wie Rahmen mit V-Verbänden betrachtet werden, mit dem"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(5) Fur den Rahmen in Bild 7.1(e) sollte die Bemessung für dissipatives Verhalten im Einklang mit den"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 29,
+      "line": "(6) Die X-förmig ausgesteiften Rahmen in Bild 7.1 (f) und (g) dürfen als Rahmen mit X-Diagonalverbänden"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 29,
+      "line": "sollten aus vollständigen Dreiecken bestehende, horizontale Fachwerksverbände, wie in Bild 7.2 gezeigt,"
+    },
+    {
+      "label": "7.1",
+      "pdf_page": 31,
+      "line": "Bild 7.1 - Grundwerte dH Verhallilnabelwlllb für Stahlrahmen mit konun!Mchen Vetbinden"
+    },
+    {
+      "label": "7.2",
+      "pdf_page": 31,
+      "line": "Bild 7.2- Balaplala von aus volla1lndlgen DJaleckan bestehenden, horizontalen"
+    }
+  ],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 895,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 1116,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1984,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 7114,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3",
+        "1.3",
+        "1.4",
+        "1.5",
+        "1.5.1",
+        "1.5.2",
+        "1.6",
+        "1.6.1",
+        "1.7",
+        "2",
+        "2.1",
+        "2.2",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3",
+        "3.4",
+        "3.5",
+        "3.6",
+        "4",
+        "4.1",
+        "4.2",
+        "4.2.1",
+        "4.2.2",
+        "4.2.3",
+        "4.2.4",
+        "4.2.5",
+        "4.3",
+        "4.3.1",
+        "4.3.2",
+        "4.3.3",
+        "4.4",
+        "4.5",
+        "4.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 5,
+      "characters": 7192,
+      "text_layer": "usable",
+      "clauses": [
+        "5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.3.1",
+        "5.3.2",
+        "5.4",
+        "5.5",
+        "6",
+        "6.1",
+        "6.2",
+        "6.2.1",
+        "6.2.2",
+        "6.2.3",
+        "6.2.4",
+        "6.3",
+        "6.4",
+        "7",
+        "7.1",
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5",
+        "7.6",
+        "7.7",
+        "8",
+        "8.1",
+        "8.2",
+        "8.3",
+        "8.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 6,
+      "characters": 3495,
+      "text_layer": "usable",
+      "clauses": [
+        "15"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 7,
+      "characters": 3166,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 8,
+      "characters": 2656,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 9,
+      "characters": 3065,
+      "text_layer": "usable",
+      "clauses": [
+        "1",
+        "1.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 10,
+      "characters": 2359,
+      "text_layer": "usable",
+      "clauses": [
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 11,
+      "characters": 7,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 12,
+      "characters": 2991,
+      "text_layer": "usable",
+      "clauses": [
+        "1.6",
+        "1.6.1",
+        "1.6.2",
+        "1.7",
+        "2",
+        "2.1"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 13,
+      "characters": 2894,
+      "text_layer": "usable",
+      "clauses": [
+        "2.2",
+        "2.2.1",
+        "2.2.2",
+        "2.2.3",
+        "3",
+        "3.1",
+        "3.2",
+        "3.3"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 14,
+      "characters": 2686,
+      "text_layer": "usable",
+      "clauses": [
+        "3.4",
+        "3.5",
+        "3.6",
+        "4",
+        "4.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 15,
+      "characters": 2923,
+      "text_layer": "usable",
+      "clauses": [
+        "111",
+        "4.2",
+        "4.2.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 16,
+      "characters": 3482,
+      "text_layer": "usable",
+      "clauses": [
+        "4.2.2",
+        "4.2.3"
+      ],
+      "equation_candidates": 3
+    },
+    {
+      "pdf_page": 17,
+      "characters": 11,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 18,
+      "characters": 3,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 19,
+      "characters": 2788,
+      "text_layer": "usable",
+      "clauses": [
+        "4.3.3",
+        "4.3.3.1",
+        "4.3.3.2",
+        "4.3.3.3",
+        "4.4",
+        "4.5",
+        "4.6"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 20,
+      "characters": 2659,
+      "text_layer": "usable",
+      "clauses": [
+        "4.7.1",
+        "4.7.2",
+        "4.7.3",
+        "4.7.4"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 21,
+      "characters": 2574,
+      "text_layer": "usable",
+      "clauses": [
+        "4.7.6",
+        "4.7.7"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 22,
+      "characters": 3040,
+      "text_layer": "usable",
+      "clauses": [
+        "4.7.8",
+        "4.8",
+        "4.9",
+        "4.10"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 23,
+      "characters": 2384,
+      "text_layer": "usable",
+      "clauses": [
+        "4.10.2",
+        "5",
+        "5.1",
+        "5.2"
+      ],
+      "equation_candidates": 4
+    },
+    {
+      "pdf_page": 24,
+      "characters": 6,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 25,
+      "characters": 3319,
+      "text_layer": "usable",
+      "clauses": [
+        "5.3",
+        "5.3.1",
+        "5.3.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 26,
+      "characters": 2896,
+      "text_layer": "usable",
+      "clauses": [
+        "5.4",
+        "5.5"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 27,
+      "characters": 2544,
+      "text_layer": "usable",
+      "clauses": [
+        "6",
+        "6.1",
+        "6.2",
+        "6.2.1"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 28,
+      "characters": 2662,
+      "text_layer": "usable",
+      "clauses": [
+        "6.2.2",
+        "6.2.3",
+        "6.2.4",
+        "6.3",
+        "6.4",
+        "7",
+        "7.1",
+        "7.2"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 29,
+      "characters": 2705,
+      "text_layer": "usable",
+      "clauses": [
+        "7.3",
+        "7.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 30,
+      "characters": 1725,
+      "text_layer": "usable",
+      "clauses": [
+        "7.5",
+        "7.6"
+      ],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 31,
+      "characters": 1184,
+      "text_layer": "usable",
+      "clauses": [
+        "7.7"
+      ],
+      "equation_candidates": 2
+    },
+    {
+      "pdf_page": 32,
+      "characters": 8,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 33,
+      "characters": 343,
+      "text_layer": "usable",
+      "clauses": [
+        "8.4"
+      ],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 34,
+      "characters": 2309,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 35,
+      "characters": 39,
+      "text_layer": "weak_or_scanned",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 36,
+      "characters": 2660,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 37,
+      "characters": 643,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 38,
+      "characters": 3023,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 39,
+      "characters": 1067,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 40,
+      "characters": 2470,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 41,
+      "characters": 2419,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 42,
+      "characters": 2132,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 43,
+      "characters": 2222,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    }
+  ]
+}

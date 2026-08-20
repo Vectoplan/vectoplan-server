@@ -1,0 +1,91 @@
+{
+  "document_id": "EN_1993-1-12_NA__national_annex__EC_3_Teil_1-12_NA",
+  "eurocode_family": "EC3",
+  "designation": "DIN EN 1993-1-12/NA",
+  "document_kind": "national_annex",
+  "file_name": "EC 3 Teil 1-12 NA.pdf",
+  "relative_path": "EC 3/EC 3 Teil 1-12 NA.pdf",
+  "sha256": "ec6d921ae341d9ece5622f5e1ed0c02e6340731b0e276c3e03f681aecbd3c72d",
+  "pages": 5,
+  "text_pages": 5,
+  "weak_or_scanned_pages": 0,
+  "clause_count": 0,
+  "equation_candidate_count": 2,
+  "table_reference_count": 2,
+  "figure_reference_count": 0,
+  "metadata": {
+    "Author": "Johannes",
+    "CreationDate": "D:20130111161132+01'00'",
+    "Creator": "PScript5.dll Version 5.2.2",
+    "ModDate": "D:20130111161132+01'00'",
+    "Producer": "Acrobat Distiller 10.1.4 (Windows)",
+    "Title": "C:\\Users\\Johannes\\Desktop\\ec\\EC 3\\EC 3 Teil 1-12 NA.oxps"
+  },
+  "clauses": [],
+  "equation_candidates": [
+    {
+      "pdf_page": 4,
+      "equation_number": "1",
+      "line": "3 (1)",
+      "context": "2.1 (6.2.3(2)) | 2.8 (4.2(2)) | 3 (1) | Darüber hinaus enthält NA 2.2 an den folgenden Textstellen ergänzende nicht widersprechende Angaben zur | Anwendung von DIN EN 1993-1-12:2010-12. Diese sind durch ein vorangestelltes \"NCI\" (en: non-",
+      "review_status": "machine_candidate_unverified"
+    },
+    {
+      "pdf_page": 5,
+      "equation_number": "1",
+      "line": "NDP zu 3 (1)",
+      "context": "Für Schweißverbindungen mit Schweißzusatzwerkstoffen mit einer Festigkeit, die gleich oder größer ist als | die Festigkeit des Grundwerkstoffs, wird w 1,20 festgelegt. | NDP zu 3 (1) | Für DIN EN 1993-2 Stahlbrücken, DIN EN 1993-3 Türme, Maste und Schornsteine , DIN EN 1993-4 Silos, | Tankbauwerke und Rohrleitungen , DIN EN 1993-5 Pfähle und Spundwände  und DIN EN 1993-6 Kran-",
+      "review_status": "machine_candidate_unverified"
+    }
+  ],
+  "tables": [
+    {
+      "label": "1",
+      "pdf_page": 4,
+      "line": "DIN EN 1993-1-12:2010-12, Tabelle 1 beschränkt."
+    },
+    {
+      "label": "2",
+      "pdf_page": 4,
+      "line": "ANMERKUNG Diese Einschränkung gilt auch für Stähle nach DIN EN 1993-1-12:2010-12, Tabelle 2."
+    }
+  ],
+  "figures": [],
+  "page_quality": [
+    {
+      "pdf_page": 1,
+      "characters": 262,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 2,
+      "characters": 791,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 3,
+      "characters": 1154,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 0
+    },
+    {
+      "pdf_page": 4,
+      "characters": 2025,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    },
+    {
+      "pdf_page": 5,
+      "characters": 944,
+      "text_layer": "usable",
+      "clauses": [],
+      "equation_candidates": 1
+    }
+  ]
+}

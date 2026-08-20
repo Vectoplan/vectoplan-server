@@ -1,5 +1,6 @@
 // services/vectoplan-editor/src/frontend/main.ts
 import { createChunkApiClient } from "@api/chunk_api_client";
+import "./styles/mobile_ui.css";
 import "./styles/realtime_environment.css";
 import "./styles/world_edit.css";
 import type { ChunkApiClient } from "@api/chunk_api_models";
