@@ -20,7 +20,8 @@
     "test:hotbar-reload-policy": "esbuild tests/hotbar_reload_policy.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/hotbar-reload-policy.test.cjs && node --test node_modules/.cache/hotbar-reload-policy.test.cjs",
     "test:parcel-grid": "esbuild tests/parcel_grid_geometry.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/parcel-grid-geometry.test.cjs && node --test node_modules/.cache/parcel-grid-geometry.test.cjs",
     "test:parcel-selection": "esbuild tests/parcel_selection_normalization.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/parcel-selection-normalization.test.cjs && node --test node_modules/.cache/parcel-selection-normalization.test.cjs",
-    "check": "npm run test:parcel-grid && npm run test:parcel-selection && npm run test:chunk-command-result && npm run test:chunk-service-source-dirty && npm run test:semantic-object-refs && npm run test:hotbar-reload-policy && npm run typecheck && npm run build"
+    "test:world-edit-systems": "esbuild tests/world_edit_system_registry.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/world-edit-system-registry.test.cjs && node --test node_modules/.cache/world-edit-system-registry.test.cjs",
+    "check": "npm run test:parcel-grid && npm run test:parcel-selection && npm run test:world-edit-systems && npm run test:chunk-command-result && npm run test:chunk-service-source-dirty && npm run test:semantic-object-refs && npm run test:hotbar-reload-policy && npm run typecheck && npm run build"
   },
   "dependencies": {
     "three": "0.183.2"

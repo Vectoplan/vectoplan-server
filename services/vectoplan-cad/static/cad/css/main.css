@@ -263,6 +263,32 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
   box-shadow: var(--shadow-md);
   font-size: 12px;
 }
+.plan-summary {
+  position: absolute;
+  top: 78px;
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+  max-width: min(520px, calc(100% - 28px));
+  pointer-events: none;
+}
+.plan-summary strong,
+.plan-summary span {
+  padding: 5px 8px;
+  border: 1px solid rgba(196, 206, 217, .9);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .9);
+  color: #526174;
+  box-shadow: 0 3px 12px rgba(31, 45, 61, .07);
+  backdrop-filter: blur(8px);
+  font-size: 9px;
+  font-weight: 700;
+}
+.plan-summary strong { border-color: var(--accent-line); color: var(--accent-strong); }
+.plan-summary .is-warning { border-color: #f0d28a; background: rgba(255, 248, 225, .94); color: #8a5d00; }
 
 .empty-state { display: grid; justify-items: center; padding-top: 32px; padding-bottom: 32px; color: var(--muted); text-align: center; }
 .empty-state .empty-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 11px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--surface-subtle); color: #6c7c90; font-size: 20px; }
@@ -305,6 +331,8 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .workspace-plane { fill: #fff; }
 .workspace-grid-minor { fill: none; stroke: #edf1f5; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .workspace-grid-major { fill: none; stroke: #d9e0e7; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.slab-hatch-line { stroke: #a9b7c6; stroke-width: .7; vector-effect: non-scaling-stroke; }
+.roof-hatch-line { stroke: #9aaac0; stroke-width: .9; vector-effect: non-scaling-stroke; }
 .model-frame { fill: none; stroke: #aeb9c4; stroke-width: 1.1; stroke-dasharray: 7 5; vector-effect: non-scaling-stroke; pointer-events: none; }
 .model-frame-label { fill: #6f7d8d; font-size: 150px; font-weight: 700; letter-spacing: .04em; pointer-events: none; }
 .parcel-context { pointer-events: none; }
@@ -320,9 +348,28 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .parcel-grid-guide.is-active { stroke: #7dd3fc; stroke-width: 9; }
 #plan-svg.is-parcel-grid-editing .parcel-grid-guide { pointer-events: stroke; }
 .primitive { vector-effect: non-scaling-stroke; }
-.primitive-wall-cut { fill: #d7dce1; stroke: #27313b; stroke-width: 1.15; cursor: pointer; }
+.primitive-wall-cut { fill: #ced4da; stroke: #202a34; stroke-width: 1.2; cursor: pointer; }
 .primitive-opening { fill: #fff; stroke: #27313b; stroke-width: .7; cursor: pointer; }
 .primitive-structure { fill: #c8ced5; stroke: #27313b; stroke-width: .75; cursor: pointer; }
+.primitive-slab { fill: url(#cad-slab-hatch); stroke: #687787; stroke-width: .8; cursor: pointer; }
+.primitive-roof { fill: url(#cad-roof-hatch); stroke: #53667b; stroke-width: 1; cursor: pointer; }
+.primitive-column { fill: #5f6c78; stroke: #1f2933; stroke-width: 1; cursor: pointer; }
+.primitive-beam { fill: #8d98a3; stroke: #34414d; stroke-width: 1; cursor: pointer; }
+.primitive-component { fill: #dfe5ea; stroke: #536170; stroke-width: .85; cursor: pointer; }
+.primitive-unresolved { fill: rgba(245, 158, 11, .13); stroke: #b7791f; stroke-width: 1; stroke-dasharray: 5 3; cursor: pointer; }
+.primitive-door,
+.primitive-window,
+.primitive-stair { cursor: pointer; }
+.primitive-door .architectural-symbol-base { fill: #fff; stroke: #293642; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.primitive-window .architectural-symbol-base { fill: #eef8fc; stroke: #1f536d; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.primitive-stair .architectural-symbol-base { fill: rgba(148, 163, 184, .13); stroke: #4b5c6c; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.door-leaf { stroke: #1f2933; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+.door-swing { fill: none; stroke: #617080; stroke-width: .9; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.door-hinge { fill: #1f2933; stroke: #fff; stroke-width: .65; vector-effect: non-scaling-stroke; }
+.window-glazing { stroke: #0f7494; stroke-width: .95; vector-effect: non-scaling-stroke; }
+.stair-tread { stroke: #667788; stroke-width: .7; vector-effect: non-scaling-stroke; }
+.stair-direction { stroke: #334455; stroke-width: 1.05; vector-effect: non-scaling-stroke; }
+.stair-arrow { fill: #334455; stroke: none; }
 .primitive-line { fill: none; stroke: #27313b; stroke-width: .7; cursor: pointer; }
 .primitive-annotation { fill: #26313c; font-size: 170px; cursor: pointer; }
 .primitive-room-label { fill: #26313c; font-size: 190px; text-anchor: middle; cursor: pointer; }
@@ -333,8 +380,18 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-dimension { fill: none; stroke: #435261; stroke-width: .45; cursor: pointer; }
 .semantic-outline { stroke: #56616d; pointer-events: stroke; }
 .semantic-fill { stroke: #c8ced5; pointer-events: stroke; }
+.primitive-window .semantic-fill { stroke: #d7f0f8; }
+.primitive-window .semantic-outline { stroke: #1f536d; }
+.primitive-door .semantic-fill { stroke: #fff; }
+.primitive-stair .semantic-fill { stroke: #e1e7ec; }
 .primitive:hover .semantic-fill, .primitive.is-selected .semantic-fill { stroke: rgba(20, 99, 214, .45); }
 .primitive:hover .semantic-outline, .primitive.is-selected .semantic-outline { stroke: var(--accent); }
+.primitive-door:hover .architectural-symbol-base,
+.primitive-door.is-selected .architectural-symbol-base,
+.primitive-window:hover .architectural-symbol-base,
+.primitive-window.is-selected .architectural-symbol-base,
+.primitive-stair:hover .architectural-symbol-base,
+.primitive-stair.is-selected .architectural-symbol-base { stroke: var(--accent); stroke-width: 1.7; }
 .dimension-text { fill: #394754; font-size: 145px; text-anchor: middle; }
 .primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: 1.7; }
 .primitive text { pointer-events: none; }
@@ -353,6 +410,7 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 }
 
 @media (max-width: 1020px) {
+  .plan-summary { top: 76px; }
   .cad-app {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "workspace";

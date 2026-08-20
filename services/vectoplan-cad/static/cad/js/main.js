@@ -68,6 +68,26 @@
     "parcel-grid": {label: "Grundstücksraster", hint: "Hellblaue Innenlinie ziehen, um das schräge Grenzraster je Grundstück zu verschieben."},
   };
 
+  const renderStyleOrder = {
+    slab: 5,
+    roof: 8,
+    room: 10,
+    structure: 15,
+    component: 16,
+    beam: 20,
+    column: 22,
+    "wall-cut": 30,
+    stair: 35,
+    opening: 40,
+    window: 42,
+    door: 44,
+    unresolved: 60,
+    line: 70,
+    dimension: 80,
+    annotation: 90,
+    "room-label": 92,
+  };
+
   function svgEl(name, attrs = {}, text = null) {
     const node = document.createElementNS(ns, name);
     Object.entries(attrs).forEach(([key, value]) => {
@@ -874,9 +894,55 @@
 
   function renderAll() {
     renderPlan();
+    renderPlanSummary();
     renderInspector();
     renderCommandLog();
     syncHistoryButtons();
+  }
+
+  function renderPlanSummary() {
+    const summary = document.getElementById("plan-summary");
+    const viewport = currentViewport();
+    if (!summary || !viewport) return;
+    const primitives = visibleViewportPrimitives(viewport);
+    const counts = new Map();
+    let reviewCount = 0;
+    primitives.forEach((primitive) => {
+      const role = String(primitive.metadata?.semantic_role || primitive.source_kind || "component").toLowerCase();
+      counts.set(role, (counts.get(role) || 0) + 1);
+      if (role === "unknown" || (primitive.metadata?.warnings || []).length) reviewCount += 1;
+    });
+    const labels = {
+      wall: "Wände",
+      door: "Türen",
+      window: "Fenster",
+      opening: "Öffnungen",
+      stair: "Treppen",
+      slab: "Decken",
+      roof: "Dächer",
+      column: "Stützen",
+      beam: "Träger",
+      room: "Räume",
+      component: "Bauteile",
+    };
+    summary.replaceChildren();
+    const total = document.createElement("strong");
+    total.textContent = `${primitives.length} Bauwerksobjekte`;
+    summary.append(total);
+    Object.entries(labels).forEach(([role, label]) => {
+      const count = counts.get(role) || 0;
+      if (!count) return;
+      const chip = document.createElement("span");
+      chip.textContent = `${count} ${label}`;
+      summary.append(chip);
+    });
+    if (reviewCount) {
+      const warning = document.createElement("span");
+      warning.className = "is-warning";
+      warning.textContent = `${reviewCount} prüfen`;
+      summary.append(warning);
+    }
+    summary.hidden = primitives.length === 0;
   }
 
   function modelPointToNorthUp(point) {
@@ -1090,7 +1156,11 @@
     minorPattern.append(svgEl("path", {d: "M 500 0 L 0 0 0 500", class: "workspace-grid-minor"}));
     const majorPattern = svgEl("pattern", {id: "workspace-grid-major", width: 5000, height: 5000, patternUnits: "userSpaceOnUse"});
     majorPattern.append(svgEl("path", {d: "M 5000 0 L 0 0 0 5000", class: "workspace-grid-major"}));
-    defs.append(minorPattern, majorPattern);
+    const slabPattern = svgEl("pattern", {id: "cad-slab-hatch", width: 420, height: 420, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
+    slabPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 420, class: "slab-hatch-line"}));
+    const roofPattern = svgEl("pattern", {id: "cad-roof-hatch", width: 620, height: 620, patternUnits: "userSpaceOnUse", patternTransform: "rotate(-45)"});
+    roofPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 620, class: "roof-hatch-line"}));
+    defs.append(minorPattern, majorPattern, slabPattern, roofPattern);
     svg.append(defs);
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, class: "workspace-plane"}));
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, fill: "url(#workspace-grid-minor)"}));
@@ -1109,7 +1179,10 @@
       svg.append(svgEl("polygon", {points: framePoints.map((point) => point.join(",")).join(" "), class: "model-frame"}));
       svg.append(svgEl("text", {x: displayBounds.x + 120, y: displayBounds.y - 220, class: "model-frame-label"}, "ERDGESCHOSS · MODELLBEREICH"));
     }
-    visibleViewportPrimitives(viewport).map(northUpPrimitive).forEach((primitive) => svg.append(renderPrimitive(primitive)));
+    visibleViewportPrimitives(viewport)
+      .map(northUpPrimitive)
+      .sort((left, right) => (renderStyleOrder[left.style_ref] ?? 50) - (renderStyleOrder[right.style_ref] ?? 50))
+      .forEach((primitive) => svg.append(renderPrimitive(primitive)));
     renderWorldSelection();
     renderDraft();
   }
@@ -1117,7 +1190,10 @@
     const geometry = primitive.geometry;
     let node;
     if (primitive.primitive_type === "polygon") {
-      node = svgEl("polygon", {points: geometry.points_mm.map((point) => point.join(",")).join(" ")});
+      if (primitive.style_ref === "door") node = renderDoorPrimitive(primitive);
+      else if (primitive.style_ref === "window") node = renderWindowPrimitive(primitive);
+      else if (primitive.style_ref === "stair") node = renderStairPrimitive(primitive);
+      else node = svgEl("polygon", {points: geometry.points_mm.map((point) => point.join(",")).join(" ")});
     } else if (primitive.primitive_type === "thick_path") {
       node = renderThickPathPrimitive(primitive);
     } else if (primitive.primitive_type === "thick_segments") {
@@ -1149,6 +1225,130 @@
       renderInspector();
     });
     return node;
+  }
+
+  function polygonPoints(primitive) {
+    const points = (primitive.geometry?.points_mm || [])
+      .filter((point) => Array.isArray(point) && Number.isFinite(Number(point[0])) && Number.isFinite(Number(point[1])))
+      .map((point) => [Number(point[0]), Number(point[1])]);
+    if (points.length > 1) {
+      const first = points[0];
+      const last = points[points.length - 1];
+      if (Math.abs(first[0] - last[0]) < 1e-6 && Math.abs(first[1] - last[1]) < 1e-6) points.pop();
+    }
+    return points;
+  }
+
+  function polygonFrame(primitive) {
+    const points = polygonPoints(primitive);
+    if (points.length !== 4) return null;
+    let longestIndex = 0;
+    let longestLength = -1;
+    points.forEach((point, index) => {
+      const next = points[(index + 1) % points.length];
+      const length = Math.hypot(next[0] - point[0], next[1] - point[1]);
+      if (length > longestLength) {
+        longestLength = length;
+        longestIndex = index;
+      }
+    });
+    return {
+      a: points[longestIndex],
+      b: points[(longestIndex + 1) % 4],
+      c: points[(longestIndex + 2) % 4],
+      d: points[(longestIndex + 3) % 4],
+      length: longestLength,
+      points,
+    };
+  }
+
+  function polygonNode(points, className) {
+    return svgEl("polygon", {
+      points: points.map((point) => point.join(",")).join(" "),
+      class: className,
+    });
+  }
+
+  function interpolatePoint(start, end, ratio) {
+    return [
+      start[0] + (end[0] - start[0]) * ratio,
+      start[1] + (end[1] - start[1]) * ratio,
+    ];
+  }
+
+  function renderDoorPrimitive(primitive) {
+    const group = svgEl("g");
+    const frame = polygonFrame(primitive);
+    const points = polygonPoints(primitive);
+    group.append(polygonNode(points, "architectural-symbol-base"));
+    if (!frame || frame.length <= 0) return group;
+    const side = [frame.d[0] - frame.a[0], frame.d[1] - frame.a[1]];
+    const sideLength = Math.hypot(side[0], side[1]);
+    const normal = sideLength > 1e-6
+      ? [side[0] / sideLength, side[1] / sideLength]
+      : [-(frame.b[1] - frame.a[1]) / frame.length, (frame.b[0] - frame.a[0]) / frame.length];
+    const leafEnd = [frame.a[0] + normal[0] * frame.length, frame.a[1] + normal[1] * frame.length];
+    const closedVector = [frame.b[0] - frame.a[0], frame.b[1] - frame.a[1]];
+    const leafVector = [leafEnd[0] - frame.a[0], leafEnd[1] - frame.a[1]];
+    const sweepFlag = closedVector[0] * leafVector[1] - closedVector[1] * leafVector[0] >= 0 ? 1 : 0;
+    group.append(
+      svgEl("line", {x1: frame.a[0], y1: frame.a[1], x2: leafEnd[0], y2: leafEnd[1], class: "door-leaf"}),
+      svgEl("path", {d: `M ${frame.b[0]} ${frame.b[1]} A ${frame.length} ${frame.length} 0 0 ${sweepFlag} ${leafEnd[0]} ${leafEnd[1]}`, class: "door-swing"}),
+      svgEl("circle", {cx: frame.a[0], cy: frame.a[1], r: Math.max(35, frame.length * 0.035), class: "door-hinge"}),
+    );
+    return group;
+  }
+
+  function renderWindowPrimitive(primitive) {
+    const group = svgEl("g");
+    const frame = polygonFrame(primitive);
+    const points = polygonPoints(primitive);
+    group.append(polygonNode(points, "architectural-symbol-base"));
+    if (!frame) return group;
+    const centreStart = interpolatePoint(frame.a, frame.d, 0.5);
+    const centreEnd = interpolatePoint(frame.b, frame.c, 0.5);
+    const side = [frame.d[0] - frame.a[0], frame.d[1] - frame.a[1]];
+    const lines = [-0.22, 0.22].map((offset) => ({
+      start: [centreStart[0] + side[0] * offset, centreStart[1] + side[1] * offset],
+      end: [centreEnd[0] + side[0] * offset, centreEnd[1] + side[1] * offset],
+    }));
+    lines.forEach(({start, end}) => group.append(svgEl("line", {
+      x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "window-glazing",
+    })));
+    return group;
+  }
+
+  function renderStairPrimitive(primitive) {
+    const group = svgEl("g");
+    const frame = polygonFrame(primitive);
+    const points = polygonPoints(primitive);
+    group.append(polygonNode(points, "architectural-symbol-base"));
+    if (!frame) return group;
+    for (let index = 1; index < 9; index += 1) {
+      const ratio = index / 9;
+      const start = interpolatePoint(frame.a, frame.b, ratio);
+      const end = interpolatePoint(frame.d, frame.c, ratio);
+      group.append(svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "stair-tread"}));
+    }
+    const startA = interpolatePoint(frame.a, frame.b, 0.16);
+    const startB = interpolatePoint(frame.d, frame.c, 0.16);
+    const endA = interpolatePoint(frame.a, frame.b, 0.84);
+    const endB = interpolatePoint(frame.d, frame.c, 0.84);
+    const arrowStart = interpolatePoint(startA, startB, 0.5);
+    const arrowEnd = interpolatePoint(endA, endB, 0.5);
+    const arrowLength = Math.hypot(arrowEnd[0] - arrowStart[0], arrowEnd[1] - arrowStart[1]) || 1;
+    const ux = (arrowEnd[0] - arrowStart[0]) / arrowLength;
+    const uy = (arrowEnd[1] - arrowStart[1]) / arrowLength;
+    const arrowSize = Math.max(80, Math.min(260, frame.length * 0.08));
+    group.append(
+      svgEl("line", {x1: arrowStart[0], y1: arrowStart[1], x2: arrowEnd[0], y2: arrowEnd[1], class: "stair-direction"}),
+      polygonNode([
+        arrowEnd,
+        [arrowEnd[0] - ux * arrowSize - uy * arrowSize * 0.55, arrowEnd[1] - uy * arrowSize + ux * arrowSize * 0.55],
+        [arrowEnd[0] - ux * arrowSize + uy * arrowSize * 0.55, arrowEnd[1] - uy * arrowSize - ux * arrowSize * 0.55],
+      ], "stair-arrow"),
+    );
+    return group;
   }
 
   function renderRoomPrimitive(primitive) {

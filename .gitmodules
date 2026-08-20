@@ -35,3 +35,9 @@
 [submodule "services/vectoplan-filecloud"]
 	path = services/vectoplan-filecloud
 	url = https://github.com/Vectoplan/vectoplan-filecloud.git
+[submodule "services/vectoplan-energie"]
+	path = services/vectoplan-energie
+	url = https://github.com/Vectoplan/vectoplan-energie.git
+[submodule "services/vectoplan-statik"]
+	path = services/vectoplan-statik
+	url = https://github.com/Vectoplan/vectoplan-statik.git

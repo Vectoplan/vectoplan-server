@@ -11,6 +11,18 @@ DEFAULT_LAYER_STYLES = {
     "structure": {"label": "Tragwerk", "style_ref": "structure", "order": 40},
     "annotations": {"label": "Beschriftungen", "style_ref": "annotation", "order": 60},
     "dimensions": {"label": "Bemaßung", "style_ref": "dimension", "order": 70},
+    "construction_slab": {"label": "Decken & Bodenplatten", "style_ref": "slab", "order": 5},
+    "construction_roof": {"label": "Dächer", "style_ref": "roof", "order": 8},
+    "construction_room": {"label": "Räume & Zonen", "style_ref": "room", "order": 10},
+    "construction_wall": {"label": "Wände", "style_ref": "cut-heavy", "order": 20},
+    "construction_beam": {"label": "Träger", "style_ref": "beam", "order": 24},
+    "construction_column": {"label": "Stützen", "style_ref": "column", "order": 25},
+    "construction_opening": {"label": "Öffnungen", "style_ref": "opening", "order": 30},
+    "construction_window": {"label": "Fenster", "style_ref": "window", "order": 31},
+    "construction_door": {"label": "Türen", "style_ref": "door", "order": 32},
+    "construction_stair": {"label": "Treppen", "style_ref": "stair", "order": 35},
+    "construction_component": {"label": "Bauteile", "style_ref": "component", "order": 40},
+    "construction_unknown": {"label": "Ungeklärte Bauteile", "style_ref": "unresolved", "order": 90},
 }
 
 
@@ -131,12 +143,20 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
 
 def _style_for(element: dict[str, Any]) -> str:
     kind = element["kind"]
+    semantic_role = str(element.get("semantic_role") or "").strip().lower()
     if kind == "wall":
         return "wall-cut"
     if kind == "opening":
-        return "opening"
+        return semantic_role if semantic_role in {"door", "window"} else "opening"
     if kind == "structure":
-        return "structure"
+        return semantic_role if semantic_role in {
+            "beam",
+            "column",
+            "component",
+            "roof",
+            "slab",
+            "stair",
+        } else "unresolved" if semantic_role == "unknown" else "structure"
     if kind == "dimension":
         return "dimension"
     if kind == "room_label":

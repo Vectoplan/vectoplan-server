@@ -17,13 +17,13 @@ import {
   type ParcelGridBoundarySegmentInput,
   type ParcelGridPoint,
   type ParcelGridPartitionCell,
-} from "../src/frontend/world_edit/parcel_grid_geometry";
+} from "../src/frontend/world_edit/systems/parcel_grid/geometry";
 import {
   resolveWorldEditSelectionBounds,
   snapWorldEditRulerPoint,
   snapWorldEditSelectionHandle,
   worldEditSelectionTopGridSegments,
-} from "../src/frontend/world_edit/selection_geometry";
+} from "../src/frontend/world_edit/systems/selection/geometry";
 
 test("a normal 16k-cell parcel is no longer cut to the loaded terrain window", () => {
   const bounds = resolveParcelGridRenderBounds({

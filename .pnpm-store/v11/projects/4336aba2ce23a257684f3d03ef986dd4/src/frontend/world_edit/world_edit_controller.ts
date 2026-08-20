@@ -20,6 +20,20 @@ import {
   earthGridWorldPointToLonLat,
 } from "@utils/earth_grid_coordinates";
 import {
+  type WorldEditOperation,
+  type WorldEditSystemRegistry,
+  type WorldEditTool,
+} from "./systems/contracts";
+import { createWorldEditSystemRegistry } from "./systems/registry";
+import { createSelectionSystem } from "./systems/selection/system";
+import { createRoomSystem } from "./systems/room/system";
+import { createPaintSystem } from "./systems/paint/system";
+import { createSculptSystem } from "./systems/sculpt/system";
+import { createParcelSystem } from "./systems/parcel/system";
+import { createParcelGridSystem } from "./systems/parcel_grid/system";
+import { createRulerSystem } from "./systems/ruler/system";
+import { createClipboardSystem } from "./systems/clipboard/system";
+import {
   buildParcelGridPartition,
   mergeParcelGridCoverage,
   normalizeParcelGridPolygon,
@@ -31,7 +45,7 @@ import {
   resolveParcelGridRenderBounds,
   snapParcelGridDragDepth,
   type ParcelGridPoint,
-} from "./parcel_grid_geometry";
+} from "./systems/parcel_grid/geometry";
 import {
   resolveWorldEditSelectionBounds,
   snapWorldEditRulerPoint,
@@ -39,7 +53,7 @@ import {
   worldEditSelectionTopGridSegments,
   type WorldEditSelectionAxis,
   type WorldEditSelectionBounds,
-} from "./selection_geometry";
+} from "./systems/selection/geometry";
 
 const ACTIVATE_EVENT = "vectoplan-editor:worldedit-tool-activate";
 const SETTINGS_EVENT = "vectoplan-editor:worldedit-settings-change";
@@ -62,9 +76,6 @@ const PARCEL_GRID_VISIBLE_MARGIN_CELLS = 64;
 const PARCEL_GRID_MIN_DRAG_DEPTH_CELLS = 64;
 const PARCEL_GRID_MAX_DRAG_DEPTH_CELLS = 512;
 const PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS = 8;
-
-type WorldEditTool = "selection" | "room" | "paint" | "sculpt" | "parcel" | "parcel-grid" | "ruler" | "clipboard";
-type WorldEditOperation = "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
 
 export interface ParcelSelectionItem {
   readonly parcelId: string;
@@ -389,14 +400,6 @@ export function normalizedParcelItems(value: unknown, maximum: number): ParcelSe
 
   return [...byId.values()]
     .slice(0, Math.max(1, maximum));
-}
-
-export function parcelSelectionActionForIntent(
-  action: EditorInputWorldEditIntent["action"],
-): "select" | "remove" | null {
-  if (action === "primary") return "select";
-  if (action === "secondary") return "remove";
-  return null;
 }
 
 function normalizedParcelSelection(value: unknown): ParcelSelection {
@@ -900,6 +903,7 @@ export function createWorldEditController(
 ): WorldEditControllerHandle {
   let destroyed = false;
   let activeTool: WorldEditTool | null = null;
+  let systemRegistry: WorldEditSystemRegistry | null = null;
   let operation: WorldEditOperation = "set";
   let roomType = "wohnen";
   let roomLabel = "Raum";
@@ -1353,20 +1357,17 @@ export function createWorldEditController(
     return options.sceneRuntime.getSelectedLibraryPlacement();
   }
 
+  function activeSystem() {
+    return activeTool && systemRegistry ? systemRegistry.get(activeTool) : null;
+  }
+
   function inventoryToolId(): string {
-    if (activeTool === "ruler") return "ruler-laser";
-    if (activeTool === "clipboard") return "copy-transform";
-    if (activeTool === "parcel-grid") return "parcel-grid";
-    return activeTool ?? "";
+    return activeSystem()?.ui.inventoryToolId ?? "";
   }
 
   function publishInventoryState(): void {
     const status = panel.querySelector<HTMLElement>("[data-world-edit-status]");
-    const canExecute = activeTool === "selection" || activeTool === "room"
-      ? Boolean(selection.first && selection.second)
-      : activeTool === "clipboard"
-        ? operation === "paste" ? clipboard.length > 0 : Boolean(selection.first && selection.second)
-        : true;
+    const canExecute = activeSystem()?.canExecute() ?? false;
     window.dispatchEvent(new CustomEvent(INVENTORY_STATE_EVENT, {
       detail: {
         active: Boolean(activeTool),
@@ -1961,7 +1962,7 @@ export function createWorldEditController(
     addLineBatch("parcel_grid_active_axis", activeAxisSegments, 0x60a5fa, 1, 121);
     const innerAxisLines = addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
 
-    if (innerAxisLines && activeTool === "parcel-grid") {
+    if (innerAxisLines && activeSystem()?.behavior.showParcelGridHandles) {
       innerAxisLines.frustumCulled = false;
       const linePositions = innerAxisLines.geometry.getAttribute("position") as THREE.BufferAttribute;
       linePositions.setUsage(THREE.DynamicDrawUsage);
@@ -2368,7 +2369,9 @@ export function createWorldEditController(
     if (!selection.first || !selection.second) return;
     const scene = options.sceneRuntime.getScene();
     if (!scene) return;
-    if (activeTool === "ruler") {
+    const selectionVisualization = activeSystem()?.behavior.selectionVisualization ?? "none";
+    if (selectionVisualization === "none") return;
+    if (selectionVisualization === "ruler") {
       const first = new THREE.Vector3(selection.first.x, selection.first.y, selection.first.z);
       const second = new THREE.Vector3(selection.second.x, selection.second.y, selection.second.z);
       const group = new THREE.Group();
@@ -2470,7 +2473,12 @@ export function createWorldEditController(
   }
 
   function updateSelectionScenePreview(): boolean {
-    if (!selection.first || !selection.second || !selectionBoxRuntime || !["selection", "room"].includes(activeTool ?? "")) return false;
+    if (
+      !selection.first
+      || !selection.second
+      || !selectionBoxRuntime
+      || activeSystem()?.behavior.selectionVisualization !== "box"
+    ) return false;
     const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
     const size = new THREE.Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
     const center = new THREE.Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
@@ -2526,57 +2534,29 @@ export function createWorldEditController(
     const clipboardCount = panel.querySelector<HTMLElement>("[data-clipboard-count]");
     const hint = panel.querySelector<HTMLElement>("[data-world-edit-hint]");
     const placement = selectedPlacement();
-    const titles: Record<WorldEditTool, string> = {
-      selection: "Selection Tool",
-      room: "Räume",
-      paint: "Paint Brush",
-      sculpt: "Sculpt Brush",
-      parcel: "Flurstück Tool",
-      "parcel-grid": "Grundstücksraster",
-      ruler: "Messwerkzeug",
-      clipboard: "Copy / Cut / Paste",
-    };
-    if (title) title.textContent = activeTool ? titles[activeTool] : "WorldEdit";
+    const system = activeSystem();
+    const ui = system?.ui;
+    if (title) title.textContent = ui?.title ?? "WorldEdit";
     if (first) first.textContent = positionLabel(selection.first);
     if (second) second.textContent = positionLabel(selection.second);
     if (material) material.textContent = operation === "clear" ? "Luft / entfernen" : placement.label ?? placement.runtimeBlockTypeId ?? "Hotbar auswählen";
     if (parcelCount) parcelCount.textContent = `${parcelSelection.parcels.length} Grundstück${parcelSelection.parcels.length === 1 ? "" : "e"}`;
     options.root.dataset.parcelCatalogCount = String(parcelSelection.availableParcels.length);
     options.root.dataset.parcelSelectionCount = String(parcelSelection.parcels.length);
-    if (brushSettings) brushSettings.hidden = activeTool !== "paint" && activeTool !== "sculpt";
-    if (coordinates) coordinates.hidden = !["selection", "room", "ruler", "clipboard"].includes(activeTool ?? "");
-    if (rulerResult) rulerResult.hidden = activeTool !== "ruler";
+    if (brushSettings) brushSettings.hidden = !(ui?.showBrushSettings ?? false);
+    if (coordinates) coordinates.hidden = !(ui?.showCoordinates ?? false);
+    if (rulerResult) rulerResult.hidden = !(ui?.showRulerResult ?? false);
     const distance = measurementMetres(selection);
     if (rulerDistance) rulerDistance.textContent = distance === null ? "–" : `${distance.toFixed(2)} m`;
-    if (operationField) operationField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room";
-    if (materialField) materialField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room" || ["copy", "cut", "paste"].includes(operation);
-    if (maskField) maskField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room";
-    if (executeButton) executeButton.hidden = activeTool !== "selection" && activeTool !== "clipboard" && activeTool !== "room";
-    if (resetButton) resetButton.textContent = activeTool === "parcel"
-      ? "Grundstücke leeren"
-      : activeTool === "ruler"
-        ? "Messung löschen"
-        : activeTool === "selection" || activeTool === "clipboard" || activeTool === "room"
-          ? "Auswahl löschen"
-          : "Ziel löschen";
-    if (clipboardStatus) clipboardStatus.hidden = activeTool !== "clipboard";
+    if (operationField) operationField.hidden = !(ui?.showOperation ?? false);
+    if (materialField) materialField.hidden = !(ui?.showMaterial ?? false);
+    if (maskField) maskField.hidden = !(ui?.showMask ?? false);
+    if (executeButton) executeButton.hidden = !(ui?.showExecute ?? false);
+    if (resetButton) resetButton.textContent = ui?.resetLabel ?? "Ziel löschen";
+    if (clipboardStatus) clipboardStatus.hidden = !(ui?.showClipboardStatus ?? false);
     if (clipboardCount) clipboardCount.textContent = `${clipboard.length} Zelle${clipboard.length === 1 ? "" : "n"}`;
     if (operationSelect) operationSelect.value = operation;
-    if (hint) {
-      hint.textContent = activeTool === "selection"
-        ? "Linksklick halten und den Auswahlquader blockweise live aufziehen. Danach eine der sechs blauen Flächen greifen und X/Y/Z mit demselben Live-Ziehen anpassen."
-        : activeTool === "room"
-          ? "Beim Loslassen wird die Selection automatisch als Raum gespeichert. Danach kann sofort der nächste Raum gezeichnet werden; Rechtsklick auf einen Raum löscht ihn."
-        : activeTool === "parcel"
-          ? "Linksklick wählt ein Flurstück aus; Rechtsklick entfernt es aus der Auswahl."
-          : activeTool === "parcel-grid"
-            ? "Eine Grenze anklicken, dann den Doppelpfeil an der cyanfarbenen Linie greifen und bei gehaltenem Linksklick blockweise ziehen."
-          : activeTool === "ruler"
-            ? "Linksklick halten und bis zum zweiten Messpunkt ziehen. In Blocknähe rasten beide Punkte an den Ecken ein; Distanz und Achsmaße stehen mittig an der Linie."
-            : activeTool === "clipboard"
-              ? "Copy/Cut verwendet den markierten Bereich. Paste setzt die Zwischenablage am anvisierten Ziel ein."
-              : "Linksklick wendet den Pinsel an; Rechtsklick entfernt mit derselben Form.";
-    }
+    if (hint) hint.textContent = ui?.hint ?? "WorldEdit-Werkzeug auswählen.";
     const radiusOutput = panel.querySelector<HTMLOutputElement>("[data-brush-radius-output]");
     const densityOutput = panel.querySelector<HTMLOutputElement>("[data-brush-density-output]");
     const wallOutput = panel.querySelector<HTMLOutputElement>("[data-brush-wall-output]");
@@ -2659,7 +2639,8 @@ export function createWorldEditController(
 
   function configureOperationSelect(tool: WorldEditTool): void {
     if (!operationSelect) return;
-    const clipboardMode = tool === "clipboard";
+    const operations = systemRegistry?.get(tool).ui.operations ?? [];
+    const clipboardMode = operations.includes("copy");
     const desiredMode = clipboardMode ? "clipboard" : "world";
     if (operationSelect.dataset.mode !== desiredMode) {
       operationSelect.innerHTML = clipboardMode
@@ -2713,14 +2694,16 @@ export function createWorldEditController(
     if (!selectionDragging || !selection.first) return;
     if (selectionHandleDrag) {
       if (!applySelectionHandlePointer()) return;
-    } else if (activeTool === "ruler") {
+    } else if (activeSystem()?.behavior.selectionDragMode === "ruler") {
       const latest = currentRulerTarget();
       if (!latest) return;
       selection = { first: selection.first, second: latest };
-    } else {
+    } else if (activeSystem()?.behavior.selectionDragMode === "box") {
       const latest = currentSelectionDragTarget();
       if (!latest) return;
       selection = { first: selection.first, second: latest };
+    } else {
+      return;
     }
     const signature = selection.first && selection.second
       ? `${selection.first.x}:${selection.first.y}:${selection.first.z}:${selection.second.x}:${selection.second.y}:${selection.second.z}`
@@ -3103,9 +3086,10 @@ export function createWorldEditController(
   }
 
   async function executeAt(target?: ChunkApiWorldPosition | null, forcedOperation?: WorldEditOperation): Promise<void> {
-    if (!activeTool || busy) return;
-    if (!["selection", "paint", "sculpt"].includes(activeTool)) return;
-    const commandTool = activeTool as "selection" | "paint" | "sculpt";
+    if (busy) return;
+    const behavior = activeSystem()?.behavior;
+    const commandTool = behavior?.commandTool;
+    if (!behavior || !commandTool) return;
     const effectiveOperation = forcedOperation ?? operation;
     const placement = selectedPlacement();
     const targetCells = options.sceneRuntime.getTargetCells();
@@ -3127,7 +3111,10 @@ export function createWorldEditController(
       setStatus("Es fehlt ein Ziel oder eine vollständige Auswahl.", "warning");
       return;
     }
-    if (activeTool === "selection" && (!selection.first || !selection.second)) {
+    const selectionBounds = selection.first && selection.second
+      ? { min: selection.first, max: selection.second }
+      : null;
+    if (behavior.requiresCompleteSelection && !selectionBounds) {
       setStatus("Bitte Punkt A und Punkt B setzen.", "warning");
       return;
     }
@@ -3145,8 +3132,8 @@ export function createWorldEditController(
         operation: effectiveOperation,
         ...(placement.runtimeBlockTypeId ? { blockTypeId: placement.runtimeBlockTypeId } : {}),
         ...(effectiveOperation === "replace" && replaceBlockTypeId ? { replaceBlockTypeId } : {}),
-        ...(commandTool === "selection" ? {
-          bounds: { min: selection.first, max: selection.second },
+        ...(behavior.requiresCompleteSelection && selectionBounds ? {
+          bounds: selectionBounds,
         } : {
           brush: {
             shape: brushShape?.value ?? "sphere",
@@ -3302,7 +3289,7 @@ export function createWorldEditController(
   }
 
   async function executeRoom(): Promise<void> {
-    if (activeTool !== "room" || busy) return;
+    if (busy) return;
     if (!selection.first || !selection.second) {
       setStatus("Bitte zuerst mit dem Selection Tool den Raum in X/Y/Z markieren.", "warning");
       return;
@@ -3389,7 +3376,7 @@ export function createWorldEditController(
   }
 
   async function executeClipboard(target?: ChunkApiWorldPosition | null): Promise<void> {
-    if (activeTool !== "clipboard" || busy) return;
+    if (busy) return;
     const clipboardOperation = ["copy", "cut", "paste"].includes(operation) ? operation : "copy";
     if (clipboardOperation !== "paste" && (!selection.first || !selection.second)) {
       setStatus("Bitte zuerst mit dem Selection Tool einen Bereich markieren.", "warning");
@@ -3464,232 +3451,28 @@ export function createWorldEditController(
   }
 
   async function handleWorldEditIntent(intent: EditorInputWorldEditIntent): Promise<boolean> {
-    if (!activeTool) return false;
-    if (activeTool === "selection") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          if (!updateSelectionScenePreview()) rebuildSelectionScene();
-          refreshHud();
-          setStatus("Auswahl bereit. Die sechs Flächengriffe passen X/Y/Z blockweise und live an.", "ready");
-        }
-        return true;
-      }
-      if (intent.action === "secondary-release") return true;
-      if (adjustSelectionHandle(intent.action)) return true;
-      if (intent.action === "secondary") {
-        stopSelectionDrag();
-        if (selection.second) selection = { first: selection.first, second: null };
-        else selection = { first: null, second: null };
-        rebuildSelectionScene();
-        refreshHud();
-        setStatus("Letzten Auswahlpunkt entfernt.", "info");
-        return true;
-      }
-      const selectionTarget = intent.position
-        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200);
-      if (!selectionTarget) {
-        setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      startSelectionDrag(selectionTarget);
-      setStatus("Linksklick halten und den Bereich blockweise live aufziehen.", "ready");
-      return true;
-    }
-    if (activeTool === "room") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          if (!updateSelectionScenePreview()) rebuildSelectionScene();
-          refreshHud();
-          await executeRoom();
-        }
-        return true;
-      }
-      if (intent.action === "secondary-release") return true;
-      if (intent.action === "primary" && adjustSelectionHandle("primary")) return true;
-      const roomTarget = intent.position
-        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200);
-      if (intent.action === "secondary") {
-        if (roomTarget) {
-          const existingRoom = existingRoomAt(roomTarget);
-          if (existingRoom) {
-            void removeExistingRoom(existingRoom);
-            return true;
-          }
-        }
-        stopSelectionDrag();
-        editingRoomInstanceId = null;
-        editingRoomAnchor = null;
-        selection = { first: null, second: null };
-        rebuildSelectionScene();
-        refreshHud();
-        setStatus("Raumauswahl zurückgesetzt. Rechtsklick auf einen Raum löscht nur mit aktivem Räume-Tool.", "info");
-        return true;
-      }
-      if (!roomTarget) {
-        setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      const existingRoom = existingRoomAt(roomTarget);
-      if (existingRoom) {
-        selectExistingRoom(existingRoom);
-        return true;
-      }
-      editingRoomInstanceId = null;
-      editingRoomAnchor = null;
-      startSelectionDrag(roomTarget);
-      setStatus("Linksklick halten und den Raumbereich wie mit dem Selection Tool aufziehen.", "ready");
-      return true;
-    }
-    if (activeTool === "ruler") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          rebuildSelectionScene();
-          refreshHud();
-          const distance = measurementMetres(selection);
-          setStatus(distance === null ? "Messung unvollständig." : `Distanz: ${distance.toFixed(2)} Meter`, distance === null ? "warning" : "ready");
-        }
-        return true;
-      }
-      if (intent.action === "secondary" || intent.action === "secondary-release") {
-        if (intent.action === "secondary") {
-          stopSelectionDrag();
-          selection = { first: null, second: null };
-          rebuildSelectionScene();
-          refreshHud();
-        }
-        return true;
-      }
-      const fallbackPlanePoint = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-      const rulerTarget = rulerPointFromTarget(
-        intent.targetPoint,
-        intent.sourceCell,
-        intent.position
-          ? { x: intent.position.x + 0.5, y: intent.position.y + 0.5, z: intent.position.z + 0.5 }
-          : fallbackPlanePoint
-            ? {
-                x: Number(fallbackPlanePoint.x.toFixed(2)),
-                y: Number(fallbackPlanePoint.y.toFixed(2)),
-                z: Number(fallbackPlanePoint.z.toFixed(2)),
-              }
-            : null,
-      );
-      if (!rulerTarget) {
-        setStatus("Kein gültiger Messpunkt unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      startSelectionDrag(rulerTarget);
-      setStatus("Bis zum zweiten Messpunkt ziehen und Linksklick loslassen.", "ready");
-      return true;
-    }
-    if (activeTool === "parcel") {
-      if (intent.action.includes("release")) return true;
-      const parcelAction = parcelSelectionActionForIntent(intent.action);
-      const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-      // The real ray hit is authoritative. Projecting the camera ray onto the
-      // parcel plane first can land behind a wall or roof and therefore in the
-      // neighbouring parcel, which made adding parcels appear broken while
-      // removing an already highlighted surface still worked.
-      const exactTarget = intent.targetPoint
-        ? { x: intent.targetPoint.x, z: intent.targetPoint.z }
-        : cameraTarget
-          ? { x: cameraTarget.x, z: cameraTarget.z }
-          : null;
-      const parcelTarget = exactTarget
-        ? { x: Math.floor(exactTarget.x), y: Math.floor(resolveParcelGridPlaneY(null)), z: Math.floor(exactTarget.z) }
-        : intent.position ?? (intent.sourceCell
-          ? { x: intent.sourceCell.worldX, y: intent.sourceCell.worldY, z: intent.sourceCell.worldZ }
-          : null);
-      if (parcelTarget && parcelAction) {
-        setParcelAt(
-          parcelTarget,
-          exactTarget,
-          parcelAction,
-        );
-      } else if (!parcelTarget) setStatus("Kein gültiges Flurstücksziel.", "warning");
-      return true;
-    }
-    if (activeTool === "parcel-grid") {
-      if (intent.action === "primary-release") {
-        if (parcelGridDragging) {
-          updateParcelGridDrag();
-          stopParcelGridDrag(true);
-          refreshHud();
-        }
-        return true;
-      }
-      if (intent.action === "secondary-release") return true;
-      if (intent.action === "secondary") moveParcelGridInnerLineOutward();
-      else if (intent.action === "primary") {
-        if (startParcelGridDrag()) return true;
-        const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-        const exactTarget = cameraTarget ?? intent.targetPoint;
-        const gridTarget = exactTarget ? {
-          x: Math.floor(exactTarget.x),
-          y: Math.floor(exactTarget.y),
-          z: Math.floor(exactTarget.z),
-        } : intent.position;
-        if (gridTarget) selectParcelGridAt(gridTarget, exactTarget);
-        else setStatus("Kein gültiges Ziel für das Grundstücksraster.", "warning");
-      }
-      return true;
-    }
-    if (activeTool === "clipboard") {
-      if (intent.action.includes("release")) return true;
-      if (intent.action === "primary" && operation === "paste") await executeClipboard(intent.position);
-      return true;
-    }
-    if (intent.action.includes("release")) return true;
-    const target = intent.position;
-    if (!target) {
-      setStatus("Kein gültiges Pinselziel unter dem Fadenkreuz.", "warning");
-      return true;
-    }
-    brushTarget = target;
-    refreshHud();
-    await executeAt(target, intent.action === "secondary" ? "clear" : operation);
-    return true;
+    return activeSystem()?.handleIntent(intent) ?? false;
   }
 
   function activate(tool: WorldEditTool, nextOperation: WorldEditOperation = "set"): void {
     if (destroyed) return;
     const previousTool = activeTool;
+    const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
     stopSelectionDrag();
     stopParcelGridDrag(false);
     activeTool = tool;
+    const system = systemRegistry?.get(tool);
+    if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
+    if (previousTool !== tool) previousSystem?.onDeactivate?.(tool);
     operation = nextOperation;
     configureOperationSelect(tool);
     syncPanelVisibility();
     options.root.dataset.worldEditActive = "true";
     options.root.dataset.worldEditTool = tool;
-    const maxDistance = tool === "selection" || tool === "room" || tool === "parcel" || tool === "parcel-grid" || tool === "ruler"
-      ? 60
-      : tool === "clipboard"
-        ? 40
-        : 16;
-    options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance });
-    if (previousTool === "parcel-grid" || tool === "parcel-grid") rebuildParcelGridScene();
-    setStatus(
-      tool === "selection"
-        ? "Linksklick halten und den Auswahlbereich blockweise live aufziehen; die sechs Flächengriffe funktionieren genauso."
-        : tool === "room"
-          ? "Raumbereich wie beim Selection Tool aufziehen; beim Loslassen wird er automatisch gespeichert."
-        : tool === "ruler"
-          ? "Ersten Messpunkt setzen; nahe Blockecken rastet das Messwerkzeug automatisch ein."
-          : tool === "parcel"
-            ? "Flurstück anvisieren: Linksklick wählt aus, Rechtsklick entfernt."
-            : tool === "parcel-grid"
-              ? "Jede innere Rasterlinie hat einen Griff: Punkt oder Doppelpfeil anvisieren, Linksklick halten und blockweise ziehen."
-            : tool === "clipboard"
-              ? "Copy, Cut oder Paste auswählen."
-              : "Pinsel mit Linksklick anwenden.",
-      "ready",
-    );
+    options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance: system.ui.maxDistance });
+    system.onActivate?.(previousTool);
+    rebuildSelectionScene();
+    setStatus(system.ui.activationMessage, "ready");
     refreshHud();
     try { void options.sceneRuntime.getInputController()?.requestPointerLock("world-edit-activate"); } catch { /* best effort */ }
   }
@@ -3697,6 +3480,7 @@ export function createWorldEditController(
   function deactivate(reason = "deactivate"): void {
     if (destroyed) return;
     const previousTool = activeTool;
+    const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
     activeTool = null;
     stopSelectionDrag();
     stopParcelGridDrag(false);
@@ -3707,7 +3491,7 @@ export function createWorldEditController(
     brushTarget = null;
     disposeSelectionGroup();
     options.sceneRuntime.setWorldEditIntentHandler(null);
-    if (previousTool === "parcel-grid") rebuildParcelGridScene();
+    previousSystem?.onDeactivate?.(null);
     delete options.root.dataset.worldEditActive;
     delete options.root.dataset.worldEditTool;
     delete options.root.dataset.rulerSnap;
@@ -3715,15 +3499,7 @@ export function createWorldEditController(
   }
 
   function toolFromValue(value: unknown): WorldEditTool {
-    const normalized = safeString(value, "selection").toLowerCase().replaceAll("_", "-");
-    if (normalized.includes("paint")) return "paint";
-    if (normalized.includes("sculpt")) return "sculpt";
-    if (normalized.includes("room") || normalized.includes("raum")) return "room";
-    if (normalized.includes("parcel-grid") || normalized.includes("grundst")) return "parcel-grid";
-    if (normalized.includes("parcel") || normalized.includes("flurst")) return "parcel";
-    if (normalized.includes("ruler") || normalized.includes("measure")) return "ruler";
-    if (normalized.includes("copy") || normalized.includes("clipboard") || normalized.includes("paste")) return "clipboard";
-    return "selection";
+    return systemRegistry?.match(value) ?? "selection";
   }
 
   function handleActivateEvent(event: Event): void {
@@ -3875,28 +3651,9 @@ export function createWorldEditController(
   }
 
   function resetActiveTool(): void {
-    stopSelectionDrag();
-    stopParcelGridDrag(false);
-    if (activeTool === "parcel") {
-      parcelSelection.parcels = [];
-      postParcelSelection();
-    }
-    if (activeTool === "parcel-grid") {
-      if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.guideKey);
-      activeParcelGridParcelId = null;
-      activeParcelGridGuideKey = null;
-      parcelGridGuide = null;
-      rebuildParcelGridScene();
-      persistParcelGridState();
-    }
-    selection = { first: null, second: null };
-    editingRoomInstanceId = null;
-    editingRoomAnchor = null;
-    delete options.root.dataset.rulerSnap;
-    brushTarget = null;
-    rebuildSelectionScene();
-    refreshHud();
-    setStatus("Auswahl zurÃ¼ckgesetzt.", "info");
+    const system = activeSystem();
+    system?.reset();
+    setStatus(system?.ui.resetMessage ?? "WorldEdit zurückgesetzt.", "info");
   }
 
   function handleInventoryAction(event: Event): void {
@@ -3905,11 +3662,7 @@ export function createWorldEditController(
     if (requestedTool && requestedTool !== inventoryToolId()) return;
     const action = safeString(detail.action, "").toLowerCase();
     if (action === "reset") resetActiveTool();
-    else if (action === "execute") {
-      if (activeTool === "clipboard") void executeClipboard();
-      else if (activeTool === "room") void executeRoom();
-      else void executeAt();
-    }
+    else if (action === "execute") void activeSystem()?.execute();
   }
 
   function requestParcelSelection(): void {
@@ -3926,28 +3679,180 @@ export function createWorldEditController(
     } catch { /* bridge is best effort */ }
   }
 
+  systemRegistry = createWorldEditSystemRegistry([
+    createSelectionSystem({
+      isDragging: () => selectionDragging,
+      updateDrag: updateSelectionDrag,
+      stopDrag: stopSelectionDrag,
+      updateScenePreview: updateSelectionScenePreview,
+      rebuildScene: rebuildSelectionScene,
+      refreshHud,
+      adjustHandle: adjustSelectionHandle,
+      clearLastPoint: () => {
+        selection = selection.second
+          ? { first: selection.first, second: null }
+          : { first: null, second: null };
+      },
+      resolveTarget: (intent) => intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200),
+      startDrag: startSelectionDrag,
+      hasCompleteSelection: () => Boolean(selection.first && selection.second),
+      execute: () => executeAt(),
+      reset: () => {
+        stopSelectionDrag();
+        selection = { first: null, second: null };
+        rebuildSelectionScene();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createRoomSystem({
+      isDragging: () => selectionDragging,
+      updateDrag: updateSelectionDrag,
+      stopDrag: stopSelectionDrag,
+      updateScenePreview: updateSelectionScenePreview,
+      rebuildScene: rebuildSelectionScene,
+      refreshHud,
+      adjustHandle: () => adjustSelectionHandle("primary"),
+      resolveTarget: (intent) => intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200),
+      existingRoomAt,
+      removeExistingRoom: (room) => { void removeExistingRoom(room as ExistingRoomRef); },
+      selectExistingRoom: (room) => selectExistingRoom(room as ExistingRoomRef),
+      beginNewRoom: (target) => {
+        editingRoomInstanceId = null;
+        editingRoomAnchor = null;
+        startSelectionDrag(target);
+      },
+      clearRoomSelection: () => {
+        editingRoomInstanceId = null;
+        editingRoomAnchor = null;
+        selection = { first: null, second: null };
+      },
+      hasCompleteSelection: () => Boolean(selection.first && selection.second),
+      executeRoom,
+      reset: () => {
+        stopSelectionDrag();
+        editingRoomInstanceId = null;
+        editingRoomAnchor = null;
+        selection = { first: null, second: null };
+        rebuildSelectionScene();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createPaintSystem({
+      getOperation: () => operation,
+      setTarget: (target) => { brushTarget = target; },
+      refreshHud,
+      executeAt: (target, forcedOperation) => executeAt(target, forcedOperation),
+      setStatus,
+      reset: () => {
+        brushTarget = null;
+        refreshHud();
+      },
+    }),
+    createSculptSystem({
+      getOperation: () => operation,
+      setTarget: (target) => { brushTarget = target; },
+      refreshHud,
+      executeAt: (target, forcedOperation) => executeAt(target, forcedOperation),
+      setStatus,
+      reset: () => {
+        brushTarget = null;
+        refreshHud();
+      },
+    }),
+    createParcelGridSystem({
+      isDragging: () => parcelGridDragging,
+      updateDrag: updateParcelGridDrag,
+      stopDrag: stopParcelGridDrag,
+      refreshHud,
+      moveInnerLineOutward: moveParcelGridInnerLineOutward,
+      startDrag: startParcelGridDrag,
+      cameraTarget: () => cameraPointAtPlaneY(resolveParcelGridPlaneY(null)),
+      selectAt: selectParcelGridAt,
+      rebuild: rebuildParcelGridScene,
+      reset: () => {
+        stopParcelGridDrag(false);
+        if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.guideKey);
+        activeParcelGridParcelId = null;
+        activeParcelGridGuideKey = null;
+        parcelGridGuide = null;
+        rebuildParcelGridScene();
+        persistParcelGridState();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createParcelSystem({
+      cameraTarget: () => cameraPointAtPlaneY(resolveParcelGridPlaneY(null)),
+      planeY: () => resolveParcelGridPlaneY(null),
+      setParcelAt,
+      reset: () => {
+        parcelSelection.parcels = [];
+        postParcelSelection();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createRulerSystem({
+      isDragging: () => selectionDragging,
+      updateDrag: updateSelectionDrag,
+      stopDrag: stopSelectionDrag,
+      rebuildScene: rebuildSelectionScene,
+      refreshHud,
+      clearMeasurement: () => {
+        selection = { first: null, second: null };
+        delete options.root.dataset.rulerSnap;
+      },
+      resolveTarget: (intent) => {
+        const fallbackPlanePoint = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
+        return rulerPointFromTarget(
+          intent.targetPoint,
+          intent.sourceCell,
+          intent.position
+            ? { x: intent.position.x + 0.5, y: intent.position.y + 0.5, z: intent.position.z + 0.5 }
+            : fallbackPlanePoint
+              ? {
+                  x: Number(fallbackPlanePoint.x.toFixed(2)),
+                  y: Number(fallbackPlanePoint.y.toFixed(2)),
+                  z: Number(fallbackPlanePoint.z.toFixed(2)),
+                }
+              : null,
+        );
+      },
+      startDrag: startSelectionDrag,
+      measurementMetres: () => measurementMetres(selection),
+      reset: () => {
+        stopSelectionDrag();
+        selection = { first: null, second: null };
+        delete options.root.dataset.rulerSnap;
+        rebuildSelectionScene();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createClipboardSystem({
+      getOperation: () => operation,
+      execute: executeClipboard,
+      canExecute: () => operation === "paste"
+        ? clipboard.length > 0
+        : Boolean(selection.first && selection.second),
+      reset: () => {
+        stopSelectionDrag();
+        selection = { first: null, second: null };
+        rebuildSelectionScene();
+        refreshHud();
+      },
+    }),
+  ]);
+
   closeButton?.addEventListener("click", () => deactivate("close-button"));
   executeButton?.addEventListener("click", () => {
-    if (activeTool === "clipboard") void executeClipboard();
-    else if (activeTool === "room") void executeRoom();
-    else void executeAt();
+    void activeSystem()?.execute();
   });
-  resetButton?.addEventListener("click", () => {
-    stopSelectionDrag();
-    stopParcelGridDrag(false);
-    if (activeTool === "parcel") {
-      parcelSelection.parcels = [];
-      postParcelSelection();
-    }
-    selection = { first: null, second: null };
-    editingRoomInstanceId = null;
-    editingRoomAnchor = null;
-    delete options.root.dataset.rulerSnap;
-    brushTarget = null;
-    rebuildSelectionScene();
-    refreshHud();
-    setStatus("Auswahl zurückgesetzt.", "info");
-  });
+  resetButton?.addEventListener("click", resetActiveTool);
   operationSelect?.addEventListener("change", () => {
     operation = operationSelect.value as WorldEditOperation;
     refreshHud();

@@ -3,8 +3,8 @@ import test from "node:test";
 
 import {
   normalizedParcelItems,
-  parcelSelectionActionForIntent,
 } from "../src/frontend/world_edit/world_edit_controller";
+import { parcelSelectionActionForIntent } from "../src/frontend/world_edit/systems/parcel/system";
 import {
   earthGridLonLatToWorld,
   earthGridWorldPointToLonLat,
