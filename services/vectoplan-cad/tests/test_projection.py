@@ -87,6 +87,50 @@ def test_room_zone_is_validated_and_projected_as_room_primitive():
     assert primitive["metadata"]["area_m2"] == 20.0
 
 
+def test_persistent_roof_projection_keeps_edit_identity_and_calculation():
+    payload = deepcopy(input_payload())
+    calculation = {
+        "ok": True,
+        "roof_type": "gable",
+        "geometry": {
+            "source_footprint_mm": [[0, 0], [8000, 0], [8000, 6000], [0, 6000]],
+            "roof_coverage_polygon_mm": [[-500, -500], [8500, -500], [8500, 6500], [-500, 6500]],
+            "ridge_line_mm": [[4000, -500], [4000, 6500]],
+        },
+    }
+    payload["sheets"][0]["elements"].append({
+        "element_ref": "roof-gable-1",
+        "label": "Parametrisches Dach · gable",
+        "kind": "roof",
+        "layer": "construction_roof",
+        "view_refs": ["vp_ground_floor"],
+        "source": {
+            "kind": "core_construction_element",
+            "object_instance_id": "roof-object-1",
+            "object_anchor": {"x": 0, "y": 6, "z": 0},
+        },
+        "roof_type": "gable",
+        "roof_calculation": calculation,
+        "geometry": {
+            "points_mm": calculation["geometry"]["source_footprint_mm"],
+            "coverage_points_mm": calculation["geometry"]["roof_coverage_polygon_mm"],
+            "ridge_line_mm": calculation["geometry"]["ridge_line_mm"],
+            "roof_calculation": calculation,
+        },
+    })
+
+    assert validate_projection_input(payload) == []
+    primitive = next(
+        item
+        for item in build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+        if item["primitive_ref"] == "roof-gable-1"
+    )
+    assert primitive["source_kind"] == "roof"
+    assert primitive["geometry"]["points_mm"] == calculation["geometry"]["source_footprint_mm"]
+    assert primitive["metadata"]["source"]["object_instance_id"] == "roof-object-1"
+    assert primitive["metadata"]["roof_calculation"] == calculation
+
+
 def test_semantic_polyline_is_one_selectable_thick_path():
     payload = deepcopy(input_payload())
     sheet = payload["sheets"][0]
@@ -155,3 +199,46 @@ def test_semantic_network_preserves_explicit_joint_nodes():
     assert primitive["primitive_type"] == "thick_segments"
     assert sorted(len(path) for path in primitive["geometry"]["paths_mm"]) == [2, 3]
     assert len(primitive["geometry"]["nodes_mm"]) == 4
+
+
+def test_architectural_roles_receive_specific_render_styles():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    viewport_ref = "vp_ground_floor"
+    roles = (
+        ("door", "opening"),
+        ("window", "opening"),
+        ("stair", "structure"),
+        ("slab", "structure"),
+    )
+    sheet["elements"] = [
+        {
+            "element_ref": f"semantic-{role}",
+            "label": role.title(),
+            "kind": kind,
+            "layer": f"construction_{role}",
+            "view_refs": [viewport_ref],
+            "semantic_role": role,
+            "geometry": {
+                "form": "region",
+                "outer_ring_mm": [
+                    [index * 2000, 0],
+                    [index * 2000 + 1200, 0],
+                    [index * 2000 + 1200, 240],
+                    [index * 2000, 240],
+                    [index * 2000, 0],
+                ],
+            },
+        }
+        for index, (role, kind) in enumerate(roles)
+    ]
+
+    assert validate_projection_input(payload) == []
+    primitives = build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+    assert {primitive["style_ref"] for primitive in primitives} == {
+        "door",
+        "window",
+        "stair",
+        "slab",
+    }
+    assert all(primitive["primitive_type"] == "polygon" for primitive in primitives)

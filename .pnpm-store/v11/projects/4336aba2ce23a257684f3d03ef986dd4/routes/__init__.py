@@ -86,6 +86,9 @@ INVENTORY_BLUEPRINT_MODULE_NAME: Final[str] = "routes.inventory"
 INVENTORY_BLUEPRINT_ATTRIBUTE_NAME: Final[str] = "inventory_bp"
 INVENTORY_BLUEPRINT_URL_PREFIX: Final[str] = "/editor/api"
 INVENTORY_BLUEPRINT_PUBLIC_PATH: Final[str] = "/editor/api/inventory"
+CAD_BLUEPRINT_MODULE_NAME: Final[str] = "routes.cad"
+CAD_BLUEPRINT_ATTRIBUTE_NAME: Final[str] = "cad_bp"
+CAD_BLUEPRINT_PUBLIC_PATH: Final[str] = "/editor/api/cad/automation/roof/calculate"
 REALTIME_BLUEPRINT_MODULE_NAME: Final[str] = "routes.realtime"
 REALTIME_BLUEPRINT_ATTRIBUTE_NAME: Final[str] = "realtime_bp"
 REALTIME_BLUEPRINT_PUBLIC_PATH: Final[str] = "/editor/api/realtime/_status"
@@ -545,6 +548,19 @@ def get_blueprint_specs() -> tuple[BlueprintSpec, ...]:
             ),
         ),
         BlueprintSpec(
+            module_name=CAD_BLUEPRINT_MODULE_NAME,
+            attribute_name=CAD_BLUEPRINT_ATTRIBUTE_NAME,
+            url_prefix=None,
+            required=True,
+            default_enabled=True,
+            description="Same-Origin-Proxy zur parametrischen CAD-Dachberechnung",
+            public_path=CAD_BLUEPRINT_PUBLIC_PATH,
+            enabled_config_keys=(
+                "EDITOR_CAD_ROUTES_ENABLED",
+                "VECTOPLAN_EDITOR_CAD_ROUTES_ENABLED",
+            ),
+        ),
+        BlueprintSpec(
             module_name=REALTIME_BLUEPRINT_MODULE_NAME,
             attribute_name=REALTIME_BLUEPRINT_ATTRIBUTE_NAME,
             url_prefix=None,
@@ -698,6 +714,7 @@ def _collect_route_presence(app: Flask) -> dict[str, bool]:
             for rule in _safe_rule_strings(app)
         ),
         "inventoryRoutePresent": _route_exists(app, INVENTORY_BLUEPRINT_PUBLIC_PATH),
+        "cadRoofRoutePresent": _route_exists(app, CAD_BLUEPRINT_PUBLIC_PATH),
         "realtimeStatusRoutePresent": _route_exists(app, REALTIME_BLUEPRINT_PUBLIC_PATH),
         "editorRoutePresent": _route_exists(app, EDITOR_BLUEPRINT_PUBLIC_PATH),
     }
@@ -718,6 +735,7 @@ def _store_registration_metadata(app: Flask) -> None:
         registry["route_presence"] = _collect_route_presence(app)
         registry["chunk_proxy_public_prefix"] = CHUNK_BLUEPRINT_PUBLIC_PREFIX
         registry["inventory_public_path"] = INVENTORY_BLUEPRINT_PUBLIC_PATH
+        registry["cad_roof_public_path"] = CAD_BLUEPRINT_PUBLIC_PATH
         registry["realtime_status_public_path"] = REALTIME_BLUEPRINT_PUBLIC_PATH
         registry["editor_public_path"] = EDITOR_BLUEPRINT_PUBLIC_PATH
     except Exception as exc:
@@ -754,6 +772,17 @@ def _assert_required_routes_present(app: Flask) -> None:
     )
     if inventory_enabled and not presence.get("inventoryRoutePresent"):
         errors.append(f"Erforderliche Inventory-Route `{INVENTORY_BLUEPRINT_PUBLIC_PATH}` fehlt.")
+
+    cad_enabled = _read_app_or_env_bool(
+        app,
+        (
+            "EDITOR_CAD_ROUTES_ENABLED",
+            "VECTOPLAN_EDITOR_CAD_ROUTES_ENABLED",
+        ),
+        default=True,
+    )
+    if cad_enabled and not presence.get("cadRoofRoutePresent"):
+        errors.append(f"Erforderliche CAD-Dachroute `{CAD_BLUEPRINT_PUBLIC_PATH}` fehlt.")
 
     realtime_enabled = _read_app_or_env_bool(
         app,
@@ -908,6 +937,13 @@ def get_routes_module_metadata(app: Flask | None = None) -> dict[str, Any]:
             "browserUsesThisRoute": True,
             "browserShouldNotCallVectoplanLibraryDirectly": True,
         },
+        "cadAutomationApi": {
+            "moduleName": CAD_BLUEPRINT_MODULE_NAME,
+            "attributeName": CAD_BLUEPRINT_ATTRIBUTE_NAME,
+            "publicPath": CAD_BLUEPRINT_PUBLIC_PATH,
+            "required": True,
+            "browserUsesThisRoute": True,
+        },
         "realtime": {
             "moduleName": REALTIME_BLUEPRINT_MODULE_NAME,
             "attributeName": REALTIME_BLUEPRINT_ATTRIBUTE_NAME,
@@ -979,6 +1015,10 @@ def get_routes_module_metadata(app: Flask | None = None) -> dict[str, Any]:
             "inventory_public_path",
             INVENTORY_BLUEPRINT_PUBLIC_PATH,
         )
+        base_metadata["cadRoofPublicPath"] = registry.get(
+            "cad_roof_public_path",
+            CAD_BLUEPRINT_PUBLIC_PATH,
+        )
         base_metadata["editorPublicPath"] = registry.get(
             "editor_public_path",
             EDITOR_BLUEPRINT_PUBLIC_PATH,
@@ -991,6 +1031,7 @@ def get_routes_module_metadata(app: Flask | None = None) -> dict[str, Any]:
         base_metadata["blueprintRegistrationEvents"] = []
         base_metadata["chunkProxyPublicPrefix"] = CHUNK_BLUEPRINT_PUBLIC_PREFIX
         base_metadata["inventoryPublicPath"] = INVENTORY_BLUEPRINT_PUBLIC_PATH
+        base_metadata["cadRoofPublicPath"] = CAD_BLUEPRINT_PUBLIC_PATH
         base_metadata["editorPublicPath"] = EDITOR_BLUEPRINT_PUBLIC_PATH
 
     return base_metadata
@@ -1044,6 +1085,9 @@ __all__ = [
     "INVENTORY_BLUEPRINT_ATTRIBUTE_NAME",
     "INVENTORY_BLUEPRINT_URL_PREFIX",
     "INVENTORY_BLUEPRINT_PUBLIC_PATH",
+    "CAD_BLUEPRINT_MODULE_NAME",
+    "CAD_BLUEPRINT_ATTRIBUTE_NAME",
+    "CAD_BLUEPRINT_PUBLIC_PATH",
     "REALTIME_BLUEPRINT_MODULE_NAME",
     "REALTIME_BLUEPRINT_ATTRIBUTE_NAME",
     "REALTIME_BLUEPRINT_PUBLIC_PATH",

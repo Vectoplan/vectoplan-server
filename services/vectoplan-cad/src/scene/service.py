@@ -109,6 +109,15 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
         primitive_type = "text"
     elif kind == "room":
         primitive_type = "room"
+    elif kind == "roof":
+        primitive_type = "polygon"
+        primitive_geometry = {
+            **geometry,
+            # Keep the editable polygon tied to the user-defined footprint.  The
+            # calculated roof coverage (including overhang) remains available as
+            # coverage_points_mm for dedicated roof rendering/export.
+            "points_mm": geometry.get("points_mm") or geometry.get("coverage_points_mm", []),
+        }
 
     return {
         "primitive_ref": element["element_ref"],
@@ -137,6 +146,12 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
             "room_type": element.get("room_type"),
             "area_m2": geometry.get("area_m2"),
             "library_context": element.get("library_context") or {},
+            "storey_id": element.get("storey_id") or element.get("storeyId"),
+            "host_wall_ref": element.get("host_wall_ref"),
+            "host_wall_thickness_mm": element.get("host_wall_thickness_mm"),
+            "roof_type": element.get("roof_type"),
+            "roof_request": element.get("roof_request") or {},
+            "roof_calculation": element.get("roof_calculation") or geometry.get("roof_calculation") or {},
         },
     }
 
@@ -163,6 +178,8 @@ def _style_for(element: dict[str, Any]) -> str:
         return "room-label"
     if kind == "room":
         return "room"
+    if kind == "roof":
+        return "roof"
     if kind == "text":
         return "annotation"
     return "line"

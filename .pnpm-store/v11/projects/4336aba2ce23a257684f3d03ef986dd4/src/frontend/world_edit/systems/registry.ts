@@ -12,7 +12,10 @@ const REQUIRED_TOOLS: readonly WorldEditTool[] = [
   "parcel",
   "parcel-grid",
   "ruler",
-  "clipboard",
+  "copy-paste",
+  "cut-paste",
+  "tentacle",
+  "roof",
 ];
 
 function normalizedAlias(value: unknown): string {

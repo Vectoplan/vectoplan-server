@@ -48,9 +48,14 @@ anbieten; er entscheidet nicht anhand eines Toolnamens, wie ein Werkzeug arbeite
 | `selection/` | Quader aufziehen und über sechs Flächen verändern |
 | `room/` | persistente semantische Räume erstellen/ändern/löschen |
 | `paint/` | Materialpinsel |
-| `sculpt/` | Volumen-/Geländepinsel |
+| `sculpt/` | eigenständiges Anheben/Absenken horizontaler Geländeschichten |
 | `parcel/` | Flurstücke auswählen und entfernen |
 | `parcel_grid/` | Grundstücksraster und Grenzgriffe |
 | `ruler/` | Messlinie mit Blockecken-Fang |
-| `clipboard/` | Copy, Cut und Paste |
+| `copy_paste/` | feste Copy/Paste-State-Machine mit beweglicher Vorschau |
+| `cut_paste/` | feste Cut/Paste-State-Machine mit beweglicher Vorschau |
+| `clipboard/` | nur gemeinsame zustandslose Clipboard-Geometrie |
+| `tentacle/` | geglättete Straßen-/Tunnelpfade aus zwei oder mehr Punkten |
+| `polygon_area/` | gemeinsame zustandslose Geometrie für gerade geschlossene Bereiche |
+| `roof/` | editierbare Dachfläche, CAD-Berechnung, 3D-Vorschau und Persistenz |
 | `shared/` | bewusst geteilte, zustandslose Bausteine |

@@ -20,10 +20,44 @@ import {
 } from "../src/frontend/world_edit/systems/parcel_grid/geometry";
 import {
   resolveWorldEditSelectionBounds,
-  snapWorldEditRulerPoint,
   snapWorldEditSelectionHandle,
   worldEditSelectionTopGridSegments,
 } from "../src/frontend/world_edit/systems/selection/geometry";
+import {
+  rulerSourceCellFromSurfaceHit,
+  snapWorldEditRulerPoint,
+} from "../src/frontend/world_edit/systems/ruler/geometry";
+import {
+  clipboardBoundsAt,
+  clipboardSelectionSize,
+} from "../src/frontend/world_edit/systems/clipboard/geometry";
+import {
+  sampleTentacleCurve,
+  voxelizeTentacleCurve,
+} from "../src/frontend/world_edit/systems/tentacle/geometry";
+
+test("clipboard preserves its dimensions while moving in all three axes", () => {
+  const size = clipboardSelectionSize({ x: 8, y: 3, z: -2 }, { x: 10, y: 6, z: 2 });
+  assert.deepEqual(size, { x: 3, y: 4, z: 5 });
+  assert.deepEqual(clipboardBoundsAt({ x: -7, y: 14, z: 21 }, size), {
+    first: { x: -7, y: 14, z: 21 },
+    second: { x: -5, y: 17, z: 25 },
+  });
+});
+
+test("tentacle is straight with two points and curved/deduplicated from three", () => {
+  const straight = sampleTentacleCurve([{ x: 0, y: 0, z: 0 }, { x: 4, y: 0, z: 0 }]);
+  assert.ok(straight.every((point) => Math.abs(point.z) < 1e-9));
+
+  const curved = sampleTentacleCurve([
+    { x: 0, y: 0, z: 0 },
+    { x: 4, y: 0, z: 0 },
+    { x: 6, y: 1, z: 4 },
+  ]);
+  assert.ok(curved.some((point) => point.z > 0 && point.z < 4));
+  const voxels = voxelizeTentacleCurve(curved);
+  assert.equal(voxels.length, new Set(voxels.map((point) => `${point.x}:${point.y}:${point.z}`)).size);
+});
 
 test("a normal 16k-cell parcel is no longer cut to the loaded terrain window", () => {
   const bounds = resolveParcelGridRenderBounds({
@@ -213,6 +247,26 @@ test("ruler points snap near voxel corners and remain free at the face centre", 
   assert.deepEqual(snapped.point, { x: 10, y: 4, z: -1 });
   assert.equal(free.snappedToCorner, false);
   assert.deepEqual(free.point, { x: 10.5, y: 4, z: -1.5 });
+});
+
+test("ruler corner magnet catches wider near-corner hits without capturing the face centre", () => {
+  const magnetic = snapWorldEditRulerPoint({
+    targetPoint: { x: 10.40, y: 4, z: -1.60 },
+    sourceCell: { x: 10, y: 3, z: -2 },
+  });
+
+  assert.equal(magnetic.snappedToCorner, true);
+  assert.deepEqual(magnetic.point, { x: 10, y: 4, z: -2 });
+});
+
+test("ruler surface hits resolve the visible block instead of the block behind it", () => {
+  assert.deepEqual(
+    rulerSourceCellFromSurfaceHit(
+      { x: 12, y: 8.4, z: -3.2 },
+      { x: 0.8, y: -0.1, z: 0.2 },
+    ),
+    { x: 12, y: 8, z: -4 },
+  );
 });
 
 test("logical fragments merge into one exact outline without their internal diagonal", () => {

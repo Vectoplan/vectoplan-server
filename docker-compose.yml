@@ -194,6 +194,7 @@ x-vectoplan-editor-environment: &vectoplan-editor-environment
   VECTOPLAN_EDITOR_WORLD_SOURCE_KIND: "${VECTOPLAN_EDITOR_WORLD_SOURCE_KIND:-chunk-service}"
 
   VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_LIBRARY_SERVICE_INTERNAL_URL:-http://vectoplan-library:5000}"
+  VECTOPLAN_EDITOR_CAD_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CAD_SERVICE_INTERNAL_URL:-http://vectoplan-cad:5000}"
   VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL: "${VECTOPLAN_EDITOR_CHUNK_SERVICE_INTERNAL_URL:-http://vectoplan-chunk:5000}"
 
   # Editor -> Chunk uses a service identity. Browser identities are never used
@@ -294,7 +295,7 @@ x-vectoplan-cad-environment: &vectoplan-cad-environment
   VECTOPLAN_CAD_CORE_INTERNAL_URL: "${VECTOPLAN_CAD_CORE_INTERNAL_URL:-http://vectoplan-core:5000}"
   VECTOPLAN_CAD_CORE_PUBLIC_URL: "${VECTOPLAN_CAD_CORE_PUBLIC_URL:-http://localhost:5106}"
   VECTOPLAN_CAD_CORE_SERVICE_API_KEY: "${VECTOPLAN_CORE_INTERNAL_API_KEY:-dev-vectoplan-core-service-key-change-me}"
-  VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS: "${VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS:-30}"
+  VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS: "${VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS:-45}"
   VECTOPLAN_CAD_LIBRARY_INTERNAL_URL: "${VECTOPLAN_CAD_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
   VECTOPLAN_CAD_LIBRARY_PUBLIC_URL: "${VECTOPLAN_LIBRARY_PUBLIC_URL:-http://localhost:5101}"
   VECTOPLAN_CAD_LIBRARY_INVENTORY_PATH: "${VECTOPLAN_CAD_LIBRARY_INVENTORY_PATH:-/api/v1/vplib/creative-library/inventory}"
@@ -331,6 +332,28 @@ x-vectoplan-energie-environment: &vectoplan-energie-environment
   VECTOPLAN_ENERGIE_EDITOR_INTERNAL_URL: "${VECTOPLAN_EDITOR_INTERNAL_URL:-http://vectoplan-editor:5000}"
   VECTOPLAN_ENERGIE_CAD_INTERNAL_URL: "${VECTOPLAN_CAD_INTERNAL_URL:-http://vectoplan-cad:5000}"
   VECTOPLAN_ENERGIE_LIBRARY_INTERNAL_URL: "${VECTOPLAN_LIBRARY_INTERNAL_URL:-http://vectoplan-library:5000}"
+
+x-vectoplan-statik-environment: &vectoplan-statik-environment
+  <<: *vectoplan-python-environment
+
+  SERVICE_NAME: "vectoplan-statik"
+  APP_NAME: "vectoplan-statik"
+  APP_HOME: "/opt/vectoplan/services/vectoplan-statik"
+  VECTOPLAN_SERVICE_NAME: "vectoplan-statik"
+
+  VECTOPLAN_STATIK_CONFIG: "${VECTOPLAN_STATIK_CONFIG:-production}"
+  VECTOPLAN_STATIK_HOST: "0.0.0.0"
+  VECTOPLAN_STATIK_PORT: "5000"
+  VECTOPLAN_STATIK_ROUTE_PREFIX: "${VECTOPLAN_STATIK_ROUTE_PREFIX:-/api/v1/statik}"
+  VECTOPLAN_STATIK_LOG_LEVEL: "${VECTOPLAN_STATIK_LOG_LEVEL:-INFO}"
+  VECTOPLAN_STATIK_FRAME_ANCESTORS: "${VECTOPLAN_STATIK_FRAME_ANCESTORS:-'self'}"
+  VECTOPLAN_STATIK_MOCK_MODE: "${VECTOPLAN_STATIK_MOCK_MODE:-true}"
+  VECTOPLAN_STATIK_STRICT_STARTUP: "${VECTOPLAN_STATIK_STRICT_STARTUP:-false}"
+  VECTOPLAN_STATIK_INTEGRATIONS_ENABLED: "${VECTOPLAN_STATIK_INTEGRATIONS_ENABLED:-false}"
+  VECTOPLAN_STATIK_CORE_INTERNAL_URL: "${VECTOPLAN_STATIK_CORE_INTERNAL_URL:-}"
+  VECTOPLAN_STATIK_CAD_INTERNAL_URL: "${VECTOPLAN_STATIK_CAD_INTERNAL_URL:-}"
+  VECTOPLAN_STATIK_EDITOR_INTERNAL_URL: "${VECTOPLAN_STATIK_EDITOR_INTERNAL_URL:-}"
+  VECTOPLAN_STATIK_LIBRARY_INTERNAL_URL: "${VECTOPLAN_STATIK_LIBRARY_INTERNAL_URL:-}"
 
 x-vectoplan-core-environment: &vectoplan-core-environment
   <<: *vectoplan-python-environment
@@ -1608,6 +1631,8 @@ services:
         condition: service_healthy
       vectoplan-chunk:
         condition: service_healthy
+      vectoplan-cad:
+        condition: service_healthy
 
     ports:
       - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_EDITOR_PUBLIC_PORT:-5100}:5000"
@@ -1799,6 +1824,45 @@ services:
           - vectoplan-energie
           - server-energie
 
+  vectoplan-statik:
+    <<: *vectoplan-service-defaults
+
+    build:
+      context: ./services/vectoplan-statik
+      dockerfile: Dockerfile
+
+    working_dir: /opt/vectoplan/services/vectoplan-statik
+
+    environment:
+      <<: *vectoplan-statik-environment
+
+    ports:
+      - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_STATIK_PUBLIC_PORT:-5111}:5000"
+
+    expose:
+      - "5000"
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "python -c \"import json, urllib.request; response = urllib.request.urlopen('http://127.0.0.1:5000/health/ready', timeout=3); payload = json.load(response); raise SystemExit(0 if response.status == 200 and payload.get('ok') is True else 1)\""
+        ]
+      interval: "${VECTOPLAN_STATIK_HEALTH_INTERVAL:-20s}"
+      timeout: "${VECTOPLAN_STATIK_HEALTH_TIMEOUT:-5s}"
+      retries: ${VECTOPLAN_STATIK_HEALTH_RETRIES:-5}
+      start_period: "${VECTOPLAN_STATIK_HEALTH_START_PERIOD:-15s}"
+
+    networks:
+      vectoplan-net:
+        aliases:
+          - vectoplan-statik
+          - statik
+      vectoplan-shared:
+        aliases:
+          - vectoplan-statik
+          - server-statik
+
   vectoplan-core-db:
     <<: *vectoplan-service-defaults
     image: postgres:16-alpine
@@ -1863,7 +1927,7 @@ services:
       vectoplan-core-init:
         condition: service_completed_successfully
       vectoplan-chunk:
-        condition: service_started
+        condition: service_healthy
     ports:
       - "${VECTOPLAN_HOST_BIND:-127.0.0.1}:${VECTOPLAN_CORE_PUBLIC_PORT:-5106}:5000"
     expose:

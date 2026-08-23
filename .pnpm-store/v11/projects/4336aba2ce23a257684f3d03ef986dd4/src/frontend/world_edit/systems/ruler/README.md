@@ -15,3 +15,8 @@ Misst die 3D-Distanz und die Achsanteile ΔX/ΔY/ΔZ zwischen zwei Punkten.
 Treffer nahe einer Blockecke rasten auf exakte Voxel-Ecken. Auf der Flächenmitte
 bleibt die Messung frei. Das System führt keine Chunk-Commands aus und darf keine
 anderen WorldEdit-Zustände persistieren.
+
+`geometry.ts` berechnet den sichtbaren Trefferblock und den Eckmagneten. Der
+Controller raycastet zuerst gegen tatsächlich sichtbare Chunk-/VPLIB-Meshes;
+dadurch kann ein optisch vorhandener Block nicht mehr zugunsten des Bodens
+dahinter übersprungen werden.

@@ -196,6 +196,13 @@ _DEFAULT_EDITOR_INVENTORY_ALLOW_BREAK_ACTION: Final[bool] = True
 _DEFAULT_EDITOR_INVENTORY_SCROLL_WRAP: Final[bool] = True
 
 # -----------------------------------------------------------------------------
+# CAD automation proxy defaults
+# -----------------------------------------------------------------------------
+
+_DEFAULT_CAD_SERVICE_INTERNAL_BASE_URL: Final[str] = "http://vectoplan-cad:5000"
+_DEFAULT_CAD_AUTOMATION_REQUEST_TIMEOUT_SECONDS: Final[float] = 30.0
+
+# -----------------------------------------------------------------------------
 # UI Defaults
 # -----------------------------------------------------------------------------
 
@@ -1584,6 +1591,31 @@ class BaseConfig:
             "EDITOR_INVENTORY_ENABLED",
         ),
         True,
+    )
+
+    # -------------------------------------------------------------------------
+    # CAD-Service / parametrische Automatisierung
+    # -------------------------------------------------------------------------
+
+    VECTOPLAN_EDITOR_CAD_SERVICE_INTERNAL_URL = _normalize_url(
+        _read_first_str_env(
+            (
+                "VECTOPLAN_EDITOR_CAD_SERVICE_INTERNAL_URL",
+                "VECTOPLAN_CAD_INTERNAL_URL",
+            ),
+            _DEFAULT_CAD_SERVICE_INTERNAL_BASE_URL,
+        ),
+        _DEFAULT_CAD_SERVICE_INTERNAL_BASE_URL,
+    )
+
+    VECTOPLAN_EDITOR_CAD_AUTOMATION_TIMEOUT_SECONDS = _read_first_float_env(
+        (
+            "VECTOPLAN_EDITOR_CAD_AUTOMATION_TIMEOUT_SECONDS",
+            "VECTOPLAN_CAD_AUTOMATION_TIMEOUT_SECONDS",
+        ),
+        default=_DEFAULT_CAD_AUTOMATION_REQUEST_TIMEOUT_SECONDS,
+        minimum=1.0,
+        maximum=120.0,
     )
 
     VECTOPLAN_EDITOR_INVENTORY_HOTBAR_SIZE = _read_first_int_env(

@@ -8,7 +8,10 @@ export type WorldEditTool =
   | "parcel"
   | "parcel-grid"
   | "ruler"
-  | "clipboard";
+  | "copy-paste"
+  | "cut-paste"
+  | "tentacle"
+  | "roof";
 
 export type WorldEditOperation =
   | "set"
@@ -46,7 +49,7 @@ export interface WorldEditSystemUi {
 }
 
 export interface WorldEditSystemBehavior {
-  readonly selectionVisualization: "none" | "box" | "ruler";
+  readonly selectionVisualization: "none" | "box" | "ruler" | "clipboard";
   readonly selectionDragMode: "none" | "box" | "ruler";
   readonly commandTool: Extract<WorldEditTool, "selection" | "paint" | "sculpt"> | null;
   readonly requiresCompleteSelection: boolean;
@@ -62,6 +65,7 @@ export interface WorldEditSystem {
   canExecute(): boolean;
   execute(): void | Promise<void>;
   reset(): void;
+  handleKeyDown?(event: KeyboardEvent): boolean;
   onActivate?(previousTool: WorldEditTool | null): void;
   onDeactivate?(nextTool: WorldEditTool | null): void;
 }
@@ -73,6 +77,10 @@ export interface WorldEditSystemRegistry {
 }
 
 export type WorldEditStatusSetter = (message: string, kind?: string) => void;
+
+// The Chunk service accepts a closed command-source vocabulary. Detailed
+// subsystem information belongs in commandMetadata, not commandSource.
+export const WORLD_EDIT_COMMAND_SOURCE = "editor" as const;
 
 export const WORLD_OPERATIONS = ["set", "wall", "fill", "replace", "clear"] as const;
 export const CLIPBOARD_OPERATIONS = ["copy", "cut", "paste"] as const;

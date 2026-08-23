@@ -46,6 +46,30 @@ def test_cad_template():
     assert response.status_code == 200
     assert b"plan-svg" in response.data
     assert b"navigation-hint" in response.data
+    assert b"plan-summary" not in response.data
+    assert b"building-panel" in response.data
+    assert b"building-storeys" in response.data
+    assert b'data-action="add-storey"' in response.data
+    assert b'data-storey-kind="attic"' in response.data
+    assert b"Geb\xc3\xa4udedaten werden als CAD-Entwurf" not in response.data
+    assert b"2,77 m" in response.data
+    assert b'data-edit-action="copy"' in response.data
+    assert b'data-edit-action="rotate"' in response.data
+    assert b'data-edit-action="cut"' in response.data
+    assert b'data-edit-action="paste"' in response.data
+    assert b'data-edit-action="distort"' in response.data
+    assert b'data-edit-action="mirror"' in response.data
+    assert b'data-edit-action="modify-point"' in response.data
+    assert b'data-view-action="plan-overview"' in response.data
+    assert b"cad-toolbar-stack" in response.data
+    assert b"cad-toolbar-icon" in response.data
+    assert b"parametric-roof-2" in response.data
+    assert b"plan-workspace-panel" in response.data
+    assert b'id="room-label-panel"' in response.data
+    assert b'data-action="save-room-label"' in response.data
+    assert b'id="plan-phase"' in response.data
+    assert b'id="plan-content"' in response.data
+    assert b'value="bridge"' in response.data
     assert b"workspace-actions" in response.data
     assert b"toggle-navigator" not in response.data
     assert b"toggle-inspector" not in response.data
@@ -97,6 +121,160 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "vectoplan-parcel-grid-state.v1" in source
     assert "parcel-grid-guide" in source
     assert "vectoplan-editor:parcel-selection-changed" in source
+    assert "function renderDoorPrimitive" in source
+    assert "function renderWindowPrimitive" in source
+    assert "function renderStairPrimitive" in source
+    assert "function renderPlanSummary" not in source
+    assert 'coveragePolicy: "cell-center"' in source
+    assert 'coveragePolicy: "cell-contained"' not in source
+    assert "The Core projection is already masked" in source
+    assert "function renderCrosshair" in source
+    assert 'id: "workspace-grid-minor"' not in source
+    assert "function loadBuildingDraft" in source
+    assert "function recalculateStoreyElevations" in source
+    assert "ground: 2770" in source
+    assert "upper: 2645" in source
+    assert "basement: 2530" in source
+    assert "attic: 1250" in source
+    assert "function parseStoreyHeightMeters" in source
+    assert 'textContent: "m"' in source
+    assert "vectoplan-cad:building-structure" in source
+    assert "function copySelectedPrimitive" in source
+    assert "function pasteClipboard" in source
+    assert "function primitiveEditTransform" in source
+    assert "function applyDistort" in source
+    assert 'commandName, transform' in source
+    assert "direkt weiterzeichnen · ESC beendet" in source
+    assert "drawCommandPending" not in source
+    assert "function enqueueDrawCommand" in source
+    assert "function dispatchCadCommandRequest" in source
+    assert "event.shiftKey || Math.abs(event.deltaX)" not in source
+    assert "function renderPointModifyHandles" in source
+    assert "function updatePointModification" in source
+    assert "pointGeometryOverrides: new Map()" in source
+    assert "function togglePlanOverview" in source
+    assert "function planOverviewCamera" in source
+    assert "function objectSnapCandidate" in source
+    assert "function wallPathBoundaryCorners" in source
+    assert "capExtension" in source
+    assert "boundaryPoint" in source
+    assert "function wallPrimitiveBoundaryPolygons" in source
+    assert "function finiteSegmentIntersection" in source
+    assert "function wallObjectSnapAnchors" in source
+    assert '"wall-edge-intersection"' in source
+    assert "function primitiveObjectSnapAnchors" in source
+    assert 'kind: "wall-edge-corner"' in source
+    assert "function primitiveSnapPriority" in source
+    assert "if (areaDrawing) return closest" in source
+    assert "function gridSnapEnabled" in source
+    assert "if (!gridSnapEnabled()) return [Math.round(point.x), Math.round(point.y)]" in source
+    assert 'return Boolean(control?.checked)' in source
+    assert "function wallEdgeGeometry" in source
+    assert "function openRoomLabelEditor" in source
+    assert "window.prompt" not in source
+    assert "function wallHostCandidate" in source
+    assert 'placement_mode = "wall_hosted"' in source
+    assert "roomDraftPoints" in source
+    assert "function handleAreaEscape" in source
+    assert "function areaCloseSnapPoint" in source
+    assert "function completeRoomDrawing" in source
+    assert 'kind: "area-close"' in source
+    assert 'state.snapTarget?.kind === "area-close"' in source
+    assert 'window.addEventListener("keydown", handleAreaEscape, true)' in source
+    assert 'window.addEventListener("keyup", suppressAreaEscapeKeyup, true)' in source
+    assert 'selectTool("room")' in source
+    assert 'selectTool("select")' not in source.split("async function submitRoomCommand", 1)[1].split("function openRoomLabelEditor", 1)[0]
+    assert 'payload.parameters.reference_line = "wall_edge"' in source
+    assert 'payload.parameters.wall_body_side = "left"' in source
+    assert "draftPointRadius" in source
+    assert "function renderPlanWorkspace" in source
+    assert "state.camera = null" not in source.split('String(data.type || data.kind || "") !== "vectoplan-app:parcel-selection-sync"', 1)[1].split("});", 1)[0]
+
+
+def test_cad_styles_use_white_workspace_and_full_precision_crosshair():
+    response = client().get("/static/cad/css/main.css")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    assert ".workspace-canvas" in source
+    assert "background: #fff" in source
+    assert "cursor: none" in source
+    assert ".cad-crosshair-horizontal" in source
+    assert ".cad-crosshair-vertical" in source
+    assert ".draft-wall-preview" in source
+    assert ".draft-wall-reference" in source
+    assert ".draft-wall-hatch-line" in source
+    assert ".cad-toolbar-stack" in source
+    assert ".cad-toolbar-icon" in source
+    assert ".point-modify-handle" in source
+    assert ".cad-app.is-plan-overview" in source
+    assert ".cad-crosshair-center.is-snapped" in source
+    assert ".cad-object-snap" not in source
+    assert ".primitive:hover .semantic-fill" not in source
+    assert ".plan-sheet" in source
+
+
+def test_plan_rules_cover_buildings_and_infrastructure():
+    response = client().get("/api/v1/cad/plan-rules")
+    assert response.status_code == 200
+    payload = response.get_json()
+    assert payload["contract_version"] == "cad-plan-rules/0.1"
+    assert payload["content_order"] == [
+        "floor_plans", "elevations", "sections", "title_block", "site_plan"
+    ]
+    assert payload["profiles"]["residential"]["label"] == "Wohngebäude"
+    assert payload["profiles"]["bridge"]["aliases"]["floor_plans"] == "Draufsicht"
+    assert payload["profiles"]["tunnel"]["aliases"]["sections"] == "Tunnelquerschnitte"
+    assert payload["phases"]["execution"]["dimensioning"] == "complete"
+
+
+def test_command_preview_keeps_active_storey_for_scene_filtering():
+    command = valid_command(
+        parameters={
+            "thickness_mm": 240,
+            "storey_id": "upper_floor_1",
+            "storey_name": "1. Obergeschoss",
+            "storey_height_mm": 3100,
+            "base_y": 4,
+            "storey_base_y": 3,
+        }
+    )
+    response = client().post("/api/v1/cad/commands", json=command)
+    assert response.status_code == 202
+    payload = response.get_json()
+    assert payload["preview_element"]["storey_id"] == "upper_floor_1"
+
+
+def test_parcel_grid_detail_is_only_visible_while_editing():
+    response = client().get("/static/cad/css/main.css")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    assert ".parcel-grid-surface," in source
+    assert "#plan-svg.is-parcel-grid-editing .parcel-grid-surface" in source
+    assert ".parcel-grid-guide { pointer-events: stroke; }" in source
+
+
+def test_parcel_geometry_uses_the_same_exact_earth_grid_as_3d():
+    response = client().get("/static/cad/js/main.js")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    model_function = source.split("function lonLatToModelMm", 1)[1].split(
+        "function lonLatToWorldModelMm", 1
+    )[0]
+    world_function = source.split("function lonLatToWorldModelMm", 1)[1].split(
+        "function parcelModelPolygons", 1
+    )[0]
+    assert model_function.index("lonLatToExactWorldModelMm") < model_function.index(
+        "lonLatToMetricWorldModelMm"
+    )
+    assert world_function.index("lonLatToExactWorldModelMm") < world_function.index(
+        "lonLatToMetricWorldModelMm"
+    )
+    assert "modelPointToNorthUp(exact)" in model_function
+    assert "function metricEarthGridDisplayFrame" in source
+    assert "metresPerDegree.longitude * 1000 / gridMmPerDegreeLongitude" in source
+    assert "metresPerDegree.latitude * 1000 / gridMmPerDegreeLatitude" in source
+    assert "worldModelPointToMetricDisplay(point)" in source
+    assert "metricDisplayPointToWorldModel([east, north])" in source
 
 
 def test_bootstrap_describes_interactive_capabilities():
@@ -246,6 +424,133 @@ def test_room_command_creates_green_zone_preview_with_area():
     assert payload["preview_element"]["semantic_role"] == "energy_zone"
     assert payload["preview_element"]["geometry"]["area_m2"] == 20.0
     assert payload["preview_element"]["text"] == "Wohnen\n20.00 m²"
+
+
+def test_polygon_room_keeps_contour_centroid_and_area():
+    response = client().post(
+        "/api/v1/cad/commands",
+        json=valid_command(
+            command="create_room",
+            family_ref="world-edit.room",
+            variant_ref="default",
+            geometry={
+                "start_mm": [0, 0],
+                "end_mm": [0, 4000],
+                "points_mm": [[0, 0], [6000, 0], [6000, 2000], [3000, 4000], [0, 4000]],
+            },
+            parameters={"height_mm": 2770, "room_type": "wohnen", "label": "Wohnen"},
+        ),
+    )
+    assert response.status_code == 202
+    geometry = response.get_json()["preview_element"]["geometry"]
+    assert geometry["points_mm"] == [[0, 0], [6000, 0], [6000, 2000], [3000, 4000], [0, 4000]]
+    assert geometry["area_m2"] == 21.0
+    assert len(geometry["label_point_mm"]) == 2
+
+
+def test_roof_command_calculates_preview_and_dispatches_as_shared_model_change():
+    points_mm = [[0, 0], [8000, 0], [8000, 3000], [4000, 3000], [4000, 7000], [0, 7000]]
+    command = valid_command(
+        command="create_roof",
+        family_ref="world-edit.roof",
+        variant_ref="hipped",
+        geometry={"start_mm": points_mm[0], "end_mm": points_mm[-1], "points_mm": points_mm},
+        parameters={
+            "roof_request": {
+                "contract_version": "cad-roof-calculation-request/0.1",
+                "roof_type": "hipped",
+                "footprint": {"outer_ring_mm": points_mm},
+                "parameters": {
+                    "pitch_deg": 35,
+                    "eaves_height_mm": 3500,
+                    "overhang_mm": 0,
+                    "structure": {
+                        "rafter": {"spacing_mm": 700},
+                        "purlin": {"maximum_spacing_mm": 2500},
+                    },
+                },
+            },
+        },
+        user_context={"core_project_id": "core-project-roof"},
+    )
+    with patch(
+        "routes.cad.dispatch_cad_command",
+        return_value={"ok": True, "accepted": True, "dispatch": "chunk-persisted"},
+    ) as dispatch:
+        response = client().post("/api/v1/cad/commands", json=command)
+
+    assert response.status_code == 202
+    payload = response.get_json()
+    assert payload["accepted"] is True
+    assert payload["preview_element"]["kind"] == "roof"
+    assert payload["preview_element"]["geometry"]["points_mm"] == points_mm
+    assert payload["command"]["parameters"]["roof_calculation"]["geometry_method"] == "polygon-clipped-v2"
+    assert payload["mutation_intent"]["model_changing"] is True
+    persisted = dispatch.call_args.args[2]
+    assert persisted["parameters"]["roof_calculation"]["roof_type"] == "hipped"
+    assert dispatch.call_args.args[1] == "core-project-roof"
+
+    updated_points = [[-1000, 0], *points_mm[1:]]
+    updated_request = {
+        **command["parameters"]["roof_request"],
+        "footprint": {"outer_ring_mm": updated_points},
+    }
+    update_command = valid_command(
+        command="update_roof",
+        family_ref="world-edit.roof",
+        variant_ref="hipped",
+        geometry={
+            "start_mm": updated_points[0],
+            "end_mm": updated_points[-1],
+            "points_mm": updated_points,
+        },
+        parameters={
+            "target_object_instance_id": "cad_roof_object_1",
+            "target_anchor": {"x": 0, "y": 3, "z": 0},
+            "roof_request": updated_request,
+        },
+        user_context={"core_project_id": "core-project-roof"},
+    )
+    with patch(
+        "routes.cad.dispatch_cad_command",
+        return_value={"ok": True, "accepted": True, "dispatch": "chunk-persisted"},
+    ) as update_dispatch:
+        update_response = client().post("/api/v1/cad/commands", json=update_command)
+
+    assert update_response.status_code == 202
+    update_payload = update_response.get_json()
+    assert update_payload["accepted"] is True
+    assert update_payload["preview_element"]["geometry"]["points_mm"] == updated_points
+    assert update_dispatch.call_args.args[2]["parameters"]["target_object_instance_id"] == "cad_roof_object_1"
+
+
+def test_opening_requires_wall_host_and_uses_wall_thickness():
+    base = valid_command(
+        command="create_opening",
+        family_ref="vp.hochbau.oeffnungen.innentueren.innentuer",
+        variant_ref="885_x_2010_mm",
+        geometry={"start_mm": [1000, 2000], "end_mm": [2000, 2000]},
+        parameters={"height_mm": 2010, "thickness_mm": 120},
+    )
+    rejected = client().post("/api/v1/cad/commands", json=base)
+    assert rejected.status_code == 400
+    assert any("host_wall_ref" in error for error in rejected.get_json()["errors"])
+
+    hosted = {
+        **base,
+        "parameters": {
+            **base["parameters"],
+            "host_wall_ref": "wall_001",
+            "host_wall_thickness_mm": 240,
+            "placement_mode": "wall_hosted",
+        },
+    }
+    response = client().post("/api/v1/cad/commands", json=hosted)
+    assert response.status_code == 202
+    preview = response.get_json()["preview_element"]
+    assert preview["host_wall_ref"] == "wall_001"
+    assert preview["geometry"]["thickness_mm"] == 240
+    assert preview["semantic_role"] == "door"
 
 
 def test_export_request_is_validated_but_not_dispatched():

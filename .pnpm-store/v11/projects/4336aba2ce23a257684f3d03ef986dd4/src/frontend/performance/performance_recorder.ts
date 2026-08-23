@@ -62,6 +62,13 @@ export interface PerformanceFrameSample {
     readonly terrainScanCount: number;
     readonly terrainChangeCount: number;
   };
+  readonly worldEdit?: {
+    readonly active: boolean;
+    readonly tool: string;
+    readonly clipboardPhase: string;
+    readonly clipboardCells: number;
+    readonly clipboardGizmoHandles: number;
+  };
 }
 
 export interface PerformanceActionSample {
@@ -190,6 +197,7 @@ function buildSummary(
       renderer: sample.renderer,
       world: sample.world,
       edits: sample.edits,
+      worldEdit: sample.worldEdit ?? null,
     }));
 
   return {
@@ -621,7 +629,16 @@ export function createPerformanceRecorder(
   function recordFrame(sample: PerformanceFrameSample): void {
     if (!recording || destroyed) return;
     if (samples.length < MAX_CAPTURED_FRAMES) {
-      samples.push(sample);
+      samples.push({
+        ...sample,
+        worldEdit: {
+          active: options.root.dataset.worldEditActive === "true",
+          tool: options.root.dataset.worldEditTool ?? "",
+          clipboardPhase: options.root.dataset.worldEditClipboardPhase ?? "",
+          clipboardCells: Math.max(0, Number(options.root.dataset.worldEditClipboardCells) || 0),
+          clipboardGizmoHandles: Math.max(0, Number(options.root.dataset.worldEditClipboardGizmoHandles) || 0),
+        },
+      });
     }
     const elapsedMs = performance.now() - startedAtMs;
     options.root.dataset.performanceCaptureFrameCount = String(samples.length);

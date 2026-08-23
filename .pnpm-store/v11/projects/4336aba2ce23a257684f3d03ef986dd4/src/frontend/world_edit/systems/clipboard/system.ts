@@ -8,19 +8,29 @@ import {
 
 export interface ClipboardSystemHooks {
   readonly getOperation: () => WorldEditOperation;
-  readonly execute: (target?: WorldEditPosition | null) => Promise<void>;
+  readonly getPhase: () => "select" | "move";
+  readonly isDragging: () => boolean;
+  readonly updateDrag: () => void;
+  readonly stopDrag: () => void;
+  readonly adjustSelectionHandle: () => boolean;
+  readonly resolveTarget: (intent: EditorInputWorldEditIntent) => WorldEditPosition | null;
+  readonly startSelection: (target: WorldEditPosition) => void;
+  readonly startMove: () => boolean;
+  readonly executeCurrent: () => Promise<void>;
   readonly canExecute: () => boolean;
   readonly reset: () => void;
+  readonly rebuild: () => void;
+  readonly refreshHud: () => void;
 }
 
 export function createClipboardSystem(hooks: ClipboardSystemHooks): WorldEditSystem {
   return {
-    tool: "clipboard",
-    aliases: ["copy", "cut", "paste", "copy-transform"],
+    tool: "copy-paste",
+    aliases: ["legacy-clipboard-adapter"],
     ui: {
       title: "Copy / Cut / Paste",
-      hint: "Copy/Cut verwendet den markierten Bereich. Paste setzt die Zwischenablage am anvisierten Ziel ein.",
-      activationMessage: "Copy, Cut oder Paste auswählen.",
+      hint: "Bereich markieren, mit Rechtsklick kopieren/ausschneiden, dann einen Eckgriff mit Linksklick halten und die Live-Vorschau bewegen. Rechtsklick fügt ein.",
+      activationMessage: "Bereich mit Linksklick markieren; Rechtsklick übernimmt ihn in die bewegliche Vorschau.",
       maxDistance: 40,
       inventoryToolId: "copy-transform",
       operations: CLIPBOARD_OPERATIONS,
@@ -36,21 +46,38 @@ export function createClipboardSystem(hooks: ClipboardSystemHooks): WorldEditSys
       resetMessage: "Zwischenablage-Auswahl zurückgesetzt.",
     },
     behavior: {
-      selectionVisualization: "box",
+      selectionVisualization: "clipboard",
       selectionDragMode: "box",
       commandTool: null,
       requiresCompleteSelection: false,
       showParcelGridHandles: false,
     },
     async handleIntent(intent): Promise<boolean> {
-      if (intent.action.includes("release")) return true;
-      if (intent.action === "primary" && hooks.getOperation() === "paste") {
-        await hooks.execute(intent.position);
+      if (intent.action === "primary-release") {
+        hooks.stopDrag();
+        hooks.rebuild();
+        hooks.refreshHud();
+        return true;
       }
+      if (intent.action === "secondary-release") return true;
+      if (hooks.getPhase() === "move") {
+        if (intent.action === "primary") hooks.startMove();
+        else await hooks.executeCurrent();
+        return true;
+      }
+      if (intent.action === "secondary") {
+        await hooks.executeCurrent();
+        return true;
+      }
+      if (hooks.adjustSelectionHandle()) return true;
+      const target = hooks.resolveTarget(intent);
+      if (target) hooks.startSelection(target);
       return true;
     },
     canExecute: hooks.canExecute,
-    execute: () => hooks.execute(),
+    execute: hooks.executeCurrent,
     reset: hooks.reset,
+    onActivate: hooks.rebuild,
+    onDeactivate: () => hooks.stopDrag(),
   };
 }

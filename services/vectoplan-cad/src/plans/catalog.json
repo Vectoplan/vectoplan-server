@@ -1,0 +1,40 @@
+{
+  "contract_version": "cad-plan-rules/0.1",
+  "phases": {
+    "design": {
+      "label": "Entwurfsplan",
+      "summary": "Übersichtliche Geometrie, Hauptmaße und die für den Entwurf erforderlichen Darstellungen.",
+      "dimensioning": "exterior"
+    },
+    "permit": {
+      "label": "Eingabeplan",
+      "summary": "Genehmigungsrelevante Grundrisse, Ansichten, Schnitte, Lageplan und Plankopf mit Haupt- und Öffnungsmaßen.",
+      "dimensioning": "exterior_and_openings"
+    },
+    "execution": {
+      "label": "Ausführungsplan",
+      "summary": "Vollständige Ausführungsdarstellung mit Außen-, Innen- und Öffnungsbemaßung.",
+      "dimensioning": "complete"
+    }
+  },
+  "content_order": ["floor_plans", "elevations", "sections", "title_block", "site_plan"],
+  "content_labels": {
+    "floor_plans": "Grundrisse",
+    "elevations": "Ansichten",
+    "sections": "Schnitte",
+    "title_block": "Plankopf",
+    "site_plan": "Lageplan"
+  },
+  "profiles": {
+    "residential": {"label": "Wohngebäude", "profile": "building", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+    "apartment": {"label": "Mehrfamilienhaus", "profile": "building", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+    "industrial": {"label": "Industriegebäude", "profile": "building", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+    "office": {"label": "Bürogebäude", "profile": "building", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+    "public": {"label": "Öffentliches Gebäude", "profile": "building", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+    "bridge": {"label": "Brücke", "profile": "bridge", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"], "aliases": {"floor_plans": "Draufsicht", "elevations": "Längsansichten", "sections": "Regelquerschnitte", "site_plan": "Übersichtslageplan"}},
+    "tunnel": {"label": "Tunnel", "profile": "tunnel", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"], "aliases": {"floor_plans": "Trassierungsgrundriss", "elevations": "Längsschnitt", "sections": "Tunnelquerschnitte"}},
+    "infrastructure": {"label": "Infrastrukturbauwerk", "profile": "infrastructure", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"], "aliases": {"floor_plans": "Übersichtsplan", "sections": "Längs- und Querschnitte"}},
+    "landscape": {"label": "Freianlage", "profile": "landscape", "required": ["floor_plans", "sections", "title_block", "site_plan"], "aliases": {"floor_plans": "Freianlagenplan", "sections": "Geländeschnitte"}},
+    "other": {"label": "Sonstiges Bauwerk", "profile": "generic", "required": ["floor_plans", "elevations", "sections", "title_block", "site_plan"]}
+  }
+}

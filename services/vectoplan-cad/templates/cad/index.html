@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8fafc">
   <title data-i18n="vectoplan.server.cad.cad.index.title.cad_erdgeschoss.35c0caf3">CAD · Erdgeschoss</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260820-semantic-rendering-1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260823-parametric-roof-2">
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
@@ -18,15 +18,28 @@
         </div>
       </div>
       <div class="cad-authoring" aria-label="CAD- und WorldEdit-Werkzeuge">
-        <div class="cad-tool-rail" aria-label="Zeichenwerkzeuge">
-          <button type="button" class="cad-tool-button is-active" data-tool="select" title="Auswählen" aria-label="Auswählen"><span aria-hidden="true">⌖</span><small>Auswahl</small></button>
-          <button type="button" class="cad-tool-button" data-tool="parcel-grid" title="Grundstücksraster anpassen" aria-label="Grundstücksraster anpassen"><span aria-hidden="true">▦</span><small>Raster</small></button>
-          <button type="button" class="cad-tool-button" data-quick-tool="wall" title="Wand zeichnen (Umschalt = 45°)" aria-label="Wand zeichnen"><span aria-hidden="true">╱</span><small>Wand</small></button>
-          <button type="button" class="cad-tool-button" data-quick-tool="room" title="Raum zeichnen" aria-label="Raum zeichnen"><span aria-hidden="true">▱</span><small>Raum</small></button>
-          <button type="button" class="cad-tool-button" data-quick-tool="window" title="Fenster einsetzen" aria-label="Fenster einsetzen"><span aria-hidden="true">▭</span><small>Fenster</small></button>
-          <button type="button" class="cad-tool-button" data-quick-tool="door" title="Tür einsetzen" aria-label="Tür einsetzen"><span aria-hidden="true">◿</span><small>Tür</small></button>
-          <button type="button" class="cad-tool-button" data-quick-tool="stair" title="Treppenbereich zeichnen" aria-label="Treppenbereich zeichnen"><span aria-hidden="true">▥</span><small>Treppe</small></button>
-          <button type="button" class="cad-tool-button cad-tool-button--library" data-action="toggle-library" title="Weitere Bauteile" aria-label="Creative Library öffnen"><span aria-hidden="true">＋</span><small>Mehr</small></button>
+        <div class="cad-toolbar-stack">
+          <div class="cad-tool-rail" aria-label="Zeichenwerkzeuge">
+            <button type="button" class="cad-tool-button is-active" data-tool="select" title="Auswählen" aria-label="Auswählen"><span aria-hidden="true">⌖</span><small>Auswahl</small></button>
+            <button type="button" class="cad-tool-button" data-tool="parcel-grid" title="Grundstücksraster anpassen" aria-label="Grundstücksraster anpassen"><span aria-hidden="true">▦</span><small>Raster</small></button>
+            <button type="button" class="cad-tool-button" data-quick-tool="wall" title="Wand zeichnen (Umschalt = 45°)" aria-label="Wand zeichnen"><span aria-hidden="true">╱</span><small>Wand</small></button>
+            <button type="button" class="cad-tool-button" data-quick-tool="room" title="Raum zeichnen" aria-label="Raum zeichnen"><span aria-hidden="true">▱</span><small>Raum</small></button>
+            <button type="button" class="cad-tool-button" data-quick-tool="window" title="Fenster einsetzen" aria-label="Fenster einsetzen"><span aria-hidden="true">▭</span><small>Fenster</small></button>
+            <button type="button" class="cad-tool-button" data-quick-tool="door" title="Tür einsetzen" aria-label="Tür einsetzen"><span aria-hidden="true">◿</span><small>Tür</small></button>
+            <button type="button" class="cad-tool-button" data-quick-tool="stair" title="Treppenbereich zeichnen" aria-label="Treppenbereich zeichnen"><span aria-hidden="true">▥</span><small>Treppe</small></button>
+            <button type="button" class="cad-tool-button cad-tool-button--library" data-action="toggle-library" title="Weitere Bauteile" aria-label="Creative Library öffnen"><span aria-hidden="true">＋</span><small>Mehr</small></button>
+          </div>
+          <div class="cad-edit-rail" aria-label="2D-Bearbeitungswerkzeuge">
+            <button type="button" data-edit-action="copy" title="Kopieren (Strg+C)" aria-label="Auswahl kopieren"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.5"/><path d="M15 9V6.5A1.5 1.5 0 0 0 13.5 5h-8A1.5 1.5 0 0 0 4 6.5v8A1.5 1.5 0 0 0 5.5 16H9"/></svg></button>
+            <button type="button" data-edit-action="rotate" title="Um 90° drehen (R)" aria-label="Auswahl um 90 Grad drehen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2A8 8 0 1 1 4 14"/><path d="M5 4v4.5h4.5"/></svg></button>
+            <button type="button" data-edit-action="cut" title="Ausschneiden (Strg+X)" aria-label="Auswahl ausschneiden"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="m8.2 8.2 10.8 8.3M8.2 15.8 19 7.5"/></svg></button>
+            <button type="button" data-edit-action="paste" title="Am Fadenkreuz einfügen (Strg+V)" aria-label="Am Fadenkreuz einfügen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5H6.5A1.5 1.5 0 0 0 5 7v12a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V7a1.5 1.5 0 0 0-1.5-1.5H15"/><rect x="9" y="3.5" width="6" height="4" rx="1.3"/></svg></button>
+            <button type="button" data-edit-action="distort" title="Auswahl numerisch verzerren" aria-label="Auswahl verzerren"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h13l1 12H7L5 6Z"/><circle cx="5" cy="6" r="1.3"/><circle cx="18" cy="6" r="1.3"/><circle cx="7" cy="18" r="1.3"/><circle cx="19" cy="18" r="1.3"/></svg></button>
+            <button type="button" data-edit-action="mirror" title="Horizontal spiegeln; Umschalt: vertikal" aria-label="Auswahl spiegeln"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18" stroke-dasharray="2 2"/><path d="m9 6-5 6 5 6V6ZM15 6l5 6-5 6V6Z"/></svg></button>
+            <button type="button" data-edit-action="modify-point" title="Geometriepunkt modifizieren" aria-label="Punkt modifizieren" aria-pressed="false"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 17 6M6 6h5M6 6v5M18 13v5h-5"/><circle cx="17" cy="6" r="2.2"/><circle cx="6" cy="17" r="2.2"/></svg></button>
+            <button type="button" data-tool="roof" title="Parametrische Dachfläche zeichnen" aria-label="Dachfläche zeichnen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 12 9-8 9 8"/><path d="M5.5 10.5V20h13v-9.5M9 20v-6h6v6"/><path d="M8 9h8"/></svg></button>
+            <button type="button" data-view-action="plan-overview" title="Gesamten Plan anzeigen / zurück" aria-label="Planansicht umschalten" aria-pressed="false"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M8 5v14M4 10h4M13 9h4M13 13h4"/></svg></button>
+          </div>
         </div>
         <div class="cad-active-library" id="active-library-item" hidden>
           <span id="active-library-kind">Library</span>
@@ -46,13 +59,172 @@
           <div id="library-status" class="cad-library-status">Creative Library wird geladen …</div>
           <div id="library-grid" class="cad-library-grid"></div>
         </section>
+        <section class="cad-transform-panel" id="distort-panel" hidden aria-label="Auswahl verzerren">
+          <div class="cad-transform-panel__header">
+            <strong>Verzerren</strong>
+            <button type="button" data-action="close-distort" aria-label="Verzerren schließen">×</button>
+          </div>
+          <label><span>Breite</span><input id="distort-scale-x" type="number" min="0.1" max="10" step="0.05" value="1"></label>
+          <label><span>Tiefe</span><input id="distort-scale-y" type="number" min="0.1" max="10" step="0.05" value="1"></label>
+          <label><span>Schrägstellung</span><span class="input-with-unit"><input id="distort-skew-x" type="number" min="-75" max="75" step="1" value="0"><small>°</small></span></label>
+          <button type="button" class="cad-transform-apply" data-action="apply-distort">Anwenden</button>
+        </section>
+        <section class="cad-room-label-panel" id="room-label-panel" hidden aria-label="Raumbezeichnung ändern">
+          <label for="room-label-input">Raumbezeichnung</label>
+          <div>
+            <input id="room-label-input" type="text" maxlength="120" autocomplete="off">
+            <button type="button" data-action="save-room-label">Übernehmen</button>
+            <button type="button" data-action="cancel-room-label" aria-label="Raumbezeichnung schließen">×</button>
+          </div>
+        </section>
+        <section class="cad-roof-panel" id="roof-options" hidden aria-label="Parametrisches Dach einstellen">
+          <div class="cad-roof-panel__header">
+            <div><span>DACHWERKZEUG</span><strong>Dachaufbau</strong></div>
+            <small>Punkte setzen · ersten Punkt oder ESC zum Schließen</small>
+          </div>
+          <div class="cad-roof-panel__grid">
+            <label><span>Dachart</span><select id="roof-tool-type" data-roof-input>
+              <option value="flat">Flachdach</option><option value="gable" selected>Satteldach</option>
+              <option value="hipped">Walmdach</option><option value="half_hipped">Krüppelwalmdach</option>
+              <option value="pent">Pultdach</option><option value="mansard">Mansarddach</option>
+              <option value="trapezoid">Trapezdach</option><option value="butterfly">Schmetterlingsdach</option>
+              <option value="pyramid">Zelt-/Pyramidendach</option><option value="barrel">Tonnendach</option>
+              <option value="sawtooth">Sheddach</option>
+            </select></label>
+            <label><span>Dachneigung</span><span class="input-with-unit"><input id="roof-pitch" data-roof-input type="number" min="0" max="80" step="0.5" value="35"><small>°</small></span></label>
+            <label><span>Traufhöhe</span><span class="input-with-unit"><input id="roof-eaves-height" data-roof-input type="number" step="100" value="6000"><small>mm</small></span></label>
+            <label><span>Firstrichtung</span><select id="roof-ridge-direction" data-roof-input><option value="auto">Automatisch</option><option value="x">X / Ost–West</option><option value="y">Y / Nord–Süd</option><option value="degrees">Winkel</option></select></label>
+            <label><span>Firstwinkel</span><span class="input-with-unit"><input id="roof-ridge-degrees" data-roof-input type="number" min="-360" max="360" step="1" value="0"><small>°</small></span></label>
+            <label><span>Dachhaut</span><span class="input-with-unit"><input id="roof-skin-thickness" data-roof-input type="number" min="1" max="2000" step="10" value="180"><small>mm</small></span></label>
+            <label class="cad-roof-panel__wide"><span>Material Dachhaut</span><input id="roof-skin-material" data-roof-input type="text" value="generic-roof-build-up"></label>
+          </div>
+          <details open><summary>Dachüberstände</summary><div class="cad-roof-panel__grid cad-roof-panel__grid--five">
+            <label><span>Standard</span><input id="roof-overhang" data-roof-input type="number" min="0" max="5000" value="500"></label>
+            <label><span>Nord</span><input id="roof-overhang-north" data-roof-input type="number" min="0" max="5000" value="500"></label>
+            <label><span>Ost</span><input id="roof-overhang-east" data-roof-input type="number" min="0" max="5000" value="500"></label>
+            <label><span>Süd</span><input id="roof-overhang-south" data-roof-input type="number" min="0" max="5000" value="500"></label>
+            <label><span>West</span><input id="roof-overhang-west" data-roof-input type="number" min="0" max="5000" value="500"></label>
+            <label class="cad-roof-panel__wide"><span>Je Polygonkante (optional, Komma/Leerzeichen)</span><input id="roof-edge-overhangs" data-roof-input type="text" placeholder="300 400 500 600"></label>
+          </div></details>
+          <details><summary>Sparren und Pfetten</summary><div class="cad-roof-panel__grid">
+            <label><span>Sparren Breite</span><input id="roof-rafter-width" data-roof-input type="number" min="20" max="1000" value="80"></label>
+            <label><span>Sparren Höhe</span><input id="roof-rafter-height" data-roof-input type="number" min="20" max="1500" value="200"></label>
+            <label><span>Sparren Abstand</span><input id="roof-rafter-spacing" data-roof-input type="number" min="100" max="3000" value="700"></label>
+            <label><span>Pfette Breite</span><input id="roof-purlin-width" data-roof-input type="number" min="20" max="1500" value="160"></label>
+            <label><span>Pfette Höhe</span><input id="roof-purlin-height" data-roof-input type="number" min="20" max="2000" value="240"></label>
+            <label><span>Pfetten max. Abstand</span><input id="roof-purlin-spacing" data-roof-input type="number" min="250" max="10000" value="2500"></label>
+          </div></details>
+          <details><summary>Sonderdach-Parameter</summary><div class="cad-roof-panel__grid">
+            <label><span>Plateauanteil</span><input id="roof-plateau-ratio" data-roof-input type="number" min="0.05" max="0.8" step="0.01" value="0.25"></label>
+            <label><span>Mansardknick</span><input id="roof-mansard-break" data-roof-input type="number" min="0.1" max="0.8" step="0.01" value="0.38"></label>
+            <label><span>Mansarde unten</span><input id="roof-mansard-lower-pitch" data-roof-input type="number" min="10" max="85" value="70"></label>
+            <label><span>Mansarde oben</span><input id="roof-mansard-upper-pitch" data-roof-input type="number" min="1" max="70" value="28"></label>
+            <label><span>Krüppelwalmanteil</span><input id="roof-hip-end-ratio" data-roof-input type="number" min="0.1" max="1" step="0.05" value="0.5"></label>
+            <label><span>Tonnenanstich</span><input id="roof-barrel-rise" data-roof-input type="number" min="100" max="30000" value="3000"></label>
+            <label><span>Tonnensegmente</span><input id="roof-barrel-segments" data-roof-input type="number" min="4" max="64" value="12"></label>
+            <label><span>Sheddach-Felder</span><input id="roof-sawtooth-count" data-roof-input type="number" min="1" max="20" value="3"></label>
+            <label><span>Sheddach-Neigung</span><input id="roof-sawtooth-pitch" data-roof-input type="number" min="5" max="80" value="35"></label>
+          </div></details>
+          <button type="button" class="cad-roof-panel__finish" data-action="finish-roof">Fläche schließen und Dach berechnen</button>
+        </section>
       </div>
-      <div class="plan-summary" id="plan-summary" role="status" aria-live="polite" hidden></div>
+      <aside class="building-panel" id="building-panel" aria-label="Gebäude und Geschosse">
+        <button type="button" class="building-panel__toggle" data-action="toggle-building" aria-expanded="false" aria-controls="building-panel-body">
+          <span class="building-panel__storey-icon" aria-hidden="true">⌂</span>
+          <span class="building-panel__current">
+            <small id="current-storey-kind">Aktives Geschoss</small>
+            <strong id="current-storey-name">Erdgeschoss</strong>
+          </span>
+          <span class="building-panel__height" id="current-storey-height">2,77 m</span>
+          <span class="building-panel__chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div class="building-panel__body" id="building-panel-body" hidden>
+          <div class="building-fields">
+            <label>
+              <span>Gebäudetyp</span>
+              <select id="building-type">
+                <option value="residential">Wohngebäude</option>
+                <option value="apartment">Mehrfamilienhaus</option>
+                <option value="industrial">Industriegebäude</option>
+                <option value="office">Bürogebäude</option>
+                <option value="public">Öffentliches Gebäude</option>
+                <option value="bridge">Brücke</option>
+                <option value="tunnel">Tunnel</option>
+                <option value="infrastructure">Infrastrukturbauwerk</option>
+                <option value="landscape">Freianlage</option>
+                <option value="other">Sonstiges</option>
+              </select>
+            </label>
+            <label>
+              <span>Dachart</span>
+              <select id="roof-type">
+                <option value="flat">Flachdach</option>
+                <option value="gable">Satteldach</option>
+                <option value="hipped">Walmdach</option>
+                <option value="pent">Pultdach</option>
+                <option value="mansard">Mansarddach</option>
+                <option value="other">Sonstiges</option>
+              </select>
+            </label>
+          </div>
+          <div class="building-storeys-heading">
+            <strong>Geschosse</strong>
+            <small>Rohmaß Boden bis Decke</small>
+          </div>
+          <div class="building-storeys" id="building-storeys"></div>
+          <div class="building-storey-actions">
+            <button type="button" data-action="add-storey" data-storey-kind="upper">＋ Obergeschoss</button>
+            <button type="button" data-action="add-storey" data-storey-kind="attic">＋ Dachgeschoss</button>
+            <button type="button" data-action="add-storey" data-storey-kind="basement">＋ Keller</button>
+          </div>
+        </div>
+      </aside>
+      <aside class="plan-workspace-panel" id="plan-workspace-panel" aria-label="Planansicht und Planzusammenstellung" hidden>
+        <div class="plan-workspace-panel__header">
+          <span class="plan-workspace-panel__icon" aria-hidden="true">▤</span>
+          <span>
+            <small>PLANANSICHT</small>
+            <strong>Planzusammenstellung</strong>
+          </span>
+          <button type="button" data-view-action="plan-overview" title="Zur CAD-Ansicht zurück" aria-label="Planansicht schließen">×</button>
+        </div>
+        <div class="plan-workspace-panel__body">
+          <label class="plan-workspace-field">
+            <span>Planart</span>
+            <select id="plan-phase">
+              <option value="design">Entwurfsplan</option>
+              <option value="permit">Eingabeplan</option>
+              <option value="execution">Ausführungsplan</option>
+            </select>
+          </label>
+          <label class="plan-workspace-field">
+            <span>Planinhalt</span>
+            <select id="plan-content">
+              <option value="overview">Planübersicht</option>
+              <option value="floor_plans">Grundrisse</option>
+              <option value="elevations">Ansichten</option>
+              <option value="sections">Schnitte</option>
+              <option value="title_block">Plankopf</option>
+              <option value="site_plan">Lageplan</option>
+            </select>
+          </label>
+          <label class="plan-workspace-field">
+            <span>Darstellung</span>
+            <select id="plan-view-selection"></select>
+          </label>
+          <div class="plan-workspace-rule">
+            <span>Planumfang für Bauwerkstyp</span>
+            <strong id="plan-building-profile">Wohngebäude</strong>
+            <div class="plan-workspace-chips" id="plan-required-content"></div>
+            <p id="plan-rule-summary"></p>
+          </div>
+        </div>
+      </aside>
       <div class="workspace-canvas" id="workspace-canvas">
         <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
       </div>
       <div class="navigation-hint">
-        <span class="desktop-hint">Mausrad: Zoom · Umschalt beim Zeichnen: 45° · Umschalt + Mausrad: horizontal · Mittlere Maustaste: verschieben</span>
+        <span class="desktop-hint">Mausrad: Zoom – auch mit Umschalt · Umschalt beim Zeichnen: 45° · Mittlere Maustaste: verschieben</span>
         <span class="touch-hint" data-i18n="vectoplan.server.cad.cad.index.span.ziehen_verschieben_zwei_finger_zoomen.d0c629ea">Ziehen: verschieben · Zwei Finger: zoomen</span>
       </div>
       <div id="workspace-message" class="workspace-message" role="status" aria-live="polite" hidden></div>
@@ -60,6 +232,6 @@
 
   </main>
 
-  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260820-semantic-rendering-1" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260823-parametric-roof-2" defer></script>
 </body>
 </html>

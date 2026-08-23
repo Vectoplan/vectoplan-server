@@ -32,5 +32,6 @@ export function shouldRenderSemanticFootprint(
   ref: SemanticObjectRenderDescriptor,
 ): boolean {
   if (ref.objectTypeId === "space_room") return true;
+  if (ref.objectTypeId === "building_roof") return true;
   return normalizedText(ref.metadata.source) !== "vectoplan-cad";
 }

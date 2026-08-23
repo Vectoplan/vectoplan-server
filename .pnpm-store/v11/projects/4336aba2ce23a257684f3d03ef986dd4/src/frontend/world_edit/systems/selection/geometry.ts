@@ -14,17 +14,6 @@ export interface WorldEditSelectionBounds {
   readonly center: WorldEditSelectionPoint;
 }
 
-export interface WorldEditRulerPoint {
-  readonly x: number;
-  readonly y: number;
-  readonly z: number;
-}
-
-export interface WorldEditRulerSnapResult {
-  readonly point: WorldEditRulerPoint;
-  readonly snappedToCorner: boolean;
-}
-
 export function resolveWorldEditSelectionBounds(
   first: WorldEditSelectionPoint,
   second: WorldEditSelectionPoint,
@@ -113,52 +102,4 @@ export function worldEditSelectionTopGridSegments(
     positions.push(minimumX, topY, maximumZ, maximumX, topY, maximumZ);
   }
   return positions;
-}
-
-/**
- * Snaps a measured surface point to the nearest corner of the hit voxel.
- * The radius is deliberately smaller than half a block so aiming near the
- * middle of a face continues to produce a free measurement point.
- */
-export function snapWorldEditRulerPoint(options: Readonly<{
-  targetPoint: WorldEditRulerPoint;
-  sourceCell: WorldEditRulerPoint | null;
-  snapRadius?: number;
-}>): WorldEditRulerSnapResult {
-  const point = {
-    x: Number(options.targetPoint.x),
-    y: Number(options.targetPoint.y),
-    z: Number(options.targetPoint.z),
-  };
-  const sourceCell = options.sourceCell;
-  if (!sourceCell || ![point.x, point.y, point.z].every(Number.isFinite)) {
-    return { point, snappedToCorner: false };
-  }
-
-  let nearest: WorldEditRulerPoint | null = null;
-  let nearestDistance = Number.POSITIVE_INFINITY;
-  for (const xOffset of [0, 1]) {
-    for (const yOffset of [0, 1]) {
-      for (const zOffset of [0, 1]) {
-        const corner = {
-          x: sourceCell.x + xOffset,
-          y: sourceCell.y + yOffset,
-          z: sourceCell.z + zOffset,
-        };
-        const distance = Math.hypot(
-          point.x - corner.x,
-          point.y - corner.y,
-          point.z - corner.z,
-        );
-        if (distance < nearestDistance) {
-          nearest = corner;
-          nearestDistance = distance;
-        }
-      }
-    }
-  }
-  const snapRadius = Math.max(0, Number(options.snapRadius ?? 0.42));
-  return nearest && nearestDistance <= snapRadius
-    ? { point: nearest, snappedToCorner: true }
-    : { point, snappedToCorner: false };
 }

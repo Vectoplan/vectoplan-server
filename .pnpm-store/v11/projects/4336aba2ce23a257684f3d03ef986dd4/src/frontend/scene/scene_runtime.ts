@@ -28,6 +28,7 @@ import {
   isVplibParametricObjectRef,
   shouldRenderSemanticFootprint,
 } from "./semantic_object_rendering";
+import { createRoofCalculationMeshes } from "./roof_calculation_rendering";
 import {
   createRemoteAvatarScene,
   type RemoteAvatarScene,
@@ -1864,6 +1865,18 @@ function appendSemanticObjectMeshes(
       semanticMeshes.push(...parametric.meshes);
       semanticMaterials.push(...parametric.materials);
       semanticGeometries.push(...parametric.geometries);
+      continue;
+    }
+    if (ref.objectTypeId === "building_roof") {
+      const roof = createRoofCalculationMeshes(ref.metadata.roofCalculation, {
+        scale: cellSize,
+        semanticObjectRef: ref,
+        objectInstanceId: ref.objectInstanceId,
+      });
+      for (const mesh of roof.meshes) record.group.add(mesh);
+      semanticMeshes.push(...roof.meshes);
+      semanticMaterials.push(...roof.materials);
+      semanticGeometries.push(...roof.geometries);
       continue;
     }
     const geometry = createSemanticFootprintGeometry(

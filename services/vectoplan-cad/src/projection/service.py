@@ -13,6 +13,7 @@ SUPPORTED_ELEMENT_KINDS = {
     "opening",
     "room",
     "room_label",
+    "roof",
     "structure",
     "text",
     "wall",
@@ -172,6 +173,8 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
             "plan_profiles": f"{config['ROUTE_PREFIX']}/plan-profiles",
             "core_projection": f"{config['ROUTE_PREFIX']}/core/projects/<core_project_id>/projection",
             "core_import_projection": f"{config['ROUTE_PREFIX']}/core/projects/<core_project_id>/imports/<document_id>/projection",
+            "automatic_dimensions": f"{config['ROUTE_PREFIX']}/automation/dimensions/calculate",
+            "parametric_roof": f"{config['ROUTE_PREFIX']}/automation/roof/calculate",
         },
         "capabilities": {
             "plan_sheet": True,
@@ -189,12 +192,16 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
                 "create_opening",
                 "place_library_object",
                 "create_room",
+                "create_roof",
+                "update_roof",
                 "create_line",
                 "create_dimension",
             ],
             "library_only_placement": True,
             "world_edit": "cad-worldedit/0.1",
             "room_zones": "vectoplan-space-room/0.1",
+            "automatic_dimensions": "cad-auto-dimension-result/0.1",
+            "parametric_roof": "cad-roof-calculation-result/0.1",
             "model_command_bridge": "vectoplan-model-command/0.1",
             "commands": (
                 "core_chunk_persistent"
@@ -265,12 +272,20 @@ def _validate_geometry(kind: str | None, value: Any, path: str, errors: list[str
             if not _is_number(value.get(key)):
                 errors.append(f"{path}.{key} must be a number")
     if kind == "room":
-        for key in ("x_mm", "y_mm"):
-            if not _is_number(value.get(key)):
-                errors.append(f"{path}.{key} must be a number")
-        for key in ("width_mm", "depth_mm", "height_mm"):
-            if not _is_number(value.get(key)) or value[key] <= 0:
-                errors.append(f"{path}.{key} must be a number greater than zero")
+        points = value.get("points_mm")
+        if isinstance(points, list):
+            _validate_points(points, f"{path}.points_mm", errors, minimum=3)
+            if not _is_number(value.get("area_m2")) or value["area_m2"] <= 0:
+                errors.append(f"{path}.area_m2 must be a number greater than zero")
+            _validate_point(value.get("label_point_mm"), f"{path}.label_point_mm", errors)
+            _require_positive_number(value, "height_mm", path, errors)
+        else:
+            for key in ("x_mm", "y_mm"):
+                if not _is_number(value.get(key)):
+                    errors.append(f"{path}.{key} must be a number")
+            for key in ("width_mm", "depth_mm", "height_mm"):
+                if not _is_number(value.get(key)) or value[key] <= 0:
+                    errors.append(f"{path}.{key} must be a number greater than zero")
 
 
 def _validate_semantic_geometry(

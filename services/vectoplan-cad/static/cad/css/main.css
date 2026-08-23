@@ -89,22 +89,62 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
   pointer-events: none;
 }
 .cad-authoring > * { pointer-events: auto; }
+.cad-toolbar-stack {
+  width: min(590px, calc(100vw - 28px));
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  pointer-events: auto;
+}
 .cad-tool-rail {
   display: flex;
+  width: 100%;
   max-width: 100%;
   gap: 5px;
   overflow-x: auto;
   padding: 5px;
   border: 1px solid var(--line-strong);
-  border-radius: 9px;
+  border-radius: 9px 9px 0 0;
   background: rgba(255,255,255,.96);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 24px rgba(20, 34, 53, .12);
   backdrop-filter: blur(12px);
 }
+.cad-edit-rail {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  gap: 2px;
+  margin-top: -1px;
+  overflow: hidden;
+  padding: 4px 5px 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0 0 9px 9px;
+  background: rgba(248,250,252,.97);
+  box-shadow: 0 10px 28px rgba(20, 34, 53, .12);
+  backdrop-filter: blur(12px);
+}
+.cad-edit-rail button {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 34px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-soft);
+}
+.cad-edit-rail button:hover:not(:disabled) { border-color: var(--line); background: var(--surface); }
+.cad-edit-rail button.is-active { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent-strong); }
+.cad-toolbar-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .cad-tool-button {
-  width: 68px;
+  width: auto;
   height: 48px;
-  flex: 0 0 auto;
+  min-width: 0;
+  flex: 1 1 0;
   display: grid;
   place-content: center;
   gap: 1px;
@@ -154,6 +194,65 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
 .cad-library-card strong { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
 .cad-library-card small { display: block; margin-top: 2px; color: var(--muted); font-size: 8px; }
 .cad-library-card.is-selected { border-color: var(--accent); background: var(--accent-soft); }
+.cad-transform-panel {
+  width: 270px;
+  display: grid;
+  gap: 9px;
+  padding: 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: rgba(255,255,255,.98);
+  box-shadow: var(--shadow-md);
+}
+.cad-transform-panel__header { display: flex; align-items: center; justify-content: space-between; }
+.cad-transform-panel__header strong { font-size: 12px; }
+.cad-transform-panel__header button { width: 29px; min-height: 29px; padding: 0; font-size: 17px; }
+.cad-transform-panel > label { display: grid; grid-template-columns: 1fr 105px; align-items: center; gap: 9px; color: var(--text-soft); font-size: 10px; }
+.cad-transform-panel input { width: 100%; padding: 0 8px; }
+.input-with-unit { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 5px; }
+.input-with-unit small { color: var(--muted); }
+.cad-transform-apply { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
+.cad-transform-apply:hover:not(:disabled) { background: var(--accent-strong); color: #fff; }
+.cad-room-label-panel {
+  width: min(390px, calc(100vw - 40px));
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: rgba(255,255,255,.98);
+  box-shadow: var(--shadow-md);
+}
+.cad-room-label-panel > label { color: var(--text-soft); font-size: 9px; font-weight: 750; }
+.cad-room-label-panel > div { display: grid; grid-template-columns: minmax(0,1fr) auto 30px; gap: 6px; }
+.cad-room-label-panel input { width: 100%; min-width: 0; }
+.cad-room-label-panel [data-action="save-room-label"] { border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 700; }
+.cad-room-label-panel [data-action="cancel-room-label"] { min-width: 30px; padding: 0; font-size: 17px; }
+.cad-roof-panel {
+  width: min(660px, calc(100vw - 40px));
+  max-height: min(720px, calc(100vh - 142px));
+  overflow: auto;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: rgba(255,255,255,.98);
+  box-shadow: var(--shadow-md);
+  scrollbar-color: #c8d1db transparent;
+  scrollbar-width: thin;
+}
+.cad-roof-panel__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.cad-roof-panel__header span { display: block; color: var(--accent); font-size: 8px; font-weight: 850; letter-spacing: .14em; }
+.cad-roof-panel__header strong { display: block; margin-top: 2px; font-size: 13px; }
+.cad-roof-panel__header small { max-width: 310px; color: var(--muted); font-size: 9px; text-align: right; }
+.cad-roof-panel__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.cad-roof-panel__grid--five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.cad-roof-panel__grid label { min-width: 0; display: grid; align-content: start; gap: 4px; color: var(--text-soft); font-size: 9px; font-weight: 700; }
+.cad-roof-panel__grid input, .cad-roof-panel__grid select { width: 100%; min-width: 0; padding: 0 8px; }
+.cad-roof-panel__wide { grid-column: 1 / -1; }
+.cad-roof-panel details { margin-top: 9px; border-top: 1px solid var(--line); }
+.cad-roof-panel summary { padding: 9px 1px 7px; color: var(--text-soft); font-size: 9px; font-weight: 800; cursor: pointer; user-select: none; }
+.cad-roof-panel__finish { width: 100%; margin-top: 11px; border-color: var(--accent); background: var(--accent); color: #fff; font-weight: 750; }
+.cad-roof-panel__finish:hover:not(:disabled) { border-color: var(--accent-strong); background: var(--accent-strong); color: #fff; }
 .history-tools {
   align-self: flex-end;
   padding: 4px;
@@ -223,12 +322,12 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
   width: 100%;
   height: 100%;
   background: #fff;
-  cursor: default;
+  cursor: none;
   touch-action: none;
   user-select: none;
   -webkit-user-select: none;
 }
-#plan-svg.is-drawing { cursor: crosshair; }
+#plan-svg.is-drawing { cursor: none; }
 #plan-svg.is-pan-ready { cursor: grab; }
 #plan-svg.is-panning { cursor: grabbing; }
 .navigation-hint {
@@ -263,32 +362,103 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
   box-shadow: var(--shadow-md);
   font-size: 12px;
 }
-.plan-summary {
+.building-panel {
   position: absolute;
-  top: 78px;
+  top: 14px;
   right: 14px;
-  z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  z-index: 20;
+  width: min(350px, calc(100% - 28px));
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: rgba(255,255,255,.97);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+}
+.building-panel__toggle {
+  width: 100%;
+  min-height: 56px;
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr) auto 18px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 0;
+  border-radius: 9px;
+  text-align: left;
+}
+.building-panel__storey-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-strong); font-size: 17px; }
+.building-panel__current { display: grid; min-width: 0; }
+.building-panel__current small { color: var(--muted); font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.building-panel__current strong { margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+.building-panel__height { color: var(--text-soft); font-size: 10px; font-weight: 700; white-space: nowrap; }
+.building-panel__chevron { color: var(--muted); font-size: 16px; transition: transform .18s ease; }
+.building-panel.is-expanded .building-panel__chevron { transform: rotate(180deg); }
+.building-panel__body { max-height: min(650px, calc(100vh - 88px)); overflow: auto; padding: 11px; border-top: 1px solid var(--line); }
+.building-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.building-fields label { display: grid; gap: 5px; color: var(--muted); font-size: 9px; font-weight: 700; }
+.building-fields select { width: 100%; min-width: 0; font-size: 10px; }
+.building-storeys-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 14px; }
+.building-storeys-heading strong { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.building-storeys-heading small { color: var(--muted); font-size: 8px; }
+.building-storeys { display: grid; gap: 6px; margin-top: 7px; }
+.building-storey {
+  display: grid;
+  grid-template-columns: 24px minmax(0,1fr) 88px 28px;
+  align-items: center;
   gap: 5px;
-  max-width: min(520px, calc(100% - 28px));
-  pointer-events: none;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface-subtle);
 }
-.plan-summary strong,
-.plan-summary span {
-  padding: 5px 8px;
-  border: 1px solid rgba(196, 206, 217, .9);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, .9);
-  color: #526174;
-  box-shadow: 0 3px 12px rgba(31, 45, 61, .07);
-  backdrop-filter: blur(8px);
-  font-size: 9px;
-  font-weight: 700;
+.building-storey.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.building-storey__select, .building-storey__remove { width: 28px; min-height: 30px; padding: 0; }
+.building-storey__select { width: 24px; border: 0; background: transparent; color: var(--muted); }
+.building-storey.is-active .building-storey__select { color: var(--accent-strong); }
+.building-storey__name { width: 100%; min-width: 0; min-height: 30px !important; padding: 0 7px !important; font-size: 10px; font-weight: 650; }
+.building-storey__height { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3px; }
+.building-storey__height input { width: 100%; min-width: 0; min-height: 30px; padding: 0 5px; font-size: 9px; }
+.building-storey__height small { color: var(--muted); font-size: 8px; }
+.building-storey__remove { color: var(--danger); font-size: 14px; }
+.building-storey-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+.building-storey-actions button { min-height: 31px; padding: 0 7px; color: var(--accent-strong); font-size: 9px; font-weight: 700; }
+
+.plan-workspace-panel {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 22;
+  width: min(350px, calc(100% - 28px));
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: rgba(255,255,255,.98);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
 }
-.plan-summary strong { border-color: var(--accent-line); color: var(--accent-strong); }
-.plan-summary .is-warning { border-color: #f0d28a; background: rgba(255, 248, 225, .94); color: #8a5d00; }
+.plan-workspace-panel__header {
+  min-height: 56px;
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr) 30px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.plan-workspace-panel__icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 7px; background: var(--accent-soft); color: var(--accent-strong); font-size: 17px; }
+.plan-workspace-panel__header > span:nth-child(2) { display: grid; min-width: 0; }
+.plan-workspace-panel__header small { color: var(--muted); font-size: 8px; font-weight: 750; letter-spacing: .08em; }
+.plan-workspace-panel__header strong { margin-top: 2px; font-size: 12px; }
+.plan-workspace-panel__header button { min-height: 30px; padding: 0; border: 0; color: var(--muted); font-size: 18px; }
+.plan-workspace-panel__body { display: grid; gap: 9px; padding: 11px; }
+.plan-workspace-field { display: grid; grid-template-columns: 92px minmax(0,1fr); align-items: center; gap: 8px; color: var(--muted); font-size: 9px; font-weight: 700; }
+.plan-workspace-field select { width: 100%; min-width: 0; font-size: 10px; }
+.plan-workspace-rule { margin-top: 2px; padding-top: 10px; border-top: 1px solid var(--line); }
+.plan-workspace-rule > span { display: block; color: var(--muted); font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
+.plan-workspace-rule > strong { display: block; margin-top: 3px; font-size: 11px; }
+.plan-workspace-rule p { margin: 7px 0 0; color: var(--text-soft); font-size: 9px; line-height: 1.45; }
+.plan-workspace-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
+.plan-workspace-chips span { padding: 3px 5px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-strong); font-size: 8px; font-weight: 700; }
+.cad-app.is-plan-overview .building-panel { display: none; }
 
 .empty-state { display: grid; justify-items: center; padding-top: 32px; padding-bottom: 32px; color: var(--muted); text-align: center; }
 .empty-state .empty-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 11px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--surface-subtle); color: #6c7c90; font-size: 20px; }
@@ -338,43 +508,53 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .parcel-context { pointer-events: none; }
 .parcel-boundary { vector-effect: non-scaling-stroke; stroke-linejoin: round; pointer-events: none; }
 .parcel-boundary-adjacent { fill: none; stroke: rgba(37, 99, 235, .48); stroke-width: 1.05; stroke-dasharray: 5 3; }
-.parcel-boundary-selected { fill: rgba(37, 99, 235, .04); stroke: #1d4ed8; stroke-width: 1.8; }
+.parcel-boundary-selected { fill: rgba(37, 99, 235, .025); stroke: #1d4ed8; stroke-width: 1.8; }
+.parcel-grid-surface,
+.parcel-grid-boundary-strip,
+.parcel-grid-boundary-cells,
+.parcel-grid-guide { display: none; }
+#plan-svg.is-parcel-grid-editing .parcel-grid-surface,
+#plan-svg.is-parcel-grid-editing .parcel-grid-boundary-strip,
+#plan-svg.is-parcel-grid-editing .parcel-grid-boundary-cells,
+#plan-svg.is-parcel-grid-editing .parcel-grid-guide { display: inline; }
 .parcel-grid-surface { pointer-events: none; }
-.parcel-grid-line { fill: none; stroke: #3b82f6; stroke-width: 1; opacity: .72; vector-effect: non-scaling-stroke; }
-.parcel-grid-boundary-strip { fill: rgba(255, 255, 255, .9); stroke: none; pointer-events: none; }
+.parcel-grid-line { fill: none; stroke: #3b82f6; stroke-width: .8; opacity: .36; vector-effect: non-scaling-stroke; }
+.parcel-grid-boundary-strip { fill: rgba(255, 255, 255, .72); stroke: none; pointer-events: none; }
 .parcel-grid-boundary-cells { pointer-events: none; }
-.parcel-grid-boundary-cell { stroke: #1687ff; stroke-width: 1.15; opacity: .88; vector-effect: non-scaling-stroke; }
-.parcel-grid-guide { stroke: #22d3ee; stroke-width: 7; opacity: .94; vector-effect: non-scaling-stroke; pointer-events: stroke; cursor: ew-resize; }
-.parcel-grid-guide.is-active { stroke: #7dd3fc; stroke-width: 9; }
+.parcel-grid-boundary-cell { stroke: #1687ff; stroke-width: .9; opacity: .55; vector-effect: non-scaling-stroke; }
+.parcel-grid-guide { stroke: #0891b2; stroke-width: 4; opacity: .9; vector-effect: non-scaling-stroke; pointer-events: none; cursor: ew-resize; }
+.parcel-grid-guide.is-active { stroke: #0369a1; stroke-width: 6; }
 #plan-svg.is-parcel-grid-editing .parcel-grid-guide { pointer-events: stroke; }
 .primitive { vector-effect: non-scaling-stroke; }
-.primitive-wall-cut { fill: #ced4da; stroke: #202a34; stroke-width: 1.2; cursor: pointer; }
-.primitive-opening { fill: #fff; stroke: #27313b; stroke-width: .7; cursor: pointer; }
-.primitive-structure { fill: #c8ced5; stroke: #27313b; stroke-width: .75; cursor: pointer; }
-.primitive-slab { fill: url(#cad-slab-hatch); stroke: #687787; stroke-width: .8; cursor: pointer; }
-.primitive-roof { fill: url(#cad-roof-hatch); stroke: #53667b; stroke-width: 1; cursor: pointer; }
-.primitive-column { fill: #5f6c78; stroke: #1f2933; stroke-width: 1; cursor: pointer; }
-.primitive-beam { fill: #8d98a3; stroke: #34414d; stroke-width: 1; cursor: pointer; }
-.primitive-component { fill: #dfe5ea; stroke: #536170; stroke-width: .85; cursor: pointer; }
-.primitive-unresolved { fill: rgba(245, 158, 11, .13); stroke: #b7791f; stroke-width: 1; stroke-dasharray: 5 3; cursor: pointer; }
+.primitive-wall-cut { fill: #e1e4e7; stroke: #26313b; stroke-width: .65; cursor: pointer; }
+.primitive-opening { fill: #fff; stroke: #27313b; stroke-width: .45; cursor: pointer; }
+.primitive-structure { fill: #d9dde1; stroke: #27313b; stroke-width: .5; cursor: pointer; }
+.primitive-slab { fill: url(#cad-slab-hatch); stroke: #687787; stroke-width: .5; cursor: pointer; }
+.primitive-roof { fill: url(#cad-roof-hatch); stroke: #53667b; stroke-width: .6; cursor: pointer; }
+.primitive-column { fill: #78838d; stroke: #1f2933; stroke-width: .6; cursor: pointer; }
+.primitive-beam { fill: #a6afb7; stroke: #34414d; stroke-width: .6; cursor: pointer; }
+.primitive-component { fill: #e7ebee; stroke: #536170; stroke-width: .5; cursor: pointer; }
+.primitive-unresolved { fill: rgba(245, 158, 11, .1); stroke: #b7791f; stroke-width: .6; stroke-dasharray: 5 3; cursor: pointer; }
 .primitive-door,
 .primitive-window,
 .primitive-stair { cursor: pointer; }
-.primitive-door .architectural-symbol-base { fill: #fff; stroke: #293642; stroke-width: 1; vector-effect: non-scaling-stroke; }
-.primitive-window .architectural-symbol-base { fill: #eef8fc; stroke: #1f536d; stroke-width: 1; vector-effect: non-scaling-stroke; }
-.primitive-stair .architectural-symbol-base { fill: rgba(148, 163, 184, .13); stroke: #4b5c6c; stroke-width: 1; vector-effect: non-scaling-stroke; }
-.door-leaf { stroke: #1f2933; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
-.door-swing { fill: none; stroke: #617080; stroke-width: .9; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.primitive-door .architectural-symbol-base { fill: #fff; stroke: #293642; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.primitive-window .architectural-symbol-base { fill: #f5fbfd; stroke: #1f536d; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.primitive-stair .architectural-symbol-base { fill: rgba(148, 163, 184, .09); stroke: #4b5c6c; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.door-leaf { stroke: #1f2933; stroke-width: .75; vector-effect: non-scaling-stroke; }
+.door-swing { fill: none; stroke: #617080; stroke-width: .5; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
 .door-hinge { fill: #1f2933; stroke: #fff; stroke-width: .65; vector-effect: non-scaling-stroke; }
-.window-glazing { stroke: #0f7494; stroke-width: .95; vector-effect: non-scaling-stroke; }
-.stair-tread { stroke: #667788; stroke-width: .7; vector-effect: non-scaling-stroke; }
-.stair-direction { stroke: #334455; stroke-width: 1.05; vector-effect: non-scaling-stroke; }
+.window-glazing { stroke: #0f7494; stroke-width: .55; vector-effect: non-scaling-stroke; }
+.stair-tread { stroke: #667788; stroke-width: .45; vector-effect: non-scaling-stroke; }
+.stair-direction { stroke: #334455; stroke-width: .65; vector-effect: non-scaling-stroke; }
 .stair-arrow { fill: #334455; stroke: none; }
-.primitive-line { fill: none; stroke: #27313b; stroke-width: .7; cursor: pointer; }
+.primitive-line { fill: none; stroke: #27313b; stroke-width: .45; cursor: pointer; }
 .primitive-annotation { fill: #26313c; font-size: 170px; cursor: pointer; }
 .primitive-room-label { fill: #26313c; font-size: 190px; text-anchor: middle; cursor: pointer; }
 .primitive-room { cursor: pointer; }
-.primitive-room .room-fill { fill: rgba(34,197,94,.2); stroke: #15803d; stroke-width: 1.2; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
+.primitive-room .room-fill { fill: rgba(34,197,94,.12); stroke: #15803d; stroke-width: .65; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
+.primitive-room.room-is-editable { cursor: pointer; }
+.primitive-room .room-label-editable { text-decoration: underline dotted rgba(21,128,61,.45); text-underline-offset: 3px; }
 .primitive-room .room-label { fill: #14532d; font-size: 190px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 34px; stroke-linejoin: round; }
 .primitive-room .room-area { fill: #166534; font-size: 155px; font-weight: 650; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 28px; stroke-linejoin: round; }
 .primitive-dimension { fill: none; stroke: #435261; stroke-width: .45; cursor: pointer; }
@@ -384,33 +564,85 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-window .semantic-outline { stroke: #1f536d; }
 .primitive-door .semantic-fill { stroke: #fff; }
 .primitive-stair .semantic-fill { stroke: #e1e7ec; }
-.primitive:hover .semantic-fill, .primitive.is-selected .semantic-fill { stroke: rgba(20, 99, 214, .45); }
 .primitive:hover .semantic-outline, .primitive.is-selected .semantic-outline { stroke: var(--accent); }
 .primitive-door:hover .architectural-symbol-base,
 .primitive-door.is-selected .architectural-symbol-base,
 .primitive-window:hover .architectural-symbol-base,
 .primitive-window.is-selected .architectural-symbol-base,
 .primitive-stair:hover .architectural-symbol-base,
-.primitive-stair.is-selected .architectural-symbol-base { stroke: var(--accent); stroke-width: 1.7; }
+.primitive-stair.is-selected .architectural-symbol-base { stroke: var(--accent); stroke-width: .9; }
 .dimension-text { fill: #394754; font-size: 145px; text-anchor: middle; }
-.primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: 1.7; }
+.primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: .9; }
 .primitive text { pointer-events: none; }
 .primitive.local-draft { stroke: var(--accent); stroke-dasharray: 80 45; }
 .primitive-wall-cut.local-draft { fill: rgba(20, 99, 214, .18); }
 .primitive-dimension.local-draft { stroke: #b94f40; }
 .layer-hidden { display: none; }
-.draft-preview { pointer-events: none; fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
-.draft-preview-point { pointer-events: none; fill: var(--accent); stroke: #fff; stroke-width: .7; vector-effect: non-scaling-stroke; }
-.selection-preview { pointer-events: none; fill: rgba(20,99,214,.07); stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
-.world-selection-preview { pointer-events: none; fill: rgba(20,99,214,.08); stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
+.draft-preview { pointer-events: none; fill: none; stroke: var(--accent); stroke-width: .65; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.draft-wall-preview { pointer-events: none; fill: url(#cad-wall-draft-hatch); stroke: #27313b; stroke-width: .55; vector-effect: non-scaling-stroke; }
+.draft-wall-hatch-line { stroke: #8994a0; stroke-width: .45; vector-effect: non-scaling-stroke; }
+.draft-wall-reference { pointer-events: none; fill: none; stroke: var(--accent); stroke-width: .65; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.pending-draw-preview { opacity: .78; }
+.draft-preview-point { pointer-events: none; fill: #fff; stroke: var(--accent); stroke-width: .75; vector-effect: non-scaling-stroke; }
+.draft-preview-point.room-start-point { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 1.15; }
+.draft-preview-point.room-start-point.is-close-target { fill: #1d4ed8; stroke: #fff; stroke-width: 1.35; }
+.point-modify-handles { pointer-events: none; }
+.point-modify-handle { pointer-events: all; fill: #fff; stroke: var(--accent); stroke-width: 2; vector-effect: non-scaling-stroke; cursor: move; }
+.point-modify-handle:hover, .point-modify-handle.is-dragging { fill: var(--accent); stroke: #fff; }
+.cad-app.is-plan-overview .model-frame,
+.cad-app.is-plan-overview .model-frame-label,
+.cad-app.is-plan-overview .parcel-context,
+.cad-app.is-plan-overview .cad-active-library,
+.cad-app.is-plan-overview .cad-crosshair,
+.cad-app.is-plan-overview .draft-preview,
+.cad-app.is-plan-overview .draft-wall-preview,
+.cad-app.is-plan-overview .draft-wall-reference,
+.cad-app.is-plan-overview .draft-preview-point { display: none; }
+.cad-crosshair { pointer-events: none; }
+.cad-crosshair-horizontal { stroke: #e54848; stroke-width: .45; opacity: .72; vector-effect: non-scaling-stroke; }
+.cad-crosshair-vertical { stroke: #32a852; stroke-width: .45; opacity: .72; vector-effect: non-scaling-stroke; }
+.cad-crosshair-center { fill: #fff; stroke: #2563eb; stroke-width: .7; vector-effect: non-scaling-stroke; }
+.cad-crosshair-center.is-snapped { fill: #1463d6; stroke: #fff; stroke-width: .8; }
+.plan-sheet { fill: #fff; stroke: #182331; stroke-width: 1.25; vector-effect: non-scaling-stroke; filter: drop-shadow(0 14px 24px rgba(15,23,42,.12)); }
+.plan-sheet-frame, .plan-tile { fill: none; stroke: #263543; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plan-tile { fill: #fff; stroke: #7b8795; }
+.plan-tile-title { fill: #243447; font-size: 390px; font-weight: 800; letter-spacing: 22px; }
+.plan-tile-subtitle { fill: #64748b; font-size: 245px; font-weight: 650; }
+.plan-sheet-heading { fill: #132238; font-size: 520px; font-weight: 850; }
+.plan-sheet-meta { fill: #627084; font-size: 270px; font-weight: 650; }
+.plan-dimension-line, .plan-dimension-witness { fill: none; stroke: #1463d6; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.plan-dimension-text { fill: #0b55b6; font-size: 280px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 55px; }
+.plan-symbol-line { fill: none; stroke: #273544; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.plan-symbol-fill { fill: #eef2f6; stroke: #273544; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.plan-symbol-accent { fill: none; stroke: #1463d6; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.plan-title-row { fill: none; stroke: #596675; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.plan-title-label { fill: #607084; font-size: 210px; font-weight: 650; }
+.plan-title-value { fill: #172638; font-size: 300px; font-weight: 800; }
+.plan-placeholder { fill: #66758a; font-size: 330px; font-weight: 700; text-anchor: middle; }
+.plan-north-arrow { fill: #172638; font-size: 420px; font-weight: 850; text-anchor: middle; }
+.selection-preview { pointer-events: none; fill: rgba(20,99,214,.045); stroke: var(--accent); stroke-width: .65; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.room-draft-fill { pointer-events: none; fill: rgba(37,99,235,.16); stroke: none; }
+.room-draft-boundary { pointer-events: none; fill: none; stroke: #1d4ed8; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.room-draft-area { pointer-events: none; fill: #1e3a8a; font-size: 170px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 28px; stroke-linejoin: round; }
+.roof-draft-fill { pointer-events: none; fill: rgba(217,119,6,.18); stroke: none; }
+.roof-draft-boundary { pointer-events: none; fill: none; stroke: #b45309; stroke-width: .9; stroke-dasharray: 5 2; vector-effect: non-scaling-stroke; }
+.roof-draft-area { pointer-events: none; fill: #92400e; font-size: 170px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 28px; stroke-linejoin: round; }
+.draft-preview-point.roof-start-point { fill: #fef3c7; stroke: #b45309; stroke-width: 1.15; }
+.draft-preview-point.roof-start-point.is-close-target { fill: #b45309; stroke: #fff; stroke-width: 1.35; }
+.opening-host-preview { pointer-events: none; opacity: .95; }
+.opening-host-preview .architectural-symbol-base { fill: rgba(219,234,254,.92); stroke: #075fd8; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.world-selection-preview { pointer-events: none; fill: rgba(20,99,214,.05); stroke: var(--accent); stroke-width: .8; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
 .world-selection-label { pointer-events: none; fill: var(--accent-strong); font-size: 150px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.96); stroke-width: 28px; }
 
-@media (max-width: 1279px) {
+@media (max-width: 1400px) {
   .cad-app { grid-template-columns: minmax(0, 1fr); }
+  .building-panel, .plan-workspace-panel { top: 140px; }
 }
 
 @media (max-width: 1020px) {
-  .plan-summary { top: 76px; }
+  .cad-roof-panel { width: min(590px, calc(100vw - 28px)); max-height: calc(100vh - 138px); }
+  .cad-roof-panel__grid--five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .building-panel, .plan-workspace-panel { top: 140px; }
   .cad-app {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "workspace";
@@ -444,6 +676,12 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
   .cad-app.is-right-open .panel-backdrop { opacity: 1; pointer-events: auto; }
 }
 
+@media (max-width: 620px) {
+  .cad-roof-panel__header { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .cad-roof-panel__header small { text-align: left; }
+  .cad-roof-panel__grid, .cad-roof-panel__grid--five { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 720px) {
   .workspace-actions { top: 10px; left: 10px; right: 10px; bottom: 10px; }
   .history-tools button, .mobile-panel-toggle { min-height: 40px; }
@@ -451,9 +689,12 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
   .navigation-hint { right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); }
   .cad-authoring { top: 10px; left: 50%; max-width: calc(100% - 20px); }
   .cad-tool-button { width: 58px; }
+  .cad-edit-rail button { min-width: 52px; }
   .cad-active-library { display: none !important; }
   .cad-library-panel { width: calc(100vw - 70px); max-height: calc(100vh - 20px); }
   .cad-library-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .building-panel, .plan-workspace-panel { top: auto; right: 10px; bottom: 52px; width: min(340px, calc(100% - 20px)); }
+  .building-panel__body { max-height: min(540px, calc(100vh - 130px)); }
   .desktop-hint { display: none; }
   .touch-hint { display: inline; }
 }

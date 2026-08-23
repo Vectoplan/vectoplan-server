@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/cad-auto-dimension-result-0.1.schema.json",
+  "title": "VECTOPLAN automatic dimension result",
+  "type": "object",
+  "required": ["ok", "contract_version", "calculation_id", "input_fingerprint", "chains", "summary", "export"],
+  "properties": {
+    "ok": {"const": true},
+    "contract_version": {"const": "cad-auto-dimension-result/0.1"},
+    "calculation_id": {"type": "string"},
+    "input_fingerprint": {"type": "string"},
+    "chains": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["chain_ref", "category", "dimension_line_mm", "witness_lines_mm", "segments", "overall"],
+        "properties": {
+          "chain_ref": {"type": "string"},
+          "category": {"enum": ["external", "internal"]},
+          "segments": {"type": "array", "items": {"$ref": "#/$defs/measurement"}},
+          "overall": {"$ref": "#/$defs/measurement"}
+        }
+      }
+    },
+    "summary": {"type": "object"},
+    "export": {"type": "object"}
+  },
+  "$defs": {
+    "measurement": {
+      "type": "object",
+      "required": ["start_mm", "end_mm", "length_mm", "length_m", "display", "role", "source_refs"],
+      "properties": {
+        "length_mm": {"type": "number", "minimum": 0},
+        "length_m": {"type": "number", "minimum": 0},
+        "display": {"type": "string"},
+        "role": {"type": "string"},
+        "source_refs": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
