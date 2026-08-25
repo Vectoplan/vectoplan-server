@@ -19,6 +19,8 @@ export type RoofType =
   | "barrel"
   | "sawtooth";
 
+export type RoofInsulationMode = "between" | "below" | "above";
+
 export interface RoofToolParameters {
   roofType: RoofType;
   pitchDeg: number;
@@ -32,12 +34,25 @@ export interface RoofToolParameters {
   edgeOverhangsMm: readonly number[];
   roofSkinThicknessMm: number;
   roofSkinMaterial: string;
+  insulationMode: RoofInsulationMode;
+  insulationThicknessMm: number;
+  sheathingThicknessMm: number;
+  underlayThicknessMm: number;
+  counterBattenWidthMm: number;
+  counterBattenHeightMm: number;
+  tileBattenWidthMm: number;
+  tileBattenHeightMm: number;
+  tileBattenSpacingMm: number;
+  roofTileThicknessMm: number;
+  roofTileMaterial: string;
   rafterWidthMm: number;
   rafterHeightMm: number;
   rafterSpacingMm: number;
+  birdsmouthDepthMm: number;
   purlinWidthMm: number;
   purlinHeightMm: number;
   purlinMaximumSpacingMm: number;
+  purlinMiddleSpanThresholdMm: number;
   plateauWidthRatio: number;
   mansardBreakRatio: number;
   mansardLowerPitchDeg: number;
@@ -60,14 +75,27 @@ export const DEFAULT_ROOF_TOOL_PARAMETERS: RoofToolParameters = Object.freeze({
   overhangSouthMm: 500,
   overhangWestMm: 500,
   edgeOverhangsMm: [],
-  roofSkinThicknessMm: 180,
-  roofSkinMaterial: "generic-roof-build-up",
+  roofSkinThicknessMm: 200,
+  roofSkinMaterial: "clay-roof-tile",
+  insulationMode: "between",
+  insulationThicknessMm: 200,
+  sheathingThicknessMm: 22,
+  underlayThicknessMm: 3,
+  counterBattenWidthMm: 60,
+  counterBattenHeightMm: 40,
+  tileBattenWidthMm: 50,
+  tileBattenHeightMm: 30,
+  tileBattenSpacingMm: 330,
+  roofTileThicknessMm: 20,
+  roofTileMaterial: "clay-roof-tile",
   rafterWidthMm: 80,
   rafterHeightMm: 200,
-  rafterSpacingMm: 700,
-  purlinWidthMm: 160,
-  purlinHeightMm: 240,
-  purlinMaximumSpacingMm: 2500,
+  rafterSpacingMm: 650,
+  birdsmouthDepthMm: 30,
+  purlinWidthMm: 140,
+  purlinHeightMm: 200,
+  purlinMaximumSpacingMm: 4500,
+  purlinMiddleSpanThresholdMm: 4500,
   plateauWidthRatio: 0.25,
   mansardBreakRatio: 0.38,
   mansardLowerPitchDeg: 70,
@@ -92,6 +120,21 @@ export type RoofCalculationResult = Readonly<Record<string, unknown>> & {
   readonly roof_type: RoofType;
 };
 
+function canonicalRoofRequestValue(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalRoofRequestValue);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(
+    Object.entries(value as Readonly<Record<string, unknown>>)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, item]) => [key, canonicalRoofRequestValue(item)]),
+  );
+}
+
+/** Stable identity used to reject an older async preview after settings changed. */
+export function roofCalculationRequestKey(value: unknown): string {
+  return JSON.stringify(canonicalRoofRequestValue(value));
+}
+
 export function buildRoofCalculationRequest(
   points: readonly PolygonAreaPoint[],
   parameters: RoofToolParameters,
@@ -104,7 +147,7 @@ export function buildRoofCalculationRequest(
       outer_ring_mm: ring.map(({ x, z }) => [x * 1000, z * 1000] as const),
     },
     parameters: {
-      pitch_deg: parameters.pitchDeg,
+      pitch_deg: Math.round(Math.max(0, Math.min(80, parameters.pitchDeg))),
       eaves_height_mm: parameters.eavesHeightMm,
       ridge_direction: parameters.ridgeDirection,
       overhang_mm: {
@@ -117,6 +160,23 @@ export function buildRoofCalculationRequest(
       },
       roof_skin_thickness_mm: parameters.roofSkinThicknessMm,
       roof_skin_material: parameters.roofSkinMaterial,
+      roof_build_up: {
+        insulation_mode: parameters.insulationMode,
+        insulation_thickness_mm: parameters.insulationThicknessMm,
+        sheathing_thickness_mm: parameters.sheathingThicknessMm,
+        underlay_thickness_mm: parameters.underlayThicknessMm,
+        counter_batten: {
+          width_mm: parameters.counterBattenWidthMm,
+          height_mm: parameters.counterBattenHeightMm,
+        },
+        tile_batten: {
+          width_mm: parameters.tileBattenWidthMm,
+          height_mm: parameters.tileBattenHeightMm,
+          spacing_mm: parameters.tileBattenSpacingMm,
+        },
+        tile_thickness_mm: parameters.roofTileThicknessMm,
+        tile_material_ref: parameters.roofTileMaterial,
+      },
       plateau_width_ratio: parameters.plateauWidthRatio,
       mansard_break_ratio: parameters.mansardBreakRatio,
       mansard_lower_pitch_deg: parameters.mansardLowerPitchDeg,
@@ -131,11 +191,13 @@ export function buildRoofCalculationRequest(
           width_mm: parameters.rafterWidthMm,
           height_mm: parameters.rafterHeightMm,
           spacing_mm: parameters.rafterSpacingMm,
+          birdsmouth_depth_mm: parameters.birdsmouthDepthMm,
         },
         purlin: {
           width_mm: parameters.purlinWidthMm,
           height_mm: parameters.purlinHeightMm,
           maximum_spacing_mm: parameters.purlinMaximumSpacingMm,
+          middle_span_threshold_mm: parameters.purlinMiddleSpanThresholdMm,
         },
       },
     },

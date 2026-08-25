@@ -14,9 +14,25 @@ import { createRoofSystem } from "../src/frontend/world_edit/systems/roof/system
 import {
   buildRoofCalculationRequest,
   DEFAULT_ROOF_TOOL_PARAMETERS,
+  roofCalculationRequestKey,
 } from "../src/frontend/world_edit/systems/roof/contracts";
 import {
+  normalizeQuickRoofPitch,
+  normalizeQuickRoofOverhangMm,
+  persistedRoofQuickSettings,
+  ROOF_TYPE_OPTIONS,
+  roofOverhangFromWheel,
+  roofPitchFromWheel,
+} from "../src/frontend/world_edit/systems/roof/quick_settings";
+import {
+  inactiveRoofZones,
+  shouldCommitRoofSettingsClose,
+  uniqueRoofZones,
+} from "../src/frontend/world_edit/systems/roof/zones";
+import { createRoofCalculationMeshes } from "../src/frontend/scene/roof_calculation_rendering";
+import {
   polygonAreaClosedCoordinates,
+  polygonAreaPlanCentroid,
   polygonAreaPlanArea,
   polygonAreaSelfIntersects,
   validPolygonArea,
@@ -362,6 +378,10 @@ test("polygon areas accept concave straight rings and reject self intersections"
 
   assert.equal(validPolygonArea(concave), true);
   assert.equal(polygonAreaPlanArea(concave), 21);
+  assert.deepEqual(polygonAreaPlanCentroid([
+    { x: 0, y: 4, z: 0 }, { x: 8, y: 4, z: 0 },
+    { x: 8, y: 4, z: 4 }, { x: 0, y: 4, z: 4 },
+  ]), { x: 4, y: 4, z: 2 });
   assert.deepEqual(polygonAreaClosedCoordinates(concave).at(-1), [0, 0]);
   assert.equal(polygonAreaSelfIntersects(crossed), true);
   assert.equal(validPolygonArea(crossed), false);
@@ -382,10 +402,95 @@ test("roof request maps world-cell x/z into CAD millimetres with all structural 
     default_mm: 500, north_mm: 500, east_mm: 500, south_mm: 500, west_mm: 500,
   });
   assert.equal(request.parameters.hip_end_ratio, 0.5);
-  assert.deepEqual(request.parameters.structure, {
-    rafter: { width_mm: 80, height_mm: 200, spacing_mm: 700 },
-    purlin: { width_mm: 160, height_mm: 240, maximum_spacing_mm: 2500 },
+  assert.deepEqual(request.parameters.roof_build_up, {
+    insulation_mode: "between",
+    insulation_thickness_mm: 200,
+    sheathing_thickness_mm: 22,
+    underlay_thickness_mm: 3,
+    counter_batten: { width_mm: 60, height_mm: 40 },
+    tile_batten: { width_mm: 50, height_mm: 30, spacing_mm: 330 },
+    tile_thickness_mm: 20,
+    tile_material_ref: "clay-roof-tile",
   });
+  assert.deepEqual(request.parameters.structure, {
+    rafter: { width_mm: 80, height_mm: 200, spacing_mm: 650, birdsmouth_depth_mm: 30 },
+    purlin: {
+      width_mm: 140,
+      height_mm: 200,
+      maximum_spacing_mm: 4500,
+      middle_span_threshold_mm: 4500,
+    },
+  });
+});
+
+test("roof renderer keeps timber below the tiled surface and renders birdsmouth cuts", () => {
+  const calculation = {
+    ok: true,
+    geometry: {
+      faces: [{ face_ref: "face-1", polygon_3d_mm: [[0, 0, 0], [2000, 0, 0], [2000, 2000, 0], [0, 2000, 0]] }],
+    },
+    roof_build_up: {
+      exterior_offset_mm: 115,
+      top_faces: [{ face_ref: "face-1", polygon_3d_mm: [[0, 0, 115], [2000, 0, 115], [2000, 2000, 115], [0, 2000, 115]] }],
+      layers: [
+        { role: "insulation", bottom_offset_mm: -200, top_offset_mm: 0 },
+        { role: "roof_sheathing", bottom_offset_mm: 0, top_offset_mm: 22 },
+        { role: "counter_batten", bottom_offset_mm: 25, top_offset_mm: 65 },
+        { role: "tile_batten", bottom_offset_mm: 65, top_offset_mm: 95 },
+        { role: "roof_tile", thickness_mm: 20, bottom_offset_mm: 95, top_offset_mm: 115 },
+      ],
+      counter_battens: [],
+      tile_battens: [],
+    },
+    structure: {
+      rafters: [{
+        member_ref: "rafter-1",
+        start_3d_mm: [1000, 0, -100],
+        end_3d_mm: [1000, 2000, -100],
+        height_axis_3d: [0, 0, 1],
+        section_mm: { width: 80, height: 200 },
+        notches: [{ center_ratio: 0.5, length_mm: 140, depth_mm: 30 }],
+      }],
+      purlins: [{
+        member_ref: "sloped-purlin",
+        start_3d_mm: [0, 0, -400],
+        end_3d_mm: [2000, 1000, -200],
+        height_axis_3d: [0, 0, 1],
+        role: "middle_purlin",
+        section_mm: { width: 140, height: 200 },
+      }],
+    },
+  };
+  const rendered = createRoofCalculationMeshes(calculation, { preview: true });
+  const tile = rendered.meshes.find((mesh) => String(mesh.userData.roofPart).startsWith("tiles-"));
+  const rafters = rendered.meshes.filter((mesh) => String(mesh.userData.roofPart).startsWith("rafter-"));
+  const purlin = rendered.meshes.find((mesh) => String(mesh.userData.roofPart).startsWith("purlin-"));
+  const tileEdges = rendered.meshes.filter((mesh) => String(mesh.userData.roofPart).startsWith("tile-edge-"));
+
+  assert.ok(tile?.geometry.boundingBox);
+  assert.equal(rafters.length, 3);
+  assert.ok(rafters.every((mesh) => (mesh.geometry.boundingBox?.max.y ?? Infinity) <= 0.000001));
+  assert.ok((tile!.geometry.boundingBox!.min.y) > 0.09);
+  assert.ok((tile!.geometry.boundingBox!.max.y - tile!.geometry.boundingBox!.min.y) >= 0.019);
+  assert.equal(tileEdges.length, 4);
+  assert.ok(purlin);
+  const purlinPositions = purlin!.geometry.getAttribute("position");
+  const purlinVertices = Array.from({ length: purlinPositions.count }, (_, index) => ({
+    x: purlinPositions.getX(index),
+    y: purlinPositions.getY(index),
+    z: purlinPositions.getZ(index),
+  }));
+  assert.ok(purlinVertices.some((first, firstIndex) => purlinVertices.some((second, secondIndex) => (
+    firstIndex !== secondIndex
+      && Math.abs(first.x - second.x) <= 0.000001
+      && Math.abs(first.z - second.z) <= 0.000001
+      && Math.abs(Math.abs(first.y - second.y) - 0.2) <= 0.000001
+  ))));
+  assert.equal(Array.isArray(tile!.material), false);
+  assert.equal((tile!.material as import("three").MeshStandardMaterial).transparent, false);
+  assert.equal((tile!.material as import("three").MeshStandardMaterial).opacity, 1);
+  rendered.geometries.forEach((geometry) => geometry.dispose());
+  rendered.materials.forEach((material) => material.dispose());
 });
 
 test("roof system closes with Escape and executes only through its own hooks", async () => {
@@ -394,6 +499,7 @@ test("roof system closes with Escape and executes only through its own hooks", a
     stopInteraction: () => calls.push("stop"),
     startHover: () => calls.push("hover-start"),
     stopHover: () => calls.push("hover-stop"),
+    openSettingsUnderCrosshair: () => false,
     removePointUnderCrosshair: () => false,
     resolveTarget: () => ({ x: 1, y: 2, z: 3 }),
     beginPointInteraction: () => calls.push("point"),
@@ -415,4 +521,131 @@ test("roof system closes with Escape and executes only through its own hooks", a
   } as unknown as KeyboardEvent;
   assert.equal(roof.handleKeyDown?.(escape), true);
   assert.deepEqual(calls, ["hover-start", "point", "stop", "execute", "finish"]);
+});
+
+test("roof quick settings expose every roof form and change pitch by wheel without text input", () => {
+  assert.deepEqual(ROOF_TYPE_OPTIONS.map(({ type }) => type), [
+    "flat", "gable", "hipped", "half_hipped", "pent", "mansard",
+    "trapezoid", "butterfly", "pyramid", "barrel", "sawtooth",
+  ]);
+  assert.equal(roofPitchFromWheel(35, -100), 36);
+  assert.equal(roofPitchFromWheel(35, 100), 34);
+  assert.equal(roofPitchFromWheel(80, -100), 80);
+  assert.equal(roofPitchFromWheel(0, 100), 0);
+  assert.equal(normalizeQuickRoofPitch(35.5), 36);
+  assert.equal(roofOverhangFromWheel(500, -100), 550);
+  assert.equal(roofOverhangFromWheel(500, 100), 450);
+  assert.equal(normalizeQuickRoofOverhangMm(527), 550);
+  assert.equal(normalizeQuickRoofOverhangMm(12), 0);
+});
+
+test("persisted roof settings reopen with the authoritative per-zone values", () => {
+  const firstZone = persistedRoofQuickSettings({
+    roofParameters: { roofType: "hipped", pitchDeg: 35, overhangMm: 600 },
+    roofRequest: { roof_type: "pent", parameters: { pitch_deg: 41, overhang_mm: { default_mm: 750 } } },
+    roofCalculation: {
+      roof_type: "pent",
+      normalized_request: { roof_type: "pent", parameters: { pitch_deg: 41 } },
+    },
+  }, { roofType: "gable", pitchDeg: 30, overhangMm: 500 });
+  assert.deepEqual(firstZone, {
+    roofType: "hipped",
+    pitchDeg: 35,
+    overhangMm: 600,
+  });
+
+  // Opening another zone must never inherit the values of the zone that was
+  // edited immediately before it.
+  assert.deepEqual(persistedRoofQuickSettings({
+    roofParameters: { roofType: "sawtooth", pitchDeg: 28, overhangMm: 950 },
+  }, firstZone), {
+    roofType: "sawtooth",
+    pitchDeg: 28,
+    overhangMm: 950,
+  });
+});
+
+test("roof request identity is stable by key order and changes with overhang", () => {
+  const first = {
+    contract_version: "cad-roof-calculation-request/0.1",
+    roof_type: "gable",
+    parameters: { pitch_deg: 35, overhang_mm: { default_mm: 500 } },
+  };
+  const reordered = {
+    parameters: { overhang_mm: { default_mm: 500 }, pitch_deg: 35 },
+    roof_type: "gable",
+    contract_version: "cad-roof-calculation-request/0.1",
+  };
+  const changed = {
+    ...first,
+    parameters: { ...first.parameters, overhang_mm: { default_mm: 550 } },
+  };
+
+  assert.equal(roofCalculationRequestKey(first), roofCalculationRequestKey(reordered));
+  assert.notEqual(roofCalculationRequestKey(first), roofCalculationRequestKey(changed));
+});
+
+test("every persisted roof keeps one independent area and settings target", () => {
+  const meshRoofReferences = [
+    { objectInstanceId: "roof-a", mesh: "skin" },
+    { objectInstanceId: "roof-a", mesh: "rafter" },
+    { objectInstanceId: "roof-b", mesh: "skin" },
+    { objectInstanceId: "roof-c", mesh: "purlin" },
+  ];
+
+  assert.deepEqual(
+    uniqueRoofZones(meshRoofReferences).map(({ objectInstanceId }) => objectInstanceId),
+    ["roof-a", "roof-b", "roof-c"],
+  );
+  assert.deepEqual(
+    inactiveRoofZones(meshRoofReferences, "roof-a").map(({ objectInstanceId }) => objectInstanceId),
+    ["roof-b", "roof-c"],
+  );
+});
+
+test("closing valid roof settings commits the edit and releases the next zone", () => {
+  assert.equal(shouldCommitRoofSettingsClose({
+    restorePointerLock: true,
+    roofToolActive: true,
+    busy: false,
+    closed: true,
+    valid: true,
+  }), true);
+  assert.equal(shouldCommitRoofSettingsClose({
+    restorePointerLock: false,
+    roofToolActive: true,
+    busy: false,
+    closed: true,
+    valid: true,
+  }), false);
+  assert.equal(shouldCommitRoofSettingsClose({
+    restorePointerLock: true,
+    roofToolActive: true,
+    busy: true,
+    closed: true,
+    valid: true,
+  }), false);
+});
+
+test("roof settings target consumes primary click before a new polygon point", async () => {
+  const calls: string[] = [];
+  const roof = createRoofSystem({
+    stopInteraction: () => undefined,
+    startHover: () => undefined,
+    stopHover: () => undefined,
+    openSettingsUnderCrosshair: () => { calls.push("settings"); return true; },
+    removePointUnderCrosshair: () => false,
+    resolveTarget: () => ({ x: 1, y: 2, z: 3 }),
+    beginPointInteraction: () => calls.push("point"),
+    finishArea: () => undefined,
+    executeRoof: async () => undefined,
+    isComplete: () => true,
+    rebuild: () => undefined,
+    reset: () => undefined,
+    setStatus: () => undefined,
+  });
+
+  await roof.handleIntent(intent("primary"));
+
+  assert.deepEqual(calls, ["settings"]);
 });

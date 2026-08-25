@@ -296,6 +296,13 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         element["semantic_role"] = "window" if "fenster" in descriptor or "window" in descriptor else "door"
         element["host_wall_ref"] = command.get("parameters", {}).get("host_wall_ref")
         element["host_wall_thickness_mm"] = command.get("parameters", {}).get("host_wall_thickness_mm")
+        if element["semantic_role"] == "door":
+            element["door_hinge_side"] = str(
+                command.get("parameters", {}).get("door_hinge_side") or "left"
+            )
+            element["door_swing_side"] = str(
+                command.get("parameters", {}).get("door_swing_side") or "positive"
+            )
     if command_name in {"create_room", "update_room"}:
         label = str(command.get("parameters", {}).get("label") or "Raum")
         element["label"] = label
@@ -382,6 +389,9 @@ def _library_snapshot(item: Mapping[str, Any]) -> dict[str, Any]:
         "subcategory": item.get("subcategory"),
         "placement_command": deepcopy(item.get("placement_command") or {}),
         "dimensions": deepcopy(variant.get("dimensions") or item.get("dimensions") or {}),
+        "plan_representation": deepcopy(
+            variant.get("plan_representation") or item.get("plan_representation") or {}
+        ),
         "source": item.get("source"),
     }
 

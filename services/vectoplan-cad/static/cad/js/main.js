@@ -29,6 +29,7 @@
     roomDraftPoints: [],
     roomSubmissionPending: false,
     roofDraftPoints: [],
+    roofDraftClosed: false,
     roofSubmissionPending: false,
     openingHostPreview: null,
     roomLabelEditPrimitive: null,
@@ -75,6 +76,9 @@
     pointGeometryOverrides: new Map(),
     pointEditMode: false,
     pointDrag: null,
+    optimisticElements: new Map(),
+    doorConfigurations: new Map(),
+    doorConfigurationStorageKey: "",
     snapTarget: null,
     planOverview: false,
     planOverviewPreviousCamera: null,
@@ -82,19 +86,27 @@
     planPhase: "design",
     planContent: "overview",
     planViewSelection: "all",
+    automaticDimensionResults: new Map(),
+    automaticSections: new Map(),
+    automaticDimensionPending: false,
+    storeySceneCache: new Map(),
+    storeyOverlayLoads: new Map(),
   };
 
   const buildingTypes = new Set([
     "residential", "apartment", "industrial", "office", "public",
-    "bridge", "tunnel", "infrastructure", "landscape", "other",
+    "civil", "bridge", "tunnel", "engineering", "infrastructure", "landscape", "other",
   ]);
 
   const fallbackPlanRules = {
     contract_version: "cad-plan-rules/0.1",
-    content_order: ["floor_plans", "elevations", "sections", "title_block", "site_plan"],
+    content_order: ["floor_plans", "site_plan", "elevations", "sections", "longitudinal_section", "cross_sections", "alignment_plan", "drainage_plan", "formwork_plan", "reinforcement_plan", "details", "title_block"],
     content_labels: {
       floor_plans: "Grundrisse", elevations: "Ansichten", sections: "Schnitte",
-      title_block: "Plankopf", site_plan: "Lageplan",
+      title_block: "Plankopf", site_plan: "Lageplan", alignment_plan: "Trassierungsplan",
+      longitudinal_section: "Längsschnitt", cross_sections: "Querschnitte",
+      drainage_plan: "Entwässerungs- und Leitungsplan", formwork_plan: "Schalplan",
+      reinforcement_plan: "Bewehrungsplan", details: "Details",
     },
     phases: {
       design: {label: "Entwurfsplan", summary: "Entwurfsdarstellungen mit Hauptmaßen.", dimensioning: "exterior"},
@@ -107,6 +119,8 @@
       industrial: {label: "Industriegebäude", profile: "building", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
       office: {label: "Bürogebäude", profile: "building", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
       public: {label: "Öffentliches Gebäude", profile: "building", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
+      civil: {label: "Tiefbau", domain: "tiefbau", profile: "infrastructure", required: ["site_plan", "alignment_plan", "longitudinal_section", "cross_sections", "drainage_plan", "details", "title_block"]},
+      engineering: {label: "Ingenieurbau", domain: "ingenieurbau", profile: "engineering", required: ["floor_plans", "elevations", "sections", "formwork_plan", "reinforcement_plan", "details", "title_block"]},
       bridge: {label: "Brücke", profile: "bridge", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"], aliases: {floor_plans: "Draufsicht", elevations: "Längsansichten", sections: "Regelquerschnitte", site_plan: "Übersichtslageplan"}},
       tunnel: {label: "Tunnel", profile: "tunnel", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"], aliases: {floor_plans: "Trassierungsgrundriss", elevations: "Längsschnitt", sections: "Tunnelquerschnitte"}},
       infrastructure: {label: "Infrastrukturbauwerk", profile: "infrastructure", required: ["floor_plans", "elevations", "sections", "title_block", "site_plan"]},
@@ -441,10 +455,37 @@
     // A second client-side centre-point test incorrectly removed complete
     // semantic walls, doors and slabs that cross a parcel boundary.
     const activeStoreyId = state.building?.activeStoreyId || state.loadedProjectionStoreyId;
+    const visibleIds = visibleStoreyIds();
     const localCopies = state.localCopies
       .filter((entry) => entry.viewportRef === viewport?.viewport_ref)
       .map((entry) => entry.primitive);
-    return [...(viewport?.primitives || []), ...localCopies].filter((primitive) => {
+    const sources = [...(viewport?.primitives || []), ...localCopies].map((primitive) => ({
+      primitive,
+      fallbackStoreyId: state.loadedProjectionStoreyId || activeStoreyId,
+    }));
+    state.storeySceneCache.forEach((cached, storeyId) => {
+      if (!storeyId || storeyId === state.loadedProjectionStoreyId || !visibleIds.has(storeyId)) return;
+      const cachedSheet = cached.scene?.sheets?.[0];
+      const cachedViewport = cachedSheet?.viewports?.find((entry) => entry.kind === "floor_plan") || cachedSheet?.viewports?.[0];
+      (cachedViewport?.primitives || []).forEach((primitive) => sources.push({primitive, fallbackStoreyId: storeyId}));
+    });
+    return sources.map(({primitive, fallbackStoreyId}) => {
+      const primitiveStoreyId = String(
+        primitive.metadata?.storey_id
+        || primitive.metadata?.storeyId
+        || primitive.metadata?.parameters?.storey_id
+        || fallbackStoreyId
+        || "",
+      );
+      return {
+        ...primitive,
+        metadata: {
+          ...(primitive.metadata || {}),
+          storey_id: primitiveStoreyId,
+          storey_display_mode: storeyDisplayMode(primitiveStoreyId),
+        },
+      };
+    }).filter((primitive) => {
       if (state.hiddenElementRefs.has(primitive.primitive_ref)) return false;
       const primitiveStoreyId = String(
         primitive.metadata?.storey_id
@@ -452,7 +493,7 @@
         || primitive.metadata?.parameters?.storey_id
         || "",
       );
-      if (primitiveStoreyId) return !activeStoreyId || primitiveStoreyId === activeStoreyId;
+      if (primitiveStoreyId) return visibleIds.has(primitiveStoreyId);
       return !activeStoreyId || activeStoreyId === state.loadedProjectionStoreyId;
     });
   }
@@ -706,6 +747,7 @@
           elevationMm: Number(storey.elevation_mm ?? storey.elevationMm) || 0,
           source: String(storey.source || "projection"),
           heightDecimalSeparator: storey.heightDecimalSeparator === "." ? "." : ",",
+          displayMode: String(storey.storey_id || storey.storeyId || "") === storeyId ? "red" : "white",
         };
         projectedStorey.heightMm = defaultStoreyHeightMm(projectedStorey);
         return projectedStorey;
@@ -726,6 +768,7 @@
         elevationMm: Number.isFinite(elevationMm) ? elevationMm : 0,
         heightMm: defaultStoreyHeightMm({id: storeyId, name: inferredName, elevationMm}),
         heightDecimalSeparator: ",",
+        displayMode: "red",
         source: "projection",
       }],
     };
@@ -745,6 +788,7 @@
           name: String(entry?.name || `Geschoss ${index + 1}`),
           elevationMm: Number.isFinite(elevationMm) ? elevationMm : index * 3000,
           heightDecimalSeparator: entry?.heightDecimalSeparator === "." ? "." : ",",
+          displayMode: ["red", "yellow", "gray", "white"].includes(entry?.displayMode) ? entry.displayMode : "white",
           source: String(entry?.source || "local"),
         };
         storey.heightMm = normalizeStoreyHeightMm(heightMm, storey);
@@ -756,6 +800,10 @@
     const activeStoreyId = storeys.some((storey) => storey.id === source.activeStoreyId)
       ? source.activeStoreyId
       : projectionStorey.id;
+    storeys.forEach((storey) => {
+      if (storey.id === activeStoreyId) storey.displayMode = "red";
+      else if (storey.displayMode === "red") storey.displayMode = "yellow";
+    });
     return {
       contractVersion: "vectoplan-building-draft/0.1",
       buildingType: buildingTypes.has(source.buildingType) ? source.buildingType : fallback.buildingType,
@@ -763,6 +811,17 @@
       activeStoreyId,
       storeys,
     };
+  }
+
+  function storeyDisplayMode(storeyId) {
+    const storey = state.building?.storeys?.find((entry) => entry.id === storeyId);
+    return storey?.displayMode || (storeyId === state.building?.activeStoreyId ? "red" : "white");
+  }
+
+  function visibleStoreyIds() {
+    return new Set((state.building?.storeys || [])
+      .filter((storey) => ["red", "yellow", "gray"].includes(storey.displayMode))
+      .map((storey) => storey.id));
   }
 
   function loadBuildingDraft(input) {
@@ -828,6 +887,7 @@
         name: storey.name,
         elevation_mm: storey.elevationMm,
         raw_height_mm: storey.heightMm,
+        display_mode: storey.displayMode,
       })),
     };
     window.dispatchEvent(new CustomEvent("vectoplan-cad:building-structure", {detail}));
@@ -864,18 +924,26 @@
     [...building.storeys].sort((left, right) => right.elevationMm - left.elevationMm).forEach((storey) => {
       const row = document.createElement("div");
       row.className = "building-storey";
-      row.classList.toggle("is-active", storey.id === building.activeStoreyId);
+      row.classList.add(`is-mode-${storey.displayMode}`);
       const select = document.createElement("button");
       select.type = "button";
       select.className = "building-storey__select";
-      select.textContent = storey.id === building.activeStoreyId ? "●" : "○";
-      select.title = `${storey.name} anzeigen`;
-      select.addEventListener("click", () => selectBuildingStorey(storey.id));
+      select.textContent = storey.displayMode === "red" ? "●" : storey.displayMode === "yellow" ? "◐" : storey.displayMode === "gray" ? "●" : "○";
+      select.title = storey.displayMode === "red"
+        ? `${storey.name}: aktiv, bearbeitbar und persistent`
+        : storey.displayMode === "yellow"
+          ? `${storey.name}: bearbeitbare Referenz; Klick = weiß/aus, Umschalt+Klick = rot`
+          : storey.displayMode === "gray"
+            ? `${storey.name}: nur Ansicht; Klick = gelb, Umschalt+Klick = rot`
+            : `${storey.name}: ausgeblendet; Klick = grau, Umschalt+Klick = rot`;
+      select.setAttribute("aria-label", select.title);
+      select.addEventListener("click", (event) => cycleBuildingStoreyMode(storey.id, {activate: event.shiftKey}));
       const name = document.createElement("input");
       name.type = "text";
       name.className = "building-storey__name";
       name.value = storey.name;
       name.setAttribute("aria-label", "Geschossname");
+      name.disabled = ["gray", "white"].includes(storey.displayMode);
       name.addEventListener("change", () => {
         storey.name = name.value.trim() || storey.name;
         publishBuildingDraft();
@@ -889,6 +957,7 @@
       height.autocomplete = "off";
       height.value = formatStoreyHeightMeters(storey);
       height.setAttribute("aria-label", `Rohhöhe ${storey.name} in Metern`);
+      height.disabled = ["gray", "white"].includes(storey.displayMode);
       height.addEventListener("change", () => {
         const parsedHeightMm = parseStoreyHeightMeters(height.value);
         if (parsedHeightMm === null) {
@@ -908,7 +977,7 @@
       remove.className = "building-storey__remove";
       remove.textContent = "×";
       remove.title = `${storey.name} entfernen`;
-      remove.disabled = building.storeys.length <= 1;
+      remove.disabled = building.storeys.length <= 1 || ["gray", "white"].includes(storey.displayMode);
       remove.addEventListener("click", () => removeBuildingStorey(storey.id));
       row.append(select, name, heightWrap, remove);
       list.append(row);
@@ -918,6 +987,10 @@
 
   function selectBuildingStorey(storeyId) {
     if (!state.building?.storeys.some((storey) => storey.id === storeyId)) return;
+    state.building.storeys.forEach((storey) => {
+      if (storey.id === storeyId) storey.displayMode = "red";
+      else if (storey.displayMode === "red") storey.displayMode = "yellow";
+    });
     state.building.activeStoreyId = storeyId;
     state.selectedPrimitive = null;
     publishBuildingDraft();
@@ -928,6 +1001,43 @@
       loadProjectInput({storeyId, preserveCamera: true, preserveHistory: true, preserveViewState: true}).catch(handleError);
     }
     showMessage(`${active?.name || "Geschoss"} ist jetzt das aktive Konstruktionsgeschoss.`);
+  }
+
+  function cycleBuildingStoreyMode(storeyId, options = {}) {
+    const storey = state.building?.storeys?.find((entry) => entry.id === storeyId);
+    if (!storey) return;
+    if (options.activate && storey.displayMode !== "red") {
+      selectBuildingStorey(storeyId);
+      return;
+    }
+    if (storey.displayMode === "white") {
+      storey.displayMode = "gray";
+      publishBuildingDraft();
+      renderBuildingPanel();
+      renderAll();
+      ensureStoreyOverlay(storeyId).catch(handleError);
+      showMessage(`${storey.name} ist grau: sichtbar, aber nicht bearbeitbar.`);
+      return;
+    }
+    if (storey.displayMode === "gray") {
+      storey.displayMode = "yellow";
+      publishBuildingDraft();
+      renderBuildingPanel();
+      renderAll();
+      ensureStoreyOverlay(storeyId).catch(handleError);
+      showMessage(`${storey.name} ist gelb: auswählbare Referenz; neue Elemente werden weiterhin im roten Geschoss gespeichert.`);
+      return;
+    }
+    if (storey.displayMode === "yellow") {
+      storey.displayMode = "white";
+      if (state.selectedPrimitive && String(state.selectedPrimitive.metadata?.storey_id || "") === storeyId) state.selectedPrimitive = null;
+      publishBuildingDraft();
+      renderBuildingPanel();
+      renderAll();
+      showMessage(`${storey.name} ist weiß und damit vollständig ausgeblendet.`);
+      return;
+    }
+    showMessage("Das rote aktive Geschoss muss immer eingeschaltet bleiben. Umschalt+Klick auf ein anderes Geschoss aktiviert dieses rot.");
   }
 
   function addBuildingStorey(kind) {
@@ -951,7 +1061,11 @@
       elevationMm,
       heightMm,
       heightDecimalSeparator: ",",
+      displayMode: "red",
       source: "local",
+    });
+    building.storeys.forEach((storey) => {
+      if (storey.id !== id && storey.displayMode === "red") storey.displayMode = "yellow";
     });
     recalculateStoreyElevations();
     building.activeStoreyId = id;
@@ -1275,11 +1389,57 @@
     if (projectStatusText) projectStatusText.textContent = projectText;
   }
 
+  function elementLineFingerprint(element) {
+    const geometry = element?.geometry || {};
+    const start = geometry.start_mm;
+    const end = geometry.end_mm;
+    if (!Array.isArray(start) || !Array.isArray(end)) return null;
+    const values = [...start, ...end].map((value) => Math.round((Number(value) || 0) / 10));
+    return `${element.kind || ""}:${element.family_ref || ""}:${values.join(":")}`;
+  }
+
+  function optimisticElementResolved(element, projection) {
+    const elements = (projection?.sheets || []).flatMap((sheet) => sheet.elements || []);
+    const commandRef = String(element?.command_ref || "");
+    if (elements.some((candidate) => candidate.element_ref === element.element_ref
+      || (commandRef && String(candidate.command_ref || candidate.source?.client_command_id || "") === commandRef))) return true;
+    const fingerprint = elementLineFingerprint(element);
+    return Boolean(fingerprint && elements.some((candidate) => (
+      !candidate.local_draft
+      && String(candidate.storey_id || "") === String(element.storey_id || "")
+      && elementLineFingerprint(candidate) === fingerprint
+    )));
+  }
+
+  function rememberOptimisticElement(sheetRef, element) {
+    if (!element) return;
+    const key = String(element.command_ref || element.element_ref);
+    state.optimisticElements.set(key, {sheetRef, element: cloneValue(element)});
+  }
+
+  function mergeOptimisticProjection(input) {
+    if (!input || !state.optimisticElements.size) return input;
+    const projection = cloneValue(input);
+    state.optimisticElements.forEach((entry, key) => {
+      if (optimisticElementResolved(entry.element, projection)) {
+        state.optimisticElements.delete(key);
+        return;
+      }
+      const sheet = projection.sheets.find((candidate) => candidate.sheet_ref === entry.sheetRef) || projection.sheets[0];
+      if (sheet && !(sheet.elements || []).some((candidate) => candidate.element_ref === entry.element.element_ref)) {
+        sheet.elements = [...(sheet.elements || []), cloneValue(entry.element)];
+      }
+    });
+    return projection;
+  }
+
   async function activateProjection(input, message, options = {}) {
     if (!input || !Array.isArray(input.sheets)) {
       throw new Error("Core hat keine gültige CAD-Projektion geliefert.");
     }
+    input = mergeOptimisticProjection(input);
     state.input = input;
+    loadDoorConfigurations(input);
     if (!options.preserveViewState) {
       state.planOverview = false;
       state.planOverviewPreviousCamera = null;
@@ -1385,6 +1545,56 @@
     if (parcelSelectionSignature() !== requestedParcelSignature) scheduleParcelProjectionReload();
   }
 
+  function cacheCurrentStoreyProjection() {
+    const storeyId = String(state.loadedProjectionStoreyId || state.building?.activeStoreyId || "");
+    if (!storeyId || !state.input || !state.scene) return;
+    state.storeySceneCache.set(storeyId, {
+      input: state.input,
+      scene: state.scene,
+      fingerprint: state.sharedModelFingerprint,
+    });
+  }
+
+  async function ensureStoreyOverlay(storeyId) {
+    const normalizedId = String(storeyId || "");
+    if (!normalizedId || normalizedId === state.loadedProjectionStoreyId || state.storeySceneCache.has(normalizedId)) return;
+    if (!projectContext.coreProjectId) return;
+    if (state.storeyOverlayLoads.has(normalizedId)) return state.storeyOverlayLoads.get(normalizedId);
+    const load = (async () => {
+      const result = await fetchJson(
+        `${routePrefix}/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection`,
+        {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            projectionKey: "semantic-floor-plan-v1",
+            options: {viewKind: "floor_plan", representationMode: "semantic-construction", storeyId: normalizedId},
+            parcelSelection: state.parcelSelection,
+          }),
+        },
+      );
+      const input = result?.snapshot?.projection;
+      if (!input || !Array.isArray(input.sheets)) throw new Error(`Für Geschoss ${normalizedId} wurde keine CAD-Projektion geliefert.`);
+      const preview = await fetchJson(`${routePrefix}/preview`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(input),
+      });
+      state.storeySceneCache.set(normalizedId, {
+        input: preview.projection,
+        scene: preview.scene,
+        fingerprint: String(result?.snapshot?.sourceFingerprint || result?.snapshot?.etag || ""),
+      });
+      preview.scene?.sheets?.forEach((sheet) => sheet.layers?.forEach((layer) => {
+        state.knownLayers.add(layer.layer_ref);
+        state.visibleLayers.add(layer.layer_ref);
+      }));
+      renderAll();
+    })().finally(() => state.storeyOverlayLoads.delete(normalizedId));
+    state.storeyOverlayLoads.set(normalizedId, load);
+    return load;
+  }
+
   function startSharedModelPolling() {
     if (!projectContext.coreProjectId || state.sharedModelPollTimer) return;
     state.sharedModelPollTimer = window.setInterval(async () => {
@@ -1420,6 +1630,7 @@
     const viewport = groundFloorViewport();
     if (viewport) state.activeViewportRef = viewport.viewport_ref;
     syncKnownLayers();
+    cacheCurrentStoreyProjection();
     if (!state.camera) fitGroundFloor(false);
     renderAll();
   }
@@ -1725,8 +1936,14 @@
       {value: "north", label: "Ansicht Nord"}, {value: "east", label: "Ansicht Ost"},
       {value: "south", label: "Ansicht Süd"}, {value: "west", label: "Ansicht West"},
     ];
-    if (content === "sections") return [{value: "section-a", label: "Schnitt A–A"}, {value: "section-b", label: "Schnitt B–B"}];
+    if (["sections", "cross_sections"].includes(content)) return [{value: "section-a", label: "Schnitt A–A"}, {value: "section-b", label: "Schnitt B–B"}];
+    if (content === "longitudinal_section") return [{value: "longitudinal-a", label: "Längsschnitt A"}];
     if (content === "site_plan") return [{value: "site", label: "Lageplan mit Grundstück"}];
+    if (content === "alignment_plan") return [{value: "alignment", label: "Achse und Gradiente"}];
+    if (content === "drainage_plan") return [{value: "drainage", label: "Entwässerung und Leitungen"}];
+    if (content === "formwork_plan") return [{value: "formwork", label: "Schalung und Bauteilkonturen"}];
+    if (content === "reinforcement_plan") return [{value: "reinforcement", label: "Bewehrung und Positionen"}];
+    if (content === "details") return [{value: "details", label: "Konstruktive Details"}];
     if (content === "title_block") return [{value: "title", label: "Projekt-Plankopf"}];
     return [{value: "all", label: "Alle Planteile"}];
   }
@@ -1738,7 +1955,19 @@
     const phaseSelect = document.getElementById("plan-phase");
     const contentSelect = document.getElementById("plan-content");
     if (phaseSelect) phaseSelect.value = state.planPhase;
-    if (contentSelect) state.planContent = contentSelect.value = state.planContent;
+    if (contentSelect) {
+      const profile = activePlanProfile();
+      const contents = ["overview", ...(profile.required || activePlanRules().content_order || [])];
+      contentSelect.replaceChildren();
+      contents.forEach((content) => {
+        const option = document.createElement("option");
+        option.value = content;
+        option.textContent = content === "overview" ? "Planübersicht" : planContentLabel(content);
+        contentSelect.append(option);
+      });
+      if (!contents.includes(state.planContent)) state.planContent = "overview";
+      contentSelect.value = state.planContent;
+    }
     const viewSelect = document.getElementById("plan-view-selection");
     const options = planViewOptions();
     if (viewSelect) {
@@ -1767,6 +1996,9 @@
     const summary = document.getElementById("plan-rule-summary");
     const phase = activePlanRules().phases?.[state.planPhase];
     if (summary) summary.textContent = phase?.summary || "";
+    app.dataset.planPhase = state.planPhase;
+    app.dataset.planDomain = profile.domain || "hochbau";
+    syncPlanAutomationUi();
   }
 
   function planOverviewCamera() {
@@ -1806,10 +2038,64 @@
   function planTile(group, rect, title, subtitle = "") {
     group.append(
       svgEl("rect", {x: rect.x, y: rect.y, width: rect.width, height: rect.height, class: "plan-tile"}),
+      svgEl("line", {x1: rect.x, y1: rect.y + 1080, x2: rect.x + rect.width, y2: rect.y + 1080, class: "plan-tile-header-line"}),
       svgEl("text", {x: rect.x + 380, y: rect.y + 590, class: "plan-tile-title"}, title.toUpperCase()),
+      svgEl("text", {x: rect.x + rect.width - 380, y: rect.y + 590, class: "plan-tile-scale"}, title === "Plankopf" ? "" : (title.toLowerCase().includes("lage") ? "M 1:500" : "M 1:100")),
     );
     if (subtitle) group.append(svgEl("text", {x: rect.x + 380, y: rect.y + 940, class: "plan-tile-subtitle"}, subtitle));
     return {x: rect.x + 450, y: rect.y + 1200, width: rect.width - 900, height: rect.height - 1650};
+  }
+
+  function appendPlanAxes(group, bounds) {
+    const extension = Math.max(550, Math.min(bounds.width, bounds.height) * .055);
+    const axes = [
+      {label: "A", x1: bounds.x, y1: bounds.y - extension, x2: bounds.x, y2: bounds.y + bounds.height + extension},
+      {label: "B", x1: bounds.x + bounds.width / 2, y1: bounds.y - extension, x2: bounds.x + bounds.width / 2, y2: bounds.y + bounds.height + extension},
+      {label: "C", x1: bounds.x + bounds.width, y1: bounds.y - extension, x2: bounds.x + bounds.width, y2: bounds.y + bounds.height + extension},
+    ];
+    axes.forEach((axis) => {
+      group.append(
+        svgEl("line", {x1: axis.x1, y1: axis.y1, x2: axis.x2, y2: axis.y2, class: "plan-axis-line"}),
+        svgEl("circle", {cx: axis.x1, cy: axis.y1, r: extension * .24, class: "plan-axis-head"}),
+        svgEl("text", {x: axis.x1, y: axis.y1, class: "plan-axis-label"}, axis.label),
+      );
+    });
+    [
+      {label: "1", y: bounds.y},
+      {label: "2", y: bounds.y + bounds.height / 2},
+      {label: "3", y: bounds.y + bounds.height},
+    ].forEach((axis) => {
+      const x1 = bounds.x - extension;
+      group.append(
+        svgEl("line", {x1, y1: axis.y, x2: bounds.x + bounds.width + extension, y2: axis.y, class: "plan-axis-line"}),
+        svgEl("circle", {cx: x1, cy: axis.y, r: extension * .24, class: "plan-axis-head"}),
+        svgEl("text", {x: x1, y: axis.y, class: "plan-axis-label"}, axis.label),
+      );
+    });
+  }
+
+  function appendPlanSectionMarkers(group, bounds) {
+    if (state.automaticSections.has(planAutomationKey())) return;
+    const y = bounds.y + bounds.height * .52;
+    const pad = Math.max(420, bounds.width * .045);
+    const radius = Math.max(150, Math.min(bounds.width, bounds.height) * .018);
+    group.append(svgEl("line", {x1: bounds.x - pad, y1: y, x2: bounds.x + bounds.width + pad, y2: y, class: "plan-section-guide"}));
+    [[bounds.x - pad, 1], [bounds.x + bounds.width + pad, -1]].forEach(([x, direction]) => {
+      group.append(
+        svgEl("circle", {cx: x, cy: y, r: radius, class: "plan-section-head"}),
+        svgEl("path", {d: `M ${x} ${y} l ${direction * radius * .72} ${-radius * .45} v ${radius * .9} Z`, class: "plan-section-arrow"}),
+        svgEl("text", {x, y: y - radius * 1.35, class: "plan-section-text"}, "A"),
+      );
+    });
+  }
+
+  function appendPlanLevelMarker(group, bounds) {
+    const x = bounds.x + bounds.width * .07;
+    const y = bounds.y + bounds.height * .12;
+    group.append(
+      svgEl("path", {d: `M ${x - 260} ${y} H ${x + 260} L ${x} ${y - 180} Z`, class: "plan-level-marker"}),
+      svgEl("text", {x: x + 330, y: y + 60, class: "plan-level-text"}, "±0,00 OKFF"),
+    );
   }
 
   function formatPlanDimension(valueMm) {
@@ -1836,6 +2122,196 @@
       svgEl("line", {x1: leftX - tick, y1: bounds.y + bounds.height, x2: leftX + tick, y2: bounds.y + bounds.height, class: "plan-dimension-line"}),
       svgEl("text", {x: leftX - tick * 0.65, y: bounds.y + bounds.height / 2, class: "plan-dimension-text", transform: `rotate(-90 ${leftX - tick * 0.65} ${bounds.y + bounds.height / 2})`}, formatPlanDimension(bounds.height)),
     );
+    if (state.planPhase === "execution") {
+      const chainY = topY + offset * .48;
+      const quarter = bounds.width / 4;
+      group.append(svgEl("line", {x1: bounds.x, y1: chainY, x2: bounds.x + bounds.width, y2: chainY, class: "plan-dimension-line plan-dimension-secondary"}));
+      for (let index = 0; index <= 4; index += 1) {
+        const x = bounds.x + quarter * index;
+        group.append(svgEl("line", {x1: x - tick * .65, y1: chainY + tick * .65, x2: x + tick * .65, y2: chainY - tick * .65, class: "plan-dimension-line"}));
+        if (index < 4) group.append(svgEl("text", {x: x + quarter / 2, y: chainY - tick * .55, class: "plan-dimension-text plan-dimension-secondary-text"}, formatPlanDimension(quarter)));
+      }
+    }
+  }
+
+  function planAutomationKey() {
+    return `${state.building?.activeStoreyId || state.loadedProjectionStoreyId || "ground_floor"}:${state.planPhase}`;
+  }
+
+  function syncPlanAutomationUi() {
+    const key = planAutomationKey();
+    const dimensionButton = document.querySelector('[data-plan-action="auto-dimensions"]');
+    const sectionButton = document.querySelector('[data-plan-action="auto-section"]');
+    const dimensionActive = state.automaticDimensionResults.has(key);
+    const sectionActive = state.automaticSections.has(key);
+    if (dimensionButton) {
+      dimensionButton.disabled = state.automaticDimensionPending || !state.planOverview;
+      dimensionButton.classList.toggle("is-active", dimensionActive);
+      dimensionButton.setAttribute("aria-pressed", String(dimensionActive));
+    }
+    if (sectionButton) {
+      sectionButton.disabled = !state.planOverview;
+      sectionButton.classList.toggle("is-active", sectionActive);
+      sectionButton.setAttribute("aria-pressed", String(sectionActive));
+    }
+    const status = document.getElementById("plan-automation-status");
+    if (!status) return;
+    const summary = state.automaticDimensionResults.get(key)?.summary;
+    status.textContent = state.automaticDimensionPending
+      ? "Maßketten werden aus Wänden und Öffnungen berechnet …"
+      : summary
+        ? `${summary.external_chain_count} Außen- und ${summary.internal_chain_count} Innenmaßketten · ${summary.segment_count} Teilmaße.`
+        : sectionActive
+          ? "Automatischer Schnitt A–A gesetzt. Er bleibt ausschließlich in der Planansicht sichtbar."
+          : "Planwerkzeuge werden ausschließlich in dieser Planansicht dargestellt.";
+  }
+
+  function automaticDimensionWallSegments(primitive) {
+    const geometry = primitive.geometry || {};
+    if (primitive.primitive_type === "thick_path") {
+      return (geometry.path_mm || []).slice(0, -1).map((point, index) => [point, geometry.path_mm[index + 1]]);
+    }
+    if (primitive.primitive_type === "thick_segments") return geometry.segments_mm || [];
+    if (primitive.primitive_type === "polygon") {
+      const frame = polygonFrame(primitive);
+      if (frame) return [[interpolatePoint(frame.a, frame.d, .5), interpolatePoint(frame.b, frame.c, .5)]];
+    }
+    return [];
+  }
+
+  function automaticDimensionRequest() {
+    const viewport = currentViewport();
+    const activeStoreyId = state.building?.activeStoreyId || state.loadedProjectionStoreyId;
+    const primitives = visibleViewportPrimitives(viewport)
+      .filter((primitive) => String(primitive.metadata?.storey_id || activeStoreyId) === activeStoreyId)
+      .map((primitive) => northUpPrimitive(primitiveWithPointGeometry(primitive)));
+    const rectangles = primitives.map(primitiveModelBounds).filter(Boolean);
+    if (!rectangles.length) throw new Error("Für die automatische Bemaßung ist noch keine Modellgeometrie vorhanden.");
+    const minX = Math.min(...rectangles.map((entry) => entry.x));
+    const minY = Math.min(...rectangles.map((entry) => entry.y));
+    const maxX = Math.max(...rectangles.map((entry) => entry.x + entry.width));
+    const maxY = Math.max(...rectangles.map((entry) => entry.y + entry.height));
+    const footprint = [[minX, minY], [maxX, minY], [maxX, maxY], [minX, maxY]];
+    const walls = [];
+    primitives.filter((primitive) => primitive.style_ref === "wall-cut").forEach((primitive) => {
+      const descriptor = `${primitive.metadata?.label || ""} ${primitive.metadata?.semantic_role || ""}`.toLowerCase();
+      automaticDimensionWallSegments(primitive).forEach((segment, index) => {
+        if (!Array.isArray(segment?.[0]) || !Array.isArray(segment?.[1])) return;
+        walls.push({
+          wall_ref: index ? `${primitive.primitive_ref}:${index + 1}` : primitive.primitive_ref,
+          kind: /innen|interior|partition|trockenbau/.test(descriptor) ? "interior" : "exterior",
+          start_mm: segment[0],
+          end_mm: segment[1],
+          thickness_mm: Number(primitive.geometry?.thickness_mm || primitive.metadata?.thickness_mm) || 115,
+        });
+      });
+    });
+    const wallRefs = new Set(walls.map((wall) => wall.wall_ref));
+    const openings = primitives.filter((primitive) => ["door", "window", "opening"].includes(primitive.style_ref)).map((primitive) => {
+      const hostRef = String(primitive.metadata?.host_wall_ref || "");
+      if (!wallRefs.has(hostRef)) return null;
+      const bounds = primitiveModelBounds(primitive);
+      return {
+        opening_ref: primitive.primitive_ref,
+        wall_ref: hostRef,
+        kind: primitive.style_ref,
+        width_mm: Math.max(bounds?.width || 0, bounds?.height || 0, 1),
+      };
+    }).filter(Boolean);
+    const complete = activePlanRules().phases?.[state.planPhase]?.dimensioning === "complete";
+    return {
+      contract_version: "cad-auto-dimension-request/0.1",
+      footprint: {outer_ring_mm: footprint},
+      walls,
+      openings,
+      options: {
+        include_external: true,
+        include_internal: complete,
+        opening_tolerance_mm: 300,
+        external_offset_mm: state.planPhase === "design" ? 900 : 1100,
+        internal_offset_mm: 350,
+        chain_spacing_mm: 450,
+      },
+    };
+  }
+
+  async function toggleAutomaticDimensions() {
+    const key = planAutomationKey();
+    if (state.automaticDimensionResults.has(key)) {
+      state.automaticDimensionResults.delete(key);
+      syncPlanAutomationUi();
+      renderPlan();
+      showMessage("Automatische Bemaßung in der Planansicht ausgeblendet.");
+      return;
+    }
+    state.automaticDimensionPending = true;
+    syncPlanAutomationUi();
+    try {
+      const result = await fetchJson(`${routePrefix}/automation/dimensions/calculate`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(automaticDimensionRequest()),
+      });
+      state.automaticDimensionResults.set(key, result);
+      renderPlan();
+      showMessage(`Automatische Bemaßung erstellt: ${result.summary?.segment_count || 0} Teilmaße.`);
+    } finally {
+      state.automaticDimensionPending = false;
+      syncPlanAutomationUi();
+    }
+  }
+
+  function toggleAutomaticSection() {
+    const key = planAutomationKey();
+    if (state.automaticSections.has(key)) {
+      state.automaticSections.delete(key);
+      showMessage("Automatischen Schnitt A–A ausgeblendet.");
+    } else {
+      const bounds = planOverviewBounds(currentViewport());
+      if (!bounds) throw new Error("Für den automatischen Schnitt ist noch keine Modellgeometrie vorhanden.");
+      const pad = Math.max(600, Math.min(bounds.width, bounds.height) * .08);
+      const horizontal = bounds.width >= bounds.height;
+      state.automaticSections.set(key, horizontal
+        ? {label: "A–A", start_mm: [bounds.x - pad, bounds.y + bounds.height / 2], end_mm: [bounds.x + bounds.width + pad, bounds.y + bounds.height / 2]}
+        : {label: "A–A", start_mm: [bounds.x + bounds.width / 2, bounds.y - pad], end_mm: [bounds.x + bounds.width / 2, bounds.y + bounds.height + pad]});
+      showMessage("Automatischer Schnitt A–A gesetzt und nur in der Planansicht aktiviert.");
+    }
+    syncPlanAutomationUi();
+    renderPlan();
+  }
+
+  function renderAutomaticDimensions(group) {
+    const result = state.automaticDimensionResults.get(planAutomationKey());
+    if (!result) return;
+    const overlay = svgEl("g", {class: "auto-dimension-overlay"});
+    (result.chains || []).forEach((chain) => {
+      (chain.witness_lines_mm || []).forEach((line) => overlay.append(svgEl("line", {
+        x1: line[0][0], y1: line[0][1], x2: line[1][0], y2: line[1][1], class: "auto-dimension-witness",
+      })));
+      [...(chain.segments || []), ...(chain.overall ? [chain.overall] : [])].forEach((segment) => {
+        const start = segment.start_mm;
+        const end = segment.end_mm;
+        overlay.append(
+          svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "auto-dimension-line"}),
+          svgEl("text", {x: (start[0] + end[0]) / 2, y: (start[1] + end[1]) / 2 - 95, class: "auto-dimension-text"}, segment.display),
+        );
+      });
+    });
+    group.append(overlay);
+  }
+
+  function renderAutomaticSection(group) {
+    const section = state.automaticSections.get(planAutomationKey());
+    if (!section) return;
+    const [start, end] = [section.start_mm, section.end_mm];
+    const radius = 260;
+    const overlay = svgEl("g", {class: "auto-section-overlay"});
+    overlay.append(svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "auto-section-line"}));
+    [start, end].forEach((point) => overlay.append(
+      svgEl("circle", {cx: point[0], cy: point[1], r: radius, class: "auto-section-head"}),
+      svgEl("text", {x: point[0], y: point[1], class: "auto-section-label"}, "A"),
+    ));
+    group.append(overlay);
   }
 
   function renderPlanFloorPlan(group, rect) {
@@ -1856,7 +2332,9 @@
       .filter((primitive) => state.visibleLayers.has(primitive.layer_ref))
       .sort((left, right) => (renderStyleOrder[left.style_ref] ?? 50) - (renderStyleOrder[right.style_ref] ?? 50))
       .forEach((primitive) => layer.append(renderPrimitive(primitive)));
-    appendExteriorDimensions(layer, bounds);
+    if (state.automaticDimensionResults.has(planAutomationKey())) renderAutomaticDimensions(layer);
+    else appendExteriorDimensions(layer, bounds);
+    renderAutomaticSection(layer);
     group.append(layer);
   }
 
@@ -1942,10 +2420,35 @@
 
   function renderPlanContent(group, content, rect) {
     if (content === "floor_plans") renderPlanFloorPlan(group, rect);
-    else if (content === "site_plan") renderPlanSitePlan(group, rect);
+    else if (["site_plan", "alignment_plan", "drainage_plan"].includes(content)) renderPlanSitePlan(group, rect);
     else if (content === "elevations") renderBuildingSchematic(group, rect, "elevation");
-    else if (content === "sections") renderBuildingSchematic(group, rect, "section");
+    else if (["sections", "longitudinal_section", "cross_sections", "formwork_plan", "reinforcement_plan", "details"].includes(content)) renderBuildingSchematic(group, rect, "section");
     else if (content === "title_block") renderPlanTitleBlock(group, rect);
+  }
+
+  function planOverviewTiles() {
+    const domain = activePlanProfile().domain || "hochbau";
+    if (domain === "tiefbau") return [
+      ["site_plan", {x: 1200, y: 2450, width: 25200, height: 15100}],
+      ["longitudinal_section", {x: 27000, y: 2450, width: 13200, height: 7100}],
+      ["cross_sections", {x: 27000, y: 9950, width: 13200, height: 7600}],
+      ["drainage_plan", {x: 1200, y: 17950, width: 25200, height: 9000}],
+      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+    ];
+    if (domain === "ingenieurbau") return [
+      ["floor_plans", {x: 1200, y: 2450, width: 25200, height: 15100}],
+      ["elevations", {x: 27000, y: 2450, width: 13200, height: 7100}],
+      ["cross_sections", {x: 27000, y: 9950, width: 13200, height: 7600}],
+      [state.planPhase === "execution" ? "formwork_plan" : "sections", {x: 1200, y: 17950, width: 25200, height: 9000}],
+      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+    ];
+    return [
+      ["floor_plans", {x: 1200, y: 2450, width: 25200, height: 15100}],
+      [state.planPhase === "execution" ? "details" : "site_plan", {x: 27000, y: 2450, width: 13200, height: 7100}],
+      ["elevations", {x: 27000, y: 9950, width: 13200, height: 7600}],
+      ["sections", {x: 1200, y: 17950, width: 25200, height: 9000}],
+      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+    ];
   }
 
   function renderPlanWorkspace() {
@@ -1963,13 +2466,7 @@
       svgEl("text", {x: 1250, y: 2050, class: "plan-sheet-meta"}, `VECTOPLAN CAD · ${activeBuildingStorey()?.name || "Aktives Geschoss"} · automatische Außenbemaßung`),
     );
     if (state.planContent === "overview") {
-      const tiles = [
-        ["floor_plans", {x: 1200, y: 2450, width: 25200, height: 15100}],
-        ["site_plan", {x: 27000, y: 2450, width: 13200, height: 7100}],
-        ["elevations", {x: 27000, y: 9950, width: 13200, height: 7600}],
-        ["sections", {x: 1200, y: 17950, width: 25200, height: 9000}],
-        ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
-      ];
+      const tiles = planOverviewTiles();
       tiles.forEach(([content, tileRect]) => {
         const contentRect = planTile(group, tileRect, planContentLabel(content), content === "floor_plans" ? (activeBuildingStorey()?.name || "") : "");
         renderPlanContent(group, content, contentRect);
@@ -2021,12 +2518,18 @@
     slabPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 420, class: "slab-hatch-line"}));
     const roofPattern = svgEl("pattern", {id: "cad-roof-hatch", width: 620, height: 620, patternUnits: "userSpaceOnUse", patternTransform: "rotate(-45)"});
     roofPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 620, class: "roof-hatch-line"}));
+    const wallPattern = svgEl("pattern", {id: "cad-wall-hatch", width: 90, height: 90, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
+    wallPattern.append(
+      svgEl("rect", {x: 0, y: 0, width: 90, height: 90, class: "wall-hatch-background"}),
+      svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 90, class: "wall-hatch-line"}),
+    );
     const wallDraftPattern = svgEl("pattern", {id: "cad-wall-draft-hatch", width: 90, height: 90, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
     wallDraftPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 90, class: "draft-wall-hatch-line"}));
-    defs.append(slabPattern, roofPattern, wallDraftPattern);
+    defs.append(slabPattern, roofPattern, wallPattern, wallDraftPattern);
     svg.append(defs);
     if (state.planOverview) {
       renderPlanWorkspace();
+      renderCrosshair();
       return;
     }
     svg.append(svgEl("rect", {x: camera.x, y: camera.y, width: camera.width, height: camera.height, class: "workspace-plane"}));
@@ -2102,6 +2605,9 @@
     node.classList.add("primitive", `primitive-${primitive.style_ref || "line"}`);
     node.dataset.elementRef = primitive.primitive_ref;
     node.dataset.layer = primitive.layer_ref;
+    const primitiveStoreyMode = primitive.metadata?.storey_display_mode || "red";
+    node.dataset.storeyMode = primitiveStoreyMode;
+    node.classList.add(`storey-mode-${primitiveStoreyMode}`);
     if (primitive.metadata?.local_draft) node.classList.add("local-draft");
     if (!state.visibleLayers.has(primitive.layer_ref)) node.classList.add("layer-hidden");
     if (state.selectedPrimitive?.primitive_ref === primitive.primitive_ref) node.classList.add("is-selected");
@@ -2109,6 +2615,10 @@
     if (transform) node.setAttribute("transform", transform);
     node.addEventListener("pointerdown", (event) => {
       if (event.button !== 0 || state.activeTool !== "select" || state.spacePressed) return;
+      if (primitiveStoreyMode === "gray") {
+        showMessage("Dieses graue Geschoss ist nur sichtbar. Für eine bearbeitbare Referenz den Geschossstatus auf gelb stellen.");
+        return;
+      }
       if (event.pointerType !== "touch") event.stopPropagation();
       state.selectedPrimitive = primitive;
       renderPlan();
@@ -2118,7 +2628,7 @@
     if (primitive.primitive_type === "room") {
       node.classList.add("room-is-editable");
       node.addEventListener("dblclick", (event) => {
-        if (projectContext.readOnly) return;
+        if (projectContext.readOnly || primitiveStoreyMode === "gray") return;
         event.preventDefault();
         event.stopPropagation();
         openRoomLabelEditor(primitive);
@@ -2176,26 +2686,116 @@
     ];
   }
 
+  function primitivePlanRepresentation(primitive) {
+    const context = primitive?.metadata?.library_context || {};
+    return context.plan_representation || primitive?.metadata?.plan_representation || {};
+  }
+
+  function doorConfigurationStorageKey(input = state.input) {
+    const documentRef = input?.document?.document_ref || projectContext.coreProjectId || projectContext.projectPublicId || "sample";
+    return `vectoplan-cad:door-configurations:${documentRef}`;
+  }
+
+  function loadDoorConfigurations(input = state.input) {
+    const key = doorConfigurationStorageKey(input);
+    if (state.doorConfigurationStorageKey === key) return;
+    let stored = {};
+    try {
+      stored = JSON.parse(window.localStorage.getItem(key) || "{}") || {};
+    } catch (_error) {}
+    state.doorConfigurationStorageKey = key;
+    state.doorConfigurations = new Map(Object.entries(stored));
+  }
+
+  function persistDoorConfigurations() {
+    if (!state.doorConfigurationStorageKey) return;
+    try {
+      window.localStorage.setItem(state.doorConfigurationStorageKey, JSON.stringify(Object.fromEntries(state.doorConfigurations)));
+    } catch (_error) {}
+  }
+
+  function doorConfigurationFor(primitive) {
+    const metadata = primitive?.metadata || {};
+    const override = state.doorConfigurations.get(primitive?.primitive_ref) || {};
+    return {
+      hingeSide: override.hingeSide || metadata.door_hinge_side || "left",
+      swingSide: override.swingSide || metadata.door_swing_side || "positive",
+    };
+  }
+
+  function syncDoorOptionsPanel() {
+    const panel = document.getElementById("door-options");
+    if (!panel) return;
+    const primitive = selectedSourcePrimitive();
+    const isDoor = primitive?.style_ref === "door";
+    panel.hidden = !isDoor;
+    if (!isDoor) return;
+    const configuration = doorConfigurationFor(primitive);
+    panel.querySelectorAll("[data-door-hinge]").forEach((button) => {
+      const active = button.dataset.doorHinge === configuration.hingeSide;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    panel.querySelectorAll("[data-door-swing]").forEach((button) => {
+      const active = button.dataset.doorSwing === configuration.swingSide;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function updateSelectedDoorConfiguration(patch) {
+    const primitive = selectedSourcePrimitive();
+    if (!primitive || primitive.style_ref !== "door") return;
+    const before = doorConfigurationFor(primitive);
+    state.doorConfigurations.set(primitive.primitive_ref, {...before, ...patch});
+    persistDoorConfigurations();
+    renderPlan();
+    syncDoorOptionsPanel();
+    showMessage("Türanschlag aktualisiert · Band- und Aufschlagseite bleiben für dieses Türelement gespeichert.");
+  }
+
+  function renderOpeningPlanLabels(group, primitive, frame, representation) {
+    if (!state.planOverview || !frame) return;
+    const midpoint = interpolatePoint(frame.a, frame.b, .5);
+    const dimensions = primitive.metadata?.library_context?.dimensions || {};
+    if (representation.show_opening_label !== false) {
+      const width = Number(dimensions.width_mm) || frame.length;
+      const height = Number(dimensions.height_mm) || 0;
+      const label = height > 0 ? `${Math.round(width)}/${Math.round(height)}` : `${Math.round(width)}`;
+      group.append(svgEl("text", {x: midpoint[0], y: midpoint[1] - 120, class: "opening-plan-label"}, label));
+    }
+    if (primitive.style_ref === "window" && representation.show_sill_height !== false) {
+      const sill = Number(primitive.metadata?.library_context?.sill_height_mm ?? primitive.metadata?.sill_height_mm ?? 1000);
+      group.append(svgEl("text", {x: midpoint[0], y: midpoint[1] + 170, class: "opening-plan-sill"}, `BRH ${Math.round(sill)}`));
+    }
+  }
+
   function renderDoorPrimitive(primitive) {
     const group = svgEl("g");
     const frame = polygonFrame(primitive);
     const points = polygonPoints(primitive);
+    const representation = primitivePlanRepresentation(primitive);
     group.append(polygonNode(points, "architectural-symbol-base"));
     if (!frame || frame.length <= 0) return group;
-    const side = [frame.d[0] - frame.a[0], frame.d[1] - frame.a[1]];
+    const configuration = doorConfigurationFor(primitive);
+    const hingeLeft = configuration.hingeSide !== "right";
+    const hinge = hingeLeft ? frame.a : frame.b;
+    const closedEnd = hingeLeft ? frame.b : frame.a;
+    const sideCorner = hingeLeft ? frame.d : frame.c;
+    const side = [sideCorner[0] - hinge[0], sideCorner[1] - hinge[1]];
     const sideLength = Math.hypot(side[0], side[1]);
     const normal = sideLength > 1e-6
       ? [side[0] / sideLength, side[1] / sideLength]
       : [-(frame.b[1] - frame.a[1]) / frame.length, (frame.b[0] - frame.a[0]) / frame.length];
-    const leafEnd = [frame.a[0] + normal[0] * frame.length, frame.a[1] + normal[1] * frame.length];
-    const closedVector = [frame.b[0] - frame.a[0], frame.b[1] - frame.a[1]];
-    const leafVector = [leafEnd[0] - frame.a[0], leafEnd[1] - frame.a[1]];
+    const swingFactor = configuration.swingSide === "negative" ? -1 : 1;
+    const leafEnd = [hinge[0] + normal[0] * frame.length * swingFactor, hinge[1] + normal[1] * frame.length * swingFactor];
+    const closedVector = [closedEnd[0] - hinge[0], closedEnd[1] - hinge[1]];
+    const leafVector = [leafEnd[0] - hinge[0], leafEnd[1] - hinge[1]];
     const sweepFlag = closedVector[0] * leafVector[1] - closedVector[1] * leafVector[0] >= 0 ? 1 : 0;
-    group.append(
-      svgEl("line", {x1: frame.a[0], y1: frame.a[1], x2: leafEnd[0], y2: leafEnd[1], class: "door-leaf"}),
-      svgEl("path", {d: `M ${frame.b[0]} ${frame.b[1]} A ${frame.length} ${frame.length} 0 0 ${sweepFlag} ${leafEnd[0]} ${leafEnd[1]}`, class: "door-swing"}),
-      svgEl("circle", {cx: frame.a[0], cy: frame.a[1], r: Math.max(35, frame.length * 0.035), class: "door-hinge"}),
-    );
+    group.append(svgEl("line", {x1: hinge[0], y1: hinge[1], x2: leafEnd[0], y2: leafEnd[1], class: "door-leaf"}));
+    if (representation.show_swing !== false) group.append(svgEl("path", {d: `M ${closedEnd[0]} ${closedEnd[1]} A ${frame.length} ${frame.length} 0 0 ${sweepFlag} ${leafEnd[0]} ${leafEnd[1]}`, class: "door-swing"}));
+    group.append(svgEl("circle", {cx: hinge[0], cy: hinge[1], r: Math.max(35, frame.length * 0.035), class: "door-hinge"}));
+    renderOpeningPlanLabels(group, primitive, frame, representation);
     return group;
   }
 
@@ -2203,18 +2803,22 @@
     const group = svgEl("g");
     const frame = polygonFrame(primitive);
     const points = polygonPoints(primitive);
+    const representation = primitivePlanRepresentation(primitive);
     group.append(polygonNode(points, "architectural-symbol-base"));
     if (!frame) return group;
     const centreStart = interpolatePoint(frame.a, frame.d, 0.5);
     const centreEnd = interpolatePoint(frame.b, frame.c, 0.5);
     const side = [frame.d[0] - frame.a[0], frame.d[1] - frame.a[1]];
-    const lines = [-0.22, 0.22].map((offset) => ({
+    const count = Math.max(1, Math.min(5, Number(representation.frame_line_count) || 2));
+    const offsets = Array.from({length: count}, (_entry, index) => count === 1 ? 0 : -.28 + .56 * index / (count - 1));
+    const lines = offsets.map((offset) => ({
       start: [centreStart[0] + side[0] * offset, centreStart[1] + side[1] * offset],
       end: [centreEnd[0] + side[0] * offset, centreEnd[1] + side[1] * offset],
     }));
     lines.forEach(({start, end}) => group.append(svgEl("line", {
       x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "window-glazing",
     })));
+    renderOpeningPlanLabels(group, primitive, frame, representation);
     return group;
   }
 
@@ -2254,6 +2858,8 @@
   function renderRoomPrimitive(primitive) {
     const geometry = primitive.geometry || {};
     const group = svgEl("g");
+    const representation = primitivePlanRepresentation(primitive);
+    group.classList.add(`room-fill-${representation.room_fill_mode || "zone"}`);
     const polygon = normalizedPolygonPoints(geometry.points_mm);
     let labelPoint;
     if (polygon.length >= 3) {
@@ -2270,11 +2876,14 @@
       labelPoint = [x + width / 2, y + depth / 2];
     }
     const lines = String(primitive.text || primitive.metadata?.label || "Raum").split("\n");
-    group.append(svgEl("text", {
-      x: labelPoint[0], y: labelPoint[1] - 45, class: "room-label room-label-editable",
+    if (representation.room_stamp_show_name !== false) group.append(svgEl("text", {
+      x: labelPoint[0], y: labelPoint[1] - 95, class: "room-label room-label-editable",
       title: "Doppelklick zum Umbenennen",
     }, lines[0] || "Raum"));
-    group.append(svgEl("text", {x: labelPoint[0], y: labelPoint[1] + 155, class: "room-area"}, lines[1] || `${Number(geometry.area_m2 || 0).toFixed(2)} m²`));
+    if (representation.room_stamp_show_area !== false) group.append(svgEl("text", {x: labelPoint[0], y: labelPoint[1] + 105, class: "room-area"}, lines[1] || `${Number(geometry.area_m2 || 0).toFixed(2)} m²`));
+    if (representation.room_stamp_show_floor_finish && state.planOverview) group.append(svgEl("text", {
+      x: labelPoint[0], y: labelPoint[1] + 285, class: "room-finish",
+    }, String(primitive.metadata?.floor_finish || "Bodenaufbau n. Bemusterung")));
     return group;
   }
 
@@ -2567,10 +3176,11 @@
     const start = state.drawStart.model;
     const end = state.drawCurrent.model;
     const group = svgEl("g");
+    const closedRoofDraft = state.activeTool === "roof" && state.roofDraftClosed;
     if (["room", "roof"].includes(state.activeTool)) {
       const isRoof = state.activeTool === "roof";
       const draftPoints = isRoof ? state.roofDraftPoints : state.roomDraftPoints;
-      const points = [...draftPoints, end];
+      const points = closedRoofDraft ? [...draftPoints] : [...draftPoints, end];
       if (points.length >= 3) {
         group.append(polygonNode(points, isRoof ? "roof-draft-fill" : "room-draft-fill"));
         const calculation = polygonAreaAndCentroid(points);
@@ -2579,7 +3189,7 @@
         }, `${isRoof ? "Dach · " : ""}${(calculation.areaMm2 / 1_000_000).toFixed(2)} m²`));
       }
       if (points.length >= 2) group.append(svgEl("polyline", {
-        points: points.map((point) => point.join(",")).join(" "), class: isRoof ? "roof-draft-boundary" : "room-draft-boundary",
+        points: (closedRoofDraft ? [...points, points[0]] : points).map((point) => point.join(",")).join(" "), class: isRoof ? "roof-draft-boundary" : "room-draft-boundary",
       }));
       draftPoints.forEach((point, index) => group.append(svgEl("circle", {
         cx: point[0], cy: point[1], r: state.camera.width / Math.max(svg.clientWidth, 1) * (index === 0 ? 5.2 : 3.2),
@@ -2601,7 +3211,7 @@
     }
     const draftPointRadius = state.camera.width / Math.max(svg.clientWidth, 1) * 3.2;
     if (!["room", "roof"].includes(state.activeTool)) group.append(svgEl("circle", {cx: start[0], cy: start[1], r: draftPointRadius, class: "draft-preview-point"}));
-    group.append(svgEl("circle", {cx: end[0], cy: end[1], r: draftPointRadius, class: "draft-preview-point"}));
+    if (!closedRoofDraft) group.append(svgEl("circle", {cx: end[0], cy: end[1], r: draftPointRadius, class: "draft-preview-point"}));
     svg.append(group);
   }
 
@@ -2818,6 +3428,7 @@
   function renderInspector() {
     const empty = document.getElementById("inspector-empty");
     const inspector = document.getElementById("inspector");
+    syncDoorOptionsPanel();
     if (!empty || !inspector) return;
     const item = state.selectedPrimitive?.metadata || null;
     syncRoofOptionsPanel();
@@ -2931,6 +3542,13 @@
     const parameters = request.parameters || {};
     const overhang = parameters.overhang_mm || {};
     const structure = parameters.structure || {};
+    const buildUp = parameters.roof_build_up || {};
+    const legacyTimberDefaults = structure.rafter?.birdsmouth_depth_mm === undefined
+      && structure.purlin?.middle_span_threshold_mm === undefined
+      && Number(structure.rafter?.spacing_mm || 700) === 700
+      && Number(structure.purlin?.width_mm || 160) === 160
+      && Number(structure.purlin?.height_mm || 240) === 240
+      && Number(structure.purlin?.maximum_spacing_mm || 2500) === 2500;
     setRoofInputValue("roof-tool-type", request.roof_type || calculation.roof_type);
     setRoofInputValue("roof-pitch", parameters.pitch_deg);
     setRoofInputValue("roof-eaves-height", parameters.eaves_height_mm);
@@ -2942,6 +3560,15 @@
     }
     setRoofInputValue("roof-skin-thickness", parameters.roof_skin_thickness_mm);
     setRoofInputValue("roof-skin-material", parameters.roof_skin_material);
+    setRoofInputValue("roof-insulation-mode", buildUp.insulation_mode);
+    setRoofInputValue("roof-sheathing-thickness", buildUp.sheathing_thickness_mm);
+    setRoofInputValue("roof-underlay-thickness", buildUp.underlay_thickness_mm);
+    setRoofInputValue("roof-counter-batten-width", buildUp.counter_batten?.width_mm);
+    setRoofInputValue("roof-counter-batten-height", buildUp.counter_batten?.height_mm);
+    setRoofInputValue("roof-tile-batten-width", buildUp.tile_batten?.width_mm);
+    setRoofInputValue("roof-tile-batten-height", buildUp.tile_batten?.height_mm);
+    setRoofInputValue("roof-tile-batten-spacing", buildUp.tile_batten?.spacing_mm);
+    setRoofInputValue("roof-tile-thickness", buildUp.tile_thickness_mm);
     if (typeof overhang === "number") {
       ["roof-overhang", "roof-overhang-north", "roof-overhang-east", "roof-overhang-south", "roof-overhang-west"]
         .forEach((id) => setRoofInputValue(id, overhang));
@@ -2955,10 +3582,12 @@
     }
     setRoofInputValue("roof-rafter-width", structure.rafter?.width_mm);
     setRoofInputValue("roof-rafter-height", structure.rafter?.height_mm);
-    setRoofInputValue("roof-rafter-spacing", structure.rafter?.spacing_mm);
-    setRoofInputValue("roof-purlin-width", structure.purlin?.width_mm);
-    setRoofInputValue("roof-purlin-height", structure.purlin?.height_mm);
-    setRoofInputValue("roof-purlin-spacing", structure.purlin?.maximum_spacing_mm || structure.purlin?.spacing_mm);
+    setRoofInputValue("roof-rafter-spacing", legacyTimberDefaults ? 650 : structure.rafter?.spacing_mm);
+    setRoofInputValue("roof-birdsmouth-depth", structure.rafter?.birdsmouth_depth_mm);
+    setRoofInputValue("roof-purlin-width", legacyTimberDefaults ? 140 : structure.purlin?.width_mm);
+    setRoofInputValue("roof-purlin-height", legacyTimberDefaults ? 200 : structure.purlin?.height_mm);
+    setRoofInputValue("roof-purlin-spacing", legacyTimberDefaults ? 4500 : (structure.purlin?.maximum_spacing_mm || structure.purlin?.spacing_mm));
+    setRoofInputValue("roof-middle-purlin-threshold", structure.purlin?.middle_span_threshold_mm);
     setRoofInputValue("roof-plateau-ratio", parameters.plateau_width_ratio);
     setRoofInputValue("roof-mansard-break", parameters.mansard_break_ratio);
     setRoofInputValue("roof-mansard-lower-pitch", parameters.mansard_lower_pitch_deg);
@@ -2975,9 +3604,14 @@
     if (!panel) return;
     const selected = selectedSourcePrimitive();
     const selectedRoof = selected && (selected.source_kind === "roof" || selected.style_ref === "roof") ? selected : null;
-    panel.hidden = state.activeTool !== "roof" && !selectedRoof;
+    const closedDraft = state.activeTool === "roof" && state.roofDraftClosed && state.roofDraftPoints.length >= 3;
+    panel.hidden = !closedDraft && !selectedRoof;
     const finish = panel.querySelector('[data-action="finish-roof"]');
-    if (finish) finish.hidden = Boolean(selectedRoof && state.activeTool !== "roof");
+    if (finish) finish.hidden = !closedDraft;
+    const hint = panel.querySelector("[data-roof-panel-hint]");
+    if (hint) hint.textContent = selectedRoof && !closedDraft
+      ? "Bestehendes Dach · Änderungen werden sofort übernommen"
+      : "Dachfläche geschlossen · Form wählen und berechnen";
     if (selectedRoof) populateRoofInputs(selectedRoof);
   }
 
@@ -3239,6 +3873,7 @@
     state.drawPointerRaw = null;
     state.roomDraftPoints = [];
     state.roofDraftPoints = [];
+    state.roofDraftClosed = false;
     state.openingHostPreview = null;
     if (invalidateSession) state.drawSessionId += 1;
     if (render && hadDraft) renderPlan();
@@ -3275,6 +3910,20 @@
         : "Dachwerkzeug aktiv · mindestens drei Punkte setzen, danach den ersten Punkt anklicken oder ESC drücken.");
       return false;
     }
+    if (!state.roofDraftClosed) {
+      const closedPoints = normalizedPolygonPoints(state.roofDraftPoints);
+      if (closedPoints.length < 3 || polygonAreaAndCentroid(closedPoints).areaMm2 < 1) {
+        showMessage("Die Dachkontur benötigt mindestens drei verschiedene Punkte und eine Fläche größer null.");
+        return false;
+      }
+      state.roofDraftPoints = closedPoints.map((point) => [...point]);
+      state.roofDraftClosed = true;
+      state.drawCurrent = {model: [...closedPoints[0]]};
+      syncRoofOptionsPanel();
+      renderPlan();
+      showMessage("Dachfläche geschlossen · jetzt Dachform und Parameter einstellen, danach »Dach berechnen und speichern« wählen.");
+      return true;
+    }
     const viewportRef = state.drawStart?.viewportRef || state.activeViewportRef;
     const points = state.roofDraftPoints.map((point) => [...point]);
     state.roofSubmissionPending = true;
@@ -3290,19 +3939,42 @@
     return true;
   }
 
-  function handleAreaEscape(event) {
-    if (event.key !== "Escape" || !["room", "roof"].includes(state.activeTool)) return false;
+  function handleCadEscape(event) {
+    if (event.key !== "Escape") return false;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
     if (event.repeat || state.roomSubmissionPending || state.roofSubmissionPending) return true;
-    if (state.activeTool === "roof") completeRoofDrawing();
-    else completeRoomDrawing();
+    if (state.activeTool === "roof" && state.roofDraftPoints.length) {
+      if (state.roofDraftClosed) showMessage("Die Dachfläche ist bereits geschlossen. Einstellungen wählen und anschließend das Dach berechnen.");
+      else completeRoofDrawing();
+      return true;
+    }
+    if (state.activeTool === "room" && state.roomDraftPoints.length) {
+      completeRoomDrawing();
+      return true;
+    }
+    if (state.pointDrag?.before) restoreEditSnapshot(state.pointDrag.before);
+    const endedTool = state.activeTool;
+    state.pointDrag = null;
+    state.pointEditMode = false;
+    cancelDrawing(true, true);
+    document.getElementById("distort-panel").hidden = true;
+    document.getElementById("door-options").hidden = true;
+    closeRoomLabelEditor();
+    closePanels();
+    if (endedTool !== "select") selectTool("select");
+    else {
+      state.selectedPrimitive = null;
+      renderAll();
+    }
+    syncEditToolButtons();
+    showMessage(endedTool === "wall" ? "Wandzug beendet · Auswahlwerkzeug aktiv." : "Zeichenfunktion beendet · Auswahlwerkzeug aktiv.");
     return true;
   }
 
-  function suppressAreaEscapeKeyup(event) {
-    if (event.key !== "Escape" || !["room", "roof"].includes(state.activeTool)) return;
+  function suppressCadEscapeKeyup(event) {
+    if (event.key !== "Escape") return;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -3970,6 +4642,10 @@
     const snapped = state.activeTool === "room" ? drawingModelPoint(point, event) : snappedModelPoint(point);
     state.cursorPoint = {x: snapped[0], y: snapped[1]};
     state.lastPointerModel = state.cursorPoint;
+    if (state.activeTool === "roof" && state.roofDraftClosed) {
+      schedulePlanRender();
+      return;
+    }
     if (!state.drawStart) {
       schedulePlanRender();
       return;
@@ -4017,6 +4693,10 @@
     const point = pointFromEvent(event);
     const viewport = currentViewport();
     if (!point || !viewport) return;
+    if (state.activeTool === "roof" && state.roofDraftClosed) {
+      showMessage("Dachfläche geschlossen · Einstellungen wählen und das Dach berechnen oder das Werkzeug erneut auswählen, um neu zu beginnen.");
+      return;
+    }
     if (state.activeTool === "opening") {
       const host = wallHostCandidate(point);
       const placement = openingPlacement(host);
@@ -4211,6 +4891,10 @@
         payload.parameters.thickness_mm = host.thicknessMm;
         payload.parameters.depth_mm = host.thicknessMm;
         payload.parameters.width_mm = Math.hypot(modelEnd[0] - modelStart[0], modelEnd[1] - modelStart[1]);
+        if (quickToolKindForItem(item) === "door") {
+          payload.parameters.door_hinge_side = "left";
+          payload.parameters.door_swing_side = "positive";
+        }
       }
       if (config.command === "create_wall") {
         const edge = wallEdgeGeometry(start.model, end, payload.parameters.thickness_mm);
@@ -4231,7 +4915,11 @@
     const receipt = await dispatchCadCommandRequest(payload);
     publishModelMutation(receipt);
     const sheet = state.input.sheets.find((item) => item.sheet_ref === start.sheetRef);
-    if (sheet && receipt.preview_element) sheet.elements.push(receipt.preview_element);
+    if (receipt.preview_element) {
+      receipt.preview_element.local_draft = !receipt.accepted;
+      if (receipt.accepted) rememberOptimisticElement(start.sheetRef, receipt.preview_element);
+      if (sheet) sheet.elements.push(receipt.preview_element);
+    }
     if (!receipt.accepted) {
       state.commands.push({receipt, sheetRef: start.sheetRef, element: receipt.preview_element});
       state.redoCommands = [];
@@ -4344,12 +5032,29 @@
       roof_type: String(document.getElementById("roof-tool-type")?.value || state.building?.roofType || "gable"),
       footprint: {outer_ring_mm: modelPoints},
       parameters: {
-        pitch_deg: roofInputNumber("roof-pitch", 35, 0, 80),
+        pitch_deg: roofInputNumber("roof-pitch", 35, 0, 80, true),
         eaves_height_mm: roofInputNumber("roof-eaves-height", 6000, -100000, 100000),
         ridge_direction: ridgeValue === "degrees" ? ridgeDegrees : ridgeValue,
         overhang_mm: overhang,
-        roof_skin_thickness_mm: roofInputNumber("roof-skin-thickness", 180, 1, 2000),
-        roof_skin_material: String(document.getElementById("roof-skin-material")?.value || "generic-roof-build-up"),
+        roof_skin_thickness_mm: roofInputNumber("roof-skin-thickness", 200, 20, 500),
+        roof_skin_material: String(document.getElementById("roof-skin-material")?.value || "clay-roof-tile"),
+        roof_build_up: {
+          insulation_mode: String(document.getElementById("roof-insulation-mode")?.value || "between"),
+          insulation_thickness_mm: roofInputNumber("roof-skin-thickness", 200, 20, 500),
+          sheathing_thickness_mm: roofInputNumber("roof-sheathing-thickness", 22, 8, 80),
+          underlay_thickness_mm: roofInputNumber("roof-underlay-thickness", 3, 1, 20),
+          counter_batten: {
+            width_mm: roofInputNumber("roof-counter-batten-width", 60, 20, 120),
+            height_mm: roofInputNumber("roof-counter-batten-height", 40, 20, 100),
+          },
+          tile_batten: {
+            width_mm: roofInputNumber("roof-tile-batten-width", 50, 20, 100),
+            height_mm: roofInputNumber("roof-tile-batten-height", 30, 20, 80),
+            spacing_mm: roofInputNumber("roof-tile-batten-spacing", 330, 200, 500),
+          },
+          tile_thickness_mm: roofInputNumber("roof-tile-thickness", 20, 8, 80),
+          tile_material_ref: String(document.getElementById("roof-skin-material")?.value || "clay-roof-tile"),
+        },
         plateau_width_ratio: roofInputNumber("roof-plateau-ratio", 0.25, 0.05, 0.8),
         mansard_break_ratio: roofInputNumber("roof-mansard-break", 0.38, 0.1, 0.8),
         mansard_lower_pitch_deg: roofInputNumber("roof-mansard-lower-pitch", 70, 10, 85),
@@ -4362,13 +5067,15 @@
         structure: {
           rafter: {
             width_mm: roofInputNumber("roof-rafter-width", 80, 20, 1000),
-            height_mm: roofInputNumber("roof-rafter-height", 200, 20, 1500),
-            spacing_mm: roofInputNumber("roof-rafter-spacing", 700, 100, 3000),
+            height_mm: roofInputNumber("roof-rafter-height", 200, 180, 240),
+            spacing_mm: roofInputNumber("roof-rafter-spacing", 650, 100, 3000),
+            birdsmouth_depth_mm: roofInputNumber("roof-birdsmouth-depth", 30, 20, 50),
           },
           purlin: {
-            width_mm: roofInputNumber("roof-purlin-width", 160, 20, 1500),
-            height_mm: roofInputNumber("roof-purlin-height", 240, 20, 2000),
-            maximum_spacing_mm: roofInputNumber("roof-purlin-spacing", 2500, 250, 10000),
+            width_mm: roofInputNumber("roof-purlin-width", 140, 20, 1500),
+            height_mm: roofInputNumber("roof-purlin-height", 200, 20, 2000),
+            maximum_spacing_mm: roofInputNumber("roof-purlin-spacing", 4500, 250, 10000),
+            middle_span_threshold_mm: roofInputNumber("roof-middle-purlin-threshold", 4500, 1000, 15000),
           },
         },
       },
@@ -4817,12 +5524,30 @@
       }
       renderPlan();
     });
+    document.querySelectorAll("[data-plan-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!state.planOverview) return;
+        if (button.dataset.planAction === "auto-dimensions") toggleAutomaticDimensions().catch(handleError);
+        if (button.dataset.planAction === "auto-section") {
+          try { toggleAutomaticSection(); } catch (error) { handleError(error); }
+        }
+      });
+    });
     document.querySelector('[data-action="close-distort"]')?.addEventListener("click", () => {
       document.getElementById("distort-panel").hidden = true;
     });
     document.querySelector('[data-action="apply-distort"]')?.addEventListener("click", applyDistort);
     document.querySelector('[data-action="save-room-label"]')?.addEventListener("click", () => saveRoomLabelEditor().catch(handleError));
     document.querySelector('[data-action="cancel-room-label"]')?.addEventListener("click", closeRoomLabelEditor);
+    document.querySelector('[data-action="close-door-options"]')?.addEventListener("click", () => {
+      document.getElementById("door-options").hidden = true;
+    });
+    document.querySelectorAll("[data-door-hinge]").forEach((button) => {
+      button.addEventListener("click", () => updateSelectedDoorConfiguration({hingeSide: button.dataset.doorHinge}));
+    });
+    document.querySelectorAll("[data-door-swing]").forEach((button) => {
+      button.addEventListener("click", () => updateSelectedDoorConfiguration({swingSide: button.dataset.doorSwing}));
+    });
     document.getElementById("room-label-input")?.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -4862,8 +5587,8 @@
       if (state.scene) renderPlan();
       if (previousSignature !== parcelSelectionSignature()) scheduleParcelProjectionReload();
     });
-    window.addEventListener("keydown", handleAreaEscape, true);
-    window.addEventListener("keyup", suppressAreaEscapeKeyup, true);
+    window.addEventListener("keydown", handleCadEscape, true);
+    window.addEventListener("keyup", suppressCadEscapeKeyup, true);
     window.addEventListener("keydown", (event) => {
       if (event.key === "Shift" && !isEditableTarget(event.target)) {
         state.shiftPressed = true;
@@ -4873,16 +5598,6 @@
         event.preventDefault();
         state.spacePressed = true;
         svg.classList.add("is-pan-ready");
-      }
-      if (event.key === "Escape") {
-        if (state.pointDrag?.before) restoreEditSnapshot(state.pointDrag.before);
-        state.pointDrag = null;
-        state.pointEditMode = false;
-        cancelDrawing(true, true);
-        document.getElementById("distort-panel").hidden = true;
-        closeRoomLabelEditor();
-        closePanels();
-        syncEditToolButtons();
       }
       if (!isEditableTarget(event.target) && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "c") {
         event.preventDefault();

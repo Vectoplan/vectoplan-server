@@ -149,6 +149,8 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
             "storey_id": element.get("storey_id") or element.get("storeyId"),
             "host_wall_ref": element.get("host_wall_ref"),
             "host_wall_thickness_mm": element.get("host_wall_thickness_mm"),
+            "door_hinge_side": element.get("door_hinge_side"),
+            "door_swing_side": element.get("door_swing_side"),
             "roof_type": element.get("roof_type"),
             "roof_request": element.get("roof_request") or {},
             "roof_calculation": element.get("roof_calculation") or geometry.get("roof_calculation") or {},

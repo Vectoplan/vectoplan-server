@@ -28,7 +28,7 @@
     ]
   },
   "main.ts": {
-    "file": "assets/main-oUCgxpvR.js",
+    "file": "assets/main-8CTYzBej.js",
     "name": "main",
     "src": "main.ts",
     "isEntry": true,
@@ -40,7 +40,7 @@
       "generator_preview/generator_preview_runtime.ts"
     ],
     "css": [
-      "assets/main-nQKJ5zUv.css"
+      "assets/main-Dho40IE4.css"
     ],
     "assets": [
       "assets/vectoplan-human-CNkOLTHg.glb"

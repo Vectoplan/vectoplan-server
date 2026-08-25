@@ -400,6 +400,12 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
 .building-storeys-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 14px; }
 .building-storeys-heading strong { font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
 .building-storeys-heading small { color: var(--muted); font-size: 8px; }
+.building-storey-legend { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 6px 0 2px; color: var(--muted); font-size: 7.5px; }
+.building-storey-legend span::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 4px; border-radius: 50%; vertical-align: -1px; }
+.building-storey-legend .is-white::before { background: #fff; border: 1px solid #94a3b8; }
+.building-storey-legend .is-red::before { background: #dc2626; }
+.building-storey-legend .is-yellow::before { background: #eab308; }
+.building-storey-legend .is-gray::before { background: #94a3b8; }
 .building-storeys { display: grid; gap: 6px; margin-top: 7px; }
 .building-storey {
   display: grid;
@@ -411,10 +417,16 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
   border-radius: 7px;
   background: var(--surface-subtle);
 }
-.building-storey.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.building-storey.is-mode-red { border-color: #ef4444; background: #fff1f2; }
+.building-storey.is-mode-yellow { border-color: #eab308; background: #fefce8; }
+.building-storey.is-mode-gray { border-color: #cbd5e1; background: #f8fafc; }
+.building-storey.is-mode-white { border-color: #e2e8f0; background: #fff; }
 .building-storey__select, .building-storey__remove { width: 28px; min-height: 30px; padding: 0; }
-.building-storey__select { width: 24px; border: 0; background: transparent; color: var(--muted); }
-.building-storey.is-active .building-storey__select { color: var(--accent-strong); }
+.building-storey__select { width: 24px; border: 0; background: transparent; color: var(--muted); font-size: 15px; }
+.building-storey.is-mode-red .building-storey__select { color: #dc2626; }
+.building-storey.is-mode-yellow .building-storey__select { color: #ca8a04; }
+.building-storey.is-mode-gray .building-storey__select { color: #64748b; }
+.building-storey.is-mode-white .building-storey__select { color: #94a3b8; }
 .building-storey__name { width: 100%; min-width: 0; min-height: 30px !important; padding: 0 7px !important; font-size: 10px; font-weight: 650; }
 .building-storey__height { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 3px; }
 .building-storey__height input { width: 100%; min-width: 0; min-height: 30px; padding: 0 5px; font-size: 9px; }
@@ -452,6 +464,13 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
 .plan-workspace-panel__body { display: grid; gap: 9px; padding: 11px; }
 .plan-workspace-field { display: grid; grid-template-columns: 92px minmax(0,1fr); align-items: center; gap: 8px; color: var(--muted); font-size: 9px; font-weight: 700; }
 .plan-workspace-field select { width: 100%; min-width: 0; font-size: 10px; }
+.plan-automation { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; margin-top: 2px; }
+.plan-automation button { min-height: 62px; display: grid; grid-template-columns: 28px minmax(0,1fr); grid-template-rows: auto auto; align-items: center; gap: 1px 7px; padding: 7px; text-align: left; }
+.plan-automation button > span { grid-row: 1 / 3; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; background: var(--accent-soft); color: var(--accent-strong); font-size: 10px; font-weight: 800; }
+.plan-automation button > strong { font-size: 9px; }
+.plan-automation button > small { color: var(--muted); font-size: 7.5px; line-height: 1.25; }
+.plan-automation button.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.plan-automation-status { margin: -2px 0 0; color: var(--muted); font-size: 8px; line-height: 1.35; }
 .plan-workspace-rule { margin-top: 2px; padding-top: 10px; border-top: 1px solid var(--line); }
 .plan-workspace-rule > span { display: block; color: var(--muted); font-size: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; }
 .plan-workspace-rule > strong { display: block; margin-top: 3px; font-size: 11px; }
@@ -526,7 +545,9 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .parcel-grid-guide.is-active { stroke: #0369a1; stroke-width: 6; }
 #plan-svg.is-parcel-grid-editing .parcel-grid-guide { pointer-events: stroke; }
 .primitive { vector-effect: non-scaling-stroke; }
-.primitive-wall-cut { fill: #e1e4e7; stroke: #26313b; stroke-width: .65; cursor: pointer; }
+.primitive-wall-cut { fill: url(#cad-wall-hatch); stroke: #26313b; stroke-width: .65; cursor: pointer; }
+.wall-hatch-background { fill: #e1e4e7; }
+.wall-hatch-line { stroke: #88939e; stroke-width: .42; vector-effect: non-scaling-stroke; }
 .primitive-opening { fill: #fff; stroke: #27313b; stroke-width: .45; cursor: pointer; }
 .primitive-structure { fill: #d9dde1; stroke: #27313b; stroke-width: .5; cursor: pointer; }
 .primitive-slab { fill: url(#cad-slab-hatch); stroke: #687787; stroke-width: .5; cursor: pointer; }
@@ -545,6 +566,8 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .door-swing { fill: none; stroke: #617080; stroke-width: .5; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
 .door-hinge { fill: #1f2933; stroke: #fff; stroke-width: .65; vector-effect: non-scaling-stroke; }
 .window-glazing { stroke: #0f7494; stroke-width: .55; vector-effect: non-scaling-stroke; }
+.opening-plan-label, .opening-plan-sill { fill: #334155; font-size: 125px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 24px; }
+.opening-plan-sill { fill: #64748b; font-size: 105px; }
 .stair-tread { stroke: #667788; stroke-width: .45; vector-effect: non-scaling-stroke; }
 .stair-direction { stroke: #334455; stroke-width: .65; vector-effect: non-scaling-stroke; }
 .stair-arrow { fill: #334455; stroke: none; }
@@ -557,6 +580,9 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-room .room-label-editable { text-decoration: underline dotted rgba(21,128,61,.45); text-underline-offset: 3px; }
 .primitive-room .room-label { fill: #14532d; font-size: 190px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 34px; stroke-linejoin: round; }
 .primitive-room .room-area { fill: #166534; font-size: 155px; font-weight: 650; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 28px; stroke-linejoin: round; }
+.primitive-room .room-finish { fill: #475569; font-size: 115px; font-weight: 600; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.94); stroke-width: 24px; }
+.primitive-room .room-fill-none .room-fill { fill: none; stroke: none; }
+.primitive-room .room-fill-transparent .room-fill { fill: rgba(37,99,235,.035); stroke: #64748b; }
 .primitive-dimension { fill: none; stroke: #435261; stroke-width: .45; cursor: pointer; }
 .semantic-outline { stroke: #56616d; pointer-events: stroke; }
 .semantic-fill { stroke: #c8ced5; pointer-events: stroke; }
@@ -575,7 +601,7 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: .9; }
 .primitive text { pointer-events: none; }
 .primitive.local-draft { stroke: var(--accent); stroke-dasharray: 80 45; }
-.primitive-wall-cut.local-draft { fill: rgba(20, 99, 214, .18); }
+.primitive-wall-cut.local-draft { fill: url(#cad-wall-hatch); stroke: var(--accent); stroke-dasharray: 80 45; }
 .primitive-dimension.local-draft { stroke: #b94f40; }
 .layer-hidden { display: none; }
 .draft-preview { pointer-events: none; fill: none; stroke: var(--accent); stroke-width: .65; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
@@ -593,7 +619,6 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .cad-app.is-plan-overview .model-frame-label,
 .cad-app.is-plan-overview .parcel-context,
 .cad-app.is-plan-overview .cad-active-library,
-.cad-app.is-plan-overview .cad-crosshair,
 .cad-app.is-plan-overview .draft-preview,
 .cad-app.is-plan-overview .draft-wall-preview,
 .cad-app.is-plan-overview .draft-wall-reference,
@@ -603,6 +628,20 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .cad-crosshair-vertical { stroke: #32a852; stroke-width: .45; opacity: .72; vector-effect: non-scaling-stroke; }
 .cad-crosshair-center { fill: #fff; stroke: #2563eb; stroke-width: .7; vector-effect: non-scaling-stroke; }
 .cad-crosshair-center.is-snapped { fill: #1463d6; stroke: #fff; stroke-width: .8; }
+.storey-mode-yellow { opacity: .72; }
+.storey-mode-yellow .semantic-outline,
+.storey-mode-yellow .primitive-line,
+.storey-mode-yellow .architectural-symbol-base { stroke: #b77900; }
+.storey-mode-gray { opacity: .34; pointer-events: none; filter: grayscale(.9); }
+.storey-mode-gray * { pointer-events: none !important; }
+.storey-mode-white { display: none; }
+.auto-dimension-overlay, .auto-section-overlay { pointer-events: none; }
+.auto-dimension-line, .auto-dimension-witness { fill: none; stroke: #1664d8; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.auto-dimension-witness { stroke: #64748b; stroke-width: .4; }
+.auto-dimension-text { fill: #174f9f; font-size: 155px; font-weight: 650; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 30px; stroke-linejoin: round; }
+.auto-section-line { stroke: #c2410c; stroke-width: 1.1; stroke-dasharray: 14 6; vector-effect: non-scaling-stroke; }
+.auto-section-head { fill: #fff7ed; stroke: #c2410c; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.auto-section-label { fill: #9a3412; font-size: 180px; font-weight: 800; text-anchor: middle; dominant-baseline: middle; paint-order: stroke; stroke: #fff; stroke-width: 28px; }
 .plan-sheet { fill: #fff; stroke: #182331; stroke-width: 1.25; vector-effect: non-scaling-stroke; filter: drop-shadow(0 14px 24px rgba(15,23,42,.12)); }
 .plan-sheet-frame, .plan-tile { fill: none; stroke: #263543; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .plan-tile { fill: #fff; stroke: #7b8795; }
@@ -631,6 +670,30 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .draft-preview-point.roof-start-point.is-close-target { fill: #b45309; stroke: #fff; stroke-width: 1.35; }
 .opening-host-preview { pointer-events: none; opacity: .95; }
 .opening-host-preview .architectural-symbol-base { fill: rgba(219,234,254,.92); stroke: #075fd8; stroke-width: 1.1; vector-effect: non-scaling-stroke; }
+.cad-door-panel {
+  position: absolute;
+  z-index: 34;
+  top: 126px;
+  left: 50%;
+  width: 330px;
+  padding: 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: rgba(255,255,255,.98);
+  box-shadow: var(--shadow-md);
+  transform: translateX(-50%);
+}
+.cad-door-panel[hidden] { display: none; }
+.cad-door-panel__header { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+.cad-door-panel__header div { display: grid; }
+.cad-door-panel__header span { color: var(--accent); font-size: 8px; font-weight: 800; letter-spacing: .12em; }
+.cad-door-panel__header strong { font-size: 12px; }
+.cad-door-panel__header button { width: 28px; min-height: 28px; padding: 0; }
+.cad-door-panel__group { display: grid; grid-template-columns: 72px 1fr 1fr; align-items: center; gap: 6px; margin-top: 6px; }
+.cad-door-panel__group small { color: var(--muted); font-size: 9px; font-weight: 750; }
+.cad-door-panel__group button { min-height: 32px; padding: 0 8px; font-size: 9px; font-weight: 750; }
+.cad-door-panel__group button.is-active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
+.cad-door-panel p { margin: 9px 0 0; color: var(--muted); font-size: 8px; line-height: 1.45; }
 .world-selection-preview { pointer-events: none; fill: rgba(20,99,214,.05); stroke: var(--accent); stroke-width: .8; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
 .world-selection-label { pointer-events: none; fill: var(--accent-strong); font-size: 150px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.96); stroke-width: 28px; }
 

@@ -63,12 +63,17 @@ def test_cad_template():
     assert b'data-view-action="plan-overview"' in response.data
     assert b"cad-toolbar-stack" in response.data
     assert b"cad-toolbar-icon" in response.data
-    assert b"parametric-roof-2" in response.data
+    assert b"plan-workspace-1" in response.data
     assert b"plan-workspace-panel" in response.data
     assert b'id="room-label-panel"' in response.data
     assert b'data-action="save-room-label"' in response.data
     assert b'id="plan-phase"' in response.data
     assert b'id="plan-content"' in response.data
+    assert b'data-plan-action="auto-dimensions"' in response.data
+    assert b'data-plan-action="auto-section"' in response.data
+    assert b'value="civil"' in response.data
+    assert b'value="engineering"' in response.data
+    assert "Gelb · bearbeitbare Referenz".encode() in response.data
     assert b'value="bridge"' in response.data
     assert b"workspace-actions" in response.data
     assert b"toggle-navigator" not in response.data
@@ -178,6 +183,10 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "function handleAreaEscape" in source
     assert "function areaCloseSnapPoint" in source
     assert "function completeRoomDrawing" in source
+    assert "roofDraftClosed: false" in source
+    assert "if (!state.roofDraftClosed)" in source
+    assert 'panel.hidden = !closedDraft && !selectedRoof' in source
+    assert "Dachfläche geschlossen · jetzt Dachform und Parameter einstellen" in source
     assert 'kind: "area-close"' in source
     assert 'state.snapTarget?.kind === "area-close"' in source
     assert 'window.addEventListener("keydown", handleAreaEscape, true)' in source
@@ -218,12 +227,15 @@ def test_plan_rules_cover_buildings_and_infrastructure():
     assert response.status_code == 200
     payload = response.get_json()
     assert payload["contract_version"] == "cad-plan-rules/0.1"
-    assert payload["content_order"] == [
-        "floor_plans", "elevations", "sections", "title_block", "site_plan"
+    assert payload["content_order"][:4] == [
+        "floor_plans", "site_plan", "elevations", "sections"
     ]
     assert payload["profiles"]["residential"]["label"] == "Wohngebäude"
     assert payload["profiles"]["bridge"]["aliases"]["floor_plans"] == "Draufsicht"
-    assert payload["profiles"]["tunnel"]["aliases"]["sections"] == "Tunnelquerschnitte"
+    assert payload["profiles"]["tunnel"]["aliases"]["cross_sections"] == "Tunnelquerschnitte"
+    assert payload["profiles"]["civil"]["domain"] == "tiefbau"
+    assert payload["profiles"]["engineering"]["domain"] == "ingenieurbau"
+    assert "reinforcement_plan" in payload["profiles"]["engineering"]["required"]
     assert payload["phases"]["execution"]["dimensioning"] == "complete"
 
 
@@ -301,6 +313,9 @@ def test_creative_library_catalog_is_the_authoritative_placement_source():
     assert "vp.hochbau.oeffnungen.innentueren.innentuer" in families
     assert "world-edit.room" in families
     assert "vp.hochbau.treppen_rampen.treppenlaeufe.treppenbereich" in families
+    room = next(item for item in payload["items"] if item["family_ref"] == "world-edit.room")
+    assert room["plan_representation"]["symbol_kind"] == "room"
+    assert room["plan_representation"]["room_stamp_show_area"] is True
 
 
 def test_live_library_inventory_keeps_standard_cad_quick_tools_available():
@@ -376,6 +391,7 @@ def test_valid_command_returns_non_persistent_preview_element():
     assert payload["preview_element"]["kind"] == "wall"
     assert payload["preview_element"]["geometry"]["thickness_mm"] == 240
     assert payload["command"]["library_context"]["family_ref"] == valid_command()["family_ref"]
+    assert "plan_representation" in payload["command"]["library_context"]
     assert payload["mutation_intent"]["model_changing"] is True
     assert "vectoplan-editor-3d" in payload["mutation_intent"]["target_surfaces"]
     after = client().get("/api/v1/cad/test-input").get_json()

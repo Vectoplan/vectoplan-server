@@ -40,9 +40,11 @@ import { createRoofSystem } from "./systems/roof/system";
 import {
   buildRoofCalculationRequest,
   DEFAULT_ROOF_TOOL_PARAMETERS,
+  roofCalculationRequestKey,
   requestRoofCalculation,
   type RoofCalculationRequest,
   type RoofCalculationResult,
+  type RoofInsulationMode,
   type RoofToolParameters,
   type RoofType,
 } from "./systems/roof/contracts";
@@ -50,12 +52,23 @@ import {
   normalizePolygonAreaPoints,
   polygonAreaBounds,
   polygonAreaClosedCoordinates,
+  polygonAreaPlanCentroid,
   polygonAreaPlanArea,
   polygonAreaPointsFromFootprint,
   validPolygonArea,
   type PolygonAreaPoint,
 } from "./systems/polygon_area/geometry";
 import { createRoofCalculationMeshes } from "@scene/roof_calculation_rendering";
+import {
+  createRoofQuickSettings,
+  persistedRoofQuickSettings,
+  type RoofQuickSettingsHandle,
+} from "./systems/roof/quick_settings";
+import {
+  inactiveRoofZones,
+  shouldCommitRoofSettingsClose,
+  uniqueRoofZones,
+} from "./systems/roof/zones";
 import {
   clipboardAnchorAlongAxis,
   clipboardBoundsAt,
@@ -159,6 +172,16 @@ interface ExistingRoofRef {
   readonly metadata: Readonly<Record<string, unknown>>;
 }
 
+interface RoofZoneSettingsTarget {
+  readonly target: THREE.Object3D;
+  readonly roof: ExistingRoofRef;
+}
+
+interface HiddenRoofObject {
+  readonly object: THREE.Object3D;
+  readonly visible: boolean;
+}
+
 type PolygonAreaTool = "room" | "roof";
 
 interface PolygonAreaRuntime {
@@ -170,6 +193,7 @@ interface PolygonAreaRuntime {
   hoverFrame: number;
   group: THREE.Group | null;
   pointTargets: THREE.Mesh[];
+  settingsTarget: THREE.Object3D | null;
   calculation: RoofCalculationResult | null;
   request: RoofCalculationRequest | null;
 }
@@ -988,6 +1012,26 @@ export function createWorldEditController(
   let editingRoofAnchor: ChunkApiWorldPosition | null = null;
   let roofParameters: RoofToolParameters = { ...DEFAULT_ROOF_TOOL_PARAMETERS };
   let roofCalculationSequence = 0;
+  let roofCalculationAbortController: AbortController | null = null;
+  let roofPreviewTimer = 0;
+  let roofSettingsTexture: THREE.CanvasTexture | null = null;
+  let roofQuickSettings: RoofQuickSettingsHandle | null = null;
+  let roofZoneGroup: THREE.Group | null = null;
+  let roofZoneSettingsTargets: RoofZoneSettingsTarget[] = [];
+  let roofZoneSignature = "";
+  let roofZoneRefreshAt = 0;
+  let hiddenEditingRoofObjects: HiddenRoofObject[] = [];
+  const pendingRoofQuickSettings = new Map<string, Pick<
+    RoofToolParameters,
+    | "roofType"
+    | "pitchDeg"
+    | "overhangMm"
+    | "overhangNorthMm"
+    | "overhangEastMm"
+    | "overhangSouthMm"
+    | "overhangWestMm"
+    | "edgeOverhangsMm"
+  >>();
   let selection: SelectionBounds = { first: null, second: null };
   let selectionDragging = false;
   let selectionDragFrame = 0;
@@ -1042,6 +1086,7 @@ export function createWorldEditController(
     hoverFrame: 0,
     group: null,
     pointTargets: [],
+    settingsTarget: null,
     calculation: null,
     request: null,
   });
@@ -1498,6 +1543,7 @@ export function createWorldEditController(
   function disposePolygonAreaGroup(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     runtime.pointTargets = [];
+    runtime.settingsTarget = null;
     if (!runtime.group) return;
     runtime.group.traverse((object) => {
       const drawable = object as THREE.Object3D & {
@@ -1510,6 +1556,135 @@ export function createWorldEditController(
     });
     runtime.group.parent?.remove(runtime.group);
     runtime.group = null;
+  }
+
+  function currentRoofSettingsTexture(): THREE.CanvasTexture {
+    if (roofSettingsTexture) return roofSettingsTexture;
+    const canvas = document.createElement("canvas");
+    canvas.width = 192;
+    canvas.height = 192;
+    const context = canvas.getContext("2d");
+    if (context) {
+      context.shadowColor = "rgba(15, 23, 42, .48)";
+      context.shadowBlur = 16;
+      context.fillStyle = "#f97316";
+      context.beginPath();
+      context.arc(96, 96, 70, 0, Math.PI * 2);
+      context.fill();
+      context.shadowBlur = 0;
+      context.lineWidth = 8;
+      context.strokeStyle = "#ffffff";
+      context.stroke();
+      context.fillStyle = "#ffffff";
+      context.font = "bold 92px 'Segoe UI Symbol', sans-serif";
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillText("⚙", 96, 101);
+    }
+    roofSettingsTexture = new THREE.CanvasTexture(canvas);
+    roofSettingsTexture.colorSpace = THREE.SRGBColorSpace;
+    roofSettingsTexture.minFilter = THREE.LinearFilter;
+    roofSettingsTexture.magFilter = THREE.LinearFilter;
+    roofSettingsTexture.needsUpdate = true;
+    return roofSettingsTexture;
+  }
+
+  function disposeRoofZoneGroup(): void {
+    roofZoneSettingsTargets = [];
+    if (!roofZoneGroup) return;
+    roofZoneGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    roofZoneGroup.parent?.remove(roofZoneGroup);
+    roofZoneGroup = null;
+  }
+
+  function rebuildRoofZoneScene(force = false): void {
+    const roofs = inactiveRoofZones(existingRoofsInScene(), editingRoofInstanceId);
+    const signature = JSON.stringify(roofs.map((roof) => [
+      roof.objectInstanceId,
+      roof.anchor.y,
+      roof.footprint.type,
+      roof.footprint.baseY,
+      roof.footprint.coordinates,
+    ]));
+    if (!force && signature === roofZoneSignature && (roofZoneGroup || roofs.length === 0)) return;
+    roofZoneSignature = signature;
+    disposeRoofZoneGroup();
+    if (activeTool !== "roof" || roofs.length === 0) return;
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+
+    const group = new THREE.Group();
+    group.name = "vectoplan_world_edit_persisted_roof_zones";
+    for (const roof of roofs) {
+      const points = polygonAreaPointsFromFootprint(roof.footprint, roof.anchor.y);
+      if (!validPolygonArea(points)) continue;
+      const planeOffset = 0.045;
+      const visiblePoints = points.map((point) => new THREE.Vector3(point.x, point.y + planeOffset, point.z));
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([...visiblePoints, visiblePoints[0]!]),
+        new THREE.LineBasicMaterial({
+          color: 0xfbbf24,
+          depthTest: false,
+          transparent: true,
+          opacity: 0.82,
+        }),
+      );
+      line.name = `vectoplan_world_edit_roof_zone_line:${roof.objectInstanceId}`;
+      line.renderOrder = 96;
+      group.add(line);
+
+      const shape = new THREE.Shape();
+      shape.moveTo(points[0]!.x, -points[0]!.z);
+      points.slice(1).forEach((point) => shape.lineTo(point.x, -point.z));
+      shape.closePath();
+      const fillGeometry = new THREE.ShapeGeometry(shape);
+      fillGeometry.rotateX(-Math.PI / 2);
+      fillGeometry.translate(0, points[0]!.y + planeOffset * 0.5, 0);
+      const fill = new THREE.Mesh(fillGeometry, new THREE.MeshBasicMaterial({
+        color: 0xf59e0b,
+        transparent: true,
+        opacity: 0.14,
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }));
+      fill.name = `vectoplan_world_edit_roof_zone_fill:${roof.objectInstanceId}`;
+      fill.renderOrder = 84;
+      group.add(fill);
+
+      const centroid = polygonAreaPlanCentroid(points);
+      if (!centroid) continue;
+      const settings = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: currentRoofSettingsTexture(),
+        transparent: true,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false,
+      }));
+      settings.name = `vectoplan_world_edit_roof_settings:${roof.objectInstanceId}`;
+      settings.position.set(centroid.x, centroid.y + 0.72, centroid.z);
+      settings.scale.set(1.5, 1.5, 1);
+      settings.renderOrder = 101;
+      settings.userData = {
+        worldEditRoofSettings: true,
+        worldEditRoofInstanceId: roof.objectInstanceId,
+      };
+      roofZoneSettingsTargets.push({ target: settings, roof });
+      group.add(settings);
+    }
+    if (group.children.length === 0) return;
+    scene.add(group);
+    roofZoneGroup = group;
+    options.sceneRuntime.renderOnce("world-edit.persisted-roof-zones");
   }
 
   function polygonAreaPointColor(tool: PolygonAreaTool, index: number): number {
@@ -1557,6 +1732,7 @@ export function createWorldEditController(
         color: tool === "roof" ? 0xf97316 : 0x22c55e,
         transparent: true,
         opacity: tool === "roof" ? 0.18 : 0.2,
+        depthTest: false,
         depthWrite: false,
         side: THREE.DoubleSide,
         toneMapped: false,
@@ -1575,6 +1751,25 @@ export function createWorldEditController(
       marker.userData = { worldEditPolygonAreaPoint: true, polygonAreaTool: tool, polygonAreaPointIndex: index };
       runtime.pointTargets.push(marker);
       group.add(marker);
+    }
+    if (tool === "roof" && runtime.closed && validPolygonArea(runtime.points)) {
+      const centroid = polygonAreaPlanCentroid(runtime.points);
+      if (centroid) {
+        const settings = new THREE.Sprite(new THREE.SpriteMaterial({
+          map: currentRoofSettingsTexture(),
+          transparent: true,
+          depthTest: false,
+          depthWrite: false,
+          toneMapped: false,
+        }));
+        settings.name = "vectoplan_world_edit_roof_settings";
+        settings.position.set(centroid.x, centroid.y + 0.7, centroid.z);
+        settings.scale.set(1.65, 1.65, 1);
+        settings.renderOrder = 101;
+        settings.userData = { worldEditRoofSettings: true };
+        runtime.settingsTarget = settings;
+        group.add(settings);
+      }
     }
     if (tool === "roof" && runtime.closed && runtime.calculation) {
       const rendered = createRoofCalculationMeshes(runtime.calculation, { preview: true });
@@ -1600,6 +1795,53 @@ export function createWorldEditController(
     return Number.isInteger(index) && index >= 0 && index < runtime.points.length ? index : null;
   }
 
+  function roofSettingsUnderCrosshair(): ExistingRoofRef | null | undefined {
+    const runtime = polygonAreaRuntime("roof");
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return undefined;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const targets = [
+      ...(runtime.settingsTarget && runtime.closed ? [runtime.settingsTarget] : []),
+      ...roofZoneSettingsTargets.map(({ target }) => target),
+    ];
+    const hit = raycaster.intersectObjects(targets, false)[0]?.object;
+    if (!hit) return undefined;
+    if (hit === runtime.settingsTarget) return null;
+    return roofZoneSettingsTargets.find(({ target }) => target === hit)?.roof;
+  }
+
+  function openRoofQuickSettingsUnderCrosshair(): boolean {
+    const roof = roofSettingsUnderCrosshair();
+    if (roof === undefined || !roofQuickSettings) return false;
+    if (busy) {
+      setStatus("Das aktuelle Dach wird noch gespeichert. Bitte einen Moment warten.", "warning");
+      return true;
+    }
+    const camera = options.sceneRuntime.getCamera();
+    const cameraPosition = camera?.position.clone() ?? null;
+    const cameraQuaternion = camera?.quaternion.clone() ?? null;
+    const inputController = options.sceneRuntime.getInputController();
+    inputController?.clear("world-edit-roof-settings-open");
+    inputController?.disable("world-edit-roof-settings-open");
+    if (roof) selectExistingRoof(roof);
+    stopPolygonAreaInteraction("roof");
+    roofQuickSettings.open(roofParameters);
+    if (inputController) {
+      void inputController.exitPointerLock("world-edit-roof-settings").finally(() => {
+        if (camera && cameraPosition && cameraQuaternion) {
+          camera.position.copy(cameraPosition);
+          camera.quaternion.copy(cameraQuaternion);
+          camera.updateMatrixWorld(true);
+          options.sceneRuntime.renderOnce("world-edit.roof-settings-camera-preserved");
+        }
+      });
+    }
+    setStatus("Dacheinstellungen geöffnet · Dachform, Neigung und Dachüberstand mit dem Mausrad ändern.", "ready");
+    return true;
+  }
+
   function updatePolygonAreaMarkerColors(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     runtime.pointTargets.forEach((marker, index) => {
@@ -1615,6 +1857,10 @@ export function createWorldEditController(
     if (activeTool !== tool) {
       runtime.hoverFrame = 0;
       return;
+    }
+    if (tool === "roof" && performance.now() >= roofZoneRefreshAt) {
+      roofZoneRefreshAt = performance.now() + 500;
+      rebuildRoofZoneScene();
     }
     const next = polygonAreaPointUnderCrosshair(tool);
     if (next !== runtime.hoveredIndex) {
@@ -1641,7 +1887,7 @@ export function createWorldEditController(
   function afterPolygonAreaChanged(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     if (!runtime.closed) return;
-    if (tool === "roof") void calculateRoofPreview();
+    if (tool === "roof") scheduleRoofPreview();
     else if (editingRoomInstanceId) void executeRoom();
   }
 
@@ -1662,8 +1908,11 @@ export function createWorldEditController(
     const target = currentPolygonAreaTarget(tool, previous);
     if (previous && target && (previous.x !== target.x || previous.z !== target.z)) {
       runtime.points[runtime.editingIndex] = target;
-      runtime.calculation = null;
-      runtime.request = null;
+      if (tool === "roof") invalidateRoofCalculation();
+      else {
+        runtime.calculation = null;
+        runtime.request = null;
+      }
       rebuildPolygonAreaScene(tool);
       refreshHud();
     }
@@ -1737,8 +1986,11 @@ export function createWorldEditController(
     runtime.points.splice(index, 1);
     runtime.hoveredIndex = null;
     runtime.closed = runtime.closed && validPolygonArea(runtime.points);
-    runtime.calculation = null;
-    runtime.request = null;
+    if (tool === "roof") invalidateRoofCalculation();
+    else {
+      runtime.calculation = null;
+      runtime.request = null;
+    }
     rebuildPolygonAreaScene(tool);
     refreshHud();
     setStatus(`Eckpunkt ${index + 1} gelöscht. ${runtime.points.length} Punkte verbleiben.`, "ready");
@@ -1758,23 +2010,55 @@ export function createWorldEditController(
       editingRoomInstanceId = null;
       editingRoomAnchor = null;
     } else {
+      restoreEditingRoofObjects();
       editingRoofInstanceId = null;
       editingRoofAnchor = null;
-      roofCalculationSequence += 1;
+      invalidateRoofCalculation();
+      roofQuickSettings?.close(false);
     }
     disposePolygonAreaGroup(tool);
+    if (tool === "roof") rebuildRoofZoneScene(true);
     refreshHud();
   }
 
-  async function calculateRoofPreview(): Promise<RoofCalculationResult | null> {
+  function scheduleRoofPreview(delayMilliseconds = 120): void {
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = window.setTimeout(() => {
+      roofPreviewTimer = 0;
+      void calculateRoofPreview();
+    }, Math.max(0, delayMilliseconds));
+  }
+
+  function invalidateRoofCalculation(): void {
+    roofCalculationSequence += 1;
+    roofCalculationAbortController?.abort();
+    roofCalculationAbortController = null;
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = 0;
+    const runtime = polygonAreaRuntime("roof");
+    runtime.calculation = null;
+    runtime.request = null;
+  }
+
+  async function calculateRoofPreview(
+    requestedCalculation?: RoofCalculationRequest,
+  ): Promise<RoofCalculationResult | null> {
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = 0;
     const runtime = polygonAreaRuntime("roof");
     if (!runtime.closed || !validPolygonArea(runtime.points)) return null;
+    roofCalculationAbortController?.abort();
+    const abortController = new AbortController();
+    roofCalculationAbortController = abortController;
     const sequence = ++roofCalculationSequence;
-    const request = buildRoofCalculationRequest(runtime.points, roofParameters);
+    const request = requestedCalculation ?? buildRoofCalculationRequest(runtime.points, roofParameters);
+    const requestKey = roofCalculationRequestKey(request);
     runtime.request = request;
     try {
-      const calculation = await requestRoofCalculation(request);
+      const calculation = await requestRoofCalculation(request, abortController.signal);
       if (sequence !== roofCalculationSequence) return null;
+      const currentRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+      if (requestKey !== roofCalculationRequestKey(currentRequest)) return null;
       runtime.calculation = calculation;
       rebuildPolygonAreaScene("roof");
       refreshHud();
@@ -1783,11 +2067,14 @@ export function createWorldEditController(
       return calculation;
     } catch (error) {
       if (sequence !== roofCalculationSequence) return null;
+      if (error instanceof DOMException && error.name === "AbortError") return null;
       runtime.calculation = null;
       rebuildPolygonAreaScene("roof");
       options.logger?.warn?.("CAD roof calculation failed.", { error: normalizeUnknownError(error) });
       setStatus(`Dachberechnung fehlgeschlagen: ${commandErrorMessage(error)}`, "error");
       return null;
+    } finally {
+      if (roofCalculationAbortController === abortController) roofCalculationAbortController = null;
     }
   }
 
@@ -1798,27 +2085,34 @@ export function createWorldEditController(
       setStatus("Bitte zuerst eine gültige Dachfläche schließen.", "warning");
       return;
     }
-    const calculation = runtime.calculation ?? await calculateRoofPreview();
-    const request = runtime.request ?? buildRoofCalculationRequest(runtime.points, roofParameters);
-    if (!calculation) return;
-    const bounds = polygonAreaBounds(runtime.points);
-    if (!bounds) return;
-    const eavesY = roofParameters.eavesHeightMm / 1000;
-    const summary = asRecord(calculation.summary);
-    const maximumHeight = Number(summary.maximum_height_mm ?? roofParameters.eavesHeightMm) / 1000;
-    const anchor = editingRoofAnchor ?? {
-      x: Math.floor(bounds.minimum.x),
-      y: Math.floor(eavesY),
-      z: Math.floor(bounds.minimum.z),
-    };
-    const roofId = editingRoofInstanceId
-      ?? `roof_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
-    const targetCells = options.sceneRuntime.getTargetCells();
-    const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
     busy = true;
     if (executeButton) executeButton.disabled = true;
     setStatus(editingRoofInstanceId ? "Dach wird aktualisiert …" : "Dach wird im gemeinsamen 3D-Modell gespeichert …", "busy");
     try {
+      const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+      const requestIsCurrent = runtime.request
+        && roofCalculationRequestKey(runtime.request) === roofCalculationRequestKey(expectedRequest);
+      if (!requestIsCurrent) {
+        invalidateRoofCalculation();
+      }
+      const calculation = runtime.calculation ?? await calculateRoofPreview(expectedRequest);
+      const request = runtime.request;
+      if (!calculation || !request
+        || roofCalculationRequestKey(request) !== roofCalculationRequestKey(expectedRequest)) return;
+      const bounds = polygonAreaBounds(runtime.points);
+      if (!bounds) return;
+      const eavesY = roofParameters.eavesHeightMm / 1000;
+      const summary = asRecord(calculation.summary);
+      const maximumHeight = Number(summary.maximum_height_mm ?? roofParameters.eavesHeightMm) / 1000;
+      const anchor = editingRoofAnchor ?? {
+        x: Math.floor(bounds.minimum.x),
+        y: Math.floor(eavesY),
+        z: Math.floor(bounds.minimum.z),
+      };
+      const roofId = editingRoofInstanceId
+        ?? `roof_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+      const targetCells = options.sceneRuntime.getTargetCells();
+      const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
       const payload: ChunkApiPlaceObjectCommandPayload = {
         type: "PlaceObject",
         userId: "editor_user",
@@ -1893,11 +2187,19 @@ export function createWorldEditController(
         setStatus(commandErrorMessage(result), "error");
         return;
       }
+      pendingRoofQuickSettings.set(roofId, {
+        roofType: roofParameters.roofType,
+        pitchDeg: Math.round(roofParameters.pitchDeg),
+        overhangMm: roofParameters.overhangMm,
+        overhangNorthMm: roofParameters.overhangNorthMm,
+        overhangEastMm: roofParameters.overhangEastMm,
+        overhangSouthMm: roofParameters.overhangSouthMm,
+        overhangWestMm: roofParameters.overhangWestMm,
+        edgeOverhangsMm: [...roofParameters.edgeOverhangsMm],
+      });
       await options.sceneRuntime.reloadDirtyChunks("world-edit-roof");
-      editingRoofInstanceId = roofId;
-      editingRoofAnchor = { ...anchor };
-      rebuildPolygonAreaScene("roof");
-      setStatus(`Dach ${roofId} mit Dachhaut, Sparren und Pfetten gespeichert.`, "ready");
+      resetPolygonArea("roof");
+      setStatus(`Dach ${roofId} mit Dachhaut, Sparren und Pfetten gespeichert. Das Werkzeug ist bereit für die nächste Dachzone.`, "ready");
     } catch (error) {
       options.logger?.warn?.("Roof placement failed.", { error: normalizeUnknownError(error) });
       setStatus(commandErrorMessage(error), "error");
@@ -2077,6 +2379,52 @@ export function createWorldEditController(
     </div>
   `;
   options.root.append(panel);
+  roofQuickSettings = createRoofQuickSettings({
+    root: options.root,
+    onChange: ({ roofType, pitchDeg, overhangMm }) => {
+      // The quick setting is uniform.  Reset individual edge overrides so the
+      // visible 5-cm change affects every side of the generated roof.
+      const overhangChanged = roofParameters.overhangMm !== overhangMm;
+      roofParameters = {
+        ...roofParameters,
+        roofType,
+        pitchDeg,
+        overhangMm,
+        ...(overhangChanged ? {
+          overhangNorthMm: overhangMm,
+          overhangEastMm: overhangMm,
+          overhangSouthMm: overhangMm,
+          overhangWestMm: overhangMm,
+          edgeOverhangsMm: [],
+        } : {}),
+      };
+      const runtime = polygonAreaRuntime("roof");
+      if (runtime.closed && validPolygonArea(runtime.points)) {
+        invalidateRoofCalculation();
+        scheduleRoofPreview();
+      }
+      refreshHud();
+    },
+    onClose: (restorePointerLock) => {
+      const inputController = options.sceneRuntime.getInputController();
+      inputController?.clear("world-edit-roof-settings-close");
+      inputController?.enable("world-edit-roof-settings-close");
+      if (!restorePointerLock || activeTool !== "roof") return;
+      try {
+        void inputController?.requestPointerLock("world-edit-roof-settings-close");
+      } catch { /* best effort */ }
+      const runtime = polygonAreaRuntime("roof");
+      if (shouldCommitRoofSettingsClose({
+        restorePointerLock,
+        roofToolActive: activeTool === "roof",
+        busy,
+        closed: runtime.closed,
+        valid: validPolygonArea(runtime.points),
+      })) {
+        void executeRoof();
+      }
+    },
+  });
 
   function syncPanelVisibility(): void {
     // The Creative Library owns the one visible settings panel.  This legacy
@@ -4479,50 +4827,108 @@ export function createWorldEditController(
     return found;
   }
 
-  function existingRoofAt(position: ChunkApiWorldPosition): ExistingRoofRef | null {
+  function existingRoofsInScene(): readonly ExistingRoofRef[] {
     const scene = options.sceneRuntime.getScene();
-    if (!scene) return null;
-    let found: ExistingRoofRef | null = null;
+    if (!scene) return [];
+    const found: ExistingRoofRef[] = [];
     scene.traverse((object) => {
-      if (found || object.userData.semanticRoof !== true) return;
+      if (object.userData.semanticRoof !== true) return;
       const ref = asRecord(object.userData.semanticObjectRef);
       const footprint = asRecord(ref.footprint);
-      const coordinates = asArray(footprint.coordinates);
-      const point: readonly [number, number] = [position.x, position.z];
-      const contains = safeString(footprint.type, "Polygon") === "MultiPolygon"
-        ? coordinates.some((polygon) => pointInPolygon(point, polygon))
-        : pointInPolygon(point, coordinates);
       const objectInstanceId = safeString(ref.objectInstanceId, "");
       const anchor = worldPosition(ref.anchor);
-      if (!contains || !objectInstanceId || !anchor) return;
-      found = {
+      if (!objectInstanceId || !anchor) return;
+      found.push({
         objectInstanceId,
         anchor,
         footprint,
         metadata: asRecord(ref.metadata),
-      };
+      });
     });
-    return found;
+    return uniqueRoofZones(found);
+  }
+
+  function existingRoofAt(position: ChunkApiWorldPosition): ExistingRoofRef | null {
+    const point: readonly [number, number] = [position.x, position.z];
+    for (const roof of existingRoofsInScene()) {
+      const coordinates = asArray(roof.footprint.coordinates);
+      const contains = safeString(roof.footprint.type, "Polygon") === "MultiPolygon"
+        ? coordinates.some((polygon) => pointInPolygon(point, polygon))
+        : pointInPolygon(point, coordinates);
+      if (contains) return roof;
+    }
+    return null;
+  }
+
+  function restoreEditingRoofObjects(): void {
+    if (hiddenEditingRoofObjects.length === 0) return;
+    hiddenEditingRoofObjects.forEach(({ object, visible }) => {
+      object.visible = visible;
+    });
+    hiddenEditingRoofObjects = [];
+    options.sceneRuntime.renderOnce("world-edit.roof-edit-source-restore");
+  }
+
+  function hideEditingRoofObjects(objectInstanceId: string): void {
+    restoreEditingRoofObjects();
+    const scene = options.sceneRuntime.getScene();
+    if (!scene || !objectInstanceId) return;
+    scene.traverse((object) => {
+      if (object.userData.semanticRoof !== true) return;
+      const ref = asRecord(object.userData.semanticObjectRef);
+      if (safeString(ref.objectInstanceId, "") !== objectInstanceId) return;
+      hiddenEditingRoofObjects.push({ object, visible: object.visible });
+      object.visible = false;
+    });
+    if (hiddenEditingRoofObjects.length > 0) {
+      options.sceneRuntime.renderOnce("world-edit.roof-edit-source-hide");
+    }
   }
 
   function selectExistingRoof(ref: ExistingRoofRef): void {
     const runtime = polygonAreaRuntime("roof");
     const points = polygonAreaPointsFromFootprint(ref.footprint, ref.anchor.y);
     if (!validPolygonArea(points)) return;
+    invalidateRoofCalculation();
     runtime.points = [...points];
     runtime.closed = true;
     const storedParameters = asRecord(ref.metadata.roofParameters);
-    roofParameters = normalizeRoofToolParameters(storedParameters, roofParameters);
-    const storedCalculation = asRecord(ref.metadata.roofCalculation);
-    runtime.calculation = storedCalculation.ok === true ? storedCalculation as RoofCalculationResult : null;
+    const normalizedStoredParameters = normalizeRoofToolParameters(
+      storedParameters,
+      DEFAULT_ROOF_TOOL_PARAMETERS,
+    );
+    const persistedQuickSettings = persistedRoofQuickSettings(ref.metadata, normalizedStoredParameters);
+    const pendingQuickSettings = pendingRoofQuickSettings.get(ref.objectInstanceId);
+    if (pendingQuickSettings
+      && pendingQuickSettings.roofType === persistedQuickSettings.roofType
+      && pendingQuickSettings.pitchDeg === persistedQuickSettings.pitchDeg
+      && pendingQuickSettings.overhangMm === persistedQuickSettings.overhangMm) {
+      pendingRoofQuickSettings.delete(ref.objectInstanceId);
+    }
+    roofParameters = {
+      ...normalizedStoredParameters,
+      ...persistedQuickSettings,
+      ...(pendingQuickSettings ?? {}),
+    };
+    roofQuickSettings?.sync(roofParameters);
     const storedRequest = asRecord(ref.metadata.roofRequest);
-    runtime.request = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
+    const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+    const requestMatches = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
+      && roofCalculationRequestKey(storedRequest) === roofCalculationRequestKey(expectedRequest);
+    const storedCalculation = asRecord(ref.metadata.roofCalculation);
+    runtime.calculation = requestMatches && storedCalculation.ok === true
+      ? storedCalculation as RoofCalculationResult
+      : null;
+    runtime.request = requestMatches
       ? storedRequest as unknown as RoofCalculationRequest
       : null;
     editingRoofInstanceId = ref.objectInstanceId;
     editingRoofAnchor = { ...ref.anchor };
+    hideEditingRoofObjects(ref.objectInstanceId);
     rebuildPolygonAreaScene("roof");
+    rebuildRoofZoneScene(true);
     refreshHud();
+    if (!requestMatches) scheduleRoofPreview(0);
     setStatus(`Dach ${ref.objectInstanceId} ausgewählt. Eckpunkte und alle Dachparameter bleiben editierbar.`, "ready");
   }
 
@@ -4546,8 +4952,10 @@ export function createWorldEditController(
         setStatus(commandErrorMessage(result), "error");
         return;
       }
+      pendingRoofQuickSettings.delete(ref.objectInstanceId);
       resetPolygonArea("roof");
       await options.sceneRuntime.reloadDirtyChunks("world-edit-roof-remove");
+      rebuildRoofZoneScene(true);
       setStatus("Dach gelöscht.", "ready");
     } catch (error) {
       setStatus(commandErrorMessage(error), "error");
@@ -4840,6 +5248,14 @@ export function createWorldEditController(
   }
 
   function handleWorldEditKeyDown(event: KeyboardEvent): void {
+    if (roofQuickSettings?.isOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        roofQuickSettings.close();
+      }
+      return;
+    }
     if (options.root.dataset.creativeInventoryOpen === "true") return;
     if (!activeSystem()?.handleKeyDown?.(event)) return;
     refreshHud();
@@ -4855,12 +5271,17 @@ export function createWorldEditController(
     stopTentacleDrawing();
     stopPolygonAreaInteraction("room");
     stopPolygonAreaInteraction("roof");
+    roofQuickSettings?.close(false);
     activeTool = tool;
     const system = systemRegistry?.get(tool);
     if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
     if (previousTool !== tool) previousSystem?.onDeactivate?.(tool);
     if (previousTool && (previousTool === "room" || previousTool === "roof") && previousTool !== tool) {
-      disposePolygonAreaGroup(previousTool);
+      if (previousTool === "roof") {
+        resetPolygonArea("roof");
+        disposeRoofZoneGroup();
+        roofZoneSignature = "";
+      } else disposePolygonAreaGroup(previousTool);
     }
     operation = nextOperation;
     configureOperationSelect(tool);
@@ -4886,10 +5307,12 @@ export function createWorldEditController(
     stopTentacleDrawing();
     stopPolygonAreaInteraction("room");
     stopPolygonAreaInteraction("roof");
+    roofQuickSettings?.close(false);
     panel.hidden = true;
     selection = { first: null, second: null };
     editingRoomInstanceId = null;
     editingRoomAnchor = null;
+    restoreEditingRoofObjects();
     editingRoofInstanceId = null;
     editingRoofAnchor = null;
     brushTarget = null;
@@ -4897,6 +5320,8 @@ export function createWorldEditController(
     disposeTentacleGroup();
     disposePolygonAreaGroup("room");
     disposePolygonAreaGroup("roof");
+    disposeRoofZoneGroup();
+    roofZoneSignature = "";
     options.sceneRuntime.setWorldEditIntentHandler(null);
     previousSystem?.onDeactivate?.(null);
     delete options.root.dataset.worldEditActive;
@@ -4961,6 +5386,24 @@ export function createWorldEditController(
     const structure = asRecord(source.structure);
     const rafter = { ...asRecord(structure.rafter), ...asRecord(source.rafter) };
     const purlin = { ...asRecord(structure.purlin), ...asRecord(source.purlin) };
+    const buildUp = { ...asRecord(source.roof_build_up), ...asRecord(source.roofBuildUp) };
+    const counterBatten = { ...asRecord(buildUp.counter_batten), ...asRecord(buildUp.counterBatten) };
+    const tileBatten = { ...asRecord(buildUp.tile_batten), ...asRecord(buildUp.tileBatten) };
+    const insulationModeValue = safeString(
+      source.insulationMode ?? buildUp.insulation_mode,
+      fallback.insulationMode,
+    ).toLowerCase() as RoofInsulationMode;
+    const insulationMode = new Set<RoofInsulationMode>(["between", "below", "above"]).has(insulationModeValue)
+      ? insulationModeValue
+      : fallback.insulationMode;
+    const legacyTimberDefaults = source.birdsmouthDepthMm === undefined
+      && rafter.birdsmouth_depth_mm === undefined
+      && source.purlinMiddleSpanThresholdMm === undefined
+      && purlin.middle_span_threshold_mm === undefined
+      && Number(rafter.spacing_mm ?? source.rafterSpacingMm ?? 700) === 700
+      && Number(purlin.width_mm ?? source.purlinWidthMm ?? 160) === 160
+      && Number(purlin.height_mm ?? source.purlinHeightMm ?? 240) === 240
+      && Number(purlin.maximum_spacing_mm ?? source.purlinMaximumSpacingMm ?? 2500) === 2500;
     const overhang = asRecord(source.overhangMm ?? source.overhang_mm);
     const edgeOverhangSource = source.edgeOverhangsMm ?? source.edges_mm ?? overhang.edges_mm;
     const edgeOverhangsMm = (Array.isArray(edgeOverhangSource)
@@ -4975,7 +5418,7 @@ export function createWorldEditController(
       : Number.isFinite(Number(ridgeRaw)) ? Number(ridgeRaw) : fallback.ridgeDirection;
     return {
       roofType: supportedRoofTypes.has(roofTypeValue) ? roofTypeValue : fallback.roofType,
-      pitchDeg: roofNumber(source, ["pitchDeg", "pitch_deg", "roofPitchDeg"], fallback.pitchDeg, 0, 80),
+      pitchDeg: roofNumber(source, ["pitchDeg", "pitch_deg", "roofPitchDeg"], fallback.pitchDeg, 0, 80, true),
       eavesHeightMm: roofNumber(source, ["eavesHeightMm", "eaves_height_mm"], fallback.eavesHeightMm, -100_000, 100_000),
       ridgeDirection,
       overhangMm: roofNumber({ ...source, ...overhang }, ["overhangMm", "default_mm"], fallback.overhangMm, 0, 5000),
@@ -4986,12 +5429,25 @@ export function createWorldEditController(
       edgeOverhangsMm,
       roofSkinThicknessMm: roofNumber(source, ["roofSkinThicknessMm", "roof_skin_thickness_mm"], fallback.roofSkinThicknessMm, 1, 2000),
       roofSkinMaterial: safeString(source.roofSkinMaterial ?? source.roof_skin_material, fallback.roofSkinMaterial),
+      insulationMode,
+      insulationThicknessMm: roofNumber({ ...source, ...buildUp }, ["insulationThicknessMm", "insulation_thickness_mm"], fallback.insulationThicknessMm, 20, 500),
+      sheathingThicknessMm: roofNumber({ ...source, ...buildUp }, ["sheathingThicknessMm", "sheathing_thickness_mm"], fallback.sheathingThicknessMm, 8, 80),
+      underlayThicknessMm: roofNumber({ ...source, ...buildUp }, ["underlayThicknessMm", "underlay_thickness_mm"], fallback.underlayThicknessMm, 1, 20),
+      counterBattenWidthMm: roofNumber({ ...source, ...counterBatten }, ["counterBattenWidthMm", "width_mm"], fallback.counterBattenWidthMm, 20, 120),
+      counterBattenHeightMm: roofNumber({ ...source, ...counterBatten }, ["counterBattenHeightMm", "height_mm"], fallback.counterBattenHeightMm, 20, 100),
+      tileBattenWidthMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenWidthMm", "width_mm"], fallback.tileBattenWidthMm, 20, 100),
+      tileBattenHeightMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenHeightMm", "height_mm"], fallback.tileBattenHeightMm, 20, 80),
+      tileBattenSpacingMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenSpacingMm", "spacing_mm"], fallback.tileBattenSpacingMm, 200, 500),
+      roofTileThicknessMm: roofNumber({ ...source, ...buildUp }, ["roofTileThicknessMm", "tile_thickness_mm"], fallback.roofTileThicknessMm, 8, 80),
+      roofTileMaterial: safeString(source.roofTileMaterial ?? buildUp.tile_material_ref, fallback.roofTileMaterial),
       rafterWidthMm: roofNumber({ ...source, ...rafter }, ["rafterWidthMm", "width_mm"], fallback.rafterWidthMm, 20, 1000),
-      rafterHeightMm: roofNumber({ ...source, ...rafter }, ["rafterHeightMm", "height_mm"], fallback.rafterHeightMm, 20, 1500),
-      rafterSpacingMm: roofNumber({ ...source, ...rafter }, ["rafterSpacingMm", "spacing_mm"], fallback.rafterSpacingMm, 100, 3000),
-      purlinWidthMm: roofNumber({ ...source, ...purlin }, ["purlinWidthMm", "width_mm"], fallback.purlinWidthMm, 20, 1500),
-      purlinHeightMm: roofNumber({ ...source, ...purlin }, ["purlinHeightMm", "height_mm"], fallback.purlinHeightMm, 20, 2000),
-      purlinMaximumSpacingMm: roofNumber({ ...source, ...purlin }, ["purlinMaximumSpacingMm", "maximum_spacing_mm"], fallback.purlinMaximumSpacingMm, 250, 10_000),
+      rafterHeightMm: roofNumber({ ...source, ...rafter }, ["rafterHeightMm", "height_mm"], fallback.rafterHeightMm, 180, 240),
+      rafterSpacingMm: legacyTimberDefaults ? 650 : roofNumber({ ...source, ...rafter }, ["rafterSpacingMm", "spacing_mm"], fallback.rafterSpacingMm, 100, 3000),
+      birdsmouthDepthMm: roofNumber({ ...source, ...rafter }, ["birdsmouthDepthMm", "birdsmouth_depth_mm"], fallback.birdsmouthDepthMm, 20, 50),
+      purlinWidthMm: legacyTimberDefaults ? 140 : roofNumber({ ...source, ...purlin }, ["purlinWidthMm", "width_mm"], fallback.purlinWidthMm, 20, 1500),
+      purlinHeightMm: legacyTimberDefaults ? 200 : roofNumber({ ...source, ...purlin }, ["purlinHeightMm", "height_mm"], fallback.purlinHeightMm, 20, 2000),
+      purlinMaximumSpacingMm: legacyTimberDefaults ? 4500 : roofNumber({ ...source, ...purlin }, ["purlinMaximumSpacingMm", "maximum_spacing_mm"], fallback.purlinMaximumSpacingMm, 250, 10_000),
+      purlinMiddleSpanThresholdMm: roofNumber({ ...source, ...purlin }, ["purlinMiddleSpanThresholdMm", "middle_span_threshold_mm"], fallback.purlinMiddleSpanThresholdMm, 1000, 15_000),
       plateauWidthRatio: roofNumber(source, ["plateauWidthRatio", "plateau_width_ratio"], fallback.plateauWidthRatio, 0.05, 0.8),
       mansardBreakRatio: roofNumber(source, ["mansardBreakRatio", "mansard_break_ratio"], fallback.mansardBreakRatio, 0.1, 0.8),
       mansardLowerPitchDeg: roofNumber(source, ["mansardLowerPitchDeg", "mansard_lower_pitch_deg"], fallback.mansardLowerPitchDeg, 10, 85),
@@ -5031,11 +5487,12 @@ export function createWorldEditController(
     };
     const previousRoofParameters = JSON.stringify(roofParameters);
     roofParameters = normalizeRoofToolParameters(roofSettings, roofParameters);
+    roofQuickSettings?.sync(roofParameters);
     if (activeTool === "roof"
       && previousRoofParameters !== JSON.stringify(roofParameters)
       && polygonAreaRuntime("roof").closed) {
       polygonAreaRuntime("roof").calculation = null;
-      void calculateRoofPreview();
+      scheduleRoofPreview();
     }
     if (parcelMaskInput && typeof detail.parcelMask === "boolean") {
       parcelMaskInput.checked = detail.parcelMask;
@@ -5396,6 +5853,7 @@ export function createWorldEditController(
       stopInteraction: () => stopPolygonAreaInteraction("roof"),
       startHover: () => startPolygonAreaHover("roof"),
       stopHover: () => stopPolygonAreaHover("roof"),
+      openSettingsUnderCrosshair: openRoofQuickSettingsUnderCrosshair,
       removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("roof"),
       resolveTarget: (intent) => resolvePolygonAreaTarget("roof", intent),
       beginPointInteraction: (target) => {
@@ -5416,7 +5874,10 @@ export function createWorldEditController(
       isComplete: () => polygonAreaRuntime("roof").closed
         && validPolygonArea(polygonAreaRuntime("roof").points)
         && Boolean(polygonAreaRuntime("roof").calculation),
-      rebuild: () => rebuildPolygonAreaScene("roof"),
+      rebuild: () => {
+        rebuildPolygonAreaScene("roof");
+        rebuildRoofZoneScene(true);
+      },
       reset: () => resetPolygonArea("roof"),
       setStatus,
     }),
@@ -5472,6 +5933,11 @@ export function createWorldEditController(
       window.removeEventListener("keydown", handleWorldEditKeyDown, true);
       disposeParcelGroup();
       disposeParcelGridGroup();
+      if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+      roofQuickSettings?.destroy();
+      roofQuickSettings = null;
+      roofSettingsTexture?.dispose();
+      roofSettingsTexture = null;
       options.sceneRuntime.setPlacementConstraintHandler(null);
       options.sceneRuntime.setPlacementGeometryHandler(null);
       delete options.root.dataset.parcelGridRotationDegrees;

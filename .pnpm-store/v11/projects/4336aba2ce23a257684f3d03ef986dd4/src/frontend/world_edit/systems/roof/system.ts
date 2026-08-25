@@ -9,6 +9,7 @@ export interface RoofSystemHooks {
   readonly stopInteraction: () => void;
   readonly startHover: () => void;
   readonly stopHover: () => void;
+  readonly openSettingsUnderCrosshair: () => boolean;
   readonly removePointUnderCrosshair: () => boolean;
   readonly resolveTarget: (intent: EditorInputWorldEditIntent) => WorldEditPosition | null;
   readonly beginPointInteraction: (target: WorldEditPosition) => void;
@@ -26,8 +27,8 @@ export function createRoofSystem(hooks: RoofSystemHooks): WorldEditSystem {
     aliases: ["roof-tool", "dach", "dachwerkzeug"],
     ui: {
       title: "Parametrisches Dach",
-      hint: "Blockecken nacheinander anklicken. Den ersten Punkt erneut anklicken oder ESC drücken, um die Fläche zu schließen. Gelbe Punkte mit Linksklick ziehen; Rechtsklick löscht einen Punkt oder generiert das Dach.",
-      activationMessage: "Dachfläche Punkt für Punkt mit geraden Linien zeichnen; der geschlossene Bereich wird farbig und als 3D-Dach berechnet.",
+      hint: "Blockecken anklicken und am ersten Punkt schließen. Das Zahnrad in der Flächenmitte öffnet Dachform und Mausrad-Neigung. Gelbe Punkte lassen sich ziehen; Ausführen speichert und startet die nächste Dachzone.",
+      activationMessage: "Dachfläche mit geraden Linien zeichnen; nach dem Schließen Dachform und Neigung über das Zahnrad einstellen.",
       maxDistance: 160,
       inventoryToolId: "roof",
       operations: [],
@@ -60,6 +61,7 @@ export function createRoofSystem(hooks: RoofSystemHooks): WorldEditSystem {
         await hooks.executeRoof();
         return true;
       }
+      if (hooks.openSettingsUnderCrosshair()) return true;
       const target = hooks.resolveTarget(intent);
       if (!target) {
         hooks.setStatus("Keine Blockecke oder horizontale Dacharbeitsebene unter dem Fadenkreuz.", "warning");

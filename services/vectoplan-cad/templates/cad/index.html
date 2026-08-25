@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8fafc">
   <title data-i18n="vectoplan.server.cad.cad.index.title.cad_erdgeschoss.35c0caf3">CAD · Erdgeschoss</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260823-parametric-roof-2">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260825-plan-workspace-1">
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
@@ -77,10 +77,27 @@
             <button type="button" data-action="cancel-room-label" aria-label="Raumbezeichnung schließen">×</button>
           </div>
         </section>
+        <section class="cad-door-panel" id="door-options" hidden aria-label="Türanschlag einstellen">
+          <div class="cad-door-panel__header">
+            <div><span>TÜR</span><strong>Öffnungsrichtung</strong></div>
+            <button type="button" data-action="close-door-options" aria-label="Türeinstellungen schließen">×</button>
+          </div>
+          <div class="cad-door-panel__group" role="group" aria-label="Bandseite">
+            <small>Bandseite</small>
+            <button type="button" data-door-hinge="left" aria-pressed="false">Links</button>
+            <button type="button" data-door-hinge="right" aria-pressed="false">Rechts</button>
+          </div>
+          <div class="cad-door-panel__group" role="group" aria-label="Aufschlagrichtung">
+            <small>Aufschlag</small>
+            <button type="button" data-door-swing="positive" aria-pressed="false">Seite 1</button>
+            <button type="button" data-door-swing="negative" aria-pressed="false">Seite 2</button>
+          </div>
+          <p>Tür auswählen und Band- sowie Aufschlagseite direkt im Grundriss festlegen.</p>
+        </section>
         <section class="cad-roof-panel" id="roof-options" hidden aria-label="Parametrisches Dach einstellen">
           <div class="cad-roof-panel__header">
             <div><span>DACHWERKZEUG</span><strong>Dachaufbau</strong></div>
-            <small>Punkte setzen · ersten Punkt oder ESC zum Schließen</small>
+            <small data-roof-panel-hint>Dachfläche geschlossen · Form wählen und berechnen</small>
           </div>
           <div class="cad-roof-panel__grid">
             <label><span>Dachart</span><select id="roof-tool-type" data-roof-input>
@@ -91,12 +108,12 @@
               <option value="pyramid">Zelt-/Pyramidendach</option><option value="barrel">Tonnendach</option>
               <option value="sawtooth">Sheddach</option>
             </select></label>
-            <label><span>Dachneigung</span><span class="input-with-unit"><input id="roof-pitch" data-roof-input type="number" min="0" max="80" step="0.5" value="35"><small>°</small></span></label>
+            <label><span>Dachneigung</span><span class="input-with-unit"><input id="roof-pitch" data-roof-input type="number" min="0" max="80" step="1" value="35"><small>°</small></span></label>
             <label><span>Traufhöhe</span><span class="input-with-unit"><input id="roof-eaves-height" data-roof-input type="number" step="100" value="6000"><small>mm</small></span></label>
             <label><span>Firstrichtung</span><select id="roof-ridge-direction" data-roof-input><option value="auto">Automatisch</option><option value="x">X / Ost–West</option><option value="y">Y / Nord–Süd</option><option value="degrees">Winkel</option></select></label>
             <label><span>Firstwinkel</span><span class="input-with-unit"><input id="roof-ridge-degrees" data-roof-input type="number" min="-360" max="360" step="1" value="0"><small>°</small></span></label>
-            <label><span>Dachhaut</span><span class="input-with-unit"><input id="roof-skin-thickness" data-roof-input type="number" min="1" max="2000" step="10" value="180"><small>mm</small></span></label>
-            <label class="cad-roof-panel__wide"><span>Material Dachhaut</span><input id="roof-skin-material" data-roof-input type="text" value="generic-roof-build-up"></label>
+            <label><span>Dämmstärke</span><span class="input-with-unit"><input id="roof-skin-thickness" data-roof-input type="number" min="20" max="500" step="10" value="200"><small>mm</small></span></label>
+            <label class="cad-roof-panel__wide"><span>Dachziegel-Material</span><input id="roof-skin-material" data-roof-input type="text" value="clay-roof-tile"></label>
           </div>
           <details open><summary>Dachüberstände</summary><div class="cad-roof-panel__grid cad-roof-panel__grid--five">
             <label><span>Standard</span><input id="roof-overhang" data-roof-input type="number" min="0" max="5000" value="500"></label>
@@ -108,11 +125,24 @@
           </div></details>
           <details><summary>Sparren und Pfetten</summary><div class="cad-roof-panel__grid">
             <label><span>Sparren Breite</span><input id="roof-rafter-width" data-roof-input type="number" min="20" max="1000" value="80"></label>
-            <label><span>Sparren Höhe</span><input id="roof-rafter-height" data-roof-input type="number" min="20" max="1500" value="200"></label>
-            <label><span>Sparren Abstand</span><input id="roof-rafter-spacing" data-roof-input type="number" min="100" max="3000" value="700"></label>
-            <label><span>Pfette Breite</span><input id="roof-purlin-width" data-roof-input type="number" min="20" max="1500" value="160"></label>
-            <label><span>Pfette Höhe</span><input id="roof-purlin-height" data-roof-input type="number" min="20" max="2000" value="240"></label>
-            <label><span>Pfetten max. Abstand</span><input id="roof-purlin-spacing" data-roof-input type="number" min="250" max="10000" value="2500"></label>
+            <label><span>Sparren Höhe</span><input id="roof-rafter-height" data-roof-input type="number" min="180" max="240" value="200"></label>
+            <label><span>Sparren Raster</span><input id="roof-rafter-spacing" data-roof-input type="number" min="100" max="3000" value="650"></label>
+            <label><span>Kerve</span><input id="roof-birdsmouth-depth" data-roof-input type="number" min="20" max="50" value="30"></label>
+            <label><span>Pfette Breite</span><input id="roof-purlin-width" data-roof-input type="number" min="20" max="1500" value="140"></label>
+            <label><span>Pfette Höhe</span><input id="roof-purlin-height" data-roof-input type="number" min="20" max="2000" value="200"></label>
+            <label><span>Pfetten max. Abstand</span><input id="roof-purlin-spacing" data-roof-input type="number" min="250" max="10000" value="4500"></label>
+            <label><span>Mittelpfette ab Spannweite</span><input id="roof-middle-purlin-threshold" data-roof-input type="number" min="1000" max="15000" value="4500"></label>
+          </div></details>
+          <details><summary>Dachaufbau und Dämmung</summary><div class="cad-roof-panel__grid">
+            <label><span>Dämmart</span><select id="roof-insulation-mode" data-roof-input><option value="between" selected>Zwischensparren</option><option value="below">Untersparren</option><option value="above">Aufsparren</option></select></label>
+            <label><span>Schalung</span><input id="roof-sheathing-thickness" data-roof-input type="number" min="8" max="80" value="22"></label>
+            <label><span>Unterdeckbahn</span><input id="roof-underlay-thickness" data-roof-input type="number" min="1" max="20" value="3"></label>
+            <label><span>Konterlatte Breite</span><input id="roof-counter-batten-width" data-roof-input type="number" min="20" max="120" value="60"></label>
+            <label><span>Konterlatte Höhe</span><input id="roof-counter-batten-height" data-roof-input type="number" min="20" max="100" value="40"></label>
+            <label><span>Traglatte Breite</span><input id="roof-tile-batten-width" data-roof-input type="number" min="20" max="100" value="50"></label>
+            <label><span>Traglatte Höhe</span><input id="roof-tile-batten-height" data-roof-input type="number" min="20" max="80" value="30"></label>
+            <label><span>Traglatten Raster</span><input id="roof-tile-batten-spacing" data-roof-input type="number" min="200" max="500" value="330"></label>
+            <label><span>Dachziegel Stärke</span><input id="roof-tile-thickness" data-roof-input type="number" min="8" max="80" value="20"></label>
           </div></details>
           <details><summary>Sonderdach-Parameter</summary><div class="cad-roof-panel__grid">
             <label><span>Plateauanteil</span><input id="roof-plateau-ratio" data-roof-input type="number" min="0.05" max="0.8" step="0.01" value="0.25"></label>
@@ -125,7 +155,7 @@
             <label><span>Sheddach-Felder</span><input id="roof-sawtooth-count" data-roof-input type="number" min="1" max="20" value="3"></label>
             <label><span>Sheddach-Neigung</span><input id="roof-sawtooth-pitch" data-roof-input type="number" min="5" max="80" value="35"></label>
           </div></details>
-          <button type="button" class="cad-roof-panel__finish" data-action="finish-roof">Fläche schließen und Dach berechnen</button>
+          <button type="button" class="cad-roof-panel__finish" data-action="finish-roof">Dach berechnen und speichern</button>
         </section>
       </div>
       <aside class="building-panel" id="building-panel" aria-label="Gebäude und Geschosse">
@@ -143,15 +173,23 @@
             <label>
               <span>Gebäudetyp</span>
               <select id="building-type">
-                <option value="residential">Wohngebäude</option>
-                <option value="apartment">Mehrfamilienhaus</option>
-                <option value="industrial">Industriegebäude</option>
-                <option value="office">Bürogebäude</option>
-                <option value="public">Öffentliches Gebäude</option>
-                <option value="bridge">Brücke</option>
-                <option value="tunnel">Tunnel</option>
-                <option value="infrastructure">Infrastrukturbauwerk</option>
-                <option value="landscape">Freianlage</option>
+                <optgroup label="Hochbau">
+                  <option value="residential">Wohngebäude</option>
+                  <option value="apartment">Mehrfamilienhaus</option>
+                  <option value="industrial">Industriegebäude</option>
+                  <option value="office">Bürogebäude</option>
+                  <option value="public">Öffentliches Gebäude</option>
+                </optgroup>
+                <optgroup label="Tiefbau">
+                  <option value="civil">Tiefbau</option>
+                  <option value="infrastructure">Infrastrukturbauwerk</option>
+                  <option value="landscape">Freianlage</option>
+                </optgroup>
+                <optgroup label="Ingenieurbau">
+                  <option value="engineering">Ingenieurbau</option>
+                  <option value="bridge">Brücke</option>
+                  <option value="tunnel">Tunnel</option>
+                </optgroup>
                 <option value="other">Sonstiges</option>
               </select>
             </label>
@@ -170,6 +208,12 @@
           <div class="building-storeys-heading">
             <strong>Geschosse</strong>
             <small>Rohmaß Boden bis Decke</small>
+          </div>
+          <div class="building-storey-legend" aria-label="Geschossstatus">
+            <span class="is-white">Weiß · ausgeblendet</span>
+            <span class="is-red">Rot · aktiv und gespeichert</span>
+            <span class="is-yellow">Gelb · bearbeitbare Referenz</span>
+            <span class="is-gray">Grau · nur Ansicht</span>
           </div>
           <div class="building-storeys" id="building-storeys"></div>
           <div class="building-storey-actions">
@@ -199,19 +243,21 @@
           </label>
           <label class="plan-workspace-field">
             <span>Planinhalt</span>
-            <select id="plan-content">
-              <option value="overview">Planübersicht</option>
-              <option value="floor_plans">Grundrisse</option>
-              <option value="elevations">Ansichten</option>
-              <option value="sections">Schnitte</option>
-              <option value="title_block">Plankopf</option>
-              <option value="site_plan">Lageplan</option>
-            </select>
+            <select id="plan-content"><option value="overview">Planübersicht</option></select>
           </label>
           <label class="plan-workspace-field">
             <span>Darstellung</span>
             <select id="plan-view-selection"></select>
           </label>
+          <div class="plan-automation" aria-label="Automatische Planwerkzeuge">
+            <button type="button" data-plan-action="auto-dimensions" aria-pressed="false">
+              <span aria-hidden="true">↔</span><strong>Auto-Bemaßung</strong><small>Maßketten aus Modellgeometrie</small>
+            </button>
+            <button type="button" data-plan-action="auto-section" aria-pressed="false">
+              <span aria-hidden="true">A–A</span><strong>Auto-Schnitt</strong><small>Schnittlinie optimal setzen</small>
+            </button>
+          </div>
+          <p class="plan-automation-status" id="plan-automation-status">Planwerkzeuge werden ausschließlich in dieser Planansicht dargestellt.</p>
           <div class="plan-workspace-rule">
             <span>Planumfang für Bauwerkstyp</span>
             <strong id="plan-building-profile">Wohngebäude</strong>
@@ -232,6 +278,6 @@
 
   </main>
 
-  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260823-parametric-roof-2" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260825-cad-stability-2" defer></script>
 </body>
 </html>

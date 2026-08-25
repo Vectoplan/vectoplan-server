@@ -42,6 +42,30 @@ export function polygonAreaPlanArea(points: readonly PolygonAreaPoint[]): number
   return Math.abs(polygonAreaSignedPlanArea(points));
 }
 
+export function polygonAreaPlanCentroid(
+  points: readonly PolygonAreaPoint[],
+): PolygonAreaPoint | null {
+  const ring = normalizePolygonAreaPoints(points);
+  if (ring.length < 3) return null;
+  let twiceArea = 0;
+  let weightedX = 0;
+  let weightedZ = 0;
+  for (let index = 0; index < ring.length; index += 1) {
+    const point = ring[index]!;
+    const next = ring[(index + 1) % ring.length]!;
+    const cross = point.x * next.z - next.x * point.z;
+    twiceArea += cross;
+    weightedX += (point.x + next.x) * cross;
+    weightedZ += (point.z + next.z) * cross;
+  }
+  if (Math.abs(twiceArea) <= EPSILON) return null;
+  return {
+    x: weightedX / (3 * twiceArea),
+    y: ring.reduce((sum, point) => sum + point.y, 0) / ring.length,
+    z: weightedZ / (3 * twiceArea),
+  };
+}
+
 function orientation(
   first: PolygonAreaPoint,
   second: PolygonAreaPoint,
