@@ -124,6 +124,13 @@ test("grid guide dragging snaps and clamps to whole block steps", () => {
     minimumDepth: 1,
     maximumDepth: 128,
   }), 45, "dragging is no longer capped at six blocks");
+  assert.equal(snapParcelGridDragDepth({
+    initialDepth: 1,
+    initialPointerDepth: 2,
+    pointerDepth: 0.4,
+    minimumDepth: 0,
+    maximumDepth: 128,
+  }), 0, "the inner grid line can coincide exactly with the parcel boundary");
 });
 
 test("parcel grid depth grows with the parcel while retaining a generous minimum", () => {

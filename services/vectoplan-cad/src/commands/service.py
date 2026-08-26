@@ -218,6 +218,9 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
     geometry = deepcopy(command["geometry"])
     if command_name == "create_wall":
         geometry["thickness_mm"] = command["parameters"]["thickness_mm"]
+        for field in ("wall_chain_ref", "wall_join_mode"):
+            if command["parameters"].get(field):
+                geometry[field] = command["parameters"][field]
     if command_name in {"create_opening", "place_library_object"}:
         geometry["form"] = "line_segment"
         geometry["thickness_mm"] = max(
@@ -296,6 +299,11 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         element["semantic_role"] = "window" if "fenster" in descriptor or "window" in descriptor else "door"
         element["host_wall_ref"] = command.get("parameters", {}).get("host_wall_ref")
         element["host_wall_thickness_mm"] = command.get("parameters", {}).get("host_wall_thickness_mm")
+        element["width_mm"] = command.get("parameters", {}).get("width_mm")
+        element["height_mm"] = command.get("parameters", {}).get("height_mm")
+        element["sill_height_mm"] = command.get("parameters", {}).get("sill_height_mm")
+        element["floor_mode"] = command.get("parameters", {}).get("floor_mode")
+        element["window_operation"] = command.get("parameters", {}).get("window_operation")
         if element["semantic_role"] == "door":
             element["door_hinge_side"] = str(
                 command.get("parameters", {}).get("door_hinge_side") or "left"
@@ -309,6 +317,24 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         element["text"] = f"{label}\n{geometry['area_m2']:.2f} m²"
         element["semantic_role"] = "energy_zone"
         element["room_type"] = command.get("parameters", {}).get("room_type")
+        if element["room_type"] == "stair":
+            element["kind"] = "structure"
+            element["layer"] = "construction_stair"
+            element["semantic_role"] = "stair"
+            element["geometry"] = {
+                **geometry,
+                "form": "region",
+                "outer_ring_mm": deepcopy(geometry.get("points_mm", [])),
+                "thickness_mm": 0,
+            }
+            element["stair_parameters"] = {
+                "stair_type": str(command.get("parameters", {}).get("stair_type") or "straight"),
+                "width_mm": float(command.get("parameters", {}).get("stair_width_mm") or 1000),
+                "tread_count": int(command.get("parameters", {}).get("stair_tread_count") or 15),
+                "start_side": str(command.get("parameters", {}).get("stair_start_side") or "bottom"),
+                "end_side": str(command.get("parameters", {}).get("stair_end_side") or "top"),
+                "direction": str(command.get("parameters", {}).get("stair_direction") or "up"),
+            }
     if command_name in ROOF_COMMANDS:
         calculation = command.get("parameters", {}).get("roof_calculation", {})
         element["label"] = f"Parametrisches Dach · {calculation.get('roof_type', 'gable')}"

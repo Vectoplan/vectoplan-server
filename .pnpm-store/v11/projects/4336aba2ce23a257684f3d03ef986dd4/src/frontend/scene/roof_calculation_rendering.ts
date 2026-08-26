@@ -1,5 +1,7 @@
 import * as THREE from "three";
 
+import { roofCalculationVersionSnapshot } from "../world_edit/systems/roof/zones";
+
 export interface RoofCalculationRenderOptions {
   readonly scale?: number;
   readonly preview?: boolean;
@@ -221,6 +223,7 @@ export function createRoofCalculationMeshes(
 ): RoofCalculationRenderResult {
   const calculation = asRecord(calculationValue);
   if (calculation.ok !== true) return { meshes: [], materials: [], geometries: [] };
+  const calculationVersion = roofCalculationVersionSnapshot(calculation);
   const scale = Number.isFinite(options.scale) && Number(options.scale) > 0 ? Number(options.scale) : 1;
   const preview = options.preview === true;
   const skinMaterial = new THREE.MeshStandardMaterial({
@@ -265,6 +268,7 @@ export function createRoofCalculationMeshes(
     mesh.userData.roofPart = part;
     mesh.userData.objectInstanceId = options.objectInstanceId;
     mesh.userData.semanticObjectRef = options.semanticObjectRef;
+    mesh.userData.roofCalculationVersion = calculationVersion;
     meshes.push(mesh);
     geometries.push(geometry);
   };

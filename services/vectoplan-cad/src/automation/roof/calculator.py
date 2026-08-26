@@ -1429,6 +1429,42 @@ def _surface_structure(
     }
 
 
+def _lowest_purlin_bottom_mm(structure: Mapping[str, Any]) -> float | None:
+    """Return the lowest underside of all vertically oriented purlins."""
+    purlin_config = structure.get("purlin_configuration")
+    purlin_height = (
+        _number(purlin_config.get("height_mm"), 200, 20, 2000)
+        if isinstance(purlin_config, Mapping)
+        else 200.0
+    )
+    bottoms = [
+        float(point[2]) - purlin_height / 2
+        for member in structure.get("purlins", [])
+        if isinstance(member, Mapping)
+        for key in ("start_3d_mm", "end_3d_mm")
+        for point in [member.get(key)]
+        if isinstance(point, Sequence) and len(point) >= 3
+    ]
+    return min(bottoms) if bottoms else None
+
+
+def _translate_roof_faces_vertically(
+    faces: Sequence[Mapping[str, Any]],
+    offset_mm: float,
+) -> list[dict[str, Any]]:
+    """Move the complete roof envelope without changing its slope or plan."""
+    return [
+        {
+            **face,
+            "polygon_3d_mm": [
+                [round(float(point[0]), 6), round(float(point[1]), 6), round(float(point[2]) + offset_mm, 6)]
+                for point in face["polygon_3d_mm"]
+            ],
+        }
+        for face in faces
+    ]
+
+
 def _roof_build_up(
     faces: Sequence[Mapping[str, Any]],
     parameters: Mapping[str, Any],
@@ -1684,6 +1720,26 @@ def calculate_roof(payload: Mapping[str, Any]) -> dict[str, Any]:
     structure = _surface_structure(
         faces, parameters, angle, coverage, request["roof_type"], purlin_bearing_ring
     )
+    lowest_purlin_bottom = _lowest_purlin_bottom_mm(structure)
+    purlin_zone_alignment_offset = (
+        parameters["eaves_height_mm"] - lowest_purlin_bottom
+        if lowest_purlin_bottom is not None
+        else 0.0
+    )
+    if abs(purlin_zone_alignment_offset) > 1e-6:
+        faces = _translate_roof_faces_vertically(faces, purlin_zone_alignment_offset)
+        structure = _surface_structure(
+            faces, parameters, angle, coverage, request["roof_type"], purlin_bearing_ring
+        )
+    aligned_purlin_bottom = _lowest_purlin_bottom_mm(structure)
+    structure["bearing_model"].update({
+        "purlin_vertical_reference": "roof_zone_top",
+        "roof_zone_top_mm": round(parameters["eaves_height_mm"], 6),
+        "lowest_purlin_bottom_mm": (
+            round(aligned_purlin_bottom, 6) if aligned_purlin_bottom is not None else None
+        ),
+        "vertical_alignment_offset_mm": round(purlin_zone_alignment_offset, 6),
+    })
     roof_build_up = _roof_build_up(faces, parameters, angle, coverage)
     surface_area = sum(face["surface_area_m2"] for face in faces)
     skin_thickness = roof_build_up["exterior_offset_mm"]

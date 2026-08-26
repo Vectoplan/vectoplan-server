@@ -4,6 +4,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from src.projection.service import build_preview, load_json_file, validate_projection_input
+from src.scene.service import _wall_polygon
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,6 +39,17 @@ def test_wall_is_resolved_to_polygon_primitive():
     assert wall["primitive_type"] == "polygon"
     assert len(wall["geometry"]["points_mm"]) == 4
     assert wall["metadata"]["family_ref"] == "hochbau.waende.ziegelwand"
+    assert wall["geometry"]["wall_join_start"] is True
+    assert wall["geometry"]["wall_join_end"] is True
+    assert wall["geometry"]["wall_join_mode"] == "automatic_miter"
+
+
+def test_legacy_wall_polygon_uses_butt_caps_without_visible_protrusions():
+    assert _wall_polygon({
+        "start_mm": [0, 0],
+        "end_mm": [1000, 0],
+        "thickness_mm": 100,
+    }) == [[0, 50], [1000, 50], [1000, -50], [0, -50]]
 
 
 def test_projection_rejects_unknown_viewport_reference():
@@ -242,3 +254,83 @@ def test_architectural_roles_receive_specific_render_styles():
         "slab",
     }
     assert all(primitive["primitive_type"] == "polygon" for primitive in primitives)
+
+
+def test_imported_openings_infer_door_and_window_styles_from_library_family():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    viewport_ref = "vp_ground_floor"
+    sheet["elements"] = [
+        {
+            "element_ref": "legacy-door",
+            "label": "Eingangstür",
+            "kind": "opening",
+            "layer": "openings",
+            "family_ref": "hochbau.oeffnungen.tuer",
+            "variant_ref": "haustuer_1010",
+            "view_refs": [viewport_ref],
+            "geometry": {"x_mm": 1000, "y_mm": 1000, "width_mm": 1010, "height_mm": 240},
+        },
+        {
+            "element_ref": "legacy-window",
+            "label": "Fenster Süd",
+            "kind": "opening",
+            "layer": "openings",
+            "family_ref": "hochbau.oeffnungen.fenster",
+            "variant_ref": "fenster_2010",
+            "view_refs": [viewport_ref],
+            "geometry": {"x_mm": 3000, "y_mm": 1000, "width_mm": 2010, "height_mm": 240},
+        },
+    ]
+
+    assert validate_projection_input(payload) == []
+    primitives = build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+    assert [primitive["style_ref"] for primitive in primitives] == ["door", "window"]
+
+
+def test_outer_edge_wall_chain_is_automatically_mitered_at_exact_reference_corner():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    viewport_ref = "vp_ground_floor"
+    sheet["elements"] = [
+        {
+            "element_ref": "wall-chain-1",
+            "label": "Wandzug 1",
+            "kind": "wall",
+            "layer": "walls",
+            "view_refs": [viewport_ref],
+            "geometry": {
+                "start_mm": [0, 50],
+                "end_mm": [1000, 50],
+                "reference_start_mm": [0, 0],
+                "reference_end_mm": [1000, 0],
+                "thickness_mm": 100,
+                "wall_chain_ref": "wall-chain:test",
+                "wall_join_mode": "automatic_miter",
+            },
+        },
+        {
+            "element_ref": "wall-chain-2",
+            "label": "Wandzug 2",
+            "kind": "wall",
+            "layer": "walls",
+            "view_refs": [viewport_ref],
+            "geometry": {
+                "start_mm": [950, 0],
+                "end_mm": [950, 1000],
+                "reference_start_mm": [1000, 0],
+                "reference_end_mm": [1000, 1000],
+                "thickness_mm": 100,
+                "wall_chain_ref": "wall-chain:test",
+                "wall_join_mode": "automatic_miter",
+            },
+        },
+    ]
+
+    assert validate_projection_input(payload) == []
+    primitives = build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+    first, second = primitives
+    assert first["geometry"]["points_mm"] == [[0, 0], [1000, 0], [900, 100], [0, 100]]
+    assert second["geometry"]["points_mm"] == [[1000, 0], [1000, 1000], [900, 1000], [900, 100]]
+    assert first["geometry"]["wall_join_end"] is True
+    assert second["geometry"]["wall_join_start"] is True

@@ -281,6 +281,10 @@ def _plan_representation(value: Mapping[str, Any]) -> dict[str, Any]:
     except (TypeError, ValueError):
         frame_line_count = 2
     try:
+        leaf_count = int(first("leaf_count", "cad.plan.leaf_count", default=0) or 0)
+    except (TypeError, ValueError):
+        leaf_count = 0
+    try:
         line_weight_mm = float(first("line_weight_mm", "cad.plan.line_weight_mm", default=0.35) or 0.35)
     except (TypeError, ValueError):
         line_weight_mm = 0.35
@@ -298,6 +302,7 @@ def _plan_representation(value: Mapping[str, Any]) -> dict[str, Any]:
         "show_opening_label": flag("show_opening_label", "cad.plan.show_opening_label", default=True),
         "show_sill_height": flag("show_sill_height", "cad.plan.show_sill_height", default=True),
         "frame_line_count": max(1, min(5, frame_line_count)),
+        "leaf_count": max(0, min(4, leaf_count)),
         "room_fill_mode": _text(first("room_fill_mode", "cad.plan.room_fill_mode", default="zone")) or "zone",
         "room_stamp_show_name": flag("room_stamp_show_name", "cad.plan.room_stamp_show_name", default=True),
         "room_stamp_show_area": flag("room_stamp_show_area", "cad.plan.room_stamp_show_area", default=True),

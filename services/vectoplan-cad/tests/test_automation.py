@@ -275,9 +275,21 @@ def test_all_purlins_stay_inside_the_fixed_205_mm_building_bearing_line(
     ]
     assert result["structure"]["bearing_model"]["purlin_edge_offset_mm"] == 205
     assert result["structure"]["bearing_model"]["purlin_plan_reference"] == "source_footprint"
+    assert result["structure"]["bearing_model"]["purlin_vertical_reference"] == "roof_zone_top"
     assert eaves_purlins
     rafter = result["structure"]["rafter_configuration"]
     purlin = result["structure"]["purlin_configuration"]
+
+    lowest_purlin_bottom = min(
+        member[key][2] - purlin["height_mm"] / 2
+        for member in purlins
+        for key in ("start_3d_mm", "end_3d_mm")
+    )
+    assert lowest_purlin_bottom == pytest.approx(request["parameters"]["eaves_height_mm"], abs=0.001)
+    assert result["structure"]["bearing_model"]["lowest_purlin_bottom_mm"] == pytest.approx(
+        request["parameters"]["eaves_height_mm"],
+        abs=0.001,
+    )
 
     for member in purlins:
         start = member["support_start_3d_mm"]

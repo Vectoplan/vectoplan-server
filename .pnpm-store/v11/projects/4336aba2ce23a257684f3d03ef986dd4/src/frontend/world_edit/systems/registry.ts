@@ -7,6 +7,7 @@ import type {
 const REQUIRED_TOOLS: readonly WorldEditTool[] = [
   "selection",
   "room",
+  "stair",
   "paint",
   "sculpt",
   "parcel",

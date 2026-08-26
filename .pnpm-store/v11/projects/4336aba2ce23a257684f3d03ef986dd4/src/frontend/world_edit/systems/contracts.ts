@@ -3,6 +3,7 @@ import type { EditorInputWorldEditIntent } from "@input/input_controller";
 export type WorldEditTool =
   | "selection"
   | "room"
+  | "stair"
   | "paint"
   | "sculpt"
   | "parcel"

@@ -26,12 +26,29 @@
     drawStart: null,
     drawCurrent: null,
     drawPointerRaw: null,
+    wallChainStart: null,
+    wallChainSegmentCount: 0,
     roomDraftPoints: [],
     roomSubmissionPending: false,
     roofDraftPoints: [],
     roofDraftClosed: false,
     roofSubmissionPending: false,
     openingHostPreview: null,
+    pendingOpeningPlacement: null,
+    openingPlacementConfiguration: {
+      widthMm: 1000, heightMm: 1250, sillHeightMm: 1000,
+      floorMode: "sill", operation: "fixed", hingeSide: "left", swingSide: "positive",
+    },
+    pendingStairDraft: null,
+    stairConfiguration: {
+      stairType: "straight", widthMm: 1000, treadCount: 15,
+      startSide: "bottom", endSide: "top", direction: "up",
+    },
+    coordinateInput: {reference: null, target: null, elevationMm: 0, locked: false},
+    measurementMode: "length",
+    measurementDraftPoints: [],
+    measurementResults: [],
+    measurementSequence: 0,
     roomLabelEditPrimitive: null,
     commands: [],
     redoCommands: [],
@@ -43,6 +60,7 @@
     pinch: null,
     spacePressed: false,
     shiftPressed: false,
+    ctrlPressed: false,
     renderScheduled: false,
     parcelSelection: null,
     projectInputLoaded: false,
@@ -80,6 +98,10 @@
     doorConfigurations: new Map(),
     doorConfigurationStorageKey: "",
     snapTarget: null,
+    pointTrackingAnchors: [],
+    pointTrackingCandidate: null,
+    pointTrackingTimer: 0,
+    alignmentGuide: null,
     planOverview: false,
     planOverviewPreviousCamera: null,
     planRules: null,
@@ -132,13 +154,13 @@
   const toolConfig = {
     select: {label: "Auswahl", hint: "Element anklicken, um seine semantischen Referenzen zu prüfen."},
     selection: {label: "WorldEdit-Auswahl", hint: "Zwei Eckpunkte aufziehen. Der Bereich wird für Räume und weitere WorldEdit-Operationen gespeichert."},
-    wall: {label: "Wand", command: "create_wall", hint: "Punkte nacheinander setzen. Die Wandkette läuft weiter, bis ESC gedrückt wird. Umschalt: 45°."},
+    wall: {label: "Wand", command: "create_wall", hint: "Punkte nacheinander setzen. Strg hält 90°, Umschalt 45°. ESC beendet den Wandzug."},
     opening: {label: "Öffnung", command: "create_opening", hint: "Maus über eine Wand führen und klicken. Fenster und Türen werden ausschließlich wandgebunden eingesetzt."},
     library: {label: "Library-Bauteil", command: "place_library_object", hint: "Start- und Endpunkt wählen. Umschalttaste halten: 45°-Raster."},
     room: {label: "Raum", command: "create_room", hint: "Raumkontur Punkt für Punkt zeichnen. Ab drei Punkten den ersten Punkt anklicken oder ESC drücken, um den Raum zu schließen."},
     roof: {label: "Dach", command: "create_roof", hint: "Dachfläche Punkt für Punkt zeichnen. Ersten Punkt erneut anklicken oder ESC drücken; Dachhaut, Sparren und Pfetten werden parametrisch berechnet."},
     line: {label: "Linie", command: "create_line", hint: "Zwei Punkte auf der Modellfläche wählen, um eine lokale Linie zu erzeugen."},
-    dimension: {label: "Maß", command: "create_dimension", hint: "Zwei Messpunkte wählen. Die Länge wird aus den Modellkoordinaten berechnet."},
+    dimension: {label: "Messen", command: "create_dimension", hint: "Messart wählen: Strecke mit zwei Punkten oder Fläche per Klick in einen geschlossenen Bereich."},
     section: {label: "Schnitt", command: "create_section_marker", hint: "Zwei Punkte wählen, um im Erdgeschoss eine Schnittmarke A–A anzulegen."},
     "parcel-grid": {label: "Grundstücksraster", hint: "Hellblaue Innenlinie ziehen, um das schräge Grenzraster je Grundstück zu verschieben."},
   };
@@ -450,6 +472,13 @@
       && !polygon.slice(1).some((hole) => pointInRing(point, hole)));
   }
 
+  function isTransientMeasurementPrimitive(primitive) {
+    const metadata = primitive?.metadata || {};
+    const label = String(metadata.label || "").toLowerCase();
+    return primitive?.style_ref === "dimension"
+      && (metadata.source === "local_cad_command" || label.includes("lokale maßkette") || label.includes("lokale masskette"));
+  }
+
   function visibleViewportPrimitives(viewport) {
     // The Core projection is already masked against the selected parcels.
     // A second client-side centre-point test incorrectly removed complete
@@ -487,6 +516,7 @@
       };
     }).filter((primitive) => {
       if (state.hiddenElementRefs.has(primitive.primitive_ref)) return false;
+      if (isTransientMeasurementPrimitive(primitive)) return false;
       const primitiveStoreyId = String(
         primitive.metadata?.storey_id
         || primitive.metadata?.storeyId
@@ -669,11 +699,10 @@
   }
 
   function showMessage(message, timeout = 3400) {
-    const box = document.getElementById("workspace-message");
-    box.textContent = message;
-    box.hidden = false;
+    // Der Status bleibt für Diagnostik verfügbar, überlagert den Zeichenbereich aber nicht mehr.
+    app.dataset.lastStatus = String(message || "");
     window.clearTimeout(showMessage.timer);
-    showMessage.timer = window.setTimeout(() => { box.hidden = true; }, timeout);
+    showMessage.timer = window.setTimeout(() => { delete app.dataset.lastStatus; }, timeout);
   }
 
   function buildingDraftStorageKey(input = state.input) {
@@ -1710,6 +1739,8 @@
   function northUpPrimitive(primitive) {
     const source = primitive?.geometry || {};
     const geometry = {...source};
+    if (Array.isArray(source.reference_start_mm)) geometry.reference_start_mm = modelPointToNorthUp(source.reference_start_mm);
+    if (Array.isArray(source.reference_end_mm)) geometry.reference_end_mm = modelPointToNorthUp(source.reference_end_mm);
     let primitiveType = primitive.primitive_type;
     if (primitiveType === "room") {
       if (normalizedPolygonPoints(source.points_mm).length >= 3) {
@@ -2021,6 +2052,8 @@
       state.planOverview = true;
       state.pointEditMode = false;
       state.pointDrag = null;
+      state.selectedPrimitive = null;
+      document.getElementById("door-options").hidden = true;
       selectTool("select");
       state.camera = planOverviewCamera();
       showMessage("Planansicht aktiv · Planart und Planteil können rechts ausgewählt werden.");
@@ -2332,8 +2365,11 @@
       .filter((primitive) => state.visibleLayers.has(primitive.layer_ref))
       .sort((left, right) => (renderStyleOrder[left.style_ref] ?? 50) - (renderStyleOrder[right.style_ref] ?? 50))
       .forEach((primitive) => layer.append(renderPrimitive(primitive)));
+    appendPlanAxes(layer, bounds);
     if (state.automaticDimensionResults.has(planAutomationKey())) renderAutomaticDimensions(layer);
     else appendExteriorDimensions(layer, bounds);
+    appendPlanSectionMarkers(layer, bounds);
+    appendPlanLevelMarker(layer, bounds);
     renderAutomaticSection(layer);
     group.append(layer);
   }
@@ -2356,8 +2392,19 @@
     const ty = rect.y + rect.height / 2 - (minY + maxY) / 2 * scale;
     const layer = svgEl("g", {transform: `translate(${tx} ${ty}) scale(${scale})`, "pointer-events": "none"});
     rings.forEach((ring) => layer.append(svgEl("polygon", {points: ring.map((point) => point.join(",")).join(" "), class: "plan-symbol-line"})));
-    if (buildingBounds) layer.append(svgEl("rect", {x: buildingBounds.x, y: buildingBounds.y, width: buildingBounds.width, height: buildingBounds.height, class: "plan-symbol-accent"}));
-    group.append(layer, svgEl("text", {x: rect.x + rect.width - 580, y: rect.y + 620, class: "plan-north-arrow"}, "N↑"));
+    if (buildingBounds) {
+      layer.append(
+        svgEl("rect", {x: buildingBounds.x, y: buildingBounds.y, width: buildingBounds.width, height: buildingBounds.height, class: "plan-site-building"}),
+        svgEl("line", {x1: buildingBounds.x, y1: buildingBounds.y - 500, x2: buildingBounds.x + buildingBounds.width, y2: buildingBounds.y - 500, class: "plan-dimension-line"}),
+        svgEl("text", {x: buildingBounds.x + buildingBounds.width / 2, y: buildingBounds.y - 680, class: "plan-dimension-text"}, formatPlanDimension(buildingBounds.width)),
+      );
+    }
+    group.append(
+      layer,
+      svgEl("circle", {cx: rect.x + rect.width - 720, cy: rect.y + 700, r: 360, class: "plan-north-circle"}),
+      svgEl("path", {d: `M ${rect.x + rect.width - 720} ${rect.y + 250} L ${rect.x + rect.width - 900} ${rect.y + 880} L ${rect.x + rect.width - 720} ${rect.y + 760} L ${rect.x + rect.width - 540} ${rect.y + 880} Z`, class: "plan-north-symbol"}),
+      svgEl("text", {x: rect.x + rect.width - 720, y: rect.y + 150, class: "plan-north-arrow"}, "N"),
+    );
   }
 
   function renderBuildingSchematic(group, rect, kind = "elevation") {
@@ -2384,70 +2431,234 @@
     const storeys = [...(state.building?.storeys || [])].filter((storey) => storey.elevationMm >= 0).sort((a, b) => a.elevationMm - b.elevationMm);
     const count = Math.max(1, storeys.length);
     const wallTop = y - height * 0.72;
-    group.append(svgEl("rect", {x, y: wallTop, width, height: y - wallTop, class: "plan-symbol-fill"}));
+    group.append(
+      svgEl("line", {x1: x - width * .08, y1: y, x2: x + width * 1.08, y2: y, class: "plan-ground-line"}),
+      svgEl("rect", {x, y: wallTop, width, height: y - wallTop, class: kind === "section" ? "plan-section-cut" : "plan-symbol-fill"}),
+    );
     for (let index = 1; index < count; index += 1) {
       const lineY = y - (y - wallTop) * index / count;
       group.append(svgEl("line", {x1: x, y1: lineY, x2: x + width, y2: lineY, class: "plan-symbol-line"}));
+      group.append(svgEl("text", {x: x - 360, y: lineY + 70, class: "plan-level-text plan-level-text-end"}, `+${(index * (activeBuildingStorey()?.heightMm || 2770) / 1000).toFixed(2).replace(".", ",")}`));
+    }
+    if (kind === "elevation") {
+      const rows = Math.max(1, count);
+      for (let storeyIndex = 0; storeyIndex < rows; storeyIndex += 1) {
+        const rowBottom = y - (y - wallTop) * storeyIndex / rows;
+        const rowTop = y - (y - wallTop) * (storeyIndex + 1) / rows;
+        [0.16, .38, .62, .84].forEach((ratio, openingIndex) => {
+          const openingWidth = width * .095;
+          const openingHeight = (rowBottom - rowTop) * .48;
+          group.append(svgEl("rect", {
+            x: x + width * ratio - openingWidth / 2,
+            y: rowBottom - openingHeight - (rowBottom - rowTop) * .18,
+            width: openingWidth,
+            height: openingHeight,
+            class: openingIndex === 1 && storeyIndex === 0 ? "plan-elevation-door" : "plan-elevation-window",
+          }));
+        });
+      }
     }
     const roof = state.building?.roofType || "gable";
     if (roof === "flat") group.append(svgEl("line", {x1: x - 180, y1: wallTop, x2: x + width + 180, y2: wallTop, class: "plan-symbol-accent"}));
     else if (roof === "pent") group.append(svgEl("path", {d: `M ${x - 180} ${wallTop} L ${x + width + 180} ${wallTop - height * 0.22}`, class: "plan-symbol-accent"}));
     else group.append(svgEl("path", {d: `M ${x - 180} ${wallTop} L ${x + width / 2} ${wallTop - height * 0.28} L ${x + width + 180} ${wallTop}`, class: "plan-symbol-accent"}));
     if (kind === "section") {
-      group.append(svgEl("line", {x1: x + width * 0.18, y1: wallTop, x2: x + width * 0.18, y2: y, class: "plan-symbol-accent"}));
+      group.append(
+        svgEl("rect", {x: x + width * .08, y: y, width: width * .84, height: height * .08, class: "plan-foundation"}),
+        svgEl("line", {x1: x + width * 0.18, y1: wallTop, x2: x + width * 0.18, y2: y, class: "plan-symbol-accent"}),
+        svgEl("line", {x1: x + width * 0.82, y1: wallTop, x2: x + width * 0.82, y2: y, class: "plan-symbol-accent"}),
+        svgEl("text", {x: x + width * .5, y: y + height * .13, class: "plan-section-caption"}, "SCHNITT A–A · OKFF ±0,00"),
+      );
+    }
+  }
+
+  function renderPlanDetails(group, rect) {
+    const domain = activePlanProfile().domain || "hochbau";
+    const columns = 3;
+    const gap = 360;
+    const width = (rect.width - gap * (columns - 1)) / columns;
+    for (let index = 0; index < columns; index += 1) {
+      const x = rect.x + index * (width + gap);
+      group.append(svgEl("rect", {x, y: rect.y, width, height: rect.height, class: "plan-detail-frame"}));
+      if (domain === "hochbau") {
+        if (index === 0) {
+          group.append(
+            svgEl("rect", {x: x + width * .35, y: rect.y + rect.height * .12, width: width * .3, height: rect.height * .7, class: "plan-section-cut"}),
+            svgEl("line", {x1: x + width * .12, y1: rect.y + rect.height * .55, x2: x + width * .88, y2: rect.y + rect.height * .55, class: "window-glazing"}),
+          );
+        } else if (index === 1) {
+          group.append(
+            svgEl("line", {x1: x + width * .18, y1: rect.y + rect.height * .78, x2: x + width * .18, y2: rect.y + rect.height * .25, class: "door-leaf"}),
+            svgEl("path", {d: `M ${x + width * .18} ${rect.y + rect.height * .78} A ${width * .52} ${width * .52} 0 0 1 ${x + width * .7} ${rect.y + rect.height * .78}`, class: "door-swing"}),
+          );
+        } else {
+          for (let row = 0; row < 7; row += 1) group.append(svgEl("line", {x1: x + width * .18, y1: rect.y + rect.height * (.2 + row * .085), x2: x + width * .82, y2: rect.y + rect.height * (.2 + row * .085), class: "plan-detail-layer"}));
+        }
+      } else {
+        group.append(svgEl("path", {d: `M ${x + width * .12} ${rect.y + rect.height * .72} Q ${x + width * .5} ${rect.y + rect.height * .15} ${x + width * .88} ${rect.y + rect.height * .72}`, class: "plan-symbol-accent"}));
+        for (let bar = 0; bar < 5; bar += 1) group.append(svgEl("line", {x1: x + width * (.24 + bar * .13), y1: rect.y + rect.height * .38, x2: x + width * (.24 + bar * .13), y2: rect.y + rect.height * .72, class: "plan-rebar-line"}));
+      }
+      group.append(
+        svgEl("text", {x: x + 220, y: rect.y + 390, class: "plan-detail-title"}, domain === "hochbau" ? ["FENSTER / LAIBUNG", "TÜRANSCHLAG", "WANDAUFBAU"][index] : `DETAIL ${index + 1}`),
+        svgEl("text", {x: x + width - 220, y: rect.y + rect.height - 220, class: "plan-detail-scale"}, "M 1:10"),
+      );
     }
   }
 
   function renderPlanTitleBlock(group, rect) {
     const phase = activePlanRules().phases?.[state.planPhase];
+    const profile = activePlanProfile();
+    const domain = profile.domain || "hochbau";
     const projectName = state.input?.document?.project_ref || projectContext.projectPublicId || "VECTOPLAN Projekt";
-    const rows = [
-      ["PROJEKT", projectName],
-      ["PLAN", `${phase?.label || "Plan"} · ${planContentLabel(state.planContent === "overview" ? "floor_plans" : state.planContent)}`],
-      ["BAUWERK", activePlanProfile().label],
-      ["MASSSTAB", state.planContent === "site_plan" ? "1:500" : "1:100"],
+    const storeyName = activeBuildingStorey()?.name || "Erdgeschoss";
+    const phaseLabel = String(phase?.label || "Plan").toUpperCase();
+    const contentLabel = planContentLabel(state.planContent === "overview" ? "floor_plans" : state.planContent);
+    const planNumber = `${String(state.planPhase || "plan").toUpperCase()}-${String(activeBuildingStorey()?.id || "EG").slice(0, 8).toUpperCase()}-01`;
+    const date = new Intl.DateTimeFormat("de-DE").format(new Date());
+    const concise = (value, limit = 42) => {
+      const text = String(value || "–");
+      return text.length > limit ? `${text.slice(0, Math.max(1, limit - 1))}…` : text;
+    };
+    const contentRows = domain === "tiefbau"
+      ? [["Lageplan", "1:500"], ["Längsschnitt", "1:100"], ["Querprofile", "1:100"], ["Entwässerung", "1:100"]]
+      : domain === "ingenieurbau"
+        ? [["Übersicht / Draufsicht", "1:100"], ["Schnitte", "1:50"], [state.planPhase === "execution" ? "Schal- und Bewehrungsplan" : "Ansichten", "1:50"], ["Details", "1:10"]]
+        : [[`Grundriss ${storeyName}`, "1:100"], ["Schnitt A–A / B–B", "1:100"], ["Ansichten", "1:100"], [state.planPhase === "execution" ? "Ausführungsdetails" : "Lageplan", state.planPhase === "execution" ? "1:10" : "1:500"]];
+    const brandWidth = Math.max(440, rect.width * .085);
+    const mainX = rect.x + brandWidth;
+    const mainWidth = rect.width - brandWidth;
+    const pad = Math.max(150, mainWidth * .045);
+    const y0 = rect.y;
+    const headerBottom = y0 + rect.height * .17;
+    const projectBottom = y0 + rect.height * .36;
+    const contentsBottom = y0 + rect.height * .61;
+    const revisionBottom = y0 + rect.height * .79;
+    const footerBottom = y0 + rect.height * .965;
+
+    group.append(
+      svgEl("rect", {x: rect.x, y: rect.y, width: rect.width, height: rect.height, class: "plan-title-block"}),
+      svgEl("rect", {x: rect.x, y: rect.y, width: brandWidth, height: rect.height, class: "plan-title-brand-strip"}),
+      svgEl("rect", {x: rect.x, y: rect.y, width: brandWidth, height: rect.height * .12, class: "plan-title-brand-dark"}),
+      svgEl("text", {x: rect.x + brandWidth / 2, y: rect.y + rect.height * .06, class: "plan-title-brand-mark"}, "VP"),
+      svgEl("text", {x: mainX + pad, y: y0 + rect.height * .038, class: "plan-title-phase"}, phaseLabel),
+      svgEl("line", {x1: mainX + pad, y1: y0 + rect.height * .055, x2: rect.x + rect.width - pad, y2: y0 + rect.height * .055, class: "plan-title-orange-rule"}),
+      svgEl("text", {x: mainX + pad, y: y0 + rect.height * .097, class: "plan-title-project-name"}, concise(projectName, 34)),
+      svgEl("text", {x: mainX + pad, y: y0 + rect.height * .131, class: "plan-title-project-subtitle"}, concise(`${profile.label} · ${contentLabel}`, 46)),
+      svgEl("text", {x: rect.x + rect.width - pad, y: y0 + rect.height * .155, class: "plan-title-wordmark"}, "VECTOPLAN | CAD"),
+    );
+
+    [headerBottom, projectBottom, contentsBottom, revisionBottom, footerBottom].forEach((y) => group.append(
+      svgEl("line", {x1: mainX, y1: y, x2: rect.x + rect.width, y2: y, class: "plan-title-grid-line"}),
+    ));
+    const verticalTabs = [
+      [headerBottom, projectBottom, "BAUVORHABEN"],
+      [projectBottom, contentsBottom, "PLANINHALT"],
+      [contentsBottom, revisionBottom, "ÄNDERUNGEN"],
+      [revisionBottom, footerBottom, "PLANANGABEN"],
     ];
-    const rowHeight = rect.height / rows.length;
-    rows.forEach(([label, value], index) => {
-      const rowY = rect.y + index * rowHeight;
+    verticalTabs.forEach(([startY, endY, label]) => {
+      const cy = (startY + endY) / 2;
       group.append(
-        svgEl("rect", {x: rect.x, y: rowY, width: rect.width, height: rowHeight, class: "plan-title-row"}),
-        svgEl("text", {x: rect.x + 260, y: rowY + rowHeight * 0.34, class: "plan-title-label"}, label),
-        svgEl("text", {x: rect.x + 260, y: rowY + rowHeight * 0.76, class: "plan-title-value"}, value),
+        svgEl("line", {x1: rect.x, y1: startY, x2: mainX, y2: startY, class: "plan-title-brand-divider"}),
+        svgEl("text", {x: rect.x + brandWidth * .54, y: cy, transform: `rotate(-90 ${rect.x + brandWidth * .54} ${cy})`, class: "plan-title-tab-label"}, label),
       );
     });
+
+    const projectRowHeight = (projectBottom - headerBottom) / 3;
+    [
+      ["PROJEKT", concise(projectName, 44)],
+      ["BAUWERK / BEREICH", `${profile.label} · ${storeyName}`],
+      ["PLANSTAND", `${phase?.label || "Plan"} · automatisch zusammengestellt`],
+    ].forEach(([label, value], index) => {
+      const y = headerBottom + projectRowHeight * index;
+      if (index) group.append(svgEl("line", {x1: mainX, y1: y, x2: rect.x + rect.width, y2: y, class: "plan-title-grid-line plan-title-grid-line-light"}));
+      group.append(
+        svgEl("text", {x: mainX + pad, y: y + projectRowHeight * .31, class: "plan-title-label"}, label),
+        svgEl("text", {x: mainX + pad, y: y + projectRowHeight * .72, class: "plan-title-value"}, concise(value, 48)),
+      );
+    });
+
+    group.append(
+      svgEl("text", {x: mainX + pad, y: projectBottom + (contentsBottom - projectBottom) * .12, class: "plan-title-section-heading"}, "PLANINHALT / MASSSTÄBE"),
+      svgEl("line", {x1: mainX + mainWidth * .76, y1: projectBottom, x2: mainX + mainWidth * .76, y2: contentsBottom, class: "plan-title-grid-line plan-title-grid-line-light"}),
+    );
+    const contentStartY = projectBottom + (contentsBottom - projectBottom) * .2;
+    const contentRowHeight = (contentsBottom - contentStartY) / contentRows.length;
+    contentRows.forEach(([label, scale], index) => {
+      const y = contentStartY + contentRowHeight * index;
+      group.append(
+        svgEl("text", {x: mainX + pad, y: y + contentRowHeight * .62, class: "plan-title-list-text"}, label),
+        svgEl("text", {x: rect.x + rect.width - pad, y: y + contentRowHeight * .62, class: "plan-title-list-scale"}, `M ${scale}`),
+      );
+    });
+
+    const revisionHeaderHeight = (revisionBottom - contentsBottom) * .22;
+    const revisionColumnX = [mainX, mainX + mainWidth * .18, mainX + mainWidth * .76, rect.x + rect.width];
+    revisionColumnX.slice(1, -1).forEach((x) => group.append(svgEl("line", {x1: x, y1: contentsBottom, x2: x, y2: revisionBottom, class: "plan-title-grid-line plan-title-grid-line-light"})));
+    group.append(
+      svgEl("text", {x: mainX + pad * .55, y: contentsBottom + revisionHeaderHeight * .68, class: "plan-title-table-heading"}, "DATUM"),
+      svgEl("text", {x: revisionColumnX[1] + pad * .55, y: contentsBottom + revisionHeaderHeight * .68, class: "plan-title-table-heading"}, "ÄNDERUNGSVERMERK"),
+      svgEl("text", {x: revisionColumnX[2] + pad * .55, y: contentsBottom + revisionHeaderHeight * .68, class: "plan-title-table-heading"}, "GEZ."),
+    );
+    const revisionRowHeight = (revisionBottom - contentsBottom - revisionHeaderHeight) / 3;
+    for (let index = 0; index < 3; index += 1) {
+      const y = contentsBottom + revisionHeaderHeight + revisionRowHeight * index;
+      group.append(svgEl("line", {x1: mainX, y1: y, x2: rect.x + rect.width, y2: y, class: "plan-title-grid-line plan-title-grid-line-light"}));
+      if (index === 0) group.append(
+        svgEl("text", {x: mainX + pad * .55, y: y + revisionRowHeight * .65, class: "plan-title-table-value"}, date),
+        svgEl("text", {x: revisionColumnX[1] + pad * .55, y: y + revisionRowHeight * .65, class: "plan-title-table-value"}, "CAD-Arbeitsstand"),
+        svgEl("text", {x: revisionColumnX[2] + pad * .55, y: y + revisionRowHeight * .65, class: "plan-title-table-value"}, "VP"),
+      );
+    }
+
+    const footerMidX = mainX + mainWidth * .56;
+    group.append(
+      svgEl("line", {x1: footerMidX, y1: revisionBottom, x2: footerMidX, y2: footerBottom, class: "plan-title-grid-line plan-title-grid-line-light"}),
+      svgEl("text", {x: mainX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .23, class: "plan-title-label"}, "PLAN-NR."),
+      svgEl("text", {x: mainX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .48, class: "plan-title-number"}, planNumber),
+      svgEl("text", {x: mainX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .73, class: "plan-title-label"}, "MASSSTAB"),
+      svgEl("text", {x: mainX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .91, class: "plan-title-value"}, state.planContent === "site_plan" ? "1:500" : "1:100"),
+      svgEl("text", {x: footerMidX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .23, class: "plan-title-label"}, "DATUM / GEZEICHNET"),
+      svgEl("text", {x: footerMidX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .48, class: "plan-title-value"}, `${date} · VECTOPLAN`),
+      svgEl("text", {x: footerMidX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .73, class: "plan-title-label"}, "STATUS"),
+      svgEl("text", {x: footerMidX + pad, y: revisionBottom + (footerBottom - revisionBottom) * .91, class: "plan-title-value"}, "CAD · geprüft"),
+      svgEl("rect", {x: rect.x, y: footerBottom, width: rect.width, height: rect.height - (footerBottom - rect.y), class: "plan-title-footer-dark"}),
+      svgEl("path", {d: `M ${rect.x} ${rect.y + rect.height} L ${rect.x + rect.width * .42} ${footerBottom} L ${rect.x + rect.width * .68} ${footerBottom} L ${rect.x + rect.width * .26} ${rect.y + rect.height} Z`, class: "plan-title-footer-orange"}),
+      svgEl("text", {x: rect.x + rect.width - pad, y: rect.y + rect.height * .988, class: "plan-title-footer-wordmark"}, "VECTOPLAN"),
+    );
   }
 
   function renderPlanContent(group, content, rect) {
     if (content === "floor_plans") renderPlanFloorPlan(group, rect);
     else if (["site_plan", "alignment_plan", "drainage_plan"].includes(content)) renderPlanSitePlan(group, rect);
     else if (content === "elevations") renderBuildingSchematic(group, rect, "elevation");
-    else if (["sections", "longitudinal_section", "cross_sections", "formwork_plan", "reinforcement_plan", "details"].includes(content)) renderBuildingSchematic(group, rect, "section");
+    else if (content === "details") renderPlanDetails(group, rect);
+    else if (["sections", "longitudinal_section", "cross_sections", "formwork_plan", "reinforcement_plan"].includes(content)) renderBuildingSchematic(group, rect, "section");
     else if (content === "title_block") renderPlanTitleBlock(group, rect);
   }
 
   function planOverviewTiles() {
     const domain = activePlanProfile().domain || "hochbau";
     if (domain === "tiefbau") return [
-      ["site_plan", {x: 1200, y: 2450, width: 25200, height: 15100}],
-      ["longitudinal_section", {x: 27000, y: 2450, width: 13200, height: 7100}],
-      ["cross_sections", {x: 27000, y: 9950, width: 13200, height: 7600}],
-      ["drainage_plan", {x: 1200, y: 17950, width: 25200, height: 9000}],
-      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+      ["site_plan", {x: 1200, y: 2450, width: 21000, height: 15100}],
+      ["longitudinal_section", {x: 22600, y: 2450, width: 10850, height: 7100}],
+      ["cross_sections", {x: 22600, y: 9950, width: 10850, height: 7600}],
+      ["drainage_plan", {x: 1200, y: 17950, width: 32250, height: 9000}],
+      ["title_block", {x: 33800, y: 2450, width: 6400, height: 24500}],
     ];
     if (domain === "ingenieurbau") return [
-      ["floor_plans", {x: 1200, y: 2450, width: 25200, height: 15100}],
-      ["elevations", {x: 27000, y: 2450, width: 13200, height: 7100}],
-      ["cross_sections", {x: 27000, y: 9950, width: 13200, height: 7600}],
-      [state.planPhase === "execution" ? "formwork_plan" : "sections", {x: 1200, y: 17950, width: 25200, height: 9000}],
-      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+      ["floor_plans", {x: 1200, y: 2450, width: 21000, height: 15100}],
+      ["elevations", {x: 22600, y: 2450, width: 10850, height: 7100}],
+      ["cross_sections", {x: 22600, y: 9950, width: 10850, height: 7600}],
+      [state.planPhase === "execution" ? "formwork_plan" : "sections", {x: 1200, y: 17950, width: 32250, height: 9000}],
+      ["title_block", {x: 33800, y: 2450, width: 6400, height: 24500}],
     ];
     return [
-      ["floor_plans", {x: 1200, y: 2450, width: 25200, height: 15100}],
-      [state.planPhase === "execution" ? "details" : "site_plan", {x: 27000, y: 2450, width: 13200, height: 7100}],
-      ["elevations", {x: 27000, y: 9950, width: 13200, height: 7600}],
-      ["sections", {x: 1200, y: 17950, width: 25200, height: 9000}],
-      ["title_block", {x: 27000, y: 17950, width: 13200, height: 9000}],
+      ["floor_plans", {x: 1200, y: 2450, width: 21000, height: 15100}],
+      [state.planPhase === "execution" ? "details" : "site_plan", {x: 22600, y: 2450, width: 10850, height: 7100}],
+      ["elevations", {x: 22600, y: 9950, width: 10850, height: 7600}],
+      ["sections", {x: 1200, y: 17950, width: 32250, height: 9000}],
+      ["title_block", {x: 33800, y: 2450, width: 6400, height: 24500}],
     ];
   }
 
@@ -2468,14 +2679,21 @@
     if (state.planContent === "overview") {
       const tiles = planOverviewTiles();
       tiles.forEach(([content, tileRect]) => {
+        if (content === "title_block") {
+          renderPlanTitleBlock(group, tileRect);
+          return;
+        }
         const contentRect = planTile(group, tileRect, planContentLabel(content), content === "floor_plans" ? (activeBuildingStorey()?.name || "") : "");
         renderPlanContent(group, content, contentRect);
       });
     } else {
       const tileRect = {x: 1200, y: 2450, width: 39000, height: 24500};
       const selectedOption = planViewOptions().find((option) => option.value === state.planViewSelection);
-      const contentRect = planTile(group, tileRect, planContentLabel(state.planContent), selectedOption?.label || "");
-      renderPlanContent(group, state.planContent, contentRect);
+      if (state.planContent === "title_block") renderPlanTitleBlock(group, tileRect);
+      else {
+        const contentRect = planTile(group, tileRect, planContentLabel(state.planContent), selectedOption?.label || "");
+        renderPlanContent(group, state.planContent, contentRect);
+      }
     }
     svg.append(group);
   }
@@ -2518,14 +2736,33 @@
     slabPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 420, class: "slab-hatch-line"}));
     const roofPattern = svgEl("pattern", {id: "cad-roof-hatch", width: 620, height: 620, patternUnits: "userSpaceOnUse", patternTransform: "rotate(-45)"});
     roofPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 620, class: "roof-hatch-line"}));
-    const wallPattern = svgEl("pattern", {id: "cad-wall-hatch", width: 90, height: 90, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
+    const wallPattern = svgEl("pattern", {id: "cad-wall-hatch", width: 72, height: 72, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
     wallPattern.append(
-      svgEl("rect", {x: 0, y: 0, width: 90, height: 90, class: "wall-hatch-background"}),
-      svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 90, class: "wall-hatch-line"}),
+      svgEl("rect", {x: 0, y: 0, width: 72, height: 72, class: "wall-hatch-background"}),
+      svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 72, class: "wall-hatch-line"}),
+    );
+    const concretePattern = svgEl("pattern", {id: "cad-wall-hatch-concrete", width: 150, height: 150, patternUnits: "userSpaceOnUse"});
+    concretePattern.append(
+      svgEl("rect", {x: 0, y: 0, width: 150, height: 150, class: "wall-hatch-background"}),
+      svgEl("circle", {cx: 28, cy: 34, r: 7, class: "wall-concrete-grain"}),
+      svgEl("circle", {cx: 103, cy: 82, r: 5, class: "wall-concrete-grain"}),
+      svgEl("path", {d: "M 8 122 l 24 -15 M 70 22 l 20 -12 M 118 139 l 20 -13", class: "wall-concrete-stroke"}),
+    );
+    const insulatedPattern = svgEl("pattern", {id: "cad-wall-hatch-insulated", width: 180, height: 90, patternUnits: "userSpaceOnUse"});
+    insulatedPattern.append(
+      svgEl("rect", {x: 0, y: 0, width: 180, height: 90, class: "wall-hatch-background"}),
+      svgEl("path", {d: "M 0 45 Q 22 4 45 45 T 90 45 T 135 45 T 180 45", class: "wall-insulation-line"}),
+    );
+    const drywallPattern = svgEl("pattern", {id: "cad-wall-hatch-drywall", width: 120, height: 120, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
+    drywallPattern.append(
+      svgEl("rect", {x: 0, y: 0, width: 120, height: 120, class: "wall-hatch-background"}),
+      svgEl("line", {x1: 0, y1: 20, x2: 0, y2: 100, class: "wall-drywall-line"}),
     );
     const wallDraftPattern = svgEl("pattern", {id: "cad-wall-draft-hatch", width: 90, height: 90, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
     wallDraftPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 90, class: "draft-wall-hatch-line"}));
-    defs.append(slabPattern, roofPattern, wallPattern, wallDraftPattern);
+    const sectionPattern = svgEl("pattern", {id: "cad-section-hatch", width: 180, height: 180, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)"});
+    sectionPattern.append(svgEl("line", {x1: 0, y1: 0, x2: 0, y2: 180, class: "plan-section-hatch-line"}));
+    defs.append(slabPattern, roofPattern, wallPattern, concretePattern, insulatedPattern, drywallPattern, wallDraftPattern, sectionPattern);
     svg.append(defs);
     if (state.planOverview) {
       renderPlanWorkspace();
@@ -2554,7 +2791,10 @@
     renderWorldSelection();
     renderPointModifyHandles();
     renderPendingDrawSegments();
+    renderMeasurementResults();
     renderDraft();
+    renderCoordinatePreview();
+    renderPointTrackingGuides();
     renderCrosshair();
   }
 
@@ -2581,6 +2821,7 @@
       if (primitive.style_ref === "door") node = renderDoorPrimitive(primitive);
       else if (primitive.style_ref === "window") node = renderWindowPrimitive(primitive);
       else if (primitive.style_ref === "stair") node = renderStairPrimitive(primitive);
+      else if (primitive.style_ref === "wall-cut") node = renderWallPolygonPrimitive(primitive);
       else node = svgEl("polygon", {points: geometry.points_mm.map((point) => point.join(",")).join(" ")});
     } else if (primitive.primitive_type === "thick_path") {
       node = renderThickPathPrimitive(primitive);
@@ -2603,6 +2844,7 @@
     node = svgEl("g");
     node.append(visual);
     node.classList.add("primitive", `primitive-${primitive.style_ref || "line"}`);
+    if (primitive.style_ref === "wall-cut") node.classList.add(`wall-material-${wallMaterialKind(primitive)}`);
     node.dataset.elementRef = primitive.primitive_ref;
     node.dataset.layer = primitive.layer_ref;
     const primitiveStoreyMode = primitive.metadata?.storey_display_mode || "red";
@@ -2691,6 +2933,53 @@
     return context.plan_representation || primitive?.metadata?.plan_representation || {};
   }
 
+  function wallMaterialKind(primitive) {
+    const context = primitive?.metadata?.library_context || {};
+    const descriptor = [
+      primitive?.metadata?.label,
+      primitive?.metadata?.material,
+      context.family_ref,
+      context.variant_ref,
+      context.label,
+      context.material,
+      context.category,
+      context.subcategory,
+    ].filter(Boolean).join(" ").toLowerCase();
+    if (/brandwand|firewall|feuerwiderstand/.test(descriptor)) return "firewall";
+    if (/trockenbau|drywall|gips|ständerwand|staenderwand/.test(descriptor)) return "drywall";
+    if (/dämm|daemm|insulat|zweischalig|double.wall|wdvs/.test(descriptor)) return "insulated";
+    if (/beton|concrete|stahlbeton/.test(descriptor)) return "concrete";
+    return "masonry";
+  }
+
+  function renderWallPolygonPrimitive(primitive) {
+    const points = polygonPoints(primitive);
+    if (points.length < 4) return polygonNode(points, `wall-body wall-material-${wallMaterialKind(primitive)}`);
+    const [outerStart, outerEnd, innerEnd, innerStart] = points;
+    const geometry = primitive.geometry || {};
+    const outline = [
+      `M ${outerStart[0]} ${outerStart[1]} L ${outerEnd[0]} ${outerEnd[1]}`,
+      geometry.wall_join_end ? `M ${innerEnd[0]} ${innerEnd[1]}` : `L ${innerEnd[0]} ${innerEnd[1]}`,
+      `L ${innerStart[0]} ${innerStart[1]}`,
+      geometry.wall_join_start ? "" : `L ${outerStart[0]} ${outerStart[1]}`,
+    ].filter(Boolean).join(" ");
+    const group = svgEl("g", {class: "wall-body"});
+    group.append(
+      polygonNode(points, `wall-body-fill wall-material-${wallMaterialKind(primitive)}`),
+      svgEl("path", {d: outline, class: "wall-body-outline"}),
+    );
+    return group;
+  }
+
+  function appendOpeningCutout(group, points, frame) {
+    group.append(polygonNode(points, "opening-cutout"));
+    if (!frame) return;
+    group.append(
+      svgEl("line", {x1: frame.a[0], y1: frame.a[1], x2: frame.d[0], y2: frame.d[1], class: "opening-jamb"}),
+      svgEl("line", {x1: frame.b[0], y1: frame.b[1], x2: frame.c[0], y2: frame.c[1], class: "opening-jamb"}),
+    );
+  }
+
   function doorConfigurationStorageKey(input = state.input) {
     const documentRef = input?.document?.document_ref || projectContext.coreProjectId || projectContext.projectPublicId || "sample";
     return `vectoplan-cad:door-configurations:${documentRef}`;
@@ -2717,9 +3006,12 @@
   function doorConfigurationFor(primitive) {
     const metadata = primitive?.metadata || {};
     const override = state.doorConfigurations.get(primitive?.primitive_ref) || {};
+    const dimensions = metadata.library_context?.dimensions || {};
     return {
       hingeSide: override.hingeSide || metadata.door_hinge_side || "left",
       swingSide: override.swingSide || metadata.door_swing_side || "positive",
+      widthMm: Number(override.widthMm) || Number(metadata.width_mm) || Number(dimensions.width_mm) || 885,
+      heightMm: Number(override.heightMm) || Number(metadata.height_mm) || Number(dimensions.height_mm) || 2010,
     };
   }
 
@@ -2741,6 +3033,8 @@
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-pressed", String(active));
     });
+    document.getElementById("door-width").value = Math.round(configuration.widthMm);
+    document.getElementById("door-height").value = Math.round(configuration.heightMm);
   }
 
   function updateSelectedDoorConfiguration(patch) {
@@ -2770,14 +3064,50 @@
     }
   }
 
+  function configuredOpeningPrimitive(primitive, widthMm) {
+    const frame = polygonFrame(primitive);
+    const requested = Number(widthMm);
+    if (!frame || !Number.isFinite(requested) || requested <= 0 || Math.abs(requested - frame.length) < .5) return primitive;
+    const centre = interpolatePoint(frame.a, frame.b, .5);
+    const unit = [(frame.b[0] - frame.a[0]) / frame.length, (frame.b[1] - frame.a[1]) / frame.length];
+    const depthVectorA = [frame.d[0] - frame.a[0], frame.d[1] - frame.a[1]];
+    const depthVectorB = [frame.c[0] - frame.b[0], frame.c[1] - frame.b[1]];
+    const a = [centre[0] - unit[0] * requested / 2, centre[1] - unit[1] * requested / 2];
+    const b = [centre[0] + unit[0] * requested / 2, centre[1] + unit[1] * requested / 2];
+    return {
+      ...primitive,
+      geometry: { ...primitive.geometry, points_mm: [
+        a,
+        b,
+        [b[0] + depthVectorB[0], b[1] + depthVectorB[1]],
+        [a[0] + depthVectorA[0], a[1] + depthVectorA[1]],
+      ]},
+    };
+  }
+
+  function appendOpeningConfigurationDimension(group, frame, widthMm, heightMm) {
+    if (!frame || frame.length <= 0) return;
+    const normal = [-(frame.b[1] - frame.a[1]) / frame.length, (frame.b[0] - frame.a[0]) / frame.length];
+    const offset = Math.max(150, Math.min(360, frame.length * .22));
+    const start = [frame.a[0] + normal[0] * offset, frame.a[1] + normal[1] * offset];
+    const end = [frame.b[0] + normal[0] * offset, frame.b[1] + normal[1] * offset];
+    group.append(
+      svgEl("line", {x1: frame.a[0], y1: frame.a[1], x2: start[0], y2: start[1], class: "opening-config-dimension"}),
+      svgEl("line", {x1: frame.b[0], y1: frame.b[1], x2: end[0], y2: end[1], class: "opening-config-dimension"}),
+      svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "opening-config-dimension"}),
+      svgEl("text", {x: (start[0] + end[0]) / 2, y: (start[1] + end[1]) / 2 - 45, class: "opening-config-dimension-text"}, `${Math.round(widthMm)} × ${Math.round(heightMm)} mm`),
+    );
+  }
+
   function renderDoorPrimitive(primitive) {
     const group = svgEl("g");
-    const frame = polygonFrame(primitive);
-    const points = polygonPoints(primitive);
-    const representation = primitivePlanRepresentation(primitive);
-    group.append(polygonNode(points, "architectural-symbol-base"));
-    if (!frame || frame.length <= 0) return group;
     const configuration = doorConfigurationFor(primitive);
+    const configuredPrimitive = configuredOpeningPrimitive(primitive, configuration.widthMm);
+    const frame = polygonFrame(configuredPrimitive);
+    const points = polygonPoints(configuredPrimitive);
+    const representation = primitivePlanRepresentation(primitive);
+    appendOpeningCutout(group, points, frame);
+    if (!frame || frame.length <= 0) return group;
     const hingeLeft = configuration.hingeSide !== "right";
     const hinge = hingeLeft ? frame.a : frame.b;
     const closedEnd = hingeLeft ? frame.b : frame.a;
@@ -2794,8 +3124,11 @@
     const sweepFlag = closedVector[0] * leafVector[1] - closedVector[1] * leafVector[0] >= 0 ? 1 : 0;
     group.append(svgEl("line", {x1: hinge[0], y1: hinge[1], x2: leafEnd[0], y2: leafEnd[1], class: "door-leaf"}));
     if (representation.show_swing !== false) group.append(svgEl("path", {d: `M ${closedEnd[0]} ${closedEnd[1]} A ${frame.length} ${frame.length} 0 0 ${sweepFlag} ${leafEnd[0]} ${leafEnd[1]}`, class: "door-swing"}));
-    group.append(svgEl("circle", {cx: hinge[0], cy: hinge[1], r: Math.max(35, frame.length * 0.035), class: "door-hinge"}));
+    group.append(svgEl("circle", {cx: hinge[0], cy: hinge[1], r: Math.max(8, Math.min(18, frame.length * 0.012)), class: "door-hinge"}));
     renderOpeningPlanLabels(group, primitive, frame, representation);
+    if (state.selectedPrimitive?.primitive_ref === primitive.primitive_ref) {
+      appendOpeningConfigurationDimension(group, frame, configuration.widthMm, configuration.heightMm);
+    }
     return group;
   }
 
@@ -2804,7 +3137,7 @@
     const frame = polygonFrame(primitive);
     const points = polygonPoints(primitive);
     const representation = primitivePlanRepresentation(primitive);
-    group.append(polygonNode(points, "architectural-symbol-base"));
+    appendOpeningCutout(group, points, frame);
     if (!frame) return group;
     const centreStart = interpolatePoint(frame.a, frame.d, 0.5);
     const centreEnd = interpolatePoint(frame.b, frame.c, 0.5);
@@ -2818,6 +3151,13 @@
     lines.forEach(({start, end}) => group.append(svgEl("line", {
       x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "window-glazing",
     })));
+    const leafCount = Math.max(1, Math.min(4, Number(representation.leaf_count) || (frame.length >= 1400 ? 2 : 1)));
+    for (let index = 1; index < leafCount; index += 1) {
+      const ratio = index / leafCount;
+      const outside = interpolatePoint(frame.a, frame.b, ratio);
+      const inside = interpolatePoint(frame.d, frame.c, ratio);
+      group.append(svgEl("line", {x1: outside[0], y1: outside[1], x2: inside[0], y2: inside[1], class: "window-mullion"}));
+    }
     renderOpeningPlanLabels(group, primitive, frame, representation);
     return group;
   }
@@ -2826,10 +3166,12 @@
     const group = svgEl("g");
     const frame = polygonFrame(primitive);
     const points = polygonPoints(primitive);
+    const configuration = primitive.metadata?.stair_parameters || {};
+    const treadCount = Math.max(3, Math.min(40, Number(configuration.tread_count) || 15));
     group.append(polygonNode(points, "architectural-symbol-base"));
     if (!frame) return group;
-    for (let index = 1; index < 9; index += 1) {
-      const ratio = index / 9;
+    for (let index = 1; index < treadCount; index += 1) {
+      const ratio = index / treadCount;
       const start = interpolatePoint(frame.a, frame.b, ratio);
       const end = interpolatePoint(frame.d, frame.c, ratio);
       group.append(svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "stair-tread"}));
@@ -2838,8 +3180,11 @@
     const startB = interpolatePoint(frame.d, frame.c, 0.16);
     const endA = interpolatePoint(frame.a, frame.b, 0.84);
     const endB = interpolatePoint(frame.d, frame.c, 0.84);
-    const arrowStart = interpolatePoint(startA, startB, 0.5);
-    const arrowEnd = interpolatePoint(endA, endB, 0.5);
+    let arrowStart = interpolatePoint(startA, startB, 0.5);
+    let arrowEnd = interpolatePoint(endA, endB, 0.5);
+    const reverse = configuration.direction === "down"
+      || (["top", "right"].includes(configuration.start_side) && !["top", "right"].includes(configuration.end_side));
+    if (reverse) [arrowStart, arrowEnd] = [arrowEnd, arrowStart];
     const arrowLength = Math.hypot(arrowEnd[0] - arrowStart[0], arrowEnd[1] - arrowStart[1]) || 1;
     const ux = (arrowEnd[0] - arrowStart[0]) / arrowLength;
     const uy = (arrowEnd[1] - arrowStart[1]) / arrowLength;
@@ -3098,6 +3443,109 @@
     return group;
   }
 
+  function measurementLengthParts(lengthMm) {
+    const roundedMillimetres = Math.max(0, Math.round((Number(lengthMm) || 0) / 5) * 5);
+    const wholeMetres = Math.floor(roundedMillimetres / 1000);
+    const millimetres = String(roundedMillimetres % 1000).padStart(3, "0");
+    const complete = `${wholeMetres},${millimetres}`;
+    return {
+      roundedMillimetres,
+      base: complete.slice(0, -1),
+      raised: complete.slice(-1),
+      full: `${complete} m`,
+    };
+  }
+
+  function measurementLengthLabel(lengthMm) {
+    return measurementLengthParts(lengthMm).full;
+  }
+
+  function measurementLengthText(x, y, lengthMm) {
+    const parts = measurementLengthParts(lengthMm);
+    const text = svgEl("text", {x, y, class: "measurement-result-text", "aria-label": parts.full});
+    text.append(document.createTextNode(parts.base));
+    text.append(svgEl("tspan", {class: "measurement-last-digit", "baseline-shift": "super"}, parts.raised));
+    text.append(document.createTextNode(" m"));
+    return text;
+  }
+
+  function renderMeasurementResults() {
+    if (!state.measurementResults.length) return;
+    state.measurementResults.forEach((measurement) => {
+      const group = svgEl("g", {class: "measurement-result-overlay", "data-measurement-id": measurement.id});
+      if (measurement.kind === "area") {
+        const points = normalizedPolygonPoints(measurement.points);
+        if (points.length < 3) return;
+        const calculation = polygonAreaAndCentroid(points);
+        group.append(
+          svgEl("polygon", {points: points.map((point) => point.join(",")).join(" "), class: "measurement-result-area"}),
+          svgEl("text", {x: calculation.centroid[0], y: calculation.centroid[1], class: "measurement-result-text"}, `${(calculation.areaMm2 / 1_000_000).toFixed(2)} m²`),
+        );
+      } else {
+        const [x1, y1] = measurement.start;
+        const [x2, y2] = measurement.end;
+        const length = Math.hypot(x2 - x1, y2 - y1) || 1;
+        const pixel = state.camera.width / Math.max(svg.clientWidth, 1);
+        const tick = Math.max(80, pixel * 7);
+        const nx = -(y2 - y1) / length * tick;
+        const ny = (x2 - x1) / length * tick;
+        group.append(
+          svgEl("line", {x1, y1, x2, y2, class: "measurement-result-line"}),
+          svgEl("line", {x1: x1 - nx, y1: y1 - ny, x2: x1 + nx, y2: y1 + ny, class: "measurement-result-tick"}),
+          svgEl("line", {x1: x2 - nx, y1: y2 - ny, x2: x2 + nx, y2: y2 + ny, class: "measurement-result-tick"}),
+          measurementLengthText(
+            (x1 + x2) / 2 + nx * 1.45,
+            (y1 + y2) / 2 + ny * 1.45,
+            length,
+          ),
+        );
+      }
+      svg.append(group);
+    });
+  }
+
+  function rememberLengthMeasurement(start, end) {
+    state.measurementResults = [{
+      id: `measure_${++state.measurementSequence}`,
+      kind: "length",
+      start: [...start],
+      end: [...end],
+    }];
+  }
+
+  function completeLengthMeasurement(start, end) {
+    rememberLengthMeasurement(start, end);
+    publishMeasurementToWorldEdit({
+      geometry: {
+        start_mm: northUpPointToModel(start),
+        end_mm: northUpPointToModel(end),
+      },
+      parameters: activeStoreyParameters(),
+    });
+    cancelDrawing(false);
+    renderPlan();
+  }
+
+  function rememberAreaMeasurement(points) {
+    const normalized = normalizedPolygonPoints(points);
+    if (normalized.length < 3 || polygonAreaAndCentroid(normalized).areaMm2 < 1) return false;
+    state.measurementResults = [{
+      id: `measure_${++state.measurementSequence}`,
+      kind: "area",
+      points: normalized.map((point) => [...point]),
+    }];
+    publishAreaMeasurementToWorldEdit(normalized);
+    return true;
+  }
+
+  function clearMeasurementResults(render = false) {
+    const hadMeasurements = state.measurementResults.length > 0;
+    state.measurementResults = [];
+    state.measurementDraftPoints = [];
+    if (render && hadMeasurements) renderPlan();
+    return hadMeasurements;
+  }
+
   function activeWallThicknessMm() {
     const dimensions = state.selectedLibraryVariant?.dimensions || state.selectedLibraryItem?.dimensions || {};
     return Number(dimensions.thickness_mm)
@@ -3111,21 +3559,23 @@
     const deltaY = end[1] - start[1];
     const length = Math.hypot(deltaX, deltaY);
     if (length <= 0) return null;
-    // Die gezeichnete Linie ist eine Wandkante. Der Wandkörper liegt immer
-    // links von der Zeichenrichtung: nach rechts = Außenkante, nach links = Innenkante.
-    const offset = [deltaY / length * thickness, -deltaX / length * thickness];
+    // Die gezeichnete Bezugslinie ist die tatsächliche Außenkante. Deshalb
+    // enden Körper und Linie exakt an denselben Eckpunkten. Die anschließende
+    // Szenen-Automation verschneidet die inneren Kanten eines Wandzugs.
+    const wallThickness = Math.max(1, thickness);
+    const normal = [-deltaY / length * wallThickness, deltaX / length * wallThickness];
     return {
       referenceStart: [...start],
       referenceEnd: [...end],
-      centreStart: [start[0] + offset[0] / 2, start[1] + offset[1] / 2],
-      centreEnd: [end[0] + offset[0] / 2, end[1] + offset[1] / 2],
+      centreStart: [start[0] + normal[0] / 2, start[1] + normal[1] / 2],
+      centreEnd: [end[0] + normal[0] / 2, end[1] + normal[1] / 2],
       bodyPoints: [
         [...start],
         [...end],
-        [end[0] + offset[0], end[1] + offset[1]],
-        [start[0] + offset[0], start[1] + offset[1]],
+        [end[0] + normal[0], end[1] + normal[1]],
+        [start[0] + normal[0], start[1] + normal[1]],
       ],
-      referenceRole: deltaX >= 0 ? "outside" : "inside",
+      referenceRole: "outer-edge",
     };
   }
 
@@ -3160,15 +3610,24 @@
   function renderDraft() {
     if (state.activeTool === "opening") {
       const host = state.openingHostPreview;
-      const placement = openingPlacement(host);
+      const placement = openingPlacement(host, state.openingPlacementConfiguration);
       if (!host || !placement) return;
+      const configuration = state.openingPlacementConfiguration;
       const primitive = {
         primitive_type: "polygon",
         style_ref: quickToolKindForItem(state.selectedLibraryItem) === "window" ? "window" : "door",
         geometry: {points_mm: placement.points},
+        metadata: {
+          door_hinge_side: configuration.hingeSide,
+          door_swing_side: configuration.swingSide,
+          sill_height_mm: configuration.sillHeightMm,
+          window_operation: configuration.operation,
+          library_context: {dimensions: {width_mm: configuration.widthMm, height_mm: configuration.heightMm, sill_height_mm: configuration.sillHeightMm}},
+        },
       };
       const group = svgEl("g", {class: "opening-host-preview", "data-host-wall-ref": host.primitiveRef});
       group.append(primitive.style_ref === "window" ? renderWindowPrimitive(primitive) : renderDoorPrimitive(primitive));
+      appendOpeningConfigurationDimension(group, polygonFrame(primitive), configuration.widthMm, configuration.heightMm);
       svg.append(group);
       return;
     }
@@ -3177,19 +3636,53 @@
     const end = state.drawCurrent.model;
     const group = svgEl("g");
     const closedRoofDraft = state.activeTool === "roof" && state.roofDraftClosed;
-    if (["room", "roof"].includes(state.activeTool)) {
-      const isRoof = state.activeTool === "roof";
-      const draftPoints = isRoof ? state.roofDraftPoints : state.roomDraftPoints;
-      const points = closedRoofDraft ? [...draftPoints] : [...draftPoints, end];
+    const areaMeasurement = state.activeTool === "dimension" && state.measurementMode === "area";
+    if (areaMeasurement) {
+      const closed = state.measurementDraftPoints.length >= 3 && state.snapTarget?.kind === "area-close";
+      const points = closed ? [...state.measurementDraftPoints] : [...state.measurementDraftPoints, end];
       if (points.length >= 3) {
-        group.append(polygonNode(points, isRoof ? "roof-draft-fill" : "room-draft-fill"));
         const calculation = polygonAreaAndCentroid(points);
-        group.append(svgEl("text", {
-          x: calculation.centroid[0], y: calculation.centroid[1], class: isRoof ? "roof-draft-area" : "room-draft-area",
-        }, `${isRoof ? "Dach · " : ""}${(calculation.areaMm2 / 1_000_000).toFixed(2)} m²`));
+        group.append(
+          svgEl("polygon", {points: points.map((point) => point.join(",")).join(" "), class: "measurement-area-draft"}),
+          svgEl("text", {x: calculation.centroid[0], y: calculation.centroid[1], class: "measurement-result-text"}, `${(calculation.areaMm2 / 1_000_000).toFixed(2)} m²`),
+        );
       }
       if (points.length >= 2) group.append(svgEl("polyline", {
-        points: (closedRoofDraft ? [...points, points[0]] : points).map((point) => point.join(",")).join(" "), class: isRoof ? "roof-draft-boundary" : "room-draft-boundary",
+        points: points.map((point) => point.join(",")).join(" "), class: "room-draft-boundary",
+      }));
+      state.measurementDraftPoints.forEach((point, index) => group.append(svgEl("circle", {
+        cx: point[0], cy: point[1], r: state.camera.width / Math.max(svg.clientWidth, 1) * (index === 0 ? 5.2 : 3.2),
+        class: `draft-preview-point${index === 0 ? " room-start-point" : ""}${index === 0 && state.snapTarget?.kind === "area-close" ? " is-close-target" : ""}`,
+      })));
+    } else if (["room", "roof"].includes(state.activeTool)) {
+      const isRoof = state.activeTool === "roof";
+      const isStair = !isRoof && quickToolKindForItem(state.selectedLibraryItem) === "stair";
+      const draftPoints = isRoof ? state.roofDraftPoints : state.roomDraftPoints;
+      const closedAreaDraft = closedRoofDraft || (isStair && Boolean(state.pendingStairDraft));
+      const points = closedAreaDraft ? [...draftPoints] : [...draftPoints, end];
+      if (points.length >= 3) {
+        group.append(polygonNode(points, isRoof ? "roof-draft-fill" : isStair ? "stair-draft-fill" : "room-draft-fill"));
+        const calculation = polygonAreaAndCentroid(points);
+        group.append(svgEl("text", {
+          x: calculation.centroid[0], y: calculation.centroid[1], class: isRoof ? "roof-draft-area" : isStair ? "stair-draft-area" : "room-draft-area",
+        }, `${isRoof ? "Dach · " : isStair ? "Treppe · " : ""}${(calculation.areaMm2 / 1_000_000).toFixed(2)} m²`));
+        if (isStair && state.pendingStairDraft) {
+          const pixel = state.camera.width / Math.max(svg.clientWidth, 1);
+          const gear = svgEl("g", {class: "stair-settings-target", role: "button", tabindex: "0", "aria-label": "Treppeneinstellungen öffnen"});
+          gear.append(
+            svgEl("circle", {cx: calculation.centroid[0], cy: calculation.centroid[1] + pixel * 30, r: pixel * 13, class: "stair-settings-gear"}),
+            svgEl("text", {x: calculation.centroid[0], y: calculation.centroid[1] + pixel * 30, class: "stair-settings-gear-text"}, "⚙"),
+          );
+          gear.addEventListener("pointerdown", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            document.getElementById("stair-options").hidden = false;
+          });
+          group.append(gear);
+        }
+      }
+      if (points.length >= 2) group.append(svgEl("polyline", {
+        points: (closedAreaDraft ? [...points, points[0]] : points).map((point) => point.join(",")).join(" "), class: isRoof ? "roof-draft-boundary" : "room-draft-boundary",
       }));
       draftPoints.forEach((point, index) => group.append(svgEl("circle", {
         cx: point[0], cy: point[1], r: state.camera.width / Math.max(svg.clientWidth, 1) * (index === 0 ? 5.2 : 3.2),
@@ -3210,8 +3703,8 @@
       group.append(svgEl("line", {x1: start[0], y1: start[1], x2: end[0], y2: end[1], class: "draft-preview"}));
     }
     const draftPointRadius = state.camera.width / Math.max(svg.clientWidth, 1) * 3.2;
-    if (!["room", "roof"].includes(state.activeTool)) group.append(svgEl("circle", {cx: start[0], cy: start[1], r: draftPointRadius, class: "draft-preview-point"}));
-    if (!closedRoofDraft) group.append(svgEl("circle", {cx: end[0], cy: end[1], r: draftPointRadius, class: "draft-preview-point"}));
+    if (!["room", "roof"].includes(state.activeTool) && !areaMeasurement) group.append(svgEl("circle", {cx: start[0], cy: start[1], r: draftPointRadius, class: "draft-preview-point"}));
+    if (!closedRoofDraft && !(state.pendingStairDraft && state.activeTool === "room")) group.append(svgEl("circle", {cx: end[0], cy: end[1], r: draftPointRadius, class: "draft-preview-point"}));
     svg.append(group);
   }
 
@@ -3227,6 +3720,182 @@
       svgEl("circle", {cx: x, cy: y, r: Math.max(2, pixel * (state.snapTarget ? 3.2 : 4.2)), class: `cad-crosshair-center${state.snapTarget ? " is-snapped" : ""}`}),
     );
     svg.append(group);
+  }
+
+  function renderPointTrackingGuides() {
+    if (!state.drawStart || !state.camera || (!state.pointTrackingAnchors.length && !state.alignmentGuide)) return;
+    const camera = state.camera;
+    const pixel = camera.width / Math.max(svg.clientWidth, 1);
+    const markerRadius = Math.max(3, pixel * 3.7);
+    const group = svgEl("g", {class: "cad-point-tracking", "aria-hidden": "true"});
+    const guide = state.alignmentGuide;
+    if (guide?.xAnchor) {
+      group.append(svgEl("line", {
+        x1: guide.xAnchor[0], y1: camera.y,
+        x2: guide.xAnchor[0], y2: camera.y + camera.height,
+        class: "cad-tracking-guide cad-tracking-guide--vertical",
+      }));
+    }
+    if (guide?.yAnchor) {
+      group.append(svgEl("line", {
+        x1: camera.x, y1: guide.yAnchor[1],
+        x2: camera.x + camera.width, y2: guide.yAnchor[1],
+        class: "cad-tracking-guide cad-tracking-guide--horizontal",
+      }));
+    }
+    state.pointTrackingAnchors.forEach((point) => group.append(svgEl("circle", {
+      cx: point[0], cy: point[1], r: markerRadius, class: "cad-tracking-anchor",
+    })));
+    svg.append(group);
+  }
+
+  function coordinateNumber(id) {
+    const raw = String(document.getElementById(id)?.value || "").trim().replace(",", ".");
+    const parsed = Number(raw);
+    return Number.isFinite(parsed) ? parsed : 0;
+  }
+
+  function updateCoordinateTarget() {
+    const reference = state.coordinateInput.reference
+      || state.drawStart?.model
+      || (state.cursorPoint ? [state.cursorPoint.x, state.cursorPoint.y] : null);
+    if (!reference) {
+      state.coordinateInput.target = null;
+      return null;
+    }
+    const dxMm = coordinateNumber("coordinate-x") * 1000;
+    const dyMm = coordinateNumber("coordinate-y") * 1000;
+    const dzMm = coordinateNumber("coordinate-z") * 1000;
+    state.coordinateInput.reference = [...reference];
+    state.coordinateInput.target = [reference[0] + dxMm, reference[1] - dyMm];
+    state.coordinateInput.elevationMm = dzMm;
+    schedulePlanRender();
+    return state.coordinateInput.target;
+  }
+
+  function resetCoordinateInput(render = true) {
+    document.querySelectorAll("[data-coordinate-axis]").forEach((input) => { input.value = ""; });
+    state.coordinateInput = {reference: null, target: null, elevationMm: 0, locked: false};
+    if (render) schedulePlanRender();
+  }
+
+  function trackCoordinateReference(point) {
+    if (!point || state.coordinateInput.locked) return;
+    const hasValue = [...document.querySelectorAll("[data-coordinate-axis]")]
+      .some((input) => String(input.value || "").trim() !== "");
+    if (hasValue) return;
+    state.coordinateInput.reference = [Number(point[0]), Number(point[1])];
+    state.coordinateInput.target = null;
+  }
+
+  function renderCoordinatePreview() {
+    const reference = state.coordinateInput.reference;
+    const target = state.coordinateInput.target;
+    if (!reference || !target || !state.camera) return;
+    const pixel = state.camera.width / Math.max(svg.clientWidth, 1);
+    const radius = Math.max(4, pixel * 4.2);
+    const group = svgEl("g", {class: "coordinate-preview"});
+    group.append(
+      svgEl("line", {x1: reference[0], y1: reference[1], x2: target[0], y2: target[1], class: "coordinate-preview-line"}),
+      svgEl("circle", {cx: reference[0], cy: reference[1], r: radius, class: "coordinate-preview-reference"}),
+      svgEl("circle", {cx: target[0], cy: target[1], r: radius, class: "coordinate-preview-target"}),
+      svgEl("text", {
+        x: (reference[0] + target[0]) / 2,
+        y: (reference[1] + target[1]) / 2 - pixel * 12,
+        class: "coordinate-preview-text",
+      }, `ΔX ${coordinateNumber("coordinate-x").toFixed(3)} m · ΔY ${coordinateNumber("coordinate-y").toFixed(3)} m · Z ${coordinateNumber("coordinate-z").toFixed(3)} m`),
+    );
+    svg.append(group);
+  }
+
+  function startDrawingAtCoordinate(target) {
+    const viewport = currentViewport();
+    if (!viewport || !target) return false;
+    state.cursorPoint = {x: target[0], y: target[1]};
+    state.lastPointerModel = state.cursorPoint;
+    state.snapTarget = {point: [...target], kind: "coordinate-input"};
+    if (["select", "parcel-grid"].includes(state.activeTool)) {
+      renderPlan();
+      return true;
+    }
+    if (state.activeTool === "opening") {
+      const host = wallHostCandidate({x: target[0], y: target[1]});
+      if (!host) return false;
+      state.openingHostPreview = host;
+      beginOpeningPlacement(host);
+      return true;
+    }
+    const measurementArea = state.activeTool === "dimension" && state.measurementMode === "area";
+    if (["room", "roof"].includes(state.activeTool) || measurementArea) {
+      const points = state.activeTool === "roof"
+        ? state.roofDraftPoints
+        : measurementArea ? state.measurementDraftPoints : state.roomDraftPoints;
+      points.push([...target]);
+      state.drawStart = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: [...target]};
+      state.drawStart.coordinateElevationMm = state.coordinateInput.elevationMm;
+      state.drawCurrent = {model: [...target]};
+      state.drawPointerRaw = null;
+      renderPlan();
+      return true;
+    }
+    if (!state.drawStart) {
+      resetPointTracking(false);
+      state.drawSessionId += 1;
+      state.drawStart = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: [...target]};
+      if (state.activeTool === "wall") {
+        state.wallChainStart = [...target];
+        state.wallChainSegmentCount = 0;
+      }
+      state.drawStart.coordinateElevationMm = state.coordinateInput.elevationMm;
+      state.drawCurrent = {model: [...target]};
+      state.drawPointerRaw = null;
+      renderPlan();
+      return true;
+    }
+    const start = state.drawStart;
+    const tool = state.activeTool;
+    if (Math.hypot(target[0] - start.model[0], target[1] - start.model[1]) < .5) return false;
+    if (tool === "wall") {
+      const closesWallChain = state.wallChainSegmentCount >= 2 && state.wallChainStart
+        && Math.hypot(target[0] - state.wallChainStart[0], target[1] - state.wallChainStart[1]) < 0.5;
+      if (closesWallChain) {
+        state.drawStart = null;
+        state.drawCurrent = null;
+        state.drawPointerRaw = null;
+        state.wallChainStart = null;
+        state.wallChainSegmentCount = 0;
+        resetPointTracking(false);
+      } else {
+        state.drawStart = {sheetRef: start.sheetRef, viewportRef: start.viewportRef, model: [...target], coordinateElevationMm: start.coordinateElevationMm};
+        state.drawCurrent = {model: [...target]};
+        state.drawPointerRaw = null;
+        state.wallChainSegmentCount += 1;
+      }
+    } else {
+      if (tool === "dimension" && state.measurementMode === "length") {
+        completeLengthMeasurement(start.model, target);
+        return true;
+      }
+      cancelDrawing(false);
+    }
+    enqueueDrawCommand(start, target, {
+      tool,
+      continuousWall: tool === "wall",
+      drawSessionId: state.drawSessionId,
+      coordinateElevationMm: start.coordinateElevationMm ?? state.coordinateInput.elevationMm,
+      libraryItem: cloneValue(state.selectedLibraryItem),
+      libraryVariant: cloneValue(state.selectedLibraryVariant),
+      storeyParameters: cloneValue(activeStoreyParameters()),
+    });
+    return true;
+  }
+
+  function confirmCoordinateInput(event = null) {
+    event?.preventDefault?.();
+    const target = updateCoordinateTarget();
+    if (!target) return;
+    const accepted = startDrawingAtCoordinate([...target]);
+    if (accepted) resetCoordinateInput(false);
   }
 
   function editablePointDescriptors(primitive) {
@@ -3835,6 +4504,11 @@
       showMessage("Bitte zuerst ein freigegebenes Element aus der Creative Library auswählen.");
       return;
     }
+    const previousTool = state.activeTool;
+    const hoveredReference = state.lastPointerModel
+      ? [Number(state.lastPointerModel.x), Number(state.lastPointerModel.y)]
+      : null;
+    if (previousTool === "dimension" && tool !== "dimension") clearMeasurementResults(true);
     state.activeTool = tool;
     if (tool !== "select") {
       state.pointEditMode = false;
@@ -3846,7 +4520,7 @@
       button.classList.toggle("is-active", active);
       button.setAttribute("aria-pressed", String(active));
     });
-    svg.classList.toggle("is-drawing", ["selection", "wall", "opening", "library", "room", "roof"].includes(tool));
+    svg.classList.toggle("is-drawing", ["selection", "wall", "opening", "library", "room", "roof", "dimension", "line", "section"].includes(tool));
     svg.classList.toggle("is-parcel-grid-editing", tool === "parcel-grid");
     const activeLabel = document.getElementById("active-tool-label");
     const toolHint = document.getElementById("tool-hint");
@@ -3861,20 +4535,50 @@
     if (variantField) variantField.hidden = !state.selectedLibraryItem || tool === "room";
     if (roomOptions) roomOptions.hidden = tool !== "room";
     if (roofOptions) syncRoofOptionsPanel();
+    syncMeasurementOptionsPanel();
     const createRoom = document.querySelector('[data-action="create-room"]');
     if (createRoom) createRoom.disabled = tool !== "room" || !state.worldSelection || projectContext.readOnly;
     syncQuickToolButtons();
+    resetCoordinateInput(false);
+    if (!['select', 'parcel-grid'].includes(tool)) {
+      if (hoveredReference?.every(Number.isFinite)) state.coordinateInput.reference = [...hoveredReference];
+      window.requestAnimationFrame(() => {
+        if (state.activeTool !== tool) return;
+        const xInput = document.getElementById("coordinate-x");
+        xInput?.focus({preventScroll: true});
+        xInput?.select();
+      });
+    }
+  }
+
+  function syncMeasurementOptionsPanel() {
+    const panel = document.getElementById("measurement-options");
+    const select = document.getElementById("measurement-mode");
+    const hint = document.getElementById("measurement-mode-hint");
+    if (panel) panel.hidden = state.activeTool !== "dimension";
+    if (select && select.value !== state.measurementMode) select.value = state.measurementMode;
+    if (hint) hint.textContent = state.measurementMode === "area"
+      ? "In einen geschlossenen Raum klicken oder eine Kontur zeichnen; erster Punkt/ESC schließt."
+      : "Zwei Punkte wählen; das Maß bleibt im Plan sichtbar.";
   }
 
   function cancelDrawing(render = true, invalidateSession = false) {
-    const hadDraft = Boolean(state.drawStart || state.roomDraftPoints.length || state.roofDraftPoints.length || state.openingHostPreview);
+    const hadDraft = Boolean(state.drawStart || state.roomDraftPoints.length || state.roofDraftPoints.length || state.measurementDraftPoints.length || state.openingHostPreview || state.pendingOpeningPlacement || state.pendingStairDraft);
     state.drawStart = null;
     state.drawCurrent = null;
     state.drawPointerRaw = null;
+    state.wallChainStart = null;
+    state.wallChainSegmentCount = 0;
     state.roomDraftPoints = [];
     state.roofDraftPoints = [];
+    state.measurementDraftPoints = [];
     state.roofDraftClosed = false;
     state.openingHostPreview = null;
+    state.pendingOpeningPlacement = null;
+    state.pendingStairDraft = null;
+    resetPointTracking(false);
+    document.getElementById("opening-placement-options")?.setAttribute("hidden", "");
+    document.getElementById("stair-options")?.setAttribute("hidden", "");
     if (invalidateSession) state.drawSessionId += 1;
     if (render && hadDraft) renderPlan();
   }
@@ -3888,7 +4592,17 @@
       return false;
     }
     const viewportRef = state.drawStart?.viewportRef || state.activeViewportRef;
-    const points = state.roomDraftPoints.map((point) => [...point]);
+    const points = normalizedPolygonPoints(state.roomDraftPoints).map((point) => [...point]);
+    if (quickToolKindForItem(state.selectedLibraryItem) === "stair") {
+      state.roomDraftPoints = points.map((point) => [...point]);
+      state.drawCurrent = {model: [...points[0]]};
+      state.drawPointerRaw = null;
+      state.pendingStairDraft = {sheetRef: state.activeSheetRef, viewportRef, points};
+      syncStairOptionsPanel();
+      document.getElementById("stair-options").hidden = false;
+      renderPlan();
+      return true;
+    }
     state.roomSubmissionPending = true;
     showMessage("Raum wird übernommen …");
     submitRoomCommand({
@@ -3900,6 +4614,71 @@
       renderPlan();
     });
     return true;
+  }
+
+  function completeAreaMeasurement() {
+    const points = normalizedPolygonPoints(state.measurementDraftPoints);
+    if (points.length < 3 || polygonAreaAndCentroid(points).areaMm2 < 1) {
+      showMessage("Die Flächenmessung benötigt mindestens drei verschiedene Punkte oder einen geschlossenen Raum.");
+      return false;
+    }
+    rememberAreaMeasurement(points);
+    state.measurementDraftPoints = [];
+    state.drawStart = null;
+    state.drawCurrent = null;
+    state.drawPointerRaw = null;
+    state.snapTarget = null;
+    renderPlan();
+    showMessage("Fläche gemessen und dauerhaft im Plan eingeblendet.");
+    return true;
+  }
+
+  function readStairConfiguration() {
+    return {
+      stairType: String(document.getElementById("stair-type")?.value || "straight"),
+      widthMm: Math.max(600, Math.min(4000, Number(document.getElementById("stair-width")?.value) || 1000)),
+      treadCount: Math.max(3, Math.min(40, Math.round(Number(document.getElementById("stair-treads")?.value) || 15))),
+      startSide: String(document.getElementById("stair-start-side")?.value || "bottom"),
+      endSide: String(document.getElementById("stair-end-side")?.value || "top"),
+      direction: String(document.getElementById("stair-direction")?.value || "up"),
+    };
+  }
+
+  function syncStairOptionsPanel() {
+    const config = state.stairConfiguration;
+    document.getElementById("stair-type").value = config.stairType;
+    document.getElementById("stair-width").value = Math.round(config.widthMm);
+    document.getElementById("stair-treads").value = Math.round(config.treadCount);
+    document.getElementById("stair-start-side").value = config.startSide;
+    document.getElementById("stair-end-side").value = config.endSide;
+    document.getElementById("stair-direction").value = config.direction;
+  }
+
+  function updateStairConfiguration() {
+    state.stairConfiguration = readStairConfiguration();
+    renderPlan();
+  }
+
+  function cancelStairConfiguration() {
+    state.pendingStairDraft = null;
+    document.getElementById("stair-options").hidden = true;
+    cancelDrawing(true, true);
+  }
+
+  function finishStairConfiguration() {
+    if (!state.pendingStairDraft || state.roomSubmissionPending) return;
+    state.stairConfiguration = readStairConfiguration();
+    state.roomSubmissionPending = true;
+    const draft = cloneValue(state.pendingStairDraft);
+    document.getElementById("stair-options").hidden = true;
+    submitRoomCommand(draft).catch(handleError).finally(() => {
+      state.roomSubmissionPending = false;
+      state.pendingStairDraft = null;
+      state.roomDraftPoints = [];
+      state.drawStart = null;
+      state.drawCurrent = null;
+      renderPlan();
+    });
   }
 
   function completeRoofDrawing() {
@@ -3940,7 +4719,9 @@
   }
 
   function handleCadEscape(event) {
-    if (event.key !== "Escape") return false;
+    if (!isCadEscapeEvent(event)) return false;
+    if (event.vectoplanCadEscapeHandled) return true;
+    event.vectoplanCadEscapeHandled = true;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -3951,8 +4732,18 @@
       return true;
     }
     if (state.activeTool === "room" && state.roomDraftPoints.length) {
+      if (state.pendingStairDraft) {
+        syncStairOptionsPanel();
+        document.getElementById("stair-options").hidden = false;
+        showMessage("Treppenbereich geschlossen · Einstellungen prüfen und speichern.");
+        return true;
+      }
       completeRoomDrawing();
       return true;
+    }
+    if (state.activeTool === "dimension") {
+      clearMeasurementResults(true);
+      state.measurementDraftPoints = [];
     }
     if (state.pointDrag?.before) restoreEditSnapshot(state.pointDrag.before);
     const endedTool = state.activeTool;
@@ -3973,8 +4764,12 @@
     return true;
   }
 
+  function isCadEscapeEvent(event) {
+    return event?.key === "Escape" || event?.key === "Esc" || event?.code === "Escape" || event?.keyCode === 27;
+  }
+
   function suppressCadEscapeKeyup(event) {
-    if (event.key !== "Escape") return;
+    if (!isCadEscapeEvent(event)) return;
     event.preventDefault();
     event.stopPropagation();
     event.stopImmediatePropagation();
@@ -4231,6 +5026,10 @@
       if (!isWallSnapPrimitive(primitive)) return;
       const geometry = primitive.geometry || {};
       if (primitive.primitive_type === "polygon") {
+        if (Array.isArray(geometry.reference_start_mm) && Array.isArray(geometry.reference_end_mm)) {
+          addPath(primitive, [geometry.reference_start_mm, geometry.reference_end_mm], geometry.thickness_mm || primitive.metadata?.thickness_mm);
+          return;
+        }
         const frame = polygonFrame(primitive);
         if (!frame) return;
         const start = interpolatePoint(frame.a, frame.d, 0.5);
@@ -4244,6 +5043,117 @@
       }
     });
     return result;
+  }
+
+  function closedFacesFromWallSegments(segments, joinTolerance = 25) {
+    const sourceSegments = (segments || []).filter((segment) => Array.isArray(segment?.start) && Array.isArray(segment?.end));
+    const splitPoints = sourceSegments.map((segment) => [[...segment.start], [...segment.end]]);
+    for (let firstIndex = 0; firstIndex < sourceSegments.length; firstIndex += 1) {
+      for (let secondIndex = firstIndex + 1; secondIndex < sourceSegments.length; secondIndex += 1) {
+        const intersection = finiteSegmentIntersection(sourceSegments[firstIndex], sourceSegments[secondIndex]);
+        if (!intersection) continue;
+        splitPoints[firstIndex].push(intersection);
+        splitPoints[secondIndex].push(intersection);
+      }
+    }
+    const graphSegments = sourceSegments.flatMap((segment, index) => {
+      const dx = segment.end[0] - segment.start[0];
+      const dy = segment.end[1] - segment.start[1];
+      const denominator = dx * dx + dy * dy || 1;
+      const ordered = splitPoints[index]
+        .map((point) => ({point, ratio: ((point[0] - segment.start[0]) * dx + (point[1] - segment.start[1]) * dy) / denominator}))
+        .sort((left, right) => left.ratio - right.ratio)
+        .filter((entry, entryIndex, entries) => entryIndex === 0
+          || Math.hypot(entry.point[0] - entries[entryIndex - 1].point[0], entry.point[1] - entries[entryIndex - 1].point[1]) > 0.5);
+      return ordered.slice(1).map((entry, entryIndex) => ({start: ordered[entryIndex].point, end: entry.point}));
+    });
+    const nodes = [];
+    const nodeIndexFor = (point) => {
+      let index = nodes.findIndex((node) => Math.hypot(node.point[0] - point[0], node.point[1] - point[1]) <= joinTolerance);
+      if (index >= 0) return index;
+      index = nodes.length;
+      nodes.push({point: [Number(point[0]), Number(point[1])], neighbours: new Set()});
+      return index;
+    };
+    graphSegments.forEach((segment) => {
+      const from = nodeIndexFor(segment.start);
+      const to = nodeIndexFor(segment.end);
+      if (from === to) return;
+      nodes[from].neighbours.add(to);
+      nodes[to].neighbours.add(from);
+    });
+
+    const visited = new Set();
+    const rings = [];
+    const directedKey = (from, to) => `${from}>${to}`;
+    const twoPi = Math.PI * 2;
+    const nextClockwise = (from, at) => {
+      const reverseAngle = Math.atan2(nodes[from].point[1] - nodes[at].point[1], nodes[from].point[0] - nodes[at].point[0]);
+      const choices = [...nodes[at].neighbours].filter((candidate) => candidate !== from);
+      if (!choices.length) return null;
+      return choices.map((candidate) => {
+        const angle = Math.atan2(nodes[candidate].point[1] - nodes[at].point[1], nodes[candidate].point[0] - nodes[at].point[0]);
+        const turn = (reverseAngle - angle + twoPi) % twoPi;
+        return {candidate, turn: turn < 1e-9 ? twoPi : turn};
+      }).sort((left, right) => left.turn - right.turn)[0].candidate;
+    };
+
+    nodes.forEach((node, from) => node.neighbours.forEach((to) => {
+      const startKey = directedKey(from, to);
+      if (visited.has(startKey)) return;
+      const ring = [];
+      let previous = from;
+      let current = to;
+      let closed = false;
+      for (let guard = 0; guard <= nodes.length * 4; guard += 1) {
+        const key = directedKey(previous, current);
+        if (visited.has(key)) break;
+        visited.add(key);
+        ring.push([...nodes[previous].point]);
+        const next = nextClockwise(previous, current);
+        if (next === null) break;
+        previous = current;
+        current = next;
+        if (previous === from && current === to) {
+          closed = true;
+          break;
+        }
+      }
+      const normalized = normalizedPolygonPoints(ring);
+      if (closed && normalized.length >= 3 && polygonAreaAndCentroid(normalized).areaMm2 > 10_000) rings.push(normalized);
+    }));
+    return rings;
+  }
+
+  function existingRoomPolygons(viewport = currentViewport()) {
+    if (!viewport) return [];
+    return visibleViewportPrimitives(viewport).flatMap((sourcePrimitive) => {
+      if (!state.visibleLayers.has(sourcePrimitive.layer_ref)) return [];
+      const primitive = northUpPrimitive(primitiveWithPointGeometry(sourcePrimitive));
+      if (primitive.primitive_type !== "room" && primitive.style_ref !== "room") return [];
+      const geometry = primitive.geometry || {};
+      if (normalizedPolygonPoints(geometry.points_mm).length >= 3) return [normalizedPolygonPoints(geometry.points_mm)];
+      const x = Number(geometry.x_mm);
+      const y = Number(geometry.y_mm);
+      const width = Number(geometry.width_mm);
+      const depth = Number(geometry.depth_mm);
+      return [x, y, width, depth].every(Number.isFinite) && width > 0 && depth > 0
+        ? [[[x, y], [x + width, y], [x + width, y + depth], [x, y + depth]]]
+        : [];
+    });
+  }
+
+  function closedAreaAtPoint(point) {
+    if (!Array.isArray(point)) return null;
+    const candidates = [
+      ...existingRoomPolygons(),
+      ...closedFacesFromWallSegments(wallHostSegments()),
+    ].filter((ring) => pointInRing(point, ring));
+    return candidates.sort((left, right) => polygonAreaAndCentroid(left).areaMm2 - polygonAreaAndCentroid(right).areaMm2)[0] || null;
+  }
+
+  function pointIsNearObjectReference(point) {
+    return Boolean(objectSnapEnabled() && objectSnapCandidate({x: point[0], y: point[1]}));
   }
 
   function segmentProjection(point, segment) {
@@ -4272,10 +5182,10 @@
       .sort((left, right) => left.distance - right.distance)[0] || null;
   }
 
-  function openingPlacement(host) {
+  function openingPlacement(host, configuration = state.openingPlacementConfiguration) {
     if (!host) return null;
     const dimensions = state.selectedLibraryVariant?.dimensions || state.selectedLibraryItem?.dimensions || {};
-    const widthMm = Math.max(100, Number(dimensions.width_mm) || 1000);
+    const widthMm = Math.max(100, Number(configuration?.widthMm) || Number(dimensions.width_mm) || 1000);
     const halfWidth = widthMm / 2;
     const halfDepth = host.thicknessMm / 2;
     const normal = [-host.unit[1], host.unit[0]];
@@ -4292,6 +5202,116 @@
       ],
       widthMm,
     };
+  }
+
+  function openingPlacementKind() {
+    return quickToolKindForItem(state.selectedLibraryItem) === "window" ? "window" : "door";
+  }
+
+  function syncOpeningPlacementPanel() {
+    const panel = document.getElementById("opening-placement-options");
+    if (!panel) return;
+    const kind = openingPlacementKind();
+    const config = state.openingPlacementConfiguration;
+    document.getElementById("opening-placement-kind").textContent = kind === "window" ? "FENSTER" : "TÜR";
+    document.getElementById("opening-placement-title").textContent = kind === "window" ? "Fenster einsetzen" : "Tür einsetzen";
+    document.getElementById("opening-width").value = Math.round(config.widthMm);
+    document.getElementById("opening-height").value = Math.round(config.heightMm);
+    document.getElementById("opening-sill").value = Math.round(config.sillHeightMm);
+    document.getElementById("opening-sill-field").hidden = kind !== "window" || config.floorMode === "floor";
+    document.getElementById("window-placement-modes").hidden = kind !== "window";
+    document.getElementById("door-placement-modes").hidden = kind !== "door";
+    panel.querySelectorAll("[data-opening-floor]").forEach((button) => {
+      const active = button.dataset.openingFloor === config.floorMode;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    panel.querySelectorAll("[data-opening-operation]").forEach((button) => {
+      const active = button.dataset.openingOperation === config.operation;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    panel.querySelectorAll("[data-opening-hinge]").forEach((button) => {
+      const active = button.dataset.openingHinge === config.hingeSide;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    panel.querySelectorAll("[data-opening-swing]").forEach((button) => {
+      const active = button.dataset.openingSwing === config.swingSide;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function positionOpeningPlacementPanel(host) {
+    const panel = document.getElementById("opening-placement-options");
+    const workspace = document.querySelector(".workspace");
+    const ctm = svg.getScreenCTM();
+    if (!panel || !workspace || !ctm || !host?.centre) return;
+    const point = svg.createSVGPoint();
+    point.x = host.centre[0];
+    point.y = host.centre[1];
+    const screen = point.matrixTransform(ctm);
+    const bounds = workspace.getBoundingClientRect();
+    const width = 380;
+    panel.style.transform = "none";
+    panel.style.left = `${Math.max(10, Math.min(bounds.width - width - 10, screen.x - bounds.left + 22))}px`;
+    panel.style.top = `${Math.max(88, Math.min(bounds.height - 270, screen.y - bounds.top - 36))}px`;
+  }
+
+  function beginOpeningPlacement(host) {
+    if (!host) return;
+    const dimensions = state.selectedLibraryVariant?.dimensions || state.selectedLibraryItem?.dimensions || {};
+    const kind = openingPlacementKind();
+    state.openingPlacementConfiguration = {
+      widthMm: Math.max(300, Number(dimensions.width_mm) || (kind === "door" ? 885 : 1000)),
+      heightMm: Math.max(300, Number(dimensions.height_mm) || (kind === "door" ? 2010 : 1250)),
+      sillHeightMm: Math.max(0, Number(dimensions.sill_height_mm) || 1000),
+      floorMode: "sill",
+      operation: "fixed",
+      hingeSide: "left",
+      swingSide: "positive",
+    };
+    state.pendingOpeningPlacement = {host};
+    state.openingHostPreview = host;
+    syncOpeningPlacementPanel();
+    const panel = document.getElementById("opening-placement-options");
+    panel.hidden = false;
+    positionOpeningPlacementPanel(host);
+    renderPlan();
+  }
+
+  function updateOpeningPlacementConfiguration(patch = {}) {
+    state.openingPlacementConfiguration = {...state.openingPlacementConfiguration, ...patch};
+    if (state.openingPlacementConfiguration.floorMode === "floor") state.openingPlacementConfiguration.sillHeightMm = 0;
+    syncOpeningPlacementPanel();
+    renderPlan();
+  }
+
+  function cancelOpeningPlacement() {
+    state.pendingOpeningPlacement = null;
+    document.getElementById("opening-placement-options").hidden = true;
+    renderPlan();
+  }
+
+  function confirmOpeningPlacement() {
+    const pending = state.pendingOpeningPlacement;
+    const placement = openingPlacement(pending?.host, state.openingPlacementConfiguration);
+    const viewport = currentViewport();
+    if (!pending?.host || !placement || !viewport) return;
+    const parameters = {...state.openingPlacementConfiguration};
+    const start = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: placement.start};
+    enqueueDrawCommand(start, placement.end, {
+      tool: "opening",
+      host: pending.host,
+      openingParameters: parameters,
+      libraryItem: cloneValue(state.selectedLibraryItem),
+      libraryVariant: cloneValue(state.selectedLibraryVariant),
+      storeyParameters: cloneValue(activeStoreyParameters()),
+    });
+    state.pendingOpeningPlacement = null;
+    document.getElementById("opening-placement-options").hidden = true;
+    renderPlan();
   }
 
   function pointToSegmentDistance(point, start, end) {
@@ -4415,7 +5435,8 @@
   function objectSnapCandidate(point) {
     const viewport = currentViewport();
     if (!viewport || !state.camera) return null;
-    const areaDrawing = ["room", "roof"].includes(state.activeTool);
+    const areaDrawing = ["room", "roof"].includes(state.activeTool)
+      || (state.activeTool === "dimension" && state.measurementMode === "area");
     const tolerance = state.camera.width / Math.max(svg.clientWidth, 1) * (areaDrawing ? 18 : 14);
     let closest = null;
     const consider = (descriptor, priority = 0) => {
@@ -4461,27 +5482,116 @@
   }
 
   function areaCloseSnapPoint(point) {
-    if (!["room", "roof"].includes(state.activeTool) || !state.camera) return null;
-    const draftPoints = state.activeTool === "roof" ? state.roofDraftPoints : state.roomDraftPoints;
+    const measurementArea = state.activeTool === "dimension" && state.measurementMode === "area";
+    if (!["room", "roof"].includes(state.activeTool) && !measurementArea || !state.camera) return null;
+    const draftPoints = state.activeTool === "roof"
+      ? state.roofDraftPoints
+      : measurementArea ? state.measurementDraftPoints : state.roomDraftPoints;
     if (draftPoints.length < 3) return null;
     const firstPoint = draftPoints[0];
-    const tolerance = state.camera.width / Math.max(svg.clientWidth, 1) * 16;
+    const tolerance = state.camera.width / Math.max(svg.clientWidth, 1) * 24;
     return Math.hypot(point.x - firstPoint[0], point.y - firstPoint[1]) <= tolerance
       ? [...firstPoint]
       : null;
   }
 
+  function wallChainCloseSnapPoint(point) {
+    if (state.activeTool !== "wall" || !state.camera || !state.wallChainStart || state.wallChainSegmentCount < 2) return null;
+    const tolerance = state.camera.width / Math.max(svg.clientWidth, 1) * 20;
+    return Math.hypot(point.x - state.wallChainStart[0], point.y - state.wallChainStart[1]) <= tolerance
+      ? [...state.wallChainStart]
+      : null;
+  }
+
+  function alignmentTrackingCandidate(point, anchors, tolerance) {
+    let closestX = null;
+    let closestY = null;
+    (anchors || []).forEach((anchor) => {
+      if (!Array.isArray(anchor) || anchor.length < 2) return;
+      const dx = Math.abs(Number(anchor[0]) - Number(point.x));
+      const dy = Math.abs(Number(anchor[1]) - Number(point.y));
+      if (dx <= tolerance && (!closestX || dx < closestX.distance)) closestX = {point: anchor, distance: dx};
+      if (dy <= tolerance && (!closestY || dy < closestY.distance)) closestY = {point: anchor, distance: dy};
+    });
+    if (!closestX && !closestY) return null;
+    return {
+      point: [closestX ? Number(closestX.point[0]) : Number(point.x), closestY ? Number(closestY.point[1]) : Number(point.y)],
+      xAnchor: closestX ? [...closestX.point] : null,
+      yAnchor: closestY ? [...closestY.point] : null,
+      kind: closestX && closestY ? "alignment-xy" : closestX ? "alignment-x" : "alignment-y",
+    };
+  }
+
+  function pointTrackingKey(point) {
+    return `${Math.round(Number(point?.[0]) * 2) / 2}:${Math.round(Number(point?.[1]) * 2) / 2}`;
+  }
+
+  function clearPointTrackingCandidate() {
+    if (state.pointTrackingTimer) window.clearTimeout(state.pointTrackingTimer);
+    state.pointTrackingTimer = 0;
+    state.pointTrackingCandidate = null;
+  }
+
+  function resetPointTracking(render = true) {
+    clearPointTrackingCandidate();
+    state.pointTrackingAnchors = [];
+    state.alignmentGuide = null;
+    if (render) schedulePlanRender();
+  }
+
+  function updatePointTrackingCandidate(snapTarget) {
+    const validTarget = state.drawStart && snapTarget?.primitiveRef && !String(snapTarget.kind || "").startsWith("alignment-");
+    if (!validTarget) {
+      clearPointTrackingCandidate();
+      return;
+    }
+    const point = snapTarget.point;
+    const key = pointTrackingKey(point);
+    if (state.pointTrackingAnchors.some((anchor) => pointTrackingKey(anchor) === key)) {
+      clearPointTrackingCandidate();
+      return;
+    }
+    if (state.pointTrackingCandidate?.key === key) return;
+    clearPointTrackingCandidate();
+    state.pointTrackingCandidate = {key, point: [...point]};
+    state.pointTrackingTimer = window.setTimeout(() => {
+      if (!state.drawStart || state.pointTrackingCandidate?.key !== key) return;
+      state.pointTrackingAnchors = [...state.pointTrackingAnchors, [...point]].slice(-12);
+      state.pointTrackingCandidate = null;
+      state.pointTrackingTimer = 0;
+      schedulePlanRender();
+    }, 240);
+  }
+
   function snappedModelPoint(point) {
     const areaClosePoint = areaCloseSnapPoint(point);
     if (areaClosePoint) {
+      state.alignmentGuide = null;
       state.snapTarget = {point: areaClosePoint, kind: "area-close"};
       return areaClosePoint;
     }
+    const wallClosePoint = wallChainCloseSnapPoint(point);
+    if (wallClosePoint) {
+      state.alignmentGuide = null;
+      state.snapTarget = {point: wallClosePoint, kind: "wall-chain-close"};
+      return wallClosePoint;
+    }
     const objectSnap = objectSnapEnabled() ? objectSnapCandidate(point) : null;
     if (objectSnap) {
+      state.alignmentGuide = null;
       state.snapTarget = objectSnap;
       return [...objectSnap.point];
     }
+    const trackingTolerance = state.camera
+      ? state.camera.width / Math.max(svg.clientWidth, 1) * 9
+      : 0;
+    const alignment = alignmentTrackingCandidate(point, state.pointTrackingAnchors, trackingTolerance);
+    if (alignment) {
+      state.alignmentGuide = alignment;
+      state.snapTarget = alignment;
+      return [...alignment.point];
+    }
+    state.alignmentGuide = null;
     state.snapTarget = null;
     if (!gridSnapEnabled()) return [Math.round(point.x), Math.round(point.y)];
     const step = activeSnapStep();
@@ -4495,22 +5605,25 @@
 
   function drawingModelPoint(point, event = null) {
     const model = snappedModelPoint(point);
-    if (state.snapTarget?.kind === "area-close") return model;
-    if (!state.drawStart || !(event?.shiftKey || state.shiftPressed)) return model;
+    if (["area-close", "wall-chain-close"].includes(state.snapTarget?.kind)) return model;
+    const orthogonal = Boolean(event?.ctrlKey || event?.metaKey || state.ctrlPressed);
+    const diagonal = Boolean(event?.shiftKey || state.shiftPressed);
+    if (!state.drawStart || (!orthogonal && !diagonal)) return model;
     const [startX, startY] = state.drawStart.model;
     const deltaX = model[0] - startX;
     const deltaY = model[1] - startY;
     if (deltaX === 0 && deltaY === 0) return model;
 
-    const directions = [
-      [1, 0], [1, 1], [0, 1], [-1, 1],
-      [-1, 0], [-1, -1], [0, -1], [1, -1],
-    ];
-    const directionIndex = ((Math.round(Math.atan2(deltaY, deltaX) / (Math.PI / 4)) % 8) + 8) % 8;
+    const directions = orthogonal
+      ? [[1, 0], [0, 1], [-1, 0], [0, -1]]
+      : [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
+    const angleStep = orthogonal ? Math.PI / 2 : Math.PI / 4;
+    const directionIndex = ((Math.round(Math.atan2(deltaY, deltaX) / angleStep) % directions.length) + directions.length) % directions.length;
     const [directionX, directionY] = directions[directionIndex];
     const directionScale = directionX * directionX + directionY * directionY;
     const projected = (deltaX * directionX + deltaY * directionY) / directionScale;
     const along = Math.round(projected / activeSnapStep()) * activeSnapStep();
+    state.alignmentGuide = null;
     state.snapTarget = null;
     return [startX + directionX * along, startY + directionY * along];
   }
@@ -4636,13 +5749,18 @@
         : null;
       state.cursorPoint = {x: cursor[0], y: cursor[1]};
       state.lastPointerModel = state.cursorPoint;
+      trackCoordinateReference(cursor);
       schedulePlanRender();
       return;
     }
-    const snapped = state.activeTool === "room" ? drawingModelPoint(point, event) : snappedModelPoint(point);
+    const polygonDrawing = state.activeTool === "room"
+      || (state.activeTool === "dimension" && state.measurementMode === "area");
+    const snapped = polygonDrawing ? drawingModelPoint(point, event) : snappedModelPoint(point);
+    updatePointTrackingCandidate(state.snapTarget);
     state.cursorPoint = {x: snapped[0], y: snapped[1]};
     state.lastPointerModel = state.cursorPoint;
-    if (state.activeTool === "roof" && state.roofDraftClosed) {
+    trackCoordinateReference(snapped);
+    if ((state.activeTool === "roof" && state.roofDraftClosed) || (state.activeTool === "room" && state.pendingStairDraft)) {
       schedulePlanRender();
       return;
     }
@@ -4651,7 +5769,7 @@
       return;
     }
     state.drawPointerRaw = point;
-    state.drawCurrent = {model: state.activeTool === "room" ? snapped : drawingModelPoint(point, event)};
+    state.drawCurrent = {model: polygonDrawing ? snapped : drawingModelPoint(point, event)};
     schedulePlanRender();
   }
 
@@ -4698,21 +5816,50 @@
       return;
     }
     if (state.activeTool === "opening") {
+      if (state.pendingOpeningPlacement) return;
       const host = wallHostCandidate(point);
       const placement = openingPlacement(host);
       if (!host || !placement) {
         showMessage("Fenster und Türen können ausschließlich innerhalb einer vorhandenen Wand platziert werden.");
         return;
       }
-      const start = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: placement.start};
-      enqueueDrawCommand(start, placement.end, {
-        tool: "opening",
-        host,
-        libraryItem: cloneValue(state.selectedLibraryItem),
-        libraryVariant: cloneValue(state.selectedLibraryVariant),
-        storeyParameters: cloneValue(activeStoreyParameters()),
-      });
-      showMessage("Wand erkannt · Öffnung wird mit der Wandstärke eingesetzt.");
+      beginOpeningPlacement(host);
+      return;
+    }
+    if (state.activeTool === "room" && state.pendingStairDraft) {
+      syncStairOptionsPanel();
+      document.getElementById("stair-options").hidden = false;
+      showMessage("Treppenbereich geschlossen · Einstellungen prüfen und speichern.");
+      return;
+    }
+    if (state.activeTool === "dimension" && state.measurementMode === "area") {
+      const rawPoint = [point.x, point.y];
+      if (!state.measurementDraftPoints.length && !pointIsNearObjectReference(rawPoint)) {
+        const detectedArea = closedAreaAtPoint(rawPoint);
+        if (detectedArea) {
+          rememberAreaMeasurement(detectedArea);
+          renderPlan();
+          showMessage("Geschlossene Fläche erkannt und gemessen.");
+          return;
+        }
+      }
+      const model = drawingModelPoint(point, event);
+      if (state.measurementDraftPoints.length >= 3 && state.snapTarget?.kind === "area-close") {
+        state.drawCurrent = {model: [...state.measurementDraftPoints[0]]};
+        completeAreaMeasurement();
+        return;
+      }
+      const previous = state.measurementDraftPoints.at(-1);
+      if (previous && Math.hypot(previous[0] - model[0], previous[1] - model[1]) < 0.5) return;
+      if (!state.measurementDraftPoints.length) state.drawSessionId += 1;
+      state.measurementDraftPoints.push([...model]);
+      state.drawStart = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: [...model]};
+      state.drawPointerRaw = point;
+      state.drawCurrent = {model: [...model]};
+      renderPlan();
+      showMessage(state.measurementDraftPoints.length >= 3
+        ? "Flächenkontur: ersten Punkt anklicken oder ESC drücken, um zu messen."
+        : "Weitere Punkte der Messfläche setzen.");
       return;
     }
     const model = drawingModelPoint(point, event);
@@ -4722,6 +5869,20 @@
       if (isRoof ? state.roofSubmissionPending : state.roomSubmissionPending) {
         showMessage(isRoof ? "Das Dach wird gerade berechnet …" : "Der Raum wird gerade übernommen …");
         return;
+      }
+      if (!isRoof && quickToolKindForItem(state.selectedLibraryItem) !== "stair" && !draftPoints.length
+        && !pointIsNearObjectReference([point.x, point.y])) {
+        const detectedArea = closedAreaAtPoint([point.x, point.y]);
+        if (detectedArea) {
+          state.drawSessionId += 1;
+          state.roomDraftPoints = detectedArea.map((entry) => [...entry]);
+          state.drawStart = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model: [...detectedArea[0]]};
+          state.drawCurrent = {model: [...detectedArea[0]]};
+          state.drawPointerRaw = null;
+          renderPlan();
+          completeRoomDrawing();
+          return;
+        }
       }
       if (draftPoints.length >= 3 && state.snapTarget?.kind === "area-close") {
         state.drawCurrent = {model: [...draftPoints[0]]};
@@ -4748,8 +5909,13 @@
       return;
     }
     if (!state.drawStart) {
+      resetPointTracking(false);
       state.drawSessionId += 1;
       state.drawStart = {sheetRef: state.activeSheetRef, viewportRef: viewport.viewport_ref, model};
+      if (state.activeTool === "wall") {
+        state.wallChainStart = [...model];
+        state.wallChainSegmentCount = 0;
+      }
       state.drawPointerRaw = point;
       state.drawCurrent = {model};
       renderPlan();
@@ -4766,12 +5932,32 @@
     const tool = state.activeTool;
     const drawSessionId = state.drawSessionId;
     const continuousWall = tool === "wall";
+    const closesWallChain = continuousWall && state.wallChainSegmentCount >= 2
+      && (state.snapTarget?.kind === "wall-chain-close"
+        || Math.hypot(model[0] - state.wallChainStart[0], model[1] - state.wallChainStart[1]) < 0.5);
     if (continuousWall) {
-      state.drawStart = {sheetRef: start.sheetRef, viewportRef: start.viewportRef, model};
-      state.drawPointerRaw = point;
-      state.drawCurrent = {model};
+      if (closesWallChain) {
+        state.drawStart = null;
+        state.drawCurrent = null;
+        state.drawPointerRaw = null;
+        state.wallChainStart = null;
+        state.wallChainSegmentCount = 0;
+        resetPointTracking(false);
+      } else {
+        state.drawStart = {sheetRef: start.sheetRef, viewportRef: start.viewportRef, model, coordinateElevationMm: start.coordinateElevationMm};
+        state.wallChainSegmentCount += 1;
+        // Der gefangene Knoten ist ab jetzt die einzige Wahrheit. Ohne diese
+        // Entkopplung springt die Vorschau beim Loslassen von Strg oder beim Zoom
+        // wieder zur ungefangenen Mauskoordinate zurück.
+        state.drawPointerRaw = null;
+        state.drawCurrent = {model};
+      }
       renderPlan();
     } else {
+      if (tool === "dimension" && state.measurementMode === "length") {
+        completeLengthMeasurement(start.model, model);
+        return;
+      }
       cancelDrawing(false);
     }
     if (state.activeTool === "selection") {
@@ -4790,10 +5976,12 @@
     enqueueDrawCommand(start, model, {
       tool,
       continuousWall,
+      wallChainClosed: closesWallChain,
       drawSessionId,
       libraryItem: cloneValue(state.selectedLibraryItem),
       libraryVariant: cloneValue(state.selectedLibraryVariant),
       storeyParameters: cloneValue(activeStoreyParameters()),
+      coordinateElevationMm: start.coordinateElevationMm,
     });
   }
 
@@ -4868,6 +6056,9 @@
         project_public_id: projectContext.projectPublicId,
       },
     };
+    if (Number.isFinite(Number(options.coordinateElevationMm))) {
+      payload.parameters.coordinate_elevation_mm = Number(options.coordinateElevationMm);
+    }
     if (["create_wall", "create_opening", "place_library_object"].includes(config.command)) {
       const item = options.libraryItem || state.selectedLibraryItem;
       const variant = options.libraryVariant || state.selectedLibraryVariant;
@@ -4884,19 +6075,24 @@
       payload.parameters.depth_mm = Number(dimensions.depth_mm) || payload.parameters.thickness_mm;
       if (config.command === "create_opening") {
         const host = options.host;
+        const opening = options.openingParameters || {};
         if (!host?.primitiveRef) throw new Error("Fenster und Türen benötigen eine vorhandene Wand als Host.");
         payload.parameters.host_wall_ref = host.primitiveRef;
         payload.parameters.host_wall_thickness_mm = host.thicknessMm;
         payload.parameters.placement_mode = "wall_hosted";
         payload.parameters.thickness_mm = host.thicknessMm;
         payload.parameters.depth_mm = host.thicknessMm;
-        payload.parameters.width_mm = Math.hypot(modelEnd[0] - modelStart[0], modelEnd[1] - modelStart[1]);
+        payload.parameters.width_mm = Math.max(100, Number(opening.widthMm) || Math.hypot(modelEnd[0] - modelStart[0], modelEnd[1] - modelStart[1]));
+        payload.parameters.height_mm = Math.max(100, Number(opening.heightMm) || payload.parameters.height_mm);
+        payload.parameters.sill_height_mm = Math.max(0, Number(opening.sillHeightMm) || 0);
+        payload.parameters.floor_mode = opening.floorMode || "sill";
+        payload.parameters.window_operation = opening.operation || "fixed";
         if (quickToolKindForItem(item) === "door") {
-          payload.parameters.door_hinge_side = "left";
-          payload.parameters.door_swing_side = "positive";
+          payload.parameters.door_hinge_side = opening.hingeSide || "left";
+          payload.parameters.door_swing_side = opening.swingSide || "positive";
         }
       }
-      if (config.command === "create_wall") {
+      if (["create_wall", "place_library_object"].includes(config.command)) {
         const edge = wallEdgeGeometry(start.model, end, payload.parameters.thickness_mm);
         if (edge) {
           payload.geometry = {
@@ -4905,15 +6101,22 @@
             reference_start_mm: modelStart,
             reference_end_mm: modelEnd,
           };
-          payload.parameters.reference_line = "wall_edge";
-          payload.parameters.reference_edge = edge.referenceRole;
-          payload.parameters.wall_body_side = "left";
+          payload.parameters.reference_line = "wall_outer_edge";
+          payload.parameters.reference_edge = "outside";
+          payload.parameters.wall_body_side = "inside-left";
+          if (config.command === "create_wall") {
+            payload.parameters.wall_chain_ref = `wall-chain:${options.drawSessionId || state.drawSessionId}`;
+            payload.parameters.wall_join_mode = "automatic_miter";
+            payload.geometry.wall_chain_ref = payload.parameters.wall_chain_ref;
+            payload.geometry.wall_join_mode = payload.parameters.wall_join_mode;
+          }
         }
       }
     }
     if (config.command === "create_section_marker") payload.parameters.label = "A–A";
     const receipt = await dispatchCadCommandRequest(payload);
     publishModelMutation(receipt);
+    if (config.command === "create_dimension") publishMeasurementToWorldEdit(payload);
     const sheet = state.input.sheets.find((item) => item.sheet_ref === start.sheetRef);
     if (receipt.preview_element) {
       receipt.preview_element.local_draft = !receipt.accepted;
@@ -4976,6 +6179,14 @@
         room_type: isStair ? "stair" : "sonstige",
         label: isStair ? (item.label || "Treppe") : "Raum",
         height_mm: Number(dimensions.height_mm) || 3000,
+        ...(isStair ? {
+          stair_type: state.stairConfiguration.stairType,
+          stair_width_mm: state.stairConfiguration.widthMm,
+          stair_tread_count: state.stairConfiguration.treadCount,
+          stair_start_side: state.stairConfiguration.startSide,
+          stair_end_side: state.stairConfiguration.endSide,
+          stair_direction: state.stairConfiguration.direction,
+        } : {}),
       },
       user_context: {
         source: "vectoplan-cad-worldedit",
@@ -4987,6 +6198,8 @@
     const receipt = await dispatchCadCommandRequest(payload);
     publishModelMutation(receipt);
     if (receipt.accepted) {
+      receipt.preview_element.local_draft = false;
+      rememberOptimisticElement(selection.sheetRef, receipt.preview_element);
       state.selectedPrimitive = null;
       state.worldSelection = null;
       await loadProjectInput({preserveCamera: true, preserveHistory: true, preserveViewState: true});
@@ -5367,6 +6580,51 @@
     }, targetOrigin);
   }
 
+  function publishMeasurementToWorldEdit(command) {
+    const start = command?.geometry?.start_mm;
+    const end = command?.geometry?.end_mm;
+    if (!Array.isArray(start) || !Array.isArray(end)) return;
+    const detail = {
+      contract_version: "vectoplan-cad-worldedit-measurement/0.1",
+      core_project_id: projectContext.coreProjectId,
+      project_public_id: projectContext.projectPublicId,
+      storey_id: command.parameters?.storey_id || activeBuildingStorey()?.id || "ground_floor",
+      start_mm: [Number(start[0]) || 0, Number(start[1]) || 0],
+      end_mm: [Number(end[0]) || 0, Number(end[1]) || 0],
+      base_y: Number(command.parameters?.base_y) || 1,
+      length_mm: Math.hypot((Number(end[0]) || 0) - (Number(start[0]) || 0), (Number(end[1]) || 0) - (Number(start[1]) || 0)),
+    };
+    window.dispatchEvent(new CustomEvent("vectoplan-cad:worldedit-measurement", {detail}));
+    window.parent?.postMessage({
+      type: "vectoplan-cad:worldedit-measurement",
+      kind: "vectoplan-cad:worldedit-measurement",
+      source: "vectoplan-cad",
+      detail,
+    }, "*");
+  }
+
+  function publishAreaMeasurementToWorldEdit(points) {
+    const modelPoints = normalizedPolygonPoints(points).map(northUpPointToModel);
+    if (modelPoints.length < 3) return;
+    const detail = {
+      contract_version: "vectoplan-cad-worldedit-measurement/0.2",
+      measurement_type: "area",
+      core_project_id: projectContext.coreProjectId,
+      project_public_id: projectContext.projectPublicId,
+      storey_id: activeBuildingStorey()?.id || "ground_floor",
+      points_mm: modelPoints,
+      area_m2: polygonAreaAndCentroid(points).areaMm2 / 1_000_000,
+      base_y: 1,
+    };
+    window.dispatchEvent(new CustomEvent("vectoplan-cad:worldedit-measurement", {detail}));
+    window.parent?.postMessage({
+      type: "vectoplan-cad:worldedit-measurement",
+      kind: "vectoplan-cad:worldedit-measurement",
+      source: "vectoplan-cad",
+      detail,
+    }, "*");
+  }
+
   async function undo() {
     const entry = state.commands.pop();
     if (!entry) return;
@@ -5402,8 +6660,10 @@
   }
 
   function syncHistoryButtons() {
-    document.querySelector('[data-action="undo"]').disabled = state.commands.length === 0;
-    document.querySelector('[data-action="redo"]').disabled = state.redoCommands.length === 0;
+    const undoButton = document.querySelector('[data-action="undo"]');
+    const redoButton = document.querySelector('[data-action="redo"]');
+    if (undoButton) undoButton.disabled = state.commands.length === 0;
+    if (redoButton) redoButton.disabled = state.redoCommands.length === 0;
   }
 
   function isEditableTarget(target) {
@@ -5449,12 +6709,58 @@
   }
 
   function bindEvents() {
+    document.getElementById("cad-coordinate-bar")?.addEventListener("submit", confirmCoordinateInput);
+    document.querySelector('[data-action="reset-coordinates"]')?.addEventListener("click", () => resetCoordinateInput());
+    document.querySelectorAll("[data-coordinate-axis]").forEach((input) => {
+      input.addEventListener("focus", () => {
+        if (!state.coordinateInput.reference) {
+          const reference = state.drawStart?.model
+            || (state.lastPointerModel ? [state.lastPointerModel.x, state.lastPointerModel.y] : null)
+            || (state.cursorPoint ? [state.cursorPoint.x, state.cursorPoint.y] : null);
+          if (reference) state.coordinateInput.reference = [...reference];
+        }
+      });
+      input.addEventListener("input", () => {
+        state.coordinateInput.locked = [...document.querySelectorAll("[data-coordinate-axis]")]
+          .some((entry) => String(entry.value || "").trim() !== "");
+        updateCoordinateTarget();
+      });
+      input.addEventListener("keydown", (event) => {
+        if (event.key === "Tab") {
+          const axes = [...document.querySelectorAll("[data-coordinate-axis]")];
+          const currentIndex = axes.indexOf(input);
+          const nextIndex = currentIndex + (event.shiftKey ? -1 : 1);
+          if (nextIndex >= 0 && nextIndex < axes.length) {
+            event.preventDefault();
+            axes[nextIndex].focus({preventScroll: true});
+            axes[nextIndex].select();
+            return;
+          }
+        }
+        if (isCadEscapeEvent(event)) {
+          handleCadEscape(event);
+        }
+      });
+    });
+    document.getElementById("measurement-mode")?.addEventListener("change", (event) => {
+      state.measurementMode = event.target.value === "area" ? "area" : "length";
+      clearMeasurementResults();
+      cancelDrawing(false, true);
+      syncMeasurementOptionsPanel();
+      renderPlan();
+      document.getElementById("coordinate-x")?.focus({preventScroll: true});
+    });
     svg.addEventListener("pointermove", handlePointerMove);
     svg.addEventListener("pointerdown", handlePointerDown);
     svg.addEventListener("pointerup", endPointer);
     svg.addEventListener("pointercancel", endPointer);
     svg.addEventListener("pointerleave", () => {
-      if (state.drawStart || state.pan) return;
+      updatePointTrackingCandidate(null);
+      state.alignmentGuide = null;
+      if (state.drawStart || state.pan) {
+        schedulePlanRender();
+        return;
+      }
       state.cursorPoint = null;
       state.snapTarget = null;
       schedulePlanRender();
@@ -5487,8 +6793,8 @@
     document.querySelector('[data-action="toggle-inspector"]')?.addEventListener("click", toggleInspector);
     document.querySelectorAll('[data-action="close-panels"]').forEach((button) => button.addEventListener("click", closePanels));
     syncPanelButtons();
-    document.querySelector('[data-action="undo"]').addEventListener("click", () => undo().catch(handleError));
-    document.querySelector('[data-action="redo"]').addEventListener("click", () => redo().catch(handleError));
+    document.querySelector('[data-action="undo"]')?.addEventListener("click", () => undo().catch(handleError));
+    document.querySelector('[data-action="redo"]')?.addEventListener("click", () => redo().catch(handleError));
     document.querySelectorAll("[data-tool]").forEach((button) => {
       button.addEventListener("click", () => selectTool(button.dataset.tool));
     });
@@ -5548,6 +6854,60 @@
     document.querySelectorAll("[data-door-swing]").forEach((button) => {
       button.addEventListener("click", () => updateSelectedDoorConfiguration({swingSide: button.dataset.doorSwing}));
     });
+    const bindDoorDimension = (id, field, minimum, fallback) => {
+      const input = document.getElementById(id);
+      if (!input) return;
+      const commit = () => updateSelectedDoorConfiguration({
+        [field]: Math.max(minimum, Math.min(5000, Number(input.value) || fallback)),
+      });
+      input.addEventListener("change", commit);
+      input.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter") return;
+        event.preventDefault();
+        commit();
+        input.select();
+      });
+    };
+    bindDoorDimension("door-width", "widthMm", 400, 885);
+    bindDoorDimension("door-height", "heightMm", 1000, 2010);
+    document.getElementById("opening-width")?.addEventListener("input", (event) => {
+      updateOpeningPlacementConfiguration({widthMm: Math.max(300, Number(event.target.value) || 300)});
+    });
+    document.getElementById("opening-height")?.addEventListener("input", (event) => {
+      updateOpeningPlacementConfiguration({heightMm: Math.max(300, Number(event.target.value) || 300)});
+    });
+    document.getElementById("opening-sill")?.addEventListener("input", (event) => {
+      updateOpeningPlacementConfiguration({sillHeightMm: Math.max(0, Number(event.target.value) || 0)});
+    });
+    document.querySelectorAll("[data-opening-floor]").forEach((button) => {
+      button.addEventListener("click", () => updateOpeningPlacementConfiguration({floorMode: button.dataset.openingFloor}));
+    });
+    document.querySelectorAll("[data-opening-operation]").forEach((button) => {
+      button.addEventListener("click", () => updateOpeningPlacementConfiguration({operation: button.dataset.openingOperation}));
+    });
+    document.querySelectorAll("[data-opening-hinge]").forEach((button) => {
+      button.addEventListener("click", () => updateOpeningPlacementConfiguration({hingeSide: button.dataset.openingHinge}));
+    });
+    document.querySelectorAll("[data-opening-swing]").forEach((button) => {
+      button.addEventListener("click", () => updateOpeningPlacementConfiguration({swingSide: button.dataset.openingSwing}));
+    });
+    document.querySelectorAll('[data-action="cancel-opening-placement"]').forEach((button) => button.addEventListener("click", cancelOpeningPlacement));
+    document.querySelector('[data-action="confirm-opening-placement"]')?.addEventListener("click", confirmOpeningPlacement);
+    document.querySelectorAll("#stair-options input, #stair-options select").forEach((control) => {
+      control.addEventListener("change", updateStairConfiguration);
+      if (control instanceof HTMLInputElement && control.type === "number") {
+        control.addEventListener("wheel", (event) => {
+          event.preventDefault();
+          const step = Number(control.step) || 1;
+          const minimum = Number.isFinite(Number(control.min)) ? Number(control.min) : -Infinity;
+          const maximum = Number.isFinite(Number(control.max)) ? Number(control.max) : Infinity;
+          control.value = String(Math.max(minimum, Math.min(maximum, (Number(control.value) || 0) + (event.deltaY < 0 ? step : -step))));
+          updateStairConfiguration();
+        }, {passive: false});
+      }
+    });
+    document.querySelector('[data-action="cancel-stair"]')?.addEventListener("click", cancelStairConfiguration);
+    document.querySelector('[data-action="finish-stair"]')?.addEventListener("click", finishStairConfiguration);
     document.getElementById("room-label-input")?.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -5594,6 +6954,10 @@
         state.shiftPressed = true;
         refreshDraftAngleConstraint(event);
       }
+      if (event.key === "Control" && !isEditableTarget(event.target)) {
+        state.ctrlPressed = true;
+        refreshDraftAngleConstraint(event);
+      }
       if (event.code === "Space" && !isEditableTarget(event.target)) {
         event.preventDefault();
         state.spacePressed = true;
@@ -5630,6 +6994,10 @@
         state.shiftPressed = false;
         refreshDraftAngleConstraint(event);
       }
+      if (event.key === "Control") {
+        state.ctrlPressed = false;
+        refreshDraftAngleConstraint(event);
+      }
       if (event.code === "Space") {
         state.spacePressed = false;
         svg.classList.remove("is-pan-ready");
@@ -5638,6 +7006,7 @@
     window.addEventListener("blur", () => {
       state.spacePressed = false;
       state.shiftPressed = false;
+      state.ctrlPressed = false;
       state.pan = null;
       state.pinch = null;
       state.touchPoints.clear();

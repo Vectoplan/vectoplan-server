@@ -26,10 +26,19 @@ import {
 } from "../src/frontend/world_edit/systems/roof/quick_settings";
 import {
   inactiveRoofZones,
+  roofCalculationHasZoneTopPurlinAlignment,
+  roofCalculationVersionsMatch,
+  roofPreviewStateAfterInvalidation,
   shouldCommitRoofSettingsClose,
   uniqueRoofZones,
 } from "../src/frontend/world_edit/systems/roof/zones";
 import { createRoofCalculationMeshes } from "../src/frontend/scene/roof_calculation_rendering";
+import {
+  clearOptimisticRoofCalculation,
+  isRenderedRoofCalculationCurrent,
+  registerOptimisticRoofCalculation,
+  roofCalculationForScene,
+} from "../src/frontend/world_edit/systems/roof/optimistic_calculations";
 import {
   polygonAreaClosedCoordinates,
   polygonAreaPlanCentroid,
@@ -60,6 +69,7 @@ function intent(action: "primary" | "secondary" | "primary-release" | "secondary
 const TOOLS: readonly WorldEditTool[] = [
   "selection",
   "room",
+  "stair",
   "paint",
   "sculpt",
   "parcel",
@@ -211,6 +221,16 @@ test("roof inventory slots activate the dedicated roof system", () => {
 
   assert.equal(toolId, "roof");
   assert.equal(registry.match(toolId), "roof");
+});
+
+test("stair inventory slots activate the dedicated stair system", () => {
+  const toolId = worldEditToolIdFromSlot({
+    object_kind: "world_edit_tool",
+    world_edit_tool: "stair",
+  });
+  const registry = createWorldEditSystemRegistry(completeSystems());
+  assert.equal(toolId, "stair");
+  assert.equal(registry.match(toolId), "stair");
 });
 
 test("WorldEdit uses the Chunk service's accepted editor command source", () => {
@@ -426,6 +446,8 @@ test("roof request maps world-cell x/z into CAD millimetres with all structural 
 test("roof renderer keeps timber below the tiled surface and renders birdsmouth cuts", () => {
   const calculation = {
     ok: true,
+    calculation_id: "roof-render-test",
+    input_fingerprint: "roof-render-test-input",
     geometry: {
       faces: [{ face_ref: "face-1", polygon_3d_mm: [[0, 0, 0], [2000, 0, 0], [2000, 2000, 0], [0, 2000, 0]] }],
     },
@@ -489,6 +511,15 @@ test("roof renderer keeps timber below the tiled surface and renders birdsmouth 
   assert.equal(Array.isArray(tile!.material), false);
   assert.equal((tile!.material as import("three").MeshStandardMaterial).transparent, false);
   assert.equal((tile!.material as import("three").MeshStandardMaterial).opacity, 1);
+  assert.ok(rendered.meshes.every((mesh) => (
+    roofCalculationVersionsMatch(calculation, mesh.userData.roofCalculationVersion)
+  )), "each mesh identifies the calculation that actually produced its geometry");
+  calculation.input_fingerprint = "metadata-mutated-after-mesh-build";
+  assert.equal(
+    tile!.userData.roofCalculationVersion.input_fingerprint,
+    "roof-render-test-input",
+    "a later metadata update cannot relabel already-built old geometry",
+  );
   rendered.geometries.forEach((geometry) => geometry.dispose());
   rendered.materials.forEach((material) => material.dispose());
 });
@@ -583,6 +614,102 @@ test("roof request identity is stable by key order and changes with overhang", (
 
   assert.equal(roofCalculationRequestKey(first), roofCalculationRequestKey(reordered));
   assert.notEqual(roofCalculationRequestKey(first), roofCalculationRequestKey(changed));
+});
+
+test("roof recalculation keeps the last complete preview until its replacement succeeds", () => {
+  const lastSuccessful = {
+    request: { roof_type: "gable", pitch_deg: 35 },
+    calculation: { ok: true, roof_type: "gable" },
+  };
+  assert.equal(
+    roofPreviewStateAfterInvalidation(lastSuccessful, true),
+    lastSuccessful,
+  );
+  assert.deepEqual(
+    roofPreviewStateAfterInvalidation({ request: { roof_type: "hipped" }, calculation: null }, true),
+    { request: null, calculation: null },
+  );
+  assert.deepEqual(
+    roofPreviewStateAfterInvalidation(lastSuccessful, false),
+    { request: null, calculation: null },
+  );
+});
+
+test("roof scene handoff waits for the exact vertically aligned calculation", () => {
+  const aligned = {
+    calculation_id: "roof-new",
+    input_fingerprint: "new-fingerprint",
+    structure: {
+      bearing_model: {
+        purlin_vertical_reference: "roof_zone_top",
+        roof_zone_top_mm: 6_000,
+        lowest_purlin_bottom_mm: 6_000,
+      },
+    },
+  };
+  assert.equal(roofCalculationHasZoneTopPurlinAlignment(aligned), true);
+  assert.equal(roofCalculationHasZoneTopPurlinAlignment({
+    ...aligned,
+    structure: { bearing_model: { purlin_vertical_reference: "rafter_bearing" } },
+  }), false);
+  assert.equal(roofCalculationVersionsMatch(aligned, {
+    calculation_id: "different-id",
+    input_fingerprint: "new-fingerprint",
+    structure: aligned.structure,
+  }), true);
+  assert.equal(roofCalculationVersionsMatch(aligned, {
+    calculation_id: "roof-old",
+    input_fingerprint: "old-fingerprint",
+    structure: aligned.structure,
+  }), false);
+  assert.equal(roofCalculationVersionsMatch(aligned, {
+    calculation_id: "roof-new",
+    input_fingerprint: "new-fingerprint",
+  }), false, "a legacy calculation with the same input fingerprint is still stale");
+});
+
+test("late stale roof chunks can never replace the optimistic saved geometry", () => {
+  const id = "roof-out-of-order";
+  const bearing = (height: number) => ({
+    bearing_model: {
+      purlin_vertical_reference: "roof_zone_top",
+      roof_zone_top_mm: height,
+      lowest_purlin_bottom_mm: height,
+    },
+  });
+  const oldCalculation = {
+    calculation_id: "roof-old",
+    input_fingerprint: "old",
+    structure: bearing(5_000),
+  };
+  const savedCalculation = {
+    calculation_id: "roof-new",
+    input_fingerprint: "new",
+    structure: bearing(6_000),
+  };
+  registerOptimisticRoofCalculation(id, savedCalculation);
+  assert.equal(isRenderedRoofCalculationCurrent(id, oldCalculation), false);
+  assert.equal(isRenderedRoofCalculationCurrent(id, savedCalculation), true);
+  assert.equal(roofCalculationForScene(id, oldCalculation, 7, 0), savedCalculation);
+  assert.equal(roofCalculationForScene(id, savedCalculation, 8, 1_000), savedCalculation);
+  assert.equal(
+    roofCalculationForScene(id, oldCalculation, 7, 5_000),
+    savedCalculation,
+    "an old response received after the correct one remains suppressed",
+  );
+  assert.equal(roofCalculationForScene(id, savedCalculation, 8, 6_000), savedCalculation);
+  const collaboratorCalculation = {
+    ...savedCalculation,
+    calculation_id: "roof-collaborator",
+    input_fingerprint: "collaborator",
+  };
+  assert.equal(
+    roofCalculationForScene(id, collaboratorCalculation, 9, 7_000),
+    collaboratorCalculation,
+    "a strictly newer collaborator revision supersedes the optimistic save",
+  );
+  assert.equal(isRenderedRoofCalculationCurrent(id, collaboratorCalculation), true);
+  clearOptimisticRoofCalculation(id);
 });
 
 test("every persisted roof keeps one independent area and settings target", () => {

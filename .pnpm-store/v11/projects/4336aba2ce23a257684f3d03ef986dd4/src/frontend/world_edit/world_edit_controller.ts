@@ -28,6 +28,7 @@ import {
 import { createWorldEditSystemRegistry } from "./systems/registry";
 import { createSelectionSystem } from "./systems/selection/system";
 import { createRoomSystem } from "./systems/room/system";
+import { createStairSystem } from "./systems/stair/system";
 import { createPaintSystem } from "./systems/paint/system";
 import { createSculptSystem } from "./systems/sculpt/system";
 import { createParcelSystem } from "./systems/parcel/system";
@@ -37,6 +38,12 @@ import { createCopyPasteSystem } from "./systems/copy_paste/system";
 import { createCutPasteSystem } from "./systems/cut_paste/system";
 import { createTentacleSystem } from "./systems/tentacle/system";
 import { createRoofSystem } from "./systems/roof/system";
+import {
+  createStairQuickSettings,
+  DEFAULT_STAIR_TOOL_PARAMETERS,
+  type StairQuickSettingsHandle,
+  type StairToolParameters,
+} from "./systems/stair/quick_settings";
 import {
   buildRoofCalculationRequest,
   DEFAULT_ROOF_TOOL_PARAMETERS,
@@ -66,9 +73,16 @@ import {
 } from "./systems/roof/quick_settings";
 import {
   inactiveRoofZones,
+  roofCalculationHasZoneTopPurlinAlignment,
+  roofCalculationVersionsMatch,
+  roofPreviewStateAfterInvalidation,
   shouldCommitRoofSettingsClose,
   uniqueRoofZones,
 } from "./systems/roof/zones";
+import {
+  clearOptimisticRoofCalculation,
+  registerOptimisticRoofCalculation,
+} from "./systems/roof/optimistic_calculations";
 import {
   clipboardAnchorAlongAxis,
   clipboardBoundsAt,
@@ -182,7 +196,7 @@ interface HiddenRoofObject {
   readonly visible: boolean;
 }
 
-type PolygonAreaTool = "room" | "roof";
+type PolygonAreaTool = "room" | "stair" | "roof";
 
 interface PolygonAreaRuntime {
   points: PolygonAreaPoint[];
@@ -545,7 +559,12 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
             parcelId,
             startLonLat: [startLon, startLat],
             endLonLat: [endLon, endLat],
-            depthMeters: Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(Number(guide.depthMeters ?? guide.depth_meters) || 3))),
+            depthMeters: Math.max(0, Math.min(
+              PARCEL_GRID_MAX_DRAG_DEPTH_CELLS,
+              Math.round(Number.isFinite(Number(guide.depthMeters ?? guide.depth_meters))
+                ? Number(guide.depthMeters ?? guide.depth_meters)
+                : 3),
+            )),
           };
         }).filter((guide): guide is PersistedParcelGridGuide => guide !== null).slice(0, 256),
       }
@@ -1006,6 +1025,8 @@ export function createWorldEditController(
   let roomType = "wohnen";
   let roomLabel = "Raum";
   let roomHeight = 3;
+  let stairParameters: StairToolParameters = { ...DEFAULT_STAIR_TOOL_PARAMETERS };
+  let stairQuickSettings: StairQuickSettingsHandle | null = null;
   let editingRoomInstanceId: string | null = null;
   let editingRoomAnchor: ChunkApiWorldPosition | null = null;
   let editingRoofInstanceId: string | null = null;
@@ -1092,6 +1113,7 @@ export function createWorldEditController(
   });
   const polygonAreas: Record<PolygonAreaTool, PolygonAreaRuntime> = {
     room: createPolygonAreaRuntime(),
+    stair: createPolygonAreaRuntime(),
     roof: createPolygonAreaRuntime(),
   };
   let busy = false;
@@ -1493,7 +1515,7 @@ export function createWorldEditController(
   }
 
   function activePolygonAreaTool(): PolygonAreaTool | null {
-    return activeTool === "room" || activeTool === "roof" ? activeTool : null;
+    return activeTool === "room" || activeTool === "stair" || activeTool === "roof" ? activeTool : null;
   }
 
   function snappedPolygonAreaPoint(
@@ -1691,7 +1713,7 @@ export function createWorldEditController(
     const runtime = polygonAreaRuntime(tool);
     if (index === runtime.editingIndex || index === runtime.hoveredIndex) return 0xfacc15;
     if (index === 0) return 0xffffff;
-    return tool === "roof" ? 0xf97316 : 0x22c55e;
+    return tool === "roof" ? 0xf97316 : tool === "stair" ? 0xa855f7 : 0x22c55e;
   }
 
   function rebuildPolygonAreaScene(tool: PolygonAreaTool): void {
@@ -1711,7 +1733,7 @@ export function createWorldEditController(
       const line = new THREE.Line(
         new THREE.BufferGeometry().setFromPoints(linePoints),
         new THREE.LineBasicMaterial({
-          color: tool === "roof" ? 0xfb923c : 0x4ade80,
+          color: tool === "roof" ? 0xfb923c : tool === "stair" ? 0xc084fc : 0x4ade80,
           depthTest: false,
           transparent: true,
           opacity: 0.98,
@@ -1729,9 +1751,9 @@ export function createWorldEditController(
       geometry.rotateX(-Math.PI / 2);
       geometry.translate(0, runtime.points[0]!.y + planeOffset * 0.5, 0);
       const fill = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-        color: tool === "roof" ? 0xf97316 : 0x22c55e,
+        color: tool === "roof" ? 0xf97316 : tool === "stair" ? 0xa855f7 : 0x22c55e,
         transparent: true,
-        opacity: tool === "roof" ? 0.18 : 0.2,
+        opacity: tool === "roof" ? 0.18 : tool === "stair" ? 0.16 : 0.2,
         depthTest: false,
         depthWrite: false,
         side: THREE.DoubleSide,
@@ -1752,7 +1774,7 @@ export function createWorldEditController(
       runtime.pointTargets.push(marker);
       group.add(marker);
     }
-    if (tool === "roof" && runtime.closed && validPolygonArea(runtime.points)) {
+    if ((tool === "roof" || tool === "stair") && runtime.closed && validPolygonArea(runtime.points)) {
       const centroid = polygonAreaPlanCentroid(runtime.points);
       if (centroid) {
         const settings = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -1762,11 +1784,11 @@ export function createWorldEditController(
           depthWrite: false,
           toneMapped: false,
         }));
-        settings.name = "vectoplan_world_edit_roof_settings";
+        settings.name = `vectoplan_world_edit_${tool}_settings`;
         settings.position.set(centroid.x, centroid.y + 0.7, centroid.z);
         settings.scale.set(1.65, 1.65, 1);
         settings.renderOrder = 101;
-        settings.userData = { worldEditRoofSettings: true };
+        settings.userData = tool === "roof" ? { worldEditRoofSettings: true } : { worldEditStairSettings: true };
         runtime.settingsTarget = settings;
         group.add(settings);
       }
@@ -1842,6 +1864,24 @@ export function createWorldEditController(
     return true;
   }
 
+  function openStairQuickSettingsUnderCrosshair(): boolean {
+    const runtime = polygonAreaRuntime("stair");
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || !runtime.settingsTarget || !runtime.closed || !stairQuickSettings) return false;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    if (!raycaster.intersectObject(runtime.settingsTarget, false)[0]) return false;
+    const inputController = options.sceneRuntime.getInputController();
+    inputController?.clear("world-edit-stair-settings-open");
+    inputController?.disable("world-edit-stair-settings-open");
+    stopPolygonAreaInteraction("stair");
+    stairQuickSettings.open(stairParameters);
+    if (inputController) void inputController.exitPointerLock("world-edit-stair-settings");
+    setStatus("Treppeneinstellungen geöffnet · Laufbreite und Auftritte lassen sich mit dem Mausrad ändern.", "ready");
+    return true;
+  }
+
   function updatePolygonAreaMarkerColors(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     runtime.pointTargets.forEach((marker, index) => {
@@ -1888,7 +1928,7 @@ export function createWorldEditController(
     const runtime = polygonAreaRuntime(tool);
     if (!runtime.closed) return;
     if (tool === "roof") scheduleRoofPreview();
-    else if (editingRoomInstanceId) void executeRoom();
+    else if (tool === "room" && editingRoomInstanceId) void executeRoom();
   }
 
   function stopPolygonAreaInteraction(tool: PolygonAreaTool): void {
@@ -1935,6 +1975,8 @@ export function createWorldEditController(
     if (tool === "roof") {
       setStatus(`Dachfläche mit ${runtime.points.length} Punkten geschlossen. CAD-Dach wird neu berechnet …`, "busy");
       void calculateRoofPreview();
+    } else if (tool === "stair") {
+      setStatus(`Treppenfläche mit ${runtime.points.length} Punkten geschlossen. Zahnrad wählen und Laufparameter einstellen.`, "ready");
     } else {
       setStatus(`Raumfläche mit ${runtime.points.length} Punkten geschlossen und wird gespeichert …`, "busy");
       void executeRoom();
@@ -2009,12 +2051,14 @@ export function createWorldEditController(
     if (tool === "room") {
       editingRoomInstanceId = null;
       editingRoomAnchor = null;
-    } else {
+    } else if (tool === "roof") {
       restoreEditingRoofObjects();
       editingRoofInstanceId = null;
       editingRoofAnchor = null;
       invalidateRoofCalculation();
       roofQuickSettings?.close(false);
+    } else {
+      stairQuickSettings?.close();
     }
     disposePolygonAreaGroup(tool);
     if (tool === "roof") rebuildRoofZoneScene(true);
@@ -2029,15 +2073,16 @@ export function createWorldEditController(
     }, Math.max(0, delayMilliseconds));
   }
 
-  function invalidateRoofCalculation(): void {
+  function invalidateRoofCalculation(retainLastSuccessfulPreview = false): void {
     roofCalculationSequence += 1;
     roofCalculationAbortController?.abort();
     roofCalculationAbortController = null;
     if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
     roofPreviewTimer = 0;
     const runtime = polygonAreaRuntime("roof");
-    runtime.calculation = null;
-    runtime.request = null;
+    const preview = roofPreviewStateAfterInvalidation(runtime, retainLastSuccessfulPreview);
+    runtime.calculation = preview.calculation;
+    runtime.request = preview.request;
   }
 
   async function calculateRoofPreview(
@@ -2053,13 +2098,13 @@ export function createWorldEditController(
     const sequence = ++roofCalculationSequence;
     const request = requestedCalculation ?? buildRoofCalculationRequest(runtime.points, roofParameters);
     const requestKey = roofCalculationRequestKey(request);
-    runtime.request = request;
     try {
       const calculation = await requestRoofCalculation(request, abortController.signal);
       if (sequence !== roofCalculationSequence) return null;
       const currentRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
       if (requestKey !== roofCalculationRequestKey(currentRequest)) return null;
       runtime.calculation = calculation;
+      runtime.request = request;
       rebuildPolygonAreaScene("roof");
       refreshHud();
       const summary = asRecord(calculation.summary);
@@ -2068,7 +2113,6 @@ export function createWorldEditController(
     } catch (error) {
       if (sequence !== roofCalculationSequence) return null;
       if (error instanceof DOMException && error.name === "AbortError") return null;
-      runtime.calculation = null;
       rebuildPolygonAreaScene("roof");
       options.logger?.warn?.("CAD roof calculation failed.", { error: normalizeUnknownError(error) });
       setStatus(`Dachberechnung fehlgeschlagen: ${commandErrorMessage(error)}`, "error");
@@ -2088,6 +2132,8 @@ export function createWorldEditController(
     busy = true;
     if (executeButton) executeButton.disabled = true;
     setStatus(editingRoofInstanceId ? "Dach wird aktualisiert …" : "Dach wird im gemeinsamen 3D-Modell gespeichert …", "busy");
+    let optimisticRoofId: string | null = null;
+    let optimisticCalculation: RoofCalculationResult | null = null;
     try {
       const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
       const requestIsCurrent = runtime.request
@@ -2179,11 +2225,17 @@ export function createWorldEditController(
           },
         },
       };
+      registerOptimisticRoofCalculation(roofId, calculation);
+      optimisticRoofId = roofId;
+      optimisticCalculation = calculation;
       const result = await options.worldRuntime.getSource().sendCommand(payload, {
         reason: editingRoofInstanceId ? "world-edit:roof:update" : "world-edit:roof:create",
         reloadDirtyChunks: false,
       });
       if (isChunkApiFailedResult(result)) {
+        clearOptimisticRoofCalculation(roofId, calculation);
+        optimisticRoofId = null;
+        optimisticCalculation = null;
         setStatus(commandErrorMessage(result), "error");
         return;
       }
@@ -2198,9 +2250,22 @@ export function createWorldEditController(
         edgeOverhangsMm: [...roofParameters.edgeOverhangsMm],
       });
       await options.sceneRuntime.reloadDirtyChunks("world-edit-roof");
-      resetPolygonArea("roof");
-      setStatus(`Dach ${roofId} mit Dachhaut, Sparren und Pfetten gespeichert. Das Werkzeug ist bereit für die nächste Dachzone.`, "ready");
+      const persistedVersionVisible = await waitForPersistedRoofCalculation(roofId, calculation);
+      if (persistedVersionVisible) {
+        // The matching chunk now owns the visualization. Obsolete meshes that
+        // were hidden during editing must never be made visible again.
+        hiddenEditingRoofObjects = [];
+        if (activeTool === "roof") resetPolygonArea("roof");
+        setStatus(`Dach ${roofId} mit Dachhaut, Sparren und Pfetten gespeichert. Das Werkzeug ist bereit für die nächste Dachzone.`, "ready");
+      } else {
+        // Keep the exact successful preview visible. Removing it here would
+        // expose a stale chunk for a few frames while realtime catches up.
+        setStatus(`Dach ${roofId} ist gespeichert; die neue Darstellung wird noch synchronisiert.`, "busy");
+      }
     } catch (error) {
+      if (optimisticRoofId && optimisticCalculation) {
+        clearOptimisticRoofCalculation(optimisticRoofId, optimisticCalculation);
+      }
       options.logger?.warn?.("Roof placement failed.", { error: normalizeUnknownError(error) });
       setStatus(commandErrorMessage(error), "error");
     } finally {
@@ -2325,7 +2390,7 @@ export function createWorldEditController(
         start: best.start,
         end: best.end,
         inward,
-        depthMeters: Math.max(1, Math.min(maximumDepth, saved.depthMeters)),
+        depthMeters: Math.max(0, Math.min(maximumDepth, saved.depthMeters)),
       };
       activeParcelGridParcelId = parcelId;
       activeParcelGridGuideKey = savedGuideKey;
@@ -2400,7 +2465,7 @@ export function createWorldEditController(
       };
       const runtime = polygonAreaRuntime("roof");
       if (runtime.closed && validPolygonArea(runtime.points)) {
-        invalidateRoofCalculation();
+        invalidateRoofCalculation(true);
         scheduleRoofPreview();
       }
       refreshHud();
@@ -2423,6 +2488,23 @@ export function createWorldEditController(
       })) {
         void executeRoof();
       }
+    },
+  });
+  stairQuickSettings = createStairQuickSettings({
+    root: options.root,
+    onChange: (parameters) => {
+      stairParameters = {...parameters};
+      rebuildPolygonAreaScene("stair");
+      refreshHud();
+    },
+    onClose: () => {
+      const inputController = options.sceneRuntime.getInputController();
+      inputController?.clear("world-edit-stair-settings-close");
+      inputController?.enable("world-edit-stair-settings-close");
+      if (activeTool !== "stair") return;
+      try { void inputController?.requestPointerLock("world-edit-stair-settings-close"); } catch { /* best effort */ }
+      const runtime = polygonAreaRuntime("stair");
+      if (!busy && runtime.closed && validPolygonArea(runtime.points)) void executeStair();
     },
   });
 
@@ -2908,7 +2990,7 @@ export function createWorldEditController(
     const depthForSegment = (segment: BoundarySegment): number => {
       const savedDepth = persistedParcelGridGuides.get(segment.guideKey)?.depthMeters;
       const depth = segmentMatchesGuide(segment) ? parcelGridGuide!.depthMeters : savedDepth;
-      return Math.max(1, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
+      return Math.max(0, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
     };
     const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...boundarySegments.map(depthForSegment));
 
@@ -4494,7 +4576,7 @@ export function createWorldEditController(
       ? parcelGridGuide!.depthMeters
       : persistedParcelGridGuides.get(guideKey)?.depthMeters
         ?? Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(parcelGridInfluence)));
-    const depthMeters = Math.max(1, Math.min(maximumDepth, requestedDepth));
+    const depthMeters = Math.max(0, Math.min(maximumDepth, requestedDepth));
     parcelGridHandleAlong = Math.max(0.04, Math.min(0.96, best.factor));
     parcelGridGuide = {
       guideKey,
@@ -4585,7 +4667,7 @@ export function createWorldEditController(
         initialDepth: parcelGridDragState.initialDepthMeters,
         initialPointerDepth: parcelGridDragState.initialPointerDepthMeters,
         pointerDepth,
-        minimumDepth: 1,
+        minimumDepth: 0,
         maximumDepth: parcelGridDragState.maximumDepthMeters,
       });
       if (nextDepth !== parcelGridGuide.depthMeters) {
@@ -4640,7 +4722,7 @@ export function createWorldEditController(
       setStatus("Bitte zuerst mit Linksklick eine Grundstückskante auswählen.", "warning");
       return false;
     }
-    const depthMeters = Math.max(1, Math.round(parcelGridGuide.depthMeters) - 1);
+    const depthMeters = Math.max(0, Math.round(parcelGridGuide.depthMeters) - 1);
     parcelGridGuide = { ...parcelGridGuide, depthMeters };
     rememberParcelGridGuide();
     rebuildParcelGridScene();
@@ -4885,6 +4967,54 @@ export function createWorldEditController(
     }
   }
 
+  function sceneContainsRoofCalculation(
+    objectInstanceId: string,
+    expectedCalculation: RoofCalculationResult,
+  ): boolean {
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return false;
+    let matches = false;
+    let hidStaleObject = false;
+    scene.traverse((object) => {
+      if (object.userData.semanticRoof !== true) return;
+      const ref = asRecord(object.userData.semanticObjectRef);
+      const renderedObjectInstanceId = safeString(
+        object.userData.objectInstanceId ?? ref.objectInstanceId,
+        "",
+      );
+      if (renderedObjectInstanceId !== objectInstanceId) return;
+      if (roofCalculationVersionsMatch(
+        expectedCalculation,
+        object.userData.roofCalculationVersion,
+      )) {
+        matches = true;
+        return;
+      }
+      if (!object.visible) return;
+      if (!hiddenEditingRoofObjects.some(({ object: hidden }) => hidden === object)) {
+        hiddenEditingRoofObjects.push({ object, visible: object.visible });
+      }
+      object.visible = false;
+      hidStaleObject = true;
+    });
+    if (hidStaleObject) options.sceneRuntime.renderOnce("world-edit.roof-save-stale-source-hide");
+    return matches;
+  }
+
+  async function waitForPersistedRoofCalculation(
+    objectInstanceId: string,
+    expectedCalculation: RoofCalculationResult,
+    timeoutMilliseconds = 8_000,
+  ): Promise<boolean> {
+    const deadline = Date.now() + Math.max(0, timeoutMilliseconds);
+    while (!destroyed) {
+      if (sceneContainsRoofCalculation(objectInstanceId, expectedCalculation)) return true;
+      if (Date.now() >= deadline) return false;
+      await new Promise<void>((resolve) => window.setTimeout(resolve, 32));
+    }
+    return false;
+  }
+
   function selectExistingRoof(ref: ExistingRoofRef): void {
     const runtime = polygonAreaRuntime("roof");
     const points = polygonAreaPointsFromFootprint(ref.footprint, ref.anchor.y);
@@ -4916,10 +5046,15 @@ export function createWorldEditController(
     const requestMatches = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
       && roofCalculationRequestKey(storedRequest) === roofCalculationRequestKey(expectedRequest);
     const storedCalculation = asRecord(ref.metadata.roofCalculation);
-    runtime.calculation = requestMatches && storedCalculation.ok === true
+    const purlinAlignmentIsCurrent = roofCalculationHasZoneTopPurlinAlignment(storedCalculation);
+    // Render the persisted calculation immediately even when an older request
+    // schema/default set no longer matches exactly, but never reuse a legacy
+    // calculation whose lowest purlin still sits below the roof-zone datum.
+    runtime.calculation = storedCalculation.ok === true && purlinAlignmentIsCurrent
       ? storedCalculation as RoofCalculationResult
       : null;
-    runtime.request = requestMatches
+    runtime.request = storedCalculation.ok === true && purlinAlignmentIsCurrent
+      && storedRequest.contract_version === "cad-roof-calculation-request/0.1"
       ? storedRequest as unknown as RoofCalculationRequest
       : null;
     editingRoofInstanceId = ref.objectInstanceId;
@@ -4928,7 +5063,7 @@ export function createWorldEditController(
     rebuildPolygonAreaScene("roof");
     rebuildRoofZoneScene(true);
     refreshHud();
-    if (!requestMatches) scheduleRoofPreview(0);
+    if (!requestMatches || !purlinAlignmentIsCurrent) scheduleRoofPreview(0);
     setStatus(`Dach ${ref.objectInstanceId} ausgewählt. Eckpunkte und alle Dachparameter bleiben editierbar.`, "ready");
   }
 
@@ -4953,6 +5088,7 @@ export function createWorldEditController(
         return;
       }
       pendingRoofQuickSettings.delete(ref.objectInstanceId);
+      clearOptimisticRoofCalculation(ref.objectInstanceId);
       resetPolygonArea("roof");
       await options.sceneRuntime.reloadDirtyChunks("world-edit-roof-remove");
       rebuildRoofZoneScene(true);
@@ -5137,6 +5273,101 @@ export function createWorldEditController(
     }
   }
 
+  async function executeStair(): Promise<void> {
+    if (busy) return;
+    const runtime = polygonAreaRuntime("stair");
+    if (!runtime.closed || !validPolygonArea(runtime.points)) {
+      setStatus("Bitte zuerst einen gültigen Treppenbereich mit mindestens drei Punkten schließen.", "warning");
+      return;
+    }
+    const bounds = polygonAreaBounds(runtime.points);
+    if (!bounds) return;
+    const anchor = {
+      x: Math.floor(bounds.minimum.x),
+      y: Math.floor(runtime.points[0]!.y + 1),
+      z: Math.floor(bounds.minimum.z),
+    };
+    const targetCells = options.sceneRuntime.getTargetCells();
+    const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
+    const stairId = `stair_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus("Parametrische Treppe wird angelegt …", "busy");
+    try {
+      const payload: ChunkApiPlaceObjectCommandPayload = {
+        type: "PlaceObject",
+        userId: "editor_user",
+        sessionId: `world_edit_stair_${Date.now()}`,
+        position: anchor,
+        blockTypeId,
+        objectTypeId: "building_stair",
+        objectKind: "semantic_footprint",
+        objectInstanceId: stairId,
+        dimensions: {
+          x: Math.max(1, Math.min(256, Math.ceil(bounds.size.x))),
+          y: 3,
+          z: Math.max(1, Math.min(256, Math.ceil(bounds.size.z))),
+        },
+        footprint: {
+          type: "Polygon",
+          coordinateSpace: "world-cell-xz",
+          coordinates: [polygonAreaClosedCoordinates(runtime.points)],
+          baseY: runtime.points[0]!.y,
+          height: 3,
+          schemaVersion: "vectoplan-building-stair.v1",
+        },
+        occupiedCells: [anchor],
+        metadata: {
+          schemaVersion: "vectoplan-building-stair.v1",
+          source: "vectoplan-editor.world-edit.stair",
+          familyRef: "world-edit.stair",
+          variantRef: stairParameters.stairType,
+          semanticRole: "stair",
+          label: "Treppe",
+          stairParameters: {...stairParameters},
+          libraryPlacementContext: {
+            libraryItemId: "world-edit-stair",
+            familyId: "world-edit.stair",
+            packageId: "world-edit.stair",
+            variantId: stairParameters.stairType,
+            objectKind: "semantic_footprint",
+            placementCommand: {kind: "PlaceObject", runtimeBlockTypeId: blockTypeId, blockTypeId},
+            semanticProfile: {
+              role: "stair",
+              variables: {
+                "semantic.role": "stair",
+                "stair.type": stairParameters.stairType,
+                "stair.width_mm": stairParameters.widthMm,
+                "stair.tread_count": stairParameters.treadCount,
+                "stair.start_side": stairParameters.startSide,
+                "stair.end_side": stairParameters.endSide,
+                "stair.direction": stairParameters.direction,
+              },
+            },
+          },
+        },
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: "world-edit:stair:create",
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      await options.sceneRuntime.reloadDirtyChunks("world-edit-stair");
+      rebuildPolygonAreaScene("stair");
+      setStatus(`Treppe · ${stairParameters.widthMm} mm · ${stairParameters.treadCount} Auftritte gespeichert.`, "ready");
+    } catch (error) {
+      options.logger?.warn?.("Stair placement failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
   async function executeClipboard(
     requestedOperation?: WorldEditOperation,
     target?: ChunkApiWorldPosition | null,
@@ -5256,6 +5487,14 @@ export function createWorldEditController(
       }
       return;
     }
+    if (stairQuickSettings?.isOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        stairQuickSettings.close();
+      }
+      return;
+    }
     if (options.root.dataset.creativeInventoryOpen === "true") return;
     if (!activeSystem()?.handleKeyDown?.(event)) return;
     refreshHud();
@@ -5270,13 +5509,15 @@ export function createWorldEditController(
     stopClipboardMove();
     stopTentacleDrawing();
     stopPolygonAreaInteraction("room");
+    stopPolygonAreaInteraction("stair");
     stopPolygonAreaInteraction("roof");
     roofQuickSettings?.close(false);
+    stairQuickSettings?.close();
     activeTool = tool;
     const system = systemRegistry?.get(tool);
     if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
     if (previousTool !== tool) previousSystem?.onDeactivate?.(tool);
-    if (previousTool && (previousTool === "room" || previousTool === "roof") && previousTool !== tool) {
+    if (previousTool && (previousTool === "room" || previousTool === "stair" || previousTool === "roof") && previousTool !== tool) {
       if (previousTool === "roof") {
         resetPolygonArea("roof");
         disposeRoofZoneGroup();
@@ -5306,8 +5547,10 @@ export function createWorldEditController(
     stopClipboardMove();
     stopTentacleDrawing();
     stopPolygonAreaInteraction("room");
+    stopPolygonAreaInteraction("stair");
     stopPolygonAreaInteraction("roof");
     roofQuickSettings?.close(false);
+    stairQuickSettings?.close();
     panel.hidden = true;
     selection = { first: null, second: null };
     editingRoomInstanceId = null;
@@ -5319,6 +5562,7 @@ export function createWorldEditController(
     disposeSelectionGroup();
     disposeTentacleGroup();
     disposePolygonAreaGroup("room");
+    disposePolygonAreaGroup("stair");
     disposePolygonAreaGroup("roof");
     disposeRoofZoneGroup();
     roofZoneSignature = "";
@@ -5491,7 +5735,7 @@ export function createWorldEditController(
     if (activeTool === "roof"
       && previousRoofParameters !== JSON.stringify(roofParameters)
       && polygonAreaRuntime("roof").closed) {
-      polygonAreaRuntime("roof").calculation = null;
+      invalidateRoofCalculation(true);
       scheduleRoofPreview();
     }
     if (parcelMaskInput && typeof detail.parcelMask === "boolean") {
@@ -5533,6 +5777,26 @@ export function createWorldEditController(
   function handleParentMessage(event: MessageEvent): void {
     const data = asRecord(event.data);
     const type = safeString(data.type ?? data.kind, "");
+    if (type === "vectoplan-cad:worldedit-measurement") {
+      const detail = asRecord(data.detail ?? data);
+      const start = asArray(detail.start_mm);
+      const end = asArray(detail.end_mm);
+      if (start.length < 2 || end.length < 2) return;
+      const values = [start[0], start[1], end[0], end[1]].map(Number);
+      if (!values.every(Number.isFinite)) return;
+      const baseY = Number.isFinite(Number(detail.base_y)) ? Number(detail.base_y) + 0.5 : 1.5;
+      activate("ruler");
+      selection = {
+        first: { x: values[0] / 1000, y: baseY, z: values[1] / 1000 },
+        second: { x: values[2] / 1000, y: baseY, z: values[3] / 1000 },
+      };
+      selectionDragging = false;
+      rebuildSelectionScene();
+      refreshHud();
+      const distance = measurementMetres(selection);
+      setStatus(distance === null ? "CAD-Messung konnte nicht geladen werden." : `CAD-Messung: ${distance.toFixed(3)} Meter`, distance === null ? "warning" : "ready");
+      return;
+    }
     if (type === MAP_PARCEL_CATALOG_CHANGED) {
       const detail = asRecord(data.detail ?? data);
       const incomingAvailable = asArray(detail.availableParcels ?? detail.available_parcels);
@@ -5682,6 +5946,31 @@ export function createWorldEditController(
       executeRoom,
       rebuild: () => rebuildPolygonAreaScene("room"),
       reset: () => resetPolygonArea("room"),
+      setStatus,
+    }),
+    createStairSystem({
+      stopInteraction: () => stopPolygonAreaInteraction("stair"),
+      startHover: () => startPolygonAreaHover("stair"),
+      stopHover: () => stopPolygonAreaHover("stair"),
+      openSettingsUnderCrosshair: openStairQuickSettingsUnderCrosshair,
+      removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("stair"),
+      resolveTarget: (intent) => resolvePolygonAreaTarget("stair", intent),
+      beginPointInteraction: (target) => beginPolygonAreaInteraction("stair", target),
+      finishArea: () => {
+        finishPolygonArea("stair");
+        const runtime = polygonAreaRuntime("stair");
+        if (runtime.closed && validPolygonArea(runtime.points)) {
+          stairQuickSettings?.open(stairParameters);
+          const inputController = options.sceneRuntime.getInputController();
+          inputController?.clear("world-edit-stair-settings-open");
+          inputController?.disable("world-edit-stair-settings-open");
+          if (inputController) void inputController.exitPointerLock("world-edit-stair-settings");
+        }
+      },
+      isComplete: () => polygonAreaRuntime("stair").closed && validPolygonArea(polygonAreaRuntime("stair").points),
+      executeStair,
+      rebuild: () => rebuildPolygonAreaScene("stair"),
+      reset: () => resetPolygonArea("stair"),
       setStatus,
     }),
     createPaintSystem({
@@ -5936,6 +6225,8 @@ export function createWorldEditController(
       if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
       roofQuickSettings?.destroy();
       roofQuickSettings = null;
+      stairQuickSettings?.destroy();
+      stairQuickSettings = null;
       roofSettingsTexture?.dispose();
       roofSettingsTexture = null;
       options.sceneRuntime.setPlacementConstraintHandler(null);

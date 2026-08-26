@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from unittest.mock import patch
 
+import pytest
+
 from app import create_app
 from src.library.client import load_cad_library_catalog
 
@@ -45,7 +47,7 @@ def test_cad_template():
     response = client().get("/cad")
     assert response.status_code == 200
     assert b"plan-svg" in response.data
-    assert b"navigation-hint" in response.data
+    assert b"navigation-hint" not in response.data
     assert b"plan-summary" not in response.data
     assert b"building-panel" in response.data
     assert b"building-storeys" in response.data
@@ -63,7 +65,7 @@ def test_cad_template():
     assert b'data-view-action="plan-overview"' in response.data
     assert b"cad-toolbar-stack" in response.data
     assert b"cad-toolbar-icon" in response.data
-    assert b"plan-workspace-1" in response.data
+    assert b"cad-workflow-4" in response.data
     assert b"plan-workspace-panel" in response.data
     assert b'id="room-label-panel"' in response.data
     assert b'data-action="save-room-label"' in response.data
@@ -74,11 +76,15 @@ def test_cad_template():
     assert b'value="civil"' in response.data
     assert b'value="engineering"' in response.data
     assert "Gelb · bearbeitbare Referenz".encode() in response.data
+    assert "Weiß · ausgeblendet".encode() in response.data
+    assert b'id="door-options"' in response.data
+    assert b'data-door-hinge="left"' in response.data
+    assert b'data-door-swing="negative"' in response.data
     assert b'value="bridge"' in response.data
     assert b"workspace-actions" in response.data
     assert b"toggle-navigator" not in response.data
     assert b"toggle-inspector" not in response.data
-    assert b"touch-hint" in response.data
+    assert b"touch-hint" not in response.data
     assert b"panel-backdrop" not in response.data
     assert b"right-panel" not in response.data
     assert b"left-panel" not in response.data
@@ -90,6 +96,14 @@ def test_cad_template():
     assert b'data-quick-tool="window"' in response.data
     assert b'data-quick-tool="door"' in response.data
     assert b'data-quick-tool="stair"' in response.data
+    assert b'data-tool="dimension"' in response.data
+    assert b'id="measurement-mode"' in response.data
+    second_rail = response.data.split(b'class="cad-edit-rail"', 1)[1].split(b'</div>', 1)[0]
+    assert second_rail.index(b'data-tool="dimension"') < second_rail.index(b'data-tool="roof"')
+    assert b'id="cad-coordinate-bar"' in response.data
+    assert b'id="opening-placement-options"' in response.data
+    assert b'id="stair-options"' in response.data
+    assert b'id="workspace-message"' not in response.data
     assert b"Creative Library" in response.data
     assert b'data-action="create-room"' not in response.data
     assert b"data-export" not in response.data
@@ -121,6 +135,7 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert 'state.activeTool === "room"' in source
     assert "function drawingModelPoint" in source
     assert 'event.key === "Shift"' in source
+    assert 'event.key === "Control"' in source
     assert "baseWidth * 0.0001" in source
     assert "data.message || nestedError || errorCode" in source
     assert "vectoplan-parcel-grid-state.v1" in source
@@ -172,6 +187,9 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "function primitiveSnapPriority" in source
     assert "if (areaDrawing) return closest" in source
     assert "function gridSnapEnabled" in source
+    assert "function alignmentTrackingCandidate" in source
+    assert "function updatePointTrackingCandidate" in source
+    assert "function renderPointTrackingGuides" in source
     assert "if (!gridSnapEnabled()) return [Math.round(point.x), Math.round(point.y)]" in source
     assert 'return Boolean(control?.checked)' in source
     assert "function wallEdgeGeometry" in source
@@ -180,7 +198,7 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "function wallHostCandidate" in source
     assert 'placement_mode = "wall_hosted"' in source
     assert "roomDraftPoints" in source
-    assert "function handleAreaEscape" in source
+    assert "function handleCadEscape" in source
     assert "function areaCloseSnapPoint" in source
     assert "function completeRoomDrawing" in source
     assert "roofDraftClosed: false" in source
@@ -189,12 +207,33 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "Dachfläche geschlossen · jetzt Dachform und Parameter einstellen" in source
     assert 'kind: "area-close"' in source
     assert 'state.snapTarget?.kind === "area-close"' in source
-    assert 'window.addEventListener("keydown", handleAreaEscape, true)' in source
-    assert 'window.addEventListener("keyup", suppressAreaEscapeKeyup, true)' in source
+    assert 'window.addEventListener("keydown", handleCadEscape, true)' in source
+    assert 'window.addEventListener("keyup", suppressCadEscapeKeyup, true)' in source
+    assert "event.stopImmediatePropagation()" in source
+    assert 'displayMode: ["red", "yellow", "gray", "white"]' in source
+    assert "function updateSelectedDoorConfiguration" in source
+    assert "function mergeOptimisticProjection" in source
+    assert "function appendPlanAxes" in source
+    assert "function renderPlanDetails" in source
     assert 'selectTool("room")' in source
     assert 'selectTool("select")' not in source.split("async function submitRoomCommand", 1)[1].split("function openRoomLabelEditor", 1)[0]
-    assert 'payload.parameters.reference_line = "wall_edge"' in source
-    assert 'payload.parameters.wall_body_side = "left"' in source
+    assert 'payload.parameters.reference_line = "wall_outer_edge"' in source
+    assert 'payload.parameters.reference_edge = "outside"' in source
+    assert 'payload.parameters.wall_body_side = "inside-left"' in source
+    assert "function confirmCoordinateInput" in source
+    assert "function beginOpeningPlacement" in source
+    assert "function finishStairConfiguration" in source
+    assert "vectoplan-cad:worldedit-measurement" in source
+    assert "function wallChainCloseSnapPoint" in source
+    assert "function closedFacesFromWallSegments" in source
+    assert "function completeAreaMeasurement" in source
+    assert "function clearMeasurementResults" in source
+    assert "function isCadEscapeEvent" in source
+    assert 'payload.parameters.wall_join_mode = "automatic_miter"' in source
+    assert "measurement-result-overlay" in source
+    assert "function measurementLengthParts" in source
+    assert "function completeLengthMeasurement" in source
+    assert "function isTransientMeasurementPrimitive" in source
     assert "draftPointRadius" in source
     assert "function renderPlanWorkspace" in source
     assert "state.camera = null" not in source.split('String(data.type || data.kind || "") !== "vectoplan-app:parcel-selection-sync"', 1)[1].split("});", 1)[0]
@@ -209,9 +248,20 @@ def test_cad_styles_use_white_workspace_and_full_precision_crosshair():
     assert "cursor: none" in source
     assert ".cad-crosshair-horizontal" in source
     assert ".cad-crosshair-vertical" in source
+    assert ".cad-point-tracking" in source
+    assert ".measurement-last-digit" in source
     assert ".draft-wall-preview" in source
     assert ".draft-wall-reference" in source
     assert ".draft-wall-hatch-line" in source
+    assert ".wall-hatch-line" in source
+    assert ".wall-hatch-background { fill: #fff; }" in source
+    assert ".wall-material-concrete" in source
+    assert ".wall-material-insulated" in source
+    assert ".opening-cutout { fill: #fff; stroke: none; }" in source
+    assert "stroke-dasharray" not in source.split(".door-swing {", 1)[1].split("}", 1)[0]
+    assert "fill: url(#cad-wall-hatch)" in source
+    assert ".storey-mode-white" in source
+    assert ".cad-door-panel" in source
     assert ".cad-toolbar-stack" in source
     assert ".cad-toolbar-icon" in source
     assert ".point-modify-handle" in source
@@ -220,6 +270,34 @@ def test_cad_styles_use_white_workspace_and_full_precision_crosshair():
     assert ".cad-object-snap" not in source
     assert ".primitive:hover .semantic-fill" not in source
     assert ".plan-sheet" in source
+
+
+def test_cad_plan_symbols_create_white_wall_openings_and_material_sections():
+    response = client().get("/static/cad/js/main.js")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    assert "function wallMaterialKind" in source
+    assert 'return "concrete"' in source
+    assert 'return "insulated"' in source
+    assert 'return "drywall"' in source
+    assert "function appendOpeningCutout" in source
+    assert 'class: "opening-jamb"' in source
+    assert 'class: "window-mullion"' in source
+    assert "Math.max(8, Math.min(18" in source
+
+
+def test_plan_overview_uses_vertical_reference_style_title_block():
+    response = client().get("/static/cad/js/main.js")
+    assert response.status_code == 200
+    source = response.get_data(as_text=True)
+    assert '["title_block", {x: 33800, y: 2450, width: 6400, height: 24500}]' in source
+    assert 'class: "plan-title-brand-strip"' in source
+    assert '"BAUVORHABEN"' in source
+    assert '"PLANINHALT"' in source
+    assert '"ÄNDERUNGEN"' in source
+    assert '"PLANANGABEN"' in source
+    assert '"PLANINHALT / MASSSTÄBE"' in source
+    assert '"ÄNDERUNGSVERMERK"' in source
 
 
 def test_plan_rules_cover_buildings_and_infrastructure():
@@ -316,6 +394,8 @@ def test_creative_library_catalog_is_the_authoritative_placement_source():
     room = next(item for item in payload["items"] if item["family_ref"] == "world-edit.room")
     assert room["plan_representation"]["symbol_kind"] == "room"
     assert room["plan_representation"]["room_stamp_show_area"] is True
+    window = next(item for item in payload["items"] if item["family_ref"] == "vp.hochbau.oeffnungen.fenster.standardfenster")
+    assert window["plan_representation"]["leaf_count"] == 0
 
 
 def test_live_library_inventory_keeps_standard_cad_quick_tools_available():
@@ -567,6 +647,56 @@ def test_opening_requires_wall_host_and_uses_wall_thickness():
     assert preview["host_wall_ref"] == "wall_001"
     assert preview["geometry"]["thickness_mm"] == 240
     assert preview["semantic_role"] == "door"
+    assert preview["door_hinge_side"] == "left"
+    assert preview["door_swing_side"] == "positive"
+
+
+@pytest.mark.parametrize(
+    ("command", "family_ref", "variant_ref", "geometry", "parameters", "expected_kind"),
+    [
+        ("create_wall", "vp.hochbau.waende.mauerwerkswaende.mauerwerkswand", "240_mm", {"start_mm": [0, 0], "end_mm": [5000, 0]}, {"thickness_mm": 240}, "wall"),
+        ("create_opening", "vp.hochbau.oeffnungen.innentueren.innentuer", "885_x_2010_mm", {"start_mm": [1000, 0], "end_mm": [1885, 0]}, {"height_mm": 2010, "thickness_mm": 240, "host_wall_ref": "wall_001", "host_wall_thickness_mm": 240, "placement_mode": "wall_hosted"}, "opening"),
+        ("create_opening", "vp.hochbau.oeffnungen.fenster.standardfenster", "1000_x_1200_mm", {"start_mm": [2500, 0], "end_mm": [3500, 0]}, {"height_mm": 1200, "thickness_mm": 240, "host_wall_ref": "wall_001", "host_wall_thickness_mm": 240, "placement_mode": "wall_hosted"}, "opening"),
+        ("create_room", "vp.hochbau.treppen_rampen.treppenlaeufe.treppenbereich", "1200_x_3000_mm", {"start_mm": [0, 0], "end_mm": [3000, 5000], "points_mm": [[0, 0], [3000, 0], [3000, 5000], [0, 5000]]}, {"height_mm": 3000, "room_type": "stair", "label": "Treppenbereich"}, "structure"),
+        ("create_room", "world-edit.room", "default", {"start_mm": [0, 0], "end_mm": [4000, 3000], "points_mm": [[0, 0], [4000, 0], [4000, 3000], [0, 3000]]}, {"height_mm": 2770, "room_type": "wohnen", "label": "Wohnen"}, "room"),
+    ],
+)
+def test_primary_cad_placement_tools_return_renderable_preview(command, family_ref, variant_ref, geometry, parameters, expected_kind):
+    response = client().post(
+        "/api/v1/cad/commands",
+        json=valid_command(
+            command=command,
+            family_ref=family_ref,
+            variant_ref=variant_ref,
+            geometry=geometry,
+            parameters={**parameters, "storey_id": "ground_floor"},
+            client_command_id=f"matrix_{command}",
+        ),
+    )
+    assert response.status_code == 202
+    preview = response.get_json()["preview_element"]
+    assert preview["kind"] == expected_kind
+    assert preview["geometry"]
+    assert preview["view_refs"] == ["vp_ground_floor"]
+
+
+@pytest.mark.parametrize(
+    ("command", "parameters", "expected_kind"),
+    [
+        ("create_line", {}, "line"),
+        ("create_dimension", {}, "dimension"),
+        ("create_section_marker", {"label": "B–B"}, "line"),
+    ],
+)
+def test_annotation_cad_tools_return_renderable_preview(command, parameters, expected_kind):
+    payload = valid_command(command=command, parameters=parameters, client_command_id=f"matrix_{command}")
+    payload.pop("family_ref")
+    payload.pop("variant_ref")
+    response = client().post("/api/v1/cad/commands", json=payload)
+    assert response.status_code == 202
+    preview = response.get_json()["preview_element"]
+    assert preview["kind"] == expected_kind
+    assert preview["geometry"]
 
 
 def test_export_request_is_validated_but_not_dispatched():

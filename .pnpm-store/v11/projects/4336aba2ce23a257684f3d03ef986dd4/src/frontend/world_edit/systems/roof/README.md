@@ -18,12 +18,18 @@
 Sparren und Pfetten und wird sowohl für die Live-Vorschau als auch als Metadatum
 eines `PlaceObject` mit `objectTypeId: building_roof` verwendet. Dadurch kann die
 Scene dieselbe berechnete Geometrie nach einem Chunk-Reload reproduzieren.
+Beim Speichern bleibt diese erfolgreiche Vorschau sichtbar, bis die Scene exakt
+denselben Berechnungs-Fingerprint aus dem aktualisierten Chunk geladen hat. Eine
+kurzzeitig noch gelieferte Altversion wird dabei verborgen.
 
 Das Modell trennt die Tragwerksebene von der äußeren Dachfläche. Sparren liegen
 vollständig unter Schalung und Unterdeckung, Pfetten erhalten an jedem Auflager
 eine 30-mm-Kerve. Standardwerte sind 650 mm Sparrenraster, 200 mm Sparrenhöhe
 (zulässig 180–240 mm) und Pfetten 140 × 200 mm. Eine Mittelpfette wird erst
 oberhalb der konfigurierten Spannweite erzeugt.
+Die Unterkante der niedrigsten Pfette liegt immer exakt auf der Oberkante der
+Dachzone. Ältere Berechnungen ohne diese Höhenreferenz werden beim Öffnen der
+Dacheinstellungen automatisch neu berechnet.
 
 `roof_build_up` beschreibt Dämmung, Schalung, Unterdeckbahn, Konterlattung,
 Traglattung und Dachziegel. `insulation_mode` unterstützt `between` (Standard),
