@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from flask import Blueprint, current_app, jsonify, render_template, request
 
+from src.automation.dimensions import DimensionCalculationError, calculate_dimensions
+from src.automation.roof import RoofCalculationError, calculate_roof
 from src.commands.service import build_command_receipt, validate_cad_command
 from src.core.client import CoreClientError, dispatch_cad_command, get_import_projection, project_chunks_to_projection
 from src.exports.service import build_export_receipt, validate_export_request
@@ -40,6 +42,9 @@ def status():
                 "command": "cad-command/0.2",
                 "library_catalog": "cad-library-catalog/0.1",
                 "export": "cad-export/0.1",
+                "automatic_dimensions": "cad-auto-dimension-result/0.1",
+                "parametric_roof": "cad-roof-calculation-result/0.1",
+                "plan_rules": "cad-plan-rules/0.1",
             },
             "mock_mode": current_app.config["MOCK_MODE"],
             "core_connection": bool(current_app.config["CORE_INTERNAL_URL"]),
@@ -56,6 +61,11 @@ def bootstrap():
 @cad_api_bp.get("/plan-profiles")
 def plan_profiles():
     return jsonify(load_json_file(current_app.config["PLAN_PROFILE_PATH"]))
+
+
+@cad_api_bp.get("/plan-rules")
+def plan_rules():
+    return jsonify(load_json_file(current_app.config["PLAN_RULES_PATH"]))
 
 
 @cad_api_bp.get("/test-input")
@@ -130,6 +140,24 @@ def create_command_draft():
             "core_result": dispatch,
         })
     return jsonify(receipt), 202
+
+
+@cad_api_bp.post("/automation/dimensions/calculate")
+def calculate_automatic_dimensions():
+    payload = request.get_json(silent=True)
+    try:
+        return jsonify(calculate_dimensions(payload))
+    except DimensionCalculationError as exc:
+        return jsonify({"ok": False, "error": "invalid_dimension_request", "errors": exc.errors}), 400
+
+
+@cad_api_bp.post("/automation/roof/calculate")
+def calculate_parametric_roof():
+    payload = request.get_json(silent=True)
+    try:
+        return jsonify(calculate_roof(payload))
+    except RoofCalculationError as exc:
+        return jsonify({"ok": False, "error": "invalid_roof_request", "errors": exc.errors}), 400
 
 
 @cad_api_bp.post("/exports")

@@ -28,6 +28,11 @@ import {
   isVplibParametricObjectRef,
   shouldRenderSemanticFootprint,
 } from "./semantic_object_rendering";
+import { createRoofCalculationMeshes } from "./roof_calculation_rendering";
+import {
+  isRenderedRoofCalculationCurrent,
+  roofCalculationForScene,
+} from "../world_edit/systems/roof/optimistic_calculations";
 import {
   createRemoteAvatarScene,
   type RemoteAvatarScene,
@@ -1866,6 +1871,23 @@ function appendSemanticObjectMeshes(
       semanticGeometries.push(...parametric.geometries);
       continue;
     }
+    if (ref.objectTypeId === "building_roof") {
+      const roofCalculation = roofCalculationForScene(
+        ref.objectInstanceId,
+        ref.metadata.roofCalculation,
+        chunk.chunkRevision,
+      );
+      const roof = createRoofCalculationMeshes(roofCalculation, {
+        scale: cellSize,
+        semanticObjectRef: ref,
+        objectInstanceId: ref.objectInstanceId,
+      });
+      for (const mesh of roof.meshes) record.group.add(mesh);
+      semanticMeshes.push(...roof.meshes);
+      semanticMaterials.push(...roof.materials);
+      semanticGeometries.push(...roof.geometries);
+      continue;
+    }
     const geometry = createSemanticFootprintGeometry(
       ref.footprint,
       ref.occupiedCells[0]?.y ?? 0,
@@ -3129,6 +3151,25 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     else terrainShadowCastersDirty = true;
   }
 
+  function chunkRoofMeshesAreCurrent(record: ChunkMeshRecord): boolean {
+    const checkedRoofIds = new Set<string>();
+    for (const mesh of record.meshes) {
+      if (mesh.userData.semanticRoof !== true) continue;
+      const ref = asRecord(mesh.userData.semanticObjectRef);
+      const objectInstanceId = safeString(
+        mesh.userData.objectInstanceId ?? ref.objectInstanceId,
+        "",
+      );
+      if (!objectInstanceId || checkedRoofIds.has(objectInstanceId)) continue;
+      checkedRoofIds.add(objectInstanceId);
+      if (!isRenderedRoofCalculationCurrent(
+        objectInstanceId,
+        mesh.userData.roofCalculationVersion,
+      )) return false;
+    }
+    return true;
+  }
+
   function enqueueChunkMeshKey(chunkKey: string, highPriority = false): void {
     if (!chunkKey) return;
     if (pendingChunkMeshKeySet.has(chunkKey)) {
@@ -3361,6 +3402,23 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       }
       const latestChunk = registry.getChunk(key);
       if (!latestChunk || chunkMeshRevisionToken(latestChunk) !== nextRevision) {
+        disposeObject3D(builtRecord.group);
+        enqueueChunkMeshKey(key, true);
+        processedCount += 1;
+        continue;
+      }
+      if (pendingChunkMeshKeySet.has(key)) {
+        // A new invalidation for this same chunk arrived while its worker build
+        // was in flight. Installing the superseded result for even one frame
+        // causes a visible old -> new geometry flash.
+        disposeObject3D(builtRecord.group);
+        processedCount += 1;
+        continue;
+      }
+      if (!chunkRoofMeshesAreCurrent(builtRecord)) {
+        // This record may have started building before the roof save registered
+        // its optimistic result. Rebuild it against the current calculation;
+        // never expose the prepared old geometry in the meantime.
         disposeObject3D(builtRecord.group);
         enqueueChunkMeshKey(key, true);
         processedCount += 1;

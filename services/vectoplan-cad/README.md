@@ -425,7 +425,11 @@ Der Service enthält weiterhin das zustandslose Fundament aus Stufe 1 und zusät
 - fokussierter Erdgeschoss-Modellbereich; weitere Viewports bleiben im Datenvertrag für spätere Modi erhalten
 - auswählbare Scene-Primitives mit semantischem Inspector
 - validierte Exportaufträge für PDF, DXF, DWG und SVG
-- responsive Vollbild-Arbeitsfläche mit Zoom um die Mausposition, horizontalem Scrollen, mittlerer Maustasten-Navigation und Layersteuerung
+- responsive Vollbild-Arbeitsfläche mit Zoom um die Mausposition – auch während die Umschalttaste für das 45°-Raster gehalten wird –, horizontalem Trackpad-Scrollen, mittlerer Maustasten-Navigation und Layersteuerung
+- weiße, rasterfreie Modellfläche mit bildschirmfüllendem CAD-Fadenkreuz
+- fortlaufende Wandketten: jeder gesetzte Endpunkt wird sofort zum nächsten Startpunkt, die Persistierung läuft geordnet im Hintergrund und `ESC` beendet die Kette
+- einklappbares Gebäudefenster mit Gebäudetyp, Dachart, aktivem Geschoss und Rohhöhen in Metern; Punkt und Komma werden als Dezimaltrennzeichen akzeptiert, Ober-, Dach- und Kellergeschosse können lokal hinzugefügt oder entfernt werden
+- lokale, rückgängig machbare 2D-Bearbeitung für Kopieren, Drehen, Ausschneiden/Einfügen, Verzerren und Spiegeln
 - lesender Core-Adapter für die Chunk-zu-2D-Projektion
 - synchronisierter Flurstückszustand aus dem Projekt-Workspace
 - kräftige Darstellung ausgewählter und gestrichelte Darstellung angrenzender
@@ -435,6 +439,17 @@ Der Service enthält weiterhin das zustandslose Fundament aus Stufe 1 und zusät
   Grundstücksvereinigung
 
 Wichtig: `accepted: false` in Command- und Exportantworten bedeutet weiterhin, dass ohne Core beziehungsweise Export-Worker nichts persistiert und kein Exportartefakt erzeugt wurde. `processable: true` zeigt an, dass der Auftrag fachlich gültig und für die spätere Weiterleitung vorbereitet ist.
+
+Die klassischen Bearbeitungswerkzeuge sind in dieser Stufe absichtlich eine
+lokale 2D-CAD-Schicht. Sie arbeiten nicht direkt auf Chunk-Zellen. Kopien und
+Transformationen werden als lokale Edit-Operationen im Undo/Redo-Verlauf
+geführt. Der nächste Integrationsschritt ist ein semantischer
+Transformationsvertrag in `vectoplan-core`; erst Core darf daraus atomare
+Chunk-Mutationen erzeugen. Gebäudestrukturänderungen werden als
+`vectoplan-building-draft/0.1` im Projektbrowser gespeichert und über das Event
+`vectoplan-cad:building-structure` an den Projekt-Host publiziert. Neue
+Bauteil-Commands tragen Geschoss, Rohhöhe, Gebäudetyp und Dachart bereits in
+ihren Parametern.
 
 Der Service besitzt jetzt eine lesende Verbindung zu Core über
 `POST /api/v1/cad/core/projects/<core_project_id>/projection` und kann eine
@@ -613,12 +628,33 @@ VECTOPLAN_CAD_STRICT_STARTUP=false
 VECTOPLAN_CAD_CORE_INTERNAL_URL=http://vectoplan-core:5000
 VECTOPLAN_CAD_CORE_PUBLIC_URL=http://localhost:5106
 VECTOPLAN_CAD_CORE_SERVICE_API_KEY=
-VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS=30
+VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS=45
 ```
 
 ---
 
-## 17. Geplante Ausbaustufen
+## 17. Automatisierte CAD-Berechnungen
+
+Zwei zustandslose, versionierte JSON-Berechnungen bilden die Grundlage für die nächsten CAD-Ausbaustufen:
+
+- `POST /api/v1/cad/automation/dimensions/calculate` erzeugt Außen- und Innenbemaßungsketten einschließlich Tür-/Fensterbreiten.
+- `POST /api/v1/cad/automation/roof/calculate` berechnet Dachgeometrie, individuelle Dachüberstände, Dachhaut, Sparren und Pfetten für Flach-, Sattel-, Walm-, Krüppelwalm-, Pult-, Mansard-, Trapez-, Schmetterlings-, Zelt-/Pyramiden-, Tonnen- und Sheddächer.
+
+Das 2D-Dachwerkzeug zeichnet beliebige einfache, gerade und auch konkave
+Konturen. `create_roof` speichert ein neues gemeinsames `building_roof`-Objekt;
+Punktziehen und Parameteränderungen verwenden `update_roof`, damit dieselbe
+stabile Objekt-ID in CAD und Editor aktualisiert wird.
+
+Verträge, Beispiele und Implementierung liegen getrennt unter:
+
+- `src/automation/dimensions/`
+- `src/automation/roof/`
+
+Jede Eingabeänderung erzeugt ein vollständig neu berechnetes Ergebnis mit Fingerprint und vorgeschlagenem JSON-Dateinamen. Dadurch können CAD und VECTOPLAN Core später dieselbe Berechnung ohne UI-Abhängigkeit verwenden.
+
+---
+
+## 18. Geplante Ausbaustufen
 
 ### Stufe 1 – Fundament
 
@@ -673,7 +709,7 @@ VECTOPLAN_CAD_CORE_TIMEOUT_SECONDS=30
 
 ---
 
-## 18. Akzeptanzkriterien des Fundaments
+## 19. Akzeptanzkriterien des Fundaments
 
 Das Fundament gilt als nutzbar, wenn:
 
@@ -694,7 +730,7 @@ Das Fundament gilt als nutzbar, wenn:
 
 ---
 
-## 19. Offene Architekturentscheidungen
+## 20. Offene Architekturentscheidungen
 
 Vor der produktiven Core-Anbindung müssen insbesondere entschieden werden:
 
@@ -711,7 +747,7 @@ Vor der produktiven Core-Anbindung müssen insbesondere entschieden werden:
 
 ---
 
-## 20. Merksätze
+## 21. Merksätze
 
 - `vectoplan-cad` ist eine Arbeitsfläche, keine Projektdatenbank.
 - `vectoplan-core` ist die kanonische Integrations- und Revisionsschicht.

@@ -5,6 +5,7 @@ from math import hypot
 from typing import Any, Mapping
 
 from src.library.client import resolve_catalog_item
+from src.automation.roof import RoofCalculationError, calculate_roof
 
 
 SUPPORTED_COMMANDS = {
@@ -12,10 +13,12 @@ SUPPORTED_COMMANDS = {
     "create_line",
     "create_opening",
     "create_room",
+    "create_roof",
     "create_section_marker",
     "create_wall",
     "place_library_object",
     "update_room",
+    "update_roof",
 }
 
 LIBRARY_COMMANDS = {
@@ -25,6 +28,9 @@ LIBRARY_COMMANDS = {
     "place_library_object",
     "update_room",
 }
+
+ROOF_COMMANDS = {"create_roof", "update_roof"}
+MODEL_CHANGING_COMMANDS = LIBRARY_COMMANDS | ROOF_COMMANDS
 
 
 def validate_cad_command(payload: Any, *, catalog: Mapping[str, Any] | None = None) -> list[str]:
@@ -77,8 +83,14 @@ def validate_cad_command(payload: Any, *, catalog: Mapping[str, Any] | None = No
 
     if command == "create_opening":
         opening_height = parameters.get("height_mm") if isinstance(parameters, dict) else None
+        host_wall_ref = parameters.get("host_wall_ref") if isinstance(parameters, dict) else None
+        host_thickness = parameters.get("host_wall_thickness_mm") if isinstance(parameters, dict) else None
         if not _is_number(opening_height) or opening_height <= 0:
             errors.append("$.parameters.height_mm must be a number greater than zero")
+        if not isinstance(host_wall_ref, str) or not host_wall_ref.strip():
+            errors.append("$.parameters.host_wall_ref must reference an existing wall")
+        if not _is_number(host_thickness) or host_thickness <= 0:
+            errors.append("$.parameters.host_wall_thickness_mm must be a number greater than zero")
 
     if command == "place_library_object":
         thickness = parameters.get("thickness_mm") if isinstance(parameters, dict) else None
@@ -95,6 +107,42 @@ def validate_cad_command(payload: Any, *, catalog: Mapping[str, Any] | None = No
             errors.append("$.parameters.room_type must be a non-empty string")
         if not isinstance(label, str) or not label.strip():
             errors.append("$.parameters.label must be a non-empty string")
+        points = geometry.get("points_mm") if isinstance(geometry, dict) else None
+        if points is not None:
+            if not isinstance(points, list) or len(points) < 3:
+                errors.append("$.geometry.points_mm must contain at least three points")
+            else:
+                for index, point in enumerate(points):
+                    _validate_point(point, f"$.geometry.points_mm[{index}]", errors)
+                if all(_valid_point(point) for point in points) and _polygon_metrics(points)[0] <= 0:
+                    errors.append("$.geometry.points_mm must describe a non-zero room area")
+
+    if command in ROOF_COMMANDS:
+        points = geometry.get("points_mm") if isinstance(geometry, dict) else None
+        if not isinstance(points, list) or len(points) < 3:
+            errors.append("$.geometry.points_mm must contain at least three roof-area points")
+        else:
+            for index, point in enumerate(points):
+                _validate_point(point, f"$.geometry.points_mm[{index}]", errors)
+            if all(_valid_point(point) for point in points) and _polygon_metrics(points)[0] <= 0:
+                errors.append("$.geometry.points_mm must describe a non-zero roof area")
+        roof_request = parameters.get("roof_request") if isinstance(parameters, dict) else None
+        if not isinstance(roof_request, Mapping):
+            errors.append("$.parameters.roof_request must contain the parametric roof request")
+        else:
+            try:
+                calculate_roof(roof_request)
+            except RoofCalculationError as exc:
+                errors.extend(f"$.parameters.roof_request: {error}" for error in exc.errors)
+        if command == "update_roof":
+            target_object_instance_id = parameters.get("target_object_instance_id") if isinstance(parameters, dict) else None
+            target_anchor = parameters.get("target_anchor") if isinstance(parameters, dict) else None
+            if not isinstance(target_object_instance_id, str) or not target_object_instance_id.strip():
+                errors.append("$.parameters.target_object_instance_id must reference the persistent roof")
+            if not isinstance(target_anchor, Mapping) or not all(
+                _is_number(target_anchor.get(axis)) for axis in ("x", "y", "z")
+            ):
+                errors.append("$.parameters.target_anchor must contain numeric x, y and z coordinates")
 
     return errors
 
@@ -107,6 +155,10 @@ def build_command_receipt(
     selected_item = _selected_catalog_item(command, catalog)
     if selected_item:
         command["library_context"] = _library_snapshot(selected_item)
+    if command.get("command") in ROOF_COMMANDS:
+        command.setdefault("parameters", {})["roof_calculation"] = calculate_roof(
+            command["parameters"]["roof_request"]
+        )
     return {
         "ok": True,
         "accepted": False,
@@ -136,6 +188,8 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         "place_library_object": "structure",
         "create_room": "room",
         "update_room": "room",
+        "create_roof": "roof",
+        "update_roof": "roof",
     }
     layer_by_command = {
         "create_wall": "walls",
@@ -146,6 +200,8 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         "place_library_object": "structure",
         "create_room": "rooms",
         "update_room": "rooms",
+        "create_roof": "construction_roof",
+        "update_roof": "construction_roof",
     }
     labels = {
         "create_wall": "Lokaler Wandentwurf",
@@ -156,30 +212,62 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         "place_library_object": "Lokales Library-Bauteil",
         "create_room": "Lokaler Raum",
         "update_room": "Geänderter Raum",
+        "create_roof": "Parametrisches Dach",
+        "update_roof": "Geändertes parametrisches Dach",
     }
     geometry = deepcopy(command["geometry"])
     if command_name == "create_wall":
         geometry["thickness_mm"] = command["parameters"]["thickness_mm"]
+        for field in ("wall_chain_ref", "wall_join_mode"):
+            if command["parameters"].get(field):
+                geometry[field] = command["parameters"][field]
     if command_name in {"create_opening", "place_library_object"}:
         geometry["form"] = "line_segment"
         geometry["thickness_mm"] = max(
             20,
-            float(command.get("parameters", {}).get("thickness_mm") or 120),
+            float(
+                command.get("parameters", {}).get("host_wall_thickness_mm")
+                if command_name == "create_opening"
+                else command.get("parameters", {}).get("thickness_mm")
+                or 120
+            ),
         )
     if command_name in {"create_room", "update_room"}:
-        start = geometry["start_mm"]
-        end = geometry["end_mm"]
-        x_min, x_max = sorted((start[0], end[0]))
-        y_min, y_max = sorted((start[1], end[1]))
-        width = x_max - x_min
-        depth = y_max - y_min
+        points = geometry.get("points_mm")
+        if isinstance(points, list) and len(points) >= 3:
+            area_mm2, centroid = _polygon_metrics(points)
+            geometry = {
+                "points_mm": deepcopy(points),
+                "label_point_mm": centroid,
+                "height_mm": command["parameters"]["height_mm"],
+                "area_m2": round(area_mm2 / 1_000_000, 2),
+            }
+        else:
+            start = geometry["start_mm"]
+            end = geometry["end_mm"]
+            x_min, x_max = sorted((start[0], end[0]))
+            y_min, y_max = sorted((start[1], end[1]))
+            width = x_max - x_min
+            depth = y_max - y_min
+            geometry = {
+                "x_mm": x_min,
+                "y_mm": y_min,
+                "width_mm": width,
+                "depth_mm": depth,
+                "height_mm": command["parameters"]["height_mm"],
+                "area_m2": round(width * depth / 1_000_000, 2),
+            }
+    if command_name in ROOF_COMMANDS:
+        calculation = command.get("parameters", {}).get("roof_calculation", {})
+        roof_geometry = calculation.get("geometry", {}) if isinstance(calculation, Mapping) else {}
+        source_points = roof_geometry.get("source_footprint_mm") if isinstance(roof_geometry, Mapping) else None
+        coverage_points = roof_geometry.get("roof_coverage_polygon_mm") if isinstance(roof_geometry, Mapping) else None
         geometry = {
-            "x_mm": x_min,
-            "y_mm": y_min,
-            "width_mm": width,
-            "depth_mm": depth,
-            "height_mm": command["parameters"]["height_mm"],
-            "area_m2": round(width * depth / 1_000_000, 2),
+            "points_mm": deepcopy(source_points if isinstance(source_points, list) else command["geometry"].get("points_mm", [])),
+            "coverage_points_mm": deepcopy(coverage_points if isinstance(coverage_points, list) else []),
+            "ridge_line_mm": deepcopy(roof_geometry.get("ridge_line_mm", []) if isinstance(roof_geometry, Mapping) else []),
+            "roof_calculation": deepcopy(calculation),
+            "area_m2": round(_polygon_metrics(command["geometry"].get("points_mm", []))[0] / 1_000_000, 2),
         }
 
     element: dict[str, Any] = {
@@ -192,6 +280,7 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         "geometry": geometry,
         "local_draft": True,
         "command_ref": command["client_command_id"],
+        "storey_id": str(command.get("parameters", {}).get("storey_id") or "ground_floor"),
     }
     if command_name == "create_wall":
         element["family_ref"] = command.get("family_ref", "hochbau.waende.ziegelwand")
@@ -202,12 +291,57 @@ def _build_preview_element(command: dict[str, Any]) -> dict[str, Any]:
         element["library_context"] = deepcopy(command.get("library_context") or {})
     if command_name in {"create_opening", "place_library_object"}:
         element["label"] = str(command.get("library_context", {}).get("label") or labels[command_name])
+    if command_name == "create_opening":
+        context = command.get("library_context", {})
+        descriptor = " ".join(str(context.get(key) or "") for key in (
+            "label", "family_ref", "category", "subcategory", "object_kind"
+        )).lower()
+        element["semantic_role"] = "window" if "fenster" in descriptor or "window" in descriptor else "door"
+        element["host_wall_ref"] = command.get("parameters", {}).get("host_wall_ref")
+        element["host_wall_thickness_mm"] = command.get("parameters", {}).get("host_wall_thickness_mm")
+        element["width_mm"] = command.get("parameters", {}).get("width_mm")
+        element["height_mm"] = command.get("parameters", {}).get("height_mm")
+        element["sill_height_mm"] = command.get("parameters", {}).get("sill_height_mm")
+        element["floor_mode"] = command.get("parameters", {}).get("floor_mode")
+        element["window_operation"] = command.get("parameters", {}).get("window_operation")
+        if element["semantic_role"] == "door":
+            element["door_hinge_side"] = str(
+                command.get("parameters", {}).get("door_hinge_side") or "left"
+            )
+            element["door_swing_side"] = str(
+                command.get("parameters", {}).get("door_swing_side") or "positive"
+            )
     if command_name in {"create_room", "update_room"}:
         label = str(command.get("parameters", {}).get("label") or "Raum")
         element["label"] = label
         element["text"] = f"{label}\n{geometry['area_m2']:.2f} m²"
         element["semantic_role"] = "energy_zone"
         element["room_type"] = command.get("parameters", {}).get("room_type")
+        if element["room_type"] == "stair":
+            element["kind"] = "structure"
+            element["layer"] = "construction_stair"
+            element["semantic_role"] = "stair"
+            element["geometry"] = {
+                **geometry,
+                "form": "region",
+                "outer_ring_mm": deepcopy(geometry.get("points_mm", [])),
+                "thickness_mm": 0,
+            }
+            element["stair_parameters"] = {
+                "stair_type": str(command.get("parameters", {}).get("stair_type") or "straight"),
+                "width_mm": float(command.get("parameters", {}).get("stair_width_mm") or 1000),
+                "tread_count": int(command.get("parameters", {}).get("stair_tread_count") or 15),
+                "start_side": str(command.get("parameters", {}).get("stair_start_side") or "bottom"),
+                "end_side": str(command.get("parameters", {}).get("stair_end_side") or "top"),
+                "direction": str(command.get("parameters", {}).get("stair_direction") or "up"),
+            }
+    if command_name in ROOF_COMMANDS:
+        calculation = command.get("parameters", {}).get("roof_calculation", {})
+        element["label"] = f"Parametrisches Dach · {calculation.get('roof_type', 'gable')}"
+        element["semantic_role"] = "roof"
+        element["roof_type"] = calculation.get("roof_type")
+        element["roof_request"] = deepcopy(command.get("parameters", {}).get("roof_request", {}))
+        element["roof_calculation"] = deepcopy(calculation)
     if command_name == "create_dimension":
         start = geometry["start_mm"]
         end = geometry["end_mm"]
@@ -281,12 +415,15 @@ def _library_snapshot(item: Mapping[str, Any]) -> dict[str, Any]:
         "subcategory": item.get("subcategory"),
         "placement_command": deepcopy(item.get("placement_command") or {}),
         "dimensions": deepcopy(variant.get("dimensions") or item.get("dimensions") or {}),
+        "plan_representation": deepcopy(
+            variant.get("plan_representation") or item.get("plan_representation") or {}
+        ),
         "source": item.get("source"),
     }
 
 
 def _build_mutation_intent(command: Mapping[str, Any]) -> dict[str, Any]:
-    model_changing = command.get("command") in LIBRARY_COMMANDS
+    model_changing = command.get("command") in MODEL_CHANGING_COMMANDS
     return {
         "contract_version": "vectoplan-model-command/0.1",
         "model_changing": model_changing,
@@ -311,6 +448,29 @@ def _valid_point(value: Any) -> bool:
         and len(value) == 2
         and all(_is_number(coordinate) for coordinate in value)
     )
+
+
+def _polygon_metrics(points: list[list[float]]) -> tuple[float, list[float]]:
+    ring = [[float(point[0]), float(point[1])] for point in points if _valid_point(point)]
+    if len(ring) < 3:
+        return 0.0, [0.0, 0.0]
+    if ring[0] == ring[-1]:
+        ring.pop()
+    twice_area = 0.0
+    weighted_x = 0.0
+    weighted_y = 0.0
+    for index, point in enumerate(ring):
+        following = ring[(index + 1) % len(ring)]
+        cross = point[0] * following[1] - following[0] * point[1]
+        twice_area += cross
+        weighted_x += (point[0] + following[0]) * cross
+        weighted_y += (point[1] + following[1]) * cross
+    if abs(twice_area) < 1e-9:
+        return 0.0, [
+            sum(point[0] for point in ring) / len(ring),
+            sum(point[1] for point in ring) / len(ring),
+        ]
+    return abs(twice_area) / 2, [weighted_x / (3 * twice_area), weighted_y / (3 * twice_area)]
 
 
 def _is_number(value: Any) -> bool:

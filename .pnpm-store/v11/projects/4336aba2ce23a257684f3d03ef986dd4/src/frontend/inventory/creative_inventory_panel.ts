@@ -43,15 +43,100 @@ const USER_INVENTORY_SELECTION_MESSAGES = new Set([
 const READY_WORLD_EDIT_TOOLS = new Set([
   "selection",
   "room",
+  "stair",
   "paint",
   "sculpt",
   "parcel",
   "parcel-grid",
   "ruler-laser",
   "copy-transform",
+  "cut-transform",
+  "tentacle",
+  "roof",
 ]);
 const CREATIVE_INVENTORY_OPENED_EVENT = "vectoplan-editor:creative-inventory-opened";
 const CREATIVE_INVENTORY_CLOSED_EVENT = "vectoplan-editor:creative-inventory-closed";
+
+function asRecord(value: unknown): Record<string, unknown> {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? value as Record<string, unknown>
+    : {};
+}
+
+function asText(value: unknown): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function firstText(...values: unknown[]): string {
+  for (const value of values) {
+    const text = asText(value);
+    if (text) return text;
+  }
+  return "";
+}
+
+export function worldEditToolIdFromSlot(slotValue: unknown): string | null {
+  const slot = asRecord(slotValue);
+  const payload = asRecord(slot.payload);
+  const metadata = asRecord(slot.metadata ?? payload.metadata);
+  const placement = asRecord(slot.placement ?? payload.placement);
+  const explicitToolId = firstText(
+    slot.world_edit_tool,
+    slot.worldEditTool,
+    payload.world_edit_tool,
+    payload.worldEditTool,
+    metadata.world_edit_tool,
+    metadata.worldEditTool,
+    placement.world_edit_tool,
+    placement.worldEditTool,
+    placement.toolId,
+  ).toLowerCase().replaceAll("_", "-");
+  if (READY_WORLD_EDIT_TOOLS.has(explicitToolId)) return explicitToolId;
+  const objectKind = firstText(
+    slot.object_kind,
+    slot.objectKind,
+    payload.object_kind,
+    payload.objectKind,
+  ).toLowerCase().replaceAll("-", "_");
+  const domain = firstText(slot.domain, payload.domain).toLowerCase().replaceAll("_", "-");
+  const familyId = firstText(slot.family_id, slot.familyId, payload.family_id, payload.familyId).toLowerCase();
+  const vplibUid = firstText(slot.vplib_uid, slot.vplibUid, payload.vplib_uid, payload.vplibUid).toLowerCase();
+  const packageId = firstText(slot.package_id, slot.packageId, payload.package_id, payload.packageId).toLowerCase();
+  const isWorldEdit = objectKind === "world_edit_tool"
+    || domain === "world-edit"
+    || familyId.startsWith("world-edit.")
+    || vplibUid.startsWith("vectoplan.world-edit.")
+    || packageId === "vectoplan.world-edit";
+  if (!isWorldEdit) return null;
+
+  const candidates = [
+    slot.world_edit_tool,
+    slot.worldEditTool,
+    payload.world_edit_tool,
+    payload.worldEditTool,
+    metadata.world_edit_tool,
+    metadata.worldEditTool,
+    placement.world_edit_tool,
+    placement.worldEditTool,
+    placement.toolId,
+    slot.variant_id,
+    slot.variantId,
+    payload.variant_id,
+    payload.variantId,
+    familyId,
+    vplibUid,
+  ];
+  for (const value of candidates) {
+    let candidate = asText(value).toLowerCase().replaceAll("_", "-");
+    for (const prefix of ["vectoplan.world-edit.", "world-edit.", "world-edit-"]) {
+      if (!candidate.startsWith(prefix)) continue;
+      candidate = candidate.slice(prefix.length);
+      break;
+    }
+    if (READY_WORLD_EDIT_TOOLS.has(candidate)) return candidate;
+  }
+  return null;
+}
 
 function resolveUrl(options: CreativeInventoryPanelOptions): string {
   const configured = options.creativeInventoryUrl
@@ -103,87 +188,6 @@ export function mountCreativeInventoryPanel(
   let destroyed = false;
   let pointerDragGhost: HTMLDivElement | null = null;
   let activeWorldEditToolId: string | null = null;
-
-  function asRecord(value: unknown): Record<string, unknown> {
-    return value && typeof value === "object" && !Array.isArray(value)
-      ? value as Record<string, unknown>
-      : {};
-  }
-
-  function asText(value: unknown): string {
-    return typeof value === "string" ? value.trim() : "";
-  }
-
-  function firstText(...values: unknown[]): string {
-    for (const value of values) {
-      const text = asText(value);
-      if (text) return text;
-    }
-    return "";
-  }
-
-  function worldEditToolIdFromSlot(slotValue: unknown): string | null {
-    const slot = asRecord(slotValue);
-    const payload = asRecord(slot.payload);
-    const metadata = asRecord(slot.metadata ?? payload.metadata);
-    const placement = asRecord(slot.placement ?? payload.placement);
-    const explicitToolId = firstText(
-      slot.world_edit_tool,
-      slot.worldEditTool,
-      payload.world_edit_tool,
-      payload.worldEditTool,
-      metadata.world_edit_tool,
-      metadata.worldEditTool,
-      placement.world_edit_tool,
-      placement.worldEditTool,
-      placement.toolId,
-    ).toLowerCase().replaceAll("_", "-");
-    if (READY_WORLD_EDIT_TOOLS.has(explicitToolId)) return explicitToolId;
-    const objectKind = firstText(
-      slot.object_kind,
-      slot.objectKind,
-      payload.object_kind,
-      payload.objectKind,
-    ).toLowerCase().replaceAll("-", "_");
-    const domain = firstText(slot.domain, payload.domain).toLowerCase().replaceAll("_", "-");
-    const familyId = firstText(slot.family_id, slot.familyId, payload.family_id, payload.familyId).toLowerCase();
-    const vplibUid = firstText(slot.vplib_uid, slot.vplibUid, payload.vplib_uid, payload.vplibUid).toLowerCase();
-    const packageId = firstText(slot.package_id, slot.packageId, payload.package_id, payload.packageId).toLowerCase();
-    const isWorldEdit = objectKind === "world_edit_tool"
-      || domain === "world-edit"
-      || familyId.startsWith("world-edit.")
-      || vplibUid.startsWith("vectoplan.world-edit.")
-      || packageId === "vectoplan.world-edit";
-    if (!isWorldEdit) return null;
-
-    const candidates = [
-      slot.world_edit_tool,
-      slot.worldEditTool,
-      payload.world_edit_tool,
-      payload.worldEditTool,
-      metadata.world_edit_tool,
-      metadata.worldEditTool,
-      placement.world_edit_tool,
-      placement.worldEditTool,
-      placement.toolId,
-      slot.variant_id,
-      slot.variantId,
-      payload.variant_id,
-      payload.variantId,
-      familyId,
-      vplibUid,
-    ];
-    for (const value of candidates) {
-      let candidate = asText(value).toLowerCase().replaceAll("_", "-");
-      for (const prefix of ["vectoplan.world-edit.", "world-edit.", "world-edit-"]) {
-        if (!candidate.startsWith(prefix)) continue;
-        candidate = candidate.slice(prefix.length);
-        break;
-      }
-      if (READY_WORLD_EDIT_TOOLS.has(candidate)) return candidate;
-    }
-    return null;
-  }
 
   function postWorldEditSelection(toolId: string | null): void {
     activeWorldEditToolId = toolId;

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectoplan.local/contracts/cad-auto-dimension-request-0.1.schema.json",
+  "title": "VECTOPLAN automatic dimension request",
+  "type": "object",
+  "required": ["contract_version", "footprint"],
+  "properties": {
+    "contract_version": {"const": "cad-auto-dimension-request/0.1"},
+    "footprint": {
+      "type": "object",
+      "required": ["outer_ring_mm"],
+      "properties": {
+        "outer_ring_mm": {"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}}
+      }
+    },
+    "walls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["wall_ref", "start_mm", "end_mm"],
+        "properties": {
+          "wall_ref": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["exterior", "interior"]},
+          "start_mm": {"$ref": "#/$defs/point"},
+          "end_mm": {"$ref": "#/$defs/point"},
+          "thickness_mm": {"type": "number", "exclusiveMinimum": 0},
+          "dimension_side": {"enum": ["left", "right"]}
+        }
+      }
+    },
+    "openings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["opening_ref", "wall_ref", "kind"],
+        "properties": {
+          "opening_ref": {"type": "string", "minLength": 1},
+          "wall_ref": {"type": "string", "minLength": 1},
+          "kind": {"type": "string"},
+          "start_mm": {"$ref": "#/$defs/point"},
+          "end_mm": {"$ref": "#/$defs/point"},
+          "offset_from_start_mm": {"type": "number", "minimum": 0},
+          "width_mm": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "include_external": {"type": "boolean"},
+        "include_internal": {"type": "boolean"},
+        "external_offset_mm": {"type": "number", "exclusiveMinimum": 0},
+        "internal_offset_mm": {"type": "number", "exclusiveMinimum": 0},
+        "chain_spacing_mm": {"type": "number", "exclusiveMinimum": 0},
+        "opening_tolerance_mm": {"type": "number", "minimum": 0},
+        "minimum_segment_mm": {"type": "number", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "point": {"type": "array", "prefixItems": [{"type": "number"}, {"type": "number"}], "items": false}
+  }
+}

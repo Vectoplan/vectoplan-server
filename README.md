@@ -24,6 +24,7 @@ Chunk-Welten und Filecloud-Daten absichtlich erhalten.
 ## Technische Dokumentation
 
 - [Grundstücksauswahl, Grundstücksraster und WorldEdit](services/vectoplan-editor/docs/PARCEL_GRID_AND_WORLDEDIT.md)
+- [Parametrische Dächer und Polygonbereiche in CAD und WorldEdit](services/vectoplan-editor/docs/PARAMETRIC_ROOF_AND_POLYGON_AREAS.md)
 - [Dynamische Geodaten-Overlays](services/vectoplan-chunk/docs/GEODATA_OVERLAYS.md)
 - [Earth-Geländepipeline](services/vectoplan-chunk/docs/EARTH_DGM_PIPELINE.md)
 - [CAD↔Chunk-Abbildungsvertrag](services/vectoplan-core/docs/CAD_CHUNK_MAPPING.md)

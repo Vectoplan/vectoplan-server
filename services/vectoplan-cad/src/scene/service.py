@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from math import hypot
+from math import hypot, isfinite
 from typing import Any
 
 
@@ -11,6 +11,18 @@ DEFAULT_LAYER_STYLES = {
     "structure": {"label": "Tragwerk", "style_ref": "structure", "order": 40},
     "annotations": {"label": "Beschriftungen", "style_ref": "annotation", "order": 60},
     "dimensions": {"label": "Bemaßung", "style_ref": "dimension", "order": 70},
+    "construction_slab": {"label": "Decken & Bodenplatten", "style_ref": "slab", "order": 5},
+    "construction_roof": {"label": "Dächer", "style_ref": "roof", "order": 8},
+    "construction_room": {"label": "Räume & Zonen", "style_ref": "room", "order": 10},
+    "construction_wall": {"label": "Wände", "style_ref": "cut-heavy", "order": 20},
+    "construction_beam": {"label": "Träger", "style_ref": "beam", "order": 24},
+    "construction_column": {"label": "Stützen", "style_ref": "column", "order": 25},
+    "construction_opening": {"label": "Öffnungen", "style_ref": "opening", "order": 30},
+    "construction_window": {"label": "Fenster", "style_ref": "window", "order": 31},
+    "construction_door": {"label": "Türen", "style_ref": "door", "order": 32},
+    "construction_stair": {"label": "Treppen", "style_ref": "stair", "order": 35},
+    "construction_component": {"label": "Bauteile", "style_ref": "component", "order": 40},
+    "construction_unknown": {"label": "Ungeklärte Bauteile", "style_ref": "unresolved", "order": 90},
 }
 
 
@@ -41,15 +53,154 @@ def _build_sheet_scene(sheet: dict[str, Any]) -> dict[str, Any]:
         "viewports": [
             {
                 **viewport,
-                "primitives": [
-                    _element_to_primitive(element)
-                    for element in elements
-                    if viewport.get("viewport_ref") in element.get("view_refs", [])
-                ],
+                "primitives": _build_viewport_primitives(elements, viewport.get("viewport_ref")),
             }
             for viewport in sheet.get("viewports", [])
         ],
     }
+
+
+def _build_viewport_primitives(elements: list[dict[str, Any]], viewport_ref: str | None) -> list[dict[str, Any]]:
+    primitives = [
+        _element_to_primitive(element)
+        for element in elements
+        if viewport_ref in element.get("view_refs", [])
+    ]
+    return _automate_wall_corner_joins(primitives)
+
+
+def _line_intersection(
+    first_start: list[float],
+    first_end: list[float],
+    second_start: list[float],
+    second_end: list[float],
+) -> list[float] | None:
+    first_dx = first_end[0] - first_start[0]
+    first_dy = first_end[1] - first_start[1]
+    second_dx = second_end[0] - second_start[0]
+    second_dy = second_end[1] - second_start[1]
+    determinant = first_dx * second_dy - first_dy * second_dx
+    if abs(determinant) < 1e-9:
+        return None
+    offset_x = second_start[0] - first_start[0]
+    offset_y = second_start[1] - first_start[1]
+    ratio = (offset_x * second_dy - offset_y * second_dx) / determinant
+    return [first_start[0] + ratio * first_dx, first_start[1] + ratio * first_dy]
+
+
+def _automate_wall_corner_joins(primitives: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Miter connected outer-edge walls and suppress their internal end caps."""
+    chain_nodes: dict[tuple[str, float, float], list[tuple[dict[str, Any], bool]]] = {}
+    legacy_nodes: dict[tuple[float, float], list[tuple[dict[str, Any], bool]]] = {}
+    for primitive in primitives:
+        geometry = primitive.get("geometry") or {}
+        chain_ref = str(geometry.get("wall_chain_ref") or "").strip()
+        reference_start = geometry.get("reference_start_mm")
+        reference_end = geometry.get("reference_end_mm")
+        points = geometry.get("points_mm")
+        if (
+            primitive.get("style_ref") == "wall-cut"
+            and not reference_start
+            and not reference_end
+            and isinstance(points, list)
+            and len(points) >= 4
+        ):
+            for is_start, point in ((True, geometry.get("start_mm")), (False, geometry.get("end_mm"))):
+                if isinstance(point, list) and len(point) >= 2:
+                    node_key = (round(float(point[0]), 3), round(float(point[1]), 3))
+                    legacy_nodes.setdefault(node_key, []).append((primitive, is_start))
+        if (
+            primitive.get("style_ref") != "wall-cut"
+            or not chain_ref
+            or not isinstance(reference_start, list)
+            or not isinstance(reference_end, list)
+            or not isinstance(points, list)
+            or len(points) < 4
+        ):
+            continue
+        for is_start, point in ((True, reference_start), (False, reference_end)):
+            if len(point) < 2:
+                continue
+            node_key = (chain_ref, round(float(point[0]), 3), round(float(point[1]), 3))
+            chain_nodes.setdefault(node_key, []).append((primitive, is_start))
+
+    for (_, node_x, node_y), endpoints in chain_nodes.items():
+        if len(endpoints) != 2 or endpoints[0][0] is endpoints[1][0]:
+            continue
+        first, second = endpoints
+        first_geometry = first[0]["geometry"]
+        second_geometry = second[0]["geometry"]
+        first_points = first_geometry["points_mm"]
+        second_points = second_geometry["points_mm"]
+        intersection = _line_intersection(first_points[3], first_points[2], second_points[3], second_points[2])
+        first_inner_index = 3 if first[1] else 2
+        second_inner_index = 3 if second[1] else 2
+        if intersection is None:
+            first_inner = first_points[first_inner_index]
+            second_inner = second_points[second_inner_index]
+            if hypot(first_inner[0] - second_inner[0], first_inner[1] - second_inner[1]) > 1:
+                continue
+            intersection = [(first_inner[0] + second_inner[0]) / 2, (first_inner[1] + second_inner[1]) / 2]
+        thickness = max(
+            float(first_geometry.get("thickness_mm") or 1),
+            float(second_geometry.get("thickness_mm") or 1),
+        )
+        if not all(isfinite(value) for value in intersection) or hypot(intersection[0] - node_x, intersection[1] - node_y) > thickness * 8:
+            continue
+        first_points[first_inner_index] = list(intersection)
+        second_points[second_inner_index] = list(intersection)
+        first_geometry["wall_join_start" if first[1] else "wall_join_end"] = True
+        second_geometry["wall_join_start" if second[1] else "wall_join_end"] = True
+        first_geometry["wall_join_mode"] = "automatic_miter"
+        second_geometry["wall_join_mode"] = "automatic_miter"
+
+    def endpoint_sides(
+        primitive: dict[str, Any], is_start: bool
+    ) -> tuple[tuple[int, list[list[float]]], tuple[int, list[list[float]]]]:
+        points = primitive["geometry"]["points_mm"]
+        first_side = [points[0], points[1]]
+        second_side = [points[3], points[2]]
+        # Relative to the ray pointing away from the shared node, the side
+        # order reverses at a segment end. Pairing left with right therefore
+        # produces the two correct inner/outer miter intersections.
+        if is_start:
+            return (0, first_side), (3, second_side)
+        return (2, second_side), (1, first_side)
+
+    for (node_x, node_y), endpoints in legacy_nodes.items():
+        if len(endpoints) != 2 or endpoints[0][0] is endpoints[1][0]:
+            continue
+        first, second = endpoints
+        first_left, first_right = endpoint_sides(*first)
+        second_left, second_right = endpoint_sides(*second)
+        outer_intersection = _line_intersection(
+            first_left[1][0], first_left[1][1], second_right[1][0], second_right[1][1]
+        )
+        inner_intersection = _line_intersection(
+            first_right[1][0], first_right[1][1], second_left[1][0], second_left[1][1]
+        )
+        if outer_intersection is None or inner_intersection is None:
+            continue
+        thickness = max(
+            float(first[0]["geometry"].get("thickness_mm") or 1),
+            float(second[0]["geometry"].get("thickness_mm") or 1),
+        )
+        intersections = (outer_intersection, inner_intersection)
+        if any(
+            not all(isfinite(value) for value in intersection)
+            or hypot(intersection[0] - node_x, intersection[1] - node_y) > thickness * 8
+            for intersection in intersections
+        ):
+            continue
+        first[0]["geometry"]["points_mm"][first_left[0]] = list(outer_intersection)
+        second[0]["geometry"]["points_mm"][second_right[0]] = list(outer_intersection)
+        first[0]["geometry"]["points_mm"][first_right[0]] = list(inner_intersection)
+        second[0]["geometry"]["points_mm"][second_left[0]] = list(inner_intersection)
+        for primitive, is_start in (first, second):
+            geometry = primitive["geometry"]
+            geometry["wall_join_start" if is_start else "wall_join_end"] = True
+            geometry["wall_join_mode"] = "automatic_miter"
+    return primitives
 
 
 def _build_layers(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -78,7 +229,7 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
 
     if form == "line_segment":
         primitive_type = "polygon"
-        primitive_geometry = {"points_mm": _wall_polygon(geometry)}
+        primitive_geometry = {**geometry, "points_mm": _wall_polygon(geometry)}
     elif form in {"polyline", "closed_polyline", "rectangle"}:
         primitive_type = "thick_path"
     elif form == "network":
@@ -90,13 +241,22 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
         primitive_geometry = {"points_mm": geometry.get("outer_ring_mm", [])}
     elif kind == "wall":
         primitive_type = "polygon"
-        primitive_geometry = {"points_mm": _wall_polygon(geometry)}
+        primitive_geometry = {**geometry, "points_mm": _wall_polygon(geometry)}
     elif kind in {"opening", "structure"}:
         primitive_type = "rect"
     elif kind in {"room_label", "text"}:
         primitive_type = "text"
     elif kind == "room":
         primitive_type = "room"
+    elif kind == "roof":
+        primitive_type = "polygon"
+        primitive_geometry = {
+            **geometry,
+            # Keep the editable polygon tied to the user-defined footprint.  The
+            # calculated roof coverage (including overhang) remains available as
+            # coverage_points_mm for dedicated roof rendering/export.
+            "points_mm": geometry.get("points_mm") or geometry.get("coverage_points_mm", []),
+        }
 
     return {
         "primitive_ref": element["element_ref"],
@@ -125,24 +285,61 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
             "room_type": element.get("room_type"),
             "area_m2": geometry.get("area_m2"),
             "library_context": element.get("library_context") or {},
+            "storey_id": element.get("storey_id") or element.get("storeyId"),
+            "host_wall_ref": element.get("host_wall_ref"),
+            "host_wall_thickness_mm": element.get("host_wall_thickness_mm"),
+            "door_hinge_side": element.get("door_hinge_side"),
+            "door_swing_side": element.get("door_swing_side"),
+            "width_mm": element.get("width_mm"),
+            "height_mm": element.get("height_mm"),
+            "sill_height_mm": element.get("sill_height_mm"),
+            "floor_mode": element.get("floor_mode"),
+            "window_operation": element.get("window_operation"),
+            "stair_parameters": element.get("stair_parameters") or {},
+            "roof_type": element.get("roof_type"),
+            "roof_request": element.get("roof_request") or {},
+            "roof_calculation": element.get("roof_calculation") or geometry.get("roof_calculation") or {},
         },
     }
 
 
 def _style_for(element: dict[str, Any]) -> str:
     kind = element["kind"]
+    semantic_role = str(element.get("semantic_role") or "").strip().lower()
     if kind == "wall":
         return "wall-cut"
     if kind == "opening":
+        if semantic_role in {"door", "window"}:
+            return semantic_role
+        # Older/imported CAD projections can identify an opening only through
+        # their library family.  Keep those objects fully selectable and use
+        # the same door/window controls as newly authored elements.
+        descriptor = " ".join(
+            str(element.get(field) or "")
+            for field in ("family_ref", "variant_ref", "label")
+        ).lower()
+        if any(token in descriptor for token in ("tür", "tuer", "door")):
+            return "door"
+        if any(token in descriptor for token in ("fenster", "window")):
+            return "window"
         return "opening"
     if kind == "structure":
-        return "structure"
+        return semantic_role if semantic_role in {
+            "beam",
+            "column",
+            "component",
+            "roof",
+            "slab",
+            "stair",
+        } else "unresolved" if semantic_role == "unknown" else "structure"
     if kind == "dimension":
         return "dimension"
     if kind == "room_label":
         return "room-label"
     if kind == "room":
         return "room"
+    if kind == "roof":
+        return "roof"
     if kind == "text":
         return "annotation"
     return "line"
@@ -155,6 +352,20 @@ def _wall_polygon(geometry: dict[str, Any]) -> list[list[float]]:
     dx = x2 - x1
     dy = y2 - y1
     length = hypot(dx, dy) or 1
+    reference_start = geometry.get("reference_start_mm")
+    reference_end = geometry.get("reference_end_mm")
+    if (
+        isinstance(reference_start, list)
+        and len(reference_start) >= 2
+        and isinstance(reference_end, list)
+        and len(reference_end) >= 2
+    ):
+        return [
+            [reference_start[0], reference_start[1]],
+            [reference_end[0], reference_end[1]],
+            [2 * x2 - reference_end[0], 2 * y2 - reference_end[1]],
+            [2 * x1 - reference_start[0], 2 * y1 - reference_start[1]],
+        ]
     nx = (-dy / length) * thickness / 2
     ny = (dx / length) * thickness / 2
     return [

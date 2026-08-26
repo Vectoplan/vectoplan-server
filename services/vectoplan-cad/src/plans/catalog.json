@@ -1,0 +1,56 @@
+{
+  "contract_version": "cad-plan-rules/0.1",
+  "phases": {
+    "design": {
+      "label": "Entwurfsplan",
+      "summary": "Reduzierte Entwurfsdarstellung mit Hauptgeometrie, Hauptmaßen und den für die Variantenentscheidung nötigen Ansichten.",
+      "dimensioning": "exterior",
+      "detail_level": "concept"
+    },
+    "permit": {
+      "label": "Eingabeplan",
+      "summary": "Genehmigungsrelevante Pläne mit Haupt- und Öffnungsmaßen, Höhen, Gelände und eindeutigen Raum- und Bauteilangaben.",
+      "dimensioning": "exterior_and_openings",
+      "detail_level": "permit"
+    },
+    "execution": {
+      "label": "Ausführungsplan",
+      "summary": "Dichte Ausführungsdarstellung mit Außen-, Innen- und Öffnungsmaßketten, Schnittmarken, Raumstempeln und konstruktiven Details.",
+      "dimensioning": "complete",
+      "detail_level": "execution"
+    }
+  },
+  "content_order": [
+    "floor_plans", "site_plan", "elevations", "sections", "longitudinal_section",
+    "cross_sections", "alignment_plan", "drainage_plan", "formwork_plan",
+    "reinforcement_plan", "details", "title_block"
+  ],
+  "content_labels": {
+    "floor_plans": "Grundrisse",
+    "elevations": "Ansichten",
+    "sections": "Schnitte",
+    "site_plan": "Lageplan",
+    "alignment_plan": "Trassierungsplan",
+    "longitudinal_section": "Längsschnitt",
+    "cross_sections": "Querschnitte",
+    "drainage_plan": "Entwässerungs- und Leitungsplan",
+    "formwork_plan": "Schalplan",
+    "reinforcement_plan": "Bewehrungsplan",
+    "details": "Details",
+    "title_block": "Plankopf"
+  },
+  "profiles": {
+    "residential": {"label": "Wohngebäude", "domain": "hochbau", "profile": "building", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]},
+    "apartment": {"label": "Mehrfamilienhaus", "domain": "hochbau", "profile": "building", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]},
+    "industrial": {"label": "Industriegebäude", "domain": "hochbau", "profile": "building", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]},
+    "office": {"label": "Bürogebäude", "domain": "hochbau", "profile": "building", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]},
+    "public": {"label": "Öffentliches Gebäude", "domain": "hochbau", "profile": "building", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]},
+    "civil": {"label": "Tiefbau", "domain": "tiefbau", "profile": "infrastructure", "required": ["site_plan", "alignment_plan", "longitudinal_section", "cross_sections", "drainage_plan", "details", "title_block"]},
+    "infrastructure": {"label": "Infrastrukturbauwerk", "domain": "tiefbau", "profile": "infrastructure", "required": ["site_plan", "alignment_plan", "longitudinal_section", "cross_sections", "drainage_plan", "details", "title_block"]},
+    "landscape": {"label": "Freianlage", "domain": "tiefbau", "profile": "landscape", "required": ["site_plan", "floor_plans", "cross_sections", "drainage_plan", "details", "title_block"], "aliases": {"floor_plans": "Freianlagenplan", "cross_sections": "Geländeschnitte"}},
+    "engineering": {"label": "Ingenieurbau", "domain": "ingenieurbau", "profile": "engineering", "required": ["floor_plans", "elevations", "sections", "formwork_plan", "reinforcement_plan", "details", "title_block"], "aliases": {"floor_plans": "Draufsicht", "elevations": "Längsansichten", "sections": "Konstruktionsschnitte"}},
+    "bridge": {"label": "Brücke", "domain": "ingenieurbau", "profile": "bridge", "required": ["site_plan", "floor_plans", "elevations", "cross_sections", "formwork_plan", "reinforcement_plan", "details", "title_block"], "aliases": {"floor_plans": "Draufsicht", "elevations": "Längsansichten", "cross_sections": "Regelquerschnitte", "site_plan": "Übersichtslageplan"}},
+    "tunnel": {"label": "Tunnel", "domain": "ingenieurbau", "profile": "tunnel", "required": ["alignment_plan", "longitudinal_section", "cross_sections", "formwork_plan", "reinforcement_plan", "details", "title_block"], "aliases": {"alignment_plan": "Trassierungsgrundriss", "cross_sections": "Tunnelquerschnitte"}},
+    "other": {"label": "Sonstiges Bauwerk", "domain": "hochbau", "profile": "generic", "required": ["floor_plans", "elevations", "sections", "site_plan", "details", "title_block"]}
+  }
+}

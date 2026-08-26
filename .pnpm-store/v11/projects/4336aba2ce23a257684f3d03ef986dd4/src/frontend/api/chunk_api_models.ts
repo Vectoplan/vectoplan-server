@@ -545,12 +545,13 @@ export interface ChunkApiReplaceBlockCommandPayload extends ChunkApiCommandPaylo
 
 export interface ChunkApiWorldEditCommandPayload extends ChunkApiCommandPayloadBase {
   readonly type: "WorldEdit";
-  readonly tool: "selection" | "paint" | "sculpt" | "clipboard";
+  readonly tool: "selection" | "paint" | "sculpt" | "clipboard" | "tentacle";
   readonly operation: "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
   readonly blockTypeId?: string;
   readonly replaceBlockTypeId?: string;
   readonly bounds?: Readonly<Record<string, unknown>>;
   readonly brush?: Readonly<Record<string, unknown>>;
+  readonly path?: readonly Readonly<{ x: number; y: number; z: number }>[];
   readonly parcelMask?: Readonly<Record<string, unknown>>;
   readonly [key: string]: unknown;
 }

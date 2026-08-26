@@ -23,12 +23,30 @@ ROOM_ITEM = {
     "placement_kind": "room",
     "world_edit_tool": "room",
     "dimensions": {"width_mm": 1000, "height_mm": 3000, "depth_mm": 1000, "thickness_mm": 0},
+    "plan_representation": {
+        "symbol_kind": "room",
+        "detail_level": "permit",
+        "room_fill_mode": "zone",
+        "room_stamp_show_name": True,
+        "room_stamp_show_area": True,
+        "room_stamp_show_floor_finish": True,
+        "line_weight_mm": 0.35,
+    },
     "variants": [
         {
             "variant_ref": "default",
             "label": "Raum",
             "is_default": True,
             "dimensions": {"width_mm": 1000, "height_mm": 3000, "depth_mm": 1000, "thickness_mm": 0},
+            "plan_representation": {
+                "symbol_kind": "room",
+                "detail_level": "permit",
+                "room_fill_mode": "zone",
+                "room_stamp_show_name": True,
+                "room_stamp_show_area": True,
+                "room_stamp_show_floor_finish": True,
+                "line_weight_mm": 0.35,
+            },
         }
     ],
     "source": "vectoplan-library/world-edit",
@@ -86,6 +104,17 @@ def resolve_catalog_item(
                 None,
             )
             if selected is None:
+                requested_key = _variant_key(requested_variant)
+                selected = next(
+                    (
+                        item
+                        for item in variants
+                        if isinstance(item, dict)
+                        and _variant_key(item.get("variant_ref")) == requested_key
+                    ),
+                    None,
+                )
+            if selected is None:
                 return None
         if selected is None:
             selected = next(
@@ -94,6 +123,11 @@ def resolve_catalog_item(
             )
         return {**value, "selected_variant": selected}
     return None
+
+
+def _variant_key(value: Any) -> str:
+    """Keep historic ``885_x_2010_mm`` references compatible with generated IDs."""
+    return _text(value).lower().replace("_x_", "_").replace("×", "_").replace("x", "_")
 
 
 def _request_inventory(config: Mapping[str, Any], base_url: str) -> dict[str, Any]:
@@ -146,6 +180,7 @@ def _normalize_item(value: Any) -> dict[str, Any] | None:
             "label": default_variant,
             "is_default": True,
             "dimensions": _dimensions(value),
+            "plan_representation": _plan_representation(value),
         }]
     elif not any(item["is_default"] for item in variants):
         for item in variants:
@@ -184,6 +219,7 @@ def _normalize_item(value: Any) -> dict[str, Any] | None:
         "placement_kind": placement_kind,
         "world_edit_tool": _text(value.get("world_edit_tool")),
         "dimensions": selected["dimensions"],
+        "plan_representation": selected.get("plan_representation") or _plan_representation(value),
         "variants": variants,
         "source": "vectoplan-library/creative-inventory",
     }
@@ -200,6 +236,7 @@ def _normalize_variant(value: Any) -> dict[str, Any] | None:
         "label": _text(value.get("label") or value.get("name") or variant_ref),
         "is_default": bool(value.get("is_default")),
         "dimensions": _dimensions(value),
+        "plan_representation": _plan_representation(value),
     }
 
 
@@ -222,6 +259,55 @@ def _dimensions(value: Mapping[str, Any]) -> dict[str, float]:
         "height_mm": number("dimensions.height_mm", "height_mm", fallback=1000),
         "depth_mm": number("dimensions.depth_mm", "depth_mm", fallback=1000),
         "thickness_mm": number("dimensions.thickness_mm", "thickness_mm", fallback=100),
+    }
+
+
+def _plan_representation(value: Mapping[str, Any]) -> dict[str, Any]:
+    definitions = _mapping(value.get("definition_values"))
+    payload = _mapping(value.get("payload"))
+    payload_definitions = _mapping(payload.get("definition_values"))
+    explicit = _mapping(value.get("plan_representation"))
+    sources = (explicit, definitions, payload_definitions, value)
+
+    def first(*keys: str, default: Any = None) -> Any:
+        for source in sources:
+            for key in keys:
+                if key in source and source.get(key) is not None:
+                    return source.get(key)
+        return default
+
+    try:
+        frame_line_count = int(first("frame_line_count", "cad.plan.frame_line_count", default=2) or 2)
+    except (TypeError, ValueError):
+        frame_line_count = 2
+    try:
+        leaf_count = int(first("leaf_count", "cad.plan.leaf_count", default=0) or 0)
+    except (TypeError, ValueError):
+        leaf_count = 0
+    try:
+        line_weight_mm = float(first("line_weight_mm", "cad.plan.line_weight_mm", default=0.35) or 0.35)
+    except (TypeError, ValueError):
+        line_weight_mm = 0.35
+
+    def flag(*keys: str, default: bool = False) -> bool:
+        raw = first(*keys, default=default)
+        if isinstance(raw, str):
+            return raw.strip().lower() in {"1", "true", "yes", "on"}
+        return bool(raw)
+
+    return {
+        "symbol_kind": _text(first("symbol_kind", "cad.plan.symbol_kind", default="auto")) or "auto",
+        "detail_level": _text(first("detail_level", "cad.plan.detail_level", default="permit")) or "permit",
+        "show_swing": flag("show_swing", "cad.plan.show_swing", default=True),
+        "show_opening_label": flag("show_opening_label", "cad.plan.show_opening_label", default=True),
+        "show_sill_height": flag("show_sill_height", "cad.plan.show_sill_height", default=True),
+        "frame_line_count": max(1, min(5, frame_line_count)),
+        "leaf_count": max(0, min(4, leaf_count)),
+        "room_fill_mode": _text(first("room_fill_mode", "cad.plan.room_fill_mode", default="zone")) or "zone",
+        "room_stamp_show_name": flag("room_stamp_show_name", "cad.plan.room_stamp_show_name", default=True),
+        "room_stamp_show_area": flag("room_stamp_show_area", "cad.plan.room_stamp_show_area", default=True),
+        "room_stamp_show_floor_finish": flag("room_stamp_show_floor_finish", "cad.plan.room_stamp_show_floor_finish", default=False),
+        "line_weight_mm": max(0.1, min(2.0, line_weight_mm)),
     }
 
 

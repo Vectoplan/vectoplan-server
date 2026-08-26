@@ -16,7 +16,7 @@
   "properties": {
     "contract_version": {"enum": ["cad-command/0.1", "cad-command/0.2"]},
     "command": {
-      "enum": ["create_wall", "create_line", "create_dimension", "create_section_marker", "create_opening", "place_library_object", "create_room", "update_room"]
+      "enum": ["create_wall", "create_line", "create_dimension", "create_section_marker", "create_opening", "place_library_object", "create_room", "update_room", "create_roof", "update_roof"]
     },
     "document_ref": {"type": "string", "minLength": 1},
     "sheet_ref": {"type": "string", "minLength": 1},
@@ -28,7 +28,12 @@
       "required": ["start_mm", "end_mm"],
       "properties": {
         "start_mm": {"$ref": "#/$defs/point"},
-        "end_mm": {"$ref": "#/$defs/point"}
+        "end_mm": {"$ref": "#/$defs/point"},
+        "points_mm": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/point"},
+          "minItems": 3
+        }
       },
       "additionalProperties": true
     },

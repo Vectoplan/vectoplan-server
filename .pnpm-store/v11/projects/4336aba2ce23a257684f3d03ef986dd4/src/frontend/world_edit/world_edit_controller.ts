@@ -20,6 +20,88 @@ import {
   earthGridWorldPointToLonLat,
 } from "@utils/earth_grid_coordinates";
 import {
+  WORLD_EDIT_COMMAND_SOURCE,
+  type WorldEditOperation,
+  type WorldEditSystemRegistry,
+  type WorldEditTool,
+} from "./systems/contracts";
+import { createWorldEditSystemRegistry } from "./systems/registry";
+import { createSelectionSystem } from "./systems/selection/system";
+import { createRoomSystem } from "./systems/room/system";
+import { createStairSystem } from "./systems/stair/system";
+import { createPaintSystem } from "./systems/paint/system";
+import { createSculptSystem } from "./systems/sculpt/system";
+import { createParcelSystem } from "./systems/parcel/system";
+import { createParcelGridSystem } from "./systems/parcel_grid/system";
+import { createRulerSystem } from "./systems/ruler/system";
+import { createCopyPasteSystem } from "./systems/copy_paste/system";
+import { createCutPasteSystem } from "./systems/cut_paste/system";
+import { createTentacleSystem } from "./systems/tentacle/system";
+import { createRoofSystem } from "./systems/roof/system";
+import {
+  createStairQuickSettings,
+  DEFAULT_STAIR_TOOL_PARAMETERS,
+  type StairQuickSettingsHandle,
+  type StairToolParameters,
+} from "./systems/stair/quick_settings";
+import {
+  buildRoofCalculationRequest,
+  DEFAULT_ROOF_TOOL_PARAMETERS,
+  roofCalculationRequestKey,
+  requestRoofCalculation,
+  type RoofCalculationRequest,
+  type RoofCalculationResult,
+  type RoofInsulationMode,
+  type RoofToolParameters,
+  type RoofType,
+} from "./systems/roof/contracts";
+import {
+  normalizePolygonAreaPoints,
+  polygonAreaBounds,
+  polygonAreaClosedCoordinates,
+  polygonAreaPlanCentroid,
+  polygonAreaPlanArea,
+  polygonAreaPointsFromFootprint,
+  validPolygonArea,
+  type PolygonAreaPoint,
+} from "./systems/polygon_area/geometry";
+import { createRoofCalculationMeshes } from "@scene/roof_calculation_rendering";
+import {
+  createRoofQuickSettings,
+  persistedRoofQuickSettings,
+  type RoofQuickSettingsHandle,
+} from "./systems/roof/quick_settings";
+import {
+  inactiveRoofZones,
+  roofCalculationHasZoneTopPurlinAlignment,
+  roofCalculationVersionsMatch,
+  roofPreviewStateAfterInvalidation,
+  shouldCommitRoofSettingsClose,
+  uniqueRoofZones,
+} from "./systems/roof/zones";
+import {
+  clearOptimisticRoofCalculation,
+  registerOptimisticRoofCalculation,
+} from "./systems/roof/optimistic_calculations";
+import {
+  clipboardAnchorAlongAxis,
+  clipboardBoundsAt,
+  clipboardEntryColor,
+  clipboardParcelMaskEnabled,
+  clipboardSelectionSize,
+  type ClipboardSize,
+} from "./systems/clipboard/geometry";
+import {
+  clipboardCommandResult,
+  clipboardEntriesFromCommandResult,
+} from "./systems/clipboard/response";
+import {
+  sampleTentacleCurve,
+  shouldAppendTentacleSample,
+  voxelizeTentacleCurve,
+  type TentaclePoint,
+} from "./systems/tentacle/geometry";
+import {
   buildParcelGridPartition,
   mergeParcelGridCoverage,
   normalizeParcelGridPolygon,
@@ -31,15 +113,18 @@ import {
   resolveParcelGridRenderBounds,
   snapParcelGridDragDepth,
   type ParcelGridPoint,
-} from "./parcel_grid_geometry";
+} from "./systems/parcel_grid/geometry";
 import {
   resolveWorldEditSelectionBounds,
-  snapWorldEditRulerPoint,
   snapWorldEditSelectionHandle,
   worldEditSelectionTopGridSegments,
   type WorldEditSelectionAxis,
   type WorldEditSelectionBounds,
-} from "./selection_geometry";
+} from "./systems/selection/geometry";
+import {
+  rulerSourceCellFromSurfaceHit,
+  snapWorldEditRulerPoint,
+} from "./systems/ruler/geometry";
 
 const ACTIVATE_EVENT = "vectoplan-editor:worldedit-tool-activate";
 const SETTINGS_EVENT = "vectoplan-editor:worldedit-settings-change";
@@ -62,9 +147,6 @@ const PARCEL_GRID_VISIBLE_MARGIN_CELLS = 64;
 const PARCEL_GRID_MIN_DRAG_DEPTH_CELLS = 64;
 const PARCEL_GRID_MAX_DRAG_DEPTH_CELLS = 512;
 const PARCEL_GRID_DRAG_DEPTH_PADDING_CELLS = 8;
-
-type WorldEditTool = "selection" | "room" | "paint" | "sculpt" | "parcel" | "parcel-grid" | "ruler" | "clipboard";
-type WorldEditOperation = "set" | "wall" | "fill" | "replace" | "clear" | "copy" | "cut" | "paste";
 
 export interface ParcelSelectionItem {
   readonly parcelId: string;
@@ -97,6 +179,39 @@ interface ExistingRoomRef {
   readonly metadata: Readonly<Record<string, unknown>>;
 }
 
+interface ExistingRoofRef {
+  readonly objectInstanceId: string;
+  readonly anchor: ChunkApiWorldPosition;
+  readonly footprint: Readonly<Record<string, unknown>>;
+  readonly metadata: Readonly<Record<string, unknown>>;
+}
+
+interface RoofZoneSettingsTarget {
+  readonly target: THREE.Object3D;
+  readonly roof: ExistingRoofRef;
+}
+
+interface HiddenRoofObject {
+  readonly object: THREE.Object3D;
+  readonly visible: boolean;
+}
+
+type PolygonAreaTool = "room" | "stair" | "roof";
+
+interface PolygonAreaRuntime {
+  points: PolygonAreaPoint[];
+  closed: boolean;
+  editingIndex: number | null;
+  hoveredIndex: number | null;
+  interactionFrame: number;
+  hoverFrame: number;
+  group: THREE.Group | null;
+  pointTargets: THREE.Mesh[];
+  settingsTarget: THREE.Object3D | null;
+  calculation: RoofCalculationResult | null;
+  request: RoofCalculationRequest | null;
+}
+
 interface EarthGridFrameContract {
   readonly schemaVersion: "vectoplan-earth-grid-frame.v1";
   readonly horizontalMapping: "vectoplan-periodic-equirectangular";
@@ -113,6 +228,14 @@ interface HandleDescriptor {
   readonly axis: WorldEditSelectionAxis;
   readonly sign: -1 | 1;
   readonly mesh: THREE.Mesh;
+}
+
+interface ClipboardHandleDescriptor {
+  readonly axis: WorldEditSelectionAxis;
+  readonly root: THREE.Group;
+  readonly targets: readonly THREE.Mesh[];
+  readonly material: THREE.MeshBasicMaterial;
+  readonly color: number;
 }
 
 interface SelectionBoxRuntime {
@@ -338,9 +461,9 @@ function asArray(value: unknown): readonly unknown[] {
 
 function worldPosition(value: unknown): ChunkApiWorldPosition | null {
   const record = asRecord(value);
-  const x = Number(record.x);
-  const y = Number(record.y);
-  const z = Number(record.z);
+  const x = Number(record.x ?? record.worldX);
+  const y = Number(record.y ?? record.worldY);
+  const z = Number(record.z ?? record.worldZ);
   return Number.isFinite(x) && Number.isFinite(y) && Number.isFinite(z)
     ? { x: Math.floor(x), y: Math.floor(y), z: Math.floor(z) }
     : null;
@@ -391,14 +514,6 @@ export function normalizedParcelItems(value: unknown, maximum: number): ParcelSe
     .slice(0, Math.max(1, maximum));
 }
 
-export function parcelSelectionActionForIntent(
-  action: EditorInputWorldEditIntent["action"],
-): "select" | "remove" | null {
-  if (action === "primary") return "select";
-  if (action === "secondary") return "remove";
-  return null;
-}
-
 function normalizedParcelSelection(value: unknown): ParcelSelection {
   const root = asRecord(value);
   const selection = asRecord(root.selection ?? root.parcelSelection ?? root.last_map_selection ?? root);
@@ -444,7 +559,12 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
             parcelId,
             startLonLat: [startLon, startLat],
             endLonLat: [endLon, endLat],
-            depthMeters: Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(Number(guide.depthMeters ?? guide.depth_meters) || 3))),
+            depthMeters: Math.max(0, Math.min(
+              PARCEL_GRID_MAX_DRAG_DEPTH_CELLS,
+              Math.round(Number.isFinite(Number(guide.depthMeters ?? guide.depth_meters))
+                ? Number(guide.depthMeters ?? guide.depth_meters)
+                : 3),
+            )),
           };
         }).filter((guide): guide is PersistedParcelGridGuide => guide !== null).slice(0, 256),
       }
@@ -900,11 +1020,39 @@ export function createWorldEditController(
 ): WorldEditControllerHandle {
   let destroyed = false;
   let activeTool: WorldEditTool | null = null;
+  let systemRegistry: WorldEditSystemRegistry | null = null;
   let operation: WorldEditOperation = "set";
   let roomType = "wohnen";
   let roomLabel = "Raum";
+  let roomHeight = 3;
+  let stairParameters: StairToolParameters = { ...DEFAULT_STAIR_TOOL_PARAMETERS };
+  let stairQuickSettings: StairQuickSettingsHandle | null = null;
   let editingRoomInstanceId: string | null = null;
   let editingRoomAnchor: ChunkApiWorldPosition | null = null;
+  let editingRoofInstanceId: string | null = null;
+  let editingRoofAnchor: ChunkApiWorldPosition | null = null;
+  let roofParameters: RoofToolParameters = { ...DEFAULT_ROOF_TOOL_PARAMETERS };
+  let roofCalculationSequence = 0;
+  let roofCalculationAbortController: AbortController | null = null;
+  let roofPreviewTimer = 0;
+  let roofSettingsTexture: THREE.CanvasTexture | null = null;
+  let roofQuickSettings: RoofQuickSettingsHandle | null = null;
+  let roofZoneGroup: THREE.Group | null = null;
+  let roofZoneSettingsTargets: RoofZoneSettingsTarget[] = [];
+  let roofZoneSignature = "";
+  let roofZoneRefreshAt = 0;
+  let hiddenEditingRoofObjects: HiddenRoofObject[] = [];
+  const pendingRoofQuickSettings = new Map<string, Pick<
+    RoofToolParameters,
+    | "roofType"
+    | "pitchDeg"
+    | "overhangMm"
+    | "overhangNorthMm"
+    | "overhangEastMm"
+    | "overhangSouthMm"
+    | "overhangWestMm"
+    | "edgeOverhangsMm"
+  >>();
   let selection: SelectionBounds = { first: null, second: null };
   let selectionDragging = false;
   let selectionDragFrame = 0;
@@ -926,6 +1074,48 @@ export function createWorldEditController(
   };
   let earthGrid: EarthGridFrameContract | null = null;
   let clipboard: readonly Record<string, unknown>[] = [];
+  let clipboardPhase: "select" | "move" = "select";
+  let clipboardSize: ClipboardSize | null = null;
+  let clipboardAnchor: ChunkApiWorldPosition | null = null;
+  let clipboardMoveDragging = false;
+  let clipboardMoveFrame = 0;
+  let clipboardMoveAxis: WorldEditSelectionAxis | null = null;
+  let clipboardMoveStartAnchor: ChunkApiWorldPosition | null = null;
+  let clipboardMovePlane: THREE.Plane | null = null;
+  let clipboardMoveStartCoordinate = 0;
+  let clipboardHoveredAxis: WorldEditSelectionAxis | null = null;
+  let clipboardHoverFrame = 0;
+  let clipboardHandles: ClipboardHandleDescriptor[] = [];
+  let clipboardGizmoOrigin: THREE.Mesh | null = null;
+  let clipboardPreviewRoot: THREE.Group | null = null;
+  let tentaclePoints: TentaclePoint[] = [];
+  let tentacleDrawing = false;
+  let tentacleFinished = false;
+  let tentacleEditingIndex: number | null = null;
+  let tentacleHoveredIndex: number | null = null;
+  let tentacleDrawStartedAt = 0;
+  let tentacleDrawFrame = 0;
+  let tentacleHoverFrame = 0;
+  let tentacleGroup: THREE.Group | null = null;
+  let tentaclePointTargets: THREE.Mesh[] = [];
+  const createPolygonAreaRuntime = (): PolygonAreaRuntime => ({
+    points: [],
+    closed: false,
+    editingIndex: null,
+    hoveredIndex: null,
+    interactionFrame: 0,
+    hoverFrame: 0,
+    group: null,
+    pointTargets: [],
+    settingsTarget: null,
+    calculation: null,
+    request: null,
+  });
+  const polygonAreas: Record<PolygonAreaTool, PolygonAreaRuntime> = {
+    room: createPolygonAreaRuntime(),
+    stair: createPolygonAreaRuntime(),
+    roof: createPolygonAreaRuntime(),
+  };
   let busy = false;
   let selectionGroup: THREE.Group | null = null;
   let parcelGroup: THREE.Group | null = null;
@@ -985,12 +1175,15 @@ export function createWorldEditController(
       return fallback;
     }
     const sourceCell = asRecord(sourceCellValue);
-    const sourcePoint = [sourceCell.worldX, sourceCell.worldY, sourceCell.worldZ]
+    const sourceX = sourceCell.worldX ?? sourceCell.x;
+    const sourceY = sourceCell.worldY ?? sourceCell.y;
+    const sourceZ = sourceCell.worldZ ?? sourceCell.z;
+    const sourcePoint = [sourceX, sourceY, sourceZ]
       .every((value) => Number.isFinite(Number(value)))
       ? {
-          x: Number(sourceCell.worldX),
-          y: Number(sourceCell.worldY),
-          z: Number(sourceCell.worldZ),
+          x: Number(sourceX),
+          y: Number(sourceY),
+          z: Number(sourceZ),
         }
       : null;
     const snapped = snapWorldEditRulerPoint({ targetPoint, sourceCell: sourcePoint });
@@ -1002,7 +1195,40 @@ export function createWorldEditController(
     };
   }
 
+  function isRulerSolidMesh(object: THREE.Object3D): boolean {
+    let current: THREE.Object3D | null = object;
+    while (current) {
+      if (
+        typeof current.userData.chunkKey === "string"
+        || current.userData.vplibParametric === true
+        || current.name.startsWith("optimistic-block:")
+      ) return true;
+      current = current.parent;
+    }
+    return false;
+  }
+
+  function visibleRulerSurfaceTarget(maximumDistance = 60): ChunkApiWorldPosition | null {
+    const scene = options.sceneRuntime.getScene();
+    const camera = options.sceneRuntime.getCamera();
+    if (!scene || !camera) return null;
+    const targets: THREE.Mesh[] = [];
+    scene.traverse((object) => {
+      if (object instanceof THREE.Mesh && object.visible && isRulerSolidMesh(object)) targets.push(object);
+    });
+    if (targets.length === 0) return null;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = maximumDistance;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.intersectObjects(targets, false)[0];
+    if (!hit) return null;
+    const sourceCell = rulerSourceCellFromSurfaceHit(hit.point, raycaster.ray.direction);
+    return rulerPointFromTarget(hit.point, sourceCell);
+  }
+
   function currentRulerTarget(): ChunkApiWorldPosition | null {
+    const visibleTarget = visibleRulerSurfaceTarget();
+    if (visibleTarget) return visibleTarget;
     const targetCells = options.sceneRuntime.getTargetCells();
     const exact = rulerPointFromTarget(
       targetCells.targetPoint,
@@ -1018,6 +1244,1035 @@ export function createWorldEditController(
           z: Number(projected.z.toFixed(2)),
         }
       : selection.second;
+  }
+
+  function currentTentacleTarget(fallback?: ChunkApiWorldPosition | null): ChunkApiWorldPosition | null {
+    const targetCells = options.sceneRuntime.getTargetCells();
+    const point = targetCells.targetPoint;
+    if (point) return { x: Math.floor(point.x), y: Math.floor(point.y), z: Math.floor(point.z) };
+    const cell = cellPosition(targetCells.placementCell) ?? cellPosition(targetCells.sourceCell);
+    if (cell) return cell;
+    const planeY = Math.floor(tentaclePoints.at(-1)?.y ?? fallback?.y ?? Number.NaN);
+    const fallbackCell = fallback
+      ? { x: Math.floor(fallback.x), y: Math.floor(fallback.y), z: Math.floor(fallback.z) }
+      : null;
+    return Number.isFinite(planeY)
+      ? worldPositionAtCameraPlane(Number(planeY) + 0.5, fallbackCell, 1_200)
+      : fallbackCell;
+  }
+
+  function centeredTentaclePoint(point: TentaclePoint): TentaclePoint {
+    return { x: Math.floor(point.x) + 0.5, y: Math.floor(point.y) + 0.5, z: Math.floor(point.z) + 0.5 };
+  }
+
+  function addTentaclePoint(point: TentaclePoint): boolean {
+    const previous = tentaclePoints.at(-1);
+    const centered = centeredTentaclePoint(point);
+    if (previous && Math.hypot(centered.x - previous.x, centered.y - previous.y, centered.z - previous.z) < 0.75) return false;
+    if (tentaclePoints.length >= 128) return false;
+    tentaclePoints.push(centered);
+    rebuildTentacleScene();
+    refreshHud();
+    return true;
+  }
+
+  function tentaclePointColor(index: number): number {
+    if (index === tentacleEditingIndex || index === tentacleHoveredIndex) return 0xfacc15;
+    return index === tentaclePoints.length - 1 ? 0xffffff : 0x2563eb;
+  }
+
+  function rebuildTentacleScene(): void {
+    disposeTentacleGroup();
+    if (tentaclePoints.length === 0) return;
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+    const group = new THREE.Group();
+    group.name = "vectoplan_world_edit_tentacle";
+    const sampled = sampleTentacleCurve(tentaclePoints);
+    if (sampled.length >= 2) {
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints(sampled.map((point) => new THREE.Vector3(point.x, point.y, point.z))),
+        new THREE.LineBasicMaterial({ color: 0x38bdf8, depthTest: false, transparent: true, opacity: 0.96 }),
+      );
+      line.renderOrder = 98;
+      group.add(line);
+    }
+    for (const [index, point] of tentaclePoints.entries()) {
+      const marker = new THREE.Mesh(
+        new THREE.SphereGeometry(index === 0 || index === tentaclePoints.length - 1 ? 0.32 : 0.26, 14, 10),
+        new THREE.MeshBasicMaterial({
+          color: tentaclePointColor(index),
+          depthTest: false,
+        }),
+      );
+      marker.position.set(point.x, point.y, point.z);
+      marker.renderOrder = 99;
+      marker.userData = { worldEditTentaclePoint: true, tentaclePointIndex: index };
+      group.add(marker);
+      tentaclePointTargets.push(marker);
+    }
+    scene.add(group);
+    tentacleGroup = group;
+    options.sceneRuntime.renderOnce("world-edit.tentacle-preview");
+  }
+
+  function tentaclePointUnderCrosshair(): number | null {
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || tentaclePointTargets.length === 0) return null;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.params.Points.threshold = 0.5;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.intersectObjects(tentaclePointTargets, false)[0];
+    const index = Number(hit?.object.userData.tentaclePointIndex);
+    return Number.isInteger(index) && index >= 0 && index < tentaclePoints.length ? index : null;
+  }
+
+  function updateTentacleMarkerColors(): void {
+    tentaclePointTargets.forEach((marker, index) => {
+      const material = marker.material;
+      if (material instanceof THREE.MeshBasicMaterial) material.color.setHex(tentaclePointColor(index));
+    });
+    options.sceneRuntime.renderOnce("world-edit.tentacle-hover");
+  }
+
+  function trackTentacleHover(): void {
+    if (activeTool !== "tentacle") {
+      tentacleHoverFrame = 0;
+      return;
+    }
+    const next = tentaclePointUnderCrosshair();
+    if (next !== tentacleHoveredIndex) {
+      tentacleHoveredIndex = next;
+      updateTentacleMarkerColors();
+    }
+    tentacleHoverFrame = requestAnimationFrame(trackTentacleHover);
+  }
+
+  function startTentacleHover(): void {
+    if (tentacleHoverFrame) cancelAnimationFrame(tentacleHoverFrame);
+    tentacleHoverFrame = requestAnimationFrame(trackTentacleHover);
+  }
+
+  function stopTentacleHover(): void {
+    if (tentacleHoverFrame) cancelAnimationFrame(tentacleHoverFrame);
+    tentacleHoverFrame = 0;
+    tentacleHoveredIndex = null;
+    updateTentacleMarkerColors();
+  }
+
+  function removeTentaclePointUnderCrosshair(): boolean {
+    const index = tentaclePointUnderCrosshair();
+    if (index === null) return false;
+    stopTentacleDrawing();
+    tentaclePoints.splice(index, 1);
+    tentacleHoveredIndex = null;
+    if (tentaclePoints.length < 2) tentacleFinished = false;
+    rebuildTentacleScene();
+    refreshHud();
+    setStatus(`Stützpunkt ${index + 1} gelöscht. ${tentaclePoints.length} Stützpunkte verbleiben.`, "ready");
+    return true;
+  }
+
+  function trackTentacleInteraction(): void {
+    if (!tentacleDrawing && tentacleEditingIndex === null) return;
+    const target = currentTentacleTarget(
+      tentacleEditingIndex === null ? null : tentaclePoints[tentacleEditingIndex] ?? null,
+    );
+    if (target && tentacleEditingIndex !== null) {
+      const centered = centeredTentaclePoint(target);
+      const previous = tentaclePoints[tentacleEditingIndex];
+      if (previous && (previous.x !== centered.x || previous.y !== centered.y || previous.z !== centered.z)) {
+        tentaclePoints[tentacleEditingIndex] = centered;
+        rebuildTentacleScene();
+        refreshHud();
+      }
+    } else if (target && tentacleDrawing) {
+      const centered = centeredTentaclePoint(target);
+      const previous = tentaclePoints.at(-1);
+      const sampleDistance = previous
+        ? Math.hypot(centered.x - previous.x, centered.y - previous.y, centered.z - previous.z)
+        : Number.POSITIVE_INFINITY;
+      if (shouldAppendTentacleSample(performance.now() - tentacleDrawStartedAt, sampleDistance)) {
+        addTentaclePoint(target);
+      }
+    }
+    tentacleDrawFrame = requestAnimationFrame(trackTentacleInteraction);
+  }
+
+  function startTentacleDrawing(target: ChunkApiWorldPosition): void {
+    if (tentacleDrawing || tentacleEditingIndex !== null) return;
+    const existingPointIndex = tentaclePointUnderCrosshair();
+    if (existingPointIndex !== null) {
+      tentacleEditingIndex = existingPointIndex;
+      rebuildTentacleScene();
+      tentacleDrawFrame = requestAnimationFrame(trackTentacleInteraction);
+      setStatus(`Stützpunkt ${existingPointIndex + 1} wird verschoben. Linksklick loslassen, um ihn zu fixieren.`, "ready");
+      return;
+    }
+    if (tentacleFinished) {
+      setStatus("Der Pfad ist mit ESC abgeschlossen. Vorhandene Punkte können noch verschoben werden; für einen neuen Pfad bitte zurücksetzen.", "warning");
+      return;
+    }
+    tentacleDrawing = true;
+    tentacleDrawStartedAt = performance.now();
+    addTentaclePoint(target);
+    tentacleDrawFrame = requestAnimationFrame(trackTentacleInteraction);
+    setStatus("Stützpunkt gesetzt. Linksklick halten zeichnet nach kurzer Haltezeit weiter; ESC schließt den Pfad ab.", "ready");
+  }
+
+  function stopTentacleDrawing(): void {
+    tentacleDrawing = false;
+    tentacleEditingIndex = null;
+    if (tentacleDrawFrame) cancelAnimationFrame(tentacleDrawFrame);
+    tentacleDrawFrame = 0;
+    rebuildTentacleScene();
+  }
+
+  function finishTentaclePath(): void {
+    stopTentacleDrawing();
+    if (tentaclePoints.length < 2) {
+      setStatus("Für einen fertigen Tentacle-Pfad werden mindestens zwei Punkte benötigt.", "warning");
+      return;
+    }
+    tentacleFinished = true;
+    rebuildTentacleScene();
+    setStatus(`Tentacle-Pfad mit ${tentaclePoints.length} Stützpunkten abgeschlossen. Punkte bleiben verschiebbar; Rechtsklick führt aus.`, "ready");
+  }
+
+  async function executeTentaclePath(): Promise<void> {
+    if (busy) return;
+    if (!tentacleFinished) {
+      setStatus("Bitte den Pfad zuerst mit ESC abschließen.", "warning");
+      return;
+    }
+    const path = voxelizeTentacleCurve(tentaclePoints).slice(0, 2_048);
+    if (path.length < 2) {
+      setStatus("Bitte mindestens zwei verschiedene Pfadpunkte zeichnen.", "warning");
+      return;
+    }
+    const effectiveOperation = ["set", "wall", "fill", "replace", "clear"].includes(operation) ? operation : "set";
+    const placement = selectedPlacement();
+    const replaceBlockTypeId = options.sceneRuntime.getTargetCells().sourceCell?.blockTypeId ?? null;
+    if (operationNeedsMaterial(effectiveOperation) && (!placement.valid || !placement.runtimeBlockTypeId)) {
+      setStatus("Für Straße/Volumen bitte zuerst einen platzierbaren Block in der Hotbar auswählen; für Tunnel Leeren wählen.", "warning");
+      return;
+    }
+    if (effectiveOperation === "replace" && !replaceBlockTypeId) {
+      setStatus("Für Ersetzen bitte beim Ausführen auf den zu ersetzenden Quellblock zielen.", "warning");
+      return;
+    }
+    if (parcelMaskInput?.checked && parcelSelection.parcels.length === 0) {
+      setStatus("Bitte zuerst mindestens ein Flurstück auswählen oder die Grundstücksmaske deaktivieren.", "warning");
+      return;
+    }
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus("Tentacle-Pfad wird transaktional angewendet …", "busy");
+    try {
+      const payload: ChunkApiWorldEditCommandPayload = {
+        type: "WorldEdit",
+        userId: "editor_user",
+        sessionId: `world_edit_tentacle_${Date.now()}`,
+        position: path[0]!,
+        path,
+        tool: "tentacle",
+        operation: effectiveOperation,
+        ...(placement.runtimeBlockTypeId ? { blockTypeId: placement.runtimeBlockTypeId } : {}),
+        ...(effectiveOperation === "replace" && replaceBlockTypeId ? { replaceBlockTypeId } : {}),
+        brush: {
+          shape: brushShape?.value ?? "sphere",
+          radius: Number(brushRadius?.value ?? 2),
+          density: Number(brushDensity?.value ?? 100),
+          wallThickness: Number(brushWall?.value ?? 0),
+        },
+        parcelMask: parcelMaskPayload(),
+        commandSource: WORLD_EDIT_COMMAND_SOURCE,
+        commandMetadata: { source: "world-edit-controller", projectPublicId: parcelSelection.projectPublicId },
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: `world-edit:tentacle:${effectiveOperation}`,
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      if (result.result.changed) await options.sceneRuntime.reloadDirtyChunks("world-edit-tentacle");
+      setStatus(`Tentacle-Pfad mit ${path.length} Mittellinien-Zellen angewendet.`, "ready");
+    } catch (error) {
+      options.logger?.warn?.("WorldEdit tentacle command failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
+  function polygonAreaRuntime(tool: PolygonAreaTool): PolygonAreaRuntime {
+    return polygonAreas[tool];
+  }
+
+  function activePolygonAreaTool(): PolygonAreaTool | null {
+    return activeTool === "room" || activeTool === "stair" || activeTool === "roof" ? activeTool : null;
+  }
+
+  function snappedPolygonAreaPoint(
+    tool: PolygonAreaTool,
+    point: Readonly<{ x: number; y: number; z: number }>,
+  ): PolygonAreaPoint {
+    const runtime = polygonAreaRuntime(tool);
+    return {
+      x: Math.round(point.x),
+      y: runtime.points[0]?.y ?? Math.round(point.y),
+      z: Math.round(point.z),
+    };
+  }
+
+  function resolvePolygonAreaTarget(
+    tool: PolygonAreaTool,
+    intent: EditorInputWorldEditIntent,
+  ): ChunkApiWorldPosition | null {
+    const runtime = polygonAreaRuntime(tool);
+    const exact = intent.targetPoint;
+    if (exact) return snappedPolygonAreaPoint(tool, exact);
+    const fallback = intent.position
+      ?? cellPosition(intent.placementCell)
+      ?? cellPosition(intent.sourceCell);
+    if (fallback) return snappedPolygonAreaPoint(tool, fallback);
+    if (runtime.points.length === 0) return null;
+    const projected = cameraPointAtPlaneY(runtime.points[0]!.y, 1_200);
+    return projected ? snappedPolygonAreaPoint(tool, projected) : null;
+  }
+
+  function currentPolygonAreaTarget(
+    tool: PolygonAreaTool,
+    fallback?: PolygonAreaPoint | null,
+  ): PolygonAreaPoint | null {
+    const runtime = polygonAreaRuntime(tool);
+    const targetCells = options.sceneRuntime.getTargetCells();
+    const exact = targetCells.targetPoint;
+    if (exact) return snappedPolygonAreaPoint(tool, exact);
+    const cell = cellPosition(targetCells.placementCell) ?? cellPosition(targetCells.sourceCell);
+    if (cell) return snappedPolygonAreaPoint(tool, cell);
+    const planeY = runtime.points[0]?.y ?? fallback?.y;
+    if (!Number.isFinite(planeY)) return fallback ?? null;
+    const projected = cameraPointAtPlaneY(Number(planeY), 1_200);
+    return projected ? snappedPolygonAreaPoint(tool, projected) : fallback ?? null;
+  }
+
+  function disposePolygonAreaGroup(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    runtime.pointTargets = [];
+    runtime.settingsTarget = null;
+    if (!runtime.group) return;
+    runtime.group.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    runtime.group.parent?.remove(runtime.group);
+    runtime.group = null;
+  }
+
+  function currentRoofSettingsTexture(): THREE.CanvasTexture {
+    if (roofSettingsTexture) return roofSettingsTexture;
+    const canvas = document.createElement("canvas");
+    canvas.width = 192;
+    canvas.height = 192;
+    const context = canvas.getContext("2d");
+    if (context) {
+      context.shadowColor = "rgba(15, 23, 42, .48)";
+      context.shadowBlur = 16;
+      context.fillStyle = "#f97316";
+      context.beginPath();
+      context.arc(96, 96, 70, 0, Math.PI * 2);
+      context.fill();
+      context.shadowBlur = 0;
+      context.lineWidth = 8;
+      context.strokeStyle = "#ffffff";
+      context.stroke();
+      context.fillStyle = "#ffffff";
+      context.font = "bold 92px 'Segoe UI Symbol', sans-serif";
+      context.textAlign = "center";
+      context.textBaseline = "middle";
+      context.fillText("⚙", 96, 101);
+    }
+    roofSettingsTexture = new THREE.CanvasTexture(canvas);
+    roofSettingsTexture.colorSpace = THREE.SRGBColorSpace;
+    roofSettingsTexture.minFilter = THREE.LinearFilter;
+    roofSettingsTexture.magFilter = THREE.LinearFilter;
+    roofSettingsTexture.needsUpdate = true;
+    return roofSettingsTexture;
+  }
+
+  function disposeRoofZoneGroup(): void {
+    roofZoneSettingsTargets = [];
+    if (!roofZoneGroup) return;
+    roofZoneGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    roofZoneGroup.parent?.remove(roofZoneGroup);
+    roofZoneGroup = null;
+  }
+
+  function rebuildRoofZoneScene(force = false): void {
+    const roofs = inactiveRoofZones(existingRoofsInScene(), editingRoofInstanceId);
+    const signature = JSON.stringify(roofs.map((roof) => [
+      roof.objectInstanceId,
+      roof.anchor.y,
+      roof.footprint.type,
+      roof.footprint.baseY,
+      roof.footprint.coordinates,
+    ]));
+    if (!force && signature === roofZoneSignature && (roofZoneGroup || roofs.length === 0)) return;
+    roofZoneSignature = signature;
+    disposeRoofZoneGroup();
+    if (activeTool !== "roof" || roofs.length === 0) return;
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+
+    const group = new THREE.Group();
+    group.name = "vectoplan_world_edit_persisted_roof_zones";
+    for (const roof of roofs) {
+      const points = polygonAreaPointsFromFootprint(roof.footprint, roof.anchor.y);
+      if (!validPolygonArea(points)) continue;
+      const planeOffset = 0.045;
+      const visiblePoints = points.map((point) => new THREE.Vector3(point.x, point.y + planeOffset, point.z));
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints([...visiblePoints, visiblePoints[0]!]),
+        new THREE.LineBasicMaterial({
+          color: 0xfbbf24,
+          depthTest: false,
+          transparent: true,
+          opacity: 0.82,
+        }),
+      );
+      line.name = `vectoplan_world_edit_roof_zone_line:${roof.objectInstanceId}`;
+      line.renderOrder = 96;
+      group.add(line);
+
+      const shape = new THREE.Shape();
+      shape.moveTo(points[0]!.x, -points[0]!.z);
+      points.slice(1).forEach((point) => shape.lineTo(point.x, -point.z));
+      shape.closePath();
+      const fillGeometry = new THREE.ShapeGeometry(shape);
+      fillGeometry.rotateX(-Math.PI / 2);
+      fillGeometry.translate(0, points[0]!.y + planeOffset * 0.5, 0);
+      const fill = new THREE.Mesh(fillGeometry, new THREE.MeshBasicMaterial({
+        color: 0xf59e0b,
+        transparent: true,
+        opacity: 0.14,
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }));
+      fill.name = `vectoplan_world_edit_roof_zone_fill:${roof.objectInstanceId}`;
+      fill.renderOrder = 84;
+      group.add(fill);
+
+      const centroid = polygonAreaPlanCentroid(points);
+      if (!centroid) continue;
+      const settings = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: currentRoofSettingsTexture(),
+        transparent: true,
+        depthTest: false,
+        depthWrite: false,
+        toneMapped: false,
+      }));
+      settings.name = `vectoplan_world_edit_roof_settings:${roof.objectInstanceId}`;
+      settings.position.set(centroid.x, centroid.y + 0.72, centroid.z);
+      settings.scale.set(1.5, 1.5, 1);
+      settings.renderOrder = 101;
+      settings.userData = {
+        worldEditRoofSettings: true,
+        worldEditRoofInstanceId: roof.objectInstanceId,
+      };
+      roofZoneSettingsTargets.push({ target: settings, roof });
+      group.add(settings);
+    }
+    if (group.children.length === 0) return;
+    scene.add(group);
+    roofZoneGroup = group;
+    options.sceneRuntime.renderOnce("world-edit.persisted-roof-zones");
+  }
+
+  function polygonAreaPointColor(tool: PolygonAreaTool, index: number): number {
+    const runtime = polygonAreaRuntime(tool);
+    if (index === runtime.editingIndex || index === runtime.hoveredIndex) return 0xfacc15;
+    if (index === 0) return 0xffffff;
+    return tool === "roof" ? 0xf97316 : tool === "stair" ? 0xa855f7 : 0x22c55e;
+  }
+
+  function rebuildPolygonAreaScene(tool: PolygonAreaTool): void {
+    disposePolygonAreaGroup(tool);
+    const runtime = polygonAreaRuntime(tool);
+    if (runtime.points.length === 0 || activeTool !== tool) return;
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return;
+    const group = new THREE.Group();
+    group.name = `vectoplan_world_edit_${tool}_polygon`;
+    const planeOffset = 0.035;
+    const visiblePoints = runtime.points.map((point) => new THREE.Vector3(point.x, point.y + planeOffset, point.z));
+    const linePoints = runtime.closed && visiblePoints.length >= 3
+      ? [...visiblePoints, visiblePoints[0]!]
+      : visiblePoints;
+    if (linePoints.length >= 2) {
+      const line = new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints(linePoints),
+        new THREE.LineBasicMaterial({
+          color: tool === "roof" ? 0xfb923c : tool === "stair" ? 0xc084fc : 0x4ade80,
+          depthTest: false,
+          transparent: true,
+          opacity: 0.98,
+        }),
+      );
+      line.renderOrder = 97;
+      group.add(line);
+    }
+    if (runtime.closed && validPolygonArea(runtime.points)) {
+      const shape = new THREE.Shape();
+      shape.moveTo(runtime.points[0]!.x, -runtime.points[0]!.z);
+      runtime.points.slice(1).forEach((point) => shape.lineTo(point.x, -point.z));
+      shape.closePath();
+      const geometry = new THREE.ShapeGeometry(shape);
+      geometry.rotateX(-Math.PI / 2);
+      geometry.translate(0, runtime.points[0]!.y + planeOffset * 0.5, 0);
+      const fill = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+        color: tool === "roof" ? 0xf97316 : tool === "stair" ? 0xa855f7 : 0x22c55e,
+        transparent: true,
+        opacity: tool === "roof" ? 0.18 : tool === "stair" ? 0.16 : 0.2,
+        depthTest: false,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+        toneMapped: false,
+      }));
+      fill.name = `vectoplan_world_edit_${tool}_area_fill`;
+      fill.renderOrder = 85;
+      group.add(fill);
+    }
+    for (const [index, point] of runtime.points.entries()) {
+      const marker = new THREE.Mesh(
+        new THREE.SphereGeometry(index === 0 ? 0.34 : 0.27, 14, 10),
+        new THREE.MeshBasicMaterial({ color: polygonAreaPointColor(tool, index), depthTest: false }),
+      );
+      marker.position.set(point.x, point.y + planeOffset, point.z);
+      marker.renderOrder = 99;
+      marker.userData = { worldEditPolygonAreaPoint: true, polygonAreaTool: tool, polygonAreaPointIndex: index };
+      runtime.pointTargets.push(marker);
+      group.add(marker);
+    }
+    if ((tool === "roof" || tool === "stair") && runtime.closed && validPolygonArea(runtime.points)) {
+      const centroid = polygonAreaPlanCentroid(runtime.points);
+      if (centroid) {
+        const settings = new THREE.Sprite(new THREE.SpriteMaterial({
+          map: currentRoofSettingsTexture(),
+          transparent: true,
+          depthTest: false,
+          depthWrite: false,
+          toneMapped: false,
+        }));
+        settings.name = `vectoplan_world_edit_${tool}_settings`;
+        settings.position.set(centroid.x, centroid.y + 0.7, centroid.z);
+        settings.scale.set(1.65, 1.65, 1);
+        settings.renderOrder = 101;
+        settings.userData = tool === "roof" ? { worldEditRoofSettings: true } : { worldEditStairSettings: true };
+        runtime.settingsTarget = settings;
+        group.add(settings);
+      }
+    }
+    if (tool === "roof" && runtime.closed && runtime.calculation) {
+      const rendered = createRoofCalculationMeshes(runtime.calculation, { preview: true });
+      rendered.meshes.forEach((mesh) => group.add(mesh));
+    }
+    scene.add(group);
+    runtime.group = group;
+    options.root.dataset.polygonAreaTool = tool;
+    options.root.dataset.polygonAreaPoints = String(runtime.points.length);
+    options.root.dataset.polygonAreaClosed = String(runtime.closed);
+    options.sceneRuntime.renderOnce(`world-edit.${tool}-polygon-preview`);
+  }
+
+  function polygonAreaPointUnderCrosshair(tool: PolygonAreaTool): number | null {
+    const runtime = polygonAreaRuntime(tool);
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || runtime.pointTargets.length === 0) return null;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.intersectObjects(runtime.pointTargets, false)[0];
+    const index = Number(hit?.object.userData.polygonAreaPointIndex);
+    return Number.isInteger(index) && index >= 0 && index < runtime.points.length ? index : null;
+  }
+
+  function roofSettingsUnderCrosshair(): ExistingRoofRef | null | undefined {
+    const runtime = polygonAreaRuntime("roof");
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return undefined;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const targets = [
+      ...(runtime.settingsTarget && runtime.closed ? [runtime.settingsTarget] : []),
+      ...roofZoneSettingsTargets.map(({ target }) => target),
+    ];
+    const hit = raycaster.intersectObjects(targets, false)[0]?.object;
+    if (!hit) return undefined;
+    if (hit === runtime.settingsTarget) return null;
+    return roofZoneSettingsTargets.find(({ target }) => target === hit)?.roof;
+  }
+
+  function openRoofQuickSettingsUnderCrosshair(): boolean {
+    const roof = roofSettingsUnderCrosshair();
+    if (roof === undefined || !roofQuickSettings) return false;
+    if (busy) {
+      setStatus("Das aktuelle Dach wird noch gespeichert. Bitte einen Moment warten.", "warning");
+      return true;
+    }
+    const camera = options.sceneRuntime.getCamera();
+    const cameraPosition = camera?.position.clone() ?? null;
+    const cameraQuaternion = camera?.quaternion.clone() ?? null;
+    const inputController = options.sceneRuntime.getInputController();
+    inputController?.clear("world-edit-roof-settings-open");
+    inputController?.disable("world-edit-roof-settings-open");
+    if (roof) selectExistingRoof(roof);
+    stopPolygonAreaInteraction("roof");
+    roofQuickSettings.open(roofParameters);
+    if (inputController) {
+      void inputController.exitPointerLock("world-edit-roof-settings").finally(() => {
+        if (camera && cameraPosition && cameraQuaternion) {
+          camera.position.copy(cameraPosition);
+          camera.quaternion.copy(cameraQuaternion);
+          camera.updateMatrixWorld(true);
+          options.sceneRuntime.renderOnce("world-edit.roof-settings-camera-preserved");
+        }
+      });
+    }
+    setStatus("Dacheinstellungen geöffnet · Dachform, Neigung und Dachüberstand mit dem Mausrad ändern.", "ready");
+    return true;
+  }
+
+  function openStairQuickSettingsUnderCrosshair(): boolean {
+    const runtime = polygonAreaRuntime("stair");
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || !runtime.settingsTarget || !runtime.closed || !stairQuickSettings) return false;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    if (!raycaster.intersectObject(runtime.settingsTarget, false)[0]) return false;
+    const inputController = options.sceneRuntime.getInputController();
+    inputController?.clear("world-edit-stair-settings-open");
+    inputController?.disable("world-edit-stair-settings-open");
+    stopPolygonAreaInteraction("stair");
+    stairQuickSettings.open(stairParameters);
+    if (inputController) void inputController.exitPointerLock("world-edit-stair-settings");
+    setStatus("Treppeneinstellungen geöffnet · Laufbreite und Auftritte lassen sich mit dem Mausrad ändern.", "ready");
+    return true;
+  }
+
+  function updatePolygonAreaMarkerColors(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    runtime.pointTargets.forEach((marker, index) => {
+      if (marker.material instanceof THREE.MeshBasicMaterial) {
+        marker.material.color.setHex(polygonAreaPointColor(tool, index));
+      }
+    });
+    options.sceneRuntime.renderOnce(`world-edit.${tool}-polygon-hover`);
+  }
+
+  function trackPolygonAreaHover(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (activeTool !== tool) {
+      runtime.hoverFrame = 0;
+      return;
+    }
+    if (tool === "roof" && performance.now() >= roofZoneRefreshAt) {
+      roofZoneRefreshAt = performance.now() + 500;
+      rebuildRoofZoneScene();
+    }
+    const next = polygonAreaPointUnderCrosshair(tool);
+    if (next !== runtime.hoveredIndex) {
+      runtime.hoveredIndex = next;
+      updatePolygonAreaMarkerColors(tool);
+    }
+    runtime.hoverFrame = requestAnimationFrame(() => trackPolygonAreaHover(tool));
+  }
+
+  function startPolygonAreaHover(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (runtime.hoverFrame) cancelAnimationFrame(runtime.hoverFrame);
+    runtime.hoverFrame = requestAnimationFrame(() => trackPolygonAreaHover(tool));
+  }
+
+  function stopPolygonAreaHover(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (runtime.hoverFrame) cancelAnimationFrame(runtime.hoverFrame);
+    runtime.hoverFrame = 0;
+    runtime.hoveredIndex = null;
+    updatePolygonAreaMarkerColors(tool);
+  }
+
+  function afterPolygonAreaChanged(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (!runtime.closed) return;
+    if (tool === "roof") scheduleRoofPreview();
+    else if (tool === "room" && editingRoomInstanceId) void executeRoom();
+  }
+
+  function stopPolygonAreaInteraction(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    const changed = runtime.editingIndex !== null;
+    runtime.editingIndex = null;
+    if (runtime.interactionFrame) cancelAnimationFrame(runtime.interactionFrame);
+    runtime.interactionFrame = 0;
+    rebuildPolygonAreaScene(tool);
+    if (changed) afterPolygonAreaChanged(tool);
+  }
+
+  function trackPolygonAreaInteraction(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (runtime.editingIndex === null) return;
+    const previous = runtime.points[runtime.editingIndex];
+    const target = currentPolygonAreaTarget(tool, previous);
+    if (previous && target && (previous.x !== target.x || previous.z !== target.z)) {
+      runtime.points[runtime.editingIndex] = target;
+      if (tool === "roof") invalidateRoofCalculation();
+      else {
+        runtime.calculation = null;
+        runtime.request = null;
+      }
+      rebuildPolygonAreaScene(tool);
+      refreshHud();
+    }
+    runtime.interactionFrame = requestAnimationFrame(() => trackPolygonAreaInteraction(tool));
+  }
+
+  function finishPolygonArea(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    stopPolygonAreaInteraction(tool);
+    runtime.points = [...normalizePolygonAreaPoints(runtime.points)];
+    if (!validPolygonArea(runtime.points)) {
+      runtime.closed = false;
+      rebuildPolygonAreaScene(tool);
+      setStatus("Die Fläche benötigt mindestens drei verschiedene Punkte, eine Fläche größer null und darf sich nicht selbst schneiden.", "warning");
+      return;
+    }
+    runtime.closed = true;
+    rebuildPolygonAreaScene(tool);
+    refreshHud();
+    if (tool === "roof") {
+      setStatus(`Dachfläche mit ${runtime.points.length} Punkten geschlossen. CAD-Dach wird neu berechnet …`, "busy");
+      void calculateRoofPreview();
+    } else if (tool === "stair") {
+      setStatus(`Treppenfläche mit ${runtime.points.length} Punkten geschlossen. Zahnrad wählen und Laufparameter einstellen.`, "ready");
+    } else {
+      setStatus(`Raumfläche mit ${runtime.points.length} Punkten geschlossen und wird gespeichert …`, "busy");
+      void executeRoom();
+    }
+  }
+
+  function beginPolygonAreaInteraction(tool: PolygonAreaTool, target: ChunkApiWorldPosition): void {
+    const runtime = polygonAreaRuntime(tool);
+    if (runtime.editingIndex !== null) return;
+    const existingIndex = polygonAreaPointUnderCrosshair(tool);
+    if (existingIndex === 0 && !runtime.closed && runtime.points.length >= 3) {
+      finishPolygonArea(tool);
+      return;
+    }
+    if (existingIndex !== null) {
+      runtime.editingIndex = existingIndex;
+      rebuildPolygonAreaScene(tool);
+      runtime.interactionFrame = requestAnimationFrame(() => trackPolygonAreaInteraction(tool));
+      setStatus(`Eckpunkt ${existingIndex + 1} wird verschoben. Linksklick loslassen fixiert ihn.`, "ready");
+      return;
+    }
+    if (runtime.closed) {
+      setStatus("Die Fläche ist geschlossen. Vorhandene gelbe Eckpunkte können verschoben oder mit Rechtsklick gelöscht werden.", "warning");
+      return;
+    }
+    const point = snappedPolygonAreaPoint(tool, target);
+    const previous = runtime.points.at(-1);
+    if (previous && previous.x === point.x && previous.z === point.z) {
+      setStatus("Der nächste Eckpunkt muss vom vorherigen Punkt abweichen.", "warning");
+      return;
+    }
+    if (runtime.points.length >= 128) {
+      setStatus("Eine Polygonfläche kann höchstens 128 Eckpunkte enthalten.", "warning");
+      return;
+    }
+    runtime.points.push(point);
+    runtime.calculation = null;
+    runtime.request = null;
+    rebuildPolygonAreaScene(tool);
+    refreshHud();
+    setStatus(`${runtime.points.length}. Eckpunkt gesetzt. Weitere Punkte anklicken; erster Punkt oder ESC schließt die Fläche.`, "ready");
+  }
+
+  function removePolygonAreaPointUnderCrosshair(tool: PolygonAreaTool): boolean {
+    const runtime = polygonAreaRuntime(tool);
+    const index = polygonAreaPointUnderCrosshair(tool);
+    if (index === null) return false;
+    stopPolygonAreaInteraction(tool);
+    runtime.points.splice(index, 1);
+    runtime.hoveredIndex = null;
+    runtime.closed = runtime.closed && validPolygonArea(runtime.points);
+    if (tool === "roof") invalidateRoofCalculation();
+    else {
+      runtime.calculation = null;
+      runtime.request = null;
+    }
+    rebuildPolygonAreaScene(tool);
+    refreshHud();
+    setStatus(`Eckpunkt ${index + 1} gelöscht. ${runtime.points.length} Punkte verbleiben.`, "ready");
+    afterPolygonAreaChanged(tool);
+    return true;
+  }
+
+  function resetPolygonArea(tool: PolygonAreaTool): void {
+    const runtime = polygonAreaRuntime(tool);
+    stopPolygonAreaInteraction(tool);
+    runtime.points = [];
+    runtime.closed = false;
+    runtime.calculation = null;
+    runtime.request = null;
+    runtime.hoveredIndex = null;
+    if (tool === "room") {
+      editingRoomInstanceId = null;
+      editingRoomAnchor = null;
+    } else if (tool === "roof") {
+      restoreEditingRoofObjects();
+      editingRoofInstanceId = null;
+      editingRoofAnchor = null;
+      invalidateRoofCalculation();
+      roofQuickSettings?.close(false);
+    } else {
+      stairQuickSettings?.close();
+    }
+    disposePolygonAreaGroup(tool);
+    if (tool === "roof") rebuildRoofZoneScene(true);
+    refreshHud();
+  }
+
+  function scheduleRoofPreview(delayMilliseconds = 120): void {
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = window.setTimeout(() => {
+      roofPreviewTimer = 0;
+      void calculateRoofPreview();
+    }, Math.max(0, delayMilliseconds));
+  }
+
+  function invalidateRoofCalculation(retainLastSuccessfulPreview = false): void {
+    roofCalculationSequence += 1;
+    roofCalculationAbortController?.abort();
+    roofCalculationAbortController = null;
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = 0;
+    const runtime = polygonAreaRuntime("roof");
+    const preview = roofPreviewStateAfterInvalidation(runtime, retainLastSuccessfulPreview);
+    runtime.calculation = preview.calculation;
+    runtime.request = preview.request;
+  }
+
+  async function calculateRoofPreview(
+    requestedCalculation?: RoofCalculationRequest,
+  ): Promise<RoofCalculationResult | null> {
+    if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+    roofPreviewTimer = 0;
+    const runtime = polygonAreaRuntime("roof");
+    if (!runtime.closed || !validPolygonArea(runtime.points)) return null;
+    roofCalculationAbortController?.abort();
+    const abortController = new AbortController();
+    roofCalculationAbortController = abortController;
+    const sequence = ++roofCalculationSequence;
+    const request = requestedCalculation ?? buildRoofCalculationRequest(runtime.points, roofParameters);
+    const requestKey = roofCalculationRequestKey(request);
+    try {
+      const calculation = await requestRoofCalculation(request, abortController.signal);
+      if (sequence !== roofCalculationSequence) return null;
+      const currentRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+      if (requestKey !== roofCalculationRequestKey(currentRequest)) return null;
+      runtime.calculation = calculation;
+      runtime.request = request;
+      rebuildPolygonAreaScene("roof");
+      refreshHud();
+      const summary = asRecord(calculation.summary);
+      setStatus(`3D-Dach bereit: ${Number(summary.face_count ?? 0)} Dachflächen, ${Number(summary.rafter_count ?? 0)} Sparren, ${Number(summary.purlin_count ?? 0)} Pfetten.`, "ready");
+      return calculation;
+    } catch (error) {
+      if (sequence !== roofCalculationSequence) return null;
+      if (error instanceof DOMException && error.name === "AbortError") return null;
+      rebuildPolygonAreaScene("roof");
+      options.logger?.warn?.("CAD roof calculation failed.", { error: normalizeUnknownError(error) });
+      setStatus(`Dachberechnung fehlgeschlagen: ${commandErrorMessage(error)}`, "error");
+      return null;
+    } finally {
+      if (roofCalculationAbortController === abortController) roofCalculationAbortController = null;
+    }
+  }
+
+  async function executeRoof(): Promise<void> {
+    if (busy) return;
+    const runtime = polygonAreaRuntime("roof");
+    if (!runtime.closed || !validPolygonArea(runtime.points)) {
+      setStatus("Bitte zuerst eine gültige Dachfläche schließen.", "warning");
+      return;
+    }
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus(editingRoofInstanceId ? "Dach wird aktualisiert …" : "Dach wird im gemeinsamen 3D-Modell gespeichert …", "busy");
+    let optimisticRoofId: string | null = null;
+    let optimisticCalculation: RoofCalculationResult | null = null;
+    try {
+      const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+      const requestIsCurrent = runtime.request
+        && roofCalculationRequestKey(runtime.request) === roofCalculationRequestKey(expectedRequest);
+      if (!requestIsCurrent) {
+        invalidateRoofCalculation();
+      }
+      const calculation = runtime.calculation ?? await calculateRoofPreview(expectedRequest);
+      const request = runtime.request;
+      if (!calculation || !request
+        || roofCalculationRequestKey(request) !== roofCalculationRequestKey(expectedRequest)) return;
+      const bounds = polygonAreaBounds(runtime.points);
+      if (!bounds) return;
+      const eavesY = roofParameters.eavesHeightMm / 1000;
+      const summary = asRecord(calculation.summary);
+      const maximumHeight = Number(summary.maximum_height_mm ?? roofParameters.eavesHeightMm) / 1000;
+      const anchor = editingRoofAnchor ?? {
+        x: Math.floor(bounds.minimum.x),
+        y: Math.floor(eavesY),
+        z: Math.floor(bounds.minimum.z),
+      };
+      const roofId = editingRoofInstanceId
+        ?? `roof_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+      const targetCells = options.sceneRuntime.getTargetCells();
+      const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
+      const payload: ChunkApiPlaceObjectCommandPayload = {
+        type: "PlaceObject",
+        userId: "editor_user",
+        sessionId: `world_edit_roof_${Date.now()}`,
+        position: anchor,
+        blockTypeId,
+        objectTypeId: "building_roof",
+        objectKind: "semantic_footprint",
+        objectInstanceId: roofId,
+        dimensions: {
+          x: Math.max(1, Math.min(256, Math.ceil(bounds.size.x))),
+          y: Math.max(1, Math.min(256, Math.ceil(Math.max(1, maximumHeight - eavesY)))),
+          z: Math.max(1, Math.min(256, Math.ceil(bounds.size.z))),
+        },
+        footprint: {
+          type: "Polygon",
+          coordinateSpace: "world-cell-xz",
+          coordinates: [polygonAreaClosedCoordinates(runtime.points)],
+          baseY: eavesY,
+          height: Math.max(0.1, maximumHeight - eavesY),
+          schemaVersion: "vectoplan-building-roof-footprint.v1",
+        },
+        occupiedCells: [anchor],
+        metadata: {
+          schemaVersion: "vectoplan-building-roof.v1",
+          source: "vectoplan-editor.world-edit.roof",
+          familyRef: "world-edit.roof",
+          variantRef: roofParameters.roofType,
+          roofType: roofParameters.roofType,
+          roofParameters: { ...roofParameters },
+          roofRequest: request,
+          roofCalculation: calculation,
+          mergeKey: roofId,
+          libraryPlacementContext: {
+            libraryItemId: "world-edit-roof",
+            familyId: "world-edit.roof",
+            packageId: "world-edit.roof",
+            variantId: roofParameters.roofType,
+            objectKind: "semantic_footprint",
+            libraryRef: {
+              libraryItemId: "world-edit-roof",
+              familyId: "world-edit.roof",
+              packageId: "world-edit.roof",
+              variantId: roofParameters.roofType,
+              objectKind: "semantic_footprint",
+            },
+            placementCommand: {
+              kind: "PlaceObject",
+              runtimeBlockTypeId: blockTypeId,
+              blockTypeId,
+            },
+            semanticProfile: {
+              role: "roof",
+              variables: {
+                "semantic.role": "roof",
+                "dimensions.width_mm": bounds.size.x * 1000,
+                "dimensions.height_mm": Math.max(100, maximumHeight * 1000 - roofParameters.eavesHeightMm),
+                "dimensions.depth_mm": bounds.size.z * 1000,
+                "roof.type": roofParameters.roofType,
+                "roof.request": request,
+                "roof.calculation": calculation,
+              },
+            },
+          },
+        },
+      };
+      registerOptimisticRoofCalculation(roofId, calculation);
+      optimisticRoofId = roofId;
+      optimisticCalculation = calculation;
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: editingRoofInstanceId ? "world-edit:roof:update" : "world-edit:roof:create",
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        clearOptimisticRoofCalculation(roofId, calculation);
+        optimisticRoofId = null;
+        optimisticCalculation = null;
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      pendingRoofQuickSettings.set(roofId, {
+        roofType: roofParameters.roofType,
+        pitchDeg: Math.round(roofParameters.pitchDeg),
+        overhangMm: roofParameters.overhangMm,
+        overhangNorthMm: roofParameters.overhangNorthMm,
+        overhangEastMm: roofParameters.overhangEastMm,
+        overhangSouthMm: roofParameters.overhangSouthMm,
+        overhangWestMm: roofParameters.overhangWestMm,
+        edgeOverhangsMm: [...roofParameters.edgeOverhangsMm],
+      });
+      await options.sceneRuntime.reloadDirtyChunks("world-edit-roof");
+      const persistedVersionVisible = await waitForPersistedRoofCalculation(roofId, calculation);
+      if (persistedVersionVisible) {
+        // The matching chunk now owns the visualization. Obsolete meshes that
+        // were hidden during editing must never be made visible again.
+        hiddenEditingRoofObjects = [];
+        if (activeTool === "roof") resetPolygonArea("roof");
+        setStatus(`Dach ${roofId} mit Dachhaut, Sparren und Pfetten gespeichert. Das Werkzeug ist bereit für die nächste Dachzone.`, "ready");
+      } else {
+        // Keep the exact successful preview visible. Removing it here would
+        // expose a stale chunk for a few frames while realtime catches up.
+        setStatus(`Dach ${roofId} ist gespeichert; die neue Darstellung wird noch synchronisiert.`, "busy");
+      }
+    } catch (error) {
+      if (optimisticRoofId && optimisticCalculation) {
+        clearOptimisticRoofCalculation(optimisticRoofId, optimisticCalculation);
+      }
+      options.logger?.warn?.("Roof placement failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
   }
 
   function serializedParcelGridState(): PersistedParcelGridState {
@@ -1135,7 +2390,7 @@ export function createWorldEditController(
         start: best.start,
         end: best.end,
         inward,
-        depthMeters: Math.max(1, Math.min(maximumDepth, saved.depthMeters)),
+        depthMeters: Math.max(0, Math.min(maximumDepth, saved.depthMeters)),
       };
       activeParcelGridParcelId = parcelId;
       activeParcelGridGuideKey = savedGuideKey;
@@ -1189,6 +2444,69 @@ export function createWorldEditController(
     </div>
   `;
   options.root.append(panel);
+  roofQuickSettings = createRoofQuickSettings({
+    root: options.root,
+    onChange: ({ roofType, pitchDeg, overhangMm }) => {
+      // The quick setting is uniform.  Reset individual edge overrides so the
+      // visible 5-cm change affects every side of the generated roof.
+      const overhangChanged = roofParameters.overhangMm !== overhangMm;
+      roofParameters = {
+        ...roofParameters,
+        roofType,
+        pitchDeg,
+        overhangMm,
+        ...(overhangChanged ? {
+          overhangNorthMm: overhangMm,
+          overhangEastMm: overhangMm,
+          overhangSouthMm: overhangMm,
+          overhangWestMm: overhangMm,
+          edgeOverhangsMm: [],
+        } : {}),
+      };
+      const runtime = polygonAreaRuntime("roof");
+      if (runtime.closed && validPolygonArea(runtime.points)) {
+        invalidateRoofCalculation(true);
+        scheduleRoofPreview();
+      }
+      refreshHud();
+    },
+    onClose: (restorePointerLock) => {
+      const inputController = options.sceneRuntime.getInputController();
+      inputController?.clear("world-edit-roof-settings-close");
+      inputController?.enable("world-edit-roof-settings-close");
+      if (!restorePointerLock || activeTool !== "roof") return;
+      try {
+        void inputController?.requestPointerLock("world-edit-roof-settings-close");
+      } catch { /* best effort */ }
+      const runtime = polygonAreaRuntime("roof");
+      if (shouldCommitRoofSettingsClose({
+        restorePointerLock,
+        roofToolActive: activeTool === "roof",
+        busy,
+        closed: runtime.closed,
+        valid: validPolygonArea(runtime.points),
+      })) {
+        void executeRoof();
+      }
+    },
+  });
+  stairQuickSettings = createStairQuickSettings({
+    root: options.root,
+    onChange: (parameters) => {
+      stairParameters = {...parameters};
+      rebuildPolygonAreaScene("stair");
+      refreshHud();
+    },
+    onClose: () => {
+      const inputController = options.sceneRuntime.getInputController();
+      inputController?.clear("world-edit-stair-settings-close");
+      inputController?.enable("world-edit-stair-settings-close");
+      if (activeTool !== "stair") return;
+      try { void inputController?.requestPointerLock("world-edit-stair-settings-close"); } catch { /* best effort */ }
+      const runtime = polygonAreaRuntime("stair");
+      if (!busy && runtime.closed && validPolygonArea(runtime.points)) void executeStair();
+    },
+  });
 
   function syncPanelVisibility(): void {
     // The Creative Library owns the one visible settings panel.  This legacy
@@ -1353,20 +2671,20 @@ export function createWorldEditController(
     return options.sceneRuntime.getSelectedLibraryPlacement();
   }
 
+  function activeSystem() {
+    return activeTool && systemRegistry ? systemRegistry.get(activeTool) : null;
+  }
+
   function inventoryToolId(): string {
-    if (activeTool === "ruler") return "ruler-laser";
-    if (activeTool === "clipboard") return "copy-transform";
-    if (activeTool === "parcel-grid") return "parcel-grid";
-    return activeTool ?? "";
+    return activeSystem()?.ui.inventoryToolId ?? "";
   }
 
   function publishInventoryState(): void {
     const status = panel.querySelector<HTMLElement>("[data-world-edit-status]");
-    const canExecute = activeTool === "selection" || activeTool === "room"
-      ? Boolean(selection.first && selection.second)
-      : activeTool === "clipboard"
-        ? operation === "paste" ? clipboard.length > 0 : Boolean(selection.first && selection.second)
-        : true;
+    const canExecute = activeSystem()?.canExecute() ?? false;
+    const polygonTool = activePolygonAreaTool();
+    const polygonRuntime = polygonTool ? polygonAreaRuntime(polygonTool) : null;
+    const roofSummary = asRecord(polygonAreaRuntime("roof").calculation?.summary);
     window.dispatchEvent(new CustomEvent(INVENTORY_STATE_EVENT, {
       detail: {
         active: Boolean(activeTool),
@@ -1378,6 +2696,20 @@ export function createWorldEditController(
         statusKind: status?.dataset.kind ?? "info",
         parcelCount: parcelSelection.parcels.length,
         parcelGridInfluence: parcelGridGuide?.depthMeters ?? parcelGridInfluence,
+        polygonPointCount: polygonRuntime?.points.length ?? 0,
+        polygonClosed: polygonRuntime?.closed ?? false,
+        roomType,
+        roomLabel,
+        roomHeight,
+        roofParameters: { ...roofParameters },
+        roofType: roofParameters.roofType,
+        pitchDeg: roofParameters.pitchDeg,
+        eavesHeightMm: roofParameters.eavesHeightMm,
+        overhangMm: roofParameters.overhangMm,
+        roofSkinThicknessMm: roofParameters.roofSkinThicknessMm,
+        roofFaceCount: Number(roofSummary.face_count ?? 0),
+        roofRafterCount: Number(roofSummary.rafter_count ?? 0),
+        roofPurlinCount: Number(roofSummary.purlin_count ?? 0),
         busy,
         canExecute,
       },
@@ -1387,6 +2719,10 @@ export function createWorldEditController(
   function disposeSelectionGroup(): void {
     selectionBoxRuntime = null;
     selectionHandles = [];
+    clipboardHandles = [];
+    clipboardGizmoOrigin = null;
+    clipboardHoveredAxis = null;
+    clipboardPreviewRoot = null;
     delete options.root.dataset.selectionLiveBounds;
     delete options.root.dataset.selectionPreviewMode;
     if (!selectionGroup) return;
@@ -1406,6 +2742,22 @@ export function createWorldEditController(
     });
     selectionGroup.parent?.remove(selectionGroup);
     selectionGroup = null;
+  }
+
+  function disposeTentacleGroup(): void {
+    tentaclePointTargets = [];
+    if (!tentacleGroup) return;
+    tentacleGroup.traverse((object) => {
+      const drawable = object as THREE.Object3D & {
+        geometry?: THREE.BufferGeometry;
+        material?: THREE.Material | THREE.Material[];
+      };
+      drawable.geometry?.dispose();
+      if (Array.isArray(drawable.material)) drawable.material.forEach((material) => material.dispose());
+      else drawable.material?.dispose();
+    });
+    tentacleGroup.parent?.remove(tentacleGroup);
+    tentacleGroup = null;
   }
 
   function disposeParcelGroup(): void {
@@ -1638,7 +2990,7 @@ export function createWorldEditController(
     const depthForSegment = (segment: BoundarySegment): number => {
       const savedDepth = persistedParcelGridGuides.get(segment.guideKey)?.depthMeters;
       const depth = segmentMatchesGuide(segment) ? parcelGridGuide!.depthMeters : savedDepth;
-      return Math.max(1, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
+      return Math.max(0, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
     };
     const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...boundarySegments.map(depthForSegment));
 
@@ -1961,7 +3313,7 @@ export function createWorldEditController(
     addLineBatch("parcel_grid_active_axis", activeAxisSegments, 0x60a5fa, 1, 121);
     const innerAxisLines = addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
 
-    if (innerAxisLines && activeTool === "parcel-grid") {
+    if (innerAxisLines && activeSystem()?.behavior.showParcelGridHandles) {
       innerAxisLines.frustumCulled = false;
       const linePositions = innerAxisLines.geometry.getAttribute("position") as THREE.BufferAttribute;
       linePositions.setUsage(THREE.DynamicDrawUsage);
@@ -2368,7 +3720,9 @@ export function createWorldEditController(
     if (!selection.first || !selection.second) return;
     const scene = options.sceneRuntime.getScene();
     if (!scene) return;
-    if (activeTool === "ruler") {
+    const selectionVisualization = activeSystem()?.behavior.selectionVisualization ?? "none";
+    if (selectionVisualization === "none") return;
+    if (selectionVisualization === "ruler") {
       const first = new THREE.Vector3(selection.first.x, selection.first.y, selection.first.z);
       const second = new THREE.Vector3(selection.second.x, selection.second.y, selection.second.z);
       const group = new THREE.Group();
@@ -2427,12 +3781,104 @@ export function createWorldEditController(
     topGrid.renderOrder = 73;
     group.add(topGrid);
 
-    const descriptors: Array<{ axis: WorldEditSelectionAxis; sign: -1 | 1 }> = [
-      { axis: "x", sign: -1 }, { axis: "x", sign: 1 },
-      { axis: "y", sign: -1 }, { axis: "y", sign: 1 },
-      { axis: "z", sign: -1 }, { axis: "z", sign: 1 },
-    ];
-    for (const descriptor of descriptors) {
+    if (selectionVisualization === "clipboard" && clipboardPhase === "move") {
+      const previewRoot = new THREE.Group();
+      previewRoot.name = "vectoplan_world_edit_clipboard_preview";
+      const grouped = new Map<string, Record<string, unknown>[]>();
+      for (const entry of clipboard.slice(0, 8_192)) {
+        const blockTypeId = safeString(entry.blockTypeId ?? entry.block_type_id, "");
+        if (!blockTypeId) continue;
+        const entries = grouped.get(blockTypeId) ?? [];
+        entries.push(entry);
+        grouped.set(blockTypeId, entries);
+      }
+      for (const [blockTypeId, entries] of grouped) {
+        const instances = new THREE.InstancedMesh(
+          new THREE.BoxGeometry(0.92, 0.92, 0.92),
+          new THREE.MeshBasicMaterial({
+            color: clipboardEntryColor(blockTypeId),
+            transparent: true,
+            opacity: 0.42,
+            depthWrite: false,
+            side: THREE.DoubleSide,
+            toneMapped: false,
+          }),
+          entries.length,
+        );
+        const matrix = new THREE.Matrix4();
+        entries.forEach((entry, index) => {
+          matrix.makeTranslation(
+            Number(entry.dx ?? 0) + 0.5,
+            Number(entry.dy ?? 0) + 0.5,
+            Number(entry.dz ?? 0) + 0.5,
+          );
+          instances.setMatrixAt(index, matrix);
+        });
+        instances.instanceMatrix.needsUpdate = true;
+        instances.renderOrder = 75;
+        previewRoot.add(instances);
+      }
+      group.add(previewRoot);
+      clipboardPreviewRoot = previewRoot;
+      const gizmoOrigin = new THREE.Mesh(
+        new THREE.SphereGeometry(0.22, 14, 10),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, depthTest: false, depthWrite: false, toneMapped: false }),
+      );
+      gizmoOrigin.name = "vectoplan_world_edit_clipboard_gizmo_origin";
+      gizmoOrigin.renderOrder = 96;
+      group.add(gizmoOrigin);
+      clipboardGizmoOrigin = gizmoOrigin;
+      const axes: readonly Readonly<{ axis: WorldEditSelectionAxis; color: number; direction: THREE.Vector3 }>[] = [
+        { axis: "x", color: 0xef4444, direction: new THREE.Vector3(1, 0, 0) },
+        { axis: "y", color: 0x22c55e, direction: new THREE.Vector3(0, 1, 0) },
+        { axis: "z", color: 0x3b82f6, direction: new THREE.Vector3(0, 0, 1) },
+      ];
+      for (const descriptor of axes) {
+        const root = new THREE.Group();
+        root.name = `vectoplan_world_edit_clipboard_gizmo_${descriptor.axis}`;
+        const orientation = new THREE.Quaternion().setFromUnitVectors(
+          new THREE.Vector3(0, 1, 0),
+          descriptor.direction,
+        );
+        const material = new THREE.MeshBasicMaterial({
+          color: descriptor.color,
+          depthTest: false,
+          depthWrite: false,
+          toneMapped: false,
+        });
+        const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 2, 10), material);
+        shaft.position.copy(descriptor.direction).multiplyScalar(1.2);
+        shaft.quaternion.copy(orientation);
+        shaft.renderOrder = 96;
+        const end = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.42, 0.42), material);
+        end.position.copy(descriptor.direction).multiplyScalar(2.35);
+        end.renderOrder = 97;
+        const hitArea = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.22, 0.22, 2.5, 8),
+          new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthTest: false, depthWrite: false }),
+        );
+        hitArea.position.copy(descriptor.direction).multiplyScalar(1.35);
+        hitArea.quaternion.copy(orientation);
+        hitArea.userData = { worldEditClipboardAxis: descriptor.axis };
+        shaft.userData = { worldEditClipboardAxis: descriptor.axis };
+        end.userData = { worldEditClipboardAxis: descriptor.axis };
+        root.add(shaft, end, hitArea);
+        group.add(root);
+        clipboardHandles.push({
+          axis: descriptor.axis,
+          root,
+          targets: [shaft, end, hitArea],
+          material,
+          color: descriptor.color,
+        });
+      }
+    } else {
+      const descriptors: Array<{ axis: WorldEditSelectionAxis; sign: -1 | 1 }> = [
+        { axis: "x", sign: -1 }, { axis: "x", sign: 1 },
+        { axis: "y", sign: -1 }, { axis: "y", sign: 1 },
+        { axis: "z", sign: -1 }, { axis: "z", sign: 1 },
+      ];
+      for (const descriptor of descriptors) {
       const handleGeometry = new THREE.BoxGeometry(1, 1, 1);
       const mesh = new THREE.Mesh(
         handleGeometry,
@@ -2462,6 +3908,7 @@ export function createWorldEditController(
       mesh.add(handleEdges);
       group.add(mesh);
       selectionHandles.push({ axis: descriptor.axis, sign: descriptor.sign, mesh });
+      }
     }
     scene.add(group);
     selectionGroup = group;
@@ -2470,7 +3917,12 @@ export function createWorldEditController(
   }
 
   function updateSelectionScenePreview(): boolean {
-    if (!selection.first || !selection.second || !selectionBoxRuntime || !["selection", "room"].includes(activeTool ?? "")) return false;
+    if (
+      !selection.first
+      || !selection.second
+      || !selectionBoxRuntime
+      || !["box", "clipboard"].includes(activeSystem()?.behavior.selectionVisualization ?? "none")
+    ) return false;
     const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
     const size = new THREE.Vector3(bounds.size.x, bounds.size.y, bounds.size.z);
     const center = new THREE.Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
@@ -2492,6 +3944,22 @@ export function createWorldEditController(
       // boundary avoids the detached blue plates visible on small selections.
       handle.mesh.position[handle.axis] += handle.sign * (size[handle.axis] / 2);
       handle.mesh.updateMatrixWorld();
+    }
+    if (clipboardPreviewRoot) clipboardPreviewRoot.position.set(
+      bounds.minimum.x,
+      bounds.minimum.y,
+      bounds.minimum.z,
+    );
+    const gizmoScale = Math.max(0.85, Math.min(1.8, Math.max(size.x, size.y, size.z) / 10));
+    if (clipboardGizmoOrigin) {
+      clipboardGizmoOrigin.position.copy(center);
+      clipboardGizmoOrigin.scale.setScalar(gizmoScale);
+      clipboardGizmoOrigin.updateMatrixWorld(true);
+    }
+    for (const handle of clipboardHandles) {
+      handle.root.position.copy(center);
+      handle.root.scale.setScalar(gizmoScale);
+      handle.root.updateMatrixWorld(true);
     }
     selectionBoxRuntime.topGrid.geometry.dispose();
     selectionBoxRuntime.topGrid.geometry = new THREE.BufferGeometry();
@@ -2526,57 +3994,29 @@ export function createWorldEditController(
     const clipboardCount = panel.querySelector<HTMLElement>("[data-clipboard-count]");
     const hint = panel.querySelector<HTMLElement>("[data-world-edit-hint]");
     const placement = selectedPlacement();
-    const titles: Record<WorldEditTool, string> = {
-      selection: "Selection Tool",
-      room: "Räume",
-      paint: "Paint Brush",
-      sculpt: "Sculpt Brush",
-      parcel: "Flurstück Tool",
-      "parcel-grid": "Grundstücksraster",
-      ruler: "Messwerkzeug",
-      clipboard: "Copy / Cut / Paste",
-    };
-    if (title) title.textContent = activeTool ? titles[activeTool] : "WorldEdit";
+    const system = activeSystem();
+    const ui = system?.ui;
+    if (title) title.textContent = ui?.title ?? "WorldEdit";
     if (first) first.textContent = positionLabel(selection.first);
     if (second) second.textContent = positionLabel(selection.second);
     if (material) material.textContent = operation === "clear" ? "Luft / entfernen" : placement.label ?? placement.runtimeBlockTypeId ?? "Hotbar auswählen";
     if (parcelCount) parcelCount.textContent = `${parcelSelection.parcels.length} Grundstück${parcelSelection.parcels.length === 1 ? "" : "e"}`;
     options.root.dataset.parcelCatalogCount = String(parcelSelection.availableParcels.length);
     options.root.dataset.parcelSelectionCount = String(parcelSelection.parcels.length);
-    if (brushSettings) brushSettings.hidden = activeTool !== "paint" && activeTool !== "sculpt";
-    if (coordinates) coordinates.hidden = !["selection", "room", "ruler", "clipboard"].includes(activeTool ?? "");
-    if (rulerResult) rulerResult.hidden = activeTool !== "ruler";
+    if (brushSettings) brushSettings.hidden = !(ui?.showBrushSettings ?? false);
+    if (coordinates) coordinates.hidden = !(ui?.showCoordinates ?? false);
+    if (rulerResult) rulerResult.hidden = !(ui?.showRulerResult ?? false);
     const distance = measurementMetres(selection);
     if (rulerDistance) rulerDistance.textContent = distance === null ? "–" : `${distance.toFixed(2)} m`;
-    if (operationField) operationField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room";
-    if (materialField) materialField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room" || ["copy", "cut", "paste"].includes(operation);
-    if (maskField) maskField.hidden = activeTool === "parcel" || activeTool === "parcel-grid" || activeTool === "ruler" || activeTool === "room";
-    if (executeButton) executeButton.hidden = activeTool !== "selection" && activeTool !== "clipboard" && activeTool !== "room";
-    if (resetButton) resetButton.textContent = activeTool === "parcel"
-      ? "Grundstücke leeren"
-      : activeTool === "ruler"
-        ? "Messung löschen"
-        : activeTool === "selection" || activeTool === "clipboard" || activeTool === "room"
-          ? "Auswahl löschen"
-          : "Ziel löschen";
-    if (clipboardStatus) clipboardStatus.hidden = activeTool !== "clipboard";
+    if (operationField) operationField.hidden = !(ui?.showOperation ?? false);
+    if (materialField) materialField.hidden = !(ui?.showMaterial ?? false);
+    if (maskField) maskField.hidden = !(ui?.showMask ?? false);
+    if (executeButton) executeButton.hidden = !(ui?.showExecute ?? false);
+    if (resetButton) resetButton.textContent = ui?.resetLabel ?? "Ziel löschen";
+    if (clipboardStatus) clipboardStatus.hidden = !(ui?.showClipboardStatus ?? false);
     if (clipboardCount) clipboardCount.textContent = `${clipboard.length} Zelle${clipboard.length === 1 ? "" : "n"}`;
     if (operationSelect) operationSelect.value = operation;
-    if (hint) {
-      hint.textContent = activeTool === "selection"
-        ? "Linksklick halten und den Auswahlquader blockweise live aufziehen. Danach eine der sechs blauen Flächen greifen und X/Y/Z mit demselben Live-Ziehen anpassen."
-        : activeTool === "room"
-          ? "Beim Loslassen wird die Selection automatisch als Raum gespeichert. Danach kann sofort der nächste Raum gezeichnet werden; Rechtsklick auf einen Raum löscht ihn."
-        : activeTool === "parcel"
-          ? "Linksklick wählt ein Flurstück aus; Rechtsklick entfernt es aus der Auswahl."
-          : activeTool === "parcel-grid"
-            ? "Eine Grenze anklicken, dann den Doppelpfeil an der cyanfarbenen Linie greifen und bei gehaltenem Linksklick blockweise ziehen."
-          : activeTool === "ruler"
-            ? "Linksklick halten und bis zum zweiten Messpunkt ziehen. In Blocknähe rasten beide Punkte an den Ecken ein; Distanz und Achsmaße stehen mittig an der Linie."
-            : activeTool === "clipboard"
-              ? "Copy/Cut verwendet den markierten Bereich. Paste setzt die Zwischenablage am anvisierten Ziel ein."
-              : "Linksklick wendet den Pinsel an; Rechtsklick entfernt mit derselben Form.";
-    }
+    if (hint) hint.textContent = ui?.hint ?? "WorldEdit-Werkzeug auswählen.";
     const radiusOutput = panel.querySelector<HTMLOutputElement>("[data-brush-radius-output]");
     const densityOutput = panel.querySelector<HTMLOutputElement>("[data-brush-density-output]");
     const wallOutput = panel.querySelector<HTMLOutputElement>("[data-brush-wall-output]");
@@ -2659,7 +4099,8 @@ export function createWorldEditController(
 
   function configureOperationSelect(tool: WorldEditTool): void {
     if (!operationSelect) return;
-    const clipboardMode = tool === "clipboard";
+    const operations = systemRegistry?.get(tool).ui.operations ?? [];
+    const clipboardMode = operations.includes("copy");
     const desiredMode = clipboardMode ? "clipboard" : "world";
     if (operationSelect.dataset.mode !== desiredMode) {
       operationSelect.innerHTML = clipboardMode
@@ -2713,14 +4154,16 @@ export function createWorldEditController(
     if (!selectionDragging || !selection.first) return;
     if (selectionHandleDrag) {
       if (!applySelectionHandlePointer()) return;
-    } else if (activeTool === "ruler") {
+    } else if (activeSystem()?.behavior.selectionDragMode === "ruler") {
       const latest = currentRulerTarget();
       if (!latest) return;
       selection = { first: selection.first, second: latest };
-    } else {
+    } else if (activeSystem()?.behavior.selectionDragMode === "box") {
       const latest = currentSelectionDragTarget();
       if (!latest) return;
       selection = { first: selection.first, second: latest };
+    } else {
+      return;
     }
     const signature = selection.first && selection.second
       ? `${selection.first.x}:${selection.first.y}:${selection.first.z}:${selection.second.x}:${selection.second.y}:${selection.second.z}`
@@ -2748,6 +4191,182 @@ export function createWorldEditController(
     selectionDragFrame = requestAnimationFrame(trackSelectionDrag);
   }
 
+  function clipboardAxisVector(axis: WorldEditSelectionAxis): THREE.Vector3 {
+    return axis === "x"
+      ? new THREE.Vector3(1, 0, 0)
+      : axis === "y" ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(0, 0, 1);
+  }
+
+  function clipboardHandleUnderCrosshair(): ClipboardHandleDescriptor | null {
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera || clipboardHandles.length === 0) return null;
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const targets = clipboardHandles.flatMap((handle) => handle.targets);
+    const hit = raycaster.intersectObjects(targets, false)[0];
+    const axis = hit?.object.userData.worldEditClipboardAxis;
+    return clipboardHandles.find((handle) => handle.axis === axis) ?? null;
+  }
+
+  function setClipboardHoveredAxis(axis: WorldEditSelectionAxis | null): void {
+    if (clipboardHoveredAxis === axis) return;
+    clipboardHoveredAxis = axis;
+    for (const handle of clipboardHandles) {
+      handle.material.color.setHex(handle.axis === axis ? 0xfacc15 : handle.color);
+    }
+    options.sceneRuntime.renderOnce("world-edit.clipboard-gizmo-hover");
+  }
+
+  function trackClipboardGizmoHover(): void {
+    if (clipboardPhase !== "move" || !["copy-paste", "cut-paste"].includes(activeTool ?? "")) {
+      clipboardHoverFrame = 0;
+      return;
+    }
+    setClipboardHoveredAxis(clipboardMoveAxis ?? clipboardHandleUnderCrosshair()?.axis ?? null);
+    clipboardHoverFrame = requestAnimationFrame(trackClipboardGizmoHover);
+  }
+
+  function startClipboardGizmoHover(): void {
+    if (clipboardHoverFrame) cancelAnimationFrame(clipboardHoverFrame);
+    clipboardHoverFrame = requestAnimationFrame(trackClipboardGizmoHover);
+  }
+
+  function stopClipboardGizmoHover(): void {
+    if (clipboardHoverFrame) cancelAnimationFrame(clipboardHoverFrame);
+    clipboardHoverFrame = 0;
+    setClipboardHoveredAxis(null);
+  }
+
+  function clipboardDragCoordinate(
+    camera: THREE.Camera,
+    plane: THREE.Plane,
+    axis: WorldEditSelectionAxis,
+  ): number | null {
+    const raycaster = new THREE.Raycaster();
+    raycaster.far = 1_200;
+    raycaster.setFromCamera(new THREE.Vector2(0, 0), camera);
+    const hit = raycaster.ray.intersectPlane(plane, new THREE.Vector3());
+    return hit ? hit.dot(clipboardAxisVector(axis)) : null;
+  }
+
+  function createClipboardDragPlane(
+    camera: THREE.Camera,
+    axis: WorldEditSelectionAxis,
+    origin: THREE.Vector3,
+  ): THREE.Plane | null {
+    const axisVector = clipboardAxisVector(axis);
+    const viewDirection = new THREE.Vector3();
+    camera.getWorldDirection(viewDirection);
+    const normal = viewDirection.clone().sub(axisVector.clone().multiplyScalar(viewDirection.dot(axisVector)));
+    if (normal.lengthSq() < 1e-6) {
+      const cameraUp = new THREE.Vector3(0, 1, 0).applyQuaternion(camera.quaternion);
+      normal.copy(cameraUp.sub(axisVector.clone().multiplyScalar(cameraUp.dot(axisVector))));
+    }
+    if (normal.lengthSq() < 1e-6) return null;
+    return new THREE.Plane().setFromNormalAndCoplanarPoint(normal.normalize(), origin);
+  }
+
+  function updateClipboardMoveDrag(): void {
+    if (
+      !clipboardMoveDragging
+      || !clipboardSize
+      || !clipboardMoveAxis
+      || !clipboardMoveStartAnchor
+      || !clipboardMovePlane
+    ) return;
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return;
+    const coordinate = clipboardDragCoordinate(camera, clipboardMovePlane, clipboardMoveAxis);
+    if (coordinate === null) return;
+    const delta = Math.round(coordinate - clipboardMoveStartCoordinate);
+    const anchor = clipboardAnchorAlongAxis(clipboardMoveStartAnchor, clipboardMoveAxis, delta);
+    if (clipboardAnchor && anchor.x === clipboardAnchor.x && anchor.y === clipboardAnchor.y && anchor.z === clipboardAnchor.z) return;
+    clipboardAnchor = anchor;
+    selection = clipboardBoundsAt(anchor, clipboardSize);
+    if (!updateSelectionScenePreview()) rebuildSelectionScene();
+    refreshHud();
+    setStatus(`${clipboardMoveAxis.toUpperCase()}-Achse: ${delta >= 0 ? "+" : ""}${delta} Block${Math.abs(delta) === 1 ? "" : "e"}. Linksklick loslassen fixiert die Vorschau.`, "ready");
+  }
+
+  function trackClipboardMove(): void {
+    if (!clipboardMoveDragging) return;
+    updateClipboardMoveDrag();
+    clipboardMoveFrame = requestAnimationFrame(trackClipboardMove);
+  }
+
+  function stopClipboardMove(): void {
+    clipboardMoveDragging = false;
+    if (clipboardMoveFrame) cancelAnimationFrame(clipboardMoveFrame);
+    clipboardMoveFrame = 0;
+    clipboardMoveAxis = null;
+    clipboardMoveStartAnchor = null;
+    clipboardMovePlane = null;
+    clipboardMoveStartCoordinate = 0;
+  }
+
+  function startClipboardMove(): boolean {
+    if (clipboardPhase !== "move" || !clipboardAnchor || clipboardHandles.length === 0) return false;
+    const camera = options.sceneRuntime.getCamera();
+    const handle = clipboardHandleUnderCrosshair();
+    if (!camera || !handle) {
+      setStatus("Bitte die rote X-, grüne Y- oder blaue Z-Achse des Verschiebegizmos anvisieren und Linksklick halten.", "warning");
+      return false;
+    }
+    const bounds = selection.first && selection.second
+      ? resolveWorldEditSelectionBounds(selection.first, selection.second)
+      : null;
+    if (!bounds) return false;
+    const origin = new THREE.Vector3(bounds.center.x, bounds.center.y, bounds.center.z);
+    const plane = createClipboardDragPlane(camera, handle.axis, origin);
+    const coordinate = plane ? clipboardDragCoordinate(camera, plane, handle.axis) : null;
+    if (!plane || coordinate === null) {
+      setStatus("Die gewählte Achse liegt nahezu in Blickrichtung. Kamera leicht seitlich drehen und erneut ziehen.", "warning");
+      return false;
+    }
+    stopClipboardMove();
+    clipboardMoveAxis = handle.axis;
+    clipboardMoveStartAnchor = { ...clipboardAnchor };
+    clipboardMovePlane = plane;
+    clipboardMoveStartCoordinate = coordinate;
+    clipboardMoveDragging = true;
+    setClipboardHoveredAxis(handle.axis);
+    clipboardMoveFrame = requestAnimationFrame(trackClipboardMove);
+    setStatus(`${handle.axis.toUpperCase()}-Achse aktiv: Linksklick halten und mit der Kamera blockweise verschieben.`, "ready");
+    return true;
+  }
+
+  function beginClipboardPreview(): void {
+    if (!selection.first || !selection.second || clipboard.length === 0) return;
+    const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
+    clipboardSize = clipboardSelectionSize(bounds.minimum, bounds.maximum);
+    clipboardAnchor = { ...bounds.minimum };
+    clipboardPhase = "move";
+    options.root.dataset.worldEditClipboardPhase = clipboardPhase;
+    options.root.dataset.worldEditClipboardCells = String(clipboard.length);
+    selection = clipboardBoundsAt(clipboardAnchor, clipboardSize);
+    rebuildSelectionScene();
+    options.root.dataset.worldEditClipboardGizmoHandles = String(clipboardHandles.length);
+    startClipboardGizmoHover();
+    refreshHud();
+  }
+
+  function resetClipboardPreview(): void {
+    stopSelectionDrag();
+    stopClipboardMove();
+    stopClipboardGizmoHover();
+    clipboardPhase = "select";
+    options.root.dataset.worldEditClipboardPhase = clipboardPhase;
+    options.root.dataset.worldEditClipboardCells = "0";
+    options.root.dataset.worldEditClipboardGizmoHandles = "0";
+    clipboardSize = null;
+    clipboardAnchor = null;
+    clipboard = [];
+    selection = { first: null, second: null };
+    rebuildSelectionScene();
+    refreshHud();
+  }
+
   function parcelMaskPayload(): Record<string, unknown> {
     return {
       enabled: parcelMaskInput?.checked === true,
@@ -2757,6 +4376,17 @@ export function createWorldEditController(
       projectCoordinate: parcelSelection.projectCoordinate,
       gridRotationDegrees: parcelSelection.gridRotationDegrees,
       parcels: parcelSelection.parcels,
+    };
+  }
+
+  function clipboardParcelMaskPayload(): Record<string, unknown> {
+    return {
+      ...parcelMaskPayload(),
+      enabled: clipboardParcelMaskEnabled(
+        parcelMaskInput?.checked,
+        parcelSelection.parcels.length,
+      ),
+      parcels: [],
     };
   }
 
@@ -2946,7 +4576,7 @@ export function createWorldEditController(
       ? parcelGridGuide!.depthMeters
       : persistedParcelGridGuides.get(guideKey)?.depthMeters
         ?? Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(parcelGridInfluence)));
-    const depthMeters = Math.max(1, Math.min(maximumDepth, requestedDepth));
+    const depthMeters = Math.max(0, Math.min(maximumDepth, requestedDepth));
     parcelGridHandleAlong = Math.max(0.04, Math.min(0.96, best.factor));
     parcelGridGuide = {
       guideKey,
@@ -3037,7 +4667,7 @@ export function createWorldEditController(
         initialDepth: parcelGridDragState.initialDepthMeters,
         initialPointerDepth: parcelGridDragState.initialPointerDepthMeters,
         pointerDepth,
-        minimumDepth: 1,
+        minimumDepth: 0,
         maximumDepth: parcelGridDragState.maximumDepthMeters,
       });
       if (nextDepth !== parcelGridGuide.depthMeters) {
@@ -3092,7 +4722,7 @@ export function createWorldEditController(
       setStatus("Bitte zuerst mit Linksklick eine Grundstückskante auswählen.", "warning");
       return false;
     }
-    const depthMeters = Math.max(1, Math.round(parcelGridGuide.depthMeters) - 1);
+    const depthMeters = Math.max(0, Math.round(parcelGridGuide.depthMeters) - 1);
     parcelGridGuide = { ...parcelGridGuide, depthMeters };
     rememberParcelGridGuide();
     rebuildParcelGridScene();
@@ -3102,19 +4732,29 @@ export function createWorldEditController(
     return true;
   }
 
-  async function executeAt(target?: ChunkApiWorldPosition | null, forcedOperation?: WorldEditOperation): Promise<void> {
-    if (!activeTool || busy) return;
-    if (!["selection", "paint", "sculpt"].includes(activeTool)) return;
-    const commandTool = activeTool as "selection" | "paint" | "sculpt";
+  async function executeAt(
+    target?: ChunkApiWorldPosition | null,
+    forcedOperation?: WorldEditOperation,
+    overrides?: Readonly<{
+      commandTool?: "selection" | "paint" | "sculpt";
+      blockTypeId?: string | null;
+      brush?: Readonly<Record<string, unknown>>;
+    }>,
+  ): Promise<void> {
+    if (busy) return;
+    const behavior = activeSystem()?.behavior;
+    const commandTool = overrides?.commandTool ?? behavior?.commandTool;
+    if (!behavior || !commandTool) return;
     const effectiveOperation = forcedOperation ?? operation;
     const placement = selectedPlacement();
+    const effectiveBlockTypeId = overrides?.blockTypeId ?? placement.runtimeBlockTypeId;
     const targetCells = options.sceneRuntime.getTargetCells();
     const replaceBlockTypeId = targetCells.sourceCell?.blockTypeId ?? null;
     if (parcelMaskInput?.checked && parcelSelection.parcels.length === 0) {
       setStatus("Bitte zuerst in der Karte mindestens ein Grundstück auswählen.", "warning");
       return;
     }
-    if (operationNeedsMaterial(effectiveOperation) && (!placement.valid || !placement.runtimeBlockTypeId)) {
+    if (operationNeedsMaterial(effectiveOperation) && !effectiveBlockTypeId) {
       setStatus("Bitte zuerst einen platzierbaren Block in der Hotbar auswählen.", "warning");
       return;
     }
@@ -3127,7 +4767,10 @@ export function createWorldEditController(
       setStatus("Es fehlt ein Ziel oder eine vollständige Auswahl.", "warning");
       return;
     }
-    if (activeTool === "selection" && (!selection.first || !selection.second)) {
+    const selectionBounds = selection.first && selection.second
+      ? { min: selection.first, max: selection.second }
+      : null;
+    if (behavior.requiresCompleteSelection && !selectionBounds) {
       setStatus("Bitte Punkt A und Punkt B setzen.", "warning");
       return;
     }
@@ -3143,12 +4786,12 @@ export function createWorldEditController(
         position: anchor,
         tool: commandTool,
         operation: effectiveOperation,
-        ...(placement.runtimeBlockTypeId ? { blockTypeId: placement.runtimeBlockTypeId } : {}),
+        ...(effectiveBlockTypeId ? { blockTypeId: effectiveBlockTypeId } : {}),
         ...(effectiveOperation === "replace" && replaceBlockTypeId ? { replaceBlockTypeId } : {}),
-        ...(commandTool === "selection" ? {
-          bounds: { min: selection.first, max: selection.second },
+        ...(behavior.requiresCompleteSelection && selectionBounds ? {
+          bounds: selectionBounds,
         } : {
-          brush: {
+          brush: overrides?.brush ?? {
             shape: brushShape?.value ?? "sphere",
             radius: Number(brushRadius?.value ?? 2),
             density: Number(brushDensity?.value ?? 100),
@@ -3156,7 +4799,7 @@ export function createWorldEditController(
           },
         }),
         parcelMask: parcelMaskPayload(),
-        commandSource: "vectoplan-editor.world-edit",
+        commandSource: WORLD_EDIT_COMMAND_SOURCE,
         libraryItemId: placement.libraryItemId,
         inventoryItemId: placement.inventoryItemId,
         inventorySlotIndex: placement.inventorySlotIndex,
@@ -3211,6 +4854,34 @@ export function createWorldEditController(
     }
   }
 
+  async function executeSculptLayer(
+    target: Readonly<{ position: ChunkApiWorldPosition; blockTypeId: string | null }>,
+    mode: "raise" | "lower",
+  ): Promise<void> {
+    brushTarget = { ...target.position };
+    const radius = Math.max(1, Math.round(Number(brushRadius?.value ?? 5)));
+    const anchor = mode === "raise"
+      ? { x: target.position.x, y: target.position.y + 1, z: target.position.z }
+      : target.position;
+    if (mode === "raise" && !target.blockTypeId) {
+      setStatus("Zum Anheben bitte direkt auf einen vorhandenen Block zielen.", "warning");
+      return;
+    }
+    await executeAt(anchor, mode === "raise" ? "set" : "clear", {
+      commandTool: "sculpt",
+      blockTypeId: target.blockTypeId,
+      brush: {
+        shape: brushShape?.value ?? "box",
+        radius,
+        radiusX: radius,
+        radiusY: 0,
+        radiusZ: radius,
+        density: Number(brushDensity?.value ?? 100),
+        wallThickness: 0,
+      },
+    });
+  }
+
   function existingRoomAt(position: ChunkApiWorldPosition): ExistingRoomRef | null {
     const scene = options.sceneRuntime.getScene();
     if (!scene) return null;
@@ -3238,32 +4909,213 @@ export function createWorldEditController(
     return found;
   }
 
-  function selectExistingRoom(ref: ExistingRoomRef): void {
-    const coordinates = asArray(ref.footprint.coordinates);
-    const polygon = safeString(ref.footprint.type, "Polygon") === "MultiPolygon"
-      ? asArray(coordinates[0])
-      : coordinates;
-    const ring = asArray(polygon[0]).map((point) => asArray(point));
-    const xs = ring.map((point) => Number(point[0])).filter(Number.isFinite);
-    const zs = ring.map((point) => Number(point[1])).filter(Number.isFinite);
-    if (xs.length < 3 || zs.length < 3) return;
-    const baseY = Math.floor(Number(ref.footprint.baseY ?? ref.anchor.y));
-    const height = Math.max(1, Math.round(Number(ref.footprint.height ?? 1)));
-    selection = {
-      first: { x: Math.floor(Math.min(...xs)), y: baseY, z: Math.floor(Math.min(...zs)) },
-      second: {
-        x: Math.max(Math.floor(Math.min(...xs)), Math.ceil(Math.max(...xs)) - 1),
-        y: baseY + height - 1,
-        z: Math.max(Math.floor(Math.min(...zs)), Math.ceil(Math.max(...zs)) - 1),
-      },
+  function existingRoofsInScene(): readonly ExistingRoofRef[] {
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return [];
+    const found: ExistingRoofRef[] = [];
+    scene.traverse((object) => {
+      if (object.userData.semanticRoof !== true) return;
+      const ref = asRecord(object.userData.semanticObjectRef);
+      const footprint = asRecord(ref.footprint);
+      const objectInstanceId = safeString(ref.objectInstanceId, "");
+      const anchor = worldPosition(ref.anchor);
+      if (!objectInstanceId || !anchor) return;
+      found.push({
+        objectInstanceId,
+        anchor,
+        footprint,
+        metadata: asRecord(ref.metadata),
+      });
+    });
+    return uniqueRoofZones(found);
+  }
+
+  function existingRoofAt(position: ChunkApiWorldPosition): ExistingRoofRef | null {
+    const point: readonly [number, number] = [position.x, position.z];
+    for (const roof of existingRoofsInScene()) {
+      const coordinates = asArray(roof.footprint.coordinates);
+      const contains = safeString(roof.footprint.type, "Polygon") === "MultiPolygon"
+        ? coordinates.some((polygon) => pointInPolygon(point, polygon))
+        : pointInPolygon(point, coordinates);
+      if (contains) return roof;
+    }
+    return null;
+  }
+
+  function restoreEditingRoofObjects(): void {
+    if (hiddenEditingRoofObjects.length === 0) return;
+    hiddenEditingRoofObjects.forEach(({ object, visible }) => {
+      object.visible = visible;
+    });
+    hiddenEditingRoofObjects = [];
+    options.sceneRuntime.renderOnce("world-edit.roof-edit-source-restore");
+  }
+
+  function hideEditingRoofObjects(objectInstanceId: string): void {
+    restoreEditingRoofObjects();
+    const scene = options.sceneRuntime.getScene();
+    if (!scene || !objectInstanceId) return;
+    scene.traverse((object) => {
+      if (object.userData.semanticRoof !== true) return;
+      const ref = asRecord(object.userData.semanticObjectRef);
+      if (safeString(ref.objectInstanceId, "") !== objectInstanceId) return;
+      hiddenEditingRoofObjects.push({ object, visible: object.visible });
+      object.visible = false;
+    });
+    if (hiddenEditingRoofObjects.length > 0) {
+      options.sceneRuntime.renderOnce("world-edit.roof-edit-source-hide");
+    }
+  }
+
+  function sceneContainsRoofCalculation(
+    objectInstanceId: string,
+    expectedCalculation: RoofCalculationResult,
+  ): boolean {
+    const scene = options.sceneRuntime.getScene();
+    if (!scene) return false;
+    let matches = false;
+    let hidStaleObject = false;
+    scene.traverse((object) => {
+      if (object.userData.semanticRoof !== true) return;
+      const ref = asRecord(object.userData.semanticObjectRef);
+      const renderedObjectInstanceId = safeString(
+        object.userData.objectInstanceId ?? ref.objectInstanceId,
+        "",
+      );
+      if (renderedObjectInstanceId !== objectInstanceId) return;
+      if (roofCalculationVersionsMatch(
+        expectedCalculation,
+        object.userData.roofCalculationVersion,
+      )) {
+        matches = true;
+        return;
+      }
+      if (!object.visible) return;
+      if (!hiddenEditingRoofObjects.some(({ object: hidden }) => hidden === object)) {
+        hiddenEditingRoofObjects.push({ object, visible: object.visible });
+      }
+      object.visible = false;
+      hidStaleObject = true;
+    });
+    if (hidStaleObject) options.sceneRuntime.renderOnce("world-edit.roof-save-stale-source-hide");
+    return matches;
+  }
+
+  async function waitForPersistedRoofCalculation(
+    objectInstanceId: string,
+    expectedCalculation: RoofCalculationResult,
+    timeoutMilliseconds = 8_000,
+  ): Promise<boolean> {
+    const deadline = Date.now() + Math.max(0, timeoutMilliseconds);
+    while (!destroyed) {
+      if (sceneContainsRoofCalculation(objectInstanceId, expectedCalculation)) return true;
+      if (Date.now() >= deadline) return false;
+      await new Promise<void>((resolve) => window.setTimeout(resolve, 32));
+    }
+    return false;
+  }
+
+  function selectExistingRoof(ref: ExistingRoofRef): void {
+    const runtime = polygonAreaRuntime("roof");
+    const points = polygonAreaPointsFromFootprint(ref.footprint, ref.anchor.y);
+    if (!validPolygonArea(points)) return;
+    invalidateRoofCalculation();
+    runtime.points = [...points];
+    runtime.closed = true;
+    const storedParameters = asRecord(ref.metadata.roofParameters);
+    const normalizedStoredParameters = normalizeRoofToolParameters(
+      storedParameters,
+      DEFAULT_ROOF_TOOL_PARAMETERS,
+    );
+    const persistedQuickSettings = persistedRoofQuickSettings(ref.metadata, normalizedStoredParameters);
+    const pendingQuickSettings = pendingRoofQuickSettings.get(ref.objectInstanceId);
+    if (pendingQuickSettings
+      && pendingQuickSettings.roofType === persistedQuickSettings.roofType
+      && pendingQuickSettings.pitchDeg === persistedQuickSettings.pitchDeg
+      && pendingQuickSettings.overhangMm === persistedQuickSettings.overhangMm) {
+      pendingRoofQuickSettings.delete(ref.objectInstanceId);
+    }
+    roofParameters = {
+      ...normalizedStoredParameters,
+      ...persistedQuickSettings,
+      ...(pendingQuickSettings ?? {}),
     };
+    roofQuickSettings?.sync(roofParameters);
+    const storedRequest = asRecord(ref.metadata.roofRequest);
+    const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
+    const requestMatches = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
+      && roofCalculationRequestKey(storedRequest) === roofCalculationRequestKey(expectedRequest);
+    const storedCalculation = asRecord(ref.metadata.roofCalculation);
+    const purlinAlignmentIsCurrent = roofCalculationHasZoneTopPurlinAlignment(storedCalculation);
+    // Render the persisted calculation immediately even when an older request
+    // schema/default set no longer matches exactly, but never reuse a legacy
+    // calculation whose lowest purlin still sits below the roof-zone datum.
+    runtime.calculation = storedCalculation.ok === true && purlinAlignmentIsCurrent
+      ? storedCalculation as RoofCalculationResult
+      : null;
+    runtime.request = storedCalculation.ok === true && purlinAlignmentIsCurrent
+      && storedRequest.contract_version === "cad-roof-calculation-request/0.1"
+      ? storedRequest as unknown as RoofCalculationRequest
+      : null;
+    editingRoofInstanceId = ref.objectInstanceId;
+    editingRoofAnchor = { ...ref.anchor };
+    hideEditingRoofObjects(ref.objectInstanceId);
+    rebuildPolygonAreaScene("roof");
+    rebuildRoofZoneScene(true);
+    refreshHud();
+    if (!requestMatches || !purlinAlignmentIsCurrent) scheduleRoofPreview(0);
+    setStatus(`Dach ${ref.objectInstanceId} ausgewählt. Eckpunkte und alle Dachparameter bleiben editierbar.`, "ready");
+  }
+
+  async function removeExistingRoof(ref: ExistingRoofRef): Promise<void> {
+    if (busy) return;
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    try {
+      const payload: ChunkApiRemoveObjectCommandPayload = {
+        type: "RemoveObject",
+        userId: "editor_user",
+        sessionId: `world_edit_roof_remove_${Date.now()}`,
+        position: ref.anchor,
+        objectInstanceId: ref.objectInstanceId,
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: "world-edit:roof:remove",
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      pendingRoofQuickSettings.delete(ref.objectInstanceId);
+      clearOptimisticRoofCalculation(ref.objectInstanceId);
+      resetPolygonArea("roof");
+      await options.sceneRuntime.reloadDirtyChunks("world-edit-roof-remove");
+      rebuildRoofZoneScene(true);
+      setStatus("Dach gelöscht.", "ready");
+    } catch (error) {
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
+  function selectExistingRoom(ref: ExistingRoomRef): void {
+    const runtime = polygonAreaRuntime("room");
+    const points = polygonAreaPointsFromFootprint(ref.footprint, ref.anchor.y);
+    if (!validPolygonArea(points)) return;
+    runtime.points = [...points];
+    runtime.closed = true;
+    roomHeight = Math.max(0.1, Number(ref.footprint.height ?? ref.metadata.height ?? 3));
     editingRoomInstanceId = ref.objectInstanceId;
     editingRoomAnchor = { ...ref.anchor };
     roomType = safeString(ref.metadata.roomType, roomType);
     roomLabel = safeString(ref.metadata.label, roomLabel).slice(0, 80);
-    rebuildSelectionScene();
+    rebuildPolygonAreaScene("room");
     refreshHud();
-    setStatus(`${roomLabel} ausgewählt. Bereich oder Eigenschaften ändern und „Ausführen“ drücken.`, "ready");
+    setStatus(`${roomLabel} ausgewählt. Gelbe Eckpunkte verschieben oder Eigenschaften ändern; die Fläche bleibt exakt erhalten.`, "ready");
   }
 
   async function removeExistingRoom(ref: ExistingRoomRef): Promise<void> {
@@ -3288,9 +5140,9 @@ export function createWorldEditController(
       }
       editingRoomInstanceId = null;
       editingRoomAnchor = null;
-      selection = { first: null, second: null };
+      resetPolygonArea("room");
       await options.sceneRuntime.reloadDirtyChunks("world-edit-room-remove");
-      rebuildSelectionScene();
+      rebuildPolygonAreaScene("room");
       setStatus("Raum gelöscht.", "ready");
     } catch (error) {
       setStatus(commandErrorMessage(error), "error");
@@ -3302,23 +5154,25 @@ export function createWorldEditController(
   }
 
   async function executeRoom(): Promise<void> {
-    if (activeTool !== "room" || busy) return;
-    if (!selection.first || !selection.second) {
-      setStatus("Bitte zuerst mit dem Selection Tool den Raum in X/Y/Z markieren.", "warning");
+    if (busy) return;
+    const runtime = polygonAreaRuntime("room");
+    if (!runtime.closed || !validPolygonArea(runtime.points)) {
+      setStatus("Bitte zuerst eine gültige Raumkontur mit mindestens drei Punkten schließen.", "warning");
       return;
     }
-    const bounds = resolveWorldEditSelectionBounds(selection.first, selection.second);
+    const bounds = polygonAreaBounds(runtime.points);
+    if (!bounds) return;
     // Chunk-service geometry updates are idempotent only while occupiedCells
     // stay constant. Retain the original room anchor when resizing an existing
     // room, including when its minimum X/Y/Z face is dragged outward.
     const anchor = editingRoomAnchor ?? {
-      x: bounds.minimum.x,
-      y: bounds.minimum.y + Math.min(1, bounds.size.y - 1),
-      z: bounds.minimum.z,
+      x: Math.floor(bounds.minimum.x),
+      y: Math.floor(runtime.points[0]!.y + 1),
+      z: Math.floor(bounds.minimum.z),
     };
     const targetCells = options.sceneRuntime.getTargetCells();
     const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
-    const areaM2 = bounds.size.x * bounds.size.z;
+    const areaM2 = polygonAreaPlanArea(runtime.points);
     const roomId = editingRoomInstanceId
       ?? `room_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 
@@ -3335,19 +5189,17 @@ export function createWorldEditController(
         objectTypeId: "space_room",
         objectKind: "semantic_footprint",
         objectInstanceId: roomId,
-        dimensions: { x: bounds.size.x, y: bounds.size.y, z: bounds.size.z },
+        dimensions: {
+          x: Math.max(1, Math.min(256, Math.ceil(bounds.size.x))),
+          y: Math.max(1, Math.min(256, Math.ceil(roomHeight))),
+          z: Math.max(1, Math.min(256, Math.ceil(bounds.size.z))),
+        },
         footprint: {
           type: "Polygon",
           coordinateSpace: "world-cell-xz",
-          coordinates: [[
-            [bounds.minimum.x, bounds.minimum.z],
-            [bounds.maximum.x + 1, bounds.minimum.z],
-            [bounds.maximum.x + 1, bounds.maximum.z + 1],
-            [bounds.minimum.x, bounds.maximum.z + 1],
-            [bounds.minimum.x, bounds.minimum.z],
-          ]],
-          baseY: bounds.minimum.y,
-          height: bounds.size.y,
+          coordinates: [polygonAreaClosedCoordinates(runtime.points)],
+          baseY: runtime.points[0]!.y,
+          height: roomHeight,
           schemaVersion: "vectoplan-space-room.v1",
         },
         occupiedCells: [anchor],
@@ -3359,10 +5211,43 @@ export function createWorldEditController(
           roomType,
           label: roomLabel,
           areaM2,
-          volumeM3: areaM2 * bounds.size.y,
+          volumeM3: areaM2 * roomHeight,
           energyZone: true,
           invisibleVolume: true,
           mergeKey: roomId,
+          libraryPlacementContext: {
+            libraryItemId: "world-edit-room",
+            familyId: "world-edit.room",
+            packageId: "world-edit.room",
+            variantId: "default",
+            objectKind: "semantic_footprint",
+            libraryRef: {
+              libraryItemId: "world-edit-room",
+              familyId: "world-edit.room",
+              packageId: "world-edit.room",
+              variantId: "default",
+              objectKind: "semantic_footprint",
+            },
+            placementCommand: {
+              kind: "PlaceObject",
+              runtimeBlockTypeId: blockTypeId,
+              blockTypeId,
+            },
+            semanticProfile: {
+              role: "room",
+              variables: {
+                "semantic.role": "room",
+                "dimensions.width_mm": bounds.size.x * 1000,
+                "dimensions.height_mm": roomHeight * 1000,
+                "dimensions.depth_mm": bounds.size.z * 1000,
+                "room.type": roomType,
+                "room.label": roomLabel,
+                "room.area_m2": areaM2,
+                "room.volume_m3": areaM2 * roomHeight,
+                "energy.zone": true,
+              },
+            },
+          },
         },
       };
       const result = await options.worldRuntime.getSource().sendCommand(payload, {
@@ -3376,7 +5261,7 @@ export function createWorldEditController(
       await options.sceneRuntime.reloadDirtyChunks("world-edit-room");
       editingRoomInstanceId = roomId;
       editingRoomAnchor = { ...anchor };
-      rebuildSelectionScene();
+      rebuildPolygonAreaScene("room");
       setStatus(`${roomLabel} · ${areaM2.toFixed(2)} m² wurde als Raum gespeichert.`, "ready");
     } catch (error) {
       options.logger?.warn?.("Room placement failed.", { error: normalizeUnknownError(error) });
@@ -3388,29 +5273,123 @@ export function createWorldEditController(
     }
   }
 
-  async function executeClipboard(target?: ChunkApiWorldPosition | null): Promise<void> {
-    if (activeTool !== "clipboard" || busy) return;
-    const clipboardOperation = ["copy", "cut", "paste"].includes(operation) ? operation : "copy";
+  async function executeStair(): Promise<void> {
+    if (busy) return;
+    const runtime = polygonAreaRuntime("stair");
+    if (!runtime.closed || !validPolygonArea(runtime.points)) {
+      setStatus("Bitte zuerst einen gültigen Treppenbereich mit mindestens drei Punkten schließen.", "warning");
+      return;
+    }
+    const bounds = polygonAreaBounds(runtime.points);
+    if (!bounds) return;
+    const anchor = {
+      x: Math.floor(bounds.minimum.x),
+      y: Math.floor(runtime.points[0]!.y + 1),
+      z: Math.floor(bounds.minimum.z),
+    };
+    const targetCells = options.sceneRuntime.getTargetCells();
+    const blockTypeId = targetCells.sourceCell?.blockTypeId || "system_terrain";
+    const stairId = `stair_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
+    busy = true;
+    if (executeButton) executeButton.disabled = true;
+    setStatus("Parametrische Treppe wird angelegt …", "busy");
+    try {
+      const payload: ChunkApiPlaceObjectCommandPayload = {
+        type: "PlaceObject",
+        userId: "editor_user",
+        sessionId: `world_edit_stair_${Date.now()}`,
+        position: anchor,
+        blockTypeId,
+        objectTypeId: "building_stair",
+        objectKind: "semantic_footprint",
+        objectInstanceId: stairId,
+        dimensions: {
+          x: Math.max(1, Math.min(256, Math.ceil(bounds.size.x))),
+          y: 3,
+          z: Math.max(1, Math.min(256, Math.ceil(bounds.size.z))),
+        },
+        footprint: {
+          type: "Polygon",
+          coordinateSpace: "world-cell-xz",
+          coordinates: [polygonAreaClosedCoordinates(runtime.points)],
+          baseY: runtime.points[0]!.y,
+          height: 3,
+          schemaVersion: "vectoplan-building-stair.v1",
+        },
+        occupiedCells: [anchor],
+        metadata: {
+          schemaVersion: "vectoplan-building-stair.v1",
+          source: "vectoplan-editor.world-edit.stair",
+          familyRef: "world-edit.stair",
+          variantRef: stairParameters.stairType,
+          semanticRole: "stair",
+          label: "Treppe",
+          stairParameters: {...stairParameters},
+          libraryPlacementContext: {
+            libraryItemId: "world-edit-stair",
+            familyId: "world-edit.stair",
+            packageId: "world-edit.stair",
+            variantId: stairParameters.stairType,
+            objectKind: "semantic_footprint",
+            placementCommand: {kind: "PlaceObject", runtimeBlockTypeId: blockTypeId, blockTypeId},
+            semanticProfile: {
+              role: "stair",
+              variables: {
+                "semantic.role": "stair",
+                "stair.type": stairParameters.stairType,
+                "stair.width_mm": stairParameters.widthMm,
+                "stair.tread_count": stairParameters.treadCount,
+                "stair.start_side": stairParameters.startSide,
+                "stair.end_side": stairParameters.endSide,
+                "stair.direction": stairParameters.direction,
+              },
+            },
+          },
+        },
+      };
+      const result = await options.worldRuntime.getSource().sendCommand(payload, {
+        reason: "world-edit:stair:create",
+        reloadDirtyChunks: false,
+      });
+      if (isChunkApiFailedResult(result)) {
+        setStatus(commandErrorMessage(result), "error");
+        return;
+      }
+      await options.sceneRuntime.reloadDirtyChunks("world-edit-stair");
+      rebuildPolygonAreaScene("stair");
+      setStatus(`Treppe · ${stairParameters.widthMm} mm · ${stairParameters.treadCount} Auftritte gespeichert.`, "ready");
+    } catch (error) {
+      options.logger?.warn?.("Stair placement failed.", { error: normalizeUnknownError(error) });
+      setStatus(commandErrorMessage(error), "error");
+    } finally {
+      busy = false;
+      if (executeButton) executeButton.disabled = false;
+      refreshHud();
+    }
+  }
+
+  async function executeClipboard(
+    requestedOperation?: WorldEditOperation,
+    target?: ChunkApiWorldPosition | null,
+  ): Promise<boolean> {
+    if (busy) return false;
+    const requested = requestedOperation ?? operation;
+    const clipboardOperation = ["copy", "cut", "paste"].includes(requested) ? requested : "copy";
     if (clipboardOperation !== "paste" && (!selection.first || !selection.second)) {
       setStatus("Bitte zuerst mit dem Selection Tool einen Bereich markieren.", "warning");
-      return;
+      return false;
     }
     if (clipboardOperation === "paste" && clipboard.length === 0) {
       setStatus("Die Zwischenablage ist leer. Bitte zuerst Copy oder Cut ausführen.", "warning");
-      return;
+      return false;
     }
     const anchor = clipboardOperation === "paste"
       ? target ?? cellPosition(options.sceneRuntime.getTargetCells().placementCell)
       : selection.first;
     if (!anchor) {
       setStatus("Kein gültiges Einfügeziel unter dem Fadenkreuz.", "warning");
-      return;
+      return false;
     }
-    if (parcelMaskInput?.checked && parcelSelection.parcels.length === 0) {
-      setStatus("Bitte zuerst mindestens ein Flurstück auswählen oder die Grundstücksmaske deaktivieren.", "warning");
-      return;
-    }
-
     busy = true;
     if (executeButton) executeButton.disabled = true;
     setStatus(`${clipboardOperation === "copy" ? "Kopieren" : clipboardOperation === "cut" ? "Ausschneiden" : "Einfügen"} wird ausgeführt …`, "busy");
@@ -3424,8 +5403,8 @@ export function createWorldEditController(
         operation: clipboardOperation,
         ...(clipboardOperation !== "paste" ? { bounds: { min: selection.first, max: selection.second } } : {}),
         ...(clipboardOperation === "paste" ? { clipboard } : {}),
-        parcelMask: parcelMaskPayload(),
-        commandSource: "vectoplan-editor.world-edit.clipboard",
+        parcelMask: clipboardParcelMaskPayload(),
+        commandSource: WORLD_EDIT_COMMAND_SOURCE,
         commandMetadata: {
           source: "world-edit-controller",
           projectPublicId: parcelSelection.projectPublicId,
@@ -3437,14 +5416,22 @@ export function createWorldEditController(
       });
       if (isChunkApiFailedResult(result)) {
         setStatus(commandErrorMessage(result), "error");
-        return;
+        return false;
       }
-      const raw = asRecord(result.result.raw);
-      const rawClipboard = asArray(raw.clipboard ?? asRecord(raw.worldEdit).clipboard);
+      const commandResult = clipboardCommandResult(result);
+      if (!commandResult) {
+        setStatus("Die Serverantwort konnte nicht als WorldEdit-Ergebnis gelesen werden. Die Auswahl bleibt erhalten.", "error");
+        return false;
+      }
+      const rawClipboard = clipboardEntriesFromCommandResult(result);
       if (clipboardOperation === "copy" || clipboardOperation === "cut") {
-        clipboard = rawClipboard.map((entry) => asRecord(entry));
+        clipboard = rawClipboard;
+        if (clipboard.length === 0) {
+          setStatus("Der Server hat keine Zwischenablage zurückgegeben. Die Auswahl bleibt erhalten; bitte Rechtsklick erneut versuchen.", "error");
+          return false;
+        }
       }
-      if (result.result.changed) await options.sceneRuntime.reloadDirtyChunks(`world-edit-${clipboardOperation}`);
+      if (commandResult.changed) await options.sceneRuntime.reloadDirtyChunks(`world-edit-${clipboardOperation}`);
       setStatus(
         clipboardOperation === "copy"
           ? `${clipboard.length} Zellen kopiert.`
@@ -3453,9 +5440,11 @@ export function createWorldEditController(
             : "Zwischenablage eingefügt.",
         "ready",
       );
+      return true;
     } catch (error) {
       options.logger?.warn?.("WorldEdit clipboard command failed.", { error: normalizeUnknownError(error) });
       setStatus(commandErrorMessage(error), "error");
+      return false;
     } finally {
       busy = false;
       if (executeButton) executeButton.disabled = false;
@@ -3463,233 +5452,87 @@ export function createWorldEditController(
     }
   }
 
+  async function executeClipboardCurrent(captureOperation: "copy" | "cut"): Promise<void> {
+    if (clipboardPhase === "move") {
+      const pasted = await executeClipboard("paste", clipboardAnchor);
+      if (pasted) {
+        // A confirmed paste is one complete transaction. Returning to select
+        // removes the preview/gizmo only after the server accepted the paste.
+        resetClipboardPreview();
+      } else {
+        // Network/validation failures must never discard the live preview.
+        clipboardPhase = "move";
+        options.root.dataset.worldEditClipboardPhase = clipboardPhase;
+        options.root.dataset.worldEditClipboardCells = String(clipboard.length);
+        rebuildSelectionScene();
+        options.root.dataset.worldEditClipboardGizmoHandles = String(clipboardHandles.length);
+        startClipboardGizmoHover();
+        refreshHud();
+      }
+      return;
+    }
+    if (await executeClipboard(captureOperation)) beginClipboardPreview();
+  }
+
   async function handleWorldEditIntent(intent: EditorInputWorldEditIntent): Promise<boolean> {
-    if (!activeTool) return false;
-    if (activeTool === "selection") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          if (!updateSelectionScenePreview()) rebuildSelectionScene();
-          refreshHud();
-          setStatus("Auswahl bereit. Die sechs Flächengriffe passen X/Y/Z blockweise und live an.", "ready");
-        }
-        return true;
+    return activeSystem()?.handleIntent(intent) ?? false;
+  }
+
+  function handleWorldEditKeyDown(event: KeyboardEvent): void {
+    if (roofQuickSettings?.isOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        roofQuickSettings.close();
       }
-      if (intent.action === "secondary-release") return true;
-      if (adjustSelectionHandle(intent.action)) return true;
-      if (intent.action === "secondary") {
-        stopSelectionDrag();
-        if (selection.second) selection = { first: selection.first, second: null };
-        else selection = { first: null, second: null };
-        rebuildSelectionScene();
-        refreshHud();
-        setStatus("Letzten Auswahlpunkt entfernt.", "info");
-        return true;
-      }
-      const selectionTarget = intent.position
-        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200);
-      if (!selectionTarget) {
-        setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      startSelectionDrag(selectionTarget);
-      setStatus("Linksklick halten und den Bereich blockweise live aufziehen.", "ready");
-      return true;
+      return;
     }
-    if (activeTool === "room") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          if (!updateSelectionScenePreview()) rebuildSelectionScene();
-          refreshHud();
-          await executeRoom();
-        }
-        return true;
+    if (stairQuickSettings?.isOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        stairQuickSettings.close();
       }
-      if (intent.action === "secondary-release") return true;
-      if (intent.action === "primary" && adjustSelectionHandle("primary")) return true;
-      const roomTarget = intent.position
-        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200);
-      if (intent.action === "secondary") {
-        if (roomTarget) {
-          const existingRoom = existingRoomAt(roomTarget);
-          if (existingRoom) {
-            void removeExistingRoom(existingRoom);
-            return true;
-          }
-        }
-        stopSelectionDrag();
-        editingRoomInstanceId = null;
-        editingRoomAnchor = null;
-        selection = { first: null, second: null };
-        rebuildSelectionScene();
-        refreshHud();
-        setStatus("Raumauswahl zurückgesetzt. Rechtsklick auf einen Raum löscht nur mit aktivem Räume-Tool.", "info");
-        return true;
-      }
-      if (!roomTarget) {
-        setStatus("Kein gültiges Rasterziel unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      const existingRoom = existingRoomAt(roomTarget);
-      if (existingRoom) {
-        selectExistingRoom(existingRoom);
-        return true;
-      }
-      editingRoomInstanceId = null;
-      editingRoomAnchor = null;
-      startSelectionDrag(roomTarget);
-      setStatus("Linksklick halten und den Raumbereich wie mit dem Selection Tool aufziehen.", "ready");
-      return true;
+      return;
     }
-    if (activeTool === "ruler") {
-      if (intent.action === "primary-release") {
-        if (selectionDragging) {
-          updateSelectionDrag();
-          stopSelectionDrag();
-          rebuildSelectionScene();
-          refreshHud();
-          const distance = measurementMetres(selection);
-          setStatus(distance === null ? "Messung unvollständig." : `Distanz: ${distance.toFixed(2)} Meter`, distance === null ? "warning" : "ready");
-        }
-        return true;
-      }
-      if (intent.action === "secondary" || intent.action === "secondary-release") {
-        if (intent.action === "secondary") {
-          stopSelectionDrag();
-          selection = { first: null, second: null };
-          rebuildSelectionScene();
-          refreshHud();
-        }
-        return true;
-      }
-      const fallbackPlanePoint = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-      const rulerTarget = rulerPointFromTarget(
-        intent.targetPoint,
-        intent.sourceCell,
-        intent.position
-          ? { x: intent.position.x + 0.5, y: intent.position.y + 0.5, z: intent.position.z + 0.5 }
-          : fallbackPlanePoint
-            ? {
-                x: Number(fallbackPlanePoint.x.toFixed(2)),
-                y: Number(fallbackPlanePoint.y.toFixed(2)),
-                z: Number(fallbackPlanePoint.z.toFixed(2)),
-              }
-            : null,
-      );
-      if (!rulerTarget) {
-        setStatus("Kein gültiger Messpunkt unter dem Fadenkreuz.", "warning");
-        return true;
-      }
-      startSelectionDrag(rulerTarget);
-      setStatus("Bis zum zweiten Messpunkt ziehen und Linksklick loslassen.", "ready");
-      return true;
-    }
-    if (activeTool === "parcel") {
-      if (intent.action.includes("release")) return true;
-      const parcelAction = parcelSelectionActionForIntent(intent.action);
-      const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-      // The real ray hit is authoritative. Projecting the camera ray onto the
-      // parcel plane first can land behind a wall or roof and therefore in the
-      // neighbouring parcel, which made adding parcels appear broken while
-      // removing an already highlighted surface still worked.
-      const exactTarget = intent.targetPoint
-        ? { x: intent.targetPoint.x, z: intent.targetPoint.z }
-        : cameraTarget
-          ? { x: cameraTarget.x, z: cameraTarget.z }
-          : null;
-      const parcelTarget = exactTarget
-        ? { x: Math.floor(exactTarget.x), y: Math.floor(resolveParcelGridPlaneY(null)), z: Math.floor(exactTarget.z) }
-        : intent.position ?? (intent.sourceCell
-          ? { x: intent.sourceCell.worldX, y: intent.sourceCell.worldY, z: intent.sourceCell.worldZ }
-          : null);
-      if (parcelTarget && parcelAction) {
-        setParcelAt(
-          parcelTarget,
-          exactTarget,
-          parcelAction,
-        );
-      } else if (!parcelTarget) setStatus("Kein gültiges Flurstücksziel.", "warning");
-      return true;
-    }
-    if (activeTool === "parcel-grid") {
-      if (intent.action === "primary-release") {
-        if (parcelGridDragging) {
-          updateParcelGridDrag();
-          stopParcelGridDrag(true);
-          refreshHud();
-        }
-        return true;
-      }
-      if (intent.action === "secondary-release") return true;
-      if (intent.action === "secondary") moveParcelGridInnerLineOutward();
-      else if (intent.action === "primary") {
-        if (startParcelGridDrag()) return true;
-        const cameraTarget = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
-        const exactTarget = cameraTarget ?? intent.targetPoint;
-        const gridTarget = exactTarget ? {
-          x: Math.floor(exactTarget.x),
-          y: Math.floor(exactTarget.y),
-          z: Math.floor(exactTarget.z),
-        } : intent.position;
-        if (gridTarget) selectParcelGridAt(gridTarget, exactTarget);
-        else setStatus("Kein gültiges Ziel für das Grundstücksraster.", "warning");
-      }
-      return true;
-    }
-    if (activeTool === "clipboard") {
-      if (intent.action.includes("release")) return true;
-      if (intent.action === "primary" && operation === "paste") await executeClipboard(intent.position);
-      return true;
-    }
-    if (intent.action.includes("release")) return true;
-    const target = intent.position;
-    if (!target) {
-      setStatus("Kein gültiges Pinselziel unter dem Fadenkreuz.", "warning");
-      return true;
-    }
-    brushTarget = target;
+    if (options.root.dataset.creativeInventoryOpen === "true") return;
+    if (!activeSystem()?.handleKeyDown?.(event)) return;
     refreshHud();
-    await executeAt(target, intent.action === "secondary" ? "clear" : operation);
-    return true;
   }
 
   function activate(tool: WorldEditTool, nextOperation: WorldEditOperation = "set"): void {
     if (destroyed) return;
     const previousTool = activeTool;
+    const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
     stopSelectionDrag();
     stopParcelGridDrag(false);
+    stopClipboardMove();
+    stopTentacleDrawing();
+    stopPolygonAreaInteraction("room");
+    stopPolygonAreaInteraction("stair");
+    stopPolygonAreaInteraction("roof");
+    roofQuickSettings?.close(false);
+    stairQuickSettings?.close();
     activeTool = tool;
+    const system = systemRegistry?.get(tool);
+    if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
+    if (previousTool !== tool) previousSystem?.onDeactivate?.(tool);
+    if (previousTool && (previousTool === "room" || previousTool === "stair" || previousTool === "roof") && previousTool !== tool) {
+      if (previousTool === "roof") {
+        resetPolygonArea("roof");
+        disposeRoofZoneGroup();
+        roofZoneSignature = "";
+      } else disposePolygonAreaGroup(previousTool);
+    }
     operation = nextOperation;
     configureOperationSelect(tool);
     syncPanelVisibility();
     options.root.dataset.worldEditActive = "true";
     options.root.dataset.worldEditTool = tool;
-    const maxDistance = tool === "selection" || tool === "room" || tool === "parcel" || tool === "parcel-grid" || tool === "ruler"
-      ? 60
-      : tool === "clipboard"
-        ? 40
-        : 16;
-    options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance });
-    if (previousTool === "parcel-grid" || tool === "parcel-grid") rebuildParcelGridScene();
-    setStatus(
-      tool === "selection"
-        ? "Linksklick halten und den Auswahlbereich blockweise live aufziehen; die sechs Flächengriffe funktionieren genauso."
-        : tool === "room"
-          ? "Raumbereich wie beim Selection Tool aufziehen; beim Loslassen wird er automatisch gespeichert."
-        : tool === "ruler"
-          ? "Ersten Messpunkt setzen; nahe Blockecken rastet das Messwerkzeug automatisch ein."
-          : tool === "parcel"
-            ? "Flurstück anvisieren: Linksklick wählt aus, Rechtsklick entfernt."
-            : tool === "parcel-grid"
-              ? "Jede innere Rasterlinie hat einen Griff: Punkt oder Doppelpfeil anvisieren, Linksklick halten und blockweise ziehen."
-            : tool === "clipboard"
-              ? "Copy, Cut oder Paste auswählen."
-              : "Pinsel mit Linksklick anwenden.",
-      "ready",
-    );
+    options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance: system.ui.maxDistance });
+    system.onActivate?.(previousTool);
+    rebuildSelectionScene();
+    setStatus(system.ui.activationMessage, "ready");
     refreshHud();
     try { void options.sceneRuntime.getInputController()?.requestPointerLock("world-edit-activate"); } catch { /* best effort */ }
   }
@@ -3697,33 +5540,45 @@ export function createWorldEditController(
   function deactivate(reason = "deactivate"): void {
     if (destroyed) return;
     const previousTool = activeTool;
+    const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
     activeTool = null;
     stopSelectionDrag();
     stopParcelGridDrag(false);
+    stopClipboardMove();
+    stopTentacleDrawing();
+    stopPolygonAreaInteraction("room");
+    stopPolygonAreaInteraction("stair");
+    stopPolygonAreaInteraction("roof");
+    roofQuickSettings?.close(false);
+    stairQuickSettings?.close();
     panel.hidden = true;
     selection = { first: null, second: null };
     editingRoomInstanceId = null;
     editingRoomAnchor = null;
+    restoreEditingRoofObjects();
+    editingRoofInstanceId = null;
+    editingRoofAnchor = null;
     brushTarget = null;
     disposeSelectionGroup();
+    disposeTentacleGroup();
+    disposePolygonAreaGroup("room");
+    disposePolygonAreaGroup("stair");
+    disposePolygonAreaGroup("roof");
+    disposeRoofZoneGroup();
+    roofZoneSignature = "";
     options.sceneRuntime.setWorldEditIntentHandler(null);
-    if (previousTool === "parcel-grid") rebuildParcelGridScene();
+    previousSystem?.onDeactivate?.(null);
     delete options.root.dataset.worldEditActive;
     delete options.root.dataset.worldEditTool;
     delete options.root.dataset.rulerSnap;
+    delete options.root.dataset.polygonAreaTool;
+    delete options.root.dataset.polygonAreaPoints;
+    delete options.root.dataset.polygonAreaClosed;
     options.logger?.debug?.("WorldEdit controller deactivated.", { reason });
   }
 
   function toolFromValue(value: unknown): WorldEditTool {
-    const normalized = safeString(value, "selection").toLowerCase().replaceAll("_", "-");
-    if (normalized.includes("paint")) return "paint";
-    if (normalized.includes("sculpt")) return "sculpt";
-    if (normalized.includes("room") || normalized.includes("raum")) return "room";
-    if (normalized.includes("parcel-grid") || normalized.includes("grundst")) return "parcel-grid";
-    if (normalized.includes("parcel") || normalized.includes("flurst")) return "parcel";
-    if (normalized.includes("ruler") || normalized.includes("measure")) return "ruler";
-    if (normalized.includes("copy") || normalized.includes("clipboard") || normalized.includes("paste")) return "clipboard";
-    return "selection";
+    return systemRegistry?.match(value) ?? "selection";
   }
 
   function handleActivateEvent(event: Event): void {
@@ -3749,6 +5604,106 @@ export function createWorldEditController(
     input.value = String(Math.min(maximum, Math.max(minimum, Math.round(numericValue))));
   }
 
+  const supportedRoofTypes = new Set<RoofType>([
+    "flat", "gable", "hipped", "half_hipped", "pent", "mansard", "trapezoid",
+    "butterfly", "pyramid", "barrel", "sawtooth",
+  ]);
+
+  function roofNumber(
+    source: Readonly<Record<string, unknown>>,
+    keys: readonly string[],
+    fallback: number,
+    minimum: number,
+    maximum: number,
+    integer = false,
+  ): number {
+    const raw = keys.map((key) => source[key]).find((value) => Number.isFinite(Number(value)));
+    const resolved = Math.min(maximum, Math.max(minimum, Number(raw ?? fallback)));
+    return integer ? Math.round(resolved) : resolved;
+  }
+
+  function normalizeRoofToolParameters(
+    source: Readonly<Record<string, unknown>>,
+    fallback: RoofToolParameters,
+  ): RoofToolParameters {
+    const roofTypeValue = safeString(source.roofType ?? source.roof_type, fallback.roofType).toLowerCase() as RoofType;
+    const structure = asRecord(source.structure);
+    const rafter = { ...asRecord(structure.rafter), ...asRecord(source.rafter) };
+    const purlin = { ...asRecord(structure.purlin), ...asRecord(source.purlin) };
+    const buildUp = { ...asRecord(source.roof_build_up), ...asRecord(source.roofBuildUp) };
+    const counterBatten = { ...asRecord(buildUp.counter_batten), ...asRecord(buildUp.counterBatten) };
+    const tileBatten = { ...asRecord(buildUp.tile_batten), ...asRecord(buildUp.tileBatten) };
+    const insulationModeValue = safeString(
+      source.insulationMode ?? buildUp.insulation_mode,
+      fallback.insulationMode,
+    ).toLowerCase() as RoofInsulationMode;
+    const insulationMode = new Set<RoofInsulationMode>(["between", "below", "above"]).has(insulationModeValue)
+      ? insulationModeValue
+      : fallback.insulationMode;
+    const legacyTimberDefaults = source.birdsmouthDepthMm === undefined
+      && rafter.birdsmouth_depth_mm === undefined
+      && source.purlinMiddleSpanThresholdMm === undefined
+      && purlin.middle_span_threshold_mm === undefined
+      && Number(rafter.spacing_mm ?? source.rafterSpacingMm ?? 700) === 700
+      && Number(purlin.width_mm ?? source.purlinWidthMm ?? 160) === 160
+      && Number(purlin.height_mm ?? source.purlinHeightMm ?? 240) === 240
+      && Number(purlin.maximum_spacing_mm ?? source.purlinMaximumSpacingMm ?? 2500) === 2500;
+    const overhang = asRecord(source.overhangMm ?? source.overhang_mm);
+    const edgeOverhangSource = source.edgeOverhangsMm ?? source.edges_mm ?? overhang.edges_mm;
+    const edgeOverhangsMm = (Array.isArray(edgeOverhangSource)
+      ? edgeOverhangSource
+      : safeString(edgeOverhangSource, "").split(/[;,\s]+/))
+      .map(Number)
+      .filter((value) => Number.isFinite(value) && value >= 0 && value <= 5000);
+    const ridgeRaw = source.ridgeDirection ?? source.ridge_direction ?? fallback.ridgeDirection;
+    const ridgeText = safeString(ridgeRaw, "").toLowerCase();
+    const ridgeDirection = ["auto", "x", "y"].includes(ridgeText)
+      ? ridgeText as "auto" | "x" | "y"
+      : Number.isFinite(Number(ridgeRaw)) ? Number(ridgeRaw) : fallback.ridgeDirection;
+    return {
+      roofType: supportedRoofTypes.has(roofTypeValue) ? roofTypeValue : fallback.roofType,
+      pitchDeg: roofNumber(source, ["pitchDeg", "pitch_deg", "roofPitchDeg"], fallback.pitchDeg, 0, 80, true),
+      eavesHeightMm: roofNumber(source, ["eavesHeightMm", "eaves_height_mm"], fallback.eavesHeightMm, -100_000, 100_000),
+      ridgeDirection,
+      overhangMm: roofNumber({ ...source, ...overhang }, ["overhangMm", "default_mm"], fallback.overhangMm, 0, 5000),
+      overhangNorthMm: roofNumber({ ...source, ...overhang }, ["overhangNorthMm", "north_mm"], fallback.overhangNorthMm, 0, 5000),
+      overhangEastMm: roofNumber({ ...source, ...overhang }, ["overhangEastMm", "east_mm"], fallback.overhangEastMm, 0, 5000),
+      overhangSouthMm: roofNumber({ ...source, ...overhang }, ["overhangSouthMm", "south_mm"], fallback.overhangSouthMm, 0, 5000),
+      overhangWestMm: roofNumber({ ...source, ...overhang }, ["overhangWestMm", "west_mm"], fallback.overhangWestMm, 0, 5000),
+      edgeOverhangsMm,
+      roofSkinThicknessMm: roofNumber(source, ["roofSkinThicknessMm", "roof_skin_thickness_mm"], fallback.roofSkinThicknessMm, 1, 2000),
+      roofSkinMaterial: safeString(source.roofSkinMaterial ?? source.roof_skin_material, fallback.roofSkinMaterial),
+      insulationMode,
+      insulationThicknessMm: roofNumber({ ...source, ...buildUp }, ["insulationThicknessMm", "insulation_thickness_mm"], fallback.insulationThicknessMm, 20, 500),
+      sheathingThicknessMm: roofNumber({ ...source, ...buildUp }, ["sheathingThicknessMm", "sheathing_thickness_mm"], fallback.sheathingThicknessMm, 8, 80),
+      underlayThicknessMm: roofNumber({ ...source, ...buildUp }, ["underlayThicknessMm", "underlay_thickness_mm"], fallback.underlayThicknessMm, 1, 20),
+      counterBattenWidthMm: roofNumber({ ...source, ...counterBatten }, ["counterBattenWidthMm", "width_mm"], fallback.counterBattenWidthMm, 20, 120),
+      counterBattenHeightMm: roofNumber({ ...source, ...counterBatten }, ["counterBattenHeightMm", "height_mm"], fallback.counterBattenHeightMm, 20, 100),
+      tileBattenWidthMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenWidthMm", "width_mm"], fallback.tileBattenWidthMm, 20, 100),
+      tileBattenHeightMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenHeightMm", "height_mm"], fallback.tileBattenHeightMm, 20, 80),
+      tileBattenSpacingMm: roofNumber({ ...source, ...tileBatten }, ["tileBattenSpacingMm", "spacing_mm"], fallback.tileBattenSpacingMm, 200, 500),
+      roofTileThicknessMm: roofNumber({ ...source, ...buildUp }, ["roofTileThicknessMm", "tile_thickness_mm"], fallback.roofTileThicknessMm, 8, 80),
+      roofTileMaterial: safeString(source.roofTileMaterial ?? buildUp.tile_material_ref, fallback.roofTileMaterial),
+      rafterWidthMm: roofNumber({ ...source, ...rafter }, ["rafterWidthMm", "width_mm"], fallback.rafterWidthMm, 20, 1000),
+      rafterHeightMm: roofNumber({ ...source, ...rafter }, ["rafterHeightMm", "height_mm"], fallback.rafterHeightMm, 180, 240),
+      rafterSpacingMm: legacyTimberDefaults ? 650 : roofNumber({ ...source, ...rafter }, ["rafterSpacingMm", "spacing_mm"], fallback.rafterSpacingMm, 100, 3000),
+      birdsmouthDepthMm: roofNumber({ ...source, ...rafter }, ["birdsmouthDepthMm", "birdsmouth_depth_mm"], fallback.birdsmouthDepthMm, 20, 50),
+      purlinWidthMm: legacyTimberDefaults ? 140 : roofNumber({ ...source, ...purlin }, ["purlinWidthMm", "width_mm"], fallback.purlinWidthMm, 20, 1500),
+      purlinHeightMm: legacyTimberDefaults ? 200 : roofNumber({ ...source, ...purlin }, ["purlinHeightMm", "height_mm"], fallback.purlinHeightMm, 20, 2000),
+      purlinMaximumSpacingMm: legacyTimberDefaults ? 4500 : roofNumber({ ...source, ...purlin }, ["purlinMaximumSpacingMm", "maximum_spacing_mm"], fallback.purlinMaximumSpacingMm, 250, 10_000),
+      purlinMiddleSpanThresholdMm: roofNumber({ ...source, ...purlin }, ["purlinMiddleSpanThresholdMm", "middle_span_threshold_mm"], fallback.purlinMiddleSpanThresholdMm, 1000, 15_000),
+      plateauWidthRatio: roofNumber(source, ["plateauWidthRatio", "plateau_width_ratio"], fallback.plateauWidthRatio, 0.05, 0.8),
+      mansardBreakRatio: roofNumber(source, ["mansardBreakRatio", "mansard_break_ratio"], fallback.mansardBreakRatio, 0.1, 0.8),
+      mansardLowerPitchDeg: roofNumber(source, ["mansardLowerPitchDeg", "mansard_lower_pitch_deg"], fallback.mansardLowerPitchDeg, 10, 85),
+      mansardUpperPitchDeg: roofNumber(source, ["mansardUpperPitchDeg", "mansard_upper_pitch_deg"], fallback.mansardUpperPitchDeg, 1, 70),
+      hipEndRatio: roofNumber(source, ["hipEndRatio", "hip_end_ratio"], fallback.hipEndRatio, 0.1, 1),
+      barrelRiseMm: roofNumber(source, ["barrelRiseMm", "barrel_rise_mm"], fallback.barrelRiseMm, 100, 30_000),
+      barrelSegmentCount: roofNumber(source, ["barrelSegmentCount", "barrel_segment_count"], fallback.barrelSegmentCount, 4, 64, true),
+      sawtoothCount: roofNumber(source, ["sawtoothCount", "sawtooth_count"], fallback.sawtoothCount, 1, 20, true),
+      sawtoothPitchDeg: roofNumber(source, ["sawtoothPitchDeg", "sawtooth_pitch_deg"], fallback.sawtoothPitchDeg, 5, 80),
+    };
+  }
+
   function handleSettingsEvent(event: Event): void {
     const detail = asRecord((event as CustomEvent).detail);
     const requestedTool = safeString(detail.toolId ?? detail.tool, "");
@@ -3767,6 +5722,22 @@ export function createWorldEditController(
     setNumericInput(brushWall, detail.wallThickness ?? detail.wall);
     if (safeString(detail.roomType, "")) roomType = safeString(detail.roomType, "wohnen");
     if (safeString(detail.roomLabel, "")) roomLabel = safeString(detail.roomLabel, "Raum").slice(0, 80);
+    const requestedRoomHeight = Number(detail.roomHeight ?? detail.roomHeightM ?? detail.room_height_m);
+    if (Number.isFinite(requestedRoomHeight)) roomHeight = Math.max(0.1, Math.min(256, requestedRoomHeight));
+    const roofSettings = {
+      ...asRecord(detail.roof),
+      ...asRecord(detail.roofParameters),
+      ...detail,
+    };
+    const previousRoofParameters = JSON.stringify(roofParameters);
+    roofParameters = normalizeRoofToolParameters(roofSettings, roofParameters);
+    roofQuickSettings?.sync(roofParameters);
+    if (activeTool === "roof"
+      && previousRoofParameters !== JSON.stringify(roofParameters)
+      && polygonAreaRuntime("roof").closed) {
+      invalidateRoofCalculation(true);
+      scheduleRoofPreview();
+    }
     if (parcelMaskInput && typeof detail.parcelMask === "boolean") {
       parcelMaskInput.checked = detail.parcelMask;
     }
@@ -3806,6 +5777,26 @@ export function createWorldEditController(
   function handleParentMessage(event: MessageEvent): void {
     const data = asRecord(event.data);
     const type = safeString(data.type ?? data.kind, "");
+    if (type === "vectoplan-cad:worldedit-measurement") {
+      const detail = asRecord(data.detail ?? data);
+      const start = asArray(detail.start_mm);
+      const end = asArray(detail.end_mm);
+      if (start.length < 2 || end.length < 2) return;
+      const values = [start[0], start[1], end[0], end[1]].map(Number);
+      if (!values.every(Number.isFinite)) return;
+      const baseY = Number.isFinite(Number(detail.base_y)) ? Number(detail.base_y) + 0.5 : 1.5;
+      activate("ruler");
+      selection = {
+        first: { x: values[0] / 1000, y: baseY, z: values[1] / 1000 },
+        second: { x: values[2] / 1000, y: baseY, z: values[3] / 1000 },
+      };
+      selectionDragging = false;
+      rebuildSelectionScene();
+      refreshHud();
+      const distance = measurementMetres(selection);
+      setStatus(distance === null ? "CAD-Messung konnte nicht geladen werden." : `CAD-Messung: ${distance.toFixed(3)} Meter`, distance === null ? "warning" : "ready");
+      return;
+    }
     if (type === MAP_PARCEL_CATALOG_CHANGED) {
       const detail = asRecord(data.detail ?? data);
       const incomingAvailable = asArray(detail.availableParcels ?? detail.available_parcels);
@@ -3875,28 +5866,9 @@ export function createWorldEditController(
   }
 
   function resetActiveTool(): void {
-    stopSelectionDrag();
-    stopParcelGridDrag(false);
-    if (activeTool === "parcel") {
-      parcelSelection.parcels = [];
-      postParcelSelection();
-    }
-    if (activeTool === "parcel-grid") {
-      if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.guideKey);
-      activeParcelGridParcelId = null;
-      activeParcelGridGuideKey = null;
-      parcelGridGuide = null;
-      rebuildParcelGridScene();
-      persistParcelGridState();
-    }
-    selection = { first: null, second: null };
-    editingRoomInstanceId = null;
-    editingRoomAnchor = null;
-    delete options.root.dataset.rulerSnap;
-    brushTarget = null;
-    rebuildSelectionScene();
-    refreshHud();
-    setStatus("Auswahl zurÃ¼ckgesetzt.", "info");
+    const system = activeSystem();
+    system?.reset();
+    setStatus(system?.ui.resetMessage ?? "WorldEdit zurückgesetzt.", "info");
   }
 
   function handleInventoryAction(event: Event): void {
@@ -3905,11 +5877,7 @@ export function createWorldEditController(
     if (requestedTool && requestedTool !== inventoryToolId()) return;
     const action = safeString(detail.action, "").toLowerCase();
     if (action === "reset") resetActiveTool();
-    else if (action === "execute") {
-      if (activeTool === "clipboard") void executeClipboard();
-      else if (activeTool === "room") void executeRoom();
-      else void executeAt();
-    }
+    else if (action === "execute") void activeSystem()?.execute();
   }
 
   function requestParcelSelection(): void {
@@ -3926,28 +5894,289 @@ export function createWorldEditController(
     } catch { /* bridge is best effort */ }
   }
 
+  systemRegistry = createWorldEditSystemRegistry([
+    createSelectionSystem({
+      isDragging: () => selectionDragging,
+      updateDrag: updateSelectionDrag,
+      stopDrag: stopSelectionDrag,
+      updateScenePreview: updateSelectionScenePreview,
+      rebuildScene: rebuildSelectionScene,
+      refreshHud,
+      adjustHandle: adjustSelectionHandle,
+      clearLastPoint: () => {
+        selection = selection.second
+          ? { first: selection.first, second: null }
+          : { first: null, second: null };
+      },
+      resolveTarget: (intent) => intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200),
+      startDrag: startSelectionDrag,
+      hasCompleteSelection: () => Boolean(selection.first && selection.second),
+      execute: () => executeAt(),
+      reset: () => {
+        stopSelectionDrag();
+        selection = { first: null, second: null };
+        rebuildSelectionScene();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createRoomSystem({
+      stopInteraction: () => stopPolygonAreaInteraction("room"),
+      startHover: () => startPolygonAreaHover("room"),
+      stopHover: () => stopPolygonAreaHover("room"),
+      removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("room"),
+      resolveTarget: (intent) => resolvePolygonAreaTarget("room", intent),
+      existingRoomAt,
+      removeExistingRoom: (room) => { void removeExistingRoom(room as ExistingRoomRef); },
+      selectExistingRoom: (room) => selectExistingRoom(room as ExistingRoomRef),
+      beginPointInteraction: (target) => {
+        if (polygonAreaRuntime("room").points.length === 0) {
+          editingRoomInstanceId = null;
+          editingRoomAnchor = null;
+        }
+        beginPolygonAreaInteraction("room", target);
+      },
+      finishArea: () => finishPolygonArea("room"),
+      clearRoomSelection: () => {
+        resetPolygonArea("room");
+      },
+      hasCompleteSelection: () => polygonAreaRuntime("room").closed
+        && validPolygonArea(polygonAreaRuntime("room").points),
+      executeRoom,
+      rebuild: () => rebuildPolygonAreaScene("room"),
+      reset: () => resetPolygonArea("room"),
+      setStatus,
+    }),
+    createStairSystem({
+      stopInteraction: () => stopPolygonAreaInteraction("stair"),
+      startHover: () => startPolygonAreaHover("stair"),
+      stopHover: () => stopPolygonAreaHover("stair"),
+      openSettingsUnderCrosshair: openStairQuickSettingsUnderCrosshair,
+      removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("stair"),
+      resolveTarget: (intent) => resolvePolygonAreaTarget("stair", intent),
+      beginPointInteraction: (target) => beginPolygonAreaInteraction("stair", target),
+      finishArea: () => {
+        finishPolygonArea("stair");
+        const runtime = polygonAreaRuntime("stair");
+        if (runtime.closed && validPolygonArea(runtime.points)) {
+          stairQuickSettings?.open(stairParameters);
+          const inputController = options.sceneRuntime.getInputController();
+          inputController?.clear("world-edit-stair-settings-open");
+          inputController?.disable("world-edit-stair-settings-open");
+          if (inputController) void inputController.exitPointerLock("world-edit-stair-settings");
+        }
+      },
+      isComplete: () => polygonAreaRuntime("stair").closed && validPolygonArea(polygonAreaRuntime("stair").points),
+      executeStair,
+      rebuild: () => rebuildPolygonAreaScene("stair"),
+      reset: () => resetPolygonArea("stair"),
+      setStatus,
+    }),
+    createPaintSystem({
+      getOperation: () => operation,
+      setTarget: (target) => { brushTarget = target; },
+      refreshHud,
+      executeAt: (target, forcedOperation) => executeAt(target, forcedOperation),
+      setStatus,
+      reset: () => {
+        brushTarget = null;
+        refreshHud();
+      },
+    }),
+    createSculptSystem({
+      resolveTarget: (intent) => {
+        const position = cellPosition(intent.sourceCell) ?? intent.position;
+        return position ? {
+          position,
+          blockTypeId: safeString(asRecord(intent.sourceCell).blockTypeId, "") || null,
+        } : null;
+      },
+      executeLayer: executeSculptLayer,
+      applyDefaults: () => {
+        if (brushShape) brushShape.value = "box";
+        if (brushRadius) brushRadius.value = "5";
+        if (brushDensity) brushDensity.value = "100";
+        if (brushWall) brushWall.value = "0";
+        refreshHud();
+      },
+      setStatus,
+      reset: () => {
+        brushTarget = null;
+        refreshHud();
+      },
+    }),
+    createParcelGridSystem({
+      isDragging: () => parcelGridDragging,
+      updateDrag: updateParcelGridDrag,
+      stopDrag: stopParcelGridDrag,
+      refreshHud,
+      moveInnerLineOutward: moveParcelGridInnerLineOutward,
+      startDrag: startParcelGridDrag,
+      cameraTarget: () => cameraPointAtPlaneY(resolveParcelGridPlaneY(null)),
+      selectAt: selectParcelGridAt,
+      rebuild: rebuildParcelGridScene,
+      reset: () => {
+        stopParcelGridDrag(false);
+        if (parcelGridGuide) persistedParcelGridGuides.delete(parcelGridGuide.guideKey);
+        activeParcelGridParcelId = null;
+        activeParcelGridGuideKey = null;
+        parcelGridGuide = null;
+        rebuildParcelGridScene();
+        persistParcelGridState();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createParcelSystem({
+      cameraTarget: () => cameraPointAtPlaneY(resolveParcelGridPlaneY(null)),
+      planeY: () => resolveParcelGridPlaneY(null),
+      setParcelAt,
+      reset: () => {
+        parcelSelection.parcels = [];
+        postParcelSelection();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createRulerSystem({
+      isDragging: () => selectionDragging,
+      updateDrag: updateSelectionDrag,
+      stopDrag: stopSelectionDrag,
+      rebuildScene: rebuildSelectionScene,
+      refreshHud,
+      clearMeasurement: () => {
+        selection = { first: null, second: null };
+        delete options.root.dataset.rulerSnap;
+      },
+      resolveTarget: (intent) => {
+        const visibleTarget = visibleRulerSurfaceTarget();
+        if (visibleTarget) return visibleTarget;
+        const fallbackPlanePoint = cameraPointAtPlaneY(resolveParcelGridPlaneY(null));
+        return rulerPointFromTarget(
+          intent.targetPoint,
+          intent.sourceCell,
+          intent.position
+            ? { x: intent.position.x + 0.5, y: intent.position.y + 0.5, z: intent.position.z + 0.5 }
+            : fallbackPlanePoint
+              ? {
+                  x: Number(fallbackPlanePoint.x.toFixed(2)),
+                  y: Number(fallbackPlanePoint.y.toFixed(2)),
+                  z: Number(fallbackPlanePoint.z.toFixed(2)),
+                }
+              : null,
+        );
+      },
+      startDrag: startSelectionDrag,
+      measurementMetres: () => measurementMetres(selection),
+      reset: () => {
+        stopSelectionDrag();
+        selection = { first: null, second: null };
+        delete options.root.dataset.rulerSnap;
+        rebuildSelectionScene();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createCopyPasteSystem({
+      getPhase: () => clipboardPhase,
+      stopDrag: () => clipboardPhase === "move" ? stopClipboardMove() : stopSelectionDrag(),
+      adjustSelectionHandle: () => clipboardPhase === "select" && adjustSelectionHandle("primary"),
+      resolveTarget: (intent) => intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200),
+      startSelection: startSelectionDrag,
+      startMove: startClipboardMove,
+      captureOrPaste: () => executeClipboardCurrent("copy"),
+      canExecute: () => clipboardPhase === "move"
+        ? Boolean(clipboard.length && clipboardAnchor)
+        : Boolean(selection.first && selection.second),
+      reset: resetClipboardPreview,
+      rebuild: rebuildSelectionScene,
+      refreshHud,
+    }),
+    createCutPasteSystem({
+      getPhase: () => clipboardPhase,
+      stopDrag: () => clipboardPhase === "move" ? stopClipboardMove() : stopSelectionDrag(),
+      adjustSelectionHandle: () => clipboardPhase === "select" && adjustSelectionHandle("primary"),
+      resolveTarget: (intent) => intent.position
+        ?? worldPositionAtCameraPlane(resolveParcelGridPlaneY(null), null, 1_200),
+      startSelection: startSelectionDrag,
+      startMove: startClipboardMove,
+      captureOrPaste: () => executeClipboardCurrent("cut"),
+      canExecute: () => clipboardPhase === "move"
+        ? Boolean(clipboard.length && clipboardAnchor)
+        : Boolean(selection.first && selection.second),
+      reset: resetClipboardPreview,
+      rebuild: rebuildSelectionScene,
+      refreshHud,
+    }),
+    createTentacleSystem({
+      stopDrawing: stopTentacleDrawing,
+      startHover: startTentacleHover,
+      stopHover: stopTentacleHover,
+      finishPath: finishTentaclePath,
+      removePointUnderCrosshair: removeTentaclePointUnderCrosshair,
+      resolveTarget: (intent) => {
+        if (intent.targetPoint) return {
+          x: Math.floor(intent.targetPoint.x),
+          y: Math.floor(intent.targetPoint.y),
+          z: Math.floor(intent.targetPoint.z),
+        };
+        return intent.position ?? currentTentacleTarget();
+      },
+      startDrawing: startTentacleDrawing,
+      executePath: executeTentaclePath,
+      pointCount: () => tentaclePoints.length,
+      rebuild: rebuildTentacleScene,
+      reset: () => {
+        stopTentacleDrawing();
+        tentaclePoints = [];
+        tentacleFinished = false;
+        tentacleHoveredIndex = null;
+        disposeTentacleGroup();
+        refreshHud();
+      },
+      setStatus,
+    }),
+    createRoofSystem({
+      stopInteraction: () => stopPolygonAreaInteraction("roof"),
+      startHover: () => startPolygonAreaHover("roof"),
+      stopHover: () => stopPolygonAreaHover("roof"),
+      openSettingsUnderCrosshair: openRoofQuickSettingsUnderCrosshair,
+      removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("roof"),
+      resolveTarget: (intent) => resolvePolygonAreaTarget("roof", intent),
+      beginPointInteraction: (target) => {
+        const runtime = polygonAreaRuntime("roof");
+        if (runtime.points.length === 0) {
+          const existing = existingRoofAt(target);
+          if (existing) {
+            selectExistingRoof(existing);
+            return;
+          }
+          editingRoofInstanceId = null;
+          editingRoofAnchor = null;
+        }
+        beginPolygonAreaInteraction("roof", target);
+      },
+      finishArea: () => finishPolygonArea("roof"),
+      executeRoof,
+      isComplete: () => polygonAreaRuntime("roof").closed
+        && validPolygonArea(polygonAreaRuntime("roof").points)
+        && Boolean(polygonAreaRuntime("roof").calculation),
+      rebuild: () => {
+        rebuildPolygonAreaScene("roof");
+        rebuildRoofZoneScene(true);
+      },
+      reset: () => resetPolygonArea("roof"),
+      setStatus,
+    }),
+  ]);
+
   closeButton?.addEventListener("click", () => deactivate("close-button"));
   executeButton?.addEventListener("click", () => {
-    if (activeTool === "clipboard") void executeClipboard();
-    else if (activeTool === "room") void executeRoom();
-    else void executeAt();
+    void activeSystem()?.execute();
   });
-  resetButton?.addEventListener("click", () => {
-    stopSelectionDrag();
-    stopParcelGridDrag(false);
-    if (activeTool === "parcel") {
-      parcelSelection.parcels = [];
-      postParcelSelection();
-    }
-    selection = { first: null, second: null };
-    editingRoomInstanceId = null;
-    editingRoomAnchor = null;
-    delete options.root.dataset.rulerSnap;
-    brushTarget = null;
-    rebuildSelectionScene();
-    refreshHud();
-    setStatus("Auswahl zurückgesetzt.", "info");
-  });
+  resetButton?.addEventListener("click", resetActiveTool);
   operationSelect?.addEventListener("change", () => {
     operation = operationSelect.value as WorldEditOperation;
     refreshHud();
@@ -3962,6 +6191,7 @@ export function createWorldEditController(
   window.addEventListener(EARTH_GRID_READY_EVENT, handleEarthGridReady);
   window.addEventListener(LOCAL_PARCEL_SYNC, handleLocalParcelSync);
   window.addEventListener("message", handleParentMessage);
+  window.addEventListener("keydown", handleWorldEditKeyDown, true);
   options.sceneRuntime.setPlacementConstraintHandler((position, context) => (
     constrainManualPlacement(position, "new-placement", context)
   ));
@@ -3989,8 +6219,16 @@ export function createWorldEditController(
       window.removeEventListener(EARTH_GRID_READY_EVENT, handleEarthGridReady);
       window.removeEventListener(LOCAL_PARCEL_SYNC, handleLocalParcelSync);
       window.removeEventListener("message", handleParentMessage);
+      window.removeEventListener("keydown", handleWorldEditKeyDown, true);
       disposeParcelGroup();
       disposeParcelGridGroup();
+      if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+      roofQuickSettings?.destroy();
+      roofQuickSettings = null;
+      stairQuickSettings?.destroy();
+      stairQuickSettings = null;
+      roofSettingsTexture?.dispose();
+      roofSettingsTexture = null;
       options.sceneRuntime.setPlacementConstraintHandler(null);
       options.sceneRuntime.setPlacementGeometryHandler(null);
       delete options.root.dataset.parcelGridRotationDegrees;

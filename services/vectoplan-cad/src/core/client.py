@@ -65,7 +65,7 @@ def project_chunks_to_projection(config: Mapping[str, Any], core_project_id: str
         path=f"/api/v1/projects/{project_id}/projections/chunk-to-2d",
         method="POST",
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
-        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
+        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 45),
         body=body,
     )
 
@@ -80,7 +80,7 @@ def get_import_projection(
         path=f"/api/v1/projects/{project_id}/imports/{encoded_document}/projection",
         method="GET",
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
-        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
+        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 45),
     )
 
 
@@ -93,6 +93,6 @@ def dispatch_cad_command(
         path=f"/api/v1/projects/{project_id}/commands/cad",
         method="POST",
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
-        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 30),
+        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 45),
         body={"command": dict(command)},
     )
