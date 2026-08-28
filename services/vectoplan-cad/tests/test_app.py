@@ -151,6 +151,11 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "function renderCrosshair" in source
     assert 'id: "workspace-grid-minor"' not in source
     assert "function loadBuildingDraft" in source
+    assert "function storedBuildingDraft" in source
+    assert "function semanticProjectionRequest" in source
+    assert "semantic-floor-plan-v2-" in source
+    assert "...(storeys.length ? {storeys} : {})" in source
+    assert 'if (projectContext.coreProjectId) {' in source
     assert "function recalculateStoreyElevations" in source
     assert "ground: 2770" in source
     assert "upper: 2645" in source

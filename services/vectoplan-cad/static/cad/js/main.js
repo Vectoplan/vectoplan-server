@@ -875,6 +875,38 @@
     return state.building?.storeys?.find((storey) => storey.id === state.building.activeStoreyId) || null;
   }
 
+  function storedBuildingDraft(input = state.input) {
+    try {
+      const stored = JSON.parse(window.localStorage.getItem(buildingDraftStorageKey(input)) || "null");
+      return stored && typeof stored === "object" ? stored : null;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function semanticProjectionRequest(storeyId, draft = state.building || storedBuildingDraft()) {
+    const storeys = (Array.isArray(draft?.storeys) ? draft.storeys : [])
+      .map((storey) => ({
+        storeyId: String(storey?.id || storey?.storeyId || "").trim(),
+        name: String(storey?.name || storey?.id || storey?.storeyId || "Geschoss"),
+        elevationMm: Number(storey?.elevationMm ?? storey?.elevation_mm) || 0,
+        heightMm: Math.max(100, Number(storey?.heightMm ?? storey?.height_mm) || defaultStoreyHeightMm(storey)),
+      }))
+      .filter((storey) => storey.storeyId);
+    const requestedStoreyId = String(storeyId || draft?.activeStoreyId || "").trim();
+    const keySuffix = (requestedStoreyId || "default").replace(/[^a-zA-Z0-9_-]/g, "_").slice(0, 80);
+    return {
+      projectionKey: `semantic-floor-plan-v2-${keySuffix}`,
+      options: {
+        viewKind: "floor_plan",
+        representationMode: "semantic-construction",
+        ...(requestedStoreyId ? {storeyId: requestedStoreyId} : {}),
+        ...(storeys.length ? {storeys} : {}),
+      },
+      parcelSelection: state.parcelSelection,
+    };
+  }
+
   function recalculateStoreyElevations() {
     const storeys = state.building?.storeys || [];
     if (!storeys.length) return;
@@ -1026,7 +1058,7 @@
     renderAll();
     renderBuildingPanel();
     const active = activeBuildingStorey();
-    if (projectContext.coreProjectId && active?.source === "core-construction-model") {
+    if (projectContext.coreProjectId) {
       loadProjectInput({storeyId, preserveCamera: true, preserveHistory: true, preserveViewState: true}).catch(handleError);
     }
     showMessage(`${active?.name || "Geschoss"} ist jetzt das aktive Konstruktionsgeschoss.`);
@@ -1513,23 +1545,14 @@
   async function loadProjectInput(options = {}) {
     const loadSequence = ++state.projectionLoadSequence;
     const requestedParcelSignature = parcelSelectionSignature();
-    const activeStorey = activeBuildingStorey();
-    const requestedStoreyId = String(options.storeyId
-      || (activeStorey?.source === "core-construction-model" ? activeStorey.id : ""));
+    const buildingDraft = state.building || storedBuildingDraft();
+    const requestedStoreyId = String(options.storeyId || buildingDraft?.activeStoreyId || "");
     const result = await fetchJson(
       `${routePrefix}/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection`,
       {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-          projectionKey: "semantic-floor-plan-v1",
-          options: {
-            viewKind: "floor_plan",
-            representationMode: "semantic-construction",
-            ...(requestedStoreyId ? {storeyId: requestedStoreyId} : {}),
-          },
-          parcelSelection: state.parcelSelection,
-        }),
+        body: JSON.stringify(semanticProjectionRequest(requestedStoreyId, buildingDraft)),
       },
     );
     if (loadSequence !== state.projectionLoadSequence) return;
@@ -1595,11 +1618,7 @@
         {
           method: "POST",
           headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({
-            projectionKey: "semantic-floor-plan-v1",
-            options: {viewKind: "floor_plan", representationMode: "semantic-construction", storeyId: normalizedId},
-            parcelSelection: state.parcelSelection,
-          }),
+          body: JSON.stringify(semanticProjectionRequest(normalizedId)),
         },
       );
       const input = result?.snapshot?.projection;
