@@ -14,9 +14,6 @@
 [submodule "services/vectoplan-openLayer"]
 	path = services/vectoplan-openLayer
 	url = https://github.com/Vectoplan/vectoplan-openLayer.git
-[submodule "services/vectoplan-geoserver-orchestrator"]
-	path = services/vectoplan-geoserver-orchestrator
-	url = https://github.com/Vectoplan/vectoplan-geoserver-orchestrator.git
 [submodule "services/vectoplan-core"]
 	path = services/vectoplan-core
 	url = https://github.com/Vectoplan/vectoplan-core.git

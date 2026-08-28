@@ -10,6 +10,7 @@ import type { EditorLogger } from "@utils/logger";
 import { normalizeUnknownError, safeNumber, safeString } from "@utils/safe";
 import { nowIsoString } from "@utils/time";
 import type { ThreeContextHandle } from "./three_context";
+import { createLod2BuildingScene } from "./lod2_building_scene";
 
 const CONTRACT_VERSION = "geodata-overlays.v1" as const;
 const SCENE_KIND = "vectoplan-editor-geodata-overlay-scene.v1" as const;
@@ -70,6 +71,9 @@ export interface GeodataOverlaySceneOptions {
 }
 
 export interface GeodataOverlaySceneStats {
+  readonly buildingCount: number;
+  readonly buildingTriangleCount: number;
+  readonly invalidBuildingCount: number;
   readonly overlayCount: number;
   readonly tileCount: number;
   readonly sourceLineCount: number;
@@ -448,6 +452,9 @@ export function createGeodataOverlayScene(
   const group = new THREE.Group();
   group.name = "vectoplan_geodata_overlay_scene_group";
   group.renderOrder = 50;
+  const lineGroup = new THREE.Group();
+  group.add(lineGroup);
+  const buildings = createLod2BuildingScene(group);
   const logger = options.logger;
   const createdAt = now();
   let updatedAt = createdAt;
@@ -458,6 +465,9 @@ export function createGeodataOverlayScene(
   let registrySignature = "";
   const chunkSurfaceCache = new Map<string, ChunkSurfaceCacheEntry>();
   let stats: GeodataOverlaySceneStats = {
+    buildingCount: 0,
+    buildingTriangleCount: 0,
+    invalidBuildingCount: 0,
     overlayCount: 0,
     tileCount: 0,
     sourceLineCount: 0,
@@ -554,7 +564,7 @@ export function createGeodataOverlayScene(
         overlays.set(tile.id, current);
       }
 
-      clearGroup(group);
+      clearGroup(lineGroup);
       let sourceLineCount = 0;
       let renderedSegmentCount = 0;
       for (const overlay of overlays.values()) {
@@ -589,16 +599,20 @@ export function createGeodataOverlayScene(
           affectsVoxelState: false,
           affectsCollision: false,
         };
-        group.add(lines);
+        lineGroup.add(lines);
       }
 
+      const buildingStats = buildings.sync(registry);
       stats = {
-        overlayCount: overlays.size,
+        buildingCount: buildingStats.buildingCount,
+        buildingTriangleCount: buildingStats.triangleCount,
+        invalidBuildingCount: buildingStats.invalidBuildingCount,
+        overlayCount: overlays.size + (buildingStats.buildingCount > 0 ? 1 : 0),
         tileCount: tilesByIdentity.size,
         sourceLineCount,
         renderedSegmentCount,
         surfaceCellCount: surface.size,
-        objectCount: group.children.length,
+        objectCount: lineGroup.children.length + buildingStats.buildingCount,
       };
       updatedAt = now();
       lastError = null;
@@ -637,6 +651,7 @@ export function createGeodataOverlayScene(
     }),
     dispose(reason?: string): void {
       if (status === "disposed") return;
+      buildings.dispose();
       clearGroup(group);
       chunkSurfaceCache.clear();
       registrySignature = "";

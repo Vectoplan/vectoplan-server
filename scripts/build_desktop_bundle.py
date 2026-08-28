@@ -29,7 +29,6 @@ REQUIRED_SERVICES = (
     Path("services/vectoplan-converter"),
     Path("services/vectoplan-core"),
     Path("services/vectoplan-editor"),
-    Path("services/vectoplan-geoserver-orchestrator"),
     Path("services/vectoplan-language"),
     Path("services/vectoplan-library"),
     Path("services/vectoplan-openLayer"),

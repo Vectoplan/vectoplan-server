@@ -14,6 +14,7 @@
     "build:watch": "vite build --watch --config src/frontend/vite.config.ts",
     "preview": "vite preview --config src/frontend/vite.config.ts --host 0.0.0.0 --port 4173",
     "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test:lod2-buildings": "esbuild tests/lod2_building_scene.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/lod2-building-scene.test.cjs && node --test node_modules/.cache/lod2-building-scene.test.cjs",
     "test:chunk-command-result": "esbuild tests/chunk_command_result.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/chunk-command-result.test.cjs && node --test node_modules/.cache/chunk-command-result.test.cjs",
     "test:chunk-service-source-dirty": "esbuild tests/chunk_service_source_dirty.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/chunk-service-source-dirty.test.cjs && node --test node_modules/.cache/chunk-service-source-dirty.test.cjs",
     "test:semantic-object-refs": "esbuild tests/semantic_object_refs.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/semantic-object-refs.test.cjs && node --test node_modules/.cache/semantic-object-refs.test.cjs",
@@ -21,7 +22,7 @@
     "test:parcel-grid": "esbuild tests/parcel_grid_geometry.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/parcel-grid-geometry.test.cjs && node --test node_modules/.cache/parcel-grid-geometry.test.cjs",
     "test:parcel-selection": "esbuild tests/parcel_selection_normalization.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/parcel-selection-normalization.test.cjs && node --test node_modules/.cache/parcel-selection-normalization.test.cjs",
     "test:world-edit-systems": "esbuild tests/world_edit_system_registry.test.ts --bundle --platform=node --format=cjs --outfile=node_modules/.cache/world-edit-system-registry.test.cjs && node --test node_modules/.cache/world-edit-system-registry.test.cjs",
-    "check": "npm run test:parcel-grid && npm run test:parcel-selection && npm run test:world-edit-systems && npm run test:chunk-command-result && npm run test:chunk-service-source-dirty && npm run test:semantic-object-refs && npm run test:hotbar-reload-policy && npm run typecheck && npm run build"
+    "check": "npm run test:lod2-buildings && npm run test:parcel-grid && npm run test:parcel-selection && npm run test:world-edit-systems && npm run test:chunk-command-result && npm run test:chunk-service-source-dirty && npm run test:semantic-object-refs && npm run test:hotbar-reload-policy && npm run typecheck && npm run build"
   },
   "dependencies": {
     "three": "0.183.2"

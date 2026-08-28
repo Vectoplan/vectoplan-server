@@ -2,10 +2,19 @@
 
 ## Start und vollständiger lokaler Daten-Reset
 
-Normaler Start (inklusive Datenbank-Initialisierung, GeoServer, Chunk,
-Library, Filecloud und nachgelagerter Chunk-Reconciliation):
+Der vollständige Root-Start startet zuerst den Geo-Stack aus
+`../vectoplan-bigdata` und danach Chunk, Library, Filecloud, OpenLayers und die
+nachgelagerte Chunk-Reconciliation aus diesem Repository:
 
 ```powershell
+python ..\..\start.py
+```
+
+Beim manuellen Start muss BigData-Geo zuerst bereit sein. Der Server-Stack
+enthält GeoServer und GeoServer-Orchestrator nicht mehr selbst:
+
+```powershell
+docker compose -p vectoplan-bigdata -f ..\vectoplan-bigdata\docker-compose.yml up -d --build geoserver-orchestrator
 docker compose up -d --build
 ```
 
@@ -14,6 +23,7 @@ Ein **vollständiger lokaler Server-Reset mit unwiderruflichem Datenverlust** is
 
 ```powershell
 docker compose down --volumes --remove-orphans
+docker compose -p vectoplan-bigdata -f ..\vectoplan-bigdata\docker-compose.yml down --volumes
 docker compose up -d --build
 ```
 
@@ -22,6 +32,9 @@ Vor dem Reset kann mit `docker volume ls` geprüft werden, welche
 Chunk-Welten und Filecloud-Daten absichtlich erhalten.
 
 ## Technische Dokumentation
+
+Die aktuelle System-, Service-, Betriebs- und Migrationsdokumentation liegt in
+[`../vectoplan-bigdata/doku`](../vectoplan-bigdata/doku/README.md).
 
 - [Grundstücksauswahl, Grundstücksraster und WorldEdit](services/vectoplan-editor/docs/PARCEL_GRID_AND_WORLDEDIT.md)
 - [Parametrische Dächer und Polygonbereiche in CAD und WorldEdit](services/vectoplan-editor/docs/PARAMETRIC_ROOF_AND_POLYGON_AREAS.md)
