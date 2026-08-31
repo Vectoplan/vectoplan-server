@@ -7,6 +7,7 @@ export interface RoofTypeOption {
 }
 
 export const ROOF_TYPE_OPTIONS: readonly RoofTypeOption[] = Object.freeze([
+  { type: "imported", label: "LoD2-Original", icon: '<path d="m3 16 5-8 6 4 7-5v9H3z"/>' },
   { type: "flat", label: "Flachdach", icon: '<path d="M3 16h18M5 12h14v4H5z"/>' },
   { type: "gable", label: "Satteldach", icon: '<path d="m3 16 9-9 9 9M5 16h14"/>' },
   { type: "hipped", label: "Walmdach", icon: '<path d="m3 16 5-8h8l5 8M3 16h18M8 8l4 8 4-8"/>' },
@@ -119,6 +120,7 @@ export interface RoofQuickSettingsOptions {
   readonly root: HTMLElement;
   readonly onChange: (parameters: RoofQuickParameters) => void;
   readonly onClose?: (restorePointerLock: boolean) => void;
+  readonly onSolar?: () => void;
 }
 
 export function createRoofQuickSettings(
@@ -152,6 +154,7 @@ export function createRoofQuickSettings(
       <span>Dachüberstand</span><output data-roof-quick-overhang-output>50 cm</output>
       <small>Mausrad: in 5-cm-Schritten vergrößern oder verkleinern</small>
     </div>
+    <button type="button" class="editor-roof-quick-settings__done" data-roof-solar>☀ Solaranlage · Flächen & Ertrag</button>
     <button type="button" class="editor-roof-quick-settings__done" data-roof-quick-done>Fertig</button>
   `;
   options.root.append(element);
@@ -159,6 +162,7 @@ export function createRoofQuickSettings(
   let roofType: RoofType = "gable";
   let pitchDeg = 35;
   let overhangMm = 500;
+  let hasImportedSource = false;
   const pitch = element.querySelector<HTMLElement>("[data-roof-quick-pitch]");
   const pitchOutput = element.querySelector<HTMLOutputElement>("[data-roof-quick-pitch-output]");
   const overhang = element.querySelector<HTMLElement>("[data-roof-quick-overhang]");
@@ -167,11 +171,12 @@ export function createRoofQuickSettings(
 
   const render = (): void => {
     typeButtons.forEach((button) => {
+      button.hidden = button.dataset.roofQuickType === "imported" && !hasImportedSource;
       const selected = button.dataset.roofQuickType === roofType;
       button.classList.toggle("is-selected", selected);
       button.setAttribute("aria-selected", String(selected));
     });
-    if (pitchOutput) pitchOutput.value = `${pitchDeg.toFixed(0)}°`;
+    if (pitchOutput) pitchOutput.value = roofType === "imported" ? `${pitchDeg.toFixed(0)}° · relativ` : `${pitchDeg.toFixed(0)}°`;
     pitch?.setAttribute("aria-valuenow", String(pitchDeg));
     pitch?.setAttribute("aria-valuetext", `${pitchDeg} Grad`);
     if (overhangOutput) overhangOutput.value = `${(overhangMm / 10).toFixed(0)} cm`;
@@ -221,11 +226,13 @@ export function createRoofQuickSettings(
   });
   element.querySelector("[data-roof-quick-close]")?.addEventListener("click", () => close());
   element.querySelector("[data-roof-quick-done]")?.addEventListener("click", () => close());
+  element.querySelector("[data-roof-solar]")?.addEventListener("click", () => options.onSolar?.());
 
   return {
     element,
     isOpen: () => !element.hidden,
     open(parameters): void {
+      hasImportedSource = Boolean(parameters.importedSource);
       roofType = parameters.roofType;
       pitchDeg = normalizeQuickRoofPitch(parameters.pitchDeg);
       overhangMm = normalizeQuickRoofOverhangMm(parameters.overhangMm);
@@ -235,6 +242,7 @@ export function createRoofQuickSettings(
     },
     close,
     sync(parameters): void {
+      hasImportedSource = Boolean(parameters.importedSource);
       roofType = parameters.roofType;
       pitchDeg = normalizeQuickRoofPitch(parameters.pitchDeg);
       overhangMm = normalizeQuickRoofOverhangMm(parameters.overhangMm);

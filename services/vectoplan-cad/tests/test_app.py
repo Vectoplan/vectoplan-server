@@ -58,14 +58,22 @@ def test_cad_template():
     assert b'data-edit-action="copy"' in response.data
     assert b'data-edit-action="rotate"' in response.data
     assert b'data-edit-action="cut"' in response.data
+    assert b'data-edit-action="delete"' in response.data
+    assert b'tabindex="0"' in response.data
+    assert b'aria-keyshortcuts="Delete"' in response.data
+    assert b"cad/js/selection_geometry.js" in response.data
     assert b'data-edit-action="paste"' in response.data
+    assert b'data-edit-action="move"' in response.data
     assert b'data-edit-action="distort"' in response.data
     assert b'data-edit-action="mirror"' in response.data
     assert b'data-edit-action="modify-point"' in response.data
     assert b'data-view-action="plan-overview"' in response.data
     assert b"cad-toolbar-stack" in response.data
     assert b"cad-toolbar-icon" in response.data
-    assert b"cad-workflow-4" in response.data
+    assert b"cad-workflow-10" in response.data
+    assert b"cad/js/edit_placement_geometry.js" in response.data
+    assert b'id="cad-edit-placement-hud"' in response.data
+    assert b'data-action="cancel-edit-placement"' in response.data
     assert b"plan-workspace-panel" in response.data
     assert b'id="room-label-panel"' in response.data
     assert b'data-action="save-room-label"' in response.data
@@ -166,7 +174,19 @@ def test_cad_frontend_loads_core_project_and_keeps_sample_explicit():
     assert "vectoplan-cad:building-structure" in source
     assert "function copySelectedPrimitive" in source
     assert "function pasteClipboard" in source
+    assert "function beginEditPlacement" in source
+    assert "function beginSelectionPlacement" in source
+    assert "function renderEditPlacementPreview" in source
+    assert "function updateEditPlacementPointer" in source
+    assert "function confirmEditPlacement" in source
+    assert "function cancelEditPlacement" in source
     assert "function primitiveEditTransform" in source
+    assert "function renderPrimitiveSelectionState" in source
+    assert 'toLowerCase() === "text"' not in source
+    assert "function renderSelectionEnvelope" not in source
+    assert "function isCadDeleteEvent" in source
+    assert 'key === "entf"' in source
+    assert "focusCadCanvas();" in source
     assert "function applyDistort" in source
     assert 'commandName, transform' in source
     assert "direkt weiterzeichnen · ESC beendet" in source
@@ -270,6 +290,11 @@ def test_cad_styles_use_white_workspace_and_full_precision_crosshair():
     assert ".cad-toolbar-stack" in source
     assert ".cad-toolbar-icon" in source
     assert ".point-modify-handle" in source
+    assert ".primitive-selection-highlight" in source
+    assert ".cad-edit-placement-preview" in source
+    assert ".cad-edit-placement-hud" in source
+    assert ".cad-selection-envelope" not in source
+    assert ".primitive-selection-handle" not in source
     assert ".cad-app.is-plan-overview" in source
     assert ".cad-crosshair-center.is-snapped" in source
     assert ".cad-object-snap" not in source
@@ -497,6 +522,59 @@ def test_valid_project_command_is_persisted_through_core():
     assert payload["stateful_storage"] is True
     assert payload["dispatch"] == "chunk-persisted"
     assert dispatch.call_args.args[1] == "core-project-1"
+
+
+def test_delete_selection_is_model_changing_without_library_or_local_preview():
+    command = valid_command(
+        command="delete_selection",
+        parameters={
+            "targets": [
+                {
+                    "element_ref": "wall-1",
+                    "object_instance_ids": [],
+                    "cells": [[10, 2, 20], [11, 2, 20]],
+                }
+            ]
+        },
+        user_context={"core_project_id": "core-project-1"},
+    )
+    with (
+        patch("routes.cad.load_cad_library_catalog") as load_catalog,
+        patch(
+            "routes.cad.dispatch_cad_command",
+            return_value={"ok": True, "accepted": True, "dispatch": "chunk-persisted"},
+        ) as dispatch,
+    ):
+        response = client().post("/api/v1/cad/commands", json=command)
+
+    assert response.status_code == 202
+    payload = response.get_json()
+    assert payload["accepted"] is True
+    assert payload["preview_element"] is None
+    assert payload["mutation_intent"]["model_changing"] is True
+    assert dispatch.call_args.args[2]["parameters"]["targets"][0]["cells"] == [
+        [10, 2, 20], [11, 2, 20]
+    ]
+    load_catalog.assert_not_called()
+
+
+def test_delete_selection_rejects_fractional_chunk_cells():
+    response = client().post(
+        "/api/v1/cad/commands",
+        json=valid_command(
+            command="delete_selection",
+            parameters={
+                "targets": [{
+                    "element_ref": "wall-1",
+                    "object_instance_ids": [],
+                    "cells": [[10.5, 2, 20]],
+                }]
+            },
+        ),
+    )
+
+    assert response.status_code == 400
+    assert any("integer coordinates" in error for error in response.get_json()["errors"])
 
 
 def test_unlisted_family_is_rejected_for_model_changes():

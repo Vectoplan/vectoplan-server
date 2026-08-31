@@ -214,6 +214,7 @@ export interface EditorInputControllerOptions {
     readonly trigger: string;
     readonly createdAt: string;
   }) => void | Promise<void>;
+  readonly onPickBlock?: (sourceCell: EditorStateChunkCellPosition | null) => void | Promise<void>;
   readonly onCancel?: (trigger: string) => void | Promise<void>;
   readonly onMovementIntent?: (
     intent: EditorInputMovementIntent,
@@ -2264,7 +2265,8 @@ export function createEditorInputController(
       void executeWorldEditRelease("secondary-release", "mouse:secondary-up");
     },
     onMiddleDown: () => {
-      executePointerAction("inspect", "mouse:middle-down");
+      const target=options.getTargetCells?.()?.sourceCell ?? null;
+      void Promise.resolve(options.onPickBlock?.(target)).catch(setError);
     },
     onPointerMove: () => {
       refreshMovementIntent("mouse:pointer-move");

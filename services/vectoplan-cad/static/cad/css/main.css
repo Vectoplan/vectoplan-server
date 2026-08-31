@@ -139,6 +139,27 @@ input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--accent);
 }
 .cad-edit-rail button:hover:not(:disabled) { border-color: var(--line); background: var(--surface); }
 .cad-edit-rail button.is-active { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent-strong); }
+.cad-edit-placement-hud {
+  align-self: center;
+  width: min(500px, calc(100vw - 44px));
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas: "mode title action" "mode hint action";
+  align-items: center;
+  column-gap: 9px;
+  margin-top: 7px;
+  padding: 7px 8px 7px 10px;
+  border: 1px solid var(--accent-line);
+  border-radius: 9px;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 10px 26px rgba(8,120,255,.14);
+  backdrop-filter: blur(12px);
+}
+.cad-edit-placement-hud[hidden] { display: none; }
+.cad-edit-placement-hud > span { grid-area: mode; color: var(--accent); font-size: 8px; font-weight: 850; letter-spacing: .12em; }
+.cad-edit-placement-hud > strong { grid-area: title; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text); font-size: 10px; }
+.cad-edit-placement-hud > small { grid-area: hint; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 8px; }
+.cad-edit-placement-hud > button { grid-area: action; min-height: 28px; padding: 0 9px; border-color: var(--accent-line); color: var(--accent-strong); font-size: 9px; font-weight: 750; }
 .cad-toolbar-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
 .cad-tool-button {
   width: auto;
@@ -570,6 +591,16 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-structure { fill: #d9dde1; stroke: #27313b; stroke-width: .5; cursor: pointer; }
 .primitive-slab { fill: url(#cad-slab-hatch); stroke: #687787; stroke-width: .5; cursor: pointer; }
 .primitive-roof { fill: url(#cad-roof-hatch); stroke: #53667b; stroke-width: .6; cursor: pointer; }
+.roof-plan-footprint { fill: url(#cad-roof-hatch); stroke: #44566a; stroke-width: .8; vector-effect: non-scaling-stroke; }
+.roof-plan-face { fill: rgba(148,163,184,.08); stroke: #718196; stroke-width: .48; vector-effect: non-scaling-stroke; }
+.roof-plan-face-secondary { fill: rgba(100,116,139,.12); }
+.roof-plan-ridge { fill: none; stroke: #26384d; stroke-width: 1.05; stroke-dasharray: 8 3; vector-effect: non-scaling-stroke; }
+.primitive-roof:hover .roof-plan-footprint,
+.primitive-roof.is-selected .roof-plan-footprint,
+.primitive-roof:hover .roof-plan-face,
+.primitive-roof.is-selected .roof-plan-face,
+.primitive-roof:hover .roof-plan-ridge,
+.primitive-roof.is-selected .roof-plan-ridge { stroke: var(--accent); }
 .primitive-column { fill: #78838d; stroke: #1f2933; stroke-width: .6; cursor: pointer; }
 .primitive-beam { fill: #a6afb7; stroke: #34414d; stroke-width: .6; cursor: pointer; }
 .primitive-component { fill: #e7ebee; stroke: #536170; stroke-width: .5; cursor: pointer; }
@@ -628,6 +659,53 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .primitive-window.is-selected .window-mullion { stroke: var(--accent); }
 .dimension-text { fill: #394754; font-size: 145px; text-anchor: middle; }
 .primitive:hover, .primitive.is-selected { stroke: var(--accent); stroke-width: .9; }
+.primitive-selection-state { pointer-events: none; }
+.primitive-selection-highlight {
+  pointer-events: none !important;
+  fill: none !important;
+  stroke: #0878ff !important;
+  stroke-width: 1.55 !important;
+  stroke-opacity: .96 !important;
+  stroke-dasharray: none !important;
+  vector-effect: non-scaling-stroke !important;
+}
+.primitive-selection-highlight :is(path, line, polyline, polygon, rect, circle, ellipse) {
+  pointer-events: none !important;
+  fill: none !important;
+  stroke: #0878ff !important;
+  stroke-width: 1.55 !important;
+  stroke-opacity: .96 !important;
+  stroke-dasharray: none !important;
+  vector-effect: non-scaling-stroke !important;
+}
+.primitive-selection-highlight:is(text, tspan),
+.primitive-selection-highlight :is(text, tspan) {
+  fill: #0878ff !important;
+  stroke: none !important;
+}
+.primitive-selection-highlight :is(
+  .semantic-fill,
+  .wall-body-fill,
+  .roof-plan-face,
+  .stair-tread
+) { display: none; }
+#plan-svg.is-edit-placing { cursor: crosshair; }
+.primitive.is-edit-placement-source { opacity: .18; }
+.cad-edit-placement-preview { pointer-events: none; }
+.cad-edit-placement-preview__item {
+  pointer-events: none;
+  opacity: .72;
+  filter: drop-shadow(0 0 2px rgba(8,120,255,.34));
+}
+.cad-edit-placement-preview__item :is(path, line, polyline, polygon, rect, circle, ellipse) {
+  stroke: #0878ff !important;
+  stroke-opacity: .9 !important;
+  vector-effect: non-scaling-stroke !important;
+}
+.cad-edit-placement-marker { pointer-events: none; fill: #fff; stroke: #0878ff; stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+.cad-edit-placement-marker line { stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.cad-edit-placement-marker .cad-edit-placement-axis { stroke-width: 1.5; stroke-dasharray: 7 4; }
+#plan-svg:focus { outline: none; }
 .primitive text { pointer-events: none; }
 .primitive.local-draft { stroke: var(--accent); stroke-dasharray: 80 45; }
 .primitive-wall-cut.local-draft { fill: url(#cad-wall-hatch); stroke: var(--accent); stroke-dasharray: 80 45; }
@@ -852,6 +930,8 @@ dd { margin: 0; color: var(--text-soft); overflow-wrap: anywhere; }
 .coordinate-preview-target { fill: #2563eb; stroke: #fff; stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: none; }
 .world-selection-preview { pointer-events: none; fill: rgba(20,99,214,.05); stroke: var(--accent); stroke-width: .8; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
 .world-selection-label { pointer-events: none; fill: var(--accent-strong); font-size: 150px; font-weight: 750; text-anchor: middle; paint-order: stroke; stroke: rgba(255,255,255,.96); stroke-width: 28px; }
+.cad-selection-marquee { pointer-events: none; fill: rgba(37,99,235,.08); stroke: #2563eb; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cad-selection-marquee.is-crossing { fill: rgba(16,185,129,.08); stroke: #059669; stroke-dasharray: 6 4; }
 
 @media (max-width: 1400px) {
   .cad-app { grid-template-columns: minmax(0, 1fr); }

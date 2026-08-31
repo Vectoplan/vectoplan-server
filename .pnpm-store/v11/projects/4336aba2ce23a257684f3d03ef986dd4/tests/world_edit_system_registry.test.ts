@@ -490,11 +490,13 @@ test("roof renderer keeps timber below the tiled surface and renders birdsmouth 
   const tileEdges = rendered.meshes.filter((mesh) => String(mesh.userData.roofPart).startsWith("tile-edge-"));
 
   assert.ok(tile?.geometry.boundingBox);
-  assert.equal(rafters.length, 3);
+  assert.equal(rafters.length, 1);
+  assert.equal(rafters[0]!.userData.roofParts.length, 3);
   assert.ok(rafters.every((mesh) => (mesh.geometry.boundingBox?.max.y ?? Infinity) <= 0.000001));
   assert.ok((tile!.geometry.boundingBox!.min.y) > 0.09);
   assert.ok((tile!.geometry.boundingBox!.max.y - tile!.geometry.boundingBox!.min.y) >= 0.019);
-  assert.equal(tileEdges.length, 4);
+  assert.equal(tileEdges.length, 1);
+  assert.equal(tileEdges[0]!.userData.roofParts.length, 4);
   assert.ok(purlin);
   const purlinPositions = purlin!.geometry.getAttribute("position");
   const purlinVertices = Array.from({ length: purlinPositions.count }, (_, index) => ({
@@ -556,6 +558,7 @@ test("roof system closes with Escape and executes only through its own hooks", a
 
 test("roof quick settings expose every roof form and change pitch by wheel without text input", () => {
   assert.deepEqual(ROOF_TYPE_OPTIONS.map(({ type }) => type), [
+    "imported",
     "flat", "gable", "hipped", "half_hipped", "pent", "mansard",
     "trapezoid", "butterfly", "pyramid", "barrel", "sawtooth",
   ]);

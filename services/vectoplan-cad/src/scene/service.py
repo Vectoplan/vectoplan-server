@@ -223,11 +223,17 @@ def _build_layers(elements: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
     kind = element["kind"]
     geometry = element["geometry"]
-    form = geometry.get("form")
+    # Core's semantic projection contract permits the form on the element.
+    # Older snapshots put it only into geometry.  Supporting both locations is
+    # important because a semantic region/network is not a legacy start/end
+    # wall and must never be passed to _wall_polygon.
+    form = geometry.get("form") or element.get("form")
     primitive_type = kind
     primitive_geometry = geometry
 
-    if form == "line_segment":
+    if kind == "wall":
+        primitive_type, primitive_geometry = _wall_primitive(geometry, form)
+    elif form == "line_segment":
         primitive_type = "polygon"
         primitive_geometry = {**geometry, "points_mm": _wall_polygon(geometry)}
     elif form in {"polyline", "closed_polyline", "rectangle"}:
@@ -238,10 +244,7 @@ def _element_to_primitive(element: dict[str, Any]) -> dict[str, Any]:
         primitive_type = "thick_arc"
     elif form == "region":
         primitive_type = "polygon"
-        primitive_geometry = {"points_mm": geometry.get("outer_ring_mm", [])}
-    elif kind == "wall":
-        primitive_type = "polygon"
-        primitive_geometry = {**geometry, "points_mm": _wall_polygon(geometry)}
+        primitive_geometry = {**geometry, "points_mm": _region_points(geometry)}
     elif kind in {"opening", "structure"}:
         primitive_type = "rect"
     elif kind in {"room_label", "text"}:
@@ -346,9 +349,27 @@ def _style_for(element: dict[str, Any]) -> str:
 
 
 def _wall_polygon(geometry: dict[str, Any]) -> list[list[float]]:
-    x1, y1 = geometry["start_mm"]
-    x2, y2 = geometry["end_mm"]
-    thickness = geometry["thickness_mm"]
+    points = geometry.get("points_mm")
+    if _valid_points(points, minimum=3):
+        return [list(point[:2]) for point in points]
+    outer_ring = geometry.get("outer_ring_mm")
+    if _valid_points(outer_ring, minimum=3):
+        return [list(point[:2]) for point in outer_ring]
+
+    start = geometry.get("start_mm")
+    end = geometry.get("end_mm")
+    thickness = geometry.get("thickness_mm")
+    if (
+        not _valid_point(start)
+        or not _valid_point(end)
+        or not _finite_positive_number(thickness)
+    ):
+        # One malformed or differently-versioned semantic object must not make
+        # every other primitive disappear from the CAD sheet.
+        return []
+
+    x1, y1 = start[:2]
+    x2, y2 = end[:2]
     dx = x2 - x1
     dy = y2 - y1
     length = hypot(dx, dy) or 1
@@ -374,3 +395,70 @@ def _wall_polygon(geometry: dict[str, Any]) -> list[list[float]]:
         [x2 - nx, y2 - ny],
         [x1 - nx, y1 - ny],
     ]
+
+
+def _wall_primitive(
+    geometry: dict[str, Any], form: Any
+) -> tuple[str, dict[str, Any]]:
+    """Resolve both legacy and semantic wall geometries without raising."""
+    if form in {"polyline", "closed_polyline", "rectangle"}:
+        return "thick_path", geometry
+    if form == "network":
+        return "thick_segments", geometry
+    if form in {"arc", "circle"}:
+        return "thick_arc", geometry
+    if form == "region":
+        return "polygon", {
+            **geometry,
+            "points_mm": _region_points(geometry),
+        }
+
+    # Recover older/imported snapshots whose semantic form metadata was lost
+    # while their actual geometry remained intact.
+    if _valid_points(geometry.get("points_mm"), minimum=3):
+        return "polygon", geometry
+    if _valid_points(geometry.get("outer_ring_mm"), minimum=3):
+        return "polygon", {
+            **geometry,
+            "points_mm": geometry["outer_ring_mm"],
+        }
+    if _valid_segments(geometry.get("segments_mm")):
+        return "thick_segments", geometry
+    if _valid_points(geometry.get("path_mm"), minimum=2):
+        return "thick_path", geometry
+
+    return "polygon", {**geometry, "points_mm": _wall_polygon(geometry)}
+
+
+def _finite_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and isfinite(value)
+
+
+def _finite_positive_number(value: Any) -> bool:
+    return _finite_number(value) and value > 0
+
+
+def _valid_point(value: Any) -> bool:
+    return (
+        isinstance(value, (list, tuple))
+        and len(value) >= 2
+        and _finite_number(value[0])
+        and _finite_number(value[1])
+    )
+
+
+def _valid_points(value: Any, *, minimum: int) -> bool:
+    return isinstance(value, list) and len(value) >= minimum and all(_valid_point(point) for point in value)
+
+
+def _valid_segments(value: Any) -> bool:
+    return (
+        isinstance(value, list)
+        and bool(value)
+        and all(_valid_points(segment, minimum=2) for segment in value)
+    )
+
+
+def _region_points(geometry: dict[str, Any]) -> list[Any]:
+    outer_ring = geometry.get("outer_ring_mm")
+    return outer_ring if _valid_points(outer_ring, minimum=3) else []

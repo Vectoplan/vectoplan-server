@@ -136,7 +136,17 @@ def validate_projection_input(payload: Any) -> list[str]:
                         f"{element_path}.view_refs contains unknown viewport references: "
                         f"{', '.join(map(str, unknown_refs))}"
                     )
-            _validate_geometry(kind, element.get("geometry"), f"{element_path}.geometry", errors)
+            geometry = element.get("geometry")
+            # Semantic Core snapshots can carry `form` at element level while
+            # legacy CAD snapshots keep it inside geometry.  Validate the
+            # effective geometry contract used by the scene resolver.
+            if (
+                isinstance(geometry, dict)
+                and not isinstance(geometry.get("form"), str)
+                and isinstance(element.get("form"), str)
+            ):
+                geometry = {**geometry, "form": element["form"]}
+            _validate_geometry(kind, geometry, f"{element_path}.geometry", errors)
 
     return errors
 
@@ -194,6 +204,7 @@ def build_bootstrap_payload(config: dict[str, Any]) -> dict[str, Any]:
                 "create_room",
                 "create_roof",
                 "update_roof",
+                "delete_selection",
                 "create_line",
                 "create_dimension",
             ],
@@ -336,7 +347,18 @@ def _validate_semantic_geometry(
                 errors.append(f"{path}.{key} must be a number")
         return
     if form == "region":
-        _validate_points(value.get("outer_ring_mm"), f"{path}.outer_ring_mm", errors, minimum=3)
+        outer_ring = value.get("outer_ring_mm")
+        if outer_ring is None:
+            # An unresolved semantic placeholder can omit its ring entirely.
+            return
+        if isinstance(outer_ring, list) and len(outer_ring) < 3:
+            # Core can retain semantic placeholders before their footprint is
+            # resolved.  They are intentionally invisible and must not reject
+            # an otherwise renderable CAD sheet.
+            for index, point in enumerate(outer_ring):
+                _validate_point(point, f"{path}.outer_ring_mm[{index}]", errors)
+            return
+        _validate_points(outer_ring, f"{path}.outer_ring_mm", errors, minimum=3)
         return
     if form == "discrete":
         for key in ("x_mm", "y_mm"):

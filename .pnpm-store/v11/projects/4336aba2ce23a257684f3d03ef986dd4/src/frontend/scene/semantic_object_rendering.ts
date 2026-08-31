@@ -8,6 +8,21 @@ export interface VplibParametricObjectDescriptor {
   readonly metadata: Readonly<Record<string, unknown>>;
 }
 
+/** Only legacy parcel blocks belong to the automatic grid migration. Roofs
+ * and imported/CAD geometry have an independent footprint and must survive a
+ * remesh without being rewritten as a one-cell parcel prism.
+ */
+export function shouldAdaptSemanticObjectToParcelGrid(
+  ref: SemanticObjectRenderDescriptor & { readonly objectKind: string; readonly footprint?: Readonly<Record<string,unknown>> },
+): boolean {
+  return ref.objectKind === "semantic_footprint" && ref.objectTypeId === "parcel_grid_body"
+    && ref.footprint?.gridAlignment !== 'world-cell';
+}
+
+export function shouldAdaptBlockToParcelGrid(blockTypeId: string): boolean {
+  return !/^(air|generator_|biome_|water|bedrock|lod2_)/.test(blockTypeId.trim().toLowerCase());
+}
+
 function normalizedText(value: unknown): string {
   return String(value ?? "").trim().toLowerCase();
 }

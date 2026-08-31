@@ -19,6 +19,12 @@ import {
   type ParcelGridPartitionCell,
 } from "../src/frontend/world_edit/systems/parcel_grid/geometry";
 import {
+  deriveLod2BuildingGridReference,
+  lod2BuildingFacadeBands,
+  lod2BuildingGridReferencesFromChunks,
+} from "../src/frontend/world_edit/systems/parcel_grid/building_reference";
+import { auditParcelGrid } from "../src/frontend/world_edit/systems/parcel_grid/audit";
+import {
   resolveWorldEditSelectionBounds,
   snapWorldEditSelectionHandle,
   worldEditSelectionTopGridSegments,
@@ -198,6 +204,187 @@ test("parcel grid handles retain a useful screen size over long distances", () =
   assert.equal(nearScale, 0.65, "near handles should not shrink below the readable minimum");
   assert.ok(farScale > nearScale * 5, "far handles should grow in world space to remain clickable");
   assert.ok(farScale <= 14);
+});
+
+test("LoD2 bestandsraster uses the rotated building envelope while an empty parcel keeps the world grid", () => {
+  const angle = 31 * Math.PI / 180;
+  const u: ParcelGridPoint = [Math.cos(angle), Math.sin(angle)];
+  const v: ParcelGridPoint = [-u[1], u[0]];
+  const at = (x: number, z: number): ParcelGridPoint => [20 + u[0] * x + v[0] * z, -4 + u[1] * x + v[1] * z];
+  const ring = [at(0, 0), at(12.4, 0), at(12.4, 7.6), at(0, 7.6)];
+  const reference = deriveLod2BuildingGridReference("building-1", [ring])!;
+  assert.equal(reference.columns, 12); assert.equal(reference.rows, 8);
+  assert.equal(reference.facades.length, 4);
+  assert(Math.abs(reference.stepU * reference.columns - 12.4) < 1e-8);
+  assert(Math.abs(reference.stepV * reference.rows - 7.6) < 1e-8);
+  assert(Math.abs(reference.rotationDegrees - 31) < 1e-8);
+  const bounds = {
+    minimumX: Math.floor(Math.min(...ring.map((point) => point[0]))),
+    maximumX: Math.ceil(Math.max(...ring.map((point) => point[0]))),
+    minimumZ: Math.floor(Math.min(...ring.map((point) => point[1]))),
+    maximumZ: Math.ceil(Math.max(...ring.map((point) => point[1]))),
+  };
+  const building = buildParcelGridPartition({boundarySegments:[],coverageTriangles:triangulateRing(ring),bounds,
+    regularGrid:{id:reference.buildingId,origin:reference.origin,axisU:reference.axisU,axisV:reference.axisV,stepU:reference.stepU,stepV:reference.stepV}});
+  assert.equal(building.straightCells.length,reference.columns*reference.rows);
+  assert(building.straightCells.every((cell) => cell.gridAlignment === "lod2-building" && cell.logicalCellId?.startsWith("lod2-building:")));
+  assert(Math.abs(building.coveredArea - 12.4 * 7.6) < 1e-5);
+
+  const emptyDefault = buildParcelGridPartition({boundarySegments:[],coverageTriangles:triangulateRing(ring),bounds});
+  const emptyExplicit = buildParcelGridPartition({boundarySegments:[],coverageTriangles:triangulateRing(ring),bounds,regularGrid:null});
+  assert.deepEqual(emptyExplicit,emptyDefault,"the established empty-parcel raster must not change");
+  assert(emptyDefault.straightCells.every((cell) => cell.gridAlignment === "world"));
+
+  const extracted=lod2BuildingGridReferencesFromChunks([{raw:{objectRefs:[{objectTypeId:'building_roof',objectInstanceId:'roof-1',
+    metadata:{lod2BuildingId:'building-1'},footprint:{type:'Polygon',coordinateSpace:'world-cell-xz',coordinates:[[...ring,ring[0]]]}}]}}]);
+  assert.equal(extracted.length,1);assert.equal(extracted[0]!.buildingId,'building-1');
+  assert.equal(extracted[0]!.facades.length,4);
+
+  const facade=reference.facades.find((candidate)=>Math.abs(candidate.length-12.4)<1e-8)!;
+  const outside:ParcelGridPoint=[-facade.inward[0],-facade.inward[1]];
+  const parcelRing=[at(-3,-3),at(15.4,-3),at(15.4,10.6),at(-3,10.6)];
+  const parcelBounds={
+    minimumX:Math.floor(Math.min(...parcelRing.map(point=>point[0]))),
+    maximumX:Math.ceil(Math.max(...parcelRing.map(point=>point[0]))),
+    minimumZ:Math.floor(Math.min(...parcelRing.map(point=>point[1]))),
+    maximumZ:Math.ceil(Math.max(...parcelRing.map(point=>point[1]))),
+  };
+  const attached=buildParcelGridPartition({
+    boundarySegments:[{id:`building:${facade.id}`,parcelId:'building-1',start:facade.start,end:facade.end,
+      inward:outside,length:facade.length,depth:1,divisions:facade.columns,clampToDepth:true}],
+    coverageTriangles:triangulateRing(parcelRing),bounds:parcelBounds,
+    regularGrid:{id:reference.buildingId,origin:reference.origin,axisU:reference.axisU,axisV:reference.axisV,
+      stepU:reference.stepU,stepV:reference.stepV},
+  });
+  const firstBand=attached.slantedCells.filter(cell=>cell.boundaryRow===0);
+  assert.equal(new Set(firstBand.map(cell=>cell.logicalCellId)).size,facade.columns,
+    'the first annex band has exactly the same columns as the existing facade');
+  for(const cell of firstBand)for(const point of cell.polygon){
+    const depth=(point[0]-facade.start[0])*outside[0]+(point[1]-facade.start[1])*outside[1];
+    assert(depth>=-1e-6&&depth<=1+1e-6,
+      `the attachable block starts at the wall and grows only outward (depth ${depth})`);
+  }
+});
+
+test("the two-zone grid keeps parcel boundary bands, follows facade anchors and excludes the existing building", () => {
+  const parcel: readonly ParcelGridPoint[] = [[0, 0], [20, 0], [20, 20], [0, 20]];
+  const building: readonly ParcelGridPoint[] = [[7.4, 8.2], [12.6, 8.2], [12.6, 12.8], [7.4, 12.8]];
+  const reference = deriveLod2BuildingGridReference("existing", [building])!;
+  const boundaries: readonly ParcelGridBoundarySegmentInput[] = [
+    { id: "south", parcelId: "parcel", start: [0, 0], end: [20, 0], inward: [0, 1], length: 20, depth: 2 },
+    { id: "east", parcelId: "parcel", start: [20, 0], end: [20, 20], inward: [-1, 0], length: 20, depth: 2 },
+    { id: "north", parcelId: "parcel", start: [20, 20], end: [0, 20], inward: [0, -1], length: 20, depth: 2 },
+    { id: "west", parcelId: "parcel", start: [0, 20], end: [0, 0], inward: [1, 0], length: 20, depth: 2 },
+  ];
+  const result = buildParcelGridPartition({
+    boundarySegments: boundaries,
+    coverageTriangles: triangulateRing(parcel),
+    excludedTriangles: triangulateRing(building),
+    bounds: { minimumX: 0, maximumX: 20, minimumZ: 0, maximumZ: 20 },
+    regularGrid: {
+      id: reference.buildingId,
+      origin: reference.origin,
+      axisU: reference.axisU,
+      axisV: reference.axisV,
+      stepU: reference.stepU,
+      stepV: reference.stepV,
+      uAnchors: reference.uAnchors,
+      vAnchors: reference.vAnchors,
+    },
+  });
+
+  assert(result.slantedCells.length > 0, "the green parcel-boundary transition remains present");
+  assert(result.straightCells.length > 0, "the red building-oriented interior remains present");
+  assert(Math.abs(result.coveredArea - (400 - 5.2 * 4.6)) < 1e-4,
+    "the complete building footprint is removed from the available raster");
+  assert(result.cells.every((cell) => {
+    const centre = cell.polygon.reduce((sum, point) => [sum[0] + point[0], sum[1] + point[1]] as [number, number], [0, 0]);
+    centre[0] /= cell.polygon.length; centre[1] /= cell.polygon.length;
+    return !(centre[0] > 7.4 + 1e-6 && centre[0] < 12.6 - 1e-6
+      && centre[1] > 8.2 + 1e-6 && centre[1] < 12.8 - 1e-6);
+  }), "no visible or placeable cell may run through the existing building");
+  assert(reference.uAnchors.some((value) => Math.abs(value - 7.4) < 1e-6));
+  assert(reference.uAnchors.some((value) => Math.abs(value - 12.6) < 1e-6));
+  assert(reference.vAnchors.some((value) => Math.abs(value - 8.2) < 1e-6));
+  assert(reference.vAnchors.some((value) => Math.abs(value - 12.8) < 1e-6));
+});
+
+test("the audit rejects a forced right-angle average and accepts both measured facade axes", () => {
+  const axisUAngle = 3.51 * Math.PI / 180;
+  const axisVAngle = 99.32 * Math.PI / 180;
+  const axisU: ParcelGridPoint = [Math.cos(axisUAngle), Math.sin(axisUAngle)];
+  const axisV: ParcelGridPoint = [Math.cos(axisVAngle), Math.sin(axisVAngle)];
+  const at = (u: number, v: number): ParcelGridPoint => [
+    10 + axisU[0] * u + axisV[0] * v,
+    10 + axisU[1] * u + axisV[1] * v,
+  ];
+  const building: readonly ParcelGridPoint[] = [at(0, 0), at(14, 0), at(14, 8), at(0, 8)];
+  const reference = deriveLod2BuildingGridReference("skew-existing-building", [building])!;
+  const basisAngle = Math.acos(
+    reference.axisU[0] * reference.axisV[0] + reference.axisU[1] * reference.axisV[1],
+  ) * 180 / Math.PI;
+  assert(Math.abs(basisAngle - 95.81) < 0.05, `real facade angle must survive, received ${basisAngle}`);
+
+  const parcel: readonly ParcelGridPoint[] = [[0, 0], [40, 0], [40, 40], [0, 40]];
+  const exclusions = triangulateRing(building);
+  const partition = buildParcelGridPartition({
+    boundarySegments: lod2BuildingFacadeBands(reference),
+    coverageTriangles: triangulateRing(parcel),
+    excludedTriangles: exclusions,
+    bounds: { minimumX: 0, maximumX: 40, minimumZ: 0, maximumZ: 40 },
+    regularGrid: {
+      id: reference.buildingId,
+      origin: reference.origin,
+      axisU: reference.axisU,
+      axisV: reference.axisV,
+      stepU: reference.stepU,
+      stepV: reference.stepV,
+      uAnchors: reference.uAnchors,
+      vAnchors: reference.vAnchors,
+    },
+  });
+  const audit = auditParcelGrid({ reference, partition, coverageTriangles: triangulateRing(parcel), excludedTriangles: exclusions });
+  assert.equal(audit.status, "pass");
+  assert(audit.weightedFacadeAxisErrorDegrees < 0.01);
+  assert(audit.p95FacadeAnchorOffsetM < 0.001);
+  assert(audit.maximumFacadeAnchorOffsetM < 0.001);
+  assert(audit.buildingOverlapAreaM2 < 1e-5);
+  assert(audit.minimumFacadeCoverageRatio > .999999);
+  assert(audit.maximumFacadeLineGapM < 1e-5);
+  assert.equal(audit.partialFacadeCellCount, 0);
+
+  const forcedRightAngle = {
+    ...reference,
+    axisV: [-reference.axisU[1], reference.axisU[0]] as ParcelGridPoint,
+  };
+  const failingAudit = auditParcelGrid({ reference: forcedRightAngle });
+  assert.equal(failingAudit.status, "error");
+  assert(failingAudit.issues.some((issue) => issue.code === "facade-axis-drift"));
+});
+
+test("roof-level LoD2 wall fragments cannot rotate the ground-based building raster", () => {
+  const extracted = lod2BuildingGridReferencesFromChunks([{ raw: { objectRefs: [{
+    objectTypeId: "building_roof",
+    objectInstanceId: "roof-ground-filter",
+    metadata: {
+      lod2BuildingId: "building-ground-filter",
+      roofParameters: { importedSource: { facadeSegments: [
+        { start: [0, 0], end: [10, 0], minimumY: 1, maximumY: 7 },
+        { start: [10, 0], end: [10, 6], minimumY: 1, maximumY: 7 },
+        { start: [10, 6], end: [0, 6], minimumY: 1, maximumY: 7 },
+        { start: [0, 6], end: [0, 0], minimumY: 1, maximumY: 7 },
+        { start: [-4, -3], end: [18, 13], minimumY: 6, maximumY: 9 },
+      ] } },
+    },
+    footprint: {
+      type: "Polygon",
+      coordinateSpace: "world-cell-xz",
+      coordinates: [[[0, 0], [10, 0], [10, 6], [0, 6], [0, 0]]],
+    },
+  }] } }]);
+  assert.equal(extracted.length, 1);
+  assert.equal(extracted[0]!.facades.length, 4);
+  assert(Math.abs(extracted[0]!.rotationDegrees) < 1e-8);
 });
 
 test("selection handles snap every axis to whole blocks from their drag origin", () => {

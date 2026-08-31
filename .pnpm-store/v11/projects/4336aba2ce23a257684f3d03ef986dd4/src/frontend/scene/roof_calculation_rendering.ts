@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 import { roofCalculationVersionSnapshot } from "../world_edit/systems/roof/zones";
 
@@ -7,6 +8,8 @@ export interface RoofCalculationRenderOptions {
   readonly preview?: boolean;
   readonly semanticObjectRef?: unknown;
   readonly objectInstanceId?: string;
+  /** Disable only for geometry regression comparisons; production batches parts. */
+  readonly mergeParts?: boolean;
 }
 
 export interface RoofCalculationRenderResult {
@@ -40,11 +43,62 @@ function direction3(value: unknown): THREE.Vector3 | null {
   return result.lengthSq() > 1e-12 ? result.normalize() : null;
 }
 
-function faceGeometry(points: readonly THREE.Vector3[]): THREE.BufferGeometry | null {
+function cleanFacePoints(points: readonly THREE.Vector3[]): THREE.Vector3[] {
+  const result: THREE.Vector3[] = [];
+  for (const point of points) {
+    if (!result.at(-1)?.equals(point)) result.push(point.clone());
+  }
+  if (result.length > 2 && result[0]!.equals(result.at(-1)!)) result.pop();
+  return result;
+}
+
+function faceNormal(points: readonly THREE.Vector3[]): THREE.Vector3 | null {
   if (points.length < 3) return null;
-  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  // Newell's method remains stable when the first three vertices happen to be
+  // collinear (common on imported eaves with an intermediate point).
+  const normal = new THREE.Vector3();
+  for (let index = 0; index < points.length; index += 1) {
+    const current = points[index]!;
+    const next = points[(index + 1) % points.length]!;
+    normal.x += (current.y - next.y) * (current.z + next.z);
+    normal.y += (current.z - next.z) * (current.x + next.x);
+    normal.z += (current.x - next.x) * (current.y + next.y);
+  }
+  return normal.lengthSq() > 1e-12 ? normal.normalize() : null;
+}
+
+function triangulatedFaceIndices(
+  points: readonly THREE.Vector3[],
+  desiredNormal: THREE.Vector3,
+): number[] {
+  const absolute = [Math.abs(desiredNormal.x), Math.abs(desiredNormal.y), Math.abs(desiredNormal.z)];
+  const droppedAxis = absolute.indexOf(Math.max(...absolute));
+  const projected = points.map((point) => droppedAxis === 0
+    ? new THREE.Vector2(point.y, point.z)
+    : droppedAxis === 1
+      ? new THREE.Vector2(point.x, point.z)
+      : new THREE.Vector2(point.x, point.y));
+  const triangles = THREE.ShapeUtils.triangulateShape(projected, []);
   const indices: number[] = [];
-  for (let index = 1; index < points.length - 1; index += 1) indices.push(0, index, index + 1);
+  for (const triangle of triangles) {
+    let [first, second, third] = triangle;
+    const normal = new THREE.Vector3().crossVectors(
+      points[second]!.clone().sub(points[first]!),
+      points[third]!.clone().sub(points[first]!),
+    );
+    if (normal.dot(desiredNormal) < 0) [second, third] = [third, second];
+    indices.push(first, second, third);
+  }
+  return indices;
+}
+
+function faceGeometry(inputPoints: readonly THREE.Vector3[]): THREE.BufferGeometry | null {
+  const points = cleanFacePoints(inputPoints);
+  const normal = faceNormal(points);
+  if (!normal) return null;
+  const indices = triangulatedFaceIndices(points, normal);
+  if (indices.length < 3) return null;
+  const geometry = new THREE.BufferGeometry().setFromPoints(points);
   geometry.setIndex(indices);
   geometry.computeVertexNormals();
   geometry.computeBoundingBox();
@@ -53,30 +107,29 @@ function faceGeometry(points: readonly THREE.Vector3[]): THREE.BufferGeometry | 
 }
 
 function solidFaceGeometry(
-  topPoints: readonly THREE.Vector3[],
+  inputTopPoints: readonly THREE.Vector3[],
   thickness: number,
 ): THREE.BufferGeometry | null {
+  const topPoints = cleanFacePoints(inputTopPoints);
   if (topPoints.length < 3 || !Number.isFinite(thickness) || thickness <= 1e-6) {
     return faceGeometry(topPoints);
   }
-  const rawNormal = new THREE.Vector3().crossVectors(
-    topPoints[1]!.clone().sub(topPoints[0]!),
-    topPoints[2]!.clone().sub(topPoints[0]!),
-  );
-  if (rawNormal.lengthSq() <= 1e-12) return null;
-  const topWindsUp = rawNormal.y >= 0;
-  const outwardNormal = rawNormal.normalize();
+  const rawNormal = faceNormal(topPoints);
+  if (!rawNormal) return null;
+  const outwardNormal = rawNormal.clone();
   if (outwardNormal.y < 0) outwardNormal.negate();
   const bottomPoints = topPoints.map((point) => point.clone().addScaledVector(outwardNormal, -thickness));
   const points = [...topPoints, ...bottomPoints];
   const count = topPoints.length;
-  const indices: number[] = [];
-  for (let index = 1; index < count - 1; index += 1) {
-    if (topWindsUp) {
-      indices.push(0, index, index + 1, count, count + index + 1, count + index);
-    } else {
-      indices.push(0, index + 1, index, count, count + index, count + index + 1);
-    }
+  const topIndices = triangulatedFaceIndices(topPoints, outwardNormal);
+  if (topIndices.length < 3) return null;
+  const indices = [...topIndices];
+  for (let index = 0; index < topIndices.length; index += 3) {
+    indices.push(
+      count + topIndices[index]!,
+      count + topIndices[index + 2]!,
+      count + topIndices[index + 1]!,
+    );
   }
   for (let index = 0; index < count; index += 1) {
     const next = (index + 1) % count;
@@ -215,6 +268,57 @@ function shiftedMember(
     section_mm: { width: widthMm, height: heightMm },
     notches: [],
   };
+}
+
+function roofPartRole(part: string): string {
+  return ["counter-batten", "tile-batten", "tile-edge", "roof-cap", "tile-row", "tile-joint",
+    "tiles", "insulation", "sheathing", "rafter", "purlin"]
+    .find((role) => part.startsWith(`${role}-`)) ?? part;
+}
+
+function batchRoofParts(meshes: THREE.Mesh[], geometries: THREE.BufferGeometry[]): void {
+  const groups = new Map<string, THREE.Mesh[]>();
+  for (const mesh of meshes) {
+    const material = mesh.material as THREE.Material;
+    const role = roofPartRole(String(mesh.userData.roofPart));
+    const attributes = Object.keys(mesh.geometry.attributes).sort()
+      .map((name) => {
+        const attribute = mesh.geometry.getAttribute(name);
+        return `${name}:${attribute.itemSize}:${attribute.normalized}:${attribute.array.constructor.name}`;
+      })
+      .join("|");
+    // Keep transparent faces independently sortable. Opaque timber, battens and
+    // tiles are all in world coordinates and can share one draw per part kind.
+    const key = material.transparent ? mesh.uuid
+      : `${material.id}:${role}:${Boolean(mesh.geometry.index)}:${attributes}`;
+    const group = groups.get(key) ?? [];
+    group.push(mesh);
+    groups.set(key, group);
+  }
+  const batched: THREE.Mesh[] = [];
+  for (const group of groups.values()) {
+    const merged = group.length > 1 ? mergeGeometries(group.map((mesh) => mesh.geometry), false) : null;
+    if (!merged) { batched.push(...group); continue; }
+    let indexOffset = 0;
+    const parts = group.map((mesh) => {
+      const indexCount = mesh.geometry.index?.count ?? mesh.geometry.getAttribute("position").count;
+      const part = { part: mesh.userData.roofPart, indexOffset, indexCount };
+      indexOffset += indexCount;
+      return part;
+    });
+    const first = group[0]!;
+    group.forEach((mesh) => mesh.geometry.dispose());
+    first.geometry = merged;
+    first.userData.roofPart = `${roofPartRole(String(first.userData.roofPart))}-batch`;
+    // Retain the original semantic part names and index ranges for hit mapping.
+    first.userData.roofParts = parts;
+    first.name = `roof:${first.userData.objectInstanceId ?? "preview"}:${first.userData.roofPart}`;
+    merged.computeBoundingBox();
+    merged.computeBoundingSphere();
+    batched.push(first);
+  }
+  meshes.splice(0, meshes.length, ...batched);
+  geometries.splice(0, geometries.length, ...batched.map((mesh) => mesh.geometry));
 }
 
 export function createRoofCalculationMeshes(
@@ -393,6 +497,7 @@ export function createRoofCalculationMeshes(
   appendMembers(tileRows, tileSeamMaterial, "tile-row");
   appendMembers(tileJoints, tileSeamMaterial, "tile-joint");
 
+  if (options.mergeParts !== false && meshes.length > 1) batchRoofParts(meshes, geometries);
   if (meshes.length === 0) materials.forEach((material) => material.dispose());
   return { meshes, materials: meshes.length === 0 ? [] : materials, geometries };
 }

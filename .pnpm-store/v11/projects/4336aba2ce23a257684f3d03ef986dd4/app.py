@@ -670,6 +670,16 @@ def _is_embed_request(app: Flask) -> bool:
         return False
 
 
+def _is_desktop_embed_request(app: Flask) -> bool:
+    try:
+        return (
+            _is_embed_request(app)
+            and str(request.args.get("client_source") or "").strip().lower() == "desktop"
+        )
+    except Exception:
+        return False
+
+
 def _allowed_frame_ancestors(app: Flask) -> tuple[str, ...]:
     raw = _config_first(
         app,
@@ -714,9 +724,18 @@ def _frame_ancestors_csp(app: Flask) -> str:
     )
 
     if explicit and "*" not in explicit:
-        return explicit
+        value = explicit
+    else:
+        value = _csp_join(_allowed_frame_ancestors(app), include_self=True)
 
-    return _csp_join(_allowed_frame_ancestors(app), include_self=True)
+    if _is_desktop_embed_request(app):
+        values = value.split()
+        for source in ("file:", "http://127.0.0.1:*", "http://localhost:*"):
+            if source not in values:
+                values.append(source)
+        value = " ".join(values)
+
+    return value
 
 
 def _x_frame_options_default(app: Flask) -> str:

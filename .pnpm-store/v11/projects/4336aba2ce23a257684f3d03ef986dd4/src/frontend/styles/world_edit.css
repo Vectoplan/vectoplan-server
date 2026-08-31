@@ -103,6 +103,7 @@
 }
 
 .editor-roof-quick-settings[hidden] { display: none !important; }
+.editor-roof-quick-settings [hidden] { display: none !important; }
 .editor-roof-quick-settings__header {
   display: flex;
   align-items: center;
@@ -200,3 +201,66 @@
   .editor-roof-quick-settings { top: 8px; right: 8px; width: min(420px, calc(100% - 16px)); max-height: calc(100% - 16px); transform: none; }
   .editor-roof-quick-settings__types { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+.editor-solar-panel { position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;width:430px;height:660px;overflow:hidden;padding:16px;box-sizing:border-box;border:1px solid #c9dcee;border-radius:16px;background:#fbfdff;color:#19344e;box-shadow:0 18px 48px #132c4c40;z-index:130;pointer-events:auto;font:13px/1.4 system-ui,sans-serif; }
+.editor-solar-panel[hidden] { display:none; }
+.editor-solar-panel header { display:flex;align-items:center;justify-content:space-between;position:static;max-width:none;padding:0;background:none;box-shadow:none; }
+.editor-solar-panel h2 { margin:0;font-size:19px; }
+.editor-solar-panel small { display:block;font-size:11px;color:#526e89; }
+.editor-solar-panel__body { min-height:0;flex:1;overflow:hidden; }
+.editor-solar-panel fieldset { margin:8px 0 6px;padding:7px 9px;border:1px solid #d4e2ef;border-radius:9px; }
+.editor-solar-panel [data-faces] { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px;max-height:none;overflow:visible; }
+.editor-solar-panel__face { display:grid;gap:2px;min-width:0;padding:5px 0;border-bottom:1px solid #e6eef5; }
+.editor-solar-panel__face:last-child { border-bottom:0; }
+.editor-solar-panel__face-head { display:flex;align-items:center;gap:7px; }
+.editor-solar-panel__face-head input {
+  appearance:none;
+  -webkit-appearance:none;
+  width:14px;
+  height:14px;
+  margin:0;
+  flex:0 0 14px;
+  border:1px solid #7893ad;
+  border-radius:2px;
+  background:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.9);
+  cursor:pointer;
+}
+.editor-solar-panel__face-head input:checked {
+  border-color:#1685d1;
+  background-color:#fff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath fill='none' stroke='%230b79c9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m3 7 2.3 2.3L11 3.8'/%3E%3C/svg%3E");
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:12px 12px;
+}
+.editor-solar-panel__face-head input:focus-visible { outline:2px solid #67b7ee;outline-offset:2px; }
+.editor-solar-panel__face > small { overflow:hidden;padding-left:20px;font-size:10px;line-height:1.25;text-overflow:ellipsis;white-space:nowrap; }
+.editor-solar-panel__module { display:block;margin:7px 0 4px;font-weight:700; }
+.editor-solar-panel__module select { display:block;box-sizing:border-box;width:100%;margin-top:4px;padding:7px 34px 7px 10px;border:1px solid #bfcfe1;border-radius:8px;color:#19344e;background:white; }
+.editor-solar-panel__facts { padding:5px 8px;border-radius:8px;background:#eef6fc;color:#365b78;font-size:11px; }
+.editor-solar-panel__facts a,.editor-solar-panel__result a { color:#076bb6; }
+.editor-solar-panel__result { margin:7px 0 0;padding:9px 11px;border:1px solid #cfe1ef;border-radius:10px;background:#f7fbff; }
+.editor-solar-panel__result p { margin:3px 0 0; }
+.editor-solar-panel__result [data-area] { color:#526e89; }
+.editor-solar-panel__result [data-yield] strong { color:#087044;font-size:15px; }
+.editor-solar-panel__area { display:grid;grid-template-columns:1fr auto;align-items:center;gap:3px 10px;margin:8px 0 4px;font-weight:700; }
+.editor-solar-panel__area-input { display:flex;align-items:center;overflow:hidden;border:1px solid #bfcfe1;border-radius:8px;background:white;font-weight:400; }
+.editor-solar-panel__area-input input { width:92px;padding:8px;border:0;outline:0;color:#19344e;background:transparent;text-align:right; }
+.editor-solar-panel__area-input input[type="number"] { appearance:textfield;-moz-appearance:textfield; }
+.editor-solar-panel__area-input input[type="number"]::-webkit-inner-spin-button,
+.editor-solar-panel__area-input input[type="number"]::-webkit-outer-spin-button { -webkit-appearance:none;margin:0; }
+.editor-solar-panel__area-input span { padding-right:9px;color:#526e89; }
+.editor-solar-panel__area small { grid-column:1/-1;text-align:right; }
+.editor-solar-panel__balance { display:grid;gap:3px;margin-top:5px; }
+.editor-solar-panel__balance > span { display:grid;grid-template-columns:145px 1fr;gap:8px; }
+.editor-solar-panel__balance > span span { text-align:right; }
+.editor-solar-panel__balance .editor-solar-panel__benefit { display:block;margin-top:2px;padding-top:7px;border-top:1px solid #d7e5ef;color:#087044;font-weight:700;text-align:right; }
+.editor-solar-panel [data-yield] > small { margin-top:5px; }
+.editor-solar-panel output { display:block;font-size:18px;font-weight:700;color:#076bb6; }
+.editor-solar-panel footer { display:grid;grid-template-columns:1fr 1fr;gap:8px;flex:none;margin-top:8px; }
+.editor-solar-panel button,.editor-solar-panel footer a { cursor:pointer;border:1px solid #b4cfe7;border-radius:8px;padding:9px 10px;color:#155b94;background:#edf6ff;text-align:center;text-decoration:none;white-space:nowrap; }
+.editor-solar-panel button[data-save] { background:#107ac3;color:white; }
+.editor-solar-panel footer a { background:#fff;color:#076bb6;font-weight:650; }
+.editor-solar-panel button:disabled { opacity:.5;cursor:default; }
+
+@media (max-width: 520px), (max-height: 700px) { .editor-solar-panel { right:8px; } }

@@ -6,6 +6,8 @@
   const svg = document.getElementById("plan-svg");
   const ns = "http://www.w3.org/2000/svg";
   const query = new URLSearchParams(window.location.search);
+  const SHARED_MODEL_POLL_INTERVAL_MS = 8000;
+  const INTERACTION_QUIET_WINDOW_MS = 2200;
   const projectContext = {
     coreProjectId: query.get("core_project_id") || "",
     projectPublicId: query.get("project_public_id") || query.get("app_project_public_id") || "",
@@ -20,6 +22,8 @@
     activeSheetRef: null,
     activeViewportRef: null,
     selectedPrimitive: null,
+    selectedPrimitiveRefs: new Set(),
+    selectionDrag: null,
     activeTool: "select",
     visibleLayers: new Set(),
     knownLayers: new Set(),
@@ -62,6 +66,8 @@
     shiftPressed: false,
     ctrlPressed: false,
     renderScheduled: false,
+    cameraRenderScheduled: false,
+    cameraSettleTimer: 0,
     parcelSelection: null,
     projectInputLoaded: false,
     projectionLoadSequence: 0,
@@ -77,6 +83,8 @@
     sharedModelFingerprint: "",
     sharedModelPollBusy: false,
     sharedModelPollTimer: 0,
+    workspaceVisible: true,
+    lastInteractionAt: 0,
     parcelGridDrag: null,
     cursorPoint: null,
     lastPointerModel: null,
@@ -90,6 +98,7 @@
     localCopies: [],
     hiddenElementRefs: new Set(),
     clipboard: null,
+    editPlacement: null,
     editSequence: 0,
     pointGeometryOverrides: new Map(),
     pointEditMode: false,
@@ -113,6 +122,7 @@
     automaticDimensionPending: false,
     storeySceneCache: new Map(),
     storeyOverlayLoads: new Map(),
+    modelMutationPending: false,
   };
 
   const buildingTypes = new Set([
@@ -197,6 +207,42 @@
   function cloneValue(value) {
     if (typeof structuredClone === "function") return structuredClone(value);
     return JSON.parse(JSON.stringify(value));
+  }
+
+  function selectedPrimitiveCount() {
+    return state.selectedPrimitiveRefs.size || (state.selectedPrimitive ? 1 : 0);
+  }
+
+  function isPrimitiveSelected(primitiveRef) {
+    return state.selectedPrimitiveRefs.has(primitiveRef)
+      || (state.selectedPrimitive?.primitive_ref === primitiveRef && state.selectedPrimitiveRefs.size === 0);
+  }
+
+  function clearPrimitiveSelection() {
+    state.selectedPrimitive = null;
+    state.selectedPrimitiveRefs.clear();
+    state.selectionDrag = null;
+  }
+
+  function setPrimitiveSelection(primitive, refs = null) {
+    state.selectedPrimitive = primitive || null;
+    state.selectedPrimitiveRefs = new Set(
+      refs || (primitive?.primitive_ref ? [primitive.primitive_ref] : []),
+    );
+  }
+
+  function togglePrimitiveSelection(primitive, additive = false) {
+    if (!primitive?.primitive_ref) return;
+    const refs = additive ? new Set(state.selectedPrimitiveRefs) : new Set();
+    if (additive && refs.has(primitive.primitive_ref)) refs.delete(primitive.primitive_ref);
+    else refs.add(primitive.primitive_ref);
+    const primary = refs.has(primitive.primitive_ref)
+      ? primitive
+      : sourcePrimitiveForRef([...refs].at(-1));
+    const displayPrimary = primary === primitive
+      ? primary
+      : primary ? northUpPrimitive(primitiveWithPointGeometry(primary)) : null;
+    setPrimitiveSelection(displayPrimary, refs);
   }
 
   function normalizeGridRotation(value) {
@@ -1053,7 +1099,7 @@
       else if (storey.displayMode === "red") storey.displayMode = "yellow";
     });
     state.building.activeStoreyId = storeyId;
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     publishBuildingDraft();
     renderAll();
     renderBuildingPanel();
@@ -1091,7 +1137,7 @@
     }
     if (storey.displayMode === "yellow") {
       storey.displayMode = "white";
-      if (state.selectedPrimitive && String(state.selectedPrimitive.metadata?.storey_id || "") === storeyId) state.selectedPrimitive = null;
+      if (state.selectedPrimitive && String(state.selectedPrimitive.metadata?.storey_id || "") === storeyId) clearPrimitiveSelection();
       publishBuildingDraft();
       renderBuildingPanel();
       renderAll();
@@ -1130,7 +1176,7 @@
     });
     recalculateStoreyElevations();
     building.activeStoreyId = id;
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     publishBuildingDraft();
     renderAll();
     renderBuildingPanel();
@@ -1510,7 +1556,7 @@
     syncPlanOverviewButton();
     state.activeSheetRef = input.sheets[0]?.sheet_ref || null;
     state.activeViewportRef = input.sheets[0]?.viewports?.find((viewport) => viewport.kind === "floor_plan")?.viewport_ref || null;
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     if (!options.preserveHistory) {
       state.commands = [];
       state.redoCommands = [];
@@ -1519,6 +1565,7 @@
       state.localCopies = [];
       state.hiddenElementRefs.clear();
       state.clipboard = null;
+      state.editPlacement = null;
     }
     if (!options.preserveCamera) {
       state.camera = null;
@@ -1547,12 +1594,16 @@
     const requestedParcelSignature = parcelSelectionSignature();
     const buildingDraft = state.building || storedBuildingDraft();
     const requestedStoreyId = String(options.storeyId || buildingDraft?.activeStoreyId || "");
+    const projectionRequest = semanticProjectionRequest(requestedStoreyId, buildingDraft);
+    // Paint a persisted projection immediately. The 1.5 s background sync
+    // below still verifies the live Chunk fingerprint and replaces stale data.
+    projectionRequest.preferStoredSnapshot = !options.background;
     const result = await fetchJson(
       `${routePrefix}/core/projects/${encodeURIComponent(projectContext.coreProjectId)}/projection`,
       {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(semanticProjectionRequest(requestedStoreyId, buildingDraft)),
+        body: JSON.stringify(projectionRequest),
       },
     );
     if (loadSequence !== state.projectionLoadSequence) return;
@@ -1563,15 +1614,15 @@
     const userPlacementMode = statistics.sourceMode === "current-user-authored-cells"
       || statistics.discoveryMode === "current-user-authored-cells";
     const semanticMode = statistics.sourceMode === "semantic-construction-model";
-    const userPlacementCount = Number(statistics.userPlacementCount ?? statistics.placementCount ?? 0);
+    const projectPlacementCount = Number(statistics.userPlacementCount ?? statistics.placementCount ?? 0);
     const constructionElementCount = Number(statistics.constructionElementCount ?? statistics.elementCount ?? 0);
     const projectLabel = projectContext.projectPublicId || projectContext.coreProjectId;
-    const loadedMessage = userPlacementMode && userPlacementCount === 0
-      ? "Keine serverseitig gesetzten Benutzerblöcke vorhanden. Systemgelände ist ausgeblendet."
+    const loadedMessage = userPlacementMode && projectPlacementCount === 0
+      ? "Keine serverseitigen Bauwerkszellen vorhanden. Systemgelände ist ausgeblendet."
       : semanticMode
-        ? `${userPlacementCount} gesetzte Benutzerblöcke wurden zu ${constructionElementCount} Bauwerksobjekten zusammengefasst.`
+        ? `${projectPlacementCount} Benutzerblöcke, Projektzellen und LoD2-Strukturen wurden zu ${constructionElementCount} Bauwerksobjekten zusammengefasst.`
         : userPlacementMode
-        ? `${userPlacementCount} gesetzte Benutzerblöcke für Projekt ${projectLabel} geladen.`
+        ? `${projectPlacementCount} gesetzte Projektzellen für Projekt ${projectLabel} geladen.`
         : `Projekt ${projectLabel} aus Chunk-Daten geladen.`;
     await activateProjection(
       input,
@@ -1589,9 +1640,9 @@
       coreConnected: true,
       projectConnected: true,
       projectText: semanticMode
-        ? `Projekt ${projectLabel} verbunden · ${constructionElementCount} Bauwerksobjekte aus ${userPlacementCount} Benutzerblöcken`
+        ? `Projekt ${projectLabel} verbunden · ${constructionElementCount} Bauwerksobjekte aus ${projectPlacementCount} Benutzerblöcken, Projektzellen und LoD2-Strukturen`
         : userPlacementMode
-        ? `Projekt ${projectLabel} verbunden · ${userPlacementCount} Benutzerblöcke`
+        ? `Projekt ${projectLabel} verbunden · ${projectPlacementCount} Projektzellen`
         : `Projekt ${projectLabel} verbunden`,
     });
     if (parcelSelectionSignature() !== requestedParcelSignature) scheduleParcelProjectionReload();
@@ -1646,7 +1697,18 @@
   function startSharedModelPolling() {
     if (!projectContext.coreProjectId || state.sharedModelPollTimer) return;
     state.sharedModelPollTimer = window.setInterval(async () => {
-      if (state.sharedModelPollBusy || document.hidden || state.drawStart) return;
+      const interactionActive = Date.now() - state.lastInteractionAt < INTERACTION_QUIET_WINDOW_MS;
+      if (
+        state.sharedModelPollBusy
+        || document.hidden
+        || !state.workspaceVisible
+        || interactionActive
+        || state.drawStart
+        || state.pan
+        || state.pinch
+        || state.editPlacement
+        || state.pointDrag
+      ) return;
       state.sharedModelPollBusy = true;
       try {
         await loadProjectInput({background: true, preserveCamera: true, preserveHistory: true});
@@ -1655,7 +1717,7 @@
       } finally {
         state.sharedModelPollBusy = false;
       }
-    }, 1500);
+    }, SHARED_MODEL_POLL_INTERVAL_MS);
   }
 
   function scheduleParcelProjectionReload() {
@@ -1791,6 +1853,12 @@
       ].map(modelPointToNorthUp);
     } else if (primitiveType === "polygon") {
       geometry.points_mm = (source.points_mm || []).map(modelPointToNorthUp);
+      if (Array.isArray(source.coverage_points_mm)) {
+        geometry.coverage_points_mm = source.coverage_points_mm.map(modelPointToNorthUp);
+      }
+      if (Array.isArray(source.ridge_line_mm)) {
+        geometry.ridge_line_mm = source.ridge_line_mm.map(modelPointToNorthUp);
+      }
     } else if (primitiveType === "thick_path") {
       geometry.path_mm = (source.path_mm || []).map(modelPointToNorthUp);
     } else if (primitiveType === "thick_segments") {
@@ -2071,7 +2139,7 @@
       state.planOverview = true;
       state.pointEditMode = false;
       state.pointDrag = null;
-      state.selectedPrimitive = null;
+      clearPrimitiveSelection();
       document.getElementById("door-options").hidden = true;
       selectTool("select");
       state.camera = planOverviewCamera();
@@ -2803,10 +2871,12 @@
       svg.append(svgEl("polygon", {points: framePoints.map((point) => point.join(",")).join(" "), class: "model-frame"}));
       svg.append(svgEl("text", {x: displayBounds.x + 120, y: displayBounds.y - 220, class: "model-frame-label"}, `${(activeStorey?.name || "Erdgeschoss").toUpperCase()} · MODELLBEREICH`));
     }
-    visibleViewportPrimitives(viewport)
+    const displayPrimitives = visibleViewportPrimitives(viewport)
       .map((primitive) => northUpPrimitive(primitiveWithPointGeometry(primitive)))
-      .sort((left, right) => (renderStyleOrder[left.style_ref] ?? 50) - (renderStyleOrder[right.style_ref] ?? 50))
-      .forEach((primitive) => svg.append(renderPrimitive(primitive)));
+      .sort((left, right) => (renderStyleOrder[left.style_ref] ?? 50) - (renderStyleOrder[right.style_ref] ?? 50));
+    displayPrimitives.forEach((primitive) => svg.append(renderPrimitive(primitive)));
+    renderEditPlacementPreview();
+    renderSelectionMarquee();
     renderWorldSelection();
     renderPointModifyHandles();
     renderPendingDrawSegments();
@@ -2817,8 +2887,7 @@
     renderCrosshair();
   }
 
-  function primitiveEditTransform(primitive) {
-    const edit = state.elementEdits.get(primitive.primitive_ref);
+  function primitiveTransform(primitive, edit) {
     if (!edit) return "";
     const bounds = primitiveModelBounds(primitive);
     if (!bounds) return "";
@@ -2833,11 +2902,24 @@
     return `translate(${translateX} ${translateY}) translate(${centreX} ${centreY}) rotate(${rotation}) skewX(${skewX}) scale(${scaleX} ${scaleY}) translate(${-centreX} ${-centreY})`;
   }
 
+  function primitiveEditTransform(primitive) {
+    return primitiveTransform(primitive, state.elementEdits.get(primitive.primitive_ref));
+  }
+
+  function renderPrimitiveSelectionState(visual) {
+    const selection = svgEl("g", {class: "primitive-selection-state", "aria-hidden": "true"});
+    const highlight = visual.cloneNode(true);
+    highlight.classList.add("primitive-selection-highlight");
+    selection.append(highlight);
+    return selection;
+  }
+
   function renderPrimitive(primitive) {
     const geometry = primitive.geometry;
     let node;
     if (primitive.primitive_type === "polygon") {
-      if (primitive.style_ref === "door") node = renderDoorPrimitive(primitive);
+      if (primitive.style_ref === "roof") node = renderRoofPrimitive(primitive);
+      else if (primitive.style_ref === "door") node = renderDoorPrimitive(primitive);
       else if (primitive.style_ref === "window") node = renderWindowPrimitive(primitive);
       else if (primitive.style_ref === "stair") node = renderStairPrimitive(primitive);
       else if (primitive.style_ref === "wall-cut") node = renderWallPolygonPrimitive(primitive);
@@ -2870,18 +2952,23 @@
     node.dataset.storeyMode = primitiveStoreyMode;
     node.classList.add(`storey-mode-${primitiveStoreyMode}`);
     if (primitive.metadata?.local_draft) node.classList.add("local-draft");
+    if (state.editPlacement?.sourceRefs?.includes(primitive.primitive_ref)) node.classList.add("is-edit-placement-source");
     if (!state.visibleLayers.has(primitive.layer_ref)) node.classList.add("layer-hidden");
-    if (state.selectedPrimitive?.primitive_ref === primitive.primitive_ref) node.classList.add("is-selected");
+    if (isPrimitiveSelected(primitive.primitive_ref)) {
+      node.classList.add("is-selected");
+      node.append(renderPrimitiveSelectionState(visual));
+    }
     const transform = primitiveEditTransform(primitive);
     if (transform) node.setAttribute("transform", transform);
     node.addEventListener("pointerdown", (event) => {
       if (event.button !== 0 || state.activeTool !== "select" || state.spacePressed) return;
+      if (state.editPlacement) return;
       if (primitiveStoreyMode === "gray") {
         showMessage("Dieses graue Geschoss ist nur sichtbar. Für eine bearbeitbare Referenz den Geschossstatus auf gelb stellen.");
         return;
       }
       if (event.pointerType !== "touch") event.stopPropagation();
-      state.selectedPrimitive = primitive;
+      togglePrimitiveSelection(primitive, event.shiftKey || event.ctrlKey || event.metaKey);
       renderPlan();
       renderInspector();
       syncEditToolButtons();
@@ -2938,6 +3025,35 @@
       points: points.map((point) => point.join(",")).join(" "),
       class: className,
     });
+  }
+
+  function renderRoofPrimitive(primitive) {
+    const group = svgEl("g", {class: "roof-plan-geometry"});
+    const footprint = normalizedPolygonPoints(primitive.geometry?.points_mm);
+    if (footprint.length >= 3) group.append(polygonNode(footprint, "roof-plan-footprint"));
+    const calculationGeometry = primitive.metadata?.roof_calculation?.geometry || {};
+    const faces = Array.isArray(calculationGeometry.faces) ? calculationGeometry.faces : [];
+    faces.forEach((face, index) => {
+      const points = (Array.isArray(face?.polygon_3d_mm) ? face.polygon_3d_mm : [])
+        .filter((point) => Array.isArray(point) && point.length >= 2)
+        .map((point) => modelPointToNorthUp([Number(point[0]) || 0, Number(point[1]) || 0]));
+      if (normalizedPolygonPoints(points).length < 3) return;
+      const node = polygonNode(points, `roof-plan-face roof-plan-face-${index % 2 ? "secondary" : "primary"}`);
+      node.dataset.faceRef = String(face.face_ref || `face-${index + 1}`);
+      group.append(node);
+    });
+    const ridge = Array.isArray(calculationGeometry.ridge_line_mm)
+      ? calculationGeometry.ridge_line_mm.map(modelPointToNorthUp)
+      : Array.isArray(primitive.geometry?.ridge_line_mm)
+        ? primitive.geometry.ridge_line_mm
+        : [];
+    if (ridge.length >= 2) {
+      group.append(svgEl("polyline", {
+        points: ridge.map((point) => point.join(",")).join(" "),
+        class: "roof-plan-ridge",
+      }));
+    }
+    return group;
   }
 
   function interpolatePoint(start, end, ratio) {
@@ -4031,7 +4147,7 @@
     const currentGeometry = state.pointGeometryOverrides.get(drag.primitiveRef) || primitive.geometry;
     const nextGeometry = applyPointDescriptor(currentGeometry, drag.primitiveType, drag.descriptor, sourcePoint);
     state.pointGeometryOverrides.set(drag.primitiveRef, nextGeometry);
-    state.selectedPrimitive = northUpPrimitive({...primitive, geometry: nextGeometry});
+    setPrimitiveSelection(northUpPrimitive({...primitive, geometry: nextGeometry}), state.selectedPrimitiveRefs);
     state.cursorPoint = {x: snapped[0], y: snapped[1]};
     state.lastPointerModel = state.cursorPoint;
     renderPlan();
@@ -4113,6 +4229,94 @@
     svg.append(group);
   }
 
+  function renderSelectionMarquee() {
+    const drag = state.selectionDrag;
+    if (!drag) return;
+    const start = drag.startModel;
+    const end = drag.currentModel || start;
+    const x = Math.min(start[0], end[0]);
+    const y = Math.min(start[1], end[1]);
+    const width = Math.abs(end[0] - start[0]);
+    const height = Math.abs(end[1] - start[1]);
+    const className = `cad-selection-marquee${drag.currentClientX < drag.startClientX ? " is-crossing" : ""}`;
+    svg.append(svgEl("rect", {x, y, width, height, class: className}));
+  }
+
+  function beginSelectionDrag(event) {
+    const point = pointFromEvent(event);
+    if (!point) return false;
+    const additive = event.shiftKey || event.ctrlKey || event.metaKey;
+    const baseRefs = additive ? [...state.selectedPrimitiveRefs] : [];
+    if (!additive) clearPrimitiveSelection();
+    state.selectionDrag = {
+      pointerId: event.pointerId,
+      startClientX: event.clientX,
+      startClientY: event.clientY,
+      currentClientX: event.clientX,
+      currentClientY: event.clientY,
+      startModel: [point.x, point.y],
+      currentModel: [point.x, point.y],
+      additive,
+      baseRefs,
+    };
+    svg.setPointerCapture?.(event.pointerId);
+    renderPlan();
+    renderInspector();
+    syncEditToolButtons();
+    return true;
+  }
+
+  function updateSelectionDrag(event) {
+    const drag = state.selectionDrag;
+    if (!drag || drag.pointerId !== event.pointerId) return false;
+    const point = pointFromEvent(event);
+    if (!point) return true;
+    drag.currentClientX = event.clientX;
+    drag.currentClientY = event.clientY;
+    drag.currentModel = [point.x, point.y];
+    schedulePlanRender();
+    return true;
+  }
+
+  function finishSelectionDrag(event) {
+    const drag = state.selectionDrag;
+    if (!drag || drag.pointerId !== event.pointerId) return false;
+    const point = pointFromEvent(event);
+    if (point) drag.currentModel = [point.x, point.y];
+    drag.currentClientX = event.clientX;
+    drag.currentClientY = event.clientY;
+    const distance = Math.hypot(
+      drag.currentClientX - drag.startClientX,
+      drag.currentClientY - drag.startClientY,
+    );
+    const nextRefs = new Set(drag.baseRefs || []);
+    if (distance >= 3) {
+      const marquee = {
+        left: drag.startClientX,
+        right: drag.currentClientX,
+        top: drag.startClientY,
+        bottom: drag.currentClientY,
+      };
+      const entries = [...svg.querySelectorAll(".primitive")]
+        .filter((node) => !node.classList.contains("layer-hidden") && !node.classList.contains("storey-mode-gray"))
+        .map((node) => ({ref: node.dataset.elementRef, rect: node.getBoundingClientRect()}));
+      const selectionGeometry = window.VectoplanCadSelectionGeometry;
+      const refs = selectionGeometry?.refsInMarquee
+        ? selectionGeometry.refsInMarquee(entries, marquee, drag.currentClientX < drag.startClientX)
+        : [];
+      refs.forEach((ref) => nextRefs.add(ref));
+    }
+    state.selectionDrag = null;
+    const primaryRef = [...nextRefs].at(-1);
+    const primary = sourcePrimitiveForRef(primaryRef);
+    setPrimitiveSelection(primary ? northUpPrimitive(primitiveWithPointGeometry(primary)) : null, nextRefs);
+    renderAll();
+    if (nextRefs.size) {
+      showMessage(`${nextRefs.size} Element${nextRefs.size === 1 ? "" : "e"} ausgewählt · Entf löscht die Auswahl.`);
+    }
+    return true;
+  }
+
   function renderInspector() {
     const empty = document.getElementById("inspector-empty");
     const inspector = document.getElementById("inspector");
@@ -4122,7 +4326,7 @@
     syncRoofOptionsPanel();
     empty.hidden = Boolean(item);
     inspector.hidden = !item;
-    document.getElementById("selection-badge").textContent = item ? "1" : "0";
+    document.getElementById("selection-badge").textContent = String(selectedPrimitiveCount());
     if (!item) return;
     document.getElementById("prop-label").textContent = item.label || item.element_ref;
     document.getElementById("prop-id").textContent = item.element_ref || "–";
@@ -4199,23 +4403,42 @@
       create_section_marker: "Schnittmarke erstellen",
       cut_selection: "Auswahl ausschneiden",
       paste_selection: "Auswahl einfügen",
+      move_selection: "Auswahl verschieben",
       rotate_selection: "Auswahl drehen",
       mirror_selection: "Auswahl spiegeln",
       distort_selection: "Auswahl verzerren",
+      delete_selection: "Auswahl löschen",
       modify_point: "Punkt modifizieren",
     }[command] || command;
   }
 
   function sourcePrimitiveForRef(primitiveRef) {
+    if (!primitiveRef) return null;
     const viewport = currentViewport();
-    return viewport?.primitives?.find((primitive) => primitive.primitive_ref === primitiveRef)
-      || state.localCopies.find((entry) => entry.primitive.primitive_ref === primitiveRef)?.primitive
-      || null;
+    const current = viewport?.primitives?.find((primitive) => primitive.primitive_ref === primitiveRef)
+      || state.localCopies.find((entry) => entry.primitive.primitive_ref === primitiveRef)?.primitive;
+    if (current) return current;
+    for (const cached of state.storeySceneCache.values()) {
+      for (const sheet of cached.scene?.sheets || []) {
+        for (const cachedViewport of sheet.viewports || []) {
+          const primitive = cachedViewport.primitives?.find((entry) => entry.primitive_ref === primitiveRef);
+          if (primitive) return primitive;
+        }
+      }
+    }
+    return null;
   }
 
   function selectedSourcePrimitive() {
     const primitive = sourcePrimitiveForRef(state.selectedPrimitive?.primitive_ref);
     return primitive ? primitiveWithPointGeometry(primitive) : null;
+  }
+
+  function selectedSourcePrimitives() {
+    const refs = state.selectedPrimitiveRefs.size
+      ? [...state.selectedPrimitiveRefs]
+      : state.selectedPrimitive?.primitive_ref ? [state.selectedPrimitive.primitive_ref] : [];
+    return refs.map(sourcePrimitiveForRef).filter(Boolean).map(primitiveWithPointGeometry);
   }
 
   function setRoofInputValue(id, value) {
@@ -4310,6 +4533,7 @@
       pointGeometryOverrides: cloneValue([...state.pointGeometryOverrides.entries()]),
       hiddenElementRefs: [...state.hiddenElementRefs],
       selectedRef: state.selectedPrimitive?.primitive_ref || "",
+      selectedRefs: [...state.selectedPrimitiveRefs],
       roofElements: state.input?.sheets?.flatMap((sheet) => (sheet.elements || [])
         .filter((element) => element.kind === "roof")
         .map((element) => ({sheetRef: sheet.sheet_ref, element: cloneValue(element)}))) || [],
@@ -4330,14 +4554,17 @@
         });
       });
     }
-    const source = sourcePrimitiveForRef(snapshot.selectedRef);
-    state.selectedPrimitive = source ? northUpPrimitive(primitiveWithPointGeometry(source)) : null;
+    const selectedRefs = Array.isArray(snapshot.selectedRefs)
+      ? snapshot.selectedRefs
+      : snapshot.selectedRef ? [snapshot.selectedRef] : [];
+    const source = sourcePrimitiveForRef(snapshot.selectedRef || selectedRefs.at(-1));
+    setPrimitiveSelection(source ? northUpPrimitive(primitiveWithPointGeometry(source)) : null, selectedRefs);
     renderAll();
     syncEditToolButtons();
     if (Array.isArray(snapshot.roofElements) && snapshot.roofElements.length) {
       refreshProjection().then(() => {
         const restored = sourcePrimitiveForRef(snapshot.selectedRef);
-        state.selectedPrimitive = restored ? northUpPrimitive(primitiveWithPointGeometry(restored)) : null;
+        setPrimitiveSelection(restored ? northUpPrimitive(primitiveWithPointGeometry(restored)) : null, selectedRefs);
         renderAll();
       }).catch(handleError);
     }
@@ -4358,88 +4585,457 @@
     syncEditToolButtons();
   }
 
-  function copySelectedPrimitive({cut = false} = {}) {
-    const primitive = selectedSourcePrimitive();
-    if (!primitive) {
-      showMessage("Bitte zuerst ein Bauwerksobjekt auswählen.");
-      return;
-    }
-    state.clipboard = {
-      contractVersion: "cad-clipboard/0.1",
-      primitive: cloneValue(primitive),
-      edit: cloneValue(state.elementEdits.get(primitive.primitive_ref) || {}),
-      sourceStoreyId: state.building?.activeStoreyId || state.loadedProjectionStoreyId,
+  function normalizedElementEdit(edit = {}) {
+    return {
+      translateX: Number(edit.translateX) || 0,
+      translateY: Number(edit.translateY) || 0,
+      rotation: Number(edit.rotation) || 0,
+      scaleX: Number.isFinite(Number(edit.scaleX)) ? Number(edit.scaleX) : 1,
+      scaleY: Number.isFinite(Number(edit.scaleY)) ? Number(edit.scaleY) : 1,
+      skewX: Number(edit.skewX) || 0,
     };
-    if (cut) {
-      commitLocalEdit("cut_selection", () => {
-        state.hiddenElementRefs.add(primitive.primitive_ref);
-        state.selectedPrimitive = null;
-      });
-      showMessage("Auswahl ausgeschnitten · Einfügen platziert sie am Fadenkreuz.");
-    } else {
-      syncEditToolButtons();
-      showMessage("Auswahl kopiert · Einfügen platziert eine 2D-Kopie am Fadenkreuz.");
-    }
   }
 
-  function pasteClipboard() {
-    if (!state.clipboard) {
-      showMessage("Die CAD-Zwischenablage ist leer.");
-      return;
-    }
-    const primitive = cloneValue(state.clipboard.primitive);
-    state.editSequence += 1;
-    const originalRef = primitive.primitive_ref;
-    primitive.primitive_ref = `cad_copy_${Date.now().toString(36)}_${state.editSequence}`;
-    primitive.metadata = {
-      ...(primitive.metadata || {}),
-      element_ref: primitive.primitive_ref,
-      copied_from: originalRef,
-      local_draft: true,
-      storey_id: state.building?.activeStoreyId || state.loadedProjectionStoreyId,
-    };
-    const displayPrimitive = northUpPrimitive(primitive);
-    const bounds = primitiveModelBounds(displayPrimitive);
-    const target = state.lastPointerModel || state.cursorPoint || {
+  function editPlacementGeometry() {
+    return window.VectoplanCadEditPlacementGeometry;
+  }
+
+  function editPlacementPointer() {
+    return state.lastPointerModel || state.cursorPoint || {
       x: state.camera.x + state.camera.width / 2,
       y: state.camera.y + state.camera.height / 2,
     };
-    const clipboardEdit = cloneValue(state.clipboard.edit || {});
-    const translateX = Number(clipboardEdit.translateX) || 0;
-    const translateY = Number(clipboardEdit.translateY) || 0;
-    const centreX = bounds ? bounds.x + bounds.width / 2 + translateX : target.x;
-    const centreY = bounds ? bounds.y + bounds.height / 2 + translateY : target.y;
-    const nextEdit = {
-      ...clipboardEdit,
-      translateX: translateX + target.x - centreX,
-      translateY: translateY + target.y - centreY,
-    };
-    commitLocalEdit("paste_selection", () => {
-      state.localCopies.push({primitive, viewportRef: state.activeViewportRef});
-      state.elementEdits.set(primitive.primitive_ref, nextEdit);
-      state.selectedPrimitive = displayPrimitive;
+  }
+
+  function editPlacementModelUnitsPerPixel() {
+    return state.camera?.width / Math.max(svg.clientWidth, 1) || 1;
+  }
+
+  function editPlacementItems(primitives) {
+    return primitives.map((primitive) => {
+      const source = cloneValue(primitiveWithPointGeometry(primitive));
+      const displayPrimitive = northUpPrimitive(source);
+      const bounds = primitiveModelBounds(displayPrimitive);
+      const edit = normalizedElementEdit(state.elementEdits.get(primitive.primitive_ref));
+      const center = bounds ? {
+        x: bounds.x + bounds.width / 2 + edit.translateX,
+        y: bounds.y + bounds.height / 2 + edit.translateY,
+      } : {x: edit.translateX, y: edit.translateY};
+      return {primitive: source, displayPrimitive, bounds, edit, center};
     });
-    showMessage("Kopie am Fadenkreuz eingefügt · als 2D-CAD-Entwurf markiert.");
+  }
+
+  function clipboardPlacementItems() {
+    const clipboardItems = Array.isArray(state.clipboard?.items)
+      ? state.clipboard.items
+      : state.clipboard?.primitive ? [{primitive: state.clipboard.primitive, edit: state.clipboard.edit || {}}] : [];
+    return clipboardItems.map((item) => {
+      const primitive = cloneValue(item.primitive);
+      const originalRef = primitive.primitive_ref;
+      state.editSequence += 1;
+      primitive.primitive_ref = `cad_copy_${Date.now().toString(36)}_${state.editSequence}`;
+      primitive.metadata = {
+        ...(primitive.metadata || {}),
+        element_ref: primitive.primitive_ref,
+        copied_from: originalRef,
+        local_draft: true,
+        storey_id: state.building?.activeStoreyId || state.loadedProjectionStoreyId,
+      };
+      const displayPrimitive = northUpPrimitive(primitive);
+      const bounds = primitiveModelBounds(displayPrimitive);
+      const edit = normalizedElementEdit(item.edit);
+      const center = bounds ? {
+        x: bounds.x + bounds.width / 2 + edit.translateX,
+        y: bounds.y + bounds.height / 2 + edit.translateY,
+      } : {x: edit.translateX, y: edit.translateY};
+      return {primitive, displayPrimitive, bounds, edit, center};
+    });
+  }
+
+  function editPlacementCopyLabel(count) {
+    return `${count} Element${count === 1 ? "" : "e"}`;
+  }
+
+  function editPlacementUiCopy(kind) {
+    return {
+      copy: {mode: "KOPIEREN", title: "Kopie am Mauszeiger platzieren", hint: "Vorschau rechts oben am Zeiger · Linksklick bestätigt · Esc bricht ab"},
+      paste: {mode: "EINFÜGEN", title: "Zwischenablage platzieren", hint: "Vorschau rechts oben am Zeiger · Linksklick bestätigt · Esc bricht ab"},
+      move: {mode: "VERSCHIEBEN", title: "Auswahl neu platzieren", hint: "Maus bewegen · Linksklick bestätigt · Esc stellt die Ausgangslage wieder her"},
+      cut: {mode: "AUSSCHNEIDEN", title: "Auswahl verschieben", hint: "Maus bewegen · Linksklick bestätigt · Esc bricht ohne Änderung ab"},
+      rotate: {mode: "DREHEN", title: "Drehwinkel mit der Maus wählen", hint: "15°-Raster · Umschalt für freie Drehung · Linksklick bestätigt · Esc bricht ab"},
+      mirror: {mode: "SPIEGELN", title: "Spiegelachse mit der Maus wählen", hint: "Seitlich = vertikale Achse · oben/unten = horizontale Achse · Linksklick bestätigt"},
+      distort: {mode: "VERZERREN", title: "Verzerrung prüfen und bestätigen", hint: "Vorschau kontrollieren · Linksklick bestätigt · Esc bricht ab"},
+    }[kind] || {mode: "BEARBEITEN", title: "Vorschau bestätigen", hint: "Linksklick bestätigt · Esc bricht ab"};
+  }
+
+  function syncEditPlacementUi() {
+    const placement = state.editPlacement;
+    const hud = document.getElementById("cad-edit-placement-hud");
+    if (hud) hud.hidden = !placement;
+    if (placement) {
+      const copy = editPlacementUiCopy(placement.kind);
+      const mode = document.getElementById("cad-edit-placement-mode");
+      const title = document.getElementById("cad-edit-placement-title");
+      const hint = document.getElementById("cad-edit-placement-hint");
+      if (mode) mode.textContent = copy.mode;
+      if (title) title.textContent = copy.title;
+      if (hint) hint.textContent = copy.hint;
+    }
+    svg.classList.toggle("is-edit-placing", Boolean(placement));
+    document.querySelectorAll("[data-edit-action]").forEach((button) => {
+      const active = Boolean(placement) && button.dataset.editAction === placement.kind;
+      button.classList.toggle("is-active", active);
+      if (button.dataset.editAction !== "modify-point") button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function beginEditPlacement(kind, items, {sourceRefs = [], options = {}} = {}) {
+    if (!items.length || !editPlacementGeometry()) return false;
+    if (state.editPlacement) cancelEditPlacement(false, true);
+    if (state.activeTool !== "select") selectTool("select");
+    state.pointEditMode = false;
+    state.pointDrag = null;
+    const aggregate = editPlacementGeometry().aggregateBounds(items);
+    const anchor = aggregate?.center || editPlacementPointer();
+    let pointer = {...editPlacementPointer()};
+    if (["rotate", "mirror"].includes(kind) && Math.hypot(pointer.x - anchor.x, pointer.y - anchor.y) < 1) {
+      pointer = {x: anchor.x + Math.max(aggregate?.width || 0, 1000), y: anchor.y};
+    }
+    state.editPlacement = {
+      kind,
+      items,
+      sourceRefs: [...sourceRefs],
+      anchor: {...anchor},
+      translationAnchor: aggregate
+        ? {x: aggregate.x, y: aggregate.y + aggregate.height}
+        : {...anchor},
+      pointer,
+      startPointer: {...pointer},
+      options: cloneValue(options),
+    };
+    syncEditPlacementUi();
+    syncEditToolButtons();
+    renderPlan();
+    const copy = editPlacementUiCopy(kind);
+    showMessage(`${copy.title} · Linksklick bestätigt · ESC bricht ab.`);
+    return true;
+  }
+
+  function beginSelectionPlacement(kind, options = {}) {
+    const primitives = selectedSourcePrimitives();
+    if (!primitives.length) {
+      showMessage("Bitte zuerst ein oder mehrere Bauwerksobjekte auswählen.");
+      return false;
+    }
+    const items = editPlacementItems(primitives);
+    return beginEditPlacement(kind, items, {
+      sourceRefs: primitives.map((primitive) => primitive.primitive_ref),
+      options,
+    });
+  }
+
+  function beginClipboardPlacement(kind = "paste") {
+    if (!state.clipboard) {
+      showMessage("Die CAD-Zwischenablage ist leer.");
+      return false;
+    }
+    const items = clipboardPlacementItems();
+    if (!items.length) {
+      showMessage("Die CAD-Zwischenablage ist leer.");
+      return false;
+    }
+    return beginEditPlacement(kind, items);
+  }
+
+  function copySelectedPrimitive({cut = false} = {}) {
+    const primitives = selectedSourcePrimitives();
+    if (!primitives.length) {
+      showMessage("Bitte zuerst ein oder mehrere Bauwerksobjekte auswählen.");
+      return;
+    }
+    state.clipboard = {
+      contractVersion: "cad-clipboard/0.3",
+      items: primitives.map((primitive) => ({
+        primitive: cloneValue(primitive),
+        edit: cloneValue(state.elementEdits.get(primitive.primitive_ref) || {}),
+      })),
+      sourceStoreyId: state.building?.activeStoreyId || state.loadedProjectionStoreyId,
+    };
+    if (cut) beginSelectionPlacement("cut");
+    else beginClipboardPlacement("copy");
+    syncEditToolButtons();
+  }
+
+  function pasteClipboard() {
+    beginClipboardPlacement("paste");
+  }
+
+  function editPlacementForItem(placement, item) {
+    const geometry = editPlacementGeometry();
+    const edit = normalizedElementEdit(item.edit);
+    const pointer = placement.pointer || placement.anchor;
+    if (["copy", "paste", "move", "cut"].includes(placement.kind)) {
+      const delta = geometry.translationDelta(
+        placement.translationAnchor,
+        pointer,
+        editPlacementModelUnitsPerPixel(),
+        18,
+      );
+      return {...edit, translateX: edit.translateX + delta.x, translateY: edit.translateY + delta.y};
+    }
+    if (placement.kind === "rotate") {
+      const degrees = geometry.rotationDelta(
+        placement.anchor,
+        placement.startPointer,
+        pointer,
+        state.shiftPressed ? 0 : 15,
+      );
+      const rotated = geometry.rotatePoint(item.center, placement.anchor, degrees);
+      return {
+        ...edit,
+        translateX: edit.translateX + rotated.x - item.center.x,
+        translateY: edit.translateY + rotated.y - item.center.y,
+        rotation: edit.rotation + degrees,
+      };
+    }
+    if (placement.kind === "mirror") {
+      const axis = geometry.mirrorAxis(placement.anchor, pointer);
+      const reflected = geometry.reflectPoint(item.center, placement.anchor, axis);
+      return {
+        ...edit,
+        translateX: edit.translateX + reflected.x - item.center.x,
+        translateY: edit.translateY + reflected.y - item.center.y,
+        rotation: axis === "vertical" ? -edit.rotation : 180 - edit.rotation,
+        scaleX: axis === "vertical" ? -edit.scaleX : edit.scaleX,
+        scaleY: axis === "horizontal" ? -edit.scaleY : edit.scaleY,
+      };
+    }
+    if (placement.kind === "distort") {
+      return {
+        ...edit,
+        scaleX: Number(placement.options.scaleX) || 1,
+        scaleY: Number(placement.options.scaleY) || 1,
+        skewX: Number(placement.options.skewX) || 0,
+      };
+    }
+    return edit;
+  }
+
+  function renderEditPlacementPreview() {
+    const placement = state.editPlacement;
+    if (!placement) return;
+    const preview = svgEl("g", {class: `cad-edit-placement-preview cad-edit-placement-preview--${placement.kind}`, "aria-hidden": "true"});
+    placement.items.forEach((item) => {
+      const node = renderPrimitive(item.displayPrimitive);
+      node.classList.remove("is-selected", "is-edit-placement-source");
+      node.classList.add("cad-edit-placement-preview__item");
+      node.querySelector(".primitive-selection-state")?.remove();
+      const transform = primitiveTransform(item.displayPrimitive, editPlacementForItem(placement, item));
+      if (transform) node.setAttribute("transform", transform);
+      preview.append(node);
+    });
+    const pointer = placement.pointer || placement.anchor;
+    const marker = svgEl("g", {class: "cad-edit-placement-marker"});
+    marker.append(svgEl("circle", {cx: pointer.x, cy: pointer.y, r: editPlacementModelUnitsPerPixel() * 4}));
+    if (["copy", "paste", "move", "cut"].includes(placement.kind)) {
+      const target = editPlacementGeometry().pointerTarget(pointer, editPlacementModelUnitsPerPixel(), 18);
+      marker.append(svgEl("line", {x1: pointer.x, y1: pointer.y, x2: target.x, y2: target.y}));
+    } else if (placement.kind === "rotate") {
+      marker.append(svgEl("line", {x1: placement.anchor.x, y1: placement.anchor.y, x2: pointer.x, y2: pointer.y}));
+      marker.append(svgEl("circle", {cx: placement.anchor.x, cy: placement.anchor.y, r: editPlacementModelUnitsPerPixel() * 5}));
+    } else if (placement.kind === "mirror") {
+      const axis = editPlacementGeometry().mirrorAxis(placement.anchor, pointer);
+      const span = Math.max(state.camera.width, state.camera.height) * 0.08;
+      marker.append(axis === "vertical"
+        ? svgEl("line", {x1: placement.anchor.x, y1: placement.anchor.y - span, x2: placement.anchor.x, y2: placement.anchor.y + span, class: "cad-edit-placement-axis"})
+        : svgEl("line", {x1: placement.anchor.x - span, y1: placement.anchor.y, x2: placement.anchor.x + span, y2: placement.anchor.y, class: "cad-edit-placement-axis"}));
+    }
+    preview.append(marker);
+    svg.append(preview);
+  }
+
+  function updateEditPlacementPointer(point) {
+    if (!state.editPlacement || !point) return false;
+    state.editPlacement.pointer = {x: Number(point.x), y: Number(point.y)};
+    return true;
+  }
+
+  function cancelEditPlacement(render = true, silent = false) {
+    if (!state.editPlacement) return false;
+    state.editPlacement = null;
+    syncEditPlacementUi();
+    syncEditToolButtons();
+    if (render) renderPlan();
+    if (!silent) showMessage("Bearbeitung abgebrochen · Ausgangslage unverändert.");
+    return true;
+  }
+
+  function confirmEditPlacement(point = null) {
+    const placement = state.editPlacement;
+    if (!placement) return false;
+    if (point) updateEditPlacementPointer(point);
+    const edits = placement.items.map((item) => editPlacementForItem(placement, item));
+    const commandName = ["copy", "paste"].includes(placement.kind)
+      ? "paste_selection"
+      : `${placement.kind}_selection`;
+    state.editPlacement = null;
+    syncEditPlacementUi();
+    commitLocalEdit(commandName, () => {
+      if (["copy", "paste"].includes(placement.kind)) {
+        placement.items.forEach((item, index) => {
+          state.localCopies.push({primitive: item.primitive, viewportRef: state.activeViewportRef});
+          state.elementEdits.set(item.primitive.primitive_ref, edits[index]);
+        });
+        const refs = placement.items.map((item) => item.primitive.primitive_ref);
+        setPrimitiveSelection(placement.items.at(-1).displayPrimitive, refs);
+      } else {
+        placement.items.forEach((item, index) => {
+          state.elementEdits.set(item.primitive.primitive_ref, edits[index]);
+        });
+        const refs = placement.items.map((item) => item.primitive.primitive_ref);
+        setPrimitiveSelection(placement.items.at(-1).displayPrimitive, refs);
+      }
+    });
+    const labels = {
+      copy: "Kopie platziert",
+      paste: "Zwischenablage platziert",
+      move: "Auswahl verschoben",
+      cut: "Auswahl ausgeschnitten und neu platziert",
+      rotate: "Drehung übernommen",
+      mirror: "Spiegelung übernommen",
+      distort: "Verzerrung übernommen",
+    };
+    showMessage(`${labels[placement.kind] || "Bearbeitung übernommen"} · ${editPlacementCopyLabel(placement.items.length)} ausgewählt · Strg+Z macht den Schritt rückgängig.`);
+    return true;
   }
 
   function transformSelected(commandName, transform) {
-    const primitive = selectedSourcePrimitive();
-    if (!primitive) {
+    const primitives = selectedSourcePrimitives();
+    if (!primitives.length) {
       showMessage("Bitte zuerst ein Bauwerksobjekt auswählen.");
       return;
     }
     commitLocalEdit(commandName, () => {
-      const current = {
-        translateX: 0,
-        translateY: 0,
-        rotation: 0,
-        scaleX: 1,
-        scaleY: 1,
-        skewX: 0,
-        ...(state.elementEdits.get(primitive.primitive_ref) || {}),
-      };
-      state.elementEdits.set(primitive.primitive_ref, transform(current));
+      primitives.forEach((primitive) => {
+        const current = {
+          translateX: 0,
+          translateY: 0,
+          rotation: 0,
+          scaleX: 1,
+          scaleY: 1,
+          skewX: 0,
+          ...(state.elementEdits.get(primitive.primitive_ref) || {}),
+        };
+        state.elementEdits.set(primitive.primitive_ref, transform(current));
+      });
     });
+  }
+
+  function persistentDeletionTarget(primitive) {
+    if (!primitive || primitive.metadata?.local_draft) return null;
+    const source = primitive.metadata?.source;
+    const target = source?.deletion_target;
+    if (!target || typeof target !== "object") return null;
+    const objectInstanceIds = Array.isArray(target.object_instance_ids)
+      ? target.object_instance_ids.map((value) => String(value || "").trim()).filter(Boolean)
+      : [];
+    const cells = Array.isArray(target.cells)
+      ? target.cells.map((cell) => {
+        const coordinates = Array.isArray(cell)
+          ? cell
+          : cell && typeof cell === "object" ? [cell.x, cell.y, cell.z] : [];
+        const converted = coordinates.map(Number);
+        return converted.length === 3 && converted.every(Number.isInteger) ? converted : null;
+      }).filter(Boolean)
+      : [];
+    if (!objectInstanceIds.length && !cells.length) return null;
+    return {
+      element_ref: primitive.metadata?.element_ref || primitive.primitive_ref,
+      object_instance_ids: objectInstanceIds,
+      cells,
+    };
+  }
+
+  function deletionCommandGeometry(primitives) {
+    const bounds = primitives.map(primitiveModelBounds).filter(Boolean);
+    if (!bounds.length) return {start_mm: [0, 0], end_mm: [1, 1]};
+    const start = [
+      Math.min(...bounds.map((entry) => entry.x)),
+      Math.min(...bounds.map((entry) => entry.y)),
+    ];
+    const end = [
+      Math.max(...bounds.map((entry) => entry.x + entry.width)),
+      Math.max(...bounds.map((entry) => entry.y + entry.height)),
+    ];
+    if (start[0] === end[0] && start[1] === end[1]) end[0] += 1;
+    return {start_mm: start, end_mm: end};
+  }
+
+  async function deleteSelectedPrimitives() {
+    const primitives = selectedSourcePrimitives();
+    if (!primitives.length) {
+      showMessage("Bitte zuerst ein oder mehrere Bauwerksobjekte auswählen.");
+      return;
+    }
+    if (state.modelMutationPending) return;
+    const persistentEntries = primitives
+      .map((primitive) => ({primitive, target: persistentDeletionTarget(primitive)}))
+      .filter((entry) => entry.target);
+    const localPrimitives = primitives.filter(
+      (primitive) => !persistentEntries.some((entry) => entry.primitive === primitive),
+    );
+    let persistedCount = 0;
+    if (persistentEntries.length && projectContext.coreProjectId) {
+      const documentData = state.input.document;
+      const payload = {
+        contract_version: "cad-command/0.2",
+        command: "delete_selection",
+        document_ref: documentData.document_ref,
+        sheet_ref: state.activeSheetRef,
+        viewport_ref: state.activeViewportRef,
+        base_revision_ref: documentData.source_revision_ref,
+        client_command_id: `delete_${Date.now().toString(36)}_${++state.commandSequence}`,
+        geometry: deletionCommandGeometry(persistentEntries.map((entry) => entry.primitive)),
+        parameters: {targets: persistentEntries.map((entry) => entry.target)},
+        user_context: {
+          source: "vectoplan-cad-selection",
+          mode: "persistent-selection-delete",
+          core_project_id: projectContext.coreProjectId,
+          project_public_id: projectContext.projectPublicId,
+        },
+      };
+      state.modelMutationPending = true;
+      syncEditToolButtons();
+      try {
+        const receipt = await dispatchCadCommandRequest(payload);
+        publishModelMutation(receipt);
+        if (receipt.accepted) {
+          persistedCount = persistentEntries.length;
+          await loadProjectInput({preserveCamera: true, preserveHistory: true, preserveViewState: true});
+        } else {
+          localPrimitives.push(...persistentEntries.map((entry) => entry.primitive));
+        }
+      } finally {
+        state.modelMutationPending = false;
+        syncEditToolButtons();
+      }
+    } else {
+      localPrimitives.push(...persistentEntries.map((entry) => entry.primitive));
+    }
+    if (localPrimitives.length) {
+      commitLocalEdit("delete_selection", () => {
+        localPrimitives.forEach((primitive) => state.hiddenElementRefs.add(primitive.primitive_ref));
+        clearPrimitiveSelection();
+      });
+    } else {
+      clearPrimitiveSelection();
+      renderAll();
+    }
+    const deletedCount = persistedCount + localPrimitives.length;
+    const localSuffix = localPrimitives.length
+      ? ` · ${localPrimitives.length} reine 2D-Element${localPrimitives.length === 1 ? "" : "e"} lokal entfernt (Strg+Z)`
+      : "";
+    showMessage(`${deletedCount} Element${deletedCount === 1 ? "" : "e"} gelöscht${persistedCount ? " und mit dem 3D-Modell synchronisiert" : ""}${localSuffix}.`);
   }
 
   function openDistortPanel() {
@@ -4459,9 +5055,8 @@
     const scaleX = Math.max(0.1, Math.min(10, Number(document.getElementById("distort-scale-x")?.value) || 1));
     const scaleY = Math.max(0.1, Math.min(10, Number(document.getElementById("distort-scale-y")?.value) || 1));
     const skewX = Math.max(-75, Math.min(75, Number(document.getElementById("distort-skew-x")?.value) || 0));
-    transformSelected("distort_selection", (edit) => ({...edit, scaleX, scaleY, skewX}));
     document.getElementById("distort-panel").hidden = true;
-    showMessage("Auswahl verzerrt.");
+    beginSelectionPlacement("distort", {scaleX, scaleY, skewX});
   }
 
   function handleEditAction(action, event = null) {
@@ -4485,30 +5080,29 @@
         : "Punktmodifikation beendet.");
     } else if (action === "copy") copySelectedPrimitive();
     else if (action === "cut") copySelectedPrimitive({cut: true});
+    else if (action === "delete") deleteSelectedPrimitives().catch(handleError);
     else if (action === "paste") pasteClipboard();
-    else if (action === "rotate") {
-      transformSelected("rotate_selection", (edit) => ({...edit, rotation: (Number(edit.rotation) || 0) + 90}));
-      showMessage("Auswahl um 90° gedreht.");
-    } else if (action === "mirror") {
-      const vertical = Boolean(event?.shiftKey);
-      transformSelected("mirror_selection", (edit) => vertical
-        ? {...edit, scaleY: -(Number(edit.scaleY) || 1)}
-        : {...edit, scaleX: -(Number(edit.scaleX) || 1)});
-      showMessage(vertical ? "Auswahl vertikal gespiegelt." : "Auswahl horizontal gespiegelt.");
-    } else if (action === "distort") openDistortPanel();
+    else if (action === "move") beginSelectionPlacement("move");
+    else if (action === "rotate") beginSelectionPlacement("rotate");
+    else if (action === "mirror") beginSelectionPlacement("mirror");
+    else if (action === "distort") openDistortPanel();
   }
 
   function syncEditToolButtons() {
-    const hasSelection = Boolean(selectedSourcePrimitive()) && !projectContext.readOnly;
+    const hasSelection = selectedSourcePrimitives().length > 0
+      && !projectContext.readOnly
+      && !state.modelMutationPending;
     document.querySelectorAll("[data-edit-action]").forEach((button) => {
       const action = button.dataset.editAction;
-      const pointSupported = action !== "modify-point" || editablePointDescriptors(selectedSourcePrimitive()).length > 0;
+      const pointSupported = action !== "modify-point"
+        || (selectedPrimitiveCount() === 1 && editablePointDescriptors(selectedSourcePrimitive()).length > 0);
       button.disabled = action === "paste" ? !state.clipboard || projectContext.readOnly : !hasSelection || !pointSupported;
       if (action === "modify-point") {
         button.classList.toggle("is-active", state.pointEditMode && !button.disabled);
         button.setAttribute("aria-pressed", String(state.pointEditMode && !button.disabled));
       }
     });
+    syncEditPlacementUi();
     syncPlanOverviewButton();
   }
 
@@ -4523,6 +5117,7 @@
       showMessage("Bitte zuerst ein freigegebenes Element aus der Creative Library auswählen.");
       return;
     }
+    if (state.editPlacement) cancelEditPlacement(false, true);
     const previousTool = state.activeTool;
     const hoveredReference = state.lastPointerModel
       ? [Number(state.lastPointerModel.x), Number(state.lastPointerModel.y)]
@@ -4745,6 +5340,10 @@
     event.stopPropagation();
     event.stopImmediatePropagation();
     if (event.repeat || state.roomSubmissionPending || state.roofSubmissionPending) return true;
+    if (state.editPlacement) {
+      cancelEditPlacement(true);
+      return true;
+    }
     if (state.activeTool === "roof" && state.roofDraftPoints.length) {
       if (state.roofDraftClosed) showMessage("Die Dachfläche ist bereits geschlossen. Einstellungen wählen und anschließend das Dach berechnen.");
       else completeRoofDrawing();
@@ -4775,7 +5374,7 @@
     closePanels();
     if (endedTool !== "select") selectTool("select");
     else {
-      state.selectedPrimitive = null;
+      clearPrimitiveSelection();
       renderAll();
     }
     syncEditToolButtons();
@@ -5662,6 +6261,27 @@
     });
   }
 
+  function applyCameraViewBox() {
+    if (!state.camera) return;
+    const camera = state.camera;
+    svg.setAttribute("viewBox", `${camera.x} ${camera.y} ${camera.width} ${camera.height}`);
+  }
+
+  function scheduleCameraRender() {
+    if (!state.cameraRenderScheduled) {
+      state.cameraRenderScheduled = true;
+      window.requestAnimationFrame(() => {
+        state.cameraRenderScheduled = false;
+        applyCameraViewBox();
+      });
+    }
+    if (state.cameraSettleTimer) window.clearTimeout(state.cameraSettleTimer);
+    state.cameraSettleTimer = window.setTimeout(() => {
+      state.cameraSettleTimer = 0;
+      schedulePlanRender();
+    }, 120);
+  }
+
   function beginPan(event) {
     if (!state.camera) return;
     event.preventDefault();
@@ -5682,7 +6302,7 @@
     const start = state.pan.camera;
     state.camera.x = start.x - dx * start.width / Math.max(svg.clientWidth, 1);
     state.camera.y = start.y - dy * start.height / Math.max(svg.clientHeight, 1);
-    schedulePlanRender();
+    scheduleCameraRender();
     return true;
   }
 
@@ -5726,13 +6346,14 @@
     state.camera.y = state.pinch.anchor.y - (centerY - rect.top) / rect.height * nextHeight;
     state.camera.width = nextWidth;
     state.camera.height = nextHeight;
-    schedulePlanRender();
+    scheduleCameraRender();
     return true;
   }
 
   function endPointer(event) {
     if (event.pointerType === "touch") state.touchPoints.delete(event.pointerId);
     if (svg.hasPointerCapture?.(event.pointerId)) svg.releasePointerCapture(event.pointerId);
+    if (finishSelectionDrag(event)) return true;
     if (finishPointModification(event)) return true;
     if (finishParcelGridDrag(event)) return true;
     if (state.pinch) {
@@ -5751,6 +6372,8 @@
 
   function handlePointerMove(event) {
     if (!state.scene) return;
+    state.lastInteractionAt = Date.now();
+    if (updateSelectionDrag(event)) return;
     if (updatePointModification(event)) return;
     if (updateParcelGridDrag(event)) return;
     if (event.pointerType === "touch" && state.touchPoints.has(event.pointerId)) {
@@ -5758,8 +6381,16 @@
       if (updatePinch()) return;
     }
     if (updatePan(event)) return;
+    if (state.activeTool === "select" && !state.drawStart && !state.editPlacement) return;
     const point = pointFromEvent(event);
     if (!point) return;
+    if (state.editPlacement) {
+      state.cursorPoint = {x: point.x, y: point.y};
+      state.lastPointerModel = state.cursorPoint;
+      updateEditPlacementPointer(point);
+      schedulePlanRender();
+      return;
+    }
     if (state.activeTool === "opening") {
       state.openingHostPreview = wallHostCandidate(point);
       const cursor = state.openingHostPreview?.centre || [point.x, point.y];
@@ -5793,6 +6424,8 @@
   }
 
   function handlePointerDown(event) {
+    state.lastInteractionAt = Date.now();
+    focusCadCanvas();
     if (!state.scene) return;
     if (event.pointerType === "touch") {
       state.touchPoints.set(event.pointerId, {clientX: event.clientX, clientY: event.clientY});
@@ -5804,7 +6437,7 @@
       }
       if (state.touchPoints.size > 2) return;
       if (state.activeTool === "select" && !event.target.closest?.(".primitive")) {
-        state.selectedPrimitive = null;
+        clearPrimitiveSelection();
         renderPlan();
         renderInspector();
         beginPan(event);
@@ -5816,13 +6449,17 @@
       return;
     }
     if (event.button !== 0) return;
+    if (state.editPlacement) {
+      event.preventDefault();
+      const point = pointFromEvent(event);
+      if (point) confirmEditPlacement(point);
+      return;
+    }
     if (startParcelGridDrag(event)) return;
     if (state.activeTool === "select") {
       if (!event.target.closest?.(".primitive")) {
-        state.selectedPrimitive = null;
-        renderPlan();
-        renderInspector();
-        syncEditToolButtons();
+        event.preventDefault();
+        beginSelectionDrag(event);
       }
       return;
     }
@@ -6006,13 +6643,14 @@
 
   function handleWheel(event) {
     if (!state.camera) return;
+    state.lastInteractionAt = Date.now();
     event.preventDefault();
     const camera = state.camera;
     const horizontalGesture = Math.abs(event.deltaX) > Math.abs(event.deltaY);
     if (horizontalGesture) {
       const delta = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
       camera.x += delta * camera.width / Math.max(svg.clientWidth, 1);
-      schedulePlanRender();
+      scheduleCameraRender();
       return;
     }
 
@@ -6029,7 +6667,7 @@
     camera.y = anchor.y - (anchor.y - camera.y) * factor;
     camera.width = nextWidth;
     camera.height *= factor;
-    schedulePlanRender();
+    scheduleCameraRender();
   }
 
   function enqueueDrawCommand(start, end, options = {}) {
@@ -6146,7 +6784,7 @@
       state.commands.push({receipt, sheetRef: start.sheetRef, element: receipt.preview_element});
       state.redoCommands = [];
     }
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     await refreshProjection();
     showMessage(receipt.accepted
       ? options.continuousWall
@@ -6219,7 +6857,7 @@
     if (receipt.accepted) {
       receipt.preview_element.local_draft = false;
       rememberOptimisticElement(selection.sheetRef, receipt.preview_element);
-      state.selectedPrimitive = null;
+      clearPrimitiveSelection();
       state.worldSelection = null;
       await loadProjectInput({preserveCamera: true, preserveHistory: true, preserveViewState: true});
       selectTool("room");
@@ -6230,7 +6868,7 @@
     sheet.elements.push(receipt.preview_element);
     state.commands.push({receipt, sheetRef: selection.sheetRef, element: receipt.preview_element});
     state.redoCommands = [];
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     state.worldSelection = null;
     await refreshProjection();
     selectTool("room");
@@ -6400,7 +7038,7 @@
         state.pointGeometryOverrides.delete(primitiveRef);
         await loadProjectInput({preserveCamera: true, preserveHistory: true, preserveViewState: true});
         const refreshed = primitiveForPersistentRoof(persistentTarget.objectInstanceId);
-        state.selectedPrimitive = refreshed ? northUpPrimitive(refreshed) : null;
+        setPrimitiveSelection(refreshed ? northUpPrimitive(refreshed) : null);
         renderAll();
         return calculation;
       }
@@ -6422,7 +7060,7 @@
     state.pointGeometryOverrides.delete(primitiveRef);
     await refreshProjection();
     const refreshed = sourcePrimitiveForRef(primitiveRef);
-    state.selectedPrimitive = refreshed ? northUpPrimitive(refreshed) : null;
+    setPrimitiveSelection(refreshed ? northUpPrimitive(refreshed) : null);
     if (recordHistory && before) {
       state.commands.push({
         kind: "local-edit",
@@ -6470,7 +7108,7 @@
     const receipt = await dispatchCadCommandRequest(payload);
     publishModelMutation(receipt);
     if (receipt.accepted) {
-      state.selectedPrimitive = null;
+      clearPrimitiveSelection();
       await loadProjectInput({preserveCamera: true, preserveHistory: true, preserveViewState: true});
       selectTool("roof");
       showMessage(`Dach gespeichert: ${calculation.summary?.face_count || 0} Flächen, ${calculation.summary?.rafter_count || 0} Sparren und ${calculation.summary?.purlin_count || 0} Pfetten · 2D und 3D verwenden dasselbe Modell.`);
@@ -6480,7 +7118,7 @@
     if (sheet && receipt.preview_element) sheet.elements.push(receipt.preview_element);
     state.commands.push({receipt, sheetRef: roofDraft.sheetRef, element: receipt.preview_element});
     state.redoCommands = [];
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     await refreshProjection();
     selectTool("roof");
     showMessage(`Dach berechnet: ${calculation.summary?.face_count || 0} Flächen, ${calculation.summary?.rafter_count || 0} Sparren und ${calculation.summary?.purlin_count || 0} Pfetten.`);
@@ -6572,7 +7210,7 @@
       state.redoCommands = [];
       await refreshProjection();
     }
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     showMessage(`Raumbezeichnung in „${label}“ geändert.`);
   }
 
@@ -6656,7 +7294,7 @@
     const sheet = state.input.sheets.find((item) => item.sheet_ref === entry.sheetRef);
     sheet.elements = sheet.elements.filter((element) => element.element_ref !== entry.element.element_ref);
     state.redoCommands.push(entry);
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     await refreshProjection();
     showMessage(`${commandLabel(entry.receipt.command.command)} rückgängig gemacht.`);
   }
@@ -6673,7 +7311,7 @@
     const sheet = state.input.sheets.find((item) => item.sheet_ref === entry.sheetRef);
     sheet.elements.push(entry.element);
     state.commands.push(entry);
-    state.selectedPrimitive = null;
+    clearPrimitiveSelection();
     await refreshProjection();
     showMessage(`${commandLabel(entry.receipt.command.command)} wiederhergestellt.`);
   }
@@ -6687,6 +7325,17 @@
 
   function isEditableTarget(target) {
     return target instanceof HTMLInputElement || target instanceof HTMLSelectElement || target instanceof HTMLTextAreaElement;
+  }
+
+  function isCadDeleteEvent(event) {
+    const key = String(event.key || "").toLowerCase();
+    return key === "delete" || key === "del" || key === "entf"
+      || event.code === "Delete" || Number(event.keyCode || event.which) === 46;
+  }
+
+  function focusCadCanvas() {
+    if (isEditableTarget(document.activeElement)) document.activeElement.blur();
+    svg.focus({preventScroll: true});
   }
 
   function syncPanelButtons() {
@@ -6770,13 +7419,14 @@
       document.getElementById("coordinate-x")?.focus({preventScroll: true});
     });
     svg.addEventListener("pointermove", handlePointerMove);
+    svg.addEventListener("pointerdown", focusCadCanvas, true);
     svg.addEventListener("pointerdown", handlePointerDown);
     svg.addEventListener("pointerup", endPointer);
     svg.addEventListener("pointercancel", endPointer);
     svg.addEventListener("pointerleave", () => {
       updatePointTrackingCandidate(null);
       state.alignmentGuide = null;
-      if (state.drawStart || state.pan) {
+      if (state.drawStart || state.pan || state.selectionDrag || state.editPlacement) {
         schedulePlanRender();
         return;
       }
@@ -6789,6 +7439,11 @@
       if (event.button === 1) event.preventDefault();
     });
     svg.addEventListener("contextmenu", (event) => {
+      if (state.editPlacement) {
+        event.preventDefault();
+        cancelEditPlacement(true);
+        return;
+      }
       if (!state.drawStart) return;
       event.preventDefault();
       cancelDrawing(true, true);
@@ -6826,6 +7481,7 @@
     document.querySelectorAll("[data-edit-action]").forEach((button) => {
       button.addEventListener("click", (event) => handleEditAction(button.dataset.editAction, event));
     });
+    document.querySelector('[data-action="cancel-edit-placement"]')?.addEventListener("click", () => cancelEditPlacement(true));
     document.querySelectorAll("[data-view-action]").forEach((button) => {
       button.addEventListener("click", () => {
         if (button.dataset.viewAction === "plan-overview") togglePlanOverview();
@@ -6958,6 +7614,10 @@
     window.addEventListener("message", (event) => {
       if (event.source !== window.parent) return;
       const data = event.data && typeof event.data === "object" ? event.data : {};
+      if (String(data.type || data.kind || "") === "vectoplan-app:workspace-visibility") {
+        state.workspaceVisible = data.visible !== false;
+        return;
+      }
       if (String(data.type || data.kind || "") !== "vectoplan-app:parcel-selection-sync") return;
       const selection = normalizeParcelSelection(data.detail || data);
       if (!selection) return;
@@ -6982,6 +7642,10 @@
         state.spacePressed = true;
         svg.classList.add("is-pan-ready");
       }
+      if (!isEditableTarget(event.target) && isCadDeleteEvent(event) && selectedPrimitiveCount() && !state.editPlacement) {
+        event.preventDefault();
+        handleEditAction("delete", event);
+      }
       if (!isEditableTarget(event.target) && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "c") {
         event.preventDefault();
         copySelectedPrimitive();
@@ -6998,6 +7662,14 @@
         event.preventDefault();
         handleEditAction("rotate", event);
       }
+      if (!isEditableTarget(event.target) && !event.ctrlKey && !event.metaKey && event.key.toLowerCase() === "m") {
+        event.preventDefault();
+        handleEditAction("move", event);
+      }
+      if (!isEditableTarget(event.target) && event.key === "Enter" && state.editPlacement) {
+        event.preventDefault();
+        confirmEditPlacement();
+      }
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") {
         event.preventDefault();
         if (event.shiftKey) redo().catch(handleError);
@@ -7007,7 +7679,7 @@
         event.preventDefault();
         redo().catch(handleError);
       }
-    });
+    }, true);
     window.addEventListener("keyup", (event) => {
       if (event.key === "Shift") {
         state.shiftPressed = false;
@@ -7028,6 +7700,7 @@
       state.ctrlPressed = false;
       state.pan = null;
       state.pinch = null;
+      state.selectionDrag = null;
       state.touchPoints.clear();
       svg.classList.remove("is-pan-ready", "is-panning");
     });

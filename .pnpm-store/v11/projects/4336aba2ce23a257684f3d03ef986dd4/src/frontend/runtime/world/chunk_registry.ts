@@ -134,6 +134,8 @@ export interface ChunkRegistryHandle {
   clear(reason?: string): void;
 
   getChunkKeys(): readonly string[];
+  /** Changes only when stored chunk content is replaced/evicted, not on reads. */
+  getContentRevision(): number;
   getVisibleChunkKeys(): readonly string[];
   getDirtyChunkKeys(): readonly string[];
   getFailedChunkKeys(): readonly string[];
@@ -578,6 +580,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
   const failedChunkKeys = new Set<string>();
 
   let destroyed = false;
+  let contentRevision = 0;
   let lastUpdatedAt: string | null = null;
 
   function assertAlive(action: string): void {
@@ -626,6 +629,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
         }
 
         entries.delete(entry.chunkKey);
+        contentRevision += 1;
         dirtyChunkKeys.delete(entry.chunkKey);
         visibleChunkKeys.delete(entry.chunkKey);
         failedChunkKeys.delete(entry.chunkKey);
@@ -643,6 +647,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
         }
 
         entries.delete(entry.chunkKey);
+        contentRevision += 1;
         dirtyChunkKeys.delete(entry.chunkKey);
         visibleChunkKeys.delete(entry.chunkKey);
         failedChunkKeys.delete(entry.chunkKey);
@@ -655,6 +660,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
   }
 
   function setEntry(entry: ChunkRegistryEntry): ChunkRegistryEntry {
+    if (entries.get(entry.chunkKey)?.chunk !== entry.chunk) contentRevision += 1;
     entries.set(entry.chunkKey, entry);
     syncSetsFromEntry(entry);
     updateTimestamp();
@@ -791,6 +797,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
 
       const key = normalizeChunkKey(chunkKey);
       const deleted = entries.delete(key);
+      if (deleted) contentRevision += 1;
 
       dirtyChunkKeys.delete(key);
       visibleChunkKeys.delete(key);
@@ -809,6 +816,7 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
     clear(reason?: string): void {
       assertAlive("clear");
 
+      if (entries.size > 0) contentRevision += 1;
       entries.clear();
       dirtyChunkKeys.clear();
       visibleChunkKeys.clear();
@@ -824,6 +832,10 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
       assertAlive("getChunkKeys");
 
       return sortChunkKeys([...entries.keys()]);
+    },
+
+    getContentRevision(): number {
+      return contentRevision;
     },
 
     getVisibleChunkKeys(): readonly string[] {

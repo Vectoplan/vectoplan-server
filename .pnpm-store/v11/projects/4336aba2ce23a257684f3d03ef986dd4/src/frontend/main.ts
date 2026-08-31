@@ -993,6 +993,37 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
     setDomBootMessage(domRefs, "Runtime-State wird vorbereitet.");
 
     const abortController = new AbortController();
+    let embeddedWorkspaceVisible = true;
+    let editorRootIntersecting = true;
+    const syncEmbeddedWorkspaceVisibility = (reason: string): void => {
+      const sceneRuntime = runtime?.getSceneRuntime();
+      if (!sceneRuntime) return;
+
+      if (embeddedWorkspaceVisible && editorRootIntersecting && !document.hidden) {
+        sceneRuntime.start(reason);
+      } else {
+        sceneRuntime.pause(reason);
+      }
+    };
+    window.addEventListener("message", (event: MessageEvent<unknown>) => {
+      if (event.source !== window.parent || !event.data || typeof event.data !== "object") return;
+      const message = event.data as Record<string, unknown>;
+      if (message.type !== "vectoplan-app:workspace-visibility") return;
+      if (message.source !== "vectoplan-app") return;
+      embeddedWorkspaceVisible = message.visible !== false;
+      syncEmbeddedWorkspaceVisibility("vectoplan-app.workspace-visibility");
+    }, { signal: abortController.signal });
+    document.addEventListener("visibilitychange", () => {
+      syncEmbeddedWorkspaceVisibility("document.visibilitychange");
+    }, { signal: abortController.signal });
+    if (typeof window.IntersectionObserver === "function") {
+      const intersectionObserver = new window.IntersectionObserver((entries) => {
+        editorRootIntersecting = entries.some((entry) => entry.isIntersecting && entry.intersectionRatio > 0);
+        syncEmbeddedWorkspaceVisibility("editor.intersection-change");
+      }, { threshold: 0.001 });
+      intersectionObserver.observe(rootElement);
+      abortController.signal.addEventListener("abort", () => intersectionObserver.disconnect(), { once: true });
+    }
 
     const initialState = createInitialEditorState({
       bootId,
@@ -1090,6 +1121,7 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
     setDomBootMessage(domRefs, "Scene-Runtime wird initialisiert. Library-/VPLIB-Inventar wird geladen.");
 
     await initializeRuntime(runtime);
+    syncEmbeddedWorkspaceVisibility("editor.initialize.visibility-sync");
 
     createWorldEditController({
       root: rootElement,
