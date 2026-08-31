@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f8fafc">
   <title data-i18n="vectoplan.server.cad.cad.index.title.cad_erdgeschoss.35c0caf3">CAD · Erdgeschoss</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260826-cad-workflow-4">
+  <link rel="stylesheet" href="{{ url_for('static', filename='cad/css/main.css') }}?v=20260829-cad-workflow-10">
 </head>
 <body>
   <main class="cad-app" data-route-prefix="{{ route_prefix }}">
@@ -35,15 +35,23 @@
           </div>
           <div class="cad-edit-rail" aria-label="2D-Bearbeitungswerkzeuge">
             <button type="button" data-edit-action="copy" title="Kopieren (Strg+C)" aria-label="Auswahl kopieren"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="1.5"/><path d="M15 9V6.5A1.5 1.5 0 0 0 13.5 5h-8A1.5 1.5 0 0 0 4 6.5v8A1.5 1.5 0 0 0 5.5 16H9"/></svg></button>
-            <button type="button" data-edit-action="rotate" title="Um 90° drehen (R)" aria-label="Auswahl um 90 Grad drehen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2A8 8 0 1 1 4 14"/><path d="M5 4v4.5h4.5"/></svg></button>
             <button type="button" data-edit-action="cut" title="Ausschneiden (Strg+X)" aria-label="Auswahl ausschneiden"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="6" cy="17" r="2.5"/><path d="m8.2 8.2 10.8 8.3M8.2 15.8 19 7.5"/></svg></button>
-            <button type="button" data-edit-action="paste" title="Am Fadenkreuz einfügen (Strg+V)" aria-label="Am Fadenkreuz einfügen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5H6.5A1.5 1.5 0 0 0 5 7v12a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V7a1.5 1.5 0 0 0-1.5-1.5H15"/><rect x="9" y="3.5" width="6" height="4" rx="1.3"/></svg></button>
+            <button type="button" data-edit-action="paste" title="Mit Vorschau einfügen (Strg+V)" aria-label="Auswahl mit Vorschau einfügen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5H6.5A1.5 1.5 0 0 0 5 7v12a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V7a1.5 1.5 0 0 0-1.5-1.5H15"/><rect x="9" y="3.5" width="6" height="4" rx="1.3"/></svg></button>
+            <button type="button" data-edit-action="move" title="Auswahl mit der Maus verschieben (M)" aria-label="Auswahl verschieben"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M12 3 9 6M12 3l3 3M21 12l-3-3M21 12l-3 3M12 21l-3-3M12 21l3-3M3 12l3-3M3 12l3 3"/></svg></button>
+            <button type="button" data-edit-action="rotate" title="Auswahl mit Mausvorschau drehen (R)" aria-label="Auswahl interaktiv drehen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 8.2A8 8 0 1 1 4 14"/><path d="M5 4v4.5h4.5"/></svg></button>
             <button type="button" data-edit-action="distort" title="Auswahl numerisch verzerren" aria-label="Auswahl verzerren"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h13l1 12H7L5 6Z"/><circle cx="5" cy="6" r="1.3"/><circle cx="18" cy="6" r="1.3"/><circle cx="7" cy="18" r="1.3"/><circle cx="19" cy="18" r="1.3"/></svg></button>
-            <button type="button" data-edit-action="mirror" title="Horizontal spiegeln; Umschalt: vertikal" aria-label="Auswahl spiegeln"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18" stroke-dasharray="2 2"/><path d="m9 6-5 6 5 6V6ZM15 6l5 6-5 6V6Z"/></svg></button>
+            <button type="button" data-edit-action="mirror" title="Spiegelachse mit der Maus wählen" aria-label="Auswahl interaktiv spiegeln"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18" stroke-dasharray="2 2"/><path d="m9 6-5 6 5 6V6ZM15 6l5 6-5 6V6Z"/></svg></button>
             <button type="button" data-edit-action="modify-point" title="Geometriepunkt modifizieren" aria-label="Punkt modifizieren" aria-pressed="false"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17 17 6M6 6h5M6 6v5M18 13v5h-5"/><circle cx="17" cy="6" r="2.2"/><circle cx="6" cy="17" r="2.2"/></svg></button>
+            <button type="button" data-edit-action="delete" title="Löschen (Entf)" aria-label="Auswahl löschen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4.5h6V7M7 7l1 13h8l1-13M10 10.5v6M14 10.5v6"/></svg></button>
             <button type="button" data-tool="dimension" title="Strecke oder Fläche messen" aria-label="Strecke oder Fläche messen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 8v8M20 8v8"/><path d="m8 9-3 3 3 3M16 9l3 3-3 3"/></svg></button>
             <button type="button" data-tool="roof" title="Parametrische Dachfläche zeichnen" aria-label="Dachfläche zeichnen"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 12 9-8 9 8"/><path d="M5.5 10.5V20h13v-9.5M9 20v-6h6v6"/><path d="M8 9h8"/></svg></button>
             <button type="button" data-view-action="plan-overview" title="Gesamten Plan anzeigen / zurück" aria-label="Planansicht umschalten" aria-pressed="false"><svg class="cad-toolbar-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M8 5v14M4 10h4M13 9h4M13 13h4"/></svg></button>
+          </div>
+          <div class="cad-edit-placement-hud" id="cad-edit-placement-hud" hidden role="status" aria-live="polite">
+            <span id="cad-edit-placement-mode">BEARBEITEN</span>
+            <strong id="cad-edit-placement-title">Vorschau platzieren</strong>
+            <small id="cad-edit-placement-hint">Maus bewegen · Linksklick bestätigt · Esc bricht ab</small>
+            <button type="button" data-action="cancel-edit-placement">Abbrechen</button>
           </div>
         </div>
         <section class="cad-measure-panel" id="measurement-options" hidden aria-label="Messart auswählen">
@@ -325,12 +333,14 @@
         </div>
       </aside>
       <div class="workspace-canvas" id="workspace-canvas">
-        <svg id="plan-svg" role="img" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
+        <svg id="plan-svg" role="img" tabindex="0" aria-keyshortcuts="Delete" aria-label="Erdgeschoss-Grundriss auf unbegrenzter Modellfläche"></svg>
       </div>
     </section>
 
   </main>
 
-  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260826-cad-workflow-4" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/selection_geometry.js') }}?v=20260829-selection-1" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/edit_placement_geometry.js') }}?v=20260829-placement-1" defer></script>
+  <script src="{{ url_for('static', filename='cad/js/main.js') }}?v=20260829-cad-workflow-10" defer></script>
 </body>
 </html>

@@ -144,6 +144,9 @@ export interface ParcelGridBoundarySegmentInput {
   readonly inward: ParcelGridPoint;
   readonly length: number;
   readonly depth: number;
+  readonly divisions?: number;
+  readonly clampToDepth?: boolean;
+  readonly boundaryKind?: "parcel" | "building-facade";
 }
 
 export interface ParcelGridPartitionCell {
@@ -155,18 +158,35 @@ export interface ParcelGridPartitionCell {
   readonly boundarySegmentId?: string;
   readonly boundaryRow?: number;
   readonly boundaryColumn?: number;
+  readonly boundaryKind?: "parcel" | "building-facade";
   readonly wallAxisDegrees?: number;
+  readonly gridAlignment?: "world" | "boundary" | "lod2-building";
+}
+
+export interface ParcelGridRegularReference {
+  readonly id: string;
+  readonly origin: ParcelGridPoint;
+  readonly axisU: ParcelGridPoint;
+  readonly axisV: ParcelGridPoint;
+  readonly stepU: number;
+  readonly stepV: number;
+  /** Absolute projected facade support lines in the building frame. */
+  readonly uAnchors?: readonly number[];
+  readonly vAnchors?: readonly number[];
 }
 
 export interface ParcelGridPartitionInput {
   readonly boundarySegments: readonly ParcelGridBoundarySegmentInput[];
   readonly coverageTriangles: readonly (readonly ParcelGridPoint[])[];
+  /** Convex pieces occupied by existing buildings and therefore unavailable. */
+  readonly excludedTriangles?: readonly (readonly ParcelGridPoint[])[];
   readonly bounds: Readonly<{
     minimumX: number;
     maximumX: number;
     minimumZ: number;
     maximumZ: number;
   }>;
+  readonly regularGrid?: ParcelGridRegularReference | null;
   readonly minimumArea?: number;
 }
 
@@ -554,6 +574,26 @@ function subtractCoverage(
   return mergeConvexParcelGridCoverage(result);
 }
 
+/** General union for overlapping convex polygons. `mergeParcelGridCoverage`
+ * intentionally assumes a non-overlapping partition and only cancels shared
+ * edges. Building footprints from separate LoD2 objects can overlap, so first
+ * subtract already accepted coverage and retain a disjoint union. */
+export function unionParcelGridCoverage(
+  input:readonly (readonly ParcelGridPoint[])[],
+):readonly (readonly ParcelGridPoint[])[] {
+  const result:Array<readonly ParcelGridPoint[]>=[];
+  const acceptedIndex=new Map<string,Array<readonly ParcelGridPoint[]>>();
+  for(const raw of input){
+    const polygon=normalizeParcelGridPolygon(raw);
+    if(parcelGridPolygonArea(polygon)<=GEOMETRY_EPSILON)continue;
+    const unique=subtractCoverage(
+      [polygon],relevantIndexedPolygons(acceptedIndex,polygon),GEOMETRY_EPSILON,
+    );
+    for(const piece of unique){result.push(piece);addToCellIndex(acceptedIndex,piece);}
+  }
+  return result;
+}
+
 function clipConvexPolygonToCoverage(
   subject: readonly ParcelGridPoint[],
   coverageTriangles: readonly (readonly ParcelGridPoint[])[],
@@ -710,6 +750,7 @@ interface TransitionOwner {
     normalZ: number;
     maximum: number;
   }> | null;
+  readonly clampToDepth: boolean;
 }
 
 /**
@@ -758,6 +799,14 @@ function splitTransitionAmongOwners(
         - owner.site[0] * owner.site[0] - owner.site[1] * owner.site[1];
       piece = clipToLinearHalfPlane(piece, normalX, normalZ, maximum);
     }
+    if (owner.clampToDepth && owner.innerBoundary && piece.length >= 3) {
+      piece = clipToLinearHalfPlane(
+        piece,
+        owner.innerBoundary.normalX,
+        owner.innerBoundary.normalZ,
+        owner.innerBoundary.maximum,
+      );
+    }
     if (parcelGridPolygonArea(piece) < minimumArea) continue;
     assigned.push({
       ...owner.template,
@@ -766,9 +815,10 @@ function splitTransitionAmongOwners(
     });
   }
 
-  // Numerical clipping can leave sub-millimetre slivers. Hand those to the
-  // nearest owner too, preserving the exact parcel partition instead of
-  // reintroducing a forbidden remainder.
+  // Numerical clipping can leave sub-millimetre slivers. Hand only slivers
+  // that are still inside the boundary band to the nearest eligible owner.
+  // Anything beyond the inner line remains blocked and must never enlarge a
+  // facade-attached block past its declared whole-metre depth.
   const remainder = subtractCoverage(
     [polygon],
     assigned.map((cell) => cell.polygon),
@@ -777,11 +827,19 @@ function splitTransitionAmongOwners(
   for (const leftover of remainder) {
     if (parcelGridPolygonArea(leftover) <= GEOMETRY_EPSILON) continue;
     const centre = polygonCentroid(leftover);
-    const owner = [...owners].sort((first, second) => (
+    const eligibleOwners = owners.filter((owner) => !owner.clampToDepth || !owner.innerBoundary
+      || owner.innerBoundary.normalX * centre[0]
+        + owner.innerBoundary.normalZ * centre[1] <= owner.innerBoundary.maximum + GEOMETRY_EPSILON);
+    if (eligibleOwners.length === 0) continue;
+    const owner = [...eligibleOwners].sort((first, second) => (
       Math.hypot(centre[0] - first.site[0], centre[1] - first.site[1])
       - Math.hypot(centre[0] - second.site[0], centre[1] - second.site[1])
     ) || first.logicalCellId.localeCompare(second.logicalCellId))[0]!;
-    assigned.push({ ...owner.template, polygon: leftover, logicalCellId: owner.logicalCellId });
+    const eligiblePiece = owner.clampToDepth && owner.innerBoundary
+      ? clipToLinearHalfPlane(leftover, owner.innerBoundary.normalX, owner.innerBoundary.normalZ, owner.innerBoundary.maximum)
+      : leftover;
+    if (parcelGridPolygonArea(eligiblePiece) < minimumArea) continue;
+    assigned.push({ ...owner.template, polygon: eligiblePiece, logicalCellId: owner.logicalCellId });
   }
   return assigned;
 }
@@ -856,11 +914,64 @@ function boundaryRowRange(
   return endRow > firstRow ? [firstRow, endRow] : null;
 }
 
+/**
+ * Preserve every structural facade support line and divide only the interval
+ * between neighbouring supports into near-metre full cells. Outside the
+ * building envelope the same frame continues in exact target-step increments.
+ */
+function anchoredAxisLines(options: Readonly<{
+  minimum: number;
+  maximum: number;
+  anchors: readonly number[];
+  targetStep: number;
+}>): readonly number[] {
+  const targetStep = Math.max(GEOMETRY_EPSILON, options.targetStep);
+  const minimum = Math.min(options.minimum, options.maximum);
+  const maximum = Math.max(options.minimum, options.maximum);
+  const anchors = [...new Set(options.anchors.filter(Number.isFinite).map((value) => Number(value.toFixed(7))))]
+    .sort((first, second) => first - second);
+  if (anchors.length < 2) return [];
+  const result: number[] = [];
+  const firstAnchor = anchors[0]!;
+  const lowerSteps = Math.max(0, Math.ceil((firstAnchor - minimum) / targetStep));
+  for (let index = lowerSteps; index > 0; index -= 1) result.push(firstAnchor - index * targetStep);
+  result.push(firstAnchor);
+  for (let anchorIndex = 1; anchorIndex < anchors.length; anchorIndex += 1) {
+    const start = anchors[anchorIndex - 1]!;
+    const end = anchors[anchorIndex]!;
+    const distance = end - start;
+    if (distance <= GEOMETRY_EPSILON) continue;
+    const divisions = Math.max(1, Math.round(distance / targetStep));
+    for (let division = 1; division <= divisions; division += 1) {
+      result.push(start + distance * division / divisions);
+    }
+  }
+  const lastAnchor = anchors.at(-1)!;
+  const upperSteps = Math.max(0, Math.ceil((maximum - lastAnchor) / targetStep));
+  for (let index = 1; index <= upperSteps; index += 1) result.push(lastAnchor + index * targetStep);
+  return result.filter((value, index, values) => index === 0 || value - values[index - 1]! > GEOMETRY_EPSILON);
+}
+
 export function buildParcelGridPartition(input: ParcelGridPartitionInput): ParcelGridPartitionResult {
   const minimumArea = Math.max(1e-8, input.minimumArea ?? 0.0005);
   const coverageTriangles = input.coverageTriangles
     .map(normalizeParcelGridPolygon)
     .filter((triangle) => parcelGridPolygonArea(triangle) >= minimumArea);
+  const excludedTriangles = (input.excludedTriangles ?? [])
+    .map(normalizeParcelGridPolygon)
+    .filter((triangle) => parcelGridPolygonArea(triangle) >= minimumArea);
+  const excludedIndex = new Map<string, Array<readonly ParcelGridPoint[]>>();
+  for (const triangle of excludedTriangles) addToCellIndex(excludedIndex, triangle);
+  const clipToBuildableCoverage = (
+    subject: readonly ParcelGridPoint[],
+  ): readonly (readonly ParcelGridPoint[])[] => {
+    const parcelPieces = clipConvexPolygonToCoverage(subject, coverageTriangles, minimumArea);
+    if (parcelPieces.length === 0 || excludedTriangles.length === 0) return parcelPieces;
+    const relevantExclusions = relevantIndexedPolygons(excludedIndex, subject);
+    return relevantExclusions.length > 0
+      ? subtractCoverage(parcelPieces, relevantExclusions, minimumArea)
+      : parcelPieces;
+  };
   const slantedCells: ParcelGridPartitionCell[] = [];
   const straightCells: ParcelGridPartitionCell[] = [];
   const blockedCells: ParcelGridPartitionCell[] = [];
@@ -868,11 +979,19 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
   const slantedCellByPolygon = new Map<readonly ParcelGridPoint[], ParcelGridPartitionCell>();
   const boundarySegmentById = new Map(input.boundarySegments.map((segment) => [segment.id, segment]));
 
-  for (const segment of input.boundarySegments) {
+  // A classified building facade is the hard construction datum. Parcel-edge
+  // bands are useful on empty land, but their wider three-metre strip must not
+  // consume the one-metre row that has to land exactly on an existing wall
+  // (a common case for buildings close to a parcel boundary).
+  const orderedBoundarySegments=[...input.boundarySegments].sort((first,second)=>{
+    const priority=(segment:ParcelGridBoundarySegmentInput)=>segment.boundaryKind==="building-facade"?0:1;
+    return priority(first)-priority(second)||first.id.localeCompare(second.id);
+  });
+  for (const segment of orderedBoundarySegments) {
     if (segment.length <= GEOMETRY_EPSILON || segment.depth <= 0) continue;
     const tangentX = (segment.end[0] - segment.start[0]) / segment.length;
     const tangentZ = (segment.end[1] - segment.start[1]) / segment.length;
-    const divisions = Math.max(1, Math.ceil(segment.length));
+    const divisions = Math.max(1, Math.round(segment.divisions ?? Math.ceil(segment.length)));
     const columnWidth = segment.length / divisions;
     const columnRange = boundaryColumnRange(segment, divisions, input.bounds);
     const rowRange = boundaryRowRange(segment, input.bounds);
@@ -893,7 +1012,7 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
           at(alongEnd, row + 1),
           at(alongStart, row + 1),
         ];
-        const clippedToParcel = clipConvexPolygonToCoverage(candidate, coverageTriangles, minimumArea);
+        const clippedToParcel = clipToBuildableCoverage(candidate);
         const priorCoverage = relevantIndexedPolygons(acceptedSlantedIndex, candidate);
         const accepted = subtractCoverage(clippedToParcel, priorCoverage, minimumArea);
         const logicalCellId = `${segment.id}:${row}:${column}`;
@@ -907,6 +1026,8 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
             boundaryRow: row,
             boundaryColumn: column,
             wallAxisDegrees,
+            gridAlignment: "boundary",
+            boundaryKind: segment.boundaryKind ?? "parcel",
           };
           slantedCells.push(cell);
           slantedCellByPolygon.set(polygon, cell);
@@ -916,24 +1037,122 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
     }
   }
 
-  for (let x = Math.floor(input.bounds.minimumX); x < Math.ceil(input.bounds.maximumX); x += 1) {
-    for (let z = Math.floor(input.bounds.minimumZ); z < Math.ceil(input.bounds.maximumZ); z += 1) {
-      const sourceCell = { x, z };
-      const square: readonly ParcelGridPoint[] = [[x, z], [x + 1, z], [x + 1, z + 1], [x, z + 1]];
-      const parcelCoverage = clipConvexPolygonToCoverage(square, coverageTriangles, minimumArea);
+  const regularCandidates: Array<Readonly<{
+    polygon: readonly ParcelGridPoint[];
+    sourceCell: Readonly<{ x: number; z: number }>;
+    logicalCellId?: string;
+    gridAlignment: "world" | "lod2-building";
+    wallAxisDegrees?: number;
+  }>> = [];
+  const regularGrid = input.regularGrid;
+  if (regularGrid && regularGrid.stepU > GEOMETRY_EPSILON && regularGrid.stepV > GEOMETRY_EPSILON) {
+    const axisULength = Math.hypot(regularGrid.axisU[0], regularGrid.axisU[1]);
+    const axisVLength = Math.hypot(regularGrid.axisV[0], regularGrid.axisV[1]);
+    if (axisULength > GEOMETRY_EPSILON && axisVLength > GEOMETRY_EPSILON) {
+      const axisU: ParcelGridPoint = [regularGrid.axisU[0] / axisULength, regularGrid.axisU[1] / axisULength];
+      let axisV: ParcelGridPoint = [regularGrid.axisV[0] / axisVLength, regularGrid.axisV[1] / axisVLength];
+      let determinant = axisU[0] * axisV[1] - axisU[1] * axisV[0];
+      if (Math.abs(determinant) < 0.05) {
+        axisV = [-axisU[1], axisU[0]];
+        determinant = 1;
+      }
+      const worldBounds: readonly ParcelGridPoint[] = [
+        [input.bounds.minimumX, input.bounds.minimumZ],
+        [input.bounds.maximumX, input.bounds.minimumZ],
+        [input.bounds.maximumX, input.bounds.maximumZ],
+        [input.bounds.minimumX, input.bounds.maximumZ],
+      ];
+      const basisCoordinates = (point: ParcelGridPoint): ParcelGridPoint => [
+        (point[0] * axisV[1] - point[1] * axisV[0]) / determinant,
+        (axisU[0] * point[1] - axisU[1] * point[0]) / determinant,
+      ];
+      const originBasis = basisCoordinates(regularGrid.origin);
+      const worldBasis = worldBounds.map(basisCoordinates);
+      const projectedU = worldBasis.map((point) => point[0]);
+      const projectedV = worldBasis.map((point) => point[1]);
+      const anchoredU = anchoredAxisLines({
+        minimum: Math.min(...projectedU) - 1,
+        maximum: Math.max(...projectedU) + 1,
+        anchors: regularGrid.uAnchors ?? [],
+        targetStep: 1,
+      });
+      const anchoredV = anchoredAxisLines({
+        minimum: Math.min(...projectedV) - 1,
+        maximum: Math.max(...projectedV) + 1,
+        anchors: regularGrid.vAnchors ?? [],
+        targetStep: 1,
+      });
+      const useAnchoredLines = anchoredU.length >= 2 && anchoredV.length >= 2;
+      const uValues = useAnchoredLines ? [] : worldBasis.map((point) => (point[0] - originBasis[0]) / regularGrid.stepU);
+      const vValues = useAnchoredLines ? [] : worldBasis.map((point) => (point[1] - originBasis[1]) / regularGrid.stepV);
+      const firstU = useAnchoredLines ? 0 : Math.floor(Math.min(...uValues)) - 1;
+      const endU = useAnchoredLines ? anchoredU.length - 1 : Math.ceil(Math.max(...uValues)) + 1;
+      const firstV = useAnchoredLines ? 0 : Math.floor(Math.min(...vValues)) - 1;
+      const endV = useAnchoredLines ? anchoredV.length - 1 : Math.ceil(Math.max(...vValues)) + 1;
+      const at = (u: number, v: number): ParcelGridPoint => useAnchoredLines
+        ? [
+            axisU[0] * anchoredU[u]! + axisV[0] * anchoredV[v]!,
+            axisU[1] * anchoredU[u]! + axisV[1] * anchoredV[v]!,
+          ]
+        : [
+            regularGrid.origin[0] + axisU[0] * u * regularGrid.stepU + axisV[0] * v * regularGrid.stepV,
+            regularGrid.origin[1] + axisU[1] * u * regularGrid.stepU + axisV[1] * v * regularGrid.stepV,
+          ];
+      const wallAxisDegrees = ((Math.atan2(axisU[1], axisU[0]) * 180 / Math.PI) + 180) % 180;
+      for (let u = firstU; u < endU; u += 1) {
+        for (let v = firstV; v < endV; v += 1) {
+          const polygon: readonly ParcelGridPoint[] = [at(u, v), at(u + 1, v), at(u + 1, v + 1), at(u, v + 1)];
+          const minimumX = Math.min(...polygon.map((point) => point[0]));
+          const maximumX = Math.max(...polygon.map((point) => point[0]));
+          const minimumZ = Math.min(...polygon.map((point) => point[1]));
+          const maximumZ = Math.max(...polygon.map((point) => point[1]));
+          if (maximumX < input.bounds.minimumX || minimumX > input.bounds.maximumX
+            || maximumZ < input.bounds.minimumZ || minimumZ > input.bounds.maximumZ) continue;
+          const centre = polygonCentroid(polygon);
+          regularCandidates.push({
+            polygon,
+            sourceCell: { x: Math.floor(centre[0]), z: Math.floor(centre[1]) },
+            logicalCellId: useAnchoredLines
+              ? `lod2-building:${regularGrid.id}:${anchoredU[u]!.toFixed(4)}:${anchoredV[v]!.toFixed(4)}`
+              : `lod2-building:${regularGrid.id}:${u}:${v}`,
+            gridAlignment: "lod2-building",
+            wallAxisDegrees,
+          });
+        }
+      }
+    }
+  } else {
+    for (let x = Math.floor(input.bounds.minimumX); x < Math.ceil(input.bounds.maximumX); x += 1) {
+      for (let z = Math.floor(input.bounds.minimumZ); z < Math.ceil(input.bounds.maximumZ); z += 1) {
+        regularCandidates.push({
+          polygon: [[x, z], [x + 1, z], [x + 1, z + 1], [x, z + 1]],
+          sourceCell: { x, z },
+          gridAlignment: "world",
+        });
+      }
+    }
+  }
+
+  for (const candidate of regularCandidates) {
+      const { polygon: square, sourceCell } = candidate;
+      const parcelCoverage = clipToBuildableCoverage(square);
       if (parcelCoverage.length === 0) continue;
       const parcelArea = parcelCoverage.reduce((sum, polygon) => sum + parcelGridPolygonArea(polygon), 0);
       const slantedCutters = relevantIndexedPolygons(acceptedSlantedIndex, square);
       const remaining = subtractCoverage(parcelCoverage, slantedCutters, minimumArea);
       const remainingArea = remaining.reduce((sum, polygon) => sum + parcelGridPolygonArea(polygon), 0);
       if (remainingArea < minimumArea) continue;
-      const fullyStraight = parcelArea >= 1 - 1e-6 && (parcelArea - remainingArea) <= 1e-6;
+      const cellArea = parcelGridPolygonArea(square);
+      const fullyStraight = parcelArea >= cellArea - 1e-6 && (parcelArea - remainingArea) <= 1e-6;
       if (fullyStraight) {
         straightCells.push({
           parcelId: "selected-union",
           zone: "straight",
           polygon: square,
           sourceCell,
+          logicalCellId: candidate.logicalCellId,
+          wallAxisDegrees: candidate.wallAxisDegrees,
+          gridAlignment: candidate.gridAlignment,
         });
         continue;
       }
@@ -969,6 +1188,7 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
                 + boundary.inward[1] * boundary.start[1]
                 + boundary.depth,
             } : null,
+            clampToDepth: Boolean(boundary?.clampToDepth),
           };
         });
         const assigned = splitTransitionAmongOwners(polygon, owners, minimumArea);
@@ -977,17 +1197,24 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
           slantedCellByPolygon.set(cell.polygon, cell);
           addToCellIndex(acceptedSlantedIndex, cell.polygon);
         }
+        const clampsToDepth = owners.some((owner) => owner.clampToDepth);
         const singleInnerBoundary = owners.length === 1 ? owners[0]!.innerBoundary : null;
-        const unassigned = singleInnerBoundary
-          ? [clipToLinearHalfPlane(
-              polygon,
-              -singleInnerBoundary.normalX,
-              -singleInnerBoundary.normalZ,
-              -singleInnerBoundary.maximum,
-            )].filter((piece) => parcelGridPolygonArea(piece) >= minimumArea)
-          : owners.length === 0
-            ? [polygon]
-            : [];
+        const unassigned = clampsToDepth && owners.length > 0
+          ? subtractCoverage(
+              [polygon],
+              assigned.map((cell) => cell.polygon),
+              minimumArea,
+            )
+          : singleInnerBoundary
+            ? [clipToLinearHalfPlane(
+                polygon,
+                -singleInnerBoundary.normalX,
+                -singleInnerBoundary.normalZ,
+                -singleInnerBoundary.maximum,
+              )].filter((piece) => parcelGridPolygonArea(piece) >= minimumArea)
+            : owners.length === 0
+              ? [polygon]
+              : [];
         for (const leftover of unassigned) {
           // This is the deliberate blue transition area beyond the movable
           // inner line (or a fail-closed malformed boundary remainder).
@@ -996,10 +1223,12 @@ export function buildParcelGridPartition(input: ParcelGridPartitionInput): Parce
             zone: "straight-clipped",
             polygon: leftover,
             sourceCell,
+            logicalCellId: candidate.logicalCellId,
+            wallAxisDegrees: candidate.wallAxisDegrees,
+            gridAlignment: candidate.gridAlignment,
           });
         }
       }
-    }
   }
 
   const sumArea = (cells: readonly ParcelGridPartitionCell[]): number => cells.reduce(

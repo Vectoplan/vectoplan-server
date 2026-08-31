@@ -1093,6 +1093,19 @@ class ChunkClient:
             timeout_seconds=self.config.batch_timeout_seconds,
         )
 
+    def get_map_structures(
+        self,
+        project_id: str,
+        world_id: str,
+    ) -> ChunkClientResponse:
+        return self.get(
+            (
+                f"/projects/{_segment(project_id)}/worlds/"
+                f"{_segment(world_id)}/map/structures"
+            ),
+            timeout_seconds=self.config.batch_timeout_seconds,
+        )
+
     def get_chunks_batch(
         self,
         project_id: str,

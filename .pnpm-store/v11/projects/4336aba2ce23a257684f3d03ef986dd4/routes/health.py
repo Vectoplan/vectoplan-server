@@ -524,7 +524,7 @@ def _build_json_response(
     Baut eine Health-JSON-Antwort mit sicheren Standard-Headern.
     """
     response = make_response(
-        _safe_json_dumps(_json_safe(payload), fallback=_DEFAULT_JSON_FALLBACK),
+        _safe_json_dumps(_json_safe(payload), fallback="{}"),
         int(status_code),
     )
 

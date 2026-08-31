@@ -4,7 +4,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from src.projection.service import build_preview, load_json_file, validate_projection_input
-from src.scene.service import _wall_polygon
+from src.scene.service import _element_to_primitive, _wall_polygon
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -211,6 +211,82 @@ def test_semantic_network_preserves_explicit_joint_nodes():
     assert primitive["primitive_type"] == "thick_segments"
     assert sorted(len(path) for path in primitive["geometry"]["paths_mm"]) == [2, 3]
     assert len(primitive["geometry"]["nodes_mm"]) == 4
+
+
+def test_semantic_region_form_on_element_is_projected_without_legacy_wall_fields():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    ring = [[500, 500], [2500, 500], [2500, 1500], [500, 1500], [500, 500]]
+    sheet["elements"] = [
+        {
+            "element_ref": "semantic-wall-region-element-form",
+            "label": "Flächenwand",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "view_refs": ["vp_ground_floor"],
+            "form": "region",
+            "geometry": {"outer_ring_mm": ring},
+        }
+    ]
+
+    assert validate_projection_input(payload) == []
+    primitive = build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"][0]
+    assert primitive["primitive_type"] == "polygon"
+    assert primitive["geometry"]["points_mm"] == ring
+    assert primitive["metadata"]["form"] == "region"
+
+
+def test_wall_network_is_recovered_when_form_metadata_is_missing():
+    primitive = _element_to_primitive(
+        {
+            "element_ref": "wall-network-without-form",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "geometry": {
+                "segments_mm": [[[0, 0], [1000, 0]], [[1000, 0], [1000, 1000]]],
+                "thickness_mm": 240,
+            },
+        }
+    )
+    assert primitive["primitive_type"] == "thick_segments"
+    assert len(primitive["geometry"]["segments_mm"]) == 2
+
+
+def test_malformed_wall_geometry_cannot_abort_the_entire_scene():
+    primitive = _element_to_primitive(
+        {
+            "element_ref": "wall-from-unknown-contract-version",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "geometry": {"thickness_mm": 240},
+        }
+    )
+    assert primitive["primitive_type"] == "polygon"
+    assert primitive["geometry"]["points_mm"] == []
+    assert _wall_polygon({"thickness_mm": 240}) == []
+
+
+def test_incomplete_semantic_region_is_an_invisible_placeholder_not_a_sheet_error():
+    payload = deepcopy(input_payload())
+    sheet = payload["sheets"][0]
+    sheet["elements"].append(
+        {
+            "element_ref": "pending-semantic-region",
+            "label": "Noch nicht aufgelöste Fläche",
+            "kind": "wall",
+            "layer": "construction_wall",
+            "view_refs": ["vp_ground_floor"],
+            "form": "region",
+            "geometry": {"form": "region"},
+        }
+    )
+
+    assert validate_projection_input(payload) == []
+    primitives = build_preview(payload)["scene"]["sheets"][0]["viewports"][0]["primitives"]
+    placeholder = next(item for item in primitives if item["primitive_ref"] == "pending-semantic-region")
+    assert placeholder["primitive_type"] == "polygon"
+    assert placeholder["geometry"]["points_mm"] == []
+    assert any(item["primitive_ref"] == "wall_ext_north" for item in primitives)
 
 
 def test_architectural_roles_receive_specific_render_styles():

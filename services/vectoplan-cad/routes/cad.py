@@ -4,7 +4,7 @@ from flask import Blueprint, current_app, jsonify, render_template, request
 
 from src.automation.dimensions import DimensionCalculationError, calculate_dimensions
 from src.automation.roof import RoofCalculationError, calculate_roof
-from src.commands.service import build_command_receipt, validate_cad_command
+from src.commands.service import LIBRARY_COMMANDS, build_command_receipt, validate_cad_command
 from src.core.client import CoreClientError, dispatch_cad_command, get_import_projection, project_chunks_to_projection
 from src.exports.service import build_export_receipt, validate_export_request
 from src.library.client import LibraryClientError, load_cad_library_catalog
@@ -112,10 +112,12 @@ def core_import_projection(core_project_id: str, document_id: str):
 @cad_api_bp.post("/commands")
 def create_command_draft():
     payload = request.get_json(silent=True)
-    try:
-        catalog = load_cad_library_catalog(current_app.config)
-    except LibraryClientError as exc:
-        return jsonify({"ok": False, "error": "library_unavailable", "message": str(exc)}), 502
+    catalog = None
+    if isinstance(payload, dict) and payload.get("command") in LIBRARY_COMMANDS:
+        try:
+            catalog = load_cad_library_catalog(current_app.config)
+        except LibraryClientError as exc:
+            return jsonify({"ok": False, "error": "library_unavailable", "message": str(exc)}), 502
     errors = validate_cad_command(payload, catalog=catalog)
     if errors:
         return jsonify({"ok": False, "error": "invalid_cad_command", "errors": errors}), 400
@@ -135,7 +137,7 @@ def create_command_draft():
         receipt.update({
             "accepted": True,
             "dispatch": dispatch.get("dispatch") or "chunk-persisted",
-            "message": "CAD-Ã„nderung wurde im gemeinsamen 3D-Modell gespeichert.",
+            "message": "CAD-Änderung wurde im gemeinsamen 3D-Modell gespeichert.",
             "stateful_storage": True,
             "core_result": dispatch,
         })

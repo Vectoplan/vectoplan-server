@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  normalizedParcelSelection,
   normalizedParcelItems,
 } from "../src/frontend/world_edit/world_edit_controller";
 import { parcelSelectionActionForIntent } from "../src/frontend/world_edit/systems/parcel/system";
@@ -75,4 +76,29 @@ test("a real MultiPolygon keeps all of its parts", () => {
   assert.equal(normalized.length, 1);
   assert.equal(normalized[0]?.geometry.type, "MultiPolygon");
   assert.equal((normalized[0]?.geometry.coordinates as unknown[]).length, 2);
+});
+
+test("stale parcel-grid guides are removed when their parcel is no longer selected", () => {
+  const normalized = normalizedParcelSelection({
+    projectPublicId: "project-1",
+    parcels: [{ parcelId: "parcel-current", geometry: polygon(4) }],
+    parcelGridState: {
+      schemaVersion: "vectoplan-parcel-grid-state.v1",
+      mode: "boundary",
+      setbackMeters: 0,
+      influenceMeters: 3,
+      activeParcelId: "parcel-old",
+      activeGuideKey: "parcel-old:guide",
+      guides: [{
+        parcelId: "parcel-old",
+        startLonLat: [13.4, 52.5],
+        endLonLat: [13.5, 52.5],
+        depthMeters: 3,
+      }],
+    },
+  });
+
+  assert.equal(normalized.parcelGridState?.activeParcelId, null);
+  assert.equal(normalized.parcelGridState?.activeGuideKey, null);
+  assert.deepEqual(normalized.parcelGridState?.guides, []);
 });

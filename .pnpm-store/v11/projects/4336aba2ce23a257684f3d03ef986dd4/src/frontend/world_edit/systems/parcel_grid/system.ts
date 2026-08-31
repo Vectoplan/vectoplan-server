@@ -25,8 +25,8 @@ export function createParcelGridSystem(hooks: ParcelGridSystemHooks): WorldEditS
     aliases: ["grundst", "grundstücksraster", "grundstuecksraster"],
     ui: {
       title: "Grundstücksraster",
-      hint: "Eine Grenze anklicken, dann den Doppelpfeil an der cyanfarbenen Linie greifen und bei gehaltenem Linksklick blockweise ziehen.",
-      activationMessage: "Jede innere Rasterlinie hat einen Griff: Punkt oder Doppelpfeil anvisieren, Linksklick halten und blockweise ziehen.",
+      hint: "Leere Grundstücke behalten das Flurstücksraster. Bei einem LoD2-Bestandsgebäude richten Gebäudeachse und Außenmaße das innere Raster automatisch aus.",
+      activationMessage: "Rastermodus wird automatisch erkannt: LoD2-Bestand folgt den Gebäudeaußenkanten, leere Grundstücke dem bisherigen Grundstücksraster.",
       maxDistance: 60,
       inventoryToolId: "parcel-grid",
       operations: [],

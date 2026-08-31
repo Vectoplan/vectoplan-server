@@ -3,6 +3,19 @@ import { localCoordinatesFromCellIndex } from "@runtime/world/chunk_coordinates"
 import type { RuntimeChunkContent } from "@runtime/world/chunk_content";
 import { forEachNonAirCellSpan } from "@api/chunk_cell_storage";
 import { earthGridLonLatToWorld } from "@utils/earth_grid_coordinates";
+import {
+  centeredChunkMapOffset,
+  chunkMapCenterForZoomAnchor,
+  chunkContainsMapRoof,
+  chunkMapScaleForDenominator,
+  chunkMapRoofSignature,
+  chunkMapWorldMetric,
+  collectChunkMapRoofs,
+  mergeChunkMapRoofs,
+  parseChunkMapStructureRoofs,
+  type ChunkMapRoof,
+  type ChunkMapRoofPoint,
+} from "./chunk_map_geometry";
 
 export interface ChunkMapPlayer {
   readonly sessionId: string;
@@ -19,6 +32,7 @@ export interface ChunkMapOverlayOptions {
   readonly projectId: string;
   readonly worldId: string;
   readonly terrainRegionUrl?: string;
+  readonly mapStructuresUrl?: string;
   readonly getEarthGridFrame?: () => unknown;
   readonly onOpen?: () => void | Promise<void>;
   readonly onClose?: () => void | Promise<void>;
@@ -63,7 +77,8 @@ interface MapTransform {
   readonly maxX: number;
   readonly minZ: number;
   readonly maxZ: number;
-  readonly scale: number;
+  readonly scaleX: number;
+  readonly scaleZ: number;
   readonly offsetX: number;
   readonly offsetY: number;
 }
@@ -93,10 +108,20 @@ interface MapParcelOverlayState {
   readonly revision: number;
 }
 
+interface MapBounds {
+  readonly minX: number;
+  readonly maxX: number;
+  readonly minZ: number;
+  readonly maxZ: number;
+}
+
 const MAP_UPDATE_INTERVAL_MS = 100;
-const MAP_MIN_ZOOM = 1;
+const MAP_STRUCTURES_REFRESH_MS = 30_000;
+const MAP_SCALE_DENOMINATOR = 1_500;
+const MAP_MIN_ZOOM = 0.5;
 const MAP_MAX_ZOOM = 5;
 const MAP_ZOOM_STEP = 1.18;
+const SHOW_CHUNK_LOADING_BOUNDS = false;
 const FALLBACK_BLOCK_COLOR = "#7b8798";
 
 const PARCEL_OVERLAY_SYNC = "vectoplan-editor:parcel-overlay-sync";
@@ -284,12 +309,9 @@ function shadeColor(context: CanvasRenderingContext2D, color: string, shade: num
   return `rgb(${red}, ${green}, ${blue})`;
 }
 
-function terrainElevationColor(heightRatio: number): string {
-  if (heightRatio < 0.18) return "#477c54";
-  if (heightRatio < 0.42) return "#6f914f";
-  if (heightRatio < 0.64) return "#9b914f";
-  if (heightRatio < 0.82) return "#8a7962";
-  return "#9aa0a0";
+function isWhiteMapSurface(blockTypeId: string): boolean {
+  return blockTypeId === "system_terrain_region"
+    || /terrain|earth|soil|dirt|ground|grass|vegetation|forest|leaf/i.test(blockTypeId);
 }
 
 function chunkSignature(chunks: readonly RuntimeChunkContent[]): string {
@@ -357,16 +379,6 @@ function collectTerrainRegionCells(region: TerrainRegionPreview | null): readonl
   return cells;
 }
 
-function createZoomButton(label: string, symbol: string): HTMLButtonElement {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = "editor-chunk-map__zoom-button";
-  button.setAttribute("aria-label", label);
-  button.title = label;
-  button.textContent = symbol;
-  return button;
-}
-
 export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMapOverlayHandle {
   const overlay = document.createElement("section");
   overlay.className = "editor-chunk-map";
@@ -394,7 +406,7 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   stage.className = "editor-chunk-map__stage";
   const canvas = document.createElement("canvas");
   canvas.className = "editor-chunk-map__canvas";
-  canvas.setAttribute("aria-label", "Draufsicht der geladenen Chunks");
+  canvas.setAttribute("aria-label", "Projektkarte mit Grundmaßstab 1 zu 1500, geladenen Chunks und Dächern");
   canvas.tabIndex = -1;
   const empty = document.createElement("div");
   empty.className = "editor-chunk-map__empty";
@@ -402,23 +414,12 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   const compass = document.createElement("div");
   compass.className = "editor-chunk-map__compass";
   compass.innerHTML = '<span>N</span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 22 18 16 15 10 18z"></path><path d="M16 30V15"></path></svg>';
-  const zoomControls = document.createElement("div");
-  zoomControls.className = "editor-chunk-map__zoom";
-  zoomControls.setAttribute("aria-label", "Kartenzoom");
-  const zoomOutButton = createZoomButton("Karte verkleinern", "−");
-  const zoomLevel = document.createElement("output");
-  zoomLevel.className = "editor-chunk-map__zoom-level";
-  zoomLevel.setAttribute("aria-live", "polite");
-  zoomLevel.value = "100 %";
-  const zoomInButton = createZoomButton("Karte vergrößern", "+");
-  const zoomResetButton = createZoomButton("Karte einpassen", "Fit");
-  zoomControls.append(zoomOutButton, zoomLevel, zoomInButton, zoomResetButton);
-  stage.append(canvas, empty, compass, zoomControls);
+  stage.append(canvas, empty, compass);
   body.append(playersPanel, stage);
 
   const footer = document.createElement("footer");
   footer.className = "editor-chunk-map__footer";
-  footer.textContent = "Die Karte wird direkt aus Höhe und Blockfarbe der aktuell geladenen GeoServer-Chunks gerendert.";
+  footer.textContent = "Die Karte folgt deiner Position und rendert Gelände, Blöcke und Dachformen aus den geladenen Chunks.";
   overlay.append(body, footer);
   options.root.append(overlay);
 
@@ -431,10 +432,23 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   let terrainRegion: TerrainRegionPreview | null = null;
   let terrainRegionStatus = options.terrainRegionUrl ? "preparing" : "unavailable";
   let terrainRegionPoll: number | null = null;
+  let terrainRegionLoading = false;
+  let mapStructuresPoll: number | null = null;
+  let mapStructuresLoading = false;
+  let mapStructuresRevision = "";
+  let projectedRoofs: readonly ChunkMapRoof[] = [];
+  let cachedSurfaceSignature = "";
+  let cachedSurfaceCells: readonly SurfaceCell[] = [];
+  let cachedRoofSignature = "";
+  let cachedRoofs: readonly ChunkMapRoof[] = [];
+  let mapDataPrewarmScheduled = false;
   let transform: MapTransform | null = null;
+  let backgroundTransform: MapTransform | null = null;
   let zoom = 1;
   let viewCenterX: number | null = null;
   let viewCenterZ: number | null = null;
+  let trackedPlayerX: number | null = null;
+  let trackedPlayerZ: number | null = null;
   let earthGridFrame: EarthGridFrameContract | null = normalizeEarthGrid(options.getEarthGridFrame?.());
   let parcels: MapParcelOverlayState = {
     features: [],
@@ -460,6 +474,58 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     }
   }
 
+  function currentRoofChunks(): readonly RuntimeChunkContent[] {
+    try {
+      return options.worldRuntime.getRegistry().getSnapshot().entries
+        .filter((entry) => (
+          entry.status === "loaded" || entry.status === "dirty"
+        ) && chunkContainsMapRoof(entry.chunk))
+        .map((entry) => entry.chunk);
+    } catch {
+      return [];
+    }
+  }
+
+  function surfaceCellsFor(chunks: readonly RuntimeChunkContent[]): readonly SurfaceCell[] {
+    const signature = chunkSignature(chunks);
+    if (signature !== cachedSurfaceSignature) {
+      cachedSurfaceSignature = signature;
+      cachedSurfaceCells = collectSurfaceCells(chunks);
+    }
+    return cachedSurfaceCells;
+  }
+
+  function roofsFor(chunks: readonly RuntimeChunkContent[]): readonly ChunkMapRoof[] {
+    const signature = chunkMapRoofSignature(chunks);
+    if (signature !== cachedRoofSignature) {
+      cachedRoofSignature = signature;
+      cachedRoofs = collectChunkMapRoofs(chunks);
+    }
+    return cachedRoofs;
+  }
+
+  function scheduleMapDataPrewarm(): void {
+    if (destroyed || !overlay.hidden || mapDataPrewarmScheduled) return;
+    const chunks = currentChunks();
+    const roofChunks = currentRoofChunks();
+    if (
+      chunkSignature(chunks) === cachedSurfaceSignature
+      && chunkMapRoofSignature(roofChunks) === cachedRoofSignature
+    ) return;
+    mapDataPrewarmScheduled = true;
+    const prewarm = (): void => {
+      mapDataPrewarmScheduled = false;
+      if (destroyed) return;
+      surfaceCellsFor(chunks);
+      roofsFor(roofChunks);
+    };
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(prewarm, { timeout: 750 });
+    } else {
+      window.setTimeout(prewarm, 40);
+    }
+  }
+
   function resizeCanvas(): boolean {
     const bounds = stage.getBoundingClientRect();
     const dpr = clamp(window.devicePixelRatio || 1, 1, 2);
@@ -473,40 +539,235 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     return true;
   }
 
-  function renderBackground(chunks: readonly RuntimeChunkContent[]): void {
+  function syncViewCenterToLocalPlayer(input: ChunkMapOverlayUpdate): void {
+    const localPosition = input.localPlayer?.position;
+    if (!localPosition || !Number.isFinite(localPosition.x) || !Number.isFinite(localPosition.z)) {
+      trackedPlayerX = null;
+      trackedPlayerZ = null;
+      return;
+    }
+    if (viewCenterX === null || viewCenterZ === null) {
+      viewCenterX = localPosition.x;
+      viewCenterZ = localPosition.z;
+    } else if (trackedPlayerX !== null && trackedPlayerZ !== null) {
+      viewCenterX += localPosition.x - trackedPlayerX;
+      viewCenterZ += localPosition.z - trackedPlayerZ;
+    }
+    trackedPlayerX = localPosition.x;
+    trackedPlayerZ = localPosition.z;
+  }
+
+  function mapScales(): Readonly<{ x: number; z: number }> {
+    earthGridFrame = normalizeEarthGrid(options.getEarthGridFrame?.()) ?? earthGridFrame;
+    const frame = earthGridFrame ?? fallbackEarthGrid(parcels.projectCoordinate);
+    const pixelScale = chunkMapScaleForDenominator(
+      MAP_SCALE_DENOMINATOR,
+      clamp(window.devicePixelRatio || 1, 1, 2),
+    ) * zoom;
+    if (!frame) return { x: pixelScale, z: pixelScale };
+    const latitude = parcels.projectCoordinate?.latitude
+      ?? ((frame.storageOrigin.z + (viewCenterZ ?? 0)) / frame.worldHeightCells * 180);
+    const metric = chunkMapWorldMetric(
+      frame.worldWidthCells,
+      frame.worldHeightCells,
+      latitude,
+    );
+    return {
+      x: pixelScale * metric.x,
+      z: pixelScale * metric.z,
+    };
+  }
+
+  function parcelWorldBounds(): MapBounds | null {
+    if (parcels.features.length === 0) return null;
+    earthGridFrame = normalizeEarthGrid(options.getEarthGridFrame?.()) ?? earthGridFrame;
+    const frame = earthGridFrame ?? fallbackEarthGrid(parcels.projectCoordinate);
+    if (!frame) return null;
+    const points: (readonly [number, number])[] = [];
+    for (const feature of parcels.features) {
+      for (const polygon of geometryPolygons(feature.geometry)) {
+        for (const ringValue of asArray(polygon)) {
+          for (const coordinate of asArray(ringValue)) {
+            const raw = asArray(coordinate);
+            const point = lonLatToWorld(Number(raw[0]), Number(raw[1]), frame);
+            if (point) points.push(point);
+          }
+        }
+      }
+    }
+    if (points.length === 0) return null;
+    return {
+      minX: Math.min(...points.map((point) => point[0])),
+      maxX: Math.max(...points.map((point) => point[0])),
+      minZ: Math.min(...points.map((point) => point[1])),
+      maxZ: Math.max(...points.map((point) => point[1])),
+    };
+  }
+
+  function updateTransformForViewCenter(): void {
+    if (!transform) return;
+    const midpointX = (transform.minX + transform.maxX) * 0.5;
+    const midpointZ = (transform.minZ + transform.maxZ) * 0.5;
+    const worldWidth = Math.max(1, transform.maxX - transform.minX);
+    const worldHeight = Math.max(1, transform.maxZ - transform.minZ);
+    const halfViewWidth = backgroundCanvas.width / (transform.scaleX * 2);
+    const halfViewHeight = backgroundCanvas.height / (transform.scaleZ * 2);
+    const requestedX = viewCenterX ?? midpointX;
+    const requestedZ = viewCenterZ ?? midpointZ;
+    viewCenterX = worldWidth <= halfViewWidth * 2
+      ? midpointX
+      : clamp(requestedX, transform.minX + halfViewWidth, transform.maxX - halfViewWidth);
+    viewCenterZ = worldHeight <= halfViewHeight * 2
+      ? midpointZ
+      : clamp(requestedZ, transform.minZ + halfViewHeight, transform.maxZ - halfViewHeight);
+    const offsets = centeredChunkMapOffset(
+      viewCenterX,
+      viewCenterZ,
+      transform.minX,
+      transform.minZ,
+      transform.scaleX,
+      backgroundCanvas.width,
+      backgroundCanvas.height,
+      transform.scaleZ,
+    );
+    transform = { ...transform, ...offsets };
+  }
+
+  function roofFaceShade(points: readonly ChunkMapRoofPoint[]): number {
+    if (points.length < 3) return 1;
+    const first = points[0]!;
+    const second = points[1]!;
+    const third = points[2]!;
+    const ax = second.x - first.x;
+    const ay = second.y - first.y;
+    const az = second.z - first.z;
+    const bx = third.x - first.x;
+    const by = third.y - first.y;
+    const bz = third.z - first.z;
+    let nx = ay * bz - az * by;
+    let ny = az * bx - ax * bz;
+    let nz = ax * by - ay * bx;
+    const length = Math.hypot(nx, ny, nz);
+    if (!Number.isFinite(length) || length < 1e-8) return 1;
+    nx /= length;
+    ny /= length;
+    nz /= length;
+    if (ny < 0) { nx *= -1; ny *= -1; nz *= -1; }
+    return clamp(0.88 + ny * 0.16 + (-nx * 0.55 - nz * 0.34) * 0.09, 0.78, 1.16);
+  }
+
+  function traceRoofRing(
+    target: CanvasRenderingContext2D,
+    points: readonly ChunkMapRoofPoint[],
+    beginPath = true,
+  ): boolean {
+    if (!transform || points.length < 3) return false;
+    if (beginPath) target.beginPath();
+    points.forEach((point, index) => {
+      const x = transform!.offsetX + (point.x - transform!.minX) * transform!.scaleX;
+      const y = transform!.offsetY + (point.z - transform!.minZ) * transform!.scaleZ;
+      if (index === 0) target.moveTo(x, y);
+      else target.lineTo(x, y);
+    });
+    target.closePath();
+    return true;
+  }
+
+  function drawRoofs(roofs: readonly ChunkMapRoof[]): void {
+    if (!backgroundContext || !transform || roofs.length === 0) return;
+    const dpr = clamp(window.devicePixelRatio || 1, 1, 2);
+    for (const roof of roofs) {
+      if (roof.outlines.length === 0) continue;
+      backgroundContext.beginPath();
+      let traced = false;
+      for (const ring of roof.outlines) {
+        traced = traceRoofRing(backgroundContext, ring, false) || traced;
+      }
+      if (traced) {
+        backgroundContext.fillStyle = "#b85c38";
+        backgroundContext.fill("evenodd");
+      }
+    }
+    const faces = roofs.flatMap((roof) => roof.faces.map((face) => ({ roof, face })))
+      .sort((left, right) => (
+        left.face.points.reduce((sum, point) => sum + point.y, 0) / left.face.points.length
+        - right.face.points.reduce((sum, point) => sum + point.y, 0) / right.face.points.length
+      ));
+    for (const { face } of faces) {
+      if (!traceRoofRing(backgroundContext, face.points)) continue;
+      backgroundContext.fillStyle = shadeColor(backgroundContext, "#b85c38", roofFaceShade(face.points));
+      backgroundContext.fill();
+    }
+    for (const roof of roofs) {
+      for (const ring of roof.outlines) {
+        if (!traceRoofRing(backgroundContext, ring)) continue;
+        backgroundContext.strokeStyle = "rgba(64, 34, 26, 0.94)";
+        backgroundContext.lineWidth = 1.45 * dpr;
+        backgroundContext.stroke();
+      }
+    }
+  }
+
+  function renderBackground(
+    chunks: readonly RuntimeChunkContent[],
+    roofChunks: readonly RuntimeChunkContent[],
+  ): void {
     if (!backgroundContext) return;
     const regionCells = collectTerrainRegionCells(terrainRegion);
-    const cells = [...regionCells, ...collectSurfaceCells(chunks)];
+    const cells = [...regionCells, ...surfaceCellsFor(chunks)];
+    const roofs = mergeChunkMapRoofs(projectedRoofs, roofsFor(roofChunks));
+    const parcelBounds = parcelWorldBounds();
     const width = backgroundCanvas.width;
     const height = backgroundCanvas.height;
-    const backdrop = backgroundContext.createLinearGradient(0, 0, width, height);
-    backdrop.addColorStop(0, "#354f43");
-    backdrop.addColorStop(0.48, "#65754c");
-    backdrop.addColorStop(1, "#435e49");
-    backgroundContext.fillStyle = backdrop;
+    backgroundContext.fillStyle = "#ffffff";
     backgroundContext.fillRect(0, 0, width, height);
 
-    if (cells.length === 0) {
+    if (cells.length === 0 && roofs.length === 0 && !parcelBounds) {
       transform = null;
+      backgroundTransform = null;
       empty.hidden = false;
       return;
     }
 
     empty.hidden = true;
-    const minX = Math.min(...cells.map((cell) => cell.x));
-    const maxX = Math.max(...cells.map((cell) => cell.x + cell.size));
-    const minZ = Math.min(...cells.map((cell) => cell.z));
-    const maxZ = Math.max(...cells.map((cell) => cell.z + cell.size));
-    const minY = Math.min(...cells.map((cell) => cell.y));
-    const maxY = Math.max(...cells.map((cell) => cell.y));
-    const worldWidth = Math.max(1, maxX - minX);
-    const worldHeight = Math.max(1, maxZ - minZ);
-    const coverScale = Math.max(width / worldWidth, height / worldHeight);
-    const scale = coverScale * zoom;
-    const midpointX = (minX + maxX) * 0.5;
-    const midpointZ = (minZ + maxZ) * 0.5;
-
+    const cellMinX = cells.length > 0 ? Math.min(...cells.map((cell) => cell.x)) : null;
+    const cellMaxX = cells.length > 0 ? Math.max(...cells.map((cell) => cell.x + cell.size)) : null;
+    const cellMinZ = cells.length > 0 ? Math.min(...cells.map((cell) => cell.z)) : null;
+    const cellMaxZ = cells.length > 0 ? Math.max(...cells.map((cell) => cell.z + cell.size)) : null;
+    const roofPoints = roofs.flatMap((roof) => [
+      ...roof.faces.flatMap((face) => face.points),
+      ...roof.outlines.flat(),
+    ]);
+    const roofMinX = roofPoints.length > 0 ? Math.min(...roofPoints.map((point) => point.x)) : null;
+    const roofMaxX = roofPoints.length > 0 ? Math.max(...roofPoints.map((point) => point.x)) : null;
+    const roofMinZ = roofPoints.length > 0 ? Math.min(...roofPoints.map((point) => point.z)) : null;
+    const roofMaxZ = roofPoints.length > 0 ? Math.max(...roofPoints.map((point) => point.z)) : null;
+    const minX = Math.min(
+      cellMinX ?? Number.POSITIVE_INFINITY,
+      roofMinX ?? Number.POSITIVE_INFINITY,
+      parcelBounds?.minX ?? Number.POSITIVE_INFINITY,
+    );
+    const maxX = Math.max(
+      cellMaxX ?? Number.NEGATIVE_INFINITY,
+      roofMaxX ?? Number.NEGATIVE_INFINITY,
+      parcelBounds?.maxX ?? Number.NEGATIVE_INFINITY,
+    );
+    const minZ = Math.min(
+      cellMinZ ?? Number.POSITIVE_INFINITY,
+      roofMinZ ?? Number.POSITIVE_INFINITY,
+      parcelBounds?.minZ ?? Number.POSITIVE_INFINITY,
+    );
+    const maxZ = Math.max(
+      cellMaxZ ?? Number.NEGATIVE_INFINITY,
+      roofMaxZ ?? Number.NEGATIVE_INFINITY,
+      parcelBounds?.maxZ ?? Number.NEGATIVE_INFINITY,
+    );
+    const heightValues = [...cells.map((cell) => cell.y), ...roofPoints.map((point) => point.y)];
+    const minY = heightValues.length > 0 ? Math.min(...heightValues) : 0;
+    const maxY = heightValues.length > 0 ? Math.max(...heightValues) : minY;
     if (viewCenterX === null || viewCenterZ === null) {
+      const midpointX = (minX + maxX) * 0.5;
+      const midpointZ = (minZ + maxZ) * 0.5;
       const localPosition = lastInput.localPlayer?.position;
       viewCenterX = localPosition && Number.isFinite(localPosition.x)
         ? localPosition.x
@@ -516,50 +777,49 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
         : midpointZ;
     }
 
-    const halfViewWidth = width / (scale * 2);
-    const halfViewHeight = height / (scale * 2);
-    viewCenterX = worldWidth <= halfViewWidth * 2
-      ? midpointX
-      : clamp(viewCenterX, minX + halfViewWidth, maxX - halfViewWidth);
-    viewCenterZ = worldHeight <= halfViewHeight * 2
-      ? midpointZ
-      : clamp(viewCenterZ, minZ + halfViewHeight, maxZ - halfViewHeight);
-
-    const offsetX = width * 0.5 - (viewCenterX - minX) * scale;
-    const offsetY = height * 0.5 - (viewCenterZ - minZ) * scale;
-    transform = { minX, maxX, minZ, maxZ, scale, offsetX, offsetY };
+    const scales = mapScales();
+    transform = {
+      minX,
+      maxX,
+      minZ,
+      maxZ,
+      scaleX: scales.x,
+      scaleZ: scales.z,
+      offsetX: 0,
+      offsetY: 0,
+    };
+    updateTransformForViewCenter();
+    const offsetX = transform?.offsetX ?? 0;
+    const offsetY = transform?.offsetY ?? 0;
 
     for (const cell of cells) {
       const heightRatio = maxY <= minY ? 0.5 : (cell.y - minY) / (maxY - minY);
-      const baseColor = cell.blockTypeId === "system_terrain_region"
-        ? terrainElevationColor(heightRatio)
-        : cell.color;
-      backgroundContext.fillStyle = shadeColor(
-        backgroundContext, baseColor, 0.82 + heightRatio * 0.34);
-      const x = offsetX + (cell.x - minX) * scale;
-      const y = offsetY + (cell.z - minZ) * scale;
-      const cellPixels = Math.max(1, cell.size * scale + 0.65);
-      backgroundContext.fillRect(x, y, cellPixels, cellPixels);
+      const whiteSurface = isWhiteMapSurface(cell.blockTypeId);
+      backgroundContext.fillStyle = whiteSurface
+        ? "#ffffff"
+        : shadeColor(backgroundContext, cell.color, 0.82 + heightRatio * 0.34);
+      const x = offsetX + (cell.x - minX) * scales.x;
+      const y = offsetY + (cell.z - minZ) * scales.z;
+      const cellPixelsX = Math.max(1, cell.size * scales.x + 0.65);
+      const cellPixelsZ = Math.max(1, cell.size * scales.z + 0.65);
+      backgroundContext.fillRect(x, y, cellPixelsX, cellPixelsZ);
     }
 
-    backgroundContext.strokeStyle = "rgba(71, 85, 105, 0.22)";
-    backgroundContext.lineWidth = Math.max(1, window.devicePixelRatio || 1);
-    chunks.forEach((chunk) => {
-      const x = offsetX + (chunk.chunkX * chunk.chunkSize * chunk.cellSize - minX) * scale;
-      const y = offsetY + (chunk.chunkZ * chunk.chunkSize * chunk.cellSize - minZ) * scale;
-      const size = chunk.chunkSize * chunk.cellSize * scale;
-      backgroundContext.strokeRect(x, y, size, size);
-    });
+    if (SHOW_CHUNK_LOADING_BOUNDS) {
+      backgroundContext.strokeStyle = "rgba(148, 163, 184, 0.2)";
+      backgroundContext.lineWidth = Math.max(1, window.devicePixelRatio || 1);
+      chunks.forEach((chunk) => {
+        const x = offsetX + (chunk.chunkX * chunk.chunkSize * chunk.cellSize - minX) * scales.x;
+        const y = offsetY + (chunk.chunkZ * chunk.chunkSize * chunk.cellSize - minZ) * scales.z;
+        const sizeX = chunk.chunkSize * chunk.cellSize * scales.x;
+        const sizeZ = chunk.chunkSize * chunk.cellSize * scales.z;
+        backgroundContext.strokeRect(x, y, sizeX, sizeZ);
+      });
+    }
 
-    const vignette = backgroundContext.createRadialGradient(
-      width * 0.5, height * 0.48, Math.min(width, height) * 0.22,
-      width * 0.5, height * 0.48, Math.max(width, height) * 0.72,
-    );
-    vignette.addColorStop(0, "rgba(9, 25, 24, 0)");
-    vignette.addColorStop(0.72, "rgba(9, 25, 24, 0.04)");
-    vignette.addColorStop(1, "rgba(7, 18, 22, 0.32)");
-    backgroundContext.fillStyle = vignette;
-    backgroundContext.fillRect(0, 0, width, height);
+    drawRoofs(roofs);
+
+    backgroundTransform = transform ? { ...transform } : null;
   }
 
   function drawParcelBoundaries(): void {
@@ -583,8 +843,8 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
             .filter((point): point is readonly [number, number] => point !== null);
           if (ring.length < 3) continue;
           ring.forEach(([worldX, worldZ], index) => {
-            const x = transform!.offsetX + (worldX - transform!.minX) * transform!.scale;
-            const y = transform!.offsetY + (worldZ - transform!.minZ) * transform!.scale;
+            const x = transform!.offsetX + (worldX - transform!.minX) * transform!.scaleX;
+            const y = transform!.offsetY + (worldZ - transform!.minZ) * transform!.scaleZ;
             if (index === 0) context.moveTo(x, y);
             else context.lineTo(x, y);
           });
@@ -593,24 +853,62 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
         }
         if (!traced) continue;
         if (feature.selected) {
-          context.fillStyle = "rgba(37, 99, 235, 0.24)";
+          context.fillStyle = "rgba(37, 99, 235, 0.1)";
           context.fill("evenodd");
         }
         context.strokeStyle = feature.selected
           ? "rgba(29, 78, 216, 1)"
           : feature.adjacent
-            ? "rgba(59, 130, 246, 0.72)"
-            : "rgba(96, 165, 250, 0.46)";
-        context.lineWidth = (feature.selected ? 3 : feature.adjacent ? 1.7 : 1.1) * dpr;
-        context.setLineDash(feature.selected ? [] : [4 * dpr, 3 * dpr]);
+            ? "rgba(37, 99, 235, 0.8)"
+            : "rgba(37, 99, 235, 0.58)";
+        context.lineWidth = (feature.selected ? 4 : feature.adjacent ? 2.2 : 1.5) * dpr;
+        context.setLineDash([]);
         context.stroke();
       }
     }
     context.setLineDash([]);
   }
 
+  function scheduleMapStructuresRefresh(delayMs: number): void {
+    if (destroyed || !options.mapStructuresUrl || mapStructuresPoll !== null) return;
+    mapStructuresPoll = window.setTimeout(() => {
+      mapStructuresPoll = null;
+      void refreshMapStructures();
+    }, Math.max(250, delayMs));
+  }
+
+  async function refreshMapStructures(): Promise<void> {
+    if (destroyed || !options.mapStructuresUrl || mapStructuresLoading) return;
+    mapStructuresLoading = true;
+    try {
+      const response = await fetch(options.mapStructuresUrl, {
+        method: "GET",
+        credentials: "same-origin",
+        headers: { Accept: "application/json" },
+      });
+      const payload = await response.json() as {
+        readonly mapStructures?: Readonly<Record<string, unknown>>;
+      };
+      const preview = asRecord(payload?.mapStructures);
+      if (response.ok && clean(preview.schemaVersion) === "vectoplan-map-structures.v1") {
+        const revision = clean(preview.revision, "empty");
+        if (revision !== mapStructuresRevision) {
+          mapStructuresRevision = revision;
+          projectedRoofs = parseChunkMapStructureRoofs(preview);
+          lastChunkSignature = "";
+          if (!overlay.hidden) render(lastInput);
+        }
+      }
+    } catch {
+      // Registry-backed roofs remain available while the lightweight preview retries.
+    } finally {
+      mapStructuresLoading = false;
+      scheduleMapStructuresRefresh(MAP_STRUCTURES_REFRESH_MS);
+    }
+  }
+
   function scheduleTerrainRegionRefresh(delayMs: number): void {
-    if (destroyed || overlay.hidden || !options.terrainRegionUrl || terrainRegionPoll !== null) return;
+    if (destroyed || !options.terrainRegionUrl || terrainRegionPoll !== null) return;
 
     terrainRegionPoll = window.setTimeout(() => {
       terrainRegionPoll = null;
@@ -619,7 +917,13 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   }
 
   async function refreshTerrainRegion(): Promise<void> {
-    if (destroyed || overlay.hidden || !options.terrainRegionUrl || terrainRegion?.status === "ready") return;
+    if (
+      destroyed
+      || !options.terrainRegionUrl
+      || terrainRegion?.status === "ready"
+      || terrainRegionLoading
+    ) return;
+    terrainRegionLoading = true;
     try {
       const response = await fetch(options.terrainRegionUrl, {
         method: "GET",
@@ -660,6 +964,8 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     } catch {
       terrainRegionStatus = "error";
       footer.textContent = "Projektregion konnte noch nicht geladen werden; erneuter Versuch laeuft.";
+    } finally {
+      terrainRegionLoading = false;
     }
     scheduleTerrainRegionRefresh(2_000);
   }
@@ -667,8 +973,8 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   function mapPoint(position: ChunkMapPlayer["position"]): { x: number; y: number } | null {
     if (!transform) return null;
     return {
-      x: transform.offsetX + (position.x - transform.minX) * transform.scale,
-      y: transform.offsetY + (position.z - transform.minZ) * transform.scale,
+      x: transform.offsetX + (position.x - transform.minX) * transform.scaleX,
+      y: transform.offsetY + (position.z - transform.minZ) * transform.scaleZ,
     };
   }
 
@@ -731,22 +1037,38 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     if (!context) return;
     const resized = resizeCanvas();
     const chunks = currentChunks();
-    const signature = terrainRegionStatus + ":" + (terrainRegion?.releaseKey ?? "") + "|" + chunkSignature(chunks);
-    if (resized || signature !== lastChunkSignature) {
+    const roofChunks = currentRoofChunks();
+    syncViewCenterToLocalPlayer(input);
+    updateTransformForViewCenter();
+    const signature = terrainRegionStatus + ":" + (terrainRegion?.releaseKey ?? "")
+      + "|" + chunkSignature(chunks) + "|roofs:" + chunkMapRoofSignature(roofChunks)
+      + "|map-structures:" + mapStructuresRevision;
+    const backgroundShiftX = transform && backgroundTransform
+      ? transform.offsetX - backgroundTransform.offsetX
+      : 0;
+    const backgroundShiftY = transform && backgroundTransform
+      ? transform.offsetY - backgroundTransform.offsetY
+      : 0;
+    const shiftRequiresRefresh = Math.abs(backgroundShiftX) > canvas.width * 0.12
+      || Math.abs(backgroundShiftY) > canvas.height * 0.12;
+    if (resized || signature !== lastChunkSignature || shiftRequiresRefresh) {
       lastChunkSignature = signature;
-      renderBackground(chunks);
+      renderBackground(chunks, roofChunks);
     }
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(backgroundCanvas, 0, 0);
+    context.fillStyle = "#ffffff";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    const drawOffsetX = transform && backgroundTransform
+      ? transform.offsetX - backgroundTransform.offsetX
+      : 0;
+    const drawOffsetY = transform && backgroundTransform
+      ? transform.offsetY - backgroundTransform.offsetY
+      : 0;
+    context.drawImage(backgroundCanvas, drawOffsetX, drawOffsetY);
     drawParcelBoundaries();
     input.remotePlayers.forEach(drawPlayer);
     if (input.localPlayer) drawPlayer(input.localPlayer);
     renderPlayersList(input);
-  }
-
-  function updateZoomControls(): void {
-    zoomOutButton.disabled = zoom <= MAP_MIN_ZOOM + 0.001;
-    zoomInButton.disabled = zoom >= MAP_MAX_ZOOM - 0.001;
   }
 
   function setZoom(
@@ -754,22 +1076,26 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     anchor?: { readonly x: number; readonly y: number },
   ): void {
     const normalized = clamp(nextZoom, MAP_MIN_ZOOM, MAP_MAX_ZOOM);
-    if (Math.abs(normalized - zoom) < 0.001) {
-      updateZoomControls();
-      return;
-    }
-
+    if (Math.abs(normalized - zoom) < 0.001) return;
     if (anchor && transform) {
-      const worldX = transform.minX + (anchor.x - transform.offsetX) / transform.scale;
-      const worldZ = transform.minZ + (anchor.y - transform.offsetY) / transform.scale;
-      const nextScale = transform.scale * (normalized / zoom);
-      viewCenterX = worldX - (anchor.x - canvas.width * 0.5) / nextScale;
-      viewCenterZ = worldZ - (anchor.y - canvas.height * 0.5) / nextScale;
+      const anchorWorldX = transform.minX + (anchor.x - transform.offsetX) / transform.scaleX;
+      const anchorWorldZ = transform.minZ + (anchor.y - transform.offsetY) / transform.scaleZ;
+      const nextScaleX = transform.scaleX * (normalized / zoom);
+      const nextScaleZ = transform.scaleZ * (normalized / zoom);
+      const center = chunkMapCenterForZoomAnchor(
+        anchor.x,
+        anchor.y,
+        anchorWorldX,
+        anchorWorldZ,
+        nextScaleX,
+        canvas.width,
+        canvas.height,
+        nextScaleZ,
+      );
+      viewCenterX = center.centerX;
+      viewCenterZ = center.centerZ;
     }
-
     zoom = normalized;
-    zoomLevel.value = `${Math.round(zoom * 100)} %`;
-    updateZoomControls();
     lastChunkSignature = "";
     render(lastInput);
   }
@@ -789,46 +1115,20 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     );
   }
 
-  function handleZoomOut(): void {
-    setZoom(zoom / MAP_ZOOM_STEP);
-  }
-
-  function handleZoomIn(): void {
-    setZoom(zoom * MAP_ZOOM_STEP);
-  }
-
-  function handleZoomReset(): void {
-    if (!transform) {
-      setZoom(MAP_MIN_ZOOM);
-      return;
-    }
-    const localPosition = lastInput.localPlayer?.position;
-    viewCenterX = localPosition && Number.isFinite(localPosition.x)
-      ? localPosition.x
-      : (transform.minX + transform.maxX) * 0.5;
-    viewCenterZ = localPosition && Number.isFinite(localPosition.z)
-      ? localPosition.z
-      : (transform.minZ + transform.maxZ) * 0.5;
-    zoom = MAP_MIN_ZOOM;
-    zoomLevel.value = `${Math.round(zoom * 100)} %`;
-    updateZoomControls();
-    lastChunkSignature = "";
-    render(lastInput);
-  }
-
   function open(): void {
     if (destroyed || !overlay.hidden) return;
     overlay.hidden = false;
     options.root.dataset.chunkMapOpen = "true";
-    zoom = MAP_MIN_ZOOM;
-    zoomLevel.value = `${Math.round(zoom * 100)} %`;
     lastChunkSignature = "";
     lastUpdateAt = 0;
+    zoom = 1;
     viewCenterX = null;
     viewCenterZ = null;
-    updateZoomControls();
+    trackedPlayerX = null;
+    trackedPlayerZ = null;
     void options.onOpen?.();
     void refreshTerrainRegion();
+    void refreshMapStructures();
     canvas.focus({ preventScroll: true });
     render(lastInput);
   }
@@ -836,10 +1136,6 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   function close(): void {
     if (destroyed || overlay.hidden) return;
     overlay.hidden = true;
-    if (terrainRegionPoll !== null) {
-      window.clearTimeout(terrainRegionPoll);
-      terrainRegionPoll = null;
-    }
     options.root.dataset.chunkMapOpen = "false";
     void options.onClose?.();
   }
@@ -885,7 +1181,11 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
     isOpen(): boolean { return !overlay.hidden; },
     update(input, nowMs): void {
       lastInput = input;
-      if (overlay.hidden || nowMs - lastUpdateAt < MAP_UPDATE_INTERVAL_MS) return;
+      if (overlay.hidden) {
+        scheduleMapDataPrewarm();
+        return;
+      }
+      if (nowMs - lastUpdateAt < MAP_UPDATE_INTERVAL_MS) return;
       lastUpdateAt = nowMs;
       render(input);
     },
@@ -894,10 +1194,8 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
       close();
       destroyed = true;
       if (terrainRegionPoll !== null) window.clearTimeout(terrainRegionPoll);
+      if (mapStructuresPoll !== null) window.clearTimeout(mapStructuresPoll);
       stage.removeEventListener("wheel", handleMapWheel);
-      zoomOutButton.removeEventListener("click", handleZoomOut);
-      zoomInButton.removeEventListener("click", handleZoomIn);
-      zoomResetButton.removeEventListener("click", handleZoomReset);
       document.removeEventListener("keydown", handleMapShortcut, true);
       window.removeEventListener("message", handleParcelMessage);
       window.removeEventListener(PARCEL_OVERLAY_SYNC, handleParcelOverlayEvent);
@@ -908,13 +1206,11 @@ export function createChunkMapOverlay(options: ChunkMapOverlayOptions): ChunkMap
   };
 
   stage.addEventListener("wheel", handleMapWheel, { passive: false });
-  zoomOutButton.addEventListener("click", handleZoomOut);
-  zoomInButton.addEventListener("click", handleZoomIn);
-  zoomResetButton.addEventListener("click", handleZoomReset);
   document.addEventListener("keydown", handleMapShortcut, true);
   window.addEventListener("message", handleParcelMessage);
   window.addEventListener(PARCEL_OVERLAY_SYNC, handleParcelOverlayEvent);
   window.addEventListener(EARTH_GRID_READY, handleEarthGridReady);
-  updateZoomControls();
+  void refreshTerrainRegion();
+  void refreshMapStructures();
   return handle;
 }

@@ -16,6 +16,7 @@ SUPPORTED_COMMANDS = {
     "create_roof",
     "create_section_marker",
     "create_wall",
+    "delete_selection",
     "place_library_object",
     "update_room",
     "update_roof",
@@ -30,7 +31,7 @@ LIBRARY_COMMANDS = {
 }
 
 ROOF_COMMANDS = {"create_roof", "update_roof"}
-MODEL_CHANGING_COMMANDS = LIBRARY_COMMANDS | ROOF_COMMANDS
+MODEL_CHANGING_COMMANDS = LIBRARY_COMMANDS | ROOF_COMMANDS | {"delete_selection"}
 
 
 def validate_cad_command(payload: Any, *, catalog: Mapping[str, Any] | None = None) -> list[str]:
@@ -144,6 +145,9 @@ def validate_cad_command(payload: Any, *, catalog: Mapping[str, Any] | None = No
             ):
                 errors.append("$.parameters.target_anchor must contain numeric x, y and z coordinates")
 
+    if command == "delete_selection":
+        _validate_deletion_targets(parameters, errors)
+
     return errors
 
 
@@ -171,7 +175,9 @@ def build_command_receipt(
             "Ohne Core-Verbindung wird er nicht persistiert."
         ),
         "command": command,
-        "preview_element": _build_preview_element(command),
+        "preview_element": (
+            None if command.get("command") == "delete_selection" else _build_preview_element(command)
+        ),
         "mutation_intent": _build_mutation_intent(command),
         "stateful_storage": False,
     }
@@ -382,6 +388,54 @@ def _validate_library_selection(
         errors.append(
             f"Creative Library item placement_kind '{placement_kind}' is incompatible with {command}"
         )
+
+
+def _validate_deletion_targets(parameters: Any, errors: list[str]) -> None:
+    targets = parameters.get("targets") if isinstance(parameters, Mapping) else None
+    if not isinstance(targets, list) or not targets:
+        errors.append("$.parameters.targets must contain at least one persistent deletion target")
+        return
+    if len(targets) > 10_000:
+        errors.append("$.parameters.targets must not contain more than 10000 targets")
+        return
+    total_cells = 0
+    for target_index, target in enumerate(targets):
+        path = f"$.parameters.targets[{target_index}]"
+        if not isinstance(target, Mapping):
+            errors.append(f"{path} must be an object")
+            continue
+        object_ids = target.get("object_instance_ids", [])
+        cells = target.get("cells", [])
+        if not isinstance(object_ids, list):
+            errors.append(f"{path}.object_instance_ids must be an array")
+            object_ids = []
+        else:
+            for object_index, object_id in enumerate(object_ids):
+                if not isinstance(object_id, str) or not object_id.strip():
+                    errors.append(
+                        f"{path}.object_instance_ids[{object_index}] must be a non-empty string"
+                    )
+        if not isinstance(cells, list):
+            errors.append(f"{path}.cells must be an array")
+            cells = []
+        else:
+            total_cells += len(cells)
+            for cell_index, cell in enumerate(cells):
+                coordinates = (
+                    [cell.get(axis) for axis in ("x", "y", "z")]
+                    if isinstance(cell, Mapping)
+                    else cell
+                )
+                if not isinstance(coordinates, list) or len(coordinates) != 3 or not all(
+                    _is_number(value) and float(value).is_integer() for value in coordinates
+                ):
+                    errors.append(
+                        f"{path}.cells[{cell_index}] must contain three integer coordinates"
+                    )
+        if not object_ids and not cells:
+            errors.append(f"{path} must contain object_instance_ids or cells")
+    if total_cells > 65_536:
+        errors.append("$.parameters.targets must not address more than 65536 cells")
 
 
 def _selected_catalog_item(

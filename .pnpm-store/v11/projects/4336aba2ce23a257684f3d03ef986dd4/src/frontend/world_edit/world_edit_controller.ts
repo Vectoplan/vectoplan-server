@@ -38,6 +38,7 @@ import { createCopyPasteSystem } from "./systems/copy_paste/system";
 import { createCutPasteSystem } from "./systems/cut_paste/system";
 import { createTentacleSystem } from "./systems/tentacle/system";
 import { createRoofSystem } from "./systems/roof/system";
+import { importedRoofSource } from "./systems/roof/imported";
 import {
   createStairQuickSettings,
   DEFAULT_STAIR_TOOL_PARAMETERS,
@@ -66,6 +67,9 @@ import {
   type PolygonAreaPoint,
 } from "./systems/polygon_area/geometry";
 import { createRoofCalculationMeshes } from "@scene/roof_calculation_rendering";
+import { buildSolarLayout, createSolarMesh, normalizeSolarSettings, solarMetricScale } from "./systems/solar/layout";
+import { createSolarToolPanel } from "./systems/solar/panel";
+import { createRoofSurfaceHighlight, roofSurfaceTriangles, roofSurfaceMarker, heightOnRoof } from "@scene/roof_surface_geometry";
 import {
   createRoofQuickSettings,
   persistedRoofQuickSettings,
@@ -103,6 +107,7 @@ import {
 } from "./systems/tentacle/geometry";
 import {
   buildParcelGridPartition,
+  intersectConvexParcelGridPolygons,
   mergeParcelGridCoverage,
   normalizeParcelGridPolygon,
   parcelGridGuideIdentity,
@@ -114,6 +119,12 @@ import {
   snapParcelGridDragDepth,
   type ParcelGridPoint,
 } from "./systems/parcel_grid/geometry";
+import {
+  lod2BuildingFacadeBands,
+  lod2BuildingGridReferencesFromChunks,
+  type Lod2BuildingGridReference,
+} from "./systems/parcel_grid/building_reference";
+import { auditParcelGrid } from "./systems/parcel_grid/audit";
 import {
   resolveWorldEditSelectionBounds,
   snapWorldEditSelectionHandle,
@@ -312,7 +323,9 @@ interface ParcelGridZoneCell {
   readonly boundarySegmentId?: string;
   readonly boundaryRow?: number;
   readonly boundaryColumn?: number;
+  readonly boundaryKind?: "parcel" | "building-facade";
   readonly wallAxisDegrees?: number;
+  readonly gridAlignment?: "world" | "boundary" | "lod2-building";
 }
 
 type ParcelGridSemanticPlacement = Readonly<{
@@ -514,7 +527,7 @@ export function normalizedParcelItems(value: unknown, maximum: number): ParcelSe
     .slice(0, Math.max(1, maximum));
 }
 
-function normalizedParcelSelection(value: unknown): ParcelSelection {
+export function normalizedParcelSelection(value: unknown): ParcelSelection {
   const root = asRecord(value);
   const selection = asRecord(root.selection ?? root.parcelSelection ?? root.last_map_selection ?? root);
   const selectedValues = asArray(selection.parcels ?? selection.features);
@@ -528,6 +541,7 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
     768,
   );
   const parcels = mergedCatalog.filter((item) => selectedIds.has(item.parcelId)).slice(0, 64);
+  const normalizedSelectedIds = new Set(parcels.map((parcel) => parcel.parcelId));
   const availableParcels = normalizedParcelItems(availableValues, 512);
   const adjacentParcels = normalizedParcelItems(adjacentValues, 128);
   const coordinate = asRecord(selection.projectCoordinate ?? selection.project_coordinate);
@@ -536,6 +550,10 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
   const requestedRotation = Number(selection.gridRotationDegrees ?? selection.grid_rotation_degrees);
   const rawGridState = asRecord(selection.parcelGridState ?? selection.parcel_grid_state);
   const rawGridGuides = asArray(rawGridState.guides);
+  const requestedActiveParcelId = safeString(rawGridState.activeParcelId ?? rawGridState.active_parcel_id, "") || null;
+  const activeParcelId = requestedActiveParcelId && normalizedSelectedIds.has(requestedActiveParcelId)
+    ? requestedActiveParcelId
+    : null;
   const parcelGridState = safeString(rawGridState.schemaVersion ?? rawGridState.schema_version, "")
     === "vectoplan-parcel-grid-state.v1"
     ? {
@@ -543,8 +561,10 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
         mode: safeString(rawGridState.mode, "boundary") === "setback" ? "setback" as const : "boundary" as const,
         setbackMeters: Math.max(0, Math.min(20, Number(rawGridState.setbackMeters ?? rawGridState.setback_meters) || 0)),
         influenceMeters: Math.max(1, Math.min(PARCEL_GRID_MAX_DRAG_DEPTH_CELLS, Math.round(Number(rawGridState.influenceMeters ?? rawGridState.influence_meters) || 3))),
-        activeParcelId: safeString(rawGridState.activeParcelId ?? rawGridState.active_parcel_id, "") || null,
-        activeGuideKey: safeString(rawGridState.activeGuideKey ?? rawGridState.active_guide_key, "") || null,
+        activeParcelId,
+        activeGuideKey: activeParcelId
+          ? safeString(rawGridState.activeGuideKey ?? rawGridState.active_guide_key, "") || null
+          : null,
         guides: rawGridGuides.map((value): PersistedParcelGridGuide | null => {
           const guide = asRecord(value);
           const start = asArray(guide.startLonLat ?? guide.start_lon_lat);
@@ -554,7 +574,8 @@ function normalizedParcelSelection(value: unknown): ParcelSelection {
           const startLat = Number(start[1]);
           const endLon = Number(end[0]);
           const endLat = Number(end[1]);
-          if (!parcelId || ![startLon, startLat, endLon, endLat].every(Number.isFinite)) return null;
+          if (!parcelId || !normalizedSelectedIds.has(parcelId)
+            || ![startLon, startLat, endLon, endLat].every(Number.isFinite)) return null;
           return {
             parcelId,
             startLonLat: [startLon, startLat],
@@ -1031,6 +1052,9 @@ export function createWorldEditController(
   let editingRoomAnchor: ChunkApiWorldPosition | null = null;
   let editingRoofInstanceId: string | null = null;
   let editingRoofAnchor: ChunkApiWorldPosition | null = null;
+  let editingRoofMetadata: Record<string, unknown> = {};
+  let roofSolarSettings = normalizeSolarSettings(null);
+  let solarPanel: ReturnType<typeof createSolarToolPanel> | null = null;
   let roofParameters: RoofToolParameters = { ...DEFAULT_ROOF_TOOL_PARAMETERS };
   let roofCalculationSequence = 0;
   let roofCalculationAbortController: AbortController | null = null;
@@ -1124,6 +1148,7 @@ export function createWorldEditController(
   let parcelGridMode: "boundary" | "setback" = "boundary";
   let parcelGridSetback = 0;
   let parcelGridInfluence = 3;
+  let parcelGridBuildingReference: Lod2BuildingGridReference | null = null;
   let activeParcelGridParcelId: string | null = null;
   let activeParcelGridGuideKey: string | null = null;
   const persistedParcelGridGuides = new Map<string, PersistedParcelGridGuide>();
@@ -1635,6 +1660,7 @@ export function createWorldEditController(
       roof.footprint.type,
       roof.footprint.baseY,
       roof.footprint.coordinates,
+      asRecord(roof.metadata.roofCalculation).input_fingerprint,
     ]));
     if (!force && signature === roofZoneSignature && (roofZoneGroup || roofs.length === 0)) return;
     roofZoneSignature = signature;
@@ -1648,42 +1674,11 @@ export function createWorldEditController(
     for (const roof of roofs) {
       const points = polygonAreaPointsFromFootprint(roof.footprint, roof.anchor.y);
       if (!validPolygonArea(points)) continue;
-      const planeOffset = 0.045;
-      const visiblePoints = points.map((point) => new THREE.Vector3(point.x, point.y + planeOffset, point.z));
-      const line = new THREE.Line(
-        new THREE.BufferGeometry().setFromPoints([...visiblePoints, visiblePoints[0]!]),
-        new THREE.LineBasicMaterial({
-          color: 0xfbbf24,
-          depthTest: false,
-          transparent: true,
-          opacity: 0.82,
-        }),
-      );
-      line.name = `vectoplan_world_edit_roof_zone_line:${roof.objectInstanceId}`;
-      line.renderOrder = 96;
-      group.add(line);
-
-      const shape = new THREE.Shape();
-      shape.moveTo(points[0]!.x, -points[0]!.z);
-      points.slice(1).forEach((point) => shape.lineTo(point.x, -point.z));
-      shape.closePath();
-      const fillGeometry = new THREE.ShapeGeometry(shape);
-      fillGeometry.rotateX(-Math.PI / 2);
-      fillGeometry.translate(0, points[0]!.y + planeOffset * 0.5, 0);
-      const fill = new THREE.Mesh(fillGeometry, new THREE.MeshBasicMaterial({
-        color: 0xf59e0b,
-        transparent: true,
-        opacity: 0.14,
-        depthTest: false,
-        depthWrite: false,
-        side: THREE.DoubleSide,
-        toneMapped: false,
-      }));
-      fill.name = `vectoplan_world_edit_roof_zone_fill:${roof.objectInstanceId}`;
-      fill.renderOrder = 84;
-      group.add(fill);
-
-      const centroid = polygonAreaPlanCentroid(points);
+      const highlight = createRoofSurfaceHighlight(roof.metadata.roofCalculation);
+      if (!highlight) continue;
+      highlight.name = `vectoplan_world_edit_roof_zone_surface:${roof.objectInstanceId}`;
+      group.add(highlight);
+      const centroid = roofSurfaceMarker(roofSurfaceTriangles(roof.metadata.roofCalculation));
       if (!centroid) continue;
       const settings = new THREE.Sprite(new THREE.SpriteMaterial({
         map: currentRoofSettingsTexture(),
@@ -1725,11 +1720,15 @@ export function createWorldEditController(
     const group = new THREE.Group();
     group.name = `vectoplan_world_edit_${tool}_polygon`;
     const planeOffset = 0.035;
-    const visiblePoints = runtime.points.map((point) => new THREE.Vector3(point.x, point.y + planeOffset, point.z));
+    const roofTriangles = tool === "roof" ? roofSurfaceTriangles(runtime.calculation) : [];
+    const surfaceHighlight = tool === "roof" ? createRoofSurfaceHighlight(runtime.calculation, 0xfb923c) : null;
+    if (surfaceHighlight) group.add(surfaceHighlight);
+    const visiblePoints = runtime.points.map((point) => new THREE.Vector3(point.x,
+      (heightOnRoof(roofTriangles, point.x, point.z, point.y) ?? point.y) + planeOffset, point.z));
     const linePoints = runtime.closed && visiblePoints.length >= 3
       ? [...visiblePoints, visiblePoints[0]!]
       : visiblePoints;
-    if (linePoints.length >= 2) {
+    if (linePoints.length >= 2 && !surfaceHighlight) {
       const line = new THREE.Line(
         new THREE.BufferGeometry().setFromPoints(linePoints),
         new THREE.LineBasicMaterial({
@@ -1742,7 +1741,7 @@ export function createWorldEditController(
       line.renderOrder = 97;
       group.add(line);
     }
-    if (runtime.closed && validPolygonArea(runtime.points)) {
+    if (runtime.closed && validPolygonArea(runtime.points) && !surfaceHighlight) {
       const shape = new THREE.Shape();
       shape.moveTo(runtime.points[0]!.x, -runtime.points[0]!.z);
       runtime.points.slice(1).forEach((point) => shape.lineTo(point.x, -point.z));
@@ -1768,14 +1767,14 @@ export function createWorldEditController(
         new THREE.SphereGeometry(index === 0 ? 0.34 : 0.27, 14, 10),
         new THREE.MeshBasicMaterial({ color: polygonAreaPointColor(tool, index), depthTest: false }),
       );
-      marker.position.set(point.x, point.y + planeOffset, point.z);
+      marker.position.copy(visiblePoints[index]!);
       marker.renderOrder = 99;
       marker.userData = { worldEditPolygonAreaPoint: true, polygonAreaTool: tool, polygonAreaPointIndex: index };
       runtime.pointTargets.push(marker);
       group.add(marker);
     }
     if ((tool === "roof" || tool === "stair") && runtime.closed && validPolygonArea(runtime.points)) {
-      const centroid = polygonAreaPlanCentroid(runtime.points);
+      const centroid = roofSurfaceMarker(roofTriangles) ?? polygonAreaPlanCentroid(runtime.points);
       if (centroid) {
         const settings = new THREE.Sprite(new THREE.SpriteMaterial({
           map: currentRoofSettingsTexture(),
@@ -1796,9 +1795,12 @@ export function createWorldEditController(
     if (tool === "roof" && runtime.closed && runtime.calculation) {
       const rendered = createRoofCalculationMeshes(runtime.calculation, { preview: true });
       rendered.meshes.forEach((mesh) => group.add(mesh));
+      const solar = createSolarMesh(buildSolarLayout(runtime.calculation, roofSolarSettings), roofSolarSettings.module);
+      if (solar) group.add(solar);
     }
     scene.add(group);
     runtime.group = group;
+    if (tool === "roof") solarPanel?.refresh();
     options.root.dataset.polygonAreaTool = tool;
     options.root.dataset.polygonAreaPoints = String(runtime.points.length);
     options.root.dataset.polygonAreaClosed = String(runtime.closed);
@@ -1985,6 +1987,10 @@ export function createWorldEditController(
 
   function beginPolygonAreaInteraction(tool: PolygonAreaTool, target: ChunkApiWorldPosition): void {
     const runtime = polygonAreaRuntime(tool);
+    if (tool === "roof" && runtime.closed && roofParameters.roofType === "imported") {
+      setStatus("LoD2-Original: Neigung im Zahnrad ändern. Für neue Eckpunkte zuerst eine parametrische Dachform wählen.", "warning");
+      return;
+    }
     if (runtime.editingIndex !== null) return;
     const existingIndex = polygonAreaPointUnderCrosshair(tool);
     if (existingIndex === 0 && !runtime.closed && runtime.points.length >= 3) {
@@ -2021,6 +2027,7 @@ export function createWorldEditController(
   }
 
   function removePolygonAreaPointUnderCrosshair(tool: PolygonAreaTool): boolean {
+    if (tool === "roof" && roofParameters.roofType === "imported") return false;
     const runtime = polygonAreaRuntime(tool);
     const index = polygonAreaPointUnderCrosshair(tool);
     if (index === null) return false;
@@ -2055,8 +2062,12 @@ export function createWorldEditController(
       restoreEditingRoofObjects();
       editingRoofInstanceId = null;
       editingRoofAnchor = null;
+      editingRoofMetadata = {};
+      roofSolarSettings = normalizeSolarSettings(null);
+      solarPanel?.close(false);
       invalidateRoofCalculation();
       roofQuickSettings?.close(false);
+      if (roofParameters.importedSource) roofParameters = { ...DEFAULT_ROOF_TOOL_PARAMETERS };
     } else {
       stairQuickSettings?.close();
     }
@@ -2176,14 +2187,17 @@ export function createWorldEditController(
         footprint: {
           type: "Polygon",
           coordinateSpace: "world-cell-xz",
-          coordinates: [polygonAreaClosedCoordinates(runtime.points)],
+          coordinates: roofParameters.roofType === "imported" && roofParameters.importedSource
+            ? roofParameters.importedSource.footprint : [polygonAreaClosedCoordinates(runtime.points)],
           baseY: eavesY,
           height: Math.max(0.1, maximumHeight - eavesY),
           schemaVersion: "vectoplan-building-roof-footprint.v1",
         },
         occupiedCells: [anchor],
         metadata: {
+          ...editingRoofMetadata,
           schemaVersion: "vectoplan-building-roof.v1",
+          ...(roofParameters.importedSource ? { voxelOccupancy: "none", lod2BuildingId: roofParameters.importedSource.buildingId } : {}),
           source: "vectoplan-editor.world-edit.roof",
           familyRef: "world-edit.roof",
           variantRef: roofParameters.roofType,
@@ -2191,6 +2205,7 @@ export function createWorldEditController(
           roofParameters: { ...roofParameters },
           roofRequest: request,
           roofCalculation: calculation,
+          solar: roofSolarSettings,
           mergeKey: roofId,
           libraryPlacementContext: {
             libraryItemId: "world-edit-roof",
@@ -2446,10 +2461,23 @@ export function createWorldEditController(
   options.root.append(panel);
   roofQuickSettings = createRoofQuickSettings({
     root: options.root,
+    onSolar: () => {
+      const marker = roofSurfaceMarker(roofSurfaceTriangles(polygonAreaRuntime("roof").calculation));
+      const point = marker && worldPointToLonLat(marker.x, marker.z, earthGrid);
+      const metricScale = earthGrid && point && solarMetricScale(earthGrid, point[1]);
+      if (metricScale && roofSolarSettings.selectedFaces.length === 0) roofSolarSettings = { ...roofSolarSettings, metricScale };
+      roofQuickSettings?.close(false);
+      const input = options.sceneRuntime.getInputController();
+      input?.clear("world-edit-solar-open");
+      input?.disable("world-edit-solar-open");
+      void input?.exitPointerLock("world-edit-solar-open");
+      void solarPanel?.open(roofSolarSettings);
+    },
     onChange: ({ roofType, pitchDeg, overhangMm }) => {
       // The quick setting is uniform.  Reset individual edge overrides so the
       // visible 5-cm change affects every side of the generated roof.
       const overhangChanged = roofParameters.overhangMm !== overhangMm;
+      const roofTypeChanged = roofParameters.roofType !== roofType;
       roofParameters = {
         ...roofParameters,
         roofType,
@@ -2465,7 +2493,10 @@ export function createWorldEditController(
       };
       const runtime = polygonAreaRuntime("roof");
       if (runtime.closed && validPolygonArea(runtime.points)) {
-        invalidateRoofCalculation(true);
+        // Never display the previous parametric roof after switching back to
+        // the LoD2 source. Same-type tweaks may retain their last preview
+        // while the replacement calculation is running.
+        invalidateRoofCalculation(!roofTypeChanged);
         scheduleRoofPreview();
       }
       refreshHud();
@@ -2487,6 +2518,31 @@ export function createWorldEditController(
         valid: validPolygonArea(runtime.points),
       })) {
         void executeRoof();
+      }
+    },
+  });
+  solarPanel = createSolarToolPanel({
+    root: options.root,
+    getCalculation: () => polygonAreaRuntime("roof").calculation,
+    getLocation: () => {
+      const marker = roofSurfaceMarker(roofSurfaceTriangles(polygonAreaRuntime("roof").calculation));
+      const point = marker && worldPointToLonLat(marker.x, marker.z, earthGrid);
+      return point ? { longitude: point[0], latitude: point[1] } : null;
+    },
+    onChange: (settings) => {
+      roofSolarSettings = settings;
+      rebuildPolygonAreaScene("roof");
+    },
+    onClose: () => {
+      if (activeTool === "roof") roofQuickSettings?.open(roofParameters);
+      else options.sceneRuntime.getInputController()?.enable("world-edit-solar-close");
+    },
+    onSave: async () => {
+      await executeRoof();
+      if (!solarPanel?.isOpen()) {
+        const input = options.sceneRuntime.getInputController();
+        input?.enable("world-edit-solar-saved");
+        try { void input?.requestPointerLock("world-edit-solar-saved"); } catch { /* best effort */ }
       }
     },
   });
@@ -2520,6 +2576,7 @@ export function createWorldEditController(
     context?: Readonly<{
       targetPoint?: Readonly<{ x: number; y: number; z: number }> | null;
       currentFootprint?: Readonly<Record<string, unknown>> | null;
+      worldCellGrid?: boolean;
     }>,
   ): {
     allowed: boolean;
@@ -2540,6 +2597,9 @@ export function createWorldEditController(
     // The boundary resolver is also the renderer's authoritative grid model.
     // Resolve it before polygon containment and transition diagnostics so the
     // per-frame targeting path stays O(boundary segments), not O(all cells).
+    // Existing LoD2 facades and new annex blocks use the same building-owned
+    // geometry as the visible grid. A world-aligned fallback creates a cut
+    // cell at rotated corners and can protrude beyond the building envelope.
     const resolvedPlacement = parcelGridPlacementResolver?.(position, {
       targetPoint: context?.targetPoint ? [context.targetPoint.x, context.targetPoint.z] : null,
       preferredLogicalCellId: safeString(context?.currentFootprint?.logicalGridCellId, "") || null,
@@ -2696,6 +2756,9 @@ export function createWorldEditController(
         statusKind: status?.dataset.kind ?? "info",
         parcelCount: parcelSelection.parcels.length,
         parcelGridInfluence: parcelGridGuide?.depthMeters ?? parcelGridInfluence,
+        parcelGridReferenceMode: parcelGridBuildingReference ? "lod2-building" : "empty-parcel",
+        parcelGridBuildingId: parcelGridBuildingReference?.buildingId ?? null,
+        parcelGridBuildingRotationDegrees: parcelGridBuildingReference?.rotationDegrees ?? null,
         polygonPointCount: polygonRuntime?.points.length ?? 0,
         polygonClosed: polygonRuntime?.closed ?? false,
         roomType,
@@ -2788,6 +2851,9 @@ export function createWorldEditController(
     delete options.root.dataset.parcelGridRenderedWindowCells;
     delete options.root.dataset.parcelGridHandleCount;
     delete options.root.dataset.parcelGridLiveDepth;
+    delete options.root.dataset.parcelGridReferenceMode;
+    delete options.root.dataset.parcelGridBuildingId;
+    delete options.root.dataset.parcelGridBuildingDimensions;
     parcelGridZoneCells = [];
     parcelGridZoneCellIndex = new Map();
     parcelGridPlacementResolver = null;
@@ -2866,6 +2932,8 @@ export function createWorldEditController(
       readonly inward: GridPoint;
       readonly length: number;
       readonly maximumDepth: number;
+      readonly divisions?: number;
+      readonly clampToDepth?: boolean;
     }
 
     const worldParcels: WorldParcel[] = [];
@@ -2919,6 +2987,60 @@ export function createWorldEditController(
 
     const pointInsideParcel = (parcel: WorldParcel, point: GridPoint): boolean => pointInPolygon(point, parcel.rings);
     const pointInsideUnion = (point: GridPoint): boolean => worldParcels.some((parcel) => pointInsideParcel(parcel, point));
+    const loadedBuildingReferences = lod2BuildingGridReferencesFromChunks(
+      options.worldRuntime.getRegistry().getSnapshot().entries.map((entry) => entry.chunk),
+    );
+    const triangulateSimplePolygon = (polygonValue: readonly GridPoint[]): Array<readonly GridPoint[]> => {
+      const polygon = normalizeParcelGridPolygon(polygonValue);
+      if (polygon.length < 3) return [];
+      const contour = polygon.map((point) => new THREE.Vector2(point[0], point[1]));
+      const vertices = [...contour];
+      return THREE.ShapeUtils.triangulateShape(contour, []).map((face) => (
+        face.map((index): GridPoint => [vertices[index]!.x, vertices[index]!.y])
+      )).filter((triangle) => parcelGridPolygonArea(triangle) > 1e-8);
+    };
+    const triangulateBuildingFootprint = (footprint: Lod2BuildingGridReference["footprints"][number]): Array<readonly GridPoint[]> => {
+      const contour = normalizeParcelGridPolygon(footprint.outer).map((point) => new THREE.Vector2(point[0], point[1]));
+      if (contour.length < 3) return [];
+      const holes = footprint.holes.map((hole) => normalizeParcelGridPolygon(hole)
+        .map((point) => new THREE.Vector2(point[0], point[1]))).filter((hole) => hole.length >= 3);
+      const vertices = [...contour, ...holes.flat()];
+      return THREE.ShapeUtils.triangulateShape(contour, holes).map((face) => (
+        face.map((index): GridPoint => [vertices[index]!.x, vertices[index]!.y])
+      )).filter((triangle) => parcelGridPolygonArea(triangle) > 1e-8);
+    };
+    const buildingCandidates = loadedBuildingReferences.map((reference) => {
+      const triangles = reference.footprints.flatMap(triangulateBuildingFootprint);
+      const overlapFragments: Array<readonly GridPoint[]> = [];
+      for (const buildingTriangle of triangles) {
+        for (const parcelTriangle of parcelCoverageTriangles) {
+          const intersection = intersectConvexParcelGridPolygons(buildingTriangle, parcelTriangle);
+          if (parcelGridPolygonArea(intersection) > 1e-6) overlapFragments.push(intersection);
+        }
+      }
+      const overlapArea = mergeParcelGridCoverage(overlapFragments)
+        .reduce((sum, polygon) => sum + parcelGridPolygonArea(polygon), 0);
+      return { reference, triangles, overlapArea };
+    }).filter((candidate) => candidate.overlapArea > 0.05 || pointInsideUnion(candidate.reference.centroid));
+    buildingCandidates.sort((first, second) => (
+      second.overlapArea - first.overlapArea
+      || second.reference.areaM2 - first.reference.areaM2
+      || first.reference.buildingId.localeCompare(second.reference.buildingId)
+    ));
+    parcelGridBuildingReference = buildingCandidates[0]?.reference ?? null;
+    // Every intersecting existing building is an obstacle. Only the building
+    // with the greatest real parcel overlap owns the common red reference
+    // frame; neighbouring buildings must still never be rastered through.
+    const buildingExclusionTriangles = buildingCandidates.flatMap((candidate) => candidate.triangles);
+    options.root.dataset.parcelGridIntersectingBuildings = String(buildingCandidates.length);
+    options.root.dataset.parcelGridBuildingOverlapArea = buildingCandidates[0]?.overlapArea.toFixed(3) ?? "0.000";
+    if (parcelGridBuildingReference) {
+      options.root.dataset.parcelGridReferenceMode = "lod2-building";
+      options.root.dataset.parcelGridBuildingId = parcelGridBuildingReference.buildingId;
+      options.root.dataset.parcelGridBuildingDimensions = `${parcelGridBuildingReference.widthM.toFixed(2)}x${parcelGridBuildingReference.depthM.toFixed(2)}`;
+    } else {
+      options.root.dataset.parcelGridReferenceMode = "empty-parcel";
+    }
     const rawSegments: Array<Omit<BoundarySegment, "guideKey" | "inward" | "maximumDepth"> & { readonly parcel: WorldParcel }> = [];
     for (const parcel of worldParcels) {
       for (const ring of parcel.rings) {
@@ -2970,6 +3092,13 @@ export function createWorldEditController(
       refreshClearedPlacementGeometry();
       return;
     }
+    // Two-zone contract: the green outer band always belongs to the parcel
+    // boundary. A building supplies only the coherent red inner frame and an
+    // exclusion footprint; individual facade fragments never become local,
+    // competing boundary bands.
+    const buildingBoundarySegments: BoundarySegment[] = [];
+    const rasterBoundarySegments = boundarySegments;
+    options.root.dataset.parcelGridFacadeSegments = String(parcelGridBuildingReference?.facades.length ?? 0);
 
     const distanceToSegment = (point: GridPoint, segment: BoundarySegment): number => {
       const dx = segment.end[0] - segment.start[0];
@@ -2992,7 +3121,7 @@ export function createWorldEditController(
       const depth = segmentMatchesGuide(segment) ? parcelGridGuide!.depthMeters : savedDepth;
       return Math.max(0, Math.min(segment.maximumDepth, Math.round(depth ?? defaultSlantedDepth)));
     };
-    const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...boundarySegments.map(depthForSegment));
+    const maximumSlantedDepth = Math.max(defaultSlantedDepth, ...rasterBoundarySegments.map(depthForSegment));
 
     // Placement and drawing must use the very same world-space boundary
     // model.  Resolving directly from the nearest selected boundary avoids
@@ -3015,8 +3144,8 @@ export function createWorldEditController(
         signedDepth: number;
         score: number;
       }> | null = null;
-      for (let segmentIndex = 0; segmentIndex < boundarySegments.length; segmentIndex += 1) {
-        const segment = boundarySegments[segmentIndex]!;
+      for (let segmentIndex = 0; segmentIndex < rasterBoundarySegments.length; segmentIndex += 1) {
+        const segment = rasterBoundarySegments[segmentIndex]!;
         const tangentX = (segment.end[0] - segment.start[0]) / segment.length;
         const tangentZ = (segment.end[1] - segment.start[1]) / segment.length;
         const deltaX = centre[0] - segment.start[0];
@@ -3037,7 +3166,7 @@ export function createWorldEditController(
       const segment = best.segment;
       const tangentX = (segment.end[0] - segment.start[0]) / segment.length;
       const tangentZ = (segment.end[1] - segment.start[1]) / segment.length;
-      const divisions = Math.max(1, Math.ceil(segment.length));
+      const divisions = Math.max(1, segment.divisions ?? Math.ceil(segment.length));
       const columnWidth = segment.length / divisions;
       const column = Math.max(0, Math.min(divisions - 1, Math.floor(
         Math.max(0, Math.min(segment.length - 1e-7, best.along)) / columnWidth,
@@ -3072,7 +3201,7 @@ export function createWorldEditController(
           coordinates: [[...footprint, footprint[0]!]],
           baseY: position.y,
           height: 1,
-          gridSchemaVersion: "vectoplan-parcel-grid-guide.v7",
+          gridSchemaVersion: "vectoplan-parcel-grid-guide.v8",
           sourceCell: { x: position.x, z: position.z },
           boundaryEdge: edgeKey,
           boundaryRow: row,
@@ -3176,8 +3305,7 @@ export function createWorldEditController(
     const { minimumX, maximumX, minimumZ, maximumZ } = renderBounds;
     options.root.dataset.parcelGridRequestedCells = String(renderBounds.requestedCells);
     options.root.dataset.parcelGridRenderedWindowCells = String(renderBounds.renderedCells);
-    const partition = buildParcelGridPartition({
-      boundarySegments: boundarySegments.map((segment) => {
+    const parcelBoundaryInputs = rasterBoundarySegments.map((segment) => {
         const segmentId = [segment.start, segment.end]
           .map((point) => `${point[0].toFixed(6)}:${point[1].toFixed(6)}`)
           .sort()
@@ -3190,27 +3318,75 @@ export function createWorldEditController(
           inward: segment.inward,
           length: segment.length,
           depth: depthForSegment(segment),
+          divisions: segment.divisions,
+          clampToDepth: segment.clampToDepth,
+          boundaryKind: "parcel" as const,
         };
-      }),
+      });
+    const buildingFacadeInputs = buildingCandidates.flatMap((candidate) => (
+      lod2BuildingFacadeBands(candidate.reference, 1)
+    ));
+    const partition = buildParcelGridPartition({
+      boundarySegments: [...parcelBoundaryInputs, ...buildingFacadeInputs],
       coverageTriangles: parcelCoverageTriangles,
+      excludedTriangles: buildingExclusionTriangles,
       bounds: { minimumX, maximumX, minimumZ, maximumZ },
+      regularGrid: parcelGridBuildingReference ? {
+        id: parcelGridBuildingReference.buildingId,
+        origin: parcelGridBuildingReference.origin,
+        axisU: parcelGridBuildingReference.axisU,
+        axisV: parcelGridBuildingReference.axisV,
+        stepU: parcelGridBuildingReference.stepU,
+        stepV: parcelGridBuildingReference.stepV,
+        uAnchors: parcelGridBuildingReference.uAnchors,
+        vAnchors: parcelGridBuildingReference.vAnchors,
+      } : null,
       minimumArea: 1e-6,
     });
-    for (const segment of boundarySegments) addSegment(blueSegments, segment.start, segment.end);
-    const logicalSlantedCells = new Map<string, ParcelGridZoneCell[]>();
+    const parcelGridAudit = parcelGridBuildingReference
+      ? auditParcelGrid({
+          reference: parcelGridBuildingReference,
+          partition,
+          coverageTriangles: parcelCoverageTriangles,
+          excludedTriangles: buildingExclusionTriangles,
+        })
+      : null;
+    if (parcelGridAudit) {
+      options.root.dataset.parcelGridAuditStatus = parcelGridAudit.status;
+      options.root.dataset.parcelGridAuditAxisError = parcelGridAudit.weightedFacadeAxisErrorDegrees.toFixed(3);
+      options.root.dataset.parcelGridAuditAnchorOffset = parcelGridAudit.p95FacadeAnchorOffsetM.toFixed(3);
+      options.root.dataset.parcelGridAuditBuildingOverlap = parcelGridAudit.buildingOverlapAreaM2.toFixed(6);
+      options.root.dataset.parcelGridAuditFacadeCoverage = parcelGridAudit.minimumFacadeCoverageRatio.toFixed(6);
+      options.root.dataset.parcelGridAuditFacadeGap = parcelGridAudit.maximumFacadeLineGapM.toFixed(3);
+      options.root.dataset.parcelGridAuditPartialFacadeCells = String(parcelGridAudit.partialFacadeCellCount);
+      options.root.dataset.parcelGridAuditCoverageGap = parcelGridAudit.uncoveredBuildableAreaM2.toFixed(6);
+      options.root.dataset.parcelGridAuditIssues = parcelGridAudit.issues.map((issue) => issue.code).join(",");
+    } else {
+      delete options.root.dataset.parcelGridAuditStatus;
+      delete options.root.dataset.parcelGridAuditAxisError;
+      delete options.root.dataset.parcelGridAuditAnchorOffset;
+      delete options.root.dataset.parcelGridAuditBuildingOverlap;
+      delete options.root.dataset.parcelGridAuditFacadeCoverage;
+      delete options.root.dataset.parcelGridAuditFacadeGap;
+      delete options.root.dataset.parcelGridAuditPartialFacadeCells;
+      delete options.root.dataset.parcelGridAuditCoverageGap;
+      delete options.root.dataset.parcelGridAuditIssues;
+    }
+    for (const segment of rasterBoundarySegments) addSegment(blueSegments, segment.start, segment.end);
+    const logicalZoneCells = new Map<string, ParcelGridZoneCell[]>();
     for (const partitionCell of partition.cells) {
       const cell: ParcelGridZoneCell = { ...partitionCell };
       zoneCells.push(cell);
+      if (cell.logicalCellId) {
+        const fragments = logicalZoneCells.get(cell.logicalCellId) ?? [];
+        fragments.push(cell);
+        logicalZoneCells.set(cell.logicalCellId, fragments);
+      }
       const polygon = cell.polygon;
       const lineBucket = cell.zone === "straight"
           ? straightSegments
           : transitionSegments;
       if (cell.zone.startsWith("slanted-")) {
-        if (cell.logicalCellId) {
-          const fragments = logicalSlantedCells.get(cell.logicalCellId) ?? [];
-          fragments.push(cell);
-          logicalSlantedCells.set(cell.logicalCellId, fragments);
-        }
         addFillPolygon(slantedFill, polygon);
       } else {
         for (let edge = 0; edge < polygon.length; edge += 1) {
@@ -3225,17 +3401,18 @@ export function createWorldEditController(
         }
       }
     }
-    for (const cells of logicalSlantedCells.values()) {
+    for (const cells of logicalZoneCells.values()) {
+      if (!cells.some((cell) => cell.zone.startsWith("slanted-"))) continue;
       for (const polygon of mergeParcelGridCoverage(cells.map((cell) => cell.polygon))) {
         for (let edge = 0; edge < polygon.length; edge += 1) {
           addSegment(slantedSegments, polygon[edge]!, polygon[(edge + 1) % polygon.length]!);
         }
       }
     }
-    // The inner limit of the slanted raster is a first-class adjustable guide,
-    // not just an incidental row edge. Draw it for every parcel boundary and
-    // use the selected edge's persisted custom depth where applicable.
-    for (const segment of boundarySegments) {
+    // Empty plots retain their adjustable parcel-edge guide. For an existing
+    // building the equivalent band is anchored automatically at each facade;
+    // it is deliberately not draggable away from the wall.
+    for (const segment of rasterBoundarySegments) {
       const depth = depthForSegment(segment);
       innerAxisSegments.push([
         [segment.start[0] + segment.inward[0] * depth, segment.start[1] + segment.inward[1] * depth],
@@ -3313,14 +3490,14 @@ export function createWorldEditController(
     addLineBatch("parcel_grid_active_axis", activeAxisSegments, 0x60a5fa, 1, 121);
     const innerAxisLines = addLineBatch("parcel_grid_inner_axis", innerAxisSegments, 0x00d9ff, 1, 122);
 
-    if (innerAxisLines && activeSystem()?.behavior.showParcelGridHandles) {
+    if (innerAxisLines && activeSystem()?.behavior.showParcelGridHandles && buildingBoundarySegments.length === 0) {
       innerAxisLines.frustumCulled = false;
       const linePositions = innerAxisLines.geometry.getAttribute("position") as THREE.BufferAttribute;
       linePositions.setUsage(THREE.DynamicDrawUsage);
       const camera = options.sceneRuntime.getCamera();
       const renderer = options.sceneRuntime.getRenderer();
-      for (let index = 0; index < boundarySegments.length; index += 1) {
-        const segment = boundarySegments[index]!;
+      for (let index = 0; index < rasterBoundarySegments.length; index += 1) {
+        const segment = rasterBoundarySegments[index]!;
         const guideKey = innerAxisGuideKeys[index]!;
         const depthMeters = depthForSegment(segment);
         const along = segmentMatchesGuide(segment)
@@ -3420,7 +3597,15 @@ export function createWorldEditController(
 
     group.userData = {
       kind: "parcel-grid-guide",
-      schemaVersion: "vectoplan-parcel-grid-guide.v7",
+      schemaVersion: "vectoplan-parcel-grid-guide.v8",
+      referenceMode: parcelGridBuildingReference ? "lod2-building" : "empty-parcel",
+      buildingReference: parcelGridBuildingReference ? {
+        buildingId: parcelGridBuildingReference.buildingId,
+        rotationDegrees: parcelGridBuildingReference.rotationDegrees,
+        dimensionsM: [parcelGridBuildingReference.widthM, parcelGridBuildingReference.depthM],
+        cellSizeM: [parcelGridBuildingReference.stepU, parcelGridBuildingReference.stepV],
+      } : null,
+      audit: parcelGridAudit,
       mode: parcelGridMode,
       setbackMeters: parcelGridSetback,
       legalBandsMeters: Array.from({ length: maximumSlantedDepth + 2 }, (_, index) => index),
@@ -3469,7 +3654,7 @@ export function createWorldEditController(
         for (const cell of zoneCellIndex.get(`${lookup.x}:${lookup.z}`) ?? []) indexedCells.add(cell);
       }
       for (const cell of indexedCells) {
-        if (!cell.zone.startsWith("slanted-")) continue;
+        if (!cell.zone.startsWith("slanted-") && cell.gridAlignment !== "lod2-building") continue;
         const overlap = Math.max(...lookupCells.map((lookup) => (
           polygonCellOverlapArea(cell.polygon, lookup.x, lookup.z)
         )));
@@ -3497,7 +3682,7 @@ export function createWorldEditController(
       // Triangulation and corner subtraction may split one logical grid cell
       // into several convex fragments. Reassemble all fragments of the chosen
       // cell before persisting it; never mix fragments from another edge.
-      const cells = logicalSlantedCells.get(selectedGroup[0]) ?? selectedGroup[1].cells;
+      const cells = logicalZoneCells.get(selectedGroup[0]) ?? selectedGroup[1].cells;
       const originalOverlap = cells.reduce((sum, cell) => (
         sum + polygonCellOverlapArea(cell.polygon, position.x, position.z)
       ), 0);
@@ -3539,7 +3724,10 @@ export function createWorldEditController(
         longestEdge[1][0] - longestEdge[0][0],
       ) * 180 / Math.PI) + 180) % 180;
       const parcelIds = [...new Set(cells.map((cell) => cell.parcelId))].sort();
-      const boundarySegmentId = primary.boundarySegmentId ?? "clipped-edge";
+      const boundarySegmentId = primary.boundarySegmentId
+        ?? (primary.gridAlignment === "lod2-building" && parcelGridBuildingReference
+          ? `building:${parcelGridBuildingReference.buildingId}`
+          : "clipped-edge");
       const boundaryRow = primary.boundaryRow ?? 0;
       return {
         kind: "parcel-grid-prism.v1",
@@ -3551,13 +3739,20 @@ export function createWorldEditController(
             : closedFootprints.map((ring) => [ring]),
           baseY: anchorPosition.y,
           height: 1,
-          gridSchemaVersion: "vectoplan-parcel-grid-guide.v7",
+          gridSchemaVersion: "vectoplan-parcel-grid-guide.v8",
           sourceCell: { x: anchorPosition.x, z: anchorPosition.z },
           logicalGridCellId: selectedGroup[0],
           boundarySegmentId,
           boundaryRow,
           boundaryColumn: primary.boundaryColumn ?? null,
           resolvedFrom: "clipped-grid-partition",
+          gridAlignment: primary.gridAlignment ?? "boundary",
+          ...(primary.gridAlignment === "lod2-building" && parcelGridBuildingReference ? {
+            gridReferenceMode: "lod2-building",
+            lod2BuildingId: parcelGridBuildingReference.buildingId,
+            buildingGridRotationDegrees: parcelGridBuildingReference.rotationDegrees,
+            buildingGridStepM: [parcelGridBuildingReference.stepU, parcelGridBuildingReference.stepV],
+          } : {}),
         },
         occupiedCells: [anchorPosition],
         mergeKey: `parcel-grid:${parcelIds.join("+")}:${anchorPosition.y}:${boundarySegmentId}:${boundaryRow}:${wallAxisDegrees.toFixed(2)}`,
@@ -3583,6 +3778,7 @@ export function createWorldEditController(
       parcelGridMode,
       parcelGridSetback,
       guideSignature,
+      parcelGridBuildingReference?.signature ?? "empty-parcel",
       minimumX,
       maximumX,
       minimumZ,
@@ -4592,7 +4788,9 @@ export function createWorldEditController(
     persistParcelGridState();
     const angle = normalizeGridRotation(Math.atan2(dz, dx) * 180 / Math.PI);
     setStatus(
-      `Bauachse gewählt: ${angle.toFixed(1)}° · Schrägzone ${depthMeters} Blöcke tief. Den Doppelpfeil anvisieren, Linksklick halten und ziehen.`,
+      parcelGridBuildingReference
+        ? `Bestandsraster: LoD2-Gebäude ${parcelGridBuildingReference.widthM.toFixed(1)} × ${parcelGridBuildingReference.depthM.toFixed(1)} m · Gebäudeachse ${parcelGridBuildingReference.rotationDegrees.toFixed(1)}°. Grundstücksrand ${angle.toFixed(1)}° gewählt.`
+        : `Leeres Grundstück: Bauachse ${angle.toFixed(1)}° · Schrägzone ${depthMeters} Blöcke tief. Den Doppelpfeil anvisieren, Linksklick halten und ziehen.`,
       "ready",
     );
     return true;
@@ -4913,7 +5111,7 @@ export function createWorldEditController(
     const scene = options.sceneRuntime.getScene();
     if (!scene) return [];
     const found: ExistingRoofRef[] = [];
-    scene.traverse((object) => {
+    scene.traverseVisible((object) => {
       if (object.userData.semanticRoof !== true) return;
       const ref = asRecord(object.userData.semanticObjectRef);
       const footprint = asRecord(ref.footprint);
@@ -4932,14 +5130,22 @@ export function createWorldEditController(
 
   function existingRoofAt(position: ChunkApiWorldPosition): ExistingRoofRef | null {
     const point: readonly [number, number] = [position.x, position.z];
+    let nearest: ExistingRoofRef | null = null;
+    let distance = Infinity;
     for (const roof of existingRoofsInScene()) {
       const coordinates = asArray(roof.footprint.coordinates);
       const contains = safeString(roof.footprint.type, "Polygon") === "MultiPolygon"
         ? coordinates.some((polygon) => pointInPolygon(point, polygon))
         : pointInPolygon(point, coordinates);
-      if (contains) return roof;
+      if (contains) {
+        const height = heightOnRoof(roofSurfaceTriangles(roof.metadata.roofCalculation), position.x, position.z, position.y);
+        if (height !== null && Math.abs(height-position.y) < distance) {
+          distance = Math.abs(height-position.y);
+          nearest = roof;
+        }
+      }
     }
-    return null;
+    return nearest;
   }
 
   function restoreEditingRoofObjects(): void {
@@ -4986,7 +5192,7 @@ export function createWorldEditController(
       if (roofCalculationVersionsMatch(
         expectedCalculation,
         object.userData.roofCalculationVersion,
-      )) {
+      ) && JSON.stringify(normalizeSolarSettings(asRecord(ref.metadata).solar)) === JSON.stringify(roofSolarSettings)) {
         matches = true;
         return;
       }
@@ -5046,7 +5252,9 @@ export function createWorldEditController(
     const requestMatches = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
       && roofCalculationRequestKey(storedRequest) === roofCalculationRequestKey(expectedRequest);
     const storedCalculation = asRecord(ref.metadata.roofCalculation);
-    const purlinAlignmentIsCurrent = roofCalculationHasZoneTopPurlinAlignment(storedCalculation);
+    const isImported = roofParameters.roofType === "imported" && Boolean(roofParameters.importedSource)
+      && storedCalculation.source === "lod2-original-surfaces";
+    const purlinAlignmentIsCurrent = isImported || roofCalculationHasZoneTopPurlinAlignment(storedCalculation);
     // Render the persisted calculation immediately even when an older request
     // schema/default set no longer matches exactly, but never reuse a legacy
     // calculation whose lowest purlin still sits below the roof-zone datum.
@@ -5057,13 +5265,16 @@ export function createWorldEditController(
       && storedRequest.contract_version === "cad-roof-calculation-request/0.1"
       ? storedRequest as unknown as RoofCalculationRequest
       : null;
+    if (isImported) runtime.request = expectedRequest;
     editingRoofInstanceId = ref.objectInstanceId;
     editingRoofAnchor = { ...ref.anchor };
+    editingRoofMetadata = { ...ref.metadata };
+    roofSolarSettings = normalizeSolarSettings(ref.metadata.solar);
     hideEditingRoofObjects(ref.objectInstanceId);
     rebuildPolygonAreaScene("roof");
     rebuildRoofZoneScene(true);
     refreshHud();
-    if (!requestMatches || !purlinAlignmentIsCurrent) scheduleRoofPreview(0);
+    if ((!requestMatches || !purlinAlignmentIsCurrent) && !isImported) scheduleRoofPreview(0);
     setStatus(`Dach ${ref.objectInstanceId} ausgewählt. Eckpunkte und alle Dachparameter bleiben editierbar.`, "ready");
   }
 
@@ -5479,6 +5690,14 @@ export function createWorldEditController(
   }
 
   function handleWorldEditKeyDown(event: KeyboardEvent): void {
+    if (solarPanel?.isOpen()) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        solarPanel.close();
+      }
+      return;
+    }
     if (roofQuickSettings?.isOpen()) {
       if (event.key === "Escape") {
         event.preventDefault();
@@ -5513,6 +5732,8 @@ export function createWorldEditController(
     stopPolygonAreaInteraction("roof");
     roofQuickSettings?.close(false);
     stairQuickSettings?.close();
+    solarPanel?.close(false);
+    options.sceneRuntime.getInputController()?.enable("world-edit-solar-activate");
     activeTool = tool;
     const system = systemRegistry?.get(tool);
     if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
@@ -5551,6 +5772,8 @@ export function createWorldEditController(
     stopPolygonAreaInteraction("roof");
     roofQuickSettings?.close(false);
     stairQuickSettings?.close();
+    solarPanel?.close(false);
+    options.sceneRuntime.getInputController()?.enable("world-edit-solar-deactivate");
     panel.hidden = true;
     selection = { first: null, second: null };
     editingRoomInstanceId = null;
@@ -5606,7 +5829,7 @@ export function createWorldEditController(
 
   const supportedRoofTypes = new Set<RoofType>([
     "flat", "gable", "hipped", "half_hipped", "pent", "mansard", "trapezoid",
-    "butterfly", "pyramid", "barrel", "sawtooth",
+    "butterfly", "pyramid", "barrel", "sawtooth", "imported",
   ]);
 
   function roofNumber(
@@ -5662,6 +5885,7 @@ export function createWorldEditController(
       : Number.isFinite(Number(ridgeRaw)) ? Number(ridgeRaw) : fallback.ridgeDirection;
     return {
       roofType: supportedRoofTypes.has(roofTypeValue) ? roofTypeValue : fallback.roofType,
+      importedSource: importedRoofSource(source.importedSource ?? fallback.importedSource),
       pitchDeg: roofNumber(source, ["pitchDeg", "pitch_deg", "roofPitchDeg"], fallback.pitchDeg, 0, 80, true),
       eavesHeightMm: roofNumber(source, ["eavesHeightMm", "eaves_height_mm"], fallback.eavesHeightMm, -100_000, 100_000),
       ridgeDirection,
@@ -6225,6 +6449,8 @@ export function createWorldEditController(
       if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
       roofQuickSettings?.destroy();
       roofQuickSettings = null;
+      solarPanel?.destroy();
+      solarPanel = null;
       stairQuickSettings?.destroy();
       stairQuickSettings = null;
       roofSettingsTexture?.dispose();

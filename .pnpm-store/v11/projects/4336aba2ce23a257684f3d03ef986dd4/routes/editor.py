@@ -627,6 +627,16 @@ def _is_embed_request() -> bool:
         return False
 
 
+def _is_desktop_embed_request() -> bool:
+    try:
+        return (
+            _is_embed_request()
+            and str(request.args.get("client_source") or "").strip().lower() == "desktop"
+        )
+    except Exception:
+        return False
+
+
 def _allowed_frame_ancestors() -> tuple[str, ...]:
     configured = _resolve_first_config_value(
         DEFAULT_FRAME_ANCESTORS,
@@ -661,9 +671,20 @@ def _frame_ancestors_csp() -> str:
     if configured:
         text = _coerce_text(configured, "")
         if "*" not in text:
-            return text
+            value = text
+        else:
+            value = _csp_join(_allowed_frame_ancestors(), include_self=True)
+    else:
+        value = _csp_join(_allowed_frame_ancestors(), include_self=True)
 
-    return _csp_join(_allowed_frame_ancestors(), include_self=True)
+    if _is_desktop_embed_request():
+        values = value.split()
+        for source in ("file:", "http://127.0.0.1:*", "http://localhost:*"):
+            if source not in values:
+                values.append(source)
+        value = " ".join(values)
+
+    return value
 
 
 def _x_frame_options_default() -> str:
@@ -2516,6 +2537,30 @@ def get_editor_route_module_metadata() -> dict[str, Any]:
             "embedUsesFrameAncestorsWithoutWildcard": True,
         },
     }
+
+
+@editor_bp.get("/editor/api/solar/module")
+def editor_solar_module() -> Response:
+    from src.inventory.user_inventory import _request_json, USER_INVENTORY_API_PATH
+    try:
+        payload = _request_json(source=current_app.config, method="GET", path=USER_INVENTORY_API_PATH + "/solar-module")
+        return _performance_capture_json_response(payload)
+    except Exception:
+        return _performance_capture_json_response({"ok": False, "message": "Solar-VPLIB ist nicht verfügbar."}, HTTPStatus.SERVICE_UNAVAILABLE)
+
+
+@editor_bp.post("/editor/api/solar/estimate")
+def editor_solar_estimate() -> Response:
+    from src.solar import estimate_yield
+    if request.content_length is None or request.content_length > 65536:
+        return _performance_capture_json_response({"ok": False, "message": "Ungültige Anfragegröße."}, HTTPStatus.BAD_REQUEST)
+    body = request.get_json(silent=True)
+    if not isinstance(body, dict):
+        return _performance_capture_json_response({"ok": False, "message": "JSON erwartet."}, HTTPStatus.BAD_REQUEST)
+    try:
+        return _performance_capture_json_response(estimate_yield(body))
+    except ValueError as exc:
+        return _performance_capture_json_response({"ok": False, "message": str(exc)}, HTTPStatus.BAD_REQUEST)
 
 
 def clear_editor_route_caches() -> None:

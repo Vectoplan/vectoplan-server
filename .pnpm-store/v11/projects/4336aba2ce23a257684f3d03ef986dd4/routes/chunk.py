@@ -508,6 +508,18 @@ def get_terrain_region(project_id: str, world_id: str) -> Response:
     )
 
 
+@chunk_bp.get("/projects/<project_id>/worlds/<world_id>/map/structures")
+def get_map_structures(project_id: str, world_id: str) -> Response:
+    return _proxy_call(
+        lambda client: client.get_map_structures(project_id, world_id),
+        operation="get_map_structures",
+        context={
+            "projectId": project_id,
+            "worldId": world_id,
+        },
+    )
+
+
 # =============================================================================
 # Command-Routen
 # =============================================================================
@@ -1582,6 +1594,7 @@ def _supported_routes() -> dict[str, list[str]]:
         "chunks": [
             "GET /editor/api/chunk/projects/<projectId>/worlds/<worldId>/chunks",
             "POST /editor/api/chunk/projects/<projectId>/worlds/<worldId>/chunks/batch",
+            "GET /editor/api/chunk/projects/<projectId>/worlds/<worldId>/map/structures",
             "GET /editor/api/chunk/chunks",
             "POST /editor/api/chunk/chunks/batch",
         ],

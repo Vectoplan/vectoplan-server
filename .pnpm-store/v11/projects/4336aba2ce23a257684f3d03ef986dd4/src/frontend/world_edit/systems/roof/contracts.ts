@@ -2,11 +2,13 @@ import {
   normalizePolygonAreaPoints,
   type PolygonAreaPoint,
 } from "../polygon_area/geometry";
+import { calculateImportedRoof, type ImportedRoofSource } from "./imported";
 
 export const ROOF_REQUEST_CONTRACT = "cad-roof-calculation-request/0.1" as const;
 export const ROOF_RESULT_CONTRACT = "cad-roof-calculation-result/0.1" as const;
 
 export type RoofType =
+  | "imported"
   | "flat"
   | "gable"
   | "hipped"
@@ -22,6 +24,7 @@ export type RoofType =
 export type RoofInsulationMode = "between" | "below" | "above";
 
 export interface RoofToolParameters {
+  importedSource?: ImportedRoofSource;
   roofType: RoofType;
   pitchDeg: number;
   eavesHeightMm: number;
@@ -147,6 +150,7 @@ export function buildRoofCalculationRequest(
       outer_ring_mm: ring.map(({ x, z }) => [x * 1000, z * 1000] as const),
     },
     parameters: {
+      ...(parameters.importedSource ? { imported_source: parameters.importedSource } : {}),
       pitch_deg: Math.round(Math.max(0, Math.min(80, parameters.pitchDeg))),
       eaves_height_mm: parameters.eavesHeightMm,
       ridge_direction: parameters.ridgeDirection,
@@ -208,6 +212,12 @@ export async function requestRoofCalculation(
   request: RoofCalculationRequest,
   signal?: AbortSignal,
 ): Promise<RoofCalculationResult> {
+  if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
+  if (request.roof_type === "imported") return calculateImportedRoof(request as unknown as Record<string, unknown>) as RoofCalculationResult;
+  const imported = request.parameters.imported_source as ImportedRoofSource | undefined;
+  if (imported && imported.footprint.length > 1) {
+    throw new Error("Dieses LoD2-Dach enthält einen Innenhof. Originalform/Neigung sind editierbar; ein Formwechsel benötigt getrennte Dachzonen, damit der Hof offen bleibt.");
+  }
   const response = await fetch("/editor/api/cad/automation/roof/calculate", {
     method: "POST",
     credentials: "same-origin",

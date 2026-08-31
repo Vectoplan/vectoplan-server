@@ -793,7 +793,7 @@
   }
 }
 /* ==========================================================================
-   White project map with native zoom controls.
+   White project map at a 1:1500 base scale with pointer-anchored wheel zoom.
    ========================================================================== */
 .editor-chunk-map {
   color: #172033;
@@ -888,75 +888,11 @@
   stroke: #ffffff;
 }
 
-.editor-chunk-map__zoom {
-  position: absolute;
-  right: 16px;
-  bottom: 16px;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: 38px minmax(58px, auto) 38px 48px;
-  align-items: center;
-  overflow: hidden;
-  color: #253047;
-  background: rgb(255 255 255 / 96%);
-  border: 1px solid #d9e0ea;
-  border-radius: 11px;
-  box-shadow: 0 10px 30px rgb(15 23 42 / 13%);
-}
-
-.editor-chunk-map__zoom-button {
-  min-width: 38px;
-  height: 38px;
-  padding: 0 10px;
-  color: #344054;
-  background: transparent;
-  border: 0;
-  border-right: 1px solid #e4e8ef;
-  font: 750 0.84rem/1 "Segoe UI", sans-serif;
-  cursor: pointer;
-}
-
-.editor-chunk-map__zoom-button:last-child {
-  border-right: 0;
-  border-left: 1px solid #e4e8ef;
-  font-size: 0.7rem;
-}
-
-.editor-chunk-map__zoom-button:hover:not(:disabled),
-.editor-chunk-map__zoom-button:focus-visible:not(:disabled) {
-  color: #2b59ff;
-  background: #eef3ff;
-  outline: none;
-}
-
-.editor-chunk-map__zoom-button:disabled {
-  color: #98a2b3;
-  background: transparent;
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.editor-chunk-map__zoom-level {
-  min-width: 58px;
-  padding: 0 8px;
-  color: #667085;
-  font: 700 0.68rem/1 "Segoe UI", sans-serif;
-  text-align: center;
-}
-
-@media (max-width: 760px) {
-  .editor-chunk-map__zoom {
-    right: 10px;
-    bottom: 10px;
-  }
-}
 /* Landscape project map: full-size stage with Hytale-style floating controls. */
 .editor-chunk-map {
   grid-template-rows: minmax(0, 1fr);
   padding: 8px 12px 8px 76px;
-  background:
-    radial-gradient(circle at 48% 28%, rgb(210 225 220 / 72%), transparent 44%),
-    rgb(235 240 240 / 97%);
+  background: rgb(247 249 252 / 97%);
 }
 
 .editor-chunk-map__header {
@@ -976,14 +912,14 @@
   height: 100%;
   min-height: 0;
   overflow: hidden;
-  background: #435e49;
-  border-color: rgb(43 62 55 / 28%);
+  background: #ffffff;
+  border-color: #dfe5ee;
   border-radius: 18px;
   box-shadow: 0 24px 70px rgb(15 23 42 / 18%);
 }
 
 .editor-chunk-map__canvas {
-  cursor: zoom-in;
+  cursor: default;
 }
 
 .editor-chunk-map__players {
@@ -995,31 +931,31 @@
   max-height: calc(100% - 36px);
   padding: 15px;
   overflow: auto;
-  color: #edf7f2;
-  background: rgb(8 24 29 / 82%);
-  border-color: rgb(198 225 214 / 20%);
+  color: #253047;
+  background: rgb(255 255 255 / 96%);
+  border-color: #d9e0ea;
   border-radius: 13px;
-  box-shadow: 0 16px 42px rgb(3 12 17 / 26%);
-  backdrop-filter: blur(14px) saturate(0.9);
+  box-shadow: 0 14px 36px rgb(15 23 42 / 14%);
+  backdrop-filter: blur(14px) saturate(0.96);
 }
 
 .editor-chunk-map__players h3 {
-  color: #f6fbf8;
+  color: #111827;
 }
 
 .editor-chunk-map__players li {
-  color: #edf7f2;
-  background: rgb(255 255 255 / 7%);
-  border-color: rgb(255 255 255 / 9%);
+  color: #253047;
+  background: #f8fafc;
+  border-color: #e5e9f0;
 }
 
 .editor-chunk-map__players small,
 .editor-chunk-map__connection {
-  color: #abc0b8;
+  color: #667085;
 }
 
 .editor-chunk-map__connection[data-status="connected"] {
-  color: #79e5a8;
+  color: #168753;
 }
 
 .editor-chunk-map__footer {
@@ -1027,21 +963,16 @@
 }
 
 .editor-chunk-map__compass {
-  color: #f5fbf8;
-  background: rgb(8 24 29 / 78%);
-  border-color: rgb(218 237 229 / 20%);
-  box-shadow: 0 10px 30px rgb(3 12 17 / 22%);
+  color: #253047;
+  background: rgb(255 255 255 / 96%);
+  border-color: #d9e0ea;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 12%);
   backdrop-filter: blur(10px);
 }
 
 .editor-chunk-map__compass svg {
-  fill: #65d6ff;
-  stroke: #f5fbf8;
-}
-
-.editor-chunk-map__zoom {
-  background: rgb(255 255 255 / 94%);
-  backdrop-filter: blur(12px);
+  fill: #2b59ff;
+  stroke: #ffffff;
 }
 
 @media (max-width: 760px) {

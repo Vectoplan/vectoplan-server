@@ -60,13 +60,45 @@ def _request(
 
 def project_chunks_to_projection(config: Mapping[str, Any], core_project_id: str, body: Mapping[str, Any]) -> dict[str, Any]:
     project_id = urllib.parse.quote(core_project_id, safe="")
+    request_body = dict(body)
+    prefer_stored_snapshot = bool(request_body.pop("preferStoredSnapshot", False))
+    requested_projection_key = str(request_body.get("projectionKey") or "default-floor-plan")
+    timeout = int(config.get("CORE_TIMEOUT_SECONDS") or 45)
+
+    if prefer_stored_snapshot:
+        candidate_keys = [requested_projection_key]
+        if (
+            requested_projection_key.startswith("semantic-floor-plan-")
+            and requested_projection_key != "semantic-floor-plan-v2-default"
+        ):
+            candidate_keys.append("semantic-floor-plan-v2-default")
+        for candidate_key in candidate_keys:
+            encoded_key = urllib.parse.quote(candidate_key, safe="")
+            try:
+                stored = _request(
+                    base_url=str(config.get("CORE_INTERNAL_URL") or ""),
+                    path=f"/api/v1/projects/{project_id}/projections/{encoded_key}",
+                    method="GET",
+                    api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
+                    timeout=min(max(timeout, 1), 5),
+                )
+            except CoreClientError:
+                continue
+            return {
+                **stored,
+                "cacheHit": True,
+                "snapshotSource": "stored",
+                "requestedProjectionKey": requested_projection_key,
+                "snapshotFallback": candidate_key if candidate_key != requested_projection_key else None,
+            }
+
     return _request(
         base_url=str(config.get("CORE_INTERNAL_URL") or ""),
         path=f"/api/v1/projects/{project_id}/projections/chunk-to-2d",
         method="POST",
         api_key=str(config.get("CORE_SERVICE_API_KEY") or ""),
-        timeout=int(config.get("CORE_TIMEOUT_SECONDS") or 45),
-        body=body,
+        timeout=timeout,
+        body=request_body,
     )
 
 

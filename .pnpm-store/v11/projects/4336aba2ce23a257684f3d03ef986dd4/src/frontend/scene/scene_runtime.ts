@@ -27,8 +27,16 @@ import {
 import {
   isVplibParametricObjectRef,
   shouldRenderSemanticFootprint,
+  shouldAdaptSemanticObjectToParcelGrid,
+  shouldAdaptBlockToParcelGrid,
 } from "./semantic_object_rendering";
+import { additionalSurfaceChunkCoordinates } from "./structure_streaming";
+import { trimLod2WallCaps, type Lod2WallCaps } from "./lod2_wall_caps";
+import { createLod2RoofIndex } from "./lod2_roof_index";
+import { pickBlockInventoryItem, postPickedBlockToInventory } from "../inventory/pick_block";
 import { createRoofCalculationMeshes } from "./roof_calculation_rendering";
+import { buildSolarLayout, createSolarMesh, normalizeSolarSettings } from "../world_edit/systems/solar/layout";
+import { touchesLod2Wall } from './lod2_block_grid';
 import {
   isRenderedRoofCalculationCurrent,
   roofCalculationForScene,
@@ -376,6 +384,7 @@ export type ScenePlacementConstraintHandler = (
   position: ChunkApiWorldPosition,
   context?: Readonly<{
     targetPoint?: Readonly<{ x: number; y: number; z: number }> | null;
+    worldCellGrid?: boolean;
   }>,
 ) => ScenePlacementConstraintResult;
 
@@ -458,6 +467,7 @@ const CHUNK_MESH_PROGRESS_COMMIT_INTERVAL_MS = 120;
 const MIN_DIRECTIONAL_PRELOAD_RADIUS = 2;
 const MIN_CHUNK_UNLOAD_RESERVE = 2;
 const INITIAL_WARMUP_EXTRA_RADIUS = 2;
+const CHUNK_STREAM_RETRY_DELAYS_MS = [2_000, 5_000, 10_000, 20_000, 30_000] as const;
 const MAX_PREFETCH_MESH_WARMUP_CHUNKS = 24;
 const RENDER_STORE_SYNC_INTERVAL_MS = 250;
 const PHYSICS_STORE_SYNC_INTERVAL_MS = 100;
@@ -940,6 +950,7 @@ function disposeObject3D(object: THREE.Object3D): void {
 function paletteColor(entry: RuntimeChunkPaletteEntry | null): THREE.Color {
   try {
     const blockTypeId = safeString(entry?.blockTypeId, "runtime-block");
+    if (blockTypeId === "lod2_exterior_wall") return new THREE.Color("#e2d9c7");
     if (blockTypeId.startsWith("system_terrain")) {
       return new THREE.Color("#f8fafc");
     }
@@ -1097,7 +1108,7 @@ function appendGreedyQuad(
   buffers.quadCount += 1;
 }
 
-function createChunkMeshRecord(
+export function createChunkMeshRecord(
   chunk: RuntimeChunkContent,
   isWorldCellOccluder?: (worldX: number, worldY: number, worldZ: number) => boolean,
 ): ChunkMeshRecord {
@@ -1252,7 +1263,7 @@ function createChunkMeshRecord(
   };
 }
 
-interface SemanticChunkObjectRef {
+export interface SemanticChunkObjectRef {
   readonly objectInstanceId: string;
   readonly objectTypeId: string;
   readonly objectVariantId: string;
@@ -1267,7 +1278,10 @@ interface SemanticChunkObjectRef {
   readonly metadata: Readonly<Record<string, unknown>>;
 }
 
-function semanticObjectRefs(chunk: RuntimeChunkContent): readonly SemanticChunkObjectRef[] {
+const semanticRefCache = new WeakMap<RuntimeChunkContent, readonly SemanticChunkObjectRef[]>();
+export function semanticObjectRefs(chunk: RuntimeChunkContent): readonly SemanticChunkObjectRef[] {
+  const cached = semanticRefCache.get(chunk);
+  if (cached) return cached;
   const rawChunk = asRecord(chunk.raw.raw);
   const normalizedRefs = chunk.raw.objectRefs;
   const rawRefs = Array.isArray(normalizedRefs)
@@ -1277,7 +1291,7 @@ function semanticObjectRefs(chunk: RuntimeChunkContent): readonly SemanticChunkO
     : Array.isArray(asRecord(rawChunk.content).objectRefs)
       ? asRecord(rawChunk.content).objectRefs as unknown[]
       : [];
-  return rawRefs.map((value): SemanticChunkObjectRef | null => {
+  const result = rawRefs.map((value): SemanticChunkObjectRef | null => {
     const ref = asRecord(value);
     const footprint = asRecord(ref.footprint);
     const metadata = asRecord(ref.metadata);
@@ -1323,6 +1337,23 @@ function semanticObjectRefs(chunk: RuntimeChunkContent): readonly SemanticChunkO
       metadata,
     };
   }).filter((value): value is SemanticChunkObjectRef => value !== null);
+  semanticRefCache.set(chunk, result);
+  return result;
+}
+
+export function appendLod2WallCaps(record: ChunkMeshRecord, caps: Lod2WallCaps): ChunkMeshRecord {
+  if (!caps.geometry) return record;
+  const material = createMaterial(caps.chunk.paletteByBlockTypeId.get("lod2_exterior_wall") ?? null);
+  material.side = THREE.DoubleSide;
+  const mesh = new THREE.Mesh(caps.geometry, material);
+  mesh.name = `lod2-wall-caps:${caps.chunk.chunkKey}`;
+  mesh.receiveShadow = true;
+  mesh.userData.chunkKey = caps.chunk.chunkKey;
+  mesh.userData.lod2WallCaps = true;
+  mesh.userData.cappedCellIndices = caps.cappedCellIndices;
+  mesh.userData.alignedCellIndices = caps.alignedCellIndices;
+  record.group.add(mesh);
+  return {...record, meshes:[...record.meshes,mesh], materials:[...record.materials,material], geometries:[...record.geometries,caps.geometry]};
 }
 
 function semanticPlacementFingerprint(value: Readonly<{
@@ -1840,6 +1871,7 @@ function chunkWithoutSemanticObjectCells(
   if (refs.length === 0) return chunk;
   const cells = [...chunk.cells];
   for (const ref of coalesceSemanticObjectRefs(refs)) {
+    if (ref.metadata.voxelOccupancy === "none") continue;
     for (const position of ref.occupiedCells) {
       const localX = position.x - chunk.chunkX * chunk.chunkSize;
       const localY = position.y - chunk.chunkY * chunk.chunkSize;
@@ -1852,7 +1884,7 @@ function chunkWithoutSemanticObjectCells(
   return { ...chunk, cells };
 }
 
-function appendSemanticObjectMeshes(
+export function appendSemanticObjectMeshes(
   record: ChunkMeshRecord,
   chunk: RuntimeChunkContent,
   refs: readonly SemanticChunkObjectRef[],
@@ -1886,6 +1918,17 @@ function appendSemanticObjectMeshes(
       semanticMeshes.push(...roof.meshes);
       semanticMaterials.push(...roof.materials);
       semanticGeometries.push(...roof.geometries);
+      const settings = normalizeSolarSettings(ref.metadata.solar);
+      const solar = createSolarMesh(buildSolarLayout(roofCalculation, settings), settings.module);
+      if (solar) {
+        solar.scale.setScalar(cellSize);
+        solar.userData = { ...roof.meshes[0]?.userData, semanticRoof: true,
+          objectInstanceId: ref.objectInstanceId, semanticObjectRef: ref, solarArray: true };
+        record.group.add(solar);
+        semanticMeshes.push(solar);
+        semanticMaterials.push(solar.material as THREE.Material);
+        semanticGeometries.push(solar.geometry);
+      }
       continue;
     }
     const geometry = createSemanticFootprintGeometry(
@@ -2381,6 +2424,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let lastCameraChunkKey: string | null = null;
   let queuedCameraChunk: ChunkCoordinates | null = null;
   let visibilityLoadInFlight = false;
+  let visibilityRetryAttempt = 0;
+  let visibilityRetryAtMs = 0;
   let lastError: Record<string, unknown> | null = null;
   let lastPlacement: ActiveLibraryPlacement | null = null;
   let placeIntentCount = 0;
@@ -2839,7 +2884,23 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         ? chunkBoundaryRevisionTokens(neighbor)[faceIndex]
         : "missing";
     });
-    return [selfRevision, ...neighborRevisions].join("|");
+    const roofVersions = lod2RoofsForChunk(chunk).map(({id,calculation}) => `${id}:${asRecord(calculation).input_fingerprint ?? asRecord(calculation).calculation_id}`);
+    return [selfRevision, ...neighborRevisions, ...roofVersions].join("|");
+  }
+
+  const lod2RoofIndex = createLod2RoofIndex(semanticObjectRefs);
+  function lod2RoofsForChunk(chunk: RuntimeChunkContent): readonly {id:string;buildingId:string;calculation:unknown;
+    facadeSegments:readonly unknown[];repairFacadeRoofSeams:boolean}[] {
+    return lod2RoofIndex.query(worldRuntime.getRegistry(),chunk).map(({ref,revision})=>{
+      const importedSource=asRecord(asRecord(ref.metadata.roofParameters).importedSource);
+      return {
+        id:ref.objectInstanceId,
+        buildingId:safeString(ref.metadata.lod2BuildingId,ref.objectInstanceId),
+        calculation:roofCalculationForScene(ref.objectInstanceId,ref.metadata.roofCalculation,revision),
+        facadeSegments:asArray(importedSource.facadeSegments),
+        repairFacadeRoofSeams:importedSource.facadeProfileMode==='roof-clamped-v1',
+      };
+    });
   }
 
   function createChunkBoundaryMasks(chunk: RuntimeChunkContent): ChunkMeshBoundaryMasks {
@@ -2999,7 +3060,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
 
   async function buildChunkMeshRecord(chunk: RuntimeChunkContent): Promise<ChunkMeshRecord> {
     const persistedSemanticRefs = semanticObjectRefs(chunk).map((ref) => {
-      if (ref.objectKind !== "semantic_footprint" || ref.objectTypeId === "space_room") return ref;
+      if (!shouldAdaptSemanticObjectToParcelGrid(ref)) return ref;
       if (!placementGeometryHandler) return ref;
       const anchor = ref.occupiedCells[0];
       if (!anchor) return ref;
@@ -3033,7 +3094,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         const paletteEntry = chunk.paletteByCellValue.get(cellValue) ?? null;
         const normalizedBlockTypeId = paletteEntry?.blockTypeId.trim().toLowerCase() ?? "";
         if (!paletteEntry?.placeable || !paletteEntry.breakable
-          || /^(air|generator_|biome_|water|bedrock)/.test(normalizedBlockTypeId)) continue;
+          || !shouldAdaptBlockToParcelGrid(normalizedBlockTypeId)) continue;
         const localX = index % chunk.chunkSize;
         const localY = Math.floor(index / chunk.chunkSize) % chunk.chunkSize;
         const localZ = Math.floor(index / (chunk.chunkSize * chunk.chunkSize));
@@ -3066,13 +3127,19 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       ...persistedSemanticRefs.filter(shouldRenderSemanticFootprint),
       ...transientSemanticRefs,
     ];
-    const meshingChunk = chunkWithoutSemanticObjectCells(chunk, semanticRefs);
+    const capsStartedAtMs = nowMs();
+    const caps = trimLod2WallCaps(chunkWithoutSemanticObjectCells(chunk, semanticRefs), lod2RoofsForChunk(chunk),
+      (x,y,z)=>Number(worldRuntime.sampleCell({x,y,z}).cellValue)>0);
+    performanceRecorder?.recordEvent("chunk-mesh", "wall-caps", nowMs()-capsStartedAtMs,
+      {chunkKey:chunk.chunkKey,cells:caps.cappedCellIndices.length,alignedCells:caps.alignedCellIndices.length,
+        triangles:(caps.geometry?.getAttribute('position').count??0)/3});
+    const meshingChunk = caps.chunk;
     if (!chunkMeshWorkerClient) {
       const record = createChunkMeshRecord(meshingChunk, (worldX, worldY, worldZ) => {
         const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
         return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
       });
-      return appendSemanticObjectMeshes(record, chunk, semanticRefs);
+      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
     }
 
     try {
@@ -3100,7 +3167,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           quadCount: result.quadCount,
         },
       );
-      return appendSemanticObjectMeshes(record, chunk, semanticRefs);
+      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
     } catch (error) {
       if (destroyed) throw error;
       refs.root.dataset.sceneRuntimeChunkMeshingThread = "main-thread-fallback";
@@ -3114,7 +3181,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
         return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
       });
-      return appendSemanticObjectMeshes(record, chunk, semanticRefs);
+      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
     }
   }
 
@@ -4316,7 +4383,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   }
 
   function updateChunkMap(state: RealtimePresenceState | null, timestampMs: number): void {
-    if (!chunkMapOverlay?.isOpen()) return;
+    if (!chunkMapOverlay) return;
     chunkMapOverlay.update({
       localPlayer: state ? mapPlayerFromPresence(state) : null,
       remotePlayers: (remoteAvatarScene?.getPlayers() ?? []).map((player) => ({
@@ -4790,41 +4857,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     radius: number,
   ): readonly ChunkCoordinates[] {
     const registry = worldRuntime.getRegistry();
-    const coordinates = new Map<string, ChunkCoordinates>();
     const probes = visibleChunkCoordinatesAround(center, radius, {
       radial: true,
       verticalRadius: 0,
     });
 
-    for (const probe of probes) {
-      const chunk = registry.getChunk(chunkKeyFromCoordinatesLocal(probe));
-      if (!chunk) continue;
-      const minimum = chunk.stats.minimumSurfaceY;
-      const maximum = chunk.stats.maximumSurfaceY;
-      if (
-        typeof minimum !== "number"
-        || !Number.isFinite(minimum)
-        || typeof maximum !== "number"
-        || !Number.isFinite(maximum)
-      ) {
-        continue;
-      }
-      const minimumChunkY = Math.floor(Math.min(minimum, maximum) / chunk.chunkSize);
-      const maximumChunkY = Math.floor(Math.max(minimum, maximum) / chunk.chunkSize);
-      const lower = Math.max(center.chunkY - 8, minimumChunkY);
-      const upper = Math.min(center.chunkY + 8, maximumChunkY);
-      for (let chunkY = lower; chunkY <= upper; chunkY += 1) {
-        if (chunkY === probe.chunkY) continue;
-        const coordinate = {
-          chunkX: probe.chunkX,
-          chunkY,
-          chunkZ: probe.chunkZ,
-        };
-        coordinates.set(chunkKeyFromCoordinatesLocal(coordinate), coordinate);
-      }
-    }
-
-    return [...coordinates.values()];
+    return additionalSurfaceChunkCoordinates(
+      probes.map((probe) => registry.getChunk(chunkKeyFromCoordinatesLocal(probe)))
+        .filter((chunk): chunk is RuntimeChunkContent => chunk !== null),
+      center,
+    );
   }
 
   function updateStreamingFog(radius: number): void {
@@ -5249,9 +5291,24 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           }
         : cameraCenter;
       const chunkKey = chunkKeyFromCoordinatesLocal(center);
+      const loaderSnapshot = worldRuntime.getLoader().getSnapshot();
+      const currentChunkLoadNeedsRetry =
+        chunkKey === lastCameraChunkKey
+        && !queuedCameraChunk
+        && nowMs() >= visibilityRetryAtMs
+        && (
+          visibilityRetryAttempt > 0
+          || loaderSnapshot.status === "failed"
+          || loaderSnapshot.status === "degraded"
+          || loaderSnapshot.lastFailedChunkKeys.length > 0
+        );
 
       if (chunkKey !== lastCameraChunkKey) {
         lastCameraChunkKey = chunkKey;
+        queuedCameraChunk = center;
+        visibilityRetryAttempt = 0;
+        visibilityRetryAtMs = 0;
+      } else if (currentChunkLoadNeedsRetry) {
         queuedCameraChunk = center;
       }
 
@@ -5303,6 +5360,34 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           },
         });
 
+        const completedLoadSnapshot = worldRuntime.getLoader().getSnapshot();
+        const completedLoadNeedsRetry =
+          completedLoadSnapshot.status === "failed"
+          || completedLoadSnapshot.status === "degraded"
+          || completedLoadSnapshot.lastFailedChunkKeys.length > 0;
+        if (completedLoadNeedsRetry && lastCameraChunkKey === targetChunkKey) {
+          const retryDelayMs = CHUNK_STREAM_RETRY_DELAYS_MS[
+            Math.min(visibilityRetryAttempt, CHUNK_STREAM_RETRY_DELAYS_MS.length - 1)
+          ];
+          visibilityRetryAttempt += 1;
+          visibilityRetryAtMs = nowMs() + retryDelayMs;
+          refs.root.dataset.chunkStreamingStatus = "reconnecting";
+          refs.root.dataset.chunkStreamingRetryMs = String(retryDelayMs);
+          setDomLiveMessage(
+            refs,
+            "Umgebungsdaten sind kurzzeitig nicht erreichbar. Der Viewer verbindet sich automatisch neu.",
+          );
+        } else {
+          const recoveredFromFailure = visibilityRetryAttempt > 0;
+          visibilityRetryAttempt = 0;
+          visibilityRetryAtMs = 0;
+          refs.root.dataset.chunkStreamingStatus = "ready";
+          refs.root.dataset.chunkStreamingRetryMs = "";
+          if (recoveredFromFailure) {
+            setDomLiveMessage(refs, "Umgebungsdaten wurden wiederhergestellt.");
+          }
+        }
+
         await loadTerrainSurfaceLayers(
           targetCenter,
           visibleRadius,
@@ -5320,8 +5405,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         }
       }
     } catch (error) {
+      const retryDelayMs = CHUNK_STREAM_RETRY_DELAYS_MS[
+        Math.min(visibilityRetryAttempt, CHUNK_STREAM_RETRY_DELAYS_MS.length - 1)
+      ];
+      visibilityRetryAttempt += 1;
+      visibilityRetryAtMs = nowMs() + retryDelayMs;
+      refs.root.dataset.chunkStreamingStatus = "reconnecting";
+      refs.root.dataset.chunkStreamingRetryMs = String(retryDelayMs);
       logWarn(logger, "Loading chunks around camera failed.", {
         error: normalizeUnknownError(error),
+        retryDelayMs,
       });
     } finally {
       visibilityLoadInFlight = false;
@@ -6175,8 +6268,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         return;
       }
 
-      const placementConstraint = placementConstraintHandler?.(intent.position, {
+      const worldCellGrid = placement.runtimeBlockTypeId === 'lod2_exterior_wall'
+        || (['block','cell_block'].includes(placement.objectKind ?? '') && touchesLod2Wall(intent.position,
+          p=>worldRuntime.sampleCell(p).blockTypeId));
+      let placementConstraint = placementConstraintHandler?.(intent.position, {
         targetPoint: intent.targetPoint,
+        worldCellGrid,
       });
       if (placementConstraint && !placementConstraint.allowed) {
         blockedPlaceIntentCount += 1;
@@ -7160,6 +7257,18 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         onInspect: async () => {
           setDomLiveMessage(refs, "Inspector-Auswahl aktualisiert.");
         },
+        onPickBlock: async (target) => {
+          if(!target?.blockTypeId)return;
+          const chunk=worldRuntime.getRegistry().getChunk(target.chunkKey);
+          const palette=chunk?.paletteByBlockTypeId.get(target.blockTypeId);
+          const object=chunk && semanticObjectRefs(chunk).find(ref=>ref.metadata.voxelOccupancy!=='none' && ref.occupiedCells.some(
+            p=>p.x===target.worldX && p.y===target.worldY && p.z===target.worldZ));
+          const item=pickBlockInventoryItem(target.blockTypeId,palette?.label??target.blockTypeId,palette?.metadata,object?.metadata);
+          if(!item){setDomLiveMessage(refs,"Für diesen Block ist kein platzierbares VPLIB-Bauteil hinterlegt.");return;}
+          const slot=store.peekState().inventory.selectedSlot;
+          if(postPickedBlockToInventory(refs.root,item,slot))setDomLiveMessage(refs,"Anvisierter Block wird in den aktiven Inventarplatz übernommen.");
+          else setDomLiveMessage(refs,"Das User-Inventar ist noch nicht bereit.");
+        },
         onCancel: async () => {
           setDomLiveMessage(refs, "3D-Editor wird verlassen.");
           await options.onExitRequested?.();
@@ -7183,6 +7292,14 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           + "/worlds/"
           + encodeURIComponent(bootstrap.runtime.chunk.worldId)
           + "/terrain/region"
+        ),
+        mapStructuresUrl: (
+          bootstrap.runtime.chunk.apiBaseUrl
+          + "/projects/"
+          + encodeURIComponent(bootstrap.runtime.chunk.projectId)
+          + "/worlds/"
+          + encodeURIComponent(bootstrap.runtime.chunk.worldId)
+          + "/map/structures"
         ),
         onOpen: () => {
           inputController?.clear("chunk-map-open");
@@ -7299,71 +7416,75 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       refs.root.dataset.initialWarmupChunkRadius = String(initialWarmupRadius);
       refs.root.dataset.initialWarmupMaxChunks = String(initialWarmupMaxChunks);
 
-      setDomBootMessage(
-        refs,
-        `Startgebiet wird vorgeladen (Radius ${initialWarmupRadius} Chunks).`,
-      );
-      await worldRuntime.loadAroundChunk(initialCenter, {
-        radius: initialWarmupRadius,
-        reason: "scene-runtime.initial-reserve-warmup",
-        force: false,
-        markVisible: true,
-        preferBatch: true,
-        contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
-        maxChunks: initialWarmupMaxChunks,
-        batchSize: 12,
-        shouldContinue: () => !destroyed && lastCameraChunkKey === initialCenterKey,
-        onBatchLoaded: (progress) => {
-          if (destroyed) return;
-          setDomBootMessage(
-            refs,
-            `Startgebiet wird vorgeladen (${Math.min(progress.batchIndex + 1, progress.batchCount)}/${progress.batchCount} Pakete).`,
-          );
-          renderChunksFromRegistry("scene-runtime.initial-visible-progress");
-        },
-      });
-
-      if (isEarthTerrainWorld()) {
-        await loadTerrainSurfaceLayers(
-          initialCenter,
-          initialWarmupRadius,
-          initialCenterKey,
-          { chunkX: 0, chunkY: 0, chunkZ: 0 },
-        );
-      }
-
       await preloadVisibleMaterialTextures();
       chunkRenderingSuspended = false;
-      renderChunksFromRegistry("scene-runtime.initialize-warmed");
-      await drainInitialChunkMeshQueue();
-
-      // Keep the fully prepared reserve in RAM/GPU, but expose only the normal
-      // view radius. Crossing the first chunks therefore needs no request and
-      // no remesh; the directional loader can refill the reserve in the back.
-      setDomBootMessage(refs, "Sichtbereich wird aktiviert.");
-      await worldRuntime.loadAroundChunk(initialCenter, {
-        radius: initialVisibleRadius,
-        reason: "scene-runtime.initial-visible-activation",
-        force: false,
-        markVisible: true,
-        preferBatch: true,
-        contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
-        maxChunks: initialWarmupMaxChunks,
-        batchSize: 12,
-        shouldContinue: () => !destroyed && lastCameraChunkKey === initialCenterKey,
-      });
-      if (isEarthTerrainWorld()) {
-        await loadTerrainSurfaceLayers(
-          initialCenter,
-          initialVisibleRadius,
-          initialCenterKey,
-          { chunkX: 0, chunkY: 0, chunkZ: 0 },
-        );
-      }
-      renderChunksFromRegistry("scene-runtime.initial-visible-activated");
+      renderChunksFromRegistry("scene-runtime.initialize-local-world");
       await drainInitialChunkMeshQueue();
       updateStreamingFog(initialVisibleRadius);
-      setDomBootMessage(refs, "Editor ist bereit.");
+      setDomBootMessage(refs, "Editor ist bereit. Umgebung wird im Hintergrund geladen.");
+
+      // The initial world already contains the local spawn chunk. Optional
+      // geodata overlays and the radius reserve must never be a boot gate: a
+      // missing Bigdata/GeoServer stack used to keep the complete editor behind
+      // “1/18 Pakete” even though editable cells and roofs were available.
+      const continueInitialStreaming = () => !destroyed && lastCameraChunkKey === initialCenterKey;
+      const streamInitialEnvironment = async (): Promise<void> => {
+        refs.root.dataset.initialStreamingStatus = "visible-loading";
+        await worldRuntime.loadAroundChunk(initialCenter, {
+          radius: initialVisibleRadius,
+          reason: "scene-runtime.initial-visible-background",
+          force: false,
+          markVisible: true,
+          preferBatch: true,
+          contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
+          maxChunks: initialWarmupMaxChunks,
+          batchSize: 12,
+          shouldContinue: continueInitialStreaming,
+          onBatchLoaded: (progress) => {
+            if (!continueInitialStreaming()) return;
+            refs.root.dataset.initialStreamingProgress = `${Math.min(progress.batchIndex + 1, progress.batchCount)}/${progress.batchCount}`;
+            renderChunksFromRegistry("scene-runtime.initial-visible-progress");
+          },
+        });
+        if (!continueInitialStreaming()) return;
+        if (isEarthTerrainWorld()) {
+          await loadTerrainSurfaceLayers(
+            initialCenter,
+            initialVisibleRadius,
+            initialCenterKey,
+            { chunkX: 0, chunkY: 0, chunkZ: 0 },
+          );
+        }
+        renderChunksFromRegistry("scene-runtime.initial-visible-background-complete");
+        await drainInitialChunkMeshQueue();
+        if (!continueInitialStreaming()) return;
+
+        refs.root.dataset.initialStreamingStatus = "reserve-loading";
+        const reserveCoordinates = visibleChunkCoordinatesAround(initialCenter, initialWarmupRadius, {
+          radial: true,
+          verticalRadius: 0,
+        });
+        await worldRuntime.getLoader().loadCoordinates(reserveCoordinates, {
+          reason: "scene-runtime.initial-reserve-background",
+          force: false,
+          markVisible: false,
+          preferBatch: true,
+          contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
+          maxChunks: initialWarmupMaxChunks,
+          batchSize: 12,
+          shouldContinue: continueInitialStreaming,
+        });
+        if (!continueInitialStreaming()) return;
+        if (isEarthTerrainWorld()) {
+          await loadTerrainSurfaceLayers(
+            initialCenter,
+            initialWarmupRadius,
+            initialCenterKey,
+            { chunkX: 0, chunkY: 0, chunkZ: 0 },
+          );
+        }
+        refs.root.dataset.initialStreamingStatus = "ready";
+      };
 
       setStoreAction(store, {
         kind: "render/initialized",
@@ -7380,6 +7501,15 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       setStatus("ready");
 
       start("initialize");
+      void streamInitialEnvironment().catch((error) => {
+        if (destroyed) return;
+        refs.root.dataset.initialStreamingStatus = "degraded";
+        logWarn(logger, "Initial environment streaming degraded; editor remains usable.", {
+          error: normalizeUnknownError(error),
+          centerChunkKey: initialCenterKey,
+        });
+        setDomLiveMessage(refs, "Editor ist bereit. Optionale Umgebungsdaten sind derzeit nur teilweise verfügbar.");
+      });
 
       logInfo(logger, "Scene runtime initialized.", {
         id,
