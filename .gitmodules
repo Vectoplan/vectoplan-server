@@ -38,3 +38,6 @@
 [submodule "services/vectoplan-statik"]
 	path = services/vectoplan-statik
 	url = https://github.com/Vectoplan/vectoplan-statik.git
+[submodule "services/vectoplan-cad"]
+	path = services/vectoplan-cad
+	url = https://github.com/Vectoplan/vectoplan-cad.git
