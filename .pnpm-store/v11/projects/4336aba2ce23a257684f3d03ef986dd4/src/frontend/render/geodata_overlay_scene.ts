@@ -25,6 +25,7 @@ interface OverlayStyle {
   readonly color: string;
   readonly opacity: number;
   readonly lineWidth: number;
+  readonly surfaceWidth: number;
   readonly verticalOffset: number;
   readonly sampleStep: number;
 }
@@ -35,11 +36,22 @@ interface OverlayTile {
   readonly label: string;
   readonly releaseKey: string;
   readonly tileKey: string;
-  readonly renderMode: "surface-lines";
+  readonly renderMode: "surface-lines" | "surface-ribbons";
   readonly semanticRole: string;
   readonly classificationSource: boolean;
   readonly style: OverlayStyle;
   readonly lines: readonly SourceLine[];
+  readonly surfaceWidths: readonly number[];
+}
+
+interface BoundarySegmentXZ {
+  readonly start: PointXZ;
+  readonly end: PointXZ;
+}
+
+interface RoadBoundaryIndex {
+  readonly bucketSize: number;
+  readonly buckets: ReadonlyMap<string, readonly BoundarySegmentXZ[]>;
 }
 
 interface ChunkSurfaceCacheEntry {
@@ -173,6 +185,7 @@ function parseStyle(value: unknown): OverlayStyle {
     color: safeString(style.color, "#ffd54f"),
     opacity: safeNumber(style.opacity, 0.96, { min: 0, max: 1 }),
     lineWidth: safeNumber(style.lineWidth, 1.5, { min: 0.1, max: 20 }),
+    surfaceWidth: safeNumber(style.surfaceWidth, 0, { min: 0, max: 64 }),
     verticalOffset: safeNumber(style.verticalOffset, 0.015, { min: 0.001, max: 2 }),
     sampleStep: safeNumber(style.sampleStep, 0.25, { min: 0.05, max: 2 }),
   };
@@ -180,7 +193,9 @@ function parseStyle(value: unknown): OverlayStyle {
 
 function parseOverlayTile(value: unknown): OverlayTile | null {
   const item = asRecord(value);
-  if (!item || safeString(item.renderMode, "") !== "surface-lines") return null;
+  if (!item) return null;
+  const renderMode = safeString(item.renderMode, "");
+  if (renderMode !== "surface-lines" && renderMode !== "surface-ribbons") return null;
   const geometry = asRecord(item.geometry);
   if (!geometry || safeString(geometry.dimensions, "") !== "world-xz") return null;
   const id = safeString(item.id, "");
@@ -191,24 +206,32 @@ function parseOverlayTile(value: unknown): OverlayTile | null {
   const label = safeString(item.label, id);
   const parcelBoundary = `${id} ${datasetId} ${label} ${semanticRole}`.toLowerCase();
   const parsedStyle = parseStyle(item.style);
-  const isParcelBoundary = (
-    item.classificationSource === true
-    || ["parcel", "cadastr", "cadastre", "flurstueck", "grundstueck", "alkis"].some((token) => parcelBoundary.includes(token))
-  );
+  const isParcelBoundary = semanticRole === "parcel-boundary"
+    || ["parcel", "cadastr", "cadastre", "flurstueck", "grundstueck", "alkis"].some((token) => parcelBoundary.includes(token));
+  const isStreet = semanticRole === "street-network";
   const style: OverlayStyle = isParcelBoundary
     ? { ...parsedStyle, color: "#1687ff", opacity: Math.max(parsedStyle.opacity, 0.92) }
+    : isStreet
+      ? { ...parsedStyle, color: "#fbfcfd", opacity: 1, surfaceWidth: 6 }
     : parsedStyle;
+  const lines = parseLines(geometry.coordinates);
+  const rawSurfaceWidths = asArray(geometry.surfaceWidths);
   return {
     id,
     datasetId,
     label,
     releaseKey: safeString(item.releaseKey, "unknown-release"),
     tileKey,
-    renderMode: "surface-lines",
-    semanticRole,
+    renderMode,
+    semanticRole: isParcelBoundary ? "parcel-boundary" : semanticRole,
     classificationSource: item.classificationSource === true,
     style,
-    lines: parseLines(geometry.coordinates),
+    lines,
+    surfaceWidths: lines.map((_, index) => safeNumber(
+      rawSurfaceWidths[index],
+      style.surfaceWidth,
+      { min: 0.1, max: 6 },
+    )),
   };
 }
 
@@ -303,7 +326,13 @@ function buildChunkSurfaceCacheEntry(chunk: RuntimeChunkContent): ChunkSurfaceCa
         const cellValue = getChunkCellValue(chunk.cells, cellIndex);
         if (!isSolidCellValue(cellValue, chunk)) continue;
         const topY = originY + localY + 1;
-        if (!Number.isFinite(fallbackTops[columnIndex])) fallbackTops[columnIndex] = topY;
+        // A column without an explicit terrain cell may contain an LoD wall or
+        // another raised object.  Using the highest solid cell makes a road
+        // climb onto roofs.  The lowest solid top is the conservative ground
+        // fallback; an explicit terrain cell still wins below.
+        fallbackTops[columnIndex] = Number.isFinite(fallbackTops[columnIndex])
+          ? Math.min(fallbackTops[columnIndex], topY)
+          : topY;
         if (isTerrainCellValue(cellValue, chunk)) {
           terrainTops[columnIndex] = topY;
           break;
@@ -347,11 +376,13 @@ function buildVisibleSurfaceMap(
       for (let localX = 0; localX < cached.size; localX += 1) {
         const columnIndex = (localZ * cached.size) + localX;
         const key = `${cached.originX + localX}:${cached.originZ + localZ}`;
-        const currentFallback = fallbackSurface.get(key) ?? Number.NEGATIVE_INFINITY;
+        const currentFallback = fallbackSurface.get(key) ?? Number.POSITIVE_INFINITY;
         const currentTerrain = terrainSurface.get(key) ?? Number.NEGATIVE_INFINITY;
         const fallbackTop = cached.fallbackTops[columnIndex] ?? Number.NEGATIVE_INFINITY;
         const terrainTop = cached.terrainTops[columnIndex] ?? Number.NEGATIVE_INFINITY;
-        if (fallbackTop > currentFallback) fallbackSurface.set(key, fallbackTop);
+        if (Number.isFinite(fallbackTop) && fallbackTop < currentFallback) {
+          fallbackSurface.set(key, fallbackTop);
+        }
         if (terrainTop > currentTerrain) terrainSurface.set(key, terrainTop);
       }
     }
@@ -375,6 +406,116 @@ function segmentIdentity(
   return first <= second
     ? `${overlayId}:${first}:${second}`
     : `${overlayId}:${second}:${first}`;
+}
+
+const ROAD_BOUNDARY_BUCKET_SIZE = 8;
+const ROAD_BOUNDARY_RAY_EPSILON = 0.02;
+
+function buildRoadBoundaryIndex(tiles: Iterable<OverlayTile>): RoadBoundaryIndex | null {
+  const bucketSize = ROAD_BOUNDARY_BUCKET_SIZE;
+  const mutable = new Map<string, BoundarySegmentXZ[]>();
+  const seen = new Set<string>();
+  let segmentCount = 0;
+  for (const tile of tiles) {
+    if (tile.semanticRole !== "parcel-boundary") continue;
+    for (const line of tile.lines) {
+      for (let index = 1; index < line.length; index += 1) {
+        const start = line[index - 1];
+        const end = line[index];
+        if (Math.hypot(end[0] - start[0], end[1] - start[1]) <= 1e-8) continue;
+        const first = `${Math.round(start[0] * 1000)}:${Math.round(start[1] * 1000)}`;
+        const second = `${Math.round(end[0] * 1000)}:${Math.round(end[1] * 1000)}`;
+        const identity = first <= second ? `${first}:${second}` : `${second}:${first}`;
+        if (seen.has(identity)) continue;
+        seen.add(identity);
+        const segment = { start, end } satisfies BoundarySegmentXZ;
+        const minimumBucketX = Math.floor(Math.min(start[0], end[0]) / bucketSize);
+        const maximumBucketX = Math.floor(Math.max(start[0], end[0]) / bucketSize);
+        const minimumBucketZ = Math.floor(Math.min(start[1], end[1]) / bucketSize);
+        const maximumBucketZ = Math.floor(Math.max(start[1], end[1]) / bucketSize);
+        for (let bucketX = minimumBucketX; bucketX <= maximumBucketX; bucketX += 1) {
+          for (let bucketZ = minimumBucketZ; bucketZ <= maximumBucketZ; bucketZ += 1) {
+            const key = `${bucketX}:${bucketZ}`;
+            const bucket = mutable.get(key) ?? [];
+            bucket.push(segment);
+            mutable.set(key, bucket);
+          }
+        }
+        segmentCount += 1;
+      }
+    }
+  }
+  return segmentCount > 0 ? { bucketSize, buckets: mutable } : null;
+}
+
+function nearbyRoadBoundaries(
+  index: RoadBoundaryIndex,
+  x: number,
+  z: number,
+  radius: number,
+): readonly BoundarySegmentXZ[] {
+  const result = new Set<BoundarySegmentXZ>();
+  const minimumBucketX = Math.floor((x - radius) / index.bucketSize);
+  const maximumBucketX = Math.floor((x + radius) / index.bucketSize);
+  const minimumBucketZ = Math.floor((z - radius) / index.bucketSize);
+  const maximumBucketZ = Math.floor((z + radius) / index.bucketSize);
+  for (let bucketX = minimumBucketX; bucketX <= maximumBucketX; bucketX += 1) {
+    for (let bucketZ = minimumBucketZ; bucketZ <= maximumBucketZ; bucketZ += 1) {
+      for (const segment of index.buckets.get(`${bucketX}:${bucketZ}`) ?? []) result.add(segment);
+    }
+  }
+  return [...result];
+}
+
+function rayBoundaryDistance(
+  origin: PointXZ,
+  direction: PointXZ,
+  segment: BoundarySegmentXZ,
+  maximumDistance: number,
+): number | null {
+  const segmentX = segment.end[0] - segment.start[0];
+  const segmentZ = segment.end[1] - segment.start[1];
+  const denominator = (direction[0] * segmentZ) - (direction[1] * segmentX);
+  if (Math.abs(denominator) <= 1e-9) return null;
+  const offsetX = segment.start[0] - origin[0];
+  const offsetZ = segment.start[1] - origin[1];
+  const distance = ((offsetX * segmentZ) - (offsetZ * segmentX)) / denominator;
+  const factor = ((offsetX * direction[1]) - (offsetZ * direction[0])) / denominator;
+  return distance > ROAD_BOUNDARY_RAY_EPSILON
+    && distance <= maximumDistance + 1e-6
+    && factor >= -1e-6
+    && factor <= 1 + 1e-6
+    ? distance
+    : null;
+}
+
+/**
+ * A road ribbon is symmetric around its source line.  Therefore the usable
+ * width is twice the closest known parcel boundary in either normal
+ * direction, never the sum of both sides (which would spill when the source
+ * line is not perfectly centred in its road parcel).
+ */
+export function constrainedRoadSurfaceWidth(
+  nominalWidth: number,
+  point: PointXZ,
+  tangent: PointXZ,
+  boundaryIndex: RoadBoundaryIndex | null,
+): number {
+  const safeNominal = Math.max(0.1, Math.min(6, nominalWidth));
+  if (!boundaryIndex) return safeNominal;
+  const tangentLength = Math.hypot(tangent[0], tangent[1]);
+  if (tangentLength <= 1e-9) return safeNominal;
+  const maximumHalfWidth = safeNominal / 2;
+  const normal: PointXZ = [-tangent[1] / tangentLength, tangent[0] / tangentLength];
+  const candidates = nearbyRoadBoundaries(boundaryIndex, point[0], point[1], maximumHalfWidth);
+  let constrainedHalfWidth = maximumHalfWidth;
+  for (const direction of [normal, [-normal[0], -normal[1]] as PointXZ]) {
+    for (const segment of candidates) {
+      const distance = rayBoundaryDistance(point, direction, segment, maximumHalfWidth);
+      if (distance !== null) constrainedHalfWidth = Math.min(constrainedHalfWidth, distance);
+    }
+  }
+  return Math.max(0.1, Math.min(safeNominal, constrainedHalfWidth * 2));
 }
 
 function appendDrapedSourceLine(
@@ -418,6 +559,119 @@ function appendDrapedSourceLine(
     }
   }
   return emitted;
+}
+
+function appendDrapedSourceRibbon(
+  positions: number[],
+  emittedSegments: Set<string>,
+  tile: OverlayTile,
+  line: SourceLine,
+  surface: ReadonlyMap<string, number>,
+  roadBoundaryIndex: RoadBoundaryIndex | null = null,
+): number {
+  let emitted = 0;
+  for (let lineIndex = 1; lineIndex < line.length; lineIndex += 1) {
+    const sourceStart = line[lineIndex - 1];
+    const sourceEnd = line[lineIndex];
+    const sourceDx = sourceEnd[0] - sourceStart[0];
+    const sourceDz = sourceEnd[1] - sourceStart[1];
+    const sourceDistance = Math.hypot(sourceDx, sourceDz);
+    const steps = Math.max(1, Math.ceil(sourceDistance / tile.style.sampleStep));
+    let previous: readonly [number, number, number] | null = null;
+
+    for (let index = 0; index <= steps; index += 1) {
+      const factor = index / steps;
+      const x = sourceStart[0] + (sourceDx * factor);
+      const z = sourceStart[1] + (sourceDz * factor);
+      const surfaceY = surface.get(horizontalCellKey(x, z));
+      const current: readonly [number, number, number] | null = surfaceY === undefined
+        ? null
+        : [x, surfaceY + tile.style.verticalOffset, z];
+
+      if (previous && current) {
+        const identity = segmentIdentity(tile.id, previous, current);
+        const dx = current[0] - previous[0];
+        const dy = current[1] - previous[1];
+        const dz = current[2] - previous[2];
+        const distance = Math.hypot(dx, dz);
+        // Never stretch a street ribbon vertically over a wall or a missing
+        // terrain step. Voxel terrain itself may legitimately move by one
+        // metre between samples, hence the deliberately tolerant threshold.
+        const plausibleSurfaceStep = Math.abs(dy) <= Math.max(1.5, distance * 2);
+        if (!emittedSegments.has(identity) && distance > 1e-6 && plausibleSurfaceStep) {
+          emittedSegments.add(identity);
+          const effectiveWidth = tile.semanticRole === "street-network"
+            ? constrainedRoadSurfaceWidth(
+              tile.style.surfaceWidth,
+              [(previous[0] + current[0]) / 2, (previous[2] + current[2]) / 2],
+              [dx, dz],
+              roadBoundaryIndex,
+            )
+            : tile.style.surfaceWidth;
+          const halfWidth = Math.max(0.05, effectiveWidth / 2);
+          const normalX = (-dz / distance) * halfWidth;
+          const normalZ = (dx / distance) * halfWidth;
+          const previousLeft = [previous[0] + normalX, previous[1], previous[2] + normalZ] as const;
+          const previousRight = [previous[0] - normalX, previous[1], previous[2] - normalZ] as const;
+          const currentLeft = [current[0] + normalX, current[1], current[2] + normalZ] as const;
+          const currentRight = [current[0] - normalX, current[1], current[2] - normalZ] as const;
+          positions.push(
+            ...previousLeft, ...previousRight, ...currentRight,
+            ...previousLeft, ...currentRight, ...currentLeft,
+          );
+          emitted += 1;
+        }
+      }
+      previous = current;
+    }
+  }
+  return emitted;
+}
+
+function appendDrapedRibbonCaps(
+  positions: number[],
+  emittedCaps: Set<string>,
+  tile: OverlayTile,
+  line: SourceLine,
+  surface: ReadonlyMap<string, number>,
+  roadBoundaryIndex: RoadBoundaryIndex | null = null,
+): void {
+  const segmentCount = 12;
+  for (const [pointIndex, point] of line.entries()) {
+    const surfaceY = surface.get(horizontalCellKey(point[0], point[1]));
+    if (surfaceY === undefined) continue;
+    const centerY = surfaceY + tile.style.verticalOffset;
+    const capKey = [
+      tile.id,
+      Math.round(point[0] * 1000),
+      Math.round(centerY * 1000),
+      Math.round(point[1] * 1000),
+    ].join(":");
+    if (emittedCaps.has(capKey)) continue;
+    emittedCaps.add(capKey);
+    const previous = line[Math.max(0, pointIndex - 1)] ?? point;
+    const next = line[Math.min(line.length - 1, pointIndex + 1)] ?? point;
+    const effectiveWidth = tile.semanticRole === "street-network"
+      ? constrainedRoadSurfaceWidth(
+        tile.style.surfaceWidth,
+        point,
+        [next[0] - previous[0], next[1] - previous[1]],
+        roadBoundaryIndex,
+      )
+      : tile.style.surfaceWidth;
+    const radius = Math.max(0.05, effectiveWidth / 2);
+    for (let index = 0; index < segmentCount; index += 1) {
+      const firstAngle = (index / segmentCount) * Math.PI * 2;
+      const secondAngle = ((index + 1) / segmentCount) * Math.PI * 2;
+      positions.push(
+        point[0], centerY, point[1],
+        point[0] + (Math.cos(firstAngle) * radius), centerY,
+        point[1] + (Math.sin(firstAngle) * radius),
+        point[0] + (Math.cos(secondAngle) * radius), centerY,
+        point[1] + (Math.sin(secondAngle) * radius),
+      );
+    }
+  }
 }
 
 function disposeObject(object: THREE.Object3D): void {
@@ -535,31 +789,101 @@ export function createGeodataOverlayScene(
 
       const overlays = new Map<string, {
         tile: OverlayTile;
-        positions: number[];
+        linePositions: number[];
+        ribbonPositions: number[];
+        ribbonCasingPositions: number[];
         emitted: Set<string>;
+        emittedCasing: Set<string>;
+        emittedCaps: Set<string>;
+        emittedCasingCaps: Set<string>;
         tileCount: number;
         sourceLineCount: number;
         renderedSegmentCount: number;
       }>();
+      const roadBoundaryIndex = buildRoadBoundaryIndex(tilesByIdentity.values());
       for (const tile of tilesByIdentity.values()) {
         const current = overlays.get(tile.id) ?? {
           tile,
-          positions: [],
+          linePositions: [],
+          ribbonPositions: [],
+          ribbonCasingPositions: [],
           emitted: new Set<string>(),
+          emittedCasing: new Set<string>(),
+          emittedCaps: new Set<string>(),
+          emittedCasingCaps: new Set<string>(),
           tileCount: 0,
           sourceLineCount: 0,
           renderedSegmentCount: 0,
         };
         current.tileCount += 1;
         current.sourceLineCount += tile.lines.length;
-        for (const line of tile.lines) {
-          current.renderedSegmentCount += appendDrapedSourceLine(
-            current.positions,
-            current.emitted,
-            tile,
-            line,
-            surface,
-          );
+        for (const [lineIndex, line] of tile.lines.entries()) {
+          if (tile.renderMode === "surface-ribbons" && tile.semanticRole === "street-network") {
+            const allowedWidth = Math.max(0.1, Math.min(6, tile.surfaceWidths[lineIndex] ?? 6));
+            const casingTile: OverlayTile = {
+              ...tile,
+              style: {
+                ...tile.style,
+                surfaceWidth: allowedWidth,
+                verticalOffset: Math.max(0.003, tile.style.verticalOffset - 0.008),
+              },
+            };
+            const surfaceTile: OverlayTile = {
+              ...tile,
+              style: {
+                ...tile.style,
+                surfaceWidth: Math.max(0.1, allowedWidth - 0.3),
+              },
+            };
+            appendDrapedSourceRibbon(
+              current.ribbonCasingPositions,
+              current.emittedCasing,
+              casingTile,
+              line,
+              surface,
+              roadBoundaryIndex,
+            );
+            appendDrapedRibbonCaps(
+              current.ribbonCasingPositions,
+              current.emittedCasingCaps,
+              casingTile,
+              line,
+              surface,
+              roadBoundaryIndex,
+            );
+            appendDrapedRibbonCaps(
+              current.ribbonPositions,
+              current.emittedCaps,
+              surfaceTile,
+              line,
+              surface,
+              roadBoundaryIndex,
+            );
+            current.renderedSegmentCount += appendDrapedSourceRibbon(
+              current.ribbonPositions,
+              current.emitted,
+              surfaceTile,
+              line,
+              surface,
+              roadBoundaryIndex,
+            );
+          } else {
+            current.renderedSegmentCount += tile.renderMode === "surface-ribbons"
+              ? appendDrapedSourceRibbon(
+                current.ribbonPositions,
+                current.emitted,
+                tile,
+                line,
+                surface,
+              )
+              : appendDrapedSourceLine(
+                current.linePositions,
+                current.emitted,
+                tile,
+                line,
+                surface,
+              );
+          }
         }
         overlays.set(tile.id, current);
       }
@@ -570,26 +894,89 @@ export function createGeodataOverlayScene(
       for (const overlay of overlays.values()) {
         sourceLineCount += overlay.sourceLineCount;
         renderedSegmentCount += overlay.renderedSegmentCount;
-        if (overlay.positions.length === 0) continue;
+        if (
+          overlay.linePositions.length === 0
+          && overlay.ribbonPositions.length === 0
+          && overlay.ribbonCasingPositions.length === 0
+        ) continue;
+        if (overlay.ribbonCasingPositions.length > 0) {
+          const casingGeometry = new THREE.BufferGeometry();
+          casingGeometry.setAttribute(
+            "position",
+            new THREE.Float32BufferAttribute(overlay.ribbonCasingPositions, 3),
+          );
+          casingGeometry.computeBoundingSphere();
+          const casing = new THREE.Mesh(
+            casingGeometry,
+            new THREE.MeshBasicMaterial({
+              color: "#cbd2d9",
+              transparent: false,
+              opacity: 1,
+              depthTest: true,
+              depthWrite: true,
+              toneMapped: false,
+              side: THREE.DoubleSide,
+              polygonOffset: true,
+              polygonOffsetFactor: -1,
+              polygonOffsetUnits: -1,
+            }),
+          );
+          casing.name = `geodata_overlay_${overlay.tile.id}_casing`;
+          casing.renderOrder = 49;
+          casing.userData = {
+            kind: "geodata-overlay-casing",
+            overlayId: overlay.tile.id,
+            semanticRole: overlay.tile.semanticRole,
+            affectsVoxelState: false,
+            affectsCollision: false,
+          };
+          lineGroup.add(casing);
+        }
         const geometry = new THREE.BufferGeometry();
         geometry.setAttribute(
           "position",
-          new THREE.Float32BufferAttribute(overlay.positions, 3),
+          new THREE.Float32BufferAttribute(
+            overlay.tile.renderMode === "surface-ribbons"
+              ? overlay.ribbonPositions
+              : overlay.linePositions,
+            3,
+          ),
         );
         geometry.computeBoundingSphere();
-        const material = new THREE.LineBasicMaterial({
-          color: overlay.tile.style.color,
-          transparent: overlay.tile.style.opacity < 1,
-          opacity: overlay.tile.style.opacity,
-          linewidth: overlay.tile.style.lineWidth,
-          depthTest: true,
-          depthWrite: false,
-          toneMapped: false,
-        });
-        const lines = new THREE.LineSegments(geometry, material);
-        lines.name = `geodata_overlay_${overlay.tile.id}`;
-        lines.renderOrder = 50;
-        lines.userData = {
+        const material = overlay.tile.renderMode === "surface-ribbons"
+          ? new THREE.MeshBasicMaterial({
+            color: overlay.tile.style.color,
+            // Opaque road surfaces avoid the dark, blotchy result caused by
+            // alpha stacking at intersections and chunk boundaries.
+            transparent: overlay.tile.semanticRole === "street-network"
+              ? false
+              : overlay.tile.style.opacity < 1,
+            opacity: overlay.tile.semanticRole === "street-network"
+              ? 1
+              : overlay.tile.style.opacity,
+            depthTest: true,
+            depthWrite: overlay.tile.semanticRole === "street-network",
+            toneMapped: false,
+            side: THREE.DoubleSide,
+            polygonOffset: overlay.tile.semanticRole === "street-network",
+            polygonOffsetFactor: -2,
+            polygonOffsetUnits: -2,
+          })
+          : new THREE.LineBasicMaterial({
+            color: overlay.tile.style.color,
+            transparent: overlay.tile.style.opacity < 1,
+            opacity: overlay.tile.style.opacity,
+            linewidth: overlay.tile.style.lineWidth,
+            depthTest: true,
+            depthWrite: false,
+            toneMapped: false,
+          });
+        const drawable = overlay.tile.renderMode === "surface-ribbons"
+          ? new THREE.Mesh(geometry, material)
+          : new THREE.LineSegments(geometry, material);
+        drawable.name = `geodata_overlay_${overlay.tile.id}`;
+        drawable.renderOrder = overlay.tile.semanticRole === "street-network" ? 50 : 51;
+        drawable.userData = {
           kind: "geodata-overlay",
           overlayId: overlay.tile.id,
           datasetId: overlay.tile.datasetId,
@@ -599,10 +986,11 @@ export function createGeodataOverlayScene(
           affectsVoxelState: false,
           affectsCollision: false,
         };
-        lineGroup.add(lines);
+        lineGroup.add(drawable);
       }
 
       const buildingStats = buildings.sync(registry);
+      group.userData.visualLayerResolutions = buildings.getVisualLayerResolutions();
       stats = {
         buildingCount: buildingStats.buildingCount,
         buildingTriangleCount: buildingStats.triangleCount,

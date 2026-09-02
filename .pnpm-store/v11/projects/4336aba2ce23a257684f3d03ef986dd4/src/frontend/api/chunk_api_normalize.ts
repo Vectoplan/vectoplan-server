@@ -1155,6 +1155,7 @@ function normalizeCommandType(value: unknown): ChunkApiCommandType {
     || normalized === "WorldEdit"
     || normalized === "PlaceObject"
     || normalized === "RemoveObject"
+    || normalized === "ObjectBatch"
   ) {
     return normalized;
   }

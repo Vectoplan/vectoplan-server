@@ -5,6 +5,11 @@ import { buildLod2Mesh, createLod2BuildingScene, triangulateLod2Polygon } from "
 import { normalizeChunkApiBatchResult } from "../src/frontend/api/chunk_api_normalize";
 import { createRuntimeChunkContent } from "../src/frontend/runtime/world/chunk_content";
 import { createGeodataOverlayScene } from "../src/frontend/render/geodata_overlay_scene";
+import { resolveVisualLayer } from "../src/frontend/render/visual_layer_resolver";
+import {
+  LOD2_EXISTING_ROOF_COLOR,
+  LOD2_EXISTING_WALL_COLOR,
+} from "../src/frontend/scene/lod2_existing_appearance";
 
 const roof = [[0, 10, 0], [10, 10, 0], [10, 10, 10], [0, 10, 10]] as const;
 const hole = [[3, 10, 3], [7, 10, 3], [7, 10, 7], [3, 10, 7]] as const;
@@ -34,6 +39,27 @@ test("concave face, degenerate face and invalid geometry", () => {
   assert.equal(mesh.userData.affectsCollision, false);
 });
 
+test("raw LoD2 fallback renders untouched roof and wall surfaces in existing-building whites", () => {
+  const roofRing = [[0, 2, 0], [2, 2, 0], [2, 2, 2], [0, 2, 2], [0, 2, 0]];
+  const wallRing = [[0, 0, 0], [2, 0, 0], [2, 2, 0], [0, 2, 0], [0, 0, 0]];
+  const mesh = buildLod2Mesh({ id: "appearance", polygons: [
+    { surface: "RoofSurface", rings: [roofRing] },
+    { surface: "WallSurface", rings: [wallRing] },
+  ] })!;
+  const colors = mesh.geometry.getAttribute("color");
+  const roofVertexCount = triangulateLod2Polygon([roofRing.slice(0, -1) as any]).length * 3;
+  const roofColor = new THREE.Color(LOD2_EXISTING_ROOF_COLOR);
+  const wallColor = new THREE.Color(LOD2_EXISTING_WALL_COLOR);
+  assert(colors.count > roofVertexCount);
+  assert.equal(new THREE.Color(colors.getX(0), colors.getY(0), colors.getZ(0)).getHexString(),roofColor.getHexString());
+  assert.equal(new THREE.Color(
+    colors.getX(roofVertexCount),
+    colors.getY(roofVertexCount),
+    colors.getZ(roofVertexCount),
+  ).getHexString(),wallColor.getHexString());
+  mesh.geometry.dispose();(mesh.material as THREE.Material).dispose();
+});
+
 test("building is deduplicated, retained, updated and disposed with visible chunks", () => {
   const parent = new THREE.Group();
   const scene = createLod2BuildingScene(parent);
@@ -44,6 +70,7 @@ test("building is deduplicated, retained, updated and disposed with visible chun
   let keys = ["0:0:0", "0:1:0", "1:0:0"];
   const registry = { getVisibleChunkKeys: () => keys, getChunk: () => ({ raw: { metadata: { geodataOverlays: contract } } }) } as any;
   assert.equal(scene.sync(registry).buildingCount, 1);
+  assert.equal(scene.getVisualLayerResolutions()["0:0:0"].selectedKind, "lod2");
   const mesh = scene.getGroup().children[0] as THREE.Mesh;
   assert.equal(scene.sync(registry).buildingCount, 1);
   assert.equal(scene.getGroup().children[0], mesh);
@@ -61,6 +88,56 @@ test("building is deduplicated, retained, updated and disposed with visible chun
   assert.equal(scene.getGroup().children.length, 0);
   scene.dispose();
   assert.equal(parent.children.length, 0);
+});
+
+test("visual resolver keeps licensed LoD2 visible while photorealistic is locked", () => {
+  const contract = {
+    schemaVersion: "geodata-overlays.v1",
+    items: [{
+      id: "lod2-tile", datasetId: "3d-gebaeudedaten", renderMode: "building-meshes",
+      source: { lod: 2, license: "dl-de-zero-2.0" },
+    }],
+    visualLayerResolution: {
+      schemaVersion: "geodata-visual-layer-resolution.v1",
+      policy: "photorealistic-lod3-lod2.v1",
+      selected: { kind: "lod2", itemIds: ["lod2-tile"] },
+      layers: [
+        { kind: "photorealistic", datasetId: "3d-reality-mesh", priority: 300, enabled: false,
+          status: "license_required", itemIds: [], provenance: { licenseState: "license_required" } },
+        { kind: "lod3", datasetId: "3d-gebaeudedaten", priority: 200, enabled: true,
+          status: "unavailable", itemIds: [], provenance: {} },
+        { kind: "lod2", datasetId: "3d-gebaeudedaten", priority: 100, enabled: true,
+          status: "ready", itemIds: ["lod2-tile"], provenance: { source: "Berlin LoD2" } },
+      ],
+    },
+  };
+  const resolved = resolveVisualLayer(contract);
+  assert.equal(resolved.source, "server");
+  assert.equal(resolved.selectedKind, "lod2");
+  assert.equal(resolved.fallbackUsed, true);
+  assert.equal(resolved.layers[0].status, "license_required");
+  assert.deepEqual(resolved.layers[2].provenance, { source: "Berlin LoD2" });
+});
+
+test("editor falls through unsupported or locked layers in declared priority order", () => {
+  const contract = {
+    items: [
+      { id: "photo", datasetId: "3d-reality-mesh", renderMode: "textured-mesh-tile" },
+      { id: "lod3", datasetId: "3d-gebaeudedaten", renderMode: "building-meshes", source: { lod: 3 } },
+      { id: "lod2", datasetId: "3d-gebaeudedaten", renderMode: "building-meshes", source: { lod: 2 } },
+    ],
+    visualLayerResolution: {
+      schemaVersion: "geodata-visual-layer-resolution.v1",
+      selected: { kind: "lod3" },
+      layers: [
+        { kind: "photorealistic", priority: 300, enabled: false, status: "license_required", itemIds: ["photo"] },
+        { kind: "lod3", priority: 200, enabled: true, status: "ready", itemIds: ["lod3"] },
+        { kind: "lod2", priority: 100, enabled: true, status: "ready", itemIds: ["lod2"] },
+      ],
+    },
+  };
+  assert.equal(resolveVisualLayer(contract).selectedKind, "lod3");
+  assert.equal(resolveVisualLayer(contract, ["lod2"]).selectedKind, "lod2");
 });
 
 test("normal API batch preserves LoD2 metadata and renders buildings alongside parcel lines", () => {

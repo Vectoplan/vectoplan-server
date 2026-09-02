@@ -24,3 +24,7 @@ build/
 .DS_Store
 Thumbs.db
 *.log
+
+# Lokale pnpm-Workspace-Junctions spiegeln die echten Microservice-Repositories.
+# Release-Workflows werden nur im jeweiligen Repository versioniert.
+/.pnpm-store/**/.github/workflows/publish-update-source.yml

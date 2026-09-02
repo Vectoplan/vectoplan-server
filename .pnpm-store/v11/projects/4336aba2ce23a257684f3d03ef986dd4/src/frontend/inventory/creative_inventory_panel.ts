@@ -53,6 +53,7 @@ const READY_WORLD_EDIT_TOOLS = new Set([
   "cut-transform",
   "tentacle",
   "roof",
+  "storey",
 ]);
 const CREATIVE_INVENTORY_OPENED_EVENT = "vectoplan-editor:creative-inventory-opened";
 const CREATIVE_INVENTORY_CLOSED_EVENT = "vectoplan-editor:creative-inventory-closed";

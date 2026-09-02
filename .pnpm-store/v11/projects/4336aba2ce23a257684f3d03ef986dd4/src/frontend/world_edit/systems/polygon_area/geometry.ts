@@ -161,18 +161,38 @@ export function polygonAreaClosedCoordinates(
   return coordinates;
 }
 
-export function polygonAreaPointsFromFootprint(
+export function polygonAreaClosedRingCoordinates(
+  outerRing: readonly PolygonAreaPoint[],
+  holeRings: readonly (readonly PolygonAreaPoint[])[] = [],
+): readonly (readonly (readonly [number, number])[])[] {
+  if (!validPolygonArea(outerRing)) return [];
+  return [outerRing, ...holeRings.filter((ring) => validPolygonArea(ring))]
+    .map((ring) => polygonAreaClosedCoordinates(ring));
+}
+
+export function polygonAreaRingsFromFootprint(
   footprint: Readonly<Record<string, unknown>>,
   fallbackY: number,
-): readonly PolygonAreaPoint[] {
+): readonly (readonly PolygonAreaPoint[])[] {
   const coordinates = Array.isArray(footprint.coordinates) ? footprint.coordinates : [];
   const polygon = String(footprint.type ?? "Polygon") === "MultiPolygon"
     ? (Array.isArray(coordinates[0]) ? coordinates[0] : [])
     : coordinates;
-  const ring = Array.isArray(polygon[0]) ? polygon[0] : [];
   const y = Number.isFinite(Number(footprint.baseY)) ? Number(footprint.baseY) : fallbackY;
-  return normalizePolygonAreaPoints(ring.map((value): PolygonAreaPoint => {
-    const point = Array.isArray(value) ? value : [];
-    return { x: Number(point[0]), y, z: Number(point[1]) };
-  }));
+  const rings = polygon
+    .filter((ring): ring is readonly unknown[] => Array.isArray(ring))
+    .map((ring) => normalizePolygonAreaPoints(ring.map((value): PolygonAreaPoint => {
+      const point = Array.isArray(value) ? value : [];
+      return { x: Number(point[0]), y, z: Number(point[1]) };
+    })));
+  const outerRing = rings[0];
+  if (!outerRing || !validPolygonArea(outerRing)) return [];
+  return [outerRing, ...rings.slice(1).filter((ring) => validPolygonArea(ring))];
+}
+
+export function polygonAreaPointsFromFootprint(
+  footprint: Readonly<Record<string, unknown>>,
+  fallbackY: number,
+): readonly PolygonAreaPoint[] {
+  return polygonAreaRingsFromFootprint(footprint, fallbackY)[0] ?? [];
 }

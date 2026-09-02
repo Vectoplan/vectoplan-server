@@ -73,7 +73,8 @@ export type ChunkApiCommandType =
   | "ReplaceBlock"
   | "WorldEdit"
   | "PlaceObject"
-  | "RemoveObject";
+  | "RemoveObject"
+  | "ObjectBatch";
 
 export type ChunkApiCommandStatus =
   | "pending"
@@ -559,6 +560,9 @@ export interface ChunkApiWorldEditCommandPayload extends ChunkApiCommandPayloadB
 export interface ChunkApiPlaceObjectCommandPayload extends ChunkApiCommandPayloadBase {
   readonly type: "PlaceObject";
   readonly blockTypeId: string;
+  /** Explicit runtime id and VPLIB provenance used for authenticated first registration. */
+  readonly runtimeBlockTypeId?: string;
+  readonly libraryContext?: Readonly<Record<string, unknown>>;
   readonly objectTypeId: string;
   readonly objectKind: string;
   readonly objectInstanceId?: string;
@@ -573,13 +577,27 @@ export interface ChunkApiRemoveObjectCommandPayload extends ChunkApiCommandPaylo
   readonly objectInstanceId: string;
 }
 
+/**
+ * A bounded set of object mutations committed by the Chunk service in one
+ * database transaction.  It is intentionally object-only: mixing arbitrary
+ * block/WorldEdit commands here would make ownership and rollback ambiguous.
+ */
+export interface ChunkApiObjectBatchCommandPayload extends ChunkApiCommandPayloadBase {
+  readonly type: "ObjectBatch";
+  readonly commands: readonly (
+    | ChunkApiPlaceObjectCommandPayload
+    | ChunkApiRemoveObjectCommandPayload
+  )[];
+}
+
 export type ChunkApiCommandPayload =
   | ChunkApiSetBlockCommandPayload
   | ChunkApiRemoveBlockCommandPayload
   | ChunkApiReplaceBlockCommandPayload
   | ChunkApiWorldEditCommandPayload
   | ChunkApiPlaceObjectCommandPayload
-  | ChunkApiRemoveObjectCommandPayload;
+  | ChunkApiRemoveObjectCommandPayload
+  | ChunkApiObjectBatchCommandPayload;
 
 export interface ChunkApiCommandResult extends ChunkApiResultBase {
   readonly ok: true;

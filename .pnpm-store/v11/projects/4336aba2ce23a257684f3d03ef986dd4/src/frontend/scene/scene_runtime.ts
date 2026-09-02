@@ -31,7 +31,12 @@ import {
   shouldAdaptBlockToParcelGrid,
 } from "./semantic_object_rendering";
 import { additionalSurfaceChunkCoordinates } from "./structure_streaming";
-import { trimLod2WallCaps, type Lod2WallCaps } from "./lod2_wall_caps";
+import {
+  raycastLod2WallCaps,
+  trimLod2WallCaps,
+  type Lod2WallCaps,
+} from "./lod2_wall_caps";
+import { LOD2_EXISTING_WALL_COLOR } from "./lod2_existing_appearance";
 import { createLod2RoofIndex } from "./lod2_roof_index";
 import { pickBlockInventoryItem, postPickedBlockToInventory } from "../inventory/pick_block";
 import { createRoofCalculationMeshes } from "./roof_calculation_rendering";
@@ -164,6 +169,8 @@ import { raycastFromOriginDirection } from "@targeting/raycast";
 import {
   chunkCoordinatesFromKey,
   createChunkCellAddress,
+  createChunkCellAddressFromChunkAndLocal,
+  localCoordinatesFromCellIndex,
   worldToChunkCoordinates,
   visibleChunkCoordinatesAround,
   type ChunkCoordinates,
@@ -173,6 +180,17 @@ import {
   createEditorUiRuntime,
   type EditorUiRuntimeHandle,
 } from "@ui/editor_ui_runtime";
+import {
+  createPlanningCameraController,
+  planningCameraTargetingDistance,
+  type PlanningCameraControllerHandle,
+  type PlanningCameraSnapshot,
+} from "../camera/planning_camera_controller";
+import {
+  normalizeEditorWorkspaceMode,
+  workspaceModeAllowsGenericBlockEditing,
+  type EditorWorkspaceMode,
+} from "../modes/editor_workspace_mode";
 import {
   ALLOW_CHUNK_PLACEABLE_FALLBACK,
   BROWSER_CALLS_VECTOPLAN_LIBRARY_DIRECTLY,
@@ -227,6 +245,8 @@ export interface SceneRuntimeSnapshot {
   readonly pendingChunkMeshCount: number;
   readonly chunkMeshQueueHighWaterMark: number;
   readonly renderedChunkKeys: readonly string[];
+  readonly workspaceMode: EditorWorkspaceMode;
+  readonly workspaceModeChangedAt: string;
   readonly lastRenderedAt: string | null;
   readonly lastTargetSignature: string | null;
   readonly lastCameraChunkKey: string | null;
@@ -242,6 +262,7 @@ export interface SceneRuntimeSnapshot {
   readonly physics: ReturnType<PhysicsRuntime["snapshot"]> | null;
   readonly hotbar: ReturnType<HotbarControllerHandle["getSnapshot"]> | null;
   readonly geodataOverlays: ReturnType<GeodataOverlaySceneHandle["getSnapshot"]> | null;
+  readonly planningCamera: PlanningCameraSnapshot | null;
 }
 
 export interface SceneRuntimeHandle {
@@ -260,6 +281,10 @@ export interface SceneRuntimeHandle {
   getRenderer(): THREE.WebGLRenderer | null;
   getScene(): THREE.Scene | null;
   getCamera(): THREE.PerspectiveCamera | null;
+  getWorkspaceMode(): EditorWorkspaceMode;
+  setWorkspaceMode(mode: EditorWorkspaceMode, reason?: string): void;
+  resetPlanningView(reason?: string): void;
+  setPlanningTopView(reason?: string): void;
   getInputController(): EditorInputControllerHandle | null;
   getUiRuntime(): EditorUiRuntimeHandle | null;
   getHotbarController(): HotbarControllerHandle | null;
@@ -950,7 +975,7 @@ function disposeObject3D(object: THREE.Object3D): void {
 function paletteColor(entry: RuntimeChunkPaletteEntry | null): THREE.Color {
   try {
     const blockTypeId = safeString(entry?.blockTypeId, "runtime-block");
-    if (blockTypeId === "lod2_exterior_wall") return new THREE.Color("#e2d9c7");
+    if (blockTypeId === "lod2_exterior_wall") return new THREE.Color(LOD2_EXISTING_WALL_COLOR);
     if (blockTypeId.startsWith("system_terrain")) {
       return new THREE.Color("#f8fafc");
     }
@@ -982,9 +1007,14 @@ function createMaterial(
     roughness: 0.88,
     metalness: 0.02,
   });
-  const appearance = getMaterialAppearance(entry?.blockTypeId)
-    ?? fallbackMaterialAppearance(entry?.blockTypeId);
-  applyMaterialAppearance(material, appearance);
+  // LoD2 stock walls deliberately retain their neutral existing-building
+  // appearance. A generic material registry entry must not make untouched
+  // source geometry look like a newly designed wall.
+  if (entry?.blockTypeId !== "lod2_exterior_wall") {
+    const appearance = getMaterialAppearance(entry?.blockTypeId)
+      ?? fallbackMaterialAppearance(entry?.blockTypeId);
+    applyMaterialAppearance(material, appearance);
+  }
   return material;
 }
 
@@ -1845,6 +1875,7 @@ function coalesceSemanticObjectRefs(refs: readonly SemanticChunkObjectRef[]): re
       ? result.findIndex((candidate) => candidate.mergeKey === ref.mergeKey
         && candidate.objectTypeId === ref.objectTypeId
         && ref.objectTypeId !== "space_room"
+        && ref.objectTypeId !== "planning_build_area"
         && candidate.fillBlockTypeId === ref.fillBlockTypeId
         && semanticFootprintsTouch(candidate, ref))
       : -1;
@@ -1931,23 +1962,29 @@ export function appendSemanticObjectMeshes(
       }
       continue;
     }
+    // Line-brush storeys deliberately persist a semantic object reference and
+    // real whole block cells.  The normal chunk mesher is their authoritative
+    // renderer so every wall/slab block remains individually targetable and
+    // breakable; drawing a second footprint prism here would hide that truth.
+    if (ref.metadata.renderProfile === "voxel-only") continue;
     const geometry = createSemanticFootprintGeometry(
       ref.footprint,
       ref.occupiedCells[0]?.y ?? 0,
       cellSize,
     );
-    const roomGeometry = ref.objectTypeId === "space_room"
+    const isPlanningBuildArea = ref.objectTypeId === "planning_build_area";
+    const roomGeometry = ref.objectTypeId === "space_room" || isPlanningBuildArea
       ? createSemanticRoomFloorGeometry(ref.footprint, ref.occupiedCells[0]?.y ?? 0, cellSize)
       : null;
     const selectedGeometry = roomGeometry ?? geometry;
     if (!selectedGeometry) continue;
     if (roomGeometry && geometry) geometry.dispose();
     const paletteEntry = chunk.paletteByBlockTypeId.get(ref.fillBlockTypeId) ?? null;
-    const material = ref.objectTypeId === "space_room"
+    const material = ref.objectTypeId === "space_room" || isPlanningBuildArea
       ? new THREE.MeshBasicMaterial({
-          color: 0x22c55e,
+          color: isPlanningBuildArea ? 0x0f766e : 0x22c55e,
           transparent: true,
-          opacity: 0.22,
+          opacity: isPlanningBuildArea ? 0.28 : 0.22,
           depthWrite: false,
           side: THREE.DoubleSide,
           toneMapped: false,
@@ -1960,11 +1997,12 @@ export function appendSemanticObjectMeshes(
     mesh.userData.objectInstanceId = ref.objectInstanceId;
     mesh.userData.semanticFootprint = true;
     mesh.userData.semanticRoom = ref.objectTypeId === "space_room";
+    mesh.userData.semanticPlanningBuildArea = isPlanningBuildArea;
     mesh.userData.semanticObjectRef = ref;
     mesh.userData.roomType = ref.metadata.roomType;
     mesh.userData.roomLabel = ref.metadata.label;
     record.group.add(mesh);
-    if (ref.objectTypeId === "space_room") {
+    if (ref.objectTypeId === "space_room" || isPlanningBuildArea) {
       const label = createSemanticRoomLabel(ref, cellSize);
       if (label) {
         record.group.add(label);
@@ -2411,6 +2449,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let latestSourceCell: EditorStateChunkCellPosition | null = null;
   let latestPlacementCell: EditorStateChunkCellPosition | null = null;
   let latestTargetPoint: Readonly<{ x: number; y: number; z: number }> | null = null;
+  let latestTargetDistance: number | null = null;
   let lastCameraChunk: ChunkCoordinates | null = null;
   let earthStreamingChunkY: number | null = null;
   let earthTerrainSpawnPrepared = false;
@@ -2498,6 +2537,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let geodataOverlaySyncReason = "scene-runtime.geodata-overlays";
   let resizeObserver: EditorResizeObserverHandle | null = null;
   let inputController: EditorInputControllerHandle | null = null;
+  let planningCamera: PlanningCameraControllerHandle | null = null;
+  let workspaceMode: EditorWorkspaceMode = normalizeEditorWorkspaceMode(
+    refs.root.dataset.editorWorkspaceMode,
+    "first-person",
+  );
+  let workspaceModeChangedAt = createdAt;
   let physicsRuntime: PhysicsRuntime | null = null;
   let uiRuntime: EditorUiRuntimeHandle | null = null;
   let hotbarController: HotbarControllerHandle | null = null;
@@ -2538,6 +2583,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   const terrainShadowCameraPosition = new THREE.Vector3(Number.POSITIVE_INFINITY, 0, 0);
   const performanceDrawingBufferSize = new THREE.Vector2();
   let thirdPersonCameraInitialized = false;
+
+  refs.root.dataset.editorWorkspaceMode = workspaceMode;
   function setStatus(nextStatus: SceneRuntimeStatus): void {
     status = nextStatus;
     updatedAt = now();
@@ -4332,15 +4379,20 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     timestampMs: number,
   ): void {
     const item = state?.heldItem ?? null;
+    const heldItemShouldBeVisible = workspaceMode === "first-person" && !thirdPersonEnabled;
     firstPersonHeldItemVisual?.setItem(item);
-    firstPersonHeldItemVisual?.setVisible(!thirdPersonEnabled);
+    firstPersonHeldItemVisual?.setVisible(heldItemShouldBeVisible);
     const velocity = state?.velocity;
     const speed = velocity ? Math.hypot(velocity.x, velocity.z) : 0;
     firstPersonHeldItemVisual?.update(deltaSeconds, timestampMs, speed);
     const heldItemId = item?.id ?? "";
     const heldItemKind = item?.kind ?? "none";
-    const heldItemVisible = String(Boolean(item));
-    const heldItemView = thirdPersonEnabled ? "third-person" : "first-person";
+    const heldItemVisible = String(Boolean(item) && heldItemShouldBeVisible);
+    const heldItemView = workspaceMode === "planning"
+      ? "planning-hidden"
+      : thirdPersonEnabled
+        ? "third-person"
+        : "first-person";
     if (refs.root.dataset.heldItemId !== heldItemId) refs.root.dataset.heldItemId = heldItemId;
     if (refs.root.dataset.heldItemKind !== heldItemKind) refs.root.dataset.heldItemKind = heldItemKind;
     if (refs.root.dataset.heldItemVisible !== heldItemVisible) {
@@ -4491,6 +4543,101 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     );
   }
 
+  function planningFocusPoint(): THREE.Vector3 {
+    const player = physicsRuntime?.getPlayerState() ?? null;
+    const position = player?.position ?? manualPlayerPosition;
+    return new THREE.Vector3(position.x, position.y + 0.6, position.z);
+  }
+
+  function restoreFirstPersonCamera(): void {
+    if (!camera) return;
+    const physicsCamera = physicsRuntime?.snapshot().camera ?? null;
+    if (physicsCamera && cameraShouldFollowPhysics) {
+      applyPhysicsCameraBindingToThreeCamera(camera, physicsCamera);
+    } else {
+      camera.position.set(manualPlayerPosition.x, manualPlayerPosition.y + 1.62, manualPlayerPosition.z);
+    }
+    camera.rotation.set(lookPitch, lookYaw, 0, "YXZ");
+    camera.updateMatrixWorld(true);
+  }
+
+  function restoreWorkspaceInput(reason: string): void {
+    const controller = inputController;
+    if (!controller) return;
+    const closingOverlay = reason.includes("creative-inventory-close") || reason.includes("chunk-map-close");
+    if (
+      !closingOverlay
+      && (refs.root.dataset.creativeInventoryOpen === "true" || chunkMapOverlay?.isOpen())
+    ) return;
+
+    controller.clear(reason);
+    controller.enable(reason);
+    if (workspaceMode === "planning") {
+      void controller.exitPointerLock(reason);
+      controller.getPointerLock()?.disable(reason);
+      controller.getKeyboardInput().disable(reason);
+      controller.getMouseInput().enable(reason);
+      return;
+    }
+    if (bootstrap.input.keyboardEnabled) controller.getKeyboardInput().enable(reason);
+    else controller.getKeyboardInput().disable(reason);
+    if (bootstrap.input.mouseEnabled) controller.getMouseInput().enable(reason);
+    else controller.getMouseInput().disable(reason);
+    if (pointerLockEnabled) controller.getPointerLock()?.enable(reason);
+    else controller.getPointerLock()?.disable(reason);
+  }
+
+  function setWorkspaceMode(nextModeValue: EditorWorkspaceMode, reason = "scene-runtime.workspace-mode"): void {
+    if (!assertAlive("setWorkspaceMode")) return;
+    const nextMode = normalizeEditorWorkspaceMode(nextModeValue, workspaceMode);
+    const previousMode = workspaceMode;
+    const changed = previousMode !== nextMode;
+    workspaceMode = nextMode;
+    if (changed) workspaceModeChangedAt = now();
+    refs.root.dataset.editorWorkspaceMode = workspaceMode;
+    refs.root.dataset.editorWorkspaceModeChangedAt = workspaceModeChangedAt;
+    refs.root.dataset.editorWorkspaceModeReason = reason;
+
+    if (workspaceMode === "planning") {
+      if (thirdPersonEnabled) setThirdPersonEnabled(false);
+      planningCamera?.enable(planningFocusPoint(), reason);
+      localAvatarScene?.setVisible(false);
+      firstPersonHeldItemVisual?.setVisible(false);
+      setDomLiveMessage(refs, "Planungsansicht aktiv. WASD oder Pfeiltasten bewegen, links ziehen dreht, die mittlere Maustaste verschiebt und das Mausrad zoomt.");
+    } else {
+      planningCamera?.disable(reason);
+      restoreFirstPersonCamera();
+      localAvatarScene?.setVisible(thirdPersonEnabled);
+      firstPersonHeldItemVisual?.setVisible(!thirdPersonEnabled);
+      setDomLiveMessage(refs, "Ego-Ansicht aktiv. Bewegung und WorldEdit sind wieder verfügbar.");
+    }
+
+    restoreWorkspaceInput(reason);
+    updateTargeting();
+    renderOnce(reason);
+    if (changed) {
+      try {
+        window.dispatchEvent(new CustomEvent("vectoplan-editor:workspace-mode-changed", {
+          detail: { mode: workspaceMode, previousMode, reason, changedAt: workspaceModeChangedAt },
+        }));
+      } catch { /* optional UI synchronization channel */ }
+    }
+  }
+
+  function resetPlanningView(reason = "scene-runtime.planning-reset"): void {
+    if (workspaceMode !== "planning") setWorkspaceMode("planning", reason);
+    planningCamera?.resetView(planningFocusPoint());
+    updateTargeting();
+    renderOnce(reason);
+  }
+
+  function setPlanningTopView(reason = "scene-runtime.planning-top"): void {
+    if (workspaceMode !== "planning") setWorkspaceMode("planning", reason);
+    planningCamera?.setTopView();
+    updateTargeting();
+    renderOnce(reason);
+  }
+
   function handleViewKeydown(event: KeyboardEvent): void {
     if (event.repeat || event.altKey || event.ctrlKey || event.metaKey) return;
     const code = event.code || event.key;
@@ -4510,7 +4657,20 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       return;
     }
     if (refs.root.dataset.creativeInventoryOpen === "true") return;
+    if (code === "KeyG" || event.key.toLowerCase() === "g") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setWorkspaceMode(workspaceMode === "planning" ? "first-person" : "planning", "keyboard-g");
+      return;
+    }
+    if (workspaceMode === "planning" && code === "Escape") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      setWorkspaceMode("first-person", "keyboard-escape");
+      return;
+    }
     if (code === "KeyV" || event.key.toLowerCase() === "v") {
+      if (workspaceMode !== "first-person") return;
       event.preventDefault();
       event.stopImmediatePropagation();
       setThirdPersonEnabled(!thirdPersonEnabled);
@@ -4577,6 +4737,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         cameraFinalizeMs: 0,
         cameraStoreMs: 0,
         physicsSubSteps: 0,
+      };
+    }
+
+    if (workspaceMode === "planning") {
+      planningCamera?.update(deltaMs);
+      inputController.getInputState().resetDeltas();
+      return {
+        lookDeltaX: 0, lookDeltaY: 0, lookDeltaMagnitude: 0, pointerLocked: false,
+        movementActive: false, sprinting: false, inputReadMs: 0, physicsSimulationMs: 0,
+        physicsStoreMs: 0, cameraFinalizeMs: 0, cameraStoreMs: 0, physicsSubSteps: 0,
       };
     }
 
@@ -5430,15 +5600,26 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const registry = worldRuntime.getRegistry();
       const chunkSize = registry.getChunk(registry.getChunkKeys()[0] ?? "")?.chunkSize ?? 16;
       const forward = new THREE.Vector3();
-      camera.getWorldDirection(forward);
-      const targetMaxDistance = worldEditIntentHandler
-        ? Math.max(DEFAULT_TARGET_MAX_DISTANCE, Math.min(96, worldEditTargetMaxDistance))
+      const planningRay = workspaceMode === "planning" ? planningCamera?.getCursorRay() ?? null : null;
+      if (planningRay) forward.copy(planningRay.direction);
+      else camera.getWorldDirection(forward);
+      const firstPersonTargetMaxDistance = worldEditIntentHandler
+        ? Math.max(DEFAULT_TARGET_MAX_DISTANCE, Math.min(256, worldEditTargetMaxDistance))
         : DEFAULT_TARGET_MAX_DISTANCE;
+      const targetMaxDistance = workspaceMode === "planning"
+        ? Math.max(
+            firstPersonTargetMaxDistance,
+            planningCameraTargetingDistance(
+              planningCamera?.getSnapshot().distance ?? firstPersonTargetMaxDistance,
+              camera.far,
+            ),
+          )
+        : firstPersonTargetMaxDistance;
       const hit = raycastFromOriginDirection({
         origin: {
-          x: camera.position.x,
-          y: camera.position.y,
-          z: camera.position.z,
+          x: planningRay?.origin.x ?? camera.position.x,
+          y: planningRay?.origin.y ?? camera.position.y,
+          z: planningRay?.origin.z ?? camera.position.z,
         },
         direction: {
           x: forward.x,
@@ -5460,6 +5641,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         latestSourceCell = null;
         latestPlacementCell = null;
         latestTargetPoint = null;
+        latestTargetDistance = null;
         lastTargetSignature = "none";
         refs.root.dataset.sceneRuntimeTargetSignature = "none";
 
@@ -5516,6 +5698,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       latestSourceCell = sourceCell;
       latestPlacementCell = placementCell;
       latestTargetPoint = hit.position;
+      latestTargetDistance = hit.distance;
 
       const status =
         !placementSample.chunkLoaded
@@ -5529,9 +5712,138 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       refs.root.dataset.sceneRuntimeTargetSignature = signature;
       refs.root.dataset.sceneRuntimeTargetStatus = status;
     } catch (error) {
+      latestTargetDistance = null;
       logWarn(logger, "Targeting update failed.", {
         error: normalizeUnknownError(error),
       });
+    }
+  }
+
+  function inputTargetCells(): {
+    readonly sourceCell: EditorStateChunkCellPosition | null;
+    readonly placementCell: EditorStateChunkCellPosition | null;
+    readonly targetPoint: Readonly<{ x: number; y: number; z: number }> | null;
+  } {
+    const fallback = {
+      sourceCell: latestSourceCell,
+      placementCell: latestPlacementCell,
+      targetPoint: latestTargetPoint,
+    };
+    if (!camera) return fallback;
+
+    try {
+      const registry = worldRuntime.getRegistry();
+      const targets = [...chunkMeshes.values()].flatMap((record) => {
+        if (!record.group.visible) return [];
+        const chunk = registry.getChunk(record.chunkKey);
+        if (!chunk) return [];
+        return record.meshes
+          .filter((mesh) => mesh.userData.lod2WallCaps === true && mesh.visible)
+          .map((mesh) => ({ mesh, chunk }));
+      });
+      if (!targets.length) return fallback;
+
+      const planningRay = workspaceMode === "planning" ? planningCamera?.getCursorRay() ?? null : null;
+      const direction = planningRay?.direction.clone() ?? camera.getWorldDirection(new THREE.Vector3());
+      const origin = planningRay?.origin.clone() ?? camera.position.clone();
+      const firstPersonTargetMaxDistance = worldEditIntentHandler
+        ? Math.max(DEFAULT_TARGET_MAX_DISTANCE, Math.min(256, worldEditTargetMaxDistance))
+        : DEFAULT_TARGET_MAX_DISTANCE;
+      const targetMaxDistance = workspaceMode === "planning"
+        ? Math.max(
+            firstPersonTargetMaxDistance,
+            planningCameraTargetingDistance(
+              planningCamera?.getSnapshot().distance ?? firstPersonTargetMaxDistance,
+              camera.far,
+            ),
+          )
+        : firstPersonTargetMaxDistance;
+      const hit = raycastLod2WallCaps(targets, origin, direction, targetMaxDistance);
+      if (!hit) return fallback;
+
+      // The old voxel DDA intersects the source cell's axis-aligned box, while
+      // the visible facade can be rotated anywhere inside that metre cell.
+      // Permit exactly that one-cell displacement, but never click through a
+      // genuinely nearer object in front of the wall.
+      const sourceCellTolerance = Math.sqrt(3) * Math.max(.000001, hit.target.chunk.cellSize);
+      if (latestSourceCell && latestTargetDistance !== null
+        && hit.distance > latestTargetDistance + sourceCellTolerance) return fallback;
+
+      const local = localCoordinatesFromCellIndex(
+        hit.sourceCellIndex,
+        hit.target.chunk.chunkSize,
+      );
+      const sourceAddress = createChunkCellAddressFromChunkAndLocal({
+        chunkX: hit.target.chunk.chunkX,
+        chunkY: hit.target.chunk.chunkY,
+        chunkZ: hit.target.chunk.chunkZ,
+        ...local,
+        chunkSize: hit.target.chunk.chunkSize,
+      });
+      const sourceSample = worldRuntime.sampleCell({
+        x: sourceAddress.worldX,
+        y: sourceAddress.worldY,
+        z: sourceAddress.worldZ,
+      });
+      if (!sourceSample.chunkLoaded
+        || sourceSample.blockTypeId !== "lod2_exterior_wall"
+        || !sourceSample.breakable) return fallback;
+
+      const sourceCell: EditorStateChunkCellPosition = {
+        chunkKey: sourceAddress.chunkKey,
+        chunkX: sourceAddress.chunkX,
+        chunkY: sourceAddress.chunkY,
+        chunkZ: sourceAddress.chunkZ,
+        localX: sourceAddress.localX,
+        localY: sourceAddress.localY,
+        localZ: sourceAddress.localZ,
+        worldX: sourceAddress.worldX,
+        worldY: sourceAddress.worldY,
+        worldZ: sourceAddress.worldZ,
+        cellValue: sourceSample.cellValue,
+        blockTypeId: sourceSample.blockTypeId,
+      };
+      const absoluteNormal = [Math.abs(hit.normal.x), Math.abs(hit.normal.y), Math.abs(hit.normal.z)];
+      const dominantAxis = absoluteNormal.indexOf(Math.max(...absoluteNormal));
+      const normal = { x: 0, y: 0, z: 0 };
+      if (dominantAxis === 0) normal.x = hit.normal.x >= 0 ? 1 : -1;
+      else if (dominantAxis === 1) normal.y = hit.normal.y >= 0 ? 1 : -1;
+      else normal.z = hit.normal.z >= 0 ? 1 : -1;
+      const placementAddress = createChunkCellAddress({
+        worldX: sourceAddress.worldX + normal.x,
+        worldY: sourceAddress.worldY + normal.y,
+        worldZ: sourceAddress.worldZ + normal.z,
+        chunkSize: hit.target.chunk.chunkSize,
+      });
+      const placementSample = worldRuntime.sampleCell({
+        x: placementAddress.worldX,
+        y: placementAddress.worldY,
+        z: placementAddress.worldZ,
+      });
+      const placementCell: EditorStateChunkCellPosition = {
+        chunkKey: placementAddress.chunkKey,
+        chunkX: placementAddress.chunkX,
+        chunkY: placementAddress.chunkY,
+        chunkZ: placementAddress.chunkZ,
+        localX: placementAddress.localX,
+        localY: placementAddress.localY,
+        localZ: placementAddress.localZ,
+        worldX: placementAddress.worldX,
+        worldY: placementAddress.worldY,
+        worldZ: placementAddress.worldZ,
+        cellValue: placementSample.cellValue,
+        blockTypeId: placementSample.blockTypeId,
+      };
+      return {
+        sourceCell,
+        placementCell,
+        targetPoint: { x: hit.point.x, y: hit.point.y, z: hit.point.z },
+      };
+    } catch (error) {
+      logWarn(logger, "Precise LoD2 wall targeting failed; retaining voxel target.", {
+        error: normalizeUnknownError(error),
+      });
+      return fallback;
     }
   }
 
@@ -5706,7 +6018,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       phaseStartedAtMs = nowMs();
       remoteAvatarScene?.update(deltaSeconds, timestampMs);
       const localPresence = createLocalPresenceState(Date.now());
-      if (localPresence && thirdPersonEnabled) {
+      if (localPresence && thirdPersonEnabled && workspaceMode === "first-person") {
         syncLocalAvatar(localPresence, deltaSeconds, timestampMs);
       } else {
         localAvatarScene?.setVisible(false);
@@ -7236,19 +7548,25 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             event.detail,
           );
         },
-        getTargetCells: () => ({
-          sourceCell: latestSourceCell,
-          placementCell: latestPlacementCell,
-          targetPoint: latestTargetPoint,
-        }),
+        getTargetCells: inputTargetCells,
         onWorldEditAction: async (intent) => {
           if (!worldEditIntentHandler) return false;
           return Boolean(await worldEditIntentHandler(intent));
         },
         onPlaceBlock: async (intent) => {
+          if (!workspaceModeAllowsGenericBlockEditing(workspaceMode)) {
+            refs.root.dataset.editorPlanningBlockedGenericAction = "place";
+            setDomLiveMessage(refs, "Direktes Blockbauen ist in der Planungsansicht deaktiviert. Wähle ein Planungswerkzeug.");
+            return;
+          }
           await placeBlock(intent);
         },
         onRemoveBlock: async (intent) => {
+          if (!workspaceModeAllowsGenericBlockEditing(workspaceMode)) {
+            refs.root.dataset.editorPlanningBlockedGenericAction = "remove";
+            setDomLiveMessage(refs, "Direkter Blockabbau ist in der Planungsansicht deaktiviert. Wähle ein Planungswerkzeug.");
+            return;
+          }
           await removeBlock({
             position: intent.position,
             trigger: intent.trigger,
@@ -7274,6 +7592,21 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           await options.onExitRequested?.();
         },
       });
+
+      planningCamera = createPlanningCameraController({
+        root: refs.root,
+        host: refs.canvasHost,
+        camera,
+        signal: options.signal,
+        shouldYieldPrimaryPointer: () => (
+          workspaceMode === "planning" && worldEditIntentHandler !== null
+        ),
+        onCursorChange: () => { if (workspaceMode === "planning") updateTargeting(); },
+        onCameraChange: () => { if (workspaceMode === "planning") updateTargeting(); },
+      });
+      if (workspaceMode === "planning") {
+        setWorkspaceMode("planning", "scene-runtime.initialize-workspace-mode");
+      }
 
       navigationCompass = createNavigationCompass(
         refs.viewportOverlay ?? refs.canvasHost,
@@ -7309,9 +7642,10 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         },
         onClose: () => {
           if (refs.root.dataset.creativeInventoryOpen !== "true") {
-            inputController?.clear("chunk-map-close");
-            inputController?.enable("chunk-map-close");
-            void inputController?.requestPointerLock("chunk-map-close");
+            restoreWorkspaceInput("chunk-map-close");
+            if (workspaceMode === "first-person") {
+              void inputController?.requestPointerLock("chunk-map-close");
+            }
           }
           setDomLiveMessage(refs, "Projektkarte geschlossen.");
         },
@@ -7638,6 +7972,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       realtimeIndicator = null;
       navigationCompass?.destroy();
       navigationCompass = null;
+      planningCamera?.destroy();
+      planningCamera = null;
     } catch {
       // Ignore realtime/environment teardown failures.
     }
@@ -7759,6 +8095,14 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       return camera;
     },
 
+    getWorkspaceMode(): EditorWorkspaceMode {
+      return workspaceMode;
+    },
+
+    setWorkspaceMode,
+    resetPlanningView,
+    setPlanningTopView,
+
     getInputController(): EditorInputControllerHandle | null {
       return inputController;
     },
@@ -7793,7 +8137,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     ): void {
       worldEditIntentHandler = handler;
       worldEditTargetMaxDistance = handler
-        ? safeNumber(handlerOptions?.maxDistance, DEFAULT_TARGET_MAX_DISTANCE, { min: 9, max: 96 })
+        ? safeNumber(handlerOptions?.maxDistance, DEFAULT_TARGET_MAX_DISTANCE, { min: 9, max: 256 })
         : DEFAULT_TARGET_MAX_DISTANCE;
     },
 
@@ -7832,6 +8176,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         pendingChunkMeshCount: pendingChunkMeshKeys.length,
         chunkMeshQueueHighWaterMark,
         renderedChunkKeys: [...chunkMeshes.keys()],
+        workspaceMode,
+        workspaceModeChangedAt,
         lastRenderedAt,
         lastTargetSignature,
         lastCameraChunkKey,
@@ -7847,6 +8193,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         physics: physicsRuntime?.snapshot() ?? null,
         hotbar: hotbarController?.getSnapshot() ?? null,
         geodataOverlays: geodataOverlayScene?.getSnapshot() ?? null,
+        planningCamera: planningCamera?.getSnapshot() ?? null,
       };
     },
 

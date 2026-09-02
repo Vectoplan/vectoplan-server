@@ -1,64 +1,68 @@
-name: VECTOPLAN Server Update
+name: VECTOPLAN Server Release Coordinator
 
 on:
   push:
-    branches: [main]
-    tags: ["v*", "vectoplan-server-v*"]
-  pull_request:
+    tags: ["vectoplan-server-v*"]
   workflow_dispatch:
 
 concurrency:
-  group: vectoplan-server-update-${{ github.ref }}
-  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+  group: vectoplan-server-release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  package:
+  publish-lock:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
-      - name: Check out server and private service repositories
+      - name: Check out coordinator without private submodules
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
-          submodules: recursive
           fetch-depth: 0
+          submodules: false
           persist-credentials: false
-          token: ${{ secrets.VECTOPLAN_REPOSITORY_READ_TOKEN || github.token }}
 
-      - name: Build tracked server archive
-        id: package
+      - name: Write immutable component lock
         shell: bash
         run: |
           set -euo pipefail
-          version="${GITHUB_REF_NAME#vectoplan-server-v}"
-          version="${version#v}"
-          if [[ "${GITHUB_REF_TYPE}" != "tag" ]]; then
-            version="0.0.0-${GITHUB_SHA::12}"
-          fi
           mkdir -p artifacts
-          archive="artifacts/vectoplan-server-${version}.zip"
-          python scripts/build_update_archive.py --output "${archive}" --version "${version}"
-          echo "archive=${archive}" >> "${GITHUB_OUTPUT}"
+          python - <<'PY'
+          import json
+          import subprocess
+          from pathlib import Path
 
-      - name: Upload verified server package
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
-        with:
-          name: vectoplan-server-${{ github.sha }}
-          path: artifacts/*
-          if-no-files-found: error
-          retention-days: 30
+          entries = []
+          raw = subprocess.check_output(
+              ["git", "ls-tree", "-r", "HEAD", "services"], text=True
+          )
+          for line in raw.splitlines():
+              metadata, path = line.split("\t", 1)
+              mode, kind, object_id = metadata.split(" ", 2)
+              if mode == "160000" and kind == "commit":
+                  entries.append({"path": path, "commit": object_id})
+          payload = {
+              "schema_version": 1,
+              "repository": "${{ github.repository }}",
+              "tag": "${{ github.ref_name }}",
+              "commit": "${{ github.sha }}",
+              "components": sorted(entries, key=lambda item: item["path"]),
+              "delivery": "vectoplan-updates fetches each submodule repository separately",
+          }
+          Path("artifacts/vectoplan-server-components.json").write_text(
+              json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+          )
+          PY
 
-      - name: Attach package to immutable GitHub release
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Publish coordinator release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
-          ARCHIVE_PATH: ${{ steps.package.outputs.archive }}
         shell: bash
         run: |
           set -euo pipefail
           gh release create "${RELEASE_TAG}" \
-            "${ARCHIVE_PATH}" "${ARCHIVE_PATH}.sha256" \
+            artifacts/vectoplan-server-components.json \
             --verify-tag \
             --title "VECTOPLAN Server ${RELEASE_TAG}" \
             --generate-notes

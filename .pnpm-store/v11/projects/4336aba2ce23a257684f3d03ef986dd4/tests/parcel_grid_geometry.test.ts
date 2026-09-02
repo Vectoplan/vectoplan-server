@@ -41,6 +41,59 @@ import {
   sampleTentacleCurve,
   voxelizeTentacleCurve,
 } from "../src/frontend/world_edit/systems/tentacle/geometry";
+import {
+  createPathBrushDraft,
+  movePathBrushDraft,
+  pathBrushDraftFromUnknown,
+  resolvePathBrushHeightConflicts,
+  samplePathBrushCenterline,
+  updatePathBrushPoint,
+} from "../src/frontend/world_edit/systems/shared/path_brush_geometry";
+
+type TestRingPoint = readonly [number, number];
+
+function testRingArea(ring: readonly TestRingPoint[]): number {
+  let area = 0;
+  for (let index = 0; index < ring.length - 1; index += 1) {
+    const current = ring[index]!;
+    const next = ring[index + 1]!;
+    area += current[0] * next[1] - next[0] * current[1];
+  }
+  return Math.abs(area * 0.5);
+}
+
+function assertSimpleClosedRing(ring: readonly TestRingPoint[]): void {
+  assert.ok(ring.length >= 4);
+  assert.deepEqual(ring[0], ring.at(-1));
+  const orientation = (first: TestRingPoint, second: TestRingPoint, third: TestRingPoint): number => (
+    (second[0] - first[0]) * (third[1] - first[1])
+    - (second[1] - first[1]) * (third[0] - first[0])
+  );
+  const properIntersection = (
+    firstStart: TestRingPoint,
+    firstEnd: TestRingPoint,
+    secondStart: TestRingPoint,
+    secondEnd: TestRingPoint,
+  ): boolean => {
+    const firstSide = orientation(firstStart, firstEnd, secondStart);
+    const secondSide = orientation(firstStart, firstEnd, secondEnd);
+    const thirdSide = orientation(secondStart, secondEnd, firstStart);
+    const fourthSide = orientation(secondStart, secondEnd, firstEnd);
+    return firstSide * secondSide < -1e-10 && thirdSide * fourthSide < -1e-10;
+  };
+  const edgeCount = ring.length - 1;
+  for (let firstIndex = 0; firstIndex < edgeCount; firstIndex += 1) {
+    for (let secondIndex = firstIndex + 1; secondIndex < edgeCount; secondIndex += 1) {
+      if (secondIndex === firstIndex + 1 || (firstIndex === 0 && secondIndex === edgeCount - 1)) continue;
+      assert.equal(properIntersection(
+        ring[firstIndex]!,
+        ring[firstIndex + 1]!,
+        ring[secondIndex]!,
+        ring[secondIndex + 1]!,
+      ), false, `footprint edges ${firstIndex} and ${secondIndex} must not cross`);
+    }
+  }
+}
 
 test("clipboard preserves its dimensions while moving in all three axes", () => {
   const size = clipboardSelectionSize({ x: 8, y: 3, z: -2 }, { x: 10, y: 6, z: 2 });
@@ -63,6 +116,136 @@ test("tentacle is straight with two points and curved/deduplicated from three", 
   assert.ok(curved.some((point) => point.z > 0 && point.z < 4));
   const voxels = voxelizeTentacleCurve(curved);
   assert.equal(voxels.length, new Set(voxels.map((point) => `${point.x}:${point.y}:${point.z}`)).size);
+});
+
+test("planning line brush creates one clean editable L-shaped corridor", () => {
+  const draft = createPathBrushDraft([
+    { x: 0, y: 5, z: 0 },
+    { x: 10, y: 5, z: 0 },
+    { x: 10, y: 5, z: 10 },
+  ], { kind: "building", width: 4, interpolation: "linear" });
+
+  assert.ok(draft);
+  assert.equal(draft.schemaVersion, "vectoplan-path-brush-draft.v1");
+  assert.equal(draft.segments.length, 2);
+  assert.equal(draft.polygons.length, 1, "overlapping rectangles and the corner join are unioned");
+  assert.equal(draft.polygons[0]!.holes.length, 0);
+  assert.equal(draft.footprint.type, "MultiPolygon");
+  assert.equal(draft.footprint.coordinates.length, draft.polygons.length);
+  assert.deepEqual(draft.bounds, {
+    minimum: { x: 0, y: 5, z: -2 },
+    maximum: { x: 12, y: 5, z: 10 },
+  });
+  assertSimpleClosedRing(draft.polygons[0]!.coordinates);
+  assert.equal(testRingArea(draft.polygons[0]!.coordinates), 80);
+  assert.equal(draft.estimatedAreaM2, 80);
+
+  const moved = movePathBrushDraft(draft, { x: 7, z: -3 });
+  assert.deepEqual(moved.points[0], { x: 7, y: 5, z: -3 });
+  assert.equal(moved.bounds.minimum.x, draft.bounds.minimum.x + 7);
+  assert.equal(moved.bounds.minimum.z, draft.bounds.minimum.z - 3);
+
+  const adjusted = updatePathBrushPoint(draft, 1, { x: 12, y: 5, z: 1 });
+  assert.deepEqual(adjusted.points[1], { x: 12, y: 5, z: 1 });
+  assert.deepEqual(adjusted.points[0], draft.points[0]);
+  assert.deepEqual(adjusted.points[2], draft.points[2]);
+  assert.deepEqual(pathBrushDraftFromUnknown(JSON.parse(JSON.stringify(adjusted)))?.points, adjusted.points);
+});
+
+test("planning line brush keeps a straight segment a single exact rectangle", () => {
+  const draft = createPathBrushDraft([
+    { x: 0, y: 2, z: 0 },
+    { x: 12, y: 2, z: 0 },
+  ], { kind: "building", width: 6, interpolation: "linear" });
+
+  assert.ok(draft);
+  assert.equal(draft.polygons.length, 1);
+  assert.equal(draft.polygons[0]!.holes.length, 0);
+  assert.deepEqual(draft.bounds, {
+    minimum: { x: 0, y: 2, z: -3 },
+    maximum: { x: 12, y: 2, z: 3 },
+  });
+  assertSimpleClosedRing(draft.polygons[0]!.coordinates);
+  assert.equal(testRingArea(draft.polygons[0]!.coordinates), 72);
+  assert.equal(draft.estimatedAreaM2, 72);
+});
+
+test("planning line brush unions a Z bend without transparent overlap triangles", () => {
+  const draft = createPathBrushDraft([
+    { x: 0, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 10, y: 0, z: 10 },
+    { x: 20, y: 0, z: 10 },
+  ], { kind: "building", width: 4, interpolation: "linear" });
+
+  assert.ok(draft);
+  assert.equal(draft.polygons.length, 1);
+  assert.equal(draft.polygons[0]!.holes.length, 0);
+  assertSimpleClosedRing(draft.polygons[0]!.coordinates);
+  assert.equal(testRingArea(draft.polygons[0]!.coordinates), 120);
+  assert.equal(draft.estimatedAreaM2, 120);
+});
+
+test("planning line brush collapses retraced and self-overlapping segments into one outline", () => {
+  const retraced = createPathBrushDraft([
+    { x: 0, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 4, y: 0, z: 0 },
+    { x: 8, y: 0, z: 0 },
+  ], { kind: "building", width: 4, interpolation: "linear" });
+  assert.ok(retraced);
+  assert.equal(retraced.polygons.length, 1);
+  assertSimpleClosedRing(retraced.polygons[0]!.coordinates);
+  assert.equal(testRingArea(retraced.polygons[0]!.coordinates), 40);
+
+  const crossing = createPathBrushDraft([
+    { x: -10, y: 0, z: 0 },
+    { x: 10, y: 0, z: 0 },
+    { x: 0, y: 0, z: -10 },
+    { x: 0, y: 0, z: 10 },
+  ], { kind: "building", width: 4, interpolation: "linear" });
+  assert.ok(crossing);
+  assert.equal(crossing.polygons.length, 1);
+  assertSimpleClosedRing(crossing.polygons[0]!.coordinates);
+  assert.equal(crossing.polygons[0]!.holes.length, 1, "a real enclosed pocket is one Shape hole, not a second overlapping fill mesh");
+  assertSimpleClosedRing(crossing.polygons[0]!.holes[0]!);
+  assert.ok(crossing.estimatedAreaM2 > 0);
+  assert.ok(crossing.estimatedAreaM2 < crossing.segments.reduce((sum, segment) => sum + segment.length * 4, 0));
+});
+
+test("planning road conflicts distinguish fill/bridge choice and automatic tunnels", () => {
+  const road = createPathBrushDraft([
+    { x: 0, y: 10, z: 0 },
+    { x: 10, y: 10, z: 0 },
+  ], { kind: "road", width: 5, interpolation: "catmull-rom" });
+  assert.ok(road);
+
+  const unresolved = resolvePathBrushHeightConflicts(road, () => 0, { threshold: 3 });
+  assert.deepEqual(unresolved.map(({ kind, resolution }) => ({ kind, resolution })), [{
+    kind: "elevation_gap",
+    resolution: "choice_required",
+  }]);
+  const bridge = resolvePathBrushHeightConflicts(road, () => 0, {
+    threshold: 3,
+    elevatedResolution: "bridge",
+  });
+  assert.equal(bridge[0]?.resolution, "bridge");
+  assert.deepEqual(bridge[0]?.placeholder, road.segments[0]?.rectangle);
+
+  const tunnel = resolvePathBrushHeightConflicts(road, () => 18, { threshold: 3 });
+  assert.deepEqual(tunnel.map(({ kind, resolution }) => ({ kind, resolution })), [{
+    kind: "mountain_penetration",
+    resolution: "tunnel",
+  }]);
+});
+
+test("tentacle delegates curve sampling to the shared path brush core", () => {
+  const points = [
+    { x: 0, y: 0, z: 0 },
+    { x: 4, y: 1, z: 0 },
+    { x: 8, y: 1, z: 5 },
+  ] as const;
+  assert.deepEqual(sampleTentacleCurve(points), samplePathBrushCenterline(points, "catmull-rom"));
 });
 
 test("a normal 16k-cell parcel is no longer cut to the loaded terrain window", () => {
@@ -307,6 +490,58 @@ test("the two-zone grid keeps parcel boundary bands, follows facade anchors and 
   assert(reference.uAnchors.some((value) => Math.abs(value - 12.6) < 1e-6));
   assert(reference.vAnchors.some((value) => Math.abs(value - 8.2) < 1e-6));
   assert(reference.vAnchors.some((value) => Math.abs(value - 12.8) < 1e-6));
+});
+
+test("the editor prefers Chunk's validated LoD2 construction-grid contract and falls back for legacy roofs", () => {
+  const footprint = [[[0, 0], [10, 0], [10, 6], [0, 6], [0, 0]]];
+  const fingerprint = "a".repeat(64);
+  const constructionGrid = {
+    schemaVersion: "vectoplan-lod2-construction-grid.v1",
+    algorithmVersion: "lod2-facade-grid.v4",
+    referenceMode: "lod2-existing-building",
+    buildingId: "contract-building",
+    coordinateSpace: "world-cell-xz",
+    origin: [0, 0],
+    axisU: [1, 0],
+    axisV: [0, 1],
+    rotationDegrees: 0,
+    widthM: 10,
+    depthM: 6,
+    columns: 10,
+    rows: 6,
+    stepU: 1,
+    stepV: 1,
+    uAnchors: [0, 10],
+    vAnchors: [0, 6],
+    facades: [
+      { id: "south-from-contract", start: [0, 0], end: [10, 0], inward: [0, 1], lengthM: 10, columnCount: 10, columnWidthM: 1 },
+      { id: "east-from-contract", start: [10, 0], end: [10, 6], inward: [-1, 0], lengthM: 6, columnCount: 6, columnWidthM: 1 },
+      { id: "north-from-contract", start: [0, 6], end: [10, 6], inward: [0, -1], lengthM: 10, columnCount: 10, columnWidthM: 1 },
+      { id: "west-from-contract", start: [0, 0], end: [0, 6], inward: [1, 0], lengthM: 6, columnCount: 6, columnWidthM: 1 },
+    ],
+    fingerprint,
+  };
+  const roofRef = (buildingId: string, grid?: unknown) => ({
+    objectTypeId: "building_roof",
+    objectInstanceId: `roof-${buildingId}`,
+    metadata: {
+      lod2BuildingId: buildingId,
+      roofParameters: { importedSource: {
+        groundFootprints: [footprint],
+        ...(grid ? { constructionGrid: grid } : {}),
+      } },
+    },
+    footprint: { type: "Polygon", coordinateSpace: "world-cell-xz", coordinates: footprint },
+  });
+  const persisted = lod2BuildingGridReferencesFromChunks([{ raw: { objectRefs: [roofRef("contract-building", constructionGrid)] } }])[0]!;
+  assert.equal(persisted.referenceSource, "persisted-construction-grid");
+  assert.equal(persisted.constructionGridFingerprint, fingerprint);
+  assert.equal(persisted.signature, `contract-building:construction-grid:${fingerprint}`);
+  assert(persisted.facades.some((facade) => facade.id === "south-from-contract"));
+
+  const legacy = lod2BuildingGridReferencesFromChunks([{ raw: { objectRefs: [roofRef("legacy-building")] } }])[0]!;
+  assert.equal(legacy.referenceSource, "derived-geometry");
+  assert.equal(legacy.constructionGridFingerprint, undefined);
 });
 
 test("the audit rejects a forced right-angle average and accepts both measured facade axes", () => {

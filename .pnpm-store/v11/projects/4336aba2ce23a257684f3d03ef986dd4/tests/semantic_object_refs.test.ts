@@ -100,6 +100,17 @@ test("renders CAD walls as their persisted full block cells instead of a thin ex
   }), true);
 });
 
+test("renders persisted planning build areas without voxel occupancy", () => {
+  assert.equal(shouldRenderSemanticFootprint({
+    objectTypeId: "planning_build_area",
+    metadata: {
+      source: "vectoplan-editor.world-edit.planning-line-brush",
+      schemaVersion: "vectoplan-planning-build-area.v1",
+      voxelOccupancy: "none",
+    },
+  }), true);
+});
+
 test("recognizes parametric VPLIB objects through the persisted library-object contract", () => {
   assert.equal(isVplibParametricObjectRef({
     objectKind: "library_object",

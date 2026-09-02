@@ -3,6 +3,8 @@ import { createChunkApiClient } from "@api/chunk_api_client";
 import "./styles/mobile_ui.css";
 import "./styles/realtime_environment.css";
 import "./styles/world_edit.css";
+import "./styles/editor_workspace_modes.css";
+import "./styles/planning_massing.css";
 import type { ChunkApiClient } from "@api/chunk_api_models";
 import type { EditorBootstrap, EditorBootstrapDefaults } from "@bootstrap/bootstrap_models";
 import { normalizeEditorBootstrap } from "@bootstrap/normalize_bootstrap";
@@ -32,6 +34,8 @@ import { createLogger, type EditorLogger } from "@utils/logger";
 import { getErrorMessage, normalizeUnknownError } from "@utils/safe";
 import { nowIsoString } from "@utils/time";
 import { createWorldEditController } from "./world_edit/world_edit_controller";
+import { createEditorWorkspaceModeController } from "./ui/editor_workspace_mode_controller";
+import { createPlanningMassingController } from "./planning_massing/planning_massing_controller";
 
 declare const __VECTOPLAN_EDITOR_BUILD_MODE__: string;
 declare const __VECTOPLAN_EDITOR_BUILD_VERSION__: string;
@@ -1094,7 +1098,10 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
         const inputController = sceneRuntime.getInputController();
         inputController?.clear("creative-inventory-close");
         inputController?.enable("creative-inventory-close");
-        void inputController?.requestPointerLock("creative-inventory-close");
+        sceneRuntime.setWorkspaceMode(sceneRuntime.getWorkspaceMode(), "creative-inventory-close");
+        if (sceneRuntime.getWorkspaceMode() === "first-person") {
+          void inputController?.requestPointerLock("creative-inventory-close");
+        }
         void sceneRuntime.getHotbarController()?.load({
           force: true,
           reason: "creative-inventory-panel-close",
@@ -1123,12 +1130,26 @@ async function bootVectoplanEditor(trigger: string): Promise<VectoplanEditorRunt
     await initializeRuntime(runtime);
     syncEmbeddedWorkspaceVisibility("editor.initialize.visibility-sync");
 
-    createWorldEditController({
+    const worldEditController = createWorldEditController({
       root: rootElement,
       bootstrap,
       sceneRuntime,
       worldRuntime,
       logger,
+      signal: abortController.signal,
+    });
+
+    createEditorWorkspaceModeController({
+      root: rootElement,
+      sceneRuntime,
+      worldEditController,
+      signal: abortController.signal,
+    });
+
+    createPlanningMassingController({
+      root: rootElement,
+      sceneRuntime,
+      worldEditController,
       signal: abortController.signal,
     });
 

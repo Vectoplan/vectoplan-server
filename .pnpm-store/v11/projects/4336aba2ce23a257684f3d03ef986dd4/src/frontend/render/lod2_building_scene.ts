@@ -1,5 +1,14 @@
 import * as THREE from "three";
 import type { ChunkRegistryHandle } from "@runtime/world/chunk_registry";
+import {
+  resolveVisualLayer,
+  visualLayerKind,
+  type VisualLayerResolutionSnapshot,
+} from "./visual_layer_resolver";
+import {
+  LOD2_EXISTING_ROOF_COLOR,
+  LOD2_EXISTING_WALL_COLOR,
+} from "../scene/lod2_existing_appearance";
 
 type Point = readonly [number, number, number];
 interface Polygon { surface: string; rings: Point[][] }
@@ -66,8 +75,8 @@ export function buildLod2Mesh(value: unknown): THREE.Mesh | null {
   const positions: number[] = [], colors: number[] = [];
   const origin = new THREE.Vector3(...feature.polygons[0].rings[0][0]);
   for (const polygon of feature.polygons) {
-    const color = new THREE.Color(polygon.surface === "RoofSurface" ? "#b47d68"
-      : polygon.surface === "GroundSurface" ? "#9d9991" : "#e2d9c7");
+    const color = new THREE.Color(polygon.surface === "RoofSurface" ? LOD2_EXISTING_ROOF_COLOR
+      : polygon.surface === "GroundSurface" ? "#d9dde1" : LOD2_EXISTING_WALL_COLOR);
     for (const triangle of triangulateLod2Polygon(polygon.rings)) {
       for (const point of triangle) {
         positions.push(point[0] - origin.x, point[1] - origin.y, point[2] - origin.z);
@@ -97,6 +106,7 @@ export function createLod2BuildingScene(parent: THREE.Group) {
   group.name = "vectoplan_lod2_buildings";
   parent.add(group);
   const meshes = new Map<string, { signature: string; mesh: THREE.Mesh }>();
+  let resolutions: Readonly<Record<string, VisualLayerResolutionSnapshot>> = {};
   function remove(key: string): void {
     const entry = meshes.get(key);
     if (!entry) return;
@@ -109,12 +119,21 @@ export function createLod2BuildingScene(parent: THREE.Group) {
   return {
     sync(registry: ChunkRegistryHandle): Lod2Stats {
       const wanted = new Map<string, { signature: string; feature: unknown }>();
+      const nextResolutions: Record<string, VisualLayerResolutionSnapshot> = {};
       for (const chunkKey of registry.getVisibleChunkKeys()) {
         const contract = record(record(registry.getChunk(chunkKey)?.raw.metadata)?.geodataOverlays);
         if (contract?.schemaVersion !== "geodata-overlays.v1" || !Array.isArray(contract.items)) continue;
-        for (const item of contract.items) {
+        const resolution = resolveVisualLayer(contract, ["lod2"]);
+        nextResolutions[chunkKey] = resolution;
+        if (resolution.selectedKind !== "lod2") continue;
+        const selectedItemIds = new Set(resolution.selectedItemIds);
+        for (const [itemIndex, item] of contract.items.entries()) {
+          const resolvedItemId = typeof item?.id === "string" && item.id.trim()
+            ? item.id.trim()
+            : `${typeof item?.datasetId === "string" && item.datasetId.trim() ? item.datasetId.trim() : "overlay"}:${itemIndex}`;
           if (item?.renderMode !== "building-meshes" || item.geometry?.dimensions !== "world-xyz"
-            || item.geometry?.type !== "BuildingMultiSurface" || !Array.isArray(item.geometry.features)) continue;
+            || item.geometry?.type !== "BuildingMultiSurface" || !Array.isArray(item.geometry.features)
+            || visualLayerKind(item) !== "lod2" || !selectedItemIds.has(resolvedItemId)) continue;
           for (const feature of item.geometry.features) {
             if (typeof feature?.id !== "string") continue;
             // A complete building may intersect many horizontal AND vertical
@@ -125,6 +144,8 @@ export function createLod2BuildingScene(parent: THREE.Group) {
           }
         }
       }
+      resolutions = nextResolutions;
+      group.userData.visualLayerResolutions = resolutions;
       for (const key of meshes.keys()) if (!wanted.has(key)) remove(key);
       let invalidBuildingCount = 0;
       for (const [key, entry] of wanted) {
@@ -142,8 +163,11 @@ export function createLod2BuildingScene(parent: THREE.Group) {
     },
     dispose(): void {
       for (const key of meshes.keys()) remove(key);
+      resolutions = {};
+      delete group.userData.visualLayerResolutions;
       group.removeFromParent();
     },
     getGroup: () => group,
+    getVisualLayerResolutions: () => resolutions,
   };
 }

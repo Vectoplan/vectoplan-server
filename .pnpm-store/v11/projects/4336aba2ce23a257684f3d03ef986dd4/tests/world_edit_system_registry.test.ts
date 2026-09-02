@@ -10,6 +10,7 @@ import { worldEditToolIdFromSlot } from "../src/frontend/inventory/creative_inve
 import { createWorldEditSystemRegistry } from "../src/frontend/world_edit/systems/registry";
 import { createSculptSystem } from "../src/frontend/world_edit/systems/sculpt/system";
 import { createTentacleSystem } from "../src/frontend/world_edit/systems/tentacle/system";
+import { createRoomSystem } from "../src/frontend/world_edit/systems/room/system";
 import { createRoofSystem } from "../src/frontend/world_edit/systems/roof/system";
 import {
   buildRoofCalculationRequest,
@@ -79,6 +80,7 @@ const TOOLS: readonly WorldEditTool[] = [
   "cut-paste",
   "tentacle",
   "roof",
+  "storey",
 ];
 
 function system(
@@ -233,6 +235,17 @@ test("stair inventory slots activate the dedicated stair system", () => {
   assert.equal(registry.match(toolId), "stair");
 });
 
+test("storey inventory slots activate the shared storey system", () => {
+  const toolId = worldEditToolIdFromSlot({
+    object_kind: "world_edit_tool",
+    world_edit_tool: "storey",
+  });
+  const registry = createWorldEditSystemRegistry(completeSystems());
+
+  assert.equal(toolId, "storey");
+  assert.equal(registry.match(toolId), "storey");
+});
+
 test("WorldEdit uses the Chunk service's accepted editor command source", () => {
   assert.equal(WORLD_EDIT_COMMAND_SOURCE, "editor");
 });
@@ -379,6 +392,40 @@ test("tentacle hold debounce keeps a short click at exactly one point", () => {
   assert.equal(shouldAppendTentacleSample(179, 4), false);
   assert.equal(shouldAppendTentacleSample(180, 0.74), false);
   assert.equal(shouldAppendTentacleSample(180, 0.75), true);
+});
+
+test("the existing Ego room system keeps its polygon interaction contract", async () => {
+  const calls: string[] = [];
+  const room = createRoomSystem({
+    stopInteraction: () => calls.push("stop"),
+    startHover: () => undefined,
+    stopHover: () => undefined,
+    removePointUnderCrosshair: () => false,
+    resolveTarget: () => ({ x: 1, y: 2, z: 3 }),
+    existingRoomAt: () => null,
+    removeExistingRoom: () => calls.push("remove-existing"),
+    selectExistingRoom: () => calls.push("select-existing"),
+    beginPointInteraction: () => calls.push("point"),
+    finishArea: () => calls.push("finish"),
+    clearRoomSelection: () => calls.push("clear"),
+    hasCompleteSelection: () => true,
+    executeRoom: async () => { calls.push("execute"); },
+    rebuild: () => undefined,
+    reset: () => undefined,
+    setStatus: () => undefined,
+  });
+
+  await room.handleIntent(intent("primary"));
+  await room.handleIntent(intent("primary-release"));
+  const enter = {
+    key: "Enter",
+    preventDefault: () => undefined,
+    stopPropagation: () => undefined,
+  } as unknown as KeyboardEvent;
+  assert.equal(room.handleKeyDown?.(enter), true);
+  await room.execute();
+
+  assert.deepEqual(calls, ["point", "stop", "finish", "execute"]);
 });
 
 test("polygon areas accept concave straight rings and reject self intersections", () => {

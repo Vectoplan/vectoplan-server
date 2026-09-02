@@ -11,12 +11,19 @@ function createChunk(
   loadedAt: string,
   cells: readonly number[],
   chunkX = 0,
+  metadata: Record<string, unknown> = {},
 ): RuntimeChunkContent {
   const terrainEntry = {
     cellValue: 1,
     blockTypeId: "system_terrain_test",
     solid: true,
     metadata: { role: "terrain" },
+  };
+  const structureEntry = {
+    cellValue: 2,
+    blockTypeId: "lod2_exterior_wall",
+    solid: true,
+    metadata: { role: "building-wall" },
   };
   return {
     kind: "runtime-chunk-content.v1",
@@ -30,24 +37,27 @@ function createChunk(
     chunkSize: 2,
     cellSize: 1,
     cells,
-    palette: [terrainEntry],
-    paletteByCellValue: new Map([[1, terrainEntry]]),
-    paletteByBlockTypeId: new Map([[terrainEntry.blockTypeId, terrainEntry]]),
+    palette: [terrainEntry, structureEntry],
+    paletteByCellValue: new Map([[1, terrainEntry], [2, structureEntry]]),
+    paletteByBlockTypeId: new Map([
+      [terrainEntry.blockTypeId, terrainEntry],
+      [structureEntry.blockTypeId, structureEntry],
+    ]),
     stats: {
       cellCount: cells.length,
       airCellCount: cells.filter((value) => value === 0).length,
       nonAirCellCount: cells.filter((value) => value !== 0).length,
       solidCellCount: cells.filter((value) => value !== 0).length,
       nonSolidCellCount: 0,
-      paletteBlockCount: 1,
-      uniqueCellValues: [0, 1],
+      paletteBlockCount: 2,
+      uniqueCellValues: [...new Set(cells)],
     },
     source: "snapshot",
     snapshotId: "snapshot",
     chunkRevision: 1,
     chunkVersion: "version",
     loadedAt,
-    raw: { metadata: {} },
+    raw: { metadata },
   } as unknown as RuntimeChunkContent;
 }
 
@@ -113,5 +123,136 @@ test("rescans only the visible chunk whose content revision changed", () => {
 
   assert.equal(firstCells.reads(), firstChunkReadsAfterInitialSync);
   assert.ok(changedSecondCells.reads() > 0);
+  scene.dispose("test-complete");
+});
+
+test("uses the lowest solid top as ground fallback instead of draping roads over roofs", () => {
+  const chunk = createChunk("building-column", [2, 0, 2, 0, 0, 0, 0, 0]);
+  const registry = {
+    getVisibleChunkKeys: () => [chunk.chunkKey],
+    getChunk: (key: string) => key === chunk.chunkKey ? chunk : null,
+    hasChunk: (key: string) => key === chunk.chunkKey,
+  } as unknown as ChunkRegistryHandle;
+  const scene = createGeodataOverlayScene({ parent: new THREE.Group() });
+
+  scene.syncFromRegistry(registry, "building-column-fallback");
+  const surface = scene.getGroup().userData.surfaceCellY as ReadonlyMap<string, number>;
+
+  assert.equal(surface.get("0:0"), 1);
+  scene.dispose("test-complete");
+});
+
+test("renders street centerlines as visible surface ribbons without changing voxel state", () => {
+  const metadata = {
+    geodataOverlays: {
+      schemaVersion: "geodata-overlays.v1",
+      items: [{
+        id: "street-network",
+        datasetId: "strassendaten",
+        label: "Strassen- und Wegenetz",
+        releaseKey: "live:public:public:strassendaten",
+        tileKey: "0:0",
+        renderMode: "surface-ribbons",
+        semanticRole: "street-network",
+        classificationSource: true,
+        style: {
+          color: "#6f7782",
+          opacity: 1,
+          lineWidth: 1,
+          surfaceWidth: 1.5,
+          verticalOffset: 0.025,
+          sampleStep: 0.25,
+        },
+        geometry: {
+          type: "MultiLineString",
+          dimensions: "world-xz",
+          coordinates: [[[0.1, 0.25], [1.75, 0.25]]],
+        },
+      }],
+    },
+  };
+  const chunk = createChunk("street", [1, 1, 1, 1, 0, 0, 0, 0], 0, metadata);
+  const registry = {
+    getVisibleChunkKeys: () => [chunk.chunkKey],
+    getChunk: (key: string) => key === chunk.chunkKey ? chunk : null,
+    hasChunk: (key: string) => key === chunk.chunkKey,
+  } as unknown as ChunkRegistryHandle;
+  const scene = createGeodataOverlayScene({ parent: new THREE.Group() });
+
+  const stats = scene.syncFromRegistry(registry, "street-ribbon");
+  const road = scene.getGroup().getObjectByName("geodata_overlay_street-network");
+
+  assert.ok(road instanceof THREE.Mesh);
+  assert.equal(road.userData.semanticRole, "street-network");
+  assert.equal(road.userData.affectsVoxelState, false);
+  assert.ok(stats.renderedSegmentCount > 0);
+  const casing = scene.getGroup().getObjectByName("geodata_overlay_street-network_casing");
+  assert.ok(casing instanceof THREE.Mesh);
+  assert.equal((road.material as THREE.MeshBasicMaterial).transparent, false);
+  assert.equal((road.material as THREE.MeshBasicMaterial).depthWrite, true);
+  assert.equal((road.material as THREE.MeshBasicMaterial).color.getHexString(), "fbfcfd");
+  assert.equal((casing.material as THREE.MeshBasicMaterial).color.getHexString(), "cbd2d9");
+  assert.equal(stats.objectCount, 2);
+  scene.dispose("test-complete");
+});
+
+test("clamps a nominal six metre road ribbon to the closest parcel boundaries", () => {
+  const metadata = {
+    geodataOverlays: {
+      schemaVersion: "geodata-overlays.v1",
+      items: [{
+        id: "parcel-boundaries",
+        datasetId: "flurstuecke",
+        label: "Flurstuecksgrenzen",
+        releaseKey: "live:parcels",
+        tileKey: "0:0",
+        renderMode: "surface-lines",
+        semanticRole: "parcel-boundary",
+        classificationSource: false,
+        style: { color: "#1687ff", opacity: 1, lineWidth: 1, verticalOffset: 0.015, sampleStep: 0.25 },
+        geometry: {
+          type: "MultiLineString",
+          dimensions: "world-xz",
+          coordinates: [
+            [[0, 0], [2, 0]],
+            [[0, 0.5], [2, 0.5]],
+          ],
+        },
+      }, {
+        id: "street-network",
+        datasetId: "strassendaten",
+        label: "Strassen- und Wegenetz",
+        releaseKey: "live:streets",
+        tileKey: "0:0",
+        renderMode: "surface-ribbons",
+        semanticRole: "street-network",
+        classificationSource: true,
+        style: { color: "#6f7782", opacity: 1, lineWidth: 1, surfaceWidth: 12, verticalOffset: 0.03, sampleStep: 0.25 },
+        geometry: {
+          type: "MultiLineString",
+          dimensions: "world-xz",
+          coordinates: [[[0.1, 0.25], [1.75, 0.25]]],
+        },
+      }],
+    },
+  };
+  const chunk = createChunk("narrow-street", [1, 1, 1, 1, 0, 0, 0, 0], 0, metadata);
+  const registry = {
+    getVisibleChunkKeys: () => [chunk.chunkKey],
+    getChunk: (key: string) => key === chunk.chunkKey ? chunk : null,
+    hasChunk: (key: string) => key === chunk.chunkKey,
+  } as unknown as ChunkRegistryHandle;
+  const scene = createGeodataOverlayScene({ parent: new THREE.Group() });
+
+  scene.syncFromRegistry(registry, "narrow-street");
+  const road = scene.getGroup().getObjectByName("geodata_overlay_street-network") as THREE.Mesh;
+  const casing = scene.getGroup().getObjectByName("geodata_overlay_street-network_casing") as THREE.Mesh;
+  const positions = casing.geometry.getAttribute("position") as THREE.BufferAttribute;
+  const zValues = Array.from({ length: positions.count }, (_, index) => positions.getZ(index));
+
+  assert.ok(road instanceof THREE.Mesh);
+  assert.ok(casing instanceof THREE.Mesh);
+  assert.equal((road.material as THREE.MeshBasicMaterial).color.getHexString(), "fbfcfd");
+  assert.ok(Math.max(...zValues) - Math.min(...zValues) <= 0.501);
   scene.dispose("test-complete");
 });

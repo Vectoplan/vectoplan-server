@@ -374,6 +374,42 @@ def get_blocks(project_id: str, world_id: str) -> Response:
 # Chunk-Routen
 # =============================================================================
 
+@chunk_bp.get("/projects/<project_id>/worlds/<world_id>/editor-datasets/active")
+def get_active_editor_dataset(project_id: str, world_id: str) -> Response:
+    return _proxy_call(
+        lambda client: client.get_active_editor_dataset(project_id, world_id),
+        operation="get_active_editor_dataset",
+        context={"projectId": project_id, "worldId": world_id},
+    )
+
+
+@chunk_bp.get("/projects/<project_id>/worlds/<world_id>/editor-datasets/active/chunks")
+def get_active_editor_dataset_chunk(project_id: str, world_id: str) -> Response:
+    query = _read_chunk_query()
+    if query["error"] is not None:
+        return _json_response(
+            {"ok": False, "error": query["error"]},
+            status=400,
+            request_id=_request_id(),
+        )
+    return _proxy_call(
+        lambda client: client.get_active_editor_dataset_chunk(
+            project_id,
+            world_id,
+            chunk_x=query["chunkX"],
+            chunk_y=query["chunkY"],
+            chunk_z=query["chunkZ"],
+        ),
+        operation="get_active_editor_dataset_chunk",
+        context={
+            "projectId": project_id,
+            "worldId": world_id,
+            "chunkX": query["chunkX"],
+            "chunkY": query["chunkY"],
+            "chunkZ": query["chunkZ"],
+        },
+    )
+
 @chunk_bp.get("/projects/<project_id>/worlds/<world_id>/chunks")
 def get_chunk(project_id: str, world_id: str) -> Response:
     query = _read_chunk_query()
