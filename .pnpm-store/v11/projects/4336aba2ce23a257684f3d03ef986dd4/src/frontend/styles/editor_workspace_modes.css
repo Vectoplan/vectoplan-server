@@ -1,0 +1,73 @@
+.vp-workspace-modes {
+  position: absolute; inset: 0; z-index: 710; pointer-events: none; color: #172033;
+  font: 600 13px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+/*
+ * Planning uses a reversible presentation layer instead of mutating shared
+ * world materials. The neutral lift keeps selection colours legible and gives
+ * separately rendered road ribbons enough dark contrast against the site.
+ */
+[data-editor-workspace-mode="planning"] [data-vectoplan-canvas="true"] {
+  filter: saturate(.7) brightness(1.08) contrast(.94);
+  background: #f5f7f8;
+  transition: filter .18s ease;
+}
+.vp-workspace-switcher {
+  position: absolute; top: 14px; right: 14px; display: flex; align-items: center; gap: 10px; min-height: 48px;
+  padding: 6px 7px 6px 14px; border: 1px solid rgba(148,163,184,.34); border-radius: 15px;
+  background: rgba(255,255,255,.94); box-shadow: 0 16px 46px rgba(15,23,42,.18),0 2px 8px rgba(15,23,42,.08);
+  backdrop-filter: blur(18px) saturate(1.2); pointer-events: auto;
+}
+.vp-workspace-switcher__label { color:#64748b; font-size:10px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; white-space:nowrap; }
+.vp-workspace-switcher__buttons { display:grid; grid-template-columns:repeat(2,minmax(96px,1fr)); gap:3px; padding:3px; border-radius:11px; background:#edf2f7; }
+.vp-workspace-switcher__button {
+  display:grid; gap:0; min-height:38px; padding:4px 12px; border:0; border-radius:9px; color:#526176;
+  background:transparent; cursor:pointer; transition:color .16s ease,background .16s ease,box-shadow .16s ease;
+}
+.vp-workspace-switcher__button strong { font-size:12px; }
+.vp-workspace-switcher__button small { color:inherit; font-size:9px; opacity:.75; }
+.vp-workspace-switcher__button:hover { color:#1d4ed8; }
+.vp-workspace-switcher__button[data-active="true"] { color:#1745b8; background:#fff; box-shadow:0 2px 8px rgba(15,23,42,.12); }
+.vp-workspace-switcher__shortcut {
+  display:grid; width:24px; height:24px; place-items:center; border:1px solid #cbd5e1; border-radius:7px;
+  color:#64748b; background:#f8fafc; box-shadow:0 1px 0 #fff inset; font:800 10px/1 ui-monospace,SFMono-Regular,Consolas,monospace;
+}
+.vp-planning-dock {
+  position:absolute; bottom:18px; left:50%; display:none; align-items:stretch; gap:4px; max-width:calc(100% - 36px);
+  padding:7px; overflow-x:auto; border:1px solid rgba(148,163,184,.34); border-radius:16px; background:rgba(255,255,255,.95);
+  box-shadow:0 18px 54px rgba(15,23,42,.2),0 2px 8px rgba(15,23,42,.08); backdrop-filter:blur(18px) saturate(1.18);
+  transform:translateX(-50%); pointer-events:auto; scrollbar-width:thin;
+}
+.vp-workspace-modes[data-mode="planning"] .vp-planning-dock { display:flex; }
+.vp-planning-dock__tool,.vp-planning-dock__view {
+  display:grid; min-width:62px; min-height:52px; place-items:center; gap:2px; padding:5px 8px; border:1px solid transparent;
+  border-radius:10px; color:#526176; background:transparent; cursor:pointer; white-space:nowrap;
+}
+.vp-planning-dock__tool:hover,.vp-planning-dock__view:hover { color:#1d4ed8; background:#eff6ff; }
+.vp-planning-dock__tool[data-active="true"] { border-color:#a9c5ff; color:#1745b8; background:#eaf2ff; }
+.vp-planning-dock__icon { display:grid; width:25px; height:25px; place-items:center; border-radius:8px; color:#31527c; background:#eef2f7; font-size:11px; font-weight:850; }
+.vp-planning-dock__tool[data-active="true"] .vp-planning-dock__icon { color:#fff; background:#2563eb; }
+.vp-planning-dock__label { font-size:9px; font-weight:750; }
+.vp-planning-dock__view { min-width:72px; font-size:9px; font-weight:750; }
+.vp-planning-dock__divider { width:1px; min-width:1px; margin:5px 2px; background:#e2e8f0; }
+[data-editor-workspace-mode="planning"] [data-editor-crosshair],
+[data-editor-workspace-mode="planning"] [data-editor-hotbar],
+[data-editor-workspace-mode="planning"] [data-user-inventory-frame] { visibility:hidden!important; opacity:0!important; pointer-events:none!important; }
+[data-editor-workspace-mode="planning"][data-world-edit-active="true"]:not([data-world-edit-tool="room"]):not([data-world-edit-tool="roof"]):not([data-world-edit-tool="storey"]) .editor-world-edit { display:block!important; }
+@media (max-width:900px) {
+  .vp-workspace-switcher__label,.vp-workspace-switcher__shortcut { display:none; }
+  .vp-workspace-switcher { top:8px; right:8px; padding:5px; }
+  .vp-planning-dock { right:8px; bottom:8px; left:8px; max-width:none; transform:none; }
+  .vp-planning-dock__tool,.vp-planning-dock__view { min-width:56px; }
+}
+@media (max-width:620px) {
+  .vp-workspace-switcher__buttons { grid-template-columns:repeat(2,minmax(78px,1fr)); }
+  .vp-workspace-switcher__button { padding-inline:8px; }
+  .vp-planning-dock__label { display:none; }
+  .vp-planning-dock__tool { min-width:42px; min-height:42px; padding:4px; }
+  .vp-planning-dock__view { min-height:42px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  [data-editor-workspace-mode="planning"] [data-vectoplan-canvas="true"],
+  .vp-workspace-switcher__button { transition:none; }
+}

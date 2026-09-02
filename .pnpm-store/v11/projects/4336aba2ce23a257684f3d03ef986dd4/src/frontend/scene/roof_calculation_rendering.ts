@@ -2,6 +2,11 @@ import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 import { roofCalculationVersionSnapshot } from "../world_edit/systems/roof/zones";
+import {
+  isUnmodifiedLod2RoofCalculation,
+  LOD2_EXISTING_ROOF_COLOR,
+  LOD2_EXISTING_ROOF_SEAM_COLOR,
+} from "./lod2_existing_appearance";
 
 export interface RoofCalculationRenderOptions {
   readonly scale?: number;
@@ -330,8 +335,12 @@ export function createRoofCalculationMeshes(
   const calculationVersion = roofCalculationVersionSnapshot(calculation);
   const scale = Number.isFinite(options.scale) && Number(options.scale) > 0 ? Number(options.scale) : 1;
   const preview = options.preview === true;
+  const existingLod2Roof = isUnmodifiedLod2RoofCalculation(
+    calculationValue,
+    options.semanticObjectRef,
+  );
   const skinMaterial = new THREE.MeshStandardMaterial({
-    color: 0xb9471c,
+    color: existingLod2Roof ? LOD2_EXISTING_ROOF_COLOR : 0xb9471c,
     roughness: 0.86,
     metalness: 0.01,
     // The editable roof zone remains visible around the roof, while the actual
@@ -343,7 +352,10 @@ export function createRoofCalculationMeshes(
     polygonOffset: true,
     polygonOffsetFactor: -1,
   });
-  const tileSeamMaterial = new THREE.MeshStandardMaterial({ color: 0x7f1d1d, roughness: 0.92 });
+  const tileSeamMaterial = new THREE.MeshStandardMaterial({
+    color: existingLod2Roof ? LOD2_EXISTING_ROOF_SEAM_COLOR : 0x7f1d1d,
+    roughness: 0.92,
+  });
   const sheathingMaterial = new THREE.MeshStandardMaterial({ color: 0xd6b57a, roughness: 0.96, side: THREE.DoubleSide });
   const insulationMaterial = new THREE.MeshStandardMaterial({
     color: 0xeabf45,
@@ -373,6 +385,7 @@ export function createRoofCalculationMeshes(
     mesh.userData.objectInstanceId = options.objectInstanceId;
     mesh.userData.semanticObjectRef = options.semanticObjectRef;
     mesh.userData.roofCalculationVersion = calculationVersion;
+    mesh.userData.existingLod2Roof = existingLod2Roof;
     meshes.push(mesh);
     geometries.push(geometry);
   };

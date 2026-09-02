@@ -12,7 +12,8 @@ export type WorldEditTool =
   | "copy-paste"
   | "cut-paste"
   | "tentacle"
-  | "roof";
+  | "roof"
+  | "storey";
 
 export type WorldEditOperation =
   | "set"

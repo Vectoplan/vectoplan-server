@@ -6,10 +6,15 @@ import { createRuntimeChunkContent } from '../src/frontend/runtime/world/chunk_c
 import {
   lod2BuildingBoundaryGrid,
   lod2FacadeVerticalIntervals,
+  lod2WallSourceCellIndexForFace,
+  raycastLod2WallCaps,
   trimLod2WallCaps,
+  LOD2_WALL_SOURCE_CELL_ATTRIBUTE,
   type BuildingBoundaryEdge,
 } from '../src/frontend/scene/lod2_wall_caps';
 import { createRoofCalculationMeshes } from '../src/frontend/scene/roof_calculation_rendering';
+import { appendLod2WallCaps, createChunkMeshRecord } from '../src/frontend/scene/scene_runtime';
+import { LOD2_EXISTING_WALL_COLOR } from '../src/frontend/scene/lod2_existing_appearance';
 import { createRoofSurfaceHighlight, roofSurfaceMarker, roofSurfaceTriangles, heightOnRoof } from '../src/frontend/scene/roof_surface_geometry';
 
 function roof(points:number[][]) {return {ok:true,geometry:{faces:[{polygon_3d_mm:points.map(([x,y,z])=>[x!*1000,z!*1000,y!*1000])}]}};}
@@ -68,6 +73,50 @@ test('ordinary LoD2 facade cells keep full block depth but render in the buildin
     assert(Math.max(...ys)<=1 || Math.min(...ys)>=2,'no triangle may bridge the removed middle block');
   }
   broken.geometry.dispose();
+});
+test('a click on the exact rotated LoD2 facade resolves its authoritative breakable source cell',()=>{
+  const cells=Array(4096).fill(0);cells[0]=1;cells[16]=1;
+  const source=wall(cells);
+  const calculation=roof([[.2,2,.2],[.8,2,.2],[.8,2,.8],[.2,2,.8]]);
+  const caps=trimLod2WallCaps(source,[facade(calculation,[.2,.2],[.8,.2],0,2)]);
+  assert(caps.geometry);
+  const sourceAttribute=caps.geometry.getAttribute(LOD2_WALL_SOURCE_CELL_ATTRIBUTE);
+  assert.equal(sourceAttribute.count,caps.geometry.getAttribute('position').count);
+  assert.equal(lod2WallSourceCellIndexForFace(caps.geometry,0),0);
+
+  const material=new THREE.MeshBasicMaterial({side:THREE.DoubleSide});
+  const mesh=new THREE.Mesh(caps.geometry,material);
+  mesh.userData.lod2WallCaps=true;
+  const hit=raycastLod2WallCaps(
+    [{mesh,chunk:source}],
+    new THREE.Vector3(.5,.5,-1),
+    new THREE.Vector3(0,0,1),
+    9,
+  );
+  assert(hit,'the visible facade itself must be targetable');
+  assert.equal(hit.sourceCellIndex,0);
+  assert.equal(source.cells[hit.sourceCellIndex],source.paletteByBlockTypeId.get('lod2_exterior_wall')!.cellValue);
+
+  const removed={...source,cells:source.cells.map((value,index)=>index===0?0:value)};
+  assert.equal(raycastLod2WallCaps([{mesh,chunk:removed}],new THREE.Vector3(.5,.5,-1),new THREE.Vector3(0,0,1),9),null,
+    'a stale facade mesh may never resurrect or target an already removed block');
+  material.dispose();caps.geometry.dispose();
+});
+test('materialized and exact-grid LoD2 walls both retain the neutral existing-building material',()=>{
+  const cells=Array(4096).fill(0);cells[0]=1;
+  const source=wall(cells);
+  const ordinary=createChunkMeshRecord(source);
+  assert(ordinary.materials.length>0);
+  assert.equal(`#${(ordinary.materials[0] as THREE.MeshStandardMaterial).color.getHexString()}`,LOD2_EXISTING_WALL_COLOR);
+
+  const calculation=roof([[.2,1,.2],[.8,1,.2],[.8,1,.8],[.2,1,.8]]);
+  const caps=trimLod2WallCaps(source,[facade(calculation,[.2,.2],[.8,.2],0,1)]);
+  assert(caps.geometry);
+  const appended=appendLod2WallCaps(createChunkMeshRecord(caps.chunk),caps);
+  const exactMaterial=appended.materials.at(-1) as THREE.MeshStandardMaterial;
+  assert.equal(`#${exactMaterial.color.getHexString()}`,LOD2_EXISTING_WALL_COLOR);
+  ordinary.geometries.forEach(geometry=>geometry.dispose());ordinary.materials.forEach(material=>material.dispose());
+  appended.geometries.forEach(geometry=>geometry.dispose());appended.materials.forEach(material=>material.dispose());
 });
 test('the final wall block is projected vertically from the exact eave and never protrudes outside it',()=>{
   const cells=Array(4096).fill(0);cells[0]=1;cells[16]=1;cells[32]=1;

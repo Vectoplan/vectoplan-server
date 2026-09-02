@@ -56,33 +56,29 @@ WORKDIR ${APP_HOME}
 
 
 # -----------------------------------------------------------------------------
-# Nur neue Frontend-Manifeste zuerst kopieren
+# Gelocktes, kanonisches Frontend-Manifest zuerst kopieren
 # -----------------------------------------------------------------------------
 # Wichtig:
-# - absichtlich `src/frontend/...`
-# - absichtlich NICHT `frontend/...`
+# - der lokale Komplettcheck und der Container verwenden dieselben Versionen
+# - `package-lock.json` macht den Docker-Build reproduzierbar
+# - der Quellcode bleibt weiterhin vollständig unter `src/frontend/`
 # -----------------------------------------------------------------------------
 
-COPY src/frontend/package*.json ./src/frontend/
-COPY src/frontend/tsconfig.json ./src/frontend/
-COPY src/frontend/vite.config.ts ./src/frontend/
+COPY package.json package-lock.json tsconfig.json ./
 
 
 # -----------------------------------------------------------------------------
 # Frontend-Abhängigkeiten installieren
 # -----------------------------------------------------------------------------
 
-WORKDIR ${FRONTEND_DIR}
+WORKDIR ${APP_HOME}
 
 RUN set -eux; \
     node --version; \
     npm --version; \
     test -f package.json; \
-    if [ -f package-lock.json ]; then \
-        npm ci --include=dev; \
-    else \
-        npm install --include=dev; \
-    fi; \
+    test -f package-lock.json; \
+    npm ci --include=dev; \
     npm cache clean --force || true
 
 
@@ -105,7 +101,7 @@ COPY src/frontend ./src/frontend
 # - Manifest wird direkt per `node -e` geprüft
 # -----------------------------------------------------------------------------
 
-WORKDIR ${FRONTEND_DIR}
+WORKDIR ${APP_HOME}
 
 RUN set -eux; \
     rm -rf "${STATIC_EDITOR_DIR}"; \

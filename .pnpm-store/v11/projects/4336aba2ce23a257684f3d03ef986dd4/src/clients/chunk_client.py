@@ -1080,6 +1080,37 @@ class ChunkClient:
             content_profile=content_profile,
         )
 
+    def get_active_editor_dataset(
+        self,
+        project_id: str,
+        world_id: str,
+    ) -> ChunkClientResponse:
+        return self.get(
+            (
+                f"/projects/{_segment(project_id)}/worlds/{_segment(world_id)}"
+                "/editor-datasets/active"
+            ),
+            timeout_seconds=self.config.request_timeout_seconds,
+        )
+
+    def get_active_editor_dataset_chunk(
+        self,
+        project_id: str,
+        world_id: str,
+        *,
+        chunk_x: int,
+        chunk_y: int,
+        chunk_z: int,
+    ) -> ChunkClientResponse:
+        return self.get(
+            (
+                f"/projects/{_segment(project_id)}/worlds/{_segment(world_id)}"
+                "/editor-datasets/active/chunks"
+            ),
+            query={"chunkX": int(chunk_x), "chunkY": int(chunk_y), "chunkZ": int(chunk_z)},
+            timeout_seconds=self.config.request_timeout_seconds,
+        )
+
     def get_terrain_region(
         self,
         project_id: str,

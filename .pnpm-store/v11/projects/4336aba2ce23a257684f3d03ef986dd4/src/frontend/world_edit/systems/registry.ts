@@ -17,6 +17,7 @@ const REQUIRED_TOOLS: readonly WorldEditTool[] = [
   "cut-paste",
   "tentacle",
   "roof",
+  "storey",
 ];
 
 function normalizedAlias(value: unknown): string {

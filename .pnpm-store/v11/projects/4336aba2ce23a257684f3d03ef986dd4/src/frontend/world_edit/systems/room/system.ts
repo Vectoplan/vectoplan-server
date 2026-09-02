@@ -27,7 +27,7 @@ export interface RoomSystemHooks {
 export function createRoomSystem(hooks: RoomSystemHooks): WorldEditSystem {
   return {
     tool: "room",
-    aliases: ["rooms", "raum", "räume", "raeume"],
+    aliases: ["rooms", "raum", "räume", "raeume", "linien-brush", "building-line-brush", "bauflaeche", "baufläche"],
     ui: {
       title: "Räume",
       hint: "Raumkontur Punkt für Punkt zeichnen. Ersten Punkt erneut anklicken oder ESC drücken schließt und speichert die Fläche. Gelbe Eckpunkte lassen sich ziehen; Rechtsklick auf einen Raum löscht ihn.",

@@ -19,7 +19,7 @@ export interface TentacleSystemHooks {
 export function createTentacleSystem(hooks: TentacleSystemHooks): WorldEditSystem {
   return {
     tool: "tentacle",
-    aliases: ["tentacle-brush", "path-brush"],
+    aliases: ["tentacle-brush", "path-brush", "street-brush", "road-brush", "strasse", "straße"],
     ui: {
       title: "Tentacle Brush",
       hint: "Linksklick setzt Punkte; halten zeichnet weiter. ESC beendet den Pfad. Anvisierte Punkte leuchten gelb: Linksklick verschiebt, Rechtsklick löscht. Rechtsklick außerhalb eines Punkts führt den Pfad aus.",

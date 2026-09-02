@@ -17,6 +17,9 @@ export interface Lod2BuildingFootprint {
 
 export interface Lod2BuildingGridReference {
   readonly kind:'lod2-building';
+  readonly referenceSource:'derived-geometry'|'persisted-construction-grid';
+  readonly constructionGridVersion?:string;
+  readonly constructionGridFingerprint?:string;
   readonly buildingId:string;
   readonly origin:BuildingGridPoint;
   readonly axisU:BuildingGridPoint;
@@ -285,8 +288,71 @@ export function deriveLod2BuildingGridReference(
   const rotationDegrees=((Math.atan2(axisU[1],axisU[0])*180/Math.PI)%180+180)%180;
   const signature=[buildingId,origin.map(value=>value.toFixed(4)).join(':'),rotationDegrees.toFixed(4),widthM.toFixed(3),depthM.toFixed(3),columns,rows,
     uAnchors.map(value=>value.toFixed(3)).join(','),vAnchors.map(value=>value.toFixed(3)).join(','),facades.map(facade=>facade.id).join(',')].join(':');
-  return {kind:'lod2-building',buildingId,origin,axisU,axisV,widthM,depthM,stepU:widthM/columns,stepV:depthM/rows,
+  return {kind:'lod2-building',referenceSource:'derived-geometry',buildingId,origin,axisU,axisV,widthM,depthM,stepU:widthM/columns,stepV:depthM/rows,
     uAnchors,vAnchors,columns,rows,rotationDegrees,centroid,areaM2,footprints,polygons,facades,signature};
+}
+
+const CONSTRUCTION_GRID_VERSION='vectoplan-lod2-construction-grid.v1';
+
+function finiteNumberList(value:unknown):number[]|null {
+  const values=array(value).map(Number);
+  return values.length>=2&&values.every(Number.isFinite)
+    && values.every((item,index)=>index===0||item>values[index-1]!+1e-9)
+    ?values:null;
+}
+
+/**
+ * Consume the grid that Chunk already validated while importing LoD2.  The
+ * geometry-derived reference remains responsible only for the classified
+ * footprint/centroid that is not duplicated in the contract.  Any malformed
+ * or conflicting contract falls through to the legacy derivation unchanged.
+ */
+function persistedConstructionGridReference(
+  buildingId:string,
+  value:unknown,
+  geometry:Lod2BuildingGridReference,
+):Lod2BuildingGridReference|null {
+  const source=record(value);
+  if(source.schemaVersion!==CONSTRUCTION_GRID_VERSION
+    ||source.referenceMode!=='lod2-existing-building'
+    ||source.coordinateSpace!=='world-cell-xz'
+    ||String(source.buildingId??'')!==buildingId)return null;
+  const origin=finitePoint(source.origin),axisU=finitePoint(source.axisU),axisV=finitePoint(source.axisV);
+  if(!origin||!axisU||!axisV)return null;
+  const axisULength=Math.hypot(...axisU),axisVLength=Math.hypot(...axisV);
+  const determinant=axisU[0]*axisV[1]-axisU[1]*axisV[0];
+  if(Math.abs(axisULength-1)>.01||Math.abs(axisVLength-1)>.01||Math.abs(determinant)<.5)return null;
+  const widthM=Number(source.widthM),depthM=Number(source.depthM),stepU=Number(source.stepU),stepV=Number(source.stepV);
+  const columns=Number(source.columns),rows=Number(source.rows),rotationDegrees=Number(source.rotationDegrees);
+  if(![widthM,depthM,stepU,stepV,rotationDegrees].every(Number.isFinite)
+    ||widthM<=0||depthM<=0||stepU<=0||stepV<=0
+    ||!Number.isInteger(columns)||!Number.isInteger(rows)||columns<1||rows<1
+    ||Math.abs(stepU*columns-widthM)>.0001||Math.abs(stepV*rows-depthM)>.0001)return null;
+  const uAnchors=finiteNumberList(source.uAnchors),vAnchors=finiteNumberList(source.vAnchors);
+  if(!uAnchors||!vAnchors)return null;
+  const facades=array(source.facades).map((value):Lod2BuildingFacadeReference|null=>{
+    const facade=record(value),start=finitePoint(facade.start),end=finitePoint(facade.end),inward=finitePoint(facade.inward);
+    const id=String(facade.id??'').trim(),length=Number(facade.lengthM),columns=Number(facade.columnCount);
+    const columnWidth=Number(facade.columnWidthM);
+    if(!id||!start||!end||!inward||!Number.isFinite(length)||length<=0
+      ||!Number.isInteger(columns)||columns<1||!Number.isFinite(columnWidth)||columnWidth<=0)return null;
+    const measured=Math.hypot(end[0]-start[0],end[1]-start[1]);
+    if(Math.abs(measured-length)>Math.max(.02,length*.0001)
+      ||Math.abs(columnWidth*columns-length)>.0001||Math.abs(Math.hypot(...inward)-1)>.01)return null;
+    return {id,start,end,inward,length,columns,columnWidth};
+  });
+  if(!facades.length||facades.some((value)=>value===null))return null;
+  const fingerprint=String(source.fingerprint??'').trim();
+  if(!/^[a-f\d]{64}$/i.test(fingerprint))return null;
+  return {
+    ...geometry,
+    referenceSource:'persisted-construction-grid',
+    constructionGridVersion:CONSTRUCTION_GRID_VERSION,
+    constructionGridFingerprint:fingerprint,
+    origin,axisU,axisV,widthM,depthM,stepU,stepV,uAnchors,vAnchors,columns,rows,rotationDegrees,
+    facades:facades as readonly Lod2BuildingFacadeReference[],
+    signature:`${buildingId}:construction-grid:${fingerprint}`,
+  };
 }
 
 /** One exact, outward-facing block row beside every classified ground wall. */
@@ -386,6 +452,7 @@ export function lod2BuildingGridReferencesFromChunks(chunks:readonly unknown[]):
     groundFootprints:Map<string,Lod2BuildingFootprint>;
     roofPolygons:BuildingGridPoint[][];
     segments:Map<string,readonly [BuildingGridPoint,BuildingGridPoint]>;
+    constructionGrids:Map<string,unknown>;
   }>();
   for(const value of chunks){
     const chunk=record(value),raw=record(chunk.raw),rawRaw=record(raw.raw);
@@ -412,6 +479,7 @@ export function lod2BuildingGridReferencesFromChunks(chunks:readonly unknown[]):
       const current=byBuilding.get(buildingId)??{
         groundFootprints:new Map<string,Lod2BuildingFootprint>(),roofPolygons:[],
         segments:new Map<string,readonly [BuildingGridPoint,BuildingGridPoint]>(),
+        constructionGrids:new Map<string,unknown>(),
       };
       for(const ground of sourceGroundFootprints(source.groundFootprints)){
         const signature=[ground.outer,...ground.holes].map((ring)=>ring.map((point)=>point.map((coordinate)=>coordinate.toFixed(3)).join(':')).join(','))
@@ -419,6 +487,11 @@ export function lod2BuildingGridReferencesFromChunks(chunks:readonly unknown[]):
         current.groundFootprints.set(signature,ground);
       }
       for(const segment of segments)current.segments.set(edgeKey(segment[0],segment[1]),segment);
+      const constructionGrid=record(source.constructionGrid);
+      if(Object.keys(constructionGrid).length){
+        const contractKey=String(constructionGrid.fingerprint??JSON.stringify(constructionGrid));
+        current.constructionGrids.set(contractKey,constructionGrid);
+      }
       current.roofPolygons.push(...polygons);
       byBuilding.set(buildingId,current);
     }
@@ -431,7 +504,12 @@ export function lod2BuildingGridReferencesFromChunks(chunks:readonly unknown[]):
     // GroundSurface boundaries are authoritative and contain neither roof
     // overhangs nor upper-wall fragments. Segment fallback is only needed for
     // old metadata where classified ground rings were not persisted yet.
-    return deriveLod2BuildingGridReference(buildingId,footprints,ground.length||legacyGround.length?[]:legacySegments);
+    const derived=deriveLod2BuildingGridReference(buildingId,footprints,ground.length||legacyGround.length?[]:legacySegments);
+    if(!derived)return null;
+    const persisted=[...value.constructionGrids.values()]
+      .map((contract)=>persistedConstructionGridReference(buildingId,contract,derived))
+      .filter((reference):reference is Lod2BuildingGridReference=>reference!==null);
+    return persisted.length===1?persisted[0]!:derived;
   })
     .filter((value):value is Lod2BuildingGridReference=>value!==null)
     .sort((first,second)=>second.areaM2-first.areaM2||first.buildingId.localeCompare(second.buildingId));

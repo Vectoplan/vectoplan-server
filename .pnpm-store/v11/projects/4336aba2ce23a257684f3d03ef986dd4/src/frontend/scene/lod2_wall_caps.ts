@@ -13,6 +13,65 @@ export interface Lod2WallCaps {
   readonly unrepresentedCellIndices:readonly number[];
 }
 
+export const LOD2_WALL_SOURCE_CELL_ATTRIBUTE = 'lod2SourceCellIndex';
+
+export interface Lod2WallCapsRaycastTarget {
+  readonly mesh:THREE.Mesh;
+  readonly chunk:RuntimeChunkContent;
+}
+
+export interface Lod2WallCapsRaycastHit {
+  readonly target:Lod2WallCapsRaycastTarget;
+  readonly sourceCellIndex:number;
+  readonly distance:number;
+  readonly point:THREE.Vector3;
+  readonly normal:THREE.Vector3;
+}
+
+/** Resolve a rendered facade triangle back to the authoritative source voxel. */
+export function lod2WallSourceCellIndexForFace(
+  geometry:THREE.BufferGeometry,
+  faceIndex:number|null|undefined,
+):number|null {
+  if(!Number.isInteger(faceIndex)||Number(faceIndex)<0)return null;
+  const attribute=geometry.getAttribute(LOD2_WALL_SOURCE_CELL_ATTRIBUTE);
+  if(!attribute)return null;
+  const faceVertex=Number(faceIndex)*3;
+  const vertexIndex=geometry.index?.getX(faceVertex)??faceVertex;
+  const value=attribute.getX(vertexIndex);
+  return Number.isInteger(value)&&value>=0?value:null;
+}
+
+/** Precise click hit for remeshed/rotated LoD2 facades. The visible mesh is
+ * deliberately authoritative for the ray, while the returned cell remains
+ * the persisted, breakable Chunk cell used by RemoveBlock. */
+export function raycastLod2WallCaps(
+  targets:readonly Lod2WallCapsRaycastTarget[],
+  origin:THREE.Vector3,
+  direction:THREE.Vector3,
+  maxDistance=Number.POSITIVE_INFINITY,
+):Lod2WallCapsRaycastHit|null {
+  if(!targets.length||direction.lengthSq()<1e-12)return null;
+  const active=targets.filter(target=>target.mesh.visible&&target.mesh.userData.lod2WallCaps===true);
+  if(!active.length)return null;
+  active.forEach(target=>target.mesh.updateWorldMatrix(true,false));
+  const byMesh=new Map(active.map(target=>[target.mesh,target]));
+  const raycaster=new THREE.Raycaster(origin,direction.clone().normalize(),0,Math.max(0,maxDistance));
+  for(const intersection of raycaster.intersectObjects(active.map(target=>target.mesh),false)){
+    const mesh=intersection.object as THREE.Mesh;
+    const target=byMesh.get(mesh);
+    if(!target)continue;
+    const sourceCellIndex=lod2WallSourceCellIndexForFace(mesh.geometry,intersection.faceIndex);
+    if(sourceCellIndex===null)continue;
+    const cellValue=Number(target.chunk.cells[sourceCellIndex]??0);
+    if(target.chunk.paletteByCellValue.get(cellValue)?.blockTypeId!=='lod2_exterior_wall')continue;
+    const normal=intersection.face?.normal.clone().transformDirection(mesh.matrixWorld)
+      ?? direction.clone().normalize().multiplyScalar(-1);
+    return {target,sourceCellIndex,distance:intersection.distance,point:intersection.point.clone(),normal};
+  }
+  return null;
+}
+
 export interface Lod2RoofSurfaceSource {
   readonly buildingId:string;
   readonly calculation:unknown;
@@ -386,6 +445,11 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
     && Math.max(...t.map(p=>p[2]))>=chunk.chunkZ*chunk.chunkSize && Math.min(...t.map(p=>p[2]))<=(chunk.chunkZ+1)*chunk.chunkSize);
   if(!triangles.length)return empty(chunk);
   const cells=[...chunk.cells], capped:number[]=[],aligned:number[]=[],positions:number[]=[],unrepresented:number[]=[];
+  const sourceCellIndices:number[]=[];
+  const attributeNewVertices=(beforePositionCount:number,sourceCellIndex:number):void=>{
+    const addedVertices=(positions.length-beforePositionCount)/3;
+    for(let index=0;index<addedVertices;index++)sourceCellIndices.push(sourceCellIndex);
+  };
   const size=chunk.chunkSize;
   const boundaryGrid=lod2BuildingBoundaryGrid(calculations);
   const alignedBodies=new Map<string,'aligned'|'capped'|'delegated'|'discarded'>();
@@ -428,7 +492,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
     const result=[...selected.values()];facadesByCell.set(cellKey,result);return result;
   };
 
-  const renderFacadeBody=(edge:BuildingBoundaryEdge,column:number,y:number,retryDelegated=false):'aligned'|'capped'|'delegated'|'discarded'=>{
+  const renderFacadeBody=(edge:BuildingBoundaryEdge,column:number,y:number,sourceCellIndex:number,retryDelegated=false):'aligned'|'capped'|'delegated'|'discarded'=>{
     const key=`${edge.buildingId}:${edge.edgeKey}:${column}:${y}`;
     const existing=alignedBodies.get(key);
     if(existing&&existing!=='discarded'&&!(retryDelegated&&existing==='delegated'))return existing;
@@ -485,6 +549,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
       ];
       facadePrism(top,bottom,positions);
     }
+    attributeNewVertices(before,sourceCellIndex);
     const kind=positions.length>before?(fullHeight?'aligned':'capped'):'discarded';
     alignedBodies.set(key,kind);return kind;
   };
@@ -506,7 +571,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
     let cellKind:'aligned'|'capped'|'delegated'|'discarded'='discarded';
     let failedReplacement=false;
     for(const selected of selections){
-      const kind=renderFacadeBody(selected.edge,selected.column,y);
+      const kind=renderFacadeBody(selected.edge,selected.column,y,index);
       if(kind==='discarded')failedReplacement=true;
       if(kind==='capped'||cellKind==='discarded')cellKind=kind;
     }
@@ -519,12 +584,12 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
   // removes that stair cell, but older midpoint-only ownership then omitted
   // the replacement body. Recover only bodies supported by a real source wall
   // cell in this chunk; deleted wall layers therefore stay deleted.
-  const sourceCellsByY=new Map<number,Array<readonly [number,number]>>();
+  const sourceCellsByY=new Map<number,Array<readonly [number,number,number]>>();
   for(let index=0;index<chunk.cells.length;index++){
     if(chunk.cells[index]!==wallValue)continue;
     const lx=index%size,ly=Math.floor(index/size)%size,lz=Math.floor(index/(size*size));
     const y=chunk.chunkY*size+ly,list=sourceCellsByY.get(y)??[];
-    list.push([chunk.chunkX*size+lx,chunk.chunkZ*size+lz]);sourceCellsByY.set(y,list);
+    list.push([chunk.chunkX*size+lx,chunk.chunkZ*size+lz,index]);sourceCellsByY.set(y,list);
   }
   for(const edge of boundaryGrid.filter(value=>value.exactFacade))for(let column=0;column<edge.divisions;column++){
     const minimumY=Math.max(Math.floor(edge.minimumY),chunk.chunkY*size);
@@ -540,13 +605,13 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
       const ownerX=Math.floor((edge.start[0]+tx*along)/size),ownerZ=Math.floor((edge.start[1]+tz*along)/size);
       if(ownerX!==chunk.chunkX||Math.floor(y/size)!==chunk.chunkY||ownerZ!==chunk.chunkZ)continue;
       const sourceCells=sourceCellsByY.get(y)??[];
-      const supported=sourceCells.some(([x,z])=>{
+      const supported=sourceCells.find(([x,z])=>{
         const interval=segmentIntervalInLod2Cell(edge.start,edge.end,x,z);
         if(!interval)return false;
         const start=interval[0]*edge.length,end=interval[1]*edge.length;
         return active.some(([first,last])=>Math.min(end,last)-Math.max(start,first)>FACADE_PLAN_EPS);
       });
-      if(supported)renderFacadeBody(edge,column,y,true);
+      if(supported)renderFacadeBody(edge,column,y,supported[2],true);
     }
   }
 
@@ -596,6 +661,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
     // A source face is triangulated.  Retain all coplanar/adjacent pieces near
     // the selected roof height so their union covers the true facet without
     // reintroducing a full-cell square or leaving a diagonal half-cell hole.
+    const before=positions.length;
     for(const profile of profiles) {
       if(profile.max<y-1.025 || Math.abs(profile.mid-selected.mid)>1.25)continue;
       const polygon=clip(profile.points,p=>p[1]-y);
@@ -604,6 +670,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
         ?clip(polygon,p=>p[1]-(y+1)).map(([px,,pz])=>[px,y+1,pz] as RoofPoint):[];
       prism(sloped,y,positions);prism(flat,y,positions);
     }
+    attributeNewVertices(before,index);
   }
 
   const removed=[...new Set([...capped,...aligned])].sort((a,b)=>a-b);
@@ -615,6 +682,7 @@ export function trimLod2WallCaps(chunk:RuntimeChunkContent,calculations:readonly
   if(!positions.length)return {chunk:{...chunk,cells},geometry:null,cappedCellIndices:capped,alignedCellIndices:aligned,...details};
   const geometry=new THREE.BufferGeometry();
   geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions.map(v=>v*chunk.cellSize),3));
+  geometry.setAttribute(LOD2_WALL_SOURCE_CELL_ATTRIBUTE,new THREE.Float32BufferAttribute(sourceCellIndices,1));
   geometry.computeVertexNormals();geometry.computeBoundingBox();geometry.computeBoundingSphere();
   return {chunk:{...chunk,cells},geometry,cappedCellIndices:capped,alignedCellIndices:aligned,...details};
 }

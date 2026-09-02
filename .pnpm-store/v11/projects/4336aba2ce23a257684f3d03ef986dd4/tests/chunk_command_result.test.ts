@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { commandResultFromUnknown } from "../src/frontend/runtime/world/chunk_command_result";
+import {
+  ChunkCommandResultContractError,
+  commandResultFromUnknown,
+  requireCommandResultFromUnknown,
+} from "../src/frontend/runtime/world/chunk_command_result";
 import {
   clipboardCommandResult,
   clipboardEntriesFromCommandResult,
@@ -22,6 +26,20 @@ test("recognizes the direct normalized PlaceObject result returned by library pl
   assert.deepEqual(result.changedChunks, ["-4:0:10"]);
 });
 
+test("recognizes the atomic ObjectBatch result used by building regeneration", () => {
+  const result = requireCommandResultFromUnknown({
+    ok: true,
+    commandType: "ObjectBatch",
+    commandStatus: "applied",
+    changed: true,
+    changedChunks: ["1:0:2", "2:0:2"],
+    dirtyChunks: ["1:0:2", "2:0:2"],
+  }, "atomare Baukörper-Regeneration");
+
+  assert.equal(result.commandType, "ObjectBatch");
+  assert.deepEqual(result.changedChunks, ["1:0:2", "2:0:2"]);
+});
+
 test("keeps accepting the legacy ChunkSource result wrapper", () => {
   const result = commandResultFromUnknown({
     result: {
@@ -39,6 +57,60 @@ test("keeps accepting the legacy ChunkSource result wrapper", () => {
 
 test("does not misclassify an unrelated successful response", () => {
   assert.equal(commandResultFromUnknown({ ok: true, status: "ready" }), null);
+});
+
+test("requires a normal productive direct command result", () => {
+  const result = requireCommandResultFromUnknown({
+    ok: true,
+    commandType: "WorldEdit",
+    changed: true,
+    changedChunks: ["3:0:7"],
+  }, "WorldEdit Tentacle Stra\u00dfe");
+
+  assert.equal(result.changed, true);
+  assert.deepEqual(result.changedChunks, ["3:0:7"]);
+});
+
+test("skips a malformed legacy envelope and accepts the valid raw result envelope", () => {
+  const result = requireCommandResultFromUnknown({
+    result: { ok: true, commandType: "WorldEdit", changed: "yes" },
+    raw: {
+      result: {
+        ok: true,
+        commandType: "WorldEdit",
+        changed: false,
+        changedChunks: [],
+      },
+    },
+  });
+
+  assert.equal(result.changed, false);
+});
+
+test("rejects a missing command-result envelope with a diagnostic contract error", () => {
+  assert.throws(
+    () => requireCommandResultFromUnknown({ ok: true, status: "ready" }, "WorldEdit Tentacle Stra\u00dfe"),
+    (error: unknown) => {
+      assert.ok(error instanceof ChunkCommandResultContractError);
+      assert.equal(error.code, "chunk_command_result_contract_invalid");
+      assert.match(error.message, /WorldEdit Tentacle Stra\u00dfe/);
+      assert.match(error.message, /empfangene Felder: ok, status/);
+      return true;
+    },
+  );
+});
+
+test("rejects a divergent wrapper instead of treating it as an unchanged command", () => {
+  assert.throws(
+    () => requireCommandResultFromUnknown({
+      result: {
+        ok: true,
+        commandType: "WorldEdit",
+        changed: "false",
+      },
+    }),
+    ChunkCommandResultContractError,
+  );
 });
 
 test("clipboard accepts the productive direct command result and reads copied cells", () => {

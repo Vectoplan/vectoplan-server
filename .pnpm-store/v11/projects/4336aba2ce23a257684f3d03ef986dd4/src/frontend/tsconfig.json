@@ -110,6 +110,7 @@
     "./dom/**/*.ts",
     "./input/**/*.ts",
     "./inventory/**/*.ts",
+    "./modes/**/*.ts",
     "./render/**/*.ts",
     "./runtime/**/*.ts",
     "./scene/**/*.ts",

@@ -1,0 +1,96 @@
+.vp-planning-massing {
+  position: absolute;
+  z-index: 725;
+  top: 84px;
+  right: 18px;
+  width: min(310px, calc(100% - 36px));
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, .36);
+  border-radius: 16px;
+  color: #172033;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 18px 54px rgba(15, 23, 42, .17), 0 2px 8px rgba(15, 23, 42, .07);
+  backdrop-filter: blur(18px) saturate(1.18);
+  pointer-events: auto;
+  font: 600 12px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.vp-planning-massing[hidden] { display: none !important; }
+
+/*
+ * Planning tools and the massing assistant deliberately share the right-side
+ * workspace. A regular WorldEdit tool owns that workspace while it is open.
+ * During the massing selection, the assistant replaces the generic selection
+ * panel because it executes that same selection through the WorldEdit API.
+ */
+[data-editor-workspace-mode="planning"][data-world-edit-active="true"]:not([data-planning-massing-active="true"]) .vp-planning-massing,
+[data-editor-workspace-mode="planning"][data-planning-massing-active="true"][data-world-edit-active="true"]:not([data-world-edit-tool="selection"]) .vp-planning-massing {
+  display: none !important;
+}
+[data-editor-workspace-mode="planning"][data-planning-massing-active="true"][data-world-edit-tool="selection"] .editor-world-edit {
+  display: none !important;
+}
+
+.vp-planning-massing__header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.vp-planning-massing__title-group { min-width: 0; }
+.vp-planning-massing__eyebrow {
+  display: block; color: #2563eb; font-size: 9px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase;
+}
+.vp-planning-massing__title { margin: 4px 0 0; font-size: 18px; line-height: 1.2; }
+.vp-planning-massing__badge {
+  padding: 4px 7px; border-radius: 999px; color: #1745b8; background: #eaf2ff; font-size: 9px; font-weight: 850;
+}
+.vp-planning-massing__intro { margin: 8px 0 0; color: #64748b; font-size: 10px; font-weight: 550; }
+.vp-planning-massing__steps {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin: 12px 0 0; padding: 0; list-style: none;
+}
+.vp-planning-massing__steps li {
+  padding: 6px 5px; border-radius: 8px; color: #64748b; background: #f1f5f9; font-size: 9px; text-align: center;
+}
+.vp-planning-massing__steps li[data-complete="true"] { color: #166534; background: #dcfce7; }
+.vp-planning-massing__summary {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 9px; margin-top: 9px; padding: 9px 10px;
+  border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc;
+}
+.vp-planning-massing__summary-value { color: #172033; font-size: 15px; font-weight: 850; }
+.vp-planning-massing__summary-meta { overflow: hidden; color: #64748b; font-size: 9px; text-align: right; text-overflow: ellipsis; }
+.vp-planning-massing__button {
+  width: 100%; min-height: 36px; margin-top: 8px; padding: 8px 10px; border: 1px solid transparent; border-radius: 10px;
+  font-family: inherit; font-size: 10px; font-weight: 800; line-height: 1.2; cursor: pointer;
+}
+.vp-planning-massing__button:disabled { opacity: .46; cursor: not-allowed; }
+.vp-planning-massing__button--secondary { border-color: #bfdbfe; color: #1d4ed8; background: #eff6ff; }
+.vp-planning-massing__button--primary { color: #fff; background: #2563eb; box-shadow: 0 6px 16px rgba(37, 99, 235, .2); }
+.vp-planning-massing__button--roof { border-color: #c4b5fd; color: #6d28d9; background: #f5f3ff; }
+.vp-planning-massing__field { display: grid; gap: 5px; margin-top: 10px; color: #475569; font-size: 9px; font-weight: 750; }
+.vp-planning-massing__height-row { display: grid; grid-template-columns: 68px 1fr; gap: 6px; }
+.vp-planning-massing__height {
+  width: 100%; min-height: 34px; padding: 5px 8px; border: 1px solid #cbd5e1; border-radius: 9px; color: #172033;
+  background: #fff; font: 800 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+.vp-planning-massing__presets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.vp-planning-massing__preset {
+  border: 1px solid #e2e8f0; border-radius: 8px; color: #526176; background: #f8fafc; font-size: 10px; font-weight: 800; cursor: pointer;
+}
+.vp-planning-massing__preset:hover { border-color: #93c5fd; color: #1d4ed8; background: #eff6ff; }
+.vp-planning-massing__material {
+  display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; padding: 7px 9px; border-radius: 8px; background: #f8fafc;
+  color: #64748b; font-size: 9px;
+}
+.vp-planning-massing__material strong { overflow: hidden; max-width: 180px; color: #9a3412; text-overflow: ellipsis; white-space: nowrap; }
+.vp-planning-massing__material[data-ready="true"] strong { color: #166534; }
+.vp-planning-massing__status { min-height: 28px; margin: 9px 0 0; color: #475569; font-size: 10px; }
+.vp-planning-massing__status[data-tone="busy"] { color: #1d4ed8; }
+.vp-planning-massing__status[data-tone="success"] { color: #166534; }
+.vp-planning-massing__status[data-tone="error"] { color: #b91c1c; }
+.vp-planning-massing__status[data-tone="ready"] { color: #1745b8; }
+.vp-planning-massing__note { margin: 8px 0 0; color: #94a3b8; font-size: 8px; font-weight: 550; }
+
+@media (max-width: 900px) {
+  .vp-planning-massing { top: 70px; right: 10px; width: min(270px, calc(100% - 20px)); padding: 12px; }
+  .vp-planning-massing__intro, .vp-planning-massing__note { display: none; }
+}
+@media (max-width: 620px) {
+  .vp-planning-massing { top: auto; right: 8px; bottom: 64px; left: 8px; width: auto; max-height: 44vh; overflow-y: auto; }
+  .vp-planning-massing__header, .vp-planning-massing__steps, .vp-planning-massing__material { display: none; }
+  .vp-planning-massing__summary { margin-top: 0; }
+}
