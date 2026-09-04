@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de" data-vectoplan-reconstruction-preview-document="true">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="color-scheme" content="dark" />
+  <title>{{ page_title|default('VECTOPLAN Editor · Live-Rekonstruktion', true) }}</title>
+
+  {% set assets = editor_assets|default({}, true) %}
+  {% for href in assets.preload|default([], true) %}
+    <link rel="modulepreload" href="{{ href }}" />
+  {% endfor %}
+  {% for href in assets.css|default([], true) %}
+    <link rel="stylesheet" href="{{ href }}" />
+  {% endfor %}
+</head>
+<body>
+  <main
+    class="reconstruction-preview"
+    data-editor-reconstruction-preview
+    data-reconstruction-preview-contract="{{ reconstruction_preview.contract }}"
+    data-reconstruction-preview-parent-origin="{{ reconstruction_preview.parentOrigin }}"
+    data-reconstruction-preview-mode="plan2d"
+    data-reconstruction-preview-chunk-enabled="false"
+    data-reconstruction-preview-persistence-enabled="false"
+  >
+    <canvas
+      class="reconstruction-preview__canvas"
+      data-reconstruction-preview-canvas
+      aria-label="Plan-zentrierte 2D-Prüfansicht der CAD-Bridge-Rekonstruktion"
+    ></canvas>
+
+    <header class="reconstruction-preview__topbar">
+      <div class="reconstruction-preview__identity">
+        <span>VECTOPLAN EDITOR · 2D-PRÜFPLAN</span>
+        <strong data-reconstruction-preview-title>Warte auf CAD Bridge</strong>
+        <small data-reconstruction-preview-details>Nicht persistent · keine automatische BIM-Freigabe</small>
+      </div>
+      <div class="reconstruction-preview__actions">
+        <button type="button" data-reconstruction-preview-reset>Kamera zentrieren</button>
+        <button type="button" data-reconstruction-preview-fullscreen>Vollbild</button>
+      </div>
+    </header>
+
+    <div class="reconstruction-preview__status" data-reconstruction-preview-status data-status="loading">
+      Editor wird gestartet …
+    </div>
+    <div
+      class="reconstruction-preview__counts"
+      data-reconstruction-preview-counts
+      aria-live="polite"
+      aria-label="Erkannte Elemente"
+      hidden
+    ></div>
+    <aside class="reconstruction-preview__legend" aria-label="Legende der 2D-Prüfdarstellung">
+      <strong>2D-Prüfung</strong>
+      <span><i class="room" aria-hidden="true"></i>Räume / Treppen</span>
+      <span><i class="wall" aria-hidden="true"></i>Wände</span>
+      <span><i class="hosted-opening" aria-hidden="true"></i>Türen / Fenster</span>
+      <span><i class="wallless-opening" aria-hidden="true"></i>Wandlose Öffnungen</span>
+    </aside>
+    <div class="reconstruction-preview__axis" aria-hidden="true">
+      <i class="x"></i><i class="y"></i><i class="z"></i>
+    </div>
+    <div class="reconstruction-preview__help">Zoomen · Verschieben</div>
+
+    <script type="application/json" data-reconstruction-preview-bootstrap>
+      {{ reconstruction_preview|tojson }}
+    </script>
+  </main>
+
+  {% for src in assets.js|default([], true) %}
+    <script type="module" src="{{ src }}"></script>
+  {% endfor %}
+</body>
+</html>

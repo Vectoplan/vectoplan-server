@@ -19,7 +19,7 @@ import {
   normalizeMarketplaceBuildingProgramTemplates,
   selectBuildingProgramTemplate,
   type BuildingProgramFetch,
-} from "../src/frontend/world_edit/systems/room/line_brush_building_programs";
+} from "../src/frontend/world_edit/systems/line_brush/building_programs";
 
 test("building program taxonomy has Standard plus the required architecture types", () => {
   assert.equal(BUILDING_PROGRAM_TYPES[0]?.id, "standard");

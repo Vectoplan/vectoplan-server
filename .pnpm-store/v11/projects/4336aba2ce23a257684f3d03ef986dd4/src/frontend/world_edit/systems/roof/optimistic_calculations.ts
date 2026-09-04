@@ -9,6 +9,8 @@ interface OptimisticRoofCalculation {
 const STABLE_PERSISTED_VERSION_MS = 10_000;
 const optimisticCalculations = new Map<string, OptimisticRoofCalculation>();
 
+export type PendingRoofCalculationStatus = "persisted" | "protected" | "superseded";
+
 function normalizedId(value: unknown): string {
   return String(value ?? "").trim();
 }
@@ -54,6 +56,25 @@ export function isRenderedRoofCalculationCurrent(
   const pending = optimisticCalculations.get(normalizedId(objectInstanceId));
   return !pending
     || roofCalculationVersionsMatch(pending.calculation, renderedCalculationVersion);
+}
+
+/**
+ * Reconcile controller-side quick settings with the scene's revision-aware
+ * optimistic guard. A mismatching persisted calculation is only stale while
+ * the exact expected save still owns that guard. Once the guard has observed
+ * and accepted a strictly newer chunk revision, the old local settings must
+ * not be applied to that collaborator version.
+ */
+export function pendingRoofCalculationStatus(
+  objectInstanceId: string,
+  expectedCalculation: unknown,
+  persistedCalculation: unknown,
+): PendingRoofCalculationStatus {
+  if (roofCalculationVersionsMatch(expectedCalculation, persistedCalculation)) return "persisted";
+  const pending = optimisticCalculations.get(normalizedId(objectInstanceId));
+  return pending && roofCalculationVersionsMatch(pending.calculation, expectedCalculation)
+    ? "protected"
+    : "superseded";
 }
 
 /**

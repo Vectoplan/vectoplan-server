@@ -802,6 +802,17 @@ def _apply_global_security_headers(app: Flask, response: Response) -> Response:
         return response
 
     try:
+        # The reconstruction preview applies a stricter, route-specific
+        # parent-origin allowlist after validating `parentOrigin`. Replacing
+        # that policy with the full-editor default would make the isolated
+        # converter iframe unusable (or broaden its trust boundary).
+        if (
+            response.headers.get("X-VECTOPLAN-Editor-Runtime-Mode")
+            == "reconstruction-preview"
+        ):
+            response.headers.pop("X-Frame-Options", None)
+            return response
+
         if not _is_editor_page_request():
             return response
 

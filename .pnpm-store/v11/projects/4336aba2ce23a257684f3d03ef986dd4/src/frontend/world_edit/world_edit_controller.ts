@@ -42,6 +42,7 @@ import { createTentacleSystem } from "./systems/tentacle/system";
 import { createRoofSystem } from "./systems/roof/system";
 import { createStoreySystem } from "./systems/storey/system";
 import { importedRoofSource } from "./systems/roof/imported";
+import { restoreImportedRoofOriginal } from "./systems/roof/restoration";
 import { createFlatRoofCalculation } from "./systems/roof/courtyard";
 import {
   createStairQuickSettings,
@@ -79,6 +80,7 @@ import { createRoofSurfaceHighlight, roofSurfaceTriangles, roofSurfaceMarker, he
 import {
   createRoofQuickSettings,
   persistedRoofQuickSettings,
+  type RoofQuickParameters,
   type RoofQuickSettingsHandle,
 } from "./systems/roof/quick_settings";
 import {
@@ -95,20 +97,37 @@ import {
   createDefaultBuildingProgramTemplateSelection,
   getBuildingProgramType,
   type BuildingProgramTemplateSelection,
-} from "./systems/room/line_brush_building_programs";
+} from "./systems/line_brush/building_programs";
 import {
   createLineBrushQuickSettings,
   type LineBrushQuickSettingsHandle,
-} from "./systems/room/line_brush_quick_settings";
-import type { LineBrushBuildingGenerationRequest } from "./systems/room/line_brush_quick_settings_state";
+} from "./systems/line_brush/quick_settings";
+import type { LineBrushBuildingGenerationRequest } from "./systems/line_brush/quick_settings_state";
 import {
   buildLineBrushBuildingGeometry,
+  reserveLineBrushBuildingCellBudget,
   type LineBrushBuildingGeometry,
   type LineBrushBuildingStoreyGeometry,
-} from "./systems/room/line_brush_building_geometry";
+} from "./systems/line_brush/building_geometry";
+import {
+  buildLineBrushBuildingLayout,
+  lineBrushLayoutFootprintForSegment,
+  type LineBrushBuildingLayout,
+} from "./systems/line_brush/building_layout";
+import {
+  lineBrushBuildingPreset,
+  lineBrushRoofDefaults,
+  normalizeLineBrushRoofType,
+  type LineBrushBuildingPreset,
+} from "./systems/line_brush/building_presets";
+import {
+  appendLineBrushBuildingRoofPreview,
+  createLineBrushBuildingStructurePreview,
+} from "./systems/line_brush/building_preview";
 import {
   inactiveRoofZones,
   roofCalculationHasZoneTopPurlinAlignment,
+  roofCalculationVersionSnapshot,
   roofCalculationVersionsMatch,
   roofPreviewStateAfterInvalidation,
   shouldCommitRoofSettingsClose,
@@ -116,6 +135,7 @@ import {
 } from "./systems/roof/zones";
 import {
   clearOptimisticRoofCalculation,
+  pendingRoofCalculationStatus,
   registerOptimisticRoofCalculation,
 } from "./systems/roof/optimistic_calculations";
 import {
@@ -1178,7 +1198,7 @@ export function createWorldEditController(
   let selectedStoreyBuildArea: ExistingRoomRef | null = null;
   let selectedStoreyScope: StoreyTargetScope = "all";
   let planningBuildingStoreyProfile: PlanningBuildingStoreyProfile = {
-    baseCount: 1,
+    baseCount: lineBrushBuildingPreset("standard").defaultStoreyCount,
     segmentAdjustments: {},
   };
   let planningBuildingProgramSelection: BuildingProgramTemplateSelection =
@@ -1186,6 +1206,9 @@ export function createWorldEditController(
   let planningBuildingGenerationRequest: LineBrushBuildingGenerationRequest | null = null;
   let lineBrushQuickSettings: LineBrushQuickSettingsHandle | null = null;
   let storeyQuickSettings: StoreyQuickSettingsHandle | null = null;
+  let planningBuildingPreviewSequence = 0;
+  let planningBuildingRoofPreviewTimer = 0;
+  let planningBuildingRoofPreviewAbortController: AbortController | null = null;
   let roomAreaWorkspaceProfile: "first-person" | "planning" | null = null;
   let planningBuildAreaWidth = 8;
   let planningBuildAreaMoving = false;
@@ -1210,17 +1233,20 @@ export function createWorldEditController(
   let roofZoneSignature = "";
   let roofZoneRefreshAt = 0;
   let hiddenEditingRoofObjects: HiddenRoofObject[] = [];
-  const pendingRoofQuickSettings = new Map<string, Pick<
-    RoofToolParameters,
-    | "roofType"
-    | "pitchDeg"
-    | "overhangMm"
-    | "overhangNorthMm"
-    | "overhangEastMm"
-    | "overhangSouthMm"
-    | "overhangWestMm"
-    | "edgeOverhangsMm"
-  >>();
+  const pendingRoofQuickSettings = new Map<string, Readonly<{
+    parameters: Pick<
+      RoofToolParameters,
+      | "roofType"
+      | "pitchDeg"
+      | "overhangMm"
+      | "overhangNorthMm"
+      | "overhangEastMm"
+      | "overhangSouthMm"
+      | "overhangWestMm"
+      | "edgeOverhangsMm"
+    >;
+    calculationVersion: Readonly<Record<string, unknown>>;
+  }>>();
   let selection: SelectionBounds = { first: null, second: null };
   let lastPlanningMassingDraft: PlanningMassingDraft | null = null;
   let selectionDragging = false;
@@ -1936,6 +1962,15 @@ export function createWorldEditController(
 
   function disposePolygonAreaGroup(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
+    if (tool === "room") {
+      planningBuildingPreviewSequence += 1;
+      if (planningBuildingRoofPreviewTimer) {
+        window.clearTimeout(planningBuildingRoofPreviewTimer);
+        planningBuildingRoofPreviewTimer = 0;
+      }
+      planningBuildingRoofPreviewAbortController?.abort();
+      planningBuildingRoofPreviewAbortController = null;
+    }
     runtime.pointTargets = [];
     runtime.moveTarget = null;
     runtime.settingsTarget = null;
@@ -2089,6 +2124,26 @@ export function createWorldEditController(
     }
     const group = new THREE.Group();
     group.name = "vectoplan_world_edit_planning_build_area";
+    const previewBaseY = editingPlanningBuildAreaAnchor?.y
+      ?? Math.floor(draft.points[0]!.y + 1);
+    let buildingPreviewWithinCellBudget = false;
+    try {
+      const storeys = planningStoreyBuildSpecs(draft, previewBaseY).map((spec) => ({
+        scope: spec.scope,
+        storey: spec.storey,
+      }));
+      group.add(createLineBrushBuildingStructurePreview({
+        storeys,
+        selectedScope: selectedStoreyScope,
+      }));
+      buildingPreviewWithinCellBudget = true;
+    } catch (error) {
+      // A one-cell or just-started stroke can be too small to voxelise. Keep
+      // its 2D controls usable and let the next pointer update retry.
+      options.logger?.debug?.("Line-brush structure preview is not ready yet.", {
+        error: normalizeUnknownError(error),
+      });
+    }
     const previewY = draft.points[0]!.y + 0.035;
     for (const [index, polygon] of draft.polygons.entries()) {
       const fill = pathBrushAreaMesh(
@@ -2139,6 +2194,10 @@ export function createWorldEditController(
     }
     scene.add(group);
     runtime.group = group;
+    if (buildingPreviewWithinCellBudget) {
+      schedulePlanningBuildingRoofPreview(group, draft, previewBaseY);
+    }
+    syncLineBrushStoreyEditing();
     options.root.dataset.planningBuildAreaWidth = draft.width.toFixed(2);
     options.root.dataset.planningBuildAreaSegments = String(draft.segments.length);
     options.root.dataset.planningBuildAreaEditable = String(runtime.closed);
@@ -2778,14 +2837,17 @@ export function createWorldEditController(
         return;
       }
       pendingRoofQuickSettings.set(roofId, {
-        roofType: roofParameters.roofType,
-        pitchDeg: Math.round(roofParameters.pitchDeg),
-        overhangMm: roofParameters.overhangMm,
-        overhangNorthMm: roofParameters.overhangNorthMm,
-        overhangEastMm: roofParameters.overhangEastMm,
-        overhangSouthMm: roofParameters.overhangSouthMm,
-        overhangWestMm: roofParameters.overhangWestMm,
-        edgeOverhangsMm: [...roofParameters.edgeOverhangsMm],
+        parameters: {
+          roofType: roofParameters.roofType,
+          pitchDeg: Math.round(roofParameters.pitchDeg),
+          overhangMm: roofParameters.overhangMm,
+          overhangNorthMm: roofParameters.overhangNorthMm,
+          overhangEastMm: roofParameters.overhangEastMm,
+          overhangSouthMm: roofParameters.overhangSouthMm,
+          overhangWestMm: roofParameters.overhangWestMm,
+          edgeOverhangsMm: [...roofParameters.edgeOverhangsMm],
+        },
+        calculationVersion: roofCalculationVersionSnapshot(calculation),
       });
       await options.sceneRuntime.reloadDirtyChunks("world-edit-roof");
       const persistedVersionVisible = await waitForPersistedRoofCalculation(roofId, calculation);
@@ -2985,11 +3047,18 @@ export function createWorldEditController(
   lineBrushQuickSettings = createLineBrushQuickSettings({
     root: options.root,
     onChange: (snapshot) => {
+      const programChanged = planningBuildingProgramSelection.typeId !== snapshot.typeId;
       planningBuildingProgramSelection = snapshot.selection;
       planningBuildingStoreyProfile = {
-        ...planningBuildingStoreyProfile,
+        ...(programChanged
+          ? { segmentAdjustments: {} }
+          : planningBuildingStoreyProfile),
         baseCount: snapshot.storeyCount,
       };
+      if (programChanged) selectedStoreyScope = "all";
+      planningBuildingGenerationRequest = null;
+      syncLineBrushStoreyEditing();
+      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
     },
     onTemplateSelect: (snapshot) => {
       planningBuildingProgramSelection = snapshot.selection;
@@ -3002,6 +3071,15 @@ export function createWorldEditController(
         baseCount: request.storeyCount,
       };
       await executePlanningBuildArea(request);
+    },
+    onStoreyAdjust: (delta, scope) => {
+      selectedStoreyScope = scope;
+      return adjustPlanningBuildingStoreys(delta, scope, { allowDraft: true });
+    },
+    onStoreyScopeChange: (scope) => {
+      selectedStoreyScope = scope;
+      syncLineBrushStoreyEditing();
+      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
     },
     onError: (error, stage) => {
       options.logger?.warn?.("Line-brush quick settings failed.", {
@@ -3043,6 +3121,62 @@ export function createWorldEditController(
       );
     },
   });
+  const applyRoofQuickSettings = (
+    { roofType, pitchDeg, overhangMm }: RoofQuickParameters,
+    explicitImportedRestore = false,
+  ): void => {
+    // The quick setting is uniform.  Reset individual edge overrides so the
+    // visible 5-cm change affects every side of the generated roof.
+    const overhangChanged = roofParameters.overhangMm !== overhangMm;
+    const roofTypeChanged = roofParameters.roofType !== roofType;
+    const nextParameters: RoofToolParameters = {
+      ...roofParameters,
+      roofType,
+      pitchDeg,
+      overhangMm,
+      ...(overhangChanged ? {
+        overhangNorthMm: overhangMm,
+        overhangEastMm: overhangMm,
+        overhangSouthMm: overhangMm,
+        overhangWestMm: overhangMm,
+        edgeOverhangsMm: [],
+      } : {}),
+    };
+    const runtime = polygonAreaRuntime("roof");
+    // Treat every explicit LoD2-Original action as a restore command.  This
+    // also repairs older persisted states that already claim `imported` but
+    // still carry pitch/overhang values from a parametric edit; the user can
+    // therefore click the already-selected tile to recover the survey roof.
+    const restoreImportedSource = explicitImportedRestore
+      && roofType === "imported"
+      && Boolean(nextParameters.importedSource);
+    roofParameters = restoreImportedSource
+      ? restoreImportedRoofOriginal(nextParameters)
+      : nextParameters;
+    if (restoreImportedSource && roofParameters.importedSource) {
+      const sourceRings = polygonAreaRingsFromFootprint({
+        type: "Polygon",
+        coordinateSpace: "world-cell-xz",
+        coordinates: roofParameters.importedSource.footprint,
+        baseY: roofParameters.importedSource.baseY,
+      }, roofParameters.importedSource.baseY);
+      if (validPolygonArea(sourceRings[0] ?? [])) {
+        runtime.points = [...sourceRings[0]!];
+        editingRoofHoleRings = sourceRings.slice(1).map((ring) => [...ring]);
+      }
+      // The controls emitted the previous variant's pitch/overhang together
+      // with the type click; immediately show the actual restored values.
+      roofQuickSettings?.sync(roofParameters);
+    }
+    if (runtime.closed && validPolygonArea(runtime.points)) {
+      // Never display the previous parametric roof after switching back to
+      // the LoD2 source. Same-type tweaks may retain their last preview
+      // while the replacement calculation is running.
+      invalidateRoofCalculation(!(roofTypeChanged || restoreImportedSource));
+      scheduleRoofPreview();
+    }
+    refreshHud();
+  };
   roofQuickSettings = createRoofQuickSettings({
     root: options.root,
     onSolar: () => {
@@ -3057,34 +3191,8 @@ export function createWorldEditController(
       void input?.exitPointerLock("world-edit-solar-open");
       void solarPanel?.open(roofSolarSettings);
     },
-    onChange: ({ roofType, pitchDeg, overhangMm }) => {
-      // The quick setting is uniform.  Reset individual edge overrides so the
-      // visible 5-cm change affects every side of the generated roof.
-      const overhangChanged = roofParameters.overhangMm !== overhangMm;
-      const roofTypeChanged = roofParameters.roofType !== roofType;
-      roofParameters = {
-        ...roofParameters,
-        roofType,
-        pitchDeg,
-        overhangMm,
-        ...(overhangChanged ? {
-          overhangNorthMm: overhangMm,
-          overhangEastMm: overhangMm,
-          overhangSouthMm: overhangMm,
-          overhangWestMm: overhangMm,
-          edgeOverhangsMm: [],
-        } : {}),
-      };
-      const runtime = polygonAreaRuntime("roof");
-      if (runtime.closed && validPolygonArea(runtime.points)) {
-        // Never display the previous parametric roof after switching back to
-        // the LoD2 source. Same-type tweaks may retain their last preview
-        // while the replacement calculation is running.
-        invalidateRoofCalculation(!roofTypeChanged);
-        scheduleRoofPreview();
-      }
-      refreshHud();
-    },
+    onChange: (parameters) => applyRoofQuickSettings(parameters),
+    onRestoreImported: (parameters) => applyRoofQuickSettings(parameters, true),
     onClose: (restorePointerLock) => {
       restoreWorkspaceInput("world-edit-roof-settings-close", restorePointerLock && activeTool === "roof");
       if (!restorePointerLock || activeTool !== "roof") return;
@@ -5953,6 +6061,19 @@ export function createWorldEditController(
     }));
   }
 
+  function syncLineBrushStoreyEditing(): void {
+    if (!lineBrushQuickSettings) return;
+    const segmentCount = currentPlanningBuildAreaDraft()?.segments.length ?? 0;
+    const requestedIndex = planningScopeSegmentIndex(selectedStoreyScope);
+    if (requestedIndex !== null && requestedIndex >= segmentCount) selectedStoreyScope = "all";
+    lineBrushQuickSettings.syncStoreyEditing({
+      segmentCount,
+      scope: selectedStoreyScope,
+      scopeStoreyCount: planningStoreyCountForScope(selectedStoreyScope),
+      busy,
+    });
+  }
+
   function syncStoreyQuickSettings(open = false): void {
     if (!storeyQuickSettings || !selectedStoreyBuildArea) return;
     const draft = currentPlanningBuildAreaDraft();
@@ -6141,24 +6262,29 @@ export function createWorldEditController(
       DEFAULT_ROOF_TOOL_PARAMETERS,
     );
     const persistedQuickSettings = persistedRoofQuickSettings(ref.metadata, normalizedStoredParameters);
-    const pendingQuickSettings = pendingRoofQuickSettings.get(ref.objectInstanceId);
-    if (pendingQuickSettings
-      && pendingQuickSettings.roofType === persistedQuickSettings.roofType
-      && pendingQuickSettings.pitchDeg === persistedQuickSettings.pitchDeg
-      && pendingQuickSettings.overhangMm === persistedQuickSettings.overhangMm) {
+    const storedCalculation = asRecord(ref.metadata.roofCalculation);
+    let pendingRoofEdit = pendingRoofQuickSettings.get(ref.objectInstanceId);
+    const pendingStatus = pendingRoofEdit
+      ? pendingRoofCalculationStatus(
+        ref.objectInstanceId,
+        pendingRoofEdit.calculationVersion,
+        storedCalculation,
+      )
+      : null;
+    if (pendingStatus === "persisted" || pendingStatus === "superseded") {
       pendingRoofQuickSettings.delete(ref.objectInstanceId);
+      pendingRoofEdit = undefined;
     }
     roofParameters = {
       ...normalizedStoredParameters,
       ...persistedQuickSettings,
-      ...(pendingQuickSettings ?? {}),
+      ...(pendingStatus === "protected" ? pendingRoofEdit?.parameters ?? {} : {}),
     };
     roofQuickSettings?.sync(roofParameters);
     const storedRequest = asRecord(ref.metadata.roofRequest);
     const expectedRequest = buildRoofCalculationRequest(runtime.points, roofParameters);
     const requestMatches = storedRequest.contract_version === "cad-roof-calculation-request/0.1"
       && roofCalculationRequestKey(storedRequest) === roofCalculationRequestKey(expectedRequest);
-    const storedCalculation = asRecord(ref.metadata.roofCalculation);
     const isImported = roofParameters.roofType === "imported" && Boolean(roofParameters.importedSource)
       && storedCalculation.source === "lod2-original-surfaces";
     const purlinAlignmentIsCurrent = isImported || roofCalculationHasZoneTopPurlinAlignment(storedCalculation);
@@ -6255,6 +6381,7 @@ export function createWorldEditController(
     planningBuildingGenerationRequest = null;
     planningBuildingStoreyProfile = planningStoreyProfileFromMetadata(ref.metadata);
     const buildingProgram = asRecord(ref.metadata.buildingProgram);
+    const storedRoof = asRecord(buildingProgram.roof);
     lineBrushQuickSettings?.sync({
       typeId: getBuildingProgramType(safeString(buildingProgram.typeId, "standard")).id,
       templateId: safeString(
@@ -6262,11 +6389,14 @@ export function createWorldEditController(
         "builtin:standard",
       ),
       storeyCount: planningBuildingStoreyProfile.baseCount,
+      roofType: normalizeLineBrushRoofType(storedRoof.type),
     });
     planningBuildingProgramSelection = lineBrushQuickSettings?.getSnapshot().selection
       ?? planningBuildingProgramSelection;
     editingRoomInstanceId = null;
     editingRoomAnchor = null;
+    selectedStoreyScope = "all";
+    syncLineBrushStoreyEditing();
     rebuildPolygonAreaScene("room");
     refreshHud();
     setStatus("Gebäude-Baufläche ausgewählt. Stützpunkte anpassen oder die mittlere Raute ziehen, um alles zu verschieben.", "ready");
@@ -6364,43 +6494,74 @@ export function createWorldEditController(
     return scope === "all" ? "all" : `segment_${planningScopeSegmentIndex(scope) ?? 0}`;
   }
 
+  function currentPlanningBuildingPreset(
+    request?: LineBrushBuildingGenerationRequest,
+  ): LineBrushBuildingPreset {
+    return request?.preset
+      ?? lineBrushQuickSettings?.getSnapshot().preset
+      ?? lineBrushBuildingPreset("standard");
+  }
+
+  function currentPlanningBuildingLayout(
+    draft: PathBrushDraft,
+    request?: LineBrushBuildingGenerationRequest,
+  ): LineBrushBuildingLayout {
+    return buildLineBrushBuildingLayout(draft, currentPlanningBuildingPreset(request));
+  }
+
   function planningFootprintForScope(
     draft: PathBrushDraft,
     scope: StoreyTargetScope,
+    layout: LineBrushBuildingLayout = currentPlanningBuildingLayout(draft),
   ): Readonly<Record<string, unknown>> {
     const segmentIndex = planningScopeSegmentIndex(scope);
-    if (segmentIndex === null) return draft.footprint;
+    if (segmentIndex === null) return layout.footprint;
     const segment = draft.segments.find((candidate) => candidate.index === segmentIndex);
     if (!segment) throw new Error(`Liniensegment ${segmentIndex + 1} ist nicht mehr vorhanden.`);
-    return {
-      type: "MultiPolygon",
-      coordinateSpace: "world-cell-xz",
-      coordinates: [[segment.rectangle]],
-    };
+    return lineBrushLayoutFootprintForSegment(layout, segmentIndex);
   }
 
   function planningRoofPolygonsForScope(
     draft: PathBrushDraft,
     scope: StoreyTargetScope,
+    layout: LineBrushBuildingLayout = currentPlanningBuildingLayout(draft),
   ): readonly (readonly (readonly (readonly [number, number])[])[])[] {
     const segmentIndex = planningScopeSegmentIndex(scope);
     if (segmentIndex !== null) {
-      const segment = draft.segments.find((candidate) => candidate.index === segmentIndex);
-      return segment ? [[segment.rectangle]] : [];
+      return lineBrushLayoutFootprintForSegment(layout, segmentIndex).coordinates;
     }
-    return draft.footprint.coordinates
+    return layout.footprint.coordinates
       .filter((polygon) => (polygon[0]?.length ?? 0) >= 3);
   }
 
   function planningProgramMetadata(
     request?: LineBrushBuildingGenerationRequest,
   ): Readonly<Record<string, unknown>> {
-    if (request) return request.buildingProgram as unknown as Readonly<Record<string, unknown>>;
-    const persisted = asRecord(editingPlanningBuildAreaMetadata.buildingProgram);
-    if (Object.keys(persisted).length > 0) return persisted;
-    return buildBuildingProgramExecutionMetadata(
-      planningBuildingProgramSelection,
-    ) as unknown as Readonly<Record<string, unknown>>;
+    const snapshot = lineBrushQuickSettings?.getSnapshot();
+    const base = request
+      ? request.buildingProgram as unknown as Readonly<Record<string, unknown>>
+      : (() => {
+          const persisted = asRecord(editingPlanningBuildAreaMetadata.buildingProgram);
+          if (Object.keys(persisted).length > 0) return persisted;
+          return buildBuildingProgramExecutionMetadata(
+            planningBuildingProgramSelection,
+          ) as unknown as Readonly<Record<string, unknown>>;
+        })();
+    const preset = request?.preset ?? snapshot?.preset ?? currentPlanningBuildingPreset();
+    const roof = lineBrushRoofDefaults(
+      preset.typeId,
+      request?.roofType ?? snapshot?.roofType,
+    );
+    return {
+      ...base,
+      layoutPreset: preset,
+      roof: {
+        type: roof.type,
+        pitchDegrees: request?.roofPitchDegrees ?? roof.pitchDegrees,
+        overhangMillimeters: request?.roofOverhangMillimeters ?? roof.overhangMillimeters,
+        generator: "world-edit.roof",
+      },
+    };
   }
 
   function planningBuildingBlockTypeId(): string {
@@ -6414,24 +6575,32 @@ export function createWorldEditController(
   function planningStoreyBuildSpecs(
     draft: PathBrushDraft,
     baseY: number,
+    request?: LineBrushBuildingGenerationRequest,
   ): readonly PlanningStoreyBuildSpec[] {
+    const layout = currentPlanningBuildingLayout(draft, request);
     const result: PlanningStoreyBuildSpec[] = [];
+    let occupiedCellCount = 0;
     const append = (scope: StoreyTargetScope, storeyIndex: number): void => {
       const segmentIndex = planningScopeSegmentIndex(scope);
       const geometry = buildLineBrushBuildingGeometry({
         draft,
+        layout,
         baseY: baseY + storeyIndex * STANDARD_STOREY_HEIGHT_METERS,
         storeyCount: 1,
         segmentScope: segmentIndex === null
           ? "all"
           : { kind: "segment", segmentIndex },
       });
+      occupiedCellCount = reserveLineBrushBuildingCellBudget(
+        occupiedCellCount,
+        geometry.occupiedCells.length,
+      );
       result.push({
         scope,
         storeyIndex,
         geometry,
         storey: geometry.storeys[0]!,
-        footprint: planningFootprintForScope(draft, scope),
+        footprint: planningFootprintForScope(draft, scope, layout),
       });
     };
     const hasSegmentAdjustments = Object.values(planningBuildingStoreyProfile.segmentAdjustments)
@@ -6504,7 +6673,20 @@ export function createWorldEditController(
   async function planningRoofBuildSpecs(
     draft: PathBrushDraft,
     baseY: number,
+    generationRequest?: LineBrushBuildingGenerationRequest,
+    signal?: AbortSignal,
   ): Promise<readonly PlanningRoofBuildSpec[]> {
+    if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
+    const snapshot = lineBrushQuickSettings?.getSnapshot();
+    const preset = currentPlanningBuildingPreset(generationRequest);
+    const roofDefaults = lineBrushRoofDefaults(
+      preset.typeId,
+      generationRequest?.roofType ?? snapshot?.roofType,
+    );
+    const pitchDegrees = generationRequest?.roofPitchDegrees ?? roofDefaults.pitchDegrees;
+    const overhangMillimeters = generationRequest?.roofOverhangMillimeters
+      ?? roofDefaults.overhangMillimeters;
+    const layout = currentPlanningBuildingLayout(draft, generationRequest);
     const hasSegmentAdjustments = Object.values(planningBuildingStoreyProfile.segmentAdjustments)
       .some((value) => Number(value) !== 0);
     const scopes: StoreyTargetScope[] = hasSegmentAdjustments
@@ -6513,16 +6695,23 @@ export function createWorldEditController(
     const result: PlanningRoofBuildSpec[] = [];
     let roofIndex = 0;
     for (const scope of scopes) {
+      if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
       const eavesY = baseY + planningStoreyCountForScope(scope) * STANDARD_STOREY_HEIGHT_METERS;
       const parameters: RoofToolParameters = {
         ...DEFAULT_ROOF_TOOL_PARAMETERS,
-        roofType: "flat",
-        pitchDeg: 0,
+        roofType: roofDefaults.type,
+        pitchDeg: pitchDegrees,
         eavesHeightMm: Math.round(eavesY * 1_000),
         ridgeDirection: "auto",
+        overhangMm: overhangMillimeters,
+        overhangNorthMm: overhangMillimeters,
+        overhangEastMm: overhangMillimeters,
+        overhangSouthMm: overhangMillimeters,
+        overhangWestMm: overhangMillimeters,
         edgeOverhangsMm: [],
       };
-      for (const polygon of planningRoofPolygonsForScope(draft, scope)) {
+      for (const polygon of planningRoofPolygonsForScope(draft, scope, layout)) {
+        if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
         const rings = polygon
           .map((ring) => ring.map(([x, z]) => ({ x, y: eavesY, z })))
           .filter((ring) => validPolygonArea(ring));
@@ -6530,7 +6719,7 @@ export function createWorldEditController(
         if (!validPolygonArea(points)) continue;
         const request = buildRoofCalculationRequest(points, parameters);
         let calculation: RoofCalculationResult;
-        if (rings.length > 1) {
+        if (parameters.roofType === "flat") {
           // The current CAD endpoint accepts one outer ring. Flat line-brush
           // roofs with courtyards are triangulated locally so their holes stay
           // open instead of being silently covered.
@@ -6541,19 +6730,18 @@ export function createWorldEditController(
             parameters.roofSkinThicknessMm,
           );
         } else {
+          if (rings.length > 1) {
+            throw new Error(`Die Dachform ${parameters.roofType} kann eine Innenhofkontur noch nicht verlustfrei abbilden.`);
+          }
           try {
-            calculation = await requestRoofCalculation(request);
+            calculation = await requestRoofCalculation(request, signal);
           } catch (error) {
-            options.logger?.warn?.("CAD flat-roof calculation unavailable; using deterministic line-brush fallback.", {
+            if (signal?.aborted) throw error;
+            options.logger?.warn?.("CAD roof calculation unavailable for the line-brush building.", {
               error: normalizeUnknownError(error),
               scope,
             });
-            calculation = createFlatRoofCalculation(
-              points,
-              parameters.eavesHeightMm,
-              [],
-              parameters.roofSkinThicknessMm,
-            );
+            throw error;
           }
         }
         result.push({ scope, roofIndex: roofIndex++, rings, points, parameters, request, calculation });
@@ -6561,6 +6749,44 @@ export function createWorldEditController(
     }
     if (result.length === 0) throw new Error("Für die Gebäude-Baufläche konnte keine Dachkontur erzeugt werden.");
     return result;
+  }
+
+  function schedulePlanningBuildingRoofPreview(
+    group: THREE.Group,
+    draft: PathBrushDraft,
+    baseY: number,
+  ): void {
+    const sequence = ++planningBuildingPreviewSequence;
+    if (planningBuildingRoofPreviewTimer) {
+      window.clearTimeout(planningBuildingRoofPreviewTimer);
+    }
+    planningBuildingRoofPreviewAbortController?.abort();
+    const abortController = new AbortController();
+    planningBuildingRoofPreviewAbortController = abortController;
+    planningBuildingRoofPreviewTimer = window.setTimeout(() => {
+      planningBuildingRoofPreviewTimer = 0;
+      void planningRoofBuildSpecs(draft, baseY, undefined, abortController.signal).then((specs) => {
+        if (sequence !== planningBuildingPreviewSequence
+          || abortController.signal.aborted
+          || polygonAreaRuntime("room").group !== group
+          || !group.parent) return;
+        appendLineBrushBuildingRoofPreview(
+          group,
+          specs.map((spec) => ({ scope: spec.scope, calculation: spec.calculation })),
+          selectedStoreyScope,
+        );
+        options.sceneRuntime.renderOnce("world-edit.line-brush-roof-live-preview");
+      }).catch((error) => {
+        if (sequence !== planningBuildingPreviewSequence || abortController.signal.aborted) return;
+        options.logger?.debug?.("Line-brush roof live preview is not available yet.", {
+          error: normalizeUnknownError(error),
+        });
+      }).finally(() => {
+        if (planningBuildingRoofPreviewAbortController === abortController) {
+          planningBuildingRoofPreviewAbortController = null;
+        }
+      });
+    }, 120);
   }
 
   async function removePlanningGeneratedObjectRefs(
@@ -6752,13 +6978,13 @@ export function createWorldEditController(
         schemaVersion: "vectoplan-building-roof.v1",
         source: "vectoplan-editor.world-edit.line-brush-building",
         familyRef: "world-edit.roof",
-        variantRef: "flat",
+        variantRef: spec.parameters.roofType,
         semanticRole: "building.roof",
         generatedFromAreaId: areaId,
         generatedScope: spec.scope,
         generatedBy: "world-edit.line-brush",
         buildingProgram,
-        roofType: "flat",
+        roofType: spec.parameters.roofType,
         roofParameters: { ...spec.parameters },
         roofRequest: spec.request,
         roofCalculation: spec.calculation,
@@ -6800,13 +7026,14 @@ export function createWorldEditController(
     ]);
     busy = true;
     if (executeButton) executeButton.disabled = true;
+    syncLineBrushStoreyEditing();
     syncStoreyQuickSettings();
     setStatus(editingPlanningBuildAreaInstanceId
       ? "Baukörper, Geschosse und Dach werden aktualisiert …"
       : "Baukörper wird aus Blockgeschossen und WorldEdit-Dach erzeugt …", "busy");
     try {
-      const storeySpecs = planningStoreyBuildSpecs(draft, anchor.y);
-      const roofSpecs = await planningRoofBuildSpecs(draft, anchor.y);
+      const storeySpecs = planningStoreyBuildSpecs(draft, anchor.y, request);
+      const roofSpecs = await planningRoofBuildSpecs(draft, anchor.y, request);
       const placements: PlanningGeneratedObjectPlacement[] = [];
       // Build the complete generation locally first. The Chunk service receives
       // all child objects and the parent in one ObjectBatch transaction, so
@@ -6852,6 +7079,7 @@ export function createWorldEditController(
         segmentCount: draft.segments.length,
         widthM: draft.width,
         pathBrush: persistedPathBrush(draft),
+        buildingLayout: currentPlanningBuildingLayout(draft, request),
         buildingProgram,
         storeyCount: planningBuildingStoreyProfile.baseCount,
         storeyHeightMeters: STANDARD_STOREY_HEIGHT_METERS,
@@ -6971,6 +7199,7 @@ export function createWorldEditController(
     } finally {
       busy = false;
       if (executeButton) executeButton.disabled = false;
+      syncLineBrushStoreyEditing();
       syncStoreyQuickSettings();
       refreshHud();
     }
@@ -6979,10 +7208,17 @@ export function createWorldEditController(
   async function adjustPlanningBuildingStoreys(
     delta: number,
     scope: StoreyTargetScope,
+    behavior: Readonly<{ allowDraft?: boolean }> = {},
   ): Promise<void> {
     if (busy) return;
-    if (!selectedStoreyBuildArea || !editingPlanningBuildAreaInstanceId) {
+    const draft = currentPlanningBuildAreaDraft();
+    const editingDraft = behavior.allowDraft === true && activeTool === "room" && isPlanningWorkspace();
+    if ((!selectedStoreyBuildArea || !editingPlanningBuildAreaInstanceId) && !editingDraft) {
       setStatus("Bitte zuerst einen Linien-Brush-Baukörper auswählen.", "warning");
+      return;
+    }
+    if (!draft) {
+      setStatus("Bitte zuerst mindestens ein vollständiges Liniensegment zeichnen.", "warning");
       return;
     }
     const direction = delta < 0 ? -1 : 1;
@@ -7024,14 +7260,28 @@ export function createWorldEditController(
       };
     }
     selectedStoreyScope = scope;
+    syncLineBrushStoreyEditing();
     syncStoreyQuickSettings();
+    if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
+    if (!editingPlanningBuildAreaInstanceId) {
+      setStatus(
+        scope === "all"
+          ? `Live-Vorschau auf ${planningBuildingStoreyProfile.baseCount} Geschosse eingestellt.`
+          : `Liniensegment ${(planningScopeSegmentIndex(scope) ?? 0) + 1} wird mit ${planningStoreyCountForScope(scope)} Geschossen dargestellt.`,
+        "ready",
+      );
+      return;
+    }
     const saved = await executePlanningBuildArea(planningBuildingGenerationRequest ?? undefined);
     if (!saved) {
       planningBuildingStoreyProfile = previous;
       lineBrushQuickSettings?.sync({ storeyCount: previous.baseCount });
+      syncLineBrushStoreyEditing();
       syncStoreyQuickSettings();
+      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
       return;
     }
+    syncLineBrushStoreyEditing();
     syncStoreyQuickSettings(true);
   }
 
@@ -7457,6 +7707,7 @@ export function createWorldEditController(
       lineBrushQuickSettings?.open({
         storeyCount: planningBuildingStoreyProfile.baseCount,
       });
+      syncLineBrushStoreyEditing();
     }
     syncParcelGuideVisibility(`world-edit.parcel-guides-tool:${tool}`);
     rebuildSelectionScene();
@@ -8236,6 +8487,10 @@ export function createWorldEditController(
       disposeParcelGroup();
       disposeParcelGridGroup();
       if (roofPreviewTimer) window.clearTimeout(roofPreviewTimer);
+      planningBuildingRoofPreviewAbortController?.abort();
+      planningBuildingRoofPreviewAbortController = null;
+      if (planningBuildingRoofPreviewTimer) window.clearTimeout(planningBuildingRoofPreviewTimer);
+      planningBuildingRoofPreviewTimer = 0;
       lineBrushQuickSettings?.destroy();
       lineBrushQuickSettings = null;
       storeyQuickSettings?.destroy();

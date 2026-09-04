@@ -411,15 +411,21 @@
 }
 
 .editor-navigation-compass {
+  --editor-compass-surface: rgb(255 255 255 / 92%);
+  --editor-compass-surface-strong: rgb(255 255 255 / 98%);
+  --editor-compass-border: rgb(124 157 184 / 30%);
+  --editor-compass-ink: #183b56;
+  --editor-compass-muted: #61758a;
+  --editor-compass-accent: #168bd2;
   position: absolute;
   top: 12px;
   left: 50%;
   z-index: 118;
-  width: min(480px, calc(100% - 180px));
+  width: min(460px, calc(100% - 180px));
   height: 58px;
-  color: #f8fafc;
+  color: var(--editor-compass-ink);
   transform: translateX(-50%);
-  filter: drop-shadow(0 3px 10px rgb(2 8 18 / 28%));
+  filter: drop-shadow(0 7px 14px rgb(31 67 94 / 14%));
   pointer-events: none;
   user-select: none;
 }
@@ -433,21 +439,27 @@
 .editor-navigation-compass__viewport {
   position: relative;
   width: 100%;
-  height: 38px;
+  height: 40px;
   overflow: hidden;
   background:
     linear-gradient(
       90deg,
       transparent 0%,
-      rgb(5 12 22 / 52%) 13%,
-      rgb(5 12 22 / 80%) 34%,
-      rgb(5 12 22 / 86%) 50%,
-      rgb(5 12 22 / 80%) 66%,
-      rgb(5 12 22 / 52%) 87%,
+      rgb(255 255 255 / 66%) 12%,
+      var(--editor-compass-surface) 29%,
+      var(--editor-compass-surface-strong) 50%,
+      var(--editor-compass-surface) 71%,
+      rgb(255 255 255 / 66%) 88%,
       transparent 100%
     );
-  border-radius: 3px;
-  mask-image: linear-gradient(90deg, transparent, #000 13%, #000 87%, transparent);
+  border-top: 1px solid var(--editor-compass-border);
+  border-bottom: 1px solid var(--editor-compass-border);
+  border-radius: 15px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 88%),
+    0 4px 14px rgb(48 82 108 / 10%);
+  backdrop-filter: blur(10px) saturate(112%);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
 .editor-navigation-compass__ticks,
@@ -461,12 +473,12 @@
   top: 6px;
   min-width: 26px;
   height: 26px;
-  color: rgb(226 232 240 / 76%);
+  color: var(--editor-compass-muted);
   transform: translateX(-50%);
   font: 650 0.62rem/1 "Segoe UI", sans-serif;
   letter-spacing: 0.08em;
   text-align: center;
-  text-shadow: 0 1px 3px rgb(0 0 0 / 90%);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 92%);
 }
 
 .editor-navigation-compass__tick[hidden] {
@@ -479,25 +491,25 @@
   left: 50%;
   width: 1px;
   height: 4px;
-  background: rgb(226 232 240 / 42%);
+  background: rgb(72 111 142 / 36%);
   content: "";
   transform: translateX(-50%);
 }
 
 .editor-navigation-compass__tick--cardinal {
   top: 4px;
-  color: #ffffff;
+  color: var(--editor-compass-ink);
   font-size: 0.76rem;
   font-weight: 800;
 }
 
 .editor-navigation-compass__tick--cardinal::after {
   height: 6px;
-  background: rgb(255 255 255 / 78%);
+  background: rgb(30 91 135 / 62%);
 }
 
 .editor-navigation-compass__tick--ordinal {
-  color: rgb(226 232 240 / 72%);
+  color: var(--editor-compass-muted);
   font-size: 0.56rem;
 }
 
@@ -507,7 +519,7 @@
   left: 50%;
   width: 0;
   height: 0;
-  border-top: 6px solid #ffffff;
+  border-top: 6px solid var(--editor-compass-accent);
   border-right: 6px solid transparent;
   border-left: 6px solid transparent;
   transform: translateX(-50%);
@@ -530,8 +542,8 @@
 .editor-navigation-compass__marker-icon {
   font: 800 0.68rem/1 "Segoe UI Symbol", sans-serif;
   text-shadow:
-    0 0 2px rgb(0 0 0 / 100%),
-    0 1px 4px rgb(0 0 0 / 85%);
+    0 0 2px rgb(255 255 255 / 100%),
+    0 1px 4px rgb(27 60 84 / 34%);
 }
 
 .editor-navigation-compass__marker-label {
@@ -539,12 +551,14 @@
   top: 16px;
   max-width: 110px;
   overflow: hidden;
-  color: #ffffff;
+  padding: 3px 6px;
+  color: var(--editor-compass-ink);
+  background: rgb(255 255 255 / 94%);
+  border: 1px solid var(--editor-compass-border);
+  border-radius: 7px;
   font: 650 0.6rem/1.15 "Segoe UI", sans-serif;
   text-overflow: ellipsis;
-  text-shadow:
-    0 1px 2px rgb(0 0 0 / 100%),
-    0 0 5px rgb(0 0 0 / 90%);
+  box-shadow: 0 3px 9px rgb(42 76 101 / 12%);
   white-space: nowrap;
 }
 

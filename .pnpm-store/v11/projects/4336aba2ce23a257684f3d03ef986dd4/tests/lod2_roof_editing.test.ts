@@ -2,8 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildRoofCalculationRequest, DEFAULT_ROOF_TOOL_PARAMETERS, requestRoofCalculation } from "../src/frontend/world_edit/systems/roof/contracts";
 import { importedRoofSource, type ImportedRoofSource } from "../src/frontend/world_edit/systems/roof/imported";
+import { restoreImportedRoofOriginal } from "../src/frontend/world_edit/systems/roof/restoration";
 import { createRoofCalculationMeshes } from "../src/frontend/scene/roof_calculation_rendering";
-import { LOD2_EXISTING_ROOF_COLOR } from "../src/frontend/scene/lod2_existing_appearance";
+import {
+  LOD2_EXISTING_ROOF_COLOR,
+  isUnmodifiedLod2RoofCalculation,
+} from "../src/frontend/scene/lod2_existing_appearance";
 import { persistedRoofQuickSettings } from "../src/frontend/world_edit/systems/roof/quick_settings";
 import { createFlatRoofCalculation } from "../src/frontend/world_edit/systems/roof/courtyard";
 import {
@@ -32,6 +36,150 @@ test("original LoD2 shape uses canonical roof meshes, without network or invente
   assert(rendered.meshes.every(m => m.userData.existingLod2Roof === true));
   assert.equal(`#${((rendered.meshes[0]!.material as any).color.getHexString())}`, LOD2_EXISTING_ROOF_COLOR);
   rendered.geometries.forEach(g => g.dispose()); rendered.materials.forEach(m => m.dispose());
+});
+
+test("LoD2 restore resets every geometry-changing value to the immutable survey source", async () => {
+  const edited = {
+    ...parameters,
+    roofType: "gable" as const,
+    pitchDeg: 62,
+    eavesHeightMm: 12_345,
+    ridgeDirection: 71,
+    overhangMm: 900,
+    overhangNorthMm: 100,
+    overhangEastMm: 200,
+    overhangSouthMm: 300,
+    overhangWestMm: 400,
+    edgeOverhangsMm: [100, 200, 300, 400],
+  };
+
+  const restored = restoreImportedRoofOriginal(edited);
+
+  assert.equal(restored.roofType, "imported");
+  assert.equal(restored.pitchDeg, source.referencePitchDeg);
+  assert.equal(restored.eavesHeightMm, source.baseY * 1_000);
+  assert.equal(restored.ridgeDirection, "auto");
+  assert.equal(restored.overhangMm, 0);
+  assert.deepEqual([
+    restored.overhangNorthMm,
+    restored.overhangEastMm,
+    restored.overhangSouthMm,
+    restored.overhangWestMm,
+  ], [0, 0, 0, 0]);
+  assert.deepEqual(restored.edgeOverhangsMm, []);
+  const calculation = await requestRoofCalculation(buildRoofCalculationRequest(points, restored));
+  assert.deepEqual((calculation.geometry as any).faces, source.faces);
+  const reloadedParameters = JSON.parse(JSON.stringify(restored));
+  const reloaded = await requestRoofCalculation(buildRoofCalculationRequest(points, reloadedParameters));
+  assert.deepEqual(reloaded.geometry, calculation.geometry);
+
+  // Re-clicking an already selected LoD2-Original option is a restore as well;
+  // legacy records can say `imported` while still carrying edited controls.
+  const restoredAgain = restoreImportedRoofOriginal({
+    ...edited,
+    roofType: "imported",
+  });
+  assert.equal(restoredAgain.roofType, "imported");
+  assert.equal(restoredAgain.pitchDeg, source.referencePitchDeg);
+  assert.equal(restoredAgain.eavesHeightMm, source.baseY * 1_000);
+  assert.equal(restoredAgain.overhangMm, 0);
+  assert.deepEqual(restoredAgain.edgeOverhangsMm, []);
+});
+
+test("restored LoD2 preview is neutral-white before persisted semantic metadata arrives", async () => {
+  const calculation = await requestRoofCalculation(buildRoofCalculationRequest(points, parameters));
+  const rendered = createRoofCalculationMeshes(calculation, { preview: true });
+
+  assert(rendered.meshes.every(mesh => mesh.userData.existingLod2Roof === true));
+  assert.equal(`#${((rendered.meshes[0]!.material as any).color.getHexString())}`, LOD2_EXISTING_ROOF_COLOR);
+  rendered.geometries.forEach(g => g.dispose()); rendered.materials.forEach(m => m.dispose());
+});
+
+test("LoD2 existing appearance is stable across facet and vertex reorderings", async () => {
+  const calculation = await requestRoofCalculation(buildRoofCalculationRequest(points, parameters));
+  const reordered = structuredClone(calculation) as any;
+  reordered.geometry.faces = [...reordered.geometry.faces].reverse().map((face: any, index: number) => ({
+    ...face,
+    face_ref: `renumbered-${index}`,
+    polygon_3d_mm: [
+      ...face.polygon_3d_mm.slice(1),
+      face.polygon_3d_mm[0],
+    ].reverse(),
+  }));
+  const rendered = createRoofCalculationMeshes(reordered, {
+    semanticObjectRef: { metadata: { roofParameters: parameters } },
+  });
+
+  assert(rendered.meshes.every(mesh => mesh.userData.existingLod2Roof === true));
+  assert.equal(`#${((rendered.meshes[0]!.material as any).color.getHexString())}`, LOD2_EXISTING_ROOF_COLOR);
+  rendered.geometries.forEach(g => g.dispose()); rendered.materials.forEach(m => m.dispose());
+});
+
+test("large LoD2 facet sets compare by canonical geometry without face-order coupling", () => {
+  const faceCount = 4_096;
+  const faces = Array.from({ length: faceCount }, (_unused, index) => ({
+    face_ref: `source-${index}`,
+    polygon_3d_mm: [
+      [index * 2, 0, 6_000],
+      [index * 2 + 1, 0, 6_000],
+      [index * 2, 1, 6_001],
+    ],
+  }));
+  const reorderedFaces = [...faces].reverse().map((face, index) => ({
+    face_ref: `renumbered-${index}`,
+    polygon_3d_mm: [
+      face.polygon_3d_mm[1],
+      face.polygon_3d_mm[0],
+      face.polygon_3d_mm[2],
+    ],
+  }));
+  const calculation = {
+    ok: true,
+    roof_type: "imported",
+    source: "lod2-original-surfaces",
+    geometry: { faces: reorderedFaces },
+  };
+
+  assert.equal(isUnmodifiedLod2RoofCalculation(calculation, {
+    metadata: { roofParameters: { importedSource: { faces } } },
+  }), true);
+  reorderedFaces[0]!.polygon_3d_mm[0] = [999_999, 999_999, 999_999];
+  assert.equal(isUnmodifiedLod2RoofCalculation(calculation, {
+    metadata: { roofParameters: { importedSource: { faces } } },
+  }), false);
+});
+
+test("renumbered LoD2 facets retain tolerance across spatial bucket boundaries", () => {
+  const sourceFaces = [{
+    face_ref: "source-face",
+    polygon_3d_mm: [
+      [0.0004, 0, 6_000],
+      [1.0004, 0, 6_000],
+      [0.0004, 1, 6_001],
+    ],
+  }];
+  const calculatedFaces = [{
+    face_ref: "renumbered-face",
+    polygon_3d_mm: [
+      [1.0013, 0, 6_000],
+      [0.0013, 0, 6_000],
+      [0.0013, 1, 6_001],
+    ],
+  }];
+  const calculation = {
+    ok: true,
+    roof_type: "imported",
+    source: "lod2-original-surfaces",
+    geometry: { faces: calculatedFaces },
+  };
+
+  assert.equal(isUnmodifiedLod2RoofCalculation(calculation, {
+    metadata: { roofParameters: { importedSource: { faces: sourceFaces } } },
+  }), true);
+  calculatedFaces[0]!.polygon_3d_mm[0] = [1.00141, 0, 6_000];
+  assert.equal(isUnmodifiedLod2RoofCalculation(calculation, {
+    metadata: { roofParameters: { importedSource: { faces: sourceFaces } } },
+  }), false);
 });
 
 test("solar metadata never changes an untouched LoD2 roof from existing-white to design-red", async () => {

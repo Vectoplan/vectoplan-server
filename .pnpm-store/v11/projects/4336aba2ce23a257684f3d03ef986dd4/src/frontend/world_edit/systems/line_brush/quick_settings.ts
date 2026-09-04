@@ -1,4 +1,4 @@
-import "./line_brush_quick_settings.css";
+import "./quick_settings.css";
 
 import {
   BUILDING_PROGRAM_TYPES,
@@ -9,7 +9,9 @@ import {
   type BuildingProgramTemplateCatalog,
   type BuildingProgramTypeId,
   type LineBrushBuildingProgramTemplate,
-} from "./line_brush_building_programs";
+} from "./building_programs";
+import { LINE_BRUSH_ROOF_OPTIONS } from "./building_presets";
+import type { StoreyTargetScope } from "../storey/quick_settings";
 import {
   DEFAULT_LINE_BRUSH_QUICK_SETTINGS_STATE,
   MAXIMUM_LINE_BRUSH_STOREY_COUNT,
@@ -22,7 +24,7 @@ import {
   type LineBrushBuildingGenerationRequest,
   type LineBrushQuickSettingsSnapshot,
   type LineBrushQuickSettingsState,
-} from "./line_brush_quick_settings_state";
+} from "./quick_settings_state";
 
 export type LineBrushBuildingProgramCatalogLoader = (
   typeId: BuildingProgramTypeId,
@@ -36,6 +38,8 @@ export interface LineBrushQuickSettingsOptions {
   readonly loadCatalog?: LineBrushBuildingProgramCatalogLoader;
   readonly onChange?: (snapshot: LineBrushQuickSettingsSnapshot) => void;
   readonly onTemplateSelect?: (snapshot: LineBrushQuickSettingsSnapshot) => void;
+  readonly onStoreyAdjust?: (delta: -1 | 1, scope: StoreyTargetScope) => void | Promise<void>;
+  readonly onStoreyScopeChange?: (scope: StoreyTargetScope) => void;
   readonly onGenerate: (request: LineBrushBuildingGenerationRequest) => void | Promise<void>;
   readonly onMarketplaceOpen?: (
     url: string,
@@ -53,6 +57,7 @@ export interface LineBrushQuickSettingsHandle {
   readonly open: (state?: Partial<LineBrushQuickSettingsState> | null) => void;
   readonly close: (restoreInput?: boolean) => void;
   readonly sync: (state: Partial<LineBrushQuickSettingsState>) => void;
+  readonly syncStoreyEditing: (state: LineBrushStoreyEditingState) => void;
   readonly getState: () => LineBrushQuickSettingsState;
   readonly getSnapshot: () => LineBrushQuickSettingsSnapshot;
   readonly getCatalog: () => BuildingProgramTemplateCatalog;
@@ -61,6 +66,13 @@ export interface LineBrushQuickSettingsHandle {
   readonly closeLibrary: () => void;
   readonly reloadCatalog: () => Promise<BuildingProgramTemplateCatalog>;
   readonly destroy: () => void;
+}
+
+export interface LineBrushStoreyEditingState {
+  readonly segmentCount: number;
+  readonly scope: StoreyTargetScope;
+  readonly scopeStoreyCount: number;
+  readonly busy?: boolean;
 }
 
 async function defaultCatalogLoader(
@@ -99,6 +111,12 @@ export function createLineBrushQuickSettings(
   let catalogLoading = false;
   let catalogError: string | null = null;
   let destroyed = false;
+  let storeyEditing: LineBrushStoreyEditingState = {
+    segmentCount: 0,
+    scope: "all",
+    scopeStoreyCount: state.storeyCount,
+    busy: false,
+  };
 
   const element = document.createElement("section");
   element.className = "editor-line-brush-quick-settings";
@@ -121,8 +139,19 @@ export function createLineBrushQuickSettings(
         </select>
         <small data-line-brush-type-description></small>
       </label>
+      <label class="editor-line-brush-quick-settings__field">
+        <span>Dachform</span>
+        <select data-line-brush-roof-type aria-label="Dachform">
+          ${LINE_BRUSH_ROOF_OPTIONS.map((option) => `<option value="${option.value}">${option.label}</option>`).join("")}
+        </select>
+        <small>Transparente Live-Vorschau über das gemeinsame WorldEdit-Dachsystem.</small>
+      </label>
       <div class="editor-line-brush-quick-settings__storeys">
         <div><span>Geschosse</span><strong data-line-brush-storey-title>1 Geschoss</strong></div>
+        <label class="editor-line-brush-quick-settings__scope">
+          <span>Bereich</span>
+          <select data-line-brush-storey-scope aria-label="Geschossbereich"><option value="all">Gesamter Baukörper</option></select>
+        </label>
         <div class="editor-line-brush-quick-settings__stepper">
           <button type="button" data-line-brush-storey-decrease aria-label="Ein Geschoss weniger">−</button>
           <input type="number" min="${MINIMUM_LINE_BRUSH_STOREY_COUNT}" max="${MAXIMUM_LINE_BRUSH_STOREY_COUNT}" step="1" value="1" data-line-brush-storey-count aria-label="Anzahl der Geschosse">
@@ -175,7 +204,9 @@ export function createLineBrushQuickSettings(
   options.root.append(element, libraryElement);
 
   const typeSelect = element.querySelector<HTMLSelectElement>("[data-line-brush-type]")!;
+  const roofTypeSelect = element.querySelector<HTMLSelectElement>("[data-line-brush-roof-type]")!;
   const typeDescription = element.querySelector<HTMLElement>("[data-line-brush-type-description]")!;
+  const storeyScopeSelect = element.querySelector<HTMLSelectElement>("[data-line-brush-storey-scope]")!;
   const storeyInput = element.querySelector<HTMLInputElement>("[data-line-brush-storey-count]")!;
   const storeyTitle = element.querySelector<HTMLElement>("[data-line-brush-storey-title]")!;
   const storeyHeight = element.querySelector<HTMLElement>("[data-line-brush-storey-height]")!;
@@ -205,12 +236,25 @@ export function createLineBrushQuickSettings(
 
   const renderMain = (): void => {
     const current = snapshot();
+    const effectiveStoreyCount = storeyEditing.scope === "all"
+      ? current.storeyCount
+      : Math.max(1, Math.trunc(storeyEditing.scopeStoreyCount));
     typeSelect.value = current.typeId;
+    roofTypeSelect.value = current.roofType;
     typeDescription.textContent = current.type.description;
-    storeyInput.value = String(current.storeyCount);
-    storeyTitle.textContent = `${current.storeyCount} ${current.storeyCount === 1 ? "Geschoss" : "Geschosse"}`;
+    storeyScopeSelect.replaceChildren(new Option("Gesamter Baukörper", "all"));
+    for (let index = 0; index < storeyEditing.segmentCount; index += 1) {
+      storeyScopeSelect.add(new Option(`Liniensegment ${index + 1}`, `segment:${index}`));
+    }
+    storeyScopeSelect.value = storeyEditing.scope;
+    if (!storeyScopeSelect.value) storeyScopeSelect.value = "all";
+    storeyScopeSelect.disabled = storeyEditing.segmentCount === 0 || storeyEditing.busy === true;
+    storeyInput.value = String(effectiveStoreyCount);
+    storeyInput.readOnly = storeyEditing.scope !== "all";
+    storeyInput.disabled = storeyEditing.busy === true;
+    storeyTitle.textContent = `${effectiveStoreyCount} ${effectiveStoreyCount === 1 ? "Geschoss" : "Geschosse"}`;
     storeyHeight.textContent = current.storeyHeightLabel;
-    totalHeight.textContent = current.totalHeightLabel;
+    totalHeight.textContent = `${(effectiveStoreyCount * current.storeyHeightMeters).toFixed(3).replace(".", ",")} m`;
     templateTitle.textContent = current.selection.selectedTemplate.title;
     templateSource.textContent = templateSourceLabel(current.selection.selectedTemplate);
     generateButton.disabled = !current.canGenerate;
@@ -393,11 +437,13 @@ export function createLineBrushQuickSettings(
   };
 
   const changeStoreyCount = (value: number): void => {
+    if (storeyEditing.scope !== "all") return;
     state = reduceLineBrushQuickSettingsState(
       state,
       { type: "set-storey-count", storeyCount: value },
       catalog,
     );
+    storeyEditing = { ...storeyEditing, scopeStoreyCount: state.storeyCount };
     renderMain();
     publishChange();
   };
@@ -408,17 +454,45 @@ export function createLineBrushQuickSettings(
       { type: "set-building-type", typeId: typeSelect.value },
       catalog,
     );
+    storeyEditing = {
+      ...storeyEditing,
+      scope: "all",
+      scopeStoreyCount: state.storeyCount,
+    };
     renderMain();
     renderLibrary();
     publishChange();
     if (!libraryElement.hidden) void reloadCatalog();
   });
+  roofTypeSelect.addEventListener("change", () => {
+    state = reduceLineBrushQuickSettingsState(
+      state,
+      { type: "set-roof-type", roofType: roofTypeSelect.value },
+      catalog,
+    );
+    renderMain();
+    publishChange();
+  });
+  storeyScopeSelect.addEventListener("change", () => {
+    const scope = /^segment:\d+$/.test(storeyScopeSelect.value)
+      ? storeyScopeSelect.value as StoreyTargetScope
+      : "all";
+    storeyEditing = {
+      ...storeyEditing,
+      scope,
+      scopeStoreyCount: scope === "all" ? state.storeyCount : storeyEditing.scopeStoreyCount,
+    };
+    renderMain();
+    options.onStoreyScopeChange?.(scope);
+  });
   storeyInput.addEventListener("change", () => changeStoreyCount(Number(storeyInput.value)));
   element.querySelector("[data-line-brush-storey-decrease]")?.addEventListener("click", () => {
-    changeStoreyCount(state.storeyCount - 1);
+    if (options.onStoreyAdjust) void options.onStoreyAdjust(-1, storeyEditing.scope);
+    else changeStoreyCount(state.storeyCount - 1);
   });
   element.querySelector("[data-line-brush-storey-increase]")?.addEventListener("click", () => {
-    changeStoreyCount(state.storeyCount + 1);
+    if (options.onStoreyAdjust) void options.onStoreyAdjust(1, storeyEditing.scope);
+    else changeStoreyCount(state.storeyCount + 1);
   });
   element.querySelector("[data-line-brush-close]")?.addEventListener("click", () => close());
   element.querySelector("[data-line-brush-library-open]")?.addEventListener("click", () => {
@@ -466,6 +540,9 @@ export function createLineBrushQuickSettings(
     isLibraryOpen: () => !libraryElement.hidden,
     open(nextState): void {
       if (nextState) state = normalizeLineBrushQuickSettingsState({ ...state, ...nextState }, catalog);
+      if (storeyEditing.scope === "all") {
+        storeyEditing = { ...storeyEditing, scopeStoreyCount: state.storeyCount };
+      }
       renderMain();
       element.hidden = false;
       options.root.dataset.editorLineBrushSettingsOpen = "true";
@@ -473,8 +550,31 @@ export function createLineBrushQuickSettings(
     close,
     sync(nextState): void {
       state = normalizeLineBrushQuickSettingsState({ ...state, ...nextState }, catalog);
+      if (storeyEditing.scope === "all") {
+        storeyEditing = { ...storeyEditing, scopeStoreyCount: state.storeyCount };
+      }
       renderMain();
       renderLibrary();
+    },
+    syncStoreyEditing(nextState): void {
+      const segmentCount = Math.max(0, Math.trunc(Number(nextState.segmentCount) || 0));
+      const requestedIndex = nextState.scope.startsWith("segment:")
+        ? Number(nextState.scope.slice("segment:".length))
+        : -1;
+      const scope: StoreyTargetScope = Number.isInteger(requestedIndex)
+        && requestedIndex >= 0
+        && requestedIndex < segmentCount
+        ? `segment:${requestedIndex}`
+        : "all";
+      storeyEditing = {
+        segmentCount,
+        scope,
+        scopeStoreyCount: scope === "all"
+          ? state.storeyCount
+          : Math.max(1, Math.trunc(Number(nextState.scopeStoreyCount) || state.storeyCount)),
+        busy: nextState.busy === true,
+      };
+      renderMain();
     },
     getState: () => ({ ...state }),
     getSnapshot: snapshot,

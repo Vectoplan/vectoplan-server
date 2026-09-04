@@ -18,7 +18,9 @@
 
 .editor-line-brush-quick-settings {
   width: min(380px, calc(100% - 32px));
-  max-height: min(680px, calc(100% - 32px));
+  /* Keep the centred panel between the top-right workspace switcher and the
+     bottom planning dock, even on a 720 px editor viewport. */
+  max-height: min(620px, calc(100% - 200px));
 }
 
 .editor-line-brush-library-dialog {
@@ -140,6 +142,29 @@
   border: 1px solid #cfe0ef;
   border-radius: 13px;
   background: #f3f8fd;
+}
+
+.editor-line-brush-quick-settings__scope {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.editor-line-brush-quick-settings__scope select {
+  min-width: 0;
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid #bfd5e8;
+  border-radius: 9px;
+  color: #18324b;
+  background: #fff;
+  font: 700 11px/1.2 Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.editor-line-brush-quick-settings__scope select:disabled {
+  opacity: .58;
 }
 
 .editor-line-brush-quick-settings__storeys > div:first-child {
@@ -443,4 +468,3 @@
   .editor-line-brush-quick-settings__field { grid-template-columns: 1fr; }
   .editor-line-brush-quick-settings__field select { min-width: 0; width: 100%; }
 }
-

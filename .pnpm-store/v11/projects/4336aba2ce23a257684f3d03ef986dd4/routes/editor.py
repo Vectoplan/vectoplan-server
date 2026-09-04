@@ -30,6 +30,7 @@ EDITOR_ROUTE_PATH: Final[str] = "/editor"
 EDITOR_ROUTE_PATH_SLASH: Final[str] = "/editor/"
 EDITOR_GENERATOR_PREVIEW_ROUTE_PATH: Final[str] = "/editor/test-generator"
 EDITOR_GENERATOR_PREVIEW_ALIAS_PATH: Final[str] = "/editor/generator-preview"
+EDITOR_RECONSTRUCTION_PREVIEW_ROUTE_PATH: Final[str] = "/editor/reconstruction-preview"
 EDITOR_PERFORMANCE_CAPTURES_ROUTE_PATH: Final[str] = "/editor/api/performance-captures"
 
 editor_bp = Blueprint(EDITOR_BLUEPRINT_NAME, __name__)
@@ -42,6 +43,9 @@ editor_bp = Blueprint(EDITOR_BLUEPRINT_NAME, __name__)
 DEFAULT_EDITOR_TEMPLATE_NAME: Final[str] = "editor/index.html"
 DEFAULT_EDITOR_FALLBACK_TEMPLATE_NAME: Final[str] = "editor/fallback.html"
 DEFAULT_EDITOR_GENERATOR_PREVIEW_TEMPLATE_NAME: Final[str] = "editor/generator_preview.html"
+DEFAULT_EDITOR_RECONSTRUCTION_PREVIEW_TEMPLATE_NAME: Final[str] = (
+    "editor/reconstruction_preview.html"
+)
 
 _EDITOR_BOOTSTRAP_MODULE_NAME: Final[str] = "src.bootstrap"
 _EDITOR_INVENTORY_MODULE_NAME: Final[str] = "src.inventory"
@@ -67,6 +71,10 @@ DEFAULT_FRAME_ANCESTORS: Final[tuple[str, ...]] = (
     "http://127.0.0.1:5108",
 )
 DEFAULT_LIBRARY_GENERATOR_ORIGIN: Final[str] = "http://127.0.0.1:5101"
+DEFAULT_RECONSTRUCTION_PREVIEW_ORIGINS: Final[tuple[str, ...]] = (
+    "http://127.0.0.1:56000",
+    "http://localhost:56000",
+)
 
 DEFAULT_CHUNK_BROWSER_BASE_URL: Final[str] = "/editor/api/chunk"
 DEFAULT_CHUNK_PROJECT_ID: Final[str] = "dev-project"
@@ -2274,6 +2282,81 @@ def _build_generator_preview_context() -> dict[str, Any]:
     }
 
 
+def _reconstruction_preview_allowed_origins() -> tuple[str, ...]:
+    configured = _resolve_first_config_value(
+        DEFAULT_RECONSTRUCTION_PREVIEW_ORIGINS,
+        "VECTOPLAN_EDITOR_RECONSTRUCTION_PARENT_ORIGINS",
+        "EDITOR_RECONSTRUCTION_PARENT_ORIGINS",
+    )
+    return _normalize_origins(configured, DEFAULT_RECONSTRUCTION_PREVIEW_ORIGINS)
+
+
+def _build_reconstruction_preview_context() -> dict[str, Any]:
+    """Build a chunk-free, read-only shell for live CAD-Bridge review geometry."""
+    from src.bootstrap.assets import build_editor_assets_template_context
+
+    force_asset_refresh = _coerce_bool(request.args.get("refreshAssets"), False)
+    allowed_origins = _reconstruction_preview_allowed_origins()
+    requested_parent_origin = _normalize_origin(
+        request.args.get("parentOrigin")
+        or request.args.get("parent_origin")
+        or request.headers.get("Origin")
+        or request.headers.get("Referer")
+    )
+    parent_origin = (
+        requested_parent_origin
+        if requested_parent_origin in allowed_origins
+        else allowed_origins[0]
+    )
+    return {
+        "editor_assets": build_editor_assets_template_context(
+            app_config=current_app.config,
+            force_refresh=force_asset_refresh,
+        ),
+        "page_title": "VECTOPLAN Editor · Live-Rekonstruktion",
+        "reconstruction_preview": {
+            "contract": "cadbridge-reconstruction-preview.v1",
+            "sceneSchemaVersion": "cadbridge-reconstruction-scene/0.1",
+            "reviewSchemaVersion": "cadbridge-progressive-review/0.1",
+            "sourcePreviewMediaType": "image/png",
+            "route": EDITOR_RECONSTRUCTION_PREVIEW_ROUTE_PATH,
+            "parentOrigin": parent_origin,
+            "chunkServiceEnabled": False,
+            "inventoryEnabled": False,
+            "realtimeEnabled": False,
+            "persistenceEnabled": False,
+            "reviewOnly": True,
+        },
+    }
+
+
+def _apply_reconstruction_preview_security_headers(response: Response) -> Response:
+    response = _apply_editor_security_headers(response, embed=True)
+    ancestors = _csp_join(
+        _reconstruction_preview_allowed_origins(),
+        include_self=True,
+    )
+    response.headers["Content-Security-Policy"] = "; ".join(
+        (
+            "default-src 'self'",
+            "script-src 'self'",
+            "style-src 'self'",
+            "img-src 'self' data: blob:",
+            "font-src 'self' data:",
+            "connect-src 'self'",
+            "object-src 'none'",
+            "base-uri 'none'",
+            f"frame-ancestors {ancestors}",
+        )
+    )
+    response.headers.pop("X-Frame-Options", None)
+    response.headers["X-VECTOPLAN-Editor-Frame-Ancestors"] = ancestors
+    response.headers["Permissions-Policy"] = (
+        "camera=(), microphone=(), geolocation=(), payment=()"
+    )
+    return response
+
+
 def _performance_capture_json_response(
     payload: Mapping[str, Any],
     status: HTTPStatus = HTTPStatus.OK,
@@ -2407,6 +2490,51 @@ def editor_generator_preview() -> Response:
     response.headers["X-VECTOPLAN-Request-Id"] = request_id
     response.headers["X-VECTOPLAN-Editor-Elapsed-Ms"] = str(round(_elapsed_ms(started_at), 3))
     return _apply_editor_security_headers(response, embed=True)
+
+
+@editor_bp.route(EDITOR_RECONSTRUCTION_PREVIEW_ROUTE_PATH, methods=["GET", "HEAD"])
+def editor_reconstruction_preview() -> Response:
+    """Render an isolated, non-persistent scene for converter review deltas."""
+    started_at = time.perf_counter()
+    request_id = _request_id()
+
+    try:
+        context = _build_reconstruction_preview_context()
+        html = render_template(
+            DEFAULT_EDITOR_RECONSTRUCTION_PREVIEW_TEMPLATE_NAME,
+            **context,
+        )
+        response = make_response(html, HTTPStatus.OK)
+    except Exception as exc:
+        _safe_log_exception(
+            "Live-Rekonstruktionsvorschau konnte nicht gerendert werden: "
+            "route=%r error=%r",
+            request.path,
+            exc,
+        )
+        response = make_response(
+            "VECTOPLAN Live-Rekonstruktionsvorschau konnte nicht gestartet werden.",
+            HTTPStatus.INTERNAL_SERVER_ERROR,
+        )
+
+    response.headers["Content-Type"] = "text/html; charset=utf-8"
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    response.headers["X-VECTOPLAN-Editor-Route"] = (
+        EDITOR_RECONSTRUCTION_PREVIEW_ROUTE_PATH
+    )
+    response.headers["X-VECTOPLAN-Editor-Route-Version"] = EDITOR_ROUTE_MODULE_VERSION
+    response.headers["X-VECTOPLAN-Editor-Runtime-Mode"] = "reconstruction-preview"
+    response.headers["X-VECTOPLAN-Editor-Chunk-Service"] = "disabled"
+    response.headers["X-VECTOPLAN-Editor-Inventory"] = "disabled"
+    response.headers["X-VECTOPLAN-Editor-Realtime"] = "disabled"
+    response.headers["X-VECTOPLAN-Editor-Persistence"] = "disabled"
+    response.headers["X-VECTOPLAN-Request-Id"] = request_id
+    response.headers["X-VECTOPLAN-Editor-Elapsed-Ms"] = str(
+        round(_elapsed_ms(started_at), 3)
+    )
+    return _apply_reconstruction_preview_security_headers(response)
 
 
 @editor_bp.route(EDITOR_ROUTE_PATH, methods=["GET", "HEAD"])
@@ -2600,11 +2728,13 @@ __all__ = [
     "EDITOR_ROUTE_PATH_SLASH",
     "EDITOR_GENERATOR_PREVIEW_ROUTE_PATH",
     "EDITOR_GENERATOR_PREVIEW_ALIAS_PATH",
+    "EDITOR_RECONSTRUCTION_PREVIEW_ROUTE_PATH",
     "EDITOR_PERFORMANCE_CAPTURES_ROUTE_PATH",
     "EDITOR_ROUTE_MODULE_VERSION",
     "editor_bp",
     "editor_index",
     "editor_generator_preview",
+    "editor_reconstruction_preview",
     "editor_performance_captures",
     "get_editor_route_module_metadata",
     "clear_editor_route_caches",

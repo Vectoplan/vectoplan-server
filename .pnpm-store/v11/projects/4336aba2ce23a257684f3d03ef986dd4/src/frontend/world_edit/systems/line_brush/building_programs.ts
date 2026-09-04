@@ -27,7 +27,7 @@ import {
  */
 
 export const LINE_BRUSH_BUILDING_PROGRAMS_MODULE_NAME =
-  "frontend.world_edit.room.line_brush_building_programs";
+  "frontend.world_edit.line_brush.building_programs";
 export const LINE_BRUSH_BUILDING_PROGRAMS_MODULE_VERSION = "1.0.0";
 export const LINE_BRUSH_BUILDING_PROGRAM_SCHEMA_VERSION =
   "vectoplan.line-brush-building-program.v1" as const;

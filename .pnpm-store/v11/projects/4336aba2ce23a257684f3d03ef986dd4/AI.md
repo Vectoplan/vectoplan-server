@@ -3,6 +3,134 @@
 
 <!-- services/vectoplan-editor/AI.md -->
 
+## Verbindliche Schutzsektion: LoD2, Raster und WorldEdit
+
+Diese Sektion beschreibt den aktuell produktiv funktionierenden **IST-Vertrag**.
+Sie hat bei Änderungen an den genannten Dateien Vorrang vor den allgemeinen
+Zielbildern weiter unten. Außenwand, Dach und Grundstücksraster sind zusammen
+ein abgestimmtes Geometriesystem. Kleine lokale Vereinfachungen können dort
+sichtbare Spalten, doppelte Flächen, gefüllte Innenhöfe oder nicht mehr
+abbaubare Fassaden erzeugen.
+
+### Geschützte Invarianten
+
+1. **LoD2-Wand und Dach treffen ohne Verschnitt aufeinander.**
+   `scene/lod2_wall_caps.ts` schneidet Fassaden an den echten Dachfacetten und
+   arbeitet mit Zentimeter-/Millimeter-Toleranzen. Es darf dafür weder eine
+   gerundete Ersatzhöhe noch einen Bounding-Box-Deckel verwenden. Gemeinsame
+   Facettenkanten besitzen genau einen deterministischen Fassaden-Owner.
+2. **Die sichtbare Fassade bleibt ein echter, abbaubarer Block.**
+   `LOD2_WALL_SOURCE_CELL_ATTRIBUTE` ordnet jedes gerenderte Dreieck einer
+   autoritativen Chunk-Zelle zu. `raycastLod2WallCaps()` verwirft gelöschte oder
+   nicht mehr passende Zellen. `scene/scene_runtime.ts` muss diese Source-Cell
+   an `RemoveBlock` weiterreichen; ein Treffer auf der zugeschnittenen
+   Rendergeometrie darf niemals als frei erfundene Weltposition behandelt
+   werden.
+3. **Innenhöfe bleiben offen.** Dach- und Footprint-Verträge führen den äußeren
+   Ring zuerst und danach alle Lochringe. `roof/courtyard.ts`,
+   `roof/imported.ts`, `scene/roof_calculation_rendering.ts` und
+   `scene/roof_surface_geometry.ts` dürfen Lochringe nicht auf den Außenring
+   reduzieren. Nicht unterstützte geneigte Dächer mit Innenhof müssen
+   kontrolliert fehlschlagen und dürfen nicht stillschweigend eine volle
+   Dachplatte erzeugen.
+4. **Bestands-LoD2 bleibt visuell neutral.**
+   `scene/lod2_existing_appearance.ts` entscheidet anhand der tatsächlich
+   unveränderten importierten Facetten, ob Wand und Dach Bestandsweiß erhalten.
+   Facetten- und Vertex-Reihenfolge dürfen diese Entscheidung nicht verändern;
+   Solar-Metadaten allein gelten nicht als Dachänderung. Raw-LoD2-Fallbacks in
+   `render/lod2_building_scene.ts` und semantische Dächer in
+   `scene/roof_calculation_rendering.ts` müssen denselben Status darstellen.
+5. **Das Grundstücksraster richtet sich an echten Bestandsfassaden aus.**
+   `parcel_grid/building_reference.ts` konsumiert bevorzugt den validierten
+   Vertrag `vectoplan-lod2-construction-grid.v1` und leitet nur für Legacy-Daten
+   einen Fallback ab. `parcel_grid/geometry.ts` erhält Bauachsen,
+   Fassadenbänder, gerade Vollzellen, Übergangszonen, Ausschnitte und Löcher.
+   Der sichtbare Rasterkörper ist eine Projektion dieses Vertrags, keine zweite
+   unabhängige Rasterberechnung.
+6. **Objekt- und Zell-Ownership ist eindeutig.** Semantische Objekte werden nur
+   im `primaryChunkKey` gerendert. Optimistische Vorschauen dürfen eine alte
+   Chunk-Version nur bis zum bestätigten Fingerprint überdecken. Linien-Brush-
+   Baukörper werden in `world_edit_controller.ts` als ein `ObjectBatch`
+   gespeichert; Wände, Decken, Dach und Parent erscheinen vollständig oder gar
+   nicht. Alte Generationsobjekte werden erst nach erfolgreichem Batch bereinigt.
+7. **WorldEdit-Werkzeuge wechseln niemals eigenständig die Kameraansicht.**
+   Tool-Verfügbarkeit wird zentral in `modes/editor_workspace_mode.ts`
+   deklariert. Dach, Geschoss und weitere gemeinsame Werkzeuge müssen in Ego und
+   Planung dieselben fachlichen Verträge verwenden.
+
+### Verantwortliche Dateien und Verträge
+
+| Bereich | Verantwortliche Dateien | Stabiler Vertrag |
+| --- | --- | --- |
+| Fassadenabschluss und Abbau | `scene/lod2_wall_caps.ts`, `scene/scene_runtime.ts` | Dreiecksattribut `lod2SourceCellIndex` → noch aktive Chunk-Zelle |
+| Bestandsdarstellung | `scene/lod2_existing_appearance.ts`, `render/lod2_building_scene.ts`, `scene/roof_calculation_rendering.ts` | Unverändertes LoD2 ist weiß; Solar ändert diesen Status nicht |
+| Dach-Import, Rückstellung und Innenhof | `world_edit/systems/roof/{contracts,imported,restoration,courtyard,zones}.ts` | `lod2-roof-source.v1`, `cad-roof-calculation-request/0.1`, verlustfreie LoD2-Originalquelle, äußerer Ring vor Lochringen |
+| Grundstücksraster | `world_edit/systems/parcel_grid/{building_reference,geometry,audit}.ts` | `vectoplan-lod2-construction-grid.v1`, `vectoplan-parcel-grid-state.v1` |
+| Linien-Brush-Baukörper | `world_edit/systems/line_brush/*.ts` | eigene Draft-, Programm-, Preset-, Layout-, Geometrie-, Preview- und Settings-Schemas; 2,645 m semantische Geschosshöhe |
+| Geschossänderung | `world_edit/systems/storey/*.ts` | nur über den Parent `planning_build_area` und dessen Generationsmetadaten |
+| atomare Speicherung | `world_edit/world_edit_controller.ts`, `api/chunk_api_models.ts`, `runtime/world/chunk_command_result.ts` | ein `ObjectBatch` für alle neu erzeugten Kindobjekte und den Parent |
+
+### Werkzeugordner-Isolation
+
+- `systems/roof/` besitzt Dachparameter, die reine LoD2-Rückstellung über
+  `restoreImportedRoofOriginal()`, Berechnung, Innenhöfe und Dachzonen. Andere
+  Werkzeuge dürfen diese Zustände nur über die exportierten Verträge
+  konsumieren.
+- `systems/parcel_grid/` besitzt Ausrichtung und Partition. Änderungen an
+  Linien Brush oder Geschoss dürfen keine zweite Rasterlogik einführen.
+- `systems/line_brush/` besitzt Linien-Brush-Draft, Gebäudetypen, Presets,
+  Layout, Live-Konfiguration, Preview und Baukörpergeometrie. Es darf
+  `systems/roof/` und `systems/storey/` über ihre exportierten Verträge nutzen,
+  aber deren Fachlogik nicht kopieren.
+- `systems/room/` besitzt ausschließlich semantische Räume. Die gemeinsam
+  nutzbare Polygonfläche aus `systems/polygon_area/` bleibt zustandslos.
+- `systems/storey/` besitzt Auswahl und Änderung von Geschossen. Es delegiert
+  die Regeneration an einen Hook und schreibt weder Dach- noch Rasterzustand
+  direkt.
+- Gemeinsame Orchestrierung bleibt im `world_edit_controller.ts`. Neue
+  Fachlogik gehört zuerst in den passenden Systemordner und wird dort getestet;
+  der Controller soll nur Verträge verbinden.
+
+### No-Go-Änderungen
+
+- Keine Bounding-Box-, Mittelpunkt- oder Rundungs-Abkürzung an LoD2-Fassaden.
+- Keine Entfernung oder Umbenennung des Source-Cell-Attributs ohne atomare
+  Migration von Rendering, Raycast, RemoveBlock und Tests.
+- Keine Polygon-Normalisierung, die Lochringe verwirft oder deren Reihenfolge
+  mit dem Außenring vertauscht.
+- Keine eigene Rasterableitung in Dach, Linien Brush oder Geschoss.
+- Keine Farbentscheidung allein anhand von `objectTypeId`; der unveränderte
+  Importstatus muss über die importierten Facetten geprüft werden.
+- Keine Einzel-Commands für zusammengehörige Gebäudeobjekte statt
+  `ObjectBatch`; keine Bereinigung alter Objekte vor bestätigtem Batch-Erfolg.
+- Keine Werkzeugaktivierung, die Ego/Planung umschaltet.
+- Keine fachliche Erweiterung direkt im großen Controller, wenn sie in einen
+  vorhandenen Werkzeugordner gehört.
+
+### Pflichtprüfungen vor Merge
+
+Mindestens diese Prüfungen müssen nach Änderungen am geschützten Bereich grün
+sein:
+
+```powershell
+npm run typecheck
+npm run test:lod2-buildings
+npm run test:parcel-grid
+npm run test:berlin-parcel-grid
+npm run test:building-geometry
+npm run test:storey-system
+npm run test:workspace-modes
+npm run test:chunk-command-result
+npm run test:semantic-object-refs
+```
+
+Bei Änderungen an Dachimport, Innenhöfen oder Fassaden-Raycast müssen zusätzlich
+die einzelnen LoD2-Tests `lod2_roof_editing.test.ts` und
+`lod2_roof_details.test.ts` im `test:lod2-buildings`-Aggregator enthalten
+bleiben. Bei Änderungen am atomaren Batchvertrag sind außerdem die
+ObjectBatch-/Ownership-Tests im `vectoplan-chunk` auszuführen. Änderungen gelten
+nicht als sicher, wenn nur ein Screenshot geprüft wurde.
+
 ## Status dieser Fassung
 
 Diese Fassung beschreibt den **beabsichtigten Zielstand** des `vectoplan-editor` innerhalb der VECTOPLAN-Plattform.

@@ -1,6 +1,6 @@
 # Linien-Brush: Gebäudeprogramme und Vorlagen
 
-Das Modul `src/frontend/world_edit/systems/room/line_brush_building_programs.ts`
+Das Modul `src/frontend/world_edit/systems/line_brush/building_programs.ts`
 trennt die Gebäudeprogramm-Auswahl von Kamera, Arbeitsansicht und
 `world_edit_controller.ts`. Die Auswahl eines Gebäudetyps oder einer Vorlage darf
 daher niemals zwischen Ego- und Planungsperspektive wechseln.
@@ -64,7 +64,7 @@ typisierten, JSON-sicheren Vertrag für die gemeinsame Ausführungspipeline.
 
 ## Quick-Settings-Handle
 
-`line_brush_quick_settings.ts` stellt das weiße, rechts vertikal zentrierte
+`src/frontend/world_edit/systems/line_brush/quick_settings.ts` stellt das weiße, rechts vertikal zentrierte
 DOM-Panel bereit. Das zugehörige CSS wird vom Modul selbst importiert. Eine
 minimale Verdrahtung sieht so aus:
 

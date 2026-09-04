@@ -2,7 +2,11 @@ import type { PathBrushDraft } from "../shared/path_brush_geometry";
 import {
   STANDARD_STOREY_HEIGHT_METERS,
   STANDARD_STOREY_HEIGHT_MILLIMETERS,
-} from "./line_brush_building_programs";
+} from "./building_programs";
+import {
+  lineBrushLayoutFootprintForSegment,
+  type LineBrushBuildingLayout,
+} from "./building_layout";
 
 /**
  * Pure voxel geometry for a building created from the planning line brush.
@@ -44,6 +48,8 @@ export interface LineBrushBuildingGeometryInput {
   readonly draft: PathBrushDraft;
   readonly baseY: number;
   readonly storeyCount: number;
+  /** Optional program layout; absent keeps the proven continuous footprint. */
+  readonly layout?: LineBrushBuildingLayout;
   /** Defaults to the complete, already-unioned line-brush footprint. */
   readonly segmentScope?: LineBrushBuildingSegmentScope;
 }
@@ -148,6 +154,30 @@ function limitExceeded(requestedCells: number): never {
   );
 }
 
+/**
+ * Reserve cells against the shared line-brush transaction budget.
+ *
+ * A generated building is split into one geometry per storey/scope. Each
+ * geometry enforces its own limit, but the complete live preview/ObjectBatch
+ * must obey the same limit as one deterministic operation as well.
+ */
+export function reserveLineBrushBuildingCellBudget(
+  occupiedCells: number,
+  additionalCells: number,
+): number {
+  const current = Number.isSafeInteger(occupiedCells) && occupiedCells >= 0
+    ? occupiedCells
+    : LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS + 1;
+  const additional = Number.isSafeInteger(additionalCells) && additionalCells >= 0
+    ? additionalCells
+    : LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS + 1;
+  const requested = current + additional;
+  if (!Number.isSafeInteger(requested) || requested > LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS) {
+    limitExceeded(Number.isSafeInteger(requested) ? requested : Number.MAX_SAFE_INTEGER);
+  }
+  return requested;
+}
+
 function samePoint(first: PlanPoint, second: PlanPoint): boolean {
   return Math.abs(first[0] - second[0]) <= PLAN_EPSILON
     && Math.abs(first[1] - second[1]) <= PLAN_EPSILON;
@@ -228,12 +258,20 @@ function canonicalScope(
 function polygonsForScope(
   draft: PathBrushDraft,
   scope: CanonicalSegmentScope,
+  layout?: LineBrushBuildingLayout,
 ): readonly RasterPolygon[] {
   if (scope.kind === "segment") {
+    if (layout) {
+      const footprint = lineBrushLayoutFootprintForSegment(layout, scope.segmentIndex);
+      return footprint.coordinates.map((polygon, index) => rasterPolygon(
+        polygon,
+        `segment ${scope.segmentIndex} module ${index}`,
+      ));
+    }
     const segment = draft.segments.find((candidate) => candidate.index === scope.segmentIndex)!;
     return [rasterPolygon([segment.rectangle], `segment ${scope.segmentIndex}`)];
   }
-  const footprint = draft.footprint as PathBrushDraft["footprint"] | undefined;
+  const footprint = (layout?.footprint ?? draft.footprint) as PathBrushDraft["footprint"] | undefined;
   if (footprint?.type !== "MultiPolygon" || footprint.coordinateSpace !== "world-cell-xz"
     || !Array.isArray(footprint.coordinates) || footprint.coordinates.length === 0) {
     invalid("invalid-draft", "The line-brush draft has no world-cell MultiPolygon footprint.");
@@ -408,7 +446,7 @@ export function buildLineBrushBuildingGeometry(
     invalid("invalid-storey-count", "storeyCount must be a positive safe integer.");
   }
   const scope = canonicalScope(draft, input.segmentScope);
-  const footprintCells = rasterizeFootprint(polygonsForScope(draft, scope));
+  const footprintCells = rasterizeFootprint(polygonsForScope(draft, scope, input.layout));
   if (footprintCells.length === 0) {
     invalid("empty-footprint", "The scoped footprint contains no whole block selected by cell centre.");
   }

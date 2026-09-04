@@ -1,4 +1,4 @@
-import { STANDARD_STOREY_HEIGHT_METERS } from "../room/line_brush_building_programs";
+import { STANDARD_STOREY_HEIGHT_METERS } from "../line_brush/building_programs";
 
 export type StoreyTargetScope = "all" | `segment:${number}`;
 

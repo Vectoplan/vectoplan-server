@@ -1352,8 +1352,24 @@ export async function destroyVectoplanEditor(
 }
 
 const GENERATOR_PREVIEW_ROOT_SELECTOR = "[data-editor-generator-preview]";
+const RECONSTRUCTION_PREVIEW_ROOT_SELECTOR = "[data-editor-reconstruction-preview]";
 
 function bootSelectedRuntime(): void {
+  if (document.querySelector(RECONSTRUCTION_PREVIEW_ROOT_SELECTOR)) {
+    void import("./reconstruction_preview/reconstruction_preview_runtime")
+      .then(({ startReconstructionPreview }) => {
+        startReconstructionPreview();
+      })
+      .catch((error) => {
+        try {
+          console.error("[vectoplan-editor:reconstruction-preview] Boot failed.", error);
+        } catch {
+          // Console may be unavailable in embedded contexts.
+        }
+      });
+    return;
+  }
+
   if (document.querySelector(GENERATOR_PREVIEW_ROOT_SELECTOR)) {
     void import("./generator_preview/generator_preview_runtime")
       .then(({ startGeneratorPreview }) => {
@@ -1390,5 +1406,10 @@ if (import.meta.hot) {
   });
 }
 
-wireParentRuntimeStatusBridge();
+if (
+  !document.querySelector(GENERATOR_PREVIEW_ROOT_SELECTOR)
+  && !document.querySelector(RECONSTRUCTION_PREVIEW_ROOT_SELECTOR)
+) {
+  wireParentRuntimeStatusBridge();
+}
 bootSelectedRuntime();

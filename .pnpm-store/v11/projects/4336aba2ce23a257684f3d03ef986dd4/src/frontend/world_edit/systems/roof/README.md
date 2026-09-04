@@ -1,5 +1,28 @@
 # Parametrisches Dach
 
+## Schutzvertrag
+
+Dieser Ordner besitzt die komplette Dach-Fachlogik. `contracts.ts` definiert
+Parameter und Request, `imported.ts` rekonstruiert die originale LoD2-Form,
+`restoration.ts` stellt die gespeicherte Importquelle verlustfrei wieder her,
+`courtyard.ts` hält Innenhöfe offen, `zones.ts` steuert Fingerprint und
+Vorschau-Lebenszyklus, `quick_settings.ts` bildet nur die Bedienoberfläche ab.
+
+- Ein importiertes Dach muss über `roofType: "imported"` und die unveränderte
+  `lod2-roof-source.v1`-Quelle exakt auf LoD2 zurückstellbar bleiben.
+- `restoreImportedRoofOriginal()` übernimmt Referenzneigung und Basishöhe aus
+  der Importquelle, setzt die Ausrichtung auf `auto` und entfernt alle
+  Überstände. Aufbauparameter und `importedSource` bleiben erhalten.
+- Footprints enthalten den Außenring an Position 0 und danach sämtliche
+  Innenhofringe. Kein Adapter darf nur `coordinates[0]` persistieren.
+- Die Scene darf eine optimistische Berechnung erst entfernen, wenn der Chunk
+  denselben Berechnungs-Fingerprint bestätigt.
+- Dieser Ordner berechnet kein Grundstücksraster und schaltet keine Kameraansicht.
+
+Änderungen benötigen mindestens `npm run test:lod2-buildings`, insbesondere
+`lod2_roof_editing.test.ts` und `lod2_roof_details.test.ts`, sowie
+`npm run typecheck`.
+
 ## Bedienung
 
 - Linksklick setzt gerade verbundene Block-Eckpunkte.

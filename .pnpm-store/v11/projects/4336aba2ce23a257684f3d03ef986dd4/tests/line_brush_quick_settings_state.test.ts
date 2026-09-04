@@ -4,7 +4,7 @@ import test from "node:test";
 import {
   DEFAULT_BUILDING_PROGRAM_TEMPLATE_ID,
   createBuildingProgramTemplateCatalog,
-} from "../src/frontend/world_edit/systems/room/line_brush_building_programs";
+} from "../src/frontend/world_edit/systems/line_brush/building_programs";
 import {
   DEFAULT_LINE_BRUSH_QUICK_SETTINGS_STATE,
   MAXIMUM_LINE_BRUSH_STOREY_COUNT,
@@ -15,7 +15,11 @@ import {
   normalizeLineBrushQuickSettingsState,
   normalizeLineBrushStoreyCount,
   reduceLineBrushQuickSettingsState,
-} from "../src/frontend/world_edit/systems/room/line_brush_quick_settings_state";
+} from "../src/frontend/world_edit/systems/line_brush/quick_settings_state";
+import {
+  LINE_BRUSH_ROOF_OPTIONS,
+  lineBrushBuildingPreset,
+} from "../src/frontend/world_edit/systems/line_brush/building_presets";
 
 function catalogFixture() {
   return createBuildingProgramTemplateCatalog({
@@ -105,6 +109,55 @@ test("changing the building type resets a stale template to Standard", () => {
   assert.equal(changed.templateId, DEFAULT_BUILDING_PROGRAM_TEMPLATE_ID);
 });
 
+test("building presets provide architectural storeys, spacing and roof defaults", () => {
+  const house = reduceLineBrushQuickSettingsState(
+    DEFAULT_LINE_BRUSH_QUICK_SETTINGS_STATE,
+    { type: "set-building-type", typeId: "houses" },
+  );
+  assert.equal(house.storeyCount, 2);
+  assert.equal(house.roofType, "gable");
+  assert.equal(lineBrushBuildingPreset("houses").arrangement.gapMeters, 4);
+  assert.equal(lineBrushBuildingPreset("houses").arrangement.endSetbackMeters, 2);
+
+  const hall = reduceLineBrushQuickSettingsState(
+    house,
+    { type: "set-building-type", typeId: "industrial-logistics" },
+  );
+  assert.equal(hall.storeyCount, 1);
+  assert.equal(hall.roofType, "gable");
+  assert.equal(lineBrushBuildingPreset("industrial-logistics").arrangement.gapMeters, 12);
+  assert.equal(lineBrushBuildingPreset("industrial-logistics").arrangement.maximumDepthMeters, 32);
+});
+
+test("roof dropdown options drive the canonical roof state and generation request", () => {
+  assert.equal(new Set(LINE_BRUSH_ROOF_OPTIONS.map(({ value }) => value)).size, LINE_BRUSH_ROOF_OPTIONS.length);
+  assert.deepEqual(
+    LINE_BRUSH_ROOF_OPTIONS.map(({ value }) => value),
+    [
+      "flat",
+      "gable",
+      "hipped",
+      "half_hipped",
+      "pent",
+      "mansard",
+      "trapezoid",
+      "butterfly",
+      "pyramid",
+      "barrel",
+      "sawtooth",
+    ],
+  );
+  const state = reduceLineBrushQuickSettingsState(
+    DEFAULT_LINE_BRUSH_QUICK_SETTINGS_STATE,
+    { type: "set-roof-type", roofType: "butterfly" },
+  );
+  const request = createLineBrushBuildingGenerationRequest(state);
+  assert.equal(state.roofType, "butterfly");
+  assert.equal(request.roofType, "butterfly");
+  assert.equal(request.roofPitchDegrees, 35);
+  assert.equal(request.preset.typeId, "standard");
+});
+
 test("library window helpers expose only Standard and templates matching the active filter", () => {
   const catalog = catalogFixture();
   const houses = buildingProgramTemplatesForType(catalog, "houses");
@@ -134,6 +187,8 @@ test("generation request carries storey count, exact height and selected Library
   assert.equal(request.templateSelection.executionTemplate.id, "library:house-installed");
   assert.equal(request.buildingProgram.executedTemplateId, "library:house-installed");
   assert.equal(request.buildingProgram.assemblies.roof.generationTool, "roof");
+  assert.equal(request.roofType, "gable");
+  assert.equal(request.preset.arrangement.gapMeters, 4);
 });
 
 test("Marketplace-only template cannot be sent to Generate before installation", () => {
@@ -151,4 +206,3 @@ test("Marketplace-only template cannot be sent to Generate before installation",
     /must be installed/i,
   );
 });
-

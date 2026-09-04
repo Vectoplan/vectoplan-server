@@ -18,6 +18,7 @@ import {
   roofCalculationRequestKey,
 } from "../src/frontend/world_edit/systems/roof/contracts";
 import {
+  dispatchRoofQuickSettingsChange,
   normalizeQuickRoofPitch,
   normalizeQuickRoofOverhangMm,
   persistedRoofQuickSettings,
@@ -37,6 +38,7 @@ import { createRoofCalculationMeshes } from "../src/frontend/scene/roof_calculat
 import {
   clearOptimisticRoofCalculation,
   isRenderedRoofCalculationCurrent,
+  pendingRoofCalculationStatus,
   registerOptimisticRoofCalculation,
   roofCalculationForScene,
 } from "../src/frontend/world_edit/systems/roof/optimistic_calculations";
@@ -620,6 +622,22 @@ test("roof quick settings expose every roof form and change pitch by wheel witho
   assert.equal(normalizeQuickRoofOverhangMm(12), 0);
 });
 
+test("only an explicit LoD2 type click dispatches a hard restore", () => {
+  const calls: string[] = [];
+  const callbacks = {
+    onChange: () => calls.push("change"),
+    onRestoreImported: () => calls.push("restore"),
+  };
+  const imported = { roofType: "imported" as const, pitchDeg: 35, overhangMm: 0 };
+
+  dispatchRoofQuickSettingsChange(callbacks, imported, "roof-type");
+  dispatchRoofQuickSettingsChange(callbacks, { ...imported, pitchDeg: 36 }, "pitch");
+  dispatchRoofQuickSettingsChange(callbacks, { ...imported, overhangMm: 50 }, "overhang");
+  dispatchRoofQuickSettingsChange(callbacks, { ...imported, roofType: "gable" }, "roof-type");
+
+  assert.deepEqual(calls, ["restore", "change", "change", "change"]);
+});
+
 test("persisted roof settings reopen with the authoritative per-zone values", () => {
   const firstZone = persistedRoofQuickSettings({
     roofParameters: { roofType: "hipped", pitchDeg: 35, overhangMm: 600 },
@@ -738,6 +756,7 @@ test("late stale roof chunks can never replace the optimistic saved geometry", (
     structure: bearing(6_000),
   };
   registerOptimisticRoofCalculation(id, savedCalculation);
+  assert.equal(pendingRoofCalculationStatus(id, savedCalculation, oldCalculation), "protected");
   assert.equal(isRenderedRoofCalculationCurrent(id, oldCalculation), false);
   assert.equal(isRenderedRoofCalculationCurrent(id, savedCalculation), true);
   assert.equal(roofCalculationForScene(id, oldCalculation, 7, 0), savedCalculation);
@@ -748,6 +767,7 @@ test("late stale roof chunks can never replace the optimistic saved geometry", (
     "an old response received after the correct one remains suppressed",
   );
   assert.equal(roofCalculationForScene(id, savedCalculation, 8, 6_000), savedCalculation);
+  assert.equal(pendingRoofCalculationStatus(id, savedCalculation, savedCalculation), "persisted");
   const collaboratorCalculation = {
     ...savedCalculation,
     calculation_id: "roof-collaborator",
@@ -757,6 +777,11 @@ test("late stale roof chunks can never replace the optimistic saved geometry", (
     roofCalculationForScene(id, collaboratorCalculation, 9, 7_000),
     collaboratorCalculation,
     "a strictly newer collaborator revision supersedes the optimistic save",
+  );
+  assert.equal(
+    pendingRoofCalculationStatus(id, savedCalculation, collaboratorCalculation),
+    "superseded",
+    "quick settings from the old save must not be applied to a newer collaborator revision",
   );
   assert.equal(isRenderedRoofCalculationCurrent(id, collaboratorCalculation), true);
   clearOptimisticRoofCalculation(id);

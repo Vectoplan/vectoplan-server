@@ -119,8 +119,30 @@ export interface RoofQuickSettingsHandle {
 export interface RoofQuickSettingsOptions {
   readonly root: HTMLElement;
   readonly onChange: (parameters: RoofQuickParameters) => void;
+  /** An explicit click on the LoD2-Original type, including when already selected. */
+  readonly onRestoreImported?: (parameters: RoofQuickParameters) => void;
   readonly onClose?: (restorePointerLock: boolean) => void;
   readonly onSolar?: () => void;
+}
+
+export type RoofQuickSettingsChangeSource = "roof-type" | "pitch" | "overhang";
+
+/**
+ * Keep the destructive source restore distinct from ordinary edits while
+ * retaining one typed event path for mouse and keyboard controls.
+ */
+export function dispatchRoofQuickSettingsChange(
+  options: Pick<RoofQuickSettingsOptions, "onChange" | "onRestoreImported">,
+  parameters: RoofQuickParameters,
+  source: RoofQuickSettingsChangeSource,
+): void {
+  if (source === "roof-type"
+    && parameters.roofType === "imported"
+    && options.onRestoreImported) {
+    options.onRestoreImported(parameters);
+    return;
+  }
+  options.onChange(parameters);
 }
 
 export function createRoofQuickSettings(
@@ -183,9 +205,13 @@ export function createRoofQuickSettings(
     overhang?.setAttribute("aria-valuenow", String(overhangMm / 10));
     overhang?.setAttribute("aria-valuetext", `${overhangMm / 10} Zentimeter`);
   };
-  const publish = (): void => {
+  const publish = (source: RoofQuickSettingsChangeSource): void => {
     render();
-    options.onChange({ roofType, pitchDeg, overhangMm });
+    dispatchRoofQuickSettingsChange(
+      options,
+      { roofType, pitchDeg, overhangMm },
+      source,
+    );
   };
   const close = (restorePointerLock = true): void => {
     if (element.hidden) return;
@@ -198,31 +224,31 @@ export function createRoofQuickSettings(
     const value = button.dataset.roofQuickType as RoofType;
     if (!ROOF_TYPE_OPTIONS.some((option) => option.type === value)) return;
     roofType = value;
-    publish();
+    publish("roof-type");
   }));
   pitch?.addEventListener("wheel", (event) => {
     event.preventDefault();
     event.stopPropagation();
     pitchDeg = roofPitchFromWheel(pitchDeg, event.deltaY);
-    publish();
+    publish("pitch");
   }, { passive: false });
   pitch?.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
     event.preventDefault();
     pitchDeg = normalizeQuickRoofPitch(pitchDeg + (event.key === "ArrowUp" ? 1 : -1));
-    publish();
+    publish("pitch");
   });
   overhang?.addEventListener("wheel", (event) => {
     event.preventDefault();
     event.stopPropagation();
     overhangMm = roofOverhangFromWheel(overhangMm, event.deltaY);
-    publish();
+    publish("overhang");
   }, { passive: false });
   overhang?.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
     event.preventDefault();
     overhangMm = normalizeQuickRoofOverhangMm(overhangMm + (event.key === "ArrowUp" ? 50 : -50));
-    publish();
+    publish("overhang");
   });
   element.querySelector("[data-roof-quick-close]")?.addEventListener("click", () => close());
   element.querySelector("[data-roof-quick-done]")?.addEventListener("click", () => close());
