@@ -81,6 +81,8 @@ export interface ChunkLoaderLoadOptions {
   readonly markVisible?: boolean;
   readonly preferBatch?: boolean;
   readonly maxChunks?: number;
+  /** Already loaded boundary/structure chunks retained until their scene reserve expires. */
+  readonly retainVisibleChunkKeys?: readonly string[];
   readonly batchSize?: number;
   readonly shouldContinue?: () => boolean;
   readonly onBatchLoaded?: (progress: ChunkLoaderBatchProgress) => void;
@@ -924,6 +926,8 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
     try {
       const markVisible = loadOptions?.markVisible ?? defaultMarkVisible;
       const registry = source.getRegistry();
+      const retainedVisibleChunkKeys = (loadOptions?.retainVisibleChunkKeys ?? [])
+        .filter((key) => registry.hasChunk(key));
       const coordinatesToLoad = loadOptions?.force
         ? limitedCoordinates
         : limitedCoordinates.filter(
@@ -1000,7 +1004,7 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
 
       if (coordinatesToLoad.length === 0) {
         if (markVisible && requestedChunkKeys.length > 0) {
-          registry.setVisibleChunkKeys(requestedChunkKeys, String(normalizedReason));
+          registry.setVisibleChunkKeys(uniqueStrings([...requestedChunkKeys, ...retainedVisibleChunkKeys]), String(normalizedReason));
         }
 
         return makeSuccessResult({
@@ -1111,7 +1115,7 @@ export function createChunkLoader(options: ChunkLoaderOptions): ChunkLoaderHandl
         const targetComplete =
           !interrupted && loadedRequestedChunkKeys.length === requestedChunkKeys.length;
         const nextVisibleChunkKeys = targetComplete
-          ? loadedRequestedChunkKeys
+          ? uniqueStrings([...loadedRequestedChunkKeys, ...retainedVisibleChunkKeys])
           : uniqueStrings([...previousVisibleChunkKeys, ...loadedRequestedChunkKeys]);
 
         if (nextVisibleChunkKeys.length > 0) {

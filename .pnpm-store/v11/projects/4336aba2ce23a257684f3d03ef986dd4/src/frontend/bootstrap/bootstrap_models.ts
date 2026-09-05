@@ -947,7 +947,7 @@ export const DEFAULT_CHUNK_SERVICE_TIMEOUTS: EditorChunkServiceTimeouts = {
 
 export const DEFAULT_CHUNK_SERVICE_MAX_BATCH_CHUNKS = 256 as const;
 
-export const DEFAULT_CHUNK_SERVICE_MAX_LOADED_CHUNKS = 1024 as const;
+export const DEFAULT_CHUNK_SERVICE_MAX_LOADED_CHUNKS = 2048 as const;
 export const DEFAULT_INVENTORY_SLOT_COUNT = 9 as const;
 
 export const DEFAULT_INVENTORY_SOURCE_KIND = "vectoplan-user-inventory" as const;
@@ -998,7 +998,7 @@ export const DEFAULT_CAMERA_ROTATION: EditorEuler3 = {
 
 export const DEFAULT_RENDER_CLEAR_COLOR = "#020617" as const;
 
-export const DEFAULT_VISIBLE_CHUNK_RADIUS = 7 as const;
+export const DEFAULT_VISIBLE_CHUNK_RADIUS = 14 as const;
 
 export const DEFAULT_MAX_CHUNKS_PER_RENDER_SYNC = 256 as const;
 

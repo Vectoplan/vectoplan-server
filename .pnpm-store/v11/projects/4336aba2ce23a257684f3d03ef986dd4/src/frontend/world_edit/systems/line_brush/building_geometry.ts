@@ -1,4 +1,5 @@
 import type { PathBrushDraft } from "../shared/path_brush_geometry";
+import { buildConstructionPlanCells, type ConstructionPlanPoint } from "./construction_grid";
 import {
   STANDARD_STOREY_HEIGHT_METERS,
   STANDARD_STOREY_HEIGHT_MILLIMETERS,
@@ -32,10 +33,20 @@ const FOUR_NEIGHBOURS = Object.freeze([
 export interface LineBrushBuildingPlanCell {
   readonly x: number;
   readonly z: number;
+  readonly logicalCellId?: string;
+  readonly footprintPolygons?: readonly (readonly ConstructionPlanPoint[])[];
+  readonly exterior?: boolean;
 }
 
 export interface LineBrushBuildingBlockCell extends LineBrushBuildingPlanCell {
   readonly y: number;
+  readonly minimumY?: number;
+  readonly maximumY?: number;
+  /** Per-polygon corner heights for roof-cut wall blocks. */
+  readonly minimumHeights?: readonly (readonly number[])[];
+  readonly maximumHeights?: readonly (readonly number[])[];
+  /** A shared integer owner may contain a wall fragment beside a floor slab. */
+  readonly materialBlockTypeId?: string;
 }
 
 export type LineBrushBuildingSegmentScope =
@@ -50,6 +61,8 @@ export interface LineBrushBuildingGeometryInput {
   readonly storeyCount: number;
   /** Optional program layout; absent keeps the proven continuous footprint. */
   readonly layout?: LineBrushBuildingLayout;
+  /** Exact facade rows from the shared existing-building grid partition. */
+  readonly alignToBuildingGrid?: boolean;
   /** Defaults to the complete, already-unioned line-brush footprint. */
   readonly segmentScope?: LineBrushBuildingSegmentScope;
 }
@@ -346,7 +359,7 @@ function planKey(cell: LineBrushBuildingPlanCell): string {
 }
 
 function worldKey(cell: LineBrushBuildingBlockCell): string {
-  return `${cell.x}:${cell.y}:${cell.z}`;
+  return cell.logicalCellId ? `${cell.logicalCellId}:${cell.y}` : `${cell.x}:${cell.y}:${cell.z}`;
 }
 
 function comparePlanCells(first: LineBrushBuildingPlanCell, second: LineBrushBuildingPlanCell): number {
@@ -446,11 +459,25 @@ export function buildLineBrushBuildingGeometry(
     invalid("invalid-storey-count", "storeyCount must be a positive safe integer.");
   }
   const scope = canonicalScope(draft, input.segmentScope);
-  const footprintCells = rasterizeFootprint(polygonsForScope(draft, scope, input.layout));
+  const polygons = polygonsForScope(draft, scope, input.layout);
+  if (input.alignToBuildingGrid) {
+    const area = polygons.reduce((sum, polygon) => sum + Math.abs(signedArea(polygon.outer))
+      - polygon.holes.reduce((total, hole) => total + Math.abs(signedArea(hole)), 0), 0);
+    if (area * storeyCount > LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS) limitExceeded(Math.ceil(area * storeyCount));
+    if (polygons.some((polygon) => polygon.maximumX - polygon.minimumX > LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS
+      || polygon.maximumZ - polygon.minimumZ > LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS)) limitExceeded(LINE_BRUSH_BUILDING_MAX_OCCUPIED_CELLS + 1);
+  }
+  const footprintCells = input.alignToBuildingGrid
+    ? buildConstructionPlanCells(polygons.map(({ outer, holes }) => [outer, ...holes])).map((cell) => ({
+      ...cell, logicalCellId: `${scope.kind === "all" ? "all" : `segment:${scope.segmentIndex}`}:${cell.logicalCellId}`,
+    }))
+    : rasterizeFootprint(polygons);
   if (footprintCells.length === 0) {
     invalid("empty-footprint", "The scoped footprint contains no whole block selected by cell centre.");
   }
-  const exteriorFootprintCells = boundaryCells(footprintCells);
+  const exteriorFootprintCells = input.alignToBuildingGrid
+    ? footprintCells.filter((cell) => cell.exterior)
+    : boundaryCells(footprintCells);
 
   // Every storey has at least one complete footprint plate. This bound avoids
   // calculating enormous semantic heights for an already impossible request.
@@ -478,10 +505,21 @@ export function buildLineBrushBuildingGeometry(
   for (let storeyIndex = 0; storeyIndex < storeyCount; storeyIndex += 1) {
     const minimumCellY = quantizedBoundaryY(baseY, storeyIndex);
     const maximumCellYExclusive = quantizedBoundaryY(baseY, storeyIndex + 1);
-    const slabCells = footprintCells.map((cell) => ({ ...cell, y: minimumCellY }));
+    const semanticBaseY = baseY + (storeyIndex * STANDARD_STOREY_HEIGHT_MILLIMETERS) / 1_000;
+    const semanticTopY = baseY + ((storeyIndex + 1) * STANDARD_STOREY_HEIGHT_MILLIMETERS) / 1_000;
+    const slabCells = footprintCells.map((cell) => ({ ...cell, y: minimumCellY,
+      ...(input.alignToBuildingGrid ? { minimumY: semanticBaseY, maximumY: semanticBaseY + 0.25 } : {}),
+    }));
     const wallCells: LineBrushBuildingBlockCell[] = [];
     for (let y = minimumCellY + 1; y < maximumCellYExclusive; y += 1) {
-      for (const cell of exteriorFootprintCells) wallCells.push({ ...cell, y });
+      for (const cell of exteriorFootprintCells) wallCells.push({ ...cell, y,
+        ...(input.alignToBuildingGrid ? {
+          minimumY: semanticBaseY + 0.25 + (y - minimumCellY - 1)
+            * (STANDARD_STOREY_HEIGHT_METERS - 0.25) / (maximumCellYExclusive - minimumCellY - 1),
+          maximumY: semanticBaseY + 0.25 + (y - minimumCellY)
+            * (STANDARD_STOREY_HEIGHT_METERS - 0.25) / (maximumCellYExclusive - minimumCellY - 1),
+        } : {}),
+      });
     }
     wallCells.sort(compareBlockCells);
     const occupiedCells = uniqueBlockCells([...slabCells, ...wallCells]);

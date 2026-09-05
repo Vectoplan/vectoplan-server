@@ -1,0 +1,122 @@
+{
+  "ok": true,
+  "dataset_id": "digitales-gelaendemodell-5m",
+  "release_key": "534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+  "service": "terrain-grid-query",
+  "srid": 25833,
+  "radius_m": 2.0,
+  "source_partial": false,
+  "items": [
+    {
+      "id": "mitte",
+      "input_coordinates": {
+        "lat": 52.52,
+        "lon": 13.405,
+        "srid": 4326
+      },
+      "normalized_coordinates": {
+        "x": 391779.259,
+        "y": 5820072.16,
+        "srid": 25833
+      },
+      "found": true,
+      "value": 35.55,
+      "value_name": "elevation",
+      "unit": "m",
+      "point": {
+        "x": 391779.5,
+        "y": 5820072.5,
+        "z": 35.55,
+        "srid": 25833,
+        "distance_m": 0.417,
+        "serving_prepared": true,
+        "serving_schema_version": "vectoplan-terrain-serving-tile.v1"
+      },
+      "source_file": {
+        "name": "DGM1_390_5820-f6c3abb0ea.zip",
+        "size_bytes": 17538508,
+        "media_type": "application/zip",
+        "sha256": "f6c3abb0ea62d4ee77e37f0319443a55cd9db9ccef0bd13d85017501cac3d8e7",
+        "queryable": false,
+        "available": true,
+        "download_url": "/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5820-f6c3abb0ea.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2"
+      }
+    },
+    {
+      "id": "southwest",
+      "input_coordinates": {
+        "x": 390000.5,
+        "y": 5818000.5,
+        "srid": 25833
+      },
+      "normalized_coordinates": {
+        "x": 390000.5,
+        "y": 5818000.5,
+        "srid": 25833
+      },
+      "found": true,
+      "value": 36.83,
+      "value_name": "elevation",
+      "unit": "m",
+      "point": {
+        "x": 390000.5,
+        "y": 5818000.5,
+        "z": 36.83,
+        "srid": 25833,
+        "distance_m": 0.0,
+        "serving_prepared": true,
+        "serving_schema_version": "vectoplan-terrain-serving-tile.v1"
+      },
+      "source_file": {
+        "name": "DGM1_390_5818-e74ef12fff.zip",
+        "size_bytes": 16936399,
+        "media_type": "application/zip",
+        "sha256": "e74ef12fff48dd9b58490f0f56085b4fdaa438a4e9a76c979385f88eb6659f80",
+        "queryable": false,
+        "available": true,
+        "download_url": "/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5818-e74ef12fff.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2"
+      }
+    },
+    {
+      "id": "northeast",
+      "input_coordinates": {
+        "x": 393999.5,
+        "y": 5821999.5,
+        "srid": 25833
+      },
+      "normalized_coordinates": {
+        "x": 393999.5,
+        "y": 5821999.5,
+        "srid": 25833
+      },
+      "found": true,
+      "value": 43.72,
+      "value_name": "elevation",
+      "unit": "m",
+      "point": {
+        "x": 393999.5,
+        "y": 5821999.5,
+        "z": 43.72,
+        "srid": 25833,
+        "distance_m": 0.0,
+        "serving_prepared": true,
+        "serving_schema_version": "vectoplan-terrain-serving-tile.v1"
+      },
+      "source_file": {
+        "name": "DGM1_392_5820-2ad2b40e73.zip",
+        "size_bytes": 18048778,
+        "media_type": "application/zip",
+        "sha256": "2ad2b40e73bcf3e0152e166bc95fc6d000328a1a72894b0df963268fc3f55952",
+        "queryable": false,
+        "available": true,
+        "download_url": "/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_392_5820-2ad2b40e73.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2"
+      }
+    }
+  ],
+  "counts": {
+    "requested": 3,
+    "found": 3,
+    "missing": 0,
+    "source_files_read": 3
+  }
+}

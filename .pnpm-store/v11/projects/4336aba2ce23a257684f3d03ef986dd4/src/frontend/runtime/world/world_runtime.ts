@@ -85,6 +85,7 @@ export interface WorldRuntimeLoadAroundOptions extends WorldRuntimeRefreshOption
   readonly preferBatch?: boolean;
   readonly contentProfile?: "surface-shell.v1" | "full";
   readonly maxChunks?: number;
+  readonly retainVisibleChunkKeys?: readonly string[];
   readonly priorityDirection?: ChunkLoaderPriorityDirection;
   readonly batchSize?: number;
   readonly shouldContinue?: () => boolean;
@@ -1296,6 +1297,7 @@ export function createWorldRuntime(options: WorldRuntimeOptions): WorldRuntimeHa
       preferBatch: refreshOptions?.preferBatch,
       contentProfile: refreshOptions?.contentProfile,
       maxChunks: refreshOptions?.maxChunks,
+      retainVisibleChunkKeys: refreshOptions?.retainVisibleChunkKeys,
       priorityDirection: refreshOptions?.priorityDirection,
       batchSize: refreshOptions?.batchSize,
       shouldContinue: refreshOptions?.shouldContinue,
@@ -1328,6 +1330,7 @@ export function createWorldRuntime(options: WorldRuntimeOptions): WorldRuntimeHa
       preferBatch: refreshOptions?.preferBatch,
       contentProfile: refreshOptions?.contentProfile,
       maxChunks: refreshOptions?.maxChunks,
+      retainVisibleChunkKeys: refreshOptions?.retainVisibleChunkKeys,
       priorityDirection: refreshOptions?.priorityDirection,
       batchSize: refreshOptions?.batchSize,
       shouldContinue: refreshOptions?.shouldContinue,

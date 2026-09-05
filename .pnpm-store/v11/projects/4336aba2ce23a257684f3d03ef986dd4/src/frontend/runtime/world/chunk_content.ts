@@ -1,4 +1,5 @@
 // src/frontend/runtime/world/chunk_content.ts
+import { terrainCellShape, type TerrainCellShape } from './terrain_surface';
 import type {
   ChunkApiPaletteEntry,
   ChunkApiRuntimeChunkContent,
@@ -116,6 +117,7 @@ export interface RuntimeCellCollisionInfo {
 }
 
 export interface RuntimeCellSample {
+  readonly terrainShape?: TerrainCellShape | null;
   readonly exists: boolean;
   readonly chunkKey: string;
   readonly address: ChunkCellAddress;
@@ -144,6 +146,7 @@ export interface RuntimeChunkValidationResult {
 }
 
 export interface RuntimeChunkCloneOptions {
+  readonly metadata?: Record<string, unknown>;
   readonly cells?: readonly number[];
   readonly palette?: readonly ChunkApiPaletteEntry[];
   readonly loadedAt?: string;
@@ -498,6 +501,7 @@ export function cloneRuntimeChunkContent(
   try {
     const raw: ChunkApiRuntimeChunkContent = {
       ...chunk.raw,
+      metadata: options?.metadata ?? chunk.raw.metadata,
       cells: options?.cells ?? chunk.cells,
       palette: options?.palette ?? chunk.raw.palette,
       chunkRevision: options?.chunkRevision ?? chunk.chunkRevision,
@@ -842,6 +846,7 @@ export function sampleCellAtLocalCoordinates(
     placeable: paletteEntry?.placeable ?? false,
     breakable: paletteEntry?.breakable ?? false,
     collisionKind,
+    terrainShape: terrainCellShape(chunk, local.localX, local.localY, local.localZ),
   };
 }
 

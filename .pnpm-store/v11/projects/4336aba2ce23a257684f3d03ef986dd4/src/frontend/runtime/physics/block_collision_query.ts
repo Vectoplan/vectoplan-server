@@ -84,6 +84,8 @@ export interface BlockCollisionWorldCellResult {
 }
 
 export interface BlockCollisionWorldReader {
+  /** Optional shape bounds over the queried footprint (null means no solid volume). */
+  readonly getBlockingBounds?: (cell: BlockCollisionWorldCellInput, query: PhysicsAabb) => PhysicsAabb | null;
   /**
    * Return collision data for one world cell.
    *
@@ -1303,11 +1305,10 @@ export class BlockCollisionQuery {
       let contactOnlyCellCount = 0;
 
       for (const cell of candidateCellsResult.solidCells) {
-        const blockAabb = createBlockAabb(
-          cell.cell.x,
-          cell.cell.y,
-          cell.cell.z,
-        );
+        const blockAabb = this.reader?.getBlockingBounds
+          ? this.reader.getBlockingBounds(cell.cell, safeAabb)
+          : createBlockAabb(cell.cell.x, cell.cell.y, cell.cell.z);
+        if (!blockAabb) continue;
 
         /**
          * A cell-range query is intentionally coarse. At exact voxel faces or

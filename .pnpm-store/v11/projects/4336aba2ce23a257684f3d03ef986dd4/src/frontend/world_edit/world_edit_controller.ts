@@ -30,6 +30,7 @@ import {
 import { createWorldEditSystemRegistry } from "./systems/registry";
 import { createSelectionSystem } from "./systems/selection/system";
 import { createRoomSystem } from "./systems/room/system";
+import { createLineBrushBuildingEditVisuals } from "./systems/line_brush/building_edit_visuals";
 import { createStairSystem } from "./systems/stair/system";
 import { createPaintSystem } from "./systems/paint/system";
 import { createSculptSystem } from "./systems/sculpt/system";
@@ -41,6 +42,10 @@ import { createCutPasteSystem } from "./systems/cut_paste/system";
 import { createTentacleSystem } from "./systems/tentacle/system";
 import { createRoofSystem } from "./systems/roof/system";
 import { createStoreySystem } from "./systems/storey/system";
+import { createStoreyDragHandle } from "./systems/storey/drag";
+import { buildLineBrushRoofZones } from "./systems/line_brush/building_roofs";
+import { coalesceLineBrushStoreys } from "./systems/line_brush/storey_ownership";
+import { buildLineBrushRoofWallCells, attachLineBrushRoofWallCells, type LineBrushRoofWallCell, type LineBrushRoofWallZone } from "./systems/line_brush/roof_walls";
 import { importedRoofSource } from "./systems/roof/imported";
 import { restoreImportedRoofOriginal } from "./systems/roof/restoration";
 import { createFlatRoofCalculation } from "./systems/roof/courtyard";
@@ -54,6 +59,7 @@ import {
   buildRoofCalculationRequest,
   DEFAULT_ROOF_TOOL_PARAMETERS,
   roofCalculationRequestKey,
+  normalizeRoofContinuationEdges,
   requestRoofCalculation,
   type RoofCalculationRequest,
   type RoofCalculationResult,
@@ -562,7 +568,7 @@ interface PlanningStoreyBuildSpec {
   readonly footprint: Readonly<Record<string, unknown>>;
 }
 
-interface PlanningRoofBuildSpec {
+interface PlanningRoofBuildSpec extends LineBrushRoofWallZone {
   readonly scope: StoreyTargetScope;
   readonly roofIndex: number;
   /** Exterior ring first, followed by any courtyard holes. */
@@ -571,6 +577,7 @@ interface PlanningRoofBuildSpec {
   readonly parameters: RoofToolParameters;
   readonly request: RoofCalculationRequest;
   readonly calculation: RoofCalculationResult;
+  readonly wallCells?: readonly LineBrushRoofWallCell[];
 }
 
 export interface PlanningMassingWorldEditSnapshot {
@@ -1204,8 +1211,21 @@ export function createWorldEditController(
   let planningBuildingProgramSelection: BuildingProgramTemplateSelection =
     createDefaultBuildingProgramTemplateSelection();
   let planningBuildingGenerationRequest: LineBrushBuildingGenerationRequest | null = null;
+  let planningBuildingDraftDirty = false;
+  let planningBuildingSceneRefreshPending: string | null = null;
+  let planningBuildingSceneRefreshTimer = 0;
+  let planningBuildingSceneMonitorFrame = 0;
+  let planningBuildingSceneReadyCheckAt = 0;
+  let planningBuildingSceneExpectedObjects = new Map<string, Set<string>>();
+  let planningBuildingRoofPreviewCache: { key: string; specs: readonly PlanningRoofBuildSpec[] } | null = null;
+  const planningBuildingEditVisuals = createLineBrushBuildingEditVisuals();
+  let planningBuildingVisualRefreshAt = 0;
+  const hiddenPlanningBuildingObjects = new Map<THREE.Object3D, boolean>();
   let lineBrushQuickSettings: LineBrushQuickSettingsHandle | null = null;
   let storeyQuickSettings: StoreyQuickSettingsHandle | null = null;
+  let storeyDragHandle: ReturnType<typeof createStoreyDragHandle> | null = null;
+  let storeyDragPreviousProfile: PlanningBuildingStoreyProfile | null = null;
+  let storeyDragPreviousDirty = false;
   let planningBuildingPreviewSequence = 0;
   let planningBuildingRoofPreviewTimer = 0;
   let planningBuildingRoofPreviewAbortController: AbortController | null = null;
@@ -1491,9 +1511,12 @@ export function createWorldEditController(
   }
 
   function synchronizeRoomAreaWorkspaceProfile(): void {
-    const next = isPlanningWorkspace() ? "planning" : "first-person";
-    if (roomAreaWorkspaceProfile && roomAreaWorkspaceProfile !== next) resetPolygonArea("room");
-    roomAreaWorkspaceProfile = next;
+    // A camera change must never reinterpret or discard a building draft.
+    roomAreaWorkspaceProfile ??= "planning";
+  }
+
+  function isBuildingLineBrush(): boolean {
+    return roomAreaWorkspaceProfile !== "first-person";
   }
 
   function planningRoadWidth(): number {
@@ -1608,7 +1631,7 @@ export function createWorldEditController(
     if (!scene) return;
     const group = new THREE.Group();
     group.name = "vectoplan_world_edit_tentacle";
-    const planningDraft = isPlanningWorkspace() ? currentPlanningRoadDraft() : null;
+    const planningDraft = currentPlanningRoadDraft();
     if (planningDraft) {
       const previewY = planningDraft.points[0]!.y + 0.025;
       for (const [index, polygon] of planningDraft.polygons.entries()) {
@@ -1643,7 +1666,7 @@ export function createWorldEditController(
           group.add(placeholder);
         }
       }
-    } else if (isPlanningWorkspace()) {
+    } else {
       updatePlanningRoadConflicts(null);
     }
     const sampled = sampleTentacleCurve(tentaclePoints);
@@ -1794,29 +1817,17 @@ export function createWorldEditController(
     }
     tentacleFinished = true;
     rebuildTentacleScene();
-    if (isPlanningWorkspace()) {
-      const tunnels = planningRoadConflicts.filter((conflict) => conflict.resolution === "tunnel").length;
-      const elevated = planningRoadConflicts.length - tunnels;
-      setStatus(
-        `Straßenkorridor mit ${tentaclePoints.length} Stützpunkten abgeschlossen. ${elevated} Höhenlücken (${planningRoadConflictChoice === "bridge" ? "Brücke" : "Auffüllung"}), ${tunnels} Bergdurchstöße (Tunnel).`,
-        "ready",
-      );
-    } else {
-      setStatus(`Tentacle-Pfad mit ${tentaclePoints.length} Stützpunkten abgeschlossen. Punkte bleiben verschiebbar; Rechtsklick führt aus.`, "ready");
-    }
+    const tunnels = planningRoadConflicts.filter((conflict) => conflict.resolution === "tunnel").length;
+    const elevated = planningRoadConflicts.length - tunnels;
+    setStatus(
+      `Straßenkorridor mit ${tentaclePoints.length} Stützpunkten abgeschlossen. ${elevated} Höhenlücken (${planningRoadConflictChoice === "bridge" ? "Brücke" : "Auffüllung"}), ${tunnels} Bergdurchstöße (Tunnel).`,
+      "ready",
+    );
   }
 
   function synchronizeTentacleWorkspaceProfile(): void {
-    const next = isPlanningWorkspace() ? "planning" : "first-person";
-    if (tentacleWorkspaceProfile && tentacleWorkspaceProfile !== next) {
-      stopTentacleDrawing();
-      tentaclePoints = [];
-      tentacleFinished = false;
-      tentacleHoveredIndex = null;
-      planningRoadConflicts = [];
-      disposeTentacleGroup();
-    }
-    tentacleWorkspaceProfile = next;
+    // Road geometry and conflict resolution belong to the tool, not the camera.
+    tentacleWorkspaceProfile = "planning";
   }
 
   async function executeTentaclePath(): Promise<void> {
@@ -1831,8 +1842,8 @@ export function createWorldEditController(
       return;
     }
     const effectiveOperation = ["set", "wall", "fill", "replace", "clear"].includes(operation) ? operation : "set";
-    const planningRoadDraft = isPlanningWorkspace() ? currentPlanningRoadDraft() : null;
-    const conflicts = isPlanningWorkspace() ? updatePlanningRoadConflicts(planningRoadDraft) : [];
+    const planningRoadDraft = currentPlanningRoadDraft();
+    const conflicts = updatePlanningRoadConflicts(planningRoadDraft);
     const placement = selectedPlacement();
     const replaceBlockTypeId = options.sceneRuntime.getTargetCells().sourceCell?.blockTypeId ?? null;
     if (operationNeedsMaterial(effectiveOperation) && (!placement.valid || !placement.runtimeBlockTypeId)) {
@@ -1963,6 +1974,8 @@ export function createWorldEditController(
   function disposePolygonAreaGroup(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     if (tool === "room") {
+      for (const [object, visible] of hiddenPlanningBuildingObjects) object.visible = visible;
+      hiddenPlanningBuildingObjects.clear();
       planningBuildingPreviewSequence += 1;
       if (planningBuildingRoofPreviewTimer) {
         window.clearTimeout(planningBuildingRoofPreviewTimer);
@@ -2124,6 +2137,8 @@ export function createWorldEditController(
     }
     const group = new THREE.Group();
     group.name = "vectoplan_world_edit_planning_build_area";
+    const editable = activeTool === "room";
+    group.userData.lineBrushEditable = editable;
     const previewBaseY = editingPlanningBuildAreaAnchor?.y
       ?? Math.floor(draft.points[0]!.y + 1);
     let buildingPreviewWithinCellBudget = false;
@@ -2135,6 +2150,8 @@ export function createWorldEditController(
       group.add(createLineBrushBuildingStructurePreview({
         storeys,
         selectedScope: selectedStoreyScope,
+        editable,
+        wallBlockTypeId: planningBuildingBlockTypeId(),
       }));
       buildingPreviewWithinCellBudget = true;
     } catch (error) {
@@ -2155,6 +2172,7 @@ export function createWorldEditController(
         polygon.holes,
       );
       if (fill) group.add(fill);
+      if (fill) fill.visible = editable;
     }
     const line = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(
@@ -2163,6 +2181,7 @@ export function createWorldEditController(
       new THREE.LineBasicMaterial({ color: 0x0f766e, depthTest: false, transparent: true, opacity: 1 }),
     );
     line.name = "vectoplan_world_edit_planning_build_area_centerline";
+    line.visible = editable;
     line.renderOrder = 97;
     group.add(line);
     for (const [index, point] of runtime.points.entries()) {
@@ -2192,8 +2211,26 @@ export function createWorldEditController(
       runtime.moveTarget = moveHandle;
       group.add(moveHandle);
     }
+    if (editable) {
+      const settings = new THREE.Sprite(new THREE.SpriteMaterial({
+        map: currentRoofSettingsTexture(), transparent: true, depthTest: false,
+        depthWrite: false, toneMapped: false,
+      }));
+      settings.name = "vectoplan_world_edit_building_settings";
+      settings.position.set((draft.bounds.minimum.x + draft.bounds.maximum.x) * 0.5,
+        previewBaseY + Math.max(...draft.segments.map((_, index) => planningStoreyCountForScope(`segment:${index}`)))
+          * STANDARD_STOREY_HEIGHT_METERS + 2,
+        (draft.bounds.minimum.z + draft.bounds.maximum.z) * 0.5);
+      settings.scale.set(1.65, 1.65, 1);
+      settings.renderOrder = 101;
+      settings.userData.worldEditBuildingSettings = true;
+      runtime.settingsTarget = settings;
+      group.add(settings);
+    }
     scene.add(group);
     runtime.group = group;
+    hidePlanningBuildingSourceMeshes();
+    startPlanningBuildingSceneMonitor();
     if (buildingPreviewWithinCellBudget) {
       schedulePlanningBuildingRoofPreview(group, draft, previewBaseY);
     }
@@ -2206,12 +2243,20 @@ export function createWorldEditController(
 
   function rebuildPolygonAreaScene(tool: PolygonAreaTool): void {
     disposePolygonAreaGroup(tool);
+    if (tool === "room") refreshPlanningBuildingEditVisuals();
     const runtime = polygonAreaRuntime(tool);
-    if (runtime.points.length === 0 || activeTool !== tool) return;
+    const retainedBuilding = tool === "room" && isBuildingLineBrush()
+      && (activeTool === "storey" || !editingPlanningBuildAreaInstanceId
+        || planningBuildingDraftDirty || planningBuildingSceneRefreshPending !== null);
+    if (runtime.points.length === 0 || (activeTool !== tool && !retainedBuilding)) return;
     const scene = options.sceneRuntime.getScene();
     if (!scene) return;
-    if (tool === "room" && isPlanningWorkspace()) {
+    if (tool === "room" && isBuildingLineBrush()) {
       rebuildPlanningBuildAreaScene(scene, runtime);
+      if (activeTool !== "room") {
+        runtime.pointTargets.forEach((target) => { target.visible = false; });
+        if (runtime.moveTarget) runtime.moveTarget.visible = false;
+      }
       return;
     }
     const group = new THREE.Group();
@@ -2308,6 +2353,7 @@ export function createWorldEditController(
     const runtime = polygonAreaRuntime(tool);
     const camera = options.sceneRuntime.getCamera();
     if (!camera || runtime.pointTargets.length === 0) return null;
+    runtime.group?.updateWorldMatrix(true, true);
     const raycaster = new THREE.Raycaster();
     setWorkspacePointerRay(raycaster, camera, 1_200);
     const hit = raycaster.intersectObjects(runtime.pointTargets, false)[0];
@@ -2318,7 +2364,7 @@ export function createWorldEditController(
   function planningBuildAreaMoveHandleUnderCrosshair(): boolean {
     const runtime = polygonAreaRuntime("room");
     const camera = options.sceneRuntime.getCamera();
-    if (!camera || !runtime.moveTarget || !isPlanningWorkspace()) return false;
+    if (!camera || !runtime.moveTarget || !isBuildingLineBrush()) return false;
     const raycaster = new THREE.Raycaster();
     setWorkspacePointerRay(raycaster, camera, 1_200);
     return Boolean(raycaster.intersectObject(runtime.moveTarget, false)[0]);
@@ -2338,6 +2384,45 @@ export function createWorldEditController(
     if (!hit) return undefined;
     if (hit === runtime.settingsTarget) return null;
     return roofZoneSettingsTargets.find(({ target }) => target === hit)?.roof;
+  }
+
+  function openPlanningBuildingSettingsUnderCrosshair(): boolean {
+    if (!isBuildingLineBrush() || !lineBrushQuickSettings) return false;
+    const camera = options.sceneRuntime.getCamera();
+    if (!camera) return false;
+    const raycaster = new THREE.Raycaster();
+    setWorkspacePointerRay(raycaster, camera, 1_200);
+    const target = polygonAreaRuntime("room").settingsTarget;
+    target?.updateWorldMatrix(true, false);
+    const currentHit = target && raycaster.intersectObject(target, false).length > 0;
+    const existing = planningBuildingEditVisuals.pick(raycaster);
+    if (!currentHit && !existing) return false;
+    if (busy) {
+      setStatus("Das Gebäude wird gerade gespeichert. Bitte einen Moment warten.", "info");
+      return true;
+    }
+    const position = camera.position.clone();
+    const quaternion = camera.quaternion.clone();
+    const input = options.sceneRuntime.getInputController();
+    input?.clear("world-edit-building-settings-open");
+    input?.disable("world-edit-building-settings-open");
+    const open = (): void => {
+      stopPolygonAreaInteraction("room");
+      lineBrushQuickSettings?.open();
+      syncLineBrushStoreyEditing();
+    };
+    if (!currentHit && existing) void selectPlanningBuildingPreservingDraft(existing).then(selected => {
+      if (selected) open();
+      else restoreWorkspaceInput("world-edit-building-selection-deferred");
+    });
+    else open();
+    if (input) void input.exitPointerLock("world-edit-building-settings").finally(() => {
+      camera.position.copy(position);
+      camera.quaternion.copy(quaternion);
+      camera.updateMatrixWorld(true);
+      options.sceneRuntime.renderOnce("world-edit.building-settings-camera-preserved");
+    });
+    return true;
   }
 
   function openRoofQuickSettingsUnderCrosshair(): boolean {
@@ -2397,6 +2482,39 @@ export function createWorldEditController(
     options.sceneRuntime.renderOnce(`world-edit.${tool}-polygon-hover`);
   }
 
+  function refreshPlanningBuildingEditVisuals(): void {
+    const scene = options.sceneRuntime.getScene();
+    if (scene) planningBuildingEditVisuals.update(scene, activeTool === "room" && isBuildingLineBrush(), editingPlanningBuildAreaInstanceId);
+  }
+
+  function hidePlanningBuildingSourceMeshes(): void {
+    if (!editingPlanningBuildAreaInstanceId || !polygonAreaRuntime("room").group) return;
+    if (activeTool !== "room" && activeTool !== "storey" && !planningBuildingDraftDirty && !planningBuildingSceneRefreshPending) return;
+    const generatedIds = new Set(generatedPlanningObjects(editingPlanningBuildAreaMetadata).map(ref => ref.objectInstanceId));
+    options.sceneRuntime.getScene()?.traverse((object) => {
+      const ref = asRecord(object.userData.semanticObjectRef);
+      if (asRecord(ref.metadata).generatedFromAreaId !== editingPlanningBuildAreaInstanceId
+        && !generatedIds.has(safeString(ref.objectInstanceId, ""))) return;
+      if (!hiddenPlanningBuildingObjects.has(object)) hiddenPlanningBuildingObjects.set(object, object.visible);
+      object.visible = false;
+    });
+  }
+
+  function startPlanningBuildingSceneMonitor(): void {
+    if (destroyed || planningBuildingSceneMonitorFrame) return;
+    planningBuildingSceneMonitorFrame = requestAnimationFrame(() => {
+      planningBuildingSceneMonitorFrame = 0;
+      if (destroyed) return;
+      hidePlanningBuildingSourceMeshes();
+      if (planningBuildingSceneRefreshPending && performance.now() >= planningBuildingSceneReadyCheckAt) {
+        planningBuildingSceneReadyCheckAt = performance.now() + 100;
+        completePlanningBuildingSceneRefreshIfReady();
+      }
+      if (planningBuildingSceneRefreshPending
+        || (editingPlanningBuildAreaInstanceId && polygonAreaRuntime("room").group)) startPlanningBuildingSceneMonitor();
+    });
+  }
+
   function trackPolygonAreaHover(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     if (activeTool !== tool) {
@@ -2406,6 +2524,10 @@ export function createWorldEditController(
     if (tool === "roof" && performance.now() >= roofZoneRefreshAt) {
       roofZoneRefreshAt = performance.now() + 500;
       rebuildRoofZoneScene();
+    }
+    if (tool === "room" && performance.now() >= planningBuildingVisualRefreshAt) {
+      planningBuildingVisualRefreshAt = performance.now() + 500;
+      refreshPlanningBuildingEditVisuals();
     }
     const next = polygonAreaPointUnderCrosshair(tool);
     if (next !== runtime.hoveredIndex) {
@@ -2431,9 +2553,10 @@ export function createWorldEditController(
 
   function afterPolygonAreaChanged(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
+    if (tool === "room" && isBuildingLineBrush()) planningBuildingDraftDirty = true;
     if (!runtime.closed) return;
     if (tool === "roof") scheduleRoofPreview();
-    else if (tool === "room" && isPlanningWorkspace() && editingPlanningBuildAreaInstanceId) {
+    else if (tool === "room" && isBuildingLineBrush() && editingPlanningBuildAreaInstanceId) {
       void executePlanningBuildArea();
     } else if (tool === "room" && editingRoomInstanceId) void executeRoom();
   }
@@ -2490,7 +2613,7 @@ export function createWorldEditController(
   function finishPolygonArea(tool: PolygonAreaTool): void {
     const runtime = polygonAreaRuntime(tool);
     stopPolygonAreaInteraction(tool);
-    if (tool === "room" && isPlanningWorkspace()) {
+    if (tool === "room" && isBuildingLineBrush()) {
       const draft = currentPlanningBuildAreaDraft();
       if (!draft) {
         runtime.closed = false;
@@ -2534,7 +2657,7 @@ export function createWorldEditController(
       return;
     }
     if (runtime.editingIndex !== null) return;
-    if (tool === "room" && isPlanningWorkspace() && runtime.closed && planningBuildAreaMoveHandleUnderCrosshair()) {
+    if (tool === "room" && isBuildingLineBrush() && runtime.closed && planningBuildAreaMoveHandleUnderCrosshair()) {
       planningBuildAreaMoving = true;
       planningBuildAreaMoveOrigin = snappedPolygonAreaPoint("room", target);
       planningBuildAreaMovePoints = runtime.points.map((point) => ({ ...point }));
@@ -2544,7 +2667,7 @@ export function createWorldEditController(
       return;
     }
     const existingIndex = polygonAreaPointUnderCrosshair(tool);
-    const minimumClosingPoints = tool === "room" && isPlanningWorkspace() ? 2 : 3;
+    const minimumClosingPoints = tool === "room" && isBuildingLineBrush() ? 2 : 3;
     if (existingIndex === 0 && !runtime.closed && runtime.points.length >= minimumClosingPoints) {
       finishPolygonArea(tool);
       return;
@@ -2557,7 +2680,7 @@ export function createWorldEditController(
       return;
     }
     if (runtime.closed) {
-      setStatus(tool === "room" && isPlanningWorkspace()
+      setStatus(tool === "room" && isBuildingLineBrush()
         ? "Die Baufläche ist abgeschlossen. Stützpunkte oder die Raute zum Verschieben der ganzen Fläche wählen."
         : "Die Fläche ist geschlossen. Vorhandene gelbe Eckpunkte können verschoben oder mit Rechtsklick gelöscht werden.", "warning");
       return;
@@ -2577,7 +2700,7 @@ export function createWorldEditController(
     runtime.request = null;
     rebuildPolygonAreaScene(tool);
     refreshHud();
-    setStatus(tool === "room" && isPlanningWorkspace()
+    setStatus(tool === "room" && isBuildingLineBrush()
       ? `${runtime.points.length}. Linienpunkt gesetzt. Weitere gerade Segmente anklicken; ESC/Enter erzeugt die Gebäude-Baufläche.`
       : `${runtime.points.length}. Eckpunkt gesetzt. Weitere Punkte anklicken; erster Punkt oder ESC schließt die Fläche.`, "ready");
   }
@@ -2587,14 +2710,14 @@ export function createWorldEditController(
     const runtime = polygonAreaRuntime(tool);
     const index = polygonAreaPointUnderCrosshair(tool);
     if (index === null) return false;
-    if (tool === "room" && isPlanningWorkspace() && runtime.closed && runtime.points.length <= 2) {
-      setStatus("Ein gespeicherter Gebäude-Linienzug benötigt mindestens zwei Stützpunkte. Zum Entfernen die Baufläche selbst rechtsklicken.", "warning");
+    if (tool === "room" && isBuildingLineBrush() && runtime.closed && runtime.points.length <= 2) {
+      setStatus("Ein Gebäude-Linienzug benötigt mindestens zwei Stützpunkte.", "warning");
       return true;
     }
     stopPolygonAreaInteraction(tool);
     runtime.points.splice(index, 1);
     runtime.hoveredIndex = null;
-    runtime.closed = runtime.closed && (tool === "room" && isPlanningWorkspace()
+    runtime.closed = runtime.closed && (tool === "room" && isBuildingLineBrush()
       ? Boolean(createPathBrushDraft(runtime.points, { kind: "building", width: planningBuildAreaWidth }))
       : validPolygonArea(runtime.points));
     if (tool === "roof") invalidateRoofCalculation();
@@ -2626,8 +2749,11 @@ export function createWorldEditController(
       planningBuildAreaMoveOrigin = null;
       planningBuildAreaMovePoints = [];
       roomAreaWorkspaceProfile = null;
+      planningBuildingDraftDirty = false;
+      planningBuildingSceneRefreshPending = null;
     } else if (tool === "roof") {
       restoreEditingRoofObjects();
+      roofParameters = { ...roofParameters, continuationEdgesMm: [], continuationEdgeIndices: undefined };
       editingRoofInstanceId = null;
       editingRoofAnchor = null;
       editingRoofMetadata = {};
@@ -3047,6 +3173,7 @@ export function createWorldEditController(
   lineBrushQuickSettings = createLineBrushQuickSettings({
     root: options.root,
     onChange: (snapshot) => {
+      planningBuildingDraftDirty = true;
       const programChanged = planningBuildingProgramSelection.typeId !== snapshot.typeId;
       planningBuildingProgramSelection = snapshot.selection;
       planningBuildingStoreyProfile = {
@@ -3058,7 +3185,7 @@ export function createWorldEditController(
       if (programChanged) selectedStoreyScope = "all";
       planningBuildingGenerationRequest = null;
       syncLineBrushStoreyEditing();
-      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
+      if (activeTool === "room" && isBuildingLineBrush()) rebuildPolygonAreaScene("room");
     },
     onTemplateSelect: (snapshot) => {
       planningBuildingProgramSelection = snapshot.selection;
@@ -3079,7 +3206,7 @@ export function createWorldEditController(
     onStoreyScopeChange: (scope) => {
       selectedStoreyScope = scope;
       syncLineBrushStoreyEditing();
-      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
+      if (activeTool === "room" && isBuildingLineBrush()) rebuildPolygonAreaScene("room");
     },
     onError: (error, stage) => {
       options.logger?.warn?.("Line-brush quick settings failed.", {
@@ -3119,6 +3246,83 @@ export function createWorldEditController(
         "world-edit-storey-settings-close",
         restoreInput && activeTool === "storey",
       );
+    },
+  });
+  storeyDragHandle = createStoreyDragHandle({
+    root: options.root,
+    snapshot: () => {
+      const draft = currentPlanningBuildAreaDraft();
+      const camera = options.sceneRuntime.getCamera();
+      if (!draft || !camera || activeTool !== "storey") return null;
+      const bounds = polygonAreaBounds(polygonAreaPointsFromFootprint(
+        planningFootprintForScope(draft, selectedStoreyScope), draft.points[0]!.y,
+      )) ?? draft.bounds;
+      const count = planningStoreyCountForScope(selectedStoreyScope);
+      const height = count * STANDARD_STOREY_HEIGHT_METERS;
+      const baseY = editingPlanningBuildAreaAnchor?.y ?? Math.floor(draft.points[0]!.y + 1);
+      const top = new THREE.Vector3((bounds.minimum.x + bounds.maximum.x) / 2,
+        baseY + height, (bounds.minimum.z + bounds.maximum.z) / 2);
+      const below = top.clone().add(new THREE.Vector3(0, -STANDARD_STOREY_HEIGHT_METERS, 0));
+      top.project(camera);
+      below.project(camera);
+      if (top.z < -1 || top.z > 1) return null;
+      const canvas = options.root.querySelector("canvas");
+      const viewport = canvas?.getBoundingClientRect() ?? options.root.getBoundingClientRect();
+      const rootRect = options.root.getBoundingClientRect();
+      return {
+        count, height, busy,
+        x: viewport.left - rootRect.left + (top.x + 1) * viewport.width / 2,
+        y: viewport.top - rootRect.top + (1 - top.y) * viewport.height / 2,
+        pixelsPerStorey: Math.max(12, Math.abs(top.y - below.y) * viewport.height / 2),
+      };
+    },
+    begin: () => {
+      storeyDragPreviousDirty = planningBuildingDraftDirty;
+      storeyDragPreviousProfile = {
+        baseCount: planningBuildingStoreyProfile.baseCount,
+        segmentAdjustments: { ...planningBuildingStoreyProfile.segmentAdjustments },
+      };
+    },
+    preview: (count) => {
+      if (!storeyDragPreviousProfile || busy) return;
+      planningBuildingDraftDirty = true;
+      if (selectedStoreyScope === "all") {
+        planningBuildingStoreyProfile = { ...storeyDragPreviousProfile, baseCount: count };
+      } else {
+        const key = String(planningScopeSegmentIndex(selectedStoreyScope));
+        planningBuildingStoreyProfile = { ...storeyDragPreviousProfile,
+          segmentAdjustments: { ...storeyDragPreviousProfile.segmentAdjustments,
+            [key]: count - storeyDragPreviousProfile.baseCount } };
+      }
+      lineBrushQuickSettings?.sync({ storeyCount: planningBuildingStoreyProfile.baseCount });
+      syncLineBrushStoreyEditing();
+      syncStoreyQuickSettings();
+      rebuildPolygonAreaScene("room");
+    },
+    commit: async () => {
+      const previous = storeyDragPreviousProfile;
+      const previousDirty = storeyDragPreviousDirty;
+      storeyDragPreviousProfile = null;
+      if (!previous) return;
+      polygonAreaRuntime("room").closed = true;
+      if (!await executePlanningBuildArea()) {
+        planningBuildingStoreyProfile = previous;
+        planningBuildingDraftDirty = previousDirty;
+        lineBrushQuickSettings?.sync({ storeyCount: previous.baseCount });
+        syncLineBrushStoreyEditing();
+        syncStoreyQuickSettings();
+        rebuildPolygonAreaScene("room");
+      }
+    },
+    cancel: () => {
+      if (!storeyDragPreviousProfile) return;
+      planningBuildingStoreyProfile = storeyDragPreviousProfile;
+      planningBuildingDraftDirty = storeyDragPreviousDirty;
+      storeyDragPreviousProfile = null;
+      lineBrushQuickSettings?.sync({ storeyCount: planningBuildingStoreyProfile.baseCount });
+      syncLineBrushStoreyEditing();
+      syncStoreyQuickSettings();
+      rebuildPolygonAreaScene("room");
     },
   });
   const applyRoofQuickSettings = (
@@ -3446,7 +3650,7 @@ export function createWorldEditController(
         roomType,
         roomLabel,
         roomHeight,
-        planningMode: isPlanningWorkspace(),
+        planningMode: activeTool === "room" ? isBuildingLineBrush() : activeTool === "tentacle" || isPlanningWorkspace(),
         planningBuildAreaWidth,
         planningBuildAreaSegmentCount: currentPlanningBuildAreaDraft()?.segments.length ?? 0,
         planningRoadWidth: planningRoadWidth(),
@@ -4885,8 +5089,8 @@ export function createWorldEditController(
     const placement = selectedPlacement();
     const system = activeSystem();
     const ui = system?.ui;
-    const planningRoom = isPlanningWorkspace() && activeTool === "room";
-    const planningRoad = isPlanningWorkspace() && activeTool === "tentacle";
+    const planningRoom = isBuildingLineBrush() && activeTool === "room";
+    const planningRoad = activeTool === "tentacle";
     if (title) title.textContent = planningRoom
       ? "Linien-Brush Gebäude"
       : planningRoad ? "Tentacle Straße" : ui?.title ?? "WorldEdit";
@@ -6075,11 +6279,11 @@ export function createWorldEditController(
   }
 
   function syncStoreyQuickSettings(open = false): void {
-    if (!storeyQuickSettings || !selectedStoreyBuildArea) return;
+    if (!storeyQuickSettings || !currentPlanningBuildAreaDraft()) return;
     const draft = currentPlanningBuildAreaDraft();
     const state = {
       buildingLabel: safeString(
-        selectedStoreyBuildArea.metadata.label,
+        selectedStoreyBuildArea?.metadata.label,
         "Linien-Brush-Baukörper",
       ),
       storeyCount: planningStoreyCountForScope(selectedStoreyScope),
@@ -6364,11 +6568,32 @@ export function createWorldEditController(
     setStatus(`${roomLabel} ausgewählt. Gelbe Eckpunkte verschieben oder Eigenschaften ändern; die Fläche bleibt exakt erhalten.`, "ready");
   }
 
-  function selectExistingPlanningBuildArea(ref: ExistingRoomRef): void {
+  async function selectPlanningBuildingPreservingDraft(ref: ExistingRoomRef): Promise<boolean> {
+    if (busy) return false;
+    if (ref.objectInstanceId !== editingPlanningBuildAreaInstanceId
+      && currentPlanningBuildAreaDraft()
+      && (!editingPlanningBuildAreaInstanceId || planningBuildingDraftDirty)) {
+      if (!await executePlanningBuildArea(planningBuildingGenerationRequest ?? undefined)) return false;
+    }
+    return selectExistingPlanningBuildArea(ref);
+  }
+
+  function selectExistingPlanningBuildArea(ref: ExistingRoomRef): boolean {
+    // The stored parent can still describe the previous generation while its
+    // replacement is loading. Re-selecting it must not overwrite the live draft.
+    if (ref.objectInstanceId === editingPlanningBuildAreaInstanceId
+      && (planningBuildingSceneRefreshPending || planningBuildingDraftDirty)
+      && currentPlanningBuildAreaDraft()) return true;
+    if (ref.objectInstanceId !== editingPlanningBuildAreaInstanceId && planningBuildingSceneRefreshPending
+      && !completePlanningBuildingSceneRefreshIfReady()) {
+      schedulePlanningBuildingSceneRefresh();
+      setStatus("Das aktuelle Gebäude ist gespeichert und wird noch angezeigt, bis seine neuen Blöcke geladen sind. Danach kann das andere Gebäude ausgewählt werden.", "info");
+      return false;
+    }
     const draft = pathBrushDraftFromUnknown(ref.metadata.pathBrush);
     if (!draft || draft.kind !== "building") {
       setStatus("Diese ältere Baufläche enthält noch keinen editierbaren Linien-Brush-Vertrag.", "warning");
-      return;
+      return false;
     }
     const runtime = polygonAreaRuntime("room");
     roomAreaWorkspaceProfile = "planning";
@@ -6378,6 +6603,8 @@ export function createWorldEditController(
     editingPlanningBuildAreaInstanceId = ref.objectInstanceId;
     editingPlanningBuildAreaAnchor = { ...ref.anchor };
     editingPlanningBuildAreaMetadata = { ...ref.metadata };
+    planningBuildingDraftDirty = false;
+    planningBuildingSceneRefreshPending = null;
     planningBuildingGenerationRequest = null;
     planningBuildingStoreyProfile = planningStoreyProfileFromMetadata(ref.metadata);
     const buildingProgram = asRecord(ref.metadata.buildingProgram);
@@ -6400,14 +6627,16 @@ export function createWorldEditController(
     rebuildPolygonAreaScene("room");
     refreshHud();
     setStatus("Gebäude-Baufläche ausgewählt. Stützpunkte anpassen oder die mittlere Raute ziehen, um alles zu verschieben.", "ready");
+    return true;
   }
 
   function selectPlanningBuildingForStoreys(ref: ExistingRoomRef): void {
-    selectExistingPlanningBuildArea(ref);
+    if (!selectExistingPlanningBuildArea(ref)) return;
     selectedStoreyBuildArea = ref;
     selectedStoreyScope = "all";
+    storeyDragHandle?.setEnabled(activeTool === "storey");
     syncStoreyQuickSettings(true);
-    setStatus("Baukörper ausgewählt. Geschosse können vollständig oder je Liniensegment bearbeitet werden.", "ready");
+    setStatus("Blauen Höhengriff nach oben oder unten ziehen. Der gewählte Bereich rastet in ganzen Geschossen ein.", "ready");
   }
 
   async function removeExistingRoom(ref: ExistingRoomRef): Promise<void> {
@@ -6565,6 +6794,8 @@ export function createWorldEditController(
   }
 
   function planningBuildingBlockTypeId(): string {
+    const persisted = safeString(editingPlanningBuildAreaMetadata.wallBlockTypeId, "");
+    if (persisted) return persisted;
     const placement = selectedPlacement();
     if (placement.valid
       && placement.runtimeBlockTypeId
@@ -6585,6 +6816,7 @@ export function createWorldEditController(
       const geometry = buildLineBrushBuildingGeometry({
         draft,
         layout,
+        alignToBuildingGrid: true,
         baseY: baseY + storeyIndex * STANDARD_STOREY_HEIGHT_METERS,
         storeyCount: 1,
         segmentScope: segmentIndex === null
@@ -6689,12 +6921,10 @@ export function createWorldEditController(
     const layout = currentPlanningBuildingLayout(draft, generationRequest);
     const hasSegmentAdjustments = Object.values(planningBuildingStoreyProfile.segmentAdjustments)
       .some((value) => Number(value) !== 0);
-    const scopes: StoreyTargetScope[] = hasSegmentAdjustments
-      ? draft.segments.map((segment) => `segment:${segment.index}` as StoreyTargetScope)
-      : ["all"];
     const result: PlanningRoofBuildSpec[] = [];
     let roofIndex = 0;
-    for (const scope of scopes) {
+    for (const zone of buildLineBrushRoofZones(draft, layout, roofDefaults.type, hasSegmentAdjustments)) {
+      const scope = zone.scope;
       if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
       const eavesY = baseY + planningStoreyCountForScope(scope) * STANDARD_STOREY_HEIGHT_METERS;
       const parameters: RoofToolParameters = {
@@ -6702,15 +6932,17 @@ export function createWorldEditController(
         roofType: roofDefaults.type,
         pitchDeg: pitchDegrees,
         eavesHeightMm: Math.round(eavesY * 1_000),
-        ridgeDirection: "auto",
+        ridgeDirection: zone.ridgeDirection,
+        continuationEdgesMm: zone.continuationEdgesMm,
+        continuationEdgeIndices: zone.continuationEdgeIndices,
         overhangMm: overhangMillimeters,
         overhangNorthMm: overhangMillimeters,
         overhangEastMm: overhangMillimeters,
         overhangSouthMm: overhangMillimeters,
         overhangWestMm: overhangMillimeters,
-        edgeOverhangsMm: [],
+        edgeOverhangsMm: zone.polygon[0].map((_, index) => zone.interiorEdges.includes(index) ? 0 : overhangMillimeters),
       };
-      for (const polygon of planningRoofPolygonsForScope(draft, scope, layout)) {
+      for (const polygon of [zone.polygon]) {
         if (signal?.aborted) throw new DOMException("Aborted", "AbortError");
         const rings = polygon
           .map((ring) => ring.map(([x, z]) => ({ x, y: eavesY, z })))
@@ -6744,11 +6976,14 @@ export function createWorldEditController(
             throw error;
           }
         }
-        result.push({ scope, roofIndex: roofIndex++, rings, points, parameters, request, calculation });
+        result.push({ scope, roofIndex: roofIndex++, rings, points, parameters, request, calculation,
+          polygon: zone.polygon, interiorEdges: zone.interiorEdges, eavesY });
       }
     }
     if (result.length === 0) throw new Error("Für die Gebäude-Baufläche konnte keine Dachkontur erzeugt werden.");
-    return result;
+    const wallCells = buildLineBrushRoofWallCells(result);
+    return result.map((spec, index) => ({ ...spec,
+      wallCells: wallCells.filter(cell => cell.roofZoneIndex === index) }));
   }
 
   function schedulePlanningBuildingRoofPreview(
@@ -6761,6 +6996,19 @@ export function createWorldEditController(
       window.clearTimeout(planningBuildingRoofPreviewTimer);
     }
     planningBuildingRoofPreviewAbortController?.abort();
+    const cacheKey = JSON.stringify([draft.points, draft.width, baseY,
+      planningBuildingStoreyProfile, currentPlanningBuildingPreset(), planningProgramMetadata()]);
+    const append = (specs: readonly PlanningRoofBuildSpec[]): void => {
+      appendLineBrushBuildingRoofPreview(group,
+        specs.map(spec => ({ scope: spec.scope, calculation: spec.calculation, wallCells: spec.wallCells })),
+        selectedStoreyScope,
+        { editable: group.userData.lineBrushEditable === true, wallBlockTypeId: planningBuildingBlockTypeId() });
+      options.sceneRuntime.renderOnce("world-edit.line-brush-roof-live-preview");
+    };
+    if (planningBuildingRoofPreviewCache?.key === cacheKey) {
+      append(planningBuildingRoofPreviewCache.specs);
+      return;
+    }
     const abortController = new AbortController();
     planningBuildingRoofPreviewAbortController = abortController;
     planningBuildingRoofPreviewTimer = window.setTimeout(() => {
@@ -6770,12 +7018,8 @@ export function createWorldEditController(
           || abortController.signal.aborted
           || polygonAreaRuntime("room").group !== group
           || !group.parent) return;
-        appendLineBrushBuildingRoofPreview(
-          group,
-          specs.map((spec) => ({ scope: spec.scope, calculation: spec.calculation })),
-          selectedStoreyScope,
-        );
-        options.sceneRuntime.renderOnce("world-edit.line-brush-roof-live-preview");
+        planningBuildingRoofPreviewCache = { key: cacheKey, specs };
+        append(specs);
       }).catch((error) => {
         if (sequence !== planningBuildingPreviewSequence || abortController.signal.aborted) return;
         options.logger?.debug?.("Line-brush roof live preview is not available yet.", {
@@ -6835,7 +7079,9 @@ export function createWorldEditController(
     assembly: "wall" | "slab",
   ): PlanningGeneratedObjectPlacement {
     const isSlab = assembly === "slab";
-    const occupiedCells = isSlab ? spec.storey.slabCells : spec.storey.wallCells;
+    const constructionCells = isSlab ? spec.storey.slabCells : spec.storey.wallCells;
+    const occupiedCells = [...new Map(constructionCells.map(({ x, y, z }) =>
+      [`${x}:${y}:${z}`, { x, y, z }] as const)).values()];
     if (occupiedCells.length === 0) {
       throw new Error(isSlab
         ? "Die Geschossdecke enthält keine vollständigen Rasterblöcke."
@@ -6908,9 +7154,10 @@ export function createWorldEditController(
         editable: true,
         breakable: true,
         individuallyEditableBlocks: true,
-        renderProfile: "voxel-only",
-        // The semantic renderer stays disabled, while the Chunk service keeps
-        // real voxel ownership so individual block edits can update this ref.
+        renderProfile: "construction-grid",
+        constructionCells,
+        // Integer routing cells retain chunk ownership; constructionCells
+        // preserve the facade-aligned shapes and exact storey/slab heights.
         voxelOccupancy: "blocks",
         mergeKey: objectInstanceId,
       },
@@ -7034,11 +7281,14 @@ export function createWorldEditController(
     try {
       const storeySpecs = planningStoreyBuildSpecs(draft, anchor.y, request);
       const roofSpecs = await planningRoofBuildSpecs(draft, anchor.y, request);
+      const roofWallCells = roofSpecs.flatMap(spec => spec.wallCells ?? []);
+      reserveLineBrushBuildingCellBudget(storeySpecs.reduce((count, spec) => count + spec.storey.occupiedCells.length, 0), roofWallCells.length);
+      const completeStoreys = attachLineBrushRoofWallCells(coalesceLineBrushStoreys(storeySpecs), roofWallCells, blockTypeId);
       const placements: PlanningGeneratedObjectPlacement[] = [];
       // Build the complete generation locally first. The Chunk service receives
       // all child objects and the parent in one ObjectBatch transaction, so
       // overlapping replacement cells are rolled back together on any error.
-      for (const spec of storeySpecs) {
+      for (const spec of completeStoreys) {
         placements.push(planningStoreyObjectPlacement(
           areaId,
           generationId,
@@ -7068,6 +7318,7 @@ export function createWorldEditController(
       const placedObjects = placements.map((placement) => placement.ref);
       const metadata: Record<string, unknown> = {
         ...editingPlanningBuildAreaMetadata,
+        wallBlockTypeId: blockTypeId,
         schemaVersion: "vectoplan-planning-build-area.v1",
         source: "vectoplan-editor.world-edit.planning-line-brush",
         semanticRole: "planning_build_area",
@@ -7164,9 +7415,11 @@ export function createWorldEditController(
           });
         }
       }
+      let sceneRefreshPending = false;
       try {
         await options.sceneRuntime.reloadDirtyChunks("world-edit-planning-build-area");
       } catch (reloadError) {
+        sceneRefreshPending = true;
         options.logger?.warn?.("Planning building was saved, but the local scene reload must be retried.", {
           error: normalizeUnknownError(reloadError),
         });
@@ -7174,6 +7427,15 @@ export function createWorldEditController(
       editingPlanningBuildAreaInstanceId = areaId;
       editingPlanningBuildAreaAnchor = { ...anchor };
       editingPlanningBuildAreaMetadata = metadata;
+      planningBuildingDraftDirty = false;
+      planningBuildingSceneExpectedObjects = planningBuildingExpectedObjectChunks(placements);
+      // reloadDirtyChunks resolves after registry updates even for a degraded
+      // request, and mesh building runs later. Only installed meshes can retire
+      // the fallback; a fulfilled network promise is not a scene-ready signal.
+      planningBuildingSceneRefreshPending = generationId;
+      sceneRefreshPending = !planningBuildingSceneGenerationReady(generationId);
+      if (!sceneRefreshPending) planningBuildingSceneRefreshPending = null;
+      else { schedulePlanningBuildingSceneRefresh(); startPlanningBuildingSceneMonitor(); }
       planningBuildingGenerationRequest = request ?? planningBuildingGenerationRequest;
       if (selectedStoreyBuildArea || activeTool === "storey") {
         selectedStoreyBuildArea = {
@@ -7186,10 +7448,12 @@ export function createWorldEditController(
       rebuildPolygonAreaScene("room");
       const cleanupPending = failedRetirements.length > 0 || !cleanupMetadataPersisted;
       setStatus(
-        cleanupPending
+        sceneRefreshPending
+          ? "Baukörper gespeichert. Die Vorschau bleibt sichtbar, bis die Szene erfolgreich nachgeladen wurde."
+          : cleanupPending
           ? `Baukörper sicher gespeichert; ${failedRetirements.length} ältere Objekt-Refs werden beim nächsten Speichern erneut bereinigt.`
           : `Baukörper gespeichert: ${planningBuildingStoreyProfile.baseCount} Grundgeschosse, ${placedObjects.filter((ref) => ref.role === "storey").length} Außenwandkörper, ${placedObjects.filter((ref) => ref.role === "slab").length} Stahlbetondecken und ${placedObjects.filter((ref) => ref.role === "roof").length} WorldEdit-Dachzonen.`,
-        cleanupPending ? "warning" : "ready",
+        cleanupPending || sceneRefreshPending ? "warning" : "ready",
       );
       return true;
     } catch (error) {
@@ -7205,6 +7469,115 @@ export function createWorldEditController(
     }
   }
 
+  function planningBuildingExpectedObjectChunks(placements: readonly PlanningGeneratedObjectPlacement[]): Map<string, Set<string>> {
+    const chunks = new Map<string, Set<string>>();
+    for (const placement of placements) {
+      // Construction cells render in their owning chunk. Semantic roofs are
+      // complete meshes rendered only in the primary/anchor chunk.
+      const cells = asRecord(placement.payload.metadata).renderProfile === "construction-grid"
+        ? placement.payload.occupiedCells ?? [] : [placement.ref.anchor];
+      for (const cell of cells) {
+        const key = `${Math.floor(cell.x / 16)}:${Math.floor(cell.y / 16)}:${Math.floor(cell.z / 16)}`;
+        let ids = chunks.get(key);
+        if (!ids) { ids = new Set(); chunks.set(key, ids); }
+        ids.add(placement.ref.objectInstanceId);
+      }
+    }
+    return chunks;
+  }
+
+  function planningBuildingSceneGenerationReady(generationId: string): boolean {
+    const scene = options.sceneRuntime.getScene();
+    if (!scene || !editingPlanningBuildAreaInstanceId) return false;
+    const rendered = new Map<string, Set<string>>();
+    const unpartitioned = new Set<string>();
+    const visibleChunkKeys = new Set<string>();
+    let parentGenerationPresent = false;
+    scene.traverse((object) => {
+      // Selected source meshes are intentionally hidden below their chunk
+      // group. Test loaded chunk visibility, not those temporary editing flags.
+      let chunkKey: string | null = null;
+      let branchVisible = true;
+      let ref = asRecord(object.userData.semanticObjectRef);
+      for (let ancestor: THREE.Object3D | null = object; ancestor; ancestor = ancestor.parent) {
+        const key = ancestor.userData.chunkKey;
+        if (typeof key === "string") chunkKey = key;
+        if (ref.objectInstanceId === undefined) ref = asRecord(ancestor.userData.semanticObjectRef);
+        if (!ancestor.visible && !hiddenPlanningBuildingObjects.has(ancestor)) branchVisible = false;
+      }
+      if (!branchVisible) return;
+      if (chunkKey) visibleChunkKeys.add(chunkKey);
+      if (ref.objectInstanceId === editingPlanningBuildAreaInstanceId
+        && asRecord(ref.metadata).generationId === generationId) parentGenerationPresent = true;
+      if (!(object instanceof THREE.Mesh || object instanceof THREE.Line)) return;
+      const id = safeString(ref.objectInstanceId, "");
+      if (!id) return;
+      if (!chunkKey) { unpartitioned.add(id); return; }
+      let ids = rendered.get(chunkKey);
+      if (!ids) { ids = new Set(); rendered.set(chunkKey, ids); }
+      ids.add(id);
+    });
+    const registry = options.worldRuntime.getRegistry();
+    // The visibility contract includes requested chunks whose replacement
+    // meshes are still queued. It deliberately excludes unloaded remote parts.
+    for (const key of registry.getVisibleChunkKeys?.() ?? []) visibleChunkKeys.add(key);
+    const anchor = editingPlanningBuildAreaAnchor;
+    const parentKey = anchor ? `${Math.floor(anchor.x / 16)}:${Math.floor(anchor.y / 16)}:${Math.floor(anchor.z / 16)}` : null;
+    if ((!visibleChunkKeys.size || (parentKey && visibleChunkKeys.has(parentKey))) && !parentGenerationPresent) return false;
+    let checked = 0;
+    if (visibleChunkKeys.size > 0) {
+      for (const [key, expected] of planningBuildingSceneExpectedObjects) {
+        if (!visibleChunkKeys.has(key)) continue;
+        for (const id of expected) {
+          if (!rendered.get(key)?.has(id)) return false;
+          checked += 1;
+        }
+      }
+    } else {
+      // Unpartitioned scene adapters expose the same semantic IDs on complete
+      // meshes rather than one mesh per chunk.
+      for (const expected of planningBuildingSceneExpectedObjects.values()) {
+        for (const id of expected) {
+          if (!unpartitioned.has(id)) return false;
+          checked += 1;
+        }
+      }
+    }
+    // No currently visible portion means there is no drawn fallback to replace;
+    // normal streaming owns the building when the user returns to that area.
+    return checked > 0 || visibleChunkKeys.size > 0;
+  }
+
+  function completePlanningBuildingSceneRefreshIfReady(): boolean {
+    const generationId = planningBuildingSceneRefreshPending;
+    if (!generationId) return true;
+    if (!planningBuildingSceneGenerationReady(generationId)) return false;
+    planningBuildingSceneRefreshPending = null;
+    if (planningBuildingSceneRefreshTimer) window.clearTimeout(planningBuildingSceneRefreshTimer);
+    planningBuildingSceneRefreshTimer = 0;
+    rebuildPolygonAreaScene("room");
+    setStatus("Baukörper gespeichert und Szene nachgeladen.", "ready");
+    return true;
+  }
+
+  function schedulePlanningBuildingSceneRefresh(delay = 1000): void {
+    if (destroyed || !planningBuildingSceneRefreshPending) return;
+    if (planningBuildingSceneRefreshTimer) window.clearTimeout(planningBuildingSceneRefreshTimer);
+    const generationId = planningBuildingSceneRefreshPending;
+    planningBuildingSceneRefreshTimer = window.setTimeout(async () => {
+      planningBuildingSceneRefreshTimer = 0;
+      if (destroyed || planningBuildingSceneRefreshPending !== generationId) return;
+      if (busy) { schedulePlanningBuildingSceneRefresh(delay); return; }
+      if (completePlanningBuildingSceneRefreshIfReady()) return;
+      try {
+        await options.sceneRuntime.reloadDirtyChunks("world-edit-planning-build-area-retry");
+        if (destroyed || planningBuildingSceneRefreshPending !== generationId) return;
+        if (completePlanningBuildingSceneRefreshIfReady()) return;
+      } catch { /* Keep the normal-material fallback and retry independently of editing. */ }
+      if (planningBuildingSceneRefreshPending === generationId) schedulePlanningBuildingSceneRefresh(Math.min(30_000, delay * 2));
+    }, delay);
+  }
+
   async function adjustPlanningBuildingStoreys(
     delta: number,
     scope: StoreyTargetScope,
@@ -7212,7 +7585,8 @@ export function createWorldEditController(
   ): Promise<void> {
     if (busy) return;
     const draft = currentPlanningBuildAreaDraft();
-    const editingDraft = behavior.allowDraft === true && activeTool === "room" && isPlanningWorkspace();
+    const editingDraft = isBuildingLineBrush()
+      && (activeTool === "storey" || (behavior.allowDraft === true && activeTool === "room"));
     if ((!selectedStoreyBuildArea || !editingPlanningBuildAreaInstanceId) && !editingDraft) {
       setStatus("Bitte zuerst einen Linien-Brush-Baukörper auswählen.", "warning");
       return;
@@ -7223,6 +7597,7 @@ export function createWorldEditController(
     }
     const direction = delta < 0 ? -1 : 1;
     const previous = planningBuildingStoreyProfile;
+    const previousDirty = planningBuildingDraftDirty;
     if (scope === "all") {
       const nextCount = Math.max(1, Math.min(80, previous.baseCount + direction));
       if (nextCount === previous.baseCount) {
@@ -7259,10 +7634,11 @@ export function createWorldEditController(
         segmentAdjustments,
       };
     }
+    planningBuildingDraftDirty = true;
     selectedStoreyScope = scope;
     syncLineBrushStoreyEditing();
     syncStoreyQuickSettings();
-    if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
+    if (activeTool === "room" && isBuildingLineBrush()) rebuildPolygonAreaScene("room");
     if (!editingPlanningBuildAreaInstanceId) {
       setStatus(
         scope === "all"
@@ -7275,10 +7651,11 @@ export function createWorldEditController(
     const saved = await executePlanningBuildArea(planningBuildingGenerationRequest ?? undefined);
     if (!saved) {
       planningBuildingStoreyProfile = previous;
+      planningBuildingDraftDirty = previousDirty;
       lineBrushQuickSettings?.sync({ storeyCount: previous.baseCount });
       syncLineBrushStoreyEditing();
       syncStoreyQuickSettings();
-      if (activeTool === "room" && isPlanningWorkspace()) rebuildPolygonAreaScene("room");
+      if (activeTool === "room" && isBuildingLineBrush()) rebuildPolygonAreaScene("room");
       return;
     }
     syncLineBrushStoreyEditing();
@@ -7607,6 +7984,7 @@ export function createWorldEditController(
   }
 
   async function handleWorldEditIntent(intent: EditorInputWorldEditIntent): Promise<boolean> {
+    if (busy && intent.action !== "primary-release" && intent.action !== "secondary-release") return true;
     return activeSystem()?.handleIntent(intent) ?? false;
   }
 
@@ -7650,7 +8028,7 @@ export function createWorldEditController(
       return;
     }
     if (options.root.dataset.creativeInventoryOpen === "true") return;
-    if (activeTool === "tentacle" && isPlanningWorkspace() && (event.key.toLowerCase() === "a" || event.key.toLowerCase() === "b")) {
+    if (activeTool === "tentacle" && (event.key.toLowerCase() === "a" || event.key.toLowerCase() === "b")) {
       event.preventDefault();
       event.stopPropagation();
       planningRoadConflictChoice = event.key.toLowerCase() === "b" ? "bridge" : "fill";
@@ -7668,10 +8046,23 @@ export function createWorldEditController(
     refreshHud();
   }
 
+  function retainPlanningBuildingOnToolExit(): void {
+    const runtime = polygonAreaRuntime("room");
+    if (!isBuildingLineBrush() || !currentPlanningBuildAreaDraft()) return;
+    // Closing the tool finishes the current building. On failure its draft
+    // remains in the scene, so switching tools never discards the user's work.
+    runtime.closed = true;
+    if (!busy && (!editingPlanningBuildAreaInstanceId || planningBuildingDraftDirty)) {
+      void executePlanningBuildArea(planningBuildingGenerationRequest ?? undefined);
+    }
+  }
+
   function activate(tool: WorldEditTool, nextOperation: WorldEditOperation = "set"): void {
     if (destroyed) return;
     const previousTool = activeTool;
     const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
+    storeyDragHandle?.setEnabled(false);
+    if (previousTool === "room" && tool !== "room") retainPlanningBuildingOnToolExit();
     stopSelectionDrag();
     stopParcelGridDrag(false);
     stopClipboardMove();
@@ -7686,6 +8077,7 @@ export function createWorldEditController(
     solarPanel?.close(false);
     restoreWorkspaceInput("world-edit-activate");
     activeTool = tool;
+    refreshPlanningBuildingEditVisuals();
     const system = systemRegistry?.get(tool);
     if (!system) throw new Error(`WorldEdit-System nicht initialisiert: ${tool}`);
     if (previousTool !== tool) previousSystem?.onDeactivate?.(tool);
@@ -7694,7 +8086,7 @@ export function createWorldEditController(
         resetPolygonArea("roof");
         disposeRoofZoneGroup();
         roofZoneSignature = "";
-      } else disposePolygonAreaGroup(previousTool);
+      } else if (previousTool !== "room") disposePolygonAreaGroup(previousTool);
     }
     operation = nextOperation;
     configureOperationSelect(tool);
@@ -7703,7 +8095,9 @@ export function createWorldEditController(
     options.root.dataset.worldEditTool = tool;
     options.sceneRuntime.setWorldEditIntentHandler(handleWorldEditIntent, { maxDistance: system.ui.maxDistance });
     system.onActivate?.(previousTool);
-    if (tool === "room" && isPlanningWorkspace()) {
+    if (tool === "storey" || previousTool === "room" || previousTool === "storey") rebuildPolygonAreaScene("room");
+    storeyDragHandle?.setEnabled(tool === "storey");
+    if (tool === "room" && isBuildingLineBrush()) {
       lineBrushQuickSettings?.open({
         storeyCount: planningBuildingStoreyProfile.baseCount,
       });
@@ -7711,13 +8105,13 @@ export function createWorldEditController(
     }
     syncParcelGuideVisibility(`world-edit.parcel-guides-tool:${tool}`);
     rebuildSelectionScene();
-    setStatus(isPlanningWorkspace() && tool === "room"
+    setStatus(isBuildingLineBrush() && tool === "room"
       ? "Gebäude-Linien-Brush: Gerade Segmente setzen; ESC/Enter erzeugt die editierbare Baufläche."
       : isPlanningWorkspace() && tool === "tentacle"
         ? "Tentacle-Straßenwerkzeug: Pfad zeichnen; Höhenkonflikte werden als Auffüllung/Brücke oder automatisch als Tunnel markiert."
         : system.ui.activationMessage, "ready");
     refreshHud();
-    if (options.sceneRuntime.getWorkspaceMode() === "first-person") {
+    if (options.sceneRuntime.getWorkspaceMode() === "first-person" && !storeyQuickSettings?.isOpen()) {
       try { void options.sceneRuntime.getInputController()?.requestPointerLock("world-edit-activate"); } catch { /* best effort */ }
     }
   }
@@ -7726,7 +8120,10 @@ export function createWorldEditController(
     if (destroyed) return;
     const previousTool = activeTool;
     const previousSystem = previousTool ? systemRegistry?.get(previousTool) : null;
+    storeyDragHandle?.setEnabled(false);
+    if (previousTool === "room" && reason !== "destroy") retainPlanningBuildingOnToolExit();
     activeTool = null;
+    refreshPlanningBuildingEditVisuals();
     stopSelectionDrag();
     stopParcelGridDrag(false);
     stopClipboardMove();
@@ -7745,7 +8142,6 @@ export function createWorldEditController(
     editingRoomInstanceId = null;
     editingRoomAnchor = null;
     selectedStoreyBuildArea = null;
-    editingPlanningBuildAreaMetadata = {};
     restoreEditingRoofObjects();
     editingRoofInstanceId = null;
     editingRoofAnchor = null;
@@ -7754,7 +8150,8 @@ export function createWorldEditController(
     brushTarget = null;
     disposeSelectionGroup();
     disposeTentacleGroup();
-    disposePolygonAreaGroup("room");
+    if (reason === "destroy") disposePolygonAreaGroup("room");
+    else rebuildPolygonAreaScene("room");
     disposePolygonAreaGroup("stair");
     disposePolygonAreaGroup("roof");
     disposeRoofZoneGroup();
@@ -7860,6 +8257,10 @@ export function createWorldEditController(
       pitchDeg: roofNumber(source, ["pitchDeg", "pitch_deg", "roofPitchDeg"], fallback.pitchDeg, 0, 80, true),
       eavesHeightMm: roofNumber(source, ["eavesHeightMm", "eaves_height_mm"], fallback.eavesHeightMm, -100_000, 100_000),
       ridgeDirection,
+      continuationEdgesMm: normalizeRoofContinuationEdges(source.continuationEdgesMm ?? source.continuation_edges_mm ?? fallback.continuationEdgesMm),
+      continuationEdgeIndices: Array.isArray(source.continuationEdgeIndices)
+        ? source.continuationEdgeIndices.map(Number).filter(index => Number.isInteger(index) && index >= 0)
+        : fallback.continuationEdgeIndices,
       overhangMm: roofNumber({ ...source, ...overhang }, ["overhangMm", "default_mm"], fallback.overhangMm, 0, 5000),
       overhangNorthMm: roofNumber({ ...source, ...overhang }, ["overhangNorthMm", "north_mm"], fallback.overhangNorthMm, 0, 5000),
       overhangEastMm: roofNumber({ ...source, ...overhang }, ["overhangEastMm", "east_mm"], fallback.overhangEastMm, 0, 5000),
@@ -7914,10 +8315,10 @@ export function createWorldEditController(
     ).toLowerCase();
     if (requestedConflictChoice === "fill" || requestedConflictChoice === "bridge") {
       planningRoadConflictChoice = requestedConflictChoice;
-      if (activeTool === "tentacle" && isPlanningWorkspace()) rebuildTentacleScene();
+      if (activeTool === "tentacle") rebuildTentacleScene();
     }
     const requestedPlanningWidth = Number(detail.planningWidth ?? detail.planningBuildAreaWidth);
-    if (Number.isFinite(requestedPlanningWidth) && activeTool === "room" && isPlanningWorkspace()) {
+    if (Number.isFinite(requestedPlanningWidth) && activeTool === "room" && isBuildingLineBrush()) {
       planningBuildAreaWidth = Math.max(1, Math.min(100, requestedPlanningWidth));
       rebuildPolygonAreaScene("room");
       if (editingPlanningBuildAreaInstanceId && polygonAreaRuntime("room").closed) void executePlanningBuildArea();
@@ -8075,6 +8476,7 @@ export function createWorldEditController(
   }
 
   function resetActiveTool(): void {
+    if (busy) return;
     const system = activeSystem();
     system?.reset();
     setStatus(system?.ui.resetMessage ?? "WorldEdit zurückgesetzt.", "info");
@@ -8138,16 +8540,22 @@ export function createWorldEditController(
       },
       stopHover: () => stopPolygonAreaHover("room"),
       removePointUnderCrosshair: () => removePolygonAreaPointUnderCrosshair("room"),
+      pointDeletionOnly: isBuildingLineBrush,
+      openSettingsUnderCrosshair: openPlanningBuildingSettingsUnderCrosshair,
+      shouldSelectExisting: (room) => {
+        const ref = room as ExistingRoomRef;
+        if (asRecord(ref.metadata.pathBrush).kind !== "building") return !polygonAreaRuntime("room").closed;
+        return ref.objectInstanceId !== editingPlanningBuildAreaInstanceId
+          && polygonAreaPointUnderCrosshair("room") === null && !planningBuildAreaMoveHandleUnderCrosshair();
+      },
       resolveTarget: (intent) => resolvePolygonAreaTarget("room", intent),
-      existingRoomAt: (target) => isPlanningWorkspace()
-        ? existingPlanningBuildAreaAt(target)
-        : existingRoomAt(target),
+      existingRoomAt: (target) => existingPlanningBuildAreaAt(target) ?? existingRoomAt(target),
       removeExistingRoom: (room) => {
-        if (isPlanningWorkspace()) void removeExistingPlanningBuildArea(room as ExistingRoomRef);
+        if (asRecord((room as ExistingRoomRef).metadata.pathBrush).kind === "building") void removeExistingPlanningBuildArea(room as ExistingRoomRef);
         else void removeExistingRoom(room as ExistingRoomRef);
       },
       selectExistingRoom: (room) => {
-        if (isPlanningWorkspace()) selectExistingPlanningBuildArea(room as ExistingRoomRef);
+        if (asRecord((room as ExistingRoomRef).metadata.pathBrush).kind === "building") void selectPlanningBuildingPreservingDraft(room as ExistingRoomRef);
         else selectExistingRoom(room as ExistingRoomRef);
       },
       beginPointInteraction: (target) => {
@@ -8165,12 +8573,11 @@ export function createWorldEditController(
         resetPolygonArea("room");
       },
       hasCompleteSelection: () => polygonAreaRuntime("room").closed
-        && roomAreaWorkspaceProfile === (isPlanningWorkspace() ? "planning" : "first-person")
-        && (isPlanningWorkspace()
+        && (isBuildingLineBrush()
           ? Boolean(currentPlanningBuildAreaDraft())
           : validPolygonArea(polygonAreaRuntime("room").points)),
       executeRoom: async () => {
-        if (isPlanningWorkspace()) await executePlanningBuildArea();
+        if (isBuildingLineBrush()) await executePlanningBuildArea();
         else await executeRoom();
       },
       rebuild: () => rebuildPolygonAreaScene("room"),
@@ -8181,16 +8588,17 @@ export function createWorldEditController(
       resolveTarget: (intent) => resolvePolygonAreaTarget("room", intent),
       selectBuildingAt: (target) => {
         const area = existingPlanningBuildAreaAt(target);
-        if (!area) return false;
+        if (!area) return Boolean(isBuildingLineBrush() && currentPlanningBuildAreaDraft());
         selectPlanningBuildingForStoreys(area);
         return true;
       },
-      hasSelection: () => Boolean(selectedStoreyBuildArea && editingPlanningBuildAreaInstanceId),
+      hasSelection: () => Boolean(isBuildingLineBrush() && currentPlanningBuildAreaDraft()),
       openSettings: () => syncStoreyQuickSettings(true),
       closeSettings: () => storeyQuickSettings?.close(false),
       addStorey: () => adjustPlanningBuildingStoreys(1, selectedStoreyScope),
       removeStorey: () => adjustPlanningBuildingStoreys(-1, selectedStoreyScope),
       reset: () => {
+        storeyDragHandle?.setEnabled(false);
         selectedStoreyBuildArea = null;
         selectedStoreyScope = "all";
         storeyQuickSettings?.close(false);
@@ -8375,7 +8783,7 @@ export function createWorldEditController(
           y: Math.floor(intent.targetPoint.y),
           z: Math.floor(intent.targetPoint.z),
         } : intent.position ?? currentTentacleTarget();
-        if (!resolved || !isPlanningWorkspace() || tentaclePoints.length === 0) return resolved;
+        if (!resolved || tentaclePoints.length === 0) return resolved;
         return { ...resolved, y: Math.floor(tentaclePoints[0]!.y) };
       },
       startDrawing: startTentacleDrawing,
@@ -8412,6 +8820,7 @@ export function createWorldEditController(
           editingRoofAnchor = null;
           editingRoofMetadata = {};
           editingRoofHoleRings = [];
+          roofParameters = { ...roofParameters, continuationEdgesMm: [], continuationEdgeIndices: undefined };
         }
         beginPolygonAreaInteraction("roof", target);
       },
@@ -8439,7 +8848,7 @@ export function createWorldEditController(
     refreshHud();
   });
   [brushRadius, brushDensity, brushWall].forEach((input) => input?.addEventListener("input", () => {
-    if (activeTool === "tentacle" && isPlanningWorkspace()) rebuildTentacleScene();
+    if (activeTool === "tentacle") rebuildTentacleScene();
     refreshHud();
   }));
   window.addEventListener(ACTIVATE_EVENT, handleActivateEvent);
@@ -8474,6 +8883,8 @@ export function createWorldEditController(
       if (destroyed) return;
       deactivate("destroy");
       destroyed = true;
+      if (planningBuildingSceneRefreshTimer) window.clearTimeout(planningBuildingSceneRefreshTimer);
+      if (planningBuildingSceneMonitorFrame) cancelAnimationFrame(planningBuildingSceneMonitorFrame);
       window.removeEventListener(ACTIVATE_EVENT, handleActivateEvent);
       window.removeEventListener(SETTINGS_EVENT, handleSettingsEvent);
       window.removeEventListener(INVENTORY_ACTION_EVENT, handleInventoryAction);
@@ -8492,9 +8903,12 @@ export function createWorldEditController(
       if (planningBuildingRoofPreviewTimer) window.clearTimeout(planningBuildingRoofPreviewTimer);
       planningBuildingRoofPreviewTimer = 0;
       lineBrushQuickSettings?.destroy();
+      planningBuildingEditVisuals.dispose();
       lineBrushQuickSettings = null;
       storeyQuickSettings?.destroy();
       storeyQuickSettings = null;
+      storeyDragHandle?.destroy();
+      storeyDragHandle = null;
       roofQuickSettings?.destroy();
       roofQuickSettings = null;
       solarPanel?.destroy();

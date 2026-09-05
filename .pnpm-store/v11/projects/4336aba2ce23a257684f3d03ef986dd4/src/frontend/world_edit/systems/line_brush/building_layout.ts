@@ -158,6 +158,40 @@ function segmentModules(
   return result;
 }
 
+/** Both adjacent wings use the same angle-bisector joint. Rectangles overlap
+ * on the inside and omit the outside miter, which used to corrupt stepped
+ * storeys and roofs as soon as one segment acquired a different height. */
+export function continuousLineBrushWingRing(draft: PathBrushDraft, segmentIndex: number): Ring {
+  const index = draft.segments.findIndex((segment) => segment.index === segmentIndex);
+  const segment = draft.segments[index]!;
+  const direction = (value: PathBrushSegment): readonly [number, number] => {
+    const length = segmentPlanLength(value);
+    return [(value.end.x - value.start.x) / length, (value.end.z - value.start.z) / length];
+  };
+  const tangent = direction(segment);
+  const normal: readonly [number, number] = [-tangent[1], tangent[0]];
+  const first = draft.segments[0]!, last = draft.segments.at(-1)!;
+  const closed = draft.segments.length > 2 && Math.hypot(first.start.x - last.end.x, first.start.z - last.end.z) < 1e-8;
+  const joint = (atStart: boolean, side: number): readonly [number, number] => {
+    const point = atStart ? segment.start : segment.end;
+    const adjacentIndex = index + (atStart ? -1 : 1);
+    const adjacent = draft.segments[closed
+      ? (adjacentIndex + draft.segments.length) % draft.segments.length
+      : adjacentIndex];
+    let nx = normal[0], nz = normal[1];
+    if (adjacent) {
+      const other = direction(adjacent);
+      const denominator = 1 + tangent[0] * other[0] + tangent[1] * other[1];
+      if (denominator > 0.125) {
+        nx = (normal[0] - other[1]) / denominator;
+        nz = (normal[1] + other[0]) / denominator;
+      }
+    }
+    return [point.x + nx * draft.width * 0.5 * side, point.z + nz * draft.width * 0.5 * side];
+  };
+  return [joint(true, -1), joint(false, -1), joint(false, 1), joint(true, 1)];
+}
+
 export function buildLineBrushBuildingLayout(
   draft: PathBrushDraft,
   preset: LineBrushBuildingPreset,
@@ -174,7 +208,9 @@ export function buildLineBrushBuildingLayout(
       )
     : Object.fromEntries(draft.segments.map((segment) => [String(segment.index), { start: 0, end: 0 }]));
   for (const segment of draft.segments) {
-    const modules = segmentModules(
+    const modules = preset.arrangement.kind === "continuous"
+      ? [[continuousLineBrushWingRing(draft, segment.index)]]
+      : segmentModules(
       segment,
       draft.width,
       preset,

@@ -45,7 +45,7 @@
 
 {% set chunks_enabled_value = chunks_value.enabled|default(chunks_enabled|default(true, true), true) %}
 {% set chunks_chunk_size_value = chunks_value.chunkSize|default(chunks_chunk_size|default(16, true), true) %}
-{% set chunks_view_distance_value = chunks_value.viewDistance|default(chunks_view_distance|default(7, true), true) %}
+{% set chunks_view_distance_value = chunks_value.viewDistance|default(chunks_view_distance|default(14, true), true) %}
 {% set chunks_debug_draw_chunk_bounds_value = chunks_value.debugDrawChunkBounds|default(chunks_debug_draw_chunk_bounds|default(false, true), true) %}
 
 {% set feature_pointer_lock_value = feature_flags_value.pointerLockEnabled|default(true, true) %}

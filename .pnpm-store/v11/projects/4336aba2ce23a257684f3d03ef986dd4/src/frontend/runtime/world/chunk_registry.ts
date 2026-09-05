@@ -1,4 +1,5 @@
 // src/frontend/runtime/world/chunk_registry.ts
+import { terrainBlockingBounds } from './terrain_surface';
 import type { ChunkApiRuntimeChunkContent } from "@api/chunk_api_models";
 import { CHUNK_API_AIR_CELL_VALUE } from "@api/chunk_api_models";
 import type { EditorLogger } from "@utils/logger";
@@ -1128,6 +1129,11 @@ export function createChunkRegistry(options?: CreateChunkRegistryOptions): Chunk
 
       return {
         sourceName: normalizedSourceName,
+        getBlockingBounds: (cell, query) => {
+          const sample = registry.sampleCellByWorldPosition(cell);
+          if (sample.terrainShape) return terrainBlockingBounds(sample.terrainShape, query);
+          return { min: {x:cell.x,y:cell.y,z:cell.z}, max: {x:cell.x+1,y:cell.y+1,z:cell.z+1} };
+        },
         isCellLoaded: (cell) => {
           try {
             return registry.isCellLoaded(cell);

@@ -1,5 +1,6 @@
 // services/vectoplan-editor/src/frontend/targeting/raycast.ts
 import type { RuntimeCellSample } from "@runtime/world/chunk_content";
+import { intersectTerrainCell } from '@runtime/world/terrain_surface';
 import {
   createChunkCellAddress,
   type ChunkCellAddress,
@@ -513,7 +514,9 @@ export function debugRaycastVoxels(input: VoxelRaycastInput): DebugVoxelRaycastR
         chunkSize,
       );
       const sample = sampleSafely(input.sampler, address);
-      const hit = shouldHitSample(sample, includeAir);
+      const cutHit = sample?.terrainShape ? intersectTerrainCell(sample.terrainShape, ray.origin, direction,
+        state.distance, Math.min(tMaxX,tMaxY,tMaxZ,maxDistance)) : null;
+      const hit = shouldHitSample(sample, includeAir) && (!sample?.terrainShape || cutHit !== null);
 
       if (!sample || sample.exists !== true || (sample as RaycastSamplerResult).chunkLoaded === false) {
         sawMissingChunk = true;
@@ -531,15 +534,17 @@ export function debugRaycastVoxels(input: VoxelRaycastInput): DebugVoxelRaycastR
       );
 
       if (hit && sample) {
-        const hitPosition = pointAtDistance(ray, state.distance);
-        const face = state.face === "unknown" ? normalToTargetFace(state.normal) : state.face;
+        const distance = cutHit?.distance ?? state.distance;
+        const normal = cutHit?.normal ?? state.normal;
+        const hitPosition = pointAtDistance(ray, distance);
+        const face = cutHit ? normalToTargetFace(normal) : state.face === "unknown" ? normalToTargetFace(normal) : state.face;
 
         return {
           hit: createRaycastHit({
             hit: true,
-            distance: state.distance,
+            distance,
             position: hitPosition,
-            normal: state.normal,
+            normal,
             face,
             sourceCell: address,
             previousCell,

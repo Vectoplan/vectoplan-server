@@ -167,3 +167,5 @@ docker-compose.override.yml
 *.swp
 *.swo
 *~
+.tmp-tests/
+static/qa/

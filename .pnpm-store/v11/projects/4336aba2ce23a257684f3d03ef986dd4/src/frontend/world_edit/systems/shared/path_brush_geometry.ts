@@ -557,6 +557,10 @@ export function createPathBrushDraft(
       const joint = miterJoint(points[index - 1]!, points[index]!, points[index + 1]!, width);
       if (joint) primitivePolygons.push(joint);
     }
+    if (points.length > 3 && Math.hypot(points[0]!.x - points.at(-1)!.x, points[0]!.z - points.at(-1)!.z) <= EPSILON) {
+      const joint = miterJoint(points.at(-2)!, points[0]!, points[1]!, width);
+      if (joint) primitivePolygons.push(joint);
+    }
   }
   const polygons: PathBrushPolygon[] = options.kind === "building"
     ? groupUnionOutlines(unionPolygonOutlines(primitivePolygons, width)).map(({ outer, holes }) => ({

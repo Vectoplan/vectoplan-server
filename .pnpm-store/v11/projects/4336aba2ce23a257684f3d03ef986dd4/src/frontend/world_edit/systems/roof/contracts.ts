@@ -29,6 +29,10 @@ export interface RoofToolParameters {
   pitchDeg: number;
   eavesHeightMm: number;
   ridgeDirection: "auto" | "x" | "y" | number;
+  /** Shared wing edges clip the roof, but must not become hip/eaves planes. */
+  continuationEdgesMm?: readonly (readonly [readonly [number, number], readonly [number, number]])[];
+  /** Preserve edge identity when an existing roof's control points move. */
+  continuationEdgeIndices?: readonly number[];
   overhangMm: number;
   overhangNorthMm: number;
   overhangEastMm: number;
@@ -138,11 +142,24 @@ export function roofCalculationRequestKey(value: unknown): string {
   return JSON.stringify(canonicalRoofRequestValue(value));
 }
 
+export function normalizeRoofContinuationEdges(value: unknown): NonNullable<RoofToolParameters["continuationEdgesMm"]> {
+  if (!Array.isArray(value)) return [];
+  return value.filter((edge): edge is readonly [readonly [number, number], readonly [number, number]] =>
+    Array.isArray(edge) && edge.length === 2 && edge.every(point => Array.isArray(point)
+      && point.length === 2 && point.every(Number.isFinite))
+    && Math.hypot(edge[0][0] - edge[1][0], edge[0][1] - edge[1][1]) > 1e-6);
+}
+
 export function buildRoofCalculationRequest(
   points: readonly PolygonAreaPoint[],
   parameters: RoofToolParameters,
 ): RoofCalculationRequest {
   const ring = normalizePolygonAreaPoints(points);
+  const continuations = parameters.continuationEdgeIndices
+    ? parameters.continuationEdgeIndices.filter(index => Number.isInteger(index) && index >= 0 && index < ring.length)
+      .map(index => { const a = ring[index]!, b = ring[(index + 1) % ring.length]!;
+        return [[a.x * 1000, a.z * 1000], [b.x * 1000, b.z * 1000]] as const; })
+    : normalizeRoofContinuationEdges(parameters.continuationEdgesMm);
   return {
     contract_version: ROOF_REQUEST_CONTRACT,
     roof_type: parameters.roofType,
@@ -154,6 +171,9 @@ export function buildRoofCalculationRequest(
       pitch_deg: Math.round(Math.max(0, Math.min(80, parameters.pitchDeg))),
       eaves_height_mm: parameters.eavesHeightMm,
       ridge_direction: parameters.ridgeDirection,
+      ...(continuations.length ? {
+        continuation_edges_mm: continuations,
+      } : {}),
       overhang_mm: {
         default_mm: parameters.overhangMm,
         north_mm: parameters.overhangNorthMm,

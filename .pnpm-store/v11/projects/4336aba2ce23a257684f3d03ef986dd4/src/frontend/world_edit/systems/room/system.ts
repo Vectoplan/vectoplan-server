@@ -10,6 +10,9 @@ export interface RoomSystemHooks {
   readonly startHover: () => void;
   readonly stopHover: () => void;
   readonly removePointUnderCrosshair: () => boolean;
+  readonly pointDeletionOnly?: () => boolean;
+  readonly openSettingsUnderCrosshair?: () => boolean;
+  readonly shouldSelectExisting?: (room: unknown) => boolean;
   readonly resolveTarget: (intent: EditorInputWorldEditIntent) => WorldEditPosition | null;
   readonly existingRoomAt: (target: WorldEditPosition) => unknown | null;
   readonly removeExistingRoom: (room: unknown) => void;
@@ -59,9 +62,14 @@ export function createRoomSystem(hooks: RoomSystemHooks): WorldEditSystem {
         return true;
       }
       if (intent.action === "secondary-release") return true;
+      if (intent.action === "primary" && hooks.openSettingsUnderCrosshair?.()) return true;
       const target = hooks.resolveTarget(intent);
       if (intent.action === "secondary") {
         if (hooks.removePointUnderCrosshair()) return true;
+        if (hooks.pointDeletionOnly?.()) {
+          hooks.setStatus("Zum Löschen einen Linienpunkt anvisieren und rechtsklicken.", "info");
+          return true;
+        }
         const room = target ? hooks.existingRoomAt(target) : null;
         if (room) hooks.removeExistingRoom(room);
         else {
@@ -77,7 +85,7 @@ export function createRoomSystem(hooks: RoomSystemHooks): WorldEditSystem {
         return true;
       }
       const existing = hooks.existingRoomAt(target);
-      if (existing && !hooks.hasCompleteSelection()) hooks.selectExistingRoom(existing);
+      if (existing && (hooks.shouldSelectExisting?.(existing) ?? !hooks.hasCompleteSelection())) hooks.selectExistingRoom(existing);
       else hooks.beginPointInteraction(target);
       return true;
     },

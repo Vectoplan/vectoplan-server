@@ -87,6 +87,19 @@ test("reuses unchanged surface data and recomputes only after a chunk revision c
   scene.dispose("test-complete");
 });
 
+test("road and parcel guides follow fractional terrain, including the empty part of a steep cut cell", () => {
+  const chunk=createChunk('cut-terrain',Array(8).fill(1),0,{terrainSurface:{
+    schemaVersion:'terrain-cut-cells.v1',cornerHeights:[.2,1,1.8,.2,1,1.8,.2,1,1.8],
+  }});
+  const registry={getVisibleChunkKeys:()=>[chunk.chunkKey],getChunk:()=>chunk,hasChunk:()=>true} as unknown as ChunkRegistryHandle;
+  const scene=createGeodataOverlayScene({parent:new THREE.Group()});
+  scene.syncFromRegistry(registry,'cut-terrain');
+  const surface=scene.getGroup().userData.surfaceCellY as ReadonlyMap<string,number>;
+  assert.ok(Math.abs(surface.get('0:0')!-.6)<1e-6);
+  assert.ok(Math.abs(surface.get('1:0')!-1.4)<1e-6);
+  scene.dispose('test-complete');
+});
+
 test("rescans only the visible chunk whose content revision changed", () => {
   function countingCells(values: readonly number[]) {
     let reads = 0;

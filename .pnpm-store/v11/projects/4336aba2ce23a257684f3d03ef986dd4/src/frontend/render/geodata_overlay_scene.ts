@@ -5,6 +5,7 @@ import {
   type RuntimeChunkContent,
 } from "@runtime/world/chunk_content";
 import { cellIndexFromLocalCoordinates } from "@runtime/world/chunk_coordinates";
+import { terrainCellShape, terrainHeightAt } from "@runtime/world/terrain_surface";
 import type { ChunkRegistryHandle } from "@runtime/world/chunk_registry";
 import type { EditorLogger } from "@utils/logger";
 import { normalizeUnknownError, safeNumber, safeString } from "@utils/safe";
@@ -325,7 +326,11 @@ function buildChunkSurfaceCacheEntry(chunk: RuntimeChunkContent): ChunkSurfaceCa
         const cellIndex = cellIndexFromLocalCoordinates({ localX, localY, localZ }, size);
         const cellValue = getChunkCellValue(chunk.cells, cellIndex);
         if (!isSolidCellValue(cellValue, chunk)) continue;
-        const topY = originY + localY + 1;
+        const cut = terrainCellShape(chunk, localX, localY, localZ);
+        const topY = cut
+          ? Math.min(originY + localY + 1, terrainHeightAt(cut, originX + localX + 0.5, originZ + localZ + 0.5))
+          : originY + localY + 1;
+        if (topY <= originY + localY) continue;
         // A column without an explicit terrain cell may contain an LoD wall or
         // another raised object.  Using the highest solid cell makes a road
         // climb onto roofs.  The lowest solid top is the conservative ground

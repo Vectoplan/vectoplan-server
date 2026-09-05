@@ -13,6 +13,10 @@ import {
 import { buildLineBrushBuildingLayout } from "../src/frontend/world_edit/systems/line_brush/building_layout";
 import { lineBrushBuildingPreset } from "../src/frontend/world_edit/systems/line_brush/building_presets";
 import { createLineBrushBuildingStructurePreview } from "../src/frontend/world_edit/systems/line_brush/building_preview";
+import { buildLineBrushRoofZones } from "../src/frontend/world_edit/systems/line_brush/building_roofs";
+import { parcelGridPolygonArea, intersectConvexParcelGridPolygons } from "../src/frontend/world_edit/systems/parcel_grid/geometry";
+import { createConstructionCellMesh, constructionCellForIntersection, survivingConstructionCells } from "../src/frontend/scene/construction_cell_rendering";
+import * as THREE from "three";
 import {
   createPathBrushDraft,
   type PathBrushDraft,
@@ -242,7 +246,8 @@ test("live structure preview deduplicates cells and marks the selected segment s
   assert.equal(selectedWalls?.count, storey.wallCells.length, "duplicate preview inputs produce one wall instance per cell");
   assert.equal(selectedSlabs?.count, storey.slabCells.length, "duplicate preview inputs produce one slab instance per cell");
   assert.equal(ordinaryWalls?.count, storey.wallCells.length);
-  assert.ok((selectedWalls?.material.opacity ?? 0) > (ordinaryWalls?.material.opacity ?? 1));
+  assert.equal(selectedWalls?.material.opacity, 1, "selected walls remain opaque");
+  assert.equal(ordinaryWalls?.material.opacity, 1, "other wings remain opaque too");
 });
 
 test("MultiPolygon parts and courtyard holes are rasterised and deduplicated", () => {
@@ -371,4 +376,85 @@ test("invalid drafts and segment scopes fail visibly", () => {
     (error: unknown) => error instanceof LineBrushBuildingGeometryError
       && error.code === "invalid-draft",
   );
+});
+
+test("rotated construction grid preserves exact straight facades and storey roof contact", () => {
+  const angle = 31 * Math.PI / 180;
+  const point = (u: number, v: number) => ({ x: 17.3 + u * Math.cos(angle) - v * Math.sin(angle),
+    y: 4, z: 8.7 + u * Math.sin(angle) + v * Math.cos(angle) });
+  const draft = buildingDraft([point(0, 0), point(24.6, 0)], 7.4);
+  const geometry = buildLineBrushBuildingGeometry({ draft, baseY: 4, storeyCount: 3, alignToBuildingGrid: true });
+  const area = geometry.footprintCells.reduce((sum, cell) => sum
+    + (cell.footprintPolygons ?? []).reduce((total, polygon) => total + parcelGridPolygonArea(polygon), 0), 0);
+  assert.ok(Math.abs(area - 24.6 * 7.4) < 1e-5, `exact footprint coverage, got ${area}`);
+  assert.ok(geometry.wallCells.every((cell) => cell.footprintPolygons?.length && cell.exterior));
+  for (const storey of geometry.storeys) {
+    assert.equal(Math.max(...storey.wallCells.map((cell) => cell.maximumY!)), storey.semanticTopY);
+    assert.equal(Math.min(...storey.wallCells.map((cell) => cell.minimumY!)), storey.semanticBaseY + 0.25);
+  }
+  const inverse = ([x, z]: readonly [number, number]) => [
+    (x - 17.3) * Math.cos(angle) + (z - 8.7) * Math.sin(angle),
+    -(x - 17.3) * Math.sin(angle) + (z - 8.7) * Math.cos(angle),
+  ];
+  for (const cell of geometry.footprintCells) for (const polygon of cell.footprintPolygons ?? []) {
+    assert.ok(polygon.map(inverse).every(([u, v]) => u! >= -1e-6 && u! <= 24.6 + 1e-6 && Math.abs(v!) <= 3.7 + 1e-6));
+  }
+});
+
+test("stepped wings have a shared miter seam and no duplicated interior footprint", () => {
+  const draft = buildingDraft([{ x: 0, y: 0, z: 0 }, { x: 24, y: 0, z: 0 }, { x: 24, y: 0, z: 18 }], 6);
+  const layout = buildLineBrushBuildingLayout(draft, lineBrushBuildingPreset("standard"));
+  const first = layout.bySegment["0"]![0]![0]!;
+  const second = layout.bySegment["1"]![0]![0]!;
+  assert.deepEqual(first[1], second[0]);
+  assert.deepEqual(first[2], second[3]);
+  assert.ok(parcelGridPolygonArea(intersectConvexParcelGridPolygons(first, second)) < 1e-7);
+  const roofTypes = ["gable", "hipped", "half_hipped", "pent", "mansard", "trapezoid", "butterfly", "pyramid", "barrel", "sawtooth"] as const;
+  for (const type of roofTypes) {
+    const ordinary = buildLineBrushRoofZones(draft, layout, type, false);
+    const stepped = buildLineBrushRoofZones(draft, layout, type, true);
+    assert.equal(ordinary.length, 2, type);
+    assert.deepEqual(ordinary.map((zone) => zone.ridgeDirection), [0, 90], type);
+    assert.deepEqual(ordinary.map((zone) => zone.polygon), stepped.map((zone) => zone.polygon), type);
+    assert.deepEqual(ordinary.map((zone) => zone.interiorEdges), [[1], [3]], type);
+  }
+});
+
+test("construction mesh raycast resolves its integer edit address and removed blocks stay removed", () => {
+  const cell = { x: 7, y: 3, z: 9, logicalCellId: "wall-a", minimumY: 3.25, maximumY: 4.6,
+    footprintPolygons: [[[7.2, 9.1], [8.1, 9.4], [7.8, 10.3], [6.9, 10]]] as const };
+  const material = new THREE.MeshBasicMaterial();
+  const mesh = createConstructionCellMesh([cell], material)!;
+  const hit = new THREE.Raycaster(new THREE.Vector3(7.5, 8, 9.7), new THREE.Vector3(0, -1, 0)).intersectObject(mesh)[0];
+  assert.ok(hit);
+  assert.ok(Math.abs(hit.point.y - 4.6) < 1e-5);
+  assert.equal(constructionCellForIntersection(hit), cell);
+  const center = new THREE.Vector3(7.5, 3.9, 9.7);
+  for (const polygon of cell.footprintPolygons) for (let index = 0; index < polygon.length; index += 1) {
+    const start = polygon[index]!, end = polygon[(index + 1) % polygon.length]!;
+    const outward = new THREE.Vector3(end[1] - start[1], 0, start[0] - end[0]).normalize();
+    const midpoint = new THREE.Vector3((start[0] + end[0]) / 2, center.y, (start[1] + end[1]) / 2);
+    const sideHit = new THREE.Raycaster(midpoint.clone().addScaledVector(outward, 3), outward.clone().negate()).intersectObject(mesh)[0];
+    assert.ok(sideHit, `side ${index} must be visible and targetable from outside`);
+    assert.ok(sideHit.face!.normal.dot(outward) > 0.999);
+    assert.ok(sideHit.point.distanceTo(midpoint) < 1e-5);
+  }
+  assert.equal(survivingConstructionCells([cell], [cell]).length, 1);
+  assert.equal(survivingConstructionCells([cell], []).length, 0);
+  mesh.geometry.dispose(); material.dispose();
+});
+
+test("closed courtyard roofs share the final seam and preserve the courtyard", () => {
+  const draft = buildingDraft([
+    { x: 0, y: 0, z: 0 }, { x: 20, y: 0, z: 0 }, { x: 20, y: 0, z: 20 },
+    { x: 0, y: 0, z: 20 }, { x: 0, y: 0, z: 0 },
+  ], 6);
+  const layout = buildLineBrushBuildingLayout(draft, lineBrushBuildingPreset("standard"));
+  const zones = buildLineBrushRoofZones(draft, layout, "gable", false);
+  assert.equal(zones.length, 4);
+  assert.ok(zones.every((zone) => zone.interiorEdges.length === 2));
+  assert.deepEqual(zones[0]!.polygon[0]![0], zones[3]!.polygon[0]![1]);
+  assert.deepEqual(zones[0]!.polygon[0]![3], zones[3]!.polygon[0]![2]);
+  assert.ok(Math.abs(zones.reduce((sum, zone) => sum + parcelGridPolygonArea(zone.polygon[0]!), 0)
+    - draft.estimatedAreaM2) < 1e-6);
 });

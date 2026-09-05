@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -9,7 +9,7 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: #0b0f13;
+  background: #edf2f5;
 }
 
 .reconstruction-preview {
@@ -18,10 +18,10 @@ body {
   height: 100%;
   min-height: 320px;
   overflow: hidden;
-  color: #f4f7f8;
+  color: #18303d;
   background:
-    radial-gradient(circle at 52% 18%, rgba(55, 78, 91, 0.24), transparent 48%),
-    #0b0f13;
+    radial-gradient(circle at 52% 18%, rgba(255, 255, 255, 0.9), transparent 54%),
+    #edf2f5;
 }
 
 .reconstruction-preview__canvas {
@@ -44,7 +44,7 @@ body {
   gap: 20px;
   padding: 18px 20px 36px;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(7, 10, 13, 0.84), transparent);
+  background: linear-gradient(180deg, rgba(248, 251, 252, 0.96), rgba(248, 251, 252, 0.72) 58%, transparent);
 }
 
 .reconstruction-preview__identity {
@@ -54,7 +54,7 @@ body {
 }
 
 .reconstruction-preview__identity span {
-  color: #f0a33b;
+  color: #bf6808;
   font-size: 9px;
   font-weight: 750;
   letter-spacing: 0.17em;
@@ -63,13 +63,14 @@ body {
 .reconstruction-preview__identity strong {
   overflow: hidden;
   max-width: min(55vw, 520px);
+  color: #172e3a;
   font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .reconstruction-preview__identity small {
-  color: #929ba3;
+  color: #607481;
   font-size: 10px;
 }
 
@@ -82,19 +83,26 @@ body {
 .reconstruction-preview__actions button {
   min-height: 31px;
   padding: 0 10px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(70, 96, 111, 0.22);
   border-radius: 5px;
-  color: #d9dee2;
-  background: rgba(8, 11, 14, 0.72);
+  color: #294453;
+  background: rgba(255, 255, 255, 0.86);
   font: inherit;
   font-size: 9px;
   cursor: pointer;
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(34, 56, 68, 0.07);
 }
 
 .reconstruction-preview__actions button:hover {
-  border-color: rgba(240, 163, 59, 0.7);
-  color: #fff;
+  border-color: rgba(191, 104, 8, 0.65);
+  color: #8d4a04;
+  background: rgba(255, 255, 255, 0.98);
+}
+
+.reconstruction-preview__actions button:focus-visible {
+  outline: 2px solid rgba(191, 104, 8, 0.55);
+  outline-offset: 2px;
 }
 
 .reconstruction-preview__status {
@@ -104,21 +112,22 @@ body {
   z-index: 4;
   max-width: min(55vw, 520px);
   padding: 8px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(70, 96, 111, 0.2);
   border-radius: 5px;
-  color: #b7bec4;
-  background: rgba(8, 11, 14, 0.76);
+  color: #506875;
+  background: rgba(255, 255, 255, 0.88);
   font-size: 9px;
   letter-spacing: 0.03em;
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(34, 56, 68, 0.07);
 }
 
 .reconstruction-preview__status[data-status="ready"] {
-  border-color: rgba(105, 212, 208, 0.35);
+  border-color: rgba(22, 135, 112, 0.38);
 }
 
 .reconstruction-preview__status[data-status="building"] {
-  border-color: rgba(240, 163, 59, 0.45);
+  border-color: rgba(191, 104, 8, 0.45);
 }
 
 .reconstruction-preview__status[data-playback="true"] {
@@ -148,8 +157,8 @@ body {
 }
 
 .reconstruction-preview__status[data-status="error"] {
-  border-color: rgba(255, 116, 116, 0.55);
-  color: #ffb2b2;
+  border-color: rgba(180, 35, 24, 0.42);
+  color: #b42318;
 }
 
 .reconstruction-preview__counts {
@@ -167,12 +176,13 @@ body {
 
 .reconstruction-preview__counts span {
   padding: 5px 7px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(70, 96, 111, 0.18);
   border-radius: 4px;
-  color: #cad0d5;
-  background: rgba(8, 11, 14, 0.72);
+  color: #405b69;
+  background: rgba(255, 255, 255, 0.87);
   font-size: 8px;
   backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(34, 56, 68, 0.06);
 }
 
 .reconstruction-preview__counts span[data-feature="room"],
@@ -199,17 +209,18 @@ body {
   gap: 6px;
   min-width: 142px;
   padding: 8px 9px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(70, 96, 111, 0.2);
   border-radius: 5px;
-  color: #cfd6db;
-  background: rgba(8, 11, 14, 0.7);
+  color: #405b69;
+  background: rgba(255, 255, 255, 0.88);
   font-size: 8px;
   pointer-events: none;
   backdrop-filter: blur(8px);
+  box-shadow: 0 3px 14px rgba(34, 56, 68, 0.08);
 }
 
 .reconstruction-preview__legend strong {
-  color: #f4f7f8;
+  color: #203b49;
   font-size: 8px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -231,7 +242,7 @@ body {
 }
 
 .reconstruction-preview__legend i.room {
-  border: 1px solid rgba(255, 255, 255, 0.44);
+  border: 1px solid rgba(42, 67, 79, 0.38);
   background: linear-gradient(90deg, #4fc3f7, #81c784, #ffb74d, #ba68c8);
   opacity: 0.82;
 }
@@ -273,7 +284,7 @@ body {
   right: 18px;
   top: 66px;
   z-index: 3;
-  color: rgba(210, 217, 222, 0.45);
+  color: rgba(60, 82, 94, 0.68);
   font-size: 8px;
   letter-spacing: 0.08em;
   pointer-events: none;

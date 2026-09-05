@@ -1,5 +1,8 @@
 // services/vectoplan-editor/src/frontend/scene/scene_runtime.ts
 import * as THREE from "three";
+import { trimTerrainSurfaceCells } from './terrain_surface_geometry';
+import { createTerrainOsmOverlay, type TerrainOsmOverlay } from './terrain_osm_overlay';
+import { createConstructionCellMesh, survivingConstructionCells, constructionCellForIntersection, constructionCellMaterialGroups } from "./construction_cell_rendering";
 import {
   createEnvironmentSystem,
   type EnvironmentSystem,
@@ -31,12 +34,13 @@ import {
   shouldAdaptBlockToParcelGrid,
 } from "./semantic_object_rendering";
 import { additionalSurfaceChunkCoordinates } from "./structure_streaming";
+import { configuredStreamingRadius, retainedSurfaceChunkKeys, streamingCoordinateBudget } from "./chunk_streaming_policy";
 import {
   raycastLod2WallCaps,
   trimLod2WallCaps,
   type Lod2WallCaps,
 } from "./lod2_wall_caps";
-import { LOD2_EXISTING_WALL_COLOR } from "./lod2_existing_appearance";
+import { createBlockMaterial as createMaterial } from "@render/block_material";
 import { createLod2RoofIndex } from "./lod2_roof_index";
 import { pickBlockInventoryItem, postPickedBlockToInventory } from "../inventory/pick_block";
 import { createRoofCalculationMeshes } from "./roof_calculation_rendering";
@@ -491,7 +495,6 @@ const CHUNK_MESH_PROGRESS_COMMIT_INTERVAL_MS = 120;
 // one short flight therefore queued up to eleven 90 KiB batch responses.
 const MIN_DIRECTIONAL_PRELOAD_RADIUS = 2;
 const MIN_CHUNK_UNLOAD_RESERVE = 2;
-const INITIAL_WARMUP_EXTRA_RADIUS = 2;
 const CHUNK_STREAM_RETRY_DELAYS_MS = [2_000, 5_000, 10_000, 20_000, 30_000] as const;
 const MAX_PREFETCH_MESH_WARMUP_CHUNKS = 24;
 const RENDER_STORE_SYNC_INTERVAL_MS = 250;
@@ -953,8 +956,12 @@ function disposeObject3D(object: THREE.Object3D): void {
     object.traverse((child) => {
       const mesh = child as THREE.Mesh;
 
+      // The OSM layer owns shared tile materials and its private UV geometry.
+      // A chunk replacement must not dispose textures still used by neighbours.
+      if (mesh.userData.terrainOsmOverlay === true) return;
+
       const geometry = mesh.geometry;
-      if (geometry && typeof geometry.dispose === "function") {
+      if (geometry && typeof geometry.dispose === "function" && mesh.userData.terrainOsmOverlay !== true) {
         geometry.dispose();
       }
 
@@ -970,52 +977,6 @@ function disposeObject3D(object: THREE.Object3D): void {
   } catch {
     // Dispose is best-effort.
   }
-}
-
-function paletteColor(entry: RuntimeChunkPaletteEntry | null): THREE.Color {
-  try {
-    const blockTypeId = safeString(entry?.blockTypeId, "runtime-block");
-    if (blockTypeId === "lod2_exterior_wall") return new THREE.Color(LOD2_EXISTING_WALL_COLOR);
-    if (blockTypeId.startsWith("system_terrain")) {
-      return new THREE.Color("#f8fafc");
-    }
-    const color = safeString(entry?.color, "");
-
-    if (color.length > 0) {
-      return new THREE.Color(color);
-    }
-
-    let hash = 0;
-
-    for (let index = 0; index < blockTypeId.length; index += 1) {
-      hash = ((hash << 5) - hash + blockTypeId.charCodeAt(index)) | 0;
-    }
-
-    const hue = Math.abs(hash % 360) / 360;
-    return new THREE.Color().setHSL(hue, 0.52, 0.48);
-  } catch {
-    return new THREE.Color("#64748b");
-  }
-}
-
-function createMaterial(
-  entry: RuntimeChunkPaletteEntry | null,
-): THREE.MeshStandardMaterial {
-  const color = paletteColor(entry);
-  const material = new THREE.MeshStandardMaterial({
-    color,
-    roughness: 0.88,
-    metalness: 0.02,
-  });
-  // LoD2 stock walls deliberately retain their neutral existing-building
-  // appearance. A generic material registry entry must not make untouched
-  // source geometry look like a newly designed wall.
-  if (entry?.blockTypeId !== "lod2_exterior_wall") {
-    const appearance = getMaterialAppearance(entry?.blockTypeId)
-      ?? fallbackMaterialAppearance(entry?.blockTypeId);
-    applyMaterialAppearance(material, appearance);
-  }
-  return material;
 }
 
 function normalizeCameraPosition(position: unknown): THREE.Vector3 {
@@ -1326,7 +1287,8 @@ export function semanticObjectRefs(chunk: RuntimeChunkContent): readonly Semanti
     const footprint = asRecord(ref.footprint);
     const metadata = asRecord(ref.metadata);
     const objectKind = safeString(ref.objectKind, "");
-    if (objectKind !== "semantic_footprint" && !isVplibParametricObjectRef({ objectKind, metadata })) return null;
+    if (objectKind !== "semantic_footprint" && metadata.renderProfile !== "construction-grid"
+      && !isVplibParametricObjectRef({ objectKind, metadata })) return null;
     if (objectKind === "semantic_footprint"
       && safeString(footprint.coordinateSpace, "") !== "world-cell-xz") return null;
     const occupiedCells = (Array.isArray(ref.occupiedCells) ? ref.occupiedCells : [])
@@ -1924,7 +1886,7 @@ export function appendSemanticObjectMeshes(
   const semanticMaterials: THREE.Material[] = [];
   const semanticGeometries: THREE.BufferGeometry[] = [];
   for (const ref of coalesceSemanticObjectRefs(refs)) {
-    if (ref.primaryChunkKey !== chunk.chunkKey) continue;
+    if (ref.primaryChunkKey !== chunk.chunkKey && ref.metadata.renderProfile !== "construction-grid") continue;
     const cellSize = safeNumber(chunk.cellSize, 1, { min: 0.000001, max: 1_000 });
     if (isVplibParametricObjectRef(ref)) {
       const parametric = createParametricObjectMeshes(ref, chunk, cellSize);
@@ -1959,6 +1921,31 @@ export function appendSemanticObjectMeshes(
         semanticMeshes.push(solar);
         semanticMaterials.push(solar.material as THREE.Material);
         semanticGeometries.push(solar.geometry);
+      }
+      continue;
+    }
+    if (ref.metadata.renderProfile === "construction-grid") {
+      // Runtime refs repeat the complete object's cells in each chunk, but
+      // deletion updates only the owning chunk. Render each address in that
+      // chunk so a stale copy in the primary chunk cannot resurrect it.
+      const cells = survivingConstructionCells(ref.metadata.constructionCells, ref.occupiedCells)
+        .filter((cell) => Math.floor(cell.x / chunk.chunkSize) === chunk.chunkX
+          && Math.floor(cell.y / chunk.chunkSize) === chunk.chunkY
+          && Math.floor(cell.z / chunk.chunkSize) === chunk.chunkZ);
+      for (const [blockTypeId, materialCells] of constructionCellMaterialGroups(cells, ref.fillBlockTypeId)) {
+        const material = createMaterial(chunk.paletteByBlockTypeId.get(blockTypeId) ?? null);
+        const mesh = createConstructionCellMesh(materialCells, material, cellSize);
+        if (mesh) {
+          mesh.name = `construction:${ref.objectInstanceId}:${blockTypeId}`;
+          mesh.userData.semanticObjectRef = ref;
+          mesh.userData.objectInstanceId = ref.objectInstanceId;
+          mesh.userData.constructionGrid = true;
+          mesh.userData.constructionCells = materialCells;
+          record.group.add(mesh);
+          semanticMeshes.push(mesh);
+          semanticMaterials.push(material);
+          semanticGeometries.push(mesh.geometry);
+        } else material.dispose();
       }
       continue;
     }
@@ -2570,6 +2557,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
   let realtimeIndicator: HTMLDivElement | null = null;
   let navigationCompass: NavigationCompassHandle | null = null;
   let chunkMapOverlay: ChunkMapOverlayHandle | null = null;
+  let terrainOsmOverlay: TerrainOsmOverlay | null = null;
   let viewKeyListener: ((event: KeyboardEvent) => void) | null = null;
   let thirdPersonEnabled = false;
   let lookYaw = safeNumber(bootstrap.camera.rotation.yaw, 0);
@@ -3180,13 +3168,30 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     performanceRecorder?.recordEvent("chunk-mesh", "wall-caps", nowMs()-capsStartedAtMs,
       {chunkKey:chunk.chunkKey,cells:caps.cappedCellIndices.length,alignedCells:caps.alignedCellIndices.length,
         triangles:(caps.geometry?.getAttribute('position').count??0)/3});
-    const meshingChunk = caps.chunk;
+    const terrainCut = trimTerrainSurfaceCells(caps.chunk);
+    const meshingChunk = terrainCut.chunk;
+    const appendTerrain = (record: ChunkMeshRecord): ChunkMeshRecord => {
+      const meshes = terrainCut.surfaces.map(({cellValue,geometry}) => {
+        const mesh = new THREE.Mesh(geometry, createMaterial(chunk.paletteByCellValue.get(cellValue) ?? null));
+        mesh.name = `chunk:${chunk.chunkKey}:terrain-cut:${cellValue}`;
+        mesh.userData.chunkKey = chunk.chunkKey;
+        mesh.userData.cellValue = cellValue;
+        mesh.userData.terrainSurface = true;
+        mesh.receiveShadow = true;
+        record.group.add(mesh);
+        return mesh;
+      });
+      return {...record, meshes:[...record.meshes,...meshes],
+        materials:[...record.materials,...meshes.map(mesh=>mesh.material)],
+        geometries:[...record.geometries,...meshes.map(mesh=>mesh.geometry)],
+        triangleCount:record.triangleCount+meshes.reduce((sum,mesh)=>sum+mesh.geometry.getAttribute('position').count/3,0)};
+    };
     if (!chunkMeshWorkerClient) {
       const record = createChunkMeshRecord(meshingChunk, (worldX, worldY, worldZ) => {
         const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
         return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
       });
-      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
+      return appendTerrain(appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps));
     }
 
     try {
@@ -3214,7 +3219,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           quadCount: result.quadCount,
         },
       );
-      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
+      return appendTerrain(appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps));
     } catch (error) {
       if (destroyed) throw error;
       refs.root.dataset.sceneRuntimeChunkMeshingThread = "main-thread-fallback";
@@ -3228,7 +3233,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         const sample = worldRuntime.sampleCell({ x: worldX, y: worldY, z: worldZ });
         return sample.chunkLoaded && isNonAirOccluder(sample.cellValue);
       });
-      return appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps);
+      return appendTerrain(appendLod2WallCaps(appendSemanticObjectMeshes(record, chunk, semanticRefs), caps));
     }
   }
 
@@ -3737,7 +3742,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         if (!registry.hasChunk(existingKey)) enqueueChunkMeshKey(existingKey, true);
       }
 
-      for (const key of keys) {
+      for (const key of wanted) {
         const chunk = registry.getChunk(key);
         if (!chunk) continue;
 
@@ -5071,6 +5076,27 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
     return Math.min(configured, minimum + 1);
   }
 
+  function configuredVisibleRadius(): number {
+    const radius = configuredStreamingRadius(
+      bootstrap.render.visibleChunkRadius,
+      bootstrap.runtime.chunk.maxLoadedChunks,
+    );
+    refs.root.dataset.effectiveVisibleChunkRadius = String(radius);
+    refs.root.dataset.effectiveVisibleDistanceMeters = String(radius * 16);
+    return radius;
+  }
+
+  function retainedVisibleKeys(center: ChunkCoordinates, radius: number): readonly string[] {
+    const registry = worldRuntime.getRegistry();
+    return retainedSurfaceChunkKeys(
+      registry.getChunkKeys().map((key) => registry.getChunk(key))
+        .filter((chunk): chunk is RuntimeChunkContent => chunk !== null),
+      new Set(registry.getVisibleChunkKeys()),
+      center,
+      radius,
+    );
+  }
+
   function warmLoadedChunkMeshes(
     coordinates: readonly ChunkCoordinates[],
     center: ChunkCoordinates,
@@ -5482,10 +5508,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         queuedCameraChunk = center;
       }
 
-      const visibleRadius = safeInteger(bootstrap.render.visibleChunkRadius, 7, {
-        min: 0,
-        max: 16,
-      });
+      const visibleRadius = configuredVisibleRadius();
       maybePrefetchNearChunkEdge(center, chunkSize, visibleRadius);
 
       if (visibilityLoadInFlight || !queuedCameraChunk) {
@@ -5516,6 +5539,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         await worldRuntime.loadAroundChunk(targetCenter, {
           radius: visibleRadius,
           reason: "scene-runtime.camera-chunk-change",
+          maxChunks: streamingCoordinateBudget(visibleRadius, earthTerrainStreaming),
+          retainVisibleChunkKeys: retainedVisibleKeys(targetCenter, visibleRadius),
           force: false,
           markVisible: true,
           preferBatch: true,
@@ -5615,7 +5640,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
             ),
           )
         : firstPersonTargetMaxDistance;
-      const hit = raycastFromOriginDirection({
+      const constructionMeshes = [...chunkMeshes.values()]
+        .filter((record) => record.group.visible)
+        .flatMap((record) => record.meshes.filter((mesh) => mesh.visible && mesh.userData.constructionGrid === true));
+      const constructionAddresses = new Set<string>();
+      for (const mesh of constructionMeshes) {
+        for (const cell of mesh.userData.constructionCells as readonly ChunkApiWorldPosition[]) {
+          constructionAddresses.add(`${cell.x}:${cell.y}:${cell.z}`);
+        }
+      }
+      let hit = raycastFromOriginDirection({
         origin: {
           x: planningRay?.origin.x ?? camera.position.x,
           y: planningRay?.origin.y ?? camera.position.y,
@@ -5626,7 +5660,12 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           y: forward.y,
           z: forward.z,
         },
-        sampler: (position) => worldRuntime.sampleCell(position),
+        sampler: (position) => {
+          const sample = worldRuntime.sampleCell(position);
+          return constructionAddresses.has(`${position.x}:${position.y}:${position.z}`)
+            ? { ...sample, air: true, solid: false, breakable: false, cellValue: 0, blockTypeId: null }
+            : sample;
+        },
         options: {
           maxDistance: targetMaxDistance,
           maxSteps: Math.max(32, Math.ceil(targetMaxDistance) + 8),
@@ -5636,6 +5675,22 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
         },
         chunkSize,
       });
+
+      if (constructionMeshes.length) {
+        const origin = planningRay?.origin.clone() ?? camera.position.clone();
+        const raycaster = new THREE.Raycaster(origin, forward, 0, targetMaxDistance);
+        const intersection = raycaster.intersectObjects(constructionMeshes, false)[0];
+        const cell = intersection ? constructionCellForIntersection(intersection) : null;
+        if (intersection && cell && (!hit.hit || intersection.distance < (hit.distance ?? Infinity))) {
+          const address = createChunkCellAddress({ worldX: cell.x, worldY: cell.y, worldZ: cell.z, chunkSize });
+          const sample = worldRuntime.sampleCell(cell);
+          if (!sample.air) hit = {
+            ...hit, hit: true, distance: intersection.distance, position: intersection.point,
+            normal: intersection.face?.normal ?? { x: 0, y: 1, z: 0 },
+            sourceCell: address, previousCell: null, sample, reason: "construction-grid",
+          };
+        }
+      }
 
       if (!hit.hit || !hit.sourceCell || !hit.sample) {
         latestSourceCell = null;
@@ -5649,9 +5704,11 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       }
 
       const normal = hit.normal ?? { x: 0, y: 1, z: 0 };
-      const nx = Math.round(normal.x);
-      const ny = Math.round(normal.y);
-      const nz = Math.round(normal.z);
+      const dominant = [Math.abs(normal.x), Math.abs(normal.y), Math.abs(normal.z)];
+      const axis = dominant.indexOf(Math.max(...dominant));
+      const nx = axis === 0 ? Math.sign(normal.x) : 0;
+      const ny = axis === 1 ? Math.sign(normal.y) : 0;
+      const nz = axis === 2 ? Math.sign(normal.z) : 0;
 
       const sourceAddress = hit.sourceCell;
       const sourceCell = {
@@ -6013,6 +6070,7 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const deltaSeconds = Math.min(0.1, frameMs / 1_000);
       environmentSystem?.update(deltaSeconds);
       updateTerrainShadowCasters(timestampMs);
+      terrainOsmOverlay?.update();
       const environmentMs = nowMs() - phaseStartedAtMs;
 
       phaseStartedAtMs = nowMs();
@@ -7611,6 +7669,16 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       navigationCompass = createNavigationCompass(
         refs.viewportOverlay ?? refs.canvasHost,
       );
+      terrainOsmOverlay = createTerrainOsmOverlay({
+        host: refs.viewportOverlay ?? refs.canvasHost,
+        getFrame: () => geodataOverlayScene?.getGroup().userData.earthGrid ?? null,
+        getCamera: () => camera,
+        getMeshes: () => [...chunkMeshes.values()].flatMap(record => {
+          const chunk = worldRuntime.getRegistry().getChunk(record.chunkKey);
+          return record.meshes.filter(mesh => chunk?.paletteByCellValue.get(Number(mesh.userData.cellValue))?.blockTypeId.startsWith('system_terrain'));
+        }),
+        tileUrl: refs.root.dataset.osmTileUrl,
+      });
 
       chunkMapOverlay = createChunkMapOverlay({
         root: refs.root,
@@ -7724,25 +7792,13 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
           }
         : initialCameraCenter;
       const initialCenterKey = chunkKeyFromCoordinatesLocal(initialCenter);
-      const initialVisibleRadius = safeInteger(bootstrap.render.visibleChunkRadius, 7, {
-        min: 0,
-        max: 16,
-      });
+      const initialVisibleRadius = configuredVisibleRadius();
       const initialPreloadRadius = configuredPreloadRadius();
       const initialWarmupRadius = Math.min(
         16,
-        initialVisibleRadius + Math.max(INITIAL_WARMUP_EXTRA_RADIUS, initialPreloadRadius),
+        initialVisibleRadius + initialPreloadRadius,
       );
-      const initialWarmupMaxChunks = Math.min(
-        4096,
-        Math.max(
-          safeInteger(bootstrap.runtime.chunk.maxBatchChunks, 256, {
-            min: 1,
-            max: 4096,
-          }),
-          ((initialWarmupRadius * 2 + 1) ** 2) + 64,
-        ),
-      );
+      const initialWarmupMaxChunks = streamingCoordinateBudget(initialVisibleRadius, isEarthTerrainWorld());
       lastCameraChunk = initialCenter;
       lastCameraChunkKey = initialCenterKey;
       queuedCameraChunk = null;
@@ -7764,59 +7820,49 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       const continueInitialStreaming = () => !destroyed && lastCameraChunkKey === initialCenterKey;
       const streamInitialEnvironment = async (): Promise<void> => {
         refs.root.dataset.initialStreamingStatus = "visible-loading";
-        await worldRuntime.loadAroundChunk(initialCenter, {
-          radius: initialVisibleRadius,
-          reason: "scene-runtime.initial-visible-background",
-          force: false,
-          markVisible: true,
-          preferBatch: true,
-          contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
-          maxChunks: initialWarmupMaxChunks,
-          batchSize: 12,
-          shouldContinue: continueInitialStreaming,
-          onBatchLoaded: (progress) => {
-            if (!continueInitialStreaming()) return;
-            refs.root.dataset.initialStreamingProgress = `${Math.min(progress.batchIndex + 1, progress.batchCount)}/${progress.batchCount}`;
-            renderChunksFromRegistry("scene-runtime.initial-visible-progress");
-          },
-        });
-        if (!continueInitialStreaming()) return;
-        if (isEarthTerrainWorld()) {
-          await loadTerrainSurfaceLayers(
-            initialCenter,
-            initialVisibleRadius,
-            initialCenterKey,
-            { chunkX: 0, chunkY: 0, chunkZ: 0 },
-          );
+        // Resolve nearby surface layers and whole buildings before spending
+        // network time on the horizon. The next stage retains these meshes.
+        for (const initialStageRadius of new Set([Math.min(3, initialVisibleRadius), initialVisibleRadius])) {
+          await worldRuntime.loadAroundChunk(initialCenter, {
+            radius: initialStageRadius,
+            reason: "scene-runtime.initial-visible-background",
+            force: false,
+            markVisible: true,
+            preferBatch: true,
+            contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
+            maxChunks: streamingCoordinateBudget(initialStageRadius, isEarthTerrainWorld()),
+            retainVisibleChunkKeys: retainedVisibleKeys(initialCenter, initialStageRadius),
+            batchSize: 12,
+            shouldContinue: continueInitialStreaming,
+            onBatchLoaded: (progress) => {
+              if (!continueInitialStreaming()) return;
+              refs.root.dataset.initialStreamingProgress = `${Math.min(progress.batchIndex + 1, progress.batchCount)}/${progress.batchCount}`;
+              renderChunksFromRegistry("scene-runtime.initial-visible-progress");
+            },
+          });
+          if (!continueInitialStreaming()) return;
+          if (isEarthTerrainWorld()) {
+            await loadTerrainSurfaceLayers(
+              initialCenter,
+              initialStageRadius,
+              initialCenterKey,
+              { chunkX: 0, chunkY: 0, chunkZ: 0 },
+            );
+          }
         }
         renderChunksFromRegistry("scene-runtime.initial-visible-background-complete");
         await drainInitialChunkMeshQueue();
         if (!continueInitialStreaming()) return;
 
         refs.root.dataset.initialStreamingStatus = "reserve-loading";
-        const reserveCoordinates = visibleChunkCoordinatesAround(initialCenter, initialWarmupRadius, {
-          radial: true,
-          verticalRadius: 0,
+        // Prepare the forward boundary using the same bounded low-priority
+        // reserve used during movement. Full invisible rings doubled startup
+        // traffic and competed with rendering the actually visible terrain.
+        prefetchChunksAroundMovement(initialCenter, initialVisibleRadius, {
+          chunkX: Math.sin(lookYaw), chunkY: 0, chunkZ: Math.cos(lookYaw),
         });
-        await worldRuntime.getLoader().loadCoordinates(reserveCoordinates, {
-          reason: "scene-runtime.initial-reserve-background",
-          force: false,
-          markVisible: false,
-          preferBatch: true,
-          contentProfile: isEarthTerrainWorld() ? "surface-shell.v1" : undefined,
-          maxChunks: initialWarmupMaxChunks,
-          batchSize: 12,
-          shouldContinue: continueInitialStreaming,
-        });
+        if (prefetchLoadPromise) await prefetchLoadPromise;
         if (!continueInitialStreaming()) return;
-        if (isEarthTerrainWorld()) {
-          await loadTerrainSurfaceLayers(
-            initialCenter,
-            initialWarmupRadius,
-            initialCenterKey,
-            { chunkX: 0, chunkY: 0, chunkZ: 0 },
-          );
-        }
         refs.root.dataset.initialStreamingStatus = "ready";
       };
 
@@ -7957,6 +8003,8 @@ export function createSceneRuntime(options: SceneRuntimeOptions): SceneRuntimeHa
       localRealtimeMember = null;
       localAvatarSessionId = null;
       chunkMapOverlay?.destroy();
+      terrainOsmOverlay?.destroy();
+      terrainOsmOverlay = null;
       chunkMapOverlay = null;
       if (viewKeyListener) {
         document.removeEventListener("keydown", viewKeyListener, true);

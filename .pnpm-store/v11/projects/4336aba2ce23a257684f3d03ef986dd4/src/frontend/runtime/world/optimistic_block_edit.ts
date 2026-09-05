@@ -110,9 +110,16 @@ function editLoadedChunk(
   nextCellValue: number,
   revision: number,
   palette?: readonly ChunkApiPaletteEntry[],
+  markTerrainEdited = true,
 ): RuntimeChunkContent {
   const entry = registry.getEntry(chunk.chunkKey);
+  const surface = chunk.raw.metadata?.terrainSurface as {fullCellIndices?: readonly number[]} | undefined;
+  const metadata = surface && nextCellValue > 0 && markTerrainEdited ? {
+    ...chunk.raw.metadata,
+    terrainSurface: {...surface,fullCellIndices:[...new Set([...(surface.fullCellIndices??[]),address.cellIndex])]},
+  } : chunk.raw.metadata;
   const nextChunk = cloneRuntimeChunkContent(chunk, {
+    metadata,
     cells: cloneCellsWithMutation(chunk, address, nextCellValue),
     palette: palette ?? chunk.raw.palette,
     // The mesh revision token must change even when several clicks land in the
@@ -221,7 +228,7 @@ export function applyOptimisticCellValue(
   const previousCellValue = Number(chunk.cells[address.cellIndex] ?? CHUNK_API_AIR_CELL_VALUE);
   const nextCellValue = Math.max(CHUNK_API_AIR_CELL_VALUE, Math.trunc(options.cellValue));
   if (previousCellValue === nextCellValue) return emptyResult(address, previousCellValue);
-  editLoadedChunk(options.registry, address, chunk, nextCellValue, options.revision);
+  editLoadedChunk(options.registry, address, chunk, nextCellValue, options.revision, undefined, false);
   return {
     changed: true,
     address,

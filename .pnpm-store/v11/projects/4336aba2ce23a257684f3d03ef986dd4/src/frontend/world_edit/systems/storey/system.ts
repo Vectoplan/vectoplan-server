@@ -27,8 +27,8 @@ export function createStoreySystem(hooks: StoreySystemHooks): WorldEditSystem {
     aliases: ["storeys", "storey-tool", "floor", "floors", "geschoss", "geschosse", "etage", "etagen"],
     ui: {
       title: "Geschoss",
-      hint: "Baukörper oder Linien-Brush-Fläche anklicken. Im Einstellungsfenster Geschosse für den gesamten Baukörper oder ein einzelnes Segment hinzufügen und entfernen.",
-      activationMessage: "Gebäude anklicken und Geschosse hinzufügen oder entfernen. Das Werkzeug verhält sich in Ego- und Planungsansicht identisch.",
+      hint: "Gebäude anklicken und den blauen Höhengriff nach oben oder unten ziehen. Im Einstellungsfenster den gesamten Baukörper oder ein einzelnes Segment wählen.",
+      activationMessage: "Gebäude anklicken. Am blauen Griff ziehen, um ganze Geschosse hinzuzufügen oder zu entfernen; Loslassen speichert.",
       maxDistance: 220,
       inventoryToolId: "storey",
       operations: [],

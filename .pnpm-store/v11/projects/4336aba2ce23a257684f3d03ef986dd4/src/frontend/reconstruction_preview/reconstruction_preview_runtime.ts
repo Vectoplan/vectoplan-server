@@ -1284,7 +1284,7 @@ export function startReconstructionPreview(): ReconstructionPreviewRuntimeHandle
     canvasHost: root,
     antialias: true,
     alpha: false,
-    clearColor: "#0b0f13",
+    clearColor: "#edf2f5",
     pixelRatioMax: 2,
     enableShadows: true,
     addDefaultLights: false,
@@ -1297,9 +1297,9 @@ export function startReconstructionPreview(): ReconstructionPreviewRuntimeHandle
   const camera = three.getCamera();
   const renderer = three.getRenderer();
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  scene.fog = new THREE.FogExp2(0x0b0f13, 0.0035);
+  scene.fog = new THREE.FogExp2(0xedf2f5, 0.0035);
 
-  const ambient = new THREE.HemisphereLight(0xb8d5e1, 0x17221e, 1.7);
+  const ambient = new THREE.HemisphereLight(0xf8fbfc, 0xb8c7cf, 1.7);
   const sun = new THREE.DirectionalLight(0xfff1d5, 2.1);
   sun.position.set(45, 70, 28);
   sun.castShadow = true;
@@ -1308,14 +1308,14 @@ export function startReconstructionPreview(): ReconstructionPreviewRuntimeHandle
 
   const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(2_000, 2_000),
-    new THREE.MeshStandardMaterial({ color: 0x111820, roughness: 0.96, metalness: 0 }),
+    new THREE.MeshStandardMaterial({ color: 0xdfe7eb, roughness: 0.96, metalness: 0 }),
   );
   ground.rotation.x = -Math.PI / 2;
   ground.position.y = -0.018;
   ground.receiveShadow = true;
   ground.visible = !planFirstMode;
   scene.add(ground);
-  const grid = new THREE.GridHelper(2_000, 200, 0x42636a, 0x27343a);
+  const grid = new THREE.GridHelper(2_000, 200, 0x91a8b3, 0xc5d1d7);
   grid.position.y = -0.006;
   materialList(grid).forEach((material) => {
     material.transparent = true;

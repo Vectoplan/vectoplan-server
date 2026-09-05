@@ -132,10 +132,10 @@
     {% set camera_player_height_value = camera_value.playerHeight|default(1.8, true) %}
 
     {% set chunks_chunk_size_value = chunks_value.chunkSize|default(16, true) %}
-    {% set chunks_view_distance_value = chunks_value.viewDistance|default(7, true) %}
-    {% set chunks_preload_radius_value = chunks_value.preloadRadius|default(3, true) %}
-    {% set chunks_unload_distance_value = chunks_value.unloadDistance|default(18, true) %}
-    {% set chunks_max_loaded_value = chunks_value.maxLoadedChunks|default(1024, true) %}
+    {% set chunks_view_distance_value = chunks_value.viewDistance|default(14, true) %}
+    {% set chunks_preload_radius_value = chunks_value.preloadRadius|default(2, true) %}
+    {% set chunks_unload_distance_value = chunks_value.unloadDistance|default(19, true) %}
+    {% set chunks_max_loaded_value = chunks_value.maxLoadedChunks|default(2048, true) %}
     {% set chunks_load_around_player_value = chunks_value.loadAroundPlayer|default(true, true) %}
     {% set chunks_debug_bounds_value = chunks_value.debugDrawChunkBounds|default(false, true) %}
 

@@ -1870,7 +1870,9 @@ export class PlayerPhysicsController {
         !dropResult.ok ||
         !dropResult.collisionFlags.grounded ||
         dropResult.collisionFlags.blockedByMissingChunk ||
-        heightGain <= 0.04 ||
+        // Continuous terrain can rise by millimetres in one physics step.
+        // A 4 cm minimum would turn gentle slopes into invisible walls.
+        heightGain <= 0.0001 ||
         heightGain > climbHeight + clearance
       ) {
         return primary;

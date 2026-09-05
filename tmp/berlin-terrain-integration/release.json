@@ -1,0 +1,265 @@
+{
+  "kind": "file_collection",
+  "partial": false,
+  "project": {
+    "created_at": "2026-09-01T06:23:40.454031",
+    "description": "Geländehöhen ohne Gebäude und Vegetation; bestehendes VECTOPLAN-Terrainprojekt mit 5-m-Raster.",
+    "id": "49f07b47-845d-5952-8240-13794894aeca",
+    "metadata": {
+      "acquisition_mode": null,
+      "category": "Punktwolken und Höhe",
+      "data_class": "DGM",
+      "dataset_id": "digitales-gelaendemodell-5m",
+      "expected_formats": [
+        "GeoTIFF",
+        "COG",
+        "XYZ/ASCII",
+        "TIFF+TFW"
+      ],
+      "manual_upload_aliases": [],
+      "manual_upload_available": false,
+      "normalized_storage": [
+        "COG GeoTIFF",
+        "Terrain-Kacheln"
+      ],
+      "production_release": {
+        "artifact_count": 4,
+        "auto_update": true,
+        "collection_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m",
+        "dataset_id": "digitales-gelaendemodell-5m",
+        "eligible": true,
+        "enabled_at": "2026-09-04T23:37:11.181171+02:00",
+        "integration_status": "PUBLISHED",
+        "kind": "file_collection",
+        "last_error": null,
+        "partial": false,
+        "publication": {
+          "admin_url": "http://127.0.0.1:5109/geodaten/admin",
+          "approval": {
+            "approved_at": null,
+            "approved_by": {},
+            "approved_release_key": null,
+            "current_release_approved": false,
+            "has_approved_release": false
+          },
+          "assessment_ids": [],
+          "collection_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m",
+          "created_at": "2026-09-04T21:47:02.737227Z",
+          "dataset_id": "digitales-gelaendemodell-5m",
+          "delivery_services": [
+            "DOWNLOAD"
+          ],
+          "detected_formats": [
+            "XYZ"
+          ],
+          "file_count": 4,
+          "files": [
+            {
+              "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5818-e74ef12fff.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+              "media_type": "application/zip",
+              "name": "DGM1_390_5818-e74ef12fff.zip",
+              "queryable": false,
+              "size_bytes": 16936399
+            },
+            {
+              "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5820-f6c3abb0ea.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+              "media_type": "application/zip",
+              "name": "DGM1_390_5820-f6c3abb0ea.zip",
+              "queryable": false,
+              "size_bytes": 17538508
+            },
+            {
+              "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_392_5818-34ef2d99c1.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+              "media_type": "application/zip",
+              "name": "DGM1_392_5818-34ef2d99c1.zip",
+              "queryable": false,
+              "size_bytes": 16944366
+            },
+            {
+              "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_392_5820-2ad2b40e73.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+              "media_type": "application/zip",
+              "name": "DGM1_392_5820-2ad2b40e73.zip",
+              "queryable": false,
+              "size_bytes": 18048778
+            }
+          ],
+          "files_truncated": false,
+          "kind": "file_collection",
+          "openlayers_supported": false,
+          "project_id": "49f07b47-845d-5952-8240-13794894aeca",
+          "project_name": "Digitales Geländemodell 5 m (DGM5)",
+          "publication_profile": "terrain",
+          "published_at": "2026-09-04T21:47:02.737227Z",
+          "raster_import": {},
+          "release_key": "534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+          "review": {
+            "current_release_decided": false,
+            "decided_at": null,
+            "decided_by": {},
+            "decision": "pending",
+            "reason": null,
+            "release_key": null
+          },
+          "source_files_completed": 0,
+          "source_partial": false,
+          "status": "published",
+          "storage_mode": "reference",
+          "updated_at": "2026-09-04T21:47:02.737227Z",
+          "urls": {}
+        },
+        "publication_profile": "terrain",
+        "release_key": "534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+        "source_files_completed": 0,
+        "source_job_ids": [
+          "6d70a68a-49eb-4461-82e2-b37caf5c007c",
+          "db5eef85-82f6-4b1a-a6f8-e95b2ab94f75",
+          "e07c101d-8c9b-44a1-a950-35c94457474d",
+          "fd2085d5-0077-4d60-89df-97f6f9fac756"
+        ],
+        "source_run_ids": [
+          "0f561f6a-de75-4da4-a8e2-d81387959217"
+        ],
+        "updated_at": "2026-09-04T21:47:02.737227Z",
+        "wfs_url": null
+      },
+      "project_key": "dgm5",
+      "source_job_count": 1,
+      "source_job_ids": [
+        "govdata-dgm5-discovery"
+      ],
+      "source_links": [
+        "https://www.govdata.de/ckan/api/3/action/package_search?fq=%28title%3ADGM5%20OR%20title%3A%22Digitales%20Gel%C3%A4ndemodell%205%22%29&rows=200",
+        "https://www.govdata.de/sparql-assistent",
+        "https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_tiff/dgm1_tiff/",
+        "https://www.opengeodata.nrw.de/produkte/geobasis/",
+        "https://www.opengeodata.nrw.de/produkte/geobasis/hm/dgm1_tiff/dgm1_tiff/dgm1_32_280_5652_1_nw_2022.tif",
+        "https://data.geobasis-bb.de/geobasis/daten/dgm/tif/",
+        "https://data.geobasis-bb.de/geobasis/daten/",
+        "https://data.geobasis-bb.de/geobasis/daten/dgm/tif/dgm_33250-5888.zip",
+        "https://dgm.stac.lgln.niedersachsen.de/collections/dgm1/items?limit=1",
+        "https://dgm.stac.lgln.niedersachsen.de/collections/dgm1",
+        "https://dgm1.s3.eu-de.cloud-object-storage.appdomain.cloud/L2503/Vollkacheln/dgm1_32_597_5909_1_ni_2025.tif",
+        "https://gdi.berlin.de/data/dgm1/atom/",
+        "https://www.berlin.de/sen/stadt/stadtdaten/geoinformation/landesvermessung/geotopographie-atkis/dgm-digitale-gelaendemodelle/",
+        "https://gdi.berlin.de/data/dgm1/atom/DGM1_368_5808.zip",
+        "https://www.metaver.de/trefferanzeige?docuuid=8CCBF995-0CBB-4E6B-968A-C56BBE39EBC2",
+        "https://www.geo.bremen.de/produkte/open-data-produktuebersicht-15654",
+        "https://gdi2.geo.bremen.de/inspire/download/DGM/data/Gitternetz_DGM5_2017_HB_ASCII_XYZ.zip",
+        "https://laiv.geodaten-mv.de/afgvk/Geotopographie/Beschreibung?produkt=DGM",
+        "https://laiv.geodaten-mv.de/afgvk/",
+        "https://www.geodaten-mv.de/dienste/dgm_download?index=0&dataset=ca268792-s2q1-4a39-b34c-9ec5bf9a4469&file=dgm1_33_206_5920_2_mix.tif",
+        "https://geodaten.schleswig-holstein.de/gaialight-sh/_apps/dladownload/dl-dgm5.html",
+        "https://geodaten.schleswig-holstein.de/gaialight-sh/_apps/dladownload/",
+        "https://geodaten.schleswig-holstein.de/gaialight-sh/_apps/dladownload/massen.php?file=dgm5_32_424_6002_1_sh_2005.xyz&id=9&live=2005&km=32420_6000",
+        "https://geoportal.thueringen.de/gdi-th/download-offene-geodaten/download-hoehendaten",
+        "https://geoportal.thueringen.de/gdi-th/download-offene-geodaten",
+        "https://www.geodatenportal.sachsen-anhalt.de/gfds_webshare/download/LVermGeo/Geodatenportal/Online-Bereitstellung-LVermGeo/DGM/DGM5.zip",
+        "https://www.lvermgeo.sachsen-anhalt.de/de/gdp-open-data.html",
+        "https://geoportal.geoportal-th.de/dienste/atom_th_hoehendaten_dgm",
+        "https://geoportal.geoportal-th.de/gaialight-th/_apps/dladownload/dl-dhm.html",
+        "https://geoportal.geoportal-th.de/hoehendaten/DGM/dgm_2010-2013/dgm2_561_5609_1_th_2010-2013.zip",
+        "https://geodaten.bayern.de/odd/a/dgm/dgm1/meta/kml/gemeinde.kml?service=kml",
+        "https://geodaten.bayern.de/opengeodata/json/opengeodata_produkte.json",
+        "https://geodaten.bayern.de/odd/a/dgm/dgm1/meta/metalink/09.meta4",
+        "https://download1.bayernwolke.de/a/dgm/dgm1/532_5529.tif",
+        "https://geodaten.bayern.de/odd/a/dgm/dgm5xyz/meta/metalink/09.meta4",
+        "https://download1.bayernwolke.de/a/dgm/dgm5xyz/532_5521.zip",
+        "https://opengeodata.lgl-bw.de/#/(sidenav:product/dgm1)",
+        "https://opengeodata.lgl-bw.de/assets/config/local/odp-products.json",
+        "https://opengeodata.lgl-bw.de/#/(sidenav:product/dgm025)",
+        "https://geobasis-rlp.de/data/dgm1/current/meta4/dgm1_tif_07.meta4",
+        "https://geoshop.rlp.de/files/anpassungen/hvd/products/dgm1.json",
+        "https://geobasis-rlp.de/data/dgm1/current/tif/dgm1_32_419_5490_1_rp_2022.tif",
+        "https://geobasis-rlp.de/data/dgm1/current/meta4/dgm1_md_07.meta4",
+        "https://geocloud.landesvermessung.sachsen.de/public.php/dav/files/JCcXyifaNdLDnxZ/dgm1_33400_5654_2_sn_tiff.zip",
+        "https://www.geodaten.sachsen.de/batch-download-4719.html",
+        "https://www.shop.lvgl.saarland.de/cloud/public.php/dav/files/NK8ndP55qAqGEZD/OD_DGM1_2025_laz_LK/DGM1_laz_MZG_EPSG-25832_Entstehung-2025.zip",
+        "https://www.shop.lvgl.saarland.de/cloud/index.php/s/NK8ndP55qAqGEZD",
+        "https://www.shop.lvgl.saarland.de/cloud/public.php/dav/files/NK8ndP55qAqGEZD/OD_DGM1_2025_laz_LK/",
+        "https://www.shop.lvgl.saarland.de/cloud/public.php/dav/files/NK8ndP55qAqGEZD/OD_DGM1_2025_tif_LK/DGM1_tif_MZG_EPSG-25832_Entstehung-2025.zip",
+        "https://www.shop.lvgl.saarland.de/cloud/public.php/dav/files/NK8ndP55qAqGEZD/OD_DGM1_2025_tif_LK/",
+        "https://gds.hessen.de/downloadcenter/20260828/3D-Daten/Digitales%20Gel%C3%A4ndemodell%20%28DGM1%29/Hochtaunuskreis/Bad%20Homburg%20v.d.H%C3%B6he%20-%20DGM1.zip",
+        "https://gds.hessen.de/INTERSHOP/rest/WFS/HLBG-Geodaten-Site/-/downloadcenter?path=3D-Daten%2FDigitales+Gel%C3%A4ndemodell+%28DGM1%29"
+      ],
+      "source_system": "vectoplan",
+      "system_project": true
+    },
+    "name": "Digitales Geländemodell 5 m (DGM5)",
+    "status": "ACTIVE",
+    "updated_at": "2026-09-04T21:47:02.760046"
+  },
+  "publication": {
+    "admin_url": "http://127.0.0.1:5109/geodaten/admin",
+    "approval": {
+      "approved_at": null,
+      "approved_by": {},
+      "approved_release_key": null,
+      "current_release_approved": false,
+      "has_approved_release": false
+    },
+    "assessment_ids": [],
+    "collection_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m",
+    "created_at": "2026-09-04T21:47:02.737227Z",
+    "dataset_id": "digitales-gelaendemodell-5m",
+    "delivery_services": [
+      "DOWNLOAD"
+    ],
+    "detected_formats": [
+      "XYZ"
+    ],
+    "file_count": 4,
+    "files": [
+      {
+        "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5818-e74ef12fff.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+        "media_type": "application/zip",
+        "name": "DGM1_390_5818-e74ef12fff.zip",
+        "queryable": false,
+        "size_bytes": 16936399
+      },
+      {
+        "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_390_5820-f6c3abb0ea.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+        "media_type": "application/zip",
+        "name": "DGM1_390_5820-f6c3abb0ea.zip",
+        "queryable": false,
+        "size_bytes": 17538508
+      },
+      {
+        "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_392_5818-34ef2d99c1.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+        "media_type": "application/zip",
+        "name": "DGM1_392_5818-34ef2d99c1.zip",
+        "queryable": false,
+        "size_bytes": 16944366
+      },
+      {
+        "download_url": "http://127.0.0.1:5109/geodaten/admin/api/production-publications/digitales-gelaendemodell-5m/files/DGM1_392_5820-2ad2b40e73.zip?release_key=534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+        "media_type": "application/zip",
+        "name": "DGM1_392_5820-2ad2b40e73.zip",
+        "queryable": false,
+        "size_bytes": 18048778
+      }
+    ],
+    "files_truncated": false,
+    "kind": "file_collection",
+    "openlayers_supported": false,
+    "project_id": "49f07b47-845d-5952-8240-13794894aeca",
+    "project_name": "Digitales Geländemodell 5 m (DGM5)",
+    "publication_profile": "terrain",
+    "published_at": "2026-09-04T21:47:02.737227Z",
+    "raster_import": {},
+    "release_key": "534c6986ff3aecc761877a3836a4a96d6c3e73fb19561290e49e48c1f9dd3bc2",
+    "review": {
+      "current_release_decided": false,
+      "decided_at": null,
+      "decided_by": {},
+      "decision": "pending",
+      "reason": null,
+      "release_key": null
+    },
+    "source_files_completed": 0,
+    "source_partial": false,
+    "status": "published",
+    "storage_mode": "reference",
+    "updated_at": "2026-09-04T21:47:02.737227Z",
+    "urls": {}
+  }
+}

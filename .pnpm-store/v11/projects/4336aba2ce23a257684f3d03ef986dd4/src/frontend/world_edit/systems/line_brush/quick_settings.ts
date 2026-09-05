@@ -144,7 +144,7 @@ export function createLineBrushQuickSettings(
         <select data-line-brush-roof-type aria-label="Dachform">
           ${LINE_BRUSH_ROOF_OPTIONS.map((option) => `<option value="${option.value}">${option.label}</option>`).join("")}
         </select>
-        <small>Transparente Live-Vorschau über das gemeinsame WorldEdit-Dachsystem.</small>
+        <small>Dachform direkt am blauen Baukörper bearbeiten.</small>
       </label>
       <div class="editor-line-brush-quick-settings__storeys">
         <div><span>Geschosse</span><strong data-line-brush-storey-title>1 Geschoss</strong></div>
@@ -241,6 +241,10 @@ export function createLineBrushQuickSettings(
       : Math.max(1, Math.trunc(storeyEditing.scopeStoreyCount));
     typeSelect.value = current.typeId;
     roofTypeSelect.value = current.roofType;
+    typeSelect.disabled = storeyEditing.busy === true;
+    roofTypeSelect.disabled = storeyEditing.busy === true;
+    element.querySelectorAll<HTMLButtonElement>("[data-line-brush-library-open], [data-line-brush-storey-decrease], [data-line-brush-storey-increase]")
+      .forEach((button) => { button.disabled = storeyEditing.busy === true; });
     typeDescription.textContent = current.type.description;
     storeyScopeSelect.replaceChildren(new Option("Gesamter Baukörper", "all"));
     for (let index = 0; index < storeyEditing.segmentCount; index += 1) {
@@ -257,7 +261,7 @@ export function createLineBrushQuickSettings(
     totalHeight.textContent = `${(effectiveStoreyCount * current.storeyHeightMeters).toFixed(3).replace(".", ",")} m`;
     templateTitle.textContent = current.selection.selectedTemplate.title;
     templateSource.textContent = templateSourceLabel(current.selection.selectedTemplate);
-    generateButton.disabled = !current.canGenerate;
+    generateButton.disabled = !current.canGenerate || storeyEditing.busy === true;
     generateButton.textContent = current.canGenerate
       ? "Gebäude erzeugen"
       : "Vorlage zuerst installieren";
@@ -304,6 +308,7 @@ export function createLineBrushQuickSettings(
     );
     button.append(copy);
     button.addEventListener("click", () => {
+      if (storeyEditing.busy === true) return;
       state = reduceLineBrushQuickSettingsState(
         state,
         { type: "select-template", templateId: template.id },
